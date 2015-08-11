@@ -23,12 +23,12 @@ function hideAllMainContainers() {
 	$("#bulkgenerater").hide();
 }
 function generateSingleWallet(){
-    $("#generatedWallet").show();
     var password = $("#ethgenpassword").val();
     if(password==""){
         alert("Your forgot the password");
         return;
     }
+    $("#generatedWallet").show();
     var acc = new Accounts();
     var newAccountEnc = acc.new(password);
     $("#address").val(newAccountEnc.address);
