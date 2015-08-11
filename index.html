@@ -1,46 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Your page title here :)</title>
+  <title>Ether Wallet</title>
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
-
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
-
+  <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
-    <div class="row">
-      <div class="one-half column" style="margin-top: 25%">
-        <h4>Basic Page</h4>
-        <p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
-      </div>
+<div class="maincontainer">
+  <div class="row">
+    <div class="four columns mcolor rounded title"><h3>Ether Wallet</h3></div>
+    <div class="eight columns mcolor rounded desc"><h5>Open Source JavaScript Client-Side Ether Wallet</h5></div>
+  </div>
+</div>
+<div class="maincontainer">
+  <div class="row">
+    <div class="three columns"><a class="button" href="#">Generate Wallet</a></div>
+    <div class="three columns"><a class="button" href="#">Bulk Generate</a></div>
+  </div>
+</div>
+<div class="maincontainer">
+  <div class="row">
+    <div class="six columns">
+      <label>Your password</label>
+      <input class="u-full-width" type="password" placeholder="minimum 6 characters" id="ethgenpassword">
+    </div>
+    <div class="six columns">
+        <label>Give me my wallet</label>
+        <a class="button button-primary" href="#">Generate</a>
     </div>
   </div>
-
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</div>
+<div class="maincontainer">
+  <div class="row">
+    <div class="six columns">
+      <label>Your address</label>
+      <input class="u-full-width" type="text" id="address" disabled>
+    </div>
+    <div class="six columns">
+        <label>Your private key (unencrypted)</label>
+        <input class="u-full-width" type="text" id="privkey" disabled>
+    </div>
+  </div>
+  <div class="row">
+    <div class="six columns">
+      <label>QR code (private key)</label>
+      <img src="images/qrcode_test.png" width="100%"/>
+    </div>
+    <div class="six columns">
+        <label>Print QR code</label>
+        <a class="button button-primary" href="#">Print</a>
+        <br />
+        <label>Download json file (encrypted)</label>
+        <a class="button button-primary" href="#">Download</a>
+        <label>Download json file (unencrypted)</label>
+        <a class="button button-primary" href="#">Download</a>
+    </div>
+  </div>
+</div>
 </body>
 </html>
