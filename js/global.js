@@ -70,6 +70,7 @@ function generateSingleWallet(){
     $("#encdownload").attr('download',newAccountEnc.address+'-Encrypted.json');
     $("#unencdownload").attr('href',window.URL.createObjectURL(unencblob));
     $("#unencdownload").attr('download',newAccountEnc.address+'-Unencrypted.json');
+    acc.clear();
 }
 function generateBulkWallets(){
     var password = $("#bulkgenpassword").val();
@@ -118,6 +119,7 @@ function generateBulkWallets(){
     $("#bulkexportcsv").attr('download',fname+'.csv');
     $("#bulkexporttxt").attr('href',window.URL.createObjectURL(txtblob));
     $("#bulkexporttxt").attr('download',fname+'.txt');
+    acc.clear();
 }
 function printQRcode() {
     var address = $("#address").val();
