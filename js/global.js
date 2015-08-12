@@ -52,14 +52,13 @@ function generateSingleWallet(){
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
     });
-    $("#encdownload").unbind();
-    $("#encdownload").click(function() {
-		downloadFile(JSON.stringify(newAccountEnc), newAccountEnc.address+'-Encrypted.json');
-	});
-    $("#unencdownload").unbind();
-    $("#unencdownload").click(function() {
-		downloadFile(JSON.stringify(newAccountUnEnc), newAccountEnc.address+'-Unencrypted.json');
-	});
+    var fileType = "application/json;charset=UTF-8";
+    var encblob = new Blob( [ JSON.stringify(newAccountEnc) ], { type: fileType } );
+    var unencblob = new Blob( [ JSON.stringify(newAccountUnEnc) ], { type: fileType } );
+    $("#encdownload").attr('href',window.URL.createObjectURL(encblob));
+    $("#encdownload").attr('download',newAccountEnc.address+'-Encrypted.json');
+    $("#unencdownload").attr('href',window.URL.createObjectURL(unencblob));
+    $("#unencdownload").attr('download',newAccountEnc.address+'-Unencrypted.json');
 }
 function printQRcode() {
     var address = $("#address").val();
@@ -71,18 +70,8 @@ function printQRcode() {
     win.focus();
     win.print();
 }
-function downloadFile( data, fileName, fileType ) {
-    var blob, url, a, extension;
-    fileType = ( fileType || "application/json;charset=UTF-8" );
-    blob = new Blob( [ data ], { type: fileType } );
-    if ( blob ) {
-        url = window.URL.createObjectURL( blob );
-        a = document.createElement( "a" );
-        document.body.appendChild( a );
-        a.style = "display: none";
-        a.href = url;
-        a.download = fileName;
-        a.click();
-        window.URL.revokeObjectURL( url );
-    } else {}
+HTMLElement.prototype.click = function() {
+   var evt = this.ownerDocument.createEvent('MouseEvents');
+   evt.initMouseEvent('click', true, true, this.ownerDocument.defaultView, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
+   this.dispatchEvent(evt);
 }
