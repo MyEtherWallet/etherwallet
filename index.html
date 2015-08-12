@@ -24,7 +24,7 @@
 </div>
 <div class="maincontainer">
   <div class="row">
-    <div class="three columns"><a class="button" href="#" id="walgen">Generate Wallet</a></div>
+    <div class="three columns"><a class="button btnselected" href="#" id="walgen">Generate Wallet</a></div>
     <div class="three columns"><a class="button" href="#" id="bulkgen">Bulk Generate</a></div>
   </div>
 </div>
@@ -33,7 +33,7 @@
   <div class="row">
     <div class="six columns">
       <label>Your password</label>
-      <input class="u-full-width" type="text" placeholder="never ever forget this" id="ethgenpassword">
+      <input class="u-full-width" type="text" placeholder="never ever forget this (min 7 characters)" id="ethgenpassword">
     </div>
     <div class="six columns">
         <label>Give me my wallet</label>
@@ -74,8 +74,47 @@
 </div>
 </div>
 <div id="bulkgenerater" style="display: none;">
-<div class="maincontainer" id="bulkgenerate">
-    <h3>oops didnt get a chance to work on this yet :(</h3>
+<div class="maincontainer">
+<div class="row">
+    <div class="four columns">
+      <label>Number of Wallets</label>
+      <input class="u-full-width" type="text" placeholder="amount of wallets you need" id="numberwallets">
+    </div>
+    <div class="four columns">
+      <label>Password</label>
+      <input class="u-full-width" type="text" placeholder="private key will be encrypted if filled" id="bulkgenpassword">
+    </div>
+    <div class="four columns">
+        <label>Give me my wallets</label>
+        <a class="button button-primary" href="#" id="bulkgenerate">Generate</a>
+    </div>
+</div>
+</div>
+<div class="maincontainer" id="generatedbulkwallets" style="display: none;">
+<div class="row">
+    <div class="four columns">
+      <label>Download json file</label>
+      <a class="button button-primary" href="#" id="bulkexportjson">Download</a>
+    </div>
+    <div class="four columns">
+      <label>Download csv file</label>
+      <a class="button button-primary" href="#" id="bulkexportcsv">Download</a>
+    </div>
+    <div class="four columns">
+      <label>Download txt file</label>
+      <a class="button button-primary" href="#" id="bulkexporttxt">Download</a>
+    </div>
+</div>
+<br />
+<label>Wallets</label>
+    <table class="u-full-width" id="bulkgentable">
+        <thead>
+            <tr>
+                <th>Address</th>
+                <th>Private Key <span id="bulkIsEnc"></span></th>
+            </tr>
+        </thead>
+    </table>
 </div>
 </div>
 </body>

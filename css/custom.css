@@ -23,7 +23,8 @@
     padding: 20px 0 0 20px;
 }
 .btnselected{
-    
+    background-color: #2BB2DD;
+    color: #fff;
 }
 .button:hover {
     background-color: #2BB2DD;
@@ -41,4 +42,7 @@ input[type=checkbox]
 .nopass{
     padding-left: 40px;
     padding-top: 10px;
+}
+.privaddkey {
+    font-family: monospace;
 }

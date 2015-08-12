@@ -5,10 +5,12 @@ function bindElements() {
 	$("#walgen").click(function() {
 		hideAllMainContainers();
 		$("#walletgenerator").show();
+        $("#walgen").addClass('btnselected');
 	});
 	$("#bulkgen").click(function() {
 		hideAllMainContainers();
 		$("#bulkgenerater").show();
+        $("#bulkgen").addClass('btnselected');
 	});
     $("#generatewallet").click(function() {
 		generateSingleWallet();
@@ -16,16 +18,25 @@ function bindElements() {
     $("#printqr").click(function() {
 		printQRcode();
 	});
+    $("#bulkgenerate").click(function() {
+		generateBulkWallets();
+	});
 }
 
 function hideAllMainContainers() {
 	$("#walletgenerator").hide();
 	$("#bulkgenerater").hide();
+    $("#bulkgen").removeClass('btnselected');
+    $("#walgen").removeClass('btnselected');
 }
 function generateSingleWallet(){
     var password = $("#ethgenpassword").val();
     if(password==""){
         alert("Your forgot the password");
+        return;
+    }
+    if(password.length<7){
+        alert("Password is not long enough");
         return;
     }
     $("#generatedWallet").show();
@@ -52,13 +63,61 @@ function generateSingleWallet(){
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
     });
-    var fileType = "application/json;charset=UTF-8";
+    var fileType = "text/json;charset=UTF-8";
     var encblob = new Blob( [ JSON.stringify(newAccountEnc) ], { type: fileType } );
     var unencblob = new Blob( [ JSON.stringify(newAccountUnEnc) ], { type: fileType } );
     $("#encdownload").attr('href',window.URL.createObjectURL(encblob));
     $("#encdownload").attr('download',newAccountEnc.address+'-Encrypted.json');
     $("#unencdownload").attr('href',window.URL.createObjectURL(unencblob));
     $("#unencdownload").attr('download',newAccountEnc.address+'-Unencrypted.json');
+}
+function generateBulkWallets(){
+    var password = $("#bulkgenpassword").val();
+    var count = $("#numberwallets").val();
+    if(count==""){
+        alert("Please enter the amount of wallets you need");
+        return;
+    } else if(count != parseInt(count, 10)){
+        alert("Digits only please");
+        return;
+    }
+    var isencrypted = false;
+    if(password!=""&&password.length<7){
+        alert("Password is not long enough");
+        return;
+    } else if(password!=""&&password.length>=7){
+        isencrypted = true;
+    }
+    if(isencrypted)
+        $("#bulkIsEnc").html(" (Encrypted)")
+    else
+        $("#bulkIsEnc").html(" (Unencrypted)")
+    $("#generatedbulkwallets").show();
+    $('#bulkgentable tr:not(:first)').remove();
+    var acc = new Accounts();
+    var csv = "";
+    var jsonarr = [];
+    var txt = "";
+    for(var i=0;i<count;i++){
+        if(isencrypted)
+            var newAccount = acc.new(password);
+        else
+            var newAccount = acc.new();
+        $('#bulkgentable tr:last').after('<tr class="privaddkey"><td>'+newAccount.address+'</td><td>'+newAccount.private+'</td></tr>');
+        csv+=newAccount.address+','+newAccount.private+'\n';
+        txt+=newAccount.address+'\t'+newAccount.private+'\n';
+        jsonarr.push({address:newAccount.address, private:newAccount.private});
+    }
+    var csvblob = new Blob( [ csv ], { type: "text/csv;charset=UTF-8" } );
+    var txtblob = new Blob( [ txt ], { type: "text/plain;charset=UTF-8" } );  
+    var jsonblob = new Blob( [ JSON.stringify(jsonarr) ], { type: "text/json;charset=UTF-8" } ); 
+    var fname = "bulk_ether_accounts" ;
+    $("#bulkexportjson").attr('href',window.URL.createObjectURL(jsonblob));
+    $("#bulkexportjson").attr('download',fname+'.json');
+    $("#bulkexportcsv").attr('href',window.URL.createObjectURL(csvblob));
+    $("#bulkexportcsv").attr('download',fname+'.csv');
+    $("#bulkexporttxt").attr('href',window.URL.createObjectURL(txtblob));
+    $("#bulkexporttxt").attr('download',fname+'.txt');
 }
 function printQRcode() {
     var address = $("#address").val();
