@@ -4,24 +4,25 @@ var less = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer');
 var minifyCSS = require('gulp-minify-css');
 var notify = require('gulp-notify');
-var rename = require("gulp-rename");
+var rename = require('gulp-rename');
 var uncss = require('gulp-uncss');
 
 // js
 var gulpConcat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
-// less vars
+// watch folders
 var lessWatchFolder = './css/less/**/*.less';
+var htmlWatchFolder = './*.html';
+var jsWatchFolder = './js/source/*.js';
+
+// less vars
 var lessFile = './css/less/etherwallet-master.less';
 var lessOutputFolder = './css';
 var lessOutputFile = 'etherwallet-master.css';
 var lessOutputFileMin = 'etherwallet-master.min.css';
 
-var htmlWatchFolder = './*.html';
-
 //js vars
-var jsWatchFolder = './js/source/*.js';
 var jsFiles = "./js/source/*.js";
 var jsOutputFolder = './js';
 var jsOutputFile = 'etherwallet-master.min.js';
@@ -46,6 +47,7 @@ gulp.task('less-uncss', ['less'], function () {
     .src('./css/' + lessOutputFile)
       .pipe(uncss({
         html: [
+          './index.html',
           './index2.html'
         ]
       }))
@@ -73,6 +75,5 @@ gulp.task('watchLess', function() {
 gulp.task('watchHTML', function() {
     gulp.watch(htmlWatchFolder, ['less-uncss']);
 });
-
 
 gulp.task('default', ['minJS' , 'less', 'less-uncss', 'watchJS' , 'watchLess', 'watchHTML' ]);
