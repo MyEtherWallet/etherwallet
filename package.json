@@ -15,7 +15,9 @@
     "gulp-concat": "^2.6.0",
     "gulp-uglify": "1.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-notify": "^2.2.0"
+  },
   "author": "Taylor Van Orden",
   "license": "ISC"
 }
