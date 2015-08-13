@@ -2,16 +2,26 @@ $( document ).ready(function() {
     bindElements();
 });
 function bindElements() {
-	$("#walgen").click(function() {
+	$("#tabWalgen").click(function() {
 		hideAllMainContainers();
-		$("#walletgenerator").show();
-        $("#walgen").addClass('btnselected');
+		$("#paneWalgen").show();
+        $("#tabWalgen").parent().addClass('active');
 	});
-	$("#bulkgen").click(function() {
+	$("#tabBulkgen").click(function() {
 		hideAllMainContainers();
-		$("#bulkgenerater").show();
-        $("#bulkgen").addClass('btnselected');
+		$("#paneBulkgen").show();
+        $("#tabBulkgen").parent().addClass('active');
 	});
+    $("#tabSendTrans").click(function() {
+        hideAllMainContainers();
+        $("#paneSendTrans").show();
+        $("#tabSendTrans").parent().addClass('active');
+    });
+    $("#tabHelp").click(function() {
+        hideAllMainContainers();
+        $("#paneHelp").show();
+        $("#tabHelp").parent().addClass('active');
+    });
     $("#generatewallet").click(function() {
 		generateSingleWallet();
 	});
@@ -24,19 +34,24 @@ function bindElements() {
 }
 
 function hideAllMainContainers() {
-	$("#walletgenerator").hide();
-	$("#bulkgenerater").hide();
-    $("#bulkgen").removeClass('btnselected');
-    $("#walgen").removeClass('btnselected');
+	$("#paneWalgen").hide();
+	$("#paneBulkgen").hide();
+    $("#paneSendTrans").hide();
+    $("#paneHelp").hide();
+
+    $("#tabBulkgen").parent().removeClass('active');
+    $("#tabWalgen").parent().removeClass('active');
+    $("#tabSendTrans").parent().removeClass('active');
+    $("#tabHelp").parent().removeClass('active');
 }
 function generateSingleWallet(){
     var password = $("#ethgenpassword").val();
     if(password==""){
-        alert("Your forgot the password");
+        alert("Please enter a password.");
         return;
     }
     if(password.length<7){
-        alert("Password is not long enough");
+        alert("Your password must be at least 7 characters");
         return;
     }
     $("#generatedWallet").show();
@@ -110,8 +125,8 @@ function generateBulkWallets(){
         jsonarr.push({address:newAccount.address, private:newAccount.private});
     }
     var csvblob = new Blob( [ csv ], { type: "text/csv;charset=UTF-8" } );
-    var txtblob = new Blob( [ txt ], { type: "text/plain;charset=UTF-8" } );  
-    var jsonblob = new Blob( [ JSON.stringify(jsonarr) ], { type: "text/json;charset=UTF-8" } ); 
+    var txtblob = new Blob( [ txt ], { type: "text/plain;charset=UTF-8" } );
+    var jsonblob = new Blob( [ JSON.stringify(jsonarr) ], { type: "text/json;charset=UTF-8" } );
     var fname = "bulk_ether_accounts" ;
     $("#bulkexportjson").attr('href',window.URL.createObjectURL(jsonblob));
     $("#bulkexportjson").attr('download',fname+'.json');
