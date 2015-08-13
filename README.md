@@ -90,4 +90,5 @@ This project loads JQuery 1.11.3 and then a minified JS file that is composed of
 - import client wallet files and presale wallet files.  (design almost done)
 - generate transactions from the imported wallet files.  (design almost done)
 - send transactions. (design almost done)
+- Make help page. This should cover everything a basic user who bought ether presale would need to know to get that ether to another place. It should assume they know essentially nothing and are not familiar with command line. It should also cover safety and best practices and provide helpful links.
 
