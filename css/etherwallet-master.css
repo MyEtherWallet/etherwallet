@@ -6710,6 +6710,10 @@ button.close {
   }
 }
 /* Start Custom Styles */
+body,
+html {
+  height: 100%;
+}
 /* Make Bootstrap Go Full Width */
 .container {
   width: 100%;
