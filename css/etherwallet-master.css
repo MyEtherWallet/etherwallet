@@ -6713,7 +6713,7 @@ button.close {
 /* Make Bootstrap Go Full Width */
 .container {
   width: 100%;
-  max-width: 100%;
+  max-width: 1300px;
   padding: 0 5%;
 }
 img {
