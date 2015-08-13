@@ -2,9 +2,8 @@
 // Variables
 // --------------------------------------------------
 
-
-@ether-blue-dark:       #2E4868;
-@ether-blue-light:      #2BB2DD;
+@ether-navy:       #2E4868;
+@ether-blue:      #2BB2DD;
 
 //== Colors
 //
@@ -17,9 +16,9 @@
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         @ether-blue-dark;
+@brand-primary:         @ether-blue;
 @brand-success:         #5cb85c;
-@brand-info:            @ether-blue-light;
+@brand-info:            @ether-navy;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
 
@@ -45,7 +44,7 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  'Raleyway', sans-serif;
+@font-family-sans-serif:  'Raleway', sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -69,7 +68,7 @@
 
 //** By default, this inherits from the `<body>`.
 @headings-font-family:    inherit;
-@headings-font-weight:    500;
+@headings-font-weight:    300;
 @headings-line-height:    1.1;
 @headings-color:          inherit;
 
@@ -227,7 +226,7 @@
 @input-group-addon-border-color: @input-border;
 
 //** Disabled cursor for form controls and buttons.
-@cursor-disabled:                not-allowed;
+@cursor-disabled:                default;
 
 
 //== Dropdowns
@@ -499,19 +498,19 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-@state-success-text:             #3c763d;
+@state-success-text:             darken(@brand-success, 10%);
 @state-success-bg:               #dff0d8;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:                #31708f;
+@state-info-text:                darken(@brand-info, 10%);
 @state-info-bg:                  #d9edf7;
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
-@state-warning-text:             #8a6d3b;
+@state-warning-text:             darken(@brand-warning, 10%);
 @state-warning-bg:               #fcf8e3;
 @state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
 
-@state-danger-text:              #a94442;
+@state-danger-text:              darken(@brand-danger, 10%);
 @state-danger-bg:                #f2dede;
 @state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 
@@ -855,7 +854,7 @@
 //** Abbreviations and acronyms border color
 @abbr-border-color:           @gray-light;
 //** Headings small color
-@headings-small-color:        @gray-light;
+@headings-small-color:        inherit;
 //** Blockquote small color
 @blockquote-small-color:      @gray-light;
 //** Blockquote font size
