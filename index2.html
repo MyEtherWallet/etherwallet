@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ether Wallet</title>
+  <meta name="description" content="Ether Wallet: Open Source JavaScript Client-Side Ether Wallet">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/etherwallet-master.min.css">
+  <script type="text/javascript" src="js/etherwallet-master.js"></script>
+</head>
+
+<body>
+<header>
+  <div class="container-fluid">
+    <div class="container">
+      <h1 class="h3"> Ether Wallet </h1>
+      <h2 class="h4"> Open Source JavaScript Client-Side Ether Wallet </h2>
+    </div>
+  </div>
+</header>
+
+<div class="maincontainer">
+  <div class="row">
+    <div class="three columns"><a class="button btnselected" href="#" id="walgen">Generate Wallet</a></div>
+    <div class="three columns"><a class="button" href="#" id="bulkgen">Bulk Generate</a></div>
+  </div>
+</div>
+<div id="walletgenerator">
+<div class="maincontainer">
+  <div class="row">
+    <div class="six columns">
+      <label>Your password</label>
+      <input class="u-full-width" type="text" placeholder="never ever forget this (min 7 characters)" id="ethgenpassword">
+    </div>
+    <div class="six columns">
+        <label>Give me my wallet</label>
+        <a class="button button-primary" href="#" id="generatewallet">Generate</a>
+    </div>
+  </div>
+</div>
+<div class="maincontainer" id="generatedWallet" style="display: none;">
+  <div class="row">
+    <div class="six columns">
+      <label>Your address</label>
+      <input class="u-full-width" type="text" id="address" disabled>
+    </div>
+    <div class="six columns">
+        <label>Your private key (unencrypted)</label>
+        <input class="u-full-width" type="text" id="privkey" disabled>
+    </div>
+  </div>
+  <div class="row">
+    <div class="four columns">
+      <label>QR code (Address)</label>
+      <div id="qrcodeAdd" width="100%"></div>
+    </div>
+    <div class="four columns">
+      <label>QR code (private key)</label>
+      <div id="qrcode" width="100%"></div>
+    </div>
+    <div class="four columns">
+        <label>Print QR codes</label>
+        <a class="button button-primary" href="#" id="printqr">Print</a>
+        <br />
+        <label>Download json file (encrypted)</label>
+        <a class="button button-primary" href="#" id="encdownload">Download</a>
+        <label>Download json file (unencrypted)</label>
+        <a class="button button-primary" href="#" id="unencdownload">Download</a>
+    </div>
+  </div>
+</div>
+</div>
+<div id="bulkgenerater" style="display: none;">
+<div class="maincontainer">
+<div class="row">
+    <div class="four columns">
+      <label>Number of Wallets</label>
+      <input class="u-full-width" type="text" placeholder="amount of wallets you need" id="numberwallets">
+    </div>
+    <div class="four columns">
+      <label>Password</label>
+      <input class="u-full-width" type="text" placeholder="private key will be encrypted if filled" id="bulkgenpassword">
+    </div>
+    <div class="four columns">
+        <label>Give me my wallets</label>
+        <a class="button button-primary" href="#" id="bulkgenerate">Generate</a>
+    </div>
+</div>
+</div>
+<div class="maincontainer" id="generatedbulkwallets" style="display: none;">
+<div class="row">
+    <div class="four columns">
+      <label>Download json file</label>
+      <a class="button button-primary" href="#" id="bulkexportjson">Download</a>
+    </div>
+    <div class="four columns">
+      <label>Download csv file</label>
+      <a class="button button-primary" href="#" id="bulkexportcsv">Download</a>
+    </div>
+    <div class="four columns">
+      <label>Download txt file</label>
+      <a class="button button-primary" href="#" id="bulkexporttxt">Download</a>
+    </div>
+</div>
+<br />
+<label>Wallets</label>
+    <table class="u-full-width" id="bulkgentable">
+        <thead>
+            <tr>
+                <th>Address</th>
+                <th>Private Key <span id="bulkIsEnc"></span></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+</div>
+</body>
+</html>
