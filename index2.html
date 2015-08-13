@@ -8,70 +8,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
-  <script type="text/javascript" src="js/etherwallet-master.js"></script>
+  <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="js/etherwallet-master.min.js"></script>
 </head>
 
 <body>
 <header>
-  <div class="container-fluid">
+  <div class="container-fluid bg-navy text-white">
     <div class="container">
-      <h1 class="h3"> Ether Wallet </h1>
-      <h2 class="h4"> Open Source JavaScript Client-Side Ether Wallet </h2>
+      <h1 class="h2"> ETHER WALLET <small>Open Source JavaScript Client-Side Ether Wallet</small></h2>
     </div>
   </div>
 </header>
 
-<div class="maincontainer">
-  <div class="row">
-    <div class="three columns"><a class="button btnselected" href="#" id="walgen">Generate Wallet</a></div>
-    <div class="three columns"><a class="button" href="#" id="bulkgen">Bulk Generate</a></div>
+  <br /><br />
+
+
+<section class="container">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#" id="tabWalgen">Generate Wallet    </a></li>
+    <li>               <a href="#" id="tabBulkgen">Bulk Generate      </a></li>
+    <li>               <a href="#" id="tabSendTrans">Send Transaction   </a></li>
+    <li>               <a href="#" id="tabHelp">Help               </a></li>
+  </ul>
+  <br />
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <!-- Wallet Generator -->
+    <div class="tab-pane active" id="paneWalgen">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="ethgenpassword"> 1. Enter a password to encrypt your JSON file (minimum 7 characters): </label>
+            <input type="text" class="form-control" placeholder="Never, Ever Forget This" id="ethgenpassword">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="generatewallet">2. Give me my wallet:</label>
+            <br />
+            <a class="btn btn-primary btn-block" href="#" id="generatewallet">GENERATE</a>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="generatedWallet" style="display:none;">
+        <hr />
+        <h3 class="text-success col-xs-12">Sucess! Your wallet has been generated.</h3>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="address">Your Address:</label>
+            <input class="form-control" type="text" id="address" disabled>
+          </div>
+          <div class="form-group">
+            <label>Your Private Key (unencrypted):</label>
+            <input class="form-control" type="text" id="privkey" disabled>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="qrcodeAdd">QR code (Address):</label>
+              <div id="qrcodeAdd" width="100%"></div>
+            </div>
+            <div class="form-group col-md-6">
+              <label>QR code (Private Key):</label>
+              <div id="qrcode" width="100%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label> Print QR codes: </label>
+            <a class="btn btn-info btn-block" href="#" id="printqr">PRINT</a>
+          </div>
+
+          <div class="form-group">
+            <label>Download JSON file (encrypted): <br /> <small> You will need to use the password you used to generate your wallet to unencrypt this file. </small></label>
+            <a class="btn btn-info btn-block" href="#" id="encdownload"> DOWNLOAD </a>
+          </div>
+
+          <div class="form-group">
+            <label>Download JSON file (unencrypted):</label>
+            <a class="btn btn-info btn-block" href="#" id="unencdownload">DOWNLOAD</a>
+          </div>
+        </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- End Wallet Generator -->
+
+
+    <div class="tab-pane" id="paneBulkgen">bulkgenerater</div>
+    <div class="tab-pane" id="paneSendTrans">sendtransaction</div>
+    <div class="tab-pane" id="paneHelp">help</div>
   </div>
-</div>
-<div id="walletgenerator">
-<div class="maincontainer">
+</section>
+
   <div class="row">
-    <div class="six columns">
-      <label>Your password</label>
-      <input class="u-full-width" type="text" placeholder="never ever forget this (min 7 characters)" id="ethgenpassword">
-    </div>
-    <div class="six columns">
-        <label>Give me my wallet</label>
-        <a class="button button-primary" href="#" id="generatewallet">Generate</a>
-    </div>
-  </div>
-</div>
-<div class="maincontainer" id="generatedWallet" style="display: none;">
-  <div class="row">
-    <div class="six columns">
-      <label>Your address</label>
-      <input class="u-full-width" type="text" id="address" disabled>
-    </div>
-    <div class="six columns">
-        <label>Your private key (unencrypted)</label>
-        <input class="u-full-width" type="text" id="privkey" disabled>
-    </div>
-  </div>
-  <div class="row">
-    <div class="four columns">
-      <label>QR code (Address)</label>
-      <div id="qrcodeAdd" width="100%"></div>
-    </div>
-    <div class="four columns">
-      <label>QR code (private key)</label>
-      <div id="qrcode" width="100%"></div>
-    </div>
-    <div class="four columns">
-        <label>Print QR codes</label>
-        <a class="button button-primary" href="#" id="printqr">Print</a>
-        <br />
-        <label>Download json file (encrypted)</label>
-        <a class="button button-primary" href="#" id="encdownload">Download</a>
-        <label>Download json file (unencrypted)</label>
-        <a class="button button-primary" href="#" id="unencdownload">Download</a>
-    </div>
-  </div>
-</div>
-</div>
+
+
+
+
+
 <div id="bulkgenerater" style="display: none;">
 <div class="maincontainer">
 <div class="row">
@@ -85,7 +124,7 @@
     </div>
     <div class="four columns">
         <label>Give me my wallets</label>
-        <a class="button button-primary" href="#" id="bulkgenerate">Generate</a>
+        <a class="button button-primary" href="#" id="bulkgenerate">GENERATE</a>
     </div>
 </div>
 </div>
