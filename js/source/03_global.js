@@ -91,7 +91,7 @@ function generateBulkWallets(){
     var password = $("#bulkgenpassword").val();
     var count = $("#numberwallets").val();
     if(count==""){
-        alert("Please enter the amount of wallets you need");
+        alert("Please enter the amount of wallets you want to generate.");
         return;
     } else if(count != parseInt(count, 10)){
         alert("Digits only please");
@@ -99,7 +99,7 @@ function generateBulkWallets(){
     }
     var isencrypted = false;
     if(password!=""&&password.length<7){
-        alert("Password is not long enough");
+        alert("Your password must be at least 7 characters.");
         return;
     } else if(password!=""&&password.length>=7){
         isencrypted = true;
@@ -119,7 +119,7 @@ function generateBulkWallets(){
             var newAccount = acc.new(password);
         else
             var newAccount = acc.new();
-        $('#bulkgentable tr:last').after('<tr class="privaddkey"><td>'+newAccount.address+'</td><td>'+newAccount.private+'</td></tr>');
+        $('#bulkgentable tr:last').after('<tr class="privaddkey"><td><textarea class="form-control" rows="4" type="text" disabled>'+newAccount.address+'</textarea></td><td><textarea class="form-control" rows="4" type="text" disabled>'+newAccount.private+'</textarea></td></tr>');
         csv+=newAccount.address+','+newAccount.private+'\n';
         txt+=newAccount.address+'\t'+newAccount.private+'\n';
         jsonarr.push({address:newAccount.address, private:newAccount.private});

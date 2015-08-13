@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
 <header>
   <div class="container-fluid bg-navy text-white">
     <div class="container">
@@ -21,33 +22,32 @@
   </div>
 </header>
 
-  <br /><br />
-
+<br /><br />
 
 <section class="container">
-  <!-- Nav tabs -->
+  <!-- navtabs -->
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#" id="tabWalgen">Generate Wallet    </a></li>
-    <li>               <a href="#" id="tabBulkgen">Bulk Generate      </a></li>
-    <li>               <a href="#" id="tabSendTrans">Send Transaction   </a></li>
-    <li>               <a href="#" id="tabHelp">Help               </a></li>
+    <li class="active"><a href="#" id="tabWalgen">    Generate Wallet  </a></li>
+    <li>               <a href="#" id="tabBulkgen">   Bulk Generate    </a></li>
+    <li>               <a href="#" id="tabSendTrans"> Send Transaction </a></li>
+    <li>               <a href="#" id="tabHelp">      Help             </a></li>
   </ul>
+  <!-- /navtabs -->
   <br />
-  <!-- Tab panes -->
+  <!-- tab panes -->
   <div class="tab-content">
-    <!-- Wallet Generator -->
+    <!-- wallet generator -->
     <div class="tab-pane active" id="paneWalgen">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="ethgenpassword"> 1. Enter a password to encrypt your JSON file (minimum 7 characters): </label>
-            <input type="text" class="form-control" placeholder="Never, Ever Forget This" id="ethgenpassword">
+            <h4>Enter a password to encrypt your private key <small>(minimum 7 characters):</small> </h4>
+            <input type="text" class="form-control" placeholder="Never, Ever Forget This" id="ethgenpassword" />
           </div>
         </div>
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="generatewallet">2. Give me my wallet:</label>
-            <br />
+            <h4>Give me my wallet:</h4>
             <a class="btn btn-primary btn-block" href="#" id="generatewallet">GENERATE</a>
           </div>
         </div>
@@ -57,103 +57,232 @@
         <h3 class="text-success col-xs-12">Sucess! Your wallet has been generated.</h3>
         <div class="col-sm-6">
           <div class="form-group">
-            <label for="address">Your Address:</label>
+            <h4>Your Address:</h4>
             <input class="form-control" type="text" id="address" disabled>
           </div>
           <div class="form-group">
-            <label>Your Private Key (unencrypted):</label>
+            <h4>Your Private Key (unencrypted):</h4>
             <input class="form-control" type="text" id="privkey" disabled>
           </div>
           <div class="row">
-            <div class="form-group col-md-6">
-              <label for="qrcodeAdd">QR code (Address):</label>
+            <div class="form-group col-sm-6">
+              <h4>QR code (Address):</h4>
               <div id="qrcodeAdd" width="100%"></div>
             </div>
-            <div class="form-group col-md-6">
-              <label>QR code (Private Key):</label>
+            <div class="form-group col-sm-6">
+              <h4>QR code (Private Key):</h4>
               <div id="qrcode" width="100%"></div>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <div class="form-group">
-            <label> Print QR codes: </label>
+            <h4> Print QR codes: </h4>
             <a class="btn btn-info btn-block" href="#" id="printqr">PRINT</a>
           </div>
-
           <div class="form-group">
-            <label>Download JSON file (encrypted): <br /> <small> You will need to use the password you used to generate your wallet to unencrypt this file. </small></label>
+            <h4>Download JSON file (encrypted): <br /> <small> You will need to use the password you used to generate your wallet to unencrypt this file. </small></h4>
             <a class="btn btn-info btn-block" href="#" id="encdownload"> DOWNLOAD </a>
           </div>
-
           <div class="form-group">
-            <label>Download JSON file (unencrypted):</label>
+            <h4>Download JSON file (unencrypted):</h4>
             <a class="btn btn-info btn-block" href="#" id="unencdownload">DOWNLOAD</a>
           </div>
         </div>
-        </div>
-
       </div>
+    </div> <!-- / wallet generator -->
 
-    </div>
-    <!-- End Wallet Generator -->
+    <!-- bulk generator -->
+    <div class="tab-pane" id="paneBulkgen" style="display: none;">
+      <div class="row">
+        <div class="col-md-4 col-sm-6 form-group">
+          <h4>1. Enter the Number of Wallets To Generate:</h4>
+          <input class="form-control" type="text" placeholder="Number of Wallets" id="numberwallets">
+        </div>
+        <div class="col-md-4 col-sm-6 form-group">
+          <h4>2. Enter a password to encrypt your private key <small>(minimum 7 characters):</small></h4>
+          <input class="form-control" type="text" placeholder="Never, Ever Forget This" id="bulkgenpassword">
+        </div>
+        <div class="col-md-4 col-sm-12 form-group">
+            <h4>3. Give me my wallets:</h4><br class="hidden-sm hidden-xs"/>
+            <a class="btn btn-primary btn-block" href="#" id="bulkgenerate">GENERATE</a>
+        </div>
+      </div>
+      <div id="generatedbulkwallets" style="display: none;">
+        <hr />
+        <div class="row">
+          <h3 class="text-success col-xs-12">Sucess! Your wallets have been generated.</h3>
+          <div class="col-xs-8">
+            <table id="bulkgentable" class="table">
+              <thead>
+                <tr>
+                  <th width="500">Address</th>
+                  <th width="500">Private Key <span id="bulkIsEnc"></span></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <h4>Download JSON file</h4>
+              <a class="btn btn-info btn-block" href="#" id="bulkexportjson">DOWNLOAD</a>
+            </div>
+            <div class="form-group">
+              <h4>Download CSV file</h4>
+              <a class="btn btn-info btn-block" href="#" id="bulkexportcsv">DOWNLOAD</a>
+            </div>
+            <div class="form-group">
+              <h4>Download TXT file</h4>
+              <a class="btn btn-info btn-block" href="#" id="bulkexporttxt">DOWNLOAD</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /bulk generator -->
 
+    <!-- send transaction -->
+    <div class="tab-pane" id="paneSendTrans" style="display: none;">
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <h4> How would you like to access your wallet? </h4>
+          <div class="radio">
+            <label><input type="radio" name="typeOfKeyRadio">Upload your wallet file.</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="typeOfKeyRadio">Paste / type your private key.</label>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <!-- if selected upload -->
+          <div id="selectedUploadKey">
+            <h4>Select your wallet file: </h4>
+            <div class="form-group">
+              <p id="file-text"></p>
+              <a class="file-input btn btn-block btn-default btn-file marg-v-sm" id="fileUpload">
+                SELECT WALLET FILE... <input type="file">
+              </a>
+            </div>
+            <div class="form-group">
+              <p> If your file is encrypted with a password, enter the password here: </p>
+              <input class="form-control" type="text" placeholder="Password" id="numberwallets">
+            </div>
+          </div>
+          <!-- /if selected upload -->
+          <!-- if selected type key-->
+          <div id="selectedTypeKey">
+            <h4> Paste / type your private key: </h4>
+            <div class="form-group">
+              <textarea rows="4" class="form-control" placeholder="Private Key"></textarea>
+            </div>
+            <div class="form-group">
+              <p> If your file is encrypted with a password, enter the password here: </p>
+              <input class="form-control" type="text" placeholder="Password" id="numberwallets">
+            </div>
+          </div>
+          <!-- /if selected type key-->
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <h4> Upload your wallet / private key: </h4>
+          <div class="form-group">
+            <a class="btn btn-primary btn-block" href="#" id="bulkexporttxt">UPLOAD</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      <hr />
+        <div class="col-sm-4">
+          <h4> Account Information </h4>
+          <p class="col-xs-12"> Account Address: <strong id="accountAddress"> 928342938472938 </strong></p>
+          <p class="col-xs-12">  Account Balance: <strong class="text-success" id="accountBalance"> 345 Ether</strong></p>
+         </div>
+         <div class="col-sm-8">
+          <h4>Send Transaction</h4>
+            <div class="form-group col-xs-12">
+              <label> To Address: </label>
+              <input class="form-control" type="text" placeholder="Address">
+            </div>
+            <div class="form-group col-xs-12">
+              <label> Amount to Send: </label>
+              <input class="form-control" type="text" placeholder="Amount">
+              <div class="radio">
+                <label><input type="radio" name="currencyRadio">Ether</label>
+                <label><input type="radio" name="currencyRadio">MicroEther</label>
+              </div>
+            </div>
 
-    <div class="tab-pane" id="paneBulkgen">bulkgenerater</div>
-    <div class="tab-pane" id="paneSendTrans">sendtransaction</div>
-    <div class="tab-pane" id="paneHelp">help</div>
-  </div>
+            <div class="form-group col-xs-12">
+              <a class="btn btn-info btn-block">GENERATE TRANSACTION</a>
+            </div>
+            <div class="form-group col-xs-12">
+              <textarea class="form-control" rows="4" disabled></textarea>
+            </div>
+            <div class="form-group col-xs-12">
+              <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">SEND TRANSACTION</a>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="myModalLabel"> <strong class="text-danger">Warning!</strong></h3>
+                  </div>
+                  <div class="modal-body">
+                    <h4>
+                      You are about to send
+                      <strong id="confirmAmount" class="text-primary"> 345 </strong>
+                      <strong id="confirmCurrancy" class="text-primary"> Ether </strong>
+                      to address
+                      <strong id="confirmAddress" class="text-primary"> 928342938472938 </strong>
+                    </h4>
+                    <h4> Are you <span class="text-underline"> sure </span> you want to do this?</h4>
+                  </div>
+                  <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
+                    <button type="button" class="btn btn-primary">Yes, I am sure! Make transaction.</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/modal-->
+        </div>
+      </div>
+    </div> <!-- /send transaction -->
+
+    <!-- help -->
+    <div class="tab-pane" id="paneHelp" style="display: none;">
+      We obviously need help with the help page. Can you help us?
+    </div> <!-- /help -->
+
+  </div> <!-- /tab panes -->
 </section>
 
-  <div class="row">
+<script>
+// File Button
+$(document).on('change', '.btn-file :file', function() {
+  var input = $(this),
+      numFiles = input.get(0).files ? input.get(0).files.length : 1,
+      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+  input.trigger('fileselect', [numFiles, label]);
+});
 
+$(document).ready( function() {
+    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
 
+        var input = $(this).parents('.input-group').find(':text'),
+            log = numFiles > 1 ? numFiles + ' files selected' : label;
 
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) {
+              $('#fileUpload').after('<p class="text-center text-success"><strong> File Selected: ' + log + '</strong></p>');
+            }
+        }
 
+    });
+});
+</script>
 
-<div id="bulkgenerater" style="display: none;">
-<div class="maincontainer">
-<div class="row">
-    <div class="four columns">
-      <label>Number of Wallets</label>
-      <input class="u-full-width" type="text" placeholder="amount of wallets you need" id="numberwallets">
-    </div>
-    <div class="four columns">
-      <label>Password</label>
-      <input class="u-full-width" type="text" placeholder="private key will be encrypted if filled" id="bulkgenpassword">
-    </div>
-    <div class="four columns">
-        <label>Give me my wallets</label>
-        <a class="button button-primary" href="#" id="bulkgenerate">GENERATE</a>
-    </div>
-</div>
-</div>
-<div class="maincontainer" id="generatedbulkwallets" style="display: none;">
-<div class="row">
-    <div class="four columns">
-      <label>Download json file</label>
-      <a class="button button-primary" href="#" id="bulkexportjson">Download</a>
-    </div>
-    <div class="four columns">
-      <label>Download csv file</label>
-      <a class="button button-primary" href="#" id="bulkexportcsv">Download</a>
-    </div>
-    <div class="four columns">
-      <label>Download txt file</label>
-      <a class="button button-primary" href="#" id="bulkexporttxt">Download</a>
-    </div>
-</div>
-<br />
-<label>Wallets</label>
-    <table class="u-full-width" id="bulkgentable">
-        <thead>
-            <tr>
-                <th>Address</th>
-                <th>Private Key <span id="bulkIsEnc"></span></th>
-            </tr>
-        </thead>
-    </table>
-</div>
-</div>
 </body>
 </html>
