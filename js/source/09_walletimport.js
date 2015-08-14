@@ -4,11 +4,6 @@ function decryptPresaleKey(presaleJson, presalepass) {
 	var iv = hexToCryptoJS(bytesToHex(encSeedBytes.slice(0, 16)));
 	var cipherText = hexToCryptoJS(bytesToHex(encSeedBytes.slice(16)));
     var derivedKey = sha256.pbkdf2(stringToBytes(presalepass), stringToBytes(presalepass), 2000, 16);
-	/*var derivedKey = CryptoJS.PBKDF2(presalepass, presalepass, {
-		keySize: 512 / 32,
-		iterations: 2000,
-		hasher: CryptoJS.algo.SHA256 //this is painfully slow
-	});*/
 	var passbytes = hexToBytes(bytesToHex(derivedKey)).slice(0, 16);
 	var plainText = CryptoJS.AES.decrypt({
 		ciphertext: cipherText,
@@ -22,7 +17,11 @@ function decryptPresaleKey(presaleJson, presalepass) {
 	var ethPriv = CryptoJS.SHA3(plainText, {
 		outputLength: 256
 	});
-	return ethPriv.toString();
+    var privkey = ethPriv.toString();
+    if(verifyPrivKey(privkey, presaleJson.ethaddr))
+        return privkey;
+    else
+        throw "Invalid Password";
 }
 
 function decryptGethKeyV3(gethJson, password) {
@@ -33,7 +32,6 @@ function decryptGethKeyV3(gethJson, password) {
 	var cipherText = gethJson.Crypto.ciphertext;
 	var bytesDerivedKey = getKDFKey(gethJson.Crypto, password);
 	var bytesDerivedKey16 = hexToBytes(bytesToHex(bytesDerivedKey)).slice(0, 16);
-    console.log(bytesToHex(bytesDerivedKey16));
 	var decrypted = CryptoJS.AES.decrypt({
 		ciphertext: hexToCryptoJS(cipherText)
 	}, hexToCryptoJS(bytesToHex(bytesDerivedKey16)), {
@@ -41,9 +39,53 @@ function decryptGethKeyV3(gethJson, password) {
 		padding: CryptoJS.pad.ZeroPadding,
 		iv: hexToCryptoJS(iv)
 	});
-	return cryptoJSToHex(decrypted);
+    var privkey = cryptoJSToHex(decrypted);
+    if(verifyPrivKey(privkey, gethJson.address))
+        return privkey;
+    else
+        throw "Invalid Password";
 }
-
+function decryptEthWalletJson(ethjson, password){
+    ethjson = JSON.parse(ethjson);
+    if(ethjson.locked&&ethjson.private.length!=64){
+        var privatebytes = CryptoJS.AES.decrypt(ethjson.private, password);
+        var privkey = hex2str(cryptoJSToHex(privatebytes));
+    } else if(!ethjson.locked&&ethjson.private.length==64){
+        var privkey = ethjson.private;
+    } else {
+        throw "Error while decrypting your wallet";
+    }
+    if(verifyPrivKey(privkey, formatAddress(ethjson.address, 'raw')))
+        return privkey;
+    else
+        throw "Invalid Password";
+}
+function verifyPrivKey(privkey, address){
+    if(privkey.length!=64)
+        return false;
+    if(strPrivateKeyToAddress(privkey)!=address)
+        return false;
+    else
+        return true;
+}
+function getWalletFilePrivKey(strjson, password){
+    var jsonArr = JSON.parse(strjson);
+    if(jsonArr.encseed!=null)
+        return decryptPresaleKey(strjson, password);
+    else if(jsonArr.Crypto!=null||jsonArr.crypto!=null)
+        return decryptGethKeyV3(strjson, password);
+    else if(jsonArr.hash!=null)
+        return decryptEthWalletJson(strjson, password);
+    else
+        throw "Sorry! we dont have a clue what kind of wallet file this is.";
+}
+function formatAddress(addr, format){
+    if(addr.substr(0, 2) == '0x' && format == 'raw')
+        addr = addr.substr(2);  
+    if(addr.substr(0, 2) != '0x' && format == 'hex')
+        addr = '0x' + addr;
+    return addr;
+}
 /*function decryptGethKeyV1(gethJson, password){
     gethJson = JSON.parse(gethJson);
 	var iv = gethJson.Crypto.cipherparams.iv;
@@ -62,7 +104,7 @@ function decryptGethKeyV3(gethJson, password) {
 		padding: CryptoJS.pad.Pkcs7 ,
 		iv: hexToCryptoJS(iv)
 	});
-    return cryptoJSToHex(decrypted);
+    return cryptoJSToHex(decrypted); //doesnt work not sure why, I'll figure it out later
 }*/
 function strPrivateKeyToAddress(privkey){
     var public = ethUtil.privateToPublic(hexToBytes(privkey));
