@@ -1,0 +1,80 @@
+/* Print Etherwallet Page */
+.print-container {
+  width: 680px;
+  height: 280px;
+  border: 1px solid gray;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.print-title {
+  float: left;
+}
+
+.print-text {
+  color: darken(@ether-blue,10%);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.print-qr-code-1 {
+  width: 28%;
+  float: left;
+  position: relative;
+  padding: 20px;
+  .print-text {
+    right: -35px;
+    bottom: 69px;
+  }
+}
+
+.print-qr-code-2 {
+  width: 28%;
+  float: left;
+  position: relative;
+  padding: 20px;
+  .print-text {
+    right: -45px;
+    bottom: 69px;
+  }
+}
+
+.print-notes {
+  width: 28%;
+  float: left;
+  position: relative;
+  padding: 20px;
+  .print-text {
+    right: -45px;
+    bottom: 69px;
+  }
+}
+
+
+.print-address-container {
+  float: left;
+  width: 85%;
+  padding: 0 25px;
+  p {
+    font-size:14px;
+    font-family: @font-family-monospace;
+  }
+}
+
+.ether-logo-1 {
+  position: absolute;
+  left: 100px;
+}
+
+.ether-logo-2 {
+  position: absolute;
+  right: 32px;
+  bottom: 64px;
+}
+

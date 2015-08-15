@@ -20,6 +20,11 @@ function bindElements() {
 		$("#paneSendTrans").show();
 		$("#tabSendTrans").parent().addClass('active');
 	});
+	$("#tabPrint").click(function() {
+		hideAllMainContainers();
+		$("#panePrint").show();
+		$("#tabPrint").parent().addClass('active');
+	});
 	$("#tabHelp").click(function() {
 		hideAllMainContainers();
 		$("#paneHelp").show();
@@ -129,6 +134,19 @@ function bindElements() {
 	});
 }
 
+function hideAllMainContainers() {
+	$("#paneWalgen").hide();
+	$("#paneBulkgen").hide();
+	$("#paneSendTrans").hide();
+	$("#panePrint").hide();
+	$("#paneHelp").hide();
+	$("#tabBulkgen").parent().removeClass('active');
+	$("#tabWalgen").parent().removeClass('active');
+	$("#tabSendTrans").parent().removeClass('active');
+	$("#tabPrint").parent().removeClass('active');
+	$("#tabHelp").parent().removeClass('active');
+}
+
 function decryptFormData() {
 	PrivKey = "";
 	if (decryptType == 'fupload') {
@@ -173,16 +191,7 @@ function decryptFormData() {
 	}
 }
 
-function hideAllMainContainers() {
-	$("#paneWalgen").hide();
-	$("#paneBulkgen").hide();
-	$("#paneSendTrans").hide();
-	$("#paneHelp").hide();
-	$("#tabBulkgen").parent().removeClass('active');
-	$("#tabWalgen").parent().removeClass('active');
-	$("#tabSendTrans").parent().removeClass('active');
-	$("#tabHelp").parent().removeClass('active');
-}
+
 
 function generateSingleWallet() {
 	var password = $("#ethgenpassword").val();

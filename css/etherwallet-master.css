@@ -246,6 +246,15 @@ th {
   .table-bordered td {
     border: 1px solid #ddd !important;
   }
+  .print-text {
+    color: #1d92b8 !important;
+  }
+  footer {
+    border-top: 1px solid black;
+  }
+  header {
+    border-bottom: 1px solid black;
+  }
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
@@ -6818,4 +6827,76 @@ h2,
   width: 100%;
   height: auto;
   max-width: 100%;
+}
+/* Print Etherwallet Page */
+.print-container {
+  width: 680px;
+  height: 280px;
+  border: 1px solid gray;
+  margin-bottom: 50px;
+  position: relative;
+}
+.print-title {
+  float: left;
+}
+.print-text {
+  color: #1d92b8;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+.print-qr-code-1 {
+  width: 28%;
+  float: left;
+  position: relative;
+  padding: 20px;
+}
+.print-qr-code-1 .print-text {
+  right: -35px;
+  bottom: 69px;
+}
+.print-qr-code-2 {
+  width: 28%;
+  float: left;
+  position: relative;
+  padding: 20px;
+}
+.print-qr-code-2 .print-text {
+  right: -45px;
+  bottom: 69px;
+}
+.print-notes {
+  width: 28%;
+  float: left;
+  position: relative;
+  padding: 20px;
+}
+.print-notes .print-text {
+  right: -45px;
+  bottom: 69px;
+}
+.print-address-container {
+  float: left;
+  width: 85%;
+  padding: 0 25px;
+}
+.print-address-container p {
+  font-size: 14px;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+.ether-logo-1 {
+  position: absolute;
+  left: 100px;
+}
+.ether-logo-2 {
+  position: absolute;
+  right: 32px;
+  bottom: 64px;
 }
