@@ -144,49 +144,52 @@
         <div class="col-md-4 col-sm-6">
           <h4> How would you like to access your wallet? </h4>
           <div class="radio">
-            <label><input type="radio" name="typeOfKeyRadio">Upload your wallet file.</label>
+            <label><input type="radio" name="typeOfKeyRadio" value="fileupload">Upload your wallet file (Presale/Geth/etherwallet).</label>
           </div>
           <div class="radio">
-            <label><input type="radio" name="typeOfKeyRadio">Paste / type your private key.</label>
+            <label><input type="radio" name="typeOfKeyRadio" value="pasteprivkey">Paste / type your private key.</label>
           </div>
         </div>
         <div class="col-md-4 col-sm-6">
           <!-- if selected upload -->
-          <div id="selectedUploadKey">
-            <h4>Select your wallet file: </h4>
+          <div id="selectedUploadKey"  style="display: none;">
+            <h4>Select your wallet file : </h4>
             <div class="form-group">
               <p id="file-text"></p>
               <a class="file-input btn btn-block btn-default btn-file marg-v-sm" id="fileUpload">
                 SELECT WALLET FILE... <input type="file">
               </a>
+              <div id="fuploadStatus"></div>
             </div>
-            <div class="form-group">
-              <p> If your file is encrypted with a password, enter the password here: </p>
-              <input class="form-control" type="text" placeholder="Password" id="numberwallets">
+            <div class="form-group" id="walletPasdiv" style="display: none;">
+              <p> your file is encrypted with a password, enter the password here: </p>
+              <input class="form-control" type="password" placeholder="Password" id="walletfilepassword">
             </div>
           </div>
           <!-- /if selected upload -->
           <!-- if selected type key-->
-          <div id="selectedTypeKey">
+          <div id="selectedTypeKey"  style="display: none;">
             <h4> Paste / type your private key: </h4>
             <div class="form-group">
-              <textarea rows="4" class="form-control" placeholder="Private Key"></textarea>
+              <textarea rows="4" class="form-control" placeholder="Private Key" id="manualprivkey"></textarea>
             </div>
             <div class="form-group">
               <p> If your file is encrypted with a password, enter the password here: </p>
-              <input class="form-control" type="text" placeholder="Password" id="numberwallets">
+              <input class="form-control" type="password" placeholder="Password" id="privkeypassword">
             </div>
           </div>
           <!-- /if selected type key-->
         </div>
-        <div class="col-md-4 col-sm-6">
-          <h4> Upload your wallet / private key: </h4>
+        <div class="col-md-4 col-sm-6" style="display: none;" id="walletuploadbutton">
+          <h4 id="uploadbtntxt-wallet" style="display: none;"> Decrypt your wallet</h4>
+          <h4 id="uploadbtntxt-privkey" style="display: none;"> Decrypt your private key </h4>
           <div class="form-group">
-            <a class="btn btn-primary btn-block" href="#" id="bulkexporttxt">UPLOAD</a>
+            <a class="btn btn-primary btn-block" href="#" id="decryptdata">UPLOAD</a>
           </div>
+          <div id="decryptStatus"></div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" style="display: none;">
       <hr />
         <div class="col-sm-4">
           <h4> Account Information </h4>
@@ -263,33 +266,5 @@
     <h4><a href="https://github.com/kvhnuke/etherwallet" target="_blank">view on github</a></h4>
   </div>
 </footer>
-
-<script>
-// File Button
-$(document).on('change', '.btn-file :file', function() {
-  var input = $(this),
-      numFiles = input.get(0).files ? input.get(0).files.length : 1,
-      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-  input.trigger('fileselect', [numFiles, label]);
-});
-
-$(document).ready( function() {
-    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-
-        var input = $(this).parents('.input-group').find(':text'),
-            log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-        if( input.length ) {
-            input.val(log);
-        } else {
-            if( log ) {
-              $('#fileUpload').after('<p class="text-center text-success"><strong> File Selected: ' + log + '</strong></p>');
-            }
-        }
-
-    });
-});
-</script>
-
 </body>
 </html>

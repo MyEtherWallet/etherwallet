@@ -60,6 +60,24 @@ function decryptEthWalletJson(ethjson, password){
     else
         throw "Invalid Password";
 }
+function walletRequirePass(ethjson){
+    var jsonArr;
+    try {
+        jsonArr = JSON.parse(ethjson);
+    } catch(err) {
+        throw "not a valid wallet file";
+    } 
+    if(jsonArr.encseed!=null)
+        return true;
+    else if(jsonArr.Crypto!=null||jsonArr.crypto!=null)
+        return true
+    else if(jsonArr.hash!=null&&jsonArr.locked)
+        return true;
+    else if(jsonArr.hash!=null&&!jsonArr.locked)
+        return false;
+    else
+        throw "Sorry! we dont have a clue what kind of wallet file this is.";
+}
 function verifyPrivKey(privkey, address){
     if(privkey.length!=64)
         return false;
