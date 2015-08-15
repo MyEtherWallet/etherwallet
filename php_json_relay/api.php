@@ -31,13 +31,12 @@ function getBalance($addr, $gethRPC)
     }
     return json_encode($data);
 }
-function sendRawTransaction($rawtx){
+function sendRawTransaction($rawtx,$gethRPC){
     $data['error'] = false;
     $data['msg'] = "";
     $data['data'] = "";
     try {
-        $addr = formatAddress($addr);
-        $info = getHexString($gethRPC->eth_sendRawTransaction($rawtx));
+        $info = $gethRPC->eth_sendRawTransaction($rawtx);
         $data['data'] = $info;
     }
     catch (exception $e) {

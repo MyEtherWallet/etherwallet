@@ -61,7 +61,7 @@ gulp.task('minJS', function () {
   return gulp
     .src(jsFiles)
       .pipe(gulpConcat(jsOutputFile))
-      //.pipe(uglify())
+      .pipe(uglify())
       .pipe(gulp.dest(jsOutputFolder))
     .pipe(notify('JS Concat and Uglified'));
 });

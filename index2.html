@@ -173,8 +173,8 @@
             <div class="form-group">
               <textarea rows="4" class="form-control" placeholder="Private Key" id="manualprivkey"></textarea>
             </div>
-            <div class="form-group">
-              <p> If your file is encrypted with a password, enter the password here: </p>
+            <div class="form-group" style="display: none;" id="divprikeypassword">
+              <p> Your file is encrypted with a password, enter the password here: </p>
               <input class="form-control" type="password" placeholder="Password" id="privkeypassword">
             </div>
           </div>
@@ -184,7 +184,7 @@
           <h4 id="uploadbtntxt-wallet" style="display: none;"> Decrypt your wallet</h4>
           <h4 id="uploadbtntxt-privkey" style="display: none;"> Decrypt your private key </h4>
           <div class="form-group">
-            <a class="btn btn-primary btn-block" href="#" id="decryptdata">UPLOAD</a>
+            <a class="btn btn-primary btn-block" href="#" id="decryptdata">DECRYPT</a>
           </div>
           <div id="decryptStatus"></div>
         </div>
@@ -194,7 +194,7 @@
         <div class="col-sm-4">
           <h4> Account Information </h4>
           <p class="col-xs-12"> Account Address: <strong id="accountAddress"> 928342938472938 </strong></p>
-          <p class="col-xs-12">  Account Balance: <strong class="text-success" id="accountBalance"> 345 Ether</strong></p>
+          <p class="col-xs-12">  Account Balance: <strong class="text-success" id="accountBalance"> 0 wei</strong></p>
          </div>
          <div class="col-sm-8">
           <h4>Send Transaction</h4>

@@ -28,7 +28,7 @@ Commands:
 **/
 
 var _ = require('underscore');
-var Tx = require('ethereumjs-tx');
+global.Tx = require('ethereumjs-tx');
 var LocalStore = require('localstorejs');
 var BigNumber = require('bignumber.js');
 var JSZip = require("jszip");

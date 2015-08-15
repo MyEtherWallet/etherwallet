@@ -1,4 +1,5 @@
 var PrivKey = "";
+var decryptType = "";
 $(document).ready(function() {
 	bindElements();
 });
@@ -37,18 +38,23 @@ function bindElements() {
 		decryptFormData();
 	});
 	$('input[type=radio][name=typeOfKeyRadio]').change(function() {
-        PrivKey="";
-        $('#fuploadStatus').empty();
-        $('#walletfilepassword').val('');
-        $('#privkeypassword').val('');
-        $('#message').val('manualprivkey');
-        $('.btn-file :file').val('');
+		PrivKey = "";
+		$('#fuploadStatus').empty();
+		$('#walletfilepassword').val('');
+		$('#privkeypassword').val('');
+		$('.btn-file :file').val('');
+		$('#manualprivkey').val('')
+        $("#walletuploadbutton").hide();
+        $("#walletPasdiv").hide();
+        $("#divprikeypassword").hide();
 		if (this.value == 'fileupload') {
 			$("#selectedTypeKey").hide();
 			$("#selectedUploadKey").show();
+			decryptType = "fupload";
 		} else if (this.value == 'pasteprivkey') {
 			$("#selectedUploadKey").hide();
 			$("#selectedTypeKey").show();
+			decryptType = "privkey";
 		}
 	});
 	$('#walletfilepassword').on('paste, keyup', function() {
@@ -58,6 +64,25 @@ function bindElements() {
 			$("#walletuploadbutton").show();
 		} else {
 			$("#walletuploadbutton").hide();
+		}
+	});
+	$('#privkeypassword').on('paste, keyup', function() {
+		if ($('#privkeypassword').val().length > 6) {
+			$("#uploadbtntxt-wallet").hide();
+			$("#uploadbtntxt-privkey").show();
+			$("#walletuploadbutton").show();
+		} else {
+			$("#walletuploadbutton").hide();
+		}
+	});
+	$('#manualprivkey').on('paste, keyup', function() {
+		$("#divprikeypassword").hide();
+		if ($('#manualprivkey').val().length == 128) {
+			$("#divprikeypassword").show();
+		} else if ($('#manualprivkey').val().length == 64) {
+			$("#uploadbtntxt-wallet").hide();
+			$("#uploadbtntxt-privkey").show();
+			$("#walletuploadbutton").show();
 		}
 	});
 	$('.btn-file :file').change(function() {
@@ -72,8 +97,8 @@ function bindElements() {
 	});
 	$('.btn-file :file').on('fileselect', function(event, numFiles, label) {
 		$('#fuploadStatus').empty();
-        $('#walletfilepassword').val('')
-        PrivKey="";
+		$('#walletfilepassword').val('')
+		PrivKey = "";
 		file = $('.btn-file :file')[0].files[0];
 		var fr = new FileReader();
 		fr.onload = function() {
@@ -105,23 +130,47 @@ function bindElements() {
 }
 
 function decryptFormData() {
-    PrivKey="";
-	file = $('.btn-file :file')[0].files[0];
-	var fr = new FileReader();
-	fr.onload = function() {
+	PrivKey = "";
+	if (decryptType == 'fupload') {
+		file = $('.btn-file :file')[0].files[0];
+		var fr = new FileReader();
+		fr.onload = function() {
+			try {
+				PrivKey = getWalletFilePrivKey(fr.result, $('#walletfilepassword').val());
+				$("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
+				getBalance($("#accountAddress").html(), function(result) {
+					if (!result.error) $("#accountBalance").html(result.data.balance + " wei");
+					else
+					alert(result.msg);
+				});
+				$("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000, function() {
+					setTimeout(function() {
+						$("#walletselection").hide(2000);
+					}, 1000);
+				});
+			} catch (err) {
+				$("#decryptStatus").html('<p class="text-center text-danger"><strong> ' + err + '</strong></p>').fadeIn(50).fadeOut(3000);
+			}
+		};
+		fr.readAsText(file);
+	} else if (decryptType == 'privkey') {
 		try {
-		  PrivKey = getWalletFilePrivKey(fr.result,$('#walletfilepassword').val());
-          $("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey),'hex'));
-          $("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000,function(){
-            setTimeout(function(){
-               $("#walletselection").hide(2000); 
-            },1000);
-          });
+			PrivKey = decryptTxtPrivKey($('#manualprivkey').val(), $("#privkeypassword").val());
+			$("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
+			getBalance($("#accountAddress").html(), function(result) {
+				if (!result.error) $("#accountBalance").html(result.data.balance + " wei");
+				else
+				alert(result.msg);
+			});
+			$("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000, function() {
+				setTimeout(function() {
+					$("#walletselection").hide(2000);
+				}, 1000);
+			});
 		} catch (err) {
-		  $("#decryptStatus").html('<p class="text-center text-danger"><strong> '+err+'</strong></p>').fadeIn(50).fadeOut(3000);
+			$("#decryptStatus").html('<p class="text-center text-danger"><strong> Invalid password</strong></p>').fadeIn(50).fadeOut(3000);
 		}
-	};
-	fr.readAsText(file);
+	}
 }
 
 function hideAllMainContainers() {
