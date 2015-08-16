@@ -175,7 +175,7 @@ function preSendTransaction() {
 	sendTransaction($("#tasignedtx").val(), function(data) {
 		$("#txsendstatus").html('<p class="text-center text-success"><strong> Transaction submitted. TX ID: ' + data + '</strong></p>');
 	}, function(err) {
-		$("#txsendstatus").html('<p class="text-center text-success"><strong> Error occurred: ' + err + '</strong></p>');
+		$("#txsendstatus").html('<p class="text-center text-danger"><strong>' + err + '</strong></p>');
 	});
 	$('#sendTransaction').modal('hide');
 }
