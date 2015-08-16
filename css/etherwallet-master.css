@@ -6780,6 +6780,11 @@ h2,
 .radio label {
   padding-right: 15px;
 }
+footer {
+  background-color: #2e4868;
+  color: white;
+  margin-top: 50px;
+}
 /* Custom Utilities */
 .text-navy {
   color: #2e4868;
