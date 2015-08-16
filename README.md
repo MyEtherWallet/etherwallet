@@ -1,6 +1,6 @@
 # etherwallet
 
-EtherWallet is an open source, javascript, client-side tool for generating Ether wallets. It was created by [kvhnuke](https://github.com/kvhnuke) and [tayvano](https://github.com/tayvano) aka [supergeniustay](https://www.supergeniustay.com).
+EtherWallet is an open source, javascript, client-side tool for generating Ether wallets. It was created by [kvhnuke](https://github.com/kvhnuke) and [tayvano](https://github.com/tayvano) aka [supergeniustay](http://www.supergeniustay.com).
 
 - http://kvhnuke.github.io/etherwallet/
 - [original reddit thread](https://www.reddit.com/r/ethereum/comments/3gkknd/ether_wallet_generator_for_now/)
@@ -90,5 +90,6 @@ This project loads JQuery 1.11.3 and then a minified JS file that is composed of
 - Test the import functionality of client wallet files and presale wallet files.  
 - Test generate transactions from the imported wallet files. 
 - Test send transactions.
+- Compile and submit solity contracts.
 - Make help page. This should cover everything a basic user who bought ether presale would need to know to get that ether to another place. It should assume they know essentially nothing and are not familiar with command line. It should also cover safety and best practices and provide helpful links.
 
