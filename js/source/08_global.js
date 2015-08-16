@@ -10,6 +10,10 @@ function bindElements() {
 		$("#paneWalgen").show();
 		$("#tabWalgen").parent().addClass('active');
 	});
+    $("#privkeyenc,#address,#privkey").click(function() {
+        this.focus();
+		this.select();
+	});
 	$("#tabBulkgen").click(function() {
 		hideAllMainContainers();
 		$("#paneBulkgen").show();
@@ -371,11 +375,16 @@ function printQRcode() {
 	var address = $("#address").val();
 	var qrsourceprivkey = $("#qrcode").html();
 	var qrsourceadd = $("#qrcodeAdd").html();
-	var html = "<h4>Address (" + address + ")</h4><br/>" + qrsourceadd + "<h4>Private Key</h4></br>" + qrsourceprivkey;
+    $("#paperwalletprivqr").html(qrsourceprivkey);
+    $("#paperwalletpriv").html($("#privkey").val());
+    $("#paperwalletaddqr").html(qrsourceadd);
+    $("#paperwalletadd").html(address);
+	var html = $("#panePrint").html()+"<script>setTimeout(function(){window.print();},2000);</script>";// "<h4>Address (" + address + ")</h4><br/>" + qrsourceadd + "<h4>Private Key</h4></br>" + qrsourceprivkey;
 	var win = window.open("about:blank", "_blank");
 	win.document.write(html);
-	win.focus();
-	win.print();
+   // window.popup.onload=function(){win.focus();	win.print();};
+	//win.focus();
+	//win.print();
 }
 HTMLElement.prototype.click = function() {
 	var evt = this.ownerDocument.createEvent('MouseEvents');

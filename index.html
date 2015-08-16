@@ -28,7 +28,6 @@
     <li class="active"><a href="#" id="tabWalgen">    Generate Wallet  </a></li>
     <li>               <a href="#" id="tabBulkgen">   Bulk Generate    </a></li>
     <li>               <a href="#" id="tabSendTrans"> Send Transaction </a></li>
-    <li>               <a href="#" id="tabPrint">     Print             </a></li>
     <li>               <a href="#" id="tabHelp">      Help             </a></li>
   </ul>
   <!-- /navtabs -->
@@ -57,15 +56,15 @@
         <div class="col-sm-6">
           <div class="form-group">
             <h4>Your Address:</h4>
-            <input class="form-control" type="text" id="address" disabled>
+            <input class="form-control" type="text" id="address" readonly="readonly">
           </div>
           <div class="form-group">
             <h4>Your Private Key (encrypted):</h4>
-            <input class="form-control" type="text" id="privkeyenc" disabled>
+            <input class="form-control" type="text" id="privkeyenc" readonly="readonly">
           </div>
           <div class="form-group">
             <h4>Your Private Key (unencrypted):</h4>
-            <input class="form-control" type="text" id="privkey" disabled>
+            <input class="form-control" type="text" id="privkey" readonly="readonly">
           </div>
           <div class="row">
             <div class="form-group col-sm-6">
@@ -80,7 +79,7 @@
         </div>
         <div class="col-sm-6">
           <div class="form-group">
-            <h4> Print QR codes: </h4>
+            <h4> Print Paper Wallet: </h4>
             <a class="btn btn-info btn-block" href="#" id="printqr">PRINT</a>
           </div>
           <div class="form-group">
@@ -265,17 +264,21 @@
 
     <!-- print -->
     <div class="tab-pane" id="panePrint" style="display: none;">
+        <head>
+        <link rel="stylesheet" href="css/etherwallet-master.min.css">
+        </head>
       <div class="print-container">
         <img src="images/logo-1.png" class="ether-logo-1" height="100%" width="auto"/>
         <img src="images/logo-2.png" class="ether-logo-2"/>
         <img src="images/ether-title.png" height="100%" width="auto" class="print-title"/>
           <div class="print-qr-code-1">
-            <img src="images/qrcode_test.png" width="90%;" height="auto" class="pull-left" />
-            <p class="print-text">YOUR ADDRESS</p>
+          <div id="paperwalletaddqr"></div>
+            <!--<img src="images/qrcode_test.png" width="90%;" height="auto" class="pull-left" />-->
+            <p class="print-text" style="padding-top: 25px;">YOUR ADDRESS</p>
           </div>
           <div class="print-qr-code-2">
-            <img src="images/qrcode_test.png" width="90%;" height="auto" class="pull-left" />
-            <p class="print-text">YOUR PRIVATE KEY</p>
+            <div id="paperwalletprivqr"></div>
+            <p class="print-text" style="padding-top: 30px;">YOUR PRIVATE KEY</p>
           </div>
           <div class="print-notes">
             <img src="images/notes-bg.png" width="90%;" height="auto" class="pull-left" />
@@ -284,11 +287,11 @@
         <div class="print-address-container">
           <p>
             <strong>Your Address:</strong><br />
-            0xd7cd307b19a7c84930e645a5b9a6fa0d0903d329
+            <span id="paperwalletadd"></span>
           </p>
           <p>
             <strong>Your Private Key:</strong><br />
-            a149e92b08be2dadb3587ed701056406133f9b2d1bb3de95c2a293fe6b9ab709
+            <span id="paperwalletpriv"></span>
         </p>
         </div>
       </div>

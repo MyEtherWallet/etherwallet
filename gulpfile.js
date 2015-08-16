@@ -47,8 +47,7 @@ gulp.task('less-uncss', ['less'], function () {
     .src('./css/' + lessOutputFile)
       .pipe(uncss({
         html: [
-          './index.html',
-          './index2.html'
+          './index.html'
         ]
       }))
       .pipe(minifyCSS({keepBreaks: false}))
