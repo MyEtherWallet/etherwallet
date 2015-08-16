@@ -170,6 +170,9 @@ function cryptoJSToHex(x) {
 	return CryptoJS.enc.Hex.stringify(x);
 }
 
+function validateEtherAddress(addr){
+    return addr.length==42&&addr.substr(0,2)=="0x"&&/^[0-9A-F]+$/i.test(addr.substr(2));
+}
 function hex2str(hex) {
 	var hex = hex.toString();
 	var str = '';

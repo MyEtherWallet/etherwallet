@@ -60,6 +60,10 @@
             <input class="form-control" type="text" id="address" disabled>
           </div>
           <div class="form-group">
+            <h4>Your Private Key (encrypted):</h4>
+            <input class="form-control" type="text" id="privkeyenc" disabled>
+          </div>
+          <div class="form-group">
             <h4>Your Private Key (unencrypted):</h4>
             <input class="form-control" type="text" id="privkey" disabled>
           </div>
@@ -190,37 +194,45 @@
           <div id="decryptStatus"></div>
         </div>
       </div>
-      <div class="row" id="wallettransactions">
+      <div class="row" id="wallettransactions" style="display: none;">
       <hr />
         <div class="col-sm-4">
           <h4> Account Information </h4>
-          <p class="col-xs-12"> Account Address: <strong id="accountAddress"> 928342938472938 </strong></p>
+          <p class="col-xs-12"> Account Address: <strong id="accountAddress"></strong></p>
           <p class="col-xs-12">  Account Balance: <strong class="text-success" id="accountBalance"> 0 wei</strong></p>
          </div>
          <div class="col-sm-8">
           <h4>Send Transaction</h4>
             <div class="form-group col-xs-12">
               <label> To Address: </label>
-              <input class="form-control" type="text" placeholder="Address">
+              <input class="form-control" type="text" placeholder="0xd6bb39da0858e6aeddcaa12a509327b2d05f5bac" id="sendtxaddress">
+              <div id="addressvalidate"></div>
             </div>
             <div class="form-group col-xs-12">
               <label> Amount to Send: </label>
-              <input class="form-control" type="text" placeholder="Amount">
+              <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
               <div class="radio">
-                <label><input type="radio" name="currencyRadio">Ether</label>
-                <label><input type="radio" name="currencyRadio">MicroEther</label>
+                <label><input type="radio" name="currencyRadio" checked value="ether">Ether</label>
+                <label><input type="radio" name="currencyRadio" value="finney">Finney</label>
+                <label><input type="radio" name="currencyRadio" value="szabo">Szabo</label>
+                <div id="weiamount"></div>
               </div>
             </div>
 
             <div class="form-group col-xs-12">
-              <a class="btn btn-info btn-block">GENERATE TRANSACTION</a>
+              <a class="btn btn-info btn-block" id="btngeneratetranaction">GENERATE TRANSACTION</a>
             </div>
-            <div class="form-group col-xs-12">
-              <textarea class="form-control" rows="4" disabled></textarea>
+            <div id="txcreatestatus"></div>
+            <div class="form-group col-xs-12" style="display: none;" id="divtransactionTAs">
+                <label> Raw Transaction </label>
+              <textarea class="form-control" rows="4" disabled id="tarawtx"></textarea>
+                <label> Signed Transaction </label>
+              <textarea class="form-control" rows="4" disabled id="tasignedtx"></textarea>
             </div>
-            <div class="form-group col-xs-12">
+            <div class="form-group col-xs-12" id="divsendtranaction" style="display: none;">
               <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">SEND TRANSACTION</a>
             </div>
+            <div id="txsendstatus"></div>
             <!-- Modal -->
             <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
               <div class="modal-dialog" role="document">
@@ -241,7 +253,7 @@
                   </div>
                   <div class="modal-footer text-center">
                     <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
-                    <button type="button" class="btn btn-primary">Yes, I am sure! Make transaction.</button>
+                    <button type="button" class="btn btn-primary" id="btnapprovesend">Yes, I am sure! Make transaction.</button>
                   </div>
                 </div>
               </div>
@@ -294,7 +306,7 @@
 <footer class="container-fluid bg-navy text-white">
   <div class="container">
     <h2>EtherWallet</h2>
-    <p>An open source, javascript, client-side tool for generating Ether wallets. It was created because many users were having immense trouble setting up the ethereum client on their computers. We hope that it'll help most of us to accomplish day to day tasks without having a fully running client. <p>Created by <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> and <a href="https://github.com/tayvano" target="_blank">tayvano</a>.</p>
+    <p>An open source, javascript, client-side tool for generating Ether wallets and to send transactions. It was created because many users were having immense trouble setting up the ethereum client on their computers. We hope that it'll help most of us to accomplish day to day tasks without having a fully running client. <p>Created by <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> and <a href="https://github.com/tayvano" target="_blank">tayvano</a>.</p>
 
     <h4><a href="https://github.com/kvhnuke/etherwallet" target="_blank">view on github</a></h4>
   </div>

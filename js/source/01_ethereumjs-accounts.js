@@ -30,7 +30,7 @@ Commands:
 var _ = require('underscore');
 global.Tx = require('ethereumjs-tx');
 var LocalStore = require('localstorejs');
-var BigNumber = require('bignumber.js');
+global.BigNumber = require('bignumber.js');
 var JSZip = require("jszip");
 var FileSaver = require("node-safe-filesaver");
 global.CryptoJS = require('browserify-cryptojs');
