@@ -3490,6 +3490,7 @@ input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
 }
+/* uncss:ignore */
 .fade {
   opacity: 0;
   -webkit-transition: opacity 0.15s linear;
@@ -3498,6 +3499,7 @@ input[type="button"].btn-block {
 .fade.in {
   opacity: 1;
 }
+/* uncss:ignore */
 .collapse {
   display: none;
 }
@@ -3510,6 +3512,7 @@ tr.collapse.in {
 tbody.collapse.in {
   display: table-row-group;
 }
+/* uncss:ignore */
 .collapsing {
   position: relative;
   height: 0;
@@ -5847,9 +5850,11 @@ button.close {
   border: 0;
   -webkit-appearance: none;
 }
+/* uncss:ignore */
 .modal-open {
   overflow: hidden;
 }
+/* uncss:ignore */
 .modal {
   display: none;
   overflow: hidden;
@@ -5874,15 +5879,18 @@ button.close {
   -ms-transform: translate(0, 0);
   transform: translate(0, 0);
 }
+/* uncss:ignore */
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;
 }
+/* uncss:ignore */
 .modal-dialog {
   position: relative;
   width: auto;
   margin: 10px;
 }
+/* uncss:ignore */
 .modal-content {
   position: relative;
   background-color: #ffffff;
@@ -5893,6 +5901,7 @@ button.close {
   background-clip: padding-box;
   outline: 0;
 }
+/* uncss:ignore */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -5910,22 +5919,27 @@ button.close {
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
+/* uncss:ignore */
 .modal-header {
   padding: 15px;
   border-bottom: 1px solid #e5e5e5;
   min-height: 16.42857143px;
 }
+/* uncss:ignore */
 .modal-header .close {
   margin-top: -2px;
 }
+/* uncss:ignore */
 .modal-title {
   margin: 0;
   line-height: 1.42857143;
 }
+/* uncss:ignore */
 .modal-body {
   position: relative;
   padding: 15px;
 }
+/* uncss:ignore */
 .modal-footer {
   padding: 15px;
   text-align: right;
@@ -5941,6 +5955,7 @@ button.close {
 .modal-footer .btn-block + .btn-block {
   margin-left: 0;
 }
+/* uncss:ignore */
 .modal-scrollbar-measure {
   position: absolute;
   top: -9999px;
@@ -5949,18 +5964,22 @@ button.close {
   overflow: scroll;
 }
 @media (min-width: 768px) {
+  /* uncss:ignore */
   .modal-dialog {
     width: 600px;
     margin: 30px auto;
   }
+  /* uncss:ignore */
   .modal-content {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   }
+  /* uncss:ignore */
   .modal-sm {
     width: 300px;
   }
 }
 @media (min-width: 992px) {
+  /* uncss:ignore */
   .modal-lg {
     width: 900px;
   }

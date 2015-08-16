@@ -8,11 +8,13 @@
 // .modal-content   - actual modal w/ bg and corners and shit
 
 // Kill the scroll on the body
+/* uncss:ignore */
 .modal-open {
   overflow: hidden;
 }
 
 // Container that the modal scrolls within
+/* uncss:ignore */
 .modal {
   display: none;
   overflow: hidden;
@@ -35,12 +37,14 @@
   }
   &.in .modal-dialog { .translate(0, 0) }
 }
+/* uncss:ignore */
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;
 }
 
 // Shell div to position the modal with bottom padding
+/* uncss:ignore */
 .modal-dialog {
   position: relative;
   width: auto;
@@ -48,6 +52,7 @@
 }
 
 // Actual modal
+/* uncss:ignore */
 .modal-content {
   position: relative;
   background-color: @modal-content-bg;
@@ -61,6 +66,7 @@
 }
 
 // Modal background
+/* uncss:ignore */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -76,17 +82,20 @@
 
 // Modal header
 // Top section of the modal w/ title and dismiss
+/* uncss:ignore */
 .modal-header {
   padding: @modal-title-padding;
   border-bottom: 1px solid @modal-header-border-color;
   min-height: (@modal-title-padding + @modal-title-line-height);
 }
 // Close icon
+/* uncss:ignore */
 .modal-header .close {
   margin-top: -2px;
 }
 
 // Title text within header
+/* uncss:ignore */
 .modal-title {
   margin: 0;
   line-height: @modal-title-line-height;
@@ -94,12 +103,14 @@
 
 // Modal body
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
+/* uncss:ignore */
 .modal-body {
   position: relative;
   padding: @modal-inner-padding;
 }
 
 // Footer (for actions)
+/* uncss:ignore */
 .modal-footer {
   padding: @modal-inner-padding;
   text-align: right; // right align buttons
@@ -122,6 +133,7 @@
 }
 
 // Measure scrollbar width for padding body during modal show/hide
+/* uncss:ignore */
 .modal-scrollbar-measure {
   position: absolute;
   top: -9999px;
@@ -133,18 +145,22 @@
 // Scale up the modal
 @media (min-width: @screen-sm-min) {
   // Automatically set modal's width for larger viewports
+  /* uncss:ignore */
   .modal-dialog {
     width: @modal-md;
     margin: 30px auto;
   }
+  /* uncss:ignore */
   .modal-content {
     .box-shadow(0 5px 15px rgba(0,0,0,.5));
   }
 
   // Modal sizes
+  /* uncss:ignore */
   .modal-sm { width: @modal-sm; }
 }
 
 @media (min-width: @screen-md-min) {
+  /* uncss:ignore */
   .modal-lg { width: @modal-lg; }
 }
