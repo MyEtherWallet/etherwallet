@@ -46,15 +46,12 @@ gulp.task('less-uncss', ['less'], function () {
   return gulp
     .src('./css/' + lessOutputFile)
       .pipe(uncss({
-        html: [
-          './index.html',
-          './index2.html'
-        ]
+        html: ['./index.html','./index2.html']
       }))
       .pipe(minifyCSS({keepBreaks: false}))
       .pipe(rename(lessOutputFileMin))
       .pipe(gulp.dest(lessOutputFolder))
-    .pipe(notify('Less UnCSS and Minified'));
+    .pipe(notify("UnCSS'd and Minified"));
 });
 
 gulp.task('minJS', function () {
@@ -63,7 +60,7 @@ gulp.task('minJS', function () {
       .pipe(gulpConcat(jsOutputFile))
       .pipe(uglify())
       .pipe(gulp.dest(jsOutputFolder))
-    .pipe(notify('JS Concat and Uglified'));
+    .pipe(notify('JS Concatenated and Uglified'));
 });
 
 gulp.task('watchJS', function() {
