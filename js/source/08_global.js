@@ -34,6 +34,11 @@ function bindElements() {
 		$("#panePrint").show();
 		$("#tabPrint").parent().addClass('active');
 	});
+    $("#btndonate").click(function() {
+		$("#sendtxaddress").val('0x7cb57b5a97eabe94205c07890be4c1ad31e486a8');
+        $("#donateThanks").show();
+        $("#sendtxaddress").trigger("keyup");
+	});
 	$("#generatewallet").click(function() {
 		generateSingleWallet();
 	});

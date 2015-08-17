@@ -151,7 +151,7 @@
             <label><input type="radio" name="typeOfKeyRadio" value="fileupload">Upload your wallet file (Presale/Geth/etherwallet).</label>
           </div>
           <div class="radio">
-            <label><input type="radio" name="typeOfKeyRadio" value="pasteprivkey">Paste / type your private key.</label>
+            <label><input type="radio" name="typeOfKeyRadio" value="pasteprivkey">Paste / type your private key (Encrypted/Unencrypted).</label>
           </div>
         </div>
         <div class="col-md-4 col-sm-6">
@@ -197,8 +197,15 @@
       <hr />
         <div class="col-sm-4">
           <h4> Account Information </h4>
-          <p class="col-xs-12"> Account Address: <strong id="accountAddress"></strong></p>
-          <p class="col-xs-12">  Account Balance: <strong class="text-success" id="accountBalance"> 0 wei</strong></p>
+          <div class="clearfix col-xs-12">
+            <p> Account Address: <strong id="accountAddress"></strong></p>
+            <p> Account Balance: <strong class="text-success" id="accountBalance"> 0 wei</strong></p>
+          </div>
+          <div class="well clearfix" style="margin-top: 100px">
+            <p> Don't have anyone to send a transaction to? You can always donate to us! Donations mean we spend more time creating new features, listening to your feedback, and giving you what you want.</p>
+            <a class="btn btn-primary btn-block" id="btndonate">DONATE</a>
+            <div class="text-success text-center marg-v-sm"><strong id="donateThanks" style="display: none;"> THANK YOU!!! </strong></div>
+          </div>
          </div>
          <div class="col-sm-8">
           <h4>Send Transaction</h4>
@@ -306,11 +313,11 @@
   </div> <!-- /tab panes -->
 </section>
 
-<footer class="container-fluid bg-navy text-white">
+<footer class="container-fluid">
   <div class="container">
     <h2>EtherWallet</h2>
     <p>An open source, javascript, client-side tool for generating Ether wallets and to send transactions. It was created because many users were having immense trouble setting up the ethereum client on their computers. We hope that it'll help most of us to accomplish day to day tasks without having a fully running client. <p>Created by <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> and <a href="https://github.com/tayvano" target="_blank">tayvano</a>.</p>
-
+    <p> Donations greatly appreciated. Address: 0x7cb57b5a97eabe94205c07890be4c1ad31e486a8 </p>
     <h4><a href="https://github.com/kvhnuke/etherwallet" target="_blank">view on github</a></h4>
   </div>
 </footer>
