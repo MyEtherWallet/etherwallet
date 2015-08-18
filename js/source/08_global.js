@@ -2,37 +2,38 @@ var PrivKey = "";
 var decryptType = "";
 $(document).ready(function() {
 	bindElements();
+    checkAndLoadPageHash();
 });
-
+function checkAndLoadPageHash(){
+    if(window.location.hash) {
+        var phash = window.location.hash.substr(1);
+        $( ".ptabs" ).each(function( index ) {
+            if($(this).attr('id')==phash){
+                $(this).click();
+                setTimeout(function(){
+                    $('html,body').scrollTop(0);
+                },50);
+                return;
+            }
+        });
+    }
+}
+function paneNavigate(showEleId, activeEleId){
+    hideAllMainContainers();
+    $("#"+showEleId).show();
+    $("#"+activeEleId).parent().addClass('active');
+    location.hash = activeEleId;
+    $('html,body').scrollTop(0);
+}
 function bindElements() {
-	$("#tabWalgen").click(function() {
-		hideAllMainContainers();
-		$("#paneWalgen").show();
-		$("#tabWalgen").parent().addClass('active');
-	});
+    $( ".ptabs" ).each(function( index ) {
+        $(this).click(function(){
+            paneNavigate($(this).attr('showId'), this.id);
+        });
+    });
     $("#privkeyenc,#address,#privkey").click(function() {
         this.focus();
 		this.select();
-	});
-	$("#tabBulkgen").click(function() {
-		hideAllMainContainers();
-		$("#paneBulkgen").show();
-		$("#tabBulkgen").parent().addClass('active');
-	});
-	$("#tabSendTrans").click(function() {
-		hideAllMainContainers();
-		$("#paneSendTrans").show();
-		$("#tabSendTrans").parent().addClass('active');
-	});
-	$("#tabHelp").click(function() {
-		hideAllMainContainers();
-		$("#paneHelp").show();
-		$("#tabHelp").parent().addClass('active');
-	});
-	$("#tabPrint").click(function() {
-		hideAllMainContainers();
-		$("#panePrint").show();
-		$("#tabPrint").parent().addClass('active');
 	});
     $("#btndonate").click(function() {
 		$("#sendtxaddress").val('0x7cb57b5a97eabe94205c07890be4c1ad31e486a8');
@@ -227,7 +228,10 @@ function decryptFormData() {
 				PrivKey = getWalletFilePrivKey(fr.result, $('#walletfilepassword').val());
 				$("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
 				getBalance($("#accountAddress").html(), function(result) {
-					if (!result.error) $("#accountBalance").html(result.data.balance + " wei");
+					if (!result.error){ 
+					   var bestCurAmount = getBestEtherKnownUnit(result.data.balance);  
+					   $("#accountBalance").html(bestCurAmount.amount + " "+bestCurAmount.unit);
+                    }
 					else
 					alert(result.msg);
 				});
@@ -244,7 +248,10 @@ function decryptFormData() {
 			PrivKey = decryptTxtPrivKey($('#manualprivkey').val(), $("#privkeypassword").val());
 			$("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
 			getBalance($("#accountAddress").html(), function(result) {
-				if (!result.error) $("#accountBalance").html(result.data.balance + " wei");
+				if (!result.error){ 
+				    var bestCurAmount = getBestEtherKnownUnit(result.data.balance);  
+	               $("#accountBalance").html(bestCurAmount.amount + " "+bestCurAmount.unit);
+                }
 				else
 				alert(result.msg);
 			});

@@ -25,10 +25,10 @@
 <section class="container" style="min-height: 70%">
   <!-- navtabs -->
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#" id="tabWalgen">    Generate Wallet  </a></li>
-    <li>               <a href="#" id="tabBulkgen">   Bulk Generate    </a></li>
-    <li>               <a href="#" id="tabSendTrans"> Send Transaction </a></li>
-    <li>               <a href="#" id="tabHelp">      Help             </a></li>
+    <li class="active"><a id="tabWalgen" class="ptabs" showId="paneWalgen">    Generate Wallet  </a></li>
+    <li>               <a id="tabBulkgen" class="ptabs" showId="paneBulkgen">   Bulk Generate    </a></li>
+    <li>               <a id="tabSendTrans" class="ptabs" showId="paneSendTrans"> Send Transaction </a></li>
+    <li>               <a id="tabHelp" class="ptabs" showId="paneHelp">      Help             </a></li>
   </ul>
   <!-- /navtabs -->
   <br />
@@ -46,7 +46,7 @@
         <div class="col-sm-6">
           <div class="form-group">
             <h4 style="margin-bottom: 27px;">Give me my wallet:</h4>
-            <a class="btn btn-primary btn-block" href="#" id="generatewallet">GENERATE</a>
+            <a class="btn btn-primary btn-block" id="generatewallet">GENERATE</a>
           </div>
         </div>
       </div>
@@ -80,15 +80,15 @@
         <div class="col-sm-6">
           <div class="form-group">
             <h4> Print Paper Wallet: </h4>
-            <a class="btn btn-info btn-block" href="#" id="printqr">PRINT</a>
+            <a class="btn btn-info btn-block" id="printqr">PRINT</a>
           </div>
           <div class="form-group">
             <h4>Download JSON file (encrypted): <br /> <small> You will need to use the password you used to generate your wallet to unencrypt this file. </small></h4>
-            <a class="btn btn-info btn-block" href="#" id="encdownload"> DOWNLOAD </a>
+            <a class="btn btn-info btn-block" id="encdownload"> DOWNLOAD </a>
           </div>
           <div class="form-group">
             <h4>Download JSON file (unencrypted):</h4>
-            <a class="btn btn-info btn-block" href="#" id="unencdownload">DOWNLOAD</a>
+            <a class="btn btn-info btn-block" id="unencdownload">DOWNLOAD</a>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@
         </div>
         <div class="col-md-4 col-sm-12 form-group">
             <h4>3. Give me my wallets:</h4><br class="hidden-sm hidden-xs"/>
-            <a class="btn btn-primary btn-block" href="#" id="bulkgenerate">GENERATE</a>
+            <a class="btn btn-primary btn-block" id="bulkgenerate">GENERATE</a>
         </div>
       </div>
       <div id="generatedbulkwallets" style="display: none;">
@@ -127,15 +127,15 @@
           <div class="col-sm-4">
             <div class="form-group">
               <h4>Download JSON file</h4>
-              <a class="btn btn-info btn-block" href="#" id="bulkexportjson">DOWNLOAD</a>
+              <a class="btn btn-info btn-block" id="bulkexportjson">DOWNLOAD</a>
             </div>
             <div class="form-group">
               <h4>Download CSV file</h4>
-              <a class="btn btn-info btn-block" href="#" id="bulkexportcsv">DOWNLOAD</a>
+              <a class="btn btn-info btn-block" id="bulkexportcsv">DOWNLOAD</a>
             </div>
             <div class="form-group">
               <h4>Download TXT file</h4>
-              <a class="btn btn-info btn-block" href="#" id="bulkexporttxt">DOWNLOAD</a>
+              <a class="btn btn-info btn-block" id="bulkexporttxt">DOWNLOAD</a>
             </div>
           </div>
         </div>
@@ -188,7 +188,7 @@
           <h4 id="uploadbtntxt-wallet" style="display: none;"> Decrypt your wallet</h4>
           <h4 id="uploadbtntxt-privkey" style="display: none;"> Decrypt your private key </h4>
           <div class="form-group">
-            <a class="btn btn-primary btn-block" href="#" id="decryptdata">DECRYPT</a>
+            <a class="btn btn-primary btn-block" id="decryptdata">DECRYPT</a>
           </div>
           <div id="decryptStatus"></div>
         </div>
@@ -211,7 +211,7 @@
           <h4>Send Transaction</h4>
             <div class="form-group col-xs-12">
               <label> To Address: </label>
-              <input class="form-control" type="text" placeholder="0xd6bb39da0858e6aeddcaa12a509327b2d05f5bac" id="sendtxaddress">
+              <input class="form-control" type="text" placeholder="0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" id="sendtxaddress">
               <div id="addressvalidate"></div>
             </div>
             <div class="form-group col-xs-12">
@@ -349,7 +349,7 @@
         <li> Check the URL -- <a href="http://kvhnuke.github.io/etherwallet/" target="_blank">http://kvhnuke.github.io/etherwallet/</a>. This site is being served through github and you can see the source code here: <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a></li>
         <li> You can download the <a href="https://github.com/kvhnuke/etherwallet">source code</a> by using the "DOWNLOAD ZIP" button in the aforementioned link. Then, disconnect your computer from the internet and / or move that code via flash drive to an airgapped computer. Or whatever you want to do. Unzip the file, doubleclick on "index.html", and you have the exact same thing happening on your airgapped computer (or whatever). You can now generate wallets on that computer without fear that we are stealing you heart and soul and first-born child.</li>
         <li> Do a test run and check and see what network activity is happening. The easiest way for you (yes, YOU!) to do this (if you are using Chrome) is to right click on the page and click "inspect element". Now, go to the "Network" tab. Now, generate a wallet. Any wallet, any password. This is a test, remember. You will see there is NO network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.</li>
-        <li> Now, to be safe, move over to the "Resources" tab. Here you can see all the different elements that make up a website. That includes things like the HTML (the base of what you see on the page), images (pretty pictures! Usually in .jpg, .gif, or .png format), the CSS (the stuff that makes the HTML look so pretty), the JS (the stuff that makes the HTML do other stuff, like making QR codes show up when you press Generate), Local Storage (one way of storing things on your local machine), Cookes (yum! Another way for sites to store data on your machine), and caches (yet another way to store stuff on your machine, ususally to make things go faster). If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.</li>
+        <li> Now, to be safe, move over to the "Resources" tab. Here you can see all the different elements that make up a website. That includes things like the HTML (the base of what you see on the page), images (pretty pictures! Usually in .jpg, .gif, or .png format), the CSS (the stuff that makes the HTML look so pretty), the JS (the stuff that makes the HTML do other stuff, like making QR codes show up when you press Generate), Local Storage (one way of storing things on your local machine), Cookies (yum! Another way for sites to store data on your machine), and caches (yet another way to store stuff on your machine, ususally to make things go faster). If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.</li>
       </ul>
 
 
