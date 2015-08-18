@@ -308,6 +308,68 @@
     <!-- help -->
     <div class="tab-pane" id="paneHelp" style="display: none;">
       We obviously need help with the help page. Can you help us?
+
+      <h3> How to Get Your Money From PreSale (or other wallet) -> A New Wallet </h3>
+      <h4> Create a new wallet </h4>
+        <ol>
+          <li>Choose a password (see below for an explanation of this password) to create a new wallet / private key.</li>
+          <li>Save the address.</li>
+          <li>Download and save the private key and back it up. Do not show it to anyone else. Your private key is not needed to receive ether, only to withdraw.</li>
+          <li>Save your public key. You can keep it to yourself or share it with others. That way, others can transfer ether to you. They can't take your money with the public key.</li>
+          <li>Be sure to save the private key. Use our print functionality. Save it! It is required the day you want to withdraw ether. <strong>Forget it, and the ether on the address are lost forever.</strong></li>
+        </ol>
+
+      <h4> Transfer ether from one account to another </h4>
+        <ol>
+          <li>If you just created a new account, you might want to send ether from your presale wallet to this wallet.</li>
+          <li>If you plan to move a large amount of ether, you should test sending something (a small amount) from your address first, to make sure you have full control over it. <strong>First, transfer a small amount to your address. After a minute, it should show up in a blockchain explorer</strong>, e.g. <a href="https://www.etherchain.org">https://www.etherchain.org</a></li>
+          <li>Then, navigate to the "Send Tranaction" tab, and paste / upload your private key from the pre-sale wallet or the wallet you want to transfer from.</li>
+          <li> If it is the encrypted, enter the password.</li>
+          <li> Click the "DECRYPT" button and wait a couple seconds.</li>
+          <li> You will now see your account information. It'll show your address, your balance, and have a space for the <em>Receving Address</em> and the <em>Amount you want to send</em>.</li>
+          <li> Remember, if this is a brand new wallet you are transfering to, let's test with a little bit before we go all <a href="https://youtu.be/X1UFtR8KUT8?t=330" target="_blank">FREEEEEDOOOOMMMM!!!</a></li>
+          <li> Otherwise, if you are certain, go for it. Enter the to address and the amount and click "GENERATE TRANSACTION"</li>
+          <li> Success! </li>
+        </ol>
+
+      <h4> So what is that password thing all about? </h4>
+        <p>The password that you entered at the very beginning to create a new wallet / account is used to encrypt your private key. This enables you to have a safer version of your private key file.</p>
+        <p> Basically, all it means is when you upload your private key file, you will also need to enter the password that you chose when you created your private key in order to decrypt it.</p>
+
+      <h3> Security </h3>
+      <p> One of your first questions is, "Why should I trust these people?" You are probably worried that this site isn't secure. That is a good thing. When dealing with currancy and the internet, you should be paranoid. But, let's be a bit reasonable.</p>
+
+      <p> At this point, we have no had our code audited. Someone, PLEASE AUDIT US. Reach out to us on reddit or github or wherever. Contact info is below.</p>
+
+      <p> Until someone / a group of people take the time to go through the code, here are some things to alleviate any paranoia you have:</p>
+      <ul>
+        <li>We aren't going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" and "BULK GENERATE" tabs are completely client-side. That means that all the code is executed on <em> your computer </em> and it is never sent to the servers or to us or anywhere else in the magical internet land.</li>
+        <li> Check the URL -- <a href="http://kvhnuke.github.io/etherwallet/" target="_blank">http://kvhnuke.github.io/etherwallet/</a>. This site is being served through github and you can see the source code here: <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a></li>
+        <li> You can download the <a href="https://github.com/kvhnuke/etherwallet">source code</a> by using the "DOWNLOAD ZIP" button in the aforementioned link. Then, disconnect your computer from the internet and / or move that code via flash drive to an airgapped computer. Or whatever you want to do. Unzip the file, doubleclick on "index.html", and you have the exact same thing happening on your airgapped computer (or whatever). You can now generate wallets on that computer without fear that we are stealing you heart and soul and first-born child.</li>
+        <li> Do a test run and check and see what network activity is happening. The easiest way for you (yes, YOU!) to do this (if you are using Chrome) is to right click on the page and click "inspect element". Now, go to the "Network" tab. Now, generate a wallet. Any wallet, any password. This is a test, remember. You will see there is NO network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.</li>
+        <li> Now, to be safe, move over to the "Resources" tab. Here you can see all the different elements that make up a website. That includes things like the HTML (the base of what you see on the page), images (pretty pictures! Usually in .jpg, .gif, or .png format), the CSS (the stuff that makes the HTML look so pretty), the JS (the stuff that makes the HTML do other stuff, like making QR codes show up when you press Generate), Local Storage (one way of storing things on your local machine), Cookes (yum! Another way for sites to store data on your machine), and caches (yet another way to store stuff on your machine, ususally to make things go faster). If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.</li>
+      </ul>
+
+
+
+      <h3> Helpful Links </h3>
+      <ul>
+        <li><a href="http://ethereum.gitbooks.io/frontier-guide/content/">Frontier Guide</a></li>
+        <li><a href="https://github.com/davidshimjs/qrcodejs">QR code library</a></li>
+        <li><a href="https://github.com/SilentCicero/ethereumjs-accounts">Ethereum Accounts library</a></li>
+        <li><a href="https://code.google.com/p/crypto-js/">CryptoJS library</a></li>
+      </ul>
+
+       <h3> Ways to Get in Touch </h3>
+      <ul>
+        <li><a href="mailto:kvhnuke@aol.com" target="_blank"> Email kvhnuke </a></li>
+        <li><a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank"> Message kvhnuke on Reddit </a></li>
+        <li><a href="mailto:tayvano@gmail.com" target="_blank"> Email tayvano </a></li>
+        <li><a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank"> Message tayvano on Reddit </a></li>
+        <li><a href="https://hubski.com/user?id=insomniasexx" target="_blank"> Message tayvano on Hubski </a></li>
+        <li><a href="https://github.com/kvhnuke/etherwallet/issues" target="_blank"> Open a GitHub Issue</a></li>
+      </ul>
+
     </div> <!-- /help -->
 
   </div> <!-- /tab panes -->
