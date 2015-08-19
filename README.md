@@ -1,20 +1,26 @@
 # etherwallet
 
+## Official link: https://www.myetherwallet.com - now with SSL! Content of myetherwallet.com is hosted in github, which will gurantee the validity of the source code.
+
+### About EtherWallet
+
 EtherWallet is an open source, javascript, client-side tool for generating Ether wallets. It was created by [kvhnuke](https://github.com/kvhnuke) and [tayvano](https://github.com/tayvano) aka [supergeniustay](http://www.supergeniustay.com).
 
-- http://kvhnuke.github.io/etherwallet/
-- [original reddit thread](https://www.reddit.com/r/ethereum/comments/3gkknd/ether_wallet_generator_for_now/)
 
+- Official link: https://www.myetherwallet.com - now with SSL! Content of myetherwallet.com is hosted in github, which will gurantee the validity of the source code.
+- Original, non-SSL link: http://kvhnuke.github.io/etherwallet/
+- [original reddit thread](https://www.reddit.com/r/ethereum/comments/3gkknd/ether_wallet_generator_for_now/)
 
 It was created because many users were having immense trouble setting up the ethereum client on their computers. Therefore, we am planning to implement following features to the browser-based wallet.
 - Bulk generate wallets
-- import client wallet files and presale wallet files.
-- generate transactions from the imported wallet files
-- send transactions
+- Import client wallet files and presale wallet files.
+- Generate transactions from the imported wallet files
+- Send transactions
 
 We hope that it'll help most of us to accomplish day to day tasks without having a fully running client.
 
 If you can think of any other features or run into bugs, let us know. You can fork, open a PR, open an issue, [message kvhnuke on reddit](https://www.reddit.com/message/compose/?to=kvhnuke), [email tayvano](mailto:tayvano@gmail.com) or however else you can track us down.
+
 
 ### Developing
 Want to contribute? Great! Have questions? Ask us! Have issues? Open an issue!
@@ -87,11 +93,7 @@ This project loads JQuery 1.11.3 and then a minified JS file that is composed of
 ### ToDo
 - Maybe clean up that Gulp file. It's becoming unwieldy.
 - QA and bugfixes for every browser except Chrome.
-- Test the import functionality of client wallet files and presale wallet files.  
-- Test generate transactions from the imported wallet files. 
+- Test the import functionality of client wallet files and presale wallet files.
+- Test generate transactions from the imported wallet files.
 - Test send transactions.
 - Compile and submit solity contracts.
-- Make help page. This should cover everything a basic user who bought ether presale would need to know to get that ether to another place. It should assume they know essentially nothing and are not familiar with command line. It should also cover safety and best practices and provide helpful links.
-
-Official link [MyEtherWallet](https://www.myetherwallet.com)
-Content of this site is hosted in github which will gurantee the validity of the source code
