@@ -2,55 +2,55 @@ var PrivKey = "";
 var decryptType = "";
 $(document).ready(function() {
 	bindElements();
-    checkAndLoadPageHash();
-    checkAndRedirectHTTPS();
+	checkAndLoadPageHash();
+	checkAndRedirectHTTPS();
 });
-function checkAndRedirectHTTPS(){
-    var host = "myetherwallet.com";
-    var githost = "kvhnuke.github.io";
-    var githostw = "www.kvhnuke.github.io";
-    var hostw = "www.myetherwallet.com";
-    if ((host == window.location.host||
-        githost == window.location.host||
-        hostw == window.location.host||
-        githostw == window.location.host) && (window.location.protocol != "https:"))
-        window.location.protocol = "https";
+
+function checkAndRedirectHTTPS() {
+	var host = "myetherwallet.com";
+	var githost = "kvhnuke.github.io";
+	var githostw = "www.kvhnuke.github.io";
+	var hostw = "www.myetherwallet.com";
+	if ((host == window.location.host || githost == window.location.host || hostw == window.location.host || githostw == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
 }
-function checkAndLoadPageHash(){
-    if(window.location.hash) {
-        var phash = window.location.hash.substr(1);
-        $( ".ptabs" ).each(function( index ) {
-            if($(this).attr('id')==phash){
-                $(this).click();
-                setTimeout(function(){
-                    $('html,body').scrollTop(0);
-                },50);
-                return;
-            }
-        });
-    }
+
+function checkAndLoadPageHash() {
+	if (window.location.hash) {
+		var phash = window.location.hash.substr(1);
+		$(".ptabs").each(function(index) {
+			if ($(this).attr('id') == phash) {
+				$(this).click();
+				setTimeout(function() {
+					$('html,body').scrollTop(0);
+				}, 50);
+				return;
+			}
+		});
+	}
 }
-function paneNavigate(showEleId, activeEleId){
-    hideAllMainContainers();
-    $("#"+showEleId).show();
-    $("#"+activeEleId).parent().addClass('active');
-    location.hash = activeEleId;
-    $('html,body').scrollTop(0);
+
+function paneNavigate(showEleId, activeEleId) {
+	hideAllMainContainers();
+	$("#" + showEleId).show();
+	$("#" + activeEleId).parent().addClass('active');
+	location.hash = activeEleId;
+	$('html,body').scrollTop(0);
 }
+
 function bindElements() {
-    $( ".ptabs" ).each(function( index ) {
-        $(this).click(function(){
-            paneNavigate($(this).attr('showId'), this.id);
-        });
-    });
-    $("#privkeyenc,#address,#privkey").click(function() {
-        this.focus();
+	$(".ptabs").each(function(index) {
+		$(this).click(function() {
+			paneNavigate($(this).attr('showId'), this.id);
+		});
+	});
+	$("#privkeyenc,#address,#privkey").click(function() {
+		this.focus();
 		this.select();
 	});
-    $("#btndonate").click(function() {
+	$("#btndonate").click(function() {
 		$("#sendtxaddress").val('0x7cb57b5a97eabe94205c07890be4c1ad31e486a8');
-        $("#donateThanks").show();
-        $("#sendtxaddress").trigger("keyup");
+		$("#donateThanks").show();
+		$("#sendtxaddress").trigger("keyup");
 	});
 	$("#generatewallet").click(function() {
 		generateSingleWallet();
@@ -230,6 +230,16 @@ function preCreateTransaction() {
 	}
 }
 
+function setWalletBalance() {
+	getBalance($("#accountAddress").html(), function(result) {
+		if (!result.error) {
+			var bestCurAmount = getBestEtherKnownUnit(result.data.balance);
+			$("#accountBalance").html(bestCurAmount.amount + " " + bestCurAmount.unit);
+		} else
+		alert(result.msg);
+	});
+}
+
 function decryptFormData() {
 	PrivKey = "";
 	if (decryptType == 'fupload') {
@@ -239,14 +249,7 @@ function decryptFormData() {
 			try {
 				PrivKey = getWalletFilePrivKey(fr.result, $('#walletfilepassword').val());
 				$("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
-				getBalance($("#accountAddress").html(), function(result) {
-					if (!result.error){ 
-					   var bestCurAmount = getBestEtherKnownUnit(result.data.balance);  
-					   $("#accountBalance").html(bestCurAmount.amount + " "+bestCurAmount.unit);
-                    }
-					else
-					alert(result.msg);
-				});
+				setWalletBalance();
 				$("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000);
 				$("#wallettransactions").show();
 			} catch (err) {
@@ -259,14 +262,7 @@ function decryptFormData() {
 		try {
 			PrivKey = decryptTxtPrivKey($('#manualprivkey').val(), $("#privkeypassword").val());
 			$("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
-			getBalance($("#accountAddress").html(), function(result) {
-				if (!result.error){ 
-				    var bestCurAmount = getBestEtherKnownUnit(result.data.balance);  
-	               $("#accountBalance").html(bestCurAmount.amount + " "+bestCurAmount.unit);
-                }
-				else
-				alert(result.msg);
-			});
+			setWalletBalance();
 			$("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000);
 			$("#wallettransactions").show();
 		} catch (err) {
@@ -398,16 +394,13 @@ function printQRcode() {
 	var address = $("#address").val();
 	var qrsourceprivkey = $("#qrcode").html();
 	var qrsourceadd = $("#qrcodeAdd").html();
-    $("#paperwalletprivqr").html(qrsourceprivkey);
-    $("#paperwalletpriv").html($("#privkey").val());
-    $("#paperwalletaddqr").html(qrsourceadd);
-    $("#paperwalletadd").html(address);
-	var html = $("#panePrint").html()+"<script>setTimeout(function(){window.print();},2000);</script>";// "<h4>Address (" + address + ")</h4><br/>" + qrsourceadd + "<h4>Private Key</h4></br>" + qrsourceprivkey;
+	$("#paperwalletprivqr").html(qrsourceprivkey);
+	$("#paperwalletpriv").html($("#privkey").val());
+	$("#paperwalletaddqr").html(qrsourceadd);
+	$("#paperwalletadd").html(address);
+	var html = $("#panePrint").html() + "<script>setTimeout(function(){window.print();},2000);</script>"; // "<h4>Address (" + address + ")</h4><br/>" + qrsourceadd + "<h4>Private Key</h4></br>" + qrsourceprivkey;
 	var win = window.open("about:blank", "_blank");
 	win.document.write(html);
-   // window.popup.onload=function(){win.focus();	win.print();};
-	//win.focus();
-	//win.print();
 }
 HTMLElement.prototype.click = function() {
 	var evt = this.ownerDocument.createEvent('MouseEvents');

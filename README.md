@@ -93,3 +93,5 @@ This project loads JQuery 1.11.3 and then a minified JS file that is composed of
 - Compile and submit solity contracts.
 - Make help page. This should cover everything a basic user who bought ether presale would need to know to get that ether to another place. It should assume they know essentially nothing and are not familiar with command line. It should also cover safety and best practices and provide helpful links.
 
+Official link [MyEtherWallet](https://www.myetherwallet.com)
+Content of this site is hosted in github which will gurantee the validity of the source code
