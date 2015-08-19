@@ -3,7 +3,19 @@ var decryptType = "";
 $(document).ready(function() {
 	bindElements();
     checkAndLoadPageHash();
+    checkAndRedirectHTTPS();
 });
+function checkAndRedirectHTTPS(){
+    var host = "myetherwallet.com";
+    var githost = "kvhnuke.github.io";
+    var githostw = "www.kvhnuke.github.io";
+    var hostw = "www.myetherwallet.com";
+    if ((host == window.location.host||
+        githost == window.location.host||
+        hostw == window.location.host||
+        githostw == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+}
 function checkAndLoadPageHash(){
     if(window.location.hash) {
         var phash = window.location.hash.substr(1);
