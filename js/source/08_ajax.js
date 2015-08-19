@@ -1,4 +1,4 @@
-var SERVERURL = "http://74.207.253.190/github/etherwallet/php_json_relay/api.php";
+var SERVERURL = "https://rpc.myetherwallet.com/api.php";
 function getBalance(addr, callback){
     $.post( SERVERURL, { balance: addr }).done(callback);
 }

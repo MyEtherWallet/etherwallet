@@ -270,11 +270,10 @@ function hideAllMainContainers() {
 	$("#paneSendTrans").hide();
 	$("#paneHelp").hide();
 	$("#panePrint").hide();
-	$("#tabBulkgen").parent().removeClass('active');
-	$("#tabWalgen").parent().removeClass('active');
-	$("#tabSendTrans").parent().removeClass('active');
-	$("#tabPrint").parent().removeClass('active');
-	$("#tabHelp").parent().removeClass('active');
+	$("#bulk-generate").parent().removeClass('active');
+	$("#generate-wallet").parent().removeClass('active');
+	$("#send-transaction").parent().removeClass('active');
+	$("#help").parent().removeClass('active');
 }
 
 function generateSingleWallet() {
