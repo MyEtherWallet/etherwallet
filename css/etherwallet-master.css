@@ -1413,6 +1413,9 @@ ul ol,
 ol ol {
   margin-bottom: 0;
 }
+li {
+  margin-bottom: .5em;
+}
 .list-unstyled {
   padding-left: 0;
   list-style: none;
