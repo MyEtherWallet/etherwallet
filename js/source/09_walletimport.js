@@ -49,6 +49,14 @@ function decryptTxtPrivKey(strkey, password){
     if(strkey.length==128){
         var privatebytes = CryptoJS.AES.decrypt(strkey, password);
         var privkey = hex2str(cryptoJSToHex(privatebytes));
+    } else if(strkey.length==132){
+        var privatebytes = CryptoJS.AES.decrypt(strkey.substr(0,128), password);
+        var privkey = hex2str(cryptoJSToHex(privatebytes));
+        var addressHash = strkey.substr(strkey.length-4);
+        var address = formatAddress(strPrivateKeyToAddress(privkey), 'hex');
+        var generatedHash = cryptoJSToHex(CryptoJS.SHA3(address));
+        if(generatedHash.substr(generatedHash.length-4)!=addressHash)
+            throw "Invalid Password";
     } else if(strkey.length==64){
         var privkey = strkey;
     } else {
@@ -61,7 +69,10 @@ function decryptEthWalletJson(ethjson, password){
     if(ethjson.locked&&ethjson.private.length==128){
         var privatebytes = CryptoJS.AES.decrypt(ethjson.private, password);
         var privkey = hex2str(cryptoJSToHex(privatebytes));
-    } else if(!ethjson.locked&&ethjson.private.length==64){
+    }else if (ethjson.locked&&ethjson.private.length==132){
+        var privatebytes = CryptoJS.AES.decrypt(ethjson.private.substr(0,128), password);
+        var privkey = hex2str(cryptoJSToHex(privatebytes));
+    }else if(!ethjson.locked&&ethjson.private.length==64){
         var privkey = ethjson.private;
     } else {
         throw "Error while decrypting your wallet";

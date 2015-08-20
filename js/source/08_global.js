@@ -137,7 +137,7 @@ function bindElements() {
 	});
 	$('#manualprivkey').on('paste, keyup', function() {
 		$("#divprikeypassword").hide();
-		if ($('#manualprivkey').val().length == 128) {
+		if ($('#manualprivkey').val().length == 128 || $('#manualprivkey').val().length == 132) {
 			$("#divprikeypassword").show();
 		} else if ($('#manualprivkey').val().length == 64) {
 			$("#uploadbtntxt-wallet").hide();
@@ -298,8 +298,11 @@ function generateSingleWallet() {
 	var acc = new Accounts();
 	var newAccountEnc = acc.new(password);
 	$("#address").val(newAccountEnc.address);
+	var addressHash = cryptoJSToHex(CryptoJS.SHA3(newAccountEnc.address));
+	addressHash = addressHash.substr(addressHash.length - 4);
 	var newAccountUnEnc = acc.get(newAccountEnc.address, password);
 	$("#privkey").val(newAccountUnEnc.private);
+	newAccountEnc.private = newAccountEnc.private + addressHash;
 	$("#privkeyenc").val(newAccountEnc.private);
 	$("#qrcodeAdd").empty();
 	new QRCode($("#qrcodeAdd")[0], {
@@ -360,8 +363,12 @@ function generateBulkWallets() {
 	var jsonarr = [];
 	var txt = "";
 	for (var i = 0; i < count; i++) {
-		if (isencrypted) var newAccount = acc.new(password);
-		else
+		if (isencrypted) {
+			var newAccount = acc.new(password);
+			var addressHash = cryptoJSToHex(CryptoJS.SHA3(newAccount.address));
+			addressHash = addressHash.substr(addressHash.length - 4);
+			newAccount.private = newAccount.private + addressHash;
+		} else
 		var newAccount = acc.new();
 		$('#bulkgentable tr:last').after('<tr class="privaddkey"><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.address + '</textarea></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.private + '</textarea></td></tr>');
 		csv += newAccount.address + ',' + newAccount.private + '\n';
