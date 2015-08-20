@@ -1,3 +1,4 @@
+var fs = require('fs');
 // less
 var gulp = require('gulp');
 var less = require('gulp-less');
@@ -6,6 +7,7 @@ var minifyCSS = require('gulp-minify-css');
 var notify = require('gulp-notify');
 var rename = require('gulp-rename');
 var uncss = require('gulp-uncss');
+var template = require('gulp-template');
 
 // js
 var gulpConcat = require('gulp-concat');
@@ -26,6 +28,10 @@ var lessOutputFileMin = 'etherwallet-master.min.css';
 var jsFiles = "./js/source/*.js";
 var jsOutputFolder = './js';
 var jsOutputFile = 'etherwallet-master.min.js';
+
+//html Pages
+var htmlPages = "./pages/*.html";
+var tplFiles = "./tpl/*.tpl";
 
 gulp.task('less', function (cb) {
   return gulp
@@ -65,6 +71,15 @@ gulp.task('minJS', function () {
     .pipe(notify('JS Concat and Uglified'));
 });
 
+gulp.task('genHTMLPages', function () {
+    var header=fs.readFileSync("./tpl/header.tpl", "utf8");
+    var footer=fs.readFileSync("./tpl/footer.tpl", "utf8");
+    return gulp.src(htmlPages)
+        .pipe(template({header: header, footer: footer}))
+        .pipe(gulp.dest('./'))
+        .pipe(notify('HTML Pages generated'));
+});
+
 gulp.task('watchJS', function() {
     gulp.watch(jsWatchFolder, ['minJS']);
 });
@@ -74,5 +89,11 @@ gulp.task('watchLess', function() {
 gulp.task('watchHTML', function() {
     gulp.watch(htmlWatchFolder, ['less-uncss']);
 });
+gulp.task('watchPAGES', function() {
+    gulp.watch(htmlPages, ['genHTMLPages','less-uncss']);
+});
+gulp.task('watchTPL', function() {
+    gulp.watch(tplFiles, ['genHTMLPages','less-uncss']);
+});
 
-gulp.task('default', ['minJS' , 'less', 'less-uncss', 'watchJS' , 'watchLess', 'watchHTML' ]);
+gulp.task('default', ['genHTMLPages','minJS' , 'less', 'less-uncss', 'watchJS' , 'watchLess', 'watchHTML', 'watchPAGES', 'watchTPL']);
