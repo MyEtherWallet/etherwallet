@@ -159,7 +159,7 @@ function bindElements() {
 	});
 	$('.btn-file :file').on('fileselect', function(event, numFiles, label) {
 		$('#fuploadStatus').empty();
-		$('#walletfilepassword').val('')
+		$('#walletfilepassword').val('');
 		PrivKey = "";
 		file = $('.btn-file :file')[0].files[0];
 		var fr = new FileReader();

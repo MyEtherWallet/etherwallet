@@ -26,8 +26,10 @@ var lessOutputFileMin = 'etherwallet-master.min.css';
 
 //js vars
 var jsFiles = "./js/source/*.js";
+var staticjsFiles = "./js/source/staticJS/*.js";
 var jsOutputFolder = './js';
 var jsOutputFile = 'etherwallet-master.min.js';
+var staticjsOutputFile = 'etherwallet-static.min.js';
 
 //html Pages
 var htmlPages = "./pages/*.html";
@@ -68,7 +70,16 @@ gulp.task('minJS', function () {
       .pipe(gulpConcat(jsOutputFile))
       .pipe(uglify())
       .pipe(gulp.dest(jsOutputFolder))
-    .pipe(notify('JS Concat and Uglified'));
+     .pipe(notify('JS Concat and Uglified'));
+});
+
+gulp.task('staticJS', function () {
+  return gulp
+    .src(staticjsFiles)
+      .pipe(gulpConcat(staticjsOutputFile))
+      .pipe(uglify())
+      .pipe(gulp.dest(jsOutputFolder))
+     .pipe(notify('staic JS Concat and Uglified'));
 });
 
 gulp.task('genHTMLPages', function () {
@@ -81,7 +92,7 @@ gulp.task('genHTMLPages', function () {
 });
 
 gulp.task('watchJS', function() {
-    gulp.watch(jsWatchFolder, ['minJS']);
+    gulp.watch(jsWatchFolder,['minJS']);
 });
 gulp.task('watchLess', function() {
     gulp.watch(lessWatchFolder, ['less' , 'less-uncss']);
@@ -96,4 +107,4 @@ gulp.task('watchTPL', function() {
     gulp.watch(tplFiles, ['genHTMLPages','less-uncss']);
 });
 
-gulp.task('default', ['genHTMLPages','minJS' , 'less', 'less-uncss', 'watchJS' , 'watchLess', 'watchHTML', 'watchPAGES', 'watchTPL']);
+gulp.task('default', ['genHTMLPages', 'staticJS', 'minJS' , 'less', 'less-uncss', 'watchJS' , 'watchLess', 'watchHTML', 'watchPAGES', 'watchTPL']);

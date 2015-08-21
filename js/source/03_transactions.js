@@ -84,6 +84,10 @@ function formatHexString(hex, format) {
 		return hex;
 	}
 }
+function fiatToWei(number,pricePerEther){
+    var returnValue = new BigNumber(number).div(pricePerEther).times(getValueOfUnit('ether')).round(0);
+    return returnValue.toString(10);
+}
 function toFiat(number,unit, multi){
     var returnValue = new BigNumber(toEther(number, unit)).times(multi).round(5);
     return returnValue.toString(10);
@@ -119,6 +123,7 @@ function getBestEtherKnownUnit(amountInWei) {
 	}
     return {unit:curUnit, amount: tAmount.toDigits(10).toString(10)};
 }
+
 var knownUnitMap = {
 	'wei': '1',
 	'kwei': '1000',

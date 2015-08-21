@@ -65,6 +65,7 @@ A list of packages we are using with gulp:
 - [gulp-uncss]( https://www.npmjs.com/package/gulp-uncss ) - gets rid of the bloat by eliminating any unsued CSS styles. If you add an HTML page, you will need to add it to the gulpfile.js
 - [gulp-concat]( https://www.npmjs.com/package/gulp-concat ) - concats the js
 - [gulp-uglify]( https://www.npmjs.com/package/gulp-uglify ) - uglifies the js
+- [gulp-template]( https://www.npmjs.com/package/gulp-template ) - configures templates
 
 ##### Less / CSS
 
@@ -93,7 +94,4 @@ This project loads JQuery 1.11.3 and then a minified JS file that is composed of
 ### ToDo
 - Maybe clean up that Gulp file. It's becoming unwieldy.
 - QA and bugfixes for every browser except Chrome.
-- Test the import functionality of client wallet files and presale wallet files.
-- Test generate transactions from the imported wallet files.
-- Test send transactions.
-- Compile and submit solity contracts.
+- Compile and submit solidity contracts.

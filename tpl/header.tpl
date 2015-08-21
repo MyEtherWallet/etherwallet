@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
   <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
   <script type="text/javascript" src="js/etherwallet-master.min.js"></script>
 
   <link rel="apple-touch-icon" sizes="60x60" href="fav/apple-touch-icon-60x60.png">
