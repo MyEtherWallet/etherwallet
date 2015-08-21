@@ -1,5 +1,7 @@
 var PrivKey = "";
 var decryptType = "";
+var usdval;
+var eurval;
 $(document).ready(function() {
 	bindElements();
 	checkAndLoadPageHash();
@@ -110,7 +112,7 @@ function bindElements() {
 		var amount = $('#sendtxamount').val();
 		if ($('#sendtxamount').val() != "" && $.isNumeric(amount) && amount > 0) {
 			var etherUnit = $('input[type=radio][name=currencyRadio]:checked').val();
-			$("#weiamount").html('<p class="text-success"><strong>' + toWei(amount, etherUnit) + ' wei</strong></p>');
+			$("#weiamount").html('<p class="text-success"><strong>' + toWei(amount, etherUnit) + ' wei ( approximately ' + toFiat(amount, etherUnit, usdval) + ' USD/' + toFiat(amount, etherUnit, eurval) + ' EUR )</strong></p>');
 		} else if ($('#sendtxamount').val() != "" && !$.isNumeric(amount)) {
 			$("#weiamount").html('<p class="text-danger"><strong>Invalid amount</strong></p>');
 		} else {
@@ -192,6 +194,7 @@ function bindElements() {
 function preSendTransaction() {
 	sendTransaction($("#tasignedtx").val(), function(data) {
 		$("#txsendstatus").html('<p class="text-center text-success"><strong> Transaction submitted. TX ID: ' + data + '</strong></p>');
+        setWalletBalance();
 	}, function(err) {
 		$("#txsendstatus").html('<p class="text-center text-danger"><strong>' + err + '</strong></p>');
 	});
@@ -235,11 +238,28 @@ function setWalletBalance() {
 		if (!result.error) {
 			var bestCurAmount = getBestEtherKnownUnit(result.data.balance);
 			$("#accountBalance").html(bestCurAmount.amount + " " + bestCurAmount.unit);
+			getETHvalue('USD', function(value) {
+				usdval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
+				$("#accountBalanceUsd").html(usdval + " USD");
+			});
+			getETHvalue('EUR', function(value) {
+				eurval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
+				$("#accountBalanceEur").html(eurval + " EUR");
+			});
 		} else
 		alert(result.msg);
 	});
 }
-
+function walletDecryptSuccess(){
+    $("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
+	setWalletBalance();
+	$("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000);
+	$("#wallettransactions").show();
+}
+function walletDecryptFailed(err){
+    $("#decryptStatus").html('<p class="text-center text-danger"><strong> ' + err + '</strong></p>').fadeIn(50).fadeOut(3000);
+	$("#wallettransactions").hide();
+}
 function decryptFormData() {
 	PrivKey = "";
 	if (decryptType == 'fupload') {
@@ -248,26 +268,18 @@ function decryptFormData() {
 		fr.onload = function() {
 			try {
 				PrivKey = getWalletFilePrivKey(fr.result, $('#walletfilepassword').val());
-				$("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
-				setWalletBalance();
-				$("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000);
-				$("#wallettransactions").show();
+				walletDecryptSuccess();
 			} catch (err) {
-				$("#decryptStatus").html('<p class="text-center text-danger"><strong> ' + err + '</strong></p>').fadeIn(50).fadeOut(3000);
-				$("#wallettransactions").hide();
+                walletDecryptFailed(err);
 			}
 		};
 		fr.readAsText(file);
 	} else if (decryptType == 'privkey') {
 		try {
 			PrivKey = decryptTxtPrivKey($('#manualprivkey').val(), $("#privkeypassword").val());
-			$("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
-			setWalletBalance();
-			$("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000);
-			$("#wallettransactions").show();
+			walletDecryptSuccess();
 		} catch (err) {
-			$("#decryptStatus").html('<p class="text-center text-danger"><strong> Invalid password</strong></p>').fadeIn(50).fadeOut(3000);
-			$("#wallettransactions").hide();
+            walletDecryptFailed("Invalid password");
 		}
 	}
 }

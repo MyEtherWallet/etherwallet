@@ -44,7 +44,7 @@ function getBalance($addr, $gethRPC)
     try {
         $addr = formatAddress($addr);
         $balance = getRPCResponse($gethRPC->eth_getBalance($addr,
-            "latest"));
+            "pending"));
         $balance=hexdec($balance);
         $tarr['address'] = $addr;
         $tarr['balance'] = $balance;

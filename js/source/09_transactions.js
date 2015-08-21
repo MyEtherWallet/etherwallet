@@ -84,12 +84,18 @@ function formatHexString(hex, format) {
 		return hex;
 	}
 }
-
+function toFiat(number,unit, multi){
+    var returnValue = new BigNumber(toEther(number, unit)).times(multi).round(5);
+    return returnValue.toString(10);
+}
+function toEther(number, unit){
+    var returnValue = new BigNumber(toWei(number, unit)).div(getValueOfUnit('ether'));
+    return returnValue.toString(10);
+}
 function toWei(number, unit) {
 	var returnValue = new BigNumber(number).times(getValueOfUnit(unit));
 	return returnValue.toString(10);
 }
-
 function getValueOfUnit(unit) {
 	unit = unit ? unit.toLowerCase() : 'ether';
 	var unitValue = unitMap[unit];
