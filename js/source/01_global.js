@@ -288,7 +288,7 @@ function hideAllMainContainers() {
 	$("#paneWalgen").hide();
 	$("#paneBulkgen").hide();
 	$("#paneSendTrans").hide();
-	$("#pagePopContracts").hide();
+	$("#panePopContracts").hide();
 	$("#paneHelp").hide();
 	$("#paneContact").hide();
 	$("#panePrint").hide();

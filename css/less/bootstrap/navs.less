@@ -11,7 +11,9 @@
   padding-left: 0; // Override default ul/ol
   list-style: none;
   &:extend(.clearfix all);
-
+  ul& {
+    margin-top: 0;
+  }
   > li {
     position: relative;
     display: block;
@@ -74,33 +76,43 @@
 
 // Give the tabs something to sit on
 .nav-tabs {
-  border-bottom: 1px solid @nav-tabs-border-color;
+  padding-top: 5px;
+  margin: 0 -15px;
+  border-bottom: 2px solid @gray-lighter;
   > li {
     float: left;
-    // Make the list-items overlay the bottom border
-    margin-bottom: -1px;
-
-    // Actual tabs (as links)
+    margin-bottom: -2px;
     > a {
-      margin-right: 2px;
       line-height: @line-height-base;
-      border: 1px solid transparent;
-      border-radius: @border-radius-base @border-radius-base 0 0;
-      &:hover {
-        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+      border-radius: 0;
+      color: darken(@link-color, 15%);
+      &:after {
+        content: "";
+        background: @brand-primary;
+        height: 2px;
+        position: absolute;
+        width: 100%; left: 0px;
+        bottom: -2px;
+        transition: all 250ms ease 0s;
+        transform: scale(0);
+      }
+      &:hover,
+      &:focus {
+        color: @brand-primary;
+        transition: all 250ms ease 0s;
+        &:after {
+          transform: scale(1);
+        }
       }
     }
 
-    // Active state, and its :hover to override normal :hover
     &.active > a {
       &,
       &:hover,
       &:focus {
         color: @nav-tabs-active-link-hover-color;
-        background-color: @nav-tabs-active-link-hover-bg;
-        border: 1px solid @nav-tabs-active-link-hover-border-color;
-        border-bottom-color: transparent;
         cursor: default;
+        border-bottom: 2px solid @brand-primary;
       }
     }
   }
@@ -108,6 +120,19 @@
   &.nav-justified {
     .nav-justified();
     .nav-tabs-justified();
+  }
+
+  @media screen and (max-width: 750px) {
+    > li {
+      display: block;
+      float: none;
+      text-align: center;
+      width: 100%;
+      padding: 0 45px;
+      > a {
+        border-bottom: 1px solid @gray-lighter;
+      }
+    }
   }
 }
 

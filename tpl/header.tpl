@@ -30,10 +30,7 @@
 
 <body>
 
-<header class="container-fluid bg-navy text-white">
-    <div class="container">
-      <h1 class="h2"> MyEtherWallet <small>Open Source JavaScript Client-Side Ether Wallet</small></h2>
-    </div>
+<header class="container bg-navy text-white">
+  <h1> MyEtherWallet <small>Open Source JavaScript Client-Side Ether Wallet</small></h2>
 </header>
 
-<br /><br />
