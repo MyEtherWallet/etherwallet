@@ -31,7 +31,7 @@
 <body>
 
 <header class="container bg-navy text-white">
-    <img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" />
+    <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a>
     <p>Open Source JavaScript Client-Side Ether Wallet</p>
 </header>
 
