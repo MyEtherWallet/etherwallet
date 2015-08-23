@@ -4128,7 +4128,7 @@ ul.nav {
     border-bottom-color: #e6e6e6;
   }
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 768px) {
   .nav-tabs > li {
     display: block;
     float: none;
@@ -6838,6 +6838,31 @@ ol {
 }
 a {
   cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  header {
+    text-align: center;
+  }
+}
+header p {
+  float: right;
+  font-size: 18px;
+  font-weight: 200;
+  margin-top: 23px;
+}
+@media screen and (max-width: 768px) {
+  header p {
+    float: none;
+    text-align: center;
+  }
+}
+header img {
+  float: left;
+}
+@media screen and (max-width: 768px) {
+  header img {
+    float: none;
+  }
 }
 /* Custom Utilities */
 .text-navy {

@@ -70,3 +70,26 @@ ul, ol {
 a {
   cursor: pointer;
 }
+
+header {
+  @media screen and (max-width: @screen-sm) {
+    text-align: center;
+  }
+  p {
+    float: right;
+    font-size: 18px;
+    font-weight: 200;
+    margin-top: 23px;
+    @media screen and (max-width: @screen-sm) {
+      float: none;
+      text-align: center;
+    }
+  }
+
+  img {
+    float: left;
+    @media screen and (max-width: @screen-sm) {
+      float: none;
+    }
+  }
+}
