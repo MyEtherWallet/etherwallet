@@ -288,12 +288,16 @@ function hideAllMainContainers() {
 	$("#paneWalgen").hide();
 	$("#paneBulkgen").hide();
 	$("#paneSendTrans").hide();
+	$("#pagePopContracts").hide();
 	$("#paneHelp").hide();
+	$("#paneContact").hide();
 	$("#panePrint").hide();
 	$("#bulk-generate").parent().removeClass('active');
 	$("#generate-wallet").parent().removeClass('active');
 	$("#send-transaction").parent().removeClass('active');
+	$("#popular-contracts").parent().removeClass('active');
 	$("#help").parent().removeClass('active');
+	$("#contact").parent().removeClass('active');
 }
 
 function generateSingleWallet() {

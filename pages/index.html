@@ -3,17 +3,23 @@
 <section class="container" style="min-height: 70%">
   <!-- navtabs -->
   <ul class="nav nav-tabs">
-    <li class="active"><a id="generate-wallet" class="ptabs" showId="paneWalgen">     Generate Wallet  </a></li>
-    <li>               <a id="bulk-generate" class="ptabs" showId="paneBulkgen">      Bulk Generate    </a></li>
-    <li>               <a id="send-transaction" class="ptabs" showId="paneSendTrans"> Send Transaction </a></li>
-    <li>               <a id="help" class="ptabs" showId="paneHelp">                  Help             </a></li>
+    <li class="active"><a id="generate-wallet" class="ptabs" showId="paneWalgen">         Generate Wallet   </a></li>
+    <li>               <a id="bulk-generate" class="ptabs" showId="paneBulkgen">          Bulk Generate     </a></li>
+    <li>               <a id="send-transaction" class="ptabs" showId="paneSendTrans">     Send Transaction  </a></li>
+    <li>               <a id="popular-contracts" class="ptabs" showId="panePopContracts"> Popular Contracts </a></li>
+    <li>               <a id="help" class="ptabs" showId="paneHelp">                      Help              </a></li>
+    <li>               <a id="contact" class="ptabs" showId="paneContact">                Contact           </a></li>
   </ul>
   <!-- /navtabs -->
   <br />
   <!-- tab panes -->
   <div class="tab-content">
+
+
+
     <!-- wallet generator -->
     <div class="tab-pane active" id="paneWalgen">
+      <h2> Generate Wallet </h2>
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
@@ -72,8 +78,12 @@
       </div>
     </div> <!-- / wallet generator -->
 
+
+
+
     <!-- bulk generator -->
     <div class="tab-pane" id="paneBulkgen" style="display: none;">
+      <h2> Bulk Generate Wallets </h2>
       <div class="row">
         <div class="col-md-4 col-sm-6 form-group">
           <h4>1. Enter the Number of Wallets To Generate:</h4>
@@ -120,9 +130,12 @@
       </div>
     </div> <!-- /bulk generator -->
 
+
+
     <!-- send transaction -->
     <div class="tab-pane" id="paneSendTrans" style="display: none;">
-      <div class="row" id="walletselection">
+      <h2> Send Transaction </h2>
+      <section class="row" id="walletselection">
         <div class="col-md-4 col-sm-6">
           <h4> How would you like to access your wallet? </h4>
           <div class="radio">
@@ -165,64 +178,72 @@
         <div class="col-md-4 col-sm-6" style="display: none;" id="walletuploadbutton">
           <h4 id="uploadbtntxt-wallet" style="display: none;"> Decrypt your wallet</h4>
           <h4 id="uploadbtntxt-privkey" style="display: none;"> Decrypt your private key </h4>
-          <div class="form-group">
-            <a class="btn btn-primary btn-block" id="decryptdata">DECRYPT</a>
-          </div>
+          <div class="form-group"><a class="btn btn-primary btn-block" id="decryptdata">DECRYPT</a></div>
           <div id="decryptStatus"></div>
         </div>
-      </div>
-      <div class="row" id="wallettransactions" style="display: none;">
-      <hr />
+      </section>
+      <section class="row" id="wallettransactions" style="display: none;">
+        <hr />
         <div class="col-sm-4">
           <h4> Account Information </h4>
-          <div class="clearfix col-xs-12">
-            <p> Account Address: <strong id="accountAddress"></strong></p>
-            <p> Account Balance </p>
-            <p><strong class="text-success" id="accountBalance"> loading</strong></p>
-            <p><strong class="text-success" id="accountBalanceUsd"> loading</strong></p>
-            <p><strong class="text-success" id="accountBalanceEur"> loading</strong></p>
+          <div>
+            <p> Account Address: <br /> <strong id="accountAddress" style="margin-left: 1em"></strong></p>
+            <p> Account Balance: <br />
+              <strong class="text-success" id="accountBalance" style="margin-left: 1em"> loading... </strong>
+              <br />
+              <strong class="text-success" id="accountBalanceUsd" style="margin-left: 1em"> loading... </strong>
+              <br />
+              <strong class="text-success" id="accountBalanceEur" style="margin-left: 1em"> loading... </strong>
+            </p>
           </div>
-          <div class="well clearfix" style="margin-top: 180px">
+          <br />
+          <div class="well">
             <p> Don't have anyone to send a transaction to? You can always donate to us! Donations mean we spend more time creating new features, listening to your feedback, and giving you what you want.</p>
             <a class="btn btn-primary btn-block" id="btndonate">DONATE</a>
             <div class="text-success text-center marg-v-sm"><strong id="donateThanks" style="display: none;"> THANK YOU!!! </strong></div>
           </div>
-         </div>
-         <div class="col-sm-8">
+        </div>
+        <div class="col-sm-8">
           <h4>Send Transaction</h4>
-            <div class="form-group col-xs-12">
-              <label> To Address: </label>
-              <input class="form-control" type="text" placeholder="0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" id="sendtxaddress">
-              <div id="addressvalidate"></div>
+          <div class="form-group col-xs-12">
+            <label> To Address: </label>
+            <input class="form-control" type="text" placeholder="0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" id="sendtxaddress">
+            <div id="addressvalidate"></div>
+          </div>
+          <div class="form-group col-xs-12">
+            <label>
+              Amount to Send:
+              <br />
+              <a href="#">Click here to transfer total available balance**</a>
+            </label>
+            <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
+            <div class="radio">
+              <label><input type="radio" name="currencyRadio" checked value="ether">Ether</label>
+              <label><input type="radio" name="currencyRadio" value="finney">Finney</label>
+              <label><input type="radio" name="currencyRadio" value="szabo">Szabo</label>
+              <div id="weiamount"></div>
             </div>
-            <div class="form-group col-xs-12">
-              <label> Amount to Send: </label>
-              <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
-              <div class="radio">
-                <label><input type="radio" name="currencyRadio" checked value="ether">Ether</label>
-                <label><input type="radio" name="currencyRadio" value="finney">Finney</label>
-                <label><input type="radio" name="currencyRadio" value="szabo">Szabo</label>
-                <div id="weiamount"></div>
-              </div>
-            </div>
-
-            <div class="form-group col-xs-12">
-              <a class="btn btn-info btn-block" id="btngeneratetranaction">GENERATE TRANSACTION</a>
-            </div>
-            <div class="col-xs-12"><small> We use standard rates for all gas, + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether +  (current gas price+ 1 gwei) in gas. We do not take a transaction fee.</small></div>
-            <div id="txcreatestatus"></div>
-            <div class="form-group col-xs-12" style="display: none;" id="divtransactionTAs">
-                <label> Raw Transaction </label>
-              <textarea class="form-control" rows="4" disabled id="tarawtx"></textarea>
-                <label> Signed Transaction </label>
-              <textarea class="form-control" rows="4" disabled id="tasignedtx"></textarea>
-            </div>
-            <div class="form-group col-xs-12" id="divsendtranaction" style="display: none;">
-              <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">SEND TRANSACTION</a>
-            </div>
-            <div id="txsendstatus"></div>
-            <!-- Modal -->
-            <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
+          </div>
+          <div class="form-group col-xs-12">
+            <a class="btn btn-info btn-block" id="btngeneratetranaction">GENERATE TRANSACTION</a>
+          </div>
+          <div class="col-xs-12">
+            <p><small> * We use standard rates for all gas + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether + current gas price + 1 gwei in gas. We do not take a transaction fee.</small></p>
+            <p><small> ** This automatically calculates the amount of gas required to transfer your balance and subtracts it from the total Ether you will send. This allows you to transfer everything in one account to another, without having any leftovers (or doing math.)</small></p>
+          </div>
+          <div id="txcreatestatus"></div>
+          <div class="form-group col-xs-12" style="display: none;" id="divtransactionTAs">
+              <label> Raw Transaction </label>
+            <textarea class="form-control" rows="4" disabled id="tarawtx"></textarea>
+              <label> Signed Transaction </label>
+            <textarea class="form-control" rows="4" disabled id="tasignedtx"></textarea>
+          </div>
+          <div class="form-group col-xs-12" id="divsendtranaction" style="display: none;">
+            <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">SEND TRANSACTION</a>
+          </div>
+          <div id="txsendstatus"></div>
+          <!-- Modal -->
+          <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -245,11 +266,35 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <!--/modal-->
+          </div>
+          <!--/modal-->
         </div>
       </div>
     </div> <!-- /send transaction -->
+
+
+
+
+
+    <!-- popular contracts -->
+    <div class="tab-pane" id="panePopContracts" style="display: none;">
+      <h2> Popular Contracts </h2>
+      <p> Below are a list of contracts we have automated for your benefit. If you would like a popular contract automated, please <a id="contact" class="ptabs" showId="paneContact"> reach out to us</a> (preferably via GitHub Issue) and let us know.</p>
+      <div class="well col-md-6">
+        <h4>Augur Crowdfund</h4>
+          <ul>
+            <li> <a href="https://sale.augur.net/" target="_blank"> Official Augur Sale Site </a> </li>
+            <li> <a href="https://augur.zendesk.com/hc/en-us" target="_blank"> Augur Project FAQ </a> </li>
+            <li> <a href="https://www.reddit.com/r/augur" target="_blank"> Augur Subreddit </a> </li>
+          </ul>
+          <a href="/contract-augur.html" class="btn btn-primary"> START AUGUR CONTRACT </a>
+        </div>
+
+    </div> <!-- /popular contracts -->
+
+
+
+
 
     <!-- print -->
     <div class="tab-pane" id="panePrint" style="display: none;">
@@ -287,10 +332,13 @@
     </div> <!-- /print -->
 
 
+
+
+
     <!-- help -->
     <div class="tab-pane" id="paneHelp" style="display: none;">
-      Do you see something missing? Have another question? Get in touch with us and we will not only answer your question, we will update this page so it can be more useful to users like you in the future!
-
+      <h2> Help </h2>
+      <p>Do you see something missing? Have another question? Get in touch with us and we will not only answer your question, we will update this page so it can be more useful to users like you in the future!</p>
       <h3> How to Get Your Money From Pre-Sale Wallet (or other wallet) -> A New Wallet </h3>
       <h4> Create a New Wallet </h4>
         <ol>
@@ -322,42 +370,50 @@
         <p> Basically, all it means is when you upload your private key file, you will also need to enter the password that you chose when you created your private key in order to decrypt it.</p>
 
       <h3> How Does The Send Transaction Work? </h3>
-      <p> When you send a transaction, it only sends the signed transaction. Your private key safely stays with you.</p>
+        <p> When you send a transaction, it only sends the signed transaction. Your private key safely stays with you.</p>
 
       <h3> Why hasn't the address I just created shown up in the blockchain explorer? </h3>
-      <p> It will only show up once you have transferred an amount to it. </p>
+        <p> It will only show up once you have transferred an amount to it. </p>
 
       <h3> Security </h3>
-      <p> One of your first questions is, "Why should I trust these people?" You are probably worried that this site isn't secure. That is a good thing. When dealing with currency and the internet, you should be paranoid. But, let's try to be a bit reasonable.</p>
+        <p> One of your first questions is, "Why should I trust these people?" You are probably worried that this site isn't secure. That is a good thing. When dealing with currency and the internet, you should be paranoid. But, let's try to be a bit reasonable.</p>
 
-      <p> At this point, we have not had our code audited. Someone, <strong>PLEASE AUDIT US</strong>. <a href="https://www.reddit.com/r/ethereum/comments/3hh89n/could_someone_please_audit_ether_wallet/">Here is a reddit thread with another user asking for someone to audit us.</a> Reach out to us on reddit or github or wherever. Contact info is below.</p>
+        <p> At this point, we have not had our code audited. Someone, <strong>PLEASE AUDIT US</strong>. <a href="https://www.reddit.com/r/ethereum/comments/3hh89n/could_someone_please_audit_ether_wallet/">Here is a reddit thread with another user asking for someone to audit us.</a> Reach out to us on reddit or github or <a id="contact" class="ptabs" showId="paneContact"> wherever</a>.</p>
 
-      <p> Until someone / a group of people take the time to go through the code, here are some things to alleviate any paranoia you have:</p>
-      <ul>
-        <li>We aren't going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" and "BULK GENERATE" tabs are completely client-side. That means that all the code is executed on <strong> your computer </strong> and it is never sent to the servers or to us or anywhere else in the magical internet land.</li>
-        <li> Check the URL -- This site is being served through github and you can see the source code here: <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a> to the domains: <a href="http://kvhnuke.github.io/etherwallet/" target="_blank">http://kvhnuke.github.io/etherwallet/</a> and <a href="https://www.myetherwallet.com" target="_blank">https://www.myetherwallet.com</a> (our new domain with SSL). You can verify its hosted at github by using <a href="http://viewdns.info/dnsrecord/?domain=myetherwallet.com" target="_blank">http://viewdns.info/dnsrecord/?domain=myetherwallet.com</a> - last two A record IPs are owned by github for their custom domain hosting.</li>
-        <li> For generating wallets, you can download the <a href="https://github.com/kvhnuke/etherwallet">source code</a> by using the "DOWNLOAD ZIP" button in the aforementioned link. Then, disconnect your computer from the internet and / or move that .zip file via flash drive to an air-gapped computer. Or, do whatever you want to do. Unzip the file, double-click on "index.html", and you have the exact same thing happening on your air-gapped computer (or whatever). You can now generate wallets on that computer without fear that we are stealing you heart and soul and first-born child.  (Obviously, sending transactions is not going to work without the internet. Sorry!)</li>
-        <li> Do a test run and check and see what network activity is happening. The easiest way for you (yes, YOU!) to do this (if you are using Chrome) is to right click on the page and click "inspect element". Now, go to the "Network" tab. Then, generate a wallet. Any wallet, any password&mdash;this is a test, remember. You will see there is NO network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.</li>
-        <li> Now, to be safe, move over to the "Resources" tab. Here you can see all the different elements that make up a website. That includes things like the HTML (the base of what you see on the page), images (pretty pictures! Usually in .jpg, .gif, or .png format), the CSS (the stuff that makes the HTML look so pretty), the JS (the stuff that makes the HTML do other stuff, like making QR codes show up when you press Generate), Local Storage (one way of storing things on your local machine), Cookies (yum! Another way for sites to store data on your machine), and caches (yet another way to store stuff on your machine, usually to make things go faster). If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.</li>
-        <li> If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line / geth / etc. Again, feel free to reach out to us at any of the below addresses and we will respond as quickly as possible. Thanks! </li>
-      </ul>
+        <p> Until someone / a group of people take the time to go through the code, here are some things to alleviate any paranoia you have:</p>
+        <ul>
+          <li>We aren't going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" and "BULK GENERATE" tabs are completely client-side. That means that all the code is executed on <strong> your computer </strong> and it is never sent to the servers or to us or anywhere else in the magical internet land.</li>
+          <li> Check the URL -- This site is being served through github and you can see the source code here: <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a> to the domains: <a href="http://kvhnuke.github.io/etherwallet/" target="_blank">http://kvhnuke.github.io/etherwallet/</a> and <a href="https://www.myetherwallet.com" target="_blank">https://www.myetherwallet.com</a> (our new domain with SSL). You can verify its hosted at github by using <a href="http://viewdns.info/dnsrecord/?domain=myetherwallet.com" target="_blank">http://viewdns.info/dnsrecord/?domain=myetherwallet.com</a> - last two A record IPs are owned by github for their custom domain hosting.</li>
+          <li> For generating wallets, you can download the <a href="https://github.com/kvhnuke/etherwallet">source code</a> by using the "DOWNLOAD ZIP" button in the aforementioned link. Then, disconnect your computer from the internet and / or move that .zip file via flash drive to an air-gapped computer. Or, do whatever you want to do. Unzip the file, double-click on "index.html", and you have the exact same thing happening on your air-gapped computer (or whatever). You can now generate wallets on that computer without fear that we are stealing you heart and soul and first-born child.  (Obviously, sending transactions is not going to work without the internet. Sorry!)</li>
+          <li> Do a test run and check and see what network activity is happening. The easiest way for you (yes, YOU!) to do this (if you are using Chrome) is to right click on the page and click "inspect element". Now, go to the "Network" tab. Then, generate a wallet. Any wallet, any password&mdash;this is a test, remember. You will see there is NO network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.</li>
+          <li> Now, to be safe, move over to the "Resources" tab. Here you can see all the different elements that make up a website. That includes things like the HTML (the base of what you see on the page), images (pretty pictures! Usually in .jpg, .gif, or .png format), the CSS (the stuff that makes the HTML look so pretty), the JS (the stuff that makes the HTML do other stuff, like making QR codes show up when you press Generate), Local Storage (one way of storing things on your local machine), Cookies (yum! Another way for sites to store data on your machine), and caches (yet another way to store stuff on your machine, usually to make things go faster). If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.</li>
+          <li> If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line / geth / etc. Again, feel free to reach out to us at any of the below addresses and we will respond as quickly as possible. Thanks! </li>
+        </ul>
 
       <h3> Helpful Links </h3>
-      <ul>
-        <li><a href="https://ethereum.org/" target="_blank">Official Ethereum Site</a></li>
-        <li><a href="https://www.reddit.com/r/ethereum" target="_blank">Ethereum Subreddit (thank you for all your support / feedback, reddit!)</a></li>
-        <li><a href="https://forum.ethereum.org/" target="_blank">Ethereum Forum</a></li>
-        <li><a href="https://www.etherchain.org" target="_blank">Blockchain Explorer - etherchain.org</a></li>
-        <li><a href="http://etherscan.io/" target="_blank">Another Blockchain Explorer - etherscan.io</a></li>
-        <li><a href="http://ethereum.gitbooks.io/frontier-guide/content/" target="_blank">Frontier Guide</a></li>
-        <li><a href="https://github.com/davidshimjs/qrcodejs" target="_blank">QR code library</a></li>
-        <li><a href="https://github.com/SilentCicero/ethereumjs-accounts" target="_blank">Ethereum Accounts library</a></li>
-        <li><a href="https://code.google.com/p/crypto-js/" target="_blank">CryptoJS library</a></li>
-        <li><a href="https://forum.ethereum.org/discussion/3045/request-post-password-instructions-that-were-given-for-the-presale-last-year" target="_blank">forum.ethereum.org: I forgot my Pre-Sale Wallet Password / My PW Isn't Working</a></li>
-        <li><a href="https://www.reddit.com/r/ethereum/comments/3g6aw0/i_lost_my_password_to_my_presale_wallet_admit_it/" target="_blank">/r/ethereum: I forgot my Pre-Sale Wallet Password / My PW Isn't Working </a></li>
-      </ul>
+        <ul>
+          <li><a href="https://ethereum.org/" target="_blank">Official Ethereum Site</a></li>
+          <li><a href="https://www.reddit.com/r/ethereum" target="_blank">Ethereum Subreddit (thank you for all your support / feedback, reddit!)</a></li>
+          <li><a href="https://forum.ethereum.org/" target="_blank">Ethereum Forum</a></li>
+          <li><a href="https://www.etherchain.org" target="_blank">Blockchain Explorer - etherchain.org</a></li>
+          <li><a href="http://etherscan.io/" target="_blank">Another Blockchain Explorer - etherscan.io</a></li>
+          <li><a href="http://ethereum.gitbooks.io/frontier-guide/content/" target="_blank">Frontier Guide</a></li>
+          <li><a href="https://github.com/davidshimjs/qrcodejs" target="_blank">QR code library</a></li>
+          <li><a href="https://github.com/SilentCicero/ethereumjs-accounts" target="_blank">Ethereum Accounts library</a></li>
+          <li><a href="https://code.google.com/p/crypto-js/" target="_blank">CryptoJS library</a></li>
+          <li><a href="https://forum.ethereum.org/discussion/3045/request-post-password-instructions-that-were-given-for-the-presale-last-year" target="_blank">forum.ethereum.org: I forgot my Pre-Sale Wallet Password / My PW Isn't Working</a></li>
+          <li><a href="https://www.reddit.com/r/ethereum/comments/3g6aw0/i_lost_my_password_to_my_presale_wallet_admit_it/" target="_blank">/r/ethereum: I forgot my Pre-Sale Wallet Password / My PW Isn't Working </a></li>
+        </ul>
 
-       <h3> Ways to Get in Touch </h3>
+      <p><small> ps: sorry for any typos or grammatical errors. English is my first language...but I still suck at it.</small></p>
+    </div> <!-- /help -->
+
+
+
+
+    <div class="tab-pane" id="paneContact" style="display: none;">
+      <h2> Ways to Get in Touch </h2>
+       <a name="contact"></a>
       <ul>
         <li><a href="mailto:kvhnuke@aol.com" target="_blank"> Email kvhnuke </a></li>
         <li><a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank"> Message kvhnuke on Reddit </a></li>
@@ -366,11 +422,7 @@
         <li><a href="https://hubski.com/user?id=insomniasexx" target="_blank"> Message tayvano on Hubski </a></li>
         <li><a href="https://github.com/kvhnuke/etherwallet/issues" target="_blank"> Open a GitHub Issue</a></li>
       </ul>
-
-      <br /><br />
-      <small> ps: sorry for any typos or grammatical errors. English is my first language...but I still suck at it.</small>
-
-    </div> <!-- /help -->
+    </div>
 
   </div> <!-- /tab panes -->
 </section>
