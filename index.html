@@ -214,14 +214,16 @@
       <hr />
         <div class="col-sm-4">
           <h4> Account Information </h4>
-          <div class="clearfix col-xs-12">
-            <p> Account Address: <strong id="accountAddress"></strong></p>
-            <p> Account Balance </p>
-            <p><strong class="text-success" id="accountBalance"> loading</strong></p>
-            <p><strong class="text-success" id="accountBalanceUsd"> loading</strong></p>
-            <p><strong class="text-success" id="accountBalanceEur"> loading</strong></p>
+          <div class="clearfix">
+            <p> Account Address: <br /> <strong id="accountAddress" style="margin-left: 1em"></strong></p>
+            <p> Account Balance: <br />
+              <strong class="text-success" id="accountBalance" style="margin-left: 1em"> loading... </strong><br />
+              <strong class="text-success" id="accountBalanceUsd" style="margin-left: 1em"> loading... </strong><br />
+              <strong class="text-success" id="accountBalanceEur" style="margin-left: 1em"> loading... </strong>
+            </p>
           </div>
-          <div class="well clearfix" style="margin-top: 180px">
+          <br />
+          <div class="well clearfix">
             <p> Don't have anyone to send a transaction to? You can always donate to us! Donations mean we spend more time creating new features, listening to your feedback, and giving you what you want.</p>
             <a class="btn btn-primary btn-block" id="btndonate">DONATE</a>
             <div class="text-success text-center marg-v-sm"><strong id="donateThanks" style="display: none;"> THANK YOU!!! </strong></div>
@@ -235,8 +237,12 @@
               <div id="addressvalidate"></div>
             </div>
             <div class="form-group col-xs-12">
-              <label> Amount to Send: </label>
-              <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
+              <label>
+                Amount to Send:
+                <br />
+                <a href="#">Click here to transfer total available balance**</a>
+              </label>
+              <input class="form-control col-xs-10" type="text" placeholder="Amount" id="sendtxamount">
               <div class="radio">
                 <label><input type="radio" name="currencyRadio" checked value="ether">Ether</label>
                 <label><input type="radio" name="currencyRadio" value="finney">Finney</label>
@@ -248,7 +254,10 @@
             <div class="form-group col-xs-12">
               <a class="btn btn-info btn-block" id="btngeneratetranaction">GENERATE TRANSACTION</a>
             </div>
-            <div class="col-xs-12"><small> We use standard rates for all gas, + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether +  (current gas price+ 1 gwei) in gas. We do not take a transaction fee.</small></div>
+            <div class="col-xs-12">
+              <p><small> * We use standard rates for all gas + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether + current gas price + 1 gwei in gas. We do not take a transaction fee.</small></p>
+              <p><small> ** This automatically calculates the amount of gas required to transfer your balance and subtracts it from the total Ether you will send. This allows you to transfer everything in one account to another, without having any leftovers (or doing math.)</small></p>
+            </div>
             <div id="txcreatestatus"></div>
             <div class="form-group col-xs-12" style="display: none;" id="divtransactionTAs">
                 <label> Raw Transaction </label>
