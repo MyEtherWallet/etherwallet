@@ -1,3 +1,4 @@
+var stdTransactionGas = 21000;
 function createTransaction(privkey, to, amountinwei, successcb, errorcb) {
 	if (privkey.length != 64) {
 		errorcb("Invalid Private key, try again");
@@ -20,24 +21,24 @@ function createTransaction(privkey, to, amountinwei, successcb, errorcb) {
 		}
 		data = data.data;
 		var nonce = padLeftEven(BNtoHex(new BigNumber(data.nonce)));
-		var gasPrice = padLeftEven(BNtoHex(new BigNumber(data.gasprice).plus(1000000000))); //adding extra 1gwei to be safer
-		var gasLimit = padLeftEven(BNtoHex(new BigNumber(30000))); //this should be enough even for a large transactions, extra will be refunded anyway
-		var value = padLeftEven(BNtoHex(new BigNumber(amountinwei)));
+		var gasPrice = padLeftEven(BNtoHex(new BigNumber(data.gasprice).plus(1000000000).toDigits(1))); //adding extra 1gwei to be safer
+		var gasLimit = padLeftEven(BNtoHex(new BigNumber(stdTransactionGas))); //standard 21000 per transaction
+		var value = padLeftEven(BNtoHex(new BigNumber(String(amountinwei))));
 		var rawTx = {
 			nonce: nonce,
 			gasPrice: gasPrice,
 			gasLimit: gasLimit,
 			to: to,
-			//'b9836ec1f42bd48331bceaedb74a6bcdc22832bd',
-			value: value
+			value: value,
+            data:''
 		};
-		var estimatedCost = getUpFrontCost(rawTx);
+		var tx = new Tx(rawTx);
+		tx.sign(privateKey);
+        var estimatedCost = getUpFrontCost(tx);
 		if (estimatedCost > data.balance) {
 			errorcb("You dont have enough balance in your account to process is transaction");
 			return
 		}
-		var tx = new Tx(rawTx);
-		tx.sign(privateKey);
 		var serializedTx = '0x' + tx.serialize().toString('hex');
 		var rdata = {
 			raw: JSON.stringify(rawTx),
@@ -46,7 +47,22 @@ function createTransaction(privkey, to, amountinwei, successcb, errorcb) {
 		successcb(rdata);
 	});
 }
-
+function getMaxSendAmount(address, successcb, errorcb){
+    getTransactionData(address, function(data) {
+		if (data.error) {
+			errorcb("Error occurred: " + data.msg);
+			return;
+		}
+        data = data.data;
+        var gasPrice = new BigNumber(data.gasprice).plus(1000000000).toDigits(1).times(stdTransactionGas);
+        var maxVal = new BigNumber(String(data.balance)).minus(gasPrice);
+        if(maxVal.lessThan(0)){
+            errorcb("Not enough balance to send a transaction");
+        } else {
+            successcb(toEther(maxVal.toString(),'wei'));
+        }
+    });
+}
 function sendTransaction(signedRawTx, successcb, errorcb) {
 	sendRawTx(signedRawTx, function(data) {
 		if (data.error) {
@@ -58,13 +74,13 @@ function sendTransaction(signedRawTx, successcb, errorcb) {
 }
 
 function BNtoHex(bn) {
-	return bn.toNumber().toString(16);
+	return bn.toString(16);
 }
 
-function getUpFrontCost(rawTx) {
-	var bytesCost = JSON.stringify(rawTx).length * 5 + 500;
-	var gasPrice = new BigNumber(formatHexString(rawTx.gasPrice, 'hex')).times(new BigNumber(formatHexString(rawTx.gasLimit, 'hex')));
-	return gasPrice.plus(bytesCost).plus(formatHexString(rawTx.value, 'hex')).toNumber();
+function getUpFrontCost(tx) {
+	var bytesCost = 0; //(tx.serialize().toString('hex').length/2) * 5 + 500; //dont need this since no data will add this later for transactions
+	var gasPrice = new BigNumber(formatHexString(tx.gasPrice.toString('hex'),'hex')).times(new BigNumber(formatHexString(tx.gasLimit.toString('hex'),'hex')));
+	return gasPrice.plus(bytesCost).plus(new BigNumber(formatHexString(tx.value.toString('hex'),'hex'))).toNumber();
 }
 
 function padLeftEven(hex) {
@@ -85,7 +101,7 @@ function formatHexString(hex, format) {
 	}
 }
 function fiatToWei(number,pricePerEther){
-    var returnValue = new BigNumber(number).div(pricePerEther).times(getValueOfUnit('ether')).round(0);
+    var returnValue = new BigNumber(String(number)).div(pricePerEther).times(getValueOfUnit('ether')).round(0);
     return returnValue.toString(10);
 }
 function toFiat(number,unit, multi){
@@ -97,7 +113,7 @@ function toEther(number, unit){
     return returnValue.toString(10);
 }
 function toWei(number, unit) {
-	var returnValue = new BigNumber(number).times(getValueOfUnit(unit));
+	var returnValue = new BigNumber(String(number)).times(getValueOfUnit(unit));
 	return returnValue.toString(10);
 }
 function getValueOfUnit(unit) {

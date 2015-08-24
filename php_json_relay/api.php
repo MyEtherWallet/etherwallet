@@ -11,11 +11,24 @@ if(isset($_REQUEST['balance'])){
 } else if(isset($_REQUEST['txdata'])){
     header('Content-Type: application/json');
     echo getTransactionData($_REQUEST['txdata'],$gethRPC);
+} else if(isset($_REQUEST['estimatedGas'])){
+    header('Content-Type: application/json');
+    echo getEstimatedGas($_REQUEST['estimatedGas'],$gethRPC);
+}
+function getEstimatedGas($txobj, $gethRPC){
+    $data = getDefaultResponse();
+    try {
+        $data['data'] = getRPCResponse($gethRPC->eth_estimateGas($txobj,
+        "pending"));
+    }
+    catch (exception $e) {
+        $data['error'] = true;
+        $data['msg'] = $e->getMessage();
+    }
+    return json_encode($data);
 }
 function getTransactionData($addr, $gethRPC){
-    $data['error'] = false;
-    $data['msg'] = "";
-    $data['data'] = "";
+    $data = getDefaultResponse();
     try {
         $addr = formatAddress($addr);
         $balance = getRPCResponse($gethRPC->eth_getBalance($addr,
@@ -23,7 +36,7 @@ function getTransactionData($addr, $gethRPC){
         $nonce = getRPCResponse($gethRPC->eth_getTransactionCount($addr,
             "pending"));
         $gasprice = getRPCResponse($gethRPC->eth_gasPrice());
-        $balance=hexdec($balance);
+        $balance=bchexdec($balance);
         $tarr['address'] = $addr;
         $tarr['balance'] = $balance;
         $tarr['nonce'] = $nonce;
@@ -38,16 +51,15 @@ function getTransactionData($addr, $gethRPC){
 }
 function getBalance($addr, $gethRPC)
 {
-    $data['error'] = false;
-    $data['msg'] = "";
-    $data['data'] = "";
+    $data = getDefaultResponse();
     try {
         $addr = formatAddress($addr);
-        $balance = getRPCResponse($gethRPC->eth_getBalance($addr,
+        $balancehex = getRPCResponse($gethRPC->eth_getBalance($addr,
             "pending"));
-        $balance=hexdec($balance);
+        $balance=bchexdec($balancehex);
         $tarr['address'] = $addr;
         $tarr['balance'] = $balance;
+        $tarr['balancehex'] = $balancehex;
         $data['data'] = $tarr;
     }
     catch (exception $e) {
@@ -64,9 +76,7 @@ function getRPCResponse($result){
     }
 }
 function sendRawTransaction($rawtx,$gethRPC){
-    $data['error'] = false;
-    $data['msg'] = "";
-    $data['data'] = "";
+    $data = getDefaultResponse();
     try {
         $data['data'] = getRPCResponse($gethRPC->eth_sendRawTransaction($rawtx));
     }
@@ -82,5 +92,19 @@ function formatAddress($addr){
     else
         return "0x".$addr;
 }
-
+function getDefaultResponse(){
+    $data['error'] = false;
+    $data['msg'] = "";
+    $data['data'] = "";
+    return $data;
+}
+function bchexdec($hex)
+{
+    $dec = 0;
+    $len = strlen($hex);
+    for ($i = 1; $i <= $len; $i++) {
+        $dec = bcadd($dec, bcmul(strval(hexdec($hex[$i - 1])), bcpow('16', strval($len - $i))));
+    }
+    return $dec;
+}
 ?>

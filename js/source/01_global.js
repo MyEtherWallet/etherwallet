@@ -69,6 +69,15 @@ function bindElements() {
 	$("#bulkgenerate").click(function() {
 		generateBulkWallets();
 	});
+    $("#transferAllBalance").click(function() {
+		getMaxSendAmount($("#accountAddress").html(), function(data){
+		  $('#sendtxamount').val(data);
+          $('input[type=radio][name=currencyRadio][value=ether]').prop("checked", true);
+          $('#sendtxamount').trigger("keyup");
+		},function(err){
+		  $("#txcreatestatus").html('<p class="text-center text-danger"><strong> ' + err + '</strong></p>').fadeIn(50).fadeOut(3000);
+		});
+	});
 	$("#decryptdata").click(function() {
 		$("#decryptStatus").html('<p class="text-center text-info"><strong> Please Wait...</strong></p>').fadeIn(10);
 		setTimeout(function() {
@@ -86,6 +95,7 @@ function bindElements() {
 		$("#walletPasdiv").hide();
 		$("#divprikeypassword").hide();
 		$("#wallettransactions").hide();
+        $("#decryptStatus").hide();
 		if (this.value == 'fileupload') {
 			$("#selectedTypeKey").hide();
 			$("#selectedUploadKey").show();
@@ -139,6 +149,10 @@ function bindElements() {
 	});
 	$('#manualprivkey').on('paste, keyup', function() {
 		$("#divprikeypassword").hide();
+        $("#walletuploadbutton").hide();
+        $("#uploadbtntxt-wallet").hide();
+		$("#uploadbtntxt-privkey").hide();
+        $("#manualprivkey").val($("#manualprivkey").val().replace(/(?:\r\n|\r|\n| )/g, ''));
 		if ($('#manualprivkey').val().length == 128 || $('#manualprivkey').val().length == 132) {
 			$("#divprikeypassword").show();
 		} else if ($('#manualprivkey').val().length == 64) {
