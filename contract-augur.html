@@ -45,7 +45,7 @@
     <li>               <a href="/#generate-wallet">   Generate Wallet   </a></li>
     <li>               <a href="/#bulk-generate">     Bulk Generate     </a></li>
     <li>               <a href="/#send-transaction">  Send Transaction  </a></li>
-    <li class="active"><a href="/#popular-contracts"> Popular Contracts </a></li>
+    <li class="active"><a href="/contract-augur.html"> Augur Crowdsale </a></li>
     <li>               <a href="/#help">              Help              </a></li>
     <li>               <a href="/#contact">           Contact           </a></li>
   </ul>
@@ -53,10 +53,10 @@
 
 <section class="container" style="min-height: 70%">
 
-<h2> Augur Contract </h2>
+<h2> Augur Crowdsale </h2>
       <section class="row" id="walletselection">
         <div class="col-md-4 col-sm-6">
-          <h4> How would you like to access your wallet? </h4>
+          <h4> How would you like to access your wallet to purchase Augur rep? </h4>
           <div class="radio">
             <label><input type="radio" name="typeOfKeyRadio" value="fileupload">Upload your wallet file (Presale/Geth/etherwallet).</label>
           </div>
@@ -114,6 +114,9 @@
               <br />
               <strong class="text-success" id="accountBalanceEur" style="margin-left: 1em"> loading... </strong>
             </p>
+            <p> Augur Rep Balance: <br />
+              <strong class="text-success" id="augurbalance" style="margin-left: 1em"> loading... </strong>
+            </p>
           </div>
           <br />
         </div>
@@ -132,7 +135,7 @@
             </div>
           </div>
           <div class="form-group col-xs-12">
-            <a class="btn btn-info btn-block" id="btngeneratetranaction">PURCHASE AUGUR</a>
+            <a class="btn btn-info btn-block" id="btnpurchaseaugur">PURCHASE AUGUR REP</a>
           </div>
           <div id="txcreatestatus"></div>
           <div class="form-group col-xs-12" style="display: none;" id="divtransactionTAs">

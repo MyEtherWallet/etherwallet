@@ -12,6 +12,9 @@ function sendRawTx(rawTx, callback){
 function getEstimatedGas(txobj, callback){
     $.post( SERVERURL, { estimatedGas: txobj }).done(callback);
 }
+function getEthCall(txobj, callback){
+    $.post( SERVERURL, { ethCall: txobj }).done(callback);
+}
 function getETHvalue(slavePair, callback){
     var prefix = "XETHZ";
     $.post( KRAKENAPI+"Ticker", { pair: prefix+slavePair }).done(function(data){

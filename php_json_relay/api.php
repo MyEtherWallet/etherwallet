@@ -14,11 +14,26 @@ if(isset($_REQUEST['balance'])){
 } else if(isset($_REQUEST['estimatedGas'])){
     header('Content-Type: application/json');
     echo getEstimatedGas($_REQUEST['estimatedGas'],$gethRPC);
+} else if(isset($_REQUEST['ethCall'])){
+    header('Content-Type: application/json');
+    echo getEthCall($_REQUEST['ethCall'],$gethRPC);
 }
 function getEstimatedGas($txobj, $gethRPC){
     $data = getDefaultResponse();
     try {
         $data['data'] = getRPCResponse($gethRPC->eth_estimateGas($txobj,
+        "pending"));
+    }
+    catch (exception $e) {
+        $data['error'] = true;
+        $data['msg'] = $e->getMessage();
+    }
+    return json_encode($data);
+}
+function getEthCall($txobj, $gethRPC){
+    $data = getDefaultResponse();
+    try {
+        $data['data'] = getRPCResponse($gethRPC->eth_call($txobj,
         "pending"));
     }
     catch (exception $e) {

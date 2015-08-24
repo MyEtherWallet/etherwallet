@@ -1,4 +1,5 @@
 var stdTransactionGas = 21000;
+
 function createTransaction(privkey, to, amountinwei, successcb, errorcb) {
 	if (privkey.length != 64) {
 		errorcb("Invalid Private key, try again");
@@ -30,39 +31,107 @@ function createTransaction(privkey, to, amountinwei, successcb, errorcb) {
 			gasLimit: gasLimit,
 			to: to,
 			value: value,
-            data:''
+			data: ''
 		};
 		var tx = new Tx(rawTx);
 		tx.sign(privateKey);
-        var estimatedCost = getUpFrontCost(tx);
-		if (estimatedCost > data.balance) {
-			errorcb("You dont have enough balance in your account to process is transaction");
-			return
-		}
-		var serializedTx = '0x' + tx.serialize().toString('hex');
-		var rdata = {
-			raw: JSON.stringify(rawTx),
-			signed: serializedTx
-		}
-		successcb(rdata);
+		verifyUpFrontCost(rawTx, function(estimatedCost) {
+			if (estimatedCost > data.balance) {
+				errorcb("You dont have enough balance in your account to process is transaction");
+				return
+			}
+			var serializedTx = '0x' + tx.serialize().toString('hex');
+			var rdata = {
+				raw: JSON.stringify(rawTx),
+				signed: serializedTx
+			}
+			successcb(rdata);
+		}, errorcb);
 	});
 }
-function getMaxSendAmount(address, successcb, errorcb){
-    getTransactionData(address, function(data) {
+
+function createTransactionFromRaw(rawObj, privkey, successcb, errorcb) {
+	if (privkey.length != 64) {
+		errorcb("Invalid Private key, try again");
+		return;
+	}
+	if (!validateEtherAddress(rawObj.from) || !validateEtherAddress(rawObj.to)) {
+		errorcb("Invalid Address, try again");
+		return;
+	}
+	if (!$.isNumeric(rawObj.value) || rawObj.value <= 0) {
+		errorcb("Invalid amount, try again");
+		return;
+	}
+	var privateKey = new Buffer(privkey, 'hex');
+	var address = strPrivateKeyToAddress(privkey);
+	getTransactionData(address, function(data) {
 		if (data.error) {
 			errorcb("Error occurred: " + data.msg);
 			return;
 		}
-        data = data.data;
-        var gasPrice = new BigNumber(data.gasprice).plus(1000000000).toDigits(1).times(stdTransactionGas);
-        var maxVal = new BigNumber(String(data.balance)).minus(gasPrice);
-        if(maxVal.lessThan(0)){
-            errorcb("Not enough balance to send a transaction");
-        } else {
-            successcb(toEther(maxVal.toString(),'wei'));
-        }
-    });
+		data = data.data;
+		var nonce = padLeftEven(BNtoHex(new BigNumber(data.nonce)));
+		var gasPrice = padLeftEven(BNtoHex(new BigNumber(data.gasprice).plus(1000000000).toDigits(1)));
+		var gasLimit = padLeftEven(BNtoHex(new BigNumber(rawObj.gas))); 
+		var value = padLeftEven(BNtoHex(new BigNumber(String(rawObj.value))));
+		var rawTx = {
+			nonce: nonce,
+			gasPrice: gasPrice,
+			gasLimit: gasLimit,
+			to: rawObj.to,
+			value: value,
+			data: rawObj.data
+		};
+		var tx = new Tx(rawTx);
+		tx.sign(privateKey);
+		verifyUpFrontCost(rawTx, function(estimatedCost) {
+			if (estimatedCost > data.balance) {
+				errorcb("You dont have enough balance in your account to process is transaction");
+				return
+			}
+			var serializedTx = '0x' + tx.serialize().toString('hex');
+			var rdata = {
+				raw: JSON.stringify(rawTx),
+				signed: serializedTx
+			}
+			successcb(rdata);
+		}, errorcb);
+	});
 }
+
+function verifyUpFrontCost(rawTx, successcb, errorcb) {
+	getEstimatedGas(rawTx, function(data) {
+		if (data.error) {
+			errorcb("Error occurred: " + data.msg);
+		} else {
+            if(new BigNumber(formatHexString(data.data, 'hex')).greaterThan(new BigNumber(formatHexString(rawTx.gasLimit, 'hex')))){
+                errorcb("Gas limit is too low");
+            } else {
+			     var gasPrice = new BigNumber(formatHexString(rawTx.gasPrice, 'hex')).times(new BigNumber(formatHexString(rawTx.gasLimit, 'hex')));
+			     successcb(gasPrice.plus(new BigNumber(formatHexString(rawTx.value, 'hex'))).toNumber());
+            }
+		}
+	});
+}
+
+function getMaxSendAmount(address, successcb, errorcb) {
+	getTransactionData(address, function(data) {
+		if (data.error) {
+			errorcb("Error occurred: " + data.msg);
+			return;
+		}
+		data = data.data;
+		var gasPrice = new BigNumber(data.gasprice).plus(1000000000).toDigits(1).times(stdTransactionGas);
+		var maxVal = new BigNumber(String(data.balance)).minus(gasPrice);
+		if (maxVal.lessThan(0)) {
+			errorcb("Not enough balance to send a transaction");
+		} else {
+			successcb(toEther(maxVal.toString(), 'wei'));
+		}
+	});
+}
+
 function sendTransaction(signedRawTx, successcb, errorcb) {
 	sendRawTx(signedRawTx, function(data) {
 		if (data.error) {
@@ -75,12 +144,6 @@ function sendTransaction(signedRawTx, successcb, errorcb) {
 
 function BNtoHex(bn) {
 	return bn.toString(16);
-}
-
-function getUpFrontCost(tx) {
-	var bytesCost = 0; //(tx.serialize().toString('hex').length/2) * 5 + 500; //dont need this since no data will add this later for transactions
-	var gasPrice = new BigNumber(formatHexString(tx.gasPrice.toString('hex'),'hex')).times(new BigNumber(formatHexString(tx.gasLimit.toString('hex'),'hex')));
-	return gasPrice.plus(bytesCost).plus(new BigNumber(formatHexString(tx.value.toString('hex'),'hex'))).toNumber();
 }
 
 function padLeftEven(hex) {
@@ -100,22 +163,27 @@ function formatHexString(hex, format) {
 		return hex;
 	}
 }
-function fiatToWei(number,pricePerEther){
-    var returnValue = new BigNumber(String(number)).div(pricePerEther).times(getValueOfUnit('ether')).round(0);
-    return returnValue.toString(10);
+
+function fiatToWei(number, pricePerEther) {
+	var returnValue = new BigNumber(String(number)).div(pricePerEther).times(getValueOfUnit('ether')).round(0);
+	return returnValue.toString(10);
 }
-function toFiat(number,unit, multi){
-    var returnValue = new BigNumber(toEther(number, unit)).times(multi).round(5);
-    return returnValue.toString(10);
+
+function toFiat(number, unit, multi) {
+	var returnValue = new BigNumber(toEther(number, unit)).times(multi).round(5);
+	return returnValue.toString(10);
 }
-function toEther(number, unit){
-    var returnValue = new BigNumber(toWei(number, unit)).div(getValueOfUnit('ether'));
-    return returnValue.toString(10);
+
+function toEther(number, unit) {
+	var returnValue = new BigNumber(toWei(number, unit)).div(getValueOfUnit('ether'));
+	return returnValue.toString(10);
 }
+
 function toWei(number, unit) {
 	var returnValue = new BigNumber(String(number)).times(getValueOfUnit(unit));
 	return returnValue.toString(10);
 }
+
 function getValueOfUnit(unit) {
 	unit = unit ? unit.toLowerCase() : 'ether';
 	var unitValue = unitMap[unit];
@@ -126,20 +194,22 @@ function getValueOfUnit(unit) {
 }
 
 function getBestEtherKnownUnit(amountInWei) {
-    amountInWei = String(amountInWei);
-    var curUnit = 'wei';
-    var tAmount = new BigNumber(amountInWei);
+	amountInWei = String(amountInWei);
+	var curUnit = 'wei';
+	var tAmount = new BigNumber(amountInWei);
 	for (var key in knownUnitMap) {
 		if (knownUnitMap.hasOwnProperty(key)) {
-            if(new BigNumber(amountInWei).greaterThan(new BigNumber(knownUnitMap[key]))){
-                curUnit = key;
-                tAmount = new BigNumber(amountInWei).div(new BigNumber(knownUnitMap[key]));
-            }
+			if (new BigNumber(amountInWei).greaterThan(new BigNumber(knownUnitMap[key]))) {
+				curUnit = key;
+				tAmount = new BigNumber(amountInWei).div(new BigNumber(knownUnitMap[key]));
+			}
 		}
 	}
-    return {unit:curUnit, amount: tAmount.toDigits(10).toString(10)};
+	return {
+		unit: curUnit,
+		amount: tAmount.toDigits(10).toString(10)
+	};
 }
-
 var knownUnitMap = {
 	'wei': '1',
 	'kwei': '1000',
