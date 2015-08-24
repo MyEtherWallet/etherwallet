@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Ether Wallet</title>
+  <title>MyEtherWallet: Open Source JavaScript Client-Side Ether Wallet</title>
   <meta name="description" content="Ether Wallet: Open Source JavaScript Client-Side Ether Wallet">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
