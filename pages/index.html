@@ -343,9 +343,8 @@
     <!-- help -->
     <div class="tab-pane" id="paneHelp" style="display: none;">
       <h2> Help </h2>
-      <p>Do you see something missing? Have another question? Get in touch with us and we will not only answer your question, we will update this page so it can be more useful to users like you in the future!</p>
-      <h3> How to Get Your Money From Pre-Sale Wallet (or other wallet) -> A New Wallet </h3>
-      <h4> Create a New Wallet </h4>
+      <p>Do you see something missing? Have another question? <a id="contact" class="ptabs" showId="paneContact">Get in touch with us</a> and we will not only answer your question, we will update this page so it can be more useful to users like you in the future!</p>
+      <h3> How To Create a New Wallet </h3>
         <ol>
           <li>Choose a password (see below for an explanation of this password) to create a new wallet / private key.</li>
           <li>Save the address.</li>
@@ -354,13 +353,14 @@
           <li>Be sure to save the private key. Use our print functionality. Save it! It is required the day you want to withdraw ether. <strong>Forget it, and the ether on the address are lost forever.</strong></li>
         </ol>
 
-      <h4> Transfer Ether from One Wallet to Another </h4>
-        <p>If you just created a new wallet, you might want to send ether from your pre-sale wallet to this wallet.</p>
+      <h3> How to Transfer Ether from One Wallet to Another </h3>
+        <p>If you just created a new wallet, you might want to send ether from your pre-sale wallet to this new wallet.</p>
         <ol>
           <li><strong>BEFORE YOU START</strong>: If you plan to move a large amount of ether, you should test sending a small amount to make sure you have full control over it. First, transfer a small amount to your address. After a minute, it should show up in a blockchain explorer, e.g. <a href="https://www.etherchain.org" target="_blank">https://www.etherchain.org</a>. Lastly, make sure the address that received that small amount is YOUR ADDRESS.</li>
-          <li>Navigate to the "Send Transaction" tab, and paste / upload your private key from the pre-sale wallet or the wallet you want to transfer from.</li>
-          <li> If it is the encrypted, enter the password.</li>
-          <li> If you have a <strong>pre-sale wallet</strong> look for the file called something like <em>"ethereum_wallet_backup.json"</em> and upload that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.</li>
+          <li>Navigate to the <a id="send-transaction" class="ptabs" showId="paneSendTrans">"Send Transaction"</a> tab, and paste / upload your private key from the pre-sale wallet or the wallet you want to transfer from.</li>
+          <li> <strong>Pre-Sale Wallet:</strong> look for the file called something like <code>"ethereum_wallet_backup.json"</code> and upload that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.</li>
+          <li> <strong> Geth Wallet:</strong> Your wallet files should be located in the following locations, depending on your OS. <br /> <strong>Mac:</strong> <code>~/Library/Ethereum/keystore</code> <strong>Linux:</strong> <code>~/.ethereum/keystore</code> <strong>Windows:</strong> <code>%APPDATA%/Ethereum/keystore</code></li>
+          <li> If the wallet is the encrypted, a textbox will automatically appear. Enter the password here. (Problems? See #12)</li>
           <li> Click the "DECRYPT" button and wait a couple seconds.</li>
           <li> You will now see your account information. It'll show your address, your balance, and have a space for the <em>Receiving Address</em> and the <em>Amount you want to send</em>.</li>
           <li> Remember, if this is a brand new wallet you are transferring to, let's test with a little bit before we go all <a href="https://youtu.be/X1UFtR8KUT8?t=330" target="_blank">FREEEEEDOOOOMMMM!!!</a> See step #1.</li>
@@ -380,10 +380,17 @@
       <h3> Why hasn't the address I just created shown up in the blockchain explorer? </h3>
         <p> It will only show up once you have transferred an amount to it. </p>
 
+      <h3> Where the hell is my geth wallet files? </h3>
+        <ul>
+          <li>Mac: <code>~/Library/Ethereum/keystore</code></li>
+          <li>Linux: <code>~/.ethereum/keystore</code></li>
+          <li>Windows: <code>%APPDATA%/Ethereum/keystore</code></li>
+        </ul>
+
       <h3> Security </h3>
         <p> One of your first questions is, "Why should I trust these people?" You are probably worried that this site isn't secure. That is a good thing. When dealing with currency and the internet, you should be paranoid. But, let's try to be a bit reasonable.</p>
 
-        <p> At this point, we have not had our code audited. Someone, <strong>PLEASE AUDIT US</strong>. <a href="https://www.reddit.com/r/ethereum/comments/3hh89n/could_someone_please_audit_ether_wallet/">Here is a reddit thread with another user asking for someone to audit us.</a> Reach out to us on reddit or github or <a id="contact" class="ptabs" showId="paneContact"> where ever</a>.</p>
+        <p> At this point, we have not had our code audited. Apparently, it costs a fair bit of money to get code audited. If you or a team you know would be willing to help us out in the auditing department, please let us know. <a href="https://www.reddit.com/r/ethereum/comments/3hh89n/could_someone_please_audit_ether_wallet/">Here is a reddit thread with another user asking for someone to audit us.</a> Reach out to us on reddit or github or <a id="contact" class="ptabs" showId="paneContact"> where ever</a>.</p>
 
         <p> Until someone / a group of people take the time to go through the code, here are some things to alleviate any paranoia you have:</p>
         <ul>
