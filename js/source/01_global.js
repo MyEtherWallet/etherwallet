@@ -69,13 +69,13 @@ function bindElements() {
 	$("#bulkgenerate").click(function() {
 		generateBulkWallets();
 	});
-    $("#transferAllBalance").click(function() {
-		getMaxSendAmount($("#accountAddress").html(), function(data){
-		  $('#sendtxamount').val(data);
-          $('input[type=radio][name=currencyRadio][value=ether]').prop("checked", true);
-          $('#sendtxamount').trigger("keyup");
-		},function(err){
-		  $("#txcreatestatus").html('<p class="text-center text-danger"><strong> ' + err + '</strong></p>').fadeIn(50).fadeOut(3000);
+	$("#transferAllBalance").click(function() {
+		getMaxSendAmount($("#accountAddress").html(), function(data) {
+			$('#sendtxamount').val(data);
+			$('input[type=radio][name=currencyRadio][value=ether]').prop("checked", true);
+			$('#sendtxamount').trigger("keyup");
+		}, function(err) {
+			$("#txcreatestatus").html('<p class="text-center text-danger"><strong> ' + err + '</strong></p>').fadeIn(50).fadeOut(3000);
 		});
 	});
 	$("#decryptdata").click(function() {
@@ -95,7 +95,7 @@ function bindElements() {
 		$("#walletPasdiv").hide();
 		$("#divprikeypassword").hide();
 		$("#wallettransactions").hide();
-        $("#decryptStatus").hide();
+		$("#decryptStatus").hide();
 		if (this.value == 'fileupload') {
 			$("#selectedTypeKey").hide();
 			$("#selectedUploadKey").show();
@@ -149,10 +149,10 @@ function bindElements() {
 	});
 	$('#manualprivkey').on('paste, keyup', function() {
 		$("#divprikeypassword").hide();
-        $("#walletuploadbutton").hide();
-        $("#uploadbtntxt-wallet").hide();
+		$("#walletuploadbutton").hide();
+		$("#uploadbtntxt-wallet").hide();
 		$("#uploadbtntxt-privkey").hide();
-        $("#manualprivkey").val($("#manualprivkey").val().replace(/(?:\r\n|\r|\n| )/g, ''));
+		$("#manualprivkey").val($("#manualprivkey").val().replace(/(?:\r\n|\r|\n| )/g, ''));
 		if ($('#manualprivkey').val().length == 128 || $('#manualprivkey').val().length == 132) {
 			$("#divprikeypassword").show();
 		} else if ($('#manualprivkey').val().length == 64) {
@@ -208,7 +208,7 @@ function bindElements() {
 function preSendTransaction() {
 	sendTransaction($("#tasignedtx").val(), function(data) {
 		$("#txsendstatus").html('<p class="text-center text-success"><strong> Transaction submitted. TX ID: ' + data + '</strong></p>');
-        setWalletBalance();
+		setWalletBalance();
 	}, function(err) {
 		$("#txsendstatus").html('<p class="text-center text-danger"><strong>' + err + '</strong></p>');
 	});
@@ -264,16 +264,19 @@ function setWalletBalance() {
 		alert(result.msg);
 	});
 }
-function walletDecryptSuccess(){
-    $("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
+
+function walletDecryptSuccess() {
+	$("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
 	setWalletBalance();
 	$("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000);
 	$("#wallettransactions").show();
 }
-function walletDecryptFailed(err){
-    $("#decryptStatus").html('<p class="text-center text-danger"><strong> ' + err + '</strong></p>').fadeIn(50).fadeOut(3000);
+
+function walletDecryptFailed(err) {
+	$("#decryptStatus").html('<p class="text-center text-danger"><strong> ' + err + '</strong></p>').fadeIn(50).fadeOut(3000);
 	$("#wallettransactions").hide();
 }
+
 function decryptFormData() {
 	PrivKey = "";
 	if (decryptType == 'fupload') {
@@ -284,7 +287,7 @@ function decryptFormData() {
 				PrivKey = getWalletFilePrivKey(fr.result, $('#walletfilepassword').val());
 				walletDecryptSuccess();
 			} catch (err) {
-                walletDecryptFailed(err);
+				walletDecryptFailed(err);
 			}
 		};
 		fr.readAsText(file);
@@ -293,7 +296,7 @@ function decryptFormData() {
 			PrivKey = decryptTxtPrivKey($('#manualprivkey').val(), $("#privkeypassword").val());
 			walletDecryptSuccess();
 		} catch (err) {
-            walletDecryptFailed("Invalid password");
+			walletDecryptFailed("Invalid password");
 		}
 	}
 }
@@ -391,6 +394,7 @@ function generateBulkWallets() {
 	var acc = new Accounts();
 	var csv = "";
 	var jsonarr = [];
+	var printjson = [];
 	var txt = "";
 	for (var i = 0; i < count; i++) {
 		if (isencrypted) {
@@ -406,6 +410,10 @@ function generateBulkWallets() {
 		jsonarr.push({
 			address: newAccount.address,
 			private: newAccount.private
+		});
+		printjson.push({
+			address: newAccount.address,
+			private: acc.get(newAccount.address, password).private
 		});
 	}
 	var csvblob = new Blob([csv], {
@@ -424,23 +432,31 @@ function generateBulkWallets() {
 	$("#bulkexportcsv").attr('download', fname + '.csv');
 	$("#bulkexporttxt").attr('href', window.URL.createObjectURL(txtblob));
 	$("#bulkexporttxt").attr('download', fname + '.txt');
+	$("#bulkwalletprint").unbind();
+	$("#bulkwalletprint").click(function() {
+		openPrintPaperWallets(JSON.stringify(printjson));
+	});
 	acc.clear();
+}
+
+function openPrintPaperWallets(strjson) {
+	$.get('printwallets.html', function(data) {
+		data = data.replace("{{WALLETJSON}}", strjson);
+		var win = window.open("about:blank", "_blank");
+		win.document.write(data);
+		$(win).ready(function() {
+			win.document.write("<script>generateWallets();</script>");
+		});
+	});
 }
 
 function printQRcode() {
 	var address = $("#address").val();
-	var qrsourceprivkey = $("#qrcode").html();
-	var qrsourceadd = $("#qrcodeAdd").html();
-	$("#paperwalletprivqr").html(qrsourceprivkey);
-	$("#paperwalletpriv").html($("#privkey").val());
-	$("#paperwalletaddqr").html(qrsourceadd);
-	$("#paperwalletadd").html(address);
-	var html = $("#panePrint").html() + "<script>setTimeout(function(){window.print();},2000);</script>"; // "<h4>Address (" + address + ")</h4><br/>" + qrsourceadd + "<h4>Private Key</h4></br>" + qrsourceprivkey;
-	var win = window.open("about:blank", "_blank");
-	win.document.write(html);
-}
-HTMLElement.prototype.click = function() {
-	var evt = this.ownerDocument.createEvent('MouseEvents');
-	evt.initMouseEvent('click', true, true, this.ownerDocument.defaultView, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
-	this.dispatchEvent(evt);
+	var privkey = $("#privkey").val();
+	var jsonarr = [];
+	jsonarr.push({
+		address: address,
+		private: privkey
+	});
+	openPrintPaperWallets(JSON.stringify(jsonarr));
 }
