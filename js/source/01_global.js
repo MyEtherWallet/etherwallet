@@ -440,9 +440,9 @@ function generateBulkWallets() {
 }
 
 function openPrintPaperWallets(strjson) {
+    var win = window.open("about:blank", "_blank");
 	$.get('printwallets.html', function(data) {
 		data = data.replace("{{WALLETJSON}}", strjson);
-		var win = window.open("about:blank", "_blank");
 		win.document.write(data);
 		$(win).ready(function() {
 			win.document.write("<script>generateWallets();</script>");
