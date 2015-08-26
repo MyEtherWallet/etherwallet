@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>MyEtherWallet: Open Source JavaScript Client-Side Ether Wallet</title>
+  <meta http-equiv="refresh" content="0; url=https://www.myetherwallet.com/">
+  <link rel="canonical" href="https://www.myetherwallet.com" />
   <meta name="description" content="Ether Wallet: Open Source JavaScript Client-Side Ether Wallet">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
