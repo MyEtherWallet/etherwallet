@@ -2,6 +2,7 @@ var PrivKey = "";
 var decryptType = "";
 var usdval;
 var eurval;
+var web3 = new Web3();
 $(document).ready(function() {
 	bindElements();
 	checkAndLoadPageHash();

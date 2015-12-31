@@ -147,7 +147,7 @@ function formatAddress(addr, format){
     return cryptoJSToHex(decrypted); //doesnt work not sure why, I'll figure it out later
 }*/
 function strPrivateKeyToAddress(privkey){
-    var public = ethUtil.privateToPublic(hexToBytes(privkey));
+    var public = ethUtil.privateToPublic(new Buffer(privkey, 'hex'));
     return ethUtil.publicToAddress(public).toString('hex');
 }
 function getKDFKey(cryptoJson, password) {
