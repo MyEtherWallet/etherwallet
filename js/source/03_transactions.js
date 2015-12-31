@@ -26,11 +26,11 @@ function createTransaction(privkey, to, amountinwei, successcb, errorcb) {
 		var gasLimit = padLeftEven(BNtoHex(new BigNumber(stdTransactionGas))); //standard 21000 per transaction
 		var value = padLeftEven(BNtoHex(new BigNumber(String(amountinwei))));
 		var rawTx = {
-			nonce: nonce,
-			gasPrice: gasPrice,
-			gasLimit: gasLimit,
+			nonce: '0x'+nonce,
+			gasPrice: '0x'+gasPrice,
+			gasLimit: '0x'+gasLimit,
 			to: to,
-			value: value,
+			value: '0x'+value,
 			data: ''
 		};
 		var tx = new Tx(rawTx);
@@ -76,12 +76,12 @@ function createTransactionFromRaw(rawObj, privkey, successcb, errorcb) {
 		var gasLimit = padLeftEven(BNtoHex(new BigNumber(rawObj.gas))); 
 		var value = padLeftEven(BNtoHex(new BigNumber(String(rawObj.value))));
 		var rawTx = {
-			nonce: nonce,
-			gasPrice: gasPrice,
-			gasLimit: gasLimit,
+			nonce: '0x'+nonce,
+			gasPrice: '0x'+gasPrice,
+			gasLimit: '0x'+gasLimit,
 			to: rawObj.to,
-			value: value,
-			data: rawObj.data
+			value: '0x'+value,
+			data: '0x'+rawObj.data
 		};
 		var tx = new Tx(rawTx);
 		tx.sign(privateKey);
