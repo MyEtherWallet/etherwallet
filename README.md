@@ -92,6 +92,6 @@ This project loads JQuery 1.11.3 and then a minified JS file that is composed of
 
 
 ### ToDo
-- Maybe clean up that Gulp file. It's becoming unwieldy.
-- QA and bugfixes for every browser except Chrome.
-- Compile and submit solidity contracts.
+- Add a way to display the paper wallets locally
+- Add a note explaining that encrypted private keys and json files can only be decrypted by MyEtherWallet. If you want to import into geth, make sure you download & save the unencrypted private key / .json
+- Create Get Account Info tab
