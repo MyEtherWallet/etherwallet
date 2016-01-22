@@ -4,7 +4,7 @@
 
 ### About EtherWallet
 
-EtherWallet is an open source, javascript, client-side tool for generating Ether wallets. It was created by [kvhnuke](https://github.com/kvhnuke) and [tayvano](https://github.com/tayvano) aka [supergeniustay](http://www.supergeniustay.com).
+EtherWallet is an open source, javascript, client-side tool for generating Ether wallets. It was created by [kvhnuke](https://github.com/kvhnuke) and [tayvano](https://github.com/tayvano) aka [insomniasexx](https://www.reddit.com/user/insomniasexx).
 
 
 - Official link: https://www.myetherwallet.com - now with SSL! Content of myetherwallet.com is hosted in github, which will gurantee the validity of the source code.
@@ -19,7 +19,7 @@ It was created because many users were having immense trouble setting up the eth
 
 We hope that it'll help most of us to accomplish day to day tasks without having a fully running client.
 
-If you can think of any other features or run into bugs, let us know. You can fork, open a PR, open an issue, [message kvhnuke on reddit](https://www.reddit.com/message/compose/?to=kvhnuke), [email tayvano](mailto:tayvano@gmail.com) or however else you can track us down.
+If you can think of any other features or run into bugs, let us know. You can fork, open a PR, open an issue, [message kvhnuke on reddit](https://www.reddit.com/message/compose/?to=kvhnuke), [email tayvano](mailto:tayvano@gmail.com) or [in any of these ways](https://www.myetherwallet.com/#contact).
 
 
 ### Developing
@@ -93,5 +93,4 @@ This project loads JQuery 1.11.3 and then a minified JS file that is composed of
 
 ### ToDo
 - Add a way to display the paper wallets locally
-- Add a note explaining that encrypted private keys and json files can only be decrypted by MyEtherWallet. If you want to import into geth, make sure you download & save the unencrypted private key / .json
 - Create Get Account Info tab
