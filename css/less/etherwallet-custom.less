@@ -99,3 +99,21 @@ header {
     margin-top: 2em;
   }
 }
+
+.announcement {
+  text-align: center;
+  padding: 5px 0;
+  background-color: @brand-primary;
+  color: white;
+  display: block;
+  &:hover,
+  &:focus {
+    color: darken(white, 5%);
+    text-decoration: none;
+    background-color: darken(@brand-primary, 5%);
+  }
+}
+
+.text-underline {
+  text-decoration: underline;
+}

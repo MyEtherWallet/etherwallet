@@ -32,11 +32,12 @@
 </head>
 
 <body>
-
 <header class="container-fluid bg-navy text-white">
 <section class="container">
   <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a>
   <p>Open Source JavaScript Client-Side Ether Wallet</p>
 </section>
 </header>
+<a href="https://github.com/kvhnuke/MyEtherWalletChromeExtension" class="announcement" target="_blank"> COMING SOON! Our brand new CHROME EXTENSION. Save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!</a>
+
 
