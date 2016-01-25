@@ -256,11 +256,11 @@ function setWalletBalance() {
 			$("#accountBalance").html(bestCurAmount.amount + " " + bestCurAmount.unit);
 			getETHvalue('ZUSD', function(value) {
 				usdval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
-				$("#accountBalanceUsd").html(formatCurrency(usdval,'$') + " USD");
+				$("#accountBalanceUsd").html(formatCurrency(parseFloat(usdval),'$') + " USD");
 			});
 			getETHvalue('ZEUR', function(value) {
 				eurval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
-				$("#accountBalanceEur").html(formatCurrency(eurval,'€')+ " EUR");
+				$("#accountBalanceEur").html(formatCurrency(parseFloat(eurval),'€')+ " EUR");
 			});
             getETHvalue('XXBT', function(value) {
 				btcval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
