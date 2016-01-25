@@ -260,7 +260,7 @@ function setWalletBalance() {
 			});
 			getETHvalue('ZEUR', function(value) {
 				eurval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
-				$("#accountBalanceEur").html(formatCurrency(parseFloat(eurval),'€')+ " EUR");
+				$("#accountBalanceEur").html(formatCurrency(parseFloat(eurval),'&euro;')+ " EUR");
 			});
             getETHvalue('XXBT', function(value) {
 				btcval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
