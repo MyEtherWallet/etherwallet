@@ -2,6 +2,7 @@ var PrivKey = "";
 var decryptType = "";
 var usdval;
 var eurval;
+var btcval;
 var web3 = new Web3();
 $(document).ready(function() {
 	bindElements();
@@ -253,13 +254,17 @@ function setWalletBalance() {
 		if (!result.error) {
 			var bestCurAmount = getBestEtherKnownUnit(result.data.balance);
 			$("#accountBalance").html(bestCurAmount.amount + " " + bestCurAmount.unit);
-			getETHvalue('USD', function(value) {
+			getETHvalue('ZUSD', function(value) {
 				usdval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
-				$("#accountBalanceUsd").html(usdval + " USD");
+				$("#accountBalanceUsd").html(formatCurrency(usdval,'$') + " USD");
 			});
-			getETHvalue('EUR', function(value) {
+			getETHvalue('ZEUR', function(value) {
 				eurval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
-				$("#accountBalanceEur").html(eurval + " EUR");
+				$("#accountBalanceEur").html(formatCurrency(eurval,'€')+ " EUR");
+			});
+            getETHvalue('XXBT', function(value) {
+				btcval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
+				$("#accountBalanceBtc").html(btcval + " BTC");
 			});
 		} else
 		alert(result.msg);
@@ -278,6 +283,9 @@ function walletDecryptFailed(err) {
 	$("#wallettransactions").hide();
 }
 
+function formatCurrency(n, currency) {
+    return currency + " " + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+}
 function decryptFormData() {
 	PrivKey = "";
 	if (decryptType == 'fupload') {
