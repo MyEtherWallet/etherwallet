@@ -16,7 +16,7 @@ function getEthCall(txobj, callback){
     $.post( SERVERURL, { ethCall: txobj }).done(callback);
 }
 function getETHvalue(slavePair, callback){
-    var prefix = "XETHZ";
+    var prefix = "XETH";
     $.post( KRAKENAPI+"Ticker", { pair: prefix+slavePair }).done(function(data){
         callback(data['result'][prefix+slavePair]['o']);
     });
