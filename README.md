@@ -1,17 +1,16 @@
-# etherwallet
-
 ## Official link: https://www.myetherwallet.com - now with SSL! Content of myetherwallet.com is hosted in github, which will gurantee the validity of the source code.
 
-### About EtherWallet
+### MyEtherWallet
 
-EtherWallet is an open source, javascript, client-side tool for generating Ether wallets. It was created by [kvhnuke](https://github.com/kvhnuke) and [tayvano](https://github.com/tayvano) aka [insomniasexx](https://www.reddit.com/user/insomniasexx).
-
+MyEtherWallet is an open source, javascript, client-side tool for generating Ether wallets. It was created, and is maintained, by [kvhnuke](https://github.com/kvhnuke) and [tayvano](https://github.com/tayvano) aka [insomniasexx](https://www.reddit.com/user/insomniasexx).
 
 - Official link: https://www.myetherwallet.com - now with SSL! Content of myetherwallet.com is hosted in github, which will gurantee the validity of the source code.
 - Original, non-SSL link: http://kvhnuke.github.io/etherwallet/
 - [original reddit thread](https://www.reddit.com/r/ethereum/comments/3gkknd/ether_wallet_generator_for_now/)
 
-It was created because many users were having immense trouble setting up the ethereum client on their computers. Therefore, we am planning to implement following features to the browser-based wallet.
+### Purpose
+
+MyEtherWallet was created because many users were having immense trouble setting up the ethereum client on their computers. Therefore, we am planning to implement following features to the browser-based wallet.
 - Bulk generate wallets
 - Import client wallet files and presale wallet files.
 - Generate transactions from the imported wallet files
@@ -19,6 +18,8 @@ It was created because many users were having immense trouble setting up the eth
 
 We hope that it'll help most of us to accomplish day to day tasks without having a fully running client.
 
+
+### Contact
 If you can think of any other features or run into bugs, let us know. You can fork, open a PR, open an issue, [message kvhnuke on reddit](https://www.reddit.com/message/compose/?to=kvhnuke), [email tayvano](mailto:tayvano@gmail.com) or [in any of these ways](https://www.myetherwallet.com/#contact).
 
 
