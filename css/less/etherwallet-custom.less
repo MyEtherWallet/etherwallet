@@ -114,6 +114,42 @@ header {
   }
 }
 
+.annoucement-danger {
+  background-color: @brand-danger;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+  a {
+    text-decoration: underline;
+    color:white;
+  }
+  a:hover,
+  a:focus {
+    color: darken(white, 5%);
+    background: transparent;
+  }
+}
+
 .text-underline {
   text-decoration: underline;
+}
+
+.address-identicon-container {
+  padding-left: 0;
+  padding-top: 10px;
+  text-align: right;
+  @media screen and (max-width: @grid-float-breakpoint) {
+    padding-left: 25px;
+    padding-top: 0;
+  }
+}
+
+#addressIdenticon {
+    width: 64px;
+    height: 64px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    box-shadow: inset rgba(255, 255, 255, 0.5) 0 2px 2px, inset rgba(0, 0, 0, 0.6) 0 -1px 8px;
 }

@@ -38,7 +38,12 @@
   <p>Open Source JavaScript Client-Side Ether Wallet</p>
 </section>
 </header>
-<a href="https://github.com/kvhnuke/MyEtherWalletChromeExtension" class="announcement" target="_blank"> COMING SOON! Our brand new CHROME EXTENSION. Save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!</a>
+<!--<a href="https://github.com/kvhnuke/MyEtherWalletChromeExtension" class="announcement" target="_blank"> COMING SOON! Our brand new CHROME EXTENSION. Save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!</a>-->
+
+<div class="annoucement-danger">
+  MyEtherWallet will be down for maintence <strong>TODAY (1/25/16) at MIDNIGHT</strong> in LOS ANGELES (PST).
+  <br /> Please do not send a transaction after 11:45pm PST. <a href="https://www.google.com/search?q=what+time+is+it+in+los+angeles" target="_blank">What time is it now?</a>
+</div>
 
 
 
@@ -80,9 +85,17 @@
         <hr />
         <h3 class="text-success col-xs-12">Sucess! Your wallet has been generated.</h3>
         <div class="col-sm-6">
-          <div class="form-group">
-            <h4>Your Address:</h4>
-            <input class="form-control" type="text" id="address" readonly="readonly">
+          <div class="row">
+            <div class="form-group col-sm-10">
+              <h4>Your Address:</h4>
+              <input class="form-control" type="text" id="address" readonly="readonly">
+            </div>
+            <div class="col-sm-2 address-identicon-container">
+              <!-- TODO KVHNUKE - icon goes in this div thingy. #icon on https://github.com/alexvandesande/blockies/blob/master/ethereum-address-sample.html becomes #addressIdenticon:
+
+              <div id="addressIdenticon" title="Address Indenticon"></div>
+              -->
+            </div>
           </div>
           <div class="form-group">
             <h4>Your Private Key (encrypted):</h4>
@@ -151,9 +164,17 @@
             <table id="bulkgentable" class="table">
               <thead>
                 <tr>
+                  <th> Address Identicon </th>
                   <th width="500">Address</th>
                   <th width="500">Private Key <span id="bulkIsEnc"></span></th>
                 </tr>
+                <!-- TODO KVHNUKE - add new column at beginning
+                <tr>
+                  <td><div id="addressIdenticon" title="Address Indenticon"></div></td>
+                  <td>this already exists</td>
+                  <td>this already exists</td>
+                </tr>
+                -->
               </thead>
             </table>
           </div>
@@ -236,6 +257,10 @@
         <div class="col-sm-4">
           <h4> Account Information </h4>
           <div>
+            <!-- TODO KVHNUKE
+            <div id="addressIdenticon" title="Address Indenticon"></div>
+            <br />
+            -->
             <p> Account Address: <br /> <strong id="accountAddress" style="margin-left: 1em"></strong></p>
             <p> Account Balance: <br />
               <strong class="text-success" id="accountBalance" style="margin-left: 1em"> loading... </strong>
