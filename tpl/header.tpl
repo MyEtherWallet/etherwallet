@@ -38,11 +38,5 @@
   <p>Open Source JavaScript Client-Side Ether Wallet</p>
 </section>
 </header>
-<!--<a href="https://github.com/kvhnuke/MyEtherWalletChromeExtension" class="announcement" target="_blank"> COMING SOON! Our brand new CHROME EXTENSION. Save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!</a>-->
-
-<div class="annoucement-danger">
-  MyEtherWallet will be down for maintence <strong>TODAY (1/25/16) at MIDNIGHT</strong> in LOS ANGELES (PST).
-  <br /> Please do not send a transaction after 11:45pm PST. <a href="https://www.google.com/search?q=what+time+is+it+in+los+angeles" target="_blank">What time is it now?</a>
-</div>
-
+<a href="https://github.com/kvhnuke/MyEtherWalletChromeExtension" class="announcement" target="_blank"> COMING SOON! Our brand new CHROME EXTENSION. Save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!</a>
 
