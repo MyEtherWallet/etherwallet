@@ -417,7 +417,7 @@ function generateBulkWallets() {
 			newAccount.private = newAccount.private + addressHash;
 		} else
 		var newAccount = acc.new();
-		$('#bulkgentable tr:last').after('<tr class="privaddkey"><td id="addressIdenticon" class="addressIdenticon-'+i+'"></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.address + '</textarea></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.private + '</textarea></td></tr>');
+		$('#bulkgentable tr:last').after('<tr class="privaddkey"><td><div id="addressIdenticon" class="addressIdenticon-'+i+'"></div></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.address + '</textarea></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.private + '</textarea></td></tr>');
 		$(".addressIdenticon-"+i).css("background-image", 'url(' + blockies.create({ seed:newAccount.address ,size: 8,scale: 16}).toDataURL()+')');  
         csv += newAccount.address + ',' + newAccount.private + '\n';
 		txt += newAccount.address + '\t' + newAccount.private + '\n';
