@@ -272,10 +272,13 @@ function setWalletBalance() {
 }
 
 function walletDecryptSuccess() {
-	$("#accountAddress").html(formatAddress(strPrivateKeyToAddress(PrivKey), 'hex'));
+    var decrytedAdd = formatAddress(strPrivateKeyToAddress(PrivKey), 'hex');
+	$("#accountAddress").html(decrytedAdd);
+    $('.walletaddressIdenticon').css("background-image", 'url(' + blockies.create({ seed:decrytedAdd ,size: 8,scale: 16}).toDataURL()+')');  
 	setWalletBalance();
 	$("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000);
 	$("#wallettransactions").show();
+    
 }
 
 function walletDecryptFailed(err) {
@@ -340,6 +343,7 @@ function generateSingleWallet() {
 	var acc = new Accounts();
 	var newAccountEnc = acc.new(password);
 	$("#address").val(newAccountEnc.address);
+    $('#addressIdenticon').css("background-image", 'url(' + blockies.create({ seed:newAccountEnc.address ,size: 8,scale: 16}).toDataURL()+')');  
 	var addressHash = cryptoJSToHex(CryptoJS.SHA3(newAccountEnc.address));
 	addressHash = addressHash.substr(addressHash.length - 4);
 	var newAccountUnEnc = acc.get(newAccountEnc.address, password);
@@ -413,8 +417,9 @@ function generateBulkWallets() {
 			newAccount.private = newAccount.private + addressHash;
 		} else
 		var newAccount = acc.new();
-		$('#bulkgentable tr:last').after('<tr class="privaddkey"><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.address + '</textarea></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.private + '</textarea></td></tr>');
-		csv += newAccount.address + ',' + newAccount.private + '\n';
+		$('#bulkgentable tr:last').after('<tr class="privaddkey"><td id="addressIdenticon" class="addressIdenticon-'+i+'"></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.address + '</textarea></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.private + '</textarea></td></tr>');
+		$(".addressIdenticon-"+i).css("background-image", 'url(' + blockies.create({ seed:newAccount.address ,size: 8,scale: 16}).toDataURL()+')');  
+        csv += newAccount.address + ',' + newAccount.private + '\n';
 		txt += newAccount.address + '\t' + newAccount.private + '\n';
 		jsonarr.push({
 			address: newAccount.address,
