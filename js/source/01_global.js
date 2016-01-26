@@ -3,7 +3,6 @@ var decryptType = "";
 var usdval;
 var eurval;
 var btcval;
-var web3 = new Web3();
 $(document).ready(function() {
 	bindElements();
 	checkAndLoadPageHash();
