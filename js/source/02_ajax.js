@@ -26,6 +26,6 @@ function getETHvalue(slavePair, callback){
     var prefix = "eth";
     slavePair = slavePair.toLowerCase();
     $.get(COINMARKETCAPAPI+prefix, function( data ) {
-        callback(parseFloat(data['price'][slavePair]));
+        callback(parseFloat(data['price'][slavePair]).toFixed(6));
     });
 }
