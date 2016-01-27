@@ -253,15 +253,15 @@ function setWalletBalance() {
 		if (!result.error) {
 			var bestCurAmount = getBestEtherKnownUnit(result.data.balance);
 			$("#accountBalance").html(bestCurAmount.amount + " " + bestCurAmount.unit);
-			getETHvalue('ZUSD', function(value) {
+			getETHvalue('USD', function(value) {
 				usdval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
 				$("#accountBalanceUsd").html(formatCurrency(parseFloat(usdval),'$') + " USD");
 			});
-			getETHvalue('ZEUR', function(value) {
+			getETHvalue('EUR', function(value) {
 				eurval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
 				$("#accountBalanceEur").html(formatCurrency(parseFloat(eurval),'&euro;')+ " EUR");
 			});
-            getETHvalue('XXBT', function(value) {
+            getETHvalue('BTC', function(value) {
 				btcval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
 				$("#accountBalanceBtc").html(btcval + " BTC");
 			});
