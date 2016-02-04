@@ -254,16 +254,19 @@ function setWalletBalance() {
 			var bestCurAmount = getBestEtherKnownUnit(result.data.balance);
 			$("#accountBalance").html(bestCurAmount.amount + " " + bestCurAmount.unit);
 			getETHvalue('USD', function(value) {
-				usdval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
-				$("#accountBalanceUsd").html(formatCurrency(parseFloat(usdval),'$') + " USD");
+                usdval = value;
+				tusdval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
+				$("#accountBalanceUsd").html(formatCurrency(parseFloat(tusdval),'$') + " USD");
 			});
 			getETHvalue('EUR', function(value) {
-				eurval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
-				$("#accountBalanceEur").html(formatCurrency(parseFloat(eurval),'&euro;')+ " EUR");
+			    eurval = value; 
+				teurval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
+				$("#accountBalanceEur").html(formatCurrency(parseFloat(teurval),'&euro;')+ " EUR");
 			});
             getETHvalue('BTC', function(value) {
-				btcval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
-				$("#accountBalanceBtc").html(btcval + " BTC");
+                btcval = value;
+				tbtcval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
+				$("#accountBalanceBtc").html(tbtcval + " BTC");
 			});
 		} else
 		alert(result.msg);
