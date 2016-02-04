@@ -166,3 +166,27 @@ header {
 .bigger-on-mobile.form-control[readonly] {
   height: 120px;
 }
+
+
+.account-help-icon {
+  position: relative;
+  display: inline-block;
+}
+.account-help-text {
+  display: none;
+  position: absolute;
+  font-size: 13px;
+  background: white;
+  padding: 5px;
+  width: 230px;
+  top: -5px;
+  left: 30px;
+  border: 1px solid #CDCDCD;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(100,100,100,.2);
+}
+
+.account-help-icon:hover .account-help-text {
+  display: block;
+}
+
