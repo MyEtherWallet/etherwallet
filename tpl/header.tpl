@@ -38,5 +38,5 @@
   <p>Open Source JavaScript Client-Side Ether Wallet</p>
 </section>
 </header>
-<a href="https://github.com/kvhnuke/MyEtherWalletChromeExtension" class="announcement" target="_blank"> Our brand new CHROME EXTENSION is now in BETA! Save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!</a>
+<a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" class="announcement" target="_blank"> Our brand new CHROME EXTENSION is now in BETA! Save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!</a>
 
