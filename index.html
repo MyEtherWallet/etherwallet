@@ -403,25 +403,35 @@
       <p>Do you see something missing? Have another question? <a id="contact" class="ptabs" showId="paneContact">Get in touch with us</a> and we will not only answer your question, we will update this page so it can be more useful to people like you in the future!</p>
       <h3> How To Create a New Wallet </h3>
         <ol>
-          <li>Choose a password (see below for an explanation of this password) to create a new wallet / private key.</li>
-          <li>Save the address.</li>
-          <li>Save your public key. You can keep it to yourself or share it with others. That way, others can transfer ether to you. They can't take your money with the public key.</li>
-          <li>Save the private key and back it up. Do not show it to anyone else. Your private key is not needed to receive ether, only to withdraw.</li>
-          <li>Be sure to save the private key. Use our print functionality. Save it! It is required the day you want to withdraw ether. <strong>Forget it, and the ether on the address are lost forever.</strong></li>
+          <li> Go to the "Generate Wallet" tab.</li>
+          <li>Enter a password for your wallet. The password encrypts the private key for this wallet. <strong>We recommend using a very strong password and keep it safe.</strong> You will need this password to send transactions.</li>
+          <li> Click "GENERATE".</li>
+          <li>Save the address (you may know this as your public key). You can keep it to yourself or share it with others. That way, others can transfer ether to you. They can't take your money with the address.</li>
+          <li>Save the private key. Do not show it to anyone else. Your private key is not needed to receive ether, only to withdraw or generate transactions.</li>
+          <li>If you download the encrypted Private Key or encrypted JSON file, you will need the password you chose upon creating the wallet to decrypt it. So make sure to save the unencrypted versions of the file or save the password along with the encrypted versions.</li>
+          <li>Seriously, be sure to save the private key and/or JSON file. Use our print functionality. Save it! It is required the day you want to withdraw ether. <strong>Forget it, and the ether on the address are lost forever.</strong></li>
+        </ol>
+          <p> Note: the encrypted private key / JSON file is encrypted using the password you used when you created the wallet. If you uploaded an encrypted private key, the password you used to decrypt the private key is used to encrypt these items.</p>
+          <p> Note: the JSON file is simply a different way of storing your private key / information.</p>
+          <p> Last note: MyEtherWallet can decrypt geth / pre-sale wallets, but geth <strong> cannot </strong> decrypt wallets encrypted by MyEtherWallet. We allow you to save both the encrypted and decrypted private keys / JSON files on MyEtherWallet. If you plan on not touching a wallet created on MyEtherWallet for a long, long time it may be prudent to save the unencrypted private key / JSON file so you can access it via geth, the official Ethereum GUI wallet, or whatever else is around in the distant future.</p>
         </ol>
 
       <h3> How to Transfer Ether from One Wallet to Another </h3>
         <p>If you just created a new wallet, you might want to send ether from your pre-sale wallet to this new wallet.</p>
         <ol>
           <li><strong>BEFORE YOU START</strong>: If you plan to move a large amount of ether, you should test sending a small amount to make sure you have full control over it. First, transfer a small amount to your address. After a minute, it should show up in a blockchain explorer, e.g. <a href="https://www.etherchain.org" target="_blank">https://www.etherchain.org</a>. Lastly, make sure the address that received that small amount is YOUR ADDRESS.</li>
-          <li>Navigate to the <a id="send-transaction" class="ptabs" showId="paneSendTrans">"Send Transaction"</a> tab, and paste / upload your private key from the pre-sale wallet or the wallet you want to transfer from.</li>
-          <li> <strong>Pre-Sale Wallet:</strong> look for the file called something like <code>"ethereum_wallet_backup.json"</code> and upload that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.</li>
-          <li> <strong> Geth Wallet:</strong> Your wallet files should be located in the following locations, depending on your OS. <br /> <strong>Mac:</strong> <code>~/Library/Ethereum/keystore</code> <strong>Linux:</strong> <code>~/.ethereum/keystore</code> <strong>Windows:</strong> <code>%APPDATA%/Ethereum/keystore</code></li>
-          <li> If the wallet is the encrypted, a textbox will automatically appear. Enter the password here. (Problems? See #12)</li>
+          <li>Navigate to the <a id="send-transaction" class="ptabs" showId="paneSendTrans">"Send Transaction"</a> tab</li>
+          <li>Paste / upload your private key of wallet you want to transfer from.</li>
+          <li> If the wallet is the encrypted, a textbox will automatically appear. Enter the password here.</li>
           <li> Click the "DECRYPT" button and wait a couple seconds.</li>
           <li> You will now see your account information. It'll show your address, your balance, and have a space for the <em>Receiving Address</em> and the <em>Amount you want to send</em>.</li>
           <li> Remember, if this is a brand new wallet you are transferring to, let's test with a little bit before we go all <a href="https://youtu.be/X1UFtR8KUT8?t=330" target="_blank">FREEEEEDOOOOMMMM!!!</a> See step #1.</li>
-          <li> Otherwise, once you are certain, go for it. Enter the to address and the amount and click "GENERATE TRANSACTION"</li>
+          <li> Otherwise, once you are certain, go for it.</li>
+          <li> Enter the address you would like to send to in the "To Address:" field.</li>
+          <li>Enter the amount you would like to send. You can also click the [Click here to transfer total available balance] link if you would like the transfer the entire balance.</li>
+          <li>A couple more fields will appear. Click the blue "SEND TRANSACTION" button below that.</li>
+          <li>A Pop-Up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction."</li>
+          <li>The transaction will be submitted. The TX ID will display. You can copy that TX ID and paste it into the search bar on etherchain to verify the transaction went through.</li>
           <li> Success! </li>
         </ol>
           <p> Note: Some people have been accidentally typing addresses without the prefix "0x". All addresses start with 0x. Others have been losing characters off the end. We have validation on our site that doesn't allow you to send to addresses without this prefix, and our validation verifies that the address you are sending to is valid. Regardless of any validation measures in place on our site or other sites, ALWAYS BE CAREFUL. DOUBLE CHECK YOUR ADDRESS BEFORE SENDING. PLEASE!</p>
@@ -449,6 +459,11 @@
           <li>Linux: <code>~/.ethereum/keystore</code></li>
           <li>Windows: <code>%APPDATA%/Ethereum/keystore</code></li>
         </ul>
+
+        <h3> Where is my pre-sale  wallet file?</h3>
+        <p> Where ever you saved it. ;) It also was emailed to you, so check there. Look for the file called <code>"ethereum_wallet_backup.json"</code> and upload that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.</p>
+
+
 
       <h3> What happens if your site goes down? </h3>
         <p>There seems to be a lot of confusion about what MyEtherWallet does. It's not a web wallet where you put your Ether and we store them for you. You don't have a login and nothing ever gets saved to our servers. It is simply an interface that allows you to do things you normally would do via command line.</p>
