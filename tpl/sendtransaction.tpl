@@ -6,7 +6,7 @@
       <h4> How would you like to access your wallet? </h4>
       <div class="radio">
         <label>
-          <input type="radio" name="typeOfKeyRadio" value="fileupload">Upload Your Wallet File (JSON from presale / geth / MyEtherWallet).</label>
+          <input type="radio" name="typeOfKeyRadio" value="fileupload">Upload Your Wallet File <small>(JSON from presale / geth / MyEtherWallet).</small></label>
       </div>
       <div class="radio">
         <label>

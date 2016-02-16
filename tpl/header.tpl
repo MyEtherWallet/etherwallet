@@ -12,7 +12,6 @@
   <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
   <script type="text/javascript" src="js/etherwallet-master.min.js"></script>
-
   <link rel="apple-touch-icon" sizes="60x60" href="/fav/apple-touch-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="76x76" href="/fav/apple-touch-icon-76x76.png">
   <link rel="apple-touch-icon" sizes="120x120" href="/fav/apple-touch-icon-120x120.png">
