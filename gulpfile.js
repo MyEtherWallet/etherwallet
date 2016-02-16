@@ -84,9 +84,24 @@ gulp.task('staticJS', function () {
 
 gulp.task('genHTMLPages', function () {
     var header=fs.readFileSync("./tpl/header.tpl", "utf8");
+    var walletgenerator=fs.readFileSync("./tpl/walletgenerator.tpl", "utf8");
+    var bulkgenerator=fs.readFileSync("./tpl/bulkgenerator.tpl", "utf8");
+    var sendtransaction=fs.readFileSync("./tpl/sendtransaction.tpl", "utf8");
+    var print=fs.readFileSync("./tpl/print.tpl", "utf8");
+    var help=fs.readFileSync("./tpl/help.tpl", "utf8");
+    var contact=fs.readFileSync("./tpl/contact.tpl", "utf8");
     var footer=fs.readFileSync("./tpl/footer.tpl", "utf8");
     return gulp.src(htmlPages)
-        .pipe(template({header: header, footer: footer}))
+        .pipe(template({
+            header: header,
+            walletgenerator: walletgenerator,
+            bulkgenerator: bulkgenerator,
+            sendtransaction: sendtransaction,
+            print: print,
+            help: help,
+            contact: contact,
+            footer: footer
+          }))
         .pipe(gulp.dest('./'))
         .pipe(notify('HTML Pages generated'));
 });
