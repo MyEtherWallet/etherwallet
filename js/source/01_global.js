@@ -259,7 +259,7 @@ function setWalletBalance() {
 				$("#accountBalanceUsd").html(formatCurrency(parseFloat(tusdval),'$') + " USD");
 			});
 			getETHvalue('EUR', function(value) {
-			    eurval = value; 
+			    eurval = value;
 				teurval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
 				$("#accountBalanceEur").html(formatCurrency(parseFloat(teurval),'&euro;')+ " EUR");
 			});
@@ -276,11 +276,11 @@ function setWalletBalance() {
 function walletDecryptSuccess() {
     var decrytedAdd = formatAddress(strPrivateKeyToAddress(PrivKey), 'hex');
 	$("#accountAddress").html(decrytedAdd);
-    $('.walletaddressIdenticon').css("background-image", 'url(' + blockies.create({ seed:decrytedAdd ,size: 8,scale: 16}).toDataURL()+')');  
+    $('.walletaddressIdenticon').css("background-image", 'url(' + blockies.create({ seed:decrytedAdd ,size: 8,scale: 16}).toDataURL()+')');
 	setWalletBalance();
 	$("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000);
 	$("#wallettransactions").show();
-    
+
 }
 
 function walletDecryptFailed(err) {
@@ -318,15 +318,17 @@ function decryptFormData() {
 function hideAllMainContainers() {
 	$("#paneWalgen").hide();
 	$("#paneBulkgen").hide();
+	$("#paneViewWalletDetails").hide();
 	$("#paneSendTrans").hide();
-	$("#panePopContracts").hide();
+	$("#paneOfflineTrans").hide();
 	$("#paneHelp").hide();
 	$("#paneContact").hide();
 	$("#panePrint").hide();
 	$("#bulk-generate").parent().removeClass('active');
 	$("#generate-wallet").parent().removeClass('active');
+	$("#view-wallet-detail").parent().removeClass('active');
 	$("#send-transaction").parent().removeClass('active');
-	$("#popular-contracts").parent().removeClass('active');
+	$("#offline-transaction").parent().removeClass('active');
 	$("#help").parent().removeClass('active');
 	$("#contact").parent().removeClass('active');
 }
@@ -345,7 +347,7 @@ function generateSingleWallet() {
 	var acc = new Accounts();
 	var newAccountEnc = acc.new(password);
 	$("#address").val(newAccountEnc.address);
-    $('#addressIdenticon').css("background-image", 'url(' + blockies.create({ seed:newAccountEnc.address ,size: 8,scale: 16}).toDataURL()+')');  
+    $('#addressIdenticon').css("background-image", 'url(' + blockies.create({ seed:newAccountEnc.address ,size: 8,scale: 16}).toDataURL()+')');
 	var addressHash = cryptoJSToHex(CryptoJS.SHA3(newAccountEnc.address));
 	addressHash = addressHash.substr(addressHash.length - 4);
 	var newAccountUnEnc = acc.get(newAccountEnc.address, password);
@@ -420,7 +422,7 @@ function generateBulkWallets() {
 		} else
 		var newAccount = acc.new();
 		$('#bulkgentable tr:last').after('<tr class="privaddkey"><td><div id="addressIdenticon" class="addressIdenticon-'+i+'"></div></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.address + '</textarea></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.private + '</textarea></td></tr>');
-		$(".addressIdenticon-"+i).css("background-image", 'url(' + blockies.create({ seed:newAccount.address ,size: 8,scale: 16}).toDataURL()+')');  
+		$(".addressIdenticon-"+i).css("background-image", 'url(' + blockies.create({ seed:newAccount.address ,size: 8,scale: 16}).toDataURL()+')');
         csv += newAccount.address + ',' + newAccount.private + '\n';
 		txt += newAccount.address + '\t' + newAccount.private + '\n';
 		jsonarr.push({

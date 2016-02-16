@@ -86,7 +86,9 @@ gulp.task('genHTMLPages', function () {
     var header=fs.readFileSync("./tpl/header.tpl", "utf8");
     var walletgenerator=fs.readFileSync("./tpl/walletgenerator.tpl", "utf8");
     var bulkgenerator=fs.readFileSync("./tpl/bulkgenerator.tpl", "utf8");
+    var viewwalletdetails=fs.readFileSync("./tpl/viewwalletdetails.tpl", "utf8");
     var sendtransaction=fs.readFileSync("./tpl/sendtransaction.tpl", "utf8");
+    var offlinetransaction=fs.readFileSync("./tpl/offlinetransaction.tpl", "utf8");
     var print=fs.readFileSync("./tpl/print.tpl", "utf8");
     var help=fs.readFileSync("./tpl/help.tpl", "utf8");
     var contact=fs.readFileSync("./tpl/contact.tpl", "utf8");
@@ -96,7 +98,9 @@ gulp.task('genHTMLPages', function () {
             header: header,
             walletgenerator: walletgenerator,
             bulkgenerator: bulkgenerator,
+            viewwalletdetails: viewwalletdetails,
             sendtransaction: sendtransaction,
+            offlinetransaction: offlinetransaction,
             print: print,
             help: help,
             contact: contact,

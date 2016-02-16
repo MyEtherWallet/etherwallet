@@ -10,7 +10,7 @@ MyEtherWallet is an open source, javascript, client-side tool for generating Eth
 
 ### Purpose
 
-MyEtherWallet was created because many users were having immense trouble setting up the ethereum client on their computers. Therefore, we am planning to implement following features to the browser-based wallet.
+MyEtherWallet was created because many users were having immense trouble setting up the command-line ethereum client on their computers. Therefore, created this browser-based GUI wallet to...
 - Bulk generate wallets
 - Import client wallet files and presale wallet files.
 - Generate transactions from the imported wallet files
@@ -92,6 +92,6 @@ Don't forget, if you add an additional HTML page, you will need to add it to the
 This project loads JQuery 1.11.3 and then a minified JS file that is composed of the files found in /js/source/*.js. As long as you add any additional JS files to the /js/source/ folder, gulp will handle it automatically.
 
 
-### ToDo
-- Add a way to display the paper wallets locally
-- Create Get Account Info tab
+### In Progress
+- View Wallet Details Tab (matches Chrome Extension funactionality)
+- Advanced tab for generating offline transactions and sending transactions with data

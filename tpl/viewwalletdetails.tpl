@@ -1,25 +1,60 @@
-<!-- wallet generator -->
-<div class="tab-pane active" id="paneWalgen">
-  <h2> Generate Wallet </h2>
-  <p class="text-danger"> Unless you are familar with this process, PLEASE read the help page before sending a Ether to a wallet. You need to generate the wallet, back up the wallet externally, and verify you have access to the wallet <strong> before you send any Ether to a new wallet!</strong> MyEtherWallet.com does not receive or store any information so we <strong>cannot</strong> recover your wallet if you lose you password or private key.</p>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <h4>Enter a password to encrypt your private key <small>(minimum 7 characters):</small> </h4>
-        <input type="text" class="form-control" placeholder="Never, Ever Forget This" id="ethgenpassword" />
+<!-- view wallet info -->
+<div class="tab-pane" id="paneViewWalletDetails" style="display: none;">
+  <h2> View Wallet Details </h2>
+  <p> This allows you to access your wallet so you can view and/or download additional information associated with your account. For example, you could upload your encrypted JSON file to access your wallet and then download an unencrypted private key in order to import into geth. FYI, you can also do this with the <a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" target="__blank">MyEtherWallet CX</a> and save your wallet for easier and quicker access.</p>
+  <section class="row" id="walletselection">
+    <div class="col-md-4 col-sm-6">
+      <h4> How would you like to access your wallet? </h4>
+      <div class="radio">
+        <label>
+          <input type="radio" name="typeOfKeyRadio" value="fileupload">Upload your wallet file (presale/geth/myetherwallet).</label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="typeOfKeyRadio" value="pasteprivkey">Paste / type your private key (Encrypted/Unencrypted).</label>
       </div>
     </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <h4 style="margin-bottom: 27px;">Give me my wallet:</h4>
-        <a class="btn btn-primary btn-block" id="generatewallet">GENERATE</a>
+    <div class="col-md-4 col-sm-6">
+      <!-- if selected upload -->
+      <div id="selectedUploadKey" style="display: none;">
+        <h4>Select your wallet file : </h4>
+        <div class="form-group">
+          <p id="file-text"></p>
+          <a class="file-input btn btn-block btn-default btn-file marg-v-sm" id="fileUpload">SELECT WALLET FILE... <input type="file"></a>
+          <div id="fuploadStatus"></div>
+        </div>
+        <div class="form-group" id="walletPasdiv" style="display: none;">
+          <p> your file is encrypted with a password, enter the password here: </p>
+          <input class="form-control" type="password" placeholder="Password" id="walletfilepassword">
+        </div>
       </div>
+      <!-- /if selected upload -->
+      <!-- if selected type key-->
+      <div id="selectedTypeKey" style="display: none;">
+        <h4> Paste / type your private key: </h4>
+        <div class="form-group">
+          <textarea rows="4" class="form-control" placeholder="Private Key" id="manualprivkey"></textarea>
+        </div>
+        <div class="form-group" style="display: none;" id="divprikeypassword">
+          <p> Your file is encrypted with a password, enter the password here: </p>
+          <input class="form-control" type="password" placeholder="Password" id="privkeypassword">
+        </div>
+      </div>
+      <!-- /if selected type key-->
     </div>
-  </div>
-  <div class="row" id="generatedWallet" style="display:none;">
+    <div class="col-md-4 col-sm-6" style="display: none;" id="walletuploadbutton">
+      <h4 id="uploadbtntxt-wallet" style="display: none;"> Decrypt Wallet:</h4>
+      <h4 id="uploadbtntxt-privkey" style="display: none;"> Decrypt Private Key: </h4>
+      <div class="form-group"><a class="btn btn-primary btn-block" id="decryptdata">DECRYPT</a></div>
+      <div id="decryptStatus"></div>
+    </div>
+  </section>
+
+
+
+  <section class="row" id="generatedWallet" style="display:block;">
     <hr />
-    <h3 class="text-success col-xs-12">Success! Your wallet has been generated.</h3>
-    <p class="col-xs-12">Please save your wallet information & verify you can succesfully access your new account before sending ETH to this new wallet. We do not save <em>anything</em> and cannot help you recover your information if you do not save it & back it up. <strong>Please read the <a id="help" class="ptabs" showId="paneHelp">help page!</a></strong></p>
+    <h3 class="text-success col-xs-12">Success! Here are your wallet details.</h3>
     <div class="col-sm-6">
       <div class="row">
         <div class="form-group col-sm-10">
@@ -98,10 +133,22 @@
         </h4>
         <a class="btn btn-info btn-block" id="unencdownload">DOWNLOAD</a>
       </div>
+      <h4>Account Balance:</h4>
+      <p>
+        <strong class="text-success" id="accountBalance" style="margin-left: 1em"> loading... </strong>
+        <br />
+        <strong class="text-success" id="accountBalanceUsd" style="margin-left: 1em"> loading... </strong>
+        <br />
+        <strong class="text-success" id="accountBalanceEur" style="margin-left: 1em"> loading... </strong>
+        <br />
+        <strong class="text-success" id="accountBalanceBtc" style="margin-left: 1em"> loading... </strong>
+      </p>
       <br />
       <h4>A note about encrypted vs unencrypted:</h4>
       <p>MyEtherWallet can decrypt geth / pre-sale wallets, but geth <strong>cannot</strong> decrypt wallets encrypted by MyEtherWallet. If you plan on not touching a wallet created on MyEtherWallet for a long, long time it may be prudent to save the unencrypted private key / JSON file so you can access it via geth, the official Ethereum wallet, or whatever else is around in the distant future.</p>
     </div>
-  </div>
+  </section>
+
+
 </div>
-<!-- / wallet generator -->
+<!-- /view wallet info -->
