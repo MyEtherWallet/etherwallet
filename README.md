@@ -92,6 +92,12 @@ Don't forget, if you add an additional HTML page, you will need to add it to the
 This project loads JQuery 1.11.3 and then a minified JS file that is composed of the files found in /js/source/*.js. As long as you add any additional JS files to the /js/source/ folder, gulp will handle it automatically.
 
 
-### In Progress
-- View Wallet Details Tab (matches Chrome Extension funactionality)
-- Advanced tab for generating offline transactions and sending transactions with data
+### TODO / In Progress
+- Fix all the areas where the value you are sending is displayed in WEI instead of ETH (or whatever makes sense)
+- Respond to Issue #24 in Github
+- Add unencrypted -> encrypted option in View Wallet Details Tab
+- Advanced tab for generating offline transactions and sending transactions with data - backend only
+- Modularize the JS to use across .com and CX
+- Add "bitaddress.org randomizes the private key generation via mouse movements. Myetherwallet doesn't do this. Is the random number generation for this safe? Is Myetherwallet the only or best option?" to FAQ
+- Add "gas limit is too low error" to FAQ
+- Add this to helpful links: Add this in helpful links: https://www.reddit.com/r/ethereum/comments/46887p/tips_for_recovering_your_presale_password/
