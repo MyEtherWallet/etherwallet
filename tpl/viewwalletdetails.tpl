@@ -2,57 +2,8 @@
 <div class="tab-pane" id="paneViewWalletDetails" style="display: none;">
   <h2> View Wallet Details </h2>
   <p> This allows you to access your wallet so you can view and/or download additional information associated with your account. For example, you could upload your encrypted JSON file to access your wallet and then download an unencrypted private key in order to import into geth. FYI, you can also do this with the <a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" target="__blank">MyEtherWallet CX</a> and save your wallet for easier and quicker access.</p>
-  <section class="row" id="walletselection">
-    <div class="col-md-4 col-sm-6">
-      <h4> How would you like to access your wallet? </h4>
-      <div class="radio">
-        <label>
-          <input type="radio" name="typeOfKeyRadio" value="fileupload">Upload Your Wallet File <small>(JSON from presale / geth / MyEtherWallet).</small></label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="typeOfKeyRadio" value="pasteprivkey">Paste/Type Your Encrypted or Unencrypted Private Key.</label>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6">
-      <!-- if selected upload -->
-      <div id="selectedUploadKey" style="display: none;">
-        <h4>Select your wallet file : </h4>
-        <div class="form-group">
-          <p id="file-text"></p>
-          <a class="file-input btn btn-block btn-default btn-file marg-v-sm" id="fileUpload">SELECT WALLET FILE... <input type="file"></a>
-          <div id="fuploadStatus"></div>
-        </div>
-        <div class="form-group" id="walletPasdiv" style="display: none;">
-          <p> your file is encrypted with a password, enter the password here: </p>
-          <input class="form-control" type="password" placeholder="Password" id="walletfilepassword">
-        </div>
-      </div>
-      <!-- /if selected upload -->
-      <!-- if selected type key-->
-      <div id="selectedTypeKey" style="display: none;">
-        <h4> Paste / type your private key: </h4>
-        <div class="form-group">
-          <textarea rows="4" class="form-control" placeholder="Private Key" id="manualprivkey"></textarea>
-        </div>
-        <div class="form-group" style="display: none;" id="divprikeypassword">
-          <p> Your file is encrypted with a password, enter the password here: </p>
-          <input class="form-control" type="password" placeholder="Password" id="privkeypassword">
-        </div>
-      </div>
-      <!-- /if selected type key-->
-    </div>
-    <div class="col-md-4 col-sm-6" style="display: none;" id="walletuploadbutton">
-      <h4 id="uploadbtntxt-wallet" style="display: none;"> Decrypt Wallet:</h4>
-      <h4 id="uploadbtntxt-privkey" style="display: none;"> Decrypt Private Key: </h4>
-      <div class="form-group"><a class="btn btn-primary btn-block" id="decryptdata">DECRYPT</a></div>
-      <div id="decryptStatus"></div>
-    </div>
-  </section>
-
-
-
-  <section class="row" id="generatedWallet" style="display:block;">
+  <div id="viewDetailsDecryptWallet"></div>
+  <section class="row" id="decryptedWalletDetails" style="display:none;">
     <hr />
     <h3 class="text-success col-xs-12">Success! Here are your wallet details.</h3>
     <div class="col-sm-6">
@@ -65,13 +16,13 @@
               <span class="account-help-text">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH.</span>
             </div>
           </h4>
-          <input class="form-control" type="text" id="address" readonly="readonly">
+          <input class="form-control" type="text" id="addressViewW" readonly="readonly">
         </div>
         <div class="col-sm-2 address-identicon-container">
-          <div id="addressIdenticon" title="Address Indenticon"></div>
+          <div id="addressIdenticon" title="Address Indenticon" class="addressIdenticonViewW"></div>
         </div>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="encPrivKeyViewW" style="display:none">
         <h4>
           Your Private Key (encrypted):
           <div class="account-help-icon">
@@ -89,16 +40,16 @@
             <span class="account-help-text">You <strong>need</strong> to save your private key in order to access your wallet in the future. You do not need your password to decrypt this private key.</span>
           </div>
         </h4>
-        <textarea class="form-control" type="text" id="privkey" readonly="readonly"></textarea>
+        <textarea class="form-control" type="text" id="privkeyViewW" readonly="readonly"></textarea>
       </div>
       <div class="row">
         <div class="form-group col-sm-6">
           <h4>Your Address:</h4>
-          <div id="qrcodeAdd" width="100%"></div>
+          <div id="qrcodeAddViewW" width="100%"></div>
         </div>
         <div class="form-group col-sm-6">
           <h4>Private Key (unencrypted):</h4>
-          <div id="qrcode" width="100%"></div>
+          <div id="qrcodeViewW" width="100%"></div>
         </div>
       </div>
     </div>
@@ -111,9 +62,9 @@
             <span class="account-help-text">ProTip: Click print and save this as a PDF, even if you do not own a printer!</span>
           </div>
         </h4>
-        <a class="btn btn-info btn-block" id="printqr">PRINT</a>
+        <a class="btn btn-info btn-block" id="printqrViewWallet">PRINT</a>
       </div>
-      <div class="form-group">
+      <div class="form-group" style="display:none">
         <h4>
           Download JSON file (encrypted):
           <div class="account-help-icon">
@@ -123,7 +74,7 @@
         </h4>
         <a class="btn btn-info btn-block" id="encdownload"> DOWNLOAD </a>
       </div>
-      <div class="form-group">
+      <div class="form-group" style="display:none">
         <h4>
           Download JSON file (unencrypted):
           <div class="account-help-icon">
@@ -144,8 +95,8 @@
         <strong class="text-success" id="accountBalanceBtc" style="margin-left: 1em"> loading... </strong>
       </p>
       <br />
-      <h4>A note about encrypted vs unencrypted:</h4>
-      <p>MyEtherWallet can decrypt geth / pre-sale wallets, but geth <strong>cannot</strong> decrypt wallets encrypted by MyEtherWallet. If you plan on not touching a wallet created on MyEtherWallet for a long, long time it may be prudent to save the unencrypted private key / JSON file so you can access it via geth, the official Ethereum wallet, or whatever else is around in the distant future.</p>
+      <h4 style="display:none">A note about encrypted vs unencrypted:</h4>
+      <p style="display:none">MyEtherWallet can decrypt geth / pre-sale wallets, but geth <strong>cannot</strong> decrypt wallets encrypted by MyEtherWallet. If you plan on not touching a wallet created on MyEtherWallet for a long, long time it may be prudent to save the unencrypted private key / JSON file so you can access it via geth, the official Ethereum wallet, or whatever else is around in the distant future.</p>
     </div>
   </section>
 

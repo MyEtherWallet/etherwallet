@@ -1,6 +1,7 @@
 <!-- send transaction -->
 <div class="tab-pane" id="paneSendTrans" style="display: none;">
   <h2> Send Transaction </h2>
+  <div id="sendTransactionDecryptWallet">
   <section class="row" id="walletselection">
     <div class="col-md-4 col-sm-6">
       <h4> How would you like to access your wallet? </h4>
@@ -44,10 +45,11 @@
     <div class="col-md-4 col-sm-6" style="display: none;" id="walletuploadbutton">
       <h4 id="uploadbtntxt-wallet" style="display: none;"> Decrypt Wallet:</h4>
       <h4 id="uploadbtntxt-privkey" style="display: none;"> Decrypt Private Key: </h4>
-      <div class="form-group"><a class="btn btn-primary btn-block" id="decryptdata">DECRYPT</a></div>
+      <div class="form-group"><a class="btn btn-primary btn-block" id="decryptdata" onDecrypt="">DECRYPT</a></div>
       <div id="decryptStatus"></div>
     </div>
   </section>
+  </div>
   <section class="row" id="wallettransactions" style="display: none;">
     <hr />
     <div class="col-sm-4">
@@ -57,15 +59,15 @@
         <br />
         <p> Account Address:
           <br /> <strong id="accountAddress" style="margin-left: 1em"></strong></p>
-        <p> Account Balance:
+          <p> Account Balance:
           <br />
-          <strong class="text-success" id="accountBalance" style="margin-left: 1em"> loading... </strong>
-          <br />
-          <strong class="text-success" id="accountBalanceUsd" style="margin-left: 1em"> loading... </strong>
-          <br />
-          <strong class="text-success" id="accountBalanceEur" style="margin-left: 1em"> loading... </strong>
-          <br />
-          <strong class="text-success" id="accountBalanceBtc" style="margin-left: 1em"> loading... </strong>
+                <strong class="text-success" id="accountBalance" style="margin-left: 1em"> loading... </strong>
+                <br />
+                <strong class="text-success" id="accountBalanceUsd" style="margin-left: 1em"> loading... </strong>
+                <br />
+                <strong class="text-success" id="accountBalanceEur" style="margin-left: 1em"> loading... </strong>
+                <br />
+                <strong class="text-success" id="accountBalanceBtc" style="margin-left: 1em"> loading... </strong>
         </p>
       </div>
       <br />
