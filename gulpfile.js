@@ -3,7 +3,7 @@ var fs = require('fs');
 var gulp = require('gulp');
 var less = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer');
-var minifyCSS = require('gulp-minify-css');
+var cssnano = require('gulp-cssnano');
 var notify = require('gulp-notify');
 var rename = require('gulp-rename');
 var uncss = require('gulp-uncss');
@@ -44,31 +44,23 @@ gulp.task('less', function (cb) {
       .pipe(autoprefixer('last 2 version', 'ie 9', 'ios 6', 'android 4'))
       .pipe(rename(lessOutputFile))
       .pipe(gulp.dest(lessOutputFolder))
-      .pipe(minifyCSS({keepBreaks: false}))
-      .pipe(rename(lessOutputFileMin))
-      .pipe(gulp.dest(lessOutputFolder))
-      .pipe(notify('Less Compiled and Minified'));
-});
-
-gulp.task('less-uncss', ['less'], function () {
-  return gulp
-    .src('./css/' + lessOutputFile)
       .pipe(uncss({
         html: [
           './index.html'
         ]
       }))
-      .pipe(minifyCSS({keepBreaks: false}))
+      .pipe(cssnano()).on('error', notify.onError(function (error) {
+        return "ERROR! minify CSS Problem file : " + error.message;
+      }))
       .pipe(rename(lessOutputFileMin))
       .pipe(gulp.dest(lessOutputFolder))
-    .pipe(notify('Less UnCSS and Minified'));
+      .pipe(notify('Less Compiled UNCSSd and Minified'));
 });
 
 gulp.task('minJS', function () {
   return gulp
     .src(jsFiles)
       .pipe(gulpConcat(jsOutputFile))
-      .pipe(uglify())
       .pipe(gulp.dest(jsOutputFolder))
      .pipe(notify('JS Concat and Uglified'));
 });
@@ -77,7 +69,6 @@ gulp.task('staticJS', function () {
   return gulp
     .src(staticjsFiles)
       .pipe(gulpConcat(staticjsOutputFile))
-      .pipe(uglify())
       .pipe(gulp.dest(jsOutputFolder))
      .pipe(notify('staic JS Concat and Uglified'));
 });
@@ -114,16 +105,16 @@ gulp.task('watchJS', function() {
     gulp.watch(jsWatchFolder,['minJS']);
 });
 gulp.task('watchLess', function() {
-    gulp.watch(lessWatchFolder, ['less' , 'less-uncss']);
+    gulp.watch(lessWatchFolder, ['less']);
 });
 gulp.task('watchHTML', function() {
-    gulp.watch(htmlWatchFolder, ['less-uncss']);
+    gulp.watch(htmlWatchFolder, ['less']);
 });
 gulp.task('watchPAGES', function() {
-    gulp.watch(htmlPages, ['genHTMLPages','less-uncss']);
+    gulp.watch(htmlPages, ['genHTMLPages']);
 });
 gulp.task('watchTPL', function() {
-    gulp.watch(tplFiles, ['genHTMLPages','less-uncss']);
+    gulp.watch(tplFiles, ['genHTMLPages']);
 });
 
-gulp.task('default', ['genHTMLPages', 'staticJS', 'minJS' , 'less', 'less-uncss', 'watchJS' , 'watchLess', 'watchHTML', 'watchPAGES', 'watchTPL']);
+gulp.task('default', ['genHTMLPages', 'staticJS', 'minJS' , 'less', 'watchJS' , 'watchLess', 'watchHTML', 'watchPAGES', 'watchTPL']);
