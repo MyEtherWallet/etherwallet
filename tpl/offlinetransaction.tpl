@@ -1,6 +1,9 @@
 <!-- send transaction -->
 <div class="tab-pane" id="paneOfflineTrans" style="display: none;">
   <h2> Advanced / Offline Transaction </h2>
+
+  <p><strong class="text-danger"> This tab is brand-spanking-new. Please report any bugs / issues in the <a href="https://www.reddit.com/r/ethereum/comments/48rf3d/weve_heard_you_loud_and_clear_so_tonightweve/" target="_blank">reddit thread</a> & please test with SMALL AMOUNTS FOR NOW! Thank you!</strong></p>
+
   <p> Generating offline transactions can be done in 3 (relatively) easy steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. Alternatively, you can use this entirely online in order to send data with your transaction or alter the gas limit.</p>
 
   <hr />
