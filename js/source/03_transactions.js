@@ -106,11 +106,11 @@ function createTransactionFromRaw(rawObj, privkey, successcb, errorcb) {
 function rawToTransaction(serializedTx){
     var tx = new Tx(serializedTx);
     var rawTx = {
-		nonce: new BigNumber('0x'+tx.nonce.toString('hex')).toString(),
-		gasPrice: new BigNumber('0x'+tx.gasPrice.toString('hex')).toString(),
-		gasLimit: new BigNumber('0x'+tx.gasLimit.toString('hex')).toString(),
+		nonce: tx.nonce.toString('hex')=="" ? 0 : new BigNumber('0x'+tx.nonce.toString('hex')).toString(),
+		gasPrice: tx.gasPrice.toString('hex')=="" ? 0 : new BigNumber('0x'+tx.gasPrice.toString('hex')).toString(),
+		gasLimit: tx.gasLimit.toString('hex')=="" ? 0 : new BigNumber('0x'+tx.gasLimit.toString('hex')).toString(),
 		to: '0x'+tx.to.toString('hex'),
-		value: new BigNumber('0x'+tx.value.toString('hex')).toString(),
+		value: tx.value.toString('hex')=="" ? 0 : new BigNumber('0x'+tx.value.toString('hex')).toString(),
 		data: tx.data.toString('hex')
 	};
     return rawTx;

@@ -491,7 +491,7 @@ function sendOfflineTx(){
     }
 }
 function genSignedOfflineTx(){
-    if (!$.isNumeric($('#offlineSendtxamount').val()) || $('#offlineSendtxamount').val() <= 0) { 
+    if (!$.isNumeric($('#offlineSendtxamount').val()) || $('#offlineSendtxamount').val() < 0) { 
 	   $("#offlineTxStatus").html(getDangerText("invalid value, try again")).fadeIn(50).fadeOut(5000);
 		return;
 	}
