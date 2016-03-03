@@ -10,7 +10,8 @@
       <h4><span class="text-primary" id="step1Collapse">-</span> Step 1: Generate Information (Online Computer)</h4>
       <section id="step1Panel">
          <div class="form-group col-xs-10 col-sm-6">
-            <label> From Address: </label>
+            <label> <strong>From</strong> Address: </label>
+            <p><small> Note: This is the FROM address, not the TO address. Nonce is generated from the originating account.</small></p>
             <input class="form-control validateAddress" status="offlineAddressvalidateStatus" identicon="OfflineAddressvalidateIdenticon" type="text" placeholder="0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" id="offlineFromAdd">
          <div class="offlineAddressvalidateStatus"></div>
          </div>
