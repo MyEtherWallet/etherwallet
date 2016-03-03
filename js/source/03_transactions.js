@@ -26,11 +26,11 @@ function createTransaction(privkey, to, amountinwei, successcb, errorcb) {
 		var gasLimit = padLeftEven(BNtoHex(new BigNumber(stdTransactionGas))); //standard 21000 per transaction
 		var value = padLeftEven(BNtoHex(new BigNumber(String(amountinwei))));
 		var rawTx = {
-			nonce: '0x'+nonce,
-			gasPrice: '0x'+gasPrice,
-			gasLimit: '0x'+gasLimit,
+			nonce: '0x' + nonce,
+			gasPrice: '0x' + gasPrice,
+			gasLimit: '0x' + gasLimit,
 			to: to,
-			value: '0x'+value,
+			value: '0x' + value,
 			data: ''
 		};
 		var tx = new Tx(rawTx);
@@ -55,62 +55,77 @@ function createTransactionFromRaw(rawObj, privkey, successcb, errorcb) {
 		errorcb("Invalid Private key, try again");
 		return;
 	}
-	if (!validateEtherAddress(rawObj.from) || !validateEtherAddress(rawObj.to)) {
+	if (!validateEtherAddress(rawObj.to)) {
 		errorcb("Invalid Address, try again");
 		return;
 	}
-	if (!$.isNumeric(rawObj.value) || rawObj.value <= 0) {
+	if (!$.isNumeric(rawObj.value) || rawObj.value <= 0) { //
 		errorcb("Invalid amount, try again");
+		return;
+	}
+    if (!$.isNumeric(rawObj.nonce) || rawObj.nonce <= 0) {
+		errorcb("Invalid nonce, try again");
+		return;
+	}
+    if (!$.isNumeric(rawObj.gasPrice) || rawObj.gasPrice <= 0) {
+		errorcb("Invalid gas price, try again");
+		return;
+	}
+    if (!$.isNumeric(rawObj.gasLimit) || rawObj.gasLimit <= 0) {
+		errorcb("Invalid gas limit, try again");
+		return;
+	}
+    if (rawObj.data!=''&&!/^[0-9A-F]+$/i.test(rawObj.data)) {
+		errorcb("Invalid data, try again");
 		return;
 	}
 	var privateKey = new Buffer(privkey, 'hex');
 	var address = strPrivateKeyToAddress(privkey);
-	getTransactionData(address, function(data) {
-		if (data.error) {
-			errorcb("Error occurred: " + data.msg);
-			return;
-		}
-		data = data.data;
-		var nonce = padLeftEven(BNtoHex(new BigNumber(data.nonce)));
-		var gasPrice = padLeftEven(BNtoHex(new BigNumber(data.gasprice).plus(1000000000).toDigits(1)));
-		var gasLimit = padLeftEven(BNtoHex(new BigNumber(rawObj.gas))); 
-		var value = padLeftEven(BNtoHex(new BigNumber(String(rawObj.value))));
-		var rawTx = {
-			nonce: '0x'+nonce,
-			gasPrice: '0x'+gasPrice,
-			gasLimit: '0x'+gasLimit,
-			to: rawObj.to,
-			value: '0x'+value,
-			data: '0x'+rawObj.data
-		};
-		var tx = new Tx(rawTx);
-		tx.sign(privateKey);
-		verifyUpFrontCost(rawTx, function(estimatedCost) {
-			if (estimatedCost > data.balance) {
-				errorcb("You dont have enough balance in your account to process is transaction");
-				return
-			}
-			var serializedTx = '0x' + tx.serialize().toString('hex');
-			var rdata = {
-				raw: JSON.stringify(rawTx),
-				signed: serializedTx
-			}
-			successcb(rdata);
-		}, errorcb);
-	});
+	var nonce = padLeftEven(BNtoHex(new BigNumber(rawObj.nonce)));
+	var gasPrice = padLeftEven(BNtoHex(new BigNumber(rawObj.gasPrice)));
+	var gasLimit = padLeftEven(BNtoHex(new BigNumber(rawObj.gasLimit)));
+	var value = padLeftEven(BNtoHex(new BigNumber(String(rawObj.value))));
+	var rawTx = {
+		nonce: '0x' + nonce,
+		gasPrice: '0x' + gasPrice,
+		gasLimit: '0x' + gasLimit,
+		to: rawObj.to,
+		value: '0x' + value,
+		data: rawObj.data=='' ? '' : '0x' + rawObj.data
+	};
+	var tx = new Tx(rawTx);
+	tx.sign(privateKey);
+	var serializedTx = '0x' + tx.serialize().toString('hex');
+	var rdata = {
+		raw: JSON.stringify(rawTx),
+		signed: serializedTx,
+        address: address
+	}
+	successcb(rdata);
 }
-
+function rawToTransaction(serializedTx){
+    var tx = new Tx(serializedTx);
+    var rawTx = {
+		nonce: new BigNumber('0x'+tx.nonce.toString('hex')).toString(),
+		gasPrice: new BigNumber('0x'+tx.gasPrice.toString('hex')).toString(),
+		gasLimit: new BigNumber('0x'+tx.gasLimit.toString('hex')).toString(),
+		to: '0x'+tx.to.toString('hex'),
+		value: new BigNumber('0x'+tx.value.toString('hex')).toString(),
+		data: tx.data.toString('hex')
+	};
+    return rawTx;
+}
 function verifyUpFrontCost(rawTx, successcb, errorcb) {
 	getEstimatedGas(rawTx, function(data) {
 		if (data.error) {
 			errorcb("Error occurred: " + data.msg);
 		} else {
-            if(new BigNumber(formatHexString(data.data, 'hex')).greaterThan(new BigNumber(formatHexString(rawTx.gasLimit, 'hex')))){
-                errorcb("Gas limit is too low");
-            } else {
-			     var gasPrice = new BigNumber(formatHexString(rawTx.gasPrice, 'hex')).times(new BigNumber(formatHexString(rawTx.gasLimit, 'hex')));
-			     successcb(gasPrice.plus(new BigNumber(formatHexString(rawTx.value, 'hex'))).toNumber());
-            }
+			if (new BigNumber(formatHexString(data.data, 'hex')).greaterThan(new BigNumber(formatHexString(rawTx.gasLimit, 'hex')))) {
+				errorcb("Gas limit is too low");
+			} else {
+				var gasPrice = new BigNumber(formatHexString(rawTx.gasPrice, 'hex')).times(new BigNumber(formatHexString(rawTx.gasLimit, 'hex')));
+				successcb(gasPrice.plus(new BigNumber(formatHexString(rawTx.value, 'hex'))).toNumber());
+			}
 		}
 	});
 }

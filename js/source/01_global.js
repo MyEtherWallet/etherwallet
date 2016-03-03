@@ -44,6 +44,8 @@ function onTabOpen(tabid) {
 		onSendTransactionOpens();
 	} else if (tabid == 'view-wallet-info') {
 		onViewWalletOpens();
+	} else if (tabid == 'offline-transaction') {
+		onOfflineTxOpens();
 	}
 }
 
@@ -57,6 +59,12 @@ function onViewWalletOpens() {
 	resetDecryptValues();
 	$("#walletselection").detach().appendTo($('#viewDetailsDecryptWallet'));
 	$("#decryptdata").attr('onDecrypt', 'walletViewDecryptSuccess');
+}
+
+function onOfflineTxOpens() {
+	resetDecryptValues();
+	$("#walletselection").detach().appendTo($('#sendOfflineTransactionDecryptWallet'));
+	$("#decryptdata").attr('onDecrypt', 'offlineTxSuccess');
 }
 
 function paneNavigate(showEleId, activeEleId) {
@@ -98,10 +106,21 @@ function bindElements() {
 	$("#bulkgenerate").click(function() {
 		generateBulkWallets();
 	});
-
+    $("#getAddressInfo").click(function() { 
+		getAddressInfo();
+	});
+    $("#genSignedOfflineTx").click(function() { 
+		genSignedOfflineTx();
+	});
+    $("#sendOfflineTx").click(function() { 
+		sendOfflineTx();
+	});
+    $("#sendOfflineTxApprove").click(function() { 
+		sendOfflineTxApprove();
+	});
 	$("#step1Collapse").click(function() {
 		$("#step1Panel").slideToggle();
-		if ( $("#step1Collapse").html() == "-") {
+		if ($("#step1Collapse").html() == "-") {
 			$("#step1Collapse").html("+");
 		} else {
 			$("#step1Collapse").html("-");
@@ -109,7 +128,7 @@ function bindElements() {
 	});
 	$("#step2Collapse").click(function() {
 		$("#step2Panel").slideToggle();
-		if ( $("#step2Collapse").html() == "-") {
+		if ($("#step2Collapse").html() == "-") {
 			$("#step2Collapse").html("+");
 		} else {
 			$("#step2Collapse").html("-");
@@ -117,13 +136,12 @@ function bindElements() {
 	});
 	$("#step3Collapse").click(function() {
 		$("#step3Panel").slideToggle();
-		if ( $("#step3Collapse").html() == "-") {
+		if ($("#step3Collapse").html() == "-") {
 			$("#step3Collapse").html("+");
 		} else {
 			$("#step3Collapse").html("-");
 		}
 	});
-
 	$("#transferAllBalance").click(function() {
 		getMaxSendAmount($("#accountAddress").html(), function(data) {
 			$('#sendtxamount').val(data);
@@ -140,7 +158,7 @@ function bindElements() {
 		}, 100);
 	});
 	$('input[type=radio][name=typeOfKeyRadio]').change(function() {
-	    resetDecryptValues();
+		resetDecryptValues();
 		if (this.value == 'fileupload') {
 			$("#selectedTypeKey").hide();
 			$("#selectedUploadKey").show();
@@ -151,9 +169,6 @@ function bindElements() {
 			decryptType = "privkey";
 		}
 	});
-	$('input[type=radio][name=currencyRadio]').change(function() {
-		$("#sendtxamount").trigger("keyup");
-	});
 	$('#walletfilepassword').on('paste, keyup', function() {
 		if ($('#walletfilepassword').val() != "") {
 			$("#uploadbtntxt-wallet").show();
@@ -162,6 +177,9 @@ function bindElements() {
 		} else {
 			$("#walletuploadbutton").hide();
 		}
+	});
+	$('input[type=radio][name=currencyRadio]').change(function() {
+		$("#sendtxamount").trigger("keyup");
 	});
 	$('#sendtxamount').on('paste, keyup', function() {
 		var amount = $('#sendtxamount').val();
@@ -174,13 +192,35 @@ function bindElements() {
 			$("#weiamount").html('');
 		}
 	});
-	$('#sendtxaddress').on('paste, keyup', function() {
-		if (validateEtherAddress($('#sendtxaddress').val())) {
-			$("#addressvalidate").html('<p class="text-success"><strong> Address is valid</strong></p>').fadeIn(50);
-		} else if ($('#sendtxaddress').val() == "") {
-			$("#addressvalidate").html('');
+    
+    $('input[type=radio][name=currencyRadioOffline]').change(function() {
+		$("#offlineSendtxamount").trigger("keyup");
+	});
+	$('#offlineSendtxamount').on('paste, keyup', function() {
+		var amount = $(this).val();
+		if (amount != "" && $.isNumeric(amount) && amount > 0) {
+			var etherUnit = $('input[type=radio][name=currencyRadioOffline]:checked').val();
+			$("#offlineweiamount").html(getSuccessText(toWei(amount, etherUnit)+" wei"));
+		} else if (amount != "" && !$.isNumeric(amount)) {
+			$("#offlineweiamount").html(getDangerText("Invalid amount"));
 		} else {
-			$("#addressvalidate").html('<p class="text-danger"><strong> Invalid address</strong></p>').fadeIn(50);
+			$("#offlineweiamount").html('');
+		}
+	});
+    
+	$('.validateAddress').on('paste, keyup', function() {
+        $('.'+$(this).attr('identicon')).css("background-image",'');
+		if (validateEtherAddress($(this).val())) {
+			$('.'+$(this).attr('status')).html('<p class="text-success"><strong> Address is valid</strong></p>').fadeIn(50);
+			$('.'+$(this).attr('identicon')).css("background-image", 'url(' + blockies.create({
+				seed: $(this).val().trim(),
+				size: 8,
+				scale: 16
+			}).toDataURL() + ')');
+		} else if ($(this).val() == "") {
+			$('.'+$(this).attr('status')).html('');
+		} else {
+			$('.'+$(this).attr('status')).html('<p class="text-danger"><strong> Invalid address</strong></p>').fadeIn(50);
 		}
 	});
 	$('#privkeypassword').on('paste, keyup', function() {
@@ -263,8 +303,8 @@ function resetDecryptValues() {
 	$("#wallettransactions").hide();
 	$("#decryptStatus").hide();
 	$("#selectedTypeKey").hide();
-    $("#privkeyViewW").val('');
-    $("#qrcodeViewW").empty();
+	$("#privkeyViewW").val('');
+	$("#qrcodeViewW").empty();
 }
 
 function preSendTransaction() {
@@ -317,7 +357,7 @@ function setWalletBalance() {
 			getETHvalue('USD', function(value) {
 				usdval = value;
 				tusdval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
-			     $("[id=accountBalanceUsd]").html(formatCurrency(parseFloat(tusdval), '$') + " USD");
+				$("[id=accountBalanceUsd]").html(formatCurrency(parseFloat(tusdval), '$') + " USD");
 			});
 			getETHvalue('EUR', function(value) {
 				eurval = value;
@@ -330,7 +370,7 @@ function setWalletBalance() {
 				$("[id=accountBalanceBtc]").html(tbtcval + " BTC");
 			});
 		} else
-		  console.log(result.msg);
+		console.log(result.msg);
 	});
 }
 
@@ -350,19 +390,19 @@ function walletSendDecryptSuccess() {
 function walletViewDecryptSuccess() {
 	$("#decryptStatus").html('<p class="text-center text-success"><strong> Wallet successfully decrypted</strong></p>').fadeIn(2000);
 	var privPass = $('#privkeypassword').val();
-    //privPass == "" ? $("#encPrivKeyViewW").hide() : $("#encPrivKeyViewW").show();
+	//privPass == "" ? $("#encPrivKeyViewW").hide() : $("#encPrivKeyViewW").show();
 	$("#decryptedWalletDetails").show();
 	var decrytedAdd = formatAddress(strPrivateKeyToAddress(PrivKey), 'hex');
-    $("#accountAddress").html(decrytedAdd);
-    setWalletBalance();
-    $('.addressIdenticonViewW').css("background-image", 'url(' + blockies.create({
+	$("#accountAddress").html(decrytedAdd);
+	setWalletBalance();
+	$('.addressIdenticonViewW').css("background-image", 'url(' + blockies.create({
 		seed: decrytedAdd,
 		size: 8,
 		scale: 16
 	}).toDataURL() + ')');
 	$("#addressViewW").val(decrytedAdd);
-    $("#privkeyViewW").val(PrivKey);
-    $("#qrcodeAddViewW").empty();
+	$("#privkeyViewW").val(PrivKey);
+	$("#qrcodeAddViewW").empty();
 	new QRCode($("#qrcodeAddViewW")[0], {
 		text: decrytedAdd,
 		width: $("#qrcodeAddViewW").width(),
@@ -380,17 +420,19 @@ function walletViewDecryptSuccess() {
 		colorLight: "#ffffff",
 		correctLevel: QRCode.CorrectLevel.H
 	});
-    var printjson = [];
-    printjson.push({
-			address: decrytedAdd,
-			private: PrivKey
-		});
-    $("#printqrViewWallet").unbind();
+	var printjson = [];
+	printjson.push({
+		address: decrytedAdd,
+		private: PrivKey
+	});
+	$("#printqrViewWallet").unbind();
 	$("#printqrViewWallet").click(function() {
 		openPrintPaperWallets(JSON.stringify(printjson));
 	});
 }
-
+function offlineTxSuccess(){
+    $("#decryptStatus").html(getSuccessText('Wallet successfully decrypted')).fadeIn(2000);
+}
 function walletDecryptFailed(err) {
 	$("#decryptStatus").html('<p class="text-center text-danger"><strong> ' + err + '</strong></p>').fadeIn(50).fadeOut(3000);
 	$("#wallettransactions").hide();
@@ -419,11 +461,77 @@ function decryptFormData() {
 			PrivKey = decryptTxtPrivKey($('#manualprivkey').val(), $("#privkeypassword").val());
 			window[$('#decryptdata').attr('onDecrypt')]();
 		} catch (err) {
-			walletDecryptFailed("Invalid password");
+			walletDecryptFailed("Invalid password"); 
 		}
 	}
 }
-
+function sendOfflineTxApprove(){
+    sendTransaction($("#offlineSerializedTxPub").val(), function(data) {
+		$("#offlineTxPublishStatus").html(getSuccessText('Transaction submitted. TX ID: ' + data));
+	}, function(err) {
+		$("#offlineTxPublishStatus").html(getDangerText(err));
+	});
+	$('#sendTransactionOffline').modal('hide');
+}
+function sendOfflineTx(){
+    var serializedTx = $("#offlineSerializedTxPub").val();
+    if(serializedTx==""){
+        $("#offlineTxPublishStatus").html(getDangerText("empty transaction, try again")).fadeIn(50).fadeOut(5000);
+        return;
+    }
+    try {
+        var rawTx = rawToTransaction(serializedTx);
+         var ethVal = toEther(rawTx.value,'wei');
+         var toAdd = rawTx.to;
+         $("#offlineConfirmAmount").html(ethVal);
+         $("#offlineConfirmAddress").html(toAdd);
+         $('#sendTransactionOffline').modal('show');      
+    }catch(e){
+        $("#offlineTxPublishStatus").html(getDangerText(e)).fadeIn(50).fadeOut(5000);
+    }
+}
+function genSignedOfflineTx(){
+    if (!$.isNumeric($('#offlineSendtxamount').val()) || $('#offlineSendtxamount').val() <= 0) { 
+	   $("#offlineTxStatus").html(getDangerText("invalid value, try again")).fadeIn(50).fadeOut(5000);
+		return;
+	}
+    var etherUnit = $('input[type=radio][name=currencyRadioOffline]:checked').val();
+    var rawTx = {
+		nonce: $('#offlineGasNonce').val(),
+		gasPrice: $('#offlineGasPrice').val(),
+		gasLimit: $('#offlineGasLimit').val(),
+		to: $('#offlineToAdd').val(),
+		value: toWei($('#offlineSendtxamount').val(), etherUnit),
+		data: $('#offlineData').val()
+	};
+    createTransactionFromRaw(rawTx,PrivKey,function(data){
+        $(".offlineSerializedTx").val(data.signed);
+    }, function(error){
+        $("#offlineTxStatus").html(getDangerText(error)).fadeIn(50).fadeOut(5000);
+    });
+}
+function getAddressInfo(){
+    var addField = $("#offlineFromAdd");
+    var address = addField.val();
+    if(!validateEtherAddress(address)){
+        $('.'+addField.attr('status')).html(getDangerText('Invalid Address')).fadeIn(50);
+    } else if(address=='') {
+        $('.'+addField.attr('status')).html(getDangerText('Enter Address')).fadeIn(50);
+    } else {
+        getTransactionData(address, function(data) {
+		  if (data.error) {
+            $('.'+addField.attr('status')).html(getDangerText("Error occurred: " + data.msg)).fadeIn(50);
+			return;
+		  }
+          data = data.data;
+          data.gasprice = new BigNumber(data.gasprice).toString();
+          data.nonce = new BigNumber(data.nonce).toString();
+          $(".offlineGPrice").val(data.gasprice);
+          $(".offlineNonce").val(data.nonce);
+          $("#step1Output").show();
+        });
+    }
+}
 function hideAllMainContainers() {
 	$("#paneWalgen").hide();
 	$("#paneBulkgen").hide();
@@ -433,9 +541,9 @@ function hideAllMainContainers() {
 	$("#paneHelp").hide();
 	$("#paneContact").hide();
 	$("#panePrint").hide();
-    $("#privkeyViewW").val('');
-    $("#decryptedWalletDetails").hide();
-    $("#qrcodeViewW").empty();
+	$("#privkeyViewW").val('');
+	$("#decryptedWalletDetails").hide();
+	$("#qrcodeViewW").empty();
 	$("#bulk-generate").parent().removeClass('active');
 	$("#generate-wallet").parent().removeClass('active');
 	$("#view-wallet-info").parent().removeClass('active');
