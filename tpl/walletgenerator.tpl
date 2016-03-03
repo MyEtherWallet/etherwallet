@@ -1,7 +1,7 @@
 <!-- wallet generator -->
 <div class="tab-pane active" id="paneWalgen">
   <h2> Generate Wallet </h2>
-  <p class="text-danger"> Unless you are familar with this process, PLEASE read the help page before sending a Ether to a wallet. You need to generate the wallet, back up the wallet externally, and verify you have access to the wallet <strong> before you send any Ether to a new wallet!</strong> MyEtherWallet.com does not receive or store any information so we <strong>cannot</strong> recover your wallet if you lose you password or private key.</p>
+  <p class="text-danger"> Unless you are familar with this process, PLEASE read the help page before sending any Ether to a wallet. You need to generate the wallet, back up the wallet externally, and verify you have access to the wallet <strong> before you send any Ether to a new wallet!</strong> MyEtherWallet.com does not receive or store any information so we <strong>cannot</strong> recover your wallet if you lose you password or private key.</p>
   <div class="row">
     <div class="col-sm-6">
       <div class="form-group">
@@ -19,7 +19,7 @@
   <div class="row" id="generatedWallet" style="display:none;">
     <hr />
     <h3 class="text-success col-xs-12">Success! Your wallet has been generated.</h3>
-    <p class="col-xs-12">Please save your wallet information & verify you can succesfully access your new account before sending ETH to this new wallet. We do not save <em>anything</em> and cannot help you recover your information if you do not save it & back it up. <strong>Please read the <a id="help" class="ptabs" showId="paneHelp">help page!</a></strong></p>
+    <p class="col-xs-12">Please save your wallet information & verify you can succesfully access your new account before sending any Ether to this new wallet. We do not save <em>anything</em> and cannot help you recover your information if you do not save it & back it up. <strong>Please read the <a id="help" class="ptabs" showId="paneHelp">help page!</a></strong></p>
     <div class="col-sm-6">
       <div class="row">
         <div class="form-group col-sm-10">

@@ -79,10 +79,13 @@
     </div>
     <div class="col-sm-8">
       <h4>Send Transaction</h4>
-      <div class="form-group col-xs-12">
+      <div class="form-group col-xs-10">
         <label> To Address: </label>
         <input class="form-control" type="text" placeholder="0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" id="sendtxaddress">
         <div id="addressvalidate"></div>
+      </div>
+      <div class="col-xs-2 address-identicon-container">
+        <div id="addressIdenticon" title="Address Indenticon"></div>
       </div>
       <div class="form-group col-xs-12">
         <label>

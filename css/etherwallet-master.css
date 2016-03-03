@@ -6942,6 +6942,11 @@ header img {
 .mono {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+#step1Collapse,
+#step2Collapse,
+#step3Collapse {
+  cursor: pointer;
+}
 /* Custom Utilities */
 .text-navy {
   color: #2E4868;

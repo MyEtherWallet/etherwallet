@@ -1,7 +1,7 @@
 <!-- view wallet info -->
 <div class="tab-pane" id="paneViewWalletDetails" style="display: none;">
   <h2> View Wallet Details </h2>
-  <p> This allows you to access your wallet so you can view and/or download additional information associated with your account. For example, you could upload your encrypted JSON file to access your wallet and then download an unencrypted private key in order to import into geth. FYI, you can also do this with the <a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" target="__blank">MyEtherWallet CX</a> and save your wallet for easier and quicker access.</p>
+  <p> This allows you view and/or download unencrypted versions of you wallet. You may want to do this for Advanced / Offline transactions or importing your account into Geth/Mist. FYI, you can also do this with the <a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" target="__blank">MyEtherWallet CX</a> and save your wallet for easier and quicker access.</p>
   <div id="viewDetailsDecryptWallet"></div>
   <section class="row" id="decryptedWalletDetails" style="display:none;">
     <hr />

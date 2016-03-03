@@ -98,6 +98,32 @@ function bindElements() {
 	$("#bulkgenerate").click(function() {
 		generateBulkWallets();
 	});
+
+	$("#step1Collapse").click(function() {
+		$("#step1Panel").slideToggle();
+		if ( $("#step1Collapse").html() == "-") {
+			$("#step1Collapse").html("+");
+		} else {
+			$("#step1Collapse").html("-");
+		}
+	});
+	$("#step2Collapse").click(function() {
+		$("#step2Panel").slideToggle();
+		if ( $("#step2Collapse").html() == "-") {
+			$("#step2Collapse").html("+");
+		} else {
+			$("#step2Collapse").html("-");
+		}
+	});
+	$("#step3Collapse").click(function() {
+		$("#step3Panel").slideToggle();
+		if ( $("#step3Collapse").html() == "-") {
+			$("#step3Collapse").html("+");
+		} else {
+			$("#step3Collapse").html("-");
+		}
+	});
+
 	$("#transferAllBalance").click(function() {
 		getMaxSendAmount($("#accountAddress").html(), function(data) {
 			$('#sendtxamount').val(data);
@@ -295,7 +321,7 @@ function setWalletBalance() {
 			});
 			getETHvalue('EUR', function(value) {
 				eurval = value;
-				teurval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);          
+				teurval = toFiat(bestCurAmount.amount, bestCurAmount.unit, value);
 				$("[id=accountBalanceEur]").html(formatCurrency(parseFloat(teurval), '&euro;') + " EUR");
 			});
 			getETHvalue('BTC', function(value) {
