@@ -109,7 +109,7 @@
       <div class="form-group col-xs-12">
         <label> VII. Enter / Upload your Private Key / JSON. </label>
         <div id="sendOfflineTransactionDecryptWallet">
-          
+
         </div>
       </div>
 
@@ -178,6 +178,5 @@
       </div>
       <!--/modal-->
     </div>
-  </section>
 </div>
 <!-- /send transaction -->
