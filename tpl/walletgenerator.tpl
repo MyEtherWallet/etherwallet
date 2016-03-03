@@ -1,7 +1,7 @@
 <!-- wallet generator -->
 <div class="tab-pane active" id="paneWalgen">
   <h2> Generate Wallet </h2>
-  <p class="text-danger"> Unless you are familar with this process, PLEASE read the help page before sending any Ether to a wallet. You need to generate the wallet, back up the wallet externally, and verify you have access to the wallet <strong> before you send any Ether to a new wallet!</strong> MyEtherWallet.com does not receive or store any information so we <strong>cannot</strong> recover your wallet if you lose you password or private key.</p>
+  <p class="text-danger"> Please, remember to back up your wallet externally & verify you have access to the wallet before you send any Ether to your new wallet. MyEtherWallet.com does not receive or store any information so we <strong>cannot</strong> recover your wallet if you lose you password or private key. Read the <a id="help" class="ptabs" showId="paneHelp">help page</a> for instructions.</p>
   <div class="row">
     <div class="col-sm-6">
       <div class="form-group">

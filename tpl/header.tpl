@@ -30,6 +30,8 @@
 </head>
 
 <body>
+<a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="annoucement-warning" target="_blank"> If you created a wallet before Dec. 31st, 2015 or have downloaded the repo before Dec. 31st, please check your wallets and download a new version of the repo. Click for details.</a>
+
 <header class="container-fluid bg-navy text-white">
 <section class="container">
   <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a>
@@ -37,4 +39,5 @@
 </section>
 </header>
 <a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" class="announcement" target="_blank"> Our brand new CHROME EXTENSION is now in BETA! Save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!</a>
+
 

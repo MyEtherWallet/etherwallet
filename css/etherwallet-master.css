@@ -6902,6 +6902,19 @@ header img {
   text-decoration: none;
   background-color: #21a4ce;
 }
+.annoucement-warning {
+  text-align: center;
+  padding: 5px 0;
+  background-color: #d9534f;
+  color: white;
+  display: block;
+}
+.annoucement-warning:hover,
+.annoucement-warning:focus {
+  color: #f2f2f2;
+  text-decoration: none;
+  background-color: #d43f3a;
+}
 .annoucement-danger {
   background-color: #d9534f;
   color: white;

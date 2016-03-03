@@ -114,6 +114,20 @@ header {
   }
 }
 
+.annoucement-warning {
+  text-align: center;
+  padding: 5px 0;
+  background-color: @brand-danger;
+  color: white;
+  display: block;
+  &:hover,
+  &:focus {
+    color: darken(white, 5%);
+    text-decoration: none;
+    background-color: darken(@brand-danger, 5%);
+  }
+}
+
 .annoucement-danger {
   background-color: @brand-danger;
   color: white;
