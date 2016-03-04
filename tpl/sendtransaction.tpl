@@ -45,7 +45,7 @@
     <div class="col-md-4 col-sm-6" style="display: none;" id="walletuploadbutton">
       <h4 id="uploadbtntxt-wallet" style="display: none;"> Decrypt Wallet:</h4>
       <h4 id="uploadbtntxt-privkey" style="display: none;"> Decrypt Private Key: </h4>
-      <div class="form-group"><a class="btn btn-primary btn-block" id="decryptdata" onDecrypt="">DECRYPT</a></div>
+      <div class="form-group"><a class="btn btn-primary btn-block btnAction" func="decryptData" id="decryptdata" onDecrypt="">DECRYPT</a></div>
       <div id="decryptStatus"></div>
     </div>
   </section>
@@ -73,7 +73,7 @@
       <br />
       <div class="well">
         <p> Don't have anyone to send a transaction to? You can always donate to us! Donations mean we spend more time creating new features, listening to your feedback, and giving you what you want.</p>
-        <a class="btn btn-primary btn-block" id="btndonate">DONATE</a>
+        <a class="btn btn-primary btn-block btnAction" func="donateButtonClick" id="btndonate">DONATE</a>
         <div class="text-success text-center marg-v-sm"><strong id="donateThanks" style="display: none;"> THANK YOU!!! </strong></div>
       </div>
     </div>
@@ -91,7 +91,7 @@
         <label>
           Amount to Send:
           <br />
-          <a id="transferAllBalance">Click here to transfer total available balance**</a>
+          <a class="btnAction" func="transferAllBalance" id="transferAllBalance">Click here to transfer total available balance**</a>
         </label>
         <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
         <div class="radio">
@@ -105,7 +105,7 @@
         </div>
       </div>
       <div class="form-group col-xs-12">
-        <a class="btn btn-info btn-block" id="btngeneratetranaction">GENERATE TRANSACTION</a>
+        <a class="btn btn-info btn-block btnAction" func="preCreateTransaction" id="btngeneratetranaction">GENERATE TRANSACTION</a>
       </div>
       <div class="col-xs-12">
         <p><small> * We use standard rates for all gas + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether + current gas price + 1 gwei in gas. We do not take a transaction fee.</small></p>
@@ -142,7 +142,7 @@
             </div>
             <div class="modal-footer text-center">
               <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
-              <button type="button" class="btn btn-primary" id="btnapprovesend">Yes, I am sure! Make transaction.</button>
+              <button type="button" class="btn btn-primary btnAction" func="preSendTransaction" id="btnapprovesend">Yes, I am sure! Make transaction.</button>
             </div>
           </div>
         </div>

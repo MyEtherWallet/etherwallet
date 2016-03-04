@@ -12,7 +12,7 @@
     <div class="col-sm-6">
       <div class="form-group">
         <h4 style="margin-bottom: 27px;">Give me my wallet:</h4>
-        <a class="btn btn-primary btn-block" id="generatewallet">GENERATE</a>
+        <a class="btn btn-primary btn-block btnAction" func="generateSingleWallet" id="generatewallet">GENERATE</a>
       </div>
     </div>
   </div>
@@ -76,7 +76,7 @@
             <span class="account-help-text">ProTip: Click print and save this as a PDF, even if you do not own a printer!</span>
           </div>
         </h4>
-        <a class="btn btn-info btn-block" id="printqr">PRINT</a>
+        <a class="btn btn-info btn-block btnAction" func="printQRcode" id="printqr">PRINT</a>
       </div>
       <div class="form-group">
         <h4>

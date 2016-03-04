@@ -13,7 +13,7 @@
     <div class="col-md-4 col-sm-12 form-group">
       <h4>3. Give me my wallets:</h4>
       <br class="hidden-sm hidden-xs" />
-      <a class="btn btn-primary btn-block" id="bulkgenerate">GENERATE</a>
+      <a class="btn btn-primary btn-block btnAction" func="generateBulkWallets" id="bulkgenerate">GENERATE</a>
     </div>
   </div>
   <div id="generatedbulkwallets" style="display: none;">

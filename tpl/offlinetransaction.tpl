@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group col-xs-12">
-          <a class="btn btn-info" id="getAddressInfo">GENERATE INFORMATION</a>
+          <a class="btn btn-info btnAction" func="getAddressInfo" id="getAddressInfo">GENERATE INFORMATION</a>
         </div>
 
         <section id="step1Output" style="display:none;">
@@ -120,7 +120,7 @@
 
 
       <div class="form-group col-xs-12">
-        <a class="btn btn-info" id="genSignedOfflineTx">GENERATE SIGNED TRANSACTION</a>
+        <a class="btn btn-info btnAction" func="genSignedOfflineTx" id="genSignedOfflineTx">GENERATE SIGNED TRANSACTION</a>
               <div id="offlineTxStatus"></div>
       </div>
       <section id="step2Output">
@@ -146,7 +146,7 @@
         </div>
 
         <div class="form-group col-xs-12">
-          <a class="btn btn-info" id="sendOfflineTx">SEND TRANSACTION</a>
+          <a class="btn btn-info btnAction" func="sendOfflineTx" id="sendOfflineTx">SEND TRANSACTION</a>
         </div>
         <div id="offlineTxPublishStatus"></div>
       </section>
@@ -175,7 +175,7 @@
             </div>
             <div class="modal-footer text-center">
               <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
-              <button type="button" class="btn btn-primary" id="sendOfflineTxApprove">Yes, I am sure! Make transaction.</button>
+              <button type="button" class="btn btn-primary btnAction" func="sendOfflineTxApprove" id="sendOfflineTxApprove">Yes, I am sure! Make transaction.</button>
             </div>
           </div>
         </div>
