@@ -6972,12 +6972,13 @@ header img {
   font-size: 13px;
   background: white;
   padding: 5px;
-  width: 230px;
+  width: 280px;
   top: -5px;
   left: 30px;
   border: 1px solid #CDCDCD;
   border-radius: 3px;
   box-shadow: 0 0 5px rgba(100, 100, 100, 0.2);
+  z-index: 999;
 }
 .account-help-icon:hover .account-help-text {
   display: block;

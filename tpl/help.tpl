@@ -44,21 +44,9 @@
     <li> Create a strong password, preferably using a random password generator. Save this somewhere safe. <em><small>The password encrypts the private key for this wallet. You will need this password to send transactions.</small></em></li>
     <li> Copy the password from where you have saved it and paste it into the "Enter a password" field.</li>
     <li> Click "GENERATE".</li>
-    <li> Your wallet has now been generated. But, you are NOT done yet!</li>
-    <li> Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. You may know this as your account # or public key.</li>
-    <li> Save a version private key. Do not show it to anyone else. Your private key is necessary when you want to access your wallet to move it, spend it, or send it! There are 4 types of private keys:</li>
-      <ul>
-      <li><strong>Private Key (encrypted): </strong> A text version of your private key. This is encrypted, meaning you need the password you entered above to use it. This is a safer way to save your key than unencrypted, but you need to remember your password.</li>
-      <li><strong>JSON (encrypted): </strong> A JSON file is just a different format than the text version and contains some additional information. Some people prefer to have the text version and some prefer to have the JSON. If you are unsure, just save both. Again, this is encrypted so you will need your password.</li>
-      <li><strong>Private Key (unencrypted): </strong> This is the text version of your private key, but it is unencrypted, meaning no password is necessary. If you were to paste this text anywhere, anyone reading it would be able to access your wallet, without the password. For this reason, encrypted private keys are typically recommended.</li>
-      <li><strong>JSON (unencrypted): </strong> This is the unencrypted, JSON format of your private key. Again, this means you do not need the password but anyone who finds your JSON can access your wallet and your Ether without the password. </li>
-    </ul>
-    <li> If you have a printer, you can use the print functionality to get a paper version of your wallet. You can also "print" this and save it as a PDF.</li>
-    <li> A final reminder: You NEED the private key & password in order to access your account and Ether in the future. We do not save anything to our servers and cannot help you recover your funds if you lose your private key/JSON file and password.</li>
-    <li> Next: Backup your wallet. See below. </li>
+    <li> Your wallet has now been generated. But, you are NOT done yet! Back up your wallet now! See #2.</li>
     <li> Then: Verify that you can successfully access you wallet <strong>before</strong> sending any Ether to this wallet. See below.</li>
   </ol>
-  <p> Note: MyEtherWallet can decrypt geth / pre-sale wallets, but geth <strong> cannot </strong> decrypt wallets encrypted by MyEtherWallet. If you plan on not touching a wallet created on MyEtherWallet for a long, long time it may be prudent to save the unencrypted private key / JSON file so you can access it via geth, the official Ethereum GUI wallet, or whatever else is around in the distant future. You can also <a href="https://github.com/kvhnuke/etherwallet" target="_blank"> download the repo </a> and store it with your private keys in order to decrypt in the distant future. See Question #5.</p>
   </ol>
   </div>
   </section>
@@ -68,13 +56,21 @@
   <div class="collapsePanel collapsed">
   <p> You should always back up your wallet externally - like on a flash drive, in cloud storage (Dropbox, etc), and/or a piece of paper.</p>
   <ol>
-    <li>Save the password in a text document.</li>
-    <li>Save the address in that text document.</li>
-    <li>Save the private key in that text document.</li>
-    <li> Place all this information in a folder, along with your JSON file, PDF version of your paper wallet, and whatever other information you would like to keep.</li>
+    <li> Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. You may know this as your account # or public key.</li>
+    <li> Save a version private key. Do not show it to anyone else. Your private key is necessary when you want to access your wallet to move it, spend it, or send it! There are 4 types of private keys:</li>
+      <ul>
+      <li><strong>Private Key (encrypted): </strong> Text version of your private key. This is encrypted so you need the password you entered to use it. This is a safer way to save your key than unencrypted, but you need to remember your password.</li>
+      <li><strong>JSON (encrypted): </strong> A JSON file is just a different format & contains some additional information. Some people prefer to have the text version & some prefer to have the JSON. If you are unsure, just save both. Again, this is encrypted so you will need your password.</li>
+      <li><strong>Private Key (unencrypted): </strong> This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted private keys are typically recommended.</li>
+      <li><strong>JSON (unencrypted): </strong> This is the unencrypted, JSON format of your private key. Again, this means you do not need the password but anyone who finds your JSON can access your wallet and your Ether without the password. </li>
+    </ul>
+    <li> Place all this information in a folder, along with your JSON file, PDF version of your paper wallet, and whatever other information you would like to keep. Store it on your computer.</li>
     <li> Take this folder and place it on a USB drive. Store this USB drive in a place securely, in a separate location from your computer. Maybe that place is at your office (don't forget it when you're rich off Ether & ragequit!), at your parent's or another family member's house, in a storage locker, etc. For added security, you can encrypt that USB drive using the following guides: <a href="http://computerbeginnersguides.com/blog/2015/09/03/encrypt-a-usb-flash-drive-with-bitlocker-in-windows-10-professional-or-enterprise/" target="_blank">Windows</a> or <a href="http://www.theinstructional.com/guides/encrypt-an-external-disk-or-usb-stick-with-a-password" target="_blank">Mac</a>.</li>
     <li> Print the wallet if you have a printer. Otherwise, write down on a piece of paper your: password, address, and private key (unencrypted). Again, store this as a secure location, separate from your computer and the USB drive.</li>
     <li> Now, if your house burns down you still have a USB drive and a piece of paper. If your HDD crashes, you still have a USB drive and a piece of paper.</li>
+    <li> A final reminder: You NEED the private key & password in order to access your account and Ether in the future. We do not save anything to our servers and cannot help you recover your funds if you lose your private key/JSON file and password.</li>
+  </ol>
+  <p> Note: MyEtherWallet can decrypt geth / pre-sale wallets, but geth <strong> cannot </strong> decrypt wallets encrypted by MyEtherWallet. If you plan on not touching a wallet created on MyEtherWallet for a long, long time it may be prudent to save the unencrypted private key / JSON file so you can access it via geth, the official Ethereum GUI wallet, or whatever else is around in the distant future. You can also <a href="https://github.com/kvhnuke/etherwallet" target="_blank"> download the repo </a> and store it with your private keys in order to decrypt in the distant future. See Question #5.</p>
   </ol>
   </div>
   </section>
