@@ -798,6 +798,26 @@
   <p> Note: Some people have been accidentally typing addresses without the prefix "0x". All addresses start with 0x. Others have been losing characters off the end. We have validation on our site that doesn't allow you to send to addresses without this prefix, and our validation verifies that the address you are sending to is valid. Regardless of any validation measures in place on our site or other sites, ALWAYS BE CAREFUL. DOUBLE CHECK YOUR ADDRESS BEFORE SENDING. PLEASE!</p>
 
 
+  <h3> How do I safely / securely / cold storage with MyEtherWallet?</h3>
+  <ol>
+    <li>Go here: <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a></li>
+    <li>Click download zip in the upper right.</li>
+    <li>Move zip to an airgapped computer.</li>
+    <li>Unzip it.</li>
+    <li>Doubleclick index.html.</li>
+    <li>Generate wallet with a strong password. </li>
+    <li>Save the password on the computer, using an additional layer of encryption.<a href="https://www.reddit.com/r/ethtrader/comments/47mcu2/what_program_do_you_use_to_encrypt_your_keystore/" target="_blank"> This thread has recommended encryption. </a></li>
+    <li>Save the encrypted private key or encrypted JSON. Store it on this airgapped computer that will never access the internet ever.</li>
+    <li>Save your address (no need to encrypt) as well. You will need to address to send ETH to yourself later.</li>
+    <li>Copy the encrypted private keys and password and address to a USB drive. Encrypt said USB drive. <a href="http://computerbeginnersguides.com/blog/2015/09/03/encrypt-a-usb-flash-drive-with-bitlocker-in-windows-10-professional-or-enterprise/" target="_blank">Windows Instructions</a> & <a href="http://www.theinstructional.com/guides/encrypt-an-external-disk-or-usb-stick-with-a-password" target="_blank">Mac instructions.</a></li>
+    <li>Write down the encrypted private key and password on separate pieces of paper. Don't print them because all the printers have insecure wifi these days and store shit and we're being ultra secure here. Triple check that you have written them down correctly. Store these papers in physically separate locations than the USB drives and airgapped computer.</li>
+    <li>Go to the view wallet details tab and type in your private key / password from your piece of paper to ensure they are correct and access your wallet. Check that the address you wrote down is the same.</li>
+    <li>Refresh that page. And copy/paste your private key or JSON and password from your computer or USB drive to ensure they are correct and can access your wallet. Check that the address you saved on your computer or USB is the same.</li>
+  </ol>
+  <p>Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). </p>
+
+
+
   <h3> So, what is that password thing all about? </h3>
   <p>The password that you entered at the very beginning to create a new wallet / account is used to encrypt your private key. This enables you to have a safer version of your private key file.</p>
   <p> Basically, all it means is when you upload your private key file, you will also need to enter the password to decrypt it.</p>
