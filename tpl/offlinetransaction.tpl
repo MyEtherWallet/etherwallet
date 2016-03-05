@@ -9,9 +9,9 @@
   <hr />
 
   <section class="row">
-    <div class="col-sm-12">
-      <h4><span class="text-primary" id="step1Collapse">-</span> Step 1: Generate Information (Online Computer)</h4>
-      <section id="step1Panel">
+    <div class="col-sm-12 collapseContainer">
+      <h4 class="col-xs-12"><span class="text-primary collapseButton">-</span> Step 1: Generate Information (Online Computer)</h4>
+      <section class="collapsePanel">
          <div class="form-group col-xs-10 col-sm-6">
             <label> <strong>From</strong> Address: </label>
             <p><small> Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.</small></p>
@@ -44,11 +44,11 @@
 
 
   <section class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 collapseContainer">
       <hr />
-      <h4><span class="text-primary" id="step2Collapse">-</span> Step 2: Generate Transaction (Offline Computer)</h4>
+      <h4 class="col-xs-12"><span class="text-primary collapseButton">-</span> Step 2: Generate Transaction (Offline Computer)</h4>
 
-      <section id="step2Panel">
+      <section class="collapsePanel">
       <div class="form-group col-xs-10 col-sm-6">
             <label> To Address: </label>
             <input class="form-control validateAddress" status="offlineToAddStatus" identicon="offlineToAddIdenticon" type="text" placeholder="0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" id="offlineToAdd">
@@ -135,11 +135,11 @@
 
 
   <section class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 collapseContainer">
       <hr />
-      <h4><span class="text-primary" id="step3Collapse">-</span> Step 3: Send / Publish Transaction (Online Computer)</h4>
-      <p> Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.</p>
-      <section id="step3Panel">
+      <h4 class="col-xs-12"><span class="text-primary collapseButton">-</span> Step 3: Send / Publish Transaction (Online Computer)</h4>
+      <p class="col-xs-12"> Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.</p>
+      <section class="collapsePanel">
         <div class="form-group col-xs-12">
           <label> Signed Transaction </label>
           <textarea class="form-control offlineSerializedTx" placeholder="" id="offlineSerializedTxPub" rows=3></textarea>

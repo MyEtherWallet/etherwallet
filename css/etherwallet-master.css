@@ -6997,10 +6997,12 @@ header img {
 .mono {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-#step1Collapse,
-#step2Collapse,
-#step3Collapse {
+.collapseButton {
   cursor: pointer;
+  width: 15px;
+  margin: 0 0 0 -21px;
+  display: inline-block;
+  padding: 0 5px;
 }
 /* Custom Utilities */
 .text-navy {

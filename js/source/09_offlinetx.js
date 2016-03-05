@@ -1,28 +1,4 @@
 $(document).ready(function() {
-	$("#step1Collapse").click(function() {
-		$("#step1Panel").slideToggle();
-		if ($("#step1Collapse").html() == "-") {
-			$("#step1Collapse").html("+");
-		} else {
-			$("#step1Collapse").html("-");
-		}
-	});
-	$("#step2Collapse").click(function() {
-		$("#step2Panel").slideToggle();
-		if ($("#step2Collapse").html() == "-") {
-			$("#step2Collapse").html("+");
-		} else {
-			$("#step2Collapse").html("-");
-		}
-	});
-	$("#step3Collapse").click(function() {
-		$("#step3Panel").slideToggle();
-		if ($("#step3Collapse").html() == "-") {
-			$("#step3Collapse").html("+");
-		} else {
-			$("#step3Collapse").html("-");
-		}
-	});
 	$('input[type=radio][name=currencyRadioOffline]').change(function() {
 		$("#offlineSendtxamount").trigger("keyup");
 	});

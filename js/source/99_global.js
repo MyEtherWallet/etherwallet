@@ -111,3 +111,20 @@ function hideAllMainContainers() {
 	$("#help").parent().removeClass('active');
 	$("#contact").parent().removeClass('active');
 }
+
+// collapsing elements on offline tx and help
+$(document).ready(function() {
+	$(".collapsePanel.collapsed").slideUp();
+
+	$(".collapseButton").click(function() {
+		var collapseButton = $(this);
+		var collapseContainer = $(this).parents(".collapseContainer");
+		var collapsePanel = collapseContainer.children( ".collapsePanel" );
+		collapsePanel.slideToggle();
+		if ( collapseButton.html() == "-") {
+			collapseButton.html("+");
+		} else {
+			collapseButton.html("-");
+		}
+	});
+});
