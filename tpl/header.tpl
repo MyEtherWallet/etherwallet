@@ -30,7 +30,7 @@
 </head>
 
 <body>
-<a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="annoucement-warning" target="_blank"> If you created a wallet before Dec. 31st, 2015 or have downloaded the repo before Dec. 31st, please check your wallets and download a new version of the repo. Click for details.</a>
+<a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="annoucement-warning" target="_blank"> If you created a wallet before <strong>Dec. 31st, 2015</strong> or have downloaded the repo before <strong>Dec. 31st, 2015</strong>, please check your wallets & download a new version of the repo. Click for details.</a>
 
 <header class="container-fluid bg-navy text-white">
 <section class="container">
