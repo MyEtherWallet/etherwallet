@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <section class="row" id="generatedWallet" style="display:none;">
+  <section class="row" id="generatedWallet" style="display: none;">
     <hr />
 
     <!-- into text -->
