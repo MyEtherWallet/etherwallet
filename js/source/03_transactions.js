@@ -22,7 +22,7 @@ function createTransaction(privkey, to, amountinwei, successcb, errorcb) {
 		}
 		data = data.data;
 		var nonce = padLeftEven(BNtoHex(new BigNumber(data.nonce)));
-		var gasPrice = padLeftEven(BNtoHex(new BigNumber(data.gasprice).plus(1000000000).toDigits(1))); //adding extra 1gwei to be safer
+		var gasPrice = padLeftEven(BNtoHex(new BigNumber(data.gasprice).plus(1000000000).toDigits(2))); //adding extra 1gwei to be safer
 		var gasLimit = padLeftEven(BNtoHex(new BigNumber(stdTransactionGas))); //standard 21000 per transaction
 		var value = padLeftEven(BNtoHex(new BigNumber(String(amountinwei))));
 		var rawTx = {
@@ -137,7 +137,7 @@ function getMaxSendAmount(address, successcb, errorcb) {
 			return;
 		}
 		data = data.data;
-		var gasPrice = new BigNumber(data.gasprice).plus(1000000000).toDigits(1).times(stdTransactionGas);
+		var gasPrice = new BigNumber(data.gasprice).plus(1000000000).toDigits(2).times(stdTransactionGas);
 		var maxVal = new BigNumber(String(data.balance)).minus(gasPrice);
 		if (maxVal.lessThan(0)) {
 			errorcb("Not enough balance to send a transaction");

@@ -87,7 +87,7 @@ function getAddressInfo() {
 				return;
 			}
 			data = data.data;
-			data.gasprice = new BigNumber(data.gasprice).toString();
+			data.gasprice = new BigNumber(data.gasprice).plus(1000000000).toDigits(2).toString();
 			data.nonce = new BigNumber(data.nonce).toString();
 			$(".offlineGPrice").val(data.gasprice);
 			$(".offlineNonce").val(data.nonce);
