@@ -93,11 +93,21 @@ This project loads JQuery 1.11.3 and then a minified JS file that is composed of
 
 
 ### TODO / In Progress
-- Fix all the areas where the value you are sending is displayed in WEI instead of ETH (or whatever makes sense)
-- Respond to Issue #24 in Github
-- Add unencrypted -> encrypted option in View Wallet Details Tab
-- Advanced tab for generating offline transactions and sending transactions with data - backend only
-- Modularize the JS to use across .com and CX
-- Add "bitaddress.org randomizes the private key generation via mouse movements. Myetherwallet doesn't do this. Is the random number generation for this safe? Is Myetherwallet the only or best option?" to FAQ
-- Add "gas limit is too low error" to FAQ
-- Add this to helpful links: Add this in helpful links: https://www.reddit.com/r/ethereum/comments/46887p/tips_for_recovering_your_presale_password/
+
+#### .com & CX
+- Global - Implement Checksums
+- Send Transactions - display in whatever the radio button says, not WEI
+- Send Transactions - Add optional custom gas limit / data on standard send transaction tab
+- Global - Modularize the JS to use across .com and CX
+- Generate Wallet / Bulk Generate - When generating a new wallet, the password is shown in plaintext instead of dots. I would rather have them shown as dots, perhaps with a optional ticker to show the plaintext. (from reddit thread)
+
+#### just .com
+- View Wallet Details - Add unencrypted JSON option
+- View Wallet Details - Add unencrypted -> Encrypted option
+- Offline Transactions "Would be great to have a feature where it automatically generates QR code for signed transaction (show the QR code along the signed transaction box), which will totally removes the risks for using a USB to connect to an offline computer to download the signed transaction then broadcast into a networked computer." https://www.reddit.com/user/Bitnicity
+
+#### just CX
+- Would be nice if on quick send it defaulted to the only wallet you have if you have just one created. (from reddit thread)
+- Push New Generate Wallet Tab Frontend
+- Push New FAQ Frontend
+
