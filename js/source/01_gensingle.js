@@ -18,7 +18,8 @@ function generateSingleWallet() {
 	$("#generatedWallet").show();
 	var acc = new Accounts();
 	var newAccountEnc = acc.new(password);
-	$("#address").val(newAccountEnc.address);
+    var checksummedAdd = toChecksumAddress(newAccountEnc.address);
+	$("#address").val(checksummedAdd);
 	$('#addressIdenticon').css("background-image", 'url(' + blockies.create({
 		seed: newAccountEnc.address,
 		size: 8,

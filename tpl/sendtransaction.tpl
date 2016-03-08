@@ -81,7 +81,7 @@
       <h4>Send Transaction</h4>
       <div class="form-group col-xs-10">
         <label> To Address: </label>
-        <input class="form-control validateAddress" status="addressvalidateStatus" identicon="addressvalidateIdenticon" type="text" placeholder="0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" id="sendtxaddress">
+        <input class="form-control validateAddress" status="addressvalidateStatus" identicon="addressvalidateIdenticon" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" id="sendtxaddress">
         <div class="addressvalidateStatus"></div>
       </div>
       <div class="col-xs-2 address-identicon-container">
