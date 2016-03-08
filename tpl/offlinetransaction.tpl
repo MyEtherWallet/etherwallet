@@ -15,7 +15,7 @@
          <div class="form-group col-xs-10 col-sm-6">
             <label> <strong>From</strong> Address: </label>
             <p><small> Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.</small></p>
-            <input class="form-control validateAddress" status="offlineAddressvalidateStatus" identicon="OfflineAddressvalidateIdenticon" type="text" placeholder="0x7CB57B5A97EABE94205C07890BE4C1AD31e486a8" id="offlineFromAdd">
+            <input class="form-control validateAddress" status="offlineAddressvalidateStatus" identicon="OfflineAddressvalidateIdenticon" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" id="offlineFromAdd">
          <div class="offlineAddressvalidateStatus"></div>
          </div>
         <div class="col-xs-2 address-identicon-container">
@@ -51,7 +51,7 @@
       <section class="collapsePanel">
       <div class="form-group col-xs-10 col-sm-6">
             <label> To Address: </label>
-            <input class="form-control validateAddress" status="offlineToAddStatus" identicon="offlineToAddIdenticon" type="text" placeholder="0x7CB57B5A97EABE94205C07890BE4C1AD31e486a8" id="offlineToAdd">
+            <input class="form-control validateAddress" status="offlineToAddStatus" identicon="offlineToAddIdenticon" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" id="offlineToAdd">
          <div class="offlineToAddStatus"></div>
          </div>
         <div class="col-xs-2 address-identicon-container">

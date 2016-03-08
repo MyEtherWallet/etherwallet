@@ -11,7 +11,7 @@ function transferAllBalance() {
 }
 
 function donateButtonClick() {
-	$("#sendtxaddress").val('0x7CB57B5A97EABE94205C07890BE4C1AD31e486a8');
+	$("#sendtxaddress").val('0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8');
 	$("#donateThanks").show();
 	$("#sendtxaddress").trigger("keyup");
 }

@@ -191,7 +191,7 @@ function isChecksumAddress(address) {
 function toChecksumAddress(address) { 
     if (typeof address === 'undefined') return '';
     address = address.toLowerCase().replace('0x','');
-    var addressHash = ethUtil.sha3(address);
+    var addressHash = ethUtil.sha3(address).toString('hex');
     var checksumAddress = '0x';
     for (var i = 0; i < address.length; i++ )
         checksumAddress += parseInt(addressHash[i], 16) > 7 ? address[i].toUpperCase() : address[i];
