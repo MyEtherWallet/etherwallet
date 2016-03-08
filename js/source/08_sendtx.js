@@ -11,7 +11,7 @@ function transferAllBalance() {
 }
 
 function donateButtonClick() {
-	$("#sendtxaddress").val('0x7cb57b5a97eabe94205c07890be4c1ad31e486a8');
+	$("#sendtxaddress").val('0x7CB57B5A97EABE94205C07890BE4C1AD31e486a8');
 	$("#donateThanks").show();
 	$("#sendtxaddress").trigger("keyup");
 }
@@ -66,7 +66,7 @@ function preCreateTransaction() {
 
 function walletSendDecryptSuccess() {
 	var decrytedAdd = formatAddress(strPrivateKeyToAddress(PrivKey), 'hex');
-	$("#accountAddress").html(decrytedAdd);
+	$("#accountAddress").html(toChecksumAddress(decrytedAdd));
 	$('.walletaddressIdenticon').css("background-image", 'url(' + blockies.create({
 		seed: decrytedAdd,
 		size: 8,

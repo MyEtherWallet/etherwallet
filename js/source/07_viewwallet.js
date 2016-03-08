@@ -170,7 +170,7 @@ function walletViewDecryptSuccess() {
 		size: 8,
 		scale: 16
 	}).toDataURL() + ')');
-	$("#addressViewW").val(decrytedAdd);
+	$("#addressViewW").val(toChecksumAddress(decrytedAdd));
 	$("#privkeyViewW").val(PrivKey);
 	$("#qrcodeAddViewW").empty();
 	new QRCode($("#qrcodeAddViewW")[0], {

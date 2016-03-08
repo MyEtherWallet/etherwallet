@@ -180,10 +180,23 @@ function hexToCryptoJS(x) {
 function cryptoJSToHex(x) {
 	return CryptoJS.enc.Hex.stringify(x);
 }
-
-function validateEtherAddress(addr){
-    return addr.length==42&&addr.substr(0,2)=="0x"&&/^[0-9A-F]+$/i.test(addr.substr(2));
+function validateEtherAddress(address){
+    if (!/^(0x)?[0-9a-f]{40}$/i.test(address))return false;
+    else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address)) return true;
+    else return isChecksumAddress(address);
 }
+function isChecksumAddress(address) {    
+    return address == toChecksumAddress(address);
+};
+function toChecksumAddress(address) { 
+    if (typeof address === 'undefined') return '';
+    address = address.toLowerCase().replace('0x','');
+    var addressHash = ethUtil.sha3(address);
+    var checksumAddress = '0x';
+    for (var i = 0; i < address.length; i++ )
+        checksumAddress += parseInt(addressHash[i], 16) > 7 ? address[i].toUpperCase() : address[i];
+    return checksumAddress;
+};
 function hex2str(hex) {
 	var hex = hex.toString();
 	var str = '';

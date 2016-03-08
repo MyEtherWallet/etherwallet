@@ -35,7 +35,7 @@ function generateBulkWallets() {
 			newAccount.private = newAccount.private + addressHash;
 		} else
 		var newAccount = acc.new();
-		$('#bulkgentable tr:last').after('<tr class="privaddkey"><td><div id="addressIdenticon" class="addressIdenticon-' + i + '"></div></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.address + '</textarea></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.private + '</textarea></td></tr>');
+		$('#bulkgentable tr:last').after('<tr class="privaddkey"><td><div id="addressIdenticon" class="addressIdenticon-' + i + '"></div></td><td><textarea class="form-control" rows="4" type="text" disabled>' + toChecksumAddress(newAccount.address) + '</textarea></td><td><textarea class="form-control" rows="4" type="text" disabled>' + newAccount.private + '</textarea></td></tr>');
 		$(".addressIdenticon-" + i).css("background-image", 'url(' + blockies.create({
 			seed: newAccount.address,
 			size: 8,
@@ -48,7 +48,7 @@ function generateBulkWallets() {
 			private: newAccount.private
 		});
 		printjson.push({
-			address: newAccount.address,
+			address: toChecksumAddress(newAccount.address),
 			private: acc.get(newAccount.address, password).private
 		});
 	}
