@@ -757,7 +757,7 @@
   <h3> <span class="text-primary collapseButton">-</span> First, a reminder </h3>
   <div class="collapsePanel">
     <ul>
-      <li>Please DON'T save wallets with more Ether than you are willing to lose. This applies to all wallets and everything Ethereum while we are in Frontier.</li>
+      <li>Please DON'T make wallets with more Ether than you are willing to lose. This applies to all wallets and everything Ethereum while we are in Frontier.</li>
       <li>Please, DON'T forget to save your private key / password when you create a new wallet. Save them externally - not just on your computer! We wrote thorough instructions on this page</li>
       <li>Please DO make sure you are sending to the correct address.</li>
       <li>Please DO reach out to us (click contact above) with any and all feedback you have, especially little bugs, things that confused you, or error messages that don't make sense / have typos.</li>
@@ -792,7 +792,7 @@
     <li> Create a strong password, preferably using a random password generator. Save this somewhere safe. <em><small>The password encrypts the private key for this wallet. You will need this password to send transactions.</small></em></li>
     <li> Copy the password from where you have saved it and paste it into the "Enter a password" field.</li>
     <li> Click "GENERATE".</li>
-    <li> Your wallet has now been generated. But, you are NOT done yet! Back up your wallet now! See #2.</li>
+    <li> Your wallet has now been generated. But, you are NOT done yet! Back up your wallet now! See #2a.</li>
     <li> Then: Verify that you can successfully access you wallet <strong>before</strong> sending any Ether to this wallet. See below.</li>
   </ol>
   </ol>
@@ -800,7 +800,7 @@
   </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 2. How do I save/backup my wallet?</h3>
+  <h3> <span class="text-primary collapseButton">+</span> 2a. How do I save/backup my wallet?</h3>
   <div class="collapsePanel collapsed">
   <p> You should always back up your wallet externally - like on a flash drive, in cloud storage (Dropbox, etc), and/or a piece of paper.</p>
   <ol>
@@ -932,7 +932,7 @@
 <section class="collapseContainer">
   <h3> <span class="text-primary collapseButton">+</span> 9. What does "Gas Limit Too Low" Mean?</h3>
 <div class="collapsePanel collapsed">
-  <p> Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. Unfortuantely, we do not support sending to contracts right now (or including data with your transaction. We will in the very near future. Feel free to contact us and let us know how awesome we are and how much you want this feature to speed the development up. ;)</p>
+  <p> Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. You can use the <a id="offline-transaction" class="ptabs" showId="paneOfflineTrans"> advanced / offline transaction tab</a> to send to contracts.</p>
 </div>
 </section>
 
@@ -969,13 +969,20 @@
 </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 14. Where is my pre-sale  wallet file?</h3>
+  <h3> <span class="text-primary collapseButton">+</span> 14. Where the hell is my Mist wallet file? </h3>
+<div class="collapsePanel collapsed">
+  <p> Mist files are typically found in the file locations above, but it's much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.
+</div>
+</section>
+
+<section class="collapseContainer">
+  <h3> <span class="text-primary collapseButton">+</span> 15. Where is my pre-sale wallet file?</h3>
   <div class="collapsePanel collapsed">
   <p> Where ever you saved it. ;) It also was emailed to you, so check there. Look for the file called <code>"ethereum_wallet_backup.json"</code> and upload that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.</p>
 </div>
 </section>
 
-
+<hr />
 
 <section class="collapseContainer">
   <h3> <span class="text-primary collapseButton">-</span> Security </h3>
