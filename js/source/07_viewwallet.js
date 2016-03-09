@@ -58,7 +58,7 @@ $(document).ready(function() {
 			$("#walletuploadbutton").hide();
 		}
 	});
-	$('#manualprivkey').on('paste, keyup', function() {
+	$('#manualprivkey').on('paste, keyup, input', function() {
 		$("#divprikeypassword").hide();
 		$("#walletuploadbutton").hide();
 		$("#uploadbtntxt-wallet").hide();
