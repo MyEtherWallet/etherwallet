@@ -68,7 +68,7 @@ function walletSendDecryptSuccess() {
 	var decrytedAdd = formatAddress(strPrivateKeyToAddress(PrivKey), 'hex');
 	$("#accountAddress").html(toChecksumAddress(decrytedAdd));
 	$('.walletaddressIdenticon').css("background-image", 'url(' + blockies.create({
-		seed: decrytedAdd,
+		seed: decrytedAdd.toLowerCase(),
 		size: 8,
 		scale: 16
 	}).toDataURL() + ')');

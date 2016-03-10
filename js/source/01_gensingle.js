@@ -21,7 +21,7 @@ function generateSingleWallet() {
     var checksummedAdd = toChecksumAddress(newAccountEnc.address);
 	$("#address").val(checksummedAdd);
 	$('#addressIdenticon').css("background-image", 'url(' + blockies.create({
-		seed: newAccountEnc.address,
+		seed: newAccountEnc.address.toLowerCase(),
 		size: 8,
 		scale: 16
 	}).toDataURL() + ')');

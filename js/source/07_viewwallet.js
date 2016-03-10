@@ -39,7 +39,7 @@ $(document).ready(function() {
 		if (validateEtherAddress($(this).val())) {
 			$('.' + $(this).attr('status')).html('<p class="text-success"><strong> Address is valid</strong></p>').fadeIn(50);
 			$('.' + $(this).attr('identicon')).css("background-image", 'url(' + blockies.create({
-				seed: $(this).val().trim(),
+				seed: $(this).val().trim().toLowerCase(),
 				size: 8,
 				scale: 16
 			}).toDataURL() + ')');
@@ -166,7 +166,7 @@ function walletViewDecryptSuccess() {
 	$("#accountAddress").html(decrytedAdd);
 	setWalletBalance();
 	$('.addressIdenticonViewW').css("background-image", 'url(' + blockies.create({
-		seed: decrytedAdd,
+		seed: decrytedAdd.toLowerCase(),
 		size: 8,
 		scale: 16
 	}).toDataURL() + ')');
