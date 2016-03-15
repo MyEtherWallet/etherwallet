@@ -99,6 +99,8 @@ This project loads JQuery 1.11.3 and then a minified JS file that is composed of
 - Send Transactions - Add optional custom gas limit / data on standard send transaction tab
 - Global - Modularize the JS to use across .com and CX
 - Generate Wallet / Bulk Generate - When generating a new wallet, the password is shown in plaintext instead of dots. I would rather have them shown as dots, perhaps with a optional ticker to show the plaintext. (from reddit thread)
+- Paper wallet Address should be checksum'd
+- Change layout of paper wallet to have the two QR codes further apart.
 
 #### just .com
 - View Wallet Details - Add unencrypted JSON option
