@@ -8,32 +8,39 @@ var notify = require('gulp-notify');
 var rename = require('gulp-rename');
 var uncss = require('gulp-uncss');
 var template = require('gulp-template');
-
-// js
-var gulpConcat = require('gulp-concat');
+var gutil = require('gulp-util');
+var browserify = require('gulp-browserify');
+var concat = require('gulp-concat');
+var clean = require('gulp-clean');
+var imagemin = require('gulp-imagemin');
 var uglify = require('gulp-uglify');
 
 // watch folders
-var lessWatchFolder = './css/less/**/*.less';
-var htmlWatchFolder = './*.html';
-var jsWatchFolder = './js/source/*.js';
+var lessWatchFolder = './app/styles/less/**/*.less';
+var htmlWatchFolder = './dist/*.html';
 
 // less vars
-var lessFile = './css/less/etherwallet-master.less';
-var lessOutputFolder = './css';
+var lessFile = './app/styles/less/etherwallet-master.less';
+var lessOutputFolder = './dist/css';
 var lessOutputFile = 'etherwallet-master.css';
 var lessOutputFileMin = 'etherwallet-master.min.css';
 
-//js vars
-var jsFiles = "./js/source/*.js";
-var staticjsFiles = "./js/source/staticJS/*.js";
-var jsOutputFolder = './js';
-var jsOutputFile = 'etherwallet-master.min.js';
-var staticjsOutputFile = 'etherwallet-static.min.js';
-
 //html Pages
-var htmlPages = "./pages/*.html";
-var tplFiles = "./tpl/*.tpl";
+var htmlPages = "./app/pages/*.html";
+var tplFiles = "./app/views/*.tpl";
+
+//js files
+var jsFiles = "./app/scripts/*.js";
+var AllJsFiles = "./app/scripts/**/*.js";
+var mainjs = "app/scripts/main.js";
+
+//images
+var imagesFolder = "./app/images/**/*";
+var imagesOutputFolder = "./dist/images";
+
+//fonts
+var fontsFolder = "./app/fonts/*.*";
+var fontsOutputFolder = "./dist/fonts";
 
 gulp.task('less', function (cb) {
   return gulp
@@ -46,7 +53,7 @@ gulp.task('less', function (cb) {
       .pipe(gulp.dest(lessOutputFolder))
       .pipe(uncss({
         html: [
-          './index.html'
+          './dist/index.html'
         ]
       }))
       .pipe(cssnano()).on('error', notify.onError(function (error) {
@@ -57,33 +64,55 @@ gulp.task('less', function (cb) {
       .pipe(notify('Less Compiled UNCSSd and Minified'));
 });
 
-gulp.task('minJS', function () {
+gulp.task('browserify', function() {
+  gulp.src([mainjs])
+  .pipe(browserify({
+    insertGlobals: true,
+    debug: true
+  }))
+  .pipe(concat('etherwallet-master.js'))
+  .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('minJS',['browserify'],function () {
   return gulp
-    .src(jsFiles)
-      .pipe(gulpConcat(jsOutputFile))
-      .pipe(gulp.dest(jsOutputFolder))
+    .src('./dist/js/etherwallet-master.js')
+      .pipe(concat('etherwallet-master-min.js'))
+      .pipe(uglify())
+      .pipe(gulp.dest('./dist/js/'))
      .pipe(notify('JS Concat and Uglified'));
 });
 
-gulp.task('staticJS', function () {
-  return gulp
-    .src(staticjsFiles)
-      .pipe(gulpConcat(staticjsOutputFile))
-      .pipe(gulp.dest(jsOutputFolder))
-     .pipe(notify('staic JS Concat and Uglified'));
+gulp.task('copy-images', function() {
+   gulp.src(imagesFolder)
+   .pipe(imagemin())
+   .pipe(gulp.dest(imagesOutputFolder))
+   .pipe(notify({message:'All images copied', onLast:true}));
 });
 
+gulp.task('copy-fonts', function() {
+   gulp.src(fontsFolder)
+   .pipe(gulp.dest(fontsOutputFolder))
+   .pipe(notify({message:'All fonts copied', onLast:true}));
+});
+
+gulp.task('watchJS', function() {
+  gulp.watch([jsFiles, AllJsFiles],[
+    'browserify',
+	'minJS'
+  ]);
+});
 gulp.task('genHTMLPages', function () {
-    var header=fs.readFileSync("./tpl/header.tpl", "utf8");
-    var walletgenerator=fs.readFileSync("./tpl/walletgenerator.tpl", "utf8");
-    var bulkgenerator=fs.readFileSync("./tpl/bulkgenerator.tpl", "utf8");
-    var viewwalletdetails=fs.readFileSync("./tpl/viewwalletdetails.tpl", "utf8");
-    var sendtransaction=fs.readFileSync("./tpl/sendtransaction.tpl", "utf8");
-    var offlinetransaction=fs.readFileSync("./tpl/offlinetransaction.tpl", "utf8");
-    var print=fs.readFileSync("./tpl/print.tpl", "utf8");
-    var help=fs.readFileSync("./tpl/help.tpl", "utf8");
-    var contact=fs.readFileSync("./tpl/contact.tpl", "utf8");
-    var footer=fs.readFileSync("./tpl/footer.tpl", "utf8");
+    var header=fs.readFileSync("./app/views/header.tpl", "utf8");
+    var walletgenerator=fs.readFileSync("./app/views/walletgenerator.tpl", "utf8");
+    var bulkgenerator=fs.readFileSync("./app/views/bulkgenerator.tpl", "utf8");
+    var viewwalletdetails=fs.readFileSync("./app/views/viewwalletdetails.tpl", "utf8");
+    var sendtransaction=fs.readFileSync("./app/views/sendtransaction.tpl", "utf8");
+    var offlinetransaction=fs.readFileSync("./app/views/offlinetransaction.tpl", "utf8");
+    var print=fs.readFileSync("./app/views/print.tpl", "utf8");
+    var help=fs.readFileSync("./app/views/help.tpl", "utf8");
+    var contact=fs.readFileSync("./app/views/contact.tpl", "utf8");
+    var footer=fs.readFileSync("./app/views/footer.tpl", "utf8");
     return gulp.src(htmlPages)
         .pipe(template({
             header: header,
@@ -97,13 +126,10 @@ gulp.task('genHTMLPages', function () {
             contact: contact,
             footer: footer
           }))
-        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./dist/'))
         .pipe(notify('HTML Pages generated'));
 });
 
-gulp.task('watchJS', function() {
-    gulp.watch(jsWatchFolder,['minJS']);
-});
 gulp.task('watchLess', function() {
     gulp.watch(lessWatchFolder, ['less']);
 });
@@ -117,4 +143,4 @@ gulp.task('watchTPL', function() {
     gulp.watch(tplFiles, ['genHTMLPages']);
 });
 
-gulp.task('default', ['genHTMLPages', 'staticJS', 'minJS' , 'less', 'watchJS' , 'watchLess', 'watchHTML', 'watchPAGES', 'watchTPL']);
+gulp.task('default', ['copy-images','copy-fonts','genHTMLPages', 'less', 'browserify','minJS', 'watchJS' , 'watchLess', 'watchHTML', 'watchPAGES', 'watchTPL']);
