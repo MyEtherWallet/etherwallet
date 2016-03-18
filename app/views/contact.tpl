@@ -1,5 +1,5 @@
 <!-- contact -->
-<div class="tab-pane" id="paneContact" style="display: none;">
+<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contact.id">
   <h2> Ways to Get in Touch </h2>
   <a name="contact"></a>
   <ul>

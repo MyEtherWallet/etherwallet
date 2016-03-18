@@ -1,5 +1,5 @@
 <!-- send transaction -->
-<div class="tab-pane" id="paneSendTrans" style="display: none;">
+<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
   <h2> Send Transaction </h2>
   <div id="sendTransactionDecryptWallet">
   <section class="row" id="walletselection">

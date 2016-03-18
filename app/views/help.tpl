@@ -1,5 +1,5 @@
 <!-- help -->
-<div class="tab-pane" id="paneHelp" style="display: none;">
+<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.help.id">
   <h2> Help </h2>
   <p>
     Do you see something missing? Have another question? <a id="contact" class="ptabs" showId="paneContact">Get in touch with us</a> and we will not only answer your question, we will update this page to be more useful to people in the future!

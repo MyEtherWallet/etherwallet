@@ -1,5 +1,5 @@
 <!-- bulk generator -->
-<div class="tab-pane" id="paneBulkgen" style="display: none;">
+<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.bulkGenerate.id">
   <h2> Bulk Generate Wallets </h2>
   <div class="row">
     <div class="col-md-4 col-sm-6 form-group">

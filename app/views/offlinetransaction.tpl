@@ -1,5 +1,5 @@
 <!-- send transaction -->
-<div class="tab-pane" id="paneOfflineTrans" style="display: none;">
+<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.offlineTransaction.id">
   <h2> Advanced / Offline Transaction </h2>
 
   <p><strong class="text-danger"> This tab is brand-spanking-new. Please report any bugs / issues in the <a href="https://www.reddit.com/r/ethereum/comments/48rf3d/weve_heard_you_loud_and_clear_so_tonightweve/" target="_blank">reddit thread</a> & please test with SMALL AMOUNTS FOR NOW! Thank you!</strong></p>

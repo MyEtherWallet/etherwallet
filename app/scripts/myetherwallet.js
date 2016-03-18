@@ -1,3 +1,4 @@
+'use strict';
 var Wallet = function(priv) {
 	this.privKey = priv.length == 32 ? priv : Buffer(priv, 'hex')
 }
@@ -96,6 +97,14 @@ Wallet.prototype.toV3 = function(password, opts) {
 		}
 	}
 }
+Wallet.prototype.toJSON = function(){
+    return {
+		address:this.getAddressString(),
+        checksumAddress:this.getChecksumAddressString(),
+        privKey:this.getPrivateKeyString(),
+        pubKey:this.getPublicKeyString()
+	}
+}
 Wallet.fromMyEtherWallet = function(input, password) {
 	var json = (typeof input === 'object') ? input : JSON.parse(input)
 	var privKey
@@ -179,3 +188,4 @@ function evp_kdf(data, salt, opts) {
 		iv: tmp.slice(keysize, keysize + ivsize)
 	}
 }
+module.exports = Wallet;

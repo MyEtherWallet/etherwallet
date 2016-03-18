@@ -32,7 +32,9 @@ var tplFiles = "./app/views/*.tpl";
 //js files
 var jsFiles = "./app/scripts/*.js";
 var AllJsFiles = "./app/scripts/**/*.js";
-var mainjs = "app/scripts/main.js";
+var mainjs = "./app/scripts/main.js";
+var staticjsFiles = "./app/scripts/staticJS/*.js";
+var staticjsOutputFile = 'etherwallet-static.min.js';
 
 //images
 var imagesFolder = "./app/images/**/*";
@@ -51,11 +53,11 @@ gulp.task('less', function (cb) {
       .pipe(autoprefixer('last 2 version', 'ie 9', 'ios 6', 'android 4'))
       .pipe(rename(lessOutputFile))
       .pipe(gulp.dest(lessOutputFolder))
-      .pipe(uncss({
-        html: [
-          './dist/index.html'
-        ]
-      }))
+      //.pipe(uncss({
+  //      html: [
+    //      './dist/index.html'
+    //    ]
+    //  }))
       .pipe(cssnano()).on('error', notify.onError(function (error) {
         return "ERROR! minify CSS Problem file : " + error.message;
       }))
@@ -74,11 +76,20 @@ gulp.task('browserify', function() {
   .pipe(gulp.dest('dist/js'));
 });
 
+gulp.task('staticJS', function () {
+  return gulp
+    .src(staticjsFiles)
+      .pipe(concat(staticjsOutputFile))
+      .pipe(uglify())
+      .pipe(gulp.dest('./dist/js/'))
+     .pipe(notify('staic JS Concat and Uglified'));
+});
+
 gulp.task('minJS',['browserify'],function () {
   return gulp
     .src('./dist/js/etherwallet-master.js')
       .pipe(concat('etherwallet-master-min.js'))
-      .pipe(uglify())
+     // .pipe(uglify())
       .pipe(gulp.dest('./dist/js/'))
      .pipe(notify('JS Concat and Uglified'));
 });
@@ -143,4 +154,4 @@ gulp.task('watchTPL', function() {
     gulp.watch(tplFiles, ['genHTMLPages']);
 });
 
-gulp.task('default', ['copy-images','copy-fonts','genHTMLPages', 'less', 'browserify','minJS', 'watchJS' , 'watchLess', 'watchHTML', 'watchPAGES', 'watchTPL']);
+gulp.task('default', ['copy-images','copy-fonts','genHTMLPages','staticJS', 'less', 'browserify','minJS', 'watchJS' , 'watchLess', 'watchHTML', 'watchPAGES', 'watchTPL']);
