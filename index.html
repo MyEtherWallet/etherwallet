@@ -61,7 +61,7 @@
     <div class="col-sm-6">
       <div class="form-group">
         <h4>Enter a password to encrypt your private key <small>(minimum 7 characters):</small> </h4>
-        <input type="text" class="form-control" placeholder="Don't forget to save this!" ng-model="password" ng-minlength="7"/>
+        <input type="text" class="form-control" placeholder="Don't forget to save this!" ng-model="password" />
       </div>
     </div>
     <div class="col-sm-6">
@@ -96,7 +96,7 @@
         </div>
       </div>
       <div class="col-sm-2 address-identicon-container">
-        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}"></div>
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
       </div>
     </div>
     <!-- / 1. Address -->
@@ -124,7 +124,7 @@
               <span class="account-help-text">A JSON file is just a different format & contains some additional information. Some people prefer to have the text version & some prefer to have the JSON. If you are unsure, just save both. Again, this is encrypted so you will need your password.</span>
             </div>
           </label>
-          <a class="btn btn-info btn-block"> DOWNLOAD </a>
+          <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{wallet.getChecksumAddressString()}}-encrypted.json"> DOWNLOAD </a>
         </div>
       </div><!-- end col-sm-6-->
       <div class="col-sm-6">
@@ -176,12 +176,11 @@
 
       <div class="form-group col-sm-3">
         <label>Your Address:</label>
-        <div id="qrcodeAdd" width="100%"></div>
+        <div qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
       </div>
-        <qrcode version="2" error-correction-level="M" size="200" data="string"></qrcode>
       <div class="form-group col-sm-3">
         <label>Private Key (unencrypted):</label>
-        <div id="qrcode" width="100%"></div>
+        <div qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
       </div>
     </div>
   <!-- /3. Extras -->
