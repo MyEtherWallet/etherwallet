@@ -3,24 +3,24 @@ var walletGenCtrl = function($scope) {
 	$scope.password = "";
 	$scope.wallet = null;
 	$scope.showWallet = false;
-    $scope.blob = $scope.blobEnc = "";
+	$scope.blob = $scope.blobEnc = "";
 	$scope.genNewWallet = function() {
 		if ($scope.password.length < 7) {
 			alert("Your password must be at least 7 characters");
 		} else {
 			$scope.wallet = Wallet.generate(false);
 			$scope.showWallet = true;
-            $scope.blob = $scope.getBlob($scope.wallet.toJSON());
-            $scope.blobEnc = $scope.getBlob($scope.wallet.toV3($scope.password,{kdf:'pbkdf2'}));
+			$scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
+		//	$scope.blobEnc = $scope.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3($scope.password, {
+		//		kdf: 'pbkdf2'
+		//	}));
 		}
 	}
-	$scope.getBlob = function(json) {
-	   if($scope.wallet==null) return '';
-		var fileType = "text/json;charset=UTF-8";
-		var blob = new Blob([JSON.stringify(json)], {
-			type: fileType
-		});
-        return window.URL.createObjectURL(blob);
+	$scope.printQRCode = function() {
+		globalFuncs.printPaperWallets(JSON.stringify([{
+			address: $scope.wallet.getAddressString(),
+			private: $scope.wallet.getPrivateKeyString()
+		}]));
 	}
 };
 module.exports = walletGenCtrl;

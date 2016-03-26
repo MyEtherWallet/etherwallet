@@ -18,7 +18,7 @@ Wallet.prototype.getPrivateKey = function() {
 	return this.privKey
 }
 Wallet.prototype.getPrivateKeyString = function() {
-	return '0x' + this.getPrivateKey().toString('hex')
+	return this.getPrivateKey().toString('hex')
 }
 Wallet.prototype.getPublicKey = function() {
 	return ethUtil.privateToPublic(this.privKey)

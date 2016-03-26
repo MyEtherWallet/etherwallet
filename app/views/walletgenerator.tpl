@@ -114,7 +114,7 @@
               <span class="account-help-text">ProTip: Click print and save this as a PDF, even if you do not own a printer!</span>
             </div>
           </label>
-          <a class="btn btn-info btn-block btnAction" func="printQRcode" id="printqr">PRINT</a>
+          <a class="btn btn-info btn-block btnAction" ng-click="printQRCode()">PRINT</a>
         </div>
       </div>
 
