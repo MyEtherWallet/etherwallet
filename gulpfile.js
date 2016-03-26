@@ -9,11 +9,11 @@ var rename = require('gulp-rename');
 var uncss = require('gulp-uncss');
 var template = require('gulp-template');
 var gutil = require('gulp-util');
-var browserify = require('gulp-browserify');
 var concat = require('gulp-concat');
 var clean = require('gulp-clean');
 var imagemin = require('gulp-imagemin');
 var uglify = require('gulp-uglify');
+var shell = require('gulp-shell')
 
 // watch folders
 var lessWatchFolder = './app/styles/less/**/*.less';
@@ -66,7 +66,11 @@ gulp.task('less', function (cb) {
       .pipe(notify('Less Compiled UNCSSd and Minified'));
 });
 
-gulp.task('browserify', function() {
+gulp.task('browserify', shell.task([
+  'browserify '+mainjs+' -o dist/js/etherwallet-master.js'
+]));
+
+/*gulp.task('browserify', function() {
   gulp.src([mainjs])
   .pipe(browserify({
     insertGlobals: true,
@@ -74,7 +78,7 @@ gulp.task('browserify', function() {
   }))
   .pipe(concat('etherwallet-master.js'))
   .pipe(gulp.dest('dist/js'));
-});
+});*/
 
 gulp.task('staticJS', function () {
   return gulp

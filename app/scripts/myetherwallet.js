@@ -69,7 +69,7 @@ Wallet.prototype.toV3 = function(password, opts) {
 		kdfparams.n = opts.n || 262144
 		kdfparams.r = opts.r || 8
 		kdfparams.p = opts.p || 1
-		derivedKey = scrypt(new Buffer(password), salt, kdfparams.n, kdfparams.r, kdfparams.p, kdfparams.dklen)
+		derivedKey = ethUtil.scrypt(new Buffer(password), salt, kdfparams.n, kdfparams.r, kdfparams.p, kdfparams.dklen)
 	} else {
 		throw new Error('Unsupported kdf')
 	}
@@ -81,7 +81,7 @@ Wallet.prototype.toV3 = function(password, opts) {
 	var mac = ethUtil.sha3(Buffer.concat([derivedKey.slice(16, 32), new Buffer(ciphertext, 'hex')]))
 	return {
 		version: 3,
-		id: uuid.v4({
+		id: ethUtil.uuid.v4({
 			random: opts.uuid || ethUtil.crypto.randomBytes(16)
 		}),
 		address: this.getAddress().toString('hex'),

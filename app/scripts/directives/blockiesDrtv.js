@@ -1,11 +1,12 @@
 'use strict';
 var blockiesDrtv = function() {
 	return function(scope, element, attrs){
-        scope.$watch('wallet', function() {
+	   var watchVar = attrs.watchVar;
+        scope.$watch(watchVar, function() {
             var address = attrs.blockieAddress;
-            console.log(address);
+            var content = ethUtil.isValidAddress(address) ? globalFuncs.getBlockie(address):'';
             element.css({
-                'background-image': 'url(' + globalFuncs.getBlockie(address) +')'
+                'background-image': 'url(' + content +')'
             });
         });
     };

@@ -4,7 +4,8 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
-    "angular": "^1.5.1",
+    "angular": "^1.5.3",
+    "ethereumjs-util": "^4.3.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
@@ -14,7 +15,9 @@
     "gulp-rename": "^1.2.2",
     "gulp-template": "^3.1.0",
     "gulp-uglify": "^1.5.3",
-    "gulp-uncss": "^1.0.5"
+    "gulp-uncss": "^1.0.5",
+    "install": "^0.6.1",
+    "npm": "^3.8.5"
   },
   "author": "Taylor Van Orden",
   "license": "ISC",
@@ -28,8 +31,11 @@
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
     "gulp-imagemin": "^2.4.0",
+    "gulp-shell": "^0.5.2",
     "gulp-util": "^3.0.7",
     "install": "^0.6.0",
-    "npm": "^3.8.2"
+    "npm": "^3.8.2",
+    "scryptsy": "^1.2.1",
+    "uuid": "^2.0.1"
   }
 }
