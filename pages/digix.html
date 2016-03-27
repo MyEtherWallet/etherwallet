@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MyEtherWallet: Open Source JavaScript Client-Side Ether Wallet</title>
+  <link rel="canonical" href="https://www.myetherwallet.com" />
+  <meta name="description" content="Ether Wallet: Open Source JavaScript Client-Side Ether Wallet">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/etherwallet-master.min.css">
+  <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
+  <script type="text/javascript" src="js/etherwallet-master.min.js"></script>
+  <link rel="apple-touch-icon" sizes="60x60" href="/fav/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/fav/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/fav/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/fav/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/fav/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/fav/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/fav/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/fav/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/fav/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/fav/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/fav/manifest.json">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="msapplication-TileColor" content="#2e4868">
+  <meta name="msapplication-TileImage" content="/fav/mstile-144x144.png">
+  <meta name="msapplication-config" content="/fav/browserconfig.xml">
+  <meta name="theme-color" content="#2e4868">
+</head>
+
+<body>
+
+<header class="container-fluid bg-navy text-white">
+<section class="container">
+  <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a>
+  <p>Open Source JavaScript Client-Side Ether Wallet</p>
+</section>
+</header>
+
+
+
+  <!-- navtabs -->
+  <section class="container">
+    <ul class="nav nav-tabs">
+      <li> <a href="/#generate-wallet" target="_blank"> Generate Wallet </a></li>
+      <li> <a href="/#bulk-generate" target="_blank"> Bulk Generate </a></li>
+      <li> <a href="/#view-wallet-info" target="_blank"> View Wallet Details </a></li>
+      <li> <a href="/#send-transaction" target="_blank"> Send Transaction </a></li>
+      <li> <a href="/#offline-transaction" target="_blank"> Advanced / Offline Transaction</a></li>
+      <li class="active"><a href="#"> Digix Crowdsale </a></li>
+      <li> <a href="/#help" target="_blank"> Help </a></li>
+      <li> <a href="/#contact" target="_blank"> Contact </a></li>
+    </ul>
+  </section>
+  <br />
+
+  <!-- tab panes -->
+  <section class="container" style="min-height: 50%">
+    <div class="tab-content">
+
+<!-- send transaction -->
+<div class="tab-pane active" id="paneSendTrans" >
+  <h2> Digix Crowdsale </h2>
+  <p> MyEtherWallet.com is proud to partner with Digix to provide a non-Mist way for *you* to purchase your DigixDAO (DGD) tokens! If you aren't already familar, here are some helpful links:
+    <a href="https://dgx.io/"> Digix Homepage</a> •
+    <a href="https://sale.digix.io/"> Digix Crowdsale Information </a> •
+    <a href="https://sale.digix.io/#faq"> Digix Crowdsale FAQ </a>
+  </p>
+
+  <div id="sendTransactionDecryptWallet">
+  <section class="row" id="walletselection">
+    <div class="col-md-4 col-sm-6">
+      <h4> How would you like to access your wallet to participate in the Digix crowdsale? </h4>
+      <div class="radio">
+        <label>
+          <input type="radio" name="typeOfKeyRadio" value="fileupload">Upload Your Wallet File <small>(JSON from presale / geth / MyEtherWallet).</small></label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="typeOfKeyRadio" value="pasteprivkey">Paste/Type Your Encrypted or Unencrypted Private Key.</label>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <!-- if selected upload -->
+      <div id="selectedUploadKey" style="display: none;">
+        <h4>Select your wallet file : </h4>
+        <div class="form-group">
+          <p id="file-text"></p>
+          <a class="file-input btn btn-block btn-default btn-file marg-v-sm" id="fileUpload">SELECT WALLET FILE... <input type="file"></a>
+          <div id="fuploadStatus"></div>
+        </div>
+        <div class="form-group" id="walletPasdiv" style="display: none;">
+          <p> your file is encrypted with a password, enter the password here: </p>
+          <input class="form-control" type="password" placeholder="Password" id="walletfilepassword">
+        </div>
+      </div>
+      <!-- /if selected upload -->
+      <!-- if selected type key-->
+      <div id="selectedTypeKey" style="display: none;">
+        <h4> Paste / type your private key: </h4>
+        <div class="form-group">
+          <textarea rows="4" class="form-control" placeholder="Private Key" id="manualprivkey"></textarea>
+        </div>
+        <div class="form-group" style="display: none;" id="divprikeypassword">
+          <p> Your file is encrypted with a password, enter the password here: </p>
+          <input class="form-control" type="password" placeholder="Password" id="privkeypassword">
+        </div>
+      </div>
+      <!-- /if selected type key-->
+    </div>
+    <div class="col-md-4 col-sm-6" style="display: none;" id="walletuploadbutton">
+      <h4 id="uploadbtntxt-wallet" style="display: none;"> Decrypt Wallet:</h4>
+      <h4 id="uploadbtntxt-privkey" style="display: none;"> Decrypt Private Key: </h4>
+      <div class="form-group"><a class="btn btn-primary btn-block btnAction" func="decryptData" id="decryptdata" onDecrypt="">DECRYPT</a></div>
+      <div id="decryptStatus"></div>
+    </div>
+  </section>
+  </div>
+  <!--<section class="row" id="wallettransactions" style="display: none;">-->
+  <section class="row" id="wallettransactions">
+    <hr />
+    <div class="col-sm-4">
+      <h4> Account Information </h4>
+      <div id="addressIdenticon" class="walletaddressIdenticon" title="Address Indenticon"></div>
+      <br />
+      <p> Account Address:
+        <br /> <strong id="accountAddress" style="margin-left: 1em"></strong></p>
+        <p> Account Balance:
+        <br />
+              <strong class="text-success" id="accountBalance" style="margin-left: 1em"> loading... </strong>
+              <br />
+              <strong class="text-success" id="accountBalanceUsd" style="margin-left: 1em"> loading... </strong>
+              <br />
+              <strong class="text-success" id="accountBalanceEur" style="margin-left: 1em"> loading... </strong>
+              <br />
+              <strong class="text-success" id="accountBalanceBtc" style="margin-left: 1em"> loading... </strong>
+      </p>
+      <br />
+      <h4> DGD Information </h4>
+      <ul>
+        <li>Centstotal <br /> <strong>17634</strong> </li>
+        <li>Weitotal <br /> <strong>1299697670000000000</strong> </li>
+        <li>Share <br /> <strong>276938853600000</strong> </li>
+        <li>Badges <br /> <strong>0</strong> </li>
+        <li>Claimed <br /> <strong>NO</strong> </li>
+      </ul>
+    </div>
+    <div class="col-sm-8">
+      <h4>Purchase DigixDAO Tokens</h4>
+      <div class="form-group">
+        <label>
+          Amount:
+          <br />
+          <a class="btnAction" func="transferAllBalance" id="transferAllBalance">Click here to transfer total available balance**</a>
+        </label>
+        <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
+        <div class="radio">
+          <label>
+            <input type="radio" name="currencyRadio" checked value="ether">Ether</label>
+          <label>
+            <input type="radio" name="currencyRadio" value="finney">Finney</label>
+          <label>
+            <input type="radio" name="currencyRadio" value="szabo">Szabo</label>
+          <div id="weiamount"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <a class="btn btn-info btn-block btnAction" func="preCreateTransaction" id="btngeneratetranaction">PURCHASE DigixDAO TOKENS</a>
+      </div>
+      <div class="form-group col-xs-12" style="display: none;" id="divtransactionTAs">
+        <label> Raw Transaction </label>
+        <textarea class="form-control" rows="4" disabled id="tarawtx"></textarea>
+        <label> Signed Transaction </label>
+        <textarea class="form-control" rows="4" disabled id="tasignedtx"></textarea>
+      </div>
+      <div class="form-group col-xs-12" id="divsendtranaction" style="display: none;">
+        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">PURCHASE DigixDAO TOKENS</a>
+      </div>
+      <div id="txsendstatus"></div>
+      <!-- Modal -->
+      <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" id="myModalLabel"> <strong class="text-danger">Warning!</strong></h3>
+            </div>
+            <div class="modal-body">
+              <h4>
+                You are about to send
+                <strong id="confirmAmount" class="text-primary"> 345 </strong>
+                <strong id="confirmCurrancy" class="text-primary"> Ether </strong>
+                to address
+                <strong id="confirmAddress" class="text-primary"> 928342938472938 </strong>
+              </h4>
+              <h4> Are you <span class="text-underline"> sure </span> you want to do this?</h4>
+            </div>
+            <div class="modal-footer text-center">
+              <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
+              <button type="button" class="btn btn-primary btnAction" func="preSendTransaction" id="btnapprovesend">Yes, I am sure! Make transaction.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/modal-->
+    </div>
+  </section>
+</div>
+<!-- /send transaction -->
+
+
+    </div>
+    <!-- /tab panes -->
+  </section>
+
+  <%= footer %>
