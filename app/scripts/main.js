@@ -14,9 +14,11 @@ var tabsCtrl = require('./controllers/tabsCtrl');
 var viewCtrl = require('./controllers/viewCtrl');
 var walletGenCtrl = require('./controllers/walletGenCtrl');
 var bulkGenCtrl = require('./controllers/bulkGenCtrl');
+var decryptWalletCtrl = require('./controllers/decryptWalletCtrl');
 var globalService = require('./services/globalService');
 var blockiesDrtv = require('./directives/blockiesDrtv');
 var QRCodeDrtv = require('./directives/QRCodeDrtv');
+var fileReaderDrtv = require('./directives/fileReaderDrtv');
 var app = angular.module('mewApp', []);
 app.config(['$compileProvider', function($compileProvider) {
 	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
@@ -24,7 +26,9 @@ app.config(['$compileProvider', function($compileProvider) {
 app.factory('globalService', globalService);
 app.directive('blockieAddress', blockiesDrtv);
 app.directive('qrCode', QRCodeDrtv);
+app.directive('onReadFile', fileReaderDrtv);
 app.controller('tabsCtrl', ['$scope', 'globalService', tabsCtrl]);
 app.controller('viewCtrl', ['$scope', 'globalService', viewCtrl]);
 app.controller('walletGenCtrl', ['$scope', walletGenCtrl]);
 app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
+app.controller('decryptWalletCtrl', ['$scope','$sce', decryptWalletCtrl]);

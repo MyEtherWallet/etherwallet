@@ -22,5 +22,11 @@ globalFuncs.getBlob = function(mime, str) {
 	});
 	return window.URL.createObjectURL(blob);
 }
+globalFuncs.getSuccessText = function(str){
+    return '<p class="text-center text-success"><strong> ' + str + '</strong></p>'
+}
+globalFuncs.getDangerText = function(str){
+    return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
+}
 globalFuncs.errorMsgs = ["Please enter valid amount", ];
 module.exports = globalFuncs;

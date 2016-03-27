@@ -2,51 +2,51 @@
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
   <h2> Send Transaction </h2>
   <div id="sendTransactionDecryptWallet">
-  <section class="row" id="walletselection">
+  <section class="row" ng-controller='decryptWalletCtrl'>
     <div class="col-md-4 col-sm-6">
       <h4> How would you like to access your wallet? </h4>
       <div class="radio">
         <label>
-          <input type="radio" name="typeOfKeyRadio" value="fileupload">Upload Your Wallet File <small>(JSON from presale / geth / MyEtherWallet).</small></label>
+          <input type="radio" ng-model="walletType" value="fileupload"/>Upload Your Wallet File <small>(JSON from presale / geth / MyEtherWallet).</small></label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="typeOfKeyRadio" value="pasteprivkey">Paste/Type Your Encrypted or Unencrypted Private Key.</label>
+          <input type="radio" ng-model="walletType" value="pasteprivkey"/>Paste/Type Your Encrypted or Unencrypted Private Key.</label>
       </div>
     </div>
     <div class="col-md-4 col-sm-6">
       <!-- if selected upload -->
-      <div id="selectedUploadKey" style="display: none;">
+      <div id="selectedUploadKey" ng-if="walletType=='fileupload'">
         <h4>Select your wallet file : </h4>
         <div class="form-group">
-          <p id="file-text"></p>
-          <a class="file-input btn btn-block btn-default btn-file marg-v-sm" id="fileUpload">SELECT WALLET FILE... <input type="file"></a>
-          <div id="fuploadStatus"></div>
+          <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector"/>
+          <a class="file-input btn btn-block btn-default btn-file marg-v-sm" ng-click="openFileDialog()">SELECT WALLET FILE... </a>
+          <div id="fuploadStatus" ng-bind-html="fileStatus"></div>
         </div>
-        <div class="form-group" id="walletPasdiv" style="display: none;">
+        <div class="form-group" ng-if="requireFPass">
           <p> your file is encrypted with a password, enter the password here: </p>
-          <input class="form-control" type="password" placeholder="Password" id="walletfilepassword">
+          <input class="form-control" type="password" placeholder="Password" ng-model="$parent.$parent.filePassword" ng-change="onFilePassChange()" />
         </div>
       </div>
       <!-- /if selected upload -->
       <!-- if selected type key-->
-      <div id="selectedTypeKey" style="display: none;">
+      <div id="selectedTypeKey" ng-if="walletType=='pasteprivkey'">
         <h4> Paste / type your private key: </h4>
         <div class="form-group">
-          <textarea rows="4" class="form-control" placeholder="Private Key" id="manualprivkey"></textarea>
+          <textarea rows="4" class="form-control" placeholder="Private Key" ng-model="$parent.$parent.manualprivkey" ng-change="onPrivKeyChange()"></textarea>
         </div>
-        <div class="form-group" style="display: none;" id="divprikeypassword">
+        <div class="form-group" ng-if="requirePPass">
           <p> Your file is encrypted with a password, enter the password here: </p>
-          <input class="form-control" type="password" placeholder="Password" id="privkeypassword">
+          <input class="form-control" type="password" placeholder="Password" ng-model="$parent.$parent.privPassword" ng-change="onPrivKeyPassChange()">
         </div>
       </div>
       <!-- /if selected type key-->
     </div>
-    <div class="col-md-4 col-sm-6" style="display: none;" id="walletuploadbutton">
-      <h4 id="uploadbtntxt-wallet" style="display: none;"> Decrypt Wallet:</h4>
-      <h4 id="uploadbtntxt-privkey" style="display: none;"> Decrypt Private Key: </h4>
-      <div class="form-group"><a class="btn btn-primary btn-block btnAction" func="decryptData" id="decryptdata" onDecrypt="">DECRYPT</a></div>
-      <div id="decryptStatus"></div>
+    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt">
+      <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt"> Decrypt Wallet:</h4>
+      <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt"> Decrypt Private Key: </h4>
+      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt" ng-click="decryptWallet()">DECRYPT</a></div>
+      <div ng-bind-html="decryptStatus"></div>
     </div>
   </section>
   </div>

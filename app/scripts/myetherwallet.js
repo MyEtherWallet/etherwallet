@@ -43,7 +43,7 @@ Wallet.fromEthSale = function(input, password) {
 	var encseed = new Buffer(json.encseed, 'hex')
 	var derivedKey = ethUtil.crypto.pbkdf2Sync(Buffer(password), Buffer(password), 2000, 32, 'sha256').slice(0, 16)
 	var decipher = ethUtil.crypto.createDecipheriv('aes-128-cbc', derivedKey, encseed.slice(0, 16))
-	var seed = decipherBuffer(decipher, encseed.slice(16))
+	var seed = Wallet.decipherBuffer(decipher, encseed.slice(16))
 	var wallet = new Wallet(ethUtil.sha3(seed))
 	if (wallet.getAddress().toString('hex') !== json.ethaddr) {
 		throw new Error('Decoded key mismatch - possibly wrong passphrase')
@@ -97,12 +97,12 @@ Wallet.prototype.toV3 = function(password, opts) {
 		}
 	}
 }
-Wallet.prototype.toJSON = function(){
-    return {
-		address:this.getAddressString(),
-        checksumAddress:this.getChecksumAddressString(),
-        privKey:this.getPrivateKeyString(),
-        pubKey:this.getPublicKeyString()
+Wallet.prototype.toJSON = function() {
+	return {
+		address: this.getAddressString(),
+		checksumAddress: this.getChecksumAddressString(),
+		privKey: this.getPrivateKeyString(),
+		pubKey: this.getPublicKeyString()
 	}
 }
 Wallet.fromMyEtherWallet = function(input, password) {
@@ -121,13 +121,13 @@ Wallet.fromMyEtherWallet = function(input, password) {
 			throw new Error('Password must be at least 7 characters')
 		}
 		var cipher = json.encrypted ? json.private.slice(0, 128) : json.private
-		cipher = decodeCryptojsSalt(cipher)
-		var evp = evp_kdf(new Buffer(password), cipher.salt, {
+		cipher = Wallet.decodeCryptojsSalt(cipher)
+		var evp = Wallet.evp_kdf(new Buffer(password), cipher.salt, {
 			keysize: 32,
 			ivsize: 16
 		})
 		var decipher = ethUtil.crypto.createDecipheriv('aes-256-cbc', evp.key, evp.iv)
-		privKey = decipherBuffer(decipher, new Buffer(cipher.ciphertext))
+		privKey = Wallet.decipherBuffer(decipher, new Buffer(cipher.ciphertext))
 		privKey = new Buffer((privKey.toString()), 'hex')
 	}
 	var wallet = new Wallet(privKey)
@@ -136,15 +136,53 @@ Wallet.fromMyEtherWallet = function(input, password) {
 	}
 	return wallet
 }
+Wallet.fromMyEtherWalletKey = function(input, password) {
+	var cipher = input.slice(0, 128)
+	cipher = Wallet.decodeCryptojsSalt(cipher)
+	var evp = Wallet.evp_kdf(new Buffer(password), cipher.salt, {
+		keysize: 32,
+		ivsize: 16
+	})
+	var decipher = ethUtil.crypto.createDecipheriv('aes-256-cbc', evp.key, evp.iv)
+	var privKey = Wallet.decipherBuffer(decipher, new Buffer(cipher.ciphertext))
+	privKey = new Buffer((privKey.toString()), 'hex')
+	return new Wallet(privKey)
+}
+Wallet.fromV3 = function(input, password, nonStrict) {
+	var json = (typeof input === 'object') ? input : JSON.parse(nonStrict ? input.toLowerCase() : input)
+	if (json.version !== 3) {
+		throw new Error('Not a V3 wallet')
+	}
+	var derivedKey
+	var kdfparams
+	if (json.crypto.kdf === 'scrypt') {
+		kdfparams = json.crypto.kdfparams
+		derivedKey = ethUtil.scrypt(new Buffer(password), new Buffer(kdfparams.salt, 'hex'), kdfparams.n, kdfparams.r, kdfparams.p, kdfparams.dklen)
+	} else if (json.crypto.kdf === 'pbkdf2') {
+		kdfparams = json.crypto.kdfparams
+		if (kdfparams.prf !== 'hmac-sha256') {
+			throw new Error('Unsupported parameters to PBKDF2')
+		}
+		derivedKey = ethUtil.crypto.pbkdf2Sync(new Buffer(password), new Buffer(kdfparams.salt, 'hex'), kdfparams.c, kdfparams.dklen, 'sha256')
+	} else {
+		throw new Error('Unsupported key derivation scheme')
+	}
+	var ciphertext = new Buffer(json.crypto.ciphertext, 'hex')
+	var mac = ethUtil.sha3(Buffer.concat([derivedKey.slice(16, 32), ciphertext]))
+	if (mac.toString('hex') !== json.crypto.mac) {
+		throw new Error('Key derivation failed - possibly wrong passphrase')
+	}
+	var decipher = ethUtil.crypto.createDecipheriv(json.crypto.cipher, derivedKey.slice(0, 16), new Buffer(json.crypto.cipherparams.iv, 'hex'))
+	var seed = Wallet.decipherBuffer(decipher, ciphertext, 'hex')
+	return new Wallet(seed)
+}
 Wallet.prototype.toV3String = function(password, opts) {
 	return JSON.stringify(this.toV3(password, opts))
 }
-
-function decipherBuffer(decipher, data) {
+Wallet.decipherBuffer = function(decipher, data) {
 	return Buffer.concat([decipher.update(data), decipher.final()])
 }
-
-function decodeCryptojsSalt(input) {
+Wallet.decodeCryptojsSalt = function(input) {
 	var ciphertext = new Buffer(input, 'base64')
 	if (ciphertext.slice(0, 8).toString() === 'Salted__') {
 		return {
@@ -157,8 +195,7 @@ function decodeCryptojsSalt(input) {
 		}
 	}
 }
-
-function evp_kdf(data, salt, opts) {
+Wallet.evp_kdf = function(data, salt, opts) {
 	// A single EVP iteration, returns `D_i`, where block equlas to `D_(i-1)`
 
 	function iter(block) {
@@ -187,5 +224,27 @@ function evp_kdf(data, salt, opts) {
 		key: tmp.slice(0, keysize),
 		iv: tmp.slice(keysize, keysize + ivsize)
 	}
+}
+Wallet.walletRequirePass = function(ethjson) {
+	var jsonArr;
+	try {
+		jsonArr = JSON.parse(ethjson);
+	} catch (err) {
+		throw "not a valid wallet file";
+	}
+	if (jsonArr.encseed != null) return true;
+	else if (jsonArr.Crypto != null || jsonArr.crypto != null) return true
+	else if (jsonArr.hash != null && jsonArr.locked) return true;
+	else if (jsonArr.hash != null && !jsonArr.locked) return false;
+	else
+	throw "Sorry! we dont have a clue what kind of wallet file this is.";
+}
+Wallet.getWalletFromPrivKeyFile = function(strjson, password) {
+	var jsonArr = JSON.parse(strjson);
+	if (jsonArr.encseed != null) return Wallet.fromEthSale(strjson, password);
+	else if (jsonArr.Crypto != null || jsonArr.crypto != null) return Wallet.fromV3(strjson, password, true);
+	else if (jsonArr.hash != null) return Wallet.fromMyEtherWallet(strjson, password);
+	else
+	throw "Sorry! we dont have a clue what kind of wallet file this is.";
 }
 module.exports = Wallet;
