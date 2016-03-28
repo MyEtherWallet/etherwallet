@@ -112,13 +112,12 @@
     <div class="col-md-4 col-sm-6" style="display: none;" id="walletuploadbutton">
       <h4 id="uploadbtntxt-wallet" style="display: none;"> Decrypt Wallet:</h4>
       <h4 id="uploadbtntxt-privkey" style="display: none;"> Decrypt Private Key: </h4>
-      <div class="form-group"><a class="btn btn-primary btn-block btnAction" func="decryptData" id="decryptdata" onDecrypt="">DECRYPT</a></div>
+      <div class="form-group"><a class="btn btn-primary btn-block btnAction" func="decryptData" id="decryptdata" onDecrypt="walletSendDecryptSuccess">DECRYPT</a></div>
       <div id="decryptStatus"></div>
     </div>
   </section>
   </div>
-  <!--<section class="row" id="wallettransactions" style="display: none;">-->
-  <section class="row" id="wallettransactions">
+  <section class="row" id="wallettransactions" style="display: none;">
     <hr />
     <div class="col-sm-4">
       <h4> Account Information </h4>
@@ -154,6 +153,7 @@
           <br />
           <a class="btnAction" func="transferAllBalance" id="transferAllBalance">Click here to transfer total available balance**</a>
         </label>
+        <input class="form-control validateAddress" type="hidden" id="sendtxaddress" value="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"/>
         <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
         <div class="radio">
           <label>
