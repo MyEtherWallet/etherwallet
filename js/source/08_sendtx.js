@@ -43,7 +43,8 @@ function preCreateTransaction() {
 		if (!$.isNumeric($('#sendtxamount').val()) || $('#sendtxamount').val() <= 0) throw "Invalid amount, try again";
 		var etherUnit = $('input[type=radio][name=currencyRadio]:checked').val();
 		var weiAmount = toWei($('#sendtxamount').val(), etherUnit);
-		createTransaction(PrivKey, toAddress, weiAmount, function(data) {
+        var gasLimit = parseInt($('#gasLimit').val());
+		createTransaction(PrivKey, toAddress, weiAmount, gasLimit, function(data) {
 			$("#tarawtx").val(data.raw);
 			$("#tasignedtx").val(data.signed);
 			$("#txcreatestatus").html('<p class="text-center text-success"><strong> Transaction generated</strong></p>').fadeIn(50);

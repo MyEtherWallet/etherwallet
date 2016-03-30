@@ -1,6 +1,6 @@
 var stdTransactionGas = 21000;
 
-function createTransaction(privkey, to, amountinwei, successcb, errorcb) {
+function createTransaction(privkey, to, amountinwei, gasL, successcb, errorcb) {
 	if (privkey.length != 64) {
 		errorcb("Invalid Private key, try again");
 		return;
@@ -23,7 +23,7 @@ function createTransaction(privkey, to, amountinwei, successcb, errorcb) {
 		data = data.data;
 		var nonce = padLeftEven(BNtoHex(new BigNumber(data.nonce)));
 		var gasPrice = padLeftEven(BNtoHex(new BigNumber(data.gasprice).plus(1000000000).toDigits(2))); //adding extra 1gwei to be safer
-		var gasLimit = padLeftEven(BNtoHex(new BigNumber(stdTransactionGas))); //standard 21000 per transaction
+		var gasLimit = padLeftEven(BNtoHex(new BigNumber(gasL))); //standard 21000 per transaction
 		var value = padLeftEven(BNtoHex(new BigNumber(String(amountinwei))));
 		var rawTx = {
 			nonce: '0x' + nonce,

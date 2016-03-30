@@ -60,7 +60,7 @@
     <div class="tab-content">
 
 <!-- send transaction -->
-<div class="tab-pane active" id="paneSendTrans" >
+<div class="tab-pane active digixSale" id="paneSendTrans" >
   <h2> Digix Crowdsale </h2>
   <p> MyEtherWallet.com is proud to partner with Digix to provide a non-Mist way for you to purchase your DigixDAO (DGD) tokens! If you aren't already familar, here are some helpful links:
     <a href="https://dgx.io/"> Digix Homepage</a> •
@@ -138,11 +138,11 @@
       <br />
       <h4> DGD Information </h4>
       <ul>
-        <li>Centstotal <br /> <strong>17634</strong> </li>
-        <li>Weitotal <br /> <strong>1299697670000000000</strong> </li>
-        <li>Share <br /> <strong>276938853600000</strong> </li>
-        <li>Badges <br /> <strong>0</strong> </li>
-        <li>Claimed <br /> <strong>NO</strong> </li>
+        <li>Centstotal <br /> <strong id="Dcentstotal">loading...</strong> </li>
+        <li>Weitotal <br /> <strong id="Dweitotal">loading...</strong> </li>
+        <li>Share <br /> <strong id="Dshare">loading...</strong> </li>
+        <li>Badges <br /> <strong id="Dbadges">loading...</strong> </li>
+        <li>Claimed <br /> <strong id="Dclaimed">loading...</strong> </li>
       </ul>
     </div>
     <div class="col-sm-8">
@@ -153,7 +153,8 @@
           <br />
           <a class="btnAction" func="transferAllBalance" id="transferAllBalance">Click here to transfer total available balance**</a>
         </label>
-        <input class="form-control validateAddress" type="hidden" id="sendtxaddress" value="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"/>
+        <input class="form-control validateAddress" type="hidden" id="sendtxaddress" value="0xf0160428a8552ac9bb7e050d90eeade4ddd52843"/>
+        <input type="hidden" value="105000" id="gasLimit"/> 
         <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
         <div class="radio">
           <label>

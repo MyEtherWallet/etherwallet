@@ -15,6 +15,8 @@ $(document).ready(function() {
 	buttonBinder();
 	checkAndLoadPageHash();
 	checkAndRedirectHTTPS();
+    if($('.digixSale').length)
+        bindDigixElements();
 });
 
 function buttonBinder() {
