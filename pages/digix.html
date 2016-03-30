@@ -62,6 +62,8 @@
 <!-- send transaction -->
 <div class="tab-pane active digixSale" id="paneSendTrans" >
   <h2> Digix Crowdsale </h2>
+  <p class="text-danger"> Holy moly! That was fast. The Digix Crowdsale reached it's cap of $5.5m USD in just 14 hours. This page will remain up for a few more days in case anyone wants to verify their Tokens. Moving forward, we recommend you use <a href="https://sale.digix.io/dashboard/stats" target="_blank"> this page. </a></p>
+  <p>Thank you all and...yes.... we will be implementing a page like this for the Slock.It Token Sale as well.</p>
   <p> MyEtherWallet.com is proud to partner with Digix to provide a non-Mist way for you to purchase your DigixDAO (DGD) tokens! If you aren't already familar, here are some helpful links:    <a href="https://dgx.io/"> Digix Homepage</a> •
     <a href="https://sale.digix.io/"> Digix Crowdsale Information </a> •
     <a href="https://sale.digix.io/#faq"> Digix Crowdsale FAQ </a>
@@ -146,15 +148,15 @@
     </div>
     <div class="col-sm-8">
       <h4>Purchase DigixDAO Tokens</h4>
+      <p class="text-danger"> Holy moly! That was fast. The Digix Crowdsale reached it's cap of $5.5m USD in just 14 hours. This page will remain up for a few more days in case anyone wants to verify their Tokens. Moving forward, we recommend you use <a href="https://sale.digix.io/dashboard/stats" target="_blank"> this page. </a></p>
       <div class="form-group">
         <label>
           Amount:
           <br />
-          <a class="btnAction" func="transferAllBalance" id="transferAllBalance">Click here to transfer total available balance**</a>
         </label>
         <input class="form-control validateAddress" type="hidden" id="sendtxaddress" value="0xf0160428a8552ac9bb7e050d90eeade4ddd52843"/>
         <input type="hidden" value="105000" id="gasLimit"/>
-        <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
+        <input class="form-control disabled" disabled type="text" placeholder="Amount" id="sendtxamount">
         <div class="radio">
           <label>
             <input type="radio" name="currencyRadio" checked value="ether">Ether</label>
@@ -166,7 +168,7 @@
         </div>
       </div>
       <div class="form-group">
-        <a class="btn btn-info btn-block btnAction" func="preCreateTransaction" id="btngeneratetranaction">GENERATE TRANSACTION</a>
+        <a class="btn btn-info btn-block btnAction disabled" func="preCreateTransaction" id="btngeneratetranaction">GENERATE TRANSACTION</a>
       </div>
       <div class="form-group col-xs-12" style="display: none;" id="divtransactionTAs">
         <label> Raw Transaction </label>
