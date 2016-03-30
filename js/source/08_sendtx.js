@@ -1,7 +1,8 @@
 $(document).ready(function() {});
 
 function transferAllBalance() {
-	getMaxSendAmount($("#accountAddress").html(), function(data) {
+    var gasLimit = parseInt($('#gasLimit').val());
+	getMaxSendAmount($("#accountAddress").html(),gasLimit, function(data) {
 		$('#sendtxamount').val(data);
 		$('input[type=radio][name=currencyRadio][value=ether]').prop("checked", true);
 		$('#sendtxamount').trigger("keyup");

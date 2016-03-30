@@ -130,14 +130,14 @@ function verifyUpFrontCost(rawTx, successcb, errorcb) {
 	});
 }
 
-function getMaxSendAmount(address, successcb, errorcb) {
+function getMaxSendAmount(address, gasL, successcb, errorcb) {
 	getTransactionData(address, function(data) {
 		if (data.error) {
 			errorcb("Error occurred: " + data.msg);
 			return;
 		}
 		data = data.data;
-		var gasPrice = new BigNumber(data.gasprice).plus(1000000000).toDigits(2).times(stdTransactionGas);
+		var gasPrice = new BigNumber(data.gasprice).plus(1000000000).toDigits(2).times(gasL);
 		var maxVal = new BigNumber(String(data.balance)).minus(gasPrice);
 		if (maxVal.lessThan(0)) {
 			errorcb("Not enough balance to send a transaction");
