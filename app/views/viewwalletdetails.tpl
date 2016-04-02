@@ -2,8 +2,10 @@
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id">
   <h2> View Wallet Details </h2>
   <p> This allows you view and/or download unencrypted versions of you wallet. You may want to do this for Advanced / Offline transactions or importing your account into Geth/Mist. FYI, you can also do this with the <a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" target="__blank">MyEtherWallet CX</a> and save your wallet for easier and quicker access.</p>
-  <div id="viewDetailsDecryptWallet"></div>
-  <section class="row" id="decryptedWalletDetails" style="display:none;">
+  <div>
+  <wallet-decrypt-drtv></wallet-decrypt-drtv>
+  </div>
+  <section class="row" id="decryptedWalletDetails" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
     <hr />
     <h3 class="text-success col-xs-12">Success! Here are your wallet details.</h3>
     <div class="col-sm-6">
@@ -16,10 +18,10 @@
               <span class="account-help-text">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon to the right is an easy way to recognize your address.</span>
             </div>
           </h4>
-          <input class="form-control" type="text" id="addressViewW" readonly="readonly">
+          <input class="form-control" type="text" ng-value="wallet.getChecksumAddressString()" readonly="readonly">
         </div>
         <div class="col-sm-2 address-identicon-container">
-          <div id="addressIdenticon" title="Address Indenticon" class="addressIdenticonViewW"></div>
+          <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
         </div>
       </div>
       <div class="form-group" id="encPrivKeyViewW" style="display:none">
@@ -40,16 +42,16 @@
             <span class="account-help-text">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted private keys are typically recommended.</span>
           </div>
         </h4>
-        <textarea class="form-control" type="text" id="privkeyViewW" readonly="readonly"></textarea>
+        <textarea class="form-control" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
       </div>
       <div class="row">
         <div class="form-group col-sm-6">
           <h4>Your Address:</h4>
-          <div id="qrcodeAddViewW" width="100%"></div>
+          <div qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
         </div>
         <div class="form-group col-sm-6">
           <h4>Private Key (unencrypted):</h4>
-          <div id="qrcodeViewW" width="100%"></div>
+          <div qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
         </div>
       </div>
     </div>
@@ -62,9 +64,9 @@
             <span class="account-help-text">ProTip: Click print and save this as a PDF, even if you do not own a printer!</span>
           </div>
         </h4>
-        <a class="btn btn-info btn-block" id="printqrViewWallet">PRINT</a>
+        <a class="btn btn-info btn-block" ng-click="printQRCode()">PRINT</a>
       </div>
-      <div class="form-group" style="display:none">
+      <div class="form-group" ng-show='showEnc'>
         <h4>
           Download JSON file (encrypted):
           <div class="account-help-icon">
@@ -72,9 +74,9 @@
             <span class="account-help-text">A JSON file is just a different format & contains some additional information. Some people prefer to have the text version & some prefer to have the JSON. If you are unsure, just save both. Again, this is encrypted so you will need your password.</span>
           </div>
         </h4>
-        <a class="btn btn-info btn-block" id="encdownload"> DOWNLOAD </a>
+         <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{wallet.getChecksumAddressString()}}-encrypted.json"> DOWNLOAD </a>
       </div>
-      <div class="form-group" style="display:none">
+      <div class="form-group" >
         <h4>
           Download JSON file (unencrypted):
           <div class="account-help-icon">
@@ -82,7 +84,7 @@
             <span class="account-help-text">This is the unencrypted, JSON format of your private key. Again, this means you do not need the password but anyone who finds your JSON can access your wallet and your Ether without the password.</span>
           </div>
         </h4>
-        <a class="btn btn-info btn-block" id="unencdownload">DOWNLOAD</a>
+        <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json">DOWNLOAD</a>
       </div>
       <h4>Account Balance:</h4>
       <p>

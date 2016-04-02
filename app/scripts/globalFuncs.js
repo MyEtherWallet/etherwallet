@@ -16,6 +16,7 @@ globalFuncs.printPaperWallets = function(strJson) {
 	win.document.write("<script>generateWallets();</script>");
 }
 globalFuncs.getBlob = function(mime, str) {
+    var str = (typeof str === 'object') ? JSON.stringify(str) : str;
 	if (str== null) return '';
 	var blob = new Blob([str], {
 		type: mime
@@ -28,5 +29,7 @@ globalFuncs.getSuccessText = function(str){
 globalFuncs.getDangerText = function(str){
     return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
-globalFuncs.errorMsgs = ["Please enter valid amount", ];
+globalFuncs.errorMsgs = ["Please enter valid amount", "Your password must be at least 7 characters"];
+globalFuncs.scrypt = {n:1024};
+globalFuncs.kdf = "scrypt";
 module.exports = globalFuncs;

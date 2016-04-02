@@ -6,14 +6,15 @@ var walletGenCtrl = function($scope) {
 	$scope.blob = $scope.blobEnc = "";
 	$scope.genNewWallet = function() {
 		if ($scope.password.length < 7) {
-			alert("Your password must be at least 7 characters");
+			alert(globalFuncs.errorMsgs[1]);
 		} else {
 			$scope.wallet = Wallet.generate(false);
 			$scope.showWallet = true;
 			$scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
-		//	$scope.blobEnc = $scope.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3($scope.password, {
-		//		kdf: 'pbkdf2'
-		//	}));
+			$scope.blobEnc = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3($scope.password, {
+				kdf: globalFuncs.kdf,
+                n: globalFuncs.scrypt.n
+			}));
 		}
 	}
 	$scope.printQRCode = function() {

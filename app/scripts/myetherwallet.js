@@ -38,18 +38,6 @@ Wallet.prototype.getChecksumAddressString = function() {
 Wallet.fromPrivateKey = function(priv) {
 	return new Wallet(priv)
 }
-Wallet.fromEthSale = function(input, password) {
-	var json = (typeof input === 'object') ? input : JSON.parse(input)
-	var encseed = new Buffer(json.encseed, 'hex')
-	var derivedKey = ethUtil.crypto.pbkdf2Sync(Buffer(password), Buffer(password), 2000, 32, 'sha256').slice(0, 16)
-	var decipher = ethUtil.crypto.createDecipheriv('aes-128-cbc', derivedKey, encseed.slice(0, 16))
-	var seed = Wallet.decipherBuffer(decipher, encseed.slice(16))
-	var wallet = new Wallet(ethUtil.sha3(seed))
-	if (wallet.getAddress().toString('hex') !== json.ethaddr) {
-		throw new Error('Decoded key mismatch - possibly wrong passphrase')
-	}
-	return wallet
-}
 Wallet.prototype.toV3 = function(password, opts) {
 	opts = opts || {}
 	var salt = opts.salt || ethUtil.crypto.randomBytes(32)
@@ -133,6 +121,18 @@ Wallet.fromMyEtherWallet = function(input, password) {
 	var wallet = new Wallet(privKey)
 	if (wallet.getAddressString() !== json.address) {
 		throw new Error('Invalid private key or address')
+	}
+	return wallet
+}
+Wallet.fromEthSale = function(input, password) {
+	var json = (typeof input === 'object') ? input : JSON.parse(input)
+	var encseed = new Buffer(json.encseed, 'hex')
+	var derivedKey = ethUtil.crypto.pbkdf2Sync(Buffer(password), Buffer(password), 2000, 32, 'sha256').slice(0, 16)
+	var decipher = ethUtil.crypto.createDecipheriv('aes-128-cbc', derivedKey, encseed.slice(0, 16))
+	var seed = Wallet.decipherBuffer(decipher, encseed.slice(16))
+	var wallet = new Wallet(ethUtil.sha3(seed))
+	if (wallet.getAddress().toString('hex') !== json.ethaddr) {
+		throw new Error('Decoded key mismatch - possibly wrong passphrase')
 	}
 	return wallet
 }

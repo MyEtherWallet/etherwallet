@@ -30,7 +30,6 @@ var globalService = function() {
 			name: "Contact"
 		}
 	};
-	
 	return {
 		tabs: tabs,
 		currentTab: 0

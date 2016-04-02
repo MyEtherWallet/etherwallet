@@ -1,5 +1,5 @@
 'use strict';
-var decryptWalletCtrl = function($scope, $sce) {
+var decryptWalletCtrl = function($scope, $sce, walletService) {
 	$scope.walletType = "";
 	$scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = false;
 	$scope.filePassword = "";
@@ -33,11 +33,15 @@ var decryptWalletCtrl = function($scope, $sce) {
 		try {
 			if ($scope.showPDecrypt && $scope.requirePPass) {
 				$scope.wallet = Wallet.fromMyEtherWalletKey($scope.manualprivkey, $scope.privPassword);
+                walletService.password = $scope.privPassword;
 			} else if ($scope.showPDecrypt && !$scope.requirePPass) {
 				$scope.wallet = new Wallet($scope.manualprivkey);
+                walletService.password = '';
 			} else if ($scope.showFDecrypt) {
 				$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
+                walletService.password = $scope.filePassword;
 			}
+            walletService.wallet = $scope.wallet;
 		} catch (e) {
             $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getDangerText("Wrong Password: "+e));
 		}
