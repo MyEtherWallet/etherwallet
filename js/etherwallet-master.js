@@ -12,29 +12,34 @@ ajaxReq.config = {
 	}
 };
 ajaxReq.getBalance = function(addr, callback) {
-	this.http.post(this.SERVERURL, this.postSerializer({
+	this.post({
 		balance: addr
-	}), this.config).then(function(data){callback(data.data)});
+	}, callback);
 }
 ajaxReq.getTransactionData = function(addr, callback) {
-	this.http.post(this.SERVERURL, this.postSerializer({
+	this.post({
 		txdata: addr
-	}), this.config).then(function(data){callback(data.data)});
+	}, callback);
 }
 ajaxReq.sendRawTx = function(rawTx, callback) {
-	this.http.post(this.SERVERURL, this.postSerializer({
+	this.post({
 		rawtx: rawTx
-	}), this.config).then(function(data){callback(data.data)});
+	}, callback);
 }
 ajaxReq.getEstimatedGas = function(txobj, callback) {
-	this.http.post(this.SERVERURL, this.postSerializer({
+	this.post({
 		estimatedGas: txobj
-	}), this.config).then(function(data){callback(data.data)});
+	}, callback);
 }
 ajaxReq.getEthCall = function(txobj, callback) {
-	this.http.post(this.SERVERURL, this.postSerializer({
+	this.post({
 		ethCall: txobj
-	}), this.config).then(function(data){callback(data.data)});
+	}, callback);
+}
+ajaxReq.post = function (data, callback) {
+	this.http.post(this.SERVERURL, this.postSerializer(data), this.config).then(function(data) {
+		callback(data.data)
+	});
 }
 ajaxReq.getETHvalue = function(callback) {
 	var prefix = "eth";
