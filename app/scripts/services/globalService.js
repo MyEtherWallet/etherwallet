@@ -1,5 +1,7 @@
 'use strict';
-var globalService = function() {
+var globalService = function($http, $httpParamSerializerJQLike) {
+    ajaxReq.http = $http;
+    ajaxReq.postSerializer = $httpParamSerializerJQLike;
 	var tabs = {
 		generateWallet: {
 			id: 0,
