@@ -9,7 +9,8 @@ window.ethUtil = ethUtil;
 var Wallet = require('./myetherwallet');
 window.Wallet = Wallet;
 var globalFuncs = require('./globalFuncs');
-window.globalFuncs = globalFuncs;
+var ajaxReq = require('./ajaxReq');
+window.ajaxReq = ajaxReq;
 var tabsCtrl = require('./controllers/tabsCtrl');
 var viewCtrl = require('./controllers/viewCtrl');
 var walletGenCtrl = require('./controllers/walletGenCtrl');
@@ -26,7 +27,7 @@ var app = angular.module('mewApp', []);
 app.config(['$compileProvider', function($compileProvider) {
 	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
 }]);
-app.factory('globalService', globalService);
+app.factory('globalService', ['$http','$httpParamSerializerJQLike',globalService]);
 app.factory('walletService', walletService);
 app.directive('blockieAddress', blockiesDrtv);
 app.directive('qrCode', QRCodeDrtv);
