@@ -1,5 +1,5 @@
 'use strict';
-var viewWalletCtrl = function($scope, $http, walletService) {
+var viewWalletCtrl = function($scope, walletService) {
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.$watch(function() {

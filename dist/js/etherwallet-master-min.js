@@ -156,7 +156,7 @@ var viewCtrl = function($scope, globalService) {
 module.exports = viewCtrl;
 },{}],6:[function(require,module,exports){
 'use strict';
-var viewWalletCtrl = function($scope, $http, walletService) {
+var viewWalletCtrl = function($scope, walletService) {
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.$watch(function() {
@@ -376,6 +376,7 @@ window.ethUtil = ethUtil;
 var Wallet = require('./myetherwallet');
 window.Wallet = Wallet;
 var globalFuncs = require('./globalFuncs');
+window.globalFuncs = globalFuncs;
 var ajaxReq = require('./ajaxReq');
 window.ajaxReq = ajaxReq;
 var tabsCtrl = require('./controllers/tabsCtrl');

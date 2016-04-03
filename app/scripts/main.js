@@ -9,6 +9,7 @@ window.ethUtil = ethUtil;
 var Wallet = require('./myetherwallet');
 window.Wallet = Wallet;
 var globalFuncs = require('./globalFuncs');
+window.globalFuncs = globalFuncs;
 var ajaxReq = require('./ajaxReq');
 window.ajaxReq = ajaxReq;
 var tabsCtrl = require('./controllers/tabsCtrl');
