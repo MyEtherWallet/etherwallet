@@ -35,16 +35,18 @@
     If you created a wallet -or- downloaded the repo before <strong>Dec. 31st, 2015</strong>, please check your wallets & download a new version of the repo. Click for details.
   </div>
 </a>
+<!--
 <a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" class="announcement" target="_blank">
   <div class="container">
     Use our CHROME EXTENSION to save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!
   </div>
 </a>
+-->
 
-<header class="container-fluid bg-navy text-white">
+<header class="container-fluid bg-gradient text-white">
 <section class="container">
   <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a>
-  <p>Open Source JavaScript Client-Side Ether Wallet</p>
+  <p>Open Source JavaScript Client-Side Ether Wallet &middot; v2.0</p>
 </section>
 </header>
 
