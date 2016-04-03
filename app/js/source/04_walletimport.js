@@ -87,8 +87,8 @@ function walletRequirePass(ethjson){
     try {
         jsonArr = JSON.parse(ethjson);
     } catch(err) {
-        throw "not a valid wallet file";
-    } 
+        throw "This is not a valid wallet file.";
+    }
     if(jsonArr.encseed!=null)
         return true;
     else if(jsonArr.Crypto!=null||jsonArr.crypto!=null)
@@ -121,7 +121,7 @@ function getWalletFilePrivKey(strjson, password){
 }
 function formatAddress(addr, format){
     if(addr.substr(0, 2) == '0x' && format == 'raw')
-        addr = addr.substr(2);  
+        addr = addr.substr(2);
     if(addr.substr(0, 2) != '0x' && format == 'hex')
         addr = '0x' + addr;
     return addr;
@@ -185,10 +185,10 @@ function validateEtherAddress(address){
     else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address)) return true;
     else return isChecksumAddress(address);
 }
-function isChecksumAddress(address) {    
+function isChecksumAddress(address) {
     return address == toChecksumAddress(address);
 };
-function toChecksumAddress(address) { 
+function toChecksumAddress(address) {
     if (typeof address === 'undefined') return '';
     address = address.toLowerCase().replace('0x','');
     var addressHash = ethUtil.sha3(address).toString('hex');

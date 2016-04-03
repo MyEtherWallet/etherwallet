@@ -29,7 +29,17 @@
 </head>
 
 <body>
-<a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="annoucement-warning" target="_blank"> If you created a wallet before <strong>Dec. 31st, 2015</strong> or have downloaded the repo before <strong>Dec. 31st, 2015</strong>, please check your wallets & download a new version of the repo. Click for details.</a>
+
+<a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
+  <div class="container">
+    If you created a wallet -or- downloaded the repo before <strong>Dec. 31st, 2015</strong>, please check your wallets & download a new version of the repo. Click for details.
+  </div>
+</a>
+<a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" class="announcement" target="_blank">
+  <div class="container">
+    Use our CHROME EXTENSION to save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!
+  </div>
+</a>
 
 <header class="container-fluid bg-navy text-white">
 <section class="container">
@@ -37,6 +47,6 @@
   <p>Open Source JavaScript Client-Side Ether Wallet</p>
 </section>
 </header>
-<a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" class="announcement" target="_blank"> Our brand new CHROME EXTENSION is now in BETA! Save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!</a>
+
 
 

@@ -42,12 +42,11 @@ input[readonly] {
   cursor: text !important;
 }
 
-h1, h2, .h1, .h2 {
-  font-weight: 300;
-}
-
 .radio label {
   padding-right: 15px;
+}
+.radio {
+  margin: 15px 0;
 }
 
 footer {
@@ -101,47 +100,40 @@ header {
 }
 
 .announcement {
+  padding: 5px 10px;
   text-align: center;
-  padding: 5px 0;
-  background-color: @brand-primary;
+  font-weight: 300;
   color: white;
   display: block;
+  background-color: @brand-primary;
+  a {
+    text-decoration: underline;
+    color:white;
+  }
   &:hover,
   &:focus {
     color: darken(white, 5%);
     text-decoration: none;
     background-color: darken(@brand-primary, 5%);
   }
+  strong {
+    font-weight: 400;
+  }
 }
 
 .annoucement-warning {
-  text-align: center;
-  padding: 5px 0;
   background-color: @brand-danger;
-  color: white;
-  display: block;
   &:hover,
   &:focus {
-    color: darken(white, 5%);
-    text-decoration: none;
     background-color: darken(@brand-danger, 5%);
   }
 }
 
 .annoucement-danger {
   background-color: @brand-danger;
-  color: white;
-  font-size: 18px;
-  text-align: center;
-  padding: 10px;
-  a {
-    text-decoration: underline;
-    color:white;
-  }
   a:hover,
   a:focus {
     color: darken(white, 5%);
-    background: transparent;
   }
 }
 
@@ -173,7 +165,8 @@ header {
 }
 
 
-.form-control[readonly] {
+.form-control[readonly],
+input[readonly]  {
   background-color: #efefef;
 }
 
@@ -181,23 +174,23 @@ header {
   height: 120px;
 }
 
-
 .account-help-icon {
   position: relative;
   display: inline-block;
 }
 .account-help-text {
-  display: none;
-  position: absolute;
-  font-size: 13px;
   background: white;
-  padding: 5px;
-  width: 280px;
-  top: -5px;
-  left: 30px;
-  border: 1px solid #CDCDCD;
   border-radius: 3px;
+  border: 1px solid #CDCDCD;
   box-shadow: 0 0 5px rgba(100,100,100,.2);
+  display: none;
+  font-size: 14px;
+  font-weight: 400;
+  left: 30px;
+  padding: 5px;
+  position: absolute;
+  top: -5px;
+  width: 280px;
   z-index: 999;
 }
 
@@ -228,7 +221,7 @@ header {
   }
 }
 
-
+.mono,
 .form-control,
 #accountAddress,
 #accountBalance,
@@ -242,14 +235,20 @@ header {
   font-weight: normal;
 }
 
-.mono {
-    font-family: @font-family-monospace;
-}
-
 .collapseButton {
   cursor: pointer;
   width: 15px;
   margin: 0 0 0 -21px;
   display: inline-block;
   padding: 0 5px;
+}
+
+.collapseContainer {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  h4 {
+    font-size: 20px;
+    margin-top: 1.5em;
+    margin-bottom: .5em;
+  }
 }

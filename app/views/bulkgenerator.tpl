@@ -1,22 +1,26 @@
-<!-- bulk generator -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.bulkGenerate.id" ng-controller='bulkGenCtrl'>
+
+  <!-- Top - Bulk Generate -->
   <h2> Bulk Generate Wallets </h2>
   <div class="row">
-    <div class="col-md-6 col-sm-6 form-group">
+    <div class="col-md-6 col-sm-12 form-group">
       <h4>1. Enter the Number of Wallets To Generate:</h4>
       <input class="form-control" type="text" placeholder="Number of Wallets" ng-model="amount">
     </div>
     <div class="col-md-6 col-sm-12 form-group">
       <h4>2. Give me my wallets:</h4>
-      <br class="hidden-sm hidden-xs" />
       <a class="btn btn-primary btn-block btnAction" ng-click="genWallets()">GENERATE</a>
     </div>
   </div>
+  <!-- / Top - Bulk Generate -->
+
+  <!-- Bottom - Display Bulk Generated Wallets -->
   <div ng-show="showWallets">
     <hr />
     <div class="row">
-      <h3 class="text-success col-xs-12">Success! Your wallets have been generated.</h3>
-      <div class="col-sm-9">
+      <h2 class="col-xs-12">Success! Your wallets have been generated.</h2>
+      <p class="col-xs-12 text-danger"> You need to back up your private keys externally and verify you can access the wallets. Do this BEFORE you send any Ether to a new wallet. MyEtherWallet.com does not receive or store any information so we <strong>cannot</strong> recover your wallet. Read the <a id="help" class="ptabs" showId="paneHelp">help page</a> for instructions.</p>
+      <div class="col-md-9">
         <table id="bulkgentable" class="table">
           <thead>
             <tr>
@@ -38,7 +42,7 @@
           </thead>
         </table>
       </div>
-      <div class="col-sm-3">
+      <div class="col-md-3">
         <div class="form-group">
           <h4>Print Paper Wallets</h4>
           <a class="btn btn-info btn-block" ng-click="printQRCode()">PRINT</a>
@@ -58,5 +62,6 @@
       </div>
     </div>
   </div>
+  <!-- / Bottom - Display Bulk Generated Wallets -->
+
 </div>
-<!-- /bulk generator -->
