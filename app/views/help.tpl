@@ -6,7 +6,7 @@
   </p>
 
   <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">-</span> First, a reminder </h3>
+  <h4> <span class="text-primary collapseButton">-</span> First, a reminder </h4>
   <div class="collapsePanel">
     <ul>
       <li>Please DON'T make wallets with more Ether than you are willing to lose. This applies to all wallets and everything Ethereum while we are in Frontier.</li>
@@ -21,7 +21,7 @@
 
 
   <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 0. I'm new. What do I do? </h3>
+  <h4> <span class="text-primary collapseButton">+</span> 0. I'm new. What do I do? </h4>
   <div class="collapsePanel collapsed">
     <p> MyEtherWallet.com gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, <strong> you are responsible for safely backing it up.</strong>.
     <p> If you just purchased ETH on an exchange and want to hold it safely in your own wallet, or if you are using ShapeShift to exchange another from cryptocurrency, you will need to complete the following steps. These steps are outlined in detail in the questions below. Please read them all in full. </p>
@@ -37,7 +37,7 @@
   </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 1. How do I create a new wallet? </h3>
+  <h4> <span class="text-primary collapseButton">+</span> 1. How do I create a new wallet? </h4>
   <div class="collapsePanel collapsed">
   <ol>
     <li> Go to the <a id="generate-wallet" class="ptabs" showId="paneWalgen">"Generate Wallet"</a> tab.</li>
@@ -52,7 +52,7 @@
   </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 2a. How do I save/backup my wallet?</h3>
+  <h4> <span class="text-primary collapseButton">+</span> 2a. How do I save/backup my wallet?</h4>
   <div class="collapsePanel collapsed">
   <p> You should always back up your wallet externally - like on a flash drive, in cloud storage (Dropbox, etc), and/or a piece of paper.</p>
   <ol>
@@ -76,7 +76,7 @@
   </section>
 
   <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 2b. How do I safely / securely / cold storage with MyEtherWallet?</h3>
+  <h4> <span class="text-primary collapseButton">+</span> 2b. How do I safely / securely / cold storage with MyEtherWallet?</h4>
   <div class="collapsePanel collapsed">
   <ol>
     <li>Go here: <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a></li>
@@ -99,7 +99,7 @@
 
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 3. How do I verify I have access to my new wallet?</h3>
+  <h4> <span class="text-primary collapseButton">+</span> 3. How do I verify I have access to my new wallet?</h4>
   <div class="collapsePanel collapsed">
   <p> <strong> Before you send any Ether to your new wallet</strong>, you should ensure you have access to it. You should NOT copy and paste from the generate wallet tab, but instead copy and paste from the text document or paper where you have stored your wallet information.</p>
 
@@ -116,7 +116,7 @@
   </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 4. How do I send Ether from one wallet to another? </h3>
+  <h4> <span class="text-primary collapseButton">+</span> 4. How do I send Ether from one wallet to another? </h4>
   <div class="collapsePanel collapsed">
   <p> Once you have saved and backed up all information <strong> and </strong> verified you have access to your new wallet, you can transfer some Ether to that new wallet.</p>
 
@@ -140,7 +140,7 @@
   </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 5. How do I run MyEtherWallet.com offline/locally? </h3>
+  <h4> <span class="text-primary collapseButton">+</span> 5. How do I run MyEtherWallet.com offline/locally? </h4>
  <div class="collapsePanel collapsed">
   <p> You can run MyEtherWallet.com on your computer instead of from the Github servers. Everything except the "send transaction" tab can be done completely without the internet, so feel free to turn your internet off. </p>
   <ol>
@@ -155,7 +155,7 @@
 </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 6. What happens if your site goes down? </h3>
+  <h4> <span class="text-primary collapseButton">+</span> 6. What happens if your site goes down? </h4>
  <div class="collapsePanel collapsed">
   <p>There seems to be a lot of confusion about what MyEtherWallet does. It's not a web wallet where you put your Ether and we store them for you. You don't have a login and nothing ever gets saved to our servers. It is simply an interface that allows you to do things you normally would do via command line.</p>
   <p>So, if MyEtherWallet goes down, you would have to find another way (like geth) to do what we are doing. But you wouldn't have to "get" your ether out of MyEtherWallet because it's not in MyEtherWallet. It's in whatever wallet your generated via our site.</p>
@@ -165,7 +165,7 @@
 
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 7. So, what is that password thing all about? </h3>
+  <h4> <span class="text-primary collapseButton">+</span> 7. So, what is that password thing all about? </h4>
  <div class="collapsePanel collapsed">
   <p>The password that you entered at the very beginning to create a new wallet / account is used to encrypt your private key. This enables you to have a safer version of your private key file.</p>
   <p> Basically, all it means is when you upload your private key file, you will also need to enter the password to decrypt it.</p>
@@ -175,42 +175,42 @@
 </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 8. Is using the send transaction offline? </h3>
+  <h4> <span class="text-primary collapseButton">+</span> 8. Is using the send transaction offline? </h4>
 <div class="collapsePanel collapsed">
   <p> No, the send transaction tab is not offline. It needs the internet in order to send Ether from one wallet to another. However, when you send a transaction, it only sends the signed transaction. Your private key safely stays with you. We also now provide an <a id="offline-transaction" class="ptabs" showId="paneOfflineTrans"> advanced / offline transaction tab</a> so that you may keep your private keys on an offline/airgapped computer.</p>
 </div>
 </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 9. What does "Gas Limit Too Low" Mean?</h3>
+  <h4> <span class="text-primary collapseButton">+</span> 9. What does "Gas Limit Too Low" Mean?</h4>
 <div class="collapsePanel collapsed">
   <p> Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. You can use the <a id="offline-transaction" class="ptabs" showId="paneOfflineTrans"> advanced / offline transaction tab</a> to send to contracts.</p>
 </div>
 </section>
 
 <section class="collapseContainer">
-  <h3><span class="text-primary collapseButton">+</span> 10. Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn't do this. Is the random number generation for MyEtherWallet safe?</h3>
+  <h4><span class="text-primary collapseButton">+</span> 10. Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn't do this. Is the random number generation for MyEtherWallet safe?</h4>
 <div class="collapsePanel collapsed">
   <p> While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren't unsafe, we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here's a <a href="https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm" target="_blank">conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto</a> and here is the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto" target="_blank">the window.crypto w3 spec</a>. </p>
 </div>
 </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 11. Why hasn't the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan) </h3>
+  <h4> <span class="text-primary collapseButton">+</span> 11. Why hasn't the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan) </h4>
 <div class="collapsePanel collapsed">
   <p> Addresses will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. </p>
 </div>
 </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 12. How do I check the balance of my account? </h3>
+  <h4> <span class="text-primary collapseButton">+</span> 12. How do I check the balance of my account? </h4>
  <div class="collapsePanel collapsed">
   <p> You can use a blockchain explorer like <a href="https://www.etherchain.org" target="_blank">etherchain.org</a> or <a href="http://etherscan.io/" target="_blank">etherscan.io</a>. Paste your address into the search bar and it will pull up your address and transaction history. For example, here's what our <a href="https://etherchain.org/account/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" target="_blank">donation account</a> looks like on etherchain.org.</p>
 </div>
 </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 13. Where the hell is my geth wallet files? </h3>
+  <h4> <span class="text-primary collapseButton">+</span> 13. Where the hell is my geth wallet files? </h4>
 <div class="collapsePanel collapsed">
   <ul>
     <li>Mac: <code>~/Library/Ethereum/keystore</code></li>
@@ -221,14 +221,14 @@
 </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 14. Where the hell is my Mist wallet file? </h3>
+  <h4> <span class="text-primary collapseButton">+</span> 14. Where the hell is my Mist wallet file? </h4>
 <div class="collapsePanel collapsed">
   <p> Mist files are typically found in the file locations above, but it's much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.
 </div>
 </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">+</span> 15. Where is my pre-sale wallet file?</h3>
+  <h4> <span class="text-primary collapseButton">+</span> 15. Where is my pre-sale wallet file?</h4>
   <div class="collapsePanel collapsed">
   <p> Where ever you saved it. ;) It also was emailed to you, so check there. Look for the file called <code>"ethereum_wallet_backup.json"</code> and upload that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.</p>
 </div>
@@ -237,7 +237,7 @@
 <hr />
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">-</span> Security </h3>
+  <h4> <span class="text-primary collapseButton">-</span> Security </h4>
   <div class="collapsePanel">
   <p> One of your first questions is, "Why should I trust these people?" You are probably worried that this site isn't secure. That is a good thing. When dealing with currency and the internet, you should be paranoid. But, let's try to be a bit reasonable.</p>
   <p> At this point, we have not had our code audited. Apparently, it costs a fair bit of money to get code audited. If you or a team you know would be willing to help us out in the auditing department, please let us know. <a href="https://www.reddit.com/r/ethereum/comments/3hh89n/could_someone_please_audit_ether_wallet/">Here is a reddit thread with another user asking for someone to audit us.</a> Reach out to us on reddit or github or <a id="contact" class="ptabs" showId="paneContact"> where ever</a>.</p>
@@ -255,7 +255,7 @@
 </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">-</span> More Helpful Answers to Frequent Questions </h3>
+  <h4> <span class="text-primary collapseButton">-</span> More Helpful Answers to Frequent Questions </h4>
   <div class="collapsePanel">
   <ul>
     <li><a href="https://www.reddit.com/r/ethereum/comments/3vxvlx/starter_guide_almost_all_the_links_youll_need_to/" target="_blank"> Starter guide: (almost) all the links you'll need to start understanding ethereum. </a></li>
@@ -268,7 +268,7 @@
 </section>
 
 <section class="collapseContainer">
-  <h3> <span class="text-primary collapseButton">-</span> Helpful Links </h3>
+  <h4> <span class="text-primary collapseButton">-</span> Helpful Links </h4>
   <div class="collapsePanel">
   <ul>
     <li><a href="https://ethereum.org/" target="_blank">Official Ethereum Site</a></li>

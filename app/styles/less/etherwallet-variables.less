@@ -2,8 +2,8 @@
 // Variables
 // --------------------------------------------------
 
-@ether-navy:      #2E4868;
-@ether-blue:      #2BB2DD;
+@ether-navy:      darken(#2E4868, 5%);
+@ether-blue:      darken(#2BB2DD, 5%);
 
 //== Colors
 //
@@ -44,13 +44,13 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  'Raleway', sans-serif;
+@font-family-sans-serif:  'Lato', sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          14px;
+@font-size-base:          15px;
 @font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
 @font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
 
@@ -68,8 +68,8 @@
 
 //** By default, this inherits from the `<body>`.
 @headings-font-family:    inherit;
-@headings-font-weight:    600;
-@headings-line-height:    1.1;
+@headings-font-weight:    700;
+@headings-line-height:    1.2;
 @headings-color:          inherit;
 
 
@@ -104,9 +104,9 @@
 @line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
 @line-height-small:         1.5;
 
-@border-radius-base:        4px;
-@border-radius-large:       6px;
-@border-radius-small:       3px;
+@border-radius-base:        2px;
+@border-radius-large:       2px;
+@border-radius-small:       2px;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
@@ -205,7 +205,7 @@
 @input-border-focus:             #66afe9;
 
 //** Placeholder text color
-@input-color-placeholder:        #999;
+@input-color-placeholder:        #ABABAB;
 
 //** Default `.form-control` height
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
@@ -421,7 +421,7 @@
 //##
 
 //=== Shared nav styles
-@nav-link-padding:                          10px 15px;
+@nav-link-padding:                          10px 12px;
 @nav-link-hover-bg:                         @body-bg;
 
 @nav-disabled-link-color:                   @gray-light;
