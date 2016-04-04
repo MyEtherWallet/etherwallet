@@ -4,24 +4,24 @@
   <div>
     <wallet-decrypt-drtv></wallet-decrypt-drtv>
   </div>
-  <section class="row" id="wallettransactions" style="display: none;">
+  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
     <hr />
     <div class="col-sm-4">
       <h4> Account Information </h4>
       <div>
-        <div id="addressIdenticon" class="walletaddressIdenticon" title="Address Indenticon"></div>
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
         <br />
         <p> Account Address:
-          <br /> <strong id="accountAddress" style="margin-left: 1em"></strong></p>
+          <br /> <strong style="margin-left: 1em">{{wallet.getChecksumAddressString()}}</strong></p>
           <p> Account Balance:
           <br />
-                <strong class="text-success" id="accountBalance" style="margin-left: 1em"> loading... </strong>
+                <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
                 <br />
-                <strong class="text-success" id="accountBalanceUsd" style="margin-left: 1em"> loading... </strong>
+                <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong>
                 <br />
-                <strong class="text-success" id="accountBalanceEur" style="margin-left: 1em"> loading... </strong>
+                <strong class="text-success"  style="margin-left: 1em"> {{eurBalance}} EUR </strong>
                 <br />
-                <strong class="text-success" id="accountBalanceBtc" style="margin-left: 1em"> loading... </strong>
+                <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         </p>
       </div>
       <br />
@@ -35,11 +35,11 @@
       <h4>Send Transaction</h4>
       <div class="form-group col-xs-10">
         <label> To Address: </label>
-        <input class="form-control validateAddress" status="addressvalidateStatus" identicon="addressvalidateIdenticon" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" id="sendtxaddress">
-        <div class="addressvalidateStatus"></div>
+        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="toAddress" ng-change="validateAddress()"/>
+        <div ng-bind-html="validateAddressStatus"></div>
       </div>
       <div class="col-xs-2 address-identicon-container">
-        <div id="addressIdenticon" class="addressvalidateIdenticon" title="Address Indenticon"></div>
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{toAddress}}" watch-var="toAddress"></div>
       </div>
       <div class="form-group col-xs-12">
         <label>

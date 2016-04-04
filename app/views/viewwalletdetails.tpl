@@ -5,7 +5,7 @@
   <div>
   <wallet-decrypt-drtv></wallet-decrypt-drtv>
   </div>
-  <section class="row" id="decryptedWalletDetails" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
+  <section class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
     <hr />
     <h3 class="text-success col-xs-12">Success! Here are your wallet details.</h3>
     <div class="col-sm-6">
@@ -74,7 +74,7 @@
             <span class="account-help-text">A JSON file is just a different format & contains some additional information. Some people prefer to have the text version & some prefer to have the JSON. If you are unsure, just save both. Again, this is encrypted so you will need your password.</span>
           </div>
         </h4>
-         <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{wallet.getChecksumAddressString()}}-encrypted.json"> DOWNLOAD </a>
+         <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}"> DOWNLOAD </a>
       </div>
       <div class="form-group" >
         <h4>
@@ -88,13 +88,13 @@
       </div>
       <h4>Account Balance:</h4>
       <p>
-        <strong class="text-success" id="accountBalance" style="margin-left: 1em"> loading... </strong>
+        <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
         <br />
-        <strong class="text-success" id="accountBalanceUsd" style="margin-left: 1em"> loading... </strong>
+        <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong>
         <br />
-        <strong class="text-success" id="accountBalanceEur" style="margin-left: 1em"> loading... </strong>
+        <strong class="text-success"  style="margin-left: 1em"> {{eurBalance}} EUR </strong>
         <br />
-        <strong class="text-success" id="accountBalanceBtc" style="margin-left: 1em"> loading... </strong>
+        <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
       </p>
       <br />
       <h4 style="display:none">A note about encrypted vs unencrypted:</h4>

@@ -1,5 +1,5 @@
 'use strict';
-var viewWalletCtrl = function($scope, walletService) {
+var sendTxCtrl = function($scope, $sce, walletService) {
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.$watch(function() {
@@ -8,15 +8,6 @@ var viewWalletCtrl = function($scope, walletService) {
 	}, function() {
 		if (walletService.wallet == null) return;
 		$scope.wallet = walletService.wallet;
-        $scope.showEnc = walletService.password != '';
-		$scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
-		if (walletService.password != '') {
-			$scope.blobEnc = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3(walletService.password, {
-				kdf: globalFuncs.kdf,
-				n: globalFuncs.scrypt.n
-			}));
-            $scope.encFileName =  $scope.wallet.getV3Filename();
-		}
         ajaxReq.getBalance($scope.wallet.getAddressString(), function(data){
             if(data.error){
                 $scope.etherBalance = data.msg;
@@ -30,11 +21,12 @@ var viewWalletCtrl = function($scope, walletService) {
             }
         });
 	});
-	$scope.printQRCode = function() {
-		globalFuncs.printPaperWallets(JSON.stringify([{
-			address: $scope.wallet.getAddressString(),
-			private: $scope.wallet.getPrivateKeyString()
-		}]));
-	}
+    $scope.validateAddress = function(){
+        if(ethFuncs.validateEtherAddress($scope.toAddress)){
+            $scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
+        } else {
+            $scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+        }
+    }
 };
-module.exports = viewWalletCtrl;
+module.exports = sendTxCtrl;

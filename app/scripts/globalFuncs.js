@@ -16,20 +16,30 @@ globalFuncs.printPaperWallets = function(strJson) {
 	win.document.write("<script>generateWallets();</script>");
 }
 globalFuncs.getBlob = function(mime, str) {
-    var str = (typeof str === 'object') ? JSON.stringify(str) : str;
-	if (str== null) return '';
+	var str = (typeof str === 'object') ? JSON.stringify(str) : str;
+	if (str == null) return '';
 	var blob = new Blob([str], {
 		type: mime
 	});
 	return window.URL.createObjectURL(blob);
 }
-globalFuncs.getSuccessText = function(str){
-    return '<p class="text-center text-success"><strong> ' + str + '</strong></p>'
+globalFuncs.getSuccessText = function(str) {
+	return '<p class="text-center text-success"><strong> ' + str + '</strong></p>'
 }
-globalFuncs.getDangerText = function(str){
-    return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
+globalFuncs.getDangerText = function(str) {
+	return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
-globalFuncs.errorMsgs = ["Please enter valid amount", "Your password must be at least 7 characters"];
-globalFuncs.scrypt = {n:1024};
+globalFuncs.errorMsgs = [   "Please enter valid amount", 
+                            "Your password must be at least 7 characters", 
+                            "Sorry! we dont have a clue what kind of wallet file this is.", 
+                            "not a valid wallet file",
+                            "This unit doesn\'t exists, please use the one of the following units",
+                            "Invalid address",
+                            "Invalid password"];
+globalFuncs.successMsgs = [ "Valid address",
+                            "Wallet successfully decrypted"];  
+globalFuncs.scrypt = {
+	n: 1024
+};
 globalFuncs.kdf = "scrypt";
 module.exports = globalFuncs;

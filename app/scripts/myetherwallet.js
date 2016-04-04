@@ -90,7 +90,10 @@ Wallet.prototype.toJSON = function() {
 		address: this.getAddressString(),
 		checksumAddress: this.getChecksumAddressString(),
 		privKey: this.getPrivateKeyString(),
-		pubKey: this.getPublicKeyString()
+		pubKey: this.getPublicKeyString(),
+        publisher:"MyEtherWallet",
+        encrypted:false,
+        version:2
 	}
 }
 Wallet.fromMyEtherWallet = function(input, password) {
@@ -123,6 +126,14 @@ Wallet.fromMyEtherWallet = function(input, password) {
 		throw new Error('Invalid private key or address')
 	}
 	return wallet
+}
+Wallet.fromMyEtherWalletV2 = function (input){
+    var json = (typeof input === 'object') ? input : JSON.parse(input);
+    if (json.privKey.length !== 64) {
+        throw new Error('Invalid private key length');
+    };
+    var privKey = new Buffer(json.privKey, 'hex');
+    return new Wallet(privKey);
 }
 Wallet.fromEthSale = function(input, password) {
 	var json = (typeof input === 'object') ? input : JSON.parse(input)
@@ -179,6 +190,15 @@ Wallet.fromV3 = function(input, password, nonStrict) {
 Wallet.prototype.toV3String = function(password, opts) {
 	return JSON.stringify(this.toV3(password, opts))
 }
+Wallet.prototype.getV3Filename = function (timestamp) {
+  var ts = timestamp ? new Date(timestamp) : new Date()
+  return [
+    'UTC--',
+    ts.toJSON().replace(/:/g, '-'),
+    '--',
+    this.getAddress().toString('hex')
+  ].join('')
+}
 Wallet.decipherBuffer = function(decipher, data) {
 	return Buffer.concat([decipher.update(data), decipher.final()])
 }
@@ -230,21 +250,23 @@ Wallet.walletRequirePass = function(ethjson) {
 	try {
 		jsonArr = JSON.parse(ethjson);
 	} catch (err) {
-		throw "not a valid wallet file";
+		throw globalFuncs.errorMsgs[3];
 	}
 	if (jsonArr.encseed != null) return true;
 	else if (jsonArr.Crypto != null || jsonArr.crypto != null) return true
 	else if (jsonArr.hash != null && jsonArr.locked) return true;
 	else if (jsonArr.hash != null && !jsonArr.locked) return false;
+    else if (jsonArr.publisher == "MyEtherWallet" && !jsonArr.encrypted) return false;
 	else
-	throw "Sorry! we dont have a clue what kind of wallet file this is.";
+	throw globalFuncs.errorMsgs[2];
 }
 Wallet.getWalletFromPrivKeyFile = function(strjson, password) {
 	var jsonArr = JSON.parse(strjson);
 	if (jsonArr.encseed != null) return Wallet.fromEthSale(strjson, password);
 	else if (jsonArr.Crypto != null || jsonArr.crypto != null) return Wallet.fromV3(strjson, password, true);
 	else if (jsonArr.hash != null) return Wallet.fromMyEtherWallet(strjson, password);
+	else if (jsonArr.publisher == "MyEtherWallet") return Wallet.fromMyEtherWalletV2(strjson);
 	else
-	throw "Sorry! we dont have a clue what kind of wallet file this is.";
+	throw globalFuncs.errorMsgs[2];
 }
 module.exports = Wallet;

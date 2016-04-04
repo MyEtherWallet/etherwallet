@@ -15,6 +15,7 @@ var walletGenCtrl = function($scope) {
 				kdf: globalFuncs.kdf,
                 n: globalFuncs.scrypt.n
 			}));
+            $scope.encFileName =  $scope.wallet.getV3Filename();
 		}
 	}
 	$scope.printQRCode = function() {

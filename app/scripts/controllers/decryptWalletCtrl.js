@@ -43,9 +43,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 			}
             walletService.wallet = $scope.wallet;
 		} catch (e) {
-            $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getDangerText("Wrong Password: "+e));
+            $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6]+e));
 		}
-        if($scope.wallet!=null) $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText("Wallet successfully decrypted"));
+        if($scope.wallet!=null) $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
 	};
 };
 module.exports = decryptWalletCtrl;

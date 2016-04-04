@@ -68,7 +68,7 @@
               <span class="account-help-text">A JSON file is just a different format & contains some additional information. Some people prefer to have the text version & some prefer to have the JSON. If you are unsure, just save both. Again, this is encrypted so you will need your password.</span>
             </div>
           </label>
-          <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{wallet.getChecksumAddressString()}}-encrypted.json"> DOWNLOAD </a>
+          <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}"> DOWNLOAD </a>
         </div>
       </div><!-- end col-sm-6-->
       <div class="col-sm-6">

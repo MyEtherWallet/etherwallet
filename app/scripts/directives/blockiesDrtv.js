@@ -4,7 +4,7 @@ var blockiesDrtv = function() {
 	   var watchVar = attrs.watchVar;
         scope.$watch(watchVar, function() {
             var address = attrs.blockieAddress;
-            var content = ethUtil.isValidAddress(address) ? globalFuncs.getBlockie(address):'';
+            var content = ethFuncs.validateEtherAddress(address) ? globalFuncs.getBlockie(address):'';
             element.css({
                 'background-image': 'url(' + content +')'
             });
