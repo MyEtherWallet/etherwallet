@@ -1306,7 +1306,9 @@ p {
   margin: 0 0 10.5px;
   font-weight: 300;
 }
-p strong {
+p strong,
+p .strong,
+p.strong {
   font-weight: 400;
 }
 .lead {
