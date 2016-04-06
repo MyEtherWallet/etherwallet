@@ -9,23 +9,54 @@
   <h4> <span class="text-primary collapseButton">-</span> First, a reminder </h4>
   <div class="collapsePanel">
     <ul>
-      <li>Please DON'T make wallets with more Ether than you are willing to lose. This applies to all wallets and everything Ethereum while we are in Frontier.</li>
-      <li>Please, DON'T forget to save your private key / password when you create a new wallet. Save them externally - not just on your computer! We wrote thorough instructions on this page</li>
-      <li>Please DO make sure you are sending to the correct address.</li>
-      <li>Please DO reach out to us (click contact above) with any and all feedback you have, especially little bugs, things that confused you, or error messages that don't make sense / have typos.</li>
+      <li>Ethereum, MyEtherWallet.com, and some of the underlying Javascript libraries we use are under active development. While we have tested thoroughly & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. While do everything we can to ensure that this does not happen and are available via email/reddit/twitter to assist in every way we can, this possibility still exists. Please do not invest more than you are willing to use and please be careful. If something were to happen, we are sorry, but we are not responsible for the lost ETH. </li>
+      <li>MyEtherWallet.com and MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data is created on our computer/your browser, not our servers. It's not a website where you put your Ether and we store them for you. We just make it easy for you to save your wallet information in your browser/on your computer. Then we give you a place you to access that information and do stuff with it.</li>
+      <li>Please, do <strong> not </strong> forget to save your private key & password when you create a new wallet. Back them up in multiple phsyically locations &ndash; not just on your computer!</li>
+      <li>Please make sure you are sending to the correct address.</li>
+      <li>Please reach out to us (click contact above) with any and all feedback you have, especially with things that confused you or error messages that don't make sense.</li>
     </ul>
-    <p>MyEtherWallet.com and MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data is created on our computer/your browser, not our servers. It's not a website where you put your Ether and we store them for you. We just make it easy for you to save your wallet information in your browser/on your computer. Then we give you a place you to access that information and do stuff with it.</p>
   </div>
   </section>
 
+
+<!-- TODO -->
+  <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 0. How do I make an offline transaction?</h4>
+  <div class="collapsePanel collapsed">
+    <p> Blah blah blah </p>
+  </div>
+  </section>
+
+  <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 0. How do I send to a contract?</h4>
+  <div class="collapsePanel collapsed">
+    <p> Blah blah blah </p>
+  </div>
+  </section>
+
+    <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 0. How do I import a wallet created with MyEtherWallet into Ethereum Wallet / Mist?</h4>
+  <div class="collapsePanel collapsed">
+    <p> Blah blah blah </p>
+  </div>
+  </section>
+
+  <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 9. What does "Gas Limit Too Low" Mean?</h4>
+<div class="collapsePanel collapsed">
+  <p> Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. You can use the <a id="offline-transaction" class="ptabs" showId="paneOfflineTrans"> advanced / offline transaction tab</a> to send to contracts.</p>
+</div>
+</section>
+
+<!-- / TODO -->
 
 
   <section class="collapseContainer">
   <h4> <span class="text-primary collapseButton">+</span> 0. I'm new. What do I do? </h4>
   <div class="collapsePanel collapsed">
-    <p> MyEtherWallet.com gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, <strong> you are responsible for safely backing it up.</strong>.
+    <p> MyEtherWallet.com gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, <strong> you are responsible for safely backing it up</strong>.
     <p> If you just purchased ETH on an exchange and want to hold it safely in your own wallet, or if you are using ShapeShift to exchange another from cryptocurrency, you will need to complete the following steps. These steps are outlined in detail in the questions below. Please read them all in full. </p>
-    <p> Do not hesitate to <a id="contact" class="ptabs" showId="paneContact">reach out to us</a> if you have any questions. Remember, Ether now holds real monetary value and can be a significant investment. If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  I do not say this to scare you, only to remind you to be diligent, read carefully, and take your time during all the steps. But, if you follow the instructions found on this page, even a non-technical person can safely hold their Ether in a wallet. </p>
+    <p> Do not hesitate to <a id="contact" class="ptabs" showId="paneContact">reach out to us</a> if you have any questions. Remember, Ether now holds real monetary value and can be a significant investment. If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  I do not say this to scare you, only to remind you to be diligent, read carefully, and take your time during all the steps. But, if you follow the instructions found on this page, even a non-technical person can safely hold their Ether in a wallet they control. </p>
 
     <ol>
       <li> Create a new wallet. </li>
@@ -181,12 +212,7 @@
 </div>
 </section>
 
-<section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 9. What does "Gas Limit Too Low" Mean?</h4>
-<div class="collapsePanel collapsed">
-  <p> Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. You can use the <a id="offline-transaction" class="ptabs" showId="paneOfflineTrans"> advanced / offline transaction tab</a> to send to contracts.</p>
-</div>
-</section>
+
 
 <section class="collapseContainer">
   <h4><span class="text-primary collapseButton">+</span> 10. Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn't do this. Is the random number generation for MyEtherWallet safe?</h4>
@@ -210,7 +236,7 @@
 </section>
 
 <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 13. Where the hell is my geth wallet files? </h4>
+  <h4> <span class="text-primary collapseButton">+</span> 13. Where the hell is my geth wallet file? </h4>
 <div class="collapsePanel collapsed">
   <ul>
     <li>Mac: <code>~/Library/Ethereum/keystore</code></li>

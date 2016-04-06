@@ -123,23 +123,23 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label>
-            Your Private Key (encrypted):
-            <div class="account-help-icon">
-              <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
-              <span class="account-help-text">Text version of your private key. This is encrypted so you need the password you entered to use it. This is a safer way to save your key than unencrypted, but you need to remember your password.</span>
-            </div>
-          </label>
-          <textarea class="form-control bigger-on-mobile" type="text" readonly="readonly"></textarea>
-        </div>
-        <div class="form-group">
-          <label>
             Download JSON file - Geth/Mist Format (encrypted):
             <div class="account-help-icon">
               <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
-              <span class="account-help-text">A JSON file is just a different format & contains some additional information. Some people prefer to have the text version & some prefer to have the JSON. If you are unsure, just save both. Again, this is encrypted so you will need your password.</span>
+              <span class="account-help-text">This JSON file matches the keystore format used by Mist / geth so you can easily import it into those clients in the future. It is the recommended file to download and back up.</span>
             </div>
           </label>
           <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}"> DOWNLOAD </a>
+        </div>
+        <div class="form-group">
+          <label>
+            Download JSON file (unencrypted):
+            <div class="account-help-icon">
+              <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
+              <span class="account-help-text">This is an unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet and your Ether without the password.</span>
+            </div>
+          </label>
+          <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json">DOWNLOAD</a>
         </div>
       </div><!-- end col-sm-6-->
       <div class="col-sm-6">
@@ -148,20 +148,10 @@
             Your Private Key (unencrypted):
             <div class="account-help-icon">
               <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
-              <span class="account-help-text"> This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted private keys are typically recommended.</span>
+              <span class="account-help-text">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted private keys are typically recommended.</span>
             </div>
           </label>
           <textarea class="form-control bigger-on-mobile" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
-        </div>
-        <div class="form-group">
-          <label>
-            Download JSON file (unencrypted):
-            <div class="account-help-icon">
-              <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
-              <span class="account-help-text">This is the unencrypted, JSON format of your private key. Again, this means you do not need the password but anyone who finds your JSON can access your wallet and your Ether without the password.</span>
-            </div>
-          </label>
-          <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json">DOWNLOAD</a>
         </div>
       </div><!-- end col-sm-6-->
     </div><!-- end row -->
@@ -236,7 +226,7 @@
             <tr>
               <th width="32"> Address Identicon </th>
               <th width="500">Address</th>
-              <th width="500">Private Key</th>
+              <th width="500">Private Key (unencrypted)</th>
             </tr>
             <tr class="privaddkey" ng-repeat="wallet in wallets">
             <td>
@@ -254,19 +244,19 @@
       </div>
       <div class="col-md-3">
         <div class="form-group">
-          <h4>Print Paper Wallets</h4>
+          <label>Print Paper Wallets (unencrypted)</label>
           <a class="btn btn-info btn-block" ng-click="printQRCode()">PRINT</a>
         </div>
         <div class="form-group">
-          <h4>Download JSON file</h4>
+          <label>Download JSON file (unencrypted)</label>
           <a class="btn btn-info btn-block" href="{{bJSON}}" download="bulk_ether_accounts.json">DOWNLOAD</a>
         </div>
         <div class="form-group">
-          <h4>Download CSV file</h4>
+          <label>Download CSV file (unencrypted)</label>
           <a class="btn btn-info btn-block" href="{{bCSV}}" download="bulk_ether_accounts.csv">DOWNLOAD</a>
         </div>
         <div class="form-group">
-          <h4>Download TXT file</h4>
+          <label>Download TXT file (unencrypted)</label>
           <a class="btn btn-info btn-block" href="{{bTXT}}" download="bulk_ether_accounts.txt">DOWNLOAD</a>
         </div>
       </div>
@@ -400,7 +390,7 @@
         <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
         <br />
         <p> Account Address:
-          <br /> <strong style="margin-left: 1em">{{wallet.getChecksumAddressString()}}</strong></p>
+          <br /> <strong style="margin-left: 1em" class="mono">{{wallet.getChecksumAddressString()}}</strong></p>
           <p> Account Balance:
           <br />
                 <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
@@ -433,8 +423,8 @@
         <label>
           Amount to Send:
           <br />
-          <a class="btnAction" func="transferAllBalance" id="transferAllBalance">Click here to transfer total available balance**</a>
         </label>
+        <a class="btnAction pull-right" func="transferAllBalance" id="transferAllBalance">Transfer total available balance</a>
         <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
         <div class="radio">
           <label>
@@ -445,13 +435,25 @@
             <input type="radio" name="currencyRadio" value="szabo">Szabo</label>
           <div id="weiamount"></div>
         </div>
+        <!-- advanced option panel -->
+        <a><p class="strong"> + Advanced Options </p></a>
+        <section>
+          <div class="form-group">
+            <label> Data: </label>
+            <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" />
+          </div>
+          <div class="form-group">
+            <label> Gas: </label>
+            <input class="form-control" type="text" placeholder="21000" />
+          </div>
+        </section>
+        <!-- / advanced option panel -->
       </div>
       <div class="form-group col-xs-12">
         <a class="btn btn-info btn-block btnAction" func="preCreateTransaction" id="btngeneratetranaction">GENERATE TRANSACTION</a>
       </div>
       <div class="col-xs-12">
         <p><small> * We use standard rates for all gas + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether + current gas price + 1 gwei in gas. We do not take a transaction fee.</small></p>
-        <p><small> ** This automatically calculates the amount of gas required to transfer your balance and subtracts it from the total Ether you will send. This allows you to transfer everything in one account to another, without having any leftovers (or doing math.)</small></p>
          <div id="txcreatestatus"></div>
       </div>
       <div class="form-group col-xs-12" style="display: none;" id="divtransactionTAs">
@@ -729,23 +731,54 @@
   <h4> <span class="text-primary collapseButton">-</span> First, a reminder </h4>
   <div class="collapsePanel">
     <ul>
-      <li>Please DON'T make wallets with more Ether than you are willing to lose. This applies to all wallets and everything Ethereum while we are in Frontier.</li>
-      <li>Please, DON'T forget to save your private key / password when you create a new wallet. Save them externally - not just on your computer! We wrote thorough instructions on this page</li>
-      <li>Please DO make sure you are sending to the correct address.</li>
-      <li>Please DO reach out to us (click contact above) with any and all feedback you have, especially little bugs, things that confused you, or error messages that don't make sense / have typos.</li>
+      <li>Ethereum, MyEtherWallet.com, and some of the underlying Javascript libraries we use are under active development. While we have tested thoroughly & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. While do everything we can to ensure that this does not happen and are available via email/reddit/twitter to assist in every way we can, this possibility still exists. Please do not invest more than you are willing to use and please be careful. If something were to happen, we are sorry, but we are not responsible for the lost ETH. </li>
+      <li>MyEtherWallet.com and MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data is created on our computer/your browser, not our servers. It's not a website where you put your Ether and we store them for you. We just make it easy for you to save your wallet information in your browser/on your computer. Then we give you a place you to access that information and do stuff with it.</li>
+      <li>Please, do <strong> not </strong> forget to save your private key & password when you create a new wallet. Back them up in multiple phsyically locations &ndash; not just on your computer!</li>
+      <li>Please make sure you are sending to the correct address.</li>
+      <li>Please reach out to us (click contact above) with any and all feedback you have, especially with things that confused you or error messages that don't make sense.</li>
     </ul>
-    <p>MyEtherWallet.com and MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data is created on our computer/your browser, not our servers. It's not a website where you put your Ether and we store them for you. We just make it easy for you to save your wallet information in your browser/on your computer. Then we give you a place you to access that information and do stuff with it.</p>
   </div>
   </section>
 
+
+<!-- TODO -->
+  <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 0. How do I make an offline transaction?</h4>
+  <div class="collapsePanel collapsed">
+    <p> Blah blah blah </p>
+  </div>
+  </section>
+
+  <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 0. How do I send to a contract?</h4>
+  <div class="collapsePanel collapsed">
+    <p> Blah blah blah </p>
+  </div>
+  </section>
+
+    <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 0. How do I import a wallet created with MyEtherWallet into Ethereum Wallet / Mist?</h4>
+  <div class="collapsePanel collapsed">
+    <p> Blah blah blah </p>
+  </div>
+  </section>
+
+  <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 9. What does "Gas Limit Too Low" Mean?</h4>
+<div class="collapsePanel collapsed">
+  <p> Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. You can use the <a id="offline-transaction" class="ptabs" showId="paneOfflineTrans"> advanced / offline transaction tab</a> to send to contracts.</p>
+</div>
+</section>
+
+<!-- / TODO -->
 
 
   <section class="collapseContainer">
   <h4> <span class="text-primary collapseButton">+</span> 0. I'm new. What do I do? </h4>
   <div class="collapsePanel collapsed">
-    <p> MyEtherWallet.com gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, <strong> you are responsible for safely backing it up.</strong>.
+    <p> MyEtherWallet.com gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, <strong> you are responsible for safely backing it up</strong>.
     <p> If you just purchased ETH on an exchange and want to hold it safely in your own wallet, or if you are using ShapeShift to exchange another from cryptocurrency, you will need to complete the following steps. These steps are outlined in detail in the questions below. Please read them all in full. </p>
-    <p> Do not hesitate to <a id="contact" class="ptabs" showId="paneContact">reach out to us</a> if you have any questions. Remember, Ether now holds real monetary value and can be a significant investment. If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  I do not say this to scare you, only to remind you to be diligent, read carefully, and take your time during all the steps. But, if you follow the instructions found on this page, even a non-technical person can safely hold their Ether in a wallet. </p>
+    <p> Do not hesitate to <a id="contact" class="ptabs" showId="paneContact">reach out to us</a> if you have any questions. Remember, Ether now holds real monetary value and can be a significant investment. If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  I do not say this to scare you, only to remind you to be diligent, read carefully, and take your time during all the steps. But, if you follow the instructions found on this page, even a non-technical person can safely hold their Ether in a wallet they control. </p>
 
     <ol>
       <li> Create a new wallet. </li>
@@ -901,12 +934,7 @@
 </div>
 </section>
 
-<section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 9. What does "Gas Limit Too Low" Mean?</h4>
-<div class="collapsePanel collapsed">
-  <p> Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. You can use the <a id="offline-transaction" class="ptabs" showId="paneOfflineTrans"> advanced / offline transaction tab</a> to send to contracts.</p>
-</div>
-</section>
+
 
 <section class="collapseContainer">
   <h4><span class="text-primary collapseButton">+</span> 10. Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn't do this. Is the random number generation for MyEtherWallet safe?</h4>
@@ -930,7 +958,7 @@
 </section>
 
 <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 13. Where the hell is my geth wallet files? </h4>
+  <h4> <span class="text-primary collapseButton">+</span> 13. Where the hell is my geth wallet file? </h4>
 <div class="collapsePanel collapsed">
   <ul>
     <li>Mac: <code>~/Library/Ethereum/keystore</code></li>

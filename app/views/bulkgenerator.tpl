@@ -26,7 +26,7 @@
             <tr>
               <th width="32"> Address Identicon </th>
               <th width="500">Address</th>
-              <th width="500">Private Key</th>
+              <th width="500">Private Key (unencrypted)</th>
             </tr>
             <tr class="privaddkey" ng-repeat="wallet in wallets">
             <td>
@@ -44,19 +44,19 @@
       </div>
       <div class="col-md-3">
         <div class="form-group">
-          <h4>Print Paper Wallets</h4>
+          <label>Print Paper Wallets (unencrypted)</label>
           <a class="btn btn-info btn-block" ng-click="printQRCode()">PRINT</a>
         </div>
         <div class="form-group">
-          <h4>Download JSON file</h4>
+          <label>Download JSON file (unencrypted)</label>
           <a class="btn btn-info btn-block" href="{{bJSON}}" download="bulk_ether_accounts.json">DOWNLOAD</a>
         </div>
         <div class="form-group">
-          <h4>Download CSV file</h4>
+          <label>Download CSV file (unencrypted)</label>
           <a class="btn btn-info btn-block" href="{{bCSV}}" download="bulk_ether_accounts.csv">DOWNLOAD</a>
         </div>
         <div class="form-group">
-          <h4>Download TXT file</h4>
+          <label>Download TXT file (unencrypted)</label>
           <a class="btn btn-info btn-block" href="{{bTXT}}" download="bulk_ether_accounts.txt">DOWNLOAD</a>
         </div>
       </div>

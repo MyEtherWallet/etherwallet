@@ -12,7 +12,7 @@
         <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
         <br />
         <p> Account Address:
-          <br /> <strong style="margin-left: 1em">{{wallet.getChecksumAddressString()}}</strong></p>
+          <br /> <strong style="margin-left: 1em" class="mono">{{wallet.getChecksumAddressString()}}</strong></p>
           <p> Account Balance:
           <br />
                 <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
@@ -45,8 +45,8 @@
         <label>
           Amount to Send:
           <br />
-          <a class="btnAction" func="transferAllBalance" id="transferAllBalance">Click here to transfer total available balance**</a>
         </label>
+        <a class="btnAction pull-right" func="transferAllBalance" id="transferAllBalance">Transfer total available balance</a>
         <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
         <div class="radio">
           <label>
@@ -57,13 +57,25 @@
             <input type="radio" name="currencyRadio" value="szabo">Szabo</label>
           <div id="weiamount"></div>
         </div>
+        <!-- advanced option panel -->
+        <a><p class="strong"> + Advanced Options </p></a>
+        <section>
+          <div class="form-group">
+            <label> Data: </label>
+            <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" />
+          </div>
+          <div class="form-group">
+            <label> Gas: </label>
+            <input class="form-control" type="text" placeholder="21000" />
+          </div>
+        </section>
+        <!-- / advanced option panel -->
       </div>
       <div class="form-group col-xs-12">
         <a class="btn btn-info btn-block btnAction" func="preCreateTransaction" id="btngeneratetranaction">GENERATE TRANSACTION</a>
       </div>
       <div class="col-xs-12">
         <p><small> * We use standard rates for all gas + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether + current gas price + 1 gwei in gas. We do not take a transaction fee.</small></p>
-        <p><small> ** This automatically calculates the amount of gas required to transfer your balance and subtracts it from the total Ether you will send. This allows you to transfer everything in one account to another, without having any leftovers (or doing math.)</small></p>
          <div id="txcreatestatus"></div>
       </div>
       <div class="form-group col-xs-12" style="display: none;" id="divtransactionTAs">
