@@ -24,7 +24,6 @@
   var Modal = function(element, options) { // element is the trigger button / options.target is the modal
     options = options || {};
     this.isIE = (new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})").exec(navigator.userAgent) != null) ? parseFloat( RegExp.$1 ) : false; 
-    this.opened = false;
     this.modal = typeof element === 'object' ? element : document.querySelector(element);
     this.options = {};
 		this.options.backdrop = options.backdrop === 'false' ? false : true;
@@ -67,7 +66,16 @@
 			},
 		
 			this._open = function() {
-		
+				var currentOpen = document.querySelector('.modal.in');
+        if (currentOpen){
+            clearTimeout(currentOpen.getAttribute('data-timer'));
+            this.removeClass(currentOpen,'in');
+            setTimeout( function() {
+              currentOpen.setAttribute('aria-hidden', true);
+              currentOpen.style.display = '';
+            }, self.options.duration/2);
+        }
+        		
 				if ( this.options.backdrop ) {
 					this.createOverlay();
 				} else { this.overlay = null }
@@ -81,7 +89,6 @@
 				clearTimeout(self.modal.getAttribute('data-timer'));
 				this.timer = setTimeout( function() {
 					self.modal.style.display = 'block';
-					self.opened = true;
 					
 					self.checkScrollbar();
 					self.adjustDialog();
@@ -99,7 +106,7 @@
 			},
 		
 			this._close = function() {
-							
+
 				if ( this.overlay ) {					
 					this.removeClass(this.overlay,'in');
 				}			
@@ -108,7 +115,6 @@
 								
 				clearTimeout(self.modal.getAttribute('data-timer'));
 				this.timer = setTimeout( function() {
-					self.opened = false;				
 					self.removeClass(document.body,'modal-open');
 					self.resize();
 					self.resetAdjustments();
@@ -154,7 +160,7 @@
 						self.close();
 					}					
 				}
-				if (this.opened) {
+				if (!/in/.test(this.modal.className)) {
 					document.addEventListener('keydown', keyHandler, false);
 				} else {
 					document.removeEventListener('keydown', keyHandler, false);
@@ -199,11 +205,11 @@
 					// setTimeout(function() {
 						self._resize();
 						self.handleUpdate();
-						console.log('offresize')
+						// console.log('offresize')
 					// }, 100)
 				}			
 
-				if (this.opened) {
+				if (!/in/.test(this.modal.className)) {
 					window.addEventListener('resize', this.oneResize, false);
 				} else {
 					window.removeEventListener('resize', this.oneResize, false);
@@ -217,7 +223,7 @@
 						e.preventDefault(); self.close()
 					}
 				}					
-				if (this.opened) {
+				if (!/in/.test(this.modal.className)) {
 					this.modal.addEventListener('click', dismissHandler, false);
 				} else {
 					this.modal.removeEventListener('click', dismissHandler, false);

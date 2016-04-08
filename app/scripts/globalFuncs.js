@@ -35,11 +35,20 @@ globalFuncs.errorMsgs = [   "Please enter valid amount",
                             "not a valid wallet file",
                             "This unit doesn\'t exists, please use the one of the following units",
                             "Invalid address",
-                            "Invalid password"];
+                            "Invalid password",
+                            "Invalid amount",
+                            "Invalid gas limit",
+                            "Invalid data value"];
 globalFuncs.successMsgs = [ "Valid address",
-                            "Wallet successfully decrypted"];  
+                            "Wallet successfully decrypted",
+                            "Transaction submitted. TX ID: "];  
 globalFuncs.scrypt = {
 	n: 1024
 };
 globalFuncs.kdf = "scrypt";
+globalFuncs.defaultTxGasLimit = 21000;
+globalFuncs.donateAddress = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
+globalFuncs.isNumeric = function(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
 module.exports = globalFuncs;

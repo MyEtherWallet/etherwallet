@@ -27,19 +27,19 @@
       <br />
       <div class="well">
         <p> Don't have anyone to send a transaction to? You can always donate to us! Donations mean we spend more time creating new features, listening to your feedback, and giving you what you want.</p>
-        <a class="btn btn-primary btn-block btnAction" func="donateButtonClick" id="btndonate">DONATE</a>
-        <div class="text-success text-center marg-v-sm"><strong id="donateThanks" style="display: none;"> THANK YOU!!! </strong></div>
+        <a class="btn btn-primary btn-block" ng-click="onDonateClick()">DONATE</a>
+        <div class="text-success text-center marg-v-sm"><strong ng-show="tx.donate"> THANK YOU!!! </strong></div>
       </div>
     </div>
     <div class="col-sm-8">
       <h4>Send Transaction</h4>
       <div class="form-group col-xs-10">
         <label> To Address: </label>
-        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="toAddress" ng-change="validateAddress()"/>
+        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()"/>
         <div ng-bind-html="validateAddressStatus"></div>
       </div>
       <div class="col-xs-2 address-identicon-container">
-        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{toAddress}}" watch-var="toAddress"></div>
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
       </div>
       <div class="form-group col-xs-12">
         <label>
@@ -47,47 +47,46 @@
           <br />
         </label>
         <a class="btnAction pull-right" func="transferAllBalance" id="transferAllBalance">Transfer total available balance</a>
-        <input class="form-control" type="text" placeholder="Amount" id="sendtxamount">
+        <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
         <div class="radio">
           <label>
-            <input type="radio" name="currencyRadio" checked value="ether">Ether</label>
+            <input type="radio" name="currencyRadio" value="ether" ng-model="tx.unit"/>Ether</label>
           <label>
-            <input type="radio" name="currencyRadio" value="finney">Finney</label>
+            <input type="radio" name="currencyRadio" value="finney" ng-model="tx.unit"/>Finney</label>
           <label>
-            <input type="radio" name="currencyRadio" value="szabo">Szabo</label>
-          <div id="weiamount"></div>
+            <input type="radio" name="currencyRadio" value="szabo" ng-model="tx.unit"/>Szabo</label>
         </div>
         <!-- advanced option panel -->
-        <a><p class="strong"> + Advanced Options </p></a>
-        <section>
+        <a ng-click="toggleShowAdvance()"><p class="strong"> + Advanced Options </p></a>
+        <section ng-show="showAdvance">
           <div class="form-group">
             <label> Data: </label>
-            <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" />
+            <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data"/>
           </div>
           <div class="form-group">
             <label> Gas: </label>
-            <input class="form-control" type="text" placeholder="21000" />
+            <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit"/>
           </div>
         </section>
         <!-- / advanced option panel -->
       </div>
       <div class="form-group col-xs-12">
-        <a class="btn btn-info btn-block btnAction" func="preCreateTransaction" id="btngeneratetranaction">GENERATE TRANSACTION</a>
+        <a class="btn btn-info btn-block" ng-click="generateTx()">GENERATE TRANSACTION</a>
       </div>
       <div class="col-xs-12">
         <p><small> * We use standard rates for all gas + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether + current gas price + 1 gwei in gas. We do not take a transaction fee.</small></p>
-         <div id="txcreatestatus"></div>
+         <div ng-bind-html="validateTxStatus"></div>
       </div>
-      <div class="form-group col-xs-12" style="display: none;" id="divtransactionTAs">
+      <div class="form-group col-xs-12" ng-show="showRaw">
         <label> Raw Transaction </label>
-        <textarea class="form-control" rows="4" disabled id="tarawtx"></textarea>
+        <textarea class="form-control" rows="4" disabled >{{rawTx}}</textarea>
         <label> Signed Transaction </label>
-        <textarea class="form-control" rows="4" disabled id="tasignedtx"></textarea>
+        <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
       </div>
-      <div class="form-group col-xs-12" id="divsendtranaction" style="display: none;">
+      <div class="form-group col-xs-12" ng-show="showRaw">
         <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">SEND TRANSACTION</a>
       </div>
-      <div id="txsendstatus"></div>
+      <div ng-bind-html="sendTxStatus"></div>
       <!-- Modal -->
       <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
         <div class="modal-dialog" role="document">
@@ -99,16 +98,16 @@
             <div class="modal-body">
               <h4>
                 You are about to send
-                <strong id="confirmAmount" class="text-primary"> 345 </strong>
-                <strong id="confirmCurrancy" class="text-primary"> Ether </strong>
+                <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
+                <strong id="confirmCurrancy" class="text-primary"> {{tx.unit}} </strong>
                 to address
-                <strong id="confirmAddress" class="text-primary"> 928342938472938 </strong>
+                <strong id="confirmAddress" class="text-primary"> {{tx.to}} </strong>
               </h4>
               <h4> Are you <span class="text-underline"> sure </span> you want to do this?</h4>
             </div>
             <div class="modal-footer text-center">
               <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
-              <button type="button" class="btn btn-primary btnAction" func="preSendTransaction" id="btnapprovesend">Yes, I am sure! Make transaction.</button>
+              <button type="button" class="btn btn-primary" ng-click="sendTx()">Yes, I am sure! Make transaction.</button>
             </div>
           </div>
         </div>

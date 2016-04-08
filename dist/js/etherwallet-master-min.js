@@ -139,39 +139,109 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 };
 module.exports = decryptWalletCtrl;
 },{}],4:[function(require,module,exports){
+(function (Buffer){
 'use strict';
 var sendTxCtrl = function($scope, $sce, walletService) {
+	new Modal(document.getElementById('sendTransaction'));
 	walletService.wallet = null;
 	walletService.password = '';
+	$scope.showAdvance = false;
+	$scope.showRaw = false;
+	$scope.tx = {
+		gasLimit: globalFuncs.defaultTxGasLimit,
+		data: "",
+		to: "",
+		unit: "ether",
+		value: 0,
+		nonce: null,
+		gasPrice: null,
+		donate: false
+	}
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
 		return walletService.wallet.getAddressString();
 	}, function() {
 		if (walletService.wallet == null) return;
 		$scope.wallet = walletService.wallet;
-        ajaxReq.getBalance($scope.wallet.getAddressString(), function(data){
-            if(data.error){
-                $scope.etherBalance = data.msg;
-            } else {
-                $scope.etherBalance = etherUnits.toEther(data.data.balance,'wei');
-                ajaxReq.getETHvalue(function(data){
-                    $scope.usdBalance =  etherUnits.toFiat($scope.etherBalance,'ether',data.usd);
-                    $scope.eurBalance =  etherUnits.toFiat($scope.etherBalance,'ether',data.eur);
-                    $scope.btcBalance =  etherUnits.toFiat($scope.etherBalance,'ether',data.btc);
-                });
-            }
-        });
+		$scope.setBalance();
 	});
-    $scope.validateAddress = function(){
-        if(ethFuncs.validateEtherAddress($scope.toAddress)){
-            $scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
-        } else {
-            $scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
-        }
-    }
+	$scope.setBalance = function() {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
+			if (data.error) {
+				$scope.etherBalance = data.msg;
+			} else {
+				$scope.etherBalance = etherUnits.toEther(data.data.balance, 'wei');
+				ajaxReq.getETHvalue(function(data) {
+					$scope.usdBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.usd);
+					$scope.eurBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.eur);
+					$scope.btcBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.btc);
+				});
+			}
+		});
+	}
+	$scope.$watch('tx', function() {
+		$scope.showRaw = false;
+        $scope.sendTxStatus="";
+	}, true);
+	$scope.validateAddress = function() {
+		if (ethFuncs.validateEtherAddress($scope.tx.to)) {
+			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
+		} else {
+			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+		}
+	}
+	$scope.toggleShowAdvance = function() {
+		$scope.showAdvance = !$scope.showAdvance;
+	}
+	$scope.onDonateClick = function() {
+		$scope.tx.to = globalFuncs.donateAddress;
+		$scope.tx.donate = true;
+		$scope.validateAddress();
+	}
+	$scope.generateTx = function() {
+		try {
+			if (!ethFuncs.validateEtherAddress($scope.tx.to)) throw globalFuncs.errorMsgs[5];
+			else if (!globalFuncs.isNumeric($scope.tx.value) || parseFloat($scope.tx.value) < 0) throw globalFuncs.errorMsgs[7];
+			else if (!globalFuncs.isNumeric($scope.tx.gasLimit) || parseFloat($scope.tx.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
+			else if (!ethFuncs.validateHexString($scope.tx.data)) throw globalFuncs.errorMsgs[9];
+			ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
+				if (data.error) throw data.msg;
+				data = data.data;
+				var rawTx = {
+					nonce: ethFuncs.sanitizeHex(data.nonce),
+					gasPrice: ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
+					gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex($scope.tx.gasLimit)),
+					to: ethFuncs.sanitizeHex($scope.tx.to),
+					value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit))),
+					data: ethFuncs.sanitizeHex($scope.tx.data)
+				}
+				var eTx = new ethUtil.Tx(rawTx);
+				eTx.sign(new Buffer($scope.wallet.getPrivateKeyString(), 'hex'));
+				$scope.rawTx = JSON.stringify(rawTx);
+				$scope.signedTx = '0x' + eTx.serialize().toString('hex');
+				$scope.showRaw = true;
+			});
+			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+		} catch (e) {
+			$scope.showRaw = false;
+			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+		}
+	}
+	$scope.sendTx = function() {
+		new Modal(document.getElementById('sendTransaction')).close();
+		ajaxReq.sendRawTx($scope.signedTx, function(data) {
+			if (data.error) {
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+			} else {
+			     $scope.setBalance();
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + " " + data.data));
+			}
+		});
+	}
 };
 module.exports = sendTxCtrl;
-},{}],5:[function(require,module,exports){
+}).call(this,require("buffer").Buffer)
+},{"buffer":68}],5:[function(require,module,exports){
 'use strict';
 var tabsCtrl = function($scope, globalService) {
 	$scope.tabNames = globalService.tabs;
@@ -378,14 +448,37 @@ module.exports = walletDecryptDrtv;
 },{}],13:[function(require,module,exports){
 'use strict';
 var ethFuncs = function() {}
-ethFuncs.validateEtherAddress = function(address){
-    if (!/^(0x)?[0-9a-f]{40}$/i.test(address))return false;
-    else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address)) return true;
-    else return this.isChecksumAddress(address);
+ethFuncs.validateEtherAddress = function(address) {
+	if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) return false;
+	else if (/^(0x)?[0-9a-f]{40}$/.test(address) || /^(0x)?[0-9A-F]{40}$/.test(address)) return true;
+	else
+	return this.isChecksumAddress(address);
 }
-ethFuncs.isChecksumAddress = function(address) {    
-    return address == ethUtil.toChecksumAddress(address);
-};
+ethFuncs.isChecksumAddress = function(address) {
+	return address == ethUtil.toChecksumAddress(address);
+}
+ethFuncs.validateHexString = function(str) {
+	if (str == "") return true;
+	str = str.substring(0, 2) == '0x' ? str.substring(2) : str;
+    var re = /[0-9A-Fa-f]+$/g;
+	return re.test(str);
+}
+ethFuncs.sanitizeHex = function(hex){
+    hex = hex.substring(0, 2) == '0x' ? hex.substring(2) : hex;
+    if(hex=="") return "";
+    return '0x'+this.padLeftEven(hex); 
+}
+ethFuncs.padLeftEven = function(hex){
+    hex = hex.length % 2 != 0 ? '0' + hex : hex;
+	return hex;
+}
+ethFuncs.addTinyMoreToGas = function(hex){
+    hex = this.sanitizeHex(hex);
+    return new BigNumber(hex).plus(etherUnits.getValueOfUnit('gwei')).toDigits(2).toString(16);
+}
+ethFuncs.decimalToHex = function(dec){
+    return new BigNumber(dec).toString(16);
+}
 module.exports = ethFuncs;
 },{}],14:[function(require,module,exports){
 'use strict';
@@ -482,13 +575,22 @@ globalFuncs.errorMsgs = [   "Please enter valid amount",
                             "not a valid wallet file",
                             "This unit doesn\'t exists, please use the one of the following units",
                             "Invalid address",
-                            "Invalid password"];
+                            "Invalid password",
+                            "Invalid amount",
+                            "Invalid gas limit",
+                            "Invalid data value"];
 globalFuncs.successMsgs = [ "Valid address",
-                            "Wallet successfully decrypted"];  
+                            "Wallet successfully decrypted",
+                            "Transaction submitted. TX ID: "];  
 globalFuncs.scrypt = {
 	n: 1024
 };
 globalFuncs.kdf = "scrypt";
+globalFuncs.defaultTxGasLimit = 21000;
+globalFuncs.donateAddress = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
+globalFuncs.isNumeric = function(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
 module.exports = globalFuncs;
 },{}],16:[function(require,module,exports){
 'use strict';
