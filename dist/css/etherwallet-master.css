@@ -4163,13 +4163,22 @@ ul.nav {
 @media screen and (max-width: 942px) {
   .nav-tabs > li {
     display: block;
-    float: none;
+    float: left;
     text-align: center;
-    width: 100%;
-    padding: 0 45px;
+    width: 50%;
+    padding: 0 15px;
+    font-size: 14px;
+    height: 40px;
   }
   .nav-tabs > li > a {
     border-bottom: 1px solid #E6E6E6;
+    padding: 19px 0;
+    line-height: 0;
+  }
+}
+@media screen and (max-width: 450px) {
+  .nav-tabs > li {
+    width: 100%;
   }
 }
 .nav-pills > li {

@@ -125,13 +125,22 @@
   @media screen and (max-width: 942px) {
     > li {
       display: block;
-      float: none;
+      float: left;
       text-align: center;
-      width: 100%;
-      padding: 0 45px;
+      width: 50%;
+      padding: 0 15px;
+      font-size: 14px;
+      height: 40px;
       > a {
         border-bottom: 1px solid @gray-lighter;
+        padding: 19px 0;
+        line-height: 0;
       }
+    }
+  }
+  @media screen and (max-width: 450px) {
+    > li {
+      width: 100%;
     }
   }
 }
