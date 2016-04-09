@@ -7028,6 +7028,20 @@ input[readonly] {
   margin-top: 1.5em;
   margin-bottom: .5em;
 }
+.offline-qrcode {
+  margin-top: -150px;
+  max-width: 300px;
+}
+@media screen and (max-width: 942px) {
+  .offline-qrcode {
+    margin-top: -78px;
+  }
+}
+@media screen and (max-width: 769px) {
+  .offline-qrcode {
+    margin-top: 0;
+  }
+}
 /* Custom Utilities */
 .text-navy {
   color: #263c56;
