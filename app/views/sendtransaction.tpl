@@ -86,7 +86,8 @@
       <div class="form-group col-xs-12" ng-show="showRaw">
         <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">SEND TRANSACTION</a>
       </div>
-      <div ng-bind-html="sendTxStatus"></div>
+      <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+
       <!-- Modal -->
       <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
         <div class="modal-dialog" role="document">
