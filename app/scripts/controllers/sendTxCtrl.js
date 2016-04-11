@@ -10,7 +10,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		data: "",
 		to: "",
 		unit: "ether",
-		value: 0,
+		value: '',
 		nonce: null,
 		gasPrice: null,
 		donate: false
@@ -39,7 +39,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.$watch('tx', function() {
 		$scope.showRaw = false;
-        $scope.sendTxStatus="";
+		$scope.sendTxStatus = "";
 	}, true);
 	$scope.validateAddress = function() {
 		if (ethFuncs.validateEtherAddress($scope.tx.to)) {
@@ -91,10 +91,25 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 			if (data.error) {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
 			} else {
-			     $scope.setBalance();
+				$scope.setBalance();
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + " " + data.data));
 			}
 		});
+	}
+	$scope.transferAllBalance = function() {
+		try {
+			ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
+		          if (data.error) throw data.msg;
+                  data = data.data;
+                  var gasPrice = new BigNumber(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice))).times($scope.tx.gasLimit);
+		          var maxVal = new BigNumber(data.balance).minus(gasPrice);
+                  $scope.tx.unit = "ether";
+                  $scope.tx.value = etherUnits.toEther(maxVal,'wei');
+			});
+		} catch (e) {
+			$scope.showRaw = false;
+			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+		}
 	}
 };
 module.exports = sendTxCtrl;

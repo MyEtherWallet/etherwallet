@@ -46,7 +46,7 @@
           Amount to Send:
           <br />
         </label>
-        <a class="btnAction pull-right" func="transferAllBalance" id="transferAllBalance">Transfer total available balance</a>
+        <a class="pull-right" ng-click="transferAllBalance()">Transfer total available balance</a>
         <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
         <div class="radio">
           <label>
