@@ -45,3 +45,6 @@ If you can think of any other features or run into bugs, let us know. You can fo
 - Global - Implement Checksums
 - Would be nice if on quick send it defaulted to the only wallet you have if you have just one created. (from reddit thread)
 - The watch address doesn't show in the popup view from the extension button in the browser bar.
+
+
+#### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).
