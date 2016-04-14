@@ -18,45 +18,12 @@
   </div>
   </section>
 
-
-<!-- TODO -->
-  <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 0. How do I make an offline transaction?</h4>
-  <div class="collapsePanel collapsed">
-    <p> Blah blah blah </p>
-  </div>
-  </section>
-
-  <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 0. How do I send to a contract?</h4>
-  <div class="collapsePanel collapsed">
-    <p> Blah blah blah </p>
-  </div>
-  </section>
-
-    <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 0. How do I import a wallet created with MyEtherWallet into Ethereum Wallet / Mist?</h4>
-  <div class="collapsePanel collapsed">
-    <p> Blah blah blah </p>
-  </div>
-  </section>
-
-  <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 9. What does "Gas Limit Too Low" Mean?</h4>
-<div class="collapsePanel collapsed">
-  <p> Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. You can use the <a id="offline-transaction" class="ptabs" showId="paneOfflineTrans"> advanced / offline transaction tab</a> to send to contracts.</p>
-</div>
-</section>
-
-<!-- / TODO -->
-
-
   <section class="collapseContainer">
   <h4> <span class="text-primary collapseButton">+</span> 0. I'm new. What do I do? </h4>
   <div class="collapsePanel collapsed">
     <p> MyEtherWallet.com gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, <strong> you are responsible for safely backing it up</strong>.
     <p> If you just purchased ETH on an exchange and want to hold it safely in your own wallet, or if you are using ShapeShift to exchange another from cryptocurrency, you will need to complete the following steps. These steps are outlined in detail in the questions below. Please read them all in full. </p>
-    <p> Do not hesitate to <a id="contact" class="ptabs" showId="paneContact">reach out to us</a> if you have any questions. Remember, Ether now holds real monetary value and can be a significant investment. If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  I do not say this to scare you, only to remind you to be diligent, read carefully, and take your time during all the steps. But, if you follow the instructions found on this page, even a non-technical person can safely hold their Ether in a wallet they control. </p>
+    <p> Do not hesitate to reach out to us if you have any questions. Remember, Ether now holds real monetary value and can be a significant investment. If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  I do not say this to scare you, only to remind you to be diligent, read carefully, and take your time during all the steps. But, if you follow the instructions found on this page, even a non-technical person can safely hold their Ether in a wallet they control. </p>
 
     <ol>
       <li> Create a new wallet. </li>
@@ -71,7 +38,7 @@
   <h4> <span class="text-primary collapseButton">+</span> 1. How do I create a new wallet? </h4>
   <div class="collapsePanel collapsed">
   <ol>
-    <li> Go to the <a id="generate-wallet" class="ptabs" showId="paneWalgen">"Generate Wallet"</a> tab.</li>
+    <li> Go to the "Generate Wallet" tab.</li>
     <li> Create a strong password, preferably using a random password generator. Save this somewhere safe. <em><small>The password encrypts the private key for this wallet. You will need this password to send transactions.</small></em></li>
     <li> Copy the password from where you have saved it and paste it into the "Enter a password" field.</li>
     <li> Click "GENERATE".</li>
@@ -136,7 +103,7 @@
 
   <ol>
     <li> Go to the send transaction tab.</li>
-    <li>Navigate to the <a id="send-transaction" class="ptabs" showId="paneSendTrans">"Send Transaction"</a> tab</li>
+    <li>Navigate to the "Send Transaction" tab</li>
     <li> Upload your wallet file (your JSON file) -or- paste your private key. </li>
     <li> If the wallet is the encrypted, a text box will automatically appear. Enter the password here.</li>
     <li> Click the "Decrypt" button. </li>
@@ -153,7 +120,7 @@
 
   <p><strong>Before you start,</strong> If you plan to move a large amount of ether, you should test sending a small amount first to make sure everything goes smoothly. After making the small transaction, it should show up in a blockchain explorer, e.g. <a href="https://www.etherchain.org" target="_blank">https://www.etherchain.org</a>. Make sure that you have access to the address you sent to!</p>
   <ol>
-    <li> Navigate to the <a id="send-transaction" class="ptabs" showId="paneSendTrans">"Send Transaction"</a> tab</li>
+    <li> Navigate to the "Send Transaction" tab</li>
     <li> Paste or upload your private key/JSON of wallet you want to transfer from.</li>
     <li> If the wallet is the encrypted, a text box will automatically appear. Enter the password here.</li>
     <li> Click the "Decrypt" button. </li>
@@ -190,53 +157,118 @@
  <div class="collapsePanel collapsed">
   <p>There seems to be a lot of confusion about what MyEtherWallet does. It's not a web wallet where you put your Ether and we store them for you. You don't have a login and nothing ever gets saved to our servers. It is simply an interface that allows you to do things you normally would do via command line.</p>
   <p>So, if MyEtherWallet goes down, you would have to find another way (like geth) to do what we are doing. But you wouldn't have to "get" your ether out of MyEtherWallet because it's not in MyEtherWallet. It's in whatever wallet your generated via our site.</p>
-  <p>In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren't storing any information. If we do take the domain down, it still is, and always will be, publicly available at <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a>. You can download the ZIP there and run it locally. See question 5. for instructions on how to run locally.</p>
+  <p>In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren't storing any information. If we do take the domain down, it still is, and always will be, publicly available at <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a>. You can download the ZIP there and run it locally. </p>
 </div>
 </section>
 
 
 <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 7. So, what is that password thing all about? </h4>
- <div class="collapsePanel collapsed">
-  <p>The password that you entered at the very beginning to create a new wallet / account is used to encrypt your private key. This enables you to have a safer version of your private key file.</p>
-  <p> Basically, all it means is when you upload your private key file, you will also need to enter the password to decrypt it.</p>
-  <p> MyEtherWallet can decrypt geth / pre-sale wallets, but geth <strong> cannot </strong> decrypt wallets encrypted by MyEtherWallet.</p>
-  <p> We allow you to save both the encrypted and decrypted private keys / JSON files on MyEtherWallet. If you plan on not touching a wallet created on MyEtherWallet for a long, long time it may be prudent to save the unencrypted private key / JSON file so you can access it via geth, the official Ethereum GUI wallet, or whatever else is around in the distant future.</p>
-</div>
-</section>
-
-<section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 8. Is using the send transaction offline? </h4>
+  <h4> <span class="text-primary collapseButton">+</span> 7. Is using the send transaction offline? </h4>
 <div class="collapsePanel collapsed">
-  <p> No, the send transaction tab is not offline. It needs the internet in order to send Ether from one wallet to another. However, when you send a transaction, it only sends the signed transaction. Your private key safely stays with you. We also now provide an <a id="offline-transaction" class="ptabs" showId="paneOfflineTrans"> advanced / offline transaction tab</a> so that you may keep your private keys on an offline/airgapped computer.</p>
+  <p> No, the send transaction tab is not offline. It needs the internet in order to send Ether from one wallet to another. However, when you send a transaction, it only sends the signed transaction. Your private key safely stays with you. We also now provide an <a id="offline-transaction" class="ptabs" showId="paneOfflineTrans"> advanced / offline transaction tab</a> so that you may keep your private keys on an offline/airgapped computer at all times.</p>
 </div>
 </section>
 
 
+  <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 8. How do I make an offline transaction?</h4>
+  <div class="collapsePanel collapsed">
+    <ol>
+      <li> Navigate to the Offline Transaction tab via your Online Computer.</li>
+      <li> Enter the FROM address in the field. Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.</li>
+      <li> Move to your offline computer. Enter the "To Address" and the Amount you wish to send.</li>
+      <li> Enter the GAS PRICE as it was displayed to you on your online computer in step #1.</li>
+      <li> The Gas Limit has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.</li>
+      <li> Enter the NONCE as it was displayed to you on your online computer in step #1.</li>
+      <li> If you wish, enter some data. Data is optional. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.</li>
+      <li> Select or paste your wallet file or private key and unlock your wallet.</li>
+      <li> Press the "GENERATE SIGNED TRANSACTION" button.</li>
+      <li> The data field below this button will populate with your singed transaction. Copy this and move it back to your online computer.</li>
+      <li> On your online computer, paste the signed transaction into the text field in Step 3 and press send transaction. This will broadcast your transaction.</li>
+    </ol>
+
+  </div>
+  </section>
+
+  <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 9. How do I send to a contract?</h4>
+  <div class="collapsePanel collapsed">
+    <p> Sending to a contract often requires you to include data or additional gas or both. Previously, you had to use the "Offline Transaction" Tab in order to include data and gas with your transaction. Now, you can use the default "Send Transaction" tab to do so.</p>
+    <p> Simply navigate to the "Send Transaction" tab, select or paste your wallet file or private key and unlock your wallet, enter a "To Adddress" and "Amount to Send", and then click the "Advanced Options" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.</p>
+  </div>
+  </section>
+
+    <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 10. How do I import a wallet created with MyEtherWallet into Ethereum Wallet / Mist?</h4>
+  <div class="collapsePanel collapsed">
+    <p><strong> Using your unencrypted private key... </strong></p>
+    <ol>
+      <li> Navigate to the "View Wallet Details" tab.</li>
+      <li> Select or paste your wallet file or private key and unlock your wallet.</li>
+      <li> Copy Your Private Key (unencrypted). </li>
+      <li> If you are on a Mac:</li>
+        <ul>
+          <li> Open Text Edit and paste this private key.</li>
+          <li> Go to the menu bar and click "Format" -> "Make Plain Text".</li>
+          <li> Save this file to your desktop as <code>nothing_special_delete_me.txt</code>. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog. </li>
+          <li> Open terminal and run the following command: <code>geth account import ~/Desktop/nothing_special_delete_me.txt</code></li>
+          <li> This will prompt you to make a new password. This is the password you will use in geth / Mist whenever you send a transaction, so don't forget it.</li>
+          <li> Delete the nothing_special_delete_me.txt from your desktop.</li>
+          <li> The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". </li>
+        </ul>
+      <li> If you are on a PC:</li>
+        <ul>
+          <li>Open Notepad & paste the private key into notepad.</li>
+          <li>Save the file as nothing_special_delete_me.txt at C:\</li>
+          <li>Run the command, geth account import <code>C:\nothing_special_delete_me.txt</code></li>
+          <li> This will prompt you to make a new password. This is the password you will use in geth / Mist whenever you send a transaction, so don't forget it.</li>
+          <li>After successful import, delete the file at <code>C:\nothing_special_delete_me.txt</code></li>
+          <li> The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". </li>
+        </ul>
+      </ol>
+    <p><strong> Using an Geth/Mist JSON file from MyEtherWallet v2+....</strong></p>
+    <p><small> If you JSON is named something like <code>UTC--2016-04-14........</code> then you can follow these instructions.</small></p>
+    <ol>
+      <li> Open the Ethereum Wallet application. </li>
+      <li> In the menu bar, go "Accounts" -> "Backup" -> "Accounts"</li>
+      <li> This will open your keystore folder. Copy your JSON (<code>UTC--2016-04-14........</code>) file into that keystore folder.</li>
+      <li> Restart Ethereum Wallet. You account will then be listed under "Accounts." </li>
+    </ol>
+
+  </div>
+  </section>
+
+  <section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton">+</span> 11. What does "Gas Limit Too Low" Mean?</h4>
+    <div class="collapsePanel collapsed">
+      <p> Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the send transaction tab, click the "Advanced Options" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction. </p>
+    </div>
+  </section>
+
 
 <section class="collapseContainer">
-  <h4><span class="text-primary collapseButton">+</span> 10. Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn't do this. Is the random number generation for MyEtherWallet safe?</h4>
+  <h4><span class="text-primary collapseButton">+</span> 12. Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn't do this. Is the random number generation for MyEtherWallet safe?</h4>
 <div class="collapsePanel collapsed">
   <p> While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren't unsafe, we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here's a <a href="https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm" target="_blank">conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto</a> and here is the <a href="https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto" target="_blank">the window.crypto w3 spec</a>. </p>
 </div>
 </section>
 
 <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 11. Why hasn't the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan) </h4>
+  <h4> <span class="text-primary collapseButton">+</span> 13. Why hasn't the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan) </h4>
 <div class="collapsePanel collapsed">
   <p> Addresses will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. </p>
 </div>
 </section>
 
 <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 12. How do I check the balance of my account? </h4>
+  <h4> <span class="text-primary collapseButton">+</span> 14. How do I check the balance of my account? </h4>
  <div class="collapsePanel collapsed">
   <p> You can use a blockchain explorer like <a href="https://www.etherchain.org" target="_blank">etherchain.org</a> or <a href="http://etherscan.io/" target="_blank">etherscan.io</a>. Paste your address into the search bar and it will pull up your address and transaction history. For example, here's what our <a href="https://etherchain.org/account/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" target="_blank">donation account</a> looks like on etherchain.org.</p>
 </div>
 </section>
 
 <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 13. Where the hell is my geth wallet file? </h4>
+  <h4> <span class="text-primary collapseButton">+</span> 15. Where the hell is my geth wallet file? </h4>
 <div class="collapsePanel collapsed">
   <ul>
     <li>Mac: <code>~/Library/Ethereum/keystore</code></li>
@@ -247,14 +279,14 @@
 </section>
 
 <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 14. Where the hell is my Mist wallet file? </h4>
+  <h4> <span class="text-primary collapseButton">+</span> 16. Where the hell is my Mist wallet file? </h4>
 <div class="collapsePanel collapsed">
-  <p> Mist files are typically found in the file locations above, but it's much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.
+  <p> Mist files are typically found in the file locations above, but it's much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.</p>
 </div>
 </section>
 
 <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton">+</span> 15. Where is my pre-sale wallet file?</h4>
+  <h4> <span class="text-primary collapseButton">+</span> 17. Where is my pre-sale wallet file?</h4>
   <div class="collapsePanel collapsed">
   <p> Where ever you saved it. ;) It also was emailed to you, so check there. Look for the file called <code>"ethereum_wallet_backup.json"</code> and upload that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.</p>
 </div>
