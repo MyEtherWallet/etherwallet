@@ -38,7 +38,10 @@ globalFuncs.errorMsgs = [   "Please enter valid amount",
                             "Invalid password",
                             "Invalid amount",
                             "Invalid gas limit",
-                            "Invalid data value"];
+                            "Invalid data value",
+                            "Invalid gas amount",
+                            "Invalid nonce",
+                            "Invalid signed transaction"];
 globalFuncs.successMsgs = [ "Valid address",
                             "Wallet successfully decrypted",
                             "Transaction submitted. TX ID: "];  

@@ -4,10 +4,12 @@ var walletGenCtrl = function($scope) {
 	$scope.wallet = null;
 	$scope.showWallet = false;
 	$scope.blob = $scope.blobEnc = "";
+    $scope.isDone = true;
 	$scope.genNewWallet = function() {
 		if ($scope.password.length < 7) {
 			alert(globalFuncs.errorMsgs[1]);
-		} else {
+		} else if($scope.isDone){
+            $scope.isDone = false;
 			$scope.wallet = Wallet.generate(false);
 			$scope.showWallet = true;
 			$scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
@@ -16,6 +18,7 @@ var walletGenCtrl = function($scope) {
                 n: globalFuncs.scrypt.n
 			}));
             $scope.encFileName =  $scope.wallet.getV3Filename();
+            $scope.isDone =  true;
 		}
 	}
 	$scope.printQRCode = function() {

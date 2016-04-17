@@ -31,4 +31,7 @@ ethFuncs.addTinyMoreToGas = function(hex){
 ethFuncs.decimalToHex = function(dec){
     return new BigNumber(dec).toString(16);
 }
+ethFuncs.hexToDecimal = function(hex){
+    return new BigNumber(this.sanitizeHex(hex)).toString();
+}
 module.exports = ethFuncs;
