@@ -16,35 +16,21 @@ MyEtherWallet was created because many users were having immense trouble setting
 - Generate & send transactions
 - We hope that it'll help most of us to accomplish day to day tasks without having a fully running client.
 
-Version 2 expands on this vision to offer
+Version 2 expands on this vision to offer:
 - Generate and send offline transactions, ensuring your private keys never leave your computer.
 - Include custom gas / data in the standard send transaction tab.
 - Rewritten in Angular in order to make it was easier to update and maintain.
 - Crowdsale / Token Sale support on a case by case basis (Digix, Slock.it, etc.)
-- New encryption method. Now matches geth to make moving between Mist and MyEtherWallet *much* easier.
-- Further unify the codebase and functionality of MyEtherWallet.com and the [Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/).
-
+- New encryption method. Now matches geth / Mist keystore format (v3) to make moving between MyEtherWallet and Mist *much* easier.
+- QR codes on the Offline Transaction page for easier transferring between computers.
+- Ability to create a custom link that will pre-fill the send transaction tab with the to address, amount, data, and gas. All the user has to do is unlock their wallet and press send.
 
 ### Contact
 If you can think of any other features or run into bugs, let us know. You can fork, open a PR, open an issue, [message kvhnuke on reddit](https://www.reddit.com/message/compose/?to=kvhnuke), [email tayvano](mailto:tayvano@gmail.com) or [in any of these ways](https://www.myetherwallet.com/#contact).
 
 ### TODO / In Progress
-
-#### .com & CX
-- Send Transactions - display in whatever the radio button says, not WEI
-- Send Transactions - Add optional custom gas limit / data on standard send transaction tab
-- Global - Modularize the JS to use across .com and CX
-- Generate Wallet / Bulk Generate - When generating a new wallet, the password is shown in plaintext instead of dots. I would rather have them shown as dots, perhaps with a optional ticker to show the plaintext. (from reddit thread)
-
-#### just .com
-- View Wallet Details - Add unencrypted JSON option
-- View Wallet Details - Add unencrypted -> Encrypted option
-- Offline Transactions "Would be great to have a feature where it automatically generates QR code for signed transaction (show the QR code along the signed transaction box), which will totally removes the risks for using a USB to connect to an offline computer to download the signed transaction then broadcast into a networked computer." https://www.reddit.com/user/Bitnicity
-
-#### just CX
-- Global - Implement Checksums
-- Would be nice if on quick send it defaulted to the only wallet you have if you have just one created. (from reddit thread)
-- The watch address doesn't show in the popup view from the extension button in the browser bar.
-
+- Merge Digix page into the new codebase & add the ability to claim Digix tokens. (This will happen before April 28th.)
+- Merge new codebase into the Chrome Extension.
+- Prep for Slock.it
 
 #### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).
