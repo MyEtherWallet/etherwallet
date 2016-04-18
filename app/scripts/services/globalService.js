@@ -5,31 +5,38 @@ var globalService = function($http, $httpParamSerializerJQLike) {
 	var tabs = {
 		generateWallet: {
 			id: 0,
-			name: "Generate Wallet"
+			name: "Generate Wallet",
+            url: "generate-wallet"
 		},
 		bulkGenerate: {
 			id: 1,
-			name: "Bulk Generate"
+			name: "Bulk Generate",
+            url: "bulk-generate"
 		},
 		viewWalletInfo: {
 			id: 2,
-			name: "View Wallet Details"
+			name: "View Wallet Details",
+            url: "view-wallet-info"
 		},
 		sendTransaction: {
 			id: 3,
-			name: "Send Transaction"
+			name: "Send Transaction",
+            url: "send-transaction"
 		},
 		offlineTransaction: {
 			id: 4,
-			name: "Advanced / Offline Transaction"
+			name: "Advanced / Offline Transaction",
+            url:"offline-transaction"
 		},
 		help: {
 			id: 5,
-			name: "Help"
+			name: "Help",
+            url: "help"
 		},
 		contact: {
 			id: 6,
-			name: "Contact"
+			name: "Contact",
+            url: "contact"
 		}
 	};
 	return {

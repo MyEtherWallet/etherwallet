@@ -250,11 +250,11 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	$scope.showAdvance = false;
 	$scope.showRaw = false;
 	$scope.tx = {
-		gasLimit: globalFuncs.defaultTxGasLimit,
-		data: "",
-		to: "",
+		gasLimit: globalFuncs.urlGet('gaslimit') == null ? globalFuncs.defaultTxGasLimit : globalFuncs.urlGet('gaslimit'),
+		data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
+		to: globalFuncs.urlGet('to') == null ? "" : globalFuncs.urlGet('to'),
 		unit: "ether",
-		value: '',
+		value: globalFuncs.urlGet('value') == null ? "" : globalFuncs.urlGet('value'),
 		nonce: null,
 		gasPrice: null,
 		donate: false
@@ -362,9 +362,25 @@ module.exports = sendTxCtrl;
 'use strict';
 var tabsCtrl = function($scope, globalService) {
 	$scope.tabNames = globalService.tabs;
-	$scope.activeTab = globalService.currentTab;
+    var hval = window.location.hash;
+    if(hval!=""){
+        hval = hval.replace("#",'');
+        for (var key in $scope.tabNames) {
+            if($scope.tabNames[key].url == hval){
+                $scope.activeTab = globalService.currentTab = $scope.tabNames[key].id;
+                break;
+            }
+           	$scope.activeTab = globalService.currentTab;
+        }
+    } else {
+        	$scope.activeTab = globalService.currentTab;
+    }
 	$scope.tabClick = function(id) {
 		$scope.activeTab = globalService.currentTab = id;
+        for (var key in $scope.tabNames) {
+            if($scope.tabNames[key].id == id)
+                location.hash = $scope.tabNames[key].url;
+        }
 	}
 };
 module.exports = tabsCtrl;
@@ -671,9 +687,8 @@ globalFuncs.getBlockie = function(address) {
 	}).toDataURL();
 }
 globalFuncs.printPaperWallets = function(strJson) {
-	console.log(strJson);
 	var win = window.open("about:blank", "_blank");
-	var data = "<html><head><link rel=\"stylesheet\" href=\"css\/etherwallet-master.min.css\"\/><script type=\"text\/javascript\" src=\"js\/jquery-1.11.3.min.js\"><\/script><script type=\"text\/javascript\" src=\"js\/etherwallet-static.min.js\"><\/script><script type=\"text\/javascript\">function generateWallets(){    var json = JSON.parse($(\"#printwalletjson\").html());    for(var i=0;i<json.length;i++){        var walletTemplate = $(\'<div\/>\').append($(\"#print-container\").clone());        new QRCode($(walletTemplate).find(\"#paperwalletaddqr\")[0], {\t\t  text: json[i][\'address\'],\t\t  colorDark: \"#000000\",\t\t  colorLight: \"#ffffff\",\t\tcorrectLevel: QRCode.CorrectLevel.H\t   });       new QRCode($(walletTemplate).find(\"#paperwalletprivqr\")[0], {\t\t  text: json[i][\'private\'],\t\t  colorDark: \"#000000\",\t\t  colorLight: \"#ffffff\",\t\tcorrectLevel: QRCode.CorrectLevel.H\t   });       $(walletTemplate).find(\"#paperwalletadd\").html(json[i][\'address\']);       $(walletTemplate).find(\"#paperwalletpriv\").html(json[i][\'private\']);       walletTemplate = $(walletTemplate).find(\"#print-container\").show();       $(\"body\").append(walletTemplate);    }    setTimeout(function(){window.print();},2000);}<\/script><\/head><body><span id=\"printwalletjson\" style=\"display: none;\">{{WALLETJSON}}<\/span><div class=\"print-container\" style=\"display: none; margin-bottom: 28px;\" id=\"print-container\">        <img src=\"images\/logo-1.png\" class=\"ether-logo-1\" height=\"100%\" width=\"auto\"\/>        <img src=\"images\/logo-2.png\" class=\"ether-logo-2\"\/>        <img src=\"images\/ether-title.png\" height=\"100%\" width=\"auto\" class=\"print-title\"\/>          <div class=\"print-qr-code-1\">          <div id=\"paperwalletaddqr\"><\/div>            <p class=\"print-text\" style=\"padding-top: 25px;\">YOUR ADDRESS<\/p>          <\/div>          <div class=\"print-qr-code-2\">            <div id=\"paperwalletprivqr\"><\/div>            <p class=\"print-text\" style=\"padding-top: 30px;\">YOUR PRIVATE KEY<\/p>          <\/div>          <div class=\"print-notes\">            <img src=\"images\/notes-bg.png\" width=\"90%;\" height=\"auto\" class=\"pull-left\" \/>            <p class=\"print-text\">AMOUNT \/ NOTES<\/p>          <\/div>        <div class=\"print-address-container\">          <p>            <strong>Your Address:<\/strong><br \/>            <span id=\"paperwalletadd\"><\/span>          <\/p>          <p>            <strong>Your Private Key:<\/strong><br \/>            <span id=\"paperwalletpriv\"><\/span>        <\/p>    <\/div><\/div><\/body><\/html>";
+	var data = "<html><head><link rel=\"stylesheet\" href=\"css\/etherwallet-master.min.css\"\/><script type=\"text\/javascript\" src=\"js\/jquery-1.12.3.min.js\"><\/script><script type=\"text\/javascript\" src=\"js\/etherwallet-static.min.js\"><\/script><script type=\"text\/javascript\">function generateWallets(){    var json = JSON.parse($(\"#printwalletjson\").html());    for(var i=0;i<json.length;i++){        var walletTemplate = $(\'<div\/>\').append($(\"#print-container\").clone());        new QRCode($(walletTemplate).find(\"#paperwalletaddqr\")[0], {\t\t  text: json[i][\'address\'],\t\t  colorDark: \"#000000\",\t\t  colorLight: \"#ffffff\",\t\tcorrectLevel: QRCode.CorrectLevel.H\t   });       new QRCode($(walletTemplate).find(\"#paperwalletprivqr\")[0], {\t\t  text: json[i][\'private\'],\t\t  colorDark: \"#000000\",\t\t  colorLight: \"#ffffff\",\t\tcorrectLevel: QRCode.CorrectLevel.H\t   });       $(walletTemplate).find(\"#paperwalletadd\").html(json[i][\'address\']);       $(walletTemplate).find(\"#paperwalletpriv\").html(json[i][\'private\']);       walletTemplate = $(walletTemplate).find(\"#print-container\").show();       $(\"body\").append(walletTemplate);    }    setTimeout(function(){window.print();},2000);}<\/script><\/head><body><span id=\"printwalletjson\" style=\"display: none;\">{{WALLETJSON}}<\/span><div class=\"print-container\" style=\"display: none; margin-bottom: 28px;\" id=\"print-container\">        <img src=\"images\/logo-1.png\" class=\"ether-logo-1\" height=\"100%\" width=\"auto\"\/>        <img src=\"images\/logo-2.png\" class=\"ether-logo-2\"\/>        <img src=\"images\/ether-title.png\" height=\"100%\" width=\"auto\" class=\"print-title\"\/>          <div class=\"print-qr-code-1\">          <div id=\"paperwalletaddqr\"><\/div>            <p class=\"print-text\" style=\"padding-top: 25px;\">YOUR ADDRESS<\/p>          <\/div>          <div class=\"print-qr-code-2\">            <div id=\"paperwalletprivqr\"><\/div>            <p class=\"print-text\" style=\"padding-top: 30px;\">YOUR PRIVATE KEY<\/p>          <\/div>          <div class=\"print-notes\">            <img src=\"images\/notes-bg.png\" width=\"90%;\" height=\"auto\" class=\"pull-left\" \/>            <p class=\"print-text\">AMOUNT \/ NOTES<\/p>          <\/div>        <div class=\"print-address-container\">          <p>            <strong>Your Address:<\/strong><br \/>            <span id=\"paperwalletadd\"><\/span>          <\/p>          <p>            <strong>Your Private Key:<\/strong><br \/>            <span id=\"paperwalletpriv\"><\/span>        <\/p>    <\/div><\/div><\/body><\/html>";
 	data = data.replace("{{WALLETJSON}}", strJson);
 	win.document.write(data);
 	win.document.write("<script>generateWallets();</script>");
@@ -716,6 +731,17 @@ globalFuncs.defaultTxGasLimit = 21000;
 globalFuncs.donateAddress = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
 globalFuncs.isNumeric = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
+}
+globalFuncs.urlGet = function (name){
+    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+        return this.stripTags(decodeURIComponent(name[1]));
+}
+globalFuncs.stripTags = function(str){
+    var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+    while (SCRIPT_REGEX.test(str)) {
+        str = str.replace(SCRIPT_REGEX, "");
+    }
+    return str;
 }
 module.exports = globalFuncs;
 },{}],17:[function(require,module,exports){
@@ -1054,31 +1080,38 @@ var globalService = function($http, $httpParamSerializerJQLike) {
 	var tabs = {
 		generateWallet: {
 			id: 0,
-			name: "Generate Wallet"
+			name: "Generate Wallet",
+            url: "generate-wallet"
 		},
 		bulkGenerate: {
 			id: 1,
-			name: "Bulk Generate"
+			name: "Bulk Generate",
+            url: "bulk-generate"
 		},
 		viewWalletInfo: {
 			id: 2,
-			name: "View Wallet Details"
+			name: "View Wallet Details",
+            url: "view-wallet-info"
 		},
 		sendTransaction: {
 			id: 3,
-			name: "Send Transaction"
+			name: "Send Transaction",
+            url: "send-transaction"
 		},
 		offlineTransaction: {
 			id: 4,
-			name: "Advanced / Offline Transaction"
+			name: "Advanced / Offline Transaction",
+            url:"offline-transaction"
 		},
 		help: {
 			id: 5,
-			name: "Help"
+			name: "Help",
+            url: "help"
 		},
 		contact: {
 			id: 6,
-			name: "Contact"
+			name: "Contact",
+            url: "contact"
 		}
 	};
 	return {
@@ -36940,7 +36973,6 @@ function fromByteArray (uint8) {
     for (i = number.length - 6, j = 0; i >= start; i -= 6) {
       w = parseHex(number, i, i + 6);
       this.words[j] |= (w << off) & 0x3ffffff;
-      // NOTE: `0x3fffff` is intentional here, 26bits max shift + 24bit hex limb
       this.words[j + 1] |= w >>> (26 - off) & 0x3fffff;
       off += 24;
       if (off >= 26) {
@@ -37215,13 +37247,16 @@ function fromByteArray (uint8) {
   };
 
   BN.prototype.toNumber = function toNumber () {
-    var ret = this.words[0];
-    if (this.length === 2) {
-      ret += this.words[1] * 0x4000000;
-    } else if (this.length === 3 && this.words[2] === 0x01) {
+    var length = this.bitLength();
+    var ret;
+    if (length <= 26) {
+      ret = this.words[0];
+    } else if (length <= 52) {
+      ret = (this.words[1] * 0x4000000) + this.words[0];
+    } else if (length === 53) {
       // NOTE: at this stage it is known that the top bit is set
-      ret += 0x10000000000000 + (this.words[1] * 0x4000000);
-    } else if (this.length > 2) {
+      ret = 0x10000000000000 + (this.words[1] * 0x4000000) + this.words[0];
+    } else {
       assert(false, 'Number can only safely store up to 53 bits');
     }
     return (this.negative !== 0) ? -ret : ret;
@@ -39841,7 +39876,6 @@ function fromByteArray (uint8) {
       this.m = prime.p;
       this.prime = prime;
     } else {
-      assert(m.gtn(1), 'modulus must be greater than 1');
       this.m = m;
       this.prime = null;
     }
@@ -49191,7 +49225,7 @@ module.exports={
   "directories": {},
   "dist": {
     "shasum": "18e46d7306b0951275a2d42063270a14b74ebe99",
-    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.2.3.tgz"
+    "tarball": "http://registry.npmjs.org/elliptic/-/elliptic-6.2.3.tgz"
   },
   "files": [
     "lib"
@@ -57075,6 +57109,7 @@ function done(stream, er) {
   return stream.push(null);
 }
 },{"./_stream_duplex":159,"core-util-is":72,"inherits":120}],163:[function(require,module,exports){
+(function (process){
 // A bit simpler than readable streams.
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
 // the drain event emission and buffering.
@@ -57088,7 +57123,7 @@ var processNextTick = require('process-nextick-args');
 /*</replacement>*/
 
 /*<replacement>*/
-var asyncWrite = !true ? setImmediate : processNextTick;
+var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : processNextTick;
 /*</replacement>*/
 
 /*<replacement>*/
@@ -57591,7 +57626,8 @@ function CorkedRequest(state) {
     }
   };
 }
-},{"./_stream_duplex":159,"buffer":69,"core-util-is":72,"events":110,"inherits":120,"process-nextick-args":131,"util-deprecate":169}],164:[function(require,module,exports){
+}).call(this,require('_process'))
+},{"./_stream_duplex":159,"_process":132,"buffer":69,"core-util-is":72,"events":110,"inherits":120,"process-nextick-args":131,"util-deprecate":169}],164:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
 },{"./lib/_stream_passthrough.js":160}],165:[function(require,module,exports){
@@ -57608,13 +57644,7 @@ exports.Duplex = require('./lib/_stream_duplex.js');
 exports.Transform = require('./lib/_stream_transform.js');
 exports.PassThrough = require('./lib/_stream_passthrough.js');
 
-// inline-process-browser and unreachable-branch-transform make sure this is
-// removed in browserify builds
-if (!true) {
-  module.exports = require('stream');
-}
-
-},{"./lib/_stream_duplex.js":159,"./lib/_stream_passthrough.js":160,"./lib/_stream_readable.js":161,"./lib/_stream_transform.js":162,"./lib/_stream_writable.js":163,"stream":156}],166:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":159,"./lib/_stream_passthrough.js":160,"./lib/_stream_readable.js":161,"./lib/_stream_transform.js":162,"./lib/_stream_writable.js":163}],166:[function(require,module,exports){
 module.exports = require("./lib/_stream_transform.js")
 
 },{"./lib/_stream_transform.js":162}],167:[function(require,module,exports){

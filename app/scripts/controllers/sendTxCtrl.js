@@ -6,11 +6,11 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	$scope.showAdvance = false;
 	$scope.showRaw = false;
 	$scope.tx = {
-		gasLimit: globalFuncs.defaultTxGasLimit,
-		data: "",
-		to: "",
+		gasLimit: globalFuncs.urlGet('gaslimit') == null ? globalFuncs.defaultTxGasLimit : globalFuncs.urlGet('gaslimit'),
+		data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
+		to: globalFuncs.urlGet('to') == null ? "" : globalFuncs.urlGet('to'),
 		unit: "ether",
-		value: '',
+		value: globalFuncs.urlGet('value') == null ? "" : globalFuncs.urlGet('value'),
 		nonce: null,
 		gasPrice: null,
 		donate: false
