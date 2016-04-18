@@ -10,7 +10,7 @@
   <section class="row">
     <div class="col-sm-12 collapseContainer">
       <h4 class="col-xs-12">
-        <span class="text-primary collapseButton">-</span> Step 1: Generate Information (Online Computer)
+        <span class="text-primary collapseButton"></span> Step 1: Generate Information (Online Computer)
       </h4>
       <section class="collapsePanel">
         <div class="form-group col-xs-12 col-sm-8">
@@ -45,7 +45,7 @@
   <section class="row">
     <div class="col-sm-12 collapseContainer">
       <hr />
-      <h4 class="col-xs-12"><span class="text-primary collapseButton">-</span> Step 2: Generate Transaction (Offline Computer)</h4>
+      <h4 class="col-xs-12"><span class="text-primary collapseButton"></span> Step 2: Generate Transaction (Offline Computer)</h4>
       <section class="collapsePanel">
         <div class="form-group col-xs-12 col-sm-8">
           <label> To Address: </label>
@@ -136,7 +136,7 @@
   <section class="row">
     <div class="col-sm-12 collapseContainer">
       <hr />
-      <h4 class="col-xs-12"><span class="text-primary collapseButton">-</span> Step 3: Send / Publish Transaction (Online Computer)</h4>
+      <h4 class="col-xs-12"><span class="text-primary collapseButton"></span> Step 3: Send / Publish Transaction (Online Computer)</h4>
       <p class="col-xs-12"> Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.</p>
       <section class="collapsePanel">
         <div class="form-group col-xs-12">
