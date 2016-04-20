@@ -28,13 +28,18 @@ var globalService = function($http, $httpParamSerializerJQLike) {
 			name: "Advanced / Offline Transaction",
             url:"offline-transaction"
 		},
+    digix: {
+      id: 5,
+      name: "Digix",
+            url: "digix"
+    },
 		help: {
-			id: 5,
+			id: 6,
 			name: "Help",
             url: "help"
 		},
 		contact: {
-			id: 6,
+			id: 7,
 			name: "Contact",
             url: "contact"
 		}

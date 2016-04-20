@@ -124,6 +124,7 @@ gulp.task('genHTMLPages', function () {
     var viewwalletdetails=fs.readFileSync("./app/views/viewwalletdetails.tpl", "utf8");
     var sendtransaction=fs.readFileSync("./app/views/sendtransaction.tpl", "utf8");
     var offlinetransaction=fs.readFileSync("./app/views/offlinetransaction.tpl", "utf8");
+    var digix=fs.readFileSync("./app/views/digix.tpl", "utf8");
     var print=fs.readFileSync("./app/views/print.tpl", "utf8");
     var help=fs.readFileSync("./app/views/help.tpl", "utf8");
     var contact=fs.readFileSync("./app/views/contact.tpl", "utf8");
@@ -136,6 +137,7 @@ gulp.task('genHTMLPages', function () {
             viewwalletdetails: viewwalletdetails,
             sendtransaction: sendtransaction,
             offlinetransaction: offlinetransaction,
+            digix: digix,
             print: print,
             help: help,
             contact: contact,
