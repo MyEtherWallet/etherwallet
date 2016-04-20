@@ -1103,13 +1103,18 @@ var globalService = function($http, $httpParamSerializerJQLike) {
 			name: "Advanced / Offline Transaction",
             url:"offline-transaction"
 		},
+    digix: {
+      id: 5,
+      name: "Digix",
+            url: "digix"
+    },
 		help: {
-			id: 5,
+			id: 6,
 			name: "Help",
             url: "help"
 		},
 		contact: {
-			id: 6,
+			id: 7,
 			name: "Contact",
             url: "contact"
 		}
@@ -1120,6 +1125,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
 	};
 };
 module.exports = globalService;
+
 },{}],20:[function(require,module,exports){
 'use strict';
 var walletService = function() {
@@ -49168,7 +49174,7 @@ module.exports={
   "_args": [
     [
       "elliptic@^6.2.3",
-      "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\secp256k1"
+      "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/secp256k1"
     ]
   ],
   "_from": "elliptic@>=6.2.3 <7.0.0",
@@ -49200,7 +49206,7 @@ module.exports={
   "_shasum": "18e46d7306b0951275a2d42063270a14b74ebe99",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.2.3",
-  "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\secp256k1",
+  "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/secp256k1",
   "author": {
     "email": "fedor@indutny.com",
     "name": "Fedor Indutny"
