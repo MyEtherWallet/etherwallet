@@ -5,7 +5,7 @@
   <div>
     <wallet-decrypt-drtv></wallet-decrypt-drtv>
   </div>
-  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+  <section class="row" ng-show="wallet!=null" ng-controller='digixCtrl'>
     <hr />
     <div class="col-sm-4">
       <h4> Account Information </h4>
@@ -25,32 +25,24 @@
             <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         </p>
         <p> Digix Details: <br />
-            <strong style="margin-left: 1em"> Centstotal: 1503 </strong>
+            <strong style="margin-left: 1em"> Centstotal: {{centsTotal}} </strong>
             <br />
-            <strong style="margin-left: 1em"> Weitotal: 975048088000000000 </strong>
+            <strong style="margin-left: 1em"> Weitotal: {{weiTotal}} </strong>
             <br />
-            <strong  style="margin-left: 1em"> Share: 3573400000 </strong>
+            <strong  style="margin-left: 1em"> Share: {{shareTotal}} </strong>
             <br />
-            <strong style="margin-left: 1em"> Badges: 0 </strong>
+            <strong style="margin-left: 1em"> Badges: {{badgesTotal}} </strong>
             <br />
-            <strong style="margin-left: 1em"> Claimed? NO </strong>
+            <strong style="margin-left: 1em"> Claimed? {{claimedTotal}} </strong>
         </p>
       </div>
       <br />
     </div>
     <div class="col-sm-8">
       <h4>Claim your DGD Tokens</h4>
-      <div class="form-group col-xs-10">
-        <label> To Address: </label>
-        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()"/>
-        <div ng-bind-html="validateAddressStatus"></div>
-      </div>
-      <div class="col-xs-2 address-identicon-container">
-        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-      </div>
       <div class="form-group col-xs-12">
         <label>
-          Amount to Send:
+          Amount to Claim:
           <br />
         </label>
         <a class="pull-right" ng-click="transferAllBalance()">Transfer total available balance</a>
@@ -63,19 +55,6 @@
           <label>
             <input type="radio" name="currencyRadio" value="szabo" ng-model="tx.unit"/>Szabo</label>
         </div>
-        <!-- advanced option panel -->
-        <a ng-click="toggleShowAdvance()"><p class="strong"> + Advanced Options </p></a>
-        <section ng-show="showAdvance">
-          <div class="form-group">
-            <label> Data: </label>
-            <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data"/>
-          </div>
-          <div class="form-group">
-            <label> Gas: </label>
-            <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit"/>
-          </div>
-        </section>
-        <!-- / advanced option panel -->
       </div>
       <div class="form-group col-xs-12">
         <a class="btn btn-info btn-block" ng-click="generateTx()">CLAIM</a>

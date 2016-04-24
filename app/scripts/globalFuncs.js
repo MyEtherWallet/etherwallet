@@ -49,6 +49,7 @@ globalFuncs.scrypt = {
 };
 globalFuncs.kdf = "scrypt";
 globalFuncs.defaultTxGasLimit = 21000;
+globalFuncs.digixClaimTxGasLimit = 100000;
 globalFuncs.donateAddress = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
 globalFuncs.isNumeric = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
