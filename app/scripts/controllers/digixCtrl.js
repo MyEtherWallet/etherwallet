@@ -13,7 +13,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 		data: $scope.digixClaim,
 		to: $scope.digixContract,
 		unit: "ether",
-		value: "",
+		value: 0,
 		nonce: null,
 		gasPrice: null,
 		donate: false
