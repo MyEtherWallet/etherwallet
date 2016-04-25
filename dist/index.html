@@ -718,19 +718,31 @@
       <h4>Claim your DGD Tokens</h4>
       <div class="form-group col-xs-12">
         <label>
-          Amount to Claim:
+          Estimated fee consumption:
           <br />
         </label>
-        <a class="pull-right" ng-click="transferAllBalance()">Transfer total available balance</a>
-        <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
-        <div class="radio">
-          <label>
-            <input type="radio" name="currencyRadio" value="ether" ng-model="tx.unit"/>Ether</label>
-          <label>
-            <input type="radio" name="currencyRadio" value="finney" ng-model="tx.unit"/>Finney</label>
-          <label>
-            <input type="radio" name="currencyRadio" value="szabo" ng-model="tx.unit"/>Szabo</label>
-        </div>
+        <input class="form-control disabled" type="text" value="0.00043598 ether (21,799 gas)" readonly />
+      </div>
+     <div class="form-group col-xs-12">
+        <label>
+          Provided Maximum Fee:
+          <br />
+        </label>
+        <input class="form-control disabled" type="text" value="0.00243598 ether (121,799 gas)" readonly />
+      </div>
+     <div class="form-group col-xs-12">
+        <label>
+          Gas Price:
+          <br />
+        </label>
+        <input class="form-control disabled" type="text" value="0.02 ether per million gas" readonly />
+      </div>
+     <div class="form-group col-xs-12">
+        <label>
+          Data:
+          <br />
+        </label>
+        <input class="form-control disabled" type="text" value="0x4e71d92d" readonly />
       </div>
       <div class="form-group col-xs-12">
         <a class="btn btn-info btn-block" ng-click="generateTx()">CLAIM</a>
