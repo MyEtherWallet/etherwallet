@@ -130,6 +130,7 @@ gulp.task('genHTMLPages', function () {
     var print=fs.readFileSync("./app/views/print.tpl", "utf8");
     var help=fs.readFileSync("./app/views/help.tpl", "utf8");
     var footer=fs.readFileSync("./app/views/footer.tpl", "utf8");
+    var generateWalletEmbedded=fs.readFileSync("./app/views/generateWalletEmbedded.tpl", "utf8");
     return gulp.src(htmlPages)
         .pipe(template({
             header: header,
@@ -143,7 +144,8 @@ gulp.task('genHTMLPages', function () {
             digix: digix,
             print: print,
             help: help,
-            footer: footer
+            footer: footer,
+            generateWalletEmbedded: generateWalletEmbedded
           }))
         .pipe(gulp.dest('./dist/'))
         .pipe(notify('HTML Pages generated'));

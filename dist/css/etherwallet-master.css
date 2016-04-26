@@ -5494,7 +5494,7 @@ header img {
 }
 @media screen and (max-width: 768px) {
   .address-identicon-container {
-    padding-left: 25px;
+    padding-left: 0;
     padding-top: 0;
   }
 }

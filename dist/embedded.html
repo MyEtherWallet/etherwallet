@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mewApp">
+<head>
+  <meta charset="utf-8">
+  <title>MyEtherWallet: Open Source JavaScript Client-Side Ether Wallet</title>
+  <link rel="canonical" href="https://www.myetherwallet.com" />
+  <meta name="description" content="Ether Wallet: Open Source JavaScript Client-Side Ether Wallet">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/etherwallet-master.min.css">
+  <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
+  <script type="text/javascript" src="js/etherwallet-master.js"></script>
+  <link rel="apple-touch-icon" sizes="60x60" href="images/fav/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="images/fav/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="images/fav/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="images/fav/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/fav/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="images/fav/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="images/fav/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="images/fav/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="images/fav/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="images/fav/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="images/fav/manifest.json">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2e4868">
+  <meta name="msapplication-TileImage" content="images/fav/mstile-144x144.png">
+  <meta name="msapplication-config" content="images/fav/browserconfig.xml">
+  <meta name="theme-color" content="#2e4868">
+</head>
+
+<body>
+
+<header class="container-fluid bg-gradient text-white">
+<section class="container">
+  <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="50px" width="auto" alt="Ether Wallet" /></a>
+</section>
+</header>
+
+  <section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+
+  <!-- tab panes -->
+
+    <div class="tab-content" >
+
+      
+<section ng-controller='walletGenCtrl'>
+
+  <h2> Generate Wallet </h2>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <h4>Enter password <small>(min 7 characters)</small> </h4>
+        <input type="text" class="form-control" placeholder="Don't forget to save this!" ng-model="password" />
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <h4>Generate Wallet <br class="hidden-xs" /> &nbsp; </h4>
+        <a class="btn btn-primary btn-block btnAction" func="generateSingleWallet" ng-click="genNewWallet()">GENERATE</a>
+      </div>
+    </div>
+  </div>
+  <!-- / Top - Generate Wallet -->
+
+  <!-- Bottom - Display Generated Wallet -->
+  <section id="generatedWallet" ng-show="showWallet">
+    <hr />
+
+    <!-- into text -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Success! Your wallet has been generated.</h2>
+        <p class="text-danger"> You will need your <strong>keystore file</strong> and <strong> password </strong> to access this wallet in the future. Please be sure to back it up!!! There is no way to recover a wallet if you do not save it. </p>
+      </div>
+    </div>
+    <!-- /into text -->
+
+    <!-- 2. Keystore File -->
+    <div class="row">
+      <div class="col-md-6 col-xs-12">
+        <h4> 1. Save your Keystore File  <small>(JSON - Mist Format - Encrypted)</small></h4>
+
+        <div class="form-group">
+          <a class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}"> DOWNLOAD </a>
+        </div>
+      </div>
+
+      <div class="col-md-5 col-xs-10">
+        <div class="form-group">
+          <h4>2. Copy Your Address.</h4>
+          <input class="form-control" type="text" readonly="readonly" ng-value="wallet.getChecksumAddressString()"/>
+        </div>
+      </div>
+      <div class="col-md-1 col-xs-2 address-identicon-container">
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+      </div>
+    </div>
+    <!-- / 2. Address -->
+
+  </section>
+</section>
+<!-- / Embedded Wallet Gen -->
+
+
+      <!-- send transaction -->
+<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
+  <h2> Send Transaction </h2>
+  <div>
+    <wallet-decrypt-drtv></wallet-decrypt-drtv>
+  </div>
+  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+    <hr />
+    <div class="col-sm-4">
+      <h4> Account Information </h4>
+      <div>
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+        <br />
+        <p> Account Address:
+          <br /> <strong style="margin-left: 1em" class="mono">{{wallet.getChecksumAddressString()}}</strong></p>
+          <p> Account Balance:
+          <br />
+                <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+                <br />
+                <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong>
+                <br />
+                <strong class="text-success"  style="margin-left: 1em"> {{eurBalance}} EUR </strong>
+                <br />
+                <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+        </p>
+      </div>
+      <br />
+      <div class="well">
+        <p> Don't have anyone to send a transaction to? You can always donate to us! Donations mean we spend more time creating new features, listening to your feedback, and giving you what you want.</p>
+        <a class="btn btn-primary btn-block" ng-click="onDonateClick()">DONATE</a>
+        <div class="text-success text-center marg-v-sm"><strong ng-show="tx.donate"> THANK YOU!!! </strong></div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <h4>Send Transaction</h4>
+      <div class="form-group col-xs-10">
+        <label> To Address: </label>
+        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()"/>
+        <div ng-bind-html="validateAddressStatus"></div>
+      </div>
+      <div class="col-xs-2 address-identicon-container">
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+      </div>
+      <div class="form-group col-xs-12">
+        <label>
+          Amount to Send:
+          <br />
+        </label>
+        <a class="pull-right" ng-click="transferAllBalance()">Transfer total available balance</a>
+        <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
+        <div class="radio">
+          <label>
+            <input type="radio" name="currencyRadio" value="ether" ng-model="tx.unit"/>Ether</label>
+          <label>
+            <input type="radio" name="currencyRadio" value="finney" ng-model="tx.unit"/>Finney</label>
+          <label>
+            <input type="radio" name="currencyRadio" value="szabo" ng-model="tx.unit"/>Szabo</label>
+        </div>
+        <!-- advanced option panel -->
+        <a ng-click="toggleShowAdvance()"><p class="strong"> + Advanced Options </p></a>
+        <section ng-show="showAdvance">
+          <div class="form-group">
+            <label> Data: </label>
+            <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data"/>
+          </div>
+          <div class="form-group">
+            <label> Gas: </label>
+            <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit"/>
+          </div>
+        </section>
+        <!-- / advanced option panel -->
+      </div>
+      <div class="form-group col-xs-12">
+        <a class="btn btn-info btn-block" ng-click="generateTx()">GENERATE TRANSACTION</a>
+      </div>
+      <div class="col-xs-12">
+        <p><small> * We use standard rates for all gas + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether + current gas price + 1 gwei in gas. We do not take a transaction fee.</small></p>
+         <div ng-bind-html="validateTxStatus"></div>
+      </div>
+      <div class="form-group col-xs-12" ng-show="showRaw">
+        <label> Raw Transaction </label>
+        <textarea class="form-control" rows="4" disabled >{{rawTx}}</textarea>
+        <label> Signed Transaction </label>
+        <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
+      </div>
+      <div class="form-group col-xs-12" ng-show="showRaw">
+        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">SEND TRANSACTION</a>
+      </div>
+      <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" id="myModalLabel"> <strong class="text-danger">Warning!</strong></h3>
+            </div>
+            <div class="modal-body">
+              <h4>
+                You are about to send
+                <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
+                <strong id="confirmCurrancy" class="text-primary"> {{tx.unit}} </strong>
+                to address
+                <strong id="confirmAddress" class="text-primary"> {{tx.to}} </strong>
+              </h4>
+              <h4> Are you <span class="text-underline"> sure </span> you want to do this?</h4>
+            </div>
+            <div class="modal-footer text-center">
+              <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
+              <button type="button" class="btn btn-primary" ng-click="sendTx()">Yes, I am sure! Make transaction.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/modal-->
+    </div>
+  </section>
+</div>
+<!-- /send transaction -->
+
+
+    </div>
+
+    <!-- /tab panes -->
+
+  </section>
+
+<footer class="container-fluid">
+  <div class="container">
+    <br />
+    <p><a href="https://www.myetherwallet.com" target="_blank">www.MyEtherWallet.com</a></p>
+    <p>An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions created by <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> and <a href="https://github.com/tayvano" target="_blank">tayvano</a>.</p>
+    <p>Contact:
+      <a href="mailto:myetherwallet@gmail.com" target="_blank"> Email </a> &middot;
+      <a href="https://twitter.com/myetherwallet" target="_blank"> Twitter </a> &middot;
+      <a href="https://github.com/kvhnuke/etherwallet" target="_blank">Github</a> &middot;
+      <a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank"> kvhnuke reddit </a> &middot;
+      <a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank"> tayvano (insom) reddit </a>
+    </p>
+  </div>
+</footer>
+</body>
+</html>
+
