@@ -1236,10 +1236,10 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       name: "Contracts",
             url: "contracts"
     },
-    slockitDAO: {
+    thedao: {
       id: 5,
-      name: "Slock.it DAO",
-            url: "slockit-dao"
+      name: " \"The DAO\" ",
+            url: "the-dao"
     },
     digix: {
       id: 6,

@@ -125,7 +125,7 @@ gulp.task('genHTMLPages', function () {
     var sendTransaction=fs.readFileSync("./app/views/sendTransaction.tpl", "utf8");
     var offlineTransaction=fs.readFileSync("./app/views/offlineTransaction.tpl", "utf8");
     var contracts=fs.readFileSync("./app/views/contracts.tpl", "utf8");
-    var slockitDAO=fs.readFileSync("./app/views/slockitDAO.tpl", "utf8");
+    var thedao=fs.readFileSync("./app/views/thedao.tpl", "utf8");
     var digix=fs.readFileSync("./app/views/digix.tpl", "utf8");
     var print=fs.readFileSync("./app/views/print.tpl", "utf8");
     var help=fs.readFileSync("./app/views/help.tpl", "utf8");
@@ -139,7 +139,7 @@ gulp.task('genHTMLPages', function () {
             sendTransaction: sendTransaction,
             offlineTransaction: offlineTransaction,
             contracts: contracts,
-            slockitDAO: slockitDAO,
+            thedao: thedao,
             digix: digix,
             print: print,
             help: help,
