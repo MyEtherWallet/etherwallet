@@ -100,7 +100,7 @@ gulp.task('minJS',['browserify'],function () {
 
 gulp.task('copy-images', function() {
    gulp.src(imagesFolder)
-   .pipe(imagemin())
+   //.pipe(imagemin())
    .pipe(gulp.dest(imagesOutputFolder))
    .pipe(notify({message:'All images copied', onLast:true}));
 });
@@ -119,28 +119,30 @@ gulp.task('watchJS', function() {
 });
 gulp.task('genHTMLPages', function () {
     var header=fs.readFileSync("./app/views/header.tpl", "utf8");
-    var walletgenerator=fs.readFileSync("./app/views/walletgenerator.tpl", "utf8");
-    var bulkgenerator=fs.readFileSync("./app/views/bulkgenerator.tpl", "utf8");
-    var viewwalletdetails=fs.readFileSync("./app/views/viewwalletdetails.tpl", "utf8");
-    var sendtransaction=fs.readFileSync("./app/views/sendtransaction.tpl", "utf8");
-    var offlinetransaction=fs.readFileSync("./app/views/offlinetransaction.tpl", "utf8");
+    var generateWallet=fs.readFileSync("./app/views/generateWallet.tpl", "utf8");
+    var bulkGenerate=fs.readFileSync("./app/views/bulkGenerate.tpl", "utf8");
+    var viewWalletInfo=fs.readFileSync("./app/views/viewWalletInfo.tpl", "utf8");
+    var sendTransaction=fs.readFileSync("./app/views/sendTransaction.tpl", "utf8");
+    var offlineTransaction=fs.readFileSync("./app/views/offlineTransaction.tpl", "utf8");
+    var contracts=fs.readFileSync("./app/views/contracts.tpl", "utf8");
+    var slockitDAO=fs.readFileSync("./app/views/slockitDAO.tpl", "utf8");
     var digix=fs.readFileSync("./app/views/digix.tpl", "utf8");
     var print=fs.readFileSync("./app/views/print.tpl", "utf8");
     var help=fs.readFileSync("./app/views/help.tpl", "utf8");
-    var contact=fs.readFileSync("./app/views/contact.tpl", "utf8");
     var footer=fs.readFileSync("./app/views/footer.tpl", "utf8");
     return gulp.src(htmlPages)
         .pipe(template({
             header: header,
-            walletgenerator: walletgenerator,
-            bulkgenerator: bulkgenerator,
-            viewwalletdetails: viewwalletdetails,
-            sendtransaction: sendtransaction,
-            offlinetransaction: offlinetransaction,
+            generateWallet: generateWallet,
+            bulkGenerate: bulkGenerate,
+            viewWalletInfo: viewWalletInfo,
+            sendTransaction: sendTransaction,
+            offlineTransaction: offlineTransaction,
+            contracts: contracts,
+            slockitDAO: slockitDAO,
             digix: digix,
             print: print,
             help: help,
-            contact: contact,
             footer: footer
           }))
         .pipe(gulp.dest('./dist/'))

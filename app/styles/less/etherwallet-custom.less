@@ -263,3 +263,60 @@ input[readonly]  {
     margin-top: 0;
   }
 }
+
+
+// CONTRACTS
+.label, .output, .item label {
+  display: block;
+}
+
+.item .check {
+  font-weight: 300;
+}
+
+.output {
+  font-weight: 400;
+}
+
+.address-identicon-container.small {
+  display: inline;
+  #addressIdenticon {
+      width: 32px;
+      height: 32px;
+      box-shadow: inset 0 2px 2px hsla(0,0%,100%,.5),inset 0 -1px 5px rgba(0,0,0,.6);
+      display: inline-block;
+      vertical-align: middle;
+  }
+}
+
+.boolean-yes {
+  &:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    margin-left: 6px;
+    margin-right: 6px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url("data:image/svg+xml;charset=UTF-8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='20px' height='20px' viewBox='0 0 79.536 79.536' style='enable-background:new 0 0 79.536 79.536;' xml:space='preserve'><path fill='#999' d='M39.769,0C17.8,0,0,17.8,0,39.768c0,21.965,17.8,39.768,39.769,39.768 c21.965,0,39.768-17.803,39.768-39.768C79.536,17.8,61.733,0,39.769,0z M34.142,58.513L15.397,39.768l7.498-7.498l11.247,11.247 l22.497-22.493l7.498,7.498L34.142,58.513z'/></svg>");
+  }
+
+}
+
+.boolean-no {
+  &:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    margin-left: 6px;
+    margin-right: 6px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url("data:image/svg+xml;charset=UTF-8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' width='20px' height='20px' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 27.965 27.965' style='enable-background:new 0 0 27.965 27.965;'><path fill='#999' d='M13.98,0C6.259,0,0,6.261,0,13.983c0,7.721,6.259,13.982,13.98,13.982c7.725,0,13.985-6.262,13.985-13.982 C27.965,6.261,21.705,0,13.98,0z M19.992,17.769l-2.227,2.224c0,0-3.523-3.78-3.786-3.78c-0.259,0-3.783,3.78-3.783,3.78 l-2.228-2.224c0,0,3.784-3.472,3.784-3.781c0-0.314-3.784-3.787-3.784-3.787l2.228-2.229c0,0,3.553,3.782,3.783,3.782 c0.232,0,3.786-3.782,3.786-3.782l2.227,2.229c0,0-3.785,3.523-3.785,3.787C16.207,14.239,19.992,17.769,19.992,17.769z'/></svg>");
+  }
+}
+
+label small {
+  font-weight: 300;
+  font-size: 1em;
+}

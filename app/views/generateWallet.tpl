@@ -1,6 +1,8 @@
 <section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl'>
 
   <!-- Top - Generate Wallet -->
+  <p> The <a href="#bulk-generate"> Bulk Generate page</a> was not widely used so we removed it from the navigation to make room for more important things. But, <a href="#bulk-generate"> here it is</a> if you still want to use it.</p>
+
   <h2> Generate Wallet </h2>
   <div class="row">
     <div class="col-sm-6">

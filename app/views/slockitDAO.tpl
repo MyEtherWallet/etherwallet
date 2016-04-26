@@ -1,8 +1,10 @@
-<!-- digix -->
-<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.digix.id">
-  <h2> Digix </h2>
-  <p class="text-danger"><strong>The Claim function to receive DGD into your mist wallet will only work after April 28. If you execute this now, nothing will happen, but you will waste gas.</strong></p>
-  <p>MyEtherWallet.com is proud to partner with Digix to provide a way for you to <strong>claim</strong> your DigixDAO (DGD) tokens! In order to do so, you must have participated in the token sale on March 30th/31st.</p>
+<!-- slock.it dao -->
+<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.slockitDAO.id">
+  <h2> Slock.it DAO </h2>
+  <p>Yay Slock.it! Yay DAO creation! Helpful links:
+     <a href="https://blog.slock.it/the-art-of-the-dao-experiments-with-the-generic-dao-framework-4782f7862131#.bibozinlb" target="_blank">The Art of the DAO</a> &middot;
+     <a href="http://daohub.org/" target="_blank">DAOHub</a>
+  </p>
   <div>
     <wallet-decrypt-drtv></wallet-decrypt-drtv>
   </div>
@@ -25,7 +27,7 @@
             <br />
             <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         </p>
-        <p> Digix Details: <br />
+        <p> Slock.it Details: <br />
             <strong style="margin-left: 1em"> Centstotal: {{centsTotal}} </strong>
             <br />
             <strong style="margin-left: 1em"> Weitotal: {{weiTotal}} </strong>
@@ -115,4 +117,4 @@
     </div>
   </section>
 </div>
-<!-- /digix -->
+<!-- /slock.it dao -->

@@ -8,30 +8,36 @@
   </section>
   <br />
 
-  <!-- tab panes -->
   <section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+
+  <!-- tab panes -->
+
     <div class="tab-content" >
 
-      <%= walletgenerator %>
+      <%= generateWallet %>
 
-      <%= bulkgenerator %>
+      <%= viewWalletInfo %>
 
-      <%= viewwalletdetails %>
+      <%= sendTransaction %>
 
-      <%= sendtransaction %>
+      <%= offlineTransaction %>
 
-      <%= offlinetransaction %>
+      <%= contracts %>
+
+      <%= slockitDAO %>
 
       <%= digix %>
 
-      <%= print %>
-
       <%= help %>
 
-      <%= contact %>
+      <%= print %>
+
+      <%= bulkGenerate %>
 
     </div>
+
     <!-- /tab panes -->
+
   </section>
 
   <%= footer %>

@@ -62,13 +62,17 @@
   </section>
   <br />
 
-  <!-- tab panes -->
   <section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+
+  <!-- tab panes -->
+
     <div class="tab-content" >
 
       <section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl'>
 
   <!-- Top - Generate Wallet -->
+  <p> The <a href="#bulk-generate"> Bulk Generate page</a> was not widely used so we removed it from the navigation to make room for more important things. But, <a href="#bulk-generate"> here it is</a> if you still want to use it.</p>
+
   <h2> Generate Wallet </h2>
   <div class="row">
     <div class="col-sm-6">
@@ -196,75 +200,6 @@
   </section>
 </section>
 <!-- / wallet generator -->
-
-
-      <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.bulkGenerate.id" ng-controller='bulkGenCtrl'>
-
-  <!-- Top - Bulk Generate -->
-  <h2> Bulk Generate Wallets </h2>
-  <div class="row">
-    <div class="col-md-6 col-sm-12 form-group">
-      <h4>1. Enter the Number of Wallets To Generate:</h4>
-      <input class="form-control" type="text" placeholder="Number of Wallets" ng-model="amount">
-    </div>
-    <div class="col-md-6 col-sm-12 form-group">
-      <h4>2. Give me my wallets:</h4>
-      <a class="btn btn-primary btn-block btnAction" ng-click="genWallets()">GENERATE</a>
-    </div>
-  </div>
-  <!-- / Top - Bulk Generate -->
-
-  <!-- Bottom - Display Bulk Generated Wallets -->
-  <div ng-show="showWallets">
-    <hr />
-    <div class="row">
-      <h2 class="col-xs-12">Success! Your wallets have been generated.</h2>
-      <p class="col-xs-12 text-danger"> You need to back up your private keys externally and verify you can access the wallets. Do this BEFORE you send any Ether to a new wallet. MyEtherWallet.com does not receive or store any information so we <strong>cannot</strong> recover your wallet. Read the <a id="help" class="ptabs" showId="paneHelp">help page</a> for instructions.</p>
-      <div class="col-md-9">
-        <table id="bulkgentable" class="table">
-          <thead>
-            <tr>
-              <th width="32"> Address Identicon </th>
-              <th width="500">Address</th>
-              <th width="500">Private Key (unencrypted)</th>
-            </tr>
-            <tr class="privaddkey" ng-repeat="wallet in wallets">
-            <td>
-                <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
-            </td>
-            <td>
-                <textarea class="form-control" rows="4" type="text" disabled>{{wallet.getChecksumAddressString()}}</textarea>
-            </td>
-            <td>
-                <textarea class="form-control" rows="4" type="text" disabled>{{wallet.getPrivateKeyString()}}</textarea>
-            </td>
-            </tr>
-          </thead>
-        </table>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label>Print Paper Wallets (unencrypted)</label>
-          <a class="btn btn-info btn-block" ng-click="printQRCode()">PRINT</a>
-        </div>
-        <div class="form-group">
-          <label>Download JSON file (unencrypted)</label>
-          <a class="btn btn-info btn-block" href="{{bJSON}}" download="bulk_ether_accounts.json">DOWNLOAD</a>
-        </div>
-        <div class="form-group">
-          <label>Download CSV file (unencrypted)</label>
-          <a class="btn btn-info btn-block" href="{{bCSV}}" download="bulk_ether_accounts.csv">DOWNLOAD</a>
-        </div>
-        <div class="form-group">
-          <label>Download TXT file (unencrypted)</label>
-          <a class="btn btn-info btn-block" href="{{bTXT}}" download="bulk_ether_accounts.txt">DOWNLOAD</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- / Bottom - Display Bulk Generated Wallets -->
-
-</div>
 
 
       <!-- view wallet info -->
@@ -673,7 +608,300 @@
 <!-- /send transaction -->
 
 
-      <!-- send transaction -->
+      <!-- contracts -->
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contracts.id">
+  <h2> Contracts </h2>
+  <section>
+    <wallet-decrypt-drtv></wallet-decrypt-drtv>
+  </section>
+
+  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+
+    <div class="col-md-12"> <hr /> </div>
+
+    <!-- STEP 1 -->
+    <div class="col-md-12">
+      <span class="form-group">
+        <h4> Contract Address</h4>
+        <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" />
+        <h4> ABI / JSON Interface </h4>
+        <textarea class="form-control" rows="5" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] '></textarea>
+      </span>
+      <span class="form-group">
+        <button class="btn btn-primary"> ACCESS </button>
+      </span>
+
+    </div>
+    <!-- / STEP 1 -->
+
+    <div class="col-md-12"> <hr /> </div>
+
+
+    <!-- STEP READ -->
+    <div class="col-md-6">
+
+      <!-- Read - Step 1 -->
+      <span class="form-group">
+        <h4> 3. Read From Contract</h4>
+      </span>
+      <span class="form-group">
+        <h5> Function Name (ie: User Info or Proposals) </h5>
+        <h6> Function Description (ie: user - adddress or 256 bits unsigned integer) </h6>
+        <input class="form-control" />
+      </span>
+      <!-- / Read - Step 1 -->
+
+      <!-- Read - Step 2 -->
+      <hr />
+      <span class="form-group">
+        <!-- example: integer / string / bytes? /  -->
+         <p class="item">
+          <span class="label">Centstotal:</span>
+          <span class="output"> 123 </span>
+         </p>
+         <!-- example: address -->
+         <p class="item">
+          <span class="label">Recipient:</span>
+          <span class="output">
+            <div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div></div>
+            0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8
+          </span>
+          <!-- example: boolean YES -->
+         <p class="item">
+          <span class="label">Claimed:</span>
+          <span class="output boolean-yes"> YES </span>
+         </p>
+          <!-- example: boolean NO -->
+         <p class="item">
+          <span class="label">Open:</span>
+          <span class="output boolean-no"> NO </span>
+         </p>
+      </span>
+      <!--/ Read - Step 2 -->
+
+    </div>
+    <!-- / STEP READ -->
+
+
+
+    <!-- STEP WRITE -->
+    <div class="col-md-6">
+
+      <!-- Write - Step 1 -->
+      <span class="form-group">
+        <h4> 3. Write To Contract </h4>
+        <div ng-controller="DropdownCtrl">
+          <div class="btn-group" uib-dropdown keyboard-nav>
+            <button id="simple-btn-keyboard-nav" type="button" class="btn btn-default" uib-dropdown-toggle>
+            Select A Function <span class="caret"></span></button>
+            <ul class="dropdown-menu" uib-dropdown-menu>
+              <li><a href="#">Claim</a></li>
+              <li><a href="#">Item 2</a></li>
+              <li><a href="#">Item 3</a></li>
+            </ul>
+          </div>
+        </div>
+      </span>
+      <!-- / Write - Step 1 -->
+
+
+      <!-- Write - Step 2 -->
+      <hr />
+      <span class="form-group">
+        <!-- address -->
+        <p class="item">
+          <label> Recipient — <small> address </small> </label>
+          <input class="form-control" type="text" placeholder="0x314156..."/>
+        </p>
+        <!-- 256 unsigned integer -->
+        <p class="item">
+          <label> Amount — <small> 256 unsigned integer </small> </label>
+          <input class="form-control" type="text" placeholder="151"/>
+        </p>
+        <!-- string -->
+        <p class="item">
+          <label> Description — <small> string </small> </label>
+          <input class="form-control" type="text" placeholder="Ohh! Shiny!"/>
+        </p>
+        <!-- bytes -->
+        <p class="item">
+          <label> Data — <small> bytes </small> </label>
+          <input class="form-control" type="text" placeholder="0x151bc..."/>
+        </p>
+        <!-- boolean -->
+        <p class="item">
+          <label> New Provider — <small> boolean </small> </label>
+          <label class="check"><input type="checkbox" value=""> Yes </label>
+        </p>
+        <!-- boolean -->
+        <p class="item">
+          <label> Amount to Send: (this is always here) </label>
+          <input class="form-control" placeholder="0" />
+        </p>
+      </span>
+      <span class="form-group">
+        <button class="btn btn-primary" >EXECUTE</button> <!-- this opens modal -->
+      </span>
+    </div>
+    <!-- / Write - Step 2 -->
+
+
+    <!-- Step 3 - Modal -->
+    <div class="modal fade" id="sendContract" tabindex="-1" role="dialog" aria-labelledby="sendContractLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title" id="myModalLabel"> <strong class="text-danger">Warning!</strong></h3>
+          </div>
+          <div class="modal-body">
+            <h4>You are about to execute a function on contract 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8.</h4>
+            <p> Estimated fee consumption: <strong> 0.00043598 ether (21,799 gas) </strong> </p>
+            <p> Provided Maximum Fee: <strong> 0.00243598 ether (121,799 gas) </strong> </p>
+            <p> Gas Price:  <strong> 0.021 ether per million gas </strong> </p>
+            <p> Data:  <strong> 0x4e71d92d </strong> </p>
+            <h4> Are you <span class="text-underline">sure</span> you want to do this?</h4>
+          </div>
+          <div class="modal-footer text-center">
+            <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
+            <button type="button" class="btn btn-primary" ng-click="sendTx()">Yes, I am sure! Send transaction.</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / Step 3 - Modal -->
+
+
+  </section>
+
+
+</article>
+<!-- / contracts -->
+
+
+      <!-- slock.it dao -->
+<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.slockitDAO.id">
+  <h2> Slock.it DAO </h2>
+  <p>Yay Slock.it! Yay DAO creation! Helpful links:
+     <a href="https://blog.slock.it/the-art-of-the-dao-experiments-with-the-generic-dao-framework-4782f7862131#.bibozinlb" target="_blank">The Art of the DAO</a> &middot;
+     <a href="http://daohub.org/" target="_blank">DAOHub</a>
+  </p>
+  <div>
+    <wallet-decrypt-drtv></wallet-decrypt-drtv>
+  </div>
+  <section class="row" ng-show="wallet!=null" ng-controller='digixCtrl'>
+    <hr />
+    <div class="col-sm-4">
+      <h4> Account Information </h4>
+      <div>
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+        <br />
+        <p> Account Address:
+          <br /> <strong style="margin-left: 1em" class="mono">{{wallet.getChecksumAddressString()}}</strong></p>
+          <p> Account Balance:
+          <br />
+            <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+            <br />
+            <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong>
+            <br />
+            <strong class="text-success"  style="margin-left: 1em"> {{eurBalance}} EUR </strong>
+            <br />
+            <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+        </p>
+        <p> Slock.it Details: <br />
+            <strong style="margin-left: 1em"> Centstotal: {{centsTotal}} </strong>
+            <br />
+            <strong style="margin-left: 1em"> Weitotal: {{weiTotal}} </strong>
+            <br />
+            <strong  style="margin-left: 1em"> Share: {{shareTotal}} </strong>
+            <br />
+            <strong style="margin-left: 1em"> Badges: {{badgesTotal}} </strong>
+            <br />
+            <strong style="margin-left: 1em"> Claimed? {{claimedTotal}} </strong>
+        </p>
+      </div>
+      <br />
+    </div>
+    <div class="col-sm-8">
+      <h4>Claim your DGD Tokens</h4>
+      <div class="form-group col-xs-12">
+        <label>
+          Estimated fee consumption:
+          <br />
+        </label>
+        <input class="form-control disabled" type="text" value="0.00043598 ether (21,799 gas)" readonly />
+      </div>
+     <div class="form-group col-xs-12">
+        <label>
+          Provided Maximum Fee:
+          <br />
+        </label>
+        <input class="form-control disabled" type="text" value="0.00243598 ether (121,799 gas)" readonly />
+      </div>
+     <div class="form-group col-xs-12">
+        <label>
+          Gas Price:
+          <br />
+        </label>
+        <input class="form-control disabled" type="text" value="0.021 ether per million gas" readonly />
+      </div>
+     <div class="form-group col-xs-12">
+        <label>
+          Data:
+          <br />
+        </label>
+        <input class="form-control disabled" type="text" readonly ng-model="tx.data"/>
+      </div>
+      <div class="form-group col-xs-12">
+        <a class="btn btn-info btn-block" ng-click="generateTx()">CLAIM</a>
+      </div>
+      <div class="col-xs-12">
+         <div ng-bind-html="validateTxStatus"></div>
+      </div>
+      <div class="form-group col-xs-12" ng-show="showRaw">
+        <label> Raw Transaction </label>
+        <textarea class="form-control" rows="4" disabled >{{rawTx}}</textarea>
+        <label> Signed Transaction </label>
+        <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
+      </div>
+      <div class="form-group col-xs-12" ng-show="showRaw">
+        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">CLAIM</a>
+      </div>
+      <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" id="myModalLabel"> <strong class="text-danger">Warning!</strong></h3>
+            </div>
+            <div class="modal-body">
+              <h4>
+                You are about to send
+                <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
+                <strong id="confirmCurrancy" class="text-primary"> {{tx.unit}} </strong>
+                to address
+                <strong id="confirmAddress" class="text-primary"> {{tx.to}} </strong>
+              </h4>
+              <h4> Are you <span class="text-underline"> sure </span> you want to do this?</h4>
+            </div>
+            <div class="modal-footer text-center">
+              <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
+              <button type="button" class="btn btn-primary" ng-click="sendTx()">Yes, I am sure! Make transaction.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/modal-->
+    </div>
+  </section>
+</div>
+<!-- /slock.it dao -->
+
+
+      <!-- digix -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.digix.id">
   <h2> Digix </h2>
   <p class="text-danger"><strong>The Claim function to receive DGD into your mist wallet will only work after April 28. If you execute this now, nothing will happen, but you will waste gas.</strong></p>
@@ -790,44 +1018,7 @@
     </div>
   </section>
 </div>
-<!-- /send transaction -->
-
-
-      <!-- print -->
-<div class="tab-pane" id="panePrint" style="display: none;">
-  <div class="print-container">
-    <span id="printwalletjson" style="display: none;"></span>
-    <img src="images/logo-1.png" class="ether-logo-1" height="100%" width="auto" />
-    <img src="images/logo-2.png" class="ether-logo-2" />
-    <img src="images/ether-title.png" height="100%" width="auto" class="print-title" />
-    <div class="print-qr-code-1">
-      <div id="paperwalletaddqr"></div>
-      <!--<img src="images/qrcode_test.png" width="90%;" height="auto" class="pull-left" />-->
-      <p class="print-text" style="padding-top: 25px;">YOUR ADDRESS</p>
-    </div>
-    <div class="print-qr-code-2">
-      <div id="paperwalletprivqr"></div>
-      <p class="print-text" style="padding-top: 30px;">YOUR PRIVATE KEY</p>
-    </div>
-    <div class="print-notes">
-      <img src="images/notes-bg.png" width="90%;" height="auto" class="pull-left" />
-      <p class="print-text">AMOUNT / NOTES</p>
-    </div>
-    <div class="print-address-container">
-      <p>
-        <strong>Your Address:</strong>
-        <br />
-        <span id="paperwalletadd"></span>
-      </p>
-      <p>
-        <strong>Your Private Key:</strong>
-        <br />
-        <span id="paperwalletpriv"></span>
-      </p>
-    </div>
-  </div>
-</div>
-<!-- /print -->
+<!-- /digix -->
 
 
       <!-- help -->
@@ -1173,16 +1364,9 @@
   </div>
 </section>
 
-  <p><small> ps: sorry for any typos or grammatical errors. English is my first language...but I still suck at it. &ndash;Tay</small></p>
-</div>
-<!-- end help-->
-
-
-
-      <!-- contact -->
-<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contact.id">
-  <h2> Ways to Get in Touch </h2>
-  <a name="contact"></a>
+<section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton"></span> Ways to Get in Touch </h4>
+  <div class="collapsePanel">
   <ul>
     <li><a href="https://twitter.com/myetherwallet" target="_blank"> Follow Us on Twitter </a></li>
     <li><a href="mailto:myetherwallet@gmail.com" target="_blank"> Email Us </a></li>
@@ -1191,12 +1375,125 @@
     <li><a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank"> Message tayvano (she goes by insom over there) on Reddit </a></li>
     <li><a href="https://hubski.com/user?id=insomniasexx" target="_blank"> Message tayvano (she goes by insom over there, too!) on Hubski </a></li>
   </ul>
+  </div>
+</section>
+
+  <p><small> ps: sorry for any typos or grammatical errors. English is my first language...but I still suck at it. &ndash;Tay</small></p>
 </div>
-<!-- / contact -->
+<!-- end help-->
+
+
+
+      <!-- print -->
+<div class="tab-pane" id="panePrint" style="display: none;">
+  <div class="print-container">
+    <span id="printwalletjson" style="display: none;"></span>
+    <img src="images/logo-1.png" class="ether-logo-1" height="100%" width="auto" />
+    <img src="images/logo-2.png" class="ether-logo-2" />
+    <img src="images/ether-title.png" height="100%" width="auto" class="print-title" />
+    <div class="print-qr-code-1">
+      <div id="paperwalletaddqr"></div>
+      <!--<img src="images/qrcode_test.png" width="90%;" height="auto" class="pull-left" />-->
+      <p class="print-text" style="padding-top: 25px;">YOUR ADDRESS</p>
+    </div>
+    <div class="print-qr-code-2">
+      <div id="paperwalletprivqr"></div>
+      <p class="print-text" style="padding-top: 30px;">YOUR PRIVATE KEY</p>
+    </div>
+    <div class="print-notes">
+      <img src="images/notes-bg.png" width="90%;" height="auto" class="pull-left" />
+      <p class="print-text">AMOUNT / NOTES</p>
+    </div>
+    <div class="print-address-container">
+      <p>
+        <strong>Your Address:</strong>
+        <br />
+        <span id="paperwalletadd"></span>
+      </p>
+      <p>
+        <strong>Your Private Key:</strong>
+        <br />
+        <span id="paperwalletpriv"></span>
+      </p>
+    </div>
+  </div>
+</div>
+<!-- /print -->
+
+
+      <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.bulkGenerate.id" ng-controller='bulkGenCtrl'>
+
+  <!-- Top - Bulk Generate -->
+  <h2> Bulk Generate Wallets </h2>
+  <div class="row">
+    <div class="col-md-6 col-sm-12 form-group">
+      <h4>1. Enter the Number of Wallets To Generate:</h4>
+      <input class="form-control" type="text" placeholder="Number of Wallets" ng-model="amount">
+    </div>
+    <div class="col-md-6 col-sm-12 form-group">
+      <h4>2. Give me my wallets:</h4>
+      <a class="btn btn-primary btn-block btnAction" ng-click="genWallets()">GENERATE</a>
+    </div>
+  </div>
+  <!-- / Top - Bulk Generate -->
+
+  <!-- Bottom - Display Bulk Generated Wallets -->
+  <div ng-show="showWallets">
+    <hr />
+    <div class="row">
+      <h2 class="col-xs-12">Success! Your wallets have been generated.</h2>
+      <p class="col-xs-12 text-danger"> You need to back up your private keys externally and verify you can access the wallets. Do this BEFORE you send any Ether to a new wallet. MyEtherWallet.com does not receive or store any information so we <strong>cannot</strong> recover your wallet. Read the <a id="help" class="ptabs" showId="paneHelp">help page</a> for instructions.</p>
+      <div class="col-md-9">
+        <table id="bulkgentable" class="table">
+          <thead>
+            <tr>
+              <th width="32"> Address Identicon </th>
+              <th width="500">Address</th>
+              <th width="500">Private Key (unencrypted)</th>
+            </tr>
+            <tr class="privaddkey" ng-repeat="wallet in wallets">
+            <td>
+                <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+            </td>
+            <td>
+                <textarea class="form-control" rows="4" type="text" disabled>{{wallet.getChecksumAddressString()}}</textarea>
+            </td>
+            <td>
+                <textarea class="form-control" rows="4" type="text" disabled>{{wallet.getPrivateKeyString()}}</textarea>
+            </td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Print Paper Wallets (unencrypted)</label>
+          <a class="btn btn-info btn-block" ng-click="printQRCode()">PRINT</a>
+        </div>
+        <div class="form-group">
+          <label>Download JSON file (unencrypted)</label>
+          <a class="btn btn-info btn-block" href="{{bJSON}}" download="bulk_ether_accounts.json">DOWNLOAD</a>
+        </div>
+        <div class="form-group">
+          <label>Download CSV file (unencrypted)</label>
+          <a class="btn btn-info btn-block" href="{{bCSV}}" download="bulk_ether_accounts.csv">DOWNLOAD</a>
+        </div>
+        <div class="form-group">
+          <label>Download TXT file (unencrypted)</label>
+          <a class="btn btn-info btn-block" href="{{bTXT}}" download="bulk_ether_accounts.txt">DOWNLOAD</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / Bottom - Display Bulk Generated Wallets -->
+
+</div>
 
 
     </div>
+
     <!-- /tab panes -->
+
   </section>
 
   <footer class="container-fluid">
@@ -1204,14 +1501,24 @@
     <p><a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a></p>
 
     <p>An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions. Created by <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> and <a href="https://github.com/tayvano" target="_blank">tayvano</a>.</p>
-    <p class="wrap"> Donations greatly appreciated. Address: <span class="mono">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span> </p>
-    <h5>
-      <a href="https://www.myetherwallet.com" target="_blank">www.MyEtherWallet.com</a>
-      &middot; Source:
-      <a href="https://github.com/kvhnuke/etherwallet" target="_blank">MyEtherWallet.com on github</a>
-      &middot;
-      <a href="https://github.com/kvhnuke/MyEtherWalletChromeExtension" target="_blank">MyEtherWallet CX on github</a>
-    </h5>
+    <p class="wrap"> Donations greatly appreciated: <span class="mono">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span> </p>
+    <p>
+    URLs:
+      <a href="https://www.myetherwallet.com" target="_blank">www.MyEtherWallet.com</a> &middot;
+      <a href="http://kvhnuke.github.io/etherwallet/" target="_blank">kvhnuke.github.io/etherwallet/</a>
+    </p>
+    <p>
+      Source:
+        <a href="https://github.com/kvhnuke/etherwallet" target="_blank">MyEtherWallet.com on github</a> &middot;
+        <a href="https://github.com/kvhnuke/MyEtherWalletChromeExtension" target="_blank">MyEtherWallet CX on github</a>
+    </p>
+    <p>Contact:
+      <a href="mailto:myetherwallet@gmail.com" target="_blank"> Email </a> &middot;
+      <a href="https://twitter.com/myetherwallet" target="_blank"> Twitter </a> &middot;
+      <a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank"> kvhnuke on reddit </a> &middot;
+      <a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank"> tayvano (insom) on reddit </a>
+    </p>
+
   </div>
 </footer>
 </body>

@@ -341,6 +341,20 @@
   </div>
 </section>
 
+<section class="collapseContainer">
+  <h4> <span class="text-primary collapseButton"></span> Ways to Get in Touch </h4>
+  <div class="collapsePanel">
+  <ul>
+    <li><a href="https://twitter.com/myetherwallet" target="_blank"> Follow Us on Twitter </a></li>
+    <li><a href="mailto:myetherwallet@gmail.com" target="_blank"> Email Us </a></li>
+    <li><a href="https://github.com/kvhnuke/etherwallet/issues" target="_blank"> Open a GitHub Issue</a></li>
+    <li><a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank"> Message kvhnuke on Reddit </a></li>
+    <li><a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank"> Message tayvano (she goes by insom over there) on Reddit </a></li>
+    <li><a href="https://hubski.com/user?id=insomniasexx" target="_blank"> Message tayvano (she goes by insom over there, too!) on Hubski </a></li>
+  </ul>
+  </div>
+</section>
+
   <p><small> ps: sorry for any typos or grammatical errors. English is my first language...but I still suck at it. &ndash;Tay</small></p>
 </div>
 <!-- end help-->
