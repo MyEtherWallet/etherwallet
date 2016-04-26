@@ -1216,38 +1216,33 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       name: "Generate Wallet",
             url: "generate-wallet"
     },
-    viewWalletInfo: {
+    bulkGenerate: {
       id: 1,
+      name: "Bulk Generate",
+            url: "bulk-generate"
+    },
+    viewWalletInfo: {
+      id: 2,
       name: "View Wallet Info",
             url: "view-wallet-info"
     },
     sendTransaction: {
-      id: 2,
+      id: 3,
       name: "Send Transaction",
             url: "send-transaction"
     },
     offlineTransaction: {
-      id: 3,
+      id: 4,
       name: "Offline Transaction",
             url:"offline-transaction"
     },
-    contracts: {
-      id: 4,
-      name: "Contracts",
-            url: "contracts"
-    },
-    thedao: {
-      id: 5,
-      name: " \"The DAO\" ",
-            url: "the-dao"
-    },
     digix: {
-      id: 6,
+      id: 5,
       name: "Digix",
             url: "digix"
     },
     help: {
-      id: 7,
+      id: 6,
       name: "Help",
             url: "help"
     }
