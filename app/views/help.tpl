@@ -136,7 +136,7 @@
 <section class="collapseContainer">
   <h4> <span class="text-primary collapseButton"></span> 5. How do I run MyEtherWallet.com offline/locally? </h4>
  <div class="collapsePanel collapsed">
-  <p> You can run MyEtherWallet.com on your computer instead of from the GitHub servers. Everything except the "send transaction" tab can be done completely without the internet, so feel free to turn your internet off. If you would like to send transactions from an offline or airgapped computer, check out the "Offline / Advanced Transaction" tab. </p>
+  <p> You can run MyEtherWallet.com on your computer instead of from the GitHub servers. Everything except the "send transaction" tab can be done completely without the internet, so feel free to turn your internet off. If you would like to send transactions from an offline or airgapped computer, check out the "Offline Transaction" tab. </p>
   <ol>
     <li>Go to the GitHub repo @ <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a></li>
     <li>Click download zip in the upper right.</li>
@@ -164,7 +164,7 @@
 <section class="collapseContainer">
   <h4> <span class="text-primary collapseButton"></span> 7. Is using the send transaction offline? </h4>
 <div class="collapsePanel collapsed">
-  <p> No, the send transaction tab is not offline. It needs the internet in order to send Ether from one wallet to another. However, when you send a transaction, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Advanced / Offline Transaction" tab so that you can ensure your private keys are on an offline/airgapped computer at all times.</p>
+  <p> No, the send transaction tab is not offline. It needs the internet in order to send Ether from one wallet to another. However, when you send a transaction, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" tab so that you can ensure your private keys are on an offline/airgapped computer at all times.</p>
 </div>
 </section>
 

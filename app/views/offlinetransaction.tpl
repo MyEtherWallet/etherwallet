@@ -1,7 +1,7 @@
 <!-- send transaction -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.offlineTransaction.id" ng-controller='sendOfflineTxCtrl'>
 
-  <h2> Advanced / Offline Transaction </h2>
+  <h2> Offline Transaction </h2>
   <p> Generating offline transactions can be done in 3 (relatively) easy steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. Alternatively, you can use this entirely online in order to send data with your transaction or alter the gas limit.</p>
 
   <hr />
