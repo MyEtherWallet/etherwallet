@@ -52,6 +52,15 @@ footer {
   background-color: @ether-navy;
   color: white;
   margin-top: 100px;
+  p {
+    margin: 10px 0;
+  }
+  a {
+    color: #74C4DE;
+    &:hover, &:focus {
+      color: darken(#74C4DE, 5%);
+    }
+  }
 }
 
 .well {
@@ -322,6 +331,7 @@ label small {
 }
 
 input[type="text"]+.eye{
+  cursor: pointer;
   &:before {
     content: "";
     width: 20px;
@@ -335,6 +345,7 @@ input[type="text"]+.eye{
 }
 
 input[type="password"]+.eye{
+  cursor: pointer;
   &:before {
     content: "";
     width: 20px;

@@ -29,7 +29,7 @@
     <div class="row">
       <div class="col-xs-12">
         <h2>Success! Your wallet has been generated.</h2>
-        <p class="text-danger"> You will need your <strong>keystore file</strong> and <strong> password </strong> to access this wallet in the future. Please be sure to back it up!!! There is no way to recover a wallet if you do not save it. </p>
+        <p class="text-danger"> You will need your <strong>keystore file</strong> and <strong> password </strong> to access this wallet in the future. Please save & back it up!!! There is no way to recover a wallet if you do not save it. </p>
       </div>
     </div>
     <!-- /into text -->
@@ -46,7 +46,7 @@
 
       <div class="col-md-5 col-xs-10">
         <div class="form-group">
-          <h4>2. Copy Your Address.</h4>
+          <h4>2. Save Your Address</h4>
           <input class="form-control" type="text" readonly="readonly" ng-value="wallet.getChecksumAddressString()"/>
         </div>
       </div>
