@@ -1240,13 +1240,23 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       name: "Offline Transaction",
             url:"offline-transaction"
     },
-    digix: {
+    thedao: {
       id: 5,
+      name: "\"The DAO\"",
+            url: "the-dao"
+    },
+    digix: {
+      id: 6,
       name: "Digix",
             url: "digix"
     },
+    contracts: {
+      id: 7,
+      name: "Contracts",
+            url: "contracts"
+    },
     help: {
-      id: 6,
+      id: 8,
       name: "Help",
             url: "help"
     }
