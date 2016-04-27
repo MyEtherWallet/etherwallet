@@ -34,15 +34,15 @@
       <span class="form-group">
         <h4> 3. Read From Contract</h4>
       </span>
-      <span class="form-group">
+      <span class="form-group read-function">
         <h5> Function Name (ie: User Info or Proposals) </h5>
         <h6> Function Description (ie: user - adddress or 256 bits unsigned integer) </h6>
         <input class="form-control" />
+        <span class="output">&#8627;  0x29384927349283 (output of the above) </span>
       </span>
       <!-- / Read - Step 1 -->
 
       <!-- Read - Step 2 -->
-      <hr />
       <span class="form-group">
         <!-- example: integer / string / bytes? /  -->
          <p class="item">
@@ -80,7 +80,7 @@
       <!-- Write - Step 1 -->
       <span class="form-group">
         <h4> 3. Write To Contract </h4>
-        <div ng-controller="DropdownCtrl">
+        <div class="write-function" ng-controller="DropdownCtrl">
           <div class="btn-group" uib-dropdown keyboard-nav>
             <button id="simple-btn-keyboard-nav" type="button" class="btn btn-default" uib-dropdown-toggle>
             Select A Function <span class="caret"></span></button>
