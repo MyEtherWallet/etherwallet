@@ -7,11 +7,12 @@
       <div class="form-group">
         <h4>Enter password <small>(min 7 characters)</small> </h4>
         <input type="text" class="form-control" placeholder="Don't forget to save this!" ng-model="password" />
+        <label><input id="togglePasswordVisibility" type="checkbox" /> Toggle Password</label>
       </div>
     </div>
     <div class="col-sm-6">
       <div class="form-group">
-        <h4>Generate Wallet <br class="hidden-xs" /> &nbsp; </h4>
+        <h4>Generate Wallet </h4>
         <a class="btn btn-primary btn-block btnAction" func="generateSingleWallet" ng-click="genNewWallet()">GENERATE</a>
       </div>
     </div>
