@@ -18,6 +18,8 @@ var walletGenCtrl = function($scope) {
                 n: globalFuncs.scrypt.n
 			}));
             $scope.encFileName =  $scope.wallet.getV3Filename();
+            if(parent!=null)
+                parent.postMessage(JSON.stringify({address:$scope.wallet.getAddressString(), checksumAddress: $scope.wallet.getChecksumAddressString()}),"*");
             $scope.isDone =  true;
 		}
 	}
