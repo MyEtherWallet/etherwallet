@@ -24,7 +24,7 @@ var walletDecryptDrtv = function() {
           <div id="fuploadStatus" ng-bind-html="fileStatus"></div>\n \
         </div>\n \
         <div class="form-group" ng-if="requireFPass">\n \
-          <p> your file is encrypted with a password, enter the password here: </p>\n \
+          <p> Your file is encrypted. Please enter the password: </p>\n \
           <input class="form-control" type="password" placeholder="Password" ng-model="$parent.$parent.filePassword" ng-change="onFilePassChange()" />\n \
         </div>\n \
       </div>\n \
@@ -36,7 +36,7 @@ var walletDecryptDrtv = function() {
           <textarea rows="4" class="form-control" placeholder="Private Key" ng-model="$parent.$parent.manualprivkey" ng-change="onPrivKeyChange()"></textarea>\n \
         </div>\n \
         <div class="form-group" ng-if="requirePPass">\n \
-          <p> Your file is encrypted with a password, enter the password here: </p>\n \
+          <p> Your file is encrypted. Please enter the password: </p>\n \
           <input class="form-control" type="password" placeholder="Password" ng-model="$parent.$parent.privPassword" ng-change="onPrivKeyPassChange()">\n \
         </div>\n \
       </div>\n \
