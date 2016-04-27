@@ -5,6 +5,7 @@ var walletGenCtrl = function($scope) {
 	$scope.showWallet = false;
 	$scope.blob = $scope.blobEnc = "";
     $scope.isDone = true;
+    $scope.showPass = true;
 	$scope.genNewWallet = function() {
 		if ($scope.password.length < 7) {
 			alert(globalFuncs.errorMsgs[1]);

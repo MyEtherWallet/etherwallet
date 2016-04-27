@@ -6,8 +6,8 @@
     <div class="col-sm-6">
       <div class="form-group">
         <h4>Enter password <small>(min 7 characters)</small> </h4>
-        <input type="text" class="form-control" placeholder="Don't forget to save this!" ng-model="password" />
-        <label><input id="togglePasswordVisibility" type="checkbox" /> Toggle Password</label>
+        <input type="{{showPass && 'text' || 'password'}}" class="form-control" placeholder="Don't forget to save this!" ng-model="password" />
+        <label><input type="checkbox" ng-click="showPass=!showPass"/> Toggle Password</label>
       </div>
     </div>
     <div class="col-sm-6">
