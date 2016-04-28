@@ -35,4 +35,7 @@ ethFuncs.decimalToHex = function(dec){
 ethFuncs.hexToDecimal = function(hex){
     return new BigNumber(this.sanitizeHex(hex)).toString();
 }
+ethFuncs.getNakedAddress = function(address){
+    return address.toLowerCase().replace('0x', '');
+}
 module.exports = ethFuncs;

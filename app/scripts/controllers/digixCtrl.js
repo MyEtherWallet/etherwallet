@@ -8,6 +8,9 @@ var digixCtrl = function($scope, $sce, walletService) {
     $scope.digixContract = "0xf0160428a8552ac9bb7e050d90eeade4ddd52843";
     $scope.digixUserInfo = "0x1959a002000000000000000000000000";
     $scope.digixClaim = "0x4e71d92d";
+    $scope.balanceOf = "0x70a08231000000000000000000000000";
+    $scope.tokenContract = "0xe0b7927c4af23765cb51314a0e0521a9645f0e2a";
+    $scope.badgeContract = "0x54bda709fed875224eae569bb6817d96ef7ed9ad";
 	$scope.tx = {
 		gasLimit: globalFuncs.digixClaimTxGasLimit,
 		data: $scope.digixClaim,
@@ -40,7 +43,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 				});
 			}
 		});
-        tUserInfo.data = tUserInfo.data+$scope.wallet.getAddressString().toLowerCase().replace('0x', '');
+        tUserInfo.data = tUserInfo.data+ethFuncs.getNakedAddress($scope.wallet.getAddressString());
         ajaxReq.getEthCall(tUserInfo, function(data){
             if (data.error) {
 				$scope.etherBalance = data.msg;
@@ -51,6 +54,23 @@ var digixCtrl = function($scope, $sce, walletService) {
                  $scope.shareTotal = digixObj.share;
                  $scope.badgesTotal = digixObj.badges;
                  $scope.claimedTotal = digixObj.claimed.toString();
+			}
+        });
+        tUserInfo = {   data:   $scope.balanceOf+ethFuncs.getNakedAddress($scope.wallet.getAddressString()),
+                        to:     $scope.tokenContract};
+        ajaxReq.getEthCall(tUserInfo, function(data){
+            if (data.error) {
+				$scope.etherBalance = data.msg;
+			} else {
+			     $scope.tokenBalance = new BigNumber(data.data).div(1000000000).toString();
+			}
+        });
+        tUserInfo.to = $scope.badgeContract;
+        ajaxReq.getEthCall(tUserInfo, function(data){
+            if (data.error) {
+				$scope.etherBalance = data.msg;
+			} else {
+			     $scope.badgeBalance = new BigNumber(data.data).toString();
 			}
         });
 	}
