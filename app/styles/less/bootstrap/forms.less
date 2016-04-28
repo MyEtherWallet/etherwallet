@@ -34,6 +34,10 @@ label {
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
   margin-bottom: 5px;
   font-weight: bold;
+  small {
+    font-weight: 300;
+    font-size: 1em;
+  }
 }
 
 
@@ -140,8 +144,9 @@ output {
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
-    background-color: @input-bg-disabled;
+    background-color: #efefef;
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+    cursor: text !important;
   }
 
   &[disabled],
@@ -153,6 +158,11 @@ output {
   textarea& {
     height: auto;
   }
+}
+
+input[readonly]  {
+  background-color: #efefef;
+  cursor: text !important;
 }
 
 
@@ -218,12 +228,12 @@ input[type="search"] {
 .checkbox {
   position: relative;
   display: block;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 15px 0;
 
   label {
     min-height: @line-height-computed; // Ensure the input doesn't jump when there is no text
     padding-left: 20px;
+    padding-right: 15px;
     margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;

@@ -75,6 +75,11 @@ p {
   }
 }
 
+a {
+  cursor: pointer;
+}
+
+
 
 // Emphasis & misc
 // -------------------------
@@ -123,6 +128,10 @@ mark,
   .text-emphasis-variant(@state-danger-text);
 }
 
+.text-underline {
+  text-decoration: underline;
+}
+
 // Contextual backgrounds
 // For now we'll leave these alongside the text classes until v4 when we can
 // safely shift things around (per SemVer rules).
@@ -162,8 +171,8 @@ mark,
 // Unordered and Ordered lists
 ul,
 ol {
-  margin-top: 0;
-  margin-bottom: (@line-height-computed / 2);
+  margin-top: 1em;
+  margin-bottom: 1.2em;
   ul,
   ol {
     margin-bottom: 0;
