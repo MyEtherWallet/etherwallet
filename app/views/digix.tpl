@@ -29,7 +29,7 @@
             <br />
             <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         </p>
-        <p> DigixDAO Crowdsale Information: <br />
+        <p> DGD Crowdsale Information: <br />
             <strong style="margin-left: 1em"> Centstotal: {{centsTotal}} </strong>
             <br />
             <strong style="margin-left: 1em"> Weitotal: {{weiTotal}} </strong>
@@ -40,10 +40,10 @@
             <br />
             <strong style="margin-left: 1em"> Claimed? {{claimedTotal}} </strong>
         </p>
-        <p> DigixDAO Tokens: <br />
+        <p> DGD Tokens: <br />
             <strong style="margin-left: 1em"> 610.763987292 DGD (9 decimel places) </strong>
         </p>
-        <p> DigixDAO Badges: <br />
+        <p> DGD Badges: <br />
             <strong style="margin-left: 1em"> 151 DGDb (no decimel) </strong>
         </p>
       </div>
@@ -109,9 +109,9 @@
         <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
         <div class="radio">
           <label>
-            <input type="radio" name="currencyRadio" value="DGDtokens" ng-model="tx.unit"/>DGDtokens</label>
+            <input type="radio" name="currencyRadio" value="DGDtokens" ng-model="tx.unit"/>DGD Tokens</label>
           <label>
-            <input type="radio" name="currencyRadio" value="DGDbadges" ng-model="tx.unit"/>DGDbadges</label>
+            <input type="radio" name="currencyRadio" value="DGDbadges" ng-model="tx.unit"/>DGD Badges</label>
         </div>
           <div class="form-group">
             <label> Gas: </label>
