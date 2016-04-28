@@ -3,11 +3,15 @@
   <h2> Digix </h2>
   <p class="text-danger"><strong>The Claim function to receive DGD into your mist wallet will only work after April 28. If you execute this now, nothing will happen, but you will waste gas.</strong></p>
   <p>MyEtherWallet.com is proud to partner with Digix to provide a way for you to <strong>claim</strong> your DigixDAO (DGD) tokens! In order to do so, you must have participated in the token sale on March 30th/31st.</p>
+
   <div>
     <wallet-decrypt-drtv></wallet-decrypt-drtv>
   </div>
+
   <section class="row" ng-show="wallet!=null" ng-controller='digixCtrl'>
     <hr />
+
+    <!-- Account Information - Left Column -->
     <div class="col-sm-4">
       <h4> Account Information </h4>
       <div>
@@ -25,7 +29,7 @@
             <br />
             <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         </p>
-        <p> Digix Details: <br />
+        <p> DigixDAO Crowdsale Information: <br />
             <strong style="margin-left: 1em"> Centstotal: {{centsTotal}} </strong>
             <br />
             <strong style="margin-left: 1em"> Weitotal: {{weiTotal}} </strong>
@@ -36,11 +40,23 @@
             <br />
             <strong style="margin-left: 1em"> Claimed? {{claimedTotal}} </strong>
         </p>
+        <p> DigixDAO Tokens: <br />
+            <strong style="margin-left: 1em"> 610.763987292 DGD (9 decimel places) </strong>
+        </p>
+        <p> DigixDAO Badges: <br />
+            <strong style="margin-left: 1em"> 151 DGDb (no decimel) </strong>
+        </p>
       </div>
       <br />
     </div>
-    <div class="col-sm-8">
-      <h4>Claim your DGD Tokens</h4>
+    <!-- Account Information - Left Column -->
+
+
+    <!-- Claim / Send Information - Right Column -->
+    <div class="col-sm-8 digix-send">
+      <h4> <a class="active"> Claim your DGD Tokens </a> &middot; <a> Send your DGD Tokens or DGD Badges </a> </h4>
+
+      <!-- Claim Interface -->
       <div class="form-group col-xs-12">
         <label>
           Estimated fee consumption:
@@ -70,8 +86,45 @@
         <input class="form-control disabled" type="text" readonly ng-model="tx.data"/>
       </div>
       <div class="form-group col-xs-12">
-        <a class="btn btn-info btn-block" ng-click="generateTx()">CLAIM</a>
+        <a class="btn btn-info btn-block" ng-click="generateTx()">GENERATE CLAIM</a>
       </div>
+      <!-- / Claim Interface -->
+
+
+
+      <!-- Send Tokens Interface -->
+      <div class="form-group col-xs-10">
+        <label> To Address: </label>
+        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()"/>
+        <div ng-bind-html="validateAddressStatus"></div>
+      </div>
+      <div class="col-xs-2 address-identicon-container">
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+      </div>
+      <div class="form-group col-xs-12">
+        <label>
+          Amount to Send:
+          <br />
+        </label>
+        <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
+        <div class="radio">
+          <label>
+            <input type="radio" name="currencyRadio" value="DGDtokens" ng-model="tx.unit"/>DGDtokens</label>
+          <label>
+            <input type="radio" name="currencyRadio" value="DGDbadges" ng-model="tx.unit"/>DGDbadges</label>
+        </div>
+          <div class="form-group">
+            <label> Gas: </label>
+            <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit"/>
+          </div>
+      </div>
+      <div class="form-group col-xs-12">
+        <a class="btn btn-info btn-block" ng-click="generateTx()">GENERATE TRANSACTION</a>
+      </div>
+     <!-- / Send Tokens Interface -->
+
+
+      <!-- raw transaction / buttons -->
       <div class="col-xs-12">
          <div ng-bind-html="validateTxStatus"></div>
       </div>
@@ -82,9 +135,11 @@
         <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
       </div>
       <div class="form-group col-xs-12" ng-show="showRaw">
-        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">CLAIM</a>
+        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">EXECUTE TRANSACTION</a>
       </div>
       <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+      <!-- / raw transaction / buttons -->
+
 
       <!-- Modal -->
       <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
@@ -106,12 +161,13 @@
             </div>
             <div class="modal-footer text-center">
               <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
-              <button type="button" class="btn btn-primary" ng-click="sendTx()">Yes, I am sure! Make transaction.</button>
+              <button type="button" class="btn btn-primary" ng-click="sendTx()">Yes, I am sure! Execute transaction.</button>
             </div>
           </div>
         </div>
       </div>
       <!--/modal-->
+
     </div>
   </section>
 </div>

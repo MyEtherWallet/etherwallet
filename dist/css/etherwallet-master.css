@@ -5697,6 +5697,14 @@ input[type="password"] + .eye:before {
   margin-top: 15px;
   width: 100%;
 }
+.digix-send a.active {
+  cursor: default;
+  color: #333333;
+}
+.digix-send a.active:hover,
+.digix-send a.active:focus {
+  text-decoration: none;
+}
 /* Custom Utilities */
 .text-navy {
   color: #263c56;
