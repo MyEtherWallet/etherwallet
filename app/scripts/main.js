@@ -26,6 +26,7 @@ var decryptWalletCtrl = require('./controllers/decryptWalletCtrl');
 var viewWalletCtrl = require('./controllers/viewWalletCtrl');
 var sendTxCtrl = require('./controllers/sendTxCtrl');
 var digixCtrl = require('./controllers/digixCtrl');
+var theDaoCtrl = require('./controllers/theDaoCtrl');
 var sendOfflineTxCtrl = require('./controllers/sendOfflineTxCtrl');
 var globalService = require('./services/globalService');
 var walletService = require('./services/walletService');
@@ -51,4 +52,5 @@ app.controller('decryptWalletCtrl', ['$scope','$sce','walletService', decryptWal
 app.controller('viewWalletCtrl', ['$scope','walletService', viewWalletCtrl]);
 app.controller('sendTxCtrl', ['$scope','$sce','walletService', sendTxCtrl]);
 app.controller('digixCtrl', ['$scope','$sce','walletService', digixCtrl]);
+app.controller('theDaoCtrl', ['$scope','$sce','walletService', theDaoCtrl]);
 app.controller('sendOfflineTxCtrl', ['$scope','$sce','walletService', sendOfflineTxCtrl]);

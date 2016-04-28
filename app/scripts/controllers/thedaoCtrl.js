@@ -1,20 +1,28 @@
 'use strict';
-var thedaoCtrl = function($scope, $sce, walletService) {
+var theDaoCtrl = function($scope, $sce, walletService) {
 	new Modal(document.getElementById('sendTransaction'));
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.showAdvance = false;
 	$scope.showRaw = false;
+    $scope.slockitContract = "0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa";
+    $scope.slockitBalance = "0x70a08231000000000000000000000000";
+    $scope.slockitSupply = "0x18160ddd";
 	$scope.tx = {
-		gasLimit: globalFuncs.urlGet('gaslimit') == null ? globalFuncs.defaultTxGasLimit : globalFuncs.urlGet('gaslimit'),
-		data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
-		to: globalFuncs.urlGet('to') == null ? "" : globalFuncs.urlGet('to'),
+		gasLimit: 100000,
+		data: '',
+		to: $scope.slockitContract,
 		unit: "ether",
-		value: globalFuncs.urlGet('value') == null ? "" : globalFuncs.urlGet('value'),
+		value: 0,
 		nonce: null,
 		gasPrice: null,
 		donate: false
 	}
+    $scope.token = {
+        balance:0,
+        total:0,
+        totRaised:0
+    }
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
 		return walletService.wallet.getAddressString();
@@ -24,6 +32,7 @@ var thedaoCtrl = function($scope, $sce, walletService) {
 		$scope.setBalance();
 	});
 	$scope.setBalance = function() {
+        var tUserInfo = {to:$scope.slockitContract, data:$scope.slockitBalance};
 		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
@@ -36,26 +45,34 @@ var thedaoCtrl = function($scope, $sce, walletService) {
 				});
 			}
 		});
+        tUserInfo.data = tUserInfo.data+$scope.wallet.getAddressString().toLowerCase().replace('0x', '');
+        ajaxReq.getEthCall(tUserInfo, function(data){
+            if (data.error) {
+				$scope.etherBalance = data.msg;
+			} else {
+			     $scope.token.balance = new BigNumber(data.data).toString();
+			}
+        });
+        tUserInfo.data = $scope.slockitSupply;
+        ajaxReq.getEthCall(tUserInfo, function(data){
+            if (data.error) {
+				$scope.etherBalance = data.msg;
+			} else {
+			     $scope.token.total = new BigNumber(data.data).toString();
+			}
+        });
+        ajaxReq.getBalance($scope.slockitContract, function(data) {
+			if (data.error) {
+				$scope.etherBalance = data.msg;
+			} else {
+				$scope.token.totRaised = etherUnits.toEther(data.data.balance, 'wei');
+			}
+		});
 	}
 	$scope.$watch('tx', function() {
 		$scope.showRaw = false;
 		$scope.sendTxStatus = "";
 	}, true);
-	$scope.validateAddress = function() {
-		if (ethFuncs.validateEtherAddress($scope.tx.to)) {
-			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
-		} else {
-			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
-		}
-	}
-	$scope.toggleShowAdvance = function() {
-		$scope.showAdvance = !$scope.showAdvance;
-	}
-	$scope.onDonateClick = function() {
-		$scope.tx.to = globalFuncs.donateAddress;
-		$scope.tx.donate = true;
-		$scope.validateAddress();
-	}
 	$scope.generateTx = function() {
 		try {
 			if (!ethFuncs.validateEtherAddress($scope.tx.to)) throw globalFuncs.errorMsgs[5];
@@ -112,4 +129,4 @@ var thedaoCtrl = function($scope, $sce, walletService) {
 		}
 	}
 };
-module.exports = thedaoCtrl;
+module.exports = theDaoCtrl;

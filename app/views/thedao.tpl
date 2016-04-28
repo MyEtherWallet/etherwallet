@@ -6,7 +6,7 @@
   <div>
     <wallet-decrypt-drtv></wallet-decrypt-drtv>
   </div>
-  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+  <section class="row" ng-show="wallet!=null" ng-controller='theDaoCtrl'>
     <hr />
     <div class="col-sm-4">
       <h4> Account Information </h4>
@@ -26,9 +26,9 @@
             <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         </p>
         <p> "The DAO" Details: <br />
-            <strong class="text-primary" style="margin-left: 1em"> Your Tokens:  (Balance of Account) DAO Tokens </strong><br />
-            <strong style="margin-left: 1em"> Total Tokens:  (Total Supply) </strong><br />
-            <strong style="margin-left: 1em"> Total ETH Raised:  (balance of the DAO + the Balance of extraBalance) </strong>
+            <strong class="text-primary" style="margin-left: 1em"> Your Tokens:  {{token.balance}} DAO Tokens </strong><br />
+            <strong style="margin-left: 1em"> Total Tokens:  {{token.total}} </strong><br />
+            <strong style="margin-left: 1em"> Total ETH Raised:  {{token.totRaised}} ETH </strong>
         </p>
       </div>
       <br />
@@ -38,7 +38,7 @@
       <h4>Get DAO Tokens</h4>
       <div class="form-group col-xs-10">
         <label> To Address: </label>
-        <input class="form-control readonly"   type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()"/>
+        <input class="form-control readonly"   type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()" readonly/>
         <div ng-bind-html="validateAddressStatus"></div>
       </div>
       <div class="col-xs-2 address-identicon-container">
@@ -62,7 +62,7 @@
         <section>
           <div class="form-group">
             <label> Gas: </label>
-            <input class="form-control readonly" type="text" placeholder="75000" value="75000"/>
+            <input class="form-control readonly" type="text" ng-model="tx.gasLimit" readonly/>
           </div>
         </section>
         <!-- / advanced option panel -->
