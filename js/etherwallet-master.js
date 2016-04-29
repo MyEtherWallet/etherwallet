@@ -281,7 +281,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 			if (!ethFuncs.validateEtherAddress($scope.tokenTx.to)) throw globalFuncs.errorMsgs[5];
 			else if (!globalFuncs.isNumeric($scope.tokenTx.value) || parseFloat($scope.tokenTx.value) < 0) throw globalFuncs.errorMsgs[7];
 			else if ($scope.tokenTx.unit == "dgd" && new BigNumber($scope.tokenTx.value).greaterThan(new BigNumber($scope.tokenBalance))) throw globalFuncs.errorMsgs[7];
-			//else if ($scope.tokenTx.unit == "dgdb" && new BigNumber($scope.tokenTx.value).greaterThan(new BigNumber($scope.badgeBalance))) throw globalFuncs.errorMsgs[7];
+			else if ($scope.tokenTx.unit == "dgdb" && new BigNumber($scope.tokenTx.value).greaterThan(new BigNumber($scope.badgeBalance))) throw globalFuncs.errorMsgs[7];
 			var value = 0;
 			if ($scope.tokenTx.unit == "dgd") {
 				value = new BigNumber($scope.tokenTx.value).times(etherUnits.getValueOfUnit('gwei')).toString(16);
@@ -358,6 +358,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 	}
 };
 module.exports = digixCtrl;
+
 }).call(this,require("buffer").Buffer)
 },{"buffer":71}],5:[function(require,module,exports){
 (function (Buffer){
