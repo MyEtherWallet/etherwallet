@@ -47,7 +47,6 @@ globalFuncs.successMsgs = [ "Valid address",
 globalFuncs.scrypt = {
 	n: 1024
 };
-globalFuncs.postDelay = 300;
 globalFuncs.kdf = "scrypt";
 globalFuncs.defaultTxGasLimit = 21000;
 globalFuncs.digixClaimTxGasLimit = 150000;
