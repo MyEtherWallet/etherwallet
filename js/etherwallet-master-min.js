@@ -6,7 +6,6 @@ ajaxReq.http = null;
 ajaxReq.postSerializer = null;
 ajaxReq.SERVERURL = "https://rpc.myetherwallet.com/api.php";
 ajaxReq.COINMARKETCAPAPI = "https://coinmarketcap-nexuist.rhcloud.com/api/";
-ajaxReq.pendingPosts = [];
 ajaxReq.config = {
 	headers: {
 		'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -37,23 +36,10 @@ ajaxReq.getEthCall = function(txobj, callback) {
 		ethCall: txobj
 	}, callback);
 }
-ajaxReq.queuePost = function() {
-    var data = this.pendingPosts[0].data;
-    var callback = this.pendingPosts[0].callback;
+ajaxReq.post = function (data, callback) {
 	this.http.post(this.SERVERURL, this.postSerializer(data), this.config).then(function(data) {
-		callback(data.data);
-        ajaxReq.pendingPosts.splice(0, 1);
-        if(ajaxReq.pendingPosts.length>0)
-            ajaxReq.queuePost();
+		callback(data.data)
 	});
-}
-ajaxReq.post = function(data, callback) {
-	this.pendingPosts.push({
-		data: data,
-		callback: callback
-	});
-    if(this.pendingPosts.length==1)
-        this.queuePost();
 }
 ajaxReq.getETHvalue = function(callback) {
 	var prefix = "eth";
@@ -1033,7 +1019,6 @@ globalFuncs.successMsgs = [ "Valid address",
 globalFuncs.scrypt = {
 	n: 1024
 };
-globalFuncs.postDelay = 300;
 globalFuncs.kdf = "scrypt";
 globalFuncs.defaultTxGasLimit = 21000;
 globalFuncs.digixClaimTxGasLimit = 150000;
