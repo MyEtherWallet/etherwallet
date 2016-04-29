@@ -65,8 +65,9 @@ var digixCtrl = function($scope, $sce, walletService) {
 			     $scope.tokenBalance = new BigNumber(data.data).div(1000000000).toString();
 			}
         });
-        tUserInfo.to = $scope.badgeContract;
-        ajaxReq.getEthCall(tUserInfo, function(data){
+        var badgeInfo = {   data:   $scope.balanceOf+ethFuncs.getNakedAddress($scope.wallet.getAddressString()),
+                            to:     $scope.badgeContract};
+        ajaxReq.getEthCall(badgeInfo, function(data){
             if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {
