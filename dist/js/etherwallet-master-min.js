@@ -999,9 +999,9 @@ globalFuncs.getSuccessText = function(str) {
 globalFuncs.getDangerText = function(str) {
 	return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
-globalFuncs.errorMsgs = [   "Please enter valid amount", 
-                            "Your password must be at least 7 characters", 
-                            "Sorry! we dont have a clue what kind of wallet file this is.", 
+globalFuncs.errorMsgs = [   "Please enter valid amount",
+                            "Your password must be at least 7 characters",
+                            "Sorry! we dont have a clue what kind of wallet file this is.",
                             "not a valid wallet file",
                             "This unit doesn\'t exists, please use the one of the following units",
                             "Invalid address",
@@ -1014,13 +1014,13 @@ globalFuncs.errorMsgs = [   "Please enter valid amount",
                             "Invalid signed transaction"];
 globalFuncs.successMsgs = [ "Valid address",
                             "Wallet successfully decrypted",
-                            "Transaction submitted. TX ID: "];  
+                            "Transaction submitted. TX ID: "];
 globalFuncs.scrypt = {
 	n: 1024
 };
 globalFuncs.kdf = "scrypt";
 globalFuncs.defaultTxGasLimit = 21000;
-globalFuncs.digixClaimTxGasLimit = 100000;
+globalFuncs.digixClaimTxGasLimit = 150000;
 globalFuncs.donateAddress = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
 globalFuncs.isNumeric = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
@@ -1037,6 +1037,7 @@ globalFuncs.stripTags = function(str){
     return str;
 }
 module.exports = globalFuncs;
+
 },{}],19:[function(require,module,exports){
 'use strict';
 var angular = require('angular');
