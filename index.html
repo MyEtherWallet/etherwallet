@@ -1023,9 +1023,10 @@
 
     <!-- Claim / Send Information - Right Column -->
     <div class="col-sm-8 digix-send">
-      <h4> <a class="active"> Claim your DGD Tokens </a>  <!--<a> &middot; Send your DGD Tokens or DGD Badges </a>--> </h4>
+      <h4> <a ng-class="{active: !showSend}" ng-click="showSend=false"> Claim your DGD Tokens </a>  <a ng-class="{active: showSend}" ng-click="showSend=true"> &middot; Send your DGD Tokens or DGD Badges </a> </h4>
 
       <!-- Claim Interface -->
+      <div ng-show="!showSend">
       <div class="form-group col-xs-12">
         <label>
           Estimated fee consumption:
@@ -1057,39 +1058,42 @@
       <div class="form-group col-xs-12">
         <a class="btn btn-info btn-block" ng-click="generateTx()">GENERATE CLAIM</a>
       </div>
+      </div>
       <!-- / Claim Interface -->
 
 
 
       <!-- Send Tokens Interface -->
-      <!--<div class="form-group col-xs-10">
+      <div ng-show="showSend">
+      <div class="form-group col-xs-10">
         <label> To Address: </label>
-        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()"/>
+        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tokenTx.to" ng-change="validateAddress(tokenTx.to,'validateAddressStatus')"/>
         <div ng-bind-html="validateAddressStatus"></div>
       </div>
       <div class="col-xs-2 address-identicon-container">
-        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
       </div>
       <div class="form-group col-xs-12">
         <label>
           Amount to Send:
           <br />
         </label>
-        <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
+        <input class="form-control" type="text" placeholder="Amount" ng-model="tokenTx.value"/>
         <div class="radio">
           <label>
-            <input type="radio" name="currencyRadio" value="DGDtokens" ng-model="tx.unit"/>DGD Tokens</label>
+            <input type="radio" name="tokenRadio" value="dgd" ng-model="tokenTx.unit"/>DGD Tokens</label>
           <label>
-            <input type="radio" name="currencyRadio" value="DGDbadges" ng-model="tx.unit"/>DGD Badges</label>
+            <input type="radio" name="tokenRadio" value="dgdb" ng-model="tokenTx.unit"/>DGD Badges</label>
         </div>
           <div class="form-group">
             <label> Gas: </label>
-            <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit"/>
+            <input class="form-control" type="text" ng-model="tx.gasLimit"/>
           </div>
       </div>
       <div class="form-group col-xs-12">
-        <a class="btn btn-info btn-block" ng-click="generateTx()">GENERATE TRANSACTION</a>
-      </div> -->
+        <a class="btn btn-info btn-block" ng-click="generateTokenTx()">GENERATE TRANSACTION</a>
+      </div>
+      </div>
      <!-- / Send Tokens Interface -->
 
 
@@ -1121,10 +1125,10 @@
             <div class="modal-body">
               <h4>
                 You are about to send
-                <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
-                <strong id="confirmCurrancy" class="text-primary"> {{tx.unit}} </strong>
+                <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
+                <strong id="confirmCurrancy" class="text-primary"> {{tokenTx.unit}} </strong>
                 to address
-                <strong id="confirmAddress" class="text-primary"> {{tx.to}} </strong>
+                <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
               </h4>
               <h4> Are you <span class="text-underline"> sure </span> you want to do this?</h4>
             </div>
