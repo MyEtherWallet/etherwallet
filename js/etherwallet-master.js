@@ -639,7 +639,7 @@ var walletGenCtrl = function($scope) {
     $scope.isDone = true;
     $scope.showPass = true;
 	$scope.genNewWallet = function() {
-		if ($scope.password.length < 7) {
+		if (!$scope.isStrongPass()) {
 			alert(globalFuncs.errorMsgs[1]);
 		} else if($scope.isDone){
             $scope.isDone = false;
@@ -662,6 +662,10 @@ var walletGenCtrl = function($scope) {
 			private: $scope.wallet.getPrivateKeyString()
 		}]));
 	}
+    $scope.isStrongPass = function(){
+        var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+        return re.test($scope.password);
+    }
 };
 module.exports = walletGenCtrl;
 },{}],12:[function(require,module,exports){
@@ -923,7 +927,7 @@ globalFuncs.getDangerText = function(str) {
 	return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
 globalFuncs.errorMsgs = [   "Please enter valid amount",
-                            "Your password must be at least 7 characters",
+                            "Your password must be 8 characters in length and must contain atlease one number, one lowercase and one uppercase letter",
                             "Sorry! we dont have a clue what kind of wallet file this is.",
                             "not a valid wallet file",
                             "This unit doesn\'t exists, please use the one of the following units",
