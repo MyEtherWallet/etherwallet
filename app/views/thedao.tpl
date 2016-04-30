@@ -3,7 +3,7 @@
   <section class="row">
   <div class="col-md-9 col-sm-8">
     <h2> "The DAO" </h2>
-    <p>The best way to participate in the DAO Creation is to send a transaction to The DAO Address from the account you want to do the voting with in the future. You can do that here! Simply access the account, enter the amount of ETH you would like, and press send. Wait a minute, refresh the page, and your tokens will be displayed in the lower left.</p>
+    <p>The best way to participate in the DAO Creation is to send a transaction to The DAO Address from the account you want to do the voting with in the future. You can do that here! Simply access the account, enter the amount of ETH you would like, and press send. Your tokens will be displayed in the lower left almost immediately.</p>
     <p>It should be noted that in order to participate in the voting process later, you will need a <em>small</em> amount of ETH to cover the cost of gas.</p>
     <p>Helpful links: <a href="http://daohub.org/" target="_blank">DAOHub</a> &middot; <a href="https://blog.slock.it/the-art-of-the-dao-experiments-with-the-generic-dao-framework-4782f7862131#.bibozinlb" target="_blank">The Art of the DAO</a> &middot; <a href="https://forum.daohub.org/c/theDAO" target="_blank">DAO Hub Forums (Support, too!)</a></p>
     </div>
@@ -32,7 +32,7 @@
             <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         </p>
         <p> "The DAO" Details: <br />
-          <strong class="text-primary" style="margin-left: 1em"> Your Tokens: <br /> {{token.balance}}</strong>
+          <strong class="text-primary" style="margin-left: 1em"> Your Tokens: {{token.balance}}</strong>
         </p>
 
         </p>
@@ -44,7 +44,7 @@
       <h4>Get DAO Tokens</h4>
       <div class="form-group col-xs-10">
         <label> To Address: </label>
-        <input class="form-control readonly"   type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()" readonly/>
+        <input class="form-control readonly"   type="text" placeholder="0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413" ng-model="tx.to" ng-change="validateAddress()" readonly/>
         <div ng-bind-html="validateAddressStatus"></div>
       </div>
       <div class="col-xs-2 address-identicon-container">
