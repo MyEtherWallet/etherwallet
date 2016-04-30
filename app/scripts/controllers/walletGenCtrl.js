@@ -7,7 +7,7 @@ var walletGenCtrl = function($scope) {
     $scope.isDone = true;
     $scope.showPass = true;
 	$scope.genNewWallet = function() {
-		if ($scope.password.length < 7) {
+		if (!$scope.isStrongPass()) {
 			alert(globalFuncs.errorMsgs[1]);
 		} else if($scope.isDone){
             $scope.isDone = false;
@@ -30,5 +30,9 @@ var walletGenCtrl = function($scope) {
 			private: $scope.wallet.getPrivateKeyString()
 		}]));
 	}
+    $scope.isStrongPass = function(){
+        var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+        return re.test($scope.password);
+    }
 };
 module.exports = walletGenCtrl;

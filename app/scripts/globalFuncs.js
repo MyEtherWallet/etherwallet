@@ -29,7 +29,7 @@ globalFuncs.getDangerText = function(str) {
 	return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
 globalFuncs.errorMsgs = [   "Please enter valid amount",
-                            "Your password must be at least 7 characters",
+                            "Your password must be 8 characters in length and must contain atlease one number, one lowercase and one uppercase letter",
                             "Sorry! we dont have a clue what kind of wallet file this is.",
                             "not a valid wallet file",
                             "This unit doesn\'t exists, please use the one of the following units",

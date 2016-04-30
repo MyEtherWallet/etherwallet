@@ -7,7 +7,7 @@
       <div class="form-group">
         <h4>Enter password <small>(min 7 characters)</small> </h4>
         <div class="input-group">
-          <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-model="password" />
+          <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-model="password" ng-class="isStrongPass() ? 'valid' : 'invalid'"/>
           <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
         </div>
       </div>
