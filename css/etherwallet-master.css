@@ -5690,6 +5690,14 @@ input[type="password"] + .eye:before {
 .digix-send a.active:focus {
   text-decoration: none;
 }
+.form-control.valid:not(.ng-pristine) {
+  border: 1px solid #5cb85c;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(92, 184, 92, 0.6);
+}
+.form-control.invalid:not(.ng-pristine) {
+  border: 1px solid #d9534f;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(217, 83, 79, 0.6);
+}
 /* Custom Utilities */
 .text-navy {
   color: #263c56;
