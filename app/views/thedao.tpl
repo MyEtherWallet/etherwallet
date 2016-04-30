@@ -1,8 +1,14 @@
 <!-- the dao -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.thedao.id">
-  <h2> "The DAO" </h2>
-    <p>The best way to participate in the DAO Creation is to send a transaction to the DAO-Address from the account you want to do the voting. You can do that here. Simply access the account, enter the amount of ETH you would like, and press send. It should be noted that in order to participate in the voting process later, you will need a <em>small</em> amount of ETH to cover the cost of gas.</p>
-    <p>Helpful links: <a href="http://daohub.org/" target="_blank">DAOHub</a> &middot; <a href="https://blog.slock.it/the-art-of-the-dao-experiments-with-the-generic-dao-framework-4782f7862131#.bibozinlb" target="_blank">The Art of the DAO</a></p>
+  <section class="row">
+  <div class="col-md-9 col-sm-8">
+    <h2> "The DAO" </h2>
+    <p>The best way to participate in the DAO Creation is to send a transaction to The DAO Address from the account you want to do the voting with in the future. You can do that here! Simply access the account, enter the amount of ETH you would like, and press send. Wait a minute, refresh the page, and your tokens will be displayed in the lower left.</p>
+    <p>It should be noted that in order to participate in the voting process later, you will need a <em>small</em> amount of ETH to cover the cost of gas.</p>
+    <p>Helpful links: <a href="http://daohub.org/" target="_blank">DAOHub</a> &middot; <a href="https://blog.slock.it/the-art-of-the-dao-experiments-with-the-generic-dao-framework-4782f7862131#.bibozinlb" target="_blank">The Art of the DAO</a> &middot; <a href="https://forum.daohub.org/c/theDAO" target="_blank">DAO Hub Forums (Support, too!)</a></p>
+    </div>
+    <div class="col-md-3 col-sm-4"><img src="images/thedao-addressicon.png" width="300px" height="auto" style="margin-top: 32px;" /></div>
+  </section>
   <div>
     <wallet-decrypt-drtv></wallet-decrypt-drtv>
   </div>
