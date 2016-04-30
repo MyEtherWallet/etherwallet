@@ -33,7 +33,7 @@
         </p>
         <p> "The DAO" Details: <br />
           <strong class="text-primary" style="margin-left: 1em"> Your Tokens: {{token.balance}}</strong> <br />
-          <strong  style="margin-left: 1em" >Total Raised: {{token.totRaised}} ETH</strong>
+          <!--<strong  style="margin-left: 1em" >Total Raised: {{token.totRaised}} ETH</strong>-->
         </p>
 
         </p>
