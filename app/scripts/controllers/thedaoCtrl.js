@@ -9,7 +9,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.slockitBalance = "0x70a08231";
 	$scope.slockitSupply = "0x18160ddd";
 	$scope.tx = {
-		gasLimit: 100000,
+		gasLimit: 85000,
 		data: '',
 		to: $scope.slockitContract,
 		unit: "ether",
