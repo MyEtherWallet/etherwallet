@@ -507,7 +507,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	walletService.password = '';
 	$scope.showAdvance = false;
 	$scope.showRaw = false;
-	$scope.slockitContract = "0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa";
+	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413";
 	$scope.slockitBalance = "0x70a08231";
 	$scope.slockitSupply = "0x18160ddd";
 	$scope.tx = {
@@ -582,6 +582,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	}
 };
 module.exports = theDaoCtrl;
+
 },{}],9:[function(require,module,exports){
 'use strict';
 var viewCtrl = function($scope, globalService) {
@@ -1331,13 +1332,13 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       name: "Offline Transaction",
             url:"offline-transaction"
     },
-//    thedao: {
-//      id: 5,
-//      name: "\"The DAO\"",
-//            url: "the-dao"
-//    },
-    digix: {
+    thedao: {
       id: 5,
+      name: "\"The DAO\"",
+            url: "the-dao"
+    },
+    digix: {
+      id: 6,
       name: "Digix",
             url: "digix"
     },
@@ -1347,7 +1348,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
 //            url: "contracts"
 //    },
     help: {
-      id: 6,
+      id: 7,
       name: "Help",
             url: "help"
     }
