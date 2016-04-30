@@ -43,4 +43,9 @@ ethFuncs.padLeft = function(n, width, z) {
 	n = n + '';
 	return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
+ethFuncs.getDataObj = function(to, func, arrVals) {
+	var val="";
+    for(var i=0;i<arrVals.length;i++) val+=this.padLeft(this.getNakedAddress(arrVals[i]),64);
+    return {to: to, data: func+val};
+}
 module.exports = ethFuncs;

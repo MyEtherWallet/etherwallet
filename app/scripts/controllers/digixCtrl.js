@@ -1,17 +1,17 @@
 'use strict';
 var digixCtrl = function($scope, $sce, walletService) {
-	new Modal(document.getElementById('sendTransaction'));
+	new Modal(document.getElementById('sendTransaction'));    
 	walletService.wallet = null;
 	walletService.password = '';
-	$scope.showSend = true;
+	$scope.showSend = false;
 	$scope.showRaw = false;
 	$scope.digixContract = "0xf0160428a8552ac9bb7e050d90eeade4ddd52843";
+	$scope.tokenContract = "0xe0b7927c4af23765cb51314a0e0521a9645f0e2a";
+	$scope.badgeContract = "0x54bda709fed875224eae569bb6817d96ef7ed9ad";
 	$scope.digixUserInfo = "0x1959a002";
 	$scope.digixClaim = "0x4e71d92d";
 	$scope.digixTransfer = "0xa9059cbb";
 	$scope.balanceOf = "0x70a08231";
-	$scope.tokenContract = "0xe0b7927c4af23765cb51314a0e0521a9645f0e2a";
-	$scope.badgeContract = "0x54bda709fed875224eae569bb6817d96ef7ed9ad";
 	$scope.tx = {
 		gasLimit: globalFuncs.digixClaimTxGasLimit,
 		data: $scope.digixClaim,
@@ -59,8 +59,8 @@ var digixCtrl = function($scope, $sce, walletService) {
 				});
 			}
 		});
-		tUserInfo.data = tUserInfo.data + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64);
-		ajaxReq.getEthCall(tUserInfo, function(data) {
+		var userInfo = ethFuncs.getDataObj($scope.digixContract, $scope.digixUserInfo, [$scope.wallet.getAddressString()]);
+		ajaxReq.getEthCall(userInfo, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {
@@ -72,22 +72,16 @@ var digixCtrl = function($scope, $sce, walletService) {
 				$scope.claimedTotal = digixObj.claimed.toString();
 			}
 		});
-		tUserInfo = {
-			data: $scope.balanceOf + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64),
-			to: $scope.tokenContract
-		};
-		ajaxReq.getEthCall(tUserInfo, function(data) {
+		var tokenBalance = ethFuncs.getDataObj($scope.tokenContract, $scope.balanceOf, [$scope.wallet.getAddressString()]);
+		ajaxReq.getEthCall(tokenBalance, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {
 				$scope.tokenBalance = new BigNumber(data.data).div(1000000000).toString();
 			}
 		});
-		var badgeInfo = {
-			data: $scope.balanceOf + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64),
-			to: $scope.badgeContract
-		};
-		ajaxReq.getEthCall(badgeInfo, function(data) {
+		var badgeBalance = ethFuncs.getDataObj($scope.badgeContract, $scope.balanceOf, [$scope.wallet.getAddressString()]);
+		ajaxReq.getEthCall(badgeBalance, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {
@@ -145,60 +139,11 @@ var digixCtrl = function($scope, $sce, walletService) {
 			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
 		}
 	}
-	$scope.generateTx = function() {
-		try {
-			if (!ethFuncs.validateEtherAddress($scope.tx.to)) throw globalFuncs.errorMsgs[5];
-			else if (!globalFuncs.isNumeric($scope.tx.value) || parseFloat($scope.tx.value) < 0) throw globalFuncs.errorMsgs[7];
-			else if (!globalFuncs.isNumeric($scope.tx.gasLimit) || parseFloat($scope.tx.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
-			else if (!ethFuncs.validateHexString($scope.tx.data)) throw globalFuncs.errorMsgs[9];
-			ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
-				if (data.error) throw data.msg;
-				data = data.data;
-				var rawTx = {
-					nonce: ethFuncs.sanitizeHex(data.nonce),
-					gasPrice: ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
-					gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex($scope.tx.gasLimit)),
-					to: ethFuncs.sanitizeHex($scope.tx.to),
-					value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit))),
-					data: ethFuncs.sanitizeHex($scope.tx.data)
-				}
-				var eTx = new ethUtil.Tx(rawTx);
-				eTx.sign(new Buffer($scope.wallet.getPrivateKeyString(), 'hex'));
-				$scope.rawTx = JSON.stringify(rawTx);
-				$scope.signedTx = '0x' + eTx.serialize().toString('hex');
-				$scope.showRaw = true;
-			});
-			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
-		} catch (e) {
-			$scope.showRaw = false;
-			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
-		}
-	}
+	$scope.generateTx = function(){
+	   uiFuncs.generateTx($scope,$sce);
+    }
 	$scope.sendTx = function() {
-		new Modal(document.getElementById('sendTransaction')).close();
-		ajaxReq.sendRawTx($scope.signedTx, function(data) {
-			if (data.error) {
-				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
-			} else {
-				$scope.setBalance();
-				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + " " + data.data));
-			}
-		});
-	}
-	$scope.transferAllBalance = function() {
-		try {
-			ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
-				if (data.error) throw data.msg;
-				data = data.data;
-				var gasPrice = new BigNumber(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice))).times($scope.tx.gasLimit);
-				var maxVal = new BigNumber(data.balance).minus(gasPrice);
-				$scope.tx.unit = "ether";
-				$scope.tx.value = etherUnits.toEther(maxVal, 'wei');
-			});
-		} catch (e) {
-			$scope.showRaw = false;
-			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
-		}
+		uiFuncs.sendTx($scope,$sce);
 	}
 };
 module.exports = digixCtrl;
