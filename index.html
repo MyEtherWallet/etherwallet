@@ -30,11 +30,11 @@
 
 <body>
 
-<a href="https://www.google.com/#q=what%20time%20is%20it%20in%20la" class="announcement" target="_blank">
+<!--<a href="https://www.google.com/#q=what%20time%20is%20it%20in%20la" class="announcement" target="_blank">
   <div class="container">
     HEY! Look here! If it is between <strong class="text-underline">11pm and midnight PST on 3/30/2016</strong> please hold off on sending / digix-ing / dao-ing. We are updating some server stuff. If you try to send, it may not go thru. You will NOT lose anything...it just wont work. Thanks! <strong>Click to learn what time is it right now.</strong>
   </div>
-</a>
+</a>-->
 
 <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
   <div class="container">
