@@ -49,7 +49,7 @@ gulp.task('less', function (cb) {
       .pipe(less({ compress: false })).on('error', notify.onError(function (error) {
         return "ERROR! Problem file : " + error.message;
       }))
-      .pipe(autoprefixer('last 2 version', 'ie 9', 'ios 6', 'android 4'))
+      .pipe(autoprefixer('last 2 version', 'ios 6', 'android 4'))
       .pipe(rename(lessOutputFile))
       .pipe(gulp.dest(lessOutputFolder))
       .pipe(gulp.dest(cxLessOutputFolder))
@@ -118,17 +118,7 @@ gulp.task('copy-fonts', function() {
    .pipe(notify({message:'CX Fonts', onLast:true}));
 });
 
-gulp.task('watchJS', function() {
-  gulp.watch([jsFiles, AllJsFiles],[
-    'browserify',
-    'cxBrowserify',
-	  'minJS',
-    'cxMinJS'
-  ]);
-});
-
-
-gulp.task('template', function () {
+gulp.task('buildHTML', function () {
     gulp.src(htmlPages)
       .pipe(fileinclude({
         prefix: '@@',
@@ -140,14 +130,27 @@ gulp.task('template', function () {
     .pipe(notify({message:'CX HTML Pages Complete', onLast:true}));
 });
 
+// Watch Tasks
+gulp.task('watchJS', function() {
+  gulp.watch([jsFiles, AllJsFiles],[
+    'browserify',
+    'cxBrowserify',
+    'minJS',
+    'cxMinJS'
+  ]);
+});
 gulp.task('watchLess', function() {
     gulp.watch(lessWatchFolder, ['less']);
 });
 gulp.task('watchPAGES', function() {
-    gulp.watch(htmlPages, ['template']);
+    gulp.watch(htmlPages, ['buildHTML']);
 });
 gulp.task('watchTPL', function() {
-    gulp.watch(tplFiles, ['template']);
+    gulp.watch(tplFiles, ['buildHTML']);
 });
 
-gulp.task('default', ['copy-images','copy-fonts','template','staticJS', 'less', 'browserify', 'cxBrowserify', 'minJS', 'cxMinJS', 'watchJS' , 'watchLess', 'watchPAGES', 'watchTPL']);
+
+gulp.task('build', ['copy-images','copy-fonts','buildHTML','less', 'staticJS', 'browserify', 'cxBrowserify', 'minJS', 'cxMinJS']);
+gulp.task('watch', ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL']);
+
+gulp.task('default', ['build', 'watch']);
