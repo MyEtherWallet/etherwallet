@@ -5698,6 +5698,72 @@ input[type="password"] + .eye:before {
   border: 1px solid #d9534f;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(217, 83, 79, 0.6);
 }
+#etherWalletPopUp {
+  padding: 25px 8px 10px;
+  width: 325px;
+  position: relative;
+}
+#etherWalletPopUp .settings-icon {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+#etherWalletPopUp .settings-icon:hover,
+#etherWalletPopUp .settings-icon:focus,
+#etherWalletPopUp .settings-icon:active {
+  outline: 0;
+}
+#etherWalletPopUp .back-icon {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+#etherWalletPopUp .back-icon:hover,
+#etherWalletPopUp .back-icon:focus,
+#etherWalletPopUp .back-icon:active {
+  outline: 0;
+}
+#etherWalletPopUp input[type=radio] {
+  margin-right: 5px;
+}
+#etherWalletPopUp label {
+  font-weight: normal;
+}
+#etherWalletPopUp table {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+#etherWalletPopUp .form-group {
+  margin-bottom: .5em;
+}
+/* uncss:ignore */
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+  cursor: default;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  box-shadow: none;
+}
+.announcement-warning {
+  background-color: #d9534f;
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+}
+.announcement-warning a {
+  color: white;
+  text-decoration: underline;
+}
+/* uncss:ignore */
+.quicksend-address {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  max-width: 170px;
+  word-wrap: break-word;
+  max-width: 190px;
+  font-size: 12px;
+  margin-left: 20px;
+}
 /* Custom Utilities */
 .text-navy {
   color: #263c56;
