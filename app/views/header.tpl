@@ -30,18 +30,17 @@
 
 <body>
 
+<a href="https://www.google.com/#q=what%20time%20is%20it%20in%20la" class="announcement" target="_blank">
+  <div class="container">
+    HEY! Look here! If it is between <strong class="text-underline">11pm and midnight PST on 3/30/2016</strong> please hold off on sending / digix-ing / dao-ing. We are updating some server stuff. If you try to send, it may not go thru. You will NOT lose anything...it just wont work. Thanks! <strong>Click to learn what time is it right now.</strong>
+  </div>
+</a>
+
 <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
   <div class="container">
     If you created a wallet -or- downloaded the repo before <strong>Dec. 31st, 2015</strong>, please check your wallets & download a new version of the repo. Click for details.
   </div>
 </a>
-<!--
-<a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" class="announcement" target="_blank">
-  <div class="container">
-    Use our CHROME EXTENSION to save your wallets <em>in your browser</em> for quick access. Easily transfer Ether from any page. Still 100% client-side!
-  </div>
-</a>
--->
 
 <header class="container-fluid bg-gradient text-white">
 <section class="container">
