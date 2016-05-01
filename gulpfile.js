@@ -25,8 +25,8 @@ var lessOutputFile = 'etherwallet-master.css';
 var lessOutputFileMin = 'etherwallet-master.min.css';
 
 //html Pages
-var htmlPages = "./app/pages/*.html";
-var tplFiles = "./app/views/*.tpl";
+var htmlPages = "./app/layouts/*.html";
+var tplFiles = "./app/includes/*.tpl";
 
 //js files
 var jsFiles = "./app/scripts/*.js";
