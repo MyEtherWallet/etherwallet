@@ -1,4 +1,4 @@
-<%= header %>
+@@include( '../views/header.tpl' )
 
   <!-- navtabs -->
   <section class="container" ng-controller='tabsCtrl'>
@@ -14,25 +14,25 @@
 
     <div class="tab-content" >
 
-      <%= generateWallet %>
+      @@include( '../views/generateWallet.tpl' )
 
-      <%= bulkGenerate %>
+      @@include( '../views/bulkGenerate.tpl' )
 
-      <%= viewWalletInfo %>
+      @@include( '../views/viewWalletInfo.tpl' )
 
-      <%= sendTransaction %>
+      @@include( '../views/sendTransaction.tpl' )
 
-      <%= offlineTransaction %>
+      @@include( '../views/offlineTransaction.tpl' )
 
-      <%= contracts %>
+      @@include( '../views/contracts.tpl' )
 
-      <%= thedao %>
+      @@include( '../views/thedao.tpl' )
 
-      <%= digix %>
+      @@include( '../views/digix.tpl' )
 
-      <%= help %>
+      @@include( '../views/help.tpl' )
 
-      <%= print %>
+      @@include( '../views/print.tpl' )
 
     </div>
 
@@ -40,4 +40,4 @@
 
   </section>
 
-  <%= footer %>
+  @@include( '../views/footer.tpl' )

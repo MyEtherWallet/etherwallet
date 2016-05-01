@@ -7,13 +7,12 @@ var cssnano = require('gulp-cssnano');
 var notify = require('gulp-notify');
 var rename = require('gulp-rename');
 var uncss = require('gulp-uncss');
-var template = require('gulp-template');
 var gutil = require('gulp-util');
 var concat = require('gulp-concat');
 var clean = require('gulp-clean');
-var imagemin = require('gulp-imagemin');
 var uglify = require('gulp-uglify');
-var shell = require('gulp-shell')
+var shell = require('gulp-shell');
+var fileinclude = require('gulp-file-include');
 
 // watch folders
 var lessWatchFolder = './app/styles/less/**/*.less';
@@ -93,14 +92,12 @@ gulp.task('minJS',['browserify'],function () {
   return gulp
     .src('./dist/js/etherwallet-master.js')
       .pipe(concat('etherwallet-master-min.js'))
-     // .pipe(uglify())
       .pipe(gulp.dest('./dist/js/'))
      .pipe(notify('JS Concat and Uglified'));
 });
 
 gulp.task('copy-images', function() {
    gulp.src(imagesFolder)
-   //.pipe(imagemin())
    .pipe(gulp.dest(imagesOutputFolder))
    .pipe(notify({message:'All images copied', onLast:true}));
 });
@@ -117,38 +114,16 @@ gulp.task('watchJS', function() {
 	'minJS'
   ]);
 });
-gulp.task('genHTMLPages', function () {
-    var header=fs.readFileSync("./app/views/header.tpl", "utf8");
-    var generateWallet=fs.readFileSync("./app/views/generateWallet.tpl", "utf8");
-    var bulkGenerate=fs.readFileSync("./app/views/bulkGenerate.tpl", "utf8");
-    var viewWalletInfo=fs.readFileSync("./app/views/viewWalletInfo.tpl", "utf8");
-    var sendTransaction=fs.readFileSync("./app/views/sendTransaction.tpl", "utf8");
-    var offlineTransaction=fs.readFileSync("./app/views/offlineTransaction.tpl", "utf8");
-    var contracts=fs.readFileSync("./app/views/contracts.tpl", "utf8");
-    var thedao=fs.readFileSync("./app/views/thedao.tpl", "utf8");
-    var digix=fs.readFileSync("./app/views/digix.tpl", "utf8");
-    var print=fs.readFileSync("./app/views/print.tpl", "utf8");
-    var help=fs.readFileSync("./app/views/help.tpl", "utf8");
-    var footer=fs.readFileSync("./app/views/footer.tpl", "utf8");
-    var generateWalletEmbedded=fs.readFileSync("./app/views/generateWalletEmbedded.tpl", "utf8");
-    return gulp.src(htmlPages)
-        .pipe(template({
-            header: header,
-            generateWallet: generateWallet,
-            bulkGenerate: bulkGenerate,
-            viewWalletInfo: viewWalletInfo,
-            sendTransaction: sendTransaction,
-            offlineTransaction: offlineTransaction,
-            contracts: contracts,
-            thedao: thedao,
-            digix: digix,
-            print: print,
-            help: help,
-            footer: footer,
-            generateWalletEmbedded: generateWalletEmbedded
-          }))
-        .pipe(gulp.dest('./dist/'))
-        .pipe(notify('HTML Pages generated'));
+
+
+gulp.task('template', function () {
+    gulp.src(htmlPages)
+      .pipe(fileinclude({
+        prefix: '@@',
+        basepath: '@file'
+      }))
+    .pipe(gulp.dest('./dist/'))
+    .pipe(notify('HTML Pages generated'));
 });
 
 gulp.task('watchLess', function() {
@@ -158,10 +133,10 @@ gulp.task('watchHTML', function() {
     gulp.watch(htmlWatchFolder, ['less']);
 });
 gulp.task('watchPAGES', function() {
-    gulp.watch(htmlPages, ['genHTMLPages']);
+    gulp.watch(htmlPages, ['template']);
 });
 gulp.task('watchTPL', function() {
-    gulp.watch(tplFiles, ['genHTMLPages']);
+    gulp.watch(tplFiles, ['template']);
 });
 
-gulp.task('default', ['copy-images','copy-fonts','genHTMLPages','staticJS', 'less', 'browserify','minJS', 'watchJS' , 'watchLess', 'watchHTML', 'watchPAGES', 'watchTPL']);
+gulp.task('default', ['copy-images','copy-fonts','template','staticJS', 'less', 'browserify','minJS', 'watchJS' , 'watchLess', 'watchHTML', 'watchPAGES', 'watchTPL']);
