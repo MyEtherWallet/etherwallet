@@ -10,7 +10,12 @@
     <div class="col-md-3 col-sm-4"><img src="images/thedao-addressicon.png" width="300px" height="auto" style="margin-top: 32px;" /></div>
   </section>
   <div>
-    <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      @@if (site === 'cx' ) {
+        Put wallet picker here
+      }
+      @@if (site === 'mew' ) {
+        <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      }
   </div>
   <section class="row" ng-show="wallet!=null" ng-controller='theDaoCtrl'>
     <hr />

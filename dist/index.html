@@ -30,24 +30,22 @@
 
 <body>
 
-<!--<a href="https://www.google.com/#q=what%20time%20is%20it%20in%20la" class="announcement" target="_blank">
-  <div class="container">
-    HEY! Look here! If it is between <strong class="text-underline">11pm and midnight PST on 3/30/2016</strong> please hold off on sending / digix-ing / dao-ing. We are updating some server stuff. If you try to send, it may not go thru. You will NOT lose anything...it just wont work. Thanks! <strong>Click to learn what time is it right now.</strong>
-  </div>
-</a>-->
 
-<a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
-  <div class="container">
-    If you created a wallet -or- downloaded the repo before <strong>Dec. 31st, 2015</strong>, please check your wallets & download a new version of the repo. Click for details.
-  </div>
-</a>
+  <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
+    <div class="container">
+      If you created a wallet -or- downloaded the repo before <strong>Dec. 31st, 2015</strong>, please check your wallets & download a new version of the repo. Click for details.
+    </div>
+  </a>
+  <header class="container-fluid bg-gradient text-white">
+    <section class="container">
+      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
+      <p>Open Source JavaScript Client-Side Ether Wallet &middot; v2.1</p>
+    </section>
+  </header>
 
-<header class="container-fluid bg-gradient text-white">
-<section class="container">
-  <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a>
-  <p>Open Source JavaScript Client-Side Ether Wallet &middot; v2.0</p>
-</section>
-</header>
+
+
+
 
 
 
@@ -371,7 +369,10 @@
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
   <h2> Send Transaction </h2>
   <div>
-    <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      
+      
+        <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      
   </div>
   <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
     <hr />
@@ -384,13 +385,13 @@
           <br /> <strong style="margin-left: 1em" class="mono">{{wallet.getChecksumAddressString()}}</strong></p>
           <p> Account Balance:
           <br />
-                <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
-                <br />
-                <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong>
-                <br />
-                <strong class="text-success"  style="margin-left: 1em"> {{eurBalance}} EUR </strong>
-                <br />
-                <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+          <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+          <br />
+          <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong>
+          <br />
+          <strong class="text-success"  style="margin-left: 1em"> {{eurBalance}} EUR </strong>
+          <br />
+          <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         </p>
       </div>
       <br />
@@ -483,6 +484,7 @@
         </div>
       </div>
       <!--/modal-->
+
     </div>
   </section>
 </div>
@@ -859,7 +861,10 @@
     <div class="col-md-3 col-sm-4"><img src="images/thedao-addressicon.png" width="300px" height="auto" style="margin-top: 32px;" /></div>
   </section>
   <div>
-    <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      
+      
+        <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      
   </div>
   <section class="row" ng-show="wallet!=null" ng-controller='theDaoCtrl'>
     <hr />
@@ -979,7 +984,10 @@
   <p>MyEtherWallet.com is proud to partner with Digix to provide a way for you to <strong>claim</strong> and <strong> send </strong> your DigixDAO (DGD) tokens & badges! In order to claim, you must have participated in the token sale on March 30th/31st.</p>
 
   <div>
-    <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      
+      
+        <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      
   </div>
 
   <section class="row" ng-show="wallet!=null" ng-controller='digixCtrl'>

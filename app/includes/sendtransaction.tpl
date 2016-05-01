@@ -2,7 +2,31 @@
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
   <h2> Send Transaction </h2>
   <div>
-    <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      @@if (site === 'cx' ) {
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <h4> Select a Wallet: </h4>
+          <div class="radio">
+            <label><input type="radio" name="selectedWallet" value="0xb9836ec1f42bd48331bceaedb74a6bcdc22832bd"> KVH Test Wallet <small>(626.5540822 Ether)</small></label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="selectedWallet" value="0xb9836ec1f42bd48331bceaedb74a6bcdc22832bd"> KVH Test Wallet <small>(626.5540822 Ether)</small></label>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <h4> Enter the Password: </h4>
+          <input class="form-control" type="password" placeholder="Password" id="sendTransactionPin">
+        </div>
+        <div class="col-md-4 col-sm-6" id="walletuploadbutton">
+          <h4 id="uploadbtntxt-wallet"> Access Your Wallet:</h4>
+          <div class="form-group"><a class="btn btn-primary btn-block" id="decryptSendTx">UNLOCK WALLET</a></div>
+          <div id="decryptStatus1"></div>
+        </div>
+      </div>
+      }
+      @@if (site === 'mew' ) {
+        <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      }
   </div>
   <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
     <hr />
@@ -15,13 +39,13 @@
           <br /> <strong style="margin-left: 1em" class="mono">{{wallet.getChecksumAddressString()}}</strong></p>
           <p> Account Balance:
           <br />
-                <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
-                <br />
-                <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong>
-                <br />
-                <strong class="text-success"  style="margin-left: 1em"> {{eurBalance}} EUR </strong>
-                <br />
-                <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+          <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+          <br />
+          <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong>
+          <br />
+          <strong class="text-success"  style="margin-left: 1em"> {{eurBalance}} EUR </strong>
+          <br />
+          <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         </p>
       </div>
       <br />
@@ -114,6 +138,7 @@
         </div>
       </div>
       <!--/modal-->
+
     </div>
   </section>
 </div>

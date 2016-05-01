@@ -4,7 +4,12 @@
   <p>MyEtherWallet.com is proud to partner with Digix to provide a way for you to <strong>claim</strong> and <strong> send </strong> your DigixDAO (DGD) tokens & badges! In order to claim, you must have participated in the token sale on March 30th/31st.</p>
 
   <div>
-    <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      @@if (site === 'cx' ) {
+        Put wallet picker here
+      }
+      @@if (site === 'mew' ) {
+        <wallet-decrypt-drtv></wallet-decrypt-drtv>
+      }
   </div>
 
   <section class="row" ng-show="wallet!=null" ng-controller='digixCtrl'>
