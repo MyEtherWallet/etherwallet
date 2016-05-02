@@ -9,8 +9,8 @@
   <h4> <span class="text-primary collapseButton"></span> First, a reminder </h4>
   <div class="collapsePanel">
     <ul>
-      <li><strong>Ethereum, MyEtherWallet.com, and some of the underlying Javascript libraries we use are under active development.</strong> While we have tested thoroughly & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. While do everything we can to ensure that this does not happen and are available via email/reddit/twitter to assist in every way we can, this possibility still exists. Please do not invest more than you are willing to lose and please be careful. If something were to happen, we are sorry, <strong>but we are not responsible for the lost Ether.</strong></li>
-      <li>MyEtherWallet.com and MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data is created on our computer/your browser, not our servers. It's not a website where you put your Ether and we store them for you. We just make it easy for you to save your wallet information in your browser/on your computer. Then we give you a place you to access that information and do stuff with it.</li>
+      <li><strong>Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.</strong> While we have tested thoroughly & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. While do everything we can to ensure that this does not happen and are available via email/reddit/twitter to assist in every way we can, this possibility still exists. Please do not invest more than you are willing to lose and please be careful. If something were to happen, we are sorry, <strong>but we are not responsible for the lost Ether.</strong></li>
+      <li>MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data is created on our computer/your browser, not our servers. It's not a website where you put your Ether and we store them for you. We just make it easy for you to save your wallet information in your browser/on your computer. Then we give you a place you to access that information and do stuff with it.</li>
       <li>Please, do not forget to save your private key & password when you create a new wallet. Back them up in multiple phsyically locations &ndash; not just on your computer!</li>
       <li>Please make sure you are sending to the correct address.</li>
       <li>Please reach out to us with any and all feedback you have, especially with things that confuse you or error messages that don't make sense.</li>
@@ -21,7 +21,7 @@
   <section class="collapseContainer">
   <h4> <span class="text-primary collapseButton"></span> 0. I'm new. What do I do? </h4>
   <div class="collapsePanel collapsed">
-    <p> MyEtherWallet.com gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, <strong> you are responsible for safely backing it up</strong>.
+    <p> MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, <strong> you are responsible for safely backing it up</strong>.
     <p> If you just purchased ETH on an exchange and want to hold it safely in your own wallet, or if you are using ShapeShift to exchange another from cryptocurrency, you will need to complete the following steps. These steps are outlined in detail in the questions below. Please read them all in full. </p>
     <p> Do not hesitate to reach out to us if you have any questions. Remember, Ether now holds real monetary value and can be a significant investment. If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  I do not say this to scare you, only to remind you to be diligent, read carefully, and take your time during all the steps. But, if you follow the instructions found on this page, even a non-technical person can safely hold their Ether in a wallet they control. </p>
 
@@ -38,12 +38,13 @@
   <h4> <span class="text-primary collapseButton"></span> 1. How do I create a new wallet? </h4>
   <div class="collapsePanel collapsed">
   <ol>
-    <li> Go to the "Generate Wallet" tab.</li>
+    @@if (site === 'mew' ) {   <li> Go to the "Generate Wallet" tab.</li>    }
+    @@if (site === 'cx' ) {   <li> Go to the "Add Wallet" tab.</li> <li> Select "Generate New Wallet" </li>   }
     <li> Create a strong password, preferably using a random password generator. Save this somewhere safe. <em><small>The password encrypts the private key for this wallet. You will need this password to send transactions.</small></em></li>
-    <li> Copy the password from where you have saved it and paste it into the "Enter a password" field.</li>
-    <li> Click "GENERATE".</li>
-    <li> Your wallet has now been generated. But, you are NOT done yet! Back up your wallet now! See #2a.</li>
-    <li> Then: Verify that you can successfully access you wallet <strong>before</strong> sending any Ether to this wallet. See below.</li>
+    <li> Copy the password from where you have saved it and paste it into the "Enter a password" field. </li>
+    <li> Click "GENERATE". </li>
+    <li> Your wallet has now been generated. But, you are NOT done yet! Back up your wallet now! See #2a. </li>
+    <li> Then: Verify that you can successfully access you wallet <strong>before</strong> sending any Ether to this wallet. See below. </li>
   </ol>
   </ol>
   </div>
