@@ -11,7 +11,7 @@
   </section>
   <div>
       @@if (site === 'cx' ) {
-        Put wallet picker here
+        <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
       }
       @@if (site === 'mew' ) {
         <wallet-decrypt-drtv></wallet-decrypt-drtv>

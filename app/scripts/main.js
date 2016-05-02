@@ -35,6 +35,7 @@ var walletService = require('./services/walletService');
 var blockiesDrtv = require('./directives/blockiesDrtv');
 var QRCodeDrtv = require('./directives/QRCodeDrtv');
 var walletDecryptDrtv = require('./directives/walletDecryptDrtv');
+var cxWalletDecryptDrtv = require('./directives/cxWalletDecryptDrtv');
 var fileReaderDrtv = require('./directives/fileReaderDrtv');
 var app = angular.module('mewApp', []);
 app.config(['$compileProvider', function($compileProvider) {
@@ -46,6 +47,7 @@ app.directive('blockieAddress', blockiesDrtv);
 app.directive('qrCode', QRCodeDrtv);
 app.directive('onReadFile', fileReaderDrtv);
 app.directive('walletDecryptDrtv', walletDecryptDrtv);
+app.directive('cxWalletDecryptDrtv', cxWalletDecryptDrtv);
 app.controller('tabsCtrl', ['$scope', 'globalService', tabsCtrl]);
 app.controller('viewCtrl', ['$scope', 'globalService', viewCtrl]);
 app.controller('walletGenCtrl', ['$scope', walletGenCtrl]);

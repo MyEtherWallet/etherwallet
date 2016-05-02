@@ -47,7 +47,7 @@
 @@if (site === 'cx' ) {
   <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
     <div class="container">
-      CX Announcement Here
+      Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.
     </div>
   </a>
   <header class="container-fluid bg-gradient text-white">
