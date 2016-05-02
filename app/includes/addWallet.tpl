@@ -55,7 +55,10 @@
         </div>
         <div class="form-group">
           <p> Your file is encrypted with a password, enter the password here: </p>
-          <input class="form-control" type="password" placeholder="Password">
+          <div class="input-group">
+            <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-model="password" ng-class="isStrongPass() ? 'valid' : 'invalid'"/>
+            <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
+          </div>
         </div>
       </div>
 
@@ -125,7 +128,10 @@
       </div>
       <div class="form-group">
         <label> Create a Password: <small>(at least 8 characters w/ at least 1 lowercase, 1 uppercase, 1 number)</small></label>
-        <input class="form-control" type="text" placeholder="Password"/>
+          <div class="input-group">
+            <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-model="password" ng-class="isStrongPass() ? 'valid' : 'invalid'"/>
+            <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
+          </div>
       </div>
       <div class="form-group">
         <a class="btn btn-info btn-block">ADD WALLET </a>

@@ -127,7 +127,10 @@
             <div class="form-group">
               <label for="walletName">Enter Your Password:</label>
               <input type="hidden" value="" id="viewWalletAddress" />
-              <input type="password" class="form-control" id="viewWalletPin" value="">
+              <div class="input-group">
+                <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-model="password" ng-class="isStrongPass() ? 'valid' : 'invalid'"/>
+                <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
+              </div>
               <div id="viewWalletPopStatus"></div>
             </div>
           </form>
