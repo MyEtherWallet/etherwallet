@@ -7,57 +7,79 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     generateWallet: {
       id: 0,
       name: "Generate Wallet",
-      url: "generate-wallet"
+      url: "generate-wallet",
+      mew: true,
+      cx: false
     },
     bulkGenerate: {
       id: 1,
       name: "Bulk Generate",
-      url: "bulk-generate"
-    },
-    myWallet: {
-      id: 2,
-      name: "My Wallets",
-      url: "my-wallet"
-    },
-    addWallet: {
-      id: 3,
-      name: "Add Wallet",
-      url: "add-wallet"
+      url: "bulk-generate",
+      mew: false,
+      cx: false
     },
     viewWalletInfo: {
-      id: 4,
+      id: 2,
       name: "View Wallet Info",
-      url: "view-wallet-info"
+      url: "view-wallet-info",
+      mew: true,
+      cx: false
+    },
+    myWallet: {
+      id: 3,
+      name: "My Wallets",
+      url: "my-wallet",
+      mew: false,
+      cx: true
+    },
+    addWallet: {
+      id: 4,
+      name: "Add Wallet",
+      url: "add-wallet",
+      mew: false,
+      cx: true
     },
     sendTransaction: {
       id: 5,
       name: "Send Transaction",
-      url: "send-transaction"
+      url: "send-transaction",
+      mew: true,
+      cx: true
     },
     offlineTransaction: {
       id: 6,
       name: "Offline Transaction",
-      url:"offline-transaction"
+      url:"offline-transaction",
+      mew: true,
+      cx: false
     },
     contracts: {
       id: 7,
       name: "Contracts",
-      url:"contracts"
+      url:"contracts",
+      mew: false,
+      cx: false
     },
     thedao: {
       id: 8,
       name: "\"The DAO\"",
-      url: "the-dao"
+      url: "the-dao",
+      mew: true,
+      cx: true
     },
     digix: {
       id: 9,
       name: "Digix",
-      url: "digix"
+      url: "digix",
+      mew: true,
+      cx: true
     },
     help: {
       id: 10,
       name: "Help",
-      url: "help"
+      url: "help",
+      mew: true,
+      cx: true
     }
   };
 

@@ -1,6 +1,9 @@
 <section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl'>
 
   <h2> Generate Wallet </h2>
+  @@if (site === 'mew' ) {
+    <p>We removed the <a ng-click="globalService.currentTab=globalService.tabs.bulkGenerate.id"> Bulk Generate tab </a> from the nav as it wasn't very widely used, but feel free to still use it if you want.</p>
+  }
   <div class="row">
     <div class="col-sm-6">
       <div class="form-group">
