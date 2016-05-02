@@ -5700,7 +5700,7 @@ input[type="password"] + .eye:before {
 }
 #etherWalletPopUp {
   padding: 25px 8px 10px;
-  width: 325px;
+  width: 355px;
   position: relative;
 }
 #etherWalletPopUp .settings-icon {
