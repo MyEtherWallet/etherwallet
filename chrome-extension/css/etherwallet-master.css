@@ -5726,9 +5726,6 @@ input[type="password"] + .eye:before {
 #etherWalletPopUp input[type=radio] {
   margin-right: 5px;
 }
-#etherWalletPopUp label {
-  font-weight: normal;
-}
 #etherWalletPopUp table {
   margin-bottom: 10px;
   border-bottom: 1px solid #ddd;
@@ -5760,9 +5757,9 @@ fieldset[disabled] .btn {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   max-width: 170px;
   word-wrap: break-word;
-  max-width: 190px;
   font-size: 12px;
-  margin-left: 20px;
+  font-weight: 300;
+  display: block;
 }
 /* Custom Utilities */
 .text-navy {

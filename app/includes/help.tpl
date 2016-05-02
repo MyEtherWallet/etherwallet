@@ -71,6 +71,7 @@
   </div>
   </section>
 
+  @@if (site === 'mew' ) {
   <section class="collapseContainer">
   <h4> <span class="text-primary collapseButton"></span> 2b. How do I safely / securely / cold storage with MyEtherWallet?</h4>
   <div class="collapsePanel collapsed">
@@ -93,6 +94,7 @@
   <p>Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). </p>
 </div>
 </section>
+}
 
 
 <section class="collapseContainer">
@@ -101,7 +103,8 @@
   <p> <strong> Before you send any Ether to your new wallet</strong>, you should ensure you have access to it. You should NOT copy and paste from the generate wallet tab, but instead copy and paste from the text document or paper where you have stored your wallet information.</p>
 
   <ol>
-    <li> Navigate to the "Send Transaction" tab. </li>
+    @@if (site === 'mew' ) {   <li> Navigate to the "Send Transaction" tab. </li>    }
+    @@if (site === 'cx' ) {   <li> <a href="https://www.myetherwallet.com/#view-wallet-info" target="_blank"> MyEtherWallet.com View Wallet Details Tab.</a> </li>    }
     <li> Select your wallet file -or- paste your private key. </li>
     <li> If the wallet is the encrypted, a text box will automatically appear. Enter the password. </li>
     <li> Click the "Decrypt" button. </li>
@@ -111,55 +114,134 @@
   </div>
   </section>
 
-<section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton"></span> 4. How do I send Ether from one wallet to another? </h4>
-  <div class="collapsePanel collapsed">
-  <p> Once you have saved and backed up all information <strong> and </strong> verified you have access to your new wallet, you can transfer some Ether to that new wallet.</p>
+@@if (site === 'mew' ) {
+  <section class="collapseContainer">
+    <h4> <span class="text-primary collapseButton"></span> 4. How do I send Ether from one wallet to another? </h4>
+    <div class="collapsePanel collapsed">
+    <p> Once you have saved and backed up all information <strong> and </strong> verified you have access to your new wallet, you can transfer some Ether to that new wallet.</p>
+    <p><strong>Before you start,</strong> If you plan to move a large amount of ether, you should test sending a small amount first to make sure everything goes smoothly. After making the small transaction, you can check by pasting the TX ID or the address into a blockchain explorer, e.g. <a href="https://www.etherchain.org" target="_blank">https://www.etherchain.org</a>.</p>
+    <ol>
+      <li> Navigate to the "Send Transaction" tab</li>
+      <li> Select your wallet file -or- paste your private key. </li>
+      <li> If the wallet is the encrypted, a text box will automatically appear. Enter the password. </li>
+      <li> Click the "Decrypt" button. </li>
+      <li> You will now see your account information. It'll show your address, your balance, and have a space for the <strong>Receiving Address</strong> and the <strong>Amount you want to send</strong>.</li>
+      <li> Enter the address you would like to send to in the "To Address:" field.</li>
+      <li> Enter the amount you would like to send. You can also click the <strong>Transfer total available balance</strong> link if you would like the transfer the entire balance.</li>
+      <li> A couple more fields will appear. This is the program generating the transaction.</li>
+      <li> Click the blue "SEND TRANSACTION" button below that.</li>
+      <li> A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction."</li>
+      <li>The transaction will be submitted. The TX ID will display. You can copy that TX ID and paste it into the search bar on a blockchain explorer to verify the transaction went through.</li>
+      <li> Success! </li>
+    </ol>
+    </div>
+  </section>
+}
+@@if (site === 'cx' ) {
+  <section class="collapseContainer">
+    <h4> <span class="text-primary collapseButton"></span> 4. How do I send Ether using MyEtherWallet CX? </h4>
+    <div class="collapsePanel collapsed" style="display: block;">
+      <p>First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Transaction" tab.</p>
+      <p><strong> QuickSend: </strong></p>
+      <ol>
+        <li>Copy the address you wish to send Ether to, to your clipboard.</li>
+        <li>Click the Chrome Extension Icon.</li>
+        <li>Click the green "QuickSend" button. </li>
+        <li>Select the wallet you wish to send from.</li>
+        <li> Paste the address that you copied earlier into the address field.</li>
+        <li> Enter the amount you would like to send. You can also click the [Send total available balance] link if you would like the transfer the entire balance.</li>
+        <li> Click "Send Transaction". </li>
+        <li> Verify the address and the amount you are sending is correct.</li>
+        <li> Enter the password for that wallet. </li>
+        <li> Click "Send Transaction." </li>
+      </ol>
+      <p><strong> Using "Send Transaction" Tab: </strong></p>
+      <ol>
+        <li> Go to the Send Transaction Tab.</li>
+        <li> Select the wallet you wish to send from.</li>
+        <li> Enter the password.</li>
+        <li> Press the DECRYPT button.</li>
+        <li> Enter the address you would like to send to in the "To Address:" field.</li>
+        <li> Enter the amount you would like to send. You can also click the [Click here to transfer total available balance] link if you would like the transfer the entire balance.</li>
+        <li> Click "Generate Transaction" Button. </li>
+        <li> A couple more fields will appear. Click the blue "SEND TRANSACTION" button below that.</li>
+        <li> A Pop-Up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction."</li>
+        <li> The transaction will be submitted. The TX ID will display. You can copy that TX ID and paste it into the search bar on etherchain to verify the transaction went through.</li>
+        <li> DONE! </li>
+      </ol>
+    </div>
+  </section>
+}
 
-  <p><strong>Before you start,</strong> If you plan to move a large amount of ether, you should test sending a small amount first to make sure everything goes smoothly. After making the small transaction, you can check by pasting the TX ID or the address into a blockchain explorer, e.g. <a href="https://www.etherchain.org" target="_blank">https://www.etherchain.org</a>.</p>
-  <ol>
-    <li> Navigate to the "Send Transaction" tab</li>
-    <li> Select your wallet file -or- paste your private key. </li>
-    <li> If the wallet is the encrypted, a text box will automatically appear. Enter the password. </li>
-    <li> Click the "Decrypt" button. </li>
-    <li> You will now see your account information. It'll show your address, your balance, and have a space for the <strong>Receiving Address</strong> and the <strong>Amount you want to send</strong>.</li>
-    <li> Enter the address you would like to send to in the "To Address:" field.</li>
-    <li> Enter the amount you would like to send. You can also click the <strong>Transfer total available balance</strong> link if you would like the transfer the entire balance.</li>
-    <li> A couple more fields will appear. This is the program generating the transaction.</li>
-    <li> Click the blue "SEND TRANSACTION" button below that.</li>
-    <li> A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction."</li>
-    <li>The transaction will be submitted. The TX ID will display. You can copy that TX ID and paste it into the search bar on a blockchain explorer to verify the transaction went through.</li>
-    <li> Success! </li>
-  </ol>
+@@if (site === 'mew' ) {
+  <section class="collapseContainer">
+    <h4> <span class="text-primary collapseButton"></span> 5. How do I run MyEtherWallet.com offline/locally? </h4>
+   <div class="collapsePanel collapsed">
+    <p> You can run MyEtherWallet.com on your computer instead of from the GitHub servers. Everything except the "send transaction" tab can be done completely without the internet, so feel free to turn your internet off. If you would like to send transactions from an offline or airgapped computer, check out the "Offline Transaction" tab. </p>
+    <ol>
+      <li>Go to the GitHub repo @ <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a></li>
+      <li>Click download zip in the upper right.</li>
+      <li>Unzip it.</li>
+      <li>Open the <code>dist</code> folder.</li>
+      <li>Double-Click <code>index.html</code>.</li>
+      <li> MyEtherWallet.com is now running entirely on your computer.</li>
+    </ol>
+    <p> In case you are not familiar, you need to keep the entire <code> dist folder</code> in order to run it, not just index.html. Don't touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the distant future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.</p>
+    <p>As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo. The MyEtherWallet team has <strong> no intentions of ever removing this project from GitHub. As long as GitHub is around, the repo will be accessible.</strong></p>
   </div>
   </section>
+}
+@@if (site === 'cx' ) {
+  <section class="collapseContainer">
+    <h4> <span class="text-primary collapseButton"></span> 5. How can I install this extension from the repo instead of the Chrome Store? </h4>
+    <div class="collapsePanel collapsed" style="display: block;">
+      <ul>
+        <li>Go to <a href="https://github.com/kvhnuke/etherwallet/tree/mercury" target="_blank">the github repo</a>.</li>
+        <li> Download the ZIP file using the button in the upper right.</li>
+        <li> Unzip that file. </li>
+        <li> Go to Google Chrome and find you settings (in the menu in the upper right).</li>
+        <li> Click "extensions" on the left. </li>
+        <li> Check the "developer mode" button at the top of that page. </li>
+        <li> Click the "Load unpacked extension..." button.</li>
+        <li> Navigate to the now-unzipped folder that you downloaded earlier and then the chrome-extension folder. Click "select". </li>
+        <li> The extension should now show up in your extensions and in your Chrome Extension bar. </li>
+      </ul>
+    </div>
+  </section>
+}
 
+@@if (site === 'mew' ) {
+  <section class="collapseContainer">
+    <h4> <span class="text-primary collapseButton"></span> 6. What happens if your site goes down? </h4>
+   <div class="collapsePanel collapsed">
+    <p>There seems to be a lot of confusion about what MyEtherWallet does. It's not a web wallet where you put your Ether and we store them for you. You don't have a login and nothing ever gets saved to our servers. It is simply an interface that allows you to do things you normally would do via command line.</p>
+    <p>If MyEtherWallet goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn't have to "get" your ether out of MyEtherWallet because it's not in MyEtherWallet. It's in whatever wallet your generated via our site.</p>
+    <p> You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #10 below. </p>
+    <p>In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren't storing any information. If we do take the domain down, it still is, and always will be, publicly available at <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a>. You can download the ZIP there and run it locally. </p>
+  </div>
+  </section>
+}
+@@if (site === 'cx' ) {
 <section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton"></span> 5. How do I run MyEtherWallet.com offline/locally? </h4>
- <div class="collapsePanel collapsed">
-  <p> You can run MyEtherWallet.com on your computer instead of from the GitHub servers. Everything except the "send transaction" tab can be done completely without the internet, so feel free to turn your internet off. If you would like to send transactions from an offline or airgapped computer, check out the "Offline Transaction" tab. </p>
-  <ol>
-    <li>Go to the GitHub repo @ <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a></li>
-    <li>Click download zip in the upper right.</li>
-    <li>Unzip it.</li>
-    <li>Open the <code>dist</code> folder.</li>
-    <li>Double-Click <code>index.html</code>.</li>
-    <li> MyEtherWallet.com is now running entirely on your computer.</li>
-  </ol>
-  <p> In case you are not familiar, you need to keep the entire <code> dist folder</code> in order to run it, not just index.html. Don't touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the distant future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.</p>
-  <p>As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo. The MyEtherWallet team has <strong> no intentions of ever removing this project from GitHub. As long as GitHub is around, the repo will be accessible.</strong></p>
-</div>
+  <h4> <span class="text-primary collapseButton"></span> 6. What happens if MyEtherWallet CX disappears from the face of this planet? </h4>
+  <div class="collapsePanel collapsed" style="display: block;">
+    <p>First, all data is saved on your computer, not our servers. It's not a website where you put your Ether and we store them for you. We just make it easy for you to save your wallet information in your browser/on your computer. Then we give you a place you to access that information and do stuff with it. I know it can be confusing, but when you look at the stuff in the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it's all saved on your own computer.</p>
+    <p> That said, it is <strong>very important</strong> that you back up all your information for any new wallets generated with MyEtherWallet CX externally (meaning not on your computer!). That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the above section for how to save your wallets externally.</p>
+    <p> If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually.</p>
+    <ul>
+      <li>Go to <a href="https://github.com/kvhnuke/etherwallet/tree/mercury" target="_blank">the github repo</a>.</li>
+      <li> Download the ZIP file using the button in the upper right.</li>
+      <li> Unzip that file. </li>
+      <li> Go to Google Chrome and find you settings (in the menu in the upper right).</li>
+      <li> Click "extensions" on the left. </li>
+      <li> Check the "developer mode" button at the top of that page. </li>
+      <li> Click the "Load unpacked extension..." button.</li>
+      <li> Navigate to the now-unzipped folder that you downloaded earlier and then the chrome-extension folder. Click "select". </li>
+      <li> The extension should now show up in your extensions and in your Chrome Extension bar. </li>
+    </ul>
+  </div>
 </section>
-
-<section class="collapseContainer">
-  <h4> <span class="text-primary collapseButton"></span> 6. What happens if your site goes down? </h4>
- <div class="collapsePanel collapsed">
-  <p>There seems to be a lot of confusion about what MyEtherWallet does. It's not a web wallet where you put your Ether and we store them for you. You don't have a login and nothing ever gets saved to our servers. It is simply an interface that allows you to do things you normally would do via command line.</p>
-  <p>If MyEtherWallet goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn't have to "get" your ether out of MyEtherWallet because it's not in MyEtherWallet. It's in whatever wallet your generated via our site.</p>
-  <p> You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #10 below. </p>
-  <p>In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren't storing any information. If we do take the domain down, it still is, and always will be, publicly available at <a href="https://github.com/kvhnuke/etherwallet" target="_blank">https://github.com/kvhnuke/etherwallet</a>. You can download the ZIP there and run it locally. </p>
-</div>
-</section>
+}
 
 
 <section class="collapseContainer">
@@ -201,6 +283,7 @@
     <section class="collapseContainer">
   <h4> <span class="text-primary collapseButton"></span> 10. How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?</h4>
   <div class="collapsePanel collapsed">
+  @@if (site === 'mew' ) {
     <p><strong> Using your unencrypted private key... </strong></p>
     <ol>
       <li> If you do not already have your unencrypted private key, navigate to the "View Wallet Details" tab.</li>
@@ -226,21 +309,16 @@
           <li> The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". </li>
         </ul>
       </ol>
+    }
     <p><strong> Using an Geth/Mist JSON file from MyEtherWallet v2+....</strong></p>
-    <p> If your wallet file is named something like <code>UTC--2016-04-30........</code> then you can follow these instructions.</p>
-    <p> If you don't have the UTC-- file, but you DO have your encrypted private key or encrypted JSON, follow these instructions first!</p>
     <ol>
-      <li> Go to the View Wallet Info Tab.</li>
-      <li> Unlock your wallet using your ENCRYPTED private key or JSON file. </li>
-      <li> On the right hand side, look for <code>Download JSON file - Geth/Mist Format (encrypted)</code>. Press the DOWNLOAD button below that.</li>
-      <li> Continue onto the next step...</li>
-    </ol>
-    <p>Once you have your <code>UTC--2016-04-30........</code> file....</p>
-    <ol>
+      @@if (site === 'mew' ) {<li> Go to the View Wallet Info Tab.</li> <li> Unlock your wallet using your ENCRYPTED private key or JSON file. </li>}
+      @@if (site === 'cx' ) {<li> Go to the "My Wallets" Tab.</li> <li> Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. </li>}
+      <li> On the right hand side, look for <code>Download JSON file - Geth/Mist Format (encrypted)</code>. Press the DOWNLOAD button below that. You now have your keystore file.</li>
       <li> Open the Ethereum Wallet application. </li>
       <li> In the menu bar, go "Accounts" -> "Backup" -> "Accounts"</li>
-      <li> This will open your keystore folder. Copy your wallet file (<code>UTC--2016-04-14........</code>) into that keystore folder.</li>
-      <li> Restart Ethereum Wallet. You account will then be listed under "Accounts." </li>
+      <li> This will open your keystore folder. Copy the file you just downloaded (<code>UTC--2016-04-14........</code>) into that keystore folder.</li>
+      <li> Your account should show up immediately under "Accounts." </li>
     </ol>
 
   </div>
@@ -301,6 +379,20 @@
 </section>
 
 <hr />
+
+@@if (site === 'cx' ) {
+  <section class="collapseContainer">
+    <h4> <span class="text-primary collapseButton"></span> Security - MyEtherWallet CX </h4>
+    <div class="collapsePanel collapsed" style="display: block;">
+      <h6> Where is this extension saving my information?</h6>
+      <p>The information you store in this Chrome Extension is saved via <a href="http://chrome.storage/" target="_blank">chrome.storage</a>. - this is the same place your passwords are saved when you save your password in Chrome.</p>
+      <h6> What information is saved? </h6>
+      <p>The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.</p>
+      <h6> Why aren't the nickname and wallet address encrypted?</h6>
+      <p> If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.</p>
+    </div>
+  </section>
+}
 
 <section class="collapseContainer">
   <h4> <span class="text-primary collapseButton"></span> Security </h4>
