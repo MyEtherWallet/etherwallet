@@ -14,7 +14,7 @@
     "page": "bg/background.html",
     "persistent": false
   },
-  "options_page": "wallet.html#options",
+  "options_page": "cx-wallet.html",
   "browser_action": {
     "default_icon": "icons/icon19.png",
     "default_title": "MyEtherWallet CX",
@@ -33,7 +33,7 @@
     {
       "matches": [
         "https://*/*",
-		"http://*/*"
+		    "http://*/*"
       ],
       "css": [
         "inject/inject.css"
@@ -42,10 +42,9 @@
     {
       "matches": [
         "https://*/*",
-		"http://*/*"
+		    "http://*/*"
       ],
       "js": [
-        "js/jquery.js",
         "inject/inject.js"
       ]
     }
