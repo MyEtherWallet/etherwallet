@@ -1,4 +1,5 @@
 'use strict';
+require("babel-polyfill");
 var angular = require('angular');
 var BigNumber = require('bignumber.js');
 window.BigNumber = BigNumber;
