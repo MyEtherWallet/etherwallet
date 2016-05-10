@@ -1,5 +1,6 @@
 'use strict';
 var globalService = function($http, $httpParamSerializerJQLike) {
+    globalFuncs.checkAndRedirectHTTPS();
     ajaxReq.http = $http;
     ajaxReq.postSerializer = $httpParamSerializerJQLike;
 

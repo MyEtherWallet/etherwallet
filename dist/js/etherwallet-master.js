@@ -995,6 +995,13 @@ globalFuncs.stripTags = function(str){
     }
     return str;
 }
+globalFuncs.checkAndRedirectHTTPS = function() {
+	var host = "myetherwallet.com";
+	var githost = "kvhnuke.github.io";
+	var githostw = "www.kvhnuke.github.io";
+	var hostw = "www.myetherwallet.com";
+	if ((host == window.location.host || githost == window.location.host || hostw == window.location.host || githostw == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
+}
 module.exports = globalFuncs;
 
 },{}],20:[function(require,module,exports){
@@ -1338,6 +1345,7 @@ module.exports = Wallet;
 },{"buffer":75}],22:[function(require,module,exports){
 'use strict';
 var globalService = function($http, $httpParamSerializerJQLike) {
+    globalFuncs.checkAndRedirectHTTPS();
     ajaxReq.http = $http;
     ajaxReq.postSerializer = $httpParamSerializerJQLike;
 
