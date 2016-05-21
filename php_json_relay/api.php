@@ -24,8 +24,12 @@ function getEstimatedGas($txobj, $gethRPC){
         $data['data'] = getRPCResponse($gethRPC->eth_estimateGas($txobj));
     }
     catch (exception $e) {
-        $data['error'] = true;
-        $data['msg'] = $e->getMessage();
+        if($e->getMessage()=="no contract code at given address"){
+            $data['data'] = '0x5208';
+        } else {
+            $data['error'] = true;
+            $data['msg'] = $e->getMessage();
+        }
     }
     return json_encode($data);
 }
