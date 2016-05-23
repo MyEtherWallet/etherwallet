@@ -1,9 +1,8 @@
-<!-- contracts -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contracts.id">
+<!-- Contracts -->
+<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contracts.id">
   <h2> Contracts </h2>
-  <section>
-    <wallet-decrypt-drtv></wallet-decrypt-drtv>
-  </section>
+
+  <wallet-decrypt-drtv></wallet-decrypt-drtv>
 
   <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
 
@@ -20,7 +19,6 @@
       <span class="form-group">
         <button class="btn btn-primary"> ACCESS </button>
       </span>
-
     </div>
     <!-- / STEP 1 -->
 
@@ -56,6 +54,7 @@
             <div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div></div>
             0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8
           </span>
+        </p>
           <!-- example: boolean YES -->
          <p class="item">
           <span class="label">Claimed:</span>
@@ -165,5 +164,5 @@
   </section>
 
 
-</article>
+</div>
 <!-- / contracts -->

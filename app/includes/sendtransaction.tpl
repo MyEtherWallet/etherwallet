@@ -1,6 +1,7 @@
 <!-- send transaction -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
   <h2> Send Transaction </h2>
+  <p> If you want to send Tokens, please use The DAO or Digix pages instead. </p>
   <div>
       @@if (site === 'cx' ) {
         <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
@@ -62,7 +63,7 @@
             <input type="radio" name="currencyRadio" value="szabo" ng-model="tx.unit"/>Szabo</label>
         </div>
         <!-- advanced option panel -->
-        <a ng-click="toggleShowAdvance()"><p class="strong"> + Advanced Options </p></a>
+        <a ng-click="toggleShowAdvance()"><p class="strong"> + Advanced: Add More Gas or Data </p></a>
         <section ng-show="showAdvance">
           <div class="form-group">
             <label> Data: </label>

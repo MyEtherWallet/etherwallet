@@ -233,18 +233,24 @@ footer {
 
 
 // Contract Page
-.label, .output, .item label {
-  display: block;
+.item {
+  .label, .output, label {
+    display: block;
+    em {
+      color: @gray-light;
+    }
+  }
+  .check {
+    font-weight: 300;
+  }
+  .output {
+    font-weight: 400;
+    margin: 5px 0;
+  }
 }
 
-.item .check {
-  font-weight: 300;
-}
 
-.output {
-  font-weight: 400;
-  margin: 5px 0;
-}
+
 
 .address-identicon-container.small {
   display: inline;
@@ -324,17 +330,9 @@ input[type="password"]+.eye{
   width: 100%;
 }
 
-
-// digix page
-.digix-send a.active {
-  cursor: default;
-  color: @text-color;
-  &:hover, &:focus {
-    text-decoration: none;
-  }
+.word-wrap {
+  word-wrap: break-word;
 }
-
-
 
 .form-control.valid:not(.ng-pristine) {
   border: 1px solid @brand-success;
@@ -344,4 +342,157 @@ input[type="password"]+.eye{
 .form-control.invalid:not(.ng-pristine) {
   border: 1px solid @brand-danger;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px fade(@brand-danger, 60%);
+}
+
+
+/* Proposals */
+
+.proposal-container {
+  border-left: 1px solid white;
+  .proposal-item:nth-child(odd) {
+    background-color: @gray-lightest;
+  }
+}
+
+.proposal-filter {
+  width: 20%;
+  float: left;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  border: 1px solid white;
+  border-bottom: 0;
+  background: darken(@brand-primary, 9%);
+  &:hover,
+  &:focus {
+    color: white;
+    text-decoration: none;
+    background: @brand-primary;
+  }
+  &.active {
+    background: @brand-primary;
+  }
+  @media screen and (max-width: 954px) {
+    height: 64px;
+  }
+  @media screen and (max-width: 581px) {
+    height: auto;
+    width: 50%;
+    &:first-child {
+      width: 100%;
+    }
+  }
+}
+
+.proposal-item {
+  cursor: pointer;
+  padding: 0px 0 8px 0;
+  h4{
+    margin: 0 0 4px 0;
+    font-size:18px;
+  }
+  p {
+    margin: 0 0 5px;
+    font-size:14px;
+  }
+}
+
+.proposal-expanded {
+  display:none;
+  tr:first-child td {
+    border-top: 0;
+  }
+  table {
+    margin: 0 -8px;
+  }
+  .form-group {
+    padding: 10px 0 0px;
+    margin: 0 0 10px;
+  }
+}
+
+.proposalOutput {
+  vertical-align: middle;
+  .label {
+    font-weight: 300;
+    padding-right: 15px;
+  }
+  em {
+    color: @gray-light;
+  }
+  tr:first-child td {
+    border-top: 0;
+  }
+}
+
+/* Graph Thingys */
+.graph-container {
+  position: relative;
+  padding: 0 0 18px;
+}
+
+.graph-needed {
+  position: absolute;
+  left: 0;
+  height: 5px;
+  background: @gray-light;
+}
+.graph-yes {
+  position: absolute;
+  left: 0;
+  height: 5px;
+  background: @brand-primary;
+}
+.graph-no {
+  position: absolute;
+  left: 0;
+  height: 5px;
+  background: @brand-danger;
+}
+.graph-unfilled {
+  position: absolute;
+  right: 0;
+  height: 5px;
+  width: 100%;
+  background: @gray-lighter;
+}
+
+/* Vote Colors */
+.votes-yes:before {
+  content:"";
+  margin-right: 5px;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background-color: @brand-primary;
+}
+.votes-no:before {
+  content:"";
+  margin-right: 5px;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background-color: @brand-danger;
+}
+.votes-needed:before {
+  content:"";
+  margin-right: 5px;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background-color: @gray-light;
+}
+
+.table-borderless {
+  td {
+    border: 0!important;
+  }
+}
+.graph-bigger {
+  .graph-needed,
+  .graph-yes,
+  .graph-no,
+  .graph-unfilled {
+    height: 10px;
+  }
 }
