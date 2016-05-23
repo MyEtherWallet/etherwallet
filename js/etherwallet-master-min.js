@@ -300,10 +300,10 @@ module.exports = decryptWalletCtrl;
 },{}],5:[function(require,module,exports){
 'use strict';
 var digixCtrl = function($scope, $sce, walletService) {
-	new Modal(document.getElementById('sendTransaction'));    
+	new Modal(document.getElementById('sendTransaction'));
 	walletService.wallet = null;
 	walletService.password = '';
-	$scope.showSend = false;
+	$scope.showSend = true;
 	$scope.showRaw = false;
 	$scope.digixContract = "0xf0160428a8552ac9bb7e050d90eeade4ddd52843";
 	$scope.tokenContract = "0xe0b7927c4af23765cb51314a0e0521a9645f0e2a";
@@ -447,6 +447,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 	}
 };
 module.exports = digixCtrl;
+
 },{}],6:[function(require,module,exports){
 (function (Buffer){
 'use strict';
@@ -1594,17 +1595,17 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       mew: true,
       cx: false
     },
-    contracts: {
+    dao: {
       id: 7,
-      name: "Contracts",
-      url:"contracts",
-      mew: false,
-      cx: false
-    },
-    thedao: {
-      id: 8,
-      name: "\"The DAO\"",
+      name: "The DAO",
       url: "the-dao",
+      mew: true,
+      cx: true
+    },
+    daoproposals: {
+      id: 8,
+      name: "DAO Proposals",
+      url: "dao-proposals",
       mew: true,
       cx: true
     },
@@ -1615,8 +1616,15 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       mew: true,
       cx: true
     },
-    help: {
+    contracts: {
       id: 10,
+      name: "Contracts",
+      url:"contracts",
+      mew: false,
+      cx: false
+    },
+    help: {
+      id: 11,
       name: "Help",
       url: "help",
       mew: true,
