@@ -1,4 +1,5 @@
 'use strict';
+var IS_CX = false;
 require("babel-polyfill");
 var angular = require('angular');
 var BigNumber = require('bignumber.js');
@@ -21,6 +22,10 @@ var ajaxReq = require('./ajaxReq');
 window.ajaxReq = ajaxReq;
 var ethFuncs = require('./ethFuncs');
 window.ethFuncs = ethFuncs;
+if(IS_CX){
+    var cxFuncs = require('./cxFuncs');
+    window.cxFuncs = cxFuncs;
+}
 var tabsCtrl = require('./controllers/tabsCtrl');
 var viewCtrl = require('./controllers/viewCtrl');
 var walletGenCtrl = require('./controllers/walletGenCtrl');
@@ -38,6 +43,9 @@ var QRCodeDrtv = require('./directives/QRCodeDrtv');
 var walletDecryptDrtv = require('./directives/walletDecryptDrtv');
 var cxWalletDecryptDrtv = require('./directives/cxWalletDecryptDrtv');
 var fileReaderDrtv = require('./directives/fileReaderDrtv');
+if(IS_CX){
+    var addWalletCtrl = require('./controllers/CX/addWalletCtrl');
+}
 var app = angular.module('mewApp', []);
 app.config(['$compileProvider', function($compileProvider) {
 	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
@@ -59,3 +67,6 @@ app.controller('sendTxCtrl', ['$scope','$sce','walletService', sendTxCtrl]);
 app.controller('digixCtrl', ['$scope','$sce','walletService', digixCtrl]);
 app.controller('theDaoCtrl', ['$scope','$sce','walletService', theDaoCtrl]);
 app.controller('sendOfflineTxCtrl', ['$scope','$sce','walletService', sendOfflineTxCtrl]);
+if(IS_CX){
+    app.controller('addWalletCtrl', ['$scope','$sce', addWalletCtrl]);
+}

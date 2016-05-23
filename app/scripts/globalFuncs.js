@@ -40,10 +40,12 @@ globalFuncs.errorMsgs = [   "Please enter valid amount",
                             "Invalid data value",
                             "Invalid gas amount",
                             "Invalid nonce",
-                            "Invalid signed transaction"];
+                            "Invalid signed transaction",
+                            "Nick name exists"];
 globalFuncs.successMsgs = [ "Valid address",
                             "Wallet successfully decrypted",
-                            "Transaction submitted. TX ID: "];
+                            "Transaction submitted. TX ID: ",
+                            "New wallet added: "];
 globalFuncs.scrypt = {
 	n: 1024
 };
@@ -72,5 +74,9 @@ globalFuncs.checkAndRedirectHTTPS = function() {
 	var githostw = "www.kvhnuke.github.io";
 	var hostw = "www.myetherwallet.com";
 	if ((host == window.location.host || githost == window.location.host || hostw == window.location.host || githostw == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
+}
+globalFuncs.isStrongPass = function(password){
+        var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+        return re.test(password);
 }
 module.exports = globalFuncs;
