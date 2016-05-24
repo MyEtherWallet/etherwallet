@@ -46,6 +46,7 @@ var fileReaderDrtv = require('./directives/fileReaderDrtv');
 if(IS_CX){
     var addWalletCtrl = require('./controllers/CX/addWalletCtrl');
     var cxDecryptWalletCtrl = require('./controllers/CX/cxDecryptWalletCtrl');
+    var myWallets = require('./controllers/CX/myWallets');
 }
 var app = angular.module('mewApp', []);
 app.config(['$compileProvider', function($compileProvider) {
@@ -70,5 +71,6 @@ app.controller('theDaoCtrl', ['$scope','$sce','walletService', theDaoCtrl]);
 app.controller('sendOfflineTxCtrl', ['$scope','$sce','walletService', sendOfflineTxCtrl]);
 if(IS_CX){
     app.controller('addWalletCtrl', ['$scope','$sce', addWalletCtrl]);
+    app.controller('myWallets', ['$scope','$sce', myWallets]);
     app.controller('cxDecryptWalletCtrl', ['$scope','$sce','walletService', cxDecryptWalletCtrl]);
 }

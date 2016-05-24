@@ -9,11 +9,11 @@ var cxWalletDecryptDrtv = function() {
           <label><input type="radio" name="selectedWallet" ng-model="$parent.selectedWallet" value="{{twallet.addr}}"> {{twallet.nick}} <small>({{twallet.balance}} Ether)</small> </label>\n \
         </div>\n \
       </div>\n \
-      <div class="col-md-4 col-sm-6">\n \
+      <div class="col-md-4 col-sm-6" ng-show="selectedWallet!=\'\'">\n \
         <h4> Enter the Password: </h4>\n \
         <input class="form-control" type="password" placeholder="Password" ng-model="password">\n \
       </div>\n \
-      <div class="col-md-4 col-sm-6" id="walletuploadbutton">\n \
+      <div class="col-md-4 col-sm-6" id="walletuploadbutton" ng-show="password.length>3">\n \
         <h4 id="uploadbtntxt-wallet"> Access Your Wallet:</h4>\n \
         <div class="form-group"><a ng-click="decryptWallet()" class="btn btn-primary btn-block">UNLOCK WALLET</a></div>\n \
         <div ng-bind-html="decryptStatus"></div>\n \

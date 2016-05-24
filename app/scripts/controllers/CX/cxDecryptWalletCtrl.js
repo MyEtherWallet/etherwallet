@@ -23,6 +23,7 @@ var cxDecryptWalletCtrl = function($scope, $sce, walletService) {
 			}
 		});
 	};
+	$scope.setAllWallets();
     $scope.getPrivFromAdd = function(){
         if ($scope.selectedWallet=="") throw globalFuncs.errorMsgs[5];
        for (var i = 0; i < $scope.allWallets.length; i++) {
@@ -31,7 +32,6 @@ var cxDecryptWalletCtrl = function($scope, $sce, walletService) {
         }
         throw globalFuncs.errorMsgs[14];
     }
-	$scope.setAllWallets();
     $scope.decryptWallet = function() {
 	    $scope.wallet=null;
         $scope.decryptStatus="";
