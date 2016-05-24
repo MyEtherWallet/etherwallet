@@ -1,5 +1,5 @@
 'use strict';
-var IS_CX = false;
+var IS_CX = true;
 require("babel-polyfill");
 var angular = require('angular');
 var BigNumber = require('bignumber.js');
@@ -45,6 +45,7 @@ var cxWalletDecryptDrtv = require('./directives/cxWalletDecryptDrtv');
 var fileReaderDrtv = require('./directives/fileReaderDrtv');
 if(IS_CX){
     var addWalletCtrl = require('./controllers/CX/addWalletCtrl');
+    var cxDecryptWalletCtrl = require('./controllers/CX/cxDecryptWalletCtrl');
 }
 var app = angular.module('mewApp', []);
 app.config(['$compileProvider', function($compileProvider) {
@@ -69,4 +70,5 @@ app.controller('theDaoCtrl', ['$scope','$sce','walletService', theDaoCtrl]);
 app.controller('sendOfflineTxCtrl', ['$scope','$sce','walletService', sendOfflineTxCtrl]);
 if(IS_CX){
     app.controller('addWalletCtrl', ['$scope','$sce', addWalletCtrl]);
+    app.controller('cxDecryptWalletCtrl', ['$scope','$sce','walletService', cxDecryptWalletCtrl]);
 }

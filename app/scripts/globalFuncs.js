@@ -41,7 +41,8 @@ globalFuncs.errorMsgs = [   "Please enter valid amount",
                             "Invalid gas amount",
                             "Invalid nonce",
                             "Invalid signed transaction",
-                            "Nick name exists"];
+                            "Nick name exists",
+                            "Wallet not found"];
 globalFuncs.successMsgs = [ "Valid address",
                             "Wallet successfully decrypted",
                             "Transaction submitted. TX ID: ",

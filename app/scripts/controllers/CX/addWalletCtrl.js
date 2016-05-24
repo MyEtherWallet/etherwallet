@@ -80,6 +80,10 @@ var addWalletCtrl = function($scope, $sce) {
 		else $scope.watchOnlyStatus = "";
 	}
 	$scope.addWatchOnly = function() {
+	   if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
+	       $scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+           return;
+	    }
 		cxFuncs.addWatchOnlyAddress($scope.addAccount.address, $scope.addAccount.nickName, function() {
 			if (chrome.runtime.lastError) {
 				$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(chrome.runtime.lastError.message));
@@ -99,6 +103,10 @@ var addWalletCtrl = function($scope, $sce) {
 		$scope.addWalletStats = "";
 	});
 	$scope.addWalletToStorage = function(status) {
+	    if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
+	       $scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+           return;
+	    }
 		cxFuncs.addWalletToStorage($scope.addAccount.address, $scope.addAccount.encStr, $scope.addAccount.nickName, function() {
 			if (chrome.runtime.lastError) {
 				$scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(chrome.runtime.lastError.message));
