@@ -11,7 +11,7 @@ var myWallets = function($scope, $sce) {
 		cxFuncs.getWatchOnlyArr(function(wlts) {
 			$scope.allWatchOnly = wlts;
 			$scope.updateBalance('allWatchOnly');
-			$scope.apply();
+            $scope.$apply();
 		});
 	};
 	$scope.updateBalance = function(varWal) {
@@ -25,9 +25,9 @@ var myWallets = function($scope, $sce) {
 				$scope[varWal][id].balance = data.msg;
 			} else {
 				$scope[varWal][id].balance = etherUnits.toEther(data.data.balance, 'wei');
-                $scope[varWal][id].usd = etherUnits.toFiat($scope.etherBalance, 'ether', $scope.fiatVal.usd);
-                $scope[varWal][id].eur = etherUnits.toFiat($scope.etherBalance, 'ether', $scope.fiatVal.eur);
-                $scope[varWal][id].btc = etherUnits.toFiat($scope.etherBalance, 'ether', $scope.fiatVal.btc);
+                $scope[varWal][id].usd = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.usd);
+                $scope[varWal][id].eur = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.eur);
+                $scope[varWal][id].btc = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.btc);
 			}
 		});
 	};
