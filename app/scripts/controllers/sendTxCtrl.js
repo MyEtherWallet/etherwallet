@@ -63,7 +63,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		uiFuncs.sendTx($scope,$sce);
 	}
 	$scope.transferAllBalance = function() {
-		uiFuncs.sendTx($scope,$sce);
+		uiFuncs.transferAllBalance($scope,$sce);
 	}
 };
 module.exports = sendTxCtrl;

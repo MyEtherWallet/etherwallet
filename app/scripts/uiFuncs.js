@@ -22,6 +22,8 @@ uiFuncs.generateTx = function($scope, $sce) {
 			$scope.rawTx = JSON.stringify(rawTx);
 			$scope.signedTx = '0x' + eTx.serialize().toString('hex');
 			$scope.showRaw = true;
+            if($scope.autoSend)
+                uiFuncs.sendTx($scope, $sce);
 		});
 		$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
 	} catch (e) {
@@ -30,7 +32,8 @@ uiFuncs.generateTx = function($scope, $sce) {
 	}
 }
 uiFuncs.sendTx = function($scope, $sce) {
-	new Modal(document.getElementById('sendTransaction')).close();
+    if(document.getElementById('sendTransaction')!=null)
+        new Modal(document.getElementById('sendTransaction')).close();
 	ajaxReq.sendRawTx($scope.signedTx, function(data) {
 		if (data.error) {
 			$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
@@ -49,6 +52,7 @@ uiFuncs.transferAllBalance = function($scope, $sce) {
 			var maxVal = new BigNumber(data.balance).minus(gasPrice);
 			$scope.tx.unit = "ether";
 			$scope.tx.value = etherUnits.toEther(maxVal, 'wei');
+            $scope.tx.value = $scope.tx.value < 0 ? 0 : $scope.tx.value;
 		});
 	} catch (e) {
 		$scope.showRaw = false;

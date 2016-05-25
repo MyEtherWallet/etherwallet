@@ -1,5 +1,5 @@
 'use strict';
-var myWallets = function($scope, $sce) {
+var myWalletsCtrl = function($scope, $sce) {
 	$scope.editModal = new Modal(document.getElementById('editWallet'));
 	$scope.viewModal = new Modal(document.getElementById('viewWalletDetails'));
 	$scope.removeModal = new Modal(document.getElementById('removeWallet'));
@@ -39,6 +39,7 @@ var myWallets = function($scope, $sce) {
 				$scope[varWal][id].balance = data.msg;
 			} else {
 				$scope[varWal][id].balance = etherUnits.toEther(data.data.balance, 'wei');
+                $scope[varWal][id].balanceR = new BigNumber($scope[varWal][id].balance).toPrecision(5);
 				$scope[varWal][id].usd = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.usd);
 				$scope[varWal][id].eur = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.eur);
 				$scope[varWal][id].btc = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.btc);
@@ -140,4 +141,4 @@ var myWallets = function($scope, $sce) {
 	});
 	$scope.setNickNames();
 };
-module.exports = myWallets;
+module.exports = myWalletsCtrl;
