@@ -274,9 +274,23 @@ module.exports = cxDecryptWalletCtrl;
 },{}],4:[function(require,module,exports){
 'use strict';
 var myWallets = function($scope, $sce) {
+	$scope.editModal = new Modal(document.getElementById('editWallet'));
+	$scope.viewModal = new Modal(document.getElementById('viewWalletDetails'));
+	$scope.removeModal = new Modal(document.getElementById('removeWallet'));
 	$scope.allWallets = [];
 	$scope.allWatchOnly = [];
-    $scope.fiatVal = {usd:0, eur:0, btc:0};
+	$scope.nickNames = [];
+	$scope.fiatVal = {
+		usd: 0,
+		eur: 0,
+		btc: 0
+	};
+	$scope.viewWallet = {};
+	$scope.setNickNames = function() {
+		cxFuncs.getAllNickNames(function(nicks) {
+			$scope.nickNames = nicks;
+		});
+	};
 	$scope.setAllWallets = function() {
 		cxFuncs.getWalletsArr(function(wlts) {
 			$scope.allWallets = wlts;
@@ -285,7 +299,7 @@ var myWallets = function($scope, $sce) {
 		cxFuncs.getWatchOnlyArr(function(wlts) {
 			$scope.allWatchOnly = wlts;
 			$scope.updateBalance('allWatchOnly');
-            $scope.$apply();
+			$scope.$apply();
 		});
 	};
 	$scope.updateBalance = function(varWal) {
@@ -299,18 +313,106 @@ var myWallets = function($scope, $sce) {
 				$scope[varWal][id].balance = data.msg;
 			} else {
 				$scope[varWal][id].balance = etherUnits.toEther(data.data.balance, 'wei');
-                $scope[varWal][id].usd = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.usd);
-                $scope[varWal][id].eur = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.eur);
-                $scope[varWal][id].btc = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.btc);
+				$scope[varWal][id].usd = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.usd);
+				$scope[varWal][id].eur = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.eur);
+				$scope[varWal][id].btc = etherUnits.toFiat($scope[varWal][id].balance, 'ether', $scope.fiatVal.btc);
 			}
 		});
 	};
+	$scope.setViewWalletObj = function(val, type) {
+		var vtype = 'allWallets';
+		if (type == 'watchOnly') vtype = 'allWatchOnly'
+		$scope.viewWallet = {
+			nick: $scope[vtype][val].nick,
+			addr: $scope[vtype][val].addr,
+			id: val,
+			type: type
+		}
+	}
+	$scope.editMWallet = function(val, type) {
+		$scope.setViewWalletObj(val, type);
+		$scope.editModal.open();
+	}
+	$scope.editSave = function() {
+		if ($scope.nickNames.indexOf($scope.viewWallet.nick) !== -1) {
+			$scope.editStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+			return;
+		} else {
+			cxFuncs.editNickName($scope.viewWallet.addr, $scope.viewWallet.nick, function() {
+				if (chrome.runtime.lastError) $scope.editStatus = $sce.trustAsHtml(globalFuncs.getDangerText(chrome.runtime.lastError.message));
+				else {
+					$scope.setAllWallets();
+					$scope.setNickNames();
+					$scope.editModal.close();
+				}
+			});
+		}
+	}
+	$scope.viewMWallet = function(val, type) {
+		$scope.setViewWalletObj(val, type);
+		$scope.viewModal.open();
+	}
+	$scope.decryptWallet = function() {
+		$scope.wallet = null;
+		$scope.viewStatus = "";
+		try {
+			$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.allWallets[$scope.viewWallet.id].priv, $scope.password);
+			$scope.viewModal.close();
+			$scope.setWalletInfo();
+		} catch (e) {
+			$scope.viewStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + ":" + e));
+		}
+	};
+	$scope.printQRCode = function() {
+		globalFuncs.printPaperWallets(JSON.stringify([{
+			address: $scope.wallet.getAddressString(),
+			private: $scope.wallet.getPrivateKeyString()
+		}]));
+	}
+	$scope.resetWallet = function() {
+		$scope.wallet = null;
+		$scope.blob = $scope.blobEnc = $scope.password = "";
+	}
+	$scope.setWalletInfo = function() {
+		$scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
+		if ($scope.password != '') {
+			$scope.blobEnc = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3($scope.password, {
+				kdf: globalFuncs.kdf,
+				n: globalFuncs.scrypt.n
+			}));
+			$scope.encFileName = $scope.wallet.getV3Filename();
+		}
+		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
+			if (data.error) {
+				$scope.etherBalance = data.msg;
+			} else {
+				$scope.etherBalance = etherUnits.toEther(data.data.balance, 'wei');
+				ajaxReq.getETHvalue(function(data) {
+					$scope.usdBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.usd);
+					$scope.eurBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.eur);
+					$scope.btcBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.btc);
+				});
+			}
+		});
+	}
+	$scope.deleteWalletMsg = function(val, type) {
+		$scope.setViewWalletObj(val, type);
+		$scope.removeModal.open();
+	}
+	$scope.deleteWallet = function() {
+		cxFuncs.deleteAccount($scope.viewWallet.addr, function() {
+			$scope.setAllWallets();
+			$scope.setNickNames();
+			$scope.removeModal.close();
+		});
+	}
 	ajaxReq.getETHvalue(function(data) {
-        $scope.fiatVal.usd = data.usd;
-        $scope.fiatVal.eur = data.eur;
-        $scope.fiatVal.btc = data.btc;
-       	$scope.setAllWallets();
+		$scope.fiatVal.usd = data.usd;
+		$scope.fiatVal.eur = data.eur;
+		$scope.fiatVal.btc = data.btc;
+		$scope.setAllWallets();
 	});
+	$scope.setNickNames();
 };
 module.exports = myWallets;
 },{}],5:[function(require,module,exports){
@@ -938,7 +1040,7 @@ cxFuncs.addWalletToStorage = function(address, encStr, nickname, callback) {
 		priv: encStr,
 		type: 'wallet'
 	};
-	var keyname = address;
+	var keyname = ethUtil.toChecksumAddress(address);
 	var obj = {};
 	obj[keyname] = JSON.stringify(value);
 	this.storage.set(obj, callback);
@@ -949,7 +1051,7 @@ cxFuncs.addWatchOnlyAddress = function(address, nickname, callback) {
 		nick: nickname,
 		type: 'watchOnly'
 	};
-	var keyname = address;
+	var keyname = ethUtil.toChecksumAddress(address);;
 	var obj = {};
 	obj[keyname] = JSON.stringify(value);
 	this.storage.set(obj, callback);
@@ -979,6 +1081,23 @@ cxFuncs.getWalletsArr = function(callback) {
 }
 cxFuncs.getWatchOnlyArr = function(callback) {
 	this.getStorageArr('watchOnly', callback);
+}
+cxFuncs.deleteAccount = function(address,callback){
+    this.storage.remove(address,function(){
+        callback(address);
+    });
+}
+cxFuncs.editNickName = function(address,newNick, callback){
+    newNick = newNick.replace(/(<([^>]+)>)/ig,"");
+    this.storage.get(address, function(account) {
+        var accountInfo = account[address];
+        accountInfo = JSON.parse(accountInfo);
+        accountInfo['nick'] = newNick;
+        account[address] = JSON.stringify(accountInfo);
+        cxFuncs.storage.set(account,function(){
+            callback(newNick);
+        });
+    });
 }
 module.exports = cxFuncs;
 },{}],16:[function(require,module,exports){
@@ -1265,25 +1384,8 @@ globalFuncs.getSuccessText = function(str) {
 globalFuncs.getDangerText = function(str) {
 	return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
-globalFuncs.errorMsgs = [   "Please enter valid amount",
-                            "Your password must be 8 characters in length and must contain atlease one number, one lowercase and one uppercase letter",
-                            "Sorry! we dont have a clue what kind of wallet file this is.",
-                            "not a valid wallet file",
-                            "This unit doesn\'t exists, please use the one of the following units",
-                            "Invalid address",
-                            "Invalid password",
-                            "Invalid amount",
-                            "Invalid gas limit",
-                            "Invalid data value",
-                            "Invalid gas amount",
-                            "Invalid nonce",
-                            "Invalid signed transaction",
-                            "Nick name exists",
-                            "Wallet not found"];
-globalFuncs.successMsgs = [ "Valid address",
-                            "Wallet successfully decrypted",
-                            "Transaction submitted. TX ID: ",
-                            "New wallet added: "];
+globalFuncs.errorMsgs = ["Please enter valid amount", "Your password must be 8 characters in length and must contain atlease one number, one lowercase and one uppercase letter", "Sorry! we dont have a clue what kind of wallet file this is.", "not a valid wallet file", "This unit doesn\'t exists, please use the one of the following units", "Invalid address", "Invalid password", "Invalid amount", "Invalid gas limit", "Invalid data value", "Invalid gas amount", "Invalid nonce", "Invalid signed transaction", "Nick name exists", "Wallet not found"];
+globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "New wallet added: "];
 globalFuncs.scrypt = {
 	n: 1024
 };
@@ -1293,18 +1395,17 @@ globalFuncs.defaultTxGasLimit = 21000;
 globalFuncs.digixClaimTxGasLimit = 150000;
 globalFuncs.donateAddress = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
 globalFuncs.isNumeric = function(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
+	return !isNaN(parseFloat(n)) && isFinite(n);
 }
-globalFuncs.urlGet = function (name){
-    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-        return this.stripTags(decodeURIComponent(name[1]));
+globalFuncs.urlGet = function(name) {
+	if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search)) return this.stripTags(decodeURIComponent(name[1]));
 }
-globalFuncs.stripTags = function(str){
-    var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
-    while (SCRIPT_REGEX.test(str)) {
-        str = str.replace(SCRIPT_REGEX, "");
-    }
-    return str;
+globalFuncs.stripTags = function(str) {
+	var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+	while (SCRIPT_REGEX.test(str)) {
+		str = str.replace(SCRIPT_REGEX, "");
+	}
+	return str;
 }
 globalFuncs.checkAndRedirectHTTPS = function() {
 	var host = "myetherwallet.com";
@@ -1313,12 +1414,11 @@ globalFuncs.checkAndRedirectHTTPS = function() {
 	var hostw = "www.myetherwallet.com";
 	if ((host == window.location.host || githost == window.location.host || hostw == window.location.host || githostw == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
 }
-globalFuncs.isStrongPass = function(password){
-        var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-        return re.test(password);
+globalFuncs.isStrongPass = function(password) {
+	var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+	return re.test(password);
 }
 module.exports = globalFuncs;
-
 },{}],24:[function(require,module,exports){
 'use strict';
 var IS_CX = true;
@@ -1767,7 +1867,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
 
   return {
     tabs: tabs,
-    currentTab: 0
+    currentTab: chrome.windows === undefined ? 0 : 3
   };
 };
 module.exports = globalService;
