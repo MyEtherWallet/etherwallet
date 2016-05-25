@@ -20,7 +20,7 @@ cxFuncs.addWalletToStorage = function(address, encStr, nickname, callback) {
 		priv: encStr,
 		type: 'wallet'
 	};
-	var keyname = address;
+	var keyname = ethUtil.toChecksumAddress(address);
 	var obj = {};
 	obj[keyname] = JSON.stringify(value);
 	this.storage.set(obj, callback);
@@ -31,7 +31,7 @@ cxFuncs.addWatchOnlyAddress = function(address, nickname, callback) {
 		nick: nickname,
 		type: 'watchOnly'
 	};
-	var keyname = address;
+	var keyname = ethUtil.toChecksumAddress(address);;
 	var obj = {};
 	obj[keyname] = JSON.stringify(value);
 	this.storage.set(obj, callback);
@@ -61,5 +61,22 @@ cxFuncs.getWalletsArr = function(callback) {
 }
 cxFuncs.getWatchOnlyArr = function(callback) {
 	this.getStorageArr('watchOnly', callback);
+}
+cxFuncs.deleteAccount = function(address,callback){
+    this.storage.remove(address,function(){
+        callback(address);
+    });
+}
+cxFuncs.editNickName = function(address,newNick, callback){
+    newNick = newNick.replace(/(<([^>]+)>)/ig,"");
+    this.storage.get(address, function(account) {
+        var accountInfo = account[address];
+        accountInfo = JSON.parse(accountInfo);
+        accountInfo['nick'] = newNick;
+        account[address] = JSON.stringify(accountInfo);
+        cxFuncs.storage.set(account,function(){
+            callback(newNick);
+        });
+    });
 }
 module.exports = cxFuncs;

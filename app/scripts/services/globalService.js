@@ -93,7 +93,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
 
   return {
     tabs: tabs,
-    currentTab: 0
+    currentTab: chrome.windows === undefined ? 0 : 3
   };
 };
 module.exports = globalService;

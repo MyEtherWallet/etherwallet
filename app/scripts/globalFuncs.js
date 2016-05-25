@@ -28,25 +28,8 @@ globalFuncs.getSuccessText = function(str) {
 globalFuncs.getDangerText = function(str) {
 	return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
-globalFuncs.errorMsgs = [   "Please enter valid amount",
-                            "Your password must be 8 characters in length and must contain atlease one number, one lowercase and one uppercase letter",
-                            "Sorry! we dont have a clue what kind of wallet file this is.",
-                            "not a valid wallet file",
-                            "This unit doesn\'t exists, please use the one of the following units",
-                            "Invalid address",
-                            "Invalid password",
-                            "Invalid amount",
-                            "Invalid gas limit",
-                            "Invalid data value",
-                            "Invalid gas amount",
-                            "Invalid nonce",
-                            "Invalid signed transaction",
-                            "Nick name exists",
-                            "Wallet not found"];
-globalFuncs.successMsgs = [ "Valid address",
-                            "Wallet successfully decrypted",
-                            "Transaction submitted. TX ID: ",
-                            "New wallet added: "];
+globalFuncs.errorMsgs = ["Please enter valid amount", "Your password must be 8 characters in length and must contain atlease one number, one lowercase and one uppercase letter", "Sorry! we dont have a clue what kind of wallet file this is.", "not a valid wallet file", "This unit doesn\'t exists, please use the one of the following units", "Invalid address", "Invalid password", "Invalid amount", "Invalid gas limit", "Invalid data value", "Invalid gas amount", "Invalid nonce", "Invalid signed transaction", "Nick name exists", "Wallet not found"];
+globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "New wallet added: "];
 globalFuncs.scrypt = {
 	n: 1024
 };
@@ -56,18 +39,17 @@ globalFuncs.defaultTxGasLimit = 21000;
 globalFuncs.digixClaimTxGasLimit = 150000;
 globalFuncs.donateAddress = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
 globalFuncs.isNumeric = function(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
+	return !isNaN(parseFloat(n)) && isFinite(n);
 }
-globalFuncs.urlGet = function (name){
-    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-        return this.stripTags(decodeURIComponent(name[1]));
+globalFuncs.urlGet = function(name) {
+	if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search)) return this.stripTags(decodeURIComponent(name[1]));
 }
-globalFuncs.stripTags = function(str){
-    var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
-    while (SCRIPT_REGEX.test(str)) {
-        str = str.replace(SCRIPT_REGEX, "");
-    }
-    return str;
+globalFuncs.stripTags = function(str) {
+	var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+	while (SCRIPT_REGEX.test(str)) {
+		str = str.replace(SCRIPT_REGEX, "");
+	}
+	return str;
 }
 globalFuncs.checkAndRedirectHTTPS = function() {
 	var host = "myetherwallet.com";
@@ -76,8 +58,8 @@ globalFuncs.checkAndRedirectHTTPS = function() {
 	var hostw = "www.myetherwallet.com";
 	if ((host == window.location.host || githost == window.location.host || hostw == window.location.host || githostw == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
 }
-globalFuncs.isStrongPass = function(password){
-        var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-        return re.test(password);
+globalFuncs.isStrongPass = function(password) {
+	var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+	return re.test(password);
 }
 module.exports = globalFuncs;

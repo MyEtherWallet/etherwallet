@@ -24,9 +24,9 @@
           <span>$ {{twallet.usd}} USD</span> &nbsp;&nbsp;
           <span>€ {{twallet.eur}} EUR</span></small>
         </td>
-        <td class="text-center"><a class="mainWalletEdit"><img src="images/icon-edit.svg" title="Edit" /></a></td>
-        <td class="text-center"><a class="text-warning mainWalletView"><img src="images/icon-view.svg" title="View Wallet Details" /></a></td>
-        <td class="text-center"><a class="mainWalletDelete text-danger"><img src="images/icon-remove.svg" title="Remove" /></a></td>
+        <td class="text-center"><a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a></td>
+        <td class="text-center"><a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')"><img src="images/icon-view.svg" title="View Wallet Details" /></a></td>
+        <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
       </tr>
     </tbody>
   </table>
@@ -54,20 +54,20 @@
             <span>$ {{twallet.usd}} USD</span> &nbsp;&nbsp;
             <span>€ {{twallet.eur}} EUR</span></small>
           </td>
-          <td class="text-center"><a class="mainWalletDelete text-danger"><img src="images/icon-remove.svg" title="Remove" /></a></td>
+          <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
         </tr>
       </tbody>
     </table>
   </section>
   <!-- View Private Key Details Pane-->
 
-  <section class="row"> <!--ng-show="wallet!=null" ng-controller='viewWalletCtrl'>-->
+  <section class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
     <hr />
     <div class="col-sm-8">
       <h2>Viewing Wallet: tayvano's wallet</h2>
     </div>
     <div class="col-sm-4 text-right" style="margin-top: 16px;">
-      <a class="btn btn-warning" id="hideWalletDetails"> Hide Wallet Details </a>
+      <a class="btn btn-warning" ng-click="resetWallet()"> Hide Wallet Details </a>
     </div>
     <div class="col-xs-12">
       <div class="alert alert-danger">
@@ -113,7 +113,7 @@
       </div>
     </div>
     <div class="col-sm-6">
-      <div class="form-group" ng-show='showEnc'>
+      <div class="form-group">
         <h4>
           Keystore/JSON File <small>(Encrypted &middot; Mist/Geth Fomrat &middot; Recommended)</small>
           <div class="account-help-icon">
@@ -152,12 +152,6 @@
         <strong style="margin-left: 1em"> {{eurBalance}} EUR </strong>
         <br />
         <strong style="margin-left: 1em"> {{btcBalance}} BTC </strong>
-        <br />
-        <strong style="margin-left: 1em"> {{token.balance}} DAO Tokens</strong>
-        <br />
-        <strong style="margin-left: 1em"> {{tokenBalance}} DGD Tokens </strong>
-        <br />
-        <strong style="margin-left: 1em"> {{badgeBalance}} DGD Badges </strong>
       </p>
     </div>
   </section>
@@ -169,21 +163,21 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel"> Edit Wallet: <span id="walletNicknameEdit"></span></h3>
+          <h3 class="modal-title" id="myModalLabel"> Edit Wallet: {{viewWallet.addr}}</h3>
         </div>
         <div class="modal-body">
           <form role="form">
             <div class="form-group">
               <label for="walletName">Wallet Name</label>
-              <input type="hidden" value="" id="editWalletAddress" />
-              <input type="text" class="form-control" id="walletName" value="">
+              <input type="text" class="form-control" value="" ng-model="viewWallet.nick"/>
             </div>
           </form>
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" id="btnapproveEdit">Save Changes</button>
+          <button type="button" ng-show="viewWallet.nick.length>0" class="btn btn-primary" ng-click="editSave()">Save Changes</button>
         </div>
+        <div ng-bind-html="editStatus"></div>
       </div>
     </div>
   </div>
@@ -191,30 +185,29 @@
 
 
   <!-- View Private Key Modal -->
-  <div class="modal fade" id="viewWalletDetails" tabindex="-1" role="dialog" aria-labelledby="viewKeyLabel">
+  <div class="modal fade" id="viewWalletDetails" tabindex="-1" role="dialog" aria-labelledby="viewKeyLabel" ng-init="showPass=true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel"> View Wallet Details: <span id="walletNicknameView"> nickname of wallet </span></h3>
+          <h3 class="modal-title" id="myModalLabel"> View Wallet Details: {{viewWallet.nick}}</h3>
         </div>
         <div class="modal-body">
           <p> Viewing the wallet details allows you to view the wallet's private key, save the wallet's JSON file, and print the paper wallet.</p>
           <form role="form">
             <div class="form-group">
               <label for="walletName">Enter Your Password:</label>
-              <input type="hidden" value="" id="viewWalletAddress" />
               <div class="input-group">
-                <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-model="password" ng-class="isStrongPass() ? 'valid' : 'invalid'"/>
+                <input type="{{showPass && 'password' || 'text'}}" class="form-control" ng-model="password" />
                 <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
               </div>
-              <div id="viewWalletPopStatus"></div>
+              <div ng-bind-html="viewStatus"></div>
             </div>
           </form>
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-warning" id="btnapproveView"> View Wallet Details </button>
+          <button type="button" class="btn btn-warning" ng-click="decryptWallet()"> View Wallet Details </button>
         </div>
       </div>
     </div>
@@ -228,18 +221,17 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel">Remove Wallet: <span id="walletNicknameDelete"></span></h3>
+          <h3 class="modal-title" id="myModalLabel">Remove Wallet: {{viewWallet.nick}}</h3>
         </div>
         <div class="modal-body">
           <h4>Warning! You are about to remove your wallet.</h4>
-          <input type="hidden" value="" id="deleteWalletAddress" />
           <p> Be sure you have <strong>saved the private key/JSON file and the password</strong> associated with this wallet before you remove it.</p>
           <p> If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.</p>
           <h4>Are you <span class="text-underline">sure</span> you want to do this?</h4>
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
-          <button type="button" class="btn btn-danger" id="btnapproveremove">Yes, I am sure! Remove the sucker.</button>
+          <button type="button" class="btn btn-danger" ng-click="deleteWallet()">Yes, I am sure! Remove the sucker.</button>
         </div>
       </div>
     </div>
