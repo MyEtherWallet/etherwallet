@@ -5,6 +5,7 @@
     <thead>
       <tr>
         <th></th>
+        <th></th>
         <th>Wallet Nickname</th>
         <th>Wallet Address</th>
         <th>Balance</th>
@@ -16,6 +17,7 @@
     <tbody>
       <tr ng-repeat="twallet in allWallets  track by $index">
         <td>{{$index+1}}</td>
+        <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
         <td>{{twallet.nick}}</td>
         <td>{{twallet.addr}}</td>
         <td>
@@ -37,6 +39,7 @@
       <thead>
         <tr>
           <th></th>
+          <th></th>
           <th>Wallet Nickname</th>
           <th>Wallet Address</th>
           <th>Balance</th>
@@ -46,6 +49,7 @@
       <tbody>
         <tr ng-repeat="twallet in allWatchOnly  track by $index">
           <td>{{$index+1}}</td>
+          <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
           <td>{{twallet.nick}}</td>
           <td>{{twallet.addr}}</td>
           <td>
@@ -64,7 +68,7 @@
   <section class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
     <hr />
     <div class="col-sm-8">
-      <h2>Viewing Wallet: tayvano's wallet</h2>
+      <h2>Viewing Wallet: {{viewWallet.nick}}</h2>
     </div>
     <div class="col-sm-4 text-right" style="margin-top: 16px;">
       <a class="btn btn-warning" ng-click="resetWallet()"> Hide Wallet Details </a>

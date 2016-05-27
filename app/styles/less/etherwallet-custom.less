@@ -1,5 +1,6 @@
 // layout
-body, html {
+body,
+html {
   height: 100%;
 }
 
@@ -14,9 +15,8 @@ img {
 }
 
 textarea {
-  resize:vertical;
+  resize: vertical;
 }
-
 
 // header
 header {
@@ -33,7 +33,6 @@ header {
       text-align: center;
     }
   }
-
   img {
     float: left;
     @media screen and (max-width: @screen-sm) {
@@ -41,7 +40,6 @@ header {
     }
   }
 }
-
 
 // footer
 footer {
@@ -53,13 +51,12 @@ footer {
   }
   a {
     color: #74C4DE;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: darken(#74C4DE, 5%);
     }
   }
 }
-
-
 
 // anouncement bars
 .announcement {
@@ -71,7 +68,7 @@ footer {
   background-color: @brand-primary;
   a {
     text-decoration: underline;
-    color:white;
+    color: white;
   }
   &:hover,
   &:focus {
@@ -112,14 +109,33 @@ footer {
 }
 
 #addressIdenticon {
-    width: 64px;
-    height: 64px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    box-shadow: inset rgba(255, 255, 255, 0.5) 0 2px 2px, inset rgba(0, 0, 0, 0.6) 0 -1px 8px;
+  width: 64px;
+  height: 64px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  box-shadow: inset rgba(255, 255, 255, 0.5) 0 2px 2px, inset rgba(0, 0, 0, 0.6) 0 -1px 8px;
 }
 
+#addressIdenticon.med {
+  width: 40px;
+  height: 40px;
+}
+#addressIdenticon.small {
+  width: 24px;
+  height: 24px;
+}
+
+.address-identicon-container.small {
+  display: inline;
+  #addressIdenticon {
+    width: 32px;
+    height: 32px;
+    box-shadow: inset 0 2px 2px hsla(0, 0%, 100%, .5), inset 0 -1px 5px rgba(0, 0, 0, .6);
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
 
 // helpers
 .wrap {
@@ -130,22 +146,23 @@ footer {
   height: 120px;
 }
 
-
 // help page
 #paneHelp {
   h3 {
     margin-top: 2em;
   }
 }
+
 .account-help-icon {
   position: relative;
   display: inline-block;
 }
+
 .account-help-text {
   background: white;
   border-radius: 3px;
   border: 1px solid #CDCDCD;
-  box-shadow: 0 0 5px rgba(100,100,100,.2);
+  box-shadow: 0 0 5px rgba(100, 100, 100, .2);
   display: none;
   font-size: 14px;
   font-weight: 400;
@@ -218,7 +235,6 @@ footer {
   letter-spacing: .02em;
 }
 
-
 // QR Code on Offlien Transactions Page
 .offline-qrcode {
   margin-top: -150px;
@@ -231,10 +247,11 @@ footer {
   }
 }
 
-
 // Contract Page
 .item {
-  .label, .output, label {
+  .label,
+  .output,
+  label {
     display: block;
     em {
       color: @gray-light;
@@ -246,20 +263,6 @@ footer {
   .output {
     font-weight: 400;
     margin: 5px 0;
-  }
-}
-
-
-
-
-.address-identicon-container.small {
-  display: inline;
-  #addressIdenticon {
-      width: 32px;
-      height: 32px;
-      box-shadow: inset 0 2px 2px hsla(0,0%,100%,.5),inset 0 -1px 5px rgba(0,0,0,.6);
-      display: inline-block;
-      vertical-align: middle;
   }
 }
 
@@ -289,7 +292,7 @@ footer {
   }
 }
 
-input[type="text"]+.eye{
+input[type="text"]+.eye {
   cursor: pointer;
   &:before {
     content: "";
@@ -303,7 +306,7 @@ input[type="text"]+.eye{
   }
 }
 
-input[type="password"]+.eye{
+input[type="password"]+.eye {
   cursor: pointer;
   &:before {
     content: "";
@@ -336,12 +339,12 @@ input[type="password"]+.eye{
 
 .form-control.valid:not(.ng-pristine) {
   border: 1px solid @brand-success;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px fade(@brand-success, 60%);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px fade(@brand-success, 60%);
 }
 
 .form-control.invalid:not(.ng-pristine) {
   border: 1px solid @brand-danger;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px fade(@brand-danger, 60%);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px fade(@brand-danger, 60%);
 }
 
 
@@ -387,18 +390,18 @@ input[type="password"]+.eye{
 .proposal-item {
   cursor: pointer;
   padding: 0px 0 8px 0;
-  h4{
+  h4 {
     margin: 0 0 4px 0;
-    font-size:18px;
+    font-size: 18px;
   }
   p {
     margin: 0 0 5px;
-    font-size:14px;
+    font-size: 14px;
   }
 }
 
 .proposal-expanded {
-  display:none;
+  display: none;
   tr:first-child td {
     border-top: 0;
   }
@@ -425,7 +428,9 @@ input[type="password"]+.eye{
   }
 }
 
+
 /* Graph Thingys */
+
 .graph-container {
   position: relative;
   padding: 0 0 18px;
@@ -437,18 +442,21 @@ input[type="password"]+.eye{
   height: 5px;
   background: @gray-light;
 }
+
 .graph-yes {
   position: absolute;
   left: 0;
   height: 5px;
   background: @brand-primary;
 }
+
 .graph-no {
   position: absolute;
   left: 0;
   height: 5px;
   background: @brand-danger;
 }
+
 .graph-unfilled {
   position: absolute;
   right: 0;
@@ -457,25 +465,29 @@ input[type="password"]+.eye{
   background: @gray-lighter;
 }
 
+
 /* Vote Colors */
+
 .votes-yes:before {
-  content:"";
+  content: "";
   margin-right: 5px;
   width: 12px;
   height: 12px;
   display: inline-block;
   background-color: @brand-primary;
 }
+
 .votes-no:before {
-  content:"";
+  content: "";
   margin-right: 5px;
   width: 12px;
   height: 12px;
   display: inline-block;
   background-color: @brand-danger;
 }
+
 .votes-needed:before {
-  content:"";
+  content: "";
   margin-right: 5px;
   width: 12px;
   height: 12px;
@@ -488,6 +500,7 @@ input[type="password"]+.eye{
     border: 0!important;
   }
 }
+
 .graph-bigger {
   .graph-needed,
   .graph-yes,

@@ -1,10 +1,16 @@
 'use strict';
 var mainPopCtrl = function($scope, $sce) {
 	$scope.allWallets = [];
+	$scope.allWatchOnly = [];
     $scope.setAllWallets = function() {
 		cxFuncs.getWalletsArr(function(wlts) {
 			$scope.allWallets = wlts;
 			$scope.updateBalance('allWallets');
+		});
+		cxFuncs.getWatchOnlyArr(function(wlts) {
+			$scope.allWatchOnly = wlts;
+			$scope.updateBalance('allWatchOnly');
+			$scope.$apply();
 		});
 	};
 	$scope.updateBalance = function(varWal) {
@@ -22,6 +28,6 @@ var mainPopCtrl = function($scope, $sce) {
 			}
 		});
 	};
-    $scope.setAllWallets();
+  $scope.setAllWallets();
 };
 module.exports = mainPopCtrl;

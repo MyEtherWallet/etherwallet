@@ -55,7 +55,7 @@
       </div>
 
       <!-- Paste/Type Your Private Key -->
-      <div ng-show="walletType=='pasteprivkey'"> 
+      <div ng-show="walletType=='pasteprivkey'">
         <h4> Paste / type your private key: </h4>
         <div class="form-group">
           <textarea rows="4" class="form-control" placeholder="Private Key" ng-model="manualprivkey" ng-change="onPrivKeyChange()"></textarea>
@@ -97,7 +97,7 @@
         </div>
         <div ng-bind-html="addWalletStats"></div>
     </article>
-    
+
   </section>
 
   <article class="row" ng-if="showAddWallet">
@@ -108,7 +108,7 @@
         <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
         <br />
         <p> Account Address:
-          <br /> <strong style="margin-left: 1em" class="mono">{{wallet.getChecksumAddressString()}}</strong></p>
+          <br /> <strong style="margin-left: 1em" class="mono word-wrap">{{wallet.getChecksumAddressString()}}</strong></p>
           <p> Account Balance:
           <br />
           <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
