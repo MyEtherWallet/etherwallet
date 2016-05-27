@@ -59,7 +59,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 				});
 			}
 		});
-		var userInfo = ethFuncs.getDataObj($scope.digixContract, $scope.digixUserInfo, [$scope.wallet.getAddressString()]);
+		var userInfo = ethFuncs.getDataObj($scope.digixContract, $scope.digixUserInfo, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
 		ajaxReq.getEthCall(userInfo, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
@@ -72,7 +72,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 				$scope.claimedTotal = digixObj.claimed.toString();
 			}
 		});
-		var tokenBalance = ethFuncs.getDataObj($scope.tokenContract, $scope.balanceOf, [$scope.wallet.getAddressString()]);
+		var tokenBalance = ethFuncs.getDataObj($scope.tokenContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
 		ajaxReq.getEthCall(tokenBalance, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
@@ -80,7 +80,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 				$scope.tokenBalance = new BigNumber(data.data).div(1000000000).toString();
 			}
 		});
-		var badgeBalance = ethFuncs.getDataObj($scope.badgeContract, $scope.balanceOf, [$scope.wallet.getAddressString()]);
+		var badgeBalance = ethFuncs.getDataObj($scope.badgeContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
 		ajaxReq.getEthCall(badgeBalance, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;

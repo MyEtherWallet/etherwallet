@@ -22,8 +22,10 @@ uiFuncs.generateTx = function($scope, $sce) {
 			$scope.rawTx = JSON.stringify(rawTx);
 			$scope.signedTx = '0x' + eTx.serialize().toString('hex');
 			$scope.showRaw = true;
-            if($scope.autoSend)
+            if($scope.autoSend){
                 uiFuncs.sendTx($scope, $sce);
+                $scope.autoSend = false;
+            }
 		});
 		$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
 	} catch (e) {

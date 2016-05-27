@@ -35,6 +35,14 @@ ethFuncs.decimalToHex = function(dec) {
 ethFuncs.hexToDecimal = function(hex) {
 	return new BigNumber(this.sanitizeHex(hex)).toString();
 }
+ethFuncs.contractOutToArray = function(hex) {
+	hex = hex.replace('0x', '').match(/.{64}/g);
+    for(var i=0;i<hex.length;i++){
+        hex[i] = hex[i].replace(/^0+/, '');
+        hex[i] = hex[i] == "" ? "0" : hex[i]; 
+    }
+    return hex;
+}
 ethFuncs.getNakedAddress = function(address) {
 	return address.toLowerCase().replace('0x', '');
 }
@@ -45,7 +53,7 @@ ethFuncs.padLeft = function(n, width, z) {
 }
 ethFuncs.getDataObj = function(to, func, arrVals) {
 	var val="";
-    for(var i=0;i<arrVals.length;i++) val+=this.padLeft(this.getNakedAddress(arrVals[i]),64);
+    for(var i=0;i<arrVals.length;i++) val+=this.padLeft(arrVals[i],64);
     return {to: to, data: func+val};
 }
 module.exports = ethFuncs;
