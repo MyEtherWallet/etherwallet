@@ -11,8 +11,7 @@
     </p>
     <p>
       Source:
-        <a href="https://github.com/kvhnuke/etherwallet" target="_blank">MyEtherWallet.com on github</a> &middot;
-        <a href="https://github.com/kvhnuke/MyEtherWalletChromeExtension" target="_blank">MyEtherWallet CX on github</a>
+        <a href="https://github.com/kvhnuke/etherwallet" target="_blank">MyEtherWallet.com & MyEtherWallet CX on github</a>
     </p>
     <p>Contact:
       <a href="mailto:myetherwallet@gmail.com" target="_blank"> Email </a> &middot;
@@ -20,7 +19,6 @@
       <a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank"> kvhnuke on reddit </a> &middot;
       <a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank"> tayvano (insom) on reddit </a>
     </p>
-
   </div>
 </footer>
 </body>
