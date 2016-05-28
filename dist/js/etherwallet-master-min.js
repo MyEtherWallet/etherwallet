@@ -138,7 +138,7 @@ var addWalletCtrl = function($scope, $sce) {
 	};
 	$scope.setNickNames();
 	$scope.newWalletChange = function(varStatus, shwbtn) {
-		if ($scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && $scope.addAccount.password.length > 7) $scope[shwbtn] = true;
+		if ($scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && $scope.addAccount.password.length > 3) $scope[shwbtn] = true;
 		else $scope[shwbtn] = false;
 		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope[varStatus] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
 		else $scope[varStatus] = "";
@@ -1691,7 +1691,7 @@ globalFuncs.hexToAscii = function(hex) {
 module.exports = globalFuncs;
 },{}],26:[function(require,module,exports){
 'use strict';
-var IS_CX = chrome.windows === undefined ? false : true;
+var IS_CX =  false;
 require("babel-polyfill");
 var angular = require('angular');
 var BigNumber = require('bignumber.js');
@@ -1770,6 +1770,7 @@ if(IS_CX){
     app.controller('quickSendCtrl', ['$scope','$sce', quickSendCtrl]);
     app.controller('cxDecryptWalletCtrl', ['$scope','$sce','walletService', cxDecryptWalletCtrl]);
 }
+
 },{"./ajaxReq":1,"./controllers/CX/addWalletCtrl":2,"./controllers/CX/cxDecryptWalletCtrl":3,"./controllers/CX/mainPopCtrl":4,"./controllers/CX/myWalletsCtrl":5,"./controllers/CX/quickSendCtrl":6,"./controllers/bulkGenCtrl":7,"./controllers/decryptWalletCtrl":8,"./controllers/digixCtrl":9,"./controllers/sendOfflineTxCtrl":10,"./controllers/sendTxCtrl":11,"./controllers/tabsCtrl":12,"./controllers/theDaoCtrl":13,"./controllers/viewCtrl":14,"./controllers/viewWalletCtrl":15,"./controllers/walletGenCtrl":16,"./cxFuncs":17,"./directives/QRCodeDrtv":18,"./directives/blockiesDrtv":19,"./directives/cxWalletDecryptDrtv":20,"./directives/fileReaderDrtv":21,"./directives/walletDecryptDrtv":22,"./ethFuncs":23,"./etherUnits":24,"./globalFuncs":25,"./myetherwallet":27,"./services/globalService":28,"./services/walletService":29,"./uiFuncs":30,"angular":32,"babel-polyfill":48,"bignumber.js":51,"crypto":385,"ethereumjs-tx":415,"ethereumjs-util":416,"scryptsy":449,"uuid":480}],27:[function(require,module,exports){
 (function (Buffer){
 'use strict';
@@ -2141,7 +2142,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
 
   return {
     tabs: tabs,
-    currentTab: chrome.windows === undefined ? 0 : 3
+    currentTab: 0
   };
 };
 module.exports = globalService;

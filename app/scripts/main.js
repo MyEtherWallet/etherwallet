@@ -1,5 +1,5 @@
 'use strict';
-var IS_CX = chrome.windows === undefined ? false : true;
+var IS_CX =  false;
 require("babel-polyfill");
 var angular = require('angular');
 var BigNumber = require('bignumber.js');
