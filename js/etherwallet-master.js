@@ -68,7 +68,6 @@ ajaxReq.getETHvalue = function(callback) {
 	});
 }
 module.exports = ajaxReq;
-
 },{}],2:[function(require,module,exports){
 'use strict';
 var addWalletCtrl = function($scope, $sce) {
