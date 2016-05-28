@@ -67,7 +67,7 @@ var addWalletCtrl = function($scope, $sce) {
 	};
 	$scope.setNickNames();
 	$scope.newWalletChange = function(varStatus, shwbtn) {
-		if ($scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && globalFuncs.isStrongPass($scope.addAccount.password)) $scope[shwbtn] = true;
+		if ($scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && $scope.addAccount.password.length > 3) $scope[shwbtn] = true;
 		else $scope[shwbtn] = false;
 		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope[varStatus] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
 		else $scope[varStatus] = "";
