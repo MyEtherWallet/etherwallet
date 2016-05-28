@@ -166,17 +166,20 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 							nay: etherUnits.toEther('0x' + proposal[10], 'wei'),
 							creator: "0x" + proposal[11],
 							enabled: true,
-							minQuroum: function() {	
+							minQuroum: function() {
 								var totalInWei = etherUnits.toWei($scope.token.totRaised, "ether");
 								return etherUnits.toEther(totalInWei / $scope.minQuorumDivisor + (etherUnits.toWei(this.amount, "ether") * totalInWei) / (3 * ($scope.actualBalance + $scope.rewardToken)), "wei");
 							},
 							data: proposal
 						};
-						$scope.objProposal.yeaPer = ($scope.objProposal.yea + $scope.objProposal.nay)==0 ? 0 : ($scope.objProposal.yea / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
-						$scope.objProposal.nayPer = ($scope.objProposal.yea + $scope.objProposal.nay)==0 ? 0 : ($scope.objProposal.nay / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
-                        $scope.showProposal = true;
-						$scope.objProposal.totWeiRaised = etherUnits.toWei($scope.token.totRaised, "ether");
-
+						var yeaBN = new BigNumber($scope.objProposal.yea);
+						var nayBN = new BigNumber($scope.objProposal.nay);
+						$scope.objProposal.totalVotes = yeaBN.plus(nayBN)
+						$scope.objProposal.yeaPer = yeaBN.plus(nayBN).toNumber()=='0' ? 0 : yeaBN.div( $scope.objProposal.totalVotes ).times(100).toNumber();
+						$scope.objProposal.nayPer = yeaBN.plus(nayBN).toNumber()=='0' ? 0 : nayBN.div( $scope.objProposal.totalVotes ).times(100).toNumber();
+            $scope.showProposal = true;
+						$scope.objProposal.quorumCurrent = ( $scope.objProposal.totalVotes *100 ) / $scope.token.totRaised;
+						$scope.objProposal.quorumPer = ( $scope.objProposal.minQuroum()*100 ) / $scope.token.totRaised;
 					}
 				} catch (e) {
 					$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.errorMsgs[15]+": "+globalFuncs.getDangerText(e));

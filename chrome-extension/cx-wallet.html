@@ -867,9 +867,11 @@
             <div class="graph-container">
               <div class="graph-unfilled" style="width:100%"></div>
 
-              <div class="graph-needed"   style="width:{{(((objProposal.yea + objProposal.nay)*100 / token.totRaised)/(objProposal.minQuroum()*100 / token.totRaised))*100 | number:2 }}%"></div>
-              <div class="graph-yes"      style="width:{{objProposal.yea | number:2}}%"></div>
-              <div class="graph-no"       style="width:{{objProposal.nay | number:2}}%; left: {{objProposal.yeaPer | number:2}}%;"></div>
+
+              <div class="graph-needed"   style="width:{{ objProposal.quorumPer | number:2 }}%"></div>
+              <div class="graph-yes"      style="width:{{ ( objProposal.yea * 100 ) / token.totRaised | number:2 }}%"></div>
+              <div class="graph-no"       style="width:{{ ( objProposal.nay * 100 ) / token.totRaised | number:2 }}%;
+                                                 left: {{ ( objProposal.yea * 100 ) / token.totRaised | number:2 }}%;"></div>
             </div>
 
 
@@ -891,50 +893,49 @@
             <table class="table">
               <tr>
                 <td class="label">Votes Yea:</td>
-                <td class="output votes-yes">{{objProposal.yeaPer | number:2}}% <em>({{objProposal.yea}})</em></td>
+                <td class="output votes-yes">
+                  {{ ( objProposal.yea * 100 ) / token.totRaised | number:2 }}% of total
+                  &middot;
+                  {{objProposal.yeaPer | number:2}}% of votes
+                  &middot;
+                  <em>({{objProposal.yea | number:2 }})</em></td>
               </tr>
               <tr>
                 <td class="label">Votes Nay:</td>
-                <td class="output votes-no">{{objProposal.nayPer | number:2}}% <em>({{objProposal.nay}})</em></td>
+                <td class="output votes-no">
+                  {{ ( objProposal.nay * 100 ) / token.totRaised | number:2 }}% of total
+                  &middot;
+                  {{objProposal.nayPer | number:2}}% of votes
+                  &middot;
+                  <em>({{objProposal.nay | number:2 }})</em></td>
               </tr>
               <tr>
                 <td class="label">Quroum:</td>
                 <td class="output">
-                  <div class="votes-needed">
-                  <em>
-                  total raised: {{ token.totRaised }}
-                  <br />
-                  total WEI Raised: {{ objProposal.totWeiRaised }}
-                  <br />
-                  {{ ((objProposal.yea + objProposal.nay)*100) / token.totRaised | number:2 }}%
-                  <br />
-                  of
-                  <br />
-                  {{ (objProposal.minQuroum()*100) / token.totRaised | number:2}}%
-                  <br />
-                  minQuorum: {{objProposal.minQuroum()}}
-                  </em></div>
+                  <div class="votes-needed">{{ objProposal.quorumCurrent | number:2 }}% of {{ objProposal.quorumPer | number:2}}%</div>
                 </td>
               </tr>
-
-              <tr>
-                <td class="label">Recipient:</td>
-                <td class="output"> <div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{objProposal.recipient}}" watch-var="objProposal"></div></div>
-                {{objProposal.recipient}} </td>
-              </tr>
-
               <tr>
                 <td class="label">Creator:</td>
                 <td class="output"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{objProposal.creator}}" watch-var="objProposal"></div></div>
                 {{objProposal.creator}}</td>
               </tr>
               <tr>
+                <td class="label">Recipient:</td>
+                <td class="output"> <div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{objProposal.recipient}}" watch-var="objProposal"></div></div>
+                {{objProposal.recipient}} </td>
+              </tr>
+              <tr>
+                <td class="label">New Curator:</td>
+                <td class="output"><span ng-class="objProposal.split=='Yes' ? 'boolean-yes' : 'boolean-no'"> {{objProposal.split}} </span></td>
+              </tr>
+              <tr>
                 <td class="label">Open:</td>
-                <td class="output"><span ng-class="objProposal.open ? 'boolean-yes' : 'boolean-no'"> {{objProposal.open}} </span></td>
+                <td class="output"><span ng-class="objProposal.open=='Yes' ? 'boolean-yes' : 'boolean-no'"> {{objProposal.open}} </span></td>
               </tr>
               <tr>
                 <td class="label">Proposal Passed:</td>
-                <td class="output"><span ng-class="objProposal.proposalPassed ? 'boolean-yes' : 'boolean-no'"> {{objProposal.proposalPassed}} </span></td>
+                <td class="output"><span ng-class="objProposal.proposalPassed=='Yes' ? 'boolean-yes' : 'boolean-no'"> {{objProposal.proposalPassed}} </span></td>
               </tr>
               <tr>
                 <td class="label">Proposal Hash:</td>
@@ -943,10 +944,6 @@
               <tr>
                 <td class="label">Proposal Deposit:</td>
                 <td class="output">{{objProposal.proposalDeposit}} Ether</td>
-              </tr>
-              <tr>
-                <td class="label">New Curator:</td>
-                <td class="output"><span ng-class="objProposal.split ? 'boolean-yes' : 'boolean-no'"> {{objProposal.split}} </span></td>
               </tr>
 
             </table>
