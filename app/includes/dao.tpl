@@ -120,8 +120,8 @@
               <div class="graph-unfilled" style="width:100%"></div>
 
               <div class="graph-needed"   style="width:{{(((objProposal.yea + objProposal.nay)*100 / token.totRaised)/(objProposal.minQuroum()*100 / token.totRaised))*100 | number:2 }}%"></div>
-              <div class="graph-yes"      style="width:{{objProposal.yea | number:2}}%"></div>
-              <div class="graph-no"       style="width:{{objProposal.nay | number:2}}%; left: {{objProposal.yeaPer | number:2}}%;"></div>
+              <div class="graph-yes"      style="width:{{objProposal.yeaPer | number:2}}%"></div>
+              <div class="graph-no"       style="width:{{objProposal.nayPer | number:2}}%; left: {{objProposal.yeaPer | number:2}}%;"></div>
             </div>
 
 

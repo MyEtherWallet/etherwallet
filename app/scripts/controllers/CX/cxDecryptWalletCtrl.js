@@ -36,7 +36,11 @@ var cxDecryptWalletCtrl = function($scope, $sce, walletService) {
 	    $scope.wallet=null;
         $scope.decryptStatus="";
 		try {
-            $scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.getPrivFromAdd(), $scope.password);
+            var priv = $scope.getPrivFromAdd();
+            if (priv.length==132)
+				$scope.wallet = Wallet.fromMyEtherWalletKey(priv, $scope.password);
+            else
+                $scope.wallet = Wallet.getWalletFromPrivKeyFile(priv, $scope.password);
             walletService.password = $scope.password;
             walletService.wallet = $scope.wallet;
 		} catch (e) {

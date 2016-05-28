@@ -7,7 +7,10 @@ cxFuncs.getAllNickNames = function(callback) {
 		for (var key in items) {
 			if (items.hasOwnProperty(key)) {
 				var tobj = JSON.parse(items[key]);
-				if (tobj.type == 'wallet' || tobj.type == 'watchOnly') nickNames.push(tobj.nick);
+				if (tobj.type == 'wallet' || tobj.type == 'watchOnly') {
+				    nickNames.push(tobj.nick);
+                    nickNames.push(key);
+                }
 			}
 		}
 		callback(nickNames);

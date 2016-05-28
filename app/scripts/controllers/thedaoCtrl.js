@@ -172,8 +172,10 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 							},
 							data: proposal
 						};
-						$scope.objProposal.yeaPer = ($scope.objProposal.yea + $scope.objProposal.nay)==0 ? 0 : ($scope.objProposal.yea / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
-						$scope.objProposal.nayPer = ($scope.objProposal.yea + $scope.objProposal.nay)==0 ? 0 : ($scope.objProposal.nay / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
+                        var yeaBN = new BigNumber($scope.objProposal.yea);
+                        var nayBN = new BigNumber($scope.objProposal.nay);
+						$scope.objProposal.yeaPer = yeaBN.plus(nayBN).toNumber()=='0' ? 0 : yeaBN.div(yeaBN.plus(nayBN)).times(100).toNumber();
+						$scope.objProposal.nayPer = yeaBN.plus(nayBN).toNumber()=='0' ? 0 : nayBN.div(yeaBN.plus(nayBN)).times(100).toNumber();
                         $scope.showProposal = true;
 						$scope.objProposal.totWeiRaised = etherUnits.toWei($scope.token.totRaised, "ether");
 
