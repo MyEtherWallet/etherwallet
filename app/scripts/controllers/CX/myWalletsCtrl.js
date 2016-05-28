@@ -83,9 +83,14 @@ var myWalletsCtrl = function($scope, $sce) {
 		$scope.wallet = null;
 		$scope.viewStatus = "";
 		try {
-			$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.allWallets[$scope.viewWallet.id].priv, $scope.password);
+		   var priv = $scope.allWallets[$scope.viewWallet.id].priv;
+		   if (priv.length==132)
+				$scope.wallet = Wallet.fromMyEtherWalletKey(priv, $scope.password);
+            else
+			     $scope.wallet = Wallet.getWalletFromPrivKeyFile(priv, $scope.password);
 			$scope.viewModal.close();
 			$scope.setWalletInfo();
+            $scope.password = "";
 		} catch (e) {
 			$scope.viewStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + ":" + e));
 		}

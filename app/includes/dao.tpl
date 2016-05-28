@@ -119,7 +119,6 @@
             <div class="graph-container">
               <div class="graph-unfilled" style="width:100%"></div>
 
-
               <div class="graph-needed"   style="width:{{ objProposal.quorumPer | number:2 }}%"></div>
               <div class="graph-yes"      style="width:{{ ( objProposal.yea * 100 ) / token.totRaised | number:2 }}%"></div>
               <div class="graph-no"       style="width:{{ ( objProposal.nay * 100 ) / token.totRaised | number:2 }}%;

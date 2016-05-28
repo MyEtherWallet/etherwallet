@@ -180,6 +180,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
             $scope.showProposal = true;
 						$scope.objProposal.quorumCurrent = ( $scope.objProposal.totalVotes *100 ) / $scope.token.totRaised;
 						$scope.objProposal.quorumPer = ( $scope.objProposal.minQuroum()*100 ) / $scope.token.totRaised;
+
 					}
 				} catch (e) {
 					$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.errorMsgs[15]+": "+globalFuncs.getDangerText(e));
