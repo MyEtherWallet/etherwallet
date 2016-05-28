@@ -977,14 +977,14 @@ module.exports = tabsCtrl;
 },{}],13:[function(require,module,exports){
 'use strict';
 var theDaoCtrl = function($scope, $sce, walletService) {
-	$scope.curTab = "vote";
+	$scope.curTab = "send";
 	new Modal(document.getElementById('sendTransaction'));
     $scope.voteModal = new Modal(document.getElementById('voteProposal'));
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.showAdvance = false;
 	$scope.showRaw = false;
-	$scope.slockitContract = "0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa"; //"0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413";
+	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
 	$scope.slockitBalance = "0x70a08231";
 	$scope.slockitSupply = "0x18160ddd";
 	$scope.slockitTransfer = "0xa9059cbb";
@@ -1160,7 +1160,8 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 
 					}
 				} catch (e) {
-					$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.errorMsgs[15]+": "+globalFuncs.getDangerText(e));
+					$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.errorMsgs[15]);
+					$scope.showProposal = false;
 				}
 			});
 		} catch (e) {
@@ -2111,8 +2112,8 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       id: 8,
       name: "DAO Proposals",
       url: "dao-proposals",
-      mew: true,
-      cx: true
+      mew: false,
+      cx: false
     },
     digix: {
       id: 9,

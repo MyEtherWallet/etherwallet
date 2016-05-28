@@ -87,11 +87,13 @@
         <br />
         <strong style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         <br />
+        <!--
         <strong style="margin-left: 1em"> {{token.balance}} DAO Tokens</strong>
         <br />
         <strong style="margin-left: 1em"> {{tokenBalance}} DGD Tokens </strong>
         <br />
         <strong style="margin-left: 1em"> {{badgeBalance}} DGD Badges </strong>
+        -->
       </p>
     </div>
   </section>

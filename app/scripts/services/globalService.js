@@ -65,8 +65,8 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       id: 8,
       name: "DAO Proposals",
       url: "dao-proposals",
-      mew: true,
-      cx: true
+      mew: false,
+      cx: false
     },
     digix: {
       id: 9,

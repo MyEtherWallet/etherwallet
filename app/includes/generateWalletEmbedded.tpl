@@ -33,7 +33,7 @@
 
     <article class="row">
       <div class="col-md-6 col-xs-12">
-        <h4>1. Save your Keystore/JSON File <small>(Encrypted &middot; Mist/Geth Fomrat &middot; Recommended)</small></h4>
+        <h4>1. Save your Keystore/JSON File <small>(Encrypted &middot; Mist/Geth Format &middot; Recommended)</small></h4>
         <div class="form-group">
           <a class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}"> DOWNLOAD </a>
         </div>
