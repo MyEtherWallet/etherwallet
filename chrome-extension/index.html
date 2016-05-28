@@ -715,8 +715,8 @@
               <div class="graph-unfilled" style="width:100%"></div>
 
               <div class="graph-needed"   style="width:{{(((objProposal.yea + objProposal.nay)*100 / token.totRaised)/(objProposal.minQuroum()*100 / token.totRaised))*100 | number:2 }}%"></div>
-              <div class="graph-yes"      style="width:{{objProposal.yeaPer | number:2}}%"></div>
-              <div class="graph-no"       style="width:{{objProposal.nayPer | number:2}}%; left: {{objProposal.yeaPer | number:2}}%;"></div>
+              <div class="graph-yes"      style="width:{{objProposal.yea | number:2}}%"></div>
+              <div class="graph-no"       style="width:{{objProposal.nay | number:2}}%; left: {{objProposal.yeaPer | number:2}}%;"></div>
             </div>
 
 
@@ -724,18 +724,17 @@
               <h4>{{objProposal.description}} </h4>
               <p>
                 Proposal ID: <strong >{{objProposal.id}}</strong> &middot;
-                <!-- TODO! if date is in future -->
-                ends: <strong>{{objProposal.votingDeadline | date:'medium'}}</strong>
-                <!-- TODO! if date is in past -->
-                ended: <strong>{{objProposal.votingDeadline | date:'medium'}}</strong>
-              </p>
+                <span class="text-success" ng-show="objProposal.votingDeadline.getTime() >= objProposal.today.getTime()">ends: <strong>{{objProposal.votingDeadline | date:'medium'}}</strong></span>
+                <span class="text-danger" ng-show="objProposal.votingDeadline.getTime() < objProposal.today.getTime()">ended: <strong>{{objProposal.votingDeadline | date:'medium'}}</strong>
+              </p></span>
             </div>
-            <div class="col-xs-3 clearfix text-right">
+            <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split=='No'">
               <h4> {{objProposal.amount | number:4}} </h4>
               <p>  ETH  </p>
             </div>
           </section>
           <section class="proposal-expanded col-xs-12" style="display:block;">
+            <p ng-show="objProposal.split=='Yes'"> This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a> </p>
             <table class="table">
               <tr>
                 <td class="label">Votes Yea:</td>
@@ -798,7 +797,7 @@
               </tr>
 
             </table>
-            <div class="form-group" ng-show="objProposal.votingDeadline > objProposal.today">
+            <div class="form-group" ng-show="objProposal.votingDeadline.getTime() > objProposal.today.getTime()">
               <a class="btn btn-primary" data-toggle="modal" data-target="#voteProposal">VOTE ON THIS PROPOSAL</a>
             </div>
             <div class="form-group col-xs-12" ng-bind-html="voteTxStatus"></div>
