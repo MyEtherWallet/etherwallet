@@ -755,8 +755,8 @@
   <section class="row">
     <div class="col-md-9 col-sm-8">
       <h2> "The DAO" </h2>
-      <p> Use this tab to Send DAO Tokens or Vote on a specific proposal. Learn more at <a href="http://daohub.org/" target="_blank">DAOHub</a>, <a href="https://blog.slock.it/the-art-of-the-dao-experiments-with-the-generic-dao-framework-4782f7862131#.bibozinlb" target="_blank">The Art of the DAO</a>, and <a href="https://forum.daohub.org/c/theDAO" target="_blank">DAO Hub Forums (Support, too!)</a></p>
-      <h4><a href="#"> > > > If you would like to Browse & Vote on Proposals, please click here. < < < </a></h4>
+      <p> Use this tab to <strong>Send DAO Tokens or Vote</strong> on a specific proposal. Learn more at <a href="http://daohub.org/" target="_blank">DAOHub</a>, <a href="https://blog.slock.it/the-art-of-the-dao-experiments-with-the-generic-dao-framework-4782f7862131#.bibozinlb" target="_blank">The Art of the DAO</a>, and <a href="https://forum.daohub.org/c/theDAO" target="_blank">DAO Hub Forums (Support, too!)</a></p>
+      <a class="btn btn-info btn-sm" href="#dao-proposals">Browse & Vote on All Proposals Here</a>
     </div>
     <div class="col-md-3 col-sm-4"><img src="images/thedao-addressicon.png" width="250px" height="auto" style="margin-top: 32px;" /></div>
   </section>
@@ -783,8 +783,6 @@
         <br />
           <strong class="text-primary" style="margin-left: 1em"> {{token.balance}} DAO Tokens</strong>
           <br />
-          <strong  style="margin-left: 1em" >Total Raised: {{token.totRaised}} ETH</strong>
-          <br />
           <strong style="margin-left: 1em"> {{etherBalance}} Ether </strong>
           <br />
           <strong style="margin-left: 1em"> {{usdBalance}} USD </strong>
@@ -800,9 +798,9 @@
     <div class="col-sm-8">
 
       <div class = "btn-group">
-        <a class="btn btn-primary" ng-click="curTab='get'"> Get DAO Tokens </a>
-        <a class="btn btn-primary" ng-click="curTab='send'"> Send DAO Tokens </a>
-        <a class="btn btn-primary" ng-click="curTab='vote'"> Vote on a Proposal </a>
+        <!--<a class="btn btn-primary" ng-click="curTab='get'"> Get DAO Tokens </a>-->
+        <a class="btn btn-primary" ng-class="curTab=='send' ? 'active' : ''" ng-click="curTab='send'"> Send DAO Tokens </a>
+        <a class="btn btn-primary" ng-class="curTab=='vote' ? 'active' : ''" ng-click="curTab='vote'"> Vote on a Proposal </a>
       </div>
 
       <!-- Get DAO Tokens -->
@@ -927,11 +925,11 @@
               <div class="graph-no"       style="width:11%; left: 9%;"></div>
             </div>
             <div class="col-xs-9 clearfix">
-              <h4> DAO Support Proposal(description) </h4>
+              <h4> {{objProposal.description}} </h4>
               <p> Proposal ID: <strong >{{objProposal.id}}</strong> &middot; ends: <strong >{{objProposal.votingDeadline}}</strong></p>
             </div>
             <div class="col-xs-3 clearfix text-right">
-              <h4> {{objProposal.amount}} </h4>
+              <h4> {{objProposal.amount | number:4}} </h4>
               <p>  ETH  </p>
             </div>
           </section>
@@ -948,7 +946,20 @@
               <tr>
                 <td class="label">Quroum:</td>
                 <td class="output">
-                  <div class="votes-needed">xx% <em>(needs xx.xx%) {{objProposal.minQuroum()}}</em></div>
+                  <div class="votes-needed">
+                  <em>
+                  total raised: {{ token.totRaised }}
+                  <br />
+                  total WEI Raised: {{ objProposal.totWeiRaised }}
+                  <br />
+                  {{ (objProposal.yea + objProposal.nay)*100 / objProposal.totWeiRaised | number:2 }}%
+                  <br />
+                  of
+                  <br />
+                  {{ objProposal.minQuroum()*100 / objProposal.totWeiRaised | number:2}}%
+                  <br />
+                  minQuorum: {{objProposal.minQuroum()}}
+                  </em></div>
                 </td>
               </tr>
               <tr>
@@ -1028,7 +1039,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          
+
           <br />
           <h4>You are about to vote on Proposal <strong>#{{objProposal.id}}</strong>: DAO Support Proposal.</h4>
           <h4 class="text-light">Please vote carefully, there are no do-overs or take-backs.</h4>

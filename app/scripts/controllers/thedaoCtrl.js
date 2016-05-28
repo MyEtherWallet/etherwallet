@@ -1,6 +1,6 @@
 'use strict';
 var theDaoCtrl = function($scope, $sce, walletService) {
-	$scope.curTab = "get";
+	$scope.curTab = "vote";
 	new Modal(document.getElementById('sendTransaction'));
     $scope.voteModal = new Modal(document.getElementById('voteProposal'));
 	walletService.wallet = null;
@@ -157,11 +157,11 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 							content: proposal[2],
 							description: proposal[2].replace(/<br>/g, '\n').replace(/\\n/g, '\n'),
 							votingDeadline: new Date(new BigNumber("0x" + proposal[3]).toNumber() * 1000),
-							open: proposal[4] == '1' ? true : false,
-							proposalPassed: proposal[5] == '' ? false : true,
+							open: proposal[4] == '1' ? "Yes" : "No",
+							proposalPassed: proposal[5] == '' ? "No" : "Yes",
 							proposalHash: proposal[6],
 							proposalDeposit: etherUnits.toEther('0x' + proposal[7], 'wei'),
-							split: proposal[8] == '' ? false : true,
+							split: proposal[8] == '' ? "No" : "Yes",
 							yea: etherUnits.toEther('0x' + proposal[9], 'wei'),
 							nay: etherUnits.toEther('0x' + proposal[10], 'wei'),
 							creator: "0x" + proposal[11],
@@ -174,7 +174,9 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 						};
 						$scope.objProposal.yeaPer = ($scope.objProposal.yea / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
 						$scope.objProposal.nayPer = ($scope.objProposal.nay / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
-                        $scope.showProposal = true;
+            $scope.showProposal = true;
+						$scope.objProposal.totWeiRaised = etherUnits.toWei($scope.token.totRaised, "ether");
+
 					}
 				} catch (e) {
 					$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.errorMsgs[15]+": "+globalFuncs.getDangerText(e));
