@@ -69,6 +69,7 @@ ajaxReq.getETHvalue = function(callback) {
 }
 module.exports = ajaxReq;
 },{}],2:[function(require,module,exports){
+<<<<<<< HEAD
 'use strict';
 var addWalletCtrl = function($scope, $sce) {
 	$scope.showBtnGen = $scope.showBtnUnlock = $scope.showBtnAdd = $scope.showBtnAddWallet = $scope.showAddWallet = $scope.requireFPass = $scope.requirePPass = $scope.showPassTxt = false;
@@ -224,7 +225,165 @@ var addWalletCtrl = function($scope, $sce) {
 		});
 	}
 };
+=======
+'use strict';
+var addWalletCtrl = function($scope, $sce) {
+	$scope.showBtnGen = $scope.showBtnUnlock = $scope.showBtnAdd = $scope.showBtnAddWallet = $scope.showAddWallet = $scope.requireFPass = $scope.requirePPass = $scope.showPassTxt = false;
+	$scope.nickNames = [];
+	$scope.filePassword = $scope.fileContent = "";
+	$scope.wallet = null;
+	$scope.addAccount = {
+		address: "",
+		nickName: "",
+		encStr: "",
+		password: ""
+	};
+	$scope.onPrivKeyChange = function() {
+		$scope.addWalletStats = "";
+		$scope.requirePPass = $scope.manualprivkey.length == 128 || $scope.manualprivkey.length == 132;
+		$scope.showBtnUnlock = $scope.manualprivkey.length == 64;
+	};
+	$scope.onPrivKeyPassChange = function() {
+		$scope.showBtnUnlock = $scope.privPassword.length > 6;
+	};
+	$scope.showContent = function($fileContent) {
+		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText("File Selected: " + document.getElementById('fselector').files[0].name));
+		try {
+			$scope.requireFPass = Wallet.walletRequirePass($fileContent);
+			$scope.showBtnUnlock = !$scope.requireFPass;
+			$scope.fileContent = $fileContent;
+		} catch (e) {
+			$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+		}
+	};
+	$scope.openFileDialog = function($fileContent) {
+		$scope.addWalletStats = "";
+		document.getElementById('fselector').click();
+	};
+	$scope.onFilePassChange = function() {
+		$scope.showBtnUnlock = $scope.filePassword.length > 3;
+	};
+	$scope.decryptWallet = function() {
+		$scope.wallet = null;
+		$scope.addWalletStats = "";
+		try {
+			if ($scope.walletType == "pasteprivkey" && $scope.requirePPass) {
+				$scope.wallet = Wallet.fromMyEtherWalletKey($scope.manualprivkey, $scope.privPassword);
+				$scope.addAccount.password = $scope.privPassword;
+			} else if ($scope.walletType == "pasteprivkey" && !$scope.requirePPass) {
+				$scope.wallet = new Wallet($scope.manualprivkey);
+				$scope.addAccount.password = '';
+			} else if ($scope.walletType == "fileupload") {
+				$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
+				$scope.addAccount.password = $scope.filePassword;
+			}
+			$scope.addAccount.address = $scope.wallet.getAddressString();
+		} catch (e) {
+			$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + e));
+		}
+		if ($scope.wallet != null) {
+			$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+			$scope.showAddWallet = true;
+			$scope.showPassTxt = $scope.addAccount.password == '';
+			$scope.setBalance();
+		}
+	};
+	$scope.setNickNames = function() {
+		cxFuncs.getAllNickNames(function(nicks) {
+			$scope.nickNames = nicks;
+		});
+	};
+	$scope.setNickNames();
+	$scope.newWalletChange = function(varStatus, shwbtn) {
+		if ($scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && $scope.addAccount.password.length > 3) $scope[shwbtn] = true;
+		else $scope[shwbtn] = false;
+		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope[varStatus] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+		else $scope[varStatus] = "";
+	}
+	$scope.watchOnlyChange = function() {
+		if ($scope.addAccount.address != "" && $scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && ethFuncs.validateEtherAddress($scope.addAccount.address)) $scope.showBtnAdd = true;
+		else $scope.showBtnAdd = false;
+		if ($scope.addAccount.address != "" && !ethFuncs.validateEtherAddress($scope.addAccount.address)) $scope.watchOnlyStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+		else if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope.watchOnlyStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+		else $scope.watchOnlyStatus = "";
+	}
+	$scope.addWatchOnly = function() {
+	   if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
+	       $scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+           return;
+	    }
+		cxFuncs.addWatchOnlyAddress($scope.addAccount.address, $scope.addAccount.nickName, function() {
+			if (chrome.runtime.lastError) {
+				$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(chrome.runtime.lastError.message));
+			} else {
+				$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[3] + $scope.addAccount.address));
+				$scope.setNickNames();
+			}
+			$scope.$apply();
+		});
+	}
+	$scope.isStrongPass = function(pass) {
+		return globalFuncs.isStrongPass(pass);
+	}
+	$scope.$watch('walletType', function() {
+		$scope.showBtnGen = $scope.showBtnUnlock = $scope.showBtnAdd = $scope.showAddWallet = false;
+		$scope.addNewNick = $scope.addNewPass = "";
+		$scope.addWalletStats = "";
+	});
+	$scope.addWalletToStorage = function(status) {
+	    if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
+	       $scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+           return;
+	    } else if($scope.nickNames.indexOf(ethUtil.toChecksumAddress($scope.addAccount.address)) !== -1){
+	       $scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[16]));
+           return;
+	    }
+		cxFuncs.addWalletToStorage($scope.addAccount.address, $scope.addAccount.encStr, $scope.addAccount.nickName, function() {
+			if (chrome.runtime.lastError) {
+				$scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(chrome.runtime.lastError.message));
+			} else {
+				$scope[status] = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[3] + $scope.addAccount.address));
+				$scope.setNickNames();
+			}
+			$scope.$apply();
+		});
+	}
+	$scope.importWalletToStorage = function() {
+		var wStr = $scope.wallet.toV3($scope.addAccount.password, {
+			kdf: globalFuncs.kdf,
+			n: globalFuncs.scrypt.n
+		});
+		$scope.addAccount.encStr = JSON.stringify(wStr);
+        $scope.addWalletToStorage('addStatus');
+	}
+	$scope.generateWallet = function() {
+		var wallet = Wallet.generate(false);
+		var wStr = wallet.toV3($scope.addAccount.password, {
+			kdf: globalFuncs.kdf,
+			n: globalFuncs.scrypt.n
+		});
+		$scope.addAccount.encStr = JSON.stringify(wStr);
+		$scope.addAccount.address = wallet.getAddressString();
+		$scope.addWalletToStorage('addWalletStats');
+	}
+	$scope.setBalance = function() {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
+			if (data.error) {
+				$scope.etherBalance = data.msg;
+			} else {
+				$scope.etherBalance = etherUnits.toEther(data.data.balance, 'wei');
+				ajaxReq.getETHvalue(function(data) {
+					$scope.usdBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.usd);
+					$scope.eurBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.eur);
+					$scope.btcBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.btc);
+				});
+			}
+		});
+	}
+};
+>>>>>>> 34a774a29c7b513c14649e9970d528cef17e856d
 module.exports = addWalletCtrl;
+
 },{}],3:[function(require,module,exports){
 'use strict';
 var cxDecryptWalletCtrl = function($scope, $sce, walletService) {
@@ -1689,6 +1848,7 @@ globalFuncs.hexToAscii = function(hex) {
 }
 module.exports = globalFuncs;
 },{}],26:[function(require,module,exports){
+<<<<<<< HEAD
 'use strict';
 var IS_CX = false;
 if(typeof chrome != 'undefined') 
@@ -1770,7 +1930,89 @@ if(IS_CX){
     app.controller('mainPopCtrl', ['$scope','$sce', mainPopCtrl]);
     app.controller('quickSendCtrl', ['$scope','$sce', quickSendCtrl]);
     app.controller('cxDecryptWalletCtrl', ['$scope','$sce','walletService', cxDecryptWalletCtrl]);
+=======
+'use strict';
+var IS_CX =  false;
+require("babel-polyfill");
+var angular = require('angular');
+var BigNumber = require('bignumber.js');
+window.BigNumber = BigNumber;
+var ethUtil = require('ethereumjs-util');
+ethUtil.crypto = require('crypto');
+ethUtil.Tx = require('ethereumjs-tx');
+ethUtil.scrypt = require('scryptsy');
+ethUtil.uuid = require('uuid');
+window.ethUtil = ethUtil;
+var Wallet = require('./myetherwallet');
+window.Wallet = Wallet;
+var globalFuncs = require('./globalFuncs');
+window.globalFuncs = globalFuncs;
+var uiFuncs = require('./uiFuncs');
+window.uiFuncs = uiFuncs;
+var etherUnits = require('./etherUnits');
+window.etherUnits = etherUnits;
+var ajaxReq = require('./ajaxReq');
+window.ajaxReq = ajaxReq;
+var ethFuncs = require('./ethFuncs');
+window.ethFuncs = ethFuncs;
+if(IS_CX){
+    var cxFuncs = require('./cxFuncs');
+    window.cxFuncs = cxFuncs;
 }
+var tabsCtrl = require('./controllers/tabsCtrl');
+var viewCtrl = require('./controllers/viewCtrl');
+var walletGenCtrl = require('./controllers/walletGenCtrl');
+var bulkGenCtrl = require('./controllers/bulkGenCtrl');
+var decryptWalletCtrl = require('./controllers/decryptWalletCtrl');
+var viewWalletCtrl = require('./controllers/viewWalletCtrl');
+var sendTxCtrl = require('./controllers/sendTxCtrl');
+var digixCtrl = require('./controllers/digixCtrl');
+var theDaoCtrl = require('./controllers/theDaoCtrl');
+var sendOfflineTxCtrl = require('./controllers/sendOfflineTxCtrl');
+var globalService = require('./services/globalService');
+var walletService = require('./services/walletService');
+var blockiesDrtv = require('./directives/blockiesDrtv');
+var QRCodeDrtv = require('./directives/QRCodeDrtv');
+var walletDecryptDrtv = require('./directives/walletDecryptDrtv');
+var cxWalletDecryptDrtv = require('./directives/cxWalletDecryptDrtv');
+var fileReaderDrtv = require('./directives/fileReaderDrtv');
+if(IS_CX){
+    var addWalletCtrl = require('./controllers/CX/addWalletCtrl');
+    var cxDecryptWalletCtrl = require('./controllers/CX/cxDecryptWalletCtrl');
+    var myWalletsCtrl = require('./controllers/CX/myWalletsCtrl');
+    var mainPopCtrl = require('./controllers/CX/mainPopCtrl');
+    var quickSendCtrl = require('./controllers/CX/quickSendCtrl');
+}
+var app = angular.module('mewApp', []);
+app.config(['$compileProvider', function($compileProvider) {
+	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
+}]);
+app.factory('globalService', ['$http','$httpParamSerializerJQLike',globalService]);
+app.factory('walletService', walletService);
+app.directive('blockieAddress', blockiesDrtv);
+app.directive('qrCode', QRCodeDrtv);
+app.directive('onReadFile', fileReaderDrtv);
+app.directive('walletDecryptDrtv', walletDecryptDrtv);
+app.directive('cxWalletDecryptDrtv', cxWalletDecryptDrtv);
+app.controller('tabsCtrl', ['$scope', 'globalService', tabsCtrl]);
+app.controller('viewCtrl', ['$scope', 'globalService', viewCtrl]);
+app.controller('walletGenCtrl', ['$scope', walletGenCtrl]);
+app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
+app.controller('decryptWalletCtrl', ['$scope','$sce','walletService', decryptWalletCtrl]);
+app.controller('viewWalletCtrl', ['$scope','walletService', viewWalletCtrl]);
+app.controller('sendTxCtrl', ['$scope','$sce','walletService', sendTxCtrl]);
+app.controller('digixCtrl', ['$scope','$sce','walletService', digixCtrl]);
+app.controller('theDaoCtrl', ['$scope','$sce','walletService', theDaoCtrl]);
+app.controller('sendOfflineTxCtrl', ['$scope','$sce','walletService', sendOfflineTxCtrl]);
+if(IS_CX){
+    app.controller('addWalletCtrl', ['$scope','$sce', addWalletCtrl]);
+    app.controller('myWalletsCtrl', ['$scope','$sce', myWalletsCtrl]);
+    app.controller('mainPopCtrl', ['$scope','$sce', mainPopCtrl]);
+    app.controller('quickSendCtrl', ['$scope','$sce', quickSendCtrl]);
+    app.controller('cxDecryptWalletCtrl', ['$scope','$sce','walletService', cxDecryptWalletCtrl]);
+>>>>>>> 34a774a29c7b513c14649e9970d528cef17e856d
+}
+
 },{"./ajaxReq":1,"./controllers/CX/addWalletCtrl":2,"./controllers/CX/cxDecryptWalletCtrl":3,"./controllers/CX/mainPopCtrl":4,"./controllers/CX/myWalletsCtrl":5,"./controllers/CX/quickSendCtrl":6,"./controllers/bulkGenCtrl":7,"./controllers/decryptWalletCtrl":8,"./controllers/digixCtrl":9,"./controllers/sendOfflineTxCtrl":10,"./controllers/sendTxCtrl":11,"./controllers/tabsCtrl":12,"./controllers/theDaoCtrl":13,"./controllers/viewCtrl":14,"./controllers/viewWalletCtrl":15,"./controllers/walletGenCtrl":16,"./cxFuncs":17,"./directives/QRCodeDrtv":18,"./directives/blockiesDrtv":19,"./directives/cxWalletDecryptDrtv":20,"./directives/fileReaderDrtv":21,"./directives/walletDecryptDrtv":22,"./ethFuncs":23,"./etherUnits":24,"./globalFuncs":25,"./myetherwallet":27,"./services/globalService":28,"./services/walletService":29,"./uiFuncs":30,"angular":32,"babel-polyfill":48,"bignumber.js":51,"crypto":385,"ethereumjs-tx":415,"ethereumjs-util":416,"scryptsy":449,"uuid":480}],27:[function(require,module,exports){
 (function (Buffer){
 'use strict';
@@ -2046,6 +2288,7 @@ Wallet.getWalletFromPrivKeyFile = function(strjson, password) {
 }
 module.exports = Wallet;
 }).call(this,require("buffer").Buffer)
+<<<<<<< HEAD
 },{"buffer":82}],28:[function(require,module,exports){
 'use strict';
 var globalService = function($http, $httpParamSerializerJQLike) {
@@ -2150,6 +2393,110 @@ var globalService = function($http, $httpParamSerializerJQLike) {
 module.exports = globalService;
 
 
+=======
+},{"buffer":81}],28:[function(require,module,exports){
+'use strict';
+var globalService = function($http, $httpParamSerializerJQLike) {
+    globalFuncs.checkAndRedirectHTTPS();
+    ajaxReq.http = $http;
+    ajaxReq.postSerializer = $httpParamSerializerJQLike;
+
+  var tabs = {
+    generateWallet: {
+      id: 0,
+      name: "Generate Wallet",
+      url: "generate-wallet",
+      mew: true,
+      cx: false
+    },
+    bulkGenerate: {
+      id: 1,
+      name: "Bulk Generate",
+      url: "bulk-generate",
+      mew: false,
+      cx: false
+    },
+    viewWalletInfo: {
+      id: 2,
+      name: "View Wallet Info",
+      url: "view-wallet-info",
+      mew: true,
+      cx: false
+    },
+    myWallet: {
+      id: 3,
+      name: "My Wallets",
+      url: "my-wallet",
+      mew: false,
+      cx: true
+    },
+    addWallet: {
+      id: 4,
+      name: "Add Wallet",
+      url: "add-wallet",
+      mew: false,
+      cx: true
+    },
+    sendTransaction: {
+      id: 5,
+      name: "Send Transaction",
+      url: "send-transaction",
+      mew: true,
+      cx: true
+    },
+    offlineTransaction: {
+      id: 6,
+      name: "Offline Transaction",
+      url:"offline-transaction",
+      mew: true,
+      cx: false
+    },
+    dao: {
+      id: 7,
+      name: "The DAO",
+      url: "the-dao",
+      mew: true,
+      cx: true
+    },
+    daoproposals: {
+      id: 8,
+      name: "DAO Proposals",
+      url: "dao-proposals",
+      mew: false,
+      cx: false
+    },
+    digix: {
+      id: 9,
+      name: "Digix",
+      url: "digix",
+      mew: true,
+      cx: true
+    },
+    contracts: {
+      id: 10,
+      name: "Contracts",
+      url:"contracts",
+      mew: false,
+      cx: false
+    },
+    help: {
+      id: 11,
+      name: "Help",
+      url: "help",
+      mew: true,
+      cx: true
+    }
+  };
+
+  return {
+    tabs: tabs,
+    currentTab: 0
+  };
+};
+module.exports = globalService;
+
+
+>>>>>>> 34a774a29c7b513c14649e9970d528cef17e856d
 
 },{}],29:[function(require,module,exports){
 'use strict';
