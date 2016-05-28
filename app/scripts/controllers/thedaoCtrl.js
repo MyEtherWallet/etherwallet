@@ -149,19 +149,19 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 						$scope.loadProposalStatus = data.msg;
 					} else {
 						var proposal = ethFuncs.contractOutToArray(data.data);
-						console.log(proposal[9], etherUnits.toEther('0x' + proposal[10], 'wei'));
 						$scope.objProposal = {
 							id: $scope.proposalId,
 							recipient: '0x' + proposal[0],
 							amount: etherUnits.toEther('0x' + proposal[1], 'wei'),
-							content: proposal[2],
-							description: proposal[2].replace(/<br>/g, '\n').replace(/\\n/g, '\n'),
+							content: proposal.slice(13).join(),
+							description: globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n'),
 							votingDeadline: new Date(new BigNumber("0x" + proposal[3]).toNumber() * 1000),
+                            today: new Date(),
 							open: proposal[4] == '1' ? "Yes" : "No",
-							proposalPassed: proposal[5] == '' ? "No" : "Yes",
-							proposalHash: proposal[6],
+							proposalPassed: proposal[5] == '1' ? "Yes" : "No",
+							proposalHash: '0x'+proposal[6],
 							proposalDeposit: etherUnits.toEther('0x' + proposal[7], 'wei'),
-							split: proposal[8] == '' ? "No" : "Yes",
+							split: proposal[8] == '1' ? "Yes" : "No",
 							yea: etherUnits.toEther('0x' + proposal[9], 'wei'),
 							nay: etherUnits.toEther('0x' + proposal[10], 'wei'),
 							creator: "0x" + proposal[11],
@@ -172,8 +172,8 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 							},
 							data: proposal
 						};
-						$scope.objProposal.yeaPer = ($scope.objProposal.yea / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
-						$scope.objProposal.nayPer = ($scope.objProposal.nay / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
+						$scope.objProposal.yeaPer = ($scope.objProposal.yea + $scope.objProposal.nay)==0 ? 0 : ($scope.objProposal.yea / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
+						$scope.objProposal.nayPer = ($scope.objProposal.yea + $scope.objProposal.nay)==0 ? 0 : ($scope.objProposal.nay / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
             $scope.showProposal = true;
 						$scope.objProposal.totWeiRaised = etherUnits.toWei($scope.token.totRaised, "ether");
 

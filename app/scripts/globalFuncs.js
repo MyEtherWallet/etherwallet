@@ -62,4 +62,9 @@ globalFuncs.isStrongPass = function(password) {
 	var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 	return re.test(password);
 }
+globalFuncs.hexToAscii = function(hex) {
+	return hex.match(/.{1,2}/g).map(function(v) {
+		return String.fromCharCode(parseInt(v, 16));
+	}).join('');
+}
 module.exports = globalFuncs;
