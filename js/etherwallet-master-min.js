@@ -177,6 +177,9 @@ var addWalletCtrl = function($scope, $sce) {
 	    if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
 	       $scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
            return;
+	    } else if($scope.nickNames.indexOf(ethUtil.toChecksumAddress($scope.addAccount.address)) !== -1){
+	       $scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[16]));
+           return;
 	    }
 		cxFuncs.addWalletToStorage($scope.addAccount.address, $scope.addAccount.encStr, $scope.addAccount.nickName, function() {
 			if (chrome.runtime.lastError) {
@@ -261,7 +264,11 @@ var cxDecryptWalletCtrl = function($scope, $sce, walletService) {
 	    $scope.wallet=null;
         $scope.decryptStatus="";
 		try {
-            $scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.getPrivFromAdd(), $scope.password);
+            var priv = $scope.getPrivFromAdd();
+            if (priv.length==132)
+				$scope.wallet = Wallet.fromMyEtherWalletKey(priv, $scope.password);
+            else
+                $scope.wallet = Wallet.getWalletFromPrivKeyFile(priv, $scope.password);
             walletService.password = $scope.password;
             walletService.wallet = $scope.wallet;
 		} catch (e) {
@@ -392,9 +399,14 @@ var myWalletsCtrl = function($scope, $sce) {
 		$scope.wallet = null;
 		$scope.viewStatus = "";
 		try {
-			$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.allWallets[$scope.viewWallet.id].priv, $scope.password);
+		   var priv = $scope.allWallets[$scope.viewWallet.id].priv;
+		   if (priv.length==132)
+				$scope.wallet = Wallet.fromMyEtherWalletKey(priv, $scope.password);
+            else
+			     $scope.wallet = Wallet.getWalletFromPrivKeyFile(priv, $scope.password);
 			$scope.viewModal.close();
 			$scope.setWalletInfo();
+            $scope.password = "";
 		} catch (e) {
 			$scope.viewStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + ":" + e));
 		}
@@ -1145,6 +1157,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
             $scope.showProposal = true;
 						$scope.objProposal.quorumCurrent = ( $scope.objProposal.totalVotes *100 ) / $scope.token.totRaised;
 						$scope.objProposal.quorumPer = ( $scope.objProposal.minQuroum()*100 ) / $scope.token.totRaised;
+
 					}
 				} catch (e) {
 					$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.errorMsgs[15]+": "+globalFuncs.getDangerText(e));
@@ -1266,7 +1279,10 @@ cxFuncs.getAllNickNames = function(callback) {
 		for (var key in items) {
 			if (items.hasOwnProperty(key)) {
 				var tobj = JSON.parse(items[key]);
-				if (tobj.type == 'wallet' || tobj.type == 'watchOnly') nickNames.push(tobj.nick);
+				if (tobj.type == 'wallet' || tobj.type == 'watchOnly') {
+				    nickNames.push(tobj.nick);
+                    nickNames.push(key);
+                }
 			}
 		}
 		callback(nickNames);
@@ -1631,7 +1647,7 @@ globalFuncs.getSuccessText = function(str) {
 globalFuncs.getDangerText = function(str) {
 	return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
-globalFuncs.errorMsgs = ["Please enter valid amount", "Your password must be 8 characters in length and must contain atlease one number, one lowercase and one uppercase letter", "Sorry! we dont have a clue what kind of wallet file this is.", "not a valid wallet file", "This unit doesn\'t exists, please use the one of the following units", "Invalid address", "Invalid password", "Invalid amount", "Invalid gas limit", "Invalid data value", "Invalid gas amount", "Invalid nonce", "Invalid signed transaction", "Nick name exists", "Wallet not found", "Invalid proposal ID"];
+globalFuncs.errorMsgs = ["Please enter valid amount", "Your password must be 8 characters in length and must contain atlease one number, one lowercase and one uppercase letter", "Sorry! we dont have a clue what kind of wallet file this is.", "not a valid wallet file", "This unit doesn\'t exists, please use the one of the following units", "Invalid address", "Invalid password", "Invalid amount", "Invalid gas limit", "Invalid data value", "Invalid gas amount", "Invalid nonce", "Invalid signed transaction", "Nick name exists", "Wallet not found", "Invalid proposal ID", "Address already exists in storage"];
 globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "New wallet added: "];
 globalFuncs.scrypt = {
 	n: 1024
