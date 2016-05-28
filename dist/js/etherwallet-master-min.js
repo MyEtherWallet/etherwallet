@@ -978,7 +978,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.slockitTransfer = "0xa9059cbb";
 	$scope.slockitProposal = "0x013cf08b";
 	$scope.slockitminQuorumDivisor = "0x674ed066";
-	$scope.slockitABalance = "0x674ed066";
+	$scope.slockitABalance = "0x39d1f908";
 	$scope.slockitRToken = "0xcdef91d0";
     $scope.slockitVote = "0xc9d27afe";
 	$scope.tx = {
@@ -1131,7 +1131,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 							nay: etherUnits.toEther('0x' + proposal[10], 'wei'),
 							creator: "0x" + proposal[11],
 							enabled: true,
-							minQuroum: function() {
+							minQuroum: function() {	
 								var totalInWei = etherUnits.toWei($scope.token.totRaised, "ether");
 								return etherUnits.toEther(totalInWei / $scope.minQuorumDivisor + (etherUnits.toWei(this.amount, "ether") * totalInWei) / (3 * ($scope.actualBalance + $scope.rewardToken)), "wei");
 							},
@@ -1139,7 +1139,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 						};
 						$scope.objProposal.yeaPer = ($scope.objProposal.yea + $scope.objProposal.nay)==0 ? 0 : ($scope.objProposal.yea / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
 						$scope.objProposal.nayPer = ($scope.objProposal.yea + $scope.objProposal.nay)==0 ? 0 : ($scope.objProposal.nay / ($scope.objProposal.yea + $scope.objProposal.nay)) * 100;
-            $scope.showProposal = true;
+                        $scope.showProposal = true;
 						$scope.objProposal.totWeiRaised = etherUnits.toWei($scope.token.totRaised, "ether");
 
 					}

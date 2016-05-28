@@ -754,11 +754,11 @@
                   <br />
                   total WEI Raised: {{ objProposal.totWeiRaised }}
                   <br />
-                  {{ (objProposal.yea + objProposal.nay)*100 / token.totRaised | number:2 }}%
+                  {{ ((objProposal.yea + objProposal.nay)*100) / token.totRaised | number:2 }}%
                   <br />
                   of
                   <br />
-                  {{ objProposal.minQuroum()*100 / token.totRaised | number:2}}%
+                  {{ (objProposal.minQuroum()*100) / token.totRaised | number:2}}%
                   <br />
                   minQuorum: {{objProposal.minQuroum()}}
                   </em></div>
@@ -798,7 +798,7 @@
               </tr>
 
             </table>
-            <div class="form-group" ng-show="objProposal.votingDeadline > objProposal.today">
+            <div class="form-group" ng-show="objProposal.votingDeadline.getTime() > objProposal.today.getTime()">
               <a class="btn btn-primary" data-toggle="modal" data-target="#voteProposal">VOTE ON THIS PROPOSAL</a>
             </div>
             <div class="form-group col-xs-12" ng-bind-html="voteTxStatus"></div>
