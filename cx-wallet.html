@@ -756,7 +756,7 @@
     <div class="col-md-9 col-sm-8">
       <h2> The DAO </h2>
       <p> Use this tab to <strong>Send DAO Tokens or Vote</strong> on a specific proposal. Learn more at <a href="http://daohub.org/" target="_blank">DAOHub</a>, <a href="https://blog.slock.it/the-art-of-the-dao-experiments-with-the-generic-dao-framework-4782f7862131#.bibozinlb" target="_blank">The Art of the DAO</a>, and <a href="https://forum.daohub.org/c/theDAO" target="_blank">DAO Hub Forums (Support, too!)</a></p>
-      <a class="btn btn-info btn-sm" ng-click="globalService.currentTab=globalService.tabs.daoproposals.id">Browse & Vote on All Proposals Here</a>
+      <a class="btn btn-info btn-sm" onclick="window.location.hash = '#dao-proposals'; location.reload();">Browse & Vote on All Proposals Here</a>
     </div>
     <div class="col-md-3 col-sm-4"><img src="images/thedao-addressicon.png" width="250px" height="auto" style="margin-top: 32px;" /></div>
   </section>
@@ -867,19 +867,14 @@
             <div class="graph-container">
               <div class="graph-unfilled" style="width:100%"></div>
 
-              <!-- TODO! Should be the percentage of MinQuorum -->
-              <div class="graph-needed"   style="width:26%"></div>
-
-              <!-- TODO! Should be the votes Yes / total supply (NOT /QUORUM) -->
-              <div class="graph-yes"      style="width:9%"></div>
-              <!-- TODO! Should be the votes No / total supply (NOT /QUORUM) -->
-              <div class="graph-no"       style="width:11%; left: 9%;"></div>
+              <div class="graph-needed"   style="width:{{(((objProposal.yea + objProposal.nay)*100 / token.totRaised)/(objProposal.minQuroum()*100 / token.totRaised))*100 | number:2 }}%"></div>
+              <div class="graph-yes"      style="width:{{objProposal.yeaPer | number:2}}%"></div>
+              <div class="graph-no"       style="width:{{objProposal.nayPer | number:2}}%; left: {{objProposal.yeaPer | number:2}}%;"></div>
             </div>
 
 
             <div class="col-xs-9 clearfix">
-              <!-- TODO! fix description-->
-              <h4> {{objProposal.description}} </h4>
+              <h4>{{objProposal.description}} </h4>
               <p>
                 Proposal ID: <strong >{{objProposal.id}}</strong> &middot;
                 <!-- TODO! if date is in future -->
@@ -897,29 +892,26 @@
             <table class="table">
               <tr>
                 <td class="label">Votes Yea:</td>
-                <!-- TODO! fix if nan-->
-                <td class="output votes-yes">{{objProposal.yeaPer}}% <em>({{objProposal.yea}})</em></td>
+                <td class="output votes-yes">{{objProposal.yeaPer | number:2}}% <em>({{objProposal.yea}})</em></td>
               </tr>
               <tr>
                 <td class="label">Votes Nay:</td>
-                <!-- TODO! fix nan-->
-                <td class="output votes-no">{{objProposal.nayPer}}% <em>({{objProposal.nay}})</em></td>
+                <td class="output votes-no">{{objProposal.nayPer | number:2}}% <em>({{objProposal.nay}})</em></td>
               </tr>
               <tr>
                 <td class="label">Quroum:</td>
                 <td class="output">
                   <div class="votes-needed">
-                  <!-- TODO! make this work -->
                   <em>
                   total raised: {{ token.totRaised }}
                   <br />
                   total WEI Raised: {{ objProposal.totWeiRaised }}
                   <br />
-                  {{ (objProposal.yea + objProposal.nay)*100 / objProposal.totWeiRaised | number:2 }}%
+                  {{ (objProposal.yea + objProposal.nay)*100 / token.totRaised | number:2 }}%
                   <br />
                   of
                   <br />
-                  {{ objProposal.minQuroum()*100 / objProposal.totWeiRaised | number:2}}%
+                  {{ objProposal.minQuroum()*100 / token.totRaised | number:2}}%
                   <br />
                   minQuorum: {{objProposal.minQuroum()}}
                   </em></div>
@@ -937,54 +929,29 @@
                 <td class="output"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{objProposal.creator}}" watch-var="objProposal"></div></div>
                 {{objProposal.creator}}</td>
               </tr>
-
-              <!-- TODO! The open for each proposal should be
-                1: Yes
-                2: Yes
-              -->
               <tr>
                 <td class="label">Open:</td>
                 <td class="output"><span ng-class="objProposal.open ? 'boolean-yes' : 'boolean-no'"> {{objProposal.open}} </span></td>
               </tr>
-
-              <!-- TODO! The pass for each proposal should be
-                1: No
-                2: Yes
-              -->
               <tr>
                 <td class="label">Proposal Passed:</td>
                 <td class="output"><span ng-class="objProposal.proposalPassed ? 'boolean-yes' : 'boolean-no'"> {{objProposal.proposalPassed}} </span></td>
               </tr>
-
-              <!-- TODO! the hash for each proposal should be:
-                1: 0x8bfe36d7a56132816b1574291cd4d675f3e7abda610c3c50228e5bf15b036ff6
-                2: 0x332bb591b0f77251124f30f1a9675590bfd1cadcdf12714e731370d41a8803a3
-              -->
               <tr>
                 <td class="label">Proposal Hash:</td>
                 <td class="output">{{objProposal.proposalHash}}</td>
               </tr>
               <tr>
-
-              <!-- TODO! the deposit for each proposal should be:
-                1: 1000000000000000
-                2: 0
-              -->
                 <td class="label">Proposal Deposit:</td>
-                <td class="output">{{objProposal.proposalDeposit}}</td>
+                <td class="output">{{objProposal.proposalDeposit}} Ether</td>
               </tr>
-
-              <!-- TODO! the curator for each proposal should be:
-                1: NO
-                2: YES
-              -->
               <tr>
                 <td class="label">New Curator:</td>
                 <td class="output"><span ng-class="objProposal.split ? 'boolean-yes' : 'boolean-no'"> {{objProposal.split}} </span></td>
               </tr>
 
             </table>
-            <div class="form-group">
+            <div class="form-group" ng-show="objProposal.votingDeadline > objProposal.today">
               <a class="btn btn-primary" data-toggle="modal" data-target="#voteProposal">VOTE ON THIS PROPOSAL</a>
             </div>
             <div class="form-group col-xs-12" ng-bind-html="voteTxStatus"></div>
