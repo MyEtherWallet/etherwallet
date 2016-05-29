@@ -3,18 +3,18 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.curTab = "send";
 	new Modal(document.getElementById('sendTransaction'));
     $scope.voteModal = new Modal(document.getElementById('voteProposal'));
-	walletService.wallet = null;
-	walletService.password = '';
-	$scope.showAdvance = false;
-	$scope.showRaw = false;
-	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
-	$scope.slockitBalance = "0x70a08231";
-	$scope.slockitSupply = "0x18160ddd";
-	$scope.slockitTransfer = "0xa9059cbb";
-	$scope.slockitProposal = "0x013cf08b";
-	$scope.slockitminQuorumDivisor = "0x674ed066";
-	$scope.slockitABalance = "0x39d1f908";
-	$scope.slockitRToken = "0xcdef91d0";
+		walletService.wallet = null;
+		walletService.password = '';
+		$scope.showAdvance = false;
+		$scope.showRaw = false;
+		$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
+		$scope.slockitBalance = "0x70a08231";
+		$scope.slockitSupply = "0x18160ddd";
+		$scope.slockitTransfer = "0xa9059cbb";
+		$scope.slockitProposal = "0x013cf08b";
+		$scope.slockitminQuorumDivisor = "0x674ed066";
+		$scope.slockitABalance = "0x39d1f908";
+		$scope.slockitRToken = "0xcdef91d0";
     $scope.slockitVote = "0xc9d27afe";
 	$scope.tx = {
 		gasLimit: 150000,
@@ -122,7 +122,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		}
 	}
     $scope.generateVoteTx = function(isYes) {
-        $scope.voteTxStatus = true;
+       $scope.voteTxStatus = true;
 		try {
 			$scope.tx.to = $scope.slockitContract;
 			var id = ethFuncs.padLeft(new BigNumber($scope.proposalId).toString(16), 64);
@@ -130,7 +130,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 			$scope.tx.data = $scope.slockitVote + id + vote;
 			$scope.tx.value = 0;
 			$scope.voteTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
-            $scope.autoSend = true;
+      $scope.autoSend = true;
 			$scope.generateTx();
 		} catch (e) {
 			$scope.showRaw = false;
@@ -150,27 +150,27 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 					} else {
 						var proposal = ethFuncs.contractOutToArray(data.data);
 						$scope.objProposal = {
-							id: $scope.proposalId,
-							recipient: '0x' + proposal[0],
-							amount: etherUnits.toEther('0x' + proposal[1], 'wei'),
-							content: proposal.slice(13).join(),
-							description: globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n'),
+							id: 						$scope.proposalId,
+							recipient: 		  '0x' + proposal[0],
+							amount: 				etherUnits.toEther('0x' + proposal[1], 'wei'),
+							content: 				proposal.slice(13).join(),
+							description: 		globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n'),
 							votingDeadline: new Date(new BigNumber("0x" + proposal[3]).toNumber() * 1000),
-                            today: new Date(),
-							open: proposal[4] == '1' ? "Yes" : "No",
+                       today: new Date(),
+							open: 					proposal[4] == '1' ? "Yes" : "No",
 							proposalPassed: proposal[5] == '1' ? "Yes" : "No",
-							proposalHash: '0x'+proposal[6],
-							proposalDeposit: etherUnits.toEther('0x' + proposal[7], 'wei'),
-							split: proposal[8] == '1' ? "Yes" : "No",
-							yea: etherUnits.toEther('0x' + proposal[9], 'wei'),
-							nay: etherUnits.toEther('0x' + proposal[10], 'wei'),
-							creator: "0x" + proposal[11],
-							enabled: true,
-							minQuroum: function() {
-								var totalInWei = etherUnits.toWei($scope.token.totRaised, "ether");
-								return etherUnits.toEther(totalInWei / $scope.minQuorumDivisor + (etherUnits.toWei(this.amount, "ether") * totalInWei) / (3 * ($scope.actualBalance + $scope.rewardToken)), "wei");
-							},
-							data: proposal
+							proposalHash: 	'0x'+proposal[6],
+							proposalDeposit:etherUnits.toEther('0x' + proposal[7], 'wei'),
+							split: 					proposal[8] == '1' ? "Yes" : "No",
+							yea: 						etherUnits.toEther('0x' + proposal[9], 'wei'),
+							nay: 						etherUnits.toEther('0x' + proposal[10], 'wei'),
+							creator: 				"0x" + proposal[11],
+							enabled: 				true,
+							minQuroum: 			function() {
+																var totalInWei = etherUnits.toWei($scope.token.totRaised, "ether");
+																return etherUnits.toEther(totalInWei / $scope.minQuorumDivisor + (etherUnits.toWei(this.amount, "ether") * totalInWei) / (3 * ($scope.actualBalance + $scope.rewardToken)), "wei");
+															},
+							data: 					proposal
 						};
 						var yeaBN = new BigNumber($scope.objProposal.yea);
 						var nayBN = new BigNumber($scope.objProposal.nay);

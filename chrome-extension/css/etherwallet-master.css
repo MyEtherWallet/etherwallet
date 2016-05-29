@@ -5773,6 +5773,9 @@ input[type="password"] + .eye:before {
   margin: 0 0 5px;
   font-size: 14px;
 }
+.page-dao .proposal-item {
+  cursor: default;
+}
 .proposal-expanded {
   display: none;
 }

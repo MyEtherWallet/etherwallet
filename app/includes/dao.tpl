@@ -1,5 +1,5 @@
 <!-- The DAO -->
-<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.dao.id">
+<div class="tab-pane page-dao active" ng-if="globalService.currentTab==globalService.tabs.dao.id">
 
   <!-- TOP: The DAO -->
   <section class="row">
@@ -105,6 +105,7 @@
       <!-- Vote on a Proposal -->
       <section class="daoGetTokens" ng-show="curTab=='vote'">
         <h4>Vote on a Proposal</h4>
+        <p class="small"> If you vote on a proposal, the tokens cannot be sent until the proposal period ends. If you wish to vote with a portion of your tokens, you must send them to a new account first and then vote with only one account.</p>
 
         <div class="form-group col-xs-12 clearfix">
           <label> Proposal ID </label>
@@ -201,7 +202,6 @@
             <div class="form-group" ng-show="objProposal.votingDeadline.getTime() > objProposal.today.getTime()">
               <a class="btn btn-primary" data-toggle="modal" data-target="#voteProposal">VOTE ON THIS PROPOSAL</a>
             </div>
-            <div class="form-group col-xs-12" ng-bind-html="voteTxStatus"></div>
             <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
           </section>
         </article>
@@ -259,12 +259,17 @@
             <div class="col-sm-4 marg-v-md">
               <button type="button" class="btn btn-block btn-primary" ng-click="generateVoteTx(true)">VOTE YES</button>
             </div>
+
+            <!-- TODO: Upon Clicking VOTE YES or VOTE NO button...hide other 2 buttons and display the below + the TX id in the modal-->
+            <div class="form-group col-xs-12" ng-bind-html="voteTxStatus">
+              <p> Your vote has successfully been placed. Thank you for being an active participant in The DAO.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-    </section>
+</section>
   <!-- / Vote Modal -->
 
 
