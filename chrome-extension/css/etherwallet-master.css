@@ -1482,6 +1482,8 @@ pre code {
 }
 table {
   background-color: transparent;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
 }
 caption {
   padding-top: 8px;
@@ -1861,7 +1863,7 @@ input[type="search"] {
   }
 }
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 0.5em;
   display: block;
 }
 .radio,
@@ -1886,6 +1888,9 @@ input[type="search"] {
   position: absolute;
   margin-left: -20px;
   margin-top: 4px \9;
+}
+input[type=radio] {
+  margin-right: 5px;
 }
 .radio + .radio,
 .checkbox + .checkbox {
@@ -2773,177 +2778,6 @@ input[type="button"].btn-block {
   background: red;
   cursor: inherit;
   display: block;
-}
-/* uncss:ignore */
-.fade {
-  opacity: 0;
-  transition: opacity 0.15s linear;
-}
-/* uncss:ignore */
-.fade.in {
-  opacity: 1;
-}
-/* uncss:ignore */
-.collapse {
-  display: none;
-}
-.collapse.in {
-  display: block;
-}
-tr.collapse.in {
-  display: table-row;
-}
-tbody.collapse.in {
-  display: table-row-group;
-}
-/* uncss:ignore */
-.collapsing {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-  transition-property: height, visibility;
-  transition-duration: 0.35s;
-  transition-timing-function: ease;
-}
-.caret {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-left: 2px;
-  vertical-align: middle;
-  border-top: 4px dashed;
-  border-top: 4px solid \9;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-}
-.dropup,
-.dropdown {
-  position: relative;
-}
-.dropdown-toggle:focus {
-  outline: 0;
-}
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  display: none;
-  float: left;
-  min-width: 160px;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  list-style: none;
-  font-size: 15px;
-  text-align: left;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 2px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  background-clip: padding-box;
-}
-.dropdown-menu.pull-right {
-  right: 0;
-  left: auto;
-}
-.dropdown-menu .divider {
-  height: 1px;
-  margin: 9.5px 0;
-  overflow: hidden;
-  background-color: #e5e5e5;
-}
-.dropdown-menu > li > a {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: normal;
-  line-height: 1.42857143;
-  color: #333333;
-  white-space: nowrap;
-}
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
-  text-decoration: none;
-  color: #262626;
-  background-color: #f5f5f5;
-}
-.dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus {
-  color: #fff;
-  text-decoration: none;
-  outline: 0;
-  background-color: #21a4ce;
-}
-.dropdown-menu > .disabled > a,
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus {
-  color: #9A9A9A;
-}
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus {
-  text-decoration: none;
-  background-color: transparent;
-  background-image: none;
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-  cursor: default;
-}
-.open > .dropdown-menu {
-  display: block;
-}
-.open > a {
-  outline: 0;
-}
-.dropdown-menu-right {
-  left: auto;
-  right: 0;
-}
-.dropdown-menu-left {
-  left: 0;
-  right: auto;
-}
-.dropdown-header {
-  display: block;
-  padding: 3px 20px;
-  font-size: 13px;
-  line-height: 1.42857143;
-  color: #9A9A9A;
-  white-space: nowrap;
-}
-.dropdown-backdrop {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  z-index: 990;
-}
-.pull-right > .dropdown-menu {
-  right: 0;
-  left: auto;
-}
-.dropup .caret,
-.navbar-fixed-bottom .dropdown .caret {
-  border-top: 0;
-  border-bottom: 4px solid;
-  content: "";
-}
-.dropup .dropdown-menu,
-.navbar-fixed-bottom .dropdown .dropdown-menu {
-  top: auto;
-  bottom: 100%;
-  margin-bottom: 2px;
-}
-@media (min-width: 768px) {
-  .navbar-right .dropdown-menu {
-    left: auto;
-    right: 0;
-  }
-  .navbar-right .dropdown-menu-left {
-    left: 0;
-    right: auto;
-  }
 }
 .btn-group,
 .btn-group-vertical {
@@ -4404,16 +4238,6 @@ input[type="password"] + .eye:before {
   width: 355px;
   position: relative;
 }
-#etherWalletPopUp .settings-icon {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-}
-#etherWalletPopUp .settings-icon:hover,
-#etherWalletPopUp .settings-icon:focus,
-#etherWalletPopUp .settings-icon:active {
-  outline: 0;
-}
 #etherWalletPopUp .back-icon {
   position: absolute;
   left: 5px;
@@ -4424,36 +4248,6 @@ input[type="password"] + .eye:before {
 #etherWalletPopUp .back-icon:active {
   outline: 0;
 }
-#etherWalletPopUp input[type=radio] {
-  margin-right: 5px;
-}
-#etherWalletPopUp table {
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ddd;
-}
-#etherWalletPopUp .form-group {
-  margin-bottom: .5em;
-}
-/* uncss:ignore */
-.btn.disabled,
-.btn[disabled],
-fieldset[disabled] .btn {
-  cursor: default;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  box-shadow: none;
-}
-.announcement-warning {
-  background-color: #d9534f;
-  color: white;
-  text-align: center;
-  padding: 5px 0;
-}
-.announcement-warning a {
-  color: white;
-  text-decoration: underline;
-}
-/* uncss:ignore */
 .quicksend-address {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   max-width: 170px;
@@ -4479,15 +4273,9 @@ fieldset[disabled] .btn {
   background: #263c56;
 }
 .bg-gradient {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#122528+0,2e4868+26,2e4868+28,21a4ce+65,1ab29e+100 */
   background: #122528;
-  /* Old browsers */
-  /* FF3.6-15 */
-  /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(135deg, #122528 0%, #2e4868 26%, #2e4868 28%, #21a4ce 65%, #1ab29e 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#122528', endColorstr='#1ab29e', GradientType=1);
-  /* IE6-9 fallback on horizontal gradient */
 }
 .bg-gray-lighter {
   background-color: #ECECEC;

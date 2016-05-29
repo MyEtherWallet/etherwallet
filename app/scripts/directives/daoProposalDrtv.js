@@ -20,7 +20,7 @@ var daoProposalDrtv = function() {
               </p></span>\n \
             </div>\n \
             <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split==\'No\'">\n \
-              <h4> {{objProposal.amount | number:4}} </h4>\n \
+              <h4> {{objProposal.amount | number:4 | number}} </h4>\n \
               <p>  ETH  </p>\n \
             </div>\n \
           </section>\n \
@@ -45,7 +45,7 @@ var daoProposalDrtv = function() {
                   &middot;\n \
                   <em>({{objProposal.nay | number:2 }})</em></td>\n \
               </tr>\n \
-              <tr>\n \
+              <tr ng-show="objProposal.split==\'No\'">\n \
                 <td class="label">Quroum:</td>\n \
                 <td class="output">\n \
                   <div class="votes-needed">{{ objProposal.quorumCurrent | number:2 }}% of {{ objProposal.quorumPer | number:2}}%</div>\n \
