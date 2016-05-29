@@ -886,16 +886,15 @@
   </section>
 
   <section class="row" style="margin-bottom: 10px;">
-    <div class="col-xs-12">
-      <h4> Show.... </h4>
-      <div class="bg-primary">
-        <a href="#" class="proposal-filter active">All Proposals</a>
-        <a href="#" class="proposal-filter">Current Proposals</a>
-        <a href="#" class="proposal-filter">Previous Proposals</a>
-        <a href="#" class="proposal-filter">Non-Split Proposals</a>
-        <a href="#" class="proposal-filter">Split Proposals</a>
+      <h4 class="col-xs-12"> Show.... </h4>
+      <div class="proposal-filter-container col-sm-6">
+        <a class="proposal-filter active" ng-click="active = !active">Current Proposals</a>
+        <a class="proposal-filter">Previous Proposals</a>
       </div>
-    </div>
+      <div class="proposal-filter-container col-sm-6">
+        <a class="proposal-filter active">Non-Split Proposals</a>
+        <a class="proposal-filter">Split Proposals</a>
+      </div>
   </section>
 
   <div class="proposal-container">

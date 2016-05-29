@@ -357,8 +357,12 @@ input[type="password"]+.eye {
   }
 }
 
+.proposal-filter-container {
+  display: block;
+}
+
 .proposal-filter {
-  width: 20%;
+  width: 50%;
   float: left;
   color: white;
   padding: 10px 20px;
@@ -366,6 +370,8 @@ input[type="password"]+.eye {
   border: 1px solid white;
   border-bottom: 0;
   background: darken(@brand-primary, 9%);
+  white-space: nowrap;
+  margin-bottom: 10px;
   &:hover,
   &:focus {
     color: white;
@@ -374,16 +380,6 @@ input[type="password"]+.eye {
   }
   &.active {
     background: @brand-primary;
-  }
-  @media screen and (max-width: 954px) {
-    height: 64px;
-  }
-  @media screen and (max-width: 581px) {
-    height: auto;
-    width: 50%;
-    &:first-child {
-      width: 100%;
-    }
   }
 }
 
