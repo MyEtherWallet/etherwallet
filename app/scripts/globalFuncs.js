@@ -29,23 +29,23 @@ globalFuncs.getDangerText = function(str) {
 	return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
 globalFuncs.errorMsgs = [
-	"Please enter valid amount",
-	 "Your password must be 8 characters in length and must contain at lease one number, one lowercase and one uppercase letter",
-	 "Sorry! We don't have a clue what type of wallet file this is.",
-	 "This is not a valid wallet file",
+	"Please enter valid amount. ",
+	 "Your password must be 8 characters in length and must contain at lease one number, one lowercase and one uppercase letter. ",
+	 "Sorry! We don't have a clue what type of wallet file this is. ",
+	 "This is not a valid wallet file. ",
 	 "This unit doesn\'t exists, please use the one of the following units ",
-	 "Invalid address",
-	 "Invalid password",
-	 "Invalid amount",
-	 "Invalid gas limit",
-	 "Invalid data value",
-	 "Invalid gas amount",
-	 "Invalid nonce",
-	 "Invalid signed transaction",
-	 "A wallet with this nickname already exists",
-	 "Wallet not found",
-	 "Whoops. It doesnt look like a proposal with this ID exists yet.",
-	 "A wallet with this address already exists in storage. Please check your wallets page."];
+	 "Invalid address. ",
+	 "Invalid password. ",
+	 "Invalid amount. ",
+	 "Invalid gas limit. ",
+	 "Invalid data value. ",
+	 "Invalid gas amount. ",
+	 "Invalid nonce. ",
+	 "Invalid signed transaction. ",
+	 "A wallet with this nickname already exists. ",
+	 "Wallet not found. ",
+	 "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ",
+	 "A wallet with this address already exists in storage. Please check your wallets page. "];
 globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "New wallet added: "];
 globalFuncs.scrypt = {
 	n: 1024
