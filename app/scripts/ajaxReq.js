@@ -4,6 +4,7 @@ var ajaxReq = function() {}
 ajaxReq.http = null;
 ajaxReq.postSerializer = null;
 ajaxReq.SERVERURL = "https://rpc.myetherwallet.com/api.php";
+ajaxReq.DAOPROPOSALSURL = "https://rpc.myetherwallet.com/TheDAO/getDAOProposals.php";
 ajaxReq.COINMARKETCAPAPI = "https://coinmarketcap-nexuist.rhcloud.com/api/";
 ajaxReq.pendingPosts = [];
 ajaxReq.config = {
@@ -64,6 +65,11 @@ ajaxReq.getETHvalue = function(callback) {
 			btc: data['btc'].toFixed(6)
 		};
 		callback(priceObj);
+	});
+}
+ajaxReq.getDAOProposals = function(callback) {
+	this.http.get(this.DAOPROPOSALSURL).then(function(data) {
+		callback(data.data);
 	});
 }
 module.exports = ajaxReq;

@@ -96,7 +96,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 				$scope.actualBalance = new BigNumber(data.data).toNumber();
 			}
 		});
-		var rToken = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitRToken, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
+		var rToken = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitRToken, [ethFuncs.getNakedAddress($scope.slockitContract)]);
 		ajaxReq.getEthCall(rToken, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;

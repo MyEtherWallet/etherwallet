@@ -2,8 +2,8 @@
 var daoProposalDrtv = function() {
   return {
     restrict : "E",
-    template : '<article class="proposal-item col-xs-12" ng-show="showProposal">\n \
-          <section class="proposal-top clearfix">\n \
+    template : '<article class="proposal-item col-xs-12" ng-show="objProposal.show" ng-repeat="objProposal in AllProposals track by $index">\n \
+          <section class="proposal-top clearfix" ng-click="showProposal($index)">\n \
             <div class="graph-container">\n \
               <div class="graph-unfilled" style="width:100%"></div>\n \
               <div class="graph-needed"   style="width:{{ objProposal.quorumPer | number:2 }}%"></div>\n \
@@ -24,7 +24,7 @@ var daoProposalDrtv = function() {
               <p>  ETH  </p>\n \
             </div>\n \
           </section>\n \
-          <section class="proposal-expanded col-xs-12" style="display:block;">\n \
+          <section class="proposal-expanded col-xs-12" ng-show="objProposal.showprop">\n \
             <p class="description-html" ng-show="objProposal.descriptionHTML!==null"> {{ objProposal.descriptionHTML }} </p>\n \
             <p ng-show="objProposal.split==\'Yes\'"><em>This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a></em></p>\n \
             <table class="table">\n \
@@ -83,11 +83,6 @@ var daoProposalDrtv = function() {
                 <td class="output">{{objProposal.proposalDeposit}} Ether</td>\n \
               </tr>\n \
             </table>\n \
-            <div class="form-group" ng-show="objProposal.votingDeadline.getTime() > objProposal.today.getTime()">\n \
-              <a class="btn btn-primary" data-toggle="modal" data-target="#voteProposal">VOTE ON THIS PROPOSAL</a>\n \
-            </div>\n \
-            <div class="form-group col-xs-12" ng-bind-html="voteTxStatus"></div>\n \
-            <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>\n \
           </section>\n \
         </article>'
   };
