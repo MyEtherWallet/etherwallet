@@ -4128,8 +4128,10 @@ input[type="password"] + .eye:before {
 .proposal-filter.active {
   background: #21a4ce;
 }
-.proposal-item {
+.proposal-top {
   cursor: pointer;
+}
+.proposal-item {
   padding: 0px 0 8px 0;
 }
 .proposal-item h4 {
@@ -4143,9 +4145,6 @@ input[type="password"] + .eye:before {
 .proposal-item .description-html {
   font-size: 16px;
   font-weight: 500;
-}
-.page-dao .proposal-item {
-  cursor: default;
 }
 .proposal-expanded {
   display: none;
