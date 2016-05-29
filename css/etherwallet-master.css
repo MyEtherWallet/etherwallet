@@ -3338,8 +3338,7 @@ ul.nav {
   left: 0px;
   bottom: -2px;
   transition: all 250ms ease 0s;
-  -webkit-transform: scale(0);
-          transform: scale(0);
+  transform: scale(0);
 }
 .nav-tabs > li > a:hover,
 .nav-tabs > li > a:focus {
@@ -3348,8 +3347,7 @@ ul.nav {
 }
 .nav-tabs > li > a:hover:after,
 .nav-tabs > li > a:focus:after {
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
@@ -3568,15 +3566,11 @@ button.close {
 }
 /* uncss:ignore */
 .modal.fade .modal-dialog {
-  -webkit-transform: translate(0, -25%);
   transform: translate(0, -25%);
-  transition: -webkit-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
-  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
 }
 /* uncss:ignore */
 .modal.in .modal-dialog {
-  -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
 }
 /* uncss:ignore */
@@ -4556,8 +4550,7 @@ fieldset[disabled] .btn {
   color: #1a81a2;
   text-transform: uppercase;
   letter-spacing: .05em;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+  transform: rotate(-90deg);
   position: absolute;
   right: 0;
   bottom: 0;
