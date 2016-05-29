@@ -4140,6 +4140,10 @@ input[type="password"] + .eye:before {
   margin: 0 0 5px;
   font-size: 14px;
 }
+.proposal-item .description-html {
+  font-size: 16px;
+  font-weight: 500;
+}
 .page-dao .proposal-item {
   cursor: default;
 }
