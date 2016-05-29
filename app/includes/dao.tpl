@@ -105,18 +105,19 @@
       <!-- Vote on a Proposal -->
       <section class="daoGetTokens" ng-show="curTab=='vote'">
         <h4>Vote on a Proposal</h4>
-        <p class="small"> If you vote on a proposal, the tokens cannot be sent until the proposal period ends. If you wish to vote with a portion of your tokens, you must send them to a new account first and then vote with only one account.</p>
-
-        <div class="form-group col-xs-12 clearfix">
+        <div class="form-group">
           <label> Proposal ID </label>
           <input class="form-control" type="text" placeholder="0" ng-model="proposalId"/>
         </div>
-        <div class="form-group col-xs-12 clearfix">
+        <div class="form-group">
           <a class="btn btn-primary" ng-click="setProposal()">LOAD PROPOSAL</a>
         </div>
         <div class="form-group col-xs-12 clearfix" ng-bind-html="loadProposalStatus"></div>
 
         <dao-proposal-drtv></dao-proposal-drtv>
+
+        <p><em> Note: If you vote on a proposal, the tokens cannot be sent until the proposal period ends. If you wish to vote with a portion of your tokens, you must send them to a new account first and then vote with only one account.</em></p>
+
 
       </section>
       <!-- / Vote on a Proposal -->
