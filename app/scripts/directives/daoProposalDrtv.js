@@ -83,6 +83,9 @@ var daoProposalDrtv = function() {
                 <td class="output">{{objProposal.proposalDeposit}} Ether</td>\n \
               </tr>\n \
             </table>\n \
+            <div class="form-group" ng-show="objProposal.votingDeadline.getTime() > objProposal.today.getTime()">\n \
+              <a class="btn btn-primary" ng-click="openVote($index)">VOTE ON THIS PROPOSAL</a>\n \
+            </div>\n \
           </section>\n \
         </article>'
   };

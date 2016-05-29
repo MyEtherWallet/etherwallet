@@ -1,6 +1,9 @@
 'use strict';
 var theDaoProposalCtrl = function($scope, $sce, walletService) {
-	$scope.showProposal = true;
+    walletService.wallet = null;
+	walletService.password = '';
+    $scope.voteModal = new Modal(document.getElementById('voteProposal'));
+	$scope.showVoteYes = $scope.showVoteNo = true;
 	$scope.AllProposals = [];
 	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413";
 	$scope.slockitBalance = "0x70a08231";
@@ -29,6 +32,29 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			});
 		});
 	}
+    $scope.tx = {
+		gasLimit: 150000,
+		data: '',
+		to: $scope.slockitContract,
+		unit: "ether",
+		value: 0,
+		nonce: null,
+		gasPrice: null,
+		donate: false
+	}
+    $scope.$watch(function() {
+		if (walletService.wallet == null) return null;
+		return walletService.wallet.getAddressString();
+	}, function() {
+		if (walletService.wallet == null) return;
+		$scope.wallet = walletService.wallet;
+	});
+    $scope.openVote = function(id){
+        $scope.voteID = id;
+        $scope.showVoteYes = $scope.showVoteNo = true;
+        $scope.voteTxStatus = $scope.sendTxStatus = "";
+        $scope.voteModal.open();
+    }
 	$scope.getAllProposals = function() {
 		ajaxReq.getDAOProposals(function(proposals) {
 			for (var i = 0; i < proposals.length; i++) {
@@ -76,6 +102,22 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
         }
         $scope.filter = filter;
     }
+    $scope.generateVoteTx = function(isYes) {
+        if(isYes) $scope.showVoteNo = false;
+        else $scope.showVoteYes = false;
+		try {
+			$scope.tx.to = $scope.slockitContract;
+			var id = ethFuncs.padLeft(new BigNumber($scope.voteID).toString(16), 64);
+			var vote = isYes ? ethFuncs.padLeft("1", 64) : ethFuncs.padLeft("0", 64);
+			$scope.tx.data = $scope.slockitVote + id + vote;
+			$scope.tx.value = 0;
+			$scope.autoSend = true;
+			$scope.generateTx();
+		} catch (e) {
+			$scope.showRaw = false;
+			$scope.voteTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+		}
+	}
 	$scope.getProposalObj = function(tProposal) {
 		var proposal = ethFuncs.contractOutToArray(tProposal.data);
 		var objProposal = {
@@ -110,6 +152,9 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 		objProposal.quorumCurrent = (objProposal.totalVotes * 100) / $scope.totRaised;
 		objProposal.quorumPer = (objProposal.minQuroum() * 100) / $scope.totRaised;
 		return objProposal;
+	}
+    $scope.generateTx = function() {
+		uiFuncs.generateTx($scope, $sce);
 	}
 };
 module.exports = theDaoProposalCtrl;

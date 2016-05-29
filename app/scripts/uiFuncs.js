@@ -40,7 +40,7 @@ uiFuncs.sendTx = function($scope, $sce) {
 		if (data.error) {
 			$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
 		} else {
-			$scope.setBalance();
+			if( $scope.setBalance !== undefined ) $scope.setBalance();
 			$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + " " + data.data));
 		}
 	});
