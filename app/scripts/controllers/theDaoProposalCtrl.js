@@ -166,10 +166,10 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 							nay: 						etherUnits.toEther('0x' + proposal[10], 'wei'),
 							creator: 				"0x" + proposal[11],
 							enabled: 				true,
-							minQuroum: function() {
-								var totalInWei = etherUnits.toWei($scope.token.totRaised, "ether");
-								return etherUnits.toEther(totalInWei / $scope.minQuorumDivisor + (etherUnits.toWei(this.amount, "ether") * totalInWei) / (3 * ($scope.actualBalance + $scope.rewardToken)), "wei");
-							},
+							minQuroum: 			function() {
+																var totalInWei = etherUnits.toWei($scope.token.totRaised, "ether");
+																return etherUnits.toEther(totalInWei / $scope.minQuorumDivisor + (etherUnits.toWei(this.amount, "ether") * totalInWei) / (3 * ($scope.actualBalance + $scope.rewardToken)), "wei");
+															},
 							data: 					proposal
 						};
 						var yeaBN = new BigNumber($scope.objProposal.yea);
@@ -180,6 +180,13 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 						$scope.showProposal = true;
 						$scope.objProposal.quorumCurrent = ($scope.objProposal.totalVotes * 100) / $scope.token.totRaised;
 						$scope.objProposal.quorumPer = ($scope.objProposal.minQuroum() * 100) / $scope.token.totRaised;
+
+						if ($scope.objProposal.description.indexOf('\n') > 0) {
+          		var firstLine = $scope.objProposal.description.substring(0,$scope.objProposal.description.indexOf('\n'));
+          		$scope.objProposal.descriptionHTML = $scope.objProposal.description.substring(firstLine.length+1);
+          		$scope.objProposal.description=firstLine;
+      			}
+
 					}
 				} catch (e) {
 					$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[15]+e));
@@ -206,5 +213,3 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 	}
 };
 module.exports = theDaoProposalCtrl;
-
-

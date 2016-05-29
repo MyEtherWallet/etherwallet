@@ -25,7 +25,8 @@ var daoProposalDrtv = function() {
             </div>\n \
           </section>\n \
           <section class="proposal-expanded col-xs-12" style="display:block;">\n \
-            <p ng-show="objProposal.split==\'Yes\'"> This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a> </p>\n \
+            <p class="description-html" ng-show="objProposal.descriptionHTML!==null"> {{ objProposal.descriptionHTML }} </p>\n \
+            <p ng-show="objProposal.split==\'Yes\'"><em>This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a></em></p>\n \
             <table class="table">\n \
               <tr>\n \
                 <td class="label">Votes Yea:</td>\n \

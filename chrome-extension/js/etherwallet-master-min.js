@@ -985,7 +985,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	walletService.password = '';
 	$scope.showAdvance = false;
 	$scope.showRaw = false;
-	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
+	$scope.slockitContract = "0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa"; // 0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413
 	$scope.slockitBalance = "0x70a08231";
 	$scope.slockitSupply = "0x18160ddd";
 	$scope.slockitTransfer = "0xa9059cbb";
@@ -1144,11 +1144,11 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 							nay: 						etherUnits.toEther('0x' + proposal[10], 'wei'),
 							creator: 				"0x" + proposal[11],
 							enabled: 				true,
-							minQuroum: function() {
-								var totalInWei = etherUnits.toWei($scope.token.totRaised, "ether");
-								return etherUnits.toEther(totalInWei / $scope.minQuorumDivisor + (etherUnits.toWei(this.amount, "ether") * totalInWei) / (3 * ($scope.actualBalance + $scope.rewardToken)), "wei");
-							},
-							data: proposal
+							minQuroum: 			function() {
+																var totalInWei = etherUnits.toWei($scope.token.totRaised, "ether");
+																return etherUnits.toEther(totalInWei / $scope.minQuorumDivisor + (etherUnits.toWei(this.amount, "ether") * totalInWei) / (3 * ($scope.actualBalance + $scope.rewardToken)), "wei");
+															},
+							data: 					proposal
 						};
 						var yeaBN = new BigNumber($scope.objProposal.yea);
 						var nayBN = new BigNumber($scope.objProposal.nay);
@@ -1158,6 +1158,13 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 						$scope.showProposal = true;
 						$scope.objProposal.quorumCurrent = ($scope.objProposal.totalVotes * 100) / $scope.token.totRaised;
 						$scope.objProposal.quorumPer = ($scope.objProposal.minQuroum() * 100) / $scope.token.totRaised;
+
+						if ($scope.objProposal.description.indexOf('\n') > 0) {
+          		var firstLine = $scope.objProposal.description.substring(0,$scope.objProposal.description.indexOf('\n'));
+          		$scope.objProposal.descriptionHTML = $scope.objProposal.description.substring(firstLine.length+1);
+          		$scope.objProposal.description=firstLine;
+      			}
+
 					}
 				} catch (e) {
 					$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[15]+e));
@@ -1368,6 +1375,13 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 						$scope.showProposal = true;
 						$scope.objProposal.quorumCurrent = ($scope.objProposal.totalVotes * 100) / $scope.token.totRaised;
 						$scope.objProposal.quorumPer = ($scope.objProposal.minQuroum() * 100) / $scope.token.totRaised;
+
+						if ($scope.objProposal.description.indexOf('\n') > 0) {
+          		var firstLine = $scope.objProposal.description.substring(0,$scope.objProposal.description.indexOf('\n'));
+          		$scope.objProposal.descriptionHTML = $scope.objProposal.description.substring(firstLine.length+1);
+          		$scope.objProposal.description=firstLine;
+      			}
+
 					}
 				} catch (e) {
 					$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[15]+e));
@@ -1394,8 +1408,6 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 	}
 };
 module.exports = theDaoProposalCtrl;
-
-
 
 },{}],15:[function(require,module,exports){
 'use strict';
@@ -1661,7 +1673,8 @@ var daoProposalDrtv = function() {
             </div>\n \
           </section>\n \
           <section class="proposal-expanded col-xs-12" style="display:block;">\n \
-            <p ng-show="objProposal.split==\'Yes\'"> This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a> </p>\n \
+            <p class="description-html" ng-show="objProposal.descriptionHTML!==null"> {{ objProposal.descriptionHTML }} </p>\n \
+            <p ng-show="objProposal.split==\'Yes\'"><em>This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a></em></p>\n \
             <table class="table">\n \
               <tr>\n \
                 <td class="label">Votes Yea:</td>\n \
