@@ -8,232 +8,26 @@
     </div>
   </section>
 
+  <!-- DAO Filters -->
+  <!-- TODO: make these work, change active class on click -->
   <section class="row" style="margin-bottom: 10px;">
-      <h4 class="col-xs-12"> Show.... </h4>
-      <div class="proposal-filter-container col-sm-6">
-        <a class="proposal-filter active" ng-click="active = !active">Current Proposals</a>
-        <a class="proposal-filter">Previous Proposals</a>
-      </div>
-      <div class="proposal-filter-container col-sm-6">
-        <a class="proposal-filter active">Non-Split Proposals</a>
-        <a class="proposal-filter">Split Proposals</a>
-      </div>
+    <h4 class="col-xs-12"> Show.... </h4>
+    <div class="proposal-filter-container col-sm-6">
+      <a class="proposal-filter active" ng-click="active = !active">Current Proposals</a>
+      <a class="proposal-filter">Previous Proposals</a>
+    </div>
+    <div class="proposal-filter-container col-sm-6">
+      <a class="proposal-filter active">Non-Split Proposals</a>
+      <a class="proposal-filter">Split Proposals</a>
+    </div>
   </section>
+  <!-- / DAO Filters -->
 
-  <div class="proposal-container">
-
-    <article class="proposal-item clearfix">
-      <section>
-        <div class="graph-container">
-          <div class="graph-unfilled" style="width:100%"></div>
-          <div class="graph-needed"   style="width:26%"></div>
-          <div class="graph-yes"      style="width:9%"></div>
-          <div class="graph-no"       style="width:11%; left: 9%;"></div>
-        </div>
-        <div class="col-xs-9 clearfix">
-          <h4> DAO Support Proposal(description) </h4>
-          <p> Proposal ID: <strong >1</strong> &middot; ends: <strong >5/31/2016</strong></p>
-        </div>
-        <div class="col-xs-3 clearfix text-right">
-          <h4> 30.00 </h4>
-          <p>  ETH  </p>
-        </div>
-      </section>
-      <section class="proposal-expanded col-xs-12">
-        <table class="table">
-          <tr>
-            <td class="label">Votes Yea:</td>
-            <td class="output votes-yes">50% <em>(19047619047619047)</em></td>
-          </tr>
-          <tr>
-            <td class="label">Votes Nay:</td>
-            <td class="output votes-no">45% <em>(19047619047619047)</em></td>
-          </tr>
-          <tr>
-            <td class="label">Quroum:</td>
-            <td class="output">
-              <div class="votes-needed">10% <em>(needs 26.88%)</em></div>
-            </td>
-          </tr>
-          <tr>
-            <td class="label">Recipient:</td>
-            <td class="output"> <div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div></div>
-            0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 </td>
-          </tr>
-          <tr>
-            <td class="label">Creator:</td>
-            <td class="output"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div></div>
-            0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</td>
-          </tr>
-          <tr>
-            <td class="label">Open:</td>
-            <td class="output"><span class="boolean-yes"> YES </span></td>
-          </tr>
-          <tr>
-            <td class="label">Proposal Passed:</td>
-            <td class="output"><span class="boolean-no"> NO </span></td>
-          </tr>
-          <tr>
-            <td class="label">Proposal Hash:</td>
-            <td class="output">0x332bb591b0f77251124f30f1a9675590bfd1cadcdf12714e731370d41a8803a3</td>
-          </tr>
-          <tr>
-            <td class="label">Proposal Deposit:</td>
-            <td class="output">0</td>
-          </tr>
-          <tr>
-            <td class="label">New Curator:</td>
-            <td class="output"><span class="boolean-yes"> YES </span></td>
-          </tr>
-        </table>
-        <div class="form-group">
-          <a class="btn btn-primary">VOTE ON THIS PROPOSAL</a>
-        </div>
-      </section>
-    </article>
-
-    <article class="proposal-item clearfix">
-      <section>
-        <div class="graph-container">
-          <div class="graph-unfilled" style="width:100%"></div>
-          <div class="graph-needed"   style="width:26%"></div>
-          <div class="graph-yes"      style="width:9%"></div>
-          <div class="graph-no"       style="width:11%; left: 9%;"></div>
-        </div>
-        <div class="col-xs-9 clearfix">
-          <h4> DAO Support Proposal(description) </h4>
-          <p> Proposal ID: <strong >1</strong> &middot; ends: <strong >5/31/2016</strong></p>
-        </div>
-        <div class="col-xs-3 clearfix text-right">
-          <h4> 30.00 </h4>
-          <p>  ETH  </p>
-        </div>
-      </section>
-      <section class="proposal-expanded col-xs-12">
-        <table class="table">
-          <tr>
-            <td class="label">Votes Yea:</td>
-            <td class="output votes-yes">50% <em>(19047619047619047)</em></td>
-          </tr>
-          <tr>
-            <td class="label">Votes Nay:</td>
-            <td class="output votes-no">45% <em>(19047619047619047)</em></td>
-          </tr>
-          <tr>
-            <td class="label">Quroum:</td>
-            <td class="output">
-              <div class="votes-needed">10% <em>(needs 26.88%)</em></div>
-            </td>
-          </tr>
-          <tr>
-            <td class="label">Recipient:</td>
-            <td class="output"> <div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div></div>
-            0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 </td>
-          </tr>
-          <tr>
-            <td class="label">Creator:</td>
-            <td class="output"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div></div>
-            0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</td>
-          </tr>
-          <tr>
-            <td class="label">Open:</td>
-            <td class="output"><span class="boolean-yes"> YES </span></td>
-          </tr>
-          <tr>
-            <td class="label">Proposal Passed:</td>
-            <td class="output"><span class="boolean-no"> NO </span></td>
-          </tr>
-          <tr>
-            <td class="label">Proposal Hash:</td>
-            <td class="output">0x332bb591b0f77251124f30f1a9675590bfd1cadcdf12714e731370d41a8803a3</td>
-          </tr>
-          <tr>
-            <td class="label">Proposal Deposit:</td>
-            <td class="output">0</td>
-          </tr>
-          <tr>
-            <td class="label">New Curator:</td>
-            <td class="output"><span class="boolean-yes"> YES </span></td>
-          </tr>
-        </table>
-        <div class="form-group">
-          <a class="btn btn-primary">VOTE ON THIS PROPOSAL</a>
-        </div>
-      </section>
-    </article>
-
-    <article class="proposal-item clearfix">
-      <section>
-        <div class="graph-container">
-          <div class="graph-unfilled" style="width:100%"></div>
-          <div class="graph-needed"   style="width:26%"></div>
-          <div class="graph-yes"      style="width:9%"></div>
-          <div class="graph-no"       style="width:11%; left: 9%;"></div>
-        </div>
-        <div class="col-xs-9 clearfix">
-          <h4> DAO Support Proposal(description) </h4>
-          <p> Proposal ID: <strong >1</strong> &middot; ends: <strong >5/31/2016</strong></p>
-        </div>
-        <div class="col-xs-3 clearfix text-right">
-          <h4> 30.00 </h4>
-          <p>  ETH  </p>
-        </div>
-      </section>
-      <section class="proposal-expanded col-xs-12">
-        <table class="table">
-          <tr>
-            <td class="label">Votes Yea:</td>
-            <td class="output votes-yes">50% <em>(19047619047619047)</em></td>
-          </tr>
-          <tr>
-            <td class="label">Votes Nay:</td>
-            <td class="output votes-no">45% <em>(19047619047619047)</em></td>
-          </tr>
-          <tr>
-            <td class="label">Quroum:</td>
-            <td class="output">
-              <div class="votes-needed">10% <em>(needs 26.88%)</em></div>
-            </td>
-          </tr>
-          <tr>
-            <td class="label">Recipient:</td>
-            <td class="output"> <div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div></div>
-            0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 </td>
-          </tr>
-          <tr>
-            <td class="label">Creator:</td>
-            <td class="output"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div></div>
-            0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</td>
-          </tr>
-          <tr>
-            <td class="label">Open:</td>
-            <td class="output"><span class="boolean-yes"> YES </span></td>
-          </tr>
-          <tr>
-            <td class="label">Proposal Passed:</td>
-            <td class="output"><span class="boolean-no"> NO </span></td>
-          </tr>
-          <tr>
-            <td class="label">Proposal Hash:</td>
-            <td class="output">0x332bb591b0f77251124f30f1a9675590bfd1cadcdf12714e731370d41a8803a3</td>
-          </tr>
-          <tr>
-            <td class="label">Proposal Deposit:</td>
-            <td class="output">0</td>
-          </tr>
-          <tr>
-            <td class="label">New Curator:</td>
-            <td class="output"><span class="boolean-yes"> YES </span></td>
-          </tr>
-        </table>
-        <div class="form-group">
-          <a class="btn btn-primary">VOTE ON THIS PROPOSAL</a>
-        </div>
-      </section>
-    </article>
-
-
-  </div>
+  <!-- DAO Proposals -->
+  <section class="proposal-container" ng-controller='theDaoProposalCtrl'>
+    <dao-proposal-drtv></dao-proposal-drtv>
+  </section>
+  <!-- /DAO Proposals -->
 
 
   <!-- Vote Modal -->
@@ -245,6 +39,8 @@
           <h3 class="modal-title" id="myModalLabel">Unlock your Wallet to Vote on Proposal #1</h3>
         </div>
         <div class="modal-body">
+
+          <!-- Step 1: Unlock Your Wallet -->
           <div>
             @@if (site === 'cx' ) {
               <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
@@ -253,7 +49,11 @@
               <wallet-decrypt-drtv></wallet-decrypt-drtv>
             }
           </div>
+          <!-- / Step 1: Unlock Your Wallet -->
+
           <hr />
+
+          <!-- Step 2: Confirm and Vote -->
           <h4>You are about to vote on Proposal <strong>#1</strong>: DAO Support Proposal.</h4>
           <h4 class="text-light">Please vote carefully, there are no do-overs or take-backs.</h4>
 
@@ -268,6 +68,8 @@
               <button type="button" class="btn btn-block btn-primary" ng-click="sendTx()">VOTE YES</button>
             </div>
           </div>
+          <!-- / Step 2: Confirm and Vote -->
+
         </div>
       </div>
     </div>

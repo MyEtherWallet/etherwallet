@@ -112,99 +112,12 @@
           <input class="form-control" type="text" placeholder="0" ng-model="proposalId"/>
         </div>
         <div class="form-group col-xs-12 clearfix">
-              <a class="btn btn-primary" ng-click="setProposal()">LOAD PROPOSAL</a>
+          <a class="btn btn-primary" ng-click="setProposal()">LOAD PROPOSAL</a>
         </div>
         <div class="form-group col-xs-12 clearfix" ng-bind-html="loadProposalStatus"></div>
-        <article class="proposal-item col-xs-12" ng-show="showProposal">
-          <section>
-            <div class="graph-container">
-              <div class="graph-unfilled" style="width:100%"></div>
 
-              <div class="graph-needed"   style="width:{{ objProposal.quorumPer | number:2 }}%"></div>
-              <div class="graph-yes"      style="width:{{ ( objProposal.yea * 100 ) / token.totRaised | number:2 }}%"></div>
-              <div class="graph-no"       style="width:{{ ( objProposal.nay * 100 ) / token.totRaised | number:2 }}%;
-                                                 left: {{ ( objProposal.yea * 100 ) / token.totRaised | number:2 }}%;"></div>
-            </div>
+        <dao-proposal-drtv></dao-proposal-drtv>
 
-
-            <div class="col-xs-9 clearfix">
-              <h4>{{objProposal.description}} </h4>
-              <p>
-                Proposal ID: <strong >{{objProposal.id}}</strong> &middot;
-                <span class="text-success" ng-show="objProposal.votingDeadline.getTime() >= objProposal.today.getTime()">ends: <strong>{{objProposal.votingDeadline | date:'medium'}}</strong></span>
-                <span class="text-danger" ng-show="objProposal.votingDeadline.getTime() < objProposal.today.getTime()">ended: <strong>{{objProposal.votingDeadline | date:'medium'}}</strong>
-              </p></span>
-            </div>
-            <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split=='No'">
-              <h4> {{objProposal.amount | number:4}} </h4>
-              <p>  ETH  </p>
-            </div>
-          </section>
-          <section class="proposal-expanded col-xs-12" style="display:block;">
-            <p ng-show="objProposal.split=='Yes'"> This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a> </p>
-            <table class="table">
-              <tr>
-                <td class="label">Votes Yea:</td>
-                <td class="output votes-yes">
-                  {{ ( objProposal.yea * 100 ) / token.totRaised | number:2 }}% of total
-                  &middot;
-                  {{objProposal.yeaPer | number:2}}% of votes
-                  &middot;
-                  <em>({{objProposal.yea | number:2 }})</em></td>
-              </tr>
-              <tr>
-                <td class="label">Votes Nay:</td>
-                <td class="output votes-no">
-                  {{ ( objProposal.nay * 100 ) / token.totRaised | number:2 }}% of total
-                  &middot;
-                  {{objProposal.nayPer | number:2}}% of votes
-                  &middot;
-                  <em>({{objProposal.nay | number:2 }})</em></td>
-              </tr>
-              <tr>
-                <td class="label">Quroum:</td>
-                <td class="output">
-                  <div class="votes-needed">{{ objProposal.quorumCurrent | number:2 }}% of {{ objProposal.quorumPer | number:2}}%</div>
-                </td>
-              </tr>
-              <tr>
-                <td class="label">Creator:</td>
-                <td class="output"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{objProposal.creator}}" watch-var="objProposal"></div></div>
-                {{objProposal.creator}}</td>
-              </tr>
-              <tr>
-                <td class="label">Recipient:</td>
-                <td class="output"> <div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{objProposal.recipient}}" watch-var="objProposal"></div></div>
-                {{objProposal.recipient}} </td>
-              </tr>
-              <tr>
-                <td class="label">New Curator:</td>
-                <td class="output"><span ng-class="objProposal.split=='Yes' ? 'boolean-yes' : 'boolean-no'"> {{objProposal.split}} </span></td>
-              </tr>
-              <tr>
-                <td class="label">Open:</td>
-                <td class="output"><span ng-class="objProposal.open=='Yes' ? 'boolean-yes' : 'boolean-no'"> {{objProposal.open}} </span></td>
-              </tr>
-              <tr>
-                <td class="label">Proposal Passed:</td>
-                <td class="output"><span ng-class="objProposal.proposalPassed=='Yes' ? 'boolean-yes' : 'boolean-no'"> {{objProposal.proposalPassed}} </span></td>
-              </tr>
-              <tr>
-                <td class="label">Proposal Hash:</td>
-                <td class="output">{{objProposal.proposalHash}}</td>
-              </tr>
-              <tr>
-                <td class="label">Proposal Deposit:</td>
-                <td class="output">{{objProposal.proposalDeposit}} Ether</td>
-              </tr>
-
-            </table>
-            <div class="form-group" ng-show="objProposal.votingDeadline.getTime() > objProposal.today.getTime()">
-              <a class="btn btn-primary" data-toggle="modal" data-target="#voteProposal">VOTE ON THIS PROPOSAL</a>
-            </div>
-            <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
-          </section>
-        </article>
       </section>
       <!-- / Vote on a Proposal -->
 

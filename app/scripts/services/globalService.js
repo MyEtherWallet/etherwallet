@@ -65,8 +65,8 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       id: 8,
       name: "DAO Proposals",
       url: "dao-proposals",
-      mew: false,
-      cx: false
+      mew: true,
+      cx: true
     },
     digix: {
       id: 9,
@@ -91,7 +91,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     }
   };
   var currentTab = 0;
-  if(typeof chrome != 'undefined') 
+  if(typeof chrome != 'undefined')
     currentTab = chrome.windows === undefined ? 0 : 3;
   return {
     tabs: tabs,
