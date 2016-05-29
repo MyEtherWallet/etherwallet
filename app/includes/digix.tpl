@@ -125,9 +125,6 @@
       <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
       <!-- / raw transaction / buttons -->
     </section>
-
-  </section>
-
   <!-- Modal -->
   <section class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
     <div class="modal-dialog" role="document">
@@ -154,6 +151,7 @@
     </div>
   </section>
   <!--/ Modal -->
+  </section>
 
 </div>
 <!-- / Digix -->
