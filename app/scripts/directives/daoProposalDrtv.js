@@ -3,7 +3,7 @@ var daoProposalDrtv = function() {
   return {
     restrict : "E",
     template : '<article class="proposal-item col-xs-12" ng-show="showProposal">\n \
-          <section>\n \
+          <section class="proposal-top clearfix">\n \
             <div class="graph-container">\n \
               <div class="graph-unfilled" style="width:100%"></div>\n \
               <div class="graph-needed"   style="width:{{ objProposal.quorumPer | number:2 }}%"></div>\n \
