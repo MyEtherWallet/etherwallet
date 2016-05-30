@@ -4126,7 +4126,7 @@ input[type="password"] + .eye:before {
   cursor: pointer;
 }
 .proposal-item {
-  padding: 0px 0 8px 0;
+  padding: 0px 0 12px 0;
 }
 .proposal-item h4 {
   margin: 0 0 4px 0;
@@ -4166,7 +4166,7 @@ input[type="password"] + .eye:before {
 /* Graph Thingys */
 .graph-container {
   position: relative;
-  padding: 0 0 18px;
+  padding: 0 0 21px;
 }
 .graph-needed {
   position: absolute;
