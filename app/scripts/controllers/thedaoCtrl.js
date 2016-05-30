@@ -3,6 +3,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.curTab = "send";
 	new Modal(document.getElementById('sendTransaction'));
 	$scope.voteModal = new Modal(document.getElementById('voteProposal'));
+	$scope.showVoteYes = $scope.showVoteNo = true;
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.showAdvance = false;
@@ -122,21 +123,20 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		}
 	}
 	$scope.generateVoteTx = function(isYes) {
-		$scope.voteTxStatus = true;
+     	if(isYes) $scope.showVoteNo = false;
+      else $scope.showVoteYes = false;
 		try {
 			$scope.tx.to = $scope.slockitContract;
 			var id = ethFuncs.padLeft(new BigNumber($scope.proposalId).toString(16), 64);
 			var vote = isYes ? ethFuncs.padLeft("1", 64) : ethFuncs.padLeft("0", 64);
 			$scope.tx.data = $scope.slockitVote + id + vote;
 			$scope.tx.value = 0;
-			$scope.voteTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
 			$scope.autoSend = true;
 			$scope.generateTx();
 		} catch (e) {
 			$scope.showRaw = false;
 			$scope.voteTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
 		}
-		$scope.voteModal.close();
 	}
 	$scope.setProposal = function() {
 		try {

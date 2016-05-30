@@ -20,8 +20,12 @@ var daoProposalDrtv = function() {
               </p></span>\n \
             </div>\n \
             <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split==\'No\'">\n \
-              <h4> {{objProposal.amount | number:4 | number}} </h4>\n \
+              <h4> &nbsp; {{objProposal.amount | number:4 | number}}</h4>\n \
               <p>  ETH  </p>\n \
+            </div>\n \
+            <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split==\'Yes\'">\n \
+               <h4> &nbsp; </h4>\n \
+              <p>  Split  </p>\n \
             </div>\n \
           </section>\n \
           <section class="proposal-expanded col-xs-12" ng-show="objProposal.showprop">\n \
