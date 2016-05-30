@@ -1,6 +1,6 @@
 'use strict';
 var uiFuncs = function() {}
-uiFuncs.generateTx = function($scope, $sce) {
+uiFuncs.generateTx = function($scope, $sce, callback) {
 	try {
 		if (!ethFuncs.validateEtherAddress($scope.tx.to)) throw globalFuncs.errorMsgs[5];
 		else if (!globalFuncs.isNumeric($scope.tx.value) || parseFloat($scope.tx.value) < 0) throw globalFuncs.errorMsgs[7];
@@ -26,6 +26,7 @@ uiFuncs.generateTx = function($scope, $sce) {
                 uiFuncs.sendTx($scope, $sce);
                 $scope.autoSend = false;
             }
+            if(callback !== undefined) callback();
 		});
 		$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
 	} catch (e) {

@@ -1,8 +1,8 @@
 'use strict';
 var theDaoProposalCtrl = function($scope, $sce, walletService) {
-    walletService.wallet = null;
+	walletService.wallet = null;
 	walletService.password = '';
-    $scope.voteModal = new Modal(document.getElementById('voteProposal'));
+	$scope.voteModal = new Modal(document.getElementById('voteProposal'));
 	$scope.showVoteYes = $scope.showVoteNo = true;
 	$scope.AllProposals = [];
 	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413";
@@ -32,7 +32,7 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			});
 		});
 	}
-    $scope.tx = {
+	$scope.tx = {
 		gasLimit: 150000,
 		data: '',
 		to: $scope.slockitContract,
@@ -42,24 +42,25 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 		gasPrice: null,
 		donate: false
 	}
-    $scope.$watch(function() {
+	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
 		return walletService.wallet.getAddressString();
 	}, function() {
 		if (walletService.wallet == null) return;
 		$scope.wallet = walletService.wallet;
 	});
-    $scope.openVote = function(id){
-        $scope.voteID = id;
-        $scope.showVoteYes = $scope.showVoteNo = true;
-        $scope.voteTxStatus = $scope.sendTxStatus = "";
-        $scope.voteModal.open();
-    }
+	$scope.openVote = function(id) {
+		$scope.voteID = id;
+		$scope.showVoteYes = $scope.showVoteNo = true;
+		$scope.voteTxStatus = $scope.sendTxStatus = "";
+		$scope.voteModal.open();
+	}
 	$scope.getAllProposals = function() {
 		ajaxReq.getDAOProposals(function(proposals) {
 			for (var i = 0; i < proposals.length; i++) {
 				$scope.AllProposals.push($scope.getProposalObj(proposals[i]));
 			}
+			$scope.filterProposals('current', 'nsplit');
 		});
 	}
 	$scope.initValues();
@@ -78,40 +79,41 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			$scope.AllProposals[id].showprop = false;
 		}
 	}
-    $scope.filterProposals = function(filter){
-        if(filter=="current"){
-            for (var i = 0; i < $scope.AllProposals.length; i++) {
-				if($scope.AllProposals[i].open=="Yes") $scope.AllProposals[i].show = true; 
-                else $scope.AllProposals[i].show = false; 
-			}
-        } else if(filter=="past") {
-            for (var i = 0; i < $scope.AllProposals.length; i++) {
-				if($scope.AllProposals[i].open=="No") $scope.AllProposals[i].show = true; 
-                else $scope.AllProposals[i].show = false; 
-			}
-        }  else if(filter=="nsplit") {
-            for (var i = 0; i < $scope.AllProposals.length; i++) {
-				if($scope.AllProposals[i].split=="No") $scope.AllProposals[i].show = true; 
-                else $scope.AllProposals[i].show = false; 
-			}
-        }  else if(filter=="split") {
-            for (var i = 0; i < $scope.AllProposals.length; i++) {
-				if($scope.AllProposals[i].split=="Yes") $scope.AllProposals[i].show = true; 
-                else $scope.AllProposals[i].show = false; 
-			}
-        }
-        $scope.filter = filter;
-    }
-    $scope.generateVoteTx = function(isYes) {
-        if(isYes) $scope.showVoteNo = false;
-        else $scope.showVoteYes = false;
+	$scope.hideAllProposals = function() {
+		for (var i = 0; i < $scope.AllProposals.length; i++) $scope.AllProposals[i].show = false;;
+	}
+	$scope.filterProposals = function(filterM, filterS) {
+		$scope.hideAllProposals();
+		filterM = filterM == "" ? $scope.filterM : filterM;
+		filterS = filterS == "" ? $scope.filterS : filterS;
+		if (filterM == "current") {
+			for (var i = 0; i < $scope.AllProposals.length; i++)
+			if ($scope.AllProposals[i].open == "Yes") $scope.AllProposals[i].show = true;
+		} else if (filterM == "past") {
+			for (var i = 0; i < $scope.AllProposals.length; i++)
+			if ($scope.AllProposals[i].open == "No") $scope.AllProposals[i].show = true;;
+		}
+		if (filterS == "nsplit") {
+			for (var i = 0; i < $scope.AllProposals.length; i++)
+			if ($scope.AllProposals[i].show && $scope.AllProposals[i].split == "No") $scope.AllProposals[i].show = true;
+			else $scope.AllProposals[i].show = false;
+		} else if (filterS == "split") {
+			for (var i = 0; i < $scope.AllProposals.length; i++)
+			if ($scope.AllProposals[i].show && $scope.AllProposals[i].split == "Yes") $scope.AllProposals[i].show = true;
+			else $scope.AllProposals[i].show = false;
+		}
+		$scope.filterM = filterM;
+		$scope.filterS = filterS;
+	}
+	$scope.generateVoteTx = function(isYes) {
+		if (isYes) $scope.showVoteNo = false;
+		else $scope.showVoteYes = false;
 		try {
 			$scope.tx.to = $scope.slockitContract;
 			var id = ethFuncs.padLeft(new BigNumber($scope.voteID).toString(16), 64);
 			var vote = isYes ? ethFuncs.padLeft("1", 64) : ethFuncs.padLeft("0", 64);
 			$scope.tx.data = $scope.slockitVote + id + vote;
 			$scope.tx.value = 0;
-			$scope.autoSend = true;
 			$scope.generateTx();
 		} catch (e) {
 			$scope.showRaw = false;
@@ -136,7 +138,7 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			yea: etherUnits.toEther('0x' + proposal[9], 'wei'),
 			nay: etherUnits.toEther('0x' + proposal[10], 'wei'),
 			creator: "0x" + proposal[11],
-            show: true,
+			show: true,
 			showprop: false,
 			minQuroum: function() {
 				var totalInWei = etherUnits.toWei($scope.totRaised, "ether");
@@ -153,8 +155,19 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 		objProposal.quorumPer = (objProposal.minQuroum() * 100) / $scope.totRaised;
 		return objProposal;
 	}
-    $scope.generateTx = function() {
-		uiFuncs.generateTx($scope, $sce);
+	$scope.generateTx = function() {
+		uiFuncs.generateTx($scope, $sce, function(){
+            $scope.sendTx();
+		});
+	}
+	$scope.sendTx = function() {
+		ajaxReq.sendRawTx($scope.signedTx, function(data) {
+			if (data.error) {
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.errorMsgs[17] + " " + globalFuncs.getDangerText(data.msg));
+			} else {
+			 	$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + " " +globalFuncs.successMsgs[2] + " " + data.data));
+			}
+		});
 	}
 };
 module.exports = theDaoProposalCtrl;

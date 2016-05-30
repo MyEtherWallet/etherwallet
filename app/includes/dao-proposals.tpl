@@ -15,12 +15,12 @@
   <section class="row" style="margin-bottom: 10px;">
     <h4 class="col-xs-12"> Show.... </h4>
     <div class="proposal-filter-container col-sm-6">
-      <a class="proposal-filter" ng-class="filter=='current' ? 'active' : ''" ng-click="filterProposals('current')">Current Proposals</a>
-      <a class="proposal-filter" ng-class="filter=='past' ? 'active' : ''" ng-click="filterProposals('past')">Previous Proposals</a>
+      <a class="proposal-filter" ng-class="filterM=='current' ? 'active' : ''" ng-click="filterProposals('current','')">Current Proposals</a>
+      <a class="proposal-filter" ng-class="filterM=='past' ? 'active' : ''" ng-click="filterProposals('past','')">Previous Proposals</a>
     </div>
     <div class="proposal-filter-container col-sm-6">
-      <a class="proposal-filter" ng-class="filter=='nsplit' ? 'active' : ''" ng-click="filterProposals('nsplit')">Non-Split Proposals</a>
-      <a class="proposal-filter" ng-class="filter=='split' ? 'active' : ''" ng-click="filterProposals('split')">Split Proposals</a>
+      <a class="proposal-filter" ng-class="filterS=='nsplit' ? 'active' : ''" ng-click="filterProposals('','nsplit')">Non-Split Proposals</a>
+      <a class="proposal-filter" ng-class="filterS=='split' ? 'active' : ''" ng-click="filterProposals('','split')">Split Proposals</a>
     </div>
   </section>
   <!-- / DAO Filters -->
