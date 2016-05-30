@@ -7,9 +7,9 @@ var daoProposalDrtv = function() {
             <div class="graph-container">\n \
               <div class="graph-unfilled" style="width:100%"></div>\n \
               <div class="graph-needed"   style="width:{{ objProposal.quorumPer | number:2 }}%"></div>\n \
-              <div class="graph-yes"      style="width:{{ ( objProposal.yea * 100 ) / token.totRaised | number:2 }}%"></div>\n \
-              <div class="graph-no"       style="width:{{ ( objProposal.nay * 100 ) / token.totRaised | number:2 }}%;\n \
-                                                 left: {{ ( objProposal.yea * 100 ) / token.totRaised | number:2 }}%;"></div>\n \
+              <div class="graph-yes"      style="width:{{ ( objProposal.yea * 100 ) / totRaised | number:2 }}%"></div>\n \
+              <div class="graph-no"       style="width:{{ ( objProposal.nay * 100 ) / totRaised | number:2 }}%;\n \
+                                                 left: {{ ( objProposal.yea * 100 ) / totRaised | number:2 }}%;"></div>\n \
             </div>\n \
             <div class="col-xs-9 clearfix">\n \
               <h4>{{objProposal.description}} </h4>\n \
@@ -20,12 +20,12 @@ var daoProposalDrtv = function() {
               </p></span>\n \
             </div>\n \
             <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split==\'No\'">\n \
-              <h4> &nbsp; {{objProposal.amount | number:4 | number}}</h4>\n \
+              <h4> &nbsp; {{objProposal.amount}}</h4>\n \
               <p>  ETH  </p>\n \
             </div>\n \
             <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split==\'Yes\'">\n \
-               <h4> &nbsp; </h4>\n \
-              <p>  Split  </p>\n \
+              <h4> Split </h4>\n \
+              <p>  &nbsp; </p>\n \
             </div>\n \
           </section>\n \
           <section class="proposal-expanded col-xs-12" ng-show="objProposal.showprop">\n \
@@ -35,20 +35,20 @@ var daoProposalDrtv = function() {
               <tr>\n \
                 <td class="label">Votes Yea:</td>\n \
                 <td class="output votes-yes">\n \
-                  {{ ( objProposal.yea * 100 ) / token.totRaised | number:2 }}% of total\n \
+                  {{ ( objProposal.yea * 100 ) / totRaised | number:2 }}% of total\n \
                   &middot;\n \
                   {{objProposal.yeaPer | number:2}}% of votes\n \
                   &middot;\n \
-                  <em>({{objProposal.yea | number:2 }})</em></td>\n \
+                  <em>({{ (objProposal.yea * 100) | number:2 }} DAO) </em></td>\n \
               </tr>\n \
               <tr>\n \
                 <td class="label">Votes Nay:</td>\n \
                 <td class="output votes-no">\n \
-                  {{ ( objProposal.nay * 100 ) / token.totRaised | number:2 }}% of total\n \
+                  {{ ( objProposal.nay * 100 ) / totRaised | number:2 }}% of total\n \
                   &middot;\n \
                   {{objProposal.nayPer | number:2}}% of votes\n \
                   &middot;\n \
-                  <em>({{objProposal.nay | number:2 }})</em></td>\n \
+                  <em>({{ (objProposal.nay * 100) | number:2 }} DAO) </em></td>\n \
               </tr>\n \
               <tr ng-show="objProposal.split==\'No\'">\n \
                 <td class="label">Quroum:</td>\n \

@@ -46,7 +46,7 @@ globalFuncs.errorMsgs = [
 	 "Wallet not found. ",
 	 "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ",
 	 "A wallet with this address already exists in storage. Please check your wallets page. ",
-     "You need to have at some ETH in your account to cover the cost of gas. .05ETH should be more than sufficient for a few sends and votes."];
+   "You need to have at some ETH in your account to cover the cost of gas. .05ETH should be more than sufficient for a few sends and votes. "];
 globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "New wallet added: ", "You have successfully voted. Thank you for being an active participant in The DAO."];
 globalFuncs.scrypt = {
 	n: 1024

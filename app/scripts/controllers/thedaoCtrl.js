@@ -206,10 +206,18 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		$scope.sendTxStatus = "";
 	}, true);
 	$scope.generateTx = function() {
-		uiFuncs.generateTx($scope, $sce);
+		uiFuncs.generateTx($scope, $sce, function(){
+            $scope.sendTx();
+		});
 	}
 	$scope.sendTx = function() {
-		uiFuncs.sendTx($scope, $sce);
+		ajaxReq.sendRawTx($scope.signedTx, function(data) {
+			if (data.error) {
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg + "<br />" +  globalFuncs.errorMsgs[17] ));
+			} else {
+			 	$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + " " +globalFuncs.successMsgs[2] + " " + data.data));
+			}
+		});
 	}
 };
 module.exports = theDaoCtrl;

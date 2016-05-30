@@ -14,18 +14,21 @@
   <!-- TODO: make these work, change active class on click -->
   <section class="row" style="margin-bottom: 10px;">
     <h4 class="col-xs-12"> Show.... </h4>
-    <div class="proposal-filter-container col-sm-6">
+    <div class="proposal-filter-container col-sm-5">
       <a class="proposal-filter" ng-class="filterM=='current' ? 'active' : ''" ng-click="filterProposals('current','')">Current Proposals</a>
-      <a class="proposal-filter" ng-class="filterM=='past' ? 'active' : ''" ng-click="filterProposals('past','')">Previous Proposals</a>
+      <a class="proposal-filter" ng-class="filterM=='past' ? 'active' : ''" ng-click="filterProposals('past','')">Past Proposals</a>
     </div>
-    <div class="proposal-filter-container col-sm-6">
+    <div class="proposal-filter-container col-sm-5">
       <a class="proposal-filter" ng-class="filterS=='nsplit' ? 'active' : ''" ng-click="filterProposals('','nsplit')">Non-Split Proposals</a>
       <a class="proposal-filter" ng-class="filterS=='split' ? 'active' : ''" ng-click="filterProposals('','split')">Split Proposals</a>
+    </div>
+    <div class="proposal-filter-container col-sm-2">
+      <a class="proposal-filter" style="width: 100%;" ng-class="filterM=='all' || filterS=='all' ? 'active' : ''" ng-click="filterProposals('all','all')">All Proposals</a>
     </div>
   </section>
   <!-- / DAO Filters -->
     <dao-proposal-drtv></dao-proposal-drtv>
-    
+
   <!-- Vote Modal -->
   <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel" id="voteProposal">
     <div class="modal-dialog" role="document">
@@ -52,8 +55,6 @@
           <!-- Step 2: Confirm and Vote -->
           <h4>You are about to vote on Proposal <strong>#{{voteID}}</strong>: {{AllProposals[voteID].description}}.</h4>
           <h4 class="text-light">Please vote carefully, there are no do-overs or take-backs.</h4>
-            <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
-            <div class="form-group col-xs-12" ng-bind-html="voteTxStatus"></div>
           <div class="row">
             <div class="col-sm-4 marg-v-md">
               <button type="button" class="btn btn-block btn-danger" ng-click="generateVoteTx(false)" ng-show="showVoteNo">VOTE NO</button>
@@ -64,6 +65,10 @@
             <div class="col-sm-4 marg-v-md">
               <button type="button" class="btn btn-block btn-primary" ng-click="generateVoteTx(true)" ng-show="showVoteYes">VOTE YES</button>
             </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+            <div class="form-group col-xs-12" ng-bind-html="voteTxStatus"></div>
           </div>
           <!-- / Step 2: Confirm and Vote -->
           </div>

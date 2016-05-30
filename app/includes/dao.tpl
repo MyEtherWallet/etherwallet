@@ -132,12 +132,12 @@
               </p></span>
             </div>
             <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split=='No'">
-              <h4> &nbsp; {{objProposal.amount | number:4 | number}}</h4>
+              <h4> &nbsp; {{objProposal.amount }}</h4>
               <p>  ETH  </p>
             </div>
             <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split=='Yes'">
-               <h4> &nbsp; </h4>
-              <p>  Split  </p>
+               <h4> Split </h4>
+              <p>  &nbsp; </p>
             </div>
           </section>
           <section class="proposal-expanded col-xs-12">
@@ -151,7 +151,7 @@
                   &middot;
                   {{objProposal.yeaPer | number:2}}% of votes
                   &middot;
-                  <em>({{objProposal.yea | number:2 }})</em></td>
+                  <em>({{ (objProposal.yea * 100) | number:2 }} DAO) </em></td>
               </tr>
               <tr>
                 <td class="label">Votes Nay:</td>
@@ -160,7 +160,7 @@
                   &middot;
                   {{objProposal.nayPer | number:2}}% of votes
                   &middot;
-                  <em>({{objProposal.nay | number:2 }})</em></td>
+                  <em>({{ (objProposal.nay * 100) | number:2 }} DAO) </em></td>
               </tr>
               <tr ng-show="objProposal.split=='No'">
                 <td class="label">Quroum:</td>

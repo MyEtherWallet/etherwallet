@@ -80,28 +80,41 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 		}
 	}
 	$scope.hideAllProposals = function() {
-		for (var i = 0; i < $scope.AllProposals.length; i++) $scope.AllProposals[i].show = false;;
+		for (var i = 0; i < $scope.AllProposals.length; i++) $scope.AllProposals[i].show = false;
 	}
 	$scope.filterProposals = function(filterM, filterS) {
 		$scope.hideAllProposals();
 		filterM = filterM == "" ? $scope.filterM : filterM;
 		filterS = filterS == "" ? $scope.filterS : filterS;
+
+		if (filterM == "all" && filterS == "all") {
+			for (var i = 0; i < $scope.AllProposals.length; i++) $scope.AllProposals[i].show = true;
+		}
+
 		if (filterM == "current") {
 			for (var i = 0; i < $scope.AllProposals.length; i++)
-			if ($scope.AllProposals[i].open == "Yes") $scope.AllProposals[i].show = true;
+				if ($scope.AllProposals[i].open == "Yes") $scope.AllProposals[i].show = true;
 		} else if (filterM == "past") {
 			for (var i = 0; i < $scope.AllProposals.length; i++)
-			if ($scope.AllProposals[i].open == "No") $scope.AllProposals[i].show = true;;
+				if ($scope.AllProposals[i].open == "No") $scope.AllProposals[i].show = true;
 		}
-		if (filterS == "nsplit") {
+
+		if (filterM == "all" && filterS == "nsplit" ) {
 			for (var i = 0; i < $scope.AllProposals.length; i++)
-			if ($scope.AllProposals[i].show && $scope.AllProposals[i].split == "No") $scope.AllProposals[i].show = true;
-			else $scope.AllProposals[i].show = false;
-		} else if (filterS == "split") {
+				if ($scope.AllProposals[i].split == "No") $scope.AllProposals[i].show = true;
+		} else if (filterM == "all" && filterS == "split" ) {
 			for (var i = 0; i < $scope.AllProposals.length; i++)
-			if ($scope.AllProposals[i].show && $scope.AllProposals[i].split == "Yes") $scope.AllProposals[i].show = true;
-			else $scope.AllProposals[i].show = false;
+				if ($scope.AllProposals[i].split == "Yes") $scope.AllProposals[i].show = true;
+		} else if (filterM !== "all" && filterS == "nsplit") {
+			for (var i = 0; i < $scope.AllProposals.length; i++)
+				if ($scope.AllProposals[i].show && $scope.AllProposals[i].split == "No") $scope.AllProposals[i].show = true;
+				else $scope.AllProposals[i].show = false;
+		} else if (filterM !== "all" && filterS == "split") {
+			for (var i = 0; i < $scope.AllProposals.length; i++)
+				if ($scope.AllProposals[i].show && $scope.AllProposals[i].split == "Yes") $scope.AllProposals[i].show = true;
+				else $scope.AllProposals[i].show = false;
 		}
+
 		$scope.filterM = filterM;
 		$scope.filterS = filterS;
 	}
@@ -163,7 +176,7 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 	$scope.sendTx = function() {
 		ajaxReq.sendRawTx($scope.signedTx, function(data) {
 			if (data.error) {
-				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.errorMsgs[17] + " " + globalFuncs.getDangerText(data.msg));
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg + "<br />" +  globalFuncs.errorMsgs[17] ));
 			} else {
 			 	$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + " " +globalFuncs.successMsgs[2] + " " + data.data));
 			}
