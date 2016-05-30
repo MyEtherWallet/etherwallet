@@ -123,15 +123,14 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		}
 	}
 	$scope.generateVoteTx = function(isYes) {
-     	if(isYes) $scope.showVoteNo = false;
-      else $scope.showVoteYes = false;
+		if (isYes) $scope.showVoteNo = false;
+		else $scope.showVoteYes = false;
 		try {
 			$scope.tx.to = $scope.slockitContract;
 			var id = ethFuncs.padLeft(new BigNumber($scope.proposalId).toString(16), 64);
 			var vote = isYes ? ethFuncs.padLeft("1", 64) : ethFuncs.padLeft("0", 64);
 			$scope.tx.data = $scope.slockitVote + id + vote;
 			$scope.tx.value = 0;
-			$scope.autoSend = true;
 			$scope.generateTx();
 		} catch (e) {
 			$scope.showRaw = false;
@@ -150,27 +149,27 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 					} else {
 						var proposal = ethFuncs.contractOutToArray(data.data);
 						$scope.objProposal = {
-							id: 						$scope.proposalId,
-							recipient: 			'0x' + proposal[0],
-							amount: 				etherUnits.toEther('0x' + proposal[1], 'wei'),
-							content: 				proposal[12]=="0" ? "" : proposal.slice(13).join(),
-							description:  	proposal[12]=="0" ? "Propsoal ID #"+$scope.proposalId : globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n'),
+							id: $scope.proposalId,
+							recipient: '0x' + proposal[0],
+							amount: etherUnits.toEther('0x' + proposal[1], 'wei'),
+							content: proposal[12] == "0" ? "" : proposal.slice(13).join(),
+							description: proposal[12] == "0" ? "Propsoal ID #" + $scope.proposalId : globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n'),
 							votingDeadline: new Date(new BigNumber("0x" + proposal[3]).toNumber() * 1000),
-							today: 					new Date(),
-							open: 					proposal[4] == '1' ? "Yes" : "No",
+							today: new Date(),
+							open: proposal[4] == '1' ? "Yes" : "No",
 							proposalPassed: proposal[5] == '1' ? "Yes" : "No",
-							proposalHash: 	'0x' + proposal[6],
-							proposalDeposit:etherUnits.toEther('0x' + proposal[7], 'wei'),
-							split:  				proposal[8] == '1' ? "Yes" : "No",
-							yea: 						etherUnits.toEther('0x' + proposal[9], 'wei'),
-							nay: 						etherUnits.toEther('0x' + proposal[10], 'wei'),
-							creator: 				"0x" + proposal[11],
-							enabled: 				true,
-							minQuroum: 			function() {
-																var totalInWei = etherUnits.toWei($scope.token.totRaised, "ether");
-																return etherUnits.toEther(totalInWei / $scope.minQuorumDivisor + (etherUnits.toWei(this.amount, "ether") * totalInWei) / (3 * ($scope.actualBalance + $scope.rewardToken)), "wei");
-															},
-							data: 					proposal
+							proposalHash: '0x' + proposal[6],
+							proposalDeposit: etherUnits.toEther('0x' + proposal[7], 'wei'),
+							split: proposal[8] == '1' ? "Yes" : "No",
+							yea: etherUnits.toEther('0x' + proposal[9], 'wei'),
+							nay: etherUnits.toEther('0x' + proposal[10], 'wei'),
+							creator: "0x" + proposal[11],
+							enabled: true,
+							minQuroum: function() {
+								var totalInWei = etherUnits.toWei($scope.token.totRaised, "ether");
+								return etherUnits.toEther(totalInWei / $scope.minQuorumDivisor + (etherUnits.toWei(this.amount, "ether") * totalInWei) / (3 * ($scope.actualBalance + $scope.rewardToken)), "wei");
+							},
+							data: proposal
 						};
 						var yeaBN = new BigNumber($scope.objProposal.yea);
 						var nayBN = new BigNumber($scope.objProposal.nay);
@@ -180,16 +179,14 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 						$scope.showProposal = true;
 						$scope.objProposal.quorumCurrent = ($scope.objProposal.totalVotes * 100) / $scope.token.totRaised;
 						$scope.objProposal.quorumPer = ($scope.objProposal.minQuroum() * 100) / $scope.token.totRaised;
-
 						if ($scope.objProposal.description.indexOf('\n') > 0) {
-          		var firstLine = $scope.objProposal.description.substring(0,$scope.objProposal.description.indexOf('\n'));
-          		$scope.objProposal.descriptionHTML = $scope.objProposal.description.substring(firstLine.length+1);
-          		$scope.objProposal.description=firstLine;
-      			}
-
+							var firstLine = $scope.objProposal.description.substring(0, $scope.objProposal.description.indexOf('\n'));
+							$scope.objProposal.descriptionHTML = $scope.objProposal.description.substring(firstLine.length + 1);
+							$scope.objProposal.description = firstLine;
+						}
 					}
 				} catch (e) {
-					$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[15]+e));
+					$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[15] + e));
 					$scope.showProposal = false;
 				}
 			});
@@ -206,16 +203,16 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		$scope.sendTxStatus = "";
 	}, true);
 	$scope.generateTx = function() {
-		uiFuncs.generateTx($scope, $sce, function(){
-            $scope.sendTx();
+		uiFuncs.generateTx($scope, $sce, function() {
+			$scope.sendTx();
 		});
 	}
 	$scope.sendTx = function() {
 		ajaxReq.sendRawTx($scope.signedTx, function(data) {
 			if (data.error) {
-				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg + "<br />" +  globalFuncs.errorMsgs[17] ));
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg + "<br />" + globalFuncs.errorMsgs[17]));
 			} else {
-			 	$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + " " +globalFuncs.successMsgs[2] + " " + data.data));
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + " " + globalFuncs.successMsgs[2] + " " + data.data));
 			}
 		});
 	}

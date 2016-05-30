@@ -2,7 +2,7 @@
 var daoProposalDrtv = function() {
   return {
     restrict : "E",
-    template : '<article class="proposal-item col-xs-12" ng-show="objProposal.show" ng-repeat="objProposal in AllProposals track by $index">\n \
+    template : '<article class="proposal-item col-xs-12" ng-show="objProposal.show" ng-repeat="objProposal in AllProposals track by $index" ng-if="$index >= 1">\n \
           <section class="proposal-top clearfix" ng-click="showProposal($index)">\n \
             <div class="graph-container">\n \
               <div class="graph-unfilled" style="width:100%"></div>\n \
