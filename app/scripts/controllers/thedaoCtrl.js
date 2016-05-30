@@ -106,37 +106,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 			}
 		});
 	}
-	$scope.generateTokenTx = function() {
-		try {
-			if (!ethFuncs.validateEtherAddress($scope.tokenTx.to)) throw globalFuncs.errorMsgs[5];
-			else if (!globalFuncs.isNumeric($scope.tokenTx.value) || parseFloat($scope.tokenTx.value) < 0) throw globalFuncs.errorMsgs[7];
-			$scope.tx.to = $scope.slockitContract;
-			var value = ethFuncs.padLeft(new BigNumber($scope.tokenTx.value).times(etherUnits.getValueOfUnit('milli') * 10).toString(16), 64);
-			var toAdd = ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tokenTx.to), 64);
-			$scope.tx.data = $scope.slockitTransfer + toAdd + value;
-			$scope.tx.value = 0;
-			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
-			$scope.generateTx();
-		} catch (e) {
-			$scope.showRaw = false;
-			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
-		}
-	}
-	$scope.generateVoteTx = function(isYes) {
-		if (isYes) $scope.showVoteNo = false;
-		else $scope.showVoteYes = false;
-		try {
-			$scope.tx.to = $scope.slockitContract;
-			var id = ethFuncs.padLeft(new BigNumber($scope.proposalId).toString(16), 64);
-			var vote = isYes ? ethFuncs.padLeft("1", 64) : ethFuncs.padLeft("0", 64);
-			$scope.tx.data = $scope.slockitVote + id + vote;
-			$scope.tx.value = 0;
-			$scope.generateTx();
-		} catch (e) {
-			$scope.showRaw = false;
-			$scope.voteTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
-		}
-	}
+
 	$scope.setProposal = function() {
 		try {
 			$scope.loadProposalStatus = "";
@@ -202,12 +172,54 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		$scope.showRaw = false;
 		$scope.sendTxStatus = "";
 	}, true);
-	$scope.generateTx = function() {
+
+	// sending
+	$scope.generateTokenTx = function() {
+		try {
+			if (!ethFuncs.validateEtherAddress($scope.tokenTx.to)) throw globalFuncs.errorMsgs[5];
+			else if (!globalFuncs.isNumeric($scope.tokenTx.value) || parseFloat($scope.tokenTx.value) < 0) throw globalFuncs.errorMsgs[7];
+			$scope.tx.to = $scope.slockitContract;
+			var value = ethFuncs.padLeft(new BigNumber($scope.tokenTx.value).times(etherUnits.getValueOfUnit('milli') * 10).toString(16), 64);
+			var toAdd = ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tokenTx.to), 64);
+			$scope.tx.data = $scope.slockitTransfer + toAdd + value;
+			$scope.tx.value = 0;
+			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+			$scope.generateTx();
+		} catch (e) {
+			$scope.showRaw = false;
+			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+		}
+	};
+
+ 	$scope.generateTx = function() {
+		uiFuncs.generateTx($scope, $sce);
+ 	}
+ 	$scope.sendTx = function() {
+		uiFuncs.sendTx($scope, $sce);
+ 	}
+
+	// voting
+	$scope.generateVoteTx = function(isYes) {
+		if (isYes) $scope.showVoteNo = false;
+		else $scope.showVoteYes = false;
+		try {
+			$scope.tx.to = $scope.slockitContract;
+			var id = ethFuncs.padLeft(new BigNumber($scope.proposalId).toString(16), 64);
+			var vote = isYes ? ethFuncs.padLeft("1", 64) : ethFuncs.padLeft("0", 64);
+			$scope.tx.data = $scope.slockitVote + id + vote;
+			$scope.tx.value = 0;
+			$scope.generateTx2();
+		} catch (e) {
+			$scope.showRaw = false;
+			$scope.voteTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+		}
+	}
+	$scope.generateTx2 = function() {
 		uiFuncs.generateTx($scope, $sce, function() {
-			$scope.sendTx();
+			$scope.sendTx2();
 		});
 	}
-	$scope.sendTx = function() {
+	$scope.sendTx2 = function() {
 		ajaxReq.sendRawTx($scope.signedTx, function(data) {
 			if (data.error) {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg + "<br />" + globalFuncs.errorMsgs[17]));
