@@ -6,7 +6,7 @@
     <div class="col-md-9 col-sm-8">
       <h2> The DAO </h2>
       <p> Use this tab to <strong>Send DAO Tokens or Vote</strong> on a specific proposal. Learn more at <a href="http://daohub.org/" target="_blank">DAOHub</a>, <a href="https://blog.slock.it/the-art-of-the-dao-experiments-with-the-generic-dao-framework-4782f7862131#.bibozinlb" target="_blank">The Art of the DAO</a>, and <a href="https://forum.daohub.org/c/theDAO" target="_blank">DAO Hub Forums (Support, too!)</a></p>
-      <!--<a class="btn btn-info btn-sm" onclick="window.location.hash = '#dao-proposals'; location.reload();">Browse & Vote on All Proposals Here</a>-->
+      <a class="btn btn-info btn-sm" onclick="window.location.hash = '#dao-proposals'; location.reload();">Browse & Vote on All Proposals Here</a>
     </div>
     <div class="col-md-3 col-sm-4"><img src="images/thedao-addressicon.png" width="250px" height="auto" style="margin-top: 32px;" /></div>
   </section>

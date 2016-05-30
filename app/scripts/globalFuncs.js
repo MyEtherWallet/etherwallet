@@ -30,7 +30,7 @@ globalFuncs.getDangerText = function(str) {
 }
 globalFuncs.errorMsgs = [
 	"Please enter valid amount. ",
-	 "Your password must be 8 characters in length and must contain at lease one number, one lowercase and one uppercase letter. ",
+	 "Your password must be at least 9 characters. Please ensure it is a strong password. ",
 	 "Sorry! We don't have a clue what type of wallet file this is. ",
 	 "This is not a valid wallet file. ",
 	 "This unit doesn\'t exists, please use the one of the following units ",
@@ -77,8 +77,13 @@ globalFuncs.checkAndRedirectHTTPS = function() {
 	if ((host == window.location.host || githost == window.location.host || hostw == window.location.host || githostw == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
 }
 globalFuncs.isStrongPass = function(password) {
-	var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-	return re.test(password);
+	if (password.length > 8) {
+		return true;
+	} else {
+		return false;
+	}
+	//var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+	//return re.test(password);
 }
 globalFuncs.hexToAscii = function(hex) {
 	return hex.match(/.{1,2}/g).map(function(v) {

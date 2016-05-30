@@ -31,7 +31,7 @@
           <input class="form-control" type="text" placeholder="My New Wallet" ng-model="addAccount.nickName" ng-change="newWalletChange('nickNameStatus','showBtnGen')"/>
         </div>
         <div class="form-group">
-          <label> Create a Password: <small>(at least 8 characters w/ at least 1 lowercase, 1 uppercase, 1 number)</small></label>
+          <label> Create a Password: <small>(at least 9 characters)</small></label>
           <div class="input-group">
             <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-model="addAccount.password" ng-change="newWalletChange('nickNameStatus','showBtnGen')"/>
             <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
@@ -128,7 +128,7 @@
         <input class="form-control" type="text" placeholder="My Wallet" ng-model="addAccount.nickName" ng-change="newWalletChange('addStatus','showBtnAddWallet')"/>
       </div>
       <div class="form-group" ng-show="showPassTxt">
-        <label> Create a Password: <small>(at least 8 characters w/ at least 1 lowercase, 1 uppercase, 1 number)</small></label>
+        <label> Create a Password: <small>(at least 9 characters)</small></label>
           <div class="input-group">
             <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-model="addAccount.password" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-change="newWalletChange('addStatus','showBtnAddWallet')"/>
             <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>

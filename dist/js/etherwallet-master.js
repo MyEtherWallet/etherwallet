@@ -110,7 +110,7 @@ var addWalletCtrl = function($scope, $sce) {
 		document.getElementById('fselector').click();
 	};
 	$scope.onFilePassChange = function() {
-		$scope.showBtnUnlock = $scope.filePassword.length > 3;
+		$scope.showBtnUnlock = $scope.filePassword.length > 6;
 	};
 	$scope.decryptWallet = function() {
 		$scope.wallet = null;
@@ -144,7 +144,7 @@ var addWalletCtrl = function($scope, $sce) {
 	};
 	$scope.setNickNames();
 	$scope.newWalletChange = function(varStatus, shwbtn) {
-		if ($scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && $scope.addAccount.password.length > 3) $scope[shwbtn] = true;
+		if ($scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && $scope.addAccount.password.length > 8) $scope[shwbtn] = true;
 		else $scope[shwbtn] = false;
 		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope[varStatus] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
 		else $scope[varStatus] = "";
@@ -1958,7 +1958,7 @@ globalFuncs.getDangerText = function(str) {
 }
 globalFuncs.errorMsgs = [
 	"Please enter valid amount. ",
-	 "Your password must be 8 characters in length and must contain at lease one number, one lowercase and one uppercase letter. ",
+	 "Your password must be at least 9 characters. Please ensure it is a strong password. ",
 	 "Sorry! We don't have a clue what type of wallet file this is. ",
 	 "This is not a valid wallet file. ",
 	 "This unit doesn\'t exists, please use the one of the following units ",
@@ -2005,8 +2005,13 @@ globalFuncs.checkAndRedirectHTTPS = function() {
 	if ((host == window.location.host || githost == window.location.host || hostw == window.location.host || githostw == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
 }
 globalFuncs.isStrongPass = function(password) {
-	var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-	return re.test(password);
+	if (password.length > 8) {
+		return true;
+	} else {
+		return false;
+	}
+	//var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+	//return re.test(password);
 }
 globalFuncs.hexToAscii = function(hex) {
 	return hex.match(/.{1,2}/g).map(function(v) {
