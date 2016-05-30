@@ -19,7 +19,7 @@
     </div>
     <div class="col-sm-6">
       <div class="form-group">
-        <h4>Generate Wallet <br class="hidden-xs" /> <br class="hidden-xs" /></h4>
+        <h4>Generate Wallet </h4>
         <a class="btn btn-primary btn-block btnAction" func="generateSingleWallet" ng-click="genNewWallet()">GENERATE</a>
       </div>
     </div>

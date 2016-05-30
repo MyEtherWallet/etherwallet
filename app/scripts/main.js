@@ -1,6 +1,6 @@
 'use strict';
 var IS_CX = false;
-if(typeof chrome != 'undefined') 
+if(typeof chrome != 'undefined')
     IS_CX = chrome.windows === undefined ? false : true;
 require("babel-polyfill");
 var angular = require('angular');

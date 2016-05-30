@@ -60,9 +60,22 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			for (var i = 0; i < proposals.length; i++) {
 				$scope.AllProposals.push($scope.getProposalObj(proposals[i]));
 			}
-			$scope.filterProposals('current', 'nsplit');
+			//$scope.filterProposals('current', 'nsplit');
 		});
 	}
+
+
+	$scope.comparator = false;
+	$scope.filters = {	};
+ 	if ( globalFuncs.urlGet('id') == null ) {
+ 		$scope.filters.open = 'Yes';
+ 		$scope.filters.split = 'No';
+ 		$scope.comparator = false;
+ 	} else {
+ 		$scope.comparator = true;
+ 		$scope.filters.id = parseInt(globalFuncs.urlGet('id'));
+ 	}
+
 	$scope.initValues();
 	$scope.showProposal = function(id) {
 		if (!$scope.AllProposals[id].showprop) {
@@ -78,45 +91,6 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 		} else {
 			$scope.AllProposals[id].showprop = false;
 		}
-	}
-	$scope.hideAllProposals = function() {
-		for (var i = 0; i < $scope.AllProposals.length; i++) $scope.AllProposals[i].show = false;
-	}
-	$scope.filterProposals = function(filterM, filterS) {
-		$scope.hideAllProposals();
-		filterM = filterM == "" ? $scope.filterM : filterM;
-		filterS = filterS == "" ? $scope.filterS : filterS;
-
-		if (filterM == "all" && filterS == "all") {
-			for (var i = 0; i < $scope.AllProposals.length; i++) $scope.AllProposals[i].show = true;
-		}
-
-		if (filterM == "current") {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].open == "Yes") $scope.AllProposals[i].show = true;
-		} else if (filterM == "past") {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].open == "No") $scope.AllProposals[i].show = true;
-		}
-
-		if (filterM == "all" && filterS == "nsplit" ) {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].split == "No") $scope.AllProposals[i].show = true;
-		} else if (filterM == "all" && filterS == "split" ) {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].split == "Yes") $scope.AllProposals[i].show = true;
-		} else if (filterM !== "all" && filterS == "nsplit") {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].show && $scope.AllProposals[i].split == "No") $scope.AllProposals[i].show = true;
-				else $scope.AllProposals[i].show = false;
-		} else if (filterM !== "all" && filterS == "split") {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].show && $scope.AllProposals[i].split == "Yes") $scope.AllProposals[i].show = true;
-				else $scope.AllProposals[i].show = false;
-		}
-
-		$scope.filterM = filterM;
-		$scope.filterS = filterS;
 	}
 	$scope.generateVoteTx = function(isYes) {
 		if (isYes) $scope.showVoteNo = false;
