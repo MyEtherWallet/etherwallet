@@ -15,6 +15,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		gasPrice: null,
 		donate: false
 	}
+
+	globalFuncs.urlGet('gaslimit') == null ? '' : $scope.showAdvance = true
+	globalFuncs.urlGet('data') == null ? '' : $scope.showAdvance = true
+
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
 		return walletService.wallet.getAddressString();
