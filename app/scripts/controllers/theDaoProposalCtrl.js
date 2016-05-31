@@ -60,6 +60,9 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			for (var i = 0; i < proposals.length; i++) {
 				$scope.AllProposals.push($scope.getProposalObj(proposals[i]));
 			}
+            if(globalFuncs.urlGet('id') != null){
+                $scope.showProposal(parseInt(globalFuncs.urlGet('id')));
+            }
 		});
 	}
 	$scope.comparator = globalFuncs.urlGet('id') != null;
