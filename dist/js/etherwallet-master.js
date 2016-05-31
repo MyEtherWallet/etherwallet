@@ -1287,24 +1287,27 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			}
 		});
 	}
-
+	$scope.comparator = globalFuncs.urlGet('id') != null;
 	$scope.filters = {
-	   id: globalFuncs.urlGet('id') != null ? parseInt(globalFuncs.urlGet('id')) : '',
-       open: globalFuncs.urlGet('open') != null ? globalFuncs.urlGet('open') : '',
-       split: globalFuncs.urlGet('split') != null ? globalFuncs.urlGet('split') : '',
-       description: globalFuncs.urlGet('description') != null ? globalFuncs.urlGet('description') : ''
+		id: globalFuncs.urlGet('id') != null ? parseInt(globalFuncs.urlGet('id')) : '',
+		open: globalFuncs.urlGet('open') != null ? globalFuncs.urlGet('open') : (function () { return; })(),
+		split: globalFuncs.urlGet('split') != null ? globalFuncs.urlGet('split') : (function () { return; })(),
+		description: globalFuncs.urlGet('description') != null ? globalFuncs.urlGet('description') :(function () { return; })()
 	};
-    $scope.comparator = globalFuncs.urlGet('id') != null;
-	if ($scope.filters.id == '' && $scope.filters.open == '' && $scope.filters.split == '' && $scope.filters.description == '' ) {
+	if ($scope.filters.id == '' && $scope.filters.open == undefined && $scope.filters.split == undefined && $scope.filters.description == undefined ) {
 		$scope.filters.split = 'false';
 		$scope.filters.open = 'true';
 	}
-
 	$scope.$watch('filters', function(newValue, oldValue) {
-	  if ((newValue.id!=oldValue.id)&&($scope.filters.id == '' || $scope.filters.id == null)) $scope.comparator = false;
-      if (newValue.open!=oldValue.open && $scope.filters.open == '') $scope.filters.id = '';
-      if (newValue.split!=oldValue.split && $scope.filters.split != '') $scope.filters.id = '';
-	}, true); 
+		if ((newValue.id != oldValue.id) && ($scope.filters.id == '' || $scope.filters.id == null)) {
+            $scope.filters = {}
+            $scope.comparator = false;
+        }
+        if (newValue.id != '' && newValue.id != null) {
+            $scope.filters = {id:newValue.id};
+            $scope.comparator = true;
+        }
+	}, true);
 	$scope.initValues();
 	$scope.showProposal = function(id) {
 		if (!$scope.AllProposals[id].showprop) {
@@ -1367,14 +1370,11 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 		objProposal.totalVotes = yeaBN.plus(nayBN)
 		objProposal.yeaPer = yeaBN.plus(nayBN).toNumber() == '0' ? 0 : yeaBN.div(objProposal.totalVotes).times(100).toNumber();
 		objProposal.nayPer = yeaBN.plus(nayBN).toNumber() == '0' ? 0 : nayBN.div(objProposal.totalVotes).times(100).toNumber();
-
 		objProposal.quorumCurrent = (objProposal.totalVotes * 100) / $scope.totRaised;
 		objProposal.quorumPer = (objProposal.minQuroum() * 100) / $scope.totRaised;
-
 		objProposal.openEnglish = objProposal.open == true ? "Yes" : "No";
 		objProposal.splitEnglish = objProposal.split == true ? "Yes" : "No";
 		objProposal.proposalPassedEnglish = objProposal.proposalPassed == true ? "Yes" : "No";
-
 		if (objProposal.description.indexOf('\n') > 0) {
 			var firstLine = objProposal.description.substring(0, objProposal.description.indexOf('\n'));
 			objProposal.descriptionHTML = $sce.trustAsHtml(marked(objProposal.description.substring(firstLine.length + 1) || ""));
@@ -1383,25 +1383,21 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 		return objProposal;
 	}
 	$scope.generateTx = function() {
-		uiFuncs.generateTx($scope, $sce, function(){
-            $scope.sendTx();
+		uiFuncs.generateTx($scope, $sce, function() {
+			$scope.sendTx();
 		});
 	}
 	$scope.sendTx = function() {
 		ajaxReq.sendRawTx($scope.signedTx, function(data) {
 			if (data.error) {
-				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg + "<br />" +  globalFuncs.errorMsgs[17] ));
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg + "<br />" + globalFuncs.errorMsgs[17]));
 			} else {
-			 	$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + " " +globalFuncs.successMsgs[2] + " " + data.data));
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + " " + globalFuncs.successMsgs[2] + " " + data.data));
 			}
 		});
 	}
-
 };
-
-
 module.exports = theDaoProposalCtrl;
-
 },{}],15:[function(require,module,exports){
 'use strict';
 var viewCtrl = function($scope, globalService) {
