@@ -1075,7 +1075,8 @@
   </section>
   <!-- / DAO Filters -->
 
-        <article class="proposal-item col-xs-12" ng-show="objProposal.show" ng-repeat="objProposal in AllProposals | filter:filters:comparator " >
+        <article class="proposal-item col-xs-12" ng-show="objProposal.show" ng-repeat="objProposal in AllProposals | filter:filters:comparator | orderBy : '-id' " >
+
           <section class="proposal-top clearfix" ng-click="showProposal(objProposal.id)">
             <div class="graph-container">
               <div class="graph-unfilled" style="width:100%"></div>
@@ -1126,7 +1127,7 @@
                   <em>({{ (objProposal.nay * 100) | number:2 }} DAO) </em></td>
               </tr>
               <tr ng-show="objProposal.split==false">
-                <td class="label">Quroum:</td>
+                <td class="label">Quorum:</td>
                 <td class="output">
                   <div class="votes-needed">{{ objProposal.quorumCurrent | number:2 }}% of {{ objProposal.quorumPer | number:2}}%</div>
                 </td>
@@ -1166,7 +1167,12 @@
               <a class="btn btn-primary" ng-click="openVote(objProposal.id)">VOTE ON THIS PROPOSAL</a>
             </div>
           </section>
+
         </article>
+        <section class="no-items text-center">
+          <h4> Sorry...there are results with these filters. </h4>
+          <a class="btn btn-info" ng-class="filters=={} ? 'active' : ''" ng-click="filters={};">Show All Proposals</a>
+        </section>
 
   <!-- Vote Modal -->
   <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel" id="voteProposal">

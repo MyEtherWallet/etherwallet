@@ -4319,6 +4319,24 @@ input[type="password"] + .eye:before {
 .input-group-addon {
   cursor: pointer;
 }
+article + .no-items {
+  display: none;
+}
+.no-items {
+  margin-top: 2em;
+  animation: fadein 1.5s;
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 #etherWalletPopUp {
   padding: 25px 8px 10px;
   width: 355px;
