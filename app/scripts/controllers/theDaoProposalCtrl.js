@@ -60,48 +60,75 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			for (var i = 0; i < proposals.length; i++) {
 				$scope.AllProposals.push($scope.getProposalObj(proposals[i]));
 			}
-			$scope.filterProposals('current', 'nsplit');
 		});
 	}
-	$scope.hideAllProposals = function() {
-		for (var i = 0; i < $scope.AllProposals.length; i++) $scope.AllProposals[i].show = false;
+
+	$scope.filters = {
+	};
+
+	if (globalFuncs.urlGet('id') == null) {
+	  $scope.comparator = false;
+	} else {
+	  $scope.filters.id = parseInt(globalFuncs.urlGet('id'));
+	  $scope.comparator = true;
 	}
-	$scope.filterProposals = function(filterM, filterS) {
-		$scope.hideAllProposals();
-		filterM = filterM == "" ? $scope.filterM : filterM;
-		filterS = filterS == "" ? $scope.filterS : filterS;
 
-		if (filterM == "all" && filterS == "all") {
-			for (var i = 0; i < $scope.AllProposals.length; i++) $scope.AllProposals[i].show = true;
-		}
-
-		if (filterM == "current") {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].open == "Yes") $scope.AllProposals[i].show = true;
-		} else if (filterM == "past") {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].open == "No") $scope.AllProposals[i].show = true;
-		}
-
-		if (filterM == "all" && filterS == "nsplit" ) {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].split == "No") $scope.AllProposals[i].show = true;
-		} else if (filterM == "all" && filterS == "split" ) {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].split == "Yes") $scope.AllProposals[i].show = true;
-		} else if (filterM !== "all" && filterS == "nsplit") {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].show && $scope.AllProposals[i].split == "No") $scope.AllProposals[i].show = true;
-				else $scope.AllProposals[i].show = false;
-		} else if (filterM !== "all" && filterS == "split") {
-			for (var i = 0; i < $scope.AllProposals.length; i++)
-				if ($scope.AllProposals[i].show && $scope.AllProposals[i].split == "Yes") $scope.AllProposals[i].show = true;
-				else $scope.AllProposals[i].show = false;
-		}
-
-		$scope.filterM = filterM;
-		$scope.filterS = filterS;
+	if (globalFuncs.urlGet('open') == null) {
+	} else {
+	  $scope.filters.open = globalFuncs.urlGet('open');
+	  $scope.comparator = false;
 	}
+
+	if (globalFuncs.urlGet('split') == null) {
+	} else {
+	  $scope.filters.split = globalFuncs.urlGet('split');
+	  $scope.comparator = false;
+	}
+
+	if (globalFuncs.urlGet('description') == null) {
+	} else {
+		$scope.filters.description = globalFuncs.urlGet('description');
+	  $scope.comparator = false;
+	}
+
+	if (globalFuncs.urlGet('id') == null && globalFuncs.urlGet('open') == null && globalFuncs.urlGet('split') == null && globalFuncs.urlGet('description') == null ) {
+		$scope.filters.split = 'false';
+		$scope.filters.open = 'true';
+	  $scope.comparator = false;
+	}
+
+	$scope.$watch('filters.id', function() {
+	  if ($scope.filters.id == '') {
+	    $scope.comparator = false;
+	    $scope.filters.id = '';
+	  }
+	  if ($scope.filters.id == null) {
+	    $scope.comparator = false;
+	  }
+	  console.log("split: " + JSON.stringify($scope.filters));
+	  console.log("split: comparator: " + $scope.comparator);
+	});
+
+	$scope.$watch('filters.open', function() {
+	  if ($scope.filters.open == null) {} else {
+	    $scope.comparator = false;
+	    $scope.filters.id = '';
+	  }
+	  console.log("open: " + JSON.stringify($scope.filters));
+	  console.log("open: comparator: " + $scope.comparator);
+	});
+	$scope.$watch('filters.split', function() {
+	  if ($scope.filters.split == null) {} else {
+	    $scope.comparator = false;
+	    $scope.filters.id = '';
+	  }
+	  console.log("split: " + JSON.stringify($scope.filters));
+	  console.log("split: comparator: " + $scope.comparator);
+	});
+
+	console.log("load: " + JSON.stringify($scope.filters));
+	console.log("load: comparator: " + $scope.comparator);
+
 
 
 	$scope.initValues();
@@ -145,11 +172,11 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			description: proposal[12] == "0" ? "Propsoal ID #" + tProposal.proposalID : globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n'),
 			votingDeadline: new Date(new BigNumber("0x" + proposal[3]).toNumber() * 1000),
 			today: new Date(),
-			open: proposal[4] == '1' ? "Yes" : "No",
-			proposalPassed: proposal[5] == '1' ? "Yes" : "No",
+			open: proposal[4] == '1' ? true : false,
+			proposalPassed: proposal[5] == '1' ? true : false,
 			proposalHash: '0x' + proposal[6],
 			proposalDeposit: etherUnits.toEther('0x' + proposal[7], 'wei'),
-			split: proposal[8] == '1' ? "Yes" : "No",
+			split: proposal[8] == '1' ? true : false,
 			yea: etherUnits.toEther('0x' + proposal[9], 'wei'),
 			nay: etherUnits.toEther('0x' + proposal[10], 'wei'),
 			creator: "0x" + proposal[11],
@@ -166,8 +193,20 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 		objProposal.totalVotes = yeaBN.plus(nayBN)
 		objProposal.yeaPer = yeaBN.plus(nayBN).toNumber() == '0' ? 0 : yeaBN.div(objProposal.totalVotes).times(100).toNumber();
 		objProposal.nayPer = yeaBN.plus(nayBN).toNumber() == '0' ? 0 : nayBN.div(objProposal.totalVotes).times(100).toNumber();
+
 		objProposal.quorumCurrent = (objProposal.totalVotes * 100) / $scope.totRaised;
 		objProposal.quorumPer = (objProposal.minQuroum() * 100) / $scope.totRaised;
+
+		objProposal.openEnglish = objProposal.open == true ? "Yes" : "No";
+		objProposal.splitEnglish = objProposal.split == true ? "Yes" : "No";
+		objProposal.proposalPassedEnglish = objProposal.proposalPassed == true ? "Yes" : "No";
+
+		if (objProposal.description.indexOf('\n') > 0) {
+			var firstLine = objProposal.description.substring(0, objProposal.description.indexOf('\n'));
+			objProposal.descriptionHTML = objProposal.description.substring(firstLine.length + 1);
+			objProposal.description = firstLine;
+		}
+
 		return objProposal;
 	}
 	$scope.generateTx = function() {

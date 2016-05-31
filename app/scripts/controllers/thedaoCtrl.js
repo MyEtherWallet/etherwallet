@@ -126,11 +126,11 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 							description: proposal[12] == "0" ? "Propsoal ID #" + $scope.proposalId : globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n'),
 							votingDeadline: new Date(new BigNumber("0x" + proposal[3]).toNumber() * 1000),
 							today: new Date(),
-							open: proposal[4] == '1' ? "Yes" : "No",
-							proposalPassed: proposal[5] == '1' ? "Yes" : "No",
+							open: proposal[4] == '1' ? true : false,
+							proposalPassed: proposal[5] == '1' ? true : false,
 							proposalHash: '0x' + proposal[6],
 							proposalDeposit: etherUnits.toEther('0x' + proposal[7], 'wei'),
-							split: proposal[8] == '1' ? "Yes" : "No",
+							split: proposal[8] == '1' ? true : false,
 							yea: etherUnits.toEther('0x' + proposal[9], 'wei'),
 							nay: etherUnits.toEther('0x' + proposal[10], 'wei'),
 							creator: "0x" + proposal[11],
@@ -141,14 +141,21 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 							},
 							data: proposal
 						};
+						$scope.showProposal = true;
+
 						var yeaBN = new BigNumber($scope.objProposal.yea);
 						var nayBN = new BigNumber($scope.objProposal.nay);
 						$scope.objProposal.totalVotes = yeaBN.plus(nayBN)
 						$scope.objProposal.yeaPer = yeaBN.plus(nayBN).toNumber() == '0' ? 0 : yeaBN.div($scope.objProposal.totalVotes).times(100).toNumber();
 						$scope.objProposal.nayPer = yeaBN.plus(nayBN).toNumber() == '0' ? 0 : nayBN.div($scope.objProposal.totalVotes).times(100).toNumber();
-						$scope.showProposal = true;
+
 						$scope.objProposal.quorumCurrent = ($scope.objProposal.totalVotes * 100) / $scope.token.totRaised;
 						$scope.objProposal.quorumPer = ($scope.objProposal.minQuroum() * 100) / $scope.token.totRaised;
+
+						$scope.objProposal.openEnglish = objProposal.open == true ? "Yes" : "No";
+						$scope.objProposal.splitEnglish = objProposal.split == true ? "Yes" : "No";
+						$scope.objProposal.proposalPassedEnglish = objProposal.proposalPassed == true ? "Yes" : "No";
+
 						if ($scope.objProposal.description.indexOf('\n') > 0) {
 							var firstLine = $scope.objProposal.description.substring(0, $scope.objProposal.description.indexOf('\n'));
 							$scope.objProposal.descriptionHTML = $scope.objProposal.description.substring(firstLine.length + 1);

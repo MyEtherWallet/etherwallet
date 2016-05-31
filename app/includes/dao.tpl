@@ -131,18 +131,18 @@
                 <span class="text-danger" ng-show="objProposal.votingDeadline.getTime() < objProposal.today.getTime()">ended: <strong>{{objProposal.votingDeadline | date:'medium'}}</strong>
               </p></span>
             </div>
-            <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split=='No'">
+            <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split==false">
               <h4> &nbsp; {{objProposal.amount }}</h4>
               <p>  ETH  </p>
             </div>
-            <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split=='Yes'">
+            <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split==true">
                <h4> Split </h4>
               <p>  &nbsp; </p>
             </div>
           </section>
           <section class="proposal-expanded col-xs-12">
             <p class="description-html" ng-show="objProposal.descriptionHTML!==null"> {{ objProposal.descriptionHTML }} </p>
-            <p ng-show="objProposal.split=='Yes'"><em>This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a></em></p>
+            <p ng-show="objProposal.split==true"><em>This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a></em></p>
             <table class="table">
               <tr>
                 <td class="label">Votes Yea:</td>
@@ -162,7 +162,7 @@
                   &middot;
                   <em>({{ (objProposal.nay * 100) | number:2 }} DAO) </em></td>
               </tr>
-              <tr ng-show="objProposal.split=='No'">
+              <tr ng-show="objProposal.split==false">
                 <td class="label">Quroum:</td>
                 <td class="output">
                   <div class="votes-needed">{{ objProposal.quorumCurrent | number:2 }}% of {{ objProposal.quorumPer | number:2}}%</div>
@@ -180,15 +180,15 @@
               </tr>
               <tr>
                 <td class="label">New Curator:</td>
-                <td class="output"><span ng-class="objProposal.split=='Yes' ? 'boolean-yes' : 'boolean-no'"> {{objProposal.split}} </span></td>
+                <td class="output"><span ng-class="objProposal.split==true ? 'boolean-yes' : 'boolean-no'"> {{objProposal.splitEnglish}} </span></td>
               </tr>
               <tr>
                 <td class="label">Open:</td>
-                <td class="output"><span ng-class="objProposal.open=='Yes' ? 'boolean-yes' : 'boolean-no'"> {{objProposal.open}} </span></td>
+                <td class="output"><span ng-class="objProposal.open==true ? 'boolean-yes' : 'boolean-no'"> {{objProposal.openEnglish}} </span></td>
               </tr>
               <tr>
                 <td class="label">Proposal Passed:</td>
-                <td class="output"><span ng-class="objProposal.proposalPassed=='Yes' ? 'boolean-yes' : 'boolean-no'"> {{objProposal.proposalPassed}} </span></td>
+                <td class="output"><span ng-class="objProposal.proposalPassed==true ? 'boolean-yes' : 'boolean-no'"> {{objProposal.proposalPassedEnglish}} </span></td>
               </tr>
               <tr>
                 <td class="label">Proposal Hash:</td>
