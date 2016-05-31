@@ -4308,6 +4308,9 @@ input[type="password"] + .eye:before {
 .graph-bigger .graph-unfilled {
   height: 10px;
 }
+.input-group-addon {
+  cursor: pointer;
+}
 #etherWalletPopUp {
   padding: 25px 8px 10px;
   width: 355px;
