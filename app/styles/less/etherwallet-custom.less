@@ -528,3 +528,18 @@ input[type="password"]+.eye {
 .input-group-addon {
   cursor: pointer;
 }
+
+article + .no-items {
+  display: none;
+}
+
+.no-items {
+  margin-top: 2em;
+  animation: fadein 1.5s;
+}
+
+@keyframes fadein {
+    0% { opacity: 0; }
+    70% { opacity: 0; }
+    100%   { opacity: 1; }
+}
