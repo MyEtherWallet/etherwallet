@@ -1448,7 +1448,10 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			}
 		});
 	}
+
 };
+
+
 module.exports = theDaoProposalCtrl;
 
 },{}],15:[function(require,module,exports){

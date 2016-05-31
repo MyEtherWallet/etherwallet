@@ -223,5 +223,8 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			}
 		});
 	}
+
 };
+
+
 module.exports = theDaoProposalCtrl;
