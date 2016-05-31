@@ -4330,7 +4330,7 @@ article + .no-items {
   0% {
     opacity: 0;
   }
-  70% {
+  80% {
     opacity: 0;
   }
   100% {
