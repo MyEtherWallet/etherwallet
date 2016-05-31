@@ -203,7 +203,7 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 
 		if (objProposal.description.indexOf('\n') > 0) {
 			var firstLine = objProposal.description.substring(0, objProposal.description.indexOf('\n'));
-			objProposal.descriptionHTML = objProposal.description.substring(firstLine.length + 1);
+			objProposal.descriptionHTML = $sce.trustAsHtml(globalFuncs.stripTags(marked(objProposal.description.substring(firstLine.length + 1) || "")));
 			objProposal.description = firstLine;
 		}
 

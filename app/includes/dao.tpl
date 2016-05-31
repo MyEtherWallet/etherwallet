@@ -141,7 +141,7 @@
             </div>
           </section>
           <section class="proposal-expanded col-xs-12">
-            <p class="description-html" ng-show="objProposal.descriptionHTML!==null"> {{ objProposal.descriptionHTML }} </p>
+            <div class="description-html" ng-bind-html="objProposal.descriptionHTML"></div>
             <p ng-show="objProposal.split==true"><em>This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a></em></p>
             <table class="table">
               <tr>

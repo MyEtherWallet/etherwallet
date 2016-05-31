@@ -152,13 +152,13 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 						$scope.objProposal.quorumCurrent = ($scope.objProposal.totalVotes * 100) / $scope.token.totRaised;
 						$scope.objProposal.quorumPer = ($scope.objProposal.minQuroum() * 100) / $scope.token.totRaised;
 
-						$scope.objProposal.openEnglish = objProposal.open == true ? "Yes" : "No";
-						$scope.objProposal.splitEnglish = objProposal.split == true ? "Yes" : "No";
-						$scope.objProposal.proposalPassedEnglish = objProposal.proposalPassed == true ? "Yes" : "No";
+						$scope.objProposal.openEnglish = $scope.objProposal.open == true ? "Yes" : "No";
+						$scope.objProposal.splitEnglish = $scope.objProposal.split == true ? "Yes" : "No";
+						$scope.objProposal.proposalPassedEnglish = $scope.objProposal.proposalPassed == true ? "Yes" : "No";
 
 						if ($scope.objProposal.description.indexOf('\n') > 0) {
 							var firstLine = $scope.objProposal.description.substring(0, $scope.objProposal.description.indexOf('\n'));
-							$scope.objProposal.descriptionHTML = $scope.objProposal.description.substring(firstLine.length + 1);
+							$scope.objProposal.descriptionHTML = $sce.trustAsHtml(globalFuncs.stripTags(marked($scope.objProposal.description.substring(firstLine.length + 1) || "")));
 							$scope.objProposal.description = firstLine;
 						}
 					}

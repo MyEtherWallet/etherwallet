@@ -738,7 +738,7 @@
             </div>
           </section>
           <section class="proposal-expanded col-xs-12">
-            <p class="description-html" ng-show="objProposal.descriptionHTML!==null"> {{ objProposal.descriptionHTML }} </p>
+            <div class="description-html" ng-bind-html="objProposal.descriptionHTML"></div>
             <p ng-show="objProposal.split==true"><em>This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a></em></p>
             <table class="table">
               <tr>
@@ -885,6 +885,7 @@
       <h2> Browse DAO Proposals </h2>
       <p><a ng-click="globalService.currentTab=globalService.tabs.dao.id">If you would like to Send DAO Tokens, please click here.</a> Learn more at <a href="http://daohub.org/" target="_blank">DAOHub</a>, <a href="https://blog.slock.it/the-art-of-the-dao-experiments-with-the-generic-dao-framework-4782f7862131#.bibozinlb" target="_blank">The Art of the DAO</a>, and <a href="https://forum.daohub.org/c/theDAO" target="_blank">DAO Hub Forums (Support, too!)</a></p>
     </div>
+
   </section>
 
   <!-- DAO Proposals -->
@@ -950,7 +951,9 @@
             </div>
           </section>
           <section class="proposal-expanded col-xs-12" ng-show="objProposal.showprop">
-            <p class="description-html" ng-show="objProposal.descriptionHTML!==null"> {{ objProposal.descriptionHTML }} </p>
+
+            <div class="description-html" ng-bind-html="objProposal.descriptionHTML"></div>
+
             <p ng-show="objProposal.split==true"><em>This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a></em></p>
             <table class="table">
               <tr>

@@ -6,6 +6,8 @@ require("babel-polyfill");
 var angular = require('angular');
 var BigNumber = require('bignumber.js');
 window.BigNumber = BigNumber;
+var marked = require('marked');
+window.marked = marked;
 var ethUtil = require('ethereumjs-util');
 ethUtil.crypto = require('crypto');
 ethUtil.Tx = require('ethereumjs-tx');
