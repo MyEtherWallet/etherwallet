@@ -64,73 +64,22 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 	}
 
 	$scope.filters = {
+	   id: globalFuncs.urlGet('id') != null ? parseInt(globalFuncs.urlGet('id')) : '',
+       open: globalFuncs.urlGet('open') != null ? globalFuncs.urlGet('open') : '',
+       split: globalFuncs.urlGet('split') != null ? globalFuncs.urlGet('split') : '',
+       description: globalFuncs.urlGet('description') != null ? globalFuncs.urlGet('description') : ''
 	};
-
-	if (globalFuncs.urlGet('id') == null) {
-	  $scope.comparator = false;
-	} else {
-	  $scope.filters.id = parseInt(globalFuncs.urlGet('id'));
-	  $scope.comparator = true;
-	}
-
-	if (globalFuncs.urlGet('open') == null) {
-	} else {
-	  $scope.filters.open = globalFuncs.urlGet('open');
-	  $scope.comparator = false;
-	}
-
-	if (globalFuncs.urlGet('split') == null) {
-	} else {
-	  $scope.filters.split = globalFuncs.urlGet('split');
-	  $scope.comparator = false;
-	}
-
-	if (globalFuncs.urlGet('description') == null) {
-	} else {
-		$scope.filters.description = globalFuncs.urlGet('description');
-	  $scope.comparator = false;
-	}
-
-	if (globalFuncs.urlGet('id') == null && globalFuncs.urlGet('open') == null && globalFuncs.urlGet('split') == null && globalFuncs.urlGet('description') == null ) {
+    $scope.comparator = globalFuncs.urlGet('id') != null;
+	if ($scope.filters.id == '' && $scope.filters.open == '' && $scope.filters.split == '' && $scope.filters.description == '' ) {
 		$scope.filters.split = 'false';
 		$scope.filters.open = 'true';
-	  $scope.comparator = false;
 	}
 
-	$scope.$watch('filters.id', function() {
-	  if ($scope.filters.id == '') {
-	    $scope.comparator = false;
-	    $scope.filters.id = '';
-	  }
-	  if ($scope.filters.id == null) {
-	    $scope.comparator = false;
-	  }
-	  console.log("split: " + JSON.stringify($scope.filters));
-	  console.log("split: comparator: " + $scope.comparator);
-	});
-
-	$scope.$watch('filters.open', function() {
-	  if ($scope.filters.open == null) {} else {
-	    $scope.comparator = false;
-	    $scope.filters.id = '';
-	  }
-	  console.log("open: " + JSON.stringify($scope.filters));
-	  console.log("open: comparator: " + $scope.comparator);
-	});
-	$scope.$watch('filters.split', function() {
-	  if ($scope.filters.split == null) {} else {
-	    $scope.comparator = false;
-	    $scope.filters.id = '';
-	  }
-	  console.log("split: " + JSON.stringify($scope.filters));
-	  console.log("split: comparator: " + $scope.comparator);
-	});
-
-	console.log("load: " + JSON.stringify($scope.filters));
-	console.log("load: comparator: " + $scope.comparator);
-
-
-
+	$scope.$watch('filters', function(newValue, oldValue) {
+	  if ((newValue.id!=oldValue.id)&&($scope.filters.id == '' || $scope.filters.id == null)) $scope.comparator = false;
+      if (newValue.open!=oldValue.open && $scope.filters.open == '') $scope.filters.id = '';
+      if (newValue.split!=oldValue.split && $scope.filters.split != '') $scope.filters.id = '';
+	}, true); 
 	$scope.initValues();
 	$scope.showProposal = function(id) {
 		if (!$scope.AllProposals[id].showprop) {
@@ -169,7 +118,7 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			recipient: '0x' + proposal[0],
 			amount: etherUnits.toEther('0x' + proposal[1], 'wei'),
 			content: proposal[12] == "0" ? "" : proposal.slice(13).join(),
-			description: proposal[12] == "0" ? "Propsoal ID #" + tProposal.proposalID : globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n'),
+			description: proposal[12] == "0" ? "Propsoal ID #" + tProposal.proposalID : globalFuncs.stripTags(globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n')),
 			votingDeadline: new Date(new BigNumber("0x" + proposal[3]).toNumber() * 1000),
 			today: new Date(),
 			open: proposal[4] == '1' ? true : false,
@@ -203,10 +152,9 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 
 		if (objProposal.description.indexOf('\n') > 0) {
 			var firstLine = objProposal.description.substring(0, objProposal.description.indexOf('\n'));
-			objProposal.descriptionHTML = $sce.trustAsHtml(globalFuncs.stripTags(marked(objProposal.description.substring(firstLine.length + 1) || "")));
+			objProposal.descriptionHTML = $sce.trustAsHtml(marked(objProposal.description.substring(firstLine.length + 1) || ""));
 			objProposal.description = firstLine;
 		}
-
 		return objProposal;
 	}
 	$scope.generateTx = function() {

@@ -77,13 +77,7 @@ globalFuncs.checkAndRedirectHTTPS = function() {
 	if ((host == window.location.host || githost == window.location.host || hostw == window.location.host || githostw == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
 }
 globalFuncs.isStrongPass = function(password) {
-	if (password.length > 8) {
-		return true;
-	} else {
-		return false;
-	}
-	//var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-	//return re.test(password);
+    return password.length > 8;
 }
 globalFuncs.hexToAscii = function(hex) {
 	return hex.match(/.{1,2}/g).map(function(v) {

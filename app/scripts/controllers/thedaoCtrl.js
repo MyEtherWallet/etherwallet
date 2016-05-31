@@ -123,7 +123,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 							recipient: '0x' + proposal[0],
 							amount: etherUnits.toEther('0x' + proposal[1], 'wei'),
 							content: proposal[12] == "0" ? "" : proposal.slice(13).join(),
-							description: proposal[12] == "0" ? "Propsoal ID #" + $scope.proposalId : globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n'),
+							description: proposal[12] == "0" ? "Propsoal ID #" + $scope.proposalId : globalFuncs.stripTags(globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n')),
 							votingDeadline: new Date(new BigNumber("0x" + proposal[3]).toNumber() * 1000),
 							today: new Date(),
 							open: proposal[4] == '1' ? true : false,
@@ -158,7 +158,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 
 						if ($scope.objProposal.description.indexOf('\n') > 0) {
 							var firstLine = $scope.objProposal.description.substring(0, $scope.objProposal.description.indexOf('\n'));
-							$scope.objProposal.descriptionHTML = $sce.trustAsHtml(globalFuncs.stripTags(marked($scope.objProposal.description.substring(firstLine.length + 1) || "")));
+							$scope.objProposal.descriptionHTML = $sce.trustAsHtml(marked($scope.objProposal.description.substring(firstLine.length + 1) || ""));
 							$scope.objProposal.description = firstLine;
 						}
 					}
