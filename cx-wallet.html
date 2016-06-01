@@ -981,6 +981,8 @@
             <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
           </h4>
           <h4> Are you <span class="text-underline">sure</span> you want to do this?</h4>
+          <p><em> NOTE: If you encounter a gas error (account doesn't exist or balance too low) then you need to add ETH to your account) to cover the cost of sendind DAO tokens.</em></p>
+
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
@@ -1181,6 +1183,8 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h3 class="modal-title" id="myModalLabel">Unlock your Wallet to Vote on Proposal #{{voteID}}</h3>
+          <p><em> <span class="text-danger">Note: </span> If you vote on a proposal, the tokens cannot be sent until the proposal period ends. If you wish to vote with a portion of your tokens, you must send them to a new account first and then vote with only one account.</em></p>
+
         </div>
         <div class="modal-body">
 
