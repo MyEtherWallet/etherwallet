@@ -17,6 +17,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.slockitABalance = "0x39d1f908";
 	$scope.slockitRToken = "0xcdef91d0";
 	$scope.slockitVote = "0xc9d27afe";
+    $scope.slockitGasIfVoted = "0x2faf080";
 	$scope.tx = {
 		gasLimit: 150000,
 		data: '',
@@ -106,12 +107,31 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 			}
 		});
 	}
-
+	$scope.checkVoted = function() {
+		if ($scope.wallet == null) return;
+		var tempVTx = {
+			to: $scope.slockitContract,
+			from: $scope.wallet.getAddressString(),
+			data: $scope.slockitVote + ethFuncs.padLeft(new BigNumber($scope.proposalId).toString(16), 64) + ethFuncs.padLeft("0", 64),
+			value: '0x0'
+		}
+		$scope.loadProposalStatus = "";
+		ajaxReq.getEstimatedGas(tempVTx, function(data) {
+			if (!data.error && data.data != $scope.slockitGasIfVoted) {
+				$scope.showBtnVote = true;
+			} else {
+				$scope.loadProposalStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[18]));
+				$scope.showBtnVote = false;
+			}
+		});
+	}
 	$scope.setProposal = function() {
 		try {
 			$scope.loadProposalStatus = "";
+			$scope.showBtnVote = false;
 			if (!globalFuncs.isNumeric($scope.proposalId) || parseFloat($scope.proposalId) < 0) throw globalFuncs.errorMsgs[15];
 			var callProposal = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitProposal, [new BigNumber($scope.proposalId).toString(16)]);
+            $scope.checkVoted();
 			ajaxReq.getEthCall(callProposal, function(data) {
 				try {
 					if (data.error) {
@@ -142,20 +162,16 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 							data: proposal
 						};
 						$scope.showProposal = true;
-
 						var yeaBN = new BigNumber($scope.objProposal.yea);
 						var nayBN = new BigNumber($scope.objProposal.nay);
 						$scope.objProposal.totalVotes = yeaBN.plus(nayBN)
 						$scope.objProposal.yeaPer = yeaBN.plus(nayBN).toNumber() == '0' ? 0 : yeaBN.div($scope.objProposal.totalVotes).times(100).toNumber();
 						$scope.objProposal.nayPer = yeaBN.plus(nayBN).toNumber() == '0' ? 0 : nayBN.div($scope.objProposal.totalVotes).times(100).toNumber();
-
 						$scope.objProposal.quorumCurrent = ($scope.objProposal.totalVotes * 100) / $scope.token.totRaised;
 						$scope.objProposal.quorumPer = ($scope.objProposal.minQuroum() * 100) / $scope.token.totRaised;
-
 						$scope.objProposal.openEnglish = $scope.objProposal.open == true ? "Yes" : "No";
 						$scope.objProposal.splitEnglish = $scope.objProposal.split == true ? "Yes" : "No";
 						$scope.objProposal.proposalPassedEnglish = $scope.objProposal.proposalPassed == true ? "Yes" : "No";
-
 						if ($scope.objProposal.description.indexOf('\n') > 0) {
 							var firstLine = $scope.objProposal.description.substring(0, $scope.objProposal.description.indexOf('\n'));
 							$scope.objProposal.descriptionHTML = $sce.trustAsHtml(marked($scope.objProposal.description.substring(firstLine.length + 1) || ""));
@@ -179,7 +195,6 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		$scope.showRaw = false;
 		$scope.sendTxStatus = "";
 	}, true);
-
 	// sending
 	$scope.generateTokenTx = function() {
 		try {
@@ -197,14 +212,12 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
 		}
 	};
-
- 	$scope.generateTx = function() {
+	$scope.generateTx = function() {
 		uiFuncs.generateTx($scope, $sce);
- 	}
- 	$scope.sendTx = function() {
+	}
+	$scope.sendTx = function() {
 		uiFuncs.sendTx($scope, $sce);
- 	}
-
+	}
 	// voting
 	$scope.generateVoteTx = function(isYes) {
 		if (isYes) $scope.showVoteNo = false;

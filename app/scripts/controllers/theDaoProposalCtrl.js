@@ -3,7 +3,7 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.voteModal = new Modal(document.getElementById('voteProposal'));
-	$scope.showVoteYes = $scope.showVoteNo = true;
+	$scope.showVoteYes = $scope.showVoteNo = false;
 	$scope.AllProposals = [];
 	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413";
 	$scope.slockitBalance = "0x70a08231";
@@ -14,6 +14,7 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 	$scope.slockitABalance = "0x39d1f908";
 	$scope.slockitRToken = "0xcdef91d0";
 	$scope.slockitVote = "0xc9d27afe";
+    $scope.slockitGasIfVoted = "0x2faf080";
 	$scope.initValues = function() {
 		ajaxReq.getBalance($scope.slockitContract, function(data) {
 			if (!data.error) $scope.totRaised = etherUnits.toEther(data.data.balance, 'wei');
@@ -48,43 +49,70 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 	}, function() {
 		if (walletService.wallet == null) return;
 		$scope.wallet = walletService.wallet;
+		$scope.checkVoted();
 	});
 	$scope.openVote = function(id) {
 		$scope.voteID = id;
-		$scope.showVoteYes = $scope.showVoteNo = true;
+		$scope.checkVoted();
 		$scope.voteTxStatus = $scope.sendTxStatus = "";
 		$scope.voteModal.open();
+	}
+	$scope.checkVoted = function() {
+		if ($scope.wallet == null) return;
+		var tempVTx = {
+			to: $scope.slockitContract,
+			from: $scope.wallet.getAddressString(),
+			data: $scope.slockitVote + ethFuncs.padLeft(new BigNumber($scope.voteID).toString(16), 64) + ethFuncs.padLeft("0", 64),
+			value: '0x0'
+		}
+        $scope.voteTxStatus = "";
+		ajaxReq.getEstimatedGas(tempVTx, function(data) {
+			if (!data.error && data.data != $scope.slockitGasIfVoted) {
+			     $scope.showVoteYes = $scope.showVoteNo = true;
+			} else {
+			     $scope.voteTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[18]));
+                $scope.showVoteYes = $scope.showVoteNo = false;
+			}
+		});
 	}
 	$scope.getAllProposals = function() {
 		ajaxReq.getDAOProposals(function(proposals) {
 			for (var i = 0; i < proposals.length; i++) {
 				$scope.AllProposals.push($scope.getProposalObj(proposals[i]));
 			}
-            if(globalFuncs.urlGet('id') != null){
-                $scope.showProposal(parseInt(globalFuncs.urlGet('id')));
-            }
+			if (globalFuncs.urlGet('id') != null) {
+				$scope.showProposal(parseInt(globalFuncs.urlGet('id')));
+			}
 		});
 	}
 	$scope.comparator = globalFuncs.urlGet('id') != null;
 	$scope.filters = {
 		id: globalFuncs.urlGet('id') != null ? parseInt(globalFuncs.urlGet('id')) : '',
-		open: globalFuncs.urlGet('open') != null ? globalFuncs.urlGet('open') : (function () { return; })(),
-		split: globalFuncs.urlGet('split') != null ? globalFuncs.urlGet('split') : (function () { return; })(),
-		description: globalFuncs.urlGet('description') != null ? globalFuncs.urlGet('description') :(function () { return; })()
+		open: globalFuncs.urlGet('open') != null ? globalFuncs.urlGet('open') : (function() {
+			return;
+		})(),
+		split: globalFuncs.urlGet('split') != null ? globalFuncs.urlGet('split') : (function() {
+			return;
+		})(),
+		description: globalFuncs.urlGet('description') != null ? globalFuncs.urlGet('description') : (function() {
+			return;
+		})()
 	};
-	if ($scope.filters.id == '' && $scope.filters.open == undefined && $scope.filters.split == undefined && $scope.filters.description == undefined ) {
+	if ($scope.filters.id == '' && $scope.filters.open == undefined && $scope.filters.split == undefined && $scope.filters.description == undefined) {
 		$scope.filters.split = 'false';
 		$scope.filters.open = 'true';
 	}
 	$scope.$watch('filters', function(newValue, oldValue) {
 		if ((newValue.id != oldValue.id) && ($scope.filters.id == '' || $scope.filters.id == null)) {
-            $scope.filters = {}
-            $scope.comparator = false;
-        }
-        if (newValue.id != '' && newValue.id != null) {
-            $scope.filters = {id:newValue.id};
-            $scope.comparator = true;
-        }
+			$scope.filters = {}
+			$scope.comparator = false;
+		}
+		if (newValue.id != '' && newValue.id != null) {
+			$scope.filters = {
+				id: newValue.id
+			};
+			$scope.comparator = true;
+		}
 	}, true);
 	$scope.initValues();
 	$scope.showProposal = function(id) {

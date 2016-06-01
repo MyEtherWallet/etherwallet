@@ -798,7 +798,7 @@
             </table>
 
               <div class="form-group" ng-show="objProposal.votingDeadline.getTime() > objProposal.today.getTime()">
-                <a class="btn btn-primary" data-toggle="modal" data-target="#voteProposal">VOTE ON THIS PROPOSAL</a>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#voteProposal" ng-show="showBtnVote">VOTE ON THIS PROPOSAL</a>
               </div>
           </section>
         </article>
