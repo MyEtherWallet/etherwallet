@@ -151,6 +151,8 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h3 class="modal-title" id="myModalLabel">Unlock your Wallet to Vote on Proposal #{{voteID}}</h3>
+          <p><em> <span class="text-danger">Note: </span> If you vote on a proposal, the tokens cannot be sent until the proposal period ends. If you wish to vote with a portion of your tokens, you must send them to a new account first and then vote with only one account.</em></p>
+
         </div>
         <div class="modal-body">
 

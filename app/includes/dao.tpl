@@ -233,6 +233,8 @@
             <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
           </h4>
           <h4> Are you <span class="text-underline">sure</span> you want to do this?</h4>
+          <p><em> NOTE: If you encounter a gas error (account doesn't exist or balance too low) then you need to add ETH to your account) to cover the cost of sendind DAO tokens.</em></p>
+
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
