@@ -152,7 +152,7 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			recipient: '0x' + proposal[0],
 			amount: etherUnits.toEther('0x' + proposal[1], 'wei'),
 			content: proposal[12] == "0" ? "" : proposal.slice(13).join(),
-			description: proposal[12] == "0" ? "Propsoal ID #" + tProposal.proposalID : globalFuncs.stripTags(globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n')),
+			description: proposal[12] == "0" ? "Proposal ID #" + tProposal.proposalID : globalFuncs.stripTags(globalFuncs.hexToAscii(proposal.slice(13).join('')).replace(/<br>/g, '\n').replace(/\\n/g, '\n')),
 			votingDeadline: new Date(new BigNumber("0x" + proposal[3]).toNumber() * 1000),
 			today: new Date(),
 			open: proposal[4] == '1' ? true : false,
