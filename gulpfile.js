@@ -1,3 +1,6 @@
+// confirmed working on node v4.2.6 & npm v3.7.2
+// if you are still having issues, you may need to install browserify gloablly.
+
 var fs = require('fs');
 // less
 var gulp = require('gulp');
@@ -6,7 +9,6 @@ var autoprefixer = require('gulp-autoprefixer');
 var cssnano = require('gulp-cssnano');
 var notify = require('gulp-notify');
 var rename = require('gulp-rename');
-var uncss = require('gulp-uncss');
 var gutil = require('gulp-util');
 var concat = require('gulp-concat');
 var clean = require('gulp-clean');
