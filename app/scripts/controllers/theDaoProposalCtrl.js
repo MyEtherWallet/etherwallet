@@ -34,7 +34,7 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 		});
 	}
 	$scope.tx = {
-		gasLimit: 150000,
+		gasLimit: 100000,
 		data: '',
 		to: $scope.slockitContract,
 		unit: "ether",

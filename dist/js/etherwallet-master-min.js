@@ -1008,7 +1008,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.slockitVote = "0xc9d27afe";
     $scope.slockitGasIfVoted = "0x2faf080";
 	$scope.tx = {
-		gasLimit: 150000,
+		gasLimit: 100000,
 		data: '',
 		to: $scope.slockitContract,
 		unit: "ether",
@@ -1277,7 +1277,7 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 		});
 	}
 	$scope.tx = {
-		gasLimit: 150000,
+		gasLimit: 100000,
 		data: '',
 		to: $scope.slockitContract,
 		unit: "ether",
@@ -1929,7 +1929,7 @@ globalFuncs.errorMsgs = [
 	 "Wallet not found. ",
 	 "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ",
 	 "A wallet with this address already exists in storage. Please check your wallets page. ",
-   "You need to have at some ETH in your account to cover the cost of gas. .05ETH should be more than sufficient for a few sends and votes. ",
+   "You need to have at some ETH in your account to cover the cost of gas. .01ETH should be more than sufficient for a few sends and votes. ",
    "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended."];
 globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "New wallet added: ", "You have successfully voted. Thank you for being an active participant in The DAO."];
 globalFuncs.scrypt = {
