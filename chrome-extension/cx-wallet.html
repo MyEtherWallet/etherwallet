@@ -1066,8 +1066,8 @@
       <a class="proposal-filter" style="width: 100%;" ng-class="filters=={} ? 'active' : ''" ng-click="filters={};">All Proposals</a>
     </div>
     <div class="proposal-filter-container col-sm-5">
-      <a class="proposal-filter" ng-class="filters.open=='true' ? 'active' : ''"    ng-click="filters.open!=='true' ? filters.open='true' : filters.open='' ">Current Proposals</a>
-      <a class="proposal-filter" ng-class="filters.open=='false' ? 'active' : ''"   ng-click="filters.open!=='false' ? filters.open='false' : filters.open=''">Past Proposals</a>
+      <a class="proposal-filter" ng-class="filters.isOpen=='true' ? 'active' : ''"    ng-click="filters.isOpen!=='true' ? filters.isOpen='true' : filters.isOpen='' ">Current Proposals</a>
+      <a class="proposal-filter" ng-class="filters.isOpen=='false' ? 'active' : ''"   ng-click="filters.isOpen!=='false' ? filters.isOpen='false' : filters.isOpen=''">Past Proposals</a>
     </div>
     <div class="proposal-filter-container col-sm-5">
       <a class="proposal-filter" ng-class="filters.split=='false' ? 'active' : ''"  ng-click="filters.split!=='false' ? filters.split='false' : filters.split=''">Non-Split Proposals</a>
@@ -1150,7 +1150,7 @@
               </tr>
               <tr>
                 <td class="label">Open:</td>
-                <td class="output"><span ng-class="objProposal.open==true ? 'boolean-yes' : 'boolean-no'"> {{objProposal.openEnglish}} </span></td>
+                <td class="output"><span ng-class="objProposal.isOpen==true ? 'boolean-yes' : 'boolean-no'"> {{objProposal.openEnglish}} </span></td>
               </tr>
               <tr>
                 <td class="label">Proposal Passed:</td>

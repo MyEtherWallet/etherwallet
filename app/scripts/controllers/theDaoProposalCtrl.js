@@ -88,7 +88,7 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 	$scope.comparator = globalFuncs.urlGet('id') != null;
 	$scope.filters = {
 		id: globalFuncs.urlGet('id') != null ? parseInt(globalFuncs.urlGet('id')) : '',
-		open: globalFuncs.urlGet('open') != null ? globalFuncs.urlGet('open') : (function() {
+		isOpen: globalFuncs.urlGet('open') != null ? globalFuncs.urlGet('open') : (function() {
 			return;
 		})(),
 		split: globalFuncs.urlGet('split') != null ? globalFuncs.urlGet('split') : (function() {
@@ -98,9 +98,9 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 			return;
 		})()
 	};
-	if ($scope.filters.id == '' && $scope.filters.open == undefined && $scope.filters.split == undefined && $scope.filters.description == undefined) {
+	if ($scope.filters.id == '' && $scope.filters.isOpen == undefined && $scope.filters.split == undefined && $scope.filters.description == undefined) {
 		$scope.filters.split = 'false';
-		$scope.filters.open = 'true';
+		$scope.filters.isOpen = 'true';
 	}
 	$scope.$watch('filters', function(newValue, oldValue) {
 		if ((newValue.id != oldValue.id) && ($scope.filters.id == '' || $scope.filters.id == null)) {
@@ -178,7 +178,8 @@ var theDaoProposalCtrl = function($scope, $sce, walletService) {
 		objProposal.nayPer = yeaBN.plus(nayBN).toNumber() == '0' ? 0 : nayBN.div(objProposal.totalVotes).times(100).toNumber();
 		objProposal.quorumCurrent = (objProposal.totalVotes * 100) / $scope.totRaised;
 		objProposal.quorumPer = (objProposal.minQuroum() * 100) / $scope.totRaised;
-		objProposal.openEnglish = objProposal.open == true ? "Yes" : "No";
+        objProposal.isOpen = objProposal.votingDeadline.getTime() > objProposal.today.getTime();
+		objProposal.openEnglish = objProposal.isOpen == true ? "Yes" : "No";
 		objProposal.splitEnglish = objProposal.split == true ? "Yes" : "No";
 		objProposal.proposalPassedEnglish = objProposal.proposalPassed == true ? "Yes" : "No";
 		if (objProposal.description.indexOf('\n') > 0) {
