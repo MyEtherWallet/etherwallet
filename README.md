@@ -29,8 +29,6 @@ Version 2 expands on this vision to offer:
 If you can think of any other features or run into bugs, let us know. You can fork, open a PR, open an issue, [message kvhnuke on reddit](https://www.reddit.com/message/compose/?to=kvhnuke), [email tayvano](mailto:tayvano@gmail.com) or [in any of these ways](https://www.myetherwallet.com/#contact).
 
 ### TODO / In Progress
-- Merge Digix page into the new codebase & add the ability to claim Digix tokens. (This will happen before April 28th.)
-- Merge new codebase into the Chrome Extension.
-- Prep for Slock.it
+See our [trello baord](https://trello.com/b/npX68sKj/myetherwallet)
 
 #### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).
