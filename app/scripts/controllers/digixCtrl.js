@@ -145,5 +145,11 @@ var digixCtrl = function($scope, $sce, walletService) {
 	$scope.sendTx = function() {
 		uiFuncs.sendTx($scope,$sce);
 	}
+	$scope.onDonateClick = function() {
+		$scope.tokenTx.to = globalFuncs.donateAddress;
+		$scope.tokenTx.value = "0.5";
+		$scope.tx.donate = true;
+		$scope.validateAddress();
+	}
 };
 module.exports = digixCtrl;

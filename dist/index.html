@@ -205,7 +205,7 @@
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id">
   <h2> View Wallet Details </h2>
   <p> Download an unencrypted private key, grab your encrypted Mist/Geth Keystore file, or re-print your paper wallet. You may want to do this in order to <a href="http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/" target="_blank">import your account into Geth/Mist</a>. You can also do this with the <a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" target="__blank">MyEtherWallet CX</a> and save your wallet for easier and quicker access.</p>
-  <p> If you just want to check your balance, we recommend using a blockchain explorer like <a href="https://etherchain.org/" target="_blank">etherchain.org</a>, <a href="http://etherscan.io/" target="_blank">etherscan.io</a>, or <a href="https://live.ether.camp/" target="_blank">live.ether.camp</a>
+  <p> If you just want to check your balance, we recommend using a blockchain explorer like <a href="http://etherscan.io/" target="_blank">etherscan.io</a> or <a href="https://live.ether.camp/" target="_blank">live.ether.camp</a>.
   <div>
   <wallet-decrypt-drtv></wallet-decrypt-drtv>
   </div>
@@ -338,7 +338,7 @@
       </div>
       <br />
       <div class="well">
-        <p> Don't have anyone to send a transaction to? You can always donate to us! Donations mean we spend more time creating new features, listening to your feedback, and giving you what you want.</p>
+        <p> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
         <a class="btn btn-primary btn-block" ng-click="onDonateClick()">DONATE</a>
         <div class="text-success text-center marg-v-sm"><strong ng-show="tx.donate"> THANK YOU!!! </strong></div>
       </div>
@@ -642,6 +642,11 @@
         </p>
       </div>
       <br />
+      <div class="well">
+        <p> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
+        <a class="btn btn-primary btn-block" ng-click="onDonateClick()">DONATE</a>
+        <div class="text-success text-center marg-v-sm"><strong ng-show="tx.donate"> THANK YOU!!! </strong></div>
+      </div>
     </div>
 
     <div class="col-sm-8">
@@ -830,7 +835,7 @@
             <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
           </h4>
           <h4> Are you <span class="text-underline">sure</span> you want to do this?</h4>
-          <p><em> NOTE: If you encounter a gas error (account doesn't exist or balance too low) then you need to add ETH to your account) to cover the cost of sendind DAO tokens.</em></p>
+          <p><em> NOTE: If you encounter a gas error (account doesn't exist or balance too low) then you need to add ETH to your account) to cover the cost of sending DAO tokens.</em></p>
 
         </div>
         <div class="modal-footer text-center">
@@ -1127,6 +1132,11 @@
         <strong style="margin-left: 1em"> Claimed? {{claimedTotal}} </strong>
       </p>
       <br />
+      <div class="well">
+        <p> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
+        <a class="btn btn-primary btn-block" ng-click="onDonateClick()">DONATE</a>
+        <div class="text-success text-center marg-v-sm"><strong ng-show="tx.donate"> THANK YOU!!! </strong></div>
+      </div>
     </section>
     <!-- Account Information - Left Column -->
 

@@ -248,5 +248,11 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 			}
 		});
 	}
+	$scope.onDonateClick = function() {
+		$scope.tokenTx.to = globalFuncs.donateAddress;
+		$scope.tokenTx.value = "50";
+		$scope.tx.donate = true;
+		$scope.validateAddress();
+	}
 };
 module.exports = theDaoCtrl;

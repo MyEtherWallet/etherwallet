@@ -2,7 +2,7 @@
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id">
   <h2> View Wallet Details </h2>
   <p> Download an unencrypted private key, grab your encrypted Mist/Geth Keystore file, or re-print your paper wallet. You may want to do this in order to <a href="http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/" target="_blank">import your account into Geth/Mist</a>. You can also do this with the <a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" target="__blank">MyEtherWallet CX</a> and save your wallet for easier and quicker access.</p>
-  <p> If you just want to check your balance, we recommend using a blockchain explorer like <a href="https://etherchain.org/" target="_blank">etherchain.org</a>, <a href="http://etherscan.io/" target="_blank">etherscan.io</a>, or <a href="https://live.ether.camp/" target="_blank">live.ether.camp</a>
+  <p> If you just want to check your balance, we recommend using a blockchain explorer like <a href="http://etherscan.io/" target="_blank">etherscan.io</a> or <a href="https://live.ether.camp/" target="_blank">live.ether.camp</a>.
   <div>
   <wallet-decrypt-drtv></wallet-decrypt-drtv>
   </div>

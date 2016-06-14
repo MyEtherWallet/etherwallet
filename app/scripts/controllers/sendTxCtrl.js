@@ -57,6 +57,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.onDonateClick = function() {
 		$scope.tx.to = globalFuncs.donateAddress;
+		$scope.tx.value = "0.5";
 		$scope.tx.donate = true;
 		$scope.validateAddress();
 	}

@@ -43,6 +43,11 @@
         <strong style="margin-left: 1em"> Claimed? {{claimedTotal}} </strong>
       </p>
       <br />
+      <div class="well">
+        <p> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
+        <a class="btn btn-primary btn-block" ng-click="onDonateClick()">DONATE</a>
+        <div class="text-success text-center marg-v-sm"><strong ng-show="tx.donate"> THANK YOU!!! </strong></div>
+      </div>
     </section>
     <!-- Account Information - Left Column -->
 
