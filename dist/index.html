@@ -1464,10 +1464,10 @@
 
 
   <h4>2a. How do I save/backup my wallet?</h4>
-  <p> You should always back up your wallet externally - like on a flash drive, in cloud storage (Dropbox, etc), and/or a piece of paper.</p>
+  <p> You should always back up your wallet externally - like on a flash drive and/or a piece of paper.</p>
   <ol>
     <li> Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. You may know this as your account # or public key.</li>
-    <li> Save a version private key. Do not show it to anyone else. Your private key is necessary when you want to access your wallet to move it, spend it, or send it! There are 4 types of private keys:</li>
+    <li> Save a version private key. Do not show it to anyone else. Your private key is necessary when you want to access your wallet to move it, spend it, or send it! There are 3 types of private keys:</li>
     <ul>
       <li><strong>Keystore/JSON File (Encrypted · Mist/Geth Format · Recommended): </strong> This JSON file matches the keystore format used by Mist / geth so you can easily import it into those clients in the future.This is the recommended file to download and back up.</li>
       <li><strong>JSON File (unencrypted): </strong> This is the unencrypted, JSON format of your private key. Again, this means you do not need the password but anyone who finds your JSON can access your wallet and your Ether without the password. </li>
@@ -1484,22 +1484,19 @@
   
   <h4>2b. How do I safely / securely / cold storage with MyEtherWallet?</h4>
   <ol>
-    <li>Go here: <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages" target="_blank">https://github.com/kvhnuke/etherwallet/tree/gh-pages</a></li>
+    <li>Go here: https://github.com/kvhnuke/etherwallet/tree/gh-pages</li>
     <li>Click download zip in the upper right.</li>
     <li>Move zip to an airgapped computer.</li>
     <li>Unzip it.</li>
-    <li>Open the <code>dist</code> folder.</li>
-    <li>Double-Click <code>index.html</code>.</li>
-    <li>Generate wallet with a strong password. </li>
-    <li>Save the password on the computer, using an additional layer of encryption.<a href="https://www.reddit.com/r/ethtrader/comments/47mcu2/what_program_do_you_use_to_encrypt_your_keystore/" target="_blank"> This thread has recommended encryption. </a></li>
-    <li>Save the encrypted private key or encrypted JSON. Store it on this airgapped computer that will never access the internet ever.</li>
-    <li>Save your address (no need to encrypt) as well. You will need to address to send ETH to yourself later.</li>
-    <li>Copy the encrypted private keys and password and address to a USB drive. Encrypt said USB drive. <a href="http://computerbeginnersguides.com/blog/2015/09/03/encrypt-a-usb-flash-drive-with-bitlocker-in-windows-10-professional-or-enterprise/" target="_blank">Windows Instructions</a> & <a href="http://www.theinstructional.com/guides/encrypt-an-external-disk-or-usb-stick-with-a-password" target="_blank">Mac instructions.</a></li>
-    <li>Write down the encrypted private key and password on separate pieces of paper. Don't print them because all the printers have insecure Wi-Fi these days & store stuff in memory and we're being ultra secure here. Triple check that you have written them down correctly. Store these papers in physically separate locations than the USB drives and airgapped computer.</li>
+    <li>Double-Click index.html.</li>
+    <li>Generate wallet with a strong password.</li>
+    <li>Save keystore file and print wallet or write down private key on piece of paper.</li>
+    <li>Save address as well. You will need to address to send ETH to yourself later.</li>
+    <li>Store these papers / USBs in multiple physically separate locations.</li>
     <li>Go to the view wallet details tab and type in your private key / password from your piece of paper to ensure they are correct and access your wallet. Check that the address you wrote down is the same.</li>
-    <li>Refresh that page. And copy/paste your private key or JSON and password from your computer or USB drive to ensure they are correct and can access your wallet. Check that the address you saved on your computer or USB is the same.</li>
+    <li>Refresh that page. Select the keystore file and enter the password to ensure it are correct and can access your wallet. Check that the address you saved on your computer or USB is the same.</li>
   </ol>
-  <p>Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). </p>
+  <p>Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). So. Multiple. Different. Physical. Locations. </p>
   
 
 
