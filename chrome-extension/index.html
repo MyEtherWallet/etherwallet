@@ -1455,8 +1455,8 @@
   <ol>
        <li> Go to the "Generate Wallet" tab.</li>    
     
-    <li> Create a strong password, preferably using a random password generator. Save this somewhere safe. <em><small>The password encrypts the private key for this wallet. You will need this password to send transactions.</small></em></li>
-    <li> Copy the password from where you have saved it and paste it into the "Enter a password" field. </li>
+    <li> Create a strong password. Save this somewhere safe. <em><small>The password encrypts the private key for this wallet. You will need this password to send transactions.</small></em></li>
+    <li> Type or copy the password from where you have saved it and paste it into the "Enter a password" field. </li>
     <li> Click "GENERATE". </li>
     <li> Your wallet has now been generated. But, you are NOT done yet! Back up your wallet now! See #2a. </li>
     <li> Then: Verify that you can successfully access you wallet <strong>before</strong> sending any Ether to this wallet. See below. </li>
@@ -1464,7 +1464,7 @@
 
 
   <h4>2a. How do I save/backup my wallet?</h4>
-  <p> You should always back up your wallet externally - like on a flash drive and/or a piece of paper.</p>
+  <p> You should always back up your wallet externally - like on a USB drive and/or a piece of paper.</p>
   <ol>
     <li> Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. You may know this as your account # or public key.</li>
     <li> Save a version private key. Do not show it to anyone else. Your private key is necessary when you want to access your wallet to move it, spend it, or send it! There are 3 types of private keys:</li>
@@ -1473,18 +1473,18 @@
       <li><strong>JSON File (unencrypted): </strong> This is the unencrypted, JSON format of your private key. Again, this means you do not need the password but anyone who finds your JSON can access your wallet and your Ether without the password. </li>
       <li><strong>Private Key (unencrypted): </strong> This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted private keys are typically recommended.</li>
     </ul>
-    <li> Place all this information in a folder, along with your JSON file, PDF version of your paper wallet, and whatever other information you would like to keep. Store it on your computer.</li>
+    <li> Place  this information in a folder, along with PDF version of your paper wallet, and whatever other information you would like to keep. Store it on your computer.</li>
     <li> Take this folder and place it on a USB drive. Store this USB drive in a place securely, in a separate location from your computer. Maybe that place is at your office (don't forget it when you're rich off Ether & ragequit!), at your parent's or another family member's house, in a storage locker, etc. For added security, you can encrypt that USB drive using the following guides: <a href="http://computerbeginnersguides.com/blog/2015/09/03/encrypt-a-usb-flash-drive-with-bitlocker-in-windows-10-professional-or-enterprise/" target="_blank">Windows</a> or <a href="http://www.theinstructional.com/guides/encrypt-an-external-disk-or-usb-stick-with-a-password" target="_blank">Mac</a>.</li>
-    <li> Print the wallet if you have a printer. Otherwise, write down on a piece of paper your: password, address, and private key (unencrypted). Again, store this as a secure location, separate from your computer and the USB drive.</li>
+    <li> Print the wallet if you have a printer. Otherwise, write down on a piece of paper your: address, and private key (unencrypted). Again, store this as a secure location, separate from your computer and the USB drive.</li>
     <li> Now, if your house burns down you still have a USB drive and a piece of paper. If your HDD crashes, you still have a USB drive and a piece of paper.</li>
-    <li> A final reminder: You NEED the private key & password in order to access your account and Ether in the future. We do not save anything to our servers and cannot help you recover your funds if you lose your private key/JSON file and password.</li>
+    <li> A final reminder: You NEED the private key (keystore file) & password in order to access your account and Ether in the future. We do not receive, save, store, or transmit <strong>anything</strong> to our servers and cannot help you recover your funds if you lose your private key/keystore file and password.</li>
   </ol>
 
 
   
-  <h4>2b. How do I safely / securely / cold storage with MyEtherWallet?</h4>
+  <h4>2b. How do I safely / offline / cold storage with MyEtherWallet?</h4>
   <ol>
-    <li>Go here: https://github.com/kvhnuke/etherwallet/tree/gh-pages</li>
+    <li>Go here: <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages">https://github.com/kvhnuke/etherwallet/tree/gh-pages</a>.</li>
     <li>Click download zip in the upper right.</li>
     <li>Move zip to an airgapped computer.</li>
     <li>Unzip it.</li>
@@ -1525,7 +1525,7 @@
     <li> You will now see your account information. It'll show your address, your balance, and have a space for the <strong>Receiving Address</strong> and the <strong>Amount you want to send</strong>.</li>
     <li> Enter the address you would like to send to in the "To Address:" field.</li>
     <li> Enter the amount you would like to send. You can also click the <strong>Transfer total available balance</strong> link if you would like the transfer the entire balance.</li>
-    <li> A couple more fields will appear. This is the program generating the transaction.</li>
+    <li> A couple more fields will appear. This is your browser generating the transaction.</li>
     <li> Click the blue "SEND TRANSACTION" button below that.</li>
     <li> A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction."</li>
     <li>The transaction will be submitted. The TX ID will display. You can copy that TX ID and paste it into the search bar on a blockchain explorer to verify the transaction went through.</li>
@@ -1644,7 +1644,7 @@
 
 
   <h4>14. How do I check the balance of my account? </h4>
-  <p> You can use a blockchain explorer like <a href="https://www.etherchain.org" target="_blank">etherchain.org</a> or <a href="http://etherscan.io/" target="_blank">etherscan.io</a>. Paste your address into the search bar and it will pull up your address and transaction history. For example, here's what our <a href="https://etherchain.org/account/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" target="_blank">donation account</a> looks like on etherchain.org.</p>
+  <p> You can use a blockchain explorer like <a href="http://etherscan.io/" target="_blank">etherscan.io</a>. Paste your address into the search bar and it will pull up your address and transaction history. For example, here's what our <a href="http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8" target="_blank">donation account</a> looks like on etherscan.io</p>
 
 
   <h4>15. Where the hell is my geth wallet file? </h4>
@@ -1705,8 +1705,8 @@
   <ul>
     <li><a href="https://ethereum.org/" target="_blank">Official Ethereum Site</a></li>
     <li><a href="https://www.reddit.com/r/ethereum" target="_blank">Ethereum Subreddit </a></li>
-    <li><a href="https://www.etherchain.org" target="_blank">Blockchain Explorer - etherchain.org</a></li>
-    <li><a href="http://etherscan.io/" target="_blank">Another Blockchain Explorer - etherscan.io</a></li>
+    <li><a href="https://www.reddit.com/user/insomniasexx/m/all_ethereum" target="_blank">insom's Ethereum Multi-reddit </a></li>
+    <li><a href="http://etherscan.io/" target="_blank"> Blockchain Explorer - etherscan.io</a></li>
     <li><a href="https://github.com/davidshimjs/qrcodejs" target="_blank">QR code library</a></li>
     <li><a href="https://github.com/SilentCicero/ethereumjs-accounts" target="_blank">Ethereum Accounts library</a></li>
     <li><a href="https://code.google.com/p/crypto-js/" target="_blank">CryptoJS library</a></li>
