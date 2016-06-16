@@ -18,8 +18,7 @@
 
   <h4>0. I'm new. What do I do? </h4>
   <p> MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, <strong> you are responsible for safely backing it up</strong>.
-  <p> If you just purchased ETH on an exchange and want to hold it safely in your own wallet, or if you are using ShapeShift to exchange another from cryptocurrency, you will need to complete the following steps. These steps are outlined in detail in the questions below. Please read them all in full. </p>
-  <p> Do not hesitate to reach out to us if you have any questions. Remember, Ether now holds real monetary value and can be a significant investment. If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  I do not say this to scare you, only to remind you to be diligent, read carefully, and take your time during all the steps. But, if you follow the instructions found on this page, even a non-technical person can safely hold their Ether in a wallet they control. </p>
+  <p> Do not hesitate to reach out to us if you have any questions. Remember, Ether now holds real monetary value and can be a significant investment. If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  I do not say this to scare you, only to remind you to be diligent, read carefully, and take your time during all the steps.</p>
   <ol>
     <li> Create a new wallet. </li>
     <li> Back the wallet up.</li>
@@ -93,7 +92,7 @@
   @@if (site === 'mew' ) {
   <h4>4. How do I send Ether from one wallet to another? </h4>
   <p> Once you have saved and backed up all information <strong> and </strong> verified you have access to your new wallet, you can transfer some Ether to that new wallet.</p>
-  <p><strong>Before you start,</strong> If you plan to move a large amount of ether, you should test sending a small amount first to make sure everything goes smoothly. After making the small transaction, you can check by pasting the TX ID or the address into a blockchain explorer, e.g. <a href="https://www.etherchain.org" target="_blank">https://www.etherchain.org</a>.</p>
+  <p><strong>Before you start,</strong> If you plan to move a large amount of ether, you should test sending a small amount first to make sure everything goes smoothly. After making the small transaction, you can check by pasting the TX ID or the address into a blockchain explorer, e.g. <a href="https://www.etherscan.io" target="_blank">https://www.etherscan.io</a>.</p>
   <ol>
     <li> Navigate to the "Send Transaction" tab</li>
     <li> Select your wallet file -or- paste your private key. </li>
