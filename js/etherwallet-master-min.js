@@ -2507,7 +2507,7 @@ uiFuncs.sendTx = function($scope, $sce) {
 			$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
 		} else {
 			if( $scope.setBalance !== undefined ) $scope.setBalance();
-			$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + " " + data.data));
+			$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank'>" + data.data + "</a>"));
 		}
 	});
 }
@@ -2528,6 +2528,7 @@ uiFuncs.transferAllBalance = function($scope, $sce) {
 	}
 }
 module.exports = uiFuncs;
+
 }).call(this,require("buffer").Buffer)
 },{"buffer":83}],32:[function(require,module,exports){
 /**
