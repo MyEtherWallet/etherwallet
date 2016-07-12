@@ -1013,7 +1013,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.slockitABalance = "0x39d1f908";
 	$scope.slockitRToken = "0xcdef91d0";
 	$scope.slockitVote = "0xc9d27afe";
-    $scope.slockitGasIfVoted = "0x2faf080";
+	$scope.slockitGasIfVoted = "0x2faf080";
 	$scope.tx = {
 		gasLimit: 100000,
 		data: '',
@@ -1057,50 +1057,26 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		});
 		var userInfo = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitBalance, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
 		ajaxReq.getEthCall(userInfo, function(data) {
-			if (data.error) {
-				$scope.etherBalance = data.msg;
-			} else {
-				$scope.token.balance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
-			}
-		});
-		var totSupply = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitSupply, []);
-		ajaxReq.getEthCall(totSupply, function(data) {
-			if (data.error) {
-				$scope.etherBalance = data.msg;
-			} else {
-				$scope.token.total = new BigNumber(data.data).toString();
-			}
-		});
-		ajaxReq.getBalance($scope.slockitContract, function(data) {
-			if (data.error) {
-				$scope.etherBalance = data.msg;
-			} else {
-				$scope.token.totRaised = etherUnits.toEther(data.data.balance, 'wei');
-			}
-		});
-		var minq = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitminQuorumDivisor, []);
-		ajaxReq.getEthCall(minq, function(data) {
-			if (data.error) {
-				$scope.etherBalance = data.msg;
-			} else {
-				$scope.minQuorumDivisor = new BigNumber(data.data).toNumber();
-			}
-		});
-		var actB = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitABalance, []);
-		ajaxReq.getEthCall(actB, function(data) {
-			if (data.error) {
-				$scope.etherBalance = data.msg;
-			} else {
-				$scope.actualBalance = new BigNumber(data.data).toNumber();
-			}
-		});
-		var rToken = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitRToken, [ethFuncs.getNakedAddress($scope.slockitContract)]);
-		ajaxReq.getEthCall(rToken, function(data) {
-			if (data.error) {
-				$scope.etherBalance = data.msg;
-			} else {
-				$scope.rewardToken = new BigNumber(data.data).toNumber();
-			}
+			if (!data.error) $scope.token.balance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
+			var totSupply = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitSupply, []);
+			ajaxReq.getEthCall(totSupply, function(data) {
+				if (!data.error) $scope.token.total = new BigNumber(data.data).toString();
+				ajaxReq.getBalance($scope.slockitContract, function(data) {
+					if (!data.error) $scope.token.totRaised = etherUnits.toEther(data.data.balance, 'wei');
+					var minq = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitminQuorumDivisor, []);
+					ajaxReq.getEthCall(minq, function(data) {
+						if (!data.error) $scope.minQuorumDivisor = new BigNumber(data.data).toNumber();
+						var actB = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitABalance, []);
+						ajaxReq.getEthCall(actB, function(data) {
+							if (!data.error) $scope.actualBalance = new BigNumber(data.data).toNumber();
+							var rToken = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitRToken, [ethFuncs.getNakedAddress($scope.slockitContract)]);
+							ajaxReq.getEthCall(rToken, function(data) {
+								if (!data.error) $scope.rewardToken = new BigNumber(data.data).toNumber();
+							});
+						});
+					});
+				});
+			});
 		});
 	}
 	$scope.checkVoted = function() {
@@ -1127,7 +1103,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 			$scope.showBtnVote = false;
 			if (!globalFuncs.isNumeric($scope.proposalId) || parseFloat($scope.proposalId) < 0) throw globalFuncs.errorMsgs[15];
 			var callProposal = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitProposal, [new BigNumber($scope.proposalId).toString(16)]);
-            $scope.checkVoted();
+			$scope.checkVoted();
 			ajaxReq.getEthCall(callProposal, function(data) {
 				try {
 					if (data.error) {
@@ -1252,7 +1228,6 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	}
 };
 module.exports = theDaoCtrl;
-
 },{}],14:[function(require,module,exports){
 'use strict';
 var theDaoProposalCtrl = function($scope, $sce, walletService) {
