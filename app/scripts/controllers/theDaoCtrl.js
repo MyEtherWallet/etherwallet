@@ -1,6 +1,6 @@
 'use strict';
 var theDaoCtrl = function($scope, $sce, walletService) {
-	$scope.curTab = "send";
+	$scope.curTab = "withdraw";
 	new Modal(document.getElementById('sendTransaction'));
 	$scope.voteModal = new Modal(document.getElementById('voteProposal'));
 	$scope.showVoteYes = $scope.showVoteNo = true;

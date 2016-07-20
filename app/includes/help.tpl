@@ -216,7 +216,7 @@
     <li> If you wish, enter some data. Data is optional. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.</li>
     <li> Select your wallet file -or- enter/paste your private key and unlock your wallet.</li>
     <li> Press the "GENERATE SIGNED TRANSACTION" button.</li>
-    <li> The data field below this button will populate with your singed transaction. Copy this and move it back to your online computer.</li>
+    <li> The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer.</li>
     <li> On your online computer, paste the signed transaction into the text field in Step 3 and click "SEND TRANSACTION". This will broadcast your transaction.</li>
   </ol>
 
