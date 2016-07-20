@@ -74,6 +74,7 @@
           <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#withdrawTransaction"> WITHDRAW YOUR DAO TOKENS FOR ETH </a>
           <p><small> Yes. Just push the big red button. It's that easy. Well actually... </small></p>
           <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+          <div class="form-group col-xs-12" ng-bind-html="withdrawTxStatus"></div>
         </div>
 
         <h5> Do NOT push this button until the Hard Fork has successfully occured. You will just waste gas if you do. </h5>

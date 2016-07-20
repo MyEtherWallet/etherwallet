@@ -2,16 +2,17 @@
 var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.curTab = "withdraw";
 	new Modal(document.getElementById('sendTransaction'));
-    $scope.withdrawModal = new Modal(document.getElementById('withdrawTransaction'));
+	$scope.withdrawModal = new Modal(document.getElementById('withdrawTransaction'));
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.showAdvance = false;
 	$scope.showRaw = false;
 	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
-    $scope.withdrawContract = "0xbf4ed7b27f1d666546e30d74d50d173d20bca754"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
+	$scope.withdrawContract = "0xbf4ed7b27f1d666546e30d74d50d173d20bca754"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
 	$scope.slockitTransfer = "0xa9059cbb";
-    $scope.slockitBalance = "0x70a08231";
-    $scope.daoWithdraw = "0x3ccfd60b";
+	$scope.slockitBalance = "0x70a08231";
+	$scope.daoWithdraw = "0x3ccfd60b";
+	$scope.approveWithdraw = "0x095ea7b3";
 	$scope.tx = {
 		gasLimit: 100000,
 		data: '',
@@ -24,7 +25,8 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.token = {
 		balance: 0,
-		balanceEth: 0
+		balanceEth: 0,
+		balanceBN: 0
 	}
 	$scope.tokenTx = {
 		to: '',
@@ -55,9 +57,10 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		var userInfo = ethFuncs.getDataObj($scope.slockitContract, $scope.slockitBalance, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
 		ajaxReq.getEthCall(userInfo, function(data) {
 			if (!data.error) {
-                $scope.token.balance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
-                $scope.token.balanceEth = new BigNumber($scope.token.balance).div(100).toString();
-            }
+				$scope.token.balance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
+				$scope.token.balanceEth = new BigNumber($scope.token.balance).div(100).toString();
+				$scope.token.balanceBN = new BigNumber(data.data).toString();
+			}
 		});
 	}
 	$scope.$watch('curTab', function() {
@@ -85,15 +88,38 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
 		}
 	};
-    $scope.generateAndSendWithdrawTx = function() {
-        $scope.tx.to = $scope.withdrawContract;
-        $scope.tx.data = $scope.daoWithdraw;
-        $scope.tx.value = 0;
-        $scope.autoSend = true;
-        uiFuncs.generateTx($scope, $sce, function (){
-            $scope.withdrawModal.close();
-        });
-    }
+	$scope.generateAndSendWithdrawTx = function() {
+		$scope.tx.to = $scope.slockitContract;
+		$scope.tx.data = $scope.approveWithdraw + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.withdrawContract), 64) + ethFuncs.padLeft(new BigNumber($scope.token.balanceBN).toString(16), 64);
+		$scope.tx.value = 0;
+		uiFuncs.generateTx($scope, $sce, function() {
+			ajaxReq.sendRawTx($scope.signedTx, function(data) {
+				if (data.error) {
+					$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+				} else {
+					if ($scope.setBalance !== undefined) $scope.setBalance();
+					$scope.sendTxStatus = $sce.trustAsHtml("Please Wait");
+                    var approveTx = data.data;
+					setTimeout(function() {
+						$scope.tx.to = $scope.withdrawContract;
+						$scope.tx.data = $scope.daoWithdraw;
+						uiFuncs.generateTx($scope, $sce, function() {
+							ajaxReq.sendRawTx($scope.signedTx, function(data) {
+								if (data.error) {
+									$scope.withdrawTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+								} else {
+									if ($scope.setBalance !== undefined) $scope.setBalance();
+                                    $scope.sendTxStatus = $sce.trustAsHtml("Approval Transaction: " + globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + approveTx + "' target='_blank'>" + approveTx + "</a>"));
+									$scope.withdrawTxStatus = $sce.trustAsHtml("Withdrawal Transaction: " + globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank'>" + data.data + "</a>"));
+								}
+							});
+						});
+					}, 3000);
+				}
+			});
+			$scope.withdrawModal.close();
+		});
+	}
 	$scope.generateTx = function() {
 		uiFuncs.generateTx($scope, $sce);
 	}
