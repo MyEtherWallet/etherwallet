@@ -31,20 +31,17 @@
 <body>
 
 
-  <a href="https://www.myetherwallet.com" class="announcement annoucement-warning" target="_blank">
-    <div class="container">
-      MyEtherWallet is only served at www.myetherwallet.com and kvhnuke.github.io/etherwallet/. Beware of the phishing scams!
-    </div>
-  </a>
+
+
   <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
     <div class="container">
-      If you created a wallet -or- downloaded the repo before <strong>Dec. 31st, 2015</strong>, please check your wallets & download a new version of the repo. Click for details.
+      Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.
     </div>
   </a>
   <header class="container-fluid bg-gradient text-white">
     <section class="container">
-      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
-      <p>Open Source JavaScript Client-Side Ether Wallet &middot; v2.8</p>
+      <a href="/cx-wallet.html"><img src="images/etherwalletcx-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
+      <p>Open Source JavaScript Client-Side Ether Wallet Chrome Extension &middot; v2.8</p>
     </section>
   </header>
 
@@ -54,11 +51,9 @@
 
 
 
-
-
 <section class="container" ng-controller='tabsCtrl'>
   <ul class="nav nav-tabs">
-    <li ng-repeat="tab in tabNames track by $index" ng-class="{active: $index==activeTab}" ng-show="{{tab.mew}}" ng-click="tabClick($index)"> <a>{{tab.name}} </a></li>
+    <li ng-repeat="tab in tabNames track by $index" ng-class="{active: $index==activeTab}" ng-show="{{tab.cx}}" ng-click="tabClick($index)"> <a>{{tab.name}}</a></li>
   </ul>
 </section>
 <br />
@@ -67,156 +62,87 @@
 
   <div class="tab-content" >
 
-    <section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl'>
+    <section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'>
 
-  <!-- Top -->
-  <h2> Generate Wallet </h2>
+  <h2> Your Wallets </h2>
+  <table class="table table-striped" id="tblwalletsmain">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Wallet Nickname</th>
+        <th>Wallet Address</th>
+        <th>Balance</th>
+        <th>Edit</th>
+        <th>View</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="twallet in allWallets  track by $index">
+        <td>{{$index+1}}</td>
+        <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
+        <td>{{twallet.nick}}</td>
+        <td>{{twallet.addr}}</td>
+        <td>
+          <strong class="text-success">{{twallet.balance}} ether</strong><br>
+          <small><span>{{twallet.btc}} BTC</span> &nbsp;&nbsp;
+          <span>$ {{twallet.usd}} USD</span> &nbsp;&nbsp;
+          <span>€ {{twallet.eur}} EUR</span></small>
+        </td>
+        <td class="text-center"><a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a></td>
+        <td class="text-center"><a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')"><img src="images/icon-view.svg" title="View Wallet Details" /></a></td>
+        <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
+      </tr>
+    </tbody>
+  </table>
 
-  
-    <p>We removed the <a ng-click="globalService.currentTab=globalService.tabs.bulkGenerate.id"> Bulk Generate tab </a> from the nav as it wasn't very widely used, but feel free to still use it if you want.</p>
-  
-
-  <article class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <h4>Enter a strong password <small> (at least 9 characters)</small> </h4>
-        <div class="input-group">
-          <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-model="password" ng-class="isStrongPass() ? 'valid' : 'invalid'"/>
-          <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <h4>Generate Wallet </h4>
-        <a class="btn btn-primary btn-block btnAction" func="generateSingleWallet" ng-click="genNewWallet()">GENERATE</a>
-      </div>
-    </div>
-  </article>
-  <!-- / Top -->
-
-  <!-- Bottom - Display Generated Wallet -->
-  <section id="generatedWallet" ng-show="showWallet">
-    <hr />
-
-    <!-- 0. Warning -->
-    <h2>Success! Your wallet has been generated.</h2>
-    <div class="alert alert-danger">
-      <strong>You need your Keystore/JSON File & password or Private Key</strong> to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the <a href="https://www.myetherwallet.com/#help" target="_blank">help page</a> for instructions.
-    </div>
-    <!-- / 0. Warning -->
-
-    <!-- 1. Private Keys -->
-    <h4> 1. Save your Keystore/JSON or Private Key. Don't forget your password above. </h4>
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label>
-            Keystore/JSON File <small>(Encrypted &middot; Mist/Geth Format &middot; Recommended)</small>
-            <div class="account-help-icon">
-              <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
-              <span class="account-help-text">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</span>
-            </div>
-          </label>
-          <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}"> DOWNLOAD </a>
-        </div>
-        <div class="form-group">
-          <label>
-            JSON File <small>(unencrypted)</small>
-            <div class="account-help-icon">
-              <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
-              <span class="account-help-text">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</span>
-            </div>
-          </label>
-          <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json">DOWNLOAD</a>
-        </div>
-      </div><!-- end col-sm-6-->
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label>
-            Private Key <small>(unencrypted)</small>
-            <div class="account-help-icon">
-              <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
-              <span class="account-help-text">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</span>
-            </div>
-          </label>
-          <textarea class="form-control bigger-on-mobile" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
-        </div>
-      </div><!-- end col-sm-6-->
-    </div><!-- end row -->
-    <!-- / 1. Private Keys -->
-
-    <hr />
-
-    <!-- 2. Address -->
-    <div class="row">
-      <div class="col-sm-10">
-        <div class="form-group">
-          <h4>2. Save Your Address.
-            <div class="account-help-icon"><svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
-            <span class="account-help-text">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</span></div>
-          </h4>
-          <input class="form-control" type="text" readonly="readonly" ng-value="wallet.getChecksumAddressString()"/>
-        </div>
-      </div>
-      <div class="col-sm-2 address-identicon-container">
-        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
-      </div>
-    </div>
-    <!-- / 2. Address -->
-
-    <!-- 3. Extras -->
-    <div class="row">
-      <div class="col-xs-12">
-        <hr />
-        <h4> 3. Print your paper wallet, or store a QR code verison. (optional)</h4>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label>
-            Print Paper Wallet:
-            <div class="account-help-icon">
-              <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
-              <span class="account-help-text">ProTip: Click print and save this as a PDF, even if you do not own a printer!</span>
-            </div>
-          </label>
-          <a class="btn btn-info btn-block btnAction" ng-click="printQRCode()">PRINT</a>
-        </div>
-      </div>
-
-      <div class="form-group col-sm-3">
-        <label>Your Address:</label>
-        <div qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
-      </div>
-      <div class="form-group col-sm-3">
-        <label>Private Key (unencrypted):</label>
-        <div qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
-      </div>
-    </div>
-  <!-- /3. Extras -->
-
-
-
-
+  <section id="secWatchOnlyMain">
+    <h2> Your Watch-Only Accounts </h2>
+    <table class="table table-striped" id="tblWatchOnlyMain">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Wallet Nickname</th>
+          <th>Wallet Address</th>
+          <th>Balance</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="twallet in allWatchOnly  track by $index">
+          <td>{{$index+1}}</td>
+          <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
+          <td>{{twallet.nick}}</td>
+          <td>{{twallet.addr}}</td>
+          <td>
+            <strong class="text-success">{{twallet.balance}} ether</strong><br>
+            <small><span>{{twallet.btc}} BTC</span> &nbsp;&nbsp;
+            <span>$ {{twallet.usd}} USD</span> &nbsp;&nbsp;
+            <span>€ {{twallet.eur}} EUR</span></small>
+          </td>
+          <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
+        </tr>
+      </tbody>
+    </table>
   </section>
-</section>
-<!-- / wallet generator -->
+  <!-- View Private Key Details Pane-->
 
-
-    <!-- view wallet info -->
-<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id">
-  <h2> View Wallet Details </h2>
-  <p> Download an unencrypted private key, grab your encrypted Mist/Geth Keystore file, or re-print your paper wallet. You may want to do this in order to <a href="http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/" target="_blank">import your account into Geth/Mist</a>. You can also do this with the <a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" target="__blank">MyEtherWallet CX</a> and save your wallet for easier and quicker access.</p>
-  <p> If you just want to check your balance, we recommend using a blockchain explorer like <a href="http://etherscan.io/" target="_blank">etherscan.io</a> or <a href="https://live.ether.camp/" target="_blank">live.ether.camp</a>.
-  <div>
-  <wallet-decrypt-drtv></wallet-decrypt-drtv>
-  </div>
   <section class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
     <hr />
-    <h2 class="col-xs-12">Success! Here are your wallet details.</h2>
+    <div class="col-sm-8">
+      <h2>Viewing Wallet: {{viewWallet.nick}}</h2>
+    </div>
+    <div class="col-sm-4 text-right" style="margin-top: 16px;">
+      <a class="btn btn-warning" ng-click="resetWallet()"> Hide Wallet Details </a>
+    </div>
+    <div class="col-xs-12">
+      <div class="alert alert-danger">
+        <strong>You need save your Keystore/JSON File & password or Private Key</strong> externally (on your computer and a USB and/or piece of paper) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the <a href="#help">help page</a> for instructions.
+      </div>
+    </div>
+
     <div class="col-sm-6">
       <div class="row">
         <div class="form-group col-sm-10">
@@ -235,7 +161,7 @@
       </div>
       <div class="form-group">
         <h4>
-          Private Key <small>(unencrypted)</small>
+          Private Key (unencrypted)
           <div class="account-help-icon">
             <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
             <span class="account-help-text">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</span>
@@ -257,16 +183,6 @@
     <div class="col-sm-6">
       <div class="form-group">
         <h4>
-          Print Paper Wallet:
-          <div class="account-help-icon">
-            <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
-            <span class="account-help-text">ProTip: Click print and save this as a PDF, even if you do not own a printer!</span>
-          </div>
-        </h4>
-        <a class="btn btn-info btn-block" ng-click="printQRCode()">PRINT</a>
-      </div>
-      <div class="form-group" ng-show='showEnc'>
-        <h4>
           Keystore/JSON File <small>(Encrypted &middot; Mist/Geth Format &middot; Recommended)</small>
           <div class="account-help-icon">
             <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
@@ -275,9 +191,19 @@
         </h4>
          <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}"> DOWNLOAD </a>
       </div>
+      <div class="form-group">
+        <h4>
+          Print Paper Wallet:
+          <div class="account-help-icon">
+            <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
+            <span class="account-help-text">ProTip: Click print and save this as a PDF, even if you do not own a printer!</span>
+          </div>
+        </h4>
+        <a class="btn btn-info btn-block" ng-click="printQRCode()">PRINT</a>
+      </div>
       <div class="form-group" >
         <h4>
-          JSON File <small>(unencrypted)</small>
+          JSON File (unencrypted)
           <div class="account-help-icon">
             <svg version="1.1" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve"><path fill="#2bb2dd" d="M45.386,0.004C19.983,0.344-0.333,21.215,0.005,46.619c0.34,25.393,21.209,45.715,46.611,45.377 c25.398-0.342,45.718-21.213,45.38-46.615C91.656,19.986,70.786-0.335,45.386,0.004z M45.25,74l-0.254-0.004 c-3.912-0.116-6.67-2.998-6.559-6.852c0.109-3.788,2.934-6.538,6.717-6.538l0.227,0.004c4.021,0.119,6.748,2.972,6.635,6.937 C51.904,71.346,49.123,74,45.25,74z M61.705,41.341c-0.92,1.307-2.943,2.93-5.492,4.916l-2.807,1.938 c-1.541,1.198-2.471,2.325-2.82,3.434c-0.275,0.873-0.41,1.104-0.434,2.88l-0.004,0.451H39.43l0.031-0.907 c0.131-3.728,0.223-5.921,1.768-7.733c2.424-2.846,7.771-6.289,7.998-6.435c0.766-0.577,1.412-1.234,1.893-1.936 c1.125-1.551,1.623-2.772,1.623-3.972c0-1.665-0.494-3.205-1.471-4.576c-0.939-1.323-2.723-1.993-5.303-1.993 c-2.559,0-4.311,0.812-5.359,2.478c-1.078,1.713-1.623,3.512-1.623,5.35v0.457H27.936l0.02-0.477 c0.285-6.769,2.701-11.643,7.178-14.487C37.947,18.918,41.447,18,45.531,18c5.346,0,9.859,1.299,13.412,3.861 c3.6,2.596,5.426,6.484,5.426,11.556C64.369,36.254,63.473,38.919,61.705,41.341z"/></svg>
             <span class="account-help-text">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</span>
@@ -285,17 +211,9 @@
         </h4>
         <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json">DOWNLOAD</a>
       </div>
-
-      <br />
-      <hr />
-      <p>
-        Account Balance:
-        <br />
+      <h4>Account Balance:</h4>
+      <p class="text-primary">
         <strong style="margin-left: 1em"> {{etherBalance}} Ether </strong>
-      </p>
-      <hr />
-      <p>
-        Equivalent Values:
         <br />
         <strong style="margin-left: 1em"> {{usdBalance}} USD </strong>
         <br />
@@ -303,25 +221,240 @@
         <br />
         <strong style="margin-left: 1em"> {{btcBalance}} BTC </strong>
       </p>
-      <hr />
-      <p>
-        See Transaction History:
-        <br />
-        <a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/{{wallet.getAddressString()}}</a>
-        <!--
-        <strong style="margin-left: 1em"> {{token.balance}} DAO Tokens</strong>
-        <br />
-        <strong style="margin-left: 1em"> {{tokenBalance}} DGD Tokens </strong>
-        <br />
-        <strong style="margin-left: 1em"> {{badgeBalance}} DGD Badges </strong>
-        -->
-      </p>
     </div>
   </section>
 
 
-</div>
-<!-- /view wallet info -->
+  <!-- Edit Modal -->
+  <div class="modal fade" id="editWallet" tabindex="-1" role="dialog" aria-labelledby="editWalletLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title" id="myModalLabel"> Edit Wallet: {{viewWallet.addr}}</h3>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="walletName">Wallet Name</label>
+              <input type="text" class="form-control" value="" ng-model="viewWallet.nick"/>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" ng-show="viewWallet.nick.length>0" class="btn btn-primary" ng-click="editSave()">Save Changes</button>
+        </div>
+        <div ng-bind-html="editStatus"></div>
+      </div>
+    </div>
+  </div>
+  <!--/edit modal-->
+
+
+  <!-- View Private Key Modal -->
+  <div class="modal fade" id="viewWalletDetails" tabindex="-1" role="dialog" aria-labelledby="viewKeyLabel" ng-init="showPass=true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title" id="myModalLabel"> View Wallet Details: {{viewWallet.nick}}</h3>
+        </div>
+        <div class="modal-body">
+          <p> Viewing the wallet details allows you to view the wallet's private key, save the wallet's JSON file, and print the paper wallet.</p>
+          <form role="form">
+            <div class="form-group">
+              <label for="walletName">Enter Your Password:</label>
+              <div class="input-group">
+                <input type="{{showPass && 'password' || 'text'}}" class="form-control" ng-model="password" />
+                <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
+              </div>
+              <div ng-bind-html="viewStatus"></div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-warning" ng-click="decryptWallet()"> View Wallet Details </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/View Private Key Modal-->
+
+
+  <!-- Remove Modal -->
+  <div class="modal fade" id="removeWallet" tabindex="-1" role="dialog" aria-labelledby="removeWalletLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title" id="myModalLabel">Remove Wallet: {{viewWallet.nick}}</h3>
+        </div>
+        <div class="modal-body">
+          <h4>Warning! You are about to remove your wallet.</h4>
+          <p> Be sure you have <strong>saved the private key/JSON file and the password</strong> associated with this wallet before you remove it.</p>
+          <p> If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.</p>
+          <h4>Are you <span class="text-underline">sure</span> you want to do this?</h4>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
+          <button type="button" class="btn btn-danger" ng-click="deleteWallet()">Yes, I am sure! Remove the sucker.</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/Remove modal-->
+
+
+</section><!-- / end tab-pane-->
+
+
+    <section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.addWallet.id" ng-controller='addWalletCtrl'>
+  <h2> Add Wallet </h2>
+
+  <section class="row" id="walletselection">
+    <article class="col-md-4 col-sm-6">
+      <h4> What would you like to do? </h4>
+      <div class="radio">
+        <label>
+          <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="gennewwallet">Generate New Wallet</label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="fileupload">Select Your Wallet File <small>(Keystore / JSON)</small></label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="pasteprivkey">Paste/Type Your Private Key</label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="watchonlyaccount">Add an Account to Watch</label>
+      </div>
+    </article>
+
+    <article class="col-md-4 col-sm-6">
+      <!-- Generate New Wallet -->
+      <div ng-show="walletType=='gennewwallet'" ng-init="showPass=true">
+        <h4> Generate New Wallet: </h4>
+        <div class="form-group">
+          <label> Create a Nickname: </label>
+          <input class="form-control" type="text" placeholder="My New Wallet" ng-model="addAccount.nickName" ng-change="newWalletChange('nickNameStatus','showBtnGen')"/>
+        </div>
+        <div class="form-group">
+          <label> Create a Password: <small>(at least 9 characters)</small></label>
+          <div class="input-group">
+            <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-model="addAccount.password" ng-change="newWalletChange('nickNameStatus','showBtnGen')"/>
+            <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
+          </div>
+        </div>
+        <div ng-bind-html="nickNameStatus"></div>
+      </div>
+
+      <!-- Select Your Wallet File -->
+      <div ng-show="walletType=='fileupload'">
+        <h4>Select your Wallet File: </h4>
+        <div class="form-group">
+          <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector"/>
+          <a class="file-input btn btn-block btn-default btn-file marg-v-sm" ng-click="openFileDialog()">SELECT WALLET FILE... </a>
+          <div id="fuploadStatus" ng-bind-html="fileStatus"></div>
+        </div>
+        <div class="form-group" ng-show="requireFPass">
+          <p> Your file is encrypted. Please enter the password: </p>
+          <input class="form-control" type="password" placeholder="Password" ng-model="filePassword" ng-change="onFilePassChange()" />
+        </div>
+      </div>
+
+      <!-- Paste/Type Your Private Key -->
+      <div ng-show="walletType=='pasteprivkey'">
+        <h4> Paste / type your private key: </h4>
+        <div class="form-group">
+          <textarea rows="4" class="form-control" placeholder="Private Key" ng-model="manualprivkey" ng-change="onPrivKeyChange()"></textarea>
+        </div>
+        <div class="form-group" ng-show="requirePPass">
+          <p> Your file is encrypted. Please enter the password: </p>
+          <input class="form-control" type="password" placeholder="Password" ng-model="privPassword" ng-change="onPrivKeyPassChange()"/>
+        </div>
+      </div >
+
+      <!-- Add an Account to Watch -->
+      <div ng-show="walletType=='watchonlyaccount'">
+        <h4> Add an Account to Watch: </h4>
+        <p class="text-danger">You can add any account to "watch" on the wallets tab without uploading a private key. This does <strong> not </strong> mean you have access to this wallet, nor can you transfer Ether from it. </p>
+        <div class="form-group">
+          <label> Create a Nickname: </label>
+          <input class="form-control" type="text" placeholder="My New Wallet" ng-model="addAccount.nickName" ng-change="watchOnlyChange()"/>
+        </div>
+        <div class="form-group">
+          <label> Enter the Address: </label>
+          <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="addAccount.address" ng-change="watchOnlyChange()"/>
+        </div>
+      </div>
+      <div ng-bind-html="watchOnlyStatus"></div>
+    </article>
+
+    <article class="col-md-4 col-sm-6" >
+        <div ng-show="showBtnGen">
+        <h4> Generate Wallet </h4>
+        <div class="form-group"><a ng-click="generateWallet()" class="btn btn-primary btn-block">GENERATE</a></div>
+        </div>
+        <div ng-show="showBtnUnlock">
+        <h4> Access your Wallet </h4>
+        <div class="form-group"><a ng-click="decryptWallet()" class="btn btn-primary btn-block">UNLOCK WALLET</a></div>
+        </div>
+        <div ng-show="showBtnAdd">
+        <h4> Add Account </h4>
+        <div class="form-group"><a ng-click="addWatchOnly()" class="btn btn-primary btn-block">ADD</a></div>
+        </div>
+        <div ng-bind-html="addWalletStats"></div>
+    </article>
+
+  </section>
+
+  <article class="row" ng-if="showAddWallet">
+    <hr />
+    <div class="col-sm-4">
+      <h4> Account Information </h4>
+      <div>
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+        <br />
+        <p> Account Address:
+          <br /> <strong style="margin-left: 1em" class="mono word-wrap">{{wallet.getChecksumAddressString()}}</strong></p>
+          <p> Account Balance:
+          <br />
+          <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+          <br />
+          <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong>
+          <br />
+          <strong class="text-success"  style="margin-left: 1em"> {{eurBalance}} EUR </strong>
+          <br />
+          <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+        </p>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <h4>Add Wallet</h4>
+      <div class="form-group">
+        <label> Create a Nickname: </label>
+        <input class="form-control" type="text" placeholder="My Wallet" ng-model="addAccount.nickName" ng-change="newWalletChange('addStatus','showBtnAddWallet')"/>
+      </div>
+      <div class="form-group" ng-show="showPassTxt">
+        <label> Create a Password: <small>(at least 9 characters)</small></label>
+          <div class="input-group">
+            <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-model="addAccount.password" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-change="newWalletChange('addStatus','showBtnAddWallet')"/>
+            <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
+          </div>
+      </div>
+      <div class="form-group" ng-show="showBtnAddWallet">
+        <a class="btn btn-info btn-block" ng-click="importWalletToStorage()">ADD WALLET </a>
+      </div>
+      <div ng-bind-html="addStatus"></div>
+    </div>
+  </article>
+
+</section>
+
 
 
     <!-- send transaction -->
@@ -330,8 +463,8 @@
   <p> If you want to send Tokens, please use The DAO or Digix pages instead. </p>
   <div>
       
+        <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
       
-        <wallet-decrypt-drtv></wallet-decrypt-drtv>
       
   </div>
   <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
@@ -632,8 +765,8 @@
   <br />
 
   
+    <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
   
-    <wallet-decrypt-drtv></wallet-decrypt-drtv>
   
   <!-- / TOP: The DAO -->
 
@@ -976,8 +1109,8 @@
           <!-- Step 1: Unlock Your Wallet -->
           <div>
             
+              <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
             
-              <wallet-decrypt-drtv></wallet-decrypt-drtv>
             
           </div>
           <!-- / Step 1: Unlock Your Wallet -->
@@ -1026,8 +1159,8 @@
   <p><strong>Claim</strong> and <strong> Send </strong> your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st.</p>
 
   
+    <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
   
-    <wallet-decrypt-drtv></wallet-decrypt-drtv>
   
 
   <section class="row" ng-show="wallet!=null" ng-controller='digixCtrl'>
@@ -1390,8 +1523,8 @@
 
   <h4>1. How do I create a new wallet? </h4>
   <ol>
-       <li> Go to the "Generate Wallet" tab.</li>    
     
+       <li> Go to the "Add Wallet" tab.</li> <li> Select "Generate New Wallet" </li>   
     <li> Create a strong password. Save this somewhere safe. <em><small>The password encrypts the private key for this wallet. You will need this password to send transactions.</small></em></li>
     <li> Type or copy the password from where you have saved it and paste it into the "Enter a password" field. </li>
     <li> Click "GENERATE". </li>
@@ -1419,29 +1552,13 @@
 
 
   
-  <h4>2b. How do I safely / offline / cold storage with MyEtherWallet?</h4>
-  <ol>
-    <li>Go here: <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages">https://github.com/kvhnuke/etherwallet/tree/gh-pages</a>.</li>
-    <li>Click download zip in the upper right.</li>
-    <li>Move zip to an airgapped computer.</li>
-    <li>Unzip it.</li>
-    <li>Double-Click index.html.</li>
-    <li>Generate wallet with a strong password.</li>
-    <li>Save keystore file and print wallet or write down private key on piece of paper.</li>
-    <li>Save address as well. You will need to address to send ETH to yourself later.</li>
-    <li>Store these papers / USBs in multiple physically separate locations.</li>
-    <li>Go to the view wallet details tab and type in your private key / password from your piece of paper to ensure they are correct and access your wallet. Check that the address you wrote down is the same.</li>
-    <li>Refresh that page. Select the keystore file and enter the password to ensure it are correct and can access your wallet. Check that the address you saved on your computer or USB is the same.</li>
-  </ol>
-  <p>Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). So. Multiple. Different. Physical. Locations. </p>
-  
 
 
   <h4>3. How do I verify I have access to my new wallet?</h4>
   <p> <strong> Before you send any Ether to your new wallet</strong>, you should ensure you have access to it. You should NOT copy and paste from the generate wallet tab, but instead copy and paste from the text document or paper where you have stored your wallet information.</p>
   <ol>
-       <li> Navigate to the "Send Transaction" tab. </li>    
     
+       <li> <a href="https://www.myetherwallet.com/#view-wallet-info" target="_blank"> MyEtherWallet.com View Wallet Details Tab.</a> </li>    
     <li> Select your wallet file -or- paste your private key. </li>
     <li> If the wallet is the encrypted, a text box will automatically appear. Enter the password. </li>
     <li> Click the "Decrypt" button. </li>
@@ -1451,22 +1568,37 @@
 
 
   
-  <h4>4. How do I send Ether from one wallet to another? </h4>
-  <p> Once you have saved and backed up all information <strong> and </strong> verified you have access to your new wallet, you can transfer some Ether to that new wallet.</p>
-  <p><strong>Before you start,</strong> If you plan to move a large amount of ether, you should test sending a small amount first to make sure everything goes smoothly. After making the small transaction, you can check by pasting the TX ID or the address into a blockchain explorer, e.g. <a href="https://www.etherscan.io" target="_blank">https://www.etherscan.io</a>.</p>
+
+
+  
+  <h4>4. How do I send Ether using MyEtherWallet CX? </h4>
+  <p>First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Transaction" tab.</p>
+  <p><strong> QuickSend: </strong></p>
   <ol>
-    <li> Navigate to the "Send Transaction" tab</li>
-    <li> Select your wallet file -or- paste your private key. </li>
-    <li> If the wallet is the encrypted, a text box will automatically appear. Enter the password. </li>
-    <li> Click the "Decrypt" button. </li>
-    <li> You will now see your account information. It'll show your address, your balance, and have a space for the <strong>Receiving Address</strong> and the <strong>Amount you want to send</strong>.</li>
+    <li>Copy the address you wish to send Ether to, to your clipboard.</li>
+    <li>Click the Chrome Extension Icon.</li>
+    <li>Click the green "QuickSend" button. </li>
+    <li>Select the wallet you wish to send from.</li>
+    <li> Paste the address that you copied earlier into the address field.</li>
+    <li> Enter the amount you would like to send. You can also click the [Send total available balance] link if you would like the transfer the entire balance.</li>
+    <li> Click "Send Transaction". </li>
+    <li> Verify the address and the amount you are sending is correct.</li>
+    <li> Enter the password for that wallet. </li>
+    <li> Click "Send Transaction." </li>
+  </ol>
+  <p><strong> Using "Send Transaction" Tab: </strong></p>
+  <ol>
+    <li> Go to the Send Transaction Tab.</li>
+    <li> Select the wallet you wish to send from.</li>
+    <li> Enter the password.</li>
+    <li> Press the DECRYPT button.</li>
     <li> Enter the address you would like to send to in the "To Address:" field.</li>
-    <li> Enter the amount you would like to send. You can also click the <strong>Transfer total available balance</strong> link if you would like the transfer the entire balance.</li>
-    <li> A couple more fields will appear. This is your browser generating the transaction.</li>
-    <li> Click the blue "SEND TRANSACTION" button below that.</li>
-    <li> A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction."</li>
-    <li>The transaction will be submitted. The TX ID will display. You can copy that TX ID and paste it into the search bar on a blockchain explorer to verify the transaction went through.</li>
-    <li> Success! </li>
+    <li> Enter the amount you would like to send. You can also click the [Click here to transfer total available balance] link if you would like the transfer the entire balance.</li>
+    <li> Click "Generate Transaction" Button. </li>
+    <li> A couple more fields will appear. Click the blue "SEND TRANSACTION" button below that.</li>
+    <li> A Pop-Up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction."</li>
+    <li> The transaction will be submitted. The TX ID will display. You can copy that TX ID and paste it into the search bar on etherchain to verify the transaction went through.</li>
+    <li> DONE! </li>
   </ol>
   
 
@@ -1475,31 +1607,38 @@
 
 
   
-  <h4>5. How do I run MyEtherWallet.com offline/locally? </h4>
-  <p> You can run MyEtherWallet.com on your computer instead of from the GitHub servers. Everything except the "send transaction" tab can be done completely without the internet, so feel free to turn your internet off. If you would like to send transactions from an offline or airgapped computer, check out the "Offline Transaction" tab. </p>
-  <ol>
-    <li>Go to the GitHub repo @ <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages" target="_blank">https://github.com/kvhnuke/etherwallet</a></li>
-    <li>Click download zip in the upper right.</li>
-    <li>Unzip it.</li>
-    <li>Open the <code>dist</code> folder.</li>
-    <li>Double-Click <code>index.html</code>.</li>
-    <li> MyEtherWallet.com is now running entirely on your computer.</li>
-  </ol>
-  <p> In case you are not familiar, you need to keep the entire <code> dist folder</code> in order to run it, not just index.html. Don't touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the distant future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.</p>
-  <p>As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo. The MyEtherWallet team has <strong> no intentions of ever removing this project from GitHub. As long as GitHub is around, the repo will be accessible.</strong></p>
-  
-
-
+  <h4>5. How can I install this extension from the repo instead of the Chrome Store? </h4>
+  <ul>
+    <li>Go to <a href="https://github.com/kvhnuke/etherwallet/tree/mercury" target="_blank">the github repo</a>.</li>
+    <li> Download the ZIP file using the button in the upper right.</li>
+    <li> Unzip that file. </li>
+    <li> Go to Google Chrome and find you settings (in the menu in the upper right).</li>
+    <li> Click "extensions" on the left. </li>
+    <li> Check the "developer mode" button at the top of that page. </li>
+    <li> Click the "Load unpacked extension..." button.</li>
+    <li> Navigate to the now-unzipped folder that you downloaded earlier and then the chrome-extension folder. Click "select". </li>
+    <li> The extension should now show up in your extensions and in your Chrome Extension bar. </li>
+  </ul>
   
 
   
-  <h4>6. What happens if your site goes down? </h4>
-  <p>There seems to be a lot of confusion about what MyEtherWallet does. It's not a web wallet where you put your Ether and we store them for you. You don't have a login and nothing ever gets saved to our servers. It is simply an interface that allows you to do things you normally would do via command line.</p>
-  <p>If MyEtherWallet goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn't have to "get" your ether out of MyEtherWallet because it's not in MyEtherWallet. It's in whatever wallet your generated via our site.</p>
-  <p> You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #10 below. </p>
-  <p>In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren't storing any information. If we do take the domain down, it still is, and always will be, publicly available at <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages" target="_blank">https://github.com/kvhnuke/etherwallet</a>. You can download the ZIP there and run it locally. </p>
-  
 
+  
+  <h4>6. What happens if MyEtherWallet CX disappears from the face of this planet? </h4>
+  <p>First, all data is saved on your computer, not our servers. It's not a website where you put your Ether and we store them for you. We just make it easy for you to save your wallet information in your browser/on your computer. Then we give you a place you to access that information and do stuff with it. I know it can be confusing, but when you look at the stuff in the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it's all saved on your own computer.</p>
+  <p> That said, it is <strong>very important</strong> that you back up all your information for any new wallets generated with MyEtherWallet CX externally (meaning not on your computer!). That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the above section for how to save your wallets externally.</p>
+  <p> If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually.</p>
+  <ul>
+    <li>Go to <a href="https://github.com/kvhnuke/etherwallet/tree/mercury" target="_blank">the github repo</a>.</li>
+    <li> Download the ZIP file using the button in the upper right.</li>
+    <li> Unzip that file. </li>
+    <li> Go to Google Chrome and find you settings (in the menu in the upper right).</li>
+    <li> Click "extensions" on the left. </li>
+    <li> Check the "developer mode" button at the top of that page. </li>
+    <li> Click the "Load unpacked extension..." button.</li>
+    <li> Navigate to the now-unzipped folder that you downloaded earlier and then the chrome-extension folder. Click "select". </li>
+    <li> The extension should now show up in your extensions and in your Chrome Extension bar. </li>
+  </ul>
   
 
 
@@ -1530,36 +1669,10 @@
 
   <h4>10. How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?</h4>
   
-  <p><strong> Using your unencrypted private key... </strong></p>
-  <ol>
-    <li> If you do not already have your unencrypted private key, navigate to the "View Wallet Details" tab.</li>
-    <li> Select your wallet file -or- enter/paste your private key to unlock your wallet.</li>
-    <li> Copy Your Private Key (unencrypted). </li>
-    <li> If you are on a Mac:</li>
-      <ul>
-        <li> Open Text Edit and paste this private key.</li>
-        <li> Go to the menu bar and click "Format" -> "Make Plain Text".</li>
-        <li> Save this file to your <code>desktop</code> as <code>nothing_special_delete_me.txt</code>. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog. </li>
-        <li> Open terminal and run the following command: <code>geth account import ~/Desktop/nothing_special_delete_me.txt</code></li>
-        <li> This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don't forget it.</li>
-        <li> Delete the nothing_special_delete_me.txt from your desktop.</li>
-        <li> The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". </li>
-      </ul>
-    <li> If you are on a PC:</li>
-      <ul>
-        <li>Open Notepad & paste the private key into notepad.</li>
-        <li>Save the file as <code>nothing_special_delete_me.txt</code> at <code>C:\</code></li>
-        <li>Run the command, <code>geth account import C:\nothing_special_delete_me.txt</code></li>
-        <li> This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don't forget it.</li>
-        <li>After successful import, delete the file at <code>C:\nothing_special_delete_me.txt</code></li>
-        <li> The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". </li>
-      </ul>
-    </ol>
-  
   <p><strong> Using an Geth/Mist JSON file from MyEtherWallet v2+....</strong></p>
   <ol>
-    <li> Go to the View Wallet Info Tab.</li> <li> Unlock your wallet using your ENCRYPTED private key or JSON file. </li>
     
+    <li> Go to the "My Wallets" Tab.</li> <li> Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. </li>
     <li> On the right hand side, look for <code>Download JSON file - Geth/Mist Format (encrypted)</code>. Press the DOWNLOAD button below that. You now have your keystore file.</li>
     <li> Open the Ethereum Wallet application. </li>
     <li> In the menu bar, go "Accounts" -> "Backup" -> "Accounts"</li>
@@ -1610,6 +1723,14 @@
   <p> Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria. geth/Mist as well. Jaxx as well. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person's brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but I'll save that for another day. </p>
   <hr />
 
+  
+    <h4>Security - MyEtherWallet CX </h4>
+    <h6> Where is this extension saving my information?</h6>
+    <p>The information you store in this Chrome Extension is saved via <a href="http://chrome.storage/" target="_blank">chrome.storage</a>. - this is the same place your passwords are saved when you save your password in Chrome.</p>
+    <h6> What information is saved? </h6>
+    <p>The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.</p>
+    <h6> Why aren't the nickname and wallet address encrypted?</h6>
+    <p> If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.</p>
   
 
 
@@ -1669,75 +1790,6 @@
 </div>
 <!-- end help-->
 
-
-
-    <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.bulkGenerate.id" ng-controller='bulkGenCtrl'>
-
-  <!-- Top - Bulk Generate -->
-  <h2> Bulk Generate Wallets </h2>
-  <section class="row">
-    <div class="col-md-6 col-sm-12 form-group">
-      <h4>1. Enter the Number of Wallets To Generate:</h4>
-      <input class="form-control" type="text" placeholder="Number of Wallets" ng-model="amount">
-    </div>
-    <div class="col-md-6 col-sm-12 form-group">
-      <h4>2. Give me my wallets:</h4>
-      <a class="btn btn-primary btn-block btnAction" ng-click="genWallets()">GENERATE</a>
-    </div>
-  </section>
-  <!-- / Top - Bulk Generate -->
-
-  <!-- Bottom - Display Bulk Generated Wallets -->
-  <section ng-show="showWallets">
-    <hr />
-    <div class="row">
-      <h2 class="col-xs-12">Success! Your wallets have been generated.</h2>
-      <p class="col-xs-12 text-danger"> You need to back up your private keys externally and verify you can access the wallets. Do this BEFORE you send any Ether to a new wallet. MyEtherWallet.com does not receive or store any information so we <strong>cannot</strong> recover your wallet. Read the <a id="help" class="ptabs" showId="paneHelp">help page</a> for instructions.</p>
-      <article class="col-md-9">
-        <table id="bulkgentable" class="table">
-          <thead>
-            <tr>
-              <th width="32"> Address Identicon </th>
-              <th width="500">Address</th>
-              <th width="500">Private Key (unencrypted)</th>
-            </tr>
-            <tr class="privaddkey" ng-repeat="wallet in wallets">
-            <td>
-                <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
-            </td>
-            <td>
-                <textarea class="form-control" rows="4" type="text" disabled>{{wallet.getChecksumAddressString()}}</textarea>
-            </td>
-            <td>
-                <textarea class="form-control" rows="4" type="text" disabled>{{wallet.getPrivateKeyString()}}</textarea>
-            </td>
-            </tr>
-          </thead>
-        </table>
-      </article>
-      <article class="col-md-3">
-        <div class="form-group">
-          <label>Print Paper Wallets (unencrypted)</label>
-          <a class="btn btn-info btn-block" ng-click="printQRCode()">PRINT</a>
-        </div>
-        <div class="form-group">
-          <label>Download JSON file (unencrypted)</label>
-          <a class="btn btn-info btn-block" href="{{bJSON}}" download="bulk_ether_accounts.json">DOWNLOAD</a>
-        </div>
-        <div class="form-group">
-          <label>Download CSV file (unencrypted)</label>
-          <a class="btn btn-info btn-block" href="{{bCSV}}" download="bulk_ether_accounts.csv">DOWNLOAD</a>
-        </div>
-        <div class="form-group">
-          <label>Download TXT file (unencrypted)</label>
-          <a class="btn btn-info btn-block" href="{{bTXT}}" download="bulk_ether_accounts.txt">DOWNLOAD</a>
-        </div>
-      </article>
-    </div>
-  </section>
-  <!-- / Bottom - Display Bulk Generated Wallets -->
-
-</div>
 
 
     <!-- print -->
