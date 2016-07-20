@@ -17,18 +17,21 @@
       <div>
         <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
         <br />
-        <p> Account Address:
-          <br /> <strong style="margin-left: 1em" class="mono">{{wallet.getChecksumAddressString()}}</strong></p>
-          <p> Account Balance:
+        <p> Account Address: <br /> <strong style="margin-left: 1em" class="mono">{{wallet.getChecksumAddressString()}}</strong></p>
+
+        <p> Account Balance:
           <br />
-          <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
-          <br />
-          <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong>
-          <br />
-          <strong class="text-success"  style="margin-left: 1em"> {{eurBalance}} EUR </strong>
-          <br />
-          <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+          <strong style="margin-left: 1em"> {{etherBalance}} Ether </strong>
         </p>
+        <p> Equivalent Values:
+          <br />
+          <strong style="margin-left: 1em"> {{usdBalance}} USD </strong>
+          <br />
+          <strong style="margin-left: 1em"> {{eurBalance}} EUR </strong>
+          <br />
+          <strong style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+        </p>
+        <p> See Transaction History: <br /> <a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></p>
       </div>
       <br />
       <div class="well">

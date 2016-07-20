@@ -23,16 +23,13 @@
         <strong style="padding-left: 1em; display: block;" class="mono word-wrap">{{wallet.getChecksumAddressString()}}</strong>
       </p>
       <p>
-        Account Balance: <br />
-        <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong> <br />
-        <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong> <br />
-        <strong class="text-success"  style="margin-left: 1em"> {{eurBalance}} EUR </strong> <br />
-        <strong class="text-success" style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+        ETH Balance: <br />
+        <strong style="margin-left: 1em"> {{etherBalance}} Ether </strong>
       </p>
-      <p> DGD Tokens: <br />
+      <p> DGD Token Balance: <br />
         <strong style="margin-left: 1em"> {{tokenBalance}} DGD </strong>
       </p>
-      <p> DGD Badges: <br />
+      <p> DGD Badge Balance: <br />
         <strong style="margin-left: 1em"> {{badgeBalance}} DGDb  </strong>
       </p>
       <p> DGD Crowdsale Information: <br />
@@ -41,6 +38,16 @@
         <strong  style="margin-left: 1em"> Share: {{shareTotal}} </strong><br />
         <strong style="margin-left: 1em"> Badges: {{badgesTotal}} </strong><br />
         <strong style="margin-left: 1em"> Claimed? {{claimedTotal}} </strong>
+      </p>
+      <p>
+        Equivalent Values: <br />
+        <strong style="margin-left: 1em"> {{usdBalance}} USD </strong> <br />
+        <strong style="margin-left: 1em"> {{eurBalance}} EUR </strong> <br />
+        <strong style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+      </p>
+      <p> See Transaction History:
+        <br />
+        <a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a>
       </p>
       <br />
       <div class="well">

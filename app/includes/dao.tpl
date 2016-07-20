@@ -31,16 +31,23 @@
           <br /> <strong style="padding-left: 1em; display: block;" class="mono word-wrap">{{wallet.getChecksumAddressString()}}</strong>
         </p>
         <p> Account Balance:
-        <br />
+          <br />
           <strong class="text-primary" style="margin-left: 1em"> {{token.balance}} DAO Tokens</strong>
           <br />
           <strong style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+        </p>
+        </p>
+        <p> Equivalent Values:
           <br />
           <strong style="margin-left: 1em"> {{usdBalance}} USD </strong>
           <br />
           <strong style="margin-left: 1em"> {{eurBalance}} EUR </strong>
           <br />
           <strong style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+        </p>
+        <p> See Transaction History:
+          <br />
+          <a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a>
         </p>
       </div>
       <br />

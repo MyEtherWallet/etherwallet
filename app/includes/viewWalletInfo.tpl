@@ -77,16 +77,29 @@
         </h4>
         <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json">DOWNLOAD</a>
       </div>
-      <h4>Account Balance:</h4>
-      <p class="text-primary">
+
+      <br />
+      <hr />
+      <p>
+        Account Balance:
+        <br />
         <strong style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+      </p>
+      <hr />
+      <p>
+        Equivalent Values:
         <br />
         <strong style="margin-left: 1em"> {{usdBalance}} USD </strong>
         <br />
         <strong style="margin-left: 1em"> {{eurBalance}} EUR </strong>
         <br />
         <strong style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+      </p>
+      <hr />
+      <p>
+        See Transaction History:
         <br />
+        <a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/{{wallet.getAddressString()}}</a>
         <!--
         <strong style="margin-left: 1em"> {{token.balance}} DAO Tokens</strong>
         <br />
