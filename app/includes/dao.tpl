@@ -72,22 +72,15 @@
         <br /><br /><br />
         <div class=" text-center">
           <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#withdrawTransaction"> WITHDRAW YOUR DAO TOKENS FOR ETH </a>
-          <p><small> Yes. Just push the big red button. It's that easy. Well actually... </small></p>
+          <p><small> Yes. Just push the big red button. It's that easy. </small></p>
           <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
           <div class="form-group col-xs-12" ng-bind-html="withdrawTxStatus"></div>
         </div>
-
-        <h5> Do NOT push this button until the Hard Fork has successfully occured. You will just waste gas if you do. </h5>
+        <br /><br /><br />
         <ul>
-          <li> There is no deadline for the withdrawals. The safest thing to do is wait a day. </li>
-          <li> The Hard Fork will occur at block 1,920,000, or at approximately 6:30AM PDT on July 20th, 2016. </li>
-          <li> There may be some time needed to see which chain won. </li>
-          <li> The MyEtherWallet team is sleeping. We will answer any questions when we wake up, and remove this bullet. </li>
+          <li> There is no deadline for the withdrawals. Waiting is not the worst idea. </li>
           <li> If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </li>
-          <li><a href="http://time.is/PDT" target="_blank">What time is it PDT?</a></li>
-          <li><a href="http://slacknation.github.io/medium/11/11.html" target="_blank">Hardfork Countdown</a></li>
         </ul>
-
       </section>
       <!-- / Withdraw DAO Tokens -->
 

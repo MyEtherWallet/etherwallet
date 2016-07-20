@@ -44,7 +44,7 @@
   <header class="container-fluid bg-gradient text-white">
     <section class="container">
       <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
-      <p>Open Source JavaScript Client-Side Ether Wallet &middot; v2.7</p>
+      <p>Open Source JavaScript Client-Side Ether Wallet &middot; v2.8</p>
     </section>
   </header>
 }
@@ -58,7 +58,7 @@
   <header class="container-fluid bg-gradient text-white">
     <section class="container">
       <a href="/cx-wallet.html"><img src="images/etherwalletcx-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
-      <p>Open Source JavaScript Client-Side Ether Wallet Chrome Extension &middot; v2.7</p>
+      <p>Open Source JavaScript Client-Side Ether Wallet Chrome Extension &middot; v2.8</p>
     </section>
   </header>
 }
