@@ -39,7 +39,6 @@ var viewWalletCtrl = require('./controllers/viewWalletCtrl');
 var sendTxCtrl = require('./controllers/sendTxCtrl');
 var digixCtrl = require('./controllers/digixCtrl');
 var theDaoCtrl = require('./controllers/theDaoCtrl');
-var theDaoProposalCtrl = require('./controllers/theDaoProposalCtrl');
 var sendOfflineTxCtrl = require('./controllers/sendOfflineTxCtrl');
 var globalService = require('./services/globalService');
 var walletService = require('./services/walletService');
@@ -57,7 +56,7 @@ if(IS_CX){
 }
 var app = angular.module('mewApp', []);
 app.config(['$compileProvider', function($compileProvider) {
-	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
+	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|):/);
 }]);
 app.factory('globalService', ['$http','$httpParamSerializerJQLike',globalService]);
 app.factory('walletService', walletService);
@@ -75,7 +74,6 @@ app.controller('viewWalletCtrl', ['$scope','walletService', viewWalletCtrl]);
 app.controller('sendTxCtrl', ['$scope','$sce','walletService', sendTxCtrl]);
 app.controller('digixCtrl', ['$scope','$sce','walletService', digixCtrl]);
 app.controller('theDaoCtrl', ['$scope','$sce','walletService', theDaoCtrl]);
-app.controller('theDaoProposalCtrl', ['$scope','$sce','walletService', theDaoProposalCtrl]);
 app.controller('sendOfflineTxCtrl', ['$scope','$sce','walletService', sendOfflineTxCtrl]);
 if(IS_CX){
     app.controller('addWalletCtrl', ['$scope','$sce', addWalletCtrl]);

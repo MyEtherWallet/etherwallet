@@ -688,9 +688,9 @@
       <!-- Withdraw DAO Tokens -->
       <section class="daoGetTokens clearfix text-center" ng-show="curTab=='withdraw'">
         <br /><br /><br />
-        <a class="btn btn-danger btn-lg"> WITHDRAW YOUR DAO TOKENS FOR ETH </a>
+        <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#withdrawTransaction"> WITHDRAW YOUR DAO TOKENS FOR ETH </a>
         <p><small> Yes. Just push the big red button. It's that easy. </small></p>
-
+        <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
       </section>
       <!-- / Withdraw DAO Tokens -->
 
@@ -748,7 +748,7 @@
   <!-- / BOTTOM: The DAO -->
 
   <!-- Withdraw Modal -->
-  <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
+  <div class="modal fade" id="withdrawTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -757,12 +757,12 @@
         </div>
         <div class="modal-body">
           <!-- todo: update values -->
-          <h4>You are about to withdraw XXX DAO Tokens for XXX ETH.</h4>
+          <h4>You are about to withdraw {{token.balance}} DAO Tokens for {{token.balanceEth}} ETH.</h4>
           <h4> Are you <span class="text-underline">sure</span> you want to do this?</h4>
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
-          <button type="button" class="btn btn-primary" ng-click="sendTx()">Yes, I am sure! Withdraw.</button>
+          <button type="button" class="btn btn-primary" ng-click="generateAndSendWithdrawTx()">Yes, I am sure! Withdraw.</button>
         </div>
       </div>
     </div>
@@ -798,35 +798,6 @@
     </div>
   </div>
   <!-- / Send Modal -->
-
-  <!-- Vote Modal -->
-  <div class="modal fade" id="voteProposal" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-
-          <br />
-          <h4>You are about to vote on Proposal <strong>#{{objProposal.id}}</strong>: {{objProposal.description}}.</h4>
-          <h4 class="text-light">Please vote carefully, there are no do-overs or take-backs.</h4>
-
-          <div class="row">
-            <div class="col-sm-4 marg-v-md">
-              <button type="button" class="btn btn-block btn-danger" ng-click="generateVoteTx(false)" ng-show="showVoteNo">VOTE NO</button>
-            </div>
-            <div class="col-sm-4 marg-v-md">
-              <button type="button" class="btn btn-block btn-default" data-dismiss="modal">GET ME OUT OF HERE</button>
-            </div>
-            <div class="col-sm-4 marg-v-md">
-              <button type="button" class="btn btn-block btn-primary" ng-click="generateVoteTx(true)" ng-show="showVoteYes">VOTE YES</button>
-            </div>
-            <div class="form-group col-xs-12" ng-bind-html="voteTxStatus"></div>
-            <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
   <!-- / Vote Modal -->
 
