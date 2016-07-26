@@ -751,6 +751,191 @@
 <!-- /send transaction -->
 
 
+    <!-- Tokens -->
+<div class="tab-pane page-tokens active" ng-if="globalService.currentTab==globalService.tabs.tokens.id">
+
+  <!-- TOP: Tokens -->
+  <section class="row">
+    <div class="col-xs-12">
+      <h2> Tokens </h2>
+      <p> Use this tab to <strong>Send any tokens on the Ethereum network</strong>.</p>
+    </div>
+  </section>
+  <br />
+
+  
+    <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
+  
+  
+  <!-- / TOP: Tokens -->
+
+  <!-- BOTTOM: Tokens -->
+  <section class="row" ng-show="wallet!=null" ng-controller='theDaoCtrl'>
+    <hr />
+    <div class="col-sm-4">
+      <h4> Account Information </h4>
+      <div>
+        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+        <br />
+        <p> Account Address:
+          <br /> <strong style="padding-left: 1em; display: block;" class="mono word-wrap">{{wallet.getChecksumAddressString()}}</strong>
+        </p>
+        <p> Account Balance:
+          <br />
+          <strong class="text-primary" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+          <br />
+          <strong style="margin-left: 1em"> {{token.dao.balance}} DAO</strong>
+          <br />
+          <strong style="margin-left: 1em"> {{token.dgd.balance}} DGD</strong>
+          <br />
+          <strong style="margin-left: 1em"> {{token.dgdb.balance}} DGD Badges</strong>
+          <br />
+          <strong style="margin-left: 1em"> {{token.mrk.balance}} MKR</strong>
+          <br />
+          <strong style="margin-left: 1em"> {{token.unicorn.balance}} Unicorns</strong><br />
+        </p>
+
+        </p>
+        </p>
+        <p> Equivalent Values:
+          <br />
+          <strong style="margin-left: 1em"> {{usdBalance}} USD </strong>
+          <br />
+          <strong style="margin-left: 1em"> {{eurBalance}} EUR </strong>
+          <br />
+          <strong style="margin-left: 1em"> {{btcBalance}} BTC </strong>
+        </p>
+        <p> See Transaction History:
+          <br />
+          <a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a>
+        </p>
+      </div>
+      <br />
+      <div class="well">
+        <p> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
+        <a class="btn btn-primary btn-block" ng-click="onDonateClick()">DONATE</a>
+        <div class="text-success text-center marg-v-sm"><strong ng-show="tx.donate"> THANK YOU!!! </strong></div>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+
+      <!-- Send DAO Tokens -->
+      <section class="daoGetTokens clearfix" ng-show="curTab=='send'">
+        <h4>Send Tokens</h4>
+        <div class="form-group col-xs-10">
+          <label> To Address: </label>
+          <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tokenTx.to" ng-change="validateAddress()"/>
+          <div ng-bind-html="validateAddressStatus"></div>
+        </div>
+        <div class="col-xs-2 address-identicon-container">
+          <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+        </div>
+        <div class="form-group col-xs-12">
+          <label>
+            Amount to Send:
+            <br />
+          </label>
+          <input class="form-control" type="text" placeholder="Amount" ng-model="tokenTx.value"/>
+          <div class="radio">
+            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>DAO </label>
+            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>DGD </label>
+            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>DGDb </label>
+            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>MKR </label>
+            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>🦄 </label>
+            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/> Custom </label>
+          </div>
+
+          <section class="custom-token-fields well">
+            <div class="form-group">
+              <label> Address: </label>
+              <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+              <label> Token Name: </label>
+              <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+              <label> Token Symbol: </label>
+              <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+              <label> Decimals: </label>
+              <input class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+              <div class="btn btn-info"> Save </div>
+            </div>
+          </section>
+
+          <div class="form-group">
+            <label> Gas: </label>
+            <input class="form-control" type="text" ng-model="tx.gasLimit"/>
+          </div>
+          <!-- / advanced option panel -->
+        </div>
+        <div class="form-group col-xs-12">
+          <a class="btn btn-info btn-block" ng-click="generateTokenTx()">GENERATE TRANSACTION</a>
+        </div>
+        <div class="col-xs-12">
+           <div ng-bind-html="validateTxStatus"></div>
+        </div>
+        <div class="form-group col-xs-12" ng-show="showRaw">
+          <label> Raw Transaction </label>
+          <textarea class="form-control" rows="4" disabled >{{rawTx}}</textarea>
+          <label> Signed Transaction </label>
+          <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
+        </div>
+        <div class="form-group col-xs-12" ng-show="showRaw">
+          <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">SEND TRANSACTION</a>
+        </div>
+        <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+      </section>
+      <!--/ Send DAO Tokens -->
+
+
+
+    </div>
+  <!-- / BOTTOM: Tokens -->
+
+
+  <!-- Send Modal -->
+  <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title" id="myModalLabel"> <strong class="text-danger">Warning!</strong></h3>
+        </div>
+        <div class="modal-body">
+          <h4>
+            You are about to send
+            <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
+            <strong id="confirmCurrancy" class="text-primary"> DAO Token </strong>
+            to address
+            <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
+          </h4>
+          <h4> Are you <span class="text-underline">sure</span> you want to do this?</h4>
+          <p><em> NOTE: If you encounter a gas error (account doesn't exist or balance too low) then you need to add ETH to your account) to cover the cost of sending DAO tokens.</em></p>
+
+        </div>
+        <div class="modal-footer text-center">
+          <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
+          <button type="button" class="btn btn-primary" ng-click="sendTx()">Yes, I am sure! Make transaction.</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / Send Modal -->
+</section>
+  <!-- / Vote Modal -->
+
+
+</div>
+<!-- / The DAO -->
+
+
+
     <!-- The DAO -->
 <div class="tab-pane page-dao active" ng-if="globalService.currentTab==globalService.tabs.dao.id">
 
@@ -948,211 +1133,6 @@
 
 
 
-    <!-- The DAO Proposals -->
-<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.daoproposals.id">
-
-  <section class="row">
-    <div class="col-xs-12">
-      <h2> Browse DAO Proposals </h2>
-      <p><a ng-click="globalService.currentTab=globalService.tabs.dao.id">If you would like to Send DAO Tokens, please click here.</a> Learn more at <a href="http://daohub.org/" target="_blank">DAOHub</a>, <a href="https://blog.slock.it/the-art-of-the-dao-experiments-with-the-generic-dao-framework-4782f7862131#.bibozinlb" target="_blank">The Art of the DAO</a>, and <a href="https://forum.daohub.org/c/theDAO" target="_blank">DAO Hub Forums (Support, too!)</a></p>
-    </div>
-
-  </section>
-
-  <!-- DAO Proposals -->
-  <section class="proposal-container" ng-controller='theDaoProposalCtrl'>
-    <!-- DAO Filters -->
-  <!-- TODO: make these work, change active class on click -->
-  <section class="row" style="margin-bottom: 10px;">
-    <h4 class="col-xs-12"> Show.... </h4>
-
-    <div class="col-xs-6 form-group">
-      <div class="input-group">
-        <input type="number" class="form-control" placeholder="Proposal ID" ng-model='filters.id' ngTrim='false' >
-        <span class="input-group-addon" ng-click=" filters.id='' "> X </span>
-      </div>
-    </div>
-
-    <div class="col-xs-6 form-group">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Description" ng-model='filters.description' ngTrim='false' >
-        <span class="input-group-addon" ng-click=" filters.description='' "> X </span>
-      </div>
-    </div>
-
-    <div class="proposal-filter-container col-sm-2">
-      <a class="proposal-filter" style="width: 100%;" ng-class="filters=={} ? 'active' : ''" ng-click="filters={};">All Proposals</a>
-    </div>
-    <div class="proposal-filter-container col-sm-5">
-      <a class="proposal-filter" ng-class="filters.isOpen=='true' ? 'active' : ''"    ng-click="filters.isOpen!=='true' ? filters.isOpen='true' : filters.isOpen='' ">Current Proposals</a>
-      <a class="proposal-filter" ng-class="filters.isOpen=='false' ? 'active' : ''"   ng-click="filters.isOpen!=='false' ? filters.isOpen='false' : filters.isOpen=''">Past Proposals</a>
-    </div>
-    <div class="proposal-filter-container col-sm-5">
-      <a class="proposal-filter" ng-class="filters.split=='false' ? 'active' : ''"  ng-click="filters.split!=='false' ? filters.split='false' : filters.split=''">Non-Split Proposals</a>
-      <a class="proposal-filter" ng-class="filters.split=='true' ? 'active' : ''"   ng-click="filters.split!=='true' ? filters.split='true' : filters.split=''">Split Proposals</a>
-    </div>
-
-  </section>
-  <!-- / DAO Filters -->
-
-        <article class="proposal-item col-xs-12" ng-show="objProposal.show" ng-repeat="objProposal in AllProposals | filter:filters:comparator | orderBy : '-id' " >
-
-          <section class="proposal-top clearfix" ng-click="showProposal(objProposal.id)">
-            <div class="graph-container">
-              <div class="graph-unfilled" style="width:100%"></div>
-              <div class="graph-needed"   style="width:{{ objProposal.quorumPer | number:2 }}%"></div>
-              <div class="graph-yes"      style="width:{{ ( objProposal.yea * 100 ) / totRaised | number:2 }}%"></div>
-              <div class="graph-no"       style="width:{{ ( objProposal.nay * 100 ) / totRaised | number:2 }}%;
-                                                 left: {{ ( objProposal.yea * 100 ) / totRaised | number:2 }}%;"></div>
-            </div>
-            <div class="col-xs-9 clearfix">
-              <h4>{{objProposal.description}} </h4>
-              <p>
-                Proposal ID: <strong >{{objProposal.id}}</strong> &middot;
-                <span class="text-success" ng-show="objProposal.votingDeadline.getTime() >= objProposal.today.getTime()">ends: <strong>{{objProposal.votingDeadline | date:'medium'}}</strong></span>
-                <span class="text-danger" ng-show="objProposal.votingDeadline.getTime() < objProposal.today.getTime()">ended: <strong>{{objProposal.votingDeadline | date:'medium'}}</strong>
-              </p></span>
-            </div>
-            <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split==false">
-              <h4> &nbsp; {{objProposal.amount}}</h4>
-              <p>  ETH  </p>
-            </div>
-            <div class="col-xs-3 clearfix text-right" ng-show="objProposal.split==true">
-              <h4> Split </h4>
-              <p>  &nbsp; </p>
-            </div>
-          </section>
-          <section class="proposal-expanded col-xs-12" ng-show="objProposal.showprop">
-
-            <div class="description-html" ng-bind-html="objProposal.descriptionHTML"></div>
-
-            <p ng-show="objProposal.split==true"><em>This is a proposal to Split the DAO. If you vote yes, you must then call the SplitDAO function via Mist in order to join this new Split DAO. <a href="https://daowiki.atlassian.net/wiki/display/DAO/Step-by-Step%3A+Splitting+the+DAO" target="_blank"> Lean More Here.</a></em></p>
-            <table class="table">
-              <tr>
-                <td class="label">Votes Yea:</td>
-                <td class="output votes-yes">
-                  {{ ( objProposal.yea * 100 ) / totRaised | number:2 }}% of total
-                  &middot;
-                  {{objProposal.yeaPer | number:2}}% of votes
-                  &middot;
-                  <em>({{ (objProposal.yea * 100) | number:2 }} DAO) </em></td>
-              </tr>
-              <tr>
-                <td class="label">Votes Nay:</td>
-                <td class="output votes-no">
-                  {{ ( objProposal.nay * 100 ) / totRaised | number:2 }}% of total
-                  &middot;
-                  {{objProposal.nayPer | number:2}}% of votes
-                  &middot;
-                  <em>({{ (objProposal.nay * 100) | number:2 }} DAO) </em></td>
-              </tr>
-              <tr ng-show="objProposal.split==false">
-                <td class="label">Quorum:</td>
-                <td class="output">
-                  <div class="votes-needed">{{ objProposal.quorumCurrent | number:2 }}% of {{ objProposal.quorumPer | number:2}}%</div>
-                </td>
-              </tr>
-              <tr>
-                <td class="label">Creator:</td>
-                <td class="output"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{objProposal.creator}}" watch-var="objProposal"></div></div>
-                {{objProposal.creator}}</td>
-              </tr>
-              <tr>
-                <td class="label">Recipient:</td>
-                <td class="output"> <div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{objProposal.recipient}}" watch-var="objProposal"></div></div>
-                {{objProposal.recipient}} </td>
-              </tr>
-              <tr>
-                <td class="label">New Curator:</td>
-                <td class="output"><span ng-class="objProposal.split==true ? 'boolean-yes' : 'boolean-no'"> {{objProposal.splitEnglish}} </span></td>
-              </tr>
-              <tr>
-                <td class="label">Open:</td>
-                <td class="output"><span ng-class="objProposal.isOpen==true ? 'boolean-yes' : 'boolean-no'"> {{objProposal.openEnglish}} </span></td>
-              </tr>
-              <tr>
-                <td class="label">Proposal Passed:</td>
-                <td class="output"><span ng-class="objProposal.proposalPassed==true ? 'boolean-yes' : 'boolean-no'"> {{objProposal.proposalPassedEnglish}} </span></td>
-              </tr>
-              <tr>
-                <td class="label">Proposal Hash:</td>
-                <td class="output">{{objProposal.proposalHash}}</td>
-              </tr>
-              <tr>
-                <td class="label">Proposal Deposit:</td>
-                <td class="output">{{objProposal.proposalDeposit}} Ether</td>
-              </tr>
-            </table>
-            <div class="form-group" ng-show="objProposal.votingDeadline.getTime() > objProposal.today.getTime()">
-              <a class="btn btn-primary" ng-click="openVote(objProposal.id)">VOTE ON THIS PROPOSAL</a>
-            </div>
-          </section>
-
-        </article>
-        <section class="no-items text-center">
-          <h4> Sorry...there are no results with these filters. </h4>
-          <a class="btn btn-info" ng-class="filters=={} ? 'active' : ''" ng-click="filters={};">Show All Proposals</a>
-        </section>
-
-  <!-- Vote Modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel" id="voteProposal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel">Unlock your Wallet to Vote on Proposal #{{voteID}}</h3>
-          <p><em> <span class="text-danger">Note: </span> If you vote on a proposal, the tokens cannot be sent until the proposal period ends. If you wish to vote with a portion of your tokens, you must send them to a new account first and then vote with only one account.</em></p>
-
-        </div>
-        <div class="modal-body">
-
-          <!-- Step 1: Unlock Your Wallet -->
-          <div>
-            
-              <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
-            
-            
-          </div>
-          <!-- / Step 1: Unlock Your Wallet -->
-
-          <hr />
-          <div ng-show="wallet!=null">
-          <!-- Step 2: Confirm and Vote -->
-          <h4>You are about to vote on Proposal <strong>#{{voteID}}</strong>: {{AllProposals[voteID].description}}.</h4>
-          <h4 class="text-light">Please vote carefully, there are no do-overs or take-backs.</h4>
-          <div class="row">
-            <div class="col-sm-4 marg-v-md">
-              <button type="button" class="btn btn-block btn-danger" ng-click="generateVoteTx(false)" ng-show="showVoteNo">VOTE NO</button>
-            </div>
-            <div class="col-sm-4 marg-v-md">
-              <button type="button" class="btn btn-block btn-default" data-dismiss="modal">GET ME OUT OF HERE</button>
-            </div>
-            <div class="col-sm-4 marg-v-md">
-              <button type="button" class="btn btn-block btn-primary" ng-click="generateVoteTx(true)" ng-show="showVoteYes">VOTE YES</button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
-            <div class="form-group col-xs-12" ng-bind-html="voteTxStatus"></div>
-          </div>
-          <!-- / Step 2: Confirm and Vote -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- / Vote Modal -->
-  </section>
-  <!-- /DAO Proposals -->
-</div>
-<!-- / The DAO Proposals -->
-
-
-
-
-
-
-
     <!-- Digix -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.digix.id">
   <h2> Digix </h2>
@@ -1320,176 +1300,6 @@
 
 </div>
 <!-- / Digix -->
-
-
-    <!-- Contracts -->
-<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contracts.id">
-  <h2> Contracts </h2>
-
-  <wallet-decrypt-drtv></wallet-decrypt-drtv>
-
-  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
-
-    <div class="col-md-12"> <hr /> </div>
-
-    <!-- STEP 1 -->
-    <div class="col-md-12">
-      <span class="form-group">
-        <h4> Contract Address</h4>
-        <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" />
-        <h4> ABI / JSON Interface </h4>
-        <textarea class="form-control" rows="5" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] '></textarea>
-      </span>
-      <span class="form-group">
-        <button class="btn btn-primary"> ACCESS </button>
-      </span>
-    </div>
-    <!-- / STEP 1 -->
-
-    <div class="col-md-12"> <hr /> </div>
-
-
-    <!-- STEP READ -->
-    <div class="col-md-6">
-
-      <!-- Read - Step 1 -->
-      <span class="form-group">
-        <h4> 3. Read From Contract</h4>
-      </span>
-      <span class="form-group read-function">
-        <h5> Function Name (ie: User Info or Proposals) </h5>
-        <h6> Function Description (ie: user - adddress or 256 bits unsigned integer) </h6>
-        <input class="form-control" />
-        <span class="output">&#8627;  0x29384927349283 (output of the above) </span>
-      </span>
-      <!-- / Read - Step 1 -->
-
-      <!-- Read - Step 2 -->
-      <span class="form-group">
-        <!-- example: integer / string / bytes? /  -->
-         <p class="item">
-          <span class="label">Centstotal:</span>
-          <span class="output"> 123 </span>
-         </p>
-         <!-- example: address -->
-         <p class="item">
-          <span class="label">Recipient:</span>
-          <span class="output">
-            <div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div></div>
-            0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8
-          </span>
-        </p>
-          <!-- example: boolean YES -->
-         <p class="item">
-          <span class="label">Claimed:</span>
-          <span class="output boolean-yes"> YES </span>
-         </p>
-          <!-- example: boolean NO -->
-         <p class="item">
-          <span class="label">Open:</span>
-          <span class="output boolean-no"> NO </span>
-         </p>
-      </span>
-      <!--/ Read - Step 2 -->
-
-    </div>
-    <!-- / STEP READ -->
-
-
-
-    <!-- STEP WRITE -->
-    <div class="col-md-6">
-
-      <!-- Write - Step 1 -->
-      <span class="form-group">
-        <h4> 3. Write To Contract </h4>
-        <div class="write-function" ng-controller="DropdownCtrl">
-          <div class="btn-group" uib-dropdown keyboard-nav>
-            <button id="simple-btn-keyboard-nav" type="button" class="btn btn-default" uib-dropdown-toggle>
-            Select A Function <span class="caret"></span></button>
-            <ul class="dropdown-menu" uib-dropdown-menu>
-              <li><a href="#">Claim</a></li>
-              <li><a href="#">Item 2</a></li>
-              <li><a href="#">Item 3</a></li>
-            </ul>
-          </div>
-        </div>
-      </span>
-      <!-- / Write - Step 1 -->
-
-
-      <!-- Write - Step 2 -->
-      <hr />
-      <span class="form-group">
-        <!-- address -->
-        <p class="item">
-          <label> Recipient — <small> address </small> </label>
-          <input class="form-control" type="text" placeholder="0x314156..."/>
-        </p>
-        <!-- 256 unsigned integer -->
-        <p class="item">
-          <label> Amount — <small> 256 unsigned integer </small> </label>
-          <input class="form-control" type="text" placeholder="151"/>
-        </p>
-        <!-- string -->
-        <p class="item">
-          <label> Description — <small> string </small> </label>
-          <input class="form-control" type="text" placeholder="Ohh! Shiny!"/>
-        </p>
-        <!-- bytes -->
-        <p class="item">
-          <label> Data — <small> bytes </small> </label>
-          <input class="form-control" type="text" placeholder="0x151bc..."/>
-        </p>
-        <!-- boolean -->
-        <p class="item">
-          <label> New Provider — <small> boolean </small> </label>
-          <label class="check"><input type="checkbox" value=""> Yes </label>
-        </p>
-        <!-- boolean -->
-        <p class="item">
-          <label> Amount to Send: (this is always here) </label>
-          <input class="form-control" placeholder="0" />
-        </p>
-      </span>
-      <span class="form-group">
-        <button class="btn btn-primary" >EXECUTE</button> <!-- this opens modal -->
-      </span>
-    </div>
-    <!-- / Write - Step 2 -->
-
-
-    <!-- Step 3 - Modal -->
-    <div class="modal fade" id="sendContract" tabindex="-1" role="dialog" aria-labelledby="sendContractLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="myModalLabel"> <strong class="text-danger">Warning!</strong></h3>
-          </div>
-          <div class="modal-body">
-            <h4>You are about to execute a function on contract 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8.</h4>
-            <p> Estimated fee consumption: <strong> 0.00043598 ether (21,799 gas) </strong> </p>
-            <p> Provided Maximum Fee: <strong> 0.00243598 ether (121,799 gas) </strong> </p>
-            <p> Gas Price:  <strong> 0.021 ether per million gas </strong> </p>
-            <p> Data:  <strong> 0x4e71d92d </strong> </p>
-            <h4> Are you <span class="text-underline">sure</span> you want to do this?</h4>
-          </div>
-          <div class="modal-footer text-center">
-            <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
-            <button type="button" class="btn btn-primary" ng-click="sendTx()">Yes, I am sure! Send transaction.</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- / Step 3 - Modal -->
-
-
-  </section>
-
-
-</div>
-<!-- / contracts -->
 
 
     <!-- Help -->
