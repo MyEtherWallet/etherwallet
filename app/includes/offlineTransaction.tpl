@@ -2,7 +2,7 @@
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.offlineTransaction.id" ng-controller='sendOfflineTxCtrl'>
 
   <h2> Offline Transaction </h2>
-  <p> Generating offline transactions can be done in 3 (relatively) easy steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This allows you ensure you private keys touch and internet-connected device. </p>
+  <p> Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This allows you to ensure your private keys do not touch an internet-connected device. </p>
 
   <hr />
 
