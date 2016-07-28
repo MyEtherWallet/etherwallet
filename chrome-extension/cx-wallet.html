@@ -1221,8 +1221,8 @@
     <li> Select your wallet file -or- paste your private key. </li>
     <li> If the wallet is encrypted, a text box will automatically appear. Enter the password. </li>
     <li> Click the "Decrypt" button. </li>
-    <li> Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document. </li>
-    <li> That's it. You can now send ETH to that address and be certain you can access it!</li>
+    <li> Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet. </li>
+    <li> If you are planning on holding a large amount of ETH, we recommend that send a small amount of ETH from new wallet before depositting a large amount. Send .001 ETH to your new wallet, access that wallet, send that .001 ETH to another address, and ensure everything works smoothly.</li>
   </ol>
 
 
@@ -1234,10 +1234,10 @@
   <p>First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Transaction" tab.</p>
   <p><strong> QuickSend: </strong></p>
   <ol>
-    <li>Copy the address you wish to send Ether to, to your clipboard.</li>
-    <li>Click the Chrome Extension Icon.</li>
-    <li>Click the green "QuickSend" button. </li>
-    <li>Select the wallet you wish to send from.</li>
+    <li> Copy the address you wish to send Ether to, to your clipboard.</li>
+    <li> Click the Chrome Extension Icon.</li>
+    <li> Click the green "QuickSend" button. </li>
+    <li> Select the wallet you wish to send from.</li>
     <li> Paste the address that you copied earlier into the address field.</li>
     <li> Enter the amount you would like to send. You can also click the [Send total available balance] link if you would like the transfer the entire balance.</li>
     <li> Click "Send Transaction". </li>
@@ -1302,7 +1302,7 @@
 
 
   <h4>7. Is using the send transaction offline? </h4>
-  <p> No, the send transaction tab is not offline. It needs the internet in order to send Ether from one wallet to another. However, when you send a transaction, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" tab so that you can ensure your private keys are on an offline/airgapped computer at all times.</p>
+  <p> No, the send transaction tab is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send") to transfer Ether from one wallet to another. However, when you send a transaction, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" tab so that you can ensure your private keys are on an offline/airgapped computer at all times.</p>
 
 
   <h4>8. How do I make an offline transaction?</h4>
@@ -1322,12 +1322,11 @@
 
 
   <h4>9. How do I send to a contract?</h4>
-  <p> Sending to a contract often requires you to include data or additional gas or both. Previously, you had to use the "Offline Transaction" Tab in order to include data and gas with your transaction. Now, you can use the default "Send Transaction" tab to do so.</p>
+  <p> Sending to a contract often requires you to include data or additional gas or both.</p>
   <p> Simply navigate to the "Send Transaction" tab, Select your wallet file -or- enter/paste your private key and unlock your wallet, enter a "To Address" and "Amount to Send", and then click the "Advanced Options" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.</p>
 
 
   <h4>10. How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?</h4>
-  
   <p><strong> Using an Geth/Mist JSON file from MyEtherWallet v2+....</strong></p>
   <ol>
     
@@ -1339,6 +1338,31 @@
     <li> Your account should show up immediately under "Accounts." </li>
   </ol>
 
+  <p><strong> Using your unencrypted private key... </strong></p>
+  <ol>
+    <li> If you do not already have your unencrypted private key, navigate to the "View Wallet Details" tab.</li>
+    <li> Select your wallet file -or- enter/paste your private key to unlock your wallet.</li>
+    <li> Copy Your Private Key (unencrypted). </li>
+    <li> If you are on a Mac:</li>
+      <ul>
+        <li> Open Text Edit and paste this private key.</li>
+        <li> Go to the menu bar and click "Format" -> "Make Plain Text".</li>
+        <li> Save this file to your <code>desktop</code> as <code>nothing_special_delete_me.txt</code>. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog. </li>
+        <li> Open terminal and run the following command: <code>geth account import ~/Desktop/nothing_special_delete_me.txt</code></li>
+        <li> This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don't forget it.</li>
+        <li> Delete the nothing_special_delete_me.txt from your desktop.</li>
+        <li> The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". </li>
+      </ul>
+    <li> If you are on a PC:</li>
+      <ul>
+        <li>Open Notepad & paste the private key into notepad.</li>
+        <li>Save the file as <code>nothing_special_delete_me.txt</code> at <code>C:\</code></li>
+        <li>Run the command, <code>geth account import C:\nothing_special_delete_me.txt</code></li>
+        <li> This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don't forget it.</li>
+        <li>After successful import, delete the file at <code>C:\nothing_special_delete_me.txt</code></li>
+        <li> The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". </li>
+      </ul>
+    </ol>
 
   <h4>11. What does "Gas Limit Too Low" Mean?</h4>
   <p> Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Transaction" tab, click the "Advanced Options" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction. </p>
