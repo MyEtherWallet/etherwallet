@@ -31,16 +31,6 @@
 <body>
 
 
-  <a href="https://www.myetherwallet.com" class="announcement annoucement-warning" target="_blank">
-    <div class="container">
-      MyEtherWallet is only served at www.myetherwallet.com and kvhnuke.github.io/etherwallet/. Beware of the phishing scams!
-    </div>
-  </a>
-  <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
-    <div class="container">
-      If you created a wallet -or- downloaded the repo before <strong>Dec. 31st, 2015</strong>, please check your wallets & download a new version of the repo. Click for details.
-    </div>
-  </a>
   <header class="container-fluid bg-gradient text-white">
     <section class="container">
       <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
@@ -1023,23 +1013,24 @@
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.help.id">
 
 
+  <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" target="_blank"><div class="alert alert-danger">If you created a wallet -or- downloaded the repo before <strong>Dec. 31st, 2015</strong>, please check your wallets &amp; download a new version of the repo. Click for details.</div></a>
+
   <h2> Help </h2>
-  <p>Do you see something missing? Have another question? Get in touch with us and we will not only answer your question, we will update this page to be more useful to people in the future!</p>
+
+  <p>Do you see something missing? Have another question? <a href="mailto:myetherwallet@gmail.com" target="_blank"> Get in touch with us </a> and we will not only answer your question, we will update this page to be more useful to people in the future!</p>
 
 
   <h4>First, a reminder </h4>
   <ul>
-    <li><strong>Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.</strong> While we have tested thoroughly & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. While do everything we can to ensure that this does not happen and are available via email/reddit/twitter to assist in every way we can, this possibility still exists. Please do not invest more than you are willing to lose and please be careful. If something were to happen, we are sorry, <strong>but we are not responsible for the lost Ether.</strong></li>
-    <li>MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data is created on our computer/your browser, not our servers. It's not a website where you put your Ether and we store them for you. We just make it easy for you to save your wallet information in your browser/on your computer. Then we give you a place you to access that information and do stuff with it.</li>
+    <li><strong>Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.</strong> While we have tested thoroughly & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose and please be careful. If something were to happen, we are sorry, <strong>but we are not responsible for the lost Ether.</strong></li>
+    <li>MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data is created on our computer/your browser, not our servers. It's <strong>not</strong> a website where you put your Ether and we store them for you. We just make it easy for you to save your wallet information in your browser/on your computer. Then we give you a place you to access that information and do stuff with it.</li>
     <li>Please, do not forget to save your private key & password when you create a new wallet. Back them up in multiple phsyical locations &ndash; not just on your computer!</li>
-    <li>Please make sure you are sending to the correct address.</li>
-    <li>Please reach out to us with any and all feedback you have, especially with things that confuse you or error messages that don't make sense.</li>
   </ul>
 
 
-  <h4>0. I'm new. What do I do? </h4>
+  <h4> 0. I'm new. What do I do? </h4>
   <p> MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, <strong> you are responsible for safely backing it up</strong>.
-  <p> Do not hesitate to reach out to us if you have any questions. Remember, Ether now holds real monetary value and can be a significant investment. If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  I do not say this to scare you, only to remind you to be diligent, read carefully, and take your time during all the steps.</p>
+  <p> Do not hesitate to reach out to us if you have any questions. Remember, Ether holds real monetary value and can be a significant investment. If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  I do not say this to scare you, only to remind you to be diligent, read carefully, and take your time during the next steps. </p>
   <ol>
     <li> Create a new wallet. </li>
     <li> Back the wallet up.</li>
@@ -1052,60 +1043,58 @@
   <ol>
        <li> Go to the "Generate Wallet" tab.</li>    
     
-    <li> Create a strong password. Save this somewhere safe. <em><small>The password encrypts the private key for this wallet. You will need this password to send transactions.</small></em></li>
-    <li> Type or copy the password from where you have saved it and paste it into the "Enter a password" field. </li>
+    <li> Enter a strong, but easy to remember, password. If you think you may forget it, save it somewhere safe. <em><small>The password encrypts the private key for this wallet. You will need this password to send transactions.</small></em></li>
     <li> Click "GENERATE". </li>
-    <li> Your wallet has now been generated. But, you are NOT done yet! Back up your wallet now! See #2a. </li>
-    <li> Then: Verify that you can successfully access you wallet <strong>before</strong> sending any Ether to this wallet. See below. </li>
+    <li> Your wallet has now been generated. But, you are NOT done yet! Continue to Step #2a.</li>
   </ol>
 
 
   <h4>2a. How do I save/backup my wallet?</h4>
-  <p> You should always back up your wallet externally - like on a USB drive and/or a piece of paper.</p>
+  <p> You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.</p>
   <ol>
-    <li> Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. You may know this as your account # or public key.</li>
-    <li> Save a version private key. Do not show it to anyone else. Your private key is necessary when you want to access your wallet to move it, spend it, or send it! There are 3 types of private keys:</li>
+    <li> Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you. You may know this as your account # or public key.</li>
+    <li> Save a version private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:</li>
     <ul>
-      <li><strong>Keystore/JSON File (Encrypted · Mist/Geth Format · Recommended): </strong> This JSON file matches the keystore format used by Mist / geth so you can easily import it into those clients in the future.This is the recommended file to download and back up.</li>
+      <li><strong>Keystore/JSON File (Encrypted · Mist/Geth Format · Recommended): </strong> This JSON file matches the keystore format used by Mist / geth so you can easily import it into those clients in the future. This is the recommended file to download and back up.</li>
       <li><strong>JSON File (unencrypted): </strong> This is the unencrypted, JSON format of your private key. Again, this means you do not need the password but anyone who finds your JSON can access your wallet and your Ether without the password. </li>
       <li><strong>Private Key (unencrypted): </strong> This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted private keys are typically recommended.</li>
     </ul>
-    <li> Place  this information in a folder, along with PDF version of your paper wallet, and whatever other information you would like to keep. Store it on your computer.</li>
-    <li> Take this folder and place it on a USB drive. Store this USB drive in a place securely, in a separate location from your computer. Maybe that place is at your office (don't forget it when you're rich off Ether & ragequit!), at your parent's or another family member's house, in a storage locker, etc. For added security, you can encrypt that USB drive using the following guides: <a href="http://computerbeginnersguides.com/blog/2015/09/03/encrypt-a-usb-flash-drive-with-bitlocker-in-windows-10-professional-or-enterprise/" target="_blank">Windows</a> or <a href="http://www.theinstructional.com/guides/encrypt-an-external-disk-or-usb-stick-with-a-password" target="_blank">Mac</a>.</li>
+    <li> Place this information in a folder, with the PDF version of your paper wallet, and whatever other information you would like to keep. Store it on your computer.</li>
+    <li> Take this folder and place it on a USB drive. Store this USB drive in a place securely, in a separate location from your computer. Maybe that place is at your office, a family member's house, in a storage locker, in a safety deposit box, etc. For added security, you can encrypt that USB drive using the following guides: <a href="http://computerbeginnersguides.com/blog/2015/09/03/encrypt-a-usb-flash-drive-with-bitlocker-in-windows-10-professional-or-enterprise/" target="_blank">Windows</a> or <a href="http://www.theinstructional.com/guides/encrypt-an-external-disk-or-usb-stick-with-a-password" target="_blank">Mac</a>.</li>
     <li> Print the wallet if you have a printer. Otherwise, write down on a piece of paper your: address, and private key (unencrypted). Again, store this as a secure location, separate from your computer and the USB drive.</li>
-    <li> Now, if your house burns down you still have a USB drive and a piece of paper. If your HDD crashes, you still have a USB drive and a piece of paper.</li>
-    <li> A final reminder: You NEED the private key (keystore file) & password in order to access your account and Ether in the future. We do not receive, save, store, or transmit <strong>anything</strong> to our servers and cannot help you recover your funds if you lose your private key/keystore file and password.</li>
+    <li> Now, if your house burns down you still have a USB drive and a piece of paper. If your hard drive crashes, you still have a USB drive and a piece of paper.</li>
+    <li> A final reminder: You NEED the private key (keystore file) + the password in order to access your account and Ether in the future. We do not receive, save, store, or transmit <strong>anything</strong> to our servers and cannot help you recover your funds if you lose your private key/keystore file and password.</li>
   </ol>
 
 
   
   <h4>2b. How do I safely / offline / cold storage with MyEtherWallet?</h4>
   <ol>
-    <li>Go here: <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages">https://github.com/kvhnuke/etherwallet/tree/gh-pages</a>.</li>
+    <li>Go to our github: <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages">https://github.com/kvhnuke/etherwallet/tree/gh-pages</a>.</li>
     <li>Click download zip in the upper right.</li>
     <li>Move zip to an airgapped computer.</li>
     <li>Unzip it.</li>
     <li>Double-Click index.html.</li>
-    <li>Generate wallet with a strong password.</li>
+    <li>Generate a wallet with a strong password.</li>
     <li>Save keystore file and print wallet or write down private key on piece of paper.</li>
     <li>Save address as well. You will need to address to send ETH to yourself later.</li>
     <li>Store these papers / USBs in multiple physically separate locations.</li>
     <li>Go to the view wallet details tab and type in your private key / password from your piece of paper to ensure they are correct and access your wallet. Check that the address you wrote down is the same.</li>
     <li>Refresh that page. Select the keystore file and enter the password to ensure it are correct and can access your wallet. Check that the address you saved on your computer or USB is the same.</li>
   </ol>
-  <p>Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). So. Multiple. Different. Physical. Locations. </p>
+  <p>Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).</p>
   
 
 
   <h4>3. How do I verify I have access to my new wallet?</h4>
   <p> <strong> Before you send any Ether to your new wallet</strong>, you should ensure you have access to it. You should NOT copy and paste from the generate wallet tab, but instead copy and paste from the text document or paper where you have stored your wallet information.</p>
   <ol>
-       <li> Navigate to the "Send Transaction" tab. </li>    
+       <li> Navigate to the "View Wallet Info" tab. </li>    
     
     <li> Select your wallet file -or- paste your private key. </li>
-    <li> If the wallet is the encrypted, a text box will automatically appear. Enter the password. </li>
+    <li> If the wallet is encrypted, a text box will automatically appear. Enter the password. </li>
     <li> Click the "Decrypt" button. </li>
-    <li> Your wallet information should show up. The account address is on the left side, underneath a colorful icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document. </li>
+    <li> Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document. </li>
     <li> That's it. You can now send ETH to that address and be certain you can access it!</li>
   </ol>
 
@@ -1115,9 +1104,9 @@
   <p> Once you have saved and backed up all information <strong> and </strong> verified you have access to your new wallet, you can transfer some Ether to that new wallet.</p>
   <p><strong>Before you start,</strong> If you plan to move a large amount of ether, you should test sending a small amount first to make sure everything goes smoothly. After making the small transaction, you can check by pasting the TX ID or the address into a blockchain explorer, e.g. <a href="https://www.etherscan.io" target="_blank">https://www.etherscan.io</a>.</p>
   <ol>
-    <li> Navigate to the "Send Transaction" tab</li>
+    <li> Navigate to the "Send Transaction" tab.</li>
     <li> Select your wallet file -or- paste your private key. </li>
-    <li> If the wallet is the encrypted, a text box will automatically appear. Enter the password. </li>
+    <li> If your wallet is encrypted, a text box will automatically appear. Enter the password. </li>
     <li> Click the "Decrypt" button. </li>
     <li> You will now see your account information. It'll show your address, your balance, and have a space for the <strong>Receiving Address</strong> and the <strong>Amount you want to send</strong>.</li>
     <li> Enter the address you would like to send to in the "To Address:" field.</li>

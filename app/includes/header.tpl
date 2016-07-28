@@ -31,16 +31,6 @@
 <body>
 
 @@if (site === 'mew' ) {
-  <a href="https://www.myetherwallet.com" class="announcement annoucement-warning" target="_blank">
-    <div class="container">
-      MyEtherWallet is only served at www.myetherwallet.com and kvhnuke.github.io/etherwallet/. Beware of the phishing scams!
-    </div>
-  </a>
-  <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
-    <div class="container">
-      If you created a wallet -or- downloaded the repo before <strong>Dec. 31st, 2015</strong>, please check your wallets & download a new version of the repo. Click for details.
-    </div>
-  </a>
   <header class="container-fluid bg-gradient text-white">
     <section class="container">
       <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
