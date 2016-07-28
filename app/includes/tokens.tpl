@@ -4,8 +4,7 @@
   <!-- TOP: Tokens -->
   <section class="row">
     <div class="col-xs-12">
-      <h2> Tokens </h2>
-      <p> Use this tab to <strong>Send any tokens on the Ethereum network</strong>.</p>
+      <h2> Send Tokens </h2>
     </div>
   </section>
   <br />
@@ -152,7 +151,7 @@
             <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
           </h4>
           <h4> Are you <span class="text-underline">sure</span> you want to do this?</h4>
-          <p><em> NOTE: If you encounter a gas error (account doesn't exist or balance too low) then you need to add ETH to your account) to cover the cost of sending DAO tokens.</em></p>
+          <p><em> NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.</em></p>
 
         </div>
         <div class="modal-footer text-center">

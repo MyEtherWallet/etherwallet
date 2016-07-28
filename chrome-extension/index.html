@@ -316,8 +316,8 @@
 
     <!-- send transaction -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
-  <h2> Send Transaction </h2>
-  <p> If you want to send Tokens, please use The DAO or Digix pages instead. </p>
+  <h2> Send Ether </h2>
+  <p> If you want to send Tokens, please use the "Send Token" page instead. </p>
   <div>
       
       
@@ -447,8 +447,8 @@
     <!-- send transaction -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.offlineTransaction.id" ng-controller='sendOfflineTxCtrl'>
 
-  <h2> Offline Transaction </h2>
-  <p> Generating offline transactions can be done in 3 (relatively) easy steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This allows you ensure you private keys touch and internet-connected device. </p>
+  <h2> Send / Generate Offline Transactions </h2>
+  <p> Generating offline transactions can be done in 3 (relatively) easy steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This allows you ensure you private keys never touch an internet-connected device. </p>
 
   <hr />
 
@@ -614,8 +614,7 @@
   <!-- TOP: Tokens -->
   <section class="row">
     <div class="col-xs-12">
-      <h2> Tokens </h2>
-      <p> Use this tab to <strong>Send any tokens on the Ethereum network</strong>.</p>
+      <h2> Send Tokens </h2>
     </div>
   </section>
   <br />
@@ -760,7 +759,7 @@
             <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
           </h4>
           <h4> Are you <span class="text-underline">sure</span> you want to do this?</h4>
-          <p><em> NOTE: If you encounter a gas error (account doesn't exist or balance too low) then you need to add ETH to your account) to cover the cost of sending DAO tokens.</em></p>
+          <p><em> NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.</em></p>
 
         </div>
         <div class="modal-footer text-center">
@@ -786,8 +785,8 @@
   <!-- TOP: The DAO -->
   <section class="row">
     <div class="col-md-9 col-sm-8">
-      <h2> The DAO </h2>
-      <p> Use this tab to <strong>Withdraw your DAO Tokens for ETH or Send DAO Tokens </strong>.</p>
+      <h2> Withdraw DAO for ETH </h2>
+      <p> Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.</p>
     </div>
     <div class="col-md-3 col-sm-4"><img src="images/thedao-addressicon.png" width="250px" height="auto" style="margin-top: 32px;" /></div>
   </section>
@@ -850,7 +849,6 @@
         </div>
         <br /><br /><br />
         <ul>
-          <li> There is no deadline for the withdrawals. Waiting is not the worst idea. </li>
           <li> If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </li>
         </ul>
       </section>
@@ -890,7 +888,7 @@
     <!-- Digix -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.digix.id">
   <h2> Digix </h2>
-  <p><strong>Claim</strong> and <strong> Send </strong> your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st.</p>
+  <p>Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.</p>
 
   
   
@@ -1397,13 +1395,13 @@
       <!--<img src="images/qrcode_test.png" width="90%;" height="auto" class="pull-left" />-->
       <p class="print-text" style="padding-top: 25px;">YOUR ADDRESS</p>
     </div>
-    <div class="print-qr-code-2">
-      <div id="paperwalletprivqr"></div>
-      <p class="print-text" style="padding-top: 30px;">YOUR PRIVATE KEY</p>
-    </div>
     <div class="print-notes">
       <img src="images/notes-bg.png" width="90%;" height="auto" class="pull-left" />
       <p class="print-text">AMOUNT / NOTES</p>
+    </div>
+    <div class="print-qr-code-2">
+      <div id="paperwalletprivqr"></div>
+      <p class="print-text" style="padding-top: 30px;">YOUR PRIVATE KEY</p>
     </div>
     <div class="print-address-container">
       <p>

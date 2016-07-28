@@ -1,7 +1,7 @@
 <!-- Digix -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.digix.id">
   <h2> Digix </h2>
-  <p><strong>Claim</strong> and <strong> Send </strong> your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st.</p>
+  <p>Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.</p>
 
   @@if (site === 'cx' ) {
     <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>
