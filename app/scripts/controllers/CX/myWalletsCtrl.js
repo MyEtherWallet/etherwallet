@@ -21,6 +21,7 @@ var myWalletsCtrl = function($scope, $sce) {
 		cxFuncs.getWalletsArr(function(wlts) {
 			$scope.allWallets = wlts;
 			$scope.updateBalance('allWallets');
+			$scope.setTokens();
 		});
 		cxFuncs.getWatchOnlyArr(function(wlts) {
 			$scope.allWatchOnly = wlts;
@@ -28,6 +29,19 @@ var myWalletsCtrl = function($scope, $sce) {
 			$scope.$apply();
 		});
 	};
+	$scope.setTokens = function() {
+		for(var j=0;j<$scope.allWallets.length; j++){
+        $scope.tokens = Token.popTokens;
+        $scope.allWallets[j].tokens = [];
+				for (var i = 0; i < $scope.tokens.length; i++) {
+					$scope.allWallets[j].tokens.push(new Token($scope.tokens[i].address, $scope.allWallets[j].addr, $scope.tokens[i].symbol, $scope.tokens[i].decimal));
+				}
+        var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+        for (var i = 0; i < storedTokens.length; i++) {
+					$scope.allWallets[j].tokens.push(new Token(storedTokens[i].contractAddress, $scope.allWallets[j].addr, globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal));
+				}
+		}
+	}
 	$scope.updateBalance = function(varWal) {
 		for (var i = 0; i < $scope[varWal].length; i++) {
 			$scope.setBalance($scope[varWal][i].addr, i, varWal);

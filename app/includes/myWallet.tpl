@@ -21,10 +21,10 @@
         <td>{{twallet.nick}}</td>
         <td>{{twallet.addr}}</td>
         <td>
-          <strong class="text-success">{{twallet.balance}} ether</strong><br>
-          <small><span>{{twallet.btc}} BTC</span> &nbsp;&nbsp;
-          <span>$ {{twallet.usd}} USD</span> &nbsp;&nbsp;
-          <span>€ {{twallet.eur}} EUR</span></small>
+          <strong class="text-success">{{twallet.balance}} ETH</strong><br>
+          <small><span ng-repeat="token in twallet.tokens">{{token.getBalance() | number:2 | number }} {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
+          <br />
+          <small><span>{{twallet.btc | number:2 | number }} BTC</span> &nbsp;&nbsp; <span>$ {{twallet.usd | number:2 | number }} USD</span> &nbsp;&nbsp; <span>€ {{twallet.eur | number:2 | number }} EUR</span></small>
         </td>
         <td class="text-center"><a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a></td>
         <td class="text-center"><a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')"><img src="images/icon-view.svg" title="View Wallet Details" /></a></td>
