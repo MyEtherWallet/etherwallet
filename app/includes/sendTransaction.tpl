@@ -61,9 +61,9 @@
         <a class="pull-right" ng-click="transferAllBalance()" ng-show="tx.sendMode==0">Transfer total available balance</a>
         <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
         <div class="radio">
-          <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>Ether (Default Transaction)</label><br />
-          <label><input type="radio" name="currencyRadio" value="1" ng-model="tx.sendMode"/>Only ETH (via Replay Protection Contract)</label><br />
-          <label><input type="radio" name="currencyRadio" value="2" ng-model="tx.sendMode"/>Only ETC (via Replay Protection Contract)</label>
+          <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>>ETH (Stardard Transaction) *</label><br />
+          <label><input type="radio" name="currencyRadio" value="1" ng-model="tx.sendMode"/>Only ETH **</label><br />
+          <label><input type="radio" name="currencyRadio" value="2" ng-model="tx.sendMode"/>Only ETC ***</label>
         </div>
         <!-- advanced option panel -->
         <div ng-show="tx.sendMode==0">
@@ -86,7 +86,10 @@
       </div>
       <div class="col-xs-12">
         <p><small> * We use standard rates for all gas + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether + current gas price + 1 gwei in gas. We do not take a transaction fee.</small></p>
-
+        <p><small> We use standard rates for all gas + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether + current gas price + 1 gwei in gas. We do not take a transaction fee.</small></p>
+        <p><small><strong>* ETH (Stardard Transaction):</strong> This is a Default Transaction directly from one address to another. It has a default gas of 21000. It is likely that this ETH sent on the ETH chain will be replayed onto the ETC chain.</small></p>
+        <p><small><strong>** Only ETH:</strong> This sends via <a href="https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/" target="_blank">Vitalik's replay protection contract</a> so that you only send on the <strong>ETH</strong> chain. </small></p>
+        <p><small><strong>*** Only ETC:</strong> This sends via <a href="https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/" target="_blank">Vitalik's replay protection contract</a> so that you only send on the <strong>ETC</strong> chain. </small></p>
          <div ng-bind-html="validateTxStatus"></div>
       </div>
       <div class="form-group col-xs-12" ng-show="showRaw">
