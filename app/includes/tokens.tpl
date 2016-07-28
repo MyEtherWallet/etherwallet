@@ -19,7 +19,7 @@
   <!-- / TOP: Tokens -->
 
   <!-- BOTTOM: Tokens -->
-  <section class="row" ng-show="wallet!=null" ng-controller='theDaoCtrl'>
+  <section class="row" ng-show="wallet!=null" ng-controller='tokenCtrl'>
     <hr />
     <div class="col-sm-4">
       <h4> Account Information </h4>
@@ -33,15 +33,10 @@
           <br />
           <strong class="text-primary" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
           <br />
-          <strong style="margin-left: 1em"> {{token.dao.balance}} DAO</strong>
-          <br />
-          <strong style="margin-left: 1em"> {{token.dgd.balance}} DGD</strong>
-          <br />
-          <strong style="margin-left: 1em"> {{token.dgdb.balance}} DGD Badges</strong>
-          <br />
-          <strong style="margin-left: 1em"> {{token.mrk.balance}} MKR</strong>
-          <br />
-          <strong style="margin-left: 1em"> {{token.unicorn.balance}} Unicorns</strong><br />
+          <div ng-repeat="token in tokenObjs track by $index">
+            <strong style="margin-left: 1em"> {{token.getBalance()}} {{token.getSymbol()}}</strong>
+            <br />
+          </div>
         </p>
 
         </p>
@@ -70,7 +65,7 @@
     <div class="col-sm-8">
 
       <!-- Send DAO Tokens -->
-      <section class="daoGetTokens clearfix" ng-show="curTab=='send'">
+      <section class="daoGetTokens clearfix">
         <h4>Send Tokens</h4>
         <div class="form-group col-xs-10">
           <label> To Address: </label>
@@ -87,21 +82,13 @@
           </label>
           <input class="form-control" type="text" placeholder="Amount" ng-model="tokenTx.value"/>
           <div class="radio">
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>DAO </label>
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>DGD </label>
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>DGDb </label>
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>MKR </label>
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>🦄 </label>
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/> Custom </label>
+            <label ng-repeat="token in tokenObjs track by $index"><input type="radio" name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"/>{{token.getSymbol()}} </label>
+            <!-- <label><input type="radio" name="currencyRadio" value="99" ng-model="tokenTx.id"/> Custom </label> -->
           </div>
 
-          <section class="custom-token-fields well">
+          <section class="custom-token-fields well" ng-show="tokenTx.id==99">
             <div class="form-group">
               <label> Address: </label>
-              <input class="form-control" type="text" />
-            </div>
-            <div class="form-group">
-              <label> Token Name: </label>
               <input class="form-control" type="text" />
             </div>
             <div class="form-group">
@@ -119,7 +106,7 @@
 
           <div class="form-group">
             <label> Gas: </label>
-            <input class="form-control" type="text" ng-model="tx.gasLimit"/>
+            <input class="form-control" type="text" ng-model="tokenTx.gasLimit"/>
           </div>
           <!-- / advanced option panel -->
         </div>
@@ -160,7 +147,7 @@
           <h4>
             You are about to send
             <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
-            <strong id="confirmCurrancy" class="text-primary"> DAO Token </strong>
+            <strong id="confirmCurrancy" class="text-primary"> {{tokenObjs[tokenTx.id].getSymbol()}} </strong>
             to address
             <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
           </h4>

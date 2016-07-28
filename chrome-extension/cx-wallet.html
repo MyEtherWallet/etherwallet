@@ -770,7 +770,7 @@
   <!-- / TOP: Tokens -->
 
   <!-- BOTTOM: Tokens -->
-  <section class="row" ng-show="wallet!=null" ng-controller='theDaoCtrl'>
+  <section class="row" ng-show="wallet!=null" ng-controller='tokenCtrl'>
     <hr />
     <div class="col-sm-4">
       <h4> Account Information </h4>
@@ -784,15 +784,10 @@
           <br />
           <strong class="text-primary" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
           <br />
-          <strong style="margin-left: 1em"> {{token.dao.balance}} DAO</strong>
-          <br />
-          <strong style="margin-left: 1em"> {{token.dgd.balance}} DGD</strong>
-          <br />
-          <strong style="margin-left: 1em"> {{token.dgdb.balance}} DGD Badges</strong>
-          <br />
-          <strong style="margin-left: 1em"> {{token.mrk.balance}} MKR</strong>
-          <br />
-          <strong style="margin-left: 1em"> {{token.unicorn.balance}} Unicorns</strong><br />
+          <div ng-repeat="token in tokenObjs track by $index">
+            <strong style="margin-left: 1em"> {{token.getBalance()}} {{token.getSymbol()}}</strong>
+            <br />
+          </div>
         </p>
 
         </p>
@@ -821,7 +816,7 @@
     <div class="col-sm-8">
 
       <!-- Send DAO Tokens -->
-      <section class="daoGetTokens clearfix" ng-show="curTab=='send'">
+      <section class="daoGetTokens clearfix">
         <h4>Send Tokens</h4>
         <div class="form-group col-xs-10">
           <label> To Address: </label>
@@ -838,21 +833,13 @@
           </label>
           <input class="form-control" type="text" placeholder="Amount" ng-model="tokenTx.value"/>
           <div class="radio">
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>DAO </label>
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>DGD </label>
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>DGDb </label>
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>MKR </label>
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>🦄 </label>
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/> Custom </label>
+            <label ng-repeat="token in tokenObjs track by $index"><input type="radio" name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"/>{{token.getSymbol()}} </label>
+            <!-- <label><input type="radio" name="currencyRadio" value="99" ng-model="tokenTx.id"/> Custom </label> -->
           </div>
 
-          <section class="custom-token-fields well">
+          <section class="custom-token-fields well" ng-show="tokenTx.id==99">
             <div class="form-group">
               <label> Address: </label>
-              <input class="form-control" type="text" />
-            </div>
-            <div class="form-group">
-              <label> Token Name: </label>
               <input class="form-control" type="text" />
             </div>
             <div class="form-group">
@@ -870,7 +857,7 @@
 
           <div class="form-group">
             <label> Gas: </label>
-            <input class="form-control" type="text" ng-model="tx.gasLimit"/>
+            <input class="form-control" type="text" ng-model="tokenTx.gasLimit"/>
           </div>
           <!-- / advanced option panel -->
         </div>
@@ -911,7 +898,7 @@
           <h4>
             You are about to send
             <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
-            <strong id="confirmCurrancy" class="text-primary"> DAO Token </strong>
+            <strong id="confirmCurrancy" class="text-primary"> {{tokenObjs[tokenTx.id].getSymbol()}} </strong>
             to address
             <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
           </h4>
@@ -995,16 +982,8 @@
     </div>
 
     <div class="col-sm-8">
-
-      <div class = "btn-group">
-        <a class="btn btn-primary" ng-class="curTab=='withdraw' ? 'active' : ''" ng-click="curTab='withdraw'"> Withdraw DAO Tokens </a>
-        <a class="btn btn-primary" ng-class="curTab=='send' ? 'active' : ''" ng-click="curTab='send'"> Send DAO Tokens </a>
-        <!--<a class="btn btn-primary" ng-class="curTab=='vote' ? 'active' : ''" ng-click="curTab='vote'"> Vote on a Proposal </a>-->
-      </div>
-
-
       <!-- Withdraw DAO Tokens -->
-      <section class="daoGetTokens clearfix" ng-show="curTab=='withdraw'">
+      <section class="daoGetTokens clearfix">
         <br /><br /><br />
         <div class=" text-center">
           <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#withdrawTransaction"> WITHDRAW YOUR DAO TOKENS FOR ETH </a>
@@ -1019,57 +998,6 @@
         </ul>
       </section>
       <!-- / Withdraw DAO Tokens -->
-
-      <!-- Send DAO Tokens -->
-      <section class="daoGetTokens clearfix" ng-show="curTab=='send'">
-        <h4>Send DAO Tokens</h4>
-        <div class="form-group col-xs-10">
-          <label> To Address: </label>
-          <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tokenTx.to" ng-change="validateAddress()"/>
-          <div ng-bind-html="validateAddressStatus"></div>
-        </div>
-        <div class="col-xs-2 address-identicon-container">
-          <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
-        </div>
-        <div class="form-group col-xs-12">
-          <label>
-            Amount to Send:
-            <br />
-          </label>
-          <input class="form-control" type="text" placeholder="Amount" ng-model="tokenTx.value"/>
-          <div class="radio">
-            <label><input type="radio" name="currencyRadio" value="dao" ng-model="tokenTx.unit"/>DAO Tokens</label>
-          </div>
-          <!-- advanced option panel -->
-          <section>
-            <div class="form-group">
-              <label> Gas: </label>
-              <input class="form-control" type="text" ng-model="tx.gasLimit"/>
-            </div>
-          </section>
-          <!-- / advanced option panel -->
-        </div>
-        <div class="form-group col-xs-12">
-          <a class="btn btn-info btn-block" ng-click="generateTokenTx()">GENERATE TRANSACTION</a>
-        </div>
-        <div class="col-xs-12">
-           <div ng-bind-html="validateTxStatus"></div>
-        </div>
-        <div class="form-group col-xs-12" ng-show="showRaw">
-          <label> Raw Transaction </label>
-          <textarea class="form-control" rows="4" disabled >{{rawTx}}</textarea>
-          <label> Signed Transaction </label>
-          <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
-        </div>
-        <div class="form-group col-xs-12" ng-show="showRaw">
-          <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction">SEND TRANSACTION</a>
-        </div>
-        <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
-      </section>
-      <!--/ Send DAO Tokens -->
-
-
-
     </div>
   <!-- / BOTTOM: The DAO -->
 
@@ -1094,43 +1022,12 @@
     </div>
   </div>
   <!-- / Withdraw Modal -->
-
-
-  <!-- Send Modal -->
-  <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel"> <strong class="text-danger">Warning!</strong></h3>
-        </div>
-        <div class="modal-body">
-          <h4>
-            You are about to send
-            <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
-            <strong id="confirmCurrancy" class="text-primary"> DAO Token </strong>
-            to address
-            <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
-          </h4>
-          <h4> Are you <span class="text-underline">sure</span> you want to do this?</h4>
-          <p><em> NOTE: If you encounter a gas error (account doesn't exist or balance too low) then you need to add ETH to your account) to cover the cost of sending DAO tokens.</em></p>
-
-        </div>
-        <div class="modal-footer text-center">
-          <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
-          <button type="button" class="btn btn-primary" ng-click="sendTx()">Yes, I am sure! Make transaction.</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- / Send Modal -->
 </section>
   <!-- / Vote Modal -->
 
 
 </div>
 <!-- / The DAO -->
-
 
 
     <!-- Digix -->
@@ -1158,12 +1055,6 @@
       <p>
         ETH Balance: <br />
         <strong style="margin-left: 1em"> {{etherBalance}} Ether </strong>
-      </p>
-      <p> DGD Token Balance: <br />
-        <strong style="margin-left: 1em"> {{tokenBalance}} DGD </strong>
-      </p>
-      <p> DGD Badge Balance: <br />
-        <strong style="margin-left: 1em"> {{badgeBalance}} DGDb  </strong>
       </p>
       <p> DGD Crowdsale Information: <br />
         <strong style="margin-left: 1em"> Centstotal: {{centsTotal}} </strong><br />
@@ -1194,43 +1085,8 @@
 
     <!-- Claim / Send Information - Right Column -->
     <section class="col-sm-8 digix-send">
-
-      <article class="btn-group">
-        <a class="btn btn-primary" ng-class="{active: showSend}" ng-click="showSend=true"> Send your DGD Tokens or Badges </a>
-        <a class="btn btn-primary" ng-class="{active: !showSend}" ng-click="showSend=false"> Claim your DGD Tokens </a>
-      </article>
-
-      <!-- Send Tokens Interface -->
-      <article ng-show="showSend">
-        <h4> Send Your DGD Tokens or Badges </h4>
-        <div class="form-group col-xs-10">
-          <label> To Address: </label>
-          <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tokenTx.to" ng-change="validateAddress(tokenTx.to,'validateAddressStatus')"/>
-          <div ng-bind-html="validateAddressStatus"></div>
-        </div>
-        <div class="col-xs-2 address-identicon-container">
-          <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
-        </div>
-        <div class="form-group col-xs-12">
-          <label>Amount to Send:</label><br />
-          <input class="form-control" type="text" placeholder="Amount" ng-model="tokenTx.value"/>
-          <div class="radio">
-            <label><input type="radio" name="tokenRadio" value="dgd" ng-model="tokenTx.unit"/>DGD Tokens</label>
-            <label><input type="radio" name="tokenRadio" value="dgdb" ng-model="tokenTx.unit"/>DGD Badges</label>
-          </div>
-          <div class="form-group">
-            <label> Gas: </label>
-            <input class="form-control" type="text" ng-model="tx.gasLimit"/>
-          </div>
-        </div>
-        <div class="form-group col-xs-12">
-          <a class="btn btn-info btn-block" ng-click="generateTokenTx()">GENERATE TRANSACTION</a>
-        </div>
-      </article>
-      <!-- / Send Tokens Interface -->
-
       <!-- Claim Interface -->
-      <article ng-show="!showSend">
+      <article>
         <h4> Claim Your DGD Tokens </h4>
         <div class="form-group col-xs-12">
           <label>Estimated fee consumption:</label><br />
@@ -1280,13 +1136,7 @@
         </div>
         <div class="modal-body">
           <h4>
-            You are about to send
-            <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
-            <strong id="confirmCurrancy" class="text-primary"> {{tokenTx.unit}} </strong>
-            to address
-            <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
-          </h4>
-          <h4> Are you <span class="text-underline"> sure </span> you want to do this?</h4>
+            You are about to claim your digix tokens. Are you <span class="text-underline"> sure </span> you want to do this?</h4>
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>

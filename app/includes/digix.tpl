@@ -26,12 +26,6 @@
         ETH Balance: <br />
         <strong style="margin-left: 1em"> {{etherBalance}} Ether </strong>
       </p>
-      <p> DGD Token Balance: <br />
-        <strong style="margin-left: 1em"> {{tokenBalance}} DGD </strong>
-      </p>
-      <p> DGD Badge Balance: <br />
-        <strong style="margin-left: 1em"> {{badgeBalance}} DGDb  </strong>
-      </p>
       <p> DGD Crowdsale Information: <br />
         <strong style="margin-left: 1em"> Centstotal: {{centsTotal}} </strong><br />
         <strong style="margin-left: 1em"> Weitotal: {{weiTotal}} </strong><br />
@@ -61,43 +55,8 @@
 
     <!-- Claim / Send Information - Right Column -->
     <section class="col-sm-8 digix-send">
-
-      <article class="btn-group">
-        <a class="btn btn-primary" ng-class="{active: showSend}" ng-click="showSend=true"> Send your DGD Tokens or Badges </a>
-        <a class="btn btn-primary" ng-class="{active: !showSend}" ng-click="showSend=false"> Claim your DGD Tokens </a>
-      </article>
-
-      <!-- Send Tokens Interface -->
-      <article ng-show="showSend">
-        <h4> Send Your DGD Tokens or Badges </h4>
-        <div class="form-group col-xs-10">
-          <label> To Address: </label>
-          <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tokenTx.to" ng-change="validateAddress(tokenTx.to,'validateAddressStatus')"/>
-          <div ng-bind-html="validateAddressStatus"></div>
-        </div>
-        <div class="col-xs-2 address-identicon-container">
-          <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
-        </div>
-        <div class="form-group col-xs-12">
-          <label>Amount to Send:</label><br />
-          <input class="form-control" type="text" placeholder="Amount" ng-model="tokenTx.value"/>
-          <div class="radio">
-            <label><input type="radio" name="tokenRadio" value="dgd" ng-model="tokenTx.unit"/>DGD Tokens</label>
-            <label><input type="radio" name="tokenRadio" value="dgdb" ng-model="tokenTx.unit"/>DGD Badges</label>
-          </div>
-          <div class="form-group">
-            <label> Gas: </label>
-            <input class="form-control" type="text" ng-model="tx.gasLimit"/>
-          </div>
-        </div>
-        <div class="form-group col-xs-12">
-          <a class="btn btn-info btn-block" ng-click="generateTokenTx()">GENERATE TRANSACTION</a>
-        </div>
-      </article>
-      <!-- / Send Tokens Interface -->
-
       <!-- Claim Interface -->
-      <article ng-show="!showSend">
+      <article>
         <h4> Claim Your DGD Tokens </h4>
         <div class="form-group col-xs-12">
           <label>Estimated fee consumption:</label><br />
@@ -147,13 +106,7 @@
         </div>
         <div class="modal-body">
           <h4>
-            You are about to send
-            <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
-            <strong id="confirmCurrancy" class="text-primary"> {{tokenTx.unit}} </strong>
-            to address
-            <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
-          </h4>
-          <h4> Are you <span class="text-underline"> sure </span> you want to do this?</h4>
+            You are about to claim your digix tokens. Are you <span class="text-underline"> sure </span> you want to do this?</h4>
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>

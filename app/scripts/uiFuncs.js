@@ -1,65 +1,83 @@
 'use strict';
 var uiFuncs = function() {}
-uiFuncs.generateTx = function($scope, $sce, callback) {
+uiFuncs.getTxData = function($scope) {
+	return {
+		to: $scope.tx.to,
+		value: $scope.tx.value,
+		unit: $scope.tx.unit,
+		gasLimit: $scope.tx.gasLimit,
+		data: $scope.tx.data,
+		from: $scope.wallet.getAddressString(),
+		privKey: $scope.wallet.getPrivateKeyString()
+	};
+}
+uiFuncs.generateTx = function(txData, callback) {
 	try {
-		if (!ethFuncs.validateEtherAddress($scope.tx.to)) throw globalFuncs.errorMsgs[5];
-		else if (!globalFuncs.isNumeric($scope.tx.value) || parseFloat($scope.tx.value) < 0) throw globalFuncs.errorMsgs[7];
-		else if (!globalFuncs.isNumeric($scope.tx.gasLimit) || parseFloat($scope.tx.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
-		else if (!ethFuncs.validateHexString($scope.tx.data)) throw globalFuncs.errorMsgs[9];
-		ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
+		if (!ethFuncs.validateEtherAddress(txData.to)) throw globalFuncs.errorMsgs[5];
+		else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[7];
+		else if (!globalFuncs.isNumeric(txData.gasLimit) || parseFloat(txData.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
+		else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
+		ajaxReq.getTransactionData(txData.from, function(data) {
 			if (data.error) throw data.msg;
 			data = data.data;
 			var rawTx = {
 				nonce: ethFuncs.sanitizeHex(data.nonce),
 				gasPrice: ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
-				gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex($scope.tx.gasLimit)),
-				to: ethFuncs.sanitizeHex($scope.tx.to),
-				value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit))),
-				data: ethFuncs.sanitizeHex($scope.tx.data)
+				gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
+				to: ethFuncs.sanitizeHex(txData.to),
+				value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
+				data: ethFuncs.sanitizeHex(txData.data)
 			}
 			var eTx = new ethUtil.Tx(rawTx);
-			eTx.sign(new Buffer($scope.wallet.getPrivateKeyString(), 'hex'));
-			$scope.rawTx = JSON.stringify(rawTx);
-			$scope.signedTx = '0x' + eTx.serialize().toString('hex');
-			$scope.showRaw = true;
-            if($scope.autoSend){
-                uiFuncs.sendTx($scope, $sce);
-                $scope.autoSend = false;
-            }
-            if(callback !== undefined) callback();
+			eTx.sign(new Buffer(txData.privKey, 'hex'));
+			rawTx.rawTx = JSON.stringify(rawTx);
+			rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
+			rawTx.isError = false;
+			if (callback !== undefined) callback(rawTx);
 		});
-		$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
 	} catch (e) {
-		$scope.showRaw = false;
-		$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+		if (callback !== undefined) callback({
+			isError: true,
+			error: e
+		});
 	}
 }
-uiFuncs.sendTx = function($scope, $sce) {
-    if(document.getElementById('sendTransaction')!=null)
-        new Modal(document.getElementById('sendTransaction')).close();
-	ajaxReq.sendRawTx($scope.signedTx, function(data) {
+uiFuncs.sendTx = function(signedTx, callback) {
+	ajaxReq.sendRawTx(signedTx, function(data) {
+		var resp = {};
 		if (data.error) {
-			$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+			resp = {
+				isError: true,
+				error: data.msg
+			};
 		} else {
-			if( $scope.setBalance !== undefined ) $scope.setBalance();
-			$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank'>" + data.data + "</a>"));
+			resp = {
+				isError: false,
+				data: data.data
+			};
 		}
+		if (callback !== undefined) callback(resp);
 	});
 }
-uiFuncs.transferAllBalance = function($scope, $sce) {
+uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
 	try {
-		ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
+		ajaxReq.getTransactionData(fromAdd, function(data) {
 			if (data.error) throw data.msg;
 			data = data.data;
-			var gasPrice = new BigNumber(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice))).times($scope.tx.gasLimit);
+			var gasPrice = new BigNumber(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice))).times(gasLimit);
 			var maxVal = new BigNumber(data.balance).minus(gasPrice);
-			$scope.tx.unit = "ether";
-			$scope.tx.value = etherUnits.toEther(maxVal, 'wei');
-            $scope.tx.value = $scope.tx.value < 0 ? 0 : $scope.tx.value;
+			maxVal = etherUnits.toEther(maxVal, 'wei') < 0 ? 0 : etherUnits.toEther(maxVal, 'wei');
+			if (callback !== undefined) callback({
+				isError: false,
+				unit: "ether",
+				value: maxVal
+			});
 		});
 	} catch (e) {
-		$scope.showRaw = false;
-		$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+		if (callback !== undefined) callback({
+			isError: true,
+			error: e
+		});
 	}
 }
 module.exports = uiFuncs;

@@ -1,7 +1,6 @@
 'use strict';
 var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.curTab = "withdraw";
-	new Modal(document.getElementById('sendTransaction'));
 	$scope.withdrawModal = new Modal(document.getElementById('withdrawTransaction'));
 	walletService.wallet = null;
 	walletService.password = '';
@@ -27,11 +26,6 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		balance: 0,
 		balanceEth: 0,
 		balanceBN: 0
-	}
-	$scope.tokenTx = {
-		to: '',
-		value: 0,
-		unit: "dao"
 	}
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
@@ -71,66 +65,36 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		$scope.showRaw = false;
 		$scope.sendTxStatus = "";
 	}, true);
-	// sending
-	$scope.generateTokenTx = function() {
-		try {
-			if (!ethFuncs.validateEtherAddress($scope.tokenTx.to)) throw globalFuncs.errorMsgs[5];
-			else if (!globalFuncs.isNumeric($scope.tokenTx.value) || parseFloat($scope.tokenTx.value) < 0) throw globalFuncs.errorMsgs[7];
-			$scope.tx.to = $scope.slockitContract;
-			var value = ethFuncs.padLeft(new BigNumber($scope.tokenTx.value).times(etherUnits.getValueOfUnit('milli') * 10).toString(16), 64);
-			var toAdd = ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tokenTx.to), 64);
-			$scope.tx.data = $scope.slockitTransfer + toAdd + value;
-			$scope.tx.value = 0;
-			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
-			$scope.generateTx();
-		} catch (e) {
-			$scope.showRaw = false;
-			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
-		}
-	};
 	$scope.generateAndSendWithdrawTx = function() {
 		$scope.tx.to = $scope.slockitContract;
 		$scope.tx.data = $scope.approveWithdraw + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.withdrawContract), 64) + ethFuncs.padLeft(new BigNumber($scope.token.balanceBN).toString(16), 64);
 		$scope.tx.value = 0;
-		uiFuncs.generateTx($scope, $sce, function() {
-			ajaxReq.sendRawTx($scope.signedTx, function(data) {
-				if (data.error) {
-					$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
-				} else {
-					if ($scope.setBalance !== undefined) $scope.setBalance();
-					$scope.sendTxStatus = $sce.trustAsHtml("Please Wait");
-                    var approveTx = data.data;
-					setTimeout(function() {
-						$scope.tx.to = $scope.withdrawContract;
+		uiFuncs.generateTx(uiFuncs.getTxData($scope),function(rawTx) {
+            uiFuncs.sendTx(rawTx.signedTx, function(resp){
+                if(resp.isError){
+                    $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
+                } else {
+                    $scope.sendTxStatus = $sce.trustAsHtml("Please Wait");
+                    var approveTx = resp.data;
+                    setTimeout(function(){
+                        $scope.tx.to = $scope.withdrawContract;
 						$scope.tx.data = $scope.daoWithdraw;
-						uiFuncs.generateTx($scope, $sce, function() {
-							ajaxReq.sendRawTx($scope.signedTx, function(data) {
-								if (data.error) {
-									$scope.withdrawTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+                        uiFuncs.generateTx(uiFuncs.getTxData($scope),function(rawTx) {
+                            uiFuncs.sendTx(rawTx.signedTx, function(resp){
+                                 if(resp.isError) {
+									$scope.withdrawTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.error));
 								} else {
-									if ($scope.setBalance !== undefined) $scope.setBalance();
-                                    $scope.sendTxStatus = $sce.trustAsHtml("Approval Transaction: " + globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + approveTx + "' target='_blank'>" + approveTx + "</a>"));
-									$scope.withdrawTxStatus = $sce.trustAsHtml("Withdrawal Transaction: " + globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank'>" + data.data + "</a>"));
-								}
-							});
-						});
-					}, 3000);
-				}
-			});
-			$scope.withdrawModal.close();
+								    $scope.sendTxStatus = $sce.trustAsHtml("Approval Transaction: " + globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + approveTx + "' target='_blank'>" + approveTx + "</a>"));
+									$scope.withdrawTxStatus = $sce.trustAsHtml("Withdrawal Transaction: " + globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
+                                    $scope.setBalance();
+                                }
+                            });
+                        });
+                    },3000)
+                }
+            });
 		});
-	}
-	$scope.generateTx = function() {
-		uiFuncs.generateTx($scope, $sce);
-	}
-	$scope.sendTx = function() {
-		uiFuncs.sendTx($scope, $sce);
-	}
-	$scope.onDonateClick = function() {
-		$scope.tokenTx.to = globalFuncs.donateAddress;
-		$scope.tokenTx.value = "50";
-		$scope.tx.donate = true;
-		$scope.validateAddress();
+        $scope.withdrawModal.close();
 	}
 };
 module.exports = theDaoCtrl;

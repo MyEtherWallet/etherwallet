@@ -1,6 +1,6 @@
 'use strict';
 var sendTxCtrl = function($scope, $sce, walletService) {
-	new Modal(document.getElementById('sendTransaction'));
+	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.showAdvance = false;
@@ -15,10 +15,8 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		gasPrice: null,
 		donate: false
 	}
-
 	globalFuncs.urlGet('gaslimit') == null ? '' : $scope.showAdvance = true
 	globalFuncs.urlGet('data') == null ? '' : $scope.showAdvance = true
-
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
 		return walletService.wallet.getAddressString();
@@ -61,14 +59,40 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		$scope.tx.donate = true;
 		$scope.validateAddress();
 	}
-	$scope.generateTx = function(){
-	   uiFuncs.generateTx($scope,$sce);
-    }
+	$scope.generateTx = function() {
+		uiFuncs.generateTx(uiFuncs.getTxData($scope), function(rawTx) {
+			if (!rawTx.isError) {
+				$scope.rawTx =rawTx.rawTx;
+				$scope.signedTx = rawTx.signedTx;
+				$scope.showRaw = true;
+				$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+			} else {
+				$scope.showRaw = false;
+				$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+			}
+		});
+	}
 	$scope.sendTx = function() {
-		uiFuncs.sendTx($scope,$sce);
+        $scope.sendTxModal.close();
+		uiFuncs.sendTx($scope.signedTx, function(resp){
+		  if(!resp.isError) {
+            $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
+		      $scope.setBalance();
+          } else {
+            $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
+		  }
+		});
 	}
 	$scope.transferAllBalance = function() {
-		uiFuncs.transferAllBalance($scope,$sce);
+		uiFuncs.transferAllBalance($scope.wallet.getAddressString(),$scope.tx.gasLimit, function(resp){
+		  if(!resp.isError) {
+            $scope.tx.unit = resp.unit;
+			$scope.tx.value = resp.value;
+          } else {
+            $scope.showRaw = false;
+            $scope.validateTxStatus = $sce.trustAsHtml(resp.error);
+		  }
+		});
 	}
 };
 module.exports = sendTxCtrl;
