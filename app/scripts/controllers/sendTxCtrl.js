@@ -5,6 +5,8 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	walletService.password = '';
 	$scope.showAdvance = false;
 	$scope.showRaw = false;
+    $scope.replayContract = "0xaa1a6e3e6ef20068f7f8d8c835d2d22fd5116444";
+    $scope.splitHex = "0x0f2c9329";
 	$scope.tx = {
 		gasLimit: globalFuncs.urlGet('gaslimit') == null ? globalFuncs.defaultTxGasLimit : globalFuncs.urlGet('gaslimit'),
 		data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
@@ -13,7 +15,8 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		value: globalFuncs.urlGet('value') == null ? "" : globalFuncs.urlGet('value'),
 		nonce: null,
 		gasPrice: null,
-		donate: false
+		donate: false,
+        sendMode: globalFuncs.urlGet('sendMode') == null ? 0 : globalFuncs.urlGet('value')
 	}
 	globalFuncs.urlGet('gaslimit') == null ? '' : $scope.showAdvance = true
 	globalFuncs.urlGet('data') == null ? '' : $scope.showAdvance = true
@@ -39,9 +42,13 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 			}
 		});
 	}
-	$scope.$watch('tx', function() {
+	$scope.$watch('tx', function(newValue, oldValue) {
 		$scope.showRaw = false;
 		$scope.sendTxStatus = "";
+        if(newValue.sendMode==0){
+            $scope.tx.data = "";
+            $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
+        }
 	}, true);
 	$scope.validateAddress = function() {
 		if (ethFuncs.validateEtherAddress($scope.tx.to)) {
@@ -60,7 +67,14 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		$scope.validateAddress();
 	}
 	$scope.generateTx = function() {
-		uiFuncs.generateTx(uiFuncs.getTxData($scope), function(rawTx) {
+        var txData = uiFuncs.getTxData($scope);
+        if($scope.tx.sendMode!=0){
+            txData.to = $scope.replayContract;
+            txData.gasLimit = 50000;
+            if($scope.tx.sendMode==1) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);
+            else if($scope.tx.sendMode==2) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
+        }
+		uiFuncs.generateTx(txData, function(rawTx) {
 			if (!rawTx.isError) {
 				$scope.rawTx =rawTx.rawTx;
 				$scope.signedTx = rawTx.signedTx;
@@ -77,7 +91,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		uiFuncs.sendTx($scope.signedTx, function(resp){
 		  if(!resp.isError) {
             $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
-		      $scope.setBalance();
+            $scope.setBalance();
           } else {
             $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
 		  }
