@@ -278,11 +278,15 @@
 
       <br />
       <hr />
-      <p>
-        Account Balance:
-        <br />
-        <strong style="margin-left: 1em"> {{etherBalance}} Ether </strong>
-      </p>
+      <p> Account Balance:
+          <br />
+          <strong class="text-primary" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+          <br />
+          <div ng-repeat="token in tokenObjs track by $index">
+            <strong style="margin-left: 1em"> {{token.getBalance()}} {{token.getSymbol()}}</strong>
+            <br />
+          </div>
+        </p>
       <hr />
       <p>
         Equivalent Values:
@@ -691,25 +695,26 @@
           <input class="form-control" type="text" placeholder="Amount" ng-model="tokenTx.value"/>
           <div class="radio">
             <label ng-repeat="token in tokenObjs track by $index"><input type="radio" name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"/>{{token.getSymbol()}} </label>
-            <!-- <label><input type="radio" name="currencyRadio" value="99" ng-model="tokenTx.id"/> Custom </label> -->
+            <label><input type="radio" name="currencyRadio" value="99" ng-model="tokenTx.id"/> Custom </label>
           </div>
 
           <section class="custom-token-fields well" ng-show="tokenTx.id==99">
             <div class="form-group">
               <label> Address: </label>
-              <input class="form-control" type="text" />
+              <input class="form-control" type="text" ng-model="localToken.contractAdd"/>
             </div>
             <div class="form-group">
               <label> Token Symbol: </label>
-              <input class="form-control" type="text" />
+              <input class="form-control" type="text" ng-model="localToken.symbol"/>
             </div>
             <div class="form-group">
               <label> Decimals: </label>
-              <input class="form-control" type="text" />
+              <input class="form-control" type="text" ng-model="localToken.decimals"/>
             </div>
             <div class="form-group">
-              <div class="btn btn-info"> Save </div>
+              <div class="btn btn-info" ng-click="saveTokenToLocal()"> Save </div>
             </div>
+            <div ng-bind-html="validateLocalToken"></div>
           </section>
 
           <div class="form-group">
