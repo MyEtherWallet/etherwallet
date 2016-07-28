@@ -8,6 +8,26 @@ var Token = function(contractAddress, userAddress, symbol, decimal) {
 }
 Token.balanceHex = "0x70a08231";
 Token.transferHex = "0xa9059cbb";
+Token.popTokens = [{
+	"address": "0xbb9bc244d798123fde783fcc1c72d3bb8c189413",
+	"symbol": "DAO",
+	"decimal": 16
+},
+{
+	"address": "0xe0b7927c4af23765cb51314a0e0521a9645f0e2a",
+	"symbol": "DGD",
+	"decimal": 9
+},
+{
+	"address": "0xc66ea802717bfb9833400264dd12c2bceaa34a6d",
+	"symbol": "MKR",
+	"decimal": 18
+},
+{
+	"address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
+	"symbol": "UNICORN",
+	"decimal": 0
+}];
 Token.prototype.getContractAddress = function() {
 	return this.contractAddress;
 }
@@ -43,9 +63,15 @@ Token.prototype.getData = function(toAdd, value) {
 		var value = ethFuncs.padLeft(new BigNumber(value).times(new BigNumber(10).pow(this.getDecimal())).toString(16), 64);
 		var toAdd = ethFuncs.padLeft(ethFuncs.getNakedAddress(toAdd), 64);
 		var data = Token.transferHex + toAdd + value;
-        return {isError: false, data: data};
+		return {
+			isError: false,
+			data: data
+		};
 	} catch (e) {
-		return {isError: true, error: e};
+		return {
+			isError: true,
+			error: e
+		};
 	}
 }
 module.exports = Token;

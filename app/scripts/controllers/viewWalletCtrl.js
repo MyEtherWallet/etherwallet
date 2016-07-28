@@ -29,7 +29,19 @@ var viewWalletCtrl = function($scope, walletService) {
                 });
             }
         });
+        $scope.setTokens();
 	});
+    $scope.setTokens = function() {
+		$scope.tokenObjs = [];
+        $scope.tokens = Token.popTokens;
+		for (var i = 0; i < $scope.tokens.length; i++) {
+			$scope.tokenObjs.push(new Token($scope.tokens[i].address, $scope.wallet.getAddressString(), $scope.tokens[i].symbol, $scope.tokens[i].decimal));
+		}
+        var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+        for (var i = 0; i < storedTokens.length; i++) {
+			$scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal));
+		}
+	}
 	$scope.printQRCode = function() {
 		globalFuncs.printPaperWallets(JSON.stringify([{
 			address: $scope.wallet.getAddressString(),

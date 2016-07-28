@@ -1080,32 +1080,18 @@ var tokenCtrl = function($scope, $sce, walletService) {
 	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
 	walletService.wallet = null;
 	walletService.password = '';
-	$scope.tokens = [{
-		"address": "0xbb9bc244d798123fde783fcc1c72d3bb8c189413",
-		"symbol": "DAO",
-		"decimal": 16
-	},
-	{
-		"address": "0xe0b7927c4af23765cb51314a0e0521a9645f0e2a",
-		"symbol": "DGD",
-		"decimal": 9
-	},
-	{
-		"address": "0xc66ea802717bfb9833400264dd12c2bceaa34a6d",
-		"symbol": "MKR",
-		"decimal": 18
-	},
-	{
-		"address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
-		"symbol": "UNICORN",
-		"decimal": 0
-	}];
+	$scope.tokens = Token.popTokens;
 	$scope.tokenTx = {
 		to: '',
 		value: 0,
 		id: 0,
-		gasLimit: 50000
-	}
+		gasLimit: 150000
+	};
+	$scope.localToken = {
+		contractAdd: "",
+		symbol: "",
+		decimals: ""
+	};
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
 		return walletService.wallet.getAddressString();
@@ -1116,10 +1102,15 @@ var tokenCtrl = function($scope, $sce, walletService) {
 		$scope.setTokens();
 	});
 	$scope.setTokens = function() {
-	   	$scope.tokenObjs = [];
+		$scope.tokenObjs = [];
 		for (var i = 0; i < $scope.tokens.length; i++) {
 			$scope.tokenObjs.push(new Token($scope.tokens[i].address, $scope.wallet.getAddressString(), $scope.tokens[i].symbol, $scope.tokens[i].decimal));
 		}
+        var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+        for (var i = 0; i < storedTokens.length; i++) {
+			$scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal));
+		}
+        $scope.tokenTx.id = 0;
 	}
 	$scope.setBalance = function() {
 		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
@@ -1148,12 +1139,12 @@ var tokenCtrl = function($scope, $sce, walletService) {
 		}
 	}
 	$scope.generateTokenTx = function() {
-        var tokenData = $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to,$scope.tokenTx.value);
-        if(tokenData.isError){
-            $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(tokenData.error));
-            return;
-        }
-        tokenData = tokenData.data;
+		var tokenData = $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value);
+		if (tokenData.isError) {
+			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(tokenData.error));
+			return;
+		}
+		tokenData = tokenData.data;
 		uiFuncs.generateTx({
 			to: $scope.tokenObjs[$scope.tokenTx.id].getContractAddress(),
 			value: 0,
@@ -1180,10 +1171,34 @@ var tokenCtrl = function($scope, $sce, walletService) {
 			if (!resp.isError) {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
 				$scope.setBalance();
+                $scope.tokenObjs[$scope.tokenTx.id].setBalance();
 			} else {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
 			}
 		});
+	}
+	$scope.saveTokenToLocal = function() {
+		try {
+			if (!ethFuncs.validateEtherAddress($scope.localToken.contractAdd)) throw globalFuncs.errorMsgs[5];
+			else if (!globalFuncs.isNumeric($scope.localToken.decimals) || parseFloat($scope.localToken.decimals) < 0) throw globalFuncs.errorMsgs[7];
+			else if (!globalFuncs.isAlphaNumeric($scope.localToken.symbol) || $scope.localToken.symbol == "") throw globalFuncs.errorMsgs[19];
+			var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+			storedTokens.push({
+				contractAddress: $scope.localToken.contractAdd,
+				symbol: $scope.localToken.symbol,
+				decimal: parseInt($scope.localToken.decimals)
+				});
+			$scope.localToken = {
+				contractAdd: "",
+				symbol: "",
+				decimals: ""
+			};
+            localStorage.setItem("localTokens",JSON.stringify(storedTokens));
+            $scope.setTokens();
+			$scope.validateLocalToken = $sce.trustAsHtml('');
+		} catch (e) {
+			$scope.validateLocalToken = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+		}
 	}
 };
 module.exports = tokenCtrl;
@@ -1225,7 +1240,19 @@ var viewWalletCtrl = function($scope, walletService) {
                 });
             }
         });
+        $scope.setTokens();
 	});
+    $scope.setTokens = function() {
+		$scope.tokenObjs = [];
+        $scope.tokens = Token.popTokens;
+		for (var i = 0; i < $scope.tokens.length; i++) {
+			$scope.tokenObjs.push(new Token($scope.tokens[i].address, $scope.wallet.getAddressString(), $scope.tokens[i].symbol, $scope.tokens[i].decimal));
+		}
+        var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+        for (var i = 0; i < storedTokens.length; i++) {
+			$scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal));
+		}
+	}
 	$scope.printQRCode = function() {
 		globalFuncs.printPaperWallets(JSON.stringify([{
 			address: $scope.wallet.getAddressString(),
@@ -1669,7 +1696,8 @@ globalFuncs.errorMsgs = [
 	 "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ",
 	 "A wallet with this address already exists in storage. Please check your wallets page. ",
    "You need to have at some ETH in your account to cover the cost of gas. .01ETH should be more than sufficient for a few sends and votes. ",
-   "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended."];
+   "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.",
+   "Invalid symbol"];
 globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "New wallet added: ", "You have successfully voted. Thank you for being an active participant in The DAO."];
 globalFuncs.scrypt = {
 	n: 1024
@@ -1706,6 +1734,9 @@ globalFuncs.hexToAscii = function(hex) {
 	return hex.match(/.{1,2}/g).map(function(v) {
 		return String.fromCharCode(parseInt(v, 16));
 	}).join('');
+}
+globalFuncs.isAlphaNumeric = function(value){
+    return !/[^a-zA-Z0-9]/.test(value);
 }
 module.exports = globalFuncs;
 
@@ -2192,6 +2223,26 @@ var Token = function(contractAddress, userAddress, symbol, decimal) {
 }
 Token.balanceHex = "0x70a08231";
 Token.transferHex = "0xa9059cbb";
+Token.popTokens = [{
+	"address": "0xbb9bc244d798123fde783fcc1c72d3bb8c189413",
+	"symbol": "DAO",
+	"decimal": 16
+},
+{
+	"address": "0xe0b7927c4af23765cb51314a0e0521a9645f0e2a",
+	"symbol": "DGD",
+	"decimal": 9
+},
+{
+	"address": "0xc66ea802717bfb9833400264dd12c2bceaa34a6d",
+	"symbol": "MKR",
+	"decimal": 18
+},
+{
+	"address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
+	"symbol": "UNICORN",
+	"decimal": 0
+}];
 Token.prototype.getContractAddress = function() {
 	return this.contractAddress;
 }
@@ -2227,9 +2278,15 @@ Token.prototype.getData = function(toAdd, value) {
 		var value = ethFuncs.padLeft(new BigNumber(value).times(new BigNumber(10).pow(this.getDecimal())).toString(16), 64);
 		var toAdd = ethFuncs.padLeft(ethFuncs.getNakedAddress(toAdd), 64);
 		var data = Token.transferHex + toAdd + value;
-        return {isError: false, data: data};
+		return {
+			isError: false,
+			data: data
+		};
 	} catch (e) {
-		return {isError: true, error: e};
+		return {
+			isError: true,
+			error: e
+		};
 	}
 }
 module.exports = Token;

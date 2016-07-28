@@ -80,11 +80,15 @@
 
       <br />
       <hr />
-      <p>
-        Account Balance:
-        <br />
-        <strong style="margin-left: 1em"> {{etherBalance}} Ether </strong>
-      </p>
+      <p> Account Balance:
+          <br />
+          <strong class="text-primary" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+          <br />
+          <div ng-repeat="token in tokenObjs track by $index">
+            <strong style="margin-left: 1em"> {{token.getBalance()}} {{token.getSymbol()}}</strong>
+            <br />
+          </div>
+        </p>
       <hr />
       <p>
         Equivalent Values:
