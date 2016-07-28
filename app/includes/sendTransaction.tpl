@@ -21,7 +21,9 @@
 
         <p> Account Balance:
           <br />
-          <strong style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+          <strong style="margin-left: 1em"> {{etherBalance}} ETH </strong>
+          <br />
+          <a style="margin-left: 1em" href="https://gastracker.io/addr/{{wallet.getAddressString()}}" target="_blank">??? ETC</a>
         </p>
         <p> Equivalent Values:
           <br />
@@ -32,6 +34,7 @@
           <strong style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         </p>
         <p> See Transaction History: <br /> <a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></p>
+
       </div>
       <br />
       <div class="well">
@@ -58,12 +61,9 @@
         <a class="pull-right" ng-click="transferAllBalance()">Transfer total available balance</a>
         <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
         <div class="radio">
-          <label>
-            <input type="radio" name="currencyRadio" value="ether" ng-model="tx.unit"/>Ether</label>
-          <label>
-            <input type="radio" name="currencyRadio" value="finney" ng-model="tx.unit"/>Finney</label>
-          <label>
-            <input type="radio" name="currencyRadio" value="szabo" ng-model="tx.unit"/>Szabo</label>
+          <label><input type="radio" name="currencyRadio" value="ether" ng-model="tx.unit"/>Ether (Default Transaction)</label><br />
+          <label><input type="radio" name="currencyRadio" value="ether" ng-model="tx.unit"/>Only ETH (via Replay Protection Contract)</label><br />
+          <label><input type="radio" name="currencyRadio" value="ether" ng-model="tx.unit"/>Only ETC (via Replay Protection Contract)</label>
         </div>
         <!-- advanced option panel -->
         <a ng-click="toggleShowAdvance()"><p class="strong"> + Advanced: Add More Gas or Data </p></a>
@@ -84,6 +84,7 @@
       </div>
       <div class="col-xs-12">
         <p><small> * We use standard rates for all gas + a itty-bitty bit more to ensure it gets mined quickly. If you move 1 Ether the total transaction will be that 1 Ether + current gas price + 1 gwei in gas. We do not take a transaction fee.</small></p>
+
          <div ng-bind-html="validateTxStatus"></div>
       </div>
       <div class="form-group col-xs-12" ng-show="showRaw">
