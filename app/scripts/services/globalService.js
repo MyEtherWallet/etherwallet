@@ -19,61 +19,61 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       mew: false,
       cx: false
     },
-    viewWalletInfo: {
-      id: 2,
-      name: "View Wallet Info",
-      url: "view-wallet-info",
-      mew: true,
-      cx: false
-    },
     myWallet: {
-      id: 3,
+      id: 2,
       name: "My Wallets",
       url: "my-wallet",
       mew: false,
       cx: true
     },
     addWallet: {
-      id: 4,
+      id: 3,
       name: "Add Wallet",
       url: "add-wallet",
       mew: false,
       cx: true
     },
     sendTransaction: {
-      id: 5,
-      name: "Send Transaction",
+      id: 4,
+      name: "Send Ether",
       url: "send-transaction",
+      mew: true,
+      cx: true
+    },
+    tokens: {
+      id: 5,
+      name: "Send Tokens",
+      url: "send-tokens",
       mew: true,
       cx: true
     },
     offlineTransaction: {
       id: 6,
-      name: "Offline Transaction",
+      name: "Send Offline",
       url:"offline-transaction",
       mew: true,
       cx: false
     },
-    tokens: {
-      id: 7,
-      name: "Tokens",
-      url: "tokens",
-      mew: true,
-      cx: true
-    },
     dao: {
-      id: 8,
-      name: "The DAO",
+      id: 7,
+      name: "Withdraw DAO",
       url: "the-dao",
       mew: true,
       cx: true
     },
     digix: {
-      id: 9,
-      name: "Digix",
+      id: 8,
+      name: "Claim DGD",
       url: "digix",
       mew: true,
       cx: true
+    },
+    viewWalletInfo: {
+      id: 9,
+      name: "View Wallet Info",
+      url: "view-wallet-info",
+      mew: true,
+      cx: false
     },
     help: {
       id: 10,

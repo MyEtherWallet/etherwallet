@@ -1,7 +1,7 @@
 <!-- send transaction -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
-  <h2> Send Transaction </h2>
-  <p> If you want to send Tokens, please use The DAO or Digix pages instead. </p>
+  <h2> Send Ether </h2>
+  <p> If you want to send Tokens, please use the "Send Token" page instead. </p>
   <div>
       @@if (site === 'cx' ) {
         <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>

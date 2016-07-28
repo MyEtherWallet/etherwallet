@@ -10,13 +10,13 @@
       <!--<img src="images/qrcode_test.png" width="90%;" height="auto" class="pull-left" />-->
       <p class="print-text" style="padding-top: 25px;">YOUR ADDRESS</p>
     </div>
-    <div class="print-qr-code-2">
-      <div id="paperwalletprivqr"></div>
-      <p class="print-text" style="padding-top: 30px;">YOUR PRIVATE KEY</p>
-    </div>
     <div class="print-notes">
       <img src="images/notes-bg.png" width="90%;" height="auto" class="pull-left" />
       <p class="print-text">AMOUNT / NOTES</p>
+    </div>
+    <div class="print-qr-code-2">
+      <div id="paperwalletprivqr"></div>
+      <p class="print-text" style="padding-top: 30px;">YOUR PRIVATE KEY</p>
     </div>
     <div class="print-address-container">
       <p>

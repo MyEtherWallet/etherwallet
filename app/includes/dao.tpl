@@ -4,8 +4,8 @@
   <!-- TOP: The DAO -->
   <section class="row">
     <div class="col-md-9 col-sm-8">
-      <h2> The DAO </h2>
-      <p> Use this tab to <strong>Withdraw your DAO Tokens for ETH or Send DAO Tokens </strong>.</p>
+      <h2> Withdraw DAO for ETH </h2>
+      <p> Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.</p>
     </div>
     <div class="col-md-3 col-sm-4"><img src="images/thedao-addressicon.png" width="250px" height="auto" style="margin-top: 32px;" /></div>
   </section>
@@ -70,7 +70,6 @@
         </div>
         <br /><br /><br />
         <ul>
-          <li> There is no deadline for the withdrawals. Waiting is not the worst idea. </li>
           <li> If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </li>
         </ul>
       </section>
