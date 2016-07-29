@@ -963,6 +963,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		$scope.validateAddress();
 	}
 	$scope.generateTx = function() {
+	   if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
+	       $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+           return;
+	   }
 		var txData = uiFuncs.getTxData($scope);
 		var genFunc = $scope.tx.sendMode == 2 ? 'generateClassicTx' : 'generateTx';
 		if ($scope.tx.sendMode != 0) {
