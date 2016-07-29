@@ -52,7 +52,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	$scope.$watch('tx', function(newValue, oldValue) {
 		$scope.showRaw = false;
 		$scope.sendTxStatus = "";
-		if (newValue.sendMode == 0) {
+		if (oldValue.sendMode!=newValue.sendMode && newValue.sendMode == 0) {
 			$scope.tx.data = "";
 			$scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
 		}
