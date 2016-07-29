@@ -21,7 +21,7 @@
         <td>{{twallet.nick}}</td>
         <td>{{twallet.addr}}</td>
         <td>
-          <strong class="text-success">{{twallet.balance}} ETH</strong><br>
+          <strong class="text-success">{{twallet.balance | number:4 | number}} ETH</strong><br>
           <small><span ng-repeat="token in twallet.tokens">{{token.getBalance() | number:2 | number }} {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
           <br />
           <small><span>{{twallet.btc | number:2 | number }} BTC</span> &nbsp;&nbsp; <span>$ {{twallet.usd | number:2 | number }} USD</span> &nbsp;&nbsp; <span>€ {{twallet.eur | number:2 | number }} EUR</span></small>
@@ -47,16 +47,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="twallet in allWatchOnly  track by $index">
+        <tr ng-repeat="twallet in allWatchOnly track by $index">
           <td>{{$index+1}}</td>
           <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
           <td>{{twallet.nick}}</td>
           <td>{{twallet.addr}}</td>
+
           <td>
-            <strong class="text-success">{{twallet.balance}} ether</strong><br>
-            <small><span>{{twallet.btc}} BTC</span> &nbsp;&nbsp;
-            <span>$ {{twallet.usd}} USD</span> &nbsp;&nbsp;
-            <span>€ {{twallet.eur}} EUR</span></small>
+            <strong class="text-success">{{twallet.balance | number:4 | number}} ETH</strong><br>
+            <small><span ng-repeat="token in twallet.tokens">{{token.getBalance() | number:2 | number }} {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
+            <br />
+            <small><span>{{twallet.btc | number:2 | number }} BTC</span> &nbsp;&nbsp; <span>$ {{twallet.usd | number:2 | number }} USD</span> &nbsp;&nbsp; <span>€ {{twallet.eur | number:2 | number }} EUR</span></small>
           </td>
           <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
         </tr>

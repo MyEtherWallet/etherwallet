@@ -373,24 +373,25 @@ var myWalletsCtrl = function($scope, $sce) {
 		cxFuncs.getWalletsArr(function(wlts) {
 			$scope.allWallets = wlts;
 			$scope.updateBalance('allWallets');
-			$scope.setTokens();
+			$scope.setTokens('allWallets');
 		});
 		cxFuncs.getWatchOnlyArr(function(wlts) {
 			$scope.allWatchOnly = wlts;
 			$scope.updateBalance('allWatchOnly');
 			$scope.$apply();
+			$scope.setTokens('allWatchOnly');
 		});
 	};
-	$scope.setTokens = function() {
+	$scope.setTokens = function(varWal) {
 		for(var j=0;j<$scope.allWallets.length; j++){
         $scope.tokens = Token.popTokens;
-        $scope.allWallets[j].tokens = [];
+        $scope[varWal][j].tokens = [];
 				for (var i = 0; i < $scope.tokens.length; i++) {
-					$scope.allWallets[j].tokens.push(new Token($scope.tokens[i].address, $scope.allWallets[j].addr, $scope.tokens[i].symbol, $scope.tokens[i].decimal));
+					$scope[varWal][j].tokens.push(new Token($scope.tokens[i].address, $scope[varWal][j].addr, $scope.tokens[i].symbol, $scope.tokens[i].decimal));
 				}
         var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
         for (var i = 0; i < storedTokens.length; i++) {
-					$scope.allWallets[j].tokens.push(new Token(storedTokens[i].contractAddress, $scope.allWallets[j].addr, globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal));
+					$scope[varWal][j].tokens.push(new Token(storedTokens[i].contractAddress, $scope[varWal][j].addr, globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal));
 				}
 		}
 	}
@@ -987,7 +988,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		var sendFunc = $scope.tx.sendMode == 2 ? 'sendClassicTx' : 'sendTx';
 		uiFuncs[sendFunc]($scope.signedTx, function(resp) {
 			if (!resp.isError) {
-				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a> & <a href='http://gastracker.io/tx/" + resp.data + "' target='_blank'> ETC TX via GasTracker.io</a>"));
 				$scope.setBalance();
 			} else {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
@@ -1007,6 +1008,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	}
 };
 module.exports = sendTxCtrl;
+
 },{}],12:[function(require,module,exports){
 'use strict';
 var tabsCtrl = function($scope, globalService) {
