@@ -201,7 +201,7 @@ var addWalletCtrl = function($scope, $sce) {
 		});
 	}
 	$scope.isStrongPass = function(pass) {
-		return globalFuncs.isStrongPass(pass);
+		return pass.length > 3;
 	}
 	$scope.$watch('walletType', function() {
 		$scope.showBtnGen = $scope.showBtnUnlock = $scope.showBtnAdd = $scope.showAddWallet = false;
