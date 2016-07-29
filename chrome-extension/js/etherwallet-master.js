@@ -2307,7 +2307,12 @@ Token.popTokens = [{
 },
 {
 	"address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
-	"symbol": "UNICORN",
+	"symbol": "🦄 UNI",
+	"decimal": 0
+},
+{
+	"address": "0x74c1e4b8cae59269ec1d85d3d4f324396048f4ac",
+	"symbol": "🍺 BeerCoin",
 	"decimal": 0
 }];
 Token.prototype.getContractAddress = function() {
@@ -2357,6 +2362,7 @@ Token.prototype.getData = function(toAdd, value) {
 	}
 }
 module.exports = Token;
+
 },{}],32:[function(require,module,exports){
 (function (Buffer){
 'use strict';
