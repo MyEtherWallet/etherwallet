@@ -4,6 +4,7 @@ var ajaxReq = function() {}
 ajaxReq.http = null;
 ajaxReq.postSerializer = null;
 ajaxReq.SERVERURL = "https://rpc.myetherwallet.com/api.php";
+ajaxReq.SERVERCLASSICURL = "https://rpc.myetherwallet.com/api-classic.php";
 ajaxReq.DAOPROPOSALSURL = "https://rpc.myetherwallet.com/TheDAO/getDAOProposals.php";
 ajaxReq.COINMARKETCAPAPI = "https://coinmarketcap-nexuist.rhcloud.com/api/";
 ajaxReq.TOKENDATAPATH = "data/tokens.json";
@@ -15,37 +16,60 @@ ajaxReq.config = {
 };
 ajaxReq.getBalance = function(addr, callback) {
 	this.post({
-		balance: addr
+		balance: addr,
+        isClassic: false
+	}, callback);
+}
+ajaxReq.getClassicBalance = function(addr, callback) {
+	this.post({
+		balance: addr,
+        isClassic: true
 	}, callback);
 }
 ajaxReq.getTransactionData = function(addr, callback) {
 	this.post({
-		txdata: addr
+		txdata: addr,
+        isClassic: false
+	}, callback);
+}
+ajaxReq.getClassicTransactionData = function(addr, callback) {
+	this.post({
+		txdata: addr,
+        isClassic: true
 	}, callback);
 }
 ajaxReq.sendRawTx = function(rawTx, callback) {
 	this.post({
-		rawtx: rawTx
+		rawtx: rawTx,
+        isClassic: false
+	}, callback);
+}
+ajaxReq.sendClassicRawTx = function(rawTx, callback) {
+	this.post({
+		rawtx: rawTx,
+        isClassic: true
 	}, callback);
 }
 ajaxReq.getEstimatedGas = function(txobj, callback) {
 	this.post({
-		estimatedGas: txobj
+		estimatedGas: txobj,
+        isClassic: false
 	}, callback);
 }
 ajaxReq.getEthCall = function(txobj, callback) {
 	this.post({
-		ethCall: txobj
+		ethCall: txobj,
+        isClassic: false
 	}, callback);
 }
 ajaxReq.queuePost = function() {
-    var data = this.pendingPosts[0].data;
-    var callback = this.pendingPosts[0].callback;
-	this.http.post(this.SERVERURL, this.postSerializer(data), this.config).then(function(data) {
+	var data = this.pendingPosts[0].data;
+	var callback = this.pendingPosts[0].callback;
+    var sURL = data.isClassic ? this.SERVERCLASSICURL : this.SERVERURL;
+	this.http.post(sURL, this.postSerializer(data), this.config).then(function(data) {
 		callback(data.data);
-        ajaxReq.pendingPosts.splice(0, 1);
-        if(ajaxReq.pendingPosts.length>0)
-            ajaxReq.queuePost();
+		ajaxReq.pendingPosts.splice(0, 1);
+		if (ajaxReq.pendingPosts.length > 0) ajaxReq.queuePost();
 	});
 }
 ajaxReq.post = function(data, callback) {
@@ -53,8 +77,7 @@ ajaxReq.post = function(data, callback) {
 		data: data,
 		callback: callback
 	});
-    if(this.pendingPosts.length==1)
-        this.queuePost();
+	if (this.pendingPosts.length == 1) this.queuePost();
 }
 ajaxReq.getETHvalue = function(callback) {
 	var prefix = "eth";

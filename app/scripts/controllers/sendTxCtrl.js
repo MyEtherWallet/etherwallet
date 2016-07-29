@@ -5,8 +5,8 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	walletService.password = '';
 	$scope.showAdvance = false;
 	$scope.showRaw = false;
-    $scope.replayContract = "0xaa1a6e3e6ef20068f7f8d8c835d2d22fd5116444";
-    $scope.splitHex = "0x0f2c9329";
+	$scope.replayContract = "0xaa1a6e3e6ef20068f7f8d8c835d2d22fd5116444";
+	$scope.splitHex = "0x0f2c9329";
 	$scope.tx = {
 		gasLimit: globalFuncs.urlGet('gaslimit') == null ? globalFuncs.defaultTxGasLimit : globalFuncs.urlGet('gaslimit'),
 		data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
@@ -16,7 +16,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		nonce: null,
 		gasPrice: null,
 		donate: false,
-        sendMode: globalFuncs.urlGet('sendMode') == null ? 0 : globalFuncs.urlGet('value')
+		sendMode: globalFuncs.urlGet('sendMode') == null ? 0 : globalFuncs.urlGet('value')
 	}
 	globalFuncs.urlGet('gaslimit') == null ? '' : $scope.showAdvance = true
 	globalFuncs.urlGet('data') == null ? '' : $scope.showAdvance = true
@@ -41,14 +41,21 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 				});
 			}
 		});
+		ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function(data) {
+			if (data.error) {
+				$scope.etcBalance = data.msg;
+			} else {
+				$scope.etcBalance = etherUnits.toEther(data.data.balance, 'wei');
+			}
+		});
 	}
 	$scope.$watch('tx', function(newValue, oldValue) {
 		$scope.showRaw = false;
 		$scope.sendTxStatus = "";
-        if(newValue.sendMode==0){
-            $scope.tx.data = "";
-            $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
-        }
+		if (newValue.sendMode == 0) {
+			$scope.tx.data = "";
+			$scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
+		}
 	}, true);
 	$scope.validateAddress = function() {
 		if (ethFuncs.validateEtherAddress($scope.tx.to)) {
@@ -67,16 +74,17 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		$scope.validateAddress();
 	}
 	$scope.generateTx = function() {
-        var txData = uiFuncs.getTxData($scope);
-        if($scope.tx.sendMode!=0){
-            txData.to = $scope.replayContract;
-            txData.gasLimit = 300000;
-            if($scope.tx.sendMode==1) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);
-            else if($scope.tx.sendMode==2) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
-        }
-		uiFuncs.generateTx(txData, function(rawTx) {
+		var txData = uiFuncs.getTxData($scope);
+		var genFunc = $scope.tx.sendMode == 2 ? 'generateClassicTx' : 'generateTx';
+		if ($scope.tx.sendMode != 0) {
+			txData.to = $scope.replayContract;
+			txData.gasLimit = 300000;
+			if ($scope.tx.sendMode == 1) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);
+			else if ($scope.tx.sendMode == 2) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
+		}
+		uiFuncs[genFunc](txData, function(rawTx) {
 			if (!rawTx.isError) {
-				$scope.rawTx =rawTx.rawTx;
+				$scope.rawTx = rawTx.rawTx;
 				$scope.signedTx = rawTx.signedTx;
 				$scope.showRaw = true;
 				$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
@@ -87,25 +95,26 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		});
 	}
 	$scope.sendTx = function() {
-        $scope.sendTxModal.close();
-		uiFuncs.sendTx($scope.signedTx, function(resp){
-		  if(!resp.isError) {
-            $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
-            $scope.setBalance();
-          } else {
-            $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
-		  }
+		$scope.sendTxModal.close();
+		var sendFunc = $scope.tx.sendMode == 2 ? 'sendClassicTx' : 'sendTx';
+		uiFuncs[sendFunc]($scope.signedTx, function(resp) {
+			if (!resp.isError) {
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
+				$scope.setBalance();
+			} else {
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
+			}
 		});
 	}
 	$scope.transferAllBalance = function() {
-		uiFuncs.transferAllBalance($scope.wallet.getAddressString(),$scope.tx.gasLimit, function(resp){
-		  if(!resp.isError) {
-            $scope.tx.unit = resp.unit;
-			$scope.tx.value = resp.value;
-          } else {
-            $scope.showRaw = false;
-            $scope.validateTxStatus = $sce.trustAsHtml(resp.error);
-		  }
+		uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, function(resp) {
+			if (!resp.isError) {
+				$scope.tx.unit = resp.unit;
+				$scope.tx.value = resp.value;
+			} else {
+				$scope.showRaw = false;
+				$scope.validateTxStatus = $sce.trustAsHtml(resp.error);
+			}
 		});
 	}
 };
