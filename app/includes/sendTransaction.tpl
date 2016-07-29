@@ -23,7 +23,7 @@
           <br />
           <strong style="margin-left: 1em"> {{etherBalance}} ETH </strong>
           <br />
-          <a style="margin-left: 1em" href="https://gastracker.io/addr/{{wallet.getAddressString()}}" target="_blank">??? ETC</a>
+          <strong style="margin-left: 1em"> {{etcBalance}} ETC </strong>
         </p>
         <p> Equivalent Values:
           <br />
