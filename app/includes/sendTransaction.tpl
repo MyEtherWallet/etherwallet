@@ -45,6 +45,8 @@
     </div>
     <div class="col-sm-8">
       <h4>Send Transaction</h4>
+      <div class="alert alert-danger">Do NOT use the "Only ETH" or "Only ETC" option to send to <strong>Coinbase</strong> under any circumstances. They will not honor the transaction or return your ETH. They also do not support ETC. <br /> We aslo do not recommend using "Only ETH" or "Only ETC" to send directly to <strong>ShapeShift</strong> at this time due to unconfirmed reports of delays - instead split and then send directly to Shapeshift using a standard transaction.</div></a>
+
       <div class="form-group col-xs-10">
         <label> To Address: </label>
         <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()"/>
