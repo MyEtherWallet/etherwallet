@@ -890,6 +890,7 @@ module.exports = sendOfflineTxCtrl;
 'use strict';
 var sendTxCtrl = function($scope, $sce, walletService) {
 	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
+	$scope.txInfoModal = new Modal(document.getElementById('txInfoModal'));
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.showAdvance = false;
