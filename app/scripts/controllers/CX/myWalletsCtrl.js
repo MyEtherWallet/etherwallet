@@ -27,11 +27,11 @@ var myWalletsCtrl = function($scope, $sce) {
 			$scope.allWatchOnly = wlts;
 			$scope.updateBalance('allWatchOnly');
 			$scope.$apply();
-			$scope.setTokens('allWatchOnly');
+            $scope.setTokens('allWatchOnly');
 		});
 	};
 	$scope.setTokens = function(varWal) {
-		for(var j=0;j<$scope.allWallets.length; j++){
+		for(var j=0;j<$scope[varWal].length; j++){
         $scope.tokens = Token.popTokens;
         $scope[varWal][j].tokens = [];
 				for (var i = 0; i < $scope.tokens.length; i++) {
