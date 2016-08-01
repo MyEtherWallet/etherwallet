@@ -4,6 +4,8 @@ if(typeof chrome != 'undefined')
     IS_CX = chrome.windows === undefined ? false : true;
 require("babel-polyfill");
 var angular = require('angular');
+var angularTranslate = require('angular-translate');
+var angularSanitize = require('angular-sanitize');
 var BigNumber = require('bignumber.js');
 window.BigNumber = BigNumber;
 var marked = require('marked');
@@ -28,6 +30,7 @@ var ajaxReq = require('./ajaxReq');
 window.ajaxReq = ajaxReq;
 var ethFuncs = require('./ethFuncs');
 window.ethFuncs = ethFuncs;
+var translate = require('./translations/translate.js');
 if(IS_CX){
     var cxFuncs = require('./cxFuncs');
     window.cxFuncs = cxFuncs;
@@ -57,9 +60,12 @@ if(IS_CX){
     var mainPopCtrl = require('./controllers/CX/mainPopCtrl');
     var quickSendCtrl = require('./controllers/CX/quickSendCtrl');
 }
-var app = angular.module('mewApp', []);
+var app = angular.module('mewApp',['pascalprecht.translate','ngSanitize']);
 app.config(['$compileProvider', function($compileProvider) {
 	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|):/);
+}]);
+app.config(['$translateProvider', function($translateProvider) {
+	new translate($translateProvider);
 }]);
 app.factory('globalService', ['$http','$httpParamSerializerJQLike',globalService]);
 app.factory('walletService', walletService);
