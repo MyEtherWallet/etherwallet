@@ -42,7 +42,7 @@ en.data = {
 	CX_Tagline: 'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* View Wallet Details */
-  VIEWWALLET_Title: 'View Wallet Details',
+  VIEWWALLET_Title: '**View Wallet Details**',
   VIEWWALLET_Subtitle: 'Download an unencrypted private key, grab your encrypted Mist/Geth Keystore file, or re-print your paper wallet. You may want to do this in order to <a href="http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/" target="_blank">import your account into Geth/Mist</a>. You can also do this with the <a href="https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm/" target="__blank">MyEtherWallet CX</a> and save your wallet for easier and quicker access. If you just want to check your balance, we recommend using a blockchain explorer like <a href="http://etherscan.io/" target="_blank">etherscan.io</a> or <a href="https://live.ether.camp/" target="_blank">live.ether.camp</a>.',
   VIEWWALLET_SuccessMsg: 'Success! Here are your wallet details.',
 

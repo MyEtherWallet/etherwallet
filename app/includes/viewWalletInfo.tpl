@@ -1,8 +1,8 @@
 <!-- view wallet info -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id">
 
-  <h2> {{ 'VIEWWALLET_Title' | translate }}  </h2>
-  <p> {{ 'VIEWWALLET_Subtitle' | translate }} </p>
+  <h2 ng-bind-html="'VIEWWALLET_Title' | translate"></h2>
+  <p ng-bind-html="'VIEWWALLET_Subtitle' | translate"> </p>
 
   <div>
   <wallet-decrypt-drtv></wallet-decrypt-drtv>
