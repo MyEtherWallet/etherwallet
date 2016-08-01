@@ -4,7 +4,7 @@ var fr = require('./fr');
 var translate = function($translateProvider) {
 	$translateProvider.translations(en.code, en.data);
     $translateProvider.translations(fr.code, fr.data);
-	$translateProvider.preferredLanguage(fr.code);
-    $translateProvider.useSanitizeValueStrategy('sanitize');
+	$translateProvider.preferredLanguage(en.code);
+    $translateProvider.useSanitizeValueStrategy();
 }
 module.exports = translate;

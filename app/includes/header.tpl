@@ -2,7 +2,7 @@
 <html lang="en" ng-app="mewApp">
 <head>
   <meta charset="utf-8">
-  <title>MyEtherWallet: Open Source JavaScript Client-Side Ether Wallet</title>
+  <title>MyEtherWallet: {{ 'MEW_Tagline' | translate }} </title>
   <link rel="canonical" href="https://www.myetherwallet.com" />
   <meta name="description" content="Ether Wallet: Open Source JavaScript Client-Side Ether Wallet">
   <meta name="author" content="">
@@ -34,7 +34,7 @@
   <header class="container-fluid bg-gradient text-white">
     <section class="container">
       <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
-      <p>Open Source JavaScript Client-Side Ether Wallet &middot; v2.9</p>
+      <p> {{ 'MEW_Tagline' | translate }} &middot; {{ 'MEW_version' | translate }}</p>
     </section>
   </header>
 }
@@ -42,13 +42,13 @@
 @@if (site === 'cx' ) {
   <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
     <div class="container">
-      Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.
+      {{ 'CX_Warning_1' | translate }}
     </div>
   </a>
   <header class="container-fluid bg-gradient text-white">
     <section class="container">
       <a href="/cx-wallet.html"><img src="images/etherwalletcx-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
-      <p>Open Source JavaScript Client-Side Ether Wallet Chrome Extension &middot; v2.9</p>
+      <p> {{ 'CX_Tagline' | translate }} &middot; {{ 'CX_version' | translate }}</p>
     </section>
   </header>
 }
