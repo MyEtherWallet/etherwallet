@@ -26,7 +26,6 @@ var myWalletsCtrl = function($scope, $sce) {
 		cxFuncs.getWatchOnlyArr(function(wlts) {
 			$scope.allWatchOnly = wlts;
 			$scope.updateBalance('allWatchOnly');
-			$scope.$apply();
             $scope.setTokens('allWatchOnly');
 		});
 	};
