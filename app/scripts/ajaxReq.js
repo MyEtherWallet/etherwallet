@@ -3,11 +3,9 @@ var http;
 var ajaxReq = function() {}
 ajaxReq.http = null;
 ajaxReq.postSerializer = null;
-ajaxReq.SERVERURL = "https://rpc.myetherwallet.com/api.php";
+ajaxReq.SERVERURL = "https://rpc.myetherwallet.com:8443/api.mew";
 ajaxReq.SERVERCLASSICURL = "https://rpc.myetherwallet.com/api-classic.php";
-ajaxReq.DAOPROPOSALSURL = "https://rpc.myetherwallet.com/TheDAO/getDAOProposals.php";
 ajaxReq.COINMARKETCAPAPI = "https://coinmarketcap-nexuist.rhcloud.com/api/";
-ajaxReq.TOKENDATAPATH = "data/tokens.json";
 ajaxReq.pendingPosts = [];
 ajaxReq.config = {
 	headers: {
@@ -65,8 +63,7 @@ ajaxReq.getEthCall = function(txobj, callback) {
 ajaxReq.queuePost = function() {
 	var data = this.pendingPosts[0].data;
 	var callback = this.pendingPosts[0].callback;
-    var sURL = data.isClassic ? this.SERVERCLASSICURL : this.SERVERURL;
-	this.http.post(sURL, this.postSerializer(data), this.config).then(function(data) {
+	this.http.post(this.SERVERURL, this.postSerializer(data), this.config).then(function(data) {
 		callback(data.data);
 		ajaxReq.pendingPosts.splice(0, 1);
 		if (ajaxReq.pendingPosts.length > 0) ajaxReq.queuePost();
@@ -89,16 +86,6 @@ ajaxReq.getETHvalue = function(callback) {
 			btc: data['btc'].toFixed(6)
 		};
 		callback(priceObj);
-	});
-}
-ajaxReq.getTokenData = function(callback) {
-	this.http.get(this.TOKENDATAPATH).then(function(data) {
-		callback(priceObj);
-	});
-}
-ajaxReq.getDAOProposals = function(callback) {
-	this.http.get(this.DAOPROPOSALSURL).then(function(data) {
-		callback(data.data);
 	});
 }
 module.exports = ajaxReq;
