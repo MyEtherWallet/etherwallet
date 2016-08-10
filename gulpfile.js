@@ -2,6 +2,7 @@
 // if you are still having issues, you may need to install browserify gloablly.
 
 var fs = require('fs');
+
 // less
 var gulp = require('gulp');
 var less = require('gulp-less');
@@ -53,8 +54,8 @@ gulp.task('less', function (cb) {
       }))
       .pipe(autoprefixer('last 2 version', 'ios 6', 'android 4'))
       .pipe(rename(lessOutputFile))
-      .pipe(gulp.dest(lessOutputFolder))
-      .pipe(gulp.dest(cxLessOutputFolder))
+      //.pipe(gulp.dest(lessOutputFolder)) // unminified css
+      //.pipe(gulp.dest(cxLessOutputFolder)) // unminified css
       .pipe(cssnano()).on('error', notify.onError(function (error) {
         return "ERROR! minify CSS Problem file : " + error.message;
       }))
@@ -83,7 +84,7 @@ gulp.task('staticJS', function () {
       // mew static
       .pipe(gulp.dest('./dist/js/'))
       .pipe(notify('MEW StaticJS Complete'))
-      // mew static
+      // mew staticxc
       .pipe(gulp.dest('./chrome-extension/js/'))
       .pipe(notify('CX StaticJS Complete'));
 });
