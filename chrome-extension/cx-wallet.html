@@ -560,7 +560,7 @@
       </div>
       <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
       <div class="form-group col-xs-12">
-        <p><small> We use standard rates for all gas + a itty-bitty bit more to ensure it gets mined quickly. We do not take a transaction fee.</small></p>
+        <p><small> A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.</small></p>
       </div>
 
       <!-- Modal -->
@@ -604,8 +604,7 @@
                 <li><strong> ETH (Standard Transaction):</strong> This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.</li>
                 <li><strong> Only ETH:</strong> This sends via <a href="https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/" target="_blank"> Timon Rapp's replay protection contract (as recommended by VB)</a> so that you only send on the <strong>ETH</strong> chain.</li>
                 <li><strong> Only ETC:</strong> This sends via <a href="https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/" target="_blank"> Timon Rapp's replay protection contract (as recommended by VB)</a> so that you only send on the <strong>ETC</strong> chain. </li>
-                <li><strong>Coinbase:</strong> Do not send ETC & only send ETH via Standard Transaction. Split your ETC into a separate wallet and then use a standard transaction to send ETH. If you use "Only ETH", you need to manually reach out to Coinbase support to have it processed.</li>
-                <li><strong>ShapeShift:</strong> Using the "Only ETH" or "Only ETC" function may lead to delays in processing you need to reach out to them to have it manually processed.</li>
+                <li><strong>Coinbase & ShapeShift:</strong> Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. <a href="https://split.shapeshift.io/" target="_blank"> You can try Shapeshift's "split" tool as well. </li>
                 <li><strong> Kraken & Poloniex: </strong> No known issues. Use whatever.</li>
               </ul>
             </div>
