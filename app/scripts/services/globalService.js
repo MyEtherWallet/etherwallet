@@ -7,77 +7,77 @@ var globalService = function($http, $httpParamSerializerJQLike) {
   var tabs = {
     generateWallet: {
       id: 0,
-      name: "Generate Wallet",
+      name: "NAV_GenerateWallet",
       url: "generate-wallet",
       mew: true,
-      cx: false
+      cx: false,
     },
     bulkGenerate: {
       id: 1,
-      name: "Bulk Generate",
+      name: "NAV_BulkGenerate",
       url: "bulk-generate",
       mew: false,
       cx: false
     },
     myWallet: {
       id: 2,
-      name: "My Wallets",
+      name: "NAV_MyWallets",
       url: "my-wallet",
       mew: false,
       cx: true
     },
     addWallet: {
       id: 3,
-      name: "Add Wallet",
+      name: "NAV_AddWallet",
       url: "add-wallet",
       mew: false,
       cx: true
     },
     sendTransaction: {
       id: 4,
-      name: "Send Ether",
+      name: "NAV_SendEther",
       url: "send-transaction",
       mew: true,
       cx: true
     },
     tokens: {
       id: 5,
-      name: "Send Tokens",
+      name: "NAV_SendTokens",
       url: "send-tokens",
       mew: true,
       cx: true
     },
     offlineTransaction: {
       id: 6,
-      name: "Send Offline",
+      name: "NAV_Offline",
       url:"offline-transaction",
       mew: true,
       cx: false
     },
     dao: {
       id: 7,
-      name: "Withdraw DAO",
+      name: "NAV_WithdrawDAO",
       url: "the-dao",
       mew: true,
       cx: true
     },
     digix: {
       id: 8,
-      name: "Claim DGD",
+      name: "NAV_ClaimDGD",
       url: "digix",
       mew: true,
       cx: true
     },
     viewWalletInfo: {
       id: 9,
-      name: "View Wallet Info",
+      name: "NAV_ViewWallet",
       url: "view-wallet-info",
       mew: true,
       cx: false
     },
     help: {
       id: 10,
-      name: "Help",
+      name: "NAV_Help",
       url: "help",
       mew: true,
       cx: true

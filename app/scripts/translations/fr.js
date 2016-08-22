@@ -3,9 +3,9 @@ Should NOT be used in production environment */
 
 
 'use strict';
-var en = function() {}
-en.code = 'en';
-en.data = {
+var fr = function() {}
+fr.code = 'fr';
+fr.data = {
 
   /* Tranlsation Info */
   translate_version:    '0.0',
@@ -479,4 +479,4 @@ en.data = {
   HELP_Contact_Title:     'Ways to Get in Touch'
 };
 
-module.exports = en;
+module.exports = fr;
