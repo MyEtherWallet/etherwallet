@@ -53,7 +53,19 @@
 
 <section class="container" ng-controller='tabsCtrl'>
   <ul class="nav nav-tabs">
-    <li ng-repeat="tab in tabNames track by $index" ng-class="{active: $index==activeTab}" ng-show="{{tab.cx}}" ng-click="tabClick($index)"> <a>{{tab.name}}</a></li>
+    <li ng-repeat="tab in tabNames track by $index" ng-class="{active: $index==activeTab}" ng-show="{{tab.cx}}" ng-click="tabClick($index)"> <a>{{tab.name | translate}}</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{curLang}} <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a ng-click="changeLanguage('en','English')" translate="LANG_en">English</a></li>
+        <li><a ng-click="changeLanguage('de','Deutsche')" translate="LANG_de">Deutsche</a></li>
+        <li><a ng-click="changeLanguage('es','Español')" translate="LANG_es">Español</a></li>
+        <li><a ng-click="changeLanguage('fr','Français')" translate="LANG_fr">Français</a></li>
+        <li><a ng-click="changeLanguage('ko','Korean')" translate="LANG_ko">Korean</a></li>
+        <li><a ng-click="changeLanguage('no','Norwegian')" translate="LANG_no">Norwegian</a></li>
+        <li><a ng-click="changeLanguage('test','Test')">Test</a></li>
+      </ul>
+    </li>
   </ul>
 </section>
 <br />
@@ -637,10 +649,10 @@
             <div class="modal-body">
               <h4>
                 <span translate="SENDModal_Content_1">You are about to send</span>
-                <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
-                <strong id="confirmCurrancy" class="text-primary"> {{tokenObjs[tokenTx.id].getSymbol()}} </strong>
+                <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
+                <strong id="confirmCurrancy" class="text-primary"> {{tx.sendMode == 2 ? "ETC" : "ETH"}}  </strong>
                 <span translate="SENDModal_Content_2">to address</span>
-                <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
+                <strong id="confirmAddress" class="text-primary"> {{tx.to}} </strong>
               </h4>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>
@@ -936,6 +948,7 @@
           </div>
 
           <div class="custom-token-fields well" ng-show="tokenTx.id==99">
+            <p translate="HELP_7_Desc_0">[Check out Ethplorer.io](https://ethplorer.io/) if you need help finding symbol / decimal.</p>
             <div class="form-group">
               <label translate="TOKEN_Addr"> Address: </label>
               <input class="form-control" type="text" ng-model="localToken.contractAdd"/>
@@ -1403,6 +1416,7 @@
 
 
   <h4 translate="HELP_7_Title">7. How do I send Tokens & add custom tokens? </h4>
+  <p translate="HELP_7_Desc_0"> [Check out Ethplorer.io](https://ethplorer.io/) if you need help finding symbol / decimal. </p>
   <ol>
     <li translate="HELP_7_Desc_1"> Navigate to the "Send Token" page. </li>
     <li translate="HELP_7_Desc_2"> Unlock your wallet. </li>
