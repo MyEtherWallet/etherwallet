@@ -891,7 +891,7 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 };
 module.exports = sendOfflineTxCtrl;
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],11:[function(require,module,exports){
+},{"buffer":95}],11:[function(require,module,exports){
 'use strict';
 var sendTxCtrl = function($scope, $sce, walletService) {
 	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
@@ -1754,27 +1754,32 @@ globalFuncs.getDangerText = function(str) {
 	return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
 globalFuncs.errorMsgs = [
-	"Please enter valid amount. ",
-	 "Your password must be at least 9 characters. Please ensure it is a strong password. ",
-	 "Sorry! We don't have a clue what type of wallet file this is. ",
-	 "This is not a valid wallet file. ",
-	 "This unit doesn\'t exists, please use the one of the following units ",
-	 "Invalid address. ",
-	 "Invalid password. ",
-	 "Invalid amount. ",
-	 "Invalid gas limit. ",
-	 "Invalid data value. ",
-	 "Invalid gas amount. ",
-	 "Invalid nonce. ",
-	 "Invalid signed transaction. ",
-	 "A wallet with this nickname already exists. ",
-	 "Wallet not found. ",
-	 "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ",
-	 "A wallet with this address already exists in storage. Please check your wallets page. ",
-   "You need to have at some ETH in your account to cover the cost of gas. .01ETH should be more than sufficient for a few sends and votes. ",
-   "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.",
-   "Invalid symbol"];
-globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "New wallet added: ", "You have successfully voted. Thank you for being an active participant in The DAO."];
+	"Please enter valid amount.",
+	"Your password must be at least 9 characters. Please ensure it is a strong password. ",
+	"Sorry! We don\'t recognize this type of wallet file. ",
+	"This is not a valid wallet file. ",
+	"This unit doesn\'t exists, please use the one of the following units ",
+	"Invalid address. ",
+	"Invalid password. ",
+	"Invalid amount. ",
+	"Invalid gas limit. ",
+	"Invalid data value. ",
+	"Invalid gas amount. ",
+	"Invalid nonce. ",
+	"Invalid signed transaction. ",
+	"A wallet with this nickname already exists. ",
+	"Wallet not found. ",
+	"Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ",
+	"A wallet with this address already exists in storage. Please check your wallets page. ",
+	"You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ",
+	"All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.",
+	"Invalid symbol"];
+globalFuncs.successMsgs = [
+	"Valid address",
+	"Wallet successfully decrypted",
+	"Transaction submitted. TX ID: ",
+	"Your wallet was successfully added: ",
+	"You have successfully voted. Thank you for being an active participant in The DAO."];
 globalFuncs.scrypt = {
 	n: 1024
 };
@@ -1912,7 +1917,7 @@ if(IS_CX){
     app.controller('cxDecryptWalletCtrl', ['$scope','$sce','walletService', cxDecryptWalletCtrl]);
 }
 
-},{"./ajaxReq":1,"./controllers/CX/addWalletCtrl":2,"./controllers/CX/cxDecryptWalletCtrl":3,"./controllers/CX/mainPopCtrl":4,"./controllers/CX/myWalletsCtrl":5,"./controllers/CX/quickSendCtrl":6,"./controllers/bulkGenCtrl":7,"./controllers/decryptWalletCtrl":8,"./controllers/digixCtrl":9,"./controllers/sendOfflineTxCtrl":10,"./controllers/sendTxCtrl":11,"./controllers/tabsCtrl":12,"./controllers/theDaoCtrl":13,"./controllers/tokenCtrl":14,"./controllers/viewCtrl":15,"./controllers/viewWalletCtrl":16,"./controllers/walletGenCtrl":17,"./cxFuncs":18,"./directives/QRCodeDrtv":19,"./directives/blockiesDrtv":20,"./directives/cxWalletDecryptDrtv":21,"./directives/fileReaderDrtv":22,"./directives/walletDecryptDrtv":23,"./ethFuncs":24,"./etherUnits":25,"./globalFuncs":26,"./myetherwallet":28,"./services/globalService":29,"./services/walletService":30,"./tokens":31,"./translations/translate.js":34,"./uiFuncs":35,"angular":40,"angular-sanitize":37,"angular-translate":38,"babel-polyfill":56,"bignumber.js":58,"crypto":392,"ethereumjs-tx":422,"ethereumjs-util":423,"scryptsy":468,"uuid":488}],28:[function(require,module,exports){
+},{"./ajaxReq":1,"./controllers/CX/addWalletCtrl":2,"./controllers/CX/cxDecryptWalletCtrl":3,"./controllers/CX/mainPopCtrl":4,"./controllers/CX/myWalletsCtrl":5,"./controllers/CX/quickSendCtrl":6,"./controllers/bulkGenCtrl":7,"./controllers/decryptWalletCtrl":8,"./controllers/digixCtrl":9,"./controllers/sendOfflineTxCtrl":10,"./controllers/sendTxCtrl":11,"./controllers/tabsCtrl":12,"./controllers/theDaoCtrl":13,"./controllers/tokenCtrl":14,"./controllers/viewCtrl":15,"./controllers/viewWalletCtrl":16,"./controllers/walletGenCtrl":17,"./cxFuncs":18,"./directives/QRCodeDrtv":19,"./directives/blockiesDrtv":20,"./directives/cxWalletDecryptDrtv":21,"./directives/fileReaderDrtv":22,"./directives/walletDecryptDrtv":23,"./ethFuncs":24,"./etherUnits":25,"./globalFuncs":26,"./myetherwallet":28,"./services/globalService":29,"./services/walletService":30,"./tokens":31,"./translations/translate.js":39,"./uiFuncs":40,"angular":45,"angular-sanitize":42,"angular-translate":43,"babel-polyfill":61,"bignumber.js":63,"crypto":398,"ethereumjs-tx":428,"ethereumjs-util":429,"scryptsy":474,"uuid":494}],28:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var Wallet = function(priv) {
@@ -2187,7 +2192,7 @@ Wallet.getWalletFromPrivKeyFile = function(strjson, password) {
 }
 module.exports = Wallet;
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],29:[function(require,module,exports){
+},{"buffer":95}],29:[function(require,module,exports){
 'use strict';
 var globalService = function($http, $httpParamSerializerJQLike) {
     globalFuncs.checkAndRedirectHTTPS();
@@ -2379,30 +2384,11 @@ Token.prototype.getData = function(toAdd, value) {
 module.exports = Token;
 
 },{}],32:[function(require,module,exports){
+// German
 'use strict';
-var en = function() {}
-en.code = 'en';
-en.data = {
-
-  /* Tranlsation Info */
-  translate_version:    '0.0',
-  Translator_Desc:      'Thank you to our translators...',
-  LANG_en:              'English',
-  LANG_es:              'Español',
-  LANG_fr:              'Français',
-  LANG_de:              'Deutsche',
-  TranlsatorName_1:     '',
-  TranlsatorAddr_1:     '',
-  TranlsatorName_2:     ' ',
-  TranlsatorAddr_2:     ' ',
-  TranlsatorName_3:     ' ',
-  TranlsatorAddr_3:     ' ',
-  TranlsatorName_4:     ' ',
-  TranlsatorAddr_4:     ' ',
-  TranlsatorName_5:     ' ',
-  TranlsatorAddr_5:     ' ',
-
-
+var de = function() {}
+de.code = 'de';
+de.data = {
 
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
@@ -2422,6 +2408,7 @@ en.data = {
   NAV_Contact:          'Contact',
 
   /* General */
+  x_Password:           'Password',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'x_Save',
@@ -2499,6 +2486,7 @@ en.data = {
   /* Sending Ether and Tokens */
   SEND_addr:             'To Address: ',
   SEND_amount:           'Amount to Send: ',
+  SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
   SEND_generate:         'Generate Signed Transaction',
@@ -2507,7 +2495,7 @@ en.data = {
   SEND_trans:            'Send Transaction',
   SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
-  /* full sentence reads "You are about to send 10 ETH to address 0x1234... Are you sure you want to do this? " */
+  /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
   SENDModal_Content_2:   'to address',
   SENDModal_Content_3:   'Are you sure you want to do this?',
@@ -2526,7 +2514,7 @@ en.data = {
   TRANS_standard:        'ETH (Standard Transaction)',
   TRANS_eth:             'Only ETH',
   TRANS_etc:             'Only ETC',
-  TRANS_advanced:        ' + Advanced: Add More Gas or Data ',
+  TRANS_advanced:        '+Advanced: Add More Gas or Data ',
   TRANS_data:            ' Data: ',
   TRANS_gas:             ' Gas: ',
   TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
@@ -2549,7 +2537,6 @@ en.data = {
   OFFLINE_Step1_Button:  'Generate Information',
   OFFLINE_Step1_Label_1: 'From Address: ',
   OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
-
   OFFLLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
   OFFLINE_Step2_Label_1:  'To Address: ',
   OFFLINE_Step2_Label_2:  'Value / Amount to Send',
@@ -2562,7 +2549,6 @@ en.data = {
   OFFLINE_Step2_Label_5:  'Data',
   OFFLINE_Step2_Label_5b: 'This is optional. Data is often used when you send transactions to contracts.',
   OFFLINE_Step2_Label_6:  'Enter / Select your Private Key / JSON.',
-
   OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
   OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
 
@@ -2601,6 +2587,560 @@ en.data = {
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* Error Messages */
+  ERROR_1:             'Please enter valid amount.',
+  ERROR_2:             'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+  ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
+  ERROR_4:              'This is not a valid wallet file. ',
+  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
+  ERROR_6:              'Invalid address. ',
+  ERROR_7:              'Invalid password. ',
+  ERROR_8:              'Invalid amount. ',
+  ERROR_9:              'Invalid gas limit. ',
+  ERROR_10:             'Invalid data value. ',
+  ERROR_11:             'Invalid gas amount. ',
+  ERROR_12:             'Invalid nonce. ',
+  ERROR_13:             'Invalid signed transaction. ',
+  ERROR_14:             'A wallet with this nickname already exists. ',
+  ERROR_15:             'Wallet not found. ',
+  ERROR_16:             'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+  ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
+  ERROR_18:             'You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
+  ERROR_20:             'Invalid symbol',
+  SUCCESS_1:            'Valid address',
+  SUCCESS_2:            'Wallet successfully decrypted',
+  SUCCESS_3:            'Transaction submitted. TX ID: ',
+  SUCCESS_4:            'Your wallet was successfully added: ',
+  SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
+
+  /* Tranlsation Info */
+  translate_version:    '0.0',
+  Translator_Desc:      'Thank you to our translators...',
+  LANG_en:              'English',
+  LANG_de:              'Deutsche',
+  LANG_es:              'Español',
+  LANG_fr:              'Français',
+  LANG_ko:              'Korean',
+  LANG_no:              'Norwegian',
+  TranlsatorName_1:     '',
+  TranlsatorAddr_1:     '',
+  TranlsatorName_2:     ' ',
+  TranlsatorAddr_2:     ' ',
+  TranlsatorName_3:     ' ',
+  TranlsatorAddr_3:     ' ',
+  TranlsatorName_4:     ' ',
+  TranlsatorAddr_4:     ' ',
+  TranlsatorName_5:     ' ',
+  TranlsatorAddr_5:     ' ',
+
+  /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
+  HELP_Warning:       'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
+  HELP_Desc:          'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!',
+  HELP_Remind_Title:  'Some reminders',
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**.',
+  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.',
+  HELP_Remind_Desc_3: 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!',
+
+  HELP_0_Title:        '0) I\'m new. What do I do?',
+  HELP_0_Desc_1:       'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.',
+  HELP_0_Desc_2:       'Create a new wallet.',
+  HELP_0_Desc_3:       'Back the wallet up.',
+  HELP_0_Desc_4:       'Verify you have access to this new wallet and have correctly saved all necessary information.',
+  HELP_0_Desc_5:       'Transfer Ether to this new wallet.',
+
+  HELP_1_Title:        '1) How do I create a new wallet? ',
+  HELP_1_Desc_1:       'Go to the "Generate Wallet" page.',
+  HELP_1_Desc_2:       'Go to the "Add Wallet" page & select "Generate New Wallet"',
+  HELP_1_Desc_3:       'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.',
+  HELP_1_Desc_4:       'Click "GENERATE".',
+  HELP_1_Desc_5:       'Your wallet has now been generated.',
+
+  HELP_2a_Title:       '2a) How do I save/backup my wallet?',
+  HELP_2a_Desc_1:      'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
+  HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you.',
+  HELP_2a_Desc_3:      'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:',
+  HELP_2a_Desc_4:      'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.',
+  HELP_2a_Desc_5:      'Print the wallet if you have a printer. Otherwise, write down your private and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
+  HELP_2a_Desc_6:      'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).',
+
+  HELP_2b_Title:       '2b) How do I safely / offline / cold storage with MyEtherWallet?',
+  HELP_2b_Desc_1:      'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_2b_Desc_2:      'Click download zip in the upper right.',
+  HELP_2b_Desc_3:      'Move zip to an airgapped computer.',
+  HELP_2b_Desc_4:      'Unzip it and double-click `index.html`.',
+  HELP_2b_Desc_5:      'Generate a wallet with a strong password.',
+  HELP_2b_Desc_6:      'Save the address. Save versions of the private key. Save the password if you might not remember it forever.',
+  HELP_2b_Desc_7:      'Store these papers / USBs in multiple physically separate locations.',
+  HELP_2b_Desc_8:      'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same.',
+
+  HELP_3_Title:         '3) How do I verify I have access to my new wallet?',
+  HELP_3_Desc_1:        '**Before you send any Ether to your new wallet**, you should ensure you have access to it.',
+  HELP_3_Desc_2:        'Navigate to the "View Wallet Info" page.',
+  HELP_3_Desc_3:        'Navigate to the MyEtherWallet.com "View Wallet Info" page.',
+  HELP_3_Desc_4:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_3_Desc_5:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_3_Desc_6:        'Click the "Unlock Wallet" button.',
+  HELP_3_Desc_7:        'Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
+  HELP_3_Desc_8:        'If you are planning on holding a large amount of ETH, we recommend that send a small amount of ETH from new wallet before depositting a large amount. Send .001 ETH to your new wallet, access that wallet, send that .001 ETH to another address, and ensure everything works smoothly.',
+
+  HELP_4_Title:         '4) How do I send Ether from one wallet to another?',
+  HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
+  HELP_4_Desc_2:        'Navigate to the "Send Ether" page.',
+  HELP_4_Desc_3:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
+  HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
+  HELP_4_Desc_9:        'Click "Generate Transaction".',
+  HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_4_Desc_11:       'Click the blue "Send Transaction" button below that.',
+  HELP_4_Desc_12:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_4_Desc_13:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+
+  HELP_4CX_Title:       '4) How do I send Ether using MyEtherWallet CX?',
+  HELP_4CX_Desc_1:      'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.',
+  HELP_4CX_Desc_2:      'QuickSend:',
+  HELP_4CX_Desc_3:      'Click the Chrome Extension Icon.',
+  HELP_4CX_Desc_4:      'Click the "QuickSend" button.',
+  HELP_4CX_Desc_5:      'Select the wallet you wish to send from.',
+  HELP_4CX_Desc_6:      'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4CX_Desc_7:      'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
+  HELP_4CX_Desc_8:      'Click "Send Transaction". ',
+  HELP_4CX_Desc_9:      'Verify the address and the amount you are sending is correct.',
+  HELP_4CX_Desc_10:     'Enter the password for that wallet.',
+  HELP_4CX_Desc_11:     'Click "Send Transaction."',
+  HELP_4CX_Desc_12:     'Using "Send Ether" Page: ',
+
+  HELP_5_Title:         '5) How do I run MyEtherWallet.com offline/locally? ',
+  HELP_5_Desc_1:        'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page.',
+  HELP_5_Desc_2:        'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_5_Desc_3:        'Click download zip in the upper right.',
+  HELP_5_Desc_4:        'Move zip to an airgapped computer.',
+  HELP_5_Desc_5:        'Unzip it.',
+  HELP_5_Desc_6:        'Double-Click `index.html`.',
+  HELP_5_Desc_7:        'MyEtherWallet.com is now running entirely on your computer.',
+  HELP_5_Desc_8:        'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.',
+  HELP_5_Desc_9:        'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.',
+
+  HELP_5CX_Title:       '5) How can I install this extension from the repo instead of the Chrome Store? ',
+  HELP_5CX_Desc_1:      'Go to our github and find the most recent Chrome Extension relase: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
+  HELP_5CX_Desc_2:      'Scroll to the very bottom and right click on the latest release. Click "save link as".',
+  HELP_5CX_Desc_3:      'Go to Google Chrome and find you settings (in the menu in the upper right).',
+  HELP_5CX_Desc_4:      'Click "Extensions" on the left.',
+  HELP_5CX_Desc_5:      'Check the "Developer Mode" button at the top of that page.',
+  HELP_5CX_Desc_6:      'Click the "Load unpacked extension..." button.',
+  HELP_5CX_Desc_7:      'Navigate to the now-unzipped folder that you downloaded earlier. Click "select".',
+  HELP_5CX_Desc_8:      'The extension should now show up in your extensions and in your Chrome Extension bar.',
+
+  HELP_6_Title:         '6) How do I split my ETH / ETC? ',
+  HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your account now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original account into two accounts. Moving forward, you need to make sure only ETH goes to your ETH account and only ETC goes to your ETC account.',
+  HELP_6_Desc_2:        'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.',
+  HELP_6_Desc_3:        '[Even more information about wallets and reply attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
+  HELP_6_Desc_4:        'Generate a new clean post-fork ETH address for yourself (to be the final destination of pure ETH).',
+  HELP_6_Desc_5:        'Generate a new clean post-fork ETC address for yourself (to be the final destination of pure ETC).',
+  HELP_6_Desc_6:        'Back up these new wallets and verify you can access them. See #2a and #3 above.',
+  HELP_6_Desc_7:        'Send .1234 ETH to your new "ETH" address using "Only ETH" option on the "Send Ether" page.',
+  HELP_6_Desc_8:        'Send .5678 ETC to your new "ETC" address using "Only ETC" on MyEtherWallet.com',
+  HELP_6_Desc_9:        'Check that only the .1234 ETH moved on etherscan.io. Check that only the .5678 ETC moved on gastracker.io.',
+  HELP_6_Desc_10:       'Send a .0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the .0001 ETH moved.',
+  HELP_6_Desc_11:       ' Generate (but do not send) a .0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
+  HELP_6_Desc_12:       'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the .0002 ETC moved.',
+  HELP_6_Desc_13:       'If everything receives correctly and sends correctly then you are golden.',
+  HELP_6_Desc_14:       'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".',
+  HELP_6_Desc_15:       ' Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. ',
+
+  HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
+  HELP_7_Desc_1:        'Navigate to the "Send Token" page.',
+  HELP_7_Desc_2:        'Unlock your wallet.',
+  HELP_7_Desc_3:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_7_Desc_4:        'Enter the amount you would like to send.',
+  HELP_7_Desc_5:        'Select which token you would like to send.',
+  HELP_7_Desc_6:        'If you do not see the token listed:',
+  HELP_7_Desc_7:        'Click "Custom".',
+  HELP_7_Desc_8:        'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.',
+  HELP_7_Desc_9:        'Click "Save".',
+  HELP_7_Desc_10:       'You can now send that token as well as see it\'s balance in the sidebar.',
+  HELP_7_Desc_11:       'Click "Generate Transaction".',
+  HELP_7_Desc_12:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_7_Desc_13:       'Click the blue "Send Transaction" button below that.',
+  HELP_7_Desc_14:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_7_Desc_15:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain.',
+
+  HELP_8_Title:         '8) What happens if your site goes down?',
+  HELP_8_Desc_1:        'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain.',
+  HELP_8_Desc_2:        'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site.',
+  HELP_8_Desc_3:        'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below.',
+  HELP_8_Desc_4:        'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. ',
+
+  HELP_8CX_Title:        '8) What happens if MyEtherWallet CX disappears?',
+  HELP_8CX_Desc_1:       'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer.',
+  HELP_8CX_Desc_2:       'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.',
+  HELP_8CX_Desc_3:       'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.',
+
+  HELP_9_Title:          '9) Is the "Send Ether" page offline?',
+  HELP_9_Desc_1:         ' No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.',
+
+  HELP_10_Title:         '10) How do I make an offline transaction?',
+  HELP_10_Desc_1:        'Navigate to the "Offline Transaction" page via your online computer.',
+  HELP_10_Desc_2:        'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.',
+  HELP_10_Desc_3:        'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.',
+  HELP_10_Desc_4:        'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_5:        'Enter the "NONCE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_6:        'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.',
+  HELP_10_Desc_7:        'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.',
+  HELP_10_Desc_8:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_10_Desc_9:        'Press the "GENERATE SIGNED TRANSACTION" button.',
+  HELP_10_Desc_10:       'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
+  HELP_10_Desc_11:       'On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.',
+
+  HELP_11_Title:          '11) How do I send to a contract?',
+  HELP_11_Desc_1:         'Sending to a contract often requires you to include data or additional gas or both',
+  HELP_11_Desc_2:         'Navigate to the "Send Ether" page. ',
+  HELP_11_Desc_3:         'Select your wallet file -or- your private key and unlock your wallet. ',
+  HELP_11_Desc_4:         'Enter a "To Address" and "Amount to Send"',
+  HELP_11_Desc_5:         'Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_12_Title:          '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?',
+  HELP_12_Desc_1:         'Using an Geth/Mist JSON file from MyEtherWallet v2+....',
+  HELP_12_Desc_2:         'Go to the "View Wallet Info" page.',
+  HELP_12_Desc_3:         'Unlock your wallet using your **encrypted** private key or JSON file. ',
+  HELP_12_Desc_4:         'Go to the "My Wallets" page.',
+  HELP_12_Desc_5:         'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. ',
+  HELP_12_Desc_6:         'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.',
+  HELP_12_Desc_7:         'Open the Ethereum Wallet application. ',
+  HELP_12_Desc_8:         'In the menu bar, go "Accounts" -> "Backup" -> "Accounts"',
+  HELP_12_Desc_9:         'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder.',
+  HELP_12_Desc_10:        'Your account should show up immediately under "Accounts."',
+  HELP_12_Desc_11:        'Using your unencrypted private key...',
+  HELP_12_Desc_12:        'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.',
+  HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
+  HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
+  HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
+  HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
+  HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
+  HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
+  HELP_12_Desc_23:        'Open Notepad & paste the private key',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
+
+  HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
+  HELP_13_Desc_1:         'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_14_Title:          '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
+  HELP_14_Desc_1:         'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
+
+  HELP_15_Title:          '15) Why hasn\'t the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
+  HELP_15_Desc_1:         'Addresses will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
+
+  HELP_16_Title:          '16) How do I check the balance of my account? ',
+  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+
+  HELP_17_Title:          '17) Why isn\'t my balance showing up when I unlock my wallet? ',
+  HELP_17_Desc_1:         ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
+
+  HELP_18_Title:          '18) Where is my geth wallet file?',
+
+  HELP_19_Title:          '19) Where is my Mist wallet file? ',
+  HELP_19_Desc_1:         'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.',
+
+  HELP_20_Title:          '20) Where is my pre-sale wallet file?',
+  HELP_20_Desc_1:         'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.',
+
+  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
+  HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
+  HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
+  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ETH is the least of everyone’s problems.',
+  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ETH from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
+  HELP_21_Desc_5:         'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.',
+  HELP_21_Desc_6:         'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
+  HELP_21_Desc_7:         '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',
+  HELP_21_Desc_8:         'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.',
+
+  HELP_SecCX_Title:       'Security - MyEtherWallet CX ',
+  HELP_SecCX_Desc_1:      'Where is this extension saving my information?',
+  HELP_SecCX_Desc_2:      'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.',
+  HELP_SecCX_Desc_3:      'What information is saved? ',
+  HELP_SecCX_Desc_4:      'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.',
+  HELP_SecCX_Desc_5:      'Why aren\'t the nickname and wallet address encrypted? ',
+  HELP_SecCX_Desc_6:      'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.',
+
+  HELP_Sec_Title:         'Security',
+  HELP_Sec_Desc_1:        'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. ',
+  HELP_Sec_Desc_2:        'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.',
+  HELP_Sec_Desc_3:        'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.',
+  HELP_Sec_Desc_4:        'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.',
+  HELP_Sec_Desc_5:        'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.',
+  HELP_Sec_Desc_6:        'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.',
+  HELP_Sec_Desc_7:        'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.',
+  HELP_Sec_Desc_8:        'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
+
+  HELP_FAQ_Title:         'More Helpful Answers to Frequent Questions',
+  HELP_Contact_Title:     'Ways to Get in Touch'
+};
+
+module.exports = de;
+
+},{}],33:[function(require,module,exports){
+// English
+'use strict';
+var en = function() {}
+en.code = 'en';
+en.data = {
+
+  /* Navigation*/
+  NAV_YourWallets:      'Your Wallets',
+  NAV_AddWallet:        'Add Wallet',
+  NAV_GenerateWallet:   'Generate Wallet',
+  NAV_BulkGenerate:     'Bulk Generate',
+  NAV_SendEther:        'Send Ether',
+  NAV_SendTokens:       'Send Tokens',
+  NAV_Offline:          'Send Offline',
+  NAV_WithdrawDAO:      'Withdraw DAO',
+  DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
+  NAV_ClaimDGD:         'Claim DGD',
+  DGD_TitleLong:        'Claim Your DGD Tokens',
+  NAV_MyWallets:        'My Wallets',
+  NAV_ViewWallet:       'View Wallet Info',
+  NAV_Help:             'Help',
+  NAV_Contact:          'Contact',
+
+  /* General */
+  x_Password:           'Password',
+  x_Download:           'Download',
+  x_Address:            'Your Address',
+  x_Save:               'x_Save',
+  x_Cancel:             'x_Cancel',
+  x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ETH. That icon is an easy way to recognize your address.',
+  x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
+  x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
+  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Json:               'JSON File (unencrypted)',
+  x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
+  x_PrintShort:         'Print',
+  x_Print:              'Print Paper Wallet',
+  x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
+  x_CSV:                'CSV file (unencrypted)',
+  x_TXT:                'TXT file (unencrypted)',
+
+  /* Header */
+  MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
+  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
+  MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
+	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+
+  /* Footer */
+  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_2:             'Donations greatly appreciated:',
+  FOOTER_3:             'Client-side wallet generation by',
+
+  /* Sidebar */
+  sidebar_AccountInfo:  'Account Information: ',
+  sidebar_AccountAddr:  'Account Address: ',
+  sidebar_AccountBal:   'Account Balance: ',
+  sidebar_Equiv:        'Equivalent Values: ',
+  sidebar_TransHistory: 'Transaction History',
+  sidebar_DGDBal:       'DGD Crowdsale Information:',
+  sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
+  sidebar_donate:       'Donate',
+  sidebar_thanks:       'THANK YOU!!!',
+
+  /* Decrypt Panel */
+  decrypt_Access:         'How would you like to access your wallet?',
+  decrypt_Title:          'Select the format of your private key:',
+
+  /* Add Wallet */
+  ADD_Label_1:            'What would you like to do?',
+  ADD_Radio_1:            'Generate New Wallet',
+  ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_short:      'SELECT WALLET FILE...',
+  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_4:            'Add an Account to Watch',
+  ADD_Label_2:            'Create a Nickname:',
+  ADD_Label_3:            'Your file is encrypted. Please enter the password: ',
+  ADD_Label_4:            'Add an Account to Watch',
+  ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
+  ADD_Label_5:            'Enter the Address: ',
+  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6_short:      'Unlock',
+  ADD_Label_7:            'Add Account',
+
+  /* Generate Wallets */
+  GEN_desc:               'If you want to generate multiple wallets, you can do so here: ',
+  GEN_Label_1:            'Enter a strong password (at least 9 characters)',
+  GEN_Placeholder_1:      'Do NOT forget to save this!',
+  GEN_SuccessMsg:         'Success! Your wallet has been generated.',
+  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
+  GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
+  GEN_Label_3:            'Save Your Address.',
+  GEN_Label_4:            'Print your paper wallet, or store a QR code verison. (optional)',
+
+  /* Bulk Generate Wallets */
+  BULK_Label_1:           'Number of Wallets To Generate',
+  BULK_Label_2:           'Generate Wallets',
+  BULK_SuccessMsg:        'Success! Your wallets have been generated.',
+
+  /* Sending Ether and Tokens */
+  SEND_addr:             'To Address: ',
+  SEND_amount:           'Amount to Send: ',
+  SEND_amount_short:     'Amount',
+  SEND_custom:           'Custom',
+  SEND_gas:              'Gas',
+  SEND_generate:         'Generate Signed Transaction',
+  SEND_raw:              'Raw Transaction',
+  SEND_signed:           'Signed Transaction',
+  SEND_trans:            'Send Transaction',
+  SEND_TransferTotal:    'Transfer total available balance',
+  SENDModal_Title:       'Warning! ',
+  /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
+  SENDModal_Content_1:   'You are about to send',
+  SENDModal_Content_2:   'to address',
+  SENDModal_Content_3:   'Are you sure you want to do this?',
+  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
+  SENDModal_No:          'No, get me out of here!',
+  SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+
+  /* Tokens */
+  TOKEN_Addr:            'Address: ',
+  TOKEN_Symbol:          'Token Symbol: ',
+  TOKEN_Dec:             'Decimals: ',
+
+  /* Send Transaction */
+  TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
+  TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
+  TRANS_standard:        'ETH (Standard Transaction)',
+  TRANS_eth:             'Only ETH',
+  TRANS_etc:             'Only ETC',
+  TRANS_advanced:        '+Advanced: Add More Gas or Data ',
+  TRANS_data:            ' Data: ',
+  TRANS_gas:             ' Gas: ',
+  TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
+
+  /* Send Transaction Modals */
+  TRANSModal_Title:      '"Only ETH" and "Only ETC" Transactions',
+  TRANSModal_Content_0:  'A note about the different transactions and different services:',
+  TRANSModal_Content_1:  '**ETH (Standard Transaction): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
+  TRANSModal_Content_2:  '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
+  TRANSModal_Content_3:  '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)',
+  TRANSModal_Content_5:  '**Kraken & Poloniex:** No known issues. Use whatever.',
+  TRANSModal_Yes:        'Sweet, I get it now.',
+  TRANSModal_No:         'Oh gosh, Im more confused. Help me.',
+
+  /* Offline Transaction */
+  OFFLINE_Title:         'Generate & Send Offline Transaction',
+  OFFLINE_Desc:          'Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This ensures your private keys do not touch an internet-connected device.',
+  OFFLLINE_Step1_Title:  'Step 1: Generate Information (Online Computer)',
+  OFFLINE_Step1_Button:  'Generate Information',
+  OFFLINE_Step1_Label_1: 'From Address: ',
+  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
+  OFFLLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
+  OFFLINE_Step2_Label_1:  'To Address: ',
+  OFFLINE_Step2_Label_2:  'Value / Amount to Send',
+  OFFLINE_Step2_Label_3:  'Gas Price ',
+  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.',
+  OFFLINE_Step2_Label_4:  'Gas Limit ',
+  OFFLINE_Step2_Label_4b: '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you.',
+  OFFLINE_Step2_Label_4:  'Nonce',
+  OFFLINE_Step2_Label_4b: 'This was displayed in Step 1 on your online computer.',
+  OFFLINE_Step2_Label_5:  'Data',
+  OFFLINE_Step2_Label_5b: 'This is optional. Data is often used when you send transactions to contracts.',
+  OFFLINE_Step2_Label_6:  'Enter / Select your Private Key / JSON.',
+  OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
+  OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
+
+  /* DAO */
+  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.',
+  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. ',
+  DAOModal_Title:         'Just making sure...',
+
+  /* Digix */
+  DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
+  DGD_Label_1:            'Estimated fee consumption:',
+  DGD_Label_2:            'Provided Maximum Fee:',
+  DGD_Label_3:            'Gas Price:',
+  DGD_Generate:           'Generate Claim',
+  DGD_Content:            'You are about to claim your DGD Tokens.',
+
+  /* My Wallet */
+  MYWAL_Nick:             'Wallet Nickname',
+  MYWAL_Address:          'Wallet Address',
+  MYWAL_Bal:              'Balance',
+  MYWAL_Edit:             'Edit',
+  MYWAL_View:             'View',
+  MYWAL_Remove:           'Remove',
+  MYWAL_RemoveWal:        'Remove Wallet:',
+  MYWAL_WatchOnly:        'Your Watch-Only Accounts',
+  MYWAL_Viewing:          'Viewing Wallet: ',
+  MYWAL_Hide:             'Hide Wallet Info',
+  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Name:             'Wallet Name',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
+  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
+
+  /* View Wallet Details */
+  VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
+  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+  VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* Error Messages */
+  ERROR_1:             'Please enter valid amount.',
+  ERROR_2:             'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+  ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
+  ERROR_4:              'This is not a valid wallet file. ',
+  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
+  ERROR_6:              'Invalid address. ',
+  ERROR_7:              'Invalid password. ',
+  ERROR_8:              'Invalid amount. ',
+  ERROR_9:              'Invalid gas limit. ',
+  ERROR_10:             'Invalid data value. ',
+  ERROR_11:             'Invalid gas amount. ',
+  ERROR_12:             'Invalid nonce. ',
+  ERROR_13:             'Invalid signed transaction. ',
+  ERROR_14:             'A wallet with this nickname already exists. ',
+  ERROR_15:             'Wallet not found. ',
+  ERROR_16:             'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+  ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
+  ERROR_18:             'You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
+  ERROR_20:             'Invalid symbol',
+  SUCCESS_1:            'Valid address',
+  SUCCESS_2:            'Wallet successfully decrypted',
+  SUCCESS_3:            'Transaction submitted. TX ID: ',
+  SUCCESS_4:            'Your wallet was successfully added: ',
+  SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
+
+  /* Tranlsation Info */
+  translate_version:    '0.0',
+  Translator_Desc:      'Thank you to our translators...',
+  LANG_en:              'English',
+  LANG_de:              'Deutsche',
+  LANG_es:              'Español',
+  LANG_fr:              'Français',
+  LANG_ko:              'Korean',
+  LANG_no:              'Norwegian',
+  TranlsatorName_1:     '',
+  TranlsatorAddr_1:     '',
+  TranlsatorName_2:     ' ',
+  TranlsatorAddr_2:     ' ',
+  TranlsatorName_3:     ' ',
+  TranlsatorAddr_3:     ' ',
+  TranlsatorName_4:     ' ',
+  TranlsatorAddr_4:     ' ',
+  TranlsatorName_5:     ' ',
+  TranlsatorAddr_5:     ' ',
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning:       'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
@@ -2857,23 +3397,247 @@ en.data = {
 
 module.exports = en;
 
-},{}],33:[function(require,module,exports){
-/* NOTE: This is mostly for testing purposes only. It was done 100% via Google Translate and
-Should NOT be used in production environment */
-
-
+},{}],34:[function(require,module,exports){
+// Spanish
 'use strict';
-var fr = function() {}
-fr.code = 'fr';
-fr.data = {
+var es = function() {}
+es.code = 'es';
+es.data = {
+
+  /* Navigation*/
+  NAV_YourWallets:      'Your Wallets',
+  NAV_AddWallet:        'Add Wallet',
+  NAV_GenerateWallet:   'Generate Wallet',
+  NAV_BulkGenerate:     'Bulk Generate',
+  NAV_SendEther:        'Send Ether',
+  NAV_SendTokens:       'Send Tokens',
+  NAV_Offline:          'Send Offline',
+  NAV_WithdrawDAO:      'Withdraw DAO',
+  DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
+  NAV_ClaimDGD:         'Claim DGD',
+  DGD_TitleLong:        'Claim Your DGD Tokens',
+  NAV_MyWallets:        'My Wallets',
+  NAV_ViewWallet:       'View Wallet Info',
+  NAV_Help:             'Help',
+  NAV_Contact:          'Contact',
+
+  /* General */
+  x_Password:           'Password',
+  x_Download:           'Download',
+  x_Address:            'Your Address',
+  x_Save:               'x_Save',
+  x_Cancel:             'x_Cancel',
+  x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ETH. That icon is an easy way to recognize your address.',
+  x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
+  x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
+  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Json:               'JSON File (unencrypted)',
+  x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
+  x_PrintShort:         'Print',
+  x_Print:              'Print Paper Wallet',
+  x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
+  x_CSV:                'CSV file (unencrypted)',
+  x_TXT:                'TXT file (unencrypted)',
+
+  /* Header */
+  MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
+  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
+  MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
+	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+
+  /* Footer */
+  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_2:             'Donations greatly appreciated:',
+  FOOTER_3:             'Client-side wallet generation by',
+
+  /* Sidebar */
+  sidebar_AccountInfo:  'Account Information: ',
+  sidebar_AccountAddr:  'Account Address: ',
+  sidebar_AccountBal:   'Account Balance: ',
+  sidebar_Equiv:        'Equivalent Values: ',
+  sidebar_TransHistory: 'Transaction History',
+  sidebar_DGDBal:       'DGD Crowdsale Information:',
+  sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
+  sidebar_donate:       'Donate',
+  sidebar_thanks:       'THANK YOU!!!',
+
+  /* Decrypt Panel */
+  decrypt_Access:         'How would you like to access your wallet?',
+  decrypt_Title:          'Select the format of your private key:',
+
+  /* Add Wallet */
+  ADD_Label_1:            'What would you like to do?',
+  ADD_Radio_1:            'Generate New Wallet',
+  ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_short:      'SELECT WALLET FILE...',
+  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_4:            'Add an Account to Watch',
+  ADD_Label_2:            'Create a Nickname:',
+  ADD_Label_3:            'Your file is encrypted. Please enter the password: ',
+  ADD_Label_4:            'Add an Account to Watch',
+  ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
+  ADD_Label_5:            'Enter the Address: ',
+  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6_short:      'Unlock',
+  ADD_Label_7:            'Add Account',
+
+  /* Generate Wallets */
+  GEN_desc:               'If you want to generate multiple wallets, you can do so here: ',
+  GEN_Label_1:            'Enter a strong password (at least 9 characters)',
+  GEN_Placeholder_1:      'Do NOT forget to save this!',
+  GEN_SuccessMsg:         'Success! Your wallet has been generated.',
+  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
+  GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
+  GEN_Label_3:            'Save Your Address.',
+  GEN_Label_4:            'Print your paper wallet, or store a QR code verison. (optional)',
+
+  /* Bulk Generate Wallets */
+  BULK_Label_1:           'Number of Wallets To Generate',
+  BULK_Label_2:           'Generate Wallets',
+  BULK_SuccessMsg:        'Success! Your wallets have been generated.',
+
+  /* Sending Ether and Tokens */
+  SEND_addr:             'To Address: ',
+  SEND_amount:           'Amount to Send: ',
+  SEND_amount_short:     'Amount',
+  SEND_custom:           'Custom',
+  SEND_gas:              'Gas',
+  SEND_generate:         'Generate Signed Transaction',
+  SEND_raw:              'Raw Transaction',
+  SEND_signed:           'Signed Transaction',
+  SEND_trans:            'Send Transaction',
+  SEND_TransferTotal:    'Transfer total available balance',
+  SENDModal_Title:       'Warning! ',
+  /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
+  SENDModal_Content_1:   'You are about to send',
+  SENDModal_Content_2:   'to address',
+  SENDModal_Content_3:   'Are you sure you want to do this?',
+  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
+  SENDModal_No:          'No, get me out of here!',
+  SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+
+  /* Tokens */
+  TOKEN_Addr:            'Address: ',
+  TOKEN_Symbol:          'Token Symbol: ',
+  TOKEN_Dec:             'Decimals: ',
+
+  /* Send Transaction */
+  TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
+  TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
+  TRANS_standard:        'ETH (Standard Transaction)',
+  TRANS_eth:             'Only ETH',
+  TRANS_etc:             'Only ETC',
+  TRANS_advanced:        '+Advanced: Add More Gas or Data ',
+  TRANS_data:            ' Data: ',
+  TRANS_gas:             ' Gas: ',
+  TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
+
+  /* Send Transaction Modals */
+  TRANSModal_Title:      '"Only ETH" and "Only ETC" Transactions',
+  TRANSModal_Content_0:  'A note about the different transactions and different services:',
+  TRANSModal_Content_1:  '**ETH (Standard Transaction): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
+  TRANSModal_Content_2:  '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
+  TRANSModal_Content_3:  '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)',
+  TRANSModal_Content_5:  '**Kraken & Poloniex:** No known issues. Use whatever.',
+  TRANSModal_Yes:        'Sweet, I get it now.',
+  TRANSModal_No:         'Oh gosh, Im more confused. Help me.',
+
+  /* Offline Transaction */
+  OFFLINE_Title:         'Generate & Send Offline Transaction',
+  OFFLINE_Desc:          'Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This ensures your private keys do not touch an internet-connected device.',
+  OFFLLINE_Step1_Title:  'Step 1: Generate Information (Online Computer)',
+  OFFLINE_Step1_Button:  'Generate Information',
+  OFFLINE_Step1_Label_1: 'From Address: ',
+  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
+  OFFLLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
+  OFFLINE_Step2_Label_1:  'To Address: ',
+  OFFLINE_Step2_Label_2:  'Value / Amount to Send',
+  OFFLINE_Step2_Label_3:  'Gas Price ',
+  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.',
+  OFFLINE_Step2_Label_4:  'Gas Limit ',
+  OFFLINE_Step2_Label_4b: '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you.',
+  OFFLINE_Step2_Label_4:  'Nonce',
+  OFFLINE_Step2_Label_4b: 'This was displayed in Step 1 on your online computer.',
+  OFFLINE_Step2_Label_5:  'Data',
+  OFFLINE_Step2_Label_5b: 'This is optional. Data is often used when you send transactions to contracts.',
+  OFFLINE_Step2_Label_6:  'Enter / Select your Private Key / JSON.',
+  OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
+  OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
+
+  /* DAO */
+  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.',
+  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. ',
+  DAOModal_Title:         'Just making sure...',
+
+  /* Digix */
+  DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
+  DGD_Label_1:            'Estimated fee consumption:',
+  DGD_Label_2:            'Provided Maximum Fee:',
+  DGD_Label_3:            'Gas Price:',
+  DGD_Generate:           'Generate Claim',
+  DGD_Content:            'You are about to claim your DGD Tokens.',
+
+  /* My Wallet */
+  MYWAL_Nick:             'Wallet Nickname',
+  MYWAL_Address:          'Wallet Address',
+  MYWAL_Bal:              'Balance',
+  MYWAL_Edit:             'Edit',
+  MYWAL_View:             'View',
+  MYWAL_Remove:           'Remove',
+  MYWAL_RemoveWal:        'Remove Wallet:',
+  MYWAL_WatchOnly:        'Your Watch-Only Accounts',
+  MYWAL_Viewing:          'Viewing Wallet: ',
+  MYWAL_Hide:             'Hide Wallet Info',
+  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Name:             'Wallet Name',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
+  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
+
+  /* View Wallet Details */
+  VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
+  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+  VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* Error Messages */
+  ERROR_1:             'Please enter valid amount.',
+  ERROR_2:             'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+  ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
+  ERROR_4:              'This is not a valid wallet file. ',
+  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
+  ERROR_6:              'Invalid address. ',
+  ERROR_7:              'Invalid password. ',
+  ERROR_8:              'Invalid amount. ',
+  ERROR_9:              'Invalid gas limit. ',
+  ERROR_10:             'Invalid data value. ',
+  ERROR_11:             'Invalid gas amount. ',
+  ERROR_12:             'Invalid nonce. ',
+  ERROR_13:             'Invalid signed transaction. ',
+  ERROR_14:             'A wallet with this nickname already exists. ',
+  ERROR_15:             'Wallet not found. ',
+  ERROR_16:             'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+  ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
+  ERROR_18:             'You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
+  ERROR_20:             'Invalid symbol',
+  SUCCESS_1:            'Valid address',
+  SUCCESS_2:            'Wallet successfully decrypted',
+  SUCCESS_3:            'Transaction submitted. TX ID: ',
+  SUCCESS_4:            'Your wallet was successfully added: ',
+  SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
 
   /* Tranlsation Info */
   translate_version:    '0.0',
-  Translator_Desc:      'Merci à nos traducteurs...',
+  Translator_Desc:      'Thank you to our translators...',
   LANG_en:              'English',
+  LANG_de:              'Deutsche',
   LANG_es:              'Español',
   LANG_fr:              'Français',
-  LANG_de:              'Deutsche',
+  LANG_ko:              'Korean',
+  LANG_no:              'Norwegian',
   TranlsatorName_1:     '',
   TranlsatorAddr_1:     '',
   TranlsatorName_2:     ' ',
@@ -2884,6 +3648,1791 @@ fr.data = {
   TranlsatorAddr_4:     ' ',
   TranlsatorName_5:     ' ',
   TranlsatorAddr_5:     ' ',
+
+  /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
+  HELP_Warning:       'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
+  HELP_Desc:          'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!',
+  HELP_Remind_Title:  'Some reminders',
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**.',
+  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.',
+  HELP_Remind_Desc_3: 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!',
+
+  HELP_0_Title:        '0) I\'m new. What do I do?',
+  HELP_0_Desc_1:       'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.',
+  HELP_0_Desc_2:       'Create a new wallet.',
+  HELP_0_Desc_3:       'Back the wallet up.',
+  HELP_0_Desc_4:       'Verify you have access to this new wallet and have correctly saved all necessary information.',
+  HELP_0_Desc_5:       'Transfer Ether to this new wallet.',
+
+  HELP_1_Title:        '1) How do I create a new wallet? ',
+  HELP_1_Desc_1:       'Go to the "Generate Wallet" page.',
+  HELP_1_Desc_2:       'Go to the "Add Wallet" page & select "Generate New Wallet"',
+  HELP_1_Desc_3:       'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.',
+  HELP_1_Desc_4:       'Click "GENERATE".',
+  HELP_1_Desc_5:       'Your wallet has now been generated.',
+
+  HELP_2a_Title:       '2a) How do I save/backup my wallet?',
+  HELP_2a_Desc_1:      'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
+  HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you.',
+  HELP_2a_Desc_3:      'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:',
+  HELP_2a_Desc_4:      'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.',
+  HELP_2a_Desc_5:      'Print the wallet if you have a printer. Otherwise, write down your private and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
+  HELP_2a_Desc_6:      'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).',
+
+  HELP_2b_Title:       '2b) How do I safely / offline / cold storage with MyEtherWallet?',
+  HELP_2b_Desc_1:      'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_2b_Desc_2:      'Click download zip in the upper right.',
+  HELP_2b_Desc_3:      'Move zip to an airgapped computer.',
+  HELP_2b_Desc_4:      'Unzip it and double-click `index.html`.',
+  HELP_2b_Desc_5:      'Generate a wallet with a strong password.',
+  HELP_2b_Desc_6:      'Save the address. Save versions of the private key. Save the password if you might not remember it forever.',
+  HELP_2b_Desc_7:      'Store these papers / USBs in multiple physically separate locations.',
+  HELP_2b_Desc_8:      'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same.',
+
+  HELP_3_Title:         '3) How do I verify I have access to my new wallet?',
+  HELP_3_Desc_1:        '**Before you send any Ether to your new wallet**, you should ensure you have access to it.',
+  HELP_3_Desc_2:        'Navigate to the "View Wallet Info" page.',
+  HELP_3_Desc_3:        'Navigate to the MyEtherWallet.com "View Wallet Info" page.',
+  HELP_3_Desc_4:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_3_Desc_5:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_3_Desc_6:        'Click the "Unlock Wallet" button.',
+  HELP_3_Desc_7:        'Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
+  HELP_3_Desc_8:        'If you are planning on holding a large amount of ETH, we recommend that send a small amount of ETH from new wallet before depositting a large amount. Send .001 ETH to your new wallet, access that wallet, send that .001 ETH to another address, and ensure everything works smoothly.',
+
+  HELP_4_Title:         '4) How do I send Ether from one wallet to another?',
+  HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
+  HELP_4_Desc_2:        'Navigate to the "Send Ether" page.',
+  HELP_4_Desc_3:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
+  HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
+  HELP_4_Desc_9:        'Click "Generate Transaction".',
+  HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_4_Desc_11:       'Click the blue "Send Transaction" button below that.',
+  HELP_4_Desc_12:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_4_Desc_13:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+
+  HELP_4CX_Title:       '4) How do I send Ether using MyEtherWallet CX?',
+  HELP_4CX_Desc_1:      'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.',
+  HELP_4CX_Desc_2:      'QuickSend:',
+  HELP_4CX_Desc_3:      'Click the Chrome Extension Icon.',
+  HELP_4CX_Desc_4:      'Click the "QuickSend" button.',
+  HELP_4CX_Desc_5:      'Select the wallet you wish to send from.',
+  HELP_4CX_Desc_6:      'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4CX_Desc_7:      'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
+  HELP_4CX_Desc_8:      'Click "Send Transaction". ',
+  HELP_4CX_Desc_9:      'Verify the address and the amount you are sending is correct.',
+  HELP_4CX_Desc_10:     'Enter the password for that wallet.',
+  HELP_4CX_Desc_11:     'Click "Send Transaction."',
+  HELP_4CX_Desc_12:     'Using "Send Ether" Page: ',
+
+  HELP_5_Title:         '5) How do I run MyEtherWallet.com offline/locally? ',
+  HELP_5_Desc_1:        'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page.',
+  HELP_5_Desc_2:        'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_5_Desc_3:        'Click download zip in the upper right.',
+  HELP_5_Desc_4:        'Move zip to an airgapped computer.',
+  HELP_5_Desc_5:        'Unzip it.',
+  HELP_5_Desc_6:        'Double-Click `index.html`.',
+  HELP_5_Desc_7:        'MyEtherWallet.com is now running entirely on your computer.',
+  HELP_5_Desc_8:        'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.',
+  HELP_5_Desc_9:        'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.',
+
+  HELP_5CX_Title:       '5) How can I install this extension from the repo instead of the Chrome Store? ',
+  HELP_5CX_Desc_1:      'Go to our github and find the most recent Chrome Extension relase: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
+  HELP_5CX_Desc_2:      'Scroll to the very bottom and right click on the latest release. Click "save link as".',
+  HELP_5CX_Desc_3:      'Go to Google Chrome and find you settings (in the menu in the upper right).',
+  HELP_5CX_Desc_4:      'Click "Extensions" on the left.',
+  HELP_5CX_Desc_5:      'Check the "Developer Mode" button at the top of that page.',
+  HELP_5CX_Desc_6:      'Click the "Load unpacked extension..." button.',
+  HELP_5CX_Desc_7:      'Navigate to the now-unzipped folder that you downloaded earlier. Click "select".',
+  HELP_5CX_Desc_8:      'The extension should now show up in your extensions and in your Chrome Extension bar.',
+
+  HELP_6_Title:         '6) How do I split my ETH / ETC? ',
+  HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your account now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original account into two accounts. Moving forward, you need to make sure only ETH goes to your ETH account and only ETC goes to your ETC account.',
+  HELP_6_Desc_2:        'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.',
+  HELP_6_Desc_3:        '[Even more information about wallets and reply attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
+  HELP_6_Desc_4:        'Generate a new clean post-fork ETH address for yourself (to be the final destination of pure ETH).',
+  HELP_6_Desc_5:        'Generate a new clean post-fork ETC address for yourself (to be the final destination of pure ETC).',
+  HELP_6_Desc_6:        'Back up these new wallets and verify you can access them. See #2a and #3 above.',
+  HELP_6_Desc_7:        'Send .1234 ETH to your new "ETH" address using "Only ETH" option on the "Send Ether" page.',
+  HELP_6_Desc_8:        'Send .5678 ETC to your new "ETC" address using "Only ETC" on MyEtherWallet.com',
+  HELP_6_Desc_9:        'Check that only the .1234 ETH moved on etherscan.io. Check that only the .5678 ETC moved on gastracker.io.',
+  HELP_6_Desc_10:       'Send a .0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the .0001 ETH moved.',
+  HELP_6_Desc_11:       ' Generate (but do not send) a .0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
+  HELP_6_Desc_12:       'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the .0002 ETC moved.',
+  HELP_6_Desc_13:       'If everything receives correctly and sends correctly then you are golden.',
+  HELP_6_Desc_14:       'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".',
+  HELP_6_Desc_15:       ' Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. ',
+
+  HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
+  HELP_7_Desc_1:        'Navigate to the "Send Token" page.',
+  HELP_7_Desc_2:        'Unlock your wallet.',
+  HELP_7_Desc_3:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_7_Desc_4:        'Enter the amount you would like to send.',
+  HELP_7_Desc_5:        'Select which token you would like to send.',
+  HELP_7_Desc_6:        'If you do not see the token listed:',
+  HELP_7_Desc_7:        'Click "Custom".',
+  HELP_7_Desc_8:        'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.',
+  HELP_7_Desc_9:        'Click "Save".',
+  HELP_7_Desc_10:       'You can now send that token as well as see it\'s balance in the sidebar.',
+  HELP_7_Desc_11:       'Click "Generate Transaction".',
+  HELP_7_Desc_12:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_7_Desc_13:       'Click the blue "Send Transaction" button below that.',
+  HELP_7_Desc_14:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_7_Desc_15:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain.',
+
+  HELP_8_Title:         '8) What happens if your site goes down?',
+  HELP_8_Desc_1:        'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain.',
+  HELP_8_Desc_2:        'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site.',
+  HELP_8_Desc_3:        'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below.',
+  HELP_8_Desc_4:        'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. ',
+
+  HELP_8CX_Title:        '8) What happens if MyEtherWallet CX disappears?',
+  HELP_8CX_Desc_1:       'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer.',
+  HELP_8CX_Desc_2:       'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.',
+  HELP_8CX_Desc_3:       'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.',
+
+  HELP_9_Title:          '9) Is the "Send Ether" page offline?',
+  HELP_9_Desc_1:         ' No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.',
+
+  HELP_10_Title:         '10) How do I make an offline transaction?',
+  HELP_10_Desc_1:        'Navigate to the "Offline Transaction" page via your online computer.',
+  HELP_10_Desc_2:        'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.',
+  HELP_10_Desc_3:        'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.',
+  HELP_10_Desc_4:        'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_5:        'Enter the "NONCE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_6:        'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.',
+  HELP_10_Desc_7:        'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.',
+  HELP_10_Desc_8:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_10_Desc_9:        'Press the "GENERATE SIGNED TRANSACTION" button.',
+  HELP_10_Desc_10:       'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
+  HELP_10_Desc_11:       'On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.',
+
+  HELP_11_Title:          '11) How do I send to a contract?',
+  HELP_11_Desc_1:         'Sending to a contract often requires you to include data or additional gas or both',
+  HELP_11_Desc_2:         'Navigate to the "Send Ether" page. ',
+  HELP_11_Desc_3:         'Select your wallet file -or- your private key and unlock your wallet. ',
+  HELP_11_Desc_4:         'Enter a "To Address" and "Amount to Send"',
+  HELP_11_Desc_5:         'Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_12_Title:          '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?',
+  HELP_12_Desc_1:         'Using an Geth/Mist JSON file from MyEtherWallet v2+....',
+  HELP_12_Desc_2:         'Go to the "View Wallet Info" page.',
+  HELP_12_Desc_3:         'Unlock your wallet using your **encrypted** private key or JSON file. ',
+  HELP_12_Desc_4:         'Go to the "My Wallets" page.',
+  HELP_12_Desc_5:         'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. ',
+  HELP_12_Desc_6:         'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.',
+  HELP_12_Desc_7:         'Open the Ethereum Wallet application. ',
+  HELP_12_Desc_8:         'In the menu bar, go "Accounts" -> "Backup" -> "Accounts"',
+  HELP_12_Desc_9:         'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder.',
+  HELP_12_Desc_10:        'Your account should show up immediately under "Accounts."',
+  HELP_12_Desc_11:        'Using your unencrypted private key...',
+  HELP_12_Desc_12:        'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.',
+  HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
+  HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
+  HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
+  HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
+  HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
+  HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
+  HELP_12_Desc_23:        'Open Notepad & paste the private key',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
+
+  HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
+  HELP_13_Desc_1:         'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_14_Title:          '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
+  HELP_14_Desc_1:         'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
+
+  HELP_15_Title:          '15) Why hasn\'t the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
+  HELP_15_Desc_1:         'Addresses will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
+
+  HELP_16_Title:          '16) How do I check the balance of my account? ',
+  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+
+  HELP_17_Title:          '17) Why isn\'t my balance showing up when I unlock my wallet? ',
+  HELP_17_Desc_1:         ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
+
+  HELP_18_Title:          '18) Where is my geth wallet file?',
+
+  HELP_19_Title:          '19) Where is my Mist wallet file? ',
+  HELP_19_Desc_1:         'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.',
+
+  HELP_20_Title:          '20) Where is my pre-sale wallet file?',
+  HELP_20_Desc_1:         'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.',
+
+  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
+  HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
+  HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
+  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ETH is the least of everyone’s problems.',
+  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ETH from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
+  HELP_21_Desc_5:         'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.',
+  HELP_21_Desc_6:         'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
+  HELP_21_Desc_7:         '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',
+  HELP_21_Desc_8:         'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.',
+
+  HELP_SecCX_Title:       'Security - MyEtherWallet CX ',
+  HELP_SecCX_Desc_1:      'Where is this extension saving my information?',
+  HELP_SecCX_Desc_2:      'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.',
+  HELP_SecCX_Desc_3:      'What information is saved? ',
+  HELP_SecCX_Desc_4:      'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.',
+  HELP_SecCX_Desc_5:      'Why aren\'t the nickname and wallet address encrypted? ',
+  HELP_SecCX_Desc_6:      'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.',
+
+  HELP_Sec_Title:         'Security',
+  HELP_Sec_Desc_1:        'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. ',
+  HELP_Sec_Desc_2:        'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.',
+  HELP_Sec_Desc_3:        'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.',
+  HELP_Sec_Desc_4:        'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.',
+  HELP_Sec_Desc_5:        'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.',
+  HELP_Sec_Desc_6:        'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.',
+  HELP_Sec_Desc_7:        'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.',
+  HELP_Sec_Desc_8:        'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
+
+  HELP_FAQ_Title:         'More Helpful Answers to Frequent Questions',
+  HELP_Contact_Title:     'Ways to Get in Touch'
+};
+
+module.exports = es;
+
+},{}],35:[function(require,module,exports){
+// French
+'use strict';
+var fr = function() {}
+fr.code = 'fr';
+fr.data = {
+
+  /* Navigation*/
+  NAV_YourWallets:      'Your Wallets',
+  NAV_AddWallet:        'Add Wallet',
+  NAV_GenerateWallet:   'Generate Wallet',
+  NAV_BulkGenerate:     'Bulk Generate',
+  NAV_SendEther:        'Send Ether',
+  NAV_SendTokens:       'Send Tokens',
+  NAV_Offline:          'Send Offline',
+  NAV_WithdrawDAO:      'Withdraw DAO',
+  DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
+  NAV_ClaimDGD:         'Claim DGD',
+  DGD_TitleLong:        'Claim Your DGD Tokens',
+  NAV_MyWallets:        'My Wallets',
+  NAV_ViewWallet:       'View Wallet Info',
+  NAV_Help:             'Help',
+  NAV_Contact:          'Contact',
+
+  /* General */
+  x_Password:           'Password',
+  x_Download:           'Download',
+  x_Address:            'Your Address',
+  x_Save:               'x_Save',
+  x_Cancel:             'x_Cancel',
+  x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ETH. That icon is an easy way to recognize your address.',
+  x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
+  x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
+  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Json:               'JSON File (unencrypted)',
+  x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
+  x_PrintShort:         'Print',
+  x_Print:              'Print Paper Wallet',
+  x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
+  x_CSV:                'CSV file (unencrypted)',
+  x_TXT:                'TXT file (unencrypted)',
+
+  /* Header */
+  MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
+  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
+  MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
+	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+
+  /* Footer */
+  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_2:             'Donations greatly appreciated:',
+  FOOTER_3:             'Client-side wallet generation by',
+
+  /* Sidebar */
+  sidebar_AccountInfo:  'Account Information: ',
+  sidebar_AccountAddr:  'Account Address: ',
+  sidebar_AccountBal:   'Account Balance: ',
+  sidebar_Equiv:        'Equivalent Values: ',
+  sidebar_TransHistory: 'Transaction History',
+  sidebar_DGDBal:       'DGD Crowdsale Information:',
+  sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
+  sidebar_donate:       'Donate',
+  sidebar_thanks:       'THANK YOU!!!',
+
+  /* Decrypt Panel */
+  decrypt_Access:         'How would you like to access your wallet?',
+  decrypt_Title:          'Select the format of your private key:',
+
+  /* Add Wallet */
+  ADD_Label_1:            'What would you like to do?',
+  ADD_Radio_1:            'Generate New Wallet',
+  ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_short:      'SELECT WALLET FILE...',
+  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_4:            'Add an Account to Watch',
+  ADD_Label_2:            'Create a Nickname:',
+  ADD_Label_3:            'Your file is encrypted. Please enter the password: ',
+  ADD_Label_4:            'Add an Account to Watch',
+  ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
+  ADD_Label_5:            'Enter the Address: ',
+  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6_short:      'Unlock',
+  ADD_Label_7:            'Add Account',
+
+  /* Generate Wallets */
+  GEN_desc:               'If you want to generate multiple wallets, you can do so here: ',
+  GEN_Label_1:            'Enter a strong password (at least 9 characters)',
+  GEN_Placeholder_1:      'Do NOT forget to save this!',
+  GEN_SuccessMsg:         'Success! Your wallet has been generated.',
+  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
+  GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
+  GEN_Label_3:            'Save Your Address.',
+  GEN_Label_4:            'Print your paper wallet, or store a QR code verison. (optional)',
+
+  /* Bulk Generate Wallets */
+  BULK_Label_1:           'Number of Wallets To Generate',
+  BULK_Label_2:           'Generate Wallets',
+  BULK_SuccessMsg:        'Success! Your wallets have been generated.',
+
+  /* Sending Ether and Tokens */
+  SEND_addr:             'To Address: ',
+  SEND_amount:           'Amount to Send: ',
+  SEND_amount_short:     'Amount',
+  SEND_custom:           'Custom',
+  SEND_gas:              'Gas',
+  SEND_generate:         'Generate Signed Transaction',
+  SEND_raw:              'Raw Transaction',
+  SEND_signed:           'Signed Transaction',
+  SEND_trans:            'Send Transaction',
+  SEND_TransferTotal:    'Transfer total available balance',
+  SENDModal_Title:       'Warning! ',
+  /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
+  SENDModal_Content_1:   'You are about to send',
+  SENDModal_Content_2:   'to address',
+  SENDModal_Content_3:   'Are you sure you want to do this?',
+  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
+  SENDModal_No:          'No, get me out of here!',
+  SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+
+  /* Tokens */
+  TOKEN_Addr:            'Address: ',
+  TOKEN_Symbol:          'Token Symbol: ',
+  TOKEN_Dec:             'Decimals: ',
+
+  /* Send Transaction */
+  TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
+  TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
+  TRANS_standard:        'ETH (Standard Transaction)',
+  TRANS_eth:             'Only ETH',
+  TRANS_etc:             'Only ETC',
+  TRANS_advanced:        '+Advanced: Add More Gas or Data ',
+  TRANS_data:            ' Data: ',
+  TRANS_gas:             ' Gas: ',
+  TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
+
+  /* Send Transaction Modals */
+  TRANSModal_Title:      '"Only ETH" and "Only ETC" Transactions',
+  TRANSModal_Content_0:  'A note about the different transactions and different services:',
+  TRANSModal_Content_1:  '**ETH (Standard Transaction): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
+  TRANSModal_Content_2:  '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
+  TRANSModal_Content_3:  '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)',
+  TRANSModal_Content_5:  '**Kraken & Poloniex:** No known issues. Use whatever.',
+  TRANSModal_Yes:        'Sweet, I get it now.',
+  TRANSModal_No:         'Oh gosh, Im more confused. Help me.',
+
+  /* Offline Transaction */
+  OFFLINE_Title:         'Generate & Send Offline Transaction',
+  OFFLINE_Desc:          'Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This ensures your private keys do not touch an internet-connected device.',
+  OFFLLINE_Step1_Title:  'Step 1: Generate Information (Online Computer)',
+  OFFLINE_Step1_Button:  'Generate Information',
+  OFFLINE_Step1_Label_1: 'From Address: ',
+  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
+  OFFLLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
+  OFFLINE_Step2_Label_1:  'To Address: ',
+  OFFLINE_Step2_Label_2:  'Value / Amount to Send',
+  OFFLINE_Step2_Label_3:  'Gas Price ',
+  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.',
+  OFFLINE_Step2_Label_4:  'Gas Limit ',
+  OFFLINE_Step2_Label_4b: '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you.',
+  OFFLINE_Step2_Label_4:  'Nonce',
+  OFFLINE_Step2_Label_4b: 'This was displayed in Step 1 on your online computer.',
+  OFFLINE_Step2_Label_5:  'Data',
+  OFFLINE_Step2_Label_5b: 'This is optional. Data is often used when you send transactions to contracts.',
+  OFFLINE_Step2_Label_6:  'Enter / Select your Private Key / JSON.',
+  OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
+  OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
+
+  /* DAO */
+  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.',
+  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. ',
+  DAOModal_Title:         'Just making sure...',
+
+  /* Digix */
+  DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
+  DGD_Label_1:            'Estimated fee consumption:',
+  DGD_Label_2:            'Provided Maximum Fee:',
+  DGD_Label_3:            'Gas Price:',
+  DGD_Generate:           'Generate Claim',
+  DGD_Content:            'You are about to claim your DGD Tokens.',
+
+  /* My Wallet */
+  MYWAL_Nick:             'Wallet Nickname',
+  MYWAL_Address:          'Wallet Address',
+  MYWAL_Bal:              'Balance',
+  MYWAL_Edit:             'Edit',
+  MYWAL_View:             'View',
+  MYWAL_Remove:           'Remove',
+  MYWAL_RemoveWal:        'Remove Wallet:',
+  MYWAL_WatchOnly:        'Your Watch-Only Accounts',
+  MYWAL_Viewing:          'Viewing Wallet: ',
+  MYWAL_Hide:             'Hide Wallet Info',
+  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Name:             'Wallet Name',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
+  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
+
+  /* View Wallet Details */
+  VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
+  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+  VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* Error Messages */
+  ERROR_1:             'Please enter valid amount.',
+  ERROR_2:             'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+  ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
+  ERROR_4:              'This is not a valid wallet file. ',
+  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
+  ERROR_6:              'Invalid address. ',
+  ERROR_7:              'Invalid password. ',
+  ERROR_8:              'Invalid amount. ',
+  ERROR_9:              'Invalid gas limit. ',
+  ERROR_10:             'Invalid data value. ',
+  ERROR_11:             'Invalid gas amount. ',
+  ERROR_12:             'Invalid nonce. ',
+  ERROR_13:             'Invalid signed transaction. ',
+  ERROR_14:             'A wallet with this nickname already exists. ',
+  ERROR_15:             'Wallet not found. ',
+  ERROR_16:             'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+  ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
+  ERROR_18:             'You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
+  ERROR_20:             'Invalid symbol',
+  SUCCESS_1:            'Valid address',
+  SUCCESS_2:            'Wallet successfully decrypted',
+  SUCCESS_3:            'Transaction submitted. TX ID: ',
+  SUCCESS_4:            'Your wallet was successfully added: ',
+  SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
+
+  /* Tranlsation Info */
+  translate_version:    '0.0',
+  Translator_Desc:      'Thank you to our translators...',
+  LANG_en:              'English',
+  LANG_de:              'Deutsche',
+  LANG_es:              'Español',
+  LANG_fr:              'Français',
+  LANG_ko:              'Korean',
+  LANG_no:              'Norwegian',
+  TranlsatorName_1:     '',
+  TranlsatorAddr_1:     '',
+  TranlsatorName_2:     ' ',
+  TranlsatorAddr_2:     ' ',
+  TranlsatorName_3:     ' ',
+  TranlsatorAddr_3:     ' ',
+  TranlsatorName_4:     ' ',
+  TranlsatorAddr_4:     ' ',
+  TranlsatorName_5:     ' ',
+  TranlsatorAddr_5:     ' ',
+
+  /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
+  HELP_Warning:       'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
+  HELP_Desc:          'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!',
+  HELP_Remind_Title:  'Some reminders',
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**.',
+  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.',
+  HELP_Remind_Desc_3: 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!',
+
+  HELP_0_Title:        '0) I\'m new. What do I do?',
+  HELP_0_Desc_1:       'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.',
+  HELP_0_Desc_2:       'Create a new wallet.',
+  HELP_0_Desc_3:       'Back the wallet up.',
+  HELP_0_Desc_4:       'Verify you have access to this new wallet and have correctly saved all necessary information.',
+  HELP_0_Desc_5:       'Transfer Ether to this new wallet.',
+
+  HELP_1_Title:        '1) How do I create a new wallet? ',
+  HELP_1_Desc_1:       'Go to the "Generate Wallet" page.',
+  HELP_1_Desc_2:       'Go to the "Add Wallet" page & select "Generate New Wallet"',
+  HELP_1_Desc_3:       'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.',
+  HELP_1_Desc_4:       'Click "GENERATE".',
+  HELP_1_Desc_5:       'Your wallet has now been generated.',
+
+  HELP_2a_Title:       '2a) How do I save/backup my wallet?',
+  HELP_2a_Desc_1:      'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
+  HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you.',
+  HELP_2a_Desc_3:      'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:',
+  HELP_2a_Desc_4:      'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.',
+  HELP_2a_Desc_5:      'Print the wallet if you have a printer. Otherwise, write down your private and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
+  HELP_2a_Desc_6:      'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).',
+
+  HELP_2b_Title:       '2b) How do I safely / offline / cold storage with MyEtherWallet?',
+  HELP_2b_Desc_1:      'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_2b_Desc_2:      'Click download zip in the upper right.',
+  HELP_2b_Desc_3:      'Move zip to an airgapped computer.',
+  HELP_2b_Desc_4:      'Unzip it and double-click `index.html`.',
+  HELP_2b_Desc_5:      'Generate a wallet with a strong password.',
+  HELP_2b_Desc_6:      'Save the address. Save versions of the private key. Save the password if you might not remember it forever.',
+  HELP_2b_Desc_7:      'Store these papers / USBs in multiple physically separate locations.',
+  HELP_2b_Desc_8:      'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same.',
+
+  HELP_3_Title:         '3) How do I verify I have access to my new wallet?',
+  HELP_3_Desc_1:        '**Before you send any Ether to your new wallet**, you should ensure you have access to it.',
+  HELP_3_Desc_2:        'Navigate to the "View Wallet Info" page.',
+  HELP_3_Desc_3:        'Navigate to the MyEtherWallet.com "View Wallet Info" page.',
+  HELP_3_Desc_4:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_3_Desc_5:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_3_Desc_6:        'Click the "Unlock Wallet" button.',
+  HELP_3_Desc_7:        'Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
+  HELP_3_Desc_8:        'If you are planning on holding a large amount of ETH, we recommend that send a small amount of ETH from new wallet before depositting a large amount. Send .001 ETH to your new wallet, access that wallet, send that .001 ETH to another address, and ensure everything works smoothly.',
+
+  HELP_4_Title:         '4) How do I send Ether from one wallet to another?',
+  HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
+  HELP_4_Desc_2:        'Navigate to the "Send Ether" page.',
+  HELP_4_Desc_3:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
+  HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
+  HELP_4_Desc_9:        'Click "Generate Transaction".',
+  HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_4_Desc_11:       'Click the blue "Send Transaction" button below that.',
+  HELP_4_Desc_12:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_4_Desc_13:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+
+  HELP_4CX_Title:       '4) How do I send Ether using MyEtherWallet CX?',
+  HELP_4CX_Desc_1:      'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.',
+  HELP_4CX_Desc_2:      'QuickSend:',
+  HELP_4CX_Desc_3:      'Click the Chrome Extension Icon.',
+  HELP_4CX_Desc_4:      'Click the "QuickSend" button.',
+  HELP_4CX_Desc_5:      'Select the wallet you wish to send from.',
+  HELP_4CX_Desc_6:      'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4CX_Desc_7:      'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
+  HELP_4CX_Desc_8:      'Click "Send Transaction". ',
+  HELP_4CX_Desc_9:      'Verify the address and the amount you are sending is correct.',
+  HELP_4CX_Desc_10:     'Enter the password for that wallet.',
+  HELP_4CX_Desc_11:     'Click "Send Transaction."',
+  HELP_4CX_Desc_12:     'Using "Send Ether" Page: ',
+
+  HELP_5_Title:         '5) How do I run MyEtherWallet.com offline/locally? ',
+  HELP_5_Desc_1:        'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page.',
+  HELP_5_Desc_2:        'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_5_Desc_3:        'Click download zip in the upper right.',
+  HELP_5_Desc_4:        'Move zip to an airgapped computer.',
+  HELP_5_Desc_5:        'Unzip it.',
+  HELP_5_Desc_6:        'Double-Click `index.html`.',
+  HELP_5_Desc_7:        'MyEtherWallet.com is now running entirely on your computer.',
+  HELP_5_Desc_8:        'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.',
+  HELP_5_Desc_9:        'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.',
+
+  HELP_5CX_Title:       '5) How can I install this extension from the repo instead of the Chrome Store? ',
+  HELP_5CX_Desc_1:      'Go to our github and find the most recent Chrome Extension relase: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
+  HELP_5CX_Desc_2:      'Scroll to the very bottom and right click on the latest release. Click "save link as".',
+  HELP_5CX_Desc_3:      'Go to Google Chrome and find you settings (in the menu in the upper right).',
+  HELP_5CX_Desc_4:      'Click "Extensions" on the left.',
+  HELP_5CX_Desc_5:      'Check the "Developer Mode" button at the top of that page.',
+  HELP_5CX_Desc_6:      'Click the "Load unpacked extension..." button.',
+  HELP_5CX_Desc_7:      'Navigate to the now-unzipped folder that you downloaded earlier. Click "select".',
+  HELP_5CX_Desc_8:      'The extension should now show up in your extensions and in your Chrome Extension bar.',
+
+  HELP_6_Title:         '6) How do I split my ETH / ETC? ',
+  HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your account now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original account into two accounts. Moving forward, you need to make sure only ETH goes to your ETH account and only ETC goes to your ETC account.',
+  HELP_6_Desc_2:        'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.',
+  HELP_6_Desc_3:        '[Even more information about wallets and reply attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
+  HELP_6_Desc_4:        'Generate a new clean post-fork ETH address for yourself (to be the final destination of pure ETH).',
+  HELP_6_Desc_5:        'Generate a new clean post-fork ETC address for yourself (to be the final destination of pure ETC).',
+  HELP_6_Desc_6:        'Back up these new wallets and verify you can access them. See #2a and #3 above.',
+  HELP_6_Desc_7:        'Send .1234 ETH to your new "ETH" address using "Only ETH" option on the "Send Ether" page.',
+  HELP_6_Desc_8:        'Send .5678 ETC to your new "ETC" address using "Only ETC" on MyEtherWallet.com',
+  HELP_6_Desc_9:        'Check that only the .1234 ETH moved on etherscan.io. Check that only the .5678 ETC moved on gastracker.io.',
+  HELP_6_Desc_10:       'Send a .0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the .0001 ETH moved.',
+  HELP_6_Desc_11:       ' Generate (but do not send) a .0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
+  HELP_6_Desc_12:       'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the .0002 ETC moved.',
+  HELP_6_Desc_13:       'If everything receives correctly and sends correctly then you are golden.',
+  HELP_6_Desc_14:       'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".',
+  HELP_6_Desc_15:       ' Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. ',
+
+  HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
+  HELP_7_Desc_1:        'Navigate to the "Send Token" page.',
+  HELP_7_Desc_2:        'Unlock your wallet.',
+  HELP_7_Desc_3:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_7_Desc_4:        'Enter the amount you would like to send.',
+  HELP_7_Desc_5:        'Select which token you would like to send.',
+  HELP_7_Desc_6:        'If you do not see the token listed:',
+  HELP_7_Desc_7:        'Click "Custom".',
+  HELP_7_Desc_8:        'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.',
+  HELP_7_Desc_9:        'Click "Save".',
+  HELP_7_Desc_10:       'You can now send that token as well as see it\'s balance in the sidebar.',
+  HELP_7_Desc_11:       'Click "Generate Transaction".',
+  HELP_7_Desc_12:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_7_Desc_13:       'Click the blue "Send Transaction" button below that.',
+  HELP_7_Desc_14:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_7_Desc_15:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain.',
+
+  HELP_8_Title:         '8) What happens if your site goes down?',
+  HELP_8_Desc_1:        'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain.',
+  HELP_8_Desc_2:        'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site.',
+  HELP_8_Desc_3:        'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below.',
+  HELP_8_Desc_4:        'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. ',
+
+  HELP_8CX_Title:        '8) What happens if MyEtherWallet CX disappears?',
+  HELP_8CX_Desc_1:       'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer.',
+  HELP_8CX_Desc_2:       'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.',
+  HELP_8CX_Desc_3:       'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.',
+
+  HELP_9_Title:          '9) Is the "Send Ether" page offline?',
+  HELP_9_Desc_1:         ' No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.',
+
+  HELP_10_Title:         '10) How do I make an offline transaction?',
+  HELP_10_Desc_1:        'Navigate to the "Offline Transaction" page via your online computer.',
+  HELP_10_Desc_2:        'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.',
+  HELP_10_Desc_3:        'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.',
+  HELP_10_Desc_4:        'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_5:        'Enter the "NONCE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_6:        'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.',
+  HELP_10_Desc_7:        'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.',
+  HELP_10_Desc_8:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_10_Desc_9:        'Press the "GENERATE SIGNED TRANSACTION" button.',
+  HELP_10_Desc_10:       'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
+  HELP_10_Desc_11:       'On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.',
+
+  HELP_11_Title:          '11) How do I send to a contract?',
+  HELP_11_Desc_1:         'Sending to a contract often requires you to include data or additional gas or both',
+  HELP_11_Desc_2:         'Navigate to the "Send Ether" page. ',
+  HELP_11_Desc_3:         'Select your wallet file -or- your private key and unlock your wallet. ',
+  HELP_11_Desc_4:         'Enter a "To Address" and "Amount to Send"',
+  HELP_11_Desc_5:         'Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_12_Title:          '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?',
+  HELP_12_Desc_1:         'Using an Geth/Mist JSON file from MyEtherWallet v2+....',
+  HELP_12_Desc_2:         'Go to the "View Wallet Info" page.',
+  HELP_12_Desc_3:         'Unlock your wallet using your **encrypted** private key or JSON file. ',
+  HELP_12_Desc_4:         'Go to the "My Wallets" page.',
+  HELP_12_Desc_5:         'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. ',
+  HELP_12_Desc_6:         'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.',
+  HELP_12_Desc_7:         'Open the Ethereum Wallet application. ',
+  HELP_12_Desc_8:         'In the menu bar, go "Accounts" -> "Backup" -> "Accounts"',
+  HELP_12_Desc_9:         'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder.',
+  HELP_12_Desc_10:        'Your account should show up immediately under "Accounts."',
+  HELP_12_Desc_11:        'Using your unencrypted private key...',
+  HELP_12_Desc_12:        'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.',
+  HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
+  HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
+  HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
+  HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
+  HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
+  HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
+  HELP_12_Desc_23:        'Open Notepad & paste the private key',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
+
+  HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
+  HELP_13_Desc_1:         'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_14_Title:          '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
+  HELP_14_Desc_1:         'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
+
+  HELP_15_Title:          '15) Why hasn\'t the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
+  HELP_15_Desc_1:         'Addresses will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
+
+  HELP_16_Title:          '16) How do I check the balance of my account? ',
+  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+
+  HELP_17_Title:          '17) Why isn\'t my balance showing up when I unlock my wallet? ',
+  HELP_17_Desc_1:         ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
+
+  HELP_18_Title:          '18) Where is my geth wallet file?',
+
+  HELP_19_Title:          '19) Where is my Mist wallet file? ',
+  HELP_19_Desc_1:         'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.',
+
+  HELP_20_Title:          '20) Where is my pre-sale wallet file?',
+  HELP_20_Desc_1:         'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.',
+
+  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
+  HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
+  HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
+  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ETH is the least of everyone’s problems.',
+  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ETH from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
+  HELP_21_Desc_5:         'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.',
+  HELP_21_Desc_6:         'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
+  HELP_21_Desc_7:         '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',
+  HELP_21_Desc_8:         'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.',
+
+  HELP_SecCX_Title:       'Security - MyEtherWallet CX ',
+  HELP_SecCX_Desc_1:      'Where is this extension saving my information?',
+  HELP_SecCX_Desc_2:      'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.',
+  HELP_SecCX_Desc_3:      'What information is saved? ',
+  HELP_SecCX_Desc_4:      'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.',
+  HELP_SecCX_Desc_5:      'Why aren\'t the nickname and wallet address encrypted? ',
+  HELP_SecCX_Desc_6:      'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.',
+
+  HELP_Sec_Title:         'Security',
+  HELP_Sec_Desc_1:        'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. ',
+  HELP_Sec_Desc_2:        'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.',
+  HELP_Sec_Desc_3:        'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.',
+  HELP_Sec_Desc_4:        'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.',
+  HELP_Sec_Desc_5:        'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.',
+  HELP_Sec_Desc_6:        'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.',
+  HELP_Sec_Desc_7:        'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.',
+  HELP_Sec_Desc_8:        'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
+
+  HELP_FAQ_Title:         'More Helpful Answers to Frequent Questions',
+  HELP_Contact_Title:     'Ways to Get in Touch'
+};
+
+module.exports = fr;
+
+},{}],36:[function(require,module,exports){
+// Korean
+'use strict';
+var ko = function() {}
+ko.code = 'ko';
+ko.data = {
+
+  /* Navigation*/
+  NAV_YourWallets:      'Your Wallets',
+  NAV_AddWallet:        'Add Wallet',
+  NAV_GenerateWallet:   'Generate Wallet',
+  NAV_BulkGenerate:     'Bulk Generate',
+  NAV_SendEther:        'Send Ether',
+  NAV_SendTokens:       'Send Tokens',
+  NAV_Offline:          'Send Offline',
+  NAV_WithdrawDAO:      'Withdraw DAO',
+  DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
+  NAV_ClaimDGD:         'Claim DGD',
+  DGD_TitleLong:        'Claim Your DGD Tokens',
+  NAV_MyWallets:        'My Wallets',
+  NAV_ViewWallet:       'View Wallet Info',
+  NAV_Help:             'Help',
+  NAV_Contact:          'Contact',
+
+  /* General */
+  x_Password:           'Password',
+  x_Download:           'Download',
+  x_Address:            'Your Address',
+  x_Save:               'x_Save',
+  x_Cancel:             'x_Cancel',
+  x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ETH. That icon is an easy way to recognize your address.',
+  x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
+  x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
+  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Json:               'JSON File (unencrypted)',
+  x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
+  x_PrintShort:         'Print',
+  x_Print:              'Print Paper Wallet',
+  x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
+  x_CSV:                'CSV file (unencrypted)',
+  x_TXT:                'TXT file (unencrypted)',
+
+  /* Header */
+  MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
+  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
+  MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
+	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+
+  /* Footer */
+  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_2:             'Donations greatly appreciated:',
+  FOOTER_3:             'Client-side wallet generation by',
+
+  /* Sidebar */
+  sidebar_AccountInfo:  'Account Information: ',
+  sidebar_AccountAddr:  'Account Address: ',
+  sidebar_AccountBal:   'Account Balance: ',
+  sidebar_Equiv:        'Equivalent Values: ',
+  sidebar_TransHistory: 'Transaction History',
+  sidebar_DGDBal:       'DGD Crowdsale Information:',
+  sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
+  sidebar_donate:       'Donate',
+  sidebar_thanks:       'THANK YOU!!!',
+
+  /* Decrypt Panel */
+  decrypt_Access:         'How would you like to access your wallet?',
+  decrypt_Title:          'Select the format of your private key:',
+
+  /* Add Wallet */
+  ADD_Label_1:            'What would you like to do?',
+  ADD_Radio_1:            'Generate New Wallet',
+  ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_short:      'SELECT WALLET FILE...',
+  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_4:            'Add an Account to Watch',
+  ADD_Label_2:            'Create a Nickname:',
+  ADD_Label_3:            'Your file is encrypted. Please enter the password: ',
+  ADD_Label_4:            'Add an Account to Watch',
+  ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
+  ADD_Label_5:            'Enter the Address: ',
+  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6_short:      'Unlock',
+  ADD_Label_7:            'Add Account',
+
+  /* Generate Wallets */
+  GEN_desc:               'If you want to generate multiple wallets, you can do so here: ',
+  GEN_Label_1:            'Enter a strong password (at least 9 characters)',
+  GEN_Placeholder_1:      'Do NOT forget to save this!',
+  GEN_SuccessMsg:         'Success! Your wallet has been generated.',
+  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
+  GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
+  GEN_Label_3:            'Save Your Address.',
+  GEN_Label_4:            'Print your paper wallet, or store a QR code verison. (optional)',
+
+  /* Bulk Generate Wallets */
+  BULK_Label_1:           'Number of Wallets To Generate',
+  BULK_Label_2:           'Generate Wallets',
+  BULK_SuccessMsg:        'Success! Your wallets have been generated.',
+
+  /* Sending Ether and Tokens */
+  SEND_addr:             'To Address: ',
+  SEND_amount:           'Amount to Send: ',
+  SEND_amount_short:     'Amount',
+  SEND_custom:           'Custom',
+  SEND_gas:              'Gas',
+  SEND_generate:         'Generate Signed Transaction',
+  SEND_raw:              'Raw Transaction',
+  SEND_signed:           'Signed Transaction',
+  SEND_trans:            'Send Transaction',
+  SEND_TransferTotal:    'Transfer total available balance',
+  SENDModal_Title:       'Warning! ',
+  /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
+  SENDModal_Content_1:   'You are about to send',
+  SENDModal_Content_2:   'to address',
+  SENDModal_Content_3:   'Are you sure you want to do this?',
+  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
+  SENDModal_No:          'No, get me out of here!',
+  SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+
+  /* Tokens */
+  TOKEN_Addr:            'Address: ',
+  TOKEN_Symbol:          'Token Symbol: ',
+  TOKEN_Dec:             'Decimals: ',
+
+  /* Send Transaction */
+  TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
+  TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
+  TRANS_standard:        'ETH (Standard Transaction)',
+  TRANS_eth:             'Only ETH',
+  TRANS_etc:             'Only ETC',
+  TRANS_advanced:        '+Advanced: Add More Gas or Data ',
+  TRANS_data:            ' Data: ',
+  TRANS_gas:             ' Gas: ',
+  TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
+
+  /* Send Transaction Modals */
+  TRANSModal_Title:      '"Only ETH" and "Only ETC" Transactions',
+  TRANSModal_Content_0:  'A note about the different transactions and different services:',
+  TRANSModal_Content_1:  '**ETH (Standard Transaction): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
+  TRANSModal_Content_2:  '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
+  TRANSModal_Content_3:  '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)',
+  TRANSModal_Content_5:  '**Kraken & Poloniex:** No known issues. Use whatever.',
+  TRANSModal_Yes:        'Sweet, I get it now.',
+  TRANSModal_No:         'Oh gosh, Im more confused. Help me.',
+
+  /* Offline Transaction */
+  OFFLINE_Title:         'Generate & Send Offline Transaction',
+  OFFLINE_Desc:          'Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This ensures your private keys do not touch an internet-connected device.',
+  OFFLLINE_Step1_Title:  'Step 1: Generate Information (Online Computer)',
+  OFFLINE_Step1_Button:  'Generate Information',
+  OFFLINE_Step1_Label_1: 'From Address: ',
+  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
+  OFFLLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
+  OFFLINE_Step2_Label_1:  'To Address: ',
+  OFFLINE_Step2_Label_2:  'Value / Amount to Send',
+  OFFLINE_Step2_Label_3:  'Gas Price ',
+  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.',
+  OFFLINE_Step2_Label_4:  'Gas Limit ',
+  OFFLINE_Step2_Label_4b: '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you.',
+  OFFLINE_Step2_Label_4:  'Nonce',
+  OFFLINE_Step2_Label_4b: 'This was displayed in Step 1 on your online computer.',
+  OFFLINE_Step2_Label_5:  'Data',
+  OFFLINE_Step2_Label_5b: 'This is optional. Data is often used when you send transactions to contracts.',
+  OFFLINE_Step2_Label_6:  'Enter / Select your Private Key / JSON.',
+  OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
+  OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
+
+  /* DAO */
+  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.',
+  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. ',
+  DAOModal_Title:         'Just making sure...',
+
+  /* Digix */
+  DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
+  DGD_Label_1:            'Estimated fee consumption:',
+  DGD_Label_2:            'Provided Maximum Fee:',
+  DGD_Label_3:            'Gas Price:',
+  DGD_Generate:           'Generate Claim',
+  DGD_Content:            'You are about to claim your DGD Tokens.',
+
+  /* My Wallet */
+  MYWAL_Nick:             'Wallet Nickname',
+  MYWAL_Address:          'Wallet Address',
+  MYWAL_Bal:              'Balance',
+  MYWAL_Edit:             'Edit',
+  MYWAL_View:             'View',
+  MYWAL_Remove:           'Remove',
+  MYWAL_RemoveWal:        'Remove Wallet:',
+  MYWAL_WatchOnly:        'Your Watch-Only Accounts',
+  MYWAL_Viewing:          'Viewing Wallet: ',
+  MYWAL_Hide:             'Hide Wallet Info',
+  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Name:             'Wallet Name',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
+  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
+
+  /* View Wallet Details */
+  VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
+  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+  VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* Error Messages */
+  ERROR_1:             'Please enter valid amount.',
+  ERROR_2:             'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+  ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
+  ERROR_4:              'This is not a valid wallet file. ',
+  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
+  ERROR_6:              'Invalid address. ',
+  ERROR_7:              'Invalid password. ',
+  ERROR_8:              'Invalid amount. ',
+  ERROR_9:              'Invalid gas limit. ',
+  ERROR_10:             'Invalid data value. ',
+  ERROR_11:             'Invalid gas amount. ',
+  ERROR_12:             'Invalid nonce. ',
+  ERROR_13:             'Invalid signed transaction. ',
+  ERROR_14:             'A wallet with this nickname already exists. ',
+  ERROR_15:             'Wallet not found. ',
+  ERROR_16:             'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+  ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
+  ERROR_18:             'You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
+  ERROR_20:             'Invalid symbol',
+  SUCCESS_1:            'Valid address',
+  SUCCESS_2:            'Wallet successfully decrypted',
+  SUCCESS_3:            'Transaction submitted. TX ID: ',
+  SUCCESS_4:            'Your wallet was successfully added: ',
+  SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
+
+  /* Tranlsation Info */
+  translate_version:    '0.0',
+  Translator_Desc:      'Thank you to our translators...',
+  LANG_en:              'English',
+  LANG_de:              'Deutsche',
+  LANG_es:              'Español',
+  LANG_fr:              'Français',
+  LANG_ko:              'Korean',
+  LANG_no:              'Norwegian',
+  TranlsatorName_1:     '',
+  TranlsatorAddr_1:     '',
+  TranlsatorName_2:     ' ',
+  TranlsatorAddr_2:     ' ',
+  TranlsatorName_3:     ' ',
+  TranlsatorAddr_3:     ' ',
+  TranlsatorName_4:     ' ',
+  TranlsatorAddr_4:     ' ',
+  TranlsatorName_5:     ' ',
+  TranlsatorAddr_5:     ' ',
+
+  /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
+  HELP_Warning:       'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
+  HELP_Desc:          'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!',
+  HELP_Remind_Title:  'Some reminders',
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**.',
+  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.',
+  HELP_Remind_Desc_3: 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!',
+
+  HELP_0_Title:        '0) I\'m new. What do I do?',
+  HELP_0_Desc_1:       'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.',
+  HELP_0_Desc_2:       'Create a new wallet.',
+  HELP_0_Desc_3:       'Back the wallet up.',
+  HELP_0_Desc_4:       'Verify you have access to this new wallet and have correctly saved all necessary information.',
+  HELP_0_Desc_5:       'Transfer Ether to this new wallet.',
+
+  HELP_1_Title:        '1) How do I create a new wallet? ',
+  HELP_1_Desc_1:       'Go to the "Generate Wallet" page.',
+  HELP_1_Desc_2:       'Go to the "Add Wallet" page & select "Generate New Wallet"',
+  HELP_1_Desc_3:       'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.',
+  HELP_1_Desc_4:       'Click "GENERATE".',
+  HELP_1_Desc_5:       'Your wallet has now been generated.',
+
+  HELP_2a_Title:       '2a) How do I save/backup my wallet?',
+  HELP_2a_Desc_1:      'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
+  HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you.',
+  HELP_2a_Desc_3:      'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:',
+  HELP_2a_Desc_4:      'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.',
+  HELP_2a_Desc_5:      'Print the wallet if you have a printer. Otherwise, write down your private and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
+  HELP_2a_Desc_6:      'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).',
+
+  HELP_2b_Title:       '2b) How do I safely / offline / cold storage with MyEtherWallet?',
+  HELP_2b_Desc_1:      'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_2b_Desc_2:      'Click download zip in the upper right.',
+  HELP_2b_Desc_3:      'Move zip to an airgapped computer.',
+  HELP_2b_Desc_4:      'Unzip it and double-click `index.html`.',
+  HELP_2b_Desc_5:      'Generate a wallet with a strong password.',
+  HELP_2b_Desc_6:      'Save the address. Save versions of the private key. Save the password if you might not remember it forever.',
+  HELP_2b_Desc_7:      'Store these papers / USBs in multiple physically separate locations.',
+  HELP_2b_Desc_8:      'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same.',
+
+  HELP_3_Title:         '3) How do I verify I have access to my new wallet?',
+  HELP_3_Desc_1:        '**Before you send any Ether to your new wallet**, you should ensure you have access to it.',
+  HELP_3_Desc_2:        'Navigate to the "View Wallet Info" page.',
+  HELP_3_Desc_3:        'Navigate to the MyEtherWallet.com "View Wallet Info" page.',
+  HELP_3_Desc_4:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_3_Desc_5:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_3_Desc_6:        'Click the "Unlock Wallet" button.',
+  HELP_3_Desc_7:        'Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
+  HELP_3_Desc_8:        'If you are planning on holding a large amount of ETH, we recommend that send a small amount of ETH from new wallet before depositting a large amount. Send .001 ETH to your new wallet, access that wallet, send that .001 ETH to another address, and ensure everything works smoothly.',
+
+  HELP_4_Title:         '4) How do I send Ether from one wallet to another?',
+  HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
+  HELP_4_Desc_2:        'Navigate to the "Send Ether" page.',
+  HELP_4_Desc_3:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
+  HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
+  HELP_4_Desc_9:        'Click "Generate Transaction".',
+  HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_4_Desc_11:       'Click the blue "Send Transaction" button below that.',
+  HELP_4_Desc_12:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_4_Desc_13:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+
+  HELP_4CX_Title:       '4) How do I send Ether using MyEtherWallet CX?',
+  HELP_4CX_Desc_1:      'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.',
+  HELP_4CX_Desc_2:      'QuickSend:',
+  HELP_4CX_Desc_3:      'Click the Chrome Extension Icon.',
+  HELP_4CX_Desc_4:      'Click the "QuickSend" button.',
+  HELP_4CX_Desc_5:      'Select the wallet you wish to send from.',
+  HELP_4CX_Desc_6:      'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4CX_Desc_7:      'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
+  HELP_4CX_Desc_8:      'Click "Send Transaction". ',
+  HELP_4CX_Desc_9:      'Verify the address and the amount you are sending is correct.',
+  HELP_4CX_Desc_10:     'Enter the password for that wallet.',
+  HELP_4CX_Desc_11:     'Click "Send Transaction."',
+  HELP_4CX_Desc_12:     'Using "Send Ether" Page: ',
+
+  HELP_5_Title:         '5) How do I run MyEtherWallet.com offline/locally? ',
+  HELP_5_Desc_1:        'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page.',
+  HELP_5_Desc_2:        'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_5_Desc_3:        'Click download zip in the upper right.',
+  HELP_5_Desc_4:        'Move zip to an airgapped computer.',
+  HELP_5_Desc_5:        'Unzip it.',
+  HELP_5_Desc_6:        'Double-Click `index.html`.',
+  HELP_5_Desc_7:        'MyEtherWallet.com is now running entirely on your computer.',
+  HELP_5_Desc_8:        'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.',
+  HELP_5_Desc_9:        'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.',
+
+  HELP_5CX_Title:       '5) How can I install this extension from the repo instead of the Chrome Store? ',
+  HELP_5CX_Desc_1:      'Go to our github and find the most recent Chrome Extension relase: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
+  HELP_5CX_Desc_2:      'Scroll to the very bottom and right click on the latest release. Click "save link as".',
+  HELP_5CX_Desc_3:      'Go to Google Chrome and find you settings (in the menu in the upper right).',
+  HELP_5CX_Desc_4:      'Click "Extensions" on the left.',
+  HELP_5CX_Desc_5:      'Check the "Developer Mode" button at the top of that page.',
+  HELP_5CX_Desc_6:      'Click the "Load unpacked extension..." button.',
+  HELP_5CX_Desc_7:      'Navigate to the now-unzipped folder that you downloaded earlier. Click "select".',
+  HELP_5CX_Desc_8:      'The extension should now show up in your extensions and in your Chrome Extension bar.',
+
+  HELP_6_Title:         '6) How do I split my ETH / ETC? ',
+  HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your account now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original account into two accounts. Moving forward, you need to make sure only ETH goes to your ETH account and only ETC goes to your ETC account.',
+  HELP_6_Desc_2:        'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.',
+  HELP_6_Desc_3:        '[Even more information about wallets and reply attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
+  HELP_6_Desc_4:        'Generate a new clean post-fork ETH address for yourself (to be the final destination of pure ETH).',
+  HELP_6_Desc_5:        'Generate a new clean post-fork ETC address for yourself (to be the final destination of pure ETC).',
+  HELP_6_Desc_6:        'Back up these new wallets and verify you can access them. See #2a and #3 above.',
+  HELP_6_Desc_7:        'Send .1234 ETH to your new "ETH" address using "Only ETH" option on the "Send Ether" page.',
+  HELP_6_Desc_8:        'Send .5678 ETC to your new "ETC" address using "Only ETC" on MyEtherWallet.com',
+  HELP_6_Desc_9:        'Check that only the .1234 ETH moved on etherscan.io. Check that only the .5678 ETC moved on gastracker.io.',
+  HELP_6_Desc_10:       'Send a .0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the .0001 ETH moved.',
+  HELP_6_Desc_11:       ' Generate (but do not send) a .0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
+  HELP_6_Desc_12:       'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the .0002 ETC moved.',
+  HELP_6_Desc_13:       'If everything receives correctly and sends correctly then you are golden.',
+  HELP_6_Desc_14:       'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".',
+  HELP_6_Desc_15:       ' Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. ',
+
+  HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
+  HELP_7_Desc_1:        'Navigate to the "Send Token" page.',
+  HELP_7_Desc_2:        'Unlock your wallet.',
+  HELP_7_Desc_3:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_7_Desc_4:        'Enter the amount you would like to send.',
+  HELP_7_Desc_5:        'Select which token you would like to send.',
+  HELP_7_Desc_6:        'If you do not see the token listed:',
+  HELP_7_Desc_7:        'Click "Custom".',
+  HELP_7_Desc_8:        'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.',
+  HELP_7_Desc_9:        'Click "Save".',
+  HELP_7_Desc_10:       'You can now send that token as well as see it\'s balance in the sidebar.',
+  HELP_7_Desc_11:       'Click "Generate Transaction".',
+  HELP_7_Desc_12:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_7_Desc_13:       'Click the blue "Send Transaction" button below that.',
+  HELP_7_Desc_14:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_7_Desc_15:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain.',
+
+  HELP_8_Title:         '8) What happens if your site goes down?',
+  HELP_8_Desc_1:        'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain.',
+  HELP_8_Desc_2:        'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site.',
+  HELP_8_Desc_3:        'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below.',
+  HELP_8_Desc_4:        'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. ',
+
+  HELP_8CX_Title:        '8) What happens if MyEtherWallet CX disappears?',
+  HELP_8CX_Desc_1:       'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer.',
+  HELP_8CX_Desc_2:       'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.',
+  HELP_8CX_Desc_3:       'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.',
+
+  HELP_9_Title:          '9) Is the "Send Ether" page offline?',
+  HELP_9_Desc_1:         ' No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.',
+
+  HELP_10_Title:         '10) How do I make an offline transaction?',
+  HELP_10_Desc_1:        'Navigate to the "Offline Transaction" page via your online computer.',
+  HELP_10_Desc_2:        'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.',
+  HELP_10_Desc_3:        'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.',
+  HELP_10_Desc_4:        'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_5:        'Enter the "NONCE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_6:        'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.',
+  HELP_10_Desc_7:        'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.',
+  HELP_10_Desc_8:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_10_Desc_9:        'Press the "GENERATE SIGNED TRANSACTION" button.',
+  HELP_10_Desc_10:       'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
+  HELP_10_Desc_11:       'On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.',
+
+  HELP_11_Title:          '11) How do I send to a contract?',
+  HELP_11_Desc_1:         'Sending to a contract often requires you to include data or additional gas or both',
+  HELP_11_Desc_2:         'Navigate to the "Send Ether" page. ',
+  HELP_11_Desc_3:         'Select your wallet file -or- your private key and unlock your wallet. ',
+  HELP_11_Desc_4:         'Enter a "To Address" and "Amount to Send"',
+  HELP_11_Desc_5:         'Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_12_Title:          '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?',
+  HELP_12_Desc_1:         'Using an Geth/Mist JSON file from MyEtherWallet v2+....',
+  HELP_12_Desc_2:         'Go to the "View Wallet Info" page.',
+  HELP_12_Desc_3:         'Unlock your wallet using your **encrypted** private key or JSON file. ',
+  HELP_12_Desc_4:         'Go to the "My Wallets" page.',
+  HELP_12_Desc_5:         'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. ',
+  HELP_12_Desc_6:         'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.',
+  HELP_12_Desc_7:         'Open the Ethereum Wallet application. ',
+  HELP_12_Desc_8:         'In the menu bar, go "Accounts" -> "Backup" -> "Accounts"',
+  HELP_12_Desc_9:         'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder.',
+  HELP_12_Desc_10:        'Your account should show up immediately under "Accounts."',
+  HELP_12_Desc_11:        'Using your unencrypted private key...',
+  HELP_12_Desc_12:        'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.',
+  HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
+  HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
+  HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
+  HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
+  HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
+  HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
+  HELP_12_Desc_23:        'Open Notepad & paste the private key',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
+
+  HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
+  HELP_13_Desc_1:         'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_14_Title:          '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
+  HELP_14_Desc_1:         'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
+
+  HELP_15_Title:          '15) Why hasn\'t the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
+  HELP_15_Desc_1:         'Addresses will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
+
+  HELP_16_Title:          '16) How do I check the balance of my account? ',
+  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+
+  HELP_17_Title:          '17) Why isn\'t my balance showing up when I unlock my wallet? ',
+  HELP_17_Desc_1:         ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
+
+  HELP_18_Title:          '18) Where is my geth wallet file?',
+
+  HELP_19_Title:          '19) Where is my Mist wallet file? ',
+  HELP_19_Desc_1:         'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.',
+
+  HELP_20_Title:          '20) Where is my pre-sale wallet file?',
+  HELP_20_Desc_1:         'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.',
+
+  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
+  HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
+  HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
+  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ETH is the least of everyone’s problems.',
+  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ETH from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
+  HELP_21_Desc_5:         'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.',
+  HELP_21_Desc_6:         'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
+  HELP_21_Desc_7:         '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',
+  HELP_21_Desc_8:         'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.',
+
+  HELP_SecCX_Title:       'Security - MyEtherWallet CX ',
+  HELP_SecCX_Desc_1:      'Where is this extension saving my information?',
+  HELP_SecCX_Desc_2:      'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.',
+  HELP_SecCX_Desc_3:      'What information is saved? ',
+  HELP_SecCX_Desc_4:      'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.',
+  HELP_SecCX_Desc_5:      'Why aren\'t the nickname and wallet address encrypted? ',
+  HELP_SecCX_Desc_6:      'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.',
+
+  HELP_Sec_Title:         'Security',
+  HELP_Sec_Desc_1:        'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. ',
+  HELP_Sec_Desc_2:        'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.',
+  HELP_Sec_Desc_3:        'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.',
+  HELP_Sec_Desc_4:        'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.',
+  HELP_Sec_Desc_5:        'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.',
+  HELP_Sec_Desc_6:        'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.',
+  HELP_Sec_Desc_7:        'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.',
+  HELP_Sec_Desc_8:        'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
+
+  HELP_FAQ_Title:         'More Helpful Answers to Frequent Questions',
+  HELP_Contact_Title:     'Ways to Get in Touch'
+};
+
+module.exports = ko;
+
+},{}],37:[function(require,module,exports){
+// Norwegian
+'use strict';
+var no = function() {}
+no.code = 'no';
+no.data = {
+
+  /* Navigation*/
+  NAV_YourWallets:      'Your Wallets',
+  NAV_AddWallet:        'Add Wallet',
+  NAV_GenerateWallet:   'Generate Wallet',
+  NAV_BulkGenerate:     'Bulk Generate',
+  NAV_SendEther:        'Send Ether',
+  NAV_SendTokens:       'Send Tokens',
+  NAV_Offline:          'Send Offline',
+  NAV_WithdrawDAO:      'Withdraw DAO',
+  DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
+  NAV_ClaimDGD:         'Claim DGD',
+  DGD_TitleLong:        'Claim Your DGD Tokens',
+  NAV_MyWallets:        'My Wallets',
+  NAV_ViewWallet:       'View Wallet Info',
+  NAV_Help:             'Help',
+  NAV_Contact:          'Contact',
+
+  /* General */
+  x_Password:           'Password',
+  x_Download:           'Download',
+  x_Address:            'Your Address',
+  x_Save:               'x_Save',
+  x_Cancel:             'x_Cancel',
+  x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ETH. That icon is an easy way to recognize your address.',
+  x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
+  x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
+  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Json:               'JSON File (unencrypted)',
+  x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
+  x_PrintShort:         'Print',
+  x_Print:              'Print Paper Wallet',
+  x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
+  x_CSV:                'CSV file (unencrypted)',
+  x_TXT:                'TXT file (unencrypted)',
+
+  /* Header */
+  MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
+  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
+  MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
+	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+
+  /* Footer */
+  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_2:             'Donations greatly appreciated:',
+  FOOTER_3:             'Client-side wallet generation by',
+
+  /* Sidebar */
+  sidebar_AccountInfo:  'Account Information: ',
+  sidebar_AccountAddr:  'Account Address: ',
+  sidebar_AccountBal:   'Account Balance: ',
+  sidebar_Equiv:        'Equivalent Values: ',
+  sidebar_TransHistory: 'Transaction History',
+  sidebar_DGDBal:       'DGD Crowdsale Information:',
+  sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
+  sidebar_donate:       'Donate',
+  sidebar_thanks:       'THANK YOU!!!',
+
+  /* Decrypt Panel */
+  decrypt_Access:         'How would you like to access your wallet?',
+  decrypt_Title:          'Select the format of your private key:',
+
+  /* Add Wallet */
+  ADD_Label_1:            'What would you like to do?',
+  ADD_Radio_1:            'Generate New Wallet',
+  ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_short:      'SELECT WALLET FILE...',
+  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_4:            'Add an Account to Watch',
+  ADD_Label_2:            'Create a Nickname:',
+  ADD_Label_3:            'Your file is encrypted. Please enter the password: ',
+  ADD_Label_4:            'Add an Account to Watch',
+  ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
+  ADD_Label_5:            'Enter the Address: ',
+  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6_short:      'Unlock',
+  ADD_Label_7:            'Add Account',
+
+  /* Generate Wallets */
+  GEN_desc:               'If you want to generate multiple wallets, you can do so here: ',
+  GEN_Label_1:            'Enter a strong password (at least 9 characters)',
+  GEN_Placeholder_1:      'Do NOT forget to save this!',
+  GEN_SuccessMsg:         'Success! Your wallet has been generated.',
+  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
+  GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
+  GEN_Label_3:            'Save Your Address.',
+  GEN_Label_4:            'Print your paper wallet, or store a QR code verison. (optional)',
+
+  /* Bulk Generate Wallets */
+  BULK_Label_1:           'Number of Wallets To Generate',
+  BULK_Label_2:           'Generate Wallets',
+  BULK_SuccessMsg:        'Success! Your wallets have been generated.',
+
+  /* Sending Ether and Tokens */
+  SEND_addr:             'To Address: ',
+  SEND_amount:           'Amount to Send: ',
+  SEND_amount_short:     'Amount',
+  SEND_custom:           'Custom',
+  SEND_gas:              'Gas',
+  SEND_generate:         'Generate Signed Transaction',
+  SEND_raw:              'Raw Transaction',
+  SEND_signed:           'Signed Transaction',
+  SEND_trans:            'Send Transaction',
+  SEND_TransferTotal:    'Transfer total available balance',
+  SENDModal_Title:       'Warning! ',
+  /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
+  SENDModal_Content_1:   'You are about to send',
+  SENDModal_Content_2:   'to address',
+  SENDModal_Content_3:   'Are you sure you want to do this?',
+  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
+  SENDModal_No:          'No, get me out of here!',
+  SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+
+  /* Tokens */
+  TOKEN_Addr:            'Address: ',
+  TOKEN_Symbol:          'Token Symbol: ',
+  TOKEN_Dec:             'Decimals: ',
+
+  /* Send Transaction */
+  TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
+  TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
+  TRANS_standard:        'ETH (Standard Transaction)',
+  TRANS_eth:             'Only ETH',
+  TRANS_etc:             'Only ETC',
+  TRANS_advanced:        '+Advanced: Add More Gas or Data ',
+  TRANS_data:            ' Data: ',
+  TRANS_gas:             ' Gas: ',
+  TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
+
+  /* Send Transaction Modals */
+  TRANSModal_Title:      '"Only ETH" and "Only ETC" Transactions',
+  TRANSModal_Content_0:  'A note about the different transactions and different services:',
+  TRANSModal_Content_1:  '**ETH (Standard Transaction): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
+  TRANSModal_Content_2:  '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
+  TRANSModal_Content_3:  '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)',
+  TRANSModal_Content_5:  '**Kraken & Poloniex:** No known issues. Use whatever.',
+  TRANSModal_Yes:        'Sweet, I get it now.',
+  TRANSModal_No:         'Oh gosh, Im more confused. Help me.',
+
+  /* Offline Transaction */
+  OFFLINE_Title:         'Generate & Send Offline Transaction',
+  OFFLINE_Desc:          'Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This ensures your private keys do not touch an internet-connected device.',
+  OFFLLINE_Step1_Title:  'Step 1: Generate Information (Online Computer)',
+  OFFLINE_Step1_Button:  'Generate Information',
+  OFFLINE_Step1_Label_1: 'From Address: ',
+  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
+  OFFLLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
+  OFFLINE_Step2_Label_1:  'To Address: ',
+  OFFLINE_Step2_Label_2:  'Value / Amount to Send',
+  OFFLINE_Step2_Label_3:  'Gas Price ',
+  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.',
+  OFFLINE_Step2_Label_4:  'Gas Limit ',
+  OFFLINE_Step2_Label_4b: '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you.',
+  OFFLINE_Step2_Label_4:  'Nonce',
+  OFFLINE_Step2_Label_4b: 'This was displayed in Step 1 on your online computer.',
+  OFFLINE_Step2_Label_5:  'Data',
+  OFFLINE_Step2_Label_5b: 'This is optional. Data is often used when you send transactions to contracts.',
+  OFFLINE_Step2_Label_6:  'Enter / Select your Private Key / JSON.',
+  OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
+  OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
+
+  /* DAO */
+  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.',
+  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. ',
+  DAOModal_Title:         'Just making sure...',
+
+  /* Digix */
+  DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
+  DGD_Label_1:            'Estimated fee consumption:',
+  DGD_Label_2:            'Provided Maximum Fee:',
+  DGD_Label_3:            'Gas Price:',
+  DGD_Generate:           'Generate Claim',
+  DGD_Content:            'You are about to claim your DGD Tokens.',
+
+  /* My Wallet */
+  MYWAL_Nick:             'Wallet Nickname',
+  MYWAL_Address:          'Wallet Address',
+  MYWAL_Bal:              'Balance',
+  MYWAL_Edit:             'Edit',
+  MYWAL_View:             'View',
+  MYWAL_Remove:           'Remove',
+  MYWAL_RemoveWal:        'Remove Wallet:',
+  MYWAL_WatchOnly:        'Your Watch-Only Accounts',
+  MYWAL_Viewing:          'Viewing Wallet: ',
+  MYWAL_Hide:             'Hide Wallet Info',
+  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Name:             'Wallet Name',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
+  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
+
+  /* View Wallet Details */
+  VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
+  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+  VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* Error Messages */
+  ERROR_1:             'Please enter valid amount.',
+  ERROR_2:             'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+  ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
+  ERROR_4:              'This is not a valid wallet file. ',
+  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
+  ERROR_6:              'Invalid address. ',
+  ERROR_7:              'Invalid password. ',
+  ERROR_8:              'Invalid amount. ',
+  ERROR_9:              'Invalid gas limit. ',
+  ERROR_10:             'Invalid data value. ',
+  ERROR_11:             'Invalid gas amount. ',
+  ERROR_12:             'Invalid nonce. ',
+  ERROR_13:             'Invalid signed transaction. ',
+  ERROR_14:             'A wallet with this nickname already exists. ',
+  ERROR_15:             'Wallet not found. ',
+  ERROR_16:             'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+  ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
+  ERROR_18:             'You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
+  ERROR_20:             'Invalid symbol',
+  SUCCESS_1:            'Valid address',
+  SUCCESS_2:            'Wallet successfully decrypted',
+  SUCCESS_3:            'Transaction submitted. TX ID: ',
+  SUCCESS_4:            'Your wallet was successfully added: ',
+  SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
+
+  /* Tranlsation Info */
+  translate_version:    '0.0',
+  Translator_Desc:      'Thank you to our translators...',
+  LANG_en:              'English',
+  LANG_de:              'Deutsche',
+  LANG_es:              'Español',
+  LANG_fr:              'Français',
+  LANG_ko:              'Korean',
+  LANG_no:              'Norwegian',
+  TranlsatorName_1:     '',
+  TranlsatorAddr_1:     '',
+  TranlsatorName_2:     ' ',
+  TranlsatorAddr_2:     ' ',
+  TranlsatorName_3:     ' ',
+  TranlsatorAddr_3:     ' ',
+  TranlsatorName_4:     ' ',
+  TranlsatorAddr_4:     ' ',
+  TranlsatorName_5:     ' ',
+  TranlsatorAddr_5:     ' ',
+
+  /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
+  HELP_Warning:       'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
+  HELP_Desc:          'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!',
+  HELP_Remind_Title:  'Some reminders',
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**.',
+  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.',
+  HELP_Remind_Desc_3: 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!',
+
+  HELP_0_Title:        '0) I\'m new. What do I do?',
+  HELP_0_Desc_1:       'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.',
+  HELP_0_Desc_2:       'Create a new wallet.',
+  HELP_0_Desc_3:       'Back the wallet up.',
+  HELP_0_Desc_4:       'Verify you have access to this new wallet and have correctly saved all necessary information.',
+  HELP_0_Desc_5:       'Transfer Ether to this new wallet.',
+
+  HELP_1_Title:        '1) How do I create a new wallet? ',
+  HELP_1_Desc_1:       'Go to the "Generate Wallet" page.',
+  HELP_1_Desc_2:       'Go to the "Add Wallet" page & select "Generate New Wallet"',
+  HELP_1_Desc_3:       'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.',
+  HELP_1_Desc_4:       'Click "GENERATE".',
+  HELP_1_Desc_5:       'Your wallet has now been generated.',
+
+  HELP_2a_Title:       '2a) How do I save/backup my wallet?',
+  HELP_2a_Desc_1:      'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
+  HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you.',
+  HELP_2a_Desc_3:      'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:',
+  HELP_2a_Desc_4:      'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.',
+  HELP_2a_Desc_5:      'Print the wallet if you have a printer. Otherwise, write down your private and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
+  HELP_2a_Desc_6:      'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).',
+
+  HELP_2b_Title:       '2b) How do I safely / offline / cold storage with MyEtherWallet?',
+  HELP_2b_Desc_1:      'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_2b_Desc_2:      'Click download zip in the upper right.',
+  HELP_2b_Desc_3:      'Move zip to an airgapped computer.',
+  HELP_2b_Desc_4:      'Unzip it and double-click `index.html`.',
+  HELP_2b_Desc_5:      'Generate a wallet with a strong password.',
+  HELP_2b_Desc_6:      'Save the address. Save versions of the private key. Save the password if you might not remember it forever.',
+  HELP_2b_Desc_7:      'Store these papers / USBs in multiple physically separate locations.',
+  HELP_2b_Desc_8:      'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same.',
+
+  HELP_3_Title:         '3) How do I verify I have access to my new wallet?',
+  HELP_3_Desc_1:        '**Before you send any Ether to your new wallet**, you should ensure you have access to it.',
+  HELP_3_Desc_2:        'Navigate to the "View Wallet Info" page.',
+  HELP_3_Desc_3:        'Navigate to the MyEtherWallet.com "View Wallet Info" page.',
+  HELP_3_Desc_4:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_3_Desc_5:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_3_Desc_6:        'Click the "Unlock Wallet" button.',
+  HELP_3_Desc_7:        'Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
+  HELP_3_Desc_8:        'If you are planning on holding a large amount of ETH, we recommend that send a small amount of ETH from new wallet before depositting a large amount. Send .001 ETH to your new wallet, access that wallet, send that .001 ETH to another address, and ensure everything works smoothly.',
+
+  HELP_4_Title:         '4) How do I send Ether from one wallet to another?',
+  HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
+  HELP_4_Desc_2:        'Navigate to the "Send Ether" page.',
+  HELP_4_Desc_3:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
+  HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
+  HELP_4_Desc_9:        'Click "Generate Transaction".',
+  HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_4_Desc_11:       'Click the blue "Send Transaction" button below that.',
+  HELP_4_Desc_12:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_4_Desc_13:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+
+  HELP_4CX_Title:       '4) How do I send Ether using MyEtherWallet CX?',
+  HELP_4CX_Desc_1:      'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.',
+  HELP_4CX_Desc_2:      'QuickSend:',
+  HELP_4CX_Desc_3:      'Click the Chrome Extension Icon.',
+  HELP_4CX_Desc_4:      'Click the "QuickSend" button.',
+  HELP_4CX_Desc_5:      'Select the wallet you wish to send from.',
+  HELP_4CX_Desc_6:      'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4CX_Desc_7:      'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
+  HELP_4CX_Desc_8:      'Click "Send Transaction". ',
+  HELP_4CX_Desc_9:      'Verify the address and the amount you are sending is correct.',
+  HELP_4CX_Desc_10:     'Enter the password for that wallet.',
+  HELP_4CX_Desc_11:     'Click "Send Transaction."',
+  HELP_4CX_Desc_12:     'Using "Send Ether" Page: ',
+
+  HELP_5_Title:         '5) How do I run MyEtherWallet.com offline/locally? ',
+  HELP_5_Desc_1:        'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page.',
+  HELP_5_Desc_2:        'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_5_Desc_3:        'Click download zip in the upper right.',
+  HELP_5_Desc_4:        'Move zip to an airgapped computer.',
+  HELP_5_Desc_5:        'Unzip it.',
+  HELP_5_Desc_6:        'Double-Click `index.html`.',
+  HELP_5_Desc_7:        'MyEtherWallet.com is now running entirely on your computer.',
+  HELP_5_Desc_8:        'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.',
+  HELP_5_Desc_9:        'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.',
+
+  HELP_5CX_Title:       '5) How can I install this extension from the repo instead of the Chrome Store? ',
+  HELP_5CX_Desc_1:      'Go to our github and find the most recent Chrome Extension relase: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
+  HELP_5CX_Desc_2:      'Scroll to the very bottom and right click on the latest release. Click "save link as".',
+  HELP_5CX_Desc_3:      'Go to Google Chrome and find you settings (in the menu in the upper right).',
+  HELP_5CX_Desc_4:      'Click "Extensions" on the left.',
+  HELP_5CX_Desc_5:      'Check the "Developer Mode" button at the top of that page.',
+  HELP_5CX_Desc_6:      'Click the "Load unpacked extension..." button.',
+  HELP_5CX_Desc_7:      'Navigate to the now-unzipped folder that you downloaded earlier. Click "select".',
+  HELP_5CX_Desc_8:      'The extension should now show up in your extensions and in your Chrome Extension bar.',
+
+  HELP_6_Title:         '6) How do I split my ETH / ETC? ',
+  HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your account now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original account into two accounts. Moving forward, you need to make sure only ETH goes to your ETH account and only ETC goes to your ETC account.',
+  HELP_6_Desc_2:        'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.',
+  HELP_6_Desc_3:        '[Even more information about wallets and reply attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
+  HELP_6_Desc_4:        'Generate a new clean post-fork ETH address for yourself (to be the final destination of pure ETH).',
+  HELP_6_Desc_5:        'Generate a new clean post-fork ETC address for yourself (to be the final destination of pure ETC).',
+  HELP_6_Desc_6:        'Back up these new wallets and verify you can access them. See #2a and #3 above.',
+  HELP_6_Desc_7:        'Send .1234 ETH to your new "ETH" address using "Only ETH" option on the "Send Ether" page.',
+  HELP_6_Desc_8:        'Send .5678 ETC to your new "ETC" address using "Only ETC" on MyEtherWallet.com',
+  HELP_6_Desc_9:        'Check that only the .1234 ETH moved on etherscan.io. Check that only the .5678 ETC moved on gastracker.io.',
+  HELP_6_Desc_10:       'Send a .0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the .0001 ETH moved.',
+  HELP_6_Desc_11:       ' Generate (but do not send) a .0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
+  HELP_6_Desc_12:       'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the .0002 ETC moved.',
+  HELP_6_Desc_13:       'If everything receives correctly and sends correctly then you are golden.',
+  HELP_6_Desc_14:       'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".',
+  HELP_6_Desc_15:       ' Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. ',
+
+  HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
+  HELP_7_Desc_1:        'Navigate to the "Send Token" page.',
+  HELP_7_Desc_2:        'Unlock your wallet.',
+  HELP_7_Desc_3:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_7_Desc_4:        'Enter the amount you would like to send.',
+  HELP_7_Desc_5:        'Select which token you would like to send.',
+  HELP_7_Desc_6:        'If you do not see the token listed:',
+  HELP_7_Desc_7:        'Click "Custom".',
+  HELP_7_Desc_8:        'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.',
+  HELP_7_Desc_9:        'Click "Save".',
+  HELP_7_Desc_10:       'You can now send that token as well as see it\'s balance in the sidebar.',
+  HELP_7_Desc_11:       'Click "Generate Transaction".',
+  HELP_7_Desc_12:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_7_Desc_13:       'Click the blue "Send Transaction" button below that.',
+  HELP_7_Desc_14:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_7_Desc_15:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain.',
+
+  HELP_8_Title:         '8) What happens if your site goes down?',
+  HELP_8_Desc_1:        'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain.',
+  HELP_8_Desc_2:        'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site.',
+  HELP_8_Desc_3:        'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below.',
+  HELP_8_Desc_4:        'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. ',
+
+  HELP_8CX_Title:        '8) What happens if MyEtherWallet CX disappears?',
+  HELP_8CX_Desc_1:       'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer.',
+  HELP_8CX_Desc_2:       'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.',
+  HELP_8CX_Desc_3:       'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.',
+
+  HELP_9_Title:          '9) Is the "Send Ether" page offline?',
+  HELP_9_Desc_1:         ' No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.',
+
+  HELP_10_Title:         '10) How do I make an offline transaction?',
+  HELP_10_Desc_1:        'Navigate to the "Offline Transaction" page via your online computer.',
+  HELP_10_Desc_2:        'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.',
+  HELP_10_Desc_3:        'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.',
+  HELP_10_Desc_4:        'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_5:        'Enter the "NONCE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_6:        'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.',
+  HELP_10_Desc_7:        'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.',
+  HELP_10_Desc_8:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_10_Desc_9:        'Press the "GENERATE SIGNED TRANSACTION" button.',
+  HELP_10_Desc_10:       'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
+  HELP_10_Desc_11:       'On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.',
+
+  HELP_11_Title:          '11) How do I send to a contract?',
+  HELP_11_Desc_1:         'Sending to a contract often requires you to include data or additional gas or both',
+  HELP_11_Desc_2:         'Navigate to the "Send Ether" page. ',
+  HELP_11_Desc_3:         'Select your wallet file -or- your private key and unlock your wallet. ',
+  HELP_11_Desc_4:         'Enter a "To Address" and "Amount to Send"',
+  HELP_11_Desc_5:         'Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_12_Title:          '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?',
+  HELP_12_Desc_1:         'Using an Geth/Mist JSON file from MyEtherWallet v2+....',
+  HELP_12_Desc_2:         'Go to the "View Wallet Info" page.',
+  HELP_12_Desc_3:         'Unlock your wallet using your **encrypted** private key or JSON file. ',
+  HELP_12_Desc_4:         'Go to the "My Wallets" page.',
+  HELP_12_Desc_5:         'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. ',
+  HELP_12_Desc_6:         'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.',
+  HELP_12_Desc_7:         'Open the Ethereum Wallet application. ',
+  HELP_12_Desc_8:         'In the menu bar, go "Accounts" -> "Backup" -> "Accounts"',
+  HELP_12_Desc_9:         'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder.',
+  HELP_12_Desc_10:        'Your account should show up immediately under "Accounts."',
+  HELP_12_Desc_11:        'Using your unencrypted private key...',
+  HELP_12_Desc_12:        'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.',
+  HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
+  HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
+  HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
+  HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
+  HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
+  HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
+  HELP_12_Desc_23:        'Open Notepad & paste the private key',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
+
+  HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
+  HELP_13_Desc_1:         'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_14_Title:          '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
+  HELP_14_Desc_1:         'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
+
+  HELP_15_Title:          '15) Why hasn\'t the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
+  HELP_15_Desc_1:         'Addresses will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
+
+  HELP_16_Title:          '16) How do I check the balance of my account? ',
+  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+
+  HELP_17_Title:          '17) Why isn\'t my balance showing up when I unlock my wallet? ',
+  HELP_17_Desc_1:         ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
+
+  HELP_18_Title:          '18) Where is my geth wallet file?',
+
+  HELP_19_Title:          '19) Where is my Mist wallet file? ',
+  HELP_19_Desc_1:         'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.',
+
+  HELP_20_Title:          '20) Where is my pre-sale wallet file?',
+  HELP_20_Desc_1:         'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.',
+
+  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
+  HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
+  HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
+  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ETH is the least of everyone’s problems.',
+  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ETH from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
+  HELP_21_Desc_5:         'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.',
+  HELP_21_Desc_6:         'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
+  HELP_21_Desc_7:         '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',
+  HELP_21_Desc_8:         'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.',
+
+  HELP_SecCX_Title:       'Security - MyEtherWallet CX ',
+  HELP_SecCX_Desc_1:      'Where is this extension saving my information?',
+  HELP_SecCX_Desc_2:      'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.',
+  HELP_SecCX_Desc_3:      'What information is saved? ',
+  HELP_SecCX_Desc_4:      'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.',
+  HELP_SecCX_Desc_5:      'Why aren\'t the nickname and wallet address encrypted? ',
+  HELP_SecCX_Desc_6:      'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.',
+
+  HELP_Sec_Title:         'Security',
+  HELP_Sec_Desc_1:        'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. ',
+  HELP_Sec_Desc_2:        'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.',
+  HELP_Sec_Desc_3:        'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.',
+  HELP_Sec_Desc_4:        'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.',
+  HELP_Sec_Desc_5:        'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.',
+  HELP_Sec_Desc_6:        'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.',
+  HELP_Sec_Desc_7:        'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.',
+  HELP_Sec_Desc_8:        'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
+
+  HELP_FAQ_Title:         'More Helpful Answers to Frequent Questions',
+  HELP_Contact_Title:     'Ways to Get in Touch'
+};
+
+module.exports = no;
+
+},{}],38:[function(require,module,exports){
+/* NOTE: This is for testing purposes only. It was done 100% via Google Translate and
+Should NOT be used in production environment */
+
+'use strict';
+var test = function() {}
+test.code = 'test';
+test.data = {
 
   /* Navigation*/
   NAV_GenerateWallet:   'Générer Wallet',
@@ -2903,6 +5452,7 @@ fr.data = {
   NAV_Contact:          'Contact',
 
   /* General */
+  x_Password:           'Password',
   x_Download:           'Télécharger',
   x_Address:            'Votre adresse',
   x_Save:               'Enregistrer',
@@ -2980,6 +5530,7 @@ fr.data = {
   /* Sending Ether and Tokens */
   SEND_addr:             'Adresser:',
   SEND_amount:           'Montant Envoyer: ',
+  SEND_amount_short:     'Montant',
   SEND_custom:           'Coutume',
   SEND_gas:              'Gas',
   SEND_generate:         'Générer Transaction Signé',
@@ -3008,7 +5559,7 @@ fr.data = {
   TRANS_standard:        'ETH (Standard Transaction)',
   TRANS_eth:             'Seulement ETH',
   TRANS_etc:             'Seulement ETC',
-  TRANS_advanced:        '+ Avancée: Ajouter plus de gaz ou de données ',
+  TRANS_advanced:        '+Avancée: Ajouter plus de gaz ou de données ',
   TRANS_data:            'Données: ',
   TRANS_gas:             'Gaz: ',
   TRANS_sendInfo:        'Une transaction standard en utilisant 21000 gaz coûtera 0,000441 ETH. Nous utilisons un prix du gaz légèrement supérieure à minimum de 0,000000021 ETH pour assurer qu\'il obtient extrait rapidement. Nous ne prenons pas de frais de transaction.',
@@ -3031,7 +5582,6 @@ fr.data = {
   OFFLINE_Step1_Button:  'Générer l\'information',
   OFFLINE_Step1_Label_1: 'De Adresse:',
   OFFLINE_Step1_Label_2: 'Note: Ceci est l\'adresse FROM, et non l\'adresse de destination. Nonce est généré à partir du compte d\'origine. Si vous utilisez un ordinateur airgapped, il serait l\'adresse du compte frigorifique.',
-
   OFFLLINE_Step2_Title:   'Etape 2: Générer des transactions (Offline Computer)',
   OFFLINE_Step2_Label_1:  'Adresser:',
   OFFLINE_Step2_Label_2:  'Valeur / Montant Envoyer',
@@ -3044,8 +5594,6 @@ fr.data = {
   OFFLINE_Step2_Label_5:  'Données',
   OFFLINE_Step2_Label_5b: 'Cette opération est facultative. Les données sont souvent utilisé lorsque vous envoyez des transactions aux contrats.',
   OFFLINE_Step2_Label_6:  'Entrez / Sélectionnez votre clé privée / JSON.',
-
-
   OFFLINE_Step3_Title:    'Étape 3: Envoyer / Publier Transaction (Online Computer)',
   OFFLINE_Step3_Label_1:  'Coller la transaction signée de l\'étape 2 ici et appuyez sur le bouton "ENVOYER TRANSACTION".',
 
@@ -3054,7 +5602,6 @@ fr.data = {
   DAO_Inst:               'Oui. Il suffit de pousser le gros bouton rouge. Il est si facile.',
   DAO_Warning:            'Si vous obtenez un "équilibre insuffisant pour le gaz" erreur, vous devez avoir une petite quantité de l\'ETH dans votre compte afin de couvrir le coût du gaz. Ajouter .01 ETH à ce compte et essayer à nouveau.',
   DAOModal_Title:         'Juste pour être sûr...',
-
 
   /* Digix */
   DGD_Desc:               'Réclamez vos DigixDAO (DGD) jetons et badges. Afin de réclamer, vous devez avoir participé à la vente de jetons sur Mars 30e / 31, 2016. Si vous souhaitez envoyer DGD, s\'il vous plaît utiliser le Envoyer Tokens Tab.',
@@ -3085,6 +5632,51 @@ fr.data = {
   VIEWWALLET_Subtitle:      'Cela vous permet de télécharger les différentes versions de clés privées et ré-imprimer votre porte-monnaie de papier. Vous pouvez faire cela afin de [importer votre compte dansGeth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vous voulez vérifier votre solde, nous vous recommandons d\'utiliser un explorateur de blockchain comme [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'Cela vous permet de télécharger les différentes versions de clés privées et ré-imprimer votre porte-monnaie de papier.',
   VIEWWALLET_SuccessMsg:     'Le succès! Voici les détails de votre porte-monnaie.',
+
+  /* Error Messages */
+  ERROR_1:             'Please enter valid amount.',
+  ERROR_2:             'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+  ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
+  ERROR_4:              'This is not a valid wallet file. ',
+  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
+  ERROR_6:              'Invalid address. ',
+  ERROR_7:              'Invalid password. ',
+  ERROR_8:              'Invalid amount. ',
+  ERROR_9:              'Invalid gas limit. ',
+  ERROR_10:             'Invalid data value. ',
+  ERROR_11:             'Invalid gas amount. ',
+  ERROR_12:             'Invalid nonce. ',
+  ERROR_13:             'Invalid signed transaction. ',
+  ERROR_14:             'A wallet with this nickname already exists. ',
+  ERROR_15:             'Wallet not found. ',
+  ERROR_16:             'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+  ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
+  ERROR_18:             'You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
+  ERROR_20:             'Invalid symbol',
+  SUCCESS_1:            'Valid address',
+  SUCCESS_2:            'Wallet successfully decrypted',
+  SUCCESS_3:            'Transaction submitted. TX ID: ',
+  SUCCESS_4:            'Your wallet was successfully added: ',
+  SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
+
+  /* Tranlsation Info */
+  translate_version:    '0.0',
+  Translator_Desc:      'Merci à nos traducteurs...',
+  LANG_en:              'English',
+  LANG_es:              'Español',
+  LANG_fr:              'Français',
+  LANG_de:              'Deutsche',
+  TranlsatorName_1:     '',
+  TranlsatorAddr_1:     '',
+  TranlsatorName_2:     ' ',
+  TranlsatorAddr_2:     ' ',
+  TranlsatorName_3:     ' ',
+  TranlsatorAddr_3:     ' ',
+  TranlsatorName_4:     ' ',
+  TranlsatorAddr_4:     ' ',
+  TranlsatorName_5:     ' ',
+  TranlsatorAddr_5:     ' ',
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning:       'Si vous avez créé un portefeuille -ou- téléchargé le repo avant ** décembre 31 2015 **, s\'il vous plaît vérifier vos portefeuilles & télécharger une nouvelle version du repo. Cliquez pour plus de détails.',
@@ -3339,15 +5931,26 @@ fr.data = {
   HELP_Contact_Title:     'Ways to Get in Touch'
 };
 
-module.exports = fr;
+module.exports = test;
 
-},{}],34:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 var en = require('./en');
+var de = require('./de');
+var es = require('./es');
 var fr = require('./fr');
+var ko = require('./ko');
+var no = require('./no');
+var test = require('./test');
+
 var translate = function($translateProvider) {
 	$translateProvider.translations(en.code, translate.marked(en.data));
-	$translateProvider.translations(fr.code, translate.marked(fr.data));
+  $translateProvider.translations(de.code, translate.marked(de.data));
+  $translateProvider.translations(es.code, translate.marked(es.data));
+  $translateProvider.translations(fr.code, translate.marked(fr.data));
+  $translateProvider.translations(ko.code, translate.marked(ko.data));
+  $translateProvider.translations(no.code, translate.marked(no.data));
+  $translateProvider.translations(test.code, translate.marked(test.data));
 	$translateProvider.preferredLanguage('en');
 	$translateProvider.useSanitizeValueStrategy(null);
 }
@@ -3358,7 +5961,7 @@ translate.marked = function(data) {
 }
 module.exports = translate;
 
-},{"./en":32,"./fr":33}],35:[function(require,module,exports){
+},{"./de":32,"./en":33,"./es":34,"./fr":35,"./ko":36,"./no":37,"./test":38}],40:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var uiFuncs = function() {}
@@ -3492,7 +6095,7 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
 }
 module.exports = uiFuncs;
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],36:[function(require,module,exports){
+},{"buffer":95}],41:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -4232,11 +6835,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],37:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":36}],38:[function(require,module,exports){
+},{"./angular-sanitize":41}],43:[function(require,module,exports){
 /*!
  * angular-translate - v2.11.1 - 2016-07-17
  * 
@@ -7710,9 +10313,9 @@ return 'pascalprecht.translate';
 
 }));
 
-},{}],39:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 /**
- * @license AngularJS v1.5.8
+ * @license AngularJS v1.5.6
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -7770,7 +10373,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.8/' +
+    message += '\nhttp://errors.angularjs.org/1.5.6/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -7839,6 +10442,7 @@ function minErr(module, ErrorConstructor) {
   includes: true,
   arrayRemove: true,
   copy: true,
+  shallowCopy: true,
   equals: true,
   csp: true,
   jq: true,
@@ -8534,13 +11138,7 @@ function arrayRemove(array, value) {
  * * If a destination is provided, all of its elements (for arrays) or properties (for objects)
  *   are deleted and then all elements/properties from the source are copied to it.
  * * If `source` is not an object or array (inc. `null` and `undefined`), `source` is returned.
- * * If `source` is identical to `destination` an exception will be thrown.
- *
- * <br />
- * <div class="alert alert-warning">
- *   Only enumerable properties are taken into account. Non-enumerable properties (both on `source`
- *   and on `destination`) will be ignored.
- * </div>
+ * * If `source` is identical to 'destination' an exception will be thrown.
  *
  * @param {*} source The source that will be used to make a copy.
  *                   Can be any type, including primitives, `null`, and `undefined`.
@@ -8549,42 +11147,41 @@ function arrayRemove(array, value) {
  * @returns {*} The copy or updated `destination`, if `destination` was specified.
  *
  * @example
-  <example module="copyExample">
-    <file name="index.html">
-      <div ng-controller="ExampleController">
-        <form novalidate class="simple-form">
-          <label>Name: <input type="text" ng-model="user.name" /></label><br />
-          <label>Age:  <input type="number" ng-model="user.age" /></label><br />
-          Gender: <label><input type="radio" ng-model="user.gender" value="male" />male</label>
-                  <label><input type="radio" ng-model="user.gender" value="female" />female</label><br />
-          <button ng-click="reset()">RESET</button>
-          <button ng-click="update(user)">SAVE</button>
-        </form>
-        <pre>form = {{user | json}}</pre>
-        <pre>master = {{master | json}}</pre>
-      </div>
-    </file>
-    <file name="script.js">
-      // Module: copyExample
-      angular.
-        module('copyExample', []).
-        controller('ExampleController', ['$scope', function($scope) {
-          $scope.master = {};
+ <example module="copyExample">
+ <file name="index.html">
+ <div ng-controller="ExampleController">
+ <form novalidate class="simple-form">
+ Name: <input type="text" ng-model="user.name" /><br />
+ E-mail: <input type="email" ng-model="user.email" /><br />
+ Gender: <input type="radio" ng-model="user.gender" value="male" />male
+ <input type="radio" ng-model="user.gender" value="female" />female<br />
+ <button ng-click="reset()">RESET</button>
+ <button ng-click="update(user)">SAVE</button>
+ </form>
+ <pre>form = {{user | json}}</pre>
+ <pre>master = {{master | json}}</pre>
+ </div>
 
-          $scope.reset = function() {
-            // Example with 1 argument
-            $scope.user = angular.copy($scope.master);
-          };
+ <script>
+  angular.module('copyExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.master= {};
 
-          $scope.update = function(user) {
-            // Example with 2 arguments
-            angular.copy(user, $scope.master);
-          };
+      $scope.update = function(user) {
+        // Example with 1 argument
+        $scope.master= angular.copy(user);
+      };
 
-          $scope.reset();
-        }]);
-    </file>
-  </example>
+      $scope.reset = function() {
+        // Example with 2 arguments
+        angular.copy($scope.master, $scope.user);
+      };
+
+      $scope.reset();
+    }]);
+ </script>
+ </file>
+ </example>
  */
 function copy(source, destination) {
   var stackSource = [];
@@ -8691,7 +11288,7 @@ function copy(source, destination) {
       case '[object Uint8ClampedArray]':
       case '[object Uint16Array]':
       case '[object Uint32Array]':
-        return new source.constructor(copyElement(source.buffer), source.byteOffset, source.length);
+        return new source.constructor(copyElement(source.buffer));
 
       case '[object ArrayBuffer]':
         //Support: IE10
@@ -8721,6 +11318,31 @@ function copy(source, destination) {
       return source.cloneNode(true);
     }
   }
+}
+
+/**
+ * Creates a shallow copy of an object, an array or a primitive.
+ *
+ * Assumes that there are no proto properties for objects.
+ */
+function shallowCopy(src, dst) {
+  if (isArray(src)) {
+    dst = dst || [];
+
+    for (var i = 0, ii = src.length; i < ii; i++) {
+      dst[i] = src[i];
+    }
+  } else if (isObject(src)) {
+    dst = dst || {};
+
+    for (var key in src) {
+      if (!(key.charAt(0) === '$' && key.charAt(1) === '$')) {
+        dst[key] = src[key];
+      }
+    }
+  }
+
+  return dst || src;
 }
 
 
@@ -10063,34 +12685,7 @@ function setupModuleLoader(window) {
 
 }
 
-/* global shallowCopy: true */
-
-/**
- * Creates a shallow copy of an object, an array or a primitive.
- *
- * Assumes that there are no proto properties for objects.
- */
-function shallowCopy(src, dst) {
-  if (isArray(src)) {
-    dst = dst || [];
-
-    for (var i = 0, ii = src.length; i < ii; i++) {
-      dst[i] = src[i];
-    }
-  } else if (isObject(src)) {
-    dst = dst || {};
-
-    for (var key in src) {
-      if (!(key.charAt(0) === '$' && key.charAt(1) === '$')) {
-        dst[key] = src[key];
-      }
-    }
-  }
-
-  return dst || src;
-}
-
-/* global toDebugString: true */
+/* global: toDebugString: true */
 
 function serializeObject(obj) {
   var seen = [];
@@ -10194,7 +12789,6 @@ function toDebugString(obj) {
   $HttpParamSerializerJQLikeProvider,
   $HttpBackendProvider,
   $xhrFactoryProvider,
-  $jsonpCallbacksProvider,
   $LocationProvider,
   $LogProvider,
   $ParseProvider,
@@ -10232,11 +12826,11 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.8',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.6',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
-  dot: 8,
-  codeName: 'arbitrary-fallbacks'
+  dot: 6,
+  codeName: 'arrow-stringification'
 };
 
 
@@ -10267,7 +12861,7 @@ function publishExternalAPI(angular) {
     'isDate': isDate,
     'lowercase': lowercase,
     'uppercase': uppercase,
-    'callbacks': {$$counter: 0},
+    'callbacks': {counter: 0},
     'getTestability': getTestability,
     '$$minErr': minErr,
     '$$csp': csp,
@@ -10356,7 +12950,6 @@ function publishExternalAPI(angular) {
         $httpParamSerializerJQLike: $HttpParamSerializerJQLikeProvider,
         $httpBackend: $HttpBackendProvider,
         $xhrFactory: $xhrFactoryProvider,
-        $jsonpCallbacks: $jsonpCallbacksProvider,
         $location: $LocationProvider,
         $log: $LogProvider,
         $parse: $ParseProvider,
@@ -10433,7 +13026,7 @@ function publishExternalAPI(angular) {
  * ## Angular's jqLite
  * jqLite provides only the following jQuery methods:
  *
- * - [`addClass()`](http://api.jquery.com/addClass/) - Does not support a function as first argument
+ * - [`addClass()`](http://api.jquery.com/addClass/)
  * - [`after()`](http://api.jquery.com/after/)
  * - [`append()`](http://api.jquery.com/append/)
  * - [`attr()`](http://api.jquery.com/attr/) - Does not support functions as parameters
@@ -10460,7 +13053,7 @@ function publishExternalAPI(angular) {
  * - [`ready()`](http://api.jquery.com/ready/)
  * - [`remove()`](http://api.jquery.com/remove/)
  * - [`removeAttr()`](http://api.jquery.com/removeAttr/)
- * - [`removeClass()`](http://api.jquery.com/removeClass/) - Does not support a function as first argument
+ * - [`removeClass()`](http://api.jquery.com/removeClass/)
  * - [`removeData()`](http://api.jquery.com/removeData/)
  * - [`replaceWith()`](http://api.jquery.com/replaceWith/)
  * - [`text()`](http://api.jquery.com/text/)
@@ -10595,7 +13188,7 @@ function jqLiteBuildFragment(html, context) {
     nodes.push(context.createTextNode(html));
   } else {
     // Convert html into DOM nodes
-    tmp = fragment.appendChild(context.createElement("div"));
+    tmp = tmp || fragment.appendChild(context.createElement("div"));
     tag = (TAG_NAME_REGEXP.exec(html) || ["", ""])[1].toLowerCase();
     wrap = wrapMap[tag] || wrapMap._default;
     tmp.innerHTML = wrap[1] + html.replace(XHTML_TAG_REGEXP, "<$1></$2>") + wrap[2];
@@ -12408,10 +15001,10 @@ function createInjector(modulesToLoad, strictDi) {
       if (msie <= 11) {
         return false;
       }
-      // Support: Edge 12-13 only
-      // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/6156135/
+      // Workaround for MS Edge.
+      // Check https://connect.microsoft.com/IE/Feedback/Details/2211653
       return typeof func === 'function'
-        && /^(?:class\b|constructor\()/.test(stringifyFn(func));
+        && /^(?:class\s|constructor\()/.test(stringifyFn(func));
     }
 
     function invoke(fn, self, locals, serviceName) {
@@ -13152,13 +15745,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @param {DOMElement} parent the parent element which will append the element as
        *   a child (so long as the after element is not present)
        * @param {DOMElement=} after the sibling element after which the element will be appended
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -13184,13 +15771,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @param {DOMElement} parent the parent element which will append the element as
        *   a child (so long as the after element is not present)
        * @param {DOMElement=} after the sibling element after which the element will be appended
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -13211,13 +15792,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * digest once the animation has completed.
        *
        * @param {DOMElement} element the element which will be removed from the DOM
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -13241,13 +15816,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        *
        * @param {DOMElement} element the element which the CSS classes will be applied to
        * @param {string} className the CSS class(es) that will be added (multiple classes are separated via spaces)
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -13271,13 +15840,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        *
        * @param {DOMElement} element the element which the CSS classes will be applied to
        * @param {string} className the CSS class(es) that will be removed (multiple classes are separated via spaces)
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -13302,13 +15865,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @param {DOMElement} element the element which the CSS classes will be applied to
        * @param {string} add the CSS class(es) that will be added (multiple classes are separated via spaces)
        * @param {string} remove the CSS class(es) that will be removed (multiple classes are separated via spaces)
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -13349,13 +15906,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @param {string=} className an optional CSS class that will be applied to the element for the duration of the animation. If
        *    this value is left as empty then a CSS class of `ng-inline-animate` will be applied to the element.
        *    (Note that if no animation is detected then this value will not be applied to the element.)
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -14443,9 +16994,8 @@ function $TemplateCacheProvider() {
  * There are many different options for a directive.
  *
  * The difference resides in the return value of the factory function.
- * You can either return a {@link $compile#directive-definition-object Directive Definition Object (see below)}
- * that defines the directive properties, or just the `postLink` function (all other properties will have
- * the default values).
+ * You can either return a "Directive Definition Object" (see below) that defines the directive properties,
+ * or just the `postLink` function (all other properties will have the default values).
  *
  * <div class="alert alert-success">
  * **Best Practice:** It's recommended to use the "directive definition object" form.
@@ -14509,125 +17059,6 @@ function $TemplateCacheProvider() {
  *   });
  * ```
  *
- * ### Life-cycle hooks
- * Directive controllers can provide the following methods that are called by Angular at points in the life-cycle of the
- * directive:
- * * `$onInit()` - Called on each controller after all the controllers on an element have been constructed and
- *   had their bindings initialized (and before the pre &amp; post linking functions for the directives on
- *   this element). This is a good place to put initialization code for your controller.
- * * `$onChanges(changesObj)` - Called whenever one-way (`<`) or interpolation (`@`) bindings are updated. The
- *   `changesObj` is a hash whose keys are the names of the bound properties that have changed, and the values are an
- *   object of the form `{ currentValue, previousValue, isFirstChange() }`. Use this hook to trigger updates within a
- *   component such as cloning the bound value to prevent accidental mutation of the outer value.
- * * `$doCheck()` - Called on each turn of the digest cycle. Provides an opportunity to detect and act on
- *   changes. Any actions that you wish to take in response to the changes that you detect must be
- *   invoked from this hook; implementing this has no effect on when `$onChanges` is called. For example, this hook
- *   could be useful if you wish to perform a deep equality check, or to check a Date object, changes to which would not
- *   be detected by Angular's change detector and thus not trigger `$onChanges`. This hook is invoked with no arguments;
- *   if detecting changes, you must store the previous value(s) for comparison to the current values.
- * * `$onDestroy()` - Called on a controller when its containing scope is destroyed. Use this hook for releasing
- *   external resources, watches and event handlers. Note that components have their `$onDestroy()` hooks called in
- *   the same order as the `$scope.$broadcast` events are triggered, which is top down. This means that parent
- *   components will have their `$onDestroy()` hook called before child components.
- * * `$postLink()` - Called after this controller's element and its children have been linked. Similar to the post-link
- *   function this hook can be used to set up DOM event handlers and do direct DOM manipulation.
- *   Note that child elements that contain `templateUrl` directives will not have been compiled and linked since
- *   they are waiting for their template to load asynchronously and their own compilation and linking has been
- *   suspended until that occurs.
- *
- * #### Comparison with Angular 2 life-cycle hooks
- * Angular 2 also uses life-cycle hooks for its components. While the Angular 1 life-cycle hooks are similar there are
- * some differences that you should be aware of, especially when it comes to moving your code from Angular 1 to Angular 2:
- *
- * * Angular 1 hooks are prefixed with `$`, such as `$onInit`. Angular 2 hooks are prefixed with `ng`, such as `ngOnInit`.
- * * Angular 1 hooks can be defined on the controller prototype or added to the controller inside its constructor.
- *   In Angular 2 you can only define hooks on the prototype of the Component class.
- * * Due to the differences in change-detection, you may get many more calls to `$doCheck` in Angular 1 than you would to
- *   `ngDoCheck` in Angular 2
- * * Changes to the model inside `$doCheck` will trigger new turns of the digest loop, which will cause the changes to be
- *   propagated throughout the application.
- *   Angular 2 does not allow the `ngDoCheck` hook to trigger a change outside of the component. It will either throw an
- *   error or do nothing depending upon the state of `enableProdMode()`.
- *
- * #### Life-cycle hook examples
- *
- * This example shows how you can check for mutations to a Date object even though the identity of the object
- * has not changed.
- *
- * <example name="doCheckDateExample" module="do-check-module">
- *   <file name="app.js">
- *     angular.module('do-check-module', [])
- *       .component('app', {
- *         template:
- *           'Month: <input ng-model="$ctrl.month" ng-change="$ctrl.updateDate()">' +
- *           'Date: {{ $ctrl.date }}' +
- *           '<test date="$ctrl.date"></test>',
- *         controller: function() {
- *           this.date = new Date();
- *           this.month = this.date.getMonth();
- *           this.updateDate = function() {
- *             this.date.setMonth(this.month);
- *           };
- *         }
- *       })
- *       .component('test', {
- *         bindings: { date: '<' },
- *         template:
- *           '<pre>{{ $ctrl.log | json }}</pre>',
- *         controller: function() {
- *           var previousValue;
- *           this.log = [];
- *           this.$doCheck = function() {
- *             var currentValue = this.date && this.date.valueOf();
- *             if (previousValue !== currentValue) {
- *               this.log.push('doCheck: date mutated: ' + this.date);
- *               previousValue = currentValue;
- *             }
- *           };
- *         }
- *       });
- *   </file>
- *   <file name="index.html">
- *     <app></app>
- *   </file>
- * </example>
- *
- * This example show how you might use `$doCheck` to trigger changes in your component's inputs even if the
- * actual identity of the component doesn't change. (Be aware that cloning and deep equality checks on large
- * arrays or objects can have a negative impact on your application performance)
- *
- * <example name="doCheckArrayExample" module="do-check-module">
- *   <file name="index.html">
- *     <div ng-init="items = []">
- *       <button ng-click="items.push(items.length)">Add Item</button>
- *       <button ng-click="items = []">Reset Items</button>
- *       <pre>{{ items }}</pre>
- *       <test items="items"></test>
- *     </div>
- *   </file>
- *   <file name="app.js">
- *      angular.module('do-check-module', [])
- *        .component('test', {
- *          bindings: { items: '<' },
- *          template:
- *            '<pre>{{ $ctrl.log | json }}</pre>',
- *          controller: function() {
- *            this.log = [];
- *
- *            this.$doCheck = function() {
- *              if (this.items_ref !== this.items) {
- *                this.log.push('doCheck: items changed');
- *                this.items_ref = this.items;
- *              }
- *              if (!angular.equals(this.items_clone, this.items)) {
- *                this.log.push('doCheck: items mutated');
- *                this.items_clone = angular.copy(this.items);
- *              }
- *            };
- *          }
- *        });
- *   </file>
- * </example>
  *
  *
  * ### Directive Definition Object
@@ -14802,6 +17233,25 @@ function $TemplateCacheProvider() {
  *      then the default translusion is provided.
  *    The `$transclude` function also has a method on it, `$transclude.isSlotFilled(slotName)`, which returns
  *    `true` if the specified slot contains content (i.e. one or more DOM nodes).
+ *
+ * The controller can provide the following methods that act as life-cycle hooks:
+ * * `$onInit()` - Called on each controller after all the controllers on an element have been constructed and
+ *   had their bindings initialized (and before the pre &amp; post linking functions for the directives on
+ *   this element). This is a good place to put initialization code for your controller.
+ * * `$onChanges(changesObj)` - Called whenever one-way (`<`) or interpolation (`@`) bindings are updated. The
+ *   `changesObj` is a hash whose keys are the names of the bound properties that have changed, and the values are an
+ *   object of the form `{ currentValue, previousValue, isFirstChange() }`. Use this hook to trigger updates within a
+ *   component such as cloning the bound value to prevent accidental mutation of the outer value.
+ * * `$onDestroy()` - Called on a controller when its containing scope is destroyed. Use this hook for releasing
+ *   external resources, watches and event handlers. Note that components have their `$onDestroy()` hooks called in
+ *   the same order as the `$scope.$broadcast` events are triggered, which is top down. This means that parent
+ *   components will have their `$onDestroy()` hook called before child components.
+ * * `$postLink()` - Called after this controller's element and its children have been linked. Similar to the post-link
+ *   function this hook can be used to set up DOM event handlers and do direct DOM manipulation.
+ *   Note that child elements that contain `templateUrl` directives will not have been compiled and linked since
+ *   they are waiting for their template to load asynchronously and their own compilation and linking has been
+ *   suspended until that occurs.
+ *
  *
  * #### `require`
  * Require another directive and inject its controller as the fourth argument to the linking function. The
@@ -15000,8 +17450,8 @@ function $TemplateCacheProvider() {
  *     any other controller.
  *
  *   * `transcludeFn` - A transclude linking function pre-bound to the correct transclusion scope.
- *     This is the same as the `$transclude` parameter of directive controllers,
- *     see {@link ng.$compile#-controller- the controller section for details}.
+ *     This is the same as the `$transclude`
+ *     parameter of directive controllers, see there for details.
  *     `function([scope], cloneLinkingFn, futureParentElement)`.
  *
  * #### Pre-linking function
@@ -15803,19 +18253,11 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         }
         // We must run this hook in an apply since the $$postDigest runs outside apply
         $rootScope.$apply(function() {
-          var errors = [];
           for (var i = 0, ii = onChangesQueue.length; i < ii; ++i) {
-            try {
-              onChangesQueue[i]();
-            } catch (e) {
-              errors.push(e);
-            }
+            onChangesQueue[i]();
           }
           // Reset the queue to trigger a new schedule next time there is a change
           onChangesQueue = undefined;
-          if (errors.length) {
-            throw errors;
-          }
         });
       } finally {
         onChangesTtl++;
@@ -16456,30 +18898,24 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
           addTextInterpolateDirective(directives, node.nodeValue);
           break;
         case NODE_TYPE_COMMENT: /* Comment */
-          collectCommentDirectives(node, directives, attrs, maxPriority, ignoreDirective);
+          try {
+            match = COMMENT_DIRECTIVE_REGEXP.exec(node.nodeValue);
+            if (match) {
+              nName = directiveNormalize(match[1]);
+              if (addDirective(directives, nName, 'M', maxPriority, ignoreDirective)) {
+                attrs[nName] = trim(match[2]);
+              }
+            }
+          } catch (e) {
+            // turns out that under some circumstances IE9 throws errors when one attempts to read
+            // comment's node value.
+            // Just ignore it and continue. (Can't seem to reproduce in test case.)
+          }
           break;
       }
 
       directives.sort(byPriority);
       return directives;
-    }
-
-    function collectCommentDirectives(node, directives, attrs, maxPriority, ignoreDirective) {
-      // function created because of performance, try/catch disables
-      // the optimization of the whole function #14848
-      try {
-        var match = COMMENT_DIRECTIVE_REGEXP.exec(node.nodeValue);
-        if (match) {
-          var nName = directiveNormalize(match[1]);
-          if (addDirective(directives, nName, 'M', maxPriority, ignoreDirective)) {
-            attrs[nName] = trim(match[2]);
-          }
-        }
-      } catch (e) {
-        // turns out that under some circumstances IE9 throws errors when one attempts to read
-        // comment's node value.
-        // Just ignore it and continue. (Can't seem to reproduce in test case.)
-      }
     }
 
     /**
@@ -16997,22 +19433,10 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         forEach(elementControllers, function(controller) {
           var controllerInstance = controller.instance;
           if (isFunction(controllerInstance.$onChanges)) {
-            try {
-              controllerInstance.$onChanges(controller.bindingInfo.initialChanges);
-            } catch (e) {
-              $exceptionHandler(e);
-            }
+            controllerInstance.$onChanges(controller.bindingInfo.initialChanges);
           }
           if (isFunction(controllerInstance.$onInit)) {
-            try {
-              controllerInstance.$onInit();
-            } catch (e) {
-              $exceptionHandler(e);
-            }
-          }
-          if (isFunction(controllerInstance.$doCheck)) {
-            controllerScope.$watch(function() { controllerInstance.$doCheck(); });
-            controllerInstance.$doCheck();
+            controllerInstance.$onInit();
           }
           if (isFunction(controllerInstance.$onDestroy)) {
             controllerScope.$on('$destroy', function callOnDestroyHook() {
@@ -17276,16 +19700,18 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
       // copy the new attributes on the old attrs object
       forEach(src, function(value, key) {
-        // Check if we already set this attribute in the loop above.
-        // `dst` will never contain hasOwnProperty as DOM parser won't let it.
-        // You will get an "InvalidCharacterError: DOM Exception 5" error if you
-        // have an attribute like "has-own-property" or "data-has-own-property", etc.
-        if (!dst.hasOwnProperty(key) && key.charAt(0) !== '$') {
+        if (key == 'class') {
+          safeAddClass($element, value);
+          dst['class'] = (dst['class'] ? dst['class'] + ' ' : '') + value;
+        } else if (key == 'style') {
+          $element.attr('style', $element.attr('style') + ';' + value);
+          dst['style'] = (dst['style'] ? dst['style'] + ';' : '') + value;
+          // `dst` will never contain hasOwnProperty as DOM parser won't let it.
+          // You will get an "InvalidCharacterError: DOM Exception 5" error if you
+          // have an attribute like "has-own-property" or "data-has-own-property", etc.
+        } else if (key.charAt(0) != '$' && !dst.hasOwnProperty(key)) {
           dst[key] = value;
-
-          if (key !== 'class' && key !== 'style') {
-            dstAttr[key] = srcAttr[key];
-          }
+          dstAttr[key] = srcAttr[key];
         }
       });
     }
@@ -17660,7 +20086,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       forEach(bindings, function initializeBinding(definition, scopeName) {
         var attrName = definition.attrName,
         optional = definition.optional,
-        mode = definition.mode, // @, =, <, or &
+        mode = definition.mode, // @, =, or &
         lastValue,
         parentGet, parentSet, compare, removeWatch;
 
@@ -18146,20 +20572,17 @@ function $DocumentProvider() {
  *
  * ## Example:
  *
- * The example below will overwrite the default `$exceptionHandler` in order to (a) log uncaught
- * errors to the backend for later inspection by the developers and (b) to use `$log.warn()` instead
- * of `$log.error()`.
- *
  * ```js
- *   angular.
- *     module('exceptionOverwrite', []).
- *     factory('$exceptionHandler', ['$log', 'logErrorsToBackend', function($log, logErrorsToBackend) {
- *       return function myExceptionHandler(exception, cause) {
- *         logErrorsToBackend(exception, cause);
- *         $log.warn(exception, cause);
- *       };
- *     }]);
+ *   angular.module('exceptionOverride', []).factory('$exceptionHandler', function() {
+ *     return function(exception, cause) {
+ *       exception.message += ' (caused by "' + cause + '")';
+ *       throw exception;
+ *     };
+ *   });
  * ```
+ *
+ * This example will override the normal action of `$exceptionHandler`, to make angular
+ * exceptions fail hard when they happen, instead of just logging to the console.
  *
  * <hr />
  * Note, that code executed in event-listeners (even those registered using jqLite's `on`/`bind`
@@ -18170,7 +20593,7 @@ function $DocumentProvider() {
  * `try { ... } catch(e) { $exceptionHandler(e); }`
  *
  * @param {Error} exception Exception associated with the error.
- * @param {string=} cause Optional information about the context in which
+ * @param {string=} cause optional information about the context in which
  *       the error was thrown.
  *
  */
@@ -18240,7 +20663,7 @@ function $HttpParamSerializerProvider() {
    * * `{'foo': 'bar'}` results in `foo=bar`
    * * `{'foo': Date.now()}` results in `foo=2015-04-01T09%3A50%3A49.262Z` (`toISOString()` and encoded representation of a Date object)
    * * `{'foo': ['bar', 'baz']}` results in `foo=bar&foo=baz` (repeated key for each array element)
-   * * `{'foo': {'bar':'baz'}}` results in `foo=%7B%22bar%22%3A%22baz%22%7D` (stringified and encoded representation of an object)
+   * * `{'foo': {'bar':'baz'}}` results in `foo=%7B%22bar%22%3A%22baz%22%7D"` (stringified and encoded representation of an object)
    *
    * Note that serializer will sort the request parameters alphabetically.
    * */
@@ -18791,7 +21214,7 @@ function $HttpProvider() {
      *
      * ### Overriding the Default Transformations Per Request
      *
-     * If you wish to override the request/response transformations only for a single request then provide
+     * If you wish override the request/response transformations only for a single request then provide
      * `transformRequest` and/or `transformResponse` properties on the configuration object passed
      * into `$http`.
      *
@@ -18834,7 +21257,7 @@ function $HttpProvider() {
      *   * cache a specific response - set config.cache value to TRUE or to a cache object
      *
      * If caching is enabled, but neither the default cache nor config.cache are set to a cache object,
-     * then the default `$cacheFactory("$http")` object is used.
+     * then the default `$cacheFactory($http)` object is used.
      *
      * The default cache value can be set by updating the
      * {@link ng.$http#defaults `$http.defaults.cache`} property or the
@@ -19162,25 +21585,48 @@ function $HttpProvider() {
       config.headers = mergeHeaders(requestConfig);
       config.method = uppercase(config.method);
       config.paramSerializer = isString(config.paramSerializer) ?
-          $injector.get(config.paramSerializer) : config.paramSerializer;
+        $injector.get(config.paramSerializer) : config.paramSerializer;
 
-      var requestInterceptors = [];
-      var responseInterceptors = [];
+      var serverRequest = function(config) {
+        var headers = config.headers;
+        var reqData = transformData(config.data, headersGetter(headers), undefined, config.transformRequest);
+
+        // strip content-type if data is undefined
+        if (isUndefined(reqData)) {
+          forEach(headers, function(value, header) {
+            if (lowercase(header) === 'content-type') {
+                delete headers[header];
+            }
+          });
+        }
+
+        if (isUndefined(config.withCredentials) && !isUndefined(defaults.withCredentials)) {
+          config.withCredentials = defaults.withCredentials;
+        }
+
+        // send request
+        return sendReq(config, reqData).then(transformResponse, transformResponse);
+      };
+
+      var chain = [serverRequest, undefined];
       var promise = $q.when(config);
 
       // apply interceptors
       forEach(reversedInterceptors, function(interceptor) {
         if (interceptor.request || interceptor.requestError) {
-          requestInterceptors.unshift(interceptor.request, interceptor.requestError);
+          chain.unshift(interceptor.request, interceptor.requestError);
         }
         if (interceptor.response || interceptor.responseError) {
-          responseInterceptors.push(interceptor.response, interceptor.responseError);
+          chain.push(interceptor.response, interceptor.responseError);
         }
       });
 
-      promise = chainInterceptors(promise, requestInterceptors);
-      promise = promise.then(serverRequest);
-      promise = chainInterceptors(promise, responseInterceptors);
+      while (chain.length) {
+        var thenFn = chain.shift();
+        var rejectFn = chain.shift();
+
+        promise = promise.then(thenFn, rejectFn);
+      }
 
       if (useLegacyPromise) {
         promise.success = function(fn) {
@@ -19207,18 +21653,14 @@ function $HttpProvider() {
 
       return promise;
 
-
-      function chainInterceptors(promise, interceptors) {
-        for (var i = 0, ii = interceptors.length; i < ii;) {
-          var thenFn = interceptors[i++];
-          var rejectFn = interceptors[i++];
-
-          promise = promise.then(thenFn, rejectFn);
-        }
-
-        interceptors.length = 0;
-
-        return promise;
+      function transformResponse(response) {
+        // make a copy since the response must be cacheable
+        var resp = extend({}, response);
+        resp.data = transformData(response.data, response.headers, response.status,
+                                  config.transformResponse);
+        return (isSuccess(response.status))
+          ? resp
+          : $q.reject(resp);
       }
 
       function executeHeaderFns(headers, config) {
@@ -19261,37 +21703,6 @@ function $HttpProvider() {
 
         // execute if header value is a function for merged headers
         return executeHeaderFns(reqHeaders, shallowCopy(config));
-      }
-
-      function serverRequest(config) {
-        var headers = config.headers;
-        var reqData = transformData(config.data, headersGetter(headers), undefined, config.transformRequest);
-
-        // strip content-type if data is undefined
-        if (isUndefined(reqData)) {
-          forEach(headers, function(value, header) {
-            if (lowercase(header) === 'content-type') {
-              delete headers[header];
-            }
-          });
-        }
-
-        if (isUndefined(config.withCredentials) && !isUndefined(defaults.withCredentials)) {
-          config.withCredentials = defaults.withCredentials;
-        }
-
-        // send request
-        return sendReq(config, reqData).then(transformResponse, transformResponse);
-      }
-
-      function transformResponse(response) {
-        // make a copy since the response must be cacheable
-        var resp = extend({}, response);
-        resp.data = transformData(response.data, response.headers, response.status,
-                                  config.transformResponse);
-        return (isSuccess(response.status))
-          ? resp
-          : $q.reject(resp);
       }
     }
 
@@ -19339,8 +21750,6 @@ function $HttpProvider() {
      *
      * @description
      * Shortcut method to perform `JSONP` request.
-     * If you would like to customise where and how the callbacks are stored then try overriding
-     * or decorating the {@link $jsonpCallbacks} service.
      *
      * @param {string} url Relative or absolute URL specifying the destination of the request.
      *                     The name of the callback should be the string `JSON_CALLBACK`.
@@ -19614,7 +22023,7 @@ function $xhrFactoryProvider() {
 /**
  * @ngdoc service
  * @name $httpBackend
- * @requires $jsonpCallbacks
+ * @requires $window
  * @requires $document
  * @requires $xhrFactory
  *
@@ -19629,8 +22038,8 @@ function $xhrFactoryProvider() {
  * $httpBackend} which can be trained with responses.
  */
 function $HttpBackendProvider() {
-  this.$get = ['$browser', '$jsonpCallbacks', '$document', '$xhrFactory', function($browser, $jsonpCallbacks, $document, $xhrFactory) {
-    return createHttpBackend($browser, $xhrFactory, $browser.defer, $jsonpCallbacks, $document[0]);
+  this.$get = ['$browser', '$window', '$document', '$xhrFactory', function($browser, $window, $document, $xhrFactory) {
+    return createHttpBackend($browser, $xhrFactory, $browser.defer, $window.angular.callbacks, $document[0]);
   }];
 }
 
@@ -19640,13 +22049,17 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
     $browser.$$incOutstandingRequestCount();
     url = url || $browser.url();
 
-    if (lowercase(method) === 'jsonp') {
-      var callbackPath = callbacks.createCallback(url);
-      var jsonpDone = jsonpReq(url, callbackPath, function(status, text) {
-        // jsonpReq only ever sets status to 200 (OK), 404 (ERROR) or -1 (WAITING)
-        var response = (status === 200) && callbacks.getResponse(callbackPath);
-        completeRequest(callback, status, response, "", text);
-        callbacks.removeCallback(callbackPath);
+    if (lowercase(method) == 'jsonp') {
+      var callbackId = '_' + (callbacks.counter++).toString(36);
+      callbacks[callbackId] = function(data) {
+        callbacks[callbackId].data = data;
+        callbacks[callbackId].called = true;
+      };
+
+      var jsonpDone = jsonpReq(url.replace('JSON_CALLBACK', 'angular.callbacks.' + callbackId),
+          callbackId, function(status, text) {
+        completeRequest(callback, status, callbacks[callbackId].data, "", text);
+        callbacks[callbackId] = noop;
       });
     } else {
 
@@ -19748,8 +22161,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
     }
   };
 
-  function jsonpReq(url, callbackPath, done) {
-    url = url.replace('JSON_CALLBACK', callbackPath);
+  function jsonpReq(url, callbackId, done) {
     // we can't use jQuery/jqLite here because jQuery does crazy stuff with script elements, e.g.:
     // - fetches local scripts via XHR and evals them
     // - adds and immediately removes script elements from the document
@@ -19767,7 +22179,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
       var text = "unknown";
 
       if (event) {
-        if (event.type === "load" && !callbacks.wasCalled(callbackPath)) {
+        if (event.type === "load" && !callbacks[callbackId].called) {
           event = { type: "error" };
         }
         text = event.type;
@@ -19966,7 +22378,7 @@ function $InterpolateProvider() {
      *
      * `allOrNothing` is useful for interpolating URLs. `ngSrc` and `ngSrcset` use this behavior.
      *
-     * #### Escaped Interpolation
+     * ####Escaped Interpolation
      * $interpolate provides a mechanism for escaping interpolation markers. Start and end markers
      * can be escaped by preceding each of their characters with a REVERSE SOLIDUS U+005C (backslash).
      * It will be rendered as a regular start/end marker, and will not be interpreted as an expression
@@ -20391,87 +22803,6 @@ function $IntervalProvider() {
 
 /**
  * @ngdoc service
- * @name $jsonpCallbacks
- * @requires $window
- * @description
- * This service handles the lifecycle of callbacks to handle JSONP requests.
- * Override this service if you wish to customise where the callbacks are stored and
- * how they vary compared to the requested url.
- */
-var $jsonpCallbacksProvider = function() {
-  this.$get = ['$window', function($window) {
-    var callbacks = $window.angular.callbacks;
-    var callbackMap = {};
-
-    function createCallback(callbackId) {
-      var callback = function(data) {
-        callback.data = data;
-        callback.called = true;
-      };
-      callback.id = callbackId;
-      return callback;
-    }
-
-    return {
-      /**
-       * @ngdoc method
-       * @name $jsonpCallbacks#createCallback
-       * @param {string} url the url of the JSONP request
-       * @returns {string} the callback path to send to the server as part of the JSONP request
-       * @description
-       * {@link $httpBackend} calls this method to create a callback and get hold of the path to the callback
-       * to pass to the server, which will be used to call the callback with its payload in the JSONP response.
-       */
-      createCallback: function(url) {
-        var callbackId = '_' + (callbacks.$$counter++).toString(36);
-        var callbackPath = 'angular.callbacks.' + callbackId;
-        var callback = createCallback(callbackId);
-        callbackMap[callbackPath] = callbacks[callbackId] = callback;
-        return callbackPath;
-      },
-      /**
-       * @ngdoc method
-       * @name $jsonpCallbacks#wasCalled
-       * @param {string} callbackPath the path to the callback that was sent in the JSONP request
-       * @returns {boolean} whether the callback has been called, as a result of the JSONP response
-       * @description
-       * {@link $httpBackend} calls this method to find out whether the JSONP response actually called the
-       * callback that was passed in the request.
-       */
-      wasCalled: function(callbackPath) {
-        return callbackMap[callbackPath].called;
-      },
-      /**
-       * @ngdoc method
-       * @name $jsonpCallbacks#getResponse
-       * @param {string} callbackPath the path to the callback that was sent in the JSONP request
-       * @returns {*} the data received from the response via the registered callback
-       * @description
-       * {@link $httpBackend} calls this method to get hold of the data that was provided to the callback
-       * in the JSONP response.
-       */
-      getResponse: function(callbackPath) {
-        return callbackMap[callbackPath].data;
-      },
-      /**
-       * @ngdoc method
-       * @name $jsonpCallbacks#removeCallback
-       * @param {string} callbackPath the path to the callback that was sent in the JSONP request
-       * @description
-       * {@link $httpBackend} calls this method to remove the callback after the JSONP request has
-       * completed or timed-out.
-       */
-      removeCallback: function(callbackPath) {
-        var callback = callbackMap[callbackPath];
-        delete callbacks[callback.id];
-        delete callbackMap[callbackPath];
-      }
-    };
-  }];
-};
-
-/**
- * @ngdoc service
  * @name $locale
  *
  * @description
@@ -20808,12 +23139,6 @@ function LocationHashbangInHtml5Url(appBase, appBaseNoFile, hashPrefix) {
 
 
 var locationPrototype = {
-
-  /**
-   * Ensure absolute url is initialized.
-   * @private
-   */
-  $$absUrl:'',
 
   /**
    * Are we in html5 mode?
@@ -22188,7 +24513,7 @@ AST.prototype = {
     var args = [];
     if (this.peekToken().text !== ')') {
       do {
-        args.push(this.filterChain());
+        args.push(this.expression());
       } while (this.expect(','));
     }
     return args;
@@ -23915,7 +26240,7 @@ function $ParseProvider() {
  *
  * **Methods**
  *
- * - `then(successCallback, [errorCallback], [notifyCallback])` – regardless of when the promise was or
+ * - `then(successCallback, errorCallback, notifyCallback)` – regardless of when the promise was or
  *   will be resolved or rejected, `then` calls one of the success or error callbacks asynchronously
  *   as soon as the result is available. The callbacks are called with a single argument: the result
  *   or rejection reason. Additionally, the notify callback may be called zero or more times to
@@ -23926,8 +26251,7 @@ function $ParseProvider() {
  *   with the value which is resolved in that promise using
  *   [promise chaining](http://www.html5rocks.com/en/tutorials/es6/promises/#toc-promises-queues)).
  *   It also notifies via the return value of the `notifyCallback` method. The promise cannot be
- *   resolved or rejected from the notifyCallback method. The errorCallback and notifyCallback
- *   arguments are optional.
+ *   resolved or rejected from the notifyCallback method.
  *
  * - `catch(errorCallback)` – shorthand for `promise.then(null, errorCallback)`
  *
@@ -24342,30 +26666,6 @@ function qFactory(nextTick, exceptionHandler) {
     return deferred.promise;
   }
 
-  /**
-   * @ngdoc method
-   * @name $q#race
-   * @kind function
-   *
-   * @description
-   * Returns a promise that resolves or rejects as soon as one of those promises
-   * resolves or rejects, with the value or reason from that promise.
-   *
-   * @param {Array.<Promise>|Object.<Promise>} promises An array or hash of promises.
-   * @returns {Promise} a promise that resolves or rejects as soon as one of the `promises`
-   * resolves or rejects, with the value or reason from that promise.
-   */
-
-  function race(promises) {
-    var deferred = defer();
-
-    forEach(promises, function(promise) {
-      when(promise).then(deferred.resolve, deferred.reject);
-    });
-
-    return deferred.promise;
-  }
-
   var $Q = function Q(resolver) {
     if (!isFunction(resolver)) {
       throw $qMinErr('norslvr', "Expected resolverFn, got '{0}'", resolver);
@@ -24395,7 +26695,6 @@ function qFactory(nextTick, exceptionHandler) {
   $Q.when = when;
   $Q.resolve = resolve;
   $Q.all = all;
-  $Q.race = race;
 
   return $Q;
 }
@@ -27747,11 +30046,10 @@ function $FilterProvider($provide) {
  *   - `Object`: A pattern object can be used to filter specific properties on objects contained
  *     by `array`. For example `{name:"M", phone:"1"}` predicate will return an array of items
  *     which have property `name` containing "M" and property `phone` containing "1". A special
- *     property name (`$` by default) can be used (e.g. as in `{$: "text"}`) to accept a match
- *     against any property of the object or its nested object properties. That's equivalent to the
- *     simple substring match with a `string` as described above. The special property name can be
- *     overwritten, using the `anyPropertyKey` parameter.
- *     The predicate can be negated by prefixing the string with `!`.
+ *     property name `$` can be used (as in `{$:"text"}`) to accept a match against any
+ *     property of the object or its nested object properties. That's equivalent to the simple
+ *     substring match with a `string` as described above. The predicate can be negated by prefixing
+ *     the string with `!`.
  *     For example `{name: "!M"}` predicate will return an array of items which have property `name`
  *     not containing "M".
  *
@@ -27784,9 +30082,6 @@ function $FilterProvider($provide) {
  *
  *     Primitive values are converted to strings. Objects are not compared against primitives,
  *     unless they have a custom `toString` method (e.g. `Date` objects).
- *
- * @param {string=} anyPropertyKey The special property name that matches against any property.
- *     By default `$`.
  *
  * @example
    <example>
@@ -27856,9 +30151,8 @@ function $FilterProvider($provide) {
      </file>
    </example>
  */
-
 function filterFilter() {
-  return function(array, expression, comparator, anyPropertyKey) {
+  return function(array, expression, comparator) {
     if (!isArrayLike(array)) {
       if (array == null) {
         return array;
@@ -27867,7 +30161,6 @@ function filterFilter() {
       }
     }
 
-    anyPropertyKey = anyPropertyKey || '$';
     var expressionType = getTypeForFilter(expression);
     var predicateFn;
     var matchAgainstAnyProp;
@@ -27884,7 +30177,7 @@ function filterFilter() {
         //jshint -W086
       case 'object':
         //jshint +W086
-        predicateFn = createPredicateFn(expression, comparator, anyPropertyKey, matchAgainstAnyProp);
+        predicateFn = createPredicateFn(expression, comparator, matchAgainstAnyProp);
         break;
       default:
         return array;
@@ -27895,8 +30188,8 @@ function filterFilter() {
 }
 
 // Helper functions for `filterFilter`
-function createPredicateFn(expression, comparator, anyPropertyKey, matchAgainstAnyProp) {
-  var shouldMatchPrimitives = isObject(expression) && (anyPropertyKey in expression);
+function createPredicateFn(expression, comparator, matchAgainstAnyProp) {
+  var shouldMatchPrimitives = isObject(expression) && ('$' in expression);
   var predicateFn;
 
   if (comparator === true) {
@@ -27924,25 +30217,25 @@ function createPredicateFn(expression, comparator, anyPropertyKey, matchAgainstA
 
   predicateFn = function(item) {
     if (shouldMatchPrimitives && !isObject(item)) {
-      return deepCompare(item, expression[anyPropertyKey], comparator, anyPropertyKey, false);
+      return deepCompare(item, expression.$, comparator, false);
     }
-    return deepCompare(item, expression, comparator, anyPropertyKey, matchAgainstAnyProp);
+    return deepCompare(item, expression, comparator, matchAgainstAnyProp);
   };
 
   return predicateFn;
 }
 
-function deepCompare(actual, expected, comparator, anyPropertyKey, matchAgainstAnyProp, dontMatchWholeObject) {
+function deepCompare(actual, expected, comparator, matchAgainstAnyProp, dontMatchWholeObject) {
   var actualType = getTypeForFilter(actual);
   var expectedType = getTypeForFilter(expected);
 
   if ((expectedType === 'string') && (expected.charAt(0) === '!')) {
-    return !deepCompare(actual, expected.substring(1), comparator, anyPropertyKey, matchAgainstAnyProp);
+    return !deepCompare(actual, expected.substring(1), comparator, matchAgainstAnyProp);
   } else if (isArray(actual)) {
     // In case `actual` is an array, consider it a match
     // if ANY of it's items matches `expected`
     return actual.some(function(item) {
-      return deepCompare(item, expected, comparator, anyPropertyKey, matchAgainstAnyProp);
+      return deepCompare(item, expected, comparator, matchAgainstAnyProp);
     });
   }
 
@@ -27951,11 +30244,11 @@ function deepCompare(actual, expected, comparator, anyPropertyKey, matchAgainstA
       var key;
       if (matchAgainstAnyProp) {
         for (key in actual) {
-          if ((key.charAt(0) !== '$') && deepCompare(actual[key], expected, comparator, anyPropertyKey, true)) {
+          if ((key.charAt(0) !== '$') && deepCompare(actual[key], expected, comparator, true)) {
             return true;
           }
         }
-        return dontMatchWholeObject ? false : deepCompare(actual, expected, comparator, anyPropertyKey, false);
+        return dontMatchWholeObject ? false : deepCompare(actual, expected, comparator, false);
       } else if (expectedType === 'object') {
         for (key in expected) {
           var expectedVal = expected[key];
@@ -27963,9 +30256,9 @@ function deepCompare(actual, expected, comparator, anyPropertyKey, matchAgainstA
             continue;
           }
 
-          var matchAnyProperty = key === anyPropertyKey;
+          var matchAnyProperty = key === '$';
           var actualVal = matchAnyProperty ? actual : actual[key];
-          if (!deepCompare(actualVal, expectedVal, comparator, anyPropertyKey, matchAnyProperty, matchAnyProperty)) {
+          if (!deepCompare(actualVal, expectedVal, comparator, matchAnyProperty, matchAnyProperty)) {
             return false;
           }
         }
@@ -28703,22 +30996,21 @@ var uppercaseFilter = valueFn(uppercase);
  * @kind function
  *
  * @description
- * Creates a new array or string containing only a specified number of elements. The elements are
- * taken from either the beginning or the end of the source array, string or number, as specified by
- * the value and sign (positive or negative) of `limit`. Other array-like objects are also supported
- * (e.g. array subclasses, NodeLists, jqLite/jQuery collections etc). If a number is used as input,
- * it is converted to a string.
+ * Creates a new array or string containing only a specified number of elements. The elements
+ * are taken from either the beginning or the end of the source array, string or number, as specified by
+ * the value and sign (positive or negative) of `limit`. If a number is used as input, it is
+ * converted to a string.
  *
- * @param {Array|ArrayLike|string|number} input - Array/array-like, string or number to be limited.
- * @param {string|number} limit - The length of the returned array or string. If the `limit` number
+ * @param {Array|string|number} input Source array, string or number to be limited.
+ * @param {string|number} limit The length of the returned array or string. If the `limit` number
  *     is positive, `limit` number of items from the beginning of the source array/string are copied.
  *     If the number is negative, `limit` number  of items from the end of the source array/string
  *     are copied. The `limit` will be trimmed if it exceeds `array.length`. If `limit` is undefined,
  *     the input will be returned unchanged.
- * @param {(string|number)=} begin - Index at which to begin limitation. As a negative index,
- *     `begin` indicates an offset from the end of `input`. Defaults to `0`.
- * @returns {Array|string} A new sub-array or substring of length `limit` or less if the input had
- *     less than `limit` elements.
+ * @param {(string|number)=} begin Index at which to begin limitation. As a negative index, `begin`
+ *     indicates an offset from the end of `input`. Defaults to `0`.
+ * @returns {Array|string} A new sub-array or substring of length `limit` or less if input array
+ *     had less than `limit` elements.
  *
  * @example
    <example module="limitToExample">
@@ -28806,27 +31098,21 @@ function limitToFilter() {
     if (isNaN(limit)) return input;
 
     if (isNumber(input)) input = input.toString();
-    if (!isArrayLike(input)) return input;
+    if (!isArray(input) && !isString(input)) return input;
 
     begin = (!begin || isNaN(begin)) ? 0 : toInt(begin);
     begin = (begin < 0) ? Math.max(0, input.length + begin) : begin;
 
     if (limit >= 0) {
-      return sliceFn(input, begin, begin + limit);
+      return input.slice(begin, begin + limit);
     } else {
       if (begin === 0) {
-        return sliceFn(input, limit, input.length);
+        return input.slice(limit, input.length);
       } else {
-        return sliceFn(input, Math.max(0, begin + limit), begin);
+        return input.slice(Math.max(0, begin + limit), begin);
       }
     }
   };
-}
-
-function sliceFn(input, begin, end) {
-  if (isString(input)) return input.slice(begin, end);
-
-  return slice.call(input, begin, end);
 }
 
 /**
@@ -28835,128 +31121,44 @@ function sliceFn(input, begin, end) {
  * @kind function
  *
  * @description
- * Returns an array containing the items from the specified `collection`, ordered by a `comparator`
- * function based on the values computed using the `expression` predicate.
+ * Orders a specified `array` by the `expression` predicate. It is ordered alphabetically
+ * for strings and numerically for numbers. Note: if you notice numbers are not being sorted
+ * as expected, make sure they are actually being saved as numbers and not strings.
+ * Array-like values (e.g. NodeLists, jQuery objects, TypedArrays, Strings, etc) are also supported.
  *
- * For example, `[{id: 'foo'}, {id: 'bar'}] | orderBy:'id'` would result in
- * `[{id: 'bar'}, {id: 'foo'}]`.
- *
- * The `collection` can be an Array or array-like object (e.g. NodeList, jQuery object, TypedArray,
- * String, etc).
- *
- * The `expression` can be a single predicate, or a list of predicates each serving as a tie-breaker
- * for the preceeding one. The `expression` is evaluated against each item and the output is used
- * for comparing with other items.
- *
- * You can change the sorting order by setting `reverse` to `true`. By default, items are sorted in
- * ascending order.
- *
- * The comparison is done using the `comparator` function. If none is specified, a default, built-in
- * comparator is used (see below for details - in a nutshell, it compares numbers numerically and
- * strings alphabetically).
- *
- * ### Under the hood
- *
- * Ordering the specified `collection` happens in two phases:
- *
- * 1. All items are passed through the predicate (or predicates), and the returned values are saved
- *    along with their type (`string`, `number` etc). For example, an item `{label: 'foo'}`, passed
- *    through a predicate that extracts the value of the `label` property, would be transformed to:
- *    ```
- *    {
- *      value: 'foo',
- *      type: 'string',
- *      index: ...
- *    }
- *    ```
- * 2. The comparator function is used to sort the items, based on the derived values, types and
- *    indices.
- *
- * If you use a custom comparator, it will be called with pairs of objects of the form
- * `{value: ..., type: '...', index: ...}` and is expected to return `0` if the objects are equal
- * (as far as the comparator is concerned), `-1` if the 1st one should be ranked higher than the
- * second, or `1` otherwise.
- *
- * In order to ensure that the sorting will be deterministic across platforms, if none of the
- * specified predicates can distinguish between two items, `orderBy` will automatically introduce a
- * dummy predicate that returns the item's index as `value`.
- * (If you are using a custom comparator, make sure it can handle this predicate as well.)
- *
- * Finally, in an attempt to simplify things, if a predicate returns an object as the extracted
- * value for an item, `orderBy` will try to convert that object to a primitive value, before passing
- * it to the comparator. The following rules govern the conversion:
- *
- * 1. If the object has a `valueOf()` method that returns a primitive, its return value will be
- *    used instead.<br />
- *    (If the object has a `valueOf()` method that returns another object, then the returned object
- *    will be used in subsequent steps.)
- * 2. If the object has a custom `toString()` method (i.e. not the one inherited from `Object`) that
- *    returns a primitive, its return value will be used instead.<br />
- *    (If the object has a `toString()` method that returns another object, then the returned object
- *    will be used in subsequent steps.)
- * 3. No conversion; the object itself is used.
- *
- * ### The default comparator
- *
- * The default, built-in comparator should be sufficient for most usecases. In short, it compares
- * numbers numerically, strings alphabetically (and case-insensitively), for objects falls back to
- * using their index in the original collection, and sorts values of different types by type.
- *
- * More specifically, it follows these steps to determine the relative order of items:
- *
- * 1. If the compared values are of different types, compare the types themselves alphabetically.
- * 2. If both values are of type `string`, compare them alphabetically in a case- and
- *    locale-insensitive way.
- * 3. If both values are objects, compare their indices instead.
- * 4. Otherwise, return:
- *    -  `0`, if the values are equal (by strict equality comparison, i.e. using `===`).
- *    - `-1`, if the 1st value is "less than" the 2nd value (compared using the `<` operator).
- *    -  `1`, otherwise.
- *
- * **Note:** If you notice numbers not being sorted as expected, make sure they are actually being
- *           saved as numbers and not strings.
- *
- * @param {Array|ArrayLike} collection - The collection (array or array-like object) to sort.
- * @param {(Function|string|Array.<Function|string>)=} expression - A predicate (or list of
- *    predicates) to be used by the comparator to determine the order of elements.
+ * @param {Array} array The array (or array-like object) to sort.
+ * @param {function(*)|string|Array.<(function(*)|string)>=} expression A predicate to be
+ *    used by the comparator to determine the order of elements.
  *
  *    Can be one of:
  *
- *    - `Function`: A getter function. This function will be called with each item as argument and
- *      the return value will be used for sorting.
- *    - `string`: An Angular expression. This expression will be evaluated against each item and the
- *      result will be used for sorting. For example, use `'label'` to sort by a property called
- *      `label` or `'label.substring(0, 3)'` to sort by the first 3 characters of the `label`
- *      property.<br />
- *      (The result of a constant expression is interpreted as a property name to be used for
- *      comparison. For example, use `'"special name"'` (note the extra pair of quotes) to sort by a
- *      property called `special name`.)<br />
- *      An expression can be optionally prefixed with `+` or `-` to control the sorting direction,
- *      ascending or descending. For example, `'+label'` or `'-label'`. If no property is provided,
- *      (e.g. `'+'` or `'-'`), the collection element itself is used in comparisons.
- *    - `Array`: An array of function and/or string predicates. If a predicate cannot determine the
- *      relative order of two items, the next predicate is used as a tie-breaker.
+ *    - `function`: Getter function. The result of this function will be sorted using the
+ *      `<`, `===`, `>` operator.
+ *    - `string`: An Angular expression. The result of this expression is used to compare elements
+ *      (for example `name` to sort by a property called `name` or `name.substr(0, 3)` to sort by
+ *      3 first characters of a property called `name`). The result of a constant expression
+ *      is interpreted as a property name to be used in comparisons (for example `"special name"`
+ *      to sort object by the value of their `special name` property). An expression can be
+ *      optionally prefixed with `+` or `-` to control ascending or descending sort order
+ *      (for example, `+name` or `-name`). If no property is provided, (e.g. `'+'`) then the array
+ *      element itself is used to compare where sorting.
+ *    - `Array`: An array of function or string predicates. The first predicate in the array
+ *      is used for sorting, but when two items are equivalent, the next predicate is used.
  *
- * **Note:** If the predicate is missing or empty then it defaults to `'+'`.
+ *    If the predicate is missing or empty then it defaults to `'+'`.
  *
- * @param {boolean=} reverse - If `true`, reverse the sorting order.
- * @param {(Function)=} comparator - The comparator function used to determine the relative order of
- *    value pairs. If omitted, the built-in comparator will be used.
- *
- * @returns {Array} - The sorted array.
+ * @param {boolean=} reverse Reverse the order of the array.
+ * @returns {Array} Sorted copy of the source array.
  *
  *
  * @example
- * ### Ordering a table with `ngRepeat`
- *
- * The example below demonstrates a simple {@link ngRepeat ngRepeat}, where the data is sorted by
- * age in descending order (expression is set to `'-age'`). The `comparator` is not set, which means
- * it defaults to the built-in comparator.
- *
-   <example name="orderBy-static" module="orderByExample1">
+ * The example below demonstrates a simple ngRepeat, where the data is sorted
+ * by age in descending order (predicate is set to `'-age'`).
+ * `reverse` is not set, which means it defaults to `false`.
+   <example module="orderByExample">
      <file name="index.html">
        <div ng-controller="ExampleController">
-         <table class="friends">
+         <table class="friend">
            <tr>
              <th>Name</th>
              <th>Phone Number</th>
@@ -28971,77 +31173,43 @@ function sliceFn(input, begin, end) {
        </div>
      </file>
      <file name="script.js">
-       angular.module('orderByExample1', [])
+       angular.module('orderByExample', [])
          .controller('ExampleController', ['$scope', function($scope) {
-           $scope.friends = [
-             {name: 'John',   phone: '555-1212',  age: 10},
-             {name: 'Mary',   phone: '555-9876',  age: 19},
-             {name: 'Mike',   phone: '555-4321',  age: 21},
-             {name: 'Adam',   phone: '555-5678',  age: 35},
-             {name: 'Julie',  phone: '555-8765',  age: 29}
-           ];
+           $scope.friends =
+               [{name:'John', phone:'555-1212', age:10},
+                {name:'Mary', phone:'555-9876', age:19},
+                {name:'Mike', phone:'555-4321', age:21},
+                {name:'Adam', phone:'555-5678', age:35},
+                {name:'Julie', phone:'555-8765', age:29}];
          }]);
      </file>
-     <file name="style.css">
-       .friends {
-         border-collapse: collapse;
-       }
-
-       .friends th {
-         border-bottom: 1px solid;
-       }
-       .friends td, .friends th {
-         border-left: 1px solid;
-         padding: 5px 10px;
-       }
-       .friends td:first-child, .friends th:first-child {
-         border-left: none;
-       }
-     </file>
-     <file name="protractor.js" type="protractor">
-       // Element locators
-       var names = element.all(by.repeater('friends').column('friend.name'));
-
-       it('should sort friends by age in reverse order', function() {
-         expect(names.get(0).getText()).toBe('Adam');
-         expect(names.get(1).getText()).toBe('Julie');
-         expect(names.get(2).getText()).toBe('Mike');
-         expect(names.get(3).getText()).toBe('Mary');
-         expect(names.get(4).getText()).toBe('John');
-       });
-     </file>
    </example>
- * <hr />
  *
+ * The predicate and reverse parameters can be controlled dynamically through scope properties,
+ * as shown in the next example.
  * @example
- * ### Changing parameters dynamically
- *
- * All parameters can be changed dynamically. The next example shows how you can make the columns of
- * a table sortable, by binding the `expression` and `reverse` parameters to scope properties.
- *
-   <example name="orderBy-dynamic" module="orderByExample2">
+   <example module="orderByExample">
      <file name="index.html">
        <div ng-controller="ExampleController">
-         <pre>Sort by = {{propertyName}}; reverse = {{reverse}}</pre>
+         <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
          <hr/>
-         <button ng-click="propertyName = null; reverse = false">Set to unsorted</button>
-         <hr/>
-         <table class="friends">
+         <button ng-click="predicate=''">Set to unsorted</button>
+         <table class="friend">
            <tr>
-             <th>
-               <button ng-click="sortBy('name')">Name</button>
-               <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
-             </th>
-             <th>
-               <button ng-click="sortBy('phone')">Phone Number</button>
-               <span class="sortorder" ng-show="propertyName === 'phone'" ng-class="{reverse: reverse}"></span>
-             </th>
-             <th>
-               <button ng-click="sortBy('age')">Age</button>
-               <span class="sortorder" ng-show="propertyName === 'age'" ng-class="{reverse: reverse}"></span>
-             </th>
+            <th>
+                <button ng-click="order('name')">Name</button>
+                <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="order('phone')">Phone Number</button>
+                <span class="sortorder" ng-show="predicate === 'phone'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="order('age')">Age</button>
+                <span class="sortorder" ng-show="predicate === 'age'" ng-class="{reverse:reverse}"></span>
+            </th>
            </tr>
-           <tr ng-repeat="friend in friends | orderBy:propertyName:reverse">
+           <tr ng-repeat="friend in friends | orderBy:predicate:reverse">
              <td>{{friend.name}}</td>
              <td>{{friend.phone}}</td>
              <td>{{friend.age}}</td>
@@ -29050,335 +31218,100 @@ function sliceFn(input, begin, end) {
        </div>
      </file>
      <file name="script.js">
-       angular.module('orderByExample2', [])
+       angular.module('orderByExample', [])
          .controller('ExampleController', ['$scope', function($scope) {
-           var friends = [
-             {name: 'John',   phone: '555-1212',  age: 10},
-             {name: 'Mary',   phone: '555-9876',  age: 19},
-             {name: 'Mike',   phone: '555-4321',  age: 21},
-             {name: 'Adam',   phone: '555-5678',  age: 35},
-             {name: 'Julie',  phone: '555-8765',  age: 29}
-           ];
-
-           $scope.propertyName = 'age';
+           $scope.friends =
+               [{name:'John', phone:'555-1212', age:10},
+                {name:'Mary', phone:'555-9876', age:19},
+                {name:'Mike', phone:'555-4321', age:21},
+                {name:'Adam', phone:'555-5678', age:35},
+                {name:'Julie', phone:'555-8765', age:29}];
+           $scope.predicate = 'age';
            $scope.reverse = true;
-           $scope.friends = friends;
-
-           $scope.sortBy = function(propertyName) {
-             $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
-             $scope.propertyName = propertyName;
+           $scope.order = function(predicate) {
+             $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+             $scope.predicate = predicate;
            };
          }]);
-     </file>
+      </file>
      <file name="style.css">
-       .friends {
-         border-collapse: collapse;
-       }
-
-       .friends th {
-         border-bottom: 1px solid;
-       }
-       .friends td, .friends th {
-         border-left: 1px solid;
-         padding: 5px 10px;
-       }
-       .friends td:first-child, .friends th:first-child {
-         border-left: none;
-       }
-
        .sortorder:after {
-         content: '\25b2';   // BLACK UP-POINTING TRIANGLE
+         content: '\25b2';
        }
        .sortorder.reverse:after {
-         content: '\25bc';   // BLACK DOWN-POINTING TRIANGLE
+         content: '\25bc';
        }
-     </file>
-     <file name="protractor.js" type="protractor">
-       // Element locators
-       var unsortButton = element(by.partialButtonText('unsorted'));
-       var nameHeader = element(by.partialButtonText('Name'));
-       var phoneHeader = element(by.partialButtonText('Phone'));
-       var ageHeader = element(by.partialButtonText('Age'));
-       var firstName = element(by.repeater('friends').column('friend.name').row(0));
-       var lastName = element(by.repeater('friends').column('friend.name').row(4));
-
-       it('should sort friends by some property, when clicking on the column header', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         phoneHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Mary');
-
-         nameHeader.click();
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('Mike');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Adam');
-       });
-
-       it('should sort friends in reverse order, when clicking on the same column', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Adam');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-       });
-
-       it('should restore the original order, when clicking "Set to unsorted"', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         unsortButton.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Julie');
-       });
      </file>
    </example>
- * <hr />
+ *
+ * It's also possible to call the orderBy filter manually, by injecting `$filter`, retrieving the
+ * filter routine with `$filter('orderBy')`, and calling the returned filter routine with the
+ * desired parameters.
+ *
+ * Example:
  *
  * @example
- * ### Using `orderBy` inside a controller
- *
- * It is also possible to call the `orderBy` filter manually, by injecting `orderByFilter`, and
- * calling it with the desired parameters. (Alternatively, you could inject the `$filter` factory
- * and retrieve the `orderBy` filter with `$filter('orderBy')`.)
- *
-   <example name="orderBy-call-manually" module="orderByExample3">
-     <file name="index.html">
-       <div ng-controller="ExampleController">
-         <pre>Sort by = {{propertyName}}; reverse = {{reverse}}</pre>
-         <hr/>
-         <button ng-click="sortBy(null)">Set to unsorted</button>
-         <hr/>
-         <table class="friends">
-           <tr>
-             <th>
-               <button ng-click="sortBy('name')">Name</button>
-               <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
-             </th>
-             <th>
-               <button ng-click="sortBy('phone')">Phone Number</button>
-               <span class="sortorder" ng-show="propertyName === 'phone'" ng-class="{reverse: reverse}"></span>
-             </th>
-             <th>
-               <button ng-click="sortBy('age')">Age</button>
-               <span class="sortorder" ng-show="propertyName === 'age'" ng-class="{reverse: reverse}"></span>
-             </th>
-           </tr>
-           <tr ng-repeat="friend in friends">
-             <td>{{friend.name}}</td>
-             <td>{{friend.phone}}</td>
-             <td>{{friend.age}}</td>
-           </tr>
-         </table>
-       </div>
-     </file>
-     <file name="script.js">
-       angular.module('orderByExample3', [])
-         .controller('ExampleController', ['$scope', 'orderByFilter', function($scope, orderBy) {
-           var friends = [
-             {name: 'John',   phone: '555-1212',  age: 10},
-             {name: 'Mary',   phone: '555-9876',  age: 19},
-             {name: 'Mike',   phone: '555-4321',  age: 21},
-             {name: 'Adam',   phone: '555-5678',  age: 35},
-             {name: 'Julie',  phone: '555-8765',  age: 29}
-           ];
+  <example module="orderByExample">
+    <file name="index.html">
+    <div ng-controller="ExampleController">
+      <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
+      <table class="friend">
+        <tr>
+          <th>
+              <button ng-click="order('name')">Name</button>
+              <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+          </th>
+          <th>
+              <button ng-click="order('phone')">Phone Number</button>
+              <span class="sortorder" ng-show="predicate === 'phone'" ng-class="{reverse:reverse}"></span>
+          </th>
+          <th>
+              <button ng-click="order('age')">Age</button>
+              <span class="sortorder" ng-show="predicate === 'age'" ng-class="{reverse:reverse}"></span>
+          </th>
+        </tr>
+        <tr ng-repeat="friend in friends">
+          <td>{{friend.name}}</td>
+          <td>{{friend.phone}}</td>
+          <td>{{friend.age}}</td>
+        </tr>
+      </table>
+    </div>
+    </file>
 
-           $scope.propertyName = 'age';
-           $scope.reverse = true;
-           $scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
+    <file name="script.js">
+      angular.module('orderByExample', [])
+        .controller('ExampleController', ['$scope', '$filter', function($scope, $filter) {
+          var orderBy = $filter('orderBy');
+          $scope.friends = [
+            { name: 'John',    phone: '555-1212',    age: 10 },
+            { name: 'Mary',    phone: '555-9876',    age: 19 },
+            { name: 'Mike',    phone: '555-4321',    age: 21 },
+            { name: 'Adam',    phone: '555-5678',    age: 35 },
+            { name: 'Julie',   phone: '555-8765',    age: 29 }
+          ];
+          $scope.order = function(predicate) {
+            $scope.predicate = predicate;
+            $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+            $scope.friends = orderBy($scope.friends, predicate, $scope.reverse);
+          };
+          $scope.order('age', true);
+        }]);
+    </file>
 
-           $scope.sortBy = function(propertyName) {
-             $scope.reverse = (propertyName !== null && $scope.propertyName === propertyName)
-                 ? !$scope.reverse : false;
-             $scope.propertyName = propertyName;
-             $scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
-           };
-         }]);
-     </file>
-     <file name="style.css">
-       .friends {
-         border-collapse: collapse;
-       }
-
-       .friends th {
-         border-bottom: 1px solid;
-       }
-       .friends td, .friends th {
-         border-left: 1px solid;
-         padding: 5px 10px;
-       }
-       .friends td:first-child, .friends th:first-child {
-         border-left: none;
-       }
-
+    <file name="style.css">
        .sortorder:after {
-         content: '\25b2';   // BLACK UP-POINTING TRIANGLE
+         content: '\25b2';
        }
        .sortorder.reverse:after {
-         content: '\25bc';   // BLACK DOWN-POINTING TRIANGLE
+         content: '\25bc';
        }
-     </file>
-     <file name="protractor.js" type="protractor">
-       // Element locators
-       var unsortButton = element(by.partialButtonText('unsorted'));
-       var nameHeader = element(by.partialButtonText('Name'));
-       var phoneHeader = element(by.partialButtonText('Phone'));
-       var ageHeader = element(by.partialButtonText('Age'));
-       var firstName = element(by.repeater('friends').column('friend.name').row(0));
-       var lastName = element(by.repeater('friends').column('friend.name').row(4));
-
-       it('should sort friends by some property, when clicking on the column header', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         phoneHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Mary');
-
-         nameHeader.click();
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('Mike');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Adam');
-       });
-
-       it('should sort friends in reverse order, when clicking on the same column', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Adam');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-       });
-
-       it('should restore the original order, when clicking "Set to unsorted"', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         unsortButton.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Julie');
-       });
-     </file>
-   </example>
- * <hr />
- *
- * @example
- * ### Using a custom comparator
- *
- * If you have very specific requirements about the way items are sorted, you can pass your own
- * comparator function. For example, you might need to compare some strings in a locale-sensitive
- * way. (When specifying a custom comparator, you also need to pass a value for the `reverse`
- * argument - passing `false` retains the default sorting order, i.e. ascending.)
- *
-   <example name="orderBy-custom-comparator" module="orderByExample4">
-     <file name="index.html">
-       <div ng-controller="ExampleController">
-         <div class="friends-container custom-comparator">
-           <h3>Locale-sensitive Comparator</h3>
-           <table class="friends">
-             <tr>
-               <th>Name</th>
-               <th>Favorite Letter</th>
-             </tr>
-             <tr ng-repeat="friend in friends | orderBy:'favoriteLetter':false:localeSensitiveComparator">
-               <td>{{friend.name}}</td>
-               <td>{{friend.favoriteLetter}}</td>
-             </tr>
-           </table>
-         </div>
-         <div class="friends-container default-comparator">
-           <h3>Default Comparator</h3>
-           <table class="friends">
-             <tr>
-               <th>Name</th>
-               <th>Favorite Letter</th>
-             </tr>
-             <tr ng-repeat="friend in friends | orderBy:'favoriteLetter'">
-               <td>{{friend.name}}</td>
-               <td>{{friend.favoriteLetter}}</td>
-             </tr>
-           </table>
-         </div>
-       </div>
-     </file>
-     <file name="script.js">
-       angular.module('orderByExample4', [])
-         .controller('ExampleController', ['$scope', function($scope) {
-           $scope.friends = [
-             {name: 'John',   favoriteLetter: 'Ä'},
-             {name: 'Mary',   favoriteLetter: 'Ü'},
-             {name: 'Mike',   favoriteLetter: 'Ö'},
-             {name: 'Adam',   favoriteLetter: 'H'},
-             {name: 'Julie',  favoriteLetter: 'Z'}
-           ];
-
-           $scope.localeSensitiveComparator = function(v1, v2) {
-             // If we don't get strings, just compare by index
-             if (v1.type !== 'string' || v2.type !== 'string') {
-               return (v1.index < v2.index) ? -1 : 1;
-             }
-
-             // Compare strings alphabetically, taking locale into account
-             return v1.value.localeCompare(v2.value);
-           };
-         }]);
-     </file>
-     <file name="style.css">
-       .friends-container {
-         display: inline-block;
-         margin: 0 30px;
-       }
-
-       .friends {
-         border-collapse: collapse;
-       }
-
-       .friends th {
-         border-bottom: 1px solid;
-       }
-       .friends td, .friends th {
-         border-left: 1px solid;
-         padding: 5px 10px;
-       }
-       .friends td:first-child, .friends th:first-child {
-         border-left: none;
-       }
-     </file>
-     <file name="protractor.js" type="protractor">
-       // Element locators
-       var container = element(by.css('.custom-comparator'));
-       var names = container.all(by.repeater('friends').column('friend.name'));
-
-       it('should sort friends by favorite letter (in correct alphabetical order)', function() {
-         expect(names.get(0).getText()).toBe('John');
-         expect(names.get(1).getText()).toBe('Adam');
-         expect(names.get(2).getText()).toBe('Mike');
-         expect(names.get(3).getText()).toBe('Mary');
-         expect(names.get(4).getText()).toBe('Julie');
-       });
-     </file>
-   </example>
- *
+    </file>
+</example>
  */
 orderByFilter.$inject = ['$parse'];
 function orderByFilter($parse) {
-  return function(array, sortPredicate, reverseOrder, compareFn) {
+  return function(array, sortPredicate, reverseOrder) {
 
     if (array == null) return array;
     if (!isArrayLike(array)) {
@@ -29388,12 +31321,11 @@ function orderByFilter($parse) {
     if (!isArray(sortPredicate)) { sortPredicate = [sortPredicate]; }
     if (sortPredicate.length === 0) { sortPredicate = ['+']; }
 
-    var predicates = processPredicates(sortPredicate);
-
-    var descending = reverseOrder ? -1 : 1;
-
-    // Define the `compare()` function. Use a default comparator if none is specified.
-    var compare = isFunction(compareFn) ? compareFn : defaultCompare;
+    var predicates = processPredicates(sortPredicate, reverseOrder);
+    // Add a predicate at the end that evaluates to the element index. This makes the
+    // sort stable as it works as a tie-breaker when all the input predicates cannot
+    // distinguish between two elements.
+    predicates.push({ get: function() { return {}; }, descending: reverseOrder ? -1 : 1});
 
     // The next three lines are a version of a Swartzian Transform idiom from Perl
     // (sometimes called the Decorate-Sort-Undecorate idiom)
@@ -29405,12 +31337,8 @@ function orderByFilter($parse) {
     return array;
 
     function getComparisonObject(value, index) {
-      // NOTE: We are adding an extra `tieBreaker` value based on the element's index.
-      // This will be used to keep the sort stable when none of the input predicates can
-      // distinguish between two elements.
       return {
         value: value,
-        tieBreaker: {value: index, type: 'number', index: index},
         predicateValues: predicates.map(function(predicate) {
           return getPredicateValue(predicate.get(value), index);
         })
@@ -29418,19 +31346,18 @@ function orderByFilter($parse) {
     }
 
     function doComparison(v1, v2) {
-      for (var i = 0, ii = predicates.length; i < ii; i++) {
-        var result = compare(v1.predicateValues[i], v2.predicateValues[i]);
-        if (result) {
-          return result * predicates[i].descending * descending;
-        }
+      var result = 0;
+      for (var index=0, length = predicates.length; index < length; ++index) {
+        result = compare(v1.predicateValues[index], v2.predicateValues[index]) * predicates[index].descending;
+        if (result) break;
       }
-
-      return compare(v1.tieBreaker, v2.tieBreaker) * descending;
+      return result;
     }
   };
 
-  function processPredicates(sortPredicates) {
-    return sortPredicates.map(function(predicate) {
+  function processPredicates(sortPredicate, reverseOrder) {
+    reverseOrder = reverseOrder ? -1 : 1;
+    return sortPredicate.map(function(predicate) {
       var descending = 1, get = identity;
 
       if (isFunction(predicate)) {
@@ -29448,7 +31375,7 @@ function orderByFilter($parse) {
           }
         }
       }
-      return {get: get, descending: descending};
+      return { get: get, descending: descending * reverseOrder };
     });
   }
 
@@ -29463,9 +31390,9 @@ function orderByFilter($parse) {
     }
   }
 
-  function objectValue(value) {
+  function objectValue(value, index) {
     // If `valueOf` is a valid function use that
-    if (isFunction(value.valueOf)) {
+    if (typeof value.valueOf === 'function') {
       value = value.valueOf();
       if (isPrimitive(value)) return value;
     }
@@ -29474,8 +31401,8 @@ function orderByFilter($parse) {
       value = value.toString();
       if (isPrimitive(value)) return value;
     }
-
-    return value;
+    // We have a basic object so we use the position of the object in the collection
+    return index;
   }
 
   function getPredicateValue(value, index) {
@@ -29483,39 +31410,23 @@ function orderByFilter($parse) {
     if (value === null) {
       type = 'string';
       value = 'null';
+    } else if (type === 'string') {
+      value = value.toLowerCase();
     } else if (type === 'object') {
-      value = objectValue(value);
+      value = objectValue(value, index);
     }
-    return {value: value, type: type, index: index};
+    return { value: value, type: type };
   }
 
-  function defaultCompare(v1, v2) {
+  function compare(v1, v2) {
     var result = 0;
-    var type1 = v1.type;
-    var type2 = v2.type;
-
-    if (type1 === type2) {
-      var value1 = v1.value;
-      var value2 = v2.value;
-
-      if (type1 === 'string') {
-        // Compare strings case-insensitively
-        value1 = value1.toLowerCase();
-        value2 = value2.toLowerCase();
-      } else if (type1 === 'object') {
-        // For basic objects, use the position of the object
-        // in the collection instead of the value
-        if (isObject(value1)) value1 = v1.index;
-        if (isObject(value2)) value2 = v2.index;
-      }
-
-      if (value1 !== value2) {
-        result = value1 < value2 ? -1 : 1;
+    if (v1.type === v2.type) {
+      if (v1.value !== v2.value) {
+        result = v1.value < v2.value ? -1 : 1;
       }
     } else {
-      result = type1 < type2 ? -1 : 1;
+      result = v1.type < v2.type ? -1 : 1;
     }
-
     return result;
   }
 }
@@ -29795,11 +31706,9 @@ var htmlAnchorDirective = valueFn({
  *
  * @description
  *
- * Sets the `readonly` attribute on the element, if the expression inside `ngReadonly` is truthy.
- * Note that `readonly` applies only to `input` elements with specific types. [See the input docs on
- * MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly) for more information.
+ * Sets the `readOnly` attribute on the element, if the expression inside `ngReadonly` is truthy.
  *
- * A special directive is necessary because we cannot use interpolation inside the `readonly`
+ * A special directive is necessary because we cannot use interpolation inside the `readOnly`
  * attribute. See the {@link guide/interpolation interpolation guide} for more info.
  *
  * @example
@@ -29836,13 +31745,6 @@ var htmlAnchorDirective = valueFn({
  * A special directive is necessary because we cannot use interpolation inside the `selected`
  * attribute. See the {@link guide/interpolation interpolation guide} for more info.
  *
- * <div class="alert alert-warning">
- *   **Note:** `ngSelected` does not interact with the `select` and `ngModel` directives, it only
- *   sets the `selected` attribute on the element. If you are using `ngModel` on the select, you
- *   should not use `ngSelected` on the options, as `ngModel` will set the select value and
- *   selected options.
- * </div>
- *
  * @example
     <example>
       <file name="index.html">
@@ -29878,11 +31780,6 @@ var htmlAnchorDirective = valueFn({
  *
  * A special directive is necessary because we cannot use interpolation inside the `open`
  * attribute. See the {@link guide/interpolation interpolation guide} for more info.
- *
- * ## A note about browser compatibility
- *
- * Edge, Firefox, and Internet Explorer do not support the `details` element, it is
- * recommended to use {@link ng.ngShow} and {@link ng.ngHide} instead.
  *
  * @example
      <example>
@@ -30574,9 +32471,7 @@ var ISO_DATE_REGEXP = /^\d{4,}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+(?:[+-
 //   9. Fragment
 //                 1111111111111111 222   333333    44444        555555555555555555555555    666     77777777     8888888     999
 var URL_REGEXP = /^[a-z][a-z\d.+-]*:\/*(?:[^:@]+(?::[^@]+)?@)?(?:[^\s:/?#]+|\[[a-f\d:]+\])(?::\d+)?(?:\/[^?#]*)?(?:\?[^#]*)?(?:#.*)?$/i;
-/* jshint maxlen:220 */
-var EMAIL_REGEXP = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+\/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+\/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
-/* jshint maxlen:200 */
+var EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 var NUMBER_REGEXP = /^\s*(\-|\+)?(\d+|(\d*(\.\d*)))([eE][+-]?\d+)?\s*$/;
 var DATE_REGEXP = /^(\d{4,})-(\d{2})-(\d{2})$/;
 var DATETIMELOCAL_REGEXP = /^(\d{4,})-(\d\d)-(\d\d)T(\d\d):(\d\d)(?::(\d\d)(\.\d{1,3})?)?$/;
@@ -31961,7 +33856,7 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
     attr.$observe('min', function(val) {
       if (isDefined(val) && !isNumber(val)) {
-        val = parseFloat(val);
+        val = parseFloat(val, 10);
       }
       minVal = isNumber(val) && !isNaN(val) ? val : undefined;
       // TODO(matsko): implement validateLater to reduce number of validations
@@ -31977,7 +33872,7 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
     attr.$observe('max', function(val) {
       if (isDefined(val) && !isNumber(val)) {
-        val = parseFloat(val);
+        val = parseFloat(val, 10);
       }
       maxVal = isNumber(val) && !isNaN(val) ? val : undefined;
       // TODO(matsko): implement validateLater to reduce number of validations
@@ -32783,11 +34678,6 @@ function classDirective(name, selector) {
  *
  * When the expression changes, the previously added classes are removed and only then are the
  * new classes added.
- *
- * @knownIssue
- * You should not use {@link guide/interpolation interpolation} in the value of the `class`
- * attribute, when using the `ngClass` directive on the same element.
- * See {@link guide/interpolation#known-issues here} for more info.
  *
  * @animations
  * | Animation                        | Occurs                              |
@@ -36734,7 +38624,7 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
 
           for (var i = options.items.length - 1; i >= 0; i--) {
             var option = options.items[i];
-            if (isDefined(option.group)) {
+            if (option.group) {
               jqLiteRemove(option.element.parentNode);
             } else {
               jqLiteRemove(option.element);
@@ -36766,8 +38656,7 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
               listFragment.appendChild(groupElement);
 
               // Update the label on the group element
-              // "null" is special cased because of Safari
-              groupElement.label = option.group === null ? 'null' : option.group;
+              groupElement.label = option.group;
 
               // Store it for use later
               groupElementMap[option.group] = groupElement;
@@ -37103,7 +38992,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  *   it's a prefix used by Angular for public (`$`) and private (`$$`) properties.
  *
  * - The built-in filters {@link ng.orderBy orderBy} and {@link ng.filter filter} do not work with
- *   objects, and will throw an error if used with one.
+ *   objects, and will throw if used with one.
  *
  * If you are hitting any of these limitations, the recommended workaround is to convert your object into an array
  * that is sorted into the order that you prefer before providing it to `ngRepeat`. You could
@@ -37952,11 +39841,6 @@ var ngHideDirective = ['$animate', function($animate) {
  * @description
  * The `ngStyle` directive allows you to set CSS style on an HTML element conditionally.
  *
- * @knownIssue
- * You should not use {@link guide/interpolation interpolation} in the value of the `style`
- * attribute, when using the `ngStyle` directive on the same element.
- * See {@link guide/interpolation#known-issues here} for more info.
- *
  * @element ANY
  * @param {expression} ngStyle
  *
@@ -38368,63 +40252,37 @@ var ngSwitchDefaultDirective = ngDirective({
  * </example>
  */
 var ngTranscludeMinErr = minErr('ngTransclude');
-var ngTranscludeDirective = ['$compile', function($compile) {
-  return {
-    restrict: 'EAC',
-    terminal: true,
-    compile: function ngTranscludeCompile(tElement) {
+var ngTranscludeDirective = ngDirective({
+  restrict: 'EAC',
+  link: function($scope, $element, $attrs, controller, $transclude) {
 
-      // Remove and cache any original content to act as a fallback
-      var fallbackLinkFn = $compile(tElement.contents());
-      tElement.empty();
-
-      return function ngTranscludePostLink($scope, $element, $attrs, controller, $transclude) {
-
-        if (!$transclude) {
-          throw ngTranscludeMinErr('orphan',
-          'Illegal use of ngTransclude directive in the template! ' +
-          'No parent directive that requires a transclusion found. ' +
-          'Element: {0}',
-          startingTag($element));
-        }
-
-
-        // If the attribute is of the form: `ng-transclude="ng-transclude"` then treat it like the default
-        if ($attrs.ngTransclude === $attrs.$attr.ngTransclude) {
-          $attrs.ngTransclude = '';
-        }
-        var slotName = $attrs.ngTransclude || $attrs.ngTranscludeSlot;
-
-        // If the slot is required and no transclusion content is provided then this call will throw an error
-        $transclude(ngTranscludeCloneAttachFn, null, slotName);
-
-        // If the slot is optional and no transclusion content is provided then use the fallback content
-        if (slotName && !$transclude.isSlotFilled(slotName)) {
-          useFallbackContent();
-        }
-
-        function ngTranscludeCloneAttachFn(clone, transcludedScope) {
-          if (clone.length) {
-            $element.append(clone);
-          } else {
-            useFallbackContent();
-            // There is nothing linked against the transcluded scope since no content was available,
-            // so it should be safe to clean up the generated scope.
-            transcludedScope.$destroy();
-          }
-        }
-
-        function useFallbackContent() {
-          // Since this is the fallback content rather than the transcluded content,
-          // we link against the scope of this directive rather than the transcluded scope
-          fallbackLinkFn($scope, function(clone) {
-            $element.append(clone);
-          });
-        }
-      };
+    if ($attrs.ngTransclude === $attrs.$attr.ngTransclude) {
+      // If the attribute is of the form: `ng-transclude="ng-transclude"`
+      // then treat it like the default
+      $attrs.ngTransclude = '';
     }
-  };
-}];
+
+    function ngTranscludeCloneAttachFn(clone) {
+      if (clone.length) {
+        $element.empty();
+        $element.append(clone);
+      }
+    }
+
+    if (!$transclude) {
+      throw ngTranscludeMinErr('orphan',
+       'Illegal use of ngTransclude directive in the template! ' +
+       'No parent directive that requires a transclusion found. ' +
+       'Element: {0}',
+       startingTag($element));
+    }
+
+    // If there is no slot name defined or the slot name is not optional
+    // then transclude the slot
+    var slotName = $attrs.ngTransclude || $attrs.ngTranscludeSlot;
+    $transclude(ngTranscludeCloneAttachFn, null, slotName);
+  }
+});
 
 /**
  * @ngdoc directive
@@ -39479,11 +41337,11 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],40:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":39}],41:[function(require,module,exports){
+},{"./angular":44}],46:[function(require,module,exports){
 var asn1 = exports;
 
 asn1.bignum = require('bn.js');
@@ -39494,7 +41352,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":42,"./asn1/base":44,"./asn1/constants":48,"./asn1/decoders":50,"./asn1/encoders":53,"bn.js":60}],42:[function(require,module,exports){
+},{"./asn1/api":47,"./asn1/base":49,"./asn1/constants":53,"./asn1/decoders":55,"./asn1/encoders":58,"bn.js":65}],47:[function(require,module,exports){
 var asn1 = require('../asn1');
 var inherits = require('inherits');
 
@@ -39557,7 +41415,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":41,"inherits":434,"vm":489}],43:[function(require,module,exports){
+},{"../asn1":46,"inherits":440,"vm":495}],48:[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -39675,7 +41533,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":44,"buffer":90,"inherits":434}],44:[function(require,module,exports){
+},{"../base":49,"buffer":95,"inherits":440}],49:[function(require,module,exports){
 var base = exports;
 
 base.Reporter = require('./reporter').Reporter;
@@ -39683,7 +41541,7 @@ base.DecoderBuffer = require('./buffer').DecoderBuffer;
 base.EncoderBuffer = require('./buffer').EncoderBuffer;
 base.Node = require('./node');
 
-},{"./buffer":43,"./node":45,"./reporter":46}],45:[function(require,module,exports){
+},{"./buffer":48,"./node":50,"./reporter":51}],50:[function(require,module,exports){
 var Reporter = require('../base').Reporter;
 var EncoderBuffer = require('../base').EncoderBuffer;
 var DecoderBuffer = require('../base').DecoderBuffer;
@@ -39749,7 +41607,7 @@ module.exports = Node;
 var stateProps = [
   'enc', 'parent', 'children', 'tag', 'args', 'reverseArgs', 'choice',
   'optional', 'any', 'obj', 'use', 'alteredUse', 'key', 'default', 'explicit',
-  'implicit', 'contains'
+  'implicit'
 ];
 
 Node.prototype.clone = function clone() {
@@ -39954,17 +41812,17 @@ Node.prototype.contains = function contains(item) {
 // Decoding
 //
 
-Node.prototype._decode = function decode(input, options) {
+Node.prototype._decode = function decode(input) {
   var state = this._baseState;
 
   // Decode root node
   if (state.parent === null)
-    return input.wrapResult(state.children[0]._decode(input, options));
+    return input.wrapResult(state.children[0]._decode(input));
 
   var result = state['default'];
   var present = true;
 
-  var prevKey = null;
+  var prevKey;
   if (state.key !== null)
     prevKey = input.enterKey(state.key);
 
@@ -39983,9 +41841,9 @@ Node.prototype._decode = function decode(input, options) {
       var save = input.save();
       try {
         if (state.choice === null)
-          this._decodeGeneric(state.tag, input, options);
+          this._decodeGeneric(state.tag, input);
         else
-          this._decodeChoice(input, options);
+          this._decodeChoice(input);
         present = true;
       } catch (e) {
         present = false;
@@ -40013,8 +41871,6 @@ Node.prototype._decode = function decode(input, options) {
       input = explicit;
     }
 
-    var start = input.offset;
-
     // Unwrap implicit and normal values
     if (state.use === null && state.choice === null) {
       if (state.any)
@@ -40033,19 +41889,13 @@ Node.prototype._decode = function decode(input, options) {
         input = body;
     }
 
-    if (options && options.track && state.tag !== null)
-      options.track(input.path(), start, input.length, 'tagged');
-
-    if (options && options.track && state.tag !== null)
-      options.track(input.path(), input.offset, input.length, 'content');
-
     // Select proper method for tag
     if (state.any)
       result = result;
     else if (state.choice === null)
-      result = this._decodeGeneric(state.tag, input, options);
+      result = this._decodeGeneric(state.tag, input);
     else
-      result = this._decodeChoice(input, options);
+      result = this._decodeChoice(input);
 
     if (input.isError(result))
       return result;
@@ -40055,15 +41905,14 @@ Node.prototype._decode = function decode(input, options) {
       state.children.forEach(function decodeChildren(child) {
         // NOTE: We are ignoring errors here, to let parser continue with other
         // parts of encoded data
-        child._decode(input, options);
+        child._decode(input);
       });
     }
 
     // Decode contained/encoded by schema, only in bit or octet strings
     if (state.contains && (state.tag === 'octstr' || state.tag === 'bitstr')) {
       var data = new DecoderBuffer(result);
-      result = this._getUse(state.contains, input._reporterState.obj)
-          ._decode(data, options);
+      result = this._getUse(state.contains, input._reporterState.obj)._decode(data);
     }
   }
 
@@ -40074,40 +41923,35 @@ Node.prototype._decode = function decode(input, options) {
   // Set key
   if (state.key !== null && (result !== null || present === true))
     input.leaveKey(prevKey, state.key, result);
-  else if (prevKey !== null)
-    input.exitKey(prevKey);
 
   return result;
 };
 
-Node.prototype._decodeGeneric = function decodeGeneric(tag, input, options) {
+Node.prototype._decodeGeneric = function decodeGeneric(tag, input) {
   var state = this._baseState;
 
   if (tag === 'seq' || tag === 'set')
     return null;
   if (tag === 'seqof' || tag === 'setof')
-    return this._decodeList(input, tag, state.args[0], options);
+    return this._decodeList(input, tag, state.args[0]);
   else if (/str$/.test(tag))
-    return this._decodeStr(input, tag, options);
+    return this._decodeStr(input, tag);
   else if (tag === 'objid' && state.args)
-    return this._decodeObjid(input, state.args[0], state.args[1], options);
+    return this._decodeObjid(input, state.args[0], state.args[1]);
   else if (tag === 'objid')
-    return this._decodeObjid(input, null, null, options);
+    return this._decodeObjid(input, null, null);
   else if (tag === 'gentime' || tag === 'utctime')
-    return this._decodeTime(input, tag, options);
+    return this._decodeTime(input, tag);
   else if (tag === 'null_')
-    return this._decodeNull(input, options);
+    return this._decodeNull(input);
   else if (tag === 'bool')
-    return this._decodeBool(input, options);
+    return this._decodeBool(input);
   else if (tag === 'int' || tag === 'enum')
-    return this._decodeInt(input, state.args && state.args[0], options);
-
-  if (state.use !== null) {
-    return this._getUse(state.use, input._reporterState.obj)
-        ._decode(input, options);
-  } else {
+    return this._decodeInt(input, state.args && state.args[0]);
+  else if (state.use !== null)
+    return this._getUse(state.use, input._reporterState.obj)._decode(input);
+  else
     return input.error('unknown tag: ' + tag);
-  }
 };
 
 Node.prototype._getUse = function _getUse(entity, obj) {
@@ -40124,7 +41968,7 @@ Node.prototype._getUse = function _getUse(entity, obj) {
   return state.useDecoder;
 };
 
-Node.prototype._decodeChoice = function decodeChoice(input, options) {
+Node.prototype._decodeChoice = function decodeChoice(input) {
   var state = this._baseState;
   var result = null;
   var match = false;
@@ -40133,7 +41977,7 @@ Node.prototype._decodeChoice = function decodeChoice(input, options) {
     var save = input.save();
     var node = state.choice[key];
     try {
-      var value = node._decode(input, options);
+      var value = node._decode(input);
       if (input.isError(value))
         return false;
 
@@ -40314,7 +42158,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
   return /^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str);
 };
 
-},{"../base":44,"minimalistic-assert":440}],46:[function(require,module,exports){
+},{"../base":49,"minimalistic-assert":446}],51:[function(require,module,exports){
 var inherits = require('inherits');
 
 function Reporter(options) {
@@ -40348,22 +42192,12 @@ Reporter.prototype.enterKey = function enterKey(key) {
   return this._reporterState.path.push(key);
 };
 
-Reporter.prototype.exitKey = function exitKey(index) {
-  var state = this._reporterState;
-
-  state.path = state.path.slice(0, index - 1);
-};
-
 Reporter.prototype.leaveKey = function leaveKey(index, key, value) {
   var state = this._reporterState;
 
-  this.exitKey(index);
+  state.path = state.path.slice(0, index - 1);
   if (state.obj !== null)
     state.obj[key] = value;
-};
-
-Reporter.prototype.path = function path() {
-  return this._reporterState.path.join('/');
 };
 
 Reporter.prototype.enterObject = function enterObject() {
@@ -40437,7 +42271,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":434}],47:[function(require,module,exports){
+},{"inherits":440}],52:[function(require,module,exports){
 var constants = require('../constants');
 
 exports.tagClass = {
@@ -40481,7 +42315,7 @@ exports.tag = {
 };
 exports.tagByName = constants._reverse(exports.tag);
 
-},{"../constants":48}],48:[function(require,module,exports){
+},{"../constants":53}],53:[function(require,module,exports){
 var constants = exports;
 
 // Helper
@@ -40502,7 +42336,7 @@ constants._reverse = function reverse(map) {
 
 constants.der = require('./der');
 
-},{"./der":47}],49:[function(require,module,exports){
+},{"./der":52}],54:[function(require,module,exports){
 var inherits = require('inherits');
 
 var asn1 = require('../../asn1');
@@ -40613,15 +42447,14 @@ DERNode.prototype._skipUntilEnd = function skipUntilEnd(buffer, fail) {
   }
 };
 
-DERNode.prototype._decodeList = function decodeList(buffer, tag, decoder,
-                                                    options) {
+DERNode.prototype._decodeList = function decodeList(buffer, tag, decoder) {
   var result = [];
   while (!buffer.isEmpty()) {
     var possibleEnd = this._peekTag(buffer, 'end');
     if (buffer.isError(possibleEnd))
       return possibleEnd;
 
-    var res = decoder.decode(buffer, 'der', options);
+    var res = decoder.decode(buffer, 'der');
     if (buffer.isError(res) && possibleEnd)
       break;
     result.push(res);
@@ -40826,13 +42659,13 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":41,"inherits":434}],50:[function(require,module,exports){
+},{"../../asn1":46,"inherits":440}],55:[function(require,module,exports){
 var decoders = exports;
 
 decoders.der = require('./der');
 decoders.pem = require('./pem');
 
-},{"./der":49,"./pem":51}],51:[function(require,module,exports){
+},{"./der":54,"./pem":56}],56:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -40883,7 +42716,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"./der":49,"buffer":90,"inherits":434}],52:[function(require,module,exports){
+},{"./der":54,"buffer":95,"inherits":440}],57:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -41178,13 +43011,13 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":41,"buffer":90,"inherits":434}],53:[function(require,module,exports){
+},{"../../asn1":46,"buffer":95,"inherits":440}],58:[function(require,module,exports){
 var encoders = exports;
 
 encoders.der = require('./der');
 encoders.pem = require('./pem');
 
-},{"./der":52,"./pem":54}],54:[function(require,module,exports){
+},{"./der":57,"./pem":59}],59:[function(require,module,exports){
 var inherits = require('inherits');
 
 var DEREncoder = require('./der');
@@ -41207,7 +43040,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"./der":52,"inherits":434}],55:[function(require,module,exports){
+},{"./der":57,"inherits":440}],60:[function(require,module,exports){
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
 //
 // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -41568,7 +43401,7 @@ var objectKeys = Object.keys || function (obj) {
   return keys;
 };
 
-},{"util/":486}],56:[function(require,module,exports){
+},{"util/":492}],61:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -41603,7 +43436,7 @@ define(String.prototype, "padRight", "".padEnd);
   [][key] && define(Array, key, Function.call.bind([][key]));
 });
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"core-js/fn/regexp/escape":92,"core-js/shim":385,"regenerator-runtime/runtime":465}],57:[function(require,module,exports){
+},{"core-js/fn/regexp/escape":97,"core-js/shim":391,"regenerator-runtime/runtime":471}],62:[function(require,module,exports){
 'use strict'
 
 exports.toByteArray = toByteArray
@@ -41714,14 +43547,14 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],58:[function(require,module,exports){
-/*! bignumber.js v2.4.0 https://github.com/MikeMcl/bignumber.js/LICENCE */
+},{}],63:[function(require,module,exports){
+/*! bignumber.js v2.3.0 https://github.com/MikeMcl/bignumber.js/LICENCE */
 
 ;(function (globalObj) {
     'use strict';
 
     /*
-      bignumber.js v2.4.0
+      bignumber.js v2.3.0
       A JavaScript library for arbitrary-precision arithmetic.
       https://github.com/MikeMcl/bignumber.js
       Copyright (c) 2016 Michael Mclaughlin <M8ch88l@gmail.com>
@@ -41729,7 +43562,7 @@ function fromByteArray (uint8) {
     */
 
 
-    var BigNumber, cryptoObj, parseNumeric,
+    var cryptoObj, parseNumeric,
         isNumeric = /^-?(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?$/i,
         mathceil = Math.ceil,
         mathfloor = Math.floor,
@@ -44431,17 +46264,13 @@ function fromByteArray (uint8) {
     // EXPORT
 
 
-    BigNumber = constructorFactory();
-    BigNumber.default = BigNumber.BigNumber = BigNumber;
-
-
-    // AMD.
+   // AMD.
     if ( typeof define == 'function' && define.amd ) {
-        define( function () { return BigNumber; } );
+        define( function () { return constructorFactory(); } );
 
     // Node.js and other environments that support module.exports.
     } else if ( typeof module != 'undefined' && module.exports ) {
-        module.exports = BigNumber;
+        module.exports = constructorFactory();
 
         // Split string stops browserify adding crypto shim.
         if ( !cryptoObj ) try { cryptoObj = require('cry' + 'pto'); } catch (e) {}
@@ -44449,11 +46278,11 @@ function fromByteArray (uint8) {
     // Browser.
     } else {
         if ( !globalObj ) globalObj = typeof self != 'undefined' ? self : Function('return this')();
-        globalObj.BigNumber = BigNumber;
+        globalObj.BigNumber = constructorFactory();
     }
 })(this);
 
-},{}],59:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 (function (Buffer){
 // Reference https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 // Format: 0x30 [total-length] 0x02 [R-length] [R] 0x02 [S-length] [S]
@@ -44568,7 +46397,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],60:[function(require,module,exports){
+},{"buffer":95}],65:[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -44626,12 +46455,8 @@ module.exports = {
   }
 
   BN.isBN = function isBN (num) {
-    if (num instanceof BN) {
-      return true;
-    }
-
     return num !== null && typeof num === 'object' &&
-      num.constructor.wordSize === BN.wordSize && Array.isArray(num.words);
+      num.constructor.name === 'BN' && Array.isArray(num.words);
   };
 
   BN.max = function max (left, right) {
@@ -46672,10 +48497,6 @@ module.exports = {
 
     assert(this.negative === 0, 'imaskn works only with positive numbers');
 
-    if (this.length <= s) {
-      return this;
-    }
-
     if (r !== 0) {
       s++;
     }
@@ -47997,7 +49818,7 @@ module.exports = {
   };
 })(typeof module === 'undefined' || module, this);
 
-},{}],61:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -48056,9 +49877,9 @@ if (typeof window === 'object') {
   }
 }
 
-},{}],62:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 
-},{}],63:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 (function (Buffer){
 // based on the aes implimentation in triple sec
 // https://github.com/keybase/triplesec
@@ -48239,7 +50060,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],64:[function(require,module,exports){
+},{"buffer":95}],69:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -48340,7 +50161,7 @@ function xorTest (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":63,"./ghash":68,"buffer":90,"buffer-xor":89,"cipher-base":91,"inherits":434}],65:[function(require,module,exports){
+},{"./aes":68,"./ghash":73,"buffer":95,"buffer-xor":94,"cipher-base":96,"inherits":440}],70:[function(require,module,exports){
 var ciphers = require('./encrypter')
 exports.createCipher = exports.Cipher = ciphers.createCipher
 exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv
@@ -48353,7 +50174,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"./decrypter":66,"./encrypter":67,"./modes":69}],66:[function(require,module,exports){
+},{"./decrypter":71,"./encrypter":72,"./modes":74}],71:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -48494,7 +50315,7 @@ exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":63,"./authCipher":64,"./modes":69,"./modes/cbc":70,"./modes/cfb":71,"./modes/cfb1":72,"./modes/cfb8":73,"./modes/ctr":74,"./modes/ecb":75,"./modes/ofb":76,"./streamCipher":77,"buffer":90,"cipher-base":91,"evp_bytestokey":425,"inherits":434}],67:[function(require,module,exports){
+},{"./aes":68,"./authCipher":69,"./modes":74,"./modes/cbc":75,"./modes/cfb":76,"./modes/cfb1":77,"./modes/cfb8":78,"./modes/ctr":79,"./modes/ecb":80,"./modes/ofb":81,"./streamCipher":82,"buffer":95,"cipher-base":96,"evp_bytestokey":431,"inherits":440}],72:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -48620,7 +50441,7 @@ exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":63,"./authCipher":64,"./modes":69,"./modes/cbc":70,"./modes/cfb":71,"./modes/cfb1":72,"./modes/cfb8":73,"./modes/ctr":74,"./modes/ecb":75,"./modes/ofb":76,"./streamCipher":77,"buffer":90,"cipher-base":91,"evp_bytestokey":425,"inherits":434}],68:[function(require,module,exports){
+},{"./aes":68,"./authCipher":69,"./modes":74,"./modes/cbc":75,"./modes/cfb":76,"./modes/cfb1":77,"./modes/cfb8":78,"./modes/ctr":79,"./modes/ecb":80,"./modes/ofb":81,"./streamCipher":82,"buffer":95,"cipher-base":96,"evp_bytestokey":431,"inherits":440}],73:[function(require,module,exports){
 (function (Buffer){
 var zeros = new Buffer(16)
 zeros.fill(0)
@@ -48722,7 +50543,7 @@ function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],69:[function(require,module,exports){
+},{"buffer":95}],74:[function(require,module,exports){
 exports['aes-128-ecb'] = {
   cipher: 'AES',
   key: 128,
@@ -48895,7 +50716,7 @@ exports['aes-256-gcm'] = {
   type: 'auth'
 }
 
-},{}],70:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 var xor = require('buffer-xor')
 
 exports.encrypt = function (self, block) {
@@ -48914,7 +50735,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":89}],71:[function(require,module,exports){
+},{"buffer-xor":94}],76:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -48949,7 +50770,7 @@ function encryptStart (self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90,"buffer-xor":89}],72:[function(require,module,exports){
+},{"buffer":95,"buffer-xor":94}],77:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -48987,7 +50808,7 @@ function shiftIn (buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],73:[function(require,module,exports){
+},{"buffer":95}],78:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)
@@ -49006,7 +50827,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],74:[function(require,module,exports){
+},{"buffer":95}],79:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -49041,7 +50862,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90,"buffer-xor":89}],75:[function(require,module,exports){
+},{"buffer":95,"buffer-xor":94}],80:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -49049,7 +50870,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block)
 }
 
-},{}],76:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -49069,7 +50890,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90,"buffer-xor":89}],77:[function(require,module,exports){
+},{"buffer":95,"buffer-xor":94}],82:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -49098,7 +50919,7 @@ StreamCipher.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":63,"buffer":90,"cipher-base":91,"inherits":434}],78:[function(require,module,exports){
+},{"./aes":68,"buffer":95,"cipher-base":96,"inherits":440}],83:[function(require,module,exports){
 var ebtk = require('evp_bytestokey')
 var aes = require('browserify-aes/browser')
 var DES = require('browserify-des')
@@ -49173,7 +50994,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"browserify-aes/browser":65,"browserify-aes/modes":69,"browserify-des":79,"browserify-des/modes":80,"evp_bytestokey":425}],79:[function(require,module,exports){
+},{"browserify-aes/browser":70,"browserify-aes/modes":74,"browserify-des":84,"browserify-des/modes":85,"evp_bytestokey":431}],84:[function(require,module,exports){
 (function (Buffer){
 var CipherBase = require('cipher-base')
 var des = require('des.js')
@@ -49220,7 +51041,7 @@ DES.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90,"cipher-base":91,"des.js":393,"inherits":434}],80:[function(require,module,exports){
+},{"buffer":95,"cipher-base":96,"des.js":399,"inherits":440}],85:[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -49246,7 +51067,7 @@ exports['des-ede'] = {
   iv: 0
 }
 
-},{}],81:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 var randomBytes = require('randombytes');
@@ -49290,7 +51111,7 @@ function getr(priv) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":60,"buffer":90,"randombytes":454}],82:[function(require,module,exports){
+},{"bn.js":65,"buffer":95,"randombytes":460}],87:[function(require,module,exports){
 (function (Buffer){
 const Sha3 = require('js-sha3')
 
@@ -49328,7 +51149,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90,"js-sha3":437}],83:[function(require,module,exports){
+},{"buffer":95,"js-sha3":443}],88:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 exports['RSA-SHA224'] = exports.sha224WithRSAEncryption = {
@@ -49404,7 +51225,7 @@ exports['RSA-MD5'] = exports.md5WithRSAEncryption = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],84:[function(require,module,exports){
+},{"buffer":95}],89:[function(require,module,exports){
 (function (Buffer){
 var _algos = require('./algos')
 var createHash = require('create-hash')
@@ -49511,7 +51332,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algos":83,"./sign":86,"./verify":87,"buffer":90,"create-hash":388,"inherits":434,"stream":482}],85:[function(require,module,exports){
+},{"./algos":88,"./sign":91,"./verify":92,"buffer":95,"create-hash":394,"inherits":440,"stream":488}],90:[function(require,module,exports){
 'use strict'
 exports['1.3.132.0.10'] = 'secp256k1'
 
@@ -49525,7 +51346,7 @@ exports['1.3.132.0.34'] = 'p384'
 
 exports['1.3.132.0.35'] = 'p521'
 
-},{}],86:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var createHmac = require('create-hmac')
@@ -49714,7 +51535,7 @@ module.exports.getKey = getKey
 module.exports.makeKey = makeKey
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":85,"bn.js":60,"browserify-rsa":81,"buffer":90,"create-hmac":391,"elliptic":403,"parse-asn1":444}],87:[function(require,module,exports){
+},{"./curves":90,"bn.js":65,"browserify-rsa":86,"buffer":95,"create-hmac":397,"elliptic":409,"parse-asn1":450}],92:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var curves = require('./curves')
@@ -49821,7 +51642,7 @@ function checkValue (b, q) {
 module.exports = verify
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":85,"bn.js":60,"buffer":90,"elliptic":403,"parse-asn1":444}],88:[function(require,module,exports){
+},{"./curves":90,"bn.js":65,"buffer":95,"elliptic":409,"parse-asn1":450}],93:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -49933,7 +51754,7 @@ exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"buffer":90}],89:[function(require,module,exports){
+},{"buffer":95}],94:[function(require,module,exports){
 (function (Buffer){
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)
@@ -49947,7 +51768,7 @@ module.exports = function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],90:[function(require,module,exports){
+},{"buffer":95}],95:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -50003,7 +51824,7 @@ exports.kMaxLength = kMaxLength()
 function typedArraySupport () {
   try {
     var arr = new Uint8Array(1)
-    arr.__proto__ = {__proto__: Uint8Array.prototype, foo: function () { return 42 }}
+    arr.foo = function () { return 42 }
     return arr.foo() === 42 && // typed array instances can be augmented
         typeof arr.subarray === 'function' && // chrome 9-10 lack `subarray`
         arr.subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
@@ -50147,7 +51968,7 @@ function allocUnsafe (that, size) {
   assertSize(size)
   that = createBuffer(that, size < 0 ? 0 : checked(size) | 0)
   if (!Buffer.TYPED_ARRAY_SUPPORT) {
-    for (var i = 0; i < size; ++i) {
+    for (var i = 0; i < size; i++) {
       that[i] = 0
     }
   }
@@ -50203,9 +52024,7 @@ function fromArrayBuffer (that, array, byteOffset, length) {
     throw new RangeError('\'length\' is out of bounds')
   }
 
-  if (byteOffset === undefined && length === undefined) {
-    array = new Uint8Array(array)
-  } else if (length === undefined) {
+  if (length === undefined) {
     array = new Uint8Array(array, byteOffset)
   } else {
     array = new Uint8Array(array, byteOffset, length)
@@ -50327,14 +52146,14 @@ Buffer.concat = function concat (list, length) {
   var i
   if (length === undefined) {
     length = 0
-    for (i = 0; i < list.length; ++i) {
+    for (i = 0; i < list.length; i++) {
       length += list[i].length
     }
   }
 
   var buffer = Buffer.allocUnsafe(length)
   var pos = 0
-  for (i = 0; i < list.length; ++i) {
+  for (i = 0; i < list.length; i++) {
     var buf = list[i]
     if (!Buffer.isBuffer(buf)) {
       throw new TypeError('"list" argument must be an Array of Buffers')
@@ -50366,6 +52185,7 @@ function byteLength (string, encoding) {
     switch (encoding) {
       case 'ascii':
       case 'binary':
+      // Deprecated
       case 'raw':
       case 'raws':
         return len
@@ -50603,16 +52423,15 @@ function arrayIndexOf (arr, val, byteOffset, encoding) {
   }
 
   var foundIndex = -1
-  for (var i = byteOffset; i < arrLength; ++i) {
-    if (read(arr, i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
+  for (var i = 0; byteOffset + i < arrLength; i++) {
+    if (read(arr, byteOffset + i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
       if (foundIndex === -1) foundIndex = i
-      if (i - foundIndex + 1 === valLength) return foundIndex * indexSize
+      if (i - foundIndex + 1 === valLength) return (byteOffset + foundIndex) * indexSize
     } else {
       if (foundIndex !== -1) i -= i - foundIndex
       foundIndex = -1
     }
   }
-
   return -1
 }
 
@@ -50677,7 +52496,7 @@ function hexWrite (buf, string, offset, length) {
   if (length > strLen / 2) {
     length = strLen / 2
   }
-  for (var i = 0; i < length; ++i) {
+  for (var i = 0; i < length; i++) {
     var parsed = parseInt(string.substr(i * 2, 2), 16)
     if (isNaN(parsed)) return i
     buf[offset + i] = parsed
@@ -50891,7 +52710,7 @@ function asciiSlice (buf, start, end) {
   var ret = ''
   end = Math.min(buf.length, end)
 
-  for (var i = start; i < end; ++i) {
+  for (var i = start; i < end; i++) {
     ret += String.fromCharCode(buf[i] & 0x7F)
   }
   return ret
@@ -50901,7 +52720,7 @@ function binarySlice (buf, start, end) {
   var ret = ''
   end = Math.min(buf.length, end)
 
-  for (var i = start; i < end; ++i) {
+  for (var i = start; i < end; i++) {
     ret += String.fromCharCode(buf[i])
   }
   return ret
@@ -50914,7 +52733,7 @@ function hexSlice (buf, start, end) {
   if (!end || end < 0 || end > len) end = len
 
   var out = ''
-  for (var i = start; i < end; ++i) {
+  for (var i = start; i < end; i++) {
     out += toHex(buf[i])
   }
   return out
@@ -50957,7 +52776,7 @@ Buffer.prototype.slice = function slice (start, end) {
   } else {
     var sliceLen = end - start
     newBuf = new Buffer(sliceLen, undefined)
-    for (var i = 0; i < sliceLen; ++i) {
+    for (var i = 0; i < sliceLen; i++) {
       newBuf[i] = this[i + start]
     }
   }
@@ -51184,7 +53003,7 @@ Buffer.prototype.writeUInt8 = function writeUInt8 (value, offset, noAssert) {
 
 function objectWriteUInt16 (buf, value, offset, littleEndian) {
   if (value < 0) value = 0xffff + value + 1
-  for (var i = 0, j = Math.min(buf.length - offset, 2); i < j; ++i) {
+  for (var i = 0, j = Math.min(buf.length - offset, 2); i < j; i++) {
     buf[offset + i] = (value & (0xff << (8 * (littleEndian ? i : 1 - i)))) >>>
       (littleEndian ? i : 1 - i) * 8
   }
@@ -51218,7 +53037,7 @@ Buffer.prototype.writeUInt16BE = function writeUInt16BE (value, offset, noAssert
 
 function objectWriteUInt32 (buf, value, offset, littleEndian) {
   if (value < 0) value = 0xffffffff + value + 1
-  for (var i = 0, j = Math.min(buf.length - offset, 4); i < j; ++i) {
+  for (var i = 0, j = Math.min(buf.length - offset, 4); i < j; i++) {
     buf[offset + i] = (value >>> (littleEndian ? i : 3 - i) * 8) & 0xff
   }
 }
@@ -51433,12 +53252,12 @@ Buffer.prototype.copy = function copy (target, targetStart, start, end) {
 
   if (this === target && start < targetStart && targetStart < end) {
     // descending copy from end
-    for (i = len - 1; i >= 0; --i) {
+    for (i = len - 1; i >= 0; i--) {
       target[i + targetStart] = this[i + start]
     }
   } else if (len < 1000 || !Buffer.TYPED_ARRAY_SUPPORT) {
     // ascending copy from start
-    for (i = 0; i < len; ++i) {
+    for (i = 0; i < len; i++) {
       target[i + targetStart] = this[i + start]
     }
   } else {
@@ -51499,7 +53318,7 @@ Buffer.prototype.fill = function fill (val, start, end, encoding) {
 
   var i
   if (typeof val === 'number') {
-    for (i = start; i < end; ++i) {
+    for (i = start; i < end; i++) {
       this[i] = val
     }
   } else {
@@ -51507,7 +53326,7 @@ Buffer.prototype.fill = function fill (val, start, end, encoding) {
       ? val
       : utf8ToBytes(new Buffer(val, encoding).toString())
     var len = bytes.length
-    for (i = 0; i < end - start; ++i) {
+    for (i = 0; i < end - start; i++) {
       this[i + start] = bytes[i % len]
     }
   }
@@ -51549,7 +53368,7 @@ function utf8ToBytes (string, units) {
   var leadSurrogate = null
   var bytes = []
 
-  for (var i = 0; i < length; ++i) {
+  for (var i = 0; i < length; i++) {
     codePoint = string.charCodeAt(i)
 
     // is surrogate component
@@ -51624,7 +53443,7 @@ function utf8ToBytes (string, units) {
 
 function asciiToBytes (str) {
   var byteArray = []
-  for (var i = 0; i < str.length; ++i) {
+  for (var i = 0; i < str.length; i++) {
     // Node's code seems to be doing this and not & 0x7F..
     byteArray.push(str.charCodeAt(i) & 0xFF)
   }
@@ -51634,7 +53453,7 @@ function asciiToBytes (str) {
 function utf16leToBytes (str, units) {
   var c, hi, lo
   var byteArray = []
-  for (var i = 0; i < str.length; ++i) {
+  for (var i = 0; i < str.length; i++) {
     if ((units -= 2) < 0) break
 
     c = str.charCodeAt(i)
@@ -51652,7 +53471,7 @@ function base64ToBytes (str) {
 }
 
 function blitBuffer (src, dst, offset, length) {
-  for (var i = 0; i < length; ++i) {
+  for (var i = 0; i < length; i++) {
     if ((i + offset >= dst.length) || (i >= src.length)) break
     dst[i + offset] = src[i]
   }
@@ -51664,7 +53483,7 @@ function isnan (val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":57,"ieee754":432,"isarray":436}],91:[function(require,module,exports){
+},{"base64-js":62,"ieee754":438,"isarray":442}],96:[function(require,module,exports){
 (function (Buffer){
 var Transform = require('stream').Transform
 var inherits = require('inherits')
@@ -51758,21 +53577,21 @@ CipherBase.prototype._toString = function (value, enc, final) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90,"inherits":434,"stream":482,"string_decoder":483}],92:[function(require,module,exports){
+},{"buffer":95,"inherits":440,"stream":488,"string_decoder":489}],97:[function(require,module,exports){
 require('../../modules/core.regexp.escape');
 module.exports = require('../../modules/_core').RegExp.escape;
-},{"../../modules/_core":113,"../../modules/core.regexp.escape":209}],93:[function(require,module,exports){
+},{"../../modules/_core":118,"../../modules/core.regexp.escape":215}],98:[function(require,module,exports){
 module.exports = function(it){
   if(typeof it != 'function')throw TypeError(it + ' is not a function!');
   return it;
 };
-},{}],94:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 var cof = require('./_cof');
 module.exports = function(it, msg){
   if(typeof it != 'number' && cof(it) != 'Number')throw TypeError(msg);
   return +it;
 };
-},{"./_cof":108}],95:[function(require,module,exports){
+},{"./_cof":113}],100:[function(require,module,exports){
 // 22.1.3.31 Array.prototype[@@unscopables]
 var UNSCOPABLES = require('./_wks')('unscopables')
   , ArrayProto  = Array.prototype;
@@ -51780,19 +53599,19 @@ if(ArrayProto[UNSCOPABLES] == undefined)require('./_hide')(ArrayProto, UNSCOPABL
 module.exports = function(key){
   ArrayProto[UNSCOPABLES][key] = true;
 };
-},{"./_hide":130,"./_wks":207}],96:[function(require,module,exports){
+},{"./_hide":135,"./_wks":212}],101:[function(require,module,exports){
 module.exports = function(it, Constructor, name, forbiddenField){
   if(!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)){
     throw TypeError(name + ': incorrect invocation!');
   } return it;
 };
-},{}],97:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 var isObject = require('./_is-object');
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
 };
-},{"./_is-object":139}],98:[function(require,module,exports){
+},{"./_is-object":144}],103:[function(require,module,exports){
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 'use strict';
 var toObject = require('./_to-object')
@@ -51819,7 +53638,7 @@ module.exports = [].copyWithin || function copyWithin(target/*= 0*/, start/*= 0,
     from += inc;
   } return O;
 };
-},{"./_to-index":195,"./_to-length":198,"./_to-object":199}],99:[function(require,module,exports){
+},{"./_to-index":200,"./_to-length":203,"./_to-object":204}],104:[function(require,module,exports){
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 'use strict';
 var toObject = require('./_to-object')
@@ -51835,7 +53654,7 @@ module.exports = function fill(value /*, start = 0, end = @length */){
   while(endPos > index)O[index++] = value;
   return O;
 };
-},{"./_to-index":195,"./_to-length":198,"./_to-object":199}],100:[function(require,module,exports){
+},{"./_to-index":200,"./_to-length":203,"./_to-object":204}],105:[function(require,module,exports){
 var forOf = require('./_for-of');
 
 module.exports = function(iter, ITERATOR){
@@ -51844,7 +53663,7 @@ module.exports = function(iter, ITERATOR){
   return result;
 };
 
-},{"./_for-of":127}],101:[function(require,module,exports){
+},{"./_for-of":132}],106:[function(require,module,exports){
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = require('./_to-iobject')
@@ -51866,7 +53685,7 @@ module.exports = function(IS_INCLUDES){
     } return !IS_INCLUDES && -1;
   };
 };
-},{"./_to-index":195,"./_to-iobject":197,"./_to-length":198}],102:[function(require,module,exports){
+},{"./_to-index":200,"./_to-iobject":202,"./_to-length":203}],107:[function(require,module,exports){
 // 0 -> Array#forEach
 // 1 -> Array#map
 // 2 -> Array#filter
@@ -51911,7 +53730,7 @@ module.exports = function(TYPE, $create){
     return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : result;
   };
 };
-},{"./_array-species-create":105,"./_ctx":115,"./_iobject":135,"./_to-length":198,"./_to-object":199}],103:[function(require,module,exports){
+},{"./_array-species-create":110,"./_ctx":120,"./_iobject":140,"./_to-length":203,"./_to-object":204}],108:[function(require,module,exports){
 var aFunction = require('./_a-function')
   , toObject  = require('./_to-object')
   , IObject   = require('./_iobject')
@@ -51940,7 +53759,7 @@ module.exports = function(that, callbackfn, aLen, memo, isRight){
   }
   return memo;
 };
-},{"./_a-function":93,"./_iobject":135,"./_to-length":198,"./_to-object":199}],104:[function(require,module,exports){
+},{"./_a-function":98,"./_iobject":140,"./_to-length":203,"./_to-object":204}],109:[function(require,module,exports){
 var isObject = require('./_is-object')
   , isArray  = require('./_is-array')
   , SPECIES  = require('./_wks')('species');
@@ -51957,14 +53776,14 @@ module.exports = function(original){
     }
   } return C === undefined ? Array : C;
 };
-},{"./_is-array":137,"./_is-object":139,"./_wks":207}],105:[function(require,module,exports){
+},{"./_is-array":142,"./_is-object":144,"./_wks":212}],110:[function(require,module,exports){
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
 var speciesConstructor = require('./_array-species-constructor');
 
 module.exports = function(original, length){
   return new (speciesConstructor(original))(length);
 };
-},{"./_array-species-constructor":104}],106:[function(require,module,exports){
+},{"./_array-species-constructor":109}],111:[function(require,module,exports){
 'use strict';
 var aFunction  = require('./_a-function')
   , isObject   = require('./_is-object')
@@ -51989,7 +53808,7 @@ module.exports = Function.bind || function bind(that /*, args... */){
   if(isObject(fn.prototype))bound.prototype = fn.prototype;
   return bound;
 };
-},{"./_a-function":93,"./_invoke":134,"./_is-object":139}],107:[function(require,module,exports){
+},{"./_a-function":98,"./_invoke":139,"./_is-object":144}],112:[function(require,module,exports){
 // getting tag from 19.1.3.6 Object.prototype.toString()
 var cof = require('./_cof')
   , TAG = require('./_wks')('toStringTag')
@@ -52013,16 +53832,17 @@ module.exports = function(it){
     // ES3 arguments fallback
     : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
 };
-},{"./_cof":108,"./_wks":207}],108:[function(require,module,exports){
+},{"./_cof":113,"./_wks":212}],113:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = function(it){
   return toString.call(it).slice(8, -1);
 };
-},{}],109:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 'use strict';
 var dP          = require('./_object-dp').f
   , create      = require('./_object-create')
+  , hide        = require('./_hide')
   , redefineAll = require('./_redefine-all')
   , ctx         = require('./_ctx')
   , anInstance  = require('./_an-instance')
@@ -52162,7 +53982,7 @@ module.exports = {
     setSpecies(NAME);
   }
 };
-},{"./_an-instance":96,"./_ctx":115,"./_defined":117,"./_descriptors":118,"./_for-of":127,"./_iter-define":143,"./_iter-step":145,"./_meta":152,"./_object-create":156,"./_object-dp":157,"./_redefine-all":176,"./_set-species":181}],110:[function(require,module,exports){
+},{"./_an-instance":101,"./_ctx":120,"./_defined":122,"./_descriptors":123,"./_for-of":132,"./_hide":135,"./_iter-define":148,"./_iter-step":150,"./_meta":157,"./_object-create":161,"./_object-dp":162,"./_redefine-all":181,"./_set-species":186}],115:[function(require,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var classof = require('./_classof')
   , from    = require('./_array-from-iterable');
@@ -52172,7 +53992,7 @@ module.exports = function(NAME){
     return from(this);
   };
 };
-},{"./_array-from-iterable":100,"./_classof":107}],111:[function(require,module,exports){
+},{"./_array-from-iterable":105,"./_classof":112}],116:[function(require,module,exports){
 'use strict';
 var redefineAll       = require('./_redefine-all')
   , getWeak           = require('./_meta').getWeak
@@ -52256,7 +54076,7 @@ module.exports = {
   },
   ufstore: uncaughtFrozenStore
 };
-},{"./_an-instance":96,"./_an-object":97,"./_array-methods":102,"./_for-of":127,"./_has":129,"./_is-object":139,"./_meta":152,"./_redefine-all":176}],112:[function(require,module,exports){
+},{"./_an-instance":101,"./_an-object":102,"./_array-methods":107,"./_for-of":132,"./_has":134,"./_is-object":144,"./_meta":157,"./_redefine-all":181}],117:[function(require,module,exports){
 'use strict';
 var global            = require('./_global')
   , $export           = require('./_export')
@@ -52342,10 +54162,10 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
 
   return C;
 };
-},{"./_an-instance":96,"./_export":122,"./_fails":124,"./_for-of":127,"./_global":128,"./_inherit-if-required":133,"./_is-object":139,"./_iter-detect":144,"./_meta":152,"./_redefine":177,"./_redefine-all":176,"./_set-to-string-tag":182}],113:[function(require,module,exports){
+},{"./_an-instance":101,"./_export":127,"./_fails":129,"./_for-of":132,"./_global":133,"./_inherit-if-required":138,"./_is-object":144,"./_iter-detect":149,"./_meta":157,"./_redefine":182,"./_redefine-all":181,"./_set-to-string-tag":187}],118:[function(require,module,exports){
 var core = module.exports = {version: '2.4.0'};
 if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-},{}],114:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 'use strict';
 var $defineProperty = require('./_object-dp')
   , createDesc      = require('./_property-desc');
@@ -52354,7 +54174,7 @@ module.exports = function(object, index, value){
   if(index in object)$defineProperty.f(object, index, createDesc(0, value));
   else object[index] = value;
 };
-},{"./_object-dp":157,"./_property-desc":175}],115:[function(require,module,exports){
+},{"./_object-dp":162,"./_property-desc":180}],120:[function(require,module,exports){
 // optional / simple context binding
 var aFunction = require('./_a-function');
 module.exports = function(fn, that, length){
@@ -52375,7 +54195,7 @@ module.exports = function(fn, that, length){
     return fn.apply(that, arguments);
   };
 };
-},{"./_a-function":93}],116:[function(require,module,exports){
+},{"./_a-function":98}],121:[function(require,module,exports){
 'use strict';
 var anObject    = require('./_an-object')
   , toPrimitive = require('./_to-primitive')
@@ -52385,18 +54205,18 @@ module.exports = function(hint){
   if(hint !== 'string' && hint !== NUMBER && hint !== 'default')throw TypeError('Incorrect hint');
   return toPrimitive(anObject(this), hint != NUMBER);
 };
-},{"./_an-object":97,"./_to-primitive":200}],117:[function(require,module,exports){
+},{"./_an-object":102,"./_to-primitive":205}],122:[function(require,module,exports){
 // 7.2.1 RequireObjectCoercible(argument)
 module.exports = function(it){
   if(it == undefined)throw TypeError("Can't call method on  " + it);
   return it;
 };
-},{}],118:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 // Thank's IE8 for his funny defineProperty
 module.exports = !require('./_fails')(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 });
-},{"./_fails":124}],119:[function(require,module,exports){
+},{"./_fails":129}],124:[function(require,module,exports){
 var isObject = require('./_is-object')
   , document = require('./_global').document
   // in old IE typeof document.createElement is 'object'
@@ -52404,12 +54224,12 @@ var isObject = require('./_is-object')
 module.exports = function(it){
   return is ? document.createElement(it) : {};
 };
-},{"./_global":128,"./_is-object":139}],120:[function(require,module,exports){
+},{"./_global":133,"./_is-object":144}],125:[function(require,module,exports){
 // IE 8- don't enum bug keys
 module.exports = (
   'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
 ).split(',');
-},{}],121:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 // all enumerable object keys, includes symbols
 var getKeys = require('./_object-keys')
   , gOPS    = require('./_object-gops')
@@ -52425,7 +54245,7 @@ module.exports = function(it){
     while(symbols.length > i)if(isEnum.call(it, key = symbols[i++]))result.push(key);
   } return result;
 };
-},{"./_object-gops":163,"./_object-keys":166,"./_object-pie":167}],122:[function(require,module,exports){
+},{"./_object-gops":168,"./_object-keys":171,"./_object-pie":172}],127:[function(require,module,exports){
 var global    = require('./_global')
   , core      = require('./_core')
   , hide      = require('./_hide')
@@ -52469,7 +54289,7 @@ $export.W = 32;  // wrap
 $export.U = 64;  // safe
 $export.R = 128; // real proto method for `library` 
 module.exports = $export;
-},{"./_core":113,"./_ctx":115,"./_global":128,"./_hide":130,"./_redefine":177}],123:[function(require,module,exports){
+},{"./_core":118,"./_ctx":120,"./_global":133,"./_hide":135,"./_redefine":182}],128:[function(require,module,exports){
 var MATCH = require('./_wks')('match');
 module.exports = function(KEY){
   var re = /./;
@@ -52482,7 +54302,7 @@ module.exports = function(KEY){
     } catch(f){ /* empty */ }
   } return true;
 };
-},{"./_wks":207}],124:[function(require,module,exports){
+},{"./_wks":212}],129:[function(require,module,exports){
 module.exports = function(exec){
   try {
     return !!exec();
@@ -52490,7 +54310,7 @@ module.exports = function(exec){
     return true;
   }
 };
-},{}],125:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 'use strict';
 var hide     = require('./_hide')
   , redefine = require('./_redefine')
@@ -52519,7 +54339,7 @@ module.exports = function(KEY, length, exec){
     );
   }
 };
-},{"./_defined":117,"./_fails":124,"./_hide":130,"./_redefine":177,"./_wks":207}],126:[function(require,module,exports){
+},{"./_defined":122,"./_fails":129,"./_hide":135,"./_redefine":182,"./_wks":212}],131:[function(require,module,exports){
 'use strict';
 // 21.2.5.3 get RegExp.prototype.flags
 var anObject = require('./_an-object');
@@ -52533,7 +54353,7 @@ module.exports = function(){
   if(that.sticky)     result += 'y';
   return result;
 };
-},{"./_an-object":97}],127:[function(require,module,exports){
+},{"./_an-object":102}],132:[function(require,module,exports){
 var ctx         = require('./_ctx')
   , call        = require('./_iter-call')
   , isArrayIter = require('./_is-array-iter')
@@ -52559,17 +54379,17 @@ var exports = module.exports = function(iterable, entries, fn, that, ITERATOR){
 };
 exports.BREAK  = BREAK;
 exports.RETURN = RETURN;
-},{"./_an-object":97,"./_ctx":115,"./_is-array-iter":136,"./_iter-call":141,"./_to-length":198,"./core.get-iterator-method":208}],128:[function(require,module,exports){
+},{"./_an-object":102,"./_ctx":120,"./_is-array-iter":141,"./_iter-call":146,"./_to-length":203,"./core.get-iterator-method":213}],133:[function(require,module,exports){
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
   ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
 if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-},{}],129:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 var hasOwnProperty = {}.hasOwnProperty;
 module.exports = function(it, key){
   return hasOwnProperty.call(it, key);
 };
-},{}],130:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 var dP         = require('./_object-dp')
   , createDesc = require('./_property-desc');
 module.exports = require('./_descriptors') ? function(object, key, value){
@@ -52578,13 +54398,13 @@ module.exports = require('./_descriptors') ? function(object, key, value){
   object[key] = value;
   return object;
 };
-},{"./_descriptors":118,"./_object-dp":157,"./_property-desc":175}],131:[function(require,module,exports){
+},{"./_descriptors":123,"./_object-dp":162,"./_property-desc":180}],136:[function(require,module,exports){
 module.exports = require('./_global').document && document.documentElement;
-},{"./_global":128}],132:[function(require,module,exports){
+},{"./_global":133}],137:[function(require,module,exports){
 module.exports = !require('./_descriptors') && !require('./_fails')(function(){
   return Object.defineProperty(require('./_dom-create')('div'), 'a', {get: function(){ return 7; }}).a != 7;
 });
-},{"./_descriptors":118,"./_dom-create":119,"./_fails":124}],133:[function(require,module,exports){
+},{"./_descriptors":123,"./_dom-create":124,"./_fails":129}],138:[function(require,module,exports){
 var isObject       = require('./_is-object')
   , setPrototypeOf = require('./_set-proto').set;
 module.exports = function(that, target, C){
@@ -52593,7 +54413,7 @@ module.exports = function(that, target, C){
     setPrototypeOf(that, P);
   } return that;
 };
-},{"./_is-object":139,"./_set-proto":180}],134:[function(require,module,exports){
+},{"./_is-object":144,"./_set-proto":185}],139:[function(require,module,exports){
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
 module.exports = function(fn, args, that){
   var un = that === undefined;
@@ -52610,13 +54430,13 @@ module.exports = function(fn, args, that){
                       : fn.call(that, args[0], args[1], args[2], args[3]);
   } return              fn.apply(that, args);
 };
-},{}],135:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
 var cof = require('./_cof');
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
-},{"./_cof":108}],136:[function(require,module,exports){
+},{"./_cof":113}],141:[function(require,module,exports){
 // check on default Array iterator
 var Iterators  = require('./_iterators')
   , ITERATOR   = require('./_wks')('iterator')
@@ -52625,24 +54445,24 @@ var Iterators  = require('./_iterators')
 module.exports = function(it){
   return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
 };
-},{"./_iterators":146,"./_wks":207}],137:[function(require,module,exports){
+},{"./_iterators":151,"./_wks":212}],142:[function(require,module,exports){
 // 7.2.2 IsArray(argument)
 var cof = require('./_cof');
 module.exports = Array.isArray || function isArray(arg){
   return cof(arg) == 'Array';
 };
-},{"./_cof":108}],138:[function(require,module,exports){
+},{"./_cof":113}],143:[function(require,module,exports){
 // 20.1.2.3 Number.isInteger(number)
 var isObject = require('./_is-object')
   , floor    = Math.floor;
 module.exports = function isInteger(it){
   return !isObject(it) && isFinite(it) && floor(it) === it;
 };
-},{"./_is-object":139}],139:[function(require,module,exports){
+},{"./_is-object":144}],144:[function(require,module,exports){
 module.exports = function(it){
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
-},{}],140:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 // 7.2.8 IsRegExp(argument)
 var isObject = require('./_is-object')
   , cof      = require('./_cof')
@@ -52651,7 +54471,7 @@ module.exports = function(it){
   var isRegExp;
   return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : cof(it) == 'RegExp');
 };
-},{"./_cof":108,"./_is-object":139,"./_wks":207}],141:[function(require,module,exports){
+},{"./_cof":113,"./_is-object":144,"./_wks":212}],146:[function(require,module,exports){
 // call something on iterator step with safe closing on error
 var anObject = require('./_an-object');
 module.exports = function(iterator, fn, value, entries){
@@ -52664,7 +54484,7 @@ module.exports = function(iterator, fn, value, entries){
     throw e;
   }
 };
-},{"./_an-object":97}],142:[function(require,module,exports){
+},{"./_an-object":102}],147:[function(require,module,exports){
 'use strict';
 var create         = require('./_object-create')
   , descriptor     = require('./_property-desc')
@@ -52678,7 +54498,7 @@ module.exports = function(Constructor, NAME, next){
   Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
   setToStringTag(Constructor, NAME + ' Iterator');
 };
-},{"./_hide":130,"./_object-create":156,"./_property-desc":175,"./_set-to-string-tag":182,"./_wks":207}],143:[function(require,module,exports){
+},{"./_hide":135,"./_object-create":161,"./_property-desc":180,"./_set-to-string-tag":187,"./_wks":212}],148:[function(require,module,exports){
 'use strict';
 var LIBRARY        = require('./_library')
   , $export        = require('./_export')
@@ -52749,7 +54569,7 @@ module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED
   }
   return methods;
 };
-},{"./_export":122,"./_has":129,"./_hide":130,"./_iter-create":142,"./_iterators":146,"./_library":148,"./_object-gpo":164,"./_redefine":177,"./_set-to-string-tag":182,"./_wks":207}],144:[function(require,module,exports){
+},{"./_export":127,"./_has":134,"./_hide":135,"./_iter-create":147,"./_iterators":151,"./_library":153,"./_object-gpo":169,"./_redefine":182,"./_set-to-string-tag":187,"./_wks":212}],149:[function(require,module,exports){
 var ITERATOR     = require('./_wks')('iterator')
   , SAFE_CLOSING = false;
 
@@ -52771,13 +54591,13 @@ module.exports = function(exec, skipClosing){
   } catch(e){ /* empty */ }
   return safe;
 };
-},{"./_wks":207}],145:[function(require,module,exports){
+},{"./_wks":212}],150:[function(require,module,exports){
 module.exports = function(done, value){
   return {value: value, done: !!done};
 };
-},{}],146:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 module.exports = {};
-},{}],147:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 var getKeys   = require('./_object-keys')
   , toIObject = require('./_to-iobject');
 module.exports = function(object, el){
@@ -52788,9 +54608,9 @@ module.exports = function(object, el){
     , key;
   while(length > index)if(O[key = keys[index++]] === el)return key;
 };
-},{"./_object-keys":166,"./_to-iobject":197}],148:[function(require,module,exports){
+},{"./_object-keys":171,"./_to-iobject":202}],153:[function(require,module,exports){
 module.exports = false;
-},{}],149:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 // 20.2.2.14 Math.expm1(x)
 var $expm1 = Math.expm1;
 module.exports = (!$expm1
@@ -52801,17 +54621,17 @@ module.exports = (!$expm1
 ) ? function expm1(x){
   return (x = +x) == 0 ? x : x > -1e-6 && x < 1e-6 ? x + x * x / 2 : Math.exp(x) - 1;
 } : $expm1;
-},{}],150:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 // 20.2.2.20 Math.log1p(x)
 module.exports = Math.log1p || function log1p(x){
   return (x = +x) > -1e-8 && x < 1e-8 ? x - x * x / 2 : Math.log(1 + x);
 };
-},{}],151:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 // 20.2.2.28 Math.sign(x)
 module.exports = Math.sign || function sign(x){
   return (x = +x) == 0 || x != x ? x : x < 0 ? -1 : 1;
 };
-},{}],152:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 var META     = require('./_uid')('meta')
   , isObject = require('./_is-object')
   , has      = require('./_has')
@@ -52865,7 +54685,7 @@ var meta = module.exports = {
   getWeak:  getWeak,
   onFreeze: onFreeze
 };
-},{"./_fails":124,"./_has":129,"./_is-object":139,"./_object-dp":157,"./_uid":204}],153:[function(require,module,exports){
+},{"./_fails":129,"./_has":134,"./_is-object":144,"./_object-dp":162,"./_uid":209}],158:[function(require,module,exports){
 var Map     = require('./es6.map')
   , $export = require('./_export')
   , shared  = require('./_shared')('metadata')
@@ -52917,7 +54737,7 @@ module.exports = {
   key: toMetaKey,
   exp: exp
 };
-},{"./_export":122,"./_shared":184,"./es6.map":239,"./es6.weak-map":345}],154:[function(require,module,exports){
+},{"./_export":127,"./_shared":189,"./es6.map":245,"./es6.weak-map":351}],159:[function(require,module,exports){
 var global    = require('./_global')
   , macrotask = require('./_task').set
   , Observer  = global.MutationObserver || global.WebKitMutationObserver
@@ -52986,7 +54806,7 @@ module.exports = function(){
     } last = task;
   };
 };
-},{"./_cof":108,"./_global":128,"./_task":194}],155:[function(require,module,exports){
+},{"./_cof":113,"./_global":133,"./_task":199}],160:[function(require,module,exports){
 'use strict';
 // 19.1.2.1 Object.assign(target, source, ...)
 var getKeys  = require('./_object-keys')
@@ -53020,7 +54840,7 @@ module.exports = !$assign || require('./_fails')(function(){
     while(length > j)if(isEnum.call(S, key = keys[j++]))T[key] = S[key];
   } return T;
 } : $assign;
-},{"./_fails":124,"./_iobject":135,"./_object-gops":163,"./_object-keys":166,"./_object-pie":167,"./_to-object":199}],156:[function(require,module,exports){
+},{"./_fails":129,"./_iobject":140,"./_object-gops":168,"./_object-keys":171,"./_object-pie":172,"./_to-object":204}],161:[function(require,module,exports){
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject    = require('./_an-object')
   , dPs         = require('./_object-dps')
@@ -53034,7 +54854,6 @@ var createDict = function(){
   // Thrash, waste and sodomy: IE GC bug
   var iframe = require('./_dom-create')('iframe')
     , i      = enumBugKeys.length
-    , lt     = '<'
     , gt     = '>'
     , iframeDocument;
   iframe.style.display = 'none';
@@ -53044,7 +54863,7 @@ var createDict = function(){
   // html.removeChild(iframe);
   iframeDocument = iframe.contentWindow.document;
   iframeDocument.open();
-  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
+  iframeDocument.write('<script>document.F=Object</script' + gt);
   iframeDocument.close();
   createDict = iframeDocument.F;
   while(i--)delete createDict[PROTOTYPE][enumBugKeys[i]];
@@ -53062,8 +54881,7 @@ module.exports = Object.create || function create(O, Properties){
   } else result = createDict();
   return Properties === undefined ? result : dPs(result, Properties);
 };
-
-},{"./_an-object":97,"./_dom-create":119,"./_enum-bug-keys":120,"./_html":131,"./_object-dps":158,"./_shared-key":183}],157:[function(require,module,exports){
+},{"./_an-object":102,"./_dom-create":124,"./_enum-bug-keys":125,"./_html":136,"./_object-dps":163,"./_shared-key":188}],162:[function(require,module,exports){
 var anObject       = require('./_an-object')
   , IE8_DOM_DEFINE = require('./_ie8-dom-define')
   , toPrimitive    = require('./_to-primitive')
@@ -53080,7 +54898,7 @@ exports.f = require('./_descriptors') ? Object.defineProperty : function defineP
   if('value' in Attributes)O[P] = Attributes.value;
   return O;
 };
-},{"./_an-object":97,"./_descriptors":118,"./_ie8-dom-define":132,"./_to-primitive":200}],158:[function(require,module,exports){
+},{"./_an-object":102,"./_descriptors":123,"./_ie8-dom-define":137,"./_to-primitive":205}],163:[function(require,module,exports){
 var dP       = require('./_object-dp')
   , anObject = require('./_an-object')
   , getKeys  = require('./_object-keys');
@@ -53094,7 +54912,7 @@ module.exports = require('./_descriptors') ? Object.defineProperties : function 
   while(length > i)dP.f(O, P = keys[i++], Properties[P]);
   return O;
 };
-},{"./_an-object":97,"./_descriptors":118,"./_object-dp":157,"./_object-keys":166}],159:[function(require,module,exports){
+},{"./_an-object":102,"./_descriptors":123,"./_object-dp":162,"./_object-keys":171}],164:[function(require,module,exports){
 // Forced replacement prototype accessors methods
 module.exports = require('./_library')|| !require('./_fails')(function(){
   var K = Math.random();
@@ -53102,7 +54920,7 @@ module.exports = require('./_library')|| !require('./_fails')(function(){
   __defineSetter__.call(null, K, function(){ /* empty */});
   delete require('./_global')[K];
 });
-},{"./_fails":124,"./_global":128,"./_library":148}],160:[function(require,module,exports){
+},{"./_fails":129,"./_global":133,"./_library":153}],165:[function(require,module,exports){
 var pIE            = require('./_object-pie')
   , createDesc     = require('./_property-desc')
   , toIObject      = require('./_to-iobject')
@@ -53119,7 +54937,7 @@ exports.f = require('./_descriptors') ? gOPD : function getOwnPropertyDescriptor
   } catch(e){ /* empty */ }
   if(has(O, P))return createDesc(!pIE.f.call(O, P), O[P]);
 };
-},{"./_descriptors":118,"./_has":129,"./_ie8-dom-define":132,"./_object-pie":167,"./_property-desc":175,"./_to-iobject":197,"./_to-primitive":200}],161:[function(require,module,exports){
+},{"./_descriptors":123,"./_has":134,"./_ie8-dom-define":137,"./_object-pie":172,"./_property-desc":180,"./_to-iobject":202,"./_to-primitive":205}],166:[function(require,module,exports){
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = require('./_to-iobject')
   , gOPN      = require('./_object-gopn').f
@@ -53140,7 +54958,7 @@ module.exports.f = function getOwnPropertyNames(it){
   return windowNames && toString.call(it) == '[object Window]' ? getWindowNames(it) : gOPN(toIObject(it));
 };
 
-},{"./_object-gopn":162,"./_to-iobject":197}],162:[function(require,module,exports){
+},{"./_object-gopn":167,"./_to-iobject":202}],167:[function(require,module,exports){
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys      = require('./_object-keys-internal')
   , hiddenKeys = require('./_enum-bug-keys').concat('length', 'prototype');
@@ -53148,9 +54966,9 @@ var $keys      = require('./_object-keys-internal')
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
   return $keys(O, hiddenKeys);
 };
-},{"./_enum-bug-keys":120,"./_object-keys-internal":165}],163:[function(require,module,exports){
+},{"./_enum-bug-keys":125,"./_object-keys-internal":170}],168:[function(require,module,exports){
 exports.f = Object.getOwnPropertySymbols;
-},{}],164:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has         = require('./_has')
   , toObject    = require('./_to-object')
@@ -53164,7 +54982,7 @@ module.exports = Object.getPrototypeOf || function(O){
     return O.constructor.prototype;
   } return O instanceof Object ? ObjectProto : null;
 };
-},{"./_has":129,"./_shared-key":183,"./_to-object":199}],165:[function(require,module,exports){
+},{"./_has":134,"./_shared-key":188,"./_to-object":204}],170:[function(require,module,exports){
 var has          = require('./_has')
   , toIObject    = require('./_to-iobject')
   , arrayIndexOf = require('./_array-includes')(false)
@@ -53182,7 +55000,7 @@ module.exports = function(object, names){
   }
   return result;
 };
-},{"./_array-includes":101,"./_has":129,"./_shared-key":183,"./_to-iobject":197}],166:[function(require,module,exports){
+},{"./_array-includes":106,"./_has":134,"./_shared-key":188,"./_to-iobject":202}],171:[function(require,module,exports){
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys       = require('./_object-keys-internal')
   , enumBugKeys = require('./_enum-bug-keys');
@@ -53190,9 +55008,9 @@ var $keys       = require('./_object-keys-internal')
 module.exports = Object.keys || function keys(O){
   return $keys(O, enumBugKeys);
 };
-},{"./_enum-bug-keys":120,"./_object-keys-internal":165}],167:[function(require,module,exports){
+},{"./_enum-bug-keys":125,"./_object-keys-internal":170}],172:[function(require,module,exports){
 exports.f = {}.propertyIsEnumerable;
-},{}],168:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 // most Object methods by ES6 should accept primitives
 var $export = require('./_export')
   , core    = require('./_core')
@@ -53203,7 +55021,7 @@ module.exports = function(KEY, exec){
   exp[KEY] = exec(fn);
   $export($export.S + $export.F * fails(function(){ fn(1); }), 'Object', exp);
 };
-},{"./_core":113,"./_export":122,"./_fails":124}],169:[function(require,module,exports){
+},{"./_core":118,"./_export":127,"./_fails":129}],174:[function(require,module,exports){
 var getKeys   = require('./_object-keys')
   , toIObject = require('./_to-iobject')
   , isEnum    = require('./_object-pie').f;
@@ -53220,7 +55038,7 @@ module.exports = function(isEntries){
     } return result;
   };
 };
-},{"./_object-keys":166,"./_object-pie":167,"./_to-iobject":197}],170:[function(require,module,exports){
+},{"./_object-keys":171,"./_object-pie":172,"./_to-iobject":202}],175:[function(require,module,exports){
 // all object keys, includes non-enumerable and symbols
 var gOPN     = require('./_object-gopn')
   , gOPS     = require('./_object-gops')
@@ -53231,7 +55049,7 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
     , getSymbols = gOPS.f;
   return getSymbols ? keys.concat(getSymbols(it)) : keys;
 };
-},{"./_an-object":97,"./_global":128,"./_object-gopn":162,"./_object-gops":163}],171:[function(require,module,exports){
+},{"./_an-object":102,"./_global":133,"./_object-gopn":167,"./_object-gops":168}],176:[function(require,module,exports){
 var $parseFloat = require('./_global').parseFloat
   , $trim       = require('./_string-trim').trim;
 
@@ -53240,7 +55058,7 @@ module.exports = 1 / $parseFloat(require('./_string-ws') + '-0') !== -Infinity ?
     , result = $parseFloat(string);
   return result === 0 && string.charAt(0) == '-' ? -0 : result;
 } : $parseFloat;
-},{"./_global":128,"./_string-trim":192,"./_string-ws":193}],172:[function(require,module,exports){
+},{"./_global":133,"./_string-trim":197,"./_string-ws":198}],177:[function(require,module,exports){
 var $parseInt = require('./_global').parseInt
   , $trim     = require('./_string-trim').trim
   , ws        = require('./_string-ws')
@@ -53250,7 +55068,7 @@ module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? f
   var string = $trim(String(str), 3);
   return $parseInt(string, (radix >>> 0) || (hex.test(string) ? 16 : 10));
 } : $parseInt;
-},{"./_global":128,"./_string-trim":192,"./_string-ws":193}],173:[function(require,module,exports){
+},{"./_global":133,"./_string-trim":197,"./_string-ws":198}],178:[function(require,module,exports){
 'use strict';
 var path      = require('./_path')
   , invoke    = require('./_invoke')
@@ -53274,9 +55092,9 @@ module.exports = function(/* ...pargs */){
     return invoke(fn, args, that);
   };
 };
-},{"./_a-function":93,"./_invoke":134,"./_path":174}],174:[function(require,module,exports){
+},{"./_a-function":98,"./_invoke":139,"./_path":179}],179:[function(require,module,exports){
 module.exports = require('./_global');
-},{"./_global":128}],175:[function(require,module,exports){
+},{"./_global":133}],180:[function(require,module,exports){
 module.exports = function(bitmap, value){
   return {
     enumerable  : !(bitmap & 1),
@@ -53285,13 +55103,13 @@ module.exports = function(bitmap, value){
     value       : value
   };
 };
-},{}],176:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 var redefine = require('./_redefine');
 module.exports = function(target, src, safe){
   for(var key in src)redefine(target, key, src[key], safe);
   return target;
 };
-},{"./_redefine":177}],177:[function(require,module,exports){
+},{"./_redefine":182}],182:[function(require,module,exports){
 var global    = require('./_global')
   , hide      = require('./_hide')
   , has       = require('./_has')
@@ -53324,7 +55142,7 @@ require('./_core').inspectSource = function(it){
 })(Function.prototype, TO_STRING, function toString(){
   return typeof this == 'function' && this[SRC] || $toString.call(this);
 });
-},{"./_core":113,"./_global":128,"./_has":129,"./_hide":130,"./_uid":204}],178:[function(require,module,exports){
+},{"./_core":118,"./_global":133,"./_has":134,"./_hide":135,"./_uid":209}],183:[function(require,module,exports){
 module.exports = function(regExp, replace){
   var replacer = replace === Object(replace) ? function(part){
     return replace[part];
@@ -53333,12 +55151,12 @@ module.exports = function(regExp, replace){
     return String(it).replace(regExp, replacer);
   };
 };
-},{}],179:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 // 7.2.9 SameValue(x, y)
 module.exports = Object.is || function is(x, y){
   return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
 };
-},{}],180:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var isObject = require('./_is-object')
@@ -53364,7 +55182,7 @@ module.exports = {
     }({}, false) : undefined),
   check: check
 };
-},{"./_an-object":97,"./_ctx":115,"./_is-object":139,"./_object-gopd":160}],181:[function(require,module,exports){
+},{"./_an-object":102,"./_ctx":120,"./_is-object":144,"./_object-gopd":165}],186:[function(require,module,exports){
 'use strict';
 var global      = require('./_global')
   , dP          = require('./_object-dp')
@@ -53378,7 +55196,7 @@ module.exports = function(KEY){
     get: function(){ return this; }
   });
 };
-},{"./_descriptors":118,"./_global":128,"./_object-dp":157,"./_wks":207}],182:[function(require,module,exports){
+},{"./_descriptors":123,"./_global":133,"./_object-dp":162,"./_wks":212}],187:[function(require,module,exports){
 var def = require('./_object-dp').f
   , has = require('./_has')
   , TAG = require('./_wks')('toStringTag');
@@ -53386,20 +55204,20 @@ var def = require('./_object-dp').f
 module.exports = function(it, tag, stat){
   if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
 };
-},{"./_has":129,"./_object-dp":157,"./_wks":207}],183:[function(require,module,exports){
+},{"./_has":134,"./_object-dp":162,"./_wks":212}],188:[function(require,module,exports){
 var shared = require('./_shared')('keys')
   , uid    = require('./_uid');
 module.exports = function(key){
   return shared[key] || (shared[key] = uid(key));
 };
-},{"./_shared":184,"./_uid":204}],184:[function(require,module,exports){
+},{"./_shared":189,"./_uid":209}],189:[function(require,module,exports){
 var global = require('./_global')
   , SHARED = '__core-js_shared__'
   , store  = global[SHARED] || (global[SHARED] = {});
 module.exports = function(key){
   return store[key] || (store[key] = {});
 };
-},{"./_global":128}],185:[function(require,module,exports){
+},{"./_global":133}],190:[function(require,module,exports){
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
 var anObject  = require('./_an-object')
   , aFunction = require('./_a-function')
@@ -53408,7 +55226,7 @@ module.exports = function(O, D){
   var C = anObject(O).constructor, S;
   return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
 };
-},{"./_a-function":93,"./_an-object":97,"./_wks":207}],186:[function(require,module,exports){
+},{"./_a-function":98,"./_an-object":102,"./_wks":212}],191:[function(require,module,exports){
 var fails = require('./_fails');
 
 module.exports = function(method, arg){
@@ -53416,7 +55234,7 @@ module.exports = function(method, arg){
     arg ? method.call(null, function(){}, 1) : method.call(null);
   });
 };
-},{"./_fails":124}],187:[function(require,module,exports){
+},{"./_fails":129}],192:[function(require,module,exports){
 var toInteger = require('./_to-integer')
   , defined   = require('./_defined');
 // true  -> String#at
@@ -53434,7 +55252,7 @@ module.exports = function(TO_STRING){
       : TO_STRING ? s.slice(i, i + 2) : (a - 0xd800 << 10) + (b - 0xdc00) + 0x10000;
   };
 };
-},{"./_defined":117,"./_to-integer":196}],188:[function(require,module,exports){
+},{"./_defined":122,"./_to-integer":201}],193:[function(require,module,exports){
 // helper for String#{startsWith, endsWith, includes}
 var isRegExp = require('./_is-regexp')
   , defined  = require('./_defined');
@@ -53443,7 +55261,7 @@ module.exports = function(that, searchString, NAME){
   if(isRegExp(searchString))throw TypeError('String#' + NAME + " doesn't accept regex!");
   return String(defined(that));
 };
-},{"./_defined":117,"./_is-regexp":140}],189:[function(require,module,exports){
+},{"./_defined":122,"./_is-regexp":145}],194:[function(require,module,exports){
 var $export = require('./_export')
   , fails   = require('./_fails')
   , defined = require('./_defined')
@@ -53463,7 +55281,7 @@ module.exports = function(NAME, exec){
     return test !== test.toLowerCase() || test.split('"').length > 3;
   }), 'String', O);
 };
-},{"./_defined":117,"./_export":122,"./_fails":124}],190:[function(require,module,exports){
+},{"./_defined":122,"./_export":127,"./_fails":129}],195:[function(require,module,exports){
 // https://github.com/tc39/proposal-string-pad-start-end
 var toLength = require('./_to-length')
   , repeat   = require('./_string-repeat')
@@ -53481,7 +55299,7 @@ module.exports = function(that, maxLength, fillString, left){
   return left ? stringFiller + S : S + stringFiller;
 };
 
-},{"./_defined":117,"./_string-repeat":191,"./_to-length":198}],191:[function(require,module,exports){
+},{"./_defined":122,"./_string-repeat":196,"./_to-length":203}],196:[function(require,module,exports){
 'use strict';
 var toInteger = require('./_to-integer')
   , defined   = require('./_defined');
@@ -53494,7 +55312,7 @@ module.exports = function repeat(count){
   for(;n > 0; (n >>>= 1) && (str += str))if(n & 1)res += str;
   return res;
 };
-},{"./_defined":117,"./_to-integer":196}],192:[function(require,module,exports){
+},{"./_defined":122,"./_to-integer":201}],197:[function(require,module,exports){
 var $export = require('./_export')
   , defined = require('./_defined')
   , fails   = require('./_fails')
@@ -53525,10 +55343,10 @@ var trim = exporter.trim = function(string, TYPE){
 };
 
 module.exports = exporter;
-},{"./_defined":117,"./_export":122,"./_fails":124,"./_string-ws":193}],193:[function(require,module,exports){
+},{"./_defined":122,"./_export":127,"./_fails":129,"./_string-ws":198}],198:[function(require,module,exports){
 module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
   '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
-},{}],194:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 var ctx                = require('./_ctx')
   , invoke             = require('./_invoke')
   , html               = require('./_html')
@@ -53604,7 +55422,7 @@ module.exports = {
   set:   setTask,
   clear: clearTask
 };
-},{"./_cof":108,"./_ctx":115,"./_dom-create":119,"./_global":128,"./_html":131,"./_invoke":134}],195:[function(require,module,exports){
+},{"./_cof":113,"./_ctx":120,"./_dom-create":124,"./_global":133,"./_html":136,"./_invoke":139}],200:[function(require,module,exports){
 var toInteger = require('./_to-integer')
   , max       = Math.max
   , min       = Math.min;
@@ -53612,34 +55430,34 @@ module.exports = function(index, length){
   index = toInteger(index);
   return index < 0 ? max(index + length, 0) : min(index, length);
 };
-},{"./_to-integer":196}],196:[function(require,module,exports){
+},{"./_to-integer":201}],201:[function(require,module,exports){
 // 7.1.4 ToInteger
 var ceil  = Math.ceil
   , floor = Math.floor;
 module.exports = function(it){
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
-},{}],197:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = require('./_iobject')
   , defined = require('./_defined');
 module.exports = function(it){
   return IObject(defined(it));
 };
-},{"./_defined":117,"./_iobject":135}],198:[function(require,module,exports){
+},{"./_defined":122,"./_iobject":140}],203:[function(require,module,exports){
 // 7.1.15 ToLength
 var toInteger = require('./_to-integer')
   , min       = Math.min;
 module.exports = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
-},{"./_to-integer":196}],199:[function(require,module,exports){
+},{"./_to-integer":201}],204:[function(require,module,exports){
 // 7.1.13 ToObject(argument)
 var defined = require('./_defined');
 module.exports = function(it){
   return Object(defined(it));
 };
-},{"./_defined":117}],200:[function(require,module,exports){
+},{"./_defined":122}],205:[function(require,module,exports){
 // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = require('./_is-object');
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
@@ -53652,7 +55470,7 @@ module.exports = function(it, S){
   if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
   throw TypeError("Can't convert object to primitive value");
 };
-},{"./_is-object":139}],201:[function(require,module,exports){
+},{"./_is-object":144}],206:[function(require,module,exports){
 'use strict';
 if(require('./_descriptors')){
   var LIBRARY             = require('./_library')
@@ -53666,6 +55484,7 @@ if(require('./_descriptors')){
     , propertyDesc        = require('./_property-desc')
     , hide                = require('./_hide')
     , redefineAll         = require('./_redefine-all')
+    , isInteger           = require('./_is-integer')
     , toInteger           = require('./_to-integer')
     , toLength            = require('./_to-length')
     , toIndex             = require('./_to-index')
@@ -53679,6 +55498,7 @@ if(require('./_descriptors')){
     , create              = require('./_object-create')
     , getPrototypeOf      = require('./_object-gpo')
     , gOPN                = require('./_object-gopn').f
+    , isIterable          = require('./core.is-iterable')
     , getIterFn           = require('./core.get-iterator-method')
     , uid                 = require('./_uid')
     , wks                 = require('./_wks')
@@ -54132,7 +55952,7 @@ if(require('./_descriptors')){
     if(!LIBRARY && !CORRECT_ITER_NAME)hide(TypedArrayPrototype, ITERATOR, $iterator);
   };
 } else module.exports = function(){ /* empty */ };
-},{"./_an-instance":96,"./_array-copy-within":98,"./_array-fill":99,"./_array-includes":101,"./_array-methods":102,"./_classof":107,"./_ctx":115,"./_descriptors":118,"./_export":122,"./_fails":124,"./_global":128,"./_has":129,"./_hide":130,"./_is-array-iter":136,"./_is-object":139,"./_iter-detect":144,"./_iterators":146,"./_library":148,"./_object-create":156,"./_object-dp":157,"./_object-gopd":160,"./_object-gopn":162,"./_object-gpo":164,"./_property-desc":175,"./_redefine-all":176,"./_same-value":179,"./_set-species":181,"./_species-constructor":185,"./_to-index":195,"./_to-integer":196,"./_to-length":198,"./_to-object":199,"./_to-primitive":200,"./_typed":203,"./_typed-buffer":202,"./_uid":204,"./_wks":207,"./core.get-iterator-method":208,"./es6.array.iterator":220}],202:[function(require,module,exports){
+},{"./_an-instance":101,"./_array-copy-within":103,"./_array-fill":104,"./_array-includes":106,"./_array-methods":107,"./_classof":112,"./_ctx":120,"./_descriptors":123,"./_export":127,"./_fails":129,"./_global":133,"./_has":134,"./_hide":135,"./_is-array-iter":141,"./_is-integer":143,"./_is-object":144,"./_iter-detect":149,"./_iterators":151,"./_library":153,"./_object-create":161,"./_object-dp":162,"./_object-gopd":165,"./_object-gopn":167,"./_object-gpo":169,"./_property-desc":180,"./_redefine-all":181,"./_same-value":184,"./_set-species":186,"./_species-constructor":190,"./_to-index":200,"./_to-integer":201,"./_to-length":203,"./_to-object":204,"./_to-primitive":205,"./_typed":208,"./_typed-buffer":207,"./_uid":209,"./_wks":212,"./core.get-iterator-method":213,"./core.is-iterable":214,"./es6.array.iterator":226}],207:[function(require,module,exports){
 'use strict';
 var global         = require('./_global')
   , DESCRIPTORS    = require('./_descriptors')
@@ -54156,11 +55976,13 @@ var global         = require('./_global')
   , $ArrayBuffer   = global[ARRAY_BUFFER]
   , $DataView      = global[DATA_VIEW]
   , Math           = global.Math
+  , parseInt       = global.parseInt
   , RangeError     = global.RangeError
   , Infinity       = global.Infinity
   , BaseBuffer     = $ArrayBuffer
   , abs            = Math.abs
   , pow            = Math.pow
+  , min            = Math.min
   , floor          = Math.floor
   , log            = Math.log
   , LN2            = Math.LN2
@@ -54406,7 +56228,7 @@ setToStringTag($DataView, DATA_VIEW);
 hide($DataView[PROTOTYPE], $typed.VIEW, true);
 exports[ARRAY_BUFFER] = $ArrayBuffer;
 exports[DATA_VIEW] = $DataView;
-},{"./_an-instance":96,"./_array-fill":99,"./_descriptors":118,"./_fails":124,"./_global":128,"./_hide":130,"./_library":148,"./_object-dp":157,"./_object-gopn":162,"./_redefine-all":176,"./_set-to-string-tag":182,"./_to-integer":196,"./_to-length":198,"./_typed":203}],203:[function(require,module,exports){
+},{"./_an-instance":101,"./_array-fill":104,"./_descriptors":123,"./_fails":129,"./_global":133,"./_hide":135,"./_library":153,"./_object-dp":162,"./_object-gopn":167,"./_redefine-all":181,"./_set-to-string-tag":187,"./_to-integer":201,"./_to-length":203,"./_typed":208}],208:[function(require,module,exports){
 var global = require('./_global')
   , hide   = require('./_hide')
   , uid    = require('./_uid')
@@ -54433,13 +56255,13 @@ module.exports = {
   TYPED:  TYPED,
   VIEW:   VIEW
 };
-},{"./_global":128,"./_hide":130,"./_uid":204}],204:[function(require,module,exports){
+},{"./_global":133,"./_hide":135,"./_uid":209}],209:[function(require,module,exports){
 var id = 0
   , px = Math.random();
 module.exports = function(key){
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
-},{}],205:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 var global         = require('./_global')
   , core           = require('./_core')
   , LIBRARY        = require('./_library')
@@ -54449,9 +56271,9 @@ module.exports = function(name){
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if(name.charAt(0) != '_' && !(name in $Symbol))defineProperty($Symbol, name, {value: wksExt.f(name)});
 };
-},{"./_core":113,"./_global":128,"./_library":148,"./_object-dp":157,"./_wks-ext":206}],206:[function(require,module,exports){
+},{"./_core":118,"./_global":133,"./_library":153,"./_object-dp":162,"./_wks-ext":211}],211:[function(require,module,exports){
 exports.f = require('./_wks');
-},{"./_wks":207}],207:[function(require,module,exports){
+},{"./_wks":212}],212:[function(require,module,exports){
 var store      = require('./_shared')('wks')
   , uid        = require('./_uid')
   , Symbol     = require('./_global').Symbol
@@ -54463,7 +56285,7 @@ var $exports = module.exports = function(name){
 };
 
 $exports.store = store;
-},{"./_global":128,"./_shared":184,"./_uid":204}],208:[function(require,module,exports){
+},{"./_global":133,"./_shared":189,"./_uid":209}],213:[function(require,module,exports){
 var classof   = require('./_classof')
   , ITERATOR  = require('./_wks')('iterator')
   , Iterators = require('./_iterators');
@@ -54472,21 +56294,31 @@ module.exports = require('./_core').getIteratorMethod = function(it){
     || it['@@iterator']
     || Iterators[classof(it)];
 };
-},{"./_classof":107,"./_core":113,"./_iterators":146,"./_wks":207}],209:[function(require,module,exports){
+},{"./_classof":112,"./_core":118,"./_iterators":151,"./_wks":212}],214:[function(require,module,exports){
+var classof   = require('./_classof')
+  , ITERATOR  = require('./_wks')('iterator')
+  , Iterators = require('./_iterators');
+module.exports = require('./_core').isIterable = function(it){
+  var O = Object(it);
+  return O[ITERATOR] !== undefined
+    || '@@iterator' in O
+    || Iterators.hasOwnProperty(classof(O));
+};
+},{"./_classof":112,"./_core":118,"./_iterators":151,"./_wks":212}],215:[function(require,module,exports){
 // https://github.com/benjamingr/RexExp.escape
 var $export = require('./_export')
   , $re     = require('./_replacer')(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 $export($export.S, 'RegExp', {escape: function escape(it){ return $re(it); }});
 
-},{"./_export":122,"./_replacer":178}],210:[function(require,module,exports){
+},{"./_export":127,"./_replacer":183}],216:[function(require,module,exports){
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 var $export = require('./_export');
 
 $export($export.P, 'Array', {copyWithin: require('./_array-copy-within')});
 
 require('./_add-to-unscopables')('copyWithin');
-},{"./_add-to-unscopables":95,"./_array-copy-within":98,"./_export":122}],211:[function(require,module,exports){
+},{"./_add-to-unscopables":100,"./_array-copy-within":103,"./_export":127}],217:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $every  = require('./_array-methods')(4);
@@ -54497,14 +56329,14 @@ $export($export.P + $export.F * !require('./_strict-method')([].every, true), 'A
     return $every(this, callbackfn, arguments[1]);
   }
 });
-},{"./_array-methods":102,"./_export":122,"./_strict-method":186}],212:[function(require,module,exports){
+},{"./_array-methods":107,"./_export":127,"./_strict-method":191}],218:[function(require,module,exports){
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 var $export = require('./_export');
 
 $export($export.P, 'Array', {fill: require('./_array-fill')});
 
 require('./_add-to-unscopables')('fill');
-},{"./_add-to-unscopables":95,"./_array-fill":99,"./_export":122}],213:[function(require,module,exports){
+},{"./_add-to-unscopables":100,"./_array-fill":104,"./_export":127}],219:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $filter = require('./_array-methods')(2);
@@ -54515,7 +56347,7 @@ $export($export.P + $export.F * !require('./_strict-method')([].filter, true), '
     return $filter(this, callbackfn, arguments[1]);
   }
 });
-},{"./_array-methods":102,"./_export":122,"./_strict-method":186}],214:[function(require,module,exports){
+},{"./_array-methods":107,"./_export":127,"./_strict-method":191}],220:[function(require,module,exports){
 'use strict';
 // 22.1.3.9 Array.prototype.findIndex(predicate, thisArg = undefined)
 var $export = require('./_export')
@@ -54530,7 +56362,7 @@ $export($export.P + $export.F * forced, 'Array', {
   }
 });
 require('./_add-to-unscopables')(KEY);
-},{"./_add-to-unscopables":95,"./_array-methods":102,"./_export":122}],215:[function(require,module,exports){
+},{"./_add-to-unscopables":100,"./_array-methods":107,"./_export":127}],221:[function(require,module,exports){
 'use strict';
 // 22.1.3.8 Array.prototype.find(predicate, thisArg = undefined)
 var $export = require('./_export')
@@ -54545,7 +56377,7 @@ $export($export.P + $export.F * forced, 'Array', {
   }
 });
 require('./_add-to-unscopables')(KEY);
-},{"./_add-to-unscopables":95,"./_array-methods":102,"./_export":122}],216:[function(require,module,exports){
+},{"./_add-to-unscopables":100,"./_array-methods":107,"./_export":127}],222:[function(require,module,exports){
 'use strict';
 var $export  = require('./_export')
   , $forEach = require('./_array-methods')(0)
@@ -54557,7 +56389,7 @@ $export($export.P + $export.F * !STRICT, 'Array', {
     return $forEach(this, callbackfn, arguments[1]);
   }
 });
-},{"./_array-methods":102,"./_export":122,"./_strict-method":186}],217:[function(require,module,exports){
+},{"./_array-methods":107,"./_export":127,"./_strict-method":191}],223:[function(require,module,exports){
 'use strict';
 var ctx            = require('./_ctx')
   , $export        = require('./_export')
@@ -54596,7 +56428,7 @@ $export($export.S + $export.F * !require('./_iter-detect')(function(iter){ Array
   }
 });
 
-},{"./_create-property":114,"./_ctx":115,"./_export":122,"./_is-array-iter":136,"./_iter-call":141,"./_iter-detect":144,"./_to-length":198,"./_to-object":199,"./core.get-iterator-method":208}],218:[function(require,module,exports){
+},{"./_create-property":119,"./_ctx":120,"./_export":127,"./_is-array-iter":141,"./_iter-call":146,"./_iter-detect":149,"./_to-length":203,"./_to-object":204,"./core.get-iterator-method":213}],224:[function(require,module,exports){
 'use strict';
 var $export       = require('./_export')
   , $indexOf      = require('./_array-includes')(false)
@@ -54612,12 +56444,12 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !require('./_strict-method')($
       : $indexOf(this, searchElement, arguments[1]);
   }
 });
-},{"./_array-includes":101,"./_export":122,"./_strict-method":186}],219:[function(require,module,exports){
+},{"./_array-includes":106,"./_export":127,"./_strict-method":191}],225:[function(require,module,exports){
 // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
 var $export = require('./_export');
 
 $export($export.S, 'Array', {isArray: require('./_is-array')});
-},{"./_export":122,"./_is-array":137}],220:[function(require,module,exports){
+},{"./_export":127,"./_is-array":142}],226:[function(require,module,exports){
 'use strict';
 var addToUnscopables = require('./_add-to-unscopables')
   , step             = require('./_iter-step')
@@ -54652,7 +56484,7 @@ Iterators.Arguments = Iterators.Array;
 addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
-},{"./_add-to-unscopables":95,"./_iter-define":143,"./_iter-step":145,"./_iterators":146,"./_to-iobject":197}],221:[function(require,module,exports){
+},{"./_add-to-unscopables":100,"./_iter-define":148,"./_iter-step":150,"./_iterators":151,"./_to-iobject":202}],227:[function(require,module,exports){
 'use strict';
 // 22.1.3.13 Array.prototype.join(separator)
 var $export   = require('./_export')
@@ -54665,7 +56497,7 @@ $export($export.P + $export.F * (require('./_iobject') != Object || !require('./
     return arrayJoin.call(toIObject(this), separator === undefined ? ',' : separator);
   }
 });
-},{"./_export":122,"./_iobject":135,"./_strict-method":186,"./_to-iobject":197}],222:[function(require,module,exports){
+},{"./_export":127,"./_iobject":140,"./_strict-method":191,"./_to-iobject":202}],228:[function(require,module,exports){
 'use strict';
 var $export       = require('./_export')
   , toIObject     = require('./_to-iobject')
@@ -54688,7 +56520,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !require('./_strict-method')($
     return -1;
   }
 });
-},{"./_export":122,"./_strict-method":186,"./_to-integer":196,"./_to-iobject":197,"./_to-length":198}],223:[function(require,module,exports){
+},{"./_export":127,"./_strict-method":191,"./_to-integer":201,"./_to-iobject":202,"./_to-length":203}],229:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $map    = require('./_array-methods')(1);
@@ -54699,7 +56531,7 @@ $export($export.P + $export.F * !require('./_strict-method')([].map, true), 'Arr
     return $map(this, callbackfn, arguments[1]);
   }
 });
-},{"./_array-methods":102,"./_export":122,"./_strict-method":186}],224:[function(require,module,exports){
+},{"./_array-methods":107,"./_export":127,"./_strict-method":191}],230:[function(require,module,exports){
 'use strict';
 var $export        = require('./_export')
   , createProperty = require('./_create-property');
@@ -54719,7 +56551,7 @@ $export($export.S + $export.F * require('./_fails')(function(){
     return result;
   }
 });
-},{"./_create-property":114,"./_export":122,"./_fails":124}],225:[function(require,module,exports){
+},{"./_create-property":119,"./_export":127,"./_fails":129}],231:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $reduce = require('./_array-reduce');
@@ -54730,7 +56562,7 @@ $export($export.P + $export.F * !require('./_strict-method')([].reduceRight, tru
     return $reduce(this, callbackfn, arguments.length, arguments[1], true);
   }
 });
-},{"./_array-reduce":103,"./_export":122,"./_strict-method":186}],226:[function(require,module,exports){
+},{"./_array-reduce":108,"./_export":127,"./_strict-method":191}],232:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $reduce = require('./_array-reduce');
@@ -54741,7 +56573,7 @@ $export($export.P + $export.F * !require('./_strict-method')([].reduce, true), '
     return $reduce(this, callbackfn, arguments.length, arguments[1], false);
   }
 });
-},{"./_array-reduce":103,"./_export":122,"./_strict-method":186}],227:[function(require,module,exports){
+},{"./_array-reduce":108,"./_export":127,"./_strict-method":191}],233:[function(require,module,exports){
 'use strict';
 var $export    = require('./_export')
   , html       = require('./_html')
@@ -54770,7 +56602,7 @@ $export($export.P + $export.F * require('./_fails')(function(){
     return cloned;
   }
 });
-},{"./_cof":108,"./_export":122,"./_fails":124,"./_html":131,"./_to-index":195,"./_to-length":198}],228:[function(require,module,exports){
+},{"./_cof":113,"./_export":127,"./_fails":129,"./_html":136,"./_to-index":200,"./_to-length":203}],234:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $some   = require('./_array-methods')(3);
@@ -54781,7 +56613,7 @@ $export($export.P + $export.F * !require('./_strict-method')([].some, true), 'Ar
     return $some(this, callbackfn, arguments[1]);
   }
 });
-},{"./_array-methods":102,"./_export":122,"./_strict-method":186}],229:[function(require,module,exports){
+},{"./_array-methods":107,"./_export":127,"./_strict-method":191}],235:[function(require,module,exports){
 'use strict';
 var $export   = require('./_export')
   , aFunction = require('./_a-function')
@@ -54805,14 +56637,14 @@ $export($export.P + $export.F * (fails(function(){
       : $sort.call(toObject(this), aFunction(comparefn));
   }
 });
-},{"./_a-function":93,"./_export":122,"./_fails":124,"./_strict-method":186,"./_to-object":199}],230:[function(require,module,exports){
+},{"./_a-function":98,"./_export":127,"./_fails":129,"./_strict-method":191,"./_to-object":204}],236:[function(require,module,exports){
 require('./_set-species')('Array');
-},{"./_set-species":181}],231:[function(require,module,exports){
+},{"./_set-species":186}],237:[function(require,module,exports){
 // 20.3.3.1 / 15.9.4.4 Date.now()
 var $export = require('./_export');
 
 $export($export.S, 'Date', {now: function(){ return new Date().getTime(); }});
-},{"./_export":122}],232:[function(require,module,exports){
+},{"./_export":127}],238:[function(require,module,exports){
 'use strict';
 // 20.3.4.36 / 15.9.5.43 Date.prototype.toISOString()
 var $export = require('./_export')
@@ -54841,7 +56673,7 @@ $export($export.P + $export.F * (fails(function(){
       ':' + lz(d.getUTCSeconds()) + '.' + (m > 99 ? m : '0' + lz(m)) + 'Z';
   }
 });
-},{"./_export":122,"./_fails":124}],233:[function(require,module,exports){
+},{"./_export":127,"./_fails":129}],239:[function(require,module,exports){
 'use strict';
 var $export     = require('./_export')
   , toObject    = require('./_to-object')
@@ -54856,12 +56688,12 @@ $export($export.P + $export.F * require('./_fails')(function(){
     return typeof pv == 'number' && !isFinite(pv) ? null : O.toISOString();
   }
 });
-},{"./_export":122,"./_fails":124,"./_to-object":199,"./_to-primitive":200}],234:[function(require,module,exports){
+},{"./_export":127,"./_fails":129,"./_to-object":204,"./_to-primitive":205}],240:[function(require,module,exports){
 var TO_PRIMITIVE = require('./_wks')('toPrimitive')
   , proto        = Date.prototype;
 
 if(!(TO_PRIMITIVE in proto))require('./_hide')(proto, TO_PRIMITIVE, require('./_date-to-primitive'));
-},{"./_date-to-primitive":116,"./_hide":130,"./_wks":207}],235:[function(require,module,exports){
+},{"./_date-to-primitive":121,"./_hide":135,"./_wks":212}],241:[function(require,module,exports){
 var DateProto    = Date.prototype
   , INVALID_DATE = 'Invalid Date'
   , TO_STRING    = 'toString'
@@ -54873,12 +56705,12 @@ if(new Date(NaN) + '' != INVALID_DATE){
     return value === value ? $toString.call(this) : INVALID_DATE;
   });
 }
-},{"./_redefine":177}],236:[function(require,module,exports){
+},{"./_redefine":182}],242:[function(require,module,exports){
 // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
 var $export = require('./_export');
 
 $export($export.P, 'Function', {bind: require('./_bind')});
-},{"./_bind":106,"./_export":122}],237:[function(require,module,exports){
+},{"./_bind":111,"./_export":127}],243:[function(require,module,exports){
 'use strict';
 var isObject       = require('./_is-object')
   , getPrototypeOf = require('./_object-gpo')
@@ -54892,7 +56724,7 @@ if(!(HAS_INSTANCE in FunctionProto))require('./_object-dp').f(FunctionProto, HAS
   while(O = getPrototypeOf(O))if(this.prototype === O)return true;
   return false;
 }});
-},{"./_is-object":139,"./_object-dp":157,"./_object-gpo":164,"./_wks":207}],238:[function(require,module,exports){
+},{"./_is-object":144,"./_object-dp":162,"./_object-gpo":169,"./_wks":212}],244:[function(require,module,exports){
 var dP         = require('./_object-dp').f
   , createDesc = require('./_property-desc')
   , has        = require('./_has')
@@ -54918,7 +56750,7 @@ NAME in FProto || require('./_descriptors') && dP(FProto, NAME, {
     }
   }
 });
-},{"./_descriptors":118,"./_has":129,"./_object-dp":157,"./_property-desc":175}],239:[function(require,module,exports){
+},{"./_descriptors":123,"./_has":134,"./_object-dp":162,"./_property-desc":180}],245:[function(require,module,exports){
 'use strict';
 var strong = require('./_collection-strong');
 
@@ -54936,7 +56768,7 @@ module.exports = require('./_collection')('Map', function(get){
     return strong.def(this, key === 0 ? 0 : key, value);
   }
 }, strong, true);
-},{"./_collection":112,"./_collection-strong":109}],240:[function(require,module,exports){
+},{"./_collection":117,"./_collection-strong":114}],246:[function(require,module,exports){
 // 20.2.2.3 Math.acosh(x)
 var $export = require('./_export')
   , log1p   = require('./_math-log1p')
@@ -54955,7 +56787,7 @@ $export($export.S + $export.F * !($acosh
       : log1p(x - 1 + sqrt(x - 1) * sqrt(x + 1));
   }
 });
-},{"./_export":122,"./_math-log1p":150}],241:[function(require,module,exports){
+},{"./_export":127,"./_math-log1p":155}],247:[function(require,module,exports){
 // 20.2.2.5 Math.asinh(x)
 var $export = require('./_export')
   , $asinh  = Math.asinh;
@@ -54966,7 +56798,7 @@ function asinh(x){
 
 // Tor Browser bug: Math.asinh(0) -> -0 
 $export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', {asinh: asinh});
-},{"./_export":122}],242:[function(require,module,exports){
+},{"./_export":127}],248:[function(require,module,exports){
 // 20.2.2.7 Math.atanh(x)
 var $export = require('./_export')
   , $atanh  = Math.atanh;
@@ -54977,7 +56809,7 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
     return (x = +x) == 0 ? x : Math.log((1 + x) / (1 - x)) / 2;
   }
 });
-},{"./_export":122}],243:[function(require,module,exports){
+},{"./_export":127}],249:[function(require,module,exports){
 // 20.2.2.9 Math.cbrt(x)
 var $export = require('./_export')
   , sign    = require('./_math-sign');
@@ -54987,7 +56819,7 @@ $export($export.S, 'Math', {
     return sign(x = +x) * Math.pow(Math.abs(x), 1 / 3);
   }
 });
-},{"./_export":122,"./_math-sign":151}],244:[function(require,module,exports){
+},{"./_export":127,"./_math-sign":156}],250:[function(require,module,exports){
 // 20.2.2.11 Math.clz32(x)
 var $export = require('./_export');
 
@@ -54996,7 +56828,7 @@ $export($export.S, 'Math', {
     return (x >>>= 0) ? 31 - Math.floor(Math.log(x + 0.5) * Math.LOG2E) : 32;
   }
 });
-},{"./_export":122}],245:[function(require,module,exports){
+},{"./_export":127}],251:[function(require,module,exports){
 // 20.2.2.12 Math.cosh(x)
 var $export = require('./_export')
   , exp     = Math.exp;
@@ -55006,13 +56838,13 @@ $export($export.S, 'Math', {
     return (exp(x = +x) + exp(-x)) / 2;
   }
 });
-},{"./_export":122}],246:[function(require,module,exports){
+},{"./_export":127}],252:[function(require,module,exports){
 // 20.2.2.14 Math.expm1(x)
 var $export = require('./_export')
   , $expm1  = require('./_math-expm1');
 
 $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', {expm1: $expm1});
-},{"./_export":122,"./_math-expm1":149}],247:[function(require,module,exports){
+},{"./_export":127,"./_math-expm1":154}],253:[function(require,module,exports){
 // 20.2.2.16 Math.fround(x)
 var $export   = require('./_export')
   , sign      = require('./_math-sign')
@@ -55039,7 +56871,7 @@ $export($export.S, 'Math', {
     return $sign * result;
   }
 });
-},{"./_export":122,"./_math-sign":151}],248:[function(require,module,exports){
+},{"./_export":127,"./_math-sign":156}],254:[function(require,module,exports){
 // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
 var $export = require('./_export')
   , abs     = Math.abs;
@@ -55065,7 +56897,7 @@ $export($export.S, 'Math', {
     return larg === Infinity ? Infinity : larg * Math.sqrt(sum);
   }
 });
-},{"./_export":122}],249:[function(require,module,exports){
+},{"./_export":127}],255:[function(require,module,exports){
 // 20.2.2.18 Math.imul(x, y)
 var $export = require('./_export')
   , $imul   = Math.imul;
@@ -55083,7 +56915,7 @@ $export($export.S + $export.F * require('./_fails')(function(){
     return 0 | xl * yl + ((UINT16 & xn >>> 16) * yl + xl * (UINT16 & yn >>> 16) << 16 >>> 0);
   }
 });
-},{"./_export":122,"./_fails":124}],250:[function(require,module,exports){
+},{"./_export":127,"./_fails":129}],256:[function(require,module,exports){
 // 20.2.2.21 Math.log10(x)
 var $export = require('./_export');
 
@@ -55092,12 +56924,12 @@ $export($export.S, 'Math', {
     return Math.log(x) / Math.LN10;
   }
 });
-},{"./_export":122}],251:[function(require,module,exports){
+},{"./_export":127}],257:[function(require,module,exports){
 // 20.2.2.20 Math.log1p(x)
 var $export = require('./_export');
 
 $export($export.S, 'Math', {log1p: require('./_math-log1p')});
-},{"./_export":122,"./_math-log1p":150}],252:[function(require,module,exports){
+},{"./_export":127,"./_math-log1p":155}],258:[function(require,module,exports){
 // 20.2.2.22 Math.log2(x)
 var $export = require('./_export');
 
@@ -55106,12 +56938,12 @@ $export($export.S, 'Math', {
     return Math.log(x) / Math.LN2;
   }
 });
-},{"./_export":122}],253:[function(require,module,exports){
+},{"./_export":127}],259:[function(require,module,exports){
 // 20.2.2.28 Math.sign(x)
 var $export = require('./_export');
 
 $export($export.S, 'Math', {sign: require('./_math-sign')});
-},{"./_export":122,"./_math-sign":151}],254:[function(require,module,exports){
+},{"./_export":127,"./_math-sign":156}],260:[function(require,module,exports){
 // 20.2.2.30 Math.sinh(x)
 var $export = require('./_export')
   , expm1   = require('./_math-expm1')
@@ -55127,7 +56959,7 @@ $export($export.S + $export.F * require('./_fails')(function(){
       : (exp(x - 1) - exp(-x - 1)) * (Math.E / 2);
   }
 });
-},{"./_export":122,"./_fails":124,"./_math-expm1":149}],255:[function(require,module,exports){
+},{"./_export":127,"./_fails":129,"./_math-expm1":154}],261:[function(require,module,exports){
 // 20.2.2.33 Math.tanh(x)
 var $export = require('./_export')
   , expm1   = require('./_math-expm1')
@@ -55140,7 +56972,7 @@ $export($export.S, 'Math', {
     return a == Infinity ? 1 : b == Infinity ? -1 : (a - b) / (exp(x) + exp(-x));
   }
 });
-},{"./_export":122,"./_math-expm1":149}],256:[function(require,module,exports){
+},{"./_export":127,"./_math-expm1":154}],262:[function(require,module,exports){
 // 20.2.2.34 Math.trunc(x)
 var $export = require('./_export');
 
@@ -55149,7 +56981,7 @@ $export($export.S, 'Math', {
     return (it > 0 ? Math.floor : Math.ceil)(it);
   }
 });
-},{"./_export":122}],257:[function(require,module,exports){
+},{"./_export":127}],263:[function(require,module,exports){
 'use strict';
 var global            = require('./_global')
   , has               = require('./_has')
@@ -55219,12 +57051,12 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
   proto.constructor = $Number;
   require('./_redefine')(global, NUMBER, $Number);
 }
-},{"./_cof":108,"./_descriptors":118,"./_fails":124,"./_global":128,"./_has":129,"./_inherit-if-required":133,"./_object-create":156,"./_object-dp":157,"./_object-gopd":160,"./_object-gopn":162,"./_redefine":177,"./_string-trim":192,"./_to-primitive":200}],258:[function(require,module,exports){
+},{"./_cof":113,"./_descriptors":123,"./_fails":129,"./_global":133,"./_has":134,"./_inherit-if-required":138,"./_object-create":161,"./_object-dp":162,"./_object-gopd":165,"./_object-gopn":167,"./_redefine":182,"./_string-trim":197,"./_to-primitive":205}],264:[function(require,module,exports){
 // 20.1.2.1 Number.EPSILON
 var $export = require('./_export');
 
 $export($export.S, 'Number', {EPSILON: Math.pow(2, -52)});
-},{"./_export":122}],259:[function(require,module,exports){
+},{"./_export":127}],265:[function(require,module,exports){
 // 20.1.2.2 Number.isFinite(number)
 var $export   = require('./_export')
   , _isFinite = require('./_global').isFinite;
@@ -55234,12 +57066,12 @@ $export($export.S, 'Number', {
     return typeof it == 'number' && _isFinite(it);
   }
 });
-},{"./_export":122,"./_global":128}],260:[function(require,module,exports){
+},{"./_export":127,"./_global":133}],266:[function(require,module,exports){
 // 20.1.2.3 Number.isInteger(number)
 var $export = require('./_export');
 
 $export($export.S, 'Number', {isInteger: require('./_is-integer')});
-},{"./_export":122,"./_is-integer":138}],261:[function(require,module,exports){
+},{"./_export":127,"./_is-integer":143}],267:[function(require,module,exports){
 // 20.1.2.4 Number.isNaN(number)
 var $export = require('./_export');
 
@@ -55248,7 +57080,7 @@ $export($export.S, 'Number', {
     return number != number;
   }
 });
-},{"./_export":122}],262:[function(require,module,exports){
+},{"./_export":127}],268:[function(require,module,exports){
 // 20.1.2.5 Number.isSafeInteger(number)
 var $export   = require('./_export')
   , isInteger = require('./_is-integer')
@@ -55259,29 +57091,30 @@ $export($export.S, 'Number', {
     return isInteger(number) && abs(number) <= 0x1fffffffffffff;
   }
 });
-},{"./_export":122,"./_is-integer":138}],263:[function(require,module,exports){
+},{"./_export":127,"./_is-integer":143}],269:[function(require,module,exports){
 // 20.1.2.6 Number.MAX_SAFE_INTEGER
 var $export = require('./_export');
 
 $export($export.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
-},{"./_export":122}],264:[function(require,module,exports){
+},{"./_export":127}],270:[function(require,module,exports){
 // 20.1.2.10 Number.MIN_SAFE_INTEGER
 var $export = require('./_export');
 
 $export($export.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
-},{"./_export":122}],265:[function(require,module,exports){
+},{"./_export":127}],271:[function(require,module,exports){
 var $export     = require('./_export')
   , $parseFloat = require('./_parse-float');
 // 20.1.2.12 Number.parseFloat(string)
 $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', {parseFloat: $parseFloat});
-},{"./_export":122,"./_parse-float":171}],266:[function(require,module,exports){
+},{"./_export":127,"./_parse-float":176}],272:[function(require,module,exports){
 var $export   = require('./_export')
   , $parseInt = require('./_parse-int');
 // 20.1.2.13 Number.parseInt(string, radix)
 $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', {parseInt: $parseInt});
-},{"./_export":122,"./_parse-int":172}],267:[function(require,module,exports){
+},{"./_export":127,"./_parse-int":177}],273:[function(require,module,exports){
 'use strict';
 var $export      = require('./_export')
+  , anInstance   = require('./_an-instance')
   , toInteger    = require('./_to-integer')
   , aNumberValue = require('./_a-number-value')
   , repeat       = require('./_string-repeat')
@@ -55393,7 +57226,7 @@ $export($export.P + $export.F * (!!$toFixed && (
     } return m;
   }
 });
-},{"./_a-number-value":94,"./_export":122,"./_fails":124,"./_string-repeat":191,"./_to-integer":196}],268:[function(require,module,exports){
+},{"./_a-number-value":99,"./_an-instance":101,"./_export":127,"./_fails":129,"./_string-repeat":196,"./_to-integer":201}],274:[function(require,module,exports){
 'use strict';
 var $export      = require('./_export')
   , $fails       = require('./_fails')
@@ -55412,24 +57245,24 @@ $export($export.P + $export.F * ($fails(function(){
     return precision === undefined ? $toPrecision.call(that) : $toPrecision.call(that, precision); 
   }
 });
-},{"./_a-number-value":94,"./_export":122,"./_fails":124}],269:[function(require,module,exports){
+},{"./_a-number-value":99,"./_export":127,"./_fails":129}],275:[function(require,module,exports){
 // 19.1.3.1 Object.assign(target, source)
 var $export = require('./_export');
 
 $export($export.S + $export.F, 'Object', {assign: require('./_object-assign')});
-},{"./_export":122,"./_object-assign":155}],270:[function(require,module,exports){
+},{"./_export":127,"./_object-assign":160}],276:[function(require,module,exports){
 var $export = require('./_export')
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', {create: require('./_object-create')});
-},{"./_export":122,"./_object-create":156}],271:[function(require,module,exports){
+},{"./_export":127,"./_object-create":161}],277:[function(require,module,exports){
 var $export = require('./_export');
 // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
 $export($export.S + $export.F * !require('./_descriptors'), 'Object', {defineProperties: require('./_object-dps')});
-},{"./_descriptors":118,"./_export":122,"./_object-dps":158}],272:[function(require,module,exports){
+},{"./_descriptors":123,"./_export":127,"./_object-dps":163}],278:[function(require,module,exports){
 var $export = require('./_export');
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
 $export($export.S + $export.F * !require('./_descriptors'), 'Object', {defineProperty: require('./_object-dp').f});
-},{"./_descriptors":118,"./_export":122,"./_object-dp":157}],273:[function(require,module,exports){
+},{"./_descriptors":123,"./_export":127,"./_object-dp":162}],279:[function(require,module,exports){
 // 19.1.2.5 Object.freeze(O)
 var isObject = require('./_is-object')
   , meta     = require('./_meta').onFreeze;
@@ -55439,7 +57272,7 @@ require('./_object-sap')('freeze', function($freeze){
     return $freeze && isObject(it) ? $freeze(meta(it)) : it;
   };
 });
-},{"./_is-object":139,"./_meta":152,"./_object-sap":168}],274:[function(require,module,exports){
+},{"./_is-object":144,"./_meta":157,"./_object-sap":173}],280:[function(require,module,exports){
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
 var toIObject                 = require('./_to-iobject')
   , $getOwnPropertyDescriptor = require('./_object-gopd').f;
@@ -55449,12 +57282,12 @@ require('./_object-sap')('getOwnPropertyDescriptor', function(){
     return $getOwnPropertyDescriptor(toIObject(it), key);
   };
 });
-},{"./_object-gopd":160,"./_object-sap":168,"./_to-iobject":197}],275:[function(require,module,exports){
+},{"./_object-gopd":165,"./_object-sap":173,"./_to-iobject":202}],281:[function(require,module,exports){
 // 19.1.2.7 Object.getOwnPropertyNames(O)
 require('./_object-sap')('getOwnPropertyNames', function(){
   return require('./_object-gopn-ext').f;
 });
-},{"./_object-gopn-ext":161,"./_object-sap":168}],276:[function(require,module,exports){
+},{"./_object-gopn-ext":166,"./_object-sap":173}],282:[function(require,module,exports){
 // 19.1.2.9 Object.getPrototypeOf(O)
 var toObject        = require('./_to-object')
   , $getPrototypeOf = require('./_object-gpo');
@@ -55464,7 +57297,7 @@ require('./_object-sap')('getPrototypeOf', function(){
     return $getPrototypeOf(toObject(it));
   };
 });
-},{"./_object-gpo":164,"./_object-sap":168,"./_to-object":199}],277:[function(require,module,exports){
+},{"./_object-gpo":169,"./_object-sap":173,"./_to-object":204}],283:[function(require,module,exports){
 // 19.1.2.11 Object.isExtensible(O)
 var isObject = require('./_is-object');
 
@@ -55473,7 +57306,7 @@ require('./_object-sap')('isExtensible', function($isExtensible){
     return isObject(it) ? $isExtensible ? $isExtensible(it) : true : false;
   };
 });
-},{"./_is-object":139,"./_object-sap":168}],278:[function(require,module,exports){
+},{"./_is-object":144,"./_object-sap":173}],284:[function(require,module,exports){
 // 19.1.2.12 Object.isFrozen(O)
 var isObject = require('./_is-object');
 
@@ -55482,7 +57315,7 @@ require('./_object-sap')('isFrozen', function($isFrozen){
     return isObject(it) ? $isFrozen ? $isFrozen(it) : false : true;
   };
 });
-},{"./_is-object":139,"./_object-sap":168}],279:[function(require,module,exports){
+},{"./_is-object":144,"./_object-sap":173}],285:[function(require,module,exports){
 // 19.1.2.13 Object.isSealed(O)
 var isObject = require('./_is-object');
 
@@ -55491,11 +57324,11 @@ require('./_object-sap')('isSealed', function($isSealed){
     return isObject(it) ? $isSealed ? $isSealed(it) : false : true;
   };
 });
-},{"./_is-object":139,"./_object-sap":168}],280:[function(require,module,exports){
+},{"./_is-object":144,"./_object-sap":173}],286:[function(require,module,exports){
 // 19.1.3.10 Object.is(value1, value2)
 var $export = require('./_export');
 $export($export.S, 'Object', {is: require('./_same-value')});
-},{"./_export":122,"./_same-value":179}],281:[function(require,module,exports){
+},{"./_export":127,"./_same-value":184}],287:[function(require,module,exports){
 // 19.1.2.14 Object.keys(O)
 var toObject = require('./_to-object')
   , $keys    = require('./_object-keys');
@@ -55505,7 +57338,7 @@ require('./_object-sap')('keys', function(){
     return $keys(toObject(it));
   };
 });
-},{"./_object-keys":166,"./_object-sap":168,"./_to-object":199}],282:[function(require,module,exports){
+},{"./_object-keys":171,"./_object-sap":173,"./_to-object":204}],288:[function(require,module,exports){
 // 19.1.2.15 Object.preventExtensions(O)
 var isObject = require('./_is-object')
   , meta     = require('./_meta').onFreeze;
@@ -55515,7 +57348,7 @@ require('./_object-sap')('preventExtensions', function($preventExtensions){
     return $preventExtensions && isObject(it) ? $preventExtensions(meta(it)) : it;
   };
 });
-},{"./_is-object":139,"./_meta":152,"./_object-sap":168}],283:[function(require,module,exports){
+},{"./_is-object":144,"./_meta":157,"./_object-sap":173}],289:[function(require,module,exports){
 // 19.1.2.17 Object.seal(O)
 var isObject = require('./_is-object')
   , meta     = require('./_meta').onFreeze;
@@ -55525,11 +57358,11 @@ require('./_object-sap')('seal', function($seal){
     return $seal && isObject(it) ? $seal(meta(it)) : it;
   };
 });
-},{"./_is-object":139,"./_meta":152,"./_object-sap":168}],284:[function(require,module,exports){
+},{"./_is-object":144,"./_meta":157,"./_object-sap":173}],290:[function(require,module,exports){
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = require('./_export');
 $export($export.S, 'Object', {setPrototypeOf: require('./_set-proto').set});
-},{"./_export":122,"./_set-proto":180}],285:[function(require,module,exports){
+},{"./_export":127,"./_set-proto":185}],291:[function(require,module,exports){
 'use strict';
 // 19.1.3.6 Object.prototype.toString()
 var classof = require('./_classof')
@@ -55540,17 +57373,17 @@ if(test + '' != '[object z]'){
     return '[object ' + classof(this) + ']';
   }, true);
 }
-},{"./_classof":107,"./_redefine":177,"./_wks":207}],286:[function(require,module,exports){
+},{"./_classof":112,"./_redefine":182,"./_wks":212}],292:[function(require,module,exports){
 var $export     = require('./_export')
   , $parseFloat = require('./_parse-float');
 // 18.2.4 parseFloat(string)
 $export($export.G + $export.F * (parseFloat != $parseFloat), {parseFloat: $parseFloat});
-},{"./_export":122,"./_parse-float":171}],287:[function(require,module,exports){
+},{"./_export":127,"./_parse-float":176}],293:[function(require,module,exports){
 var $export   = require('./_export')
   , $parseInt = require('./_parse-int');
 // 18.2.5 parseInt(string, radix)
 $export($export.G + $export.F * (parseInt != $parseInt), {parseInt: $parseInt});
-},{"./_export":122,"./_parse-int":172}],288:[function(require,module,exports){
+},{"./_export":127,"./_parse-int":177}],294:[function(require,module,exports){
 'use strict';
 var LIBRARY            = require('./_library')
   , global             = require('./_global')
@@ -55558,9 +57391,11 @@ var LIBRARY            = require('./_library')
   , classof            = require('./_classof')
   , $export            = require('./_export')
   , isObject           = require('./_is-object')
+  , anObject           = require('./_an-object')
   , aFunction          = require('./_a-function')
   , anInstance         = require('./_an-instance')
   , forOf              = require('./_for-of')
+  , setProto           = require('./_set-proto').set
   , speciesConstructor = require('./_species-constructor')
   , task               = require('./_task').set
   , microtask          = require('./_microtask')()
@@ -55850,50 +57685,37 @@ $export($export.S + $export.F * !(USE_NATIVE && require('./_iter-detect')(functi
     return capability.promise;
   }
 });
-},{"./_a-function":93,"./_an-instance":96,"./_classof":107,"./_core":113,"./_ctx":115,"./_export":122,"./_for-of":127,"./_global":128,"./_is-object":139,"./_iter-detect":144,"./_library":148,"./_microtask":154,"./_redefine-all":176,"./_set-species":181,"./_set-to-string-tag":182,"./_species-constructor":185,"./_task":194,"./_wks":207}],289:[function(require,module,exports){
+},{"./_a-function":98,"./_an-instance":101,"./_an-object":102,"./_classof":112,"./_core":118,"./_ctx":120,"./_export":127,"./_for-of":132,"./_global":133,"./_is-object":144,"./_iter-detect":149,"./_library":153,"./_microtask":159,"./_redefine-all":181,"./_set-proto":185,"./_set-species":186,"./_set-to-string-tag":187,"./_species-constructor":190,"./_task":199,"./_wks":212}],295:[function(require,module,exports){
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
 var $export   = require('./_export')
   , aFunction = require('./_a-function')
   , anObject  = require('./_an-object')
-  , rApply    = (require('./_global').Reflect || {}).apply
-  , fApply    = Function.apply;
-// MS Edge argumentsList argument is optional
-$export($export.S + $export.F * !require('./_fails')(function(){
-  rApply(function(){});
-}), 'Reflect', {
+  , _apply    = Function.apply;
+
+$export($export.S, 'Reflect', {
   apply: function apply(target, thisArgument, argumentsList){
-    var T = aFunction(target)
-      , L = anObject(argumentsList);
-    return rApply ? rApply(T, thisArgument, L) : fApply.call(T, thisArgument, L);
+    return _apply.call(aFunction(target), thisArgument, anObject(argumentsList));
   }
 });
-},{"./_a-function":93,"./_an-object":97,"./_export":122,"./_fails":124,"./_global":128}],290:[function(require,module,exports){
+},{"./_a-function":98,"./_an-object":102,"./_export":127}],296:[function(require,module,exports){
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
-var $export    = require('./_export')
-  , create     = require('./_object-create')
-  , aFunction  = require('./_a-function')
-  , anObject   = require('./_an-object')
-  , isObject   = require('./_is-object')
-  , fails      = require('./_fails')
-  , bind       = require('./_bind')
-  , rConstruct = (require('./_global').Reflect || {}).construct;
+var $export   = require('./_export')
+  , create    = require('./_object-create')
+  , aFunction = require('./_a-function')
+  , anObject  = require('./_an-object')
+  , isObject  = require('./_is-object')
+  , bind      = require('./_bind');
 
-// MS Edge supports only 2 arguments and argumentsList argument is optional
+// MS Edge supports only 2 arguments
 // FF Nightly sets third argument as `new.target`, but does not create `this` from it
-var NEW_TARGET_BUG = fails(function(){
+$export($export.S + $export.F * require('./_fails')(function(){
   function F(){}
-  return !(rConstruct(function(){}, [], F) instanceof F);
-});
-var ARGS_BUG = !fails(function(){
-  rConstruct(function(){});
-});
-
-$export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
+  return !(Reflect.construct(function(){}, [], F) instanceof F);
+}), 'Reflect', {
   construct: function construct(Target, args /*, newTarget*/){
     aFunction(Target);
     anObject(args);
     var newTarget = arguments.length < 3 ? Target : aFunction(arguments[2]);
-    if(ARGS_BUG && !NEW_TARGET_BUG)return rConstruct(Target, args, newTarget);
     if(Target == newTarget){
       // w/o altered newTarget, optimization for 0-4 arguments
       switch(args.length){
@@ -55915,7 +57737,7 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
     return isObject(result) ? result : instance;
   }
 });
-},{"./_a-function":93,"./_an-object":97,"./_bind":106,"./_export":122,"./_fails":124,"./_global":128,"./_is-object":139,"./_object-create":156}],291:[function(require,module,exports){
+},{"./_a-function":98,"./_an-object":102,"./_bind":111,"./_export":127,"./_fails":129,"./_is-object":144,"./_object-create":161}],297:[function(require,module,exports){
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
 var dP          = require('./_object-dp')
   , $export     = require('./_export')
@@ -55938,7 +57760,7 @@ $export($export.S + $export.F * require('./_fails')(function(){
     }
   }
 });
-},{"./_an-object":97,"./_export":122,"./_fails":124,"./_object-dp":157,"./_to-primitive":200}],292:[function(require,module,exports){
+},{"./_an-object":102,"./_export":127,"./_fails":129,"./_object-dp":162,"./_to-primitive":205}],298:[function(require,module,exports){
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
 var $export  = require('./_export')
   , gOPD     = require('./_object-gopd').f
@@ -55950,7 +57772,7 @@ $export($export.S, 'Reflect', {
     return desc && !desc.configurable ? false : delete target[propertyKey];
   }
 });
-},{"./_an-object":97,"./_export":122,"./_object-gopd":160}],293:[function(require,module,exports){
+},{"./_an-object":102,"./_export":127,"./_object-gopd":165}],299:[function(require,module,exports){
 'use strict';
 // 26.1.5 Reflect.enumerate(target)
 var $export  = require('./_export')
@@ -55977,7 +57799,7 @@ $export($export.S, 'Reflect', {
     return new Enumerate(target);
   }
 });
-},{"./_an-object":97,"./_export":122,"./_iter-create":142}],294:[function(require,module,exports){
+},{"./_an-object":102,"./_export":127,"./_iter-create":147}],300:[function(require,module,exports){
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
 var gOPD     = require('./_object-gopd')
   , $export  = require('./_export')
@@ -55988,7 +57810,7 @@ $export($export.S, 'Reflect', {
     return gOPD.f(anObject(target), propertyKey);
   }
 });
-},{"./_an-object":97,"./_export":122,"./_object-gopd":160}],295:[function(require,module,exports){
+},{"./_an-object":102,"./_export":127,"./_object-gopd":165}],301:[function(require,module,exports){
 // 26.1.8 Reflect.getPrototypeOf(target)
 var $export  = require('./_export')
   , getProto = require('./_object-gpo')
@@ -55999,7 +57821,7 @@ $export($export.S, 'Reflect', {
     return getProto(anObject(target));
   }
 });
-},{"./_an-object":97,"./_export":122,"./_object-gpo":164}],296:[function(require,module,exports){
+},{"./_an-object":102,"./_export":127,"./_object-gpo":169}],302:[function(require,module,exports){
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
 var gOPD           = require('./_object-gopd')
   , getPrototypeOf = require('./_object-gpo')
@@ -56021,7 +57843,7 @@ function get(target, propertyKey/*, receiver*/){
 }
 
 $export($export.S, 'Reflect', {get: get});
-},{"./_an-object":97,"./_export":122,"./_has":129,"./_is-object":139,"./_object-gopd":160,"./_object-gpo":164}],297:[function(require,module,exports){
+},{"./_an-object":102,"./_export":127,"./_has":134,"./_is-object":144,"./_object-gopd":165,"./_object-gpo":169}],303:[function(require,module,exports){
 // 26.1.9 Reflect.has(target, propertyKey)
 var $export = require('./_export');
 
@@ -56030,7 +57852,7 @@ $export($export.S, 'Reflect', {
     return propertyKey in target;
   }
 });
-},{"./_export":122}],298:[function(require,module,exports){
+},{"./_export":127}],304:[function(require,module,exports){
 // 26.1.10 Reflect.isExtensible(target)
 var $export       = require('./_export')
   , anObject      = require('./_an-object')
@@ -56042,12 +57864,12 @@ $export($export.S, 'Reflect', {
     return $isExtensible ? $isExtensible(target) : true;
   }
 });
-},{"./_an-object":97,"./_export":122}],299:[function(require,module,exports){
+},{"./_an-object":102,"./_export":127}],305:[function(require,module,exports){
 // 26.1.11 Reflect.ownKeys(target)
 var $export = require('./_export');
 
 $export($export.S, 'Reflect', {ownKeys: require('./_own-keys')});
-},{"./_export":122,"./_own-keys":170}],300:[function(require,module,exports){
+},{"./_export":127,"./_own-keys":175}],306:[function(require,module,exports){
 // 26.1.12 Reflect.preventExtensions(target)
 var $export            = require('./_export')
   , anObject           = require('./_an-object')
@@ -56064,7 +57886,7 @@ $export($export.S, 'Reflect', {
     }
   }
 });
-},{"./_an-object":97,"./_export":122}],301:[function(require,module,exports){
+},{"./_an-object":102,"./_export":127}],307:[function(require,module,exports){
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
 var $export  = require('./_export')
   , setProto = require('./_set-proto');
@@ -56080,7 +57902,7 @@ if(setProto)$export($export.S, 'Reflect', {
     }
   }
 });
-},{"./_export":122,"./_set-proto":180}],302:[function(require,module,exports){
+},{"./_export":127,"./_set-proto":185}],308:[function(require,module,exports){
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
 var dP             = require('./_object-dp')
   , gOPD           = require('./_object-gopd')
@@ -56112,7 +57934,7 @@ function set(target, propertyKey, V/*, receiver*/){
 }
 
 $export($export.S, 'Reflect', {set: set});
-},{"./_an-object":97,"./_export":122,"./_has":129,"./_is-object":139,"./_object-dp":157,"./_object-gopd":160,"./_object-gpo":164,"./_property-desc":175}],303:[function(require,module,exports){
+},{"./_an-object":102,"./_export":127,"./_has":134,"./_is-object":144,"./_object-dp":162,"./_object-gopd":165,"./_object-gpo":169,"./_property-desc":180}],309:[function(require,module,exports){
 var global            = require('./_global')
   , inheritIfRequired = require('./_inherit-if-required')
   , dP                = require('./_object-dp').f
@@ -56156,13 +57978,13 @@ if(require('./_descriptors') && (!CORRECT_NEW || require('./_fails')(function(){
 }
 
 require('./_set-species')('RegExp');
-},{"./_descriptors":118,"./_fails":124,"./_flags":126,"./_global":128,"./_inherit-if-required":133,"./_is-regexp":140,"./_object-dp":157,"./_object-gopn":162,"./_redefine":177,"./_set-species":181,"./_wks":207}],304:[function(require,module,exports){
+},{"./_descriptors":123,"./_fails":129,"./_flags":131,"./_global":133,"./_inherit-if-required":138,"./_is-regexp":145,"./_object-dp":162,"./_object-gopn":167,"./_redefine":182,"./_set-species":186,"./_wks":212}],310:[function(require,module,exports){
 // 21.2.5.3 get RegExp.prototype.flags()
 if(require('./_descriptors') && /./g.flags != 'g')require('./_object-dp').f(RegExp.prototype, 'flags', {
   configurable: true,
   get: require('./_flags')
 });
-},{"./_descriptors":118,"./_flags":126,"./_object-dp":157}],305:[function(require,module,exports){
+},{"./_descriptors":123,"./_flags":131,"./_object-dp":162}],311:[function(require,module,exports){
 // @@match logic
 require('./_fix-re-wks')('match', 1, function(defined, MATCH, $match){
   // 21.1.3.11 String.prototype.match(regexp)
@@ -56173,7 +57995,7 @@ require('./_fix-re-wks')('match', 1, function(defined, MATCH, $match){
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[MATCH](String(O));
   }, $match];
 });
-},{"./_fix-re-wks":125}],306:[function(require,module,exports){
+},{"./_fix-re-wks":130}],312:[function(require,module,exports){
 // @@replace logic
 require('./_fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
   // 21.1.3.14 String.prototype.replace(searchValue, replaceValue)
@@ -56186,7 +58008,7 @@ require('./_fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
       : $replace.call(String(O), searchValue, replaceValue);
   }, $replace];
 });
-},{"./_fix-re-wks":125}],307:[function(require,module,exports){
+},{"./_fix-re-wks":130}],313:[function(require,module,exports){
 // @@search logic
 require('./_fix-re-wks')('search', 1, function(defined, SEARCH, $search){
   // 21.1.3.15 String.prototype.search(regexp)
@@ -56197,7 +58019,7 @@ require('./_fix-re-wks')('search', 1, function(defined, SEARCH, $search){
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[SEARCH](String(O));
   }, $search];
 });
-},{"./_fix-re-wks":125}],308:[function(require,module,exports){
+},{"./_fix-re-wks":130}],314:[function(require,module,exports){
 // @@split logic
 require('./_fix-re-wks')('split', 2, function(defined, SPLIT, $split){
   'use strict';
@@ -56268,7 +58090,7 @@ require('./_fix-re-wks')('split', 2, function(defined, SPLIT, $split){
     return fn !== undefined ? fn.call(separator, O, limit) : $split.call(String(O), separator, limit);
   }, $split];
 });
-},{"./_fix-re-wks":125,"./_is-regexp":140}],309:[function(require,module,exports){
+},{"./_fix-re-wks":130,"./_is-regexp":145}],315:[function(require,module,exports){
 'use strict';
 require('./es6.regexp.flags');
 var anObject    = require('./_an-object')
@@ -56294,7 +58116,7 @@ if(require('./_fails')(function(){ return $toString.call({source: 'a', flags: 'b
     return $toString.call(this);
   });
 }
-},{"./_an-object":97,"./_descriptors":118,"./_fails":124,"./_flags":126,"./_redefine":177,"./es6.regexp.flags":304}],310:[function(require,module,exports){
+},{"./_an-object":102,"./_descriptors":123,"./_fails":129,"./_flags":131,"./_redefine":182,"./es6.regexp.flags":310}],316:[function(require,module,exports){
 'use strict';
 var strong = require('./_collection-strong');
 
@@ -56307,7 +58129,7 @@ module.exports = require('./_collection')('Set', function(get){
     return strong.def(this, value = value === 0 ? 0 : value, value);
   }
 }, strong);
-},{"./_collection":112,"./_collection-strong":109}],311:[function(require,module,exports){
+},{"./_collection":117,"./_collection-strong":114}],317:[function(require,module,exports){
 'use strict';
 // B.2.3.2 String.prototype.anchor(name)
 require('./_string-html')('anchor', function(createHTML){
@@ -56315,7 +58137,7 @@ require('./_string-html')('anchor', function(createHTML){
     return createHTML(this, 'a', 'name', name);
   }
 });
-},{"./_string-html":189}],312:[function(require,module,exports){
+},{"./_string-html":194}],318:[function(require,module,exports){
 'use strict';
 // B.2.3.3 String.prototype.big()
 require('./_string-html')('big', function(createHTML){
@@ -56323,7 +58145,7 @@ require('./_string-html')('big', function(createHTML){
     return createHTML(this, 'big', '', '');
   }
 });
-},{"./_string-html":189}],313:[function(require,module,exports){
+},{"./_string-html":194}],319:[function(require,module,exports){
 'use strict';
 // B.2.3.4 String.prototype.blink()
 require('./_string-html')('blink', function(createHTML){
@@ -56331,7 +58153,7 @@ require('./_string-html')('blink', function(createHTML){
     return createHTML(this, 'blink', '', '');
   }
 });
-},{"./_string-html":189}],314:[function(require,module,exports){
+},{"./_string-html":194}],320:[function(require,module,exports){
 'use strict';
 // B.2.3.5 String.prototype.bold()
 require('./_string-html')('bold', function(createHTML){
@@ -56339,7 +58161,7 @@ require('./_string-html')('bold', function(createHTML){
     return createHTML(this, 'b', '', '');
   }
 });
-},{"./_string-html":189}],315:[function(require,module,exports){
+},{"./_string-html":194}],321:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $at     = require('./_string-at')(false);
@@ -56349,7 +58171,7 @@ $export($export.P, 'String', {
     return $at(this, pos);
   }
 });
-},{"./_export":122,"./_string-at":187}],316:[function(require,module,exports){
+},{"./_export":127,"./_string-at":192}],322:[function(require,module,exports){
 // 21.1.3.6 String.prototype.endsWith(searchString [, endPosition])
 'use strict';
 var $export   = require('./_export')
@@ -56370,7 +58192,7 @@ $export($export.P + $export.F * require('./_fails-is-regexp')(ENDS_WITH), 'Strin
       : that.slice(end - search.length, end) === search;
   }
 });
-},{"./_export":122,"./_fails-is-regexp":123,"./_string-context":188,"./_to-length":198}],317:[function(require,module,exports){
+},{"./_export":127,"./_fails-is-regexp":128,"./_string-context":193,"./_to-length":203}],323:[function(require,module,exports){
 'use strict';
 // B.2.3.6 String.prototype.fixed()
 require('./_string-html')('fixed', function(createHTML){
@@ -56378,7 +58200,7 @@ require('./_string-html')('fixed', function(createHTML){
     return createHTML(this, 'tt', '', '');
   }
 });
-},{"./_string-html":189}],318:[function(require,module,exports){
+},{"./_string-html":194}],324:[function(require,module,exports){
 'use strict';
 // B.2.3.7 String.prototype.fontcolor(color)
 require('./_string-html')('fontcolor', function(createHTML){
@@ -56386,7 +58208,7 @@ require('./_string-html')('fontcolor', function(createHTML){
     return createHTML(this, 'font', 'color', color);
   }
 });
-},{"./_string-html":189}],319:[function(require,module,exports){
+},{"./_string-html":194}],325:[function(require,module,exports){
 'use strict';
 // B.2.3.8 String.prototype.fontsize(size)
 require('./_string-html')('fontsize', function(createHTML){
@@ -56394,7 +58216,7 @@ require('./_string-html')('fontsize', function(createHTML){
     return createHTML(this, 'font', 'size', size);
   }
 });
-},{"./_string-html":189}],320:[function(require,module,exports){
+},{"./_string-html":194}],326:[function(require,module,exports){
 var $export        = require('./_export')
   , toIndex        = require('./_to-index')
   , fromCharCode   = String.fromCharCode
@@ -56418,7 +58240,7 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
     } return res.join('');
   }
 });
-},{"./_export":122,"./_to-index":195}],321:[function(require,module,exports){
+},{"./_export":127,"./_to-index":200}],327:[function(require,module,exports){
 // 21.1.3.7 String.prototype.includes(searchString, position = 0)
 'use strict';
 var $export  = require('./_export')
@@ -56431,7 +58253,7 @@ $export($export.P + $export.F * require('./_fails-is-regexp')(INCLUDES), 'String
       .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
-},{"./_export":122,"./_fails-is-regexp":123,"./_string-context":188}],322:[function(require,module,exports){
+},{"./_export":127,"./_fails-is-regexp":128,"./_string-context":193}],328:[function(require,module,exports){
 'use strict';
 // B.2.3.9 String.prototype.italics()
 require('./_string-html')('italics', function(createHTML){
@@ -56439,7 +58261,7 @@ require('./_string-html')('italics', function(createHTML){
     return createHTML(this, 'i', '', '');
   }
 });
-},{"./_string-html":189}],323:[function(require,module,exports){
+},{"./_string-html":194}],329:[function(require,module,exports){
 'use strict';
 var $at  = require('./_string-at')(true);
 
@@ -56457,7 +58279,7 @@ require('./_iter-define')(String, 'String', function(iterated){
   this._i += point.length;
   return {value: point, done: false};
 });
-},{"./_iter-define":143,"./_string-at":187}],324:[function(require,module,exports){
+},{"./_iter-define":148,"./_string-at":192}],330:[function(require,module,exports){
 'use strict';
 // B.2.3.10 String.prototype.link(url)
 require('./_string-html')('link', function(createHTML){
@@ -56465,7 +58287,7 @@ require('./_string-html')('link', function(createHTML){
     return createHTML(this, 'a', 'href', url);
   }
 });
-},{"./_string-html":189}],325:[function(require,module,exports){
+},{"./_string-html":194}],331:[function(require,module,exports){
 var $export   = require('./_export')
   , toIObject = require('./_to-iobject')
   , toLength  = require('./_to-length');
@@ -56484,14 +58306,14 @@ $export($export.S, 'String', {
     } return res.join('');
   }
 });
-},{"./_export":122,"./_to-iobject":197,"./_to-length":198}],326:[function(require,module,exports){
+},{"./_export":127,"./_to-iobject":202,"./_to-length":203}],332:[function(require,module,exports){
 var $export = require('./_export');
 
 $export($export.P, 'String', {
   // 21.1.3.13 String.prototype.repeat(count)
   repeat: require('./_string-repeat')
 });
-},{"./_export":122,"./_string-repeat":191}],327:[function(require,module,exports){
+},{"./_export":127,"./_string-repeat":196}],333:[function(require,module,exports){
 'use strict';
 // B.2.3.11 String.prototype.small()
 require('./_string-html')('small', function(createHTML){
@@ -56499,7 +58321,7 @@ require('./_string-html')('small', function(createHTML){
     return createHTML(this, 'small', '', '');
   }
 });
-},{"./_string-html":189}],328:[function(require,module,exports){
+},{"./_string-html":194}],334:[function(require,module,exports){
 // 21.1.3.18 String.prototype.startsWith(searchString [, position ])
 'use strict';
 var $export     = require('./_export')
@@ -56518,7 +58340,7 @@ $export($export.P + $export.F * require('./_fails-is-regexp')(STARTS_WITH), 'Str
       : that.slice(index, index + search.length) === search;
   }
 });
-},{"./_export":122,"./_fails-is-regexp":123,"./_string-context":188,"./_to-length":198}],329:[function(require,module,exports){
+},{"./_export":127,"./_fails-is-regexp":128,"./_string-context":193,"./_to-length":203}],335:[function(require,module,exports){
 'use strict';
 // B.2.3.12 String.prototype.strike()
 require('./_string-html')('strike', function(createHTML){
@@ -56526,7 +58348,7 @@ require('./_string-html')('strike', function(createHTML){
     return createHTML(this, 'strike', '', '');
   }
 });
-},{"./_string-html":189}],330:[function(require,module,exports){
+},{"./_string-html":194}],336:[function(require,module,exports){
 'use strict';
 // B.2.3.13 String.prototype.sub()
 require('./_string-html')('sub', function(createHTML){
@@ -56534,7 +58356,7 @@ require('./_string-html')('sub', function(createHTML){
     return createHTML(this, 'sub', '', '');
   }
 });
-},{"./_string-html":189}],331:[function(require,module,exports){
+},{"./_string-html":194}],337:[function(require,module,exports){
 'use strict';
 // B.2.3.14 String.prototype.sup()
 require('./_string-html')('sup', function(createHTML){
@@ -56542,7 +58364,7 @@ require('./_string-html')('sup', function(createHTML){
     return createHTML(this, 'sup', '', '');
   }
 });
-},{"./_string-html":189}],332:[function(require,module,exports){
+},{"./_string-html":194}],338:[function(require,module,exports){
 'use strict';
 // 21.1.3.25 String.prototype.trim()
 require('./_string-trim')('trim', function($trim){
@@ -56550,7 +58372,7 @@ require('./_string-trim')('trim', function($trim){
     return $trim(this, 3);
   };
 });
-},{"./_string-trim":192}],333:[function(require,module,exports){
+},{"./_string-trim":197}],339:[function(require,module,exports){
 'use strict';
 // ECMAScript 6 symbols shim
 var global         = require('./_global')
@@ -56786,7 +58608,7 @@ setToStringTag($Symbol, 'Symbol');
 setToStringTag(Math, 'Math', true);
 // 24.3.3 JSON[@@toStringTag]
 setToStringTag(global.JSON, 'JSON', true);
-},{"./_an-object":97,"./_descriptors":118,"./_enum-keys":121,"./_export":122,"./_fails":124,"./_global":128,"./_has":129,"./_hide":130,"./_is-array":137,"./_keyof":147,"./_library":148,"./_meta":152,"./_object-create":156,"./_object-dp":157,"./_object-gopd":160,"./_object-gopn":162,"./_object-gopn-ext":161,"./_object-gops":163,"./_object-keys":166,"./_object-pie":167,"./_property-desc":175,"./_redefine":177,"./_set-to-string-tag":182,"./_shared":184,"./_to-iobject":197,"./_to-primitive":200,"./_uid":204,"./_wks":207,"./_wks-define":205,"./_wks-ext":206}],334:[function(require,module,exports){
+},{"./_an-object":102,"./_descriptors":123,"./_enum-keys":126,"./_export":127,"./_fails":129,"./_global":133,"./_has":134,"./_hide":135,"./_is-array":142,"./_keyof":152,"./_library":153,"./_meta":157,"./_object-create":161,"./_object-dp":162,"./_object-gopd":165,"./_object-gopn":167,"./_object-gopn-ext":166,"./_object-gops":168,"./_object-keys":171,"./_object-pie":172,"./_property-desc":180,"./_redefine":182,"./_set-to-string-tag":187,"./_shared":189,"./_to-iobject":202,"./_to-primitive":205,"./_uid":209,"./_wks":212,"./_wks-define":210,"./_wks-ext":211}],340:[function(require,module,exports){
 'use strict';
 var $export      = require('./_export')
   , $typed       = require('./_typed')
@@ -56795,6 +58617,7 @@ var $export      = require('./_export')
   , toIndex      = require('./_to-index')
   , toLength     = require('./_to-length')
   , isObject     = require('./_is-object')
+  , TYPED_ARRAY  = require('./_wks')('typed_array')
   , ArrayBuffer  = require('./_global').ArrayBuffer
   , speciesConstructor = require('./_species-constructor')
   , $ArrayBuffer = buffer.ArrayBuffer
@@ -56833,66 +58656,66 @@ $export($export.P + $export.U + $export.F * require('./_fails')(function(){
 });
 
 require('./_set-species')(ARRAY_BUFFER);
-},{"./_an-object":97,"./_export":122,"./_fails":124,"./_global":128,"./_is-object":139,"./_set-species":181,"./_species-constructor":185,"./_to-index":195,"./_to-length":198,"./_typed":203,"./_typed-buffer":202}],335:[function(require,module,exports){
+},{"./_an-object":102,"./_export":127,"./_fails":129,"./_global":133,"./_is-object":144,"./_set-species":186,"./_species-constructor":190,"./_to-index":200,"./_to-length":203,"./_typed":208,"./_typed-buffer":207,"./_wks":212}],341:[function(require,module,exports){
 var $export = require('./_export');
 $export($export.G + $export.W + $export.F * !require('./_typed').ABV, {
   DataView: require('./_typed-buffer').DataView
 });
-},{"./_export":122,"./_typed":203,"./_typed-buffer":202}],336:[function(require,module,exports){
+},{"./_export":127,"./_typed":208,"./_typed-buffer":207}],342:[function(require,module,exports){
 require('./_typed-array')('Float32', 4, function(init){
   return function Float32Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":201}],337:[function(require,module,exports){
+},{"./_typed-array":206}],343:[function(require,module,exports){
 require('./_typed-array')('Float64', 8, function(init){
   return function Float64Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":201}],338:[function(require,module,exports){
+},{"./_typed-array":206}],344:[function(require,module,exports){
 require('./_typed-array')('Int16', 2, function(init){
   return function Int16Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":201}],339:[function(require,module,exports){
+},{"./_typed-array":206}],345:[function(require,module,exports){
 require('./_typed-array')('Int32', 4, function(init){
   return function Int32Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":201}],340:[function(require,module,exports){
+},{"./_typed-array":206}],346:[function(require,module,exports){
 require('./_typed-array')('Int8', 1, function(init){
   return function Int8Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":201}],341:[function(require,module,exports){
+},{"./_typed-array":206}],347:[function(require,module,exports){
 require('./_typed-array')('Uint16', 2, function(init){
   return function Uint16Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":201}],342:[function(require,module,exports){
+},{"./_typed-array":206}],348:[function(require,module,exports){
 require('./_typed-array')('Uint32', 4, function(init){
   return function Uint32Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":201}],343:[function(require,module,exports){
+},{"./_typed-array":206}],349:[function(require,module,exports){
 require('./_typed-array')('Uint8', 1, function(init){
   return function Uint8Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":201}],344:[function(require,module,exports){
+},{"./_typed-array":206}],350:[function(require,module,exports){
 require('./_typed-array')('Uint8', 1, function(init){
   return function Uint8ClampedArray(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 }, true);
-},{"./_typed-array":201}],345:[function(require,module,exports){
+},{"./_typed-array":206}],351:[function(require,module,exports){
 'use strict';
 var each         = require('./_array-methods')(0)
   , redefine     = require('./_redefine')
@@ -56900,6 +58723,7 @@ var each         = require('./_array-methods')(0)
   , assign       = require('./_object-assign')
   , weak         = require('./_collection-weak')
   , isObject     = require('./_is-object')
+  , has          = require('./_has')
   , getWeak      = meta.getWeak
   , isExtensible = Object.isExtensible
   , uncaughtFrozenStore = weak.ufstore
@@ -56949,7 +58773,7 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
     });
   });
 }
-},{"./_array-methods":102,"./_collection":112,"./_collection-weak":111,"./_is-object":139,"./_meta":152,"./_object-assign":155,"./_redefine":177}],346:[function(require,module,exports){
+},{"./_array-methods":107,"./_collection":117,"./_collection-weak":116,"./_has":134,"./_is-object":144,"./_meta":157,"./_object-assign":160,"./_redefine":182}],352:[function(require,module,exports){
 'use strict';
 var weak = require('./_collection-weak');
 
@@ -56962,7 +58786,7 @@ require('./_collection')('WeakSet', function(get){
     return weak.def(this, value, true);
   }
 }, weak, false, true);
-},{"./_collection":112,"./_collection-weak":111}],347:[function(require,module,exports){
+},{"./_collection":117,"./_collection-weak":116}],353:[function(require,module,exports){
 'use strict';
 // https://github.com/tc39/Array.prototype.includes
 var $export   = require('./_export')
@@ -56975,7 +58799,7 @@ $export($export.P, 'Array', {
 });
 
 require('./_add-to-unscopables')('includes');
-},{"./_add-to-unscopables":95,"./_array-includes":101,"./_export":122}],348:[function(require,module,exports){
+},{"./_add-to-unscopables":100,"./_array-includes":106,"./_export":127}],354:[function(require,module,exports){
 // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
 var $export   = require('./_export')
   , microtask = require('./_microtask')()
@@ -56988,7 +58812,7 @@ $export($export.G, {
     microtask(domain ? domain.bind(fn) : fn);
   }
 });
-},{"./_cof":108,"./_export":122,"./_global":128,"./_microtask":154}],349:[function(require,module,exports){
+},{"./_cof":113,"./_export":127,"./_global":133,"./_microtask":159}],355:[function(require,module,exports){
 // https://github.com/ljharb/proposal-is-error
 var $export = require('./_export')
   , cof     = require('./_cof');
@@ -56998,12 +58822,12 @@ $export($export.S, 'Error', {
     return cof(it) === 'Error';
   }
 });
-},{"./_cof":108,"./_export":122}],350:[function(require,module,exports){
+},{"./_cof":113,"./_export":127}],356:[function(require,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export  = require('./_export');
 
 $export($export.P + $export.R, 'Map', {toJSON: require('./_collection-to-json')('Map')});
-},{"./_collection-to-json":110,"./_export":122}],351:[function(require,module,exports){
+},{"./_collection-to-json":115,"./_export":127}],357:[function(require,module,exports){
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
@@ -57015,7 +58839,7 @@ $export($export.S, 'Math', {
     return $x1 + (y1 >>> 0) + (($x0 & $y0 | ($x0 | $y0) & ~($x0 + $y0 >>> 0)) >>> 31) | 0;
   }
 });
-},{"./_export":122}],352:[function(require,module,exports){
+},{"./_export":127}],358:[function(require,module,exports){
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
@@ -57032,7 +58856,7 @@ $export($export.S, 'Math', {
     return u1 * v1 + (t >> 16) + ((u0 * v1 >>> 0) + (t & UINT16) >> 16);
   }
 });
-},{"./_export":122}],353:[function(require,module,exports){
+},{"./_export":127}],359:[function(require,module,exports){
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
@@ -57044,7 +58868,7 @@ $export($export.S, 'Math', {
     return $x1 - (y1 >>> 0) - ((~$x0 & $y0 | ~($x0 ^ $y0) & $x0 - $y0 >>> 0) >>> 31) | 0;
   }
 });
-},{"./_export":122}],354:[function(require,module,exports){
+},{"./_export":127}],360:[function(require,module,exports){
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
@@ -57061,7 +58885,7 @@ $export($export.S, 'Math', {
     return u1 * v1 + (t >>> 16) + ((u0 * v1 >>> 0) + (t & UINT16) >>> 16);
   }
 });
-},{"./_export":122}],355:[function(require,module,exports){
+},{"./_export":127}],361:[function(require,module,exports){
 'use strict';
 var $export         = require('./_export')
   , toObject        = require('./_to-object')
@@ -57074,7 +58898,7 @@ require('./_descriptors') && $export($export.P + require('./_object-forced-pam')
     $defineProperty.f(toObject(this), P, {get: aFunction(getter), enumerable: true, configurable: true});
   }
 });
-},{"./_a-function":93,"./_descriptors":118,"./_export":122,"./_object-dp":157,"./_object-forced-pam":159,"./_to-object":199}],356:[function(require,module,exports){
+},{"./_a-function":98,"./_descriptors":123,"./_export":127,"./_object-dp":162,"./_object-forced-pam":164,"./_to-object":204}],362:[function(require,module,exports){
 'use strict';
 var $export         = require('./_export')
   , toObject        = require('./_to-object')
@@ -57087,7 +58911,7 @@ require('./_descriptors') && $export($export.P + require('./_object-forced-pam')
     $defineProperty.f(toObject(this), P, {set: aFunction(setter), enumerable: true, configurable: true});
   }
 });
-},{"./_a-function":93,"./_descriptors":118,"./_export":122,"./_object-dp":157,"./_object-forced-pam":159,"./_to-object":199}],357:[function(require,module,exports){
+},{"./_a-function":98,"./_descriptors":123,"./_export":127,"./_object-dp":162,"./_object-forced-pam":164,"./_to-object":204}],363:[function(require,module,exports){
 // https://github.com/tc39/proposal-object-values-entries
 var $export  = require('./_export')
   , $entries = require('./_object-to-array')(true);
@@ -57097,7 +58921,7 @@ $export($export.S, 'Object', {
     return $entries(it);
   }
 });
-},{"./_export":122,"./_object-to-array":169}],358:[function(require,module,exports){
+},{"./_export":127,"./_object-to-array":174}],364:[function(require,module,exports){
 // https://github.com/tc39/proposal-object-getownpropertydescriptors
 var $export        = require('./_export')
   , ownKeys        = require('./_own-keys')
@@ -57112,12 +58936,12 @@ $export($export.S, 'Object', {
       , keys    = ownKeys(O)
       , result  = {}
       , i       = 0
-      , key;
+      , key, D;
     while(keys.length > i)createProperty(result, key = keys[i++], getDesc(O, key));
     return result;
   }
 });
-},{"./_create-property":114,"./_export":122,"./_object-gopd":160,"./_own-keys":170,"./_to-iobject":197}],359:[function(require,module,exports){
+},{"./_create-property":119,"./_export":127,"./_object-gopd":165,"./_own-keys":175,"./_to-iobject":202}],365:[function(require,module,exports){
 'use strict';
 var $export                  = require('./_export')
   , toObject                 = require('./_to-object')
@@ -57136,7 +58960,7 @@ require('./_descriptors') && $export($export.P + require('./_object-forced-pam')
     } while(O = getPrototypeOf(O));
   }
 });
-},{"./_descriptors":118,"./_export":122,"./_object-forced-pam":159,"./_object-gopd":160,"./_object-gpo":164,"./_to-object":199,"./_to-primitive":200}],360:[function(require,module,exports){
+},{"./_descriptors":123,"./_export":127,"./_object-forced-pam":164,"./_object-gopd":165,"./_object-gpo":169,"./_to-object":204,"./_to-primitive":205}],366:[function(require,module,exports){
 'use strict';
 var $export                  = require('./_export')
   , toObject                 = require('./_to-object')
@@ -57155,7 +58979,7 @@ require('./_descriptors') && $export($export.P + require('./_object-forced-pam')
     } while(O = getPrototypeOf(O));
   }
 });
-},{"./_descriptors":118,"./_export":122,"./_object-forced-pam":159,"./_object-gopd":160,"./_object-gpo":164,"./_to-object":199,"./_to-primitive":200}],361:[function(require,module,exports){
+},{"./_descriptors":123,"./_export":127,"./_object-forced-pam":164,"./_object-gopd":165,"./_object-gpo":169,"./_to-object":204,"./_to-primitive":205}],367:[function(require,module,exports){
 // https://github.com/tc39/proposal-object-values-entries
 var $export = require('./_export')
   , $values = require('./_object-to-array')(false);
@@ -57165,7 +58989,7 @@ $export($export.S, 'Object', {
     return $values(it);
   }
 });
-},{"./_export":122,"./_object-to-array":169}],362:[function(require,module,exports){
+},{"./_export":127,"./_object-to-array":174}],368:[function(require,module,exports){
 'use strict';
 // https://github.com/zenparsing/es-observable
 var $export     = require('./_export')
@@ -57365,7 +59189,7 @@ hide($Observable.prototype, OBSERVABLE, function(){ return this; });
 $export($export.G, {Observable: $Observable});
 
 require('./_set-species')('Observable');
-},{"./_a-function":93,"./_an-instance":96,"./_an-object":97,"./_core":113,"./_export":122,"./_for-of":127,"./_global":128,"./_hide":130,"./_microtask":154,"./_redefine-all":176,"./_set-species":181,"./_wks":207}],363:[function(require,module,exports){
+},{"./_a-function":98,"./_an-instance":101,"./_an-object":102,"./_core":118,"./_export":127,"./_for-of":132,"./_global":133,"./_hide":135,"./_microtask":159,"./_redefine-all":181,"./_set-species":186,"./_wks":212}],369:[function(require,module,exports){
 var metadata                  = require('./_metadata')
   , anObject                  = require('./_an-object')
   , toMetaKey                 = metadata.key
@@ -57374,7 +59198,7 @@ var metadata                  = require('./_metadata')
 metadata.exp({defineMetadata: function defineMetadata(metadataKey, metadataValue, target, targetKey){
   ordinaryDefineOwnMetadata(metadataKey, metadataValue, anObject(target), toMetaKey(targetKey));
 }});
-},{"./_an-object":97,"./_metadata":153}],364:[function(require,module,exports){
+},{"./_an-object":102,"./_metadata":158}],370:[function(require,module,exports){
 var metadata               = require('./_metadata')
   , anObject               = require('./_an-object')
   , toMetaKey              = metadata.key
@@ -57390,7 +59214,7 @@ metadata.exp({deleteMetadata: function deleteMetadata(metadataKey, target /*, ta
   targetMetadata['delete'](targetKey);
   return !!targetMetadata.size || store['delete'](target);
 }});
-},{"./_an-object":97,"./_metadata":153}],365:[function(require,module,exports){
+},{"./_an-object":102,"./_metadata":158}],371:[function(require,module,exports){
 var Set                     = require('./es6.set')
   , from                    = require('./_array-from-iterable')
   , metadata                = require('./_metadata')
@@ -57410,7 +59234,7 @@ var ordinaryMetadataKeys = function(O, P){
 metadata.exp({getMetadataKeys: function getMetadataKeys(target /*, targetKey */){
   return ordinaryMetadataKeys(anObject(target), arguments.length < 2 ? undefined : toMetaKey(arguments[1]));
 }});
-},{"./_an-object":97,"./_array-from-iterable":100,"./_metadata":153,"./_object-gpo":164,"./es6.set":310}],366:[function(require,module,exports){
+},{"./_an-object":102,"./_array-from-iterable":105,"./_metadata":158,"./_object-gpo":169,"./es6.set":316}],372:[function(require,module,exports){
 var metadata               = require('./_metadata')
   , anObject               = require('./_an-object')
   , getPrototypeOf         = require('./_object-gpo')
@@ -57428,7 +59252,7 @@ var ordinaryGetMetadata = function(MetadataKey, O, P){
 metadata.exp({getMetadata: function getMetadata(metadataKey, target /*, targetKey */){
   return ordinaryGetMetadata(metadataKey, anObject(target), arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
 }});
-},{"./_an-object":97,"./_metadata":153,"./_object-gpo":164}],367:[function(require,module,exports){
+},{"./_an-object":102,"./_metadata":158,"./_object-gpo":169}],373:[function(require,module,exports){
 var metadata                = require('./_metadata')
   , anObject                = require('./_an-object')
   , ordinaryOwnMetadataKeys = metadata.keys
@@ -57437,7 +59261,7 @@ var metadata                = require('./_metadata')
 metadata.exp({getOwnMetadataKeys: function getOwnMetadataKeys(target /*, targetKey */){
   return ordinaryOwnMetadataKeys(anObject(target), arguments.length < 2 ? undefined : toMetaKey(arguments[1]));
 }});
-},{"./_an-object":97,"./_metadata":153}],368:[function(require,module,exports){
+},{"./_an-object":102,"./_metadata":158}],374:[function(require,module,exports){
 var metadata               = require('./_metadata')
   , anObject               = require('./_an-object')
   , ordinaryGetOwnMetadata = metadata.get
@@ -57447,7 +59271,7 @@ metadata.exp({getOwnMetadata: function getOwnMetadata(metadataKey, target /*, ta
   return ordinaryGetOwnMetadata(metadataKey, anObject(target)
     , arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
 }});
-},{"./_an-object":97,"./_metadata":153}],369:[function(require,module,exports){
+},{"./_an-object":102,"./_metadata":158}],375:[function(require,module,exports){
 var metadata               = require('./_metadata')
   , anObject               = require('./_an-object')
   , getPrototypeOf         = require('./_object-gpo')
@@ -57464,7 +59288,7 @@ var ordinaryHasMetadata = function(MetadataKey, O, P){
 metadata.exp({hasMetadata: function hasMetadata(metadataKey, target /*, targetKey */){
   return ordinaryHasMetadata(metadataKey, anObject(target), arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
 }});
-},{"./_an-object":97,"./_metadata":153,"./_object-gpo":164}],370:[function(require,module,exports){
+},{"./_an-object":102,"./_metadata":158,"./_object-gpo":169}],376:[function(require,module,exports){
 var metadata               = require('./_metadata')
   , anObject               = require('./_an-object')
   , ordinaryHasOwnMetadata = metadata.has
@@ -57474,7 +59298,7 @@ metadata.exp({hasOwnMetadata: function hasOwnMetadata(metadataKey, target /*, ta
   return ordinaryHasOwnMetadata(metadataKey, anObject(target)
     , arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
 }});
-},{"./_an-object":97,"./_metadata":153}],371:[function(require,module,exports){
+},{"./_an-object":102,"./_metadata":158}],377:[function(require,module,exports){
 var metadata                  = require('./_metadata')
   , anObject                  = require('./_an-object')
   , aFunction                 = require('./_a-function')
@@ -57490,12 +59314,12 @@ metadata.exp({metadata: function metadata(metadataKey, metadataValue){
     );
   };
 }});
-},{"./_a-function":93,"./_an-object":97,"./_metadata":153}],372:[function(require,module,exports){
+},{"./_a-function":98,"./_an-object":102,"./_metadata":158}],378:[function(require,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export  = require('./_export');
 
 $export($export.P + $export.R, 'Set', {toJSON: require('./_collection-to-json')('Set')});
-},{"./_collection-to-json":110,"./_export":122}],373:[function(require,module,exports){
+},{"./_collection-to-json":115,"./_export":127}],379:[function(require,module,exports){
 'use strict';
 // https://github.com/mathiasbynens/String.prototype.at
 var $export = require('./_export')
@@ -57506,7 +59330,7 @@ $export($export.P, 'String', {
     return $at(this, pos);
   }
 });
-},{"./_export":122,"./_string-at":187}],374:[function(require,module,exports){
+},{"./_export":127,"./_string-at":192}],380:[function(require,module,exports){
 'use strict';
 // https://tc39.github.io/String.prototype.matchAll/
 var $export     = require('./_export')
@@ -57537,7 +59361,7 @@ $export($export.P, 'String', {
     return new $RegExpStringIterator(rx, S);
   }
 });
-},{"./_defined":117,"./_export":122,"./_flags":126,"./_is-regexp":140,"./_iter-create":142,"./_to-length":198}],375:[function(require,module,exports){
+},{"./_defined":122,"./_export":127,"./_flags":131,"./_is-regexp":145,"./_iter-create":147,"./_to-length":203}],381:[function(require,module,exports){
 'use strict';
 // https://github.com/tc39/proposal-string-pad-start-end
 var $export = require('./_export')
@@ -57548,7 +59372,7 @@ $export($export.P, 'String', {
     return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, false);
   }
 });
-},{"./_export":122,"./_string-pad":190}],376:[function(require,module,exports){
+},{"./_export":127,"./_string-pad":195}],382:[function(require,module,exports){
 'use strict';
 // https://github.com/tc39/proposal-string-pad-start-end
 var $export = require('./_export')
@@ -57559,7 +59383,7 @@ $export($export.P, 'String', {
     return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, true);
   }
 });
-},{"./_export":122,"./_string-pad":190}],377:[function(require,module,exports){
+},{"./_export":127,"./_string-pad":195}],383:[function(require,module,exports){
 'use strict';
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
 require('./_string-trim')('trimLeft', function($trim){
@@ -57567,7 +59391,7 @@ require('./_string-trim')('trimLeft', function($trim){
     return $trim(this, 1);
   };
 }, 'trimStart');
-},{"./_string-trim":192}],378:[function(require,module,exports){
+},{"./_string-trim":197}],384:[function(require,module,exports){
 'use strict';
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
 require('./_string-trim')('trimRight', function($trim){
@@ -57575,16 +59399,16 @@ require('./_string-trim')('trimRight', function($trim){
     return $trim(this, 2);
   };
 }, 'trimEnd');
-},{"./_string-trim":192}],379:[function(require,module,exports){
+},{"./_string-trim":197}],385:[function(require,module,exports){
 require('./_wks-define')('asyncIterator');
-},{"./_wks-define":205}],380:[function(require,module,exports){
+},{"./_wks-define":210}],386:[function(require,module,exports){
 require('./_wks-define')('observable');
-},{"./_wks-define":205}],381:[function(require,module,exports){
+},{"./_wks-define":210}],387:[function(require,module,exports){
 // https://github.com/ljharb/proposal-global
 var $export = require('./_export');
 
 $export($export.S, 'System', {global: require('./_global')});
-},{"./_export":122,"./_global":128}],382:[function(require,module,exports){
+},{"./_export":127,"./_global":133}],388:[function(require,module,exports){
 var $iterators    = require('./es6.array.iterator')
   , redefine      = require('./_redefine')
   , global        = require('./_global')
@@ -57607,14 +59431,14 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
     for(key in $iterators)if(!proto[key])redefine(proto, key, $iterators[key], true);
   }
 }
-},{"./_global":128,"./_hide":130,"./_iterators":146,"./_redefine":177,"./_wks":207,"./es6.array.iterator":220}],383:[function(require,module,exports){
+},{"./_global":133,"./_hide":135,"./_iterators":151,"./_redefine":182,"./_wks":212,"./es6.array.iterator":226}],389:[function(require,module,exports){
 var $export = require('./_export')
   , $task   = require('./_task');
 $export($export.G + $export.B, {
   setImmediate:   $task.set,
   clearImmediate: $task.clear
 });
-},{"./_export":122,"./_task":194}],384:[function(require,module,exports){
+},{"./_export":127,"./_task":199}],390:[function(require,module,exports){
 // ie9- setTimeout & setInterval additional parameters fix
 var global     = require('./_global')
   , $export    = require('./_export')
@@ -57635,7 +59459,7 @@ $export($export.G + $export.B + $export.F * MSIE, {
   setTimeout:  wrap(global.setTimeout),
   setInterval: wrap(global.setInterval)
 });
-},{"./_export":122,"./_global":128,"./_invoke":134,"./_partial":173}],385:[function(require,module,exports){
+},{"./_export":127,"./_global":133,"./_invoke":139,"./_partial":178}],391:[function(require,module,exports){
 require('./modules/es6.symbol');
 require('./modules/es6.object.create');
 require('./modules/es6.object.define-property');
@@ -57812,7 +59636,7 @@ require('./modules/web.timers');
 require('./modules/web.immediate');
 require('./modules/web.dom.iterable');
 module.exports = require('./modules/_core');
-},{"./modules/_core":113,"./modules/es6.array.copy-within":210,"./modules/es6.array.every":211,"./modules/es6.array.fill":212,"./modules/es6.array.filter":213,"./modules/es6.array.find":215,"./modules/es6.array.find-index":214,"./modules/es6.array.for-each":216,"./modules/es6.array.from":217,"./modules/es6.array.index-of":218,"./modules/es6.array.is-array":219,"./modules/es6.array.iterator":220,"./modules/es6.array.join":221,"./modules/es6.array.last-index-of":222,"./modules/es6.array.map":223,"./modules/es6.array.of":224,"./modules/es6.array.reduce":226,"./modules/es6.array.reduce-right":225,"./modules/es6.array.slice":227,"./modules/es6.array.some":228,"./modules/es6.array.sort":229,"./modules/es6.array.species":230,"./modules/es6.date.now":231,"./modules/es6.date.to-iso-string":232,"./modules/es6.date.to-json":233,"./modules/es6.date.to-primitive":234,"./modules/es6.date.to-string":235,"./modules/es6.function.bind":236,"./modules/es6.function.has-instance":237,"./modules/es6.function.name":238,"./modules/es6.map":239,"./modules/es6.math.acosh":240,"./modules/es6.math.asinh":241,"./modules/es6.math.atanh":242,"./modules/es6.math.cbrt":243,"./modules/es6.math.clz32":244,"./modules/es6.math.cosh":245,"./modules/es6.math.expm1":246,"./modules/es6.math.fround":247,"./modules/es6.math.hypot":248,"./modules/es6.math.imul":249,"./modules/es6.math.log10":250,"./modules/es6.math.log1p":251,"./modules/es6.math.log2":252,"./modules/es6.math.sign":253,"./modules/es6.math.sinh":254,"./modules/es6.math.tanh":255,"./modules/es6.math.trunc":256,"./modules/es6.number.constructor":257,"./modules/es6.number.epsilon":258,"./modules/es6.number.is-finite":259,"./modules/es6.number.is-integer":260,"./modules/es6.number.is-nan":261,"./modules/es6.number.is-safe-integer":262,"./modules/es6.number.max-safe-integer":263,"./modules/es6.number.min-safe-integer":264,"./modules/es6.number.parse-float":265,"./modules/es6.number.parse-int":266,"./modules/es6.number.to-fixed":267,"./modules/es6.number.to-precision":268,"./modules/es6.object.assign":269,"./modules/es6.object.create":270,"./modules/es6.object.define-properties":271,"./modules/es6.object.define-property":272,"./modules/es6.object.freeze":273,"./modules/es6.object.get-own-property-descriptor":274,"./modules/es6.object.get-own-property-names":275,"./modules/es6.object.get-prototype-of":276,"./modules/es6.object.is":280,"./modules/es6.object.is-extensible":277,"./modules/es6.object.is-frozen":278,"./modules/es6.object.is-sealed":279,"./modules/es6.object.keys":281,"./modules/es6.object.prevent-extensions":282,"./modules/es6.object.seal":283,"./modules/es6.object.set-prototype-of":284,"./modules/es6.object.to-string":285,"./modules/es6.parse-float":286,"./modules/es6.parse-int":287,"./modules/es6.promise":288,"./modules/es6.reflect.apply":289,"./modules/es6.reflect.construct":290,"./modules/es6.reflect.define-property":291,"./modules/es6.reflect.delete-property":292,"./modules/es6.reflect.enumerate":293,"./modules/es6.reflect.get":296,"./modules/es6.reflect.get-own-property-descriptor":294,"./modules/es6.reflect.get-prototype-of":295,"./modules/es6.reflect.has":297,"./modules/es6.reflect.is-extensible":298,"./modules/es6.reflect.own-keys":299,"./modules/es6.reflect.prevent-extensions":300,"./modules/es6.reflect.set":302,"./modules/es6.reflect.set-prototype-of":301,"./modules/es6.regexp.constructor":303,"./modules/es6.regexp.flags":304,"./modules/es6.regexp.match":305,"./modules/es6.regexp.replace":306,"./modules/es6.regexp.search":307,"./modules/es6.regexp.split":308,"./modules/es6.regexp.to-string":309,"./modules/es6.set":310,"./modules/es6.string.anchor":311,"./modules/es6.string.big":312,"./modules/es6.string.blink":313,"./modules/es6.string.bold":314,"./modules/es6.string.code-point-at":315,"./modules/es6.string.ends-with":316,"./modules/es6.string.fixed":317,"./modules/es6.string.fontcolor":318,"./modules/es6.string.fontsize":319,"./modules/es6.string.from-code-point":320,"./modules/es6.string.includes":321,"./modules/es6.string.italics":322,"./modules/es6.string.iterator":323,"./modules/es6.string.link":324,"./modules/es6.string.raw":325,"./modules/es6.string.repeat":326,"./modules/es6.string.small":327,"./modules/es6.string.starts-with":328,"./modules/es6.string.strike":329,"./modules/es6.string.sub":330,"./modules/es6.string.sup":331,"./modules/es6.string.trim":332,"./modules/es6.symbol":333,"./modules/es6.typed.array-buffer":334,"./modules/es6.typed.data-view":335,"./modules/es6.typed.float32-array":336,"./modules/es6.typed.float64-array":337,"./modules/es6.typed.int16-array":338,"./modules/es6.typed.int32-array":339,"./modules/es6.typed.int8-array":340,"./modules/es6.typed.uint16-array":341,"./modules/es6.typed.uint32-array":342,"./modules/es6.typed.uint8-array":343,"./modules/es6.typed.uint8-clamped-array":344,"./modules/es6.weak-map":345,"./modules/es6.weak-set":346,"./modules/es7.array.includes":347,"./modules/es7.asap":348,"./modules/es7.error.is-error":349,"./modules/es7.map.to-json":350,"./modules/es7.math.iaddh":351,"./modules/es7.math.imulh":352,"./modules/es7.math.isubh":353,"./modules/es7.math.umulh":354,"./modules/es7.object.define-getter":355,"./modules/es7.object.define-setter":356,"./modules/es7.object.entries":357,"./modules/es7.object.get-own-property-descriptors":358,"./modules/es7.object.lookup-getter":359,"./modules/es7.object.lookup-setter":360,"./modules/es7.object.values":361,"./modules/es7.observable":362,"./modules/es7.reflect.define-metadata":363,"./modules/es7.reflect.delete-metadata":364,"./modules/es7.reflect.get-metadata":366,"./modules/es7.reflect.get-metadata-keys":365,"./modules/es7.reflect.get-own-metadata":368,"./modules/es7.reflect.get-own-metadata-keys":367,"./modules/es7.reflect.has-metadata":369,"./modules/es7.reflect.has-own-metadata":370,"./modules/es7.reflect.metadata":371,"./modules/es7.set.to-json":372,"./modules/es7.string.at":373,"./modules/es7.string.match-all":374,"./modules/es7.string.pad-end":375,"./modules/es7.string.pad-start":376,"./modules/es7.string.trim-left":377,"./modules/es7.string.trim-right":378,"./modules/es7.symbol.async-iterator":379,"./modules/es7.symbol.observable":380,"./modules/es7.system.global":381,"./modules/web.dom.iterable":382,"./modules/web.immediate":383,"./modules/web.timers":384}],386:[function(require,module,exports){
+},{"./modules/_core":118,"./modules/es6.array.copy-within":216,"./modules/es6.array.every":217,"./modules/es6.array.fill":218,"./modules/es6.array.filter":219,"./modules/es6.array.find":221,"./modules/es6.array.find-index":220,"./modules/es6.array.for-each":222,"./modules/es6.array.from":223,"./modules/es6.array.index-of":224,"./modules/es6.array.is-array":225,"./modules/es6.array.iterator":226,"./modules/es6.array.join":227,"./modules/es6.array.last-index-of":228,"./modules/es6.array.map":229,"./modules/es6.array.of":230,"./modules/es6.array.reduce":232,"./modules/es6.array.reduce-right":231,"./modules/es6.array.slice":233,"./modules/es6.array.some":234,"./modules/es6.array.sort":235,"./modules/es6.array.species":236,"./modules/es6.date.now":237,"./modules/es6.date.to-iso-string":238,"./modules/es6.date.to-json":239,"./modules/es6.date.to-primitive":240,"./modules/es6.date.to-string":241,"./modules/es6.function.bind":242,"./modules/es6.function.has-instance":243,"./modules/es6.function.name":244,"./modules/es6.map":245,"./modules/es6.math.acosh":246,"./modules/es6.math.asinh":247,"./modules/es6.math.atanh":248,"./modules/es6.math.cbrt":249,"./modules/es6.math.clz32":250,"./modules/es6.math.cosh":251,"./modules/es6.math.expm1":252,"./modules/es6.math.fround":253,"./modules/es6.math.hypot":254,"./modules/es6.math.imul":255,"./modules/es6.math.log10":256,"./modules/es6.math.log1p":257,"./modules/es6.math.log2":258,"./modules/es6.math.sign":259,"./modules/es6.math.sinh":260,"./modules/es6.math.tanh":261,"./modules/es6.math.trunc":262,"./modules/es6.number.constructor":263,"./modules/es6.number.epsilon":264,"./modules/es6.number.is-finite":265,"./modules/es6.number.is-integer":266,"./modules/es6.number.is-nan":267,"./modules/es6.number.is-safe-integer":268,"./modules/es6.number.max-safe-integer":269,"./modules/es6.number.min-safe-integer":270,"./modules/es6.number.parse-float":271,"./modules/es6.number.parse-int":272,"./modules/es6.number.to-fixed":273,"./modules/es6.number.to-precision":274,"./modules/es6.object.assign":275,"./modules/es6.object.create":276,"./modules/es6.object.define-properties":277,"./modules/es6.object.define-property":278,"./modules/es6.object.freeze":279,"./modules/es6.object.get-own-property-descriptor":280,"./modules/es6.object.get-own-property-names":281,"./modules/es6.object.get-prototype-of":282,"./modules/es6.object.is":286,"./modules/es6.object.is-extensible":283,"./modules/es6.object.is-frozen":284,"./modules/es6.object.is-sealed":285,"./modules/es6.object.keys":287,"./modules/es6.object.prevent-extensions":288,"./modules/es6.object.seal":289,"./modules/es6.object.set-prototype-of":290,"./modules/es6.object.to-string":291,"./modules/es6.parse-float":292,"./modules/es6.parse-int":293,"./modules/es6.promise":294,"./modules/es6.reflect.apply":295,"./modules/es6.reflect.construct":296,"./modules/es6.reflect.define-property":297,"./modules/es6.reflect.delete-property":298,"./modules/es6.reflect.enumerate":299,"./modules/es6.reflect.get":302,"./modules/es6.reflect.get-own-property-descriptor":300,"./modules/es6.reflect.get-prototype-of":301,"./modules/es6.reflect.has":303,"./modules/es6.reflect.is-extensible":304,"./modules/es6.reflect.own-keys":305,"./modules/es6.reflect.prevent-extensions":306,"./modules/es6.reflect.set":308,"./modules/es6.reflect.set-prototype-of":307,"./modules/es6.regexp.constructor":309,"./modules/es6.regexp.flags":310,"./modules/es6.regexp.match":311,"./modules/es6.regexp.replace":312,"./modules/es6.regexp.search":313,"./modules/es6.regexp.split":314,"./modules/es6.regexp.to-string":315,"./modules/es6.set":316,"./modules/es6.string.anchor":317,"./modules/es6.string.big":318,"./modules/es6.string.blink":319,"./modules/es6.string.bold":320,"./modules/es6.string.code-point-at":321,"./modules/es6.string.ends-with":322,"./modules/es6.string.fixed":323,"./modules/es6.string.fontcolor":324,"./modules/es6.string.fontsize":325,"./modules/es6.string.from-code-point":326,"./modules/es6.string.includes":327,"./modules/es6.string.italics":328,"./modules/es6.string.iterator":329,"./modules/es6.string.link":330,"./modules/es6.string.raw":331,"./modules/es6.string.repeat":332,"./modules/es6.string.small":333,"./modules/es6.string.starts-with":334,"./modules/es6.string.strike":335,"./modules/es6.string.sub":336,"./modules/es6.string.sup":337,"./modules/es6.string.trim":338,"./modules/es6.symbol":339,"./modules/es6.typed.array-buffer":340,"./modules/es6.typed.data-view":341,"./modules/es6.typed.float32-array":342,"./modules/es6.typed.float64-array":343,"./modules/es6.typed.int16-array":344,"./modules/es6.typed.int32-array":345,"./modules/es6.typed.int8-array":346,"./modules/es6.typed.uint16-array":347,"./modules/es6.typed.uint32-array":348,"./modules/es6.typed.uint8-array":349,"./modules/es6.typed.uint8-clamped-array":350,"./modules/es6.weak-map":351,"./modules/es6.weak-set":352,"./modules/es7.array.includes":353,"./modules/es7.asap":354,"./modules/es7.error.is-error":355,"./modules/es7.map.to-json":356,"./modules/es7.math.iaddh":357,"./modules/es7.math.imulh":358,"./modules/es7.math.isubh":359,"./modules/es7.math.umulh":360,"./modules/es7.object.define-getter":361,"./modules/es7.object.define-setter":362,"./modules/es7.object.entries":363,"./modules/es7.object.get-own-property-descriptors":364,"./modules/es7.object.lookup-getter":365,"./modules/es7.object.lookup-setter":366,"./modules/es7.object.values":367,"./modules/es7.observable":368,"./modules/es7.reflect.define-metadata":369,"./modules/es7.reflect.delete-metadata":370,"./modules/es7.reflect.get-metadata":372,"./modules/es7.reflect.get-metadata-keys":371,"./modules/es7.reflect.get-own-metadata":374,"./modules/es7.reflect.get-own-metadata-keys":373,"./modules/es7.reflect.has-metadata":375,"./modules/es7.reflect.has-own-metadata":376,"./modules/es7.reflect.metadata":377,"./modules/es7.set.to-json":378,"./modules/es7.string.at":379,"./modules/es7.string.match-all":380,"./modules/es7.string.pad-end":381,"./modules/es7.string.pad-start":382,"./modules/es7.string.trim-left":383,"./modules/es7.string.trim-right":384,"./modules/es7.symbol.async-iterator":385,"./modules/es7.symbol.observable":386,"./modules/es7.system.global":387,"./modules/web.dom.iterable":388,"./modules/web.immediate":389,"./modules/web.timers":390}],392:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -57923,7 +59747,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":435}],387:[function(require,module,exports){
+},{"../../is-buffer/index.js":441}],393:[function(require,module,exports){
 (function (Buffer){
 var elliptic = require('elliptic');
 var BN = require('bn.js');
@@ -58049,7 +59873,7 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":60,"buffer":90,"elliptic":403}],388:[function(require,module,exports){
+},{"bn.js":65,"buffer":95,"elliptic":409}],394:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var inherits = require('inherits')
@@ -58105,7 +59929,7 @@ module.exports = function createHash (alg) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./md5":390,"buffer":90,"cipher-base":91,"inherits":434,"ripemd160":466,"sha.js":475}],389:[function(require,module,exports){
+},{"./md5":396,"buffer":95,"cipher-base":96,"inherits":440,"ripemd160":472,"sha.js":481}],395:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var intSize = 4;
@@ -58142,7 +59966,7 @@ function hash(buf, fn, hashSize, bigEndian) {
 }
 exports.hash = hash;
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],390:[function(require,module,exports){
+},{"buffer":95}],396:[function(require,module,exports){
 'use strict';
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -58299,7 +60123,7 @@ function bit_rol(num, cnt)
 module.exports = function md5(buf) {
   return helpers.hash(buf, core_md5, 16);
 };
-},{"./helpers":389}],391:[function(require,module,exports){
+},{"./helpers":395}],397:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var createHash = require('create-hash/browser');
@@ -58371,7 +60195,7 @@ module.exports = function createHmac(alg, key) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90,"create-hash/browser":388,"inherits":434,"stream":482}],392:[function(require,module,exports){
+},{"buffer":95,"create-hash/browser":394,"inherits":440,"stream":488}],398:[function(require,module,exports){
 'use strict'
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -58450,7 +60274,7 @@ var publicEncrypt = require('public-encrypt')
   }
 })
 
-},{"browserify-cipher":78,"browserify-sign":84,"browserify-sign/algos":83,"create-ecdh":387,"create-hash":388,"create-hmac":391,"diffie-hellman":399,"pbkdf2":445,"public-encrypt":448,"randombytes":454}],393:[function(require,module,exports){
+},{"browserify-cipher":83,"browserify-sign":89,"browserify-sign/algos":88,"create-ecdh":393,"create-hash":394,"create-hmac":397,"diffie-hellman":405,"pbkdf2":451,"public-encrypt":454,"randombytes":460}],399:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -58459,7 +60283,7 @@ exports.DES = require('./des/des');
 exports.CBC = require('./des/cbc');
 exports.EDE = require('./des/ede');
 
-},{"./des/cbc":394,"./des/cipher":395,"./des/des":396,"./des/ede":397,"./des/utils":398}],394:[function(require,module,exports){
+},{"./des/cbc":400,"./des/cipher":401,"./des/des":402,"./des/ede":403,"./des/utils":404}],400:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -58526,7 +60350,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
   }
 };
 
-},{"inherits":434,"minimalistic-assert":440}],395:[function(require,module,exports){
+},{"inherits":440,"minimalistic-assert":446}],401:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -58669,7 +60493,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
   return this._unpad(out);
 };
 
-},{"minimalistic-assert":440}],396:[function(require,module,exports){
+},{"minimalistic-assert":446}],402:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -58814,7 +60638,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
   utils.rip(l, r, out, off);
 };
 
-},{"../des":393,"inherits":434,"minimalistic-assert":440}],397:[function(require,module,exports){
+},{"../des":399,"inherits":440,"minimalistic-assert":446}],403:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -58871,7 +60695,7 @@ EDE.prototype._update = function _update(inp, inOff, out, outOff) {
 EDE.prototype._pad = DES.prototype._pad;
 EDE.prototype._unpad = DES.prototype._unpad;
 
-},{"../des":393,"inherits":434,"minimalistic-assert":440}],398:[function(require,module,exports){
+},{"../des":399,"inherits":440,"minimalistic-assert":446}],404:[function(require,module,exports){
 'use strict';
 
 exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -59129,7 +60953,7 @@ exports.padSplit = function padSplit(num, size, group) {
   return out.join(' ');
 };
 
-},{}],399:[function(require,module,exports){
+},{}],405:[function(require,module,exports){
 (function (Buffer){
 var generatePrime = require('./lib/generatePrime')
 var primes = require('./lib/primes.json')
@@ -59175,7 +60999,7 @@ exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffi
 exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/dh":400,"./lib/generatePrime":401,"./lib/primes.json":402,"buffer":90}],400:[function(require,module,exports){
+},{"./lib/dh":406,"./lib/generatePrime":407,"./lib/primes.json":408,"buffer":95}],406:[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -59343,7 +61167,7 @@ function formatReturnValue(bn, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":401,"bn.js":60,"buffer":90,"miller-rabin":439,"randombytes":454}],401:[function(require,module,exports){
+},{"./generatePrime":407,"bn.js":65,"buffer":95,"miller-rabin":445,"randombytes":460}],407:[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -59450,7 +61274,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":60,"miller-rabin":439,"randombytes":454}],402:[function(require,module,exports){
+},{"bn.js":65,"miller-rabin":445,"randombytes":460}],408:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -59485,7 +61309,7 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],403:[function(require,module,exports){
+},{}],409:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -59501,7 +61325,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":419,"./elliptic/curve":406,"./elliptic/curves":409,"./elliptic/ec":410,"./elliptic/eddsa":413,"./elliptic/hmac-drbg":416,"./elliptic/utils":418,"brorand":61}],404:[function(require,module,exports){
+},{"../package.json":425,"./elliptic/curve":412,"./elliptic/curves":415,"./elliptic/ec":416,"./elliptic/eddsa":419,"./elliptic/hmac-drbg":422,"./elliptic/utils":424,"brorand":66}],410:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -59532,15 +61356,6 @@ function BaseCurve(type, conf) {
   this._wnafT2 = new Array(4);
   this._wnafT3 = new Array(4);
   this._wnafT4 = new Array(4);
-
-  // Generalized Greg Maxwell's trick
-  var adjustCount = this.n && this.p.div(this.n);
-  if (!adjustCount || adjustCount.cmpn(100) > 0) {
-    this.redN = null;
-  } else {
-    this._maxwellTrick = true;
-    this.redN = this.n.toRed(this.red);
-  }
 }
 module.exports = BaseCurve;
 
@@ -59629,8 +61444,7 @@ BaseCurve.prototype._wnafMul = function _wnafMul(p, k) {
 BaseCurve.prototype._wnafMulAdd = function _wnafMulAdd(defW,
                                                        points,
                                                        coeffs,
-                                                       len,
-                                                       jacobianResult) {
+                                                       len) {
   var wndWidth = this._wnafT1;
   var wnd = this._wnafT2;
   var naf = this._wnafT3;
@@ -59743,11 +61557,7 @@ BaseCurve.prototype._wnafMulAdd = function _wnafMulAdd(defW,
   // Zeroify references
   for (var i = 0; i < len; i++)
     wnd[i] = null;
-
-  if (jacobianResult)
-    return acc;
-  else
-    return acc.toP();
+  return acc.toP();
 };
 
 function BasePoint(curve, type) {
@@ -59878,7 +61688,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":403,"bn.js":60}],405:[function(require,module,exports){
+},{"../../elliptic":409,"bn.js":65}],411:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -60245,11 +62055,7 @@ Point.prototype.mul = function mul(k) {
 };
 
 Point.prototype.mulAdd = function mulAdd(k1, p, k2) {
-  return this.curve._wnafMulAdd(1, [ this, p ], [ k1, k2 ], 2, false);
-};
-
-Point.prototype.jmulAdd = function jmulAdd(k1, p, k2) {
-  return this.curve._wnafMulAdd(1, [ this, p ], [ k1, k2 ], 2, true);
+  return this.curve._wnafMulAdd(1, [ this, p ], [ k1, k2 ], 2);
 };
 
 Point.prototype.normalize = function normalize() {
@@ -60290,30 +62096,11 @@ Point.prototype.eq = function eq(other) {
          this.getY().cmp(other.getY()) === 0;
 };
 
-Point.prototype.eqXToP = function eqXToP(x) {
-  var rx = x.toRed(this.curve.red).redMul(this.z);
-  if (this.x.cmp(rx) === 0)
-    return true;
-
-  var xc = x.clone();
-  var t = this.curve.redN.redMul(this.z);
-  for (;;) {
-    xc.iadd(this.curve.n);
-    if (xc.cmp(this.curve.p) >= 0)
-      return false;
-
-    rx.redIAdd(t);
-    if (this.x.cmp(rx) === 0)
-      return true;
-  }
-  return false;
-};
-
 // Compatibility with BaseCurve
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":403,"../curve":406,"bn.js":60,"inherits":434}],406:[function(require,module,exports){
+},{"../../elliptic":409,"../curve":412,"bn.js":65,"inherits":440}],412:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -60323,7 +62110,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":404,"./edwards":405,"./mont":407,"./short":408}],407:[function(require,module,exports){
+},{"./base":410,"./edwards":411,"./mont":413,"./short":414}],413:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -60484,10 +62271,6 @@ Point.prototype.mulAdd = function mulAdd() {
   throw new Error('Not supported on Montgomery curve');
 };
 
-Point.prototype.jumlAdd = function jumlAdd() {
-  throw new Error('Not supported on Montgomery curve');
-};
-
 Point.prototype.eq = function eq(other) {
   return this.getX().cmp(other.getX()) === 0;
 };
@@ -60505,7 +62288,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":403,"../curve":406,"bn.js":60,"inherits":434}],408:[function(require,module,exports){
+},{"../../elliptic":409,"../curve":412,"bn.js":65,"inherits":440}],414:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -60725,7 +62508,7 @@ ShortCurve.prototype.validate = function validate(point) {
 };
 
 ShortCurve.prototype._endoWnafMulAdd =
-    function _endoWnafMulAdd(points, coeffs, jacobianResult) {
+    function _endoWnafMulAdd(points, coeffs) {
   var npoints = this._endoWnafT1;
   var ncoeffs = this._endoWnafT2;
   for (var i = 0; i < points.length; i++) {
@@ -60747,7 +62530,7 @@ ShortCurve.prototype._endoWnafMulAdd =
     ncoeffs[i * 2] = split.k1;
     ncoeffs[i * 2 + 1] = split.k2;
   }
-  var res = this._wnafMulAdd(1, npoints, ncoeffs, i * 2, jacobianResult);
+  var res = this._wnafMulAdd(1, npoints, ncoeffs, i * 2);
 
   // Clean-up references to points and coefficients
   for (var j = 0; j < i * 2; j++) {
@@ -60946,15 +62729,6 @@ Point.prototype.mulAdd = function mulAdd(k1, p2, k2) {
     return this.curve._endoWnafMulAdd(points, coeffs);
   else
     return this.curve._wnafMulAdd(1, points, coeffs, 2);
-};
-
-Point.prototype.jmulAdd = function jmulAdd(k1, p2, k2) {
-  var points = [ this, p2 ];
-  var coeffs = [ k1, k2 ];
-  if (this.curve.endo)
-    return this.curve._endoWnafMulAdd(points, coeffs, true);
-  else
-    return this.curve._wnafMulAdd(1, points, coeffs, 2, true);
 };
 
 Point.prototype.eq = function eq(p) {
@@ -61412,26 +63186,6 @@ JPoint.prototype.eq = function eq(p) {
   return this.y.redMul(pz3).redISub(p.y.redMul(z3)).cmpn(0) === 0;
 };
 
-JPoint.prototype.eqXToP = function eqXToP(x) {
-  var zs = this.z.redSqr();
-  var rx = x.toRed(this.curve.red).redMul(zs);
-  if (this.x.cmp(rx) === 0)
-    return true;
-
-  var xc = x.clone();
-  var t = this.curve.redN.redMul(zs);
-  for (;;) {
-    xc.iadd(this.curve.n);
-    if (xc.cmp(this.curve.p) >= 0)
-      return false;
-
-    rx.redIAdd(t);
-    if (this.x.cmp(rx) === 0)
-      return true;
-  }
-  return false;
-};
-
 JPoint.prototype.inspect = function inspect() {
   if (this.isInfinity())
     return '<EC JPoint Infinity>';
@@ -61445,7 +63199,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":403,"../curve":406,"bn.js":60,"inherits":434}],409:[function(require,module,exports){
+},{"../../elliptic":409,"../curve":412,"bn.js":65,"inherits":440}],415:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -61652,7 +63406,7 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"../elliptic":403,"./precomputed/secp256k1":417,"hash.js":426}],410:[function(require,module,exports){
+},{"../elliptic":409,"./precomputed/secp256k1":423,"hash.js":432}],416:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -61821,25 +63575,11 @@ EC.prototype.verify = function verify(msg, signature, key, enc) {
   var u1 = sinv.mul(msg).umod(this.n);
   var u2 = sinv.mul(r).umod(this.n);
 
-  if (!this.curve._maxwellTrick) {
-    var p = this.g.mulAdd(u1, key.getPublic(), u2);
-    if (p.isInfinity())
-      return false;
-
-    return p.getX().umod(this.n).cmp(r) === 0;
-  }
-
-  // NOTE: Greg Maxwell's trick, inspired by:
-  // https://git.io/vad3K
-
-  var p = this.g.jmulAdd(u1, key.getPublic(), u2);
+  var p = this.g.mulAdd(u1, key.getPublic(), u2);
   if (p.isInfinity())
     return false;
 
-  // Compare `p.x` of Jacobian point with `r`,
-  // this will do `p.x == r * p.z^2` instead of multiplying `p.x` by the
-  // inverse of `p.z^2`
-  return p.eqXToP(r);
+  return p.getX().umod(this.n).cmp(r) === 0;
 };
 
 EC.prototype.recoverPubKey = function(msg, signature, j, enc) {
@@ -61890,7 +63630,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":403,"./key":411,"./signature":412,"bn.js":60}],411:[function(require,module,exports){
+},{"../../elliptic":409,"./key":417,"./signature":418,"bn.js":65}],417:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -61999,7 +63739,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"bn.js":60}],412:[function(require,module,exports){
+},{"bn.js":65}],418:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -62136,7 +63876,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":403,"bn.js":60}],413:[function(require,module,exports){
+},{"../../elliptic":409,"bn.js":65}],419:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -62256,7 +63996,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../../elliptic":403,"./key":414,"./signature":415,"hash.js":426}],414:[function(require,module,exports){
+},{"../../elliptic":409,"./key":420,"./signature":421,"hash.js":432}],420:[function(require,module,exports){
 'use strict';
 
 var elliptic = require('../../elliptic');
@@ -62354,7 +64094,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../../elliptic":403}],415:[function(require,module,exports){
+},{"../../elliptic":409}],421:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -62422,7 +64162,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":403,"bn.js":60}],416:[function(require,module,exports){
+},{"../../elliptic":409,"bn.js":65}],422:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -62538,7 +64278,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"../elliptic":403,"hash.js":426}],417:[function(require,module,exports){
+},{"../elliptic":409,"hash.js":432}],423:[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -63320,7 +65060,7 @@ module.exports = {
   }
 };
 
-},{}],418:[function(require,module,exports){
+},{}],424:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -63494,23 +65234,23 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":60}],419:[function(require,module,exports){
+},{"bn.js":65}],425:[function(require,module,exports){
 module.exports={
   "_args": [
     [
       "elliptic@^6.0.0",
-      "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign"
+      "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
-  "_id": "elliptic@6.3.1",
+  "_id": "elliptic@6.2.8",
   "_inCache": true,
   "_installable": true,
   "_location": "/elliptic",
   "_nodeVersion": "6.0.0",
   "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/elliptic-6.3.1.tgz_1465921413402_0.5202967382501811"
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/elliptic-6.2.8.tgz_1464746004719_0.6379144776146859"
   },
   "_npmUser": {
     "email": "fedor@indutny.com",
@@ -63531,11 +65271,11 @@ module.exports={
     "/create-ecdh",
     "/secp256k1"
   ],
-  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.1.tgz",
-  "_shasum": "17781f2109ab0ec686b146bdcff5d2e8c6aeceda",
+  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.2.8.tgz",
+  "_shasum": "44a25b3d1550bebb74d0b6d22d89940206b51739",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign",
+  "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
   "author": {
     "email": "fedor@indutny.com",
     "name": "Fedor Indutny"
@@ -63544,7 +65284,7 @@ module.exports={
     "url": "https://github.com/indutny/elliptic/issues"
   },
   "dependencies": {
-    "bn.js": "^4.4.0",
+    "bn.js": "^4.0.0",
     "brorand": "^1.0.1",
     "hash.js": "^1.0.0",
     "inherits": "^2.0.1"
@@ -63567,13 +65307,13 @@ module.exports={
   },
   "directories": {},
   "dist": {
-    "shasum": "17781f2109ab0ec686b146bdcff5d2e8c6aeceda",
-    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.1.tgz"
+    "shasum": "44a25b3d1550bebb74d0b6d22d89940206b51739",
+    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.2.8.tgz"
   },
   "files": [
     "lib"
   ],
-  "gitHead": "c53f5cf3d832c0073eb4a4ed423a464cbce68f3e",
+  "gitHead": "236f37395bdf9e4af1dfc8e84f6353bce540b93e",
   "homepage": "https://github.com/indutny/elliptic",
   "keywords": [
     "EC",
@@ -63604,10 +65344,10 @@ module.exports={
     "unit": "istanbul test _mocha --reporter=spec test/index.js",
     "version": "grunt dist && git add dist/"
   },
-  "version": "6.3.1"
+  "version": "6.2.8"
 }
 
-},{}],420:[function(require,module,exports){
+},{}],426:[function(require,module,exports){
 module.exports={
   "genesisGasLimit": {
     "v": 5000,
@@ -63840,18 +65580,21 @@ module.exports={
   }
 }
 
-},{}],421:[function(require,module,exports){
+},{}],427:[function(require,module,exports){
 module.exports = require('./params.json')
 
-},{"./params.json":420}],422:[function(require,module,exports){
-(function (Buffer){
-'use strict'
+},{"./params.json":426}],428:[function(require,module,exports){
+(function (global,Buffer){
 const ethUtil = require('ethereumjs-util')
 const fees = require('ethereum-common/params')
 const BN = ethUtil.BN
 
 // secp256k1n/2
 const N_DIV_2 = new BN('7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a0', 16)
+
+// give browser access to Buffers
+global.Buffer = Buffer
+global.ethUtil = ethUtil
 
 /**
  * Creates a new transaction object
@@ -63881,7 +65624,7 @@ const N_DIV_2 = new BN('7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46
  * @prop {Buffer} r EC signature parameter
  * @prop {Buffer} s EC recovery ID
  */
-const Transaction = module.exports = function (data) {
+var Transaction = module.exports = function (data) {
   // Define Properties
   const fields = [{
     name: 'nonce',
@@ -63966,7 +65709,7 @@ Transaction.prototype.toCreationAddress = function () {
  * @return {Buffer}
  */
 Transaction.prototype.hash = function (signature) {
-  let toHash
+  var toHash
 
   if (typeof signature === 'undefined') {
     signature = true
@@ -63987,7 +65730,7 @@ Transaction.prototype.getSenderAddress = function () {
   if (this._from) {
     return this._from
   }
-  const pubkey = this.getSenderPublicKey()
+  var pubkey = this.getSenderPublicKey()
   this._from = ethUtil.publicToAddress(pubkey)
   return this._from
 }
@@ -64011,7 +65754,7 @@ Transaction.prototype.getSenderPublicKey = function () {
  * @return {Boolean}
  */
 Transaction.prototype.verifySignature = function () {
-  const msgHash = this.hash(false)
+  var msgHash = this.hash(false)
 
   // All transaction signatures whose s-value is greater than secp256k1n/2 are considered invalid.
   if (this._homestead && new BN(this.s).cmp(N_DIV_2) === 1) {
@@ -64033,8 +65776,8 @@ Transaction.prototype.verifySignature = function () {
  * @param {Buffer} privateKey
  */
 Transaction.prototype.sign = function (privateKey) {
-  const msgHash = this.hash(false)
-  const sig = ethUtil.ecsign(msgHash, privateKey)
+  var msgHash = this.hash(false)
+  var sig = ethUtil.ecsign(msgHash, privateKey)
   Object.assign(this, sig)
 }
 
@@ -64045,7 +65788,7 @@ Transaction.prototype.sign = function (privateKey) {
  */
 Transaction.prototype.getDataFee = function () {
   const data = this.raw[5]
-  const cost = new BN(0)
+  var cost = new BN(0)
   for (var i = 0; i < data.length; i++) {
     data[i] === 0 ? cost.iaddn(fees.txDataZeroGas.v) : cost.iaddn(fees.txDataNonZeroGas.v)
   }
@@ -64058,7 +65801,7 @@ Transaction.prototype.getDataFee = function () {
  * @return {BN}
  */
 Transaction.prototype.getBaseFee = function () {
-  const fee = this.getDataFee().iaddn(fees.txGas.v)
+  var fee = this.getDataFee().iaddn(fees.txGas.v)
   if (this._homestead && this.toCreationAddress()) {
     fee.iaddn(fees.txCreation.v)
   }
@@ -64083,13 +65826,13 @@ Transaction.prototype.getUpfrontCost = function () {
  * @return {Boolean|String}
  */
 Transaction.prototype.validate = function (stringError) {
-  const errors = []
+  var errors = []
   if (!this.verifySignature()) {
     errors.push('Invalid Signature')
   }
 
   if (this.getBaseFee().cmp(new BN(this.gasLimit)) > 0) {
-    errors.push([`gas limit is to low. Need at least ${this.getBaseFee()}`])
+    errors.push(['gas limit is to low. Need at least ' + this.getBaseFee()])
   }
 
   if (stringError === undefined || stringError === false) {
@@ -64099,8 +65842,8 @@ Transaction.prototype.validate = function (stringError) {
   }
 }
 
-}).call(this,require("buffer").Buffer)
-},{"buffer":90,"ethereum-common/params":421,"ethereumjs-util":423}],423:[function(require,module,exports){
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
+},{"buffer":95,"ethereum-common/params":427,"ethereumjs-util":429}],429:[function(require,module,exports){
 (function (Buffer){
 const SHA3 = require('keccakjs')
 const secp256k1 = require('secp256k1')
@@ -64511,42 +66254,6 @@ exports.ecrecover = function (msgHash, v, r, s) {
 }
 
 /**
- * Convert signature parameters into the format of `eth_sign` RPC method
- * @method toRpcSig
- * @param {Number} v
- * @param {Buffer} r
- * @param {Buffer} s
- * @return {String} sig
- */
-exports.toRpcSig = function (v, r, s) {
-  // geth (and the RPC eth_sign method) uses the 65 byte format used by Bitcoin
-  // FIXME: this might change in the future - https://github.com/ethereum/go-ethereum/issues/2053
-  return exports.bufferToHex(Buffer.concat([ r, s, exports.toBuffer(v - 27) ]))
-}
-
-/**
- * Convert signature format of the `eth_sign` RPC method to signature parameters
- * @method fromRpcSig
- * @param {String} sig
- * @return {Object}
- */
-exports.fromRpcSig = function (sig) {
-  sig = exports.toBuffer(sig)
-
-  var v = sig[64]
-  // support both versions of `eth_sign` responses
-  if (v < 27) {
-    v += 27
-  }
-
-  return {
-    v: v,
-    r: sig.slice(0, 32),
-    s: sig.slice(32, 64)
-  }
-}
-
-/**
  * Returns the ethereum address of a given private key
  * @method privateToAddress
  * @param {Buffer} privateKey A private key must be 256 bits wide
@@ -64805,7 +66512,7 @@ exports.defineProperties = function (self, fields, data) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":55,"bn.js":60,"buffer":90,"create-hash":388,"keccakjs":438,"rlp":467,"secp256k1":469}],424:[function(require,module,exports){
+},{"assert":60,"bn.js":65,"buffer":95,"create-hash":394,"keccakjs":444,"rlp":473,"secp256k1":475}],430:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -64865,12 +66572,8 @@ EventEmitter.prototype.emit = function(type) {
       er = arguments[1];
       if (er instanceof Error) {
         throw er; // Unhandled 'error' event
-      } else {
-        // At least give some kind of context to the user
-        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
-        err.context = er;
-        throw err;
       }
+      throw TypeError('Uncaught, unspecified "error" event.');
     }
   }
 
@@ -65109,7 +66812,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],425:[function(require,module,exports){
+},{}],431:[function(require,module,exports){
 (function (Buffer){
 var md5 = require('create-hash/md5')
 module.exports = EVP_BytesToKey
@@ -65181,7 +66884,7 @@ function EVP_BytesToKey (password, salt, keyLen, ivLen) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90,"create-hash/md5":390}],426:[function(require,module,exports){
+},{"buffer":95,"create-hash/md5":396}],432:[function(require,module,exports){
 var hash = exports;
 
 hash.utils = require('./hash/utils');
@@ -65198,7 +66901,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":427,"./hash/hmac":428,"./hash/ripemd":429,"./hash/sha":430,"./hash/utils":431}],427:[function(require,module,exports){
+},{"./hash/common":433,"./hash/hmac":434,"./hash/ripemd":435,"./hash/sha":436,"./hash/utils":437}],433:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -65291,7 +66994,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"../hash":426}],428:[function(require,module,exports){
+},{"../hash":432}],434:[function(require,module,exports){
 var hmac = exports;
 
 var hash = require('../hash');
@@ -65341,7 +67044,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"../hash":426}],429:[function(require,module,exports){
+},{"../hash":432}],435:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 
@@ -65487,7 +67190,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"../hash":426}],430:[function(require,module,exports){
+},{"../hash":432}],436:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -66053,7 +67756,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../hash":426}],431:[function(require,module,exports){
+},{"../hash":432}],437:[function(require,module,exports){
 var utils = exports;
 var inherits = require('inherits');
 
@@ -66312,7 +68015,7 @@ function shr64_lo(ah, al, num) {
 };
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":434}],432:[function(require,module,exports){
+},{"inherits":440}],438:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -66398,7 +68101,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],433:[function(require,module,exports){
+},{}],439:[function(require,module,exports){
 
 var indexOf = [].indexOf;
 
@@ -66409,7 +68112,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],434:[function(require,module,exports){
+},{}],440:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -66434,37 +68137,33 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],435:[function(require,module,exports){
-/*!
- * Determine if an object is a Buffer
+},{}],441:[function(require,module,exports){
+/**
+ * Determine if an object is Buffer
  *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
- * @license  MIT
+ * Author:   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * License:  MIT
+ *
+ * `npm install is-buffer`
  */
 
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
 module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
+  return !!(obj != null &&
+    (obj._isBuffer || // For Safari 5-7 (missing Object.prototype.constructor)
+      (obj.constructor &&
+      typeof obj.constructor.isBuffer === 'function' &&
+      obj.constructor.isBuffer(obj))
+    ))
 }
 
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
-}
-
-},{}],436:[function(require,module,exports){
+},{}],442:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],437:[function(require,module,exports){
+},{}],443:[function(require,module,exports){
 (function (global){
 /*
  * js-sha3 v0.3.1
@@ -66900,10 +68599,10 @@ module.exports = Array.isArray || function (arr) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],438:[function(require,module,exports){
+},{}],444:[function(require,module,exports){
 module.exports = require('browserify-sha3').SHA3Hash
 
-},{"browserify-sha3":82}],439:[function(require,module,exports){
+},{"browserify-sha3":87}],445:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -67018,7 +68717,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":60,"brorand":61}],440:[function(require,module,exports){
+},{"bn.js":65,"brorand":66}],446:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -67031,7 +68730,7 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],441:[function(require,module,exports){
+},{}],447:[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -67045,7 +68744,7 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],442:[function(require,module,exports){
+},{}],448:[function(require,module,exports){
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
 // Fedor, you are amazing.
 
@@ -67164,7 +68863,7 @@ exports.signature = asn1.define('signature', function () {
   )
 })
 
-},{"asn1.js":41}],443:[function(require,module,exports){
+},{"asn1.js":46}],449:[function(require,module,exports){
 (function (Buffer){
 // adapted from https://github.com/apatil/pemstrip
 var findProc = /Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\r?\n\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n/m
@@ -67198,7 +68897,7 @@ module.exports = function (okey, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"browserify-aes":65,"buffer":90,"evp_bytestokey":425}],444:[function(require,module,exports){
+},{"browserify-aes":70,"buffer":95,"evp_bytestokey":431}],450:[function(require,module,exports){
 (function (Buffer){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
@@ -67303,7 +69002,7 @@ function decrypt (data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":441,"./asn1":442,"./fixProc":443,"browserify-aes":65,"buffer":90,"pbkdf2":445}],445:[function(require,module,exports){
+},{"./aesid.json":447,"./asn1":448,"./fixProc":449,"browserify-aes":70,"buffer":95,"pbkdf2":451}],451:[function(require,module,exports){
 (function (Buffer){
 var createHmac = require('create-hmac')
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
@@ -67387,7 +69086,7 @@ function pbkdf2Sync (password, salt, iterations, keylen, digest) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90,"create-hmac":391}],446:[function(require,module,exports){
+},{"buffer":95,"create-hmac":397}],452:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -67434,48 +69133,15 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 }).call(this,require('_process'))
-},{"_process":447}],447:[function(require,module,exports){
+},{"_process":453}],453:[function(require,module,exports){
 // shim for using process in browser
+
 var process = module.exports = {};
 
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
+// cached from whatever global is present so that test runners that stub it don't break things.
+var cachedSetTimeout = setTimeout;
+var cachedClearTimeout = clearTimeout;
 
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-(function () {
-    try {
-        cachedSetTimeout = setTimeout;
-    } catch (e) {
-        cachedSetTimeout = function () {
-            throw new Error('setTimeout is not defined');
-        }
-    }
-    try {
-        cachedClearTimeout = clearTimeout;
-    } catch (e) {
-        cachedClearTimeout = function () {
-            throw new Error('clearTimeout is not defined');
-        }
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        return setTimeout(fun, 0);
-    } else {
-        return cachedSetTimeout.call(null, fun, 0);
-    }
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        clearTimeout(marker);
-    } else {
-        cachedClearTimeout.call(null, marker);
-    }
-}
 var queue = [];
 var draining = false;
 var currentQueue;
@@ -67500,7 +69166,7 @@ function drainQueue() {
     if (draining) {
         return;
     }
-    var timeout = runTimeout(cleanUpNextTick);
+    var timeout = cachedSetTimeout(cleanUpNextTick);
     draining = true;
 
     var len = queue.length;
@@ -67517,7 +69183,7 @@ function drainQueue() {
     }
     currentQueue = null;
     draining = false;
-    runClearTimeout(timeout);
+    cachedClearTimeout(timeout);
 }
 
 process.nextTick = function (fun) {
@@ -67529,7 +69195,7 @@ process.nextTick = function (fun) {
     }
     queue.push(new Item(fun, args));
     if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
+        cachedSetTimeout(drainQueue, 0);
     }
 };
 
@@ -67568,7 +69234,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],448:[function(require,module,exports){
+},{}],454:[function(require,module,exports){
 exports.publicEncrypt = require('./publicEncrypt');
 exports.privateDecrypt = require('./privateDecrypt');
 
@@ -67579,7 +69245,7 @@ exports.privateEncrypt = function privateEncrypt(key, buf) {
 exports.publicDecrypt = function publicDecrypt(key, buf) {
   return exports.privateDecrypt(key, buf, true);
 };
-},{"./privateDecrypt":450,"./publicEncrypt":451}],449:[function(require,module,exports){
+},{"./privateDecrypt":456,"./publicEncrypt":457}],455:[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash');
 module.exports = function (seed, len) {
@@ -67598,7 +69264,7 @@ function i2ops(c) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"buffer":90,"create-hash":388}],450:[function(require,module,exports){
+},{"buffer":95,"create-hash":394}],456:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var mgf = require('./mgf');
@@ -67709,7 +69375,7 @@ function compare(a, b){
   return dif;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":449,"./withPublic":452,"./xor":453,"bn.js":60,"browserify-rsa":81,"buffer":90,"create-hash":388,"parse-asn1":444}],451:[function(require,module,exports){
+},{"./mgf":455,"./withPublic":458,"./xor":459,"bn.js":65,"browserify-rsa":86,"buffer":95,"create-hash":394,"parse-asn1":450}],457:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var randomBytes = require('randombytes');
@@ -67807,7 +69473,7 @@ function nonZero(len, crypto) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":449,"./withPublic":452,"./xor":453,"bn.js":60,"browserify-rsa":81,"buffer":90,"create-hash":388,"parse-asn1":444,"randombytes":454}],452:[function(require,module,exports){
+},{"./mgf":455,"./withPublic":458,"./xor":459,"bn.js":65,"browserify-rsa":86,"buffer":95,"create-hash":394,"parse-asn1":450,"randombytes":460}],458:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 function withPublic(paddedMsg, key) {
@@ -67820,7 +69486,7 @@ function withPublic(paddedMsg, key) {
 
 module.exports = withPublic;
 }).call(this,require("buffer").Buffer)
-},{"bn.js":60,"buffer":90}],453:[function(require,module,exports){
+},{"bn.js":65,"buffer":95}],459:[function(require,module,exports){
 module.exports = function xor(a, b) {
   var len = a.length;
   var i = -1;
@@ -67829,7 +69495,7 @@ module.exports = function xor(a, b) {
   }
   return a
 };
-},{}],454:[function(require,module,exports){
+},{}],460:[function(require,module,exports){
 (function (process,global,Buffer){
 'use strict'
 
@@ -67869,10 +69535,10 @@ function randomBytes (size, cb) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"_process":447,"buffer":90}],455:[function(require,module,exports){
+},{"_process":453,"buffer":95}],461:[function(require,module,exports){
 module.exports = require("./lib/_stream_duplex.js")
 
-},{"./lib/_stream_duplex.js":456}],456:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":462}],462:[function(require,module,exports){
 // a duplex stream is just a stream that is both readable and writable.
 // Since JS doesn't have multiple prototypal inheritance, this class
 // prototypally inherits from Readable, and then parasitically from
@@ -67948,7 +69614,7 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
-},{"./_stream_readable":458,"./_stream_writable":460,"core-util-is":386,"inherits":434,"process-nextick-args":446}],457:[function(require,module,exports){
+},{"./_stream_readable":464,"./_stream_writable":466,"core-util-is":392,"inherits":440,"process-nextick-args":452}],463:[function(require,module,exports){
 // a passthrough stream.
 // basically just the most minimal sort of Transform stream.
 // Every written chunk gets output as-is.
@@ -67975,7 +69641,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":459,"core-util-is":386,"inherits":434}],458:[function(require,module,exports){
+},{"./_stream_transform":465,"core-util-is":392,"inherits":440}],464:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -68871,7 +70537,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":456,"_process":447,"buffer":90,"buffer-shims":88,"core-util-is":386,"events":424,"inherits":434,"isarray":436,"process-nextick-args":446,"string_decoder/":483,"util":62}],459:[function(require,module,exports){
+},{"./_stream_duplex":462,"_process":453,"buffer":95,"buffer-shims":93,"core-util-is":392,"events":430,"inherits":440,"isarray":442,"process-nextick-args":452,"string_decoder/":489,"util":67}],465:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -69052,7 +70718,7 @@ function done(stream, er) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":456,"core-util-is":386,"inherits":434}],460:[function(require,module,exports){
+},{"./_stream_duplex":462,"core-util-is":392,"inherits":440}],466:[function(require,module,exports){
 (function (process){
 // A bit simpler than readable streams.
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -69581,10 +71247,10 @@ function CorkedRequest(state) {
   };
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":456,"_process":447,"buffer":90,"buffer-shims":88,"core-util-is":386,"events":424,"inherits":434,"process-nextick-args":446,"util-deprecate":484}],461:[function(require,module,exports){
+},{"./_stream_duplex":462,"_process":453,"buffer":95,"buffer-shims":93,"core-util-is":392,"events":430,"inherits":440,"process-nextick-args":452,"util-deprecate":490}],467:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
-},{"./lib/_stream_passthrough.js":457}],462:[function(require,module,exports){
+},{"./lib/_stream_passthrough.js":463}],468:[function(require,module,exports){
 (function (process){
 var Stream = (function (){
   try {
@@ -69604,13 +71270,13 @@ if (!process.browser && process.env.READABLE_STREAM === 'disable' && Stream) {
 }
 
 }).call(this,require('_process'))
-},{"./lib/_stream_duplex.js":456,"./lib/_stream_passthrough.js":457,"./lib/_stream_readable.js":458,"./lib/_stream_transform.js":459,"./lib/_stream_writable.js":460,"_process":447}],463:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":462,"./lib/_stream_passthrough.js":463,"./lib/_stream_readable.js":464,"./lib/_stream_transform.js":465,"./lib/_stream_writable.js":466,"_process":453}],469:[function(require,module,exports){
 module.exports = require("./lib/_stream_transform.js")
 
-},{"./lib/_stream_transform.js":459}],464:[function(require,module,exports){
+},{"./lib/_stream_transform.js":465}],470:[function(require,module,exports){
 module.exports = require("./lib/_stream_writable.js")
 
-},{"./lib/_stream_writable.js":460}],465:[function(require,module,exports){
+},{"./lib/_stream_writable.js":466}],471:[function(require,module,exports){
 (function (process,global){
 /**
  * Copyright (c) 2014, Facebook, Inc.
@@ -70282,7 +71948,7 @@ module.exports = require("./lib/_stream_writable.js")
 );
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":447}],466:[function(require,module,exports){
+},{"_process":453}],472:[function(require,module,exports){
 (function (Buffer){
 /*
 CryptoJS v3.1.2
@@ -70496,7 +72162,7 @@ function ripemd160 (message) {
 module.exports = ripemd160
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],467:[function(require,module,exports){
+},{"buffer":95}],473:[function(require,module,exports){
 (function (Buffer){
 const assert = require('assert')
 /**
@@ -70729,7 +72395,7 @@ function toBuffer (v) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":55,"buffer":90}],468:[function(require,module,exports){
+},{"assert":60,"buffer":95}],474:[function(require,module,exports){
 (function (Buffer){
 var pbkdf2Sync = require('pbkdf2').pbkdf2Sync
 
@@ -70912,11 +72578,11 @@ function arraycopy (src, srcPos, dest, destPos, length) {
 module.exports = scrypt
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90,"pbkdf2":445}],469:[function(require,module,exports){
+},{"buffer":95,"pbkdf2":451}],475:[function(require,module,exports){
 'use strict'
 module.exports = require('./lib')(require('./lib/elliptic'))
 
-},{"./lib":472,"./lib/elliptic":471}],470:[function(require,module,exports){
+},{"./lib":478,"./lib/elliptic":477}],476:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var toString = Object.prototype.toString
@@ -70964,7 +72630,7 @@ exports.isNumberInInterval = function (number, x, y, message) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":435}],471:[function(require,module,exports){
+},{"../../is-buffer/index.js":441}],477:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var createHash = require('create-hash')
@@ -71215,7 +72881,7 @@ exports.ecdhUnsafe = function (publicKey, privateKey, compressed) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../messages.json":473,"bn.js":60,"buffer":90,"create-hash":388,"elliptic":403}],472:[function(require,module,exports){
+},{"../messages.json":479,"bn.js":65,"buffer":95,"create-hash":394,"elliptic":409}],478:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var bip66 = require('bip66')
@@ -71535,7 +73201,7 @@ module.exports = function (secp256k1) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./assert":470,"./messages.json":473,"bip66":59,"buffer":90}],473:[function(require,module,exports){
+},{"./assert":476,"./messages.json":479,"bip66":64,"buffer":95}],479:[function(require,module,exports){
 module.exports={
   "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
   "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -71573,7 +73239,7 @@ module.exports={
   "TWEAK_LENGTH_INVALID": "tweak length is invalid"
 }
 
-},{}],474:[function(require,module,exports){
+},{}],480:[function(require,module,exports){
 (function (Buffer){
 // prototype class for hash functions
 function Hash (blockSize, finalSize) {
@@ -71646,7 +73312,7 @@ Hash.prototype._update = function () {
 module.exports = Hash
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":90}],475:[function(require,module,exports){
+},{"buffer":95}],481:[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -71663,7 +73329,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":476,"./sha1":477,"./sha224":478,"./sha256":479,"./sha384":480,"./sha512":481}],476:[function(require,module,exports){
+},{"./sha":482,"./sha1":483,"./sha224":484,"./sha256":485,"./sha384":486,"./sha512":487}],482:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -71760,7 +73426,7 @@ Sha.prototype._hash = function () {
 module.exports = Sha
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":474,"buffer":90,"inherits":434}],477:[function(require,module,exports){
+},{"./hash":480,"buffer":95,"inherits":440}],483:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -71862,7 +73528,7 @@ Sha1.prototype._hash = function () {
 module.exports = Sha1
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":474,"buffer":90,"inherits":434}],478:[function(require,module,exports){
+},{"./hash":480,"buffer":95,"inherits":440}],484:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -71918,7 +73584,7 @@ Sha224.prototype._hash = function () {
 module.exports = Sha224
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":474,"./sha256":479,"buffer":90,"inherits":434}],479:[function(require,module,exports){
+},{"./hash":480,"./sha256":485,"buffer":95,"inherits":440}],485:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -72056,7 +73722,7 @@ Sha256.prototype._hash = function () {
 module.exports = Sha256
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":474,"buffer":90,"inherits":434}],480:[function(require,module,exports){
+},{"./hash":480,"buffer":95,"inherits":440}],486:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
@@ -72116,7 +73782,7 @@ Sha384.prototype._hash = function () {
 module.exports = Sha384
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":474,"./sha512":481,"buffer":90,"inherits":434}],481:[function(require,module,exports){
+},{"./hash":480,"./sha512":487,"buffer":95,"inherits":440}],487:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var Hash = require('./hash')
@@ -72379,7 +74045,7 @@ Sha512.prototype._hash = function () {
 module.exports = Sha512
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":474,"buffer":90,"inherits":434}],482:[function(require,module,exports){
+},{"./hash":480,"buffer":95,"inherits":440}],488:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -72508,7 +74174,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":424,"inherits":434,"readable-stream/duplex.js":455,"readable-stream/passthrough.js":461,"readable-stream/readable.js":462,"readable-stream/transform.js":463,"readable-stream/writable.js":464}],483:[function(require,module,exports){
+},{"events":430,"inherits":440,"readable-stream/duplex.js":461,"readable-stream/passthrough.js":467,"readable-stream/readable.js":468,"readable-stream/transform.js":469,"readable-stream/writable.js":470}],489:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -72731,7 +74397,7 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":90}],484:[function(require,module,exports){
+},{"buffer":95}],490:[function(require,module,exports){
 (function (global){
 
 /**
@@ -72802,14 +74468,14 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],485:[function(require,module,exports){
+},{}],491:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],486:[function(require,module,exports){
+},{}],492:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -73399,7 +75065,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":485,"_process":447,"inherits":434}],487:[function(require,module,exports){
+},{"./support/isBuffer":491,"_process":453,"inherits":440}],493:[function(require,module,exports){
 (function (global){
 
 var rng;
@@ -73434,7 +75100,7 @@ module.exports = rng;
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],488:[function(require,module,exports){
+},{}],494:[function(require,module,exports){
 //     uuid.js
 //
 //     Copyright (c) 2010-2012 Robert Kieffer
@@ -73619,7 +75285,7 @@ uuid.unparse = unparse;
 
 module.exports = uuid;
 
-},{"./rng":487}],489:[function(require,module,exports){
+},{"./rng":493}],495:[function(require,module,exports){
 var indexOf = require('indexof');
 
 var Object_keys = function (obj) {
@@ -73759,4 +75425,4 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":433}]},{},[27]);
+},{"indexof":439}]},{},[27]);

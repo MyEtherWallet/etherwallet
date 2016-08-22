@@ -49,7 +49,7 @@
     </div>
     <div class="form-group col-sm-10">
       <label translate="OFFLINE_Step2_Label_2"> Value / Amount to Send </label>
-      <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
+      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
       <div class="radio">
         <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tx.unit"/>Ether</label>
         <label><input type="radio" name="currencyRadioOffline" value="finney" ng-model="tx.unit" />Finney</label>

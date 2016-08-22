@@ -29,27 +29,32 @@ globalFuncs.getDangerText = function(str) {
 	return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
 globalFuncs.errorMsgs = [
-	"Please enter valid amount. ",
-	 "Your password must be at least 9 characters. Please ensure it is a strong password. ",
-	 "Sorry! We don't have a clue what type of wallet file this is. ",
-	 "This is not a valid wallet file. ",
-	 "This unit doesn\'t exists, please use the one of the following units ",
-	 "Invalid address. ",
-	 "Invalid password. ",
-	 "Invalid amount. ",
-	 "Invalid gas limit. ",
-	 "Invalid data value. ",
-	 "Invalid gas amount. ",
-	 "Invalid nonce. ",
-	 "Invalid signed transaction. ",
-	 "A wallet with this nickname already exists. ",
-	 "Wallet not found. ",
-	 "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ",
-	 "A wallet with this address already exists in storage. Please check your wallets page. ",
-   "You need to have at some ETH in your account to cover the cost of gas. .01ETH should be more than sufficient for a few sends and votes. ",
-   "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.",
-   "Invalid symbol"];
-globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "New wallet added: ", "You have successfully voted. Thank you for being an active participant in The DAO."];
+	"Please enter valid amount.",
+	"Your password must be at least 9 characters. Please ensure it is a strong password. ",
+	"Sorry! We don\'t recognize this type of wallet file. ",
+	"This is not a valid wallet file. ",
+	"This unit doesn\'t exists, please use the one of the following units ",
+	"Invalid address. ",
+	"Invalid password. ",
+	"Invalid amount. ",
+	"Invalid gas limit. ",
+	"Invalid data value. ",
+	"Invalid gas amount. ",
+	"Invalid nonce. ",
+	"Invalid signed transaction. ",
+	"A wallet with this nickname already exists. ",
+	"Wallet not found. ",
+	"Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ",
+	"A wallet with this address already exists in storage. Please check your wallets page. ",
+	"You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ",
+	"All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.",
+	"Invalid symbol"];
+globalFuncs.successMsgs = [
+	"Valid address",
+	"Wallet successfully decrypted",
+	"Transaction submitted. TX ID: ",
+	"Your wallet was successfully added: ",
+	"You have successfully voted. Thank you for being an active participant in The DAO."];
 globalFuncs.scrypt = {
 	n: 1024
 };

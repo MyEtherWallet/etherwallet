@@ -6,7 +6,7 @@
   <section class="row">
     <div class="col-md-6 col-sm-12 form-group">
       <h4 translate="BULK_Label_1">Number of Wallets To Generate</h4>
-      <input class="form-control" type="text" placeholder="Number of Wallets" ng-model="amount">
+      <input class="form-control" type="text" placeholder="{{ 'BULK_Label_1' | translate }}" ng-model="amount">
     </div>
     <div class="col-md-6 col-sm-12 form-group">
       <h4 translate="BULK_Label_2">Generate Wallets</h4>

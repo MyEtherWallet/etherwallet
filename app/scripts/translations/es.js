@@ -1,8 +1,8 @@
-// French
+// Spanish
 'use strict';
-var fr = function() {}
-fr.code = 'fr';
-fr.data = {
+var es = function() {}
+es.code = 'es';
+es.data = {
 
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
@@ -502,4 +502,4 @@ fr.data = {
   HELP_Contact_Title:     'Ways to Get in Touch'
 };
 
-module.exports = fr;
+module.exports = es;

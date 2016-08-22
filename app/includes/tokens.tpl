@@ -71,7 +71,7 @@
         <div class="form-group col-xs-12">
 
           <label translate="SEND_amount"> Amount to Send: </label>
-          <input class="form-control" type="text" placeholder="Amount" ng-model="tokenTx.value"/>
+          <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value"/>
 
           <div class="radio">
             <label ng-repeat="token in tokenObjs track by $index">

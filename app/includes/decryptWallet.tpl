@@ -32,7 +32,7 @@
 
       <div class="form-group" ng-if="requireFPass">
         <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password:  </p>
-        <input class="form-control" type="password" placeholder="Password" ng-model="$parent.$parent.filePassword" ng-change="onFilePassChange()" />
+        <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="$parent.$parent.filePassword" ng-change="onFilePassChange()" />
       </div>
     </div>
     <!-- /if selected upload -->
@@ -45,7 +45,7 @@
       </div>
       <div class="form-group" ng-if="requirePPass">
         <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password:  </p>
-        <input class="form-control" type="password" placeholder="Password" ng-model="$parent.$parent.privPassword" ng-change="onPrivKeyPassChange()">
+        <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="$parent.$parent.privPassword" ng-change="onPrivKeyPassChange()">
       </div>
     </div>
     <!-- /if selected type key-->

@@ -1,8 +1,8 @@
-// French
+// Korean
 'use strict';
-var fr = function() {}
-fr.code = 'fr';
-fr.data = {
+var ko = function() {}
+ko.code = 'ko';
+ko.data = {
 
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
@@ -502,4 +502,4 @@ fr.data = {
   HELP_Contact_Title:     'Ways to Get in Touch'
 };
 
-module.exports = fr;
+module.exports = ko;

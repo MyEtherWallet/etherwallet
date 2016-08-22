@@ -1,27 +1,8 @@
+// English
 'use strict';
 var en = function() {}
 en.code = 'en';
 en.data = {
-
-  /* Tranlsation Info */
-  translate_version:    '0.0',
-  Translator_Desc:      'Thank you to our translators...',
-  LANG_en:              'English',
-  LANG_es:              'Español',
-  LANG_fr:              'Français',
-  LANG_de:              'Deutsche',
-  TranlsatorName_1:     '',
-  TranlsatorAddr_1:     '',
-  TranlsatorName_2:     ' ',
-  TranlsatorAddr_2:     ' ',
-  TranlsatorName_3:     ' ',
-  TranlsatorAddr_3:     ' ',
-  TranlsatorName_4:     ' ',
-  TranlsatorAddr_4:     ' ',
-  TranlsatorName_5:     ' ',
-  TranlsatorAddr_5:     ' ',
-
-
 
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
@@ -41,6 +22,7 @@ en.data = {
   NAV_Contact:          'Contact',
 
   /* General */
+  x_Password:           'Password',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'x_Save',
@@ -118,6 +100,7 @@ en.data = {
   /* Sending Ether and Tokens */
   SEND_addr:             'To Address: ',
   SEND_amount:           'Amount to Send: ',
+  SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
   SEND_generate:         'Generate Signed Transaction',
@@ -126,7 +109,7 @@ en.data = {
   SEND_trans:            'Send Transaction',
   SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
-  /* full sentence reads "You are about to send 10 ETH to address 0x1234... Are you sure you want to do this? " */
+  /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
   SENDModal_Content_2:   'to address',
   SENDModal_Content_3:   'Are you sure you want to do this?',
@@ -145,7 +128,7 @@ en.data = {
   TRANS_standard:        'ETH (Standard Transaction)',
   TRANS_eth:             'Only ETH',
   TRANS_etc:             'Only ETC',
-  TRANS_advanced:        ' + Advanced: Add More Gas or Data ',
+  TRANS_advanced:        '+Advanced: Add More Gas or Data ',
   TRANS_data:            ' Data: ',
   TRANS_gas:             ' Gas: ',
   TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
@@ -168,7 +151,6 @@ en.data = {
   OFFLINE_Step1_Button:  'Generate Information',
   OFFLINE_Step1_Label_1: 'From Address: ',
   OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
-
   OFFLLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
   OFFLINE_Step2_Label_1:  'To Address: ',
   OFFLINE_Step2_Label_2:  'Value / Amount to Send',
@@ -181,7 +163,6 @@ en.data = {
   OFFLINE_Step2_Label_5:  'Data',
   OFFLINE_Step2_Label_5b: 'This is optional. Data is often used when you send transactions to contracts.',
   OFFLINE_Step2_Label_6:  'Enter / Select your Private Key / JSON.',
-
   OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
   OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
 
@@ -220,6 +201,53 @@ en.data = {
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* Error Messages */
+  ERROR_1:             'Please enter valid amount.',
+  ERROR_2:             'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+  ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
+  ERROR_4:              'This is not a valid wallet file. ',
+  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
+  ERROR_6:              'Invalid address. ',
+  ERROR_7:              'Invalid password. ',
+  ERROR_8:              'Invalid amount. ',
+  ERROR_9:              'Invalid gas limit. ',
+  ERROR_10:             'Invalid data value. ',
+  ERROR_11:             'Invalid gas amount. ',
+  ERROR_12:             'Invalid nonce. ',
+  ERROR_13:             'Invalid signed transaction. ',
+  ERROR_14:             'A wallet with this nickname already exists. ',
+  ERROR_15:             'Wallet not found. ',
+  ERROR_16:             'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+  ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
+  ERROR_18:             'You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
+  ERROR_20:             'Invalid symbol',
+  SUCCESS_1:            'Valid address',
+  SUCCESS_2:            'Wallet successfully decrypted',
+  SUCCESS_3:            'Transaction submitted. TX ID: ',
+  SUCCESS_4:            'Your wallet was successfully added: ',
+  SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
+
+  /* Tranlsation Info */
+  translate_version:    '0.0',
+  Translator_Desc:      'Thank you to our translators...',
+  LANG_en:              'English',
+  LANG_de:              'Deutsche',
+  LANG_es:              'Español',
+  LANG_fr:              'Français',
+  LANG_ko:              'Korean',
+  LANG_no:              'Norwegian',
+  TranlsatorName_1:     '',
+  TranlsatorAddr_1:     '',
+  TranlsatorName_2:     ' ',
+  TranlsatorAddr_2:     ' ',
+  TranlsatorName_3:     ' ',
+  TranlsatorAddr_3:     ' ',
+  TranlsatorName_4:     ' ',
+  TranlsatorAddr_4:     ' ',
+  TranlsatorName_5:     ' ',
+  TranlsatorAddr_5:     ' ',
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning:       'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',

@@ -39,7 +39,7 @@
 
         <div class="form-group">
           <label translate="ADD_Label_2"> Create a Nickname: </label>
-          <input class="form-control" type="text" placeholder="My New Wallet" ng-model="addAccount.nickName" ng-change="newWalletChange('nickNameStatus','showBtnGen')"/>
+          <input class="form-control" type="text" placeholder="{{ 'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('nickNameStatus','showBtnGen')"/>
         </div>
         <div class="form-group">
           <label translate="GEN_Label_1"> Create a Password: (at least 9 characters)</label>
@@ -62,7 +62,7 @@
         </div>
         <div class="form-group" ng-show="requireFPass">
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
-          <input class="form-control" type="password" placeholder="Password" ng-model="filePassword" ng-change="onFilePassChange()" />
+          <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="filePassword" ng-change="onFilePassChange()" />
         </div>
       </div>
 
@@ -74,7 +74,7 @@
         </div>
         <div class="form-group" ng-show="requirePPass">
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
-          <input class="form-control" type="password" placeholder="Password" ng-model="privPassword" ng-change="onPrivKeyPassChange()"/>
+          <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="privPassword" ng-change="onPrivKeyPassChange()"/>
         </div>
       </div >
 
@@ -84,7 +84,7 @@
         <p class="text-danger" translate="ADD_Warning_1">You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it. </p>
         <div class="form-group">
           <label translate="ADD_Label_2"> Create a Nickname: </label>
-          <input class="form-control" type="text" placeholder="My New Wallet" ng-model="addAccount.nickName" ng-change="watchOnlyChange()"/>
+          <input class="form-control" type="text" placeholder="{{ 'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="watchOnlyChange()"/>
         </div>
         <div class="form-group">
           <label translate="ADD_Label_5"> Enter the Address: </label>
@@ -146,12 +146,12 @@
       <h4 translate="NAV_AddWallet">Add Wallet</h4>
       <div class="form-group">
         <label translate="ADD_Label_2"> Create a Nickname: </label>
-        <input class="form-control" type="text" placeholder="My Wallet" ng-model="addAccount.nickName" ng-change="newWalletChange('addStatus','showBtnAddWallet')"/>
+        <input class="form-control" type="text" placeholder="{{ 'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('addStatus','showBtnAddWallet')"/>
       </div>
       <div class="form-group" ng-show="showPassTxt">
         <label translate="GEN_Label_1"> Enter a strong password (at least 9 characters)</label>
         <div class="input-group">
-          <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="Don't forget to save this!" ng-model="addAccount.password" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-change="newWalletChange('addStatus','showBtnAddWallet')"/>
+          <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}"  ng-model="addAccount.password" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-change="newWalletChange('addStatus','showBtnAddWallet')"/>
           <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
         </div>
       </div>

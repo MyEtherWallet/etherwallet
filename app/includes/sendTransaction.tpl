@@ -69,7 +69,7 @@
       <div class="form-group col-xs-12">
         <label translate="SEND_amount">Amount to Send:</label>
         <a class="pull-right" ng-click="transferAllBalance()" ng-show="tx.sendMode==0" translate="SEND_TransferTotal">Transfer total available balance</a>
-        <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
+        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
         <div class="radio">
           <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>
             <span translate="TRANS_standard">ETH (Standard Transaction)</span></label>

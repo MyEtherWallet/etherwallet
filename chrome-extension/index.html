@@ -58,14 +58,17 @@
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{curLang}} <span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><a ng-click="changeLanguage('en','English')" translate="LANG_en">English</a></li>
+        <li><a ng-click="changeLanguage('de','Deutsche')" translate="LANG_de">Deutsche</a></li>
         <li><a ng-click="changeLanguage('es','Español')" translate="LANG_es">Español</a></li>
         <li><a ng-click="changeLanguage('fr','Français')" translate="LANG_fr">Français</a></li>
-        <li><a ng-click="changeLanguage('de','Deutsche')" translate="LANG_de">Deutsche</a></li>
+        <li><a ng-click="changeLanguage('ko','Korean')" translate="LANG_ko">Korean</a></li>
+        <li><a ng-click="changeLanguage('no','Norwegian')" translate="LANG_no">Norwegian</a></li>
+        <li><a ng-click="changeLanguage('test','Test')">Test</a></li>
       </ul>
     </li>
-
   </ul>
 </section>
+
 <br />
 
 <section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
@@ -380,7 +383,7 @@
       <div class="form-group col-xs-12">
         <label translate="SEND_amount">Amount to Send:</label>
         <a class="pull-right" ng-click="transferAllBalance()" ng-show="tx.sendMode==0" translate="SEND_TransferTotal">Transfer total available balance</a>
-        <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
+        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
         <div class="radio">
           <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>
             <span translate="TRANS_standard">ETH (Standard Transaction)</span></label>
@@ -556,7 +559,7 @@
     </div>
     <div class="form-group col-sm-10">
       <label translate="OFFLINE_Step2_Label_2"> Value / Amount to Send </label>
-      <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
+      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
       <div class="radio">
         <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tx.unit"/>Ether</label>
         <label><input type="radio" name="currencyRadioOffline" value="finney" ng-model="tx.unit" />Finney</label>
@@ -735,7 +738,7 @@
         <div class="form-group col-xs-12">
 
           <label translate="SEND_amount"> Amount to Send: </label>
-          <input class="form-control" type="text" placeholder="Amount" ng-model="tokenTx.value"/>
+          <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value"/>
 
           <div class="radio">
             <label ng-repeat="token in tokenObjs track by $index">
@@ -1417,7 +1420,7 @@
   <section class="row">
     <div class="col-md-6 col-sm-12 form-group">
       <h4 translate="BULK_Label_1">Number of Wallets To Generate</h4>
-      <input class="form-control" type="text" placeholder="Number of Wallets" ng-model="amount">
+      <input class="form-control" type="text" placeholder="{{ 'BULK_Label_1' | translate }}" ng-model="amount">
     </div>
     <div class="col-md-6 col-sm-12 form-group">
       <h4 translate="BULK_Label_2">Generate Wallets</h4>
