@@ -4,7 +4,7 @@ var walletDecryptDrtv = function() {
         restrict : "E",
         template : '<section class="row" ng-controller=\'decryptWalletCtrl\'>\n \
      <div class="col-md-4 col-sm-6">\n \
-      <h4 translate="decrypt_Title"> Select the format of your privdecrypt_Titleate key: </h4>\n \
+      <h4 translate="decrypt_Title"> Select the format of your private key: </h4>\n \
       <div class="radio">\n \
         <label>\n \
           <input type="radio" ng-model="walletType" value="fileupload"/>JSON or Keystore File</label>\n \

@@ -85,6 +85,7 @@
           </div>
 
           <div class="custom-token-fields well" ng-show="tokenTx.id==99">
+            <p translate="HELP_7_Desc_0">[Check out Ethplorer.io](https://ethplorer.io/) if you need help finding symbol / decimal.</p>
             <div class="form-group">
               <label translate="TOKEN_Addr"> Address: </label>
               <input class="form-control" type="text" ng-model="localToken.contractAdd"/>

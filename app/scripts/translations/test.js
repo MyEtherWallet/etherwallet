@@ -1,6 +1,4 @@
-/* NOTE: This is for testing purposes only. It was done 100% via Google Translate and
-Should NOT be used in production environment */
-
+/* NOTE: This is for testing purposes only. It was done 100% via Google Translate and Should NOT be used in production environment */
 'use strict';
 var test = function() {}
 test.code = 'test';
@@ -67,6 +65,7 @@ test.data = {
   /* Decrypt Panel */
   decrypt_Access:         'Comment aimeriez-vous pour accéder à votre portefeuille?',
   decrypt_Title:          'Sélectionnez le format de votre clé privée:',
+  decrypt_Select:         'Select a Wallet:',
 
   /* Add Wallet */
   ADD_Label_1:            'Qu\'est-ce que tu aimerais faire?',
@@ -111,7 +110,6 @@ test.data = {
   SEND_trans:            'Envoyer Transaction',
   SEND_TransferTotal:    'Transfert solde total disponible',
   SENDModal_Title:       'Attention! ',
-
   /* full sentence reads "You are about to send 10 ETH to address 0x1234... Are you sure you want to do this? " */
   SENDModal_Content_1:   'Vous êtes sur le point d\'envoyer',
   SENDModal_Content_2:   'pour répondre',
@@ -234,11 +232,13 @@ test.data = {
 
   /* Tranlsation Info */
   translate_version:    '0.0',
-  Translator_Desc:      'Merci à nos traducteurs...',
+  Translator_Desc:      'Thank you to our translators...',
   LANG_en:              'English',
+  LANG_de:              'Deutsche',
   LANG_es:              'Español',
   LANG_fr:              'Français',
-  LANG_de:              'Deutsche',
+  LANG_ko:              'Korean',
+  LANG_no:              'Norwegian',
   TranlsatorName_1:     '',
   TranlsatorAddr_1:     '',
   TranlsatorName_2:     ' ',
@@ -368,6 +368,7 @@ test.data = {
   HELP_6_Desc_15:       ' Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. ',
 
   HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
+  HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token.',
   HELP_7_Desc_1:        'Navigate to the "Send Token" page.',
   HELP_7_Desc_2:        'Unlock your wallet.',
   HELP_7_Desc_3:        'Enter the address you would like to send to in the "To Address:" field.',

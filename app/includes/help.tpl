@@ -192,6 +192,7 @@
 
 
   <h4 translate="HELP_7_Title">7. How do I send Tokens & add custom tokens? </h4>
+  <p translate="HELP_7_Desc_0"> [Check out Ethplorer.io](https://ethplorer.io/) if you need help finding symbol / decimal. </p>
   <ol>
     <li translate="HELP_7_Desc_1"> Navigate to the "Send Token" page. </li>
     <li translate="HELP_7_Desc_2"> Unlock your wallet. </li>

@@ -65,6 +65,7 @@ fr.data = {
   /* Decrypt Panel */
   decrypt_Access:         'How would you like to access your wallet?',
   decrypt_Title:          'Select the format of your private key:',
+  decrypt_Select:         'Select a Wallet:',
 
   /* Add Wallet */
   ADD_Label_1:            'What would you like to do?',
@@ -367,6 +368,7 @@ fr.data = {
   HELP_6_Desc_15:       ' Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. ',
 
   HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
+  HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token.',
   HELP_7_Desc_1:        'Navigate to the "Send Token" page.',
   HELP_7_Desc_2:        'Unlock your wallet.',
   HELP_7_Desc_3:        'Enter the address you would like to send to in the "To Address:" field.',

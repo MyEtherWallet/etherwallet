@@ -2,7 +2,19 @@
 
 <section class="container" ng-controller='tabsCtrl'>
   <ul class="nav nav-tabs">
-    <li ng-repeat="tab in tabNames track by $index" ng-class="{active: $index==activeTab}" ng-show="{{tab.cx}}" ng-click="tabClick($index)"> <a>{{tab.name}}</a></li>
+    <li ng-repeat="tab in tabNames track by $index" ng-class="{active: $index==activeTab}" ng-show="{{tab.cx}}" ng-click="tabClick($index)"> <a>{{tab.name | translate}}</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{curLang}} <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a ng-click="changeLanguage('en','English')" translate="LANG_en">English</a></li>
+        <li><a ng-click="changeLanguage('de','Deutsche')" translate="LANG_de">Deutsche</a></li>
+        <li><a ng-click="changeLanguage('es','Español')" translate="LANG_es">Español</a></li>
+        <li><a ng-click="changeLanguage('fr','Français')" translate="LANG_fr">Français</a></li>
+        <li><a ng-click="changeLanguage('ko','Korean')" translate="LANG_ko">Korean</a></li>
+        <li><a ng-click="changeLanguage('no','Norwegian')" translate="LANG_no">Norwegian</a></li>
+        <li><a ng-click="changeLanguage('test','Test')">Test</a></li>
+      </ul>
+    </li>
   </ul>
 </section>
 <br />

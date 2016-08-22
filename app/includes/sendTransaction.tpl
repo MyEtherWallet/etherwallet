@@ -139,10 +139,10 @@
             <div class="modal-body">
               <h4>
                 <span translate="SENDModal_Content_1">You are about to send</span>
-                <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
-                <strong id="confirmCurrancy" class="text-primary"> {{tokenObjs[tokenTx.id].getSymbol()}} </strong>
+                <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
+                <strong id="confirmCurrancy" class="text-primary"> {{tx.sendMode == 2 ? "ETC" : "ETH"}}  </strong>
                 <span translate="SENDModal_Content_2">to address</span>
-                <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
+                <strong id="confirmAddress" class="text-primary"> {{tx.to}} </strong>
               </h4>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>

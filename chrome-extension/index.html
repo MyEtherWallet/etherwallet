@@ -453,10 +453,10 @@
             <div class="modal-body">
               <h4>
                 <span translate="SENDModal_Content_1">You are about to send</span>
-                <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
-                <strong id="confirmCurrancy" class="text-primary"> {{tokenObjs[tokenTx.id].getSymbol()}} </strong>
+                <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
+                <strong id="confirmCurrancy" class="text-primary"> {{tx.sendMode == 2 ? "ETC" : "ETH"}}  </strong>
                 <span translate="SENDModal_Content_2">to address</span>
-                <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
+                <strong id="confirmAddress" class="text-primary"> {{tx.to}} </strong>
               </h4>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>
@@ -752,6 +752,7 @@
           </div>
 
           <div class="custom-token-fields well" ng-show="tokenTx.id==99">
+            <p translate="HELP_7_Desc_0">[Check out Ethplorer.io](https://ethplorer.io/) if you need help finding symbol / decimal.</p>
             <div class="form-group">
               <label translate="TOKEN_Addr"> Address: </label>
               <input class="form-control" type="text" ng-model="localToken.contractAdd"/>
@@ -1220,6 +1221,7 @@
 
 
   <h4 translate="HELP_7_Title">7. How do I send Tokens & add custom tokens? </h4>
+  <p translate="HELP_7_Desc_0"> [Check out Ethplorer.io](https://ethplorer.io/) if you need help finding symbol / decimal. </p>
   <ol>
     <li translate="HELP_7_Desc_1"> Navigate to the "Send Token" page. </li>
     <li translate="HELP_7_Desc_2"> Unlock your wallet. </li>

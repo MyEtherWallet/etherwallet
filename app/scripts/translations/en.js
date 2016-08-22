@@ -65,6 +65,7 @@ en.data = {
   /* Decrypt Panel */
   decrypt_Access:         'How would you like to access your wallet?',
   decrypt_Title:          'Select the format of your private key:',
+  decrypt_Select:         'Select a Wallet:',
 
   /* Add Wallet */
   ADD_Label_1:            'What would you like to do?',
@@ -74,7 +75,7 @@ en.data = {
   ADD_Radio_3:            'Paste/Type Your Private Key',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
-  ADD_Label_3:            'Your file is encrypted. Please enter the password: ',
+  ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
@@ -367,6 +368,7 @@ en.data = {
   HELP_6_Desc_15:       ' Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. ',
 
   HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
+  HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token.',
   HELP_7_Desc_1:        'Navigate to the "Send Token" page.',
   HELP_7_Desc_2:        'Unlock your wallet.',
   HELP_7_Desc_3:        'Enter the address you would like to send to in the "To Address:" field.',
