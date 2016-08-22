@@ -54,6 +54,16 @@
 <section class="container" ng-controller='tabsCtrl'>
   <ul class="nav nav-tabs">
     <li ng-repeat="tab in tabNames track by $index" ng-class="{active: $index==activeTab}" ng-show="{{tab.mew}}" ng-click="tabClick($index)"> <a>{{tab.name}} </a></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> English <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a ng-click="changeLanguage('en')" translate="LANG_en">English</a></li>
+        <li><a ng-click="changeLanguage('es')" translate="LANG_es">Español</a></li>
+        <li><a ng-click="changeLanguage('fr')" translate="LANG_fr">Français</a></li>
+        <li><a ng-click="changeLanguage('de')" translate="LANG_de">Deutsche</a></li>
+      </ul>
+    </li>
+
   </ul>
 </section>
 <br />
@@ -287,7 +297,7 @@
       </ul>
 
       <div translate="sidebar_TransHistory">See Transaction History:</div>
-      <ul>
+      <ul class="account-info">
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/{{wallet.getAddressString()}}</a></li>
       </ul>
 

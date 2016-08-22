@@ -98,7 +98,7 @@
       </ul>
 
       <div translate="sidebar_TransHistory">See Transaction History:</div>
-      <ul>
+      <ul class="account-info">
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/{{wallet.getAddressString()}}</a></li>
       </ul>
 

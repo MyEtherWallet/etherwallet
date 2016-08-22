@@ -116,6 +116,11 @@
       }
     }
   }
+  .dropdown:hover {
+    .dropdown-menu {
+      display: block;
+    }
+  }
   // pulling this in mainly for less shorthand
   &.nav-justified {
     .nav-justified();
@@ -127,9 +132,9 @@
       display: block;
       float: left;
       text-align: center;
-      width: 50%;
-      padding: 0 15px;
-      font-size: 14px;
+      width: 33%;
+      padding: 0 5px;
+      font-size: 13px;
       height: 40px;
       > a {
         border-bottom: 1px solid @gray-lighter;

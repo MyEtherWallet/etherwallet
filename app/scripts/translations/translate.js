@@ -4,7 +4,7 @@ var fr = require('./fr');
 var translate = function($translateProvider) {
 	$translateProvider.translations(en.code, translate.marked(en.data));
 	$translateProvider.translations(fr.code, translate.marked(fr.data));
-	$translateProvider.preferredLanguage(en.code);
+	$translateProvider.preferredLanguage('en');
 	$translateProvider.useSanitizeValueStrategy(null);
 }
 translate.marked = function(data) {

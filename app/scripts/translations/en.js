@@ -3,12 +3,27 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
-  /* Do Not Change */
+  /* Tranlsation Info */
   translate_version:    '0.0',
-  CX_version:           '2.9',
-  MEW_vesion:           '2.9',
+  Translator_Desc:      'Thank you to our translators...',
+  LANG_en:              'English',
+  LANG_es:              'Español',
+  LANG_fr:              'Français',
+  LANG_de:              'Deutsche',
+  TranlsatorName_1:     '',
+  TranlsatorAddr_1:     '',
+  TranlsatorName_2:     ' ',
+  TranlsatorAddr_2:     ' ',
+  TranlsatorName_3:     ' ',
+  TranlsatorAddr_3:     ' ',
+  TranlsatorName_4:     ' ',
+  TranlsatorAddr_4:     ' ',
+  TranlsatorName_5:     ' ',
+  TranlsatorAddr_5:     ' ',
 
-  /* Navigation */
+
+
+  /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
   NAV_GenerateWallet:   'Generate Wallet',
@@ -67,6 +82,7 @@ en.data = {
 
   /* Decrypt Panel */
   decrypt_Access:         'How would you like to access your wallet?',
+  decrypt_Title:          'Select the format of your private key:',
 
   /* Add Wallet */
   ADD_Label_1:            'What would you like to do?',
@@ -103,7 +119,7 @@ en.data = {
   SEND_addr:             'To Address: ',
   SEND_amount:           'Amount to Send: ',
   SEND_custom:           'Custom',
-  SEND_gas:              'SEND_gas',
+  SEND_gas:              'Gas',
   SEND_generate:         'Generate Signed Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
@@ -164,7 +180,7 @@ en.data = {
   OFFLINE_Step2_Label_4b: 'This was displayed in Step 1 on your online computer.',
   OFFLINE_Step2_Label_5:  'Data',
   OFFLINE_Step2_Label_5b: 'This is optional. Data is often used when you send transactions to contracts.',
-  OFFLINE_Step2_Label_6:  'Enter / Upload your Private Key / JSON.',
+  OFFLINE_Step2_Label_6:  'Enter / Select your Private Key / JSON.',
 
   OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
   OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
@@ -455,7 +471,7 @@ en.data = {
   HELP_Sec_Desc_8:        'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
 
   HELP_FAQ_Title:         'More Helpful Answers to Frequent Questions',
-  HELP_Contact_Title:     'Ways to Get in Touch',
+  HELP_Contact_Title:     'Ways to Get in Touch'
 };
 
 module.exports = en;
