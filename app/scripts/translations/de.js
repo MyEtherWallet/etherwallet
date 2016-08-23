@@ -266,17 +266,17 @@ de.data = {
 
   HELP_0_Title:        '0) I\'m new. What do I do?',
   HELP_0_Desc_1:       'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.',
-  HELP_0_Desc_2:       'Erstelle eine neue Wallet',
+  HELP_0_Desc_2:       'Erzeuge eine neue Wallet',
   HELP_0_Desc_3:       'Back the wallet up.',
   HELP_0_Desc_4:       'Verify you have access to this new wallet and have correctly saved all necessary information.',
   HELP_0_Desc_5:       'Überweise Ether auf diese neue Wallet.',
 
-  HELP_1_Title:        '1) Wie erstelle ich eine neue Wallet?',
+  HELP_1_Title:        '1) Wie erzeuge ich eine neue Wallet?',
   HELP_1_Desc_1:       'Go to the "Generate Wallet" page.',
   HELP_1_Desc_2:       'Go to the "Add Wallet" page & select "Generate New Wallet"',
   HELP_1_Desc_3:       'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.',
   HELP_1_Desc_4:       'Click "GENERATE".',
-  HELP_1_Desc_5:       'Deine Wallet wurde erstellt.',
+  HELP_1_Desc_5:       'Deine Wallet wurde erzeugt.',
 
   HELP_2a_Title:       '2a) Wie kann ich meine Wallet sichern?',
   HELP_2a_Desc_1:      'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
