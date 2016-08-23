@@ -241,14 +241,19 @@ no.data = {
   LANG_no:              'Norwegian',
   TranlsatorName_1:     '',
   TranlsatorAddr_1:     '',
+  /* Translator 1: Insert Comments Here */
   TranlsatorName_2:     ' ',
   TranlsatorAddr_2:     ' ',
+  /* Translator 2: Insert Comments Here */
   TranlsatorName_3:     ' ',
   TranlsatorAddr_3:     ' ',
+  /* Translator 3: Insert Comments Here */
   TranlsatorName_4:     ' ',
   TranlsatorAddr_4:     ' ',
+  /* Translator 4: Insert Comments Here */
   TranlsatorName_5:     ' ',
   TranlsatorAddr_5:     ' ',
+  /* Translator 5: Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning:       'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
