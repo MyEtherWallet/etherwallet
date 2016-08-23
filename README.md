@@ -77,20 +77,20 @@ The app folder (where you will be working):
 - `styles` is all the less. It's a couple custom folders and bootstrap. We try to keep the LESS/CSS and small as possible so writing a couple of custom lines of CSS instead of uncommenting an entire bootstrap file is recommended. This, in general, needs to be further cleaned up.
 - Remember when I said don't touch the dist/chrome-extension folder. I lied a little bit. You need to access the Chrome Extension windows (the guys that pop down when you click the extension icon) via `chrome-extension/browser_action`. `browser_action.html` is the main one and `cx-quicksend.html` is when you click the "Quicksend" button. I would love to have these moved from the app folder too.
 
-### Translating
 
-If you are a developer and familiar with GitHub, Pull Requests, and know how to save a JS file as a .js file rather than a Word Doc:
 
-1. Clone the mercury branch.
-2. Go to `/app/scripts/translations/`.
-3. Open the language you want to translate.
-4. Translate as much or as little as you wish.
-5. Add your name/username, donation address, and any notes you would like on ~line 240 of the language.js file.
-6. Open a PR and leave us a brief description of what you did and any issues you ran into or comments you have.
+## How to Help Translate
 
-If you are NOT a developer and have no idea how this works, it's okay. If you would rather not deal with Github, please just email us a myetherwallet at gmail dot com and I'll email you the file and you can make changes and send it back to us and I'll make sure you don't screw anything up.
+**A couple of notes:**
 
-If you feel like experiencing something new, read on!
+- Everything on the entire site is broken down into lines and in this one file. It's kinda crazy. The uppermost items are the highest priority and the further you go down, the less of a priority it is.
+- You can add comments anywhere by wrapping it in /* Your Comment Here */. If you want to leave a note for yourself or someone else, do so in this format. That way it doesn't screw up the code or show up somewhere on the site.
+- Don't delete any lines. Just leave it in English if you don't know how to translate it.
+- Always make sure each line ends with `',`. So the format is `NAME: ' your text here ',` You only need to change the `your text here` part - try not to touch anything else.
+
+**If you are NOT a developer and have no idea how this works:**
+
+Anyone can help out and it looks way more complicated than it is! If you would rather not deal with Github, please just email us a myetherwallet at gmail dot com and I'll email you the file and you can make changes and send it back to us and I'll make sure you don't screw anything up. If you feel like experiencing something new, read on!
 
 1. Sign into your Github account or make a new Github account.
 2. Go to https://github.com/kvhnuke/etherwallet/tree/mercury/app/scripts/translations
@@ -104,6 +104,38 @@ If you feel like experiencing something new, read on!
 10. Click the "Create Pull Request" button.....twice. [Screenshot](https://ipfs.pics/ipfs/QmZJJvPxXu7BFHDQ1zj1a73EATQETbsDuAJVEJnatTHrms).
 11. That's it. You successfully made a new pull request! Tell all your friends.
 12. We will now review it and pull it in and it will be made live on the site. We may also ask you questions if something is confusing for whatever reason.
+
+**If you don't want to edit it in your browser for whatever reason:**
+
+That is fine but there are a couple of things you need to know. First is you NEED to use a text editor that is made for this. Not Word. I personally use Sublime Text 3 because it is pretty. You can download it for free here: https://www.sublimetext.com/3
+
+You can also use TextEdit on a Mac or Notepad on a PC. However, you need to make sure it is **plain text!!!** before you start editing. Using TextEdit, open a new document and then go to Format -> Make Plain Text. Then you can copy and paste everything from the Github page into Text edit. If you want to save it to work on later, save it with a .js extension. Don't try to bold things or highlight them. That will turn it back into rich text and add a bunch of other data that no one needs. When you are done, paste it back into Github page and submit a Pull Request as I described above.
+
+On a PC, I have no idea.
+
+**If you are a developer and familiar with GitHub, Pull Requests, and know how to save a JS file as a .js file rather than a Word Doc:**
+
+1. Clone the [mercury branch](https://github.com/kvhnuke/etherwallet/tree/mercury).
+2. Go to `/app/scripts/translations/`.
+3. Open the language you want to translate.
+4. Translate as much or as little as you wish.
+5. Add your name/username, donation address, and any notes you would like on ~line 240 of the language.js file.
+6. Open a PR and leave us a brief description of what you did and any issues you ran into or comments you have.
+
+**If your language isn't there yet:**
+
+We've set up German, English, Spanish, French, Korean, and Norwegian. We can add any number of languages, very quickly. Leave a comment or email us at myetherwallet at gmail dot com and I will add it ASAP so you can update it.
+
+**If you are a developer and want to add a new language:**
+1. Copy and paste the "en.js" and rename it to your language. [You can find your language code here](https://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx).
+2. Open the file. On line 3 - line 5 change all en's to your language code: var **en** = function() {} **en**.code = '**en**'; **en**.data = {
+3. Scroll to the very very bottom.  Change all the en's to your language code: module.exports = **en**;
+4. Save it.
+5. Open translate.js (in that same folder).
+6. Copy line 2 and paste it right below that line. Change all the en's to your language code: var **en** = require('./**en**');
+7. Copy line 11 and paste it right below that line. Change all the en's to your language code: $translateProvider.translations(**en**.code, translate.marked(**en**.data));
+8. Now you can go back to the first file you edited and translate away and open a PR when you are done!
+
 
 
 ### Contact
