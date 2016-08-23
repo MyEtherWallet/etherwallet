@@ -41,27 +41,27 @@ el.data = {
   x_TXT:                'TXT αρχειο (μη-κωδικοποιημένο)',
 
   /* Header */
-  MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
-  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
-  MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  MEW_Warning_1:        'Πάντα ελέγχετε την  URL μπάρα πριν χρησιμοποιήσετε η πριν δημιουργήσετε νεο πορτοφόλι. Προσοχή στις ιστιοσελίδες απομιμήσης!',
+  CX_Warning_1:         'Βεβαιωθείτε οτι εχετε **αντίγραφα** όλων των πορτοφολιών που χρησιμοποιήτε εδω. Πολλα πράγματα μπορούνε να συμβούνε που θα έχουνε ως αποτέλεσμα την απώλεια δεδομένων απο αυτο το Chrome Extension, συμπεριλαμβανομενοντασ και την εγκατάσταση/απεγκατάσταση της επέκτασης. Αυτή ή επέκταση είναι ένας εύκολος τροπος για να χρησιμοποιήσετε τα πορτοφόλια σας, ***όχι** για να τα αποθηκεύσετε με ασφάλεια.',
+  MEW_Tagline:          'Ανοιχτού  Κώδικα JavaScript Client-Side Ether Πορτοφόλι',
+	CX_Tagline:           'Chrome επέκταση Ανοιχτού  Κώδικα JavaScript Client-Side Ether Πορτοφόλι',
 
   /* Footer */
-  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
-  FOOTER_2:             'Donations greatly appreciated:',
-  FOOTER_3:             'Client-side wallet generation by',
+  FOOTER_1:             'Ενα εργαλείο ανοιχτού κώδικα javascript, client-side για δημιουργία πορτοφολιών Ethererum και για αποστολη  συναλλαγών.',
+  FOOTER_2:             'Δωρεές εκτιμούνται δεόντως:',
+  FOOTER_3:             'Δημιουργια Client-side πορτοφολιού απο',
 
   /* Sidebar */
-  sidebar_AccountInfo:  'Account Information: ',
-  sidebar_AccountAddr:  'Account Address: ',
-  sidebar_AccountBal:   'Account Balance: ',
-  sidebar_TokenBal:     'Token Balances: ',
-  sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
-  sidebar_DGDBal:       'DGD Crowdsale Information:',
-  sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
-  sidebar_donate:       'Donate',
-  sidebar_thanks:       'THANK YOU!!!',
+  sidebar_AccountInfo:  'Πληροφορίες Λογαριασμού: ',
+  sidebar_AccountAddr:  'Διεύθυνση Λογαριασμού: ',
+  sidebar_AccountBal:   'Υπόλοιπο Λογαριασμού: ',
+  sidebar_TokenBal:     'Υπόλοιπο Token: ',
+  sidebar_Equiv:        'Ισότιμες Αξίες: ',
+  sidebar_TransHistory: 'Ιστορία Συναλλαγών',
+  sidebar_DGDBal:       'Πληροφορίες για το DGD Crowdsale:',
+  sidebar_donation:     'Το MyEtherWallet ειναι μια δωρεάν υπηρεσία ανοιχτού κωδικα αφοσιωμένη στην ασφάλεια και την προστασία των προσωπικών σας δεδομένων. Όσο περισότερες δωρεές λαμβάνουμε τοσο πιο πολύ χρόνο μπορουμε να αφοσιώνουμε στην δημιουργία καινούργιων λειτουργειών, στισ απαντήσεις στα σχόλιά σας και στο να σας δίνουμε ότι ζητάτε. Είμαστε απλώς δύο άτομα που προσπαθούμε να αλλάξουμε τον κόσμο. Θα μας βοηθήσετε?',
+  sidebar_donate:       'Δωρεά',
+  sidebar_thanks:       'ΕΥΧΑΡΙΣΤΟΥΜΕ!!!',
 
   /* Decrypt Panel */
   decrypt_Access:         'How would you like to access your wallet?',
