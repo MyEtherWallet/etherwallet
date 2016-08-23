@@ -5,21 +5,21 @@ sv.code = 'sv';
 sv.data = {
 
   /* Navigation*/
-  NAV_YourWallets:      'Your Wallets',
-  NAV_AddWallet:        'Add Wallet',
-  NAV_GenerateWallet:   'Generate Wallet',
-  NAV_BulkGenerate:     'Bulk Generate',
-  NAV_SendEther:        'Send Ether',
-  NAV_SendTokens:       'Send Tokens',
-  NAV_Offline:          'Send Offline',
-  NAV_WithdrawDAO:      'Withdraw DAO',
-  DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
-  NAV_ClaimDGD:         'Claim DGD',
-  DGD_TitleLong:        'Claim Your DGD Tokens',
-  NAV_MyWallets:        'My Wallets',
-  NAV_ViewWallet:       'View Wallet Info',
-  NAV_Help:             'Help',
-  NAV_Contact:          'Contact',
+  NAV_YourWallets:      'Dina Plånböcker',
+  NAV_AddWallet:        'Lägg till Plånbok',
+  NAV_GenerateWallet:   'Generera Plånbok',
+  NAV_BulkGenerate:     'Mass Generera',
+  NAV_SendEther:        'Skicka Ether',
+  NAV_SendTokens:       'Skicka Token', /*Översätt token?*/
+  NAV_Offline:          'Skicka Offline',
+  NAV_WithdrawDAO:      'Växla DAO',
+  DAO_TitleLong:        'Växla Dina Dao Tokens Till ETH',
+  NAV_ClaimDGD:         'Hämta DGD',
+  DGD_TitleLong:        'Hämta Dina DGD Tokens',
+  NAV_MyWallets:        'Mina Plånböcker',
+  NAV_ViewWallet:       'Visa Plånboks Info',
+  NAV_Help:             'Hjälp',
+  NAV_Contact:          'Kontakt',
 
   /* General */
   x_Password:           'Password',
@@ -53,7 +53,7 @@ sv.data = {
 
   /* Sidebar */
   sidebar_AccountInfo:  'Account Information: ',
-  sidebar_AccountAddr:  'Account Address: ',
+  sidebar_AccountAddr:  'Account Adress: ',
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
@@ -79,7 +79,7 @@ sv.data = {
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
-  ADD_Label_5:            'Enter the Address: ',
+  ADD_Label_5:            'Enter the Adress: ',
   ADD_Label_6:            'Unlock your Wallet',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
@@ -91,7 +91,7 @@ sv.data = {
   GEN_SuccessMsg:         'Success! Your wallet has been generated.',
   GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
   GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
-  GEN_Label_3:            'Save Your Address.',
+  GEN_Label_3:            'Save Your Adress.',
   GEN_Label_4:            'Print your paper wallet, or store a QR code verison. (optional)',
 
   /* Bulk Generate Wallets */
@@ -100,7 +100,7 @@ sv.data = {
   BULK_SuccessMsg:        'Success! Your wallets have been generated.',
 
   /* Sending Ether and Tokens */
-  SEND_addr:             'To Address: ',
+  SEND_addr:             'To Adress: ',
   SEND_amount:           'Amount to Send: ',
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
@@ -113,14 +113,14 @@ sv.data = {
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
-  SENDModal_Content_2:   'to address',
+  SENDModal_Content_2:   'to adress',
   SENDModal_Content_3:   'Are you sure you want to do this?',
   SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
 
   /* Tokens */
-  TOKEN_Addr:            'Address: ',
+  TOKEN_Addr:            'Adress: ',
   TOKEN_Symbol:          'Token Symbol: ',
   TOKEN_Dec:             'Decimals: ',
 
@@ -138,7 +138,7 @@ sv.data = {
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Only ETH" and "Only ETC" Transactions',
   TRANSModal_Content_0:  'A note about the different transactions and different services:',
-  TRANSModal_Content_1:  '**ETH (Standard Transaction): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
+  TRANSModal_Content_1:  '**ETH (Standard Transaction): ** This generates a default transaction directly from one adress to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
   TRANSModal_Content_2:  '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
   TRANSModal_Content_3:  '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
   TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)',
@@ -151,10 +151,10 @@ sv.data = {
   OFFLINE_Desc:          'Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This ensures your private keys do not touch an internet-connected device.',
   OFFLLINE_Step1_Title:  'Step 1: Generate Information (Online Computer)',
   OFFLINE_Step1_Button:  'Generate Information',
-  OFFLINE_Step1_Label_1: 'From Address: ',
-  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
+  OFFLINE_Step1_Label_1: 'From Adress: ',
+  OFFLINE_Step1_Label_2: 'Note: This is the FROM adress, not the TO adress. Nonce is generated from the originating account. If using an airgapped computer, it would be the adress of the cold-storage account.',
   OFFLLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
-  OFFLINE_Step2_Label_1:  'To Address: ',
+  OFFLINE_Step2_Label_1:  'To Adress: ',
   OFFLINE_Step2_Label_2:  'Value / Amount to Send',
   OFFLINE_Step2_Label_3:  'Gas Price ',
   OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.',
