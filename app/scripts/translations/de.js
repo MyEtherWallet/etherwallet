@@ -55,6 +55,7 @@ de.data = {
   sidebar_AccountInfo:  'Konto-Information: ',
   sidebar_AccountAddr:  'Kontoadresse: ',
   sidebar_AccountBal:   'Kontostand: ',
+  sidebar_TokenBal:     'Token Balances: ', // TODO
   sidebar_Equiv:        'Währungs-Gegenwerte: ',
   sidebar_TransHistory: 'Transaktions-Historie',
   sidebar_DGDBal:       'DGD Crowdsale Information:',

@@ -55,6 +55,7 @@ test.data = {
   sidebar_AccountInfo:  'Information sur le compte: ',
   sidebar_AccountAddr:  'Compte Adresse: ',
   sidebar_AccountBal:   'Solde du compte: ',
+  sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Valeurs équivalentes:',
   sidebar_TransHistory: 'Historique des transactions',
   sidebar_DGDBal:       'DGD Crowdsale Information:',

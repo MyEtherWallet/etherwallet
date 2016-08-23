@@ -55,6 +55,7 @@ sl.data = {
   sidebar_AccountInfo:  'Account Information: ',
   sidebar_AccountAddr:  'Account Address: ',
   sidebar_AccountBal:   'Account Balance: ',
+  sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
   sidebar_TransHistory: 'Transaction History',
   sidebar_DGDBal:       'DGD Crowdsale Information:',

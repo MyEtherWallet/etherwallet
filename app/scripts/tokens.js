@@ -24,6 +24,11 @@ Token.popTokens = [{
 	"decimal": 18
 },
 {
+	"address": "0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
+	"symbol": "XAUR",
+	"decimal": 8
+},
+{
 	"address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
 	"symbol": "🦄 Unicorn",
 	"decimal": 0
@@ -32,11 +37,6 @@ Token.popTokens = [{
 	"address": "0x74c1e4b8cae59269ec1d85d3d4f324396048f4ac",
 	"symbol": "🍺 BeerCoin",
 	"decimal": 0
-},
-{
-	"address": "0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
-	"symbol": "XAUR",
-	"decimal": 8
 }
 ];
 Token.prototype.getContractAddress = function() {

@@ -17,24 +17,28 @@
 
       <div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
 
-      <div translate="sidebar_AccountInfo"> Account Address: </div>
       <ul class="account-info">
         <li class="mono wrap"> {{wallet.getChecksumAddressString()}} </li>
       </ul>
 
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li>{{etherBalance}} Ether </li>
+        <li><strong>{{etherBalance}}</strong> Ether </li>
+        <li><strong>{{etcBalance}}</strong> ETC</li>
+      </ul>
+
+      <div translate="sidebar_TokenBal"> Token Balances: </div>
+      <ul class="account-info">
         <div ng-repeat="token in tokenObjs track by $index">
-          <li> {{token.getBalance()}} {{token.getSymbol()}} </li>
+          <li><strong>{{token.getBalance()}}</strong> {{token.getSymbol()}} </li>
         </div>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li>{{usdBalance}} USD</li>
-        <li>{{eurBalance}} EUR</li>
-        <li>{{btcBalance}} BTC</li>
+        <li><strong>{{usdBalance}}</strong> USD</li>
+        <li><strong>{{eurBalance}}</strong> EUR</li>
+        <li><strong>{{btcBalance}}</strong> BTC</li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
