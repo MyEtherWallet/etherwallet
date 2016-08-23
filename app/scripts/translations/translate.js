@@ -5,6 +5,7 @@ var es = require('./es');
 var fr = require('./fr');
 var ko = require('./ko');
 var no = require('./no');
+var sl = require('./sl');
 var test = require('./test');
 
 var translate = function($translateProvider) {
@@ -14,6 +15,7 @@ var translate = function($translateProvider) {
   $translateProvider.translations(fr.code, translate.marked(fr.data));
   $translateProvider.translations(ko.code, translate.marked(ko.data));
   $translateProvider.translations(no.code, translate.marked(no.data));
+  $translateProvider.translations(sl.code, translate.marked(sl.data));
   $translateProvider.translations(test.code, translate.marked(test.data));
 	$translateProvider.preferredLanguage('en');
 	$translateProvider.useSanitizeValueStrategy(null);

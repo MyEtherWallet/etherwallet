@@ -233,12 +233,6 @@ es.data = {
   /* Tranlsation Info */
   translate_version:    '0.0',
   Translator_Desc:      'Thank you to our translators...',
-  LANG_en:              'English',
-  LANG_de:              'Deutsche',
-  LANG_es:              'Español',
-  LANG_fr:              'Français',
-  LANG_ko:              'Korean',
-  LANG_no:              'Norwegian',
   TranlsatorName_1:     '',
   TranlsatorAddr_1:     '',
   /* Translator 1: Insert Comments Here */

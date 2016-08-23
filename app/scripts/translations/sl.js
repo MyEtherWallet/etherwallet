@@ -1,8 +1,8 @@
-// French
+// Slovenian
 'use strict';
-var fr = function() {}
-fr.code = 'fr';
-fr.data = {
+var sl = function() {}
+sl.code = 'sl';
+sl.data = {
 
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
@@ -75,7 +75,7 @@ fr.data = {
   ADD_Radio_3:            'Paste/Type Your Private Key',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
-  ADD_Label_3:            'Your file is encrypted. Please enter the password: ',
+  ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
@@ -503,4 +503,4 @@ fr.data = {
   HELP_Contact_Title:     'Ways to Get in Touch'
 };
 
-module.exports = fr;
+module.exports = sl;
