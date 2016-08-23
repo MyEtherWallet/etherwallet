@@ -122,7 +122,7 @@ sv.data = {
   /* Tokens */
   TOKEN_Addr:            'Adress: ',
   TOKEN_Symbol:          'Token Symbol: ',
-  TOKEN_Dec:             'Decimals: ',
+  TOKEN_Dec:             'Decimaler: ',
 
   /* Send Transaction */
   TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
