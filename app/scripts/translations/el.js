@@ -36,13 +36,13 @@ el.data = {
   x_JsonDesc:           'Αυτή είναι η μη κρυπτογραφημένη, JSON μορφή του Ιδιωτικού Κλειδιού σας. Αυτό σημαίνει ότι δεν απαιτείται κωδικός όμως οποιοσδήποτε βρει το JSON σας έχει πρόσβαση στο πορτοφόλι και τα Ether σας χωρίς κωδικό.',
   x_PrintShort:         'Εκτύπωση',
   x_Print:              'Εκτύπωση Χάρτινου Πορτοφολιού',
-  x_PrintDesc:          'Συμβουλή: Κλικάρετε "Εκτύπωση και Αποθήκευση ως PDF" ακόμα κι αν δεν έχετε εκτυπωτή!',
-  x_CSV:                'CSV file (μη κρυπτογραφημένο)',
-  x_TXT:                'TXT file (μη κρυπτογραφημένο)',
+  x_PrintDesc:          'Συμβουλή: Κλικάρετε "Εκτύπωση και Αποθήκευση ως PDF" ακόμη κι αν δεν έχετε εκτυπωτή!',
+  x_CSV:                'Αρχείο CSV (μη κρυπτογραφημένο)',
+  x_TXT:                'Αρχείο TXT (μη κρυπτογραφημένο)',
 
   /* Header */
-  MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
-  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
+  MEW_Warning_1:        'Πάντα να ελέγχετε την διεύθυνση URL προτού μπείτε στο πορτοφόλι σας ή δημιουργήσετε καινούριο πορτοφόλι. Προσοχή στις σελίδες ηλεκτρονικού ψαρέματος!',
+  CX_Warning_1:         'Σιγουρευτέιτε ότι έχετε **εξωτερικά αντίγραφα ασφαλείας** όλων των πορτοφολιών που αποθηκεύετε εδώ. Μπορούν να συμβούν διάφορα που θα προκαλούσαν απώλεια των δεδομένων σας σε αυτήν την επέκταση Chrome, συμπεριλαμβανομένης απεγκατάστασης και επανεγκατάστασης της επέκτασης. Αυτή η επέκταση είναι ένας τρόπος εύκολης πρόσβασης στα πορτοφόλια σας και **όχι** ένας τρόπος να δημηιουργήσετε αντίγραφα ασφαλείας τους.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
 	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
