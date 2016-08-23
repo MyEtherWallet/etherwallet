@@ -32,7 +32,13 @@ Token.popTokens = [{
 	"address": "0x74c1e4b8cae59269ec1d85d3d4f324396048f4ac",
 	"symbol": "🍺 BeerCoin",
 	"decimal": 0
-}];
+},
+{
+	"address": "0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
+	"symbol": "XAUR",
+	"decimal": 8
+}
+];
 Token.prototype.getContractAddress = function() {
 	return this.contractAddress;
 }
