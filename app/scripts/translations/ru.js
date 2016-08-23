@@ -125,15 +125,15 @@ ru.data = {
   TOKEN_Dec:             'Decimals: ', /* TODO: Clarify, what does this mean */
 
   /* Send Transaction */
-  TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
-  TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
-  TRANS_standard:        'ETH (Standard Transaction)',
-  TRANS_eth:             'Only ETH',
-  TRANS_etc:             'Only ETC',
-  TRANS_advanced:        '+Advanced: Add More Gas or Data ',
-  TRANS_data:            ' Data: ',
-  TRANS_gas:             ' Gas: ',
-  TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
+  TRANS_desc:            'Если Вы хотите перевести токены, используйте страницу "Отправить токены".',
+  TRANS_warning:         'Если Вы используете функции "только ETH" или "только ETC", перевод будет выполнен с использованием кожнтракта. У некоторых сервисов могут возникнуть проблемы с приёмом таких переводов. Уточните этот вопрос.',
+  TRANS_standard:        'Эфир (ether, обычная транзакция)',
+  TRANS_eth:             'Только ETH',
+  TRANS_etc:             'Только ETC',
+  TRANS_advanced:        '+Дополнительно: добавить газ или данные ',
+  TRANS_data:            ' Данные: ',
+  TRANS_gas:             ' Газ: ',
+  TRANS_sendInfo:        'Стандартная транзакция, использующая 21000 газа будет стоить 0.000441 эфира (ether). Мы указываем цену газа немного выше минимально возможной: 0.000000021 эфира (ether) для того, чтобы ускорить выполнение танзакций. Мы не берём комиссию за выполнение транзакций.',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Only ETH" and "Only ETC" Transactions',
