@@ -79,7 +79,32 @@ The app folder (where you will be working):
 
 ### Translating
 
-TODO
+If you are a developer and familiar with GitHub, Pull Requests, and know how to save a JS file as a .js file rather than a Word Doc:
+
+1. Clone the mercury branch.
+2. Go to `/app/scripts/translations/`.
+3. Open the language you want to translate.
+4. Translate as much or as little as you wish.
+5. Add your name/username, donation address, and any notes you would like on ~line 240 of the language.js file.
+6. Open a PR and leave us a brief description of what you did and any issues you ran into or comments you have.
+
+If you are NOT a developer and have no idea how this works, it's okay. If you would rather not deal with Github, please just email us a myetherwallet at gmail dot com and I'll email you the file and you can make changes and send it back to us and I'll make sure you don't screw anything up.
+
+If you feel like experiencing something new, read on!
+
+1. Sign into your Github account or make a new Github account.
+2. Go to https://github.com/kvhnuke/etherwallet/tree/mercury/app/scripts/translations
+3. Click on the language file you want to update.
+4. Look in the upper right. You will see "Raw" "Blame" and so on. Click the pencil icon. This will then tell you, *"You’re editing a file in a project you don’t have write access to. We’ve created a fork of this project for you to commit your proposed changes to. Submitting a change to this file will write it to a new branch in your fork, so you can send a pull request."* Ignore all this gibberish. [Screenshot](https://ipfs.pics/ipfs/QmejqvFu71QhQ5zfYMQyUYazWwnSpVHtQnE12pT2T9QEX5).
+5. In your browser, start translating. Translate as little or as much as you want. [Screenshot](https://ipfs.pics/ipfs/QmUQd2w2ah1Bnfocuu7egamp44EqtcNCTx3TziWcmwfTme).
+6. Scroll down to ~line 240 and enter your name/username, donation address, and any comments you would like to leave. [Screenshot](https://ipfs.pics/ipfs/QmdnhpdMZHRk1DyrFNyN7Rgm5G58NrkMJAvJNGg35oQ2UC).
+7. When you are done, tell us what language you updated. You can also leave any notes about problems you had or things you'd like us to know.
+8. Click the green "Propose File change" button. [Screenshot](https://ipfs.pics/ipfs/QmQoLPs6JkSfZsMvGCBCvudyJiWNFqcSHNMzAncjyrw1Sx)
+9. This next page is a review of what you did.
+10. Click the "Create Pull Request" button.....twice. [Screenshot](https://ipfs.pics/ipfs/QmZJJvPxXu7BFHDQ1zj1a73EATQETbsDuAJVEJnatTHrms).
+11. That's it. You successfully made a new pull request! Tell all your friends.
+12. We will now review it and pull it in and it will be made live on the site. We may also ask you questions if something is confusing for whatever reason.
+
 
 ### Contact
 If you can think of any other features or run into bugs, let us know. You can fork, open a PR, open an issue, [message kvhnuke on reddit](https://www.reddit.com/message/compose/?to=kvhnuke), [email tayvano](mailto:tayvano@gmail.com) or [in any of these ways](https://www.myetherwallet.com/#contact).
