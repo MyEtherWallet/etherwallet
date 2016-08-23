@@ -95,9 +95,9 @@ sv.data = {
   GEN_Label_4:            'Print your paper wallet, or store a QR code verison. (optional)',
 
   /* Bulk Generate Wallets */
-  BULK_Label_1:           'Number of Wallets To Generate',
-  BULK_Label_2:           'Generate Wallets',
-  BULK_SuccessMsg:        'Success! Your wallets have been generated.',
+  BULK_Label_1:           'Antal Plånböcker att Generera',
+  BULK_Label_2:           'Generera Plånböcker',
+  BULK_SuccessMsg:        'Dina plånböcker har genererats.',
 
   /* Sending Ether and Tokens */
   SEND_addr:             'To Adress: ',
