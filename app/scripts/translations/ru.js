@@ -136,15 +136,15 @@ ru.data = {
   TRANS_sendInfo:        'Стандартная транзакция, использующая 21000 газа будет стоить 0.000441 эфира (ether). Мы указываем цену газа немного выше минимально возможной: 0.000000021 эфира (ether) для того, чтобы ускорить выполнение танзакций. Мы не берём комиссию за выполнение транзакций.',
 
   /* Send Transaction Modals */
-  TRANSModal_Title:      '"Only ETH" and "Only ETC" Transactions',
-  TRANSModal_Content_0:  'A note about the different transactions and different services:',
-  TRANSModal_Content_1:  '**ETH (Standard Transaction): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
-  TRANSModal_Content_2:  '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
-  TRANSModal_Content_3:  '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
-  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)',
-  TRANSModal_Content_5:  '**Kraken & Poloniex:** No known issues. Use whatever.',
-  TRANSModal_Yes:        'Sweet, I get it now.',
-  TRANSModal_No:         'Oh gosh, Im more confused. Help me.',
+  TRANSModal_Title:      'Транзакции вида "Только ETH" и "Только ETC"',
+  TRANSModal_Content_0:  'О видах транзакций и сервисах:',
+  TRANSModal_Content_1:  '**Эфир (ether, обычная транзакция): ** Выполняет обычный перевод напрямую с одного адреса на другой. Используется стандартное количесвто газа: 21000. В большинстве случаев, перевод ETH, выполненный этим способом, можно будет продублировать для ETC.',
+  TRANSModal_Content_2:  '**Только ETH: ** Выполняет перевод через [контракт Тимона Раппа, защищающий от дублирования переводов (рекомендован ВБ)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), поэтому перевод будет выполнен только в **ETH**.',
+  TRANSModal_Content_3:  '**Только ETC: ** Выполняет перевод через [контракт Тимона Раппа, защищающий от дублирования переводов (рекомендован ВБ)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), поэтому перевод будет выполнен только в **ETC**. ',
+  TRANSModal_Content_4:  '**Coinbase и ShapeShift: ** Отправляйте им только обычные транзакции. Если Вы отправите им "Только ..." транзакцию, Вам придётся обращаться к их службе поддержки, чтобы они вручную пополнили Ваш баланс или вернули бы Вам эфир (ether). [Вы также можете попробовать использовать инструмент "split" от Shapeshift.](https://split.shapeshift.io/)',
+  TRANSModal_Content_5:  '**Kraken & Poloniex:** Проблем не выявлено.  Можно использовать транзакции любого вида.',
+  TRANSModal_Yes:        'Спасибо, я всё понял.',
+  TRANSModal_No:         'Чёрт, теперь я окончательно запутался.  Помогите мне.',
 
   /* Offline Transaction */
   OFFLINE_Title:         'Generate & Send Offline Transaction',
