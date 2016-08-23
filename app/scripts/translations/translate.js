@@ -1,5 +1,6 @@
 'use strict';
 var bg = require('./bg');
+var sv = require('./sv');
 var de = require('./de');
 var en = require('./en');
 var es = require('./es');
@@ -15,6 +16,7 @@ var test = require('./test');
 
 var translate = function($translateProvider) {
 	$translateProvider.translations(bg.code, translate.marked(bg.data));
+  $translateProvider.translations(sv.code, translate.marked(sv.data));
   $translateProvider.translations(de.code, translate.marked(de.data));
   $translateProvider.translations(en.code, translate.marked(en.data));
   $translateProvider.translations(es.code, translate.marked(es.data));
