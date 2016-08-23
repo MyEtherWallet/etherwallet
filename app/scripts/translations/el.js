@@ -5,10 +5,10 @@ el.code = 'el';
 el.data = {
 
   /* Navigation*/
-  NAV_YourWallets:      'Your Wallets',
-  NAV_AddWallet:        'Add Wallet',
-  NAV_GenerateWallet:   'Generate Wallet',
-  NAV_BulkGenerate:     'Bulk Generate',
+  NAV_YourWallets:      'Τα Πορτοφόλια σας',
+  NAV_AddWallet:        'Προσθήκη Πορτοφολιού',
+  NAV_GenerateWallet:   'Δημηουργία Πορτοφολιού',
+  NAV_BulkGenerate:     'Δημιουργία Πολλών',
   NAV_SendEther:        'Send Ether',
   NAV_SendTokens:       'Send Tokens',
   NAV_Offline:          'Send Offline',
