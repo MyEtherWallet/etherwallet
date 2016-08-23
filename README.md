@@ -72,6 +72,7 @@ The app folder (where you will be working):
 - As of September 2016, almost all the copy in the .tpl files are only there as placeholders. It all gets replaced via angular-translate. If you want to change some copy you need to do so in `scripts/translations/en.js` folder. You should also make a note about what you changed so that we can make sure it gets translated if necessary. You can note in the Pull Request for now. I'm not sure how we are going to maintain the different translations moving forward.
 - `styles` is all the less. It's a couple custom folders and bootstrap. We try to keep the LESS/CSS and small as possible so writing a couple of custom lines of CSS instead of uncommenting an entire bootstrap file is recommended. This, in general, needs to be further cleaned up.
 - Remember when I said don't touch the dist/chrome-extension folder. I lied a little bit. You need to access the Chrome Extension windows (the guys that pop down when you click the extension icon) via `chrome-extension/browser_action`. `browser_action.html` is the main one and `cx-quicksend.html` is when you click the "Quicksend" button. I would love to have these moved from the app folder too.
+
 ### Translating
 
 TODO
@@ -85,7 +86,7 @@ See our [Trello Board](https://trello.com/b/npX68sKj/myetherwallet).
 #### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).
 
 
-### History
+### Announcement History
 
 - 08/12/15: [Launch Post: Ether Wallet Generator (for now)](https://www.reddit.com/r/ethereum/comments/3gkknd/ether_wallet_generator_for_now/). Never forget where you [came from](https://ipfs.pics/ipfs/QmXFK6NBy81ibvTEwnwwEUecXiRyQBriJUnKpaCaE4w7nF).
 - 08/19/15: [ETHER WALLET- Ready for the second round?](https://www.reddit.com/r/ethereum/comments/3h6o38/ether_wallet_ready_for_the_second_round/). We the domain name & SSL.
