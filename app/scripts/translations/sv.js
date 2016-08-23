@@ -52,16 +52,16 @@ sv.data = {
   FOOTER_3:             'Client-side wallet generation by',
 
   /* Sidebar */
-  sidebar_AccountInfo:  'Account Information: ',
-  sidebar_AccountAddr:  'Account Adress: ',
-  sidebar_AccountBal:   'Account Balance: ',
-  sidebar_TokenBal:     'Token Balances: ',
-  sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_AccountInfo:  'Kontoinformation: ',
+  sidebar_AccountAddr:  'Konto Adress: ',
+  sidebar_AccountBal:   'Konto Saldo: ',
+  sidebar_TokenBal:     'Token Saldon: ',
+  sidebar_Equiv:        'Motsvarande Värden: ',
+  sidebar_TransHistory: 'Transaktionshistorik',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
-  sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
-  sidebar_donate:       'Donate',
-  sidebar_thanks:       'THANK YOU!!!',
+  sidebar_donation:     'MyEtherWallet är en gratis service, med öppen källkod inriktade på din integritet och säkerhet. Ju fler donationer vi får, desto mer tid lägger vi på att skapa nya funktioner, lyssna på feedback, och ge dig vad du vill. Vi är bara två personer som försöker förändra världen. Hjälp oss?',
+  sidebar_donate:       'Donera',
+  sidebar_thanks:       'TACK!!!',
 
   /* Decrypt Panel */
   decrypt_Access:         'How would you like to access your wallet?',
