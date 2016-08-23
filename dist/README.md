@@ -79,6 +79,9 @@ The app folder (where you will be working):
 
 
 
+
+
+
 ## How to Help Translate
 
 **A couple of notes:**
@@ -127,6 +130,7 @@ On a PC, I have no idea.
 We've set up German, English, Spanish, French, Korean, and Norwegian. We can add any number of languages, very quickly. Leave a comment or email us at myetherwallet at gmail dot com and I will add it ASAP so you can update it.
 
 **If you are a developer and want to add a new language:**
+
 1. Copy and paste the "en.js" and rename it to your language. [You can find your language code here](https://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx).
 2. Open the file. On line 3 - line 5 change all en's to your language code: var **en** = function() {} **en**.code = '**en**'; **en**.data = {
 3. Scroll to the very very bottom.  Change all the en's to your language code: module.exports = **en**;
@@ -135,6 +139,9 @@ We've set up German, English, Spanish, French, Korean, and Norwegian. We can add
 6. Copy line 2 and paste it right below that line. Change all the en's to your language code: var **en** = require('./**en**');
 7. Copy line 11 and paste it right below that line. Change all the en's to your language code: $translateProvider.translations(**en**.code, translate.marked(**en**.data));
 8. Now you can go back to the first file you edited and translate away and open a PR when you are done!
+
+
+
 
 
 
