@@ -8,13 +8,13 @@ var it = require('./it');
 var ko = require('./ko');
 var nl = require('./nl');
 var no = require('./no');
-var sl = require('./ru');
+var ru = require('./ru');
 var sl = require('./sl');
 var vi = require('./vi');
 var test = require('./test');
 
 var translate = function($translateProvider) {
-	$translateProvider.translations(bg.code, translate.marked(bg.data));
+  $translateProvider.translations(bg.code, translate.marked(bg.data));
   $translateProvider.translations(de.code, translate.marked(de.data));
   $translateProvider.translations(en.code, translate.marked(en.data));
   $translateProvider.translations(es.code, translate.marked(es.data));
