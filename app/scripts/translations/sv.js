@@ -183,21 +183,21 @@ sv.data = {
   DGD_Content:            'You are about to claim your DGD Tokens.',
 
   /* My Wallet */
-  MYWAL_Nick:             'Wallet Nickname',
-  MYWAL_Address:          'Wallet Address',
-  MYWAL_Bal:              'Balance',
-  MYWAL_Edit:             'Edit',
-  MYWAL_View:             'View',
-  MYWAL_Remove:           'Remove',
-  MYWAL_RemoveWal:        'Remove Wallet:',
-  MYWAL_WatchOnly:        'Your Watch-Only Accounts',
-  MYWAL_Viewing:          'Viewing Wallet: ',
-  MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
-  MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
-  MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
+  MYWAL_Nick:             'Plånboks Namn',
+  MYWAL_Address:          'Plånboks Adress',
+  MYWAL_Bal:              'Saldo',
+  MYWAL_Edit:             'Ändra',
+  MYWAL_View:             'Visa',
+  MYWAL_Remove:           'Ta Bort',
+  MYWAL_RemoveWal:        'Ta Bort Plånbok:',
+  MYWAL_WatchOnly:        'Dina Bevakade Konton', /*Any better translation?*/
+  MYWAL_Viewing:          'Visar Plånbok: ',
+  MYWAL_Hide:             'Dölj Plånboks Info',
+  MYWAL_Edit:             'Ändra Plånbok: ',
+  MYWAL_Name:             'Plånboks Namn',
+  MYWAL_Content_1:        'Varning! Du är på väg att ta bort din plånbok.',
+  MYWAL_Content_2:        ' Kontrollera att du har **sparat den privata nyckeln/JSON filen och lösenordet** som tillhör den här plånboken innan du tar bort den.',
+  MYWAL_Content_3:        'Om du vill använda plånboken med MyEtherWallet CX i framtiden, måste du manuellt lägga till den med hjälp av den privata nyckeln / JSON filen och lösenordet.',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
@@ -234,8 +234,8 @@ sv.data = {
   /* Tranlsation Info */
   translate_version:    '0.0',
   Translator_Desc:      'Thank you to our translators...',
-  TranlsatorName_1:     '',
-  TranlsatorAddr_1:     '',
+  TranlsatorName_1:     'Walkingmage',
+  TranlsatorAddr_1:     '0x1b8fa94bd3C65A2292816B4C48e34560E28cCb2f',
   /* Translator 1: Insert Comments Here */
   TranlsatorName_2:     ' ',
   TranlsatorAddr_2:     ' ',
