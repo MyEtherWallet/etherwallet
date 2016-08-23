@@ -1,4 +1,8 @@
-## https://www.MyEtherWallet.com - Content of MyEtherWallet.com is served directly from github.
+## https://www.MyEtherWallet.com
+## Content of MyEtherWallet.com is served directly from github.
+
+
+
 
 ### MyEtherWallet
 
@@ -6,6 +10,10 @@ MyEtherWallet is an open source, javascript, client-side tool for generating Eth
 
 - Official (w/ SSL): https://www.MyEtherWallet.com
 - Github Direct Link: http://kvhnuke.github.io/etherwallet/
+
+
+
+
 
 ### What can it do?
 
@@ -17,6 +25,10 @@ MyEtherWallet is an open source, javascript, client-side tool for generating Eth
 - Give users an easy way to safely send "Only ETH" or "Only ETC" to ensure they are not victim of replay attacks.
 - Generate and send offline transactions, ensuring your private keys never leave your computer.
 
+
+
+
+
 ### Our Goals
 
  - **Empower the people**: Everyone should be able to safely store their ETH in a wallet that they (and only they) have the keys to. Don't let exchanges lose your funds!
@@ -27,6 +39,10 @@ MyEtherWallet is an open source, javascript, client-side tool for generating Eth
  - **Offline / Client-Side**: User should be able to run locally and offline without issue.
  - **Private**: No tracking!!! No emails. No ads. No demographics. We don't even know how many wallets have been generated or transactions have been sent, let alone who / what / where you are.
  - **Open source & audit-able**
+
+
+
+
 
 ### Users (non-developers)
 
@@ -44,6 +60,10 @@ You can run MyEtherWallet.com on your computer instead of from the GitHub server
 In case you are not familiar, you need to keep the entire folder in order to run the website, not just index.html. Don't touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.
 
 As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.
+
+
+
+
 
 ### Developers
 
@@ -76,6 +96,7 @@ The app folder (where you will be working):
 
 
 
+
 ## How to Help Translate
 
 **A couple of notes:**
@@ -102,14 +123,6 @@ Anyone can help out and it looks way more complicated than it is! If you would r
 11. That's it. You successfully made a new pull request! Tell all your friends.
 12. We will now review it and pull it in and it will be made live on the site. We may also ask you questions if something is confusing for whatever reason.
 
-**If you don't want to edit it in your browser for whatever reason:**
-
-That is fine but there are a couple of things you need to know. First is you NEED to use a text editor that is made for this. Not Word. I personally use Sublime Text 3 because it is pretty. You can download it for free here: https://www.sublimetext.com/3
-
-You can also use TextEdit on a Mac or Notepad on a PC. However, you need to make sure it is **plain text!!!** before you start editing. Using TextEdit, open a new document and then go to Format -> Make Plain Text. Then you can copy and paste everything from the Github page into Text edit. If you want to save it to work on later, save it with a .js extension. Don't try to bold things or highlight them. That will turn it back into rich text and add a bunch of other data that no one needs. When you are done, paste it back into Github page and submit a Pull Request as I described above.
-
-On a PC, I have no idea.
-
 **If you are a developer and familiar with GitHub, Pull Requests, and know how to save a JS file as a .js file rather than a Word Doc:**
 
 1. Clone the [mercury branch](https://github.com/kvhnuke/etherwallet/tree/mercury).
@@ -119,20 +132,7 @@ On a PC, I have no idea.
 5. Add your name/username, donation address, and any notes you would like on ~line 240 of the language.js file.
 6. Open a PR and leave us a brief description of what you did and any issues you ran into or comments you have.
 
-**If your language isn't there yet:**
-
-We've set up German, English, Spanish, French, Korean, and Norwegian. We can add any number of languages, very quickly. Leave a comment or email us at myetherwallet at gmail dot com and I will add it ASAP so you can update it.
-
-**If you are a developer and want to add a new language:**
-
-1. Copy and paste the "en.js" and rename it to your language. [You can find your language code here](https://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx).
-2. Open the file. On line 3 - line 5 change all en's to your language code: var **en** = function() {} **en**.code = '**en**'; **en**.data = {
-3. Scroll to the very very bottom.  Change all the en's to your language code: module.exports = **en**;
-4. Save it.
-5. Open translate.js (in that same folder).
-6. Copy line 2 and paste it right below that line. Change all the en's to your language code: var **en** = require('./**en**');
-7. Copy line 11 and paste it right below that line. Change all the en's to your language code: $translateProvider.translations(**en**.code, translate.marked(**en**.data));
-8. Now you can go back to the first file you edited and translate away and open a PR when you are done!
+Read more @ [Help us translate MyEtherWallet.com into ALL THE LANGUAGES!](https://www.reddit.com/r/ethereum/comments/4z55s2/help_us_translate_myetherwalletcom_into_all_the/)
 
 
 
@@ -141,10 +141,15 @@ We've set up German, English, Spanish, French, Korean, and Norwegian. We can add
 ### Contact
 If you can think of any other features or run into bugs, let us know. You can fork, open a PR, open an issue, [message kvhnuke on reddit](https://www.reddit.com/message/compose/?to=kvhnuke), [email tayvano](mailto:tayvano@gmail.com) or [in any of these ways](https://www.myetherwallet.com/#contact).
 
+
+
+
+
 ### TODO / In Progress
 See our [Trello Board](https://trello.com/b/npX68sKj/myetherwallet).
 
-#### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).
+
+
 
 
 ### Announcement History
@@ -163,3 +168,9 @@ See our [Trello Board](https://trello.com/b/npX68sKj/myetherwallet).
 - 07/28/16: [MyEtherWallet now Supports Sending Any Ethereum Token (ERC-20) — also learn about our future plans](https://www.reddit.com/r/ethereum/comments/4v0r32/myetherwallet_now_supports_sending_any_ethereum/)
 - 07/28/16: [MyEtherWallet, Preventing Replays, and Ethereum Classic (ETC)](https://www.reddit.com/r/ethereum/comments/4v1y2t/myetherwallet_preventing_replays_and_ethereum/)
 - 08/14/16: [⚠ Malicious Phisher is running Google Ads for MyEtherWallet.com ⚠ It does NOT go to MyEtherWallet.com. Always check the URL before accessing or creating a new wallet! Use your bookmarks bar!](https://www.reddit.com/r/ethereum/comments/4xpj0u/malicious_phisher_is_running_google_ads_for/)
+- 08/22/16: [Help us translate MyEtherWallet.com into ALL THE LANGUAGES!](https://www.reddit.com/r/ethereum/comments/4z55s2/help_us_translate_myetherwalletcom_into_all_the/)
+
+
+
+
+#### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).
