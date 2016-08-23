@@ -176,9 +176,9 @@ de.data = {
 
   /* Digix */
   DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
-  DGD_Label_1:            'Estimated fee consumption:',
-  DGD_Label_2:            'Provided Maximum Fee:',
-  DGD_Label_3:            'Gas Price:',
+  DGD_Label_1:            'Erwartete Gebühren:',
+  DGD_Label_2:            'Maximal mögliche Gebühren:', /* Provided = Mögliche? */
+  DGD_Label_3:            'Gaspreis:',
   DGD_Generate:           'Generate Claim',
   DGD_Content:            'You are about to claim your DGD Tokens.',
 
@@ -266,19 +266,19 @@ de.data = {
 
   HELP_0_Title:        '0) I\'m new. What do I do?',
   HELP_0_Desc_1:       'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.',
-  HELP_0_Desc_2:       'Create a new wallet.',
+  HELP_0_Desc_2:       'Erstelle eine neue Wallet',
   HELP_0_Desc_3:       'Back the wallet up.',
   HELP_0_Desc_4:       'Verify you have access to this new wallet and have correctly saved all necessary information.',
-  HELP_0_Desc_5:       'Transfer Ether to this new wallet.',
+  HELP_0_Desc_5:       'Überweise Ether auf diese neue Wallet.',
 
-  HELP_1_Title:        '1) How do I create a new wallet? ',
+  HELP_1_Title:        '1) Wie erstelle ich eine neue Wallet?',
   HELP_1_Desc_1:       'Go to the "Generate Wallet" page.',
   HELP_1_Desc_2:       'Go to the "Add Wallet" page & select "Generate New Wallet"',
   HELP_1_Desc_3:       'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.',
   HELP_1_Desc_4:       'Click "GENERATE".',
-  HELP_1_Desc_5:       'Your wallet has now been generated.',
+  HELP_1_Desc_5:       'Deine Wallet wurde erstellt.',
 
-  HELP_2a_Title:       '2a) How do I save/backup my wallet?',
+  HELP_2a_Title:       '2a) Wie kann ich meine Wallet sichern?',
   HELP_2a_Desc_1:      'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
   HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you.',
   HELP_2a_Desc_3:      'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:',
@@ -306,7 +306,7 @@ de.data = {
   HELP_3_Desc_7:        'Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
   HELP_3_Desc_8:        'If you are planning on holding a large amount of ETH, we recommend that send a small amount of ETH from new wallet before depositting a large amount. Send .001 ETH to your new wallet, access that wallet, send that .001 ETH to another address, and ensure everything works smoothly.',
 
-  HELP_4_Title:         '4) How do I send Ether from one wallet to another?',
+  HELP_4_Title:         '4) Wie kann ich Ether von einer Wallet zur anderen senden?',
   HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
   HELP_4_Desc_2:        'Navigate to the "Send Ether" page.',
   HELP_4_Desc_3:        'Select your wallet file -or- your private key and unlock your wallet.',
@@ -321,7 +321,7 @@ de.data = {
   HELP_4_Desc_12:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
   HELP_4_Desc_13:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
 
-  HELP_4CX_Title:       '4) How do I send Ether using MyEtherWallet CX?',
+  HELP_4CX_Title:       '4) Wie kann ich Ether über MyEtherWallet CX senden?',
   HELP_4CX_Desc_1:      'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.',
   HELP_4CX_Desc_2:      'QuickSend:',
   HELP_4CX_Desc_3:      'Click the Chrome Extension Icon.',
@@ -335,13 +335,13 @@ de.data = {
   HELP_4CX_Desc_11:     'Click "Send Transaction."',
   HELP_4CX_Desc_12:     'Using "Send Ether" Page: ',
 
-  HELP_5_Title:         '5) How do I run MyEtherWallet.com offline/locally? ',
+  HELP_5_Title:         '5) Wie kann ich MyEtherWallet.com offline/lokal starten? ',
   HELP_5_Desc_1:        'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page.',
-  HELP_5_Desc_2:        'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
-  HELP_5_Desc_3:        'Click download zip in the upper right.',
+  HELP_5_Desc_2:        'Gehe zur GitHub Repo: github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_5_Desc_3:        'Klick auf Download Zip oben rechts.',
   HELP_5_Desc_4:        'Move zip to an airgapped computer.',
-  HELP_5_Desc_5:        'Unzip it.',
-  HELP_5_Desc_6:        'Double-Click `index.html`.',
+  HELP_5_Desc_5:        'Entpacke es.',
+  HELP_5_Desc_6:        'Starte mit einem Doppelklick `index.html`.',
   HELP_5_Desc_7:        'MyEtherWallet.com is now running entirely on your computer.',
   HELP_5_Desc_8:        'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.',
   HELP_5_Desc_9:        'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.',
