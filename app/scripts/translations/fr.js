@@ -44,7 +44,7 @@ fr.data = {
   MEW_Warning_1:        'Vérifiez toujours l\'URL avant d\'accéder à votre portefeuille ou de générer un nouveau portefeuille. Attentions aux sites de phishing !',
   CX_Warning_1:         'Assurez vous d\'avoir une **sauvegarde externe** de tout portefeuille que vous gérez ici. De nombreux événements peuvent vous faire perdre les données de cette extension Chrome, y compris la dédinstallation et la réinstallation de l\'extension. Cette extension est une manière d\'accéder facilement à vos portefeuilles, **pas** une façon de les sauvegarder.',
   MEW_Tagline:          'Portefeuille d\'Ether Open Source JavaScript côté client',
-	CX_Tagline:           'Extension Chrome de portefeuille d\'Ether Open Source JavaScript côté client',
+  CX_Tagline:           'Extension Chrome de portefeuille d\'Ether Open Source JavaScript côté client',
 
   /* Footer */
   FOOTER_1:             'Un outil open source en javascript s\'exécutant côté client pour générer des portefeuilles Ethereum et envoyer des transactions.',
@@ -88,7 +88,7 @@ fr.data = {
   GEN_Label_1:            'Entrez un mot de passe fort (au moins 9 caractères)',
   GEN_Placeholder_1:      'N\'oubliez PAS de sauvegarder ceci !',
   GEN_SuccessMsg:         'Succès ! Votre portefeuille a été généré.',
-  GEN_Warning:            '**Vous avez besoin de votre fichier Keystore/JSON et du mot de passe ou de la clé privée** pour accéder à ce portefeuille dans le futur. Merci de le télécharger et d'en faire une sauvegarde externe ! Il n'existe aucun moyen de récupérer un portefeuille si vous ne le sauvegardez pas. Merci de lire la [page d\'Aide](https://www.myetherwallet.com/#help) pour plus de détails.',
+  GEN_Warning:            '**Vous avez besoin de votre fichier Keystore/JSON et du mot de passe ou de la clé privée** pour accéder à ce portefeuille dans le futur. Merci de le télécharger et d\'en faire une sauvegarde externe ! Il n\'existe aucun moyen de récupérer un portefeuille si vous ne le sauvegardez pas. Merci de lire la [page d\'Aide](https://www.myetherwallet.com/#help) pour plus de détails.',
   GEN_Label_2:            'Sauvegardez votre fichier Keystore/JSON ou votre clé privée. N\'oubliez pas votre mot de passe ci-dessus.',
   GEN_Label_3:            'Sauvegarder votre portefeuille.',
   GEN_Label_4:            'Imprimer votre paper wallet, ou conserver une version QR code. (optionnel)',
