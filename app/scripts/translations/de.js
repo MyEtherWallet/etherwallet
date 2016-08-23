@@ -264,12 +264,12 @@ de.data = {
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.',
   HELP_Remind_Desc_3: 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!',
 
-  HELP_0_Title:        '0) I\'m new. What do I do?',
+  HELP_0_Title:        '0) Ich bin neu hier. Was kann ich hier zun?',
   HELP_0_Desc_1:       'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.',
   HELP_0_Desc_2:       'Erzeuge eine neue Wallet',
-  HELP_0_Desc_3:       'Back the wallet up.',
-  HELP_0_Desc_4:       'Verify you have access to this new wallet and have correctly saved all necessary information.',
-  HELP_0_Desc_5:       'Überweise Ether auf diese neue Wallet.',
+  HELP_0_Desc_3:       'Sichere deine Wallet ab',
+  HELP_0_Desc_4:       'Gehe sicher, dass du Zugriff auf die neue Wallet hast und alle wichtigen Informationen gesichert hast.',
+  HELP_0_Desc_5:       'Überweise Ether auf deine neue Wallet.',
 
   HELP_1_Title:        '1) Wie erzeuge ich eine neue Wallet?',
   HELP_1_Desc_1:       'Go to the "Generate Wallet" page.',
