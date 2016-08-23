@@ -279,8 +279,8 @@ de.data = {
   HELP_1_Desc_5:       'Deine Wallet wurde erzeugt.',
 
   HELP_2a_Title:       '2a) Wie kann ich meine Wallet sichern?',
-  HELP_2a_Desc_1:      'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
-  HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you.',
+  HELP_2a_Desc_1:      'Du solltest deine Wallet immer extern und physisch an mehreren absichern - wie z. B. auf einem USB-Stick oder auf einem Blatt Papier.',
+  HELP_2a_Desc_2:      'Speichere die Wallet Adresse. Du kannst sie für dich behalten oder mit anderen teilen. Damit sie die ETH senden können',
   HELP_2a_Desc_3:      'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:',
   HELP_2a_Desc_4:      'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.',
   HELP_2a_Desc_5:      'Print the wallet if you have a printer. Otherwise, write down your private and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
