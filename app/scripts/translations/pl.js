@@ -1,8 +1,8 @@
-﻿// English
+﻿// Polish
 'use strict';
-var en = function() {}
-en.code = 'en';
-en.data = {
+var pl = function() {}
+pl.code = 'pl';
+pl.data = {
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfely',
@@ -504,4 +504,4 @@ en.data = {
   HELP_Contact_Title:     'Ways to Get in Touch'
 };
 
-module.exports = en;
+module.exports = pl;
