@@ -14,6 +14,7 @@ var nl = require('./nl');
 var no = require('./no');
 var pl = require('./pl');
 var pt = require('./pt');
+var ptbr = require('./ptbr');
 var ru = require('./ru');
 var sk = require('./sk');
 var sl = require('./sl');
@@ -38,6 +39,7 @@ var translate = function($translateProvider) {
   $translateProvider.translations(no.code, translate.marked(no.data));
   $translateProvider.translations(pl.code, translate.marked(pl.data));
   $translateProvider.translations(pt.code, translate.marked(pt.data));
+  $translateProvider.translations(ptbr.code, translate.marked(ptbr.data));
   $translateProvider.translations(ru.code, translate.marked(ru.data));
   $translateProvider.translations(sk.code, translate.marked(sk.data));
   $translateProvider.translations(sl.code, translate.marked(sl.data));
