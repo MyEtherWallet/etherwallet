@@ -89,14 +89,14 @@ el.data = {
   GEN_Label_1:            'Εισάγετε ισχυρό κωδικό (τουλάχιστον 9 χαρακτήρες)',
   GEN_Placeholder_1:      'ΜΗΝ ξεχάσετε να τον αποθηκεύσετε!',
   GEN_SuccessMsg:         'Επιτυχία! Το πορτοφόλι σας δημιουργήθηκε.',
-  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
-  GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
-  GEN_Label_3:            'Save Your Address.',
-  GEN_Label_4:            'Print your paper wallet, or store a QR code verison. (optional)',
+  GEN_Warning:            'Προκειμένου να έχετε πρόσβαση σε αυτό το πορτοφόλι στο μέλλον **είναι απαραίτητο το αρχείο Keystore/JSON & ο κωδικός ή το Ιδιωτικό Κλειδί σας**. Παρακαλούμε κρατήστε ένα εξωτερικό αντίγραφο ασφαλείας! Δεν υπάρχει τρόπος ανάκτησης ενός πορτοφολιού εάν δεν το αποθηκέυσετε. Διαβάστε την σελίδα [Βοήθειας](https://www.myetherwallet.com/#help) για οδηγίες.',
+  GEN_Label_2:            'Αποθηκεύστε το αρχέιο Keystore/JSON ή το Ιδιωτικό Κλειδί. Μην ξεχάσετε τον παραπάνω κωδικό.',
+  GEN_Label_3:            'Αποθηκέυστε την Διεύθυνση σας.',
+  GEN_Label_4:            'Εκτυπώστε το χάρτινο Πορτοφόλι σας ή αποθηκέυστε την εκδοχή με QR code. (προαιρετικό)',
 
   /* Bulk Generate Wallets */
-  BULK_Label_1:           'Number of Wallets To Generate',
-  BULK_Label_2:           'Generate Wallets',
+  BULK_Label_1:           'Αριθμός Πορτοφολιών για Δημιουργία',
+  BULK_Label_2:           'Δημιουργία Πορτοφολιών',
   BULK_SuccessMsg:        'Επιτυχία! Τα πορτοφόλια σας δημιουργήθηκαν.',
 
   /* Sending Ether and Tokens */
@@ -105,11 +105,11 @@ el.data = {
   SEND_amount_short:     'Ποσό',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Δημιουργία Υπογεγραμμένης Συναλλαγής',
   SEND_raw:              'Raw Transaction',
-  SEND_signed:           'Signed Transaction',
-  SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
+  SEND_signed:           'Υπογεγραμμένη Συναλλαγή',
+  SEND_trans:            'Αποστολή Συναλλαγής',
+  SEND_TransferTotal:    'Μεταφορά συνολικού διαθέσιμου υπολοίπου',
   SENDModal_Title:       'Προσοχή! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Πρόκειται να στείελετε',
