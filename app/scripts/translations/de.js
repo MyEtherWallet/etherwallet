@@ -113,7 +113,7 @@ de.data = {
   SENDModal_Title:       'Achtung! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Du bist dabei, ',
-  SENDModal_Content_2:   ' an Adresse ',
+  SENDModal_Content_2:   ' an die Adresse ',
   SENDModal_Content_3:   ' zu senden. Bis du sicher, dass du das willst?',
   SENDModal_Content_4:   'HINWEIS: Wenn du eine Fehlermeldung erhälst, musst du vermutlich deinen ETH-Saldo erhöhen, um die Gas-Kosten des Token-Versands zu bezahlen. Gas wird in ETH bezahlt.',
   SENDModal_No:          'Nein, ich möchte diesen Vorgang abbrechen!',
@@ -141,7 +141,7 @@ de.data = {
   TRANSModal_Content_1:  '**ETH (Standard Transaktion): ** Dies erzeugt eine Standard Transaktion direkt von einer Adresse zu einer anderen. Diese nutzt standardmässig 21000 Gas. Es ist gut möglich, dass alle Transaktionen dieser Art auf der ETC Blockchain wiederholt werden (Replay Attacke) .',
   TRANSModal_Content_2:  '**Nur ETH: ** Dies sendet die Transaktion so über [Timon Rapp\'s "replay protection contract" (wie von VB empfohlen)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), dass sie nur auf der **ETH** Blockchain ausgeführt wird.',
   TRANSModal_Content_3:  '**Nur ETC: ** Dies sendet die Transaktion so über [Timon Rapp\'s "replay protection contract" (wie von VB empfohlen)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), dass sie nur auf der **ETC** Blockchain ausgeführt wird.',
-  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Sende nur Standard Transaktionen. Wenn du die Transaktion über eine der "Nur" Funktionen versendest, musst du den Support kontaktieren um diene Betrag oder eine Rückerstattung zu erhalten. [Du kannst auch Shapeshifts "split" Werkzeug ausprobieren.](https://split.shapeshift.io/)',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Sende nur Standard Transaktionen. Wenn du die Transaktion über eine der "Nur" Funktionen versendest, musst du den Support kontaktieren um deinen Betrag oder eine Rückerstattung zu erhalten. [Du kannst auch Shapeshifts "split" Werkzeug ausprobieren.](https://split.shapeshift.io/)',
   TRANSModal_Content_5:  '**Kraken & Poloniex:** Keine Probleme bekannt. Nutzen, was dir lieber ist',
   TRANSModal_Yes:        'Cool, jetzt hab ich\'s verstanden.',
   TRANSModal_No:         'Bitte was? Ich bin noch verwirrter. Ich brauche Hilfe',
@@ -165,7 +165,7 @@ de.data = {
   OFFLINE_Step2_Label_6:  'Daten',
   OFFLINE_Step2_Label_6b: 'Dies ist optional. Daten werden meist in Transaktionen an Verträge verwendet.',
   OFFLINE_Step2_Label_7:  'Gib deine privaten Schlüssel ein.',
-  OFFLINE_Step3_Title:    'Schritt 3: Transaktion enden/veröffentlichen (Online Computer)',
+  OFFLINE_Step3_Title:    'Schritt 3: Transaktion senden/veröffentlichen (Online Computer)',
   OFFLINE_Step3_Label_1:  'Kopiere die signierte Transaktion aus Schritt 2 hier hinein und drücke "TRANSAKTION SENDEN".',
 
   /* DAO */
