@@ -103,7 +103,7 @@ ru.data = {
   SEND_addr:             'Адрес получателя: ',
   SEND_amount:           'Сумма перевода: ',
   SEND_amount_short:     'Сумма',
-  SEND_custom:           'Custom', /* TODO: Clarify, what does this mean */
+  SEND_custom:           'Другое',
   SEND_gas:              'Газ',
   SEND_generate:         'Сформировать подписанную транзакцию',
   SEND_raw:              'Готовая транзакция',
@@ -122,7 +122,7 @@ ru.data = {
   /* Tokens */
   TOKEN_Addr:            'Адрес: ',
   TOKEN_Symbol:          'Символ токена: ',
-  TOKEN_Dec:             'Decimals: ', /* TODO: Clarify, what does this mean */
+  TOKEN_Dec:             'Дробность (знаков после запятой): ',
 
   /* Send Transaction */
   TRANS_desc:            'Если Вы хотите перевести токены, используйте страницу "Отправить токены".',
