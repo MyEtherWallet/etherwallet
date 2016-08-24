@@ -18,6 +18,7 @@ var ru = require('./ru');
 var sk = require('./sk');
 var sl = require('./sl');
 var sv = require('./sv');
+var tr = require('./tr');
 var uk = require('./uk');
 var vi = require('./vi');
 
@@ -41,6 +42,7 @@ var translate = function($translateProvider) {
   $translateProvider.translations(sk.code, translate.marked(sk.data));
   $translateProvider.translations(sl.code, translate.marked(sl.data));
   $translateProvider.translations(sv.code, translate.marked(sv.data));
+  $translateProvider.translations(tr.code, translate.marked(tr.data));
   $translateProvider.translations(uk.code, translate.marked(uk.data));
   $translateProvider.translations(vi.code, translate.marked(vi.data));
 	$translateProvider.preferredLanguage('en');
