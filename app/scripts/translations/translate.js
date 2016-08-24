@@ -37,7 +37,7 @@ var translate = function($translateProvider) {
   $translateProvider.translations(ko.code, translate.marked(ko.data));
   $translateProvider.translations(nl.code, translate.marked(nl.data));
   $translateProvider.translations(no.code, translate.marked(no.data));
-  $translateProvider.translations(pl.code, translate.marked(pl.data));
+  $translateProvider.translations(pl.code, translate.marked(pl.data)); 
   $translateProvider.translations(pt.code, translate.marked(pt.data));
   $translateProvider.translations(ptbr.code, translate.marked(ptbr.data));
   $translateProvider.translations(ru.code, translate.marked(ru.data));
