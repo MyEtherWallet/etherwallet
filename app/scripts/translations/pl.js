@@ -1,4 +1,4 @@
-// English
+﻿// English
 'use strict';
 var en = function() {}
 en.code = 'en';
@@ -19,7 +19,7 @@ en.data = {
   NAV_MyWallets:        'Mój Portfel',
   NAV_ViewWallet:       'Spójrz na Portfel Informacje',
   NAV_Help:             'Pomoc',
-  NAV_Contact:          'Kontrakt',
+  NAV_Contact:          'Kontakt',
 
   /* General */
   x_Password:           'Hasło',
