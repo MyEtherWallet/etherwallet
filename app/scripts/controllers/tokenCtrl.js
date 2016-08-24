@@ -48,6 +48,13 @@ var tokenCtrl = function($scope, $sce, walletService) {
 				});
 			}
 		});
+        ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function(data) {
+			if (data.error) {
+				$scope.etcBalance = data.msg;
+			} else {
+				$scope.etcBalance = etherUnits.toEther(data.data.balance, 'wei');
+			}
+		});
 	}
 	$scope.onDonateClick = function() {
 		$scope.tokenTx.to = globalFuncs.donateAddress;

@@ -1,4 +1,4 @@
-<footer class="container-fluid">
+<footer class="container-fluid" ng-controller='footerCtrl'>
   <div class="container">
     <p>
       <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a>
@@ -31,7 +31,7 @@
       <a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank"> tayvano (insom) on reddit </a>
     </p>
 
-    <p class="text-right" style="font-size: 10px">ETH: 1000000 / 100000 &middot; ETC: 1000000 / 100000</p>
+    <p ng-show="showBlocks" class="text-right" style="font-size: 10px">ETH Block#: {{ethBlockNumber}} &middot; ETC Block#: {{etcBlockNumber}}</p>
 
   </div>
 </footer>
