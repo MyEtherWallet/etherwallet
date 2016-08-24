@@ -100,9 +100,9 @@ el.data = {
   BULK_SuccessMsg:        'Επιτυχία! Τα πορτοφόλια σας δημιουργήθηκαν.',
 
   /* Sending Ether and Tokens */
-  SEND_addr:             'To Address: ',
-  SEND_amount:           'Amount to Send: ',
-  SEND_amount_short:     'Amount',
+  SEND_addr:             'Προς Διεύθυνση: ',
+  SEND_amount:           'Ποσό για αποστολή: ',
+  SEND_amount_short:     'Ποσό',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
   SEND_generate:         'Generate Signed Transaction',
@@ -205,17 +205,17 @@ el.data = {
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
 
   /* Error Messages */
-  ERROR_1:             'Παρακαλώ εισάγετε έγκυρη ποσότητα.',
+  ERROR_1:             'Παρακαλώ εισάγετε έγκυρο ποσό.',
   ERROR_2:             'Ο κωδικός σας πρέπει να αποτελείται απο τουλάχιστον 9 χαρακτήρες. Παρακαλώ σιγουρευτείτε ότι είναι ισχυρός κωδικός. ',
   ERROR_3:              'Συγγνώμη! Δεν αναγνωρίζουμε αυτού του είδους αρχεία πορτοφολιού ',
   ERROR_4:              'Αυτό δεν είναι έγκυρο αρχείο πορτοφολιού. ',
   ERROR_5:              'Αυτή η μονάδα δεν υπάρχει, παρακαλώ χρησιμοποιήστε μία απο τις ακόλουθες μονάδες:',
   ERROR_6:              'Λάθος Διεύθυνση. ',
   ERROR_7:              'Λάθος κωδικός. ',
-  ERROR_8:              'Λάθος ποσότητα. ',
+  ERROR_8:              'Λάθος ποσό. ',
   ERROR_9:              'Λάθος όριο gas. ',
   ERROR_10:             'Λάθος data value. ',
-  ERROR_11:             'Λάθος ποσότητα gas. ',
+  ERROR_11:             'Λάθος ποσό gas. ',
   ERROR_12:             'Λάθος nonce. ',
   ERROR_13:             'Λάθος υπογεγραμμένη συναλλαγή. ',
   ERROR_14:             'Υπάρχει ήδη πορτοφόλι με αυτό το ψευδώνυμο. ',
