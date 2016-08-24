@@ -98,7 +98,7 @@
       </div>
 
       <div class="form-group col-xs-12" ng-show="showRaw">
-        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_generate">Generate Signed Transaction</a>
+        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans">Send Transaction</a>
       </div>
 
       <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>

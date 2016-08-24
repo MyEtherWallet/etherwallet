@@ -61,7 +61,7 @@
           <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#withdrawTransaction" translate="DAO_TitleLong">
             WITHDRAW YOUR DAO TOKENS FOR ETH
           </a>
-          <p><small> Yes. Just push the big red button. It's that easy. </small></p>
+          <p><small translate="DAO_Inst"> Yes. Just push the big red button. It's that easy. </small></p>
           <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
           <div class="form-group col-xs-12" ng-bind-html="withdrawTxStatus"></div>
         </div>
