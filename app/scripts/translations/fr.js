@@ -6,18 +6,18 @@ fr.data = {
 
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
-  NAV_AddWallet:        'Ajouter un portefeuille',
-  NAV_GenerateWallet:   'Générer un portefeuille',
+  NAV_AddWallet:        'Ajout de portefeuille',
+  NAV_GenerateWallet:   'Génération de portefeuille',
   NAV_BulkGenerate:     'Génération de portefeuilles par lots',
-  NAV_SendEther:        'Envoyer des Ether',
-  NAV_SendTokens:       'Envoyer des tokens',
+  NAV_SendEther:        'Envoi d\'Ether',
+  NAV_SendTokens:       'Envoi de tokens',
   NAV_Offline:          'Envoi hors-ligne',
-  NAV_WithdrawDAO:      'Retirer de la DAO',
-  DAO_TitleLong:        'Echanger vos tokens DAO contre des ETH',
-  NAV_ClaimDGD:         'Réclamer DGD',
-  DGD_TitleLong:        'Réclamer vos tokens DGD',
+  NAV_WithdrawDAO:      'Retrait de la DAO',
+  DAO_TitleLong:        'Échange de tokens DAO contre des ETH',
+  NAV_ClaimDGD:         'Réclamation de DGD',
+  DGD_TitleLong:        'Réclamation de vos tokens DGD',
   NAV_MyWallets:        'Mes portefeuilles',
-  NAV_ViewWallet:       'Voir les infos d\'un portefeuille',
+  NAV_ViewWallet:       'Visualisation d\'un portefeuille',
   NAV_Help:             'Aide',
   NAV_Contact:          'Contact',
 
@@ -35,8 +35,8 @@ fr.data = {
   x_Json:               'Fichier JSON (non-chiffré)',
   x_JsonDesc:           'C\'est la version non-chiffrée au format JSON de votre clé privée. Cela signifie que vous n\'avez pas besoin de votre mot de passe pour l\'utiliser mais que toute personne qui trouve ce JSON peut accéder à votre portefeuille et vos Ether sans mot de passe.',
   x_PrintShort:         'Imprimer',
-  x_Print:              'Imprimer un Paper Wallet',
-  x_PrintDesc:          'Astuce: Cliquez sur Imprimer et sauvegardez le Paper Wallet comme un PDF, même si vous n\'avez pas d\'imprimante!',
+  x_Print:              'Imprimer un portefeuille papier',
+  x_PrintDesc:          'Astuce : Cliquez sur Imprimer et sauvegardez le portefeuille papier comme un PDF, même si vous n\'avez pas d\'imprimante !',
   x_CSV:                'Fichier CSV (non-chiffré)',
   x_TXT:                'Fichier TXT (non-chiffré)',
 
@@ -47,8 +47,8 @@ fr.data = {
   CX_Tagline:           'Extension Chrome de portefeuille d\'Ether Open Source JavaScript côté client',
 
   /* Footer */
-  FOOTER_1:             'Un outil open source en javascript s\'exécutant côté client pour générer des portefeuilles Ethereum et envoyer des transactions.',
-  FOOTER_2:             'Donations fortements appréciées :',
+  FOOTER_1:             'Un outil open source en Javascript s\'exécutant côté client pour générer des portefeuilles Ethereum et envoyer des transactions.',
+  FOOTER_2:             'Donations extrêmement appréciées :',
   FOOTER_3:             'Génération de portefeuille côté client par',
 
   /* Sidebar */
@@ -58,7 +58,7 @@ fr.data = {
   sidebar_Equiv:        'Valeur correspondante : ',
   sidebar_TransHistory: 'Historique des transactions',
   sidebar_DGDBal:       'Informations sur la crowdsale DGD :',
-  sidebar_donation:     'MyEtherWallet est un service gratuit et open source respectueux de votre vie privée et votre sécurité. Plus nous recevons de donations, plus nous dédions du temps au développement de nouvelles fonctions, à l\'écoute de vos retours et à vous fournir ce dont vous avez besoin. Nous sommes juste deux personnes qui essayent de changer le monde. Aidez nous ?',
+  sidebar_donation:     'MyEtherWallet est un service gratuit et open source respectueux de votre vie privée et votre sécurité. Plus nous recevons de donations, plus nous dédions du temps au développement de nouvelles fonctions, à l\'écoute de vos retours et à vous fournir ce dont vous avez besoin. Nous ne sommes que deux personnes qui essayent de changer le monde. Aidez nous !',
   sidebar_donate:       'Faire une donation',
   sidebar_thanks:       'MERCI !!!',
 
@@ -74,11 +74,11 @@ fr.data = {
   ADD_Radio_2_short:      'SELECTIONNER LE FICHIER DU PORTEFEUILLE...',
   ADD_Radio_3:            'Collez/saisissez votre clé privée',
   ADD_Radio_4:            'Ajoutez un compte',
-  ADD_Label_2:            'Nommez votre compte:',
+  ADD_Label_2:            'Nommez votre compte :',
   ADD_Label_3:            'Votre fichier est chiffré, merci de saisir le mot de passe : ',
   ADD_Label_4:            'Ajouter un compte à afficher',
   ADD_Warning_1:          'Vous pouvez ajouter n\'importe quel compte pour l\'afficher dans l\'onglet "portefeuilles" sans uploader une clé privée. Cela ne veut **pas** dire que vous aurez accès à ce portefeuille, ni que vous pouvez transférer des Ethers depuis ce portefeuille.',
-  ADD_Label_5:            'Entrez l\'adresse: ',
+  ADD_Label_5:            'Entrez l\'adresse : ',
   ADD_Label_6:            'Déverrouiller votre portefeuille',
   ADD_Label_6_short:      'Déverrouiller',
   ADD_Label_7:            'Ajouter un compte',
@@ -91,7 +91,7 @@ fr.data = {
   GEN_Warning:            '**Vous avez besoin de votre fichier Keystore/JSON et du mot de passe ou de la clé privée** pour accéder à ce portefeuille dans le futur. Merci de le télécharger et d\'en faire une sauvegarde externe ! Il n\'existe aucun moyen de récupérer un portefeuille si vous ne le sauvegardez pas. Merci de lire la [page d\'Aide](https://www.myetherwallet.com/#help) pour plus de détails.',
   GEN_Label_2:            'Sauvegardez votre fichier Keystore/JSON ou votre clé privée. N\'oubliez pas votre mot de passe ci-dessus.',
   GEN_Label_3:            'Sauvegarder votre portefeuille.',
-  GEN_Label_4:            'Imprimer votre paper wallet, ou conserver une version QR code. (optionnel)',
+  GEN_Label_4:            'Imprimer votre portefeuille papier, ou conserver une version QR code. (optionnel)',
 
   /* Bulk Generate Wallets */
   BULK_Label_1:           'Nombre de portefeuilles à générer',
@@ -104,7 +104,7 @@ fr.data = {
   SEND_amount_short:     'Montant',
   SEND_custom:           'Spécifique',
   SEND_gas:              'Gaz',
-  SEND_generate:         'Générer une transaction signée',
+  SEND_generate:         'Générer la transaction signée',
   SEND_raw:              'Transaction brute',
   SEND_signed:           'Transaction signée',
   SEND_trans:            'Envoyer la transaction',
@@ -120,7 +120,7 @@ fr.data = {
 
   /* Tokens */
   TOKEN_Addr:            'Adresse : ',
-  TOKEN_Symbol:          'Symbole tu token : ',
+  TOKEN_Symbol:          'Symbole du token : ',
   TOKEN_Dec:             'Décimales : ',
 
   /* Send Transaction */
@@ -140,8 +140,8 @@ fr.data = {
   TRANSModal_Content_1:  '**ETH (Transaction standard) : ** Génère une transaction par défaut directement depuis une adresse vers une autre. Son gaz par défaut est de 21000. Il est probable que tout ETH envoyé de cette manière sera rejoué sur la chaîne ETC.',
   TRANSModal_Content_2:  '**ETH seulement : ** Envoie à travers le [contrat anti-rejeu de Timon Rapp (recommandé par VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) afin de n\'envoyer que sur la chaîne **ETH**.',
   TRANSModal_Content_3:  '**ETC seulement : ** Envoie à travers le [contrat anti-rejeu de Timon Rapp (recommandé par VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) afin de n\'envoyer que sur la chaîne **ETC**. ',
-  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** N\'envoyer que par transaction standard. Si vous utilisez les contrats d\'envoi sur une seule chaîne, vous devrez joindre leur équipe de support pour ajouter manuellement la somme à votre solde ou pour vous rembourser. [Vous pouvez aussi essayer l\'outil "split" de Shapeshift.](https://split.shapeshift.io/)',
-  TRANSModal_Content_5:  '**Kraken & Poloniex:** Pas de problème connu. Utilisez ce que vous voulez.',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift : ** N\'envoyer que par transaction standard. Si vous utilisez les contrats d\'envoi sur une seule chaîne, vous devrez joindre leur équipe de support pour ajouter manuellement la somme à votre solde ou pour vous rembourser. [Vous pouvez aussi essayer l\'outil "split" de Shapeshift.](https://split.shapeshift.io/)',
+  TRANSModal_Content_5:  '**Kraken & Poloniex :** Pas de problème connu. Utilisez ce que vous voulez.',
   TRANSModal_Yes:        'Génial, j\'ai compris.',
   TRANSModal_No:         'Aïe, je comprends de moins en moins. Aidez-moi.',
 
@@ -149,7 +149,7 @@ fr.data = {
   OFFLINE_Title:         'Génération et envoi d\'une transaction hors ligne',
   OFFLINE_Desc:          'La génération d\'une transaction hors ligne s\'effectue en trois étapes. Les étapes 1 et 3 sont réalisées sur un ordinateur en ligne et l\'étape 2 sur un ordinateur déconnecté du réseau. Cela permet d\'isoler totalement vos clefs privées de toute machine connectée à l\'internet.',
   OFFLLINE_Step1_Title:  'Étape 1 : Gérération de l\'information (ordinateur en ligne)',
-  OFFLINE_Step1_Button:  'Generer l\'information',
+  OFFLINE_Step1_Button:  'Générer l\'information',
   OFFLINE_Step1_Label_1: 'Addresse d\'émission : ',
   OFFLINE_Step1_Label_2: 'Note : Il s\'agit de l\'adresse de départ, pas de l\'adresse d\'arrivée. Le nonce est généré à partir du compte de l\'expéditeur. Si on utilise une machine déconnectée du réseau, cette adresse est celle du compte en _cold storage_.',
   OFFLINE_Step2_Title:   'Étape 2 : Génération de la transaction (ordinateur hors ligne)',
@@ -165,21 +165,21 @@ fr.data = {
   OFFLINE_Step2_Label_6b: 'Cette zone est optionnelle. Les données sont souvent utilisées lors de transactions vers des contrats.',
   OFFLINE_Step2_Label_7:  'Entrez / sélectionnez votre clef privée / JSON.',
   OFFLINE_Step3_Title:    'Étape 3 : Envoyer / publier la transaction (ordinateur en ligne)',
-  OFFLINE_Step3_Label_1:  'Copier ici la transaction signée à l\'étape 2 et cliquez sur le bouton "SEND TRANSACTION".',
+  OFFLINE_Step3_Label_1:  'Copier ici la transaction signée à l\'étape 2 et cliquez sur le bouton "ENVOYER LA TRANSACTION".',
 
   /* DAO */
-  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.',
-  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. ',
-  DAOModal_Title:         'Just making sure...',
+  DAO_Desc:               'Utilisez cet onglet pour retirer et convertir vos tokens en ETH. Si vous désirez envoyer des DAO, utilisez l\'onglet Envoi de tokens.',
+  DAO_Inst:               'Oui. Cliquez simplement sur le gros bouton rouge. Yes. Vous voyez, c\'est simple.',
+  DAO_Warning:            'Si vous obtenez une erreur "Insufficient balance for gas", vousdevez disposer d\'un petit montant en ETH sur votre compte pour couvrir le coût en gaz. Ajoutez 0,01 ETH sur votre compte et réessayez. ',
+  DAOModal_Title:         'Juste pour être sûr...',
 
   /* Digix */
-  DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
-  DGD_Label_1:            'Estimated fee consumption:',
-  DGD_Label_2:            'Provided Maximum Fee:',
-  DGD_Label_3:            'Gas Price:',
-  DGD_Generate:           'Generate Claim',
-  DGD_Content:            'You are about to claim your DGD Tokens.',
+  DGD_Desc:               'Réclamez vos tokens et vos badges DigixDAO (DGD). Pour ce faire, vous devez avoir participé à la vente de tokens du 30 et 31 mars 2016. Si vous désirez envoyez des DGD, utilisez l\'onglet Envoi de tokens.',
+  DGD_Label_1:            'Estimation des frais consommés :',
+  DGD_Label_2:            'Frais maximum fournis :',
+  DGD_Label_3:            'Prix du gaz :',
+  DGD_Generate:           'Générer une réclamation',
+  DGD_Content:            'Vous allez réclamer vos tokens DGD.',
 
   /* My Wallet */
   MYWAL_Nick:             'Nom du portefeuille',
@@ -199,9 +199,9 @@ fr.data = {
   MYWAL_Content_3:        'Si vous voulez utiliser ce portefeuille avec MyEtherWallet CX à l\'avenir, vous devrez le rajouter manuellement en utilisant la clé privée/fichier JSON et le mot de passe.',
 
   /* View Wallet Details */
-  VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
-  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
-  VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+  VIEWWALLET_Subtitle:      'Ceci vous permet de télécharger plusieurs versions des clefs privées et de ré-imprimer votre portefeuille papier. Vous devrez le faire pour [importer votre compte dans Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vous voulez consulter votre solde, nous recommandons d\'utiliser un explorateur de blockchain comme [etherscan.io](http://etherscan.io/).',
+  VIEWWALLET_Subtitle_Short: 'Ceci vous permet de télécharger plusieurs versions des clefs privées et de ré-imprimer votre portefeuille papier. ',
+  VIEWWALLET_SuccessMsg:     'Succès ! Voici les détails de votre portefeuille.',
 
   /* Error Messages */
   ERROR_1:             'Veuillez entrer un montant valide.',
@@ -237,7 +237,7 @@ fr.data = {
   TranlsatorAddr_1:     '0x89a18eE46b5aabC62e94b1830881887D04C687f3',
   /* Translator 1: Translation in French. Début de la traduction, il reste encore du travail... Je continue dès que j'ai un peu de temps :) */
   TranlsatorName_2:     'Jean Zundel',
-  TranlsatorAddr_2:     '0x003a633ff27d93600196b776803ac06dbb3d1664',
+  TranlsatorAddr_2:     ' ',
   /* Translator 2:  */
   TranlsatorName_3:     ' ',
   TranlsatorAddr_3:     ' ',
