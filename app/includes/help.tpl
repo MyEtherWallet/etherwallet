@@ -141,7 +141,7 @@
 
   @@if (site === 'mew' ) {
   <h4 translate="HELP_5_Title">5. How do I run MyEtherWallet.com offline/locally? </h4>
-  <p tranlsate="HELP_5_Desc_1"> You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page. </p>
+  <p translate="HELP_5_Desc_1"> You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page. </p>
   <ol>
     <li translate="HELP_5_Desc_2">Go to our github: <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages">https://github.com/kvhnuke/etherwallet/tree/gh-pages</a>.</li>
     <li translate="HELP_5_Desc_3">Click download zip in the upper right.</li>
