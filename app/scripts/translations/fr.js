@@ -36,7 +36,7 @@ fr.data = {
   x_JsonDesc:           'C\'est la version non-chiffrée au format JSON de votre clé privée. Cela signifie que vous n\'avez pas besoin de votre mot de passe pour l\'utiliser mais que toute personne qui trouve ce JSON peut accéder à votre portefeuille et vos Ether sans mot de passe.',
   x_PrintShort:         'Imprimer',
   x_Print:              'Imprimer un Paper Wallet',
-  x_PrintDesc:          'Astuce: Cliquez sur Imprimer et sauvegardez le Paper Wallet comme un PDF, même si vous n\'avez pas d\'imprimante !',
+  x_PrintDesc:          'Astuce: Cliquez sur Imprimer et sauvegardez le Paper Wallet comme un PDF, même si vous n\'avez pas d\'imprimante!',
   x_CSV:                'Fichier CSV (non-chiffré)',
   x_TXT:                'Fichier TXT (non-chiffré)',
 
