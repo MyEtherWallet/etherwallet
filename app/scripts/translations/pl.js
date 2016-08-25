@@ -242,7 +242,7 @@ pl.data = {
   translate_version:    '1.0',
   Translator_Desc:      'Thank you to our translators...',
   TranlsatorName_1:     'egzi',
-  TranlsatorAddr_1:     'egzumer+myethereumwallet.translate@gmail.com',
+  TranlsatorAddr_1:     '', // donation address 0x1234
   /* Translator 1: Insert Comments Here */
   TranlsatorName_2:     ' ',
   TranlsatorAddr_2:     ' ',

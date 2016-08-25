@@ -241,14 +241,9 @@ de.data = {
   /* Tranlsation Info */
   translate_version:    '0.0',
   Translator_Desc:      'Vielen Dank an unsere ÜbersetzerInnen...',
-  LANG_en:              'English',
-  LANG_de:              'Deutsch',
-  LANG_es:              'Español',
-  LANG_fr:              'Français',
-  LANG_ko:              'Korean',
-  LANG_no:              'Norwegian',
+
   TranlsatorName_1:     'christoph2806',
-  TranlsatorAddr_1:     'danielsun174',
+  TranlsatorAddr_1:     '',
   /* Translator 1: Insert Comments Here */
   TranlsatorName_2:     'mawalu',
   TranlsatorAddr_2:     '0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3',
@@ -262,9 +257,12 @@ de.data = {
   TranlsatorName_5:     'FelixA ',
   TranlsatorAddr_5:     '0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D ',
   /* Translator 5: Insert Comments Here */
-  TranlsatorName_6:     '',
+  TranlsatorName_6:     'danielsun174',
   TranlsatorAddr_6:     '',
   /* Translator 6: Insert Comments Here */
+  TranlsatorName_7:     '',
+  TranlsatorAddr_7:     '',
+  /* Translator 7: Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning:      'Falls du vor dem **31.12.2015** ein Wallet generiert, oder das Repository heruntergeladen hast, bitte überprüfe deine Wallets &amp; lade eine neue Version des Repositories herunter. Klick für details.',
