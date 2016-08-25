@@ -193,10 +193,10 @@ it.data = {
   MYWAL_WatchOnly:        'I tuoi conti osservati',
   MYWAL_Viewing:          'Dettagli portafoglio: ',
   MYWAL_Hide:             'Nascondi informazioni portafoglio',
-  MYWAL_Edit:             'Modifica portafoglio: ',
+  MYWAL_Edit_2:           'Modifica portafoglio: ',
   MYWAL_Name:             'Nome portafoglio',
-  MYWAL_Content_1:        'Attenzione! Stai per rimuovere il tuo portafoglio.',
-  MYWAL_Content_2:        ' Assicurati di aver **salvato la chiave privata/il file JSON e la password** associati a questo portafoglio prima di rimuoverlo.',
+  MYWAL_Content_1:        'Attenzione! Stai per rimuovere il tuo portafoglio: ',
+  MYWAL_Content_2:        'Assicurati di aver **salvato la chiave privata/il file JSON e la password** associati a questo portafoglio prima di rimuoverlo.',
   MYWAL_Content_3:        'Se vorrai utilizzare questo portafoglio con MyEtherWallet CX in futuro, dovrai ri-aggiungerlo manualmente tramite la chiave privata/JSON e password.',
 
   /* View Wallet Details */

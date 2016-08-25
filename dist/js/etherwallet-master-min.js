@@ -2658,10 +2658,10 @@ bg.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet :',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -2999,8 +2999,8 @@ de.data = {
   x_Password:           'Passwort',
   x_Download:           'Herunterladen',
   x_Address:            'Deine Adresse',
-  x_Save:               'x_Sichern',
-  x_Cancel:             'x_Abbrechen',
+  x_Save:               'Sichern',
+  x_Cancel:             'Abbrechen',
   x_AddessDesc:         'Dies ist deine "Kontonummer" oder dein "Öffentlicher Schlüssel". Du benötigst diese Adresse, wenn dir jemand ETH senden möchte. Das Icon ist eine einfache Möglichkeit, die Adresse zu überprüfen',
   x_PrivKey:            'Privater Schlüssel (unverschlüsselt)',
   x_PrivKeyDesc:        'Dies ist die unverschlüsselte Textversion deines privaten Schlüssels, d. h. du benötigst kein Passwort. Wenn jemand über diesen unverschlüsselten privaten Schlüssel verfügt, hat er/sie ohne Passwort Zugang zu deinem Wallet. Es wird daher empfohlen, den privaten Schlüssel zu verschlüsseln.',
@@ -3167,9 +3167,9 @@ de.data = {
   MYWAL_WatchOnly:        'Deine Watch-Only Konten',
   MYWAL_Viewing:          'Du siehst Wallet: ',
   MYWAL_Hide:             'Wallet Info verstecken',
-  MYWAL_Edit:             'Wallet bearbeiten: ',
+  MYWAL_Edit_2:           'Wallet bearbeiten: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Achtung! Du bist gerade dabei dein Wallet zu löschen!',
+  MYWAL_Content_1:        'Achtung! Du bist gerade dabei dein Wallet zu löschen: ',
   MYWAL_Content_2:        'Stelle sicher, dass du **die private key/JSON Datei und das Passwort** deines Wallets gespeichert hast, bevor du es löschst.',
   MYWAL_Content_3:        'Wenn du dieses Wallet in Zukunft mit MyEtherWallet CX verwenden willst, musst du es mittels der privaten key/JSON Datei und deinem Passwort manuell wieder hinzufügen.',
 
@@ -3685,10 +3685,10 @@ el.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -4005,6 +4005,12 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Send Entire Balance', // updated to be shorter
+  x_Wallet:             'Wallet',
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -4110,7 +4116,6 @@ en.data = {
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -4194,10 +4199,10 @@ en.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -4703,10 +4708,10 @@ es.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -5212,10 +5217,10 @@ et.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -5555,6 +5560,7 @@ fr.data = {
   x_Address:            'Votre adresse',
   x_Save:               'Sauvegarder',
   x_Cancel:             'Annuler',
+  x_Wallet:             'Portefeuille',
   x_AddessDesc:         'Aussi appelé "Numéro de compte" ou "Clé publique". C\'est ce que vous envoyez aux gens pour qu\'ils puissent vous envoyer des ETH. Cette icone est une façon simple de reconnaitre votre adresse.',
   x_PrivKey:            'Clé privée (non-chiffrée)',
   x_PrivKeyDesc:        'C\'est la version textuelle non-chiffrée de votre clé privée, ce qui signifie qu\'aucun mot de passe n\'est nécessaire pour l\'utiliser. Si quelqu\'un venait à découvrir cette clé privée, il pourrrait accéder à votre portefeuille sans mot de passe. Pour cette raison, la version chiffrée de votre clé privée est recommandée.',
@@ -5720,9 +5726,9 @@ fr.data = {
   MYWAL_WatchOnly:        'Vos comptes en affichage uniquement',
   MYWAL_Viewing:          'Affichage des portefeuilles : ',
   MYWAL_Hide:             'Cacher les informations sur le portefeuille',
-  MYWAL_Edit:             'Modifier le portefeuille : ',
+  MYWAL_Edit_2:           'Modifier le portefeuille : ',
   MYWAL_Name:             'Nom du portefeuille',
-  MYWAL_Content_1:        'Attention ! Vous êtes sur le point de supprimer votre portefeuille.',
+  MYWAL_Content_1:        'Attention ! Vous êtes sur le point de supprimer votre portefeuille: ',
   MYWAL_Content_2:        'Assurez-vous d\'avoir bien **sauvegardé la clé privée/ fichier JSON et le mot de passe** associé à ce portefeuille avant de le supprimer.',
   MYWAL_Content_3:        'Si vous voulez utiliser ce portefeuille avec MyEtherWallet CX à l\'avenir, vous devrez le rajouter manuellement en utilisant la clé privée/fichier JSON et le mot de passe.',
 
@@ -6229,10 +6235,10 @@ he.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -6738,10 +6744,10 @@ id.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -7247,10 +7253,10 @@ it.data = {
   MYWAL_WatchOnly:        'I tuoi conti osservati',
   MYWAL_Viewing:          'Dettagli portafoglio: ',
   MYWAL_Hide:             'Nascondi informazioni portafoglio',
-  MYWAL_Edit:             'Modifica portafoglio: ',
+  MYWAL_Edit_2:           'Modifica portafoglio: ',
   MYWAL_Name:             'Nome portafoglio',
-  MYWAL_Content_1:        'Attenzione! Stai per rimuovere il tuo portafoglio.',
-  MYWAL_Content_2:        ' Assicurati di aver **salvato la chiave privata/il file JSON e la password** associati a questo portafoglio prima di rimuoverlo.',
+  MYWAL_Content_1:        'Attenzione! Stai per rimuovere il tuo portafoglio: ',
+  MYWAL_Content_2:        'Assicurati di aver **salvato la chiave privata/il file JSON e la password** associati a questo portafoglio prima di rimuoverlo.',
   MYWAL_Content_3:        'Se vorrai utilizzare questo portafoglio con MyEtherWallet CX in futuro, dovrai ri-aggiungerlo manualmente tramite la chiave privata/JSON e password.',
 
   /* View Wallet Details */
@@ -7756,10 +7762,10 @@ ko.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -8266,10 +8272,10 @@ nl.data = {
   MYWAL_WatchOnly:        'Je Watch-Only Accounts',
   MYWAL_Viewing:          'Te Bekijken Wallet: ',
   MYWAL_Hide:             'Verberg Wallet Info',
-  MYWAL_Edit:             'Bewerk Wallet: ',
+  MYWAL_Edit_2:           'Bewerk Wallet: ',
   MYWAL_Name:             'Wallet Naam',
-  MYWAL_Content_1:        'Waarschuwing! Je staat op het punt om je Wallet te verwijderen.',
-  MYWAL_Content_2:        ' Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze Wallet voordat je het verwijderd.',
+  MYWAL_Content_1:        'Waarschuwing! Je staat op het punt om je Wallet te verwijderen: ',
+  MYWAL_Content_2:        'Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze Wallet voordat je het verwijderd.',
   MYWAL_Content_3:        'Als je deze Wallet in de toekomst nog wilt gebruiken met MyEtherWallet CX, zul je het met de hand moeten toevoegen door gebruik te maken van de prive sleutel/JSON en wachtwoord.',
 
   /* View Wallet Details */
@@ -8775,10 +8781,10 @@ no.data = {
   MYWAL_WatchOnly:        'Dine "bare-se"-kontoer',
   MYWAL_Viewing:          'Viser lommebok: ',
   MYWAL_Hide:             'Skjul lommebok-info',
-  MYWAL_Edit:             'Rediger lommebok: ',
+  MYWAL_Edit_2:           'Rediger lommebok: ',
   MYWAL_Name:             'Lommeboknavn',
-  MYWAL_Content_1:        'Advarsel! Du er i ferd med å fjerne lommeboken din.',
-  MYWAL_Content_2:        ' Vær sikker på at du har **lagret den private nøkkelen/JSON-filen og passordet** tilknyttet denne lommeboken før du fjerner den.',
+  MYWAL_Content_1:        'Advarsel! Du er i ferd med å fjerne lommeboken din: ',
+  MYWAL_Content_2:        'Vær sikker på at du har **lagret den private nøkkelen/JSON-filen og passordet** tilknyttet denne lommeboken før du fjerner den.',
   MYWAL_Content_3:        'Hvis du ønsker å bruke denne lommeboken med din MyEtherWallet Chrome-utvidelse i fremtiden, må du manuelt legge den til igjen ved å bruke den private nøkkelen/JSON og passord.',
 
   /* View Wallet Details */
@@ -9284,10 +9290,10 @@ pl.data = {
   MYWAL_WatchOnly:        'Twoje Konta Tylko-do-Podglądu',
   MYWAL_Viewing:          'Podgląd Portfela: ',
   MYWAL_Hide:             'Ukryj Dane Portfela',
-  MYWAL_Edit:             'Edytuj Portfel: ',
+  MYWAL_Edit_2:           'Edytuj Portfel: ',
   MYWAL_Name:             'Nazwa Portfela',
-  MYWAL_Content_1:        'Uwaga! Zaraz usuniesz swój portfel.',
-  MYWAL_Content_2:        ' Upewnij się, że **zapisałeś klucz prywatny/plik JSON i hasło** powiązane z tym portfelem zanim je usuniesz.',
+  MYWAL_Content_1:        'Uwaga! Zaraz usuniesz swój portfel: ',
+  MYWAL_Content_2:        'Upewnij się, że **zapisałeś klucz prywatny/plik Keystore i hasło** powiązane z tym portfelem zanim je usuniesz.',
   MYWAL_Content_3:        'Jeśli będziesz chciał w przyszłości używać ten portfel ze swoim MyEtherWallet CX, będziesz musiał go ponownie dodać używając klucza prywatnego/pliku JSON i hasła.',
 
   /* View Wallet Details */
@@ -9793,10 +9799,10 @@ pt.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the Keystore File & password and/or private key** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -10302,10 +10308,10 @@ ptbr.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the Keystore File & password and/or private key** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -10811,10 +10817,10 @@ ru.data = {
   MYWAL_WatchOnly:        'Список слежения',
   MYWAL_Viewing:          'Просматриваемый кошелёк: ',
   MYWAL_Hide:             'Скрыть информацию о кошельке',
-  MYWAL_Edit:             'Редактировать кошелёк: ',
+  MYWAL_Edit_2:           'Редактировать кошелёк: ',
   MYWAL_Name:             'Имя кошелька',
-  MYWAL_Content_1:        'Внимание! Вы собираетесь удалить кошелёк.',
-  MYWAL_Content_2:        ' Убедитесь, что Вы **сохранили закрытый ключ или файл JSON и пароль** от этого кошелька, прежде чем Вы удалите этот кошелёк.',
+  MYWAL_Content_1:        'Внимание! Вы собираетесь удалить кошелёк: ',
+  MYWAL_Content_2:        ' Убедитесь, что Вы **сохранили закрытый ключ или файл Keystore / JSON и пароль** от этого кошелька, прежде чем Вы удалите этот кошелёк.',
   MYWAL_Content_3:        'Если Вы планируете в будущем использовать этот кошелёк в MyEtherWallet CX, Вам надо будет вручную заново добавить его, указав закрытый ключ или файл JSON и пароль.',
 
   /* View Wallet Details */
@@ -11320,10 +11326,10 @@ sk.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the Keystore File & password and/or private key** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -11829,10 +11835,10 @@ sl.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the Keystore File & password and/or private key** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -12338,10 +12344,10 @@ sv.data = {
   MYWAL_WatchOnly:        'Dina Bevakade Konton', /*Any better translation?*/
   MYWAL_Viewing:          'Visar Plånbok: ',
   MYWAL_Hide:             'Dölj Plånboks Info',
-  MYWAL_Edit:             'Ändra Plånbok: ',
+  MYWAL_Edit_2:           'Ändra Plånbok: ',
   MYWAL_Name:             'Plånboks Namn',
-  MYWAL_Content_1:        'Varning! Du är på väg att ta bort din plånbok.',
-  MYWAL_Content_2:        ' Kontrollera att du har **sparat den privata nyckeln/JSON filen och lösenordet** som tillhör den här plånboken innan du tar bort den.',
+  MYWAL_Content_1:        'Varning! Du är på väg att ta bort din plånbok: ',
+  MYWAL_Content_2:        'Kontrollera att du har **sparat den privata nyckeln / Keystore filen och lösenordet** som tillhör den här plånboken innan du tar bort den.',
   MYWAL_Content_3:        'Om du vill använda plånboken med MyEtherWallet CX i framtiden, måste du manuellt lägga till den med hjälp av den privata nyckeln / JSON filen och lösenordet.',
 
   /* View Wallet Details */
@@ -12847,10 +12853,10 @@ tr.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the Keystore File & password and/or private key ** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -13416,10 +13422,10 @@ uk.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the Keystore File & password and/or private key ** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -13925,10 +13931,10 @@ vi.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the Keystore File & password and/or private key ** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */

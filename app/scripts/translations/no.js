@@ -193,10 +193,10 @@ no.data = {
   MYWAL_WatchOnly:        'Dine "bare-se"-kontoer',
   MYWAL_Viewing:          'Viser lommebok: ',
   MYWAL_Hide:             'Skjul lommebok-info',
-  MYWAL_Edit:             'Rediger lommebok: ',
+  MYWAL_Edit_2:           'Rediger lommebok: ',
   MYWAL_Name:             'Lommeboknavn',
-  MYWAL_Content_1:        'Advarsel! Du er i ferd med å fjerne lommeboken din.',
-  MYWAL_Content_2:        ' Vær sikker på at du har **lagret den private nøkkelen/JSON-filen og passordet** tilknyttet denne lommeboken før du fjerner den.',
+  MYWAL_Content_1:        'Advarsel! Du er i ferd med å fjerne lommeboken din: ',
+  MYWAL_Content_2:        'Vær sikker på at du har **lagret den private nøkkelen/JSON-filen og passordet** tilknyttet denne lommeboken før du fjerner den.',
   MYWAL_Content_3:        'Hvis du ønsker å bruke denne lommeboken med din MyEtherWallet Chrome-utvidelse i fremtiden, må du manuelt legge den til igjen ved å bruke den private nøkkelen/JSON og passord.',
 
   /* View Wallet Details */

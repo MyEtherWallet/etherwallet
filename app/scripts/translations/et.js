@@ -193,10 +193,10 @@ et.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */

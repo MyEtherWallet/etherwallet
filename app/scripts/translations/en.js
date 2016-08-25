@@ -4,6 +4,12 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Send Entire Balance', // updated to be shorter
+  x_Wallet:             'Wallet',
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -109,7 +115,6 @@ en.data = {
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -193,10 +198,10 @@ en.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */

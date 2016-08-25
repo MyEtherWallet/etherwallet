@@ -193,10 +193,10 @@ pl.data = {
   MYWAL_WatchOnly:        'Twoje Konta Tylko-do-Podglądu',
   MYWAL_Viewing:          'Podgląd Portfela: ',
   MYWAL_Hide:             'Ukryj Dane Portfela',
-  MYWAL_Edit:             'Edytuj Portfel: ',
+  MYWAL_Edit_2:           'Edytuj Portfel: ',
   MYWAL_Name:             'Nazwa Portfela',
-  MYWAL_Content_1:        'Uwaga! Zaraz usuniesz swój portfel.',
-  MYWAL_Content_2:        ' Upewnij się, że **zapisałeś klucz prywatny/plik JSON i hasło** powiązane z tym portfelem zanim je usuniesz.',
+  MYWAL_Content_1:        'Uwaga! Zaraz usuniesz swój portfel: ',
+  MYWAL_Content_2:        'Upewnij się, że **zapisałeś klucz prywatny/plik Keystore i hasło** powiązane z tym portfelem zanim je usuniesz.',
   MYWAL_Content_3:        'Jeśli będziesz chciał w przyszłości używać ten portfel ze swoim MyEtherWallet CX, będziesz musiał go ponownie dodać używając klucza prywatnego/pliku JSON i hasła.',
 
   /* View Wallet Details */

@@ -194,10 +194,10 @@ nl.data = {
   MYWAL_WatchOnly:        'Je Watch-Only Accounts',
   MYWAL_Viewing:          'Te Bekijken Wallet: ',
   MYWAL_Hide:             'Verberg Wallet Info',
-  MYWAL_Edit:             'Bewerk Wallet: ',
+  MYWAL_Edit_2:           'Bewerk Wallet: ',
   MYWAL_Name:             'Wallet Naam',
-  MYWAL_Content_1:        'Waarschuwing! Je staat op het punt om je Wallet te verwijderen.',
-  MYWAL_Content_2:        ' Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze Wallet voordat je het verwijderd.',
+  MYWAL_Content_1:        'Waarschuwing! Je staat op het punt om je Wallet te verwijderen: ',
+  MYWAL_Content_2:        'Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze Wallet voordat je het verwijderd.',
   MYWAL_Content_3:        'Als je deze Wallet in de toekomst nog wilt gebruiken met MyEtherWallet CX, zul je het met de hand moeten toevoegen door gebruik te maken van de prive sleutel/JSON en wachtwoord.',
 
   /* View Wallet Details */

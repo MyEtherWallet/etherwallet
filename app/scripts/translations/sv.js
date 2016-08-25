@@ -193,10 +193,10 @@ sv.data = {
   MYWAL_WatchOnly:        'Dina Bevakade Konton', /*Any better translation?*/
   MYWAL_Viewing:          'Visar Plånbok: ',
   MYWAL_Hide:             'Dölj Plånboks Info',
-  MYWAL_Edit:             'Ändra Plånbok: ',
+  MYWAL_Edit_2:           'Ändra Plånbok: ',
   MYWAL_Name:             'Plånboks Namn',
-  MYWAL_Content_1:        'Varning! Du är på väg att ta bort din plånbok.',
-  MYWAL_Content_2:        ' Kontrollera att du har **sparat den privata nyckeln/JSON filen och lösenordet** som tillhör den här plånboken innan du tar bort den.',
+  MYWAL_Content_1:        'Varning! Du är på väg att ta bort din plånbok: ',
+  MYWAL_Content_2:        'Kontrollera att du har **sparat den privata nyckeln / Keystore filen och lösenordet** som tillhör den här plånboken innan du tar bort den.',
   MYWAL_Content_3:        'Om du vill använda plånboken med MyEtherWallet CX i framtiden, måste du manuellt lägga till den med hjälp av den privata nyckeln / JSON filen och lösenordet.',
 
   /* View Wallet Details */
