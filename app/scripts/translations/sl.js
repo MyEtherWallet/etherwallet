@@ -4,6 +4,11 @@ var sl = function() {}
 sl.code = 'sl';
 sl.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Vaše Denarnice',
   NAV_AddWallet:        'Dodaj Denarnico',
@@ -22,6 +27,7 @@ sl.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Denarnico',
   x_Password:           'Geslo',
   x_Download:           'Prenesi',
   x_Address:            'Vaš Naslov',
@@ -57,7 +63,7 @@ sl.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -72,6 +78,7 @@ sl.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
   ADD_Radio_3:            'Paste/Type Your Private Key',
   ADD_Radio_4:            'Add an Account to Watch',
@@ -105,11 +112,11 @@ sl.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
+  SEND_TransferTotal:    'Send Entire Balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -193,10 +200,10 @@ sl.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the Keystore File & password and/or private key** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -307,7 +314,7 @@ sl.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',

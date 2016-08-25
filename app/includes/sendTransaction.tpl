@@ -11,11 +11,12 @@
 
     <!-- Sidebar -->
     <div class="col-sm-4">
+
       <h4 translate="sidebar_AccountInfo"> Account Information: </h4>
 
       <div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
 
-      <div translate="sidebar_AccountInfo"> Account Address: </div>
+      <div translate="sidebar_AccountAddr"> Account Address: </div>
       <ul class="account-info">
         <li class="mono wrap"> {{wallet.getChecksumAddressString()}} </li>
       </ul>
@@ -133,7 +134,7 @@
 
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h3 class="modal-title" id="myModalLabel" class="text-danger" translate="SENDModal_Title">Warning!</h3>
+              <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
             </div>
 
             <div class="modal-body">

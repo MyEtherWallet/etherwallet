@@ -4,6 +4,12 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Wyślij wszystkie dostępne środki',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
   NAV_AddWallet:        'Dodaj Portfel',
@@ -22,6 +28,7 @@ pl.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Portfel',
   x_Password:           'Hasło',
   x_Download:           'Pobierz',
   x_Address:            'Twój Adres',
@@ -57,7 +64,7 @@ pl.data = {
   sidebar_AccountBal:   'Stan Konta: ',
   sidebar_TokenBal:     'Stan Tokenów: ',
   sidebar_Equiv:        'Ekwiwalent: ',
-  sidebar_TransHistory: 'Historia Transakcji',
+  sidebar_TransHistory: 'Historia Transakcji: ',
   sidebar_DGDBal:       'Informacje o sprzedaży DGD:',
   sidebar_donation:     'MyEtherWallet jest darmową, otwartoźródłową usługą stworzoną dla Twojej prywatności i bezpieczeństwa. Im więcej darowizn zbierzemy, tym więcej czasu będziemy w stanie poświęcić na dodawanie nowych funkcjonalności, analizowanie informacji zwrotnych oraz spełnianie waszych oczekiwań. Jesteśmy jedynie dwójką ludzi starającą się zmienić świat. Pomóż nam!',
   sidebar_donate:       'Prześlij darowiznę',
@@ -72,6 +79,7 @@ pl.data = {
   ADD_Label_1:            'Co chciałbyś zrobić?',
   ADD_Radio_1:            'Generuj Nowy Portfel',
   ADD_Radio_2:            'Wybierz Plik Portfela (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Wybierz Plik Portfela: ',
   ADD_Radio_2_short:      'WYBIERZ PLIK PORTFELA...',
   ADD_Radio_3:            'Wklej/Wpisz Twój Klucz Prywatny',
   ADD_Radio_4:            'Dodaj Konto do Obserwacji',
@@ -105,11 +113,10 @@ pl.data = {
   SEND_amount_short:     'Kwota',
   SEND_custom:           'Inne',
   SEND_gas:              'Paliwo',
-  SEND_generate:         'Wygeneruj i Podpisz Transakcję',
+  SEND_generate:         'Wygeneruj Transakcję',
   SEND_raw:              'Surowa Transkacja',
   SEND_signed:           'Podpisana Transakcja',
   SEND_trans:            'Wyślij Transakcję',
-  SEND_TransferTotal:    'Wyślij wszystkie dostępne środki',
   SENDModal_Title:       'Ostrzeżenie! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Wysyłasz',
@@ -193,10 +200,10 @@ pl.data = {
   MYWAL_WatchOnly:        'Twoje Konta Tylko-do-Podglądu',
   MYWAL_Viewing:          'Podgląd Portfela: ',
   MYWAL_Hide:             'Ukryj Dane Portfela',
-  MYWAL_Edit:             'Edytuj Portfel: ',
+  MYWAL_Edit_2:           'Edytuj Portfel: ',
   MYWAL_Name:             'Nazwa Portfela',
-  MYWAL_Content_1:        'Uwaga! Zaraz usuniesz swój portfel.',
-  MYWAL_Content_2:        ' Upewnij się, że **zapisałeś klucz prywatny/plik JSON i hasło** powiązane z tym portfelem zanim je usuniesz.',
+  MYWAL_Content_1:        'Uwaga! Zaraz usuniesz swój portfel: ',
+  MYWAL_Content_2:        'Upewnij się, że **zapisałeś klucz prywatny/plik Keystore i hasło** powiązane z tym portfelem zanim je usuniesz.',
   MYWAL_Content_3:        'Jeśli będziesz chciał w przyszłości używać ten portfel ze swoim MyEtherWallet CX, będziesz musiał go ponownie dodać używając klucza prywatnego/pliku JSON i hasła.',
 
   /* View Wallet Details */

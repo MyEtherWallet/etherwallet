@@ -3,7 +3,6 @@
 
 var fs = require('fs');
 
-// less
 var gulp = require('gulp');
 var less = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer');
@@ -17,34 +16,16 @@ var uglify = require('gulp-uglify');
 var shell = require('gulp-shell');
 var fileinclude = require('gulp-file-include');
 
-// less vars
+
+
+
+// Compile and Minify Less / CSS Files
 var lessWatchFolder = './app/styles/less/**/*.less';
 var lessFile = './app/styles/less/etherwallet-master.less';
 var lessOutputFolder = './dist/css';
 var cxLessOutputFolder = './chrome-extension/css';
 var lessOutputFile = 'etherwallet-master.css';
 var lessOutputFileMin = 'etherwallet-master.min.css';
-
-//html Pages
-var htmlPages = "./app/layouts/*.html";
-var tplFiles = "./app/includes/*.tpl";
-
-//js files
-var jsFiles = "./app/scripts/*.js";
-var AllJsFiles = "./app/scripts/**/*.js";
-var mainjs = "./app/scripts/main.js";
-var staticjsFiles = "./app/scripts/staticJS/*.js";
-var staticjsOutputFile = 'etherwallet-static.min.js';
-
-//images
-var imagesFolder = "./app/images/**/*";
-var imagesOutputFolder = "./dist/images";
-var cxImagesOutputFolder = "./chrome-extension/images";
-
-//fonts
-var fontsFolder = "./app/fonts/*.*";
-var fontsOutputFolder = "./dist/fonts";
-var cxFontsOutputFolder = "./chrome-extension/fonts";
 
 gulp.task('less', function (cb) {
   return gulp
@@ -68,13 +49,16 @@ gulp.task('less', function (cb) {
       .pipe(notify('CX Styles Complete'));
 });
 
-gulp.task('browserify', shell.task([
-  'browserify '+mainjs+' -o dist/js/etherwallet-master.js'
-]));
 
-gulp.task('cxBrowserify', shell.task([
-  'browserify '+mainjs+' -o chrome-extension/js/etherwallet-master.js'
-]));
+
+
+
+// Compile and Minify JS Files
+var jsFiles = "./app/scripts/*.js";
+var AllJsFiles = "./app/scripts/**/*.js";
+var mainjs = "./app/scripts/main.js";
+var staticjsFiles = "./app/scripts/staticJS/*.js";
+var staticjsOutputFile = 'etherwallet-static.min.js';
 
 gulp.task('staticJS', function () {
   return gulp
@@ -105,6 +89,28 @@ gulp.task('cxMinJS',['cxBrowserify'],function () {
       .pipe(notify('CX MinJS'));
 });
 
+
+
+
+// Browserify
+gulp.task('browserify', shell.task([
+  'browserify '+mainjs+' -o dist/js/etherwallet-master.js'
+]));
+
+gulp.task('cxBrowserify', shell.task([
+  'browserify '+mainjs+' -o chrome-extension/js/etherwallet-master.js'
+]));
+
+
+
+
+
+
+// Copy Images
+var imagesFolder = "./app/images/**/*";
+var imagesOutputFolder = "./dist/images";
+var cxImagesOutputFolder = "./chrome-extension/images";
+
 gulp.task('copy-images', function() {
    gulp.src(imagesFolder)
    .pipe(gulp.dest(imagesOutputFolder))
@@ -113,6 +119,15 @@ gulp.task('copy-images', function() {
    .pipe(notify({message:'CX Images', onLast:true}));
 });
 
+
+
+
+
+// Copy Fonts
+var fontsFolder = "./app/fonts/*.*";
+var fontsOutputFolder = "./dist/fonts";
+var cxFontsOutputFolder = "./chrome-extension/fonts";
+
 gulp.task('copy-fonts', function() {
    gulp.src(fontsFolder)
    .pipe(gulp.dest(fontsOutputFolder))
@@ -120,6 +135,27 @@ gulp.task('copy-fonts', function() {
    .pipe(gulp.dest(cxFontsOutputFolder))
    .pipe(notify({message:'CX Fonts', onLast:true}));
 });
+
+
+
+
+
+// Copy CX Browser Action Files
+var cxSource = "./app/includes/browser_action/*.*";
+var cxDest = "./chrome-extension/browser_action";
+
+gulp.task('copy-cx', function() {
+   gulp.src( cxSource )
+   .pipe(gulp.dest( cxDest ))
+   .pipe(notify({message:'CX Browser Action Files', onLast:true}))
+});
+
+
+
+
+//html Pages
+var htmlPages = "./app/layouts/*.html";
+var tplFiles = "./app/includes/*.tpl";
 
 gulp.task('buildHTML', function () {
     gulp.src(htmlPages)
@@ -132,6 +168,11 @@ gulp.task('buildHTML', function () {
     .pipe(gulp.dest('./chrome-extension/'))
     .pipe(notify({message:'CX HTML Pages Complete', onLast:true}));
 });
+
+
+
+
+
 
 // Watch Tasks
 gulp.task('watchJS', function() {
@@ -151,9 +192,16 @@ gulp.task('watchPAGES', function() {
 gulp.task('watchTPL', function() {
     gulp.watch(tplFiles, ['buildHTML']);
 });
+gulp.task('watchCX', function() {
+    gulp.watch(cxSource, ['copy-cx']);
+});
 
 
-gulp.task('build', ['copy-images','copy-fonts','buildHTML','less', 'staticJS', 'browserify', 'cxBrowserify', 'minJS', 'cxMinJS']);
-gulp.task('watch', ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL']);
+
+
+
+
+gulp.task('build', ['buildHTML','less', 'staticJS', 'browserify', 'cxBrowserify', 'minJS', 'cxMinJS', 'copy-images','copy-fonts', 'copy-cx']);
+gulp.task('watch', ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX']);
 
 gulp.task('default', ['build', 'watch']);

@@ -4,6 +4,12 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Перевести весь доступный баланс',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Ваши кошельки',
   NAV_AddWallet:        'Добавить кошелёк',
@@ -22,6 +28,7 @@ ru.data = {
   NAV_Contact:          'Контакты',
 
   /* General */
+  x_Wallet:             'кошелёк',
   x_Password:           'Пароли',
   x_Download:           'Скачать',
   x_Address:            'Ваш адрес',
@@ -57,7 +64,7 @@ ru.data = {
   sidebar_AccountBal:   'Баланс счёта: ',
   sidebar_TokenBal:     'Балансы токенов: ',
   sidebar_Equiv:        'Эквивалентные значения: ',
-  sidebar_TransHistory: 'История транзакций',
+  sidebar_TransHistory: 'История транзакций: ',
   sidebar_DGDBal:       'Информация о распродаже DGD:',
   sidebar_donation:     'MyEtherWallet — это бесплатный сервис с открытым исходным кодом, заботящийся о Вашей безопасности и неприкосновенности личной жизни. Чем больше пожертвований мы получаем, тем больше времени мы проводим, добавляя новые возможности, прислушиваясь к Вашим пожеланиям и предоставляя Вам то, что Вам необходимо. Мы — всего лишь два человека, пытающиеся изменить Мир. Вы поможете нам?',
   sidebar_donate:       'Пожертвовать',
@@ -72,6 +79,7 @@ ru.data = {
   ADD_Label_1:            'Что Вы хотите сделать?',
   ADD_Radio_1:            'Создать новый кошелёк',
   ADD_Radio_2:            'Выбрать файл с кошельком (Keystore/JSON)',
+  ADD_Radio_2_alt:        'Выбрать файл с кошельком: ',
   ADD_Radio_2_short:      'ВЫБРАТЬ ФАЙЛ С КОШЕЛЬКОМ...',
   ADD_Radio_3:            'Вставить или ввести Ваш закрытый ключ',
   ADD_Radio_4:            'Добавить счёт в список слежения',
@@ -105,11 +113,10 @@ ru.data = {
   SEND_amount_short:     'Сумма',
   SEND_custom:           'Другое',
   SEND_gas:              'Газ',
-  SEND_generate:         'Сформировать подписанную транзакцию',
+  SEND_generate:         'Сформировать транзакцию',
   SEND_raw:              'Готовая транзакция',
   SEND_signed:           'Подписанная транзакция',
   SEND_trans:            'Отправить транзакцию',
-  SEND_TransferTotal:    'Перевести весь доступный баланс',
   SENDModal_Title:       'Внимание! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Вы собираетесь перевести',
@@ -193,10 +200,10 @@ ru.data = {
   MYWAL_WatchOnly:        'Список слежения',
   MYWAL_Viewing:          'Просматриваемый кошелёк: ',
   MYWAL_Hide:             'Скрыть информацию о кошельке',
-  MYWAL_Edit:             'Редактировать кошелёк: ',
+  MYWAL_Edit_2:           'Редактировать кошелёк: ',
   MYWAL_Name:             'Имя кошелька',
-  MYWAL_Content_1:        'Внимание! Вы собираетесь удалить кошелёк.',
-  MYWAL_Content_2:        ' Убедитесь, что Вы **сохранили закрытый ключ или файл JSON и пароль** от этого кошелька, прежде чем Вы удалите этот кошелёк.',
+  MYWAL_Content_1:        'Внимание! Вы собираетесь удалить кошелёк: ',
+  MYWAL_Content_2:        ' Убедитесь, что Вы **сохранили закрытый ключ или файл Keystore / JSON и пароль** от этого кошелька, прежде чем Вы удалите этот кошелёк.',
   MYWAL_Content_3:        'Если Вы планируете в будущем использовать этот кошелёк в MyEtherWallet CX, Вам надо будет вручную заново добавить его, указав закрытый ключ или файл JSON и пароль.',
 
   /* View Wallet Details */
@@ -307,7 +314,7 @@ ru.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',

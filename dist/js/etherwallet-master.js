@@ -1641,7 +1641,7 @@ var walletDecryptDrtv = function() {
     <div class="col-md-4 col-sm-6">\n \
       <!-- if selected upload -->\n \
       <div id="selectedUploadKey" ng-if="walletType==\'fileupload\'">\n \
-        <h4 translate="ADD_Radio_2">Select your wallet file:</h4>\n \
+        <h4 translate="ADD_Radio_2_alt">Select your wallet file:</h4>\n \
         <div class="form-group">\n \
           <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector"/>\n \
           <a class="file-input btn btn-block btn-default btn-file marg-v-sm" ng-click="openFileDialog()" translate="ADD_Radio_2_short">SELECT WALLET FILE... </a>\n \
@@ -1669,7 +1669,7 @@ var walletDecryptDrtv = function() {
     <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt">\n \
       <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt" translate="ADD_Label_6"> Access Your Wallet:</h4>\n \
       <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
-      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK WALLET</a></div>\n \
+      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
       <div ng-bind-html="decryptStatus"></div>\n \
     </div>\n \
   </section>'
@@ -2488,6 +2488,7 @@ bg.data = {
 
   /* General */
   x_Password:           'Password',
+  x_Wallet:             'Wallet',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'Save',
@@ -2509,10 +2510,11 @@ bg.data = {
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
 
@@ -2522,7 +2524,7 @@ bg.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -2537,15 +2539,16 @@ bg.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -2570,11 +2573,10 @@ bg.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -2583,6 +2585,7 @@ bg.data = {
   SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SEND_TransferTotal:    'Send Entire Balance',
 
   /* Tokens */
   TOKEN_Addr:            'Address: ',
@@ -2658,16 +2661,21 @@ bg.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* CX */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
   ERROR_1:             'Please enter valid amount.',
@@ -2772,7 +2780,7 @@ bg.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -2978,6 +2986,12 @@ var de = function() {}
 de.code = 'de';
 de.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Gesamten verfügbaren Saldo übertragen', // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Deine Wallets',
   NAV_AddWallet:        'Wallet hinzufügen',
@@ -2996,11 +3010,12 @@ de.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Wallet',
   x_Password:           'Passwort',
   x_Download:           'Herunterladen',
   x_Address:            'Deine Adresse',
-  x_Save:               'x_Sichern',
-  x_Cancel:             'x_Abbrechen',
+  x_Save:               'Sichern',
+  x_Cancel:             'Abbrechen',
   x_AddessDesc:         'Dies ist deine "Kontonummer" oder dein "Öffentlicher Schlüssel". Du benötigst diese Adresse, wenn dir jemand ETH senden möchte. Das Icon ist eine einfache Möglichkeit, die Adresse zu überprüfen',
   x_PrivKey:            'Privater Schlüssel (unverschlüsselt)',
   x_PrivKeyDesc:        'Dies ist die unverschlüsselte Textversion deines privaten Schlüssels, d. h. du benötigst kein Passwort. Wenn jemand über diesen unverschlüsselten privaten Schlüssel verfügt, hat er/sie ohne Passwort Zugang zu deinem Wallet. Es wird daher empfohlen, den privaten Schlüssel zu verschlüsseln.',
@@ -3031,7 +3046,7 @@ de.data = {
   sidebar_AccountBal:   'Kontostand: ',
   sidebar_TokenBal:     'Token Kontostand: ',
   sidebar_Equiv:        'Währungs-Gegenwerte: ',
-  sidebar_TransHistory: 'Transaktions-Historie',
+  sidebar_TransHistory: 'Transaktions-Historie: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet ist ein freier, quelloffener Service, der deiner Privatsphäre und Sicherheit gewidmet ist. Je mehr Spenden wir erhalten, desto mehr Zeit können wir investieren, um neue Funktionen zu programmieren, dein Feedback zu verarbeiten und dir zu geben, was du dir wünschst. Wir sind nur zwei Leute, die die Welt ändern möchten. Hilfst du uns dabei?',
   sidebar_donate:       'Spenden',
@@ -3046,6 +3061,7 @@ de.data = {
   ADD_Label_1:            'Was möchtest du tun?',
   ADD_Radio_1:            'Neues Wallet erzeugen',
   ADD_Radio_2:            'Wallet-Datei auswählen (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Wallet-Datei auswählen: ',
   ADD_Radio_2_short:      'WALLET-DATEI AUSWÄHLEN...',
   ADD_Radio_3:            'Kopiere/Tippe deinen privaten Schlüssel ein',
   ADD_Radio_4:            'Kontoadresse zur Beobachtung hinzufügen',
@@ -3063,7 +3079,7 @@ de.data = {
   GEN_Label_1:            'Gib ein starkes Passwort ein (mindestens 9 Zeichen)',
   GEN_Placeholder_1:      'BITTE VERGISS NICHT dieses Passwort an einem sicheren Ort zu notieren!',
   GEN_SuccessMsg:         'Erfolgreich! Dein Wallet wurde erzeugt.',
-  GEN_Warning:            '**Du benötigst deine Keystore/JSON-Datei & das Passwort oder den privaten Schlüssel**, um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite] (https://www.myetherwallet.com/#help) für weitere Informationen.',
+  GEN_Warning:            '**Du benötigst deine Keystore/JSON-Datei & das Passwort oder den privaten Schlüssel**, um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen.',
   GEN_Label_2:            'Sichere deine Keystore/JSON-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort!',
   GEN_Label_3:            'Sichere deine Kontoadresse.',
   GEN_Label_4:            'Drucke dein Papier-Wallet oder speichere einen QR-Code davon: (optional)',
@@ -3079,11 +3095,10 @@ de.data = {
   SEND_amount_short:     'Betrag',
   SEND_custom:           'Benutzerdefiniert',
   SEND_gas:              'Gas',
-  SEND_generate:         'Erzeuge signierte Transaktion',
+  SEND_generate:         'Erzeuge Transaktion',
   SEND_raw:              'Transaktion (Binärformat)',
   SEND_signed:           'Signierte Transaktion',
   SEND_trans:            'Sende Transaktion',
-  SEND_TransferTotal:    'Gesamten verfügbaren Saldo übertragen',
   SENDModal_Title:       'Achtung! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Du bist dabei, ',
@@ -3167,9 +3182,9 @@ de.data = {
   MYWAL_WatchOnly:        'Deine Watch-Only Konten',
   MYWAL_Viewing:          'Du siehst Wallet: ',
   MYWAL_Hide:             'Wallet Info verstecken',
-  MYWAL_Edit:             'Wallet bearbeiten: ',
+  MYWAL_Edit_2:           'Wallet bearbeiten: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Achtung! Du bist gerade dabei dein Wallet zu löschen!',
+  MYWAL_Content_1:        'Achtung! Du bist gerade dabei dein Wallet zu löschen: ',
   MYWAL_Content_2:        'Stelle sicher, dass du **die private key/JSON Datei und das Passwort** deines Wallets gespeichert hast, bevor du es löschst.',
   MYWAL_Content_3:        'Wenn du dieses Wallet in Zukunft mit MyEtherWallet CX verwenden willst, musst du es mittels der privaten key/JSON Datei und deinem Passwort manuell wieder hinzufügen.',
 
@@ -3496,6 +3511,12 @@ var el = function() {}
 el.code = 'el';
 el.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Μεταφορά όλου του υπάρχον υπολοίπου', // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Τα Πορτοφόλια σας',
   NAV_AddWallet:        'Προσθέστε Πορτοφόλι',
@@ -3514,6 +3535,7 @@ el.data = {
   NAV_Contact:          'Επικοινωνία',
 
   /* General */
+  x_Wallet:             'Πορτοφόλι',
   x_Password:           'Συνθηματικό',
   x_Download:           'Λήψη',
   x_Address:            'Η Διεύθυνσή Σας',
@@ -3549,7 +3571,7 @@ el.data = {
   sidebar_AccountBal:   'Υπόλοιπο Λογαριασμού: ',
   sidebar_TokenBal:     'Υπόλοιπο Token: ',
   sidebar_Equiv:        'Ισότιμες Αξίες: ',
-  sidebar_TransHistory: 'Ιστορία Συναλλαγών',
+  sidebar_TransHistory: 'Ιστορία Συναλλαγών: ',
   sidebar_DGDBal:       'Πληροφορίες για το DGD Crowdsale:',
   sidebar_donation:     'Το MyEtherWallet ειναι μια δωρεάν υπηρεσία ανοιχτού κωδικα αφοσιωμένη στην ασφάλεια και την προστασία των προσωπικών σας δεδομένων. Όσο περισότερες δωρεές λαμβάνουμε τοσο πιο πολύ χρόνο μπορουμε να αφοσιώνουμε στην δημιουργία καινούργιων λειτουργειών, στισ απαντήσεις στα σχόλιά σας και στο να σας δίνουμε ότι ζητάτε. Είμαστε απλώς δύο άτομα που προσπαθούμε να αλλάξουμε τον κόσμο. Θα μας βοηθήσετε?',
   sidebar_donate:       'Δωρεά',
@@ -3564,6 +3586,7 @@ el.data = {
   ADD_Label_1:            'Τι θα θέλατε να κάνετε?',
   ADD_Radio_1:            'Δημιουργία νέου πορτοφολιού',
   ADD_Radio_2:            'Επιλέξτε το αρχείο του πορτοφολιού σας (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Επιλέξτε το αρχείο του πορτοφολιού σας: ',
   ADD_Radio_2_short:      'ΕΠΙΛΕΞΤΕ ΑΡΧΕΙΟ ΠΟΡΤΟΦΟΛΙΟΥ...',
   ADD_Radio_3:            'Επικολήστε/Γράψτε το Κρυφό Κλειδί σας',
   ADD_Radio_4:            'Προσθέστε ενα λογαριασμό για επιτήρηση',
@@ -3597,11 +3620,10 @@ el.data = {
   SEND_amount_short:     'Ποσό',
   SEND_custom:           'Ειδική',
   SEND_gas:              'Gas',
-  SEND_generate:         'Δημιουργήστε Προ-Υπογεγραμμένη Συναλλαγή',
+  SEND_generate:         'Δημιουργήστε Συναλλαγή',
   SEND_raw:              'RAW Συναλλαγή',
   SEND_signed:           'Υπογεγραμμένη Συναλλαγή',
   SEND_trans:            'Αποστολή Συναλλαγής',
-  SEND_TransferTotal:    'Μεταφορά όλου του υπάρχον υπολοίπου',
   SENDModal_Title:       'Προειδοποίηση! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Πρόκειται να στείλετε',
@@ -3685,10 +3707,10 @@ el.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -3799,7 +3821,7 @@ el.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -4005,6 +4027,13 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Send Entire Balance', // updated to be shorter
+  x_Wallet:             'Wallet',
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -4058,7 +4087,7 @@ en.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -4073,15 +4102,16 @@ en.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -4106,11 +4136,10 @@ en.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -4194,10 +4223,10 @@ en.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -4308,7 +4337,7 @@ en.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -4514,6 +4543,11 @@ var es = function() {}
 es.code = 'es';
 es.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Tus Carteras',
   NAV_AddWallet:        'Añadir Cartera',
@@ -4532,6 +4566,7 @@ es.data = {
   NAV_Contact:          'Contacto',
 
   /* General */
+  x_Wallet:             'Cartera',
   x_Password:           'Contraseña',
   x_Download:           'Descargar',
   x_Address:            'Tu dirección',
@@ -4567,7 +4602,7 @@ es.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -4582,6 +4617,7 @@ es.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
   ADD_Radio_3:            'Paste/Type Your Private Key',
   ADD_Radio_4:            'Add an Account to Watch',
@@ -4615,11 +4651,11 @@ es.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
+  SEND_TransferTotal:    'Send Entire Balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -4703,10 +4739,10 @@ es.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -4817,7 +4853,7 @@ es.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -5017,7 +5053,7 @@ es.data = {
 module.exports = es;
 
 },{}],39:[function(require,module,exports){
-// English
+// Estonian
 'use strict';
 var et = function() {}
 et.code = 'et';
@@ -5042,6 +5078,7 @@ et.data = {
 
   /* General */
   x_Password:           'Password',
+  x_Wallet:             'Wallet',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'Save',
@@ -5063,10 +5100,11 @@ et.data = {
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
 
@@ -5076,7 +5114,7 @@ et.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -5091,15 +5129,16 @@ et.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -5124,11 +5163,10 @@ et.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -5137,6 +5175,7 @@ et.data = {
   SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SEND_TransferTotal:    'Send Entire Balance',
 
   /* Tokens */
   TOKEN_Addr:            'Address: ',
@@ -5212,16 +5251,21 @@ et.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* CX */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
   ERROR_1:             'Please enter valid amount.',
@@ -5326,7 +5370,7 @@ et.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -5532,6 +5576,12 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Transférer le solde total disponible',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
   NAV_AddWallet:        'Ajout de portefeuille',
@@ -5550,6 +5600,7 @@ fr.data = {
   NAV_Contact:          'Contact',
 
   /* General */
+  x_Wallet:             'Portefeuille',
   x_Password:           'Mot de passe',
   x_Download:           'Télécharger',
   x_Address:            'Votre adresse',
@@ -5584,7 +5635,7 @@ fr.data = {
   sidebar_AccountAddr:  'Addresse du compte : ',
   sidebar_AccountBal:   'Solde du compte : ',
   sidebar_Equiv:        'Valeur correspondante : ',
-  sidebar_TransHistory: 'Historique des transactions',
+  sidebar_TransHistory: 'Historique des transactions: ',
   sidebar_DGDBal:       'Informations sur la crowdsale DGD :',
   sidebar_donation:     'MyEtherWallet est un service gratuit et open source respectueux de votre vie privée et votre sécurité. Plus nous recevons de donations, plus nous dédions du temps au développement de nouvelles fonctions, à l\'écoute de vos retours et à vous fournir ce dont vous avez besoin. Nous ne sommes que deux personnes qui essayent de changer le monde. Aidez nous !',
   sidebar_donate:       'Faire une donation',
@@ -5599,7 +5650,8 @@ fr.data = {
   ADD_Label_1:            'Que voulez-vous faire ?',
   ADD_Radio_1:            'Générer un nouveau portefeuille',
   ADD_Radio_2:            'Choisissez le fichier de votre portefeuille (Keystore / JSON)',
-  ADD_Radio_2_short:      'SELECTIONNER LE FICHIER DU PORTEFEUILLE...',
+  ADD_Radio_2_alt:        'Choisissez le fichier de portefeuille: ',
+  ADD_Radio_2_short:      'CHOISISSEZ LE FICHIER DU PORTEFEUILLE...',
   ADD_Radio_3:            'Collez/saisissez votre clé privée',
   ADD_Radio_4:            'Ajoutez un compte',
   ADD_Label_2:            'Nommez votre compte :',
@@ -5632,11 +5684,10 @@ fr.data = {
   SEND_amount_short:     'Montant',
   SEND_custom:           'Spécifique',
   SEND_gas:              'Gaz',
-  SEND_generate:         'Générer la transaction signée',
+  SEND_generate:         'Générer la transaction',
   SEND_raw:              'Transaction brute',
   SEND_signed:           'Transaction signée',
   SEND_trans:            'Envoyer la transaction',
-  SEND_TransferTotal:    'Transférer le solde total disponible',
   SENDModal_Title:       'Attention ! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Vous êtes sur le point d\'envoyer',
@@ -5720,9 +5771,9 @@ fr.data = {
   MYWAL_WatchOnly:        'Vos comptes en affichage uniquement',
   MYWAL_Viewing:          'Affichage des portefeuilles : ',
   MYWAL_Hide:             'Cacher les informations sur le portefeuille',
-  MYWAL_Edit:             'Modifier le portefeuille : ',
+  MYWAL_Edit_2:           'Modifier le portefeuille : ',
   MYWAL_Name:             'Nom du portefeuille',
-  MYWAL_Content_1:        'Attention ! Vous êtes sur le point de supprimer votre portefeuille.',
+  MYWAL_Content_1:        'Attention ! Vous êtes sur le point de supprimer votre portefeuille: ',
   MYWAL_Content_2:        'Assurez-vous d\'avoir bien **sauvegardé la clé privée/ fichier JSON et le mot de passe** associé à ce portefeuille avant de le supprimer.',
   MYWAL_Content_3:        'Si vous voulez utiliser ce portefeuille avec MyEtherWallet CX à l\'avenir, vous devrez le rajouter manuellement en utilisant la clé privée/fichier JSON et le mot de passe.',
 
@@ -5834,7 +5885,7 @@ fr.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -6059,6 +6110,7 @@ he.data = {
 
   /* General */
   x_Password:           'Password',
+  x_Wallet:             'Wallet',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'Save',
@@ -6080,10 +6132,11 @@ he.data = {
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
 
@@ -6093,7 +6146,7 @@ he.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -6108,15 +6161,16 @@ he.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -6141,11 +6195,10 @@ he.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -6154,6 +6207,7 @@ he.data = {
   SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SEND_TransferTotal:    'Send Entire Balance',
 
   /* Tokens */
   TOKEN_Addr:            'Address: ',
@@ -6229,16 +6283,21 @@ he.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* CX */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
   ERROR_1:             'Please enter valid amount.',
@@ -6343,7 +6402,7 @@ he.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -6568,6 +6627,7 @@ id.data = {
 
   /* General */
   x_Password:           'Password',
+  x_Wallet:             'Wallet',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'Save',
@@ -6589,10 +6649,11 @@ id.data = {
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
 
@@ -6602,7 +6663,7 @@ id.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -6617,15 +6678,16 @@ id.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -6650,11 +6712,10 @@ id.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -6663,6 +6724,7 @@ id.data = {
   SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SEND_TransferTotal:    'Send Entire Balance',
 
   /* Tokens */
   TOKEN_Addr:            'Address: ',
@@ -6738,16 +6800,21 @@ id.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* CX */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
   ERROR_1:             'Please enter valid amount.',
@@ -6852,7 +6919,7 @@ id.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -7058,6 +7125,12 @@ var it = function() {}
 it.code = 'it';
 it.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Trasferisci tutto il saldo disponibile', // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
   NAV_AddWallet:        'Aggiungi portafoglio',
@@ -7076,6 +7149,7 @@ it.data = {
   NAV_Contact:          'Contatti',
 
   /* General */
+  x_Wallet:             'Portafoglio',
   x_Password:           'Password',
   x_Download:           'Download',
   x_Address:            'Il tuo indirizzo',
@@ -7111,7 +7185,7 @@ it.data = {
   sidebar_AccountBal:   'Saldo conto: ',
   sidebar_TokenBal:     'Saldo token: ',
   sidebar_Equiv:        'Valori equivalenti: ',
-  sidebar_TransHistory: 'Storico transazioni',
+  sidebar_TransHistory: 'Storico transazioni: ',
   sidebar_DGDBal:       'Informazioni crowdsale DGD:',
   sidebar_donation:     'MyEtherWallet è un servizio gratuito e open-source votato alla tua privacy e sicurezza. Più donazioni riceviamo, più tempo dedichiamo a creare nuove funzionalità, considerare i tuoi commenti, e darti ciò che vuoi. Siamo solo due persone che provano a cambiare il mondo. Ci aiuti?',
   sidebar_donate:       'Dona',
@@ -7126,6 +7200,7 @@ it.data = {
   ADD_Label_1:            'Cosa vuoi fare?',
   ADD_Radio_1:            'Genera un nuovo portafoglio',
   ADD_Radio_2:            'Seleziona il file del tuo portafoglio (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Seleziona file portafoglio: ',
   ADD_Radio_2_short:      'SELEZIONA FILE PORTAFOGLIO...',
   ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata',
   ADD_Radio_4:            'Aggiungi un conto da osservare',
@@ -7159,11 +7234,10 @@ it.data = {
   SEND_amount_short:     'Importo',
   SEND_custom:           'Altro',
   SEND_gas:              'Gas',
-  SEND_generate:         'Genera transazione firmata',
+  SEND_generate:         'Genera transazione',
   SEND_raw:              'Transazione grezza',
   SEND_signed:           'Transazione firmata',
   SEND_trans:            'Invia transazione',
-  SEND_TransferTotal:    'Trasferisci tutto il saldo disponibile',
   SENDModal_Title:       'Attenzione! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Stai per inviare',
@@ -7247,10 +7321,10 @@ it.data = {
   MYWAL_WatchOnly:        'I tuoi conti osservati',
   MYWAL_Viewing:          'Dettagli portafoglio: ',
   MYWAL_Hide:             'Nascondi informazioni portafoglio',
-  MYWAL_Edit:             'Modifica portafoglio: ',
+  MYWAL_Edit_2:           'Modifica portafoglio: ',
   MYWAL_Name:             'Nome portafoglio',
-  MYWAL_Content_1:        'Attenzione! Stai per rimuovere il tuo portafoglio.',
-  MYWAL_Content_2:        ' Assicurati di aver **salvato la chiave privata/il file JSON e la password** associati a questo portafoglio prima di rimuoverlo.',
+  MYWAL_Content_1:        'Attenzione! Stai per rimuovere il tuo portafoglio: ',
+  MYWAL_Content_2:        'Assicurati di aver **salvato la chiave privata/il file JSON e la password** associati a questo portafoglio prima di rimuoverlo.',
   MYWAL_Content_3:        'Se vorrai utilizzare questo portafoglio con MyEtherWallet CX in futuro, dovrai ri-aggiungerlo manualmente tramite la chiave privata/JSON e password.',
 
   /* View Wallet Details */
@@ -7361,7 +7435,7 @@ it.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -7586,6 +7660,7 @@ ko.data = {
 
   /* General */
   x_Password:           'Password',
+  x_Wallet:             'Wallet',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'Save',
@@ -7607,10 +7682,11 @@ ko.data = {
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
 
@@ -7620,7 +7696,7 @@ ko.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -7635,15 +7711,16 @@ ko.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
-  ADD_Label_3:            'Your file is encrypted. Please enter the password: ',
+  ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -7668,11 +7745,10 @@ ko.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -7681,6 +7757,7 @@ ko.data = {
   SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SEND_TransferTotal:    'Send Entire Balance',
 
   /* Tokens */
   TOKEN_Addr:            'Address: ',
@@ -7756,16 +7833,21 @@ ko.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* CX */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
   ERROR_1:             'Please enter valid amount.',
@@ -7870,7 +7952,7 @@ ko.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -8076,7 +8158,12 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* Navigation*/
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Totaal beschikbare saldo versturen',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -8095,6 +8182,7 @@ nl.data = {
   NAV_Contact:          'Contact',
 
   /* General */
+  x_Wallet:             'Wallet',
   x_Password:           'Wachtwoord',
   x_Download:           'Download',
   x_Address:            'Je Adres',
@@ -8130,7 +8218,7 @@ nl.data = {
   sidebar_AccountBal:   'Account Saldo: ',
   sidebar_TokenBal:     'Token Saldo: ',
   sidebar_Equiv:        'Equivalente Waarde: ',
-  sidebar_TransHistory: 'Transactie Geschiedenis',
+  sidebar_TransHistory: 'Transactie Geschiedenis: ',
   sidebar_DGDBal:       'DGD Crowdsale Informatie:',
   sidebar_donation:     'MyEtherWallet is een gratis, open-source service toegewijd aan  jouw privacy en beveiliging. De meer donaties we ontvangen, de meer tijd we zullen spenderen aan nieuwe functies, aan de hand van jouw terugkoppeling, en we je kunnen geven wat jij wilt. Wij zijn slechts twee mensen die de wereld een stukje beter willen maken. Help jij mee?',
   sidebar_donate:       'Doneer',
@@ -8145,6 +8233,7 @@ nl.data = {
   ADD_Label_1:            'Wat wil je doen?',
   ADD_Radio_1:            'Genereer nieuwe Wallet',
   ADD_Radio_2:            'Selecteer Jouw Wallet Bestand (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Selecteer Wallet Bestand: ',
   ADD_Radio_2_short:      'SELECTEER WALLET BESTAND...',
   ADD_Radio_3:            'Plak/Type JOUW PRIVE SLEUTEL',
   ADD_Radio_4:            'Voeg een te bekijken account toe',
@@ -8178,11 +8267,10 @@ nl.data = {
   SEND_amount_short:     'Bedrag',
   SEND_custom:           'Aangepast',
   SEND_gas:              'Gas',
-  SEND_generate:         'Genereer gesigneerde Transactie',
+  SEND_generate:         'Genereer Transactie',
   SEND_raw:              'Raw Transactie',
   SEND_signed:           'Gesigneerde Transactie',
   SEND_trans:            'Verstuur Transactie',
-  SEND_TransferTotal:    'Totaal beschikbare saldo versturen',
   SENDModal_Title:       'Waarschuwing! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Je staat op het punt om het volgende bedrag over te maken: ',
@@ -8266,10 +8354,10 @@ nl.data = {
   MYWAL_WatchOnly:        'Je Watch-Only Accounts',
   MYWAL_Viewing:          'Te Bekijken Wallet: ',
   MYWAL_Hide:             'Verberg Wallet Info',
-  MYWAL_Edit:             'Bewerk Wallet: ',
+  MYWAL_Edit_2:           'Bewerk Wallet: ',
   MYWAL_Name:             'Wallet Naam',
-  MYWAL_Content_1:        'Waarschuwing! Je staat op het punt om je Wallet te verwijderen.',
-  MYWAL_Content_2:        ' Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze Wallet voordat je het verwijderd.',
+  MYWAL_Content_1:        'Waarschuwing! Je staat op het punt om je Wallet te verwijderen: ',
+  MYWAL_Content_2:        'Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze Wallet voordat je het verwijderd.',
   MYWAL_Content_3:        'Als je deze Wallet in de toekomst nog wilt gebruiken met MyEtherWallet CX, zul je het met de hand moeten toevoegen door gebruik te maken van de prive sleutel/JSON en wachtwoord.',
 
   /* View Wallet Details */
@@ -8380,7 +8468,7 @@ nl.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -8586,6 +8674,12 @@ var no = function() {}
 no.code = 'no';
 no.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Overfør total tilgjengelig saldo',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
   NAV_AddWallet:        'Legg til lommebok',
@@ -8604,6 +8698,7 @@ no.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Lommebok',
   x_Password:           'Passord',
   x_Download:           'Last ned',
   x_Address:            'Din adresse',
@@ -8639,7 +8734,7 @@ no.data = {
   sidebar_AccountBal:   'Saldo på konto: ',
   sidebar_TokenBal:     'Pollett-saldo: ',
   sidebar_Equiv:        'Tilsvarende verdier: ',
-  sidebar_TransHistory: 'Transaksjonshistorikk',
+  sidebar_TransHistory: 'Transaksjonshistorikk: ',
   sidebar_DGDBal:       'DGD Crowdsale informasjon:',
   sidebar_donation:     'MyEtherWallet er en gratis åpen-kildekode-service som er dedikert til å ivareta ditt personvern og din sikkerhet. Jo flere donasjoner vi får, jo mer tid kan vi bruke til å lage nye funksjoner, lytte til tilbakemeldinger, og gi deg det du ønsker. Vi er bare to personer som prøver å forandre verden. Vil du hjelpe oss?',
   sidebar_donate:       'Doner',
@@ -8654,6 +8749,7 @@ no.data = {
   ADD_Label_1:            'Hva ønsker du å gjøre?',
   ADD_Radio_1:            'Opprett ny lommebok',
   ADD_Radio_2:            'Velg lommebok-filen din (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Velg lommebok-fil: ',
   ADD_Radio_2_short:      'VELG LOMMEBOK-FIL...',
   ADD_Radio_3:            'Lim/skriv inn din private nøkkel',
   ADD_Radio_4:            'Legg til en konto for overvåkning',
@@ -8687,11 +8783,10 @@ no.data = {
   SEND_amount_short:     'Beløp',
   SEND_custom:           'Tilpasning',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generer signert transaksjon',
+  SEND_generate:         'Generer transaksjon',
   SEND_raw:              'Rå-transaksjon',
   SEND_signed:           'Signert transaksjon',
   SEND_trans:            'Send transaksjon',
-  SEND_TransferTotal:    'Overfør total tilgjengelig saldo',
   SENDModal_Title:       'Advarsel! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Du er i ferd med å sende',
@@ -8775,10 +8870,10 @@ no.data = {
   MYWAL_WatchOnly:        'Dine "bare-se"-kontoer',
   MYWAL_Viewing:          'Viser lommebok: ',
   MYWAL_Hide:             'Skjul lommebok-info',
-  MYWAL_Edit:             'Rediger lommebok: ',
+  MYWAL_Edit_2:           'Rediger lommebok: ',
   MYWAL_Name:             'Lommeboknavn',
-  MYWAL_Content_1:        'Advarsel! Du er i ferd med å fjerne lommeboken din.',
-  MYWAL_Content_2:        ' Vær sikker på at du har **lagret den private nøkkelen/JSON-filen og passordet** tilknyttet denne lommeboken før du fjerner den.',
+  MYWAL_Content_1:        'Advarsel! Du er i ferd med å fjerne lommeboken din: ',
+  MYWAL_Content_2:        'Vær sikker på at du har **lagret den private nøkkelen/JSON-filen og passordet** tilknyttet denne lommeboken før du fjerner den.',
   MYWAL_Content_3:        'Hvis du ønsker å bruke denne lommeboken med din MyEtherWallet Chrome-utvidelse i fremtiden, må du manuelt legge den til igjen ved å bruke den private nøkkelen/JSON og passord.',
 
   /* View Wallet Details */
@@ -8889,7 +8984,7 @@ no.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -9095,6 +9190,12 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Wyślij wszystkie dostępne środki',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
   NAV_AddWallet:        'Dodaj Portfel',
@@ -9113,6 +9214,7 @@ pl.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Portfel',
   x_Password:           'Hasło',
   x_Download:           'Pobierz',
   x_Address:            'Twój Adres',
@@ -9148,7 +9250,7 @@ pl.data = {
   sidebar_AccountBal:   'Stan Konta: ',
   sidebar_TokenBal:     'Stan Tokenów: ',
   sidebar_Equiv:        'Ekwiwalent: ',
-  sidebar_TransHistory: 'Historia Transakcji',
+  sidebar_TransHistory: 'Historia Transakcji: ',
   sidebar_DGDBal:       'Informacje o sprzedaży DGD:',
   sidebar_donation:     'MyEtherWallet jest darmową, otwartoźródłową usługą stworzoną dla Twojej prywatności i bezpieczeństwa. Im więcej darowizn zbierzemy, tym więcej czasu będziemy w stanie poświęcić na dodawanie nowych funkcjonalności, analizowanie informacji zwrotnych oraz spełnianie waszych oczekiwań. Jesteśmy jedynie dwójką ludzi starającą się zmienić świat. Pomóż nam!',
   sidebar_donate:       'Prześlij darowiznę',
@@ -9163,6 +9265,7 @@ pl.data = {
   ADD_Label_1:            'Co chciałbyś zrobić?',
   ADD_Radio_1:            'Generuj Nowy Portfel',
   ADD_Radio_2:            'Wybierz Plik Portfela (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Wybierz Plik Portfela: ',
   ADD_Radio_2_short:      'WYBIERZ PLIK PORTFELA...',
   ADD_Radio_3:            'Wklej/Wpisz Twój Klucz Prywatny',
   ADD_Radio_4:            'Dodaj Konto do Obserwacji',
@@ -9196,11 +9299,10 @@ pl.data = {
   SEND_amount_short:     'Kwota',
   SEND_custom:           'Inne',
   SEND_gas:              'Paliwo',
-  SEND_generate:         'Wygeneruj i Podpisz Transakcję',
+  SEND_generate:         'Wygeneruj Transakcję',
   SEND_raw:              'Surowa Transkacja',
   SEND_signed:           'Podpisana Transakcja',
   SEND_trans:            'Wyślij Transakcję',
-  SEND_TransferTotal:    'Wyślij wszystkie dostępne środki',
   SENDModal_Title:       'Ostrzeżenie! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Wysyłasz',
@@ -9284,10 +9386,10 @@ pl.data = {
   MYWAL_WatchOnly:        'Twoje Konta Tylko-do-Podglądu',
   MYWAL_Viewing:          'Podgląd Portfela: ',
   MYWAL_Hide:             'Ukryj Dane Portfela',
-  MYWAL_Edit:             'Edytuj Portfel: ',
+  MYWAL_Edit_2:           'Edytuj Portfel: ',
   MYWAL_Name:             'Nazwa Portfela',
-  MYWAL_Content_1:        'Uwaga! Zaraz usuniesz swój portfel.',
-  MYWAL_Content_2:        ' Upewnij się, że **zapisałeś klucz prywatny/plik JSON i hasło** powiązane z tym portfelem zanim je usuniesz.',
+  MYWAL_Content_1:        'Uwaga! Zaraz usuniesz swój portfel: ',
+  MYWAL_Content_2:        'Upewnij się, że **zapisałeś klucz prywatny/plik Keystore i hasło** powiązane z tym portfelem zanim je usuniesz.',
   MYWAL_Content_3:        'Jeśli będziesz chciał w przyszłości używać ten portfel ze swoim MyEtherWallet CX, będziesz musiał go ponownie dodać używając klucza prywatnego/pliku JSON i hasła.',
 
   /* View Wallet Details */
@@ -9604,6 +9706,8 @@ var pt = function() {}
 pt.code = 'pt';
 pt.data = {
 
+
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -9623,6 +9727,7 @@ pt.data = {
 
   /* General */
   x_Password:           'Password',
+  x_Wallet:             'Wallet',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'Save',
@@ -9644,10 +9749,11 @@ pt.data = {
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
 
@@ -9657,7 +9763,7 @@ pt.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -9672,15 +9778,16 @@ pt.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -9705,11 +9812,10 @@ pt.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -9718,6 +9824,7 @@ pt.data = {
   SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SEND_TransferTotal:    'Send Entire Balance',
 
   /* Tokens */
   TOKEN_Addr:            'Address: ',
@@ -9793,16 +9900,21 @@ pt.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* CX */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
   ERROR_1:             'Please enter valid amount.',
@@ -9907,7 +10019,7 @@ pt.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -10113,6 +10225,8 @@ var ptbr = function() {}
 ptbr.code = 'ptbr';
 ptbr.data = {
 
+
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -10132,6 +10246,7 @@ ptbr.data = {
 
   /* General */
   x_Password:           'Password',
+  x_Wallet:             'Wallet',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'Save',
@@ -10153,10 +10268,11 @@ ptbr.data = {
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
 
@@ -10166,7 +10282,7 @@ ptbr.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -10181,15 +10297,16 @@ ptbr.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -10214,11 +10331,10 @@ ptbr.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -10227,6 +10343,7 @@ ptbr.data = {
   SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SEND_TransferTotal:    'Send Entire Balance',
 
   /* Tokens */
   TOKEN_Addr:            'Address: ',
@@ -10302,16 +10419,21 @@ ptbr.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* CX */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
   ERROR_1:             'Please enter valid amount.',
@@ -10416,7 +10538,7 @@ ptbr.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -10622,6 +10744,12 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Перевести весь доступный баланс',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Ваши кошельки',
   NAV_AddWallet:        'Добавить кошелёк',
@@ -10640,6 +10768,7 @@ ru.data = {
   NAV_Contact:          'Контакты',
 
   /* General */
+  x_Wallet:             'кошелёк',
   x_Password:           'Пароли',
   x_Download:           'Скачать',
   x_Address:            'Ваш адрес',
@@ -10675,7 +10804,7 @@ ru.data = {
   sidebar_AccountBal:   'Баланс счёта: ',
   sidebar_TokenBal:     'Балансы токенов: ',
   sidebar_Equiv:        'Эквивалентные значения: ',
-  sidebar_TransHistory: 'История транзакций',
+  sidebar_TransHistory: 'История транзакций: ',
   sidebar_DGDBal:       'Информация о распродаже DGD:',
   sidebar_donation:     'MyEtherWallet — это бесплатный сервис с открытым исходным кодом, заботящийся о Вашей безопасности и неприкосновенности личной жизни. Чем больше пожертвований мы получаем, тем больше времени мы проводим, добавляя новые возможности, прислушиваясь к Вашим пожеланиям и предоставляя Вам то, что Вам необходимо. Мы — всего лишь два человека, пытающиеся изменить Мир. Вы поможете нам?',
   sidebar_donate:       'Пожертвовать',
@@ -10690,6 +10819,7 @@ ru.data = {
   ADD_Label_1:            'Что Вы хотите сделать?',
   ADD_Radio_1:            'Создать новый кошелёк',
   ADD_Radio_2:            'Выбрать файл с кошельком (Keystore/JSON)',
+  ADD_Radio_2_alt:        'Выбрать файл с кошельком: ',
   ADD_Radio_2_short:      'ВЫБРАТЬ ФАЙЛ С КОШЕЛЬКОМ...',
   ADD_Radio_3:            'Вставить или ввести Ваш закрытый ключ',
   ADD_Radio_4:            'Добавить счёт в список слежения',
@@ -10723,11 +10853,10 @@ ru.data = {
   SEND_amount_short:     'Сумма',
   SEND_custom:           'Другое',
   SEND_gas:              'Газ',
-  SEND_generate:         'Сформировать подписанную транзакцию',
+  SEND_generate:         'Сформировать транзакцию',
   SEND_raw:              'Готовая транзакция',
   SEND_signed:           'Подписанная транзакция',
   SEND_trans:            'Отправить транзакцию',
-  SEND_TransferTotal:    'Перевести весь доступный баланс',
   SENDModal_Title:       'Внимание! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Вы собираетесь перевести',
@@ -10811,10 +10940,10 @@ ru.data = {
   MYWAL_WatchOnly:        'Список слежения',
   MYWAL_Viewing:          'Просматриваемый кошелёк: ',
   MYWAL_Hide:             'Скрыть информацию о кошельке',
-  MYWAL_Edit:             'Редактировать кошелёк: ',
+  MYWAL_Edit_2:           'Редактировать кошелёк: ',
   MYWAL_Name:             'Имя кошелька',
-  MYWAL_Content_1:        'Внимание! Вы собираетесь удалить кошелёк.',
-  MYWAL_Content_2:        ' Убедитесь, что Вы **сохранили закрытый ключ или файл JSON и пароль** от этого кошелька, прежде чем Вы удалите этот кошелёк.',
+  MYWAL_Content_1:        'Внимание! Вы собираетесь удалить кошелёк: ',
+  MYWAL_Content_2:        ' Убедитесь, что Вы **сохранили закрытый ключ или файл Keystore / JSON и пароль** от этого кошелька, прежде чем Вы удалите этот кошелёк.',
   MYWAL_Content_3:        'Если Вы планируете в будущем использовать этот кошелёк в MyEtherWallet CX, Вам надо будет вручную заново добавить его, указав закрытый ключ или файл JSON и пароль.',
 
   /* View Wallet Details */
@@ -10925,7 +11054,7 @@ ru.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -11131,6 +11260,8 @@ var sk = function() {}
 sk.code = 'sk';
 sk.data = {
 
+
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -11150,6 +11281,7 @@ sk.data = {
 
   /* General */
   x_Password:           'Password',
+  x_Wallet:             'Wallet',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'Save',
@@ -11171,10 +11303,11 @@ sk.data = {
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
 
@@ -11184,7 +11317,7 @@ sk.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -11199,15 +11332,16 @@ sk.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -11232,11 +11366,10 @@ sk.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -11245,6 +11378,7 @@ sk.data = {
   SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SEND_TransferTotal:    'Send Entire Balance',
 
   /* Tokens */
   TOKEN_Addr:            'Address: ',
@@ -11320,16 +11454,21 @@ sk.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* CX */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
   ERROR_1:             'Please enter valid amount.',
@@ -11434,7 +11573,7 @@ sk.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -11640,6 +11779,11 @@ var sl = function() {}
 sl.code = 'sl';
 sl.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Vaše Denarnice',
   NAV_AddWallet:        'Dodaj Denarnico',
@@ -11658,6 +11802,7 @@ sl.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Denarnico',
   x_Password:           'Geslo',
   x_Download:           'Prenesi',
   x_Address:            'Vaš Naslov',
@@ -11693,7 +11838,7 @@ sl.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -11708,6 +11853,7 @@ sl.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
   ADD_Radio_3:            'Paste/Type Your Private Key',
   ADD_Radio_4:            'Add an Account to Watch',
@@ -11741,11 +11887,11 @@ sl.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
+  SEND_TransferTotal:    'Send Entire Balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -11829,10 +11975,10 @@ sl.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the Keystore File & password and/or private key** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -11943,7 +12089,7 @@ sl.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -12149,6 +12295,11 @@ var sv = function() {}
 sv.code = 'sv';
 sv.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Dina Plånböcker',
   NAV_AddWallet:        'Lägg till Plånbok',
@@ -12167,6 +12318,7 @@ sv.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Plånbok',
   x_Password:           'Lösenord',
   x_Download:           'Ladda Ner',
   x_Address:            'Din Adress',
@@ -12202,7 +12354,7 @@ sv.data = {
   sidebar_AccountBal:   'Konto Saldo: ',
   sidebar_TokenBal:     'Token Saldon: ',
   sidebar_Equiv:        'Motsvarande Värden: ',
-  sidebar_TransHistory: 'Transaktionshistorik',
+  sidebar_TransHistory: 'Transaktionshistorik: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet är en gratis service, med öppen källkod inriktade på din integritet och säkerhet. Ju fler donationer vi får, desto mer tid lägger vi på att skapa nya funktioner, lyssna på feedback, och ge dig vad du vill. Vi är bara två personer som försöker förändra världen. Hjälp oss?',
   sidebar_donate:       'Donera',
@@ -12217,6 +12369,7 @@ sv.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
   ADD_Radio_3:            'Paste/Type Your Private Key',
   ADD_Radio_4:            'Add an Account to Watch',
@@ -12250,11 +12403,11 @@ sv.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
+  SEND_TransferTotal:    'Send Entire Balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -12338,10 +12491,10 @@ sv.data = {
   MYWAL_WatchOnly:        'Dina Bevakade Konton', /*Any better translation?*/
   MYWAL_Viewing:          'Visar Plånbok: ',
   MYWAL_Hide:             'Dölj Plånboks Info',
-  MYWAL_Edit:             'Ändra Plånbok: ',
+  MYWAL_Edit_2:           'Ändra Plånbok: ',
   MYWAL_Name:             'Plånboks Namn',
-  MYWAL_Content_1:        'Varning! Du är på väg att ta bort din plånbok.',
-  MYWAL_Content_2:        ' Kontrollera att du har **sparat den privata nyckeln/JSON filen och lösenordet** som tillhör den här plånboken innan du tar bort den.',
+  MYWAL_Content_1:        'Varning! Du är på väg att ta bort din plånbok: ',
+  MYWAL_Content_2:        'Kontrollera att du har **sparat den privata nyckeln / Keystore filen och lösenordet** som tillhör den här plånboken innan du tar bort den.',
   MYWAL_Content_3:        'Om du vill använda plånboken med MyEtherWallet CX i framtiden, måste du manuellt lägga till den med hjälp av den privata nyckeln / JSON filen och lösenordet.',
 
   /* View Wallet Details */
@@ -12452,7 +12605,7 @@ sv.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the Send Entire Balance link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -12658,6 +12811,11 @@ var tr = function() {}
 tr.code = 'tr';
 tr.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Cüzdanin',
   NAV_AddWallet:        'Cüzdan ekle',
@@ -12676,6 +12834,7 @@ tr.data = {
   NAV_Contact:          'Contact',
 
   /* General */
+  x_Wallet:             'Cüzdan',
   x_Password:           'Password',
   x_Download:           'Download',
   x_Address:            'Your Address',
@@ -12711,7 +12870,7 @@ tr.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History :',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -12726,6 +12885,7 @@ tr.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
   ADD_Radio_3:            'Paste/Type Your Private Key',
   ADD_Radio_4:            'Add an Account to Watch',
@@ -12759,11 +12919,11 @@ tr.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
+  SEND_TransferTotal:   'Send Entire Balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -12847,10 +13007,10 @@ tr.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the Keystore File & password and/or private key ** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -12961,7 +13121,7 @@ tr.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -13227,6 +13387,8 @@ var uk = function() {}
 uk.code = 'uk';
 uk.data = {
 
+
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -13246,6 +13408,7 @@ uk.data = {
 
   /* General */
   x_Password:           'Password',
+  x_Wallet:             'Wallet',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'Save',
@@ -13267,10 +13430,11 @@ uk.data = {
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
 
@@ -13280,7 +13444,7 @@ uk.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -13295,15 +13459,16 @@ uk.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -13328,11 +13493,10 @@ uk.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -13341,6 +13505,7 @@ uk.data = {
   SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SEND_TransferTotal:    'Send Entire Balance',
 
   /* Tokens */
   TOKEN_Addr:            'Address: ',
@@ -13416,16 +13581,21 @@ uk.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* CX */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
   ERROR_1:             'Please enter valid amount.',
@@ -13530,7 +13700,7 @@ uk.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
@@ -13736,6 +13906,8 @@ var vi = function() {}
 vi.code = 'vi';
 vi.data = {
 
+
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -13755,6 +13927,7 @@ vi.data = {
 
   /* General */
   x_Password:           'Password',
+  x_Wallet:             'Wallet',
   x_Download:           'Download',
   x_Address:            'Your Address',
   x_Save:               'Save',
@@ -13776,10 +13949,11 @@ vi.data = {
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
 
@@ -13789,7 +13963,7 @@ vi.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -13804,15 +13978,16 @@ vi.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -13837,11 +14012,10 @@ vi.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -13850,6 +14024,7 @@ vi.data = {
   SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SEND_TransferTotal:    'Send Entire Balance',
 
   /* Tokens */
   TOKEN_Addr:            'Address: ',
@@ -13925,16 +14100,21 @@ vi.data = {
   MYWAL_WatchOnly:        'Your Watch-Only Accounts',
   MYWAL_Viewing:          'Viewing Wallet: ',
   MYWAL_Hide:             'Hide Wallet Info',
-  MYWAL_Edit:             'Edit Wallet: ',
+  MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Warning! You are about to remove your wallet.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
+  MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+
+  /* CX */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
   ERROR_1:             'Please enter valid amount.',
@@ -14039,7 +14219,7 @@ vi.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',

@@ -104,8 +104,7 @@
       <tr>
         <th></th>
         <th></th>
-        <th translate="MYWAL_Nick">Wallet Nickname</th>
-        <th translate="MYWAL_Address">Wallet Address</th>
+        <th translate="x_Wallet">Wallet</th>
         <th translate="MYWAL_Bal">Balance</th>
         <th translate="MYWAL_Edit">Edit</th>
         <th translate="MYWAL_View">View</th>
@@ -116,17 +115,25 @@
       <tr ng-repeat="twallet in allWallets track by $index">
         <td>{{$index+1}}</td>
         <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
-        <td>{{twallet.nick}}</td>
-        <td>{{twallet.addr}}</td>
         <td>
-          <strong class="text-success">{{twallet.balance | number:4 }} ETH</strong><br>
-          <small><span ng-repeat="token in twallet.tokens">{{token.getBalance() | number:2 }} {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
-          <br />
-          <small><span>{{twallet.btc | number:2 }} BTC</span> &nbsp;&nbsp; <span>$ {{twallet.usd | number:2 }} USD</span> &nbsp;&nbsp; <span>€ {{twallet.eur | number:2 }} EUR</span></small>
+          {{twallet.nick}} <br />
+          <span class="mono">{{twallet.addr}}</span>
         </td>
-        <td class="text-center"><a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a></td>
-        <td class="text-center"><a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')"><img src="images/icon-view.svg" title="View Wallet Details" /></a></td>
-        <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
+        <td>
+          <strong class="text-success">{{twallet.balance }} ETH</strong><br>
+          <span class="small" ng-repeat="token in twallet.tokens">{{token.getBalance()}} {{token.getSymbol()}} &nbsp;&nbsp; </span>
+          <br />
+          <span class="small"> {{twallet.btc }} BTC &nbsp;&nbsp; $ {{twallet.usd }} USD &nbsp;&nbsp; € {{twallet.eur }} EUR </small>
+        </td>
+        <td class="text-center">
+          <a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a>
+        </td>
+        <td class="text-center">
+          <a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')"><img src="images/icon-view.svg" title="View" /></a>
+        </td>
+        <td class="text-center">
+          <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')"><img src="images/icon-remove.svg" title="Remove" /></a>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -141,8 +148,7 @@
         <tr>
           <th></th>
           <th></th>
-          <th translate="MYWAL_Nick">Wallet Nickname</th>
-          <th translate="MYWAL_Address">Wallet Address</th>
+          <th translate="x_Wallet">Wallet</th>
           <th translate="MYWAL_Bal">Balance</th>
           <th translate="MYWAL_Remove">Remove</th>
         </tr>
@@ -151,14 +157,16 @@
         <tr ng-repeat="twallet in allWatchOnly track by $index">
           <td>{{$index+1}}</td>
           <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
-          <td>{{twallet.nick}}</td>
-          <td>{{twallet.addr}}</td>
-
+          <td>
+            {{twallet.nick}}
+            <br />
+            <span class="mono"> {{twallet.addr}} </span>
+          </td>
           <td>
             <strong class="text-success">{{twallet.balance | number:4 }} ETH</strong><br>
-            <small><span ng-repeat="token in twallet.tokens">{{token.getBalance() | number:2 }} {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
+            <small><span ng-repeat="token in twallet.tokens">{{token.getBalance() }} {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
             <br />
-            <small><span>{{twallet.btc | number:2 }} BTC</span> &nbsp;&nbsp; <span>$ {{twallet.usd | number:2 }} USD</span> &nbsp;&nbsp; <span>€ {{twallet.eur | number:2 }} EUR</span></small>
+            <small><span>{{twallet.btc }} BTC</span> &nbsp;&nbsp; <span>$ {{twallet.usd }} USD</span> &nbsp;&nbsp; <span>€ {{twallet.eur }} EUR</span></small>
           </td>
           <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
         </tr>
@@ -179,7 +187,7 @@
       <a class="btn btn-warning" ng-click="resetWallet()" translate="MYWAL_Hide"> Hide Wallet Info </a>
     </div>
     <div class="col-xs-12">
-      <div class="alert alert-danger" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
+      <div class="alert alert-danger" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the help page for instructions.</div>
     </div>
 
     <div class="col-sm-6">
@@ -249,9 +257,10 @@
       <div translate="sidebar_AccountBal">Account Balance:</div>
       <ul class="account-info">
         <li> {{etherBalance}} Ether </li>
-        <div ng-repeat="token in tokenObjs track by $index">
-          <li>{{token.getBalance()}} {{token.getSymbol()}}</li>
-        </div>
+        <!-- TODO: Why isn't this working? -->
+        <span ng-repeat="token in twallet.tokens">
+          <li> {{token.getBalance()}} {{token.getSymbol()}} </li>
+        </span>
       </ul>
 
       <div translate="sidebar_Equiv">Equivalent Values:</div>
@@ -262,7 +271,7 @@
       </ul>
 
       <div translate="sidebar_TransHistory">See Transaction History:</div>
-      <ul>
+      <ul class="account-info">
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/{{wallet.getAddressString()}}</a></li>
       </ul>
 
@@ -277,7 +286,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel"><span translate="MYWAL_Edit">Edit Wallet:</span> {{viewWallet.addr}}</h3>
+          <h3 class="modal-title text-primary" id="myModalLabel">
+            <span translate="MYWAL_Edit_2">Edit Wallet:</span>
+            {{viewWallet.addr}}
+          </h3>
         </div>
         <div class="modal-body">
           <form role="form">
@@ -304,7 +316,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel"><span translate="NAV_ViewWallet">View Wallet Info</span>: {{viewWallet.nick}}</h3>
+          <h3 class="modal-title text-warning" id="myModalLabel">
+            <span translate="NAV_ViewWallet">View Wallet Info</span>:
+            {{viewWallet.nick}}
+          </h3>
         </div>
         <div class="modal-body">
           <p translate="VIEWWALLET_Subtitle_Short"> This allows you to download different versions of private keys and re-print your paper wallet. </p>
@@ -335,17 +350,18 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel"><span translate="MYWAL_RemoveWal">Remove Wallet:</span> {{viewWallet.nick}}</h3>
+          <h3 class="modal-title text-danger" id="myModalLabel">
+            <span translate="MYWAL_Content_1"> Warning! You are about to remove your wallet: </span> {{viewWallet.nick}}
+          </h3>
         </div>
         <div class="modal-body">
-          <h4 translate="MYWAL_Content_1">Warning! You are about to remove your wallet.</h4>
-          <p translate="MYWAL_Content_2"> Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.</p>
-          <p translate="MYWAL_Content_3"> If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.</p>
+          <p translate="MYWAL_Content_2"> Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.</p>
+          <p translate="MYWAL_Content_3"> If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add.</p>
           <h4 translate="SENDModal_Content_3">Are you sure you want to do this?</h4>
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
-          <button type="button" class="btn btn-primary" ng-click="generateAndSendWithdrawTx()" translate="SENDModal_Yes">Yes, I am sure! Withdraw.</button>
+          <button type="button" class="btn btn-danger" ng-click="deleteWallet()" translate="MYWAL_Remove">Remove</button>
         </div>
       </div>
     </div>
@@ -538,11 +554,12 @@
 
     <!-- Sidebar -->
     <div class="col-sm-4">
+
       <h4 translate="sidebar_AccountInfo"> Account Information: </h4>
 
       <div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
 
-      <div translate="sidebar_AccountInfo"> Account Address: </div>
+      <div translate="sidebar_AccountAddr"> Account Address: </div>
       <ul class="account-info">
         <li class="mono wrap"> {{wallet.getChecksumAddressString()}} </li>
       </ul>
@@ -660,7 +677,7 @@
 
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h3 class="modal-title" id="myModalLabel" class="text-danger" translate="SENDModal_Title">Warning!</h3>
+              <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
             </div>
 
             <div class="modal-body">
@@ -751,7 +768,7 @@
         <input class="form-control" type="text" placeholder="" readonly="readonly" ng-model="gasPriceDec"/>
       </div>
       <div class="form-group col-xs-6 col-sm-5">
-        <label translate="OFFLINE_Step2_Label_4"> Nonce </label>
+        <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
         <input class="form-control" type="text" placeholder="" readonly="readonly" ng-model="nonceDec"/>
       </div>
     </div>
@@ -853,7 +870,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel" class="text-danger" translate="SENDModal_Title">Warning!</h3>
+          <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
         </div>
         <div class="modal-body">
           <h4>
@@ -897,6 +914,7 @@
 
       <div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
 
+      <div translate="sidebar_AccountAddr"> Account Address: </div>
       <ul class="account-info">
         <li class="mono wrap"> {{wallet.getChecksumAddressString()}} </li>
       </ul>
@@ -1027,7 +1045,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="myModalLabel" class="text-danger" translate="SENDModal_Title">Warning!</h3>
+            <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
           </div>
           <div class="modal-body">
             <h4>
@@ -1038,7 +1056,7 @@
               <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
             </h4>
             <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-            <p translate="SENDModal_Content_4"> NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH. </p>
+            <em><p translate="SENDModal_Content_4"> NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH. </p></em>
           </div>
           <div class="modal-footer text-center">
             <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
@@ -1085,16 +1103,15 @@
 
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li>{{token.balance}} DAO Tokens</li>
-        <li>{{etherBalance}} ETH </li>
-        <li>{{etcBalance}} ETC</li>
+        <li><strong>{{token.balance}}</strong> DAO Tokens</li>
+        <li><strong>{{etherBalance}}</strong> ETH </li>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li>{{usdBalance}} USD</li>
-        <li>{{eurBalance}} EUR</li>
-        <li>{{btcBalance}} BTC</li>
+        <li><strong>{{usdBalance}}</strong> USD</li>
+        <li><strong>{{eurBalance}}</strong> EUR</li>
+        <li><strong>{{btcBalance}}</strong> BTC</li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
@@ -1102,11 +1119,6 @@
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
 
-      <div class="well">
-        <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-        <a class="btn btn-primary btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-        <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-      </div>
     </div>
     <!-- / Sidebar -->
 
@@ -1182,24 +1194,23 @@
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
         <!--TODO: ADD DGD TOKEN BALANCE? <li>{{token.balance}} DGD Tokens</li>-->
-        <li>{{etherBalance}} ETH </li>
-        <li>{{etcBalance}} ETC</li>
+        <li><strong>{{etherBalance}}</strong> ETH </li>
       </ul>
 
       <div translate="sidebar_DGDBal"> DGD Crowdsale Information: </div>
       <ul class="account-info">
-        <li>Centstotal: {{centsTotal}}</li>
-        <li>Weitotal: {{weiTotal}}</li>
-        <li>Share: {{shareTotal}}</li>
-        <li>Badges: {{badgesTotal}}</li>
-        <li>Claimed? {{claimedTotal}}</li>
+        <li>Centstotal: <strong>{{centsTotal}}</strong></li>
+        <li>Weitotal: <strong>{{weiTotal}}</strong></li>
+        <li>Share: <strong>{{shareTotal}}</strong></li>
+        <li>Badges: <strong>{{badgesTotal}}</strong></li>
+        <li>Claimed? <strong>{{claimedTotal}}</strong></li>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li>{{usdBalance}} USD</li>
-        <li>{{eurBalance}} EUR</li>
-        <li>{{btcBalance}} BTC</li>
+        <li><strong>{{usdBalance}}</strong> USD</li>
+        <li><strong>{{eurBalance}}</strong> EUR</li>
+        <li><strong>{{btcBalance}}</strong> BTC</li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
@@ -1207,11 +1218,6 @@
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
 
-      <div class="well">
-        <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-        <a class="btn btn-primary btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-        <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-      </div>
     </section>
     <!-- / Sidebar -->
 
@@ -1688,7 +1694,7 @@
 
     <p>
       <span translate="FOOTER_1">An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.</span>
-      Created by <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> and <a href="https://github.com/tayvano" target="_blank">tayvano</a>.
+      <span translate="FOOTER_1b">Created by</span> <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a href="https://github.com/tayvano" target="_blank">tayvano</a>.
     </p>
 
     <p>
@@ -1702,15 +1708,15 @@
     </p>
 
     <p>
-      Source:
-      <a href="https://github.com/kvhnuke/etherwallet" target="_blank">MyEtherWallet.com & MyEtherWallet CX on github</a>
+      Github:
+      <a href="https://github.com/kvhnuke/etherwallet" target="_blank">MyEtherWallet.com & MyEtherWallet CX</a>
     </p>
 
     <p><span translate="NAV_Contact">Contact</span>:
-      <a href="mailto:myetherwallet@gmail.com" target="_blank"> Email </a> &middot;
-      <a href="https://twitter.com/myetherwallet" target="_blank"> Twitter </a> &middot;
-      <a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank"> kvhnuke on reddit </a> &middot;
-      <a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank"> tayvano (insom) on reddit </a>
+      <a href="mailto:myetherwallet@gmail.com" target="_blank">Email</a> &middot;
+      <a href="https://twitter.com/myetherwallet" target="_blank">Twitter</a> &middot;
+      <a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank">kvhnuke on reddit</a> &middot;
+      <a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank">tayvano (insom) on reddit</a>
     </p>
 
     <p ng-show="showBlocks" class="text-right" style="font-size: 10px">ETH Block#: {{ethBlockNumber}} &middot; ETC Block#: {{etcBlockNumber}}</p>

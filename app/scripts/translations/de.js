@@ -4,6 +4,12 @@ var de = function() {}
 de.code = 'de';
 de.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Gesamten verfügbaren Saldo übertragen', // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Deine Wallets',
   NAV_AddWallet:        'Wallet hinzufügen',
@@ -22,11 +28,12 @@ de.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Wallet',
   x_Password:           'Passwort',
   x_Download:           'Herunterladen',
   x_Address:            'Deine Adresse',
-  x_Save:               'x_Sichern',
-  x_Cancel:             'x_Abbrechen',
+  x_Save:               'Sichern',
+  x_Cancel:             'Abbrechen',
   x_AddessDesc:         'Dies ist deine "Kontonummer" oder dein "Öffentlicher Schlüssel". Du benötigst diese Adresse, wenn dir jemand ETH senden möchte. Das Icon ist eine einfache Möglichkeit, die Adresse zu überprüfen',
   x_PrivKey:            'Privater Schlüssel (unverschlüsselt)',
   x_PrivKeyDesc:        'Dies ist die unverschlüsselte Textversion deines privaten Schlüssels, d. h. du benötigst kein Passwort. Wenn jemand über diesen unverschlüsselten privaten Schlüssel verfügt, hat er/sie ohne Passwort Zugang zu deinem Wallet. Es wird daher empfohlen, den privaten Schlüssel zu verschlüsseln.',
@@ -57,7 +64,7 @@ de.data = {
   sidebar_AccountBal:   'Kontostand: ',
   sidebar_TokenBal:     'Token Kontostand: ',
   sidebar_Equiv:        'Währungs-Gegenwerte: ',
-  sidebar_TransHistory: 'Transaktions-Historie',
+  sidebar_TransHistory: 'Transaktions-Historie: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet ist ein freier, quelloffener Service, der deiner Privatsphäre und Sicherheit gewidmet ist. Je mehr Spenden wir erhalten, desto mehr Zeit können wir investieren, um neue Funktionen zu programmieren, dein Feedback zu verarbeiten und dir zu geben, was du dir wünschst. Wir sind nur zwei Leute, die die Welt ändern möchten. Hilfst du uns dabei?',
   sidebar_donate:       'Spenden',
@@ -72,6 +79,7 @@ de.data = {
   ADD_Label_1:            'Was möchtest du tun?',
   ADD_Radio_1:            'Neues Wallet erzeugen',
   ADD_Radio_2:            'Wallet-Datei auswählen (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Wallet-Datei auswählen: ',
   ADD_Radio_2_short:      'WALLET-DATEI AUSWÄHLEN...',
   ADD_Radio_3:            'Kopiere/Tippe deinen privaten Schlüssel ein',
   ADD_Radio_4:            'Kontoadresse zur Beobachtung hinzufügen',
@@ -89,7 +97,7 @@ de.data = {
   GEN_Label_1:            'Gib ein starkes Passwort ein (mindestens 9 Zeichen)',
   GEN_Placeholder_1:      'BITTE VERGISS NICHT dieses Passwort an einem sicheren Ort zu notieren!',
   GEN_SuccessMsg:         'Erfolgreich! Dein Wallet wurde erzeugt.',
-  GEN_Warning:            '**Du benötigst deine Keystore/JSON-Datei & das Passwort oder den privaten Schlüssel**, um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite] (https://www.myetherwallet.com/#help) für weitere Informationen.',
+  GEN_Warning:            '**Du benötigst deine Keystore/JSON-Datei & das Passwort oder den privaten Schlüssel**, um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen.',
   GEN_Label_2:            'Sichere deine Keystore/JSON-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort!',
   GEN_Label_3:            'Sichere deine Kontoadresse.',
   GEN_Label_4:            'Drucke dein Papier-Wallet oder speichere einen QR-Code davon: (optional)',
@@ -105,11 +113,10 @@ de.data = {
   SEND_amount_short:     'Betrag',
   SEND_custom:           'Benutzerdefiniert',
   SEND_gas:              'Gas',
-  SEND_generate:         'Erzeuge signierte Transaktion',
+  SEND_generate:         'Erzeuge Transaktion',
   SEND_raw:              'Transaktion (Binärformat)',
   SEND_signed:           'Signierte Transaktion',
   SEND_trans:            'Sende Transaktion',
-  SEND_TransferTotal:    'Gesamten verfügbaren Saldo übertragen',
   SENDModal_Title:       'Achtung! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Du bist dabei, ',
@@ -193,9 +200,9 @@ de.data = {
   MYWAL_WatchOnly:        'Deine Watch-Only Konten',
   MYWAL_Viewing:          'Du siehst Wallet: ',
   MYWAL_Hide:             'Wallet Info verstecken',
-  MYWAL_Edit:             'Wallet bearbeiten: ',
+  MYWAL_Edit_2:           'Wallet bearbeiten: ',
   MYWAL_Name:             'Wallet Name',
-  MYWAL_Content_1:        'Achtung! Du bist gerade dabei dein Wallet zu löschen!',
+  MYWAL_Content_1:        'Achtung! Du bist gerade dabei dein Wallet zu löschen: ',
   MYWAL_Content_2:        'Stelle sicher, dass du **die private key/JSON Datei und das Passwort** deines Wallets gespeichert hast, bevor du es löschst.',
   MYWAL_Content_3:        'Wenn du dieses Wallet in Zukunft mit MyEtherWallet CX verwenden willst, musst du es mittels der privaten key/JSON Datei und deinem Passwort manuell wieder hinzufügen.',
 
@@ -316,7 +323,7 @@ de.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',

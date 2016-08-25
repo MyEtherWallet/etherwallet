@@ -17,7 +17,7 @@ var walletDecryptDrtv = function() {
     <div class="col-md-4 col-sm-6">\n \
       <!-- if selected upload -->\n \
       <div id="selectedUploadKey" ng-if="walletType==\'fileupload\'">\n \
-        <h4 translate="ADD_Radio_2">Select your wallet file:</h4>\n \
+        <h4 translate="ADD_Radio_2_alt">Select your wallet file:</h4>\n \
         <div class="form-group">\n \
           <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector"/>\n \
           <a class="file-input btn btn-block btn-default btn-file marg-v-sm" ng-click="openFileDialog()" translate="ADD_Radio_2_short">SELECT WALLET FILE... </a>\n \
@@ -45,7 +45,7 @@ var walletDecryptDrtv = function() {
     <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt">\n \
       <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt" translate="ADD_Label_6"> Access Your Wallet:</h4>\n \
       <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
-      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK WALLET</a></div>\n \
+      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
       <div ng-bind-html="decryptStatus"></div>\n \
     </div>\n \
   </section>'

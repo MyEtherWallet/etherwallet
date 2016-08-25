@@ -4,6 +4,11 @@ var sv = function() {}
 sv.code = 'sv';
 sv.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Dina Plånböcker',
   NAV_AddWallet:        'Lägg till Plånbok',
@@ -22,6 +27,7 @@ sv.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Plånbok',
   x_Password:           'Lösenord',
   x_Download:           'Ladda Ner',
   x_Address:            'Din Adress',
@@ -57,7 +63,7 @@ sv.data = {
   sidebar_AccountBal:   'Konto Saldo: ',
   sidebar_TokenBal:     'Token Saldon: ',
   sidebar_Equiv:        'Motsvarande Värden: ',
-  sidebar_TransHistory: 'Transaktionshistorik',
+  sidebar_TransHistory: 'Transaktionshistorik: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet är en gratis service, med öppen källkod inriktade på din integritet och säkerhet. Ju fler donationer vi får, desto mer tid lägger vi på att skapa nya funktioner, lyssna på feedback, och ge dig vad du vill. Vi är bara två personer som försöker förändra världen. Hjälp oss?',
   sidebar_donate:       'Donera',
@@ -72,6 +78,7 @@ sv.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
   ADD_Radio_3:            'Paste/Type Your Private Key',
   ADD_Radio_4:            'Add an Account to Watch',
@@ -105,11 +112,11 @@ sv.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Transfer total available balance',
+  SEND_TransferTotal:    'Send Entire Balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -193,10 +200,10 @@ sv.data = {
   MYWAL_WatchOnly:        'Dina Bevakade Konton', /*Any better translation?*/
   MYWAL_Viewing:          'Visar Plånbok: ',
   MYWAL_Hide:             'Dölj Plånboks Info',
-  MYWAL_Edit:             'Ändra Plånbok: ',
+  MYWAL_Edit_2:           'Ändra Plånbok: ',
   MYWAL_Name:             'Plånboks Namn',
-  MYWAL_Content_1:        'Varning! Du är på väg att ta bort din plånbok.',
-  MYWAL_Content_2:        ' Kontrollera att du har **sparat den privata nyckeln/JSON filen och lösenordet** som tillhör den här plånboken innan du tar bort den.',
+  MYWAL_Content_1:        'Varning! Du är på väg att ta bort din plånbok: ',
+  MYWAL_Content_2:        'Kontrollera att du har **sparat den privata nyckeln / Keystore filen och lösenordet** som tillhör den här plånboken innan du tar bort den.',
   MYWAL_Content_3:        'Om du vill använda plånboken med MyEtherWallet CX i framtiden, måste du manuellt lägga till den med hjälp av den privata nyckeln / JSON filen och lösenordet.',
 
   /* View Wallet Details */
@@ -307,7 +314,7 @@ sv.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the Send Entire Balance link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',

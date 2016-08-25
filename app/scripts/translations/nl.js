@@ -4,7 +4,12 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* Navigation*/
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Totaal beschikbare saldo versturen',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -23,6 +28,7 @@ nl.data = {
   NAV_Contact:          'Contact',
 
   /* General */
+  x_Wallet:             'Wallet',
   x_Password:           'Wachtwoord',
   x_Download:           'Download',
   x_Address:            'Je Adres',
@@ -58,7 +64,7 @@ nl.data = {
   sidebar_AccountBal:   'Account Saldo: ',
   sidebar_TokenBal:     'Token Saldo: ',
   sidebar_Equiv:        'Equivalente Waarde: ',
-  sidebar_TransHistory: 'Transactie Geschiedenis',
+  sidebar_TransHistory: 'Transactie Geschiedenis: ',
   sidebar_DGDBal:       'DGD Crowdsale Informatie:',
   sidebar_donation:     'MyEtherWallet is een gratis, open-source service toegewijd aan  jouw privacy en beveiliging. De meer donaties we ontvangen, de meer tijd we zullen spenderen aan nieuwe functies, aan de hand van jouw terugkoppeling, en we je kunnen geven wat jij wilt. Wij zijn slechts twee mensen die de wereld een stukje beter willen maken. Help jij mee?',
   sidebar_donate:       'Doneer',
@@ -73,6 +79,7 @@ nl.data = {
   ADD_Label_1:            'Wat wil je doen?',
   ADD_Radio_1:            'Genereer nieuwe Wallet',
   ADD_Radio_2:            'Selecteer Jouw Wallet Bestand (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Selecteer Wallet Bestand: ',
   ADD_Radio_2_short:      'SELECTEER WALLET BESTAND...',
   ADD_Radio_3:            'Plak/Type JOUW PRIVE SLEUTEL',
   ADD_Radio_4:            'Voeg een te bekijken account toe',
@@ -106,11 +113,10 @@ nl.data = {
   SEND_amount_short:     'Bedrag',
   SEND_custom:           'Aangepast',
   SEND_gas:              'Gas',
-  SEND_generate:         'Genereer gesigneerde Transactie',
+  SEND_generate:         'Genereer Transactie',
   SEND_raw:              'Raw Transactie',
   SEND_signed:           'Gesigneerde Transactie',
   SEND_trans:            'Verstuur Transactie',
-  SEND_TransferTotal:    'Totaal beschikbare saldo versturen',
   SENDModal_Title:       'Waarschuwing! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Je staat op het punt om het volgende bedrag over te maken: ',
@@ -194,10 +200,10 @@ nl.data = {
   MYWAL_WatchOnly:        'Je Watch-Only Accounts',
   MYWAL_Viewing:          'Te Bekijken Wallet: ',
   MYWAL_Hide:             'Verberg Wallet Info',
-  MYWAL_Edit:             'Bewerk Wallet: ',
+  MYWAL_Edit_2:           'Bewerk Wallet: ',
   MYWAL_Name:             'Wallet Naam',
-  MYWAL_Content_1:        'Waarschuwing! Je staat op het punt om je Wallet te verwijderen.',
-  MYWAL_Content_2:        ' Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze Wallet voordat je het verwijderd.',
+  MYWAL_Content_1:        'Waarschuwing! Je staat op het punt om je Wallet te verwijderen: ',
+  MYWAL_Content_2:        'Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze Wallet voordat je het verwijderd.',
   MYWAL_Content_3:        'Als je deze Wallet in de toekomst nog wilt gebruiken met MyEtherWallet CX, zul je het met de hand moeten toevoegen door gebruik te maken van de prive sleutel/JSON en wachtwoord.',
 
   /* View Wallet Details */
@@ -308,7 +314,7 @@ nl.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
