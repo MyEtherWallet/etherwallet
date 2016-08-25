@@ -4,6 +4,12 @@ var de = function() {}
 de.code = 'de';
 de.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Gesamten verfügbaren Saldo übertragen', // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Deine Wallets',
   NAV_AddWallet:        'Wallet hinzufügen',
@@ -73,6 +79,7 @@ de.data = {
   ADD_Label_1:            'Was möchtest du tun?',
   ADD_Radio_1:            'Neues Wallet erzeugen',
   ADD_Radio_2:            'Wallet-Datei auswählen (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Wallet-Datei auswählen: ',
   ADD_Radio_2_short:      'WALLET-DATEI AUSWÄHLEN...',
   ADD_Radio_3:            'Kopiere/Tippe deinen privaten Schlüssel ein',
   ADD_Radio_4:            'Kontoadresse zur Beobachtung hinzufügen',
@@ -106,11 +113,10 @@ de.data = {
   SEND_amount_short:     'Betrag',
   SEND_custom:           'Benutzerdefiniert',
   SEND_gas:              'Gas',
-  SEND_generate:         'Erzeuge signierte Transaktion',
+  SEND_generate:         'Erzeuge Transaktion',
   SEND_raw:              'Transaktion (Binärformat)',
   SEND_signed:           'Signierte Transaktion',
   SEND_trans:            'Sende Transaktion',
-  SEND_TransferTotal:    'Gesamten verfügbaren Saldo übertragen',
   SENDModal_Title:       'Achtung! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Du bist dabei, ',
@@ -317,7 +323,7 @@ de.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',

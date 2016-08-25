@@ -4,6 +4,12 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Transférer le solde total disponible',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
   NAV_AddWallet:        'Ajout de portefeuille',
@@ -22,12 +28,12 @@ fr.data = {
   NAV_Contact:          'Contact',
 
   /* General */
+  x_Wallet:             'Portefeuille',
   x_Password:           'Mot de passe',
   x_Download:           'Télécharger',
   x_Address:            'Votre adresse',
   x_Save:               'Sauvegarder',
   x_Cancel:             'Annuler',
-  x_Wallet:             'Portefeuille',
   x_AddessDesc:         'Aussi appelé "Numéro de compte" ou "Clé publique". C\'est ce que vous envoyez aux gens pour qu\'ils puissent vous envoyer des ETH. Cette icone est une façon simple de reconnaitre votre adresse.',
   x_PrivKey:            'Clé privée (non-chiffrée)',
   x_PrivKeyDesc:        'C\'est la version textuelle non-chiffrée de votre clé privée, ce qui signifie qu\'aucun mot de passe n\'est nécessaire pour l\'utiliser. Si quelqu\'un venait à découvrir cette clé privée, il pourrrait accéder à votre portefeuille sans mot de passe. Pour cette raison, la version chiffrée de votre clé privée est recommandée.',
@@ -57,7 +63,7 @@ fr.data = {
   sidebar_AccountAddr:  'Addresse du compte : ',
   sidebar_AccountBal:   'Solde du compte : ',
   sidebar_Equiv:        'Valeur correspondante : ',
-  sidebar_TransHistory: 'Historique des transactions',
+  sidebar_TransHistory: 'Historique des transactions: ',
   sidebar_DGDBal:       'Informations sur la crowdsale DGD :',
   sidebar_donation:     'MyEtherWallet est un service gratuit et open source respectueux de votre vie privée et votre sécurité. Plus nous recevons de donations, plus nous dédions du temps au développement de nouvelles fonctions, à l\'écoute de vos retours et à vous fournir ce dont vous avez besoin. Nous ne sommes que deux personnes qui essayent de changer le monde. Aidez nous !',
   sidebar_donate:       'Faire une donation',
@@ -72,7 +78,8 @@ fr.data = {
   ADD_Label_1:            'Que voulez-vous faire ?',
   ADD_Radio_1:            'Générer un nouveau portefeuille',
   ADD_Radio_2:            'Choisissez le fichier de votre portefeuille (Keystore / JSON)',
-  ADD_Radio_2_short:      'SELECTIONNER LE FICHIER DU PORTEFEUILLE...',
+  ADD_Radio_2_alt:        'Choisissez le fichier de portefeuille: ',
+  ADD_Radio_2_short:      'CHOISISSEZ LE FICHIER DU PORTEFEUILLE...',
   ADD_Radio_3:            'Collez/saisissez votre clé privée',
   ADD_Radio_4:            'Ajoutez un compte',
   ADD_Label_2:            'Nommez votre compte :',
@@ -105,11 +112,10 @@ fr.data = {
   SEND_amount_short:     'Montant',
   SEND_custom:           'Spécifique',
   SEND_gas:              'Gaz',
-  SEND_generate:         'Générer la transaction signée',
+  SEND_generate:         'Générer la transaction',
   SEND_raw:              'Transaction brute',
   SEND_signed:           'Transaction signée',
   SEND_trans:            'Envoyer la transaction',
-  SEND_TransferTotal:    'Transférer le solde total disponible',
   SENDModal_Title:       'Attention ! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Vous êtes sur le point d\'envoyer',
@@ -307,7 +313,7 @@ fr.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',

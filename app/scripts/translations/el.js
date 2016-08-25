@@ -4,6 +4,12 @@ var el = function() {}
 el.code = 'el';
 el.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Μεταφορά όλου του υπάρχον υπολοίπου', // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Τα Πορτοφόλια σας',
   NAV_AddWallet:        'Προσθέστε Πορτοφόλι',
@@ -22,6 +28,7 @@ el.data = {
   NAV_Contact:          'Επικοινωνία',
 
   /* General */
+  x_Wallet:             'Πορτοφόλι',
   x_Password:           'Συνθηματικό',
   x_Download:           'Λήψη',
   x_Address:            'Η Διεύθυνσή Σας',
@@ -57,7 +64,7 @@ el.data = {
   sidebar_AccountBal:   'Υπόλοιπο Λογαριασμού: ',
   sidebar_TokenBal:     'Υπόλοιπο Token: ',
   sidebar_Equiv:        'Ισότιμες Αξίες: ',
-  sidebar_TransHistory: 'Ιστορία Συναλλαγών',
+  sidebar_TransHistory: 'Ιστορία Συναλλαγών: ',
   sidebar_DGDBal:       'Πληροφορίες για το DGD Crowdsale:',
   sidebar_donation:     'Το MyEtherWallet ειναι μια δωρεάν υπηρεσία ανοιχτού κωδικα αφοσιωμένη στην ασφάλεια και την προστασία των προσωπικών σας δεδομένων. Όσο περισότερες δωρεές λαμβάνουμε τοσο πιο πολύ χρόνο μπορουμε να αφοσιώνουμε στην δημιουργία καινούργιων λειτουργειών, στισ απαντήσεις στα σχόλιά σας και στο να σας δίνουμε ότι ζητάτε. Είμαστε απλώς δύο άτομα που προσπαθούμε να αλλάξουμε τον κόσμο. Θα μας βοηθήσετε?',
   sidebar_donate:       'Δωρεά',
@@ -72,6 +79,7 @@ el.data = {
   ADD_Label_1:            'Τι θα θέλατε να κάνετε?',
   ADD_Radio_1:            'Δημιουργία νέου πορτοφολιού',
   ADD_Radio_2:            'Επιλέξτε το αρχείο του πορτοφολιού σας (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Επιλέξτε το αρχείο του πορτοφολιού σας: ',
   ADD_Radio_2_short:      'ΕΠΙΛΕΞΤΕ ΑΡΧΕΙΟ ΠΟΡΤΟΦΟΛΙΟΥ...',
   ADD_Radio_3:            'Επικολήστε/Γράψτε το Κρυφό Κλειδί σας',
   ADD_Radio_4:            'Προσθέστε ενα λογαριασμό για επιτήρηση',
@@ -105,11 +113,10 @@ el.data = {
   SEND_amount_short:     'Ποσό',
   SEND_custom:           'Ειδική',
   SEND_gas:              'Gas',
-  SEND_generate:         'Δημιουργήστε Προ-Υπογεγραμμένη Συναλλαγή',
+  SEND_generate:         'Δημιουργήστε Συναλλαγή',
   SEND_raw:              'RAW Συναλλαγή',
   SEND_signed:           'Υπογεγραμμένη Συναλλαγή',
   SEND_trans:            'Αποστολή Συναλλαγής',
-  SEND_TransferTotal:    'Μεταφορά όλου του υπάρχον υπολοίπου',
   SENDModal_Title:       'Προειδοποίηση! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Πρόκειται να στείλετε',
@@ -307,7 +314,7 @@ el.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',

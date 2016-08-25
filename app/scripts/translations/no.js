@@ -4,6 +4,12 @@ var no = function() {}
 no.code = 'no';
 no.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Overfør total tilgjengelig saldo',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
   NAV_AddWallet:        'Legg til lommebok',
@@ -22,6 +28,7 @@ no.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Lommebok',
   x_Password:           'Passord',
   x_Download:           'Last ned',
   x_Address:            'Din adresse',
@@ -57,7 +64,7 @@ no.data = {
   sidebar_AccountBal:   'Saldo på konto: ',
   sidebar_TokenBal:     'Pollett-saldo: ',
   sidebar_Equiv:        'Tilsvarende verdier: ',
-  sidebar_TransHistory: 'Transaksjonshistorikk',
+  sidebar_TransHistory: 'Transaksjonshistorikk: ',
   sidebar_DGDBal:       'DGD Crowdsale informasjon:',
   sidebar_donation:     'MyEtherWallet er en gratis åpen-kildekode-service som er dedikert til å ivareta ditt personvern og din sikkerhet. Jo flere donasjoner vi får, jo mer tid kan vi bruke til å lage nye funksjoner, lytte til tilbakemeldinger, og gi deg det du ønsker. Vi er bare to personer som prøver å forandre verden. Vil du hjelpe oss?',
   sidebar_donate:       'Doner',
@@ -72,6 +79,7 @@ no.data = {
   ADD_Label_1:            'Hva ønsker du å gjøre?',
   ADD_Radio_1:            'Opprett ny lommebok',
   ADD_Radio_2:            'Velg lommebok-filen din (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Velg lommebok-fil: ',
   ADD_Radio_2_short:      'VELG LOMMEBOK-FIL...',
   ADD_Radio_3:            'Lim/skriv inn din private nøkkel',
   ADD_Radio_4:            'Legg til en konto for overvåkning',
@@ -105,11 +113,10 @@ no.data = {
   SEND_amount_short:     'Beløp',
   SEND_custom:           'Tilpasning',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generer signert transaksjon',
+  SEND_generate:         'Generer transaksjon',
   SEND_raw:              'Rå-transaksjon',
   SEND_signed:           'Signert transaksjon',
   SEND_trans:            'Send transaksjon',
-  SEND_TransferTotal:    'Overfør total tilgjengelig saldo',
   SENDModal_Title:       'Advarsel! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Du er i ferd med å sende',
@@ -307,7 +314,7 @@ no.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',

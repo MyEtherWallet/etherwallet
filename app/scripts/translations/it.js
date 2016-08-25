@@ -4,6 +4,12 @@ var it = function() {}
 it.code = 'it';
 it.data = {
 
+  /* New */
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Trasferisci tutto il saldo disponibile', // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Created by',
+
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
   NAV_AddWallet:        'Aggiungi portafoglio',
@@ -22,6 +28,7 @@ it.data = {
   NAV_Contact:          'Contatti',
 
   /* General */
+  x_Wallet:             'Portafoglio',
   x_Password:           'Password',
   x_Download:           'Download',
   x_Address:            'Il tuo indirizzo',
@@ -57,7 +64,7 @@ it.data = {
   sidebar_AccountBal:   'Saldo conto: ',
   sidebar_TokenBal:     'Saldo token: ',
   sidebar_Equiv:        'Valori equivalenti: ',
-  sidebar_TransHistory: 'Storico transazioni',
+  sidebar_TransHistory: 'Storico transazioni: ',
   sidebar_DGDBal:       'Informazioni crowdsale DGD:',
   sidebar_donation:     'MyEtherWallet è un servizio gratuito e open-source votato alla tua privacy e sicurezza. Più donazioni riceviamo, più tempo dedichiamo a creare nuove funzionalità, considerare i tuoi commenti, e darti ciò che vuoi. Siamo solo due persone che provano a cambiare il mondo. Ci aiuti?',
   sidebar_donate:       'Dona',
@@ -72,6 +79,7 @@ it.data = {
   ADD_Label_1:            'Cosa vuoi fare?',
   ADD_Radio_1:            'Genera un nuovo portafoglio',
   ADD_Radio_2:            'Seleziona il file del tuo portafoglio (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Seleziona file portafoglio: ',
   ADD_Radio_2_short:      'SELEZIONA FILE PORTAFOGLIO...',
   ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata',
   ADD_Radio_4:            'Aggiungi un conto da osservare',
@@ -105,11 +113,10 @@ it.data = {
   SEND_amount_short:     'Importo',
   SEND_custom:           'Altro',
   SEND_gas:              'Gas',
-  SEND_generate:         'Genera transazione firmata',
+  SEND_generate:         'Genera transazione',
   SEND_raw:              'Transazione grezza',
   SEND_signed:           'Transazione firmata',
   SEND_trans:            'Invia transazione',
-  SEND_TransferTotal:    'Trasferisci tutto il saldo disponibile',
   SENDModal_Title:       'Attenzione! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Stai per inviare',
@@ -307,7 +314,7 @@ it.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
