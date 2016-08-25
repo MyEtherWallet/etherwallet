@@ -193,7 +193,7 @@ nl.data = {
   MYWAL_Nick:             'Wallet Nickname',
   MYWAL_Address:          'Wallet Adres',
   MYWAL_Bal:              'Saldo',
-  MYWAL_Edit_2:           'Bewerken',
+  MYWAL_Edit:             'Bewerken',
   MYWAL_View:             'Bekijken',
   MYWAL_Remove:           'Verwijderen',
   MYWAL_RemoveWal:        'Verwijder Wallet:',
