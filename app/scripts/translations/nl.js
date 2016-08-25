@@ -9,7 +9,7 @@ nl.data = {
   CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
   SEND_TransferTotal:   'Totaal beschikbare saldo versturen',  // updated to read 'Send Entire Balance'
   FOOTER_1b:            'Created by',
- 
+
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
