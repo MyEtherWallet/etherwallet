@@ -5,10 +5,10 @@ fr.code = 'fr';
 fr.data = {
 
   /* New */
-  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
-  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Transférer le solde total disponible',  // updated to read 'Send Entire Balance'
-  FOOTER_1b:            'Created by',
+  CX_error_1:           'Vous n\'avez aucun portefeuille sauvegardé. Cliquez sur ["Add Wallet"](/cx-wallet.html#add-wallet) pour en ajouter un !',
+  CX_quicksend:         'Envoi rapide', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Transférer le solde total',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Créé par',
 
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
