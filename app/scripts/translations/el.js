@@ -13,7 +13,7 @@ el.data = {
   NAV_SendTokens:       'Αποστολή Tokens',
   NAV_Offline:          'Αποστολή εκτός Σύνδεσης',
   NAV_WithdrawDAO:      'Ανάληψη DAO',
-  DAO_TitleLong:        'Ανάληψη των Dao Tokens σας για ETH',
+  DAO_TitleLong:        'Ανάληψη των Dao Tokens σας ως ETH',
   NAV_ClaimDGD:         'Διεκδίκηση DGD',
   DGD_TitleLong:        'Διεκδικήστε τα DGD Tokens σας',
   NAV_MyWallets:        'Τα Πορτοφόλια μου',
@@ -141,7 +141,7 @@ el.data = {
   TRANSModal_Content_1:  '**ETH (Standard Συναλλαγή): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
   TRANSModal_Content_2:  '**Μόνο ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
   TRANSModal_Content_3:  '**Μόνο ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
-  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Αποστέλλετε μόνο με Standard Συναλλαγή. Αν στείλετε με τα "Μόνο" contracts, θα χρεαιστεί να έρθετε σε επφή με το προσωπικό υποστήριξης τους ώστε να σας βοηθήσουν με χειροκίνητη μεταφορά υπολοίπων η επιστροφή χρημάτων.[Μπορείτε επίσης να δοκιμάσετε το εργαλείο "διαχωρισμού" του Shapeshift](https://split.shapeshift.io/)',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Αποστέλλετε μόνο με Standard Συναλλαγή. Αν στείλετε με τα "Μόνο" contracts, θα χρεαιστεί να έρθετε σε επφή με το προσωπικό υποστήριξης τους ώστε να σας βοηθήσουν με χειροκίνητη μεταφορά υπολοίπων ή επιστροφή χρημάτων.[Μπορείτε επίσης να δοκιμάσετε το εργαλείο "διαχωρισμού" του Shapeshift](https://split.shapeshift.io/)',
   TRANSModal_Content_5:  '**Kraken & Poloniex:** Δεν υπάρχουν γνωστά προβλήματα. Αποστέλλετε με οποιαδήποτε μέθοδο.',
   TRANSModal_Yes:        'Τέλεια, το κατάλαβα.',
   TRANSModal_No:         'Πωπω, μπερδεύτηκα ακόμη περισσότερο. Βοηθήστε με.',
@@ -169,13 +169,13 @@ el.data = {
   OFFLINE_Step3_Label_1:  'Επικολλήστε την υπογεγραμμένη συναλλαγή εδώ και πατήστε το κουμπί "ΑΠΟΣΤΟΛΗ ΣΥΝΑΛΛΑΓΗΣ".',
 
   /* DAO */
-  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.',
+  DAO_Desc:               'Χρησιμοποιείστε αυτήν την καρτέλα για να κάνετε Ανάληψη των DAO Tokens σας ως ETH. Αν επιθυμείτε να αποστείλετε DAO, παρακαλώ χρησιμοποιήστε την καρτέλα Αποστολή Tokens.',
   DAO_Inst:               'Ναι. Απλά πατάτε το μεγάλο κόκκινο κουμπί. Είναι τόσο απλό.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. ',
+  DAO_Warning:            'Αν δέχεστε σφάλμα "Aνεπαρκές υπόλοιπο για gas", θα πρέπει να έχετε ένα μικρό ποσό ETH στον λογαριασμό σας έτσι ώστε να καλύψετε το κόστος του gas. Προσθέστε 0.01 ETH στον λογαριασμό αυτό και προσπαθήστε ξανά. ',
   DAOModal_Title:         'Απλά για σιγουριά...',
 
   /* Digix */
-  DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
+  DGD_Desc:               'Διεκδικήστε τα DigixDAO (DGD) tokens & badges σας. Για να τα διεκδικήσετε, πρέπει να είχατε συμμετάσχει στην προαγορά tokens στις 30/31 Μαρτίου του 2016. Αν επιθυμείτε να αποστείλετε DGD, παρακαλώ χρησιμοποιήστε την καρτέλα Αποστολή Tokens.',
   DGD_Label_1:            'Εκτιμώμενη Κατανάλωση Εξόδων:',
   DGD_Label_2:            'Παρεχόμενα Μέγιστα Έξοδα:',
   DGD_Label_3:            'Τιμή Gas:',
@@ -196,13 +196,13 @@ el.data = {
   MYWAL_Edit:             'Επεξεργασία Πορτοφολιού: ',
   MYWAL_Name:             'Όνομα Πορτοφολιού',
   MYWAL_Content_1:        'Προσοχή! Πρόκειται να αφαιρέσετε το πορτοφόλι σας.',
-  MYWAL_Content_2:        ' Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.',
-  MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
+  MYWAL_Content_2:        'Σιγουρευτείτε ότι έχετε **αποθηκεύσει το αρχέιο Keystore/JSON και τον κωδικό** του πορτοφολιού αυτού πριν το αφαιρέσετε.',
+  MYWAL_Content_3:        'Αν θέλετε να χρησιμοποιήσετε το ποροτοφόλι αυτό με το MyEtherWalletCX στο μέλλον, θα χρειαστεί να το ξαναπροσθέσετε χειροκίνητα χρησιμοποιώντας το Ιδιωτικό Κλειδί/JSON και τον κωδικό.',
 
   /* View Wallet Details */
-  VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
-  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
-  VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+  VIEWWALLET_Subtitle:      'Αυτό σας επιτρέπει να κατεβάσετε διαφορετικές εκδοχές των ιδιωτικών κλειδιών σας και να επανεκτυπώσετε το χάρτινο πορτοφόλι σας. Ίσως επιθυμείτε να το κάνετε προκειμένου να [εισάγετε τον Λογαριασμό σας στο Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Αν επιθυμείτε να ελέγξετε το υπόλοιπό σας, συνιστούμε να χρησιμοποιήσετε ένα εργαλείο εξερεύνησης blockchain όπως το [etherscan.io](http://etherscan.io/).',
+  VIEWWALLET_Subtitle_Short: 'Αυτό σας επιτρέπει να κατεβάσετε διαφορετικές εκδοχές των ιδιωτικών κλειδιών σας και να επανεκτυπώσετε το χάρτινο πορτοφόλι σας.',
+  VIEWWALLET_SuccessMsg:     'Επιτυχία! Εδώ είναι οι πληροφορίες για το πορτοφόλι σας.',
 
   /* Error Messages */
   ERROR_1:             'Παρακαλώ εισάγετε έγκυρο ποσό.',
