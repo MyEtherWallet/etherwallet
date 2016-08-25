@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 1a0ae5a3a7ae25b286f9e4d
+// Last sync with en.js: commit 8b01728220a06b2c62a47
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -55,7 +55,7 @@ it.data = {
 	CX_Tagline:           'Portafoglio ether JavaScript lato client Open Source (Estensione Chrome)',
 
   /* Footer */
-  FOOTER_1:             'Uno strumento open source, in javascript, lato client per generare portafogli Ethererum e inviare transazioni.',
+  FOOTER_1:             'Uno strumento open source, in javascript, lato client per generare portafogli Ethereum e inviare transazioni.',
   FOOTER_2:             'Donazioni molto apprezzate:',
   FOOTER_3:             'Generazione portafogli lato client da parte di',
 
@@ -80,9 +80,9 @@ it.data = {
   ADD_Label_1:            'Cosa vuoi fare?',
   ADD_Radio_1:            'Genera un nuovo portafoglio',
   ADD_Radio_2:            'Seleziona il file del tuo portafoglio (Keystore / JSON)',
-  ADD_Radio_2_alt:        'Seleziona il file del tuo portafolio: ',
+  ADD_Radio_2_alt:        'Seleziona il file del tuo portafoglio: ',
   ADD_Radio_2_short:      'SELEZIONA FILE PORTAFOGLIO...',
-  ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata: ',
+  ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata ',
   ADD_Radio_4:            'Aggiungi un conto da osservare',
   ADD_Label_2:            'Crea un nome:',
   ADD_Label_3:            'Il portafoglio è crittografato. Inserire la password: ',
@@ -263,7 +263,7 @@ it.data = {
   HELP_Desc:          'Vedi che manca qualcosa? Hai un\'altra domanda? [Mettiti in contatto con noi](mailto:myetherwallet@gmail.com), e non solo risponderemo alla tua domanda, ma aggiorneremo anche questa pagina in modo che sia più utile ad altri in futuro!',
   HELP_Remind_Title:  'Qualche promemoria',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, e alcune delle librerie Javascript che utilizziamo sono in continuo sviluppo.** Anche se abbiamo testato approfonditamente e persone di tutto il mondo hanno correttamente creato decine di migliaia di portafogli, c\'è sempre la remota possibilità che accada qualcosa di imprevisto che provochi la perdita dei tuoi ETH. Ti preghiamo di non investire più di quello che sei disposto a perdere, e di fare attenzione. Se dovesse capitare qualcosa, ci dispiace, ma **non siamo responsabili per gli ether perduti**.',
-  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX non sono "portafogli web". Non stai creando un account nè ci stai dando i tuoi ether da custodire. Tutti i dati non lasciano mai il tuo computer/il tuo browser. Quello che facciamo è renderti facile creare, salvare, e accedere alle tue informazioni e interagire con la *blockchain*.',
+  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX non sono "portafogli web". Non stai creando un account né ci stai dando i tuoi ether da custodire. Tutti i dati non lasciano mai il tuo computer/il tuo browser. Quello che facciamo è renderti facile creare, salvare, e accedere alle tue informazioni e interagire con la *blockchain*.',
   HELP_Remind_Desc_3: 'Se non salvi la tua chiave privata e la password, non c\'è modo di recuperare l\'accesso al tuo portafoglio o ai fondi che contiene.  Salvali in molti luoghi fisici diversi e non solo sul tuo computer!',
 
   HELP_0_Title:        '0) Sono nuovo. Cosa faccio?',
@@ -345,7 +345,7 @@ it.data = {
   HELP_5_Desc_5:        'Decomprimi il file.',
   HELP_5_Desc_6:        'Fai doppio clic su `index.html`.',
   HELP_5_Desc_7:        'MyEtherWallet.com è ora in esecuzione completamente sul tuo computer.',
-  HELP_5_Desc_8:        'In caso tu non abbia molta confidenza, ti serve l\'intera cartella per poter eseguire il sito web, non solo `index.html`. Non toccare nè spostare nulla del contenuto della cartella. Se stai conservando un backup del repository MyEtherWallet per il futuro, ti consigliamo di conservare soltanto il file ZIP in modo da assicurarti che i contenuti della cartella rimangano intatti.',
+  HELP_5_Desc_8:        'In caso tu non abbia molta confidenza, ti serve l\'intera cartella per poter eseguire il sito web, non solo `index.html`. Non toccare né spostare nulla del contenuto della cartella. Se stai conservando un backup del repository MyEtherWallet per il futuro, ti consigliamo di conservare soltanto il file ZIP in modo da assicurarti che i contenuti della cartella rimangano intatti.',
   HELP_5_Desc_9:        'Dal momento che stiamo costantemente aggiornando MyEtherWallet.com, ti consigliamo di aggiornare periodicamente la tua versione locale del repository.',
 
   HELP_5CX_Title:       '5) Come posso installare questa estensione dal repository invece che dal Chrome Store? ',
@@ -501,7 +501,7 @@ it.data = {
   HELP_Sec_Title:         'Sicurezza',
   HELP_Sec_Desc_1:        'Se una delle prime domande che ti poni è "Perché dovrei fidarmi di questa gente?", è una cosa buona. Quanto segue dovrebbe aiutarti a calmare i tuoi timori. ',
   HELP_Sec_Desc_2:        'Siamo attivi da agosto 2015. Se cerchi ["myetherwallet" su reddit](https://www.reddit.com/search?q=myetherwallet), puoi vedere che molte persone ci utilizzano con grande successo.',
-  HELP_Sec_Desc_3:        'Non prenderemo i tuoi soldi nè ruberemo le tue chiavi private. Non c\'è codice malevolo su questo sito. Infatti le pagine "Genera portafoglio" sono completamente lato client. Ciò significa che tutto il codice è eseguito sul ** tuo computer** e non viene mai salvato e trasmesso da nessuna parte.',
+  HELP_Sec_Desc_3:        'Non prenderemo i tuoi soldi né ruberemo le tue chiavi private. Non c\'è codice malevolo su questo sito. Infatti le pagine "Genera portafoglio" sono completamente lato client. Ciò significa che tutto il codice è eseguito sul ** tuo computer** e non viene mai salvato e trasmesso da nessuna parte.',
   HELP_Sec_Desc_4:        'Controlla l\'URL -- Questo sito viene servito attraverso GitHub e puoi vederne il codice sorgente qui: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) sui domini: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) e [https://www.myetherwallet.com](https://www.myetherwallet.com). Puoi verificare che sia ospitato su GitHub utilizzando [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - gli IP degli ultimi due record A sono posseduti da GitHub per il loro hosting dei domini personalizzati.',
   HELP_Sec_Desc_5:        'Per la generazione dei portafogli, puoi scaricare il [codice sorgente](https://github.com/kvhnuke/etherwallet/tree/gh-pages). Vedi la domanda 5 qui sopra.',
   HELP_Sec_Desc_6:        'Fai una prova e controlla che attività di rete sono in corso. Il modo più facile e fare clic destro sulla pagina e scegliere "Analizza elemento". Vai sulla scheda "Rete". Genera un portafoglio di prova. Vedrai che non c\'è attività di rete. Potresti vedere accadere qualcosa che assomiglia a  data:image/gif e data:image/png. Sono i QR code che vengono generati...sul tuo computer...dal tuo computer. Non sono stati trasferiti byte.',
