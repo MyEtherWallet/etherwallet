@@ -5,10 +5,10 @@ nl.code = 'nl';
 nl.data = {
 
   /* New */
-  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
-  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Totaal beschikbare saldo versturen',  // updated to read 'Send Entire Balance'
-  FOOTER_1b:            'Created by',
+  CX_error_1:           'Je hebt geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
+  CX_quicksend:         'VerzendSnel', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Verzend volledig saldo',  // updated to read 'Send Entire Balance'
+  FOOTER_1b:            'Gemaakt door',
 
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
