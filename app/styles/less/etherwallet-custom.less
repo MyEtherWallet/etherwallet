@@ -103,7 +103,8 @@ footer {
   padding-top: 10px;
   text-align: right;
   @media screen and (max-width: @grid-float-breakpoint) {
-    padding-left: 0;
+    padding-left: 25px;
+    padding-right: 25px;
     padding-top: 0;
   }
 }
@@ -160,6 +161,10 @@ footer {
   img:hover + .account-help-text {
     display: block;
   }
+  img {
+    margin-left: -30px;
+    margin-right: 3px;
+  }
 }
 
 .account-help-text {
@@ -178,25 +183,9 @@ footer {
 
 
 @media screen and (max-width:767px) {
-  .account-help-icon {
-    width: 100%;
-    img {
-      float: left;
-      margin-right: 5px;
-      margin-top: 7px;
-    }
-    .account-help-text {
-      display: block;
-      position: static;
-      width: 100%;
-      border: none;
-      box-shadow: 0px 0px 0px #fff;
-      padding: 5px 0px 0px 30px;
-      font-weight: 300;
-    }
-  }
-  .form-group {
-    margin: 15px 0;
+  .account-help-icon img,
+  .account-help-icon p, {
+    display: none;
   }
 }
 

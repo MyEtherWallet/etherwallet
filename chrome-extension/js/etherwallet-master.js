@@ -1641,7 +1641,7 @@ var walletDecryptDrtv = function() {
     <div class="col-md-4 col-sm-6">\n \
       <!-- if selected upload -->\n \
       <div id="selectedUploadKey" ng-if="walletType==\'fileupload\'">\n \
-        <h4 translate="ADD_Radio_2">Select your wallet file:</h4>\n \
+        <h4 translate="ADD_Radio_2_alt">Select your wallet file:</h4>\n \
         <div class="form-group">\n \
           <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector"/>\n \
           <a class="file-input btn btn-block btn-default btn-file marg-v-sm" ng-click="openFileDialog()" translate="ADD_Radio_2_short">SELECT WALLET FILE... </a>\n \
@@ -1669,7 +1669,7 @@ var walletDecryptDrtv = function() {
     <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt">\n \
       <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt" translate="ADD_Label_6"> Access Your Wallet:</h4>\n \
       <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
-      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK WALLET</a></div>\n \
+      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
       <div ng-bind-html="decryptStatus"></div>\n \
     </div>\n \
   </section>'
@@ -2996,6 +2996,7 @@ de.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Wallet',
   x_Password:           'Passwort',
   x_Download:           'Herunterladen',
   x_Address:            'Deine Adresse',
@@ -3031,7 +3032,7 @@ de.data = {
   sidebar_AccountBal:   'Kontostand: ',
   sidebar_TokenBal:     'Token Kontostand: ',
   sidebar_Equiv:        'Währungs-Gegenwerte: ',
-  sidebar_TransHistory: 'Transaktions-Historie',
+  sidebar_TransHistory: 'Transaktions-Historie: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet ist ein freier, quelloffener Service, der deiner Privatsphäre und Sicherheit gewidmet ist. Je mehr Spenden wir erhalten, desto mehr Zeit können wir investieren, um neue Funktionen zu programmieren, dein Feedback zu verarbeiten und dir zu geben, was du dir wünschst. Wir sind nur zwei Leute, die die Welt ändern möchten. Hilfst du uns dabei?',
   sidebar_donate:       'Spenden',
@@ -3063,7 +3064,7 @@ de.data = {
   GEN_Label_1:            'Gib ein starkes Passwort ein (mindestens 9 Zeichen)',
   GEN_Placeholder_1:      'BITTE VERGISS NICHT dieses Passwort an einem sicheren Ort zu notieren!',
   GEN_SuccessMsg:         'Erfolgreich! Dein Wallet wurde erzeugt.',
-  GEN_Warning:            '**Du benötigst deine Keystore/JSON-Datei & das Passwort oder den privaten Schlüssel**, um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite] (https://www.myetherwallet.com/#help) für weitere Informationen.',
+  GEN_Warning:            '**Du benötigst deine Keystore/JSON-Datei & das Passwort oder den privaten Schlüssel**, um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen.',
   GEN_Label_2:            'Sichere deine Keystore/JSON-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort!',
   GEN_Label_3:            'Sichere deine Kontoadresse.',
   GEN_Label_4:            'Drucke dein Papier-Wallet oder speichere einen QR-Code davon: (optional)',
@@ -4010,6 +4011,7 @@ en.data = {
   CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
   SEND_TransferTotal:   'Send Entire Balance', // updated to be shorter
   x_Wallet:             'Wallet',
+  FOOTER_1b:            'Created by',
 
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
@@ -4064,7 +4066,7 @@ en.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -4079,15 +4081,16 @@ en.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -4112,7 +4115,7 @@ en.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
@@ -4313,7 +4316,7 @@ en.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',

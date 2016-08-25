@@ -3,9 +3,9 @@
 
   <h2 translate="NAV_ViewWallet">View Wallet Details</h2>
 
-  <div translate="VIEWWALLET_Subtitle">
+  <p translate="VIEWWALLET_Subtitle">
     This page allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like <a href="http://etherscan.io/" target="_blank">etherscan.io</a>.
-  </div>
+  </p>
 
   <wallet-decrypt-drtv></wallet-decrypt-drtv>
 
@@ -82,19 +82,25 @@
         <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
       </div>
 
+      <br />
+
       <div translate="sidebar_AccountBal">Account Balance:</div>
       <ul class="account-info">
-        <li> {{etherBalance}} Ether </li>
+        <li> <strong>{{etherBalance}}</strong> ETH </li>
+      </ul>
+
+      <div translate="sidebar_TokenBal"> Token Balances: </div>
+      <ul class="account-info">
         <div ng-repeat="token in tokenObjs track by $index">
-          <li>{{token.getBalance()}} {{token.getSymbol()}}</li>
+          <li><strong>{{token.getBalance()}}</strong> {{token.getSymbol()}}</li>
         </div>
       </ul>
 
       <div translate="sidebar_Equiv">Equivalent Values:</div>
       <ul class="account-info">
-        <li> {{usdBalance}} USD </li>
-        <li> {{eurBalance}} EUR </li>
-        <li> {{btcBalance}} BTC </li>
+        <li> <strong>{{usdBalance}}</strong> USD </li>
+        <li> <strong>{{eurBalance}}</strong> EUR </li>
+        <li> <strong>{{btcBalance}}</strong> BTC </li>
       </ul>
 
       <div translate="sidebar_TransHistory">See Transaction History:</div>

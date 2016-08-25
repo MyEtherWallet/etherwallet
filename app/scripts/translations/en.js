@@ -9,6 +9,7 @@ en.data = {
   CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
   SEND_TransferTotal:   'Send Entire Balance', // updated to be shorter
   x_Wallet:             'Wallet',
+  FOOTER_1b:            'Created by',
 
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
@@ -63,7 +64,7 @@ en.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -78,15 +79,16 @@ en.data = {
   ADD_Label_1:            'What would you like to do?',
   ADD_Radio_1:            'Generate New Wallet',
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_3:            'Paste/Type Your Private Key: ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -111,7 +113,7 @@ en.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_generate:         'Generate Signed Transaction',
+  SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
@@ -312,7 +314,7 @@ en.data = {
   HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',

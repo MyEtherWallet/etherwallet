@@ -94,7 +94,7 @@
       <a class="btn btn-warning" ng-click="resetWallet()" translate="MYWAL_Hide"> Hide Wallet Info </a>
     </div>
     <div class="col-xs-12">
-      <div class="alert alert-danger"><a ng-click="globalFuncs.changeHash('help')" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the help page for instructions.</a></div>
+      <div class="alert alert-danger" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the help page for instructions.</div>
     </div>
 
     <div class="col-sm-6">
@@ -164,9 +164,10 @@
       <div translate="sidebar_AccountBal">Account Balance:</div>
       <ul class="account-info">
         <li> {{etherBalance}} Ether </li>
-        <div ng-repeat="token in tokenObjs track by $index">
-          <li>{{token.getBalance()}} {{token.getSymbol()}}</li>
-        </div>
+        <!-- TODO: Why isn't this working? -->
+        <span ng-repeat="token in twallet.tokens">
+          <li> {{token.getBalance()}} {{token.getSymbol()}} </li>
+        </span>
       </ul>
 
       <div translate="sidebar_Equiv">Equivalent Values:</div>
@@ -177,7 +178,7 @@
       </ul>
 
       <div translate="sidebar_TransHistory">See Transaction History:</div>
-      <ul>
+      <ul class="account-info">
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/{{wallet.getAddressString()}}</a></li>
       </ul>
 
@@ -267,7 +268,7 @@
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
-          <button type="button" class="btn btn-danger" ng-click="generateAndSendWithdrawTx()" translate="MYWAL_Remove">Remove</button>
+          <button type="button" class="btn btn-danger" ng-click="deleteWallet()" translate="MYWAL_Remove">Remove</button>
         </div>
       </div>
     </div>

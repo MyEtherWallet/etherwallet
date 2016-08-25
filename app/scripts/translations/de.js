@@ -22,6 +22,7 @@ de.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
+  x_Wallet:             'Wallet',
   x_Password:           'Passwort',
   x_Download:           'Herunterladen',
   x_Address:            'Deine Adresse',
@@ -57,7 +58,7 @@ de.data = {
   sidebar_AccountBal:   'Kontostand: ',
   sidebar_TokenBal:     'Token Kontostand: ',
   sidebar_Equiv:        'Währungs-Gegenwerte: ',
-  sidebar_TransHistory: 'Transaktions-Historie',
+  sidebar_TransHistory: 'Transaktions-Historie: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet ist ein freier, quelloffener Service, der deiner Privatsphäre und Sicherheit gewidmet ist. Je mehr Spenden wir erhalten, desto mehr Zeit können wir investieren, um neue Funktionen zu programmieren, dein Feedback zu verarbeiten und dir zu geben, was du dir wünschst. Wir sind nur zwei Leute, die die Welt ändern möchten. Hilfst du uns dabei?',
   sidebar_donate:       'Spenden',
@@ -89,7 +90,7 @@ de.data = {
   GEN_Label_1:            'Gib ein starkes Passwort ein (mindestens 9 Zeichen)',
   GEN_Placeholder_1:      'BITTE VERGISS NICHT dieses Passwort an einem sicheren Ort zu notieren!',
   GEN_SuccessMsg:         'Erfolgreich! Dein Wallet wurde erzeugt.',
-  GEN_Warning:            '**Du benötigst deine Keystore/JSON-Datei & das Passwort oder den privaten Schlüssel**, um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite] (https://www.myetherwallet.com/#help) für weitere Informationen.',
+  GEN_Warning:            '**Du benötigst deine Keystore/JSON-Datei & das Passwort oder den privaten Schlüssel**, um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen.',
   GEN_Label_2:            'Sichere deine Keystore/JSON-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort!',
   GEN_Label_3:            'Sichere deine Kontoadresse.',
   GEN_Label_4:            'Drucke dein Papier-Wallet oder speichere einen QR-Code davon: (optional)',

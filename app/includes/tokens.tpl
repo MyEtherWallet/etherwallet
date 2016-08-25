@@ -17,6 +17,7 @@
 
       <div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
 
+      <div translate="sidebar_AccountAddr"> Account Address: </div>
       <ul class="account-info">
         <li class="mono wrap"> {{wallet.getChecksumAddressString()}} </li>
       </ul>
@@ -147,7 +148,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="myModalLabel" class="text-danger" translate="SENDModal_Title">Warning!</h3>
+            <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
           </div>
           <div class="modal-body">
             <h4>
@@ -158,7 +159,7 @@
               <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
             </h4>
             <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-            <p translate="SENDModal_Content_4"> NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH. </p>
+            <em><p translate="SENDModal_Content_4"> NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH. </p></em>
           </div>
           <div class="modal-footer text-center">
             <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>

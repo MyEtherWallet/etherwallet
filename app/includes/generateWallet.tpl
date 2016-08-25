@@ -39,7 +39,7 @@
     <!-- / 0. Warning -->
 
     <!-- 1. Private Keys -->
-    <h4 translate="GEN_Label_2"> 1. Save your Keystore/JSON or Private Key. Don't forget your password above. </h4>
+    <h4> 1. <span translate="GEN_Label_2"> Save your Keystore/JSON or Private Key. Don't forget your password above. </span> </h4>
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
@@ -81,7 +81,7 @@
           <div class="account-help-icon">
             <img src="images/helpicon.svg" class="help-icon" />
             <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
-            <h4 translate="GEN_Label_3">2. Save Your Address.</h4>
+            <h4> 2. <span translate="GEN_Label_3"> Save Your Address. </span> </h4>
           </div>
           <input class="form-control" type="text" readonly="readonly" ng-value="wallet.getChecksumAddressString()"/>
         </div>
@@ -95,7 +95,7 @@
     <hr />
 
     <!-- 3. Extras -->
-    <h4 translate="GEN_Label_4"> 3. Print your paper wallet, or store a QR code verison. (optional) </h4>
+    <h4> 3. <span translate="GEN_Label_4"> Print your paper wallet, or store a QR code verison. (optional) </span>
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">

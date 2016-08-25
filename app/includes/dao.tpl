@@ -28,16 +28,15 @@
 
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li>{{token.balance}} DAO Tokens</li>
-        <li>{{etherBalance}} ETH </li>
-        <li>{{etcBalance}} ETC</li>
+        <li><strong>{{token.balance}}</strong> DAO Tokens</li>
+        <li><strong>{{etherBalance}}</strong> ETH </li>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li>{{usdBalance}} USD</li>
-        <li>{{eurBalance}} EUR</li>
-        <li>{{btcBalance}} BTC</li>
+        <li><strong>{{usdBalance}}</strong> USD</li>
+        <li><strong>{{eurBalance}}</strong> EUR</li>
+        <li><strong>{{btcBalance}}</strong> BTC</li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
@@ -45,11 +44,6 @@
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
 
-      <div class="well">
-        <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-        <a class="btn btn-primary btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-        <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-      </div>
     </div>
     <!-- / Sidebar -->
 

@@ -132,7 +132,7 @@
     <!-- / 0. Warning -->
 
     <!-- 1. Private Keys -->
-    <h4 translate="GEN_Label_2"> 1. Save your Keystore/JSON or Private Key. Don't forget your password above. </h4>
+    <h4> 1. <span translate="GEN_Label_2"> Save your Keystore/JSON or Private Key. Don't forget your password above. </span> </h4>
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
@@ -174,7 +174,7 @@
           <div class="account-help-icon">
             <img src="images/helpicon.svg" class="help-icon" />
             <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
-            <h4 translate="GEN_Label_3">2. Save Your Address.</h4>
+            <h4> 2. <span translate="GEN_Label_3"> Save Your Address. </span> </h4>
           </div>
           <input class="form-control" type="text" readonly="readonly" ng-value="wallet.getChecksumAddressString()"/>
         </div>
@@ -188,7 +188,7 @@
     <hr />
 
     <!-- 3. Extras -->
-    <h4 translate="GEN_Label_4"> 3. Print your paper wallet, or store a QR code verison. (optional) </h4>
+    <h4> 3. <span translate="GEN_Label_4"> Print your paper wallet, or store a QR code verison. (optional) </span>
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
@@ -221,9 +221,9 @@
 
   <h2 translate="NAV_ViewWallet">View Wallet Details</h2>
 
-  <div translate="VIEWWALLET_Subtitle">
+  <p translate="VIEWWALLET_Subtitle">
     This page allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like <a href="http://etherscan.io/" target="_blank">etherscan.io</a>.
-  </div>
+  </p>
 
   <wallet-decrypt-drtv></wallet-decrypt-drtv>
 
@@ -300,19 +300,25 @@
         <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
       </div>
 
+      <br />
+
       <div translate="sidebar_AccountBal">Account Balance:</div>
       <ul class="account-info">
-        <li> {{etherBalance}} Ether </li>
+        <li> <strong>{{etherBalance}}</strong> ETH </li>
+      </ul>
+
+      <div translate="sidebar_TokenBal"> Token Balances: </div>
+      <ul class="account-info">
         <div ng-repeat="token in tokenObjs track by $index">
-          <li>{{token.getBalance()}} {{token.getSymbol()}}</li>
+          <li><strong>{{token.getBalance()}}</strong> {{token.getSymbol()}}</li>
         </div>
       </ul>
 
       <div translate="sidebar_Equiv">Equivalent Values:</div>
       <ul class="account-info">
-        <li> {{usdBalance}} USD </li>
-        <li> {{eurBalance}} EUR </li>
-        <li> {{btcBalance}} BTC </li>
+        <li> <strong>{{usdBalance}}</strong> USD </li>
+        <li> <strong>{{eurBalance}}</strong> EUR </li>
+        <li> <strong>{{btcBalance}}</strong> BTC </li>
       </ul>
 
       <div translate="sidebar_TransHistory">See Transaction History:</div>
@@ -341,11 +347,12 @@
 
     <!-- Sidebar -->
     <div class="col-sm-4">
+
       <h4 translate="sidebar_AccountInfo"> Account Information: </h4>
 
       <div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
 
-      <div translate="sidebar_AccountInfo"> Account Address: </div>
+      <div translate="sidebar_AccountAddr"> Account Address: </div>
       <ul class="account-info">
         <li class="mono wrap"> {{wallet.getChecksumAddressString()}} </li>
       </ul>
@@ -463,7 +470,7 @@
 
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h3 class="modal-title" id="myModalLabel" class="text-danger" translate="SENDModal_Title">Warning!</h3>
+              <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
             </div>
 
             <div class="modal-body">
@@ -554,7 +561,7 @@
         <input class="form-control" type="text" placeholder="" readonly="readonly" ng-model="gasPriceDec"/>
       </div>
       <div class="form-group col-xs-6 col-sm-5">
-        <label translate="OFFLINE_Step2_Label_4"> Nonce </label>
+        <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
         <input class="form-control" type="text" placeholder="" readonly="readonly" ng-model="nonceDec"/>
       </div>
     </div>
@@ -656,7 +663,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel" class="text-danger" translate="SENDModal_Title">Warning!</h3>
+          <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
         </div>
         <div class="modal-body">
           <h4>
@@ -700,6 +707,7 @@
 
       <div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
 
+      <div translate="sidebar_AccountAddr"> Account Address: </div>
       <ul class="account-info">
         <li class="mono wrap"> {{wallet.getChecksumAddressString()}} </li>
       </ul>
@@ -830,7 +838,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="myModalLabel" class="text-danger" translate="SENDModal_Title">Warning!</h3>
+            <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
           </div>
           <div class="modal-body">
             <h4>
@@ -841,7 +849,7 @@
               <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
             </h4>
             <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-            <p translate="SENDModal_Content_4"> NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH. </p>
+            <em><p translate="SENDModal_Content_4"> NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH. </p></em>
           </div>
           <div class="modal-footer text-center">
             <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
@@ -888,16 +896,15 @@
 
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li>{{token.balance}} DAO Tokens</li>
-        <li>{{etherBalance}} ETH </li>
-        <li>{{etcBalance}} ETC</li>
+        <li><strong>{{token.balance}}</strong> DAO Tokens</li>
+        <li><strong>{{etherBalance}}</strong> ETH </li>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li>{{usdBalance}} USD</li>
-        <li>{{eurBalance}} EUR</li>
-        <li>{{btcBalance}} BTC</li>
+        <li><strong>{{usdBalance}}</strong> USD</li>
+        <li><strong>{{eurBalance}}</strong> EUR</li>
+        <li><strong>{{btcBalance}}</strong> BTC</li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
@@ -905,11 +912,6 @@
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
 
-      <div class="well">
-        <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-        <a class="btn btn-primary btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-        <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-      </div>
     </div>
     <!-- / Sidebar -->
 
@@ -985,24 +987,23 @@
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
         <!--TODO: ADD DGD TOKEN BALANCE? <li>{{token.balance}} DGD Tokens</li>-->
-        <li>{{etherBalance}} ETH </li>
-        <li>{{etcBalance}} ETC</li>
+        <li><strong>{{etherBalance}}</strong> ETH </li>
       </ul>
 
       <div translate="sidebar_DGDBal"> DGD Crowdsale Information: </div>
       <ul class="account-info">
-        <li>Centstotal: {{centsTotal}}</li>
-        <li>Weitotal: {{weiTotal}}</li>
-        <li>Share: {{shareTotal}}</li>
-        <li>Badges: {{badgesTotal}}</li>
-        <li>Claimed? {{claimedTotal}}</li>
+        <li>Centstotal: <strong>{{centsTotal}}</strong></li>
+        <li>Weitotal: <strong>{{weiTotal}}</strong></li>
+        <li>Share: <strong>{{shareTotal}}</strong></li>
+        <li>Badges: <strong>{{badgesTotal}}</strong></li>
+        <li>Claimed? <strong>{{claimedTotal}}</strong></li>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li>{{usdBalance}} USD</li>
-        <li>{{eurBalance}} EUR</li>
-        <li>{{btcBalance}} BTC</li>
+        <li><strong>{{usdBalance}}</strong> USD</li>
+        <li><strong>{{eurBalance}}</strong> EUR</li>
+        <li><strong>{{btcBalance}}</strong> BTC</li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
@@ -1010,11 +1011,6 @@
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
 
-      <div class="well">
-        <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-        <a class="btn btn-primary btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-        <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
-      </div>
     </section>
     <!-- / Sidebar -->
 
@@ -1558,7 +1554,7 @@
 
     <p>
       <span translate="FOOTER_1">An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.</span>
-      Created by <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> and <a href="https://github.com/tayvano" target="_blank">tayvano</a>.
+      <span translate="FOOTER_1b">Created by</span> <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a href="https://github.com/tayvano" target="_blank">tayvano</a>.
     </p>
 
     <p>
@@ -1572,15 +1568,15 @@
     </p>
 
     <p>
-      Source:
-      <a href="https://github.com/kvhnuke/etherwallet" target="_blank">MyEtherWallet.com & MyEtherWallet CX on github</a>
+      Github:
+      <a href="https://github.com/kvhnuke/etherwallet" target="_blank">MyEtherWallet.com & MyEtherWallet CX</a>
     </p>
 
     <p><span translate="NAV_Contact">Contact</span>:
-      <a href="mailto:myetherwallet@gmail.com" target="_blank"> Email </a> &middot;
-      <a href="https://twitter.com/myetherwallet" target="_blank"> Twitter </a> &middot;
-      <a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank"> kvhnuke on reddit </a> &middot;
-      <a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank"> tayvano (insom) on reddit </a>
+      <a href="mailto:myetherwallet@gmail.com" target="_blank">Email</a> &middot;
+      <a href="https://twitter.com/myetherwallet" target="_blank">Twitter</a> &middot;
+      <a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank">kvhnuke on reddit</a> &middot;
+      <a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank">tayvano (insom) on reddit</a>
     </p>
 
     <p ng-show="showBlocks" class="text-right" style="font-size: 10px">ETH Block#: {{ethBlockNumber}} &middot; ETC Block#: {{etcBlockNumber}}</p>
