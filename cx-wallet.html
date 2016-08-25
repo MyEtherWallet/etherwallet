@@ -104,8 +104,7 @@
       <tr>
         <th></th>
         <th></th>
-        <th translate="MYWAL_Nick">Wallet Nickname</th>
-        <th translate="MYWAL_Address">Wallet Address</th>
+        <th translate="x_Wallet">Wallet</th>
         <th translate="MYWAL_Bal">Balance</th>
         <th translate="MYWAL_Edit">Edit</th>
         <th translate="MYWAL_View">View</th>
@@ -116,17 +115,25 @@
       <tr ng-repeat="twallet in allWallets track by $index">
         <td>{{$index+1}}</td>
         <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
-        <td>{{twallet.nick}}</td>
-        <td>{{twallet.addr}}</td>
         <td>
-          <strong class="text-success">{{twallet.balance | number:4 }} ETH</strong><br>
-          <small><span ng-repeat="token in twallet.tokens">{{token.getBalance() | number:2 }} {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
-          <br />
-          <small><span>{{twallet.btc | number:2 }} BTC</span> &nbsp;&nbsp; <span>$ {{twallet.usd | number:2 }} USD</span> &nbsp;&nbsp; <span>€ {{twallet.eur | number:2 }} EUR</span></small>
+          {{twallet.nick}} <br />
+          <span class="mono">{{twallet.addr}}</span>
         </td>
-        <td class="text-center"><a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a></td>
-        <td class="text-center"><a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')"><img src="images/icon-view.svg" title="View Wallet Details" /></a></td>
-        <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
+        <td>
+          <strong class="text-success">{{twallet.balance }} ETH</strong><br>
+          <span class="small" ng-repeat="token in twallet.tokens">{{token.getBalance()}} {{token.getSymbol()}} &nbsp;&nbsp; </span>
+          <br />
+          <span class="small"> {{twallet.btc }} BTC &nbsp;&nbsp; $ {{twallet.usd }} USD &nbsp;&nbsp; € {{twallet.eur }} EUR </small>
+        </td>
+        <td class="text-center">
+          <a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a>
+        </td>
+        <td class="text-center">
+          <a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')"><img src="images/icon-view.svg" title="View" /></a>
+        </td>
+        <td class="text-center">
+          <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')"><img src="images/icon-remove.svg" title="Remove" /></a>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -141,8 +148,7 @@
         <tr>
           <th></th>
           <th></th>
-          <th translate="MYWAL_Nick">Wallet Nickname</th>
-          <th translate="MYWAL_Address">Wallet Address</th>
+          <th translate="x_Wallet">Wallet</th>
           <th translate="MYWAL_Bal">Balance</th>
           <th translate="MYWAL_Remove">Remove</th>
         </tr>
@@ -151,14 +157,16 @@
         <tr ng-repeat="twallet in allWatchOnly track by $index">
           <td>{{$index+1}}</td>
           <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
-          <td>{{twallet.nick}}</td>
-          <td>{{twallet.addr}}</td>
-
+          <td>
+            {{twallet.nick}}
+            <br />
+            <span class="mono"> {{twallet.addr}} </span>
+          </td>
           <td>
             <strong class="text-success">{{twallet.balance | number:4 }} ETH</strong><br>
-            <small><span ng-repeat="token in twallet.tokens">{{token.getBalance() | number:2 }} {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
+            <small><span ng-repeat="token in twallet.tokens">{{token.getBalance() }} {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
             <br />
-            <small><span>{{twallet.btc | number:2 }} BTC</span> &nbsp;&nbsp; <span>$ {{twallet.usd | number:2 }} USD</span> &nbsp;&nbsp; <span>€ {{twallet.eur | number:2 }} EUR</span></small>
+            <small><span>{{twallet.btc }} BTC</span> &nbsp;&nbsp; <span>$ {{twallet.usd }} USD</span> &nbsp;&nbsp; <span>€ {{twallet.eur }} EUR</span></small>
           </td>
           <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
         </tr>
@@ -179,7 +187,7 @@
       <a class="btn btn-warning" ng-click="resetWallet()" translate="MYWAL_Hide"> Hide Wallet Info </a>
     </div>
     <div class="col-xs-12">
-      <div class="alert alert-danger" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
+      <div class="alert alert-danger"><a ng-click="globalFuncs.changeHash('help')" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the help page for instructions.</a></div>
     </div>
 
     <div class="col-sm-6">
@@ -277,7 +285,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel"><span translate="MYWAL_Edit">Edit Wallet:</span> {{viewWallet.addr}}</h3>
+          <h3 class="modal-title text-primary" id="myModalLabel">
+            <span translate="MYWAL_Edit_2">Edit Wallet:</span>
+            {{viewWallet.addr}}
+          </h3>
         </div>
         <div class="modal-body">
           <form role="form">
@@ -304,7 +315,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel"><span translate="NAV_ViewWallet">View Wallet Info</span>: {{viewWallet.nick}}</h3>
+          <h3 class="modal-title text-warning" id="myModalLabel">
+            <span translate="NAV_ViewWallet">View Wallet Info</span>:
+            {{viewWallet.nick}}
+          </h3>
         </div>
         <div class="modal-body">
           <p translate="VIEWWALLET_Subtitle_Short"> This allows you to download different versions of private keys and re-print your paper wallet. </p>
@@ -335,17 +349,18 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="myModalLabel"><span translate="MYWAL_RemoveWal">Remove Wallet:</span> {{viewWallet.nick}}</h3>
+          <h3 class="modal-title text-danger" id="myModalLabel">
+            <span translate="MYWAL_Content_1"> Warning! You are about to remove your wallet: </span> {{viewWallet.nick}}
+          </h3>
         </div>
         <div class="modal-body">
-          <h4 translate="MYWAL_Content_1">Warning! You are about to remove your wallet.</h4>
-          <p translate="MYWAL_Content_2"> Be sure you have **saved the private key/JSON file and the password** associated with this wallet before you remove it.</p>
-          <p translate="MYWAL_Content_3"> If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.</p>
+          <p translate="MYWAL_Content_2"> Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.</p>
+          <p translate="MYWAL_Content_3"> If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add.</p>
           <h4 translate="SENDModal_Content_3">Are you sure you want to do this?</h4>
         </div>
         <div class="modal-footer text-center">
           <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
-          <button type="button" class="btn btn-primary" ng-click="generateAndSendWithdrawTx()" translate="SENDModal_Yes">Yes, I am sure! Withdraw.</button>
+          <button type="button" class="btn btn-danger" ng-click="generateAndSendWithdrawTx()" translate="MYWAL_Remove">Remove</button>
         </div>
       </div>
     </div>
