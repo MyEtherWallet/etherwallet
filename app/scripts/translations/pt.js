@@ -78,7 +78,7 @@ pt.data = {
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
   ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key: ',
+  ADD_Radio_3:            'Paste/Type Your Private Key',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',

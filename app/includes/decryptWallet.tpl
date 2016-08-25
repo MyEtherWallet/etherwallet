@@ -54,7 +54,7 @@
 
   <section class="col-md-4 col-sm-6" ng-show="showFDecrypt||showPDecrypt">
     <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt" translate="ADD_Label_6"> Unlock your Wallet </h4>
-    <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt" translate="ADD_Label_6"> Unlock your Wallet </h4>
+    <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt" translate="ADD_Label_6_short"> Unlock </h4>
     <div class="form-group">
       <a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK</a>
     </div>

@@ -14,7 +14,7 @@
       <div class="radio">
         <label>
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="fileupload">
-          <span translate="ADD_Radio_2">Select Your Wallet File (Keystore / JSON)</span>
+          <span translate="ADD_Radio_2">Select Your Wallet File (Keystore/JSON)</span>
         </label>
       </div>
       <div class="radio">
@@ -54,7 +54,7 @@
 
       <!-- Select Your Wallet File -->
       <div ng-show="walletType=='fileupload'">
-        <h4 translate="ADD_Radio_2">Select Your Wallet File (Keystore / JSON)</h4>
+        <h4 translate="ADD_Radio_2_alt">Select Your Wallet File: </h4>
         <div class="form-group">
           <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector"/>
           <a class="file-input btn btn-block btn-default btn-file marg-v-sm" ng-click="openFileDialog()" translate="ADD_Radio_2_short">SELECT WALLET FILE...</a>
@@ -101,7 +101,7 @@
         </div>
         <div ng-show="showBtnUnlock">
           <h4 translate="ADD_Label_6"> Unlock your Wallet </h4>
-          <div class="form-group"><a ng-click="decryptWallet()" class="btn btn-primary btn-block" translate="ADD_Label_6">Unlock your Wallet</a></div>
+          <div class="form-group"><a ng-click="decryptWallet()" class="btn btn-primary btn-block" translate="ADD_Label_6_short">Unlock your Wallet</a></div>
         </div>
         <div ng-show="showBtnAdd">
           <h4 translate="ADD_Label_7"> Add Account </h4>
@@ -117,28 +117,35 @@
 
     <!-- Sidebar -->
     <div class="col-sm-4">
+
       <h4 translate="sidebar_AccountInfo"> Account Information: </h4>
 
-      <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+      <div id="addressIdenticon" class="med"  title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
 
-      <div translate="sidebar_AccountInfo"> Account Address: </div>
+      <div translate="sidebar_AccountAddr"> Account Address: </div>
       <ul class="account-info">
         <li class="mono wrap"> {{wallet.getChecksumAddressString()}} </li>
       </ul>
 
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li>{{etherBalance}} ETH </li>
-        <li>{{etcBalance}} ETC</li>
+        <li><strong>{{etherBalance}}</strong> ETH </li>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li>{{usdBalance}} USD</li>
-        <li>{{eurBalance}} EUR</li>
-        <li>{{btcBalance}} BTC</li>
+        <li><strong>{{usdBalance}}</strong> USD</li>
+        <li><strong>{{eurBalance}}</strong> EUR</li>
+        <li><strong>{{btcBalance}}</strong> BTC</li>
       </ul>
+
+      <div translate="sidebar_TransHistory"> Transaction History: </div>
+      <ul class="account-info">
+        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
+      </ul>
+
     </div>
+
     <!-- / Sidebar -->
 
     <!-- Content -->
