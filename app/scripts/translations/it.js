@@ -1,14 +1,16 @@
 // Italian
+// Last sync with en.js: commit 1a0ae5a3a7ae25b286f9e4d
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
 
   /* New */
-  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
-  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Trasferisci tutto il saldo disponibile', // updated to read 'Send Entire Balance'
-  FOOTER_1b:            'Created by',
+  CX_error_1:           'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno!',
+  CX_quicksend:         'Invio rapido', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Invia l\'intero saldo', // updated to be shorter
+  x_Wallet:             'Portafoglio',
+  FOOTER_1b:            'Creato da',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
@@ -28,7 +30,6 @@ it.data = {
   NAV_Contact:          'Contatti',
 
   /* General */
-  x_Wallet:             'Portafoglio',
   x_Password:           'Password',
   x_Download:           'Download',
   x_Address:            'Il tuo indirizzo',
@@ -79,16 +80,16 @@ it.data = {
   ADD_Label_1:            'Cosa vuoi fare?',
   ADD_Radio_1:            'Genera un nuovo portafoglio',
   ADD_Radio_2:            'Seleziona il file del tuo portafoglio (Keystore / JSON)',
-  ADD_Radio_2_alt:        'Seleziona file portafoglio: ',
+  ADD_Radio_2_alt:        'Seleziona il file del tuo portafolio: ',
   ADD_Radio_2_short:      'SELEZIONA FILE PORTAFOGLIO...',
-  ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata',
+  ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata: ',
   ADD_Radio_4:            'Aggiungi un conto da osservare',
   ADD_Label_2:            'Crea un nome:',
   ADD_Label_3:            'Il portafoglio è crittografato. Inserire la password: ',
   ADD_Label_4:            'Aggiungi un conto da osservare',
   ADD_Warning_1:          'Puoi aggiungere qualunque conto da "osservare" nella scheda dei portafogli senza caricare una chiave privata. Ciò ** non ** significa che avrai accesso a quel portafoglio, né che potrai trasferire gli Ether lì contenuti.',
   ADD_Label_5:            'Inserisci l\'indirizzo: ',
-  ADD_Label_6:            'Sblocca portafoglio',
+  ADD_Label_6:            'Sblocca portafoglio: ',
   ADD_Label_6_short:      'Sblocca',
   ADD_Label_7:            'Aggiungi conto',
 
@@ -203,7 +204,7 @@ it.data = {
   MYWAL_Edit_2:           'Modifica portafoglio: ',
   MYWAL_Name:             'Nome portafoglio',
   MYWAL_Content_1:        'Attenzione! Stai per rimuovere il tuo portafoglio: ',
-  MYWAL_Content_2:        'Assicurati di aver **salvato la chiave privata/il file JSON e la password** associati a questo portafoglio prima di rimuoverlo.',
+  MYWAL_Content_2:        'Assicurati di aver **salvato la chiave privata e/o il file Keystore e la password** prima di rimuoverlo.',
   MYWAL_Content_3:        'Se vorrai utilizzare questo portafoglio con MyEtherWallet CX in futuro, dovrai ri-aggiungerlo manualmente tramite la chiave privata/JSON e password.',
 
   /* View Wallet Details */
@@ -314,26 +315,26 @@ it.data = {
   HELP_4_Desc_4:        'Se il portafoglio è crittografato, comparirà automaticamente una casella di testo. Inserisci la password.',
   HELP_4_Desc_5:        'Fai clic sul pulsante "Sblocca".',
   HELP_4_Desc_6:        'Inserisci l\'indirizzo al quale vuoi inviare nel campo "Indirizzo destinatario:".',
-  HELP_4_Desc_7:        'Inserisci l\'importo che vuoi inviare. Puoi anche fare clic sul link "Trasferisci tutto il saldo disponibile" se desideri trasferire l\'intero saldo.',
+  HELP_4_Desc_7:        'Inserisci l\'importo che vuoi inviare. Puoi anche fare clic sul link "Invia l\'intero saldo" se desideri trasferire l\'intero saldo.',
   HELP_4_Desc_8:        'Nota: A partire dalla fine di giugno 2016 dovrai assicurarti di separare i tuoi ETH/ETC prima di inviare ETH come avresti fatto normalmente. Vedi la domanda n. 6 qui sotto per ulteriori informazioni.',
-  HELP_4_Desc_9:        'Fai clic su "Genera transazione firmata".',
+  HELP_4_Desc_9:        'Fai clic su "Genera transazione".',
   HELP_4_Desc_10:       'Compariranno un paio di ulteriori campi. È perché il tuo browser ha generato la transazione.',
   HELP_4_Desc_11:       'Fai clic sul pulsante azzurro "Invia transazione" in basso.',
   HELP_4_Desc_12:       'Comparirà un pop-up. Verifica che l\'importo e l\'indirizzo a cui stai inviando siano corretti. Quindi fai clic sul pulsante "Sì, sono sicuro! Esegui la transazione.".',
   HELP_4_Desc_13:       'La transazione verrà inviata. Verrà mostrato l\'ID della transazione (*TX ID*). Puoi fare clic sul TX ID per vederla sulla *blockchain*. ',
 
   HELP_4CX_Title:       '4) Come invio degli ether utilizzando MyEtherWallet CX?',
-  HELP_4CX_Desc_1:      'Innanzitutto devi aggiungere un portafoglio. Dopo averlo fatto hai 2 opzioni: la funzionalità "QuickSend" dall\'icona dell\'estensione di Chrome o la pagina "Invia ether".', /* FIXME: translate "QuickSend" when the drop-down menu will be translatable*/
-  HELP_4CX_Desc_2:      'QuickSend:', /* FIXME: All HELP_4CX_Desc fields: translate again when the drop-down menu will be translatable*/
+  HELP_4CX_Desc_1:      'Innanzitutto devi aggiungere un portafoglio. Dopo averlo fatto hai 2 opzioni: la funzionalità "Invio rapido" dall\'icona dell\'estensione di Chrome o la pagina "Invia ether".',
+  HELP_4CX_Desc_2:      'Invio rapido:',
   HELP_4CX_Desc_3:      'Fai clic sull\'icona dell\'estensione di Chrome.',
-  HELP_4CX_Desc_4:      'Fai clic sul pulsante "QuickSend".',
+  HELP_4CX_Desc_4:      'Fai clic sul pulsante "Invio rapido".',
   HELP_4CX_Desc_5:      'Seleziona il portafoglio dal quale desideri inviare.',
-  HELP_4CX_Desc_6:      'Inserisci l\'indirizzo al quale vuoi inviare nel campo "To Address:".',
-  HELP_4CX_Desc_7:      'Inserisci l\'importo che vuoi inviare. Puoi anche fare clic sul link "Send Entire Balance" se desideri trasferire l\'intero saldo.',
-  HELP_4CX_Desc_8:      'Fai clic su "Send Transaction". ',
+  HELP_4CX_Desc_6:      'Inserisci l\'indirizzo al quale vuoi inviare nel campo "Indirizzo destinatario:".',
+  HELP_4CX_Desc_7:      'Inserisci l\'importo che vuoi inviare. Puoi anche fare clic sul link "Invia l\'intero saldo" se desideri trasferire l\'intero saldo.',
+  HELP_4CX_Desc_8:      'Fai clic su "Invia transazione". ',
   HELP_4CX_Desc_9:      'Verifica che l\'importo e l\'indirizzo a cui stai inviando siano corretti.',
   HELP_4CX_Desc_10:     'Inserisci la password del portafoglio.',
-  HELP_4CX_Desc_11:     'Fai clic su "Send Transaction."',
+  HELP_4CX_Desc_11:     'Fai clic su "Invia transazione."',
   HELP_4CX_Desc_12:     'Tramite la pagina "Invia ether": ',
 
   HELP_5_Title:         '5) Come faccio ad eseguire MyEtherWallet.com offline/in locale? ',
@@ -386,7 +387,7 @@ it.data = {
   HELP_7_Desc_8:        'Inserisci l\'indirizzo, il nome, e i decimali del token. Questi valori sono forniti dagli sviluppatori del token e sono necessari anche quando aggiungi il token in Mist per osservarlo.',
   HELP_7_Desc_9:        'Fai clic su "Salva".',
   HELP_7_Desc_10:       'Ora puoi inviare il token e anche vederne il saldo nella barra laterale.',
-  HELP_7_Desc_11:       'Fai clic su "Genera transazione firmata".',
+  HELP_7_Desc_11:       'Fai clic su "Genera transazione".',
   HELP_7_Desc_12:       'Compariranno un paio di ulteriori campi. È perché il tuo browser ha generato la transazione.',
   HELP_7_Desc_13:       'Fai clic sul pulsante azzurro "Invia transazione" in basso.',
   HELP_7_Desc_14:       'Comparirà un pop-up. Verifica che l\'importo e l\'indirizzo a cui stai inviando siano corretti. Quindi fai clic sul pulsante "Sì, sono sicuro! Esegui la transazione.".',
@@ -415,7 +416,7 @@ it.data = {
   HELP_10_Desc_6:        'Il "LIMITE GAS" ha un valore predefinito di 21000. Questo valore è sufficiente per una transazione standard. Se desideri inviare ad un contratto o se includi nella transazione dati aggiuntivi avrai bisogno di aumentare il limite gas. Eventuale gas in eccesso ti sarà restituito.',
   HELP_10_Desc_7:        'Se lo desideri, inserisci dei dati. Se lo fai, dovrai aumentare il limite gas a un valore superiore al limite predefinito di 21000. Tutti i dati sono in formato HEX.',
   HELP_10_Desc_8:        'Seleziona il file del tuo portafoglio -oppure- la tua chiave privata e sblocca il portafoglio.',
-  HELP_10_Desc_9:        'Premi il pulsante "GENERA TRANSAZIONE FIRMATA".',
+  HELP_10_Desc_9:        'Premi il pulsante "GENERA TRANSAZIONE".',
   HELP_10_Desc_10:       'I campi sotto il pulsante saranno riempiti con la transazione firmata. Copiala e ritorna al tuo computer online. ',
   HELP_10_Desc_11:       'Sul tuo computer online, incolla la transazione firmata nel campo di testo nel passo n. 3 e fai clic su "Invia transazione". In questo modo la transazione verrà trasmessa.',
 
