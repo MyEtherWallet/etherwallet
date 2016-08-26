@@ -167,7 +167,7 @@ en.data = {
   OFFLINE_Step1_Button:  'Generate Information',
   OFFLINE_Step1_Label_1: 'From Address: ',
   OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
-  OFFLLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
+  OFFLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
   OFFLINE_Step2_Label_1:  'To Address: ',
   OFFLINE_Step2_Label_2:  'Value / Amount to Send',
   OFFLINE_Step2_Label_3:  'Gas Price ',
