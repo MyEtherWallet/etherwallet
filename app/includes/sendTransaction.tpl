@@ -1,5 +1,5 @@
 <!-- Send Transaction Page -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id" ng-controller='sendTxCtrl'>
 
   <article class="collapse-container">
     <div ng-click="wd = !wd">
@@ -19,7 +19,7 @@
 
 
 
-  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+  <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
 
     <!-- Sidebar -->

@@ -1,5 +1,5 @@
 <!-- Digix -->
-<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.digix.id">
+<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.digix.id"  ng-controller='digixCtrl'>
 
   <article class="collapse-container">
     <div ng-click="wd = !wd">
@@ -19,7 +19,7 @@
 
 
 
-  <section class="row" ng-show="wallet!=null" ng-controller='digixCtrl'>
+  <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
 
     <!-- Sidebar -->

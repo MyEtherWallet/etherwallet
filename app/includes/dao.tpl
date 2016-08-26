@@ -1,5 +1,5 @@
 <!-- The DAO -->
-<article class="tab-pane page-dao active" ng-if="globalService.currentTab==globalService.tabs.dao.id">
+<article class="tab-pane page-dao active" ng-if="globalService.currentTab==globalService.tabs.dao.id"  ng-controller='theDaoCtrl'>
 
   <!-- TOP: The DAO -->
   <article class="collapse-container">
@@ -23,7 +23,7 @@
 
 
   <!-- BOTTOM: The DAO -->
-  <section class="row" ng-show="wallet!=null" ng-controller='theDaoCtrl'>
+  <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
 
     <!-- Sidebar -->
