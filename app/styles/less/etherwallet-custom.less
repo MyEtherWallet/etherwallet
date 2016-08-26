@@ -7,7 +7,12 @@ html {
 .container {
   width: 100%;
   max-width: 1400px;
-  padding: 0 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  @media screen and (max-width: @screen-sm) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }
 
 img {

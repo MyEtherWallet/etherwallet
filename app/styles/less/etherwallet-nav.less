@@ -1,4 +1,4 @@
-// header
+// Header
 .header-branding {
   color: white;
   padding: 0;
@@ -14,7 +14,7 @@
   }
   .brand {
     @media screen and (min-width: 901px) {
-      flex-basis: 265px;
+      flex-basis: 255px;
     }
     img {
       max-width: 1000px;
@@ -62,64 +62,66 @@
   }
 }
 
-// navigation
-.nav-scroll {
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
-  margin: 0;
-  font-size: 0;
-  white-space: nowrap;
-  @media screen and (max-width: @screen-sm) {
-    margin: 0 -5%;
-  }
-  .nav-inner {
-    border-bottom: 2px solid @gray-lighter;
-    display: inline-block;
+
+// Navigation
+.nav-container {
+  position: relative;
+  overflow-y: hidden;
+
+  .nav-scroll {
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    margin: 0 0 -6px;
     font-size: 0;
-    margin-bottom: 10px;
-    min-width: 100%;
-    padding-top: 5px;
-    vertical-align: middle;
-    .nav-item {
+    white-space: nowrap;
+    @media screen and (max-width: @screen-sm) {
+      margin: 0 -5% -20px;
+    }
+    .nav-inner {
+      border-bottom: 2px solid @gray-lighter;
       display: inline-block;
       font-size: 0;
-      a {
-        color: darken(@link-color, 15%);
-        display: block;
-        font-size: 16px;
-        font-weight: 300;
-        padding: 10px;
-        white-space: nowrap;
-        position: relative;
-      }
-      a:after {
-        content: "";
-        background: @brand-primary;
-        height: 2px;
-        width: 100%; left: 0px;
-        position: absolute;
-        bottom: 0;
-        transition: all 250ms ease 0s;
-        transform: scale(0);
-      }
-      &.active a,
-      a:hover,
-      a:focus {
-        color: @brand-primary;
-        text-decoration: none;
-        transition: all 250ms ease 0s;
-        &:after {
-          transform: scale(1);
+      margin-bottom: 20px;
+      min-width: 100%;
+      padding-top: 5px;
+      vertical-align: middle;
+      .nav-item {
+        display: inline-block;
+        font-size: 0;
+        a {
+          color: darken(@link-color, 15%);
+          display: block;
+          font-size: 16px;
+          font-weight: 300;
+          padding: 10px;
+          white-space: nowrap;
+          position: relative;
+        }
+        a:after {
+          content: "";
+          background: @brand-primary;
+          height: 2px;
+          width: 100%; left: 0px;
+          position: absolute;
+          bottom: -1px;
           transition: all 250ms ease 0s;
+          transform: scale(0);
+        }
+        &.active a,
+        a:hover,
+        a:focus {
+          color: @brand-primary;
+          text-decoration: none;
+          transition: all 250ms ease 0s;
+          &:after {
+            transform: scale(1);
+            transition: all 250ms ease 0s;
+          }
         }
       }
     }
   }
-}
-
-.nav-container {
-    position: relative;
 
   .nav-arrow-right,
   .nav-arrow-left {
@@ -157,3 +159,5 @@
     }
   }
 }
+
+

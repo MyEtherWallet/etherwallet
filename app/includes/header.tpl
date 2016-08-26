@@ -37,7 +37,7 @@
     </a>
     <section class="container-fluid bg-gradient header-branding">
       <section class="container">
-        <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="265px" alt="My Ether Wallet" /></a>
+        <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="64px" width="245px" alt="My Ether Wallet" /></a>
         <div class="tagline">
           <span style="max-width: 375px" translate="MEW_Tagline">Open Source JavaScript Client-Side Ether Wallet</span>
 }
@@ -49,7 +49,7 @@
     </a>
     <section class="container-fluid bg-gradient header-branding">
       <section class="container">
-        <a class="brand" href="/cx-wallet.html"><img src="images/etherwalletcx-logo.png" height="70px" width="265px" alt="My Ether Wallet" /></a>
+        <a class="brand" href="/cx-wallet.html"><img src="images/etherwalletcx-logo.png" height="64px" width="245px" alt="My Ether Wallet" /></a>
         <div class="tagline">
           <span style="max-width: 375px" translate="CX_Tagline">Open Source JavaScript Client-Side Ether Wallet Chrome Extension</span>
 }
@@ -88,7 +88,7 @@
   </section>
 
   <section class="container nav-container overflowing" >
-    <a ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(50);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
+    <a ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
     <div class="nav-scroll">
       <nav class="nav-inner">
         @@if (site === 'mew' ) {
@@ -99,7 +99,7 @@
         }
       </nav>
     </div>
-    <a ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(50);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>
+    <a ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(100);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>
   </section>
 
 </header>
