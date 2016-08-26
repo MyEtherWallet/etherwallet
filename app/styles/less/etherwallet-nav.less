@@ -1,19 +1,38 @@
 // header
 .header-branding {
   color: white;
-  @media screen and (max-width: 912px) {
+  padding: 0;
+  @media screen and (max-width: 900px) {
     text-align: center;
   }
+  .container {
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+    }
+  }
+  .brand {
+    @media screen and (min-width: 901px) {
+      flex-basis: 265px;
+    }
+    img {
+      max-width: 1000px;
+    }
+  }
   .tagline {
-    float: right;
     font-size: 18px;
     font-weight: 200;
-    margin-top: 23px;
     color: white;
-    @media screen and (max-width: 912px) {
-      float: none;
+    flex: 1 auto;
+    text-align: right;
+    padding: 5px 0;
+    @media screen and (max-width: 900px) {
       text-align: center;
-      margin: 5px 0;
+    }
+    > * {
+      display: inline;
+      vertical-align: middle;
     }
   }
   a {
@@ -26,12 +45,6 @@
     opacity: .8;
     color: white;
     text-decoration: none;
-  }
-  img {
-    float: left;
-    @media screen and (max-width: 912px) {
-      float: none;
-    }
   }
   .dropdown {
     padding: 2px 0;
