@@ -4,21 +4,22 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* New */
-  CX_error_1:           'Je hebt geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
-  CX_quicksend:         'VerzendSnel', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Verzend volledig saldo',  // updated to read 'Send Entire Balance'
-  FOOTER_1b:            'Gemaakt door',
+  /* New - Deploy Contracts */
+  NAV_DeployContract:  'Verspreid Contract',
+  DEP_generate:        'Genereer Bytecode',
+  DEP_generated:       'Gegenereerde Bytecode',
+  DEP_signtx:          'Onderteken Transactie',
+  DEP_interface:       'Gegenereerde Interface',
 
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
-  NAV_GenerateWallet:   'Wallet Genereren',
+  NAV_GenerateWallet:   'Genereer Wallet',
   NAV_BulkGenerate:     'Bulk Genereren',
   NAV_SendEther:        'Verzend Ether',
   NAV_SendTokens:       'Verzend Tokens',
   NAV_Offline:          'Verzend Offline',
-  NAV_WithdrawDAO:      'DAO Token Opnemen',
+  NAV_WithdrawDAO:      'DAO Opnemen',
   DAO_TitleLong:        'DAO Token in ETH omzetten',
   NAV_ClaimDGD:         'Claim DGD',
   DGD_TitleLong:        'Claim je DGD Tokens',
@@ -41,20 +42,21 @@ nl.data = {
   x_KeystoreDesc:       'Dit Keystore / JSON bestand voldoen aan het formaat zoals gebruikt door Mist & Geth waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
   x_Json:               'JSON Bestand (onversleuteld)',
   x_JsonDesc:           'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',
-  x_PrintShort:         'Printen',
-  x_Print:              'Print Papieren Wallet',
-  x_PrintDesc:          'ProTip: Klik print en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
+  x_PrintShort:         'Afdrukken',
+  x_Print:              'Druk je papieren wallet af',
+  x_PrintDesc:          'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
   x_CSV:                'CSV bestand (onverlseuteld)',
   x_TXT:                'TXT bestand (onverlseuteld)',
 
   /* Header */
-  MEW_Warning_1:        'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Wees waakzaam voor phishing sites!',
+  MEW_Warning_1:        'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites!',
   CX_Warning_1:         'Zorg voor **externe backups** van alle wallets die je hier opslaat. Er kan kunnen diverse dingen gebeuren die ervoor kunnen zorgen dat je gegevens in deze Chrome Extensie verloren gaan, inclusief het deinstalleren en installeren van de extensie. Deze extensie is een manier om je wallet gemakkelijk toegankelijk te maken, **geen** manier om ze te backuppen.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
 	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extensie',
 
   /* Footer */
   FOOTER_1:             'Een open source, javascript, client-side tool om Ethererum Wallets te genereren & transacties te verzenden.',
+  FOOTER_1b:            'Gemaakt door',
   FOOTER_2:             'Donaties worden zeer gewaardeerd:',
   FOOTER_3:             'Client-side wallet genereren door',
 
@@ -66,7 +68,7 @@ nl.data = {
   sidebar_Equiv:        'Equivalente Waarde: ',
   sidebar_TransHistory: 'Transactie Geschiedenis: ',
   sidebar_DGDBal:       'DGD Crowdsale Informatie:',
-  sidebar_donation:     'MyEtherWallet is een gratis, open-source service toegewijd aan  jouw privacy en beveiliging. De meer donaties we ontvangen, de meer tijd we zullen spenderen aan nieuwe functies, aan de hand van jouw terugkoppeling, en we je kunnen geven wat jij wilt. Wij zijn slechts twee mensen die de wereld een stukje beter willen maken. Help jij mee?',
+  sidebar_donation:     'MyEtherWallet is een gratis, open-source service toegewijd aan  jouw privacy en beveiliging. Des te meer donaties we ontvangen, des te meer tijd we zullen spenderen aan nieuwe functies, aan de hand van jouw terugkoppeling, en we je kunnen geven wat jij wilt. Wij zijn slechts twee mensen die de wereld een stukje beter willen maken. Help jij mee?',
   sidebar_donate:       'Doneer',
   sidebar_thanks:       'BEDANKT!!!',
 
@@ -77,9 +79,9 @@ nl.data = {
 
   /* Add Wallet */
   ADD_Label_1:            'Wat wil je doen?',
-  ADD_Radio_1:            'Genereer nieuwe Wallet',
-  ADD_Radio_2:            'Selecteer Je Wallet Bestand (Keystore / JSON)',
-  ADD_Radio_2_alt:        'Selecteer Je Wallet Bestand: ',
+  ADD_Radio_1:            'Genereer nieuwe wallet',
+  ADD_Radio_2:            'Selecteer Je wallet bestand (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Selecteer Je wallet bestand: ',
   ADD_Radio_2_short:      'SELECTEER WALLET BESTAND...',
   ADD_Radio_3:            'Plak/Type je prive sleutel ',
   ADD_Radio_4:            'Voeg een te bekijken account toe',
@@ -88,7 +90,7 @@ nl.data = {
   ADD_Label_4:            'Voeg een te bekijken account toe',
   ADD_Warning_1:          'Je kunt elk account toevoegen als "bekijken" in het wallets tabblad zonder de prive sleutel te uploaden. Dit betekend ** niet ** dat je toegang hebt tot deze wallet, noch dat je er Ether vanuit kunt versturen.',
   ADD_Label_5:            'Voor het Adres in: ',
-  ADD_Label_6:            'Ontsleutel je Wallet: ',
+  ADD_Label_6:            'Ontsleutel je wallet: ',
   ADD_Label_6_short:      'Ontsleutel',
   ADD_Label_7:            'Voeg account toe',
 
@@ -96,14 +98,14 @@ nl.data = {
   GEN_desc:               'Als je meerdere wallets wilt gererenen, kun je dat hier doen: ',
   GEN_Label_1:            'Geef een sterk wachtwoord (ten minste 9 karakters)',
   GEN_Placeholder_1:      'Vergeet NIET om dit op te slaan!',
-  GEN_SuccessMsg:         'Succes! Je wallet is gegenereerd.',
-  GEN_Warning:            '**Je hebt je Keystore/JSON Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkijken in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
+  GEN_SuccessMsg:         'Gelukt! Je wallet is gegenereerd.',
+  GEN_Warning:            '**Je hebt je Keystore/JSON Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
   GEN_Label_2:            'Sla je Keystore/JSON of Prive Sleutel op. Vergeet je wachtwoord hierboven niet.',
   GEN_Label_3:            'Sla je adres op.',
-  GEN_Label_4:            'Druk je papieren Wallet af, of bewaar een QR code verie. (optioneel)',
+  GEN_Label_4:            'Druk je papieren wallet af, of bewaar hem als QR code. (optioneel)',
 
   /* Bulk Generate Wallets */
-  BULK_Label_1:           'Aantal te genereren Wallets',
+  BULK_Label_1:           'Aantal te genereren wallets',
   BULK_Label_2:           'Genereer Wallets',
   BULK_SuccessMsg:        'Gelukt! Je wallets zijn gegenereerd.',
 
@@ -116,7 +118,8 @@ nl.data = {
   SEND_generate:         'Genereer Transactie',
   SEND_raw:              'Raw Transactie',
   SEND_signed:           'Gesigneerde Transactie',
-  SEND_trans:            'Verstuur Transactie',
+  SEND_trans:            'Verzend Transactie',
+  SEND_TransferTotal:   'Verzend volledig saldo',
   SENDModal_Title:       'Waarschuwing! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Je staat op het punt om het volgende bedrag over te maken: ',
@@ -132,7 +135,7 @@ nl.data = {
   TOKEN_Dec:             'Decimalen: ',
 
   /* Send Transaction */
-  TRANS_desc:            'Als je Tokens wilt versturen, gebruik dan de "Verstuur Token" pagina i.p.v. deze pagina.',
+  TRANS_desc:            'Als je Tokens wilt versturen, gebruik dan de "Verzend Token" pagina i.p.v. deze pagina.',
   TRANS_warning:         'Als je gebruik maakt van de "Enkel ETH" of "Enkel ETC" functies zul je de transactie uitvoeren via een contract. Sommige diensten hebben  problemen met het accepteren van deze transacties. Lees meer.',
   TRANS_standard:        'ETH (Standaard Transactie)',
   TRANS_eth:             'Enkel ETH',
@@ -140,27 +143,27 @@ nl.data = {
   TRANS_advanced:        '+Geavanceerd: Voeg meer Gas of Data toe ',
   TRANS_data:            ' Data: ',
   TRANS_gas:             ' Gas: ',
-  TRANS_sendInfo:        'Een standaard transactie met 21000 gas zal 0.000441 ETH kosten. Wij gebruiken een iets-boven-minimum gas prijs van 0.000000021 ETH om te garranderen dat de transactie snel uitgevoerd zal worden. Wij zijn niet verandwoordelijk voor je transactie kosten.',
+  TRANS_sendInfo:        'Een standaard transactie met 21000 gas zal 0.000441 ETH kosten. Wij gebruiken een iets-boven-minimum gas prijs van 0.000000021 ETH om te garranderen dat de transactie snel uitgevoerd zal worden. Wij zijn niet verantwoordelijk voor je transactie kosten.',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Enkel ETH" en "Enkel ETC" Transacties',
   TRANSModal_Content_0:  'Een opmerking met betrekking tot de verschillende typen transacties en diensten:',
-  TRANSModal_Content_1:  '**ETH (Standaard Transactie): ** Hiermee genereer je een standaard transactie direct van een adres naar een ander. Het verbruikt de standaard hoeveelheid gas van 21000. Het is waarschijnlijk dan elke ETH verzonden met deze methode zal worden nagespeeld (replayed) op de ETC blockchain.',
+  TRANSModal_Content_1:  '**ETH (Standaard Transactie): ** Hiermee genereer je een standaard transactie, direct van een adres naar een ander. Het verbruikt de standaard hoeveelheid gas van 21000. Het is waarschijnlijk dat elke verzonden ETH met deze methode zal worden nagespeeld (replayed) op de ETC blockchain.',
   TRANSModal_Content_2:  '**Enkel ETH: ** Hiermee verstuur je via [Timon Rapp\'s "replay protection contract" (zoals aanbevolen door VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) zodat je enkel verstuurd op de **ETH** blockchain.',
   TRANSModal_Content_3:  '**Enkel ETC: ** Hiermee verstuur je via [Timon Rapp\'s "replay protection contract" (zoals aanbevolen door VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) zodat je enkel verstuurd op de **ETC** blockchain. ',
-  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Verstuur enkel via standaard transacties. Als je via de "Only" contracts hebt verstuurd zul je contact op moeten nemen met hun helpdesk zodat ze je kunnen restitueren [Je kunt ook Shapeshift\'s "split" tool uitproberen.](https://split.shapeshift.io/)',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Verstuur enkel via standaard transacties. Als je via de "Enkel" contracten hebt verstuurd zul je contact moeten opnemen met hun helpdesk zodat ze je kunnen restitueren [Je kunt ook Shapeshift\'s "split" tool uitproberen.](https://split.shapeshift.io/)',
   TRANSModal_Content_5:  '**Kraken & Poloniex:** Geen problemen bekend. Gebruik wat je voorkeur heeft.',
-  TRANSModal_Yes:        'Mooi, ik begrijp het nu.',
+  TRANSModal_Yes:        'Mooi, nu begrijp ik het.',
   TRANSModal_No:         'Oh jee, nu snap ik er nog niets van. Help me.',
 
   /* Offline Transaction */
-  OFFLINE_Title:         'Genereer & Verstuur Offline Transactie',
-  OFFLINE_Desc:          'Een offline transactie vergt drie stappen. Stap 1 en 3 doe je op een online computer, terwijl je stap 2 uitvoert op een offline/afgeschermde computer. Dit zorgt ervoor dat je prive sleutel niet in aanraking komt met een met internet verbonden computer.',
-  OFFLLINE_Step1_Title:  'Stap 1: Genereer Informatie (Online Computer)',
-  OFFLINE_Step1_Button:  'Genereer Information',
+  OFFLINE_Title:         'Genereer & Verzend een Offline Transactie',
+  OFFLINE_Desc:          'Een offline transactie doe je in drie stappen. Stap 1 en 3 doe je op een online computer, terwijl je stap 2 uitvoert op een offline/afgeschermde computer. Dit zorgt ervoor dat je prive sleutel niet in aanraking komt met een met internet verbonden computer.',
+  OFFLINE_Step1_Title:  'Stap 1: Genereer Informatie (Online Computer)',
+  OFFLINE_Step1_Button:  'Genereer Informatie',
   OFFLINE_Step1_Label_1: 'Van Adres: ',
-  OFFLINE_Step1_Label_2: 'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd vam het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
-  OFFLLINE_Step2_Title:   'Stap 2: Genereer Transactie (Offline Computer)',
+  OFFLINE_Step1_Label_2: 'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd van het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
+  OFFLINE_Step2_Title:   'Stap 2: Genereer Transactie (Offline Computer)',
   OFFLINE_Step2_Label_1:  'Aan Adres: ',
   OFFLINE_Step2_Label_2:  'Waarde / Te Verzenden Bedrag',
   OFFLINE_Step2_Label_3:  'Gas Prijs ',
@@ -173,16 +176,16 @@ nl.data = {
   OFFLINE_Step2_Label_6b: 'Dit is optioneel. Data wordt vaak gebruikt als je transacties naar contracten verstuurd.',
   OFFLINE_Step2_Label_7:  'Selecteer en geef je Prive Sleutel / JSON in.',
   OFFLINE_Step3_Title:    'Stap 3: Verstuur / Publiceer Transactie (Online Computer)',
-  OFFLINE_Step3_Label_1:  'Plak de gesigneerde transactie van Stap 2 hier en click de "VERSTUUR TRANSACTIE" knop.',
+  OFFLINE_Step3_Label_1:  'Plak de gesigneerde transactie van Stap 2 hier en click de "Verzend Transactie" knop.',
 
   /* DAO */
-  DAO_Desc:               'Gebruik dit tab om je DAO Tokens om te zitten in ETH. Als je DOA Tokens wilt versturen, gebruik dan het Verstuur Tokens Tab.',
+  DAO_Desc:               'Gebruik dit tab om je DAO Tokens om te zitten in ETH. Als je DOA Tokens wilt versturen, gebruik dan het Verzend Tokens Tab.',
   DAO_Inst:               'Ja. Klik eenvoudigweg op de grote rode knop. Dat is hoe gemakkelijk het is.',
   DAO_Warning:            'Als je een "Insufficient balance for gas" fout krijgt, zul je een kleine hoeveelheid ETH in je account moeten storten om de gas kosten voor deze actie te betalen. Voeg .01 ETH toe aan je account en probeer het opnieuw. ',
   DAOModal_Title:         'Voor de zekerheid...',
 
   /* Digix */
-  DGD_Desc:               'Claim je DigixDAO (DGD) tokens & badges. Om te claimen zul je meegedaan moeten hebben met de token sale van 30/31 maart 2016.  Als je DGD wilt versturen, gebruik dan het Verstuur Tokens Tab.',
+  DGD_Desc:               'Claim je DigixDAO (DGD) tokens & badges. Om te claimen zul je meegedaan moeten hebben met de token sale van 30/31 maart 2016.  Als je DGD wilt versturen, gebruik dan het Verzend Tokens Tab.',
   DGD_Label_1:            'Geschatte transactie kosten:',
   DGD_Label_2:            'Gegeven Maximum Transactie Kosten:',
   DGD_Label_3:            'Gas Prijs:',
@@ -211,6 +214,10 @@ nl.data = {
   VIEWWALLET_Subtitle_Short: 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren Wallet opnieuw afdrukken. ',
   VIEWWALLET_SuccessMsg:     'Gelukt! Hier zijn je Wallet details.',
 
+  /* Chrome Extension */
+  CX_error_1:           'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
+  CX_quicksend:         'VerzendSnel',
+
   /* Error Messages */
   ERROR_1:             'Geef alsjeblieft een geldig bedrag in.',
   ERROR_2:             'Je wachtwoord dient minimaal 9 karakters lang te zijn. Zorg voor een sterk wachtwoord. ',
@@ -238,11 +245,11 @@ nl.data = {
   SUCCESS_4:            'Je Wallet is succesvol toegevoegd: ',
   SUCCESS_5:            'Je hebt succesvol gestemd. Fijn dat je een actief participerend DAO deelnemer bent.',
 
-  /* Tranlsation Info */
-  translate_version:    '0.0',
-  Translator_Desc:      'Thank you to our translators: ',
-  TranslatorName_1:     'h3ll0fr13nd',
-  TranslatorAddr_1:     '',
+  /* Translation Info */
+  translate_version:    '0.1',
+  Translator_Desc:      'Veel dank voor onze vertalers: ',
+  TranslatorName_1:     '[h3ll0fr13nd](https://www.myetherwallet.com/?gaslimit=21000&to=0xB5FbCE123F12347206c881cae73A3046BA1A90bA&value=1.0#send-transaction)',
+  TranslatorAddr_1:     '0xB5FbCE123F12347206c881cae73A3046BA1A90bA',
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     ' ',
   TranslatorAddr_2:     ' ',
@@ -261,16 +268,16 @@ nl.data = {
   HELP_Warning:       'Als je een wallet aanmaakt -of- repo hebt gedownload voor **31 december 2015**, check dan alsjebieft je wallets en download een nieuwe versie van de repo. Klik voor detais.',
   HELP_Desc:          'Zie je dat er iets mist? Of heb je een andere vraag? [Neem contact met ons op](mailto:myetherwallet@gmail.com), en we zullen niet alleen je vraag beantwoorden, maar ook deze pagina updated zodat deze nog nuttiger wordt for the mensen in de toekomst!',
   HELP_Remind_Title:  'Enkele herinneringen',
-  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, en enkele onderliggende Javascript libraries waar we gebruik van maken zijn onderheving aan active ontwikkeling.** Hoewel we grondig testen & er inmiddels tienduizenden wallets succesvol zijn aangemaakt door mensen over de hele wereld, blijft er altijd een geringe kans dat iets er onverwachts optreed waardoor je je ETH kunt verliezen. Investeer alsjeblieft niet meer dan dat je bereid bent om te verliezen, en wees voorzichtig. Zou er eventueel toch iets gebeuren vinden we dat zeer spijtig, echter **wij zullen nooit verantwoordelijk zijn voor de verloren Ether**.',
-  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX zijn geen "web wallets". Je maakt bij ons geen account aan of geeft nooit je Ether aan ons bezit. Alle gegevens verlaten nooit je computer/je browser. We helpen je alleen gemakkelijk toegang te verkrijgen tot de blockchain zodat je er informatie in kunt opslaan en kunt uitlezen.',
-  HELP_Remind_Desc_3: 'Als je je prive sleutel en wachtwoord niet opslaat, is er geen enkele manier om toegang tot je wallet te verkrijgen of het saldo welk erop staat.  Maak back-up en bewaar deze op meerdere fysieke lokaties en niet alleen op je eigen computer!',
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, en enkele onderliggende Javascript libraries waar we gebruik van maken zijn onderheving aan active ontwikkeling.** Hoewel we grondig testen & er inmiddels tienduizenden wallets succesvol zijn aangemaakt door mensen over de hele wereld, blijft er altijd een geringe kans dat iets er onverwachts optreedt waardoor je je ETH kunt verliezen. Investeer alsjeblieft niet meer dan dat je bereid bent om te verliezen, en wees voorzichtig. Zou er onverhoopt toch iets gebeuren vinden we dat zeer spijtig, echter **zullen wij nooit verantwoordelijk zijn voor de verloren Ether**.',
+  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX zijn geen "web wallets". Je maakt bij ons geen account aan noch geef je ooit je Ether aan ons in bezit. Alle gegevens verlaten nooit je computer/je browser. We helpen je alleen gemakkelijk toegang te verkrijgen tot de blockchain zodat je er informatie in kunt opslaan en kunt uitlezen.',
+  HELP_Remind_Desc_3: 'Als je je prive sleutel en wachtwoord niet opslaat, is er geen enkele manier om toegang tot je wallet te verkrijgen of het saldo dat er in zit. Maak back-up`s en bewaar deze op meerdere fysieke lokaties en dus niet alleen op je eigen computer!',
 
   HELP_0_Title:        '0) Ik ben nieuw. Waar begin ik?',
   HELP_0_Desc_1:       'MyEtherWallet geeft je de mogelijkheid om nieuwe wallets te genereren zodat je daarin je Ether kunt bewaren in plaat van op een exchange. Dit process vind volledig lokaal plaats, op je eigen computer en niet op onze servers. Daarom **ben je volledig zelf verantwoordelijk voor het veilig opslaan** van je via deze website aangemaakte wallets.',
   HELP_0_Desc_2:       'Creer een nieuwe wallet.',
   HELP_0_Desc_3:       'Maak een wallet back-up.',
   HELP_0_Desc_4:       'Verrifieer dat je toegang hebt tot dit nieuwe wallet en dat je alle noodzakelijke informatie correct hebt opgeslagen.',
-  HELP_0_Desc_5:       'Verstuur Ether naar dit nieuwe wallet.',
+  HELP_0_Desc_5:       'Verzend Ether naar dit nieuwe wallet.',
 
   HELP_1_Title:        '1) Hoe creer ik een nieuw wallet ',
   HELP_1_Desc_1:       'Ga naar de "Genereer Wallet" pagina.',
@@ -323,18 +330,18 @@ nl.data = {
   HELP_4_Desc_13:       'De transactie zal worden verstuurt. Het TX ID zal worden weergegeven. Je kunt op dit TX ID klikken om het in de blockchain te bekijken. ',
 
   HELP_4CX_Title:       '4) Hoe verzend ik Ether met MyEtherWallet CX?',
-  HELP_4CX_Desc_1:      'Ten eerste heb je een wallet nodig. Zodra je die hebt, heb je 2 opties: De "QuickSend" functionalitiet vanuit het Chrome Extensie icoon of de "Verzend Ether" pagina.',
-  HELP_4CX_Desc_2:      'QuickSend:',
+  HELP_4CX_Desc_1:      'Ten eerste heb je een wallet nodig. Zodra je die hebt, heb je 2 opties: De "VerzendSnel" functionalitiet vanuit het Chrome Extensie icoon of de "Verzend Ether" pagina.',
+  HELP_4CX_Desc_2:      'VerzendSnel:',
   HELP_4CX_Desc_3:      'Klik op het Chrome Extensie icoon.',
-  HELP_4CX_Desc_4:      'Klik op de "QuickSend" knop.',
+  HELP_4CX_Desc_4:      'Klik op de "VerzendSnel" knop.',
   HELP_4CX_Desc_5:      'Selecteer het wallet waar vanuit je wilt verzenden.',
   HELP_4CX_Desc_6:      'Voer het adres in waar naar je wilt versturen in het "Aan adres:" veld.',
   HELP_4CX_Desc_7:      'Voer het te verzenden bedrag in. Je kunt ook klikken op de "Transfer total available balance" link als je het totaal beschikbare saldo wilt overmaken.',
   HELP_4CX_Desc_8:      'Klik "Verzend Transactie". ',
   HELP_4CX_Desc_9:      'Controleer dat het bedrag en het adres waarnaar je gaat verzenden correct zijn.',
   HELP_4CX_Desc_10:     'Voer het wachtwoord van je wallet in.',
-  HELP_4CX_Desc_11:     'Klik "Verstuur Transactie."',
-  HELP_4CX_Desc_12:     'Maak gebruik van de "Verstuur Ether" Pagina: ',
+  HELP_4CX_Desc_11:     'Klik "Verzend Transactie."',
+  HELP_4CX_Desc_12:     'Maak gebruik van de "Verzend Ether" Pagina: ',
 
   HELP_5_Title:         '5) Hoe voer ik MyEtherWallet.com offline/lokaal uit? ',
   HELP_5_Desc_1:        'Je kunt MyEtherWallet.com uitvoeren op je eigen computer in plaats van op de GitHub servers. Je kunt een wallet volledig offline genereren en transacties versturen met behulp van de "Offline Transactie" pagina.',
@@ -376,7 +383,7 @@ nl.data = {
 
   HELP_7_Title:         '7) Hoe verzend ik Tokens & voeg ik alternatieve tokens toe?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) is a goede manier om tokens te verkenen en de getallen omtrent het token op te zoeken.',
-  HELP_7_Desc_1:        'Navigeer naar de "Verstuur Token" pagina.',
+  HELP_7_Desc_1:        'Navigeer naar de "Verzend Token" pagina.',
   HELP_7_Desc_2:        'Ontsleutel je wallet.',
   HELP_7_Desc_3:        'Voer het adres in waar naar je wilt versturen in het "Aan adres:" veld.',
   HELP_7_Desc_4:        'Voer de te verzenden hoeveelheid in.',
@@ -403,7 +410,7 @@ nl.data = {
   HELP_8CX_Desc_2:       'Dat gezegd hebbende, is het dan ook **erg belangrijk** dat je een back-up maakt van je wallets die met MyEtherWallet CX zijn gegenereerd. Als er iets met MyEtherWallet CX of jouw computer gebeurd blijft op die manier je wallet bewaard, en heb alle noodzakelijke informatie bij de hand om toegang tot je Ether te verkrijgen. Zie vraag #2a om te leren hoe een back-up van je wallet kunt maken.',
   HELP_8CX_Desc_3:       'Als om wat voor reden dan ook MyEtherWallet CX verdwijnt van de Chrome Store, kunt je het altijd nog handmatig laden met de broncode van Github. Zie #5 hierboven.',
 
-  HELP_9_Title:          '9) Is de "Verstuur Ether" pagina offline?',
+  HELP_9_Title:          '9) Is de "Verzend Ether" pagina offline?',
   HELP_9_Desc_1:         ' Nee, verstuur transactie pagina is niet offline. De pagina heeft een internet verbinding nodig voor het bepalen van de actuele gas prijs, nonce van je account, en het versturen (broadcasten) van de transactie. Echter, het enige wat verstuurd wordt is je ondertekende transactie. Je prive sleutel blijft veilig bij je. We hebben nu ook een "Offline Transactie" pagina zodat je ervoor kunt zorgen dat je prive sleutels ten alle tijden op een offline/airgapped computer blijven.',
 
   HELP_10_Title:         '10) Hoe voer ik een offline transactie uit?',
@@ -417,11 +424,11 @@ nl.data = {
   HELP_10_Desc_8:        'Selecteer je wallet bestand -of- je prive sleutel en ontsleutel je wallet.',
   HELP_10_Desc_9:        'Druk op de "GENEREREER ONDERTEKENDE TRANSACTIE" knop.',
   HELP_10_Desc_10:       'Het data veld eronder zal worden ingevuld met je ondertekende transactie. Kopier dit veld en neem het mee terug naar je online computer. ',
-  HELP_10_Desc_11:       'Plak de ondertekende transactie op je online computer in het tekst veld van stap #3 em klik "Verstuur Ether". Dit zal je transactie publiceren op de blockchain (broadcasten).',
+  HELP_10_Desc_11:       'Plak de ondertekende transactie op je online computer in het tekst veld van stap #3 em klik "Verzend Ether". Dit zal je transactie publiceren op de blockchain (broadcasten).',
 
   HELP_11_Title:          '11) Hoe verstuur ik naar een contract?',
   HELP_11_Desc_1:         'Versturen naar een contract vereist vaak dat je data, extra gas, of beide dient toe te voegen.',
-  HELP_11_Desc_2:         'Navigeer naar de "Verstuur Ether" pagina. ',
+  HELP_11_Desc_2:         'Navigeer naar de "Verzend Ether" pagina. ',
   HELP_11_Desc_3:         'Selecteer je wallet bestand -of- je prive sleutel en  ontsleutel je wallet. ',
   HELP_11_Desc_4:         'Voer een "Aan Adres" en een "Te Verzenden Bedrag" in.',
   HELP_11_Desc_5:         'Klik op de "+Geavanceerd: Voeg meer Gas of Data toe" knop onder het bedrag veld. Er verschijnen nu twee extra velden die je kunt gebruiken om de hoeveelheid gas te verhoren bovenop de standaard 21000, of om extra data aan je transactie toe te voegen.',
@@ -481,31 +488,31 @@ nl.data = {
 
   HELP_21_Title:          '21) Kan iedereen niet simpelweg willekeurige prive sleutels invoeren, zoeken naar een saldo, dit naar hun eigen adres versturen? ',
   HELP_21_Desc_1:         'De korte versie: ja, echter het vinden van een account met saldo gaat je langer duren dan het universum...dus...nee.',
-  HELP_21_Desc_2:         'De lange ELI5 versie: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
-  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ETH is the least of everyone’s problems.',
-  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ETH from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
-  HELP_21_Desc_5:         'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.',
-  HELP_21_Desc_6:         'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
-  HELP_21_Desc_7:         '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',
-  HELP_21_Desc_8:         'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.',
+  HELP_21_Desc_2:         'De lange ELI5 versie: Ethereum is gebasserd op [Publieke Sleutel Cryptografie](https://en.wikipedia.org/wiki/Public-key_cryptography), en meer specifiek op [Elliptische curve cryptografie](https://eprint.iacr.org/2013/734.pdf) wat op grote schaal gebruikt wordt, niet alleen in Ethereum. De meeste van onze servers zijn beveiligd via ECC. Bitcoin maakt hier ook gebruik van, net als SSH, TLS en vele andere dingen. De specifieke Ethereum sleutels zijn 256-bit sleutels, welke sterker zijn dan 128-bit en 192-bit, terwijl die ook op grote schaal gebruikt worden en no steeds als veilig worden beschouwd door experts.',
+  HELP_21_Desc_3:         'Hierbij heb je een prive sleutel en een publieke sleutel. Vanuit de prive sleutel kan de publieke sleutel afgeleid worden, maar de publieke sleutel kan niet terug omgezet worden in de prive sleutel. Het feit dat het internet en ’s werelds geheimen gebruik maken van deze cryptografie betekend dat indien er een manier is om van publieke sleutel naar prive sleutel te gaan, dat jouw verloren ETH wel het minste van een ieders probleem is.',
+  HELP_21_Desc_4:         'Nu we dat duidelijk hebben: JA, als iemand anders je prive sleutel heeft kunnen ze inderdaad ETH vanuit jouw account versturen. Net zoals dat iemand die je wachtwoord van je email heeft, je email kan lezen en sturen, of met het wachtwoord van je bank rekening geld kunnen overmaken. Je zou de Keystore versie van je prive sleutel kunnen downloaden, dat is je prive sleutel die is versleuteld (encrypted) met een wachtwoord. Dit is alsof je een wachtwoord hebt want je vervolgens nog eens beveiligd met een ander wachtwoord.',
+  HELP_21_Desc_5:         'En JA, in theorie zou je een serie van 64 hexadecimale karakters kunnen intypen tot je er een hebt die matched. Sterker nog, een slim persoon zou een programma kunnen schrijven om heel snel willekeurige prive sleutels te controleren. Dit wordt ook wel "brute-forcing" van prive sleutels genoemd. Mensen hebben hier lang en goed over nagedacht. Met enkele krachtige servers zouden ze misschien wel zo’n miljoen sleutels per seconde kunnen controleren. Echter, zelfs wanneer er zoveel sleutels per seconde gecontroleed kunnen worden zou de opbrengst ervan niet eens in de buurt komen bij de kosten om de servers te onderhouden - het is waarschijnlijker dat jij, en je achterkleinkinderen, zijn overleden voordat je een match vind.',
+  HELP_21_Desc_6:         'Als je Bitcoin een beetje kent, [biedt dit een aardig perspectief:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
+  HELP_21_Desc_7:         '[Als je het iets technischer wilt:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',
+  HELP_21_Desc_8:         'Uiteraard gaat bovenstaande er vanuit dat de sleutels worden gegenereerd met een volledige willekeur & met afdoende entropie. De sleutels die hier gegenreerd worden voldoen aan dat criterium, net als Jaxx en Mist/geth. De Ethereum wallets zijn allemaal best goed. Sleutels gegenereerd door "brainwallets" doen dit niet, omdat een het brein van een persoon niet capabel is om een werkelijk willekeurige "seed" te maken. Er zijn een heel aantal kwesties geweest met betrekking tot het gebrek entropie en "seeds" die niet in een volledig willekeurige manier waren gemaakt in Bitcoin-land, maar dat is een ander verhaal en kan wachten tot een andere keer.',
 
   HELP_SecCX_Title:       'Beveiliging - MyEtherWallet CX ',
-  HELP_SecCX_Desc_1:      'Where is this extension saving my information?',
-  HELP_SecCX_Desc_2:      'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.',
-  HELP_SecCX_Desc_3:      'What information is saved? ',
-  HELP_SecCX_Desc_4:      'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.',
-  HELP_SecCX_Desc_5:      'Why aren\'t the nickname and wallet address encrypted? ',
-  HELP_SecCX_Desc_6:      'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.',
+  HELP_SecCX_Desc_1:      'Waar bewaard deze extentie mijn informatie?',
+  HELP_SecCX_Desc_2:      'De informatie die je bewaard in deze Chrome Extensie wordt opgeslagen via [chrome.storage](http://chrome.storage/). - dit is dezelfde plek als waar je wachtwoorden staan opgeslagen als je je wachtwoorden bewaard in Chrome.',
+  HELP_SecCX_Desc_3:      'Welke informatie wordt bewaard? ',
+  HELP_SecCX_Desc_4:      'Het adres, nickname en prive sleutel worden bewaard in chrome.storage. De prive sleutel is versleuteld (encrypted) met het wachtwoord wat je hebt ingesteld toen je je wallet hebt toegevoegd. De nickname en het wallet adres zijn niet versleuteld.',
+  HELP_SecCX_Desc_5:      'Waarom zijn de nickname en adres niet versleuteld? ',
+  HELP_SecCX_Desc_6:      'Als we deze items zouden versleutelen, zou je iedere keer dat je je saldo of nicknames wilt checken je wachtwoord moeten invoeren. Als je je hierover zorgen maakt, raden we je aan om gebruik te maken van MyEtherWallet.com in plaats van deze Chrome Extensie.',
 
   HELP_Sec_Title:         'Beveiliging',
-  HELP_Sec_Desc_1:        'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. ',
-  HELP_Sec_Desc_2:        'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.',
-  HELP_Sec_Desc_3:        'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.',
-  HELP_Sec_Desc_4:        'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.',
-  HELP_Sec_Desc_5:        'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.',
-  HELP_Sec_Desc_6:        'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.',
-  HELP_Sec_Desc_7:        'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.',
-  HELP_Sec_Desc_8:        'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
+  HELP_Sec_Desc_1:        'Als een van je eerste vragen is: "Waarom zou ik deze mensen moeten vertrouwen?", dan is dat alleen maar goed. Hopelijk zal het volgende je angst verminderen. ',
+  HELP_Sec_Desc_2:        'We zijn up en running sinds augustus 2015. Als je zoekt naar ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), zul je tal van mensen vinden die ons met groot succes gebruiken.',
+  HELP_Sec_Desc_3:        'We gaan je niet je geld afnemen of je prive sleutel(s) stelen. Onze website bevat geen kwaadaardige code. Sterker nog, de "GENEREER WALLET" paginas zijn volledig client-side. Dit betekend dat alle code wordt uitgevoerd op ** jouw computer** en dat het buiten jouw computer niets bewaard of verstuurd.',
+  HELP_Sec_Desc_4:        'Controleer de URL -- Deze website draait vanaf GitHub en je kunt de bron code hier vinden: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) naar de domein namen: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) en [https://www.myetherwallet.com](https://www.myetherwallet.com). Je kunt verifieren dat het vanaf GitHub draait door gebruikt te maken van [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - de laatste twee A record IPs zijn in eigendom van GitHub voor hun custom domein hosting.',
+  HELP_Sec_Desc_5:        'Om wallets te genereren, kun je ook de [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages) downloaden. Zie #5 hierboven.',
+  HELP_Sec_Desc_6:        'Doe een test ronde en controleer wat voor netwerk activiteit er plaats vind. De makkelijkste manier om dit te doen is door met de rechtermuisknop op de pagina de klikken en te kiezen voor "inspecteer element". Ga naar het "Netwerk" tab. Genereer een test wallet. Je zult zien dat er geen netwerk activiteit is. Je zou kunnen zien dat er iets gebeurd wat er als volgt uitziet: data:image/gif and data:image/png. Dit zijn de QR codes die worden gegenereerd...op jouw computer...door jouw computer. Er werden geen bytes overgedragen.',
+  HELP_Sec_Desc_7:        'Ga vervolgens, voor de zekerheid, naar de "Resources" pagina. Hier vind je alle verschillende elementen waaruit de website is opgebouwd. Als je door de items Local Storage, Cookies, and Cache klikt zul je zien dat er niets wordt opgeslagen. Er wordt niets opgeslagen. Ververs de pagina en je bent terug waar je begon.',
+  HELP_Sec_Desc_8:        'Als je je niet pettig voelt bij het gebruikt van deze tool, gebruik het dan vooral niet. We hebben deze tool voor mensen gemaakt als een hulpzame manier om wallets te genereren en transacties te maken zonder dat je in de command prompt hoeft te duiken of een "full node" te draaien. Nogmaals, voel je vrij om contact met ons op te nemen als je je zorgen maakt en we zullen zo snel mogelijk reageren. Bedankt! ',
 
   HELP_FAQ_Title:         'Meer hulpzame antwoorden op veel voorkomende vragen',
   HELP_Contact_Title:     'Manieren om in contact te komen'

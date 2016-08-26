@@ -167,7 +167,7 @@ pl.data = {
   OFFLINE_Step1_Button:  'Wygeneruj Informacje',
   OFFLINE_Step1_Label_1: 'Od Adresu: ',
   OFFLINE_Step1_Label_2: 'Notka: To jest adres NADAWCY, czyli adres Twojego konta, które starasz sie odizolować od internetu. Wyróżnik jest generowany dla tego konta.',
-  OFFLLINE_Step2_Title:   'Krok 2: Wygeneruj transakcję (Komputer Offline)',
+  OFFLINE_Step2_Title:   'Krok 2: Wygeneruj transakcję (Komputer Offline)',
   OFFLINE_Step2_Label_1:  'Do Adresu: ',
   OFFLINE_Step2_Label_2:  'Wartość / Kwota do Wysłania',
   OFFLINE_Step2_Label_3:  'Cena Paliwa ',

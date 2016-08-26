@@ -1,16 +1,16 @@
 // Italian
-// Last sync with en.js: commit 8b01728220a06b2c62a47
+// Last sync with en.js: commit 9767174db91f346c35477dd0c4bc
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
 
-  /* New */
-  CX_error_1:           'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno!',
-  CX_quicksend:         'Invio rapido', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Invia l\'intero saldo', // updated to be shorter
-  x_Wallet:             'Portafoglio',
-  FOOTER_1b:            'Creato da',
+  /* New - Deploy Contracts */
+  NAV_DeployContract:  'Pubblica contratto',
+  DEP_generate:        'Genera bytecode',
+  DEP_generated:       'Bytecode generato',
+  DEP_signtx:          'Firma transazione',
+  DEP_interface:       'Interfaccia generata',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
@@ -47,6 +47,7 @@ it.data = {
   x_PrintDesc:          'Suggerimento Pro: Fai clic su stampa e salvalo come PDF, anche se non hai una stampante!',
   x_CSV:                'File CSV (non crittografato)',
   x_TXT:                'File TXT (non crittografato)',
+  x_Wallet:             'Portafoglio',
 
   /* Header */
   MEW_Warning_1:        'Controlla sempre l\'URL prima di accedere al tuo portafoglio o di crearne uno nuovo. Fai attenzione ai siti di phishing!',
@@ -56,6 +57,7 @@ it.data = {
 
   /* Footer */
   FOOTER_1:             'Uno strumento open source, in javascript, lato client per generare portafogli Ethereum e inviare transazioni.',
+  FOOTER_1b:            'Creato da',
   FOOTER_2:             'Donazioni molto apprezzate:',
   FOOTER_3:             'Generazione portafogli lato client da parte di',
 
@@ -118,6 +120,7 @@ it.data = {
   SEND_raw:              'Transazione grezza',
   SEND_signed:           'Transazione firmata',
   SEND_trans:            'Invia transazione',
+  SEND_TransferTotal:   'Invia l\'intero saldo',
   SENDModal_Title:       'Attenzione! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Stai per inviare',
@@ -161,7 +164,7 @@ it.data = {
   OFFLINE_Step1_Button:  'Genera informazioni',
   OFFLINE_Step1_Label_1: 'Indirizzo mittente: ',
   OFFLINE_Step1_Label_2: 'Nota: Questo è l\'indirizzo MITTENTE, non l\'indirizzo DESTINATARIO. Il *nonce* è generato dal conto di origine. Se stessi usando un computer *air-gapped*, sarebbe l\'indirizzo del conto offline.',
-  OFFLLINE_Step2_Title:   'Passo 2: generazione della transazione (computer offline)',
+  OFFLINE_Step2_Title:   'Passo 2: generazione della transazione (computer offline)',
   OFFLINE_Step2_Label_1:  'Indirizzo destinatario: ',
   OFFLINE_Step2_Label_2:  'Valore / importo da inviare',
   OFFLINE_Step2_Label_3:  'Prezzo gas ',
@@ -211,6 +214,10 @@ it.data = {
   VIEWWALLET_Subtitle:      'Qui è possibile scaricare diverse versioni delle chiavi private e ristampare il portafoglio cartaceo. Potresti volerlo fare per  [importare il tuo conto in Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Se vuoi controllare il tuo saldo, ti consigliamo di utilizzare uno strumento per esplorare la *blockchain* come [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'Qui è possibile scaricare diverse versioni delle chiavi private e ristampare il portafoglio cartaceo. ',
   VIEWWALLET_SuccessMsg:     'Perfetto! Questi sono i dettagli del tuo portafoglio.',
+
+  /* CX */
+  CX_error_1:           'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno!',
+  CX_quicksend:         'Invio rapido',
 
   /* Error Messages */
   ERROR_1:             'Ti preghiamo di inserire una quantità valida.',
