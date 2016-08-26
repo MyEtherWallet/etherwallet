@@ -6,7 +6,7 @@ html {
 
 .container {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1400px;
   padding: 0 5%;
 }
 
@@ -16,29 +16,6 @@ img {
 
 textarea {
   resize: vertical;
-}
-
-// header
-header {
-  @media screen and (max-width: @screen-sm) {
-    text-align: center;
-  }
-  p {
-    float: right;
-    font-size: 18px;
-    font-weight: 200;
-    margin-top: 23px;
-    @media screen and (max-width: @screen-sm) {
-      float: none;
-      text-align: center;
-    }
-  }
-  img {
-    float: left;
-    @media screen and (max-width: @screen-sm) {
-      float: none;
-    }
-  }
 }
 
 // footer
@@ -86,6 +63,9 @@ footer {
   &:hover,
   &:focus {
     background-color: darken(@brand-danger, 5%);
+    a, a:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -94,6 +74,9 @@ footer {
   a:hover,
   a:focus {
     color: darken(white, 5%);
+    a, a:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -107,6 +90,11 @@ footer {
     padding-right: 25px;
     padding-top: 0;
   }
+}
+
+.address-identicon-container-offline {
+  padding: 0;
+  margin-left: -15px;
 }
 
 #addressIdenticon {

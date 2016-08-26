@@ -31,34 +31,75 @@
 <body>
 
 @@if (site === 'mew' ) {
-  <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
-    <div class="container" translate="MEW_Warning_1">Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!</div>
-  </a>
-  <header class="container-fluid bg-gradient text-white">
-    <section class="container">
-      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
-      <p>
-        <span translate="MEW_Tagline">Open Source JavaScript Client-Side Ether Wallet</span>
-        &middot; v2.9
-      </p>
-    </section>
-  </header>
+  <header ng-controller='tabsCtrl'>
+    <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
+      <div class="container" translate="MEW_Warning_1">Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!</div>
+    </a>
+    <section class="container-fluid bg-gradient header-branding">
+      <section class="container">
+        <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
+        <div class="tagline">
+          <span translate="MEW_Tagline">Open Source JavaScript Client-Side Ether Wallet</span>
 }
 
 @@if (site === 'cx' ) {
-  <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
-    <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
-  </a>
-  <header class="container-fluid bg-gradient text-white">
-    <section class="container">
-      <a href="/cx-wallet.html"><img src="images/etherwalletcx-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
-      <p>
-        <span translate="CX_Tagline">Open Source JavaScript Client-Side Ether Wallet</span>
-        &middot; v2.9
-      </p>
-    </section>
-  </header>
+  <header ng-controller='tabsCtrl'>
+    <a href="" class="announcement annoucement-warning" target="_blank">
+      <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
+    </a>
+    <section class="container-fluid bg-gradient header-branding">
+      <section class="container">
+        <a href="/cx-wallet.html"><img src="images/etherwalletcx-logo.png" height="70px" width="auto" alt="My Ether Wallet" /></a>
+        <div class="tagline">
+          <span translate="MEW_Tagline">Open Source JavaScript Client-Side Ether Wallet</span>
 }
+        &middot; v2.9 &middot;
+        <span class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{curLang}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a ng-click="changeLanguage('bg','български')">български</a></li>
+            <li><a ng-click="changeLanguage('de','Deutsch')">Deutsch</a></li>
+            <li><a ng-click="changeLanguage('el','Ελληνικά')">Ελληνικά</a></li>
+            <li><a ng-click="changeLanguage('en','English')">English</a></li>
+            <li><a ng-click="changeLanguage('es','Español')">Español</a></li>
+            <li><a ng-click="changeLanguage('et','Eesti')">Eesti</a></li>
+            <li><a ng-click="changeLanguage('fr','Français')">Français</a></li>
+            <li><a ng-click="changeLanguage('he','עברית')">עברית</a></li>
+            <li><a ng-click="changeLanguage('id','Indonesian')">Indonesian</a></li>
+            <li><a ng-click="changeLanguage('it','Italiano')">Italiano</a></li>
+            <li><a ng-click="changeLanguage('ja','日本語')">日本語</a></li>
+            <li><a ng-click="changeLanguage('ko','한국어')">한국어</a></li>
+            <li><a ng-click="changeLanguage('nl','Nederlands')">Nederlands</a></li>
+            <li><a ng-click="changeLanguage('no','Norsk Bokmål')">Norsk Bokmål</a></li>
+            <li><a ng-click="changeLanguage('pl','Polski')">Polski</a></li>
+            <li><a ng-click="changeLanguage('pt','Português')">Português</a></li>
+            <li><a ng-click="changeLanguage('ptbr','Português-Brazilian')">Português (Brazilian)</a></li>
+            <li><a ng-click="changeLanguage('ru','Русский')">Русский</a></li>
+            <li><a ng-click="changeLanguage('sk','Slovenčina')">Slovenčina</a></li>
+            <li><a ng-click="changeLanguage('sl','Slovenščina')">Slovenščina</a></li>
+            <li><a ng-click="changeLanguage('sv','Svenska')">Svenska</a></li>
+            <li><a ng-click="changeLanguage('tr','Türkçe')">Türkçe</a></li>
+            <li><a ng-click="changeLanguage('uk','Українська')">Українська</a></li>
+            <li><a ng-click="changeLanguage('vi','Tiếng Việt')">Tiếng Việt</a></li>
+          </ul>
+        </span>
+      </div>
+    </section>
+  </section>
 
+  <section class="container nav-container overflowing" >
+    <a class="nav-arrow-left">&#171;</a>
+    <div class="nav-scroll">
+      <nav class="nav-inner">
+        @@if (site === 'mew' ) {
+        <span ng-repeat="tab in tabNames track by $index" class="nav-item" ng-class="{active: $index==activeTab}" ng-show="{{tab.mew}}" ng-click="tabClick($index)"> <a>{{tab.name  | translate}} </a></span>
+        }
+        @@if (site === 'cx' ) {
+        <span ng-repeat="tab in tabNames track by $index" class="nav-item" ng-class="{active: $index==activeTab}" ng-show="{{tab.cx}}" ng-click="tabClick($index)"> <a>{{tab.name | translate}}</a></span>
+        }
+      </nav>
+    </div>
+    <a class="nav-arrow-right">&#187;</a>
+  </section>
 
-
+</header>

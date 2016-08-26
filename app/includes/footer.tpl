@@ -10,7 +10,7 @@
     </p>
 
     <p>
-      <span translate="FOOTER_2">Donations greatly appreciated:</span> <span class="mono">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span>
+      <span translate="FOOTER_2">Donations greatly appreciated:</span> <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span>
     </p>
 
     <p>
@@ -35,8 +35,6 @@
 
   </div>
 </footer>
-
-
 
 </body>
 </html>
