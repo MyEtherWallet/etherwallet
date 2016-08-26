@@ -13,12 +13,12 @@ nl.data = {
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
-  NAV_GenerateWallet:   'Wallet Genereren',
+  NAV_GenerateWallet:   'Genereer Wallet',
   NAV_BulkGenerate:     'Bulk Genereren',
   NAV_SendEther:        'Verzend Ether',
   NAV_SendTokens:       'Verzend Tokens',
   NAV_Offline:          'Verzend Offline',
-  NAV_WithdrawDAO:      'DAO Token Opnemen',
+  NAV_WithdrawDAO:      'DAO Opnemen',
   DAO_TitleLong:        'DAO Token in ETH omzetten',
   NAV_ClaimDGD:         'Claim DGD',
   DGD_TitleLong:        'Claim je DGD Tokens',
@@ -41,9 +41,9 @@ nl.data = {
   x_KeystoreDesc:       'Dit Keystore / JSON bestand voldoen aan het formaat zoals gebruikt door Mist & Geth waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
   x_Json:               'JSON Bestand (onversleuteld)',
   x_JsonDesc:           'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',
-  x_PrintShort:         'Printen',
-  x_Print:              'Print Papieren Wallet',
-  x_PrintDesc:          'ProTip: Klik print en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
+  x_PrintShort:         'Afdrukken',
+  x_Print:              'Druk je papieren wallet af',
+  x_PrintDesc:          'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
   x_CSV:                'CSV bestand (onverlseuteld)',
   x_TXT:                'TXT bestand (onverlseuteld)',
 
@@ -77,9 +77,9 @@ nl.data = {
 
   /* Add Wallet */
   ADD_Label_1:            'Wat wil je doen?',
-  ADD_Radio_1:            'Genereer nieuwe Wallet',
-  ADD_Radio_2:            'Selecteer Je Wallet Bestand (Keystore / JSON)',
-  ADD_Radio_2_alt:        'Selecteer Je Wallet Bestand: ',
+  ADD_Radio_1:            'Genereer nieuwe wallet',
+  ADD_Radio_2:            'Selecteer Je wallet bestand (Keystore / JSON)',
+  ADD_Radio_2_alt:        'Selecteer Je wallet bestand: ',
   ADD_Radio_2_short:      'SELECTEER WALLET BESTAND...',
   ADD_Radio_3:            'Plak/Type je prive sleutel ',
   ADD_Radio_4:            'Voeg een te bekijken account toe',
@@ -88,7 +88,7 @@ nl.data = {
   ADD_Label_4:            'Voeg een te bekijken account toe',
   ADD_Warning_1:          'Je kunt elk account toevoegen als "bekijken" in het wallets tabblad zonder de prive sleutel te uploaden. Dit betekend ** niet ** dat je toegang hebt tot deze wallet, noch dat je er Ether vanuit kunt versturen.',
   ADD_Label_5:            'Voor het Adres in: ',
-  ADD_Label_6:            'Ontsleutel je Wallet: ',
+  ADD_Label_6:            'Ontsleutel je wallet: ',
   ADD_Label_6_short:      'Ontsleutel',
   ADD_Label_7:            'Voeg account toe',
 
@@ -96,14 +96,14 @@ nl.data = {
   GEN_desc:               'Als je meerdere wallets wilt gererenen, kun je dat hier doen: ',
   GEN_Label_1:            'Geef een sterk wachtwoord (ten minste 9 karakters)',
   GEN_Placeholder_1:      'Vergeet NIET om dit op te slaan!',
-  GEN_SuccessMsg:         'Succes! Je wallet is gegenereerd.',
-  GEN_Warning:            '**Je hebt je Keystore/JSON Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkijken in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
+  GEN_SuccessMsg:         'Gelukt! Je wallet is gegenereerd.',
+  GEN_Warning:            '**Je hebt je Keystore/JSON Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
   GEN_Label_2:            'Sla je Keystore/JSON of Prive Sleutel op. Vergeet je wachtwoord hierboven niet.',
   GEN_Label_3:            'Sla je adres op.',
-  GEN_Label_4:            'Druk je papieren Wallet af, of bewaar een QR code verie. (optioneel)',
+  GEN_Label_4:            'Druk je papieren wallet af, of bewaar hem als QR code. (optioneel)',
 
   /* Bulk Generate Wallets */
-  BULK_Label_1:           'Aantal te genereren Wallets',
+  BULK_Label_1:           'Aantal te genereren wallets',
   BULK_Label_2:           'Genereer Wallets',
   BULK_SuccessMsg:        'Gelukt! Je wallets zijn gegenereerd.',
 
@@ -116,7 +116,7 @@ nl.data = {
   SEND_generate:         'Genereer Transactie',
   SEND_raw:              'Raw Transactie',
   SEND_signed:           'Gesigneerde Transactie',
-  SEND_trans:            'Verstuur Transactie',
+  SEND_trans:            'Verzend Transactie',
   SENDModal_Title:       'Waarschuwing! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Je staat op het punt om het volgende bedrag over te maken: ',
@@ -150,7 +150,7 @@ nl.data = {
   TRANSModal_Content_3:  '**Enkel ETC: ** Hiermee verstuur je via [Timon Rapp\'s "replay protection contract" (zoals aanbevolen door VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) zodat je enkel verstuurd op de **ETC** blockchain. ',
   TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Verstuur enkel via standaard transacties. Als je via de "Only" contracts hebt verstuurd zul je contact op moeten nemen met hun helpdesk zodat ze je kunnen restitueren [Je kunt ook Shapeshift\'s "split" tool uitproberen.](https://split.shapeshift.io/)',
   TRANSModal_Content_5:  '**Kraken & Poloniex:** Geen problemen bekend. Gebruik wat je voorkeur heeft.',
-  TRANSModal_Yes:        'Mooi, ik begrijp het nu.',
+  TRANSModal_Yes:        'Mooi, nu begrijp ik het.',
   TRANSModal_No:         'Oh jee, nu snap ik er nog niets van. Help me.',
 
   /* Offline Transaction */
@@ -159,7 +159,7 @@ nl.data = {
   OFFLLINE_Step1_Title:  'Stap 1: Genereer Informatie (Online Computer)',
   OFFLINE_Step1_Button:  'Genereer Information',
   OFFLINE_Step1_Label_1: 'Van Adres: ',
-  OFFLINE_Step1_Label_2: 'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd vam het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
+  OFFLINE_Step1_Label_2: 'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd van het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
   OFFLLINE_Step2_Title:   'Stap 2: Genereer Transactie (Offline Computer)',
   OFFLINE_Step2_Label_1:  'Aan Adres: ',
   OFFLINE_Step2_Label_2:  'Waarde / Te Verzenden Bedrag',
