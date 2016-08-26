@@ -11,12 +11,6 @@ nl.data = {
   DEP_signtx:          'Onderteken Transactie',
   DEP_interface:       'Gegenereerde Interface',
 
-  /* New */
-  CX_error_1:           'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
-  CX_quicksend:         'VerzendSnel', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Verzend volledig saldo',  // updated to read 'Send Entire Balance'
-  FOOTER_1b:            'Gemaakt door',
-
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -62,6 +56,7 @@ nl.data = {
 
   /* Footer */
   FOOTER_1:             'Een open source, javascript, client-side tool om Ethererum Wallets te genereren & transacties te verzenden.',
+  FOOTER_1b:            'Gemaakt door',
   FOOTER_2:             'Donaties worden zeer gewaardeerd:',
   FOOTER_3:             'Client-side wallet genereren door',
 
@@ -124,6 +119,7 @@ nl.data = {
   SEND_raw:              'Raw Transactie',
   SEND_signed:           'Gesigneerde Transactie',
   SEND_trans:            'Verzend Transactie',
+  SEND_TransferTotal:   'Verzend volledig saldo',
   SENDModal_Title:       'Waarschuwing! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Je staat op het punt om het volgende bedrag over te maken: ',
@@ -163,7 +159,7 @@ nl.data = {
   /* Offline Transaction */
   OFFLINE_Title:         'Genereer & Verzend een Offline Transactie',
   OFFLINE_Desc:          'Een offline transactie doe je in drie stappen. Stap 1 en 3 doe je op een online computer, terwijl je stap 2 uitvoert op een offline/afgeschermde computer. Dit zorgt ervoor dat je prive sleutel niet in aanraking komt met een met internet verbonden computer.',
-  OFFLLINE_Step1_Title:  'Stap 1: Genereer Informatie (Online Computer)',
+  OFFLINE_Step1_Title:  'Stap 1: Genereer Informatie (Online Computer)',
   OFFLINE_Step1_Button:  'Genereer Informatie',
   OFFLINE_Step1_Label_1: 'Van Adres: ',
   OFFLINE_Step1_Label_2: 'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd van het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
@@ -217,6 +213,10 @@ nl.data = {
   VIEWWALLET_Subtitle:      'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren Wallet opnieuw afdrukken. Je zou dit kunnen doen om [je account in Geth/Mist te importeren](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Als je enkel je saldo wilt checken adviseren we je om gebruik te maken van een blockchain explorer zoals [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren Wallet opnieuw afdrukken. ',
   VIEWWALLET_SuccessMsg:     'Gelukt! Hier zijn je Wallet details.',
+
+  /* Chrome Extension */
+  CX_error_1:           'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
+  CX_quicksend:         'VerzendSnel',
 
   /* Error Messages */
   ERROR_1:             'Geef alsjeblieft een geldig bedrag in.',
