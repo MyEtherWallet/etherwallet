@@ -240,21 +240,21 @@ el.data = {
 
   /* Tranlsation Info */
   translate_version:    '0.0',
-  Translator_Desc:      'Ευχαριστούμε τους μεταφραστές μας...',
-  TranlsatorName_1:     'VitalikFanBoy#117',
-  TranlsatorAddr_1:     '0x245f27796a44d7e3d30654ed62850ff09ee85656',
+  Translator_Desc:      'Ευχαριστούμε τους μεταφραστές μας: ',
+  TranslatorName_1:     '[VitalikFanBoy#117](https://www.myetherwallet.com/?gaslimit=21000&to=0x245f27796a44d7e3d30654ed62850ff09ee85656&value=1.0#send-transaction) · ',
+  TranslatorAddr_1:     '0x245f27796a44d7e3d30654ed62850ff09ee85656',
   /* Translator 1: Insert Comments Here */
-  TranlsatorName_2:     '',
-  TranlsatorAddr_2:     '',
+  TranslatorName_2:     'LefterisJP',
+  TranslatorAddr_2:     '',
   /* Translator 2: Insert Comments Here */
-  TranlsatorName_3:     ' ',
-  TranlsatorAddr_3:     ' ',
+  TranslatorName_3:     ' ',
+  TranslatorAddr_3:     ' ',
   /* Translator 3: Insert Comments Here */
-  TranlsatorName_4:     ' ',
-  TranlsatorAddr_4:     ' ',
+  TranslatorName_4:     ' ',
+  TranslatorAddr_4:     ' ',
   /* Translator 4: Insert Comments Here */
-  TranlsatorName_5:     ' ',
-  TranlsatorAddr_5:     ' ',
+  TranslatorName_5:     ' ',
+  TranslatorAddr_5:     ' ',
   /* Translator 5: Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */

@@ -239,21 +239,21 @@ fr.data = {
 
   /* Tranlsation Info */
   translate_version:    '0.0',
-  Translator_Desc:      'Thank you to our translators...',
-  TranlsatorName_1:     'Simon P',
-  TranlsatorAddr_1:     '0x89a18eE46b5aabC62e94b1830881887D04C687f3',
+  Translator_Desc:      'Thank you to our translators: ',
+  TranslatorName_1:     '[Simon P](https://www.myetherwallet.com/?gaslimit=21000&to=0x89a18eE46b5aabC62e94b1830881887D04C687f3&value=1.0#send-transaction) · ',
+  TranslatorAddr_1:     '0x89a18eE46b5aabC62e94b1830881887D04C687f3',
   /* Translator 1: Translation in French. Début de la traduction, il reste encore du travail... Je continue dès que j'ai un peu de temps :) */
-  TranlsatorName_2:     'Jean Zundel',
-  TranlsatorAddr_2:     ' ',
+  TranslatorName_2:     'Jean Zundel · ',
+  TranslatorAddr_2:     '',
   /* Translator 2:  */
-  TranlsatorName_3:     ' ',
-  TranlsatorAddr_3:     ' ',
+  TranslatorName_3:     'girards',
+  TranslatorAddr_3:     '',
   /* Translator 3: Insert Comments Here */
-  TranlsatorName_4:     ' ',
-  TranlsatorAddr_4:     ' ',
+  TranslatorName_4:     '',
+  TranslatorAddr_4:     '',
   /* Translator 4: Insert Comments Here */
-  TranlsatorName_5:     ' ',
-  TranlsatorAddr_5:     ' ',
+  TranslatorName_5:     '',
+  TranslatorAddr_5:     '',
   /* Translator 5: Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */

@@ -240,21 +240,21 @@ sl.data = {
 
   /* Tranlsation Info */
   translate_version:    '0.0',
-  Translator_Desc:      'Thank you to our translators...',
-  TranlsatorName_1:     '',
-  TranlsatorAddr_1:     '',
+  Translator_Desc:      'Thank you to our translators: ',
+  TranslatorName_1:     'jkocjan',
+  TranslatorAddr_1:     '',
   /* Translator 1: Insert Comments Here */
-  TranlsatorName_2:     ' ',
-  TranlsatorAddr_2:     ' ',
+  TranslatorName_2:     ' ',
+  TranslatorAddr_2:     ' ',
   /* Translator 2: Insert Comments Here */
-  TranlsatorName_3:     ' ',
-  TranlsatorAddr_3:     ' ',
+  TranslatorName_3:     ' ',
+  TranslatorAddr_3:     ' ',
   /* Translator 3: Insert Comments Here */
-  TranlsatorName_4:     ' ',
-  TranlsatorAddr_4:     ' ',
+  TranslatorName_4:     ' ',
+  TranslatorAddr_4:     ' ',
   /* Translator 4: Insert Comments Here */
-  TranlsatorName_5:     ' ',
-  TranlsatorAddr_5:     ' ',
+  TranslatorName_5:     ' ',
+  TranslatorAddr_5:     ' ',
   /* Translator 5: Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */

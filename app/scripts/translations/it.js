@@ -241,21 +241,21 @@ it.data = {
 
   /* Tranlsation Info */
   translate_version:    '0.2',
-  Translator_Desc:      'Grazie ai nostri traduttori...',
-  TranlsatorName_1:     'ugilio',
-  TranlsatorAddr_1:     '0x07932bc1c68c8ff188f4225e892178ab6d8c4eaa',
+  Translator_Desc:      'Grazie ai nostri traduttori: ',
+  TranslatorName_1:     '[ugilio](https://www.myetherwallet.com/?gaslimit=21000&to=0x07932bc1c68c8ff188f4225e892178ab6d8c4eaa&value=1.0#send-transaction)',
+  TranslatorAddr_1:     '0x07932bc1c68c8ff188f4225e892178ab6d8c4eaa',
   /* Translator 1: Insert Comments Here */
-  TranlsatorName_2:     ' ',
-  TranlsatorAddr_2:     ' ',
+  TranslatorName_2:     ' ',
+  TranslatorAddr_2:     ' ',
   /* Translator 2: Insert Comments Here */
-  TranlsatorName_3:     ' ',
-  TranlsatorAddr_3:     ' ',
+  TranslatorName_3:     ' ',
+  TranslatorAddr_3:     ' ',
   /* Translator 3: Insert Comments Here */
-  TranlsatorName_4:     ' ',
-  TranlsatorAddr_4:     ' ',
+  TranslatorName_4:     ' ',
+  TranslatorAddr_4:     ' ',
   /* Translator 4: Insert Comments Here */
-  TranlsatorName_5:     ' ',
-  TranlsatorAddr_5:     ' ',
+  TranslatorName_5:     ' ',
+  TranslatorAddr_5:     ' ',
   /* Translator 5: Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */

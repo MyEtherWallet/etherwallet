@@ -31,6 +31,15 @@
       <a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank">tayvano (insom) on reddit</a>
     </p>
 
+    <p>
+      <span translate="Translator_Desc">Thank you to our translators: </span>
+      <span translate="TranslatorName_1"></span>
+      <span translate="TranslatorName_2"></span>
+      <span translate="TranslatorName_3"></span>
+      <span translate="TranslatorName_4"></span>
+      <span translate="TranslatorName_5"></span>
+    </p>
+
     <p ng-show="showBlocks" class="text-right" style="font-size: 10px">ETH Block#: {{ethBlockNumber}} &middot; ETC Block#: {{etcBlockNumber}}</p>
 
   </div>

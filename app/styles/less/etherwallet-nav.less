@@ -48,7 +48,7 @@
     text-decoration: none;
   }
   .dropdown {
-    padding: 2px 0;
+    padding: 0;
     text-align: right;
     .dropdown-menu {
       right: -10px;
@@ -56,8 +56,13 @@
       min-width: auto;
       left: auto;
       & > li > a {
-        padding: 3px 10px;
-        font-size: 13px;
+        padding: 5px 15px;
+        font-size: 15px;
+      }
+      a.active {
+        text-decoration: none;
+        color: @brand-primary;
+        background-color: @gray-lightest;
       }
     }
   }

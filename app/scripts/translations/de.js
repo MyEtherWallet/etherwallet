@@ -240,29 +240,24 @@ de.data = {
 
   /* Tranlsation Info */
   translate_version:    '0.0',
-  Translator_Desc:      'Vielen Dank an unsere ÜbersetzerInnen...',
+  Translator_Desc:      'Vielen Dank an unsere ÜbersetzerInnen:',
 
-  TranlsatorName_1:     'christoph2806',
-  TranlsatorAddr_1:     '',
+  TranslatorName_1:     'christoph2806 · K ·',
+  TranslatorAddr_1:     '',
   /* Translator 1: Insert Comments Here */
-  TranlsatorName_2:     'mawalu',
-  TranlsatorAddr_2:     '0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3',
+  TranslatorName_2:     '[mawalu](https://www.myetherwallet.com/?gaslimit=21000&to=0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3&value=1.0#send-transaction) ·',
+  TranslatorAddr_2:     '0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3',
   /* Translator 2: Insert Comments Here */
-  TranlsatorName_3:     'K',
-  TranlsatorAddr_3:     ' ',
+  TranslatorName_3:     'huhn_solo · ',
+  TranslatorAddr_3:     ' ',
   /* Translator 3: Insert Comments Here */
-  TranlsatorName_4:     'huhn_solo',
-  TranlsatorAddr_4:     ' ',
+  TranslatorName_4:     '[FelixA](https://www.myetherwallet.com/?gaslimit=21000&to=0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D&value=1.0#send-transaction) · ',
+  TranslatorAddr_4:     '0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D ',
   /* Translator 4: reach me on Reddit as user huhn_solo */
-  TranlsatorName_5:     'FelixA ',
-  TranlsatorAddr_5:     '0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D ',
+  TranslatorName_5:     'danielsun174 · ffidan61',
+  TranslatorAddr_5:     '',
   /* Translator 5: Insert Comments Here */
-  TranlsatorName_6:     'danielsun174',
-  TranlsatorAddr_6:     '',
-  /* Translator 6: Insert Comments Here */
-  TranlsatorName_7:     '',
-  TranlsatorAddr_7:     '',
-  /* Translator 7: Insert Comments Here */
+
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning:      'Falls du vor dem **31.12.2015** ein Wallet generiert, oder das Repository heruntergeladen hast, bitte überprüfe deine Wallets &amp; lade eine neue Version des Repositories herunter. Klick für details.',
