@@ -88,7 +88,7 @@
   </section>
 
   <section class="container nav-container overflowing" >
-    <a class="nav-arrow-left">&#171;</a>
+    <a ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(50);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
     <div class="nav-scroll">
       <nav class="nav-inner">
         @@if (site === 'mew' ) {
@@ -99,7 +99,7 @@
         }
       </nav>
     </div>
-    <a class="nav-arrow-right">&#187;</a>
+    <a ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(50);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>
   </section>
 
 </header>
