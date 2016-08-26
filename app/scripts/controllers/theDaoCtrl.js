@@ -1,7 +1,8 @@
 'use strict';
 var theDaoCtrl = function($scope, $sce, walletService) {
-	$scope.curTab = "withdraw";
+	$scope.curTab = "withdrawETC";
 	$scope.withdrawModal = new Modal(document.getElementById('withdrawTransaction'));
+  $scope.withdrawModalETC = new Modal(document.getElementById('withdrawTransactionETC'));
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.showAdvance = false;
