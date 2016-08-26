@@ -1,5 +1,5 @@
 <!-- Help -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.help.id">
+<article class="tab-pane help active" ng-if="globalService.currentTab==globalService.tabs.help.id">
 
   <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" target="_blank">
     <div class="alert alert-danger" translate="HELP_Warning">If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.</div>
@@ -582,10 +582,10 @@
 @@if (site === 'cx' ) {
   <article class="collapse-container">
     <div ng-click="hSecCX = !hSecCX">
-      <a class="collapse-button" ><span ng-show="!hSecCX">+</span><span ng-show="hSecCX">-</span></a>
+      <a class="collapse-button" ><span ng-show="hSecCX">+</span><span ng-show="!hSecCX">-</span></a>
       <h4 translate="HELP_SecCX_Title">Security - MyEtherWallet CX </h4>
     </div>
-    <div ng-show="hSecCX">
+    <div ng-show="!hSecCX">
       <h6 translate="HELP_SecCX_Desc_1"> Where is this extension saving my information?</h6>
       <p translate="HELP_SecCX_Desc_2"> The information you store in this Chrome Extension is saved via <a href="http://chrome.storage/" target="_blank">chrome.storage</a>. - this is the same place your passwords are saved when you save your password in Chrome. </p>
 

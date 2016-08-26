@@ -246,19 +246,30 @@ input[type="password"]+.eye {
   }
 }
 
+
 // collapsable containers
 .collapse-container {
-  margin: 40px 0;
-  h4 {
+  h2, h4 {
     cursor: pointer;
   }
+  .collapse-button {
+    float: left;
+    font-weight: 500;
+    user-select: none;
+    padding: 10px;
+    margin: -10px -35px;
+    font-size: 24px;
+    line-height: 1.6;
+  }
 }
-.collapse-button {
-  float: left;
-  margin: -10px -30px;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1;
-  user-select: none;
-  padding: 10px;
+
+
+// help collapsable containers
+.help .collapse-container {
+  margin: 40px 0;
+  .collapse-button {
+    margin: -10px -30px;
+    font-size: 20px;
+    line-height: 1;
+  }
 }

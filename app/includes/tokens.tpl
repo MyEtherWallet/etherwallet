@@ -1,14 +1,27 @@
 <!-- Tokens Panel -->
 <article class="tab-pane page-tokens active" ng-if="globalService.currentTab==globalService.tabs.tokens.id">
 
-  <h2 translate="NAV_SendTokens"> Send Tokens </h2>
+  <article class="collapse-container">
+    <div ng-click="wd = !wd">
+      <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
 
-  @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
-  @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+        <h2 translate="NAV_SendTokens"> Send Tokens </h2>
+
+    </div>
+    <div ng-show="!wd">
+
+        @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
+        @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+
+    </div>
+  </article>
+
+
+
+
 
   <section class="row" ng-show="wallet!=null" ng-controller='tokenCtrl'>
-
-    <hr />
+    <hr ng-show="!wd" />
 
     <!-- Sidebar -->
     <div class="col-sm-4">

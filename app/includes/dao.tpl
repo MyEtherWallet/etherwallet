@@ -2,18 +2,29 @@
 <article class="tab-pane page-dao active" ng-if="globalService.currentTab==globalService.tabs.dao.id">
 
   <!-- TOP: The DAO -->
-  <h2 translate="NAV_WithdrawDAO"> Withdraw DAO </h2>
-  <p translate="DAO_Desc"> Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.</p>
+  <article class="collapse-container">
+    <div ng-click="wd = !wd">
+      <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
 
-  <br />
+        <h2 translate="NAV_WithdrawDAO"> Withdraw DAO </h2>
 
-  @@if (site === 'cx' )  {     <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>     }
-  @@if (site === 'mew' ) {     <wallet-decrypt-drtv></wallet-decrypt-drtv>           }
+    </div>
+    <div ng-show="!wd">
+
+      <p translate="DAO_Desc"> Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.</p><br />
+      @@if (site === 'cx' )  {     <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>     }
+      @@if (site === 'mew' ) {     <wallet-decrypt-drtv></wallet-decrypt-drtv>           }
+
+    </div>
+  </article>
   <!-- / TOP: The DAO -->
+
+
+
 
   <!-- BOTTOM: The DAO -->
   <section class="row" ng-show="wallet!=null" ng-controller='theDaoCtrl'>
-    <hr />
+    <hr ng-show="!wd" />
 
     <!-- Sidebar -->
     <div class="col-sm-4">

@@ -1,13 +1,26 @@
 <!-- Send Transaction Page -->
 <article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
-  <h2 translate="NAV_SendEther"> Send Ether </h2>
-  <p translate="TRANS_desc"> If you want to send Tokens, please use the "Send Token" page instead. </p>
 
-  @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
-  @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+  <article class="collapse-container">
+    <div ng-click="wd = !wd">
+      <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
+
+        <h2 translate="NAV_SendEther"> Send Ether </h2>
+
+    </div>
+    <div ng-show="!wd">
+
+        <p translate="TRANS_desc"> If you want to send Tokens, please use the "Send Token" page instead. </p>
+        @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
+        @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+
+    </div>
+  </article>
+
+
 
   <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
-    <hr />
+    <hr ng-show="!wd" />
 
     <!-- Sidebar -->
     <div class="col-sm-4">

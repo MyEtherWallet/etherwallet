@@ -1,15 +1,26 @@
 <!-- Digix -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.digix.id">
 
-  <h2 translate="NAV_ClaimDGD"> Claim DGD </h2>
-  <p translate="DGD_Desc">Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.</p>
+  <article class="collapse-container">
+    <div ng-click="wd = !wd">
+      <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
 
-  @@if (site === 'cx' )  {   <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
-  @@if (site === 'mew' ) {   <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+        <h2 translate="NAV_ClaimDGD"> Claim DGD </h2>
+
+    </div>
+    <div ng-show="!wd">
+
+      <p translate="DGD_Desc">Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.</p>
+      @@if (site === 'cx' )  {   <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
+      @@if (site === 'mew' ) {   <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+
+    </div>
+  </article>
+
+
 
   <section class="row" ng-show="wallet!=null" ng-controller='digixCtrl'>
-
-    <hr />
+    <hr ng-show="!wd" />
 
     <!-- Sidebar -->
     <section class="col-sm-4">
