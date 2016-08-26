@@ -4,6 +4,13 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
+  /* New - Deploy Contracts */
+  NAV_DeployContract:  'Verspreid Contract',
+  DEP_generate:        'Genereer Bytecode',
+  DEP_generated:       'Gegenereerde Bytecode',
+  DEP_signtx:          'Onderteken Transactie',
+  DEP_interface:       'Gegenereerde Interface',
+
   /* New */
   CX_error_1:           'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
   CX_quicksend:         'VerzendSnel', // if no appropriate translation, just use "Send"
