@@ -4,6 +4,7 @@ if (typeof chrome != 'undefined') IS_CX = chrome.windows === undefined ? false :
 require("babel-polyfill");
 var angular = require('angular');
 var angularTranslate = require('angular-translate');
+var angularTranslateErrorLog = require('angular-translate-handler-log');
 var angularSanitize = require('angular-sanitize');
 var BigNumber = require('bignumber.js');
 window.BigNumber = BigNumber;
@@ -65,6 +66,7 @@ app.config(['$compileProvider', function($compileProvider) {
 	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|):/);
 }]);
 app.config(['$translateProvider', function($translateProvider) {
+    $translateProvider.useMissingTranslationHandlerLog();
 	new translate($translateProvider);
 }]);
 app.factory('globalService', ['$http', '$httpParamSerializerJQLike', globalService]);
