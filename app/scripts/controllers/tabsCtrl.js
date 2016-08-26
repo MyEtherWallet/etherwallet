@@ -32,8 +32,20 @@ var tabsCtrl = function($scope, globalService, $translate) {
 			if ($scope.tabNames[key].id == id) location.hash = $scope.tabNames[key].url;
 		}
 	}
+	$scope.setLanguageVal = function (id, varName, pos) {
+		$translate(id).then(function(paragraph) {
+			globalFuncs[varName][pos] = paragraph;
+		}, function(translationId) {
+			globalFuncs[varName][pos] = translationId;
+		});
+	}
+	$scope.setErrorMsgLanguage = function() {
+		for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + (i + 1), 'errorMsgs', i);
+		for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i + 1), 'successMsgs', i);
+	}
 	$scope.changeLanguage = function(key, value) {
 		$translate.use(key);
+		$scope.setErrorMsgLanguage();
 		$scope.curLang = value;
 		$scope.setArrowVisibility();
 		$scope.dropdown = false;
