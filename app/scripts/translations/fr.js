@@ -4,6 +4,14 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
+  /* New - DAO ETC Withdrawal */
+  DAO_bal1:               'at block 1,919,999',
+  DAO_bal2:               'current',
+  DAO_TitleETH:           'Withdraw DAO For ETH',
+  DAO_TitleETC:           'Withdraw DAO For ETC',
+  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
+  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
+
   /* New - Deploy Contracts */
   NAV_DeployContract:  'Deploy Contract',
   DEP_generate:        'Generate Bytecode',
@@ -12,10 +20,10 @@ fr.data = {
   DEP_interface:       'Generated Interface',
 
   /* New */
-  CX_error_1:           'Vous n\'avez aucun portefeuille sauvegardé. Cliquez sur ["Add Wallet"](/cx-wallet.html#add-wallet) pour en ajouter un !',
-  CX_quicksend:         'Envoi rapide',
-  SEND_TransferTotal:   'Transférer le solde total',
-  FOOTER_1b:            'Créé par',
+  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  SEND_TransferTotal:   'Send Entire Balance', // updated to be shorter
+  FOOTER_1b:            'Created by',
 
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
@@ -246,7 +254,7 @@ fr.data = {
   SUCCESS_5:            'Vous avez voté avec succès. Merci d\'être un participant actif à The DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.0',
+  translate_version:    '0.2',
   Translator_Desc:      'Thank you to our translators: ',
   TranslatorName_1:     '[Simon P](https://www.myetherwallet.com/?gaslimit=21000&to=0x89a18eE46b5aabC62e94b1830881887D04C687f3&value=1.0#send-transaction) · ',
   TranslatorAddr_1:     '0x89a18eE46b5aabC62e94b1830881887D04C687f3',

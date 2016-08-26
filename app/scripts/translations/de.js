@@ -4,6 +4,14 @@ var de = function() {}
 de.code = 'de';
 de.data = {
 
+  /* New - DAO ETC Withdrawal */
+  DAO_bal1:               'at block 1,919,999',
+  DAO_bal2:               'current',
+  DAO_TitleETH:           'Withdraw DAO For ETH',
+  DAO_TitleETC:           'Withdraw DAO For ETC',
+  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
+  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
+
   /* New - Deploy Contracts */
   NAV_DeployContract:  'Deploy Contract',
   DEP_generate:        'Generate Bytecode',
@@ -246,9 +254,8 @@ de.data = {
   SUCCESS_5:            'Du hast erfolgreich abgestimmt. Danke, dass du eine aktive Teilnehmerin/aktiver Teilnehmer am DAO bist.',
 
   /* Tranlsation Info */
-  translate_version:    '0.0',
+  translate_version:    '0.2',
   Translator_Desc:      'Vielen Dank an unsere ÜbersetzerInnen:',
-
   TranslatorName_1:     'christoph2806 · K ·',
   TranslatorAddr_1:     '',
   /* Translator 1: Insert Comments Here */
@@ -264,7 +271,6 @@ de.data = {
   TranslatorName_5:     'danielsun174 · ffidan61',
   TranslatorAddr_5:     '',
   /* Translator 5: Insert Comments Here */
-
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning:      'Falls du vor dem **31.12.2015** ein Wallet generiert, oder das Repository heruntergeladen hast, bitte überprüfe deine Wallets &amp; lade eine neue Version des Repositories herunter. Klick für details.',

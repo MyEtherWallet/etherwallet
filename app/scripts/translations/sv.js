@@ -4,6 +4,14 @@ var sv = function() {}
 sv.code = 'sv';
 sv.data = {
 
+  /* New - DAO ETC Withdrawal */
+  DAO_bal1:               'at block 1,919,999',
+  DAO_bal2:               'current',
+  DAO_TitleETH:           'Withdraw DAO For ETH',
+  DAO_TitleETC:           'Withdraw DAO For ETC',
+  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
+  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
+
   /* New - Deploy Contracts */
   NAV_DeployContract:  'Deploy Contract',
   DEP_generate:        'Generate Bytecode',
@@ -34,7 +42,6 @@ sv.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
-  x_Wallet:             'Plånbok',
   x_Password:           'Lösenord',
   x_Download:           'Ladda Ner',
   x_Address:            'Din Adress',
@@ -52,6 +59,7 @@ sv.data = {
   x_PrintDesc:          'Tips: Klicka på skriv ut och spara som PDF, även om du inte har en skrivare!',
   x_CSV:                'CSV fil (okrypterad)',
   x_TXT:                'TXT fil (okrypterad)',
+  x_Wallet:             'Plånbok',
 
   /* Header */
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
@@ -246,7 +254,7 @@ sv.data = {
   SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.0',
+  translate_version:    '0.2',
   Translator_Desc:      'Thank you to our translators: ',
   TranslatorName_1:     '[Walkingmage](https://www.myetherwallet.com/?gaslimit=21000&to=0x1b8fa94bd3C65A2292816B4C48e34560E28cCb2f&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0x1b8fa94bd3C65A2292816B4C48e34560E28cCb2f',

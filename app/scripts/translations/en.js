@@ -11,10 +11,6 @@ en.data = {
   DAO_TitleETC:           'Withdraw DAO For ETC',
   DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
   DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
-  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
-  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. ',
-  DAOModal_Title:         'Just making sure...',
 
   /* New - Deploy Contracts */
   NAV_DeployContract:  'Deploy Contract',
@@ -194,7 +190,11 @@ en.data = {
   OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
   OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
 
-
+  /* DAO */
+  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
+  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. ',
+  DAOModal_Title:         'Just making sure...',
 
   /* Digix */
   DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
@@ -254,7 +254,7 @@ en.data = {
   SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.0',
+  translate_version:    '0.2',
   Translator_Desc:      '',
   TranslatorName_1:     '',
   TranslatorAddr_1:     '',

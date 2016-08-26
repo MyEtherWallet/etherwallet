@@ -4,6 +4,14 @@ var no = function() {}
 no.code = 'no';
 no.data = {
 
+  /* New - DAO ETC Withdrawal */
+  DAO_bal1:               'at block 1,919,999',
+  DAO_bal2:               'current',
+  DAO_TitleETH:           'Withdraw DAO For ETH',
+  DAO_TitleETC:           'Withdraw DAO For ETC',
+  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
+  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
+
   /* New - Deploy Contracts */
   NAV_DeployContract:  'Deploy Contract',
   DEP_generate:        'Generate Bytecode',
@@ -35,7 +43,6 @@ no.data = {
   NAV_Contact:          'Kontakt',
 
   /* General */
-  x_Wallet:             'Lommebok',
   x_Password:           'Passord',
   x_Download:           'Last ned',
   x_Address:            'Din adresse',
@@ -53,6 +60,7 @@ no.data = {
   x_PrintDesc:          'ProTips: Klikk "skriv ut" og lagre som PDF, selv om du ikke har noen skriver!',
   x_CSV:                'CSV-fil (ukryptert)',
   x_TXT:                'TXT-fil (ukryptert)',
+  x_Wallet:             'Lommebok',
 
   /* Header */
   MEW_Warning_1:        'Sjekk alltid nettsideadressen før du bruker eller oppretter en lommebok. Pass opp for "phishing"-nettsider!',
@@ -246,7 +254,7 @@ no.data = {
   SUCCESS_5:            'Du har stemt. Takk for at du er en aktiv deltaker i "The DAO".',
 
   /* Tranlsation Info */
-  translate_version:    '0.0',
+  translate_version:    '0.2',
   Translator_Desc:      'Thank you to our translators: ',
   TranslatorName_1:     '[mrstormlars](https://www.myetherwallet.com/?gaslimit=21000&to=0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08',

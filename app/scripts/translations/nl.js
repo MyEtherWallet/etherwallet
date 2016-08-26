@@ -4,12 +4,13 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* New - Deploy Contracts */
-  NAV_DeployContract:  'Verspreid Contract',
-  DEP_generate:        'Genereer Bytecode',
-  DEP_generated:       'Gegenereerde Bytecode',
-  DEP_signtx:          'Onderteken Transactie',
-  DEP_interface:       'Gegenereerde Interface',
+  /* New - DAO ETC Withdrawal */
+  DAO_bal1:               'at block 1,919,999',
+  DAO_bal2:               'current',
+  DAO_TitleETH:           'Withdraw DAO For ETH',
+  DAO_TitleETC:           'Withdraw DAO For ETC',
+  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
+  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
 
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
@@ -23,6 +24,7 @@ nl.data = {
   DAO_TitleLong:        'DAO Token in ETH omzetten',
   NAV_ClaimDGD:         'Claim DGD',
   DGD_TitleLong:        'Claim je DGD Tokens',
+  NAV_DeployContract:  'Verspreid Contract',
   NAV_MyWallets:        'Mijn Wallets',
   NAV_ViewWallet:       'Bekijk Wallet Info',
   NAV_Help:             'Help',
@@ -192,6 +194,12 @@ nl.data = {
   DGD_Generate:           'Genereer Claim',
   DGD_Content:            'Je staat op het punt om je DGD Tokens te claimen.',
 
+  /* Deploy Contracts */
+  DEP_generate:        'Genereer Bytecode',
+  DEP_generated:       'Gegenereerde Bytecode',
+  DEP_signtx:          'Onderteken Transactie',
+  DEP_interface:       'Gegenereerde Interface',
+
   /* My Wallet */
   MYWAL_Nick:             'Wallet Nickname',
   MYWAL_Address:          'Wallet Adres',
@@ -246,7 +254,7 @@ nl.data = {
   SUCCESS_5:            'Je hebt succesvol gestemd. Fijn dat je een actief participerend DAO deelnemer bent.',
 
   /* Translation Info */
-  translate_version:    '0.1',
+  translate_version:    '0.2',
   Translator_Desc:      'Veel dank voor onze vertalers: ',
   TranslatorName_1:     '[h3ll0fr13nd](https://www.myetherwallet.com/?gaslimit=21000&to=0xB5FbCE123F12347206c881cae73A3046BA1A90bA&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0xB5FbCE123F12347206c881cae73A3046BA1A90bA',

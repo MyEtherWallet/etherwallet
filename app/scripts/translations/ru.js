@@ -4,6 +4,14 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
+  /* New - DAO ETC Withdrawal */
+  DAO_bal1:               'at block 1,919,999',
+  DAO_bal2:               'current',
+  DAO_TitleETH:           'Withdraw DAO For ETH',
+  DAO_TitleETC:           'Withdraw DAO For ETC',
+  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
+  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
+
   /* New - Deploy Contracts */
   NAV_DeployContract:  'Deploy Contract',
   DEP_generate:        'Generate Bytecode',
@@ -14,7 +22,7 @@ ru.data = {
   /* New */
   CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
   CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Перевести весь доступный баланс',  // updated to read 'Send Entire Balance'
+  SEND_TransferTotal:   'Send Entire Balance', // updated to be shorter
   FOOTER_1b:            'Created by',
 
   /* Navigation*/
@@ -35,7 +43,6 @@ ru.data = {
   NAV_Contact:          'Контакты',
 
   /* General */
-  x_Wallet:             'кошелёк',
   x_Password:           'Пароли',
   x_Download:           'Скачать',
   x_Address:            'Ваш адрес',
@@ -53,6 +60,7 @@ ru.data = {
   x_PrintDesc:          'Для профи: Нажмите "Печать" и сохраните это в формате PDF, если у Вас нет принтера!',
   x_CSV:                'Файл CSV (не зашифрован)',
   x_TXT:                'Файл TXT (не зашифрован)',
+  x_Wallet:             'кошелёк',
 
   /* Header */
   MEW_Warning_1:        'Всегда проверяйте URL перед использованием имеющегося, а также перед созданием нового кошелька. Опасайтесь фишинговых сайтов!',
@@ -246,7 +254,7 @@ ru.data = {
   SUCCESS_5:            'Ваш голос учтён. Спасибо Вам за активное участие в работе DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.1',
+  translate_version:    '0.2',
   Translator_Desc:      'Спасибо нашим переводчикам: ',
   TranslatorName_1:     '[Михаил Владимиров](https://www.myetherwallet.com/?gaslimit=21000&to=0x6ff323e36bfdb20502b23780695f4e77e36cde95&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0x6ff323e36bfdb20502b23780695f4e77e36cde95',

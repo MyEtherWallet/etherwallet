@@ -4,19 +4,13 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-  /* New - Deploy Contracts */
-  NAV_DeployContract:  'Wyślij Kontrakt',
-  DEP_generate:        'Wygeneruj Kod Bajtowy',
-  DEP_generated:       'Wygenerowany Kod Bajtowy',
-  DEP_signtx:          'Podpisz Transakcję',
-  DEP_interface:       'Wygeneruj Interfejs',
-
-  /* New */
-  CX_error_1:           'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)!',
-  CX_quicksend:         'Wyślij', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Wyślij wszystkie środki',  // updated to read 'Send Entire Balance'
-  x_Wallet:             'Portfel',
-  FOOTER_1b:            'Twórcy:',
+  /* New - DAO ETC Withdrawal */
+  DAO_bal1:               'at block 1,919,999',
+  DAO_bal2:               'current',
+  DAO_TitleETH:           'Withdraw DAO For ETH',
+  DAO_TitleETC:           'Withdraw DAO For ETC',
+  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
+  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
@@ -53,6 +47,7 @@ pl.data = {
   x_PrintDesc:          'Wskazówka: Kliknij drukuj i zapisz plik PDF, nawet jeżeli nie posiadasz drukarki!',
   x_CSV:                'Plik CSV (nieszyfrowany)',
   x_TXT:                'Plik TXT (nieszyfrowany)',
+  x_Wallet:             'Portfel',
 
   /* Header */
   MEW_Warning_1:        'Zawsze dokładnie sprawdzaj adres URL strony przed jej użyciem. Użycie fałszywej strony może pozbawić cię wszystkich środków!',
@@ -62,6 +57,7 @@ pl.data = {
 
   /* Footer */
   FOOTER_1:             'Narzędzie do generowania portfeli Ethereum i wysyłania transakcji - otwartoźródłowe, javascrypt\'owe, strony klienta',
+  FOOTER_1b:            'Twórcy:',
   FOOTER_2:             'Darowizny:',
   FOOTER_3:             'Generowanie portfeli po stronie klienta przez',
 
@@ -120,6 +116,7 @@ pl.data = {
   SEND_amount_short:     'Kwota',
   SEND_custom:           'Inny',
   SEND_gas:              'Paliwo',
+  SEND_TransferTotal:    'Wyślij wszystkie środki',
   SEND_generate:         'Wygeneruj Transakcję',
   SEND_raw:              'Surowa Transkacja',
   SEND_signed:           'Podpisana Transakcja',
@@ -196,6 +193,13 @@ pl.data = {
   DGD_Generate:           'Wygeneruj Żądanie',
   DGD_Content:            'Jesteś w trakcie odbierania tokenów DGD.',
 
+  /* Deploy Contracts */
+  NAV_DeployContract:  'Wyślij Kontrakt',
+  DEP_generate:        'Wygeneruj Kod Bajtowy',
+  DEP_generated:       'Wygenerowany Kod Bajtowy',
+  DEP_signtx:          'Podpisz Transakcję',
+  DEP_interface:       'Wygeneruj Interfejs',
+
   /* My Wallet */
   MYWAL_Nick:             'Nazwa Portfela',
   MYWAL_Address:          'Adres Portfela',
@@ -217,6 +221,10 @@ pl.data = {
   VIEWWALLET_Subtitle:      'Ta zakładka pozwoli Ci na odczyt kluczy prywatnych, pobranie kopii portfeli oraz wydrukowanie portfeli papierowych. Pobrane za jej pomocą portfele możesz [zaimportować do Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jeśli chcesz sprawdzić stan Twojego konta, zalecamy użyć eksploratora bloków np. [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'Ta zakładka pozwala Ci na pobranie różnych typów kluczy prywatnych oraz ponowne wydrukowanie portfeli papierowych. ',
   VIEWWALLET_SuccessMsg:     'Sukces! Oto dane twojego portfela.',
+
+  /* Chrome Extension */
+  CX_error_1:           'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)!',
+  CX_quicksend:         'Wyślij',
 
   /* Error Messages */
   ERROR_1:             'Wprować prawidłową kwotę.',
@@ -246,7 +254,7 @@ pl.data = {
   SUCCESS_5:            'Zagłosowałeś z powodzeniem. Dziękuję za bycie aktywnym uczestnikiem The DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '3.0',
+  translate_version:    '3.0 (0.2)',
   Translator_Desc:      'Podziękowania tłumaczom: ',
   TranslatorName_1:     'egzi',
   TranslatorAddr_1:     '0xef39C3C51615B6e52e7D5B743BeaecdDcA822386', // donation address 0x1234
