@@ -71,7 +71,7 @@ fr.data = {
 
   /* Decrypt Panel */
   decrypt_Access:         'Comment voulez-vous accéder à votre portefeuille ?',
-  decrypt_Title:          'Choisissez le format de votre clé privée :',
+  decrypt_Title:          'Choisissez le format de votre clé privée',
   decrypt_Select:         'Choisissez un portefeuille :',
 
   /* Add Wallet */

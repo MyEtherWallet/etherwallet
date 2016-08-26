@@ -38,7 +38,7 @@
   <!-- Step 2 -->
   <section class="row">
     <hr />
-    <h4 class="col-xs-12" translate="OFFLLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h4>
+    <h4 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h4>
     <div class="form-group col-xs-10">
       <label translate="OFFLINE_Step2_Label_1"> To Address: </label>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress(tx.to,'validateToAddressStatus')"/>
