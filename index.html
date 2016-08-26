@@ -47,30 +47,30 @@
         <span class="dropdown">
           <a href="#" class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdown">
-            <li><a ng-click="changeLanguage('bg','български')">български</a></li>
-            <li><a ng-click="changeLanguage('de','Deutsch')">Deutsch</a></li>
-            <li><a ng-click="changeLanguage('el','Ελληνικά')">Ελληνικά</a></li>
-            <li><a ng-click="changeLanguage('en','English')">English</a></li>
-            <li><a ng-click="changeLanguage('es','Español')">Español</a></li>
-            <li><a ng-click="changeLanguage('et','Eesti')">Eesti</a></li>
-            <li><a ng-click="changeLanguage('fr','Français')">Français</a></li>
-            <li><a ng-click="changeLanguage('he','עברית')">עברית</a></li>
-            <li><a ng-click="changeLanguage('id','Indonesian')">Indonesian</a></li>
-            <li><a ng-click="changeLanguage('it','Italiano')">Italiano</a></li>
-            <li><a ng-click="changeLanguage('ja','日本語')">日本語</a></li>
-            <li><a ng-click="changeLanguage('ko','한국어')">한국어</a></li>
-            <li><a ng-click="changeLanguage('nl','Nederlands')">Nederlands</a></li>
-            <li><a ng-click="changeLanguage('no','Norsk Bokmål')">Norsk Bokmål</a></li>
-            <li><a ng-click="changeLanguage('pl','Polski')">Polski</a></li>
-            <li><a ng-click="changeLanguage('pt','Português')">Português</a></li>
-            <li><a ng-click="changeLanguage('ptbr','Português-Brazilian')">Português (Brazilian)</a></li>
-            <li><a ng-click="changeLanguage('ru','Русский')">Русский</a></li>
-            <li><a ng-click="changeLanguage('sk','Slovenčina')">Slovenčina</a></li>
-            <li><a ng-click="changeLanguage('sl','Slovenščina')">Slovenščina</a></li>
-            <li><a ng-click="changeLanguage('sv','Svenska')">Svenska</a></li>
-            <li><a ng-click="changeLanguage('tr','Türkçe')">Türkçe</a></li>
-            <li><a ng-click="changeLanguage('uk','Українська')">Українська</a></li>
-            <li><a ng-click="changeLanguage('vi','Tiếng Việt')">Tiếng Việt</a></li>
+        <!--<li><a ng-class="{true:'active'}[curLang=='български']" ng-click="changeLanguage('bg','български')">български</a></li> -->
+            <li><a ng-class="{true:'active'}[curLang=='Deutsch']" ng-click="changeLanguage('de','Deutsch')">Deutsch</a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']" ng-click="changeLanguage('el','Ελληνικά')">Ελληνικά</a></li>
+            <li><a ng-class="{true:'active'}[curLang=='English']" ng-click="changeLanguage('en','English')">English</a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Español']" ng-click="changeLanguage('es','Español')">Español</a></li>
+        <!--<li><a ng-class="{true:'active'}[curLang=='Eesti']" ng-click="changeLanguage('et','Eesti')">Eesti</a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='Français']" ng-click="changeLanguage('fr','Français')">Français</a></li>
+        <!--<li><a ng-class="{true:'active'}[curLang=='עברית']" ng-click="changeLanguage('he','עברית')">עברית</a></li>-->
+        <!--<li><a ng-class="{true:'active'}[curLang=='Indonesian']" ng-click="changeLanguage('id','Indonesian')">Indonesian</a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='Italiano']" ng-click="changeLanguage('it','Italiano')">Italiano</a></li>
+        <!--<li><a ng-class="{true:'active'}[curLang=='日本語']" ng-click="changeLanguage('ja','日本語')">日本語</a></li>-->
+        <!--<li><a ng-class="{true:'active'}[curLang=='한국어']" ng-click="changeLanguage('ko','한국어')">한국어</a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='Nederlands']" ng-click="changeLanguage('nl','Nederlands')">Nederlands</a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Norsk Bokmål']" ng-click="changeLanguage('no','Norsk Bokmål')">Norsk Bokmål</a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Polski']" ng-click="changeLanguage('pl','Polski')">Polski</a></li>
+        <!--<li><a ng-class="{true:'active'}[curLang=='Português']" ng-click="changeLanguage('pt','Português')">Português</a></li>-->
+        <!--<li><a ng-class="{true:'active'}[curLang=='Português-Brazilian']" ng-click="changeLanguage('ptbr','Português-Brazilian')">Português-Brazilian</a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='Русский']" ng-click="changeLanguage('ru','Русский')">Русский</a></li>
+        <!--<li><a ng-class="{true:'active'}[curLang=='Slovenčina']" ng-click="changeLanguage('sk','Slovenčina')">Slovenčina</a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='Slovenščina']" ng-click="changeLanguage('sl','Slovenščina')">Slovenščina</a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Svenska']" ng-click="changeLanguage('sv','Svenska')">Svenska</a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Türkçe']" ng-click="changeLanguage('tr','Türkçe')">Türkçe</a></li>
+        <!--<li><a ng-class="{true:'active'}[curLang=='Українська']" ng-click="changeLanguage('uk','Українська')">Українська</a></li>-->
+        <!--<li><a ng-class="{true:'active'}[curLang=='Tiếng Việt']" ng-click="changeLanguage('vi','Tiếng Việt')">Tiếng Việt</a></li>-->
           </ul>
         </span>
       </div>
@@ -360,7 +360,12 @@
     <!-- Send Transaction Page -->
 <article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id" ng-controller='sendTxCtrl'>
 
+  <!-- TODO: Show this message if the URL has a query string.
+  <p class="alert alert-info" ng-show="tx.sendMode==0"> You clicked a link that has the address, amount, gas, and/or data fields pre-filled for you. You can change any information before sending. Unlock your wallet to get started. </p>
+  -->
+
   <article class="collapse-container">
+
     <div ng-click="wd = !wd">
       <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
 
@@ -607,7 +612,7 @@
   <!-- Step 2 -->
   <section class="row">
     <hr />
-    <h4 class="col-xs-12" translate="OFFLLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h4>
+    <h4 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h4>
     <div class="form-group col-xs-10">
       <label translate="OFFLINE_Step2_Label_1"> To Address: </label>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress(tx.to,'validateToAddressStatus')"/>
@@ -1754,8 +1759,11 @@
     <hr />
 
     <div class="row">
-      <h2 class="col-xs-12" translate="BULK_SuccessMsg">Success! Your wallets have been generated.</h2>
-      <div class="alert alert-danger" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
+      <div class="col-xs-12">
+        <h2 translate="BULK_SuccessMsg">Success! Your wallets have been generated.</h2>
+
+        <div class="alert alert-danger" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
+      </div>
 
       <article class="col-md-9">
         <table id="bulkgentable" class="table">
@@ -1878,6 +1886,15 @@
       <a href="https://twitter.com/myetherwallet" target="_blank">Twitter</a> &middot;
       <a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank">kvhnuke on reddit</a> &middot;
       <a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank">tayvano (insom) on reddit</a>
+    </p>
+
+    <p>
+      <span translate="Translator_Desc">Thank you to our translators: </span>
+      <span translate="TranslatorName_1"></span>
+      <span translate="TranslatorName_2"></span>
+      <span translate="TranslatorName_3"></span>
+      <span translate="TranslatorName_4"></span>
+      <span translate="TranslatorName_5"></span>
     </p>
 
     <p ng-show="showBlocks" class="text-right" style="font-size: 10px">ETH Block#: {{ethBlockNumber}} &middot; ETC Block#: {{etcBlockNumber}}</p>
