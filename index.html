@@ -45,8 +45,8 @@
 
         &middot; v2.9 &middot;
         <span class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{curLang}} <span class="caret"></span></a>
-          <ul class="dropdown-menu">
+          <a href="#" class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
+          <ul class="dropdown-menu" ng-show="dropdown">
             <li><a ng-click="changeLanguage('bg','български')">български</a></li>
             <li><a ng-click="changeLanguage('de','Deutsch')">Deutsch</a></li>
             <li><a ng-click="changeLanguage('el','Ελληνικά')">Ελληνικά</a></li>
@@ -227,7 +227,7 @@
 
 
     <!-- View Wallet Info Panel -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id">
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id" ng-controller='viewWalletCtrl'>
 
   <article class="collapse-container">
     <div ng-click="wd = !wd">
@@ -251,7 +251,7 @@
 
 
 
-  <section class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
+  <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
 
     <h2 class="col-xs-12" translate="VIEWWALLET_SuccessMsg">Success! Here are your wallet details.</h2>
@@ -358,7 +358,7 @@
 
 
     <!-- Send Transaction Page -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id" ng-controller='sendTxCtrl'>
 
   <article class="collapse-container">
     <div ng-click="wd = !wd">
@@ -378,7 +378,7 @@
 
 
 
-  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+  <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
 
     <!-- Sidebar -->
@@ -725,7 +725,7 @@
 
 
     <!-- Tokens Panel -->
-<article class="tab-pane page-tokens active" ng-if="globalService.currentTab==globalService.tabs.tokens.id">
+<article class="tab-pane page-tokens active" ng-if="globalService.currentTab==globalService.tabs.tokens.id"  ng-controller='tokenCtrl'>
 
   <article class="collapse-container">
     <div ng-click="wd = !wd">
@@ -746,7 +746,7 @@
 
 
 
-  <section class="row" ng-show="wallet!=null" ng-controller='tokenCtrl'>
+  <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
 
     <!-- Sidebar -->
@@ -916,7 +916,7 @@
 
 
     <!-- The DAO -->
-<article class="tab-pane page-dao active" ng-if="globalService.currentTab==globalService.tabs.dao.id">
+<article class="tab-pane page-dao active" ng-if="globalService.currentTab==globalService.tabs.dao.id"  ng-controller='theDaoCtrl'>
 
   <!-- TOP: The DAO -->
   <article class="collapse-container">
@@ -940,7 +940,7 @@
 
 
   <!-- BOTTOM: The DAO -->
-  <section class="row" ng-show="wallet!=null" ng-controller='theDaoCtrl'>
+  <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
 
     <!-- Sidebar -->
@@ -1022,7 +1022,7 @@
 
 
     <!-- Digix -->
-<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.digix.id">
+<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.digix.id"  ng-controller='digixCtrl'>
 
   <article class="collapse-container">
     <div ng-click="wd = !wd">
@@ -1042,7 +1042,7 @@
 
 
 
-  <section class="row" ng-show="wallet!=null" ng-controller='digixCtrl'>
+  <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
 
     <!-- Sidebar -->
