@@ -83,12 +83,14 @@ var tabsCtrl = function($scope, globalService, $translate) {
 		ele.scrollLeft -= val;
 		$scope.showLeftArrow = ele.scrollLeft > 0;
 		$scope.showRightArrow = document.querySelectorAll(".nav-inner")[0].clientWidth > (ele.clientWidth + ele.scrollLeft);
+        $scope.$apply();
 	}
 	$scope.scrollRight = function(val) {
 		var ele = document.querySelectorAll(".nav-scroll")[0];
 		ele.scrollLeft += val;
 		$scope.showLeftArrow = ele.scrollLeft > 0;
 		$scope.showRightArrow = document.querySelectorAll(".nav-inner")[0].clientWidth > (ele.clientWidth + ele.scrollLeft);
+        $scope.$apply();
 	}
 	globalFuncs.changeHash = $scope.setHash;
 };
