@@ -1,5 +1,5 @@
 <!-- Send Transaction Page -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id" ng-controller='sendTxCtrl'>
 
   <!-- TODO: Show this message if the URL has a query string.
   <p class="alert alert-info" ng-show="tx.sendMode==0"> You clicked a link that has the address, amount, gas, and/or data fields pre-filled for you. You can change any information before sending. Unlock your wallet to get started. </p>
@@ -24,7 +24,7 @@
 
 
 
-  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+  <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
 
     <!-- Sidebar -->

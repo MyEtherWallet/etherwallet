@@ -1,5 +1,5 @@
 <!-- Tokens Panel -->
-<article class="tab-pane page-tokens active" ng-if="globalService.currentTab==globalService.tabs.tokens.id">
+<article class="tab-pane page-tokens active" ng-if="globalService.currentTab==globalService.tabs.tokens.id"  ng-controller='tokenCtrl'>
 
   <article class="collapse-container">
     <div ng-click="wd = !wd">
@@ -20,7 +20,7 @@
 
 
 
-  <section class="row" ng-show="wallet!=null" ng-controller='tokenCtrl'>
+  <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
 
     <!-- Sidebar -->

@@ -1,5 +1,5 @@
 <!-- View Wallet Info Panel -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id">
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id" ng-controller='viewWalletCtrl'>
 
   <article class="collapse-container">
     <div ng-click="wd = !wd">
@@ -23,7 +23,7 @@
 
 
 
-  <section class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
+  <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
 
     <h2 class="col-xs-12" translate="VIEWWALLET_SuccessMsg">Success! Here are your wallet details.</h2>

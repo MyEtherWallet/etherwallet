@@ -9,6 +9,7 @@
     "angular": "^1.5.3",
     "angular-sanitize": "^1.5.8",
     "angular-translate": "^2.11.1",
+    "angular-translate-handler-log": "^2.11.1",
     "babel-polyfill": "^6.8.0",
     "bignumber.js": "^2.3.0",
     "browserify": "^13.0.1",
