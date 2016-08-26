@@ -9,8 +9,8 @@ en.data = {
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
   DAO_TitleETC:           'Withdraw DAO For ETC',
-  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?'
-  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. '
+  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
+  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
   DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
   DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
   DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. ',
