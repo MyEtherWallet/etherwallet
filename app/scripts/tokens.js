@@ -20,6 +20,11 @@ Token.popTokens = [{
 	"decimal": 9
 },
 {
+	"address": "0x54bda709fed875224eae569bb6817d96ef7ed9ad",
+	"symbol": "DGDb",
+	"decimal": 0
+},
+{
 	"address": "0xc66ea802717bfb9833400264dd12c2bceaa34a6d",
 	"symbol": "MKR",
 	"decimal": 18

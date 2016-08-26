@@ -92,7 +92,7 @@
           <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value"/>
 
           <div class="radio">
-            <label ng-repeat="token in tokenObjs track by $index">
+            <label ng-repeat="token in tokenObjs track by $index" ng-hide="token.balance==0">
               <input type="radio" name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"/>
               {{token.getSymbol()}}
             </label>
