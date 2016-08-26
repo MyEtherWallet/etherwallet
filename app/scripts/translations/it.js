@@ -1,9 +1,16 @@
 // Italian
-// Last sync with en.js: commit 8b01728220a06b2c62a47
+// Last sync with en.js: commit 9767174db91f346c35477dd0c4bc
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
+
+  /* New - Deploy Contracts */
+  NAV_DeployContract:  'Pubblica contratto',
+  DEP_generate:        'Genera bytecode',
+  DEP_generated:       'Bytecode generato',
+  DEP_signtx:          'Firma transazione',
+  DEP_interface:       'Interfaccia generata',
 
   /* New */
   CX_error_1:           'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno!',
