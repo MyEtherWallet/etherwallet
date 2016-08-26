@@ -5724,6 +5724,7 @@ fr.data = {
   sidebar_AccountInfo:  'Informations du compte : ',
   sidebar_AccountAddr:  'Addresse du compte : ',
   sidebar_AccountBal:   'Solde du compte : ',
+  sidebar_TokenBal:     'Solde du token : ',
   sidebar_Equiv:        'Valeur correspondante : ',
   sidebar_TransHistory: 'Historique des transactions: ',
   sidebar_DGDBal:       'Informations sur la crowdsale DGD :',
