@@ -55,8 +55,8 @@
 }
         &middot; v2.9 &middot;
         <span class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{curLang}} <span class="caret"></span></a>
-          <ul class="dropdown-menu">
+          <a href="#" class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
+          <ul class="dropdown-menu" ng-show="dropdown">
             <li><a ng-click="changeLanguage('bg','български')">български</a></li>
             <li><a ng-click="changeLanguage('de','Deutsch')">Deutsch</a></li>
             <li><a ng-click="changeLanguage('el','Ελληνικά')">Ελληνικά</a></li>

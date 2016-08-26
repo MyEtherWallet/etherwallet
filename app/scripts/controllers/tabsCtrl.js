@@ -36,6 +36,7 @@ var tabsCtrl = function($scope, globalService, $translate) {
 		$translate.use(key);
 		$scope.curLang = value;
         $scope.setArrowVisibility();
+        $scope.dropdown = false;
 	};
     $scope.setHash = function(hash){
         location.hash = hash;
