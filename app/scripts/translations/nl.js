@@ -5,7 +5,7 @@ nl.code = 'nl';
 nl.data = {
 
   /* New */
-  CX_error_1:           'Je hebt geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
+  CX_error_1:           'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
   CX_quicksend:         'VerzendSnel', // if no appropriate translation, just use "Send"
   SEND_TransferTotal:   'Verzend volledig saldo',  // updated to read 'Send Entire Balance'
   FOOTER_1b:            'Gemaakt door',
@@ -66,7 +66,7 @@ nl.data = {
   sidebar_Equiv:        'Equivalente Waarde: ',
   sidebar_TransHistory: 'Transactie Geschiedenis: ',
   sidebar_DGDBal:       'DGD Crowdsale Informatie:',
-  sidebar_donation:     'MyEtherWallet is een gratis, open-source service toegewijd aan  jouw privacy en beveiliging. De meer donaties we ontvangen, de meer tijd we zullen spenderen aan nieuwe functies, aan de hand van jouw terugkoppeling, en we je kunnen geven wat jij wilt. Wij zijn slechts twee mensen die de wereld een stukje beter willen maken. Help jij mee?',
+  sidebar_donation:     'MyEtherWallet is een gratis, open-source service toegewijd aan  jouw privacy en beveiliging. Des te meer donaties we ontvangen, des te meer tijd we zullen spenderen aan nieuwe functies, aan de hand van jouw terugkoppeling, en we je kunnen geven wat jij wilt. Wij zijn slechts twee mensen die de wereld een stukje beter willen maken. Help jij mee?',
   sidebar_donate:       'Doneer',
   sidebar_thanks:       'BEDANKT!!!',
 
@@ -132,7 +132,7 @@ nl.data = {
   TOKEN_Dec:             'Decimalen: ',
 
   /* Send Transaction */
-  TRANS_desc:            'Als je Tokens wilt versturen, gebruik dan de "Verstuur Token" pagina i.p.v. deze pagina.',
+  TRANS_desc:            'Als je Tokens wilt versturen, gebruik dan de "Verzend Token" pagina i.p.v. deze pagina.',
   TRANS_warning:         'Als je gebruik maakt van de "Enkel ETH" of "Enkel ETC" functies zul je de transactie uitvoeren via een contract. Sommige diensten hebben  problemen met het accepteren van deze transacties. Lees meer.',
   TRANS_standard:        'ETH (Standaard Transactie)',
   TRANS_eth:             'Enkel ETH',
@@ -140,24 +140,24 @@ nl.data = {
   TRANS_advanced:        '+Geavanceerd: Voeg meer Gas of Data toe ',
   TRANS_data:            ' Data: ',
   TRANS_gas:             ' Gas: ',
-  TRANS_sendInfo:        'Een standaard transactie met 21000 gas zal 0.000441 ETH kosten. Wij gebruiken een iets-boven-minimum gas prijs van 0.000000021 ETH om te garranderen dat de transactie snel uitgevoerd zal worden. Wij zijn niet verandwoordelijk voor je transactie kosten.',
+  TRANS_sendInfo:        'Een standaard transactie met 21000 gas zal 0.000441 ETH kosten. Wij gebruiken een iets-boven-minimum gas prijs van 0.000000021 ETH om te garranderen dat de transactie snel uitgevoerd zal worden. Wij zijn niet verantwoordelijk voor je transactie kosten.',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Enkel ETH" en "Enkel ETC" Transacties',
   TRANSModal_Content_0:  'Een opmerking met betrekking tot de verschillende typen transacties en diensten:',
-  TRANSModal_Content_1:  '**ETH (Standaard Transactie): ** Hiermee genereer je een standaard transactie direct van een adres naar een ander. Het verbruikt de standaard hoeveelheid gas van 21000. Het is waarschijnlijk dan elke ETH verzonden met deze methode zal worden nagespeeld (replayed) op de ETC blockchain.',
+  TRANSModal_Content_1:  '**ETH (Standaard Transactie): ** Hiermee genereer je een standaard transactie, direct van een adres naar een ander. Het verbruikt de standaard hoeveelheid gas van 21000. Het is waarschijnlijk dat elke verzonden ETH met deze methode zal worden nagespeeld (replayed) op de ETC blockchain.',
   TRANSModal_Content_2:  '**Enkel ETH: ** Hiermee verstuur je via [Timon Rapp\'s "replay protection contract" (zoals aanbevolen door VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) zodat je enkel verstuurd op de **ETH** blockchain.',
   TRANSModal_Content_3:  '**Enkel ETC: ** Hiermee verstuur je via [Timon Rapp\'s "replay protection contract" (zoals aanbevolen door VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) zodat je enkel verstuurd op de **ETC** blockchain. ',
-  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Verstuur enkel via standaard transacties. Als je via de "Only" contracts hebt verstuurd zul je contact op moeten nemen met hun helpdesk zodat ze je kunnen restitueren [Je kunt ook Shapeshift\'s "split" tool uitproberen.](https://split.shapeshift.io/)',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Verstuur enkel via standaard transacties. Als je via de "Enkel" contracten hebt verstuurd zul je contact moeten opnemen met hun helpdesk zodat ze je kunnen restitueren [Je kunt ook Shapeshift\'s "split" tool uitproberen.](https://split.shapeshift.io/)',
   TRANSModal_Content_5:  '**Kraken & Poloniex:** Geen problemen bekend. Gebruik wat je voorkeur heeft.',
   TRANSModal_Yes:        'Mooi, nu begrijp ik het.',
   TRANSModal_No:         'Oh jee, nu snap ik er nog niets van. Help me.',
 
   /* Offline Transaction */
-  OFFLINE_Title:         'Genereer & Verstuur Offline Transactie',
-  OFFLINE_Desc:          'Een offline transactie vergt drie stappen. Stap 1 en 3 doe je op een online computer, terwijl je stap 2 uitvoert op een offline/afgeschermde computer. Dit zorgt ervoor dat je prive sleutel niet in aanraking komt met een met internet verbonden computer.',
+  OFFLINE_Title:         'Genereer & Verzend een Offline Transactie',
+  OFFLINE_Desc:          'Een offline transactie doe je in drie stappen. Stap 1 en 3 doe je op een online computer, terwijl je stap 2 uitvoert op een offline/afgeschermde computer. Dit zorgt ervoor dat je prive sleutel niet in aanraking komt met een met internet verbonden computer.',
   OFFLLINE_Step1_Title:  'Stap 1: Genereer Informatie (Online Computer)',
-  OFFLINE_Step1_Button:  'Genereer Information',
+  OFFLINE_Step1_Button:  'Genereer Informatie',
   OFFLINE_Step1_Label_1: 'Van Adres: ',
   OFFLINE_Step1_Label_2: 'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd van het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
   OFFLLINE_Step2_Title:   'Stap 2: Genereer Transactie (Offline Computer)',
@@ -173,16 +173,16 @@ nl.data = {
   OFFLINE_Step2_Label_6b: 'Dit is optioneel. Data wordt vaak gebruikt als je transacties naar contracten verstuurd.',
   OFFLINE_Step2_Label_7:  'Selecteer en geef je Prive Sleutel / JSON in.',
   OFFLINE_Step3_Title:    'Stap 3: Verstuur / Publiceer Transactie (Online Computer)',
-  OFFLINE_Step3_Label_1:  'Plak de gesigneerde transactie van Stap 2 hier en click de "VERSTUUR TRANSACTIE" knop.',
+  OFFLINE_Step3_Label_1:  'Plak de gesigneerde transactie van Stap 2 hier en click de "Verzend Transactie" knop.',
 
   /* DAO */
-  DAO_Desc:               'Gebruik dit tab om je DAO Tokens om te zitten in ETH. Als je DOA Tokens wilt versturen, gebruik dan het Verstuur Tokens Tab.',
+  DAO_Desc:               'Gebruik dit tab om je DAO Tokens om te zitten in ETH. Als je DOA Tokens wilt versturen, gebruik dan het Verzend Tokens Tab.',
   DAO_Inst:               'Ja. Klik eenvoudigweg op de grote rode knop. Dat is hoe gemakkelijk het is.',
   DAO_Warning:            'Als je een "Insufficient balance for gas" fout krijgt, zul je een kleine hoeveelheid ETH in je account moeten storten om de gas kosten voor deze actie te betalen. Voeg .01 ETH toe aan je account en probeer het opnieuw. ',
   DAOModal_Title:         'Voor de zekerheid...',
 
   /* Digix */
-  DGD_Desc:               'Claim je DigixDAO (DGD) tokens & badges. Om te claimen zul je meegedaan moeten hebben met de token sale van 30/31 maart 2016.  Als je DGD wilt versturen, gebruik dan het Verstuur Tokens Tab.',
+  DGD_Desc:               'Claim je DigixDAO (DGD) tokens & badges. Om te claimen zul je meegedaan moeten hebben met de token sale van 30/31 maart 2016.  Als je DGD wilt versturen, gebruik dan het Verzend Tokens Tab.',
   DGD_Label_1:            'Geschatte transactie kosten:',
   DGD_Label_2:            'Gegeven Maximum Transactie Kosten:',
   DGD_Label_3:            'Gas Prijs:',
@@ -261,16 +261,16 @@ nl.data = {
   HELP_Warning:       'Als je een wallet aanmaakt -of- repo hebt gedownload voor **31 december 2015**, check dan alsjebieft je wallets en download een nieuwe versie van de repo. Klik voor detais.',
   HELP_Desc:          'Zie je dat er iets mist? Of heb je een andere vraag? [Neem contact met ons op](mailto:myetherwallet@gmail.com), en we zullen niet alleen je vraag beantwoorden, maar ook deze pagina updated zodat deze nog nuttiger wordt for the mensen in de toekomst!',
   HELP_Remind_Title:  'Enkele herinneringen',
-  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, en enkele onderliggende Javascript libraries waar we gebruik van maken zijn onderheving aan active ontwikkeling.** Hoewel we grondig testen & er inmiddels tienduizenden wallets succesvol zijn aangemaakt door mensen over de hele wereld, blijft er altijd een geringe kans dat iets er onverwachts optreed waardoor je je ETH kunt verliezen. Investeer alsjeblieft niet meer dan dat je bereid bent om te verliezen, en wees voorzichtig. Zou er eventueel toch iets gebeuren vinden we dat zeer spijtig, echter **wij zullen nooit verantwoordelijk zijn voor de verloren Ether**.',
-  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX zijn geen "web wallets". Je maakt bij ons geen account aan of geeft nooit je Ether aan ons bezit. Alle gegevens verlaten nooit je computer/je browser. We helpen je alleen gemakkelijk toegang te verkrijgen tot de blockchain zodat je er informatie in kunt opslaan en kunt uitlezen.',
-  HELP_Remind_Desc_3: 'Als je je prive sleutel en wachtwoord niet opslaat, is er geen enkele manier om toegang tot je wallet te verkrijgen of het saldo welk erop staat.  Maak back-up en bewaar deze op meerdere fysieke lokaties en niet alleen op je eigen computer!',
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, en enkele onderliggende Javascript libraries waar we gebruik van maken zijn onderheving aan active ontwikkeling.** Hoewel we grondig testen & er inmiddels tienduizenden wallets succesvol zijn aangemaakt door mensen over de hele wereld, blijft er altijd een geringe kans dat iets er onverwachts optreedt waardoor je je ETH kunt verliezen. Investeer alsjeblieft niet meer dan dat je bereid bent om te verliezen, en wees voorzichtig. Zou er onverhoopt toch iets gebeuren vinden we dat zeer spijtig, echter **zullen wij nooit verantwoordelijk zijn voor de verloren Ether**.',
+  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX zijn geen "web wallets". Je maakt bij ons geen account aan noch geef je ooit je Ether aan ons in bezit. Alle gegevens verlaten nooit je computer/je browser. We helpen je alleen gemakkelijk toegang te verkrijgen tot de blockchain zodat je er informatie in kunt opslaan en kunt uitlezen.',
+  HELP_Remind_Desc_3: 'Als je je prive sleutel en wachtwoord niet opslaat, is er geen enkele manier om toegang tot je wallet te verkrijgen of het saldo dat er in zit. Maak back-up`s en bewaar deze op meerdere fysieke lokaties en dus niet alleen op je eigen computer!',
 
   HELP_0_Title:        '0) Ik ben nieuw. Waar begin ik?',
   HELP_0_Desc_1:       'MyEtherWallet geeft je de mogelijkheid om nieuwe wallets te genereren zodat je daarin je Ether kunt bewaren in plaat van op een exchange. Dit process vind volledig lokaal plaats, op je eigen computer en niet op onze servers. Daarom **ben je volledig zelf verantwoordelijk voor het veilig opslaan** van je via deze website aangemaakte wallets.',
   HELP_0_Desc_2:       'Creer een nieuwe wallet.',
   HELP_0_Desc_3:       'Maak een wallet back-up.',
   HELP_0_Desc_4:       'Verrifieer dat je toegang hebt tot dit nieuwe wallet en dat je alle noodzakelijke informatie correct hebt opgeslagen.',
-  HELP_0_Desc_5:       'Verstuur Ether naar dit nieuwe wallet.',
+  HELP_0_Desc_5:       'Verzend Ether naar dit nieuwe wallet.',
 
   HELP_1_Title:        '1) Hoe creer ik een nieuw wallet ',
   HELP_1_Desc_1:       'Ga naar de "Genereer Wallet" pagina.',
@@ -333,8 +333,8 @@ nl.data = {
   HELP_4CX_Desc_8:      'Klik "Verzend Transactie". ',
   HELP_4CX_Desc_9:      'Controleer dat het bedrag en het adres waarnaar je gaat verzenden correct zijn.',
   HELP_4CX_Desc_10:     'Voer het wachtwoord van je wallet in.',
-  HELP_4CX_Desc_11:     'Klik "Verstuur Transactie."',
-  HELP_4CX_Desc_12:     'Maak gebruik van de "Verstuur Ether" Pagina: ',
+  HELP_4CX_Desc_11:     'Klik "Verzend Transactie."',
+  HELP_4CX_Desc_12:     'Maak gebruik van de "Verzend Ether" Pagina: ',
 
   HELP_5_Title:         '5) Hoe voer ik MyEtherWallet.com offline/lokaal uit? ',
   HELP_5_Desc_1:        'Je kunt MyEtherWallet.com uitvoeren op je eigen computer in plaats van op de GitHub servers. Je kunt een wallet volledig offline genereren en transacties versturen met behulp van de "Offline Transactie" pagina.',
@@ -376,7 +376,7 @@ nl.data = {
 
   HELP_7_Title:         '7) Hoe verzend ik Tokens & voeg ik alternatieve tokens toe?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) is a goede manier om tokens te verkenen en de getallen omtrent het token op te zoeken.',
-  HELP_7_Desc_1:        'Navigeer naar de "Verstuur Token" pagina.',
+  HELP_7_Desc_1:        'Navigeer naar de "Verzend Token" pagina.',
   HELP_7_Desc_2:        'Ontsleutel je wallet.',
   HELP_7_Desc_3:        'Voer het adres in waar naar je wilt versturen in het "Aan adres:" veld.',
   HELP_7_Desc_4:        'Voer de te verzenden hoeveelheid in.',
@@ -403,7 +403,7 @@ nl.data = {
   HELP_8CX_Desc_2:       'Dat gezegd hebbende, is het dan ook **erg belangrijk** dat je een back-up maakt van je wallets die met MyEtherWallet CX zijn gegenereerd. Als er iets met MyEtherWallet CX of jouw computer gebeurd blijft op die manier je wallet bewaard, en heb alle noodzakelijke informatie bij de hand om toegang tot je Ether te verkrijgen. Zie vraag #2a om te leren hoe een back-up van je wallet kunt maken.',
   HELP_8CX_Desc_3:       'Als om wat voor reden dan ook MyEtherWallet CX verdwijnt van de Chrome Store, kunt je het altijd nog handmatig laden met de broncode van Github. Zie #5 hierboven.',
 
-  HELP_9_Title:          '9) Is de "Verstuur Ether" pagina offline?',
+  HELP_9_Title:          '9) Is de "Verzend Ether" pagina offline?',
   HELP_9_Desc_1:         ' Nee, verstuur transactie pagina is niet offline. De pagina heeft een internet verbinding nodig voor het bepalen van de actuele gas prijs, nonce van je account, en het versturen (broadcasten) van de transactie. Echter, het enige wat verstuurd wordt is je ondertekende transactie. Je prive sleutel blijft veilig bij je. We hebben nu ook een "Offline Transactie" pagina zodat je ervoor kunt zorgen dat je prive sleutels ten alle tijden op een offline/airgapped computer blijven.',
 
   HELP_10_Title:         '10) Hoe voer ik een offline transactie uit?',
@@ -417,11 +417,11 @@ nl.data = {
   HELP_10_Desc_8:        'Selecteer je wallet bestand -of- je prive sleutel en ontsleutel je wallet.',
   HELP_10_Desc_9:        'Druk op de "GENEREREER ONDERTEKENDE TRANSACTIE" knop.',
   HELP_10_Desc_10:       'Het data veld eronder zal worden ingevuld met je ondertekende transactie. Kopier dit veld en neem het mee terug naar je online computer. ',
-  HELP_10_Desc_11:       'Plak de ondertekende transactie op je online computer in het tekst veld van stap #3 em klik "Verstuur Ether". Dit zal je transactie publiceren op de blockchain (broadcasten).',
+  HELP_10_Desc_11:       'Plak de ondertekende transactie op je online computer in het tekst veld van stap #3 em klik "Verzend Ether". Dit zal je transactie publiceren op de blockchain (broadcasten).',
 
   HELP_11_Title:          '11) Hoe verstuur ik naar een contract?',
   HELP_11_Desc_1:         'Versturen naar een contract vereist vaak dat je data, extra gas, of beide dient toe te voegen.',
-  HELP_11_Desc_2:         'Navigeer naar de "Verstuur Ether" pagina. ',
+  HELP_11_Desc_2:         'Navigeer naar de "Verzend Ether" pagina. ',
   HELP_11_Desc_3:         'Selecteer je wallet bestand -of- je prive sleutel en  ontsleutel je wallet. ',
   HELP_11_Desc_4:         'Voer een "Aan Adres" en een "Te Verzenden Bedrag" in.',
   HELP_11_Desc_5:         'Klik op de "+Geavanceerd: Voeg meer Gas of Data toe" knop onder het bedrag veld. Er verschijnen nu twee extra velden die je kunt gebruiken om de hoeveelheid gas te verhoren bovenop de standaard 21000, of om extra data aan je transactie toe te voegen.',
