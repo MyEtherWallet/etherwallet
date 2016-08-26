@@ -167,7 +167,7 @@ nl.data = {
   OFFLINE_Step1_Button:  'Genereer Informatie',
   OFFLINE_Step1_Label_1: 'Van Adres: ',
   OFFLINE_Step1_Label_2: 'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd van het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
-  OFFLLINE_Step2_Title:   'Stap 2: Genereer Transactie (Offline Computer)',
+  OFFLINE_Step2_Title:   'Stap 2: Genereer Transactie (Offline Computer)',
   OFFLINE_Step2_Label_1:  'Aan Adres: ',
   OFFLINE_Step2_Label_2:  'Waarde / Te Verzenden Bedrag',
   OFFLINE_Step2_Label_3:  'Gas Prijs ',
