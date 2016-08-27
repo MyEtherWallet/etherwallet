@@ -38,7 +38,7 @@
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
         <!-- TODO - see this: http://ethereum.stackexchange.com/questions/8070/how-can-i-verify-that-my-the-dao-token-balance-is-correct-when-the-goodies-provi -->
-        <li><strong> TODO </strong> DAO (<span translate="DAO_bal1">at block 1,919,999</span>)</li>
+        <li><strong> {{token.DCbalance}} </strong> DAO (<span translate="DAO_bal1">at block 1,919,999</span>)</li>
         <li><strong>{{token.balance}}</strong> DAO (<span translate="DAO_bal2">current</span>)</li>
         <li><strong>{{etherBalance}}</strong> ETH </li>
         <li><strong>{{etcBalance}}</strong> ETC </li>
@@ -77,19 +77,19 @@
           <!-- Address for ETC to be Delivered -->
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_1"> Where do you want your ETC to be sent to? </label>
-            <input class="form-control" type="text" value="{{wallet.getChecksumAddressString()}}" /> <!-- ng-change="validateAddress()" -->
+            <input class="form-control" type="text" ng-model="daoC.to" ng-change="validateAddress(daoC.to)"/>
             <div ng-bind-html="validateAddressStatus"></div>
           </div>
 
           <div class="col-xs-2 address-identicon-container">
-            <div id="addressIdenticon" title="Address Indenticon" blockie-address="TODO" watch-var="TODO"></div>
+            <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{daoC.to}}" watch-var="daoC.to"></div>
           </div>
 
           <!-- Percentage to Donate to WHG -->
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_2"> The 'White Hat Group' has been working tirelessly to get your ETC back to you. You can say 'thank you' by donating a percentage of your withdrawal, if you choose to. </label>
             <div class="input-group" style="max-width: 150px;">
-            <input type="number" class="form-control" placeholder="10">
+            <input type="number" class="form-control" placeholder="10" ng-model="daoC.donation"/>
             <span class="input-group-addon">%</span>
           </div>
 
@@ -98,9 +98,7 @@
               Withdraw DAO for ETC
             </a>
           </div>
-
-          <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
-          <div class="form-group col-xs-12" ng-bind-html="withdrawTxStatus"></div>
+          <div class="form-group col-xs-12" ng-bind-html="withdrawETCTxStatus"></div>
 
           <br /><br />
 
@@ -139,20 +137,19 @@
             <h3 class="modal-title text-danger" id="myModalLabel" translate="DAOModal_Title">Just making sure...</h3>
           </div>
           <div class="modal-body">
-            <!-- TODO - make it show address ETC are going to be sent to -->
             <h4>
               <strong translate="DAOModal_1"> You are about to withdraw </strong>
-              <span>{{token.balance}}</span>
+              <span>{{token.DCbalance}}</span>
               <strong translate="DAOModal_2"> DAO Tokens to </strong>
-              <span> ADDRESS_IN_FIELD_ABOVE </span>
+              <span> {{daoC.to}} </span>
               <strong translate="DAOModal_3"> for </strong>
-              <span>{{token.balanceEth}} ETC.</span>
+              <span>{{token.DCbalanceEth}} ETC.</span>
             </h4>
             <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
           </div>
           <div class="modal-footer text-center">
             <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
-            <button type="button" class="btn btn-primary" ng-click="TODO" translate="SENDModal_Yes">Yes, I am sure! Withdraw.</button>
+            <button type="button" class="btn btn-primary" ng-click="generateAndWithdrawDAOC()" translate="SENDModal_Yes">Yes, I am sure! Withdraw.</button>
           </div>
         </div>
       </div>
@@ -173,7 +170,7 @@
               <strong translate="DAOModal_1"> You are about to withdraw </strong>
               <span>{{token.balance}}</span>
               <strong translate="DAOModal_2"> DAO Tokens to </strong>
-              <span> ADDRESS_IN_FIELD_ABOVE </span>
+              <span> {{wallet.getChecksumAddressString()}} </span>
               <strong translate="DAOModal_3"> for </strong>
               <span>{{token.balanceEth}} ETH.</span>
             </h4>
