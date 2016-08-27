@@ -32,7 +32,7 @@ nl.data = {
   x_AddessDesc:         'Dit is je "Account #" ofwel je "Publieke Sleutel". Maak dit bekend aan anderen zodat ze je ether kunnen sturen. Dit icoon is een makkelijke manier om je adres te herkennen.',
   x_PrivKey:            'Prive Sleutel (onversleuteld)',
   x_PrivKeyDesc:        'Dit is een onversleutelde tekst versie van je prive sleutel waarbij geen wachtwoord benodigd is. Mocht iemand deze unversleutelde prive sleutel vinden, kunnen zij zonder wachtwoord bij je account. Om deze reden zijn versleutelde versies aanbevolen.',
-  x_Keystore:           'Keystore/JSON Bestand (Aangeraden · versleuteld · Mist/Geth Formaat)',
+  x_Keystore:           'Keystore / JSON Bestand (Aangeraden · versleuteld · Mist/Geth Formaat)',
   x_KeystoreDesc:       'Dit Keystore / JSON bestand voldoen aan het formaat zoals gebruikt door Mist & Geth waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
   x_Json:               'JSON Bestand (onversleuteld)',
   x_JsonDesc:           'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',
@@ -41,6 +41,8 @@ nl.data = {
   x_PrintDesc:          'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
   x_CSV:                'CSV bestand (onverlseuteld)',
   x_TXT:                'TXT bestand (onverlseuteld)',
+  x_Json2:              'Keystore / JSON Bestand',
+  x_PrivKey2:           'Prive Sleutel',
 
   /* Header */
   MEW_Warning_1:        'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites!',
@@ -53,6 +55,7 @@ nl.data = {
   FOOTER_1b:            'Gemaakt door',
   FOOTER_2:             'Donaties worden zeer gewaardeerd:',
   FOOTER_3:             'Client-side wallet genereren door',
+  FOOTER_4:             'Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Account Informatie: ',
@@ -77,6 +80,7 @@ nl.data = {
   ADD_Radio_2:            'Selecteer Je wallet bestand (Keystore / JSON)',
   ADD_Radio_2_alt:        'Selecteer Je wallet bestand: ',
   ADD_Radio_2_short:      'SELECTEER WALLET BESTAND...',
+  ADD_Radio_2_success:    'Bestand Geselecteerd: ',
   ADD_Radio_3:            'Plak/Type je prive sleutel ',
   ADD_Radio_4:            'Voeg een te bekijken account toe',
   ADD_Label_2:            'Verzin een Nickname:',
@@ -183,7 +187,11 @@ nl.data = {
   DAO_Inst:               'Ja. Klik simpelweg op de grote rode knop. Zo makkelijk is het.',
   DAO_Warning:            'Als je een "Insufficient balance for gas" fout krijgt, zul je een kleine hoeveelheid ETH in je account moeten storten om de gas kosten voor deze actie te betalen. Voeg 0.01 ETH toe aan je account en probeer het opnieuw. ',
   DAOModal_Title:         'Voor de zekerheid...',
-
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'Je staat op het punt om',
+  DAOModal_2:             'DAO Tokens op te nemen voor',
+  DAOModal_3:             'voor', // "in return for"
+  
   /* Digix */
   DGD_Desc:               'Claim je DigixDAO (DGD) tokens & badges. Om te claimen zul je meegedaan moeten hebben met de token sale van 30/31 maart 2016.  Als je DGD wilt versturen, gebruik dan het Verzend Tokens Tab.',
   DGD_Label_1:            'Geschatte transactie kosten:',
@@ -455,6 +463,7 @@ nl.data = {
   HELP_12_Desc_13:        'Selecteer je wallet bestand -of- voer je prive sleutel in om je wallet te ontsleutelen.',
   HELP_12_Desc_14:        'Kopier je prive sleutel (onversleuteld/unencrypted).',
   HELP_12_Desc_15:        'Als je op een Mac werkt:',
+  HELP_12_Desc_15b:       'Als je op een PC werkt:',
   HELP_12_Desc_16:        'Open Tekst Editor en plak deze prive sleutel.',
   HELP_12_Desc_17:        'Ga naar de menu balk en klik "Formaat" -> "Maak Platte Tekst".',
   HELP_12_Desc_18:        'Sla dit bestand op op je bureaublad als `niets_bijzonders_verwijder_mij.txt`. Controleer dat de opties "UTF-8" en "If no extension is provided use .txt" gekozen zijn in het dialog.',
