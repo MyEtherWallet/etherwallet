@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 43f902e2177141e8db5dbb31d76716383070f544
+// Last sync with en.js: commit 3ee6e18a0a72587c010a99e5ae015e766f48859e
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -54,8 +54,10 @@ it.data = {
   x_Cancel:             'Annulla',
   x_AddessDesc:         'Potresti sentirlo chiamare "Numero di conto" o "Chiave pubblica". È ciò che dai a chi ti vuole inviare degli ether. L\'icona è un modo facile di riconoscere il tuo indirizzo.',
   x_PrivKey:            'Chiave privata (non crittografata)',
+  x_PrivKey2:           'Chiave privata',
   x_PrivKeyDesc:        'Questa è la versione testuale non crittografata della tua chiave privata, il che significa che non serve una password. Se qualcuno trovasse la tua chiave privata non crittografata potrebbe avere accesso al tuo portafoglio senza una password. Per questa ragione di solito si consigliano le versioni crittografate.',
   x_Keystore:           'File Keystore/JSON (Consigliato · Crittografato · Formato Mist/Geth)',
+  x_Keystore2:          'File Keystore / JSON',
   x_KeystoreDesc:       'Questo file Keystore/JSON è compatibile con il formato usato da Mist e Geth, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
   x_Json:               'File JSON (non crittografato)',
   x_JsonDesc:           'Questa è la tua chiave privata in formato JSON non crittografato. Significa che non hai bisogno della password, ma chiunque trovi questo file JSON potrà avere accesso al tuo portafoglio e ai tuoi ether senza password.',
@@ -64,8 +66,6 @@ it.data = {
   x_PrintDesc:          'Suggerimento Pro: Fai clic su stampa e salvalo come PDF, anche se non hai una stampante!',
   x_CSV:                'File CSV (non crittografato)',
   x_TXT:                'File TXT (non crittografato)',
-  x_Keystore2:          'File Keystore / JSON',
-  x_PrivKey2:           'Chiave privata',
   x_Wallet:             'Portafoglio',
 
   /* Header */
