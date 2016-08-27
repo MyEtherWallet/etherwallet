@@ -18,7 +18,7 @@ Response.clientClassic = new rpc.Client({
 });
 Response.getResponse = function(method, data, isClassic, callback) {
 	var resp;
-    var client = isClassic ? "clientClassic" : "client";
+	var client = isClassic ? "clientClassic" : "client";
 	Response[client].call({
 		"jsonrpc": "2.0",
 		"method": method,
@@ -39,18 +39,24 @@ Response.getResponse = function(method, data, isClassic, callback) {
 		});
 	});
 }
-Response.getResponseSync = function(method, data, isClassic){
-    var resp = wait.for(Response.getResponse, method, data, isClassic);
-    if(resp.error) throw resp.data;
-    return resp.data;
+Response.getResponseSync = function(method, data, isClassic) {
+	var resp = wait.
+	for (Response.getResponse, method, data, isClassic);
+	if (resp.error) throw resp.data;
+	return resp.data;
 }
 Response.getBalance = function(addr, isClassic) {
 	return this.runInTryCatch(function(data) {
 		addr = Response.formatAddress(addr);
 		data.data = {
 			address: addr,
-			balance: new BN(Response.getResponseSync("eth_getBalance",[addr,"pending"], isClassic))
+			balance: new BN(Response.getResponseSync("eth_getBalance", [addr, "pending"], isClassic))
 		};
+	});
+}
+Response.getCurrentBlock = function(isClassic) {
+	return this.runInTryCatch(function(data) {
+		data.data = new BN(Response.getResponseSync("eth_blockNumber", [], isClassic));
 	});
 }
 Response.getTransactionData = function(addr, isClassic) {
@@ -59,28 +65,28 @@ Response.getTransactionData = function(addr, isClassic) {
 		addr = parent.formatAddress(addr);
 		data.data = {
 			address: addr,
-			balance: new BN(Response.getResponseSync("eth_getBalance",[addr,"pending"], isClassic)),
-			nonce: Response.getResponseSync("eth_getTransactionCount",[addr,"pending"], isClassic),
-			gasprice: Response.getResponseSync("eth_gasPrice",[], isClassic)
+			balance: new BN(Response.getResponseSync("eth_getBalance", [addr, "pending"], isClassic)),
+			nonce: Response.getResponseSync("eth_getTransactionCount", [addr, "pending"], isClassic),
+			gasprice: Response.getResponseSync("eth_gasPrice", [], isClassic)
 		};
 	});
 }
 Response.sendRawTransaction = function(rawTx, isClassic) {
 	var parent = this;
 	return this.runInTryCatch(function(data) {
-		data.data = Response.getResponseSync("eth_sendRawTransaction",[rawTx], isClassic);
+		data.data = Response.getResponseSync("eth_sendRawTransaction", [rawTx], isClassic);
 	});
 }
 Response.getEthCall = function(txObj, isClassic) {
 	var parent = this;
 	return this.runInTryCatch(function(data) {
-		data.data = Response.getResponseSync("eth_call",[txObj,"pending"], isClassic);
+		data.data = Response.getResponseSync("eth_call", [txObj, "pending"], isClassic);
 	});
 }
 Response.getEstimatedGas = function(txObj, isClassic) {
 	var parent = this;
 	return this.runInTryCatch(function(data) {
-		data.data = Response.getResponseSync("eth_estimateGas",[txObj], isClassic);
+		data.data = Response.getResponseSync("eth_estimateGas", [txObj], isClassic);
 	});
 }
 Response.getDefaultResponse = function() {
@@ -92,7 +98,6 @@ Response.getDefaultResponse = function() {
 }
 Response.runInTryCatch = function(func) {
 	var data = this.getDefaultResponse();
-    
 	try {
 		func(data);
 	} catch (e) {
