@@ -179,7 +179,7 @@ nl.data = {
   DAO_TitleETC:           'DAO voor ETC opnemen',
   DAO_ETC_Label_1:        'Naar welk adres wil je je ETC verzenden?',
   DAO_ETC_Label_2:        'De "White Hat Group" is onvermoeibaar aan het werk geweest om jouw ETC terug bij jouw te krijgen. Je kunt ze bedankten door een percentage van je opname te doneren, als je daarvoor kiest. ',
-  DAO_Desc:               'Gebruik dit tab om je DAO Tokens om te zitten in ETH. Als je DOA Tokens wilt versturen, gebruik dan het Verzend Tokens Tab.',
+  DAO_Desc:               'Gebruik dit tab om je DAO Tokens om te zitten in ether. Als je DOA Tokens wilt versturen, gebruik dan het Verzend Tokens Tab.',
   DAO_Inst:               'Ja. Klik simpelweg op de grote rode knop. Zo makkelijk is het.',
   DAO_Warning:            'Als je een "Insufficient balance for gas" fout krijgt, zul je een kleine hoeveelheid ETH in je account moeten storten om de gas kosten voor deze actie te betalen. Voeg 0.01 ETH toe aan je account en probeer het opnieuw. ',
   DAOModal_Title:         'Voor de zekerheid...',
