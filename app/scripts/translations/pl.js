@@ -4,22 +4,22 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-  HELP_12_Desc_15b:       'If you are on a PC:',
-  ADD_Radio_2_success:    'File Selected: ',
-  FOOTER_4:               'Disclaimer',
+  HELP_12_Desc_15b:       'Jeśli pracujesz na PC\'cie:',
+  ADD_Radio_2_success:    'Wybrany plik: ',
+  FOOTER_4:               'Wyłączenie odpowiedzialności',
 
   /* New - DAO ETC Withdrawal */
   // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
-  DAOModal_1:             'You are about to withdraw',
-  DAOModal_2:             'DAO Tokens to',
-  DAOModal_3:             'for', // "in return for"
+  DAOModal_1:             'Zamierzasz wypłacić',
+  DAOModal_2:             'DAO tokenów do',
+  DAOModal_3:             'za', // "w zamian za"
 
-  DAO_bal1:               'at block 1,919,999',
-  DAO_bal2:               'current',
-  DAO_TitleETH:           'Withdraw DAO For ETH',
-  DAO_TitleETC:           'Withdraw DAO For ETC',
-  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
-  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
+  DAO_bal1:               'w bloku 1,919,999',
+  DAO_bal2:               'aktualny',
+  DAO_TitleETH:           'Wypłać DAO do ETH',
+  DAO_TitleETC:           'Wypłać DAO do ETC',
+  DAO_ETC_Label_1:        'Na jaki adres chcesz wysłać swoje ETC?',
+  DAO_ETC_Label_2:        '"White Hat Group" (Grupa Białych Kapeluszy) ciężko pracowała, aby pomóc Ci odzyskać Twoje ETC. Jeżeli chcesz, możesz im podziękować wysyłając procent z wypłacanych przez Ciebie środków. ',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
@@ -44,10 +44,10 @@ pl.data = {
   x_Address:            'Twój Adres',
   x_Save:               'Zapisz',
   x_Cancel:             'Anuluj',
-  x_AddessDesc:         'Inaczej "Numer konta" lub "Klucz publiczny". Wysłasz go innym aby mogli Ci wysłać ether. Ikona umożliwia łatwe rozpoznanie Twojego adresu.',
+  x_AddessDesc:         'Inaczej "Numer konta" lub "Klucz publiczny". Wysyłasz go innym aby mogli Ci wysłać ether. Ikona umożliwia łatwe rozpoznanie Twojego adresu.',
   x_PrivKey:            'Klucz Prywatny (nieszyfrowany)',
   x_PrivKey2:           'Klucz Prywatny',
-  x_PrivKeyDesc:        'Nieszyfrowana, tekstowa wersja Twojego klucza prywatengo, nie wymaga hasła. Jeżeli ktoś zdobędzie nieszyfrowany klucz będzie mógł uzyskać pełen dostęp do Twojeg portfela bez podania hasła. Z tego powodu zaleca się używanie jego szyfrowanej wersji.',
+  x_PrivKeyDesc:        'Nieszyfrowana, tekstowa wersja Twojego klucza prywatnego, nie wymaga hasła. Jeżeli ktoś zdobędzie nieszyfrowany klucz będzie mógł uzyskać pełen dostęp do Twojego portfela bez podania hasła. Z tego powodu zaleca się używanie jego szyfrowanej wersji.',
   x_Keystore:           'Plik Keystore/JSON (Zalecany · Szyfrowany · Format Mist/Geth)',
   x_Keystore2:          'Plik Keystore/JSON',
   x_KeystoreDesc:       'Ten plik Keystore / JSON odpowiada formatowi stosowanemu przez Mist i Geth, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
@@ -62,12 +62,12 @@ pl.data = {
 
   /* Header */
   MEW_Warning_1:        'Zawsze dokładnie sprawdzaj adres URL strony przed jej użyciem. Użycie fałszywej strony może pozbawić cię wszystkich środków!',
-  CX_Warning_1:         'Upewnij się że posiadasz **zewnętrzne kopie bezpieczeństwa** każdego przechowywanego tu portfela. Może być wiele powodów utraty danych przowywanych w tym rozszerzeniu przeglądarki Chrome, włączając w to odinstalowanie i ponowne zainstalowanie rozszerzenia. To rozszerzenie ma ułatwiać dostęp do Twoich portfeli, a **nie** służyć jako kopia bezpieczeństwa.',
+  CX_Warning_1:         'Upewnij się że posiadasz **zewnętrzne kopie bezpieczeństwa** każdego przechowywanego tu portfela. Może być wiele przyczyn utraty danych przechowywanych w tym rozszerzeniu przeglądarki Chrome, włączając w to odinstalowanie i ponowne zainstalowanie rozszerzenia. To rozszerzenie ma ułatwiać dostęp do Twoich portfeli, a **nie** służyć jako kopia bezpieczeństwa.',
   MEW_Tagline:          'Portfel Ethereum - Open Source, JavaScript, Client-Side',
 	CX_Tagline:           'Portfel Ethereum, Rozszerzenie Chrome - Open Source, JavaScript, Client-Side',
 
   /* Footer */
-  FOOTER_1:             'Narzędzie do generowania portfeli Ethereum i wysyłania transakcji - otwartoźródłowe, javascrypt\'owe, strony klienta',
+  FOOTER_1:             'Narzędzie do generowania portfeli Ethereum i wysyłania transakcji - otwarto-źródłowe, javascrypt\'owe, strony klienta',
   FOOTER_1b:            'Twórcy:',
   FOOTER_2:             'Darowizny:',
   FOOTER_3:             'Generowanie portfeli po stronie klienta przez',
@@ -80,7 +80,7 @@ pl.data = {
   sidebar_Equiv:        'Ekwiwalent: ',
   sidebar_TransHistory: 'Historia Transakcji: ',
   sidebar_DGDBal:       'Informacje o sprzedaży DGD:',
-  sidebar_donation:     'MyEtherWallet jest darmową, otwartoźródłową usługą stworzoną dla Twojej prywatności i bezpieczeństwa. Im więcej darowizn zbierzemy, tym więcej czasu będziemy w stanie poświęcić na dodawanie nowych funkcjonalności, analizowanie informacji zwrotnych oraz spełnianie waszych oczekiwań. Jesteśmy jedynie dwójką ludzi starającą się zmienić świat. Pomóż nam!',
+  sidebar_donation:     'MyEtherWallet jest darmową, otwarto-źródłową usługą stworzoną dla Twojej prywatności i bezpieczeństwa. Im więcej darowizn zbierzemy, tym więcej czasu będziemy w stanie poświęcić na dodawanie nowych funkcjonalności, analizowanie informacji zwrotnych oraz spełnianie waszych oczekiwań. Jesteśmy jedynie dwójką ludzi starającą się zmienić świat. Pomóż nam!',
   sidebar_donate:       'Prześlij darowiznę',
   sidebar_thanks:       'DZIĘKUJEMY!!!',
 
@@ -100,7 +100,7 @@ pl.data = {
   ADD_Label_2:            'Utwórz Nazwę Użytkownika:',
   ADD_Label_3:            'Twój portfel jest zaszyfrowany. Podaj hasło: ',
   ADD_Label_4:            'Dodaj Konto do Obserwacji',
-  ADD_Warning_1:          'Możesz dodać dowlone konto do obsrwacji bez podawania jego klucza prywatnego. ** Nie ** oznacza to, że uzyskasz dostęp do tego ortfela, nie będziesz mógł również wysyłać z niego środków.',
+  ADD_Warning_1:          'Możesz dodać dowolne konto do obserwacji bez podawania jego klucza prywatnego. ** Nie ** oznacza to, że uzyskasz dostęp do tego portfela, nie będziesz mógł również wysyłać z niego środków.',
   ADD_Label_5:            'Wpisz Adres: ',
   ADD_Label_6:            'Odblokuj Portfel',
   ADD_Label_6_short:      'Odblokuj',
@@ -110,7 +110,7 @@ pl.data = {
   GEN_desc:               'Jeżeli chcesz wygenerować wiele portfeli możesz to zrobić tu: ',
   GEN_Label_1:            'Wpisz silne hasło (co najmniej 9 znaków)',
   GEN_Placeholder_1:      'NIE zapomnij tego hasła!',
-  GEN_SuccessMsg:         'Sukces! Twój portfel został wygenerowny.',
+  GEN_SuccessMsg:         'Sukces! Twój portfel został wygenerowany.',
   GEN_Warning:            '**Potrzebujesz plik Keystore/JSON i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje.',
   GEN_Label_2:            'Zapisz Twój plik Keystore/JSON lub Klucz Prywatny. Nie zapomnij powyższego hasła.',
   GEN_Label_3:            'Zapisz swój adres.',
@@ -129,7 +129,7 @@ pl.data = {
   SEND_gas:              'Paliwo',
   SEND_TransferTotal:    'Wyślij wszystkie środki',
   SEND_generate:         'Wygeneruj Transakcję',
-  SEND_raw:              'Surowa Transkacja',
+  SEND_raw:              'Surowa Transakcja',
   SEND_signed:           'Podpisana Transakcja',
   SEND_trans:            'Wyślij Transakcję',
   SENDModal_Title:       'Ostrzeżenie! ',
@@ -137,7 +137,7 @@ pl.data = {
   SENDModal_Content_1:   'Wysyłasz',
   SENDModal_Content_2:   'do adresu',
   SENDModal_Content_3:   'Jesteś pewien, że chcesz to zrobić?',
-  SENDModal_Content_4:   'NOTKA: Jeśli wystąpi błąd, najbrawdopodobniej musisz doładować ether do Twojego konta na pokrycie kosztów paliwa do wyłania tokenów. Paliwo jest opłacane w ether.',
+  SENDModal_Content_4:   'NOTKA: Jeśli wystąpi błąd, najprawdopodobniej musisz doładować ether do Twojego konta, na pokrycie kosztów paliwa do wysłania tokenów. Paliwo jest opłacane w ether.',
   SENDModal_No:          'Nie, zabierz mnie stąd!',
   SENDModal_Yes:         'Tak, jestem pewien! Zatwierdź transakcję.',
 
@@ -163,14 +163,14 @@ pl.data = {
   TRANSModal_Content_1:  '**ETH (Standardowa Transakcja): ** generuje standardową transakcję bezpośrednio z jednego adresu do drugiego. Domyślnie spala 21000 paliwa. Prawdopodobnie transakcja ETH zostanie powielona na łańcuchu ETC jeżeli posiadasz obie waluty na tym samym adresie.',
   TRANSModal_Content_2:  '**Tylko ETH: ** wysyła przez [Kontrakt zapobiegający powielaniu Timon\'a Rapp\'a (zalecany przez VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), który wysyła środki tylko na łańcuchu **ETH**.',
   TRANSModal_Content_3:  '**Tylko ETC: ** wysyła przez [Kontrakt zapobiegający powielaniu Timon\'a Rapp\'a (zalecany przez VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), który wysyła środki tylko na łańcuchu **ETC**. ',
-  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** używaj tylko Transkacji Standardowych. Jeżeli wyślesz z opcją "Tylko...", będziesz musiał skontaktować się z pomocą techniczną usługodawcy w celu manualnego zatwierdzenia środków lub ich zwrotu. Możesz też użyć [narzędzia Shapeshift](https://split.shapeshift.io/)  do rozdzielenia środków.',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** używaj tylko Transakcji Standardowych. Jeżeli wyślesz z opcją "Tylko...", będziesz musiał skontaktować się z pomocą techniczną usługodawcy w celu manualnego zatwierdzenia środków lub ich zwrotu. Możesz też użyć [narzędzia Shapeshift](https://split.shapeshift.io/)  do rozdzielenia środków.',
   TRANSModal_Content_5:  '**Kraken i Poloniex:** nie są znane żadne utrudnienia. Używaj dowolnie.',
   TRANSModal_Yes:        'Super, już rozumiem.',
   TRANSModal_No:         'O boziu, strasznie zakręcone. Pomóżcie.',
 
   /* Offline Transaction */
   OFFLINE_Title:         'Generuj i Wyślij Transakcję Offline',
-  OFFLINE_Desc:          'Wygenerowanie transakcji może zostać wykonane w trzech krokach. Kroki 1 i 3 wykonasz na komputerze z internetem, krok 2 na komputerze bez połączenia z internetem. To gwarantuje, że Twoje klucze prywatne nigdy nie mają styczności z urządzeniem podłaczonym do internetu.',
+  OFFLINE_Desc:          'Wygenerowanie transakcji może zostać wykonane w trzech krokach. Kroki 1 i 3 wykonasz na komputerze z internetem, krok 2 na komputerze bez połączenia z internetem. To gwarantuje, że Twoje klucze prywatne nigdy nie mają styczności z urządzeniem podłączonym do internetu.',
   OFFLLINE_Step1_Title:  'Krok 1: Wygeneruj Informacje (Komputer Online)',
   OFFLINE_Step1_Button:  'Wygeneruj Informacje',
   OFFLINE_Step1_Label_1: 'Od Adresu: ',
@@ -238,7 +238,7 @@ pl.data = {
   CX_quicksend:         'Wyślij',
 
   /* Error Messages */
-  ERROR_1:             'Wprować prawidłową kwotę.',
+  ERROR_1:             'Wprowadź prawidłową kwotę.',
   ERROR_2:             'Twoje hasło musi zawierać co najmniej 9 znaków. Upewnij się, że jest to silne hasło. ',
   ERROR_3:              'Przykro nam! Nie rozpoznajemy tego formatu pliku portfela. ',
   ERROR_4:              'To nie jest prawidłowy plik portfela. ',
@@ -246,14 +246,14 @@ pl.data = {
   ERROR_6:              'Błędny adres. ',
   ERROR_7:              'Błędne hasło. ',
   ERROR_8:              'Błędna wartość. ',
-  ERROR_9:              'Będny limit paliwa. ',
+  ERROR_9:              'Błędny limit paliwa. ',
   ERROR_10:             'Błędne dane. ',
   ERROR_11:             'Błędna ilość paliwa. ',
   ERROR_12:             'Błędny wyróżnik. ',
   ERROR_13:             'Błąd podpisu transakcji. ',
   ERROR_14:             'Portfel z tą nazwą już istnieje. ',
-  ERROR_15:             'Nie znalezino portfela. ',
-  ERROR_16:             'Wygląda, że propozycja z tym ID jeszcze nie istnieje, lub wystąpił błąd odcztu tej propozycji. ',
+  ERROR_15:             'Nie znaleziono portfela. ',
+  ERROR_16:             'Wygląda, że propozycja z tym ID jeszcze nie istnieje, lub wystąpił błąd odczytu tej propozycji. ',
   ERROR_17:             'Portfel z tym adresem już istnieje w konfiguracji. Sprawdź zakładkę portfeli. ',
   ERROR_18:             'Musisz mieć co najmniej 0.001 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
   ERROR_19:             'Całe paliwo było by zużyte w tej transakcji. Oznacza to, że głosowałeś już w tej propozycji albo minął termin głosowania.',
@@ -267,7 +267,7 @@ pl.data = {
   /* Tranlsation Info */
   translate_version:    '3.0 (0.2)',
   Translator_Desc:      'Podziękowania tłumaczom: ',
-  TranslatorName_1:     'egzi',
+  TranslatorName_1:     '[egzi](?to=0xef39C3C51615B6e52e7D5B743BeaecdDcA822386&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0xef39C3C51615B6e52e7D5B743BeaecdDcA822386', // donation address 0x1234
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     '',
@@ -284,12 +284,12 @@ pl.data = {
   /* Translator 5: Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
-  HELP_Warning:       'Jeśli wygenerowałeś portfel -lub- sciągnąłeś repozytorium przed **31.12.2015**, sprawdź swoje portfele i ściągnij nową wersję repozytorium. Kliknij po szczegóły.',
-  HELP_Desc:          'Widzisz jakieś braki? Masz inne pytania? [Skontaktuj się z nami](mailto:myetherwallet@gmail.com), postaramy się odpowiedzieć, pomoże to nam również uaktualnić stronę aby w przyszłości była bardziej pomocna dla innych!',
+  HELP_Warning:       'Jeśli wygenerowałeś portfel -lub- ściągnąłeś repozytorium przed **31.12.2015**, sprawdź swoje portfele i ściągnij nową wersję repozytorium. Kliknij po szczegóły.',
+  HELP_Desc:          'Widzisz jakieś braki? Masz inne pytania? [Skontaktuj się z nami (tylko angielski)](mailto:myetherwallet@gmail.com), postaramy się odpowiedzieć, pomoże to nam również uaktualnić stronę aby w przyszłości była bardziej pomocna dla innych!',
   HELP_Remind_Title:  'W ramach uściślenia',
-  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com i MyEtherWallet CX, jak rónież niektóre bazowe biblioteki Javascript, których używamy, są wciąż aktywnie rozwijane.** Pomimo tego, że dokłądnie testujemy nasze oprogramowanie, pomimo że dziesiątki tysięcy portfeli zostało z powodzeniem wygenerowane przez użytkowników na całym świecie, zawsze istnieje pewne znikome prawdopodobieństwo, że nastąpi coś nieoczekiwanego, co spowoduje utratę Twoich środków. Nie inwestuj więc więcej niż jesteś gotów stracić i bądź ostrożny. Gdyby coś takiego się wydarzyło, będzie nam przykro, ale **nie weżmiemy za to odpowiedzialności**.',
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com i MyEtherWallet CX, jak również niektóre bazowe biblioteki Javascript, których używamy, są wciąż aktywnie rozwijane.** Pomimo tego, że dokładnie testujemy nasze oprogramowanie, pomimo że dziesiątki tysięcy portfeli zostało z powodzeniem wygenerowane przez użytkowników na całym świecie, zawsze istnieje pewne znikome prawdopodobieństwo, że nastąpi coś nieoczekiwanego, co spowoduje utratę Twoich środków. Nie inwestuj więc więcej niż jesteś gotów stracić i bądź ostrożny. Gdyby coś takiego się wydarzyło, będzie nam przykro, ale **nie weżmiemy za to odpowiedzialności**.',
   HELP_Remind_Desc_2: 'MyEtherWallet.com i MyEtherWallet CX nie są "portfelami internetowymi". Nie tworzysz kont internetowych i nie przekazujesz nam Twoich środków na przechowanie. W żadnym momencie Twoje klucze prywatne nie opuszczają Twojej przeglądarki/komputera. My jedynie ułatwiamy Ci tworzenie, zapisywanie, dostęp do twoich danych i interakcję z siecią Ethereum.',
-  HELP_Remind_Desc_3: 'Jeśli utracisz swój klucz prywatny lub zapomnisz hasło nie bedzie możliwości odzyskania dostępu do Twojego portfela oraz środków tam zgromadzonych. Wykonaj kopie bezpieczeństwa i przechowuj je w wielu fizycznie niezależnych miejscach, nie tylko na Twoim komputerze!',
+  HELP_Remind_Desc_3: 'Jeśli utracisz swój klucz prywatny lub zapomnisz hasło nie będzie możliwości odzyskania dostępu do Twojego portfela oraz środków tam zgromadzonych. Wykonaj kopie bezpieczeństwa i przechowuj je w wielu fizycznie niezależnych miejscach, nie tylko na Twoim komputerze!',
 
   HELP_0_Title:        '0) Jestem zielony. Od czego mam zacząć?',
   HELP_0_Desc_1:       'MyEtherWallet daje Ci możliwość generowania nowych portfeli abyś mógł przechowywać własne środki samodzielnie, nie na portalu wymiany walut. Ten proces odbywa się w całości na Twoim komputerze, nie na naszych serwerach. Z tego powodu, gdy generujesz nowy portfel, **to Ty jesteś odpowiedzialny za jego bezpieczne przechowywanie**.',
@@ -300,7 +300,7 @@ pl.data = {
 
   HELP_1_Title:        '1) Jak mam utworzyć nowy portfel? ',
   HELP_1_Desc_1:       'Przejdź na zakładkę "Wygeneruj Portfel".',
-  HELP_1_Desc_2:       'Przejdź na zakładkę "Dodaj Porfel" i zaznacz "Generuj Nowy Portfel"',
+  HELP_1_Desc_2:       'Przejdź na zakładkę "Dodaj Portfel" i zaznacz "Generuj Nowy Portfel"',
   HELP_1_Desc_3:       'Wpisz silne hasło. Jeśli uważasz, że mógłbyś je zapomnieć, zapisz je w jakimś bezpiecznym miejscu. Będziesz potrzebować tego hasła aby wysyłać transakcje.',
   HELP_1_Desc_4:       'Kliknij "GENERUJ".',
   HELP_1_Desc_5:       'Twój nowy portfel został właśnie wygenerowany.',
@@ -311,7 +311,7 @@ pl.data = {
   HELP_2a_Desc_3:      'Zachowaj klucz prywatny w przynajmniej jednym formacie. Nie udostępniaj go nikomu. Klucz prywatny będzie Ci potrzebny jeśli będziesz chciał uzyskać dostęp do Twojego portfela i wysyłać z niego środki! Istnieją 3 formaty zapisu kluczy prywatnych:',
   HELP_2a_Desc_4:      'Umieść adres portfela, klucz prywatny i PDF z papierową wersją portfela w jednym folderze. Zapisz ten folder na komputerze i na nośniku USB.',
   HELP_2a_Desc_5:      'Wydrukuj portfel jeżeli posiadasz drukarkę. Jeżeli nie, zapisz klucz prywatny i adres na kartce papieru. Umieść go w bezpiecznym miejscu oddzielnie od komputera i nośnika USB.',
-  HELP_2a_Desc_6:      'Pamietaj, że musisz się zabezpieczyć przed utratą kluczy i hasła z powodu zagubienia, uszkodzenia lub zniszczenia dysku twardego, nośnika USB lub kartki z zapisanymi danymi. Przewiduj rownież możliwość wystąpienia katastrofy obejmujących większe obszary (pożar, powódź).',
+  HELP_2a_Desc_6:      'Pamiętaj, że musisz się zabezpieczyć przed utratą kluczy i hasła z powodu zagubienia, uszkodzenia lub zniszczenia dysku twardego, nośnika USB lub kartki z zapisanymi danymi. Przewiduj również możliwość wystąpienia katastrofy obejmujących większe obszary (pożar, powódź).',
 
   HELP_2b_Title:       '2b) Jak mogę utworzyć portfel w 100% odizolowany od sieci globalnej (Cold Wallet) wykorzystując MyEtherWallet?',
   HELP_2b_Desc_1:      'Wejdź na nasze konto github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
@@ -340,7 +340,7 @@ pl.data = {
   HELP_4_Desc_4:        'Jeżeli portfel jest szyfrowany, automatycznie wyświetli się okienko tekstowe. Wpisz w nim hasło.',
   HELP_4_Desc_5:        'Kliknij przycisk "Odblokuj Portfel".',
   HELP_4_Desc_6:        'Wpisz adres, na który chcesz przesłać środki w pole "Do adresu:".',
-  HELP_4_Desc_7:        'Wpisz kwotę do wsyłania. Możesz też kliknąć "Wyślij wszystkie dostępne środki", jeśli chcesz przesłać całą dostępną kwotę.',
+  HELP_4_Desc_7:        'Wpisz kwotę do wysyłania. Możesz też kliknąć "Wyślij wszystkie dostępne środki", jeśli chcesz przesłać całą dostępną kwotę.',
   HELP_4_Desc_8:        'Notka: Od czerwca 2016, musisz się upewnić aby rozdzielić walutę ETC i ETH zanim prześlesz ether, jak byś to zrobił normalnie. Przejdź do pytania 6 poniżej po więcej informacji.',
   HELP_4_Desc_9:        'Kliknij "Wygeneruj i Podpisz Transakcję".',
   HELP_4_Desc_10:       'Pojawi się kilka kolejnych pól. Są to dane transakcji wygenerowane przez Twoją przeglądarkę.',
@@ -371,16 +371,16 @@ pl.data = {
   HELP_5_Desc_6:        'Kliknij 2-krotnie `index.html`.',
   HELP_5_Desc_7:        'MyEtherWallet działa teraz w całości na Twoim komputerze.',
   HELP_5_Desc_8:        'W razie gdybyś nie wiedział, musisz zachować cały folder, aby strona działała prawidłowo, nie tylko `index.html`. Nie ruszaj i nie przenoś nic innego w folderze. Jeżeli zachowujesz kopie repozytorium MyEtherWallet na przyszłość, zalecamy przechowywać je w formie spakowanego pliku ZIP, aby mieć pewność, że jego zawartość się nie zmieniła.',
-  HELP_5_Desc_9:        'Ponieważ ciągle aktualizujemy MyEtherWallet, zalecamy co jakiś czas aktualizować  zapisaną werjsę repozytorium.',
+  HELP_5_Desc_9:        'Ponieważ ciągle aktualizujemy MyEtherWallet, zalecamy co jakiś czas aktualizować  zapisaną wersję repozytorium.',
 
-  HELP_5CX_Title:       '5) Jak mogę zainstlować to rozszerzenie z repozytorium, zamiast z Chrome Web Store? ',
+  HELP_5CX_Title:       '5) Jak mogę zainstalować to rozszerzenie z repozytorium, zamiast z Chrome Web Store? ',
   HELP_5CX_Desc_1:      'Wejdź na nasze konto github i znajdź najnowszą wersję Rozszerzenia Chrome: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
   HELP_5CX_Desc_2:      'Przewiń na sam dół i kliknij prawym na najnowszą wersję. Kliknij "Zapisz link jako".',
   HELP_5CX_Desc_3:      'Wejdź w ustawienia przeglądarki Google Chrome (w menu w górnym prawym rogu).',
   HELP_5CX_Desc_4:      'Kliknij "Rozszerzenia" po lewej.',
   HELP_5CX_Desc_5:      'Kliknij "Tryb programisty" na górze strony.',
   HELP_5CX_Desc_6:      'Kliknij przycisk "Wczytaj rozszerzenie bez pakietu...".',
-  HELP_5CX_Desc_7:      'Nawiguj do rozpakowanego folderu, który ściągnąłeś wcześniej. Click "OK".',
+  HELP_5CX_Desc_7:      'Nawiguj do rozpakowanego folderu, który ściągnąłeś wcześniej. Kliknij "OK".',
   HELP_5CX_Desc_8:      'Rozszerzenie powinno się pojawić na liście i w pasku rozszerzeń przeglądarki Chrome.',
 
   HELP_6_Title:         '6) Jak rozdzielić środki ETH / ETC? ',
@@ -410,7 +410,7 @@ pl.data = {
   HELP_7_Desc_6:        'Jeśli nie widzisz danego tokena:',
   HELP_7_Desc_7:        'Kliknij "Inny".',
   HELP_7_Desc_8:        'Wpisz adres, symbol i ilość miejsc po przecinku tokena. Wartości te są podawane przez twórców tokena, są również potrzebne podczas dodawania tokena do obserwowanych w aplikacji Mist.',
-  HELP_7_Desc_9:        'Kliknij "Save".',
+  HELP_7_Desc_9:        'Kliknij "Zapisz".',
   HELP_7_Desc_10:       'Możesz teraz wysyłać ten token, jak również odczytać stan konta dla tokenu w kolumnie obok.',
   HELP_7_Desc_11:       'Kliknij "Generuj Transakcję".',
   HELP_7_Desc_12:       'Pojawi się kilka kolejnych pól z danymi transakcji wygenerowanymi przez Twoją przeglądarkę.',
@@ -419,18 +419,18 @@ pl.data = {
   HELP_7_Desc_15:       'Transakcja zostanie zatwierdzona. TX ID zostanie wyświetlone. Możesz kliknąć TX ID aby zobaczyć status transakcji w eksploratorze.',
 
   HELP_8_Title:         '8) Co się stanie, jeżeli wasza strona zniknie z sieci?',
-  HELP_8_Desc_1:        'MyEtherWallet nie jest usługą portfela internetowego. Nie posiadasz loginu i nic nie jest zapisywane na naszych serverach. To tylko interfejs, który pozwala korzystać z sieci Ethereum.',
-  HELP_8_Desc_2:        'Jeżeli MyEtherWallet.com zostanie wyłączona, musiałbyś znaleźć inny sposób (jak Ethereum Wallet / Mist) na korzystanie z sieci Ethereum. Nie musiałbyś jednak wypłacić swoich środków z MyEtherWallet, ponieważ one nie znajdują się na MyEtherWallet, a na portfelach, ktore zostały wygenerowane za pomocą naszej strony.',
+  HELP_8_Desc_1:        'MyEtherWallet nie jest usługą portfela internetowego. Nie posiadasz loginu i nic nie jest zapisywane na naszych serwerach. To tylko interfejs, który pozwala korzystać z sieci Ethereum.',
+  HELP_8_Desc_2:        'Jeżeli MyEtherWallet.com zostanie wyłączona, musiałbyś znaleźć inny sposób (jak Ethereum Wallet / Mist) na korzystanie z sieci Ethereum. Nie musiałbyś jednak wypłacić swoich środków z MyEtherWallet, ponieważ one nie znajdują się na MyEtherWallet, a na portfelach, które zostały wygenerowane za pomocą naszej strony.',
   HELP_8_Desc_3:        'Możesz w każdej chwili, w bardzo prosty sposób, zaimportować swoje nieszyfrowane klucze prywatne lub szyfrowane pliki w formacie Geth/Mist wprost do geth / Ethereum Wallet / Mist. Zobacz pytanie 12 poniżej.',
   HELP_8_Desc_4:        'W dodatku prawdopodobieństwo zamknięcia przez nas strony MyEtherWallet.com jest bliskie zeru. Koszty utrzymania strony są prawie żadne, ponieważ nie przechowujmy żadnych informacji. Jeśli nawet strona zostanie zamknięta, jest ona również i zawsze będzie publicznie dostępna na [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). Możesz ściągnąć paczkę ZIP i uruchomić MyEtherWallet lokalnie na własnym komputerze. ',
 
   HELP_8CX_Title:        '8) Co się stanie jeżeli MyEtherWallet CX zniknie?',
   HELP_8CX_Desc_1:       'Po pierwsze, wszystkie dane są zapisane na Twoim komputerze, nie na naszych serwerach. Wiem, że może Ci się to wydawać dziwne, ale kiedy patrzysz na Rozszerzenie Chrome, NIE patrzysz na coś zapisanego gdzieś na naszych serwerach - wszystko to jest na Twoim własnym komputerze.',
-  HELP_8CX_Desc_2:       'Z tego powodu, jest **niezmiernie ważnym** aby wykonywać kopie bezpieczeństwa wszystkich nowych portfeli wygenerowanych za pomocą MyEtherWallet CX. W ten sposób jeżeli cokowiek stanie się MyEtherWallet CX lub Twojemu komputerowi, wciąż będziesz miał wszelkie niezbędne informacje potrzebne aby odzyskać dostęp do Twoich portfeli. Zobacz punkt 2a aby dowiedzieć się jak wykonać kopie bezpieczeństwa.',
+  HELP_8CX_Desc_2:       'Z tego powodu, jest **niezmiernie ważnym** aby wykonywać kopie bezpieczeństwa wszystkich nowych portfeli wygenerowanych za pomocą MyEtherWallet CX. W ten sposób, jeżeli cokolwiek stanie się MyEtherWallet CX lub Twojemu komputerowi, wciąż będziesz miał wszelkie niezbędne informacje potrzebne aby odzyskać dostęp do Twoich portfeli. Zobacz punkt 2a aby dowiedzieć się jak wykonać kopie bezpieczeństwa.',
   HELP_8CX_Desc_3:       'Jeżeli z jakiegoś powodu MyEtherWallet CX zniknie z Chrome Store, możesz wciąż znaleźć kod źródłowy na Github\'ie i załadować manualnie do Chrome. Zobacz pkt. 5 powyżej.',
 
   HELP_9_Title:          '9) Czy zakładka "Wyślij Ether" działa offline?',
-  HELP_9_Desc_1:         ' Nie, zakładka wysyłania transakcji nie działa offline. Potrzebuje dostępu do internetu w celu pobrania aktualnej ceny paliwa, wyróżnika dla konta, oraz rozgłoszenia transakcji (wysłania). Jednakże wysyłana jest jedynie podpisana transakcja, nic więcej. Twój klucz prywatny w żadnym momencie nie opuszcza Twojego komputera. Teraz zapewniamy również funkcję "Wyślij Offline", ktora umożliwia przechowywanie kluczy prywatnych na komputerze, który fizycznie jest odizolowany od sieci zewnętrznej.',
+  HELP_9_Desc_1:         ' Nie, zakładka wysyłania transakcji nie działa offline. Potrzebuje dostępu do internetu w celu pobrania aktualnej ceny paliwa, wyróżnika dla konta, oraz rozgłoszenia transakcji (wysłania). Jednakże wysyłana jest jedynie podpisana transakcja, nic więcej. Twój klucz prywatny w żadnym momencie nie opuszcza Twojego komputera. Teraz zapewniamy również funkcję "Wyślij Offline", która umożliwia przechowywanie kluczy prywatnych na komputerze, który fizycznie jest odizolowany od sieci zewnętrznej.',
 
   HELP_10_Title:         '10) Jak wykonać transakcję offline (Cold Wallet)?',
   HELP_10_Desc_1:        'Przejdź na zakładkę "Wyślij Offline" na komputerze z dostępem do internetu.',
@@ -438,7 +438,7 @@ pl.data = {
   HELP_10_Desc_3:        'Przejdź na komputer bez dostępu do internetu. Uzupełnij pole "Do Adresu" i kwotę do wysłania.',
   HELP_10_Desc_4:        'Wpisz cenę paliwa jaka została wyświetlona na komputerze z internetem w kroku pierwszym.',
   HELP_10_Desc_5:        'Wpisz wyróżnik jaki został wyświetlony na komputerze z internetem w kroku pierwszym.',
-  HELP_10_Desc_6:        '"Limit Paliwa" ma domyślną wartość 21000. To pokryje koszty standardowej transakcji. Jeżeli będzisz wysyłać transakcję do kontraktu lub będziesz załączać jakieś dane do transakcji, musisz zwiększyć tą wartość. Nadpłata paliwa zostanie zwrócona.',
+  HELP_10_Desc_6:        '"Limit Paliwa" ma domyślną wartość 21000. To pokryje koszty standardowej transakcji. Jeżeli będziesz wysyłać transakcję do kontraktu lub będziesz załączać jakieś dane do transakcji, musisz zwiększyć tą wartość. Nadpłata paliwa zostanie zwrócona.',
   HELP_10_Desc_7:        'Jeśli chcesz możesz załączyć dane do transakcji. Musisz wtedy jednak zapewnić więcej niż domyślne 21000 limitu paliwa. Dane wpisujemy w formacie HEX.',
   HELP_10_Desc_8:        'Wybierz Twój plik portfela -lub- klucz prywatny i odblokuj portfel.',
   HELP_10_Desc_9:        'Kliknij przycisk "Wygeneruj Transakcję".',
@@ -477,7 +477,7 @@ pl.data = {
   HELP_12_Desc_22:        'Po ponownym uruchomieniu aplikacji Ethereum Wallet Twój portfel pojawi się na zakładce "Accounts".',
   HELP_12_Desc_23:        'Otwórz Notatnik i wklej klucz prywatny',
   HELP_12_Desc_24:        'Zapisz plik notatnika jako `nic_specjalnego_usun_mnie.txt` na `C:\\`',
-  HELP_12_Desc_25:        'Uruchom wiersz poleceń i wykonaj komemdę: `geth account import C:\\nic_specjalnego_usun_mnie.txt`',
+  HELP_12_Desc_25:        'Uruchom wiersz poleceń i wykonaj komendę: `geth account import C:\\nic_specjalnego_usun_mnie.txt`',
   HELP_12_Desc_26:        'Zostaniesz zapytany o hasło. To będzie hasło portfela w geth / Ethereum Wallet / Mist, które należy podać przy każdej transakcji, nie zapomnij tego hasła.',
   HELP_12_Desc_27:        'Po zaimportowaniu portfela, usuń `nic_specjalnego_usun_mnie.txt`',
   HELP_12_Desc_28:        'Po ponownym uruchomieniu aplikacji Ethereum Wallet Twój portfel pojawi się na zakładce "Accounts". ',
@@ -486,10 +486,10 @@ pl.data = {
   HELP_13_Desc_1:         'Najprawdopodobniej oznacza to, że chcesz wysłać Ether do kontraktu. Wysyłanie do kontraktu wymaga nieco więcej danych, a więc również więcej paliwa. Na zakładce "Wyślij Ether" kliknij "+Zaawansowane: Dodaj Więcej Paliwa lub Dane" poniżej pola kwoty. Pojawią się 2 nowe pola gdzie możesz zwiększyć ilość paliwa powyżej domyślnej wartości 21000 lub wpisać dane do transakcji.',
 
   HELP_14_Title:          '14) Niektóre strony wykorzystują ruchy myszką przy generowaniu klucza prywatnego. MyEtherWallet tego nie robi. Czy generator liczb losowych w MyEtherWallet jest bezpieczny?',
-  HELP_14_Desc_1:         'Chociaż generowanie liczb losowych przy udziale ruchów myszki jest sprytnie pomyślane i rozumiemy dlaczego ludzie to lubią, to jednak rzeczywistość jest taka, że window.crypto zapewnia większą entropię niż ruchy myszką. Generowanie z ruchów myszki nie jest niebezpieczne, ale my (oraz znaczna liczba innych expertów kryptografii) wierzymy w window.crypto. W dodatku MyEtherWallet może być używane na urządzeniach dotykowych. Tutaj można przeczytać [rozmowę rozeźlonego reddit\'ora i Vitalik\'a Buterin\'a odnośnie ruchów myszki kontra window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) a tutaj jest [specyfikacja window.crypto w3](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
+  HELP_14_Desc_1:         'Chociaż generowanie liczb losowych przy udziale ruchów myszki jest sprytnie pomyślane i rozumiemy dlaczego ludzie to lubią, to jednak rzeczywistość jest taka, że window.crypto zapewnia większą entropię niż ruchy myszką. Generowanie z ruchów myszki nie jest niebezpieczne, ale my (oraz znaczna liczba innych ekspertów kryptografii) wierzymy w window.crypto. W dodatku MyEtherWallet może być używane na urządzeniach dotykowych. Tutaj można przeczytać [rozmowę rozeźlonego reddit\'ora i Vitalik\'a Buterin\'a odnośnie ruchów myszki kontra window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) a tutaj jest [specyfikacja window.crypto w3](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
 
   HELP_15_Title:          '15) Dlaczego portfel, który właśnie wygenerowałem nie pokazuje się w eksploratorze bloków? (np. etherchain, etherscan)',
-  HELP_15_Desc_1:         'Adres pojawi się w ekploratorze bloków dopiero jak adres portfela będzie uczestniczył w jakichś transakcjach, np. jak wyślesz do niego jakieś środki.',
+  HELP_15_Desc_1:         'Adres pojawi się w eksploratorze bloków dopiero jak adres portfela będzie uczestniczył w jakichś transakcjach, np. jak wyślesz do niego jakieś środki.',
 
   HELP_16_Title:          '16) Jak sprawdzić stan mojego konta? ',
   HELP_16_Desc_1:         'Możesz użyć eksploratora bloków jak [etherscan.io](http://etherscan.io/). Wklej swój adres w wyszukiwarkę na stronie eksploratora, pokaże ona stan Twojego konta oraz historię transakcji. Tak na przykład wygląda nasze [konto donacji](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) na etherscan.io. ',
@@ -507,19 +507,19 @@ pl.data = {
 
   HELP_21_Title:          '21) Czy nie jest tak, że każdy może losowo sprawdzać różne klucze prywatne, a jak znajdzie taki ze środkami możę przelać je na swoje konto? ',
   HELP_21_Desc_1:         'Krótka odpowiedź: Tak. Jednak znalezienie któregokolwiek ze środkami zajęłoby więcej czasu niż wszechświat istnieje... więc... nie.',
-  HELP_21_Desc_2:         'Długa wersja (dla przedszkolaka): Ethereum bazuje na [Kryptografii Klucza Publicznego (ECC)](https://pl.wikipedia.org/wiki/Kryptografia_klucza_publicznego), a dokładnie na [Kryptografii Krzywych Eliptycznych](https://eprint.iacr.org/2013/734.pdf) które są bardzo szeroko stosowane, nie tylko w Ethereum. Większość serwerów jest chroniona przez ECC. Kolejne przykłady to Bitcoin, SSH, TLS i wiele innych. Klucze w Ethereum to dokłanie odmiana 256-bitowa, która jest silniejsza niż 128-bitowa i 192-bitowa, które również są wciąż szeroko stosowane oraz uznawane przez ekspertów za bezpieczne. ',
+  HELP_21_Desc_2:         'Długa wersja (dla przedszkolaka): Ethereum bazuje na [Kryptografii Klucza Publicznego (ECC)](https://pl.wikipedia.org/wiki/Kryptografia_klucza_publicznego), a dokładnie na [Kryptografii Krzywych Eliptycznych](https://eprint.iacr.org/2013/734.pdf) które są bardzo szeroko stosowane, nie tylko w Ethereum. Większość serwerów jest chroniona przez ECC. Kolejne przykłady to Bitcoin, SSH, TLS i wiele innych. Klucze w Ethereum to dokładnie odmiana 256-bitowa, która jest silniejsza niż 128-bitowa i 192-bitowa, które również są wciąż szeroko stosowane oraz uznawane przez ekspertów za bezpieczne. ',
   HELP_21_Desc_3:         'W tego typu zabezpieczeniu mamy 2 klucze: klucz prywatny i klucz publiczny. Z klucza prywatnego możemy szybko otrzymać klucz publiczny, ale otrzymanie klucza prywatnego z klucza publicznego jest niemożliwe. Biorąc pod uwagę, że cały internet i wszystkie sekrety świata używają tej metody kryptograficznej oznacza, że gdyby istniał sposób na otrzymanie klucza prywatnego z publicznego, to utrata Twoich środków z konta Ethereum byłaby najmniejszym zmartwieniem w świecie.',
   HELP_21_Desc_4:         'Idąc dalej, TAK jeżeli ktoś miałby Twój klucz prywatny mógłby z łatwością wypłacić środki z Twojego konta. Tak samo, jak by ktoś miał hasło do Twojego konta pocztowego, mógłby czytać Twoje maile, lub gdyby miał hasło bankowe, mógłby wypłacać z niego pieniądze. Możesz ściągnąć plik Keystore Twojego portfela, który jest kluczem prywatnym zaszyfrowanym hasłem. To jest tak jak by mieć hasło, które jest chronione innym hasłem.',
-  HELP_21_Desc_5:         'Więc TAK, teoretycznie możnaby po prostu wpisywać 64 znaki w kodzie szesnastkowym do momentu trafienia na taki, który nie jest pusty. Co więcej zdolni ludzie mogą napisać program, który będzie bardzo szybko, automatycznie sprawdzał kolejne losowe kombinacje kluczy. Taka metoda nazywa się "brute-forcing" lub "mining". Różni ludzie zastanawiali się nad jej zastosowaniem długo i intensywnie. Z pomocą kilku wysokiej klasy serwerów mogliby być w stanie sprawdzać ponad 1 milion kluczy na sekundę. Jednak nawet wtedy koszt utrzymania pracy tych serwerów byłby wiele razy wyższy niż potencjalne zyski ze znalezienia jakichkolwiek środków. Bardziej prawdopodobne byłoby, że pierwsze trafienie nastąpi dopiero po śmierci Twojej i Twoich prawnuków.',
+  HELP_21_Desc_5:         'Więc TAK, teoretycznie można by po prostu wpisywać 64 znaki w kodzie szesnastkowym do momentu trafienia na taki, który nie jest pusty. Co więcej zdolni ludzie mogą napisać program, który będzie bardzo szybko, automatycznie sprawdzał kolejne losowe kombinacje kluczy. Taka metoda nazywa się "brute-forcing" lub "mining". Różni ludzie zastanawiali się nad jej zastosowaniem długo i intensywnie. Z pomocą kilku wysokiej klasy serwerów mogliby być w stanie sprawdzać ponad 1 milion kluczy na sekundę. Jednak nawet wtedy koszt utrzymania pracy tych serwerów byłby wiele razy wyższy niż potencjalne zyski ze znalezienia jakichkolwiek środków. Bardziej prawdopodobne byłoby, że pierwsze trafienie nastąpi dopiero po śmierci Twojej i Twoich prawnuków.',
   HELP_21_Desc_6:         'Jeśli wiesz coś na temat Bitcoina, [to może dać Ci perspektywę:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *Aby zilustrować jak mało prawdopodobne to jest: załóżmy, że każdy satoshi (najmniejsza część Bitcoina, 0.00000001 BTC), każdego Bitcoina jaki kiedykolwiek będzie istnieć (21 milionów), został wysłany na swój własny unikalny klucz prywatny. Prawdopodobieństwo, że spośród wszystkich tych kluczy 2 odpowiadałyby tym samym adresom jest jak 1 do 100 kwintylionów.',
-  HELP_21_Desc_7:         '[Jeżeli byś chciał coś bardziej technicznego:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *Te liczby nie mają nic wspólnego z technologią na jakiej opiera się urządzenie. Są maksimami na jakie pozwala termodynamika, co silnie sugeruje, że skuteczne ataki brute-force przeciwko 256-bitowym kluczom będą nieosiągalne, dopóki komputery nie będą zbudowane z czegoś innego niż materia i będą zajmować troche więcej niż wszechświat.',
+  HELP_21_Desc_7:         '[Jeżeli byś chciał coś bardziej technicznego:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *Te liczby nie mają nic wspólnego z technologią na jakiej opiera się urządzenie. Są maksimami na jakie pozwala termodynamika, co silnie sugeruje, że skuteczne ataki brute-force przeciwko 256-bitowym kluczom będą nieosiągalne, dopóki komputery nie będą zbudowane z czegoś innego niż materia i będą zajmować trochę więcej niż wszechświat.',
   HELP_21_Desc_8:         'Oczywiście to wszystko ma miejsce przy założeniu, że klucze są generowane w prawdziwie losowy sposób i z wystarczającą entropią. Klucze tu wygenerowane spełniają te kryteria, tak samo jak klucze w Jaxx i Mist/geth. Portfele Ethereum są w większości całkiem niezłe. Z drugiej strony np. klucze wygenerowane przez ludzki umysł nie spełniają tych kryteriów, jako że ludzki umysł nie jest w stanie wygenerować prawdziwie losowego źródła. W otoczeniu Bitcoina w przeszłości pojawiło się kilka problemów związanych z brakiem odpowiedniej entropii lub brakiem pełnej losowości, ale to całkiem inny temat, być może na inny dzień.',
 
   HELP_SecCX_Title:       'Bezpieczeństwo - MyEtherWallet CX ',
-  HELP_SecCX_Desc_1:      'Gdzie są zapisywane informacje przechowwane przez to rozszerzenie?',
+  HELP_SecCX_Desc_1:      'Gdzie są zapisywane informacje przechowywane przez to rozszerzenie?',
   HELP_SecCX_Desc_2:      'Informacje przechowywane przez to Rozszerzenie Chrome jest zapisywane przez [chrome.storage](http://chrome.storage/). - w tym samym miejscu są przechowywane hasła zapisywane w przeglądarce Chrome.',
   HELP_SecCX_Desc_3:      'Jakie informacje są zapisywane? ',
-  HELP_SecCX_Desc_4:      'Adres, nazwa konta, klucz prywatny is stored in chrome.storage. Klucz prywatny jest zaszyfrowany hasłem jakie podano przy zakładaniu portfela. Nazwa i adres nie są szyfrowane.',
+  HELP_SecCX_Desc_4:      'Adres, nazwa konta, klucz prywatny są przechowywane w chrome.storage. Klucz prywatny jest zaszyfrowany hasłem jakie podano przy zakładaniu portfela. Nazwa i adres nie są szyfrowane.',
   HELP_SecCX_Desc_5:      'Dlaczego adres i nazwa konta nie są szyfrowane? ',
   HELP_SecCX_Desc_6:      'Jeżeli byśmy zaszyfrowali te informacje, konieczne było by podawanie hasła przy każdym sprawdzeniu stanu konta lub wyświetleniu jego nazwy. Jeśli to Cię niepokoi, możesz użyć MyEherWallet.com zamiast tego Rozszerzenia Chrome.',
 
@@ -529,12 +529,12 @@ pl.data = {
   HELP_Sec_Desc_3:        'Nie ukradniemy Twoich pieniędzy ani Twoich kluczy prywatnych. Ta strona nie zawiera złośliwego kodu. W zasadzie, zakładka "Generuj Portfel" działa w pełni po stronie klienckiej. Oznacza to, że cały kod jest uruchamiany wyłącznie na **Twoim komputerze**, a jego rezultat nigdzie nie jest zapisywany ani nigdzie przesyłany.',
   HELP_Sec_Desc_4:        'Sprawdź adres URL -- Ta strona jest serwowana przez GitHub. Kod źródłowy jest dostępny pod: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages). Strona jest dostępna pod domenami: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) i [https://www.myetherwallet.com](https://www.myetherwallet.com). Możesz zweryfikować czy jest hostowana przez GitHub używając [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - ostatnie 2 rekordy "A" zawierają numery IP należące do GitHub\'a i są wykorzystywane do hostowania zewnętrznych domen.',
   HELP_Sec_Desc_5:        ' Do generowania portfeli możesz pobrać [kod źródłowy](https://github.com/kvhnuke/etherwallet/tree/gh-pages). Zobacz punkt 5 powyżej.',
-  HELP_Sec_Desc_6:        'Wykonaj test i sprawdź jakie połączenia sieciowe są aktywowane. Najprostrzą metodą jest kliknięcie prawym przyciskiem myszy na stronie i "Zbadaj". Przejdź na zakładkę "Network". Wygeneruj testowy portfel. Zobaczysz, że nie są aktywowane żadne połączenia. Możesz zobaczyć coś wyglądającego jak data:image/gif i data:image/png. To są kody QR generowane... na Twoim komputerze... przez Twój komputer. Żadne dane nie były transferowane.',
-  HELP_Sec_Desc_7:        'Teraz, żeby się upewnić przejdź na zakładkę "Resources". Możesz tu zobaczyć wszystkie elementy tworzące stronę. Jeśli przeklikasz przez Local Storage, Cookies i Cache zobaczysz, że nic nie jest przechowywane. Nic nie jst zapisywane. Odśwież stronę i wszystko zostanie wyczyszczone do wartości domyślnych.',
+  HELP_Sec_Desc_6:        'Wykonaj test i sprawdź jakie połączenia sieciowe są aktywowane. Najprostszą metodą jest kliknięcie prawym przyciskiem myszy na stronie i "Zbadaj". Przejdź na zakładkę "Network". Wygeneruj testowy portfel. Zobaczysz, że nie są aktywowane żadne połączenia. Możesz zobaczyć coś wyglądającego jak data:image/gif i data:image/png. To są kody QR generowane... na Twoim komputerze... przez Twój komputer. Żadne dane nie były transferowane.',
+  HELP_Sec_Desc_7:        'Teraz, żeby się upewnić przejdź na zakładkę "Resources". Możesz tu zobaczyć wszystkie elementy tworzące stronę. Jeśli przejdziesz przez Local Storage, Cookies i Cache zobaczysz, że nic nie jest przechowywane. Nic nie jst zapisywane. Odśwież stronę i wszystko zostanie wyczyszczone do wartości domyślnych.',
   HELP_Sec_Desc_8:        'Jeśli nie czujesz się komfortowo używając tego oprogramowania, bez względu na wszystko, nie używaj go. Stworzyliśmy te narzędzia jako pomoc w generowaniu nowych portfeli i wykonywaniu transakcji bez potrzeby zagłębiania się w linię poleceń lub prowadzenia pełnego węzła. Jeszcze raz, nie krępuj się z nami skontaktować jeżeli masz jakieś wątpliwości. Postaramy się odpowiedzieć tak szybko jak to możliwe. Dzięki! ',
 
-  HELP_FAQ_Title:         'Więcej Pomocnych Odpowiedzi na Często Zadawane Pytania',
-  HELP_Contact_Title:     'Sposoby Nawiązania Kontaktu'
+  HELP_FAQ_Title:         'Więcej Pomocnych Odpowiedzi na Często Zadawane Pytania (tylko angielski)',
+  HELP_Contact_Title:     'Sposoby Nawiązania Kontaktu (tylko angielski)'
 };
 
 module.exports = pl;
