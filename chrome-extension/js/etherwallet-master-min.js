@@ -1663,7 +1663,7 @@ var cxWalletDecryptDrtv = function() {
       </div>\n \
       <div class="col-md-4 col-sm-6" ng-show="selectedWallet!=\'\'">\n \
         <h4 translate="ADD_Label_3"> Your wallet is encrypted. Please enter the password: </h4>\n \
-        <input class="form-control" type="password" placeholder="Password" ng-model="password">\n \
+        <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="password">\n \
       </div>\n \
       <div class="col-md-4 col-sm-6" id="walletuploadbutton" ng-show="password.length>3">\n \
         <h4 id="uploadbtntxt-wallet" translate="ADD_Label_6"> Unlock Your Wallet:</h4>\n \
@@ -1708,11 +1708,11 @@ var walletDecryptDrtv = function() {
       <h4 translate="decrypt_Title"> Select the format of your private key: </h4>\n \
       <div class="radio">\n \
         <label>\n \
-          <input type="radio" ng-model="walletType" value="fileupload"/>JSON or Keystore File</label>\n \
+          <input type="radio" ng-model="walletType" value="fileupload"/><span translate="x_Keystore2">Keystore / JSON File</span></label>\n \
       </div>\n \
       <div class="radio">\n \
         <label>\n \
-          <input type="radio" ng-model="walletType" value="pasteprivkey"/>Plain Text Private Key</label>\n \
+          <input type="radio" ng-model="walletType" value="pasteprivkey"/><span translate="x_PrivKey2">Private Key</span></label>\n \
       </div>\n \
     </div>\n \
     <div class="col-md-4 col-sm-6">\n \
@@ -1726,7 +1726,7 @@ var walletDecryptDrtv = function() {
         </div>\n \
         <div class="form-group" ng-if="requireFPass">\n \
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>\n \
-          <input class="form-control" type="password" placeholder="Password" ng-model="$parent.$parent.filePassword" ng-change="onFilePassChange()" />\n \
+          <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="$parent.$parent.filePassword" ng-change="onFilePassChange()" />\n \
         </div>\n \
       </div>\n \
       <!-- /if selected upload -->\n \
@@ -1734,11 +1734,11 @@ var walletDecryptDrtv = function() {
       <div id="selectedTypeKey" ng-if="walletType==\'pasteprivkey\'">\n \
         <h4 translate="ADD_Radio_3"> Paste / type your private key: </h4>\n \
         <div class="form-group">\n \
-          <textarea rows="4" class="form-control" placeholder="Private Key" ng-model="$parent.$parent.manualprivkey" ng-change="onPrivKeyChange()"></textarea>\n \
+          <textarea rows="4" class="form-control" placeholder="{{ \'x_PrivKey2\' | translate }}" ng-model="$parent.$parent.manualprivkey" ng-change="onPrivKeyChange()"></textarea>\n \
         </div>\n \
         <div class="form-group" ng-if="requirePPass">\n \
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>\n \
-          <input class="form-control" type="password" placeholder="Password" ng-model="$parent.$parent.privPassword" ng-change="onPrivKeyPassChange()">\n \
+          <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="$parent.$parent.privPassword" ng-change="onPrivKeyPassChange()">\n \
         </div>\n \
       </div>\n \
       <!-- /if selected type key-->\n \
@@ -4154,7 +4154,16 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -4203,7 +4212,7 @@ en.data = {
   x_PrivKey:            'Private Key (unencrypted)',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_PrintShort:         'Print',
@@ -4211,6 +4220,8 @@ en.data = {
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_CSV:                'CSV file (unencrypted)',
   x_TXT:                'TXT file (unencrypted)',
+  x_Keystore2:          'Keystore / JSON File',
+  x_PrivKey2:           'Private Key',
 
   /* Header */
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
@@ -7327,26 +7338,36 @@ module.exports = id;
 
 },{}],44:[function(require,module,exports){
 // Italian
-// Last sync with en.js: commit 9767174db91f346c35477dd0c4bc
+// Last sync with en.js: commit 5c8e26d7dc6e47efd4ce301d01ff57
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
-  DAO_bal1:               'at block 1,919,999',
-  DAO_bal2:               'current',
-  DAO_TitleETH:           'Withdraw DAO For ETH',
-  DAO_TitleETC:           'Withdraw DAO For ETC',
-  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
-  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
+  /* New - DAO ETC Withdrawal */
+  DAO_bal1:               'al blocco 1.919.999',
+  DAO_bal2:               'adesso',
+  DAO_TitleETH:           'Preleva DAO e ricevi ETH',
+  DAO_TitleETC:           'Preleva DAO e ricevi ETC',
+  DAO_ETC_Label_1:        'A che indirizzo vuoi che vengano inviati i tuoi ETC?',
+  DAO_ETC_Label_2:        'Il gruppo "White Hat" ha lavorato senza sosta per farti riavere i tuoi ETC. Puoi dire "grazie" donando una percentuale della somma che prelevi, se lo desideri. ',
 
   /* New - Deploy Contracts */
-  NAV_DeployContract:  'Deploy Contract',
-  DEP_generate:        'Generate Bytecode',
-  DEP_generated:       'Generated Bytecode',
-  DEP_signtx:          'Sign Transaction',
-  DEP_interface:       'Generated Interface',
+  NAV_DeployContract:  'Pubblica contratto',
+  DEP_generate:        'Genera bytecode',
+  DEP_generated:       'Bytecode generato',
+  DEP_signtx:          'Firma transazione',
+  DEP_interface:       'Interfaccia generata',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
@@ -7374,7 +7395,9 @@ it.data = {
   x_AddessDesc:         'Potresti sentirlo chiamare "Numero di conto" o "Chiave pubblica". È ciò che dai a chi ti vuole inviare degli ether. L\'icona è un modo facile di riconoscere il tuo indirizzo.',
   x_PrivKey:            'Chiave privata (non crittografata)',
   x_PrivKeyDesc:        'Questa è la versione testuale non crittografata della tua chiave privata, il che significa che non serve una password. Se qualcuno trovasse la tua chiave privata non crittografata potrebbe avere accesso al tuo portafoglio senza una password. Per questa ragione di solito si consigliano le versioni crittografate.',
+  x_PrivKey2:           'Chiave privata',
   x_Keystore:           'File Keystore/JSON (Consigliato · Crittografato · Formato Mist/Geth)',
+  x_Keystore2:          'File Keystore/JSON',
   x_KeystoreDesc:       'Questo file Keystore / JSON è compatibile con il formato usato da Mist e Geth, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
   x_Json:               'File JSON (non crittografato)',
   x_JsonDesc:           'Questa è la tua chiave privata in formato JSON non crittografato. Significa che non hai bisogno della password, ma chiunque trovi questo file JSON potrà avere accesso al tuo portafoglio e ai tuoi ether senza password.',
@@ -7456,7 +7479,7 @@ it.data = {
   SEND_raw:              'Transazione grezza',
   SEND_signed:           'Transazione firmata',
   SEND_trans:            'Invia transazione',
-  SEND_TransferTotal:   'Invia l\'intero saldo',
+  SEND_TransferTotal:    'Invia l\'intero saldo',
   SENDModal_Title:       'Attenzione! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Stai per inviare',
@@ -7516,9 +7539,9 @@ it.data = {
   OFFLINE_Step3_Label_1:  'Incolla la transazione firmata dal passo 2 qui e premi il pulsante "INVIA TRANSAZIONE".',
 
   /* DAO */
-  DAO_Desc:               'Usa questa scheda per prelevare i tuoi token DAO e ottenere ETH. Se invece vuoi inviare token DAO, utilizza la scheda "Invia token".',
+  DAO_Desc:               'Usa questa scheda per prelevare i tuoi token DAO e ottenere ETH **& ETC**. Se invece vuoi inviare token DAO, utilizza la scheda "Invia token".',
   DAO_Inst:               'Sì. Devi solo premere questo grosso pulsante rosso. È davvero così semplice.',
-  DAO_Warning:            'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0.001 ether a questo conto e riprova. ',
+  DAO_Warning:            'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0,001 ETH a questo conto e riprova. ',
   DAOModal_Title:         'Tanto per essere sicuri...',
 
   /* Digix */
@@ -7649,7 +7672,7 @@ it.data = {
   HELP_3_Desc_5:        'Se il portafoglio è crittografato, comparirà automaticamente una casella di testo. Inserisci la password.',
   HELP_3_Desc_6:        'Fai clic sul pulsante "Sblocca".',
   HELP_3_Desc_7:        'Dovrebbero comparire le informazioni sul tuo portafoglio. Individua l\'indirizzo del tuo conto, accanto all\'icona rotonda e colorata. Questa icona rappresenta visivamente il tuo indirizzo. Assicurati che l\'indirizzo sia quello che hai salvato nel tuo file di testo e che sia presente sul tuo portafoglio cartaceo.',
-  HELP_3_Desc_8:        'Se stai pensando di conservare una grande quantità di ether, ti consigliamo di provare a inviare una piccola somma di ether dal nuovo portafoglio prima di depositarci un grosso importo. Invia 0.001 ether al nuovo portafoglio, accedici, e invia quegli 0.001 ether a un altro indirizzo, e assicurati che tutto funzioni agevolmente.',
+  HELP_3_Desc_8:        'Se stai pensando di conservare una grande quantità di ether, ti consigliamo di provare a inviare una piccola somma di ether dal nuovo portafoglio prima di depositarci un grosso importo. Invia 0,001 ether al nuovo portafoglio, accedici, e invia quegli 0,001 ether a un altro indirizzo, e assicurati che tutto funzioni agevolmente.',
 
   HELP_4_Title:         '4) Come invio degli ether da un portafoglio a un altro?',
   HELP_4_Desc_1:        'Se stai pensando di spostare una grande quantità di ether, dovresti prima provare ad inviare una piccola somma al tuo portafoglio per assicurarti che tutto vada come previsto.',
@@ -8922,7 +8945,16 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -8957,8 +8989,10 @@ nl.data = {
   x_Cancel:             'x_Annuleren',
   x_AddessDesc:         'Dit is je "Account #" ofwel je "Publieke Sleutel". Maak dit bekend aan anderen zodat ze je ether kunnen sturen. Dit icoon is een makkelijke manier om je adres te herkennen.',
   x_PrivKey:            'Prive Sleutel (onversleuteld)',
+  x_PrivKey2:           'Prive Sleutel',
   x_PrivKeyDesc:        'Dit is een onversleutelde tekst versie van je prive sleutel waarbij geen wachtwoord benodigd is. Mocht iemand deze unversleutelde prive sleutel vinden, kunnen zij zonder wachtwoord bij je account. Om deze reden zijn versleutelde versies aanbevolen.',
   x_Keystore:           'Keystore/JSON Bestand (Aangeraden · versleuteld · Mist/Geth Formaat)',
+  x_Keystore2:          'Keystore/JSON Bestand',
   x_KeystoreDesc:       'Dit Keystore / JSON bestand voldoen aan het formaat zoals gebruikt door Mist & Geth waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
   x_Json:               'JSON Bestand (onversleuteld)',
   x_JsonDesc:           'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',

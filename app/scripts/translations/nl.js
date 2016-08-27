@@ -4,13 +4,6 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* New - DAO ETC Withdrawal */
-  DAO_bal1:               'at block 1,919,999',
-  DAO_bal2:               'current',
-  DAO_TitleETH:           'Withdraw DAO For ETH',
-  DAO_TitleETC:           'Withdraw DAO For ETC',
-  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
-  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
 
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
@@ -39,8 +32,10 @@ nl.data = {
   x_Cancel:             'x_Annuleren',
   x_AddessDesc:         'Dit is je "Account #" ofwel je "Publieke Sleutel". Maak dit bekend aan anderen zodat ze je ether kunnen sturen. Dit icoon is een makkelijke manier om je adres te herkennen.',
   x_PrivKey:            'Prive Sleutel (onversleuteld)',
+  x_PrivKey2:           'Prive Sleutel',
   x_PrivKeyDesc:        'Dit is een onversleutelde tekst versie van je prive sleutel waarbij geen wachtwoord benodigd is. Mocht iemand deze unversleutelde prive sleutel vinden, kunnen zij zonder wachtwoord bij je account. Om deze reden zijn versleutelde versies aanbevolen.',
   x_Keystore:           'Keystore/JSON Bestand (Aangeraden · versleuteld · Mist/Geth Formaat)',
+  x_Keystore2:          'Keystore/JSON Bestand',
   x_KeystoreDesc:       'Dit Keystore / JSON bestand voldoen aan het formaat zoals gebruikt door Mist & Geth waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
   x_Json:               'JSON Bestand (onversleuteld)',
   x_JsonDesc:           'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',
@@ -49,6 +44,8 @@ nl.data = {
   x_PrintDesc:          'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
   x_CSV:                'CSV bestand (onverlseuteld)',
   x_TXT:                'TXT bestand (onverlseuteld)',
+  x_Json2:              'Keystore / JSON Bestand',
+  x_PrivKey2:           'Prive Sleutel',
 
   /* Header */
   MEW_Warning_1:        'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites!',
@@ -61,6 +58,7 @@ nl.data = {
   FOOTER_1b:            'Gemaakt door',
   FOOTER_2:             'Donaties worden zeer gewaardeerd:',
   FOOTER_3:             'Client-side wallet genereren door',
+  FOOTER_4:             'Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Account Informatie: ',
@@ -85,6 +83,7 @@ nl.data = {
   ADD_Radio_2:            'Selecteer Je wallet bestand (Keystore / JSON)',
   ADD_Radio_2_alt:        'Selecteer Je wallet bestand: ',
   ADD_Radio_2_short:      'SELECTEER WALLET BESTAND...',
+  ADD_Radio_2_success:    'Bestand Geselecteerd: ',
   ADD_Radio_3:            'Plak/Type je prive sleutel ',
   ADD_Radio_4:            'Voeg een te bekijken account toe',
   ADD_Label_2:            'Verzin een Nickname:',
@@ -181,10 +180,20 @@ nl.data = {
   OFFLINE_Step3_Label_1:  'Plak de gesigneerde transactie van Stap 2 hier en click de "Verzend Transactie" knop.',
 
   /* DAO */
-  DAO_Desc:               'Gebruik dit tab om je DAO Tokens om te zitten in ETH. Als je DOA Tokens wilt versturen, gebruik dan het Verzend Tokens Tab.',
-  DAO_Inst:               'Ja. Klik eenvoudigweg op de grote rode knop. Dat is hoe gemakkelijk het is.',
+  DAO_bal1:               'bij blok 1.919.999',
+  DAO_bal2:               'momenteel',
+  DAO_TitleETH:           'DAO voor ETH opnemen',
+  DAO_TitleETC:           'DAO voor ETC opnemen',
+  DAO_ETC_Label_1:        'Naar welk adres wil je je ETC verzenden?',
+  DAO_ETC_Label_2:        'De "White Hat Group" is onvermoeibaar aan het werk geweest om jouw ETC terug bij jouw te krijgen. Je kunt ze bedankten door een percentage van je opname te doneren, als je daarvoor kiest. ',
+  DAO_Desc:               'Gebruik dit tab om je DAO Tokens om te zitten in ether. Als je DOA Tokens wilt versturen, gebruik dan het Verzend Tokens Tab.',
+  DAO_Inst:               'Ja. Klik simpelweg op de grote rode knop. Zo makkelijk is het.',
   DAO_Warning:            'Als je een "Insufficient balance for gas" fout krijgt, zul je een kleine hoeveelheid ETH in je account moeten storten om de gas kosten voor deze actie te betalen. Voeg 0.01 ETH toe aan je account en probeer het opnieuw. ',
   DAOModal_Title:         'Voor de zekerheid...',
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'Je staat op het punt om',
+  DAOModal_2:             'DAO Tokens op te nemen voor',
+  DAOModal_3:             'voor', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Claim je DigixDAO (DGD) tokens & badges. Om te claimen zul je meegedaan moeten hebben met de token sale van 30/31 maart 2016.  Als je DGD wilt versturen, gebruik dan het Verzend Tokens Tab.',
@@ -457,6 +466,7 @@ nl.data = {
   HELP_12_Desc_13:        'Selecteer je wallet bestand -of- voer je prive sleutel in om je wallet te ontsleutelen.',
   HELP_12_Desc_14:        'Kopier je prive sleutel (onversleuteld/unencrypted).',
   HELP_12_Desc_15:        'Als je op een Mac werkt:',
+  HELP_12_Desc_15b:       'Als je op een PC werkt:',
   HELP_12_Desc_16:        'Open Tekst Editor en plak deze prive sleutel.',
   HELP_12_Desc_17:        'Ga naar de menu balk en klik "Formaat" -> "Maak Platte Tekst".',
   HELP_12_Desc_18:        'Sla dit bestand op op je bureaublad als `niets_bijzonders_verwijder_mij.txt`. Controleer dat de opties "UTF-8" en "If no extension is provided use .txt" gekozen zijn in het dialog.',
@@ -519,8 +529,8 @@ nl.data = {
   HELP_Sec_Desc_4:        'Controleer de URL -- Deze website draait vanaf GitHub en je kunt de bron code hier vinden: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) naar de domein namen: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) en [https://www.myetherwallet.com](https://www.myetherwallet.com). Je kunt verifieren dat het vanaf GitHub draait door gebruikt te maken van [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - de laatste twee A record IPs zijn in eigendom van GitHub voor hun custom domein hosting.',
   HELP_Sec_Desc_5:        'Om wallets te genereren, kun je ook de [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages) downloaden. Zie #5 hierboven.',
   HELP_Sec_Desc_6:        'Doe een test ronde en controleer wat voor netwerk activiteit er plaats vind. De makkelijkste manier om dit te doen is door met de rechtermuisknop op de pagina de klikken en te kiezen voor "inspecteer element". Ga naar het "Netwerk" tab. Genereer een test wallet. Je zult zien dat er geen netwerk activiteit is. Je zou kunnen zien dat er iets gebeurd wat er als volgt uitziet: data:image/gif and data:image/png. Dit zijn de QR codes die worden gegenereerd...op jouw computer...door jouw computer. Er werden geen bytes overgedragen.',
-  HELP_Sec_Desc_7:        'Ga vervolgens, voor de zekerheid, naar de "Resources" pagina. Hier vind je alle verschillende elementen waaruit de website is opgebouwd. Als je door de items Local Storage, Cookies, and Cache klikt zul je zien dat er niets wordt opgeslagen. Er wordt niets opgeslagen. Ververs de pagina en je bent terug waar je begon.',
-  HELP_Sec_Desc_8:        'Als je je niet pettig voelt bij het gebruikt van deze tool, gebruik het dan vooral niet. We hebben deze tool voor mensen gemaakt als een hulpzame manier om wallets te genereren en transacties te maken zonder dat je in de command prompt hoeft te duiken of een "full node" te draaien. Nogmaals, voel je vrij om contact met ons op te nemen als je je zorgen maakt en we zullen zo snel mogelijk reageren. Bedankt! ',
+  HELP_Sec_Desc_7:        'Ga vervolgens, voor de zekerheid, naar de "Resources" pagina. Hier vind je alle verschillende elementen waaruit de website is opgebouwd. Als je door de items Local Storage, Cookies en Cache klikt zul je zien dat er niets wordt opgeslagen. Er wordt niets opgeslagen. Ververs de pagina en je bent terug waar je begon.',
+  HELP_Sec_Desc_8:        'Als je je niet pettig voelt bij het gebruikt van deze tool, gebruik hem dan vooral niet. We hebben deze tool voor mensen gemaakt als een handige manier om wallets te genereren en transacties te maken zonder dat je in de command prompt hoeft te duiken of een "full node" moet draaien. Nogmaals, voel je vrij om contact met ons op te nemen als je je zorgen maakt en we zullen zo snel mogelijk reageren. Bedankt! ',
 
   HELP_FAQ_Title:         'Meer hulpzame antwoorden op veel voorkomende vragen',
   HELP_Contact_Title:     'Manieren om in contact te komen'
