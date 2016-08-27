@@ -4,7 +4,16 @@ var sv = function() {}
 sv.code = 'sv';
 sv.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -49,8 +58,10 @@ sv.data = {
   x_Cancel:             'Avbryt',
   x_AddessDesc:         'Det här är vad som ibland kallas "Publik Nyckel", "Adress" eller "Konto nr". Det är vad du ger människor så att de kan skicka dig ether. Den här ikonen är ett enkelt sätt att känna igen din adress.',
   x_PrivKey:            'Privat Nyckel (okrypterad)',
+  x_PrivKey2:            'Privat Nyckel',
   x_PrivKeyDesc:        'Det här är en okrypterad variant av din privata nyckel, vilket betyder att ett lösenord inte är nödvändigt. Om någon skulle hitta din okrypterade privata nyckel, så kan dom få tillgång till din plånbok utan lösenord. Av den anledningen så rekomenderas en krypterad variant av plånboken istället.',
   x_Keystore:           'Keystore/JSON Fil (Rekomenderad · Krypterad · Mist/Geth Format)',
+  x_Keystore2:           'Keystore/JSON Fil',
   x_KeystoreDesc:       'Den här Keystore / JSON filen matchar formatet som används av Mist & Geth så du kan enkelt importera det i framtiden. Det är det rekommenderade format att hämta för backup.',
   x_Json:               'JSON Fil (okrypterad)',
   x_JsonDesc:           'Det här är din okrypterade privata nyckel i JSON format. Det här betyder att du inte behöver ditt lösenord men vem som helst som hittar din JSON kan få tillgång till din plånbok och Ether utan ditt lösenord.',

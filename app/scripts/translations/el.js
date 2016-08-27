@@ -4,7 +4,16 @@ var el = function() {}
 el.code = 'el';
 el.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -45,8 +54,10 @@ el.data = {
   x_Cancel:             'Ακύρωση',
   x_AddessDesc:         'Γνωστή και ως "Αριθμός Λογαριασμού" σας ή "Δημόσιο Κλειδί" σας. Αυτή δίνετε σε όσους επιθυμούν να σας στείλουν ether. Το εικονίδιο είναι ένας εύκολος τρόπος αναγνώρισης της διεύθυνσής σας.',
   x_PrivKey:            'Ιδιωτικό Κλειδί (μη κρυπτογραφημένο)',
+  x_PrivKey2:           'Ιδιωτικό Κλειδί',
   x_PrivKeyDesc:        'Αυτό το κείμενο είναι η μη κρυπτογραφημένη εκδοχή του Ιδιωτικού Κλειδιού σας που σημαίνει ότι δεν απαιτείται κωδικός. Στην περίπτωση που κάποιος βρει το μη κρυπτογραφημένο Ιδιωτικό Κλειδί σας, έχει πρόσβαση στο πορτοφόλι σας χωρίς κωδικό. Για αυτόν τον λόγο, συνήθως συνιστώνται οι κρυπτογραφημένες εκδοχές.',
   x_Keystore:           'Αρχείο Keystore/JSON (Συνιστάται · Κρυπτογραφημένο · Μορφή Mist/Geth)',
+  x_Keystore2:          'Αρχείο Keystore/JSON',
   x_KeystoreDesc:       'Αυτό το Αρχείο Keystore/JSON έχει την ίδια μορφή που χρησιμοποιείται από το Mist & Geth ώστε να μπορείτε εύκολα να το εισάγετε στο μέλλον. Είναι το συνιστώμενο αρχείο για λήψη και δημιουργία αντιγράφου ασφαλείας.',
   x_Json:               'Αρχείο JSON (μη κρυπτογραφημένο)',
   x_JsonDesc:           'Αυτή είναι η μη κρυπτογραφημένη, JSON μορφή του Ιδιωτικού Κλειδιού σας. Αυτό σημαίνει ότι δεν απαιτείται κωδικός όμως οποιοσδήποτε βρει το JSON σας έχει πρόσβαση στο πορτοφόλι και τα Ether σας χωρίς κωδικό.',
