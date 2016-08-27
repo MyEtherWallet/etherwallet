@@ -2590,12 +2590,14 @@ bg.data = {
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
+  x_Keystore2:          'Keystore/JSON File',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
@@ -3098,7 +3100,16 @@ var de = function() {}
 de.code = 'de';
 de.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -3145,8 +3156,10 @@ de.data = {
   x_Cancel:             'Abbrechen',
   x_AddessDesc:         'Dies ist deine "Kontonummer" oder dein "Öffentlicher Schlüssel". Du benötigst diese Adresse, wenn dir jemand ether senden möchte. Das Icon ist eine einfache Möglichkeit, die Adresse zu überprüfen',
   x_PrivKey:            'Privater Schlüssel (unverschlüsselt)',
+  x_PrivKey2:           'Privater Schlüssel',
   x_PrivKeyDesc:        'Dies ist die unverschlüsselte Textversion deines privaten Schlüssels, d. h. du benötigst kein Passwort. Wenn jemand über diesen unverschlüsselten privaten Schlüssel verfügt, hat er/sie ohne Passwort Zugang zu deinem Wallet. Es wird daher empfohlen, den privaten Schlüssel zu verschlüsseln.',
   x_Keystore:           'Keystore/JSON File (Empfohlen · Verschlüsselt · Im Mist/Geth-Format)',
+  x_Keystore2:          'Keystore/JSON File',
   x_KeystoreDesc:       'Diese Keystore / JSON-Datei passt zu dem Format, das von Mist & Geth verwendet wird, sodass du diese Datei dort zukünftig einfach importieren kannst. Es ist empfehlenswert, diese Datei herunterzuladen und zu sichern.',
   x_Json:               'JSON-Datei (unverschlüsselt)',
   x_JsonDesc:           'Dies ist die unverschlüsselte Version deines privaten Schlüssels im JSON-Format. Du benötigst daher kein Passwort, aber jeder, der über diese JSON-Datei verfügt, hat ohne Passwort Zugang zu deinem Wallet und dem darin enthaltenen Ether.',
@@ -3629,7 +3642,16 @@ var el = function() {}
 el.code = 'el';
 el.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -3670,8 +3692,10 @@ el.data = {
   x_Cancel:             'Ακύρωση',
   x_AddessDesc:         'Γνωστή και ως "Αριθμός Λογαριασμού" σας ή "Δημόσιο Κλειδί" σας. Αυτή δίνετε σε όσους επιθυμούν να σας στείλουν ether. Το εικονίδιο είναι ένας εύκολος τρόπος αναγνώρισης της διεύθυνσής σας.',
   x_PrivKey:            'Ιδιωτικό Κλειδί (μη κρυπτογραφημένο)',
+  x_PrivKey2:           'Ιδιωτικό Κλειδί',
   x_PrivKeyDesc:        'Αυτό το κείμενο είναι η μη κρυπτογραφημένη εκδοχή του Ιδιωτικού Κλειδιού σας που σημαίνει ότι δεν απαιτείται κωδικός. Στην περίπτωση που κάποιος βρει το μη κρυπτογραφημένο Ιδιωτικό Κλειδί σας, έχει πρόσβαση στο πορτοφόλι σας χωρίς κωδικό. Για αυτόν τον λόγο, συνήθως συνιστώνται οι κρυπτογραφημένες εκδοχές.',
   x_Keystore:           'Αρχείο Keystore/JSON (Συνιστάται · Κρυπτογραφημένο · Μορφή Mist/Geth)',
+  x_Keystore2:          'Αρχείο Keystore/JSON',
   x_KeystoreDesc:       'Αυτό το Αρχείο Keystore/JSON έχει την ίδια μορφή που χρησιμοποιείται από το Mist & Geth ώστε να μπορείτε εύκολα να το εισάγετε στο μέλλον. Είναι το συνιστώμενο αρχείο για λήψη και δημιουργία αντιγράφου ασφαλείας.',
   x_Json:               'Αρχείο JSON (μη κρυπτογραφημένο)',
   x_JsonDesc:           'Αυτή είναι η μη κρυπτογραφημένη, JSON μορφή του Ιδιωτικού Κλειδιού σας. Αυτό σημαίνει ότι δεν απαιτείται κωδικός όμως οποιοσδήποτε βρει το JSON σας έχει πρόσβαση στο πορτοφόλι και τα Ether σας χωρίς κωδικό.',
@@ -4216,8 +4240,10 @@ en.data = {
   x_Cancel:             'Cancel',
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
+  x_Keystore2:          'Keystore / JSON File',
   x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
@@ -4226,8 +4252,6 @@ en.data = {
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_CSV:                'CSV file (unencrypted)',
   x_TXT:                'TXT file (unencrypted)',
-  x_Keystore2:          'Keystore / JSON File',
-  x_PrivKey2:           'Private Key',
 
   /* Header */
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
@@ -4702,6 +4726,8 @@ var es = function() {}
 es.code = 'es';
 es.data = {
 
+  NAV_DeployContract:  'Deploy Contract',
+
   /* Navigation*/
   NAV_YourWallets:      'Tus Carteras',
   NAV_AddWallet:        'Añadir Cartera',
@@ -4727,8 +4753,10 @@ es.data = {
   x_Cancel:             'Cancelar',
   x_AddessDesc:         'Puedes pensar en esto como tu "Cuenta #" o tu "Clave Pública". Es lo que le das a la gente para que te puedan mandar ether. Ese icono es una forma fácil de reconocer tu dirección.',
   x_PrivKey:            'Clave Privada (sin encriptar)',
+  x_PrivKey2:           'Clave Privada',
   x_PrivKeyDesc:        'Esta es la versión en texto sin encriptar de tu clave privada, lo cual quiere decir que no hace falta contraseña. Si alguien encontrase tu clave privada sin encriptar, podrían acceder a tu cartera sin necesitar contraseña. Por esta razón, normalmente se recomiendan las versiones encriptadas.',
-  x_Keystore:           'Almacenamiento de Claves/Fichero JSON(Recomendado · Encriptado · Formato Mist/Geth)',
+  x_Keystore:           'Almacenamiento de Claves/Fichero JSON (Recomendado · Encriptado · Formato Mist/Geth)',
+  x_Keystore2:          'Almacenamiento de Claves/Fichero JSON',
   x_KeystoreDesc:       'Este Almacenamiento de Claves/Fichero JSON concuerda con el formato usado por Mist & Geth para una fácil importación en el futuro. Es el fichero recomendado para descargar y guardar como copia de seguridad.',
   x_Json:               'Fichero JSON (sin encriptar)',
   x_JsonDesc:           'Esta es tu clave privada sin encriptar en formato JSON. Esto significa que no necesitas una contraseña, pero cualquiera que encuentre tu fichero JSON puede acceder a tu cartera y ether sin necesitar ninguna contraseña.',
@@ -4739,17 +4767,18 @@ es.data = {
   x_TXT:                'Fichero TXT (sin encriptar)',
   x_Wallet:             'Cartera',
 
-  /* Header */
+/* Header */
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethereum Wallets & sending transactions.',
   FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
+  FOOTER_4:               'Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Account Information: ',
@@ -4774,14 +4803,15 @@ es.data = {
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
   ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_2_success:    'File Selected: ',
+  ADD_Radio_3:            'Paste/Type Your Private Key ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
-  ADD_Label_3:            'Your file is encrypted. Please enter the password: ',
+  ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -4806,17 +4836,17 @@ es.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
+  SEND_TransferTotal:    'Send Entire Balance',
   SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:    'Send Entire Balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
   SENDModal_Content_2:   'to address',
   SENDModal_Content_3:   'Are you sure you want to do this?',
-  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ether to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
+  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ether to your account to cover the gas cost of sending tokens. Gas is paid in ether.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
 
@@ -4870,16 +4900,19 @@ es.data = {
   OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
 
   /* DAO */
-  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.',
-  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
-  DAOModal_Title:         'Just making sure...',
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
   DAO_TitleETC:           'Withdraw DAO For ETC',
   DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
   DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
+  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
+  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
+  DAOModal_Title:         'Just making sure...',
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
@@ -4890,11 +4923,10 @@ es.data = {
   DGD_Content:            'You are about to claim your DGD Tokens.',
 
   /* Deploy Contracts */
-  NAV_DeployContract:  'Deploy Contract',
-  DEP_generate:        'Generate Bytecode',
-  DEP_generated:       'Generated Bytecode',
-  DEP_signtx:          'Sign Transaction',
-  DEP_interface:       'Generated Interface',
+  DEP_generate:           'Generate Bytecode',
+  DEP_generated:          'Generated Bytecode',
+  DEP_signtx:             'Sign Transaction',
+  DEP_interface:          'Generated Interface',
 
   /* My Wallet */
   MYWAL_Nick:             'Wallet Nickname',
@@ -5153,6 +5185,7 @@ es.data = {
   HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
   HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
   HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
   HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
@@ -5177,7 +5210,7 @@ es.data = {
   HELP_15_Desc_1:         'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
 
   HELP_16_Title:          '16) How do I check the balance of my account? ',
-  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your account and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
 
   HELP_17_Title:          '17) Why isn\'t my balance showing up when I unlock my wallet? ',
   HELP_17_Desc_1:         ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
@@ -5190,7 +5223,7 @@ es.data = {
   HELP_20_Title:          '20) Where is my pre-sale wallet file?',
   HELP_20_Desc_1:         'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.',
 
-  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
+  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own account? ',
   HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
   HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
   HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems.',
@@ -5258,12 +5291,14 @@ et.data = {
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
+  x_Keystore2:          'Keystore/JSON File',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
@@ -5766,7 +5801,16 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -5813,8 +5857,10 @@ fr.data = {
   x_Cancel:             'Annuler',
   x_AddessDesc:         'Aussi appelé "Numéro de compte" ou "Clé publique". C\'est ce que vous envoyez aux gens pour qu\'ils puissent vous envoyer des ether. Cette icone est une façon simple de reconnaitre votre adresse.',
   x_PrivKey:            'Clé privée (non-chiffrée)',
+  x_PrivKey2:           'Clé privée',
   x_PrivKeyDesc:        'C\'est la version textuelle non-chiffrée de votre clé privée, ce qui signifie qu\'aucun mot de passe n\'est nécessaire pour l\'utiliser. Si quelqu\'un venait à découvrir cette clé privée, il pourrrait accéder à votre portefeuille sans mot de passe. Pour cette raison, la version chiffrée de votre clé privée est recommandée.',
   x_Keystore:           'Fichier Keystore/JSON (Recommandé · Chiffré · Format Mist/Geth)',
+  x_Keystore2:          'Fichier Keystore/JSON',
   x_KeystoreDesc:       'Ce fichier Keystore / JSON utilise le même format que celui que Mist & Geth, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
   x_Json:               'Fichier JSON (non-chiffré)',
   x_JsonDesc:           'C\'est la version non-chiffrée au format JSON de votre clé privée. Cela signifie que vous n\'avez pas besoin de votre mot de passe pour l\'utiliser mais que toute personne qui trouve ce JSON peut accéder à votre portefeuille et vos Ether sans mot de passe.',
@@ -6318,18 +6364,20 @@ he.data = {
   /* General */
   x_Address:            'Your Address',
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_Cancel:             'Cancel',
   x_CSV:                'CSV file (unencrypted)',
+  x_Cancel:             'Cancel',
   x_Download:           'Download',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore2:          'Keystore / JSON File',
+  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
@@ -6859,12 +6907,14 @@ id.data = {
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
+  x_Keystore2:          'Keystore/JSON File',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
@@ -7932,18 +7982,20 @@ ja.data = {
   /* General */
   x_Address:            'Your Address',
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_Cancel:             'Cancel',
   x_CSV:                'CSV file (unencrypted)',
+  x_Cancel:             'Cancel',
   x_Download:           'Download',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore2:          'Keystore / JSON File',
+  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
@@ -8467,18 +8519,20 @@ ko.data = {
   /* General */
   x_Address:            'Your Address',
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_Cancel:             'Cancel',
   x_CSV:                'CSV file (unencrypted)',
+  x_Cancel:             'Cancel',
   x_Download:           'Download',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore2:          'Keystore / JSON File',
+  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
@@ -9021,8 +9075,6 @@ nl.data = {
   x_PrintDesc:          'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
   x_CSV:                'CSV bestand (onverlseuteld)',
   x_TXT:                'TXT bestand (onverlseuteld)',
-  x_Json2:              'Keystore / JSON Bestand',
-  x_PrivKey2:           'Prive Sleutel',
 
   /* Header */
   MEW_Warning_1:        'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites!',
@@ -9522,7 +9574,16 @@ var no = function() {}
 no.code = 'no';
 no.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -9568,8 +9629,10 @@ no.data = {
   x_Cancel:             'x_Cancel',
   x_AddessDesc:         'Du kjenner kanskje dette som ditt "kontonummer" eller din "offentlige nøkkel". Dette er informasjonen som du sender til folk så de kan sende deg ether (en lang rekke tilfeldige tall og bokstaver som starter med "0x"). Ikonet er en enkel måte å kjenne igjen adressen din på.',
   x_PrivKey:            'Privat nøkkel (ukryptert)',
+  x_PrivKey2:           'Privat nøkkel',
   x_PrivKeyDesc:        'Dette er den ukrypterte tekstversjonen av den private nøkkelen din, noe som betyr at det ikke er nødvendig med noe passord. Hvis noen skulle få tak i den ukrypterte private nøkkelen din, ville de få tilgang til lommeboken din uten å bruke passord. Derfor er krypterte nøkler vanligvis å anbefale.',
   x_Keystore:           'Keystore/JSON-fil (Anbefalt · Kryptert · Mist/Geth-format)',
+  x_Keystore2:          'Keystore/JSON-fil',
   x_KeystoreDesc:       'Denne Keystore/JSON-filen samsvarer med formatet som brukes av Mist & Geth, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere.',
   x_Json:               'JSON-fil (ukryptert)',
   x_JsonDesc:           'Dette er det ukrypterte JSON-formatet av din private nøkkel. Dette betyr at du ikke trenger noe passord, men også at den som finner din JSON kan få tilgang til lommeboken din og eterne dine uten passord.',
@@ -10053,7 +10116,16 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -10086,8 +10158,10 @@ pl.data = {
   x_Cancel:             'Anuluj',
   x_AddessDesc:         'Inaczej "Numer konta" lub "Klucz publiczny". Wysłasz go innym aby mogli Ci wysłać ether. Ikona umożliwia łatwe rozpoznanie Twojego adresu.',
   x_PrivKey:            'Klucz Prywatny (nieszyfrowany)',
+  x_PrivKey2:           'Klucz Prywatny',
   x_PrivKeyDesc:        'Nieszyfrowana, tekstowa wersja Twojego klucza prywatengo, nie wymaga hasła. Jeżeli ktoś zdobędzie nieszyfrowany klucz będzie mógł uzyskać pełen dostęp do Twojeg portfela bez podania hasła. Z tego powodu zaleca się używanie jego szyfrowanej wersji.',
   x_Keystore:           'Plik Keystore/JSON (Zalecany · Szyfrowany · Format Mist/Geth)',
+  x_Keystore2:          'Plik Keystore/JSON',
   x_KeystoreDesc:       'Ten plik Keystore / JSON odpowiada formatowi stosowanemu przez Mist i Geth, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
   x_Json:               'Plik JSON (nieszyfrowany)',
   x_JsonDesc:           'Nieszyfrowany klucz prywatny, plik w formacie JSON. Nie wymaga podania hasła, ale każdy kto zdobędzie ten plik uzyska również pełny dostęp do Twojego portfela i zgromadzonych na nim środków.',
@@ -10605,18 +10679,20 @@ pt.data = {
   /* General */
   x_Address:            'Your Address',
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_Cancel:             'Cancel',
   x_CSV:                'CSV file (unencrypted)',
+  x_Cancel:             'Cancel',
   x_Download:           'Download',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore2:          'Keystore / JSON File',
+  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
@@ -11140,18 +11216,20 @@ ptbr.data = {
   /* General */
   x_Address:            'Your Address',
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_Cancel:             'Cancel',
   x_CSV:                'CSV file (unencrypted)',
+  x_Cancel:             'Cancel',
   x_Download:           'Download',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore2:          'Keystore / JSON File',
+  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
@@ -11654,7 +11732,16 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -11700,8 +11787,10 @@ ru.data = {
   x_Cancel:             'Отменить',
   x_AddessDesc:         'Это можно назвать "номер Вашего счёта" или "Ваш открытый ключ". Вы сообщаете этот адрес людям, чтобы они могли отправлять Вам эфир (ether). Картинка позволяет легко опознать Ваш адрес среди других адресов.',
   x_PrivKey:            'Закрытый ключ (не зашифрован)',
+  x_PrivKey2:           'Закрытый ключ',
   x_PrivKeyDesc:        'Это незашифрованное текстовое представление Вашего закрытого ключа, для использования которого не требуется вводить пароль. Если посторонние узнают Ваш закрытый ключ, они смогут распоряжаться Вашим кошельком без ввода пароля. По этой причине, обычно рекомендуют использовать зашифрованную версию закрытого ключа.',
   x_Keystore:           'Файл Keystore/JSON (рекомендуется · зашифрован · формат совместим с Mist и geth)',
+  x_Keystore2:          'Файл Keystore/JSON',
   x_KeystoreDesc:       'Этот файл Keystore/JSON использует формат совместимый с Mist и geth. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию.',
   x_Json:               'Файл JSON (не зашифрован)',
   x_JsonDesc:           'Это Ваш незашифрованный закрытый ключ в формате JSON, для использования которого не требуется воодить пароль. Любой, у кого есть этот файл, может распоряжаться вашим кошельком и эфиром (ether) без ввода пароля.',
@@ -12206,18 +12295,20 @@ sk.data = {
   /* General */
   x_Address:            'Your Address',
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_Cancel:             'Cancel',
   x_CSV:                'CSV file (unencrypted)',
+  x_Cancel:             'Cancel',
   x_Download:           'Download',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore2:          'Keystore / JSON File',
+  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
@@ -12720,7 +12811,16 @@ var sl = function() {}
 sl.code = 'sl';
 sl.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -12766,8 +12866,10 @@ sl.data = {
   x_Cancel:             'x_Prekliči',
   x_AddessDesc:         'To je vaš "Naslov #" oziroma vaš "Osebni Ključ". Ta naslov lahko pošljete drugim, zato da vedo kam vam poslati ether. Ta ikona je unikatna, je grafični prikaz številke vašega naslova in vam ga pomaga lažje prepoznati.',
   x_PrivKey:            'Osebni Ključ (nekriptiran)',
+  x_PrivKey2:           'Osebni Ključ',
   x_PrivKeyDesc:        'To je nekriptirana tekst verzija vašega osebnega ključa, kar pomeni, da za uporabo ne potrebujete nobenega gesla. V primeru da bi kdorkoli dobil datoteko vašega nekriptiranega osebnega ključa, bi lahko dostopal do vaše denarnice brez gesla. Zaradi tega vam priporocamo uporabo krtiptirane denarnice.',
   x_Keystore:           'Datoteka za Shrambo ključa Keystore/JSON  (Priporočeno · Kriptirano · Mist/Geth Format)',
+  x_Keystore2:          'Datoteka za Shrambo ključa Keystore/JSON',
   x_KeystoreDesc:       'Ta datoteka za shrambo osebnega ključa Keystore/JSON se ujema s formatom datoteke, ki jo uporabljata programa Mist in Geth, kar pomeni da ga lahko v prihodnosti enostavno izvozite iz te internetne strani in uvozite v Mist ali Geth. Priporočamo vam da to datoteko prenesete na vaš računalnik in jo shranite na varnem mestu. Za dodatno varnost priporočamo, da datoteko shranite na večih napravah.',
   x_Json:               'JSON Datoteka (nekriptirana)',
   x_JsonDesc:           'To je nekriptirana, JSON datoteka vašega osebnega ključa. To pomeni, da za uporabo ne potrebujete gesla. V primeru da kdorkoli najde datoteko vašega ključa, dobi takojšen dostop do vaše denarnice in vašega Ethra brez uporabe gesla.',
@@ -13250,7 +13352,16 @@ var sv = function() {}
 sv.code = 'sv';
 sv.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -13295,8 +13406,10 @@ sv.data = {
   x_Cancel:             'Avbryt',
   x_AddessDesc:         'Det här är vad som ibland kallas "Publik Nyckel", "Adress" eller "Konto nr". Det är vad du ger människor så att de kan skicka dig ether. Den här ikonen är ett enkelt sätt att känna igen din adress.',
   x_PrivKey:            'Privat Nyckel (okrypterad)',
+  x_PrivKey2:            'Privat Nyckel',
   x_PrivKeyDesc:        'Det här är en okrypterad variant av din privata nyckel, vilket betyder att ett lösenord inte är nödvändigt. Om någon skulle hitta din okrypterade privata nyckel, så kan dom få tillgång till din plånbok utan lösenord. Av den anledningen så rekomenderas en krypterad variant av plånboken istället.',
   x_Keystore:           'Keystore/JSON Fil (Rekomenderad · Krypterad · Mist/Geth Format)',
+  x_Keystore2:           'Keystore/JSON Fil',
   x_KeystoreDesc:       'Den här Keystore / JSON filen matchar formatet som används av Mist & Geth så du kan enkelt importera det i framtiden. Det är det rekommenderade format att hämta för backup.',
   x_Json:               'JSON Fil (okrypterad)',
   x_JsonDesc:           'Det här är din okrypterade privata nyckel i JSON format. Det här betyder att du inte behöver ditt lösenord men vem som helst som hittar din JSON kan få tillgång till din plånbok och Ether utan ditt lösenord.',
@@ -13781,6 +13894,8 @@ var tr = function() {}
 tr.code = 'tr';
 tr.data = {
 
+  NAV_DeployContract:   'Deploy Contract',
+
   /* Navigation*/
   NAV_YourWallets:      'Cüzdanin',
   NAV_AddWallet:        'Cüzdan ekle',
@@ -13793,7 +13908,6 @@ tr.data = {
   DAO_TitleLong:        'DAO tokenlerini ETH olarak çek',
   NAV_ClaimDGD:         'DGD talep et',
   DGD_TitleLong:        'DGD tokenlerini talep et',
-  NAV_DeployContract:  'Deploy Contract',
   NAV_MyWallets:        'Cüzdanim',
   NAV_ViewWallet:       'Cüzdan bilgilerni göster',
   NAV_Help:             'Yardim et',
@@ -13808,28 +13922,31 @@ tr.data = {
   x_Json:               'JSON dosya (şifrelenmemis)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON dosya (Tavsiye edilen· şifrelenmemiş · Mist/Geth formati)',
+  x_Keystore2:          'Keystore/JSON dosya',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Parola',
   x_Print:              'Cüzdanin kağıt versiyonunu yazdir',
   x_PrintDesc:          'ProTavsiye: Eğer yazıcınız olmasa bile, "Yazdır" seçeneğini tıklayın ve PDF dosyası olarak kaydedin!',
   x_PrintShort:         'Yazdir',
   x_PrivKey:            'Özel anahtar (şifrelenmis)',
+  x_PrivKey2:           'Özel anahtar',
   x_PrivKeyDesc:        'Bu özel anahtarinin şifrelenmemiş metin sürümüdür. Birisi şifrelenmemiş özel anahtarı bulduysa, şifre olmadan cüzdani acabilir. Bu nedenle, şifrelenmiş sürümlerini genellikle tavsiye edilir.',
   x_Save:               'Indir',
   x_TXT:                'TXT dosya (şifrelenmis)',
   x_Wallet:             'Cüzdan',
 
-  /* Header */
+/* Header */
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
   CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethereum Wallets & sending transactions.',
   FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
+  FOOTER_4:               'Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Account Information: ',
@@ -13837,7 +13954,7 @@ tr.data = {
   sidebar_AccountBal:   'Account Balance: ',
   sidebar_TokenBal:     'Token Balances: ',
   sidebar_Equiv:        'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History :',
+  sidebar_TransHistory: 'Transaction History: ',
   sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate:       'Donate',
@@ -13854,14 +13971,15 @@ tr.data = {
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
   ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_3:            'Paste/Type Your Private Key',
+  ADD_Radio_2_success:    'File Selected: ',
+  ADD_Radio_3:            'Paste/Type Your Private Key ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
   ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
   ADD_Label_5:            'Enter the Address: ',
-  ADD_Label_6:            'Unlock your Wallet',
+  ADD_Label_6:            'Unlock your Wallet: ',
   ADD_Label_6_short:      'Unlock',
   ADD_Label_7:            'Add Account',
 
@@ -13886,11 +14004,11 @@ tr.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
+  SEND_TransferTotal:    'Send Entire Balance',
   SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
   SEND_trans:            'Send Transaction',
-  SEND_TransferTotal:   'Send Entire Balance',
   SENDModal_Title:       'Warning! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'You are about to send',
@@ -13950,16 +14068,19 @@ tr.data = {
   OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
 
   /* DAO */
-  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.',
-  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
-  DAOModal_Title:         'Just making sure...',
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
   DAO_TitleETC:           'Withdraw DAO For ETC',
   DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
   DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
+  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
+  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
+  DAOModal_Title:         'Just making sure...',
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
@@ -13970,10 +14091,10 @@ tr.data = {
   DGD_Content:            'You are about to claim your DGD Tokens.',
 
   /* Deploy Contracts */
-  DEP_generate:        'Generate Bytecode',
-  DEP_generated:       'Generated Bytecode',
-  DEP_signtx:          'Sign Transaction',
-  DEP_interface:       'Generated Interface',
+  DEP_generate:           'Generate Bytecode',
+  DEP_generated:          'Generated Bytecode',
+  DEP_signtx:             'Sign Transaction',
+  DEP_interface:          'Generated Interface',
 
   /* My Wallet */
   MYWAL_Nick:             'Wallet Nickname',
@@ -13989,7 +14110,7 @@ tr.data = {
   MYWAL_Edit_2:           'Edit Wallet: ',
   MYWAL_Name:             'Wallet Name',
   MYWAL_Content_1:        'Warning! You are about to remove your wallet: ',
-  MYWAL_Content_2:        'Be sure you have **saved the Keystore File & password and/or private key ** before you remove it.',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
 
   /* View Wallet Details */
@@ -14232,6 +14353,7 @@ tr.data = {
   HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
   HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
   HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
   HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
@@ -14256,7 +14378,7 @@ tr.data = {
   HELP_15_Desc_1:         'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
 
   HELP_16_Title:          '16) How do I check the balance of my account? ',
-  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your account and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
 
   HELP_17_Title:          '17) Why isn\'t my balance showing up when I unlock my wallet? ',
   HELP_17_Desc_1:         ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
@@ -14269,7 +14391,7 @@ tr.data = {
   HELP_20_Title:          '20) Where is my pre-sale wallet file?',
   HELP_20_Desc_1:         'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.',
 
-  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
+  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own account? ',
   HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
   HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
   HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems.',
@@ -14393,18 +14515,20 @@ uk.data = {
   /* General */
   x_Address:            'Your Address',
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_Cancel:             'Cancel',
   x_CSV:                'CSV file (unencrypted)',
+  x_Cancel:             'Cancel',
   x_Download:           'Download',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore2:          'Keystore / JSON File',
+  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
@@ -14928,18 +15052,20 @@ vi.data = {
   /* General */
   x_Address:            'Your Address',
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_Cancel:             'Cancel',
   x_CSV:                'CSV file (unencrypted)',
+  x_Cancel:             'Cancel',
   x_Download:           'Download',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore2:          'Keystore / JSON File',
+  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
