@@ -8945,7 +8945,16 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -8980,8 +8989,10 @@ nl.data = {
   x_Cancel:             'x_Annuleren',
   x_AddessDesc:         'Dit is je "Account #" ofwel je "Publieke Sleutel". Maak dit bekend aan anderen zodat ze je ether kunnen sturen. Dit icoon is een makkelijke manier om je adres te herkennen.',
   x_PrivKey:            'Prive Sleutel (onversleuteld)',
+  x_PrivKey2:           'Prive Sleutel',
   x_PrivKeyDesc:        'Dit is een onversleutelde tekst versie van je prive sleutel waarbij geen wachtwoord benodigd is. Mocht iemand deze unversleutelde prive sleutel vinden, kunnen zij zonder wachtwoord bij je account. Om deze reden zijn versleutelde versies aanbevolen.',
   x_Keystore:           'Keystore/JSON Bestand (Aangeraden · versleuteld · Mist/Geth Formaat)',
+  x_Keystore2:          'Keystore/JSON Bestand',
   x_KeystoreDesc:       'Dit Keystore / JSON bestand voldoen aan het formaat zoals gebruikt door Mist & Geth waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
   x_Json:               'JSON Bestand (onversleuteld)',
   x_JsonDesc:           'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',
