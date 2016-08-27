@@ -22,7 +22,7 @@ de.data = {
   DAO_ETC_Label_2:        'Die "White Hat Group" hat unermüdlich gearbeitet um deine ETC zurückzuholen. Wenn du möchtest, kannst du dich bedanken indem du einen Teil deiner ETC an sie spendest. ',
 
   /* New - Deploy Contracts */
-  NAV_DeployContract:  'Vertrag aufstellen' //Was "Deploy Contract",
+  NAV_DeployContract:  'Vertrag aufstellen', //Was "Deploy Contract",
   DEP_generate:        'Bytecode generieren',
   DEP_generated:       'Generierter Bytecode',
   DEP_signtx:          'Transaktion signieren',
