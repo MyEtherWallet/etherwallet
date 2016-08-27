@@ -1,4 +1,4 @@
-﻿// Polish
+// Polish
 'use strict';
 var pl = function() {}
 pl.code = 'pl';
@@ -35,7 +35,7 @@ pl.data = {
   x_Address:            'Twój Adres',
   x_Save:               'Zapisz',
   x_Cancel:             'Anuluj',
-  x_AddessDesc:         'Inaczej "Numer konta" lub "Klucz publiczny". Wysłasz go innym aby mogli Ci wysłać ETH. Ikona umożliwia łatwe rozpoznanie Twojego adresu.',
+  x_AddessDesc:         'Inaczej "Numer konta" lub "Klucz publiczny". Wysłasz go innym aby mogli Ci wysłać ether. Ikona umożliwia łatwe rozpoznanie Twojego adresu.',
   x_PrivKey:            'Klucz Prywatny (nieszyfrowany)',
   x_PrivKeyDesc:        'Nieszyfrowana, tekstowa wersja Twojego klucza prywatengo, nie wymaga hasła. Jeżeli ktoś zdobędzie nieszyfrowany klucz będzie mógł uzyskać pełen dostęp do Twojeg portfela bez podania hasła. Z tego powodu zaleca się używanie jego szyfrowanej wersji.',
   x_Keystore:           'Plik Keystore/JSON (Zalecany · Szyfrowany · Format Mist/Geth)',
@@ -126,7 +126,7 @@ pl.data = {
   SENDModal_Content_1:   'Wysyłasz',
   SENDModal_Content_2:   'do adresu',
   SENDModal_Content_3:   'Jesteś pewien, że chcesz to zrobić?',
-  SENDModal_Content_4:   'NOTKA: Jeśli wystąpi błąd, najbrawdopodobniej musisz doładować ETH do Twojego konta na pokrycie kosztów paliwa do wyłania tokenów. Paliwo jest opłacane w ETH.',
+  SENDModal_Content_4:   'NOTKA: Jeśli wystąpi błąd, najbrawdopodobniej musisz doładować ether do Twojego konta na pokrycie kosztów paliwa do wyłania tokenów. Paliwo jest opłacane w ether.',
   SENDModal_No:          'Nie, zabierz mnie stąd!',
   SENDModal_Yes:         'Tak, jestem pewien! Zatwierdź transakcję.',
 
@@ -244,7 +244,7 @@ pl.data = {
   ERROR_15:             'Nie znalezino portfela. ',
   ERROR_16:             'Wygląda, że propozycja z tym ID jeszcze nie istnieje, lub wystąpił błąd odcztu tej propozycji. ',
   ERROR_17:             'Portfel z tym adresem już istnieje w konfiguracji. Sprawdź zakładkę portfeli. ',
-  ERROR_18:             'Musisz mieć co najmniej 0.001 ETH na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
+  ERROR_18:             'Musisz mieć co najmniej 0.001 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
   ERROR_19:             'Całe paliwo było by zużyte w tej transakcji. Oznacza to, że głosowałeś już w tej propozycji albo minął termin głosowania.',
   ERROR_20:             'Nieprawidłowy symbol',
   SUCCESS_1:            'Prawidłowy adres',
@@ -320,7 +320,7 @@ pl.data = {
   HELP_3_Desc_5:        'Jeżeli portfel jest szyfrowany automatycznie wyświetli się okienko tekstowe. Wpisz w nim hasło.',
   HELP_3_Desc_6:        'Kliknij przycisk "Odblokuj Portfel".',
   HELP_3_Desc_7:        'Informacje o Twoim portfelu powinny się wyświetlić. Odszukaj adres Twojego portfela obok okrągłej kolorowej ikonki. Ta ikona to wizualna reprezentacja adresu Twojego portfela. Upewnij się, że adres odpowiada adresowi zapisanemu w dokumencie tekstowym i na portfelu papierowym.',
-  HELP_3_Desc_8:        'Jeśli planujesz trzymać w portfelu jakieś większe sumy, zalecamy w pierwszej kolejności wykonanie kilku testowych transakcji o mniejszej wartości. Prześlij do Twojego nowego portfela 0.001 ETH, wejdź do portfela, prześlij te 0.001 ETH na inny adres i upewnij się, że wszystko przebiegło jak należy.',
+  HELP_3_Desc_8:        'Jeśli planujesz trzymać w portfelu jakieś większe sumy, zalecamy w pierwszej kolejności wykonanie kilku testowych transakcji o mniejszej wartości. Prześlij do Twojego nowego portfela 0.001 ether, wejdź do portfela, prześlij te 0.001 ether na inny adres i upewnij się, że wszystko przebiegło jak należy.',
 
   HELP_4_Title:         '4) Jak wysłać Ether z jednego portfela na inny?',
   HELP_4_Desc_1:        'Jeżeli planujesz przesłać większą sumę środków, najpierw powinieneś wysłać mniejszą kwotę, aby upewnić się, że wszystko przebiegło zgodnie z planem.',
@@ -330,7 +330,7 @@ pl.data = {
   HELP_4_Desc_5:        'Kliknij przycisk "Odblokuj Portfel".',
   HELP_4_Desc_6:        'Wpisz adres, na który chcesz przesłać środki w pole "Do adresu:".',
   HELP_4_Desc_7:        'Wpisz kwotę do wsyłania. Możesz też kliknąć "Wyślij wszystkie dostępne środki", jeśli chcesz przesłać całą dostępną kwotę.',
-  HELP_4_Desc_8:        'Notka: Od czerwca 2016, musisz się upewnić aby rozdzielić walutę ETC i ETH zanim prześlesz ETH, jak byś to zrobił normalnie. Przejdź do pytania 6 poniżej po więcej informacji.',
+  HELP_4_Desc_8:        'Notka: Od czerwca 2016, musisz się upewnić aby rozdzielić walutę ETC i ETH zanim prześlesz ether, jak byś to zrobił normalnie. Przejdź do pytania 6 poniżej po więcej informacji.',
   HELP_4_Desc_9:        'Kliknij "Wygeneruj i Podpisz Transakcję".',
   HELP_4_Desc_10:       'Pojawi się kilka kolejnych pól. Są to dane transakcji wygenerowane przez Twoją przeglądarkę.',
   HELP_4_Desc_11:       'Kliknij niebieski przycisk "Wyślij Transakcję" na dole strony.',

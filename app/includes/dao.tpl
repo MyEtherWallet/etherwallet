@@ -82,14 +82,14 @@
           </div>
 
           <div class="col-xs-2 address-identicon-container">
-            <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+            <div id="addressIdenticon" title="Address Indenticon" blockie-address="TODO" watch-var="TODO"></div>
           </div>
 
           <!-- Percentage to Donate to WHG -->
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_2"> The 'White Hat Group' has been working tirelessly to get your ETC back to you. You can say 'thank you' by donating a percentage of your withdrawal, if you choose to. </label>
-            <div class="input-group">
-            <input type="number" class="form-control" value="10" placeholder="10">
+            <div class="input-group" style="max-width: 150px;">
+            <input type="number" class="form-control" placeholder="10">
             <span class="input-group-addon">%</span>
           </div>
 

@@ -43,7 +43,7 @@ it.data = {
   x_Address:            'Il tuo indirizzo',
   x_Save:               'Salva',
   x_Cancel:             'Annulla',
-  x_AddessDesc:         'Potresti sentirlo chiamare "Numero di conto" o "Chiave pubblica". È ciò che dai a chi ti vuole inviare degli ETH. L\'icona è un modo facile di riconoscere il tuo indirizzo.',
+  x_AddessDesc:         'Potresti sentirlo chiamare "Numero di conto" o "Chiave pubblica". È ciò che dai a chi ti vuole inviare degli ether. L\'icona è un modo facile di riconoscere il tuo indirizzo.',
   x_PrivKey:            'Chiave privata (non crittografata)',
   x_PrivKeyDesc:        'Questa è la versione testuale non crittografata della tua chiave privata, il che significa che non serve una password. Se qualcuno trovasse la tua chiave privata non crittografata potrebbe avere accesso al tuo portafoglio senza una password. Per questa ragione di solito si consigliano le versioni crittografate.',
   x_Keystore:           'File Keystore/JSON (Consigliato · Crittografato · Formato Mist/Geth)',
@@ -134,7 +134,7 @@ it.data = {
   SENDModal_Content_1:   'Stai per inviare',
   SENDModal_Content_2:   'all\'indirizzo',
   SENDModal_Content_3:   'Sei sicuro di volerlo fare?',
-  SENDModal_Content_4:   'NOTA: Se ricevi un errore, molto probabilmente dovrai aggiungere ETH al tuo conto per coprire il costo del gas necessario ad inviare i token. Il gas si paga in ETH.',
+  SENDModal_Content_4:   'NOTA: Se ricevi un errore, molto probabilmente dovrai aggiungere ether al tuo conto per coprire il costo del gas necessario ad inviare i token. Il gas si paga in ether.',
   SENDModal_No:          'No, tiratemi fuori da qui!',
   SENDModal_Yes:         'Sì, sono sicuro! Esegui la transazione.',
 
@@ -190,7 +190,7 @@ it.data = {
   /* DAO */
   DAO_Desc:               'Usa questa scheda per prelevare i tuoi token DAO e ottenere ETH. Se invece vuoi inviare token DAO, utilizza la scheda "Invia token".',
   DAO_Inst:               'Sì. Devi solo premere questo grosso pulsante rosso. È davvero così semplice.',
-  DAO_Warning:            'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ETH nel tuo conto per coprire i costi del gas. Aggiungi 0,01 ETH a questo conto e riprova. ',
+  DAO_Warning:            'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0.001 ether a questo conto e riprova. ',
   DAOModal_Title:         'Tanto per essere sicuri...',
 
   /* Digix */
@@ -245,7 +245,7 @@ it.data = {
   ERROR_15:             'Portafoglio non trovato. ',
   ERROR_16:             'Sembra che non esista ancora una proposta con questo ID o c\'è un errore nella lettura della proposta. ',
   ERROR_17:             'C\'è già un portafoglio con questo indirizzo fra quelli salvati. Controlla la pagina dei tuoi portafogli. ',
-  ERROR_18:             'Devi avere almeno 0,001 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ETH e riprova. ',
+  ERROR_18:             'Devi avere almeno 0,001 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
   ERROR_19:             'Questa transazione consumerebbe tutto il gas. Ciò significa che hai già votato questa proposta o che il periodo di discussione è terminato.',
   ERROR_20:             'Simbolo non valido',
   SUCCESS_1:            'Indirizzo valido',
@@ -297,7 +297,7 @@ it.data = {
 
   HELP_2a_Title:       '2a) Come salvo o faccio il backup del mio portafoglio?',
   HELP_2a_Desc_1:      'Dovresti sempre fare dei backup esterni in diversi luoghi fisici - come su una penna USB e/o su un pezzo di carta.',
-  HELP_2a_Desc_2:      'Salva l\'indirizzo. Puoi tenerlo per te o condividerlo. In questo modo gli altri possono inviarti degli ETH.',
+  HELP_2a_Desc_2:      'Salva l\'indirizzo. Puoi tenerlo per te o condividerlo. In questo modo gli altri possono inviarti degli ether.',
   HELP_2a_Desc_3:      'Salva delle versioni della chiave privata. Non condividerla con nessuno. La tua chiave privata è necessaria quando vuoi accedere ai tuoi ether per trasferirli! Ci sono 3 tipi di chiave privata:',
   HELP_2a_Desc_4:      'Metti il tuo indirizzo, le versioni della chiave privata, e la versione PDF del tuo portafoglio cartaceo in una cartella. Salvala sul tuo computer e su una penna USB.',
   HELP_2a_Desc_5:      'Stampa il portafoglio se hai una stampante. In alternativa, trascrivi la tua chiave privata e l\'indirizzo su un pezzo di carta. Conserva questo foglio in un posto sicuro, separato dal tuo computer e dalla penna USB.',
@@ -321,7 +321,7 @@ it.data = {
   HELP_3_Desc_5:        'Se il portafoglio è crittografato, comparirà automaticamente una casella di testo. Inserisci la password.',
   HELP_3_Desc_6:        'Fai clic sul pulsante "Sblocca".',
   HELP_3_Desc_7:        'Dovrebbero comparire le informazioni sul tuo portafoglio. Individua l\'indirizzo del tuo conto, accanto all\'icona rotonda e colorata. Questa icona rappresenta visivamente il tuo indirizzo. Assicurati che l\'indirizzo sia quello che hai salvato nel tuo file di testo e che sia presente sul tuo portafoglio cartaceo.',
-  HELP_3_Desc_8:        'Se stai pensando di conservare una grande quantità di ETH, ti consigliamo di provare a inviare una piccola somma di ETH dal nuovo portafoglio prima di depositarci un grosso importo. Invia 0,001 ETH al nuovo portafoglio, accedici, e invia quegli 0,001 ETH a un altro indirizzo, e assicurati che tutto funzioni agevolmente.',
+  HELP_3_Desc_8:        'Se stai pensando di conservare una grande quantità di ether, ti consigliamo di provare a inviare una piccola somma di ether dal nuovo portafoglio prima di depositarci un grosso importo. Invia 0.001 ether al nuovo portafoglio, accedici, e invia quegli 0.001 ether a un altro indirizzo, e assicurati che tutto funzioni agevolmente.',
 
   HELP_4_Title:         '4) Come invio degli ether da un portafoglio a un altro?',
   HELP_4_Desc_1:        'Se stai pensando di spostare una grande quantità di ether, dovresti prima provare ad inviare una piccola somma al tuo portafoglio per assicurarti che tutto vada come previsto.',
@@ -331,7 +331,7 @@ it.data = {
   HELP_4_Desc_5:        'Fai clic sul pulsante "Sblocca".',
   HELP_4_Desc_6:        'Inserisci l\'indirizzo al quale vuoi inviare nel campo "Indirizzo destinatario:".',
   HELP_4_Desc_7:        'Inserisci l\'importo che vuoi inviare. Puoi anche fare clic sul link "Invia l\'intero saldo" se desideri trasferire l\'intero saldo.',
-  HELP_4_Desc_8:        'Nota: A partire dalla fine di giugno 2016 dovrai assicurarti di separare i tuoi ETH/ETC prima di inviare ETH come avresti fatto normalmente. Vedi la domanda n. 6 qui sotto per ulteriori informazioni.',
+  HELP_4_Desc_8:        'Nota: A partire dalla fine di giugno 2016 dovrai assicurarti di separare i tuoi ETH/ETC prima di inviare ether come avresti fatto normalmente. Vedi la domanda n. 6 qui sotto per ulteriori informazioni.',
   HELP_4_Desc_9:        'Fai clic su "Genera transazione".',
   HELP_4_Desc_10:       'Compariranno un paio di ulteriori campi. È perché il tuo browser ha generato la transazione.',
   HELP_4_Desc_11:       'Fai clic sul pulsante azzurro "Invia transazione" in basso.',
@@ -498,8 +498,8 @@ it.data = {
   HELP_21_Title:          '21) Non basta inserire chiavi private casuali, cercare un saldo, e poi inviarselo al proprio indirizzo? ',
   HELP_21_Desc_1:         'Versione corta: sì, ma trovare un conto con un saldo richiederebbe più tempo dell\'età dell\'universo... quindi no.',
   HELP_21_Desc_2:         'Versione lunga in termini semplici: Ethereum si basa sulla [Crittografia a chiave pubblica](https://it.wikipedia.org/wiki/Crittografia_a_chiave_pubblica), nello specifico [Crittografia a curva ellittica](https://eprint.iacr.org/2013/734.pdf) (ECC) che è ampiamente utilizzata, non solo in Ethereum. La maggior parte dei server sono protetti tramite ECC. Anche Bitcoin la usa, oltre a SSH e TLS e a un sacco di altra roba. Le chiavi di Ethereum nello specifico sono di 256 bit, che sono più robuste di 128 bit e 192 bit, che sono anch\'esse ampiamente utilizzate e sono tuttora considerate sicure dagli esperti.',
-  HELP_21_Desc_3:         'In tutto ciò tu hai una chiave privata e una chiave pubblica. Dalla chiave privata si può derivare la chiave pubblica, ma dalla chiave pubblica non si può risalire alla chiave privata. Il fatto che Internet e i segreti del mondo usino questa crittografia significa che se ci fosse un modo per ottenere una chiave privata da una chiave pubblica, i tuoi ETH persi sarebbero l\'ultimo dei problemi.',
-  HELP_21_Desc_4:         'Ora, detto ciò, SÌ se qualcun altro ha la tua chiave privata allora può effettivamente inviare ETH dal tuo conto. Proprio come se qualcuno ha la password della tua mail può leggere e spedire la tua mail, o se ha la password del tuo conto bancario potrebbe fare dei trasferimenti. Potresti scaricare la versione Keystore della tua chiave privata che è la chiave privata crittografata con una password. È come avere una password che è a sua volta protetta da un\'altra password.',
+  HELP_21_Desc_3:         'In tutto ciò tu hai una chiave privata e una chiave pubblica. Dalla chiave privata si può derivare la chiave pubblica, ma dalla chiave pubblica non si può risalire alla chiave privata. Il fatto che Internet e i segreti del mondo usino questa crittografia significa che se ci fosse un modo per ottenere una chiave privata da una chiave pubblica, i tuoi ether persi sarebbero l\'ultimo dei problemi.',
+  HELP_21_Desc_4:         'Ora, detto ciò, SÌ se qualcun altro ha la tua chiave privata allora può effettivamente inviare ether dal tuo conto. Proprio come se qualcuno ha la password della tua mail può leggere e spedire la tua mail, o se ha la password del tuo conto bancario potrebbe fare dei trasferimenti. Potresti scaricare la versione Keystore della tua chiave privata che è la chiave privata crittografata con una password. È come avere una password che è a sua volta protetta da un\'altra password.',
   HELP_21_Desc_5:         'E SÌ, in teoria potresti semplicemente digitare stringhe di 64 caratteri esadecimali fino a trovarne una che corrisponda. Infatti, persone intelligenti potrebbero scrivere un programma per controllare molto rapidamente chiavi private casuali. Questo procedimento è conosciuto come *"attacco a forza bruta"* o *"mining"* delle chiavi private. Ci hanno pensato molto e a lungo. Con qualche server di altissimo livello potrebbero essere in grado di controllare più di 1 milione di chiavi al secondo. Però nemmeno controllarne così tante al secondo porterebbe all\'accesso in una maniera tale da rendere il costo dell\'utilizzo di quei server vagamente vicino all\'essere proficuo - è più probabile che tu, e i tuoi pronipoti, moriate prima di trovare una corrispondenza.',
   HELP_21_Desc_6:         'Se sai qualcosa di Bitcoin, [questo ti darà un\'idea:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *"Per illustrare quanto ciò sia improbabile: supponi che ogni satoshi di ogni bitcoin che sarà mai generato sia inviato a una sua chiave privata unica. La probabilità che fra queste chiavi ce ne possano essere due che corrispondano allo stesso indirizzo è circa di uno in 100 trilioni"*.',
   HELP_21_Desc_7:         '[Se preferisci qualcosa di un po\' più tecnico:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *"Questi numeri non hanno niente a che fare con la tecnologia dei dispositivi; sono i massimi che la termodinamica consente. E implicano fortemente che gli attacchi a forza bruta contro le chiavi a 256 bit saranno impraticabili almeno fino a quando i computer non saranno costruiti con qualcosa di diverso dalla materia e non occuperanno qualcosa di diverso dallo spazio."*',
