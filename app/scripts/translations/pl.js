@@ -4,7 +4,16 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -37,8 +46,10 @@ pl.data = {
   x_Cancel:             'Anuluj',
   x_AddessDesc:         'Inaczej "Numer konta" lub "Klucz publiczny". Wysłasz go innym aby mogli Ci wysłać ether. Ikona umożliwia łatwe rozpoznanie Twojego adresu.',
   x_PrivKey:            'Klucz Prywatny (nieszyfrowany)',
+  x_PrivKey2:           'Klucz Prywatny',
   x_PrivKeyDesc:        'Nieszyfrowana, tekstowa wersja Twojego klucza prywatengo, nie wymaga hasła. Jeżeli ktoś zdobędzie nieszyfrowany klucz będzie mógł uzyskać pełen dostęp do Twojeg portfela bez podania hasła. Z tego powodu zaleca się używanie jego szyfrowanej wersji.',
   x_Keystore:           'Plik Keystore/JSON (Zalecany · Szyfrowany · Format Mist/Geth)',
+  x_Keystore2:          'Plik Keystore/JSON',
   x_KeystoreDesc:       'Ten plik Keystore / JSON odpowiada formatowi stosowanemu przez Mist i Geth, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
   x_Json:               'Plik JSON (nieszyfrowany)',
   x_JsonDesc:           'Nieszyfrowany klucz prywatny, plik w formacie JSON. Nie wymaga podania hasła, ale każdy kto zdobędzie ten plik uzyska również pełny dostęp do Twojego portfela i zgromadzonych na nim środków.',

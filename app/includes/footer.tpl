@@ -40,7 +40,7 @@
       <span translate="TranslatorName_5"></span>
     </p>
 
-    <p><a data-toggle="modal" data-target="#disclaimerModal"> Disclaimer </a></p>
+    <p><a data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
 
     <p ng-show="showBlocks" class="text-right" style="font-size: 10px">ETH Block#: {{ethBlockNumber}} &middot; ETC Block#: {{etcBlockNumber}}</p>
 

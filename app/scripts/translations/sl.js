@@ -4,7 +4,16 @@ var sl = function() {}
 sl.code = 'sl';
 sl.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -50,8 +59,10 @@ sl.data = {
   x_Cancel:             'x_Prekliči',
   x_AddessDesc:         'To je vaš "Naslov #" oziroma vaš "Osebni Ključ". Ta naslov lahko pošljete drugim, zato da vedo kam vam poslati ether. Ta ikona je unikatna, je grafični prikaz številke vašega naslova in vam ga pomaga lažje prepoznati.',
   x_PrivKey:            'Osebni Ključ (nekriptiran)',
+  x_PrivKey2:           'Osebni Ključ',
   x_PrivKeyDesc:        'To je nekriptirana tekst verzija vašega osebnega ključa, kar pomeni, da za uporabo ne potrebujete nobenega gesla. V primeru da bi kdorkoli dobil datoteko vašega nekriptiranega osebnega ključa, bi lahko dostopal do vaše denarnice brez gesla. Zaradi tega vam priporocamo uporabo krtiptirane denarnice.',
   x_Keystore:           'Datoteka za Shrambo ključa Keystore/JSON  (Priporočeno · Kriptirano · Mist/Geth Format)',
+  x_Keystore2:          'Datoteka za Shrambo ključa Keystore/JSON',
   x_KeystoreDesc:       'Ta datoteka za shrambo osebnega ključa Keystore/JSON se ujema s formatom datoteke, ki jo uporabljata programa Mist in Geth, kar pomeni da ga lahko v prihodnosti enostavno izvozite iz te internetne strani in uvozite v Mist ali Geth. Priporočamo vam da to datoteko prenesete na vaš računalnik in jo shranite na varnem mestu. Za dodatno varnost priporočamo, da datoteko shranite na večih napravah.',
   x_Json:               'JSON Datoteka (nekriptirana)',
   x_JsonDesc:           'To je nekriptirana, JSON datoteka vašega osebnega ključa. To pomeni, da za uporabo ne potrebujete gesla. V primeru da kdorkoli najde datoteko vašega ključa, dobi takojšen dostop do vaše denarnice in vašega Ethra brez uporabe gesla.',

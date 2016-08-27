@@ -175,7 +175,7 @@
               <strong translate="DAOModal_2"> DAO Tokens to </strong>
               <span> ADDRESS_IN_FIELD_ABOVE </span>
               <strong translate="DAOModal_3"> for </strong>
-              <span>{{token.balanceEth}} ETC.</span>
+              <span>{{token.balanceEth}} ETH.</span>
             </h4>
             <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
           </div>
