@@ -4,14 +4,6 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* New - DAO ETC Withdrawal */
-  DAO_bal1:               'at block 1,919,999',
-  DAO_bal2:               'current',
-  DAO_TitleETH:           'Withdraw DAO For ETH',
-  DAO_TitleETC:           'Withdraw DAO For ETC',
-  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
-  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
-
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -181,8 +173,14 @@ nl.data = {
   OFFLINE_Step3_Label_1:  'Plak de gesigneerde transactie van Stap 2 hier en click de "Verzend Transactie" knop.',
 
   /* DAO */
+  DAO_bal1:               'bij blok 1.919.999',
+  DAO_bal2:               'momenteel',
+  DAO_TitleETH:           'DAO voor ETH opnemen',
+  DAO_TitleETC:           'DAO voor ETC opnemen',
+  DAO_ETC_Label_1:        'Naar welk adres wil je je ETC verzenden?',
+  DAO_ETC_Label_2:        'De "White Hat Group" is onvermoeibaar aan het werk geweest om jouw ETC terug bij jouw te krijgen. Je kunt ze bedankten door een percentage van je opname te doneren, als je daarvoor kiest. ',
   DAO_Desc:               'Gebruik dit tab om je DAO Tokens om te zitten in ETH. Als je DOA Tokens wilt versturen, gebruik dan het Verzend Tokens Tab.',
-  DAO_Inst:               'Ja. Klik eenvoudigweg op de grote rode knop. Dat is hoe gemakkelijk het is.',
+  DAO_Inst:               'Ja. Klik simpelweg op de grote rode knop. Zo makkelijk is het.',
   DAO_Warning:            'Als je een "Insufficient balance for gas" fout krijgt, zul je een kleine hoeveelheid ETH in je account moeten storten om de gas kosten voor deze actie te betalen. Voeg 0.01 ETH toe aan je account en probeer het opnieuw. ',
   DAOModal_Title:         'Voor de zekerheid...',
 
