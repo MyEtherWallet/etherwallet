@@ -136,7 +136,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="myModalLabel" class="text-danger" translate="DAOModal_Title">Just making sure...</h3>
+            <h3 class="modal-title text-danger" id="myModalLabel" translate="DAOModal_Title">Just making sure...</h3>
           </div>
           <div class="modal-body">
             <!-- TODO - make it show address ETC are going to be sent to -->
@@ -159,7 +159,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="myModalLabel" class="text-danger" translate="DAOModal_Title">Just making sure...</h3>
+            <h3 class="modal-title text-danger" id="myModalLabel" translate="DAOModal_Title">Just making sure...</h3>
           </div>
           <div class="modal-body">
             <h4> You are about to withdraw {{token.balance}} DAO Tokens for {{token.balanceEth}} ETH. </h4>

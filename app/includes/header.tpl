@@ -81,6 +81,8 @@
             <li><a ng-class="{true:'active'}[curLang=='Türkçe']" ng-click="changeLanguage('tr','Türkçe')">Türkçe</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='Українська']" ng-click="changeLanguage('uk','Українська')">Українська</a></li>-->
         <!--<li><a ng-class="{true:'active'}[curLang=='Tiếng Việt']" ng-click="changeLanguage('vi','Tiếng Việt')">Tiếng Việt</a></li>-->
+            <li role="separator" class="divider"></li>
+            <li><a data-toggle="modal" data-target="#disclaimerModal"> Disclaimer </a></li>
           </ul>
         </span>
       </div>
