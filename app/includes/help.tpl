@@ -444,7 +444,7 @@
             <li translate="HELP_12_Desc_21"> After successful import, delete <code>nothing_special_delete_me.txt</code></li>
             <li translate="HELP_12_Desc_22"> The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". </li>
           </ul>
-        <li> If you are on a PC:</li>
+        <li translate="HELP_12_Desc_15b"> If you are on a PC:</li>
           <ul>
             <li translate="HELP_12_Desc_23"> Open Notepad & paste the private key</li>
             <li translate="HELP_12_Desc_24"> Save the file as <code>nothing_special_delete_me.txt</code> at <code>C:\</code></li>

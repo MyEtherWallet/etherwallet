@@ -52,7 +52,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title text-danger">Disclaimer</h3>
+          <h3 class="modal-title text-danger" translate="FOOTER_4">Disclaimer</h3>
         </div>
         <div class="modal-body">
           <p><strong> Translations of MyEtherWallet: </strong> The commmunity is doing an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>

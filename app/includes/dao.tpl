@@ -66,8 +66,8 @@
 
       <!-- TODO: Make this work -->
       <div class="btn-group">
-        <a class="btn btn-primary" ng-class="curTab=='withdrawETC' ? 'active' : ''" ng-click="curTab='withdrawETC'"> Withdraw DAO Tokens for ETC </a>
-        <a class="btn btn-primary" ng-class="curTab=='withdraw' ? 'active' : ''" ng-click="curTab='withdraw'"> Withdraw DAO Tokens for ETH </a>
+        <a class="btn btn-primary" ng-class="curTab=='withdrawETC' ? 'active' : ''" ng-click="curTab='withdrawETC'" translate="DAO_TitleETC"> Withdraw DAO for ETC </a>
+        <a class="btn btn-primary" ng-class="curTab=='withdraw' ? 'active' : ''" ng-click="curTab='withdraw'" translate="DAO_TitleETH"> Withdraw DAO for ETH </a>
       </div>
 
       <!-- Withdraw DAO For ETC -->
@@ -76,7 +76,7 @@
           <h4 class="col-xs-12" translate="DAO_TitleETC"> Withdraw DAO for ETC </h4>
           <!-- Address for ETC to be Delivered -->
           <div class="form-group col-xs-10">
-            <label> Where do you want your ETC to be sent to? </label>
+            <label translate="DAO_ETC_Label_1"> Where do you want your ETC to be sent to? </label>
             <input class="form-control" type="text" value="{{wallet.getChecksumAddressString()}}" /> <!-- ng-change="validateAddress()" -->
             <div ng-bind-html="validateAddressStatus"></div>
           </div>
@@ -140,7 +140,14 @@
           </div>
           <div class="modal-body">
             <!-- TODO - make it show address ETC are going to be sent to -->
-            <h4> You are about to withdraw {{token.balance}} DAO Tokens to ADDRESS_IN_FIELD_ABOVE for {{token.balanceEth}} ETC. </h4>
+            <h4>
+              <span translate="DAOModal_1"> You are about to withdraw </span>
+              <strong>{{token.balance}}</strong>
+              <span translate="DAOModal_2"> DAO Tokens to </span>
+              <strong> ADDRESS_IN_FIELD_ABOVE </strong>
+              <span translate="DAOModal_3"> for </span>
+              <strong>{{token.balanceEth}} ETC.</strong>
+            </h4>
             <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
           </div>
           <div class="modal-footer text-center">
@@ -162,7 +169,14 @@
             <h3 class="modal-title text-danger" id="myModalLabel" translate="DAOModal_Title">Just making sure...</h3>
           </div>
           <div class="modal-body">
-            <h4> You are about to withdraw {{token.balance}} DAO Tokens for {{token.balanceEth}} ETH. </h4>
+            <h4>
+              <span translate="DAOModal_1"> You are about to withdraw </span>
+              <strong>{{token.balance}}</strong>
+              <span translate="DAOModal_2"> DAO Tokens to </span>
+              <strong> ADDRESS_IN_FIELD_ABOVE </strong>
+              <span translate="DAOModal_3"> for </span>
+              <strong>{{token.balanceEth}} ETC.</strong>
+            </h4>
             <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
           </div>
           <div class="modal-footer text-center">

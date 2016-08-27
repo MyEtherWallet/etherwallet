@@ -1663,7 +1663,7 @@ var cxWalletDecryptDrtv = function() {
       </div>\n \
       <div class="col-md-4 col-sm-6" ng-show="selectedWallet!=\'\'">\n \
         <h4 translate="ADD_Label_3"> Your wallet is encrypted. Please enter the password: </h4>\n \
-        <input class="form-control" type="password" placeholder="Password" ng-model="password">\n \
+        <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="password">\n \
       </div>\n \
       <div class="col-md-4 col-sm-6" id="walletuploadbutton" ng-show="password.length>3">\n \
         <h4 id="uploadbtntxt-wallet" translate="ADD_Label_6"> Unlock Your Wallet:</h4>\n \
@@ -1708,11 +1708,11 @@ var walletDecryptDrtv = function() {
       <h4 translate="decrypt_Title"> Select the format of your private key: </h4>\n \
       <div class="radio">\n \
         <label>\n \
-          <input type="radio" ng-model="walletType" value="fileupload"/>JSON or Keystore File</label>\n \
+          <input type="radio" ng-model="walletType" value="fileupload" translate="x_Json2" />Keystore / JSON File</label>\n \
       </div>\n \
       <div class="radio">\n \
         <label>\n \
-          <input type="radio" ng-model="walletType" value="pasteprivkey"/>Plain Text Private Key</label>\n \
+          <input type="radio" ng-model="walletType" value="pasteprivkey" translate="x_PrivKey2" />Plain Text Private Key</label>\n \
       </div>\n \
     </div>\n \
     <div class="col-md-4 col-sm-6">\n \
@@ -1726,7 +1726,7 @@ var walletDecryptDrtv = function() {
         </div>\n \
         <div class="form-group" ng-if="requireFPass">\n \
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>\n \
-          <input class="form-control" type="password" placeholder="Password" ng-model="$parent.$parent.filePassword" ng-change="onFilePassChange()" />\n \
+          <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="$parent.$parent.filePassword" ng-change="onFilePassChange()" />\n \
         </div>\n \
       </div>\n \
       <!-- /if selected upload -->\n \
@@ -1734,11 +1734,11 @@ var walletDecryptDrtv = function() {
       <div id="selectedTypeKey" ng-if="walletType==\'pasteprivkey\'">\n \
         <h4 translate="ADD_Radio_3"> Paste / type your private key: </h4>\n \
         <div class="form-group">\n \
-          <textarea rows="4" class="form-control" placeholder="Private Key" ng-model="$parent.$parent.manualprivkey" ng-change="onPrivKeyChange()"></textarea>\n \
+          <textarea rows="4" class="form-control" placeholder="{{ \'x_PrivKey2\' | translate }}" ng-model="$parent.$parent.manualprivkey" ng-change="onPrivKeyChange()"></textarea>\n \
         </div>\n \
         <div class="form-group" ng-if="requirePPass">\n \
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>\n \
-          <input class="form-control" type="password" placeholder="Password" ng-model="$parent.$parent.privPassword" ng-change="onPrivKeyPassChange()">\n \
+          <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="$parent.$parent.privPassword" ng-change="onPrivKeyPassChange()">\n \
         </div>\n \
       </div>\n \
       <!-- /if selected type key-->\n \
@@ -4154,7 +4154,16 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
   /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   DAO_bal1:               'at block 1,919,999',
   DAO_bal2:               'current',
   DAO_TitleETH:           'Withdraw DAO For ETH',
@@ -4202,7 +4211,7 @@ en.data = {
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
   x_PrivKey:            'Private Key (unencrypted)',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
-  x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
+  x_Keystore:           'Keystore / JSON File (Recommended · Encrypted · Mist/Geth Format)',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
@@ -4211,6 +4220,8 @@ en.data = {
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_CSV:                'CSV file (unencrypted)',
   x_TXT:                'TXT file (unencrypted)',
+  x_Json2:              'Keystore / JSON File',
+  x_PrivKey2:           'Private Key',
 
   /* Header */
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',

@@ -72,7 +72,7 @@
         <!--<li><a ng-class="{true:'active'}[curLang=='Українська']" ng-click="changeLanguage('uk','Українська')">Українська</a></li>-->
         <!--<li><a ng-class="{true:'active'}[curLang=='Tiếng Việt']" ng-click="changeLanguage('vi','Tiếng Việt')">Tiếng Việt</a></li>-->
             <li role="separator" class="divider"></li>
-            <li><a data-toggle="modal" data-target="#disclaimerModal"> Disclaimer </a></li>
+            <li><a data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></li>
           </ul>
         </span>
       </div>
@@ -1194,8 +1194,8 @@
 
       <!-- TODO: Make this work -->
       <div class="btn-group">
-        <a class="btn btn-primary" ng-class="curTab=='withdrawETC' ? 'active' : ''" ng-click="curTab='withdrawETC'"> Withdraw DAO Tokens for ETC </a>
-        <a class="btn btn-primary" ng-class="curTab=='withdraw' ? 'active' : ''" ng-click="curTab='withdraw'"> Withdraw DAO Tokens for ETH </a>
+        <a class="btn btn-primary" ng-class="curTab=='withdrawETC' ? 'active' : ''" ng-click="curTab='withdrawETC'" translate="DAO_TitleETC"> Withdraw DAO for ETC </a>
+        <a class="btn btn-primary" ng-class="curTab=='withdraw' ? 'active' : ''" ng-click="curTab='withdraw'" translate="DAO_TitleETH"> Withdraw DAO for ETH </a>
       </div>
 
       <!-- Withdraw DAO For ETC -->
@@ -1204,7 +1204,7 @@
           <h4 class="col-xs-12" translate="DAO_TitleETC"> Withdraw DAO for ETC </h4>
           <!-- Address for ETC to be Delivered -->
           <div class="form-group col-xs-10">
-            <label> Where do you want your ETC to be sent to? </label>
+            <label translate="DAO_ETC_Label_1"> Where do you want your ETC to be sent to? </label>
             <input class="form-control" type="text" value="{{wallet.getChecksumAddressString()}}" /> <!-- ng-change="validateAddress()" -->
             <div ng-bind-html="validateAddressStatus"></div>
           </div>
@@ -1268,7 +1268,14 @@
           </div>
           <div class="modal-body">
             <!-- TODO - make it show address ETC are going to be sent to -->
-            <h4> You are about to withdraw {{token.balance}} DAO Tokens to ADDRESS_IN_FIELD_ABOVE for {{token.balanceEth}} ETC. </h4>
+            <h4>
+              <span translate="DAOModal_1"> You are about to withdraw </span>
+              <strong>{{token.balance}}</strong>
+              <span translate="DAOModal_2"> DAO Tokens to </span>
+              <strong> ADDRESS_IN_FIELD_ABOVE </strong>
+              <span translate="DAOModal_3"> for </span>
+              <strong>{{token.balanceEth}} ETC.</strong>
+            </h4>
             <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
           </div>
           <div class="modal-footer text-center">
@@ -1290,7 +1297,14 @@
             <h3 class="modal-title text-danger" id="myModalLabel" translate="DAOModal_Title">Just making sure...</h3>
           </div>
           <div class="modal-body">
-            <h4> You are about to withdraw {{token.balance}} DAO Tokens for {{token.balanceEth}} ETH. </h4>
+            <h4>
+              <span translate="DAOModal_1"> You are about to withdraw </span>
+              <strong>{{token.balance}}</strong>
+              <span translate="DAOModal_2"> DAO Tokens to </span>
+              <strong> ADDRESS_IN_FIELD_ABOVE </strong>
+              <span translate="DAOModal_3"> for </span>
+              <strong>{{token.balanceEth}} ETC.</strong>
+            </h4>
             <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
           </div>
           <div class="modal-footer text-center">
@@ -1946,7 +1960,7 @@
             <li translate="HELP_12_Desc_21"> After successful import, delete <code>nothing_special_delete_me.txt</code></li>
             <li translate="HELP_12_Desc_22"> The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". </li>
           </ul>
-        <li> If you are on a PC:</li>
+        <li translate="HELP_12_Desc_15b"> If you are on a PC:</li>
           <ul>
             <li translate="HELP_12_Desc_23"> Open Notepad & paste the private key</li>
             <li translate="HELP_12_Desc_24"> Save the file as <code>nothing_special_delete_me.txt</code> at <code>C:\</code></li>
@@ -2257,7 +2271,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title text-danger">Disclaimer</h3>
+          <h3 class="modal-title text-danger" translate="FOOTER_4">Disclaimer</h3>
         </div>
         <div class="modal-body">
           <p><strong> Translations of MyEtherWallet: </strong> The commmunity is doing an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>
