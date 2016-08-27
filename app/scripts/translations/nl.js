@@ -183,7 +183,7 @@ nl.data = {
   /* DAO */
   DAO_Desc:               'Gebruik dit tab om je DAO Tokens om te zitten in ETH. Als je DOA Tokens wilt versturen, gebruik dan het Verzend Tokens Tab.',
   DAO_Inst:               'Ja. Klik eenvoudigweg op de grote rode knop. Dat is hoe gemakkelijk het is.',
-  DAO_Warning:            'Als je een "Insufficient balance for gas" fout krijgt, zul je een kleine hoeveelheid ETH in je account moeten storten om de gas kosten voor deze actie te betalen. Voeg .01 ETH toe aan je account en probeer het opnieuw. ',
+  DAO_Warning:            'Als je een "Insufficient balance for gas" fout krijgt, zul je een kleine hoeveelheid ETH in je account moeten storten om de gas kosten voor deze actie te betalen. Voeg 0.01 ETH toe aan je account en probeer het opnieuw. ',
   DAOModal_Title:         'Voor de zekerheid...',
 
   /* Digix */
@@ -379,12 +379,12 @@ nl.data = {
   HELP_6_Desc_4:        'Genereer een nieuw `clean` post-fork ETH adres voor jezelf (dit zal de uiteindelijke bestemming zijn van je pure ETH).',
   HELP_6_Desc_5:        'Genereer een nieuw `clean` post-fork ETC adres voor jezelf (dit zal de uiteindelijke bestemming zijn van je pure ETC).',
   HELP_6_Desc_6:        'Maak een back-up van deze wallets en verifieer dat je er toegang tot hebt. Zie #2a en #3 bovenstaand.',
-  HELP_6_Desc_7:        'Verstuur .1234 ETH naar je nieuwe "ETH" adres door gebruik te maken van de "Enkel ETH" optie op de "Verzend Ether" pagina.',
-  HELP_6_Desc_8:        'Verstuur .5678 ETC naar je nieuwe "ETC" adres door gebruik te maken van de "Enkel ETC" optie op de "Verzend Ether" pagina.',
-  HELP_6_Desc_9:        'Controleer dat enkel de .1234 ETH zich heeft verplaatst op etherscan.io. Controleer dan enkel de .5678 ETC zich heeft verplaatst op gastracker.io.',
-  HELP_6_Desc_10:       'Verstuur een .0001 ETH transactie vanuit je nieuwe ETH wallet. Controleer deze op etherscan.io. Controleer dat de .0001 ETH zich heeft verplaatst.',
-  HELP_6_Desc_11:       ' Genereer (maar verstuur niet) een .0002 ETC transactie vanuit je nieuwe ETC wallet. Kopier het "Gesigneerde Transactie" veld. ',
-  HELP_6_Desc_12:       'Ga naar [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) en plak deze ETC TX in classicetherwallet.com\'s offline tab helemaal beneden op de pagina en verstuur. Ga naar gastracker.io encontroleer dat de .0002 ETC zich verplaatst heeft.',
+  HELP_6_Desc_7:        'Verstuur 0.1234 ETH naar je nieuwe "ETH" adres door gebruik te maken van de "Enkel ETH" optie op de "Verzend Ether" pagina.',
+  HELP_6_Desc_8:        'Verstuur 0.5678 ETC naar je nieuwe "ETC" adres door gebruik te maken van de "Enkel ETC" optie op de "Verzend Ether" pagina.',
+  HELP_6_Desc_9:        'Controleer dat enkel de 0.1234 ETH zich heeft verplaatst op etherscan.io. Controleer dan enkel de 0.5678 ETC zich heeft verplaatst op gastracker.io.',
+  HELP_6_Desc_10:       'Verstuur een 0.0001 ETH transactie vanuit je nieuwe ETH wallet. Controleer deze op etherscan.io. Controleer dat de 0.0001 ETH zich heeft verplaatst.',
+  HELP_6_Desc_11:       ' Genereer (maar verstuur niet) een 0.0002 ETC transactie vanuit je nieuwe ETC wallet. Kopier het "Gesigneerde Transactie" veld. ',
+  HELP_6_Desc_12:       'Ga naar [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) en plak deze ETC TX in classicetherwallet.com\'s offline tab helemaal beneden op de pagina en verstuur. Ga naar gastracker.io encontroleer dat de 0.0002 ETC zich verplaatst heeft.',
   HELP_6_Desc_13:       'Als alles correct ontvangen en verstuurd is zit je goed.',
   HELP_6_Desc_14:       'Verstuur het volledige resterende ETH saldo door gebruik te maken van de "Enkel ETH" optie en herhaal voor het ETC saldo met gebruik van de "Enkel ETC" optie.',
   HELP_6_Desc_15:       ' Vanaf nu kun je gebruik maken van de standaard transactie optie voor deze nieuwe accounts zonder het risico op `replay attacks`. ',
