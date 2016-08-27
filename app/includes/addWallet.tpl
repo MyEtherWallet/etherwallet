@@ -70,7 +70,7 @@
       <div ng-show="walletType=='pasteprivkey'">
         <h4 translate="ADD_Radio_3"> Paste / type your private key: </h4>
         <div class="form-group">
-          <textarea rows="4" class="form-control" placeholder="Private Key" ng-model="manualprivkey" ng-change="onPrivKeyChange()"></textarea>
+          <textarea rows="4" class="form-control" placeholder="{{ 'x_PrivKey2' | translate }}" ng-model="manualprivkey" ng-change="onPrivKeyChange()"></textarea>
         </div>
         <div class="form-group" ng-show="requirePPass">
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>

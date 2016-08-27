@@ -66,8 +66,8 @@
 
       <!-- TODO: Make this work -->
       <div class="btn-group">
-        <a class="btn btn-primary" ng-class="curTab=='withdrawETC' ? 'active' : ''" ng-click="curTab='withdrawETC'" translate="DAO_TitleETC"> Withdraw DAO for ETC </a>
-        <a class="btn btn-primary" ng-class="curTab=='withdraw' ? 'active' : ''" ng-click="curTab='withdraw'" translate="DAO_TitleETH"> Withdraw DAO for ETH </a>
+        <a class="btn btn-primary" ng-class="curTab=='withdrawETC' ? 'active' : ''" ng-click="curTab='withdrawETC'"> <span translate="DAO_TitleETC"> Withdraw DAO for ETC </span></a>
+        <a class="btn btn-primary" ng-class="curTab=='withdraw' ? 'active' : ''" ng-click="curTab='withdraw'"> <span translate="DAO_TitleETH"> Withdraw DAO for ETH </span></a>
       </div>
 
       <!-- Withdraw DAO For ETC -->
@@ -141,12 +141,12 @@
           <div class="modal-body">
             <!-- TODO - make it show address ETC are going to be sent to -->
             <h4>
-              <span translate="DAOModal_1"> You are about to withdraw </span>
-              <strong>{{token.balance}}</strong>
-              <span translate="DAOModal_2"> DAO Tokens to </span>
-              <strong> ADDRESS_IN_FIELD_ABOVE </strong>
-              <span translate="DAOModal_3"> for </span>
-              <strong>{{token.balanceEth}} ETC.</strong>
+              <strong translate="DAOModal_1"> You are about to withdraw </strong>
+              <span>{{token.balance}}</span>
+              <strong translate="DAOModal_2"> DAO Tokens to </strong>
+              <span> ADDRESS_IN_FIELD_ABOVE </span>
+              <strong translate="DAOModal_3"> for </strong>
+              <span>{{token.balanceEth}} ETC.</span>
             </h4>
             <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
           </div>
@@ -170,12 +170,12 @@
           </div>
           <div class="modal-body">
             <h4>
-              <span translate="DAOModal_1"> You are about to withdraw </span>
-              <strong>{{token.balance}}</strong>
-              <span translate="DAOModal_2"> DAO Tokens to </span>
-              <strong> ADDRESS_IN_FIELD_ABOVE </strong>
-              <span translate="DAOModal_3"> for </span>
-              <strong>{{token.balanceEth}} ETC.</strong>
+              <strong translate="DAOModal_1"> You are about to withdraw </strong>
+              <span>{{token.balance}}</span>
+              <strong translate="DAOModal_2"> DAO Tokens to </strong>
+              <span> ADDRESS_IN_FIELD_ABOVE </span>
+              <strong translate="DAOModal_3"> for </strong>
+              <span>{{token.balanceEth}} ETC.</span>
             </h4>
             <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
           </div>
