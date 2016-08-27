@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 5c8e26d7dc6e47efd4ce301d01ff57
+// Last sync with en.js: commit f60fc3a76062dfea03c08affbebba5616
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -374,21 +374,21 @@ it.data = {
   HELP_5CX_Desc_8:      'L\'estensione dovrebbe ora comparire fra le tue estensioni e nella barra delle estensioni di Chrome.',
 
   HELP_6_Title:         '6) Come faccio a separare i miei ETH / ETC? ',
-  HELP_6_Desc_1:        'Come conseguenza della *hard fork*, a qualunque quantità di ETH precedentemente presente nel tuo conto corrisponde ora una uguale quantità di ETC. Se invii degli ETH tramite una transazione standard, verranno anche inviati degli ETC. Per evitarlo, devi "separare" il tuo conto originale in due conti. Dopodiché, ti devi assicurare che solamente gli ETH finiscano nel tuo conto ETH e solamente gli ETC finiscano nel tuo conto ETC.',
+  HELP_6_Desc_1:        'Come conseguenza della *hard fork*, a qualunque quantità di ETH precedentemente presente nel tuo portafoglio corrisponde ora una uguale quantità di ETC. Se invii degli ETH tramite una transazione standard, verranno anche inviati degli ETC. Per evitarlo, devi "separare" il tuo portafoglio originale in due portafogli. Dopodiché, ti devi assicurare che solamente gli ETH finiscano nel tuo portafoglio ETH e solamente gli ETC finiscano nel tuo portafoglio ETC.',
   HELP_6_Desc_2:        'Puoi anche inviare tutti i tuoi ETH & ETC utilizzando una transazione standard a Kraken o Poloniex. Queste piattaforme di scambio separeranno automaticamente i tuoi ETH ed ETC. Potrai quindi spostare questi fondi in nuovi portafogli, o vendere i tuoi ETC o ETH.',
   HELP_6_Desc_3:        '[Qui puoi trovare ulteriori informazioni su portafogli e *reply attack*](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
-  HELP_6_Desc_4:        'Genera un nuovo indirizzo ETH *post-fork* pulito per te (che sarà la destinazione finale degli ETH e nient\'altro).',
-  HELP_6_Desc_5:        'Genera un nuovo indirizzo ETC *post-fork* pulito per te (che sarà la destinazione finale degli ETC e nient\'altro).',
+  HELP_6_Desc_4:        'Genera un nuovo portafoglio ETH *post-fork* pulito per te (che sarà la destinazione finale degli ETH e nient\'altro).',
+  HELP_6_Desc_5:        'Genera un nuovo portafoglio ETC *post-fork* pulito per te (che sarà la destinazione finale degli ETC e nient\'altro).',
   HELP_6_Desc_6:        'Fai un backup di questi nuovi portafogli e verifica di poterci accedere. Vedi domande n. 2a e n. 3 qui sopra.',
-  HELP_6_Desc_7:        'Invia 0,1234 ETH al nuovo indirizzo "ETH" utilizzando l\'opzione "Solo ETH" nella pagina "Invia ether".',
-  HELP_6_Desc_8:        'Invia 0,5678 ETC al nuovo indirizzo "ETC" utilizzando l\'opzione "Solo ETC" su MyEtherWallet.com',
+  HELP_6_Desc_7:        'Invia 0,1234 ETH al nuovo portafoglio "ETH" utilizzando l\'opzione "Solo ETH" nella pagina "Invia ether".',
+  HELP_6_Desc_8:        'Invia 0,5678 ETC al nuovo portafoglio "ETC" utilizzando l\'opzione "Solo ETC" nella pagina "Invia ether".',
   HELP_6_Desc_9:        'Controlla che si siano spostati solamente gli 0,1234 ETH su etherscan.io. Controlla che si siano spostati solamente gli 0,5678 ETC su gastracker.io.',
   HELP_6_Desc_10:       'Esegui una transazione di 0,0001 ETH dal tuo nuovo portafoglio ETH. Controlla etherscan.io. Assicurati che gli 0,0001 ETH siano stati inviati.',
-  HELP_6_Desc_11:       ' Genera (ma non inviare) una transazione di 0,0002 ETC dal tuo nuovo portafoglio ETC. Copia il campo "Transazione firmata". ',
+  HELP_6_Desc_11:       'Genera (ma non inviare) una transazione di 0,0002 ETC dal tuo nuovo portafoglio ETC. Copia il campo "Transazione firmata". ',
   HELP_6_Desc_12:       'Vai su [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) e incolla la transazione ETC nella scheda "Invia offline" di classicetherwallet.com, alla fine della pagina, e invia. Controlla gastracker.io. Assicurati che gli 0,0002 ETC siano stati inviati.',
   HELP_6_Desc_13:       'Se tutto è stato ricevuto ed inviato correttamente allora sei a posto.',
   HELP_6_Desc_14:       'Invia tutto il saldo ETH rimanente utilizzando l\'opzione "Solo ETH" e ripeti per il saldo ETC utilizzando "Solo ETC".',
-  HELP_6_Desc_15:       ' Adesso puoi usare le transazioni standard per questi nuovi conti senza rischio di *replay attack*. ',
+  HELP_6_Desc_15:       'Adesso puoi usare le transazioni standard per questi nuovi portafogli senza rischio di *replay attack*. ',
 
   HELP_7_Title:         '7) Come invio token e come aggiungo token personalizzati?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) è un ottimo modo di esplorare i token e trovarne i decimali.',
@@ -478,8 +478,8 @@ it.data = {
   HELP_14_Title:          '14) Certi siti inizializzano il generatore di numeri casuali per la generazione della chiave privata tramite i movimenti del mouse. MyEtherWallet.com non lo fa. La generazione di numeri casuali di MyEtherWallet è sicura?',
   HELP_14_Desc_1:         'Sebbene usare i movimenti del mouse sia ingegnoso, e comprendiamo perché piaccia, la realtà è che window.crypto assicura maggiore entropia rispetto ai tuoi movimenti del mouse. Non che i movimenti del mouse siano insicuri, è solo che noi (e un sacco di altri critto-esperimenti) crediamo in window.crypto. Oltretutto, MyEtherWallet.com può essere utilizzato su dispositivi touch. Qui c\'è una [conversazione fra un utente di reddit arrabbiato e Vitalik Buterin su movimenti del mouse contro window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) e qui c\'è [la specifica del w3 di window.crypto](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
 
-  HELP_15_Title:          '15) Perché il portafoglio che ho appena creato non risulta nello strumento per esplorare la *blockchain*? (es: etherchain, etherscan)',
-  HELP_15_Desc_1:         'Gli indirizzi vengono mostrati in quegli strumenti solamente dopo che c\'è stata un\'attività sul conto&mdash;ad esempio, dopo che ci hai trasferito degli ether.',
+  HELP_15_Title:          '15) Perché il conto che ho appena creato non risulta nello strumento per esplorare la *blockchain*? (es: etherchain, etherscan)',
+  HELP_15_Desc_1:         'I conti vengono mostrati in quegli strumenti solamente dopo che c\'è stata un\'attività sul conto in questione&mdash;ad esempio, dopo che ci hai trasferito degli ether.',
 
   HELP_16_Title:          '16) Come faccio a controllare il saldo del mio conto? ',
   HELP_16_Desc_1:         'Puoi usare uno strumento per l\'esplorazione della *blockchain* come [etherscan.io](http://etherscan.io/). Incolla il tuo indirizzo nella barra di ricerca e vedrai il tuo indirizzo e lo storico delle transazioni. Ad esempio, questo è come si presenta il nostro [conto donazioni](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) su etherscan.io',
