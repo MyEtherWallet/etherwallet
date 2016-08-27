@@ -7,11 +7,11 @@ var walletDecryptDrtv = function() {
       <h4 translate="decrypt_Title"> Select the format of your private key: </h4>\n \
       <div class="radio">\n \
         <label>\n \
-          <input type="radio" ng-model="walletType" value="fileupload" translate="x_Json2" />Keystore / JSON File</label>\n \
+          <input type="radio" ng-model="walletType" value="fileupload"/><span translate="x_Keystore2">Keystore / JSON File</span></label>\n \
       </div>\n \
       <div class="radio">\n \
         <label>\n \
-          <input type="radio" ng-model="walletType" value="pasteprivkey" translate="x_PrivKey2" />Plain Text Private Key</label>\n \
+          <input type="radio" ng-model="walletType" value="pasteprivkey"/><span translate="x_PrivKey2">Private Key</span></label>\n \
       </div>\n \
     </div>\n \
     <div class="col-md-4 col-sm-6">\n \

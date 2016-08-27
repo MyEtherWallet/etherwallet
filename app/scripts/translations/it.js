@@ -5,6 +5,16 @@ var it = function() {}
 it.code = 'it';
 it.data = {
 
+  HELP_12_Desc_15b:       'If you are on a PC:',
+  ADD_Radio_2_success:    'File Selected: ',
+  FOOTER_4:               'Disclaimer',
+
+  /* New - DAO ETC Withdrawal */
+  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
   /* New - DAO ETC Withdrawal */
   DAO_bal1:               'al blocco 1.919.999',
   DAO_bal2:               'adesso',
@@ -46,7 +56,9 @@ it.data = {
   x_AddessDesc:         'Potresti sentirlo chiamare "Numero di conto" o "Chiave pubblica". È ciò che dai a chi ti vuole inviare degli ether. L\'icona è un modo facile di riconoscere il tuo indirizzo.',
   x_PrivKey:            'Chiave privata (non crittografata)',
   x_PrivKeyDesc:        'Questa è la versione testuale non crittografata della tua chiave privata, il che significa che non serve una password. Se qualcuno trovasse la tua chiave privata non crittografata potrebbe avere accesso al tuo portafoglio senza una password. Per questa ragione di solito si consigliano le versioni crittografate.',
+  x_PrivKey2:           'Chiave privata',
   x_Keystore:           'File Keystore/JSON (Consigliato · Crittografato · Formato Mist/Geth)',
+  x_Keystore2:          'File Keystore/JSON',
   x_KeystoreDesc:       'Questo file Keystore / JSON è compatibile con il formato usato da Mist e Geth, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
   x_Json:               'File JSON (non crittografato)',
   x_JsonDesc:           'Questa è la tua chiave privata in formato JSON non crittografato. Significa che non hai bisogno della password, ma chiunque trovi questo file JSON potrà avere accesso al tuo portafoglio e ai tuoi ether senza password.',

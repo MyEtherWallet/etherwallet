@@ -61,8 +61,8 @@ en.data = {
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
   x_PrivKey:            'Private Key (unencrypted)',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
-  x_Keystore:           'Keystore / JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
+  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_PrintShort:         'Print',
@@ -70,7 +70,7 @@ en.data = {
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
   x_CSV:                'CSV file (unencrypted)',
   x_TXT:                'TXT file (unencrypted)',
-  x_Json2:              'Keystore / JSON File',
+  x_Keystore2:          'Keystore / JSON File',
   x_PrivKey2:           'Private Key',
 
   /* Header */
