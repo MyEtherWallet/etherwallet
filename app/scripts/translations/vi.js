@@ -193,7 +193,7 @@ vi.data = {
   DAOModal_3:             'Hoàn Lại', // "in return for"
 
   /* Digix */
-  DGD_Desc:               'Khiếu nại về DigixDAO(DGD) Token & Danh Hiệu. Để thực hiện việc khiếu nại, bạn phải tham vào buổi bán token ngày 30 và 31 tháng 3 năm 2016. Nếu bạn muốn gửi DGD, xin vui lòng sử dụng chức năng Gửi Token.',
+  DGD_Desc:               'Khiếu nại về DigixDAO(DGD) Token & Danh Hiệu. Để thực hiện việc khiếu nại, bạn phải tham gia vào buổi bán token ngày 30 và 31 tháng 3 năm 2016. Nếu bạn muốn gửi DGD, xin vui lòng sử dụng chức năng Gửi Token.',
   DGD_Label_1:            'Phí Tiêu Thụ Ước Tínhn:',
   DGD_Label_2:            'Cung Cấp Phí Tối Đa:',
   DGD_Label_3:            'Giá Gas:',
