@@ -39,8 +39,7 @@ vi.data = {
   x_PrintShort:         'In Ra',
   x_PrivKey:            'Khoá Bảo Mật (Không mã hoá)',
   x_PrivKey2:           'Khoá Bảo Mật',
-  x_PrivKeyDesc:        'Đây là định dạng Khoá',
-  Bảo Mật của bạn bằng văn bản. Nếu ai đó có được Khoá Bảo Mật của bạn thì họ có thể truy cập vào ví của bạn mà không cần đến mật khẩu. Vì vậy, Chúng tôi khuyên bạn nên dùng phiên bản đã mã hoá.',
+  x_PrivKeyDesc:        'Bảo Mật của bạn bằng văn bản. Nếu ai đó có được Khoá Bảo Mật của bạn thì họ có thể truy cập vào ví của bạn mà không cần đến mật khẩu. Vì vậy, Chúng tôi khuyên bạn nên dùng phiên bản đã mã hoá.',
   x_Save:               'Lưu',
   x_TXT:                'Tập Tin TXT (Không mã hoá)',
   x_Wallet:             'Ví',
@@ -56,7 +55,7 @@ vi.data = {
   FOOTER_1b:            'Nhà Phát Triển:',
   FOOTER_2:             'Đánh Giá Cao Hạnh Động Quyên Góp Từ Bạn:',
   FOOTER_3:             'Thế Hệ Vý Được Xây Dựng Từ Phía Khách Hàng by',
-  FOOTER_4:               'Lưu ý sử dụng',
+  FOOTER_4:             'Lưu ý sử dụng',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Thông Tin Tài Khoản: ',
@@ -140,8 +139,8 @@ vi.data = {
   TRANS_eth:             'Chỉ ETH',
   TRANS_etc:             'Chỉ ETC',
   TRANS_advanced:        '+Nâng Cao: Thêm Gas hoặc Dữ Liệu ',
-  TRANS_data:            ' Dữ Liệu: ',
-  TRANS_gas:             ' Gas: ',
+  TRANS_data:            'Dữ Liệu: ',
+  TRANS_gas:             'Gas: ',
   TRANS_sendInfo:        'Mổi Giao dịch Phổ Thông sử dụng hết 21000 gas có giá tương đương 0.000441 ETH. Chúng tôi áp dụng giá Gas dành cho một giao dịch cao hơn so với mức tối thiểu là 0.000000021 ETH nhằm đảm bảo một giao dịch diển ra nhanh. Chúng tôi hoàn toàn không nhận được khoản tiền nào phát sinh từ phí giao dịch.',
 
   /* Send Transaction Modals */
@@ -164,7 +163,7 @@ vi.data = {
   OFFLINE_Step1_Label_2: 'Lưu ý: Đây phải là tài khoản gửi, không phải tài khoản người nhận. Nonce sẽ được tạo ra từ tài khoản có nguồn gốc. Nếu sử dụng máy tính có tình trạng airgapped, thì nó sẽ trở thành địa chỉ của tài khoản lưu trữ lạnh.',
   OFFLINE_Step2_Title:   'Bước 2: Tạo Giao Dịch (Máy Tính Đang Offline)',
   OFFLINE_Step2_Label_1:  'Địa Chỉ Nhận: ',
-  OFFLINE_Step2_Label_2:  'Đơn vị / Tổng số gửi,
+  OFFLINE_Step2_Label_2:  'Đơn vị / Tổng số gửi',
   OFFLINE_Step2_Label_3:  'Giá Gas ',
   OFFLINE_Step2_Label_3b: 'Điều này đã được hiển thị ở bước 1 trên máy tính trực tuyến của bạn.',
   OFFLINE_Step2_Label_4:  'Giới hạn Gas',
@@ -262,7 +261,7 @@ vi.data = {
   /* Tranlsation Info */
   translate_version:    '0.2',
   Translator_Desc:      'Chân thành Cảm ơn Dịch Giả: Vupham ',
-  TranslatorName_1:     'Pham The Vu',
+  TranslatorName_1:     '[Pham The Vu](https://www.myetherwallet.com/?gaslimit=21000&to=0xFeC03081c4E51B375d064Ffb4186Af9E032Fc723&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0xFeC03081c4E51B375d064Ffb4186Af9E032Fc723',
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     ' ',

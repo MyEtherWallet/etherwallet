@@ -6,12 +6,12 @@ fr.data = {
 
   HELP_12_Desc_15b:       'Si vous êtes sur un PC :',
   ADD_Radio_2_success:    'Fichier sélectionné : ',
-  FOOTER_4:               'Avertissement,'
+  FOOTER_4:               'Avertissement,',
 
   /* New - DAO ETC Withdrawal */
   // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
   DAOModal_1:             'Vous êtes sur le point de retirer',
-  DAOModal_2:             'tokens DAO Tokens to',
+  DAOModal_2:             'tokens DAO to',
   DAOModal_3:             'pour', // "in return for"
 
   DAO_bal1:               'au bloc 1.919.999',
