@@ -192,7 +192,7 @@ vi.data = {
   DAO_TitleETH:           'Thu Hồi DAO Và Hoàn Trả ETH',
   DAO_TitleETC:           'Thu Hồi DAO Và Hoàn Trả ETC',
   DAO_ETC_Label_1:        'Địa chỉ mà bạn muốn số lượng ETC của bạn được gửi đến?',
-  DAO_ETC_Label_2:        'Nhóm Whitehat đã làm việc cật lực để đòi lại số ETC và mang mang về cho bạn. Bạn có thể nói lời cảm ơn đến họ bằng cách quyên góp một phần tỷ lệ % từ khoảng hoàn lại của bạn. ',
+  DAO_ETC_Label_2:        'Nhóm Whitehat đã làm việc cật lực để đòi lại số ETC và mang về cho bạn. Bạn có thể nói lời cảm ơn đến họ bằng cách quyên góp một phần tỷ lệ % từ khoảng hoàn lại của bạn. ',
   DAO_Desc:               'Sử dụng phần này cho việc thu hồi DAO Token và hoàn trả lại **ETH & ETC**. Nếu bạn muốn gửi DAO Token, xin vui lòng sử dụng mục "gửi Token".',
   DAO_Inst:               'Đúng rồi, Bạn chỉ cần chọn vào nút lớn màu đỏ.',
   DAO_Warning:            'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hãy thêm vào 0.001 ether vào tài khoản và thực hiện lại. ',
