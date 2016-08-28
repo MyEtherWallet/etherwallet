@@ -261,8 +261,8 @@ vi.data = {
   /* Tranlsation Info */
   translate_version:    '0.2',
   Translator_Desc:      'Chân Thành Cảm Ơn: Phạm Thế Vũ ',
-  TranslatorName_1:     'https://www.facebook.com/pham.vu.56211',
-  TranslatorAddr_1:     '',
+  TranslatorName_1:     'Facebook',
+  TranslatorAddr_1:     'https://www.facebook.com/pham.vu.56211',
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     ' ',
   TranslatorAddr_2:     ' ',
