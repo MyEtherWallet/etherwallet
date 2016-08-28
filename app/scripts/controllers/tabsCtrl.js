@@ -43,9 +43,19 @@ var tabsCtrl = function($scope, globalService, $translate) {
 		for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + (i + 1), 'errorMsgs', i);
 		for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i + 1), 'successMsgs', i);
 	}
+	$scope.setGethErrMsgLanguage = function() {
+		globalFuncs.gethErrorMsgs = {};
+		for (var s in globalFuncs.gethErrors) {
+			var key = globalFuncs.gethErrors[s];
+			if (key.indexOf("GETH_") === 0) {
+				$scope.setLanguageVal(key,'gethErrorMsgs',key);
+			}
+		}
+	}
 	$scope.changeLanguage = function(key, value) {
 		$translate.use(key);
 		$scope.setErrorMsgLanguage();
+		$scope.setGethErrMsgLanguage();
 		$scope.curLang = value;
 		$scope.setArrowVisibility();
 		$scope.dropdown = false;

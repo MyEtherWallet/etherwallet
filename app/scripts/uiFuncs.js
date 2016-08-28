@@ -48,7 +48,7 @@ uiFuncs.sendClassicTx = function(signedTx, callback) {
 		if (data.error) {
 			resp = {
 				isError: true,
-				error: data.msg
+				error: globalFuncs.getGethMsg(data.msg)
 			};
 		} else {
 			resp = {
@@ -96,7 +96,7 @@ uiFuncs.sendTx = function(signedTx, callback) {
 		if (data.error) {
 			resp = {
 				isError: true,
-				error: data.msg
+				error: globalFuncs.getGethMsg(data.msg)
 			};
 		} else {
 			resp = {
