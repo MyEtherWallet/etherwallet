@@ -54,7 +54,8 @@ globalFuncs.successMsgs = [
 	"Wallet successfully decrypted",
 	"Transaction submitted. TX ID: ",
 	"Your wallet was successfully added: ",
-	"You have successfully voted. Thank you for being an active participant in The DAO."];
+	"You have successfully voted. Thank you for being an active participant in The DAO.",
+	"File Selected: "];
 globalFuncs.gethErrors = {
         "Invalid sender": "GETH_InvalidSender",
         "Nonce too low": "GETH_Nonce",
