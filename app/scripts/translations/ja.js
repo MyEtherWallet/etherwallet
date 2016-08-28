@@ -186,7 +186,7 @@ ja.data = {
   DAO_Desc:               'このタブ上で、DAOトークンから、ETH **& ETC**の払い戻してください。DAOトークンの送るためには、トークン送出タブを選んでください。',
   DAO_Inst:               '赤いボタンをクリックしてください。簡単です。',
   DAO_Warning:            '「ガス残高不足」エラーの時は、アカウントにガスを供給するためにに少量のEtherが必要です。このアカウントに0.01 ETHを追加して、再度操作してください。',
-  DAOModal_Title:         '確認中/...'',
+  DAOModal_Title:         '確認中/...',
   DAOModal_1:             '払い出しを進めます',
   DAOModal_2:             'DAOトークンを',
   DAOModal_3:             'に対し', // “の代わりに”
@@ -223,7 +223,7 @@ ja.data = {
   MYWAL_Content_3:        'MyEtherWallet CXでこのウォレットを使用するためには、プライベートキーあるいはJSONとパスワードを手動で追加する必要があります。',
 
   /* View Wallet Details */
-  VIEWWALLET_Subtitle:      '異なったバージョンのプライベートキーをダウンロードしたり、ペーパーウォレットを再印刷することができます。[import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)する時に必要です。残高をチェックするためには、[etherscan.io](http://etherscan.io/)のようなブロックチェーンエクスプローラーサービスを使う事をおすすめします。',
+  VIEWWALLET_Subtitle:       '異なったバージョンのプライベートキーをダウンロードしたり、ペーパーウォレットを再印刷することができます。[import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)する時に必要です。残高をチェックするためには、[etherscan.io](http://etherscan.io/)のようなブロックチェーンエクスプローラーサービスを使う事をおすすめします。',
   VIEWWALLET_Subtitle_Short: '異なったバージョンのプライベートキーをダウンロードしたり、ペーパーウォレットを再印刷することができます。',
   VIEWWALLET_SuccessMsg:     '成功! ウォレットの詳細は以下の通りです。',
 
