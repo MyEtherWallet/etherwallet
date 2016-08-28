@@ -7,6 +7,7 @@ var es = require('./es');
 var et = require('./et');
 var fr = require('./fr');
 var he = require('./he');
+var hu = require('./hu');
 var id = require('./id');
 var it = require('./it');
 var ja = require('./ja');
@@ -33,6 +34,7 @@ var translate = function($translateProvider) {
   $translateProvider.translations(et.code, translate.marked(et.data));
   $translateProvider.translations(fr.code, translate.marked(fr.data));
   $translateProvider.translations(he.code, translate.marked(he.data));
+  $translateProvider.translations(hu.code, translate.marked(hu.data));
   $translateProvider.translations(id.code, translate.marked(id.data));
   $translateProvider.translations(it.code, translate.marked(it.data));
   $translateProvider.translations(ja.code, translate.marked(ja.data));
