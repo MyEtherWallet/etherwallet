@@ -26,6 +26,7 @@ var sv = require('./sv');
 var tr = require('./tr');
 var uk = require('./uk');
 var vi = require('./vi');
+var zh = require('./zh');
 
 var translate = function($translateProvider) {
   $translateProvider.translations(ar.code, translate.marked(ar.data));
@@ -55,6 +56,7 @@ var translate = function($translateProvider) {
   $translateProvider.translations(tr.code, translate.marked(tr.data));
   $translateProvider.translations(uk.code, translate.marked(uk.data));
   $translateProvider.translations(vi.code, translate.marked(vi.data));
+  $translateProvider.translations(zh.code, translate.marked(zh.data));
 	$translateProvider.preferredLanguage('en');
 	$translateProvider.useSanitizeValueStrategy(null);
 }
