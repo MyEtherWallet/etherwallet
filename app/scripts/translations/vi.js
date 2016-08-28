@@ -4,6 +4,17 @@ var vi = function() {}
 vi.code = 'vi';
 vi.data = {
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   /* Navigation*/
   NAV_YourWallets:      'Ví Của Bạn',
   NAV_AddWallet:        'Thêm Ví',
@@ -80,7 +91,6 @@ vi.data = {
   ADD_Radio_2:            'Chọn Tập Tin Ví Của Bạn (Keystore / JSON)',
   ADD_Radio_2_alt:        'Chọn Tập Tin Ví Của Bạn: ',
   ADD_Radio_2_short:      'CHỌN TẬP TIN VÍ...',
-  ADD_Radio_2_success:    'Tập Tin Được Chọn: ',
   ADD_Radio_3:            'Dán/Gõ Private Key Ví Của Bạn ',
   ADD_Radio_4:            'Thêm Tài Khoản Để Theo Dõi',
   ADD_Label_2:            'Tạo Tên Gọi:',
@@ -257,6 +267,7 @@ vi.data = {
   SUCCESS_3:            'Giao dịch đã gửi đi, TX ID:',
   SUCCESS_4:            'Ví của bạn đã được thêm thành công:',
   SUCCESS_5:            'Bạn đã bỏ phiếu thành công. Cảm ơn vì đã tham gia tích cực trong The DAO.',
+  SUCCESS_6:            'Tập Tin Được Chọn: ',
 
   /* Tranlsation Info */
   translate_version:    '0.3',

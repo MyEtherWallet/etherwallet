@@ -4,6 +4,17 @@ var ja = function() {}
 ja.code = 'ja';
 ja.data = {
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   /* Navigation*/
   NAV_YourWallets:      'あなたのウォレット',
   NAV_AddWallet:        'ウォレットを追加',
@@ -80,7 +91,6 @@ ja.data = {
   ADD_Radio_2:            'ウォレットファイルの選択 (Keystore / JSON)',
   ADD_Radio_2_alt:        'ウォレットファイルの選択： ',
   ADD_Radio_2_short:      'ウォレットファイルを選択',
-  ADD_Radio_2_success:    '選択されました： ',
   ADD_Radio_3:            'プライベートキーをペースト/タイプ ',
   ADD_Radio_4:            '監視するアカウントを追加',
   ADD_Label_2:            'ニックネームの作成：',
@@ -180,9 +190,9 @@ ja.data = {
   DAO_bal1:               'ブロック 1,919,999',
   DAO_bal2:               '現在の',
   DAO_TitleETH:           'ETHでDAOを払い出し',
-  DAO_TitleETC:           'ETCでDAOを払い出し', 
+  DAO_TitleETC:           'ETCでDAOを払い出し',
   DAO_ETC_Label_1:        'どのアドレスにETCを送りますか？',
-  DAO_ETC_Label_2:        'ホワイトハックグループは日夜ETCを取り戻すべために働いています。希望すれば、払い戻しの何パーセントかを感謝をこめて贈る事ができます。', 
+  DAO_ETC_Label_2:        'ホワイトハックグループは日夜ETCを取り戻すべために働いています。希望すれば、払い戻しの何パーセントかを感謝をこめて贈る事ができます。',
   DAO_Desc:               'このタブ上で、DAOトークンから、ETH **& ETC**の払い戻してください。DAOトークンの送るためには、トークン送出タブを選んでください。',
   DAO_Inst:               '赤いボタンをクリックしてください。簡単です。',
   DAO_Warning:            '「ガス残高不足」エラーの時は、アカウントにガスを供給するためにに少量のEtherが必要です。このアカウントに0.01 ETHを追加して、再度操作してください。',
@@ -257,6 +267,7 @@ ja.data = {
   SUCCESS_3:            'トランザクションが送出されました。 TX ID: ',
   SUCCESS_4:            'ウォレットが追加されました：',
   SUCCESS_5:            '投票が完了しました。The DAO への積極的な参加に感謝いたします。',
+  SUCCESS_6:            '選択されました： ',
 
   /* Tranlsation Info */
   translate_version:    '0.3',

@@ -80,7 +80,6 @@ fr.data = {
   ADD_Radio_2:            'Choisissez le fichier de votre portefeuille (Keystore / JSON)',
   ADD_Radio_2_alt:        'Choisissez le fichier de portefeuille: ',
   ADD_Radio_2_short:      'CHOISISSEZ LE FICHIER DU PORTEFEUILLE...',
-  ADD_Radio_2_success:    'Fichier sélectionné : ',
   ADD_Radio_3:            'Collez/saisissez votre clé privée',
   ADD_Radio_4:            'Ajoutez un compte',
   ADD_Label_2:            'Nommez votre compte :',
@@ -258,6 +257,18 @@ fr.data = {
   SUCCESS_3:            'Transaction envoyée. Identifiant de transaction : ',
   SUCCESS_4:            'Votre portefeuille a été ajouté avec succès : ',
   SUCCESS_5:            'Vous avez voté avec succès. Merci d\'être un participant actif à The DAO.',
+  SUCCESS_6:            'Fichier sélectionné : ',
+
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
 
   /* Tranlsation Info */
   translate_version:    '0.3',

@@ -4,6 +4,17 @@ var de = function() {}
 de.code = 'de';
 de.data = {
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   /* Navigation*/
   NAV_YourWallets:      'Deine Wallets',
   NAV_AddWallet:        'Wallet hinzufügen',
@@ -80,7 +91,6 @@ de.data = {
   ADD_Radio_2:            'Wallet-Datei auswählen (Keystore / JSON)',
   ADD_Radio_2_alt:        'Wallet-Datei auswählen: ',
   ADD_Radio_2_short:      'WALLET-DATEI AUSWÄHLEN...',
-  ADD_Radio_2_success:    'Ausgewählte Datei: ',
   ADD_Radio_3:            'Kopiere/Tippe deinen privaten Schlüssel ein',
   ADD_Radio_4:            'Kontoadresse zur Beobachtung hinzufügen',
   ADD_Label_2:            'Wähle ein Kürzel:',
@@ -258,6 +268,7 @@ de.data = {
   SUCCESS_3:            'Transaktion übermittelt. TX ID: ',
   SUCCESS_4:            'Dein Wallet wurde erfolgreich hinzugefügt: ',
   SUCCESS_5:            'Du hast erfolgreich abgestimmt. Danke, dass du eine aktive Teilnehmerin/aktiver Teilnehmer am DAO bist.',
+  SUCCESS_6:            'Ausgewählte Datei: ',
 
   /* Tranlsation Info */
   translate_version:    '0.3',

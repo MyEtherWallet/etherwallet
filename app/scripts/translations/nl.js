@@ -4,6 +4,17 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -80,7 +91,6 @@ nl.data = {
   ADD_Radio_2:            'Selecteer Je wallet bestand (Keystore / JSON)',
   ADD_Radio_2_alt:        'Selecteer Je wallet bestand: ',
   ADD_Radio_2_short:      'SELECTEER WALLET BESTAND...',
-  ADD_Radio_2_success:    'Bestand Geselecteerd: ',
   ADD_Radio_3:            'Plak/Type je prive sleutel ',
   ADD_Radio_4:            'Voeg een te bekijken account toe',
   ADD_Label_2:            'Verzin een Nickname:',
@@ -258,6 +268,7 @@ nl.data = {
   SUCCESS_3:            'Transactie verzonden. TX ID: ',
   SUCCESS_4:            'Je Wallet is succesvol toegevoegd: ',
   SUCCESS_5:            'Je hebt succesvol gestemd. Fijn dat je een actief participerend DAO deelnemer bent.',
+  SUCCESS_6:            'Bestand Geselecteerd: ',
 
   /* Translation Info */
   translate_version:    '0.3',

@@ -4,6 +4,17 @@ var no = function() {}
 no.code = 'no';
 no.data = {
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
   NAV_AddWallet:        'Legg til lommebok',
@@ -80,7 +91,6 @@ no.data = {
   ADD_Radio_2:            'Velg lommebok-filen din (Keystore / JSON)',
   ADD_Radio_2_alt:        'Velg lommebok-fil: ',
   ADD_Radio_2_short:      'VELG LOMMEBOK-FIL...',
-  ADD_Radio_2_success:    'Valgt fil: ',
   ADD_Radio_3:            'Lim/skriv inn din private nøkkel',
   ADD_Radio_4:            'Legg til en konto for overvåkning',
   ADD_Label_2:            'Lag et kallenavn:',
@@ -259,6 +269,7 @@ no.data = {
   SUCCESS_3:            'Transaksjonen ble sendt inn. TX ID: ',
   SUCCESS_4:            'Lommeboken din ble lagt til: ',
   SUCCESS_5:            'Du har stemt. Takk for at du er en aktiv deltaker i "The DAO".',
+  SUCCESS_6:            'Valgt fil: ',
 
   /* Tranlsation Info */
   translate_version:    '0.4',

@@ -4,6 +4,17 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   /* Navigation*/
   NAV_YourWallets:      'Ваши кошельки',
   NAV_AddWallet:        'Добавить кошелёк',
@@ -80,7 +91,6 @@ ru.data = {
   ADD_Radio_2:            'Выбрать файл с кошельком (Keystore/JSON)',
   ADD_Radio_2_alt:        'Выбрать файл с кошельком: ',
   ADD_Radio_2_short:      'ВЫБРАТЬ ФАЙЛ С КОШЕЛЬКОМ...',
-  ADD_Radio_2_success:    'Выбранный файл: ',
   ADD_Radio_3:            'Вставить или ввести Ваш закрытый ключ',
   ADD_Radio_4:            'Добавить счёт в список слежения',
   ADD_Label_2:            'Присвоить название:',
@@ -259,6 +269,7 @@ ru.data = {
   SUCCESS_3:            'Транзакция отправлена на выполнение. TX ID: ',
   SUCCESS_4:            'Ваш кошелёк успешно добавлен: ',
   SUCCESS_5:            'Ваш голос учтён. Спасибо Вам за активное участие в работе DAO.',
+  SUCCESS_6:            'Выбранный файл: ',
 
   /* Tranlsation Info */
   translate_version:    '0.3',

@@ -4,8 +4,19 @@ var sl = function() {}
 sl.code = 'sl';
 sl.data = {
 
+  /* Geth Error Messages */
+  SUCCESS_6:               'File Selected: ',
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   HELP_12_Desc_15b:       'If you are on a PC:',
-  ADD_Radio_2_success:    'File Selected: ',
   FOOTER_4:               'Disclaimer',
 
   /* New - DAO ETC Withdrawal */

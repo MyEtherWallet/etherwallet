@@ -4,6 +4,17 @@ var tr = function() {}
 tr.code = 'tr';
 tr.data = {
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   NAV_DeployContract:   'Deploy Contract',
 
   /* Navigation*/
@@ -81,7 +92,6 @@ tr.data = {
   ADD_Radio_2:            'Cüzdan dosyayi sec (Keystore / JSON)',
   ADD_Radio_2_alt:        'Cüzdan dosyayi sec: ',
   ADD_Radio_2_short:      'CÜZDAN DOSYAYI SEC...',
-  ADD_Radio_2_success:    'Dosya secildi ',
   ADD_Radio_3:            'Özel anahatarini Yaspistir/Yaz ',
   ADD_Radio_4:            'Izlenecek hesap adresi ekle', /* maybe another word for watch/izlencek --> Takip edilecek? */
   ADD_Label_2:            'Bir nickname oluştur: ',
@@ -260,6 +270,7 @@ tr.data = {
   SUCCESS_3:            'İşlem teslim edildi TX ID: ',
   SUCCESS_4:            'Cüzdanın başarıyla eklendi: ',
   SUCCESS_5:            'Başarıyla oy verdiniz. DAO aktif bir katılımcı olduğunuz için teşekkür ederiz.',
+  SUCCESS_6:            'Dosya secildi ',
 
   /* Tranlsation Info */
   translate_version:    '0.3',
