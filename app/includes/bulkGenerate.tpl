@@ -21,8 +21,11 @@
     <hr />
 
     <div class="row">
-      <h2 class="col-xs-12" translate="BULK_SuccessMsg">Success! Your wallets have been generated.</h2>
-      <div class="alert alert-danger" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
+      <div class="col-xs-12">
+        <h2 translate="BULK_SuccessMsg">Success! Your wallets have been generated.</h2>
+
+        <div class="alert alert-danger" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
+      </div>
 
       <article class="col-md-9">
         <table id="bulkgentable" class="table">

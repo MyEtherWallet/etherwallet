@@ -71,6 +71,12 @@ ajaxReq.getEthCall = function(txobj, callback) {
         isClassic: false
 	}, callback);
 }
+ajaxReq.getClassicEthCall = function(txobj, callback) {
+	this.post({
+		ethCall: txobj,
+        isClassic: true
+	}, callback);
+}
 ajaxReq.queuePost = function() {
 	var data = this.pendingPosts[0].data;
 	var callback = this.pendingPosts[0].callback;

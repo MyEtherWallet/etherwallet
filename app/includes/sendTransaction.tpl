@@ -1,13 +1,31 @@
 <!-- Send Transaction Page -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
-  <h2 translate="NAV_SendEther"> Send Ether </h2>
-  <p translate="TRANS_desc"> If you want to send Tokens, please use the "Send Token" page instead. </p>
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id" ng-controller='sendTxCtrl'>
 
-  @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
-  @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+  <!-- TODO: Show this message if the URL has a query string.
+  <p class="alert alert-info" ng-show="tx.sendMode==0"> You clicked a link that has the address, amount, gas, and/or data fields pre-filled for you. You can change any information before sending. Unlock your wallet to get started. </p>
+  -->
 
-  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
-    <hr />
+  <article class="collapse-container">
+
+    <div ng-click="wd = !wd">
+      <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
+
+        <h2 translate="NAV_SendEther"> Send Ether </h2>
+
+    </div>
+    <div ng-show="!wd">
+
+        <p translate="TRANS_desc"> If you want to send Tokens, please use the "Send Token" page instead. </p>
+        @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
+        @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+
+    </div>
+  </article>
+
+
+
+  <section class="row" ng-show="wallet!=null">
+    <hr ng-show="!wd" />
 
     <!-- Sidebar -->
     <div class="col-sm-4">
@@ -69,7 +87,7 @@
 
       <div class="form-group col-xs-12">
         <label translate="SEND_amount">Amount to Send:</label>
-        <a class="pull-right" ng-click="transferAllBalance()" ng-show="tx.sendMode==0" translate="SEND_TransferTotal">Transfer total available balance</a>
+        <a class="pull-right" ng-click="transferAllBalance()" ng-show="tx.sendMode==0" translate="SEND_TransferTotal">Send Entire Balance</a>
         <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
         <div class="radio">
           <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>

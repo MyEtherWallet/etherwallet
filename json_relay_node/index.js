@@ -22,6 +22,7 @@ var handleRequest = function(req, res) {
     else if ("txdata" in req) res.write(response.getTransactionData(req["txdata"], req["isClassic"]));
     else if ("estimatedGas" in req) res.write(response.getEstimatedGas(req["estimatedGas"], req["isClassic"]));
     else if ("ethCall" in req) res.write(response.getEthCall(req["ethCall"], req["isClassic"]));
+    else if ("currentBlock" in req) res.write(response.getCurrentBlock(req["isClassic"]));
     else res.status(400).send();
     res.end();
 }

@@ -24,7 +24,7 @@ MyEtherWallet is an open source, javascript, client-side tool for generating Eth
 - Send Tokens based on EIP20.
 - Give users an easy way to safely send "Only ETH" or "Only ETC" to ensure they are not victim of replay attacks.
 - Generate and send offline transactions, ensuring your private keys never leave your computer.
-
+- Include recommended address, amount, gas limit, and data via URL. For example, a transaction with a gas limit of 21000, to our donation address, for .5ETH: https://www.myetherwallet.com/?gaslimit=21000&to=0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8&value=0.5#send-transaction
 
 
 

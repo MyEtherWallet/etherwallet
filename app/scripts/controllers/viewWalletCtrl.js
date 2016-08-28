@@ -8,6 +8,7 @@ var viewWalletCtrl = function($scope, walletService) {
 	}, function() {
 		if (walletService.wallet == null) return;
 		$scope.wallet = walletService.wallet;
+        $scope.wd = true;
         $scope.showEnc = walletService.password != '';
 		$scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
 		if (walletService.password != '') {

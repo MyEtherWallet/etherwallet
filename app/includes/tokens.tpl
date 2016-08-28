@@ -1,14 +1,27 @@
 <!-- Tokens Panel -->
-<article class="tab-pane page-tokens active" ng-if="globalService.currentTab==globalService.tabs.tokens.id">
+<article class="tab-pane page-tokens active" ng-if="globalService.currentTab==globalService.tabs.tokens.id"  ng-controller='tokenCtrl'>
 
-  <h2 translate="NAV_SendTokens"> Send Tokens </h2>
+  <article class="collapse-container">
+    <div ng-click="wd = !wd">
+      <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
 
-  @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
-  @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+        <h2 translate="NAV_SendTokens"> Send Tokens </h2>
 
-  <section class="row" ng-show="wallet!=null" ng-controller='tokenCtrl'>
+    </div>
+    <div ng-show="!wd">
 
-    <hr />
+        @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
+        @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+
+    </div>
+  </article>
+
+
+
+
+
+  <section class="row" ng-show="wallet!=null">
+    <hr ng-show="!wd" />
 
     <!-- Sidebar -->
     <div class="col-sm-4">
@@ -79,7 +92,7 @@
           <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value"/>
 
           <div class="radio">
-            <label ng-repeat="token in tokenObjs track by $index">
+            <label ng-repeat="token in tokenObjs track by $index" ng-hide="token.balance==0">
               <input type="radio" name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"/>
               {{token.getSymbol()}}
             </label>

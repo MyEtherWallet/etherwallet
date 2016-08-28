@@ -46,6 +46,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6]+e));
 		}
         if($scope.wallet!=null) $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+
 	};
 };
 module.exports = decryptWalletCtrl;

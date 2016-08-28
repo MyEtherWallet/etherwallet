@@ -16,7 +16,7 @@
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'validateAddressStatus')"/>
       <div ng-bind-html="validateAddressStatus"></div>
     </div>
-    <div class="col-xs-2 address-identicon-container">
+    <div class="col-xs-2 address-identicon-container-offline">
       <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.from}}" watch-var="tx.from"></div>
     </div>
     <div class="form-group col-xs-12">
@@ -38,13 +38,13 @@
   <!-- Step 2 -->
   <section class="row">
     <hr />
-    <h4 class="col-xs-12" translate="OFFLLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h4>
+    <h4 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h4>
     <div class="form-group col-xs-10">
       <label translate="OFFLINE_Step2_Label_1"> To Address: </label>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress(tx.to,'validateToAddressStatus')"/>
       <div ng-bind-html="validateToAddressStatus"></div>
     </div>
-    <div class="col-xs-2 address-identicon-container">
+    <div class="col-xs-2 address-identicon-container-offline">
       <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
     </div>
     <div class="form-group col-sm-10">

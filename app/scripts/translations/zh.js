@@ -1,8 +1,8 @@
-// Korean
+// Chinese
 'use strict';
-var ko = function() {}
-ko.code = 'ko';
-ko.data = {
+var zh = function() {}
+zh.code = 'zh';
+zh.data = {
 
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
@@ -25,14 +25,14 @@ ko.data = {
   /* General */
   x_Address:            'Your Address',
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_CSV:                'CSV file (unencrypted)',
   x_Cancel:             'Cancel',
+  x_CSV:                'CSV file (unencrypted)',
   x_Download:           'Download',
   x_Json:               'JSON File (unencrypted)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_Keystore2:          'Keystore / JSON File',
-  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore2:          'Keystore/JSON File',
+  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
@@ -233,8 +233,8 @@ ko.data = {
   CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
 
   /* Error Messages */
-  ERROR_1:              'Please enter valid amount.',
-  ERROR_2:              'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+  ERROR_1:             'Please enter valid amount.',
+  ERROR_2:             'Your password must be at least 9 characters. Please ensure it is a strong password. ',
   ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
   ERROR_4:              'This is not a valid wallet file. ',
   ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
@@ -277,6 +277,8 @@ ko.data = {
   TranslatorName_5:     ' ',
   TranslatorAddr_5:     ' ',
   /* Translator 5: Insert Comments Here */
+
+
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning:       'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
@@ -533,4 +535,4 @@ ko.data = {
   HELP_Contact_Title:     'Ways to Get in Touch'
 };
 
-module.exports = ko;
+module.exports = zh;

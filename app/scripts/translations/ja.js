@@ -1,8 +1,8 @@
-// Korean
+// Japanese
 'use strict';
-var ko = function() {}
-ko.code = 'ko';
-ko.data = {
+var ja = function() {}
+ja.code = 'ja';
+ja.data = {
 
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
@@ -533,4 +533,4 @@ ko.data = {
   HELP_Contact_Title:     'Ways to Get in Touch'
 };
 
-module.exports = ko;
+module.exports = ja;

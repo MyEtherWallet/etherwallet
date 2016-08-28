@@ -4,12 +4,6 @@ var no = function() {}
 no.code = 'no';
 no.data = {
 
-  /* New */
-  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
-  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Overfør total tilgjengelig saldo',  // updated to read 'Send Entire Balance'
-  FOOTER_1b:            'Created by',
-
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
   NAV_AddWallet:        'Legg til lommebok',
@@ -22,22 +16,24 @@ no.data = {
   DAO_TitleLong:        'Løs inn DAO-pollettene dine for eter (ETH)',
   NAV_ClaimDGD:         'Gjør krav på DGD',
   DGD_TitleLong:        'Gjør krav på DGD-pollettene dine',
+  NAV_DeployContract:  'Utplasser kontrakt',
   NAV_MyWallets:        'Mine lommebøker',
   NAV_ViewWallet:       'Vis lommebok-info',
   NAV_Help:             'Hjelp',
   NAV_Contact:          'Kontakt',
 
   /* General */
-  x_Wallet:             'Lommebok',
   x_Password:           'Passord',
   x_Download:           'Last ned',
   x_Address:            'Din adresse',
   x_Save:               'x_Save',
   x_Cancel:             'x_Cancel',
-  x_AddessDesc:         'Du kjenner kanskje dette som ditt "kontonummer" eller din "offentlige nøkkel". Dette er informasjonen som du sender til folk så de kan sende deg ETH (en lang rekke tilfeldige tall og bokstaver som starter med "0x"). Ikonet er en enkel måte å kjenne igjen adressen din på.',
+  x_AddessDesc:         'Du kjenner kanskje dette som ditt "kontonummer" eller din "offentlige nøkkel". Dette er informasjonen som du sender til folk så de kan sende deg ether (en lang rekke tilfeldige tall og bokstaver som starter med "0x"). Ikonet er en enkel måte å kjenne igjen adressen din på.',
   x_PrivKey:            'Privat nøkkel (ukryptert)',
+  x_PrivKey2:           'Privat nøkkel',
   x_PrivKeyDesc:        'Dette er den ukrypterte tekstversjonen av den private nøkkelen din, noe som betyr at det ikke er nødvendig med noe passord. Hvis noen skulle få tak i den ukrypterte private nøkkelen din, ville de få tilgang til lommeboken din uten å bruke passord. Derfor er krypterte nøkler vanligvis å anbefale.',
   x_Keystore:           'Keystore/JSON-fil (Anbefalt · Kryptert · Mist/Geth-format)',
+  x_Keystore2:          'Keystore/JSON-fil',
   x_KeystoreDesc:       'Denne Keystore/JSON-filen samsvarer med formatet som brukes av Mist & Geth, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere.',
   x_Json:               'JSON-fil (ukryptert)',
   x_JsonDesc:           'Dette er det ukrypterte JSON-formatet av din private nøkkel. Dette betyr at du ikke trenger noe passord, men også at den som finner din JSON kan få tilgang til lommeboken din og eterne dine uten passord.',
@@ -46,17 +42,20 @@ no.data = {
   x_PrintDesc:          'ProTips: Klikk "skriv ut" og lagre som PDF, selv om du ikke har noen skriver!',
   x_CSV:                'CSV-fil (ukryptert)',
   x_TXT:                'TXT-fil (ukryptert)',
+  x_Wallet:             'Lommebok',
 
   /* Header */
   MEW_Warning_1:        'Sjekk alltid nettsideadressen før du bruker eller oppretter en lommebok. Pass opp for "phishing"-nettsider!',
   CX_Warning_1:         'Sørg for at du har **eksterne sikkerhetskopier** av alle lommebøker som du lagrer her. Mye kan hende som vil kunne medføre at du mister informasjonen i denne Chrome-utvidelsen, inkludert avinstallasjon og reinstallasjon av utvidelsen. Denne utvidelsen gir deg enkel tilgang til lommebøkene dine, men er **ikke** en måte å sikkerhetskopiere dem på.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet', /* Intentionally not translated */
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension', /* Intentionally not translated */
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension', /* Intentionally not translated */
 
   /* Footer */
   FOOTER_1:             'Et åpen-kildekode-, javascript-, klient-side-verktøy for å opprette Ethereum-lommebøker & sende transaksjoner.',
+  FOOTER_1b:            'Skapt av',
   FOOTER_2:             'Donasjoner mottas med takk:',
   FOOTER_3:             'Klient-side lommebok-oppretting av',
+  FOOTER_4:               'Ansvarsfraskrivelse',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Kontoinformasjon: ',
@@ -81,6 +80,7 @@ no.data = {
   ADD_Radio_2:            'Velg lommebok-filen din (Keystore / JSON)',
   ADD_Radio_2_alt:        'Velg lommebok-fil: ',
   ADD_Radio_2_short:      'VELG LOMMEBOK-FIL...',
+  ADD_Radio_2_success:    'Valgt fil: ',
   ADD_Radio_3:            'Lim/skriv inn din private nøkkel',
   ADD_Radio_4:            'Legg til en konto for overvåkning',
   ADD_Label_2:            'Lag et kallenavn:',
@@ -113,6 +113,7 @@ no.data = {
   SEND_amount_short:     'Beløp',
   SEND_custom:           'Tilpasning',
   SEND_gas:              'Gas',
+  SEND_TransferTotal:   'Overfør total tilgjengelig saldo',  // updated to read 'Send Entire Balance'
   SEND_generate:         'Generer transaksjon',
   SEND_raw:              'Rå-transaksjon',
   SEND_signed:           'Signert transaksjon',
@@ -122,7 +123,7 @@ no.data = {
   SENDModal_Content_1:   'Du er i ferd med å sende',
   SENDModal_Content_2:   'til adressen',
   SENDModal_Content_3:   'Er du sikker på at du ønsker å gjøre dette?',
-  SENDModal_Content_4:   'NB: Hvis det oppstår en feil, må du sannsynligvis legge til ETH til kontoen din for å dekke "gas"-kostnaden for å sende ETH/polletter. "Gas" betales i ETH.',
+  SENDModal_Content_4:   'NB: Hvis det oppstår en feil, må du sannsynligvis legge til ether til kontoen din for å dekke "gas"-kostnaden for å sende ether/polletter. "Gas" betales i ether.',
   SENDModal_No:          'Nei, få meg ut herfra!',
   SENDModal_Yes:         'Ja, jeg er sikker! Gjennomfør transaksjonen.',
 
@@ -140,7 +141,7 @@ no.data = {
   TRANS_advanced:        '+Avansert: Legg til mer "gas" eller data ',
   TRANS_data:            ' Data: ',
   TRANS_gas:             ' Gas: ',
-  TRANS_sendInfo:        'En standard transaksjon som bruker 21000 gas vil koste 0.000441 ETH. Vi bruker en litt-over-minimum gas-pris på 0.000000021 ETH for å sikre at transaksjonen blir raskt behandlet. Vi tar ikke noe transaksjonsgebyr.',
+  TRANS_sendInfo:        'En standard transaksjon som bruker 21000 gas vil koste 0,000441 ETH. Vi bruker en litt-over-minimum gas-pris på 0,000000021 ETH for å sikre at transaksjonen blir raskt behandlet. Vi tar ikke noe transaksjonsgebyr.',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Kun ETH"- og "Kun ETC"-transaksjoner',
@@ -160,7 +161,7 @@ no.data = {
   OFFLINE_Step1_Button:  'Generer informasjon',
   OFFLINE_Step1_Label_1: 'Fra-adresse: ',
   OFFLINE_Step1_Label_2: 'NB: Dette er FRA-adressen, ikke TIL-adressen. "Nonce" genereres fra den opprinnelige kontoen. Hvis du bruker en frakoblet datamaskin, vil dette være adressen til "kald-lager"-kontoen (dvs. kontoen som lagres frakoblet internett).',
-  OFFLLINE_Step2_Title:   'Steg 2: Generer transaksjon (frakoblet datamaskin)',
+  OFFLINE_Step2_Title:   'Steg 2: Generer transaksjon (frakoblet datamaskin)',
   OFFLINE_Step2_Label_1:  'Til-adresse: ',
   OFFLINE_Step2_Label_2:  'Verdi / Beløp å sende',
   OFFLINE_Step2_Label_3:  'Gas-pris ',
@@ -176,10 +177,21 @@ no.data = {
   OFFLINE_Step3_Label_1:  'Overfør (f.eks. via USB-minnepinne) den signerte transaksjonen fra steg 2 og lim den inn her. Trykk så "SEND TRANSAKSJON"-knappen.',
 
   /* DAO */
+  DAO_bal1:               'ved blokk 1,919,999',
+  DAO_bal2:               'nåværende',
+  DAO_TitleETH:           'Veksle inn DAO mot ETH',
+  DAO_TitleETC:           'Veksle inn DAO mot ETC',
+  DAO_ETC_Label_1:        'Hvilken adresse ønsker du å sende dine ETC til?',
+  DAO_ETC_Label_2:        '"White Hat Group" har jobbet utrettelig for å gi deg tilbake dine ETC. Du kan takke dem ved å donere en prosentandel av uttaket ditt, hvis du ønsker det. ',
   DAO_Desc:               'Bruk denne siden til å veksle inn dine DAO-polletter for ETH. Hvis du ønsker å sende DAO-poletter, vennligst bruk "Send polletter"-siden.',
   DAO_Inst:               'Ja. Bare trykk på den store røde knappen. Det er så enkelt som det.',
-  DAO_Warning:            'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ETH på kontoen for å dekke gas-kostnadene. Overfør 0,01 ETH til denne kontoen og prøv igjen. ',
+  DAO_Warning:            'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,001 ether til denne kontoen og prøv igjen. ',
   DAOModal_Title:         'Bare for å være sikker...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
+  // note: this may be a bit rough in Norwegian.
+  DAOModal_1:             'Du er i ferd med å veksle inn ',
+  DAOModal_2:             'DAO-polletter til ',
+  DAOModal_3:             'i bytte mot',
 
   /* Digix */
   DGD_Desc:               'Krev inn dine DigixDAO (DGD)-polletter (tokens) & emblemer (badges). For å gjøre dette, må du ha deltatt i pollett-salget 30-31. mars 2016.  Hvis du ønsker å sende DGD, vennligst bruk "Send polletter"-siden.',
@@ -188,6 +200,12 @@ no.data = {
   DGD_Label_3:            'Gas-pris:',
   DGD_Generate:           'Opprett krav',
   DGD_Content:            'Du er i ferd med å kreve inn DGD-pollettene dine.',
+
+  /* Deploy Contracts */
+  DEP_generate:        'Generer Bytecode',
+  DEP_generated:       'Generert Bytecode',
+  DEP_signtx:          'Signer transaksjon',
+  DEP_interface:       'Generer grensesnitt',
 
   /* My Wallet */
   MYWAL_Nick:             'Lommebok-kallenavn',
@@ -211,6 +229,10 @@ no.data = {
   VIEWWALLET_Subtitle_Short: 'Dette gir deg muligheten til å laste ned ulike versjoner av private nøkler og skrive ut papirlommeboken din på nytt. ',
   VIEWWALLET_SuccessMsg:     'Suksess! Her er detaljene om din lommebok.',
 
+  /* Chrome Extension */
+  CX_error_1:           'Du har ennå ikke lagret noen lommebok. Klikk ["Legg til lommebok"](/cx-wallet.html#add-wallet) for å legge til en!',
+  CX_quicksend:         'Send', // if no appropriate translation, just use "Send"
+
   /* Error Messages */
   ERROR_1:             'Vennligst oppgi et gyldig beløp.',
   ERROR_2:             'Passordet ditt må inneholde minst 9 tegn. Vennligst sørg for at det er et sterkt passord. ',
@@ -229,7 +251,7 @@ no.data = {
   ERROR_15:             'Lommebok ikke funnet. ',
   ERROR_16:             'Det ser ikke ut til at et forslag med denne ID-en eksisterer ennå, eller det er en feil ved innlesning av dette forslaget. ',
   ERROR_17:             'En lommebok med denne adressen er allerede lagret. Vennligst sjekk lommebok-siden din. ',
-  ERROR_18:             'Du trenger minst 0,001 ETH på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ETH og prøv igjen. ',
+  ERROR_18:             'Du trenger minst 0,001 ether på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ether og prøv igjen. ',
   ERROR_19:             'All gas vil bli brukt på denne transaksjonen. Dette betyr at du allerede har stemt på dette forslaget, eller at debatt-perioden er over.',
   ERROR_20:             'Ugyldig symbol',
   SUCCESS_1:            'Gyldig adresse',
@@ -239,22 +261,22 @@ no.data = {
   SUCCESS_5:            'Du har stemt. Takk for at du er en aktiv deltaker i "The DAO".',
 
   /* Tranlsation Info */
-  translate_version:    '0.0',
-  Translator_Desc:      'Thank you to our translators...',
-  TranlsatorName_1:     'mrstormlars',
-  TranlsatorAddr_1:     '0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08',
+  translate_version:    '0.3',
+  Translator_Desc:      'Takk til våre oversettere: ',
+  TranslatorName_1:     '[mrstormlars](https://www.myetherwallet.com/?gaslimit=21000&to=0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08&value=1.0#send-transaction)',
+  TranslatorAddr_1:     '0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08',
   /* Translator 1: Insert Comments Here */
-  TranlsatorName_2:     ' ',
-  TranlsatorAddr_2:     ' ',
+  TranslatorName_2:     ' ',
+  TranslatorAddr_2:     ' ',
   /* Translator 2: Insert Comments Here */
-  TranlsatorName_3:     ' ',
-  TranlsatorAddr_3:     ' ',
+  TranslatorName_3:     ' ',
+  TranslatorAddr_3:     ' ',
   /* Translator 3: Insert Comments Here */
-  TranlsatorName_4:     ' ',
-  TranlsatorAddr_4:     ' ',
+  TranslatorName_4:     ' ',
+  TranslatorAddr_4:     ' ',
   /* Translator 4: Insert Comments Here */
-  TranlsatorName_5:     ' ',
-  TranlsatorAddr_5:     ' ',
+  TranslatorName_5:     ' ',
+  TranslatorAddr_5:     ' ',
   /* Translator 5: Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
@@ -281,10 +303,10 @@ no.data = {
 
   HELP_2a_Title:       '2a) How do I save/backup my wallet?',
   HELP_2a_Desc_1:      'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
-  HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you.',
+  HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you.',
   HELP_2a_Desc_3:      'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:',
   HELP_2a_Desc_4:      'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.',
-  HELP_2a_Desc_5:      'Print the wallet if you have a printer. Otherwise, write down your private and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
+  HELP_2a_Desc_5:      'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
   HELP_2a_Desc_6:      'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).',
 
   HELP_2b_Title:       '2b) How do I safely / offline / cold storage with MyEtherWallet?',
@@ -304,8 +326,8 @@ no.data = {
   HELP_3_Desc_4:        'Select your wallet file -or- your private key and unlock your wallet.',
   HELP_3_Desc_5:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_3_Desc_6:        'Click the "Unlock Wallet" button.',
-  HELP_3_Desc_7:        'Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
-  HELP_3_Desc_8:        'If you are planning on holding a large amount of ETH, we recommend that send a small amount of ETH from new wallet before depositting a large amount. Send .001 ETH to your new wallet, access that wallet, send that .001 ETH to another address, and ensure everything works smoothly.',
+  HELP_3_Desc_7:        'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
+  HELP_3_Desc_8:        'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositting a large amount. Send 0,001 ether to your new wallet, access that wallet, send that 0,001 ether to another address, and ensure everything works smoothly.',
 
   HELP_4_Title:         '4) How do I send Ether from one wallet to another?',
   HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
@@ -315,7 +337,7 @@ no.data = {
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
   HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
-  HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
+  HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ether like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
   HELP_4_Desc_11:       'Click the blue "Send Transaction" button below that.',
@@ -358,21 +380,21 @@ no.data = {
   HELP_5CX_Desc_8:      'The extension should now show up in your extensions and in your Chrome Extension bar.',
 
   HELP_6_Title:         '6) How do I split my ETH / ETC? ',
-  HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your account now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original account into two accounts. Moving forward, you need to make sure only ETH goes to your ETH account and only ETC goes to your ETC account.',
+  HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your wallet now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original wallet into two wallets. Moving forward, you need to make sure only ETH goes to your ETH wallet and only ETC goes to your ETC wallet.',
   HELP_6_Desc_2:        'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.',
   HELP_6_Desc_3:        '[Even more information about wallets and reply attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
-  HELP_6_Desc_4:        'Generate a new clean post-fork ETH address for yourself (to be the final destination of pure ETH).',
-  HELP_6_Desc_5:        'Generate a new clean post-fork ETC address for yourself (to be the final destination of pure ETC).',
+  HELP_6_Desc_4:        'Generate a new clean post-fork ETH wallet for yourself (to be the final destination of pure ETH).',
+  HELP_6_Desc_5:        'Generate a new clean post-fork ETC wallet for yourself (to be the final destination of pure ETC).',
   HELP_6_Desc_6:        'Back up these new wallets and verify you can access them. See #2a and #3 above.',
-  HELP_6_Desc_7:        'Send .1234 ETH to your new "ETH" address using "Only ETH" option on the "Send Ether" page.',
-  HELP_6_Desc_8:        'Send .5678 ETC to your new "ETC" address using "Only ETC" on MyEtherWallet.com',
-  HELP_6_Desc_9:        'Check that only the .1234 ETH moved on etherscan.io. Check that only the .5678 ETC moved on gastracker.io.',
-  HELP_6_Desc_10:       'Send a .0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the .0001 ETH moved.',
-  HELP_6_Desc_11:       ' Generate (but do not send) a .0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
-  HELP_6_Desc_12:       'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the .0002 ETC moved.',
+  HELP_6_Desc_7:        'Send 0,1234 ETH to your new "ETH" wallet using "Only ETH" option on the "Send Ether" page.',
+  HELP_6_Desc_8:        'Send 0,5678 ETC to your new "ETC" wallet using "Only ETC" option on the "Send Ether" page.',
+  HELP_6_Desc_9:        'Check that only the 0,1234 ETH moved on etherscan.io. Check that only the 0,5678 ETC moved on gastracker.io.',
+  HELP_6_Desc_10:       'Send a 0,0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the 0,0001 ETH moved.',
+  HELP_6_Desc_11:       'Generate (but do not send) a 0,0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
+  HELP_6_Desc_12:       'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the 0,0002 ETC moved.',
   HELP_6_Desc_13:       'If everything receives correctly and sends correctly then you are golden.',
   HELP_6_Desc_14:       'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".',
-  HELP_6_Desc_15:       ' Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. ',
+  HELP_6_Desc_15:       'Moving forward, you can use the standard transactions for these new wallets without risk of replay attacks. ',
 
   HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token.',
@@ -442,6 +464,7 @@ no.data = {
   HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
   HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
   HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_15b:       'Hvis du er på en PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
   HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
@@ -462,8 +485,8 @@ no.data = {
   HELP_14_Title:          '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
   HELP_14_Desc_1:         'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
 
-  HELP_15_Title:          '15) Why hasn\'t the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
-  HELP_15_Desc_1:         'Addresses will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
+  HELP_15_Title:          '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
+  HELP_15_Desc_1:         'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
 
   HELP_16_Title:          '16) How do I check the balance of my account? ',
   HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
@@ -482,8 +505,8 @@ no.data = {
   HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
   HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
   HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
-  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ETH is the least of everyone’s problems.',
-  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ETH from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
+  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems.',
+  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
   HELP_21_Desc_5:         'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.',
   HELP_21_Desc_6:         'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
   HELP_21_Desc_7:         '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',

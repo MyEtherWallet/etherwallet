@@ -4,6 +4,7 @@ if (typeof chrome != 'undefined') IS_CX = chrome.windows === undefined ? false :
 require("babel-polyfill");
 var angular = require('angular');
 var angularTranslate = require('angular-translate');
+var angularTranslateErrorLog = require('angular-translate-handler-log');
 var angularSanitize = require('angular-sanitize');
 var BigNumber = require('bignumber.js');
 window.BigNumber = BigNumber;
@@ -41,6 +42,7 @@ var bulkGenCtrl = require('./controllers/bulkGenCtrl');
 var decryptWalletCtrl = require('./controllers/decryptWalletCtrl');
 var viewWalletCtrl = require('./controllers/viewWalletCtrl');
 var sendTxCtrl = require('./controllers/sendTxCtrl');
+var deployContractCtrl = require('./controllers/deployContractCtrl');
 var digixCtrl = require('./controllers/digixCtrl');
 var theDaoCtrl = require('./controllers/theDaoCtrl');
 var tokenCtrl = require('./controllers/tokenCtrl');
@@ -65,6 +67,7 @@ app.config(['$compileProvider', function($compileProvider) {
 	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|):/);
 }]);
 app.config(['$translateProvider', function($translateProvider) {
+    $translateProvider.useMissingTranslationHandlerLog();
 	new translate($translateProvider);
 }]);
 app.factory('globalService', ['$http', '$httpParamSerializerJQLike', globalService]);
@@ -81,6 +84,7 @@ app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
 app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptWalletCtrl]);
 app.controller('viewWalletCtrl', ['$scope', 'walletService', viewWalletCtrl]);
 app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', sendTxCtrl]);
+app.controller('deployContractCtrl', ['$scope', '$sce', 'walletService', deployContractCtrl]);
 app.controller('digixCtrl', ['$scope', '$sce', 'walletService', digixCtrl]);
 app.controller('theDaoCtrl', ['$scope', '$sce', 'walletService', theDaoCtrl]);
 app.controller('tokenCtrl', ['$scope', '$sce', 'walletService', tokenCtrl]);

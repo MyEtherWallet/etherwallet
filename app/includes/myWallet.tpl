@@ -9,13 +9,13 @@
   <table class="table table-striped" id="tblwalletsmain">
     <thead>
       <tr>
-        <th></th>
-        <th></th>
-        <th translate="x_Wallet">Wallet</th>
-        <th translate="MYWAL_Bal">Balance</th>
-        <th translate="MYWAL_Edit">Edit</th>
-        <th translate="MYWAL_View">View</th>
-        <th translate="MYWAL_Remove">Remove</th>
+        <th width="30" style="max-width: 30px"></th>
+        <th width="60" style="max-width: 60px"></th>
+        <th width="300" translate="x_Wallet">Wallet</th>
+        <th width="300" translate="MYWAL_Bal">Balance</th>
+        <th width="45" style="max-width: 45px" translate="MYWAL_Edit">Edit</th>
+        <th width="45" style="max-width: 45px" translate="MYWAL_View">View</th>
+        <th width="45" style="max-width: 45px" translate="MYWAL_Remove">Remove</th>
       </tr>
     </thead>
     <tbody>
@@ -27,10 +27,11 @@
           <span class="mono">{{twallet.addr}}</span>
         </td>
         <td>
-          <strong class="text-success">{{twallet.balance }} ETH</strong><br>
-          <span class="small" ng-repeat="token in twallet.tokens">{{token.getBalance()}} {{token.getSymbol()}} &nbsp;&nbsp; </span>
+          <strong class="text-success">{{twallet.balance }} ETH</strong>
           <br />
-          <span class="small"> {{twallet.btc }} BTC &nbsp;&nbsp; $ {{twallet.usd }} USD &nbsp;&nbsp; € {{twallet.eur }} EUR </small>
+          <span class="small" ng-repeat="token in twallet.tokens" ng-hide="token.balance==0" ><strong>{{token.getBalance()}}</strong> {{token.getSymbol()}} &nbsp;&nbsp; </span>
+          <br />
+          <span class="small"> <strong>{{twallet.btc }}</strong> BTC &nbsp;&nbsp; $ <strong>{{twallet.usd }}</strong> USD &nbsp;&nbsp; € <strong>{{twallet.eur }}</strong> EUR </small>
         </td>
         <td class="text-center">
           <a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a>
@@ -53,11 +54,13 @@
     <table class="table table-striped" id="tblWatchOnlyMain">
       <thead>
         <tr>
-          <th></th>
-          <th></th>
-          <th translate="x_Wallet">Wallet</th>
-          <th translate="MYWAL_Bal">Balance</th>
-          <th translate="MYWAL_Remove">Remove</th>
+          <th width="30" style="max-width: 30px"></th>
+          <th width="60" style="max-width: 60px"></th>
+          <th width="300" translate="x_Wallet">Wallet</th>
+          <th width="300" translate="MYWAL_Bal">Balance</th>
+          <th width="45" style="max-width: 45px" ></th>
+          <th width="45" style="max-width: 45px" ></th>
+          <th width="45" style="max-width: 45px" translate="MYWAL_Remove">Remove</th>
         </tr>
       </thead>
       <tbody>
@@ -71,10 +74,11 @@
           </td>
           <td>
             <strong class="text-success">{{twallet.balance | number:4 }} ETH</strong><br>
-            <small><span ng-repeat="token in twallet.tokens">{{token.getBalance() }} {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
+            <small><span ng-repeat="token in twallet.tokens" ng-hide="token.balance==0"><strong>{{token.getBalance() }}</strong> {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
             <br />
-            <small><span>{{twallet.btc }} BTC</span> &nbsp;&nbsp; <span>$ {{twallet.usd }} USD</span> &nbsp;&nbsp; <span>€ {{twallet.eur }} EUR</span></small>
+            <small><span><strong>{{twallet.btc }}</strong> BTC</span> &nbsp;&nbsp; <span>$ <strong>{{twallet.usd }}</strong> USD</span> &nbsp;&nbsp; <span>€ <strong>{{twallet.eur }}</strong> EUR</span></small>
           </td>
+          <td></td><td></td>
           <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
         </tr>
       </tbody>

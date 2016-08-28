@@ -27,6 +27,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	}, function() {
 		if (walletService.wallet == null) return;
 		$scope.wallet = walletService.wallet;
+        $scope.wd = true;
 		$scope.setBalance();
 	});
 	$scope.setBalance = function() {

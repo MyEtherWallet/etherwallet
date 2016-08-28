@@ -1,5 +1,6 @@
 'use strict';
 var footerCtrl = function($scope) {
+    $scope.footerModal = new Modal(document.getElementById('disclaimerModal'));
 	$scope.ethBlockNumber = "loading";
     $scope.etcBlockNumber = "loading";
     $scope.showBlocks = window.location.protocol=="https:";

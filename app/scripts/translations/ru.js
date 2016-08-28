@@ -4,31 +4,25 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
-  /* New */
-  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
-  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Перевести весь доступный баланс',  // updated to read 'Send Entire Balance'
-  FOOTER_1b:            'Created by',
-
   /* Navigation*/
   NAV_YourWallets:      'Ваши кошельки',
   NAV_AddWallet:        'Добавить кошелёк',
   NAV_GenerateWallet:   'Создать кошелёк',
   NAV_BulkGenerate:     'Создать несколько кошельков',
-  NAV_SendEther:        'Отправить эфир (ether)',
-  NAV_SendTokens:       'Отправить токены',
-  NAV_Offline:          'Отправить оффлайн',
+  NAV_SendEther:        'Перевести эфир (ether)',
+  NAV_SendTokens:       'Перевести токены',
+  NAV_Offline:          'Оффлайн-перевод',
   NAV_WithdrawDAO:      'Обменять DAO',
   DAO_TitleLong:        'Обменять DAO токены на эфир (ether)',
   NAV_ClaimDGD:         'Получить DGD',
   DGD_TitleLong:        'Получить причитающиеся Вам DGD токены',
+  NAV_DeployContract:   'Опубликовать контракт',
   NAV_MyWallets:        'Мои кошельки',
-  NAV_ViewWallet:       'Посмотреть информацию о кошельке',
+  NAV_ViewWallet:       'Информация о кошельке',
   NAV_Help:             'Справка',
   NAV_Contact:          'Контакты',
 
   /* General */
-  x_Wallet:             'кошелёк',
   x_Password:           'Пароли',
   x_Download:           'Скачать',
   x_Address:            'Ваш адрес',
@@ -36,8 +30,10 @@ ru.data = {
   x_Cancel:             'Отменить',
   x_AddessDesc:         'Это можно назвать "номер Вашего счёта" или "Ваш открытый ключ". Вы сообщаете этот адрес людям, чтобы они могли отправлять Вам эфир (ether). Картинка позволяет легко опознать Ваш адрес среди других адресов.',
   x_PrivKey:            'Закрытый ключ (не зашифрован)',
+  x_PrivKey2:           'Закрытый ключ',
   x_PrivKeyDesc:        'Это незашифрованное текстовое представление Вашего закрытого ключа, для использования которого не требуется вводить пароль. Если посторонние узнают Ваш закрытый ключ, они смогут распоряжаться Вашим кошельком без ввода пароля. По этой причине, обычно рекомендуют использовать зашифрованную версию закрытого ключа.',
   x_Keystore:           'Файл Keystore/JSON (рекомендуется · зашифрован · формат совместим с Mist и geth)',
+  x_Keystore2:          'Файл Keystore/JSON',
   x_KeystoreDesc:       'Этот файл Keystore/JSON использует формат совместимый с Mist и geth. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию.',
   x_Json:               'Файл JSON (не зашифрован)',
   x_JsonDesc:           'Это Ваш незашифрованный закрытый ключ в формате JSON, для использования которого не требуется воодить пароль. Любой, у кого есть этот файл, может распоряжаться вашим кошельком и эфиром (ether) без ввода пароля.',
@@ -46,17 +42,20 @@ ru.data = {
   x_PrintDesc:          'Для профи: Нажмите "Печать" и сохраните это в формате PDF, если у Вас нет принтера!',
   x_CSV:                'Файл CSV (не зашифрован)',
   x_TXT:                'Файл TXT (не зашифрован)',
+  x_Wallet:             'кошелёк',
 
   /* Header */
-  MEW_Warning_1:        'Всегда проверяйте URL перед использованием имеющегося, а также перед созданием нового кошелька. Опасайтесь фишинговых сайтов!',
+  MEW_Warning_1:        'Всегда проверяйте URL перед тем, как воспользоваться существующим кошельком или создать новый. Опасайтесь поддельных (фишинговых) сайтов)!',
   CX_Warning_1:         'Всегда имейте **резервную копию** всех кошельков, которые Вы храните здесь. Различные обстоятельства могут привести к тому, что данные, хранимые в этом расширении браузера Chrome, могут быть потеряны, например если Вы удалите или переустановите расширение. Это расширение облегчает использование Ваших кошельков, но оно **не является** надежным местом для их хранения.',
-  MEW_Tagline:          'Ethereum кошелёк с открытым исходным кодом, написанный на javascript',
-  CX_Tagline:           'Ethereum кошелёк с открытым исходным кодом в виде написанного на javascript расширения для браузера Chrome',
+  MEW_Tagline:          'Ethereum кошелёк на javascript с открытым исходным кодом',
+  CX_Tagline:           'Ethereum кошелёк на javascript с открытым исходным кодом в виде расширения для браузера Chrome',
 
   /* Footer */
   FOOTER_1:             'Написанный на javascript инструмент с открытым исходным кодом, предназначенный для создания Ethereum кошельков и выполнения транзакций.',
+  FOOTER_1b:            'Авторы:',
   FOOTER_2:             'Пожертвования приветствуются:',
   FOOTER_3:             'Создание кошелька на стороне клиента от',
+  FOOTER_4:               'Отказ от ответственности',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Информация о счёте: ',
@@ -81,6 +80,7 @@ ru.data = {
   ADD_Radio_2:            'Выбрать файл с кошельком (Keystore/JSON)',
   ADD_Radio_2_alt:        'Выбрать файл с кошельком: ',
   ADD_Radio_2_short:      'ВЫБРАТЬ ФАЙЛ С КОШЕЛЬКОМ...',
+  ADD_Radio_2_success:    'Выбранный файл: ',
   ADD_Radio_3:            'Вставить или ввести Ваш закрытый ключ',
   ADD_Radio_4:            'Добавить счёт в список слежения',
   ADD_Label_2:            'Присвоить название:',
@@ -113,6 +113,7 @@ ru.data = {
   SEND_amount_short:     'Сумма',
   SEND_custom:           'Другое',
   SEND_gas:              'Газ',
+  SEND_TransferTotal:   'Перевести весь доступный баланс', // updated to be shorter
   SEND_generate:         'Сформировать транзакцию',
   SEND_raw:              'Готовая транзакция',
   SEND_signed:           'Подписанная транзакция',
@@ -160,7 +161,7 @@ ru.data = {
   OFFLINE_Step1_Button:  'Подготовка информации',
   OFFLINE_Step1_Label_1: 'Адрес отправителя: ',
   OFFLINE_Step1_Label_2: 'Внимание: Это адрес ОТПРАВИТЕЛЯ, а не адрес получателя. № перевода (nonce) определяется для адреса отправителя. При использовании оффлайн компьютера, физически изолированного от сети, это будет адрес счёта "холодного хранения" (cold-storage).',
-  OFFLLINE_Step2_Title:   'Шаг №2: Формирование транзакции (оффлайн компьютер)',
+  OFFLINE_Step2_Title:   'Шаг №2: Формирование транзакции (оффлайн компьютер)',
   OFFLINE_Step2_Label_1:  'Адрес получателя: ',
   OFFLINE_Step2_Label_2:  'Сумма перевода',
   OFFLINE_Step2_Label_3:  'Цена газа ',
@@ -176,18 +177,34 @@ ru.data = {
   OFFLINE_Step3_Label_1:  'Вставьте подписанную транзакцию с шага №2 и нажмите кнопку "ВЫПОЛНИТЬ ТРАНЗАКЦИЮ".',
 
   /* DAO */
-  DAO_Desc:               'Используйте эту вкладку, чтобы обменять Ваши DAO токены на эфир (ether). Если вы хотите перевести DAO токены, используйте вкладку "Отправить токены".',
+  DAO_bal1:               'на момент создания блока №1.919.999',
+  DAO_bal2:               'текущий',
+  DAO_TitleETH:           'Обменять DAO токены на ETH',
+  DAO_TitleETC:           'Обменять DAO токены на ETC',
+  DAO_ETC_Label_1:        'На какой адрес зачислить ETC?',
+  DAO_ETC_Label_2:        'Группа "White Hat" работала не покладая рук для того, чтобы Вы смогли получить обратно Ваш ETC. Вы можете сказать им "спасибо", пожертвовав небольшой процент от суммы, если хотите, конечно. ',
+  DAO_Desc:               'Используйте эту вкладку, чтобы обменять Ваши DAO токены на эфир (ether). Если вы хотите перевести DAO токены, используйте вкладку "Перевести токены".',
   DAO_Inst:               'Да. Просто нажмите большую красную кнопку. Это действительно просто.',
-  DAO_Warning:            'Если Вы получаете ошибку "Недостаточно средств для оплаты газа", Вам надо перевести немного эфира (ether) на Ваш счёт чтобы покрыть расходы на газ. Переведите 0,01 эфира (ether) на этот счёт и попробуйте снова. ',
+  DAO_Warning:            'Если Вы видите ошибку "Недостаточно средств для оплаты газа", то это значит, что на Вашем счету не хватает эфира (ether), чтобы покрыть расходы на газ. Переведите 0,001 эфира (ether) на Ваш счёт и попробуйте снова. ',
   DAOModal_Title:         'Просто чтобы убедиться...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
+  DAOModal_1:             'Вы собираетесь обменять',
+  DAOModal_2:             'DAO токенов. На адрес',
+  DAOModal_3:             'будет зачислено', // "in return for"
 
   /* Digix */
-  DGD_Desc:               'Получить причитающиеся Вам DigixDAO (DGD) токены и бэйджи. Вы можете получить причитающиеся Вам токены, если Вы участвовали в в распродаже токенов 30–31 марта 2016 года.  Если Вы хотите перевести DGD токены, используйте вкладку "Отправить токены".',
+  DGD_Desc:               'Получить причитающиеся Вам DigixDAO (DGD) токены и бэйджи. Вы можете получить причитающиеся Вам токены, если Вы участвовали в в распродаже токенов 30–31 марта 2016 года.  Если Вы хотите перевести DGD токены, используйте вкладку "Перевести токены".',
   DGD_Label_1:            'Предположительный размер комиссии:',
   DGD_Label_2:            'Максимальный размер комиссии:',
   DGD_Label_3:            'Цена газа:',
   DGD_Generate:           'Сформировать требование',
   DGD_Content:            'Вы собираетесь затребовать причитающиеся Вам DGD токены.',
+
+  /* Deploy Contracts */
+  DEP_generate:        'Сформировать байткод',
+  DEP_generated:       'Сформированный байткод',
+  DEP_signtx:          'Подписать транзакцию',
+  DEP_interface:       'Сформированный интерфейс',
 
   /* My Wallet */
   MYWAL_Nick:             'Название кошелька',
@@ -207,54 +224,59 @@ ru.data = {
   MYWAL_Content_3:        'Если Вы планируете в будущем использовать этот кошелёк в MyEtherWallet CX, Вам надо будет вручную заново добавить его, указав закрытый ключ или файл JSON и пароль.',
 
   /* View Wallet Details */
-  VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
-  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
-  VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
+  VIEWWALLET_Subtitle:      'Позволяет скачать закрытые ключи в различных форматах, а также повторно напечатать Ваши бумажные кошельки. Вам это понадобится, когда Вы захотите [импортировать Ваши счета в geth или Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Для проверки баланса Ваших счетов мы рекомендуем использовать браузер блокчейна, например [etherscan.io](http://etherscan.io/).',
+  VIEWWALLET_Subtitle_Short: 'Позволяет Вам скачать Ваши закрытые ключи в различных форматах, а также повторно напечатать Ваши бумажные кошельки. ',
+  VIEWWALLET_SuccessMsg:     'Поздравляем! Вот информация о Вашем кошельке.',
+
+  /* Chrome Extension */
+  CX_error_1:           'У Вас нет сохранённых кошельков. Чтобы создать кошелёк, нажмите ["Создать кошелёк"](/cx-wallet.html#add-wallet)!',
+  CX_quicksend:         'Моментальный перевод', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
-  ERROR_1:             'Please enter valid amount.',
-  ERROR_2:             'Your password must be at least 9 characters. Please ensure it is a strong password. ',
-  ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
-  ERROR_4:              'This is not a valid wallet file. ',
-  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
-  ERROR_6:              'Invalid address. ',
-  ERROR_7:              'Invalid password. ',
-  ERROR_8:              'Invalid amount. ',
-  ERROR_9:              'Invalid gas limit. ',
-  ERROR_10:             'Invalid data value. ',
-  ERROR_11:             'Invalid gas amount. ',
-  ERROR_12:             'Invalid nonce. ',
-  ERROR_13:             'Invalid signed transaction. ',
-  ERROR_14:             'A wallet with this nickname already exists. ',
-  ERROR_15:             'Wallet not found. ',
-  ERROR_16:             'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
-  ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
-  ERROR_18:             'You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
-  ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
-  ERROR_20:             'Invalid symbol',
-  SUCCESS_1:            'Valid address',
-  SUCCESS_2:            'Wallet successfully decrypted',
-  SUCCESS_3:            'Transaction submitted. TX ID: ',
-  SUCCESS_4:            'Your wallet was successfully added: ',
-  SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
+  ERROR_1:              'Пожалуйста, введите сумму корректно.',
+  ERROR_2:              'Пароль должен содержать не менее 9 символов. Пожалуйста, используйте сложный пароль. ',
+  ERROR_3:              'К сожалению, мы не смогли определить формат файла кошелька. ',
+  ERROR_4:              'Этот файл не является файлом кошелька. ',
+  ERROR_5:              'Такая единица измерения не существует. Пожалуйста, укажите одну из следующих единиц измерения ',
+  ERROR_6:              'Неправильный адрес. ',
+  ERROR_7:              'Неверный пароль. ',
+  ERROR_8:              'Некорректная сумма. ',
+  ERROR_9:              'Некорректно указан лимит газа. ',
+  ERROR_10:             'Недопустимые данные. ',
+  ERROR_11:             'Некорректно указано количество газа. ',
+  ERROR_12:             'Неверный номер перевода (nonce). ',
+  ERROR_13:             'Подписанная транзакция некорректна. ',
+  ERROR_14:             'Кошелёк с таким названием уже существует. ',
+  ERROR_15:             'Кошелёк не найден. ',
+  ERROR_16:             'Предложение с таким идентификатором не существует или при чтении предложения произошла ошибка. ',
+  ERROR_17:             'Кошелёк с таким адресом уже находится в хранилище. Просмотрите в списке кошельков. ',
+  ERROR_18:             'Вам необходимо иметь не менее 0.001 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
+  ERROR_19:             'Транзакция могла бы истратить весь газ. Это значит, что Вы уже голосовали по данному предложению, или период обсуждения данного предложения закончился.',
+  ERROR_20:             'Неправильный символ',
+  SUCCESS_1:            'Адрес указан верно',
+  SUCCESS_2:            'Кошелёк успешно расшифрован',
+  SUCCESS_3:            'Транзакция отправлена на выполнение. TX ID: ',
+  SUCCESS_4:            'Ваш кошелёк успешно добавлен: ',
+  SUCCESS_5:            'Ваш голос учтён. Спасибо Вам за активное участие в работе DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.0',
-  Translator_Desc:      'Thank you to our translators...',
-  TranlsatorName_1:     '',
-  TranlsatorAddr_1:     '',
+  translate_version:    '0.3',
+  Translator_Desc:      'Спасибо нашим переводчикам: ',
+  TranslatorName_1:     '[Михаил Владимиров](https://www.myetherwallet.com/?gaslimit=21000&to=0x6ff323e36bfdb20502b23780695f4e77e36cde95&value=1.0#send-transaction)',
+  TranslatorAddr_1:     '0x6ff323e36bfdb20502b23780695f4e77e36cde95',
   /* Translator 1: Insert Comments Here */
-  TranlsatorName_2:     ' ',
-  TranlsatorAddr_2:     ' ',
+  TranslatorName_2:     ' ',
+  TranslatorAddr_2:     ' ',
   /* Translator 2: Insert Comments Here */
-  TranlsatorName_3:     ' ',
-  TranlsatorAddr_3:     ' ',
+  TranslatorName_3:     ' ',
+  TranslatorAddr_3:     ' ',
   /* Translator 3: Insert Comments Here */
-  TranlsatorName_4:     ' ',
-  TranlsatorAddr_4:     ' ',
+  TranslatorName_4:     ' ',
+  TranslatorAddr_4:     ' ',
   /* Translator 4: Insert Comments Here */
-  TranlsatorName_5:     ' ',
-  TranlsatorAddr_5:     ' ',
+  TranslatorName_5:     ' ',
+  TranslatorAddr_5:     ' ',
   /* Translator 5: Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
@@ -281,10 +303,10 @@ ru.data = {
 
   HELP_2a_Title:       '2a) How do I save/backup my wallet?',
   HELP_2a_Desc_1:      'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
-  HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you.',
+  HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you.',
   HELP_2a_Desc_3:      'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:',
   HELP_2a_Desc_4:      'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.',
-  HELP_2a_Desc_5:      'Print the wallet if you have a printer. Otherwise, write down your private and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
+  HELP_2a_Desc_5:      'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
   HELP_2a_Desc_6:      'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).',
 
   HELP_2b_Title:       '2b) How do I safely / offline / cold storage with MyEtherWallet?',
@@ -304,8 +326,8 @@ ru.data = {
   HELP_3_Desc_4:        'Select your wallet file -or- your private key and unlock your wallet.',
   HELP_3_Desc_5:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_3_Desc_6:        'Click the "Unlock Wallet" button.',
-  HELP_3_Desc_7:        'Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
-  HELP_3_Desc_8:        'If you are planning on holding a large amount of ETH, we recommend that send a small amount of ETH from new wallet before depositting a large amount. Send .001 ETH to your new wallet, access that wallet, send that .001 ETH to another address, and ensure everything works smoothly.',
+  HELP_3_Desc_7:        'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
+  HELP_3_Desc_8:        'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositting a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly.',
 
   HELP_4_Title:         '4) How do I send Ether from one wallet to another?',
   HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
@@ -315,7 +337,7 @@ ru.data = {
   HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
   HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
   HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
-  HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
+  HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ether like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
   HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
   HELP_4_Desc_11:       'Click the blue "Send Transaction" button below that.',
@@ -358,21 +380,21 @@ ru.data = {
   HELP_5CX_Desc_8:      'The extension should now show up in your extensions and in your Chrome Extension bar.',
 
   HELP_6_Title:         '6) How do I split my ETH / ETC? ',
-  HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your account now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original account into two accounts. Moving forward, you need to make sure only ETH goes to your ETH account and only ETC goes to your ETC account.',
+  HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your wallet now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original wallet into two wallets. Moving forward, you need to make sure only ETH goes to your ETH wallet and only ETC goes to your ETC wallet.',
   HELP_6_Desc_2:        'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.',
   HELP_6_Desc_3:        '[Even more information about wallets and reply attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
-  HELP_6_Desc_4:        'Generate a new clean post-fork ETH address for yourself (to be the final destination of pure ETH).',
-  HELP_6_Desc_5:        'Generate a new clean post-fork ETC address for yourself (to be the final destination of pure ETC).',
+  HELP_6_Desc_4:        'Generate a new clean post-fork ETH wallet for yourself (to be the final destination of pure ETH).',
+  HELP_6_Desc_5:        'Generate a new clean post-fork ETC wallet for yourself (to be the final destination of pure ETC).',
   HELP_6_Desc_6:        'Back up these new wallets and verify you can access them. See #2a and #3 above.',
-  HELP_6_Desc_7:        'Send .1234 ETH to your new "ETH" address using "Only ETH" option on the "Send Ether" page.',
-  HELP_6_Desc_8:        'Send .5678 ETC to your new "ETC" address using "Only ETC" on MyEtherWallet.com',
-  HELP_6_Desc_9:        'Check that only the .1234 ETH moved on etherscan.io. Check that only the .5678 ETC moved on gastracker.io.',
-  HELP_6_Desc_10:       'Send a .0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the .0001 ETH moved.',
-  HELP_6_Desc_11:       ' Generate (but do not send) a .0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
-  HELP_6_Desc_12:       'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the .0002 ETC moved.',
+  HELP_6_Desc_7:        'Send 0.1234 ETH to your new "ETH" wallet using "Only ETH" option on the "Send Ether" page.',
+  HELP_6_Desc_8:        'Send 0.5678 ETC to your new "ETC" wallet using "Only ETC" option on the "Send Ether" page.',
+  HELP_6_Desc_9:        'Check that only the 0.1234 ETH moved on etherscan.io. Check that only the 0.5678 ETC moved on gastracker.io.',
+  HELP_6_Desc_10:       'Send a 0.0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the 0.0001 ETH moved.',
+  HELP_6_Desc_11:       'Generate (but do not send) a 0.0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
+  HELP_6_Desc_12:       'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the 0.0002 ETC moved.',
   HELP_6_Desc_13:       'If everything receives correctly and sends correctly then you are golden.',
   HELP_6_Desc_14:       'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".',
-  HELP_6_Desc_15:       ' Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. ',
+  HELP_6_Desc_15:       'Moving forward, you can use the standard transactions for these new wallets without risk of replay attacks. ',
 
   HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token.',
@@ -442,6 +464,7 @@ ru.data = {
   HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
   HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
   HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_15b:       'Если вы используете ПК:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
   HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
@@ -462,8 +485,8 @@ ru.data = {
   HELP_14_Title:          '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
   HELP_14_Desc_1:         'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
 
-  HELP_15_Title:          '15) Why hasn\'t the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
-  HELP_15_Desc_1:         'Addresses will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
+  HELP_15_Title:          '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
+  HELP_15_Desc_1:         'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
 
   HELP_16_Title:          '16) How do I check the balance of my account? ',
   HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
@@ -482,8 +505,8 @@ ru.data = {
   HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
   HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
   HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
-  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ETH is the least of everyone’s problems.',
-  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ETH from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
+  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems.',
+  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
   HELP_21_Desc_5:         'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.',
   HELP_21_Desc_6:         'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
   HELP_21_Desc_7:         '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',
