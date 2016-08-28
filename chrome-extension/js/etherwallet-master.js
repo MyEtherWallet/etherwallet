@@ -6862,26 +6862,26 @@ fr.data = {
   HELP_4CX_Desc_11:     'Cliquez sur "Envoyez la transaction."',
   HELP_4CX_Desc_12:     'Avec la page "Envoi d\'Ether" : ',
 
-  HELP_5_Title:         '5) How do I run MyEtherWallet.com offline/locally? ',
-  HELP_5_Desc_1:        'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page.',
-  HELP_5_Desc_2:        'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
-  HELP_5_Desc_3:        'Click download zip in the upper right.',
-  HELP_5_Desc_4:        'Move zip to an airgapped computer.',
-  HELP_5_Desc_5:        'Unzip it.',
-  HELP_5_Desc_6:        'Double-Click `index.html`.',
-  HELP_5_Desc_7:        'MyEtherWallet.com is now running entirely on your computer.',
-  HELP_5_Desc_8:        'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.',
-  HELP_5_Desc_9:        'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.',
+  HELP_5_Title:         '5) Comment puis-je lancer MyEtherWallet.com hors ligne/localement ? ',
+  HELP_5_Desc_1:        'Vous pouvez lancer MyEtherWallet.com sur votre ordinateur au lieu de passer par les serveurs GitHub. Vous pouvez générer un portefeuille en restant totalement hors ligne et envoyer des transactions depuis la page "Transaction hors ligne".',
+  HELP_5_Desc_2:        'Allez sur notre Github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_5_Desc_3:        'Cliquez sur "Clone or download" > "Download zip" en haut à droite.',
+  HELP_5_Desc_4:        'Transportez le zip sur un ordinateur hors ligne.',
+  HELP_5_Desc_5:        'Dézippez-le.',
+  HELP_5_Desc_6:        'Double-cliquez sur `index.html`.',
+  HELP_5_Desc_7:        'MyEtherWallet.com tourne maintenant complètement sur votre ordinateur.',
+  HELP_5_Desc_8:        'Au cas où cela ne vous soit pas familier, vous devez conserver l\'intégralité du dossier pour faire tourner le site web et non uniquement `index.html`. Ne touchez à rien, ne déplacez rien dans le dossier. Si vous stockez une sauvegarde du repo MyEtherWallet pour l\'avenir, nous vous recommandons ne ne stocker que le ZIP afin d\'être sûr que le contenu du dossier restera intact.',
+  HELP_5_Desc_9:        'Comme nous améliorons constamment MyEtherWallet.com, nous vous recommandons de mettre régulièrement à jour votre version sauvegardée.',
 
-  HELP_5CX_Title:       '5) How can I install this extension from the repo instead of the Chrome Store? ',
-  HELP_5CX_Desc_1:      'Go to our github and find the most recent Chrome Extension relase: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
-  HELP_5CX_Desc_2:      'Scroll to the very bottom and right click on the latest release. Click "save link as".',
-  HELP_5CX_Desc_3:      'Go to Google Chrome and find you settings (in the menu in the upper right).',
-  HELP_5CX_Desc_4:      'Click "Extensions" on the left.',
-  HELP_5CX_Desc_5:      'Check the "Developer Mode" button at the top of that page.',
-  HELP_5CX_Desc_6:      'Click the "Load unpacked extension..." button.',
-  HELP_5CX_Desc_7:      'Navigate to the now-unzipped folder that you downloaded earlier. Click "select".',
-  HELP_5CX_Desc_8:      'The extension should now show up in your extensions and in your Chrome Extension bar.',
+  HELP_5CX_Title:       '5) Comment puis-je installer cette extension depuis le repo au lieu du Chrome Store ? ',
+  HELP_5CX_Desc_1:      'Allez sur notre Github et cherchez la version la plus récente de l\'extension Chrome : [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
+  HELP_5CX_Desc_2:      'Descendez tout en bas et faites un clic droit sur la dernière version. Cliquez sur "Enregistrer le lien en tant que...".',
+  HELP_5CX_Desc_3:      'Allez dans Google Chrome et trouvez les paramètres (dans le menu en haut à droite).',
+  HELP_5CX_Desc_4:      'Cliquez sur "Extensions" à gauche.',
+  HELP_5CX_Desc_5:      'Cliquez sur la case "Mode développeur" en haut de cette page.',
+  HELP_5CX_Desc_6:      'Cliquez sur le bouton "Chargez l\'extension non empaquetée...".',
+  HELP_5CX_Desc_7:      'Naviguez vers le dossier que vous avez téléchargé et dézippé auparavant. Cliquez sur "Sélectionner".',
+  HELP_5CX_Desc_8:      'L\'extension doit maintenant apparaître dans vos extensions et dans la barre des extensions de Chrome.',
 
   HELP_6_Title:         '6) How do I split my ETH / ETC? ',
   HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your wallet now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original wallet into two wallets. Moving forward, you need to make sure only ETH goes to your ETH wallet and only ETC goes to your ETC wallet.',
@@ -11440,15 +11440,15 @@ no.code = 'no';
 no.data = {
 
   /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
+  GETH_InvalidSender:      'Feil på avsender',
+  GETH_Nonce:              'Nonce for liten',
+  GETH_Cheap:              'Gas-pris for lav til å kunne aksepteres',
+  GETH_Balance:            'Utilstrekkelig saldo',
+  GETH_NonExistentAccount: 'Kontoen eksisterer ikke eller saldoen er for lav',
+  GETH_InsufficientFunds:  'Utilstrekkelig med midler for gas * pris + verdi',
+  GETH_IntrinsicGas:       'Gas-egenverdi for lav',
+  GETH_GasLimit:           'Overskrider blokkens gas-grense',
+  GETH_NegativeValue:      'Negativ verdi',
 
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
@@ -11456,13 +11456,13 @@ no.data = {
   NAV_GenerateWallet:   'Opprett lommebok',
   NAV_BulkGenerate:     'Opprett flere lommebøker',
   NAV_SendEther:        'Send Ether',
-  NAV_SendTokens:       'Send Polletter',
+  NAV_SendTokens:       'Send Token',
   NAV_Offline:          'Send Frakoblet',
   NAV_WithdrawDAO:      'Ta ut DAO',
-  DAO_TitleLong:        'Løs inn DAO-pollettene dine for ether (ETH)',
+  DAO_TitleLong:        'Løs inn dine DAO-token for ether (ETH)',
   NAV_ClaimDGD:         'Gjør krav på DGD',
-  DGD_TitleLong:        'Gjør krav på DGD-pollettene dine',
-  NAV_DeployContract:  'Utplasser kontrakt',
+  DGD_TitleLong:        'Gjør krav på dine DGD-token',
+  NAV_DeployContract:   'Utplasser kontrakt',
   NAV_MyWallets:        'Mine lommebøker',
   NAV_ViewWallet:       'Vis lommebok-info',
   NAV_Help:             'Hjelp',
@@ -11507,7 +11507,7 @@ no.data = {
   sidebar_AccountInfo:  'Kontoinformasjon: ',
   sidebar_AccountAddr:  'Kontoadresse: ',
   sidebar_AccountBal:   'Saldo på konto: ',
-  sidebar_TokenBal:     'Pollett-saldo: ',
+  sidebar_TokenBal:     'Token-saldo: ',
   sidebar_Equiv:        'Tilsvarende verdier: ',
   sidebar_TransHistory: 'Transaksjonshistorikk: ',
   sidebar_DGDBal:       'DGD Crowdsale informasjon:',
@@ -11574,7 +11574,7 @@ no.data = {
 
   /* Tokens */
   TOKEN_Addr:            'Adresse: ',
-  TOKEN_Symbol:          'Pollettsymbol: ',
+  TOKEN_Symbol:          'Token-symbol: ',
   TOKEN_Dec:             'Desimaler: ',
 
   /* Send Transaction */
@@ -11635,16 +11635,16 @@ no.data = {
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   // note: this may be a bit rough in Norwegian.
   DAOModal_1:             'Du er i ferd med å veksle inn ',
-  DAOModal_2:             'DAO-polletter til ',
+  DAOModal_2:             'DAO-tokens til ',
   DAOModal_3:             'i bytte mot',
 
   /* Digix */
-  DGD_Desc:               'Krev inn dine DigixDAO (DGD)-tokens & badges. For å gjøre dette, må du ha deltatt i pollett-salget 30-31. mars 2016.  Hvis du ønsker å sende DGD, vennligst bruk "Send Token"-siden.',
+  DGD_Desc:               'Krev inn dine DigixDAO (DGD)-tokens & badges. For å gjøre dette, må du ha deltatt i token-salget 30-31. mars 2016.  Hvis du ønsker å sende DGD, vennligst bruk "Send Token"-siden.',
   DGD_Label_1:            'Estimert avgiftsforbruk:',
   DGD_Label_2:            'Oppgitt maksimal avgift:',
   DGD_Label_3:            'Gas-pris:',
   DGD_Generate:           'Opprett krav',
-  DGD_Content:            'Du er i ferd med å kreve inn DGD-pollettene dine.',
+  DGD_Content:            'Du er i ferd med å kreve inn dine DGD-token.',
 
   /* Deploy Contracts */
   DEP_generate:        'Generer Bytecode',
@@ -11843,17 +11843,17 @@ no.data = {
   HELP_6_Desc_15:       'Heretter kan du bruke standardtransaksjoner for disse nye lommebøkene uten risiko for "replay attacks". ',
 
   HELP_7_Title:         '7) Hvordan sender jeg token & legger til flere typer token?',
-  HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) er en flott måte å utforske token på, og for å finne informasjon om antall desimaler for en pollett.',
-  HELP_7_Desc_1:        'Naviger til "Send Polletter"-siden.',
+  HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) er en flott måte å utforske token på, og for å finne informasjon om antall desimaler for en token.',
+  HELP_7_Desc_1:        'Naviger til "Send Token"-siden.',
   HELP_7_Desc_2:        'Lås opp lommeboken din.',
   HELP_7_Desc_3:        'Oppgi adressen som du vil sende til i "Til adresse:"-feltet.',
   HELP_7_Desc_4:        'Oppgi beløpet som du vil sende.',
-  HELP_7_Desc_5:        'Velg hvilken type pollett du vil sende .',
-  HELP_7_Desc_6:        'Hvis du ikke ser pollett-typen på listen:',
+  HELP_7_Desc_5:        'Velg hvilken type token du vil sende .',
+  HELP_7_Desc_6:        'Hvis du ikke ser token-typen på listen:',
   HELP_7_Desc_7:        'Klikk "Tilpasning".',
-  HELP_7_Desc_8:        'Oppgi adressen, navnet, og antall desimaler for polletten. Disse er oppgitt fra utviklerne av polletten og er også nødvendige når du skal "Add a Watch Token" i Mist.', //Mist not translated to Norw yet :-)//
+  HELP_7_Desc_8:        'Oppgi adressen, navnet, og antall desimaler for token-et. Disse er oppgitt fra utviklerne av token-et og er også nødvendige når du skal "Add a Watch Token" i Mist.', //Mist not translated to Norw yet :-)//
   HELP_7_Desc_9:        'Klikk "Lagre".',
-  HELP_7_Desc_10:       'Du kan nå sende denne pollett-typen, samt se saldoen for polletten i sidefeltet.',
+  HELP_7_Desc_10:       'Du kan nå sende denne typen token, samt se saldoen for aktuell token i sidefeltet.',
   HELP_7_Desc_11:       'Klikk "Generer transaksjon".',
   HELP_7_Desc_12:       'Noen flere felter vil dukke opp. Dette er nettleseren din som genererer transaksjonen.',
   HELP_7_Desc_13:       'Klikk den blå "Send transaksjon"-knappen nedenfor dette.',
@@ -15870,22 +15870,22 @@ tr.data = {
   x_AddessDesc:         'Bu "hesap numarası" veya "genel anahtar" dir. Birisi ether göndermek istiyorsa bu adresi kullanmasi gerekir. Ikon adresini kontrol etmek kolay bir yoldur',
   x_Address:            'Adresin',
   x_Cancel:             'Iptal et',
-  x_CSV:                'CSV dosya (şifrelenmis)',
   x_Download:           'Indir',
   x_Json:               'JSON dosya (şifrelenmemis)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
-  x_Keystore:           'Keystore/JSON dosya (Tavsiye edilen· şifrelenmemiş · Mist/Geth formati)',
+  x_Keystore:           'Keystore/JSON dosya (Tavsiye edilen· şifrelenmiş · Mist/Geth formati)',
   x_Keystore2:          'Keystore/JSON dosya',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Parola',
   x_Print:              'Cüzdanin kağıt versiyonunu yazdir',
   x_PrintDesc:          'ProTavsiye: Eğer yazıcınız olmasa bile, "Yazdır" seçeneğini tıklayın ve PDF dosyası olarak kaydedin!',
   x_PrintShort:         'Yazdir',
-  x_PrivKey:            'Özel anahtar (şifrelenmis)',
+  x_PrivKey:            'Özel anahtar (şifrelenmemis)',
   x_PrivKey2:           'Özel anahtar',
   x_PrivKeyDesc:        'Bu özel anahtarinin şifrelenmemiş metin sürümüdür. Birisi şifrelenmemiş özel anahtarı bulduysa, şifre olmadan cüzdani acabilir. Bu nedenle, şifrelenmiş sürümlerini genellikle tavsiye edilir.',
   x_Save:               'Indir',
-  x_TXT:                'TXT dosya (şifrelenmis)',
+  x_TXT:                'TXT dosya (şifrelenmemis)',
+  x_CSV:                'CSV dosya (şifrelenmemis)',
   x_Wallet:             'Cüzdan',
 
 /* Header */
@@ -15983,14 +15983,14 @@ tr.data = {
   TRANS_eth:             'Yalnızca ETH',
   TRANS_etc:             'Yalnızca ETC',
   TRANS_advanced:        '+Gelişmiş: Daha Gaz veya veri ekle',
-  TRANS_data:            ' Veri: ',
-  TRANS_gas:             ' Gas: ',
-  TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
+  TRANS_data:            'Veri: ',
+  TRANS_gas:             'Gas: ',
+  TRANS_sendInfo:        '21000 gaz kullanan standart bir islem 0,000441 ETH ile mal olur. Biz hizli bir sekilde mayinlanmasi için, 000000021 ETH\'dan biraz daha yüksek gaz fiyatini kullaniyoruz. Biz herhangi bir islem ücreti almiyoruz.',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Yalnızca ETH" and "Yalnızca ETC" islemler',
   TRANSModal_Content_0:  'Farklı işlemler ve farklı hizmetleri hakkında bir not:',
-  TRANSModal_Content_1:  '**ETH (Standart işlem): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
+  TRANSModal_Content_1:  '**ETH (Standart islem): ** Bu standart bir islem baslatir bir hesapten direkt baska bir hesapa. Standart gas 21000\'dir. Bu islemlen gönderileren islem ETC zincirinde\'de yer bulabilir.',
   TRANSModal_Content_2:  '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
   TRANSModal_Content_3:  '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
   TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)',
@@ -15999,25 +15999,25 @@ tr.data = {
   TRANSModal_No:         'Aman, kafam daha cok karıştı. Yardım et.',
 
   /* Offline Transaction */
-  OFFLINE_Title:         'Generate & Send Offline Transaction',
-  OFFLINE_Desc:          'Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This ensures your private keys do not touch an internet-connected device.',
-  OFFLLINE_Step1_Title:  'Step 1: Generate Information (Online Computer)',
-  OFFLINE_Step1_Button:  'Generate Information',
-  OFFLINE_Step1_Label_1: 'From Address: ',
-  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
-  OFFLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
-  OFFLINE_Step2_Label_1:  'To Address: ',
-  OFFLINE_Step2_Label_2:  'Value / Amount to Send',
-  OFFLINE_Step2_Label_3:  'Gas Price ',
-  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.',
-  OFFLINE_Step2_Label_4:  'Gas Limit ',
+  OFFLINE_Title:         'Olustur & offline islem',
+  OFFLINE_Desc:          'Offline islemler 3. adimda gerçeklestirir. 1. ve 3. adimi internete bagli olan bir bilgisayarda, 2. adimi offline olan bir bilgisayarda tamamliyorsun. Böyle özel anahtarinin internete bagli olan bir bilgisayara ulasmasini engelnenir.',
+  OFFLLINE_Step1_Title:  'Adim 1: Bilgileri olustur (Online Bilgisayar)',
+  OFFLINE_Step1_Button:  'Bilgileri olustur',
+  OFFLINE_Step1_Label_1: 'Adres\'den: ',
+  OFFLINE_Step1_Label_2: 'Nota: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
+  OFFLINE_Step2_Title:   'Adim 2: Generate Transaction (Offline Computer)',
+  OFFLINE_Step2_Label_1:  'Adrese: ',
+  OFFLINE_Step2_Label_2:  'Gönderilen miktar',
+  OFFLINE_Step2_Label_3:  'Gas fiyati ',
+  OFFLINE_Step2_Label_3b: 'Bu online bilgisayarınızda adım 1\'de gösterilirdi.',
+  OFFLINE_Step2_Label_4:  'Gas limiti ',
   OFFLINE_Step2_Label_4b: '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you.',
-  OFFLINE_Step2_Label_5:  'Nonce',
-  OFFLINE_Step2_Label_5b: 'This was displayed in Step 1 on your online computer.',
-  OFFLINE_Step2_Label_6:  'Data',
-  OFFLINE_Step2_Label_6b: 'This is optional. Data is often used when you send transactions to contracts.',
+  OFFLINE_Step2_Label_5:  'Veri',
+  OFFLINE_Step2_Label_5b: 'Bu online bilgisayarınızda adım 1\'de gösterilir.',
+  OFFLINE_Step2_Label_6:  'Veri',
+  OFFLINE_Step2_Label_6b: 'Bu istege bagli. Data is often used when you send transactions to contracts.',
   OFFLINE_Step2_Label_7:  'Enter / Select your Private Key / JSON.',
-  OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
+  OFFLINE_Step3_Title:    'Adim 3: Gönder / Islemi duyur (Online Computer)',
   OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
 
   /* DAO */
@@ -16031,24 +16031,25 @@ tr.data = {
   DAO_Inst:               'Evet. Sadece büyük kırmızı düğmeye bas. Bu kadar kolay.',
   DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
   DAOModal_Title:         'Sadece emin olmak için...',
+  
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Cekmek üzeresin',
-  DAOModal_2:             'DAO Tokens to',
-  DAOModal_3:             'for', // "in return for"
+  DAOModal_2:             'DAO token\'i ',
+  DAOModal_3:             ' yerine', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
   DGD_Label_1:            'Tahmini bedel:',
   DGD_Label_2:            'Maximum bedel:',
   DGD_Label_3:            'Gas fiyati:',
-  DGD_Generate:           'Talep oluştur', /* Maybe "Talep" is the wrong word fpr "Claim" */
+  DGD_Generate:           'Talep oluştur', /* Maybe "Talep" is the wrong word for "Claim" */
   DGD_Content:            'Suan DGD token\'lerini talep etmekdesin.',
 
   /* Deploy Contracts */
   DEP_generate:           'Bytecode oluştur',
   DEP_generated:          'Oluşturulan Bytecode',
   DEP_signtx:             'Islmemi Imzala',
-  DEP_interface:          'Generated Interface',
+  DEP_interface:          'Interface oluştur',
 
   /* My Wallet */
   MYWAL_Nick:             'Cüzdan nickname',
@@ -16073,22 +16074,22 @@ tr.data = {
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
 
   /* Chrome Extension */
-  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
-  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  CX_error_1:           'Su an cüzdan eklenmemis. Cüzdan ekle tikla ["Add Wallet"](/cx-wallet.html#add-wallet) ve bir cüzdan ekle!',
+  CX_quicksend:         'Gönder', // if no appropriate translation, just use "Send" maybe add hizli
 
   /* Error Messages */
   ERROR_1:              'Geçerli tutar yaz.',
   ERROR_2:              'Sifren en az 9 sembol\'dan olusmasi lazim. Güçlü bir parola sectiginden emin ol. ',
   ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
   ERROR_4:              'Geçerli bir cüzdan dosyası değil. ',
-  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
+  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units Var olmayan bir birim, bu birimlerden birini kullan lütfen',
   ERROR_6:              'Geçersiz adres. ',
   ERROR_7:              'Geçersiz parola. ',
-  ERROR_8:              'Geçersiz bakiye. ', /*maybe yetersiz bakiye */
+  ERROR_8:              'Yetersiz bakiye. ', /*maybe yetersiz bakiye */
   ERROR_9:              'Geçersiz gas limit. ',
   ERROR_10:             'Geçersiz data value. ',
-  ERROR_11:             'Geçersiz gas. ', /*maybe yetersiz gas */
-  ERROR_12:             'Geçersiz nonce. ', /* Bu ne lan simdi */
+  ERROR_11:             'Yetersiz gas. ', /*maybe yetersiz gas */
+  ERROR_12:             'Geçersiz veri. ',
   ERROR_13:             'Geçersiz imzali isleme. ',
   ERROR_14:             'Secdigin Nickname baska bir cüzdanda kullaniliyor. ',
   ERROR_15:             'Cüzdan bulunmadi. ',
@@ -16098,7 +16099,7 @@ tr.data = {
   ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
   ERROR_20:             'Geçersiz sembol',
   SUCCESS_1:            'Geçerli adres',
-  SUCCESS_2:            'Cüzdan basariyla decrypted', /* searching */
+  SUCCESS_2:            'Cüzdan basariyla desifre edildi',
   SUCCESS_3:            'İşlem teslim edildi TX ID: ',
   SUCCESS_4:            'Cüzdanın başarıyla eklendi: ',
   SUCCESS_5:            'Başarıyla oy verdiniz. DAO aktif bir katılımcı olduğunuz için teşekkür ederiz.',
@@ -17037,7 +17038,7 @@ vi.data = {
 
   /* General */
   x_Address:            'Địa Chỉ Của Bạn',
-  x_AddessDesc:         'Bạn có thể xem đây là Địa chỉ ví cá nhân của bạn. Bạn có hảy gửi "Địa chỉ ví" này đến người mà bạn muốn nhận ETH từ họ. Biểu tượng bên cạnh giúp việc nhận dạng "Địa chỉ ví" của bạn dể dàng hơn.',
+  x_AddessDesc:         'Bạn có thể xem đây là Địa chỉ ví cá nhân của bạn. Bạn có thể gửi "Địa chỉ ví" này đến người mà bạn muốn nhận ETH từ họ. Biểu tượng bên cạnh giúp việc nhận dạng "Địa chỉ ví" của bạn dễ dàng hơn.',
   x_CSV:                'Định Dạng CSV (Không mã hoá)',
   x_Cancel:             'Huỷ',
   x_Download:           'Tải Về Máy',
@@ -17045,7 +17046,7 @@ vi.data = {
   x_JsonDesc:           'Định Dạng JSON là một tập tin chứa dữ liệu ví chưa được mã hoá của Private Key. Bạn có thể đăng nhập vào ví của bạn bằng việc sử dụng định dạng JSON mà không cần đến mật khẩu. Vì vậy, bất kỳ người nào sở hữu định dạng  JSON của bạn thì họ đều có khả năng đăng nhập vào ví của bạn mà không cần đến mật khẩu.',
   x_Keystore:           'Định Dạng Keystore/JSON (Đã mã hoá. Định Dạng này sử dụng cho Mist/Geth)',
   x_Keystore2:          'Định Dạng Keystore / JSON',
-  x_KeystoreDesc:       'Định dạng Keystore/JSON là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist & Geth. Do đó bạn có thể dể dàng bỏ nó vào bên trong Mist & Geth và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
+  x_KeystoreDesc:       'Định dạng Keystore/JSON là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist & Geth. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist & Geth và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
   x_Password:           'Mật Khẩu',
   x_Print:              'Tạo Ví Giấy',
   x_PrintDesc:          'Mẹo: kích chuột trái vào nút "In Ví" sau đó chọn "Save this as a PDF" để lưu nó thành định dạng PDF trên máy tính của bạn nếu bạn không sở hửu máy in cá nhân!',
@@ -17076,15 +17077,15 @@ vi.data = {
   sidebar_AccountBal:   'Số Dư Tài Khoản: ',
   sidebar_TokenBal:     'Số Dư Token: ',
   sidebar_Equiv:        'Giá Trị Tương Đương: ',
-  sidebar_TransHistory: 'Lịch Sữ Giao Dịch: ',
+  sidebar_TransHistory: 'Lịch Sử Giao Dịch: ',
   sidebar_DGDBal:       'Thông Tin Crowdsale DGD:',
-  sidebar_donation:     'MyEtherWallet là một ứng dụng miển phí được xây dựng trên mã nguồn mở nhằm bảo vệ quyền riêng tư và sự bảo mật của người sử dụng. các khoản quyên góp mà chúng tôi nhận được sẽ giúp chúng tôi có cơ hội dành nhiều thơi gian hơn cho việc lắng nghe những phản hồi từ người sử dụng nhằm tạo ra những ứng dụng mới nhằm đáp ứng những mong muốn từ người sử dụng. Chúng tôi hiện tại là hai cá nhân đang cố gắng làm cho thế giới ngày một tốt hơn. Hảy cùng chung giúp chúng tôi',
+  sidebar_donation:     'MyEtherWallet là một ứng dụng miễn phí được xây dựng trên mã nguồn mở nhằm bảo vệ quyền riêng tư và sự bảo mật của người sử dụng. các khoản quyên góp mà chúng tôi nhận được sẽ giúp chúng tôi có cơ hội dành nhiều thơi gian hơn cho việc lắng nghe những phản hồi từ người sử dụng nhằm tạo ra những ứng dụng mới nhằm đáp ứng những mong muốn từ người sử dụng. Chúng tôi hiện tại là hai cá nhân đang cố gắng làm cho thế giới ngày một tốt hơn. Hãy cùng chung giúp chúng tôi',
   sidebar_donate:       'Quyên Góp',
   sidebar_thanks:       'Xin Chân Thành Cảm Ơn!!!',
 
   /* Decrypt Panel */
   decrypt_Access:         'Làm thế nào để truy cập vào ví của bạn?',
-  decrypt_Title:          'Chọn Loại Định Dạng Private Key Thích Tợp:',
+  decrypt_Title:          'Chọn Loại Định Dạng Private Key Thích Hợp:',
   decrypt_Select:         'Chọn ví:',
 
   /* Add Wallet */
@@ -17109,7 +17110,7 @@ vi.data = {
   GEN_Label_1:            'Tạo mật khẩu thật mạnh nhằm bảo mật tài khoản (ít nhất 9 ký tự)',
   GEN_Placeholder_1:      'Lưu nó lại một cách cẩn thận!',
   GEN_SuccessMsg:         'Ví của bạn đã được tạo thành công.',
-  GEN_Warning:            '**Bạn cần sử dụng tập tin chứa định dạng Keystore/JSON cùng với Mật khẩu hoặc Private Key của bạn** cho việc đăng nhập vào ví này trong tương lai. Hảy sao lưu và cất giữ nó cẩn thận tại kho lưu trữ của bạn! Không có cách nào để khôi phục Ví của bạn nếu bạn không sao lưu dữ liệu ví lại. Đọc Thêm [trang trợ giúp] (https://www.myetherwallet.com/#help) để được hướng dẫn cụ thể.',
+  GEN_Warning:            '**Bạn cần sử dụng tập tin chứa định dạng Keystore/JSON cùng với Mật khẩu hoặc Private Key của bạn** cho việc đăng nhập vào ví này trong tương lai. Hãy sao lưu và cất giữ nó cẩn thận tại kho lưu trữ của bạn! Không có cách nào để khôi phục Ví của bạn nếu bạn không sao lưu dữ liệu ví lại. Đọc Thêm [trang trợ giúp] (https://www.myetherwallet.com/#help) để được hướng dẫn cụ thể.',
   GEN_Label_2:            'Lưu lại tập tin chứa định dạng Keystore/JSON hoặc Private Key. Đừng quên mật khẩu mà bạn đã tạo phía trên.',
   GEN_Label_3:            'Địa Chỉ Ví (bạn cần lưu lại cho việc sử dụng).',
   GEN_Label_4:            'Bạn có thể in ví giấy hoặc lưu giữ mã QR một cách cẩn thận.',
@@ -17125,7 +17126,7 @@ vi.data = {
   SEND_amount_short:     'Số Lượng',
   SEND_custom:           'Tuỳ Chỉnh',
   SEND_gas:              'Gas',
-  SEND_TransferTotal:    'Gởi Hết Số Dư Hiện Có',
+  SEND_TransferTotal:    'Gửi Hết Số Dư Hiện Có',
   SEND_generate:         'Tạo Giao Dịch',
   SEND_raw:              'Định Dạng Giao Dịch',
   SEND_signed:           'Chữ Ký Giao Dich',
@@ -17137,7 +17138,7 @@ vi.data = {
   SENDModal_Content_3:   'Bạn đã chắc chắn muốn thực hiện giao dịch này',
   SENDModal_Content_4:   'Lưu Ý: Nếu bạn gặp lỗi, bạn cần phải thêm ether vào tài khoản của bạn để thanh toán chi phí gas của việc gửi Token. Gas được thanh toán bằng ether.',
   SENDModal_No:          'Không, Đưa tôi ra khỏi đây!',
-  SENDModal_Yes:         'Có, Tôi chắc chắn! Hảy thực hiện giao dịch.',
+  SENDModal_Yes:         'Có, Tôi chắc chắn! Hãy thực hiện giao dịch.',
 
   /* Tokens */
   TOKEN_Addr:            'Địa Chỉ: ',
@@ -17146,22 +17147,22 @@ vi.data = {
 
   /* Send Transaction */
   TRANS_desc:            'Nếu bạn muốn gửi Token, xin vui lòng sử dụng danh mục "Gửi Token".',
-  TRANS_warning:         'Nếu bạn sử dụng chức năng "Chỉ ETH" hoặc "Chỉ ETC" trong vệc gửi đi thông qua một hợp đồng thông minh. Những dịch vụ có chức năng chấp nhận các giao dịch. Đọc Thêm.',
+  TRANS_warning:         'Nếu bạn sử dụng chức năng "Chỉ ETH" hoặc "Chỉ ETC" trong việc gửi đi thông qua một hợp đồng thông minh. Những dịch vụ có chức năng chấp nhận các giao dịch. Đọc Thêm.',
   TRANS_standard:        'ETH (Giao Dịch Phổ Thông)',
   TRANS_eth:             'Chỉ ETH',
   TRANS_etc:             'Chỉ ETC',
-  TRANS_advanced:        '+Nâng Cao: Thêm Gas hoặc Dữ Liệu',
+  TRANS_advanced:        'Nâng Cao: Thêm Gas hoặc Dữ Liệu',
   TRANS_data:            'Dữ Liệu:',
   TRANS_gas:             'Gas:',
-  TRANS_sendInfo:        'Mổi Giao dịch Phổ Thông sử dụng hết 21000 gas có giá tương đương 0.000441 ETH. Chúng tôi áp dụng giá Gas dành cho một giao dịch cao hơn so với mức tối thiểu là 0.000000021 ETH nhằm đảm bảo một giao dịch được diển ra nhanh. Chúng tôi hoàn toàn không nhận được khoản tiền phát sinh nào từ phí giao dịch.',
+  TRANS_sendInfo:        'Mỗi Giao dịch Phổ Thông sử dụng hết 21000 gas có giá tương đương 0.000441 ETH. Chúng tôi áp dụng giá Gas dành cho một giao dịch cao hơn so với mức tối thiểu là 0.000000021 ETH nhằm đảm bảo một giao dịch được diễn ra nhanh. Chúng tôi hoàn toàn không nhận được khoản tiền phát sinh nào từ phí giao dịch.',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      'Giao Dịch "Chỉ ETH" Và "Chỉ ETC"',
   TRANSModal_Content_0:  'Một số lưu ý về sự khác biệt của từng loại giao dịch và sự khác biệt của từng dịch vụ:',
-  TRANSModal_Content_1:  '**ETH (Giao Dịch Phổ Thông): ** Phương pháp này mạc định rằng nó sẽ tạo giao dịch từ một địa chỉ gửi đến địa chỉ nhận khác và nó sẽ tiêu thụ hết 21000 gas. Theo giả thuyết thì bất kì số ETH gửi đi thông qua phương pháp này sẽ được thực hiện lại tương tự trên chuổi ETC.',
+  TRANSModal_Content_1:  '**ETH (Giao Dịch Phổ Thông): ** Phương pháp này mặc định rằng nó sẽ tạo giao dịch từ một địa chỉ gửi đến địa chỉ nhận khác và nó sẽ tiêu thụ hết 21000 gas. Theo giả thuyết thì bất kì số ETH gửi đi thông qua phương pháp này sẽ được thực hiện lại tương tự trên chuổi ETC.',
   TRANSModal_Content_2:  '**Chỉ ETH: ** Phương pháp này sẽ thực hiện giao dịch thông qua [Hợp đồng thông minh nhằm "tránh việc phát lại" được phát triển bởi Timon Rapp (theo lời cảnh báo của VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) vì vậy giao dịch này chỉ được thực hiện trên chuổi **ETH**.',
   TRANSModal_Content_3:  '**Chỉ ETC: ** Phương pháp này sẽ thực hiện giao dịch thông qua [Hợp đồng thông minh nhằm "tránh việc phát lại" được phát triển bởi Timon Rapp (theo lời cảnh báo của VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) vì vậy giao dịch này chỉ được thực hiện trên chuổi **ETC**. ',
-  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Giao Dịch chỉ được thực hiện thông qua giao dịch phổ thông. Nếu bạn thực hiện thông qua hợp đồng "Chỉ", thì bạn cần phải liên hệ trực tiếp với nhân viên hổ trợ của họ để họ tự thêm vào hoặc hoàn lại tiền cho bạn. [bạn cũng có thể thử với công cụ "chia tách" của Shapeshift.](https://split.shapeshift.io/)',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Giao Dịch chỉ được thực hiện thông qua giao dịch phổ thông. Nếu bạn thực hiện thông qua hợp đồng "Chỉ", thì bạn cần phải liên hệ trực tiếp với nhân viên hỗ trợ của họ để họ tự thêm vào hoặc hoàn lại tiền cho bạn. [bạn cũng có thể thử với công cụ "chia tách" của Shapeshift.](https://split.shapeshift.io/)',
   TRANSModal_Content_5:  '**Kraken & Poloniex:** không có sự cố nào xảy ra khi thực hiện giao dịch.',
   TRANSModal_Yes:        'Tuyệt vời, Tôi dã hiểu.',
   TRANSModal_No:         'Tôi gặp gặp phải một vài vấn đề khó hiểu.Làm ơn giúp tôi hiểu rõ hơn.',
@@ -17179,7 +17180,7 @@ vi.data = {
   OFFLINE_Step2_Label_3:  'Giá Gas',
   OFFLINE_Step2_Label_3b: 'Điều này đã được hiển thị ở bước 1 trên máy tính trực tuyến của bạn.',
   OFFLINE_Step2_Label_4:  'Giới hạn Gas',
-  OFFLINE_Step2_Label_4b: '21000 mạc định sẽ là số gas giới hạn. khi bạn gửi đi một hợp đồng hoặc thêm dữ liệu, việc này sẽ cần phải làm khác đi. Lượng Gas không được sử dụng sẽ hoàn trả cho bạn.',
+  OFFLINE_Step2_Label_4b: '21000 măc định sẽ là số gas giới hạn. khi bạn gửi đi một hợp đồng hoặc thêm dữ liệu, việc này sẽ cần phải làm khác đi. Lượng Gas không được sử dụng sẽ hoàn trả cho bạn.',
   OFFLINE_Step2_Label_5:  'Nonce',
   OFFLINE_Step2_Label_5b: 'Điều này đã được hiển thị ở bước 1 trên máy tính trực tuyến của bạn.',
   OFFLINE_Step2_Label_6:  'Dữ Liệu',
@@ -17194,10 +17195,10 @@ vi.data = {
   DAO_TitleETH:           'Thu Hồi DAO Và Hoàn Trả ETH',
   DAO_TitleETC:           'Thu Hồi DAO Và Hoàn Trả ETC',
   DAO_ETC_Label_1:        'Địa chỉ mà bạn muốn số lượng ETC của bạn được gửi đến?',
-  DAO_ETC_Label_2:        'Nhóm Whitehat đã làm việc cật lực để đòi lại số ETC và mang mang về cho bạn. Bạn có thể nói lời cảm ơn đến họ bằng cách quyên góp một phần tỷ lệ % từ khoảng hoàn lại của bạn. ',
+  DAO_ETC_Label_2:        'Nhóm Whitehat đã làm việc cật lực để đòi lại số ETC và mang về cho bạn. Bạn có thể nói lời cảm ơn đến họ bằng cách quyên góp một phần tỷ lệ % từ khoảng hoàn lại của bạn. ',
   DAO_Desc:               'Sử dụng phần này cho việc thu hồi DAO Token và hoàn trả lại **ETH & ETC**. Nếu bạn muốn gửi DAO Token, xin vui lòng sử dụng mục "gửi Token".',
   DAO_Inst:               'Đúng rồi, Bạn chỉ cần chọn vào nút lớn màu đỏ.',
-  DAO_Warning:            'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hảy thêm vào 0.001 ether vào tài khoản và thực hiện lại. ',
+  DAO_Warning:            'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hãy thêm vào 0.001 ether vào tài khoản và thực hiện lại. ',
   DAOModal_Title:         'Đảm bảo rằng...',
   DAOModal_1:             'Bạn Muốn thực hiện việc "Thu Hồi"',
   DAOModal_2:             'Số Dao Token đến',
@@ -17231,7 +17232,7 @@ vi.data = {
   MYWAL_Edit_2:           'Chỉnh Sửa Ví: ',
   MYWAL_Name:             'Tên Ví',
   MYWAL_Content_1:        'Cảnh Báo! Bạn Muốn gỡ bỏ Ví của bạn: ',
-  MYWAL_Content_2:        'Hảy chắc chắn bạn đã **Lưu giữ Private Key hoặc Tập Tin chứa định dạng Keystore và mật khẩu** Trước khi bạn gỡ bỏ nó.',
+  MYWAL_Content_2:        'Hãy chắc chắn bạn đã **Lưu giữ Private Key hoặc Tập Tin chứa định dạng Keystore và mật khẩu** Trước khi bạn gỡ bỏ nó.',
   MYWAL_Content_3:        'Nếu bạn muốn sử dụng địa chỉ Ví này với MyEtherWallet CX trong tương lai, bạn sẽ cần phải tự thêm vào lại bằng cách sử dụng tập tin Private Key / JSON và mật khẩu.',
 
   /* View Wallet Details */
