@@ -81,7 +81,6 @@ it.data = {
   ADD_Radio_2:            'Seleziona il file del tuo portafoglio (Keystore / JSON)',
   ADD_Radio_2_alt:        'Seleziona il file del tuo portafoglio: ',
   ADD_Radio_2_short:      'SELEZIONA FILE PORTAFOGLIO...',
-  ADD_Radio_2_success:    'File selezionato: ',
   ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata ',
   ADD_Radio_4:            'Aggiungi un conto da osservare',
   ADD_Label_2:            'Crea un nome:',
@@ -259,6 +258,7 @@ it.data = {
   SUCCESS_3:            'Transazione inviata. TX ID: ',
   SUCCESS_4:            'Il portafoglio è stato aggiunto correttamente: ',
   SUCCESS_5:            'Hai votato con successo. Grazie per essere un partecipante attivo in The DAO.',
+  SUCCESS_6:            'File selezionato: ',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Mittente non valido',
