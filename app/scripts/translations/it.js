@@ -260,6 +260,17 @@ it.data = {
   SUCCESS_4:            'Il portafoglio è stato aggiunto correttamente: ',
   SUCCESS_5:            'Hai votato con successo. Grazie per essere un partecipante attivo in The DAO.',
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Mittente non valido',
+  GETH_Nonce:              'Nonce troppo basso',
+  GETH_Cheap:              'Prezzo del gas troppo basso per essere accettato',
+  GETH_Balance:            'Saldo insufficiente',
+  GETH_NonExistentAccount: 'Il conto non esiste o il saldo è insufficiente',
+  GETH_InsufficientFunds:  'Fondi insufficienti per gas * prezzo + valore',
+  GETH_IntrinsicGas:       'Gas intrinseco troppo basso',
+  GETH_GasLimit:           'Eccede il limite gas per il blocco',
+  GETH_NegativeValue:      'Valore negativo',
+
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Grazie ai nostri traduttori: ',
