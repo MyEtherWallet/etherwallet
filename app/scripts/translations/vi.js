@@ -35,7 +35,7 @@ vi.data = {
 
   /* General */
   x_Address:            'Địa Chỉ Của Bạn',
-  x_AddessDesc:         'Bạn có thể xem đây là Địa chỉ ví cá nhân của bạn. Bạn có hảy gửi "Địa chỉ ví" này đến người mà bạn muốn nhận ETH từ họ. Biểu tượng bên cạnh giúp việc nhận dạng "Địa chỉ ví" của bạn dể dàng hơn.',
+  x_AddessDesc:         'Bạn có thể xem đây là Địa chỉ ví cá nhân của bạn. Bạn có thể gửi "Địa chỉ ví" này đến người mà bạn muốn nhận ETH từ họ. Biểu tượng bên cạnh giúp việc nhận dạng "Địa chỉ ví" của bạn dễ dàng hơn.',
   x_CSV:                'Định Dạng CSV (Không mã hoá)',
   x_Cancel:             'Huỷ',
   x_Download:           'Tải Về Máy',
@@ -43,7 +43,7 @@ vi.data = {
   x_JsonDesc:           'Định Dạng JSON là một tập tin chứa dữ liệu ví chưa được mã hoá của Private Key. Bạn có thể đăng nhập vào ví của bạn bằng việc sử dụng định dạng JSON mà không cần đến mật khẩu. Vì vậy, bất kỳ người nào sở hữu định dạng  JSON của bạn thì họ đều có khả năng đăng nhập vào ví của bạn mà không cần đến mật khẩu.',
   x_Keystore:           'Định Dạng Keystore/JSON (Đã mã hoá. Định Dạng này sử dụng cho Mist/Geth)',
   x_Keystore2:          'Định Dạng Keystore / JSON',
-  x_KeystoreDesc:       'Định dạng Keystore/JSON là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist & Geth. Do đó bạn có thể dể dàng bỏ nó vào bên trong Mist & Geth và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
+  x_KeystoreDesc:       'Định dạng Keystore/JSON là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist & Geth. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist & Geth và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
   x_Password:           'Mật Khẩu',
   x_Print:              'Tạo Ví Giấy',
   x_PrintDesc:          'Mẹo: kích chuột trái vào nút "In Ví" sau đó chọn "Save this as a PDF" để lưu nó thành định dạng PDF trên máy tính của bạn nếu bạn không sở hửu máy in cá nhân!',
@@ -74,15 +74,15 @@ vi.data = {
   sidebar_AccountBal:   'Số Dư Tài Khoản: ',
   sidebar_TokenBal:     'Số Dư Token: ',
   sidebar_Equiv:        'Giá Trị Tương Đương: ',
-  sidebar_TransHistory: 'Lịch Sữ Giao Dịch: ',
+  sidebar_TransHistory: 'Lịch Sử Giao Dịch: ',
   sidebar_DGDBal:       'Thông Tin Crowdsale DGD:',
-  sidebar_donation:     'MyEtherWallet là một ứng dụng miển phí được xây dựng trên mã nguồn mở nhằm bảo vệ quyền riêng tư và sự bảo mật của người sử dụng. các khoản quyên góp mà chúng tôi nhận được sẽ giúp chúng tôi có cơ hội dành nhiều thơi gian hơn cho việc lắng nghe những phản hồi từ người sử dụng nhằm tạo ra những ứng dụng mới nhằm đáp ứng những mong muốn từ người sử dụng. Chúng tôi hiện tại là hai cá nhân đang cố gắng làm cho thế giới ngày một tốt hơn. Hảy cùng chung giúp chúng tôi',
+  sidebar_donation:     'MyEtherWallet là một ứng dụng miễn phí được xây dựng trên mã nguồn mở nhằm bảo vệ quyền riêng tư và sự bảo mật của người sử dụng. các khoản quyên góp mà chúng tôi nhận được sẽ giúp chúng tôi có cơ hội dành nhiều thơi gian hơn cho việc lắng nghe những phản hồi từ người sử dụng nhằm tạo ra những ứng dụng mới nhằm đáp ứng những mong muốn từ người sử dụng. Chúng tôi hiện tại là hai cá nhân đang cố gắng làm cho thế giới ngày một tốt hơn. Hãy cùng chung giúp chúng tôi',
   sidebar_donate:       'Quyên Góp',
   sidebar_thanks:       'Xin Chân Thành Cảm Ơn!!!',
 
   /* Decrypt Panel */
   decrypt_Access:         'Làm thế nào để truy cập vào ví của bạn?',
-  decrypt_Title:          'Chọn Loại Định Dạng Private Key Thích Tợp:',
+  decrypt_Title:          'Chọn Loại Định Dạng Private Key Thích Hợp:',
   decrypt_Select:         'Chọn ví:',
 
   /* Add Wallet */
@@ -107,7 +107,7 @@ vi.data = {
   GEN_Label_1:            'Tạo mật khẩu thật mạnh nhằm bảo mật tài khoản (ít nhất 9 ký tự)',
   GEN_Placeholder_1:      'Lưu nó lại một cách cẩn thận!',
   GEN_SuccessMsg:         'Ví của bạn đã được tạo thành công.',
-  GEN_Warning:            '**Bạn cần sử dụng tập tin chứa định dạng Keystore/JSON cùng với Mật khẩu hoặc Private Key của bạn** cho việc đăng nhập vào ví này trong tương lai. Hảy sao lưu và cất giữ nó cẩn thận tại kho lưu trữ của bạn! Không có cách nào để khôi phục Ví của bạn nếu bạn không sao lưu dữ liệu ví lại. Đọc Thêm [trang trợ giúp] (https://www.myetherwallet.com/#help) để được hướng dẫn cụ thể.',
+  GEN_Warning:            '**Bạn cần sử dụng tập tin chứa định dạng Keystore/JSON cùng với Mật khẩu hoặc Private Key của bạn** cho việc đăng nhập vào ví này trong tương lai. Hãy sao lưu và cất giữ nó cẩn thận tại kho lưu trữ của bạn! Không có cách nào để khôi phục Ví của bạn nếu bạn không sao lưu dữ liệu ví lại. Đọc Thêm [trang trợ giúp] (https://www.myetherwallet.com/#help) để được hướng dẫn cụ thể.',
   GEN_Label_2:            'Lưu lại tập tin chứa định dạng Keystore/JSON hoặc Private Key. Đừng quên mật khẩu mà bạn đã tạo phía trên.',
   GEN_Label_3:            'Địa Chỉ Ví (bạn cần lưu lại cho việc sử dụng).',
   GEN_Label_4:            'Bạn có thể in ví giấy hoặc lưu giữ mã QR một cách cẩn thận.',
@@ -123,7 +123,7 @@ vi.data = {
   SEND_amount_short:     'Số Lượng',
   SEND_custom:           'Tuỳ Chỉnh',
   SEND_gas:              'Gas',
-  SEND_TransferTotal:    'Gởi Hết Số Dư Hiện Có',
+  SEND_TransferTotal:    'Gửi Hết Số Dư Hiện Có',
   SEND_generate:         'Tạo Giao Dịch',
   SEND_raw:              'Định Dạng Giao Dịch',
   SEND_signed:           'Chữ Ký Giao Dich',
@@ -135,7 +135,7 @@ vi.data = {
   SENDModal_Content_3:   'Bạn đã chắc chắn muốn thực hiện giao dịch này',
   SENDModal_Content_4:   'Lưu Ý: Nếu bạn gặp lỗi, bạn cần phải thêm ether vào tài khoản của bạn để thanh toán chi phí gas của việc gửi Token. Gas được thanh toán bằng ether.',
   SENDModal_No:          'Không, Đưa tôi ra khỏi đây!',
-  SENDModal_Yes:         'Có, Tôi chắc chắn! Hảy thực hiện giao dịch.',
+  SENDModal_Yes:         'Có, Tôi chắc chắn! Hãy thực hiện giao dịch.',
 
   /* Tokens */
   TOKEN_Addr:            'Địa Chỉ: ',
@@ -144,22 +144,22 @@ vi.data = {
 
   /* Send Transaction */
   TRANS_desc:            'Nếu bạn muốn gửi Token, xin vui lòng sử dụng danh mục "Gửi Token".',
-  TRANS_warning:         'Nếu bạn sử dụng chức năng "Chỉ ETH" hoặc "Chỉ ETC" trong vệc gửi đi thông qua một hợp đồng thông minh. Những dịch vụ có chức năng chấp nhận các giao dịch. Đọc Thêm.',
+  TRANS_warning:         'Nếu bạn sử dụng chức năng "Chỉ ETH" hoặc "Chỉ ETC" trong việc gửi đi thông qua một hợp đồng thông minh. Những dịch vụ có chức năng chấp nhận các giao dịch. Đọc Thêm.',
   TRANS_standard:        'ETH (Giao Dịch Phổ Thông)',
   TRANS_eth:             'Chỉ ETH',
   TRANS_etc:             'Chỉ ETC',
-  TRANS_advanced:        '+Nâng Cao: Thêm Gas hoặc Dữ Liệu',
+  TRANS_advanced:        'Nâng Cao: Thêm Gas hoặc Dữ Liệu',
   TRANS_data:            'Dữ Liệu:',
   TRANS_gas:             'Gas:',
-  TRANS_sendInfo:        'Mổi Giao dịch Phổ Thông sử dụng hết 21000 gas có giá tương đương 0.000441 ETH. Chúng tôi áp dụng giá Gas dành cho một giao dịch cao hơn so với mức tối thiểu là 0.000000021 ETH nhằm đảm bảo một giao dịch được diển ra nhanh. Chúng tôi hoàn toàn không nhận được khoản tiền phát sinh nào từ phí giao dịch.',
+  TRANS_sendInfo:        'Mỗi Giao dịch Phổ Thông sử dụng hết 21000 gas có giá tương đương 0.000441 ETH. Chúng tôi áp dụng giá Gas dành cho một giao dịch cao hơn so với mức tối thiểu là 0.000000021 ETH nhằm đảm bảo một giao dịch được diễn ra nhanh. Chúng tôi hoàn toàn không nhận được khoản tiền phát sinh nào từ phí giao dịch.',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      'Giao Dịch "Chỉ ETH" Và "Chỉ ETC"',
   TRANSModal_Content_0:  'Một số lưu ý về sự khác biệt của từng loại giao dịch và sự khác biệt của từng dịch vụ:',
-  TRANSModal_Content_1:  '**ETH (Giao Dịch Phổ Thông): ** Phương pháp này mạc định rằng nó sẽ tạo giao dịch từ một địa chỉ gửi đến địa chỉ nhận khác và nó sẽ tiêu thụ hết 21000 gas. Theo giả thuyết thì bất kì số ETH gửi đi thông qua phương pháp này sẽ được thực hiện lại tương tự trên chuổi ETC.',
+  TRANSModal_Content_1:  '**ETH (Giao Dịch Phổ Thông): ** Phương pháp này mặc định rằng nó sẽ tạo giao dịch từ một địa chỉ gửi đến địa chỉ nhận khác và nó sẽ tiêu thụ hết 21000 gas. Theo giả thuyết thì bất kì số ETH gửi đi thông qua phương pháp này sẽ được thực hiện lại tương tự trên chuổi ETC.',
   TRANSModal_Content_2:  '**Chỉ ETH: ** Phương pháp này sẽ thực hiện giao dịch thông qua [Hợp đồng thông minh nhằm "tránh việc phát lại" được phát triển bởi Timon Rapp (theo lời cảnh báo của VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) vì vậy giao dịch này chỉ được thực hiện trên chuổi **ETH**.',
   TRANSModal_Content_3:  '**Chỉ ETC: ** Phương pháp này sẽ thực hiện giao dịch thông qua [Hợp đồng thông minh nhằm "tránh việc phát lại" được phát triển bởi Timon Rapp (theo lời cảnh báo của VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) vì vậy giao dịch này chỉ được thực hiện trên chuổi **ETC**. ',
-  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Giao Dịch chỉ được thực hiện thông qua giao dịch phổ thông. Nếu bạn thực hiện thông qua hợp đồng "Chỉ", thì bạn cần phải liên hệ trực tiếp với nhân viên hổ trợ của họ để họ tự thêm vào hoặc hoàn lại tiền cho bạn. [bạn cũng có thể thử với công cụ "chia tách" của Shapeshift.](https://split.shapeshift.io/)',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Giao Dịch chỉ được thực hiện thông qua giao dịch phổ thông. Nếu bạn thực hiện thông qua hợp đồng "Chỉ", thì bạn cần phải liên hệ trực tiếp với nhân viên hỗ trợ của họ để họ tự thêm vào hoặc hoàn lại tiền cho bạn. [bạn cũng có thể thử với công cụ "chia tách" của Shapeshift.](https://split.shapeshift.io/)',
   TRANSModal_Content_5:  '**Kraken & Poloniex:** không có sự cố nào xảy ra khi thực hiện giao dịch.',
   TRANSModal_Yes:        'Tuyệt vời, Tôi dã hiểu.',
   TRANSModal_No:         'Tôi gặp gặp phải một vài vấn đề khó hiểu.Làm ơn giúp tôi hiểu rõ hơn.',
@@ -177,7 +177,7 @@ vi.data = {
   OFFLINE_Step2_Label_3:  'Giá Gas',
   OFFLINE_Step2_Label_3b: 'Điều này đã được hiển thị ở bước 1 trên máy tính trực tuyến của bạn.',
   OFFLINE_Step2_Label_4:  'Giới hạn Gas',
-  OFFLINE_Step2_Label_4b: '21000 mạc định sẽ là số gas giới hạn. khi bạn gửi đi một hợp đồng hoặc thêm dữ liệu, việc này sẽ cần phải làm khác đi. Lượng Gas không được sử dụng sẽ hoàn trả cho bạn.',
+  OFFLINE_Step2_Label_4b: '21000 măc định sẽ là số gas giới hạn. khi bạn gửi đi một hợp đồng hoặc thêm dữ liệu, việc này sẽ cần phải làm khác đi. Lượng Gas không được sử dụng sẽ hoàn trả cho bạn.',
   OFFLINE_Step2_Label_5:  'Nonce',
   OFFLINE_Step2_Label_5b: 'Điều này đã được hiển thị ở bước 1 trên máy tính trực tuyến của bạn.',
   OFFLINE_Step2_Label_6:  'Dữ Liệu',
@@ -195,7 +195,7 @@ vi.data = {
   DAO_ETC_Label_2:        'Nhóm Whitehat đã làm việc cật lực để đòi lại số ETC và mang mang về cho bạn. Bạn có thể nói lời cảm ơn đến họ bằng cách quyên góp một phần tỷ lệ % từ khoảng hoàn lại của bạn. ',
   DAO_Desc:               'Sử dụng phần này cho việc thu hồi DAO Token và hoàn trả lại **ETH & ETC**. Nếu bạn muốn gửi DAO Token, xin vui lòng sử dụng mục "gửi Token".',
   DAO_Inst:               'Đúng rồi, Bạn chỉ cần chọn vào nút lớn màu đỏ.',
-  DAO_Warning:            'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hảy thêm vào 0.001 ether vào tài khoản và thực hiện lại. ',
+  DAO_Warning:            'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hãy thêm vào 0.001 ether vào tài khoản và thực hiện lại. ',
   DAOModal_Title:         'Đảm bảo rằng...',
   DAOModal_1:             'Bạn Muốn thực hiện việc "Thu Hồi"',
   DAOModal_2:             'Số Dao Token đến',
@@ -229,7 +229,7 @@ vi.data = {
   MYWAL_Edit_2:           'Chỉnh Sửa Ví: ',
   MYWAL_Name:             'Tên Ví',
   MYWAL_Content_1:        'Cảnh Báo! Bạn Muốn gỡ bỏ Ví của bạn: ',
-  MYWAL_Content_2:        'Hảy chắc chắn bạn đã **Lưu giữ Private Key hoặc Tập Tin chứa định dạng Keystore và mật khẩu** Trước khi bạn gỡ bỏ nó.',
+  MYWAL_Content_2:        'Hãy chắc chắn bạn đã **Lưu giữ Private Key hoặc Tập Tin chứa định dạng Keystore và mật khẩu** Trước khi bạn gỡ bỏ nó.',
   MYWAL_Content_3:        'Nếu bạn muốn sử dụng địa chỉ Ví này với MyEtherWallet CX trong tương lai, bạn sẽ cần phải tự thêm vào lại bằng cách sử dụng tập tin Private Key / JSON và mật khẩu.',
 
   /* View Wallet Details */
