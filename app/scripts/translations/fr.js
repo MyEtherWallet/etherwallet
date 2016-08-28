@@ -4,36 +4,6 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
-  HELP_12_Desc_15b:       'Si vous êtes sur un PC :',
-  ADD_Radio_2_success:    'Fichier sélectionné : ',
-  FOOTER_4:               'Avertissement,',
-
-  /* New - DAO ETC Withdrawal */
-  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
-  DAOModal_1:             'Vous êtes sur le point de retirer',
-  DAOModal_2:             'tokens DAO to',
-  DAOModal_3:             'pour', // "in return for"
-
-  DAO_bal1:               'au bloc 1.919.999',
-  DAO_bal2:               'actuel',
-  DAO_TitleETH:           'Retrait de DAO en ETH',
-  DAO_TitleETC:           'Retrait de DAO en ETC',
-  DAO_ETC_Label_1:        'À quelle adresse voulez-vous que les ETC soient envoyés ?',
-  DAO_ETC_Label_2:        'Le "White Hat Group" a travaillé sans relâche pour vous rendre vos ETC. Vous pouvez les remercier par une donation d\'un pourcentage de votre retrait si vous le souhaitez. ',
-
-  /* New - Deploy Contracts */
-  NAV_DeployContract:  'Deployer un contrat',
-  DEP_generate:        'Générer le bytecode',
-  DEP_generated:       'Bytecode généré',
-  DEP_signtx:          'Signer la transaction',
-  DEP_interface:       'Interface générée',
-
-  /* New */
-  CX_error_1:           'Vous n\'avez pas de portefeuille sauvegardé. Cliquez sur ["Ajout de portefeuille"](/cx-wallet.html#add-wallet) pour en ajouter un !',
-  CX_quicksend:         'Envoi rapide', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Envoi du solde total', // updated to be shorter
-  FOOTER_1b:            'Créé par',
-
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
   NAV_AddWallet:        'Ajout de portefeuille',
@@ -46,6 +16,7 @@ fr.data = {
   DAO_TitleLong:        'Échange de tokens DAO contre des ETH',
   NAV_ClaimDGD:         'Réclamation de DGD',
   DGD_TitleLong:        'Réclamation de vos tokens DGD',
+  NAV_DeployContract:  'Deployer un contrat',
   NAV_MyWallets:        'Mes portefeuilles',
   NAV_ViewWallet:       'Visualisation d\'un portefeuille',
   NAV_Help:             'Aide',
@@ -81,8 +52,10 @@ fr.data = {
 
   /* Footer */
   FOOTER_1:             'Un outil open source en Javascript s\'exécutant côté client pour générer des portefeuilles Ethereum et envoyer des transactions.',
+  FOOTER_1b:            'Créé par',
   FOOTER_2:             'Donations extrêmement appréciées :',
   FOOTER_3:             'Génération de portefeuille côté client par',
+  FOOTER_4:             'Avertissement,',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Informations du compte : ',
@@ -107,6 +80,7 @@ fr.data = {
   ADD_Radio_2:            'Choisissez le fichier de votre portefeuille (Keystore / JSON)',
   ADD_Radio_2_alt:        'Choisissez le fichier de portefeuille: ',
   ADD_Radio_2_short:      'CHOISISSEZ LE FICHIER DU PORTEFEUILLE...',
+  ADD_Radio_2_success:    'Fichier sélectionné : ',
   ADD_Radio_3:            'Collez/saisissez votre clé privée',
   ADD_Radio_4:            'Ajoutez un compte',
   ADD_Label_2:            'Nommez votre compte :',
@@ -139,6 +113,7 @@ fr.data = {
   SEND_amount_short:     'Montant',
   SEND_custom:           'Spécifique',
   SEND_gas:              'Gaz',
+  SEND_TransferTotal:    'Envoi du solde total', // updated to be shorter
   SEND_generate:         'Générer la transaction',
   SEND_raw:              'Transaction brute',
   SEND_signed:           'Transaction signée',
@@ -182,7 +157,7 @@ fr.data = {
   /* Offline Transaction */
   OFFLINE_Title:         'Génération et envoi d\'une transaction hors ligne',
   OFFLINE_Desc:          'La génération d\'une transaction hors ligne s\'effectue en trois étapes. Les étapes 1 et 3 sont réalisées sur un ordinateur en ligne et l\'étape 2 sur un ordinateur déconnecté du réseau. Cela permet d\'isoler totalement vos clefs privées de toute machine connectée à l\'internet.',
-  OFFLINE_Step1_Title:  'Étape 1 : Gérération de l\'information (ordinateur en ligne)',
+  OFFLINE_Step1_Title:   'Étape 1 : Gérération de l\'information (ordinateur en ligne)',
   OFFLINE_Step1_Button:  'Générer l\'information',
   OFFLINE_Step1_Label_1: 'Addresse d\'émission : ',
   OFFLINE_Step1_Label_2: 'Note : Il s\'agit de l\'adresse de départ, pas de l\'adresse d\'arrivée. Le nonce est généré à partir du compte de l\'expéditeur. Si on utilise une machine déconnectée du réseau, cette adresse est celle du compte en _cold storage_.',
@@ -202,10 +177,20 @@ fr.data = {
   OFFLINE_Step3_Label_1:  'Copier ici la transaction signée à l\'étape 2 et cliquez sur le bouton "ENVOYER LA TRANSACTION".',
 
   /* DAO */
+  DAO_bal1:               'au bloc 1.919.999',
+  DAO_bal2:               'actuel',
+  DAO_TitleETH:           'Retrait de DAO en ETH',
+  DAO_TitleETC:           'Retrait de DAO en ETC',
+  DAO_ETC_Label_1:        'À quelle adresse voulez-vous que les ETC soient envoyés ?',
+  DAO_ETC_Label_2:        'Le "White Hat Group" a travaillé sans relâche pour vous rendre vos ETC. Vous pouvez les remercier par une donation d\'un pourcentage de votre retrait si vous le souhaitez. ',
   DAO_Desc:               'Utilisez cet onglet pour retirer et convertir vos tokens en ETH. Si vous désirez envoyer des tokens DAO, utilisez l\'onglet Envoi de tokens.',
   DAO_Inst:               'Oui. Cliquez simplement sur le gros bouton rouge. Vous voyez, c\'est simple.',
   DAO_Warning:            'Si vous obtenez une erreur "Montant insuffisant pour le paiement du gaz", vous devez disposer d\'un petit montant en ether sur votre compte pour couvrir le coût en gaz. Ajoutez 0,001 ether sur votre compte et réessayez. ',
   DAOModal_Title:         'Juste pour être sûr...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
+  DAOModal_1:             'Vous êtes sur le point de retirer',
+  DAOModal_2:             'tokens DAO to',
+  DAOModal_3:             'pour', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Réclamez vos tokens et vos badges DigixDAO (DGD). Pour ce faire, vous devez avoir participé à la vente de tokens du 30 et 31 mars 2016. Si vous désirez envoyez des DGD, utilisez l\'onglet Envoi de tokens.',
@@ -214,6 +199,12 @@ fr.data = {
   DGD_Label_3:            'Prix du gaz :',
   DGD_Generate:           'Générer une réclamation',
   DGD_Content:            'Vous allez réclamer vos tokens DGD.',
+
+  /* Deploy Contracts */
+  DEP_generate:        'Générer le bytecode',
+  DEP_generated:       'Bytecode généré',
+  DEP_signtx:          'Signer la transaction',
+  DEP_interface:       'Interface générée',
 
   /* My Wallet */
   MYWAL_Nick:             'Nom du portefeuille',
@@ -237,9 +228,13 @@ fr.data = {
   VIEWWALLET_Subtitle_Short: 'Ceci vous permet de télécharger plusieurs versions des clefs privées et de ré-imprimer votre portefeuille papier. ',
   VIEWWALLET_SuccessMsg:     'Succès ! Voici les détails de votre portefeuille.',
 
+  /* Chrome Extension */
+  CX_error_1:           'Vous n\'avez pas de portefeuille sauvegardé. Cliquez sur ["Ajout de portefeuille"](/cx-wallet.html#add-wallet) pour en ajouter un !',
+  CX_quicksend:         'Envoi rapide', // if no appropriate translation, just use "Send"
+
   /* Error Messages */
-  ERROR_1:             'Veuillez entrer un montant valide.',
-  ERROR_2:             'Votre mot de passe doit faire au moins 9 caractères. Assurez vous qu\'il s\'agisse d\'un mot de passe fort.',
+  ERROR_1:              'Veuillez entrer un montant valide.',
+  ERROR_2:              'Votre mot de passe doit faire au moins 9 caractères. Assurez vous qu\'il s\'agisse d\'un mot de passe fort.',
   ERROR_3:              'Désolé ! Notre service ne permet pas de gérer ce type de fichier de portefeuille. ',
   ERROR_4:              'Ceci n\'est pas un fichier de portefeuille. ',
   ERROR_5:              'Cette unité n\'existe pas, merci d\'utiliser une des unités suivantes ',
@@ -265,7 +260,7 @@ fr.data = {
   SUCCESS_5:            'Vous avez voté avec succès. Merci d\'être un participant actif à The DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
   TranslatorName_1:     '[Simon P](https://www.myetherwallet.com/?gaslimit=21000&to=0x89a18eE46b5aabC62e94b1830881887D04C687f3&value=1.0#send-transaction) · ',
   TranslatorAddr_1:     '0x89a18eE46b5aabC62e94b1830881887D04C687f3',
@@ -468,6 +463,7 @@ fr.data = {
   HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
   HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
   HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_15b:       'Si vous êtes sur un PC :',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
   HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',

@@ -4,36 +4,6 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
-  HELP_12_Desc_15b:       'Если вы используете ПК:',
-  ADD_Radio_2_success:    'Выбранный файл: ',
-  FOOTER_4:               'Отказ от ответственности',
-
-  /* New - DAO ETC Withdrawal */
-  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
-  DAOModal_1:             'Вы собираетесь обменять',
-  DAOModal_2:             'DAO токенов. На адрес',
-  DAOModal_3:             'будет зачислено', // "in return for"
-
-  DAO_bal1:               'на момент создания блока №1.919.999',
-  DAO_bal2:               'текущий',
-  DAO_TitleETH:           'Обменять DAO токены на ETH',
-  DAO_TitleETC:           'Обменять DAO токены на ETC',
-  DAO_ETC_Label_1:        'На какой адрес зачислить ETC?',
-  DAO_ETC_Label_2:        'Группа "White Hat" работала не покладая рук для того, чтобы Вы смогли получить обратно Ваш ETC. Вы можете сказать им "спасибо", пожертвовав небольшой процент от суммы, если хотите, конечно. ',
-
-  /* New - Deploy Contracts */
-  NAV_DeployContract:  'Опубликовать контракт',
-  DEP_generate:        'Сформировать байткод',
-  DEP_generated:       'Сформированный байткод',
-  DEP_signtx:          'Подписать транзакцию',
-  DEP_interface:       'Сформированный интерфейс',
-
-  /* New */
-  CX_error_1:           'У Вас нет сохранённых кошельков. Чтобы создать кошелёк, нажмите ["Создать кошелёк"](/cx-wallet.html#add-wallet)!',
-  CX_quicksend:         'Моментальный перевод', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Перевести весь доступный баланс', // updated to be shorter
-  FOOTER_1b:            'Авторы:',
-
   /* Navigation*/
   NAV_YourWallets:      'Ваши кошельки',
   NAV_AddWallet:        'Добавить кошелёк',
@@ -46,6 +16,7 @@ ru.data = {
   DAO_TitleLong:        'Обменять DAO токены на эфир (ether)',
   NAV_ClaimDGD:         'Получить DGD',
   DGD_TitleLong:        'Получить причитающиеся Вам DGD токены',
+  NAV_DeployContract:   'Опубликовать контракт',
   NAV_MyWallets:        'Мои кошельки',
   NAV_ViewWallet:       'Информация о кошельке',
   NAV_Help:             'Справка',
@@ -81,8 +52,10 @@ ru.data = {
 
   /* Footer */
   FOOTER_1:             'Написанный на javascript инструмент с открытым исходным кодом, предназначенный для создания Ethereum кошельков и выполнения транзакций.',
+  FOOTER_1b:            'Авторы:',
   FOOTER_2:             'Пожертвования приветствуются:',
   FOOTER_3:             'Создание кошелька на стороне клиента от',
+  FOOTER_4:               'Отказ от ответственности',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Информация о счёте: ',
@@ -107,6 +80,7 @@ ru.data = {
   ADD_Radio_2:            'Выбрать файл с кошельком (Keystore/JSON)',
   ADD_Radio_2_alt:        'Выбрать файл с кошельком: ',
   ADD_Radio_2_short:      'ВЫБРАТЬ ФАЙЛ С КОШЕЛЬКОМ...',
+  ADD_Radio_2_success:    'Выбранный файл: ',
   ADD_Radio_3:            'Вставить или ввести Ваш закрытый ключ',
   ADD_Radio_4:            'Добавить счёт в список слежения',
   ADD_Label_2:            'Присвоить название:',
@@ -139,6 +113,7 @@ ru.data = {
   SEND_amount_short:     'Сумма',
   SEND_custom:           'Другое',
   SEND_gas:              'Газ',
+  SEND_TransferTotal:   'Перевести весь доступный баланс', // updated to be shorter
   SEND_generate:         'Сформировать транзакцию',
   SEND_raw:              'Готовая транзакция',
   SEND_signed:           'Подписанная транзакция',
@@ -202,10 +177,20 @@ ru.data = {
   OFFLINE_Step3_Label_1:  'Вставьте подписанную транзакцию с шага №2 и нажмите кнопку "ВЫПОЛНИТЬ ТРАНЗАКЦИЮ".',
 
   /* DAO */
+  DAO_bal1:               'на момент создания блока №1.919.999',
+  DAO_bal2:               'текущий',
+  DAO_TitleETH:           'Обменять DAO токены на ETH',
+  DAO_TitleETC:           'Обменять DAO токены на ETC',
+  DAO_ETC_Label_1:        'На какой адрес зачислить ETC?',
+  DAO_ETC_Label_2:        'Группа "White Hat" работала не покладая рук для того, чтобы Вы смогли получить обратно Ваш ETC. Вы можете сказать им "спасибо", пожертвовав небольшой процент от суммы, если хотите, конечно. ',
   DAO_Desc:               'Используйте эту вкладку, чтобы обменять Ваши DAO токены на эфир (ether). Если вы хотите перевести DAO токены, используйте вкладку "Перевести токены".',
   DAO_Inst:               'Да. Просто нажмите большую красную кнопку. Это действительно просто.',
   DAO_Warning:            'Если Вы видите ошибку "Недостаточно средств для оплаты газа", то это значит, что на Вашем счету не хватает эфира (ether), чтобы покрыть расходы на газ. Переведите 0,001 эфира (ether) на Ваш счёт и попробуйте снова. ',
   DAOModal_Title:         'Просто чтобы убедиться...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
+  DAOModal_1:             'Вы собираетесь обменять',
+  DAOModal_2:             'DAO токенов. На адрес',
+  DAOModal_3:             'будет зачислено', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Получить причитающиеся Вам DigixDAO (DGD) токены и бэйджи. Вы можете получить причитающиеся Вам токены, если Вы участвовали в в распродаже токенов 30–31 марта 2016 года.  Если Вы хотите перевести DGD токены, используйте вкладку "Перевести токены".',
@@ -214,6 +199,12 @@ ru.data = {
   DGD_Label_3:            'Цена газа:',
   DGD_Generate:           'Сформировать требование',
   DGD_Content:            'Вы собираетесь затребовать причитающиеся Вам DGD токены.',
+
+  /* Deploy Contracts */
+  DEP_generate:        'Сформировать байткод',
+  DEP_generated:       'Сформированный байткод',
+  DEP_signtx:          'Подписать транзакцию',
+  DEP_interface:       'Сформированный интерфейс',
 
   /* My Wallet */
   MYWAL_Nick:             'Название кошелька',
@@ -237,9 +228,14 @@ ru.data = {
   VIEWWALLET_Subtitle_Short: 'Позволяет Вам скачать Ваши закрытые ключи в различных форматах, а также повторно напечатать Ваши бумажные кошельки. ',
   VIEWWALLET_SuccessMsg:     'Поздравляем! Вот информация о Вашем кошельке.',
 
+  /* Chrome Extension */
+  CX_error_1:           'У Вас нет сохранённых кошельков. Чтобы создать кошелёк, нажмите ["Создать кошелёк"](/cx-wallet.html#add-wallet)!',
+  CX_quicksend:         'Моментальный перевод', // if no appropriate translation, just use "Send"
+
+
   /* Error Messages */
-  ERROR_1:             'Пожалуйста, введите сумму корректно.',
-  ERROR_2:             'Пароль должен содержать не менее 9 символов. Пожалуйста, используйте сложный пароль. ',
+  ERROR_1:              'Пожалуйста, введите сумму корректно.',
+  ERROR_2:              'Пароль должен содержать не менее 9 символов. Пожалуйста, используйте сложный пароль. ',
   ERROR_3:              'К сожалению, мы не смогли определить формат файла кошелька. ',
   ERROR_4:              'Этот файл не является файлом кошелька. ',
   ERROR_5:              'Такая единица измерения не существует. Пожалуйста, укажите одну из следующих единиц измерения ',
@@ -265,7 +261,7 @@ ru.data = {
   SUCCESS_5:            'Ваш голос учтён. Спасибо Вам за активное участие в работе DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Спасибо нашим переводчикам: ',
   TranslatorName_1:     '[Михаил Владимиров](https://www.myetherwallet.com/?gaslimit=21000&to=0x6ff323e36bfdb20502b23780695f4e77e36cde95&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0x6ff323e36bfdb20502b23780695f4e77e36cde95',
@@ -468,6 +464,7 @@ ru.data = {
   HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
   HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
   HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_15b:       'Если вы используете ПК:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
   HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',

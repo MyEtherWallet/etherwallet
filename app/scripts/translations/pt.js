@@ -187,6 +187,7 @@ pt.data = {
   DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
   DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
   DAOModal_Title:         'Just making sure...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'You are about to withdraw',
   DAOModal_2:             'DAO Tokens to',
   DAOModal_3:             'for', // "in return for"
@@ -232,8 +233,8 @@ pt.data = {
   CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
 
   /* Error Messages */
-  ERROR_1:             'Please enter valid amount.',
-  ERROR_2:             'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+  ERROR_1:              'Please enter valid amount.',
+  ERROR_2:              'Your password must be at least 9 characters. Please ensure it is a strong password. ',
   ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
   ERROR_4:              'This is not a valid wallet file. ',
   ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
@@ -259,7 +260,7 @@ pt.data = {
   SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
   TranslatorName_1:     '',
   TranslatorAddr_1:     '',

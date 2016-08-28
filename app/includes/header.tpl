@@ -57,14 +57,17 @@
         <span class="dropdown">
           <a href="#" class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdown">
+        <!--<li><a ng-class="{true:'active'}[curLang=='العربية']" ng-click="changeLanguage('ar','العربية')">العربية</a></li>-->
         <!--<li><a ng-class="{true:'active'}[curLang=='български']" ng-click="changeLanguage('bg','български')">български</a></li> -->
             <li><a ng-class="{true:'active'}[curLang=='Deutsch']" ng-click="changeLanguage('de','Deutsch')">Deutsch</a></li>
             <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']" ng-click="changeLanguage('el','Ελληνικά')">Ελληνικά</a></li>
             <li><a ng-class="{true:'active'}[curLang=='English']" ng-click="changeLanguage('en','English')">English</a></li>
-            <li><a ng-class="{true:'active'}[curLang=='Español']" ng-click="changeLanguage('es','Español')">Español</a></li>
+        <!--<li><a ng-class="{true:'active'}[curLang=='Español']" ng-click="changeLanguage('es','Español')">Español</a></li>-->
         <!--<li><a ng-class="{true:'active'}[curLang=='Eesti']" ng-click="changeLanguage('et','Eesti')">Eesti</a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Français']" ng-click="changeLanguage('fr','Français')">Français</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='עברית']" ng-click="changeLanguage('he','עברית')">עברית</a></li>-->
+        <!--<li><a ng-class="{true:'active'}[curLang=='हिन्दी']" ng-click="changeLanguage('hi','हिन्दी')">हिन्दी</a></li>-->
+        <!--<li><a ng-class="{true:'active'}[curLang=='Magyar']" ng-click="changeLanguage('hu','Magyar')">Magyar</a></li>-->
         <!--<li><a ng-class="{true:'active'}[curLang=='Indonesian']" ng-click="changeLanguage('id','Indonesian')">Indonesian</a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Italiano']" ng-click="changeLanguage('it','Italiano')">Italiano</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='日本語']" ng-click="changeLanguage('ja','日本語')">日本語</a></li>-->
@@ -76,8 +79,8 @@
         <!--<li><a ng-class="{true:'active'}[curLang=='Português-Brazilian']" ng-click="changeLanguage('ptbr','Português-Brazilian')">Português-Brazilian</a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Русский']" ng-click="changeLanguage('ru','Русский')">Русский</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='Slovenčina']" ng-click="changeLanguage('sk','Slovenčina')">Slovenčina</a></li>-->
-            <li><a ng-class="{true:'active'}[curLang=='Slovenščina']" ng-click="changeLanguage('sl','Slovenščina')">Slovenščina</a></li>
-            <li><a ng-class="{true:'active'}[curLang=='Svenska']" ng-click="changeLanguage('sv','Svenska')">Svenska</a></li>
+        <!--<li><a ng-class="{true:'active'}[curLang=='Slovenščina']" ng-click="changeLanguage('sl','Slovenščina')">Slovenščina</a></li>-->
+        <!--<li><a ng-class="{true:'active'}[curLang=='Svenska']" ng-click="changeLanguage('sv','Svenska')">Svenska</a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Türkçe']" ng-click="changeLanguage('tr','Türkçe')">Türkçe</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='Українська']" ng-click="changeLanguage('uk','Українська')">Українська</a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Tiếng Việt']" ng-click="changeLanguage('vi','Tiếng Việt')">Tiếng Việt</a></li>

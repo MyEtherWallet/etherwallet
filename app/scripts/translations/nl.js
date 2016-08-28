@@ -4,7 +4,6 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -118,7 +117,7 @@ nl.data = {
   SEND_raw:              'Raw Transactie',
   SEND_signed:           'Gesigneerde Transactie',
   SEND_trans:            'Verzend Transactie',
-  SEND_TransferTotal:   'Verzend volledig saldo',
+  SEND_TransferTotal:    'Verzend volledig saldo',
   SENDModal_Title:       'Waarschuwing! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Je staat op het punt om het volgende bedrag over te maken: ',
@@ -158,7 +157,7 @@ nl.data = {
   /* Offline Transaction */
   OFFLINE_Title:         'Genereer & Verzend een Offline Transactie',
   OFFLINE_Desc:          'Een offline transactie doe je in drie stappen. Stap 1 en 3 doe je op een online computer, terwijl je stap 2 uitvoert op een offline/afgeschermde computer. Dit zorgt ervoor dat je prive sleutel niet in aanraking komt met een met internet verbonden computer.',
-  OFFLINE_Step1_Title:  'Stap 1: Genereer Informatie (Online Computer)',
+  OFFLINE_Step1_Title:   'Stap 1: Genereer Informatie (Online Computer)',
   OFFLINE_Step1_Button:  'Genereer Informatie',
   OFFLINE_Step1_Label_1: 'Van Adres: ',
   OFFLINE_Step1_Label_2: 'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd van het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
@@ -188,7 +187,7 @@ nl.data = {
   DAO_Inst:               'Ja. Klik simpelweg op de grote rode knop. Zo makkelijk is het.',
   DAO_Warning:            'Als je een "Insufficient balance for gas" fout krijgt, zul je een kleine hoeveelheid ETH in je account moeten storten om de gas kosten voor deze actie te betalen. Voeg 0.01 ETH toe aan je account en probeer het opnieuw. ',
   DAOModal_Title:         'Voor de zekerheid...',
-  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  // full sentance is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Je staat op het punt om',
   DAOModal_2:             'DAO Tokens op te nemen voor',
   DAOModal_3:             'voor', // "in return for"
@@ -234,8 +233,8 @@ nl.data = {
   CX_quicksend:         'VerzendSnel',
 
   /* Error Messages */
-  ERROR_1:             'Geef alsjeblieft een geldig bedrag in.',
-  ERROR_2:             'Je wachtwoord dient minimaal 9 karakters lang te zijn. Zorg voor een sterk wachtwoord. ',
+  ERROR_1:              'Geef alsjeblieft een geldig bedrag in.',
+  ERROR_2:              'Je wachtwoord dient minimaal 9 karakters lang te zijn. Zorg voor een sterk wachtwoord. ',
   ERROR_3:              'Sorry! We herkennen dit type Wallet bestand niet. ',
   ERROR_4:              'Dit is geen geldig Wallet bestand. ',
   ERROR_5:              'Deze eenheid bestaat niet, kies alsjeblieft een van de volgende eenheden ',
@@ -261,7 +260,7 @@ nl.data = {
   SUCCESS_5:            'Je hebt succesvol gestemd. Fijn dat je een actief participerend DAO deelnemer bent.',
 
   /* Translation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Veel dank voor onze vertalers: ',
   TranslatorName_1:     '[h3ll0fr13nd](https://www.myetherwallet.com/?gaslimit=21000&to=0xB5FbCE123F12347206c881cae73A3046BA1A90bA&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0xB5FbCE123F12347206c881cae73A3046BA1A90bA',

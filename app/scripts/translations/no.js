@@ -4,36 +4,6 @@ var no = function() {}
 no.code = 'no';
 no.data = {
 
-  HELP_12_Desc_15b:       'Hvis du er på en PC:',
-  ADD_Radio_2_success:    'Valgt fil: ',
-  FOOTER_4:               'Ansvarsfraskrivelse',
-
-  /* New - DAO ETC Withdrawal */
-  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344. //mrstormlars: Based on the code below i read this as: "Your are about to withdraw 100 DAO tokens to 0x12344 in return for 1 ETH."
-  DAOModal_1:             'Du er i ferd med å veksle inn ', //...100...
-  DAOModal_2:             'DAO-polletter til ',  //...0x12344...
-  DAOModal_3:             'i bytte mot', // ... 1 ETH... "in return for"  //mrstormlars: it's not entirely clear how this sentence will play out, did my best to translate correctly... (Leave it as english if not correct, or contact me at martin.storm.larsen@gmail.com)
-
-  DAO_bal1:               'ved blokk 1,919,999',
-  DAO_bal2:               'nåværende',
-  DAO_TitleETH:           'Veksle inn DAO mot ETH',
-  DAO_TitleETC:           'Veksle inn DAO mot ETC',
-  DAO_ETC_Label_1:        'Hvilken adresse ønsker du å sende dine ETC til?',
-  DAO_ETC_Label_2:        '"White Hat Group" har jobbet utrettelig for å gi deg tilbake dine ETC. Du kan takke dem ved å donere en prosentandel av uttaket ditt, hvis du ønsker det. ',
-
-  /* New - Deploy Contracts */
-  NAV_DeployContract:  'Utplasser kontrakt',
-  DEP_generate:        'Generer Bytecode',
-  DEP_generated:       'Generert Bytecode',
-  DEP_signtx:          'Signer transaksjon',
-  DEP_interface:       'Generer grensesnitt',
-
-  /* New */
-  CX_error_1:           'Du har ennå ikke lagret noen lommebok. Klikk ["Legg til lommebok"](/cx-wallet.html#add-wallet) for å legge til en!',
-  CX_quicksend:         'Send', // if no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Overfør total tilgjengelig saldo',  // updated to read 'Send Entire Balance'
-  FOOTER_1b:            'Skapt av',
-
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
   NAV_AddWallet:        'Legg til lommebok',
@@ -46,6 +16,7 @@ no.data = {
   DAO_TitleLong:        'Løs inn DAO-pollettene dine for eter (ETH)',
   NAV_ClaimDGD:         'Gjør krav på DGD',
   DGD_TitleLong:        'Gjør krav på DGD-pollettene dine',
+  NAV_DeployContract:  'Utplasser kontrakt',
   NAV_MyWallets:        'Mine lommebøker',
   NAV_ViewWallet:       'Vis lommebok-info',
   NAV_Help:             'Hjelp',
@@ -81,8 +52,10 @@ no.data = {
 
   /* Footer */
   FOOTER_1:             'Et åpen-kildekode-, javascript-, klient-side-verktøy for å opprette Ethereum-lommebøker & sende transaksjoner.',
+  FOOTER_1b:            'Skapt av',
   FOOTER_2:             'Donasjoner mottas med takk:',
   FOOTER_3:             'Klient-side lommebok-oppretting av',
+  FOOTER_4:               'Ansvarsfraskrivelse',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Kontoinformasjon: ',
@@ -107,6 +80,7 @@ no.data = {
   ADD_Radio_2:            'Velg lommebok-filen din (Keystore / JSON)',
   ADD_Radio_2_alt:        'Velg lommebok-fil: ',
   ADD_Radio_2_short:      'VELG LOMMEBOK-FIL...',
+  ADD_Radio_2_success:    'Valgt fil: ',
   ADD_Radio_3:            'Lim/skriv inn din private nøkkel',
   ADD_Radio_4:            'Legg til en konto for overvåkning',
   ADD_Label_2:            'Lag et kallenavn:',
@@ -139,6 +113,7 @@ no.data = {
   SEND_amount_short:     'Beløp',
   SEND_custom:           'Tilpasning',
   SEND_gas:              'Gas',
+  SEND_TransferTotal:   'Overfør total tilgjengelig saldo',  // updated to read 'Send Entire Balance'
   SEND_generate:         'Generer transaksjon',
   SEND_raw:              'Rå-transaksjon',
   SEND_signed:           'Signert transaksjon',
@@ -202,10 +177,21 @@ no.data = {
   OFFLINE_Step3_Label_1:  'Overfør (f.eks. via USB-minnepinne) den signerte transaksjonen fra steg 2 og lim den inn her. Trykk så "SEND TRANSAKSJON"-knappen.',
 
   /* DAO */
+  DAO_bal1:               'ved blokk 1,919,999',
+  DAO_bal2:               'nåværende',
+  DAO_TitleETH:           'Veksle inn DAO mot ETH',
+  DAO_TitleETC:           'Veksle inn DAO mot ETC',
+  DAO_ETC_Label_1:        'Hvilken adresse ønsker du å sende dine ETC til?',
+  DAO_ETC_Label_2:        '"White Hat Group" har jobbet utrettelig for å gi deg tilbake dine ETC. Du kan takke dem ved å donere en prosentandel av uttaket ditt, hvis du ønsker det. ',
   DAO_Desc:               'Bruk denne siden til å veksle inn dine DAO-polletter for ETH. Hvis du ønsker å sende DAO-poletter, vennligst bruk "Send polletter"-siden.',
   DAO_Inst:               'Ja. Bare trykk på den store røde knappen. Det er så enkelt som det.',
   DAO_Warning:            'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,001 ether til denne kontoen og prøv igjen. ',
   DAOModal_Title:         'Bare for å være sikker...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
+  // note: this may be a bit rough in Norwegian.
+  DAOModal_1:             'Du er i ferd med å veksle inn ',
+  DAOModal_2:             'DAO-polletter til ',
+  DAOModal_3:             'i bytte mot',
 
   /* Digix */
   DGD_Desc:               'Krev inn dine DigixDAO (DGD)-polletter (tokens) & emblemer (badges). For å gjøre dette, må du ha deltatt i pollett-salget 30-31. mars 2016.  Hvis du ønsker å sende DGD, vennligst bruk "Send polletter"-siden.',
@@ -214,6 +200,12 @@ no.data = {
   DGD_Label_3:            'Gas-pris:',
   DGD_Generate:           'Opprett krav',
   DGD_Content:            'Du er i ferd med å kreve inn DGD-pollettene dine.',
+
+  /* Deploy Contracts */
+  DEP_generate:        'Generer Bytecode',
+  DEP_generated:       'Generert Bytecode',
+  DEP_signtx:          'Signer transaksjon',
+  DEP_interface:       'Generer grensesnitt',
 
   /* My Wallet */
   MYWAL_Nick:             'Lommebok-kallenavn',
@@ -236,6 +228,10 @@ no.data = {
   VIEWWALLET_Subtitle:      'Dette gir deg muligheten til å laste ned ulike versjoner av private nøkler og skrive ut papirlommeboken din på nytt. Du vil kanskje gjøre dette for å [importere kontoen din til Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Hvis du bare ønsker å sjekke saldoen din, anbefaler vi at du bruker en "blockchain explorer" som f.eks. [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'Dette gir deg muligheten til å laste ned ulike versjoner av private nøkler og skrive ut papirlommeboken din på nytt. ',
   VIEWWALLET_SuccessMsg:     'Suksess! Her er detaljene om din lommebok.',
+
+  /* Chrome Extension */
+  CX_error_1:           'Du har ennå ikke lagret noen lommebok. Klikk ["Legg til lommebok"](/cx-wallet.html#add-wallet) for å legge til en!',
+  CX_quicksend:         'Send', // if no appropriate translation, just use "Send"
 
   /* Error Messages */
   ERROR_1:             'Vennligst oppgi et gyldig beløp.',
@@ -265,7 +261,7 @@ no.data = {
   SUCCESS_5:            'Du har stemt. Takk for at du er en aktiv deltaker i "The DAO".',
 
   /* Tranlsation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Takk til våre oversettere: ',
   TranslatorName_1:     '[mrstormlars](https://www.myetherwallet.com/?gaslimit=21000&to=0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08',
@@ -468,6 +464,7 @@ no.data = {
   HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
   HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
   HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_15b:       'Hvis du er på en PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
   HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',

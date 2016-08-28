@@ -187,6 +187,7 @@ he.data = {
   DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
   DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
   DAOModal_Title:         'Just making sure...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'You are about to withdraw',
   DAOModal_2:             'DAO Tokens to',
   DAOModal_3:             'for', // "in return for"
@@ -259,7 +260,7 @@ he.data = {
   SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
   TranslatorName_1:     '',
   TranslatorAddr_1:     '',

@@ -187,12 +187,13 @@ vi.data = {
   DAO_Inst:               'Đúng rồi, Bạn chỉ cần chọn vào nút lớn màu đỏ.',
   DAO_Warning:            'Nếu bạn nhận đượng một báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hảy thêm vào 0.001 ether vào tài khoản và thực hiện lại. ',
   DAOModal_Title:         'Đảm bảo rằn...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Bạn Muốn thực hiện việc "Thu Hồi"',
   DAOModal_2:             'Thẻ DAO đến',
-  DAOModal_3:             'Hoàn Lại', // "in return for"
+  DAOModal_3:             'Hoàn Lại',
 
   /* Digix */
-  DGD_Desc:               'Khiếu nại về DigixDAO(DGD) Token & Danh Hiệu. Để thực hiện việc khiếu nại, bạn phải tham vào buổi bán token ngày 30 và 31 tháng 3 năm 2016. Nếu bạn muốn gửi DGD, xin vui lòng sử dụng chức năng Gửi Token.',
+  DGD_Desc:               'Khiếu nại về DigixDAO(DGD) Token & Danh Hiệu. Để thực hiện việc khiếu nại, bạn phải tham gia vào buổi bán token ngày 30 và 31 tháng 3 năm 2016. Nếu bạn muốn gửi DGD, xin vui lòng sử dụng chức năng Gửi Token.',
   DGD_Label_1:            'Phí Tiêu Thụ Ước Tínhn:',
   DGD_Label_2:            'Cung Cấp Phí Tối Đa:',
   DGD_Label_3:            'Giá Gas:',
@@ -259,7 +260,7 @@ vi.data = {
   SUCCESS_5:            'Bạn đã bỏ phiếu thành công. Cảm ơn vì đã tham gia tích cực trong The DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Chân thành Cảm ơn Dịch Giả: Vupham ',
   TranslatorName_1:     '[Pham The Vu](https://www.myetherwallet.com/?gaslimit=21000&to=0xFeC03081c4E51B375d064Ffb4186Af9E032Fc723&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0xFeC03081c4E51B375d064Ffb4186Af9E032Fc723',

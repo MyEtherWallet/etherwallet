@@ -105,7 +105,7 @@ tr.data = {
 
   /* Bulk Generate Wallets */
   BULK_Label_1:           'Oluşturulacak cüzdan sayısı',
-  BULK_Label_2:           'Cüzdanlari olustur', 
+  BULK_Label_2:           'Cüzdanlari olustur',
   BULK_SuccessMsg:        'Başarı! Cüzdanlarin olusturuldu.',
 
   /* Sending Ether and Tokens */
@@ -120,7 +120,7 @@ tr.data = {
   SEND_signed:           'Imzali İşlem',
   SEND_trans:            'Islemi gönder',
   SENDModal_Title:       'Uyarı! ',
-  
+
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'şu an ',
   SENDModal_Content_2:   'bu adresse',
@@ -189,6 +189,7 @@ tr.data = {
   DAO_Inst:               'Evet. Sadece büyük kırmızı düğmeye bas. Bu kadar kolay.',
   DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
   DAOModal_Title:         'Sadece emin olmak için...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Cekmek üzeresin',
   DAOModal_2:             'DAO Tokens to',
   DAOModal_3:             'for', // "in return for"
@@ -261,7 +262,7 @@ tr.data = {
   SUCCESS_5:            'Başarıyla oy verdiniz. DAO aktif bir katılımcı olduğunuz için teşekkür ederiz.',
 
   /* Tranlsation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
   TranslatorName_1:     'ffidan61',
   TranslatorAddr_1:     '',

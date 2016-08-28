@@ -4,36 +4,6 @@ var de = function() {}
 de.code = 'de';
 de.data = {
 
-  HELP_12_Desc_15b:       'Wenn du an einem PC bist:',
-  ADD_Radio_2_success:    'Ausgewählte Datei: ',
-  FOOTER_4:               'Disclaimer',
-
-  /* New - DAO ETC Withdrawal */
-  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
-  DAOModal_1:             'You are about to withdraw',
-  DAOModal_2:             'DAO Tokens to',
-  DAOModal_3:             'for', // "in return for"
-
-  DAO_bal1:               'Bei Block 1,919,999',
-  DAO_bal2:               'momentan', // momentaner?
-  DAO_TitleETH:           'DAO Token in ETH umwandeln',
-  DAO_TitleETC:           'DAO Token in ETC umwandeln',
-  DAO_ETC_Label_1:        'An welche Adreese möchtest du deine ETC gesendet haben?',
-  DAO_ETC_Label_2:        'Die "White Hat Group" hat unermüdlich gearbeitet um deine ETC zurückzuholen. Wenn du möchtest, kannst du dich bedanken indem du einen Teil deiner ETC an sie spendest. ',
-
-  /* New - Deploy Contracts */
-  NAV_DeployContract:  'Vertrag aufstellen', //Was "Deploy Contract",
-  DEP_generate:        'Bytecode generieren',
-  DEP_generated:       'Generierter Bytecode',
-  DEP_signtx:          'Transaktion signieren',
-  DEP_interface:       'Generiertes Interface',
-
-  /* New */
-  CX_error_1:           'Du hast keine Wallets gespeichert. Klicke ["Wallet hinzufügen"](/cx-wallet.html#add-wallet) um eines hinzuzufügen!',
-  CX_quicksend:         'Senden', // Was "QuickSend". If no appropriate translation, just use "Send"
-  SEND_TransferTotal:   'Gesamten verfügbaren Saldo übertragen', // updated to read 'Send Entire Balance'
-  FOOTER_1b:            'Erstellt von',
-
   /* Navigation*/
   NAV_YourWallets:      'Deine Wallets',
   NAV_AddWallet:        'Wallet hinzufügen',
@@ -46,6 +16,7 @@ de.data = {
   DAO_TitleLong:        'DAO Token in ETH umwandeln',
   NAV_ClaimDGD:         'DGD geltend machen',
   DGD_TitleLong:        'DGD Token geltend machen',
+  NAV_DeployContract:   'Vertrag aufstellen',
   NAV_MyWallets:        'Meine Wallets',
   NAV_ViewWallet:       'Wallet Infos anzeigen',
   NAV_Help:             'Hilfe',
@@ -81,8 +52,10 @@ de.data = {
 
   /* Footer */
   FOOTER_1:             'Ein quelloffenes, browserseitiges Werkzeug zur Erzeugung von Ethereum-Wallets und Versenden von Transaktionen.',
+  FOOTER_1b:            'Erstellt von',
   FOOTER_2:             'Spenden sind herzlich willkommen:',
   FOOTER_3:             'Browserseitige Wallet-Erzeugung durch',
+  FOOTER_4:             'Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Kontoinformation: ',
@@ -107,6 +80,7 @@ de.data = {
   ADD_Radio_2:            'Wallet-Datei auswählen (Keystore / JSON)',
   ADD_Radio_2_alt:        'Wallet-Datei auswählen: ',
   ADD_Radio_2_short:      'WALLET-DATEI AUSWÄHLEN...',
+  ADD_Radio_2_success:    'Ausgewählte Datei: ',
   ADD_Radio_3:            'Kopiere/Tippe deinen privaten Schlüssel ein',
   ADD_Radio_4:            'Kontoadresse zur Beobachtung hinzufügen',
   ADD_Label_2:            'Wähle ein Kürzel:',
@@ -139,6 +113,7 @@ de.data = {
   SEND_amount_short:     'Betrag',
   SEND_custom:           'Benutzerdefiniert',
   SEND_gas:              'Gas',
+  SEND_TransferTotal:    'Gesamten verfügbaren Saldo übertragen',
   SEND_generate:         'Erzeuge Transaktion',
   SEND_raw:              'Transaktion (Binärformat)',
   SEND_signed:           'Signierte Transaktion',
@@ -164,8 +139,8 @@ de.data = {
   TRANS_eth:             'Nur ETH',
   TRANS_etc:             'Nur ETC',
   TRANS_advanced:        '+Fortgeschritten: Mehr Gas oder Daten hinzufügen ',
-  TRANS_data:            ' Daten: ',
-  TRANS_gas:             ' Gas: ',
+  TRANS_data:            'Daten: ',
+  TRANS_gas:             'Gas: ',
   TRANS_sendInfo:        'Eine Standard Transaktion mit 21000 Gas kostet 0.000441 ETH. Wir zahlen einen minimal höheren Gaspreis von 0.000000021 ETH um zu garantieren, dass die Transaktion schnell bearbeitet wird. Wir erheben keine Transaktionsgebühren.',
 
   /* Send Transaction Modals */
@@ -202,10 +177,20 @@ de.data = {
   OFFLINE_Step3_Label_1:  'Kopiere die signierte Transaktion aus Schritt 2 hier hinein und drücke "TRANSAKTION SENDEN".',
 
   /* DAO */
+  DAO_bal1:               'Bei Block 1,919,999',
+  DAO_bal2:               'momentan', // momentaner?
+  DAO_TitleETH:           'DAO Token in ETH umwandeln',
+  DAO_TitleETC:           'DAO Token in ETC umwandeln',
+  DAO_ETC_Label_1:        'An welche Adreese möchtest du deine ETC gesendet haben?',
+  DAO_ETC_Label_2:        'Die "White Hat Group" hat unermüdlich gearbeitet um deine ETC zurückzuholen. Wenn du möchtest, kannst du dich bedanken indem du einen Teil deiner ETC an sie spendest. ',
   DAO_Desc:               'Nutze diesen Tab um deine DAO Token in ETH auszuzahlen. Wenn du DAO Token verschicken willst, nutze bitten den "Sende Tokens" Tab',
   DAO_Inst:               'Ja, du musst einfach den großen roten Knopf drücken. Es ist so einfach.',
   DAO_Warning:            'Wenn du den Fehler "Zu geringer Kontostand um Gaskosten zu decken" erhälst, musst du einen kleinen ether Betrag auf dein Konto überweisen um die Kosten zu decken. Überweise 0.001 ether an dieses Konto und versuche es erneut. ',
   DAOModal_Title:         'Nur zur Sicherheit...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
@@ -214,6 +199,12 @@ de.data = {
   DGD_Label_3:            'Gaspreis:',
   DGD_Generate:           'Generate Claim',
   DGD_Content:            'You are about to claim your DGD Tokens.',
+
+  /* Deploy Contracts */
+  DEP_generate:        'Bytecode generieren',
+  DEP_generated:       'Generierter Bytecode',
+  DEP_signtx:          'Transaktion signieren',
+  DEP_interface:       'Generiertes Interface',
 
   /* My Wallet */
   MYWAL_Nick:             'Wallet Spitzname',
@@ -233,13 +224,17 @@ de.data = {
   MYWAL_Content_3:        'Wenn du dieses Wallet in Zukunft mit MyEtherWallet CX verwenden willst, musst du es mittels der privaten Key/JSON Datei und deinem Passwort manuell wieder hinzufügen.',
 
   /* View Wallet Details */
-  VIEWWALLET_Subtitle:      'Dies erlaubt dir den Download verschiedener Versionen deines privaten Schlüssel sowie das erneute Drucken deines Papier-Wallets. Es wird empfohlen, dies zu tun um [Deinen Account in Geth/Mist zu importieren.](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Zum Überprüfen deines Kontostands empfehlen wir, einen Blockchain Explorer wie [etherscan.io](http://etherscan.io/) zu verwenden.',
+  VIEWWALLET_Subtitle:       'Dies erlaubt dir den Download verschiedener Versionen deines privaten Schlüssel sowie das erneute Drucken deines Papier-Wallets. Es wird empfohlen, dies zu tun um [Deinen Account in Geth/Mist zu importieren.](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Zum Überprüfen deines Kontostands empfehlen wir, einen Blockchain Explorer wie [etherscan.io](http://etherscan.io/) zu verwenden.',
   VIEWWALLET_Subtitle_Short: 'Dies erlaubt dir den Download verschiedener Versionen deines privaten Schlüssel sowie das erneute Drucken deines Papier-Wallets. ',
   VIEWWALLET_SuccessMsg:     'Erfolgreich! Hier sind die Daten deines Wallets.',
 
+  /* Chrome Extension */
+  CX_error_1:           'Du hast keine Wallets gespeichert. Klicke ["Wallet hinzufügen"](/cx-wallet.html#add-wallet) um eines hinzuzufügen!',
+  CX_quicksend:         'Senden', // Was "QuickSend". If no appropriate translation, just use "Send"
+
   /* Error Messages */
-  ERROR_1:             'Bitte gültigen Betrag eingeben',
-  ERROR_2:             'Dein Passwort muss mindestens 9 Zeichen lang sein. Bitte wähle ein sicheres Passwort. ',
+  ERROR_1:              'Bitte gültigen Betrag eingeben',
+  ERROR_2:              'Dein Passwort muss mindestens 9 Zeichen lang sein. Bitte wähle ein sicheres Passwort. ',
   ERROR_3:              'Oh oh! Wir haben den Typ der Wallet Datei nicht erkannt. ',
   ERROR_4:              'Dies ist keine gültige Wallet-Datei. ',
   ERROR_5:              'Diese Einheit existiert nicht, bitte wähle eine dieser Einheiten aus ',
@@ -265,7 +260,7 @@ de.data = {
   SUCCESS_5:            'Du hast erfolgreich abgestimmt. Danke, dass du eine aktive Teilnehmerin/aktiver Teilnehmer am DAO bist.',
 
   /* Tranlsation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Vielen Dank an unsere ÜbersetzerInnen:',
   TranslatorName_1:     'christoph2806 · K ·',
   TranslatorAddr_1:     '',
@@ -284,7 +279,7 @@ de.data = {
   /* Translator 5: Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
-  HELP_Warning:      'Falls du vor dem **31.12.2015** ein Wallet generiert, oder das Repository heruntergeladen hast, bitte überprüfe deine Wallets &amp; lade eine neue Version des Repositories herunter. Klick für details.',
+  HELP_Warning:       'Falls du vor dem **31.12.2015** ein Wallet generiert, oder das Repository heruntergeladen hast, bitte überprüfe deine Wallets &amp; lade eine neue Version des Repositories herunter. Klick für details.',
   HELP_Desc:          'Hast du das Gefühl etwas fehlt? Hast du eine andere Frage? [Schreib uns](mailto:myetherwallet@gmail.com) und wir werden nicht nur deine Frage beantworten, wir werden auch die Seite updaten, damit diese in der Zukunft noch einfacher zu bedienen sein wird!',
   HELP_Remind_Title:  'Ein paar Reminder',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, sowie einige der verwendeten Javascript Bibliotheken, die wir verwenden, befinden sich noch in Entwicklung.** Zwar haben wir alles umfassend getestet und es wurden erfolgeich tausende Wallets von Menschen aus aller Welt kreiert, jedoch bestimmt immer eine gewisse Gefahr, dass etwas unerwartetes passiert und dein Ether verloren geht. Bitte investiere nicht mehr als du verlieren kannst, und sei immer vorsichtig. Sollte etwas schlimmes passieren, **können wir uns leider nicht verantwortlich für einen Verlust zeichnen**.',
@@ -468,6 +463,7 @@ de.data = {
   HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
   HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
   HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_15b:       'Wenn du an einem PC bist:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
   HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',

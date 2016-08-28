@@ -4,23 +4,6 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-  HELP_12_Desc_15b:       'Jeśli pracujesz na PC\'cie:',
-  ADD_Radio_2_success:    'Wybrany plik: ',
-  FOOTER_4:               'Wyłączenie odpowiedzialności',
-
-  /* New - DAO ETC Withdrawal */
-  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
-  DAOModal_1:             'Zamierzasz wypłacić',
-  DAOModal_2:             'DAO tokenów do',
-  DAOModal_3:             'za', // "w zamian za"
-
-  DAO_bal1:               'w bloku 1,919,999',
-  DAO_bal2:               'aktualny',
-  DAO_TitleETH:           'Wypłać DAO do ETH',
-  DAO_TitleETC:           'Wypłać DAO do ETC',
-  DAO_ETC_Label_1:        'Na jaki adres chcesz wysłać swoje ETC?',
-  DAO_ETC_Label_2:        '"White Hat Group" (Grupa Białych Kapeluszy) ciężko pracowała, aby pomóc Ci odzyskać Twoje ETC. Jeżeli chcesz, możesz im podziękować wysyłając procent z wypłacanych przez Ciebie środków. ',
-
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
   NAV_AddWallet:        'Dodaj Portfel',
@@ -71,6 +54,7 @@ pl.data = {
   FOOTER_1b:            'Twórcy:',
   FOOTER_2:             'Darowizny:',
   FOOTER_3:             'Generowanie portfeli po stronie klienta przez',
+  FOOTER_4:               'Wyłączenie odpowiedzialności',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Informacje o Koncie: ',
@@ -95,6 +79,7 @@ pl.data = {
   ADD_Radio_2:            'Wybierz Plik Portfela (Keystore / JSON)',
   ADD_Radio_2_alt:        'Wybierz Plik Portfela: ',
   ADD_Radio_2_short:      'WYBIERZ PLIK PORTFELA...',
+  ADD_Radio_2_success:    'Wybrany plik: ',
   ADD_Radio_3:            'Wklej/Wpisz Twój Klucz Prywatny',
   ADD_Radio_4:            'Dodaj Konto do Obserwacji',
   ADD_Label_2:            'Utwórz Nazwę Użytkownika:',
@@ -191,10 +176,20 @@ pl.data = {
   OFFLINE_Step3_Label_1:  'Wklej tu podpisaną transakcję z Kroku 2 i kliknij przycisk "WYŚLIJ TRANSAKCJĘ".',
 
   /* DAO */
+  DAO_bal1:               'w bloku 1,919,999',
+  DAO_bal2:               'aktualny',
+  DAO_TitleETH:           'Wypłać DAO do ETH',
+  DAO_TitleETC:           'Wypłać DAO do ETC',
+  DAO_ETC_Label_1:        'Na jaki adres chcesz wysłać swoje ETC?',
+  DAO_ETC_Label_2:        '"White Hat Group" (Grupa Białych Kapeluszy) ciężko pracowała, aby pomóc Ci odzyskać Twoje ETC. Jeżeli chcesz, możesz im podziękować wysyłając procent z wypłacanych przez Ciebie środków. ',
   DAO_Desc:               'Użyj tej zakładki aby wypłacić tokeny DAO w zamian za ETH. Jeżeli chcesz wysłać tokeny DAO użyj zakładki Wyślij Tokeny.',
   DAO_Inst:               'Tak. Po prostu naciśnij duży czerwony przycisk. To jest tak proste.',
   DAO_Warning:            'Jeśli dostajesz błąd "Niewystarczające środki na paliwo", musisz doładować konto niewielką ilością ETH aby pokryć koszty transakcji. Dodaj 0.01 ETH do tego konta i spróbuj ponownie. ',
   DAOModal_Title:         'Tylko się upewniam...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
+  DAOModal_1:             'Zamierzasz wypłacić',
+  DAOModal_2:             'DAO tokenów do',
+  DAOModal_3:             'za', // "w zamian za"
 
   /* Digix */
   DGD_Desc:               'Odbierz swoje tokeny i odznaki DigixDAO (DGD). Aby odebrać, musisz być osobą uczestniczącą w wyprzedaży tokenów w 30-31 marca 2016.  Jeśli chcesz wysłać DGD, użyj zakładki Wyślij Tokeny.',
@@ -265,7 +260,7 @@ pl.data = {
   SUCCESS_5:            'Zagłosowałeś z powodzeniem. Dziękuję za bycie aktywnym uczestnikiem The DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '3.0 (0.2)',
+  translate_version:    '3.0 (0.3)',
   Translator_Desc:      'Podziękowania tłumaczom: ',
   TranslatorName_1:     '[egzi](?to=0xef39C3C51615B6e52e7D5B743BeaecdDcA822386&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0xef39C3C51615B6e52e7D5B743BeaecdDcA822386', // donation address 0x1234
@@ -468,6 +463,7 @@ pl.data = {
   HELP_12_Desc_13:        'Wybierz swój plik portfela i odblokuj portfel.',
   HELP_12_Desc_14:        'Skopiuj "Klucz Prywatny (nieszyfrowany)".',
   HELP_12_Desc_15:        'Jeśli pracujesz na Mac\'u:',
+  HELP_12_Desc_15b:       'Jeśli pracujesz na PC\'cie:',
   HELP_12_Desc_16:        'Otwórz Text Edit i wklej do niego skopiowany klucz prywatny.',
   HELP_12_Desc_17:        'Wejdź do paska menu i kliknij "Format" -> "Make Plain Text".',
   HELP_12_Desc_18:        'Zapisz ten plik na `desktop/` jako `nic_specjalnego_usun_mnie.txt/`. Podczas zapisywania ustaw "UTF-8" i "If no extension is provided use .txt".',

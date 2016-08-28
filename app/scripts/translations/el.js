@@ -9,7 +9,7 @@ el.data = {
   FOOTER_4:               'Disclaimer',
 
   /* New - DAO ETC Withdrawal */
-  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'You are about to withdraw',
   DAOModal_2:             'DAO Tokens to',
   DAOModal_3:             'for', // "in return for"
@@ -265,7 +265,7 @@ el.data = {
   SUCCESS_5:            'Έχετε ψηφίσει επιτυχώς. Ευχαριστούμε για την ενεργή σας συμμετοχή στο DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Ευχαριστούμε τους μεταφραστές μας: ',
   TranslatorName_1:     '[VitalikFanBoy#117](https://www.myetherwallet.com/?gaslimit=21000&to=0x245f27796a44d7e3d30654ed62850ff09ee85656&value=1.0#send-transaction) · ',
   TranslatorAddr_1:     '0x245f27796a44d7e3d30654ed62850ff09ee85656',

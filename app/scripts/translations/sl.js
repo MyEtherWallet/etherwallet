@@ -9,7 +9,7 @@ sl.data = {
   FOOTER_4:               'Disclaimer',
 
   /* New - DAO ETC Withdrawal */
-  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'You are about to withdraw',
   DAOModal_2:             'DAO Tokens to',
   DAOModal_3:             'for', // "in return for"

@@ -5,30 +5,6 @@ var it = function() {}
 it.code = 'it';
 it.data = {
 
-  HELP_12_Desc_15b:       'Se sei su un PC:',
-  ADD_Radio_2_success:    'File selezionato: ',
-  FOOTER_4:               'Dichiarazione di non responsabilità',
-
-  /* New - DAO ETC Withdrawal */
-  // full sentance is "You are about to withdraw 100 DAO tokens for 1 ETH to address 0x12344.
-  DAOModal_1:             'Stai per prelevare',
-  DAOModal_2:             'token DAO inviando a',
-  DAOModal_3:             'una somma di', // "in return for"
-
-  DAO_bal1:               'al blocco 1.919.999',
-  DAO_bal2:               'adesso',
-  DAO_TitleETH:           'Preleva DAO e ricevi ETH',
-  DAO_TitleETC:           'Preleva DAO e ricevi ETC',
-  DAO_ETC_Label_1:        'A che indirizzo vuoi che vengano inviati i tuoi ETC?',
-  DAO_ETC_Label_2:        'Il gruppo "White Hat" ha lavorato senza sosta per farti riavere i tuoi ETC. Puoi dire "grazie" donando una percentuale della somma che prelevi, se lo desideri. ',
-
-  /* New - Deploy Contracts */
-  NAV_DeployContract:  'Pubblica contratto',
-  DEP_generate:        'Genera bytecode',
-  DEP_generated:       'Bytecode generato',
-  DEP_signtx:          'Firma transazione',
-  DEP_interface:       'Interfaccia generata',
-
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
   NAV_AddWallet:        'Aggiungi portafoglio',
@@ -41,6 +17,7 @@ it.data = {
   DAO_TitleLong:        'Preleva i tuoi token DAO convertendoli in ETH',
   NAV_ClaimDGD:         'Richiedi DGD',
   DGD_TitleLong:        'Richiedi i tuoi token DGD',
+  NAV_DeployContract:  'Pubblica contratto',
   NAV_MyWallets:        'I miei portafogli',
   NAV_ViewWallet:       'Informazioni portafoglio',
   NAV_Help:             'Aiuto',
@@ -79,6 +56,7 @@ it.data = {
   FOOTER_1b:            'Creato da',
   FOOTER_2:             'Donazioni molto apprezzate:',
   FOOTER_3:             'Generazione portafogli lato client da parte di',
+  FOOTER_4:             'Dichiarazione di non responsabilità',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Informazioni conto: ',
@@ -103,6 +81,7 @@ it.data = {
   ADD_Radio_2:            'Seleziona il file del tuo portafoglio (Keystore / JSON)',
   ADD_Radio_2_alt:        'Seleziona il file del tuo portafoglio: ',
   ADD_Radio_2_short:      'SELEZIONA FILE PORTAFOGLIO...',
+  ADD_Radio_2_success:    'File selezionato: ',
   ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata ',
   ADD_Radio_4:            'Aggiungi un conto da osservare',
   ADD_Label_2:            'Crea un nome:',
@@ -199,10 +178,20 @@ it.data = {
   OFFLINE_Step3_Label_1:  'Incolla la transazione firmata dal passo 2 qui e premi il pulsante "INVIA TRANSAZIONE".',
 
   /* DAO */
+  DAO_bal1:               'al blocco 1.919.999',
+  DAO_bal2:               'adesso',
+  DAO_TitleETH:           'Preleva DAO e ricevi ETH',
+  DAO_TitleETC:           'Preleva DAO e ricevi ETC',
+  DAO_ETC_Label_1:        'A che indirizzo vuoi che vengano inviati i tuoi ETC?',
+  DAO_ETC_Label_2:        'Il gruppo "White Hat" ha lavorato senza sosta per farti riavere i tuoi ETC. Puoi dire "grazie" donando una percentuale della somma che prelevi, se lo desideri. ',
   DAO_Desc:               'Usa questa scheda per prelevare i tuoi token DAO e ottenere ETH **& ETC**. Se invece vuoi inviare token DAO, utilizza la scheda "Invia token".',
   DAO_Inst:               'Sì. Devi solo premere questo grosso pulsante rosso. È davvero così semplice.',
   DAO_Warning:            'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0,001 ETH a questo conto e riprova. ',
   DAOModal_Title:         'Tanto per essere sicuri...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
+  DAOModal_1:             'Stai per prelevare',
+  DAOModal_2:             'token DAO inviando a',
+  DAOModal_3:             'una somma di', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Richiedi i tuoi token e le tue medaglie DigixDAO (DGD). Per poterli richiedere devi aver partecipato alla vendita dei token del 30 e 31 marzo 2016.  Se invece desideri inviare DGD, utilizza la scheda "Invia token".',
@@ -211,6 +200,12 @@ it.data = {
   DGD_Label_3:            'Prezzo gas:',
   DGD_Generate:           'Genera richiesta',
   DGD_Content:            'Stai per richiedere i tuoi token DGD.',
+
+  /* Deploy Contracts */
+  DEP_generate:        'Genera bytecode',
+  DEP_generated:       'Bytecode generato',
+  DEP_signtx:          'Firma transazione',
+  DEP_interface:       'Interfaccia generata',
 
   /* My Wallet */
   MYWAL_Nick:             'Nome portafoglio',
@@ -239,8 +234,8 @@ it.data = {
   CX_quicksend:         'Invio rapido',
 
   /* Error Messages */
-  ERROR_1:             'Ti preghiamo di inserire una quantità valida.',
-  ERROR_2:             'La password deve essere di almeno 9 caratteri. Assicurati che sia robusta. ',
+  ERROR_1:              'Ti preghiamo di inserire una quantità valida.',
+  ERROR_2:              'La password deve essere di almeno 9 caratteri. Assicurati che sia robusta. ',
   ERROR_3:              'Siamo spiacenti! Non riconosciamo questo tipo di file portafoglio. ',
   ERROR_4:              'Questo non è un file portafoglio valido. ',
   ERROR_5:              'Questa unità non esiste, ti preghiamo di usare una delle seguenti unità ',
@@ -266,7 +261,7 @@ it.data = {
   SUCCESS_5:            'Hai votato con successo. Grazie per essere un partecipante attivo in The DAO.',
 
   /* Tranlsation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Grazie ai nostri traduttori: ',
   TranslatorName_1:     '[ugilio](https://www.myetherwallet.com/?gaslimit=21000&to=0x07932bc1c68c8ff188f4225e892178ab6d8c4eaa&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0x07932bc1c68c8ff188f4225e892178ab6d8c4eaa',
@@ -469,6 +464,7 @@ it.data = {
   HELP_12_Desc_13:        'Seleziona il file del tuo portafoglio -oppure- inserisci/incolla la tua chiave privata per sbloccare il portafoglio.',
   HELP_12_Desc_14:        'Copia la tua chiave privata (non crittografata).',
   HELP_12_Desc_15:        'Se sei su un Mac:',
+  HELP_12_Desc_15b:       'Se sei su un PC:',
   HELP_12_Desc_16:        'Apri TextEdit e incolla la chiave privata.',
   HELP_12_Desc_17:        'Vai sulla barra dei menu e fai clic su "Formato" -> "Converti in formato Solo testo".',
   HELP_12_Desc_18:        'Salva questo file sulla tua `Scrivania` come `niente_di_speciale_cancellami.txt`. Assicurati che siano selezionati "UTF-8" e "Se non è indicata nessuna estensione, usa .”txt”" nella finestra di salvataggio.',
