@@ -177,27 +177,27 @@ ja.data = {
   OFFLINE_Step3_Label_1:  'ステップ２で署名されたトランザクションをここにペーストして「トランザクションの送出」ボタンをクリックする。',
 
   /* DAO */
-  DAO_bal1:               ‘ブロック 1,919,999', 
-  DAO_bal2:               ‘現在の’, 
-  DAO_TitleETH:           'ETHでDAOを払い出し’,
-  DAO_TitleETC:           'ETCでDAOを払い出し’, 
-  DAO_ETC_Label_1:        ‘どのアドレスにETCを送りますか？',
-  DAO_ETC_Label_2:        ‘ホワイトハックグループは日夜ETCを取り戻すべために働いています。希望すれば、払い戻しの何パーセントかを感謝をこめて贈る事ができます。', 
-  DAO_Desc:               ‘このタブ上で、DAOトークンから、ETH **& ETC**の払い戻してください。DAOトークンの送るためには、トークン送出タブを選んでください。',
-  DAO_Inst:               ‘赤いボタンをクリックしてください。簡単です。',
+  DAO_bal1:               'ブロック 1,919,999',
+  DAO_bal2:               '現在の',
+  DAO_TitleETH:           'ETHでDAOを払い出し',
+  DAO_TitleETC:           'ETCでDAOを払い出し', 
+  DAO_ETC_Label_1:        'どのアドレスにETCを送りますか？',
+  DAO_ETC_Label_2:        'ホワイトハックグループは日夜ETCを取り戻すべために働いています。希望すれば、払い戻しの何パーセントかを感謝をこめて贈る事ができます。', 
+  DAO_Desc:               'このタブ上で、DAOトークンから、ETH **& ETC**の払い戻してください。DAOトークンの送るためには、トークン送出タブを選んでください。',
+  DAO_Inst:               '赤いボタンをクリックしてください。簡単です。',
   DAO_Warning:            '「ガス残高不足」エラーの時は、アカウントにガスを供給するためにに少量のEtherが必要です。このアカウントに0.01 ETHを追加して、再度操作してください。',
-  DAOModal_Title:         ‘確認中/...’,
-  DAOModal_1:             ‘払い出しを進めます’,
-  DAOModal_2:             ‘DAOトークンを’,
-  DAOModal_3:             ‘に対し’, // “の代わりに”
+  DAOModal_Title:         '確認中/...'',
+  DAOModal_1:             '払い出しを進めます',
+  DAOModal_2:             'DAOトークンを',
+  DAOModal_3:             'に対し', // “の代わりに”
 
   /* Digix */
   DGD_Desc:               'DigixDAO (DGD) トークンとバッジを請求してください。３月３０/３１日に行われた、トークンセールに参加した場合にのみ請求可能です。DGDを送出するためには「トークン送出」のタブ　を使用してください。',
-  DGD_Label_1:            ‘フィー消費量概算：’,
-  DGD_Label_2:            ‘フィー最大消費量：',
-  DGD_Label_3:            ‘ガス価格：’,
-  DGD_Generate:           ‘請求の生成’,
-  DGD_Content:            ‘DGDトークンの請求を進めます’,
+  DGD_Label_1:            'フィー消費量概算：',
+  DGD_Label_2:            'フィー最大消費量：',
+  DGD_Label_3:            'ガス価格：',
+  DGD_Generate:           '請求の生成',
+  DGD_Content:            'DGDトークンの請求を進めます',
 
   /* Deploy Contracts */
   DEP_generate:           'バイトコードを生成する',
@@ -256,10 +256,10 @@ ja.data = {
   SUCCESS_2:            'ウォレットは正常に暗号解除されました。',
   SUCCESS_3:            'トランザクションが送出されました。 TX ID: ',
   SUCCESS_4:            'ウォレットが追加されました：',
-  SUCCESS_5:            ‘投票が完了しました。The DAO への積極的な参加に感謝いたします。’,
+  SUCCESS_5:            '投票が完了しました。The DAO への積極的な参加に感謝いたします。',
 
   /* Tranlsation Info */
-  translate_version:    ‘0.3’,
+  translate_version:    '0.3',
   Translator_Desc:      'トランスレーターに感謝： ',
   TranslatorName_1:     'sekisanchi',
   TranslatorAddr_1:     '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE',
