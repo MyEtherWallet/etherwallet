@@ -5,15 +5,15 @@ no.code = 'no';
 no.data = {
 
   /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
+  GETH_InvalidSender:      'Feil på avsender',
+  GETH_Nonce:              'Nonce for liten',
+  GETH_Cheap:              'Gas-pris for lav til å kunne aksepteres',
+  GETH_Balance:            'Utilstrekkelig saldo',
+  GETH_NonExistentAccount: 'Kontoen eksisterer ikke eller saldoen er for lav',
+  GETH_InsufficientFunds:  'Utilstrekkelig med midler for gas * pris + verdi',
+  GETH_IntrinsicGas:       'Gas-egenverdi for lav',
+  GETH_GasLimit:           'Overskrider blokkens gas-grense',
+  GETH_NegativeValue:      'Negativ verdi',
 
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
@@ -21,13 +21,13 @@ no.data = {
   NAV_GenerateWallet:   'Opprett lommebok',
   NAV_BulkGenerate:     'Opprett flere lommebøker',
   NAV_SendEther:        'Send Ether',
-  NAV_SendTokens:       'Send Polletter',
+  NAV_SendTokens:       'Send Token',
   NAV_Offline:          'Send Frakoblet',
   NAV_WithdrawDAO:      'Ta ut DAO',
-  DAO_TitleLong:        'Løs inn DAO-pollettene dine for ether (ETH)',
+  DAO_TitleLong:        'Løs inn dine DAO-token for ether (ETH)',
   NAV_ClaimDGD:         'Gjør krav på DGD',
-  DGD_TitleLong:        'Gjør krav på DGD-pollettene dine',
-  NAV_DeployContract:  'Utplasser kontrakt',
+  DGD_TitleLong:        'Gjør krav på dine DGD-token',
+  NAV_DeployContract:   'Utplasser kontrakt',
   NAV_MyWallets:        'Mine lommebøker',
   NAV_ViewWallet:       'Vis lommebok-info',
   NAV_Help:             'Hjelp',
@@ -72,7 +72,7 @@ no.data = {
   sidebar_AccountInfo:  'Kontoinformasjon: ',
   sidebar_AccountAddr:  'Kontoadresse: ',
   sidebar_AccountBal:   'Saldo på konto: ',
-  sidebar_TokenBal:     'Pollett-saldo: ',
+  sidebar_TokenBal:     'Token-saldo: ',
   sidebar_Equiv:        'Tilsvarende verdier: ',
   sidebar_TransHistory: 'Transaksjonshistorikk: ',
   sidebar_DGDBal:       'DGD Crowdsale informasjon:',
@@ -139,7 +139,7 @@ no.data = {
 
   /* Tokens */
   TOKEN_Addr:            'Adresse: ',
-  TOKEN_Symbol:          'Pollettsymbol: ',
+  TOKEN_Symbol:          'Token-symbol: ',
   TOKEN_Dec:             'Desimaler: ',
 
   /* Send Transaction */
@@ -200,16 +200,16 @@ no.data = {
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   // note: this may be a bit rough in Norwegian.
   DAOModal_1:             'Du er i ferd med å veksle inn ',
-  DAOModal_2:             'DAO-polletter til ',
+  DAOModal_2:             'DAO-tokens til ',
   DAOModal_3:             'i bytte mot',
 
   /* Digix */
-  DGD_Desc:               'Krev inn dine DigixDAO (DGD)-tokens & badges. For å gjøre dette, må du ha deltatt i pollett-salget 30-31. mars 2016.  Hvis du ønsker å sende DGD, vennligst bruk "Send Token"-siden.',
+  DGD_Desc:               'Krev inn dine DigixDAO (DGD)-tokens & badges. For å gjøre dette, må du ha deltatt i token-salget 30-31. mars 2016.  Hvis du ønsker å sende DGD, vennligst bruk "Send Token"-siden.',
   DGD_Label_1:            'Estimert avgiftsforbruk:',
   DGD_Label_2:            'Oppgitt maksimal avgift:',
   DGD_Label_3:            'Gas-pris:',
   DGD_Generate:           'Opprett krav',
-  DGD_Content:            'Du er i ferd med å kreve inn DGD-pollettene dine.',
+  DGD_Content:            'Du er i ferd med å kreve inn dine DGD-token.',
 
   /* Deploy Contracts */
   DEP_generate:        'Generer Bytecode',
@@ -408,17 +408,17 @@ no.data = {
   HELP_6_Desc_15:       'Heretter kan du bruke standardtransaksjoner for disse nye lommebøkene uten risiko for "replay attacks". ',
 
   HELP_7_Title:         '7) Hvordan sender jeg token & legger til flere typer token?',
-  HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) er en flott måte å utforske token på, og for å finne informasjon om antall desimaler for en pollett.',
-  HELP_7_Desc_1:        'Naviger til "Send Polletter"-siden.',
+  HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) er en flott måte å utforske token på, og for å finne informasjon om antall desimaler for en token.',
+  HELP_7_Desc_1:        'Naviger til "Send Token"-siden.',
   HELP_7_Desc_2:        'Lås opp lommeboken din.',
   HELP_7_Desc_3:        'Oppgi adressen som du vil sende til i "Til adresse:"-feltet.',
   HELP_7_Desc_4:        'Oppgi beløpet som du vil sende.',
-  HELP_7_Desc_5:        'Velg hvilken type pollett du vil sende .',
-  HELP_7_Desc_6:        'Hvis du ikke ser pollett-typen på listen:',
+  HELP_7_Desc_5:        'Velg hvilken type token du vil sende .',
+  HELP_7_Desc_6:        'Hvis du ikke ser token-typen på listen:',
   HELP_7_Desc_7:        'Klikk "Tilpasning".',
-  HELP_7_Desc_8:        'Oppgi adressen, navnet, og antall desimaler for polletten. Disse er oppgitt fra utviklerne av polletten og er også nødvendige når du skal "Add a Watch Token" i Mist.', //Mist not translated to Norw yet :-)//
+  HELP_7_Desc_8:        'Oppgi adressen, navnet, og antall desimaler for token-et. Disse er oppgitt fra utviklerne av token-et og er også nødvendige når du skal "Add a Watch Token" i Mist.', //Mist not translated to Norw yet :-)//
   HELP_7_Desc_9:        'Klikk "Lagre".',
-  HELP_7_Desc_10:       'Du kan nå sende denne pollett-typen, samt se saldoen for polletten i sidefeltet.',
+  HELP_7_Desc_10:       'Du kan nå sende denne typen token, samt se saldoen for aktuell token i sidefeltet.',
   HELP_7_Desc_11:       'Klikk "Generer transaksjon".',
   HELP_7_Desc_12:       'Noen flere felter vil dukke opp. Dette er nettleseren din som genererer transaksjonen.',
   HELP_7_Desc_13:       'Klikk den blå "Send transaksjon"-knappen nedenfor dette.',
