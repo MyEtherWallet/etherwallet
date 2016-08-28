@@ -1,6 +1,34 @@
 ## https://www.MyEtherWallet.com
 ## Content of MyEtherWallet.com is served directly from github.
 
+The [mercury branch](https://github.com/kvhnuke/etherwallet/tree/mercury) is where all development happens. This branch (gh-pages) is soley for serving to MyEtherWallet.com.
+
+I recommend you check out our help page @ https://www.myetherwallet.com/#help for any questions.
+
+
+
+
+
+### Running Locally
+
+You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page.
+
+- Go to our github: https://github.com/kvhnuke/etherwallet/tree/gh-pages.
+- Click download zip in the upper right.
+- Move zip to an airgapped computer.
+- Unzip it.
+- Double-Click index.html.
+- MyEtherWallet.com is now running entirely on your computer.
+
+In case you are not familiar, you need to keep the entire folder in order to run the website, not just index.html. Don't touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.
+
+As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.
+
+
+
+
+
+
 
 
 
@@ -24,7 +52,7 @@ MyEtherWallet is an open source, javascript, client-side tool for generating Eth
 - Send Tokens based on EIP20.
 - Give users an easy way to safely send "Only ETH" or "Only ETC" to ensure they are not victim of replay attacks.
 - Generate and send offline transactions, ensuring your private keys never leave your computer.
-- Include recommended address, amount, gas limit, and data via URL. For example, a transaction with a gas limit of 21000, to our donation address, for .5ETH: https://www.myetherwallet.com/?gaslimit=21000&to=0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8&value=0.5#send-transaction
+
 
 
 
@@ -39,27 +67,6 @@ MyEtherWallet is an open source, javascript, client-side tool for generating Eth
  - **Offline / Client-Side**: User should be able to run locally and offline without issue.
  - **Private**: No tracking!!! No emails. No ads. No demographics. We don't even know how many wallets have been generated or transactions have been sent, let alone who / what / where you are.
  - **Open source & audit-able**
-
-
-
-
-
-### Users (non-developers)
-
-I recommend you check out our help page @ https://www.myetherwallet.com/#help for any questions.
-
-You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page.
-
-- Go to our github: https://github.com/kvhnuke/etherwallet/tree/gh-pages.
-- Click download zip in the upper right.
-- Move zip to an airgapped computer.
-- Unzip it.
-- Double-Click index.html.
-- MyEtherWallet.com is now running entirely on your computer.
-
-In case you are not familiar, you need to keep the entire folder in order to run the website, not just index.html. Don't touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.
-
-As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.
 
 
 
@@ -91,6 +98,7 @@ The app folder (where you will be working):
 - The navigation is in `scripts/services/globalServices.js`. Again, we control which navigation items show up in which version of the site in this single file.
 - As of September 2016, almost all the copy in the .tpl files are only there as placeholders. It all gets replaced via angular-translate. If you want to change some copy you need to do so in `scripts/translations/en.js` folder. You should also make a note about what you changed so that we can make sure it gets translated if necessary. You can note in the Pull Request for now. I'm not sure how we are going to maintain the different translations moving forward.
 - `styles` is all the less. It's a couple custom folders and bootstrap. We try to keep the LESS/CSS and small as possible so writing a couple of custom lines of CSS instead of uncommenting an entire bootstrap file is recommended. This, in general, needs to be further cleaned up.
+
 
 
 
@@ -131,6 +139,7 @@ Anyone can help out and it looks way more complicated than it is! If you would r
 6. Open a PR and leave us a brief description of what you did and any issues you ran into or comments you have.
 
 Read more @ [Help us translate MyEtherWallet.com into ALL THE LANGUAGES!](https://www.reddit.com/r/ethereum/comments/4z55s2/help_us_translate_myetherwalletcom_into_all_the/)
+
 
 
 

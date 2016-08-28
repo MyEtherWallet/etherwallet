@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mewApp">
+<head>
+  <meta charset="utf-8">
+  <title>MyEtherWallet: Open Source JavaScript Client-Side Ether Wallet</title>
+  <link rel="stylesheet" href="../css/etherwallet-master.min.css">
+  <script type="text/javascript" src="../js/etherwallet-static.min.js"></script>
+  <script type="text/javascript" src="../js/etherwallet-master.js"></script>
+</head>
+<div class="container" id="etherWalletPopUp">
+
+  <a href="browser_action/browser_action.html" class="back-icon">
+    <svg width="15px" height="17px" viewBox="0 0 15 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" ><path fill="#ddd" d="M14.9787047,7.78331554 C14.9787047,7.24285628 14.5430071,6.80236564 13.9977548,6.80236564 L5.86680744,6.80236564 L9.31681425,3.35238993 C9.69776572,2.97143852 9.69776572,2.34999595 9.31681425,1.96191726 L8.39064172,1.03571356 C8.00969025,0.654762146 7.38824772,0.654762146 7.00016902,1.03571356 L0.297789474,7.73806199 C0.107313765,7.9285377 0.0097105263,8.17855263 0.0097105263,8.43093293 C0.0097105263,8.68091677 0.107313765,8.93332822 0.297789474,9.12380392 L7.00016902,15.8261834 C7.38112045,16.2071038 8.002563,16.2071038 8.39064172,15.8261834 L9.31681425,14.8999798 C9.69776572,14.5190284 9.69776572,13.8975858 9.31681425,13.5095071 L5.86680744,10.0714205 L13.9929618,10.0714205 C14.5334522,10.0714205 14.9739428,9.63092993 14.9739428,9.0904395 L14.9787047,7.78331554 L14.9787047,7.78331554 Z"></path></svg>
+  </a>
+
+
+<!-- STEP 1 -->
+  <section id="sendTransMain">
+    <div class="form-group">
+      <label><strong> Select a Wallet to Send From </strong></label>
+      <table width="100%" class="table table-striped table-condensed quicksend" id="popupMainAccountTbl">
+        <tbody>
+          <tr>
+            <td colspan="2">You don't have any wallets saved yet! <a class="text-primary" href="/cx-wallet.html#add-wallet" target="_blank">Click here to add a wallet.</a></td>
+          </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="form-group">
+      <label><strong> To Address </strong></label>
+      <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" id="sendtxaddress"/>
+      <div id="addressvalidate"></div>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <strong>Amount to Send</strong>
+        <small><a id="transferAllBalancePop">[Send whole balance]</a></small>
+      </label>
+      <input class="form-control" type="text" placeholder="Amount" id="sendtxamount" value="">
+      <div class="radio">
+        <label><input type="radio" name="currencyRadio" checked value="ether">Ether</label>
+        <label><input type="radio" name="currencyRadio" value="finney">Finney</label>
+        <label><input type="radio" name="currencyRadio" value="szabo">Szabo</label>
+        <div id="weiamount"></div>
+      </div>
+    </div>
+
+    <div class="text-center"><a class="btn btn-primary btn-block" id="popPreSend"> Send Transaction </a></div>
+    <div id="popwalletselectstatus"></div>
+  </section>
+<!-- /STEP 1 -->
+
+
+<!-- STEP 2 - CONFIRM -->
+  <section id="popupConfirmSend">
+    <h4> Are you sure?</h4>
+    <p>
+      You are about to send
+      <strong id="confirmAmount" class="text-success"> 345 </strong>
+      <strong id="confirmCurrancy" class="text-success"> Ether </strong>
+      to address:
+      <strong id="confirmAddress" class="text-danger word-wrap"> 0x928342938472938 </strong>
+      from
+      <strong id="popupNickName"> wallet nickname </strong>.
+    </p>
+    <label><strong>Enter Your Password:</strong></label>
+    <input class="form-control" type="password" placeholder="Your MyEtherWallet Password" id="sendTransactionPin">
+    <div style="display: none;" id="accountAddress1"></div>
+    <div class="text-center marg-v-sm">
+      <a id="cancelTransaction" class="btn btn-default" style="width:49%"> Cancel </a>
+      <a id="approveTransaction" class="btn btn-primary" style="width:49%"> Send Transaction </a>
+    </div>
+    <div id="decryptStatus1" class="word-wrap"></div>
+  </section>
+<!-- STEP 2 - CONFIRM -->
+
+</div>
+</body>
+</html>

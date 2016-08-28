@@ -1,0 +1,279 @@
+// layout
+body,
+html {
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  padding-left: 5%;
+  padding-right: 5%;
+  @media screen and (max-width: @screen-sm) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+textarea {
+  resize: vertical;
+}
+
+// footer
+footer {
+  background-color: @ether-navy;
+  color: white;
+  margin-top: 100px;
+  p {
+    margin: 10px 0;
+  }
+  a {
+    color: #74C4DE;
+    &:hover,
+    &:focus {
+      color: darken(#74C4DE, 5%);
+    }
+  }
+  .modal,
+  .modal p {
+    color: @text-color;
+  }
+}
+
+// anouncement bars
+.announcement {
+  padding: 5px 10px;
+  text-align: center;
+  font-weight: 300;
+  color: white;
+  display: block;
+  background-color: @brand-primary;
+  a {
+    text-decoration: underline;
+    color: white;
+  }
+  &:hover,
+  &:focus {
+    color: darken(white, 5%);
+    text-decoration: none;
+    background-color: darken(@brand-primary, 5%);
+  }
+  strong {
+    font-weight: 400;
+  }
+}
+
+.annoucement-warning {
+  background-color: @brand-danger;
+  &:hover,
+  &:focus {
+    background-color: darken(@brand-danger, 5%);
+    a, a:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.annoucement-danger {
+  background-color: @brand-danger;
+  a:hover,
+  a:focus {
+    color: darken(white, 5%);
+    a, a:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+// address icenticons
+.address-identicon-container {
+  padding-left: 0;
+  padding-top: 10px;
+  text-align: right;
+  @media screen and (max-width: @grid-float-breakpoint) {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 0;
+  }
+}
+
+.address-identicon-container-offline {
+  padding: 0;
+  margin-left: -15px;
+}
+
+#addressIdenticon {
+  width: 64px;
+  height: 64px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  box-shadow: inset rgba(255, 255, 255, 0.5) 0 2px 2px, inset rgba(0, 0, 0, 0.6) 0 -1px 8px;
+}
+
+#addressIdenticon.med {
+  width: 40px;
+  height: 40px;
+}
+#addressIdenticon.small {
+  width: 24px;
+  height: 24px;
+}
+
+.address-identicon-container.small {
+  display: inline;
+  #addressIdenticon {
+    width: 32px;
+    height: 32px;
+    box-shadow: inset 0 2px 2px hsla(0, 0%, 100%, .5), inset 0 -1px 5px rgba(0, 0, 0, .6);
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+// helpers
+.wrap {
+  word-wrap: break-word;
+}
+
+.bigger-on-mobile.form-control[readonly] {
+  height: 120px;
+}
+
+// help page
+#paneHelp {
+  h3 {
+    margin-top: 2em;
+  }
+}
+
+.account-help-icon {
+  h4, h5, h6, img {
+    display: inline-block;
+  }
+  img:hover + .account-help-text {
+    display: block;
+  }
+  img {
+    margin-left: -30px;
+    margin-right: 3px;
+  }
+}
+
+.account-help-text {
+  background: white;
+  border-radius: 3px;
+  border: 1px solid #CDCDCD;
+  box-shadow: 0 0 5px rgba(100, 100, 100, .2);
+  display: none;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 5px;
+  position: absolute;;
+  width: 280px;
+  z-index: 999;
+}
+
+
+@media screen and (max-width:767px) {
+  .account-help-icon img,
+  .account-help-icon p, {
+    display: none;
+  }
+}
+
+// monospace things
+.mono,
+.form-control,
+#accountAddress,
+#accountBalance,
+#accountBalanceUsd,
+#accountBalanceEur,
+#accountBalanceBtc,
+#accountBalancePopMB-0,
+#accountBalancePopMB-2,
+#accountAddressMainTbl-1 {
+  font-family: @font-family-monospace;
+  font-weight: normal;
+  letter-spacing: .02em;
+}
+
+// QR Code on Offline Transactions Page
+.offline-qrcode {
+  margin-top: -150px;
+  max-width: 300px;
+  @media screen and (max-width: 942px) {
+    margin-top: -78px;
+  }
+  @media screen and (max-width: 769px) {
+    margin-top: 0;
+  }
+}
+
+.account-info {
+  padding-left: 1em;
+  li {
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+}
+
+input[type="text"]+.eye {
+  cursor: pointer;
+  &:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    margin-left: 6px;
+    margin-right: 6px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url("../images/icon-eye.svg");
+  }
+}
+
+input[type="password"]+.eye {
+  cursor: pointer;
+  &:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    margin-left: 6px;
+    margin-right: 6px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url("../images/icon-eye-closed.svg");
+  }
+}
+
+
+// collapsable containers
+.collapse-container {
+  h2, h4 {
+    cursor: pointer;
+  }
+  .collapse-button {
+    float: left;
+    font-weight: 500;
+    user-select: none;
+    padding: 10px;
+    margin: -10px -35px;
+    font-size: 24px;
+    line-height: 1.6;
+  }
+}
+
+
+// help collapsable containers
+.help .collapse-container {
+  margin: 40px 0;
+  .collapse-button {
+    margin: -10px -30px;
+    font-size: 20px;
+    line-height: 1;
+  }
+}

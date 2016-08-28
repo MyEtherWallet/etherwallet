@@ -1,0 +1,37 @@
+@@include( '../includes/header.tpl', { "site": "mew" } )
+
+
+
+<br />
+
+<section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+
+  <div class="tab-content" >
+
+    @@include( '../includes/generateWallet.tpl', { "site": "mew" } )
+
+    @@include( '../includes/viewWalletInfo.tpl', { "site": "mew" } )
+
+    @@include( '../includes/sendTransaction.tpl', { "site": "mew" } )
+
+    @@include( '../includes/offlineTransaction.tpl', { "site": "mew" } )
+
+    @@include( '../includes/tokens.tpl', { "site": "mew" } )
+
+    @@include( '../includes/dao.tpl', { "site": "mew" } )
+
+    @@include( '../includes/digix.tpl', { "site": "mew" } )
+
+    @@include( '../includes/deployContract.tpl', { "site": "mew" } )
+
+    @@include( '../includes/help.tpl', { "site": "mew" } )
+
+    @@include( '../includes/bulkGenerate.tpl', { "site": "mew" } )
+
+    @@include( '../includes/print.tpl', { "site": "mew" } )
+
+  </div>
+
+</section>
+
+@@include( '../includes/footer.tpl', { "site": "mew" } )

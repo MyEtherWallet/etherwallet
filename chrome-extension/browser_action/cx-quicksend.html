@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mewApp">
+
+<head>
+  <meta charset="utf-8">
+  <title>MyEtherWallet: Open Source JavaScript Client-Side Ether Wallet</title>
+  <link rel="stylesheet" href="../css/etherwallet-master.min.css">
+  <script type="text/javascript" src="../js/etherwallet-static.min.js"></script>
+  <script type="text/javascript" src="../js/etherwallet-master.js"></script>
+</head>
+
+<body ng-controller='tabsCtrl'>
+  <div class="container" id="etherWalletPopUp" ng-controller='quickSendCtrl'>
+
+    <a href="browser_action.html" class="back-icon">
+      <svg width="15px" height="17px" viewBox="0 0 15 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <path fill="#ddd" d="M14.9787047,7.78331554 C14.9787047,7.24285628 14.5430071,6.80236564 13.9977548,6.80236564 L5.86680744,6.80236564 L9.31681425,3.35238993 C9.69776572,2.97143852 9.69776572,2.34999595 9.31681425,1.96191726 L8.39064172,1.03571356 C8.00969025,0.654762146 7.38824772,0.654762146 7.00016902,1.03571356 L0.297789474,7.73806199 C0.107313765,7.9285377 0.0097105263,8.17855263 0.0097105263,8.43093293 C0.0097105263,8.68091677 0.107313765,8.93332822 0.297789474,9.12380392 L7.00016902,15.8261834 C7.38112045,16.2071038 8.002563,16.2071038 8.39064172,15.8261834 L9.31681425,14.8999798 C9.69776572,14.5190284 9.69776572,13.8975858 9.31681425,13.5095071 L5.86680744,10.0714205 L13.9929618,10.0714205 C14.5334522,10.0714205 14.9739428,9.63092993 14.9739428,9.0904395 L14.9787047,7.78331554 L14.9787047,7.78331554 Z"></path>
+      </svg>
+    </a>
+
+    <!-- STEP 1 -->
+    <section id="sendTransMain">
+
+      <div class="form-group" ng-show="!showConfirm">
+        <label class="strong" translate="decrypt_Select"> Select a Wallet: </label>
+        <table width="100%" class="table table-striped table-condensed quicksend" id="popupMainAccountTbl">
+          <tbody>
+            <tr ng-show="allWallets.length==0">
+              <td colspan="2" translate="CX_error_1">You don't have any wallets saved yet! <a class="text-primary" href="/cx-wallet.html#add-wallet" target="_blank">Click here to add a wallet.</a></td>
+            </tr>
+            <tr ng-repeat="twallet in allWallets track by $index">
+              <td>
+                <input type="radio" name="selectedWallet" ng-model="$parent.selectedWallet" value="{{$index}}">
+              </td>
+              <td>
+                <div id="addressIdenticon" class="small" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div>
+              </td>
+              <td>
+                <label>{{twallet.nick}}</label><small class="quicksend-address">{{twallet.addr}}</small></td>
+              <td>{{twallet.balanceR | number:2 | number}} ETH</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div ng-show="selectedWallet!='' && !showConfirm">
+        <div class="form-group">
+          <label class="strong" translate="SEND_addr"> To Address: </label>
+          <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()" />
+          <div ng-bind-html="validateAddressStatus"></div>
+        </div>
+        <div class="form-group">
+          <label>
+            <strong translate="SEND_amount">Amount to Send: </strong>
+            <small><a id="transferAllBalancePop" ng-click="transferAllBalance()" translate="SEND_TransferTotal">Send Entire Balance</a></small>
+          </label>
+          <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" />
+          <div class="radio">
+            <label>
+              <input type="radio" name="currencyRadio" value="ether" ng-model="tx.unit" />Ether</label>
+            <label>
+              <input type="radio" name="currencyRadio" value="finney" ng-model="tx.unit" />Finney</label>
+            <label>
+              <input type="radio" name="currencyRadio" value="szabo" ng-model="tx.unit" />Szabo</label>
+          </div>
+        </div>
+        <div class="text-center"><a class="btn btn-primary btn-block" ng-click="prepTX()"> Send Transaction </a></div>
+        <div ng-bind-html="prepTXStatus"></div>
+      </div>
+
+    </section>
+    <!-- /STEP 1 -->
+
+
+
+    <!-- STEP 2 - CONFIRM -->
+    <section id="popupConfirmSend" ng-show='showConfirm'>
+      <h4 class="text-danger" translate="SENDModal_Title"> Warning! </h4>
+      <p>
+        <span translate="SENDModal_Content_1"> You are about to send </span>
+        <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
+        <strong id="confirmCurrancy" class="text-primary"> {{tx.unit}} </strong>
+        <span translate="SENDModal_Content_2"> to address </span>
+        <strong id="confirmAddress" class="text-primary word-wrap"> {{tx.to}} </strong>
+        <span translate="OFFLINE_Step1_Label_1"> from address </span>
+        <strong id="popupNickName" class="text-primary"> {{allWallets[selectedWallet].address}} {{allWallets[selectedWallet].nick}} </strong>.
+      </p>
+      <label class="strong" translate="x_Password">Password:</label>
+      <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="password" />
+      <div class="text-center marg-v-sm">
+        <a class="btn btn-default btn-sm" href="browser_action.html" translate="x_Cancel"> Cancel </a>
+        <a class="btn btn-primary btn-sm" ng-click="unlockAndSend()" translate="SEND_trans"> Send Transaction </a>
+      </div>
+      <div ng-bind-html="validateTxStatus" class="word-wrap"></div>
+      <div ng-bind-html="sendTxStatus" class="word-wrap"></div>
+    </section>
+    <!-- STEP 2 - CONFIRM -->
+
+
+
+  </div>
+</body>
+
+</html>
