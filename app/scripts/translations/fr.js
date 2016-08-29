@@ -397,7 +397,7 @@ fr.data = {
   HELP_6_Desc_4:        'Générer un nouveau portefeuille ETH post-fork vierge pour vous-même (destination finale du pur ETH).',
   HELP_6_Desc_5:        'Générer un nouveau portefeuille ETC post-fork vierge pour vous-même (destination finale du pur ETC).',
   HELP_6_Desc_6:        'Sauvegardez ces nouveaux portefeuilles et vérifiez que vous pouvez y accéder. Voir #2a et #3 ci-dessus.',
-  HELP_6_Desc_7:        'Envoyez 0.1234 ETH à votre nouveau portefeuille ETH en utilisant l\'option "ETH seulement" sur la page "Envoi d'Ether".',
+  HELP_6_Desc_7:        'Envoyez 0.1234 ETH à votre nouveau portefeuille ETH en utilisant l\'option "ETH seulement" sur la page "Envoi d\'Ether".',
   HELP_6_Desc_8:        'Envoyez 0.5678 ETC à votre nouveau portefeuille ETC en utilisant l\'option "ETC seulement" sur la page "Envoi d\'Ether".',
   HELP_6_Desc_9:        'Vérifiez que seuls les 0.1234 ETH ont bougé sur etherscan.io. Vérifiez que seuls les 0.5678 ETC ont bougé sur gastracker.io.',
   HELP_6_Desc_10:       'Envoyez une transaction de 0.0001 ETH depuis votre nouveau portefeuille ETH. Vérifiez sur etherscan.io. Assurez-vous que les 0.0001 ETH ont bougé.',
