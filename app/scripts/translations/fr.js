@@ -260,15 +260,15 @@ fr.data = {
   SUCCESS_6:            'Fichier sélectionné : ',
 
   /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
+  GETH_InvalidSender:      'Expéditeur invalide',
+  GETH_Nonce:              'Nonce trop bas',
+  GETH_Cheap:              'Prix du gaz trop bas pour être accepté',
+  GETH_Balance:            'Solde insuffisant',
+  GETH_NonExistentAccount: 'Compte inexistant ou solde du compte trop bas',
+  GETH_InsufficientFunds:  'Fonds insuffisants pour gaz * prix + valeur',
+  GETH_IntrinsicGas:       'Gaz intrinsèque trop bas',
+  GETH_GasLimit:           'Limite en gaz dépassée',
+  GETH_NegativeValue:      'Valeur négative',
 
   /* Tranlsation Info */
   translate_version:    '0.3',
