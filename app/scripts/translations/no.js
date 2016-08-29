@@ -11,7 +11,7 @@ no.data = {
   NAV_BulkGenerate:     'Opprett flere lommebøker',
   NAV_SendEther:        'Send Ether',
   NAV_SendTokens:       'Send Token',
-  NAV_Offline:          'Send Frakoblet',
+  NAV_Offline:          'Send Offline',
   NAV_WithdrawDAO:      'Ta ut DAO',
   DAO_TitleLong:        'Løs inn dine DAO-token for ether (ETH)',
   NAV_ClaimDGD:         'Gjør krav på DGD',
@@ -39,7 +39,7 @@ no.data = {
   x_JsonDesc:           'Dette er det ukrypterte JSON-formatet av din private nøkkel. Dette betyr at du ikke trenger noe passord, men også at den som finner din JSON kan få tilgang til lommeboken din og etherne dine uten passord.',
   x_PrintShort:         'Skriv ut',
   x_Print:              'Skriv ut papirlommebok',
-  x_PrintDesc:          'ProTips: Klikk "skriv ut" og lagre som PDF, selv om du ikke har noen skriver!',
+  x_PrintDesc:          'Profftips: Klikk "skriv ut" og lagre som PDF, selv om du ikke har noen skriver!',
   x_CSV:                'CSV-fil (ukryptert)',
   x_TXT:                'TXT-fil (ukryptert)',
   x_Wallet:             'Lommebok',
@@ -55,7 +55,7 @@ no.data = {
   FOOTER_1b:            'Skapt av',
   FOOTER_2:             'Donasjoner mottas med takk:',
   FOOTER_3:             'Klient-side lommebok-oppretting av',
-  FOOTER_4:               'Ansvarsfraskrivelse',
+  FOOTER_4:             'Ansvarsfraskrivelse',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Kontoinformasjon: ',
@@ -112,7 +112,7 @@ no.data = {
   SEND_amount_short:     'Beløp',
   SEND_custom:           'Tilpasning',
   SEND_gas:              'Gas',
-  SEND_TransferTotal:   'Overfør total tilgjengelig saldo',  // updated to read 'Send Entire Balance'
+  SEND_TransferTotal:    'Overfør total tilgjengelig saldo',  // updated to read 'Send Entire Balance'
   SEND_generate:         'Generer transaksjon',
   SEND_raw:              'Rå-transaksjon',
   SEND_signed:           'Signert transaksjon',
@@ -154,7 +154,7 @@ no.data = {
   TRANSModal_No:         'Trøste og bære, nå er jeg bare enda mer forvirret. Hjelp meg.',
 
   /* Offline Transaction */
-  OFFLINE_Title:         'Generer & send frakoblet (offline) transaksjon',
+  OFFLINE_Title:         'Generer & send offline transaksjon',
   OFFLINE_Desc:          'Generering av offline-transaksjoner kan utføres i tre steg. Du utfører steg 1 og 3 på en internettilknyttet datamaskin, og steg 2 på en offline/frakoblet datamaskon. Dette sikrer at dine private nøkler ikke kommer i kontakt med en internettilknyttet enhet.',
   OFFLLINE_Step1_Title:  'Steg 1: Generer informasjon (internettilknyttet datamaskin)',
   OFFLINE_Step1_Button:  'Generer informasjon',
@@ -182,7 +182,7 @@ no.data = {
   DAO_TitleETC:           'Veksle inn DAO mot ETC',
   DAO_ETC_Label_1:        'Hvilken adresse ønsker du å sende dine ETC til?',
   DAO_ETC_Label_2:        '"White Hat Group" har jobbet utrettelig for å gi deg tilbake dine ETC. Du kan takke dem ved å donere en prosentandel av uttaket ditt, hvis du ønsker det. ',
-  DAO_Desc:               'Bruk denne siden til å veksle inn dine DAO-token for ETH. Hvis du ønsker å sende DAO-poletter, vennligst bruk "Send Token"-siden.',
+  DAO_Desc:               'Bruk denne siden til å veksle inn dine DAO-token for ETH. Hvis du ønsker å sende DAO-token, vennligst bruk "Send Token"-siden.',
   DAO_Inst:               'Ja. Bare trykk på den store røde knappen. Det er så enkelt som det.',
   DAO_Warning:            'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,001 ether til denne kontoen og prøv igjen. ',
   DAOModal_Title:         'Bare for å være sikker...',
@@ -370,7 +370,7 @@ no.data = {
   HELP_4CX_Desc_12:     'Bruk "Send ether"-siden: ',
 
   HELP_5_Title:         '5) Hvordan kan jeg bruke MyEtherWallet.com offline/lokalt? ',
-  HELP_5_Desc_1:        'Du kan bruke MyEtherWallet.com på datamaskinen din i stedet for fra GitHub-serverne. Du kan opprette en lommebok fullstendig frakoblet fra internett, og sende transaksjoner fra "Send frakoblet"-siden.',
+  HELP_5_Desc_1:        'Du kan bruke MyEtherWallet.com på datamaskinen din i stedet for fra GitHub-serverne. Du kan opprette en lommebok fullstendig frakoblet fra internett, og sende transaksjoner fra "Send offline"-siden.',
   HELP_5_Desc_2:        'Gå til vår github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
   HELP_5_Desc_3:        'Klikk "download zip" øverst til høyre.',
   HELP_5_Desc_4:        'Flytt zip-fila til en frakoblet datamaskin.',
@@ -437,10 +437,10 @@ no.data = {
   HELP_8CX_Desc_3:       'Hvis MyEtherWallet CX av en eller annen grunn skulle forsvinne fra Chrome Store, så kan du finne kildekoden på Github og laste den inn manuelt. Se #5 ovenfor.',
 
   HELP_9_Title:          '9) Er "Send ether"-siden offline?',
-  HELP_9_Desc_1:         ' Nei, send transaksjon-siden er ikke offline. Den trenger internett for å kunne skaffe den aktuelle gas-prisen, "nonce" for kontoen din, og for å kunne kringkaste transaksjonen (aka "send"). Imidlertid sender den kun den signerte transaksjonen. Din private nøkkel forblir i sikkerhet hos deg. Vi tilbyr nå også en "Frakoblet transaction"-side slik at du kan forsikre deg om at dine private nøkler til enhver tid kun befinner seg på en offline/frakoblet datamaskin.',
+  HELP_9_Desc_1:         ' Nei, send transaksjon-siden er ikke offline. Den trenger internett for å kunne skaffe den aktuelle gas-prisen, "nonce" for kontoen din, og for å kunne kringkaste transaksjonen (aka "send"). Imidlertid sender den kun den signerte transaksjonen. Din private nøkkel forblir i sikkerhet hos deg. Vi tilbyr nå også en "Offline transaction"-side slik at du kan forsikre deg om at dine private nøkler til enhver tid kun befinner seg på en offline/frakoblet datamaskin.',
 
   HELP_10_Title:         '10) Hvordan lager jeg en frakoblet/offline transaksjon?',
-  HELP_10_Desc_1:        'Naviger til "Send Frakoblet"-siden via din internettilknyttede datamaskin.',
+  HELP_10_Desc_1:        'Naviger til "Send Offline"-siden via din internettilknyttede datamaskin.',
   HELP_10_Desc_2:        'Oppgi "Fra-adressen". Vennligst merk at dette er adressen du sender FRA, ikke TIL. Dette genererer "nonce" og "gas-pris".',
   HELP_10_Desc_3:        'Gå til den internettfrakoblede datamaskinen. Oppgi "TIL-ADRESSEN" og "BELØPET" du vil sende.',
   HELP_10_Desc_4:        'Oppgi "GAS-PRISEN" slik den ble vist deg på den tilkoblede datamaskinen i steg #1.',
