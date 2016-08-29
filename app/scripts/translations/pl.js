@@ -5,15 +5,15 @@ pl.code = 'pl';
 pl.data = {
 
   /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
+  GETH_InvalidSender:      'Nieprawidłowy nadawca',
+  GETH_Nonce:              'Wyróżnik transakcji za niski',
+  GETH_Cheap:              'Cena paliwa poniżej akceptacji',
+  GETH_Balance:            'Niewystarczająca ilość środków na koncie',
+  GETH_NonExistentAccount: 'Konto nie istnieje lub niewystarczająca ilość środków',
+  GETH_InsufficientFunds:  'Niewystarczająca ilość środków na paliwo * cena + kwota',
+  GETH_IntrinsicGas:       'Paliwo poniżej ilości obowiązkowej',
+  GETH_GasLimit:           'Przekroczono limit paliwa na blok',
+  GETH_NegativeValue:      'Ujemna wartość',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',

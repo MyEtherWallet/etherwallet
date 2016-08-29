@@ -392,11 +392,27 @@ input[type="checkbox"] {
   }
 }
 
+// Custom Angular Form Validators
+
+.form-control.ng-dirty.ng-valid {
+  border-color: lighten(@brand-success, 15%);
+  outline: 0;
+  .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 4px @{brand-success}");
+}
+
+.form-control.ng-dirty.ng-invalid {
+  border-color: lighten(@brand-danger, 15%);
+  outline: 0;
+  .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 4px @{brand-danger}");
+}
+
+
+
 
 // Form control feedback states
 //
 // Apply contextual and semantic states to individual form controls.
-
+/*
 .has-feedback {
   // Enable absolute positioning
   position: relative;
@@ -621,3 +637,5 @@ input[type="checkbox"] {
     }
   }
 }
+
+*/
