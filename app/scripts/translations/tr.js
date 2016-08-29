@@ -4,6 +4,17 @@ var tr = function() {}
 tr.code = 'tr';
 tr.data = {
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   NAV_DeployContract:   'Deploy Contract',
 
   /* Navigation*/
@@ -27,22 +38,22 @@ tr.data = {
   x_AddessDesc:         'Bu "hesap numarası" veya "genel anahtar" dir. Birisi ether göndermek istiyorsa bu adresi kullanmasi gerekir. Ikon adresini kontrol etmek kolay bir yoldur',
   x_Address:            'Adresin',
   x_Cancel:             'Iptal et',
-  x_CSV:                'CSV dosya (şifrelenmis)',
   x_Download:           'Indir',
   x_Json:               'JSON dosya (şifrelenmemis)',
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
-  x_Keystore:           'Keystore/JSON dosya (Tavsiye edilen· şifrelenmemiş · Mist/Geth formati)',
+  x_Keystore:           'Keystore/JSON dosya (Tavsiye edilen· şifrelenmiş · Mist/Geth formati)',
   x_Keystore2:          'Keystore/JSON dosya',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Parola',
   x_Print:              'Cüzdanin kağıt versiyonunu yazdir',
   x_PrintDesc:          'ProTavsiye: Eğer yazıcınız olmasa bile, "Yazdır" seçeneğini tıklayın ve PDF dosyası olarak kaydedin!',
   x_PrintShort:         'Yazdir',
-  x_PrivKey:            'Özel anahtar (şifrelenmis)',
+  x_PrivKey:            'Özel anahtar (şifrelenmemis)',
   x_PrivKey2:           'Özel anahtar',
   x_PrivKeyDesc:        'Bu özel anahtarinin şifrelenmemiş metin sürümüdür. Birisi şifrelenmemiş özel anahtarı bulduysa, şifre olmadan cüzdani acabilir. Bu nedenle, şifrelenmiş sürümlerini genellikle tavsiye edilir.',
   x_Save:               'Indir',
-  x_TXT:                'TXT dosya (şifrelenmis)',
+  x_TXT:                'TXT dosya (şifrelenmemis)',
+  x_CSV:                'CSV dosya (şifrelenmemis)',
   x_Wallet:             'Cüzdan',
 
 /* Header */
@@ -81,7 +92,6 @@ tr.data = {
   ADD_Radio_2:            'Cüzdan dosyayi sec (Keystore / JSON)',
   ADD_Radio_2_alt:        'Cüzdan dosyayi sec: ',
   ADD_Radio_2_short:      'CÜZDAN DOSYAYI SEC...',
-  ADD_Radio_2_success:    'Dosya secildi ',
   ADD_Radio_3:            'Özel anahatarini Yaspistir/Yaz ',
   ADD_Radio_4:            'Izlenecek hesap adresi ekle', /* maybe another word for watch/izlencek --> Takip edilecek? */
   ADD_Label_2:            'Bir nickname oluştur: ',
@@ -141,14 +151,14 @@ tr.data = {
   TRANS_eth:             'Yalnızca ETH',
   TRANS_etc:             'Yalnızca ETC',
   TRANS_advanced:        '+Gelişmiş: Daha Gaz veya veri ekle',
-  TRANS_data:            ' Veri: ',
-  TRANS_gas:             ' Gas: ',
-  TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
+  TRANS_data:            'Veri: ',
+  TRANS_gas:             'Gas: ',
+  TRANS_sendInfo:        '21000 gaz kullanan standart bir islem 0,000441 ETH ile mal olur. Biz hizli bir sekilde mayinlanmasi için, 000000021 ETH\'dan biraz daha yüksek gaz fiyatini kullaniyoruz. Biz herhangi bir islem ücreti almiyoruz.',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Yalnızca ETH" and "Yalnızca ETC" islemler',
   TRANSModal_Content_0:  'Farklı işlemler ve farklı hizmetleri hakkında bir not:',
-  TRANSModal_Content_1:  '**ETH (Standart işlem): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
+  TRANSModal_Content_1:  '**ETH (Standart islem): ** Bu standart bir islem baslatir bir hesapten direkt baska bir hesapa. Standart gas 21000\'dir. Bu islemlen gönderileren islem ETC zincirinde\'de yer bulabilir.',
   TRANSModal_Content_2:  '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
   TRANSModal_Content_3:  '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
   TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)',
@@ -157,25 +167,25 @@ tr.data = {
   TRANSModal_No:         'Aman, kafam daha cok karıştı. Yardım et.',
 
   /* Offline Transaction */
-  OFFLINE_Title:         'Generate & Send Offline Transaction',
-  OFFLINE_Desc:          'Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This ensures your private keys do not touch an internet-connected device.',
-  OFFLLINE_Step1_Title:  'Step 1: Generate Information (Online Computer)',
-  OFFLINE_Step1_Button:  'Generate Information',
-  OFFLINE_Step1_Label_1: 'From Address: ',
-  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
-  OFFLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
-  OFFLINE_Step2_Label_1:  'To Address: ',
-  OFFLINE_Step2_Label_2:  'Value / Amount to Send',
-  OFFLINE_Step2_Label_3:  'Gas Price ',
-  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.',
-  OFFLINE_Step2_Label_4:  'Gas Limit ',
+  OFFLINE_Title:         'Olustur & offline islem',
+  OFFLINE_Desc:          'Offline islemler 3. adimda gerçeklestirir. 1. ve 3. adimi internete bagli olan bir bilgisayarda, 2. adimi offline olan bir bilgisayarda tamamliyorsun. Böyle özel anahtarinin internete bagli olan bir bilgisayara ulasmasini engelnenir.',
+  OFFLLINE_Step1_Title:  'Adim 1: Bilgileri olustur (Online Bilgisayar)',
+  OFFLINE_Step1_Button:  'Bilgileri olustur',
+  OFFLINE_Step1_Label_1: 'Adres\'den: ',
+  OFFLINE_Step1_Label_2: 'Nota: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
+  OFFLINE_Step2_Title:   'Adim 2: Generate Transaction (Offline Computer)',
+  OFFLINE_Step2_Label_1:  'Adrese: ',
+  OFFLINE_Step2_Label_2:  'Gönderilen miktar',
+  OFFLINE_Step2_Label_3:  'Gas fiyati ',
+  OFFLINE_Step2_Label_3b: 'Bu online bilgisayarınızda adım 1\'de gösterilirdi.',
+  OFFLINE_Step2_Label_4:  'Gas limiti ',
   OFFLINE_Step2_Label_4b: '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you.',
-  OFFLINE_Step2_Label_5:  'Nonce',
-  OFFLINE_Step2_Label_5b: 'This was displayed in Step 1 on your online computer.',
-  OFFLINE_Step2_Label_6:  'Data',
-  OFFLINE_Step2_Label_6b: 'This is optional. Data is often used when you send transactions to contracts.',
+  OFFLINE_Step2_Label_5:  'Veri',
+  OFFLINE_Step2_Label_5b: 'Bu online bilgisayarınızda adım 1\'de gösterilir.',
+  OFFLINE_Step2_Label_6:  'Veri',
+  OFFLINE_Step2_Label_6b: 'Bu istege bagli. Data is often used when you send transactions to contracts.',
   OFFLINE_Step2_Label_7:  'Enter / Select your Private Key / JSON.',
-  OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
+  OFFLINE_Step3_Title:    'Adim 3: Gönder / Islemi duyur (Online Computer)',
   OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
 
   /* DAO */
@@ -189,24 +199,25 @@ tr.data = {
   DAO_Inst:               'Evet. Sadece büyük kırmızı düğmeye bas. Bu kadar kolay.',
   DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
   DAOModal_Title:         'Sadece emin olmak için...',
+  
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Cekmek üzeresin',
-  DAOModal_2:             'DAO Tokens to',
-  DAOModal_3:             'for', // "in return for"
+  DAOModal_2:             'DAO token\'i ',
+  DAOModal_3:             ' yerine', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
   DGD_Label_1:            'Tahmini bedel:',
   DGD_Label_2:            'Maximum bedel:',
   DGD_Label_3:            'Gas fiyati:',
-  DGD_Generate:           'Talep oluştur', /* Maybe "Talep" is the wrong word fpr "Claim" */
+  DGD_Generate:           'Talep oluştur', /* Maybe "Talep" is the wrong word for "Claim" */
   DGD_Content:            'Suan DGD token\'lerini talep etmekdesin.',
 
   /* Deploy Contracts */
   DEP_generate:           'Bytecode oluştur',
   DEP_generated:          'Oluşturulan Bytecode',
   DEP_signtx:             'Islmemi Imzala',
-  DEP_interface:          'Generated Interface',
+  DEP_interface:          'Interface oluştur',
 
   /* My Wallet */
   MYWAL_Nick:             'Cüzdan nickname',
@@ -231,22 +242,22 @@ tr.data = {
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
 
   /* Chrome Extension */
-  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
-  CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+  CX_error_1:           'Su an cüzdan eklenmemis. Cüzdan ekle tikla ["Add Wallet"](/cx-wallet.html#add-wallet) ve bir cüzdan ekle!',
+  CX_quicksend:         'Gönder', // if no appropriate translation, just use "Send" maybe add hizli
 
   /* Error Messages */
   ERROR_1:              'Geçerli tutar yaz.',
   ERROR_2:              'Sifren en az 9 sembol\'dan olusmasi lazim. Güçlü bir parola sectiginden emin ol. ',
   ERROR_3:              'Sorry! We don\'t recognize this type of wallet file. ',
   ERROR_4:              'Geçerli bir cüzdan dosyası değil. ',
-  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units ',
+  ERROR_5:              'This unit doesn\'t exists, please use the one of the following units Var olmayan bir birim, bu birimlerden birini kullan lütfen',
   ERROR_6:              'Geçersiz adres. ',
   ERROR_7:              'Geçersiz parola. ',
-  ERROR_8:              'Geçersiz bakiye. ', /*maybe yetersiz bakiye */
+  ERROR_8:              'Yetersiz bakiye. ', /*maybe yetersiz bakiye */
   ERROR_9:              'Geçersiz gas limit. ',
   ERROR_10:             'Geçersiz data value. ',
-  ERROR_11:             'Geçersiz gas. ', /*maybe yetersiz gas */
-  ERROR_12:             'Geçersiz nonce. ', /* Bu ne lan simdi */
+  ERROR_11:             'Yetersiz gas. ', /*maybe yetersiz gas */
+  ERROR_12:             'Geçersiz veri. ',
   ERROR_13:             'Geçersiz imzali isleme. ',
   ERROR_14:             'Secdigin Nickname baska bir cüzdanda kullaniliyor. ',
   ERROR_15:             'Cüzdan bulunmadi. ',
@@ -256,10 +267,11 @@ tr.data = {
   ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
   ERROR_20:             'Geçersiz sembol',
   SUCCESS_1:            'Geçerli adres',
-  SUCCESS_2:            'Cüzdan basariyla decrypted', /* searching */
+  SUCCESS_2:            'Cüzdan basariyla desifre edildi',
   SUCCESS_3:            'İşlem teslim edildi TX ID: ',
   SUCCESS_4:            'Cüzdanın başarıyla eklendi: ',
   SUCCESS_5:            'Başarıyla oy verdiniz. DAO aktif bir katılımcı olduğunuz için teşekkür ederiz.',
+  SUCCESS_6:            'Dosya secildi ',
 
   /* Tranlsation Info */
   translate_version:    '0.3',

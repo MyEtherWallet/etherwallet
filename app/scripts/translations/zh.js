@@ -259,6 +259,17 @@ zh.data = {
   SUCCESS_4:            'Your wallet was successfully added: ',
   SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',

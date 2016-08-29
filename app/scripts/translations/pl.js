@@ -79,7 +79,6 @@ pl.data = {
   ADD_Radio_2:            'Wybierz Plik Portfela (Keystore / JSON)',
   ADD_Radio_2_alt:        'Wybierz Plik Portfela: ',
   ADD_Radio_2_short:      'WYBIERZ PLIK PORTFELA...',
-  ADD_Radio_2_success:    'Wybrany plik: ',
   ADD_Radio_3:            'Wklej/Wpisz Twój Klucz Prywatny',
   ADD_Radio_4:            'Dodaj Konto do Obserwacji',
   ADD_Label_2:            'Utwórz Nazwę Użytkownika:',
@@ -258,6 +257,18 @@ pl.data = {
   SUCCESS_3:            'Transakcja zgłoszona. TX ID: ',
   SUCCESS_4:            'Twój portfel został dodany: ',
   SUCCESS_5:            'Zagłosowałeś z powodzeniem. Dziękuję za bycie aktywnym uczestnikiem The DAO.',
+  SUCCESS_6:            'Wybrany plik: ',
+
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Nieprawidłowy nadawca',
+  GETH_Nonce:              'Wyróżnik transakcji za niski',
+  GETH_Cheap:              'Cena paliwa poniżej akceptacji',
+  GETH_Balance:            'Niewystarczająca ilość środków na koncie',
+  GETH_NonExistentAccount: 'Konto nie istnieje lub niewystarczająca ilość środków',
+  GETH_InsufficientFunds:  'Niewystarczająca ilość środków na paliwo * cena + kwota',
+  GETH_IntrinsicGas:       'Paliwo poniżej ilości obowiązkowej',
+  GETH_GasLimit:           'Przekroczono limit paliwa na blok',
+  GETH_NegativeValue:      'Ujemna wartość',
 
   /* Tranlsation Info */
   translate_version:    '3.0 (0.3)',
