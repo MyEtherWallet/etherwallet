@@ -34,12 +34,12 @@
 
 
   <header ng-controller='tabsCtrl'>
-    <a href="" class="announcement annoucement-warning" target="_blank">
+    <a href="" class="small announcement annoucement-warning" target="_blank">
       <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
     </a>
     <section class="container-fluid bg-gradient header-branding">
       <section class="container">
-        <a class="brand" href="/cx-wallet.html"><img src="images/etherwalletcx-logo.png" height="64px" width="245px" alt="My Ether Wallet" /></a>
+        <a class="brand" href="/cx-wallet.html"><img src="images/etherwalletcx-logo.svg" height="64px" width="auto" alt="My Ether Wallet" /></a>
         <div class="tagline">
           <span style="max-width: 375px" translate="CX_Tagline">Open Source JavaScript Client-Side Ether Wallet Chrome Extension</span>
 
@@ -121,9 +121,9 @@
         <th width="60" style="max-width: 60px"></th>
         <th width="300" translate="x_Wallet">Wallet</th>
         <th width="300" translate="MYWAL_Bal">Balance</th>
-        <th width="45" style="max-width: 45px" translate="MYWAL_Edit">Edit</th>
-        <th width="45" style="max-width: 45px" translate="MYWAL_View">View</th>
-        <th width="45" style="max-width: 45px" translate="MYWAL_Remove">Remove</th>
+        <th width="55" style="max-width: 55px" translate="MYWAL_Edit">Edit</th>
+        <th width="55" style="max-width: 55px" translate="MYWAL_View">View</th>
+        <th width="55" style="max-width: 55px" translate="MYWAL_Remove">Remove</th>
       </tr>
     </thead>
     <tbody>
@@ -132,14 +132,14 @@
         <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
         <td>
           {{twallet.nick}} <br />
-          <span class="mono">{{twallet.addr}}</span>
+          <span class="mono small">{{twallet.addr}}</span>
         </td>
-        <td>
+        <td class="chrome-tokens">
           <strong class="text-success">{{twallet.balance }} ETH</strong>
           <br />
-          <span class="small" ng-repeat="token in twallet.tokens" ng-hide="token.balance==0" ><strong>{{token.getBalance()}}</strong> {{token.getSymbol()}} &nbsp;&nbsp; </span>
+          <span class="small" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'"><strong>{{token.getBalance()}} </strong> {{token.getSymbol()}} &nbsp;&nbsp; </span>
           <br />
-          <span class="small"> <strong>{{twallet.btc }}</strong> BTC &nbsp;&nbsp; $ <strong>{{twallet.usd }}</strong> USD &nbsp;&nbsp; € <strong>{{twallet.eur }}</strong> EUR </small>
+          <span class="small"><strong>{{twallet.btc }}</strong>&nbsp;BTC &nbsp;&nbsp; $ <strong>{{twallet.usd }}</strong>&nbsp;USD &nbsp;&nbsp; € <strong>{{twallet.eur }}</strong>&nbsp;EUR </small>
         </td>
         <td class="text-center">
           <a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a>
@@ -166,9 +166,9 @@
           <th width="60" style="max-width: 60px"></th>
           <th width="300" translate="x_Wallet">Wallet</th>
           <th width="300" translate="MYWAL_Bal">Balance</th>
-          <th width="45" style="max-width: 45px" ></th>
-          <th width="45" style="max-width: 45px" ></th>
-          <th width="45" style="max-width: 45px" translate="MYWAL_Remove">Remove</th>
+          <th width="55" style="max-width: 55px" ></th>
+          <th width="55" style="max-width: 55px" ></th>
+          <th width="55" style="max-width: 55px" translate="MYWAL_Remove">Remove</th>
         </tr>
       </thead>
       <tbody>
@@ -178,13 +178,13 @@
           <td>
             {{twallet.nick}}
             <br />
-            <span class="mono"> {{twallet.addr}} </span>
+            <span class="mono small"> {{twallet.addr}} </span>
           </td>
-          <td>
+          <td class="chrome-tokens">
             <strong class="text-success">{{twallet.balance | number:4 }} ETH</strong><br>
-            <small><span ng-repeat="token in twallet.tokens" ng-hide="token.balance==0"><strong>{{token.getBalance() }}</strong> {{token.getSymbol()}} &nbsp;&nbsp;</span> </small>
+            <span class="small" ng-repeat="token in twallet.tokens" ng-hide="token.balance==0"><strong>{{token.getBalance() }}</strong>&nbsp;{{token.getSymbol()}} &nbsp;&nbsp;</span>
             <br />
-            <small><span><strong>{{twallet.btc }}</strong> BTC</span> &nbsp;&nbsp; <span>$ <strong>{{twallet.usd }}</strong> USD</span> &nbsp;&nbsp; <span>€ <strong>{{twallet.eur }}</strong> EUR</span></small>
+            <span class="small"><strong>{{twallet.btc }}</strong> BTC</span> &nbsp;&nbsp; <span>$ <strong>{{twallet.usd }}</strong> USD</span> &nbsp;&nbsp; <span>€ <strong>{{twallet.eur }}</strong> EUR</span>
           </td>
           <td></td><td></td>
           <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
@@ -1033,7 +1033,7 @@
           <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value"/>
 
           <div class="radio">
-            <label ng-repeat="token in tokenObjs track by $index" ng-hide="token.balance==0">
+            <label ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading'">
               <input type="radio" name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"/>
               {{token.getSymbol()}}
             </label>
@@ -2221,7 +2221,7 @@
 <footer class="container-fluid" ng-controller='footerCtrl'>
   <div class="container">
     <p>
-      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a>
+      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="55px" width="auto" alt="Ether Wallet" /></a>
     </p>
 
     <p>

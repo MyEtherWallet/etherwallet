@@ -1204,7 +1204,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	}
     $scope.daoC = {
 		to: '',
-        donation: 10
+        donation: null
 	}
 	$scope.token = {
 		balance: 0,
