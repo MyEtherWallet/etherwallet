@@ -1213,20 +1213,21 @@ var tabsCtrl = function($scope, globalService, $translate) {
 	$scope.scrollHoverOut = function() {
 		clearInterval($scope.sHoverTimer);
 	}
+    $scope.setOnScrollArrows = function(){
+        var ele = document.querySelectorAll(".nav-scroll")[0];
+  		$scope.showLeftArrow = ele.scrollLeft > 0;
+		$scope.showRightArrow = document.querySelectorAll(".nav-inner")[0].clientWidth > (ele.clientWidth + ele.scrollLeft);
+        $scope.$apply();
+    }
 	$scope.scrollLeft = function(val) {
 		var ele = document.querySelectorAll(".nav-scroll")[0];
 		ele.scrollLeft -= val;
-		$scope.showLeftArrow = ele.scrollLeft > 0;
-		$scope.showRightArrow = document.querySelectorAll(".nav-inner")[0].clientWidth > (ele.clientWidth + ele.scrollLeft);
-        $scope.$apply();
 	}
 	$scope.scrollRight = function(val) {
 		var ele = document.querySelectorAll(".nav-scroll")[0];
 		ele.scrollLeft += val;
-		$scope.showLeftArrow = ele.scrollLeft > 0;
-		$scope.showRightArrow = document.querySelectorAll(".nav-inner")[0].clientWidth > (ele.clientWidth + ele.scrollLeft);
-        $scope.$apply();
 	}
+    angular.element(document.querySelectorAll(".nav-scroll")[0]).bind('scroll',$scope.setOnScrollArrows);
 	globalFuncs.changeHash = $scope.setHash;
 };
 module.exports = tabsCtrl;
