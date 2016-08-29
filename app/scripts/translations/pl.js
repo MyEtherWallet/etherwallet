@@ -4,17 +4,6 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-  /* Geth Error Messages */
-  GETH_InvalidSender:      'Nieprawidłowy nadawca',
-  GETH_Nonce:              'Wyróżnik transakcji za niski',
-  GETH_Cheap:              'Cena paliwa poniżej akceptacji',
-  GETH_Balance:            'Niewystarczająca ilość środków na koncie',
-  GETH_NonExistentAccount: 'Konto nie istnieje lub niewystarczająca ilość środków',
-  GETH_InsufficientFunds:  'Niewystarczająca ilość środków na paliwo * cena + kwota',
-  GETH_IntrinsicGas:       'Paliwo poniżej ilości obowiązkowej',
-  GETH_GasLimit:           'Przekroczono limit paliwa na blok',
-  GETH_NegativeValue:      'Ujemna wartość',
-
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
   NAV_AddWallet:        'Dodaj Portfel',
@@ -269,6 +258,17 @@ pl.data = {
   SUCCESS_4:            'Twój portfel został dodany: ',
   SUCCESS_5:            'Zagłosowałeś z powodzeniem. Dziękuję za bycie aktywnym uczestnikiem The DAO.',
   SUCCESS_6:            'Wybrany plik: ',
+
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Nieprawidłowy nadawca',
+  GETH_Nonce:              'Wyróżnik transakcji za niski',
+  GETH_Cheap:              'Cena paliwa poniżej akceptacji',
+  GETH_Balance:            'Niewystarczająca ilość środków na koncie',
+  GETH_NonExistentAccount: 'Konto nie istnieje lub niewystarczająca ilość środków',
+  GETH_InsufficientFunds:  'Niewystarczająca ilość środków na paliwo * cena + kwota',
+  GETH_IntrinsicGas:       'Paliwo poniżej ilości obowiązkowej',
+  GETH_GasLimit:           'Przekroczono limit paliwa na blok',
+  GETH_NegativeValue:      'Ujemna wartość',
 
   /* Tranlsation Info */
   translate_version:    '3.0 (0.3)',

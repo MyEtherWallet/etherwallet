@@ -4,17 +4,6 @@ var no = function() {}
 no.code = 'no';
 no.data = {
 
-  /* Geth Error Messages */
-  GETH_InvalidSender:      'Feil på avsender',
-  GETH_Nonce:              'Nonce for liten',
-  GETH_Cheap:              'Gas-pris for lav til å kunne aksepteres',
-  GETH_Balance:            'Utilstrekkelig saldo',
-  GETH_NonExistentAccount: 'Kontoen eksisterer ikke eller saldoen er for lav',
-  GETH_InsufficientFunds:  'Utilstrekkelig med midler for gas * pris + verdi',
-  GETH_IntrinsicGas:       'Gas-egenverdi for lav',
-  GETH_GasLimit:           'Overskrider blokkens gas-grense',
-  GETH_NegativeValue:      'Negativ verdi',
-
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
   NAV_AddWallet:        'Legg til lommebok',
@@ -270,6 +259,17 @@ no.data = {
   SUCCESS_4:            'Lommeboken din ble lagt til: ',
   SUCCESS_5:            'Du har stemt. Takk for at du er en aktiv deltaker i "The DAO".',
   SUCCESS_6:            'Valgt fil: ',
+
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Feil på avsender',
+  GETH_Nonce:              'Nonce for liten',
+  GETH_Cheap:              'Gas-pris for lav til å kunne aksepteres',
+  GETH_Balance:            'Utilstrekkelig saldo',
+  GETH_NonExistentAccount: 'Kontoen eksisterer ikke eller saldoen er for lav',
+  GETH_InsufficientFunds:  'Utilstrekkelig med midler for gas * pris + verdi',
+  GETH_IntrinsicGas:       'Gas-egenverdi for lav',
+  GETH_GasLimit:           'Overskrider blokkens gas-grense',
+  GETH_NegativeValue:      'Negativ verdi',
 
   /* Tranlsation Info */
   translate_version:    '0.4',

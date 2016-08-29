@@ -55,7 +55,7 @@ fr.data = {
   FOOTER_1b:            'Créé par',
   FOOTER_2:             'Donations extrêmement appréciées :',
   FOOTER_3:             'Génération de portefeuille côté client par',
-  FOOTER_4:             'Avertissement,',
+  FOOTER_4:             'Avertissement',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Informations du compte : ',
