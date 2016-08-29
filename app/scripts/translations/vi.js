@@ -5,7 +5,7 @@ vi.code = 'vi';
 vi.data = {
 
   /* Geth Error Messages */
-  GETH_InvalidSender:      'Sai người nhận'
+  GETH_InvalidSender:      'Sai người nhận',
   GETH_Nonce:              'Nonce too low',
   GETH_Cheap:              'Gas quá thấp',
   GETH_Balance:            'Insufficient balance',
@@ -292,7 +292,7 @@ vi.data = {
   HELP_Warning:       'Nêu bạn khởi tạo tài khoản hoặc tải xuống tệp ví trước ngày 31 tháng 12 năm 2015, xin vui lòng kiểm tra dữ liệu ví và tải xuống phiên bản mới nhất của tệp. Bấm vào đây để biết thêm chi tiết.',
   HELP_Desc:          'Mọi thắc mắc và góp ý, xin vui lòng liên hệ với chúng tôi. [Liên Hệ](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!',
   HELP_Remind_Title:  'Lưu ý:',
-  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, và một số thư viện JavaScript vẫn đang được thử nghiệm.** Mặc dù chúng tôi đã chạy thử nghiệm nhiều lần và đã có hàng trăm ngàn tài khoản được đăng ký và sử dụng thành côngd trên khắp thế giới, khả năng sự cố xảy ra ngoài ý muốn là không thể tránh khỏi. Không nên đầu tư nhiều hơn số tiền bạn có thể mất, và thận trọng khi sử dụng . Trong trường hợp sự cố xảy ra , chúng tôi rất lấy làm tiếc sorry  nhưng * * Chúng tôi không chịu trách nhiệm về Ether thất lạc'.
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, và một số thư viện JavaScript vẫn đang được thử nghiệm.** Mặc dù chúng tôi đã chạy thử nghiệm nhiều lần và đã có hàng trăm ngàn tài khoản được đăng ký và sử dụng thành côngd trên khắp thế giới, khả năng sự cố xảy ra ngoài ý muốn là không thể tránh khỏi. Không nên đầu tư nhiều hơn số tiền bạn có thể mất, và thận trọng khi sử dụng . Trong trường hợp sự cố xảy ra , chúng tôi rất lấy làm tiếc sorry  nhưng * * Chúng tôi không chịu trách nhiệm về Ether thất lạc',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX không phải là "web wallet". Vì vậy thôn0 tin tài khoản và Ether của bạn không do chúng tôi nắm giữi. Mọi dữ liệu đều nằm trong máy tính cá nhân hay trình duyệt web của bạn. Chúng tôi chỉ cung cấp công cụ nhằm giúp đỡ người sử dụng lưu trữ và, truy cập thông tin của bạn và giao dịch trên hệ thống blockchain.',
   HELP_Remind_Desc_3: 'Nếu bạn không lưu trữ private key và mật khẩu, sẽ không có cách nào phục hồi và truy cập được dữ liệu ví. Lưu trữ các thông tin quan trọng qua nhiều cách và địa điểm khác nhau là cách tốt nhất để bảo vệ tài sản của bạn.',
 
@@ -344,7 +344,7 @@ vi.data = {
   HELP_4_Desc_3:        'Chọn  tệp ví tải xuống hoặc nhập private key để đăng nhập',
   HELP_4_Desc_4:        'Nếu tệp ví của bạn đã đươc mã hóa, nhập mật khẩu để tiếp tục đăng nhập.',
   HELP_4_Desc_5:        'Bấm "Mở Khóa"',
-  HELP_4_Desc_6:        'Nhập địa chỉ nơi nhận tại mục "Địa Chỉ Đến:".'
+  HELP_4_Desc_6:        'Nhập địa chỉ nơi nhận tại mục "Địa Chỉ Đến:".',
   HELP_4_Desc_7:        'Nhập số lượng muốn gửi. Bạn cũng có thể chọn "Gửi Hết Số Dư Hiện Có" nếu muốn gửi toàn bộ số Ether trong tài khoản.',
   HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ether like you normally would. See Question #6 below for more information.',
   HELP_4_Desc_9:        'Click "Generate Transaction".',
@@ -359,7 +359,7 @@ vi.data = {
   HELP_4CX_Desc_3:      'Click the Chrome Extension Icon.',
   HELP_4CX_Desc_4:      'Click the "QuickSend" button.',
   HELP_4CX_Desc_5:      'Select the wallet you wish to send from.',
-  HELP_4CX_Desc_6:      'Nhập địa chỉ nơi nhận tại mục "Địa Chỉ Đến:".'
+  HELP_4CX_Desc_6:      'Nhập địa chỉ nơi nhận tại mục "Địa Chỉ Đến:".',
   HELP_4CX_Desc_7:      'Nhập số lượng muốn gửi. Bạn cũng có thể chọn "Gửi Hết Số Dư Hiện Có" nếu muốn gửi toàn bộ số Ether trong tài khoản.',
   HELP_4CX_Desc_8:      'Bấm "Gửi Đi". ',
   HELP_4CX_Desc_9:      'Kiểm tra và xác nhận địa chỉ nhận.',
