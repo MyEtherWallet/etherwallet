@@ -5,44 +5,44 @@ id.code = 'id';
 id.data = {
 
   /* Navigation*/
-  NAV_YourWallets:      'Your Wallets',
-  NAV_AddWallet:        'Add Wallet',
-  NAV_GenerateWallet:   'Generate Wallet',
-  NAV_BulkGenerate:     'Bulk Generate',
-  NAV_SendEther:        'Send Ether',
-  NAV_SendTokens:       'Send Tokens',
-  NAV_Offline:          'Send Offline',
-  NAV_WithdrawDAO:      'Withdraw DAO',
-  DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
-  NAV_ClaimDGD:         'Claim DGD',
-  DGD_TitleLong:        'Claim Your DGD Tokens',
-  NAV_DeployContract:   'Deploy Contract',
-  NAV_MyWallets:        'My Wallets',
-  NAV_ViewWallet:       'View Wallet Info',
-  NAV_Help:             'Help',
-  NAV_Contact:          'Contact',
+  NAV_YourWallets:      'Dompet Anda', /*'Your Wallets'*/
+  NAV_AddWallet:        'Tambahkan Dompet', /*'Add Wallet'*/
+  NAV_GenerateWallet:   'Buat Dompet', /*'Generate Wallet'*/
+  NAV_BulkGenerate:     'Buat Banyak Dompet Sekaligus', /*'Bulk Generate'*/
+  NAV_SendEther:        'Kirim Ether', /*'Send Ether'*/
+  NAV_SendTokens:       'Kirim Tokens', /*'Send Tokens'*/
+  NAV_Offline:          'Kirim Offline', /*'Send Offline'*/
+  NAV_WithdrawDAO:      'Ambil DAO', /*'Withdraw DAO'*/
+  DAO_TitleLong:        'Ambil ETH dari Token DAO Anda Withdraw Your Dao Tokens For ETH', /*'Withdraw Your Dao Tokens For ETH'*/
+  NAV_ClaimDGD:         'Klaim DGD', /*'Claim DGD'*/
+  DGD_TitleLong:        'Klaim DGD Token Anda', /*'Claim Your DGD Tokens'*/
+  NAV_DeployContract:   'Deploy Contract', /*'Deploy Contract'*/
+  NAV_MyWallets:        'Dompet Saya', /*'My Wallets'*/
+  NAV_ViewWallet:       'Lihat Info Dompet', /*'View Wallet Info'*/
+  NAV_Help:             'Bantuan', /*'Help'*/
+  NAV_Contact:          'Kontak', /*'Contact'*/
 
   /* General */
-  x_Address:            'Your Address',
+  x_Address:            'Alamat Anda', /*'Your Address'*/
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_Cancel:             'Cancel',
-  x_CSV:                'CSV file (unencrypted)',
+  x_Cancel:             'Batal', /*'Cancel'*/
+  x_CSV:                'File CSV (tidak ter-enkripsi)', /*'CSV file (unencrypted)*/
   x_Download:           'Download',
-  x_Json:               'JSON File (unencrypted)',
+  x_Json:               'File JSON File (tidak ter-enkripsi)', /*'JSON File (unencrypted)'*/
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
   x_Keystore2:          'Keystore/JSON File',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
-  x_Print:              'Print Paper Wallet',
-  x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
+  x_Print:              'Print Dompet Kertas', /*'Print Paper Wallet'*/
+  x_PrintDesc:          'ProTip: klik print dan simpan sebagai PDF, meskipun Anda tidak memiliki printer!', /*'ProTip: Click print and save this as a PDF, even if you do not own a printer!'*/
   x_PrintShort:         'Print',
-  x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey:            'Private Key (tidak ter-enkripsi)', /*'Private Key (unencrypted)'*/
   x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
-  x_Save:               'Save',
-  x_TXT:                'TXT file (unencrypted)',
-  x_Wallet:             'Wallet',
+  x_Save:               'Simpan', /*'Save'*/
+  x_TXT:                'File TXT file (tidak ter-enkripsi)', /*'TXT file (unencrypted)'*/
+  x_Wallet:             'Dompet', /*'Wallet'*/
 
   /* Header */
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
@@ -273,9 +273,9 @@ id.data = {
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
-  TranslatorName_1:     '',
-  TranslatorAddr_1:     '',
-  /* Translator 1: Insert Comments Here */
+  TranslatorName_1:     'Yos Ginting',
+  TranslatorAddr_1:     '0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c',
+  /* Translator 1: Start translating into Indonesian. Will do it in stages */
   TranslatorName_2:     ' ',
   TranslatorAddr_2:     ' ',
   /* Translator 2: Insert Comments Here */
