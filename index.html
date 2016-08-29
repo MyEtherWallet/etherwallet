@@ -32,12 +32,12 @@
 
 
   <header ng-controller='tabsCtrl'>
-    <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
+    <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="small announcement annoucement-warning" target="_blank">
       <div class="container" translate="MEW_Warning_1">Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!</div>
     </a>
     <section class="container-fluid bg-gradient header-branding">
       <section class="container">
-        <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="64px" width="245px" alt="My Ether Wallet" /></a>
+        <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="My Ether Wallet" /></a>
         <div class="tagline">
           <span style="max-width: 375px" translate="MEW_Tagline">Open Source JavaScript Client-Side Ether Wallet</span>
 
@@ -829,7 +829,7 @@
           <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value"/>
 
           <div class="radio">
-            <label ng-repeat="token in tokenObjs track by $index" ng-hide="token.balance==0">
+            <label ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading'">
               <input type="radio" name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"/>
               {{token.getSymbol()}}
             </label>
@@ -2088,7 +2088,7 @@
 <footer class="container-fluid" ng-controller='footerCtrl'>
   <div class="container">
     <p>
-      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a>
+      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="55px" width="auto" alt="Ether Wallet" /></a>
     </p>
 
     <p>
