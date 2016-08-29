@@ -16,6 +16,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.daoWithdraw = "0x3ccfd60b";
 	$scope.approveWithdraw = "0x095ea7b3";
     $scope.withdrawDAOC = "0xf3fef3a3";
+    $scope.numETChex = "0x02ef6c86";
 	$scope.tx = {
 		gasLimit: 100000,
 		data: '',
@@ -36,7 +37,6 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		balanceEth: 0,
         DCbalanceEth: 0,
 		balanceBN: 0,
-        DCbalanceBN: 0,
 	}
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
@@ -73,8 +73,12 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		ajaxReq.getClassicEthCall(userInfo, function(data) {
 			if (!data.error) {
 				$scope.token.DCbalance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
-				$scope.token.DCbalanceEth = new BigNumber($scope.token.DCbalance).div(100).toString();
-				$scope.token.DCbalanceBN = new BigNumber(data.data).toString();
+			}
+		});
+        var userInfo = ethFuncs.getDataObj($scope.daoWithdrawContract, $scope.numETChex, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
+		ajaxReq.getClassicEthCall(userInfo, function(data) {
+			if (!data.error) {
+				$scope.token.DCbalanceEth = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
 			}
 		});
         ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function(data) {
