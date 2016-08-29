@@ -4,6 +4,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 	$scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = false;
 	$scope.filePassword = "";
 	$scope.fileContent = "";
+    $scope.Validator = Validator;
 	$scope.showContent = function($fileContent) {
 		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[5] + document.getElementById('fselector').files[0].name));
 		try {

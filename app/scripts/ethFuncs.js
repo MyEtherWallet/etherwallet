@@ -12,8 +12,8 @@ ethFuncs.isChecksumAddress = function(address) {
 }
 ethFuncs.validateHexString = function(str) {
 	if (str == "") return true;
-	str = str.substring(0, 2) == '0x' ? str.substring(2) : str;
-	var re = /[0-9A-Fa-f]+$/g;
+	str = str.substring(0, 2) == '0x' ? str.substring(2).toUpperCase() : str.toUpperCase();
+	var re = /^[0-9A-F]+$/g;
 	return re.test(str);
 }
 ethFuncs.sanitizeHex = function(hex) {

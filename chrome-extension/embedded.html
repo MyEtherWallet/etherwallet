@@ -52,7 +52,7 @@
       <div class="form-group">
         <h4 translate="GEN_Label_1"> Enter a strong password (at least 9 characters) </h4>
         <div class="input-group">
-          <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}" ng-model="password" ng-class="isStrongPass() ? 'valid' : 'invalid'"/>
+          <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}" ng-model="password" ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"/>
           <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
         </div>
       </div>
