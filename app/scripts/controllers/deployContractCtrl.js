@@ -10,6 +10,7 @@ var deployContractCtrl = function($scope, $sce, walletService) {
 		nonce: null,
 		gasPrice: null
 	}
+    $scope.showRaw = false;
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
 		return walletService.wallet.getAddressString();
@@ -17,6 +18,9 @@ var deployContractCtrl = function($scope, $sce, walletService) {
 		if (walletService.wallet == null) return;
 		$scope.wallet = walletService.wallet;
 	});
+    $scope.$watch('tx', function(newValue, oldValue) {
+		$scope.showRaw = false;
+	}, true);
 	$scope.generateTx = function() {
 		try {
 			if ($scope.wallet == null) throw globalFuncs.errorMsgs[3];
@@ -34,7 +38,9 @@ var deployContractCtrl = function($scope, $sce, walletService) {
 						$scope.rawTx = rawTx.rawTx;
 						$scope.signedTx = rawTx.signedTx;
 						$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+                        $scope.showRaw = true;
 					} else {
+					   $scope.showRaw = false;
 						$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
 					}
 				});

@@ -28,10 +28,10 @@
       <div ng-bind-html="deployContractStatus"></div>
       <!-- Sign TX Button (once wallet has been unlocked) -->
       <div class="form-group">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DEP_signtx"> Sign Transaction </a>
+        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DEP_signtx" ng-show="wallet!=null"> Sign Transaction </a>
       </div>
 
-      <section class="row">
+      <section class="row" ng-show="showRaw">
         <!-- Raw TX -->
         <div class="form-group col-sm-6">
           <h4 translate="SEND_raw"> Raw Transaction </h4>
@@ -46,7 +46,7 @@
       </section>
 
       <!-- Deploy Contract Button (once tx has been signged) -->
-      <div class="form-group">
+      <div class="form-group" ng-show="showRaw">
         <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="NAV_DeployContract"> Deploy Contract </a>
       </div>
 
