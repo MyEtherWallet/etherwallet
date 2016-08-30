@@ -66,7 +66,7 @@
 
             <div class="modal-body">
               <h4>
-                <span translate="">You are about to deploy a contract to the blockchain.</span>
+                <span>You are about to deploy a contract to the blockchain.</span>
               </h4>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>
