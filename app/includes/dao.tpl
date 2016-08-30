@@ -76,7 +76,7 @@
           <h4 class="col-xs-12" translate="DAO_TitleETC"> Withdraw DAO for ETC </h4>
           <!-- Address for ETC to be Delivered -->
 
-<h4 class="col-xs-12"> Hold on. We're rechecking some things. BRB!  </h4>
+        <h4 class="col-xs-12"> There were some irregularities occcuring. Please sit tight for now.  </h4>
 
           <!--
           <div class="form-group col-xs-10">
