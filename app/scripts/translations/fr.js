@@ -479,17 +479,17 @@ fr.data = {
   HELP_12_Desc_15b:       'Si vous êtes sur un PC :',    // Strange, already in French, not found in de.js
   HELP_12_Desc_16:        'Ouvez Text Edit et collez cette clef privée.',
   HELP_12_Desc_17:        'Dans la barre de menu, cliquez sur "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Sauvegardez ce fichier vers votre `Desktop/` en tant que `nothing_special_delete_me.txt/`. Assurez-vous qu\'il précise "UTF-8" et "If no extension is provided use .txt" dans le dialogue de sauvegarde.',
-  HELP_12_Desc_19:        'Ouvrez un terminal et lancez la commande suivante : `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Sauvegardez ce fichier vers votre `Desktop/` en tant que `nothing_special_delete_me.txt`. Assurez-vous qu\'il précise "UTF-8" et "If no extension is provided use .txt" dans le dialogue de sauvegarde.',
+  HELP_12_Desc_19:        'Ouvrez un terminal et lancez la commande suivante : `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'Ceci vous invitera à choisir un nouveau mot de passe. C\'est celui que vous utiliserez dans geth / Ethereum Wallet / Mist à chaque vois que vos enverrez une transaction, donc ne l\'oubliez pas. ',
   HELP_12_Desc_21:        'Après que l\'import a réussi, supprimez `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'La prochaine fois que vous ouvrirez l\'application Ethereum Wallet, votre compte sera listé sous "Accounts".',
   HELP_12_Desc_23:        'Ouvrez Notepad et collez-y la clef privée',
-  HELP_12_Desc_24:        'Sauvegardez le fichier en tant que `nothing_special_delete_me.txt` sur `C://`', 
-  HELP_12_Desc_25:        'Lancez la commande `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Sauvegardez le fichier en tant que `nothing_special_delete_me.txt` sur `C:`',
+  HELP_12_Desc_25:        'Lancez la commande `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'Ceci vous invitera à choisir un nouveau mot de passe. C\'est celui que vous utiliserz dans geth / Ethereum Wallet / Mist à chaque foiq que vous enverrez une transaction donc ne l\'oubliez pas.',
   HELP_12_Desc_27:        'Après que l\'import a réussi, supprimez `nothing_special_delete_me.txt`',
-  HELP_12_Desc_28:        'La prochaine fois que vous ouvrirez l\'application Ethereum Wallet, votre compte sera listé sous "Accounts".
+  HELP_12_Desc_28:        'La prochaine fois que vous ouvrirez l\'application Ethereum Wallet, votre compte sera listé sous "Accounts".',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
   HELP_13_Desc_1:         'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
