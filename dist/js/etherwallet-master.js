@@ -18312,7 +18312,7 @@ validator.isValidAddress =  function(address){
     return ethFuncs.validateEtherAddress(address);
 }
 validator.isPositiveNumber = function(value){
-    return globalFuncs.isNumeric(value) && parseFloat(value) >= 0;
+    return globalFuncs.isNumeric(value) && parseFloat(value) > 0;
 }
 validator.isValidHex = function(hex){
     return ethFuncs.validateHexString(hex);
