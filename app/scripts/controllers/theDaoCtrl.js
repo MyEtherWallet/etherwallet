@@ -10,7 +10,8 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
 	$scope.withdrawContract = "0xbf4ed7b27f1d666546e30d74d50d173d20bca754"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
     $scope.daoCContract = "0x180826b05452ce96e157f0708c43381fee64a6b8";
-    $scope.daoWithdrawContract = "0x2b6d2a92495ee2e5817e37a82c8110a9a6fd8499";
+    // change this to go live
+    $scope.daoWithdrawContract = "0x9f5304da62a5408416ea58a17a92611019bd5ce3";
 	$scope.slockitTransfer = "0xa9059cbb";
 	$scope.balanceOf = "0x70a08231";
 	$scope.daoWithdraw = "0x3ccfd60b";

@@ -76,9 +76,8 @@
           <h4 class="col-xs-12" translate="DAO_TitleETC"> Withdraw DAO for ETC </h4>
           <!-- Address for ETC to be Delivered -->
 
-        <h4 class="col-xs-12"> There were some irregularities occcuring. Please sit tight for now.  </h4>
+        <!--<h4 class="col-xs-12"> There were some irregularities occcuring. Please sit tight for now.  </h4>-->
 
-          <!--
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_1"> Where do you want your ETC to be sent to? </label>
             <input class="form-control" type="text" ng-model="daoC.to" ng-class="Validator.isValidAddress(daoC.to) ? 'is-valid' : 'is-invalid'"/>
@@ -105,7 +104,7 @@
           <br /><br />
 
           <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
-          -->
+
       </section>
       <!-- / Withdraw DAO For ETC -->
 
