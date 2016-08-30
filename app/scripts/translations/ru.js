@@ -5,15 +5,15 @@ ru.code = 'ru';
 ru.data = {
 
   /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
+  GETH_InvalidSender:      'Неверный адрес отправителя',
+  GETH_Nonce:              'Номер перевода (nonce) слишком мал',
+  GETH_Cheap:              'Цена газа слишком низкая',
+  GETH_Balance:            'Баланс недостаточен',
+  GETH_NonExistentAccount: 'Счёт не существует или баланс счёта слишком мал',
+  GETH_InsufficientFunds:  'Недостаточно средств для ГАЗ * ЦЕНА + СУММА',
+  GETH_IntrinsicGas:       'Недостаточно газа для выполнения транзакции',
+  GETH_GasLimit:           'Превышен лимит газа на блок',
+  GETH_NegativeValue:      'Отрицательная сумма',
 
   /* Navigation*/
   NAV_YourWallets:      'Ваши кошельки',
