@@ -1255,6 +1255,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.approveWithdraw = "0x095ea7b3";
     $scope.withdrawDAOC = "0xf3fef3a3";
     $scope.numETChex = "0x02ef6c86";
+    $scope.Validator = Validator;
 	$scope.tx = {
 		gasLimit: 100000,
 		data: '',
@@ -1367,6 +1368,10 @@ var theDaoCtrl = function($scope, $sce, walletService) {
         $scope.withdrawModal.close();
 	}
     $scope.generateAndWithdrawDAOC = function() {
+        if(!Validator.isPositiveNumber($scope.daoC.donation)){
+            $scope.withdrawETCTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[0]));
+            return;
+        }
 		$scope.tx.to = $scope.daoWithdrawContract;
 		$scope.tx.data = $scope.withdrawDAOC + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.daoC.to), 64) + ethFuncs.padLeft(new BigNumber($scope.daoC.donation).toString(16), 64);
 		$scope.tx.value = 0;
@@ -1381,13 +1386,6 @@ var theDaoCtrl = function($scope, $sce, walletService) {
             });
 		});
         $scope.withdrawModalETC.close();
-	}
-    $scope.validateAddress = function(addr) {
-		if (ethFuncs.validateEtherAddress(addr)) {
-			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
-		} else {
-			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
-		}
 	}
 };
 module.exports = theDaoCtrl;

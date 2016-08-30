@@ -77,8 +77,7 @@
           <!-- Address for ETC to be Delivered -->
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_1"> Where do you want your ETC to be sent to? </label>
-            <input class="form-control" type="text" ng-model="daoC.to" ng-change="validateAddress(daoC.to)"/>
-            <div ng-bind-html="validateAddressStatus"></div>
+            <input class="form-control" type="text" ng-model="daoC.to" ng-class="Validator.isValidAddress(daoC.to) ? 'is-valid' : 'is-invalid'"/>
           </div>
 
           <div class="col-xs-2 address-identicon-container">
@@ -89,7 +88,7 @@
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_2"> The 'White Hat Group' has been working tirelessly to get your ETC back to you. You can say 'thank you' by donating a percentage of your withdrawal, if you choose to. </label>
             <div class="input-group" style="max-width: 150px;">
-            <input type="number" class="form-control" placeholder="10" ng-model="daoC.donation"/>
+            <input type="number" class="form-control" placeholder="10" ng-model="daoC.donation" ng-class="Validator.isPositiveNumber(daoC.donation) ? 'is-valid' : 'is-invalid'"/>
             <span class="input-group-addon">%</span>
           </div>
 
