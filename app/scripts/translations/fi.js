@@ -17,7 +17,7 @@ fi.data = {
   NAV_ClaimDGD:         'Lunasta DGD',
   DGD_TitleLong:        'Lunasta DGD Tokenisi',
   NAV_MyWallets:        'Minun Lompakkoni',
-  NAV_ViewWallet:       'Tarkista Lompakon Tiedot',
+  NAV_ViewWallet:       'Tarkastele Lompakon Tietoja',
   NAV_Help:             'Apua',
   NAV_Contact:          'Yhteystiedot',
 
@@ -27,13 +27,13 @@ fi.data = {
   x_Address:            'Sinun osoitteesi',
   x_Save:               'x_Tallenna',
   x_Cancel:             'x_Peruuta',
-  x_AddessDesc:         'Saatat tuntea tämän "Tilinumeronasi" tai sinun "Julkisena Salausavaimenasi". Tämä on se jonka jaat ihmisille, jotta he voivat lähettää sinulle ETHiä. Tuo kuvake on helppo tapa tunnistaa sinun osoitteesi.',
+  x_AddessDesc:         'Saatat tuntea tämän "Tilinumeronasi" tai "Julkisena Salausavaimenasi". Tämä on se jonka jaat ihmisille, jotta he voivat lähettää sinulle ETHiä. Tuo kuvake on helppo tapa tunnistaa sinun osoitteesi.',
   x_PrivKey:            'Yksityinen salausavain (salaamaton)',
   x_PrivKeyDesc:        'Tämä on salaamaton versio sinun yksityisestä salausavaimestasi, tarkoittaen että salasanaa ei tarvita. Jos joku sattuisi löytämään sinun salaamattoman yksityisen salausavaimesi, he pääsisivät käsiksi sinun lompakkoosi ilman salasanaa. Tästä syystä salatut versiot ovat yleensä suositeltuja.',
   x_Keystore:           'Avainsäilö/JSON Tiedosto (Suositeltu · Salattu · Mist/Geth Tiedostoformaatti)',
-  x_KeystoreDesc:       'Tämä Avainsäilö / JSON tiedosto vastaa sitä tiedostoformaattia jota Mist & Geth käyttävät, joten voit helposti tuoda sen tulevaisuudessa. Se on suositeltu tiedostomuoto ladata ja varmuuskopioida.',
+  x_KeystoreDesc:       'Tämä Avainsäilö / JSON tiedosto vastaa sitä tiedostoformaattia jota Mist & Geth käyttävät, joten voit helposti importata sen tulevaisuudessa. Se on suositeltu tiedostomuoto ladata ja varmuuskopioida.',
   x_Json:               'JSON Tiedosto (salaamaton)',
-  x_JsonDesc:           'Tämä on salaamaton, JSON tiedosto yksityisestä salausavaimestasi. Tämä tarkoittaa että et tarvitse salasanaa mutta kuka tahansa joka löytää JSON tiedostosi saa pääsyn lompakkoosi ja sen sisältämään Etheriin ilman salasanaa.',
+  x_JsonDesc:           'Tämä on salaamaton JSON tiedosto yksityisestä salausavaimestasi. Tämä tarkoittaa että et tarvitse salasanaa mutta kuka tahansa joka löytää JSON tiedostosi saa pääsyn lompakkoosi ja sen sisältämään Etheriin ilman salasanaa.',
   x_PrintShort:         'Tulosta',
   x_Print:              'Tulosta Paperi Lompakko',
   x_PrintDesc:          'ProTip: Klikkaa Tulosta ja tallenna tämä PDF:nä, vaikka et omistaisikaan tulostinta!',
@@ -43,13 +43,13 @@ fi.data = {
   /* Header */
   MEW_Warning_1:        'Tarkista URL aina ennen kuin avaat lompakkosi tai luot uuden lompakon. Varo tietojen-kalastelu sivustoja!',
   CX_Warning_1:         'Varmista että sinulla on **ulkoiset varmuuskopiot** kaikista lompakoista joita säilytät täällä. Monia asioita voi tapahtua joiden seurauksena voit menettää tietoja tässä Chrome Laajennuksessa, mukaan lukien laajennuksen asennuksen poistaminen tai uudelleenasennus. Tämä laajennus on keino jolla saat helpon pääsyn lompakkoosi, **ei** keino varmuuskopioida niitä.',
-  MEW_Tagline:          'Avoimen Lähdekoodin Asiakas-puolen JavaScript Ether Lompakko',
-	CX_Tagline:           'Avoimen Lähdekoodin Asiakas-puolen JavaScript Chrome Laajennus',
+  MEW_Tagline:          'Avoimen Lähdekoodin JavaScript Ether Lompakko',
+	CX_Tagline:           'Avoimen Lähdekoodin JavaScript Chrome Laajennus',
 
   /* Footer */
-  FOOTER_1:             'Avoimen lähdekoodin, asiakas-puolen javascript työkalu Ethereum lompakkojen luomista & varojen siirtoja varten.',
+  FOOTER_1:             'Avoimen lähdekoodin, javascript työkalu Ethereum lompakkojen luomista & varojen siirtoja varten.',
   FOOTER_2:             'Lahjoituksia arvostetaan suuresti:',
-  FOOTER_3:             'Asiakas-puolen lompakon luomisen tarjoaa',
+  FOOTER_3:             'Lompakon luomisen tarjoaa',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Tilin Tiedot: ',
@@ -75,7 +75,7 @@ fi.data = {
   ADD_Radio_2_short:      'VALITSE LOMPAKKO TIEDOSTO...',
   ADD_Radio_3:            'Liitä/Kirjoita Yksityinen Salausavaimesi',
   ADD_Radio_4:            'Lisää Tili Jota Seurata',
-  ADD_Label_2:            'Luo Lempinimi:',
+  ADD_Label_2:            'Luo Kutsumanimi:',
   ADD_Label_3:            'Lompakkosi on salattu, ole hyvä ja syötä salasanasi: ',
   ADD_Label_4:            'Lisää Tili Jota Seurata',
   ADD_Warning_1:          'Voit lisätä minkä tahansa tilin jota "seurata" lompakkojen välilehdessä ilman yksityisen salausavaimesi lähettämistä. Tämä ** ei ** tarkoita että sinulla olisi pääsy tähän lompakkoon, tai että voit siirtää Etheriä siitä.',
@@ -89,7 +89,7 @@ fi.data = {
   GEN_Label_1:            'Syötä vahva salasana (vähintään 9 merkkiä)',
   GEN_Placeholder_1:      'ÄLÄ unohda tallentaa tätä!',
   GEN_SuccessMsg:         'Onnistui! Sinun lompakkosi on luotu.',
-  GEN_Warning:            '**Tarvitset Avainsäilö/JSON Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna ja varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help).',
+  GEN_Warning:            '**Tarvitset Avainsäilö/JSON Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help).',
   GEN_Label_2:            'Tallenna Avainsäilö/JSON tai Yksityinen salausavaimesi. Älä unohda yllä olevaa salasanaasi.',
   GEN_Label_3:            'Tallenna Osoitteesi.',
   GEN_Label_4:            'Tulosta paperi lompakkosi, tai säilö QR koodi versio. (valinnainen)',
@@ -130,7 +130,7 @@ fi.data = {
   TRANS_standard:        'ETH (Tavallinen Siirto)',
   TRANS_eth:             'Vain ETH',
   TRANS_etc:             'Vain ETC',
-  TRANS_advanced:        '+Edistynyt: Lisää Enemmän Gasia tai Tietoa ',
+  TRANS_advanced:        '+Edistynyt: Lisää Enemmän Gasia tai Tietoja ',
   TRANS_data:            ' Tiedot: ',
   TRANS_gas:             ' Gas: ',
   TRANS_sendInfo:        'Tavallinen siirto käyttäen 21000 gasia maksaa 0.000441 ETHiä. Me käytämme hieman-yli-minimin gasin hintaa 0.000000021 ETHiä varmistaaksemme että se louhitaan nopeasti. Me emme veloita siirto maksua.',
@@ -139,8 +139,8 @@ fi.data = {
   TRANSModal_Title:      '"Vain ETH" ja "Vain ETC" Siirrot',
   TRANSModal_Content_0:  'Huomautus erilaisista siirroista ja eri palveluista:',
   TRANSModal_Content_1:  '**ETH (Tavallinen Siirto): ** Tämä luo oletusarvoisen siirron osoitteesta toiseen. Siinä on oletus gasina 21000. On todennäköistä että kaikki ETH joka lähetetään tällä tavalla, toistetaan ETC ketjussa.',
-  TRANSModal_Content_2:  '**Vain ETH: ** Tämä lähettää [Timon Rappin toiston suojaus sopimuksen (kuten VB on suositellut) kautta](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) niin että sinä lähetät vain **ETH** ketjussa.',
-  TRANSModal_Content_3:  '**Only ETC: ** Tämä lähettää [Timon Rappin toiston suojaus sopimuksen (kuten VB on suositellut) kautta](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) niin että sinä lähetät vain **ETC** ketjussa. ',
+  TRANSModal_Content_2:  '**Vain ETH: ** Tämä lähettää [Timon Rappin toiston suojaus sopimuksen kautta (kuten VB on suositellut)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) niin että sinä lähetät vain **ETH** ketjussa.',
+  TRANSModal_Content_3:  '**Only ETC: ** Tämä lähettää [Timon Rappin toiston suojaus sopimuksen kautta (kuten VB on suositellut)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) niin että sinä lähetät vain **ETC** ketjussa. ',
   TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Lähetä ainoastaan käyttäen Tavallista Siirtoa. Jos lähetät käyttäen "Vain" sopimuksia, sinun täytyy olla yhteydessä heidän asiakastukensa henkilöstöön jotta he joko manuaalisesti lisäävät sinun saldosi tai palauttavat rahasi. [Voit kokeilla myös ShapeShiftin "split" työkalua.](https://split.shapeshift.io/)',
   TRANSModal_Content_5:  '**Kraken & Poloniex:** Ei tunnettuja ongelmia. Käytä mitä vain.',
   TRANSModal_Yes:        'Siistiä, nyt ymmärrän.',
@@ -148,7 +148,7 @@ fi.data = {
 
   /* Offline Transaction */
   OFFLINE_Title:         'Luo ja Lähetä Offline Siirto',
-  OFFLINE_Desc:          'Offline siirtojen luonti voidaan tehdä kolmella eri vaiheella. Teet vaiheet 1 ja 3 käyttäen verkossa olevaa tietokonetta, ja vaiheen 2 käyttäen offline/airgappattua tietokonetta. Tämä varmistaa ettei sinun yksityinen salausavaimesi ole kosketuksissa internettiin yhdistetyn laitteen kanssa.',
+  OFFLINE_Desc:          'Offline siirtojen luonti voidaan tehdä kolmella eri vaiheella. Teet vaiheet 1 ja 3 käyttäen verkkoon yhdistettyä (online) tietokonetta, ja vaiheen 2 käyttäen offline/airgappattua tietokonetta. Tämä varmistaa ettei sinun yksityinen salausavaimesi ole kosketuksissa internettiin yhdistetyn laitteen kanssa.',
   OFFLLINE_Step1_Title:  'Vaihe 1: Luo Tiedot (Online Tietokone)',
   OFFLINE_Step1_Button:  'Luo Tiedot',
   OFFLINE_Step1_Label_1: 'Osoitteesta: ',
@@ -163,9 +163,9 @@ fi.data = {
   OFFLINE_Step2_Label_5:  'Nonce',
   OFFLINE_Step2_Label_5b: 'Tämä näytettiin kohdassa Vaihe 1 sinun verkkoon yhdistetyssä tietokoneessasi.',
   OFFLINE_Step2_Label_6:  'Tiedot',
-  OFFLINE_Step2_Label_6b: 'Tämä on vapaaehtoinen. Tietoja käytetään usein kun varoja lähetetään sopimuksiin.',
+  OFFLINE_Step2_Label_6b: 'Tämä on valinnainen. Tietoja käytetään usein kun varoja lähetetään sopimuksiin.',
   OFFLINE_Step2_Label_7:  'Syötä / Valitse Yksityinen salausavaimesi / JSON.',
-  OFFLINE_Step3_Title:    'Vaihe 3: Lähetä / Julkaise Siirto (Verkkoon yhdistetty tietokone)',
+  OFFLINE_Step3_Title:    'Vaihe 3: Lähetä / Julkaise Siirto (Verkkoon yhdistetty (online) tietokone)',
   OFFLINE_Step3_Label_1:  'Liitä allekirjoitettu siirto Vaiheesta 2 tähän ja paina "LÄHETÄ SIIRTO" nappia.',
 
   /* DAO */
@@ -175,7 +175,7 @@ fi.data = {
   DAOModal_Title:         'Varmistetaan vain...',
 
   /* Digix */
-  DGD_Desc:               'Lunasta DigixDAO (DGD) tokenisi & merkkisi. Lunastaaksesi, sinun on täytynyt osallistua tokenien myyntiin Maaliskuun 30/31 päivänä, 2016.  Jos haluat lähettää DGDtä, ole hyvä ja käytä Lähetä Tokeneita välilehteä.',
+  DGD_Desc:               'Lunasta DigixDAO (DGD) tokenisi & badgesi. Lunastaaksesi, sinun on täytynyt osallistua tokenien myyntiin Maaliskuun 30/31 päivänä, 2016.  Jos haluat lähettää DGDtä, ole hyvä ja käytä Lähetä Tokeneita välilehteä.',
   DGD_Label_1:            'Arvioitu kulutus maksu:',
   DGD_Label_2:            'Annettu Maksimi Maksu:',
   DGD_Label_3:            'Gas Hinta:',
@@ -183,7 +183,7 @@ fi.data = {
   DGD_Content:            'Olet lunastamassa sinun DGD Tokenisi.',
 
   /* My Wallet */
-  MYWAL_Nick:             'Lompakon Lempinimi',
+  MYWAL_Nick:             'Lompakon Kutsumanimi',
   MYWAL_Address:          'Lompakon Osoite',
   MYWAL_Bal:              'Saldo',
   MYWAL_Edit:             'Muokkaa',
@@ -191,16 +191,16 @@ fi.data = {
   MYWAL_Remove:           'Poista',
   MYWAL_RemoveWal:        'Poista Lompakko:',
   MYWAL_WatchOnly:        'Sinun Seuraa-Ainoastaan Tilisi',
-  MYWAL_Viewing:          'Viewing Wallet: ',
+  MYWAL_Viewing:          'Tarkastellaan Lompakkoa: ',
   MYWAL_Hide:             'Piilota Lompakon Tiedot',
   MYWAL_Edit:             'Muokkaa Lompakkoa: ',
   MYWAL_Name:             'Lompakon Nimi',
   MYWAL_Content_1:        'Varoitus! Olet poistamassa lompakkoasi.',
   MYWAL_Content_2:        'Varmista että olet **tallentanut tähän lompakkoon liittyvät yksityisen salausavaimesi/JSON tiedostosi ja salasanasi** ennen kuin poistat sen.',
-  MYWAL_Content_3:        'Jos tahdot käyttää tätä lompakkoa sinun MyEtherWallet CX:si kanssa tulevaisuudessa, sinun täytyy manuaalisesti uudelleen-lisätä se käyttäen yksityistä salausavaintasi/JSONia ja salasanaa.',
+  MYWAL_Content_3:        'Jos tahdot käyttää tätä lompakkoa MyEtherWallet CX:si kanssa tulevaisuudessa, sinun täytyy manuaalisesti uudelleen-lisätä se käyttäen yksityistä salausavaintasi/JSONia ja salasanaa.',
 
   /* View Wallet Details */
-  VIEWWALLET_Subtitle:      'Tämä antaa sinun ladata eri versiota yksityisistä salausavaimistasi ja uudelleen-tulostaa paperi lompakkosi. Saatat tahtoa tehdä tämän [tuodaksesi sinun tilisi Gethiin/Mistiin](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jos haluat tarkistaa saldosi, me suosittelemme käyttämään lohkoketju exploreria kuten [etherscan.io](http://etherscan.io/).',
+  VIEWWALLET_Subtitle:      'Tämä antaa sinun ladata eri versiota yksityisistä salausavaimistasi ja uudelleen-tulostaa paperi lompakkosi. Saatat tahtoa tehdä tämän [tuodaksesi sinun tilisi Gethiin/Mistiin](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jos haluat tarkistaa saldosi, me suosittelemme käyttämään blockchain exploreria kuten [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'Tämä antaa sinun ladata eri versiota yksityisistä salausavaimistasi ja uudelleen-tulostaa paperi lompakkosi. ',
   VIEWWALLET_SuccessMsg:     'Onnistui! Tässä ovat lompakkosi yksityiskohdat.',
 
@@ -218,12 +218,12 @@ fi.data = {
   ERROR_11:             'Virheellinen gasin määrä. ',
   ERROR_12:             'Virheellinen nonce. ',
   ERROR_13:             'Virheellinen allekirjoitettu siirto. ',
-  ERROR_14:             'Lompakko tällä lempinimellä on jo olemassa. ',
+  ERROR_14:             'Lompakko tällä kutsumanimellä on jo olemassa. ',
   ERROR_15:             'Lompakkoa ei löytynyt. ',
   ERROR_16:             'Ei näytä että ehdotusta tällä ID:llä olisi vielä olemassa tai tapahtui virhe ehdotusta luettaessa. ',
-  ERROR_17:             'Lompakko jolla on tämä osoite on jo muistissa. Ole hyvä ja tarkista sinun lompakkosi sivu. ',
+  ERROR_17:             'Lompakko jolla on tämä osoite on jo muistissa. Ole hyvä ja tarkista oma lompakko sivusi. ',
   ERROR_18:             'Sinulla täytyy olla vähintään .001 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. ',
-  ERROR_19:             'Kaikki gas käytettäisiin tässä siirrossa. Tämä tarkoittaa että olet jo äänestänyt tässä ehdotuksessa tai väittely aika on jo päättynyt.',
+  ERROR_19:             'Kaikki gas käytettäisiin tässä siirrossa. Tämä tarkoittaa että olet jo äänestänyt tässä ehdotuksessa tai debaatti aika on jo päättynyt.',
   ERROR_20:             'Virheellinen merkki',
   SUCCESS_1:            'Validi osoite',
   SUCCESS_2:            'Lompakon salaus onnistuneesti purettu',
@@ -232,7 +232,7 @@ fi.data = {
   SUCCESS_5:            'Olet äänestänyt onnistuneesti. Kiitos että olet ollut aktiivinen osanottaja The DAOssa.',
 
   /* Tranlsation Info */
-  translate_version:    '0.1',
+  translate_version:    '0.2',
   Translator_Desc:      'Kiitos kääntäjillemme...',
   TranlsatorName_1:     'Smokyish',
   TranlsatorAddr_1:     '0xac9a2c1dd946da64c0dc8e70cec2cfb14304fd4f',
