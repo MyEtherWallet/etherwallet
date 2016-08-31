@@ -134,22 +134,22 @@ hu.data = {
 
   /* Send Transaction */
   TRANS_desc:            'Ha Tokeneket akarsz küldeni, kérlek használd a Token Küldése oldalt ehelyett.',
-  TRANS_warning:         'Ha a "Csak ETH" vagy a "Csak ETC" Funkciókat használod a küldés kontraktuson keresztül megy végbe. Néhány problémái lehetnek az ilyen tranzakciók elfogadásával. Kattints és tudj meg többet.',
+  TRANS_warning:         'Ha a "Csak ETH" vagy a "Csak ETC" Funkciókat használod a küldés kontraktuson keresztül megy végbe. Néhány szolgáltatásnak problémái lehetnek az ilyen tranzakciók elfogadásával. Kattints és tudj meg többet.',
   TRANS_standard:        'ETH (Standard Tranzakció)',
   TRANS_eth:             'Csak ETH',
   TRANS_etc:             'Csak ETC',
   TRANS_advanced:        '+Haladó: Több Gas vagy Adat ',
   TRANS_data:            ' Adat: ',
   TRANS_gas:             ' Gas: ',
-  TRANS_sendInfo:        'Egy standard tranzakció 21000 gas-t használ, ami 0.000441 ETH-be fog kerülni. Mi 0.000000021 ETH-nél enyhén-minimumnál-magasabb gas árat használunk, annak biztosítása érdekében, hogy gyorsan ki legyen bányászva. Tranazkciós költséget nem számolunk fel.',
+  TRANS_sendInfo:        'Egy standard tranzakció 21000 gas-t használ, ami 0.000441 ETH-be fog kerülni. Mi 0.000000021 ETH-nél enyhén-minimálisnáll-magasabb gas árat használunk, annak biztosítása érdekében, hogy gyorsan ki legyen bányászva. Tranazkciós költséget nem számolunk fel.',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Csak ETH" és "Csak ETC" Tranzakciók',
   TRANSModal_Content_0:  'Egy jegyzet a különféle tranzakciókról és szolgáltatásokról: ',
   TRANSModal_Content_1:  '**ETH (Standard Tranzakció): ** Egy alapértelmezett tranzakciót generál közvetlenül az egyik címről a másikra. A gas alapértéke 21000. Valószínűsíthető, hogy minden ETH, ami ezzel a módszerrel lesz elküldve, végbemegy az ETC láncon is.',
-  TRANSModal_Content_2:  '**Csak ETH: **  Ez a tranzakciótípus [Timon Rapp\'s replay protection/visszajátszás elleni védelem kontraktusán keresztül küld (ahogy azt Vitalik Buterin adjánlotta)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) tehát a küldés csak az **ETH** láncon megy végbe.',
-  TRANSModal_Content_3:  '**Csak ETC: ** Ez a tranzakciótípus [Timon Rapp\'s replay protection/visszajátszás elleni védelem kontraktusán keresztül küld (ahogy azt Vitalik Buterin adjánlotta)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) tehát a küldés csak az **ETC** láncon megy végbe.',
-  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Csak Standar Tranzakció szerint küld. Ha a "Csak" kontraktusok valamelyikével küldesz, fel kell venned a kapcsolatot az ügyfélszolgálattal, hogy manuálisan hozzáadhassák az egyenleged vagy visszatérítést küldjenek. [Megpróbálhatod a Shapeshift "split" eszközét is.](https://split.shapeshift.io/)',
+  TRANSModal_Content_2:  '**Csak ETH: **  Ez a tranzakciótípus [Timon Rapp replay protection/visszajátszás elleni védelem kontraktusán keresztül küld (ahogy azt Vitalik Buterin adjánlotta)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) tehát a küldés csak az **ETH** láncon megy végbe.',
+  TRANSModal_Content_3:  '**Csak ETC: ** Ez a tranzakciótípus [Timon Rapp replay protection/visszajátszás elleni védelem kontraktusán keresztül küld (ahogy azt Vitalik Buterin adjánlotta)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) tehát a küldés csak az **ETC** láncon megy végbe.',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Csak Standard Tranzakció szerint küld. Ha a "Csak" kontraktusok valamelyikével küldesz, fel kell venned a kapcsolatot az ügyfélszolgálattal, hogy manuálisan hozzáadhassák az egyenleged vagy visszatérítést küldjenek. [Megpróbálhatod a Shapeshift "split" eszközét is.](https://split.shapeshift.io/)',
   TRANSModal_Content_5:  '**Kraken & Poloniex:** Nincsenek ismert problémák. Használható bárhogyan.',
   TRANSModal_Yes:        'Király, most már értem.',
   TRANSModal_No:         'Ó istenem, most még jobban összezavarodtam. Segítsetek!',
@@ -171,7 +171,7 @@ hu.data = {
   OFFLINE_Step2_Label_5:  'Nonce',
   OFFLINE_Step2_Label_5b: 'Ez volt látható az online számítógépen az első lépésben.',
   OFFLINE_Step2_Label_6:  'Adat',
-  OFFLINE_Step2_Label_6b: 'Ez választható. Az adat gyakorta használt, amikor tranzakciót küldesz kontraktusokba.',
+  OFFLINE_Step2_Label_6b: 'Ez választható. Az adat mező gyakran használt, amikor tranzakciót küldesz kontraktusokba.',
   OFFLINE_Step2_Label_7:  'Írd be / Válaszd ki a Privát Kulcsodat / JSON-fájlt.',
   OFFLINE_Step3_Title:    'Lépés 3: Küld / Közzétesz (Online Számítógép)',
   OFFLINE_Step3_Label_1:  'Illeszd be ide az aláírt tranzakciót a második lépésből(Lépés 2) és nyomd meg a "TRANZAKCIÓ KÜLDÉSE" gombot.',
@@ -188,11 +188,11 @@ hu.data = {
   DAO_Warning:            'Ha "nincs elegendő egyenleg a gas-hoz" hibaüzenetet kaptál, egy kis összegnyi etherre szükséged lesz a számládon, hogy fedezni tudd a gas költségeit. Adj hozzá 0.001 ethert ehhez a számlához és próbáld újra. ',
   DAOModal_Title:         'Csak megbizonyosodunk...',
   DAOModal_1:             'Most készülsz kifizetni',
-  DAOModal_2:             'DAO Tokeneket ide',
-  DAOModal_3:             'for', // "in return for"
+  DAOModal_2:             'DAO Tokeneket erre a címre',
+  DAOModal_3:             'ezért:', // "in return for"
 
   /* Digix */
-  DGD_Desc:               'Igényeld a DigixDAO (DGD) tokened és badge-eket. Ahhoz, hogy igényelni tudj részt kellett venned a token eladásban 2016. március 30-án vagy 31-én. Ha DGD-t akarsz küldeni, kérlek használd a Token küldése oldalt.',
+  DGD_Desc:               'Igényeld a DigixDAO (DGD) tokened és a badge-eket. Ahhoz, hogy igényelni tudj részt kellett venned a token eladásban 2016. március 30-án vagy 31-én. Ha DGD-t akarsz küldeni, kérlek használd a Token küldése oldalt.',
   DGD_Label_1:            'A díj becsült költsége:',
   DGD_Label_2:            'Biztosított Maximum Díj:',
   DGD_Label_3:            'Gas Ár:',
@@ -207,7 +207,7 @@ hu.data = {
 
   /* My Wallet */
   MYWAL_Nick:             'Tárca Nickname',
-  MYWAL_Address:          'Tárca Address',
+  MYWAL_Address:          'Tárca Cím',
   MYWAL_Bal:              'Egyenleg',
   MYWAL_Edit:             'Szerkesztés',
   MYWAL_View:             'Nézet',
@@ -247,10 +247,10 @@ hu.data = {
   ERROR_13:             'Érvénytelen aláírású tranzakció. ',
   ERROR_14:             'Egy Tárca ezzel a Nicknévvel már létezik ',
   ERROR_15:             'Tárca nem található. ',
-  ERROR_16:             'Úgy tűnik ezzel az ID-vel nem létezik javaslat vagy hiba történt a javaslat beolvasása közben. ',
+  ERROR_16:             'Úgy tűnik ezzel az ID-vel nem létezik javaslat, vagy hiba történt a javaslat beolvasása közben. ',
   ERROR_17:             'Egy tárca ezzel a címmel már létezik a tárolóban. Kérlek ellenőrizd a tárcák oldalán. ',
   ERROR_18:             'Legalább 0.001 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra!',
-  ERROR_19:             'Az összes gas felhasználódna ezen a tranzakción. Ez azt jelenti, hogy már szavaztál erre a javaslatra vagy a vite periódus már lejárt.',
+  ERROR_19:             'Az összes gas felhasználásra kerülne ezen a tranzakción. Ez azt jelenti, hogy már szavaztál erre a javaslatra vagy a vita periódus már lejárt.',
   ERROR_20:             'Érvénytelen szimbólum',
   SUCCESS_1:            'Érvényes cím',
   SUCCESS_2:            'Tárca sikeresen dekódolva',
@@ -267,13 +267,13 @@ hu.data = {
   GETH_NonExistentAccount: 'A Számla nem létezik vagy az egyenleg túl alacsony',
   GETH_InsufficientFunds:  'Hiányos alap a gas-hoz * ár + érték',
   GETH_IntrinsicGas:       'Intrinsic gas túl alacsony',
-  GETH_GasLimit:           'Meghaladja a blokk gas limitet',
+  GETH_GasLimit:           'Meghaladja a blokk gas limitjét',
   GETH_NegativeValue:      'Negatív érték',
 
   /* Tranlsation Info */
-  translate_version:    '0.4.1',
+  translate_version:    '0.4.2',
   Translator_Desc:      'Thank you to our translators: ',
-  TranslatorName_1:     'belpheg',
+  TranslatorName_1:     '[belpheg](https://www.myetherwallet.com/?gaslimit=21000&to=0xBF8C35176eAD29257834D5A1592ed50Adb0b6e4f&value=1.0#send-transaction) ·',
   TranslatorAddr_1:     '0xBF8C35176eAD29257834D5A1592ed50Adb0b6e4f',
   /* Translator 1: email: zoltan.tapi@donamin.com */
   TranslatorName_2:     ' ',
@@ -483,8 +483,8 @@ hu.data = {
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
   HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
