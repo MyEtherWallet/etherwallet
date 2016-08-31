@@ -10,13 +10,15 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
 	$scope.withdrawContract = "0xbf4ed7b27f1d666546e30d74d50d173d20bca754"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
     $scope.daoCContract = "0x180826b05452ce96e157f0708c43381fee64a6b8";
-    $scope.daoWithdrawContract = "0x5cead42dc4adb64f128a11382bf8e11f567a743d";
+    // change this to go live
+    $scope.daoWithdrawContract = "0x9f5304da62a5408416ea58a17a92611019bd5ce3";
 	$scope.slockitTransfer = "0xa9059cbb";
 	$scope.balanceOf = "0x70a08231";
 	$scope.daoWithdraw = "0x3ccfd60b";
 	$scope.approveWithdraw = "0x095ea7b3";
     $scope.withdrawDAOC = "0xf3fef3a3";
     $scope.numETChex = "0x02ef6c86";
+    $scope.Validator = Validator;
 	$scope.tx = {
 		gasLimit: 100000,
 		data: '',
@@ -129,6 +131,10 @@ var theDaoCtrl = function($scope, $sce, walletService) {
         $scope.withdrawModal.close();
 	}
     $scope.generateAndWithdrawDAOC = function() {
+        if(!Validator.isPositiveNumber($scope.daoC.donation)){
+            $scope.withdrawETCTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[0]));
+            return;
+        }
 		$scope.tx.to = $scope.daoWithdrawContract;
 		$scope.tx.data = $scope.withdrawDAOC + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.daoC.to), 64) + ethFuncs.padLeft(new BigNumber($scope.daoC.donation).toString(16), 64);
 		$scope.tx.value = 0;
@@ -143,13 +149,6 @@ var theDaoCtrl = function($scope, $sce, walletService) {
             });
 		});
         $scope.withdrawModalETC.close();
-	}
-    $scope.validateAddress = function(addr) {
-		if (ethFuncs.validateEtherAddress(addr)) {
-			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
-		} else {
-			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
-		}
 	}
 };
 module.exports = theDaoCtrl;

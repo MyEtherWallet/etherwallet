@@ -74,7 +74,7 @@
           </td>
           <td class="chrome-tokens">
             <strong class="text-success">{{twallet.balance | number:4 }} ETH</strong><br>
-            <span class="small" ng-repeat="token in twallet.tokens" ng-hide="token.balance==0"><strong>{{token.getBalance() }}</strong>&nbsp;{{token.getSymbol()}} &nbsp;&nbsp;</span>
+            <span class="small" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'"><strong>{{token.getBalance() }}</strong>&nbsp;{{token.getSymbol()}} &nbsp;&nbsp;</span>
             <br />
             <span class="small"><strong>{{twallet.btc }}</strong> BTC</span> &nbsp;&nbsp; <span>$ <strong>{{twallet.usd }}</strong> USD</span> &nbsp;&nbsp; <span>€ <strong>{{twallet.eur }}</strong> EUR</span>
           </td>

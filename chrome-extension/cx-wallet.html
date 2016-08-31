@@ -182,7 +182,7 @@
           </td>
           <td class="chrome-tokens">
             <strong class="text-success">{{twallet.balance | number:4 }} ETH</strong><br>
-            <span class="small" ng-repeat="token in twallet.tokens" ng-hide="token.balance==0"><strong>{{token.getBalance() }}</strong>&nbsp;{{token.getSymbol()}} &nbsp;&nbsp;</span>
+            <span class="small" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'"><strong>{{token.getBalance() }}</strong>&nbsp;{{token.getSymbol()}} &nbsp;&nbsp;</span>
             <br />
             <span class="small"><strong>{{twallet.btc }}</strong> BTC</span> &nbsp;&nbsp; <span>$ <strong>{{twallet.usd }}</strong> USD</span> &nbsp;&nbsp; <span>€ <strong>{{twallet.eur }}</strong> EUR</span>
           </td>
@@ -1206,21 +1206,22 @@
 
           <h4 class="col-xs-12" translate="DAO_TitleETC"> Withdraw DAO for ETC </h4>
           <!-- Address for ETC to be Delivered -->
+
+        <!--<h4 class="col-xs-12"> There were some irregularities occcuring. Please sit tight for now.  </h4>-->
+
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_1"> Where do you want your ETC to be sent to? </label>
-            <input class="form-control" type="text" ng-model="daoC.to" ng-change="validateAddress(daoC.to)"/>
-            <div ng-bind-html="validateAddressStatus"></div>
+            <input class="form-control" type="text" ng-model="daoC.to" ng-class="Validator.isValidAddress(daoC.to) ? 'is-valid' : 'is-invalid'"/>
           </div>
 
           <div class="col-xs-2 address-identicon-container">
             <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{daoC.to}}" watch-var="daoC.to"></div>
           </div>
 
-          <!-- Percentage to Donate to WHG -->
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_2"> The 'White Hat Group' has been working tirelessly to get your ETC back to you. You can say 'thank you' by donating a percentage of your withdrawal, if you choose to. </label>
             <div class="input-group" style="max-width: 150px;">
-            <input type="number" class="form-control" placeholder="10" ng-model="daoC.donation"/>
+            <input type="number" class="form-control" placeholder="10" ng-model="daoC.donation" ng-class="Validator.isPositiveNumber(daoC.donation) ? 'is-valid' : 'is-invalid'"/>
             <span class="input-group-addon">%</span>
           </div>
 
@@ -1234,6 +1235,7 @@
           <br /><br />
 
           <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
+
       </section>
       <!-- / Withdraw DAO For ETC -->
 
@@ -1494,10 +1496,10 @@
       <div ng-bind-html="deployContractStatus"></div>
       <!-- Sign TX Button (once wallet has been unlocked) -->
       <div class="form-group">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DEP_signtx"> Sign Transaction </a>
+        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DEP_signtx" ng-show="wallet!=null"> Sign Transaction </a>
       </div>
 
-      <section class="row">
+      <section class="row" ng-show="showRaw">
         <!-- Raw TX -->
         <div class="form-group col-sm-6">
           <h4 translate="SEND_raw"> Raw Transaction </h4>
@@ -1512,7 +1514,7 @@
       </section>
 
       <!-- Deploy Contract Button (once tx has been signged) -->
-      <div class="form-group">
+      <div class="form-group" ng-show="showRaw">
         <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="NAV_DeployContract"> Deploy Contract </a>
       </div>
 
@@ -1532,7 +1534,7 @@
 
             <div class="modal-body">
               <h4>
-                <span translate="">You are about to deploy a contract to the blockchain.</span>
+                <span>You are about to deploy a contract to the blockchain.</span>
               </h4>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>

@@ -721,6 +721,7 @@ var deployContractCtrl = function($scope, $sce, walletService) {
 		nonce: null,
 		gasPrice: null
 	}
+    $scope.showRaw = false;
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
 		return walletService.wallet.getAddressString();
@@ -728,6 +729,9 @@ var deployContractCtrl = function($scope, $sce, walletService) {
 		if (walletService.wallet == null) return;
 		$scope.wallet = walletService.wallet;
 	});
+    $scope.$watch('tx', function(newValue, oldValue) {
+		$scope.showRaw = false;
+	}, true);
 	$scope.generateTx = function() {
 		try {
 			if ($scope.wallet == null) throw globalFuncs.errorMsgs[3];
@@ -745,7 +749,9 @@ var deployContractCtrl = function($scope, $sce, walletService) {
 						$scope.rawTx = rawTx.rawTx;
 						$scope.signedTx = rawTx.signedTx;
 						$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+                        $scope.showRaw = true;
 					} else {
+					   $scope.showRaw = false;
 						$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
 					}
 				});
@@ -994,7 +1000,7 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 };
 module.exports = sendOfflineTxCtrl;
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],13:[function(require,module,exports){
+},{"buffer":122}],13:[function(require,module,exports){
 'use strict';
 var sendTxCtrl = function($scope, $sce, walletService) {
 	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
@@ -1242,13 +1248,15 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
 	$scope.withdrawContract = "0xbf4ed7b27f1d666546e30d74d50d173d20bca754"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
     $scope.daoCContract = "0x180826b05452ce96e157f0708c43381fee64a6b8";
-    $scope.daoWithdrawContract = "0x5cead42dc4adb64f128a11382bf8e11f567a743d";
+    // change this to go live
+    $scope.daoWithdrawContract = "0x9f5304da62a5408416ea58a17a92611019bd5ce3";
 	$scope.slockitTransfer = "0xa9059cbb";
 	$scope.balanceOf = "0x70a08231";
 	$scope.daoWithdraw = "0x3ccfd60b";
 	$scope.approveWithdraw = "0x095ea7b3";
     $scope.withdrawDAOC = "0xf3fef3a3";
     $scope.numETChex = "0x02ef6c86";
+    $scope.Validator = Validator;
 	$scope.tx = {
 		gasLimit: 100000,
 		data: '',
@@ -1361,6 +1369,10 @@ var theDaoCtrl = function($scope, $sce, walletService) {
         $scope.withdrawModal.close();
 	}
     $scope.generateAndWithdrawDAOC = function() {
+        if(!Validator.isPositiveNumber($scope.daoC.donation)){
+            $scope.withdrawETCTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[0]));
+            return;
+        }
 		$scope.tx.to = $scope.daoWithdrawContract;
 		$scope.tx.data = $scope.withdrawDAOC + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.daoC.to), 64) + ethFuncs.padLeft(new BigNumber($scope.daoC.donation).toString(16), 64);
 		$scope.tx.value = 0;
@@ -1375,13 +1387,6 @@ var theDaoCtrl = function($scope, $sce, walletService) {
             });
 		});
         $scope.withdrawModalETC.close();
-	}
-    $scope.validateAddress = function(addr) {
-		if (ethFuncs.validateEtherAddress(addr)) {
-			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
-		} else {
-			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
-		}
 	}
 };
 module.exports = theDaoCtrl;
@@ -1642,7 +1647,7 @@ marked.setOptions({
 	renderer: myRenderer
 });
 module.exports = marked;
-},{"marked":470}],21:[function(require,module,exports){
+},{"marked":472}],21:[function(require,module,exports){
 'use strict';
 var cxFuncs = function() {}
 cxFuncs.storage = chrome.storage.sync;
@@ -2216,7 +2221,7 @@ if (IS_CX) {
 	app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
 }
 
-},{"./ajaxReq":1,"./controllers/CX/addWalletCtrl":2,"./controllers/CX/cxDecryptWalletCtrl":3,"./controllers/CX/mainPopCtrl":4,"./controllers/CX/myWalletsCtrl":5,"./controllers/CX/quickSendCtrl":6,"./controllers/bulkGenCtrl":7,"./controllers/decryptWalletCtrl":8,"./controllers/deployContractCtrl":9,"./controllers/digixCtrl":10,"./controllers/footerCtrl":11,"./controllers/sendOfflineTxCtrl":12,"./controllers/sendTxCtrl":13,"./controllers/tabsCtrl":14,"./controllers/theDaoCtrl":15,"./controllers/tokenCtrl":16,"./controllers/viewCtrl":17,"./controllers/viewWalletCtrl":18,"./controllers/walletGenCtrl":19,"./customMarked":20,"./cxFuncs":21,"./directives/QRCodeDrtv":22,"./directives/blockiesDrtv":23,"./directives/cxWalletDecryptDrtv":24,"./directives/fileReaderDrtv":25,"./directives/walletDecryptDrtv":26,"./ethFuncs":27,"./etherUnits":28,"./globalFuncs":29,"./myetherwallet":31,"./services/globalService":32,"./services/walletService":33,"./tokens":34,"./translations/translate.js":60,"./uiFuncs":64,"./validator":65,"angular":71,"angular-sanitize":67,"angular-translate":69,"angular-translate-handler-log":68,"babel-polyfill":87,"bignumber.js":89,"crypto":423,"ethereumjs-tx":453,"ethereumjs-util":454,"scryptsy":500,"uuid":520}],31:[function(require,module,exports){
+},{"./ajaxReq":1,"./controllers/CX/addWalletCtrl":2,"./controllers/CX/cxDecryptWalletCtrl":3,"./controllers/CX/mainPopCtrl":4,"./controllers/CX/myWalletsCtrl":5,"./controllers/CX/quickSendCtrl":6,"./controllers/bulkGenCtrl":7,"./controllers/decryptWalletCtrl":8,"./controllers/deployContractCtrl":9,"./controllers/digixCtrl":10,"./controllers/footerCtrl":11,"./controllers/sendOfflineTxCtrl":12,"./controllers/sendTxCtrl":13,"./controllers/tabsCtrl":14,"./controllers/theDaoCtrl":15,"./controllers/tokenCtrl":16,"./controllers/viewCtrl":17,"./controllers/viewWalletCtrl":18,"./controllers/walletGenCtrl":19,"./customMarked":20,"./cxFuncs":21,"./directives/QRCodeDrtv":22,"./directives/blockiesDrtv":23,"./directives/cxWalletDecryptDrtv":24,"./directives/fileReaderDrtv":25,"./directives/walletDecryptDrtv":26,"./ethFuncs":27,"./etherUnits":28,"./globalFuncs":29,"./myetherwallet":31,"./services/globalService":32,"./services/walletService":33,"./tokens":34,"./translations/translate.js":61,"./uiFuncs":65,"./validator":66,"angular":72,"angular-sanitize":68,"angular-translate":70,"angular-translate-handler-log":69,"babel-polyfill":88,"bignumber.js":90,"crypto":425,"ethereumjs-tx":455,"ethereumjs-util":456,"scryptsy":502,"uuid":522}],31:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var Wallet = function(priv) {
@@ -2491,7 +2496,7 @@ Wallet.getWalletFromPrivKeyFile = function(strjson, password) {
 }
 module.exports = Wallet;
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],32:[function(require,module,exports){
+},{"buffer":122}],32:[function(require,module,exports){
 'use strict';
 var globalService = function($http, $httpParamSerializerJQLike) {
     globalFuncs.checkAndRedirectHTTPS();
@@ -3181,16 +3186,16 @@ ar.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -3730,16 +3735,16 @@ bg.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -4279,16 +4284,16 @@ de.data = {
   HELP_12_Desc_15b:       'Wenn du an einem PC bist:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -4832,16 +4837,16 @@ el.data = {
   HELP_12_Desc_15:        'If you are on a Mac:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -5381,16 +5386,16 @@ en.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -5931,16 +5936,16 @@ es.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -6480,16 +6485,16 @@ et.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -6550,6 +6555,515 @@ et.data = {
 module.exports = et;
 
 },{}],42:[function(require,module,exports){
+// English
+'use strict';
+var fi = function() {}
+fi.code = 'fi';
+fi.data = {
+
+  /* Navigation*/
+  NAV_YourWallets:      'Sinun Lompakkosi',
+  NAV_AddWallet:        'Lisää Lompakko',
+  NAV_GenerateWallet:   'Luo Lompakko',
+  NAV_BulkGenerate:     'Massa Generoi',
+  NAV_SendEther:        'Lähetä Etheriä',
+  NAV_SendTokens:       'Lähetä Tokeneita',
+  NAV_Offline:          'Lähetä Offlinena',
+  NAV_WithdrawDAO:      'Nosta DAO',
+  DAO_TitleLong:        'Muuta DAO Tokenisi ETH:iksi',
+  NAV_ClaimDGD:         'Lunasta DGD',
+  DGD_TitleLong:        'Lunasta DGD Tokenisi',
+  NAV_MyWallets:        'Minun Lompakkoni',
+  NAV_ViewWallet:       'Tarkista Lompakon Tiedot',
+  NAV_Help:             'Apua',
+  NAV_Contact:          'Yhteystiedot',
+
+  /* General */
+  x_Password:           'Salasana',
+  x_Download:           'Lataa',
+  x_Address:            'Sinun osoitteesi',
+  x_Save:               'x_Tallenna',
+  x_Cancel:             'x_Peruuta',
+  x_AddessDesc:         'Saatat tuntea tämän "Tilinumeronasi" tai sinun "Julkisena Salausavaimenasi". Tämä on se jonka jaat ihmisille, jotta he voivat lähettää sinulle ETHiä. Tuo kuvake on helppo tapa tunnistaa sinun osoitteesi.',
+  x_PrivKey:            'Yksityinen salausavain (salaamaton)',
+  x_PrivKeyDesc:        'Tämä on salaamaton versio sinun yksityisestä salausavaimestasi, tarkoittaen että salasanaa ei tarvita. Jos joku sattuisi löytämään sinun salaamattoman yksityisen salausavaimesi, he pääsisivät käsiksi sinun lompakkoosi ilman salasanaa. Tästä syystä salatut versiot ovat yleensä suositeltuja.',
+  x_Keystore:           'Avainsäilö/JSON Tiedosto (Suositeltu · Salattu · Mist/Geth Tiedostoformaatti)',
+  x_KeystoreDesc:       'Tämä Avainsäilö / JSON tiedosto vastaa sitä tiedostoformaattia jota Mist & Geth käyttävät, joten voit helposti tuoda sen tulevaisuudessa. Se on suositeltu tiedostomuoto ladata ja varmuuskopioida.',
+  x_Json:               'JSON Tiedosto (salaamaton)',
+  x_JsonDesc:           'Tämä on salaamaton, JSON tiedosto yksityisestä salausavaimestasi. Tämä tarkoittaa että et tarvitse salasanaa mutta kuka tahansa joka löytää JSON tiedostosi saa pääsyn lompakkoosi ja sen sisältämään Etheriin ilman salasanaa.',
+  x_PrintShort:         'Tulosta',
+  x_Print:              'Tulosta Paperi Lompakko',
+  x_PrintDesc:          'ProTip: Klikkaa Tulosta ja tallenna tämä PDF:nä, vaikka et omistaisikaan tulostinta!',
+  x_CSV:                'CSV tiedosto (salaamaton)',
+  x_TXT:                'TXT tiedosto (salaamaton)',
+
+  /* Header */
+  MEW_Warning_1:        'Tarkista URL aina ennen kuin avaat lompakkosi tai luot uuden lompakon. Varo tietojen-kalastelu sivustoja!',
+  CX_Warning_1:         'Varmista että sinulla on **ulkoiset varmuuskopiot** kaikista lompakoista joita säilytät täällä. Monia asioita voi tapahtua joiden seurauksena voit menettää tietoja tässä Chrome Laajennuksessa, mukaan lukien laajennuksen asennuksen poistaminen tai uudelleenasennus. Tämä laajennus on keino jolla saat helpon pääsyn lompakkoosi, **ei** keino varmuuskopioida niitä.',
+  MEW_Tagline:          'Avoimen Lähdekoodin Asiakas-puolen JavaScript Ether Lompakko',
+	CX_Tagline:           'Avoimen Lähdekoodin Asiakas-puolen JavaScript Chrome Laajennus',
+
+  /* Footer */
+  FOOTER_1:             'Avoimen lähdekoodin, asiakas-puolen javascript työkalu Ethereum lompakkojen luomista & varojen siirtoja varten.',
+  FOOTER_2:             'Lahjoituksia arvostetaan suuresti:',
+  FOOTER_3:             'Asiakas-puolen lompakon luomisen tarjoaa',
+
+  /* Sidebar */
+  sidebar_AccountInfo:  'Tilin Tiedot: ',
+  sidebar_AccountAddr:  'Tilin Osoite: ',
+  sidebar_AccountBal:   'Tilin Saldo: ',
+  sidebar_TokenBal:     'Tokenien Saldo: ',
+  sidebar_Equiv:        'Vastaavat Arvot: ',
+  sidebar_TransHistory: 'Siirto Historia',
+  sidebar_DGDBal:       'DGD Joukkomyynnin Tiedot:',
+  sidebar_donate:       'Lahjoita',
+  sidebar_donation:     'MyEtherWallet on ilmainen, avoimen lähdekoodin palvelu joka on omistautunut sinun yksityisyyteesi ja turvallisuuteesi. Mitä enemmän lahjoituksia me vastaanotamme, sitä enemmän aikaa me käytämme uusien toimintojen luomiseksi, kuunnellen teidän palautettanne ja antaen teille juuri sitä mitä te tahdotte. Me olemme vain kaksi ihmistä jotka koittavat muuttaa maailmaa. Auta meitä?',
+  sidebar_thanks:       'KIITOS!!!',
+
+  /* Decrypt Panel */
+  decrypt_Access:         'Kuinka haluaisit saada pääsyn lompakkoosi?',
+  decrypt_Title:          'Valitse yksityisen salausavaimesi muoto:',
+  decrypt_Select:         'Valitse Lompakko:',
+
+  /* Add Wallet */
+  ADD_Label_1:            'Mitä tahtoisit tehdä?',
+  ADD_Radio_1:            'Luo Uusi Lompakko',
+  ADD_Radio_2:            'Valitse Lompakko Tiedostosi (Avainsäilö / JSON)',
+  ADD_Radio_2_short:      'VALITSE LOMPAKKO TIEDOSTO...',
+  ADD_Radio_3:            'Liitä/Kirjoita Yksityinen Salausavaimesi',
+  ADD_Radio_4:            'Lisää Tili Jota Seurata',
+  ADD_Label_2:            'Luo Lempinimi:',
+  ADD_Label_3:            'Lompakkosi on salattu, ole hyvä ja syötä salasanasi: ',
+  ADD_Label_4:            'Lisää Tili Jota Seurata',
+  ADD_Warning_1:          'Voit lisätä minkä tahansa tilin jota "seurata" lompakkojen välilehdessä ilman yksityisen salausavaimesi lähettämistä. Tämä ** ei ** tarkoita että sinulla olisi pääsy tähän lompakkoon, tai että voit siirtää Etheriä siitä.',
+  ADD_Label_5:            'Syötä Osoite: ',
+  ADD_Label_6:            'Avaa Sinun Lompakkosi',
+  ADD_Label_6_short:      'Avaa',
+  ADD_Label_7:            'Lisää Tili',
+
+  /* Generate Wallets */
+  GEN_desc:               'Jos tahdot luoda useita lompakoita, voit tehdä sen täältä: ',
+  GEN_Label_1:            'Syötä vahva salasana (vähintään 9 merkkiä)',
+  GEN_Placeholder_1:      'ÄLÄ unohda tallentaa tätä!',
+  GEN_SuccessMsg:         'Onnistui! Sinun lompakkosi on luotu.',
+  GEN_Warning:            '**Tarvitset Avainsäilö/JSON Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna ja varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help).',
+  GEN_Label_2:            'Tallenna Avainsäilö/JSON tai Yksityinen salausavaimesi. Älä unohda yllä olevaa salasanaasi.',
+  GEN_Label_3:            'Tallenna Osoitteesi.',
+  GEN_Label_4:            'Tulosta paperi lompakkosi, tai säilö QR koodi versio. (valinnainen)',
+
+  /* Bulk Generate Wallets */
+  BULK_Label_1:           'Kuinka Monta Lompakkoa Luodaan',
+  BULK_Label_2:           'Luo Lompakot',
+  BULK_SuccessMsg:        'Onnistui! Sinun lompakkosi on luotu.',
+
+  /* Sending Ether and Tokens */
+  SEND_addr:             'Osoitteeseen: ',
+  SEND_amount:           'Summa Joka Lähetetään: ',
+  SEND_amount_short:     'Summa',
+  SEND_custom:           'Mukautettu',
+  SEND_gas:              'Gas',
+  SEND_generate:         'Luo Allekirjoitettu Siirto',
+  SEND_raw:              'Käsittelemätön Siirto',
+  SEND_signed:           'Allekirjoitettu Siirto',
+  SEND_trans:            'Lähetä Siirto',
+  SEND_TransferTotal:    'Lähetettävissä oleva saldo',
+  SENDModal_Title:       'Varoitus! ',
+  /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
+  SENDModal_Content_1:   'Olet lähettämässä',
+  SENDModal_Content_2:   'osoitteeseen',
+  SENDModal_Content_3:   'Oletko varma että haluat tehdä tämän?',
+  SENDModal_Content_4:   'HUOMAUTUS: Jos kohtaat virheen, sinun täytyy todennäköisesti lisätä ETHiä tilillesi kattaaksesi siirron vaatiman gasin hinnan. Gas maksetaan ETHeinä.',
+  SENDModal_No:          'En, vie minut pois täältä!',
+  SENDModal_Yes:         'Kyllä, olen varma! Toteuta siirto.',
+
+  /* Tokens */
+  TOKEN_Addr:            'Osoite: ',
+  TOKEN_Symbol:          'Token Tunnus: ',
+  TOKEN_Dec:             'Desimaalit: ',
+
+  /* Send Transaction */
+  TRANS_desc:            'Jos haluat lähettää Tokeneita, ole hyvä ja käytä "Lähetä Tokeneita" sivua.',
+  TRANS_warning:         'Jos käytät "Vain ETH" tai "Vain ETC" Toimintoja, niin lähetät sopimuksen kautta. Joillakin palveluilla on vaikeuksia hyväksyä näitä siirtoja. Lue lisää.',
+  TRANS_standard:        'ETH (Tavallinen Siirto)',
+  TRANS_eth:             'Vain ETH',
+  TRANS_etc:             'Vain ETC',
+  TRANS_advanced:        '+Edistynyt: Lisää Enemmän Gasia tai Tietoa ',
+  TRANS_data:            ' Tiedot: ',
+  TRANS_gas:             ' Gas: ',
+  TRANS_sendInfo:        'Tavallinen siirto käyttäen 21000 gasia maksaa 0.000441 ETHiä. Me käytämme hieman-yli-minimin gasin hintaa 0.000000021 ETHiä varmistaaksemme että se louhitaan nopeasti. Me emme veloita siirto maksua.',
+
+  /* Send Transaction Modals */
+  TRANSModal_Title:      '"Vain ETH" ja "Vain ETC" Siirrot',
+  TRANSModal_Content_0:  'Huomautus erilaisista siirroista ja eri palveluista:',
+  TRANSModal_Content_1:  '**ETH (Tavallinen Siirto): ** Tämä luo oletusarvoisen siirron osoitteesta toiseen. Siinä on oletus gasina 21000. On todennäköistä että kaikki ETH joka lähetetään tällä tavalla, toistetaan ETC ketjussa.',
+  TRANSModal_Content_2:  '**Vain ETH: ** Tämä lähettää [Timon Rappin toiston suojaus sopimuksen (kuten VB on suositellut) kautta](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) niin että sinä lähetät vain **ETH** ketjussa.',
+  TRANSModal_Content_3:  '**Only ETC: ** Tämä lähettää [Timon Rappin toiston suojaus sopimuksen (kuten VB on suositellut) kautta](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) niin että sinä lähetät vain **ETC** ketjussa. ',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Lähetä ainoastaan käyttäen Tavallista Siirtoa. Jos lähetät käyttäen "Vain" sopimuksia, sinun täytyy olla yhteydessä heidän asiakastukensa henkilöstöön jotta he joko manuaalisesti lisäävät sinun saldosi tai palauttavat rahasi. [Voit kokeilla myös ShapeShiftin "split" työkalua.](https://split.shapeshift.io/)',
+  TRANSModal_Content_5:  '**Kraken & Poloniex:** Ei tunnettuja ongelmia. Käytä mitä vain.',
+  TRANSModal_Yes:        'Siistiä, nyt ymmärrän.',
+  TRANSModal_No:         'Voi ei, olen entistä enemmän hämilläni. Auttakaa minua.',
+
+  /* Offline Transaction */
+  OFFLINE_Title:         'Luo ja Lähetä Offline Siirto',
+  OFFLINE_Desc:          'Offline siirtojen luonti voidaan tehdä kolmella eri vaiheella. Teet vaiheet 1 ja 3 käyttäen verkossa olevaa tietokonetta, ja vaiheen 2 käyttäen offline/airgappattua tietokonetta. Tämä varmistaa ettei sinun yksityinen salausavaimesi ole kosketuksissa internettiin yhdistetyn laitteen kanssa.',
+  OFFLLINE_Step1_Title:  'Vaihe 1: Luo Tiedot (Online Tietokone)',
+  OFFLINE_Step1_Button:  'Luo Tiedot',
+  OFFLINE_Step1_Label_1: 'Osoitteesta: ',
+  OFFLINE_Step1_Label_2: 'Huomautus: Tämä on MISTÄ osoitteesta, ei MIHIN osoitteeseen. Nonce luodaan osoitteesta josta siirto on peräisin. Jos käytetään airgappattua tietokonetta, se olisi kylmä-varasto tilin osoite.',
+  OFFLLINE_Step2_Title:   'Vaihe 2: Luo Siirto (Offline Tietokone)',
+  OFFLINE_Step2_Label_1:  'Osoitteeseen: ',
+  OFFLINE_Step2_Label_2:  'Arvo / Määrä Joka Lähetetään',
+  OFFLINE_Step2_Label_3:  'Gasin hinta ',
+  OFFLINE_Step2_Label_3b: 'Tämä näytettiin kohdassa Vaihe 1 sinun verkkoon yhdistetyssä tietokoneessasi.',
+  OFFLINE_Step2_Label_4:  'Gas Raja ',
+  OFFLINE_Step2_Label_4b: '21000 on oletusarvoinen gas raja. Kun lähetät sopimuksiin tai lisäät tietoa, saattaa tämä määrä joutua olemaan eri. Kaikki käyttämätön gas palautetaan sinulle.',
+  OFFLINE_Step2_Label_5:  'Nonce',
+  OFFLINE_Step2_Label_5b: 'Tämä näytettiin kohdassa Vaihe 1 sinun verkkoon yhdistetyssä tietokoneessasi.',
+  OFFLINE_Step2_Label_6:  'Tiedot',
+  OFFLINE_Step2_Label_6b: 'Tämä on vapaaehtoinen. Tietoja käytetään usein kun varoja lähetetään sopimuksiin.',
+  OFFLINE_Step2_Label_7:  'Syötä / Valitse Yksityinen salausavaimesi / JSON.',
+  OFFLINE_Step3_Title:    'Vaihe 3: Lähetä / Julkaise Siirto (Verkkoon yhdistetty tietokone)',
+  OFFLINE_Step3_Label_1:  'Liitä allekirjoitettu siirto Vaiheesta 2 tähän ja paina "LÄHETÄ SIIRTO" nappia.',
+
+  /* DAO */
+  DAO_Desc:               'Käytä tätä välilehteä muuttaaksesi DAO Tokenisi ETHiksi. Mikäli haluat lähettää DAO:ta, ole hyvä ja käytä Lähetä Tokeneita välilehteä.',
+  DAO_Inst:               'Kyllä. Paina vain isoa punaista nappia. Se on niin helppoa.',
+  DAO_Warning:            'Jos sinulla tulee "Riittämätön saldo gasille" virhe, sinulla täytyy olla pieni määrä ETHiä tililläsi kattaaksesi gasin hinnan. Lisää .01 ETHiä tälle tilille ja koita uudestaan. ',
+  DAOModal_Title:         'Varmistetaan vain...',
+
+  /* Digix */
+  DGD_Desc:               'Lunasta DigixDAO (DGD) tokenisi & merkkisi. Lunastaaksesi, sinun on täytynyt osallistua tokenien myyntiin Maaliskuun 30/31 päivänä, 2016.  Jos haluat lähettää DGDtä, ole hyvä ja käytä Lähetä Tokeneita välilehteä.',
+  DGD_Label_1:            'Arvioitu kulutus maksu:',
+  DGD_Label_2:            'Annettu Maksimi Maksu:',
+  DGD_Label_3:            'Gas Hinta:',
+  DGD_Generate:           'Luo Lunastus',
+  DGD_Content:            'Olet lunastamassa sinun DGD Tokenisi.',
+
+  /* My Wallet */
+  MYWAL_Nick:             'Lompakon Lempinimi',
+  MYWAL_Address:          'Lompakon Osoite',
+  MYWAL_Bal:              'Saldo',
+  MYWAL_Edit:             'Muokkaa',
+  MYWAL_View:             'Katso',
+  MYWAL_Remove:           'Poista',
+  MYWAL_RemoveWal:        'Poista Lompakko:',
+  MYWAL_WatchOnly:        'Sinun Seuraa-Ainoastaan Tilisi',
+  MYWAL_Viewing:          'Viewing Wallet: ',
+  MYWAL_Hide:             'Piilota Lompakon Tiedot',
+  MYWAL_Edit:             'Muokkaa Lompakkoa: ',
+  MYWAL_Name:             'Lompakon Nimi',
+  MYWAL_Content_1:        'Varoitus! Olet poistamassa lompakkoasi.',
+  MYWAL_Content_2:        'Varmista että olet **tallentanut tähän lompakkoon liittyvät yksityisen salausavaimesi/JSON tiedostosi ja salasanasi** ennen kuin poistat sen.',
+  MYWAL_Content_3:        'Jos tahdot käyttää tätä lompakkoa sinun MyEtherWallet CX:si kanssa tulevaisuudessa, sinun täytyy manuaalisesti uudelleen-lisätä se käyttäen yksityistä salausavaintasi/JSONia ja salasanaa.',
+
+  /* View Wallet Details */
+  VIEWWALLET_Subtitle:      'Tämä antaa sinun ladata eri versiota yksityisistä salausavaimistasi ja uudelleen-tulostaa paperi lompakkosi. Saatat tahtoa tehdä tämän [tuodaksesi sinun tilisi Gethiin/Mistiin](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jos haluat tarkistaa saldosi, me suosittelemme käyttämään lohkoketju exploreria kuten [etherscan.io](http://etherscan.io/).',
+  VIEWWALLET_Subtitle_Short: 'Tämä antaa sinun ladata eri versiota yksityisistä salausavaimistasi ja uudelleen-tulostaa paperi lompakkosi. ',
+  VIEWWALLET_SuccessMsg:     'Onnistui! Tässä ovat lompakkosi yksityiskohdat.',
+
+  /* Error Messages */
+  ERROR_1:             'Ole hyvä ja syötä kelpaava summa.',
+  ERROR_2:             'Salasanasi pitää olla vähintään 9 merkkiä pitkä. Ole hyvä ja varmista että käytät vahvaa salasanaa. ',
+  ERROR_3:              'Pahoittelut! Emme tunnista tämänlaista lompakko tiedostoa. ',
+  ERROR_4:              'Tämä ei ole validi lompakko tiedosto. ',
+  ERROR_5:              'Tätä yksikköä ei ole olemassa, ole hyvä ja käytä jotain seuraavista yksiköistä ',
+  ERROR_6:              'Virheellinen osoite. ',
+  ERROR_7:              'Virheellinen salasana. ',
+  ERROR_8:              'Virheellinen summa. ',
+  ERROR_9:              'Virheellinen gas raja. ',
+  ERROR_10:             'Virheellinen tieto arvo. ',
+  ERROR_11:             'Virheellinen gasin määrä. ',
+  ERROR_12:             'Virheellinen nonce. ',
+  ERROR_13:             'Virheellinen allekirjoitettu siirto. ',
+  ERROR_14:             'Lompakko tällä lempinimellä on jo olemassa. ',
+  ERROR_15:             'Lompakkoa ei löytynyt. ',
+  ERROR_16:             'Ei näytä että ehdotusta tällä ID:llä olisi vielä olemassa tai tapahtui virhe ehdotusta luettaessa. ',
+  ERROR_17:             'Lompakko jolla on tämä osoite on jo muistissa. Ole hyvä ja tarkista sinun lompakkosi sivu. ',
+  ERROR_18:             'Sinulla täytyy olla vähintään .001 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. ',
+  ERROR_19:             'Kaikki gas käytettäisiin tässä siirrossa. Tämä tarkoittaa että olet jo äänestänyt tässä ehdotuksessa tai väittely aika on jo päättynyt.',
+  ERROR_20:             'Virheellinen merkki',
+  SUCCESS_1:            'Validi osoite',
+  SUCCESS_2:            'Lompakon salaus onnistuneesti purettu',
+  SUCCESS_3:            'Siirto lähetetty. TX ID: ',
+  SUCCESS_4:            'Lompakkosi lisätty onnistuneesti: ',
+  SUCCESS_5:            'Olet äänestänyt onnistuneesti. Kiitos että olet ollut aktiivinen osanottaja The DAOssa.',
+
+  /* Tranlsation Info */
+  translate_version:    '0.1',
+  Translator_Desc:      'Kiitos kääntäjillemme...',
+  TranlsatorName_1:     'Smokyish',
+  TranlsatorAddr_1:     '0xac9a2c1dd946da64c0dc8e70cec2cfb14304fd4f',
+  /* Translator 1: Insert Comments Here */
+  TranlsatorName_2:     ' ',
+  TranlsatorAddr_2:     ' ',
+  /* Translator 2: Insert Comments Here */
+  TranlsatorName_3:     ' ',
+  TranlsatorAddr_3:     ' ',
+  /* Translator 3: Insert Comments Here */
+  TranlsatorName_4:     ' ',
+  TranlsatorAddr_4:     ' ',
+  /* Translator 4: Insert Comments Here */
+  TranlsatorName_5:     ' ',
+  TranlsatorAddr_5:     ' ',
+  /* Translator 5: Insert Comments Here */
+
+  /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
+  HELP_Warning:       'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
+  HELP_Desc:          'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!',
+  HELP_Remind_Title:  'Some reminders',
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**.',
+  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.',
+  HELP_Remind_Desc_3: 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!',
+
+  HELP_0_Title:        '0) I\'m new. What do I do?',
+  HELP_0_Desc_1:       'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.',
+  HELP_0_Desc_2:       'Create a new wallet.',
+  HELP_0_Desc_3:       'Back the wallet up.',
+  HELP_0_Desc_4:       'Verify you have access to this new wallet and have correctly saved all necessary information.',
+  HELP_0_Desc_5:       'Transfer Ether to this new wallet.',
+
+  HELP_1_Title:        '1) How do I create a new wallet? ',
+  HELP_1_Desc_1:       'Go to the "Generate Wallet" page.',
+  HELP_1_Desc_2:       'Go to the "Add Wallet" page & select "Generate New Wallet"',
+  HELP_1_Desc_3:       'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.',
+  HELP_1_Desc_4:       'Click "GENERATE".',
+  HELP_1_Desc_5:       'Your wallet has now been generated.',
+
+  HELP_2a_Title:       '2a) How do I save/backup my wallet?',
+  HELP_2a_Desc_1:      'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
+  HELP_2a_Desc_2:      'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you.',
+  HELP_2a_Desc_3:      'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:',
+  HELP_2a_Desc_4:      'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.',
+  HELP_2a_Desc_5:      'Print the wallet if you have a printer. Otherwise, write down your private and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
+  HELP_2a_Desc_6:      'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).',
+
+  HELP_2b_Title:       '2b) How do I safely / offline / cold storage with MyEtherWallet?',
+  HELP_2b_Desc_1:      'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_2b_Desc_2:      'Click download zip in the upper right.',
+  HELP_2b_Desc_3:      'Move zip to an airgapped computer.',
+  HELP_2b_Desc_4:      'Unzip it and double-click `index.html`.',
+  HELP_2b_Desc_5:      'Generate a wallet with a strong password.',
+  HELP_2b_Desc_6:      'Save the address. Save versions of the private key. Save the password if you might not remember it forever.',
+  HELP_2b_Desc_7:      'Store these papers / USBs in multiple physically separate locations.',
+  HELP_2b_Desc_8:      'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same.',
+
+  HELP_3_Title:         '3) How do I verify I have access to my new wallet?',
+  HELP_3_Desc_1:        '**Before you send any Ether to your new wallet**, you should ensure you have access to it.',
+  HELP_3_Desc_2:        'Navigate to the "View Wallet Info" page.',
+  HELP_3_Desc_3:        'Navigate to the MyEtherWallet.com "View Wallet Info" page.',
+  HELP_3_Desc_4:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_3_Desc_5:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_3_Desc_6:        'Click the "Unlock Wallet" button.',
+  HELP_3_Desc_7:        'Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
+  HELP_3_Desc_8:        'If you are planning on holding a large amount of ETH, we recommend that send a small amount of ETH from new wallet before depositting a large amount. Send .001 ETH to your new wallet, access that wallet, send that .001 ETH to another address, and ensure everything works smoothly.',
+
+  HELP_4_Title:         '4) How do I send Ether from one wallet to another?',
+  HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
+  HELP_4_Desc_2:        'Navigate to the "Send Ether" page.',
+  HELP_4_Desc_3:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_4_Desc_4:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+  HELP_4_Desc_5:        'Click the "Unlock Wallet" button.',
+  HELP_4_Desc_6:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4_Desc_7:        'Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance.',
+  HELP_4_Desc_8:        'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information.',
+  HELP_4_Desc_9:        'Click "Generate Transaction".',
+  HELP_4_Desc_10:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_4_Desc_11:       'Click the blue "Send Transaction" button below that.',
+  HELP_4_Desc_12:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_4_Desc_13:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+
+  HELP_4CX_Title:       '4) How do I send Ether using MyEtherWallet CX?',
+  HELP_4CX_Desc_1:      'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.',
+  HELP_4CX_Desc_2:      'QuickSend:',
+  HELP_4CX_Desc_3:      'Click the Chrome Extension Icon.',
+  HELP_4CX_Desc_4:      'Click the "QuickSend" button.',
+  HELP_4CX_Desc_5:      'Select the wallet you wish to send from.',
+  HELP_4CX_Desc_6:      'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_4CX_Desc_7:      'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
+  HELP_4CX_Desc_8:      'Click "Send Transaction". ',
+  HELP_4CX_Desc_9:      'Verify the address and the amount you are sending is correct.',
+  HELP_4CX_Desc_10:     'Enter the password for that wallet.',
+  HELP_4CX_Desc_11:     'Click "Send Transaction."',
+  HELP_4CX_Desc_12:     'Using "Send Ether" Page: ',
+
+  HELP_5_Title:         '5) How do I run MyEtherWallet.com offline/locally? ',
+  HELP_5_Desc_1:        'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page.',
+  HELP_5_Desc_2:        'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+  HELP_5_Desc_3:        'Click download zip in the upper right.',
+  HELP_5_Desc_4:        'Move zip to an airgapped computer.',
+  HELP_5_Desc_5:        'Unzip it.',
+  HELP_5_Desc_6:        'Double-Click `index.html`.',
+  HELP_5_Desc_7:        'MyEtherWallet.com is now running entirely on your computer.',
+  HELP_5_Desc_8:        'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.',
+  HELP_5_Desc_9:        'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.',
+
+  HELP_5CX_Title:       '5) How can I install this extension from the repo instead of the Chrome Store? ',
+  HELP_5CX_Desc_1:      'Go to our github and find the most recent Chrome Extension relase: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
+  HELP_5CX_Desc_2:      'Scroll to the very bottom and right click on the latest release. Click "save link as".',
+  HELP_5CX_Desc_3:      'Go to Google Chrome and find you settings (in the menu in the upper right).',
+  HELP_5CX_Desc_4:      'Click "Extensions" on the left.',
+  HELP_5CX_Desc_5:      'Check the "Developer Mode" button at the top of that page.',
+  HELP_5CX_Desc_6:      'Click the "Load unpacked extension..." button.',
+  HELP_5CX_Desc_7:      'Navigate to the now-unzipped folder that you downloaded earlier. Click "select".',
+  HELP_5CX_Desc_8:      'The extension should now show up in your extensions and in your Chrome Extension bar.',
+
+  HELP_6_Title:         '6) How do I split my ETH / ETC? ',
+  HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your account now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original account into two accounts. Moving forward, you need to make sure only ETH goes to your ETH account and only ETC goes to your ETC account.',
+  HELP_6_Desc_2:        'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.',
+  HELP_6_Desc_3:        '[Even more information about wallets and reply attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
+  HELP_6_Desc_4:        'Generate a new clean post-fork ETH address for yourself (to be the final destination of pure ETH).',
+  HELP_6_Desc_5:        'Generate a new clean post-fork ETC address for yourself (to be the final destination of pure ETC).',
+  HELP_6_Desc_6:        'Back up these new wallets and verify you can access them. See #2a and #3 above.',
+  HELP_6_Desc_7:        'Send .1234 ETH to your new "ETH" address using "Only ETH" option on the "Send Ether" page.',
+  HELP_6_Desc_8:        'Send .5678 ETC to your new "ETC" address using "Only ETC" on MyEtherWallet.com',
+  HELP_6_Desc_9:        'Check that only the .1234 ETH moved on etherscan.io. Check that only the .5678 ETC moved on gastracker.io.',
+  HELP_6_Desc_10:       'Send a .0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the .0001 ETH moved.',
+  HELP_6_Desc_11:       ' Generate (but do not send) a .0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
+  HELP_6_Desc_12:       'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the .0002 ETC moved.',
+  HELP_6_Desc_13:       'If everything receives correctly and sends correctly then you are golden.',
+  HELP_6_Desc_14:       'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".',
+  HELP_6_Desc_15:       ' Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. ',
+
+  HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
+  HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token.',
+  HELP_7_Desc_1:        'Navigate to the "Send Token" page.',
+  HELP_7_Desc_2:        'Unlock your wallet.',
+  HELP_7_Desc_3:        'Enter the address you would like to send to in the "To Address:" field.',
+  HELP_7_Desc_4:        'Enter the amount you would like to send.',
+  HELP_7_Desc_5:        'Select which token you would like to send.',
+  HELP_7_Desc_6:        'If you do not see the token listed:',
+  HELP_7_Desc_7:        'Click "Custom".',
+  HELP_7_Desc_8:        'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.',
+  HELP_7_Desc_9:        'Click "Save".',
+  HELP_7_Desc_10:       'You can now send that token as well as see it\'s balance in the sidebar.',
+  HELP_7_Desc_11:       'Click "Generate Transaction".',
+  HELP_7_Desc_12:       'A couple more fields will appear. This is your browser generating the transaction.',
+  HELP_7_Desc_13:       'Click the blue "Send Transaction" button below that.',
+  HELP_7_Desc_14:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+  HELP_7_Desc_15:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain.',
+
+  HELP_8_Title:         '8) What happens if your site goes down?',
+  HELP_8_Desc_1:        'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain.',
+  HELP_8_Desc_2:        'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site.',
+  HELP_8_Desc_3:        'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below.',
+  HELP_8_Desc_4:        'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. ',
+
+  HELP_8CX_Title:        '8) What happens if MyEtherWallet CX disappears?',
+  HELP_8CX_Desc_1:       'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer.',
+  HELP_8CX_Desc_2:       'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.',
+  HELP_8CX_Desc_3:       'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.',
+
+  HELP_9_Title:          '9) Is the "Send Ether" page offline?',
+  HELP_9_Desc_1:         ' No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.',
+
+  HELP_10_Title:         '10) How do I make an offline transaction?',
+  HELP_10_Desc_1:        'Navigate to the "Offline Transaction" page via your online computer.',
+  HELP_10_Desc_2:        'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.',
+  HELP_10_Desc_3:        'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.',
+  HELP_10_Desc_4:        'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_5:        'Enter the "NONCE" as it was displayed to you on your online computer in step #1.',
+  HELP_10_Desc_6:        'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.',
+  HELP_10_Desc_7:        'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.',
+  HELP_10_Desc_8:        'Select your wallet file -or- your private key and unlock your wallet.',
+  HELP_10_Desc_9:        'Press the "GENERATE SIGNED TRANSACTION" button.',
+  HELP_10_Desc_10:       'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
+  HELP_10_Desc_11:       'On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.',
+
+  HELP_11_Title:          '11) How do I send to a contract?',
+  HELP_11_Desc_1:         'Sending to a contract often requires you to include data or additional gas or both',
+  HELP_11_Desc_2:         'Navigate to the "Send Ether" page. ',
+  HELP_11_Desc_3:         'Select your wallet file -or- your private key and unlock your wallet. ',
+  HELP_11_Desc_4:         'Enter a "To Address" and "Amount to Send"',
+  HELP_11_Desc_5:         'Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_12_Title:          '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?',
+  HELP_12_Desc_1:         'Using an Geth/Mist JSON file from MyEtherWallet v2+....',
+  HELP_12_Desc_2:         'Go to the "View Wallet Info" page.',
+  HELP_12_Desc_3:         'Unlock your wallet using your **encrypted** private key or JSON file. ',
+  HELP_12_Desc_4:         'Go to the "My Wallets" page.',
+  HELP_12_Desc_5:         'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. ',
+  HELP_12_Desc_6:         'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.',
+  HELP_12_Desc_7:         'Open the Ethereum Wallet application. ',
+  HELP_12_Desc_8:         'In the menu bar, go "Accounts" -> "Backup" -> "Accounts"',
+  HELP_12_Desc_9:         'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder.',
+  HELP_12_Desc_10:        'Your account should show up immediately under "Accounts."',
+  HELP_12_Desc_11:        'Using your unencrypted private key...',
+  HELP_12_Desc_12:        'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.',
+  HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
+  HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
+  HELP_12_Desc_15:        'If you are on a Mac:',
+  HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
+  HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
+  HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
+  HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
+  HELP_12_Desc_23:        'Open Notepad & paste the private key',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
+
+  HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
+  HELP_13_Desc_1:         'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+  HELP_14_Title:          '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
+  HELP_14_Desc_1:         'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
+
+  HELP_15_Title:          '15) Why hasn\'t the wallet I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
+  HELP_15_Desc_1:         'Addresses will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
+
+  HELP_16_Title:          '16) How do I check the balance of my account? ',
+  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+
+  HELP_17_Title:          '17) Why isn\'t my balance showing up when I unlock my wallet? ',
+  HELP_17_Desc_1:         ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
+
+  HELP_18_Title:          '18) Where is my geth wallet file?',
+
+  HELP_19_Title:          '19) Where is my Mist wallet file? ',
+  HELP_19_Desc_1:         'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.',
+
+  HELP_20_Title:          '20) Where is my pre-sale wallet file?',
+  HELP_20_Desc_1:         'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.',
+
+  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
+  HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
+  HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
+  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ETH is the least of everyone’s problems.',
+  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ETH from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
+  HELP_21_Desc_5:         'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.',
+  HELP_21_Desc_6:         'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
+  HELP_21_Desc_7:         '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',
+  HELP_21_Desc_8:         'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.',
+
+  HELP_SecCX_Title:       'Security - MyEtherWallet CX ',
+  HELP_SecCX_Desc_1:      'Where is this extension saving my information?',
+  HELP_SecCX_Desc_2:      'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.',
+  HELP_SecCX_Desc_3:      'What information is saved? ',
+  HELP_SecCX_Desc_4:      'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.',
+  HELP_SecCX_Desc_5:      'Why aren\'t the nickname and wallet address encrypted? ',
+  HELP_SecCX_Desc_6:      'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.',
+
+  HELP_Sec_Title:         'Security',
+  HELP_Sec_Desc_1:        'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. ',
+  HELP_Sec_Desc_2:        'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.',
+  HELP_Sec_Desc_3:        'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.',
+  HELP_Sec_Desc_4:        'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.',
+  HELP_Sec_Desc_5:        'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.',
+  HELP_Sec_Desc_6:        'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.',
+  HELP_Sec_Desc_7:        'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.',
+  HELP_Sec_Desc_8:        'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
+
+  HELP_FAQ_Title:         'More Helpful Answers to Frequent Questions',
+  HELP_Contact_Title:     'Ways to Get in Touch'
+};
+
+module.exports = fi;
+
+},{}],43:[function(require,module,exports){
 // French
 'use strict';
 var fr = function() {}
@@ -6812,15 +7326,15 @@ fr.data = {
   SUCCESS_6:            'Fichier sélectionné : ',
 
   /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
+  GETH_InvalidSender:      'Expéditeur invalide',
+  GETH_Nonce:              'Nonce trop bas',
+  GETH_Cheap:              'Prix du gaz trop bas pour être accepté',
+  GETH_Balance:            'Solde insuffisant',
+  GETH_NonExistentAccount: 'Compte inexistant ou solde du compte trop bas',
+  GETH_InsufficientFunds:  'Fonds insuffisants pour gaz * prix + valeur',
+  GETH_IntrinsicGas:       'Gaz intrinsèque trop bas',
+  GETH_GasLimit:           'Limite en gaz dépassée',
+  GETH_NegativeValue:      'Valeur négative',
 
   /* Tranlsation Info */
   translate_version:    '0.3',
@@ -6942,164 +7456,165 @@ fr.data = {
   HELP_5CX_Desc_7:      'Naviguez vers le dossier que vous avez téléchargé et dézippé auparavant. Cliquez sur "Sélectionner".',
   HELP_5CX_Desc_8:      'L\'extension doit maintenant apparaître dans vos extensions et dans la barre des extensions de Chrome.',
 
-  HELP_6_Title:         '6) How do I split my ETH / ETC? ',
-  HELP_6_Desc_1:        'When the hard fork happened, any ETH you had in your wallet now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original wallet into two wallets. Moving forward, you need to make sure only ETH goes to your ETH wallet and only ETC goes to your ETC wallet.',
-  HELP_6_Desc_2:        'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.',
-  HELP_6_Desc_3:        '[Even more information about wallets and reply attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
-  HELP_6_Desc_4:        'Generate a new clean post-fork ETH wallet for yourself (to be the final destination of pure ETH).',
-  HELP_6_Desc_5:        'Generate a new clean post-fork ETC wallet for yourself (to be the final destination of pure ETC).',
-  HELP_6_Desc_6:        'Back up these new wallets and verify you can access them. See #2a and #3 above.',
-  HELP_6_Desc_7:        'Send 0.1234 ETH to your new "ETH" wallet using "Only ETH" option on the "Send Ether" page.',
-  HELP_6_Desc_8:        'Send 0.5678 ETC to your new "ETC" wallet using "Only ETC" option on the "Send Ether" page.',
-  HELP_6_Desc_9:        'Check that only the 0.1234 ETH moved on etherscan.io. Check that only the 0.5678 ETC moved on gastracker.io.',
-  HELP_6_Desc_10:       'Send a 0.0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the 0.0001 ETH moved.',
-  HELP_6_Desc_11:       'Generate (but do not send) a 0.0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
-  HELP_6_Desc_12:       'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the 0.0002 ETC moved.',
-  HELP_6_Desc_13:       'If everything receives correctly and sends correctly then you are golden.',
-  HELP_6_Desc_14:       'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".',
-  HELP_6_Desc_15:       'Moving forward, you can use the standard transactions for these new wallets without risk of replay attacks. ',
+  HELP_6_Title:         '6) Comment puis-je séparer mes ETH / ETC ? ',
+  HELP_6_Desc_1:        'Quand le hard fork s\'est produit, à tout ETH que vous possédiez dans votre portefeuille correspond maintenant un montant égal en ETC. Si vous envoyez des ETH par une transaction standard, cela enverra également des ETC et, pour l\'empêcher, il vous faut maintenant "séparer" votre portefeuille d\'origine en deux en vous assurant que seul du ETH va dans le portefeuille ETH et seul du ETC va dans le portefeuille ETC.',
+  HELP_6_Desc_2:        'Vous pouvez également envoyer tout votre ETH et ETC par une transaction standard vers Kraken ou Poloniex. Ces *exchanges* vont automatiquement séparer vos ETH et ETC. Vous pouvez alors déplacer ces fonds vers de nouveaux portefeuilles ou vendre vos ETH ou vos ETC.',
+  HELP_6_Desc_3:        '[Vous trouverez plus d\'informations sur les portefeuilles et les attaques par réexécution ici](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
+  HELP_6_Desc_4:        'Générer un nouveau portefeuille ETH post-fork vierge pour vous-même (destination finale du pur ETH).',
+  HELP_6_Desc_5:        'Générer un nouveau portefeuille ETC post-fork vierge pour vous-même (destination finale du pur ETC).',
+  HELP_6_Desc_6:        'Sauvegardez ces nouveaux portefeuilles et vérifiez que vous pouvez y accéder. Voir #2a et #3 ci-dessus.',
+  HELP_6_Desc_7:        'Envoyez 0.1234 ETH à votre nouveau portefeuille ETH en utilisant l\'option "ETH seulement" sur la page "Envoi d\'Ether".',
+  HELP_6_Desc_8:        'Envoyez 0.5678 ETC à votre nouveau portefeuille ETC en utilisant l\'option "ETC seulement" sur la page "Envoi d\'Ether".',
+  HELP_6_Desc_9:        'Vérifiez que seuls les 0.1234 ETH ont bougé sur etherscan.io. Vérifiez que seuls les 0.5678 ETC ont bougé sur gastracker.io.',
+  HELP_6_Desc_10:       'Envoyez une transaction de 0.0001 ETH depuis votre nouveau portefeuille ETH. Vérifiez sur etherscan.io. Assurez-vous que les 0.0001 ETH ont bougé.',
+  HELP_6_Desc_11:       'Générez (mais n\'envoyez pas) une transaction de 0.0002 ETC depuis votre nouveau portefeuille ETC. Copiez le champ "Transaction signée". ',
+  HELP_6_Desc_12:       'Allez sur [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) et copiez cette transaction ETC dans l\'onglet hors ligne de classicetherwallet.com tout en bas et envoyez-la. Vérifiez sur gastracker.io. Assurez-vous que les 0.0002 ETC ont bougé.',
+  HELP_6_Desc_13:       'Si tout est correctement reçu et envoyé, vous avez gagné.',
+  HELP_6_Desc_14:       'Envoyez le reste du solde ETH par l\'option "ETH seulement" et répétez l\'opération pour le solde ETC par l\'option "ETC seulement".',
+  HELP_6_Desc_15:       'Par la suite, vous pourrez utiliser les transactions standard pour ces portefeuilles sans risque d\'attaque par réexécution.',
 
-  HELP_7_Title:         '7) How do I send Tokens & add custom tokens?',
-  HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token.',
-  HELP_7_Desc_1:        'Navigate to the "Send Token" page.',
-  HELP_7_Desc_2:        'Unlock your wallet.',
-  HELP_7_Desc_3:        'Enter the address you would like to send to in the "To Address:" field.',
-  HELP_7_Desc_4:        'Enter the amount you would like to send.',
-  HELP_7_Desc_5:        'Select which token you would like to send.',
-  HELP_7_Desc_6:        'If you do not see the token listed:',
-  HELP_7_Desc_7:        'Click "Custom".',
-  HELP_7_Desc_8:        'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.',
-  HELP_7_Desc_9:        'Click "Save".',
-  HELP_7_Desc_10:       'You can now send that token as well as see it\'s balance in the sidebar.',
-  HELP_7_Desc_11:       'Click "Generate Transaction".',
-  HELP_7_Desc_12:       'A couple more fields will appear. This is your browser generating the transaction.',
-  HELP_7_Desc_13:       'Click the blue "Send Transaction" button below that.',
-  HELP_7_Desc_14:       'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
-  HELP_7_Desc_15:       'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain.',
 
-  HELP_8_Title:         '8) What happens if your site goes down?',
-  HELP_8_Desc_1:        'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain.',
-  HELP_8_Desc_2:        'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site.',
-  HELP_8_Desc_3:        'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below.',
-  HELP_8_Desc_4:        'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. ',
+  HELP_7_Title:         '7) Comment puis-je envoyer des tokens et ajouter des tokens spécifiques ?',
+  HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) est un excellent moyen d\'explorer les tokens et de trouver les décimales d\'un token.',
+  HELP_7_Desc_1:        'Naviguez vers la page "Envoi de tokens".',
+  HELP_7_Desc_2:        'Déverrouillez votre portefeuille.',
+  HELP_7_Desc_3:        'Entre l\'adresse à laquelle vous désirez faire l\'envoi dans le champ "Adresse de destination".',
+  HELP_7_Desc_4:        'Entrez le montant que vous désirez envoyer.',
+  HELP_7_Desc_5:        'Sélectionnez le token que vous désirez envoyer.',
+  HELP_7_Desc_6:        'Si celui-ci n\'est pas listé :',
+  HELP_7_Desc_7:        'Cliquez sur "Spécifique".',
+  HELP_7_Desc_8:        'Entrez l\'adresse, le nom et les décimales du token. Ces informations sont fournies par les développeurs du token et sont également nécessaires quand vous faites "Add a Watch Token" dans Mist.',
+  HELP_7_Desc_9:        'Cliquez sur "Sauver".',
+  HELP_7_Desc_10:       'Vous pouvez maintenant envoyer ces tokens ainsi qu\'en voir le solde dans la zone sur le côté.',
+  HELP_7_Desc_11:       'Cliquez sur "Générer la transaction".',
+  HELP_7_Desc_12:       'Quelques champs supplémentaires vont apparaître : votre navigateur est en train de générer la transaction.',
+  HELP_7_Desc_13:       'Cliquez sur le bouton bleu "Envoyer la transation" au dessous.',
+  HELP_7_Desc_14:       'Une fenêtre pop-up va apparaître. Vérifiez que le montant et que l\'adresse de destination sont corrects puis cliquez sur le bouton "Oui, j\'en suis sûr ! Effectuer la transaction."',
+  HELP_7_Desc_15:       'La transaction est alors soumise et l\'identifiant de transaction est affiché. Vous pouvez cliquer dessus pour le voir sur la blockchain.',
 
-  HELP_8CX_Title:        '8) What happens if MyEtherWallet CX disappears?',
-  HELP_8CX_Desc_1:       'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer.',
-  HELP_8CX_Desc_2:       'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.',
-  HELP_8CX_Desc_3:       'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.',
+  HELP_8_Title:         '8) Que se passe-t-il si votre site tombe ?',
+  HELP_8_Desc_1:        'MyEtherWallet n\'est pas un portefeuille sur le web. Vous n\'avez pas de login et rien n\'est jamais stocké sur nos serveurs. Ce n\'est qu\'une interface qui vous permet d\'interagir avec la blockchain.',
+  HELP_8_Desc_2:        'Si MyEtherWallet.com tombe, vous devrez trouver un autre moyen (comme geth ou Ethereum Wallet / Mist) pour faire la même chose. Mais vous n\'aurez pas à "récupérer" votre Ether depuis MyEtherWallet parce qu\'il ne se trouve pas dans MyEtherWallet. Il est chez vous, dans le portefeuille que vous avez généré par notre site.',
+  HELP_8_Desc_3:        'Vous pouvez maintenant importer facilement votre clef privée non chiffrée et vos fichiers (chiffrés) au format Geth/Mist, directement dans geth / Ethereum Wallet / Mist. Voir question #12 ci-dessous.',
+  HELP_8_Desc_4:        'De plus, la probabilité que nous laissions tomber MyEtherWallet approche zéro. Il ne nous coûte presque rien de le maintenir comme nous n\'y stockons aucune information. Si le domaine venait à être perdu, le logiciel sera toujours disponible publiquement sur [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). Vous pourrez y télécharger le ZIP et le faire tourner localement. ',
 
-  HELP_9_Title:          '9) Is the "Send Ether" page offline?',
-  HELP_9_Desc_1:         ' No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.',
+  HELP_8CX_Title:        '8) Que se passe-t-il si MyEtherWallet CX disparaît ?',
+  HELP_8CX_Desc_1:       'D\'abord, toutes les données sont sauvegardées sur votre ordinateur et non sur nos serveurs. Cela peut paraître étonnant mais, quand vous regardez sur l\'extension Chrome, ce que vous voyez *ne se trouve pas* sur nos serveurs ; tout est stocké sur votre propre ordinateur.',
+  HELP_8CX_Desc_2:       'Cela dit, il est **très important** que vous sauvegardiez toutes les données de tous les portefeuilles générés par MyEtherWallet CX. De cette manière, si quoi que ce soit arrivait à MyEtherWallet CX ou à votre ordinateur, vous conserveriez toutes les informations nécessaires pour accéder à votre Ether. Voir #2a pour la sauvegarde de vos portefeuilles.',
+  HELP_8CX_Desc_3:       'Si, pour une raison quelconque, MyEtherWallet CX disparaissait du Chrome Store, vous pourrez en trouver le source sur Github et le charger manuellement. Voir #5 ci-dessus.',
 
-  HELP_10_Title:         '10) How do I make an offline transaction?',
-  HELP_10_Desc_1:        'Navigate to the "Offline Transaction" page via your online computer.',
-  HELP_10_Desc_2:        'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.',
-  HELP_10_Desc_3:        'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.',
-  HELP_10_Desc_4:        'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.',
-  HELP_10_Desc_5:        'Enter the "NONCE" as it was displayed to you on your online computer in step #1.',
-  HELP_10_Desc_6:        'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.',
-  HELP_10_Desc_7:        'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.',
-  HELP_10_Desc_8:        'Select your wallet file -or- your private key and unlock your wallet.',
-  HELP_10_Desc_9:        'Press the "GENERATE SIGNED TRANSACTION" button.',
-  HELP_10_Desc_10:       'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
-  HELP_10_Desc_11:       'On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.',
+  HELP_9_Title:          '9) La page "Envoi d\'Ether" est-elle hors ligne ?',
+  HELP_9_Desc_1:         'Non, la page d\'envoi de transaction n\'est pas hors ligne. Elle a besoin de l\'internet pour obtenir le prix actuel du gaz, le nonce de votre compte et pour émettre la transaction (c\'est-à-dire "envoyer"). Cependant, elle n\'envoie que la transaction signée. Votre clef privée reste en sécurité chez vous. Nous fournissons maintenant aussi une page "Transaction hors ligne" pour vous permettre de conserver en permanence vos clefs privées sur une machine hors ligne.',
 
-  HELP_11_Title:          '11) How do I send to a contract?',
-  HELP_11_Desc_1:         'Sending to a contract often requires you to include data or additional gas or both',
-  HELP_11_Desc_2:         'Navigate to the "Send Ether" page. ',
-  HELP_11_Desc_3:         'Select your wallet file -or- your private key and unlock your wallet. ',
-  HELP_11_Desc_4:         'Enter a "To Address" and "Amount to Send"',
-  HELP_11_Desc_5:         'Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+  HELP_10_Title:         '10) Comment puis-je faire une transaction hors ligne ?',
+  HELP_10_Desc_1:        'Allez à la page "Transaction hors ligne" avec votre ordinateur en ligne.',
+  HELP_10_Desc_2:        'Entrez l\'"Adresse d\'émission". Attention, c\'est l\'adresse *d\'où* vous envoyez et non celle *vers* laquelle vous envoyez. Ceci va générer ke nonce et le prix du gaz.',
+  HELP_10_Desc_3:        'Allez sur votre ordinateur hors ligne. Entrez l\'"Adresse de destination" et le "Montant" que vous désirez envoyer.',
+  HELP_10_Desc_4:        'Entrez le "Prix du gaz" tel qu\'il vous a été affiché sur l\'ordinateur en ligne à la première étape.',
+  HELP_10_Desc_5:        'Entrez le "Nonce" tel qu\'il vous a été affiché sur l\'ordinateur en ligne à la première étape.',
+  HELP_10_Desc_6:        'La "Limite en gaz" a une valeur de 21000 par défaut. Ceci couvre les frais d\'une transaction standard. Si vous envoyez à un contrat ou si vous embarquez des données supplémentaires avec votre transaction vous devrez augmenter la limite de gaz. Tout gaz non consommé vous sera retourné.',
+  HELP_10_Desc_7:        'Si vous le désirez, entrez des données. Dans ce cas, vous devrez inclure plus que la limite de 21000 par défaut? Toutes les données sont au format hexadécimal.',
+  HELP_10_Desc_8:        'Sélectionnez le fichier de votre portefeuille -ou- votre clef privée et déverrouillez votre portefeuille.',
+  HELP_10_Desc_9:        'Cliquez sur le bouton "Générer la transaction signée".',
+  HELP_10_Desc_10:       'Le champ de données sous ce bouton se remplit avec votre transaction signée. Copiez-la et revenez avec elle sur votre ordinateur en ligne. ',
+  HELP_10_Desc_11:       'Sur votre ordinateur en ligne, collez la transaction signée dans le champ texte et cliquez sur "Envoyez l\'Ether". Ceci émettra votre transaction.',
 
-  HELP_12_Title:          '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?',
-  HELP_12_Desc_1:         'Using an Geth/Mist JSON file from MyEtherWallet v2+....',
-  HELP_12_Desc_2:         'Go to the "View Wallet Info" page.',
-  HELP_12_Desc_3:         'Unlock your wallet using your **encrypted** private key or JSON file. ',
-  HELP_12_Desc_4:         'Go to the "My Wallets" page.',
-  HELP_12_Desc_5:         'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. ',
-  HELP_12_Desc_6:         'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.',
-  HELP_12_Desc_7:         'Open the Ethereum Wallet application. ',
-  HELP_12_Desc_8:         'In the menu bar, go "Accounts" -> "Backup" -> "Accounts"',
-  HELP_12_Desc_9:         'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder.',
-  HELP_12_Desc_10:        'Your account should show up immediately under "Accounts."',
-  HELP_12_Desc_11:        'Using your unencrypted private key...',
-  HELP_12_Desc_12:        'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.',
-  HELP_12_Desc_13:        'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
-  HELP_12_Desc_14:        'Copy Your Private Key (unencrypted).',
-  HELP_12_Desc_15:        'If you are on a Mac:',
-  HELP_12_Desc_15b:       'Si vous êtes sur un PC :',
-  HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
-  HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
-  HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
-  HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
-  HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
-  HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
-  HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
-  HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
+  HELP_11_Title:          '11) Comment puis-je envoyer à un contrat ?',
+  HELP_11_Desc_1:         'L\'envoi à un contrat vous impose souvent d\'inclure des données ou du gaz supplémentaire, ou les deux.',
+  HELP_11_Desc_2:         'Allez à la page "Envoi d\'Ether". ',
+  HELP_11_Desc_3:         'Sélectionnez le fichier de votre portefeuille -ou- votre clef privée et déverrouillez votre portefeuille. ',
+  HELP_11_Desc_4:         'Entrez une "Adresse de destination" et un "Montant à envoyer".',
+  HELP_11_Desc_5:         'Cliquez sur le bouton "+Avancé : Ajouter du gaz ou des données supplémentaires" sous le champ du montant. Ceci affiche deux champs additionnels que vous pouvez utiliser pour augmenter le gaz au dessus de la valeur par défaut de 21000 ainsi que d\'ajouter des données à votre transaction.',
 
-  HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
-  HELP_13_Desc_1:         'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+  HELP_12_Title:          '12) Comment puis-je importer un portefeuille créé par MyEtherWallet dans geth / Ethereum Wallet / Mist ?',
+  HELP_12_Desc_1:         'Avec un fichier Geth/Mist JSON de MyEtherWallet v2+....',
+  HELP_12_Desc_2:         'Allez à la page "Visualisation d\'un portefeuille".',
+  HELP_12_Desc_3:         'Déverrouillez votre portefeuille avec votre clef privée **chiffrée** ou votre fichier JSON. ',
+  HELP_12_Desc_4:         'Allez à la page "Mes portefeuilles".',
+  HELP_12_Desc_5:         'Sélectionnez le portefeuille que vous désirez importer dans Mist, cliquez sur l\'icône "View", entrez votre mot de passe et accédez à votre portefeuille. ',
+  HELP_12_Desc_6:         'Allez à la section "Téléchargez le fichier JSON file - Format Geth/Mist (chiffé)". Cliquez sur le bouton "Télécharger" en dessous. Vous avez maintenant votre fichier *keystore.* ',
+  HELP_12_Desc_7:         'Ouvrez l\'application Ethereum Wallet. ',
+  HELP_12_Desc_8:         'Dans la barre de menu, allez sur "Accounts" -> "Backup" -> "Accounts"',
+  HELP_12_Desc_9:         'Ceci ouvre votre dossier de keystores. Copiez-y le fichier que vous venez de télécharger (`UTC--2016-04-14......../`) dans ce dossier.',
+  HELP_12_Desc_10:        'Votre compte doit apparaître immédiatement sous "Accounts."',
+  HELP_12_Desc_11:        'Avec votre clef privée non chiffrée...',
+  HELP_12_Desc_12:        'Si vous n\'avez pas déjà votre clef privée non chiffrée, allez à la page "Visualisation d\'un portefeuille".',
+  HELP_12_Desc_13:        'Sélectionnez le fichier de votre portefeuille -ou- entrez/collez votre clef privée pour déverrouiller votre portefeuille.',
+  HELP_12_Desc_14:        'Copiez votre clef privée (non chiffrée).',
+  HELP_12_Desc_15:        'Si vous êtes sur un Mac :',
+  HELP_12_Desc_15b:       'Si vous êtes sur un PC :',    // Strange, already in French, not found in de.js
+  HELP_12_Desc_16:        'Ouvez Text Edit et collez cette clef privée.',
+  HELP_12_Desc_17:        'Dans la barre de menu, cliquez sur "Format" -> "Make Plain Text".',
+  HELP_12_Desc_18:        'Sauvegardez ce fichier vers votre `Desktop/` en tant que `nothing_special_delete_me.txt`. Assurez-vous qu\'il précise "UTF-8" et "If no extension is provided use .txt" dans le dialogue de sauvegarde.',
+  HELP_12_Desc_19:        'Ouvrez un terminal et lancez la commande suivante : `geth account import ~/Desktop/nothing_special_delete_me.txt`',
+  HELP_12_Desc_20:        'Ceci vous invitera à choisir un nouveau mot de passe. C\'est celui que vous utiliserez dans geth / Ethereum Wallet / Mist à chaque vois que vos enverrez une transaction, donc ne l\'oubliez pas. ',
+  HELP_12_Desc_21:        'Après que l\'import a réussi, supprimez `nothing_special_delete_me.txt`',
+  HELP_12_Desc_22:        'La prochaine fois que vous ouvrirez l\'application Ethereum Wallet, votre compte sera listé sous "Accounts".',
+  HELP_12_Desc_23:        'Ouvrez Notepad et collez-y la clef privée',
+  HELP_12_Desc_24:        'Sauvegardez le fichier en tant que `nothing_special_delete_me.txt` sur `C:`',
+  HELP_12_Desc_25:        'Lancez la commande `geth account import C:\\nothing_special_delete_me.txt`',
+  HELP_12_Desc_26:        'Ceci vous invitera à choisir un nouveau mot de passe. C\'est celui que vous utiliserz dans geth / Ethereum Wallet / Mist à chaque foiq que vous enverrez une transaction donc ne l\'oubliez pas.',
+  HELP_12_Desc_27:        'Après que l\'import a réussi, supprimez `nothing_special_delete_me.txt`',
+  HELP_12_Desc_28:        'La prochaine fois que vous ouvrirez l\'application Ethereum Wallet, votre compte sera listé sous "Accounts".',
 
-  HELP_14_Title:          '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
-  HELP_14_Desc_1:         'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
+  HELP_13_Title:          '13) Que signigie "Limite de gaz trop basse" ?',
+  HELP_13_Desc_1:         'Il est très probable que vous essayiez d\'envoyer de l\'Ether à un contrat, ce qui implique un peu plus de données et donc un peu plus de gaz. Sur la page "Envoi d\'Ether", cliquez sur le bouton "+Advancé : Ajouter du gaz ou des données supplémentaire" sous le champ du montant. Ceci fera afficher deux champs additionnels que vous pouvez utiliser pour augmenter le gaz au-dessus de sa valeur par défaut de 21000, ou pour ajouter des données à votre transaction.',
 
-  HELP_15_Title:          '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
-  HELP_15_Desc_1:         'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
+  HELP_14_Title:          '14) Certains sites randomisent (initialisent) la génération de clef privée par les mouvements de la sours. Ce n\'est pas le cas de MyEtherWallet.com. La génération de nombres aléatoires de MyEtherWallet est-elle sûre ?',
+  HELP_14_Desc_1:         'Bien que l\'interception des mouvement de la souris soit jugée attractive par beaucoup, et que nous en comprenions les raisons, la réalité est que window.crypto assure plus d\'entropie que les mouvements de votre souris. L\'utilisation de ces mouvements est sûre mais nous (ainsi que de nombreux projets crypto) avons de bonnes raisons de croire en window.crypto. De plus, MyEtherWallet.com peut être utilisé sur des périphériques tactiles. Voici une [conversation entre un redditor rageur et Vitalik Buterin sur les mouvements de souris et window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) et voici [les spécifications w3 de window.crypto](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
 
-  HELP_16_Title:          '16) How do I check the balance of my account? ',
-  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+  HELP_15_Title:          '15) Pourquoi le compte que je viens de créer n\'apparaît-il pas dans l\'explorateur de blockchain ? (i.e. : etherchain, etherscan)',
+  HELP_15_Desc_1:         'Les comptes n\'apparaissent dans un explorateur de blockchain qu\'après une activité y ait eu lieu comme, par exemple, quand on y a transféré de l\'Ether.',
 
-  HELP_17_Title:          '17) Why isn\'t my balance showing up when I unlock my wallet? ',
-  HELP_17_Desc_1:         ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
+  HELP_16_Title:          '16) Comment puis-je vérifier le solde de mon compte ? ',
+  HELP_16_Desc_1:         'Vous pouvez utiliser un explorateur de blockchain comme [etherscan.io](http://etherscan.io/). Collez votre adresse dans la barre de recherche et cela récupérera votre solde et l\'historique de vos transactions. Par exemple, voici ce que montre notre [compte de donations](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) sur etherscan.io',
 
-  HELP_18_Title:          '18) Where is my geth wallet file?',
+  HELP_17_Title:          '17) Pourquoi mon solde n\'apparaît-il pas quand je déverrouille mon portefeuille ? ',
+  HELP_17_Desc_1:         ' C\'est probablement dû au fait que vous vous trouvez derrière un firewall. L\'API que nous utilisons pour obtenir le solde et converir celui-ci est souvent bloquée par des firewalls pour des raisons diverses. Vous êtes toujours capable d\'envoyer des transactions mais il vous faut employer une autre méthode pour voir le solde, comme etherscan.io',
 
-  HELP_19_Title:          '19) Where is my Mist wallet file? ',
-  HELP_19_Desc_1:         'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.',
+  HELP_18_Title:          '18) Où est le fichier de mon portefeuille geth ?',
 
-  HELP_20_Title:          '20) Where is my pre-sale wallet file?',
-  HELP_20_Desc_1:         'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.',
+  HELP_19_Title:          '19) Où est le fichier de mon portefeuille Mist ? ',
+  HELP_19_Desc_1:         'Les fichiers Mist se trouvent généralement aux endroits ci-dessus mais il est beaucoup plus facile d\'ouvrir Mist, de sélectionner "Accounts" dans la barre du haut, puis "Backup" et "Accounts". Cela ouvre le dossier où vos fichiers sont stockés.',
 
-  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
-  HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
-  HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
-  HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems.',
-  HELP_21_Desc_4:         'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
-  HELP_21_Desc_5:         'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.',
-  HELP_21_Desc_6:         'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
-  HELP_21_Desc_7:         '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',
-  HELP_21_Desc_8:         'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.',
+  HELP_20_Title:          '20) Où est le fichier de mon portefeuille de *pre-sale* (pré-vente) ?',
+  HELP_20_Desc_1:         'Là où vous l\'avez mis. ;) Il vous a aussi été envoyé donc allez vérifier vos mails. Cherchez le fichier appelé `"ethereum_wallet_backup.json"` et choisissez ce fichier. Il est chiffré avec un mot de passe que vous avez créé pendant l\'achat au moment de la pré-vente.',
 
-  HELP_SecCX_Title:       'Security - MyEtherWallet CX ',
-  HELP_SecCX_Desc_1:      'Where is this extension saving my information?',
-  HELP_SecCX_Desc_2:      'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.',
-  HELP_SecCX_Desc_3:      'What information is saved? ',
-  HELP_SecCX_Desc_4:      'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.',
-  HELP_SecCX_Desc_5:      'Why aren\'t the nickname and wallet address encrypted? ',
-  HELP_SecCX_Desc_6:      'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.',
+  HELP_21_Title:          '21) N\'importe qui ne peut-il pas prendre une clef privée au hasard, chercher un solde et l\'envoyer à sa propre adresse ? ',
+  HELP_21_Desc_1:         'Version courte : oui, mais trouver un compte avec un solde prendrait plus longtemps que la durée de l\'univers... donc... non.',
+  HELP_21_Desc_2:         'Version longue : Ethereum est basé sur la [cryptographie à clef publique](https://en.wikipedia.org/wiki/Public-key_cryptography), plus précisément la [cryptographie des courbes elliptiques (ECC)](https://eprint.iacr.org/2013/734.pdf) qui est très couramment employée, pas uniquement dans Ethereum. La plupart des serveurs sont protégés par les ECC. Bitcoin les emploie ainsi que SSH, TLS et bien d\'autres protocoles. Dans le cas spécifique d\'Ethereum, les clefs font 256 bits et sont plus fortes que celles en 128 et 192 bits, encore très employées et toujours considérées comme sûres par les experts.',
+  HELP_21_Desc_3:         'Vous avez une clef privée et une clef publique. La clef privée peut servir à dériver la clef publique mais l\'inverse est impossible. Le fait que l\'internet et le monde entier utilise ce système cryptographique signifie que, s\'il existait un moyen de dériver la clef privée de la clef publique, le risque que courrait votre Ether serait le moindre des problèmes de tout le monde.',
+  HELP_21_Desc_4:         'Cela dit, OUI : si quelqu\'un possède votre clef privée, il peut envoyer de l\'Ether depuis votre compte, de même que si une personne a le mot de passe de votre email, elle peut lire des mails ou en envoyer, ou si c\'est le mot de passe de votre compte en banque, elle peut faire des virements. Vous pouvez télécharger la versoin KEystore de votre clef privée qui est la clef privée chiffrée avec un mot de passe. Cela ressemble à avoir un mot de passe protégé par un autre mot de passe.',
+  HELP_21_Desc_5:         'Et OUI, en théorie, on peut taper une chaîne de 64 caractères hexadécimaux jusqu\'à en trouver un qui correspond. Il est d\'ailleurs possible d\'écrire un programme qui vérifie très rapidement des clefs privée aléatoires. C\'est ce que l\'on appelle utiliser la "brute force" ou miner des clefs privées. Beaucoup de monde y a pensé très fort et très longtemps. Quelques serveurs haut de gamme peuvent vérifier plus de 1 million de clefs par seconde. Pourtant, même ce chiffre ne donnerait pas accès à un compte suffisamment approvisionné pour en valoir la chandelle ; il est bien plus probable que vous, vos enfant et vos petits-enfants mourront avant d\'obtenir une correspondance.',
+  HELP_21_Desc_6:         'Si vous connaissez un peu Bitcoin, [ceci remettra les choses en perspective :](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *Pour illustrer l\'improbabilité de tout ceci : supposons quqe chaque satoshi de chaque bitcoin qui sera jamais produit soit affecté à sa propre clef privée distincte.  La probabilité que, parmi ces clefs, s\'en trouvent deux qui correspondent à la même adresse serait d\'environ 1 sur 100 quintillons. ',
+  HELP_21_Desc_7:         '[Si vous voulez un argumentaire un peu plus technique :](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *Ces nombres n\'ont rien à voir avec la technologie des systèmes ; ce sont les maximums autorisés par la thermodynamique. Et ils impliquent clairement qu\'une attaque par brute force contre des clefs de 256 bits restera impossible jusqu\'à ce que l\'on construise des ordinateurs avec autre chose que de la matière et qu\'ils occupent autre chose que l\'espace.',
+  HELP_21_Desc_8:         'Cela suppose bien entendu que les clefs sont générées d\'une manière totalement aléatoire avec suffisamment d\'entropie. C\'est le cas des clefs générées ici, tout comme celles de Jaxx et de Mist/geth. Les portefeuilles Ethereum sont tous assez bons de ce point de vue. Les clefs générées par des cerveaux humains ne le sont pas, car ces derniers ne sont pas capables de partir d\'un nombre parfaitement aléatoire. Il y a eu des cas d\'autres problèmes d\'entropie insuffisante ou de nombres imparfaitement aléatoires dans le monde de Bitcoin mais il s\'agit là d\'un tout autre problème qui peut attendre un peu.',
 
-  HELP_Sec_Title:         'Security',
-  HELP_Sec_Desc_1:        'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. ',
-  HELP_Sec_Desc_2:        'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.',
-  HELP_Sec_Desc_3:        'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.',
-  HELP_Sec_Desc_4:        'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.',
-  HELP_Sec_Desc_5:        'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.',
-  HELP_Sec_Desc_6:        'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.',
-  HELP_Sec_Desc_7:        'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.',
-  HELP_Sec_Desc_8:        'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
+  HELP_SecCX_Title:       'Securité - MyEtherWallet CX ',
+  HELP_SecCX_Desc_1:      'Où cette extension sauve-t-elle mes informations ?',
+  HELP_SecCX_Desc_2:      'Les informations stockées dans cette extension sont sauvegardée via [chrome.storage](http://chrome.storage/), c\'est à dire au même endroit que vos mots de passe dans Chrome.',
+  HELP_SecCX_Desc_3:      'Quelles informations sont sauvegardées ? ',
+  HELP_SecCX_Desc_4:      'L\'adresse, le surnom, la clef privée sont stockés dans chrome.storage. La clef privée est chiffrée par le mot de passe défini à l\'ajout du portefeuille. Le surnom et l\'adresse du portefeuille ne sont pas chiffrés.',
+  HELP_SecCX_Desc_5:      'Pourquoi le surnom et l\'adresse du portefeuille ne sont-ils pas chiffrés ? ',
+  HELP_SecCX_Desc_6:      'Si nous devions chiffrer ces informations, il vous faudrait entrer un mot de passe à chaque fois que vous voudriez voir votre solde ou les surnoms. Si cela vous ennuie, nous vous recommandons d\'utiliser MyEtherWallet.com au lieu de cette extension Chrome.',
 
-  HELP_FAQ_Title:         'More Helpful Answers to Frequent Questions',
-  HELP_Contact_Title:     'Ways to Get in Touch'
+  HELP_Sec_Title:         'Sécurité',
+  HELP_Sec_Desc_1:        'Si l\'une des premières questions que vous vous posez est "Pourquoi devrais-je faire confiance à ces gens ?", c\'est une bonne démarche. Nous espérons que ce qui suit va dissiper vos craintes. ',
+  HELP_Sec_Desc_2:        'Nous avons commencé en août 2015. Si vous recherchez ["myetherwallet" sur reddit](https://www.reddit.com/search?q=myetherwallet), vous pouvez voir qu\'un nombre considérable de personnes nous utilisent sans problème.',
+  HELP_Sec_Desc_3:        'Nous n\'allons pas prendre votre argent ou voler vos clefs privées. Il n\'y a pas de code malveillant sur ce site. En fait, les pages "Génération d\'un portefeuille" sont totalement côté client. Cela signifie que tout le code s\'éxécute sur **votre ordinateur** et n\'est jamais sauvé et/ou transmis où que ce soit.',
+  HELP_Sec_Desc_4:        'Vérifiez l\'URL -- Ce site est servi par Github et vous pouvez en voir le code source ici : [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) aux domaines : [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) et [https://www.myetherwallet.com](https://www.myetherwallet.com). Vous pouvez vérifier qu\'il est hébergé chez Github en utilisant [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") ; les deux derniers enregistrements A appartiennent à Github pour leur hébergement de domaines spécifiques.',
+  HELP_Sec_Desc_5:        'Pour générer les portefeuilles, vous pouvez télécharger le [code source](https://github.com/kvhnuke/etherwallet/tree/gh-pages). Voir #5 ci-dessus.',
+  HELP_Sec_Desc_6:        'Lancez un test et vérifiez le type d\'activité réseau. La manière la plus simple consiste en un clic droit sur la page, puis "Inspecter". Allez à l\'onglet "Network". Générez un portefeuille de test. Vous verrez qu\'il n\'y a pas d\'activité réseau. Vous pourrez voir quelque chose se produire ressemblant à data:image/gif et data:image/png. Ce sont les QR codes en cours de génération... sur votre ordinateur. Aucun octet n\'a été transféré.',
+  HELP_Sec_Desc_7:        'Maintenant, pour en être absolument sûr, allez à la page "Resources" (ou "Application"). Vous pouvez y voir tous les éléments qui constituent un site web. Si vous cliquez sur Local Storage, Cookies et Cache, vous verrez que rien n\'y est stocké. Rien n\'y est sauvegardé. Rafraîchissez la page et vous voilà revenu au départ."',
+  HELP_Sec_Desc_8:        'Si cet outil ne vous plaît pas, alors ne l\'utilisez surtout pas. Nous l\'avons créé pour qu\'il aide les gens à générer des portefeuilles et à effectuer des transactions sans avoir besoin de plonger dans les lignes de commandes ni faire tourner un nœud complet. À nouveau, n\'hésitez pas à nous faire part de vos doutes et nous répondrons aussi rapidement que possible. Merci ! ',
+
+  HELP_FAQ_Title:         'Plus de réponses utiles aux questions fréquentes',
+  HELP_Contact_Title:     'Moyens de nous contacter'
 };
 
 module.exports = fr;
 
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 // Hebrew
 'use strict';
 var he = function() {}
@@ -7579,16 +8094,16 @@ he.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -7648,7 +8163,7 @@ he.data = {
 
 module.exports = he;
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 // Hindi
 'use strict';
 var hi = function() {}
@@ -8128,16 +8643,16 @@ hi.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -8197,7 +8712,7 @@ hi.data = {
 
 module.exports = hi;
 
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 // Hungarian
 'use strict';
 var hu = function() {}
@@ -8677,16 +9192,16 @@ hu.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -8746,7 +9261,7 @@ hu.data = {
 
 module.exports = hu;
 
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 // Indonesian
 'use strict';
 var id = function() {}
@@ -8754,44 +9269,44 @@ id.code = 'id';
 id.data = {
 
   /* Navigation*/
-  NAV_YourWallets:      'Your Wallets',
-  NAV_AddWallet:        'Add Wallet',
-  NAV_GenerateWallet:   'Generate Wallet',
-  NAV_BulkGenerate:     'Bulk Generate',
-  NAV_SendEther:        'Send Ether',
-  NAV_SendTokens:       'Send Tokens',
-  NAV_Offline:          'Send Offline',
-  NAV_WithdrawDAO:      'Withdraw DAO',
-  DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
-  NAV_ClaimDGD:         'Claim DGD',
-  DGD_TitleLong:        'Claim Your DGD Tokens',
-  NAV_DeployContract:   'Deploy Contract',
-  NAV_MyWallets:        'My Wallets',
-  NAV_ViewWallet:       'View Wallet Info',
-  NAV_Help:             'Help',
-  NAV_Contact:          'Contact',
+  NAV_YourWallets:      'Dompet Anda', /*'Your Wallets'*/
+  NAV_AddWallet:        'Tambahkan Dompet', /*'Add Wallet'*/
+  NAV_GenerateWallet:   'Buat Dompet', /*'Generate Wallet'*/
+  NAV_BulkGenerate:     'Buat Banyak Dompet Sekaligus', /*'Bulk Generate'*/
+  NAV_SendEther:        'Kirim Ether', /*'Send Ether'*/
+  NAV_SendTokens:       'Kirim Tokens', /*'Send Tokens'*/
+  NAV_Offline:          'Kirim Offline', /*'Send Offline'*/
+  NAV_WithdrawDAO:      'Ambil DAO', /*'Withdraw DAO'*/
+  DAO_TitleLong:        'Ambil ETH dari Token DAO Anda Withdraw Your Dao Tokens For ETH', /*'Withdraw Your Dao Tokens For ETH'*/
+  NAV_ClaimDGD:         'Klaim DGD', /*'Claim DGD'*/
+  DGD_TitleLong:        'Klaim DGD Token Anda', /*'Claim Your DGD Tokens'*/
+  NAV_DeployContract:   'Deploy Contract', /*'Deploy Contract'*/
+  NAV_MyWallets:        'Dompet Saya', /*'My Wallets'*/
+  NAV_ViewWallet:       'Lihat Info Dompet', /*'View Wallet Info'*/
+  NAV_Help:             'Bantuan', /*'Help'*/
+  NAV_Contact:          'Kontak', /*'Contact'*/
 
   /* General */
-  x_Address:            'Your Address',
+  x_Address:            'Alamat Anda', /*'Your Address'*/
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_Cancel:             'Cancel',
-  x_CSV:                'CSV file (unencrypted)',
+  x_Cancel:             'Batal', /*'Cancel'*/
+  x_CSV:                'File CSV (tidak ter-enkripsi)', /*'CSV file (unencrypted)*/
   x_Download:           'Download',
-  x_Json:               'JSON File (unencrypted)',
+  x_Json:               'File JSON File (tidak ter-enkripsi)', /*'JSON File (unencrypted)'*/
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
   x_Keystore2:          'Keystore/JSON File',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
-  x_Print:              'Print Paper Wallet',
-  x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
+  x_Print:              'Print Dompet Kertas', /*'Print Paper Wallet'*/
+  x_PrintDesc:          'ProTip: klik print dan simpan sebagai PDF, meskipun Anda tidak memiliki printer!', /*'ProTip: Click print and save this as a PDF, even if you do not own a printer!'*/
   x_PrintShort:         'Print',
-  x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey:            'Private Key (tidak ter-enkripsi)', /*'Private Key (unencrypted)'*/
   x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
-  x_Save:               'Save',
-  x_TXT:                'TXT file (unencrypted)',
-  x_Wallet:             'Wallet',
+  x_Save:               'Simpan', /*'Save'*/
+  x_TXT:                'File TXT file (tidak ter-enkripsi)', /*'TXT file (unencrypted)'*/
+  x_Wallet:             'Dompet', /*'Wallet'*/
 
   /* Header */
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
@@ -9022,9 +9537,9 @@ id.data = {
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
-  TranslatorName_1:     '',
-  TranslatorAddr_1:     '',
-  /* Translator 1: Insert Comments Here */
+  TranslatorName_1:     'Yos Ginting',
+  TranslatorAddr_1:     '0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c',
+  /* Translator 1: Start translating into Indonesian. Will do it in stages */
   TranslatorName_2:     ' ',
   TranslatorAddr_2:     ' ',
   /* Translator 2: Insert Comments Here */
@@ -9226,16 +9741,16 @@ id.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -9295,7 +9810,7 @@ id.data = {
 
 module.exports = id;
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 // Italian
 // Last sync with en.js: commit 3ee6e18a0a72587c010a99e5ae015e766f48859e
 'use strict';
@@ -9845,7 +10360,7 @@ it.data = {
 
 module.exports = it;
 
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 // Japanese
 'use strict';
 var ja = function() {}
@@ -10324,16 +10839,16 @@ ja.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -10393,7 +10908,7 @@ ja.data = {
 
 module.exports = ja;
 
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 // Korean
 'use strict';
 var ko = function() {}
@@ -10873,16 +11388,16 @@ ko.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -10942,7 +11457,7 @@ ko.data = {
 
 module.exports = ko;
 
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 // Dutch
 'use strict';
 var nl = function() {}
@@ -11428,8 +11943,8 @@ nl.data = {
   HELP_12_Desc_21:        'Verwijder het bestand `niets_bijzonders_verwijder_mij.txt` na een geslaagde import.',
   HELP_12_Desc_22:        'De volgende keer dat je de Ethereum Wallet applicatie opent, zal je account worden vermeld onder "Accounts".',
   HELP_12_Desc_23:        'Open Kladblok (Notepad) & plak de prive seutel',
-  HELP_12_Desc_24:        'Sla het bestand op als `niets_bijzonders_verwijder_mij.txt` in `C://`',
-  HELP_12_Desc_25:        'Open de command prompt en voer het volgende commando uit: `geth account import C:/niets_bijzonders_verwijder_mij.txt`',
+  HELP_12_Desc_24:        'Sla het bestand op als `niets_bijzonders_verwijder_mij.txt` in `C:`',
+  HELP_12_Desc_25:        'Open de command prompt en voer het volgende commando uit: `geth account import C:\\niets_bijzonders_verwijder_mij.txt`',
   HELP_12_Desc_26:        'Je zal gevraagd worden om een nieuw wachtwoord. Dit is het wachtwoord wat je zult gebruiken in geth / Ethereum Wallet / Mist elke keer als je een transactie verzend, dus zorg dat je dit niet vergeet. ',
   HELP_12_Desc_27:        'Verwijder het bestand `niets_bijzonders_verwijder_mij.txt` na een geslaagde import.',
   HELP_12_Desc_28:        'De volgende keer dat je de Ethereum Wallet applicatie opent, zal je account worden vermeld onder "Accounts". ',
@@ -11491,7 +12006,7 @@ nl.data = {
 
 module.exports = nl;
 
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 // Norwegian
 'use strict';
 var no = function() {}
@@ -11505,7 +12020,7 @@ no.data = {
   NAV_BulkGenerate:     'Opprett flere lommebøker',
   NAV_SendEther:        'Send Ether',
   NAV_SendTokens:       'Send Token',
-  NAV_Offline:          'Send Frakoblet',
+  NAV_Offline:          'Send Offline',
   NAV_WithdrawDAO:      'Ta ut DAO',
   DAO_TitleLong:        'Løs inn dine DAO-token for ether (ETH)',
   NAV_ClaimDGD:         'Gjør krav på DGD',
@@ -11533,7 +12048,7 @@ no.data = {
   x_JsonDesc:           'Dette er det ukrypterte JSON-formatet av din private nøkkel. Dette betyr at du ikke trenger noe passord, men også at den som finner din JSON kan få tilgang til lommeboken din og etherne dine uten passord.',
   x_PrintShort:         'Skriv ut',
   x_Print:              'Skriv ut papirlommebok',
-  x_PrintDesc:          'ProTips: Klikk "skriv ut" og lagre som PDF, selv om du ikke har noen skriver!',
+  x_PrintDesc:          'Profftips: Klikk "skriv ut" og lagre som PDF, selv om du ikke har noen skriver!',
   x_CSV:                'CSV-fil (ukryptert)',
   x_TXT:                'TXT-fil (ukryptert)',
   x_Wallet:             'Lommebok',
@@ -11549,7 +12064,7 @@ no.data = {
   FOOTER_1b:            'Skapt av',
   FOOTER_2:             'Donasjoner mottas med takk:',
   FOOTER_3:             'Klient-side lommebok-oppretting av',
-  FOOTER_4:               'Ansvarsfraskrivelse',
+  FOOTER_4:             'Ansvarsfraskrivelse',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Kontoinformasjon: ',
@@ -11606,7 +12121,7 @@ no.data = {
   SEND_amount_short:     'Beløp',
   SEND_custom:           'Tilpasning',
   SEND_gas:              'Gas',
-  SEND_TransferTotal:   'Overfør total tilgjengelig saldo',  // updated to read 'Send Entire Balance'
+  SEND_TransferTotal:    'Overfør total tilgjengelig saldo',  // updated to read 'Send Entire Balance'
   SEND_generate:         'Generer transaksjon',
   SEND_raw:              'Rå-transaksjon',
   SEND_signed:           'Signert transaksjon',
@@ -11648,7 +12163,7 @@ no.data = {
   TRANSModal_No:         'Trøste og bære, nå er jeg bare enda mer forvirret. Hjelp meg.',
 
   /* Offline Transaction */
-  OFFLINE_Title:         'Generer & send frakoblet (offline) transaksjon',
+  OFFLINE_Title:         'Generer & send offline transaksjon',
   OFFLINE_Desc:          'Generering av offline-transaksjoner kan utføres i tre steg. Du utfører steg 1 og 3 på en internettilknyttet datamaskin, og steg 2 på en offline/frakoblet datamaskon. Dette sikrer at dine private nøkler ikke kommer i kontakt med en internettilknyttet enhet.',
   OFFLLINE_Step1_Title:  'Steg 1: Generer informasjon (internettilknyttet datamaskin)',
   OFFLINE_Step1_Button:  'Generer informasjon',
@@ -11676,7 +12191,7 @@ no.data = {
   DAO_TitleETC:           'Veksle inn DAO mot ETC',
   DAO_ETC_Label_1:        'Hvilken adresse ønsker du å sende dine ETC til?',
   DAO_ETC_Label_2:        '"White Hat Group" har jobbet utrettelig for å gi deg tilbake dine ETC. Du kan takke dem ved å donere en prosentandel av uttaket ditt, hvis du ønsker det. ',
-  DAO_Desc:               'Bruk denne siden til å veksle inn dine DAO-token for ETH. Hvis du ønsker å sende DAO-poletter, vennligst bruk "Send Token"-siden.',
+  DAO_Desc:               'Bruk denne siden til å veksle inn dine DAO-token for ETH. Hvis du ønsker å sende DAO-token, vennligst bruk "Send Token"-siden.',
   DAO_Inst:               'Ja. Bare trykk på den store røde knappen. Det er så enkelt som det.',
   DAO_Warning:            'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,001 ether til denne kontoen og prøv igjen. ',
   DAOModal_Title:         'Bare for å være sikker...',
@@ -11864,7 +12379,7 @@ no.data = {
   HELP_4CX_Desc_12:     'Bruk "Send ether"-siden: ',
 
   HELP_5_Title:         '5) Hvordan kan jeg bruke MyEtherWallet.com offline/lokalt? ',
-  HELP_5_Desc_1:        'Du kan bruke MyEtherWallet.com på datamaskinen din i stedet for fra GitHub-serverne. Du kan opprette en lommebok fullstendig frakoblet fra internett, og sende transaksjoner fra "Send frakoblet"-siden.',
+  HELP_5_Desc_1:        'Du kan bruke MyEtherWallet.com på datamaskinen din i stedet for fra GitHub-serverne. Du kan opprette en lommebok fullstendig frakoblet fra internett, og sende transaksjoner fra "Send offline"-siden.',
   HELP_5_Desc_2:        'Gå til vår github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
   HELP_5_Desc_3:        'Klikk "download zip" øverst til høyre.',
   HELP_5_Desc_4:        'Flytt zip-fila til en frakoblet datamaskin.',
@@ -11931,10 +12446,10 @@ no.data = {
   HELP_8CX_Desc_3:       'Hvis MyEtherWallet CX av en eller annen grunn skulle forsvinne fra Chrome Store, så kan du finne kildekoden på Github og laste den inn manuelt. Se #5 ovenfor.',
 
   HELP_9_Title:          '9) Er "Send ether"-siden offline?',
-  HELP_9_Desc_1:         ' Nei, send transaksjon-siden er ikke offline. Den trenger internett for å kunne skaffe den aktuelle gas-prisen, "nonce" for kontoen din, og for å kunne kringkaste transaksjonen (aka "send"). Imidlertid sender den kun den signerte transaksjonen. Din private nøkkel forblir i sikkerhet hos deg. Vi tilbyr nå også en "Frakoblet transaction"-side slik at du kan forsikre deg om at dine private nøkler til enhver tid kun befinner seg på en offline/frakoblet datamaskin.',
+  HELP_9_Desc_1:         ' Nei, send transaksjon-siden er ikke offline. Den trenger internett for å kunne skaffe den aktuelle gas-prisen, "nonce" for kontoen din, og for å kunne kringkaste transaksjonen (aka "send"). Imidlertid sender den kun den signerte transaksjonen. Din private nøkkel forblir i sikkerhet hos deg. Vi tilbyr nå også en "Offline transaction"-side slik at du kan forsikre deg om at dine private nøkler til enhver tid kun befinner seg på en offline/frakoblet datamaskin.',
 
   HELP_10_Title:         '10) Hvordan lager jeg en frakoblet/offline transaksjon?',
-  HELP_10_Desc_1:        'Naviger til "Send Frakoblet"-siden via din internettilknyttede datamaskin.',
+  HELP_10_Desc_1:        'Naviger til "Send Offline"-siden via din internettilknyttede datamaskin.',
   HELP_10_Desc_2:        'Oppgi "Fra-adressen". Vennligst merk at dette er adressen du sender FRA, ikke TIL. Dette genererer "nonce" og "gas-pris".',
   HELP_10_Desc_3:        'Gå til den internettfrakoblede datamaskinen. Oppgi "TIL-ADRESSEN" og "BELØPET" du vil sende.',
   HELP_10_Desc_4:        'Oppgi "GAS-PRISEN" slik den ble vist deg på den tilkoblede datamaskinen i steg #1.',
@@ -11971,16 +12486,16 @@ no.data = {
   HELP_12_Desc_15:        'Hvis du er på en Mac:',
   HELP_12_Desc_16:        'Åpne Text Edit og lim inn denne private nøkkelen.',
   HELP_12_Desc_17:        'Gå til menylinjen og klikk "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Lagre denne fila på skrivebordet ditt som `ikke_noe_spesielt_slett_meg.txt/`. Pass på at det står "UTF-8" og "If no extension is provided use .txt" i lagringsdialogen.',
-  HELP_12_Desc_19:        'Åpne terminalen og kjør følgende kommando: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Lagre denne fila på skrivebordet ditt som `ikke_noe_spesielt_slett_meg.txt`. Pass på at det står "UTF-8" og "If no extension is provided use .txt" i lagringsdialogen.',
+  HELP_12_Desc_19:        'Åpne terminalen og kjør følgende kommando: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'Du vil bli bedt om å lage et nytt passord. Dette er passordet du vil bruke i geth / Ethereum Wallet / Mist hver gang du skal sende en transaksjon, så ikke glem det. ',
-  HELP_12_Desc_21:        'Etter at du har lykkes med å importere kontoen, slett `ikke_noe_spesielt_slett_meg.txt/`',
+  HELP_12_Desc_21:        'Etter at du har lykkes med å importere kontoen, slett `ikke_noe_spesielt_slett_meg.txt`',
   HELP_12_Desc_22:        'Neste gangen du åpner "Ethereum Wallet"-programmet, vil kontoen din være listet under "Accounts".',
   HELP_12_Desc_23:        'Åpne Notisblokk/Notepad & lim inn den private nøkkelen',
-  HELP_12_Desc_24:        'Lagre fila som `ikke_noe_spesielt_slett_meg.txt` på `C://`',
-  HELP_12_Desc_25:        'Kjør ledetekst (Windowstast + "cmd")-kommandoen, `geth account import C:/ikke_noe_spesielt_slett_meg.txt`',
+  HELP_12_Desc_24:        'Lagre fila som `ikke_noe_spesielt_slett_meg.txt` på `C:`',
+  HELP_12_Desc_25:        'Kjør ledetekst (Windowstast + "cmd")-kommandoen, `geth account import C:\\ikke_noe_spesielt_slett_meg.txt`',
   HELP_12_Desc_26:        'Du vil bli bedt om å lage et nytt passord. Dette er passordet du vil bruke i geth / Ethereum Wallet / Mist hver gang du skal sende en transaksjon, så ikke glem det.',
-  HELP_12_Desc_27:        'Etter at du har lykkes med å importere kontoen, slett `ikke_noe_spesielt_slett_meg.txt/`',
+  HELP_12_Desc_27:        'Etter at du har lykkes med å importere kontoen, slett `ikke_noe_spesielt_slett_meg.txt`',
   HELP_12_Desc_28:        'Neste gangen du åpner "Ethereum Wallet"-programmet, vil kontoen din være listet under "Accounts". ',
 
   HELP_13_Title:          '13) Hva betyr "Gas Limit Too Low"?',
@@ -12040,7 +12555,7 @@ no.data = {
 
 module.exports = no;
 
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 // Polish
 'use strict';
 var pl = function() {}
@@ -12520,8 +13035,8 @@ pl.data = {
   HELP_12_Desc_15b:       'Jeśli pracujesz na PC\'cie:',
   HELP_12_Desc_16:        'Otwórz Text Edit i wklej do niego skopiowany klucz prywatny.',
   HELP_12_Desc_17:        'Wejdź do paska menu i kliknij "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Zapisz ten plik na `desktop/` jako `nic_specjalnego_usun_mnie.txt/`. Podczas zapisywania ustaw "UTF-8" i "If no extension is provided use .txt".',
-  HELP_12_Desc_19:        'Otwórz terminal systemowy i uruchom następującą komendę: `geth account import ~/Desktop/nic_specjalnego_usun_mnie.txt/`',
+  HELP_12_Desc_18:        'Zapisz ten plik na `desktop/` jako `nic_specjalnego_usun_mnie.txt`. Podczas zapisywania ustaw "UTF-8" i "If no extension is provided use .txt".',
+  HELP_12_Desc_19:        'Otwórz terminal systemowy i uruchom następującą komendę: `geth account import ~/Desktop/nic_specjalnego_usun_mnie.txt`',
   HELP_12_Desc_20:        'Zostaniesz zapytany o hasło. To będzie hasło portfela w geth / Ethereum Wallet / Mist, które należy podać przy każdej transakcji, nie zapomnij tego hasła.',
   HELP_12_Desc_21:        'Po zaimportowaniu portfela, usuń `nic_specjalnego_usun_mnie.txt`',
   HELP_12_Desc_22:        'Po ponownym uruchomieniu aplikacji Ethereum Wallet Twój portfel pojawi się na zakładce "Accounts".',
@@ -12589,7 +13104,7 @@ pl.data = {
 
 module.exports = pl;
 
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 // Portuguese
 'use strict';
 var pt = function() {}
@@ -13069,16 +13584,16 @@ pt.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -13138,7 +13653,7 @@ pt.data = {
 
 module.exports = pt;
 
-},{}],54:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 // Portuguese
 'use strict';
 var ptbr = function() {}
@@ -13618,16 +14133,16 @@ ptbr.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -13687,7 +14202,7 @@ ptbr.data = {
 
 module.exports = ptbr;
 
-},{}],55:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 // Russian
 'use strict';
 var ru = function() {}
@@ -13695,15 +14210,15 @@ ru.code = 'ru';
 ru.data = {
 
   /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
+  GETH_InvalidSender:      'Неверный адрес отправителя',
+  GETH_Nonce:              'Номер перевода (nonce) слишком мал',
+  GETH_Cheap:              'Цена газа слишком низкая',
+  GETH_Balance:            'Баланс недостаточен',
+  GETH_NonExistentAccount: 'Счёт не существует или баланс счёта слишком мал',
+  GETH_InsufficientFunds:  'Недостаточно средств для ГАЗ * ЦЕНА + СУММА',
+  GETH_IntrinsicGas:       'Недостаточно газа для выполнения транзакции',
+  GETH_GasLimit:           'Превышен лимит газа на блок',
+  GETH_NegativeValue:      'Отрицательная сумма',
 
   /* Navigation*/
   NAV_YourWallets:      'Ваши кошельки',
@@ -14168,16 +14683,16 @@ ru.data = {
   HELP_12_Desc_15b:       'Если вы используете ПК:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -14237,65 +14752,87 @@ ru.data = {
 
 module.exports = ru;
 
-},{}],56:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 // Slovak
 'use strict';
 var sk = function() {}
 sk.code = 'sk';
 sk.data = {
 
+ NAV_DeployContract:   'Deploy Contract',
+ x_Keystore2:          'Keystore / JSON File',
+ x_PrivKey2:           'Private Key',
+ FOOTER_4:               'Disclaimer',
+
+  DAO_bal1:               'at block 1,919,999',
+  DAO_bal2:               'current',
+  DAO_TitleETH:           'Withdraw DAO For ETH',
+  DAO_TitleETC:           'Withdraw DAO For ETC',
+  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
+  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
+  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
+  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
+  DAOModal_Title:         'Just making sure...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
+  DAOModal_1:             'You are about to withdraw',
+  DAOModal_2:             'DAO Tokens to',
+  DAOModal_3:             'for', // "in return for"
+
+  /* Deploy Contracts */
+  DEP_generate:           'Generate Bytecode',
+  DEP_generated:          'Generated Bytecode',
+  DEP_signtx:             'Sign Transaction',
+  DEP_interface:          'Generated Interface',
+
   /* Navigation*/
-  NAV_YourWallets:      'Your Wallets',
-  NAV_AddWallet:        'Add Wallet',
-  NAV_GenerateWallet:   'Generate Wallet',
+  NAV_YourWallets:      'Vaše Peňaženky',
+  NAV_AddWallet:        'Pridať peňaženku',
+  NAV_GenerateWallet:   'Vytvoriť peňaženku',
   NAV_BulkGenerate:     'Bulk Generate',
-  NAV_SendEther:        'Send Ether',
-  NAV_SendTokens:       'Send Tokens',
-  NAV_Offline:          'Send Offline',
-  NAV_WithdrawDAO:      'Withdraw DAO',
-  DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
+  NAV_SendEther:        'Poslať Ether',
+  NAV_SendTokens:       'Poslať Tokens',
+  NAV_Offline:          'Poslať Offline',
+  NAV_WithdrawDAO:      'Vybrať DAO',
+  DAO_TitleLong:        'Vymeniť Vaše Dao Tokens za ETH',
   NAV_ClaimDGD:         'Claim DGD',
   DGD_TitleLong:        'Claim Your DGD Tokens',
-  NAV_DeployContract:   'Deploy Contract',
-  NAV_MyWallets:        'My Wallets',
-  NAV_ViewWallet:       'View Wallet Info',
-  NAV_Help:             'Help',
-  NAV_Contact:          'Contact',
+  NAV_MyWallets:        'Moje peňaženky',
+  NAV_ViewWallet:       'Zobraziť detaily peňaženky',
+  NAV_Help:             'Pomoc',
+  NAV_Contact:          'Kontakt',
 
   /* General */
-  x_Address:            'Your Address',
-  x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_CSV:                'CSV file (unencrypted)',
-  x_Cancel:             'Cancel',
-  x_Download:           'Download',
-  x_Json:               'JSON File (unencrypted)',
-  x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
-  x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-  x_Keystore2:          'Keystore / JSON File',
-  x_KeystoreDesc:       'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
-  x_Password:           'Password',
-  x_Print:              'Print Paper Wallet',
-  x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
-  x_PrintShort:         'Print',
-  x_PrivKey:            'Private Key (unencrypted)',
-  x_PrivKey2:           'Private Key',
-  x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
-  x_Save:               'Save',
-  x_TXT:                'TXT file (unencrypted)',
-  x_Wallet:             'Wallet',
+  x_Password:           'Heslo',
+  x_Wallet:             'Peňaženka',
+  x_Download:           'Stiahnuť',
+  x_Address:            'Vaša Adresa',
+  x_Save:               'Uložiť',
+  x_Cancel:             'Zrušiť',
+  x_AddessDesc:         'Možno to poznate ako vaše "Konto #" alebo váš "Verejný Kľúč". Adresa je to, čo pošlete ľudom, aby vám mohli poslať ETH. Táto ikona vám pomôže rozpoznať vašu adresu.',
+  x_PrivKey:            'Súkromný Kľúč (nezašifrovaný)',
+  x_PrivKeyDesc:        'Toto je nezašifrovaná textova verzia vašho Súkromneho Kľuča, to znamená, že heslo nie je potrebné. Ak niekto získa vaš nezašifrovaný Súkromný Kľúč, môže získať prístup do vašej peňaženky bez hesla. Práve kvôli tomuto sú šifrované verzie odporúčané.',
+  x_Keystore:           'Keystore/JSON Súbor (Odporúčané · Šifrované · Mist/Geth Format)',
+  x_KeystoreDesc:       'Tento Keystore / JSON súbor je rovnakého formatu ako  Mist & Geth takže ho budete môcť jednoducho importovať. Tento subor odporúčame stiahnuť a zálohovať.',
+  x_Json:               'JSON Súbor (nezašifrovaný)',
+  x_JsonDesc:           'Toto je nezašifrovaný JSON format vášho sukromného kľúča. To znamená, že nepotrebujete heslo, ale ak niekto získa váš JSON, je schopný sprístupniť vašu peňaženku a Ether bez hesla.',
+  x_PrintShort:         'Vytlačiť',
+  x_Print:              'Vytlačiť Papierovú Peňaženku',
+  x_PrintDesc:          'Rada: Ak nevlastnite tlačiareň, jednoducho kliknite tlačiť a uložte to ako PDF.',
+  x_CSV:                'CSV súbor (nezašifrovaný)',
+  x_TXT:                'TXT súbor (nezašifrovaný)',
 
   /* Header */
-  MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
-  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
+  MEW_Warning_1:        'Vždy skontrolujte URL adresu pred tým ako vytvoríte alebo sprístupnite vašu peňaženku. Davajte si pozor na Phisingové stránky!',
+  CX_Warning_1:         'Uistita sa, že máťe  **externé zálohy** všetkych peňaženiek. Mnoho vecí može spôsobiť stratu dát tohoto Chrome rozširenia, vrátane odinštalovania a preinštalovania tohto rozšírenia. Toto rozšírenie pomáha jednoducho sprístupniť vašu peňaženku, **nie** ju zálohovať.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
   CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
-  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethereum Wallets & sending transactions.',
-  FOOTER_1b:            'Created by',
-  FOOTER_2:             'Donations greatly appreciated:',
+  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.',
+  FOOTER_1b:            'Vytvorené',
+  FOOTER_2:             'Dotácie srdečne vítane:',
   FOOTER_3:             'Client-side wallet generation by',
-  FOOTER_4:               'Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Account Information: ',
@@ -14352,7 +14889,6 @@ sk.data = {
   SEND_amount_short:     'Amount',
   SEND_custom:           'Custom',
   SEND_gas:              'Gas',
-  SEND_TransferTotal:    'Send Entire Balance',
   SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
@@ -14362,9 +14898,10 @@ sk.data = {
   SENDModal_Content_1:   'You are about to send',
   SENDModal_Content_2:   'to address',
   SENDModal_Content_3:   'Are you sure you want to do this?',
-  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ether to your account to cover the gas cost of sending tokens. Gas is paid in ether.',
+  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ETH to your account to cover the gas cost of sending tokens. Gas is paid in ETH.',
   SENDModal_No:          'No, get me out of here!',
   SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SEND_TransferTotal:    'Send Entire Balance',
 
   /* Tokens */
   TOKEN_Addr:            'Address: ',
@@ -14400,7 +14937,7 @@ sk.data = {
   OFFLINE_Step1_Button:  'Generate Information',
   OFFLINE_Step1_Label_1: 'From Address: ',
   OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
-  OFFLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
+  OFFLLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
   OFFLINE_Step2_Label_1:  'To Address: ',
   OFFLINE_Step2_Label_2:  'Value / Amount to Send',
   OFFLINE_Step2_Label_3:  'Gas Price ',
@@ -14416,20 +14953,10 @@ sk.data = {
   OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
 
   /* DAO */
-  DAO_bal1:               'at block 1,919,999',
-  DAO_bal2:               'current',
-  DAO_TitleETH:           'Withdraw DAO For ETH',
-  DAO_TitleETC:           'Withdraw DAO For ETC',
-  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
-  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
-  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
+  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH. If you wish to send DAO, please use the Send Tokens Tab.',
   DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. ',
   DAOModal_Title:         'Just making sure...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'You are about to withdraw',
-  DAOModal_2:             'DAO Tokens to',
-  DAOModal_3:             'for', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
@@ -14438,12 +14965,6 @@ sk.data = {
   DGD_Label_3:            'Gas Price:',
   DGD_Generate:           'Generate Claim',
   DGD_Content:            'You are about to claim your DGD Tokens.',
-
-  /* Deploy Contracts */
-  DEP_generate:           'Generate Bytecode',
-  DEP_generated:          'Generated Bytecode',
-  DEP_signtx:             'Sign Transaction',
-  DEP_interface:          'Generated Interface',
 
   /* My Wallet */
   MYWAL_Nick:             'Wallet Nickname',
@@ -14467,9 +14988,10 @@ sk.data = {
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
 
-  /* Chrome Extension */
+  /* CX */
   CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
   CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
+
 
   /* Error Messages */
   ERROR_1:             'Please enter valid amount.',
@@ -14511,7 +15033,7 @@ sk.data = {
   GETH_NegativeValue:      'Negative value',
 
   /* Tranlsation Info */
-  translate_version:    '0.2',
+  translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
   TranslatorName_1:     '',
   TranslatorAddr_1:     '',
@@ -14529,7 +15051,7 @@ sk.data = {
   TranslatorAddr_5:     ' ',
   /* Translator 5: Insert Comments Here */
 
-  /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
+/* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning:       'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
   HELP_Desc:          'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!',
   HELP_Remind_Title:  'Some reminders',
@@ -14717,16 +15239,16 @@ sk.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -14739,7 +15261,7 @@ sk.data = {
   HELP_15_Desc_1:         'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
 
   HELP_16_Title:          '16) How do I check the balance of my account? ',
-  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your account and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+  HELP_16_Desc_1:         'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
 
   HELP_17_Title:          '17) Why isn\'t my balance showing up when I unlock my wallet? ',
   HELP_17_Desc_1:         ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
@@ -14752,7 +15274,7 @@ sk.data = {
   HELP_20_Title:          '20) Where is my pre-sale wallet file?',
   HELP_20_Desc_1:         'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.',
 
-  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own account? ',
+  HELP_21_Title:          '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
   HELP_21_Desc_1:         'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
   HELP_21_Desc_2:         'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
   HELP_21_Desc_3:         'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems.',
@@ -14786,7 +15308,7 @@ sk.data = {
 
 module.exports = sk;
 
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 // Slovenian
 'use strict';
 var sl = function() {}
@@ -15269,16 +15791,16 @@ sl.data = {
   HELP_12_Desc_15:        'If you are on a Mac:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -15338,7 +15860,7 @@ sl.data = {
 
 module.exports = sl;
 
-},{}],58:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 // Swedish
 'use strict';
 var sv = function() {}
@@ -15819,16 +16341,16 @@ sv.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -15888,7 +16410,7 @@ sv.data = {
 
 module.exports = sv;
 
-},{}],59:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 // Turkish
 'use strict';
 var tr = function() {}
@@ -16090,7 +16612,7 @@ tr.data = {
   DAO_Inst:               'Evet. Sadece büyük kırmızı düğmeye bas. Bu kadar kolay.',
   DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
   DAOModal_Title:         'Sadece emin olmak için...',
-  
+
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Cekmek üzeresin',
   DAOModal_2:             'DAO token\'i ',
@@ -16371,16 +16893,16 @@ tr.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -16440,38 +16962,40 @@ tr.data = {
 
 module.exports = tr;
 
-},{}],60:[function(require,module,exports){
-'use strict';
-var ar = require('./ar');
-var bg = require('./bg');
-var de = require('./de');
-var el = require('./el');
-var en = require('./en');
-var es = require('./es');
-var et = require('./et');
-var fr = require('./fr');
-var he = require('./he');
-var hi = require('./hi');
-var hu = require('./hu');
-var id = require('./id');
-var it = require('./it');
-var ja = require('./ja');
-var ko = require('./ko');
-var nl = require('./nl');
-var no = require('./no');
-var pl = require('./pl');
-var pt = require('./pt');
-var ptbr = require('./ptbr');
-var ru = require('./ru');
-var sk = require('./sk');
-var sl = require('./sl');
-var sv = require('./sv');
-var tr = require('./tr');
-var uk = require('./uk');
-var vi = require('./vi');
-var zh = require('./zh');
+},{}],61:[function(require,module,exports){
+ 'use strict';
+  var ar = require('./ar');
+  var bg = require('./bg');
+  var de = require('./de');
+  var de = require('./de');
+  var el = require('./el');
+  var en = require('./en');
+  var es = require('./es');
+  var et = require('./et');
+  var fi = require('./fi');
+  var fr = require('./fr');
+  var he = require('./he');
+  var hi = require('./hi');
+  var hu = require('./hu');
+  var id = require('./id');
+  var it = require('./it');
+  var ja = require('./ja');
+  var ko = require('./ko');
+  var nl = require('./nl');
+  var no = require('./no');
+  var pl = require('./pl');
+  var pt = require('./pt');
+  var ptbr = require('./ptbr');
+  var ru = require('./ru');
+  var sk = require('./sk');
+  var sl = require('./sl');
+  var sv = require('./sv');
+  var tr = require('./tr');
+  var uk = require('./uk');
+  var vi = require('./vi');
+  var zh = require('./zh');
 
-var translate = function($translateProvider) {
+ var translate = function($translateProvider) {
   $translateProvider.translations(ar.code, translate.marked(ar.data));
   $translateProvider.translations(bg.code, translate.marked(bg.data));
   $translateProvider.translations(de.code, translate.marked(de.data));
@@ -16479,6 +17003,7 @@ var translate = function($translateProvider) {
   $translateProvider.translations(en.code, translate.marked(en.data));
   $translateProvider.translations(es.code, translate.marked(es.data));
   $translateProvider.translations(et.code, translate.marked(et.data));
+  $translateProvider.translations(fi.code, translate.marked(fi.data));
   $translateProvider.translations(fr.code, translate.marked(fr.data));
   $translateProvider.translations(he.code, translate.marked(he.data));
   $translateProvider.translations(hi.code, translate.marked(hi.data));
@@ -16500,9 +17025,10 @@ var translate = function($translateProvider) {
   $translateProvider.translations(uk.code, translate.marked(uk.data));
   $translateProvider.translations(vi.code, translate.marked(vi.data));
   $translateProvider.translations(zh.code, translate.marked(zh.data));
-	$translateProvider.preferredLanguage('en');
-	$translateProvider.useSanitizeValueStrategy(null);
-}
+  $translateProvider.preferredLanguage('en');
+  $translateProvider.useSanitizeValueStrategy(null);
+ }
+
 translate.marked = function(data) {
     var tData = data;
 	for (var key in tData) if (tData.hasOwnProperty(key)) tData[key] = marked(tData[key]);
@@ -16510,7 +17036,7 @@ translate.marked = function(data) {
 }
 module.exports = translate;
 
-},{"./ar":35,"./bg":36,"./de":37,"./el":38,"./en":39,"./es":40,"./et":41,"./fr":42,"./he":43,"./hi":44,"./hu":45,"./id":46,"./it":47,"./ja":48,"./ko":49,"./nl":50,"./no":51,"./pl":52,"./pt":53,"./ptbr":54,"./ru":55,"./sk":56,"./sl":57,"./sv":58,"./tr":59,"./uk":61,"./vi":62,"./zh":63}],61:[function(require,module,exports){
+},{"./ar":35,"./bg":36,"./de":37,"./el":38,"./en":39,"./es":40,"./et":41,"./fi":42,"./fr":43,"./he":44,"./hi":45,"./hu":46,"./id":47,"./it":48,"./ja":49,"./ko":50,"./nl":51,"./no":52,"./pl":53,"./pt":54,"./ptbr":55,"./ru":56,"./sk":57,"./sl":58,"./sv":59,"./tr":60,"./uk":62,"./vi":63,"./zh":64}],62:[function(require,module,exports){
 // Ukranian
 'use strict';
 var uk = function() {}
@@ -16990,16 +17516,16 @@ uk.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -17059,7 +17585,7 @@ uk.data = {
 
 module.exports = uk;
 
-},{}],62:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 // Vietnamese
 'use strict';
 var vi = function() {}
@@ -17538,16 +18064,16 @@ vi.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -17607,7 +18133,7 @@ vi.data = {
 
 module.exports = vi;
 
-},{}],63:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 // Chinese
 'use strict';
 var zh = function() {}
@@ -18089,16 +18615,16 @@ zh.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
@@ -18158,7 +18684,7 @@ zh.data = {
 
 module.exports = zh;
 
-},{}],64:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var uiFuncs = function() {}
@@ -18293,14 +18819,14 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
 }
 module.exports = uiFuncs;
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],65:[function(require,module,exports){
+},{"buffer":122}],66:[function(require,module,exports){
 'use strict';
 var validator = function() {}
 validator.isValidAddress =  function(address){
     return ethFuncs.validateEtherAddress(address);
 }
 validator.isPositiveNumber = function(value){
-    return globalFuncs.isNumeric(value) && parseFloat(value) > 0;
+    return globalFuncs.isNumeric(value) && parseFloat(value) >= 0;
 }
 validator.isValidHex = function(hex){
     return ethFuncs.validateHexString(hex);
@@ -18313,7 +18839,8 @@ validator.isPasswordLenValid = function(pass, len){
     return pass.length > len;
 }
 module.exports = validator;
-},{}],66:[function(require,module,exports){
+
+},{}],67:[function(require,module,exports){
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -19053,11 +19580,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],67:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":66}],68:[function(require,module,exports){
+},{"./angular-sanitize":67}],69:[function(require,module,exports){
 /*!
  * angular-translate - v2.11.1 - 2016-07-17
  * 
@@ -19109,7 +19636,7 @@ return 'pascalprecht.translate';
 
 }));
 
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 /*!
  * angular-translate - v2.11.1 - 2016-07-17
  * 
@@ -22583,9 +23110,9 @@ return 'pascalprecht.translate';
 
 }));
 
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 /**
- * @license AngularJS v1.5.8
+ * @license AngularJS v1.5.6
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -22643,7 +23170,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.5.8/' +
+    message += '\nhttp://errors.angularjs.org/1.5.6/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -22712,6 +23239,7 @@ function minErr(module, ErrorConstructor) {
   includes: true,
   arrayRemove: true,
   copy: true,
+  shallowCopy: true,
   equals: true,
   csp: true,
   jq: true,
@@ -23407,13 +23935,7 @@ function arrayRemove(array, value) {
  * * If a destination is provided, all of its elements (for arrays) or properties (for objects)
  *   are deleted and then all elements/properties from the source are copied to it.
  * * If `source` is not an object or array (inc. `null` and `undefined`), `source` is returned.
- * * If `source` is identical to `destination` an exception will be thrown.
- *
- * <br />
- * <div class="alert alert-warning">
- *   Only enumerable properties are taken into account. Non-enumerable properties (both on `source`
- *   and on `destination`) will be ignored.
- * </div>
+ * * If `source` is identical to 'destination' an exception will be thrown.
  *
  * @param {*} source The source that will be used to make a copy.
  *                   Can be any type, including primitives, `null`, and `undefined`.
@@ -23422,42 +23944,41 @@ function arrayRemove(array, value) {
  * @returns {*} The copy or updated `destination`, if `destination` was specified.
  *
  * @example
-  <example module="copyExample">
-    <file name="index.html">
-      <div ng-controller="ExampleController">
-        <form novalidate class="simple-form">
-          <label>Name: <input type="text" ng-model="user.name" /></label><br />
-          <label>Age:  <input type="number" ng-model="user.age" /></label><br />
-          Gender: <label><input type="radio" ng-model="user.gender" value="male" />male</label>
-                  <label><input type="radio" ng-model="user.gender" value="female" />female</label><br />
-          <button ng-click="reset()">RESET</button>
-          <button ng-click="update(user)">SAVE</button>
-        </form>
-        <pre>form = {{user | json}}</pre>
-        <pre>master = {{master | json}}</pre>
-      </div>
-    </file>
-    <file name="script.js">
-      // Module: copyExample
-      angular.
-        module('copyExample', []).
-        controller('ExampleController', ['$scope', function($scope) {
-          $scope.master = {};
+ <example module="copyExample">
+ <file name="index.html">
+ <div ng-controller="ExampleController">
+ <form novalidate class="simple-form">
+ Name: <input type="text" ng-model="user.name" /><br />
+ E-mail: <input type="email" ng-model="user.email" /><br />
+ Gender: <input type="radio" ng-model="user.gender" value="male" />male
+ <input type="radio" ng-model="user.gender" value="female" />female<br />
+ <button ng-click="reset()">RESET</button>
+ <button ng-click="update(user)">SAVE</button>
+ </form>
+ <pre>form = {{user | json}}</pre>
+ <pre>master = {{master | json}}</pre>
+ </div>
 
-          $scope.reset = function() {
-            // Example with 1 argument
-            $scope.user = angular.copy($scope.master);
-          };
+ <script>
+  angular.module('copyExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.master= {};
 
-          $scope.update = function(user) {
-            // Example with 2 arguments
-            angular.copy(user, $scope.master);
-          };
+      $scope.update = function(user) {
+        // Example with 1 argument
+        $scope.master= angular.copy(user);
+      };
 
-          $scope.reset();
-        }]);
-    </file>
-  </example>
+      $scope.reset = function() {
+        // Example with 2 arguments
+        angular.copy($scope.master, $scope.user);
+      };
+
+      $scope.reset();
+    }]);
+ </script>
+ </file>
+ </example>
  */
 function copy(source, destination) {
   var stackSource = [];
@@ -23564,7 +24085,7 @@ function copy(source, destination) {
       case '[object Uint8ClampedArray]':
       case '[object Uint16Array]':
       case '[object Uint32Array]':
-        return new source.constructor(copyElement(source.buffer), source.byteOffset, source.length);
+        return new source.constructor(copyElement(source.buffer));
 
       case '[object ArrayBuffer]':
         //Support: IE10
@@ -23594,6 +24115,31 @@ function copy(source, destination) {
       return source.cloneNode(true);
     }
   }
+}
+
+/**
+ * Creates a shallow copy of an object, an array or a primitive.
+ *
+ * Assumes that there are no proto properties for objects.
+ */
+function shallowCopy(src, dst) {
+  if (isArray(src)) {
+    dst = dst || [];
+
+    for (var i = 0, ii = src.length; i < ii; i++) {
+      dst[i] = src[i];
+    }
+  } else if (isObject(src)) {
+    dst = dst || {};
+
+    for (var key in src) {
+      if (!(key.charAt(0) === '$' && key.charAt(1) === '$')) {
+        dst[key] = src[key];
+      }
+    }
+  }
+
+  return dst || src;
 }
 
 
@@ -24936,34 +25482,7 @@ function setupModuleLoader(window) {
 
 }
 
-/* global shallowCopy: true */
-
-/**
- * Creates a shallow copy of an object, an array or a primitive.
- *
- * Assumes that there are no proto properties for objects.
- */
-function shallowCopy(src, dst) {
-  if (isArray(src)) {
-    dst = dst || [];
-
-    for (var i = 0, ii = src.length; i < ii; i++) {
-      dst[i] = src[i];
-    }
-  } else if (isObject(src)) {
-    dst = dst || {};
-
-    for (var key in src) {
-      if (!(key.charAt(0) === '$' && key.charAt(1) === '$')) {
-        dst[key] = src[key];
-      }
-    }
-  }
-
-  return dst || src;
-}
-
-/* global toDebugString: true */
+/* global: toDebugString: true */
 
 function serializeObject(obj) {
   var seen = [];
@@ -25067,7 +25586,6 @@ function toDebugString(obj) {
   $HttpParamSerializerJQLikeProvider,
   $HttpBackendProvider,
   $xhrFactoryProvider,
-  $jsonpCallbacksProvider,
   $LocationProvider,
   $LogProvider,
   $ParseProvider,
@@ -25105,11 +25623,11 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.5.8',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.6',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
-  dot: 8,
-  codeName: 'arbitrary-fallbacks'
+  dot: 6,
+  codeName: 'arrow-stringification'
 };
 
 
@@ -25140,7 +25658,7 @@ function publishExternalAPI(angular) {
     'isDate': isDate,
     'lowercase': lowercase,
     'uppercase': uppercase,
-    'callbacks': {$$counter: 0},
+    'callbacks': {counter: 0},
     'getTestability': getTestability,
     '$$minErr': minErr,
     '$$csp': csp,
@@ -25229,7 +25747,6 @@ function publishExternalAPI(angular) {
         $httpParamSerializerJQLike: $HttpParamSerializerJQLikeProvider,
         $httpBackend: $HttpBackendProvider,
         $xhrFactory: $xhrFactoryProvider,
-        $jsonpCallbacks: $jsonpCallbacksProvider,
         $location: $LocationProvider,
         $log: $LogProvider,
         $parse: $ParseProvider,
@@ -25306,7 +25823,7 @@ function publishExternalAPI(angular) {
  * ## Angular's jqLite
  * jqLite provides only the following jQuery methods:
  *
- * - [`addClass()`](http://api.jquery.com/addClass/) - Does not support a function as first argument
+ * - [`addClass()`](http://api.jquery.com/addClass/)
  * - [`after()`](http://api.jquery.com/after/)
  * - [`append()`](http://api.jquery.com/append/)
  * - [`attr()`](http://api.jquery.com/attr/) - Does not support functions as parameters
@@ -25333,7 +25850,7 @@ function publishExternalAPI(angular) {
  * - [`ready()`](http://api.jquery.com/ready/)
  * - [`remove()`](http://api.jquery.com/remove/)
  * - [`removeAttr()`](http://api.jquery.com/removeAttr/)
- * - [`removeClass()`](http://api.jquery.com/removeClass/) - Does not support a function as first argument
+ * - [`removeClass()`](http://api.jquery.com/removeClass/)
  * - [`removeData()`](http://api.jquery.com/removeData/)
  * - [`replaceWith()`](http://api.jquery.com/replaceWith/)
  * - [`text()`](http://api.jquery.com/text/)
@@ -25468,7 +25985,7 @@ function jqLiteBuildFragment(html, context) {
     nodes.push(context.createTextNode(html));
   } else {
     // Convert html into DOM nodes
-    tmp = fragment.appendChild(context.createElement("div"));
+    tmp = tmp || fragment.appendChild(context.createElement("div"));
     tag = (TAG_NAME_REGEXP.exec(html) || ["", ""])[1].toLowerCase();
     wrap = wrapMap[tag] || wrapMap._default;
     tmp.innerHTML = wrap[1] + html.replace(XHTML_TAG_REGEXP, "<$1></$2>") + wrap[2];
@@ -27281,10 +27798,10 @@ function createInjector(modulesToLoad, strictDi) {
       if (msie <= 11) {
         return false;
       }
-      // Support: Edge 12-13 only
-      // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/6156135/
+      // Workaround for MS Edge.
+      // Check https://connect.microsoft.com/IE/Feedback/Details/2211653
       return typeof func === 'function'
-        && /^(?:class\b|constructor\()/.test(stringifyFn(func));
+        && /^(?:class\s|constructor\()/.test(stringifyFn(func));
     }
 
     function invoke(fn, self, locals, serviceName) {
@@ -28025,13 +28542,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @param {DOMElement} parent the parent element which will append the element as
        *   a child (so long as the after element is not present)
        * @param {DOMElement=} after the sibling element after which the element will be appended
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -28057,13 +28568,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @param {DOMElement} parent the parent element which will append the element as
        *   a child (so long as the after element is not present)
        * @param {DOMElement=} after the sibling element after which the element will be appended
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -28084,13 +28589,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * digest once the animation has completed.
        *
        * @param {DOMElement} element the element which will be removed from the DOM
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -28114,13 +28613,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        *
        * @param {DOMElement} element the element which the CSS classes will be applied to
        * @param {string} className the CSS class(es) that will be added (multiple classes are separated via spaces)
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -28144,13 +28637,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        *
        * @param {DOMElement} element the element which the CSS classes will be applied to
        * @param {string} className the CSS class(es) that will be removed (multiple classes are separated via spaces)
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -28175,13 +28662,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @param {DOMElement} element the element which the CSS classes will be applied to
        * @param {string} add the CSS class(es) that will be added (multiple classes are separated via spaces)
        * @param {string} remove the CSS class(es) that will be removed (multiple classes are separated via spaces)
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -28222,13 +28703,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @param {string=} className an optional CSS class that will be applied to the element for the duration of the animation. If
        *    this value is left as empty then a CSS class of `ng-inline-animate` will be applied to the element.
        *    (Note that if no animation is detected then this value will not be applied to the element.)
-       * @param {object=} options an optional collection of options/styles that will be applied to the element.
-       *   The object can have the following properties:
-       *
-       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
-       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+       * @param {object=} options an optional collection of options/styles that will be applied to the element
        *
        * @return {Promise} the animation callback promise
        */
@@ -29316,9 +29791,8 @@ function $TemplateCacheProvider() {
  * There are many different options for a directive.
  *
  * The difference resides in the return value of the factory function.
- * You can either return a {@link $compile#directive-definition-object Directive Definition Object (see below)}
- * that defines the directive properties, or just the `postLink` function (all other properties will have
- * the default values).
+ * You can either return a "Directive Definition Object" (see below) that defines the directive properties,
+ * or just the `postLink` function (all other properties will have the default values).
  *
  * <div class="alert alert-success">
  * **Best Practice:** It's recommended to use the "directive definition object" form.
@@ -29382,125 +29856,6 @@ function $TemplateCacheProvider() {
  *   });
  * ```
  *
- * ### Life-cycle hooks
- * Directive controllers can provide the following methods that are called by Angular at points in the life-cycle of the
- * directive:
- * * `$onInit()` - Called on each controller after all the controllers on an element have been constructed and
- *   had their bindings initialized (and before the pre &amp; post linking functions for the directives on
- *   this element). This is a good place to put initialization code for your controller.
- * * `$onChanges(changesObj)` - Called whenever one-way (`<`) or interpolation (`@`) bindings are updated. The
- *   `changesObj` is a hash whose keys are the names of the bound properties that have changed, and the values are an
- *   object of the form `{ currentValue, previousValue, isFirstChange() }`. Use this hook to trigger updates within a
- *   component such as cloning the bound value to prevent accidental mutation of the outer value.
- * * `$doCheck()` - Called on each turn of the digest cycle. Provides an opportunity to detect and act on
- *   changes. Any actions that you wish to take in response to the changes that you detect must be
- *   invoked from this hook; implementing this has no effect on when `$onChanges` is called. For example, this hook
- *   could be useful if you wish to perform a deep equality check, or to check a Date object, changes to which would not
- *   be detected by Angular's change detector and thus not trigger `$onChanges`. This hook is invoked with no arguments;
- *   if detecting changes, you must store the previous value(s) for comparison to the current values.
- * * `$onDestroy()` - Called on a controller when its containing scope is destroyed. Use this hook for releasing
- *   external resources, watches and event handlers. Note that components have their `$onDestroy()` hooks called in
- *   the same order as the `$scope.$broadcast` events are triggered, which is top down. This means that parent
- *   components will have their `$onDestroy()` hook called before child components.
- * * `$postLink()` - Called after this controller's element and its children have been linked. Similar to the post-link
- *   function this hook can be used to set up DOM event handlers and do direct DOM manipulation.
- *   Note that child elements that contain `templateUrl` directives will not have been compiled and linked since
- *   they are waiting for their template to load asynchronously and their own compilation and linking has been
- *   suspended until that occurs.
- *
- * #### Comparison with Angular 2 life-cycle hooks
- * Angular 2 also uses life-cycle hooks for its components. While the Angular 1 life-cycle hooks are similar there are
- * some differences that you should be aware of, especially when it comes to moving your code from Angular 1 to Angular 2:
- *
- * * Angular 1 hooks are prefixed with `$`, such as `$onInit`. Angular 2 hooks are prefixed with `ng`, such as `ngOnInit`.
- * * Angular 1 hooks can be defined on the controller prototype or added to the controller inside its constructor.
- *   In Angular 2 you can only define hooks on the prototype of the Component class.
- * * Due to the differences in change-detection, you may get many more calls to `$doCheck` in Angular 1 than you would to
- *   `ngDoCheck` in Angular 2
- * * Changes to the model inside `$doCheck` will trigger new turns of the digest loop, which will cause the changes to be
- *   propagated throughout the application.
- *   Angular 2 does not allow the `ngDoCheck` hook to trigger a change outside of the component. It will either throw an
- *   error or do nothing depending upon the state of `enableProdMode()`.
- *
- * #### Life-cycle hook examples
- *
- * This example shows how you can check for mutations to a Date object even though the identity of the object
- * has not changed.
- *
- * <example name="doCheckDateExample" module="do-check-module">
- *   <file name="app.js">
- *     angular.module('do-check-module', [])
- *       .component('app', {
- *         template:
- *           'Month: <input ng-model="$ctrl.month" ng-change="$ctrl.updateDate()">' +
- *           'Date: {{ $ctrl.date }}' +
- *           '<test date="$ctrl.date"></test>',
- *         controller: function() {
- *           this.date = new Date();
- *           this.month = this.date.getMonth();
- *           this.updateDate = function() {
- *             this.date.setMonth(this.month);
- *           };
- *         }
- *       })
- *       .component('test', {
- *         bindings: { date: '<' },
- *         template:
- *           '<pre>{{ $ctrl.log | json }}</pre>',
- *         controller: function() {
- *           var previousValue;
- *           this.log = [];
- *           this.$doCheck = function() {
- *             var currentValue = this.date && this.date.valueOf();
- *             if (previousValue !== currentValue) {
- *               this.log.push('doCheck: date mutated: ' + this.date);
- *               previousValue = currentValue;
- *             }
- *           };
- *         }
- *       });
- *   </file>
- *   <file name="index.html">
- *     <app></app>
- *   </file>
- * </example>
- *
- * This example show how you might use `$doCheck` to trigger changes in your component's inputs even if the
- * actual identity of the component doesn't change. (Be aware that cloning and deep equality checks on large
- * arrays or objects can have a negative impact on your application performance)
- *
- * <example name="doCheckArrayExample" module="do-check-module">
- *   <file name="index.html">
- *     <div ng-init="items = []">
- *       <button ng-click="items.push(items.length)">Add Item</button>
- *       <button ng-click="items = []">Reset Items</button>
- *       <pre>{{ items }}</pre>
- *       <test items="items"></test>
- *     </div>
- *   </file>
- *   <file name="app.js">
- *      angular.module('do-check-module', [])
- *        .component('test', {
- *          bindings: { items: '<' },
- *          template:
- *            '<pre>{{ $ctrl.log | json }}</pre>',
- *          controller: function() {
- *            this.log = [];
- *
- *            this.$doCheck = function() {
- *              if (this.items_ref !== this.items) {
- *                this.log.push('doCheck: items changed');
- *                this.items_ref = this.items;
- *              }
- *              if (!angular.equals(this.items_clone, this.items)) {
- *                this.log.push('doCheck: items mutated');
- *                this.items_clone = angular.copy(this.items);
- *              }
- *            };
- *          }
- *        });
- *   </file>
- * </example>
  *
  *
  * ### Directive Definition Object
@@ -29675,6 +30030,25 @@ function $TemplateCacheProvider() {
  *      then the default translusion is provided.
  *    The `$transclude` function also has a method on it, `$transclude.isSlotFilled(slotName)`, which returns
  *    `true` if the specified slot contains content (i.e. one or more DOM nodes).
+ *
+ * The controller can provide the following methods that act as life-cycle hooks:
+ * * `$onInit()` - Called on each controller after all the controllers on an element have been constructed and
+ *   had their bindings initialized (and before the pre &amp; post linking functions for the directives on
+ *   this element). This is a good place to put initialization code for your controller.
+ * * `$onChanges(changesObj)` - Called whenever one-way (`<`) or interpolation (`@`) bindings are updated. The
+ *   `changesObj` is a hash whose keys are the names of the bound properties that have changed, and the values are an
+ *   object of the form `{ currentValue, previousValue, isFirstChange() }`. Use this hook to trigger updates within a
+ *   component such as cloning the bound value to prevent accidental mutation of the outer value.
+ * * `$onDestroy()` - Called on a controller when its containing scope is destroyed. Use this hook for releasing
+ *   external resources, watches and event handlers. Note that components have their `$onDestroy()` hooks called in
+ *   the same order as the `$scope.$broadcast` events are triggered, which is top down. This means that parent
+ *   components will have their `$onDestroy()` hook called before child components.
+ * * `$postLink()` - Called after this controller's element and its children have been linked. Similar to the post-link
+ *   function this hook can be used to set up DOM event handlers and do direct DOM manipulation.
+ *   Note that child elements that contain `templateUrl` directives will not have been compiled and linked since
+ *   they are waiting for their template to load asynchronously and their own compilation and linking has been
+ *   suspended until that occurs.
+ *
  *
  * #### `require`
  * Require another directive and inject its controller as the fourth argument to the linking function. The
@@ -29873,8 +30247,8 @@ function $TemplateCacheProvider() {
  *     any other controller.
  *
  *   * `transcludeFn` - A transclude linking function pre-bound to the correct transclusion scope.
- *     This is the same as the `$transclude` parameter of directive controllers,
- *     see {@link ng.$compile#-controller- the controller section for details}.
+ *     This is the same as the `$transclude`
+ *     parameter of directive controllers, see there for details.
  *     `function([scope], cloneLinkingFn, futureParentElement)`.
  *
  * #### Pre-linking function
@@ -30676,19 +31050,11 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         }
         // We must run this hook in an apply since the $$postDigest runs outside apply
         $rootScope.$apply(function() {
-          var errors = [];
           for (var i = 0, ii = onChangesQueue.length; i < ii; ++i) {
-            try {
-              onChangesQueue[i]();
-            } catch (e) {
-              errors.push(e);
-            }
+            onChangesQueue[i]();
           }
           // Reset the queue to trigger a new schedule next time there is a change
           onChangesQueue = undefined;
-          if (errors.length) {
-            throw errors;
-          }
         });
       } finally {
         onChangesTtl++;
@@ -31329,30 +31695,24 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
           addTextInterpolateDirective(directives, node.nodeValue);
           break;
         case NODE_TYPE_COMMENT: /* Comment */
-          collectCommentDirectives(node, directives, attrs, maxPriority, ignoreDirective);
+          try {
+            match = COMMENT_DIRECTIVE_REGEXP.exec(node.nodeValue);
+            if (match) {
+              nName = directiveNormalize(match[1]);
+              if (addDirective(directives, nName, 'M', maxPriority, ignoreDirective)) {
+                attrs[nName] = trim(match[2]);
+              }
+            }
+          } catch (e) {
+            // turns out that under some circumstances IE9 throws errors when one attempts to read
+            // comment's node value.
+            // Just ignore it and continue. (Can't seem to reproduce in test case.)
+          }
           break;
       }
 
       directives.sort(byPriority);
       return directives;
-    }
-
-    function collectCommentDirectives(node, directives, attrs, maxPriority, ignoreDirective) {
-      // function created because of performance, try/catch disables
-      // the optimization of the whole function #14848
-      try {
-        var match = COMMENT_DIRECTIVE_REGEXP.exec(node.nodeValue);
-        if (match) {
-          var nName = directiveNormalize(match[1]);
-          if (addDirective(directives, nName, 'M', maxPriority, ignoreDirective)) {
-            attrs[nName] = trim(match[2]);
-          }
-        }
-      } catch (e) {
-        // turns out that under some circumstances IE9 throws errors when one attempts to read
-        // comment's node value.
-        // Just ignore it and continue. (Can't seem to reproduce in test case.)
-      }
     }
 
     /**
@@ -31870,22 +32230,10 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         forEach(elementControllers, function(controller) {
           var controllerInstance = controller.instance;
           if (isFunction(controllerInstance.$onChanges)) {
-            try {
-              controllerInstance.$onChanges(controller.bindingInfo.initialChanges);
-            } catch (e) {
-              $exceptionHandler(e);
-            }
+            controllerInstance.$onChanges(controller.bindingInfo.initialChanges);
           }
           if (isFunction(controllerInstance.$onInit)) {
-            try {
-              controllerInstance.$onInit();
-            } catch (e) {
-              $exceptionHandler(e);
-            }
-          }
-          if (isFunction(controllerInstance.$doCheck)) {
-            controllerScope.$watch(function() { controllerInstance.$doCheck(); });
-            controllerInstance.$doCheck();
+            controllerInstance.$onInit();
           }
           if (isFunction(controllerInstance.$onDestroy)) {
             controllerScope.$on('$destroy', function callOnDestroyHook() {
@@ -32149,16 +32497,18 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
       // copy the new attributes on the old attrs object
       forEach(src, function(value, key) {
-        // Check if we already set this attribute in the loop above.
-        // `dst` will never contain hasOwnProperty as DOM parser won't let it.
-        // You will get an "InvalidCharacterError: DOM Exception 5" error if you
-        // have an attribute like "has-own-property" or "data-has-own-property", etc.
-        if (!dst.hasOwnProperty(key) && key.charAt(0) !== '$') {
+        if (key == 'class') {
+          safeAddClass($element, value);
+          dst['class'] = (dst['class'] ? dst['class'] + ' ' : '') + value;
+        } else if (key == 'style') {
+          $element.attr('style', $element.attr('style') + ';' + value);
+          dst['style'] = (dst['style'] ? dst['style'] + ';' : '') + value;
+          // `dst` will never contain hasOwnProperty as DOM parser won't let it.
+          // You will get an "InvalidCharacterError: DOM Exception 5" error if you
+          // have an attribute like "has-own-property" or "data-has-own-property", etc.
+        } else if (key.charAt(0) != '$' && !dst.hasOwnProperty(key)) {
           dst[key] = value;
-
-          if (key !== 'class' && key !== 'style') {
-            dstAttr[key] = srcAttr[key];
-          }
+          dstAttr[key] = srcAttr[key];
         }
       });
     }
@@ -32533,7 +32883,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       forEach(bindings, function initializeBinding(definition, scopeName) {
         var attrName = definition.attrName,
         optional = definition.optional,
-        mode = definition.mode, // @, =, <, or &
+        mode = definition.mode, // @, =, or &
         lastValue,
         parentGet, parentSet, compare, removeWatch;
 
@@ -33019,20 +33369,17 @@ function $DocumentProvider() {
  *
  * ## Example:
  *
- * The example below will overwrite the default `$exceptionHandler` in order to (a) log uncaught
- * errors to the backend for later inspection by the developers and (b) to use `$log.warn()` instead
- * of `$log.error()`.
- *
  * ```js
- *   angular.
- *     module('exceptionOverwrite', []).
- *     factory('$exceptionHandler', ['$log', 'logErrorsToBackend', function($log, logErrorsToBackend) {
- *       return function myExceptionHandler(exception, cause) {
- *         logErrorsToBackend(exception, cause);
- *         $log.warn(exception, cause);
- *       };
- *     }]);
+ *   angular.module('exceptionOverride', []).factory('$exceptionHandler', function() {
+ *     return function(exception, cause) {
+ *       exception.message += ' (caused by "' + cause + '")';
+ *       throw exception;
+ *     };
+ *   });
  * ```
+ *
+ * This example will override the normal action of `$exceptionHandler`, to make angular
+ * exceptions fail hard when they happen, instead of just logging to the console.
  *
  * <hr />
  * Note, that code executed in event-listeners (even those registered using jqLite's `on`/`bind`
@@ -33043,7 +33390,7 @@ function $DocumentProvider() {
  * `try { ... } catch(e) { $exceptionHandler(e); }`
  *
  * @param {Error} exception Exception associated with the error.
- * @param {string=} cause Optional information about the context in which
+ * @param {string=} cause optional information about the context in which
  *       the error was thrown.
  *
  */
@@ -33113,7 +33460,7 @@ function $HttpParamSerializerProvider() {
    * * `{'foo': 'bar'}` results in `foo=bar`
    * * `{'foo': Date.now()}` results in `foo=2015-04-01T09%3A50%3A49.262Z` (`toISOString()` and encoded representation of a Date object)
    * * `{'foo': ['bar', 'baz']}` results in `foo=bar&foo=baz` (repeated key for each array element)
-   * * `{'foo': {'bar':'baz'}}` results in `foo=%7B%22bar%22%3A%22baz%22%7D` (stringified and encoded representation of an object)
+   * * `{'foo': {'bar':'baz'}}` results in `foo=%7B%22bar%22%3A%22baz%22%7D"` (stringified and encoded representation of an object)
    *
    * Note that serializer will sort the request parameters alphabetically.
    * */
@@ -33664,7 +34011,7 @@ function $HttpProvider() {
      *
      * ### Overriding the Default Transformations Per Request
      *
-     * If you wish to override the request/response transformations only for a single request then provide
+     * If you wish override the request/response transformations only for a single request then provide
      * `transformRequest` and/or `transformResponse` properties on the configuration object passed
      * into `$http`.
      *
@@ -33707,7 +34054,7 @@ function $HttpProvider() {
      *   * cache a specific response - set config.cache value to TRUE or to a cache object
      *
      * If caching is enabled, but neither the default cache nor config.cache are set to a cache object,
-     * then the default `$cacheFactory("$http")` object is used.
+     * then the default `$cacheFactory($http)` object is used.
      *
      * The default cache value can be set by updating the
      * {@link ng.$http#defaults `$http.defaults.cache`} property or the
@@ -34035,25 +34382,48 @@ function $HttpProvider() {
       config.headers = mergeHeaders(requestConfig);
       config.method = uppercase(config.method);
       config.paramSerializer = isString(config.paramSerializer) ?
-          $injector.get(config.paramSerializer) : config.paramSerializer;
+        $injector.get(config.paramSerializer) : config.paramSerializer;
 
-      var requestInterceptors = [];
-      var responseInterceptors = [];
+      var serverRequest = function(config) {
+        var headers = config.headers;
+        var reqData = transformData(config.data, headersGetter(headers), undefined, config.transformRequest);
+
+        // strip content-type if data is undefined
+        if (isUndefined(reqData)) {
+          forEach(headers, function(value, header) {
+            if (lowercase(header) === 'content-type') {
+                delete headers[header];
+            }
+          });
+        }
+
+        if (isUndefined(config.withCredentials) && !isUndefined(defaults.withCredentials)) {
+          config.withCredentials = defaults.withCredentials;
+        }
+
+        // send request
+        return sendReq(config, reqData).then(transformResponse, transformResponse);
+      };
+
+      var chain = [serverRequest, undefined];
       var promise = $q.when(config);
 
       // apply interceptors
       forEach(reversedInterceptors, function(interceptor) {
         if (interceptor.request || interceptor.requestError) {
-          requestInterceptors.unshift(interceptor.request, interceptor.requestError);
+          chain.unshift(interceptor.request, interceptor.requestError);
         }
         if (interceptor.response || interceptor.responseError) {
-          responseInterceptors.push(interceptor.response, interceptor.responseError);
+          chain.push(interceptor.response, interceptor.responseError);
         }
       });
 
-      promise = chainInterceptors(promise, requestInterceptors);
-      promise = promise.then(serverRequest);
-      promise = chainInterceptors(promise, responseInterceptors);
+      while (chain.length) {
+        var thenFn = chain.shift();
+        var rejectFn = chain.shift();
+
+        promise = promise.then(thenFn, rejectFn);
+      }
 
       if (useLegacyPromise) {
         promise.success = function(fn) {
@@ -34080,18 +34450,14 @@ function $HttpProvider() {
 
       return promise;
 
-
-      function chainInterceptors(promise, interceptors) {
-        for (var i = 0, ii = interceptors.length; i < ii;) {
-          var thenFn = interceptors[i++];
-          var rejectFn = interceptors[i++];
-
-          promise = promise.then(thenFn, rejectFn);
-        }
-
-        interceptors.length = 0;
-
-        return promise;
+      function transformResponse(response) {
+        // make a copy since the response must be cacheable
+        var resp = extend({}, response);
+        resp.data = transformData(response.data, response.headers, response.status,
+                                  config.transformResponse);
+        return (isSuccess(response.status))
+          ? resp
+          : $q.reject(resp);
       }
 
       function executeHeaderFns(headers, config) {
@@ -34134,37 +34500,6 @@ function $HttpProvider() {
 
         // execute if header value is a function for merged headers
         return executeHeaderFns(reqHeaders, shallowCopy(config));
-      }
-
-      function serverRequest(config) {
-        var headers = config.headers;
-        var reqData = transformData(config.data, headersGetter(headers), undefined, config.transformRequest);
-
-        // strip content-type if data is undefined
-        if (isUndefined(reqData)) {
-          forEach(headers, function(value, header) {
-            if (lowercase(header) === 'content-type') {
-              delete headers[header];
-            }
-          });
-        }
-
-        if (isUndefined(config.withCredentials) && !isUndefined(defaults.withCredentials)) {
-          config.withCredentials = defaults.withCredentials;
-        }
-
-        // send request
-        return sendReq(config, reqData).then(transformResponse, transformResponse);
-      }
-
-      function transformResponse(response) {
-        // make a copy since the response must be cacheable
-        var resp = extend({}, response);
-        resp.data = transformData(response.data, response.headers, response.status,
-                                  config.transformResponse);
-        return (isSuccess(response.status))
-          ? resp
-          : $q.reject(resp);
       }
     }
 
@@ -34212,8 +34547,6 @@ function $HttpProvider() {
      *
      * @description
      * Shortcut method to perform `JSONP` request.
-     * If you would like to customise where and how the callbacks are stored then try overriding
-     * or decorating the {@link $jsonpCallbacks} service.
      *
      * @param {string} url Relative or absolute URL specifying the destination of the request.
      *                     The name of the callback should be the string `JSON_CALLBACK`.
@@ -34487,7 +34820,7 @@ function $xhrFactoryProvider() {
 /**
  * @ngdoc service
  * @name $httpBackend
- * @requires $jsonpCallbacks
+ * @requires $window
  * @requires $document
  * @requires $xhrFactory
  *
@@ -34502,8 +34835,8 @@ function $xhrFactoryProvider() {
  * $httpBackend} which can be trained with responses.
  */
 function $HttpBackendProvider() {
-  this.$get = ['$browser', '$jsonpCallbacks', '$document', '$xhrFactory', function($browser, $jsonpCallbacks, $document, $xhrFactory) {
-    return createHttpBackend($browser, $xhrFactory, $browser.defer, $jsonpCallbacks, $document[0]);
+  this.$get = ['$browser', '$window', '$document', '$xhrFactory', function($browser, $window, $document, $xhrFactory) {
+    return createHttpBackend($browser, $xhrFactory, $browser.defer, $window.angular.callbacks, $document[0]);
   }];
 }
 
@@ -34513,13 +34846,17 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
     $browser.$$incOutstandingRequestCount();
     url = url || $browser.url();
 
-    if (lowercase(method) === 'jsonp') {
-      var callbackPath = callbacks.createCallback(url);
-      var jsonpDone = jsonpReq(url, callbackPath, function(status, text) {
-        // jsonpReq only ever sets status to 200 (OK), 404 (ERROR) or -1 (WAITING)
-        var response = (status === 200) && callbacks.getResponse(callbackPath);
-        completeRequest(callback, status, response, "", text);
-        callbacks.removeCallback(callbackPath);
+    if (lowercase(method) == 'jsonp') {
+      var callbackId = '_' + (callbacks.counter++).toString(36);
+      callbacks[callbackId] = function(data) {
+        callbacks[callbackId].data = data;
+        callbacks[callbackId].called = true;
+      };
+
+      var jsonpDone = jsonpReq(url.replace('JSON_CALLBACK', 'angular.callbacks.' + callbackId),
+          callbackId, function(status, text) {
+        completeRequest(callback, status, callbacks[callbackId].data, "", text);
+        callbacks[callbackId] = noop;
       });
     } else {
 
@@ -34621,8 +34958,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
     }
   };
 
-  function jsonpReq(url, callbackPath, done) {
-    url = url.replace('JSON_CALLBACK', callbackPath);
+  function jsonpReq(url, callbackId, done) {
     // we can't use jQuery/jqLite here because jQuery does crazy stuff with script elements, e.g.:
     // - fetches local scripts via XHR and evals them
     // - adds and immediately removes script elements from the document
@@ -34640,7 +34976,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
       var text = "unknown";
 
       if (event) {
-        if (event.type === "load" && !callbacks.wasCalled(callbackPath)) {
+        if (event.type === "load" && !callbacks[callbackId].called) {
           event = { type: "error" };
         }
         text = event.type;
@@ -34839,7 +35175,7 @@ function $InterpolateProvider() {
      *
      * `allOrNothing` is useful for interpolating URLs. `ngSrc` and `ngSrcset` use this behavior.
      *
-     * #### Escaped Interpolation
+     * ####Escaped Interpolation
      * $interpolate provides a mechanism for escaping interpolation markers. Start and end markers
      * can be escaped by preceding each of their characters with a REVERSE SOLIDUS U+005C (backslash).
      * It will be rendered as a regular start/end marker, and will not be interpreted as an expression
@@ -35264,87 +35600,6 @@ function $IntervalProvider() {
 
 /**
  * @ngdoc service
- * @name $jsonpCallbacks
- * @requires $window
- * @description
- * This service handles the lifecycle of callbacks to handle JSONP requests.
- * Override this service if you wish to customise where the callbacks are stored and
- * how they vary compared to the requested url.
- */
-var $jsonpCallbacksProvider = function() {
-  this.$get = ['$window', function($window) {
-    var callbacks = $window.angular.callbacks;
-    var callbackMap = {};
-
-    function createCallback(callbackId) {
-      var callback = function(data) {
-        callback.data = data;
-        callback.called = true;
-      };
-      callback.id = callbackId;
-      return callback;
-    }
-
-    return {
-      /**
-       * @ngdoc method
-       * @name $jsonpCallbacks#createCallback
-       * @param {string} url the url of the JSONP request
-       * @returns {string} the callback path to send to the server as part of the JSONP request
-       * @description
-       * {@link $httpBackend} calls this method to create a callback and get hold of the path to the callback
-       * to pass to the server, which will be used to call the callback with its payload in the JSONP response.
-       */
-      createCallback: function(url) {
-        var callbackId = '_' + (callbacks.$$counter++).toString(36);
-        var callbackPath = 'angular.callbacks.' + callbackId;
-        var callback = createCallback(callbackId);
-        callbackMap[callbackPath] = callbacks[callbackId] = callback;
-        return callbackPath;
-      },
-      /**
-       * @ngdoc method
-       * @name $jsonpCallbacks#wasCalled
-       * @param {string} callbackPath the path to the callback that was sent in the JSONP request
-       * @returns {boolean} whether the callback has been called, as a result of the JSONP response
-       * @description
-       * {@link $httpBackend} calls this method to find out whether the JSONP response actually called the
-       * callback that was passed in the request.
-       */
-      wasCalled: function(callbackPath) {
-        return callbackMap[callbackPath].called;
-      },
-      /**
-       * @ngdoc method
-       * @name $jsonpCallbacks#getResponse
-       * @param {string} callbackPath the path to the callback that was sent in the JSONP request
-       * @returns {*} the data received from the response via the registered callback
-       * @description
-       * {@link $httpBackend} calls this method to get hold of the data that was provided to the callback
-       * in the JSONP response.
-       */
-      getResponse: function(callbackPath) {
-        return callbackMap[callbackPath].data;
-      },
-      /**
-       * @ngdoc method
-       * @name $jsonpCallbacks#removeCallback
-       * @param {string} callbackPath the path to the callback that was sent in the JSONP request
-       * @description
-       * {@link $httpBackend} calls this method to remove the callback after the JSONP request has
-       * completed or timed-out.
-       */
-      removeCallback: function(callbackPath) {
-        var callback = callbackMap[callbackPath];
-        delete callbacks[callback.id];
-        delete callbackMap[callbackPath];
-      }
-    };
-  }];
-};
-
-/**
- * @ngdoc service
  * @name $locale
  *
  * @description
@@ -35681,12 +35936,6 @@ function LocationHashbangInHtml5Url(appBase, appBaseNoFile, hashPrefix) {
 
 
 var locationPrototype = {
-
-  /**
-   * Ensure absolute url is initialized.
-   * @private
-   */
-  $$absUrl:'',
 
   /**
    * Are we in html5 mode?
@@ -37061,7 +37310,7 @@ AST.prototype = {
     var args = [];
     if (this.peekToken().text !== ')') {
       do {
-        args.push(this.filterChain());
+        args.push(this.expression());
       } while (this.expect(','));
     }
     return args;
@@ -38788,7 +39037,7 @@ function $ParseProvider() {
  *
  * **Methods**
  *
- * - `then(successCallback, [errorCallback], [notifyCallback])` – regardless of when the promise was or
+ * - `then(successCallback, errorCallback, notifyCallback)` – regardless of when the promise was or
  *   will be resolved or rejected, `then` calls one of the success or error callbacks asynchronously
  *   as soon as the result is available. The callbacks are called with a single argument: the result
  *   or rejection reason. Additionally, the notify callback may be called zero or more times to
@@ -38799,8 +39048,7 @@ function $ParseProvider() {
  *   with the value which is resolved in that promise using
  *   [promise chaining](http://www.html5rocks.com/en/tutorials/es6/promises/#toc-promises-queues)).
  *   It also notifies via the return value of the `notifyCallback` method. The promise cannot be
- *   resolved or rejected from the notifyCallback method. The errorCallback and notifyCallback
- *   arguments are optional.
+ *   resolved or rejected from the notifyCallback method.
  *
  * - `catch(errorCallback)` – shorthand for `promise.then(null, errorCallback)`
  *
@@ -39215,30 +39463,6 @@ function qFactory(nextTick, exceptionHandler) {
     return deferred.promise;
   }
 
-  /**
-   * @ngdoc method
-   * @name $q#race
-   * @kind function
-   *
-   * @description
-   * Returns a promise that resolves or rejects as soon as one of those promises
-   * resolves or rejects, with the value or reason from that promise.
-   *
-   * @param {Array.<Promise>|Object.<Promise>} promises An array or hash of promises.
-   * @returns {Promise} a promise that resolves or rejects as soon as one of the `promises`
-   * resolves or rejects, with the value or reason from that promise.
-   */
-
-  function race(promises) {
-    var deferred = defer();
-
-    forEach(promises, function(promise) {
-      when(promise).then(deferred.resolve, deferred.reject);
-    });
-
-    return deferred.promise;
-  }
-
   var $Q = function Q(resolver) {
     if (!isFunction(resolver)) {
       throw $qMinErr('norslvr', "Expected resolverFn, got '{0}'", resolver);
@@ -39268,7 +39492,6 @@ function qFactory(nextTick, exceptionHandler) {
   $Q.when = when;
   $Q.resolve = resolve;
   $Q.all = all;
-  $Q.race = race;
 
   return $Q;
 }
@@ -42620,11 +42843,10 @@ function $FilterProvider($provide) {
  *   - `Object`: A pattern object can be used to filter specific properties on objects contained
  *     by `array`. For example `{name:"M", phone:"1"}` predicate will return an array of items
  *     which have property `name` containing "M" and property `phone` containing "1". A special
- *     property name (`$` by default) can be used (e.g. as in `{$: "text"}`) to accept a match
- *     against any property of the object or its nested object properties. That's equivalent to the
- *     simple substring match with a `string` as described above. The special property name can be
- *     overwritten, using the `anyPropertyKey` parameter.
- *     The predicate can be negated by prefixing the string with `!`.
+ *     property name `$` can be used (as in `{$:"text"}`) to accept a match against any
+ *     property of the object or its nested object properties. That's equivalent to the simple
+ *     substring match with a `string` as described above. The predicate can be negated by prefixing
+ *     the string with `!`.
  *     For example `{name: "!M"}` predicate will return an array of items which have property `name`
  *     not containing "M".
  *
@@ -42657,9 +42879,6 @@ function $FilterProvider($provide) {
  *
  *     Primitive values are converted to strings. Objects are not compared against primitives,
  *     unless they have a custom `toString` method (e.g. `Date` objects).
- *
- * @param {string=} anyPropertyKey The special property name that matches against any property.
- *     By default `$`.
  *
  * @example
    <example>
@@ -42729,9 +42948,8 @@ function $FilterProvider($provide) {
      </file>
    </example>
  */
-
 function filterFilter() {
-  return function(array, expression, comparator, anyPropertyKey) {
+  return function(array, expression, comparator) {
     if (!isArrayLike(array)) {
       if (array == null) {
         return array;
@@ -42740,7 +42958,6 @@ function filterFilter() {
       }
     }
 
-    anyPropertyKey = anyPropertyKey || '$';
     var expressionType = getTypeForFilter(expression);
     var predicateFn;
     var matchAgainstAnyProp;
@@ -42757,7 +42974,7 @@ function filterFilter() {
         //jshint -W086
       case 'object':
         //jshint +W086
-        predicateFn = createPredicateFn(expression, comparator, anyPropertyKey, matchAgainstAnyProp);
+        predicateFn = createPredicateFn(expression, comparator, matchAgainstAnyProp);
         break;
       default:
         return array;
@@ -42768,8 +42985,8 @@ function filterFilter() {
 }
 
 // Helper functions for `filterFilter`
-function createPredicateFn(expression, comparator, anyPropertyKey, matchAgainstAnyProp) {
-  var shouldMatchPrimitives = isObject(expression) && (anyPropertyKey in expression);
+function createPredicateFn(expression, comparator, matchAgainstAnyProp) {
+  var shouldMatchPrimitives = isObject(expression) && ('$' in expression);
   var predicateFn;
 
   if (comparator === true) {
@@ -42797,25 +43014,25 @@ function createPredicateFn(expression, comparator, anyPropertyKey, matchAgainstA
 
   predicateFn = function(item) {
     if (shouldMatchPrimitives && !isObject(item)) {
-      return deepCompare(item, expression[anyPropertyKey], comparator, anyPropertyKey, false);
+      return deepCompare(item, expression.$, comparator, false);
     }
-    return deepCompare(item, expression, comparator, anyPropertyKey, matchAgainstAnyProp);
+    return deepCompare(item, expression, comparator, matchAgainstAnyProp);
   };
 
   return predicateFn;
 }
 
-function deepCompare(actual, expected, comparator, anyPropertyKey, matchAgainstAnyProp, dontMatchWholeObject) {
+function deepCompare(actual, expected, comparator, matchAgainstAnyProp, dontMatchWholeObject) {
   var actualType = getTypeForFilter(actual);
   var expectedType = getTypeForFilter(expected);
 
   if ((expectedType === 'string') && (expected.charAt(0) === '!')) {
-    return !deepCompare(actual, expected.substring(1), comparator, anyPropertyKey, matchAgainstAnyProp);
+    return !deepCompare(actual, expected.substring(1), comparator, matchAgainstAnyProp);
   } else if (isArray(actual)) {
     // In case `actual` is an array, consider it a match
     // if ANY of it's items matches `expected`
     return actual.some(function(item) {
-      return deepCompare(item, expected, comparator, anyPropertyKey, matchAgainstAnyProp);
+      return deepCompare(item, expected, comparator, matchAgainstAnyProp);
     });
   }
 
@@ -42824,11 +43041,11 @@ function deepCompare(actual, expected, comparator, anyPropertyKey, matchAgainstA
       var key;
       if (matchAgainstAnyProp) {
         for (key in actual) {
-          if ((key.charAt(0) !== '$') && deepCompare(actual[key], expected, comparator, anyPropertyKey, true)) {
+          if ((key.charAt(0) !== '$') && deepCompare(actual[key], expected, comparator, true)) {
             return true;
           }
         }
-        return dontMatchWholeObject ? false : deepCompare(actual, expected, comparator, anyPropertyKey, false);
+        return dontMatchWholeObject ? false : deepCompare(actual, expected, comparator, false);
       } else if (expectedType === 'object') {
         for (key in expected) {
           var expectedVal = expected[key];
@@ -42836,9 +43053,9 @@ function deepCompare(actual, expected, comparator, anyPropertyKey, matchAgainstA
             continue;
           }
 
-          var matchAnyProperty = key === anyPropertyKey;
+          var matchAnyProperty = key === '$';
           var actualVal = matchAnyProperty ? actual : actual[key];
-          if (!deepCompare(actualVal, expectedVal, comparator, anyPropertyKey, matchAnyProperty, matchAnyProperty)) {
+          if (!deepCompare(actualVal, expectedVal, comparator, matchAnyProperty, matchAnyProperty)) {
             return false;
           }
         }
@@ -43576,22 +43793,21 @@ var uppercaseFilter = valueFn(uppercase);
  * @kind function
  *
  * @description
- * Creates a new array or string containing only a specified number of elements. The elements are
- * taken from either the beginning or the end of the source array, string or number, as specified by
- * the value and sign (positive or negative) of `limit`. Other array-like objects are also supported
- * (e.g. array subclasses, NodeLists, jqLite/jQuery collections etc). If a number is used as input,
- * it is converted to a string.
+ * Creates a new array or string containing only a specified number of elements. The elements
+ * are taken from either the beginning or the end of the source array, string or number, as specified by
+ * the value and sign (positive or negative) of `limit`. If a number is used as input, it is
+ * converted to a string.
  *
- * @param {Array|ArrayLike|string|number} input - Array/array-like, string or number to be limited.
- * @param {string|number} limit - The length of the returned array or string. If the `limit` number
+ * @param {Array|string|number} input Source array, string or number to be limited.
+ * @param {string|number} limit The length of the returned array or string. If the `limit` number
  *     is positive, `limit` number of items from the beginning of the source array/string are copied.
  *     If the number is negative, `limit` number  of items from the end of the source array/string
  *     are copied. The `limit` will be trimmed if it exceeds `array.length`. If `limit` is undefined,
  *     the input will be returned unchanged.
- * @param {(string|number)=} begin - Index at which to begin limitation. As a negative index,
- *     `begin` indicates an offset from the end of `input`. Defaults to `0`.
- * @returns {Array|string} A new sub-array or substring of length `limit` or less if the input had
- *     less than `limit` elements.
+ * @param {(string|number)=} begin Index at which to begin limitation. As a negative index, `begin`
+ *     indicates an offset from the end of `input`. Defaults to `0`.
+ * @returns {Array|string} A new sub-array or substring of length `limit` or less if input array
+ *     had less than `limit` elements.
  *
  * @example
    <example module="limitToExample">
@@ -43679,27 +43895,21 @@ function limitToFilter() {
     if (isNaN(limit)) return input;
 
     if (isNumber(input)) input = input.toString();
-    if (!isArrayLike(input)) return input;
+    if (!isArray(input) && !isString(input)) return input;
 
     begin = (!begin || isNaN(begin)) ? 0 : toInt(begin);
     begin = (begin < 0) ? Math.max(0, input.length + begin) : begin;
 
     if (limit >= 0) {
-      return sliceFn(input, begin, begin + limit);
+      return input.slice(begin, begin + limit);
     } else {
       if (begin === 0) {
-        return sliceFn(input, limit, input.length);
+        return input.slice(limit, input.length);
       } else {
-        return sliceFn(input, Math.max(0, begin + limit), begin);
+        return input.slice(Math.max(0, begin + limit), begin);
       }
     }
   };
-}
-
-function sliceFn(input, begin, end) {
-  if (isString(input)) return input.slice(begin, end);
-
-  return slice.call(input, begin, end);
 }
 
 /**
@@ -43708,128 +43918,44 @@ function sliceFn(input, begin, end) {
  * @kind function
  *
  * @description
- * Returns an array containing the items from the specified `collection`, ordered by a `comparator`
- * function based on the values computed using the `expression` predicate.
+ * Orders a specified `array` by the `expression` predicate. It is ordered alphabetically
+ * for strings and numerically for numbers. Note: if you notice numbers are not being sorted
+ * as expected, make sure they are actually being saved as numbers and not strings.
+ * Array-like values (e.g. NodeLists, jQuery objects, TypedArrays, Strings, etc) are also supported.
  *
- * For example, `[{id: 'foo'}, {id: 'bar'}] | orderBy:'id'` would result in
- * `[{id: 'bar'}, {id: 'foo'}]`.
- *
- * The `collection` can be an Array or array-like object (e.g. NodeList, jQuery object, TypedArray,
- * String, etc).
- *
- * The `expression` can be a single predicate, or a list of predicates each serving as a tie-breaker
- * for the preceeding one. The `expression` is evaluated against each item and the output is used
- * for comparing with other items.
- *
- * You can change the sorting order by setting `reverse` to `true`. By default, items are sorted in
- * ascending order.
- *
- * The comparison is done using the `comparator` function. If none is specified, a default, built-in
- * comparator is used (see below for details - in a nutshell, it compares numbers numerically and
- * strings alphabetically).
- *
- * ### Under the hood
- *
- * Ordering the specified `collection` happens in two phases:
- *
- * 1. All items are passed through the predicate (or predicates), and the returned values are saved
- *    along with their type (`string`, `number` etc). For example, an item `{label: 'foo'}`, passed
- *    through a predicate that extracts the value of the `label` property, would be transformed to:
- *    ```
- *    {
- *      value: 'foo',
- *      type: 'string',
- *      index: ...
- *    }
- *    ```
- * 2. The comparator function is used to sort the items, based on the derived values, types and
- *    indices.
- *
- * If you use a custom comparator, it will be called with pairs of objects of the form
- * `{value: ..., type: '...', index: ...}` and is expected to return `0` if the objects are equal
- * (as far as the comparator is concerned), `-1` if the 1st one should be ranked higher than the
- * second, or `1` otherwise.
- *
- * In order to ensure that the sorting will be deterministic across platforms, if none of the
- * specified predicates can distinguish between two items, `orderBy` will automatically introduce a
- * dummy predicate that returns the item's index as `value`.
- * (If you are using a custom comparator, make sure it can handle this predicate as well.)
- *
- * Finally, in an attempt to simplify things, if a predicate returns an object as the extracted
- * value for an item, `orderBy` will try to convert that object to a primitive value, before passing
- * it to the comparator. The following rules govern the conversion:
- *
- * 1. If the object has a `valueOf()` method that returns a primitive, its return value will be
- *    used instead.<br />
- *    (If the object has a `valueOf()` method that returns another object, then the returned object
- *    will be used in subsequent steps.)
- * 2. If the object has a custom `toString()` method (i.e. not the one inherited from `Object`) that
- *    returns a primitive, its return value will be used instead.<br />
- *    (If the object has a `toString()` method that returns another object, then the returned object
- *    will be used in subsequent steps.)
- * 3. No conversion; the object itself is used.
- *
- * ### The default comparator
- *
- * The default, built-in comparator should be sufficient for most usecases. In short, it compares
- * numbers numerically, strings alphabetically (and case-insensitively), for objects falls back to
- * using their index in the original collection, and sorts values of different types by type.
- *
- * More specifically, it follows these steps to determine the relative order of items:
- *
- * 1. If the compared values are of different types, compare the types themselves alphabetically.
- * 2. If both values are of type `string`, compare them alphabetically in a case- and
- *    locale-insensitive way.
- * 3. If both values are objects, compare their indices instead.
- * 4. Otherwise, return:
- *    -  `0`, if the values are equal (by strict equality comparison, i.e. using `===`).
- *    - `-1`, if the 1st value is "less than" the 2nd value (compared using the `<` operator).
- *    -  `1`, otherwise.
- *
- * **Note:** If you notice numbers not being sorted as expected, make sure they are actually being
- *           saved as numbers and not strings.
- *
- * @param {Array|ArrayLike} collection - The collection (array or array-like object) to sort.
- * @param {(Function|string|Array.<Function|string>)=} expression - A predicate (or list of
- *    predicates) to be used by the comparator to determine the order of elements.
+ * @param {Array} array The array (or array-like object) to sort.
+ * @param {function(*)|string|Array.<(function(*)|string)>=} expression A predicate to be
+ *    used by the comparator to determine the order of elements.
  *
  *    Can be one of:
  *
- *    - `Function`: A getter function. This function will be called with each item as argument and
- *      the return value will be used for sorting.
- *    - `string`: An Angular expression. This expression will be evaluated against each item and the
- *      result will be used for sorting. For example, use `'label'` to sort by a property called
- *      `label` or `'label.substring(0, 3)'` to sort by the first 3 characters of the `label`
- *      property.<br />
- *      (The result of a constant expression is interpreted as a property name to be used for
- *      comparison. For example, use `'"special name"'` (note the extra pair of quotes) to sort by a
- *      property called `special name`.)<br />
- *      An expression can be optionally prefixed with `+` or `-` to control the sorting direction,
- *      ascending or descending. For example, `'+label'` or `'-label'`. If no property is provided,
- *      (e.g. `'+'` or `'-'`), the collection element itself is used in comparisons.
- *    - `Array`: An array of function and/or string predicates. If a predicate cannot determine the
- *      relative order of two items, the next predicate is used as a tie-breaker.
+ *    - `function`: Getter function. The result of this function will be sorted using the
+ *      `<`, `===`, `>` operator.
+ *    - `string`: An Angular expression. The result of this expression is used to compare elements
+ *      (for example `name` to sort by a property called `name` or `name.substr(0, 3)` to sort by
+ *      3 first characters of a property called `name`). The result of a constant expression
+ *      is interpreted as a property name to be used in comparisons (for example `"special name"`
+ *      to sort object by the value of their `special name` property). An expression can be
+ *      optionally prefixed with `+` or `-` to control ascending or descending sort order
+ *      (for example, `+name` or `-name`). If no property is provided, (e.g. `'+'`) then the array
+ *      element itself is used to compare where sorting.
+ *    - `Array`: An array of function or string predicates. The first predicate in the array
+ *      is used for sorting, but when two items are equivalent, the next predicate is used.
  *
- * **Note:** If the predicate is missing or empty then it defaults to `'+'`.
+ *    If the predicate is missing or empty then it defaults to `'+'`.
  *
- * @param {boolean=} reverse - If `true`, reverse the sorting order.
- * @param {(Function)=} comparator - The comparator function used to determine the relative order of
- *    value pairs. If omitted, the built-in comparator will be used.
- *
- * @returns {Array} - The sorted array.
+ * @param {boolean=} reverse Reverse the order of the array.
+ * @returns {Array} Sorted copy of the source array.
  *
  *
  * @example
- * ### Ordering a table with `ngRepeat`
- *
- * The example below demonstrates a simple {@link ngRepeat ngRepeat}, where the data is sorted by
- * age in descending order (expression is set to `'-age'`). The `comparator` is not set, which means
- * it defaults to the built-in comparator.
- *
-   <example name="orderBy-static" module="orderByExample1">
+ * The example below demonstrates a simple ngRepeat, where the data is sorted
+ * by age in descending order (predicate is set to `'-age'`).
+ * `reverse` is not set, which means it defaults to `false`.
+   <example module="orderByExample">
      <file name="index.html">
        <div ng-controller="ExampleController">
-         <table class="friends">
+         <table class="friend">
            <tr>
              <th>Name</th>
              <th>Phone Number</th>
@@ -43844,77 +43970,43 @@ function sliceFn(input, begin, end) {
        </div>
      </file>
      <file name="script.js">
-       angular.module('orderByExample1', [])
+       angular.module('orderByExample', [])
          .controller('ExampleController', ['$scope', function($scope) {
-           $scope.friends = [
-             {name: 'John',   phone: '555-1212',  age: 10},
-             {name: 'Mary',   phone: '555-9876',  age: 19},
-             {name: 'Mike',   phone: '555-4321',  age: 21},
-             {name: 'Adam',   phone: '555-5678',  age: 35},
-             {name: 'Julie',  phone: '555-8765',  age: 29}
-           ];
+           $scope.friends =
+               [{name:'John', phone:'555-1212', age:10},
+                {name:'Mary', phone:'555-9876', age:19},
+                {name:'Mike', phone:'555-4321', age:21},
+                {name:'Adam', phone:'555-5678', age:35},
+                {name:'Julie', phone:'555-8765', age:29}];
          }]);
      </file>
-     <file name="style.css">
-       .friends {
-         border-collapse: collapse;
-       }
-
-       .friends th {
-         border-bottom: 1px solid;
-       }
-       .friends td, .friends th {
-         border-left: 1px solid;
-         padding: 5px 10px;
-       }
-       .friends td:first-child, .friends th:first-child {
-         border-left: none;
-       }
-     </file>
-     <file name="protractor.js" type="protractor">
-       // Element locators
-       var names = element.all(by.repeater('friends').column('friend.name'));
-
-       it('should sort friends by age in reverse order', function() {
-         expect(names.get(0).getText()).toBe('Adam');
-         expect(names.get(1).getText()).toBe('Julie');
-         expect(names.get(2).getText()).toBe('Mike');
-         expect(names.get(3).getText()).toBe('Mary');
-         expect(names.get(4).getText()).toBe('John');
-       });
-     </file>
    </example>
- * <hr />
  *
+ * The predicate and reverse parameters can be controlled dynamically through scope properties,
+ * as shown in the next example.
  * @example
- * ### Changing parameters dynamically
- *
- * All parameters can be changed dynamically. The next example shows how you can make the columns of
- * a table sortable, by binding the `expression` and `reverse` parameters to scope properties.
- *
-   <example name="orderBy-dynamic" module="orderByExample2">
+   <example module="orderByExample">
      <file name="index.html">
        <div ng-controller="ExampleController">
-         <pre>Sort by = {{propertyName}}; reverse = {{reverse}}</pre>
+         <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
          <hr/>
-         <button ng-click="propertyName = null; reverse = false">Set to unsorted</button>
-         <hr/>
-         <table class="friends">
+         <button ng-click="predicate=''">Set to unsorted</button>
+         <table class="friend">
            <tr>
-             <th>
-               <button ng-click="sortBy('name')">Name</button>
-               <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
-             </th>
-             <th>
-               <button ng-click="sortBy('phone')">Phone Number</button>
-               <span class="sortorder" ng-show="propertyName === 'phone'" ng-class="{reverse: reverse}"></span>
-             </th>
-             <th>
-               <button ng-click="sortBy('age')">Age</button>
-               <span class="sortorder" ng-show="propertyName === 'age'" ng-class="{reverse: reverse}"></span>
-             </th>
+            <th>
+                <button ng-click="order('name')">Name</button>
+                <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="order('phone')">Phone Number</button>
+                <span class="sortorder" ng-show="predicate === 'phone'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="order('age')">Age</button>
+                <span class="sortorder" ng-show="predicate === 'age'" ng-class="{reverse:reverse}"></span>
+            </th>
            </tr>
-           <tr ng-repeat="friend in friends | orderBy:propertyName:reverse">
+           <tr ng-repeat="friend in friends | orderBy:predicate:reverse">
              <td>{{friend.name}}</td>
              <td>{{friend.phone}}</td>
              <td>{{friend.age}}</td>
@@ -43923,335 +44015,100 @@ function sliceFn(input, begin, end) {
        </div>
      </file>
      <file name="script.js">
-       angular.module('orderByExample2', [])
+       angular.module('orderByExample', [])
          .controller('ExampleController', ['$scope', function($scope) {
-           var friends = [
-             {name: 'John',   phone: '555-1212',  age: 10},
-             {name: 'Mary',   phone: '555-9876',  age: 19},
-             {name: 'Mike',   phone: '555-4321',  age: 21},
-             {name: 'Adam',   phone: '555-5678',  age: 35},
-             {name: 'Julie',  phone: '555-8765',  age: 29}
-           ];
-
-           $scope.propertyName = 'age';
+           $scope.friends =
+               [{name:'John', phone:'555-1212', age:10},
+                {name:'Mary', phone:'555-9876', age:19},
+                {name:'Mike', phone:'555-4321', age:21},
+                {name:'Adam', phone:'555-5678', age:35},
+                {name:'Julie', phone:'555-8765', age:29}];
+           $scope.predicate = 'age';
            $scope.reverse = true;
-           $scope.friends = friends;
-
-           $scope.sortBy = function(propertyName) {
-             $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
-             $scope.propertyName = propertyName;
+           $scope.order = function(predicate) {
+             $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+             $scope.predicate = predicate;
            };
          }]);
-     </file>
+      </file>
      <file name="style.css">
-       .friends {
-         border-collapse: collapse;
-       }
-
-       .friends th {
-         border-bottom: 1px solid;
-       }
-       .friends td, .friends th {
-         border-left: 1px solid;
-         padding: 5px 10px;
-       }
-       .friends td:first-child, .friends th:first-child {
-         border-left: none;
-       }
-
        .sortorder:after {
-         content: '\25b2';   // BLACK UP-POINTING TRIANGLE
+         content: '\25b2';
        }
        .sortorder.reverse:after {
-         content: '\25bc';   // BLACK DOWN-POINTING TRIANGLE
+         content: '\25bc';
        }
-     </file>
-     <file name="protractor.js" type="protractor">
-       // Element locators
-       var unsortButton = element(by.partialButtonText('unsorted'));
-       var nameHeader = element(by.partialButtonText('Name'));
-       var phoneHeader = element(by.partialButtonText('Phone'));
-       var ageHeader = element(by.partialButtonText('Age'));
-       var firstName = element(by.repeater('friends').column('friend.name').row(0));
-       var lastName = element(by.repeater('friends').column('friend.name').row(4));
-
-       it('should sort friends by some property, when clicking on the column header', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         phoneHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Mary');
-
-         nameHeader.click();
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('Mike');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Adam');
-       });
-
-       it('should sort friends in reverse order, when clicking on the same column', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Adam');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-       });
-
-       it('should restore the original order, when clicking "Set to unsorted"', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         unsortButton.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Julie');
-       });
      </file>
    </example>
- * <hr />
+ *
+ * It's also possible to call the orderBy filter manually, by injecting `$filter`, retrieving the
+ * filter routine with `$filter('orderBy')`, and calling the returned filter routine with the
+ * desired parameters.
+ *
+ * Example:
  *
  * @example
- * ### Using `orderBy` inside a controller
- *
- * It is also possible to call the `orderBy` filter manually, by injecting `orderByFilter`, and
- * calling it with the desired parameters. (Alternatively, you could inject the `$filter` factory
- * and retrieve the `orderBy` filter with `$filter('orderBy')`.)
- *
-   <example name="orderBy-call-manually" module="orderByExample3">
-     <file name="index.html">
-       <div ng-controller="ExampleController">
-         <pre>Sort by = {{propertyName}}; reverse = {{reverse}}</pre>
-         <hr/>
-         <button ng-click="sortBy(null)">Set to unsorted</button>
-         <hr/>
-         <table class="friends">
-           <tr>
-             <th>
-               <button ng-click="sortBy('name')">Name</button>
-               <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
-             </th>
-             <th>
-               <button ng-click="sortBy('phone')">Phone Number</button>
-               <span class="sortorder" ng-show="propertyName === 'phone'" ng-class="{reverse: reverse}"></span>
-             </th>
-             <th>
-               <button ng-click="sortBy('age')">Age</button>
-               <span class="sortorder" ng-show="propertyName === 'age'" ng-class="{reverse: reverse}"></span>
-             </th>
-           </tr>
-           <tr ng-repeat="friend in friends">
-             <td>{{friend.name}}</td>
-             <td>{{friend.phone}}</td>
-             <td>{{friend.age}}</td>
-           </tr>
-         </table>
-       </div>
-     </file>
-     <file name="script.js">
-       angular.module('orderByExample3', [])
-         .controller('ExampleController', ['$scope', 'orderByFilter', function($scope, orderBy) {
-           var friends = [
-             {name: 'John',   phone: '555-1212',  age: 10},
-             {name: 'Mary',   phone: '555-9876',  age: 19},
-             {name: 'Mike',   phone: '555-4321',  age: 21},
-             {name: 'Adam',   phone: '555-5678',  age: 35},
-             {name: 'Julie',  phone: '555-8765',  age: 29}
-           ];
+  <example module="orderByExample">
+    <file name="index.html">
+    <div ng-controller="ExampleController">
+      <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
+      <table class="friend">
+        <tr>
+          <th>
+              <button ng-click="order('name')">Name</button>
+              <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+          </th>
+          <th>
+              <button ng-click="order('phone')">Phone Number</button>
+              <span class="sortorder" ng-show="predicate === 'phone'" ng-class="{reverse:reverse}"></span>
+          </th>
+          <th>
+              <button ng-click="order('age')">Age</button>
+              <span class="sortorder" ng-show="predicate === 'age'" ng-class="{reverse:reverse}"></span>
+          </th>
+        </tr>
+        <tr ng-repeat="friend in friends">
+          <td>{{friend.name}}</td>
+          <td>{{friend.phone}}</td>
+          <td>{{friend.age}}</td>
+        </tr>
+      </table>
+    </div>
+    </file>
 
-           $scope.propertyName = 'age';
-           $scope.reverse = true;
-           $scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
+    <file name="script.js">
+      angular.module('orderByExample', [])
+        .controller('ExampleController', ['$scope', '$filter', function($scope, $filter) {
+          var orderBy = $filter('orderBy');
+          $scope.friends = [
+            { name: 'John',    phone: '555-1212',    age: 10 },
+            { name: 'Mary',    phone: '555-9876',    age: 19 },
+            { name: 'Mike',    phone: '555-4321',    age: 21 },
+            { name: 'Adam',    phone: '555-5678',    age: 35 },
+            { name: 'Julie',   phone: '555-8765',    age: 29 }
+          ];
+          $scope.order = function(predicate) {
+            $scope.predicate = predicate;
+            $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+            $scope.friends = orderBy($scope.friends, predicate, $scope.reverse);
+          };
+          $scope.order('age', true);
+        }]);
+    </file>
 
-           $scope.sortBy = function(propertyName) {
-             $scope.reverse = (propertyName !== null && $scope.propertyName === propertyName)
-                 ? !$scope.reverse : false;
-             $scope.propertyName = propertyName;
-             $scope.friends = orderBy(friends, $scope.propertyName, $scope.reverse);
-           };
-         }]);
-     </file>
-     <file name="style.css">
-       .friends {
-         border-collapse: collapse;
-       }
-
-       .friends th {
-         border-bottom: 1px solid;
-       }
-       .friends td, .friends th {
-         border-left: 1px solid;
-         padding: 5px 10px;
-       }
-       .friends td:first-child, .friends th:first-child {
-         border-left: none;
-       }
-
+    <file name="style.css">
        .sortorder:after {
-         content: '\25b2';   // BLACK UP-POINTING TRIANGLE
+         content: '\25b2';
        }
        .sortorder.reverse:after {
-         content: '\25bc';   // BLACK DOWN-POINTING TRIANGLE
+         content: '\25bc';
        }
-     </file>
-     <file name="protractor.js" type="protractor">
-       // Element locators
-       var unsortButton = element(by.partialButtonText('unsorted'));
-       var nameHeader = element(by.partialButtonText('Name'));
-       var phoneHeader = element(by.partialButtonText('Phone'));
-       var ageHeader = element(by.partialButtonText('Age'));
-       var firstName = element(by.repeater('friends').column('friend.name').row(0));
-       var lastName = element(by.repeater('friends').column('friend.name').row(4));
-
-       it('should sort friends by some property, when clicking on the column header', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         phoneHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Mary');
-
-         nameHeader.click();
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('Mike');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Adam');
-       });
-
-       it('should sort friends in reverse order, when clicking on the same column', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Adam');
-
-         ageHeader.click();
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-       });
-
-       it('should restore the original order, when clicking "Set to unsorted"', function() {
-         expect(firstName.getText()).toBe('Adam');
-         expect(lastName.getText()).toBe('John');
-
-         unsortButton.click();
-         expect(firstName.getText()).toBe('John');
-         expect(lastName.getText()).toBe('Julie');
-       });
-     </file>
-   </example>
- * <hr />
- *
- * @example
- * ### Using a custom comparator
- *
- * If you have very specific requirements about the way items are sorted, you can pass your own
- * comparator function. For example, you might need to compare some strings in a locale-sensitive
- * way. (When specifying a custom comparator, you also need to pass a value for the `reverse`
- * argument - passing `false` retains the default sorting order, i.e. ascending.)
- *
-   <example name="orderBy-custom-comparator" module="orderByExample4">
-     <file name="index.html">
-       <div ng-controller="ExampleController">
-         <div class="friends-container custom-comparator">
-           <h3>Locale-sensitive Comparator</h3>
-           <table class="friends">
-             <tr>
-               <th>Name</th>
-               <th>Favorite Letter</th>
-             </tr>
-             <tr ng-repeat="friend in friends | orderBy:'favoriteLetter':false:localeSensitiveComparator">
-               <td>{{friend.name}}</td>
-               <td>{{friend.favoriteLetter}}</td>
-             </tr>
-           </table>
-         </div>
-         <div class="friends-container default-comparator">
-           <h3>Default Comparator</h3>
-           <table class="friends">
-             <tr>
-               <th>Name</th>
-               <th>Favorite Letter</th>
-             </tr>
-             <tr ng-repeat="friend in friends | orderBy:'favoriteLetter'">
-               <td>{{friend.name}}</td>
-               <td>{{friend.favoriteLetter}}</td>
-             </tr>
-           </table>
-         </div>
-       </div>
-     </file>
-     <file name="script.js">
-       angular.module('orderByExample4', [])
-         .controller('ExampleController', ['$scope', function($scope) {
-           $scope.friends = [
-             {name: 'John',   favoriteLetter: 'Ä'},
-             {name: 'Mary',   favoriteLetter: 'Ü'},
-             {name: 'Mike',   favoriteLetter: 'Ö'},
-             {name: 'Adam',   favoriteLetter: 'H'},
-             {name: 'Julie',  favoriteLetter: 'Z'}
-           ];
-
-           $scope.localeSensitiveComparator = function(v1, v2) {
-             // If we don't get strings, just compare by index
-             if (v1.type !== 'string' || v2.type !== 'string') {
-               return (v1.index < v2.index) ? -1 : 1;
-             }
-
-             // Compare strings alphabetically, taking locale into account
-             return v1.value.localeCompare(v2.value);
-           };
-         }]);
-     </file>
-     <file name="style.css">
-       .friends-container {
-         display: inline-block;
-         margin: 0 30px;
-       }
-
-       .friends {
-         border-collapse: collapse;
-       }
-
-       .friends th {
-         border-bottom: 1px solid;
-       }
-       .friends td, .friends th {
-         border-left: 1px solid;
-         padding: 5px 10px;
-       }
-       .friends td:first-child, .friends th:first-child {
-         border-left: none;
-       }
-     </file>
-     <file name="protractor.js" type="protractor">
-       // Element locators
-       var container = element(by.css('.custom-comparator'));
-       var names = container.all(by.repeater('friends').column('friend.name'));
-
-       it('should sort friends by favorite letter (in correct alphabetical order)', function() {
-         expect(names.get(0).getText()).toBe('John');
-         expect(names.get(1).getText()).toBe('Adam');
-         expect(names.get(2).getText()).toBe('Mike');
-         expect(names.get(3).getText()).toBe('Mary');
-         expect(names.get(4).getText()).toBe('Julie');
-       });
-     </file>
-   </example>
- *
+    </file>
+</example>
  */
 orderByFilter.$inject = ['$parse'];
 function orderByFilter($parse) {
-  return function(array, sortPredicate, reverseOrder, compareFn) {
+  return function(array, sortPredicate, reverseOrder) {
 
     if (array == null) return array;
     if (!isArrayLike(array)) {
@@ -44261,12 +44118,11 @@ function orderByFilter($parse) {
     if (!isArray(sortPredicate)) { sortPredicate = [sortPredicate]; }
     if (sortPredicate.length === 0) { sortPredicate = ['+']; }
 
-    var predicates = processPredicates(sortPredicate);
-
-    var descending = reverseOrder ? -1 : 1;
-
-    // Define the `compare()` function. Use a default comparator if none is specified.
-    var compare = isFunction(compareFn) ? compareFn : defaultCompare;
+    var predicates = processPredicates(sortPredicate, reverseOrder);
+    // Add a predicate at the end that evaluates to the element index. This makes the
+    // sort stable as it works as a tie-breaker when all the input predicates cannot
+    // distinguish between two elements.
+    predicates.push({ get: function() { return {}; }, descending: reverseOrder ? -1 : 1});
 
     // The next three lines are a version of a Swartzian Transform idiom from Perl
     // (sometimes called the Decorate-Sort-Undecorate idiom)
@@ -44278,12 +44134,8 @@ function orderByFilter($parse) {
     return array;
 
     function getComparisonObject(value, index) {
-      // NOTE: We are adding an extra `tieBreaker` value based on the element's index.
-      // This will be used to keep the sort stable when none of the input predicates can
-      // distinguish between two elements.
       return {
         value: value,
-        tieBreaker: {value: index, type: 'number', index: index},
         predicateValues: predicates.map(function(predicate) {
           return getPredicateValue(predicate.get(value), index);
         })
@@ -44291,19 +44143,18 @@ function orderByFilter($parse) {
     }
 
     function doComparison(v1, v2) {
-      for (var i = 0, ii = predicates.length; i < ii; i++) {
-        var result = compare(v1.predicateValues[i], v2.predicateValues[i]);
-        if (result) {
-          return result * predicates[i].descending * descending;
-        }
+      var result = 0;
+      for (var index=0, length = predicates.length; index < length; ++index) {
+        result = compare(v1.predicateValues[index], v2.predicateValues[index]) * predicates[index].descending;
+        if (result) break;
       }
-
-      return compare(v1.tieBreaker, v2.tieBreaker) * descending;
+      return result;
     }
   };
 
-  function processPredicates(sortPredicates) {
-    return sortPredicates.map(function(predicate) {
+  function processPredicates(sortPredicate, reverseOrder) {
+    reverseOrder = reverseOrder ? -1 : 1;
+    return sortPredicate.map(function(predicate) {
       var descending = 1, get = identity;
 
       if (isFunction(predicate)) {
@@ -44321,7 +44172,7 @@ function orderByFilter($parse) {
           }
         }
       }
-      return {get: get, descending: descending};
+      return { get: get, descending: descending * reverseOrder };
     });
   }
 
@@ -44336,9 +44187,9 @@ function orderByFilter($parse) {
     }
   }
 
-  function objectValue(value) {
+  function objectValue(value, index) {
     // If `valueOf` is a valid function use that
-    if (isFunction(value.valueOf)) {
+    if (typeof value.valueOf === 'function') {
       value = value.valueOf();
       if (isPrimitive(value)) return value;
     }
@@ -44347,8 +44198,8 @@ function orderByFilter($parse) {
       value = value.toString();
       if (isPrimitive(value)) return value;
     }
-
-    return value;
+    // We have a basic object so we use the position of the object in the collection
+    return index;
   }
 
   function getPredicateValue(value, index) {
@@ -44356,39 +44207,23 @@ function orderByFilter($parse) {
     if (value === null) {
       type = 'string';
       value = 'null';
+    } else if (type === 'string') {
+      value = value.toLowerCase();
     } else if (type === 'object') {
-      value = objectValue(value);
+      value = objectValue(value, index);
     }
-    return {value: value, type: type, index: index};
+    return { value: value, type: type };
   }
 
-  function defaultCompare(v1, v2) {
+  function compare(v1, v2) {
     var result = 0;
-    var type1 = v1.type;
-    var type2 = v2.type;
-
-    if (type1 === type2) {
-      var value1 = v1.value;
-      var value2 = v2.value;
-
-      if (type1 === 'string') {
-        // Compare strings case-insensitively
-        value1 = value1.toLowerCase();
-        value2 = value2.toLowerCase();
-      } else if (type1 === 'object') {
-        // For basic objects, use the position of the object
-        // in the collection instead of the value
-        if (isObject(value1)) value1 = v1.index;
-        if (isObject(value2)) value2 = v2.index;
-      }
-
-      if (value1 !== value2) {
-        result = value1 < value2 ? -1 : 1;
+    if (v1.type === v2.type) {
+      if (v1.value !== v2.value) {
+        result = v1.value < v2.value ? -1 : 1;
       }
     } else {
-      result = type1 < type2 ? -1 : 1;
+      result = v1.type < v2.type ? -1 : 1;
     }
-
     return result;
   }
 }
@@ -44668,11 +44503,9 @@ var htmlAnchorDirective = valueFn({
  *
  * @description
  *
- * Sets the `readonly` attribute on the element, if the expression inside `ngReadonly` is truthy.
- * Note that `readonly` applies only to `input` elements with specific types. [See the input docs on
- * MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly) for more information.
+ * Sets the `readOnly` attribute on the element, if the expression inside `ngReadonly` is truthy.
  *
- * A special directive is necessary because we cannot use interpolation inside the `readonly`
+ * A special directive is necessary because we cannot use interpolation inside the `readOnly`
  * attribute. See the {@link guide/interpolation interpolation guide} for more info.
  *
  * @example
@@ -44709,13 +44542,6 @@ var htmlAnchorDirective = valueFn({
  * A special directive is necessary because we cannot use interpolation inside the `selected`
  * attribute. See the {@link guide/interpolation interpolation guide} for more info.
  *
- * <div class="alert alert-warning">
- *   **Note:** `ngSelected` does not interact with the `select` and `ngModel` directives, it only
- *   sets the `selected` attribute on the element. If you are using `ngModel` on the select, you
- *   should not use `ngSelected` on the options, as `ngModel` will set the select value and
- *   selected options.
- * </div>
- *
  * @example
     <example>
       <file name="index.html">
@@ -44751,11 +44577,6 @@ var htmlAnchorDirective = valueFn({
  *
  * A special directive is necessary because we cannot use interpolation inside the `open`
  * attribute. See the {@link guide/interpolation interpolation guide} for more info.
- *
- * ## A note about browser compatibility
- *
- * Edge, Firefox, and Internet Explorer do not support the `details` element, it is
- * recommended to use {@link ng.ngShow} and {@link ng.ngHide} instead.
  *
  * @example
      <example>
@@ -45447,9 +45268,7 @@ var ISO_DATE_REGEXP = /^\d{4,}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+(?:[+-
 //   9. Fragment
 //                 1111111111111111 222   333333    44444        555555555555555555555555    666     77777777     8888888     999
 var URL_REGEXP = /^[a-z][a-z\d.+-]*:\/*(?:[^:@]+(?::[^@]+)?@)?(?:[^\s:/?#]+|\[[a-f\d:]+\])(?::\d+)?(?:\/[^?#]*)?(?:\?[^#]*)?(?:#.*)?$/i;
-/* jshint maxlen:220 */
-var EMAIL_REGEXP = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+\/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+\/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
-/* jshint maxlen:200 */
+var EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 var NUMBER_REGEXP = /^\s*(\-|\+)?(\d+|(\d*(\.\d*)))([eE][+-]?\d+)?\s*$/;
 var DATE_REGEXP = /^(\d{4,})-(\d{2})-(\d{2})$/;
 var DATETIMELOCAL_REGEXP = /^(\d{4,})-(\d\d)-(\d\d)T(\d\d):(\d\d)(?::(\d\d)(\.\d{1,3})?)?$/;
@@ -46834,7 +46653,7 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
     attr.$observe('min', function(val) {
       if (isDefined(val) && !isNumber(val)) {
-        val = parseFloat(val);
+        val = parseFloat(val, 10);
       }
       minVal = isNumber(val) && !isNaN(val) ? val : undefined;
       // TODO(matsko): implement validateLater to reduce number of validations
@@ -46850,7 +46669,7 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
     attr.$observe('max', function(val) {
       if (isDefined(val) && !isNumber(val)) {
-        val = parseFloat(val);
+        val = parseFloat(val, 10);
       }
       maxVal = isNumber(val) && !isNaN(val) ? val : undefined;
       // TODO(matsko): implement validateLater to reduce number of validations
@@ -47656,11 +47475,6 @@ function classDirective(name, selector) {
  *
  * When the expression changes, the previously added classes are removed and only then are the
  * new classes added.
- *
- * @knownIssue
- * You should not use {@link guide/interpolation interpolation} in the value of the `class`
- * attribute, when using the `ngClass` directive on the same element.
- * See {@link guide/interpolation#known-issues here} for more info.
  *
  * @animations
  * | Animation                        | Occurs                              |
@@ -51607,7 +51421,7 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
 
           for (var i = options.items.length - 1; i >= 0; i--) {
             var option = options.items[i];
-            if (isDefined(option.group)) {
+            if (option.group) {
               jqLiteRemove(option.element.parentNode);
             } else {
               jqLiteRemove(option.element);
@@ -51639,8 +51453,7 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
               listFragment.appendChild(groupElement);
 
               // Update the label on the group element
-              // "null" is special cased because of Safari
-              groupElement.label = option.group === null ? 'null' : option.group;
+              groupElement.label = option.group;
 
               // Store it for use later
               groupElementMap[option.group] = groupElement;
@@ -51976,7 +51789,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
  *   it's a prefix used by Angular for public (`$`) and private (`$$`) properties.
  *
  * - The built-in filters {@link ng.orderBy orderBy} and {@link ng.filter filter} do not work with
- *   objects, and will throw an error if used with one.
+ *   objects, and will throw if used with one.
  *
  * If you are hitting any of these limitations, the recommended workaround is to convert your object into an array
  * that is sorted into the order that you prefer before providing it to `ngRepeat`. You could
@@ -52825,11 +52638,6 @@ var ngHideDirective = ['$animate', function($animate) {
  * @description
  * The `ngStyle` directive allows you to set CSS style on an HTML element conditionally.
  *
- * @knownIssue
- * You should not use {@link guide/interpolation interpolation} in the value of the `style`
- * attribute, when using the `ngStyle` directive on the same element.
- * See {@link guide/interpolation#known-issues here} for more info.
- *
  * @element ANY
  * @param {expression} ngStyle
  *
@@ -53241,63 +53049,37 @@ var ngSwitchDefaultDirective = ngDirective({
  * </example>
  */
 var ngTranscludeMinErr = minErr('ngTransclude');
-var ngTranscludeDirective = ['$compile', function($compile) {
-  return {
-    restrict: 'EAC',
-    terminal: true,
-    compile: function ngTranscludeCompile(tElement) {
+var ngTranscludeDirective = ngDirective({
+  restrict: 'EAC',
+  link: function($scope, $element, $attrs, controller, $transclude) {
 
-      // Remove and cache any original content to act as a fallback
-      var fallbackLinkFn = $compile(tElement.contents());
-      tElement.empty();
-
-      return function ngTranscludePostLink($scope, $element, $attrs, controller, $transclude) {
-
-        if (!$transclude) {
-          throw ngTranscludeMinErr('orphan',
-          'Illegal use of ngTransclude directive in the template! ' +
-          'No parent directive that requires a transclusion found. ' +
-          'Element: {0}',
-          startingTag($element));
-        }
-
-
-        // If the attribute is of the form: `ng-transclude="ng-transclude"` then treat it like the default
-        if ($attrs.ngTransclude === $attrs.$attr.ngTransclude) {
-          $attrs.ngTransclude = '';
-        }
-        var slotName = $attrs.ngTransclude || $attrs.ngTranscludeSlot;
-
-        // If the slot is required and no transclusion content is provided then this call will throw an error
-        $transclude(ngTranscludeCloneAttachFn, null, slotName);
-
-        // If the slot is optional and no transclusion content is provided then use the fallback content
-        if (slotName && !$transclude.isSlotFilled(slotName)) {
-          useFallbackContent();
-        }
-
-        function ngTranscludeCloneAttachFn(clone, transcludedScope) {
-          if (clone.length) {
-            $element.append(clone);
-          } else {
-            useFallbackContent();
-            // There is nothing linked against the transcluded scope since no content was available,
-            // so it should be safe to clean up the generated scope.
-            transcludedScope.$destroy();
-          }
-        }
-
-        function useFallbackContent() {
-          // Since this is the fallback content rather than the transcluded content,
-          // we link against the scope of this directive rather than the transcluded scope
-          fallbackLinkFn($scope, function(clone) {
-            $element.append(clone);
-          });
-        }
-      };
+    if ($attrs.ngTransclude === $attrs.$attr.ngTransclude) {
+      // If the attribute is of the form: `ng-transclude="ng-transclude"`
+      // then treat it like the default
+      $attrs.ngTransclude = '';
     }
-  };
-}];
+
+    function ngTranscludeCloneAttachFn(clone) {
+      if (clone.length) {
+        $element.empty();
+        $element.append(clone);
+      }
+    }
+
+    if (!$transclude) {
+      throw ngTranscludeMinErr('orphan',
+       'Illegal use of ngTransclude directive in the template! ' +
+       'No parent directive that requires a transclusion found. ' +
+       'Element: {0}',
+       startingTag($element));
+    }
+
+    // If there is no slot name defined or the slot name is not optional
+    // then transclude the slot
+    var slotName = $attrs.ngTransclude || $attrs.ngTranscludeSlot;
+    $transclude(ngTranscludeCloneAttachFn, null, slotName);
+  }
+});
 
 /**
  * @ngdoc directive
@@ -54352,11 +54134,11 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":70}],72:[function(require,module,exports){
+},{"./angular":71}],73:[function(require,module,exports){
 var asn1 = exports;
 
 asn1.bignum = require('bn.js');
@@ -54367,7 +54149,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":73,"./asn1/base":75,"./asn1/constants":79,"./asn1/decoders":81,"./asn1/encoders":84,"bn.js":91}],73:[function(require,module,exports){
+},{"./asn1/api":74,"./asn1/base":76,"./asn1/constants":80,"./asn1/decoders":82,"./asn1/encoders":85,"bn.js":92}],74:[function(require,module,exports){
 var asn1 = require('../asn1');
 var inherits = require('inherits');
 
@@ -54430,7 +54212,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":72,"inherits":465,"vm":521}],74:[function(require,module,exports){
+},{"../asn1":73,"inherits":467,"vm":523}],75:[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -54548,7 +54330,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":75,"buffer":121,"inherits":465}],75:[function(require,module,exports){
+},{"../base":76,"buffer":122,"inherits":467}],76:[function(require,module,exports){
 var base = exports;
 
 base.Reporter = require('./reporter').Reporter;
@@ -54556,7 +54338,7 @@ base.DecoderBuffer = require('./buffer').DecoderBuffer;
 base.EncoderBuffer = require('./buffer').EncoderBuffer;
 base.Node = require('./node');
 
-},{"./buffer":74,"./node":76,"./reporter":77}],76:[function(require,module,exports){
+},{"./buffer":75,"./node":77,"./reporter":78}],77:[function(require,module,exports){
 var Reporter = require('../base').Reporter;
 var EncoderBuffer = require('../base').EncoderBuffer;
 var DecoderBuffer = require('../base').DecoderBuffer;
@@ -54622,7 +54404,7 @@ module.exports = Node;
 var stateProps = [
   'enc', 'parent', 'children', 'tag', 'args', 'reverseArgs', 'choice',
   'optional', 'any', 'obj', 'use', 'alteredUse', 'key', 'default', 'explicit',
-  'implicit', 'contains'
+  'implicit'
 ];
 
 Node.prototype.clone = function clone() {
@@ -54827,17 +54609,17 @@ Node.prototype.contains = function contains(item) {
 // Decoding
 //
 
-Node.prototype._decode = function decode(input, options) {
+Node.prototype._decode = function decode(input) {
   var state = this._baseState;
 
   // Decode root node
   if (state.parent === null)
-    return input.wrapResult(state.children[0]._decode(input, options));
+    return input.wrapResult(state.children[0]._decode(input));
 
   var result = state['default'];
   var present = true;
 
-  var prevKey = null;
+  var prevKey;
   if (state.key !== null)
     prevKey = input.enterKey(state.key);
 
@@ -54856,9 +54638,9 @@ Node.prototype._decode = function decode(input, options) {
       var save = input.save();
       try {
         if (state.choice === null)
-          this._decodeGeneric(state.tag, input, options);
+          this._decodeGeneric(state.tag, input);
         else
-          this._decodeChoice(input, options);
+          this._decodeChoice(input);
         present = true;
       } catch (e) {
         present = false;
@@ -54886,8 +54668,6 @@ Node.prototype._decode = function decode(input, options) {
       input = explicit;
     }
 
-    var start = input.offset;
-
     // Unwrap implicit and normal values
     if (state.use === null && state.choice === null) {
       if (state.any)
@@ -54906,19 +54686,13 @@ Node.prototype._decode = function decode(input, options) {
         input = body;
     }
 
-    if (options && options.track && state.tag !== null)
-      options.track(input.path(), start, input.length, 'tagged');
-
-    if (options && options.track && state.tag !== null)
-      options.track(input.path(), input.offset, input.length, 'content');
-
     // Select proper method for tag
     if (state.any)
       result = result;
     else if (state.choice === null)
-      result = this._decodeGeneric(state.tag, input, options);
+      result = this._decodeGeneric(state.tag, input);
     else
-      result = this._decodeChoice(input, options);
+      result = this._decodeChoice(input);
 
     if (input.isError(result))
       return result;
@@ -54928,15 +54702,14 @@ Node.prototype._decode = function decode(input, options) {
       state.children.forEach(function decodeChildren(child) {
         // NOTE: We are ignoring errors here, to let parser continue with other
         // parts of encoded data
-        child._decode(input, options);
+        child._decode(input);
       });
     }
 
     // Decode contained/encoded by schema, only in bit or octet strings
     if (state.contains && (state.tag === 'octstr' || state.tag === 'bitstr')) {
       var data = new DecoderBuffer(result);
-      result = this._getUse(state.contains, input._reporterState.obj)
-          ._decode(data, options);
+      result = this._getUse(state.contains, input._reporterState.obj)._decode(data);
     }
   }
 
@@ -54947,40 +54720,35 @@ Node.prototype._decode = function decode(input, options) {
   // Set key
   if (state.key !== null && (result !== null || present === true))
     input.leaveKey(prevKey, state.key, result);
-  else if (prevKey !== null)
-    input.exitKey(prevKey);
 
   return result;
 };
 
-Node.prototype._decodeGeneric = function decodeGeneric(tag, input, options) {
+Node.prototype._decodeGeneric = function decodeGeneric(tag, input) {
   var state = this._baseState;
 
   if (tag === 'seq' || tag === 'set')
     return null;
   if (tag === 'seqof' || tag === 'setof')
-    return this._decodeList(input, tag, state.args[0], options);
+    return this._decodeList(input, tag, state.args[0]);
   else if (/str$/.test(tag))
-    return this._decodeStr(input, tag, options);
+    return this._decodeStr(input, tag);
   else if (tag === 'objid' && state.args)
-    return this._decodeObjid(input, state.args[0], state.args[1], options);
+    return this._decodeObjid(input, state.args[0], state.args[1]);
   else if (tag === 'objid')
-    return this._decodeObjid(input, null, null, options);
+    return this._decodeObjid(input, null, null);
   else if (tag === 'gentime' || tag === 'utctime')
-    return this._decodeTime(input, tag, options);
+    return this._decodeTime(input, tag);
   else if (tag === 'null_')
-    return this._decodeNull(input, options);
+    return this._decodeNull(input);
   else if (tag === 'bool')
-    return this._decodeBool(input, options);
+    return this._decodeBool(input);
   else if (tag === 'int' || tag === 'enum')
-    return this._decodeInt(input, state.args && state.args[0], options);
-
-  if (state.use !== null) {
-    return this._getUse(state.use, input._reporterState.obj)
-        ._decode(input, options);
-  } else {
+    return this._decodeInt(input, state.args && state.args[0]);
+  else if (state.use !== null)
+    return this._getUse(state.use, input._reporterState.obj)._decode(input);
+  else
     return input.error('unknown tag: ' + tag);
-  }
 };
 
 Node.prototype._getUse = function _getUse(entity, obj) {
@@ -54997,7 +54765,7 @@ Node.prototype._getUse = function _getUse(entity, obj) {
   return state.useDecoder;
 };
 
-Node.prototype._decodeChoice = function decodeChoice(input, options) {
+Node.prototype._decodeChoice = function decodeChoice(input) {
   var state = this._baseState;
   var result = null;
   var match = false;
@@ -55006,7 +54774,7 @@ Node.prototype._decodeChoice = function decodeChoice(input, options) {
     var save = input.save();
     var node = state.choice[key];
     try {
-      var value = node._decode(input, options);
+      var value = node._decode(input);
       if (input.isError(value))
         return false;
 
@@ -55187,7 +54955,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
   return /^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str);
 };
 
-},{"../base":75,"minimalistic-assert":472}],77:[function(require,module,exports){
+},{"../base":76,"minimalistic-assert":474}],78:[function(require,module,exports){
 var inherits = require('inherits');
 
 function Reporter(options) {
@@ -55221,22 +54989,12 @@ Reporter.prototype.enterKey = function enterKey(key) {
   return this._reporterState.path.push(key);
 };
 
-Reporter.prototype.exitKey = function exitKey(index) {
-  var state = this._reporterState;
-
-  state.path = state.path.slice(0, index - 1);
-};
-
 Reporter.prototype.leaveKey = function leaveKey(index, key, value) {
   var state = this._reporterState;
 
-  this.exitKey(index);
+  state.path = state.path.slice(0, index - 1);
   if (state.obj !== null)
     state.obj[key] = value;
-};
-
-Reporter.prototype.path = function path() {
-  return this._reporterState.path.join('/');
 };
 
 Reporter.prototype.enterObject = function enterObject() {
@@ -55310,7 +55068,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":465}],78:[function(require,module,exports){
+},{"inherits":467}],79:[function(require,module,exports){
 var constants = require('../constants');
 
 exports.tagClass = {
@@ -55354,7 +55112,7 @@ exports.tag = {
 };
 exports.tagByName = constants._reverse(exports.tag);
 
-},{"../constants":79}],79:[function(require,module,exports){
+},{"../constants":80}],80:[function(require,module,exports){
 var constants = exports;
 
 // Helper
@@ -55375,7 +55133,7 @@ constants._reverse = function reverse(map) {
 
 constants.der = require('./der');
 
-},{"./der":78}],80:[function(require,module,exports){
+},{"./der":79}],81:[function(require,module,exports){
 var inherits = require('inherits');
 
 var asn1 = require('../../asn1');
@@ -55486,15 +55244,14 @@ DERNode.prototype._skipUntilEnd = function skipUntilEnd(buffer, fail) {
   }
 };
 
-DERNode.prototype._decodeList = function decodeList(buffer, tag, decoder,
-                                                    options) {
+DERNode.prototype._decodeList = function decodeList(buffer, tag, decoder) {
   var result = [];
   while (!buffer.isEmpty()) {
     var possibleEnd = this._peekTag(buffer, 'end');
     if (buffer.isError(possibleEnd))
       return possibleEnd;
 
-    var res = decoder.decode(buffer, 'der', options);
+    var res = decoder.decode(buffer, 'der');
     if (buffer.isError(res) && possibleEnd)
       break;
     result.push(res);
@@ -55699,13 +55456,13 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":72,"inherits":465}],81:[function(require,module,exports){
+},{"../../asn1":73,"inherits":467}],82:[function(require,module,exports){
 var decoders = exports;
 
 decoders.der = require('./der');
 decoders.pem = require('./pem');
 
-},{"./der":80,"./pem":82}],82:[function(require,module,exports){
+},{"./der":81,"./pem":83}],83:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -55756,7 +55513,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"./der":80,"buffer":121,"inherits":465}],83:[function(require,module,exports){
+},{"./der":81,"buffer":122,"inherits":467}],84:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -56051,13 +55808,13 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":72,"buffer":121,"inherits":465}],84:[function(require,module,exports){
+},{"../../asn1":73,"buffer":122,"inherits":467}],85:[function(require,module,exports){
 var encoders = exports;
 
 encoders.der = require('./der');
 encoders.pem = require('./pem');
 
-},{"./der":83,"./pem":85}],85:[function(require,module,exports){
+},{"./der":84,"./pem":86}],86:[function(require,module,exports){
 var inherits = require('inherits');
 
 var DEREncoder = require('./der');
@@ -56080,7 +55837,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"./der":83,"inherits":465}],86:[function(require,module,exports){
+},{"./der":84,"inherits":467}],87:[function(require,module,exports){
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
 //
 // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -56441,7 +56198,7 @@ var objectKeys = Object.keys || function (obj) {
   return keys;
 };
 
-},{"util/":518}],87:[function(require,module,exports){
+},{"util/":520}],88:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -56476,7 +56233,7 @@ define(String.prototype, "padRight", "".padEnd);
   [][key] && define(Array, key, Function.call.bind([][key]));
 });
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"core-js/fn/regexp/escape":123,"core-js/shim":416,"regenerator-runtime/runtime":497}],88:[function(require,module,exports){
+},{"core-js/fn/regexp/escape":124,"core-js/shim":418,"regenerator-runtime/runtime":499}],89:[function(require,module,exports){
 'use strict'
 
 exports.toByteArray = toByteArray
@@ -56587,14 +56344,14 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],89:[function(require,module,exports){
-/*! bignumber.js v2.4.0 https://github.com/MikeMcl/bignumber.js/LICENCE */
+},{}],90:[function(require,module,exports){
+/*! bignumber.js v2.3.0 https://github.com/MikeMcl/bignumber.js/LICENCE */
 
 ;(function (globalObj) {
     'use strict';
 
     /*
-      bignumber.js v2.4.0
+      bignumber.js v2.3.0
       A JavaScript library for arbitrary-precision arithmetic.
       https://github.com/MikeMcl/bignumber.js
       Copyright (c) 2016 Michael Mclaughlin <M8ch88l@gmail.com>
@@ -56602,7 +56359,7 @@ function fromByteArray (uint8) {
     */
 
 
-    var BigNumber, cryptoObj, parseNumeric,
+    var cryptoObj, parseNumeric,
         isNumeric = /^-?(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?$/i,
         mathceil = Math.ceil,
         mathfloor = Math.floor,
@@ -59304,17 +59061,13 @@ function fromByteArray (uint8) {
     // EXPORT
 
 
-    BigNumber = constructorFactory();
-    BigNumber.default = BigNumber.BigNumber = BigNumber;
-
-
-    // AMD.
+   // AMD.
     if ( typeof define == 'function' && define.amd ) {
-        define( function () { return BigNumber; } );
+        define( function () { return constructorFactory(); } );
 
     // Node.js and other environments that support module.exports.
     } else if ( typeof module != 'undefined' && module.exports ) {
-        module.exports = BigNumber;
+        module.exports = constructorFactory();
 
         // Split string stops browserify adding crypto shim.
         if ( !cryptoObj ) try { cryptoObj = require('cry' + 'pto'); } catch (e) {}
@@ -59322,11 +59075,11 @@ function fromByteArray (uint8) {
     // Browser.
     } else {
         if ( !globalObj ) globalObj = typeof self != 'undefined' ? self : Function('return this')();
-        globalObj.BigNumber = BigNumber;
+        globalObj.BigNumber = constructorFactory();
     }
 })(this);
 
-},{}],90:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 (function (Buffer){
 // Reference https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 // Format: 0x30 [total-length] 0x02 [R-length] [R] 0x02 [S-length] [S]
@@ -59441,7 +59194,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],91:[function(require,module,exports){
+},{"buffer":122}],92:[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -59499,12 +59252,8 @@ module.exports = {
   }
 
   BN.isBN = function isBN (num) {
-    if (num instanceof BN) {
-      return true;
-    }
-
     return num !== null && typeof num === 'object' &&
-      num.constructor.wordSize === BN.wordSize && Array.isArray(num.words);
+      num.constructor.name === 'BN' && Array.isArray(num.words);
   };
 
   BN.max = function max (left, right) {
@@ -61545,10 +61294,6 @@ module.exports = {
 
     assert(this.negative === 0, 'imaskn works only with positive numbers');
 
-    if (this.length <= s) {
-      return this;
-    }
-
     if (r !== 0) {
       s++;
     }
@@ -62870,7 +62615,7 @@ module.exports = {
   };
 })(typeof module === 'undefined' || module, this);
 
-},{}],92:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -62929,9 +62674,9 @@ if (typeof window === 'object') {
   }
 }
 
-},{}],93:[function(require,module,exports){
-
 },{}],94:[function(require,module,exports){
+
+},{}],95:[function(require,module,exports){
 (function (Buffer){
 // based on the aes implimentation in triple sec
 // https://github.com/keybase/triplesec
@@ -63112,7 +62857,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],95:[function(require,module,exports){
+},{"buffer":122}],96:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -63213,7 +62958,7 @@ function xorTest (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":94,"./ghash":99,"buffer":121,"buffer-xor":120,"cipher-base":122,"inherits":465}],96:[function(require,module,exports){
+},{"./aes":95,"./ghash":100,"buffer":122,"buffer-xor":121,"cipher-base":123,"inherits":467}],97:[function(require,module,exports){
 var ciphers = require('./encrypter')
 exports.createCipher = exports.Cipher = ciphers.createCipher
 exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv
@@ -63226,7 +62971,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"./decrypter":97,"./encrypter":98,"./modes":100}],97:[function(require,module,exports){
+},{"./decrypter":98,"./encrypter":99,"./modes":101}],98:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -63367,7 +63112,7 @@ exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":94,"./authCipher":95,"./modes":100,"./modes/cbc":101,"./modes/cfb":102,"./modes/cfb1":103,"./modes/cfb8":104,"./modes/ctr":105,"./modes/ecb":106,"./modes/ofb":107,"./streamCipher":108,"buffer":121,"cipher-base":122,"evp_bytestokey":456,"inherits":465}],98:[function(require,module,exports){
+},{"./aes":95,"./authCipher":96,"./modes":101,"./modes/cbc":102,"./modes/cfb":103,"./modes/cfb1":104,"./modes/cfb8":105,"./modes/ctr":106,"./modes/ecb":107,"./modes/ofb":108,"./streamCipher":109,"buffer":122,"cipher-base":123,"evp_bytestokey":458,"inherits":467}],99:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -63493,7 +63238,7 @@ exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":94,"./authCipher":95,"./modes":100,"./modes/cbc":101,"./modes/cfb":102,"./modes/cfb1":103,"./modes/cfb8":104,"./modes/ctr":105,"./modes/ecb":106,"./modes/ofb":107,"./streamCipher":108,"buffer":121,"cipher-base":122,"evp_bytestokey":456,"inherits":465}],99:[function(require,module,exports){
+},{"./aes":95,"./authCipher":96,"./modes":101,"./modes/cbc":102,"./modes/cfb":103,"./modes/cfb1":104,"./modes/cfb8":105,"./modes/ctr":106,"./modes/ecb":107,"./modes/ofb":108,"./streamCipher":109,"buffer":122,"cipher-base":123,"evp_bytestokey":458,"inherits":467}],100:[function(require,module,exports){
 (function (Buffer){
 var zeros = new Buffer(16)
 zeros.fill(0)
@@ -63595,7 +63340,7 @@ function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],100:[function(require,module,exports){
+},{"buffer":122}],101:[function(require,module,exports){
 exports['aes-128-ecb'] = {
   cipher: 'AES',
   key: 128,
@@ -63768,7 +63513,7 @@ exports['aes-256-gcm'] = {
   type: 'auth'
 }
 
-},{}],101:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 var xor = require('buffer-xor')
 
 exports.encrypt = function (self, block) {
@@ -63787,7 +63532,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":120}],102:[function(require,module,exports){
+},{"buffer-xor":121}],103:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -63822,7 +63567,7 @@ function encryptStart (self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121,"buffer-xor":120}],103:[function(require,module,exports){
+},{"buffer":122,"buffer-xor":121}],104:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -63860,7 +63605,7 @@ function shiftIn (buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],104:[function(require,module,exports){
+},{"buffer":122}],105:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)
@@ -63879,7 +63624,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],105:[function(require,module,exports){
+},{"buffer":122}],106:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -63914,7 +63659,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121,"buffer-xor":120}],106:[function(require,module,exports){
+},{"buffer":122,"buffer-xor":121}],107:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -63922,7 +63667,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block)
 }
 
-},{}],107:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -63942,7 +63687,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121,"buffer-xor":120}],108:[function(require,module,exports){
+},{"buffer":122,"buffer-xor":121}],109:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -63971,7 +63716,7 @@ StreamCipher.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":94,"buffer":121,"cipher-base":122,"inherits":465}],109:[function(require,module,exports){
+},{"./aes":95,"buffer":122,"cipher-base":123,"inherits":467}],110:[function(require,module,exports){
 var ebtk = require('evp_bytestokey')
 var aes = require('browserify-aes/browser')
 var DES = require('browserify-des')
@@ -64046,7 +63791,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"browserify-aes/browser":96,"browserify-aes/modes":100,"browserify-des":110,"browserify-des/modes":111,"evp_bytestokey":456}],110:[function(require,module,exports){
+},{"browserify-aes/browser":97,"browserify-aes/modes":101,"browserify-des":111,"browserify-des/modes":112,"evp_bytestokey":458}],111:[function(require,module,exports){
 (function (Buffer){
 var CipherBase = require('cipher-base')
 var des = require('des.js')
@@ -64093,7 +63838,7 @@ DES.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121,"cipher-base":122,"des.js":424,"inherits":465}],111:[function(require,module,exports){
+},{"buffer":122,"cipher-base":123,"des.js":426,"inherits":467}],112:[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -64119,7 +63864,7 @@ exports['des-ede'] = {
   iv: 0
 }
 
-},{}],112:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 var randomBytes = require('randombytes');
@@ -64163,7 +63908,7 @@ function getr(priv) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":91,"buffer":121,"randombytes":486}],113:[function(require,module,exports){
+},{"bn.js":92,"buffer":122,"randombytes":488}],114:[function(require,module,exports){
 (function (Buffer){
 const Sha3 = require('js-sha3')
 
@@ -64201,7 +63946,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121,"js-sha3":468}],114:[function(require,module,exports){
+},{"buffer":122,"js-sha3":470}],115:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 exports['RSA-SHA224'] = exports.sha224WithRSAEncryption = {
@@ -64277,7 +64022,7 @@ exports['RSA-MD5'] = exports.md5WithRSAEncryption = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],115:[function(require,module,exports){
+},{"buffer":122}],116:[function(require,module,exports){
 (function (Buffer){
 var _algos = require('./algos')
 var createHash = require('create-hash')
@@ -64384,7 +64129,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algos":114,"./sign":117,"./verify":118,"buffer":121,"create-hash":419,"inherits":465,"stream":514}],116:[function(require,module,exports){
+},{"./algos":115,"./sign":118,"./verify":119,"buffer":122,"create-hash":421,"inherits":467,"stream":516}],117:[function(require,module,exports){
 'use strict'
 exports['1.3.132.0.10'] = 'secp256k1'
 
@@ -64398,7 +64143,7 @@ exports['1.3.132.0.34'] = 'p384'
 
 exports['1.3.132.0.35'] = 'p521'
 
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var createHmac = require('create-hmac')
@@ -64587,7 +64332,7 @@ module.exports.getKey = getKey
 module.exports.makeKey = makeKey
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":116,"bn.js":91,"browserify-rsa":112,"buffer":121,"create-hmac":422,"elliptic":434,"parse-asn1":476}],118:[function(require,module,exports){
+},{"./curves":117,"bn.js":92,"browserify-rsa":113,"buffer":122,"create-hmac":424,"elliptic":436,"parse-asn1":478}],119:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var curves = require('./curves')
@@ -64694,7 +64439,7 @@ function checkValue (b, q) {
 module.exports = verify
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":116,"bn.js":91,"buffer":121,"elliptic":434,"parse-asn1":476}],119:[function(require,module,exports){
+},{"./curves":117,"bn.js":92,"buffer":122,"elliptic":436,"parse-asn1":478}],120:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -64806,7 +64551,7 @@ exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"buffer":121}],120:[function(require,module,exports){
+},{"buffer":122}],121:[function(require,module,exports){
 (function (Buffer){
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)
@@ -64820,7 +64565,7 @@ module.exports = function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],121:[function(require,module,exports){
+},{"buffer":122}],122:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -64876,7 +64621,7 @@ exports.kMaxLength = kMaxLength()
 function typedArraySupport () {
   try {
     var arr = new Uint8Array(1)
-    arr.__proto__ = {__proto__: Uint8Array.prototype, foo: function () { return 42 }}
+    arr.foo = function () { return 42 }
     return arr.foo() === 42 && // typed array instances can be augmented
         typeof arr.subarray === 'function' && // chrome 9-10 lack `subarray`
         arr.subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
@@ -65020,7 +64765,7 @@ function allocUnsafe (that, size) {
   assertSize(size)
   that = createBuffer(that, size < 0 ? 0 : checked(size) | 0)
   if (!Buffer.TYPED_ARRAY_SUPPORT) {
-    for (var i = 0; i < size; ++i) {
+    for (var i = 0; i < size; i++) {
       that[i] = 0
     }
   }
@@ -65076,9 +64821,7 @@ function fromArrayBuffer (that, array, byteOffset, length) {
     throw new RangeError('\'length\' is out of bounds')
   }
 
-  if (byteOffset === undefined && length === undefined) {
-    array = new Uint8Array(array)
-  } else if (length === undefined) {
+  if (length === undefined) {
     array = new Uint8Array(array, byteOffset)
   } else {
     array = new Uint8Array(array, byteOffset, length)
@@ -65200,14 +64943,14 @@ Buffer.concat = function concat (list, length) {
   var i
   if (length === undefined) {
     length = 0
-    for (i = 0; i < list.length; ++i) {
+    for (i = 0; i < list.length; i++) {
       length += list[i].length
     }
   }
 
   var buffer = Buffer.allocUnsafe(length)
   var pos = 0
-  for (i = 0; i < list.length; ++i) {
+  for (i = 0; i < list.length; i++) {
     var buf = list[i]
     if (!Buffer.isBuffer(buf)) {
       throw new TypeError('"list" argument must be an Array of Buffers')
@@ -65239,6 +64982,7 @@ function byteLength (string, encoding) {
     switch (encoding) {
       case 'ascii':
       case 'binary':
+      // Deprecated
       case 'raw':
       case 'raws':
         return len
@@ -65476,16 +65220,15 @@ function arrayIndexOf (arr, val, byteOffset, encoding) {
   }
 
   var foundIndex = -1
-  for (var i = byteOffset; i < arrLength; ++i) {
-    if (read(arr, i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
+  for (var i = 0; byteOffset + i < arrLength; i++) {
+    if (read(arr, byteOffset + i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
       if (foundIndex === -1) foundIndex = i
-      if (i - foundIndex + 1 === valLength) return foundIndex * indexSize
+      if (i - foundIndex + 1 === valLength) return (byteOffset + foundIndex) * indexSize
     } else {
       if (foundIndex !== -1) i -= i - foundIndex
       foundIndex = -1
     }
   }
-
   return -1
 }
 
@@ -65550,7 +65293,7 @@ function hexWrite (buf, string, offset, length) {
   if (length > strLen / 2) {
     length = strLen / 2
   }
-  for (var i = 0; i < length; ++i) {
+  for (var i = 0; i < length; i++) {
     var parsed = parseInt(string.substr(i * 2, 2), 16)
     if (isNaN(parsed)) return i
     buf[offset + i] = parsed
@@ -65764,7 +65507,7 @@ function asciiSlice (buf, start, end) {
   var ret = ''
   end = Math.min(buf.length, end)
 
-  for (var i = start; i < end; ++i) {
+  for (var i = start; i < end; i++) {
     ret += String.fromCharCode(buf[i] & 0x7F)
   }
   return ret
@@ -65774,7 +65517,7 @@ function binarySlice (buf, start, end) {
   var ret = ''
   end = Math.min(buf.length, end)
 
-  for (var i = start; i < end; ++i) {
+  for (var i = start; i < end; i++) {
     ret += String.fromCharCode(buf[i])
   }
   return ret
@@ -65787,7 +65530,7 @@ function hexSlice (buf, start, end) {
   if (!end || end < 0 || end > len) end = len
 
   var out = ''
-  for (var i = start; i < end; ++i) {
+  for (var i = start; i < end; i++) {
     out += toHex(buf[i])
   }
   return out
@@ -65830,7 +65573,7 @@ Buffer.prototype.slice = function slice (start, end) {
   } else {
     var sliceLen = end - start
     newBuf = new Buffer(sliceLen, undefined)
-    for (var i = 0; i < sliceLen; ++i) {
+    for (var i = 0; i < sliceLen; i++) {
       newBuf[i] = this[i + start]
     }
   }
@@ -66057,7 +65800,7 @@ Buffer.prototype.writeUInt8 = function writeUInt8 (value, offset, noAssert) {
 
 function objectWriteUInt16 (buf, value, offset, littleEndian) {
   if (value < 0) value = 0xffff + value + 1
-  for (var i = 0, j = Math.min(buf.length - offset, 2); i < j; ++i) {
+  for (var i = 0, j = Math.min(buf.length - offset, 2); i < j; i++) {
     buf[offset + i] = (value & (0xff << (8 * (littleEndian ? i : 1 - i)))) >>>
       (littleEndian ? i : 1 - i) * 8
   }
@@ -66091,7 +65834,7 @@ Buffer.prototype.writeUInt16BE = function writeUInt16BE (value, offset, noAssert
 
 function objectWriteUInt32 (buf, value, offset, littleEndian) {
   if (value < 0) value = 0xffffffff + value + 1
-  for (var i = 0, j = Math.min(buf.length - offset, 4); i < j; ++i) {
+  for (var i = 0, j = Math.min(buf.length - offset, 4); i < j; i++) {
     buf[offset + i] = (value >>> (littleEndian ? i : 3 - i) * 8) & 0xff
   }
 }
@@ -66306,12 +66049,12 @@ Buffer.prototype.copy = function copy (target, targetStart, start, end) {
 
   if (this === target && start < targetStart && targetStart < end) {
     // descending copy from end
-    for (i = len - 1; i >= 0; --i) {
+    for (i = len - 1; i >= 0; i--) {
       target[i + targetStart] = this[i + start]
     }
   } else if (len < 1000 || !Buffer.TYPED_ARRAY_SUPPORT) {
     // ascending copy from start
-    for (i = 0; i < len; ++i) {
+    for (i = 0; i < len; i++) {
       target[i + targetStart] = this[i + start]
     }
   } else {
@@ -66372,7 +66115,7 @@ Buffer.prototype.fill = function fill (val, start, end, encoding) {
 
   var i
   if (typeof val === 'number') {
-    for (i = start; i < end; ++i) {
+    for (i = start; i < end; i++) {
       this[i] = val
     }
   } else {
@@ -66380,7 +66123,7 @@ Buffer.prototype.fill = function fill (val, start, end, encoding) {
       ? val
       : utf8ToBytes(new Buffer(val, encoding).toString())
     var len = bytes.length
-    for (i = 0; i < end - start; ++i) {
+    for (i = 0; i < end - start; i++) {
       this[i + start] = bytes[i % len]
     }
   }
@@ -66422,7 +66165,7 @@ function utf8ToBytes (string, units) {
   var leadSurrogate = null
   var bytes = []
 
-  for (var i = 0; i < length; ++i) {
+  for (var i = 0; i < length; i++) {
     codePoint = string.charCodeAt(i)
 
     // is surrogate component
@@ -66497,7 +66240,7 @@ function utf8ToBytes (string, units) {
 
 function asciiToBytes (str) {
   var byteArray = []
-  for (var i = 0; i < str.length; ++i) {
+  for (var i = 0; i < str.length; i++) {
     // Node's code seems to be doing this and not & 0x7F..
     byteArray.push(str.charCodeAt(i) & 0xFF)
   }
@@ -66507,7 +66250,7 @@ function asciiToBytes (str) {
 function utf16leToBytes (str, units) {
   var c, hi, lo
   var byteArray = []
-  for (var i = 0; i < str.length; ++i) {
+  for (var i = 0; i < str.length; i++) {
     if ((units -= 2) < 0) break
 
     c = str.charCodeAt(i)
@@ -66525,7 +66268,7 @@ function base64ToBytes (str) {
 }
 
 function blitBuffer (src, dst, offset, length) {
-  for (var i = 0; i < length; ++i) {
+  for (var i = 0; i < length; i++) {
     if ((i + offset >= dst.length) || (i >= src.length)) break
     dst[i + offset] = src[i]
   }
@@ -66537,7 +66280,7 @@ function isnan (val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":88,"ieee754":463,"isarray":467}],122:[function(require,module,exports){
+},{"base64-js":89,"ieee754":465,"isarray":469}],123:[function(require,module,exports){
 (function (Buffer){
 var Transform = require('stream').Transform
 var inherits = require('inherits')
@@ -66631,21 +66374,21 @@ CipherBase.prototype._toString = function (value, enc, final) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121,"inherits":465,"stream":514,"string_decoder":515}],123:[function(require,module,exports){
+},{"buffer":122,"inherits":467,"stream":516,"string_decoder":517}],124:[function(require,module,exports){
 require('../../modules/core.regexp.escape');
 module.exports = require('../../modules/_core').RegExp.escape;
-},{"../../modules/_core":144,"../../modules/core.regexp.escape":240}],124:[function(require,module,exports){
+},{"../../modules/_core":145,"../../modules/core.regexp.escape":242}],125:[function(require,module,exports){
 module.exports = function(it){
   if(typeof it != 'function')throw TypeError(it + ' is not a function!');
   return it;
 };
-},{}],125:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 var cof = require('./_cof');
 module.exports = function(it, msg){
   if(typeof it != 'number' && cof(it) != 'Number')throw TypeError(msg);
   return +it;
 };
-},{"./_cof":139}],126:[function(require,module,exports){
+},{"./_cof":140}],127:[function(require,module,exports){
 // 22.1.3.31 Array.prototype[@@unscopables]
 var UNSCOPABLES = require('./_wks')('unscopables')
   , ArrayProto  = Array.prototype;
@@ -66653,19 +66396,19 @@ if(ArrayProto[UNSCOPABLES] == undefined)require('./_hide')(ArrayProto, UNSCOPABL
 module.exports = function(key){
   ArrayProto[UNSCOPABLES][key] = true;
 };
-},{"./_hide":161,"./_wks":238}],127:[function(require,module,exports){
+},{"./_hide":162,"./_wks":239}],128:[function(require,module,exports){
 module.exports = function(it, Constructor, name, forbiddenField){
   if(!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)){
     throw TypeError(name + ': incorrect invocation!');
   } return it;
 };
-},{}],128:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 var isObject = require('./_is-object');
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
 };
-},{"./_is-object":170}],129:[function(require,module,exports){
+},{"./_is-object":171}],130:[function(require,module,exports){
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 'use strict';
 var toObject = require('./_to-object')
@@ -66692,7 +66435,7 @@ module.exports = [].copyWithin || function copyWithin(target/*= 0*/, start/*= 0,
     from += inc;
   } return O;
 };
-},{"./_to-index":226,"./_to-length":229,"./_to-object":230}],130:[function(require,module,exports){
+},{"./_to-index":227,"./_to-length":230,"./_to-object":231}],131:[function(require,module,exports){
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 'use strict';
 var toObject = require('./_to-object')
@@ -66708,7 +66451,7 @@ module.exports = function fill(value /*, start = 0, end = @length */){
   while(endPos > index)O[index++] = value;
   return O;
 };
-},{"./_to-index":226,"./_to-length":229,"./_to-object":230}],131:[function(require,module,exports){
+},{"./_to-index":227,"./_to-length":230,"./_to-object":231}],132:[function(require,module,exports){
 var forOf = require('./_for-of');
 
 module.exports = function(iter, ITERATOR){
@@ -66717,7 +66460,7 @@ module.exports = function(iter, ITERATOR){
   return result;
 };
 
-},{"./_for-of":158}],132:[function(require,module,exports){
+},{"./_for-of":159}],133:[function(require,module,exports){
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = require('./_to-iobject')
@@ -66739,7 +66482,7 @@ module.exports = function(IS_INCLUDES){
     } return !IS_INCLUDES && -1;
   };
 };
-},{"./_to-index":226,"./_to-iobject":228,"./_to-length":229}],133:[function(require,module,exports){
+},{"./_to-index":227,"./_to-iobject":229,"./_to-length":230}],134:[function(require,module,exports){
 // 0 -> Array#forEach
 // 1 -> Array#map
 // 2 -> Array#filter
@@ -66784,7 +66527,7 @@ module.exports = function(TYPE, $create){
     return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : result;
   };
 };
-},{"./_array-species-create":136,"./_ctx":146,"./_iobject":166,"./_to-length":229,"./_to-object":230}],134:[function(require,module,exports){
+},{"./_array-species-create":137,"./_ctx":147,"./_iobject":167,"./_to-length":230,"./_to-object":231}],135:[function(require,module,exports){
 var aFunction = require('./_a-function')
   , toObject  = require('./_to-object')
   , IObject   = require('./_iobject')
@@ -66813,7 +66556,7 @@ module.exports = function(that, callbackfn, aLen, memo, isRight){
   }
   return memo;
 };
-},{"./_a-function":124,"./_iobject":166,"./_to-length":229,"./_to-object":230}],135:[function(require,module,exports){
+},{"./_a-function":125,"./_iobject":167,"./_to-length":230,"./_to-object":231}],136:[function(require,module,exports){
 var isObject = require('./_is-object')
   , isArray  = require('./_is-array')
   , SPECIES  = require('./_wks')('species');
@@ -66830,14 +66573,14 @@ module.exports = function(original){
     }
   } return C === undefined ? Array : C;
 };
-},{"./_is-array":168,"./_is-object":170,"./_wks":238}],136:[function(require,module,exports){
+},{"./_is-array":169,"./_is-object":171,"./_wks":239}],137:[function(require,module,exports){
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
 var speciesConstructor = require('./_array-species-constructor');
 
 module.exports = function(original, length){
   return new (speciesConstructor(original))(length);
 };
-},{"./_array-species-constructor":135}],137:[function(require,module,exports){
+},{"./_array-species-constructor":136}],138:[function(require,module,exports){
 'use strict';
 var aFunction  = require('./_a-function')
   , isObject   = require('./_is-object')
@@ -66862,7 +66605,7 @@ module.exports = Function.bind || function bind(that /*, args... */){
   if(isObject(fn.prototype))bound.prototype = fn.prototype;
   return bound;
 };
-},{"./_a-function":124,"./_invoke":165,"./_is-object":170}],138:[function(require,module,exports){
+},{"./_a-function":125,"./_invoke":166,"./_is-object":171}],139:[function(require,module,exports){
 // getting tag from 19.1.3.6 Object.prototype.toString()
 var cof = require('./_cof')
   , TAG = require('./_wks')('toStringTag')
@@ -66886,16 +66629,17 @@ module.exports = function(it){
     // ES3 arguments fallback
     : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
 };
-},{"./_cof":139,"./_wks":238}],139:[function(require,module,exports){
+},{"./_cof":140,"./_wks":239}],140:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = function(it){
   return toString.call(it).slice(8, -1);
 };
-},{}],140:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 'use strict';
 var dP          = require('./_object-dp').f
   , create      = require('./_object-create')
+  , hide        = require('./_hide')
   , redefineAll = require('./_redefine-all')
   , ctx         = require('./_ctx')
   , anInstance  = require('./_an-instance')
@@ -67035,7 +66779,7 @@ module.exports = {
     setSpecies(NAME);
   }
 };
-},{"./_an-instance":127,"./_ctx":146,"./_defined":148,"./_descriptors":149,"./_for-of":158,"./_iter-define":174,"./_iter-step":176,"./_meta":183,"./_object-create":187,"./_object-dp":188,"./_redefine-all":207,"./_set-species":212}],141:[function(require,module,exports){
+},{"./_an-instance":128,"./_ctx":147,"./_defined":149,"./_descriptors":150,"./_for-of":159,"./_hide":162,"./_iter-define":175,"./_iter-step":177,"./_meta":184,"./_object-create":188,"./_object-dp":189,"./_redefine-all":208,"./_set-species":213}],142:[function(require,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var classof = require('./_classof')
   , from    = require('./_array-from-iterable');
@@ -67045,7 +66789,7 @@ module.exports = function(NAME){
     return from(this);
   };
 };
-},{"./_array-from-iterable":131,"./_classof":138}],142:[function(require,module,exports){
+},{"./_array-from-iterable":132,"./_classof":139}],143:[function(require,module,exports){
 'use strict';
 var redefineAll       = require('./_redefine-all')
   , getWeak           = require('./_meta').getWeak
@@ -67129,7 +66873,7 @@ module.exports = {
   },
   ufstore: uncaughtFrozenStore
 };
-},{"./_an-instance":127,"./_an-object":128,"./_array-methods":133,"./_for-of":158,"./_has":160,"./_is-object":170,"./_meta":183,"./_redefine-all":207}],143:[function(require,module,exports){
+},{"./_an-instance":128,"./_an-object":129,"./_array-methods":134,"./_for-of":159,"./_has":161,"./_is-object":171,"./_meta":184,"./_redefine-all":208}],144:[function(require,module,exports){
 'use strict';
 var global            = require('./_global')
   , $export           = require('./_export')
@@ -67215,10 +66959,10 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
 
   return C;
 };
-},{"./_an-instance":127,"./_export":153,"./_fails":155,"./_for-of":158,"./_global":159,"./_inherit-if-required":164,"./_is-object":170,"./_iter-detect":175,"./_meta":183,"./_redefine":208,"./_redefine-all":207,"./_set-to-string-tag":213}],144:[function(require,module,exports){
+},{"./_an-instance":128,"./_export":154,"./_fails":156,"./_for-of":159,"./_global":160,"./_inherit-if-required":165,"./_is-object":171,"./_iter-detect":176,"./_meta":184,"./_redefine":209,"./_redefine-all":208,"./_set-to-string-tag":214}],145:[function(require,module,exports){
 var core = module.exports = {version: '2.4.0'};
 if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-},{}],145:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 'use strict';
 var $defineProperty = require('./_object-dp')
   , createDesc      = require('./_property-desc');
@@ -67227,7 +66971,7 @@ module.exports = function(object, index, value){
   if(index in object)$defineProperty.f(object, index, createDesc(0, value));
   else object[index] = value;
 };
-},{"./_object-dp":188,"./_property-desc":206}],146:[function(require,module,exports){
+},{"./_object-dp":189,"./_property-desc":207}],147:[function(require,module,exports){
 // optional / simple context binding
 var aFunction = require('./_a-function');
 module.exports = function(fn, that, length){
@@ -67248,7 +66992,7 @@ module.exports = function(fn, that, length){
     return fn.apply(that, arguments);
   };
 };
-},{"./_a-function":124}],147:[function(require,module,exports){
+},{"./_a-function":125}],148:[function(require,module,exports){
 'use strict';
 var anObject    = require('./_an-object')
   , toPrimitive = require('./_to-primitive')
@@ -67258,18 +67002,18 @@ module.exports = function(hint){
   if(hint !== 'string' && hint !== NUMBER && hint !== 'default')throw TypeError('Incorrect hint');
   return toPrimitive(anObject(this), hint != NUMBER);
 };
-},{"./_an-object":128,"./_to-primitive":231}],148:[function(require,module,exports){
+},{"./_an-object":129,"./_to-primitive":232}],149:[function(require,module,exports){
 // 7.2.1 RequireObjectCoercible(argument)
 module.exports = function(it){
   if(it == undefined)throw TypeError("Can't call method on  " + it);
   return it;
 };
-},{}],149:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 // Thank's IE8 for his funny defineProperty
 module.exports = !require('./_fails')(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 });
-},{"./_fails":155}],150:[function(require,module,exports){
+},{"./_fails":156}],151:[function(require,module,exports){
 var isObject = require('./_is-object')
   , document = require('./_global').document
   // in old IE typeof document.createElement is 'object'
@@ -67277,12 +67021,12 @@ var isObject = require('./_is-object')
 module.exports = function(it){
   return is ? document.createElement(it) : {};
 };
-},{"./_global":159,"./_is-object":170}],151:[function(require,module,exports){
+},{"./_global":160,"./_is-object":171}],152:[function(require,module,exports){
 // IE 8- don't enum bug keys
 module.exports = (
   'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
 ).split(',');
-},{}],152:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 // all enumerable object keys, includes symbols
 var getKeys = require('./_object-keys')
   , gOPS    = require('./_object-gops')
@@ -67298,7 +67042,7 @@ module.exports = function(it){
     while(symbols.length > i)if(isEnum.call(it, key = symbols[i++]))result.push(key);
   } return result;
 };
-},{"./_object-gops":194,"./_object-keys":197,"./_object-pie":198}],153:[function(require,module,exports){
+},{"./_object-gops":195,"./_object-keys":198,"./_object-pie":199}],154:[function(require,module,exports){
 var global    = require('./_global')
   , core      = require('./_core')
   , hide      = require('./_hide')
@@ -67342,7 +67086,7 @@ $export.W = 32;  // wrap
 $export.U = 64;  // safe
 $export.R = 128; // real proto method for `library` 
 module.exports = $export;
-},{"./_core":144,"./_ctx":146,"./_global":159,"./_hide":161,"./_redefine":208}],154:[function(require,module,exports){
+},{"./_core":145,"./_ctx":147,"./_global":160,"./_hide":162,"./_redefine":209}],155:[function(require,module,exports){
 var MATCH = require('./_wks')('match');
 module.exports = function(KEY){
   var re = /./;
@@ -67355,7 +67099,7 @@ module.exports = function(KEY){
     } catch(f){ /* empty */ }
   } return true;
 };
-},{"./_wks":238}],155:[function(require,module,exports){
+},{"./_wks":239}],156:[function(require,module,exports){
 module.exports = function(exec){
   try {
     return !!exec();
@@ -67363,7 +67107,7 @@ module.exports = function(exec){
     return true;
   }
 };
-},{}],156:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 'use strict';
 var hide     = require('./_hide')
   , redefine = require('./_redefine')
@@ -67392,7 +67136,7 @@ module.exports = function(KEY, length, exec){
     );
   }
 };
-},{"./_defined":148,"./_fails":155,"./_hide":161,"./_redefine":208,"./_wks":238}],157:[function(require,module,exports){
+},{"./_defined":149,"./_fails":156,"./_hide":162,"./_redefine":209,"./_wks":239}],158:[function(require,module,exports){
 'use strict';
 // 21.2.5.3 get RegExp.prototype.flags
 var anObject = require('./_an-object');
@@ -67406,7 +67150,7 @@ module.exports = function(){
   if(that.sticky)     result += 'y';
   return result;
 };
-},{"./_an-object":128}],158:[function(require,module,exports){
+},{"./_an-object":129}],159:[function(require,module,exports){
 var ctx         = require('./_ctx')
   , call        = require('./_iter-call')
   , isArrayIter = require('./_is-array-iter')
@@ -67432,17 +67176,17 @@ var exports = module.exports = function(iterable, entries, fn, that, ITERATOR){
 };
 exports.BREAK  = BREAK;
 exports.RETURN = RETURN;
-},{"./_an-object":128,"./_ctx":146,"./_is-array-iter":167,"./_iter-call":172,"./_to-length":229,"./core.get-iterator-method":239}],159:[function(require,module,exports){
+},{"./_an-object":129,"./_ctx":147,"./_is-array-iter":168,"./_iter-call":173,"./_to-length":230,"./core.get-iterator-method":240}],160:[function(require,module,exports){
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
   ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
 if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-},{}],160:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 var hasOwnProperty = {}.hasOwnProperty;
 module.exports = function(it, key){
   return hasOwnProperty.call(it, key);
 };
-},{}],161:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 var dP         = require('./_object-dp')
   , createDesc = require('./_property-desc');
 module.exports = require('./_descriptors') ? function(object, key, value){
@@ -67451,13 +67195,13 @@ module.exports = require('./_descriptors') ? function(object, key, value){
   object[key] = value;
   return object;
 };
-},{"./_descriptors":149,"./_object-dp":188,"./_property-desc":206}],162:[function(require,module,exports){
+},{"./_descriptors":150,"./_object-dp":189,"./_property-desc":207}],163:[function(require,module,exports){
 module.exports = require('./_global').document && document.documentElement;
-},{"./_global":159}],163:[function(require,module,exports){
+},{"./_global":160}],164:[function(require,module,exports){
 module.exports = !require('./_descriptors') && !require('./_fails')(function(){
   return Object.defineProperty(require('./_dom-create')('div'), 'a', {get: function(){ return 7; }}).a != 7;
 });
-},{"./_descriptors":149,"./_dom-create":150,"./_fails":155}],164:[function(require,module,exports){
+},{"./_descriptors":150,"./_dom-create":151,"./_fails":156}],165:[function(require,module,exports){
 var isObject       = require('./_is-object')
   , setPrototypeOf = require('./_set-proto').set;
 module.exports = function(that, target, C){
@@ -67466,7 +67210,7 @@ module.exports = function(that, target, C){
     setPrototypeOf(that, P);
   } return that;
 };
-},{"./_is-object":170,"./_set-proto":211}],165:[function(require,module,exports){
+},{"./_is-object":171,"./_set-proto":212}],166:[function(require,module,exports){
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
 module.exports = function(fn, args, that){
   var un = that === undefined;
@@ -67483,13 +67227,13 @@ module.exports = function(fn, args, that){
                       : fn.call(that, args[0], args[1], args[2], args[3]);
   } return              fn.apply(that, args);
 };
-},{}],166:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
 var cof = require('./_cof');
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
-},{"./_cof":139}],167:[function(require,module,exports){
+},{"./_cof":140}],168:[function(require,module,exports){
 // check on default Array iterator
 var Iterators  = require('./_iterators')
   , ITERATOR   = require('./_wks')('iterator')
@@ -67498,24 +67242,24 @@ var Iterators  = require('./_iterators')
 module.exports = function(it){
   return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
 };
-},{"./_iterators":177,"./_wks":238}],168:[function(require,module,exports){
+},{"./_iterators":178,"./_wks":239}],169:[function(require,module,exports){
 // 7.2.2 IsArray(argument)
 var cof = require('./_cof');
 module.exports = Array.isArray || function isArray(arg){
   return cof(arg) == 'Array';
 };
-},{"./_cof":139}],169:[function(require,module,exports){
+},{"./_cof":140}],170:[function(require,module,exports){
 // 20.1.2.3 Number.isInteger(number)
 var isObject = require('./_is-object')
   , floor    = Math.floor;
 module.exports = function isInteger(it){
   return !isObject(it) && isFinite(it) && floor(it) === it;
 };
-},{"./_is-object":170}],170:[function(require,module,exports){
+},{"./_is-object":171}],171:[function(require,module,exports){
 module.exports = function(it){
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
-},{}],171:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 // 7.2.8 IsRegExp(argument)
 var isObject = require('./_is-object')
   , cof      = require('./_cof')
@@ -67524,7 +67268,7 @@ module.exports = function(it){
   var isRegExp;
   return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : cof(it) == 'RegExp');
 };
-},{"./_cof":139,"./_is-object":170,"./_wks":238}],172:[function(require,module,exports){
+},{"./_cof":140,"./_is-object":171,"./_wks":239}],173:[function(require,module,exports){
 // call something on iterator step with safe closing on error
 var anObject = require('./_an-object');
 module.exports = function(iterator, fn, value, entries){
@@ -67537,7 +67281,7 @@ module.exports = function(iterator, fn, value, entries){
     throw e;
   }
 };
-},{"./_an-object":128}],173:[function(require,module,exports){
+},{"./_an-object":129}],174:[function(require,module,exports){
 'use strict';
 var create         = require('./_object-create')
   , descriptor     = require('./_property-desc')
@@ -67551,7 +67295,7 @@ module.exports = function(Constructor, NAME, next){
   Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
   setToStringTag(Constructor, NAME + ' Iterator');
 };
-},{"./_hide":161,"./_object-create":187,"./_property-desc":206,"./_set-to-string-tag":213,"./_wks":238}],174:[function(require,module,exports){
+},{"./_hide":162,"./_object-create":188,"./_property-desc":207,"./_set-to-string-tag":214,"./_wks":239}],175:[function(require,module,exports){
 'use strict';
 var LIBRARY        = require('./_library')
   , $export        = require('./_export')
@@ -67622,7 +67366,7 @@ module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED
   }
   return methods;
 };
-},{"./_export":153,"./_has":160,"./_hide":161,"./_iter-create":173,"./_iterators":177,"./_library":179,"./_object-gpo":195,"./_redefine":208,"./_set-to-string-tag":213,"./_wks":238}],175:[function(require,module,exports){
+},{"./_export":154,"./_has":161,"./_hide":162,"./_iter-create":174,"./_iterators":178,"./_library":180,"./_object-gpo":196,"./_redefine":209,"./_set-to-string-tag":214,"./_wks":239}],176:[function(require,module,exports){
 var ITERATOR     = require('./_wks')('iterator')
   , SAFE_CLOSING = false;
 
@@ -67644,13 +67388,13 @@ module.exports = function(exec, skipClosing){
   } catch(e){ /* empty */ }
   return safe;
 };
-},{"./_wks":238}],176:[function(require,module,exports){
+},{"./_wks":239}],177:[function(require,module,exports){
 module.exports = function(done, value){
   return {value: value, done: !!done};
 };
-},{}],177:[function(require,module,exports){
-module.exports = {};
 },{}],178:[function(require,module,exports){
+module.exports = {};
+},{}],179:[function(require,module,exports){
 var getKeys   = require('./_object-keys')
   , toIObject = require('./_to-iobject');
 module.exports = function(object, el){
@@ -67661,9 +67405,9 @@ module.exports = function(object, el){
     , key;
   while(length > index)if(O[key = keys[index++]] === el)return key;
 };
-},{"./_object-keys":197,"./_to-iobject":228}],179:[function(require,module,exports){
+},{"./_object-keys":198,"./_to-iobject":229}],180:[function(require,module,exports){
 module.exports = false;
-},{}],180:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 // 20.2.2.14 Math.expm1(x)
 var $expm1 = Math.expm1;
 module.exports = (!$expm1
@@ -67674,17 +67418,17 @@ module.exports = (!$expm1
 ) ? function expm1(x){
   return (x = +x) == 0 ? x : x > -1e-6 && x < 1e-6 ? x + x * x / 2 : Math.exp(x) - 1;
 } : $expm1;
-},{}],181:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 // 20.2.2.20 Math.log1p(x)
 module.exports = Math.log1p || function log1p(x){
   return (x = +x) > -1e-8 && x < 1e-8 ? x - x * x / 2 : Math.log(1 + x);
 };
-},{}],182:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 // 20.2.2.28 Math.sign(x)
 module.exports = Math.sign || function sign(x){
   return (x = +x) == 0 || x != x ? x : x < 0 ? -1 : 1;
 };
-},{}],183:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 var META     = require('./_uid')('meta')
   , isObject = require('./_is-object')
   , has      = require('./_has')
@@ -67738,7 +67482,7 @@ var meta = module.exports = {
   getWeak:  getWeak,
   onFreeze: onFreeze
 };
-},{"./_fails":155,"./_has":160,"./_is-object":170,"./_object-dp":188,"./_uid":235}],184:[function(require,module,exports){
+},{"./_fails":156,"./_has":161,"./_is-object":171,"./_object-dp":189,"./_uid":236}],185:[function(require,module,exports){
 var Map     = require('./es6.map')
   , $export = require('./_export')
   , shared  = require('./_shared')('metadata')
@@ -67790,7 +67534,7 @@ module.exports = {
   key: toMetaKey,
   exp: exp
 };
-},{"./_export":153,"./_shared":215,"./es6.map":270,"./es6.weak-map":376}],185:[function(require,module,exports){
+},{"./_export":154,"./_shared":216,"./es6.map":272,"./es6.weak-map":378}],186:[function(require,module,exports){
 var global    = require('./_global')
   , macrotask = require('./_task').set
   , Observer  = global.MutationObserver || global.WebKitMutationObserver
@@ -67859,7 +67603,7 @@ module.exports = function(){
     } last = task;
   };
 };
-},{"./_cof":139,"./_global":159,"./_task":225}],186:[function(require,module,exports){
+},{"./_cof":140,"./_global":160,"./_task":226}],187:[function(require,module,exports){
 'use strict';
 // 19.1.2.1 Object.assign(target, source, ...)
 var getKeys  = require('./_object-keys')
@@ -67893,7 +67637,7 @@ module.exports = !$assign || require('./_fails')(function(){
     while(length > j)if(isEnum.call(S, key = keys[j++]))T[key] = S[key];
   } return T;
 } : $assign;
-},{"./_fails":155,"./_iobject":166,"./_object-gops":194,"./_object-keys":197,"./_object-pie":198,"./_to-object":230}],187:[function(require,module,exports){
+},{"./_fails":156,"./_iobject":167,"./_object-gops":195,"./_object-keys":198,"./_object-pie":199,"./_to-object":231}],188:[function(require,module,exports){
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject    = require('./_an-object')
   , dPs         = require('./_object-dps')
@@ -67907,7 +67651,6 @@ var createDict = function(){
   // Thrash, waste and sodomy: IE GC bug
   var iframe = require('./_dom-create')('iframe')
     , i      = enumBugKeys.length
-    , lt     = '<'
     , gt     = '>'
     , iframeDocument;
   iframe.style.display = 'none';
@@ -67917,7 +67660,7 @@ var createDict = function(){
   // html.removeChild(iframe);
   iframeDocument = iframe.contentWindow.document;
   iframeDocument.open();
-  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
+  iframeDocument.write('<script>document.F=Object</script' + gt);
   iframeDocument.close();
   createDict = iframeDocument.F;
   while(i--)delete createDict[PROTOTYPE][enumBugKeys[i]];
@@ -67935,8 +67678,7 @@ module.exports = Object.create || function create(O, Properties){
   } else result = createDict();
   return Properties === undefined ? result : dPs(result, Properties);
 };
-
-},{"./_an-object":128,"./_dom-create":150,"./_enum-bug-keys":151,"./_html":162,"./_object-dps":189,"./_shared-key":214}],188:[function(require,module,exports){
+},{"./_an-object":129,"./_dom-create":151,"./_enum-bug-keys":152,"./_html":163,"./_object-dps":190,"./_shared-key":215}],189:[function(require,module,exports){
 var anObject       = require('./_an-object')
   , IE8_DOM_DEFINE = require('./_ie8-dom-define')
   , toPrimitive    = require('./_to-primitive')
@@ -67953,7 +67695,7 @@ exports.f = require('./_descriptors') ? Object.defineProperty : function defineP
   if('value' in Attributes)O[P] = Attributes.value;
   return O;
 };
-},{"./_an-object":128,"./_descriptors":149,"./_ie8-dom-define":163,"./_to-primitive":231}],189:[function(require,module,exports){
+},{"./_an-object":129,"./_descriptors":150,"./_ie8-dom-define":164,"./_to-primitive":232}],190:[function(require,module,exports){
 var dP       = require('./_object-dp')
   , anObject = require('./_an-object')
   , getKeys  = require('./_object-keys');
@@ -67967,7 +67709,7 @@ module.exports = require('./_descriptors') ? Object.defineProperties : function 
   while(length > i)dP.f(O, P = keys[i++], Properties[P]);
   return O;
 };
-},{"./_an-object":128,"./_descriptors":149,"./_object-dp":188,"./_object-keys":197}],190:[function(require,module,exports){
+},{"./_an-object":129,"./_descriptors":150,"./_object-dp":189,"./_object-keys":198}],191:[function(require,module,exports){
 // Forced replacement prototype accessors methods
 module.exports = require('./_library')|| !require('./_fails')(function(){
   var K = Math.random();
@@ -67975,7 +67717,7 @@ module.exports = require('./_library')|| !require('./_fails')(function(){
   __defineSetter__.call(null, K, function(){ /* empty */});
   delete require('./_global')[K];
 });
-},{"./_fails":155,"./_global":159,"./_library":179}],191:[function(require,module,exports){
+},{"./_fails":156,"./_global":160,"./_library":180}],192:[function(require,module,exports){
 var pIE            = require('./_object-pie')
   , createDesc     = require('./_property-desc')
   , toIObject      = require('./_to-iobject')
@@ -67992,7 +67734,7 @@ exports.f = require('./_descriptors') ? gOPD : function getOwnPropertyDescriptor
   } catch(e){ /* empty */ }
   if(has(O, P))return createDesc(!pIE.f.call(O, P), O[P]);
 };
-},{"./_descriptors":149,"./_has":160,"./_ie8-dom-define":163,"./_object-pie":198,"./_property-desc":206,"./_to-iobject":228,"./_to-primitive":231}],192:[function(require,module,exports){
+},{"./_descriptors":150,"./_has":161,"./_ie8-dom-define":164,"./_object-pie":199,"./_property-desc":207,"./_to-iobject":229,"./_to-primitive":232}],193:[function(require,module,exports){
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = require('./_to-iobject')
   , gOPN      = require('./_object-gopn').f
@@ -68013,7 +67755,7 @@ module.exports.f = function getOwnPropertyNames(it){
   return windowNames && toString.call(it) == '[object Window]' ? getWindowNames(it) : gOPN(toIObject(it));
 };
 
-},{"./_object-gopn":193,"./_to-iobject":228}],193:[function(require,module,exports){
+},{"./_object-gopn":194,"./_to-iobject":229}],194:[function(require,module,exports){
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 var $keys      = require('./_object-keys-internal')
   , hiddenKeys = require('./_enum-bug-keys').concat('length', 'prototype');
@@ -68021,9 +67763,9 @@ var $keys      = require('./_object-keys-internal')
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
   return $keys(O, hiddenKeys);
 };
-},{"./_enum-bug-keys":151,"./_object-keys-internal":196}],194:[function(require,module,exports){
+},{"./_enum-bug-keys":152,"./_object-keys-internal":197}],195:[function(require,module,exports){
 exports.f = Object.getOwnPropertySymbols;
-},{}],195:[function(require,module,exports){
+},{}],196:[function(require,module,exports){
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has         = require('./_has')
   , toObject    = require('./_to-object')
@@ -68037,7 +67779,7 @@ module.exports = Object.getPrototypeOf || function(O){
     return O.constructor.prototype;
   } return O instanceof Object ? ObjectProto : null;
 };
-},{"./_has":160,"./_shared-key":214,"./_to-object":230}],196:[function(require,module,exports){
+},{"./_has":161,"./_shared-key":215,"./_to-object":231}],197:[function(require,module,exports){
 var has          = require('./_has')
   , toIObject    = require('./_to-iobject')
   , arrayIndexOf = require('./_array-includes')(false)
@@ -68055,7 +67797,7 @@ module.exports = function(object, names){
   }
   return result;
 };
-},{"./_array-includes":132,"./_has":160,"./_shared-key":214,"./_to-iobject":228}],197:[function(require,module,exports){
+},{"./_array-includes":133,"./_has":161,"./_shared-key":215,"./_to-iobject":229}],198:[function(require,module,exports){
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys       = require('./_object-keys-internal')
   , enumBugKeys = require('./_enum-bug-keys');
@@ -68063,9 +67805,9 @@ var $keys       = require('./_object-keys-internal')
 module.exports = Object.keys || function keys(O){
   return $keys(O, enumBugKeys);
 };
-},{"./_enum-bug-keys":151,"./_object-keys-internal":196}],198:[function(require,module,exports){
+},{"./_enum-bug-keys":152,"./_object-keys-internal":197}],199:[function(require,module,exports){
 exports.f = {}.propertyIsEnumerable;
-},{}],199:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 // most Object methods by ES6 should accept primitives
 var $export = require('./_export')
   , core    = require('./_core')
@@ -68076,7 +67818,7 @@ module.exports = function(KEY, exec){
   exp[KEY] = exec(fn);
   $export($export.S + $export.F * fails(function(){ fn(1); }), 'Object', exp);
 };
-},{"./_core":144,"./_export":153,"./_fails":155}],200:[function(require,module,exports){
+},{"./_core":145,"./_export":154,"./_fails":156}],201:[function(require,module,exports){
 var getKeys   = require('./_object-keys')
   , toIObject = require('./_to-iobject')
   , isEnum    = require('./_object-pie').f;
@@ -68093,7 +67835,7 @@ module.exports = function(isEntries){
     } return result;
   };
 };
-},{"./_object-keys":197,"./_object-pie":198,"./_to-iobject":228}],201:[function(require,module,exports){
+},{"./_object-keys":198,"./_object-pie":199,"./_to-iobject":229}],202:[function(require,module,exports){
 // all object keys, includes non-enumerable and symbols
 var gOPN     = require('./_object-gopn')
   , gOPS     = require('./_object-gops')
@@ -68104,7 +67846,7 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
     , getSymbols = gOPS.f;
   return getSymbols ? keys.concat(getSymbols(it)) : keys;
 };
-},{"./_an-object":128,"./_global":159,"./_object-gopn":193,"./_object-gops":194}],202:[function(require,module,exports){
+},{"./_an-object":129,"./_global":160,"./_object-gopn":194,"./_object-gops":195}],203:[function(require,module,exports){
 var $parseFloat = require('./_global').parseFloat
   , $trim       = require('./_string-trim').trim;
 
@@ -68113,7 +67855,7 @@ module.exports = 1 / $parseFloat(require('./_string-ws') + '-0') !== -Infinity ?
     , result = $parseFloat(string);
   return result === 0 && string.charAt(0) == '-' ? -0 : result;
 } : $parseFloat;
-},{"./_global":159,"./_string-trim":223,"./_string-ws":224}],203:[function(require,module,exports){
+},{"./_global":160,"./_string-trim":224,"./_string-ws":225}],204:[function(require,module,exports){
 var $parseInt = require('./_global').parseInt
   , $trim     = require('./_string-trim').trim
   , ws        = require('./_string-ws')
@@ -68123,7 +67865,7 @@ module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? f
   var string = $trim(String(str), 3);
   return $parseInt(string, (radix >>> 0) || (hex.test(string) ? 16 : 10));
 } : $parseInt;
-},{"./_global":159,"./_string-trim":223,"./_string-ws":224}],204:[function(require,module,exports){
+},{"./_global":160,"./_string-trim":224,"./_string-ws":225}],205:[function(require,module,exports){
 'use strict';
 var path      = require('./_path')
   , invoke    = require('./_invoke')
@@ -68147,9 +67889,9 @@ module.exports = function(/* ...pargs */){
     return invoke(fn, args, that);
   };
 };
-},{"./_a-function":124,"./_invoke":165,"./_path":205}],205:[function(require,module,exports){
+},{"./_a-function":125,"./_invoke":166,"./_path":206}],206:[function(require,module,exports){
 module.exports = require('./_global');
-},{"./_global":159}],206:[function(require,module,exports){
+},{"./_global":160}],207:[function(require,module,exports){
 module.exports = function(bitmap, value){
   return {
     enumerable  : !(bitmap & 1),
@@ -68158,13 +67900,13 @@ module.exports = function(bitmap, value){
     value       : value
   };
 };
-},{}],207:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 var redefine = require('./_redefine');
 module.exports = function(target, src, safe){
   for(var key in src)redefine(target, key, src[key], safe);
   return target;
 };
-},{"./_redefine":208}],208:[function(require,module,exports){
+},{"./_redefine":209}],209:[function(require,module,exports){
 var global    = require('./_global')
   , hide      = require('./_hide')
   , has       = require('./_has')
@@ -68197,7 +67939,7 @@ require('./_core').inspectSource = function(it){
 })(Function.prototype, TO_STRING, function toString(){
   return typeof this == 'function' && this[SRC] || $toString.call(this);
 });
-},{"./_core":144,"./_global":159,"./_has":160,"./_hide":161,"./_uid":235}],209:[function(require,module,exports){
+},{"./_core":145,"./_global":160,"./_has":161,"./_hide":162,"./_uid":236}],210:[function(require,module,exports){
 module.exports = function(regExp, replace){
   var replacer = replace === Object(replace) ? function(part){
     return replace[part];
@@ -68206,12 +67948,12 @@ module.exports = function(regExp, replace){
     return String(it).replace(regExp, replacer);
   };
 };
-},{}],210:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 // 7.2.9 SameValue(x, y)
 module.exports = Object.is || function is(x, y){
   return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
 };
-},{}],211:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var isObject = require('./_is-object')
@@ -68237,7 +67979,7 @@ module.exports = {
     }({}, false) : undefined),
   check: check
 };
-},{"./_an-object":128,"./_ctx":146,"./_is-object":170,"./_object-gopd":191}],212:[function(require,module,exports){
+},{"./_an-object":129,"./_ctx":147,"./_is-object":171,"./_object-gopd":192}],213:[function(require,module,exports){
 'use strict';
 var global      = require('./_global')
   , dP          = require('./_object-dp')
@@ -68251,7 +67993,7 @@ module.exports = function(KEY){
     get: function(){ return this; }
   });
 };
-},{"./_descriptors":149,"./_global":159,"./_object-dp":188,"./_wks":238}],213:[function(require,module,exports){
+},{"./_descriptors":150,"./_global":160,"./_object-dp":189,"./_wks":239}],214:[function(require,module,exports){
 var def = require('./_object-dp').f
   , has = require('./_has')
   , TAG = require('./_wks')('toStringTag');
@@ -68259,20 +68001,20 @@ var def = require('./_object-dp').f
 module.exports = function(it, tag, stat){
   if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
 };
-},{"./_has":160,"./_object-dp":188,"./_wks":238}],214:[function(require,module,exports){
+},{"./_has":161,"./_object-dp":189,"./_wks":239}],215:[function(require,module,exports){
 var shared = require('./_shared')('keys')
   , uid    = require('./_uid');
 module.exports = function(key){
   return shared[key] || (shared[key] = uid(key));
 };
-},{"./_shared":215,"./_uid":235}],215:[function(require,module,exports){
+},{"./_shared":216,"./_uid":236}],216:[function(require,module,exports){
 var global = require('./_global')
   , SHARED = '__core-js_shared__'
   , store  = global[SHARED] || (global[SHARED] = {});
 module.exports = function(key){
   return store[key] || (store[key] = {});
 };
-},{"./_global":159}],216:[function(require,module,exports){
+},{"./_global":160}],217:[function(require,module,exports){
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
 var anObject  = require('./_an-object')
   , aFunction = require('./_a-function')
@@ -68281,7 +68023,7 @@ module.exports = function(O, D){
   var C = anObject(O).constructor, S;
   return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
 };
-},{"./_a-function":124,"./_an-object":128,"./_wks":238}],217:[function(require,module,exports){
+},{"./_a-function":125,"./_an-object":129,"./_wks":239}],218:[function(require,module,exports){
 var fails = require('./_fails');
 
 module.exports = function(method, arg){
@@ -68289,7 +68031,7 @@ module.exports = function(method, arg){
     arg ? method.call(null, function(){}, 1) : method.call(null);
   });
 };
-},{"./_fails":155}],218:[function(require,module,exports){
+},{"./_fails":156}],219:[function(require,module,exports){
 var toInteger = require('./_to-integer')
   , defined   = require('./_defined');
 // true  -> String#at
@@ -68307,7 +68049,7 @@ module.exports = function(TO_STRING){
       : TO_STRING ? s.slice(i, i + 2) : (a - 0xd800 << 10) + (b - 0xdc00) + 0x10000;
   };
 };
-},{"./_defined":148,"./_to-integer":227}],219:[function(require,module,exports){
+},{"./_defined":149,"./_to-integer":228}],220:[function(require,module,exports){
 // helper for String#{startsWith, endsWith, includes}
 var isRegExp = require('./_is-regexp')
   , defined  = require('./_defined');
@@ -68316,7 +68058,7 @@ module.exports = function(that, searchString, NAME){
   if(isRegExp(searchString))throw TypeError('String#' + NAME + " doesn't accept regex!");
   return String(defined(that));
 };
-},{"./_defined":148,"./_is-regexp":171}],220:[function(require,module,exports){
+},{"./_defined":149,"./_is-regexp":172}],221:[function(require,module,exports){
 var $export = require('./_export')
   , fails   = require('./_fails')
   , defined = require('./_defined')
@@ -68336,7 +68078,7 @@ module.exports = function(NAME, exec){
     return test !== test.toLowerCase() || test.split('"').length > 3;
   }), 'String', O);
 };
-},{"./_defined":148,"./_export":153,"./_fails":155}],221:[function(require,module,exports){
+},{"./_defined":149,"./_export":154,"./_fails":156}],222:[function(require,module,exports){
 // https://github.com/tc39/proposal-string-pad-start-end
 var toLength = require('./_to-length')
   , repeat   = require('./_string-repeat')
@@ -68354,7 +68096,7 @@ module.exports = function(that, maxLength, fillString, left){
   return left ? stringFiller + S : S + stringFiller;
 };
 
-},{"./_defined":148,"./_string-repeat":222,"./_to-length":229}],222:[function(require,module,exports){
+},{"./_defined":149,"./_string-repeat":223,"./_to-length":230}],223:[function(require,module,exports){
 'use strict';
 var toInteger = require('./_to-integer')
   , defined   = require('./_defined');
@@ -68367,7 +68109,7 @@ module.exports = function repeat(count){
   for(;n > 0; (n >>>= 1) && (str += str))if(n & 1)res += str;
   return res;
 };
-},{"./_defined":148,"./_to-integer":227}],223:[function(require,module,exports){
+},{"./_defined":149,"./_to-integer":228}],224:[function(require,module,exports){
 var $export = require('./_export')
   , defined = require('./_defined')
   , fails   = require('./_fails')
@@ -68398,10 +68140,10 @@ var trim = exporter.trim = function(string, TYPE){
 };
 
 module.exports = exporter;
-},{"./_defined":148,"./_export":153,"./_fails":155,"./_string-ws":224}],224:[function(require,module,exports){
+},{"./_defined":149,"./_export":154,"./_fails":156,"./_string-ws":225}],225:[function(require,module,exports){
 module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
   '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
-},{}],225:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 var ctx                = require('./_ctx')
   , invoke             = require('./_invoke')
   , html               = require('./_html')
@@ -68477,7 +68219,7 @@ module.exports = {
   set:   setTask,
   clear: clearTask
 };
-},{"./_cof":139,"./_ctx":146,"./_dom-create":150,"./_global":159,"./_html":162,"./_invoke":165}],226:[function(require,module,exports){
+},{"./_cof":140,"./_ctx":147,"./_dom-create":151,"./_global":160,"./_html":163,"./_invoke":166}],227:[function(require,module,exports){
 var toInteger = require('./_to-integer')
   , max       = Math.max
   , min       = Math.min;
@@ -68485,34 +68227,34 @@ module.exports = function(index, length){
   index = toInteger(index);
   return index < 0 ? max(index + length, 0) : min(index, length);
 };
-},{"./_to-integer":227}],227:[function(require,module,exports){
+},{"./_to-integer":228}],228:[function(require,module,exports){
 // 7.1.4 ToInteger
 var ceil  = Math.ceil
   , floor = Math.floor;
 module.exports = function(it){
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
-},{}],228:[function(require,module,exports){
+},{}],229:[function(require,module,exports){
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = require('./_iobject')
   , defined = require('./_defined');
 module.exports = function(it){
   return IObject(defined(it));
 };
-},{"./_defined":148,"./_iobject":166}],229:[function(require,module,exports){
+},{"./_defined":149,"./_iobject":167}],230:[function(require,module,exports){
 // 7.1.15 ToLength
 var toInteger = require('./_to-integer')
   , min       = Math.min;
 module.exports = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
-},{"./_to-integer":227}],230:[function(require,module,exports){
+},{"./_to-integer":228}],231:[function(require,module,exports){
 // 7.1.13 ToObject(argument)
 var defined = require('./_defined');
 module.exports = function(it){
   return Object(defined(it));
 };
-},{"./_defined":148}],231:[function(require,module,exports){
+},{"./_defined":149}],232:[function(require,module,exports){
 // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = require('./_is-object');
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
@@ -68525,7 +68267,7 @@ module.exports = function(it, S){
   if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
   throw TypeError("Can't convert object to primitive value");
 };
-},{"./_is-object":170}],232:[function(require,module,exports){
+},{"./_is-object":171}],233:[function(require,module,exports){
 'use strict';
 if(require('./_descriptors')){
   var LIBRARY             = require('./_library')
@@ -68539,6 +68281,7 @@ if(require('./_descriptors')){
     , propertyDesc        = require('./_property-desc')
     , hide                = require('./_hide')
     , redefineAll         = require('./_redefine-all')
+    , isInteger           = require('./_is-integer')
     , toInteger           = require('./_to-integer')
     , toLength            = require('./_to-length')
     , toIndex             = require('./_to-index')
@@ -68552,6 +68295,7 @@ if(require('./_descriptors')){
     , create              = require('./_object-create')
     , getPrototypeOf      = require('./_object-gpo')
     , gOPN                = require('./_object-gopn').f
+    , isIterable          = require('./core.is-iterable')
     , getIterFn           = require('./core.get-iterator-method')
     , uid                 = require('./_uid')
     , wks                 = require('./_wks')
@@ -69005,7 +68749,7 @@ if(require('./_descriptors')){
     if(!LIBRARY && !CORRECT_ITER_NAME)hide(TypedArrayPrototype, ITERATOR, $iterator);
   };
 } else module.exports = function(){ /* empty */ };
-},{"./_an-instance":127,"./_array-copy-within":129,"./_array-fill":130,"./_array-includes":132,"./_array-methods":133,"./_classof":138,"./_ctx":146,"./_descriptors":149,"./_export":153,"./_fails":155,"./_global":159,"./_has":160,"./_hide":161,"./_is-array-iter":167,"./_is-object":170,"./_iter-detect":175,"./_iterators":177,"./_library":179,"./_object-create":187,"./_object-dp":188,"./_object-gopd":191,"./_object-gopn":193,"./_object-gpo":195,"./_property-desc":206,"./_redefine-all":207,"./_same-value":210,"./_set-species":212,"./_species-constructor":216,"./_to-index":226,"./_to-integer":227,"./_to-length":229,"./_to-object":230,"./_to-primitive":231,"./_typed":234,"./_typed-buffer":233,"./_uid":235,"./_wks":238,"./core.get-iterator-method":239,"./es6.array.iterator":251}],233:[function(require,module,exports){
+},{"./_an-instance":128,"./_array-copy-within":130,"./_array-fill":131,"./_array-includes":133,"./_array-methods":134,"./_classof":139,"./_ctx":147,"./_descriptors":150,"./_export":154,"./_fails":156,"./_global":160,"./_has":161,"./_hide":162,"./_is-array-iter":168,"./_is-integer":170,"./_is-object":171,"./_iter-detect":176,"./_iterators":178,"./_library":180,"./_object-create":188,"./_object-dp":189,"./_object-gopd":192,"./_object-gopn":194,"./_object-gpo":196,"./_property-desc":207,"./_redefine-all":208,"./_same-value":211,"./_set-species":213,"./_species-constructor":217,"./_to-index":227,"./_to-integer":228,"./_to-length":230,"./_to-object":231,"./_to-primitive":232,"./_typed":235,"./_typed-buffer":234,"./_uid":236,"./_wks":239,"./core.get-iterator-method":240,"./core.is-iterable":241,"./es6.array.iterator":253}],234:[function(require,module,exports){
 'use strict';
 var global         = require('./_global')
   , DESCRIPTORS    = require('./_descriptors')
@@ -69029,11 +68773,13 @@ var global         = require('./_global')
   , $ArrayBuffer   = global[ARRAY_BUFFER]
   , $DataView      = global[DATA_VIEW]
   , Math           = global.Math
+  , parseInt       = global.parseInt
   , RangeError     = global.RangeError
   , Infinity       = global.Infinity
   , BaseBuffer     = $ArrayBuffer
   , abs            = Math.abs
   , pow            = Math.pow
+  , min            = Math.min
   , floor          = Math.floor
   , log            = Math.log
   , LN2            = Math.LN2
@@ -69279,7 +69025,7 @@ setToStringTag($DataView, DATA_VIEW);
 hide($DataView[PROTOTYPE], $typed.VIEW, true);
 exports[ARRAY_BUFFER] = $ArrayBuffer;
 exports[DATA_VIEW] = $DataView;
-},{"./_an-instance":127,"./_array-fill":130,"./_descriptors":149,"./_fails":155,"./_global":159,"./_hide":161,"./_library":179,"./_object-dp":188,"./_object-gopn":193,"./_redefine-all":207,"./_set-to-string-tag":213,"./_to-integer":227,"./_to-length":229,"./_typed":234}],234:[function(require,module,exports){
+},{"./_an-instance":128,"./_array-fill":131,"./_descriptors":150,"./_fails":156,"./_global":160,"./_hide":162,"./_library":180,"./_object-dp":189,"./_object-gopn":194,"./_redefine-all":208,"./_set-to-string-tag":214,"./_to-integer":228,"./_to-length":230,"./_typed":235}],235:[function(require,module,exports){
 var global = require('./_global')
   , hide   = require('./_hide')
   , uid    = require('./_uid')
@@ -69306,13 +69052,13 @@ module.exports = {
   TYPED:  TYPED,
   VIEW:   VIEW
 };
-},{"./_global":159,"./_hide":161,"./_uid":235}],235:[function(require,module,exports){
+},{"./_global":160,"./_hide":162,"./_uid":236}],236:[function(require,module,exports){
 var id = 0
   , px = Math.random();
 module.exports = function(key){
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
-},{}],236:[function(require,module,exports){
+},{}],237:[function(require,module,exports){
 var global         = require('./_global')
   , core           = require('./_core')
   , LIBRARY        = require('./_library')
@@ -69322,9 +69068,9 @@ module.exports = function(name){
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if(name.charAt(0) != '_' && !(name in $Symbol))defineProperty($Symbol, name, {value: wksExt.f(name)});
 };
-},{"./_core":144,"./_global":159,"./_library":179,"./_object-dp":188,"./_wks-ext":237}],237:[function(require,module,exports){
+},{"./_core":145,"./_global":160,"./_library":180,"./_object-dp":189,"./_wks-ext":238}],238:[function(require,module,exports){
 exports.f = require('./_wks');
-},{"./_wks":238}],238:[function(require,module,exports){
+},{"./_wks":239}],239:[function(require,module,exports){
 var store      = require('./_shared')('wks')
   , uid        = require('./_uid')
   , Symbol     = require('./_global').Symbol
@@ -69336,7 +69082,7 @@ var $exports = module.exports = function(name){
 };
 
 $exports.store = store;
-},{"./_global":159,"./_shared":215,"./_uid":235}],239:[function(require,module,exports){
+},{"./_global":160,"./_shared":216,"./_uid":236}],240:[function(require,module,exports){
 var classof   = require('./_classof')
   , ITERATOR  = require('./_wks')('iterator')
   , Iterators = require('./_iterators');
@@ -69345,21 +69091,31 @@ module.exports = require('./_core').getIteratorMethod = function(it){
     || it['@@iterator']
     || Iterators[classof(it)];
 };
-},{"./_classof":138,"./_core":144,"./_iterators":177,"./_wks":238}],240:[function(require,module,exports){
+},{"./_classof":139,"./_core":145,"./_iterators":178,"./_wks":239}],241:[function(require,module,exports){
+var classof   = require('./_classof')
+  , ITERATOR  = require('./_wks')('iterator')
+  , Iterators = require('./_iterators');
+module.exports = require('./_core').isIterable = function(it){
+  var O = Object(it);
+  return O[ITERATOR] !== undefined
+    || '@@iterator' in O
+    || Iterators.hasOwnProperty(classof(O));
+};
+},{"./_classof":139,"./_core":145,"./_iterators":178,"./_wks":239}],242:[function(require,module,exports){
 // https://github.com/benjamingr/RexExp.escape
 var $export = require('./_export')
   , $re     = require('./_replacer')(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 $export($export.S, 'RegExp', {escape: function escape(it){ return $re(it); }});
 
-},{"./_export":153,"./_replacer":209}],241:[function(require,module,exports){
+},{"./_export":154,"./_replacer":210}],243:[function(require,module,exports){
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 var $export = require('./_export');
 
 $export($export.P, 'Array', {copyWithin: require('./_array-copy-within')});
 
 require('./_add-to-unscopables')('copyWithin');
-},{"./_add-to-unscopables":126,"./_array-copy-within":129,"./_export":153}],242:[function(require,module,exports){
+},{"./_add-to-unscopables":127,"./_array-copy-within":130,"./_export":154}],244:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $every  = require('./_array-methods')(4);
@@ -69370,14 +69126,14 @@ $export($export.P + $export.F * !require('./_strict-method')([].every, true), 'A
     return $every(this, callbackfn, arguments[1]);
   }
 });
-},{"./_array-methods":133,"./_export":153,"./_strict-method":217}],243:[function(require,module,exports){
+},{"./_array-methods":134,"./_export":154,"./_strict-method":218}],245:[function(require,module,exports){
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 var $export = require('./_export');
 
 $export($export.P, 'Array', {fill: require('./_array-fill')});
 
 require('./_add-to-unscopables')('fill');
-},{"./_add-to-unscopables":126,"./_array-fill":130,"./_export":153}],244:[function(require,module,exports){
+},{"./_add-to-unscopables":127,"./_array-fill":131,"./_export":154}],246:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $filter = require('./_array-methods')(2);
@@ -69388,7 +69144,7 @@ $export($export.P + $export.F * !require('./_strict-method')([].filter, true), '
     return $filter(this, callbackfn, arguments[1]);
   }
 });
-},{"./_array-methods":133,"./_export":153,"./_strict-method":217}],245:[function(require,module,exports){
+},{"./_array-methods":134,"./_export":154,"./_strict-method":218}],247:[function(require,module,exports){
 'use strict';
 // 22.1.3.9 Array.prototype.findIndex(predicate, thisArg = undefined)
 var $export = require('./_export')
@@ -69403,7 +69159,7 @@ $export($export.P + $export.F * forced, 'Array', {
   }
 });
 require('./_add-to-unscopables')(KEY);
-},{"./_add-to-unscopables":126,"./_array-methods":133,"./_export":153}],246:[function(require,module,exports){
+},{"./_add-to-unscopables":127,"./_array-methods":134,"./_export":154}],248:[function(require,module,exports){
 'use strict';
 // 22.1.3.8 Array.prototype.find(predicate, thisArg = undefined)
 var $export = require('./_export')
@@ -69418,7 +69174,7 @@ $export($export.P + $export.F * forced, 'Array', {
   }
 });
 require('./_add-to-unscopables')(KEY);
-},{"./_add-to-unscopables":126,"./_array-methods":133,"./_export":153}],247:[function(require,module,exports){
+},{"./_add-to-unscopables":127,"./_array-methods":134,"./_export":154}],249:[function(require,module,exports){
 'use strict';
 var $export  = require('./_export')
   , $forEach = require('./_array-methods')(0)
@@ -69430,7 +69186,7 @@ $export($export.P + $export.F * !STRICT, 'Array', {
     return $forEach(this, callbackfn, arguments[1]);
   }
 });
-},{"./_array-methods":133,"./_export":153,"./_strict-method":217}],248:[function(require,module,exports){
+},{"./_array-methods":134,"./_export":154,"./_strict-method":218}],250:[function(require,module,exports){
 'use strict';
 var ctx            = require('./_ctx')
   , $export        = require('./_export')
@@ -69469,7 +69225,7 @@ $export($export.S + $export.F * !require('./_iter-detect')(function(iter){ Array
   }
 });
 
-},{"./_create-property":145,"./_ctx":146,"./_export":153,"./_is-array-iter":167,"./_iter-call":172,"./_iter-detect":175,"./_to-length":229,"./_to-object":230,"./core.get-iterator-method":239}],249:[function(require,module,exports){
+},{"./_create-property":146,"./_ctx":147,"./_export":154,"./_is-array-iter":168,"./_iter-call":173,"./_iter-detect":176,"./_to-length":230,"./_to-object":231,"./core.get-iterator-method":240}],251:[function(require,module,exports){
 'use strict';
 var $export       = require('./_export')
   , $indexOf      = require('./_array-includes')(false)
@@ -69485,12 +69241,12 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !require('./_strict-method')($
       : $indexOf(this, searchElement, arguments[1]);
   }
 });
-},{"./_array-includes":132,"./_export":153,"./_strict-method":217}],250:[function(require,module,exports){
+},{"./_array-includes":133,"./_export":154,"./_strict-method":218}],252:[function(require,module,exports){
 // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
 var $export = require('./_export');
 
 $export($export.S, 'Array', {isArray: require('./_is-array')});
-},{"./_export":153,"./_is-array":168}],251:[function(require,module,exports){
+},{"./_export":154,"./_is-array":169}],253:[function(require,module,exports){
 'use strict';
 var addToUnscopables = require('./_add-to-unscopables')
   , step             = require('./_iter-step')
@@ -69525,7 +69281,7 @@ Iterators.Arguments = Iterators.Array;
 addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
-},{"./_add-to-unscopables":126,"./_iter-define":174,"./_iter-step":176,"./_iterators":177,"./_to-iobject":228}],252:[function(require,module,exports){
+},{"./_add-to-unscopables":127,"./_iter-define":175,"./_iter-step":177,"./_iterators":178,"./_to-iobject":229}],254:[function(require,module,exports){
 'use strict';
 // 22.1.3.13 Array.prototype.join(separator)
 var $export   = require('./_export')
@@ -69538,7 +69294,7 @@ $export($export.P + $export.F * (require('./_iobject') != Object || !require('./
     return arrayJoin.call(toIObject(this), separator === undefined ? ',' : separator);
   }
 });
-},{"./_export":153,"./_iobject":166,"./_strict-method":217,"./_to-iobject":228}],253:[function(require,module,exports){
+},{"./_export":154,"./_iobject":167,"./_strict-method":218,"./_to-iobject":229}],255:[function(require,module,exports){
 'use strict';
 var $export       = require('./_export')
   , toIObject     = require('./_to-iobject')
@@ -69561,7 +69317,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !require('./_strict-method')($
     return -1;
   }
 });
-},{"./_export":153,"./_strict-method":217,"./_to-integer":227,"./_to-iobject":228,"./_to-length":229}],254:[function(require,module,exports){
+},{"./_export":154,"./_strict-method":218,"./_to-integer":228,"./_to-iobject":229,"./_to-length":230}],256:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $map    = require('./_array-methods')(1);
@@ -69572,7 +69328,7 @@ $export($export.P + $export.F * !require('./_strict-method')([].map, true), 'Arr
     return $map(this, callbackfn, arguments[1]);
   }
 });
-},{"./_array-methods":133,"./_export":153,"./_strict-method":217}],255:[function(require,module,exports){
+},{"./_array-methods":134,"./_export":154,"./_strict-method":218}],257:[function(require,module,exports){
 'use strict';
 var $export        = require('./_export')
   , createProperty = require('./_create-property');
@@ -69592,7 +69348,7 @@ $export($export.S + $export.F * require('./_fails')(function(){
     return result;
   }
 });
-},{"./_create-property":145,"./_export":153,"./_fails":155}],256:[function(require,module,exports){
+},{"./_create-property":146,"./_export":154,"./_fails":156}],258:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $reduce = require('./_array-reduce');
@@ -69603,7 +69359,7 @@ $export($export.P + $export.F * !require('./_strict-method')([].reduceRight, tru
     return $reduce(this, callbackfn, arguments.length, arguments[1], true);
   }
 });
-},{"./_array-reduce":134,"./_export":153,"./_strict-method":217}],257:[function(require,module,exports){
+},{"./_array-reduce":135,"./_export":154,"./_strict-method":218}],259:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $reduce = require('./_array-reduce');
@@ -69614,7 +69370,7 @@ $export($export.P + $export.F * !require('./_strict-method')([].reduce, true), '
     return $reduce(this, callbackfn, arguments.length, arguments[1], false);
   }
 });
-},{"./_array-reduce":134,"./_export":153,"./_strict-method":217}],258:[function(require,module,exports){
+},{"./_array-reduce":135,"./_export":154,"./_strict-method":218}],260:[function(require,module,exports){
 'use strict';
 var $export    = require('./_export')
   , html       = require('./_html')
@@ -69643,7 +69399,7 @@ $export($export.P + $export.F * require('./_fails')(function(){
     return cloned;
   }
 });
-},{"./_cof":139,"./_export":153,"./_fails":155,"./_html":162,"./_to-index":226,"./_to-length":229}],259:[function(require,module,exports){
+},{"./_cof":140,"./_export":154,"./_fails":156,"./_html":163,"./_to-index":227,"./_to-length":230}],261:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $some   = require('./_array-methods')(3);
@@ -69654,7 +69410,7 @@ $export($export.P + $export.F * !require('./_strict-method')([].some, true), 'Ar
     return $some(this, callbackfn, arguments[1]);
   }
 });
-},{"./_array-methods":133,"./_export":153,"./_strict-method":217}],260:[function(require,module,exports){
+},{"./_array-methods":134,"./_export":154,"./_strict-method":218}],262:[function(require,module,exports){
 'use strict';
 var $export   = require('./_export')
   , aFunction = require('./_a-function')
@@ -69678,14 +69434,14 @@ $export($export.P + $export.F * (fails(function(){
       : $sort.call(toObject(this), aFunction(comparefn));
   }
 });
-},{"./_a-function":124,"./_export":153,"./_fails":155,"./_strict-method":217,"./_to-object":230}],261:[function(require,module,exports){
+},{"./_a-function":125,"./_export":154,"./_fails":156,"./_strict-method":218,"./_to-object":231}],263:[function(require,module,exports){
 require('./_set-species')('Array');
-},{"./_set-species":212}],262:[function(require,module,exports){
+},{"./_set-species":213}],264:[function(require,module,exports){
 // 20.3.3.1 / 15.9.4.4 Date.now()
 var $export = require('./_export');
 
 $export($export.S, 'Date', {now: function(){ return new Date().getTime(); }});
-},{"./_export":153}],263:[function(require,module,exports){
+},{"./_export":154}],265:[function(require,module,exports){
 'use strict';
 // 20.3.4.36 / 15.9.5.43 Date.prototype.toISOString()
 var $export = require('./_export')
@@ -69714,7 +69470,7 @@ $export($export.P + $export.F * (fails(function(){
       ':' + lz(d.getUTCSeconds()) + '.' + (m > 99 ? m : '0' + lz(m)) + 'Z';
   }
 });
-},{"./_export":153,"./_fails":155}],264:[function(require,module,exports){
+},{"./_export":154,"./_fails":156}],266:[function(require,module,exports){
 'use strict';
 var $export     = require('./_export')
   , toObject    = require('./_to-object')
@@ -69729,12 +69485,12 @@ $export($export.P + $export.F * require('./_fails')(function(){
     return typeof pv == 'number' && !isFinite(pv) ? null : O.toISOString();
   }
 });
-},{"./_export":153,"./_fails":155,"./_to-object":230,"./_to-primitive":231}],265:[function(require,module,exports){
+},{"./_export":154,"./_fails":156,"./_to-object":231,"./_to-primitive":232}],267:[function(require,module,exports){
 var TO_PRIMITIVE = require('./_wks')('toPrimitive')
   , proto        = Date.prototype;
 
 if(!(TO_PRIMITIVE in proto))require('./_hide')(proto, TO_PRIMITIVE, require('./_date-to-primitive'));
-},{"./_date-to-primitive":147,"./_hide":161,"./_wks":238}],266:[function(require,module,exports){
+},{"./_date-to-primitive":148,"./_hide":162,"./_wks":239}],268:[function(require,module,exports){
 var DateProto    = Date.prototype
   , INVALID_DATE = 'Invalid Date'
   , TO_STRING    = 'toString'
@@ -69746,12 +69502,12 @@ if(new Date(NaN) + '' != INVALID_DATE){
     return value === value ? $toString.call(this) : INVALID_DATE;
   });
 }
-},{"./_redefine":208}],267:[function(require,module,exports){
+},{"./_redefine":209}],269:[function(require,module,exports){
 // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
 var $export = require('./_export');
 
 $export($export.P, 'Function', {bind: require('./_bind')});
-},{"./_bind":137,"./_export":153}],268:[function(require,module,exports){
+},{"./_bind":138,"./_export":154}],270:[function(require,module,exports){
 'use strict';
 var isObject       = require('./_is-object')
   , getPrototypeOf = require('./_object-gpo')
@@ -69765,7 +69521,7 @@ if(!(HAS_INSTANCE in FunctionProto))require('./_object-dp').f(FunctionProto, HAS
   while(O = getPrototypeOf(O))if(this.prototype === O)return true;
   return false;
 }});
-},{"./_is-object":170,"./_object-dp":188,"./_object-gpo":195,"./_wks":238}],269:[function(require,module,exports){
+},{"./_is-object":171,"./_object-dp":189,"./_object-gpo":196,"./_wks":239}],271:[function(require,module,exports){
 var dP         = require('./_object-dp').f
   , createDesc = require('./_property-desc')
   , has        = require('./_has')
@@ -69791,7 +69547,7 @@ NAME in FProto || require('./_descriptors') && dP(FProto, NAME, {
     }
   }
 });
-},{"./_descriptors":149,"./_has":160,"./_object-dp":188,"./_property-desc":206}],270:[function(require,module,exports){
+},{"./_descriptors":150,"./_has":161,"./_object-dp":189,"./_property-desc":207}],272:[function(require,module,exports){
 'use strict';
 var strong = require('./_collection-strong');
 
@@ -69809,7 +69565,7 @@ module.exports = require('./_collection')('Map', function(get){
     return strong.def(this, key === 0 ? 0 : key, value);
   }
 }, strong, true);
-},{"./_collection":143,"./_collection-strong":140}],271:[function(require,module,exports){
+},{"./_collection":144,"./_collection-strong":141}],273:[function(require,module,exports){
 // 20.2.2.3 Math.acosh(x)
 var $export = require('./_export')
   , log1p   = require('./_math-log1p')
@@ -69828,7 +69584,7 @@ $export($export.S + $export.F * !($acosh
       : log1p(x - 1 + sqrt(x - 1) * sqrt(x + 1));
   }
 });
-},{"./_export":153,"./_math-log1p":181}],272:[function(require,module,exports){
+},{"./_export":154,"./_math-log1p":182}],274:[function(require,module,exports){
 // 20.2.2.5 Math.asinh(x)
 var $export = require('./_export')
   , $asinh  = Math.asinh;
@@ -69839,7 +69595,7 @@ function asinh(x){
 
 // Tor Browser bug: Math.asinh(0) -> -0 
 $export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', {asinh: asinh});
-},{"./_export":153}],273:[function(require,module,exports){
+},{"./_export":154}],275:[function(require,module,exports){
 // 20.2.2.7 Math.atanh(x)
 var $export = require('./_export')
   , $atanh  = Math.atanh;
@@ -69850,7 +69606,7 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
     return (x = +x) == 0 ? x : Math.log((1 + x) / (1 - x)) / 2;
   }
 });
-},{"./_export":153}],274:[function(require,module,exports){
+},{"./_export":154}],276:[function(require,module,exports){
 // 20.2.2.9 Math.cbrt(x)
 var $export = require('./_export')
   , sign    = require('./_math-sign');
@@ -69860,7 +69616,7 @@ $export($export.S, 'Math', {
     return sign(x = +x) * Math.pow(Math.abs(x), 1 / 3);
   }
 });
-},{"./_export":153,"./_math-sign":182}],275:[function(require,module,exports){
+},{"./_export":154,"./_math-sign":183}],277:[function(require,module,exports){
 // 20.2.2.11 Math.clz32(x)
 var $export = require('./_export');
 
@@ -69869,7 +69625,7 @@ $export($export.S, 'Math', {
     return (x >>>= 0) ? 31 - Math.floor(Math.log(x + 0.5) * Math.LOG2E) : 32;
   }
 });
-},{"./_export":153}],276:[function(require,module,exports){
+},{"./_export":154}],278:[function(require,module,exports){
 // 20.2.2.12 Math.cosh(x)
 var $export = require('./_export')
   , exp     = Math.exp;
@@ -69879,13 +69635,13 @@ $export($export.S, 'Math', {
     return (exp(x = +x) + exp(-x)) / 2;
   }
 });
-},{"./_export":153}],277:[function(require,module,exports){
+},{"./_export":154}],279:[function(require,module,exports){
 // 20.2.2.14 Math.expm1(x)
 var $export = require('./_export')
   , $expm1  = require('./_math-expm1');
 
 $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', {expm1: $expm1});
-},{"./_export":153,"./_math-expm1":180}],278:[function(require,module,exports){
+},{"./_export":154,"./_math-expm1":181}],280:[function(require,module,exports){
 // 20.2.2.16 Math.fround(x)
 var $export   = require('./_export')
   , sign      = require('./_math-sign')
@@ -69912,7 +69668,7 @@ $export($export.S, 'Math', {
     return $sign * result;
   }
 });
-},{"./_export":153,"./_math-sign":182}],279:[function(require,module,exports){
+},{"./_export":154,"./_math-sign":183}],281:[function(require,module,exports){
 // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
 var $export = require('./_export')
   , abs     = Math.abs;
@@ -69938,7 +69694,7 @@ $export($export.S, 'Math', {
     return larg === Infinity ? Infinity : larg * Math.sqrt(sum);
   }
 });
-},{"./_export":153}],280:[function(require,module,exports){
+},{"./_export":154}],282:[function(require,module,exports){
 // 20.2.2.18 Math.imul(x, y)
 var $export = require('./_export')
   , $imul   = Math.imul;
@@ -69956,7 +69712,7 @@ $export($export.S + $export.F * require('./_fails')(function(){
     return 0 | xl * yl + ((UINT16 & xn >>> 16) * yl + xl * (UINT16 & yn >>> 16) << 16 >>> 0);
   }
 });
-},{"./_export":153,"./_fails":155}],281:[function(require,module,exports){
+},{"./_export":154,"./_fails":156}],283:[function(require,module,exports){
 // 20.2.2.21 Math.log10(x)
 var $export = require('./_export');
 
@@ -69965,12 +69721,12 @@ $export($export.S, 'Math', {
     return Math.log(x) / Math.LN10;
   }
 });
-},{"./_export":153}],282:[function(require,module,exports){
+},{"./_export":154}],284:[function(require,module,exports){
 // 20.2.2.20 Math.log1p(x)
 var $export = require('./_export');
 
 $export($export.S, 'Math', {log1p: require('./_math-log1p')});
-},{"./_export":153,"./_math-log1p":181}],283:[function(require,module,exports){
+},{"./_export":154,"./_math-log1p":182}],285:[function(require,module,exports){
 // 20.2.2.22 Math.log2(x)
 var $export = require('./_export');
 
@@ -69979,12 +69735,12 @@ $export($export.S, 'Math', {
     return Math.log(x) / Math.LN2;
   }
 });
-},{"./_export":153}],284:[function(require,module,exports){
+},{"./_export":154}],286:[function(require,module,exports){
 // 20.2.2.28 Math.sign(x)
 var $export = require('./_export');
 
 $export($export.S, 'Math', {sign: require('./_math-sign')});
-},{"./_export":153,"./_math-sign":182}],285:[function(require,module,exports){
+},{"./_export":154,"./_math-sign":183}],287:[function(require,module,exports){
 // 20.2.2.30 Math.sinh(x)
 var $export = require('./_export')
   , expm1   = require('./_math-expm1')
@@ -70000,7 +69756,7 @@ $export($export.S + $export.F * require('./_fails')(function(){
       : (exp(x - 1) - exp(-x - 1)) * (Math.E / 2);
   }
 });
-},{"./_export":153,"./_fails":155,"./_math-expm1":180}],286:[function(require,module,exports){
+},{"./_export":154,"./_fails":156,"./_math-expm1":181}],288:[function(require,module,exports){
 // 20.2.2.33 Math.tanh(x)
 var $export = require('./_export')
   , expm1   = require('./_math-expm1')
@@ -70013,7 +69769,7 @@ $export($export.S, 'Math', {
     return a == Infinity ? 1 : b == Infinity ? -1 : (a - b) / (exp(x) + exp(-x));
   }
 });
-},{"./_export":153,"./_math-expm1":180}],287:[function(require,module,exports){
+},{"./_export":154,"./_math-expm1":181}],289:[function(require,module,exports){
 // 20.2.2.34 Math.trunc(x)
 var $export = require('./_export');
 
@@ -70022,7 +69778,7 @@ $export($export.S, 'Math', {
     return (it > 0 ? Math.floor : Math.ceil)(it);
   }
 });
-},{"./_export":153}],288:[function(require,module,exports){
+},{"./_export":154}],290:[function(require,module,exports){
 'use strict';
 var global            = require('./_global')
   , has               = require('./_has')
@@ -70092,12 +69848,12 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
   proto.constructor = $Number;
   require('./_redefine')(global, NUMBER, $Number);
 }
-},{"./_cof":139,"./_descriptors":149,"./_fails":155,"./_global":159,"./_has":160,"./_inherit-if-required":164,"./_object-create":187,"./_object-dp":188,"./_object-gopd":191,"./_object-gopn":193,"./_redefine":208,"./_string-trim":223,"./_to-primitive":231}],289:[function(require,module,exports){
+},{"./_cof":140,"./_descriptors":150,"./_fails":156,"./_global":160,"./_has":161,"./_inherit-if-required":165,"./_object-create":188,"./_object-dp":189,"./_object-gopd":192,"./_object-gopn":194,"./_redefine":209,"./_string-trim":224,"./_to-primitive":232}],291:[function(require,module,exports){
 // 20.1.2.1 Number.EPSILON
 var $export = require('./_export');
 
 $export($export.S, 'Number', {EPSILON: Math.pow(2, -52)});
-},{"./_export":153}],290:[function(require,module,exports){
+},{"./_export":154}],292:[function(require,module,exports){
 // 20.1.2.2 Number.isFinite(number)
 var $export   = require('./_export')
   , _isFinite = require('./_global').isFinite;
@@ -70107,12 +69863,12 @@ $export($export.S, 'Number', {
     return typeof it == 'number' && _isFinite(it);
   }
 });
-},{"./_export":153,"./_global":159}],291:[function(require,module,exports){
+},{"./_export":154,"./_global":160}],293:[function(require,module,exports){
 // 20.1.2.3 Number.isInteger(number)
 var $export = require('./_export');
 
 $export($export.S, 'Number', {isInteger: require('./_is-integer')});
-},{"./_export":153,"./_is-integer":169}],292:[function(require,module,exports){
+},{"./_export":154,"./_is-integer":170}],294:[function(require,module,exports){
 // 20.1.2.4 Number.isNaN(number)
 var $export = require('./_export');
 
@@ -70121,7 +69877,7 @@ $export($export.S, 'Number', {
     return number != number;
   }
 });
-},{"./_export":153}],293:[function(require,module,exports){
+},{"./_export":154}],295:[function(require,module,exports){
 // 20.1.2.5 Number.isSafeInteger(number)
 var $export   = require('./_export')
   , isInteger = require('./_is-integer')
@@ -70132,29 +69888,30 @@ $export($export.S, 'Number', {
     return isInteger(number) && abs(number) <= 0x1fffffffffffff;
   }
 });
-},{"./_export":153,"./_is-integer":169}],294:[function(require,module,exports){
+},{"./_export":154,"./_is-integer":170}],296:[function(require,module,exports){
 // 20.1.2.6 Number.MAX_SAFE_INTEGER
 var $export = require('./_export');
 
 $export($export.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
-},{"./_export":153}],295:[function(require,module,exports){
+},{"./_export":154}],297:[function(require,module,exports){
 // 20.1.2.10 Number.MIN_SAFE_INTEGER
 var $export = require('./_export');
 
 $export($export.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
-},{"./_export":153}],296:[function(require,module,exports){
+},{"./_export":154}],298:[function(require,module,exports){
 var $export     = require('./_export')
   , $parseFloat = require('./_parse-float');
 // 20.1.2.12 Number.parseFloat(string)
 $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', {parseFloat: $parseFloat});
-},{"./_export":153,"./_parse-float":202}],297:[function(require,module,exports){
+},{"./_export":154,"./_parse-float":203}],299:[function(require,module,exports){
 var $export   = require('./_export')
   , $parseInt = require('./_parse-int');
 // 20.1.2.13 Number.parseInt(string, radix)
 $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', {parseInt: $parseInt});
-},{"./_export":153,"./_parse-int":203}],298:[function(require,module,exports){
+},{"./_export":154,"./_parse-int":204}],300:[function(require,module,exports){
 'use strict';
 var $export      = require('./_export')
+  , anInstance   = require('./_an-instance')
   , toInteger    = require('./_to-integer')
   , aNumberValue = require('./_a-number-value')
   , repeat       = require('./_string-repeat')
@@ -70266,7 +70023,7 @@ $export($export.P + $export.F * (!!$toFixed && (
     } return m;
   }
 });
-},{"./_a-number-value":125,"./_export":153,"./_fails":155,"./_string-repeat":222,"./_to-integer":227}],299:[function(require,module,exports){
+},{"./_a-number-value":126,"./_an-instance":128,"./_export":154,"./_fails":156,"./_string-repeat":223,"./_to-integer":228}],301:[function(require,module,exports){
 'use strict';
 var $export      = require('./_export')
   , $fails       = require('./_fails')
@@ -70285,24 +70042,24 @@ $export($export.P + $export.F * ($fails(function(){
     return precision === undefined ? $toPrecision.call(that) : $toPrecision.call(that, precision); 
   }
 });
-},{"./_a-number-value":125,"./_export":153,"./_fails":155}],300:[function(require,module,exports){
+},{"./_a-number-value":126,"./_export":154,"./_fails":156}],302:[function(require,module,exports){
 // 19.1.3.1 Object.assign(target, source)
 var $export = require('./_export');
 
 $export($export.S + $export.F, 'Object', {assign: require('./_object-assign')});
-},{"./_export":153,"./_object-assign":186}],301:[function(require,module,exports){
+},{"./_export":154,"./_object-assign":187}],303:[function(require,module,exports){
 var $export = require('./_export')
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', {create: require('./_object-create')});
-},{"./_export":153,"./_object-create":187}],302:[function(require,module,exports){
+},{"./_export":154,"./_object-create":188}],304:[function(require,module,exports){
 var $export = require('./_export');
 // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
 $export($export.S + $export.F * !require('./_descriptors'), 'Object', {defineProperties: require('./_object-dps')});
-},{"./_descriptors":149,"./_export":153,"./_object-dps":189}],303:[function(require,module,exports){
+},{"./_descriptors":150,"./_export":154,"./_object-dps":190}],305:[function(require,module,exports){
 var $export = require('./_export');
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
 $export($export.S + $export.F * !require('./_descriptors'), 'Object', {defineProperty: require('./_object-dp').f});
-},{"./_descriptors":149,"./_export":153,"./_object-dp":188}],304:[function(require,module,exports){
+},{"./_descriptors":150,"./_export":154,"./_object-dp":189}],306:[function(require,module,exports){
 // 19.1.2.5 Object.freeze(O)
 var isObject = require('./_is-object')
   , meta     = require('./_meta').onFreeze;
@@ -70312,7 +70069,7 @@ require('./_object-sap')('freeze', function($freeze){
     return $freeze && isObject(it) ? $freeze(meta(it)) : it;
   };
 });
-},{"./_is-object":170,"./_meta":183,"./_object-sap":199}],305:[function(require,module,exports){
+},{"./_is-object":171,"./_meta":184,"./_object-sap":200}],307:[function(require,module,exports){
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
 var toIObject                 = require('./_to-iobject')
   , $getOwnPropertyDescriptor = require('./_object-gopd').f;
@@ -70322,12 +70079,12 @@ require('./_object-sap')('getOwnPropertyDescriptor', function(){
     return $getOwnPropertyDescriptor(toIObject(it), key);
   };
 });
-},{"./_object-gopd":191,"./_object-sap":199,"./_to-iobject":228}],306:[function(require,module,exports){
+},{"./_object-gopd":192,"./_object-sap":200,"./_to-iobject":229}],308:[function(require,module,exports){
 // 19.1.2.7 Object.getOwnPropertyNames(O)
 require('./_object-sap')('getOwnPropertyNames', function(){
   return require('./_object-gopn-ext').f;
 });
-},{"./_object-gopn-ext":192,"./_object-sap":199}],307:[function(require,module,exports){
+},{"./_object-gopn-ext":193,"./_object-sap":200}],309:[function(require,module,exports){
 // 19.1.2.9 Object.getPrototypeOf(O)
 var toObject        = require('./_to-object')
   , $getPrototypeOf = require('./_object-gpo');
@@ -70337,7 +70094,7 @@ require('./_object-sap')('getPrototypeOf', function(){
     return $getPrototypeOf(toObject(it));
   };
 });
-},{"./_object-gpo":195,"./_object-sap":199,"./_to-object":230}],308:[function(require,module,exports){
+},{"./_object-gpo":196,"./_object-sap":200,"./_to-object":231}],310:[function(require,module,exports){
 // 19.1.2.11 Object.isExtensible(O)
 var isObject = require('./_is-object');
 
@@ -70346,7 +70103,7 @@ require('./_object-sap')('isExtensible', function($isExtensible){
     return isObject(it) ? $isExtensible ? $isExtensible(it) : true : false;
   };
 });
-},{"./_is-object":170,"./_object-sap":199}],309:[function(require,module,exports){
+},{"./_is-object":171,"./_object-sap":200}],311:[function(require,module,exports){
 // 19.1.2.12 Object.isFrozen(O)
 var isObject = require('./_is-object');
 
@@ -70355,7 +70112,7 @@ require('./_object-sap')('isFrozen', function($isFrozen){
     return isObject(it) ? $isFrozen ? $isFrozen(it) : false : true;
   };
 });
-},{"./_is-object":170,"./_object-sap":199}],310:[function(require,module,exports){
+},{"./_is-object":171,"./_object-sap":200}],312:[function(require,module,exports){
 // 19.1.2.13 Object.isSealed(O)
 var isObject = require('./_is-object');
 
@@ -70364,11 +70121,11 @@ require('./_object-sap')('isSealed', function($isSealed){
     return isObject(it) ? $isSealed ? $isSealed(it) : false : true;
   };
 });
-},{"./_is-object":170,"./_object-sap":199}],311:[function(require,module,exports){
+},{"./_is-object":171,"./_object-sap":200}],313:[function(require,module,exports){
 // 19.1.3.10 Object.is(value1, value2)
 var $export = require('./_export');
 $export($export.S, 'Object', {is: require('./_same-value')});
-},{"./_export":153,"./_same-value":210}],312:[function(require,module,exports){
+},{"./_export":154,"./_same-value":211}],314:[function(require,module,exports){
 // 19.1.2.14 Object.keys(O)
 var toObject = require('./_to-object')
   , $keys    = require('./_object-keys');
@@ -70378,7 +70135,7 @@ require('./_object-sap')('keys', function(){
     return $keys(toObject(it));
   };
 });
-},{"./_object-keys":197,"./_object-sap":199,"./_to-object":230}],313:[function(require,module,exports){
+},{"./_object-keys":198,"./_object-sap":200,"./_to-object":231}],315:[function(require,module,exports){
 // 19.1.2.15 Object.preventExtensions(O)
 var isObject = require('./_is-object')
   , meta     = require('./_meta').onFreeze;
@@ -70388,7 +70145,7 @@ require('./_object-sap')('preventExtensions', function($preventExtensions){
     return $preventExtensions && isObject(it) ? $preventExtensions(meta(it)) : it;
   };
 });
-},{"./_is-object":170,"./_meta":183,"./_object-sap":199}],314:[function(require,module,exports){
+},{"./_is-object":171,"./_meta":184,"./_object-sap":200}],316:[function(require,module,exports){
 // 19.1.2.17 Object.seal(O)
 var isObject = require('./_is-object')
   , meta     = require('./_meta').onFreeze;
@@ -70398,11 +70155,11 @@ require('./_object-sap')('seal', function($seal){
     return $seal && isObject(it) ? $seal(meta(it)) : it;
   };
 });
-},{"./_is-object":170,"./_meta":183,"./_object-sap":199}],315:[function(require,module,exports){
+},{"./_is-object":171,"./_meta":184,"./_object-sap":200}],317:[function(require,module,exports){
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = require('./_export');
 $export($export.S, 'Object', {setPrototypeOf: require('./_set-proto').set});
-},{"./_export":153,"./_set-proto":211}],316:[function(require,module,exports){
+},{"./_export":154,"./_set-proto":212}],318:[function(require,module,exports){
 'use strict';
 // 19.1.3.6 Object.prototype.toString()
 var classof = require('./_classof')
@@ -70413,17 +70170,17 @@ if(test + '' != '[object z]'){
     return '[object ' + classof(this) + ']';
   }, true);
 }
-},{"./_classof":138,"./_redefine":208,"./_wks":238}],317:[function(require,module,exports){
+},{"./_classof":139,"./_redefine":209,"./_wks":239}],319:[function(require,module,exports){
 var $export     = require('./_export')
   , $parseFloat = require('./_parse-float');
 // 18.2.4 parseFloat(string)
 $export($export.G + $export.F * (parseFloat != $parseFloat), {parseFloat: $parseFloat});
-},{"./_export":153,"./_parse-float":202}],318:[function(require,module,exports){
+},{"./_export":154,"./_parse-float":203}],320:[function(require,module,exports){
 var $export   = require('./_export')
   , $parseInt = require('./_parse-int');
 // 18.2.5 parseInt(string, radix)
 $export($export.G + $export.F * (parseInt != $parseInt), {parseInt: $parseInt});
-},{"./_export":153,"./_parse-int":203}],319:[function(require,module,exports){
+},{"./_export":154,"./_parse-int":204}],321:[function(require,module,exports){
 'use strict';
 var LIBRARY            = require('./_library')
   , global             = require('./_global')
@@ -70431,9 +70188,11 @@ var LIBRARY            = require('./_library')
   , classof            = require('./_classof')
   , $export            = require('./_export')
   , isObject           = require('./_is-object')
+  , anObject           = require('./_an-object')
   , aFunction          = require('./_a-function')
   , anInstance         = require('./_an-instance')
   , forOf              = require('./_for-of')
+  , setProto           = require('./_set-proto').set
   , speciesConstructor = require('./_species-constructor')
   , task               = require('./_task').set
   , microtask          = require('./_microtask')()
@@ -70723,50 +70482,37 @@ $export($export.S + $export.F * !(USE_NATIVE && require('./_iter-detect')(functi
     return capability.promise;
   }
 });
-},{"./_a-function":124,"./_an-instance":127,"./_classof":138,"./_core":144,"./_ctx":146,"./_export":153,"./_for-of":158,"./_global":159,"./_is-object":170,"./_iter-detect":175,"./_library":179,"./_microtask":185,"./_redefine-all":207,"./_set-species":212,"./_set-to-string-tag":213,"./_species-constructor":216,"./_task":225,"./_wks":238}],320:[function(require,module,exports){
+},{"./_a-function":125,"./_an-instance":128,"./_an-object":129,"./_classof":139,"./_core":145,"./_ctx":147,"./_export":154,"./_for-of":159,"./_global":160,"./_is-object":171,"./_iter-detect":176,"./_library":180,"./_microtask":186,"./_redefine-all":208,"./_set-proto":212,"./_set-species":213,"./_set-to-string-tag":214,"./_species-constructor":217,"./_task":226,"./_wks":239}],322:[function(require,module,exports){
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
 var $export   = require('./_export')
   , aFunction = require('./_a-function')
   , anObject  = require('./_an-object')
-  , rApply    = (require('./_global').Reflect || {}).apply
-  , fApply    = Function.apply;
-// MS Edge argumentsList argument is optional
-$export($export.S + $export.F * !require('./_fails')(function(){
-  rApply(function(){});
-}), 'Reflect', {
+  , _apply    = Function.apply;
+
+$export($export.S, 'Reflect', {
   apply: function apply(target, thisArgument, argumentsList){
-    var T = aFunction(target)
-      , L = anObject(argumentsList);
-    return rApply ? rApply(T, thisArgument, L) : fApply.call(T, thisArgument, L);
+    return _apply.call(aFunction(target), thisArgument, anObject(argumentsList));
   }
 });
-},{"./_a-function":124,"./_an-object":128,"./_export":153,"./_fails":155,"./_global":159}],321:[function(require,module,exports){
+},{"./_a-function":125,"./_an-object":129,"./_export":154}],323:[function(require,module,exports){
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
-var $export    = require('./_export')
-  , create     = require('./_object-create')
-  , aFunction  = require('./_a-function')
-  , anObject   = require('./_an-object')
-  , isObject   = require('./_is-object')
-  , fails      = require('./_fails')
-  , bind       = require('./_bind')
-  , rConstruct = (require('./_global').Reflect || {}).construct;
+var $export   = require('./_export')
+  , create    = require('./_object-create')
+  , aFunction = require('./_a-function')
+  , anObject  = require('./_an-object')
+  , isObject  = require('./_is-object')
+  , bind      = require('./_bind');
 
-// MS Edge supports only 2 arguments and argumentsList argument is optional
+// MS Edge supports only 2 arguments
 // FF Nightly sets third argument as `new.target`, but does not create `this` from it
-var NEW_TARGET_BUG = fails(function(){
+$export($export.S + $export.F * require('./_fails')(function(){
   function F(){}
-  return !(rConstruct(function(){}, [], F) instanceof F);
-});
-var ARGS_BUG = !fails(function(){
-  rConstruct(function(){});
-});
-
-$export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
+  return !(Reflect.construct(function(){}, [], F) instanceof F);
+}), 'Reflect', {
   construct: function construct(Target, args /*, newTarget*/){
     aFunction(Target);
     anObject(args);
     var newTarget = arguments.length < 3 ? Target : aFunction(arguments[2]);
-    if(ARGS_BUG && !NEW_TARGET_BUG)return rConstruct(Target, args, newTarget);
     if(Target == newTarget){
       // w/o altered newTarget, optimization for 0-4 arguments
       switch(args.length){
@@ -70788,7 +70534,7 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
     return isObject(result) ? result : instance;
   }
 });
-},{"./_a-function":124,"./_an-object":128,"./_bind":137,"./_export":153,"./_fails":155,"./_global":159,"./_is-object":170,"./_object-create":187}],322:[function(require,module,exports){
+},{"./_a-function":125,"./_an-object":129,"./_bind":138,"./_export":154,"./_fails":156,"./_is-object":171,"./_object-create":188}],324:[function(require,module,exports){
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
 var dP          = require('./_object-dp')
   , $export     = require('./_export')
@@ -70811,7 +70557,7 @@ $export($export.S + $export.F * require('./_fails')(function(){
     }
   }
 });
-},{"./_an-object":128,"./_export":153,"./_fails":155,"./_object-dp":188,"./_to-primitive":231}],323:[function(require,module,exports){
+},{"./_an-object":129,"./_export":154,"./_fails":156,"./_object-dp":189,"./_to-primitive":232}],325:[function(require,module,exports){
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
 var $export  = require('./_export')
   , gOPD     = require('./_object-gopd').f
@@ -70823,7 +70569,7 @@ $export($export.S, 'Reflect', {
     return desc && !desc.configurable ? false : delete target[propertyKey];
   }
 });
-},{"./_an-object":128,"./_export":153,"./_object-gopd":191}],324:[function(require,module,exports){
+},{"./_an-object":129,"./_export":154,"./_object-gopd":192}],326:[function(require,module,exports){
 'use strict';
 // 26.1.5 Reflect.enumerate(target)
 var $export  = require('./_export')
@@ -70850,7 +70596,7 @@ $export($export.S, 'Reflect', {
     return new Enumerate(target);
   }
 });
-},{"./_an-object":128,"./_export":153,"./_iter-create":173}],325:[function(require,module,exports){
+},{"./_an-object":129,"./_export":154,"./_iter-create":174}],327:[function(require,module,exports){
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
 var gOPD     = require('./_object-gopd')
   , $export  = require('./_export')
@@ -70861,7 +70607,7 @@ $export($export.S, 'Reflect', {
     return gOPD.f(anObject(target), propertyKey);
   }
 });
-},{"./_an-object":128,"./_export":153,"./_object-gopd":191}],326:[function(require,module,exports){
+},{"./_an-object":129,"./_export":154,"./_object-gopd":192}],328:[function(require,module,exports){
 // 26.1.8 Reflect.getPrototypeOf(target)
 var $export  = require('./_export')
   , getProto = require('./_object-gpo')
@@ -70872,7 +70618,7 @@ $export($export.S, 'Reflect', {
     return getProto(anObject(target));
   }
 });
-},{"./_an-object":128,"./_export":153,"./_object-gpo":195}],327:[function(require,module,exports){
+},{"./_an-object":129,"./_export":154,"./_object-gpo":196}],329:[function(require,module,exports){
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
 var gOPD           = require('./_object-gopd')
   , getPrototypeOf = require('./_object-gpo')
@@ -70894,7 +70640,7 @@ function get(target, propertyKey/*, receiver*/){
 }
 
 $export($export.S, 'Reflect', {get: get});
-},{"./_an-object":128,"./_export":153,"./_has":160,"./_is-object":170,"./_object-gopd":191,"./_object-gpo":195}],328:[function(require,module,exports){
+},{"./_an-object":129,"./_export":154,"./_has":161,"./_is-object":171,"./_object-gopd":192,"./_object-gpo":196}],330:[function(require,module,exports){
 // 26.1.9 Reflect.has(target, propertyKey)
 var $export = require('./_export');
 
@@ -70903,7 +70649,7 @@ $export($export.S, 'Reflect', {
     return propertyKey in target;
   }
 });
-},{"./_export":153}],329:[function(require,module,exports){
+},{"./_export":154}],331:[function(require,module,exports){
 // 26.1.10 Reflect.isExtensible(target)
 var $export       = require('./_export')
   , anObject      = require('./_an-object')
@@ -70915,12 +70661,12 @@ $export($export.S, 'Reflect', {
     return $isExtensible ? $isExtensible(target) : true;
   }
 });
-},{"./_an-object":128,"./_export":153}],330:[function(require,module,exports){
+},{"./_an-object":129,"./_export":154}],332:[function(require,module,exports){
 // 26.1.11 Reflect.ownKeys(target)
 var $export = require('./_export');
 
 $export($export.S, 'Reflect', {ownKeys: require('./_own-keys')});
-},{"./_export":153,"./_own-keys":201}],331:[function(require,module,exports){
+},{"./_export":154,"./_own-keys":202}],333:[function(require,module,exports){
 // 26.1.12 Reflect.preventExtensions(target)
 var $export            = require('./_export')
   , anObject           = require('./_an-object')
@@ -70937,7 +70683,7 @@ $export($export.S, 'Reflect', {
     }
   }
 });
-},{"./_an-object":128,"./_export":153}],332:[function(require,module,exports){
+},{"./_an-object":129,"./_export":154}],334:[function(require,module,exports){
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
 var $export  = require('./_export')
   , setProto = require('./_set-proto');
@@ -70953,7 +70699,7 @@ if(setProto)$export($export.S, 'Reflect', {
     }
   }
 });
-},{"./_export":153,"./_set-proto":211}],333:[function(require,module,exports){
+},{"./_export":154,"./_set-proto":212}],335:[function(require,module,exports){
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
 var dP             = require('./_object-dp')
   , gOPD           = require('./_object-gopd')
@@ -70985,7 +70731,7 @@ function set(target, propertyKey, V/*, receiver*/){
 }
 
 $export($export.S, 'Reflect', {set: set});
-},{"./_an-object":128,"./_export":153,"./_has":160,"./_is-object":170,"./_object-dp":188,"./_object-gopd":191,"./_object-gpo":195,"./_property-desc":206}],334:[function(require,module,exports){
+},{"./_an-object":129,"./_export":154,"./_has":161,"./_is-object":171,"./_object-dp":189,"./_object-gopd":192,"./_object-gpo":196,"./_property-desc":207}],336:[function(require,module,exports){
 var global            = require('./_global')
   , inheritIfRequired = require('./_inherit-if-required')
   , dP                = require('./_object-dp').f
@@ -71029,13 +70775,13 @@ if(require('./_descriptors') && (!CORRECT_NEW || require('./_fails')(function(){
 }
 
 require('./_set-species')('RegExp');
-},{"./_descriptors":149,"./_fails":155,"./_flags":157,"./_global":159,"./_inherit-if-required":164,"./_is-regexp":171,"./_object-dp":188,"./_object-gopn":193,"./_redefine":208,"./_set-species":212,"./_wks":238}],335:[function(require,module,exports){
+},{"./_descriptors":150,"./_fails":156,"./_flags":158,"./_global":160,"./_inherit-if-required":165,"./_is-regexp":172,"./_object-dp":189,"./_object-gopn":194,"./_redefine":209,"./_set-species":213,"./_wks":239}],337:[function(require,module,exports){
 // 21.2.5.3 get RegExp.prototype.flags()
 if(require('./_descriptors') && /./g.flags != 'g')require('./_object-dp').f(RegExp.prototype, 'flags', {
   configurable: true,
   get: require('./_flags')
 });
-},{"./_descriptors":149,"./_flags":157,"./_object-dp":188}],336:[function(require,module,exports){
+},{"./_descriptors":150,"./_flags":158,"./_object-dp":189}],338:[function(require,module,exports){
 // @@match logic
 require('./_fix-re-wks')('match', 1, function(defined, MATCH, $match){
   // 21.1.3.11 String.prototype.match(regexp)
@@ -71046,7 +70792,7 @@ require('./_fix-re-wks')('match', 1, function(defined, MATCH, $match){
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[MATCH](String(O));
   }, $match];
 });
-},{"./_fix-re-wks":156}],337:[function(require,module,exports){
+},{"./_fix-re-wks":157}],339:[function(require,module,exports){
 // @@replace logic
 require('./_fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
   // 21.1.3.14 String.prototype.replace(searchValue, replaceValue)
@@ -71059,7 +70805,7 @@ require('./_fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
       : $replace.call(String(O), searchValue, replaceValue);
   }, $replace];
 });
-},{"./_fix-re-wks":156}],338:[function(require,module,exports){
+},{"./_fix-re-wks":157}],340:[function(require,module,exports){
 // @@search logic
 require('./_fix-re-wks')('search', 1, function(defined, SEARCH, $search){
   // 21.1.3.15 String.prototype.search(regexp)
@@ -71070,7 +70816,7 @@ require('./_fix-re-wks')('search', 1, function(defined, SEARCH, $search){
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[SEARCH](String(O));
   }, $search];
 });
-},{"./_fix-re-wks":156}],339:[function(require,module,exports){
+},{"./_fix-re-wks":157}],341:[function(require,module,exports){
 // @@split logic
 require('./_fix-re-wks')('split', 2, function(defined, SPLIT, $split){
   'use strict';
@@ -71141,7 +70887,7 @@ require('./_fix-re-wks')('split', 2, function(defined, SPLIT, $split){
     return fn !== undefined ? fn.call(separator, O, limit) : $split.call(String(O), separator, limit);
   }, $split];
 });
-},{"./_fix-re-wks":156,"./_is-regexp":171}],340:[function(require,module,exports){
+},{"./_fix-re-wks":157,"./_is-regexp":172}],342:[function(require,module,exports){
 'use strict';
 require('./es6.regexp.flags');
 var anObject    = require('./_an-object')
@@ -71167,7 +70913,7 @@ if(require('./_fails')(function(){ return $toString.call({source: 'a', flags: 'b
     return $toString.call(this);
   });
 }
-},{"./_an-object":128,"./_descriptors":149,"./_fails":155,"./_flags":157,"./_redefine":208,"./es6.regexp.flags":335}],341:[function(require,module,exports){
+},{"./_an-object":129,"./_descriptors":150,"./_fails":156,"./_flags":158,"./_redefine":209,"./es6.regexp.flags":337}],343:[function(require,module,exports){
 'use strict';
 var strong = require('./_collection-strong');
 
@@ -71180,7 +70926,7 @@ module.exports = require('./_collection')('Set', function(get){
     return strong.def(this, value = value === 0 ? 0 : value, value);
   }
 }, strong);
-},{"./_collection":143,"./_collection-strong":140}],342:[function(require,module,exports){
+},{"./_collection":144,"./_collection-strong":141}],344:[function(require,module,exports){
 'use strict';
 // B.2.3.2 String.prototype.anchor(name)
 require('./_string-html')('anchor', function(createHTML){
@@ -71188,7 +70934,7 @@ require('./_string-html')('anchor', function(createHTML){
     return createHTML(this, 'a', 'name', name);
   }
 });
-},{"./_string-html":220}],343:[function(require,module,exports){
+},{"./_string-html":221}],345:[function(require,module,exports){
 'use strict';
 // B.2.3.3 String.prototype.big()
 require('./_string-html')('big', function(createHTML){
@@ -71196,7 +70942,7 @@ require('./_string-html')('big', function(createHTML){
     return createHTML(this, 'big', '', '');
   }
 });
-},{"./_string-html":220}],344:[function(require,module,exports){
+},{"./_string-html":221}],346:[function(require,module,exports){
 'use strict';
 // B.2.3.4 String.prototype.blink()
 require('./_string-html')('blink', function(createHTML){
@@ -71204,7 +70950,7 @@ require('./_string-html')('blink', function(createHTML){
     return createHTML(this, 'blink', '', '');
   }
 });
-},{"./_string-html":220}],345:[function(require,module,exports){
+},{"./_string-html":221}],347:[function(require,module,exports){
 'use strict';
 // B.2.3.5 String.prototype.bold()
 require('./_string-html')('bold', function(createHTML){
@@ -71212,7 +70958,7 @@ require('./_string-html')('bold', function(createHTML){
     return createHTML(this, 'b', '', '');
   }
 });
-},{"./_string-html":220}],346:[function(require,module,exports){
+},{"./_string-html":221}],348:[function(require,module,exports){
 'use strict';
 var $export = require('./_export')
   , $at     = require('./_string-at')(false);
@@ -71222,7 +70968,7 @@ $export($export.P, 'String', {
     return $at(this, pos);
   }
 });
-},{"./_export":153,"./_string-at":218}],347:[function(require,module,exports){
+},{"./_export":154,"./_string-at":219}],349:[function(require,module,exports){
 // 21.1.3.6 String.prototype.endsWith(searchString [, endPosition])
 'use strict';
 var $export   = require('./_export')
@@ -71243,7 +70989,7 @@ $export($export.P + $export.F * require('./_fails-is-regexp')(ENDS_WITH), 'Strin
       : that.slice(end - search.length, end) === search;
   }
 });
-},{"./_export":153,"./_fails-is-regexp":154,"./_string-context":219,"./_to-length":229}],348:[function(require,module,exports){
+},{"./_export":154,"./_fails-is-regexp":155,"./_string-context":220,"./_to-length":230}],350:[function(require,module,exports){
 'use strict';
 // B.2.3.6 String.prototype.fixed()
 require('./_string-html')('fixed', function(createHTML){
@@ -71251,7 +70997,7 @@ require('./_string-html')('fixed', function(createHTML){
     return createHTML(this, 'tt', '', '');
   }
 });
-},{"./_string-html":220}],349:[function(require,module,exports){
+},{"./_string-html":221}],351:[function(require,module,exports){
 'use strict';
 // B.2.3.7 String.prototype.fontcolor(color)
 require('./_string-html')('fontcolor', function(createHTML){
@@ -71259,7 +71005,7 @@ require('./_string-html')('fontcolor', function(createHTML){
     return createHTML(this, 'font', 'color', color);
   }
 });
-},{"./_string-html":220}],350:[function(require,module,exports){
+},{"./_string-html":221}],352:[function(require,module,exports){
 'use strict';
 // B.2.3.8 String.prototype.fontsize(size)
 require('./_string-html')('fontsize', function(createHTML){
@@ -71267,7 +71013,7 @@ require('./_string-html')('fontsize', function(createHTML){
     return createHTML(this, 'font', 'size', size);
   }
 });
-},{"./_string-html":220}],351:[function(require,module,exports){
+},{"./_string-html":221}],353:[function(require,module,exports){
 var $export        = require('./_export')
   , toIndex        = require('./_to-index')
   , fromCharCode   = String.fromCharCode
@@ -71291,7 +71037,7 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
     } return res.join('');
   }
 });
-},{"./_export":153,"./_to-index":226}],352:[function(require,module,exports){
+},{"./_export":154,"./_to-index":227}],354:[function(require,module,exports){
 // 21.1.3.7 String.prototype.includes(searchString, position = 0)
 'use strict';
 var $export  = require('./_export')
@@ -71304,7 +71050,7 @@ $export($export.P + $export.F * require('./_fails-is-regexp')(INCLUDES), 'String
       .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
-},{"./_export":153,"./_fails-is-regexp":154,"./_string-context":219}],353:[function(require,module,exports){
+},{"./_export":154,"./_fails-is-regexp":155,"./_string-context":220}],355:[function(require,module,exports){
 'use strict';
 // B.2.3.9 String.prototype.italics()
 require('./_string-html')('italics', function(createHTML){
@@ -71312,7 +71058,7 @@ require('./_string-html')('italics', function(createHTML){
     return createHTML(this, 'i', '', '');
   }
 });
-},{"./_string-html":220}],354:[function(require,module,exports){
+},{"./_string-html":221}],356:[function(require,module,exports){
 'use strict';
 var $at  = require('./_string-at')(true);
 
@@ -71330,7 +71076,7 @@ require('./_iter-define')(String, 'String', function(iterated){
   this._i += point.length;
   return {value: point, done: false};
 });
-},{"./_iter-define":174,"./_string-at":218}],355:[function(require,module,exports){
+},{"./_iter-define":175,"./_string-at":219}],357:[function(require,module,exports){
 'use strict';
 // B.2.3.10 String.prototype.link(url)
 require('./_string-html')('link', function(createHTML){
@@ -71338,7 +71084,7 @@ require('./_string-html')('link', function(createHTML){
     return createHTML(this, 'a', 'href', url);
   }
 });
-},{"./_string-html":220}],356:[function(require,module,exports){
+},{"./_string-html":221}],358:[function(require,module,exports){
 var $export   = require('./_export')
   , toIObject = require('./_to-iobject')
   , toLength  = require('./_to-length');
@@ -71357,14 +71103,14 @@ $export($export.S, 'String', {
     } return res.join('');
   }
 });
-},{"./_export":153,"./_to-iobject":228,"./_to-length":229}],357:[function(require,module,exports){
+},{"./_export":154,"./_to-iobject":229,"./_to-length":230}],359:[function(require,module,exports){
 var $export = require('./_export');
 
 $export($export.P, 'String', {
   // 21.1.3.13 String.prototype.repeat(count)
   repeat: require('./_string-repeat')
 });
-},{"./_export":153,"./_string-repeat":222}],358:[function(require,module,exports){
+},{"./_export":154,"./_string-repeat":223}],360:[function(require,module,exports){
 'use strict';
 // B.2.3.11 String.prototype.small()
 require('./_string-html')('small', function(createHTML){
@@ -71372,7 +71118,7 @@ require('./_string-html')('small', function(createHTML){
     return createHTML(this, 'small', '', '');
   }
 });
-},{"./_string-html":220}],359:[function(require,module,exports){
+},{"./_string-html":221}],361:[function(require,module,exports){
 // 21.1.3.18 String.prototype.startsWith(searchString [, position ])
 'use strict';
 var $export     = require('./_export')
@@ -71391,7 +71137,7 @@ $export($export.P + $export.F * require('./_fails-is-regexp')(STARTS_WITH), 'Str
       : that.slice(index, index + search.length) === search;
   }
 });
-},{"./_export":153,"./_fails-is-regexp":154,"./_string-context":219,"./_to-length":229}],360:[function(require,module,exports){
+},{"./_export":154,"./_fails-is-regexp":155,"./_string-context":220,"./_to-length":230}],362:[function(require,module,exports){
 'use strict';
 // B.2.3.12 String.prototype.strike()
 require('./_string-html')('strike', function(createHTML){
@@ -71399,7 +71145,7 @@ require('./_string-html')('strike', function(createHTML){
     return createHTML(this, 'strike', '', '');
   }
 });
-},{"./_string-html":220}],361:[function(require,module,exports){
+},{"./_string-html":221}],363:[function(require,module,exports){
 'use strict';
 // B.2.3.13 String.prototype.sub()
 require('./_string-html')('sub', function(createHTML){
@@ -71407,7 +71153,7 @@ require('./_string-html')('sub', function(createHTML){
     return createHTML(this, 'sub', '', '');
   }
 });
-},{"./_string-html":220}],362:[function(require,module,exports){
+},{"./_string-html":221}],364:[function(require,module,exports){
 'use strict';
 // B.2.3.14 String.prototype.sup()
 require('./_string-html')('sup', function(createHTML){
@@ -71415,7 +71161,7 @@ require('./_string-html')('sup', function(createHTML){
     return createHTML(this, 'sup', '', '');
   }
 });
-},{"./_string-html":220}],363:[function(require,module,exports){
+},{"./_string-html":221}],365:[function(require,module,exports){
 'use strict';
 // 21.1.3.25 String.prototype.trim()
 require('./_string-trim')('trim', function($trim){
@@ -71423,7 +71169,7 @@ require('./_string-trim')('trim', function($trim){
     return $trim(this, 3);
   };
 });
-},{"./_string-trim":223}],364:[function(require,module,exports){
+},{"./_string-trim":224}],366:[function(require,module,exports){
 'use strict';
 // ECMAScript 6 symbols shim
 var global         = require('./_global')
@@ -71659,7 +71405,7 @@ setToStringTag($Symbol, 'Symbol');
 setToStringTag(Math, 'Math', true);
 // 24.3.3 JSON[@@toStringTag]
 setToStringTag(global.JSON, 'JSON', true);
-},{"./_an-object":128,"./_descriptors":149,"./_enum-keys":152,"./_export":153,"./_fails":155,"./_global":159,"./_has":160,"./_hide":161,"./_is-array":168,"./_keyof":178,"./_library":179,"./_meta":183,"./_object-create":187,"./_object-dp":188,"./_object-gopd":191,"./_object-gopn":193,"./_object-gopn-ext":192,"./_object-gops":194,"./_object-keys":197,"./_object-pie":198,"./_property-desc":206,"./_redefine":208,"./_set-to-string-tag":213,"./_shared":215,"./_to-iobject":228,"./_to-primitive":231,"./_uid":235,"./_wks":238,"./_wks-define":236,"./_wks-ext":237}],365:[function(require,module,exports){
+},{"./_an-object":129,"./_descriptors":150,"./_enum-keys":153,"./_export":154,"./_fails":156,"./_global":160,"./_has":161,"./_hide":162,"./_is-array":169,"./_keyof":179,"./_library":180,"./_meta":184,"./_object-create":188,"./_object-dp":189,"./_object-gopd":192,"./_object-gopn":194,"./_object-gopn-ext":193,"./_object-gops":195,"./_object-keys":198,"./_object-pie":199,"./_property-desc":207,"./_redefine":209,"./_set-to-string-tag":214,"./_shared":216,"./_to-iobject":229,"./_to-primitive":232,"./_uid":236,"./_wks":239,"./_wks-define":237,"./_wks-ext":238}],367:[function(require,module,exports){
 'use strict';
 var $export      = require('./_export')
   , $typed       = require('./_typed')
@@ -71668,6 +71414,7 @@ var $export      = require('./_export')
   , toIndex      = require('./_to-index')
   , toLength     = require('./_to-length')
   , isObject     = require('./_is-object')
+  , TYPED_ARRAY  = require('./_wks')('typed_array')
   , ArrayBuffer  = require('./_global').ArrayBuffer
   , speciesConstructor = require('./_species-constructor')
   , $ArrayBuffer = buffer.ArrayBuffer
@@ -71706,66 +71453,66 @@ $export($export.P + $export.U + $export.F * require('./_fails')(function(){
 });
 
 require('./_set-species')(ARRAY_BUFFER);
-},{"./_an-object":128,"./_export":153,"./_fails":155,"./_global":159,"./_is-object":170,"./_set-species":212,"./_species-constructor":216,"./_to-index":226,"./_to-length":229,"./_typed":234,"./_typed-buffer":233}],366:[function(require,module,exports){
+},{"./_an-object":129,"./_export":154,"./_fails":156,"./_global":160,"./_is-object":171,"./_set-species":213,"./_species-constructor":217,"./_to-index":227,"./_to-length":230,"./_typed":235,"./_typed-buffer":234,"./_wks":239}],368:[function(require,module,exports){
 var $export = require('./_export');
 $export($export.G + $export.W + $export.F * !require('./_typed').ABV, {
   DataView: require('./_typed-buffer').DataView
 });
-},{"./_export":153,"./_typed":234,"./_typed-buffer":233}],367:[function(require,module,exports){
+},{"./_export":154,"./_typed":235,"./_typed-buffer":234}],369:[function(require,module,exports){
 require('./_typed-array')('Float32', 4, function(init){
   return function Float32Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":232}],368:[function(require,module,exports){
+},{"./_typed-array":233}],370:[function(require,module,exports){
 require('./_typed-array')('Float64', 8, function(init){
   return function Float64Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":232}],369:[function(require,module,exports){
+},{"./_typed-array":233}],371:[function(require,module,exports){
 require('./_typed-array')('Int16', 2, function(init){
   return function Int16Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":232}],370:[function(require,module,exports){
+},{"./_typed-array":233}],372:[function(require,module,exports){
 require('./_typed-array')('Int32', 4, function(init){
   return function Int32Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":232}],371:[function(require,module,exports){
+},{"./_typed-array":233}],373:[function(require,module,exports){
 require('./_typed-array')('Int8', 1, function(init){
   return function Int8Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":232}],372:[function(require,module,exports){
+},{"./_typed-array":233}],374:[function(require,module,exports){
 require('./_typed-array')('Uint16', 2, function(init){
   return function Uint16Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":232}],373:[function(require,module,exports){
+},{"./_typed-array":233}],375:[function(require,module,exports){
 require('./_typed-array')('Uint32', 4, function(init){
   return function Uint32Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":232}],374:[function(require,module,exports){
+},{"./_typed-array":233}],376:[function(require,module,exports){
 require('./_typed-array')('Uint8', 1, function(init){
   return function Uint8Array(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 });
-},{"./_typed-array":232}],375:[function(require,module,exports){
+},{"./_typed-array":233}],377:[function(require,module,exports){
 require('./_typed-array')('Uint8', 1, function(init){
   return function Uint8ClampedArray(data, byteOffset, length){
     return init(this, data, byteOffset, length);
   };
 }, true);
-},{"./_typed-array":232}],376:[function(require,module,exports){
+},{"./_typed-array":233}],378:[function(require,module,exports){
 'use strict';
 var each         = require('./_array-methods')(0)
   , redefine     = require('./_redefine')
@@ -71773,6 +71520,7 @@ var each         = require('./_array-methods')(0)
   , assign       = require('./_object-assign')
   , weak         = require('./_collection-weak')
   , isObject     = require('./_is-object')
+  , has          = require('./_has')
   , getWeak      = meta.getWeak
   , isExtensible = Object.isExtensible
   , uncaughtFrozenStore = weak.ufstore
@@ -71822,7 +71570,7 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
     });
   });
 }
-},{"./_array-methods":133,"./_collection":143,"./_collection-weak":142,"./_is-object":170,"./_meta":183,"./_object-assign":186,"./_redefine":208}],377:[function(require,module,exports){
+},{"./_array-methods":134,"./_collection":144,"./_collection-weak":143,"./_has":161,"./_is-object":171,"./_meta":184,"./_object-assign":187,"./_redefine":209}],379:[function(require,module,exports){
 'use strict';
 var weak = require('./_collection-weak');
 
@@ -71835,7 +71583,7 @@ require('./_collection')('WeakSet', function(get){
     return weak.def(this, value, true);
   }
 }, weak, false, true);
-},{"./_collection":143,"./_collection-weak":142}],378:[function(require,module,exports){
+},{"./_collection":144,"./_collection-weak":143}],380:[function(require,module,exports){
 'use strict';
 // https://github.com/tc39/Array.prototype.includes
 var $export   = require('./_export')
@@ -71848,7 +71596,7 @@ $export($export.P, 'Array', {
 });
 
 require('./_add-to-unscopables')('includes');
-},{"./_add-to-unscopables":126,"./_array-includes":132,"./_export":153}],379:[function(require,module,exports){
+},{"./_add-to-unscopables":127,"./_array-includes":133,"./_export":154}],381:[function(require,module,exports){
 // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
 var $export   = require('./_export')
   , microtask = require('./_microtask')()
@@ -71861,7 +71609,7 @@ $export($export.G, {
     microtask(domain ? domain.bind(fn) : fn);
   }
 });
-},{"./_cof":139,"./_export":153,"./_global":159,"./_microtask":185}],380:[function(require,module,exports){
+},{"./_cof":140,"./_export":154,"./_global":160,"./_microtask":186}],382:[function(require,module,exports){
 // https://github.com/ljharb/proposal-is-error
 var $export = require('./_export')
   , cof     = require('./_cof');
@@ -71871,12 +71619,12 @@ $export($export.S, 'Error', {
     return cof(it) === 'Error';
   }
 });
-},{"./_cof":139,"./_export":153}],381:[function(require,module,exports){
+},{"./_cof":140,"./_export":154}],383:[function(require,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export  = require('./_export');
 
 $export($export.P + $export.R, 'Map', {toJSON: require('./_collection-to-json')('Map')});
-},{"./_collection-to-json":141,"./_export":153}],382:[function(require,module,exports){
+},{"./_collection-to-json":142,"./_export":154}],384:[function(require,module,exports){
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
@@ -71888,7 +71636,7 @@ $export($export.S, 'Math', {
     return $x1 + (y1 >>> 0) + (($x0 & $y0 | ($x0 | $y0) & ~($x0 + $y0 >>> 0)) >>> 31) | 0;
   }
 });
-},{"./_export":153}],383:[function(require,module,exports){
+},{"./_export":154}],385:[function(require,module,exports){
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
@@ -71905,7 +71653,7 @@ $export($export.S, 'Math', {
     return u1 * v1 + (t >> 16) + ((u0 * v1 >>> 0) + (t & UINT16) >> 16);
   }
 });
-},{"./_export":153}],384:[function(require,module,exports){
+},{"./_export":154}],386:[function(require,module,exports){
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
@@ -71917,7 +71665,7 @@ $export($export.S, 'Math', {
     return $x1 - (y1 >>> 0) - ((~$x0 & $y0 | ~($x0 ^ $y0) & $x0 - $y0 >>> 0) >>> 31) | 0;
   }
 });
-},{"./_export":153}],385:[function(require,module,exports){
+},{"./_export":154}],387:[function(require,module,exports){
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
 var $export = require('./_export');
 
@@ -71934,7 +71682,7 @@ $export($export.S, 'Math', {
     return u1 * v1 + (t >>> 16) + ((u0 * v1 >>> 0) + (t & UINT16) >>> 16);
   }
 });
-},{"./_export":153}],386:[function(require,module,exports){
+},{"./_export":154}],388:[function(require,module,exports){
 'use strict';
 var $export         = require('./_export')
   , toObject        = require('./_to-object')
@@ -71947,7 +71695,7 @@ require('./_descriptors') && $export($export.P + require('./_object-forced-pam')
     $defineProperty.f(toObject(this), P, {get: aFunction(getter), enumerable: true, configurable: true});
   }
 });
-},{"./_a-function":124,"./_descriptors":149,"./_export":153,"./_object-dp":188,"./_object-forced-pam":190,"./_to-object":230}],387:[function(require,module,exports){
+},{"./_a-function":125,"./_descriptors":150,"./_export":154,"./_object-dp":189,"./_object-forced-pam":191,"./_to-object":231}],389:[function(require,module,exports){
 'use strict';
 var $export         = require('./_export')
   , toObject        = require('./_to-object')
@@ -71960,7 +71708,7 @@ require('./_descriptors') && $export($export.P + require('./_object-forced-pam')
     $defineProperty.f(toObject(this), P, {set: aFunction(setter), enumerable: true, configurable: true});
   }
 });
-},{"./_a-function":124,"./_descriptors":149,"./_export":153,"./_object-dp":188,"./_object-forced-pam":190,"./_to-object":230}],388:[function(require,module,exports){
+},{"./_a-function":125,"./_descriptors":150,"./_export":154,"./_object-dp":189,"./_object-forced-pam":191,"./_to-object":231}],390:[function(require,module,exports){
 // https://github.com/tc39/proposal-object-values-entries
 var $export  = require('./_export')
   , $entries = require('./_object-to-array')(true);
@@ -71970,7 +71718,7 @@ $export($export.S, 'Object', {
     return $entries(it);
   }
 });
-},{"./_export":153,"./_object-to-array":200}],389:[function(require,module,exports){
+},{"./_export":154,"./_object-to-array":201}],391:[function(require,module,exports){
 // https://github.com/tc39/proposal-object-getownpropertydescriptors
 var $export        = require('./_export')
   , ownKeys        = require('./_own-keys')
@@ -71985,12 +71733,12 @@ $export($export.S, 'Object', {
       , keys    = ownKeys(O)
       , result  = {}
       , i       = 0
-      , key;
+      , key, D;
     while(keys.length > i)createProperty(result, key = keys[i++], getDesc(O, key));
     return result;
   }
 });
-},{"./_create-property":145,"./_export":153,"./_object-gopd":191,"./_own-keys":201,"./_to-iobject":228}],390:[function(require,module,exports){
+},{"./_create-property":146,"./_export":154,"./_object-gopd":192,"./_own-keys":202,"./_to-iobject":229}],392:[function(require,module,exports){
 'use strict';
 var $export                  = require('./_export')
   , toObject                 = require('./_to-object')
@@ -72009,7 +71757,7 @@ require('./_descriptors') && $export($export.P + require('./_object-forced-pam')
     } while(O = getPrototypeOf(O));
   }
 });
-},{"./_descriptors":149,"./_export":153,"./_object-forced-pam":190,"./_object-gopd":191,"./_object-gpo":195,"./_to-object":230,"./_to-primitive":231}],391:[function(require,module,exports){
+},{"./_descriptors":150,"./_export":154,"./_object-forced-pam":191,"./_object-gopd":192,"./_object-gpo":196,"./_to-object":231,"./_to-primitive":232}],393:[function(require,module,exports){
 'use strict';
 var $export                  = require('./_export')
   , toObject                 = require('./_to-object')
@@ -72028,7 +71776,7 @@ require('./_descriptors') && $export($export.P + require('./_object-forced-pam')
     } while(O = getPrototypeOf(O));
   }
 });
-},{"./_descriptors":149,"./_export":153,"./_object-forced-pam":190,"./_object-gopd":191,"./_object-gpo":195,"./_to-object":230,"./_to-primitive":231}],392:[function(require,module,exports){
+},{"./_descriptors":150,"./_export":154,"./_object-forced-pam":191,"./_object-gopd":192,"./_object-gpo":196,"./_to-object":231,"./_to-primitive":232}],394:[function(require,module,exports){
 // https://github.com/tc39/proposal-object-values-entries
 var $export = require('./_export')
   , $values = require('./_object-to-array')(false);
@@ -72038,7 +71786,7 @@ $export($export.S, 'Object', {
     return $values(it);
   }
 });
-},{"./_export":153,"./_object-to-array":200}],393:[function(require,module,exports){
+},{"./_export":154,"./_object-to-array":201}],395:[function(require,module,exports){
 'use strict';
 // https://github.com/zenparsing/es-observable
 var $export     = require('./_export')
@@ -72238,7 +71986,7 @@ hide($Observable.prototype, OBSERVABLE, function(){ return this; });
 $export($export.G, {Observable: $Observable});
 
 require('./_set-species')('Observable');
-},{"./_a-function":124,"./_an-instance":127,"./_an-object":128,"./_core":144,"./_export":153,"./_for-of":158,"./_global":159,"./_hide":161,"./_microtask":185,"./_redefine-all":207,"./_set-species":212,"./_wks":238}],394:[function(require,module,exports){
+},{"./_a-function":125,"./_an-instance":128,"./_an-object":129,"./_core":145,"./_export":154,"./_for-of":159,"./_global":160,"./_hide":162,"./_microtask":186,"./_redefine-all":208,"./_set-species":213,"./_wks":239}],396:[function(require,module,exports){
 var metadata                  = require('./_metadata')
   , anObject                  = require('./_an-object')
   , toMetaKey                 = metadata.key
@@ -72247,7 +71995,7 @@ var metadata                  = require('./_metadata')
 metadata.exp({defineMetadata: function defineMetadata(metadataKey, metadataValue, target, targetKey){
   ordinaryDefineOwnMetadata(metadataKey, metadataValue, anObject(target), toMetaKey(targetKey));
 }});
-},{"./_an-object":128,"./_metadata":184}],395:[function(require,module,exports){
+},{"./_an-object":129,"./_metadata":185}],397:[function(require,module,exports){
 var metadata               = require('./_metadata')
   , anObject               = require('./_an-object')
   , toMetaKey              = metadata.key
@@ -72263,7 +72011,7 @@ metadata.exp({deleteMetadata: function deleteMetadata(metadataKey, target /*, ta
   targetMetadata['delete'](targetKey);
   return !!targetMetadata.size || store['delete'](target);
 }});
-},{"./_an-object":128,"./_metadata":184}],396:[function(require,module,exports){
+},{"./_an-object":129,"./_metadata":185}],398:[function(require,module,exports){
 var Set                     = require('./es6.set')
   , from                    = require('./_array-from-iterable')
   , metadata                = require('./_metadata')
@@ -72283,7 +72031,7 @@ var ordinaryMetadataKeys = function(O, P){
 metadata.exp({getMetadataKeys: function getMetadataKeys(target /*, targetKey */){
   return ordinaryMetadataKeys(anObject(target), arguments.length < 2 ? undefined : toMetaKey(arguments[1]));
 }});
-},{"./_an-object":128,"./_array-from-iterable":131,"./_metadata":184,"./_object-gpo":195,"./es6.set":341}],397:[function(require,module,exports){
+},{"./_an-object":129,"./_array-from-iterable":132,"./_metadata":185,"./_object-gpo":196,"./es6.set":343}],399:[function(require,module,exports){
 var metadata               = require('./_metadata')
   , anObject               = require('./_an-object')
   , getPrototypeOf         = require('./_object-gpo')
@@ -72301,7 +72049,7 @@ var ordinaryGetMetadata = function(MetadataKey, O, P){
 metadata.exp({getMetadata: function getMetadata(metadataKey, target /*, targetKey */){
   return ordinaryGetMetadata(metadataKey, anObject(target), arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
 }});
-},{"./_an-object":128,"./_metadata":184,"./_object-gpo":195}],398:[function(require,module,exports){
+},{"./_an-object":129,"./_metadata":185,"./_object-gpo":196}],400:[function(require,module,exports){
 var metadata                = require('./_metadata')
   , anObject                = require('./_an-object')
   , ordinaryOwnMetadataKeys = metadata.keys
@@ -72310,7 +72058,7 @@ var metadata                = require('./_metadata')
 metadata.exp({getOwnMetadataKeys: function getOwnMetadataKeys(target /*, targetKey */){
   return ordinaryOwnMetadataKeys(anObject(target), arguments.length < 2 ? undefined : toMetaKey(arguments[1]));
 }});
-},{"./_an-object":128,"./_metadata":184}],399:[function(require,module,exports){
+},{"./_an-object":129,"./_metadata":185}],401:[function(require,module,exports){
 var metadata               = require('./_metadata')
   , anObject               = require('./_an-object')
   , ordinaryGetOwnMetadata = metadata.get
@@ -72320,7 +72068,7 @@ metadata.exp({getOwnMetadata: function getOwnMetadata(metadataKey, target /*, ta
   return ordinaryGetOwnMetadata(metadataKey, anObject(target)
     , arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
 }});
-},{"./_an-object":128,"./_metadata":184}],400:[function(require,module,exports){
+},{"./_an-object":129,"./_metadata":185}],402:[function(require,module,exports){
 var metadata               = require('./_metadata')
   , anObject               = require('./_an-object')
   , getPrototypeOf         = require('./_object-gpo')
@@ -72337,7 +72085,7 @@ var ordinaryHasMetadata = function(MetadataKey, O, P){
 metadata.exp({hasMetadata: function hasMetadata(metadataKey, target /*, targetKey */){
   return ordinaryHasMetadata(metadataKey, anObject(target), arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
 }});
-},{"./_an-object":128,"./_metadata":184,"./_object-gpo":195}],401:[function(require,module,exports){
+},{"./_an-object":129,"./_metadata":185,"./_object-gpo":196}],403:[function(require,module,exports){
 var metadata               = require('./_metadata')
   , anObject               = require('./_an-object')
   , ordinaryHasOwnMetadata = metadata.has
@@ -72347,7 +72095,7 @@ metadata.exp({hasOwnMetadata: function hasOwnMetadata(metadataKey, target /*, ta
   return ordinaryHasOwnMetadata(metadataKey, anObject(target)
     , arguments.length < 3 ? undefined : toMetaKey(arguments[2]));
 }});
-},{"./_an-object":128,"./_metadata":184}],402:[function(require,module,exports){
+},{"./_an-object":129,"./_metadata":185}],404:[function(require,module,exports){
 var metadata                  = require('./_metadata')
   , anObject                  = require('./_an-object')
   , aFunction                 = require('./_a-function')
@@ -72363,12 +72111,12 @@ metadata.exp({metadata: function metadata(metadataKey, metadataValue){
     );
   };
 }});
-},{"./_a-function":124,"./_an-object":128,"./_metadata":184}],403:[function(require,module,exports){
+},{"./_a-function":125,"./_an-object":129,"./_metadata":185}],405:[function(require,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export  = require('./_export');
 
 $export($export.P + $export.R, 'Set', {toJSON: require('./_collection-to-json')('Set')});
-},{"./_collection-to-json":141,"./_export":153}],404:[function(require,module,exports){
+},{"./_collection-to-json":142,"./_export":154}],406:[function(require,module,exports){
 'use strict';
 // https://github.com/mathiasbynens/String.prototype.at
 var $export = require('./_export')
@@ -72379,7 +72127,7 @@ $export($export.P, 'String', {
     return $at(this, pos);
   }
 });
-},{"./_export":153,"./_string-at":218}],405:[function(require,module,exports){
+},{"./_export":154,"./_string-at":219}],407:[function(require,module,exports){
 'use strict';
 // https://tc39.github.io/String.prototype.matchAll/
 var $export     = require('./_export')
@@ -72410,7 +72158,7 @@ $export($export.P, 'String', {
     return new $RegExpStringIterator(rx, S);
   }
 });
-},{"./_defined":148,"./_export":153,"./_flags":157,"./_is-regexp":171,"./_iter-create":173,"./_to-length":229}],406:[function(require,module,exports){
+},{"./_defined":149,"./_export":154,"./_flags":158,"./_is-regexp":172,"./_iter-create":174,"./_to-length":230}],408:[function(require,module,exports){
 'use strict';
 // https://github.com/tc39/proposal-string-pad-start-end
 var $export = require('./_export')
@@ -72421,7 +72169,7 @@ $export($export.P, 'String', {
     return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, false);
   }
 });
-},{"./_export":153,"./_string-pad":221}],407:[function(require,module,exports){
+},{"./_export":154,"./_string-pad":222}],409:[function(require,module,exports){
 'use strict';
 // https://github.com/tc39/proposal-string-pad-start-end
 var $export = require('./_export')
@@ -72432,7 +72180,7 @@ $export($export.P, 'String', {
     return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, true);
   }
 });
-},{"./_export":153,"./_string-pad":221}],408:[function(require,module,exports){
+},{"./_export":154,"./_string-pad":222}],410:[function(require,module,exports){
 'use strict';
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
 require('./_string-trim')('trimLeft', function($trim){
@@ -72440,7 +72188,7 @@ require('./_string-trim')('trimLeft', function($trim){
     return $trim(this, 1);
   };
 }, 'trimStart');
-},{"./_string-trim":223}],409:[function(require,module,exports){
+},{"./_string-trim":224}],411:[function(require,module,exports){
 'use strict';
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
 require('./_string-trim')('trimRight', function($trim){
@@ -72448,16 +72196,16 @@ require('./_string-trim')('trimRight', function($trim){
     return $trim(this, 2);
   };
 }, 'trimEnd');
-},{"./_string-trim":223}],410:[function(require,module,exports){
+},{"./_string-trim":224}],412:[function(require,module,exports){
 require('./_wks-define')('asyncIterator');
-},{"./_wks-define":236}],411:[function(require,module,exports){
+},{"./_wks-define":237}],413:[function(require,module,exports){
 require('./_wks-define')('observable');
-},{"./_wks-define":236}],412:[function(require,module,exports){
+},{"./_wks-define":237}],414:[function(require,module,exports){
 // https://github.com/ljharb/proposal-global
 var $export = require('./_export');
 
 $export($export.S, 'System', {global: require('./_global')});
-},{"./_export":153,"./_global":159}],413:[function(require,module,exports){
+},{"./_export":154,"./_global":160}],415:[function(require,module,exports){
 var $iterators    = require('./es6.array.iterator')
   , redefine      = require('./_redefine')
   , global        = require('./_global')
@@ -72480,14 +72228,14 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
     for(key in $iterators)if(!proto[key])redefine(proto, key, $iterators[key], true);
   }
 }
-},{"./_global":159,"./_hide":161,"./_iterators":177,"./_redefine":208,"./_wks":238,"./es6.array.iterator":251}],414:[function(require,module,exports){
+},{"./_global":160,"./_hide":162,"./_iterators":178,"./_redefine":209,"./_wks":239,"./es6.array.iterator":253}],416:[function(require,module,exports){
 var $export = require('./_export')
   , $task   = require('./_task');
 $export($export.G + $export.B, {
   setImmediate:   $task.set,
   clearImmediate: $task.clear
 });
-},{"./_export":153,"./_task":225}],415:[function(require,module,exports){
+},{"./_export":154,"./_task":226}],417:[function(require,module,exports){
 // ie9- setTimeout & setInterval additional parameters fix
 var global     = require('./_global')
   , $export    = require('./_export')
@@ -72508,7 +72256,7 @@ $export($export.G + $export.B + $export.F * MSIE, {
   setTimeout:  wrap(global.setTimeout),
   setInterval: wrap(global.setInterval)
 });
-},{"./_export":153,"./_global":159,"./_invoke":165,"./_partial":204}],416:[function(require,module,exports){
+},{"./_export":154,"./_global":160,"./_invoke":166,"./_partial":205}],418:[function(require,module,exports){
 require('./modules/es6.symbol');
 require('./modules/es6.object.create');
 require('./modules/es6.object.define-property');
@@ -72685,7 +72433,7 @@ require('./modules/web.timers');
 require('./modules/web.immediate');
 require('./modules/web.dom.iterable');
 module.exports = require('./modules/_core');
-},{"./modules/_core":144,"./modules/es6.array.copy-within":241,"./modules/es6.array.every":242,"./modules/es6.array.fill":243,"./modules/es6.array.filter":244,"./modules/es6.array.find":246,"./modules/es6.array.find-index":245,"./modules/es6.array.for-each":247,"./modules/es6.array.from":248,"./modules/es6.array.index-of":249,"./modules/es6.array.is-array":250,"./modules/es6.array.iterator":251,"./modules/es6.array.join":252,"./modules/es6.array.last-index-of":253,"./modules/es6.array.map":254,"./modules/es6.array.of":255,"./modules/es6.array.reduce":257,"./modules/es6.array.reduce-right":256,"./modules/es6.array.slice":258,"./modules/es6.array.some":259,"./modules/es6.array.sort":260,"./modules/es6.array.species":261,"./modules/es6.date.now":262,"./modules/es6.date.to-iso-string":263,"./modules/es6.date.to-json":264,"./modules/es6.date.to-primitive":265,"./modules/es6.date.to-string":266,"./modules/es6.function.bind":267,"./modules/es6.function.has-instance":268,"./modules/es6.function.name":269,"./modules/es6.map":270,"./modules/es6.math.acosh":271,"./modules/es6.math.asinh":272,"./modules/es6.math.atanh":273,"./modules/es6.math.cbrt":274,"./modules/es6.math.clz32":275,"./modules/es6.math.cosh":276,"./modules/es6.math.expm1":277,"./modules/es6.math.fround":278,"./modules/es6.math.hypot":279,"./modules/es6.math.imul":280,"./modules/es6.math.log10":281,"./modules/es6.math.log1p":282,"./modules/es6.math.log2":283,"./modules/es6.math.sign":284,"./modules/es6.math.sinh":285,"./modules/es6.math.tanh":286,"./modules/es6.math.trunc":287,"./modules/es6.number.constructor":288,"./modules/es6.number.epsilon":289,"./modules/es6.number.is-finite":290,"./modules/es6.number.is-integer":291,"./modules/es6.number.is-nan":292,"./modules/es6.number.is-safe-integer":293,"./modules/es6.number.max-safe-integer":294,"./modules/es6.number.min-safe-integer":295,"./modules/es6.number.parse-float":296,"./modules/es6.number.parse-int":297,"./modules/es6.number.to-fixed":298,"./modules/es6.number.to-precision":299,"./modules/es6.object.assign":300,"./modules/es6.object.create":301,"./modules/es6.object.define-properties":302,"./modules/es6.object.define-property":303,"./modules/es6.object.freeze":304,"./modules/es6.object.get-own-property-descriptor":305,"./modules/es6.object.get-own-property-names":306,"./modules/es6.object.get-prototype-of":307,"./modules/es6.object.is":311,"./modules/es6.object.is-extensible":308,"./modules/es6.object.is-frozen":309,"./modules/es6.object.is-sealed":310,"./modules/es6.object.keys":312,"./modules/es6.object.prevent-extensions":313,"./modules/es6.object.seal":314,"./modules/es6.object.set-prototype-of":315,"./modules/es6.object.to-string":316,"./modules/es6.parse-float":317,"./modules/es6.parse-int":318,"./modules/es6.promise":319,"./modules/es6.reflect.apply":320,"./modules/es6.reflect.construct":321,"./modules/es6.reflect.define-property":322,"./modules/es6.reflect.delete-property":323,"./modules/es6.reflect.enumerate":324,"./modules/es6.reflect.get":327,"./modules/es6.reflect.get-own-property-descriptor":325,"./modules/es6.reflect.get-prototype-of":326,"./modules/es6.reflect.has":328,"./modules/es6.reflect.is-extensible":329,"./modules/es6.reflect.own-keys":330,"./modules/es6.reflect.prevent-extensions":331,"./modules/es6.reflect.set":333,"./modules/es6.reflect.set-prototype-of":332,"./modules/es6.regexp.constructor":334,"./modules/es6.regexp.flags":335,"./modules/es6.regexp.match":336,"./modules/es6.regexp.replace":337,"./modules/es6.regexp.search":338,"./modules/es6.regexp.split":339,"./modules/es6.regexp.to-string":340,"./modules/es6.set":341,"./modules/es6.string.anchor":342,"./modules/es6.string.big":343,"./modules/es6.string.blink":344,"./modules/es6.string.bold":345,"./modules/es6.string.code-point-at":346,"./modules/es6.string.ends-with":347,"./modules/es6.string.fixed":348,"./modules/es6.string.fontcolor":349,"./modules/es6.string.fontsize":350,"./modules/es6.string.from-code-point":351,"./modules/es6.string.includes":352,"./modules/es6.string.italics":353,"./modules/es6.string.iterator":354,"./modules/es6.string.link":355,"./modules/es6.string.raw":356,"./modules/es6.string.repeat":357,"./modules/es6.string.small":358,"./modules/es6.string.starts-with":359,"./modules/es6.string.strike":360,"./modules/es6.string.sub":361,"./modules/es6.string.sup":362,"./modules/es6.string.trim":363,"./modules/es6.symbol":364,"./modules/es6.typed.array-buffer":365,"./modules/es6.typed.data-view":366,"./modules/es6.typed.float32-array":367,"./modules/es6.typed.float64-array":368,"./modules/es6.typed.int16-array":369,"./modules/es6.typed.int32-array":370,"./modules/es6.typed.int8-array":371,"./modules/es6.typed.uint16-array":372,"./modules/es6.typed.uint32-array":373,"./modules/es6.typed.uint8-array":374,"./modules/es6.typed.uint8-clamped-array":375,"./modules/es6.weak-map":376,"./modules/es6.weak-set":377,"./modules/es7.array.includes":378,"./modules/es7.asap":379,"./modules/es7.error.is-error":380,"./modules/es7.map.to-json":381,"./modules/es7.math.iaddh":382,"./modules/es7.math.imulh":383,"./modules/es7.math.isubh":384,"./modules/es7.math.umulh":385,"./modules/es7.object.define-getter":386,"./modules/es7.object.define-setter":387,"./modules/es7.object.entries":388,"./modules/es7.object.get-own-property-descriptors":389,"./modules/es7.object.lookup-getter":390,"./modules/es7.object.lookup-setter":391,"./modules/es7.object.values":392,"./modules/es7.observable":393,"./modules/es7.reflect.define-metadata":394,"./modules/es7.reflect.delete-metadata":395,"./modules/es7.reflect.get-metadata":397,"./modules/es7.reflect.get-metadata-keys":396,"./modules/es7.reflect.get-own-metadata":399,"./modules/es7.reflect.get-own-metadata-keys":398,"./modules/es7.reflect.has-metadata":400,"./modules/es7.reflect.has-own-metadata":401,"./modules/es7.reflect.metadata":402,"./modules/es7.set.to-json":403,"./modules/es7.string.at":404,"./modules/es7.string.match-all":405,"./modules/es7.string.pad-end":406,"./modules/es7.string.pad-start":407,"./modules/es7.string.trim-left":408,"./modules/es7.string.trim-right":409,"./modules/es7.symbol.async-iterator":410,"./modules/es7.symbol.observable":411,"./modules/es7.system.global":412,"./modules/web.dom.iterable":413,"./modules/web.immediate":414,"./modules/web.timers":415}],417:[function(require,module,exports){
+},{"./modules/_core":145,"./modules/es6.array.copy-within":243,"./modules/es6.array.every":244,"./modules/es6.array.fill":245,"./modules/es6.array.filter":246,"./modules/es6.array.find":248,"./modules/es6.array.find-index":247,"./modules/es6.array.for-each":249,"./modules/es6.array.from":250,"./modules/es6.array.index-of":251,"./modules/es6.array.is-array":252,"./modules/es6.array.iterator":253,"./modules/es6.array.join":254,"./modules/es6.array.last-index-of":255,"./modules/es6.array.map":256,"./modules/es6.array.of":257,"./modules/es6.array.reduce":259,"./modules/es6.array.reduce-right":258,"./modules/es6.array.slice":260,"./modules/es6.array.some":261,"./modules/es6.array.sort":262,"./modules/es6.array.species":263,"./modules/es6.date.now":264,"./modules/es6.date.to-iso-string":265,"./modules/es6.date.to-json":266,"./modules/es6.date.to-primitive":267,"./modules/es6.date.to-string":268,"./modules/es6.function.bind":269,"./modules/es6.function.has-instance":270,"./modules/es6.function.name":271,"./modules/es6.map":272,"./modules/es6.math.acosh":273,"./modules/es6.math.asinh":274,"./modules/es6.math.atanh":275,"./modules/es6.math.cbrt":276,"./modules/es6.math.clz32":277,"./modules/es6.math.cosh":278,"./modules/es6.math.expm1":279,"./modules/es6.math.fround":280,"./modules/es6.math.hypot":281,"./modules/es6.math.imul":282,"./modules/es6.math.log10":283,"./modules/es6.math.log1p":284,"./modules/es6.math.log2":285,"./modules/es6.math.sign":286,"./modules/es6.math.sinh":287,"./modules/es6.math.tanh":288,"./modules/es6.math.trunc":289,"./modules/es6.number.constructor":290,"./modules/es6.number.epsilon":291,"./modules/es6.number.is-finite":292,"./modules/es6.number.is-integer":293,"./modules/es6.number.is-nan":294,"./modules/es6.number.is-safe-integer":295,"./modules/es6.number.max-safe-integer":296,"./modules/es6.number.min-safe-integer":297,"./modules/es6.number.parse-float":298,"./modules/es6.number.parse-int":299,"./modules/es6.number.to-fixed":300,"./modules/es6.number.to-precision":301,"./modules/es6.object.assign":302,"./modules/es6.object.create":303,"./modules/es6.object.define-properties":304,"./modules/es6.object.define-property":305,"./modules/es6.object.freeze":306,"./modules/es6.object.get-own-property-descriptor":307,"./modules/es6.object.get-own-property-names":308,"./modules/es6.object.get-prototype-of":309,"./modules/es6.object.is":313,"./modules/es6.object.is-extensible":310,"./modules/es6.object.is-frozen":311,"./modules/es6.object.is-sealed":312,"./modules/es6.object.keys":314,"./modules/es6.object.prevent-extensions":315,"./modules/es6.object.seal":316,"./modules/es6.object.set-prototype-of":317,"./modules/es6.object.to-string":318,"./modules/es6.parse-float":319,"./modules/es6.parse-int":320,"./modules/es6.promise":321,"./modules/es6.reflect.apply":322,"./modules/es6.reflect.construct":323,"./modules/es6.reflect.define-property":324,"./modules/es6.reflect.delete-property":325,"./modules/es6.reflect.enumerate":326,"./modules/es6.reflect.get":329,"./modules/es6.reflect.get-own-property-descriptor":327,"./modules/es6.reflect.get-prototype-of":328,"./modules/es6.reflect.has":330,"./modules/es6.reflect.is-extensible":331,"./modules/es6.reflect.own-keys":332,"./modules/es6.reflect.prevent-extensions":333,"./modules/es6.reflect.set":335,"./modules/es6.reflect.set-prototype-of":334,"./modules/es6.regexp.constructor":336,"./modules/es6.regexp.flags":337,"./modules/es6.regexp.match":338,"./modules/es6.regexp.replace":339,"./modules/es6.regexp.search":340,"./modules/es6.regexp.split":341,"./modules/es6.regexp.to-string":342,"./modules/es6.set":343,"./modules/es6.string.anchor":344,"./modules/es6.string.big":345,"./modules/es6.string.blink":346,"./modules/es6.string.bold":347,"./modules/es6.string.code-point-at":348,"./modules/es6.string.ends-with":349,"./modules/es6.string.fixed":350,"./modules/es6.string.fontcolor":351,"./modules/es6.string.fontsize":352,"./modules/es6.string.from-code-point":353,"./modules/es6.string.includes":354,"./modules/es6.string.italics":355,"./modules/es6.string.iterator":356,"./modules/es6.string.link":357,"./modules/es6.string.raw":358,"./modules/es6.string.repeat":359,"./modules/es6.string.small":360,"./modules/es6.string.starts-with":361,"./modules/es6.string.strike":362,"./modules/es6.string.sub":363,"./modules/es6.string.sup":364,"./modules/es6.string.trim":365,"./modules/es6.symbol":366,"./modules/es6.typed.array-buffer":367,"./modules/es6.typed.data-view":368,"./modules/es6.typed.float32-array":369,"./modules/es6.typed.float64-array":370,"./modules/es6.typed.int16-array":371,"./modules/es6.typed.int32-array":372,"./modules/es6.typed.int8-array":373,"./modules/es6.typed.uint16-array":374,"./modules/es6.typed.uint32-array":375,"./modules/es6.typed.uint8-array":376,"./modules/es6.typed.uint8-clamped-array":377,"./modules/es6.weak-map":378,"./modules/es6.weak-set":379,"./modules/es7.array.includes":380,"./modules/es7.asap":381,"./modules/es7.error.is-error":382,"./modules/es7.map.to-json":383,"./modules/es7.math.iaddh":384,"./modules/es7.math.imulh":385,"./modules/es7.math.isubh":386,"./modules/es7.math.umulh":387,"./modules/es7.object.define-getter":388,"./modules/es7.object.define-setter":389,"./modules/es7.object.entries":390,"./modules/es7.object.get-own-property-descriptors":391,"./modules/es7.object.lookup-getter":392,"./modules/es7.object.lookup-setter":393,"./modules/es7.object.values":394,"./modules/es7.observable":395,"./modules/es7.reflect.define-metadata":396,"./modules/es7.reflect.delete-metadata":397,"./modules/es7.reflect.get-metadata":399,"./modules/es7.reflect.get-metadata-keys":398,"./modules/es7.reflect.get-own-metadata":401,"./modules/es7.reflect.get-own-metadata-keys":400,"./modules/es7.reflect.has-metadata":402,"./modules/es7.reflect.has-own-metadata":403,"./modules/es7.reflect.metadata":404,"./modules/es7.set.to-json":405,"./modules/es7.string.at":406,"./modules/es7.string.match-all":407,"./modules/es7.string.pad-end":408,"./modules/es7.string.pad-start":409,"./modules/es7.string.trim-left":410,"./modules/es7.string.trim-right":411,"./modules/es7.symbol.async-iterator":412,"./modules/es7.symbol.observable":413,"./modules/es7.system.global":414,"./modules/web.dom.iterable":415,"./modules/web.immediate":416,"./modules/web.timers":417}],419:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -72796,7 +72544,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":466}],418:[function(require,module,exports){
+},{"../../is-buffer/index.js":468}],420:[function(require,module,exports){
 (function (Buffer){
 var elliptic = require('elliptic');
 var BN = require('bn.js');
@@ -72922,7 +72670,7 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":91,"buffer":121,"elliptic":434}],419:[function(require,module,exports){
+},{"bn.js":92,"buffer":122,"elliptic":436}],421:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var inherits = require('inherits')
@@ -72978,7 +72726,7 @@ module.exports = function createHash (alg) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./md5":421,"buffer":121,"cipher-base":122,"inherits":465,"ripemd160":498,"sha.js":507}],420:[function(require,module,exports){
+},{"./md5":423,"buffer":122,"cipher-base":123,"inherits":467,"ripemd160":500,"sha.js":509}],422:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var intSize = 4;
@@ -73015,7 +72763,7 @@ function hash(buf, fn, hashSize, bigEndian) {
 }
 exports.hash = hash;
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],421:[function(require,module,exports){
+},{"buffer":122}],423:[function(require,module,exports){
 'use strict';
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -73172,7 +72920,7 @@ function bit_rol(num, cnt)
 module.exports = function md5(buf) {
   return helpers.hash(buf, core_md5, 16);
 };
-},{"./helpers":420}],422:[function(require,module,exports){
+},{"./helpers":422}],424:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var createHash = require('create-hash/browser');
@@ -73244,7 +72992,7 @@ module.exports = function createHmac(alg, key) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121,"create-hash/browser":419,"inherits":465,"stream":514}],423:[function(require,module,exports){
+},{"buffer":122,"create-hash/browser":421,"inherits":467,"stream":516}],425:[function(require,module,exports){
 'use strict'
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -73323,7 +73071,7 @@ var publicEncrypt = require('public-encrypt')
   }
 })
 
-},{"browserify-cipher":109,"browserify-sign":115,"browserify-sign/algos":114,"create-ecdh":418,"create-hash":419,"create-hmac":422,"diffie-hellman":430,"pbkdf2":477,"public-encrypt":480,"randombytes":486}],424:[function(require,module,exports){
+},{"browserify-cipher":110,"browserify-sign":116,"browserify-sign/algos":115,"create-ecdh":420,"create-hash":421,"create-hmac":424,"diffie-hellman":432,"pbkdf2":479,"public-encrypt":482,"randombytes":488}],426:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -73332,7 +73080,7 @@ exports.DES = require('./des/des');
 exports.CBC = require('./des/cbc');
 exports.EDE = require('./des/ede');
 
-},{"./des/cbc":425,"./des/cipher":426,"./des/des":427,"./des/ede":428,"./des/utils":429}],425:[function(require,module,exports){
+},{"./des/cbc":427,"./des/cipher":428,"./des/des":429,"./des/ede":430,"./des/utils":431}],427:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -73399,7 +73147,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
   }
 };
 
-},{"inherits":465,"minimalistic-assert":472}],426:[function(require,module,exports){
+},{"inherits":467,"minimalistic-assert":474}],428:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -73542,7 +73290,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
   return this._unpad(out);
 };
 
-},{"minimalistic-assert":472}],427:[function(require,module,exports){
+},{"minimalistic-assert":474}],429:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -73687,7 +73435,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
   utils.rip(l, r, out, off);
 };
 
-},{"../des":424,"inherits":465,"minimalistic-assert":472}],428:[function(require,module,exports){
+},{"../des":426,"inherits":467,"minimalistic-assert":474}],430:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -73744,7 +73492,7 @@ EDE.prototype._update = function _update(inp, inOff, out, outOff) {
 EDE.prototype._pad = DES.prototype._pad;
 EDE.prototype._unpad = DES.prototype._unpad;
 
-},{"../des":424,"inherits":465,"minimalistic-assert":472}],429:[function(require,module,exports){
+},{"../des":426,"inherits":467,"minimalistic-assert":474}],431:[function(require,module,exports){
 'use strict';
 
 exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -74002,7 +73750,7 @@ exports.padSplit = function padSplit(num, size, group) {
   return out.join(' ');
 };
 
-},{}],430:[function(require,module,exports){
+},{}],432:[function(require,module,exports){
 (function (Buffer){
 var generatePrime = require('./lib/generatePrime')
 var primes = require('./lib/primes.json')
@@ -74048,7 +73796,7 @@ exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffi
 exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/dh":431,"./lib/generatePrime":432,"./lib/primes.json":433,"buffer":121}],431:[function(require,module,exports){
+},{"./lib/dh":433,"./lib/generatePrime":434,"./lib/primes.json":435,"buffer":122}],433:[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -74216,7 +73964,7 @@ function formatReturnValue(bn, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":432,"bn.js":91,"buffer":121,"miller-rabin":471,"randombytes":486}],432:[function(require,module,exports){
+},{"./generatePrime":434,"bn.js":92,"buffer":122,"miller-rabin":473,"randombytes":488}],434:[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -74323,7 +74071,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":91,"miller-rabin":471,"randombytes":486}],433:[function(require,module,exports){
+},{"bn.js":92,"miller-rabin":473,"randombytes":488}],435:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -74358,7 +74106,7 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],434:[function(require,module,exports){
+},{}],436:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -74374,7 +74122,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":450,"./elliptic/curve":437,"./elliptic/curves":440,"./elliptic/ec":441,"./elliptic/eddsa":444,"./elliptic/hmac-drbg":447,"./elliptic/utils":449,"brorand":92}],435:[function(require,module,exports){
+},{"../package.json":452,"./elliptic/curve":439,"./elliptic/curves":442,"./elliptic/ec":443,"./elliptic/eddsa":446,"./elliptic/hmac-drbg":449,"./elliptic/utils":451,"brorand":93}],437:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -74405,15 +74153,6 @@ function BaseCurve(type, conf) {
   this._wnafT2 = new Array(4);
   this._wnafT3 = new Array(4);
   this._wnafT4 = new Array(4);
-
-  // Generalized Greg Maxwell's trick
-  var adjustCount = this.n && this.p.div(this.n);
-  if (!adjustCount || adjustCount.cmpn(100) > 0) {
-    this.redN = null;
-  } else {
-    this._maxwellTrick = true;
-    this.redN = this.n.toRed(this.red);
-  }
 }
 module.exports = BaseCurve;
 
@@ -74502,8 +74241,7 @@ BaseCurve.prototype._wnafMul = function _wnafMul(p, k) {
 BaseCurve.prototype._wnafMulAdd = function _wnafMulAdd(defW,
                                                        points,
                                                        coeffs,
-                                                       len,
-                                                       jacobianResult) {
+                                                       len) {
   var wndWidth = this._wnafT1;
   var wnd = this._wnafT2;
   var naf = this._wnafT3;
@@ -74616,11 +74354,7 @@ BaseCurve.prototype._wnafMulAdd = function _wnafMulAdd(defW,
   // Zeroify references
   for (var i = 0; i < len; i++)
     wnd[i] = null;
-
-  if (jacobianResult)
-    return acc;
-  else
-    return acc.toP();
+  return acc.toP();
 };
 
 function BasePoint(curve, type) {
@@ -74751,7 +74485,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":434,"bn.js":91}],436:[function(require,module,exports){
+},{"../../elliptic":436,"bn.js":92}],438:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -75118,11 +74852,7 @@ Point.prototype.mul = function mul(k) {
 };
 
 Point.prototype.mulAdd = function mulAdd(k1, p, k2) {
-  return this.curve._wnafMulAdd(1, [ this, p ], [ k1, k2 ], 2, false);
-};
-
-Point.prototype.jmulAdd = function jmulAdd(k1, p, k2) {
-  return this.curve._wnafMulAdd(1, [ this, p ], [ k1, k2 ], 2, true);
+  return this.curve._wnafMulAdd(1, [ this, p ], [ k1, k2 ], 2);
 };
 
 Point.prototype.normalize = function normalize() {
@@ -75163,30 +74893,11 @@ Point.prototype.eq = function eq(other) {
          this.getY().cmp(other.getY()) === 0;
 };
 
-Point.prototype.eqXToP = function eqXToP(x) {
-  var rx = x.toRed(this.curve.red).redMul(this.z);
-  if (this.x.cmp(rx) === 0)
-    return true;
-
-  var xc = x.clone();
-  var t = this.curve.redN.redMul(this.z);
-  for (;;) {
-    xc.iadd(this.curve.n);
-    if (xc.cmp(this.curve.p) >= 0)
-      return false;
-
-    rx.redIAdd(t);
-    if (this.x.cmp(rx) === 0)
-      return true;
-  }
-  return false;
-};
-
 // Compatibility with BaseCurve
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":434,"../curve":437,"bn.js":91,"inherits":465}],437:[function(require,module,exports){
+},{"../../elliptic":436,"../curve":439,"bn.js":92,"inherits":467}],439:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -75196,7 +74907,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":435,"./edwards":436,"./mont":438,"./short":439}],438:[function(require,module,exports){
+},{"./base":437,"./edwards":438,"./mont":440,"./short":441}],440:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -75357,10 +75068,6 @@ Point.prototype.mulAdd = function mulAdd() {
   throw new Error('Not supported on Montgomery curve');
 };
 
-Point.prototype.jumlAdd = function jumlAdd() {
-  throw new Error('Not supported on Montgomery curve');
-};
-
 Point.prototype.eq = function eq(other) {
   return this.getX().cmp(other.getX()) === 0;
 };
@@ -75378,7 +75085,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":434,"../curve":437,"bn.js":91,"inherits":465}],439:[function(require,module,exports){
+},{"../../elliptic":436,"../curve":439,"bn.js":92,"inherits":467}],441:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -75598,7 +75305,7 @@ ShortCurve.prototype.validate = function validate(point) {
 };
 
 ShortCurve.prototype._endoWnafMulAdd =
-    function _endoWnafMulAdd(points, coeffs, jacobianResult) {
+    function _endoWnafMulAdd(points, coeffs) {
   var npoints = this._endoWnafT1;
   var ncoeffs = this._endoWnafT2;
   for (var i = 0; i < points.length; i++) {
@@ -75620,7 +75327,7 @@ ShortCurve.prototype._endoWnafMulAdd =
     ncoeffs[i * 2] = split.k1;
     ncoeffs[i * 2 + 1] = split.k2;
   }
-  var res = this._wnafMulAdd(1, npoints, ncoeffs, i * 2, jacobianResult);
+  var res = this._wnafMulAdd(1, npoints, ncoeffs, i * 2);
 
   // Clean-up references to points and coefficients
   for (var j = 0; j < i * 2; j++) {
@@ -75819,15 +75526,6 @@ Point.prototype.mulAdd = function mulAdd(k1, p2, k2) {
     return this.curve._endoWnafMulAdd(points, coeffs);
   else
     return this.curve._wnafMulAdd(1, points, coeffs, 2);
-};
-
-Point.prototype.jmulAdd = function jmulAdd(k1, p2, k2) {
-  var points = [ this, p2 ];
-  var coeffs = [ k1, k2 ];
-  if (this.curve.endo)
-    return this.curve._endoWnafMulAdd(points, coeffs, true);
-  else
-    return this.curve._wnafMulAdd(1, points, coeffs, 2, true);
 };
 
 Point.prototype.eq = function eq(p) {
@@ -76285,26 +75983,6 @@ JPoint.prototype.eq = function eq(p) {
   return this.y.redMul(pz3).redISub(p.y.redMul(z3)).cmpn(0) === 0;
 };
 
-JPoint.prototype.eqXToP = function eqXToP(x) {
-  var zs = this.z.redSqr();
-  var rx = x.toRed(this.curve.red).redMul(zs);
-  if (this.x.cmp(rx) === 0)
-    return true;
-
-  var xc = x.clone();
-  var t = this.curve.redN.redMul(zs);
-  for (;;) {
-    xc.iadd(this.curve.n);
-    if (xc.cmp(this.curve.p) >= 0)
-      return false;
-
-    rx.redIAdd(t);
-    if (this.x.cmp(rx) === 0)
-      return true;
-  }
-  return false;
-};
-
 JPoint.prototype.inspect = function inspect() {
   if (this.isInfinity())
     return '<EC JPoint Infinity>';
@@ -76318,7 +75996,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":434,"../curve":437,"bn.js":91,"inherits":465}],440:[function(require,module,exports){
+},{"../../elliptic":436,"../curve":439,"bn.js":92,"inherits":467}],442:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -76525,7 +76203,7 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"../elliptic":434,"./precomputed/secp256k1":448,"hash.js":457}],441:[function(require,module,exports){
+},{"../elliptic":436,"./precomputed/secp256k1":450,"hash.js":459}],443:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -76694,25 +76372,11 @@ EC.prototype.verify = function verify(msg, signature, key, enc) {
   var u1 = sinv.mul(msg).umod(this.n);
   var u2 = sinv.mul(r).umod(this.n);
 
-  if (!this.curve._maxwellTrick) {
-    var p = this.g.mulAdd(u1, key.getPublic(), u2);
-    if (p.isInfinity())
-      return false;
-
-    return p.getX().umod(this.n).cmp(r) === 0;
-  }
-
-  // NOTE: Greg Maxwell's trick, inspired by:
-  // https://git.io/vad3K
-
-  var p = this.g.jmulAdd(u1, key.getPublic(), u2);
+  var p = this.g.mulAdd(u1, key.getPublic(), u2);
   if (p.isInfinity())
     return false;
 
-  // Compare `p.x` of Jacobian point with `r`,
-  // this will do `p.x == r * p.z^2` instead of multiplying `p.x` by the
-  // inverse of `p.z^2`
-  return p.eqXToP(r);
+  return p.getX().umod(this.n).cmp(r) === 0;
 };
 
 EC.prototype.recoverPubKey = function(msg, signature, j, enc) {
@@ -76763,7 +76427,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":434,"./key":442,"./signature":443,"bn.js":91}],442:[function(require,module,exports){
+},{"../../elliptic":436,"./key":444,"./signature":445,"bn.js":92}],444:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -76872,7 +76536,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"bn.js":91}],443:[function(require,module,exports){
+},{"bn.js":92}],445:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -77009,7 +76673,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":434,"bn.js":91}],444:[function(require,module,exports){
+},{"../../elliptic":436,"bn.js":92}],446:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -77129,7 +76793,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../../elliptic":434,"./key":445,"./signature":446,"hash.js":457}],445:[function(require,module,exports){
+},{"../../elliptic":436,"./key":447,"./signature":448,"hash.js":459}],447:[function(require,module,exports){
 'use strict';
 
 var elliptic = require('../../elliptic');
@@ -77227,7 +76891,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../../elliptic":434}],446:[function(require,module,exports){
+},{"../../elliptic":436}],448:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -77295,7 +76959,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":434,"bn.js":91}],447:[function(require,module,exports){
+},{"../../elliptic":436,"bn.js":92}],449:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -77411,7 +77075,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"../elliptic":434,"hash.js":457}],448:[function(require,module,exports){
+},{"../elliptic":436,"hash.js":459}],450:[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -78193,7 +77857,7 @@ module.exports = {
   }
 };
 
-},{}],449:[function(require,module,exports){
+},{}],451:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -78367,23 +78031,23 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":91}],450:[function(require,module,exports){
+},{"bn.js":92}],452:[function(require,module,exports){
 module.exports={
   "_args": [
     [
       "elliptic@^6.0.0",
-      "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign"
+      "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
-  "_id": "elliptic@6.3.1",
+  "_id": "elliptic@6.2.8",
   "_inCache": true,
   "_installable": true,
   "_location": "/elliptic",
   "_nodeVersion": "6.0.0",
   "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/elliptic-6.3.1.tgz_1465921413402_0.5202967382501811"
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/elliptic-6.2.8.tgz_1464746004719_0.6379144776146859"
   },
   "_npmUser": {
     "email": "fedor@indutny.com",
@@ -78404,11 +78068,11 @@ module.exports={
     "/create-ecdh",
     "/secp256k1"
   ],
-  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.1.tgz",
-  "_shasum": "17781f2109ab0ec686b146bdcff5d2e8c6aeceda",
+  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.2.8.tgz",
+  "_shasum": "44a25b3d1550bebb74d0b6d22d89940206b51739",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign",
+  "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
   "author": {
     "email": "fedor@indutny.com",
     "name": "Fedor Indutny"
@@ -78417,7 +78081,7 @@ module.exports={
     "url": "https://github.com/indutny/elliptic/issues"
   },
   "dependencies": {
-    "bn.js": "^4.4.0",
+    "bn.js": "^4.0.0",
     "brorand": "^1.0.1",
     "hash.js": "^1.0.0",
     "inherits": "^2.0.1"
@@ -78440,13 +78104,13 @@ module.exports={
   },
   "directories": {},
   "dist": {
-    "shasum": "17781f2109ab0ec686b146bdcff5d2e8c6aeceda",
-    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.1.tgz"
+    "shasum": "44a25b3d1550bebb74d0b6d22d89940206b51739",
+    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.2.8.tgz"
   },
   "files": [
     "lib"
   ],
-  "gitHead": "c53f5cf3d832c0073eb4a4ed423a464cbce68f3e",
+  "gitHead": "236f37395bdf9e4af1dfc8e84f6353bce540b93e",
   "homepage": "https://github.com/indutny/elliptic",
   "keywords": [
     "EC",
@@ -78477,10 +78141,10 @@ module.exports={
     "unit": "istanbul test _mocha --reporter=spec test/index.js",
     "version": "grunt dist && git add dist/"
   },
-  "version": "6.3.1"
+  "version": "6.2.8"
 }
 
-},{}],451:[function(require,module,exports){
+},{}],453:[function(require,module,exports){
 module.exports={
   "genesisGasLimit": {
     "v": 5000,
@@ -78713,18 +78377,21 @@ module.exports={
   }
 }
 
-},{}],452:[function(require,module,exports){
+},{}],454:[function(require,module,exports){
 module.exports = require('./params.json')
 
-},{"./params.json":451}],453:[function(require,module,exports){
-(function (Buffer){
-'use strict'
+},{"./params.json":453}],455:[function(require,module,exports){
+(function (global,Buffer){
 const ethUtil = require('ethereumjs-util')
 const fees = require('ethereum-common/params')
 const BN = ethUtil.BN
 
 // secp256k1n/2
 const N_DIV_2 = new BN('7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a0', 16)
+
+// give browser access to Buffers
+global.Buffer = Buffer
+global.ethUtil = ethUtil
 
 /**
  * Creates a new transaction object
@@ -78754,7 +78421,7 @@ const N_DIV_2 = new BN('7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46
  * @prop {Buffer} r EC signature parameter
  * @prop {Buffer} s EC recovery ID
  */
-const Transaction = module.exports = function (data) {
+var Transaction = module.exports = function (data) {
   // Define Properties
   const fields = [{
     name: 'nonce',
@@ -78839,7 +78506,7 @@ Transaction.prototype.toCreationAddress = function () {
  * @return {Buffer}
  */
 Transaction.prototype.hash = function (signature) {
-  let toHash
+  var toHash
 
   if (typeof signature === 'undefined') {
     signature = true
@@ -78860,7 +78527,7 @@ Transaction.prototype.getSenderAddress = function () {
   if (this._from) {
     return this._from
   }
-  const pubkey = this.getSenderPublicKey()
+  var pubkey = this.getSenderPublicKey()
   this._from = ethUtil.publicToAddress(pubkey)
   return this._from
 }
@@ -78884,7 +78551,7 @@ Transaction.prototype.getSenderPublicKey = function () {
  * @return {Boolean}
  */
 Transaction.prototype.verifySignature = function () {
-  const msgHash = this.hash(false)
+  var msgHash = this.hash(false)
 
   // All transaction signatures whose s-value is greater than secp256k1n/2 are considered invalid.
   if (this._homestead && new BN(this.s).cmp(N_DIV_2) === 1) {
@@ -78906,8 +78573,8 @@ Transaction.prototype.verifySignature = function () {
  * @param {Buffer} privateKey
  */
 Transaction.prototype.sign = function (privateKey) {
-  const msgHash = this.hash(false)
-  const sig = ethUtil.ecsign(msgHash, privateKey)
+  var msgHash = this.hash(false)
+  var sig = ethUtil.ecsign(msgHash, privateKey)
   Object.assign(this, sig)
 }
 
@@ -78918,7 +78585,7 @@ Transaction.prototype.sign = function (privateKey) {
  */
 Transaction.prototype.getDataFee = function () {
   const data = this.raw[5]
-  const cost = new BN(0)
+  var cost = new BN(0)
   for (var i = 0; i < data.length; i++) {
     data[i] === 0 ? cost.iaddn(fees.txDataZeroGas.v) : cost.iaddn(fees.txDataNonZeroGas.v)
   }
@@ -78931,7 +78598,7 @@ Transaction.prototype.getDataFee = function () {
  * @return {BN}
  */
 Transaction.prototype.getBaseFee = function () {
-  const fee = this.getDataFee().iaddn(fees.txGas.v)
+  var fee = this.getDataFee().iaddn(fees.txGas.v)
   if (this._homestead && this.toCreationAddress()) {
     fee.iaddn(fees.txCreation.v)
   }
@@ -78956,13 +78623,13 @@ Transaction.prototype.getUpfrontCost = function () {
  * @return {Boolean|String}
  */
 Transaction.prototype.validate = function (stringError) {
-  const errors = []
+  var errors = []
   if (!this.verifySignature()) {
     errors.push('Invalid Signature')
   }
 
   if (this.getBaseFee().cmp(new BN(this.gasLimit)) > 0) {
-    errors.push([`gas limit is to low. Need at least ${this.getBaseFee()}`])
+    errors.push(['gas limit is to low. Need at least ' + this.getBaseFee()])
   }
 
   if (stringError === undefined || stringError === false) {
@@ -78972,8 +78639,8 @@ Transaction.prototype.validate = function (stringError) {
   }
 }
 
-}).call(this,require("buffer").Buffer)
-},{"buffer":121,"ethereum-common/params":452,"ethereumjs-util":454}],454:[function(require,module,exports){
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
+},{"buffer":122,"ethereum-common/params":454,"ethereumjs-util":456}],456:[function(require,module,exports){
 (function (Buffer){
 const SHA3 = require('keccakjs')
 const secp256k1 = require('secp256k1')
@@ -79384,42 +79051,6 @@ exports.ecrecover = function (msgHash, v, r, s) {
 }
 
 /**
- * Convert signature parameters into the format of `eth_sign` RPC method
- * @method toRpcSig
- * @param {Number} v
- * @param {Buffer} r
- * @param {Buffer} s
- * @return {String} sig
- */
-exports.toRpcSig = function (v, r, s) {
-  // geth (and the RPC eth_sign method) uses the 65 byte format used by Bitcoin
-  // FIXME: this might change in the future - https://github.com/ethereum/go-ethereum/issues/2053
-  return exports.bufferToHex(Buffer.concat([ r, s, exports.toBuffer(v - 27) ]))
-}
-
-/**
- * Convert signature format of the `eth_sign` RPC method to signature parameters
- * @method fromRpcSig
- * @param {String} sig
- * @return {Object}
- */
-exports.fromRpcSig = function (sig) {
-  sig = exports.toBuffer(sig)
-
-  var v = sig[64]
-  // support both versions of `eth_sign` responses
-  if (v < 27) {
-    v += 27
-  }
-
-  return {
-    v: v,
-    r: sig.slice(0, 32),
-    s: sig.slice(32, 64)
-  }
-}
-
-/**
  * Returns the ethereum address of a given private key
  * @method privateToAddress
  * @param {Buffer} privateKey A private key must be 256 bits wide
@@ -79678,7 +79309,7 @@ exports.defineProperties = function (self, fields, data) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":86,"bn.js":91,"buffer":121,"create-hash":419,"keccakjs":469,"rlp":499,"secp256k1":501}],455:[function(require,module,exports){
+},{"assert":87,"bn.js":92,"buffer":122,"create-hash":421,"keccakjs":471,"rlp":501,"secp256k1":503}],457:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -79738,12 +79369,8 @@ EventEmitter.prototype.emit = function(type) {
       er = arguments[1];
       if (er instanceof Error) {
         throw er; // Unhandled 'error' event
-      } else {
-        // At least give some kind of context to the user
-        var err = new Error('Uncaught, unspecified "error" event. (' + er + ')');
-        err.context = er;
-        throw err;
       }
+      throw TypeError('Uncaught, unspecified "error" event.');
     }
   }
 
@@ -79982,7 +79609,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],456:[function(require,module,exports){
+},{}],458:[function(require,module,exports){
 (function (Buffer){
 var md5 = require('create-hash/md5')
 module.exports = EVP_BytesToKey
@@ -80054,7 +79681,7 @@ function EVP_BytesToKey (password, salt, keyLen, ivLen) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121,"create-hash/md5":421}],457:[function(require,module,exports){
+},{"buffer":122,"create-hash/md5":423}],459:[function(require,module,exports){
 var hash = exports;
 
 hash.utils = require('./hash/utils');
@@ -80071,7 +79698,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":458,"./hash/hmac":459,"./hash/ripemd":460,"./hash/sha":461,"./hash/utils":462}],458:[function(require,module,exports){
+},{"./hash/common":460,"./hash/hmac":461,"./hash/ripemd":462,"./hash/sha":463,"./hash/utils":464}],460:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -80164,7 +79791,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"../hash":457}],459:[function(require,module,exports){
+},{"../hash":459}],461:[function(require,module,exports){
 var hmac = exports;
 
 var hash = require('../hash');
@@ -80214,7 +79841,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"../hash":457}],460:[function(require,module,exports){
+},{"../hash":459}],462:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 
@@ -80360,7 +79987,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"../hash":457}],461:[function(require,module,exports){
+},{"../hash":459}],463:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -80926,7 +80553,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../hash":457}],462:[function(require,module,exports){
+},{"../hash":459}],464:[function(require,module,exports){
 var utils = exports;
 var inherits = require('inherits');
 
@@ -81185,7 +80812,7 @@ function shr64_lo(ah, al, num) {
 };
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":465}],463:[function(require,module,exports){
+},{"inherits":467}],465:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -81271,7 +80898,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],464:[function(require,module,exports){
+},{}],466:[function(require,module,exports){
 
 var indexOf = [].indexOf;
 
@@ -81282,7 +80909,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],465:[function(require,module,exports){
+},{}],467:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -81307,37 +80934,33 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],466:[function(require,module,exports){
-/*!
- * Determine if an object is a Buffer
+},{}],468:[function(require,module,exports){
+/**
+ * Determine if an object is Buffer
  *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
- * @license  MIT
+ * Author:   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * License:  MIT
+ *
+ * `npm install is-buffer`
  */
 
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
 module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
+  return !!(obj != null &&
+    (obj._isBuffer || // For Safari 5-7 (missing Object.prototype.constructor)
+      (obj.constructor &&
+      typeof obj.constructor.isBuffer === 'function' &&
+      obj.constructor.isBuffer(obj))
+    ))
 }
 
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
-}
-
-},{}],467:[function(require,module,exports){
+},{}],469:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],468:[function(require,module,exports){
+},{}],470:[function(require,module,exports){
 (function (global){
 /*
  * js-sha3 v0.3.1
@@ -81773,10 +81396,10 @@ module.exports = Array.isArray || function (arr) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],469:[function(require,module,exports){
+},{}],471:[function(require,module,exports){
 module.exports = require('browserify-sha3').SHA3Hash
 
-},{"browserify-sha3":113}],470:[function(require,module,exports){
+},{"browserify-sha3":114}],472:[function(require,module,exports){
 (function (global){
 /**
  * marked - a markdown parser
@@ -82874,8 +82497,7 @@ function escape(html, encode) {
 }
 
 function unescape(html) {
-	// explicitly match decimal, hex, and named HTML entities 
-  return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
+  return html.replace(/&([#\w]+);/g, function(_, n) {
     n = n.toLowerCase();
     if (n === 'colon') return ':';
     if (n.charAt(0) === '#') {
@@ -83066,7 +82688,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
 }());
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],471:[function(require,module,exports){
+},{}],473:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -83181,7 +82803,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":91,"brorand":92}],472:[function(require,module,exports){
+},{"bn.js":92,"brorand":93}],474:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -83194,7 +82816,7 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],473:[function(require,module,exports){
+},{}],475:[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -83208,7 +82830,7 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],474:[function(require,module,exports){
+},{}],476:[function(require,module,exports){
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
 // Fedor, you are amazing.
 
@@ -83327,7 +82949,7 @@ exports.signature = asn1.define('signature', function () {
   )
 })
 
-},{"asn1.js":72}],475:[function(require,module,exports){
+},{"asn1.js":73}],477:[function(require,module,exports){
 (function (Buffer){
 // adapted from https://github.com/apatil/pemstrip
 var findProc = /Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\r?\n\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n/m
@@ -83361,7 +82983,7 @@ module.exports = function (okey, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"browserify-aes":96,"buffer":121,"evp_bytestokey":456}],476:[function(require,module,exports){
+},{"browserify-aes":97,"buffer":122,"evp_bytestokey":458}],478:[function(require,module,exports){
 (function (Buffer){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
@@ -83466,7 +83088,7 @@ function decrypt (data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":473,"./asn1":474,"./fixProc":475,"browserify-aes":96,"buffer":121,"pbkdf2":477}],477:[function(require,module,exports){
+},{"./aesid.json":475,"./asn1":476,"./fixProc":477,"browserify-aes":97,"buffer":122,"pbkdf2":479}],479:[function(require,module,exports){
 (function (Buffer){
 var createHmac = require('create-hmac')
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
@@ -83550,7 +83172,7 @@ function pbkdf2Sync (password, salt, iterations, keylen, digest) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121,"create-hmac":422}],478:[function(require,module,exports){
+},{"buffer":122,"create-hmac":424}],480:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -83597,48 +83219,15 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 }).call(this,require('_process'))
-},{"_process":479}],479:[function(require,module,exports){
+},{"_process":481}],481:[function(require,module,exports){
 // shim for using process in browser
+
 var process = module.exports = {};
 
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
+// cached from whatever global is present so that test runners that stub it don't break things.
+var cachedSetTimeout = setTimeout;
+var cachedClearTimeout = clearTimeout;
 
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-(function () {
-    try {
-        cachedSetTimeout = setTimeout;
-    } catch (e) {
-        cachedSetTimeout = function () {
-            throw new Error('setTimeout is not defined');
-        }
-    }
-    try {
-        cachedClearTimeout = clearTimeout;
-    } catch (e) {
-        cachedClearTimeout = function () {
-            throw new Error('clearTimeout is not defined');
-        }
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        return setTimeout(fun, 0);
-    } else {
-        return cachedSetTimeout.call(null, fun, 0);
-    }
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        clearTimeout(marker);
-    } else {
-        cachedClearTimeout.call(null, marker);
-    }
-}
 var queue = [];
 var draining = false;
 var currentQueue;
@@ -83663,7 +83252,7 @@ function drainQueue() {
     if (draining) {
         return;
     }
-    var timeout = runTimeout(cleanUpNextTick);
+    var timeout = cachedSetTimeout(cleanUpNextTick);
     draining = true;
 
     var len = queue.length;
@@ -83680,7 +83269,7 @@ function drainQueue() {
     }
     currentQueue = null;
     draining = false;
-    runClearTimeout(timeout);
+    cachedClearTimeout(timeout);
 }
 
 process.nextTick = function (fun) {
@@ -83692,7 +83281,7 @@ process.nextTick = function (fun) {
     }
     queue.push(new Item(fun, args));
     if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
+        cachedSetTimeout(drainQueue, 0);
     }
 };
 
@@ -83731,7 +83320,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],480:[function(require,module,exports){
+},{}],482:[function(require,module,exports){
 exports.publicEncrypt = require('./publicEncrypt');
 exports.privateDecrypt = require('./privateDecrypt');
 
@@ -83742,7 +83331,7 @@ exports.privateEncrypt = function privateEncrypt(key, buf) {
 exports.publicDecrypt = function publicDecrypt(key, buf) {
   return exports.privateDecrypt(key, buf, true);
 };
-},{"./privateDecrypt":482,"./publicEncrypt":483}],481:[function(require,module,exports){
+},{"./privateDecrypt":484,"./publicEncrypt":485}],483:[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash');
 module.exports = function (seed, len) {
@@ -83761,7 +83350,7 @@ function i2ops(c) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"buffer":121,"create-hash":419}],482:[function(require,module,exports){
+},{"buffer":122,"create-hash":421}],484:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var mgf = require('./mgf');
@@ -83872,7 +83461,7 @@ function compare(a, b){
   return dif;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":481,"./withPublic":484,"./xor":485,"bn.js":91,"browserify-rsa":112,"buffer":121,"create-hash":419,"parse-asn1":476}],483:[function(require,module,exports){
+},{"./mgf":483,"./withPublic":486,"./xor":487,"bn.js":92,"browserify-rsa":113,"buffer":122,"create-hash":421,"parse-asn1":478}],485:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var randomBytes = require('randombytes');
@@ -83970,7 +83559,7 @@ function nonZero(len, crypto) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":481,"./withPublic":484,"./xor":485,"bn.js":91,"browserify-rsa":112,"buffer":121,"create-hash":419,"parse-asn1":476,"randombytes":486}],484:[function(require,module,exports){
+},{"./mgf":483,"./withPublic":486,"./xor":487,"bn.js":92,"browserify-rsa":113,"buffer":122,"create-hash":421,"parse-asn1":478,"randombytes":488}],486:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 function withPublic(paddedMsg, key) {
@@ -83983,7 +83572,7 @@ function withPublic(paddedMsg, key) {
 
 module.exports = withPublic;
 }).call(this,require("buffer").Buffer)
-},{"bn.js":91,"buffer":121}],485:[function(require,module,exports){
+},{"bn.js":92,"buffer":122}],487:[function(require,module,exports){
 module.exports = function xor(a, b) {
   var len = a.length;
   var i = -1;
@@ -83992,7 +83581,7 @@ module.exports = function xor(a, b) {
   }
   return a
 };
-},{}],486:[function(require,module,exports){
+},{}],488:[function(require,module,exports){
 (function (process,global,Buffer){
 'use strict'
 
@@ -84032,10 +83621,10 @@ function randomBytes (size, cb) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"_process":479,"buffer":121}],487:[function(require,module,exports){
+},{"_process":481,"buffer":122}],489:[function(require,module,exports){
 module.exports = require("./lib/_stream_duplex.js")
 
-},{"./lib/_stream_duplex.js":488}],488:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":490}],490:[function(require,module,exports){
 // a duplex stream is just a stream that is both readable and writable.
 // Since JS doesn't have multiple prototypal inheritance, this class
 // prototypally inherits from Readable, and then parasitically from
@@ -84111,7 +83700,7 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
-},{"./_stream_readable":490,"./_stream_writable":492,"core-util-is":417,"inherits":465,"process-nextick-args":478}],489:[function(require,module,exports){
+},{"./_stream_readable":492,"./_stream_writable":494,"core-util-is":419,"inherits":467,"process-nextick-args":480}],491:[function(require,module,exports){
 // a passthrough stream.
 // basically just the most minimal sort of Transform stream.
 // Every written chunk gets output as-is.
@@ -84138,7 +83727,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":491,"core-util-is":417,"inherits":465}],490:[function(require,module,exports){
+},{"./_stream_transform":493,"core-util-is":419,"inherits":467}],492:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -85034,7 +84623,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":488,"_process":479,"buffer":121,"buffer-shims":119,"core-util-is":417,"events":455,"inherits":465,"isarray":467,"process-nextick-args":478,"string_decoder/":515,"util":93}],491:[function(require,module,exports){
+},{"./_stream_duplex":490,"_process":481,"buffer":122,"buffer-shims":120,"core-util-is":419,"events":457,"inherits":467,"isarray":469,"process-nextick-args":480,"string_decoder/":517,"util":94}],493:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -85215,7 +84804,7 @@ function done(stream, er) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":488,"core-util-is":417,"inherits":465}],492:[function(require,module,exports){
+},{"./_stream_duplex":490,"core-util-is":419,"inherits":467}],494:[function(require,module,exports){
 (function (process){
 // A bit simpler than readable streams.
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -85744,10 +85333,10 @@ function CorkedRequest(state) {
   };
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":488,"_process":479,"buffer":121,"buffer-shims":119,"core-util-is":417,"events":455,"inherits":465,"process-nextick-args":478,"util-deprecate":516}],493:[function(require,module,exports){
+},{"./_stream_duplex":490,"_process":481,"buffer":122,"buffer-shims":120,"core-util-is":419,"events":457,"inherits":467,"process-nextick-args":480,"util-deprecate":518}],495:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
-},{"./lib/_stream_passthrough.js":489}],494:[function(require,module,exports){
+},{"./lib/_stream_passthrough.js":491}],496:[function(require,module,exports){
 (function (process){
 var Stream = (function (){
   try {
@@ -85767,13 +85356,13 @@ if (!process.browser && process.env.READABLE_STREAM === 'disable' && Stream) {
 }
 
 }).call(this,require('_process'))
-},{"./lib/_stream_duplex.js":488,"./lib/_stream_passthrough.js":489,"./lib/_stream_readable.js":490,"./lib/_stream_transform.js":491,"./lib/_stream_writable.js":492,"_process":479}],495:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":490,"./lib/_stream_passthrough.js":491,"./lib/_stream_readable.js":492,"./lib/_stream_transform.js":493,"./lib/_stream_writable.js":494,"_process":481}],497:[function(require,module,exports){
 module.exports = require("./lib/_stream_transform.js")
 
-},{"./lib/_stream_transform.js":491}],496:[function(require,module,exports){
+},{"./lib/_stream_transform.js":493}],498:[function(require,module,exports){
 module.exports = require("./lib/_stream_writable.js")
 
-},{"./lib/_stream_writable.js":492}],497:[function(require,module,exports){
+},{"./lib/_stream_writable.js":494}],499:[function(require,module,exports){
 (function (process,global){
 /**
  * Copyright (c) 2014, Facebook, Inc.
@@ -86445,7 +86034,7 @@ module.exports = require("./lib/_stream_writable.js")
 );
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":479}],498:[function(require,module,exports){
+},{"_process":481}],500:[function(require,module,exports){
 (function (Buffer){
 /*
 CryptoJS v3.1.2
@@ -86659,7 +86248,7 @@ function ripemd160 (message) {
 module.exports = ripemd160
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],499:[function(require,module,exports){
+},{"buffer":122}],501:[function(require,module,exports){
 (function (Buffer){
 const assert = require('assert')
 /**
@@ -86892,7 +86481,7 @@ function toBuffer (v) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":86,"buffer":121}],500:[function(require,module,exports){
+},{"assert":87,"buffer":122}],502:[function(require,module,exports){
 (function (Buffer){
 var pbkdf2Sync = require('pbkdf2').pbkdf2Sync
 
@@ -87075,11 +86664,11 @@ function arraycopy (src, srcPos, dest, destPos, length) {
 module.exports = scrypt
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121,"pbkdf2":477}],501:[function(require,module,exports){
+},{"buffer":122,"pbkdf2":479}],503:[function(require,module,exports){
 'use strict'
 module.exports = require('./lib')(require('./lib/elliptic'))
 
-},{"./lib":504,"./lib/elliptic":503}],502:[function(require,module,exports){
+},{"./lib":506,"./lib/elliptic":505}],504:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var toString = Object.prototype.toString
@@ -87127,7 +86716,7 @@ exports.isNumberInInterval = function (number, x, y, message) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":466}],503:[function(require,module,exports){
+},{"../../is-buffer/index.js":468}],505:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var createHash = require('create-hash')
@@ -87378,7 +86967,7 @@ exports.ecdhUnsafe = function (publicKey, privateKey, compressed) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../messages.json":505,"bn.js":91,"buffer":121,"create-hash":419,"elliptic":434}],504:[function(require,module,exports){
+},{"../messages.json":507,"bn.js":92,"buffer":122,"create-hash":421,"elliptic":436}],506:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var bip66 = require('bip66')
@@ -87698,7 +87287,7 @@ module.exports = function (secp256k1) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./assert":502,"./messages.json":505,"bip66":90,"buffer":121}],505:[function(require,module,exports){
+},{"./assert":504,"./messages.json":507,"bip66":91,"buffer":122}],507:[function(require,module,exports){
 module.exports={
   "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
   "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -87736,7 +87325,7 @@ module.exports={
   "TWEAK_LENGTH_INVALID": "tweak length is invalid"
 }
 
-},{}],506:[function(require,module,exports){
+},{}],508:[function(require,module,exports){
 (function (Buffer){
 // prototype class for hash functions
 function Hash (blockSize, finalSize) {
@@ -87809,7 +87398,7 @@ Hash.prototype._update = function () {
 module.exports = Hash
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":121}],507:[function(require,module,exports){
+},{"buffer":122}],509:[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -87826,7 +87415,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":508,"./sha1":509,"./sha224":510,"./sha256":511,"./sha384":512,"./sha512":513}],508:[function(require,module,exports){
+},{"./sha":510,"./sha1":511,"./sha224":512,"./sha256":513,"./sha384":514,"./sha512":515}],510:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -87923,7 +87512,7 @@ Sha.prototype._hash = function () {
 module.exports = Sha
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":506,"buffer":121,"inherits":465}],509:[function(require,module,exports){
+},{"./hash":508,"buffer":122,"inherits":467}],511:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -88025,7 +87614,7 @@ Sha1.prototype._hash = function () {
 module.exports = Sha1
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":506,"buffer":121,"inherits":465}],510:[function(require,module,exports){
+},{"./hash":508,"buffer":122,"inherits":467}],512:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -88081,7 +87670,7 @@ Sha224.prototype._hash = function () {
 module.exports = Sha224
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":506,"./sha256":511,"buffer":121,"inherits":465}],511:[function(require,module,exports){
+},{"./hash":508,"./sha256":513,"buffer":122,"inherits":467}],513:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -88219,7 +87808,7 @@ Sha256.prototype._hash = function () {
 module.exports = Sha256
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":506,"buffer":121,"inherits":465}],512:[function(require,module,exports){
+},{"./hash":508,"buffer":122,"inherits":467}],514:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
@@ -88279,7 +87868,7 @@ Sha384.prototype._hash = function () {
 module.exports = Sha384
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":506,"./sha512":513,"buffer":121,"inherits":465}],513:[function(require,module,exports){
+},{"./hash":508,"./sha512":515,"buffer":122,"inherits":467}],515:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var Hash = require('./hash')
@@ -88542,7 +88131,7 @@ Sha512.prototype._hash = function () {
 module.exports = Sha512
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":506,"buffer":121,"inherits":465}],514:[function(require,module,exports){
+},{"./hash":508,"buffer":122,"inherits":467}],516:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -88671,7 +88260,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":455,"inherits":465,"readable-stream/duplex.js":487,"readable-stream/passthrough.js":493,"readable-stream/readable.js":494,"readable-stream/transform.js":495,"readable-stream/writable.js":496}],515:[function(require,module,exports){
+},{"events":457,"inherits":467,"readable-stream/duplex.js":489,"readable-stream/passthrough.js":495,"readable-stream/readable.js":496,"readable-stream/transform.js":497,"readable-stream/writable.js":498}],517:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -88894,7 +88483,7 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":121}],516:[function(require,module,exports){
+},{"buffer":122}],518:[function(require,module,exports){
 (function (global){
 
 /**
@@ -88965,14 +88554,14 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],517:[function(require,module,exports){
+},{}],519:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],518:[function(require,module,exports){
+},{}],520:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -89562,7 +89151,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":517,"_process":479,"inherits":465}],519:[function(require,module,exports){
+},{"./support/isBuffer":519,"_process":481,"inherits":467}],521:[function(require,module,exports){
 (function (global){
 
 var rng;
@@ -89597,7 +89186,7 @@ module.exports = rng;
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],520:[function(require,module,exports){
+},{}],522:[function(require,module,exports){
 //     uuid.js
 //
 //     Copyright (c) 2010-2012 Robert Kieffer
@@ -89782,7 +89371,7 @@ uuid.unparse = unparse;
 
 module.exports = uuid;
 
-},{"./rng":519}],521:[function(require,module,exports){
+},{"./rng":521}],523:[function(require,module,exports){
 var indexOf = require('indexof');
 
 var Object_keys = function (obj) {
@@ -89922,4 +89511,4 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":464}]},{},[30]);
+},{"indexof":466}]},{},[30]);
