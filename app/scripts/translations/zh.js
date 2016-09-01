@@ -5,7 +5,7 @@ zh.code = 'zh';
 zh.data = {
 
   /* Navigation*/
-  NAV_YourWallets:      'Your Wallets',
+  NAV_YourWallets:      'Your Wallets你的钱包',
   NAV_AddWallet:        'Add Wallet',
   NAV_GenerateWallet:   'Generate Wallet',
   NAV_BulkGenerate:     'Bulk Generate',
