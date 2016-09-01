@@ -4,8 +4,19 @@ var el = function() {}
 el.code = 'el';
 el.data = {
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   HELP_12_Desc_15b:       'If you are on a PC:',
-  ADD_Radio_2_success:    'File Selected: ',
+  SUCCESS_6:              'File Selected: ',
   FOOTER_4:               'Disclaimer',
 
   /* New - DAO ETC Withdrawal */
@@ -470,16 +481,16 @@ el.data = {
   HELP_12_Desc_15:        'If you are on a Mac:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',

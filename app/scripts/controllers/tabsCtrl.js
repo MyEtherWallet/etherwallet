@@ -43,9 +43,19 @@ var tabsCtrl = function($scope, globalService, $translate) {
 		for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + (i + 1), 'errorMsgs', i);
 		for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i + 1), 'successMsgs', i);
 	}
+	$scope.setGethErrMsgLanguage = function() {
+		globalFuncs.gethErrorMsgs = {};
+		for (var s in globalFuncs.gethErrors) {
+			var key = globalFuncs.gethErrors[s];
+			if (key.indexOf("GETH_") === 0) {
+				$scope.setLanguageVal(key,'gethErrorMsgs',key);
+			}
+		}
+	}
 	$scope.changeLanguage = function(key, value) {
 		$translate.use(key);
 		$scope.setErrorMsgLanguage();
+		$scope.setGethErrMsgLanguage();
 		$scope.curLang = value;
 		$scope.setArrowVisibility();
 		$scope.dropdown = false;
@@ -78,20 +88,21 @@ var tabsCtrl = function($scope, globalService, $translate) {
 	$scope.scrollHoverOut = function() {
 		clearInterval($scope.sHoverTimer);
 	}
+    $scope.setOnScrollArrows = function(){
+        var ele = document.querySelectorAll(".nav-scroll")[0];
+  		$scope.showLeftArrow = ele.scrollLeft > 0;
+		$scope.showRightArrow = document.querySelectorAll(".nav-inner")[0].clientWidth > (ele.clientWidth + ele.scrollLeft);
+        $scope.$apply();
+    }
 	$scope.scrollLeft = function(val) {
 		var ele = document.querySelectorAll(".nav-scroll")[0];
 		ele.scrollLeft -= val;
-		$scope.showLeftArrow = ele.scrollLeft > 0;
-		$scope.showRightArrow = document.querySelectorAll(".nav-inner")[0].clientWidth > (ele.clientWidth + ele.scrollLeft);
-        $scope.$apply();
 	}
 	$scope.scrollRight = function(val) {
 		var ele = document.querySelectorAll(".nav-scroll")[0];
 		ele.scrollLeft += val;
-		$scope.showLeftArrow = ele.scrollLeft > 0;
-		$scope.showRightArrow = document.querySelectorAll(".nav-inner")[0].clientWidth > (ele.clientWidth + ele.scrollLeft);
-        $scope.$apply();
 	}
+    angular.element(document.querySelectorAll(".nav-scroll")[0]).bind('scroll',$scope.setOnScrollArrows);
 	globalFuncs.changeHash = $scope.setHash;
 };
 module.exports = tabsCtrl;

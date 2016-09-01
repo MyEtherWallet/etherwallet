@@ -5,44 +5,44 @@ id.code = 'id';
 id.data = {
 
   /* Navigation*/
-  NAV_YourWallets:      'Your Wallets',
-  NAV_AddWallet:        'Add Wallet',
-  NAV_GenerateWallet:   'Generate Wallet',
-  NAV_BulkGenerate:     'Bulk Generate',
-  NAV_SendEther:        'Send Ether',
-  NAV_SendTokens:       'Send Tokens',
-  NAV_Offline:          'Send Offline',
-  NAV_WithdrawDAO:      'Withdraw DAO',
-  DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
-  NAV_ClaimDGD:         'Claim DGD',
-  DGD_TitleLong:        'Claim Your DGD Tokens',
-  NAV_DeployContract:   'Deploy Contract',
-  NAV_MyWallets:        'My Wallets',
-  NAV_ViewWallet:       'View Wallet Info',
-  NAV_Help:             'Help',
-  NAV_Contact:          'Contact',
+  NAV_YourWallets:      'Dompet Anda', /*'Your Wallets'*/
+  NAV_AddWallet:        'Tambahkan Dompet', /*'Add Wallet'*/
+  NAV_GenerateWallet:   'Buat Dompet', /*'Generate Wallet'*/
+  NAV_BulkGenerate:     'Buat Banyak Dompet Sekaligus', /*'Bulk Generate'*/
+  NAV_SendEther:        'Kirim Ether', /*'Send Ether'*/
+  NAV_SendTokens:       'Kirim Tokens', /*'Send Tokens'*/
+  NAV_Offline:          'Kirim Offline', /*'Send Offline'*/
+  NAV_WithdrawDAO:      'Ambil DAO', /*'Withdraw DAO'*/
+  DAO_TitleLong:        'Ambil ETH dari Token DAO Anda Withdraw Your Dao Tokens For ETH', /*'Withdraw Your Dao Tokens For ETH'*/
+  NAV_ClaimDGD:         'Klaim DGD', /*'Claim DGD'*/
+  DGD_TitleLong:        'Klaim DGD Token Anda', /*'Claim Your DGD Tokens'*/
+  NAV_DeployContract:   'Deploy Contract', /*'Deploy Contract'*/
+  NAV_MyWallets:        'Dompet Saya', /*'My Wallets'*/
+  NAV_ViewWallet:       'Lihat Info Dompet', /*'View Wallet Info'*/
+  NAV_Help:             'Bantuan', /*'Help'*/
+  NAV_Contact:          'Kontak', /*'Contact'*/
 
   /* General */
-  x_Address:            'Your Address',
+  x_Address:            'Alamat Anda', /*'Your Address'*/
   x_AddessDesc:         'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address.',
-  x_Cancel:             'Cancel',
-  x_CSV:                'CSV file (unencrypted)',
+  x_Cancel:             'Batal', /*'Cancel'*/
+  x_CSV:                'File CSV (tidak ter-enkripsi)', /*'CSV file (unencrypted)*/
   x_Download:           'Download',
-  x_Json:               'JSON File (unencrypted)',
+  x_Json:               'File JSON File (tidak ter-enkripsi)', /*'JSON File (unencrypted)'*/
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
   x_Keystore2:          'Keystore/JSON File',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Password',
-  x_Print:              'Print Paper Wallet',
-  x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
+  x_Print:              'Print Dompet Kertas', /*'Print Paper Wallet'*/
+  x_PrintDesc:          'ProTip: klik print dan simpan sebagai PDF, meskipun Anda tidak memiliki printer!', /*'ProTip: Click print and save this as a PDF, even if you do not own a printer!'*/
   x_PrintShort:         'Print',
-  x_PrivKey:            'Private Key (unencrypted)',
+  x_PrivKey:            'Private Key (tidak ter-enkripsi)', /*'Private Key (unencrypted)'*/
   x_PrivKey2:           'Private Key',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
-  x_Save:               'Save',
-  x_TXT:                'TXT file (unencrypted)',
-  x_Wallet:             'Wallet',
+  x_Save:               'Simpan', /*'Save'*/
+  x_TXT:                'File TXT file (tidak ter-enkripsi)', /*'TXT file (unencrypted)'*/
+  x_Wallet:             'Dompet', /*'Wallet'*/
 
   /* Header */
   MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
@@ -80,7 +80,6 @@ id.data = {
   ADD_Radio_2:            'Select Your Wallet File (Keystore / JSON)',
   ADD_Radio_2_alt:        'Select Your Wallet File: ',
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
-  ADD_Radio_2_success:    'File Selected: ',
   ADD_Radio_3:            'Paste/Type Your Private Key ',
   ADD_Radio_4:            'Add an Account to Watch',
   ADD_Label_2:            'Create a Nickname:',
@@ -258,13 +257,25 @@ id.data = {
   SUCCESS_3:            'Transaction submitted. TX ID: ',
   SUCCESS_4:            'Your wallet was successfully added: ',
   SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
+  SUCCESS_6:            'File Selected: ',
+
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
 
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
-  TranslatorName_1:     '',
-  TranslatorAddr_1:     '',
-  /* Translator 1: Insert Comments Here */
+  TranslatorName_1:     'Yos Ginting',
+  TranslatorAddr_1:     '0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c',
+  /* Translator 1: Start translating into Indonesian. Will do it in stages */
   TranslatorName_2:     ' ',
   TranslatorAddr_2:     ' ',
   /* Translator 2: Insert Comments Here */
@@ -466,16 +477,16 @@ id.data = {
   HELP_12_Desc_15b:       'If you are on a PC:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',

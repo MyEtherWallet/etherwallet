@@ -4,6 +4,17 @@ var de = function() {}
 de.code = 'de';
 de.data = {
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Invalid sender',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas price too low for acceptance',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
+
   /* Navigation*/
   NAV_YourWallets:      'Deine Wallets',
   NAV_AddWallet:        'Wallet hinzufügen',
@@ -29,7 +40,7 @@ de.data = {
   x_Address:            'Deine Adresse',
   x_Save:               'Sichern',
   x_Cancel:             'Abbrechen',
-  x_AddessDesc:         'Dies ist deine "Kontonummer" oder dein "Öffentlicher Schlüssel". Du benötigst diese Adresse, wenn dir jemand ether senden möchte. Das Icon ist eine einfache Möglichkeit, die Adresse zu überprüfen',
+  x_AddessDesc:         'Dies ist deine "Kontonummer" oder dein "Öffentlicher Schlüssel". Du benötigst diese Adresse, wenn dir jemand Ether senden möchte. Das Icon ist eine einfache Möglichkeit, die Adresse zu überprüfen',
   x_PrivKey:            'Privater Schlüssel (unverschlüsselt)',
   x_PrivKey2:           'Privater Schlüssel',
   x_PrivKeyDesc:        'Dies ist die unverschlüsselte Textversion deines privaten Schlüssels, d. h. du benötigst kein Passwort. Wenn jemand über diesen unverschlüsselten privaten Schlüssel verfügt, hat er/sie ohne Passwort Zugang zu deinem Wallet. Es wird daher empfohlen, den privaten Schlüssel zu verschlüsseln.',
@@ -80,7 +91,6 @@ de.data = {
   ADD_Radio_2:            'Wallet-Datei auswählen (Keystore / JSON)',
   ADD_Radio_2_alt:        'Wallet-Datei auswählen: ',
   ADD_Radio_2_short:      'WALLET-DATEI AUSWÄHLEN...',
-  ADD_Radio_2_success:    'Ausgewählte Datei: ',
   ADD_Radio_3:            'Kopiere/Tippe deinen privaten Schlüssel ein',
   ADD_Radio_4:            'Kontoadresse zur Beobachtung hinzufügen',
   ADD_Label_2:            'Wähle ein Kürzel:',
@@ -123,7 +133,7 @@ de.data = {
   SENDModal_Content_1:   'Du bist dabei, ',
   SENDModal_Content_2:   ' an die Adresse ',
   SENDModal_Content_3:   ' zu senden. Bis du sicher, dass du das willst?',
-  SENDModal_Content_4:   'HINWEIS: Wenn du eine Fehlermeldung erhälst, musst du vermutlich deinen ether-Saldo erhöhen, um die Gas-Kosten des Token-Versands zu bezahlen. Gas wird in ether bezahlt.',
+  SENDModal_Content_4:   'HINWEIS: Wenn du eine Fehlermeldung erhälst, musst du vermutlich deinen Ether-Saldo erhöhen, um die Gas-Kosten des Token-Versands zu bezahlen. Gas wird in Ether bezahlt.',
   SENDModal_No:          'Nein, ich möchte diesen Vorgang abbrechen!',
   SENDModal_Yes:         'Ja, ich bin mir sicher! Führe die Transaktion durch.',
 
@@ -181,24 +191,24 @@ de.data = {
   DAO_bal2:               'momentan', // momentaner?
   DAO_TitleETH:           'DAO Token in ETH umwandeln',
   DAO_TitleETC:           'DAO Token in ETC umwandeln',
-  DAO_ETC_Label_1:        'An welche Adreese möchtest du deine ETC gesendet haben?',
+  DAO_ETC_Label_1:        'An welche Adresse möchtest du deine ETC gesendet haben?',
   DAO_ETC_Label_2:        'Die "White Hat Group" hat unermüdlich gearbeitet um deine ETC zurückzuholen. Wenn du möchtest, kannst du dich bedanken indem du einen Teil deiner ETC an sie spendest. ',
   DAO_Desc:               'Nutze diesen Tab um deine DAO Token in ETH auszuzahlen. Wenn du DAO Token verschicken willst, nutze bitten den "Sende Tokens" Tab',
   DAO_Inst:               'Ja, du musst einfach den großen roten Knopf drücken. Es ist so einfach.',
-  DAO_Warning:            'Wenn du den Fehler "Zu geringer Kontostand um Gaskosten zu decken" erhälst, musst du einen kleinen ether Betrag auf dein Konto überweisen um die Kosten zu decken. Überweise 0.001 ether an dieses Konto und versuche es erneut. ',
+  DAO_Warning:            'Wenn du den Fehler "Zu geringer Kontostand um Gaskosten zu decken" erhälst, musst du einen kleinen ether Betrag auf dein Konto überweisen um die Kosten zu decken. Überweise 0.001 Ether an dieses Konto und versuche es erneut. ',
   DAOModal_Title:         'Nur zur Sicherheit...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'You are about to withdraw',
-  DAOModal_2:             'DAO Tokens to',
-  DAOModal_3:             'for', // "in return for"
+  DAOModal_1:             'Du bist dabei',
+  DAOModal_2:             'DAO Token an',
+  DAOModal_3:             'zu senden im Austausch für', // "in return for"
 
   /* Digix */
-  DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
+  DGD_Desc:               'Erhebe Anspruch auf deine DigixDAO (DGD) Token und Badges. Um dies zu tun, musst du bei dem Token Verkauf am 30./31. Mai 2016 teilgenommen haben. Falls du DGD versenden möchtest, nutze bitte den Sende Tokens Tab.',
   DGD_Label_1:            'Erwartete Gebühren:',
   DGD_Label_2:            'Maximal mögliche Gebühren:', /* Provided = Mögliche? */
   DGD_Label_3:            'Gaspreis:',
-  DGD_Generate:           'Generate Claim',
-  DGD_Content:            'You are about to claim your DGD Tokens.',
+  DGD_Generate:           'Anspruch geltend machen',
+  DGD_Content:            'Du bist dabei, deine DGD Token geltend zu machen.',
 
   /* Deploy Contracts */
   DEP_generate:        'Bytecode generieren',
@@ -235,7 +245,7 @@ de.data = {
   /* Error Messages */
   ERROR_1:              'Bitte gültigen Betrag eingeben',
   ERROR_2:              'Dein Passwort muss mindestens 9 Zeichen lang sein. Bitte wähle ein sicheres Passwort. ',
-  ERROR_3:              'Oh oh! Wir haben den Typ der Wallet Datei nicht erkannt. ',
+  ERROR_3:              'Oh oh! Wir haben den Typ der Wallet-Datei nicht erkannt. ',
   ERROR_4:              'Dies ist keine gültige Wallet-Datei. ',
   ERROR_5:              'Diese Einheit existiert nicht, bitte wähle eine dieser Einheiten aus ',
   ERROR_6:              'Ungültige Addresse. ',
@@ -258,6 +268,7 @@ de.data = {
   SUCCESS_3:            'Transaktion übermittelt. TX ID: ',
   SUCCESS_4:            'Dein Wallet wurde erfolgreich hinzugefügt: ',
   SUCCESS_5:            'Du hast erfolgreich abgestimmt. Danke, dass du eine aktive Teilnehmerin/aktiver Teilnehmer am DAO bist.',
+  SUCCESS_6:            'Ausgewählte Datei: ',
 
   /* Tranlsation Info */
   translate_version:    '0.3',
@@ -269,11 +280,11 @@ de.data = {
   TranslatorAddr_2:     '0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3',
   /* Translator 2: Insert Comments Here */
   TranslatorName_3:     'huhn_solo · ',
-  TranslatorAddr_3:     ' ',
+  TranslatorAddr_3:     '0x1DAd1765381460db9A44846cDfA6f74c65A06B77',
   /* Translator 3: Insert Comments Here */
   TranslatorName_4:     '[FelixA](https://www.myetherwallet.com/?gaslimit=21000&to=0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D&value=1.0#send-transaction) · ',
   TranslatorAddr_4:     '0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D ',
-  /* Translator 4: reach me on Reddit as user huhn_solo */
+  /* Translator 4: Insert Comments Here */
   TranslatorName_5:     'danielsun174 · ffidan61',
   TranslatorAddr_5:     '',
   /* Translator 5: Insert Comments Here */
@@ -283,11 +294,11 @@ de.data = {
   HELP_Desc:          'Hast du das Gefühl etwas fehlt? Hast du eine andere Frage? [Schreib uns](mailto:myetherwallet@gmail.com) und wir werden nicht nur deine Frage beantworten, wir werden auch die Seite updaten, damit diese in der Zukunft noch einfacher zu bedienen sein wird!',
   HELP_Remind_Title:  'Ein paar Reminder',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, sowie einige der verwendeten Javascript Bibliotheken, die wir verwenden, befinden sich noch in Entwicklung.** Zwar haben wir alles umfassend getestet und es wurden erfolgeich tausende Wallets von Menschen aus aller Welt kreiert, jedoch bestimmt immer eine gewisse Gefahr, dass etwas unerwartetes passiert und dein Ether verloren geht. Bitte investiere nicht mehr als du verlieren kannst, und sei immer vorsichtig. Sollte etwas schlimmes passieren, **können wir uns leider nicht verantwortlich für einen Verlust zeichnen**.',
-  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX sind keine "web wallets". Du erstellst keinen Account oder sendest uns Ether das wir halten. Alle Daten bleiben auf deinem Computer, bzw. Browser. Unser Auftrag ist es, dir das Erstellen, Speichern und Zugreifen auf deine Accounts zu vereinfachen, sowie dir eine simple Möglichkeit zur Interaktion mit der Blockchain zu bieten.',
-  HELP_Remind_Desc_3: 'Falls du deinen privaten Schlüssel und Passwort nicht speicherst, es gibt keine Möglichkeit den Zugriff auf das Konto und die darauf befindlichen Mittel wieder herzustellen. Bitte erstelle Back-ups und speichere deine Zugriffsdaten an verschiedenen Orten &ndash; nicht nur deinem Computer!',
+  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX sind keine "web wallets". Du erstellst keinen Account oder sendest uns Ether den wir halten. Alle Daten bleiben auf deinem Computer, bzw. Browser. Unser Auftrag ist es, dir das Erstellen, Speichern und Zugreifen auf deine Accounts zu vereinfachen, sowie dir eine simple Möglichkeit zur Interaktion mit der Blockchain zu bieten.',
+  HELP_Remind_Desc_3: 'Falls du deinen privaten Schlüssel und Passwort nicht speicherst, gibt es keine Möglichkeit den Zugriff auf das Konto und die darauf befindlichen Mittel wieder herzustellen. Bitte erstelle Back-ups und speichere deine Zugriffsdaten an verschiedenen Orten &ndash; nicht nur deinem Computer!',
 
   HELP_0_Title:        '0) Ich bin neu. Was soll ich machen?',
-  HELP_0_Desc_1:       'MyEtherWallet bietet dir die Möglichkeit neue Wallets zu generieren, damit du dein Ether selbst speichern kannst, und keinen Exchange nutzen musst. Dieser Prozess findet ausschließlich auf deinem Computer statt. Daher bist auch **du dafür Verantwortlich, Back-ups zu erstellen** wenn du ein Wallet verwenden möchtest.',
+  HELP_0_Desc_1:       'MyEtherWallet bietet dir die Möglichkeit neue Wallets zu generieren, damit du deinen Ether selbst speichern kannst, und keine Exchange nutzen musst. Dieser Prozess findet ausschließlich auf deinem Computer statt. Daher bist auch **du dafür Verantwortlich, Back-ups zu erstellen** wenn du ein Wallet verwenden möchtest.',
   HELP_0_Desc_2:       'Erstelle ein neues Wallet.',
   HELP_0_Desc_3:       'Erstelle ein Back-up deines Wallets.',
   HELP_0_Desc_4:       'Verifiziere, dass du Zugriff auf dein neues Wallet hast und alle nötigen Informationen korrekt gespeichert sind.',
@@ -303,7 +314,7 @@ de.data = {
   HELP_2a_Title:       '2a) Wie speichere ich/erstelle Back-ups meines Wallets?',
   HELP_2a_Desc_1:      'Du solltest dein Wallet immer an verschiedenen physischen Orten abspeichern - beispielsweise auf einem USB-Stick und/oder einem Stück Papier.',
   HELP_2a_Desc_2:      'Speichere die Adresse. Du kannst sie für dich behalten oder mit anderen teilen. Auf diese Adresse können andere Ether an dich senden.',
-  HELP_2a_Desc_3:      'Speiche verschiedene Versionen deines privaten Schlüssels. Teile ihn nicht mit jemand anderem. Dein privater Schlüssel ist notwendig wenn du auf dein Ether zugreifen willst, um eine Überweisung zu tätigen! Es gibt 3 Arten des privaten Schlüssels:',
+  HELP_2a_Desc_3:      'Speiche verschiedene Versionen deines privaten Schlüssels. Teile ihn nicht mit jemand anderem. Dein privater Schlüssel ist notwendig, wenn du auf deinen Ether zugreifen willst, um eine Überweisung zu tätigen! Es gibt 3 Arten des privaten Schlüssels:',
   HELP_2a_Desc_4:      'Speichere deine Adresse, die verschiedenen Versionen des privaten Schlüssels, sowie eine PDF deines Papier-Wallets in einem Ordner. Speichere diesen auf deinem Computer und einem USB-Stick.',
   HELP_2a_Desc_5:      'Drucke das Wallet falls du einen Drucker hast. Andernfalls, schreibe deinen privaten Schlüssel und die Adresse auf ein Blatt Papier. Lagere dieses an einem sicheren Ort, abseits von deinem Computer und dem USB-Stick.',
   HELP_2a_Desc_6:      'Bitte denk daran, dass du den Verlust des Schlüssels aufgrund des Verlusts oder Versagen deiner Festplatte, des USB-Sticks oder dem Papier, selbst verhindern musst. Erwäge daher auch Situationen wie ein Feuer oder eine Überflutung.',
@@ -466,16 +477,16 @@ de.data = {
   HELP_12_Desc_15b:       'Wenn du an einem PC bist:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',

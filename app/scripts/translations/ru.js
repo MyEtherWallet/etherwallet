@@ -4,6 +4,17 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Неверный адрес отправителя',
+  GETH_Nonce:              'Номер перевода (nonce) слишком мал',
+  GETH_Cheap:              'Цена газа слишком низкая',
+  GETH_Balance:            'Баланс недостаточен',
+  GETH_NonExistentAccount: 'Счёт не существует или баланс счёта слишком мал',
+  GETH_InsufficientFunds:  'Недостаточно средств для ГАЗ * ЦЕНА + СУММА',
+  GETH_IntrinsicGas:       'Недостаточно газа для выполнения транзакции',
+  GETH_GasLimit:           'Превышен лимит газа на блок',
+  GETH_NegativeValue:      'Отрицательная сумма',
+
   /* Navigation*/
   NAV_YourWallets:      'Ваши кошельки',
   NAV_AddWallet:        'Добавить кошелёк',
@@ -23,7 +34,7 @@ ru.data = {
   NAV_Contact:          'Контакты',
 
   /* General */
-  x_Password:           'Пароли',
+  x_Password:           'Пароль',
   x_Download:           'Скачать',
   x_Address:            'Ваш адрес',
   x_Save:               'Сохранить',
@@ -32,7 +43,7 @@ ru.data = {
   x_PrivKey:            'Закрытый ключ (не зашифрован)',
   x_PrivKey2:           'Закрытый ключ',
   x_PrivKeyDesc:        'Это незашифрованное текстовое представление Вашего закрытого ключа, для использования которого не требуется вводить пароль. Если посторонние узнают Ваш закрытый ключ, они смогут распоряжаться Вашим кошельком без ввода пароля. По этой причине, обычно рекомендуют использовать зашифрованную версию закрытого ключа.',
-  x_Keystore:           'Файл Keystore/JSON (рекомендуется · зашифрован · формат совместим с Mist и geth)',
+  x_Keystore:           'Файл Keystore/JSON (рекомендуется · зашифрован · совместим с Mist и geth)',
   x_Keystore2:          'Файл Keystore/JSON',
   x_KeystoreDesc:       'Этот файл Keystore/JSON использует формат совместимый с Mist и geth. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию.',
   x_Json:               'Файл JSON (не зашифрован)',
@@ -45,13 +56,13 @@ ru.data = {
   x_Wallet:             'кошелёк',
 
   /* Header */
-  MEW_Warning_1:        'Всегда проверяйте URL перед тем, как воспользоваться существующим кошельком или создать новый. Опасайтесь поддельных (фишинговых) сайтов)!',
+  MEW_Warning_1:        'Всегда проверяйте URL перед тем, как воспользоваться существующим кошельком или создать новый. Опасайтесь поддельных (фишинговых) сайтов!',
   CX_Warning_1:         'Всегда имейте **резервную копию** всех кошельков, которые Вы храните здесь. Различные обстоятельства могут привести к тому, что данные, хранимые в этом расширении браузера Chrome, могут быть потеряны, например если Вы удалите или переустановите расширение. Это расширение облегчает использование Ваших кошельков, но оно **не является** надежным местом для их хранения.',
   MEW_Tagline:          'Ethereum кошелёк на javascript с открытым исходным кодом',
   CX_Tagline:           'Ethereum кошелёк на javascript с открытым исходным кодом в виде расширения для браузера Chrome',
 
   /* Footer */
-  FOOTER_1:             'Написанный на javascript инструмент с открытым исходным кодом, предназначенный для создания Ethereum кошельков и выполнения транзакций.',
+  FOOTER_1:             'Написанный на javascript инструмент с открытым исходным кодом для создания Ethereum кошельков и выполнения транзакций.',
   FOOTER_1b:            'Авторы:',
   FOOTER_2:             'Пожертвования приветствуются:',
   FOOTER_3:             'Создание кошелька на стороне клиента от',
@@ -65,7 +76,7 @@ ru.data = {
   sidebar_Equiv:        'Эквивалентные значения: ',
   sidebar_TransHistory: 'История транзакций: ',
   sidebar_DGDBal:       'Информация о распродаже DGD:',
-  sidebar_donation:     'MyEtherWallet — это бесплатный сервис с открытым исходным кодом, заботящийся о Вашей безопасности и неприкосновенности личной жизни. Чем больше пожертвований мы получаем, тем больше времени мы проводим, добавляя новые возможности, прислушиваясь к Вашим пожеланиям и предоставляя Вам то, что Вам необходимо. Мы — всего лишь два человека, пытающиеся изменить Мир. Вы поможете нам?',
+  sidebar_donation:     'MyEtherWallet — это бесплатный сервис с открытым исходным кодом, заботящийся о Вашей безопасности и неприкосновенности Вашей частной жизни. Чем больше пожертвований мы получаем, тем больше времени мы проводим, добавляя новые возможности, прислушиваясь к Вашим пожеланиям и предоставляя Вам то, что Вам необходимо. Мы — всего лишь два человека, пытающиеся изменить Мир. Вы поможете нам?',
   sidebar_donate:       'Пожертвовать',
   sidebar_thanks:       'СПАСИБО!!!',
 
@@ -80,7 +91,6 @@ ru.data = {
   ADD_Radio_2:            'Выбрать файл с кошельком (Keystore/JSON)',
   ADD_Radio_2_alt:        'Выбрать файл с кошельком: ',
   ADD_Radio_2_short:      'ВЫБРАТЬ ФАЙЛ С КОШЕЛЬКОМ...',
-  ADD_Radio_2_success:    'Выбранный файл: ',
   ADD_Radio_3:            'Вставить или ввести Ваш закрытый ключ',
   ADD_Radio_4:            'Добавить счёт в список слежения',
   ADD_Label_2:            'Присвоить название:',
@@ -97,7 +107,7 @@ ru.data = {
   GEN_Label_1:            'Введите сложный пароль (не менее 9 символов)',
   GEN_Placeholder_1:      'Не забудьте сохранить это!',
   GEN_SuccessMsg:         'Поздравляем! Ваш кошелёк успешно создан.',
-  GEN_Warning:            '**Вам понадобится файл Keystore/JSON вместе с паролем или же зарытый ключ** для доступа к этому кошельку в будущем. Пожалуйста, сохраните их и сделайте резервную копию! Если Вы потеряете их, то не сможете восстановить Ваш кошелёк. Обратитесь к [справке](https://www.myetherwallet.com/#help) за инструкциями.',
+  GEN_Warning:            'В будущем, для доступа к этому кошельку **Вам понадобится либо файл Keystore/JSON вместе с паролем,  либо зарытый ключ**. Пожалуйста, сохраните их и сделайте резервную копию! Если Вы потеряете их, то не сможете восстановить доступ к Вашему кошельку. Обратитесь к [справке](https://www.myetherwallet.com/#help) за инструкциями.',
   GEN_Label_2:            'Сохраните Ваш файл Keystore/JSON или зарытый ключ. Не забывайте Ваш пароль!',
   GEN_Label_3:            'Сохраните Ваш адрес.',
   GEN_Label_4:            'Напечатайте бумажный кошелёк или сохраните QR код. (по желанию)',
@@ -134,7 +144,7 @@ ru.data = {
 
   /* Send Transaction */
   TRANS_desc:            'Если Вы хотите перевести токены, используйте страницу "Отправить токены".',
-  TRANS_warning:         'Если Вы используете функции "только ETH" или "только ETC", перевод будет выполнен с помощью кожнтракта. У некоторых сервисов могут возникнуть проблемы с приёмом таких переводов. Уточните этот вопрос.',
+  TRANS_warning:         'Если Вы используете функции "только ETH" или "только ETC", перевод будет выполнен с помощью контракта. У некоторых сервисов могут возникнуть проблемы с приёмом таких переводов. Уточните этот вопрос.',
   TRANS_standard:        'Эфир (ether, обычная транзакция)',
   TRANS_eth:             'Только ETH',
   TRANS_etc:             'Только ETC',
@@ -259,6 +269,7 @@ ru.data = {
   SUCCESS_3:            'Транзакция отправлена на выполнение. TX ID: ',
   SUCCESS_4:            'Ваш кошелёк успешно добавлен: ',
   SUCCESS_5:            'Ваш голос учтён. Спасибо Вам за активное участие в работе DAO.',
+  SUCCESS_6:            'Выбранный файл: ',
 
   /* Tranlsation Info */
   translate_version:    '0.3',
@@ -467,16 +478,16 @@ ru.data = {
   HELP_12_Desc_15b:       'Если вы используете ПК:',
   HELP_12_Desc_16:        'Open Text Edit and paste this private key.',
   HELP_12_Desc_17:        'Go to the menu bar and click "Format" -> "Make Plain Text".',
-  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt/`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
-  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt/`',
+  HELP_12_Desc_18:        'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+  HELP_12_Desc_19:        'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
   HELP_12_Desc_20:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
   HELP_12_Desc_21:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_22:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
   HELP_12_Desc_23:        'Open Notepad & paste the private key',
-  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C://`',
-  HELP_12_Desc_25:        'Run the command, `geth account import C:/nothing_special_delete_me.txt`',
+  HELP_12_Desc_24:        'Save the file as `nothing_special_delete_me.txt` at `C:`',
+  HELP_12_Desc_25:        'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
   HELP_12_Desc_26:        'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
-  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt/`',
+  HELP_12_Desc_27:        'After successful import, delete `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
 
   HELP_13_Title:          '13) What does "Gas Limit Too Low" Mean?',
