@@ -65,6 +65,12 @@ ajaxReq.getEstimatedGas = function(txobj, callback) {
         isClassic: false
 	}, callback);
 }
+ajaxReq.getClassicEstimatedGas = function(txobj, callback) {
+	this.post({
+		estimatedGas: txobj,
+        isClassic: true
+	}, callback);
+}
 ajaxReq.getEthCall = function(txobj, callback) {
 	this.post({
 		ethCall: txobj,

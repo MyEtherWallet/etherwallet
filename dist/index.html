@@ -32,12 +32,12 @@
 
 
   <header ng-controller='tabsCtrl'>
-    <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="announcement annoucement-warning" target="_blank">
+    <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="small announcement annoucement-warning" target="_blank">
       <div class="container" translate="MEW_Warning_1">Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!</div>
     </a>
     <section class="container-fluid bg-gradient header-branding">
       <section class="container">
-        <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="64px" width="245px" alt="My Ether Wallet" /></a>
+        <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="My Ether Wallet" /></a>
         <div class="tagline">
           <span style="max-width: 375px" translate="MEW_Tagline">Open Source JavaScript Client-Side Ether Wallet</span>
 
@@ -60,7 +60,7 @@
         <!--<li><a ng-class="{true:'active'}[curLang=='Magyar']" ng-click="changeLanguage('hu','Magyar')">Magyar</a></li>-->
         <!--<li><a ng-class="{true:'active'}[curLang=='Indonesian']" ng-click="changeLanguage('id','Indonesian')">Indonesian</a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Italiano']" ng-click="changeLanguage('it','Italiano')">Italiano</a></li>
-        <!--<li><a ng-class="{true:'active'}[curLang=='日本語']" ng-click="changeLanguage('ja','日本語')">日本語</a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='日本語']" ng-click="changeLanguage('ja','日本語')">日本語</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='한국어']" ng-click="changeLanguage('ko','한국어')">한국어</a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Nederlands']" ng-click="changeLanguage('nl','Nederlands')">Nederlands</a></li>
             <li><a ng-class="{true:'active'}[curLang=='Norsk Bokmål']" ng-click="changeLanguage('no','Norsk Bokmål')">Norsk Bokmål</a></li>
@@ -124,7 +124,7 @@
       <div class="form-group">
         <h4 translate="GEN_Label_1"> Enter a strong password (at least 9 characters) </h4>
         <div class="input-group">
-          <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}" ng-model="password" ng-class="isStrongPass() ? 'valid' : 'invalid'"/>
+          <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}" ng-model="password" ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"/>
           <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
         </div>
       </div>
@@ -442,8 +442,7 @@
 
       <div class="form-group col-xs-10">
         <label translate="SEND_addr"> To Address: </label>
-        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()"/>
-        <div ng-bind-html="validateAddressStatus"></div>
+        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
       </div>
 
       <div class="col-xs-2 address-identicon-container">
@@ -453,7 +452,7 @@
       <div class="form-group col-xs-12">
         <label translate="SEND_amount">Amount to Send:</label>
         <a class="pull-right" ng-click="transferAllBalance()" ng-show="tx.sendMode==0" translate="SEND_TransferTotal">Send Entire Balance</a>
-        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
+        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
         <div class="radio">
           <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>
             <span translate="TRANS_standard">ETH (Standard Transaction)</span></label>
@@ -473,11 +472,11 @@
           <section ng-show="showAdvance">
             <div class="form-group">
               <label translate="TRANS_data"> Data: </label>
-              <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data"/>
+              <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
             </div>
             <div class="form-group">
               <label translate="TRANS_gas"> Gas: </label>
-              <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit"/>
+              <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
             </div>
           </section>
         </div>
@@ -815,7 +814,7 @@
 
         <div class="form-group col-xs-10">
           <label translate="SEND_addr"> To Address: </label>
-          <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tokenTx.to" ng-change="validateAddress()"/>
+          <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tokenTx.to" ng-class="Validator.isValidAddress(tokenTx.to) ? 'is-valid' : 'is-invalid'"/>
           <div ng-bind-html="validateAddressStatus"></div>
         </div>
 
@@ -826,10 +825,10 @@
         <div class="form-group col-xs-12">
 
           <label translate="SEND_amount"> Amount to Send: </label>
-          <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value"/>
+          <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value" ng-class="Validator.isPositiveNumber(tokenTx.value) ? 'is-valid' : 'is-invalid'"/>
 
           <div class="radio">
-            <label ng-repeat="token in tokenObjs track by $index" ng-hide="token.balance==0">
+            <label ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading'">
               <input type="radio" name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"/>
               {{token.getSymbol()}}
             </label>
@@ -861,7 +860,7 @@
 
           <div class="form-group">
             <label class="SEND_gas"> Gas: </label>
-            <input class="form-control" type="text" ng-model="tokenTx.gasLimit"/>
+            <input class="form-control" type="text" ng-model="tokenTx.gasLimit" ng-class="Validator.isPositiveNumber(tokenTx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
           </div>
 
         </div>
@@ -1003,21 +1002,22 @@
 
           <h4 class="col-xs-12" translate="DAO_TitleETC"> Withdraw DAO for ETC </h4>
           <!-- Address for ETC to be Delivered -->
+
+        <!--<h4 class="col-xs-12"> There were some irregularities occcuring. Please sit tight for now.  </h4>-->
+
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_1"> Where do you want your ETC to be sent to? </label>
-            <input class="form-control" type="text" ng-model="daoC.to" ng-change="validateAddress(daoC.to)"/>
-            <div ng-bind-html="validateAddressStatus"></div>
+            <input class="form-control" type="text" ng-model="daoC.to" ng-class="Validator.isValidAddress(daoC.to) ? 'is-valid' : 'is-invalid'"/>
           </div>
 
           <div class="col-xs-2 address-identicon-container">
             <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{daoC.to}}" watch-var="daoC.to"></div>
           </div>
 
-          <!-- Percentage to Donate to WHG -->
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_2"> The 'White Hat Group' has been working tirelessly to get your ETC back to you. You can say 'thank you' by donating a percentage of your withdrawal, if you choose to. </label>
             <div class="input-group" style="max-width: 150px;">
-            <input type="number" class="form-control" placeholder="10" ng-model="daoC.donation"/>
+            <input type="number" class="form-control" placeholder="10" ng-model="daoC.donation" ng-class="Validator.isPositiveNumber(daoC.donation) ? 'is-valid' : 'is-invalid'"/>
             <span class="input-group-addon">%</span>
           </div>
 
@@ -1031,6 +1031,7 @@
           <br /><br />
 
           <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
+
       </section>
       <!-- / Withdraw DAO For ETC -->
 
@@ -1269,32 +1270,10 @@
   <section class="row" >
 
     <div class="col-xs-12">
-
-      <!-- To Address
-      <div class="form-group">
-        <label translate="SEND_addr"> To Address: </label>
-        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()"/>
-        <div ng-bind-html="validateAddressStatus"></div>
-      </div>
-      -->
-
-      <!-- Amount
-      <div class="form-group">
-        <label translate="SEND_amount">Amount to Send:</label>
-        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
-      </div<
-      -->
-
       <!-- Data -->
       <div class="form-group">
-        <h4 translate="TRANS_data"> Data: </h4>
+        <h4> Byte Code: </h4>
         <textarea class="form-control" ng-model="tx.data" rows="8"></textarea>
-        <div class="radio">
-          <label><input type="radio" name="dataType" ng-model="dataType" value="bytecode" />
-            <span>Bytecode</span></label>
-          <label><input type="radio" name="dataType" ng-model="dataType" value="solidity" />
-            <span>Solidity</span></label>
-        </div>
       </div>
 
       <!-- Gas -->
@@ -1303,28 +1282,6 @@
         <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit"/>
       </div>
 
-      <!-- Generate Bytecode (Solidity Only) -->
-      <div class="form-group" ng-show="dataType == 'solidity'">
-        <a class="btn btn-info btn-block" ng-click="" translate="DEP_generate"> GENERATE BYTECODE </a>
-      </div>
-
-      <section class="row">
-
-        <!-- Generated Bytecode (Solidity Only) -->
-        <div class="form-group col-sm-6" ng-show="dataType == 'solidity'">
-          <h4 translate="DEP_generated"> Generated Bytecode </h4>
-          <textarea class="form-control" rows="5" disabled ></textarea>
-        </div>
-
-        <!-- Generated Interface? (Solidity Only) -->
-        <div class="form-group col-sm-6" ng-show="dataType == 'solidity'">
-          <h4 translate="DEP_interface"> Generated Interface </h4>
-          <textarea class="form-control" rows="5" disabled >[{"constant":false,"inputs":[{"name":"to","type":"address"}],"name":"delegate","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"winningProposal","outputs":[{"name":"winningProposal","type":"uint8"}],"type":"function"},{"constant":false,"inputs":[{"name":"voter","type":"address"}],"name":"giveRightToVote","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"proposal","type":"uint8"}],"name":"vote","outputs":[],"type":"function"},{"inputs":[{"name":"_numProposals","type":"uint8"}],"type":"constructor"}]</textarea>
-        </div>
-
-      </section>
-
-
       <!-- Wallet Decrypt -->
       <div class="form-group">
         <br />
@@ -1332,13 +1289,13 @@
           <wallet-decrypt-drtv></wallet-decrypt-drtv>         
         <br /><br />
       </div>
-
+      <div ng-bind-html="deployContractStatus"></div>
       <!-- Sign TX Button (once wallet has been unlocked) -->
       <div class="form-group">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DEP_signtx"> Sign Transaction </a>
+        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DEP_signtx" ng-show="wallet!=null"> Sign Transaction </a>
       </div>
 
-      <section class="row">
+      <section class="row" ng-show="showRaw">
         <!-- Raw TX -->
         <div class="form-group col-sm-6">
           <h4 translate="SEND_raw"> Raw Transaction </h4>
@@ -1353,7 +1310,7 @@
       </section>
 
       <!-- Deploy Contract Button (once tx has been signged) -->
-      <div class="form-group">
+      <div class="form-group" ng-show="showRaw">
         <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="NAV_DeployContract"> Deploy Contract </a>
       </div>
 
@@ -1373,7 +1330,7 @@
 
             <div class="modal-body">
               <h4>
-                <span translate="">You are about to deploy a contract to the blockchain.</span>
+                <span>You are about to deploy a contract to the blockchain.</span>
               </h4>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>
@@ -2088,7 +2045,7 @@
 <footer class="container-fluid" ng-controller='footerCtrl'>
   <div class="container">
     <p>
-      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a>
+      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="55px" width="auto" alt="Ether Wallet" /></a>
     </p>
 
     <p>

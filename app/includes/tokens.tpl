@@ -78,7 +78,7 @@
 
         <div class="form-group col-xs-10">
           <label translate="SEND_addr"> To Address: </label>
-          <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tokenTx.to" ng-change="validateAddress()"/>
+          <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tokenTx.to" ng-class="Validator.isValidAddress(tokenTx.to) ? 'is-valid' : 'is-invalid'"/>
           <div ng-bind-html="validateAddressStatus"></div>
         </div>
 
@@ -89,10 +89,10 @@
         <div class="form-group col-xs-12">
 
           <label translate="SEND_amount"> Amount to Send: </label>
-          <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value"/>
+          <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value" ng-class="Validator.isPositiveNumber(tokenTx.value) ? 'is-valid' : 'is-invalid'"/>
 
           <div class="radio">
-            <label ng-repeat="token in tokenObjs track by $index" ng-hide="token.balance==0">
+            <label ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading'">
               <input type="radio" name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"/>
               {{token.getSymbol()}}
             </label>
@@ -124,7 +124,7 @@
 
           <div class="form-group">
             <label class="SEND_gas"> Gas: </label>
-            <input class="form-control" type="text" ng-model="tokenTx.gasLimit"/>
+            <input class="form-control" type="text" ng-model="tokenTx.gasLimit" ng-class="Validator.isPositiveNumber(tokenTx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
           </div>
 
         </div>
