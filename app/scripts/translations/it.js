@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 3ee6e18a0a72587c010a99e5ae015e766f48859e
+// Last sync with en.js: commit aeefb6da17e37b703051085f3aa87f3
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -393,7 +393,7 @@ it.data = {
   HELP_6_Title:         '6) Come faccio a separare i miei ETH / ETC? ',
   HELP_6_Desc_1:        'Come conseguenza della *hard fork*, a qualunque quantità di ETH precedentemente presente nel tuo portafoglio corrisponde ora una uguale quantità di ETC. Se invii degli ETH tramite una transazione standard, verranno anche inviati degli ETC. Per evitarlo, devi "separare" il tuo portafoglio originale in due portafogli. Dopodiché, ti devi assicurare che solamente gli ETH finiscano nel tuo portafoglio ETH e solamente gli ETC finiscano nel tuo portafoglio ETC.',
   HELP_6_Desc_2:        'Puoi anche inviare tutti i tuoi ETH & ETC utilizzando una transazione standard a Kraken o Poloniex. Queste piattaforme di scambio separeranno automaticamente i tuoi ETH ed ETC. Potrai quindi spostare questi fondi in nuovi portafogli, o vendere i tuoi ETC o ETH.',
-  HELP_6_Desc_3:        '[Qui puoi trovare ulteriori informazioni su portafogli e *reply attack*](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
+  HELP_6_Desc_3:        '[Qui puoi trovare ulteriori informazioni su portafogli e *replay attack*](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
   HELP_6_Desc_4:        'Genera un nuovo portafoglio ETH *post-fork* pulito per te (che sarà la destinazione finale degli ETH e nient\'altro).',
   HELP_6_Desc_5:        'Genera un nuovo portafoglio ETC *post-fork* pulito per te (che sarà la destinazione finale degli ETC e nient\'altro).',
   HELP_6_Desc_6:        'Fai un backup di questi nuovi portafogli e verifica di poterci accedere. Vedi domande n. 2a e n. 3 qui sopra.',
