@@ -4,17 +4,6 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
-
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -91,6 +80,7 @@ nl.data = {
   ADD_Radio_2:            'Selecteer Je wallet bestand (Keystore / JSON)',
   ADD_Radio_2_alt:        'Selecteer Je wallet bestand: ',
   ADD_Radio_2_short:      'SELECTEER WALLET BESTAND...',
+  ADD_Radio_2_success:    'Bestand Geselecteerd: ',
   ADD_Radio_3:            'Plak/Type je prive sleutel ',
   ADD_Radio_4:            'Voeg een te bekijken account toe',
   ADD_Label_2:            'Verzin een Nickname:',
@@ -268,7 +258,6 @@ nl.data = {
   SUCCESS_3:            'Transactie verzonden. TX ID: ',
   SUCCESS_4:            'Je Wallet is succesvol toegevoegd: ',
   SUCCESS_5:            'Je hebt succesvol gestemd. Fijn dat je een actief participerend DAO deelnemer bent.',
-  SUCCESS_6:            'Bestand Geselecteerd: ',
 
   /* Translation Info */
   translate_version:    '0.3',
@@ -483,8 +472,8 @@ nl.data = {
   HELP_12_Desc_21:        'Verwijder het bestand `niets_bijzonders_verwijder_mij.txt` na een geslaagde import.',
   HELP_12_Desc_22:        'De volgende keer dat je de Ethereum Wallet applicatie opent, zal je account worden vermeld onder "Accounts".',
   HELP_12_Desc_23:        'Open Kladblok (Notepad) & plak de prive seutel',
-  HELP_12_Desc_24:        'Sla het bestand op als `niets_bijzonders_verwijder_mij.txt` in `C:`',
-  HELP_12_Desc_25:        'Open de command prompt en voer het volgende commando uit: `geth account import C:\\niets_bijzonders_verwijder_mij.txt`',
+  HELP_12_Desc_24:        'Sla het bestand op als `niets_bijzonders_verwijder_mij.txt` in `C://`',
+  HELP_12_Desc_25:        'Open de command prompt en voer het volgende commando uit: `geth account import C:/niets_bijzonders_verwijder_mij.txt`',
   HELP_12_Desc_26:        'Je zal gevraagd worden om een nieuw wachtwoord. Dit is het wachtwoord wat je zult gebruiken in geth / Ethereum Wallet / Mist elke keer als je een transactie verzend, dus zorg dat je dit niet vergeet. ',
   HELP_12_Desc_27:        'Verwijder het bestand `niets_bijzonders_verwijder_mij.txt` na een geslaagde import.',
   HELP_12_Desc_28:        'De volgende keer dat je de Ethereum Wallet applicatie opent, zal je account worden vermeld onder "Accounts". ',

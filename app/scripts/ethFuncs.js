@@ -12,8 +12,8 @@ ethFuncs.isChecksumAddress = function(address) {
 }
 ethFuncs.validateHexString = function(str) {
 	if (str == "") return true;
-	str = str.substring(0, 2) == '0x' ? str.substring(2).toUpperCase() : str.toUpperCase();
-	var re = /^[0-9A-F]+$/g;
+	str = str.substring(0, 2) == '0x' ? str.substring(2) : str;
+	var re = /[0-9A-Fa-f]+$/g;
 	return re.test(str);
 }
 ethFuncs.sanitizeHex = function(hex) {
@@ -45,10 +45,6 @@ ethFuncs.contractOutToArray = function(hex) {
 }
 ethFuncs.getNakedAddress = function(address) {
 	return address.toLowerCase().replace('0x', '');
-}
-ethFuncs.getDeteministicContractAddress = function (address,nonce){
-    address = address.substring(0, 2) == '0x' ? address : '0x'+address;
-    return '0x'+ethUtil.sha3(ethUtil.rlp.encode([address,nonce])).slice(12).toString('hex');
 }
 ethFuncs.padLeft = function(n, width, z) {
 	z = z || '0';

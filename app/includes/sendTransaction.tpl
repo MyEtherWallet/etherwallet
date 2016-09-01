@@ -77,7 +77,8 @@
 
       <div class="form-group col-xs-10">
         <label translate="SEND_addr"> To Address: </label>
-        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
+        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()"/>
+        <div ng-bind-html="validateAddressStatus"></div>
       </div>
 
       <div class="col-xs-2 address-identicon-container">
@@ -87,7 +88,7 @@
       <div class="form-group col-xs-12">
         <label translate="SEND_amount">Amount to Send:</label>
         <a class="pull-right" ng-click="transferAllBalance()" ng-show="tx.sendMode==0" translate="SEND_TransferTotal">Send Entire Balance</a>
-        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
         <div class="radio">
           <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>
             <span translate="TRANS_standard">ETH (Standard Transaction)</span></label>
@@ -107,11 +108,11 @@
           <section ng-show="showAdvance">
             <div class="form-group">
               <label translate="TRANS_data"> Data: </label>
-              <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+              <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data"/>
             </div>
             <div class="form-group">
               <label translate="TRANS_gas"> Gas: </label>
-              <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+              <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit"/>
             </div>
           </section>
         </div>

@@ -1,7 +1,7 @@
 <footer class="container-fluid" ng-controller='footerCtrl'>
   <div class="container">
     <p>
-      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="55px" width="auto" alt="Ether Wallet" /></a>
+      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="Ether Wallet" /></a>
     </p>
 
     <p>

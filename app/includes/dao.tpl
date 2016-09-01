@@ -75,22 +75,21 @@
 
           <h4 class="col-xs-12" translate="DAO_TitleETC"> Withdraw DAO for ETC </h4>
           <!-- Address for ETC to be Delivered -->
-
-        <!--<h4 class="col-xs-12"> There were some irregularities occcuring. Please sit tight for now.  </h4>-->
-
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_1"> Where do you want your ETC to be sent to? </label>
-            <input class="form-control" type="text" ng-model="daoC.to" ng-class="Validator.isValidAddress(daoC.to) ? 'is-valid' : 'is-invalid'"/>
+            <input class="form-control" type="text" ng-model="daoC.to" ng-change="validateAddress(daoC.to)"/>
+            <div ng-bind-html="validateAddressStatus"></div>
           </div>
 
           <div class="col-xs-2 address-identicon-container">
             <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{daoC.to}}" watch-var="daoC.to"></div>
           </div>
 
+          <!-- Percentage to Donate to WHG -->
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_2"> The 'White Hat Group' has been working tirelessly to get your ETC back to you. You can say 'thank you' by donating a percentage of your withdrawal, if you choose to. </label>
             <div class="input-group" style="max-width: 150px;">
-            <input type="number" class="form-control" placeholder="10" ng-model="daoC.donation" ng-class="Validator.isPositiveNumber(daoC.donation) ? 'is-valid' : 'is-invalid'"/>
+            <input type="number" class="form-control" placeholder="10" ng-model="daoC.donation"/>
             <span class="input-group-addon">%</span>
           </div>
 
@@ -104,7 +103,6 @@
           <br /><br />
 
           <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
-
       </section>
       <!-- / Withdraw DAO For ETC -->
 

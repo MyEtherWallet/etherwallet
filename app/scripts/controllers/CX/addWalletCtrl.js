@@ -19,7 +19,7 @@ var addWalletCtrl = function($scope, $sce) {
 		$scope.showBtnUnlock = $scope.privPassword.length > 6;
 	};
 	$scope.showContent = function($fileContent) {
-		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[5] + document.getElementById('fselector').files[0].name));
+		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText("File Selected: " + document.getElementById('fselector').files[0].name));
 		try {
 			$scope.requireFPass = Wallet.walletRequirePass($fileContent);
 			$scope.showBtnUnlock = !$scope.requireFPass;

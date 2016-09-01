@@ -8,7 +8,6 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	$scope.showRaw = false;
 	$scope.replayContract = "0xaa1a6e3e6ef20068f7f8d8c835d2d22fd5116444";
 	$scope.splitHex = "0x0f2c9329";
-    $scope.Validator = Validator;
 	$scope.tx = {
 		gasLimit: globalFuncs.urlGet('gaslimit') == null ? globalFuncs.defaultTxGasLimit : globalFuncs.urlGet('gaslimit'),
 		data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
@@ -61,7 +60,11 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		}
 	}, true);
 	$scope.validateAddress = function() {
-        return ethFuncs.validateEtherAddress($scope.tx.to)
+		if (ethFuncs.validateEtherAddress($scope.tx.to)) {
+			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
+		} else {
+			$scope.validateAddressStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+		}
 	}
 	$scope.toggleShowAdvance = function() {
 		$scope.showAdvance = !$scope.showAdvance;
@@ -70,6 +73,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		$scope.tx.to = globalFuncs.donateAddress;
 		$scope.tx.value = "0.5";
 		$scope.tx.donate = true;
+		$scope.validateAddress();
 	}
 	$scope.generateTx = function() {
 	   if (!ethFuncs.validateEtherAddress($scope.tx.to)) {

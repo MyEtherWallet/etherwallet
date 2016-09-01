@@ -11,16 +11,12 @@ uiFuncs.getTxData = function($scope) {
 		privKey: $scope.wallet.getPrivateKeyString()
 	};
 }
-uiFuncs.isTxDataValid = function(txData) {
-	if (txData.to != "0xCONTRACT" && !ethFuncs.validateEtherAddress(txData.to)) throw globalFuncs.errorMsgs[5];
-	else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[7];
-	else if (!globalFuncs.isNumeric(txData.gasLimit) || parseFloat(txData.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
-	else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
-	if (txData.to == "0xCONTRACT") txData.to = '';
-}
 uiFuncs.generateClassicTx = function(txData, callback) {
 	try {
-		uiFuncs.isTxDataValid(txData);
+		if (!ethFuncs.validateEtherAddress(txData.to)) throw globalFuncs.errorMsgs[5];
+		else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[7];
+		else if (!globalFuncs.isNumeric(txData.gasLimit) || parseFloat(txData.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
+		else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
 		ajaxReq.getClassicTransactionData(txData.from, function(data) {
 			if (data.error) throw data.msg;
 			data = data.data;
@@ -52,7 +48,7 @@ uiFuncs.sendClassicTx = function(signedTx, callback) {
 		if (data.error) {
 			resp = {
 				isError: true,
-				error: globalFuncs.getGethMsg(data.msg)
+				error: data.msg
 			};
 		} else {
 			resp = {
@@ -65,7 +61,10 @@ uiFuncs.sendClassicTx = function(signedTx, callback) {
 }
 uiFuncs.generateTx = function(txData, callback) {
 	try {
-		uiFuncs.isTxDataValid(txData);
+		if (!ethFuncs.validateEtherAddress(txData.to)) throw globalFuncs.errorMsgs[5];
+		else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[7];
+		else if (!globalFuncs.isNumeric(txData.gasLimit) || parseFloat(txData.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
+		else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
 		ajaxReq.getTransactionData(txData.from, function(data) {
 			if (data.error) throw data.msg;
 			data = data.data;
@@ -97,7 +96,7 @@ uiFuncs.sendTx = function(signedTx, callback) {
 		if (data.error) {
 			resp = {
 				isError: true,
-				error: globalFuncs.getGethMsg(data.msg)
+				error: data.msg
 			};
 		} else {
 			resp = {

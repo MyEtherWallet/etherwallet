@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit aeefb6da17e37b703051085f3aa87f3
+// Last sync with en.js: commit 3ee6e18a0a72587c010a99e5ae015e766f48859e
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -81,6 +81,7 @@ it.data = {
   ADD_Radio_2:            'Seleziona il file del tuo portafoglio (Keystore / JSON)',
   ADD_Radio_2_alt:        'Seleziona il file del tuo portafoglio: ',
   ADD_Radio_2_short:      'SELEZIONA FILE PORTAFOGLIO...',
+  ADD_Radio_2_success:    'File selezionato: ',
   ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata ',
   ADD_Radio_4:            'Aggiungi un conto da osservare',
   ADD_Label_2:            'Crea un nome:',
@@ -258,18 +259,6 @@ it.data = {
   SUCCESS_3:            'Transazione inviata. TX ID: ',
   SUCCESS_4:            'Il portafoglio è stato aggiunto correttamente: ',
   SUCCESS_5:            'Hai votato con successo. Grazie per essere un partecipante attivo in The DAO.',
-  SUCCESS_6:            'File selezionato: ',
-
-  /* Geth Error Messages */
-  GETH_InvalidSender:      'Mittente non valido',
-  GETH_Nonce:              'Nonce troppo basso',
-  GETH_Cheap:              'Prezzo del gas troppo basso per essere accettato',
-  GETH_Balance:            'Saldo insufficiente',
-  GETH_NonExistentAccount: 'Il conto non esiste o il saldo è insufficiente',
-  GETH_InsufficientFunds:  'Fondi insufficienti per gas * prezzo + valore',
-  GETH_IntrinsicGas:       'Gas intrinseco troppo basso',
-  GETH_GasLimit:           'Eccede il limite gas per il blocco',
-  GETH_NegativeValue:      'Valore negativo',
 
   /* Tranlsation Info */
   translate_version:    '0.3',
@@ -393,7 +382,7 @@ it.data = {
   HELP_6_Title:         '6) Come faccio a separare i miei ETH / ETC? ',
   HELP_6_Desc_1:        'Come conseguenza della *hard fork*, a qualunque quantità di ETH precedentemente presente nel tuo portafoglio corrisponde ora una uguale quantità di ETC. Se invii degli ETH tramite una transazione standard, verranno anche inviati degli ETC. Per evitarlo, devi "separare" il tuo portafoglio originale in due portafogli. Dopodiché, ti devi assicurare che solamente gli ETH finiscano nel tuo portafoglio ETH e solamente gli ETC finiscano nel tuo portafoglio ETC.',
   HELP_6_Desc_2:        'Puoi anche inviare tutti i tuoi ETH & ETC utilizzando una transazione standard a Kraken o Poloniex. Queste piattaforme di scambio separeranno automaticamente i tuoi ETH ed ETC. Potrai quindi spostare questi fondi in nuovi portafogli, o vendere i tuoi ETC o ETH.',
-  HELP_6_Desc_3:        '[Qui puoi trovare ulteriori informazioni su portafogli e *replay attack*](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
+  HELP_6_Desc_3:        '[Qui puoi trovare ulteriori informazioni su portafogli e *reply attack*](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
   HELP_6_Desc_4:        'Genera un nuovo portafoglio ETH *post-fork* pulito per te (che sarà la destinazione finale degli ETH e nient\'altro).',
   HELP_6_Desc_5:        'Genera un nuovo portafoglio ETC *post-fork* pulito per te (che sarà la destinazione finale degli ETC e nient\'altro).',
   HELP_6_Desc_6:        'Fai un backup di questi nuovi portafogli e verifica di poterci accedere. Vedi domande n. 2a e n. 3 qui sopra.',

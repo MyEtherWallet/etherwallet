@@ -30,8 +30,6 @@ var ajaxReq = require('./ajaxReq');
 window.ajaxReq = ajaxReq;
 var ethFuncs = require('./ethFuncs');
 window.ethFuncs = ethFuncs;
-var Validator = require('./validator');
-window.Validator = Validator;
 var translate = require('./translations/translate.js');
 if (IS_CX) {
 	var cxFuncs = require('./cxFuncs');

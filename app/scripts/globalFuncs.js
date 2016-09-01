@@ -54,28 +54,7 @@ globalFuncs.successMsgs = [
 	"Wallet successfully decrypted",
 	"Transaction submitted. TX ID: ",
 	"Your wallet was successfully added: ",
-	"You have successfully voted. Thank you for being an active participant in The DAO.",
-	"File Selected: "];
-globalFuncs.gethErrors = {
-        "Invalid sender": "GETH_InvalidSender",
-        "Nonce too low": "GETH_Nonce",
-        "Gas price too low for acceptance": "GETH_Cheap",
-        "Insufficient balance": "GETH_Balance",
-        "Account does not exist or account balance too low": "GETH_NonExistentAccount",
-        "Insufficient funds for gas * price + value": "GETH_InsufficientFunds",
-        "Intrinsic gas too low": "GETH_IntrinsicGas",
-        "Exceeds block gas limit": "GETH_GasLimit",
-        "Negative value": "GETH_NegativeValue"};
-globalFuncs.gethErrorMsgs = {};
-globalFuncs.getGethMsg = function(str) {
-	if (str in this.gethErrors) {
-		var key = this.gethErrors[str];
-		if (key in this.gethErrorMsgs) {
-			return this.gethErrorMsgs[key];
-		}
-	}
-	return str;
-}
+	"You have successfully voted. Thank you for being an active participant in The DAO."];
 globalFuncs.scrypt = {
 	n: 1024
 };
