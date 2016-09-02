@@ -139,8 +139,12 @@
 
       <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
 
-      <div class="form-group col-xs-12">
-        <p class="small" translate="TRANS_sendInfo"> A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee. </p>
+      <div class="form-group col-xs-12 small">
+        <!--<p translate="TRANS_sendInfo">-->
+        <p> We use a gas price of 0.000000021 ETH to ensure your TX gets mined quickly. Multiply 000000021 by the gas of your TX and you get the cost of the TX in ETH/ETC. We do not take a transaction fee. </p>
+        <p> Standard TX: 21000 gas <br />
+            TX to Wallet Contract: 23300 gas <br />
+            Only ETH / ETC TX: 60000 gas </p>
       </div>
       <!-- / Content -->
 
