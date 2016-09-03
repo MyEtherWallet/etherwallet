@@ -80,7 +80,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		var genFunc = $scope.tx.sendMode == 2 ? 'generateClassicTx' : 'generateTx';
 		if ($scope.tx.sendMode != 0) {
 			txData.to = $scope.replayContract;
-			txData.gasLimit = 300000;
+			txData.gasLimit = 60000;
 			if ($scope.tx.sendMode == 1) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);
 			else if ($scope.tx.sendMode == 2) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
 		}

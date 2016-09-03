@@ -54,10 +54,11 @@
             <li><a ng-class="{true:'active'}[curLang=='English']" ng-click="changeLanguage('en','English')">English</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='Español']" ng-click="changeLanguage('es','Español')">Español</a></li>-->
         <!--<li><a ng-class="{true:'active'}[curLang=='Eesti']" ng-click="changeLanguage('et','Eesti')">Eesti</a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='Suomi']" ng-click="changeLanguage('fi','Suomi')">Suomi</a></li>
             <li><a ng-class="{true:'active'}[curLang=='Français']" ng-click="changeLanguage('fr','Français')">Français</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='עברית']" ng-click="changeLanguage('he','עברית')">עברית</a></li>-->
         <!--<li><a ng-class="{true:'active'}[curLang=='हिन्दी']" ng-click="changeLanguage('hi','हिन्दी')">हिन्दी</a></li>-->
-        <!--<li><a ng-class="{true:'active'}[curLang=='Magyar']" ng-click="changeLanguage('hu','Magyar')">Magyar</a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='Magyar']" ng-click="changeLanguage('hu','Magyar')">Magyar</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='Indonesian']" ng-click="changeLanguage('id','Indonesian')">Indonesian</a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Italiano']" ng-click="changeLanguage('it','Italiano')">Italiano</a></li>
             <li><a ng-class="{true:'active'}[curLang=='日本語']" ng-click="changeLanguage('ja','日本語')">日本語</a></li>
@@ -504,8 +505,12 @@
 
       <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
 
-      <div class="form-group col-xs-12">
-        <p class="small" translate="TRANS_sendInfo"> A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee. </p>
+      <div class="form-group col-xs-12 small">
+        <!--<p translate="TRANS_sendInfo">-->
+        <p> We use a gas price of 0.000000021 ETH to ensure your TX gets mined quickly. Multiply 0.000000021 by the gas of your TX to obtain the cost of the TX in ether. We do not take a transaction fee. </p>
+        <p> Standard TX: 21000 gas (0.000441 ether) <br />
+            TX to Wallet Contract: 23300 gas (0.0004893 ether) <br />
+            Only ETH / ETC TX: 60000 gas (0.00126 ether) </p>
       </div>
       <!-- / Content -->
 
@@ -991,10 +996,9 @@
     <!-- Content -->
     <div class="col-sm-8">
 
-      <!-- TODO: Make this work -->
-      <div class="btn-group">
-        <a class="btn btn-primary" ng-class="curTab=='withdrawETC' ? 'active' : ''" ng-click="curTab='withdrawETC'"> <span translate="DAO_TitleETC"> Withdraw DAO for ETC </span></a>
-        <a class="btn btn-primary" ng-class="curTab=='withdraw' ? 'active' : ''" ng-click="curTab='withdraw'"> <span translate="DAO_TitleETH"> Withdraw DAO for ETH </span></a>
+      <div>
+        <a class="btn btn-default" ng-class="curTab=='withdrawETC' ? 'btn-primary' : ''" ng-click="curTab='withdrawETC'"> <span translate="DAO_TitleETC"> Withdraw DAO for ETC </span></a>
+        <a class="btn btn-default" ng-class="curTab=='withdraw' ? 'btn-primary' : ''" ng-click="curTab='withdraw'"> <span translate="DAO_TitleETH"> Withdraw DAO for ETH </span></a>
       </div>
 
       <!-- Withdraw DAO For ETC -->
@@ -1030,7 +1034,7 @@
 
           <br /><br />
 
-          <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
+          <p> You need a small amount ETC in your account to cover the cost of gas. If you do not have any ETC, <a href="mailto:myetherwallet@gmail.com"> email us </a> the address(es) you are trying to withdraw from & we will send you 0.001 ETC to cover the cost of gas. </p>
 
       </section>
       <!-- / Withdraw DAO For ETC -->
