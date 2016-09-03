@@ -80,7 +80,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
         var userInfo = ethFuncs.getDataObj($scope.daoWithdrawContract, $scope.numETChex, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
 		ajaxReq.getClassicEthCall(userInfo, function(data) {
 			if (!data.error) {
-				$scope.token.DCbalanceEth = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
+				$scope.token.DCbalanceEth = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 1000).toString();
 			}
 		});
         ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function(data) {

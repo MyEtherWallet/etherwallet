@@ -64,10 +64,9 @@
     <!-- Content -->
     <div class="col-sm-8">
 
-      <!-- TODO: Make this work -->
-      <div class="btn-group">
-        <a class="btn btn-primary" ng-class="curTab=='withdrawETC' ? 'active' : ''" ng-click="curTab='withdrawETC'"> <span translate="DAO_TitleETC"> Withdraw DAO for ETC </span></a>
-        <a class="btn btn-primary" ng-class="curTab=='withdraw' ? 'active' : ''" ng-click="curTab='withdraw'"> <span translate="DAO_TitleETH"> Withdraw DAO for ETH </span></a>
+      <div>
+        <a class="btn btn-default" ng-class="curTab=='withdrawETC' ? 'btn-primary' : ''" ng-click="curTab='withdrawETC'"> <span translate="DAO_TitleETC"> Withdraw DAO for ETC </span></a>
+        <a class="btn btn-default" ng-class="curTab=='withdraw' ? 'btn-primary' : ''" ng-click="curTab='withdraw'"> <span translate="DAO_TitleETH"> Withdraw DAO for ETH </span></a>
       </div>
 
       <!-- Withdraw DAO For ETC -->
@@ -103,7 +102,7 @@
 
           <br /><br />
 
-          <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
+          <p> You need a small amount ETC in your account to cover the cost of gas. If you do not have any ETC, <a href="mailto:myetherwallet@gmail.com"> email us </a> the address(es) you are trying to withdraw from & we will send you 0.001 ETC to cover the cost of gas. </p>
 
       </section>
       <!-- / Withdraw DAO For ETC -->
