@@ -40,7 +40,7 @@ tr.data = {
   x_Cancel:             'Iptal et',
   x_Download:           'Indir',
   x_Json:               'JSON dosya (şifrelenmemis)',
-  x_JsonDesc:           'Bu özel anahtarinin sifresiz, JSON formatidir.Demekki parolasiz cüzdanini acabilirsin. Özel anahatarina sahip olan herkez sifresiz cüzdani aca bilir.',
+  x_JsonDesc:           'Bu özel anahtarinin sifresiz, JSON formatidir. Demekki parolasiz cüzdanini acabilirsin. Özel anahatarina sahip olan herkez sifresiz cüzdani aca bilir.',
   x_Keystore:           'Keystore/JSON dosya (Tavsiye edilen· şifrelenmiş · Mist/Geth formati)',
   x_Keystore2:          'Keystore/JSON dosya',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
@@ -58,7 +58,7 @@ tr.data = {
 
 /* Header */
   MEW_Warning_1:        'Cüzdani acmadan veya yeni bir cüzdan olusturmadan önce her zaman URL\'yi gözden geçirin. Phishing sitelerinden dikkat!',
-  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
+  CX_Warning_1:         'Burda kaydetdigin tüm cüzdanlari **yedeklediginden** emin ol. Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Acik kaynak JavaScript Client-Side Ether cüzdani',
   CX_Tagline:           'Acik kaynak JavaScript Client-Side Ether cüzdani Chrome Extension',
 
@@ -67,7 +67,7 @@ tr.data = {
   FOOTER_1b:            'tarafından yaratıldı',
   FOOTER_2:             'Bağışlar büyük takdirle kabuledilir:',
   FOOTER_3:             'Client-side cüzdan olusturma',
-  FOOTER_4:             'Verzicht',
+  FOOTER_4:             'Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Hesap bilgiler: ',
@@ -97,7 +97,7 @@ tr.data = {
   ADD_Label_2:            'Bir nickname oluştur: ',
   ADD_Label_3:            'Cüzdan şifrelidir. Parolayi yaz:  ',
   ADD_Label_4:            'Izlenecek hesap adresi ekle',
-  ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
+  ADD_Warning_1:          'Özel anahtar yazmadan cüzdan sekmesinde "izlemek" için herhangi bir hesap ekleyebilirsin. Bu demek ** degilki ** cüzdani acabilirsin, veya ondan Ether aktarabilirsin.',
   ADD_Label_5:            'Adresi ekle: ',
   ADD_Label_6:            'Cüzdani ac: ',
   ADD_Label_6_short:      'Ac',
@@ -153,7 +153,7 @@ tr.data = {
   TRANS_advanced:        '+Gelişmiş: Daha Gaz veya veri ekle',
   TRANS_data:            'Veri: ',
   TRANS_gas:             'Gas: ',
-  TRANS_sendInfo:        '21000 gaz kullanan standart bir islem 0,000441 ETH ile mal olur. Biz hizli bir sekilde mayinlanmasi için, 000000021 ETH\'dan biraz daha yüksek gaz fiyatini kullaniyoruz. Biz herhangi bir islem ücreti almiyoruz.',
+  TRANS_sendInfo:        '21000 gaz kullanan standart bir islem 0.000441 ETH ile mal olur. Biz hizli bir sekilde mayinlanmasi için, 0.000000021 ETH\'dan biraz daha yüksek gaz fiyatini kullaniyoruz. Biz herhangi bir islem ücreti almiyoruz.',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Yalnızca ETH" and "Yalnızca ETC" islemler',
