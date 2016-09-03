@@ -3,7 +3,7 @@ var http;
 var ajaxReq = function() {}
 ajaxReq.http = null;
 ajaxReq.postSerializer = null;
-ajaxReq.SERVERURL = "https://rpc.myetherwallet.com:8443/api.mew";
+ajaxReq.SERVERURL = "https://rpc.myetherwallet.com/api.mew";
 ajaxReq.COINMARKETCAPAPI = "https://coinmarketcap-nexuist.rhcloud.com/api/";
 ajaxReq.pendingPosts = [];
 ajaxReq.config = {
