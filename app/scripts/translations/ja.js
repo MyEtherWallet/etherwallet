@@ -5,15 +5,15 @@ ja.code = 'ja';
 ja.data = {
 
   /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
+  GETH_InvalidSender:      '無効な送出元',
+  GETH_Nonce:              'Nonce が足りません’,
+  GETH_Cheap:              'ガス価格不足です。',
+  GETH_Balance:            '残高不足です',
+  GETH_NonExistentAccount: 'アカウントがない、あるいは残高不足です',
+  GETH_InsufficientFunds:  'ガス * 価格 + 指定した値に残高が不足しています',
+  GETH_IntrinsicGas:       '基本のガス量不足です',
+  GETH_GasLimit:           'ガスリミットを越えています',
+  GETH_NegativeValue:      '負(マイナス)の値です',
 
   /* Navigation*/
   NAV_YourWallets:      'あなたのウォレット',
