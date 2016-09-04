@@ -15,6 +15,7 @@ app.post('/api.mew', function(req, res) {
 var handleRequest = function(req, res) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header('Content-Type', 'application/json');
+    referer = req.header('Referer');
 	req = req.body;
     if(req["isClassic"]===undefined || req["isClassic"]=="false") req["isClassic"] = false;
     if ("balance" in req) res.write(response.getBalance(req["balance"], req["isClassic"]));
