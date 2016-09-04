@@ -32,7 +32,7 @@ zh.data = {
   x_JsonDesc:           'This is the unencrypted, JSON format of your private key这是你的未加密JSON格式的私钥文件。 This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.这意味着你发送交易时不需要密码，也意味着拿到你的JSON文件的可以无需密码就可以控制你的钱包和以太币。',
   x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)Keystore/JSON文件（推荐此格式',
   x_Keystore2:          'Keystore/JSON File Keystore/JSON文件',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future.这个Keystore/JSON文件和Mist、Geth使用的钱包文件是一样的，所以将来你可以非常容易地导入。 It is the recommended file to download and back up.推荐下载和备份这个文件。',
   x_Password:           'Password密码',
   x_Print:              'Print Paper Wallet打印纸钱包',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!小技巧：点击打印，并保存为PDF格式，即使你没有打印机。',
@@ -145,11 +145,11 @@ zh.data = {
 
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Only ETH" and "Only ETC" Transactions“只发送ETH”和“只发送ETC”交易',
-  TRANSModal_Content_0:  'A note about the different transactions and different services:',
-  TRANSModal_Content_1:  '**ETH (Standard Transaction): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.',
-  TRANSModal_Content_2:  '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
-  TRANSModal_Content_3:  '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
-  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)',
+  TRANSModal_Content_0:  'A note about the different transactions and different services:注意不同的交易和不同的服务：',
+  TRANSModal_Content_1:  '**ETH (Standard Transaction): ETH（标准交易）** This generates a default transaction directly from one address to another. 这将生成一个默认交易，直接从一个地址发送到另一个地址。It has a default gas of 21000.它的默认gas是21000。 It is likely that any ETH sent via this method will be replayed onto the ETC chain.用这种方式发送ETH可能在ETC链上重放。',
+  TRANSModal_Content_2:  '**Only ETH: 只发送：ETH：** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.这是通过[Timon Rapp的重放保护合约（VB推荐）](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/)， 所以你只会在ETH链上发送交易。',
+  TRANSModal_Content_3:  '**Only ETC: 只发送：ETC：** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain.这是通过[Timon Rapp的重放保护合约（VB推荐）](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/)， 所以你只会在ETH链上发送交易。 ',
+  TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. 通过标准交易只发送ETH或者ETC。If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you.如果你通过“只发送ETH或者ETC”合约发送交易，你需要联系他们的客服，让他们手动增加你的余额或者返币给你。 [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)[你也可以尝试Shapeshift的”分割“工具。](https://split.shapeshift.io/)',
   TRANSModal_Content_5:  '**Kraken & Poloniex:** No known issues. Use whatever.向Kraken、Poloniex交易所提供的地址发送没有遇到问题。可以使用。',
   TRANSModal_Yes:        'Sweet, I get it now.我理解了。',
   TRANSModal_No:         'Oh gosh, Im more confused. Help me.我更加糊涂了，请帮助我。',
@@ -273,7 +273,7 @@ zh.data = {
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: 感谢中文译者：',
-  TranslatorName_1:     'Shaoping （少平）',
+  TranslatorName_1:     'Shaoping@ethfans.org （少平）',
   TranslatorAddr_1:     '',
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     ' ',
