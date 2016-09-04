@@ -45,13 +45,13 @@ zh.data = {
   x_Wallet:             'Wallet钱包',
 
   /* Header */
-  MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!',
-  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
-  MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
+  MEW_Warning_1:        'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!使用或者创建新钱包之前，一定要检查下网址是否正确。小心钓鱼网址！',
+  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here.确保你备份了保存在这里的所有钱包。 Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension.许多事情包括卸载和重装扩展，都将使你丢失Chrome扩展中的数据。 This extension is a way to easily access your wallets, **not** a way to back them up.这个扩展是一种使用钱包的简单方式，但不是备份钱包的方式。',
+  MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet开源JavaScript客户端以太币钱包',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension开源JavaScript客户端以太币钱包Chrome扩展',
 
   /* Footer */
-  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethereum Wallets & sending transactions.',
+  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethereum Wallets & sending transactions.一个开源的生成以太坊钱包和发送交易的JavaScript客户端工具',
   FOOTER_1b:            'Created by创建者',
   FOOTER_2:             'Donations greatly appreciated:欢迎捐赠我们：',
   FOOTER_3:             'Client-side wallet generation by',
@@ -150,26 +150,26 @@ zh.data = {
   TRANSModal_Content_2:  '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.',
   TRANSModal_Content_3:  '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. ',
   TRANSModal_Content_4:  '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)',
-  TRANSModal_Content_5:  '**Kraken & Poloniex:** No known issues. Use whatever.',
+  TRANSModal_Content_5:  '**Kraken & Poloniex:** No known issues. Use whatever.向Kraken、Poloniex交易所提供的地址发送没有遇到问题。可以使用。',
   TRANSModal_Yes:        'Sweet, I get it now.我理解了。',
   TRANSModal_No:         'Oh gosh, Im more confused. Help me.我更加糊涂了，请帮助我。',
 
   /* Offline Transaction */
   OFFLINE_Title:         'Generate & Send Offline Transaction生成、发送离线交易',
-  OFFLINE_Desc:          'Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This ensures your private keys do not touch an internet-connected device.',
-  OFFLLINE_Step1_Title:  'Step 1: Generate Information (Online Computer)',
+  OFFLINE_Desc:          'Generating offline transactions can be done in three steps.生成离线交易需要3个步骤。 You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. 步骤1和步骤3在连网的电脑上完成，步骤2在离线电脑上完成。This ensures your private keys do not touch an internet-connected device.这确保了你的私钥不会接触到联网设备。',
+  OFFLLINE_Step1_Title:  'Step 1: Generate Information (Online Computer)步骤1：生成信息（联网电脑）',
   OFFLINE_Step1_Button:  'Generate Information生成信息',
   OFFLINE_Step1_Label_1: 'From Address: 发自地址：',
-  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.',
-  OFFLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)',
+  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address.注意：这是发自地址，不是发往地址。 Nonce is generated from the originating account.Nonce是从起始账户生成的。 If using an airgapped computer, it would be the address of the cold-storage account.如果使用一台隔离电脑，它就是冷存储的账户地址。',
+  OFFLINE_Step2_Title:   'Step 2: Generate Transaction (Offline Computer)步骤2：生成交易（离线电脑）',
   OFFLINE_Step2_Label_1:  'To Address: 发往地址：',
   OFFLINE_Step2_Label_2:  'Value / Amount to Send发送数额',
   OFFLINE_Step2_Label_3:  'Gas Price Gas价格',
-  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.在你的连线电脑的第一步中显示了。',
+  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.在你的连网电脑的第1步骤中显示了。',
   OFFLINE_Step2_Label_4:  'Gas Limit Gas限制',
   OFFLINE_Step2_Label_4b: '21000 is the default gas limit. 21000是默认的gas限制。When you send contracts or add\'l data, this may need to be different.当你发送合约或者添加数据时，gas限制可能会不同。 Any unused gas will be returned to you.为使用的gas将返回给你。',
   OFFLINE_Step2_Label_5:  'Nonce Nonce',
-  OFFLINE_Step2_Label_5b: 'This was displayed in Step 1 on your online computer.在你的连线电脑的第一步中显示了。',
+  OFFLINE_Step2_Label_5b: 'This was displayed in Step 1 on your online computer.在你的连网电脑的第一步中显示了。',
   OFFLINE_Step2_Label_6:  'Data 数据',
   OFFLINE_Step2_Label_6b: 'This is optional. Data is often used when you send transactions to contracts.这是可选项。当你向合约发送交易时，往往需要用到数据。',
   OFFLINE_Step2_Label_7:  'Enter / Select your Private Key / JSON.输入/选择你的私钥文件/JSON',
@@ -182,15 +182,15 @@ zh.data = {
   DAO_TitleETH:           'Withdraw DAO For ETH销毁DAO代币，取回ETH',
   DAO_TitleETC:           'Withdraw DAO For ETC销毁DAO代币，取回ETC',
   DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?你想把ETC发送到哪个地址？',
-  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
-  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
-  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
-  DAOModal_Title:         'Just making sure...',
+  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you.白帽黑客为取回你的ETC不知疲倦地工作。 You can say "thank you" by donating a percentage of your withdrawal, if you choose to.你可以将一定比例的ETC捐赠给白帽黑客，以表感谢之意。 ',
+  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.使用这个标签销毁DAO代币，换回ETH和ETC。如果你想发送DAO，请使用发送代币标签。',
+  DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.是的。只需按红色按钮。非常简单。',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas.如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。 Add 0.001 ether to this account and try again. 向这个账户发送0.001以太币，再次尝试。',
+  DAOModal_Title:         'Just making sure...确保...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'You are about to withdraw',
-  DAOModal_2:             'DAO Tokens to',
-  DAOModal_3:             'for', // "in return for"
+  DAOModal_1:             'You are about to withdraw你将要销毁',
+  DAOModal_2:             'DAO Tokens toDAO代币',
+  DAOModal_3:             'for换回ETH，并发送到地址', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges.认领你的DigixDAO(DGD）代币和勋章。 In order to claim, you must have participated in the token sale on March 30th/31st, 2016.只有你参加了2016年3月30日和31日的代币预售，才可以认领DGD代币。  If you wish to send DGD, please use the Send Tokens Tab.如果你想发送DGD，请使用发送代币标签。',
@@ -224,12 +224,12 @@ zh.data = {
   MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.如果你想将来在MyEtherWallet插件中使用该钱包，你需要手动添加私钥/JSON文件和密码。',
 
   /* View Wallet Details */
-  VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
-  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+  VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. 这允许你下载不同格式的私钥和重新打印你的纸钱包。You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)为了将[你的账户导入到Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)，你可能需要这个操作。. If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).如果你想查看你的余额，我们推荐使用区块浏览器，例如[etherscan.io](http://etherscan.io/)。',
+  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. 这允许你下载不同格式的私钥和重新打印你的纸钱包。',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.成功！这是你的钱包细节！',
 
   /* Chrome Extension */
-  CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+  CX_error_1:           'You don\'t have any wallets saved.你没有已保存的钱包。 Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!点击["添加钱包"](/cx-wallet.html#add-wallet)，添加一个钱包。',
   CX_quicksend:         'QuickSend快速发送', // if no appropriate translation, just use "Send"
 
   /* Error Messages */
