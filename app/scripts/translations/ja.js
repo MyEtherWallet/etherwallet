@@ -5,7 +5,7 @@ ja.code = 'ja';
 ja.data = {
 
   /* Geth Error Messages */
-<<<<<<< HEAD
+
   GETH_InvalidSender:      '送出元が無効です',
   GETH_Nonce:              'Nonce が足りません',
   GETH_Cheap:              'ガス価格が低すぎます',
