@@ -93,22 +93,22 @@ zh.data = {
   ADD_Label_7:            'Add Account增加账户',
 
   /* Generate Wallets */
-  GEN_desc:               'If you want to generate multiple wallets, you can do so here: ',
-  GEN_Label_1:            'Enter a strong password (at least 9 characters)',
-  GEN_Placeholder_1:      'Do NOT forget to save this!',
-  GEN_SuccessMsg:         'Success! Your wallet has been generated.',
-  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
-  GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
-  GEN_Label_3:            'Save Your Address.',
-  GEN_Label_4:            'Print your paper wallet, or store a QR code verison. (optional)',
+  GEN_desc:               'If you want to generate multiple wallets, you can do so here: 如果你想生成多个钱包，你可以在这里进行：',
+  GEN_Label_1:            'Enter a strong password (at least 9 characters)输入一个强密码（至少9位）',
+  GEN_Placeholder_1:      'Do NOT forget to save this!不要忘记保存！',
+  GEN_SuccessMsg:         'Success! Your wallet has been generated.成功！你的钱包已经生成。',
+  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future.将来使用钱包时，你需要Keystore/JSON文件或者私钥。 Please save & back it up externally!请做好保存和备份。 There is no way to recover a wallet if you do not save it.如果你没有保存，没有办法恢复钱包。 Read the [help page](https://www.myetherwallet.com/#help) for instructions.请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。',
+  GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.保存你的Keystore/JSON或者私钥。不要忘记你的密码。',
+  GEN_Label_3:            'Save Your Address.保存你的地址。',
+  GEN_Label_4:            'Print your paper wallet, or store a QR code verison. (optional)打印你的纸钱包，或者存储二维码。（可选）',
 
   /* Bulk Generate Wallets */
   BULK_Label_1:           'Number of Wallets To Generate打算生成的钱包数量',
-  BULK_Label_2:           'Generate Wallets声场钱包',
+  BULK_Label_2:           'Generate Wallets生成钱包',
   BULK_SuccessMsg:        'Success! Your wallets have been generated.成功！你的钱包生成好了。',
 
   /* Sending Ether and Tokens */
-  SEND_addr:             'To Address: 添加地址：',
+  SEND_addr:             'To Address: 发送至地址：',
   SEND_amount:           'Amount to Send: 转账数额：',
   SEND_amount_short:     'Amount数额',
   SEND_custom:           'Custom',
@@ -120,12 +120,12 @@ zh.data = {
   SEND_trans:            'Send Transaction发送交易',
   SENDModal_Title:       'Warning! 警告！',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
-  SENDModal_Content_1:   'You are about to send',
-  SENDModal_Content_2:   'to address',
-  SENDModal_Content_3:   'Are you sure you want to do this?',
-  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ether to your account to cover the gas cost of sending tokens. Gas is paid in ether.',
-  SENDModal_No:          'No, get me out of here!',
-  SENDModal_Yes:         'Yes, I am sure! Make transaction.',
+  SENDModal_Content_1:   'You are about to send你将发送',
+  SENDModal_Content_2:   'to address 到地址',
+  SENDModal_Content_3:   'Are you sure you want to do this?你确定这样做吗？',
+  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ether to your account to cover the gas cost of sending tokens.注意：如果你遇到错误，你最有可能向你的账户添加以太币，用以支付发送代币所需的gas。 Gas is paid in ether.Gas用以太币支付。',
+  SENDModal_No:          'No, get me out of here!不，离开这里。',
+  SENDModal_Yes:         'Yes, I am sure! Make transaction.是的，我确定！发送交易。',
 
   /* Tokens */
   TOKEN_Addr:            'Address: 地址：',
@@ -133,15 +133,15 @@ zh.data = {
   TOKEN_Dec:             'Decimals: 小数点位数',
 
   /* Send Transaction */
-  TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
-  TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
-  TRANS_standard:        'ETH (Standard Transaction)',
+  TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.如果你想发送代币，请使用“发送代币”页面。',
+  TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract.如果你使用“只发送ETH”或则“只发送ETC”功能，那么你是通过合约发送交易。 Some services have issues accepting these transactions. Read more.一些服务（例如交易所充值）接收这些交易时会遇到问题。阅读更多内容。',
+  TRANS_standard:        'ETH (Standard Transaction)ETH（标准交易）',
   TRANS_eth:             'Only ETH只发送ETH',
   TRANS_etc:             'Only ETC只发送ETC',
   TRANS_advanced:        '+Advanced: Add More Gas or Data 高级功能：增加更多Gas或者数据',
   TRANS_data:            ' Data: 数据：',
   TRANS_gas:             ' Gas: Gas：',
-  TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
+  TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH.一笔标准交易需要21000gas，花费0.000441以太币。 We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. 我们将gas价格设为0.000000021以太币，略高于最低价格，以保证交易被快速打包。We do not take a transaction fee.我们不收取交易费用。',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Only ETH" and "Only ETC" Transactions“只发送ETH”和“只发送ETC”交易',
@@ -165,16 +165,16 @@ zh.data = {
   OFFLINE_Step2_Label_1:  'To Address: 发往地址：',
   OFFLINE_Step2_Label_2:  'Value / Amount to Send发送数额',
   OFFLINE_Step2_Label_3:  'Gas Price Gas价格',
-  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.',
-  OFFLINE_Step2_Label_4:  'Gas Limit Gas上限',
-  OFFLINE_Step2_Label_4b: '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you.',
-  OFFLINE_Step2_Label_5:  'Nonce',
-  OFFLINE_Step2_Label_5b: 'This was displayed in Step 1 on your online computer.',
-  OFFLINE_Step2_Label_6:  'Data',
-  OFFLINE_Step2_Label_6b: 'This is optional. Data is often used when you send transactions to contracts.',
-  OFFLINE_Step2_Label_7:  'Enter / Select your Private Key / JSON.',
-  OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)',
-  OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
+  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer.在你的连线电脑的第一步中显示了。',
+  OFFLINE_Step2_Label_4:  'Gas Limit Gas限制',
+  OFFLINE_Step2_Label_4b: '21000 is the default gas limit. 21000是默认的gas限制。When you send contracts or add\'l data, this may need to be different.当你发送合约或者添加数据时，gas限制可能会不同。 Any unused gas will be returned to you.为使用的gas将返回给你。',
+  OFFLINE_Step2_Label_5:  'Nonce Nonce',
+  OFFLINE_Step2_Label_5b: 'This was displayed in Step 1 on your online computer.在你的连线电脑的第一步中显示了。',
+  OFFLINE_Step2_Label_6:  'Data 数据',
+  OFFLINE_Step2_Label_6b: 'This is optional. Data is often used when you send transactions to contracts.这是可选项。当你向合约发送交易时，往往需要用到数据。',
+  OFFLINE_Step2_Label_7:  'Enter / Select your Private Key / JSON.输入/选择你的私钥文件/JSON',
+  OFFLINE_Step3_Title:    'Step 3: Send / Publish Transaction (Online Computer)步骤3：发送/公开交易（连线电脑）',
+  OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.将步骤2的签名交易粘贴到这里，点击“发送交易”按钮。',
 
   /* DAO */
   DAO_bal1:               'at block 1,919,999在第1919999个区块',
@@ -194,9 +194,9 @@ zh.data = {
 
   /* Digix */
   DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
-  DGD_Label_1:            'Estimated fee consumption:',
-  DGD_Label_2:            'Provided Maximum Fee:',
-  DGD_Label_3:            'Gas Price:',
+  DGD_Label_1:            'Estimated fee consumption:预计所需交易费用',
+  DGD_Label_2:            'Provided Maximum Fee:最多交易费用',
+  DGD_Label_3:            'Gas Price:Gas价格',
   DGD_Generate:           'Generate Claim',
   DGD_Content:            'You are about to claim your DGD Tokens.',
 
