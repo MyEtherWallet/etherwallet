@@ -6,7 +6,7 @@ ja.data = {
 
   /* Geth Error Messages */
   GETH_InvalidSender:      '送出元が無効です',
-  GETH_Nonce:              'Nonce が足りません’,
+  GETH_Nonce:              'Nonce が足りません',
   GETH_Cheap:              'ガス価格が低すぎます',
   GETH_Balance:            '残高不足',
   GETH_NonExistentAccount: 'アカウントが存在しない、あるいはその残高不足です',
