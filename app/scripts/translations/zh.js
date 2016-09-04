@@ -193,12 +193,12 @@ zh.data = {
   DAOModal_3:             'for', // "in return for"
 
   /* Digix */
-  DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
+  DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges.认领你的DigixDAO(DGD）代币和勋章。 In order to claim, you must have participated in the token sale on March 30th/31st, 2016.只有你参加了2016年3月30日和31日的代币预售，才可以认领DGD代币。  If you wish to send DGD, please use the Send Tokens Tab.如果你想发送DGD，请使用发送代币标签。',
   DGD_Label_1:            'Estimated fee consumption:预计所需交易费用',
   DGD_Label_2:            'Provided Maximum Fee:最多交易费用',
   DGD_Label_3:            'Gas Price:Gas价格',
-  DGD_Generate:           'Generate Claim',
-  DGD_Content:            'You are about to claim your DGD Tokens.',
+  DGD_Generate:           'Generate Claim生成认领',
+  DGD_Content:            'You are about to claim your DGD Tokens.你将认领你的DGD代币。',
 
   /* Deploy Contracts */
   DEP_generate:           'Generate Bytecode 生成字节码',
@@ -220,8 +220,8 @@ zh.data = {
   MYWAL_Edit_2:           'Edit Wallet: 编辑钱包：',
   MYWAL_Name:             'Wallet Name钱包名字',
   MYWAL_Content_1:        'Warning! You are about to remove your wallet: 警告！你将移除你的钱包：',
-  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
-  MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
+  MYWAL_Content_2:        'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.确保在移除以前你已经保存了私钥和Keystore文件，并记住了密码。',
+  MYWAL_Content_3:        'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.如果你想将来在MyEtherWallet插件中使用该钱包，你需要手动添加私钥/JSON文件和密码。',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle:      'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
