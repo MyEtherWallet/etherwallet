@@ -89,6 +89,11 @@ Response.getEstimatedGas = function(txObj, isClassic) {
 		data.data = Response.getResponseSync("eth_estimateGas", [txObj], isClassic);
 	});
 }
+Response.getErrorResponse = function(e) {
+    var data = this.getDefaultResponse();
+    data.error = true; data.msg = e;
+    return JSON.stringify(data);
+}
 Response.getDefaultResponse = function() {
 	return {
 		"error": false,
