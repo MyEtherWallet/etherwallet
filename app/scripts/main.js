@@ -1,7 +1,6 @@
 'use strict';
 var IS_CX = false;
 if (typeof chrome != 'undefined') IS_CX = chrome.windows === undefined ? false : true;
-require("babel-polyfill");
 var angular = require('angular');
 var angularTranslate = require('angular-translate');
 var angularTranslateErrorLog = require('angular-translate-handler-log');

@@ -15,6 +15,7 @@ var clean = require('gulp-clean');
 var uglify = require('gulp-uglify');
 var shell = require('gulp-shell');
 var fileinclude = require('gulp-file-include');
+var babel = require('gulp-babel');
 
 
 
@@ -76,7 +77,7 @@ gulp.task('staticJS', function () {
 gulp.task('minJS',['browserify'],function () {
   return gulp
     .src('./dist/js/etherwallet-master.js')
-      .pipe(concat('etherwallet-master-min.js'))
+      .pipe(babel({ presets: ['es2015'] }))
       .pipe(gulp.dest('./dist/js/'))
       .pipe(notify('MEW MinJS'));
 });
@@ -84,7 +85,7 @@ gulp.task('minJS',['browserify'],function () {
 gulp.task('cxMinJS',['cxBrowserify'],function () {
   return gulp
     .src('./chrome-extension/js/etherwallet-master.js')
-      .pipe(concat('etherwallet-master-min.js'))
+      .pipe(babel({ presets: ['es2015'] }))
       .pipe(gulp.dest('./chrome-extension/js/'))
       .pipe(notify('CX MinJS'));
 });
