@@ -1021,7 +1021,7 @@
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_2"> The 'White Hat Group' has been working tirelessly to get your ETC back to you. You can say 'thank you' by donating a percentage of your withdrawal, if you choose to. </label>
             <div class="input-group" style="max-width: 150px;">
-            <input type="number" class="form-control" placeholder="10" ng-model="daoC.donation" ng-class="Validator.isPositiveNumber(daoC.donation) ? 'is-valid' : 'is-invalid'"/>
+            <input type="number" min="0" class="form-control" placeholder="10" ng-model="daoC.donation" ng-class="Validator.isPositiveNumber(daoC.donation) ? 'is-valid' : 'is-invalid'"/>
             <span class="input-group-addon">%</span>
           </div>
 

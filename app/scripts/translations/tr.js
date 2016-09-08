@@ -15,7 +15,7 @@ tr.data = {
   GETH_GasLimit:           'Exceeds block gas limit',
   GETH_NegativeValue:      'Negative value',
 
-  NAV_DeployContract:   'Deploy Contract',
+  NAV_DeployContract:   'Sözleşme kur',
 
   /* Navigation*/
   NAV_YourWallets:      'Cüzdanin',
@@ -40,7 +40,7 @@ tr.data = {
   x_Cancel:             'Iptal et',
   x_Download:           'Indir',
   x_Json:               'JSON dosya (şifrelenmemis)',
-  x_JsonDesc:           'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
+  x_JsonDesc:           'Bu özel anahtarinin sifresiz, JSON formatidir. Demekki parolasiz cüzdanini acabilirsin. Özel anahatarina sahip olan herkez sifresiz cüzdani aca bilir.',
   x_Keystore:           'Keystore/JSON dosya (Tavsiye edilen· şifrelenmiş · Mist/Geth formati)',
   x_Keystore2:          'Keystore/JSON dosya',
   x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
@@ -58,7 +58,7 @@ tr.data = {
 
 /* Header */
   MEW_Warning_1:        'Cüzdani acmadan veya yeni bir cüzdan olusturmadan önce her zaman URL\'yi gözden geçirin. Phishing sitelerinden dikkat!',
-  CX_Warning_1:         'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
+  CX_Warning_1:         'Burda kaydetdigin tüm cüzdanlari **yedeklediginden** emin ol. Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up.',
   MEW_Tagline:          'Acik kaynak JavaScript Client-Side Ether cüzdani',
   CX_Tagline:           'Acik kaynak JavaScript Client-Side Ether cüzdani Chrome Extension',
 
@@ -67,7 +67,7 @@ tr.data = {
   FOOTER_1b:            'tarafından yaratıldı',
   FOOTER_2:             'Bağışlar büyük takdirle kabuledilir:',
   FOOTER_3:             'Client-side cüzdan olusturma',
-  FOOTER_4:             'Verzicht',
+  FOOTER_4:             'Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Hesap bilgiler: ',
@@ -97,7 +97,7 @@ tr.data = {
   ADD_Label_2:            'Bir nickname oluştur: ',
   ADD_Label_3:            'Cüzdan şifrelidir. Parolayi yaz:  ',
   ADD_Label_4:            'Izlenecek hesap adresi ekle',
-  ADD_Warning_1:          'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
+  ADD_Warning_1:          'Özel anahtar yazmadan cüzdan sekmesinde "izlemek" için herhangi bir hesap ekleyebilirsin. Bu demek ** degilki ** cüzdani acabilirsin, veya ondan Ether aktarabilirsin.',
   ADD_Label_5:            'Adresi ekle: ',
   ADD_Label_6:            'Cüzdani ac: ',
   ADD_Label_6_short:      'Ac',
@@ -108,7 +108,7 @@ tr.data = {
   GEN_Label_1:            'Güçlü bir şifre sec (en az 9 sembol)',
   GEN_Placeholder_1:      'Bunu kaydetmeyi unutma!',
   GEN_SuccessMsg:         'Başarı! Cüzdan oluşturuldu.',
-  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
+  GEN_Warning:            'Ilerde cüzdanini acmak icin **Keystore/JSON dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve  dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
   GEN_Label_2:            'Keystore/JSON dosyayi veya özel anahtranini kaydet. Yukarıdaki şifreni unutma.',
   GEN_Label_3:            'Adresini kaydet.',
   GEN_Label_4:            'Cüzdanin kağıt versiyonunu yazdir veya QR code versiyonunu sakla. (Isteye bagli)',
@@ -122,11 +122,11 @@ tr.data = {
   SEND_addr:             'Bu Adrese gönder: ',
   SEND_amount:           'Gönderilecek miktar: ',
   SEND_amount_short:     'Miktar',
-  SEND_custom:           'Kullanici özel', /*maybe another word here too */
+  SEND_custom:           'Kullaniciya özel', /*maybe another word here too */
   SEND_gas:              'Gas',
   SEND_TransferTotal:    'Tüm dengeyi gönder',
   SEND_generate:         'Generate Transaction',
-  SEND_raw:              'İşlem oluştur', /* add Binär */
+  SEND_raw:              'İşlem oluştur ikili sistem', /* add Binär */
   SEND_signed:           'Imzali İşlem',
   SEND_trans:            'Islemi gönder',
   SENDModal_Title:       'Uyarı! ',
@@ -135,7 +135,7 @@ tr.data = {
   SENDModal_Content_1:   'şu an ',
   SENDModal_Content_2:   'bu adresse',
   SENDModal_Content_3:   'Göndermek üzeresin. Emin misin?',
-  SENDModal_Content_4:   'NOTE: If you encounter an error, you most likely need to add ether to your account to cover the gas cost of sending tokens. Gas is paid in ether.',
+  SENDModal_Content_4:   'NOTA: Eger bir hata ile karsilasirsan, büyük olasilikla token göndermeye gereken gaz maliyetini karsilamak için hesabina eter eklemen gerekir. Gas ether olarak ödenir.',
   SENDModal_No:          'Hayir, cikar beni burdan!',
   SENDModal_Yes:         'Evet, Eminim! Islemi tamamla.',
 
@@ -153,7 +153,7 @@ tr.data = {
   TRANS_advanced:        '+Gelişmiş: Daha Gaz veya veri ekle',
   TRANS_data:            'Veri: ',
   TRANS_gas:             'Gas: ',
-  TRANS_sendInfo:        '21000 gaz kullanan standart bir islem 0,000441 ETH ile mal olur. Biz hizli bir sekilde mayinlanmasi için, 000000021 ETH\'dan biraz daha yüksek gaz fiyatini kullaniyoruz. Biz herhangi bir islem ücreti almiyoruz.',
+  TRANS_sendInfo:        '21000 gaz kullanan standart bir islem 0.000441 ETH ile mal olur. Biz hizli bir sekilde mayinlanmasi için, 0.000000021 ETH\'dan biraz daha yüksek gaz fiyatini kullaniyoruz. Biz herhangi bir islem ücreti almiyoruz.',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      '"Yalnızca ETH" and "Yalnızca ETC" islemler',
@@ -277,7 +277,7 @@ tr.data = {
   translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
   TranslatorName_1:     'ffidan61',
-  TranslatorAddr_1:     '',
+  TranslatorAddr_1:     '0xF1Fdf8635cc35a084B97905F62a021cAd71fbC21',
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     ' ',
   TranslatorAddr_2:     ' ',
