@@ -5,20 +5,21 @@ ja.code = 'ja';
 ja.data = {
 
   /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
+
+  GETH_InvalidSender:      '送出元が無効です',
+  GETH_Nonce:              'Nonce が足りません',
+  GETH_Cheap:              'ガス価格が低すぎます',
+  GETH_Balance:            '残高不足',
+  GETH_NonExistentAccount: 'アカウントが存在しない、あるいはその残高不足です',
+  GETH_InsufficientFunds:  'ガス*価格+数量に足りません',
+  GETH_IntrinsicGas:       '基本のガス不足です',
+  GETH_GasLimit:           'ブロックガスリミットを越えています',
+  GETH_NegativeValue:      '負の値です',
 
   /* Navigation*/
-  NAV_YourWallets:      'あなたのウォレット',
-  NAV_AddWallet:        'ウォレットを追加',
-  NAV_GenerateWallet:   'ウォレットを作成',
+  NAV_YourWallets:      '自分のウォレット',
+  NAV_AddWallet:        'ウォレット追加',
+  NAV_GenerateWallet:   'ウォレット作成',
   NAV_BulkGenerate:     'バルク作成',
   NAV_SendEther:        'Ether送出',
   NAV_SendTokens:       'トークン送出',
@@ -35,12 +36,12 @@ ja.data = {
 
   /* General */
   x_Address:            '自分のアドレス',
-  x_AddessDesc:         'これはあなたのアカウント番号とパブリックキーになります。ETHを送信するために必要な情報です。アイコンはあなたのアドレスを識別するものです。',
+  x_AddessDesc:         'これは自分のアカウント番号とパブリックキーになります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。',
   x_CSV:                'CSV ファイル (未暗号化)',
   x_Cancel:             '取り消す',
   x_Download:           'ダウンロード',
   x_Json:               'JSON ファイル (未暗号化)',
-  x_JsonDesc:           'これはパスワードが不要な暗号化されていないJSONフォーマットのプライベートキーです。この暗号化されていないJSONフォーマットのプライベートキーを使えば、誰でもパスワードを使わずにあなたのウォレットとEtherにアクセスできます。',
+  x_JsonDesc:           'これはパスワードが不要な暗号化されていないJSONフォーマットのプライベートキーです。この暗号化されていないJSONフォーマットのプライベートキーを使えば、誰でもパスワードを使わずに自分のウォレットとEtherにアクセスできます。',
   x_Keystore:           'Keystore/JSON ファイル (推奨 · 暗号化 · Mist/Geth フォーマット)',
   x_Keystore2:          'Keystore / JSON ファイル',
   x_KeystoreDesc:       'この Keystore / JSON ファイルは、後で容易にインポートするため、Mist & Gethで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
@@ -50,7 +51,7 @@ ja.data = {
   x_PrintShort:         '印刷',
   x_PrivKey:            'プライベートキー（未暗号化）',
   x_PrivKey2:           'プライベートキー',
-  x_PrivKeyDesc:        'これはパスワードが不要な暗号化されていないプライベートキーです。この暗号化されていないプライベートキーを使えば、誰でもパスワードなしであなたのウォレットにアクセスできます。従って、暗号化されたものの利用をおすすめします。',
+  x_PrivKeyDesc:        'これはパスワードが不要な暗号化されていないプライベートキーです。この暗号化されていないプライベートキーを使えば、誰でもパスワードなしで自分のウォレットにアクセスできます。従って、暗号化されたものの利用をおすすめします。',
   x_Save:               '保存する',
   x_TXT:                'TXT ファイル (未暗号化)',
   x_Wallet:             'ウォレット',
@@ -100,10 +101,10 @@ ja.data = {
   ADD_Label_5:            'アドレスを入力: ',
   ADD_Label_6:            'ウォレットをアンロック： ',
   ADD_Label_6_short:      'アンロック',
-  ADD_Label_7:            'アカウントを追加',
+  ADD_Label_7:            'アカウント追加',
 
   /* Generate Wallets */
-  GEN_desc:               '複数のウォレットの作成をこちらで行う事ができます：',
+  GEN_desc:               '複数のウォレットの作成をこのタブで行う事ができます：',
   GEN_Label_1:            '強固なパスワードを入力(９文字以上）',
   GEN_Placeholder_1:      '必ず保存してください！',
   GEN_SuccessMsg:         '成功！ウォレットが作成されました。',
@@ -272,7 +273,7 @@ ja.data = {
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'トランスレーターに感謝： ',
-  TranslatorName_1:     'sekisanchi',
+  TranslatorName_1:     '[sekisanchi](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE',
   /* Translator 1: Kazunori Seki / 関一典 */
   TranslatorName_2:     ' ',
