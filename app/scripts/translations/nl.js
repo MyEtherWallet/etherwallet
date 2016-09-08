@@ -4,17 +4,6 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
-
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -269,6 +258,17 @@ nl.data = {
   SUCCESS_4:            'Je Wallet is succesvol toegevoegd: ',
   SUCCESS_5:            'Je hebt succesvol gestemd. Fijn dat je een actief participerend DAO deelnemer bent.',
   SUCCESS_6:            'Bestand Geselecteerd: ',
+
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Ongeldige verzender',
+  GETH_Nonce:              'Nonce te laag',
+  GETH_Cheap:              'Gas prijs te laag voor acceptatie',
+  GETH_Balance:            'Ontoereikend saldo',
+  GETH_NonExistentAccount: 'Account bestaat  niet of account saldo te laag',
+  GETH_InsufficientFunds:  'Ontoereikend saldo voor gas * prijs + waarde',
+  GETH_IntrinsicGas:       'Intrinsiek gas te laag',
+  GETH_GasLimit:           'Overstijgt blok gas limiet',
+  GETH_NegativeValue:      'Negative waarde',
 
   /* Translation Info */
   translate_version:    '0.3',
