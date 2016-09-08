@@ -2989,7 +2989,7 @@ de.data = {
   TranslatorName_2:     '[mawalu](https://www.myetherwallet.com/?gaslimit=21000&to=0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3&value=1.0#send-transaction) ·',
   TranslatorAddr_2:     '0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3',
   /* Translator 2: Insert Comments Here */
-  TranslatorName_3:     'huhn_solo · (https://www.myetherwallet.com/?gaslimit=21000&to=0x1DAd1765381460db9A44846cDfA6f74c65A06B77&value=1.0#send-transaction) · ',
+  TranslatorName_3:     '[huhn_solo](https://www.myetherwallet.com/?gaslimit=21000&to=0x1DAd1765381460db9A44846cDfA6f74c65A06B77&value=1.0#send-transaction) · ',
   TranslatorAddr_3:     '0x1DAd1765381460db9A44846cDfA6f74c65A06B77',
   /* Translator 3: Insert Comments Here */
   TranslatorName_4:     '[FelixA](https://www.myetherwallet.com/?gaslimit=21000&to=0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D&value=1.0#send-transaction) · ',
