@@ -25,7 +25,7 @@ fi.data = {
   /* General */
   x_Address:            'Sinun osoitteesi',
   x_AddessDesc:         'Saatat tuntea tämän "Tilinumeronasi" tai "Julkisena Salausavaimenasi". Tämä on se jonka jaat ihmisille, jotta he voivat lähettää sinulle ETHiä. Tuo kuvake on helppo tapa tunnistaa sinun osoitteesi.',
-  x_Cancel:             'x_Peruuta',
+  x_Cancel:             'Peruuta',
   x_CSV:                'CSV tiedosto (salaamaton)',
   x_Download:           'Lataa',
   x_Json:               'JSON Tiedosto (salaamaton)',
@@ -40,7 +40,7 @@ fi.data = {
   x_PrivKey:            'Yksityinen salausavain (salaamaton)',
   x_PrivKey2:           'Yksityinen salausavain',
   x_PrivKeyDesc:        'Tämä on salaamaton versio sinun yksityisestä salausavaimestasi, tarkoittaen että salasanaa ei tarvita. Jos joku sattuisi löytämään sinun salaamattoman yksityisen salausavaimesi, he pääsisivät käsiksi sinun lompakkoosi ilman salasanaa. Tästä syystä salatut versiot ovat yleensä suositeltuja.',
-  x_Save:               'x_Tallenna',
+  x_Save:               'Tallenna',
   x_TXT:                'TXT tiedosto (salaamaton)',
   x_Wallet:             'Lompakko',
 
@@ -55,7 +55,7 @@ fi.data = {
   FOOTER_1b:            'Luonut',
   FOOTER_2:             'Lahjoituksia arvostetaan suuresti:',
   FOOTER_3:             'Lompakon luomisen tarjoaa',
-  FOOTER_4:               'Vastuuvapauslauseke',
+  FOOTER_4:               'Vastuuvapauslauseke / Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Tilin Tiedot: ',
