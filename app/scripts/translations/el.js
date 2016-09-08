@@ -281,10 +281,10 @@ el.data = {
   TranslatorName_1:     '[VitalikFanBoy#117](https://www.myetherwallet.com/?gaslimit=21000&to=0x245f27796a44d7e3d30654ed62850ff09ee85656&value=1.0#send-transaction) · ',
   TranslatorAddr_1:     '0x245f27796a44d7e3d30654ed62850ff09ee85656',
   /* Translator 1: Insert Comments Here */
-  TranslatorName_2:     'LefterisJP',
+  TranslatorName_2:     'LefterisJP  · ',
   TranslatorAddr_2:     '',
   /* Translator 2: Insert Comments Here */
-  TranslatorName_3:     'Nikos Vavoulas ',
+  TranslatorName_3:     '[Nikos Vavoulas](https://www.myetherwallet.com/?gaslimit=21000&to=0x062711C89Bd46E9765CfF0b743Cb83a9dBA2d2d2&value=1.0#send-transaction) · ',
   TranslatorAddr_3:     '0x062711C89Bd46E9765CfF0b743Cb83a9dBA2d2d2',
   /* Translator 3: Insert Comments Here */
   TranslatorName_4:     ' ',

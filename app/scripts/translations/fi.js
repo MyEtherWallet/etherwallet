@@ -277,7 +277,7 @@ fi.data = {
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Kiitos kääntäjillemme...',
-  TranlsatorName_1:     'Smokyish',
+  TranlsatorName_1:     '[Smokyish](https://www.myetherwallet.com/?gaslimit=21000&to=0xac9a2c1dd946da64c0dc8e70cec2cfb14304fd4f&value=1.0#send-transaction) · ',
   TranlsatorAddr_1:     '0xac9a2c1dd946da64c0dc8e70cec2cfb14304fd4f',
   /* Translator 1: Insert Comments Here */
   TranlsatorName_2:     ' ',

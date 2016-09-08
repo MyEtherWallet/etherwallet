@@ -276,7 +276,7 @@ tr.data = {
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
-  TranslatorName_1:     'ffidan61',
+  TranslatorName_1:     '[ffidan61](https://www.myetherwallet.com/?gaslimit=21000&to=0xF1Fdf8635cc35a084B97905F62a021cAd71fbC21&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0xF1Fdf8635cc35a084B97905F62a021cAd71fbC21',
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     ' ',

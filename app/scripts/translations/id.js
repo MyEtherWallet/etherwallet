@@ -273,7 +273,7 @@ id.data = {
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
-  TranslatorName_1:     '[Yos Ginting](https://www.myetherwallet.com/?gaslimit=21000&to=0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c&value=1.0#send-transaction) ·',
+  TranslatorName_1:     '[Yos Ginting](https://www.myetherwallet.com/?gaslimit=21000&to=0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c',
   /* Translator 1: Finished translating except for the HELP texts. Will continue to make improvements */
   TranslatorName_2:     ' ',

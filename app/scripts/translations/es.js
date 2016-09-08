@@ -274,7 +274,7 @@ es.data = {
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Gracias a nuestros traductores: ',
-  TranslatorName_1:     'Ignacio Fernández del Álamo',
+  TranslatorName_1:     'Ignacio Fernández del Álamo  · ',
   TranslatorAddr_1:     '',
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     'Carlos Lizarraga Rodrigo',

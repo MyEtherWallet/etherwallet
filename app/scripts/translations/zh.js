@@ -273,7 +273,7 @@ zh.data = {
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      '感谢中文译者：',
-  TranslatorName_1:     'Shaoping@ethfans.org （少平）',
+  TranslatorName_1:     '[ Shaoping@ethfans.org （少平）]((https://www.myetherwallet.com/?gaslimit=21000&to=0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740&value=1.0#send-transaction))',
   TranslatorAddr_1:     '0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740',
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     ' ',
