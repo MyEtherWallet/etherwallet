@@ -31,6 +31,28 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.wd = true;
 		$scope.setBalance();
 	});
+    $scope.$watch('[tx.to,tx.value,tx.data,tx.sendMode]', function () {
+        if($scope.Validator.isValidAddress($scope.tx.to)&&$scope.Validator.isPositiveNumber($scope.tx.value)&&$scope.Validator.isValidHex($scope.tx.data)){
+            if(!$scope.estimateTimer) clearTimeout($scope.estimateTimer);
+            $scope.estimateTimer = setTimeout(function(){
+                $scope.estimateGasLimit();
+            },500);
+        }
+    }, true);
+    $scope.estimateGasLimit = function(){
+        var estObj = {
+            to: $scope.tx.to,
+            from: $scope.wallet.getAddressString(),
+            value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit)))
+        }
+        if ($scope.tx.data!="") estObj.data = ethFuncs.sanitizeHex($scope.tx.data);
+        if ($scope.tx.sendMode == 1) estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64);
+        else if ($scope.tx.sendMode == 2) estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
+        if ($scope.tx.sendMode != 0) estObj.to = $scope.replayContract;
+        ethFuncs.estimateGas(estObj,$scope.tx.sendMode==2,function(data){
+            if(!data.error) $scope.tx.gasLimit = data.data; 
+        });
+    }
 	$scope.setBalance = function() {
 		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
 			if (data.error) {
@@ -80,7 +102,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		var genFunc = $scope.tx.sendMode == 2 ? 'generateClassicTx' : 'generateTx';
 		if ($scope.tx.sendMode != 0) {
 			txData.to = $scope.replayContract;
-			txData.gasLimit = 60000;
+			//txData.gasLimit = 60000;
 			if ($scope.tx.sendMode == 1) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);
 			else if ($scope.tx.sendMode == 2) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
 		}

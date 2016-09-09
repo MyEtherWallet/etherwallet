@@ -16,7 +16,7 @@ en.data = {
   DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
   NAV_ClaimDGD:         'Claim DGD',
   DGD_TitleLong:        'Claim Your DGD Tokens',
-  NAV_DeployContract:  'Deploy Contract',
+  NAV_DeployContract:   'Deploy Contract',
   NAV_MyWallets:        'My Wallets',
   NAV_ViewWallet:       'View Wallet Info',
   NAV_Help:             'Help',
@@ -55,7 +55,7 @@ en.data = {
   FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
-  FOOTER_4:               'Disclaimer',
+  FOOTER_4:             'Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Account Information: ',

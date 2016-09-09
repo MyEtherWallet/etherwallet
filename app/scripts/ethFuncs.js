@@ -37,18 +37,18 @@ ethFuncs.hexToDecimal = function(hex) {
 }
 ethFuncs.contractOutToArray = function(hex) {
 	hex = hex.replace('0x', '').match(/.{64}/g);
-    for(var i=0;i<hex.length;i++){
-        hex[i] = hex[i].replace(/^0+/, '');
-        hex[i] = hex[i] == "" ? "0" : hex[i]; 
-    }
-    return hex;
+	for (var i = 0; i < hex.length; i++) {
+		hex[i] = hex[i].replace(/^0+/, '');
+		hex[i] = hex[i] == "" ? "0" : hex[i];
+	}
+	return hex;
 }
 ethFuncs.getNakedAddress = function(address) {
 	return address.toLowerCase().replace('0x', '');
 }
-ethFuncs.getDeteministicContractAddress = function (address,nonce){
-    address = address.substring(0, 2) == '0x' ? address : '0x'+address;
-    return '0x'+ethUtil.sha3(ethUtil.rlp.encode([address,nonce])).slice(12).toString('hex');
+ethFuncs.getDeteministicContractAddress = function(address, nonce) {
+	address = address.substring(0, 2) == '0x' ? address : '0x' + address;
+	return '0x' + ethUtil.sha3(ethUtil.rlp.encode([address, nonce])).slice(12).toString('hex');
 }
 ethFuncs.padLeft = function(n, width, z) {
 	z = z || '0';
@@ -56,8 +56,47 @@ ethFuncs.padLeft = function(n, width, z) {
 	return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
 ethFuncs.getDataObj = function(to, func, arrVals) {
-	var val="";
-    for(var i=0;i<arrVals.length;i++) val+=this.padLeft(arrVals[i],64);
-    return {to: to, data: func+val};
+	var val = "";
+	for (var i = 0; i < arrVals.length; i++) val += this.padLeft(arrVals[i], 64);
+	return {
+		to: to,
+		data: func + val
+	};
+}
+ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
+	dataObj.gasPrice = '0x01';
+	ajaxReq.getTraceCall(dataObj, isClassic, function(data) {
+		if (data.error) {
+			callback(data);
+			return;
+		}
+		if (data.data.vmTrace == null || !data.data.vmTrace.ops.length) {
+			var balances = data.data.stateDiff[dataObj.from].balance['*'];
+			var gasLimit = new BigNumber(balances.from).sub(new BigNumber(balances.to)).sub(new BigNumber(dataObj.value));
+			gasLimit = gasLimit.lt(0) ? "-1" : gasLimit.toString();
+			callback({
+				"error": false,
+				"msg": "",
+				"data": gasLimit
+			});
+		} else {
+			var ops = data.data.vmTrace.ops;
+            var gasLimit = 50000000;
+            var smallest = gasLimit;
+			function recurSmallest(ops) {
+				for (var i = 0; i < ops.length; i++) {
+					if (!ops[i].sub && ops[i].ex.used < smallest && ops[i].ex.used > 100000) smallest = ops[i].ex.used;
+					else if (ops[i].sub) recurSmallest(ops[i].sub.ops);
+				}
+			}
+			recurSmallest(ops);
+            gasLimit-=smallest;
+			callback({
+				"error": false,
+				"msg": "",
+				"data": gasLimit.toString()
+			});
+		}
+	});
 }
 module.exports = ethFuncs;

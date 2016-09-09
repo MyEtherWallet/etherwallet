@@ -354,7 +354,6 @@ fr.data = {
   HELP_4_Desc_12:       'Une fenêtre pop-up apparaîtra. Vérifiez que le montant et que l\'adresse de destination sont corrects. Puis cliquez sur "Oui, j\'en suis sûr ! Effectuer la transaction.',
   HELP_4_Desc_13:       'La transaction sera soumise. Son identifiant sera affiché. Vous pouvez cliquer sur l\'identifiant pour la voir sur la blockchain.',
 
-
   HELP_4CX_Title:       '4) Comment puis-je envoyer de l\'Ether avec MyEtherWallet CX ?',
   HELP_4CX_Desc_1:      'D\'abord, vous devez ajouter un portefeuille. Ceci fait, deux possibilités s\'offrent à vous : la fonctionnalité "Envoi rapide" de l\'icône de l\'extension Chrome ou la page "Envoi d\'Ether".',
   HELP_4CX_Desc_2:      'Envoi rapide :',
@@ -406,7 +405,6 @@ fr.data = {
   HELP_6_Desc_13:       'Si tout est correctement reçu et envoyé, vous avez gagné.',
   HELP_6_Desc_14:       'Envoyez le reste du solde ETH par l\'option "ETH seulement" et répétez l\'opération pour le solde ETC par l\'option "ETC seulement".',
   HELP_6_Desc_15:       'Par la suite, vous pourrez utiliser les transactions standard pour ces portefeuilles sans risque d\'attaque par réexécution.',
-
 
   HELP_7_Title:         '7) Comment puis-je envoyer des tokens et ajouter des tokens spécifiques ?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) est un excellent moyen d\'explorer les tokens et de trouver les décimales d\'un token.',

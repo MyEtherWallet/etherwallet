@@ -25,7 +25,7 @@ var walletDecryptDrtv = function() {
         </div>\n \
         <div class="form-group" ng-if="requireFPass">\n \
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>\n \
-          <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="$parent.$parent.filePassword" ng-class="Validator.isPasswordLenValid($parent.$parent.filePassword,3) ? \'is-valid\' : \'is-invalid\'" ng-change="onFilePassChange()" />\n \
+          <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="$parent.$parent.filePassword" ng-class="Validator.isPasswordLenValid($parent.$parent.filePassword,0) ? \'is-valid\' : \'is-invalid\'" ng-change="onFilePassChange()" />\n \
         </div>\n \
       </div>\n \
       <!-- /if selected upload -->\n \
@@ -37,7 +37,7 @@ var walletDecryptDrtv = function() {
         </div>\n \
         <div class="form-group" ng-if="requirePPass">\n \
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>\n \
-          <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="$parent.$parent.privPassword" ng-class="Validator.isPasswordLenValid($parent.$parent.privPassword,6) ? \'is-valid\' : \'is-invalid\'" ng-change="onPrivKeyPassChange()">\n \
+          <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="$parent.$parent.privPassword" ng-class="Validator.isPasswordLenValid($parent.$parent.privPassword,0) ? \'is-valid\' : \'is-invalid\'" ng-change="onPrivKeyPassChange()">\n \
         </div>\n \
       </div>\n \
       <!-- /if selected type key-->\n \
