@@ -70,7 +70,7 @@ ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
 			callback(data);
 			return;
 		}
-		if (!data.data.vmTrace.ops.length) {
+		if (data.data.vmTrace == null || !data.data.vmTrace.ops.length) {
 			var balances = data.data.stateDiff[dataObj.from].balance['*'];
 			var gasLimit = new BigNumber(balances.from).sub(new BigNumber(balances.to)).sub(new BigNumber(dataObj.value));
 			gasLimit = gasLimit.lt(0) ? "-1" : gasLimit.toString();
