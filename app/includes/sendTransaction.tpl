@@ -100,12 +100,12 @@
         </div>
 
         <!-- Advanced Option Panel -->
-        <div ng-show="tx.sendMode==0">
+        <div>
           <a ng-click="toggleShowAdvance()">
             <p class="strong" translate="TRANS_advanced"> + Advanced: Add More Gas or Data </p>
           </a>
           <section ng-show="showAdvance">
-            <div class="form-group">
+            <div class="form-group"  ng-show="tx.sendMode==0">
               <label translate="TRANS_data"> Data: </label>
               <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
             </div>

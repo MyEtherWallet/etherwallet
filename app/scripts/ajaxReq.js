@@ -83,6 +83,12 @@ ajaxReq.getClassicEthCall = function(txobj, callback) {
         isClassic: true
 	}, callback);
 }
+ajaxReq.getTraceCall = function(txobj, isClassic, callback) {
+	this.post({
+		traceCall: txobj,
+        isClassic: isClassic
+	}, callback);
+}
 ajaxReq.queuePost = function() {
 	var data = this.pendingPosts[0].data;
 	var callback = this.pendingPosts[0].callback;
