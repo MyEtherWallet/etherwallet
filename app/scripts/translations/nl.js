@@ -304,7 +304,7 @@ nl.data = {
   HELP_0_Desc_4:       'Verrifieer dat je toegang hebt tot dit nieuwe wallet en dat je alle noodzakelijke informatie correct hebt opgeslagen.',
   HELP_0_Desc_5:       'Verzend Ether naar dit nieuwe wallet.',
 
-  HELP_1_Title:        '1) Hoe creer ik een nieuw wallet ',
+  HELP_1_Title:        '1) Hoe creer ik een nieuw wallet?',
   HELP_1_Desc_1:       'Ga naar de "Genereer Wallet" pagina.',
   HELP_1_Desc_2:       'Ga naar de "Wallet Toevoegen" pagina & selecteer "Genereer Nieuw Wallet"',
   HELP_1_Desc_3:       'Voer een sterk wachtwoord in. Als je denkt dat je het misschien gaat vergeten, bewaar het dan op een veilige plek. Je zult dit wachtwoord nodig hebben om transacties te versturen.',
