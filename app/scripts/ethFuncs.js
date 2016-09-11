@@ -70,33 +70,18 @@ ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
 			callback(data);
 			return;
 		}
-		if (data.data.vmTrace == null || !data.data.vmTrace.ops.length) {
-			var balances = data.data.stateDiff[dataObj.from].balance['*'];
-			var gasLimit = new BigNumber(balances.from).sub(new BigNumber(balances.to)).sub(new BigNumber(dataObj.value));
-			gasLimit = gasLimit.lt(0) ? "-1" : gasLimit.toString();
-			callback({
-				"error": false,
-				"msg": "",
-				"data": gasLimit
-			});
-		} else {
-			var ops = data.data.vmTrace.ops;
-            var gasLimit = 50000000;
-            var smallest = gasLimit;
-			function recurSmallest(ops) {
-				for (var i = 0; i < ops.length; i++) {
-					if (!ops[i].sub && ops[i].ex.used < smallest && ops[i].ex.used > 100000) smallest = ops[i].ex.used;
-					else if (ops[i].sub) recurSmallest(ops[i].sub.ops);
-				}
-			}
-			recurSmallest(ops);
-            gasLimit-=smallest;
-			callback({
-				"error": false,
-				"msg": "",
-				"data": gasLimit.toString()
-			});
+        var calls = data.data.trace;
+		var gasAssigned = new BigNumber(0);
+		var maxGas = new BigNumber(50000000);
+		for (var i = 0; i < calls.length; i++) {
+			var gas = new BigNumber(calls[i].action.call.gas).sub(new BigNumber(calls[i].result.call.gasUsed));
+			if (maxGas.sub(gas).gt(gasAssigned) && gas.gt(100000)) gasAssigned = maxGas.sub(gas);
 		}
+		callback({
+			"error": false,
+			"msg": "",
+			"data": gasAssigned.toString()
+		});
 	});
 }
 module.exports = ethFuncs;
