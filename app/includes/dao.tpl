@@ -66,12 +66,15 @@
 
       <div>
         <a class="btn btn-default" ng-class="curTab=='withdrawETC' ? 'btn-primary' : ''" ng-click="curTab='withdrawETC'"> <span translate="DAO_TitleETC"> Withdraw DAO for ETC </span></a>
+
         <a class="btn btn-default" ng-class="curTab=='withdraw' ? 'btn-primary' : ''" ng-click="curTab='withdraw'"> <span translate="DAO_TitleETH"> Withdraw DAO for ETH </span></a>
+
+        <a class="btn btn-default" ng-class="curTab=='withdrawEB' ? 'btn-primary' : ''" ng-click="curTab='withdrawEB'"> <span> Withdraw Extrabalance </span></a>
       </div>
 
       <!-- Withdraw DAO For ETC -->
       <section class="daoGetTokens row" ng-show="curTab=='withdrawETC'">
-
+          <br />
           <h4 class="col-xs-12" translate="DAO_TitleETC"> Withdraw DAO for ETC </h4>
           <!-- Address for ETC to be Delivered -->
 
@@ -111,7 +114,9 @@
 
       <!-- Withdraw DAO For ETH -->
       <section class="daoGetTokens clearfix" ng-show="curTab=='withdraw'">
+        <br />
         <h4 translate="DAO_TitleETH"> Withdraw DAO for ETH </h4>
+        <br /><br />
         <div class=" text-center">
           <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#withdrawTransaction" translate="DAO_TitleETH">
             Withdraw DAO for ETH
@@ -123,6 +128,28 @@
         <br /><br /><br />
         <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
       </section>
+      <!-- / Withdraw DAO For ETH -->
+
+
+
+     <!-- Extrabalance for ETH -->
+      <section class="daoGetTokens clearfix" ng-show="curTab=='withdrawEB'">
+        <br />
+        <h4> Withdraw Extrabalance </h4>
+        <p> <a href="https://medium.com/curator-multisig-phf-official-channel/extrabalance-withdraw-contract-to-be-funded-on-september-15th-a800b4d746f0#.1qi06xq1c" target="_blank"> Learn More </a> and <a href="https://etherscan.io/address/0x5c40ef6f527f4fba68368774e6130ce6515123f2#readContract" target="_blank"> Check your balance here. </a></p>
+        <br /><br />
+        <div class=" text-center">
+          <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#withdrawTransaction">
+            Withdraw Your ExtraBalance DAO
+          </a>
+          <p><small translate="DAO_Inst"> Yes. Just push the big red button. It's that easy. </small></p>
+          <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+          <div class="form-group col-xs-12" ng-bind-html="withdrawTxStatus"></div>
+        </div>
+        <br /><br /><br />
+        <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
+      </section>
+      <!-- / Extrabalance for ETH -->
 
 
     </div>

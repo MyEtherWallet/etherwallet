@@ -138,7 +138,7 @@ hu.data = {
   TRANS_standard:        'ETH (Standard Tranzakció)',
   TRANS_eth:             'Csak ETH',
   TRANS_etc:             'Csak ETC',
-  TRANS_advanced:        '+Haladó: Több Gas vagy Adat ',
+  TRANS_advanced:        '+Haladó: Több Adat ',
   TRANS_data:            ' Adat: ',
   TRANS_gas:             ' Gas: ',
   TRANS_sendInfo:        'Egy standard tranzakció 21000 gas-t használ, ami 0.000441 ETH-be fog kerülni. Mi 0.000000021 ETH-nél enyhén-minimálisnáll-magasabb gas árat használunk, annak biztosítása érdekében, hogy gyorsan ki legyen bányászva. Tranazkciós költséget nem számolunk fel.',

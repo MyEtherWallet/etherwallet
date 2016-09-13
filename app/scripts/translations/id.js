@@ -137,7 +137,7 @@ id.data = {
   TRANS_standard:        'ETH (Transaksi Standar)',
   TRANS_eth:             'Hanya ETH',
   TRANS_etc:             'Hanya ETC',
-  TRANS_advanced:        '+Advanced: Tambah Gas atau Data ',
+  TRANS_advanced:        '+Advanced: Tambah Data ',
   TRANS_data:            ' Data: ',
   TRANS_gas:             ' Gas: ',
   TRANS_sendInfo:        'Transaksi standar menggunakan 21000 gas membutuhkan 0.000441 ETH. Kami memakai harga gas sedikit-diatas-harga-gas-minimum senilai 0.000000021 ETH untuk mempercepat. Kami tidak mengambil biaya atas transaksi.',

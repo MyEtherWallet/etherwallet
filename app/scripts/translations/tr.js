@@ -150,7 +150,7 @@ tr.data = {
   TRANS_standard:        'ETH (Standart işlem)',
   TRANS_eth:             'Yalnızca ETH',
   TRANS_etc:             'Yalnızca ETC',
-  TRANS_advanced:        '+Gelişmiş: Daha Gaz veya veri ekle',
+  TRANS_advanced:        '+Gelişmiş: Veri ekle',
   TRANS_data:            'Veri: ',
   TRANS_gas:             'Gas: ',
   TRANS_sendInfo:        '21000 gaz kullanan standart bir islem 0.000441 ETH ile mal olur. Biz hizli bir sekilde mayinlanmasi için, 0.000000021 ETH\'dan biraz daha yüksek gaz fiyatini kullaniyoruz. Biz herhangi bir islem ücreti almiyoruz.',

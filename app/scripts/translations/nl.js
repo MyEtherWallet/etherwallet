@@ -148,7 +148,7 @@ nl.data = {
   TRANS_standard:        'ETH (Standaard Transactie)',
   TRANS_eth:             'Enkel ETH',
   TRANS_etc:             'Enkel ETC',
-  TRANS_advanced:        '+Geavanceerd: Voeg meer Gas of Data toe ',
+  TRANS_advanced:        '+Geavanceerd: Voeg Data toe ',
   TRANS_data:            ' Data: ',
   TRANS_gas:             ' Gas: ',
   TRANS_sendInfo:        'Een standaard transactie met 21000 gas zal 0.000441 ETH kosten. Wij gebruiken een iets-boven-minimum gas prijs van 0.000000021 ETH om te garranderen dat de transactie snel uitgevoerd zal worden. Wij zijn niet verantwoordelijk voor je transactie kosten.',
