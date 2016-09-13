@@ -452,7 +452,7 @@
 
       <div class="form-group col-xs-12">
         <label translate="SEND_amount">Amount to Send:</label>
-        <a class="pull-right" ng-click="transferAllBalance()" ng-show="tx.sendMode==0" translate="SEND_TransferTotal">Send Entire Balance</a>
+        <a class="pull-right" ng-click="transferAllBalance()" translate="SEND_TransferTotal">Send Entire Balance</a>
         <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
         <div class="radio">
           <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>
@@ -464,20 +464,20 @@
           <label><input type="radio" name="currencyRadio" value="2" ng-model="tx.sendMode"/>
             <span translate="TRANS_etc">Only ETC </span></label>
         </div>
+        <div class="form-group">
+          <label translate="TRANS_gas"> Gas: </label>
+          <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+        </div>
 
         <!-- Advanced Option Panel -->
-        <div>
+        <div  ng-show="tx.sendMode==0">
           <a ng-click="toggleShowAdvance()">
-            <p class="strong" translate="TRANS_advanced"> + Advanced: Add More Gas or Data </p>
+            <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
           </a>
           <section ng-show="showAdvance">
-            <div class="form-group"  ng-show="tx.sendMode==0">
+            <div class="form-group">
               <label translate="TRANS_data"> Data: </label>
               <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
-            </div>
-            <div class="form-group">
-              <label translate="TRANS_gas"> Gas: </label>
-              <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
             </div>
           </section>
         </div>
@@ -998,12 +998,15 @@
 
       <div>
         <a class="btn btn-default" ng-class="curTab=='withdrawETC' ? 'btn-primary' : ''" ng-click="curTab='withdrawETC'"> <span translate="DAO_TitleETC"> Withdraw DAO for ETC </span></a>
+
         <a class="btn btn-default" ng-class="curTab=='withdraw' ? 'btn-primary' : ''" ng-click="curTab='withdraw'"> <span translate="DAO_TitleETH"> Withdraw DAO for ETH </span></a>
+
+        <a class="btn btn-default" ng-class="curTab=='withdrawEB' ? 'btn-primary' : ''" ng-click="curTab='withdrawEB'"> <span> Withdraw Extrabalance </span></a>
       </div>
 
       <!-- Withdraw DAO For ETC -->
       <section class="daoGetTokens row" ng-show="curTab=='withdrawETC'">
-
+          <br />
           <h4 class="col-xs-12" translate="DAO_TitleETC"> Withdraw DAO for ETC </h4>
           <!-- Address for ETC to be Delivered -->
 
@@ -1043,7 +1046,9 @@
 
       <!-- Withdraw DAO For ETH -->
       <section class="daoGetTokens clearfix" ng-show="curTab=='withdraw'">
+        <br />
         <h4 translate="DAO_TitleETH"> Withdraw DAO for ETH </h4>
+        <br /><br />
         <div class=" text-center">
           <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#withdrawTransaction" translate="DAO_TitleETH">
             Withdraw DAO for ETH
@@ -1055,6 +1060,28 @@
         <br /><br /><br />
         <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
       </section>
+      <!-- / Withdraw DAO For ETH -->
+
+
+
+     <!-- Extrabalance for ETH -->
+      <section class="daoGetTokens clearfix" ng-show="curTab=='withdrawEB'">
+        <br />
+        <h4> Withdraw Extrabalance </h4>
+        <p> <a href="https://medium.com/curator-multisig-phf-official-channel/extrabalance-withdraw-contract-to-be-funded-on-september-15th-a800b4d746f0#.1qi06xq1c" target="_blank"> Learn More </a> and <a href="https://etherscan.io/address/0x5c40ef6f527f4fba68368774e6130ce6515123f2#readContract" target="_blank"> Check your balance here. </a></p>
+        <br /><br />
+        <div class=" text-center">
+          <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#withdrawTransaction">
+            Withdraw Your ExtraBalance DAO
+          </a>
+          <p><small translate="DAO_Inst"> Yes. Just push the big red button. It's that easy. </small></p>
+          <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+          <div class="form-group col-xs-12" ng-bind-html="withdrawTxStatus"></div>
+        </div>
+        <br /><br /><br />
+        <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
+      </section>
+      <!-- / Extrabalance for ETH -->
 
 
     </div>
