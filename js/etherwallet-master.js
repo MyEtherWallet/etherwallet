@@ -1430,6 +1430,25 @@
         }
         $scope.tokenTx.id = 0;
       };
+      $scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function () {
+        if ($scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id] !== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to) && $scope.Validator.isPositiveNumber($scope.tokenTx.value)) {
+          if (!$scope.estimateTimer) clearTimeout($scope.estimateTimer);
+          $scope.estimateTimer = setTimeout(function () {
+            $scope.estimateGasLimit();
+          }, 500);
+        }
+      }, true);
+      $scope.estimateGasLimit = function () {
+        var estObj = {
+          to: $scope.tokenObjs[$scope.tokenTx.id].getContractAddress(),
+          from: $scope.wallet.getAddressString(),
+          value: '0x00',
+          data: $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data
+        };
+        ethFuncs.estimateGas(estObj, false, function (data) {
+          if (!data.error) $scope.tokenTx.gasLimit = data.data;
+        });
+      };
       $scope.setBalance = function () {
         ajaxReq.getBalance($scope.wallet.getAddressString(), false, function (data) {
           if (data.error) {
@@ -1955,6 +1974,10 @@
         var gasAssigned = new BigNumber(0);
         var maxGas = new BigNumber(50000000);
         for (var i = 0; i < calls.length; i++) {
+          if (calls[i].result.failedCall !== undefined) {
+            gasAssigned = new BigNumber(0);
+            break;
+          }
           var gas = new BigNumber(calls[i].action.call.gas).sub(new BigNumber(calls[i].result.call.gasUsed));
           if (maxGas.sub(gas).gt(gasAssigned) && gas.gt(100000)) gasAssigned = maxGas.sub(gas);
         }
