@@ -74,7 +74,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 		return digixObj;
 	}
 	$scope.generateTx = function(){
-	   uiFuncs.generateTx(uiFuncs.getTxData($scope), function(rawTx) {
+	   uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function(rawTx) {
 			if (!rawTx.isError) {
 				$scope.rawTx =rawTx.rawTx;
 				$scope.signedTx = rawTx.signedTx;

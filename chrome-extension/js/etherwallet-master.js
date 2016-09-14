@@ -564,7 +564,7 @@
         try {
           $scope.decryptWallet();
           var txData = uiFuncs.getTxData($scope);
-          uiFuncs.generateTx(txData, function (rawTx) {
+          uiFuncs.generateTx(txData, false, function (rawTx) {
             if (!rawTx.isError) {
               uiFuncs.sendTx(rawTx.signedTx, function (resp) {
                 if (!resp.isError) {
@@ -711,7 +711,7 @@
             $scope.tx.to = '0xCONTRACT';
             $scope.tx.contractAddr = ethFuncs.getDeteministicContractAddress($scope.wallet.getAddressString(), data.nonce);
             var txData = uiFuncs.getTxData($scope);
-            uiFuncs.generateTx(txData, function (rawTx) {
+            uiFuncs.generateTx(txData, false, function (rawTx) {
               if (!rawTx.isError) {
                 $scope.rawTx = rawTx.rawTx;
                 $scope.signedTx = rawTx.signedTx;
@@ -817,7 +817,7 @@
         return digixObj;
       };
       $scope.generateTx = function () {
-        uiFuncs.generateTx(uiFuncs.getTxData($scope), function (rawTx) {
+        uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function (rawTx) {
           if (!rawTx.isError) {
             $scope.rawTx = rawTx.rawTx;
             $scope.signedTx = rawTx.signedTx;
@@ -1069,13 +1069,11 @@
           return;
         }
         var txData = uiFuncs.getTxData($scope);
-        var genFunc = $scope.tx.sendMode == 2 ? 'generateClassicTx' : 'generateTx';
         if ($scope.tx.sendMode != 0) {
           txData.to = $scope.replayContract;
-          //txData.gasLimit = 60000;
           if ($scope.tx.sendMode == 1) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);else if ($scope.tx.sendMode == 2) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
         }
-        uiFuncs[genFunc](txData, function (rawTx) {
+        uiFuncs.generateTx(txData, $scope.tx.sendMode == 2, function (rawTx) {
           if (!rawTx.isError) {
             $scope.rawTx = rawTx.rawTx;
             $scope.signedTx = rawTx.signedTx;
@@ -1343,7 +1341,7 @@
         $scope.tx.to = tokenContract;
         $scope.tx.data = $scope.approveWithdraw + ethFuncs.padLeft(ethFuncs.getNakedAddress(withdrawContract), 64) + ethFuncs.padLeft(new BigNumber(balanceBN).toString(16), 64);
         $scope.tx.value = 0;
-        uiFuncs.generateTx(uiFuncs.getTxData($scope), function (rawTx) {
+        uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function (rawTx) {
           uiFuncs.sendTx(rawTx.signedTx, function (resp) {
             if (resp.isError) {
               $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
@@ -1353,7 +1351,7 @@
               setTimeout(function () {
                 $scope.tx.to = withdrawContract;
                 $scope.tx.data = $scope.daoWithdraw;
-                uiFuncs.generateTx(uiFuncs.getTxData($scope), function (rawTx) {
+                uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function (rawTx) {
                   uiFuncs.sendTx(rawTx.signedTx, function (resp) {
                     if (resp.isError) {
                       $scope.withdrawTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.error));
@@ -1378,7 +1376,7 @@
         $scope.tx.to = $scope.daoWithdrawContract;
         $scope.tx.data = $scope.withdrawDAOC + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.daoC.to), 64) + ethFuncs.padLeft(new BigNumber($scope.daoC.donation).toString(16), 64);
         $scope.tx.value = 0;
-        uiFuncs.generateClassicTx(uiFuncs.getTxData($scope), function (rawTx) {
+        uiFuncs.generateTx(uiFuncs.getTxData($scope), true, function (rawTx) {
           uiFuncs.sendClassicTx(rawTx.signedTx, function (resp) {
             if (resp.isError) {
               $scope.withdrawETCTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
@@ -1473,7 +1471,7 @@
           data: tokenData,
           from: $scope.wallet.getAddressString(),
           privKey: $scope.wallet.getPrivateKeyString()
-        }, function (rawTx) {
+        }, false, function (rawTx) {
           if (!rawTx.isError) {
             $scope.rawTx = rawTx.rawTx;
             $scope.signedTx = rawTx.signedTx;

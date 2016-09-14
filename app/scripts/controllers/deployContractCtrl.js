@@ -33,7 +33,7 @@ var deployContractCtrl = function($scope, $sce, walletService) {
                 $scope.tx.to = '0xCONTRACT';
 				$scope.tx.contractAddr = ethFuncs.getDeteministicContractAddress($scope.wallet.getAddressString(), data.nonce);
 				var txData = uiFuncs.getTxData($scope);
-				uiFuncs.generateTx(txData, function(rawTx) {
+				uiFuncs.generateTx(txData, false, function(rawTx) {
 					if (!rawTx.isError) {
 						$scope.rawTx = rawTx.rawTx;
 						$scope.signedTx = rawTx.signedTx;

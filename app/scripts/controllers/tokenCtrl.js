@@ -77,7 +77,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
 			data: tokenData,
 			from: $scope.wallet.getAddressString(),
 			privKey: $scope.wallet.getPrivateKeyString()
-		}, function(rawTx) {
+		}, false, function(rawTx) {
 			if (!rawTx.isError) {
 				$scope.rawTx = rawTx.rawTx;
 				$scope.signedTx = rawTx.signedTx;

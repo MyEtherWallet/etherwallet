@@ -68,7 +68,7 @@ var quickSendCtrl = function($scope, $sce) {
 		try {
 			$scope.decryptWallet();
 			var txData = uiFuncs.getTxData($scope);
-			uiFuncs.generateTx(txData, function(rawTx) {
+			uiFuncs.generateTx(txData, false, function(rawTx) {
 				if (!rawTx.isError) {
 					uiFuncs.sendTx(rawTx.signedTx, function(resp) {
 						if (!resp.isError) {

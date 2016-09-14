@@ -18,10 +18,10 @@ uiFuncs.isTxDataValid = function(txData) {
 	else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
 	if (txData.to == "0xCONTRACT") txData.to = '';
 }
-uiFuncs.generateClassicTx = function(txData, callback) {
+uiFuncs.generateTx = function(txData, isClassic, callback) {
 	try {
 		uiFuncs.isTxDataValid(txData);
-		ajaxReq.getTransactionData(txData.from, true, function(data) {
+		ajaxReq.getTransactionData(txData.from, isClassic, function(data) {
 			if (data.error) throw data.msg;
 			data = data.data;
 			var rawTx = {
@@ -62,34 +62,6 @@ uiFuncs.sendClassicTx = function(signedTx, callback) {
 		}
 		if (callback !== undefined) callback(resp);
 	});
-}
-uiFuncs.generateTx = function(txData, callback) {
-	try {
-		uiFuncs.isTxDataValid(txData);
-		ajaxReq.getTransactionData(txData.from, false, function(data) {
-			if (data.error) throw data.msg;
-			data = data.data;
-			var rawTx = {
-				nonce: ethFuncs.sanitizeHex(data.nonce),
-				gasPrice: ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
-				gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
-				to: ethFuncs.sanitizeHex(txData.to),
-				value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
-				data: ethFuncs.sanitizeHex(txData.data)
-			}
-			var eTx = new ethUtil.Tx(rawTx);
-			eTx.sign(new Buffer(txData.privKey, 'hex'));
-			rawTx.rawTx = JSON.stringify(rawTx);
-			rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
-			rawTx.isError = false;
-			if (callback !== undefined) callback(rawTx);
-		});
-	} catch (e) {
-		if (callback !== undefined) callback({
-			isError: true,
-			error: e
-		});
-	}
 }
 uiFuncs.sendTx = function(signedTx, callback) {
 	ajaxReq.sendRawTx(signedTx, false, function(data) {
