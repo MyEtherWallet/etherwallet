@@ -2672,6 +2672,10 @@
       "address": "0x74c1e4b8cae59269ec1d85d3d4f324396048f4ac",
       "symbol": "🍺 BeerCoin",
       "decimal": 0
+    }, {
+      "address": "0x5c40eF6f527f4FbA68368774E6130cE6515123f2",
+      "symbol": "DAO extraBalance",
+      "decimal": 0
     }];
     Token.prototype.getContractAddress = function () {
       return this.contractAddress;
