@@ -59,12 +59,6 @@
         isClassic: isClassic
       }, callback);
     };
-    ajaxReq.getClassicEthCall = function (txobj, callback) {
-      this.post({
-        ethCall: txobj,
-        isClassic: true
-      }, callback);
-    };
     ajaxReq.getTraceCall = function (txobj, isClassic, callback) {
       this.post({
         traceCall: txobj,
