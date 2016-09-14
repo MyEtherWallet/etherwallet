@@ -23,28 +23,16 @@
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       }
     };
-    ajaxReq.getCurrentBlock = function (callback) {
+    ajaxReq.getCurrentBlock = function (isClassic, callback) {
       this.post({
         currentBlock: '',
-        isClassic: false
+        isClassic: isClassic
       }, callback);
     };
-    ajaxReq.getCurrentClassicBlock = function (callback) {
-      this.post({
-        currentBlock: '',
-        isClassic: true
-      }, callback);
-    };
-    ajaxReq.getBalance = function (addr, callback) {
+    ajaxReq.getBalance = function (addr, isClassic, callback) {
       this.post({
         balance: addr,
-        isClassic: false
-      }, callback);
-    };
-    ajaxReq.getClassicBalance = function (addr, callback) {
-      this.post({
-        balance: addr,
-        isClassic: true
+        isClassic: isClassic
       }, callback);
     };
     ajaxReq.getTransactionData = function (addr, callback) {
@@ -268,7 +256,7 @@
         $scope.addWalletToStorage('addWalletStats');
       };
       $scope.setBalance = function () {
-        ajaxReq.getBalance($scope.wallet.getAddressString(), function (data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), false, function (data) {
           if (data.error) {
             $scope.etherBalance = data.msg;
           } else {
@@ -302,7 +290,7 @@
         }
       };
       $scope.setBalance = function (address, id) {
-        ajaxReq.getBalance(address, function (data) {
+        ajaxReq.getBalance(address, false, function (data) {
           if (data.error) {
             $scope.allWallets[id].balance = data.msg;
           } else {
@@ -356,7 +344,7 @@
         }
       };
       $scope.setBalance = function (address, id, varWal) {
-        ajaxReq.getBalance(address, function (data) {
+        ajaxReq.getBalance(address, false, function (data) {
           if (data.error) {
             $scope[varWal][id].balance = data.msg;
           } else {
@@ -420,7 +408,7 @@
         }
       };
       $scope.setBalance = function (address, id, varWal) {
-        ajaxReq.getBalance(address, function (data) {
+        ajaxReq.getBalance(address, false, function (data) {
           if (data.error) {
             $scope[varWal][id].balance = data.msg;
           } else {
@@ -496,7 +484,7 @@
           }));
           $scope.encFileName = $scope.wallet.getV3Filename();
         }
-        ajaxReq.getBalance($scope.wallet.getAddressString(), function (data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), false, function (data) {
           if (data.error) {
             $scope.etherBalance = data.msg;
           } else {
@@ -558,7 +546,7 @@
         }
       };
       $scope.setBalance = function (address, id, varWal) {
-        ajaxReq.getBalance(address, function (data) {
+        ajaxReq.getBalance(address, false, function (data) {
           if (data.error) {
             $scope[varWal][id].balance = data.msg;
           } else {
@@ -814,7 +802,7 @@
         }
       };
       $scope.setBalance = function () {
-        ajaxReq.getBalance($scope.wallet.getAddressString(), function (data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), false, function (data) {
           if (data.error) {
             $scope.etherBalance = data.msg;
           } else {
@@ -894,10 +882,10 @@
       $scope.showBlocks = window.location.protocol == "https:";
       $scope.setBlockNumbers = function () {
         if (!$scope.showBlocks) return;
-        ajaxReq.getCurrentBlock(function (data) {
+        ajaxReq.getCurrentBlock(false, function (data) {
           $scope.ethBlockNumber = data.data;
         });
-        ajaxReq.getCurrentClassicBlock(function (data) {
+        ajaxReq.getCurrentBlock(true, function (data) {
           $scope.etcBlockNumber = data.data;
         });
       };
@@ -1060,7 +1048,7 @@
         });
       };
       $scope.setBalance = function () {
-        ajaxReq.getBalance($scope.wallet.getAddressString(), function (data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), false, function (data) {
           if (data.error) {
             $scope.etherBalance = data.msg;
           } else {
@@ -1072,7 +1060,7 @@
             });
           }
         });
-        ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function (data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), true, function (data) {
           if (data.error) {
             $scope.etcBalance = data.msg;
           } else {
@@ -1318,7 +1306,7 @@
         $scope.setBalance();
       });
       $scope.setBalance = function () {
-        ajaxReq.getBalance($scope.wallet.getAddressString(), function (data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), false, function (data) {
           if (data.error) {
             $scope.etherBalance = data.msg;
           } else {
@@ -1358,7 +1346,7 @@
             $scope.token.DCbalanceEth = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 1000).toString();
           }
         });
-        ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function (data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), true, function (data) {
           if (data.error) {
             $scope.etcBalance = data.msg;
           } else {
@@ -1470,7 +1458,7 @@
         $scope.tokenTx.id = 0;
       };
       $scope.setBalance = function () {
-        ajaxReq.getBalance($scope.wallet.getAddressString(), function (data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), false, function (data) {
           if (data.error) {
             $scope.etherBalance = data.msg;
           } else {
@@ -1482,7 +1470,7 @@
             });
           }
         });
-        ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function (data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), true, function (data) {
           if (data.error) {
             $scope.etcBalance = data.msg;
           } else {
@@ -1585,7 +1573,7 @@
           }));
           $scope.encFileName = $scope.wallet.getV3Filename();
         }
-        ajaxReq.getBalance($scope.wallet.getAddressString(), function (data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), false, function (data) {
           if (data.error) {
             $scope.etherBalance = data.msg;
           } else {
