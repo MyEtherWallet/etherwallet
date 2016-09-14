@@ -91,7 +91,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.sendTx = function() {
 		$scope.sendTxModal.close();
-		uiFuncs.sendTx($scope.signedTx, function(resp) {
+		uiFuncs.sendTx($scope.signedTx, false, function(resp) {
 			if (!resp.isError) {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
 				$scope.setBalance();

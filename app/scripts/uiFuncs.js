@@ -46,25 +46,8 @@ uiFuncs.generateTx = function(txData, isClassic, callback) {
 		});
 	}
 }
-uiFuncs.sendClassicTx = function(signedTx, callback) {
-	ajaxReq.sendRawTx(signedTx, true, function(data) {
-		var resp = {};
-		if (data.error) {
-			resp = {
-				isError: true,
-				error: globalFuncs.getGethMsg(data.msg)
-			};
-		} else {
-			resp = {
-				isError: false,
-				data: data.data
-			};
-		}
-		if (callback !== undefined) callback(resp);
-	});
-}
-uiFuncs.sendTx = function(signedTx, callback) {
-	ajaxReq.sendRawTx(signedTx, false, function(data) {
+uiFuncs.sendTx = function(signedTx, isClassic, callback) {
+	ajaxReq.sendRawTx(signedTx, isClassic, function(data) {
 		var resp = {};
 		if (data.error) {
 			resp = {

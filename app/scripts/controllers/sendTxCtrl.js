@@ -118,8 +118,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.sendTx = function() {
 		$scope.sendTxModal.close();
-		var sendFunc = $scope.tx.sendMode == 2 ? 'sendClassicTx' : 'sendTx';
-		uiFuncs[sendFunc]($scope.signedTx, function(resp) {
+		uiFuncs.sendTx($scope.signedTx, $scope.tx.sendMode == 2, function(resp) {
 			if (!resp.isError) {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a> & <a href='http://gastracker.io/tx/" + resp.data + "' target='_blank'> ETC TX via GasTracker.io</a>"));
 				$scope.setBalance();

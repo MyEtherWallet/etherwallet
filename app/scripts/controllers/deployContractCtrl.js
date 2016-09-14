@@ -51,7 +51,7 @@ var deployContractCtrl = function($scope, $sce, walletService) {
 	}
     $scope.sendTx = function() {
 		$scope.sendTxModal.close();
-		uiFuncs.sendTx($scope.signedTx, function(resp) {
+		uiFuncs.sendTx($scope.signedTx, false, function(resp) {
 			if (!resp.isError) {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a> & Contract Address <a href='http://etherscan.io/address/" + $scope.tx.contractAddr + "' target='_blank'>"+$scope.tx.contractAddr+"</a>"));
 			} else {

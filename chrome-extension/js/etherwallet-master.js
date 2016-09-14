@@ -566,7 +566,7 @@
           var txData = uiFuncs.getTxData($scope);
           uiFuncs.generateTx(txData, false, function (rawTx) {
             if (!rawTx.isError) {
-              uiFuncs.sendTx(rawTx.signedTx, function (resp) {
+              uiFuncs.sendTx(rawTx.signedTx, false, function (resp) {
                 if (!resp.isError) {
                   $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a>"));
                   $scope.setBalance();
@@ -729,7 +729,7 @@
       };
       $scope.sendTx = function () {
         $scope.sendTxModal.close();
-        uiFuncs.sendTx($scope.signedTx, function (resp) {
+        uiFuncs.sendTx($scope.signedTx, false, function (resp) {
           if (!resp.isError) {
             $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a> & Contract Address <a href='http://etherscan.io/address/" + $scope.tx.contractAddr + "' target='_blank'>" + $scope.tx.contractAddr + "</a>"));
           } else {
@@ -831,7 +831,7 @@
       };
       $scope.sendTx = function () {
         $scope.sendTxModal.close();
-        uiFuncs.sendTx($scope.signedTx, function (resp) {
+        uiFuncs.sendTx($scope.signedTx, false, function (resp) {
           if (!resp.isError) {
             $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
             $scope.setBalance();
@@ -1087,8 +1087,7 @@
       };
       $scope.sendTx = function () {
         $scope.sendTxModal.close();
-        var sendFunc = $scope.tx.sendMode == 2 ? 'sendClassicTx' : 'sendTx';
-        uiFuncs[sendFunc]($scope.signedTx, function (resp) {
+        uiFuncs.sendTx($scope.signedTx, $scope.tx.sendMode == 2, function (resp) {
           if (!resp.isError) {
             $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a> & <a href='http://gastracker.io/tx/" + resp.data + "' target='_blank'> ETC TX via GasTracker.io</a>"));
             $scope.setBalance();
@@ -1342,7 +1341,7 @@
         $scope.tx.data = $scope.approveWithdraw + ethFuncs.padLeft(ethFuncs.getNakedAddress(withdrawContract), 64) + ethFuncs.padLeft(new BigNumber(balanceBN).toString(16), 64);
         $scope.tx.value = 0;
         uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function (rawTx) {
-          uiFuncs.sendTx(rawTx.signedTx, function (resp) {
+          uiFuncs.sendTx(rawTx.signedTx, false, function (resp) {
             if (resp.isError) {
               $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
             } else {
@@ -1352,7 +1351,7 @@
                 $scope.tx.to = withdrawContract;
                 $scope.tx.data = $scope.daoWithdraw;
                 uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function (rawTx) {
-                  uiFuncs.sendTx(rawTx.signedTx, function (resp) {
+                  uiFuncs.sendTx(rawTx.signedTx, false, function (resp) {
                     if (resp.isError) {
                       $scope.withdrawTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.error));
                     } else {
@@ -1377,7 +1376,7 @@
         $scope.tx.data = $scope.withdrawDAOC + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.daoC.to), 64) + ethFuncs.padLeft(new BigNumber($scope.daoC.donation).toString(16), 64);
         $scope.tx.value = 0;
         uiFuncs.generateTx(uiFuncs.getTxData($scope), true, function (rawTx) {
-          uiFuncs.sendClassicTx(rawTx.signedTx, function (resp) {
+          uiFuncs.sendTx(rawTx.signedTx, true, function (resp) {
             if (resp.isError) {
               $scope.withdrawETCTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
             } else {
@@ -1485,7 +1484,7 @@
       };
       $scope.sendTx = function () {
         $scope.sendTxModal.close();
-        uiFuncs.sendTx($scope.signedTx, function (resp) {
+        uiFuncs.sendTx($scope.signedTx, false, function (resp) {
           if (!resp.isError) {
             $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
             $scope.setBalance();
@@ -11573,10 +11572,10 @@
         if (txData.to != "0xCONTRACT" && !ethFuncs.validateEtherAddress(txData.to)) throw globalFuncs.errorMsgs[5];else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[7];else if (!globalFuncs.isNumeric(txData.gasLimit) || parseFloat(txData.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
         if (txData.to == "0xCONTRACT") txData.to = '';
       };
-      uiFuncs.generateClassicTx = function (txData, callback) {
+      uiFuncs.generateTx = function (txData, isClassic, callback) {
         try {
           uiFuncs.isTxDataValid(txData);
-          ajaxReq.getTransactionData(txData.from, true, function (data) {
+          ajaxReq.getTransactionData(txData.from, isClassic, function (data) {
             if (data.error) throw data.msg;
             data = data.data;
             var rawTx = {
@@ -11601,53 +11600,8 @@
           });
         }
       };
-      uiFuncs.sendClassicTx = function (signedTx, callback) {
-        ajaxReq.sendRawTx(signedTx, true, function (data) {
-          var resp = {};
-          if (data.error) {
-            resp = {
-              isError: true,
-              error: globalFuncs.getGethMsg(data.msg)
-            };
-          } else {
-            resp = {
-              isError: false,
-              data: data.data
-            };
-          }
-          if (callback !== undefined) callback(resp);
-        });
-      };
-      uiFuncs.generateTx = function (txData, callback) {
-        try {
-          uiFuncs.isTxDataValid(txData);
-          ajaxReq.getTransactionData(txData.from, false, function (data) {
-            if (data.error) throw data.msg;
-            data = data.data;
-            var rawTx = {
-              nonce: ethFuncs.sanitizeHex(data.nonce),
-              gasPrice: ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
-              gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
-              to: ethFuncs.sanitizeHex(txData.to),
-              value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
-              data: ethFuncs.sanitizeHex(txData.data)
-            };
-            var eTx = new ethUtil.Tx(rawTx);
-            eTx.sign(new Buffer(txData.privKey, 'hex'));
-            rawTx.rawTx = JSON.stringify(rawTx);
-            rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
-            rawTx.isError = false;
-            if (callback !== undefined) callback(rawTx);
-          });
-        } catch (e) {
-          if (callback !== undefined) callback({
-            isError: true,
-            error: e
-          });
-        }
-      };
-      uiFuncs.sendTx = function (signedTx, callback) {
-        ajaxReq.sendRawTx(signedTx, false, function (data) {
+      uiFuncs.sendTx = function (signedTx, isClassic, callback) {
+        ajaxReq.sendRawTx(signedTx, isClassic, function (data) {
           var resp = {};
           if (data.error) {
             resp = {

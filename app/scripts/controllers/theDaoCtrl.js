@@ -118,7 +118,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		$scope.tx.data = $scope.approveWithdraw + ethFuncs.padLeft(ethFuncs.getNakedAddress(withdrawContract), 64) + ethFuncs.padLeft(new BigNumber(balanceBN).toString(16), 64);
 		$scope.tx.value = 0;
 		uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function(rawTx) {
-            uiFuncs.sendTx(rawTx.signedTx, function(resp){
+            uiFuncs.sendTx(rawTx.signedTx, false, function(resp){
                 if(resp.isError){
                     $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
                 } else {
@@ -128,7 +128,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
                         $scope.tx.to = withdrawContract;
 						$scope.tx.data = $scope.daoWithdraw;
                         uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function(rawTx) {
-                            uiFuncs.sendTx(rawTx.signedTx, function(resp){
+                            uiFuncs.sendTx(rawTx.signedTx, false, function(resp){
                                  if(resp.isError) {
 									$scope.withdrawTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.error));
 								} else {
@@ -153,7 +153,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		$scope.tx.data = $scope.withdrawDAOC + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.daoC.to), 64) + ethFuncs.padLeft(new BigNumber($scope.daoC.donation).toString(16), 64);
 		$scope.tx.value = 0;
 		uiFuncs.generateTx(uiFuncs.getTxData($scope), true, function(rawTx) {
-            uiFuncs.sendClassicTx(rawTx.signedTx, function(resp){
+            uiFuncs.sendTx(rawTx.signedTx, true, function(resp){
                 if(resp.isError){
                     $scope.withdrawETCTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
                 } else {
