@@ -47,7 +47,7 @@ uiFuncs.generateClassicTx = function(txData, callback) {
 	}
 }
 uiFuncs.sendClassicTx = function(signedTx, callback) {
-	ajaxReq.sendClassicRawTx(signedTx, function(data) {
+	ajaxReq.sendRawTx(signedTx, true, function(data) {
 		var resp = {};
 		if (data.error) {
 			resp = {
@@ -92,7 +92,7 @@ uiFuncs.generateTx = function(txData, callback) {
 	}
 }
 uiFuncs.sendTx = function(signedTx, callback) {
-	ajaxReq.sendRawTx(signedTx, function(data) {
+	ajaxReq.sendRawTx(signedTx, false, function(data) {
 		var resp = {};
 		if (data.error) {
 			resp = {

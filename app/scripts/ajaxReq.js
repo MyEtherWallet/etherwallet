@@ -29,16 +29,10 @@ ajaxReq.getTransactionData = function(addr, isClassic, callback) {
         isClassic: isClassic
 	}, callback);
 }
-ajaxReq.sendRawTx = function(rawTx, callback) {
+ajaxReq.sendRawTx = function(rawTx, isClassic, callback) {
 	this.post({
 		rawtx: rawTx,
-        isClassic: false
-	}, callback);
-}
-ajaxReq.sendClassicRawTx = function(rawTx, callback) {
-	this.post({
-		rawtx: rawTx,
-        isClassic: true
+        isClassic: isClassic
 	}, callback);
 }
 ajaxReq.getEstimatedGas = function(txobj, callback) {

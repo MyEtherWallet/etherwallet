@@ -41,16 +41,10 @@
         isClassic: isClassic
       }, callback);
     };
-    ajaxReq.sendRawTx = function (rawTx, callback) {
+    ajaxReq.sendRawTx = function (rawTx, isClassic, callback) {
       this.post({
         rawtx: rawTx,
-        isClassic: false
-      }, callback);
-    };
-    ajaxReq.sendClassicRawTx = function (rawTx, callback) {
-      this.post({
-        rawtx: rawTx,
-        isClassic: true
+        isClassic: isClassic
       }, callback);
     };
     ajaxReq.getEstimatedGas = function (txobj, callback) {
@@ -974,7 +968,7 @@
         };
         $scope.sendTx = function () {
           new Modal(document.getElementById('sendTransactionOffline')).close();
-          ajaxReq.sendRawTx($scope.signedTx, function (data) {
+          ajaxReq.sendRawTx($scope.signedTx, false, function (data) {
             if (data.error) {
               $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
             } else {
@@ -11622,7 +11616,7 @@
         }
       };
       uiFuncs.sendClassicTx = function (signedTx, callback) {
-        ajaxReq.sendClassicRawTx(signedTx, function (data) {
+        ajaxReq.sendRawTx(signedTx, true, function (data) {
           var resp = {};
           if (data.error) {
             resp = {
@@ -11667,7 +11661,7 @@
         }
       };
       uiFuncs.sendTx = function (signedTx, callback) {
-        ajaxReq.sendRawTx(signedTx, function (data) {
+        ajaxReq.sendRawTx(signedTx, false, function (data) {
           var resp = {};
           if (data.error) {
             resp = {

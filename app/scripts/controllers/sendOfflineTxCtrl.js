@@ -87,7 +87,7 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
     }
 	$scope.sendTx = function() {
 		new Modal(document.getElementById('sendTransactionOffline')).close();
-		ajaxReq.sendRawTx($scope.signedTx, function(data) {
+		ajaxReq.sendRawTx($scope.signedTx, false, function(data) {
 			if (data.error) {
 				$scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
 			} else {
