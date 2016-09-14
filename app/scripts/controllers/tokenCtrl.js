@@ -37,6 +37,25 @@ var tokenCtrl = function($scope, $sce, walletService) {
 		}
         $scope.tokenTx.id = 0;
 	}
+    $scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function () {
+        if($scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id]!== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to)&&$scope.Validator.isPositiveNumber($scope.tokenTx.value)){
+            if(!$scope.estimateTimer) clearTimeout($scope.estimateTimer);
+            $scope.estimateTimer = setTimeout(function(){
+                $scope.estimateGasLimit();
+            },500);
+        }
+    }, true);
+    $scope.estimateGasLimit = function(){
+        var estObj = {
+            to: $scope.tokenObjs[$scope.tokenTx.id].getContractAddress(),
+            from: $scope.wallet.getAddressString(),
+            value: '0x00',
+            data: $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data
+        }
+        ethFuncs.estimateGas(estObj,false,function(data){
+            if(!data.error) $scope.tokenTx.gasLimit = data.data; 
+        });
+    }
 	$scope.setBalance = function() {
 		ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data) {
 			if (data.error) {
