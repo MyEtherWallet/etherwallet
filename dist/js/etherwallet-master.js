@@ -1237,12 +1237,13 @@
       $scope.daoWithdrawContract = "0x9f5304da62a5408416ea58a17a92611019bd5ce3";
       $scope.eBWithdrawContract = "0x755cdba6AE4F479f7164792B318b2a06c759833B";
       $scope.eBTokenContract = "0x5c40eF6f527f4FbA68368774E6130cE6515123f2";
-      $scope.slockitTransfer = "0xa9059cbb";
-      $scope.balanceOf = "0x70a08231";
-      $scope.daoWithdraw = "0x3ccfd60b";
-      $scope.approveWithdraw = "0x095ea7b3";
-      $scope.withdrawDAOC = "0xf3fef3a3";
-      $scope.numETChex = "0x02ef6c86";
+      $scope.hexCodes = {
+        balanceOf: "0x70a08231",
+        daoWithdraw: "0x3ccfd60b",
+        approveWithdraw: "0x095ea7b3",
+        withdrawDAOC: "0xf3fef3a3",
+        numETChex: "0x02ef6c86"
+      };
       $scope.Validator = Validator;
       $scope.tx = {
         gasLimit: 100000,
@@ -1291,7 +1292,7 @@
             });
           }
         });
-        var userInfo = ethFuncs.getDataObj($scope.slockitContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
+        var userInfo = ethFuncs.getDataObj($scope.slockitContract, $scope.hexCodes.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
         ajaxReq.getEthCall(userInfo, false, function (data) {
           if (!data.error) {
             $scope.token.balance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
@@ -1299,7 +1300,7 @@
             $scope.token.balanceBN = new BigNumber(data.data).toString();
           }
         });
-        var userInfo = ethFuncs.getDataObj($scope.eBTokenContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
+        var userInfo = ethFuncs.getDataObj($scope.eBTokenContract, $scope.hexCodes.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
         ajaxReq.getEthCall(userInfo, false, function (data) {
           if (!data.error) {
             $scope.token.eBTokenBalance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
@@ -1307,13 +1308,13 @@
             $scope.token.eBBalanceBN = new BigNumber(data.data).toString();
           }
         });
-        var userInfo = ethFuncs.getDataObj($scope.daoCContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
+        var userInfo = ethFuncs.getDataObj($scope.daoCContract, $scope.hexCodes.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
         ajaxReq.getEthCall(userInfo, true, function (data) {
           if (!data.error) {
             $scope.token.DCbalance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
           }
         });
-        var userInfo = ethFuncs.getDataObj($scope.daoWithdrawContract, $scope.numETChex, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
+        var userInfo = ethFuncs.getDataObj($scope.daoWithdrawContract, $scope.hexCodes.numETChex, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
         ajaxReq.getEthCall(userInfo, true, function (data) {
           if (!data.error) {
             $scope.token.DCbalanceEth = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 1000).toString();
@@ -1338,7 +1339,7 @@
       }, true);
       $scope.generateAndSendWithdrawTx = function (tokenContract, withdrawContract, balanceBN, modal) {
         $scope.tx.to = tokenContract;
-        $scope.tx.data = $scope.approveWithdraw + ethFuncs.padLeft(ethFuncs.getNakedAddress(withdrawContract), 64) + ethFuncs.padLeft(new BigNumber(balanceBN).toString(16), 64);
+        $scope.tx.data = $scope.hexCodes.approveWithdraw + ethFuncs.padLeft(ethFuncs.getNakedAddress(withdrawContract), 64) + ethFuncs.padLeft(new BigNumber(balanceBN).toString(16), 64);
         $scope.tx.value = 0;
         uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function (rawTx) {
           uiFuncs.sendTx(rawTx.signedTx, false, function (resp) {
@@ -1349,7 +1350,7 @@
               var approveTx = resp.data;
               setTimeout(function () {
                 $scope.tx.to = withdrawContract;
-                $scope.tx.data = $scope.daoWithdraw;
+                $scope.tx.data = $scope.hexCodes.daoWithdraw;
                 uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function (rawTx) {
                   uiFuncs.sendTx(rawTx.signedTx, false, function (resp) {
                     if (resp.isError) {
@@ -1373,7 +1374,7 @@
           return;
         }
         $scope.tx.to = $scope.daoWithdrawContract;
-        $scope.tx.data = $scope.withdrawDAOC + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.daoC.to), 64) + ethFuncs.padLeft(new BigNumber($scope.daoC.donation).toString(16), 64);
+        $scope.tx.data = $scope.hexCodes.withdrawDAOC + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.daoC.to), 64) + ethFuncs.padLeft(new BigNumber($scope.daoC.donation).toString(16), 64);
         $scope.tx.value = 0;
         uiFuncs.generateTx(uiFuncs.getTxData($scope), true, function (rawTx) {
           uiFuncs.sendTx(rawTx.signedTx, true, function (resp) {
