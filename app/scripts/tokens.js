@@ -71,7 +71,7 @@ Token.prototype.getBalanceBN = function() {
 Token.prototype.setBalance = function() {
 	var balanceCall = ethFuncs.getDataObj(this.contractAddress, Token.balanceHex, [ethFuncs.getNakedAddress(this.userAddress)]);
 	var parentObj = this;
-	ajaxReq.getEthCall(balanceCall, function(data) {
+	ajaxReq.getEthCall(balanceCall, false, function(data) {
 		if (!data.error) {
 			parentObj.balance = new BigNumber(data.data).div(new BigNumber(10).pow(parentObj.getDecimal())).toString();
 			parentObj.balanceBN = new BigNumber(data.data).toString();

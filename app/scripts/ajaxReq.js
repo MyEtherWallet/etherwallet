@@ -35,22 +35,16 @@ ajaxReq.sendRawTx = function(rawTx, isClassic, callback) {
         isClassic: isClassic
 	}, callback);
 }
-ajaxReq.getEstimatedGas = function(txobj, callback) {
+ajaxReq.getEstimatedGas = function(txobj, isClassic, callback) {
 	this.post({
 		estimatedGas: txobj,
-        isClassic: false
+        isClassic: isClassic
 	}, callback);
 }
-ajaxReq.getClassicEstimatedGas = function(txobj, callback) {
-	this.post({
-		estimatedGas: txobj,
-        isClassic: true
-	}, callback);
-}
-ajaxReq.getEthCall = function(txobj, callback) {
+ajaxReq.getEthCall = function(txobj, isClassic, callback) {
 	this.post({
 		ethCall: txobj,
-        isClassic: false
+        isClassic: isClassic
 	}, callback);
 }
 ajaxReq.getClassicEthCall = function(txobj, callback) {

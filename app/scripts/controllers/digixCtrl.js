@@ -48,7 +48,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 			}
 		});
 		var userInfo = ethFuncs.getDataObj($scope.digixContract, $scope.digixUserInfo, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-		ajaxReq.getEthCall(userInfo, function(data) {
+		ajaxReq.getEthCall(userInfo, false, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {

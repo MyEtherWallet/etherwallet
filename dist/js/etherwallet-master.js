@@ -47,22 +47,16 @@
         isClassic: isClassic
       }, callback);
     };
-    ajaxReq.getEstimatedGas = function (txobj, callback) {
+    ajaxReq.getEstimatedGas = function (txobj, isClassic, callback) {
       this.post({
         estimatedGas: txobj,
-        isClassic: false
+        isClassic: isClassic
       }, callback);
     };
-    ajaxReq.getClassicEstimatedGas = function (txobj, callback) {
-      this.post({
-        estimatedGas: txobj,
-        isClassic: true
-      }, callback);
-    };
-    ajaxReq.getEthCall = function (txobj, callback) {
+    ajaxReq.getEthCall = function (txobj, isClassic, callback) {
       this.post({
         ethCall: txobj,
-        isClassic: false
+        isClassic: isClassic
       }, callback);
     };
     ajaxReq.getClassicEthCall = function (txobj, callback) {
@@ -803,7 +797,7 @@
           }
         });
         var userInfo = ethFuncs.getDataObj($scope.digixContract, $scope.digixUserInfo, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-        ajaxReq.getEthCall(userInfo, function (data) {
+        ajaxReq.getEthCall(userInfo, false, function (data) {
           if (data.error) {
             $scope.etherBalance = data.msg;
           } else {
@@ -1307,7 +1301,7 @@
           }
         });
         var userInfo = ethFuncs.getDataObj($scope.slockitContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-        ajaxReq.getEthCall(userInfo, function (data) {
+        ajaxReq.getEthCall(userInfo, false, function (data) {
           if (!data.error) {
             $scope.token.balance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
             $scope.token.balanceEth = new BigNumber($scope.token.balance).div(100).toString();
@@ -1315,7 +1309,7 @@
           }
         });
         var userInfo = ethFuncs.getDataObj($scope.eBTokenContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-        ajaxReq.getEthCall(userInfo, function (data) {
+        ajaxReq.getEthCall(userInfo, false, function (data) {
           if (!data.error) {
             $scope.token.eBTokenBalance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
             $scope.token.eBEthBalance = new BigNumber($scope.token.eBTokenBalance).div(100).toString();
@@ -1323,13 +1317,13 @@
           }
         });
         var userInfo = ethFuncs.getDataObj($scope.daoCContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-        ajaxReq.getClassicEthCall(userInfo, function (data) {
+        ajaxReq.getEthCall(userInfo, true, function (data) {
           if (!data.error) {
             $scope.token.DCbalance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
           }
         });
         var userInfo = ethFuncs.getDataObj($scope.daoWithdrawContract, $scope.numETChex, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-        ajaxReq.getClassicEthCall(userInfo, function (data) {
+        ajaxReq.getEthCall(userInfo, true, function (data) {
           if (!data.error) {
             $scope.token.DCbalanceEth = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 1000).toString();
           }
@@ -2674,7 +2668,7 @@
     Token.prototype.setBalance = function () {
       var balanceCall = ethFuncs.getDataObj(this.contractAddress, Token.balanceHex, [ethFuncs.getNakedAddress(this.userAddress)]);
       var parentObj = this;
-      ajaxReq.getEthCall(balanceCall, function (data) {
+      ajaxReq.getEthCall(balanceCall, false, function (data) {
         if (!data.error) {
           parentObj.balance = new BigNumber(data.data).div(new BigNumber(10).pow(parentObj.getDecimal())).toString();
           parentObj.balanceBN = new BigNumber(data.data).toString();

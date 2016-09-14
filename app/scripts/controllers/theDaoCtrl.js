@@ -69,7 +69,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 			}
 		});
 		var userInfo = ethFuncs.getDataObj($scope.slockitContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-		ajaxReq.getEthCall(userInfo, function(data) {
+		ajaxReq.getEthCall(userInfo, false, function(data) {
 			if (!data.error) {
 				$scope.token.balance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
 				$scope.token.balanceEth = new BigNumber($scope.token.balance).div(100).toString();
@@ -77,7 +77,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 			}
 		});
         var userInfo = ethFuncs.getDataObj($scope.eBTokenContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-		ajaxReq.getEthCall(userInfo, function(data) {
+		ajaxReq.getEthCall(userInfo, false, function(data) {
 			if (!data.error) {
 				$scope.token.eBTokenBalance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
 				$scope.token.eBEthBalance = new BigNumber($scope.token.eBTokenBalance).div(100).toString();
@@ -85,13 +85,13 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 			}
 		});
         var userInfo = ethFuncs.getDataObj($scope.daoCContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-		ajaxReq.getClassicEthCall(userInfo, function(data) {
+		ajaxReq.getEthCall(userInfo, true, function(data) {
 			if (!data.error) {
 				$scope.token.DCbalance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
 			}
 		});
         var userInfo = ethFuncs.getDataObj($scope.daoWithdrawContract, $scope.numETChex, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-		ajaxReq.getClassicEthCall(userInfo, function(data) {
+		ajaxReq.getEthCall(userInfo, true, function(data) {
 			if (!data.error) {
 				$scope.token.DCbalanceEth = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 1000).toString();
 			}
