@@ -55,6 +55,7 @@ fi.data = {
   DAO_TitleLong:        'Muuta DAO Tokenisi ETH:iksi',
   NAV_ClaimDGD:         'Lunasta DGD',
   DGD_TitleLong:        'Lunasta DGD Tokenisi',
+  NAV_DeployContract:  'Ota Käyttöön Sopimus',
   NAV_MyWallets:        'Minun Lompakkoni',
   NAV_ViewWallet:       'Tarkastele Lompakon Tietoja',
   NAV_Help:             'Apua',
@@ -80,6 +81,7 @@ fi.data = {
   x_PrivKeyDesc:        'Tämä on salaamaton versio sinun yksityisestä salausavaimestasi, tarkoittaen että salasanaa ei tarvita. Jos joku sattuisi löytämään sinun salaamattoman yksityisen salausavaimesi, he pääsisivät käsiksi sinun lompakkoosi ilman salasanaa. Tästä syystä salatut versiot ovat yleensä suositeltuja.',
   x_Save:               'Tallenna',
   x_TXT:                'TXT tiedosto (salaamaton)',
+  x_Wallet:             'Lompakko',
 
   /* Header */
   MEW_Warning_1:        'Tarkista URL aina ennen kuin avaat lompakkosi tai luot uuden lompakon. Varo tietojen-kalastelu sivustoja!',
@@ -89,8 +91,10 @@ fi.data = {
 
   /* Footer */
   FOOTER_1:             'Avoimen lähdekoodin, javascript työkalu Ethereum lompakkojen luomista & varojen siirtoja varten.',
+  FOOTER_1b:            'Luonut',
   FOOTER_2:             'Lahjoituksia arvostetaan suuresti:',
   FOOTER_3:             'Lompakon luomisen tarjoaa',
+  FOOTER_4:               'Vastuuvapauslauseke / Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Tilin Tiedot: ',
@@ -100,8 +104,8 @@ fi.data = {
   sidebar_Equiv:        'Vastaavat Arvot: ',
   sidebar_TransHistory: 'Siirto Historia',
   sidebar_DGDBal:       'DGD Joukkomyynnin Tiedot:',
-  sidebar_donate:       'Lahjoita',
   sidebar_donation:     'MyEtherWallet on ilmainen, avoimen lähdekoodin palvelu joka on omistautunut sinun yksityisyyteesi ja turvallisuuteesi. Mitä enemmän lahjoituksia me vastaanotamme, sitä enemmän aikaa me käytämme uusien toimintojen luomiseksi, kuunnellen teidän palautettanne ja antaen teille juuri sitä mitä te tahdotte. Me olemme vain kaksi ihmistä jotka koittavat muuttaa maailmaa. Auta meitä?',
+  sidebar_donate:       'Lahjoita',
   sidebar_thanks:       'KIITOS!!!',
 
   /* Decrypt Panel */
@@ -113,7 +117,7 @@ fi.data = {
   ADD_Label_1:            'Mitä tahtoisit tehdä?',
   ADD_Radio_1:            'Luo Uusi Lompakko',
   ADD_Radio_2:            'Valitse Lompakko Tiedostosi (Avainsäilö / JSON)',
-  ADD_Radio_2_alt:        'Valitse Lompakko Tiedostosi:',
+  ADD_Radio_2_alt:        'Valitse Lompakko Tiedostosi: ',
   ADD_Radio_2_short:      'VALITSE LOMPAKKO TIEDOSTO...',
   ADD_Radio_3:            'Liitä/Kirjoita Yksityinen Salausavaimesi',
   ADD_Radio_4:            'Lisää Tili Jota Seurata',
@@ -147,11 +151,11 @@ fi.data = {
   SEND_amount_short:     'Summa',
   SEND_custom:           'Mukautettu',
   SEND_gas:              'Gas',
+  SEND_TransferTotal:    'Lähetä Koko Saldo',
   SEND_generate:         'Luo Allekirjoitettu Siirto',
   SEND_raw:              'Käsittelemätön Siirto',
   SEND_signed:           'Allekirjoitettu Siirto',
   SEND_trans:            'Lähetä Siirto',
-  SEND_TransferTotal:    'Lähetettävissä oleva saldo',
   SENDModal_Title:       'Varoitus! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   'Olet lähettämässä',
@@ -195,7 +199,7 @@ fi.data = {
   OFFLINE_Step1_Button:  'Luo Tiedot',
   OFFLINE_Step1_Label_1: 'Osoitteesta: ',
   OFFLINE_Step1_Label_2: 'Huomautus: Tämä on MISTÄ osoitteesta, ei MIHIN osoitteeseen. Nonce luodaan osoitteesta josta siirto on peräisin. Jos käytetään airgappattua tietokonetta, se olisi kylmä-varasto tilin osoite.',
-  OFFLLINE_Step2_Title:   'Vaihe 2: Luo Siirto (Offline Tietokone)',
+  OFFLINE_Step2_Title:   'Vaihe 2: Luo Siirto (Offline Tietokone)',
   OFFLINE_Step2_Label_1:  'Osoitteeseen: ',
   OFFLINE_Step2_Label_2:  'Arvo / Määrä Joka Lähetetään',
   OFFLINE_Step2_Label_3:  'Gasin hinta ',
@@ -211,10 +215,20 @@ fi.data = {
   OFFLINE_Step3_Label_1:  'Liitä allekirjoitettu siirto Vaiheesta 2 tähän ja paina "LÄHETÄ SIIRTO" nappia.',
 
   /* DAO */
+  DAO_bal1:               'lohkossa 1,919,999',
+  DAO_bal2:               'tällä hetkellä',
+  DAO_TitleETH:           'Nosta DAO ETHeinä',
+  DAO_TitleETC:           'Nosta DAO ETCeinä',
+  DAO_ETC_Label_1:        'Mihin osoitteeseen haluat että ETC lähetetään?',
+  DAO_ETC_Label_2:        '"White Hat Group" on työskennellyt väsymättömästi saadakseen ETCsi takaisin sinulle. Voit sanoa "kiitos" lahjoittamalla prosentuaalisen osuuden nostostasi, mikäli niin haluat. ',
   DAO_Desc:               'Käytä tätä välilehteä muuttaaksesi DAO Tokenisi ETHiksi. Mikäli haluat lähettää DAO:ta, ole hyvä ja käytä Lähetä Tokeneita välilehteä.',
   DAO_Inst:               'Kyllä. Paina vain isoa punaista nappia. Se on niin helppoa.',
   DAO_Warning:            'Jos sinulla tulee "Riittämätön saldo gasille" virhe, sinulla täytyy olla pieni määrä ETHiä tililläsi kattaaksesi gasin hinnan. Lisää .01 ETHiä tälle tilille ja koita uudestaan. ',
   DAOModal_Title:         'Varmistetaan vain...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
+  DAOModal_1:             'Olet nostamassa',
+  DAOModal_2:             'DAO Tokenia',
+  DAOModal_3:             'vaihdossa', // "in return for"
 
   /* Digix */
   DGD_Desc:               'Lunasta DigixDAO (DGD) tokenisi & badgesi. Lunastaaksesi, sinun on täytynyt osallistua tokenien myyntiin Maaliskuun 30/31 päivänä, 2016.  Jos haluat lähettää DGDtä, ole hyvä ja käytä Lähetä Tokeneita välilehteä.',
@@ -222,7 +236,13 @@ fi.data = {
   DGD_Label_2:            'Annettu Maksimi Maksu:',
   DGD_Label_3:            'Gas Hinta:',
   DGD_Generate:           'Luo Lunastus',
-  DGD_Content:            'Olet lunastamassa sinun DGD Tokenisi.',
+  DGD_Content:            'Olet lunastamassa DGD Tokenisi.',
+
+  /* Deploy Contracts */
+  DEP_generate:        'Generoi Bytecode',
+  DEP_generated:       'Generoitu Bytecode',
+  DEP_signtx:          'Allekirjoita Siirto',
+  DEP_interface:       'Generoitu Rajapinta',
 
   /* My Wallet */
   MYWAL_Nick:             'Lompakon Kutsumanimi',
@@ -235,7 +255,7 @@ fi.data = {
   MYWAL_WatchOnly:        'Sinun Seuraa-Ainoastaan Tilisi',
   MYWAL_Viewing:          'Tarkastellaan Lompakkoa: ',
   MYWAL_Hide:             'Piilota Lompakon Tiedot',
-  MYWAL_Edit:             'Muokkaa Lompakkoa: ',
+  MYWAL_Edit_2:             'Muokkaa Lompakkoa: ',
   MYWAL_Name:             'Lompakon Nimi',
   MYWAL_Content_1:        'Varoitus! Olet poistamassa lompakkoasi.',
   MYWAL_Content_2:        'Varmista että olet **tallentanut tähän lompakkoon liittyvät yksityisen salausavaimesi/JSON tiedostosi ja salasanasi** ennen kuin poistat sen.',
@@ -245,6 +265,10 @@ fi.data = {
   VIEWWALLET_Subtitle:      'Tämä antaa sinun ladata eri versiota yksityisistä salausavaimistasi ja uudelleen-tulostaa paperi lompakkosi. Saatat tahtoa tehdä tämän [tuodaksesi sinun tilisi Gethiin/Mistiin](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Jos haluat tarkistaa saldosi, me suosittelemme käyttämään blockchain exploreria kuten [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'Tämä antaa sinun ladata eri versiota yksityisistä salausavaimistasi ja uudelleen-tulostaa paperi lompakkosi. ',
   VIEWWALLET_SuccessMsg:     'Onnistui! Tässä ovat lompakkosi yksityiskohdat.',
+
+  /* Chrome Extension */
+  CX_error_1:           'Sinulla ei ole lompakkoja tallennettuna. Klikkaa ["Lisää Lompakko"](/cx-wallet.html#add-wallet) lisätäksesi!',
+  CX_quicksend:         'PikaLähetä', // if no appropriate translation, just use "Send"
 
   /* Error Messages */
   ERROR_1:             'Ole hyvä ja syötä kelpaava summa.',
@@ -272,13 +296,24 @@ fi.data = {
   SUCCESS_3:            'Siirto lähetetty. TX ID: ',
   SUCCESS_4:            'Lompakkosi lisätty onnistuneesti: ',
   SUCCESS_5:            'Olet äänestänyt onnistuneesti. Kiitos että olet ollut aktiivinen osanottaja The DAOssa.',
-  SUCCESS_6:            'File Selected: ',
+  SUCCESS_6:            'Valittu Tiedosto: ',
+
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Virheellinen lähettäjä',
+  GETH_Nonce:              'Nonce liian pieni',
+  GETH_Cheap:              'Gasin hinta liian matala hyväksyttäväksi',
+  GETH_Balance:            'Riittämätön saldo',
+  GETH_NonExistentAccount: 'Tiliä ei ole olemassa tai tilin saldo liian pieni',
+  GETH_InsufficientFunds:  'Riittämätön saldo gas * hinta + arvo',
+  GETH_IntrinsicGas:       'Olennainen gas liian pieni',
+  GETH_GasLimit:           'Ylittää blockin gas rajan',
+  GETH_NegativeValue:      'Negatiivinen arvo',
 
   /* Tranlsation Info */
-  translate_version:    '0.3',
+  translate_version:    '0.4',
   Translator_Desc:      'Kiitos kääntäjillemme...',
-  TranlsatorName_1:     '[Smokyish](https://www.myetherwallet.com/?gaslimit=21000&to=0xac9a2c1dd946da64c0dc8e70cec2cfb14304fd4f&value=1.0#send-transaction) · ',
-  TranlsatorAddr_1:     '0xac9a2c1dd946da64c0dc8e70cec2cfb14304fd4f',
+  TranslatorName_1:     'Smokyish',
+  TranslatorAddr_1:     '0xac9a2c1dd946da64c0dc8e70cec2cfb14304fd4f',
   /* Translator 1: Insert Comments Here */
   TranlsatorName_2:     ' ',
   TranlsatorAddr_2:     ' ',
