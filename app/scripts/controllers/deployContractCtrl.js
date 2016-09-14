@@ -27,7 +27,7 @@ var deployContractCtrl = function($scope, $sce, walletService) {
 			else if (!ethFuncs.validateHexString($scope.tx.data)) throw globalFuncs.errorMsgs[9];
 			else if (!globalFuncs.isNumeric($scope.tx.gasLimit) || parseFloat($scope.tx.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
             $scope.tx.data = ethFuncs.sanitizeHex($scope.tx.data);
-			ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
+			ajaxReq.getTransactionData($scope.wallet.getAddressString(), false, function(data) {
 				if (data.error) throw data.msg;
 				data = data.data;
                 $scope.tx.to = '0xCONTRACT';

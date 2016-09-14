@@ -23,16 +23,10 @@ ajaxReq.getBalance = function(addr, isClassic, callback) {
         isClassic: isClassic
 	}, callback);
 }
-ajaxReq.getTransactionData = function(addr, callback) {
+ajaxReq.getTransactionData = function(addr, isClassic, callback) {
 	this.post({
 		txdata: addr,
-        isClassic: false
-	}, callback);
-}
-ajaxReq.getClassicTransactionData = function(addr, callback) {
-	this.post({
-		txdata: addr,
-        isClassic: true
+        isClassic: isClassic
 	}, callback);
 }
 ajaxReq.sendRawTx = function(rawTx, callback) {

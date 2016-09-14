@@ -35,16 +35,10 @@
         isClassic: isClassic
       }, callback);
     };
-    ajaxReq.getTransactionData = function (addr, callback) {
+    ajaxReq.getTransactionData = function (addr, isClassic, callback) {
       this.post({
         txdata: addr,
-        isClassic: false
-      }, callback);
-    };
-    ajaxReq.getClassicTransactionData = function (addr, callback) {
-      this.post({
-        txdata: addr,
-        isClassic: true
+        isClassic: isClassic
       }, callback);
     };
     ajaxReq.sendRawTx = function (rawTx, callback) {
@@ -729,7 +723,7 @@
         try {
           if ($scope.wallet == null) throw globalFuncs.errorMsgs[3];else if (!ethFuncs.validateHexString($scope.tx.data)) throw globalFuncs.errorMsgs[9];else if (!globalFuncs.isNumeric($scope.tx.gasLimit) || parseFloat($scope.tx.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
           $scope.tx.data = ethFuncs.sanitizeHex($scope.tx.data);
-          ajaxReq.getTransactionData($scope.wallet.getAddressString(), function (data) {
+          ajaxReq.getTransactionData($scope.wallet.getAddressString(), false, function (data) {
             if (data.error) throw data.msg;
             data = data.data;
             $scope.tx.to = '0xCONTRACT';
@@ -925,7 +919,7 @@
         });
         $scope.getWalletInfo = function () {
           if (ethFuncs.validateEtherAddress($scope.tx.from)) {
-            ajaxReq.getTransactionData($scope.tx.from, function (data) {
+            ajaxReq.getTransactionData($scope.tx.from, false, function (data) {
               if (data.error) throw data.msg;
               data = data.data;
               $scope.gasPriceDec = ethFuncs.hexToDecimal(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)));
@@ -11602,7 +11596,7 @@
       uiFuncs.generateClassicTx = function (txData, callback) {
         try {
           uiFuncs.isTxDataValid(txData);
-          ajaxReq.getClassicTransactionData(txData.from, function (data) {
+          ajaxReq.getTransactionData(txData.from, true, function (data) {
             if (data.error) throw data.msg;
             data = data.data;
             var rawTx = {
@@ -11647,7 +11641,7 @@
       uiFuncs.generateTx = function (txData, callback) {
         try {
           uiFuncs.isTxDataValid(txData);
-          ajaxReq.getTransactionData(txData.from, function (data) {
+          ajaxReq.getTransactionData(txData.from, false, function (data) {
             if (data.error) throw data.msg;
             data = data.data;
             var rawTx = {
@@ -11691,8 +11685,7 @@
       };
       uiFuncs.transferAllBalance = function (fromAdd, gasLimit, isClassic, callback) {
         try {
-          var tdataFunc = isClassic ? 'getClassicTransactionData' : 'getTransactionData';
-          ajaxReq[tdataFunc](fromAdd, function (data) {
+          ajaxReq.getTransactionData(fromAdd, isClassic, function (data) {
             if (data.error) throw data.msg;
             data = data.data;
             var gasPrice = new BigNumber(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice))).times(gasLimit);

@@ -21,7 +21,7 @@ uiFuncs.isTxDataValid = function(txData) {
 uiFuncs.generateClassicTx = function(txData, callback) {
 	try {
 		uiFuncs.isTxDataValid(txData);
-		ajaxReq.getClassicTransactionData(txData.from, function(data) {
+		ajaxReq.getTransactionData(txData.from, true, function(data) {
 			if (data.error) throw data.msg;
 			data = data.data;
 			var rawTx = {
@@ -66,7 +66,7 @@ uiFuncs.sendClassicTx = function(signedTx, callback) {
 uiFuncs.generateTx = function(txData, callback) {
 	try {
 		uiFuncs.isTxDataValid(txData);
-		ajaxReq.getTransactionData(txData.from, function(data) {
+		ajaxReq.getTransactionData(txData.from, false, function(data) {
 			if (data.error) throw data.msg;
 			data = data.data;
 			var rawTx = {
@@ -110,8 +110,7 @@ uiFuncs.sendTx = function(signedTx, callback) {
 }
 uiFuncs.transferAllBalance = function(fromAdd, gasLimit, isClassic, callback) {
 	try {
-        var tdataFunc = isClassic ? 'getClassicTransactionData' : 'getTransactionData';
-		ajaxReq[tdataFunc](fromAdd, function(data) {
+		ajaxReq.getTransactionData(fromAdd, isClassic, function(data) {
 			if (data.error) throw data.msg;
 			data = data.data;
 			var gasPrice = new BigNumber(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice))).times(gasLimit);

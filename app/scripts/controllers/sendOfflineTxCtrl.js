@@ -27,7 +27,7 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 	});
 	$scope.getWalletInfo = function() {
 		if (ethFuncs.validateEtherAddress($scope.tx.from)) {
-			ajaxReq.getTransactionData($scope.tx.from, function(data) {
+			ajaxReq.getTransactionData($scope.tx.from, false, function(data) {
 				if (data.error) throw data.msg;
 				data = data.data;
 				$scope.gasPriceDec = ethFuncs.hexToDecimal(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)));
