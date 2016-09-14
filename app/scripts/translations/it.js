@@ -138,7 +138,7 @@ it.data = {
   TRANS_standard:        'ETH (transazione standard)',
   TRANS_eth:             'Solo ETH',
   TRANS_etc:             'Solo ETC',
-  TRANS_advanced:        '+Avanzate: aggiungi dei dati ',
+  TRANS_advanced:        '+Avanzate: aggiungi dati ',
   TRANS_data:            ' Dati: ',
   TRANS_gas:             ' Gas: ',
   TRANS_sendInfo:        'Una transazione standard che utilizza 21000 gas costerà 0,000441 ETH. Utilizziamo un prezzo del gas leggermente al di sopra del minimo pari a 0,000000021 ETH per assicurarci che venga elaborata velocemente. Noi non prendiamo commissioni.',
