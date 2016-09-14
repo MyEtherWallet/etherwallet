@@ -156,7 +156,7 @@ nl.data = {
   /* Offline Transaction */
   OFFLINE_Title:         'Genereer & Verzend een Offline Transactie',
   OFFLINE_Desc:          'Een offline transactie doe je in drie stappen. Stap 1 en 3 doe je op een online computer, terwijl je stap 2 uitvoert op een offline/afgeschermde computer. Dit zorgt ervoor dat je prive sleutel niet in aanraking komt met een met internet verbonden computer.',
-  OFFLINE_Step1_Title:   'Stap 1: Genereer Informatie (Online Computer)',
+  OFFLLINE_Step1_Title:   'Stap 1: Genereer Informatie (Online Computer)',
   OFFLINE_Step1_Button:  'Genereer Informatie',
   OFFLINE_Step1_Label_1: 'Van Adres: ',
   OFFLINE_Step1_Label_2: 'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd van het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
