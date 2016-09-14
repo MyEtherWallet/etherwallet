@@ -38,7 +38,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
         $scope.tokenTx.id = 0;
 	}
 	$scope.setBalance = function() {
-		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {
@@ -50,7 +50,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
 				});
 			}
 		});
-        ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function(data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), true, function(data) {
 			if (data.error) {
 				$scope.etcBalance = data.msg;
 			} else {

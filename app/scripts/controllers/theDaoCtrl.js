@@ -56,7 +56,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		$scope.setBalance();
 	});
 	$scope.setBalance = function() {
-		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {
@@ -96,7 +96,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 				$scope.token.DCbalanceEth = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 1000).toString();
 			}
 		});
-        ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function(data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), true, function(data) {
 			if (data.error) {
 				$scope.etcBalance = data.msg;
 			} else {

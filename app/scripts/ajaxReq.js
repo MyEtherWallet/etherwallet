@@ -11,28 +11,16 @@ ajaxReq.config = {
 		'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 	}
 };
-ajaxReq.getCurrentBlock = function(callback) {
+ajaxReq.getCurrentBlock = function(isClassic, callback) {
 	this.post({
 		currentBlock: '',
-        isClassic: false
+        isClassic: isClassic
 	}, callback);
 }
-ajaxReq.getCurrentClassicBlock = function(callback) {
-	this.post({
-		currentBlock: '',
-        isClassic: true
-	}, callback);
-}
-ajaxReq.getBalance = function(addr, callback) {
+ajaxReq.getBalance = function(addr, isClassic, callback) {
 	this.post({
 		balance: addr,
-        isClassic: false
-	}, callback);
-}
-ajaxReq.getClassicBalance = function(addr, callback) {
-	this.post({
-		balance: addr,
-        isClassic: true
+        isClassic: isClassic
 	}, callback);
 }
 ajaxReq.getTransactionData = function(addr, callback) {
