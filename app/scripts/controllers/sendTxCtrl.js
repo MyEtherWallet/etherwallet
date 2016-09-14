@@ -131,7 +131,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		});
 	}
 	$scope.transferAllBalance = function() {
-		uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, function(resp) {
+		uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, $scope.tx.sendMode == 2, function(resp) {
 			if (!resp.isError) {
 				$scope.tx.unit = resp.unit;
 				$scope.tx.value = resp.value;

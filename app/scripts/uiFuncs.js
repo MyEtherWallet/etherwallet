@@ -108,9 +108,10 @@ uiFuncs.sendTx = function(signedTx, callback) {
 		if (callback !== undefined) callback(resp);
 	});
 }
-uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
+uiFuncs.transferAllBalance = function(fromAdd, gasLimit, isClassic, callback) {
 	try {
-		ajaxReq.getTransactionData(fromAdd, function(data) {
+        var tdataFunc = isClassic ? 'getClassicTransactionData' : 'getTransactionData';
+		ajaxReq[tdataFunc](fromAdd, function(data) {
 			if (data.error) throw data.msg;
 			data = data.data;
 			var gasPrice = new BigNumber(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice))).times(gasLimit);

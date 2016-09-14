@@ -46,7 +46,7 @@ var quickSendCtrl = function($scope, $sce) {
 		$scope.wallet.getAddressString = function() {
 			return $scope.allWallets[$scope.selectedWallet].addr;
 		}
-        uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, function(resp) {
+        uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, false, function(resp) {
 			if (!resp.isError) {
 				$scope.tx.unit = resp.unit;
 				$scope.tx.value = resp.value;

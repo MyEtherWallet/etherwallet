@@ -3,6 +3,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.curTab = "withdrawETC";
 	$scope.withdrawModal = new Modal(document.getElementById('withdrawTransaction'));
     $scope.withdrawModalETC = new Modal(document.getElementById('withdrawTransactionETC'));
+    $scope.withdrawExtraBModal = new Modal(document.getElementById('withdrawExtraBalance'));
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.showAdvance = false;
@@ -10,8 +11,9 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.slockitContract = "0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
 	$scope.withdrawContract = "0xbf4ed7b27f1d666546e30d74d50d173d20bca754"; //0xd838f9c9792bf8398e1f5fbfbd3b43c5a86445aa
     $scope.daoCContract = "0x180826b05452ce96e157f0708c43381fee64a6b8";
-    // change this to go live
     $scope.daoWithdrawContract = "0x9f5304da62a5408416ea58a17a92611019bd5ce3";
+    $scope.eBWithdrawContract = "0x755cdba6AE4F479f7164792B318b2a06c759833B";
+    $scope.eBTokenContract = "0x5c40eF6f527f4FbA68368774E6130cE6515123f2";
 	$scope.slockitTransfer = "0xa9059cbb";
 	$scope.balanceOf = "0x70a08231";
 	$scope.daoWithdraw = "0x3ccfd60b";
@@ -39,6 +41,9 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 		balanceEth: 0,
         DCbalanceEth: 0,
 		balanceBN: 0,
+        eBTokenBalance: 0,
+        eBEthBalance: 0,
+        eBBalanceBN: 0
 	}
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
@@ -71,6 +76,14 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 				$scope.token.balanceBN = new BigNumber(data.data).toString();
 			}
 		});
+        var userInfo = ethFuncs.getDataObj($scope.eBTokenContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
+		ajaxReq.getEthCall(userInfo, function(data) {
+			if (!data.error) {
+				$scope.token.eBTokenBalance = new BigNumber(data.data).div(etherUnits.getValueOfUnit('milli') * 10).toString();
+				$scope.token.eBEthBalance = new BigNumber($scope.token.eBTokenBalance).div(100).toString();
+				$scope.token.eBBalanceBN = new BigNumber(data.data).toString();
+			}
+		});
         var userInfo = ethFuncs.getDataObj($scope.daoCContract, $scope.balanceOf, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
 		ajaxReq.getClassicEthCall(userInfo, function(data) {
 			if (!data.error) {
@@ -98,10 +111,11 @@ var theDaoCtrl = function($scope, $sce, walletService) {
 	$scope.$watch('[tx,curTab]', function() {
 		$scope.showRaw = false;
 		$scope.sendTxStatus = "";
+        $scope.withdrawTxStatus = "";
 	}, true);
-	$scope.generateAndSendWithdrawTx = function() {
-		$scope.tx.to = $scope.slockitContract;
-		$scope.tx.data = $scope.approveWithdraw + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.withdrawContract), 64) + ethFuncs.padLeft(new BigNumber($scope.token.balanceBN).toString(16), 64);
+	$scope.generateAndSendWithdrawTx = function(tokenContract,withdrawContract,balanceBN, modal) {
+		$scope.tx.to = tokenContract;
+		$scope.tx.data = $scope.approveWithdraw + ethFuncs.padLeft(ethFuncs.getNakedAddress(withdrawContract), 64) + ethFuncs.padLeft(new BigNumber(balanceBN).toString(16), 64);
 		$scope.tx.value = 0;
 		uiFuncs.generateTx(uiFuncs.getTxData($scope),function(rawTx) {
             uiFuncs.sendTx(rawTx.signedTx, function(resp){
@@ -111,7 +125,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
                     $scope.sendTxStatus = $sce.trustAsHtml("Please Wait");
                     var approveTx = resp.data;
                     setTimeout(function(){
-                        $scope.tx.to = $scope.withdrawContract;
+                        $scope.tx.to = withdrawContract;
 						$scope.tx.data = $scope.daoWithdraw;
                         uiFuncs.generateTx(uiFuncs.getTxData($scope),function(rawTx) {
                             uiFuncs.sendTx(rawTx.signedTx, function(resp){
@@ -128,7 +142,7 @@ var theDaoCtrl = function($scope, $sce, walletService) {
                 }
             });
 		});
-        $scope.withdrawModal.close();
+        $scope[modal].close();
 	}
     $scope.generateAndWithdrawDAOC = function() {
         if(!Validator.isPositiveNumber($scope.daoC.donation)){
