@@ -33,7 +33,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	});
     $scope.$watch('[tx.to,tx.value,tx.data,tx.sendMode]', function () {
         if($scope.Validator.isValidAddress($scope.tx.to)&&$scope.Validator.isPositiveNumber($scope.tx.value)&&$scope.Validator.isValidHex($scope.tx.data)){
-            if(!$scope.estimateTimer) clearTimeout($scope.estimateTimer);
+            if($scope.estimateTimer) clearTimeout($scope.estimateTimer);
             $scope.estimateTimer = setTimeout(function(){
                 $scope.estimateGasLimit();
             },500);

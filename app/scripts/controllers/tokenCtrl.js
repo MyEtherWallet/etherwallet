@@ -39,7 +39,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
 	}
     $scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function () {
         if($scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id]!== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to)&&$scope.Validator.isPositiveNumber($scope.tokenTx.value)){
-            if(!$scope.estimateTimer) clearTimeout($scope.estimateTimer);
+            if($scope.estimateTimer) clearTimeout($scope.estimateTimer);
             $scope.estimateTimer = setTimeout(function(){
                 $scope.estimateGasLimit();
             },500);

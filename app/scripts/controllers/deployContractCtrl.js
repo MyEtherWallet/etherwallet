@@ -10,6 +10,7 @@ var deployContractCtrl = function($scope, $sce, walletService) {
 		nonce: null,
 		gasPrice: null
 	}
+    $scope.Validator = Validator;
     $scope.showRaw = false;
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null;
@@ -21,6 +22,24 @@ var deployContractCtrl = function($scope, $sce, walletService) {
     $scope.$watch('tx', function(newValue, oldValue) {
 		$scope.showRaw = false;
 	}, true);
+    $scope.$watch('[tx.data]', function () {
+        if($scope.Validator.isValidHex($scope.tx.data)&&$scope.tx.data!=''){
+            if($scope.estimateTimer) clearTimeout($scope.estimateTimer);
+            $scope.estimateTimer = setTimeout(function(){
+               $scope.estimateGasLimit();
+            },500);
+        }
+    }, true);
+    $scope.estimateGasLimit = function(){
+        var estObj = {
+            from: globalFuncs.donateAddress,
+            value: '0x00',
+            data: ethFuncs.sanitizeHex($scope.tx.data)
+        }
+        ethFuncs.estimateGas(estObj,false,function(data){
+            if(!data.error) $scope.tx.gasLimit = data.data; 
+        });
+    }
 	$scope.generateTx = function() {
 		try {
 			if ($scope.wallet == null) throw globalFuncs.errorMsgs[3];
