@@ -41,15 +41,15 @@
 
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li><strong>{{etherBalance}}</strong> ETH <strong></li>
-        <li><strong>{{etcBalance}}</strong> ETC</li>
+        <li><span class="mono wrap">{{etherBalance}}</span> ETH </li>
+        <li><span class="mono wrap">{{etcBalance}}</span> ETC </li>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li><strong>{{usdBalance}}</strong> USD</li>
-        <li><strong>{{eurBalance}}</strong> EUR</li>
-        <li><strong>{{btcBalance}}</strong> BTC</li>
+        <li><span class="mono wrap">{{usdBalance}}</span> USD </li>
+        <li><span class="mono wrap">{{eurBalance}}</span> EUR </li>
+        <li><span class="mono wrap">{{btcBalance}}</span> BTC </li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>

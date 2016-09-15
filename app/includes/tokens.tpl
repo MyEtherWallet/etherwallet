@@ -17,11 +17,10 @@
   </article>
 
 
-
-
-
   <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
+
+
 
     <!-- Sidebar -->
     <div class="col-sm-4">
@@ -37,22 +36,23 @@
 
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li><strong>{{etherBalance}}</strong> Ether </li>
-        <li><strong>{{etcBalance}}</strong> ETC</li>
+        <li><span class="mono wrap">{{etherBalance}}</span> Ether </li>
+        <li><span class="mono wrap">{{etcBalance}}</span> ETC</li>
       </ul>
 
       <div translate="sidebar_TokenBal"> Token Balances: </div>
-      <ul class="account-info">
-        <div ng-repeat="token in tokenObjs track by $index">
-          <li><strong>{{token.getBalance()}}</strong> {{token.getSymbol()}} </li>
-        </div>
-      </ul>
+      <table class="account-info">
+          <tr ng-repeat="token in tokenObjs track by $index">
+            <td class="mono wrap">{{token.getBalance()}}</td>
+            <td> {{token.getSymbol()}} </td>
+          </tr>
+      </table>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li><strong>{{usdBalance}}</strong> USD</li>
-        <li><strong>{{eurBalance}}</strong> EUR</li>
-        <li><strong>{{btcBalance}}</strong> BTC</li>
+        <li><span class="mono wrap">{{usdBalance}}</span> USD</li>
+        <li><span class="mono wrap">{{eurBalance}}</span> EUR</li>
+        <li><span class="mono wrap">{{btcBalance}}</span> BTC</li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
@@ -68,6 +68,8 @@
 
     </div>
     <!-- / Sidebar -->
+
+
 
     <!-- Content -->
     <div class="col-sm-8">
@@ -145,7 +147,7 @@
         </div>
 
         <div class="form-group col-xs-12" ng-show="showRaw">
-          <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction"translate="SEND_trans">Send Transaction</a>
+          <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans">Send Transaction</a>
         </div>
 
         <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
@@ -154,6 +156,8 @@
 
     </div>
     <!-- / Content -->
+
+
 
     <!-- Send Modal -->
     <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
