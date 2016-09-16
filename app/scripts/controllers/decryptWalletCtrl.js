@@ -28,6 +28,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 	$scope.onPrivKeyPassChange = function() {
 		$scope.showPDecrypt = $scope.privPassword.length > 6;
 	};
+	$scope.onMnemonicChange = function() {
+		$scope.showMDecrypt = bip39.validateMnemonic($scope.manualmnemonic);
+	};
 	$scope.decryptWallet = function() {
 	    $scope.wallet=null;
         $scope.decryptStatus="";
@@ -41,6 +44,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 			} else if ($scope.showFDecrypt) {
 				$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
                 walletService.password = $scope.filePassword;
+			} else if ($scope.showMDecrypt) {
+				$scope.wallet = new Wallet(bip39.mnemonicToSeed($scope.manualmnemonic).slice(0, 32));
 			}
             walletService.wallet = $scope.wallet;
 		} catch (e) {

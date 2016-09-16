@@ -14,6 +14,12 @@
         <span translate="ADD_Radio_3">Paste/Type Your Private Key</span>
       </label>
     </div>
+    <div class="radio">
+      <label>
+        <input type="radio" ng-model="walletType" value="pastemnemonic"/>
+        <span translate="ADD_Radio_5">Paste/Type Your Mnemonic</span>
+      </label>
+    </div>
   </section>
 
 
@@ -49,6 +55,15 @@
       </div>
     </div>
     <!-- /if selected type key-->
+
+    <!-- if selected type mnemonic-->
+    <div id="selectedTypeMnemonic" ng-if="walletType=='pastemnemonic'">
+      <h4 translate="ADD_Radio_5"> Paste/Type Your Mnemonic </h4>
+      <div class="form-group">
+        <textarea rows="4" class="form-control" placeholder="{{ 'x_Mnemonic' | translate }}" ng-model="$parent.$parent.manualmnemonic" ng-change="onMnemonicChange()"></textarea>
+      </div>
+    </div>
+    <!-- /if selected type mnemonic-->
   </section>
 
 

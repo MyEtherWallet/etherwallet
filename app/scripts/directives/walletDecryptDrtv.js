@@ -13,6 +13,10 @@ var walletDecryptDrtv = function() {
         <label>\n \
           <input type="radio" ng-model="walletType" value="pasteprivkey"/><span translate="x_PrivKey2">Private Key</span></label>\n \
       </div>\n \
+      <div class="radio">\n \
+        <label>\n \
+          <input type="radio" ng-model="walletType" value="pastemnemonic"/><span translate="x_Mnemonic">Mnemonic Phrase</span></label>\n \
+      </div>\n \
     </div>\n \
     <div class="col-md-4 col-sm-6">\n \
       <!-- if selected upload -->\n \
@@ -41,11 +45,20 @@ var walletDecryptDrtv = function() {
         </div>\n \
       </div>\n \
       <!-- /if selected type key-->\n \
+      <!-- if selected type mnemonic-->\n \
+      <div id="selectedTypeMnemonic" ng-if="walletType==\'pastemnemonic\'">\n \
+        <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>\n \
+        <div class="form-group">\n \
+          <textarea rows="4" class="form-control" placeholder="{{ \'x_Mnemonic\' | translate}}" ng-model="$parent.$parent.manualmnemonic" ng-class="Validator.isValidMnemonic($parent.$parent.manualmnemonic) ? \'is-valid\' : \'is-invalid\'" ng-change="onMnemonicChange()"></textarea>\n \
+        </div>\n \
+      </div>\n \
+      <!-- /if selected type mnemonic-->\n \
     </div>\n \
-    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt">\n \
+    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt">\n \
       <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt" translate="ADD_Label_6"> Access Your Wallet:</h4>\n \
       <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
-      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
+      <h4 id="uploadbtntxt-mnemonic" ng-show="showMDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
+      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt||showMDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
       <div ng-bind-html="decryptStatus"></div>\n \
     </div>\n \
   </section>'
