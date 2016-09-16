@@ -1342,13 +1342,13 @@
       <!-- Data -->
       <div class="form-group">
         <h4> Byte Code: </h4>
-        <textarea class="form-control" ng-model="tx.data" rows="8"></textarea>
+        <textarea class="form-control" ng-model="tx.data" rows="8" ng-class="Validator.isValidHex(tx.data)&&tx.data!='' ? 'is-valid' : 'is-invalid'"></textarea>
       </div>
 
       <!-- Gas -->
       <div class="form-group">
         <h4 translate="TRANS_gas"> Gas: </h4>
-        <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit"/>
+        <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
       </div>
 
       <!-- Wallet Decrypt -->

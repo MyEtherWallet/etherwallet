@@ -690,6 +690,7 @@
         nonce: null,
         gasPrice: null
       };
+      $scope.Validator = Validator;
       $scope.showRaw = false;
       $scope.$watch(function () {
         if (walletService.wallet == null) return null;
@@ -701,6 +702,24 @@
       $scope.$watch('tx', function (newValue, oldValue) {
         $scope.showRaw = false;
       }, true);
+      $scope.$watch('[tx.data]', function () {
+        if ($scope.Validator.isValidHex($scope.tx.data) && $scope.tx.data != '') {
+          if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
+          $scope.estimateTimer = setTimeout(function () {
+            $scope.estimateGasLimit();
+          }, 500);
+        }
+      }, true);
+      $scope.estimateGasLimit = function () {
+        var estObj = {
+          from: globalFuncs.donateAddress,
+          value: '0x00',
+          data: ethFuncs.sanitizeHex($scope.tx.data)
+        };
+        ethFuncs.estimateGas(estObj, false, function (data) {
+          if (!data.error) $scope.tx.gasLimit = data.data;
+        });
+      };
       $scope.generateTx = function () {
         try {
           if ($scope.wallet == null) throw globalFuncs.errorMsgs[3];else if (!ethFuncs.validateHexString($scope.tx.data)) throw globalFuncs.errorMsgs[9];else if (!globalFuncs.isNumeric($scope.tx.gasLimit) || parseFloat($scope.tx.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
@@ -1004,7 +1023,7 @@
       });
       $scope.$watch('[tx.to,tx.value,tx.data,tx.sendMode]', function () {
         if ($scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data)) {
-          if (!$scope.estimateTimer) clearTimeout($scope.estimateTimer);
+          if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
           $scope.estimateTimer = setTimeout(function () {
             $scope.estimateGasLimit();
           }, 500);
@@ -1433,7 +1452,7 @@
       };
       $scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function () {
         if ($scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id] !== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to) && $scope.Validator.isPositiveNumber($scope.tokenTx.value)) {
-          if (!$scope.estimateTimer) clearTimeout($scope.estimateTimer);
+          if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
           $scope.estimateTimer = setTimeout(function () {
             $scope.estimateGasLimit();
           }, 500);
@@ -1975,11 +1994,12 @@
         var gasAssigned = new BigNumber(0);
         var maxGas = new BigNumber(50000000);
         for (var i = 0; i < calls.length; i++) {
-          if (calls[i].result.failedCall !== undefined) {
-            gasAssigned = new BigNumber(0);
+          if (calls[i].result.failedCall !== undefined || calls[i].result.failedCreate !== undefined) {
+            gasAssigned = new BigNumber(-1);
             break;
           }
-          var gas = new BigNumber(calls[i].action.call.gas).sub(new BigNumber(calls[i].result.call.gasUsed));
+          var cType = calls[i].action.create !== undefined ? 'create' : 'call';
+          var gas = new BigNumber(calls[i].action[cType].gas).sub(new BigNumber(calls[i].result[cType].gasUsed));
           if (maxGas.sub(gas).gt(gasAssigned) && gas.gt(100000)) gasAssigned = maxGas.sub(gas);
         }
         callback({

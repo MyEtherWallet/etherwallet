@@ -74,11 +74,12 @@ ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
 		var gasAssigned = new BigNumber(0);
 		var maxGas = new BigNumber(50000000);
 		for (var i = 0; i < calls.length; i++) {
-            if(calls[i].result.failedCall !== undefined) {
-                gasAssigned = new BigNumber(0);
+            if(calls[i].result.failedCall !== undefined || calls[i].result.failedCreate !== undefined) {
+                gasAssigned = new BigNumber(-1);
                 break;
             }
-			var gas = new BigNumber(calls[i].action.call.gas).sub(new BigNumber(calls[i].result.call.gasUsed));
+            var cType = calls[i].action.create !== undefined ? 'create' : 'call';
+			var gas = new BigNumber(calls[i].action[cType].gas).sub(new BigNumber(calls[i].result[cType].gasUsed));
 			if (maxGas.sub(gas).gt(gasAssigned) && gas.gt(100000)) gasAssigned = maxGas.sub(gas);
 		}
 		callback({
