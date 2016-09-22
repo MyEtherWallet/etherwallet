@@ -32,9 +32,15 @@
 
 @@if (site === 'mew' ) {
   <header ng-controller='tabsCtrl'>
-    <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="small announcement annoucement-warning" target="_blank">
-      <div class="container" translate="MEW_Warning_1">Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!</div>
-    </a>
+
+    <div class="container-fluid">
+      <a href="https://www.reddit.com/r/ethereum/comments/53z16t/we_are_aware_of_the_current_issues_on_the_network/" class="small announcement annoucement-warning" target="_blank">
+        Ethereum Foundation: "We are aware of the current issues on the network and are working towards a resolution. #Ethereum"
+        <br />
+        It <em>may</em> be prudent to sit tight (aka not send ETH) until more information arrives. 09/22/16 7:17:00 AM PDT
+      </a>
+    </div>
+
     <section class="container-fluid bg-gradient header-branding">
       <section class="container">
         <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="My Ether Wallet" /></a>
@@ -44,6 +50,13 @@
 
 @@if (site === 'cx' ) {
   <header ng-controller='tabsCtrl'>
+
+    <div class="container">
+      <a href="https://www.reddit.com/r/ethereum/comments/53z16t/we_are_aware_of_the_current_issues_on_the_network/" class="small announcement annoucement-warning" target="_blank">
+        It may be prudent to NOT send any Ether until the network issue is resolved. We personally are "sitting tight" until more information comes out. 09/22/16 7:12:00 AM PDT
+      </a>
+    </div>
+
     <a href="" class="small announcement annoucement-warning" target="_blank">
       <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
     </a>
