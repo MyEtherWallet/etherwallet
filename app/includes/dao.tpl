@@ -137,7 +137,6 @@
       <section class="daoGetTokens clearfix" ng-show="curTab=='withdrawEB'">
         <br />
         <h4> Withdraw extraBalance </h4>
-        <p class="text-danger strong"> HOLD UP! First, make sure the funds have been deposited by checking that <a href="https://etherscan.io/address/0x755cdba6ae4f479f7164792b318b2a06c759833b"> The extraBalance Withdraw Contract </a> has a balance before attempting to withdraw. <br /> We have pushed this live before funds have been deposited as we are on a plane to Devcon 2 until the night of September 17th. Thank you. </p>
         <ul>
           <li><a href="https://medium.com/curator-multisig-phf-official-channel/extrabalance-withdraw-contract-to-be-funded-on-september-15th-a800b4d746f0#.1qi06xq1c" target="_blank"> Learn More. </a></li>
           <li><a href="https://etherscan.io/address/0x5c40ef6f527f4fba68368774e6130ce6515123f2#readContract" target="_blank"> Check your balance here. </a></li>
