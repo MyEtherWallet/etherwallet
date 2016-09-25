@@ -263,8 +263,8 @@ vi.data = {
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Chân Thành Cảm Ơn: ',
-  TranslatorName_1:     '[Phạm Thế Vũ](https://www.facebook.com/pham.vu.56211) · ',
-  TranslatorAddr_1:     'https://www.facebook.com/pham.vu.56211',
+  TranslatorName_1:     '[Phạm Thế Vũ](https://twitter.com/PhamTheVu3) · ',
+  TranslatorAddr_1:     'https://twitter.com/PhamTheVu3',
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     '[và Ethereum Vietnam](https://www.ethereumvn.com)',
   TranslatorAddr_2:     'https://www.facebook.com/ethereumvietnam https://www.ethereumvn.com',
