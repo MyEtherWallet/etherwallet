@@ -139,7 +139,7 @@ var addWalletCtrl = function($scope, $sce) {
 		$scope.addWalletToStorage('addWalletStats');
 	}
 	$scope.setBalance = function() {
-		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {

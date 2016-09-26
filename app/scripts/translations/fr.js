@@ -137,7 +137,7 @@ fr.data = {
   TRANS_standard:        'ETH (transaction standard)',
   TRANS_eth:             'ETH seulement',
   TRANS_etc:             'ETC seulement',
-  TRANS_advanced:        '+Avancé : Ajouter du gaz ou des données supplémentaires ',
+  TRANS_advanced:        '+Avancé : Ajouter du gaz',
   TRANS_data:            ' Données : ',
   TRANS_gas:             ' Gaz : ',
   TRANS_sendInfo:        'Une transaction standard utilisant 21000 gaz coûtera 0.000441 ETH. Le prix du gaz de 0.000000021 ETH que nous avons choisi est légèrement supérieur au minimum ain d\'assurer une confirmation rapide. Nous ne prenons pas de frais de transaction.',
@@ -156,7 +156,7 @@ fr.data = {
   /* Offline Transaction */
   OFFLINE_Title:         'Génération et envoi d\'une transaction hors ligne',
   OFFLINE_Desc:          'La génération d\'une transaction hors ligne s\'effectue en trois étapes. Les étapes 1 et 3 sont réalisées sur un ordinateur en ligne et l\'étape 2 sur un ordinateur déconnecté du réseau. Cela permet d\'isoler totalement vos clefs privées de toute machine connectée à l\'internet.',
-  OFFLINE_Step1_Title:   'Étape 1 : Gérération de l\'information (ordinateur en ligne)',
+  OFFLLINE_Step1_Title:   'Étape 1 : Gérération de l\'information (ordinateur en ligne)',
   OFFLINE_Step1_Button:  'Générer l\'information',
   OFFLINE_Step1_Label_1: 'Addresse d\'émission : ',
   OFFLINE_Step1_Label_2: 'Note : Il s\'agit de l\'adresse de départ, pas de l\'adresse d\'arrivée. Le nonce est généré à partir du compte de l\'expéditeur. Si on utilise une machine déconnectée du réseau, cette adresse est celle du compte en _cold storage_.',

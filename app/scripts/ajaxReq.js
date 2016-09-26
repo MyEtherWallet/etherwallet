@@ -11,76 +11,40 @@ ajaxReq.config = {
 		'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 	}
 };
-ajaxReq.getCurrentBlock = function(callback) {
+ajaxReq.getCurrentBlock = function(isClassic, callback) {
 	this.post({
 		currentBlock: '',
-        isClassic: false
+        isClassic: isClassic
 	}, callback);
 }
-ajaxReq.getCurrentClassicBlock = function(callback) {
-	this.post({
-		currentBlock: '',
-        isClassic: true
-	}, callback);
-}
-ajaxReq.getBalance = function(addr, callback) {
+ajaxReq.getBalance = function(addr, isClassic, callback) {
 	this.post({
 		balance: addr,
-        isClassic: false
+        isClassic: isClassic
 	}, callback);
 }
-ajaxReq.getClassicBalance = function(addr, callback) {
-	this.post({
-		balance: addr,
-        isClassic: true
-	}, callback);
-}
-ajaxReq.getTransactionData = function(addr, callback) {
+ajaxReq.getTransactionData = function(addr, isClassic, callback) {
 	this.post({
 		txdata: addr,
-        isClassic: false
+        isClassic: isClassic
 	}, callback);
 }
-ajaxReq.getClassicTransactionData = function(addr, callback) {
-	this.post({
-		txdata: addr,
-        isClassic: true
-	}, callback);
-}
-ajaxReq.sendRawTx = function(rawTx, callback) {
+ajaxReq.sendRawTx = function(rawTx, isClassic, callback) {
 	this.post({
 		rawtx: rawTx,
-        isClassic: false
+        isClassic: isClassic
 	}, callback);
 }
-ajaxReq.sendClassicRawTx = function(rawTx, callback) {
-	this.post({
-		rawtx: rawTx,
-        isClassic: true
-	}, callback);
-}
-ajaxReq.getEstimatedGas = function(txobj, callback) {
+ajaxReq.getEstimatedGas = function(txobj, isClassic, callback) {
 	this.post({
 		estimatedGas: txobj,
-        isClassic: false
+        isClassic: isClassic
 	}, callback);
 }
-ajaxReq.getClassicEstimatedGas = function(txobj, callback) {
-	this.post({
-		estimatedGas: txobj,
-        isClassic: true
-	}, callback);
-}
-ajaxReq.getEthCall = function(txobj, callback) {
+ajaxReq.getEthCall = function(txobj, isClassic, callback) {
 	this.post({
 		ethCall: txobj,
-        isClassic: false
-	}, callback);
-}
-ajaxReq.getClassicEthCall = function(txobj, callback) {
-	this.post({
-		ethCall: txobj,
-        isClassic: true
+        isClassic: isClassic
 	}, callback);
 }
 ajaxReq.getTraceCall = function(txobj, isClassic, callback) {

@@ -222,6 +222,22 @@ footer {
     margin-bottom: 0;
     list-style-type: none;
   }
+  table& {
+    font-weight: 200;
+    border-bottom: 0;
+    td {
+      padding: 4px 5px;
+      line-height: 1;
+    }
+    td:first-child {
+      max-width: 115px;
+      word-wrap: break-word;
+      padding-left: 1em;
+    }
+    tr:nth-child(even) {
+      background-color: @gray-lightest;
+    }
+  }
 }
 
 input[type="text"]+.eye {

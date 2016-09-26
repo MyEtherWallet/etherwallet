@@ -33,7 +33,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	});
     $scope.$watch('[tx.to,tx.value,tx.data,tx.sendMode]', function () {
         if($scope.Validator.isValidAddress($scope.tx.to)&&$scope.Validator.isPositiveNumber($scope.tx.value)&&$scope.Validator.isValidHex($scope.tx.data)){
-            if(!$scope.estimateTimer) clearTimeout($scope.estimateTimer);
+            if($scope.estimateTimer) clearTimeout($scope.estimateTimer);
             $scope.estimateTimer = setTimeout(function(){
                 $scope.estimateGasLimit();
             },500);
@@ -54,7 +54,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         });
     }
 	$scope.setBalance = function() {
-		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {
@@ -66,7 +66,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 				});
 			}
 		});
-		ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function(data) {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), true, function(data) {
 			if (data.error) {
 				$scope.etcBalance = data.msg;
 			} else {
@@ -99,14 +99,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
            return;
 	   }
 		var txData = uiFuncs.getTxData($scope);
-		var genFunc = $scope.tx.sendMode == 2 ? 'generateClassicTx' : 'generateTx';
 		if ($scope.tx.sendMode != 0) {
 			txData.to = $scope.replayContract;
-			//txData.gasLimit = 60000;
 			if ($scope.tx.sendMode == 1) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);
 			else if ($scope.tx.sendMode == 2) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
 		}
-		uiFuncs[genFunc](txData, function(rawTx) {
+		uiFuncs.generateTx(txData, $scope.tx.sendMode == 2, function(rawTx) {
 			if (!rawTx.isError) {
 				$scope.rawTx = rawTx.rawTx;
 				$scope.signedTx = rawTx.signedTx;
@@ -120,8 +118,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.sendTx = function() {
 		$scope.sendTxModal.close();
-		var sendFunc = $scope.tx.sendMode == 2 ? 'sendClassicTx' : 'sendTx';
-		uiFuncs[sendFunc]($scope.signedTx, function(resp) {
+		uiFuncs.sendTx($scope.signedTx, $scope.tx.sendMode == 2, function(resp) {
 			if (!resp.isError) {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a> & <a href='http://gastracker.io/tx/" + resp.data + "' target='_blank'> ETC TX via GasTracker.io</a>"));
 				$scope.setBalance();
@@ -131,7 +128,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		});
 	}
 	$scope.transferAllBalance = function() {
-		uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, function(resp) {
+		uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, $scope.tx.sendMode == 2, function(resp) {
 			if (!resp.isError) {
 				$scope.tx.unit = resp.unit;
 				$scope.tx.value = resp.value;

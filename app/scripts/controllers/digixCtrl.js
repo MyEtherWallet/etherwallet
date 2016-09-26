@@ -35,7 +35,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 		}
 	}
 	$scope.setBalance = function() {
-		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {
@@ -48,7 +48,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 			}
 		});
 		var userInfo = ethFuncs.getDataObj($scope.digixContract, $scope.digixUserInfo, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-		ajaxReq.getEthCall(userInfo, function(data) {
+		ajaxReq.getEthCall(userInfo, false, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {
@@ -74,7 +74,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 		return digixObj;
 	}
 	$scope.generateTx = function(){
-	   uiFuncs.generateTx(uiFuncs.getTxData($scope), function(rawTx) {
+	   uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function(rawTx) {
 			if (!rawTx.isError) {
 				$scope.rawTx =rawTx.rawTx;
 				$scope.signedTx = rawTx.signedTx;
@@ -88,7 +88,7 @@ var digixCtrl = function($scope, $sce, walletService) {
     }
 	$scope.sendTx = function() {
 		$scope.sendTxModal.close();
-		uiFuncs.sendTx($scope.signedTx, function(resp){
+		uiFuncs.sendTx($scope.signedTx, false, function(resp){
 		  if(!resp.isError) {
             $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
 		      $scope.setBalance();

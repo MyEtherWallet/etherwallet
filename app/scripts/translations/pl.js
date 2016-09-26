@@ -136,7 +136,7 @@ pl.data = {
   TRANS_standard:        'ETH (Standardowa Transakcja)',
   TRANS_eth:             'Tylko ETH',
   TRANS_etc:             'Tylko ETC',
-  TRANS_advanced:        '+Zaawansowane: Dodaj Więcej Paliwa lub Dane ',
+  TRANS_advanced:        '+Zaawansowane: Dodaj Dane ',
   TRANS_data:            ' Dane: ',
   TRANS_gas:             ' Paliwo: ',
   TRANS_sendInfo:        'Standardowa transakcja, zużywająca 21000 paliwa, będzie kosztować 0.000441 ETH. My używamy ceny paliwa nieco-powyżej-minimum, co odpowiada 0.000000021 ETH aby upewnić się, że zostanie szybko zatwierdzona. Nie pobieramy żadnych dodatkowych opłat.',

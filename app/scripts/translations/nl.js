@@ -4,17 +4,6 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* Geth Error Messages */
-  GETH_InvalidSender:      'Invalid sender',
-  GETH_Nonce:              'Nonce too low',
-  GETH_Cheap:              'Gas price too low for acceptance',
-  GETH_Balance:            'Insufficient balance',
-  GETH_NonExistentAccount: 'Account does not exist or account balance too low',
-  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
-  GETH_IntrinsicGas:       'Intrinsic gas too low',
-  GETH_GasLimit:           'Exceeds block gas limit',
-  GETH_NegativeValue:      'Negative value',
-
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -148,7 +137,7 @@ nl.data = {
   TRANS_standard:        'ETH (Standaard Transactie)',
   TRANS_eth:             'Enkel ETH',
   TRANS_etc:             'Enkel ETC',
-  TRANS_advanced:        '+Geavanceerd: Voeg meer Gas of Data toe ',
+  TRANS_advanced:        '+Geavanceerd: Voeg Data toe ',
   TRANS_data:            ' Data: ',
   TRANS_gas:             ' Gas: ',
   TRANS_sendInfo:        'Een standaard transactie met 21000 gas zal 0.000441 ETH kosten. Wij gebruiken een iets-boven-minimum gas prijs van 0.000000021 ETH om te garranderen dat de transactie snel uitgevoerd zal worden. Wij zijn niet verantwoordelijk voor je transactie kosten.',
@@ -167,7 +156,7 @@ nl.data = {
   /* Offline Transaction */
   OFFLINE_Title:         'Genereer & Verzend een Offline Transactie',
   OFFLINE_Desc:          'Een offline transactie doe je in drie stappen. Stap 1 en 3 doe je op een online computer, terwijl je stap 2 uitvoert op een offline/afgeschermde computer. Dit zorgt ervoor dat je prive sleutel niet in aanraking komt met een met internet verbonden computer.',
-  OFFLINE_Step1_Title:   'Stap 1: Genereer Informatie (Online Computer)',
+  OFFLLINE_Step1_Title:   'Stap 1: Genereer Informatie (Online Computer)',
   OFFLINE_Step1_Button:  'Genereer Informatie',
   OFFLINE_Step1_Label_1: 'Van Adres: ',
   OFFLINE_Step1_Label_2: 'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd van het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
@@ -230,13 +219,13 @@ nl.data = {
   MYWAL_Edit_2:           'Bewerk Wallet: ',
   MYWAL_Name:             'Wallet Naam',
   MYWAL_Content_1:        'Waarschuwing! Je staat op het punt om je Wallet te verwijderen: ',
-  MYWAL_Content_2:        'Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze Wallet voordat je het verwijderd.',
-  MYWAL_Content_3:        'Als je deze Wallet in de toekomst nog wilt gebruiken met MyEtherWallet CX, zul je het met de hand moeten toevoegen door gebruik te maken van de prive sleutel/JSON en wachtwoord.',
+  MYWAL_Content_2:        'Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze wallet voordat je het verwijderd.',
+  MYWAL_Content_3:        'Als je deze wallet in de toekomst nog wilt gebruiken met MyEtherWallet CX, zul je het met de hand moeten toevoegen door gebruik te maken van de prive sleutel/JSON en wachtwoord.',
 
   /* View Wallet Details */
-  VIEWWALLET_Subtitle:      'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren Wallet opnieuw afdrukken. Je zou dit kunnen doen om [je account in Geth/Mist te importeren](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Als je enkel je saldo wilt checken adviseren we je om gebruik te maken van een blockchain explorer zoals [etherscan.io](http://etherscan.io/).',
-  VIEWWALLET_Subtitle_Short: 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren Wallet opnieuw afdrukken. ',
-  VIEWWALLET_SuccessMsg:     'Gelukt! Hier zijn je Wallet details.',
+  VIEWWALLET_Subtitle:       'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. Je zou dit kunnen doen om [je account in Geth/Mist te importeren](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Als je enkel je saldo wilt checken adviseren we je om gebruik te maken van een blockchain explorer zoals [etherscan.io](http://etherscan.io/).',
+  VIEWWALLET_Subtitle_Short: 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. ',
+  VIEWWALLET_SuccessMsg:     'Gelukt! Hier zijn je wallet details.',
 
   /* Chrome Extension */
   CX_error_1:           'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
@@ -270,6 +259,17 @@ nl.data = {
   SUCCESS_5:            'Je hebt succesvol gestemd. Fijn dat je een actief participerend DAO deelnemer bent.',
   SUCCESS_6:            'Bestand Geselecteerd: ',
 
+  /* Geth Error Messages */
+  GETH_InvalidSender:      'Ongeldige verzender',
+  GETH_Nonce:              'Nonce te laag',
+  GETH_Cheap:              'Gas prijs te laag voor acceptatie',
+  GETH_Balance:            'Ontoereikend saldo',
+  GETH_NonExistentAccount: 'Account bestaat  niet of account saldo te laag',
+  GETH_InsufficientFunds:  'Ontoereikend saldo voor gas * prijs + waarde',
+  GETH_IntrinsicGas:       'Intrinsiek gas te laag',
+  GETH_GasLimit:           'Overstijgt blok gas limiet',
+  GETH_NegativeValue:      'Negative waarde',
+
   /* Translation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Veel dank voor onze vertalers: ',
@@ -290,12 +290,12 @@ nl.data = {
   /* Translator 5: Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
-  HELP_Warning:       'Als je een wallet aanmaakt -of- repo hebt gedownload voor **31 december 2015**, check dan alsjebieft je wallets en download een nieuwe versie van de repo. Klik voor detais.',
-  HELP_Desc:          'Zie je dat er iets mist? Of heb je een andere vraag? [Neem contact met ons op](mailto:myetherwallet@gmail.com), en we zullen niet alleen je vraag beantwoorden, maar ook deze pagina updated zodat deze nog nuttiger wordt for the mensen in de toekomst!',
+  HELP_Warning:       'Als je een wallet aangemaakt hebt -of repo hebt gedownload- voor **31 december 2015**, check dan alsjebieft je wallets en download een nieuwe versie van de repo. Klik voor detais.',
+  HELP_Desc:          'Zie je dat er iets mist? Of heb je een andere vraag? [Neem contact met ons op](mailto:myetherwallet@gmail.com), en we zullen niet alleen je vraag beantwoorden, maar ook deze help pagina bijwerken zodat deze nog nuttiger wordt voor toekomstige gebruikers!',
   HELP_Remind_Title:  'Enkele herinneringen',
-  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, en enkele onderliggende Javascript libraries waar we gebruik van maken zijn onderheving aan active ontwikkeling.** Hoewel we grondig testen & er inmiddels tienduizenden wallets succesvol zijn aangemaakt door mensen over de hele wereld, blijft er altijd een geringe kans dat iets er onverwachts optreedt waardoor je je ETH kunt verliezen. Investeer alsjeblieft niet meer dan dat je bereid bent om te verliezen, en wees voorzichtig. Zou er onverhoopt toch iets gebeuren vinden we dat zeer spijtig, echter **zullen wij nooit verantwoordelijk zijn voor de verloren Ether**.',
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, en enkele onderliggende Javascript libraries waar we gebruik van maken zijn onderheving aan active ontwikkeling.** Hoewel we grondig testen & er inmiddels tienduizenden wallets succesvol zijn aangemaakt door mensen over de hele wereld, blijft er altijd een geringe kans dat iets er onverwachts optreedt waardoor je je ether kunt verliezen. Investeer alsjeblieft niet meer dan dat je bereid bent om te verliezen, en wees voorzichtig. Zou er onverhoopt toch iets gebeuren vinden we dat zeer spijtig, echter **zullen wij nooit verantwoordelijk zijn voor de verloren Ether**.',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX zijn geen "web wallets". Je maakt bij ons geen account aan noch geef je ooit je Ether aan ons in bezit. Alle gegevens verlaten nooit je computer/je browser. We helpen je alleen gemakkelijk toegang te verkrijgen tot de blockchain zodat je er informatie in kunt opslaan en kunt uitlezen.',
-  HELP_Remind_Desc_3: 'Als je je prive sleutel en wachtwoord niet opslaat, is er geen enkele manier om toegang tot je wallet te verkrijgen of het saldo dat er in zit. Maak back-up`s en bewaar deze op meerdere fysieke lokaties en dus niet alleen op je eigen computer!',
+  HELP_Remind_Desc_3: 'Als je je prive sleutel en wachtwoord niet opslaat, is er geen enkele manier om toegang tot je wallet te verkrijgen of het saldo dat het bevat. Maak back-up`s en bewaar deze op meerdere fysieke lokaties en dus niet alleen op je eigen computer!',
 
   HELP_0_Title:        '0) Ik ben nieuw. Waar begin ik?',
   HELP_0_Desc_1:       'MyEtherWallet geeft je de mogelijkheid om nieuwe wallets te genereren zodat je daarin je Ether kunt bewaren in plaat van op een exchange. Dit process vind volledig lokaal plaats, op je eigen computer en niet op onze servers. Daarom **ben je volledig zelf verantwoordelijk voor het veilig opslaan** van je via deze website aangemaakte wallets.',
@@ -304,7 +304,7 @@ nl.data = {
   HELP_0_Desc_4:       'Verrifieer dat je toegang hebt tot dit nieuwe wallet en dat je alle noodzakelijke informatie correct hebt opgeslagen.',
   HELP_0_Desc_5:       'Verzend Ether naar dit nieuwe wallet.',
 
-  HELP_1_Title:        '1) Hoe creer ik een nieuw wallet ',
+  HELP_1_Title:        '1) Hoe creer ik een nieuw wallet?',
   HELP_1_Desc_1:       'Ga naar de "Genereer Wallet" pagina.',
   HELP_1_Desc_2:       'Ga naar de "Wallet Toevoegen" pagina & selecteer "Genereer Nieuw Wallet"',
   HELP_1_Desc_3:       'Voer een sterk wachtwoord in. Als je denkt dat je het misschien gaat vergeten, bewaar het dan op een veilige plek. Je zult dit wachtwoord nodig hebben om transacties te versturen.',
@@ -504,7 +504,7 @@ nl.data = {
   HELP_17_Title:          '17) Waarom wordt mijn saldo niet weergegeven nadat ik mijn wallet heb ontsleuteld? ',
   HELP_17_Desc_1:         ' Dit wordt zeer waarschijnlijk veroorzaakt door het feit dat je achter een firwall zit. De API waarvan we gebruik maken om je saldo op te halen en te converteren wordt vaak geblokkeerd door firewalls om wat voor reden dan ook. Het is nog steeds mogelijk om transacties te verzenden, je hebt enkel een andere methode nodig om je saldo the checken, zoals bijvoorbeeld etherscan.io',
 
-  HELP_18_Title:          '18) Waar is mijn geth wallet bestand?',
+  HELP_18_Title:          '18) Waar is mijn Geth wallet bestand?',
 
   HELP_19_Title:          '19) Waar is mijn Mist wallet bestand? ',
   HELP_19_Desc_1:         'Mist bestanden zijn normaliter te vinden op de bovenstaande bestandslocaties, maar het volgende is veel makkelijker: open Mist, selecteer "Accounts" in de top balk, selecteer "Backup", en selecteer "Accounts". Hiermee open je de map waar je bestanden worden bewaard.',
@@ -512,7 +512,7 @@ nl.data = {
   HELP_20_Title:          '20) Waar is mijn pre-sale wallet bestand?',
   HELP_20_Desc_1:         'Waat jij het opgeslagen hebt. ;) Het was ook naar je gemailed, dus kijk ook daar. Zoek naar het bestand genaamd "ethereum_wallet_backup.json" en selecteer dit bestand. Dit wallet bestand zal versleuteld (encrypted) zijn met een wachtwoord dat je aangemaakt hebt tijdens de aankoop van de pre-sale.',
 
-  HELP_21_Title:          '21) Kan iedereen niet simpelweg willekeurige prive sleutels invoeren, zoeken naar een saldo, dit naar hun eigen adres versturen? ',
+  HELP_21_Title:          '21) Kan iedereen niet simpelweg willekeurige prive sleutels invoeren, zoekend naar een saldo, en dit naar hun eigen adres versturen? ',
   HELP_21_Desc_1:         'De korte versie: ja, echter het vinden van een account met saldo gaat je langer duren dan het universum...dus...nee.',
   HELP_21_Desc_2:         'De lange ELI5 versie: Ethereum is gebasserd op [Publieke Sleutel Cryptografie](https://en.wikipedia.org/wiki/Public-key_cryptography), en meer specifiek op [Elliptische curve cryptografie](https://eprint.iacr.org/2013/734.pdf) wat op grote schaal gebruikt wordt, niet alleen in Ethereum. De meeste van onze servers zijn beveiligd via ECC. Bitcoin maakt hier ook gebruik van, net als SSH, TLS en vele andere dingen. De specifieke Ethereum sleutels zijn 256-bit sleutels, welke sterker zijn dan 128-bit en 192-bit, terwijl die ook op grote schaal gebruikt worden en no steeds als veilig worden beschouwd door experts.',
   HELP_21_Desc_3:         'Hierbij heb je een prive sleutel en een publieke sleutel. Vanuit de prive sleutel kan de publieke sleutel afgeleid worden, maar de publieke sleutel kan niet terug omgezet worden in de prive sleutel. Het feit dat het internet en ’s werelds geheimen gebruik maken van deze cryptografie betekend dat indien er een manier is om van publieke sleutel naar prive sleutel te gaan, dat jouw verloren ether wel het minste van een ieders probleem is.',
@@ -540,8 +540,8 @@ nl.data = {
   HELP_Sec_Desc_7:        'Ga vervolgens, voor de zekerheid, naar de "Resources" pagina. Hier vind je alle verschillende elementen waaruit de website is opgebouwd. Als je door de items Local Storage, Cookies en Cache klikt zul je zien dat er niets wordt opgeslagen. Er wordt niets opgeslagen. Ververs de pagina en je bent terug waar je begon.',
   HELP_Sec_Desc_8:        'Als je je niet pettig voelt bij het gebruikt van deze tool, gebruik hem dan vooral niet. We hebben deze tool voor mensen gemaakt als een handige manier om wallets te genereren en transacties te maken zonder dat je in de command prompt hoeft te duiken of een "full node" moet draaien. Nogmaals, voel je vrij om contact met ons op te nemen als je je zorgen maakt en we zullen zo snel mogelijk reageren. Bedankt! ',
 
-  HELP_FAQ_Title:         'Meer hulpzame antwoorden op veel voorkomende vragen',
-  HELP_Contact_Title:     'Manieren om in contact te komen'
+  HELP_FAQ_Title:         'Meer hulpzame antwoorden op veel voorkomende vragen:',
+  HELP_Contact_Title:     'Manieren om in contact te komen:'
 };
 
 module.exports = nl;
