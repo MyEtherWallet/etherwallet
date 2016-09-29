@@ -4,8 +4,6 @@ var vi = function() {}
 vi.code = 'vi';
 vi.data = {
 
-  /* Geth Error Messages */
-
   /* Navigation*/
   NAV_YourWallets:      'Ví Của Bạn',
   NAV_AddWallet:        'Thêm Ví',
