@@ -4,8 +4,6 @@ var vi = function() {}
 vi.code = 'vi';
 vi.data = {
 
-  /* Geth Error Messages */
-
   /* Navigation*/
   NAV_YourWallets:      'Ví Của Bạn',
   NAV_AddWallet:        'Thêm Ví',
@@ -57,7 +55,7 @@ vi.data = {
   FOOTER_1b:            'Nhà Phát Triển:',
   FOOTER_2:             'Quyên Góp & Ủng Hộ Vào "Quỹ Phát Triển" Từ Bạn Là Một Hành Động Đáng Trân Trọng:',
   FOOTER_3:             'Client-side wallet generation by',
-  FOOTER_4:               'Những Điều Cần Lưu Ý',
+  FOOTER_4:             'Những Điều Cần Lưu Ý',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Thông Tin Tài Khoản: ',
@@ -188,6 +186,7 @@ vi.data = {
   DAO_Inst:               'Đúng rồi, Bạn chỉ cần chọn vào nút lớn màu đỏ.',
   DAO_Warning:            'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hãy thêm vào 0.001 ether vào tài khoản và thực hiện lại. ',
   DAOModal_Title:         'Đảm bảo rằng...',
+  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Bạn Muốn thực hiện việc "Thu Hồi"',
   DAOModal_2:             'Số Dao Token đến',
   DAOModal_3:             'Hoàn Lại', // "in return for"
@@ -259,6 +258,17 @@ vi.data = {
   SUCCESS_4:            'Ví của bạn đã được thêm thành công:',
   SUCCESS_5:            'Bạn đã bỏ phiếu thành công. Cảm ơn vì đã tham gia tích cực trong The DAO.',
   SUCCESS_6:            'Tập Tin Được Chọn: ',
+
+   /* Geth Error Messages */
+  GETH_InvalidSender:      'Sai người nhận',
+  GETH_Nonce:              'Nonce too low',
+  GETH_Cheap:              'Gas quá thấp',
+  GETH_Balance:            'Insufficient balance',
+  GETH_NonExistentAccount: 'Tài khoản không tồn tại hoặc số dư quá thấp',
+  GETH_InsufficientFunds:  'Insufficient funds for gas * price + value',
+  GETH_IntrinsicGas:       'Intrinsic gas too low',
+  GETH_GasLimit:           'Exceeds block gas limit',
+  GETH_NegativeValue:      'Negative value',
 
   /* Tranlsation Info */
   translate_version:    '0.3',
@@ -395,7 +405,7 @@ vi.data = {
   HELP_6_Desc_13:       'Nếu tất cả những giao dịch nhận và gửi đều được thực hiện thành công thì Các Ví của bạn đã hoàn toàn sữ dụng được rất tốt.',
   HELP_6_Desc_14:       'Gửi đi toàn bộ số dư ETH thì bạn nên sử dụng chức năng "Chỉ ETH" Và làm giống vậy đối với số dư ETC bằng cách sử dụng chức năng  "Chỉ ETC".',
   HELP_6_Desc_15:       'Về sau bạn có thể sử dụng để gửi đi các giao dịch bằng phương pháp tiêu chuẩn mà không bị ảnh hưởng và ngăn chặn việc Replay attack. ',
-    
+
   HELP_7_Title:         '7) Làm thế nào dễ gửi token và thêm Token vào Ví?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) là cách tốt nhất dễ kiễm tra Token và số Token.',
   HELP_7_Desc_1:        'Đi đến trang "Gửi Token".',
@@ -413,21 +423,21 @@ vi.data = {
   HELP_7_Desc_13:       'Chọn vào nút màu xanh phía dưới "Gửi giao dịch đi".',
   HELP_7_Desc_14:       'Sau đó một thông báo sẽ xuất hiện. Xác thực lại số lượng Ether và địa chỉ đến. sau đó nhấn vào nút  "Có, Tôi chắc chắn! Hãy thực hiện giao dịch.".',
   HELP_7_Desc_15:       'Giao dịch của bạn sẽ được Thực hiện. TXid sẽ hiển thị cho bạn. Bạn có thể chọn vào TXid và nhìn ấy giao dịch của bạn trên blockchain.',
-    
+
   HELP_8_Title:         '8) Những gì sẽ xảy ra nếu trang của chúng tôi bị sập?',
   HELP_8_Desc_1:        'MyEtherWallet không phải là Ví online. Bạn không cần phải đăng nhập và không có bất cứ gì được lưu lại trên máy chủ của chúng tôi. Đây chỉ đơn giản là một giao diện cho phép bạn tương tác với blockchain.',
   HELP_8_Desc_2:        'Nếu MyEtherWallet.com bị sập, bạn sẽ phải tìm một giải pháp khác (như là geth hoặc Ví Ethereum / Mist) dễ tiếp tục thực hiện giao dịch. Nhưng bạn không cần thiết phải "Mang" Ether của bạn ra khỏi MyEtherWallet bởi vì số Ether đó không nằm trong MyEtherWallet. Bởi vì số Ether đó đang nằm trong Ví Ethereum được khởi tạo thông qua trang của chúng tôi.',
   HELP_8_Desc_3:        'Bạn chỉ cần bỏ tập tin chứa định dạng mã hoá Private key của bạn vào và Geth/Mist sẽ tự động giải mã tập tin (mã hoá) trực tiếp bên trong  geth / Ví Ethereum / Mist một cách dễ dàng. Xem câu hỏi #12.',
   HELP_8_Desc_4:        'Ngoài ra, Khả năng xảy ra vấn đề trang MyEtherWallet bị sập là rất khó. Cũng như việc chúng tôi không lưu trữ lại bất cứ dữ liệu gì vì vậy giá trị của nó sở hữu hoàn toàn bằng không. Nếu chúng tôi buộc phải  tháo tên miền này xuống, thì toàn bộ sẽ vẫn còn, tồn tại và công khai trên trang  [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). Bạn có thể tải tập tin nén của nó và chạy nó trực tiếp trên máy tính của bạn. ',
-  
+
   HELP_8CX_Title:        '8) Những gì sẽ xảy ra néu MyEtherWallet CX hoàn toàn biến mất?',
   HELP_8CX_Desc_1:       'Trước tiên, Toàn bộ dữ liệu đã được lưu trên máy tính của bạn, Chứ không phải ở máy chủ của chúng tôi. Chúng tôi biết rằng bạn sẽ dễ nhầm lẫn, nhưng khi bạn nhìn vào kho tiện ích của Chrome, bạn sẽ không tìm thấy được những gì hiện đang được lưu trên máy chủ của chúng tôi - Bởi vì toàn bộ đều được lưu trên chính máy tính của bạn.',
   HELP_8CX_Desc_2:       'Điều đó cho thấy tầm **quan trọng** đối với việc sao lưu toàn bộ thông tin và dữ liệu Ví mới được khởi tạo từ bạn tại trang MyEtherWallet CX. Và việc sao lưu dữ liệu là cách dự phòng tốt khi những vấn đề xấu có thể xảy ra đối với MyEtherWallet CX hoặc máy tính của bạn, và nó giúp bạn có toàn bộ thông tin cần thiết dễ bạn có thể truy cập vào Ví và quản lý được số Ether của bạn. xem lại phần #2a dễ rõ hơn về cách sao lưu dữ liệu.',
   HELP_8CX_Desc_3:       'Nếu vì một lý do bất kì buộc MyEtherWallet CX không tồn tại trên kho tiện ích của Chrome, bạn có thể tìm thấy mã nguồn trên Github và tải về máy của bạn. Xem phần #5 ở trên.',
-    
+
   HELP_9_Title:          '9) Có phải trang "Gửi Ether" là trang offline?',
   HELP_9_Desc_1:         ' Không, Trang "gửi giao dịch đi" không offline. Nó cần kết nối internet dễ xác định được giá Gas hiện tại, nonce của tài khoản, và phát tán các dữ liệu dễ xác thực các giao dịch (không "gửi" nó đi). Tuy nhiên, nó chỉ gửi đi khi giao dịch của bạn được ký từ chính bạn. Private key của bạn hoàn toàn an toàn từ bạn. hiện nay, chúng tôi có hỗ trợ thêm chức năng "Giao dịch Offline" dễ bạn có thể đảm bảo Private key của bạn đang trong tình trạng offline/airgapped của máy tính trong bất cứ lúc nào.',
-    
+
   HELP_10_Title:         '10) Làm thế nào dễ tạo giao dịch Offline?',
   HELP_10_Desc_1:        'Đi đến trang "Giao dịch Offline" thông qua máy tính đang online.',
   HELP_10_Desc_2:        'Điền vào "Địa chỉ gửi". Lưu ý, đây là địa chỉ mà bạn dùng dễ gửi, không phải là địa chỉ đến. và nó sẽ khởi tạo nonce và xác định giá Gas hiện tại.',
@@ -440,14 +450,14 @@ vi.data = {
   HELP_10_Desc_9:        'nhấn vào nút "Khởi tạo Chữ Ký cho giao dịch".',
   HELP_10_Desc_10:       'Các trường dữ liệu phía dưới nút này sẽ dùng dễ chứng thực chữ ký cho giao dịch của bạn. Cóp hết đoạn dữ liệu này và chuyển đến máy tính online của bạn. ',
   HELP_10_Desc_11:       'Trên máy tính online của bạn, bạn hãy dán chữ ký giao dịch vào khung điền văn bản tại bước #3 và chọn nút "Gửi Ether". Việc làm này sẽ phát sóng đi giao dịch của bạn.',
-    
+
   HELP_11_Title:          '11) Làm thế nào đễ gửi đi các Hợp đồng?',
   HELP_11_Desc_1:         'Gửi đi một hợp đồng thường đòi hỏi bạn phải bao gồm dữ liệu hoặc phải bổ sung thêm Gas và có thể là yêu cầu bổ sung cả hai.',
   HELP_11_Desc_2:         'Đi đến trang "Gửi Ether". ',
   HELP_11_Desc_3:         'Chọn tập tin Ví của bạn -hoặc- Private key của bạn đễ mở khoá Ví. ',
   HELP_11_Desc_4:         'Điền vào "Địa chỉ đến" và "Số lượng cần gửi"',
   HELP_11_Desc_5:         'chọn "+ Nâng cao: Thêm dữ liệu" Bên dưới nút này là khung điền số lượng cần gửi. Điều này sẽ có hai trường hợp đễ bổ sung mà bạn có thể sử dụng dễ tăng gas nhiều hơn số 21000 được mặc định, hoặc thêm dữ liệu cho giao dịch của bạn.',
-    
+
   HELP_12_Title:          '12) Làm thế nào dễ tôi sử dụng Ví được khởi tạo từ MyEtherWallet trên geth / Ví Ethereum / Mist?',
   HELP_12_Desc_1:         'Bạn phải sử dụng tập tin chứa định dạng JSON dành cho Geth/Mist từ MyEtherWallet v2+....',
   HELP_12_Desc_2:         'Đi đến trang "Xem Thông Tin Ví".',
