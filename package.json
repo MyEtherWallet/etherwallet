@@ -35,6 +35,7 @@
     "install": "^0.6.1",
     "npm": "^3.8.5",
     "scryptsy": "^1.2.1",
+    "string-format": "^0.5.0",
     "uuid": "^2.0.1"
   }
 }

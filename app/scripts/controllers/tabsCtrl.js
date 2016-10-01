@@ -54,10 +54,22 @@ var tabsCtrl = function($scope, globalService, $translate) {
 			}
 		}
 	}
+	$scope.setParityErrMsgLanguage = function() {
+		globalFuncs.parityErrorMsgs = {};
+		for (var s in globalFuncs.parityErrors) {
+			var key = globalFuncs.parityErrors[s];
+			if (key.indexOf("PARITY_") === 0) {
+				$scope.setLanguageVal(key,'parityErrorMsgs',key);
+			}
+		}
+	}
 	$scope.changeLanguage = function(key, value) {
 		$translate.use(key);
 		$scope.setErrorMsgLanguage();
-		$scope.setGethErrMsgLanguage();
+		if (globalFuncs.getEthNodeName() == "geth")
+			$scope.setGethErrMsgLanguage();
+		else
+			$scope.setParityErrMsgLanguage();
 		$scope.curLang = value;
 		$scope.setArrowVisibility();
 		$scope.dropdown = false;

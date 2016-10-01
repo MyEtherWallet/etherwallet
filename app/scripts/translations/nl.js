@@ -275,6 +275,16 @@ nl.data = {
   Translator_Desc:      'Veel dank voor onze vertalers: ',
   TranslatorName_1:     '[h3ll0fr13nd](https://www.myetherwallet.com/?gaslimit=21000&to=0xB5FbCE123F12347206c881cae73A3046BA1A90bA&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0xB5FbCE123F12347206c881cae73A3046BA1A90bA',
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
+
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     ' ',
   TranslatorAddr_2:     ' ',

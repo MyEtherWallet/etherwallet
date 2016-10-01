@@ -271,6 +271,16 @@ it.data = {
   GETH_GasLimit:           'Eccede il limite gas per il blocco',
   GETH_NegativeValue:      'Valore negativo',
 
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "È già stata importata una transazione con lo stesso hash.",
+  PARITY_Old:                   "Il nonce della transazione è troppo basso. Prova ad incrementare il nonce.",
+  PARITY_TooCheapToReplace:     "La commissione per la transazione è troppo bassa. Nella coda c'è un'altra transazione con lo stesso nonce. Prova ad aumentare la commissione o ad incrementare il nonce.",
+  PARITY_LimitReached:          "Ci sono troppe transazioni nella coda. La tua transazione è stata scartata per il superamento del limite. Prova ad aumentare la commissione.",
+  PARITY_InsufficientGasPrice:  "La commissione per la transazione è troppo bassa. Non soddisfa la commissione minima del tuo nodo (minima: {}, fornita: {}). Prova ad aumentare la commissione.",
+  PARITY_InsufficientBalance:   "Fondi insufficienti. L'account dal quale stai provando ad inviare la transazione non ha abbastanza fondi. Richiesti {} ma presenti: {}.",
+  PARITY_GasLimitExceeded:      "Il costo della transazione eccede il limite gas corrente. Limite: {}, fornito: {}. Prova a ridurre il gas fornito.",
+  PARITY_InvalidGasLimit:       "Il gas fornito supera il limite.",
+
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Grazie ai nostri traduttori: ',
