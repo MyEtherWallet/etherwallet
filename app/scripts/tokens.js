@@ -5,7 +5,7 @@ var Token = function(contractAddress, userAddress, symbol, decimal) {
 	this.symbol = symbol;;
 	this.decimal = decimal;
 	this.setBalance();
-    this.balance = "loading";
+  this.balance = "loading";
 }
 Token.balanceHex = "0x70a08231";
 Token.transferHex = "0xa9059cbb";
@@ -43,6 +43,11 @@ Token.popTokens = [{
 	"address": "0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
 	"symbol": "Nexium",
 	"decimal": 3
+},
+{
+	"address": "0xD8912C10681D8B21Fd3742244f44658dBA12264E",
+	"symbol": "PLU",
+	"decimal": 18
 },
 {
 	"address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",

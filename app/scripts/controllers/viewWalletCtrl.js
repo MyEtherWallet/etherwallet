@@ -1,5 +1,6 @@
 'use strict';
 var viewWalletCtrl = function($scope, walletService) {
+  $scope.tokenVisibility = "hidden";
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.$watch(function() {

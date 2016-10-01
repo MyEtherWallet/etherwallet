@@ -1,5 +1,6 @@
 'use strict';
 var tokenCtrl = function($scope, $sce, walletService) {
+	$scope.tokenVisibility = "hidden";
 	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
 	walletService.wallet = null;
 	walletService.password = '';
@@ -53,7 +54,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
             data: $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data
         }
         ethFuncs.estimateGas(estObj,false,function(data){
-            if(!data.error) $scope.tokenTx.gasLimit = data.data; 
+            if(!data.error) $scope.tokenTx.gasLimit = data.data;
         });
     }
 	$scope.setBalance = function() {

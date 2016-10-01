@@ -4,6 +4,11 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
+  /* Mnemonic Additions */
+  /* Tay TODO: add to all language files, reach out to people to translate, update any other pages at that time too */
+  x_Mnemonic:           'Mnemonic Phrase',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -39,7 +44,6 @@ en.data = {
   x_PrintShort:         'Print',
   x_PrivKey:            'Private Key (unencrypted)',
   x_PrivKey2:           'Private Key',
-  x_Mnemonic:           'Mnemonic Phrase',
   x_PrivKeyDesc:        'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.',
   x_Save:               'Save',
   x_TXT:                'TXT file (unencrypted)',
@@ -83,7 +87,6 @@ en.data = {
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
   ADD_Radio_3:            'Paste/Type Your Private Key ',
   ADD_Radio_4:            'Add an Account to Watch',
-  ADD_Radio_5:            'Paste/Type Your Mnemonic',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
