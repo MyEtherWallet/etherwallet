@@ -645,9 +645,43 @@
       <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
       <div class="radio">
         <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tx.unit"/>Ether</label>
-        <label><input type="radio" name="currencyRadioOffline" value="finney" ng-model="tx.unit" />Finney</label>
-        <label><input type="radio" name="currencyRadioOffline" value="szabo" ng-model="tx.unit"/>Szabo</label>
       </div>
+      <div class="radio">
+        <!--
+          TODO:
+            - make these tokens show up
+            - hide the data field if they selected a token as the address they have in the address field will be put into the data and we will use the address from the token in the generated TX
+            - replace 21000 in Gas Limit field with 150000 if tokens are selected.
+            - if they click "Ether", make the custom token dropdown hide again
+        -->
+        <label ng-repeat="token in tokenObjs track by $index">
+          <input type="radio" name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"/>
+          {{token.getSymbol()}}
+        </label>
+        <label>
+          <input type="radio" name="currencyRadioOffline" value="99" ng-model="tokenTx.id"/>
+          <span translate="SEND_custom">Custom Token</span>
+        </label>
+      </div>
+      <div class="custom-token-fields well" style="max-width: 600px" ng-show="tokenTx.id==99">
+        <div class="form-group">
+          <label translate="TOKEN_Addr"> Address: </label>
+          <input class="form-control" type="text" ng-model="localToken.contractAdd"/>
+        </div>
+        <div class="form-group">
+          <label translate="TOKEN_Symbol"> Token Symbol: </label>
+          <input class="form-control" type="text" ng-model="localToken.symbol"/>
+        </div>
+        <div class="form-group">
+          <label translate="TOKEN_Dec"> Decimals: </label>
+          <input class="form-control" type="text" ng-model="localToken.decimals"/>
+        </div>
+        <div class="form-group">
+          <div class="btn btn-info" ng-click="saveTokenToLocal()" translate="x_Save"> Save </div>
+        </div>
+        <div ng-bind-html="validateLocalToken"></div>
+      </div>
+
     </div>
     <div class="form-group col-sm-10">
       <div class="account-help-icon">
