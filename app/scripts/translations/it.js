@@ -1,9 +1,15 @@
 // Italian
-// Last sync with en.js: commit aeefb6da17e37b703051085f3aa87f3
+// Last sync with en.js: commit 6e37c4aa8f2954dc8dfdef1ac162bb5
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
+
+  /* Mnemonic Additions */
+  /* Tay TODO: add to all language files, reach out to people to translate, update any other pages at that time too */
+  x_Mnemonic:           'Frase mnemonica',
+  ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
+  SEND_custom:          'Altro token',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
@@ -111,7 +117,6 @@ it.data = {
   SEND_addr:             'Indirizzo destinatario: ',
   SEND_amount:           'Importo da inviare: ',
   SEND_amount_short:     'Importo',
-  SEND_custom:           'Altro',
   SEND_gas:              'Gas',
   SEND_generate:         'Genera transazione',
   SEND_raw:              'Transazione grezza',
