@@ -13,6 +13,7 @@
     "babel-polyfill": "^6.8.0",
     "babel-preset-es2016": "^6.11.3",
     "bignumber.js": "^2.3.0",
+    "bip39": "^2.2.0",
     "browserify": "^13.0.1",
     "ethereumjs-abi": "^0.6.1",
     "ethereumjs-tx": "^1.1.1",

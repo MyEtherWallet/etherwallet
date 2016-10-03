@@ -184,8 +184,7 @@
           <td class="chrome-tokens">
             <strong class="text-success">{{twallet.balance | number:4 }} ETH</strong><br>
             <span class="small" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'"><strong>{{token.getBalance() }}</strong>&nbsp;{{token.getSymbol()}} &nbsp;&nbsp;</span>
-            <br />
-            <span class="small"><strong>{{twallet.btc }}</strong> BTC</span> &nbsp;&nbsp; <span>$ <strong>{{twallet.usd }}</strong> USD</span> &nbsp;&nbsp; <span>€ <strong>{{twallet.eur }}</strong> EUR</span>
+            <span class="small"><strong>{{twallet.btc }}</strong> BTC &nbsp;&nbsp; $<strong>{{twallet.usd }}</strong> USD &nbsp;&nbsp; €<strong>{{twallet.eur }}</strong> EUR</span>
           </td>
           <td></td><td></td>
           <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
@@ -420,6 +419,12 @@
       </div>
       <div class="radio">
         <label>
+          <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="pastemnemonic">
+          <span translate="ADD_Radio_5">Paste/Type Your Mnemonic</span>
+        </label>
+      </div>
+      <div class="radio">
+        <label>
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="watchonlyaccount">
           <span translate="ADD_Radio_4">Add an Account to Watch</span>
         </label>
@@ -471,7 +476,15 @@
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
           <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="privPassword" ng-change="onPrivKeyPassChange()"/>
         </div>
-      </div >
+      </div>
+
+      <!-- Paste/Type Your Mnemonic -->
+      <div ng-show="walletType=='pastemnemonic'">
+        <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
+        <div class="form-group">
+          <textarea rows="4" class="form-control" placeholder="{{ 'x_Mnemonic' | translate }}" ng-model="manualmnemonic" ng-change="onMnemonicChange()"></textarea>
+        </div>
+      </div>
 
       <!-- Add an Account to Watch -->
       <div ng-show="walletType=='watchonlyaccount'">
@@ -840,9 +853,43 @@
       <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
       <div class="radio">
         <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tx.unit"/>Ether</label>
-        <label><input type="radio" name="currencyRadioOffline" value="finney" ng-model="tx.unit" />Finney</label>
-        <label><input type="radio" name="currencyRadioOffline" value="szabo" ng-model="tx.unit"/>Szabo</label>
       </div>
+      <div class="radio">
+        <!--
+          TODO:
+            - make these tokens show up
+            - hide the data field if they selected a token as the address they have in the address field will be put into the data and we will use the address from the token in the generated TX
+            - replace 21000 in Gas Limit field with 150000 if tokens are selected.
+            - if they click "Ether", make the custom token dropdown hide again
+        -->
+        <label ng-repeat="token in tokenObjs track by $index">
+          <input type="radio" name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"/>
+          {{token.getSymbol()}}
+        </label>
+        <label>
+          <input type="radio" name="currencyRadioOffline" value="99" ng-model="tokenTx.id"/>
+          <span translate="SEND_custom">Custom Token</span>
+        </label>
+      </div>
+      <div class="custom-token-fields well" style="max-width: 600px" ng-show="tokenTx.id==99">
+        <div class="form-group">
+          <label translate="TOKEN_Addr"> Address: </label>
+          <input class="form-control" type="text" ng-model="localToken.contractAdd"/>
+        </div>
+        <div class="form-group">
+          <label translate="TOKEN_Symbol"> Token Symbol: </label>
+          <input class="form-control" type="text" ng-model="localToken.symbol"/>
+        </div>
+        <div class="form-group">
+          <label translate="TOKEN_Dec"> Decimals: </label>
+          <input class="form-control" type="text" ng-model="localToken.decimals"/>
+        </div>
+        <div class="form-group">
+          <div class="btn btn-info" ng-click="saveTokenToLocal()" translate="x_Save"> Save </div>
+        </div>
+        <div ng-bind-html="validateLocalToken"></div>
+      </div>
+
     </div>
     <div class="form-group col-sm-10">
       <div class="account-help-icon">
@@ -987,9 +1034,17 @@
 
       <div translate="sidebar_TokenBal"> Token Balances: </div>
       <table class="account-info">
-          <tr ng-repeat="token in tokenObjs track by $index">
-            <td class="mono wrap">{{token.getBalance()}}</td>
+          <tr ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || tokenVisibility=='shown' ">
+            <td class="mono wrap"><img src="images/icon-remove.svg" class="token-remove" title="Remove Token" /> {{token.getBalance()}}</td>
             <td> {{token.getSymbol()}} </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <p>
+                <a ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
+                <a ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
+              </p>
+            </td>
           </tr>
       </table>
 
@@ -1039,7 +1094,7 @@
           <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value" ng-class="Validator.isPositiveNumber(tokenTx.value) ? 'is-valid' : 'is-invalid'"/>
 
           <div class="radio">
-            <label ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading'">
+            <label ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || tokenVisibility=='shown' ">
               <input type="radio" name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"/>
               {{token.getSymbol()}}
             </label>

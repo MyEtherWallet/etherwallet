@@ -4,6 +4,12 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
+  /* Mnemonic Additions */
+  /* Tay TODO: add to all language files, reach out to people to translate, update any other pages at that time too */
+  x_Mnemonic:           'Mnemonic Phrase',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:           'Custom Token',
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -110,7 +116,6 @@ en.data = {
   SEND_addr:             'To Address: ',
   SEND_amount:           'Amount to Send: ',
   SEND_amount_short:     'Amount',
-  SEND_custom:           'Custom',
   SEND_gas:              'Gas',
   SEND_TransferTotal:   'Send Entire Balance',
   SEND_generate:         'Generate Transaction',

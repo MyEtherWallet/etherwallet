@@ -12,6 +12,9 @@ validator.isValidHex = function(hex){
 validator.isValidPrivKey = function(privkeyLen){
     return privkeyLen == 64 || privkeyLen == 128 || privkeyLen == 132;
 }
+validator.isValidMnemonic = function(mnemonic){
+	return bip39.validateMnemonic(mnemonic);
+}
 validator.isPasswordLenValid = function(pass, len){
     if(pass === 'undefined' || pass == null ) return false;
     return pass.length > len;
