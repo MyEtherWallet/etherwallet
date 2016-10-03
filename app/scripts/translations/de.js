@@ -148,7 +148,7 @@ de.data = {
   TRANS_standard:        'ETH (Standard Transaktion)',
   TRANS_eth:             'Nur ETH',
   TRANS_etc:             'Nur ETC',
-  TRANS_advanced:        '+Fortgeschritten: Mehr Gas oder Daten hinzufügen ',
+  TRANS_advanced:        '+Fortgeschritten: Daten hinzufügen ',
   TRANS_data:            'Daten: ',
   TRANS_gas:             'Gas: ',
   TRANS_sendInfo:        'Eine Standard Transaktion mit 21000 Gas kostet 0.000441 ETH. Wir zahlen einen minimal höheren Gaspreis von 0.000000021 ETH um zu garantieren, dass die Transaktion schnell bearbeitet wird. Wir erheben keine Transaktionsgebühren.',
@@ -279,7 +279,7 @@ de.data = {
   TranslatorName_2:     '[mawalu](https://www.myetherwallet.com/?gaslimit=21000&to=0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3&value=1.0#send-transaction) ·',
   TranslatorAddr_2:     '0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3',
   /* Translator 2: Insert Comments Here */
-  TranslatorName_3:     'huhn_solo · ',
+  TranslatorName_3:     '[huhn_solo](https://www.myetherwallet.com/?gaslimit=21000&to=0x1DAd1765381460db9A44846cDfA6f74c65A06B77&value=1.0#send-transaction) · ',
   TranslatorAddr_3:     '0x1DAd1765381460db9A44846cDfA6f74c65A06B77',
   /* Translator 3: Insert Comments Here */
   TranslatorName_4:     '[FelixA](https://www.myetherwallet.com/?gaslimit=21000&to=0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D&value=1.0#send-transaction) · ',
@@ -337,7 +337,7 @@ de.data = {
   HELP_3_Desc_5:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_3_Desc_6:        'Click the "Unlock Wallet" button.',
   HELP_3_Desc_7:        'Your wallet information should show up. Find you account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
-  HELP_3_Desc_8:        'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositting a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly.',
+  HELP_3_Desc_8:        'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly.',
 
   HELP_4_Title:         '4) Wie kann ich Ether von einer Wallet zur anderen senden?',
   HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
@@ -369,7 +369,7 @@ de.data = {
   HELP_4CX_Desc_12:     'Using "Send Ether" Page: ',
 
   HELP_5_Title:         '5) Wie kann ich MyEtherWallet.com offline/lokal starten? ',
-  HELP_5_Desc_1:        'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page.',
+  HELP_5_Desc_1:        'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page.',
   HELP_5_Desc_2:        'Gehe zur GitHub Repo: github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
   HELP_5_Desc_3:        'Klick auf Download Zip oben rechts.',
   HELP_5_Desc_4:        'Move zip to an airgapped computer.',
@@ -380,7 +380,7 @@ de.data = {
   HELP_5_Desc_9:        'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.',
 
   HELP_5CX_Title:       '5) How can I install this extension from the repo instead of the Chrome Store? ',
-  HELP_5CX_Desc_1:      'Go to our github and find the most recent Chrome Extension relase: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
+  HELP_5CX_Desc_1:      'Go to our github and find the most recent Chrome Extension release: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
   HELP_5CX_Desc_2:      'Scroll to the very bottom and right click on the latest release. Click "save link as".',
   HELP_5CX_Desc_3:      'Go to Google Chrome and find you settings (in the menu in the upper right).',
   HELP_5CX_Desc_4:      'Click "Extensions" on the left.',
@@ -493,7 +493,7 @@ de.data = {
   HELP_13_Desc_1:         'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
 
   HELP_14_Title:          '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
-  HELP_14_Desc_1:         'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
+  HELP_14_Desc_1:         'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experiments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
 
   HELP_15_Title:          '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
   HELP_15_Desc_1:         'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',

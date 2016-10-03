@@ -97,28 +97,37 @@
 
       <br />
 
-      <div translate="sidebar_AccountBal">Account Balance:</div>
+      <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li> <strong>{{etherBalance}}</strong> ETH </li>
+        <li><span class="mono wrap">{{etherBalance}}</span> Ether </li>
       </ul>
 
       <div translate="sidebar_TokenBal"> Token Balances: </div>
+      <table class="account-info">
+          <tr ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || tokenVisibility=='shown' ">
+            <td class="mono wrap"><img src="images/icon-remove.svg" class="token-remove" title="Remove Token" /> {{token.getBalance()}}</td>
+            <td> {{token.getSymbol()}} </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <p>
+                <a ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
+                <a ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
+              </p>
+            </td>
+          </tr>
+      </table>
+
+      <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <div ng-repeat="token in tokenObjs track by $index">
-          <li><strong>{{token.getBalance()}}</strong> {{token.getSymbol()}}</li>
-        </div>
+        <li><span class="mono wrap">{{usdBalance}}</span> USD</li>
+        <li><span class="mono wrap">{{eurBalance}}</span> EUR</li>
+        <li><span class="mono wrap">{{btcBalance}}</span> BTC</li>
       </ul>
 
-      <div translate="sidebar_Equiv">Equivalent Values:</div>
+      <div translate="sidebar_TransHistory"> Transaction History: </div>
       <ul class="account-info">
-        <li> <strong>{{usdBalance}}</strong> USD </li>
-        <li> <strong>{{eurBalance}}</strong> EUR </li>
-        <li> <strong>{{btcBalance}}</strong> BTC </li>
-      </ul>
-
-      <div translate="sidebar_TransHistory">See Transaction History:</div>
-      <ul class="account-info">
-        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/{{wallet.getAddressString()}}</a></li>
+        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
 
     </section>

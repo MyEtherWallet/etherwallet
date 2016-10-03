@@ -41,15 +41,15 @@
 
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li><strong>{{etherBalance}}</strong> ETH <strong></li>
-        <li><strong>{{etcBalance}}</strong> ETC</li>
+        <li><span class="mono wrap">{{etherBalance}}</span> ETH </li>
+        <li><span class="mono wrap">{{etcBalance}}</span> ETC </li>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li><strong>{{usdBalance}}</strong> USD</li>
-        <li><strong>{{eurBalance}}</strong> EUR</li>
-        <li><strong>{{btcBalance}}</strong> BTC</li>
+        <li><span class="mono wrap">{{usdBalance}}</span> USD </li>
+        <li><span class="mono wrap">{{eurBalance}}</span> EUR </li>
+        <li><span class="mono wrap">{{btcBalance}}</span> BTC </li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
@@ -86,7 +86,7 @@
 
       <div class="form-group col-xs-12">
         <label translate="SEND_amount">Amount to Send:</label>
-        <a class="pull-right" ng-click="transferAllBalance()" ng-show="tx.sendMode==0" translate="SEND_TransferTotal">Send Entire Balance</a>
+        <a class="pull-right" ng-click="transferAllBalance()" translate="SEND_TransferTotal">Send Entire Balance</a>
         <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
         <div class="radio">
           <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>
@@ -98,20 +98,20 @@
           <label><input type="radio" name="currencyRadio" value="2" ng-model="tx.sendMode"/>
             <span translate="TRANS_etc">Only ETC </span></label>
         </div>
+        <div class="form-group">
+          <label translate="TRANS_gas"> Gas: </label>
+          <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+        </div>
 
         <!-- Advanced Option Panel -->
-        <div ng-show="tx.sendMode==0">
+        <div  ng-show="tx.sendMode==0">
           <a ng-click="toggleShowAdvance()">
-            <p class="strong" translate="TRANS_advanced"> + Advanced: Add More Gas or Data </p>
+            <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
           </a>
           <section ng-show="showAdvance">
             <div class="form-group">
               <label translate="TRANS_data"> Data: </label>
               <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
-            </div>
-            <div class="form-group">
-              <label translate="TRANS_gas"> Gas: </label>
-              <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
             </div>
           </section>
         </div>

@@ -37,18 +37,18 @@ ethFuncs.hexToDecimal = function(hex) {
 }
 ethFuncs.contractOutToArray = function(hex) {
 	hex = hex.replace('0x', '').match(/.{64}/g);
-    for(var i=0;i<hex.length;i++){
-        hex[i] = hex[i].replace(/^0+/, '');
-        hex[i] = hex[i] == "" ? "0" : hex[i]; 
-    }
-    return hex;
+	for (var i = 0; i < hex.length; i++) {
+		hex[i] = hex[i].replace(/^0+/, '');
+		hex[i] = hex[i] == "" ? "0" : hex[i];
+	}
+	return hex;
 }
 ethFuncs.getNakedAddress = function(address) {
 	return address.toLowerCase().replace('0x', '');
 }
-ethFuncs.getDeteministicContractAddress = function (address,nonce){
-    address = address.substring(0, 2) == '0x' ? address : '0x'+address;
-    return '0x'+ethUtil.sha3(ethUtil.rlp.encode([address,nonce])).slice(12).toString('hex');
+ethFuncs.getDeteministicContractAddress = function(address, nonce) {
+	address = address.substring(0, 2) == '0x' ? address : '0x' + address;
+	return '0x' + ethUtil.sha3(ethUtil.rlp.encode([address, nonce])).slice(12).toString('hex');
 }
 ethFuncs.padLeft = function(n, width, z) {
 	z = z || '0';
@@ -56,8 +56,37 @@ ethFuncs.padLeft = function(n, width, z) {
 	return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
 ethFuncs.getDataObj = function(to, func, arrVals) {
-	var val="";
-    for(var i=0;i<arrVals.length;i++) val+=this.padLeft(arrVals[i],64);
-    return {to: to, data: func+val};
+	var val = "";
+	for (var i = 0; i < arrVals.length; i++) val += this.padLeft(arrVals[i], 64);
+	return {
+		to: to,
+		data: func + val
+	};
+}
+ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
+	dataObj.gasPrice = '0x01';
+	ajaxReq.getTraceCall(dataObj, isClassic, function(data) {
+		if (data.error) {
+			callback(data);
+			return;
+		}
+        var calls = data.data.trace;
+		var gasAssigned = new BigNumber(0);
+		var maxGas = new BigNumber(50000000);
+		for (var i = 0; i < calls.length; i++) {
+            if(calls[i].result.failedCall !== undefined || calls[i].result.failedCreate !== undefined) {
+                gasAssigned = new BigNumber(-1);
+                break;
+            }
+            var cType = calls[i].action.create !== undefined ? 'create' : 'call';
+			var gas = new BigNumber(calls[i].action[cType].gas).sub(new BigNumber(calls[i].result[cType].gasUsed));
+			if (maxGas.sub(gas).gt(gasAssigned) && gas.gt(100000)) gasAssigned = maxGas.sub(gas);
+		}
+		callback({
+			"error": false,
+			"msg": "",
+			"data": gasAssigned.toString()
+		});
+	});
 }
 module.exports = ethFuncs;

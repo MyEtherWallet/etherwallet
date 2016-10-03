@@ -18,6 +18,10 @@ var addWalletCtrl = function($scope, $sce) {
 	$scope.onPrivKeyPassChange = function() {
 		$scope.showBtnUnlock = $scope.privPassword.length > 6;
 	};
+	$scope.onMnemonicChange = function() {
+		$scope.addWalletStats = "";
+		$scope.showBtnUnlock = bip39.validateMnemonic($scope.manualmnemonic);
+	};
 	$scope.showContent = function($fileContent) {
 		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[5] + document.getElementById('fselector').files[0].name));
 		try {
@@ -33,7 +37,7 @@ var addWalletCtrl = function($scope, $sce) {
 		document.getElementById('fselector').click();
 	};
 	$scope.onFilePassChange = function() {
-		$scope.showBtnUnlock = $scope.filePassword.length > 6;
+		$scope.showBtnUnlock = $scope.filePassword.length > 1;
 	};
 	$scope.decryptWallet = function() {
 		$scope.wallet = null;
@@ -48,6 +52,8 @@ var addWalletCtrl = function($scope, $sce) {
 			} else if ($scope.walletType == "fileupload") {
 				$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
 				$scope.addAccount.password = $scope.filePassword;
+			} else if ($scope.walletType == "pastemnemonic") {
+				$scope.wallet = new Wallet(bip39.mnemonicToSeed($scope.manualmnemonic).slice(0, 32));
 			}
 			$scope.addAccount.address = $scope.wallet.getAddressString();
 		} catch (e) {
@@ -139,7 +145,7 @@ var addWalletCtrl = function($scope, $sce) {
 		$scope.addWalletToStorage('addWalletStats');
 	}
 	$scope.setBalance = function() {
-		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {

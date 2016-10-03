@@ -25,6 +25,12 @@
       </div>
       <div class="radio">
         <label>
+          <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="pastemnemonic">
+          <span translate="ADD_Radio_5">Paste/Type Your Mnemonic</span>
+        </label>
+      </div>
+      <div class="radio">
+        <label>
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="watchonlyaccount">
           <span translate="ADD_Radio_4">Add an Account to Watch</span>
         </label>
@@ -76,7 +82,15 @@
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
           <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="privPassword" ng-change="onPrivKeyPassChange()"/>
         </div>
-      </div >
+      </div>
+
+      <!-- Paste/Type Your Mnemonic -->
+      <div ng-show="walletType=='pastemnemonic'">
+        <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
+        <div class="form-group">
+          <textarea rows="4" class="form-control" placeholder="{{ 'x_Mnemonic' | translate }}" ng-model="manualmnemonic" ng-change="onMnemonicChange()"></textarea>
+        </div>
+      </div>
 
       <!-- Add an Account to Watch -->
       <div ng-show="walletType=='watchonlyaccount'">

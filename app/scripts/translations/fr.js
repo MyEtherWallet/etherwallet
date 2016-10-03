@@ -137,7 +137,7 @@ fr.data = {
   TRANS_standard:        'ETH (transaction standard)',
   TRANS_eth:             'ETH seulement',
   TRANS_etc:             'ETC seulement',
-  TRANS_advanced:        '+Avancé : Ajouter du gaz ou des données supplémentaires ',
+  TRANS_advanced:        '+Avancé : Ajouter du gaz',
   TRANS_data:            ' Données : ',
   TRANS_gas:             ' Gaz : ',
   TRANS_sendInfo:        'Une transaction standard utilisant 21000 gaz coûtera 0.000441 ETH. Le prix du gaz de 0.000000021 ETH que nous avons choisi est légèrement supérieur au minimum ain d\'assurer une confirmation rapide. Nous ne prenons pas de frais de transaction.',
@@ -156,7 +156,7 @@ fr.data = {
   /* Offline Transaction */
   OFFLINE_Title:         'Génération et envoi d\'une transaction hors ligne',
   OFFLINE_Desc:          'La génération d\'une transaction hors ligne s\'effectue en trois étapes. Les étapes 1 et 3 sont réalisées sur un ordinateur en ligne et l\'étape 2 sur un ordinateur déconnecté du réseau. Cela permet d\'isoler totalement vos clefs privées de toute machine connectée à l\'internet.',
-  OFFLINE_Step1_Title:   'Étape 1 : Gérération de l\'information (ordinateur en ligne)',
+  OFFLLINE_Step1_Title:   'Étape 1 : Gérération de l\'information (ordinateur en ligne)',
   OFFLINE_Step1_Button:  'Générer l\'information',
   OFFLINE_Step1_Label_1: 'Addresse d\'émission : ',
   OFFLINE_Step1_Label_2: 'Note : Il s\'agit de l\'adresse de départ, pas de l\'adresse d\'arrivée. Le nonce est généré à partir du compte de l\'expéditeur. Si on utilise une machine déconnectée du réseau, cette adresse est celle du compte en _cold storage_.',
@@ -354,7 +354,6 @@ fr.data = {
   HELP_4_Desc_12:       'Une fenêtre pop-up apparaîtra. Vérifiez que le montant et que l\'adresse de destination sont corrects. Puis cliquez sur "Oui, j\'en suis sûr ! Effectuer la transaction.',
   HELP_4_Desc_13:       'La transaction sera soumise. Son identifiant sera affiché. Vous pouvez cliquer sur l\'identifiant pour la voir sur la blockchain.',
 
-
   HELP_4CX_Title:       '4) Comment puis-je envoyer de l\'Ether avec MyEtherWallet CX ?',
   HELP_4CX_Desc_1:      'D\'abord, vous devez ajouter un portefeuille. Ceci fait, deux possibilités s\'offrent à vous : la fonctionnalité "Envoi rapide" de l\'icône de l\'extension Chrome ou la page "Envoi d\'Ether".',
   HELP_4CX_Desc_2:      'Envoi rapide :',
@@ -406,7 +405,6 @@ fr.data = {
   HELP_6_Desc_13:       'Si tout est correctement reçu et envoyé, vous avez gagné.',
   HELP_6_Desc_14:       'Envoyez le reste du solde ETH par l\'option "ETH seulement" et répétez l\'opération pour le solde ETC par l\'option "ETC seulement".',
   HELP_6_Desc_15:       'Par la suite, vous pourrez utiliser les transactions standard pour ces portefeuilles sans risque d\'attaque par réexécution.',
-
 
   HELP_7_Title:         '7) Comment puis-je envoyer des tokens et ajouter des tokens spécifiques ?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) est un excellent moyen d\'explorer les tokens et de trouver les décimales d\'un token.',

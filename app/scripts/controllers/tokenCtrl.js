@@ -1,5 +1,6 @@
 'use strict';
 var tokenCtrl = function($scope, $sce, walletService) {
+	$scope.tokenVisibility = "hidden";
 	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
 	walletService.wallet = null;
 	walletService.password = '';
@@ -37,8 +38,27 @@ var tokenCtrl = function($scope, $sce, walletService) {
 		}
         $scope.tokenTx.id = 0;
 	}
+    $scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function () {
+        if($scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id]!== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to)&&$scope.Validator.isPositiveNumber($scope.tokenTx.value)){
+            if($scope.estimateTimer) clearTimeout($scope.estimateTimer);
+            $scope.estimateTimer = setTimeout(function(){
+                $scope.estimateGasLimit();
+            },500);
+        }
+    }, true);
+    $scope.estimateGasLimit = function(){
+        var estObj = {
+            to: $scope.tokenObjs[$scope.tokenTx.id].getContractAddress(),
+            from: $scope.wallet.getAddressString(),
+            value: '0x00',
+            data: $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data
+        }
+        ethFuncs.estimateGas(estObj,false,function(data){
+            if(!data.error) $scope.tokenTx.gasLimit = data.data;
+        });
+    }
 	$scope.setBalance = function() {
-		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {
@@ -50,7 +70,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
 				});
 			}
 		});
-        ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function(data) {
+        ajaxReq.getBalance($scope.wallet.getAddressString(), true, function(data) {
 			if (data.error) {
 				$scope.etcBalance = data.msg;
 			} else {
@@ -77,7 +97,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
 			data: tokenData,
 			from: $scope.wallet.getAddressString(),
 			privKey: $scope.wallet.getPrivateKeyString()
-		}, function(rawTx) {
+		}, false, function(rawTx) {
 			if (!rawTx.isError) {
 				$scope.rawTx = rawTx.rawTx;
 				$scope.signedTx = rawTx.signedTx;
@@ -91,7 +111,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.sendTx = function() {
 		$scope.sendTxModal.close();
-		uiFuncs.sendTx($scope.signedTx, function(resp) {
+		uiFuncs.sendTx($scope.signedTx, false, function(resp) {
 			if (!resp.isError) {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
 				$scope.setBalance();

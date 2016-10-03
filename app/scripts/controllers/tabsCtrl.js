@@ -3,7 +3,8 @@ var tabsCtrl = function($scope, globalService, $translate) {
 	$scope.tabNames = globalService.tabs;
 	$scope.curLang = "English";
 	var hval = window.location.hash;
-    document.getElementById("langDrop").setAttribute("style", "");
+    if(document.getElementById("langDrop"))
+        document.getElementById("langDrop").setAttribute("style", "");
 	$scope.setArrowVisibility = function() {
 		setTimeout(function() {
 			$scope.showLeftArrow = false;

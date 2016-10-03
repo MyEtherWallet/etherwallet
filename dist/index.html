@@ -59,7 +59,7 @@
         <!--<li><a ng-class="{true:'active'}[curLang=='עברית']" ng-click="changeLanguage('he','עברית')">עברית</a></li>-->
         <!--<li><a ng-class="{true:'active'}[curLang=='हिन्दी']" ng-click="changeLanguage('hi','हिन्दी')">हिन्दी</a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Magyar']" ng-click="changeLanguage('hu','Magyar')">Magyar</a></li>
-        <!--<li><a ng-class="{true:'active'}[curLang=='Indonesian']" ng-click="changeLanguage('id','Indonesian')">Indonesian</a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='Indonesian']" ng-click="changeLanguage('id','Indonesian')">Bahasa Indonesia</a></li>
             <li><a ng-class="{true:'active'}[curLang=='Italiano']" ng-click="changeLanguage('it','Italiano')">Italiano</a></li>
             <li><a ng-class="{true:'active'}[curLang=='日本語']" ng-click="changeLanguage('ja','日本語')">日本語</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='한국어']" ng-click="changeLanguage('ko','한국어')">한국어</a></li>-->
@@ -75,7 +75,7 @@
             <li><a ng-class="{true:'active'}[curLang=='Türkçe']" ng-click="changeLanguage('tr','Türkçe')">Türkçe</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='Українська']" ng-click="changeLanguage('uk','Українська')">Українська</a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Tiếng Việt']" ng-click="changeLanguage('vi','Tiếng Việt')">Tiếng Việt</a></li>
-        <!--<li><a ng-class="{true:'active'}[curLang=='中文']" ng-click="changeLanguage('zh','中文')">中文</a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='中文']" ng-click="changeLanguage('zh','中文')">中文</a></li>
             <li role="separator" class="divider"></li>
             <li><a data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></li>
           </ul>
@@ -332,28 +332,37 @@
 
       <br />
 
-      <div translate="sidebar_AccountBal">Account Balance:</div>
+      <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li> <strong>{{etherBalance}}</strong> ETH </li>
+        <li><span class="mono wrap">{{etherBalance}}</span> Ether </li>
       </ul>
 
       <div translate="sidebar_TokenBal"> Token Balances: </div>
+      <table class="account-info">
+          <tr ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || tokenVisibility=='shown' ">
+            <td class="mono wrap"><img src="images/icon-remove.svg" class="token-remove" title="Remove Token" /> {{token.getBalance()}}</td>
+            <td> {{token.getSymbol()}} </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <p>
+                <a ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
+                <a ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
+              </p>
+            </td>
+          </tr>
+      </table>
+
+      <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <div ng-repeat="token in tokenObjs track by $index">
-          <li><strong>{{token.getBalance()}}</strong> {{token.getSymbol()}}</li>
-        </div>
+        <li><span class="mono wrap">{{usdBalance}}</span> USD</li>
+        <li><span class="mono wrap">{{eurBalance}}</span> EUR</li>
+        <li><span class="mono wrap">{{btcBalance}}</span> BTC</li>
       </ul>
 
-      <div translate="sidebar_Equiv">Equivalent Values:</div>
+      <div translate="sidebar_TransHistory"> Transaction History: </div>
       <ul class="account-info">
-        <li> <strong>{{usdBalance}}</strong> USD </li>
-        <li> <strong>{{eurBalance}}</strong> EUR </li>
-        <li> <strong>{{btcBalance}}</strong> BTC </li>
-      </ul>
-
-      <div translate="sidebar_TransHistory">See Transaction History:</div>
-      <ul class="account-info">
-        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/{{wallet.getAddressString()}}</a></li>
+        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
 
     </section>
@@ -407,15 +416,15 @@
 
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li><strong>{{etherBalance}}</strong> ETH <strong></li>
-        <li><strong>{{etcBalance}}</strong> ETC</li>
+        <li><span class="mono wrap">{{etherBalance}}</span> ETH </li>
+        <li><span class="mono wrap">{{etcBalance}}</span> ETC </li>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li><strong>{{usdBalance}}</strong> USD</li>
-        <li><strong>{{eurBalance}}</strong> EUR</li>
-        <li><strong>{{btcBalance}}</strong> BTC</li>
+        <li><span class="mono wrap">{{usdBalance}}</span> USD </li>
+        <li><span class="mono wrap">{{eurBalance}}</span> EUR </li>
+        <li><span class="mono wrap">{{btcBalance}}</span> BTC </li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
@@ -452,7 +461,7 @@
 
       <div class="form-group col-xs-12">
         <label translate="SEND_amount">Amount to Send:</label>
-        <a class="pull-right" ng-click="transferAllBalance()" ng-show="tx.sendMode==0" translate="SEND_TransferTotal">Send Entire Balance</a>
+        <a class="pull-right" ng-click="transferAllBalance()" translate="SEND_TransferTotal">Send Entire Balance</a>
         <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
         <div class="radio">
           <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>
@@ -464,20 +473,20 @@
           <label><input type="radio" name="currencyRadio" value="2" ng-model="tx.sendMode"/>
             <span translate="TRANS_etc">Only ETC </span></label>
         </div>
+        <div class="form-group">
+          <label translate="TRANS_gas"> Gas: </label>
+          <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+        </div>
 
         <!-- Advanced Option Panel -->
-        <div ng-show="tx.sendMode==0">
+        <div  ng-show="tx.sendMode==0">
           <a ng-click="toggleShowAdvance()">
-            <p class="strong" translate="TRANS_advanced"> + Advanced: Add More Gas or Data </p>
+            <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
           </a>
           <section ng-show="showAdvance">
             <div class="form-group">
               <label translate="TRANS_data"> Data: </label>
               <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
-            </div>
-            <div class="form-group">
-              <label translate="TRANS_gas"> Gas: </label>
-              <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
             </div>
           </section>
         </div>
@@ -636,9 +645,43 @@
       <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
       <div class="radio">
         <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tx.unit"/>Ether</label>
-        <label><input type="radio" name="currencyRadioOffline" value="finney" ng-model="tx.unit" />Finney</label>
-        <label><input type="radio" name="currencyRadioOffline" value="szabo" ng-model="tx.unit"/>Szabo</label>
       </div>
+      <div class="radio">
+        <!--
+          TODO:
+            - make these tokens show up
+            - hide the data field if they selected a token as the address they have in the address field will be put into the data and we will use the address from the token in the generated TX
+            - replace 21000 in Gas Limit field with 150000 if tokens are selected.
+            - if they click "Ether", make the custom token dropdown hide again
+        -->
+        <label ng-repeat="token in tokenObjs track by $index">
+          <input type="radio" name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"/>
+          {{token.getSymbol()}}
+        </label>
+        <label>
+          <input type="radio" name="currencyRadioOffline" value="99" ng-model="tokenTx.id"/>
+          <span translate="SEND_custom">Custom Token</span>
+        </label>
+      </div>
+      <div class="custom-token-fields well" style="max-width: 600px" ng-show="tokenTx.id==99">
+        <div class="form-group">
+          <label translate="TOKEN_Addr"> Address: </label>
+          <input class="form-control" type="text" ng-model="localToken.contractAdd"/>
+        </div>
+        <div class="form-group">
+          <label translate="TOKEN_Symbol"> Token Symbol: </label>
+          <input class="form-control" type="text" ng-model="localToken.symbol"/>
+        </div>
+        <div class="form-group">
+          <label translate="TOKEN_Dec"> Decimals: </label>
+          <input class="form-control" type="text" ng-model="localToken.decimals"/>
+        </div>
+        <div class="form-group">
+          <div class="btn btn-info" ng-click="saveTokenToLocal()" translate="x_Save"> Save </div>
+        </div>
+        <div ng-bind-html="validateLocalToken"></div>
+      </div>
+
     </div>
     <div class="form-group col-sm-10">
       <div class="account-help-icon">
@@ -758,11 +801,10 @@
   </article>
 
 
-
-
-
   <section class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
+
+
 
     <!-- Sidebar -->
     <div class="col-sm-4">
@@ -778,22 +820,31 @@
 
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li><strong>{{etherBalance}}</strong> Ether </li>
-        <li><strong>{{etcBalance}}</strong> ETC</li>
+        <li><span class="mono wrap">{{etherBalance}}</span> Ether </li>
+        <li><span class="mono wrap">{{etcBalance}}</span> ETC</li>
       </ul>
 
       <div translate="sidebar_TokenBal"> Token Balances: </div>
-      <ul class="account-info">
-        <div ng-repeat="token in tokenObjs track by $index">
-          <li><strong>{{token.getBalance()}}</strong> {{token.getSymbol()}} </li>
-        </div>
-      </ul>
+      <table class="account-info">
+          <tr ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || tokenVisibility=='shown' ">
+            <td class="mono wrap"><img src="images/icon-remove.svg" class="token-remove" title="Remove Token" /> {{token.getBalance()}}</td>
+            <td> {{token.getSymbol()}} </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <p>
+                <a ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
+                <a ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
+              </p>
+            </td>
+          </tr>
+      </table>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li><strong>{{usdBalance}}</strong> USD</li>
-        <li><strong>{{eurBalance}}</strong> EUR</li>
-        <li><strong>{{btcBalance}}</strong> BTC</li>
+        <li><span class="mono wrap">{{usdBalance}}</span> USD</li>
+        <li><span class="mono wrap">{{eurBalance}}</span> EUR</li>
+        <li><span class="mono wrap">{{btcBalance}}</span> BTC</li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
@@ -809,6 +860,8 @@
 
     </div>
     <!-- / Sidebar -->
+
+
 
     <!-- Content -->
     <div class="col-sm-8">
@@ -833,7 +886,7 @@
           <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tokenTx.value" ng-class="Validator.isPositiveNumber(tokenTx.value) ? 'is-valid' : 'is-invalid'"/>
 
           <div class="radio">
-            <label ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading'">
+            <label ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || tokenVisibility=='shown' ">
               <input type="radio" name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"/>
               {{token.getSymbol()}}
             </label>
@@ -886,7 +939,7 @@
         </div>
 
         <div class="form-group col-xs-12" ng-show="showRaw">
-          <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction"translate="SEND_trans">Send Transaction</a>
+          <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans">Send Transaction</a>
         </div>
 
         <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
@@ -895,6 +948,8 @@
 
     </div>
     <!-- / Content -->
+
+
 
     <!-- Send Modal -->
     <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
@@ -970,6 +1025,7 @@
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
         <!-- TODO - see this: http://ethereum.stackexchange.com/questions/8070/how-can-i-verify-that-my-the-dao-token-balance-is-correct-when-the-goodies-provi -->
+        <li><strong> {{token.eBTokenBalance}} </strong> ExtraBalance (<span>tokens</span>)</li>
         <li><strong> {{token.DCbalance}} </strong> DAO (<span translate="DAO_bal1">at block 1,919,999</span>)</li>
         <li><strong>{{token.balance}}</strong> DAO (<span translate="DAO_bal2">current</span>)</li>
         <li><strong>{{etherBalance}}</strong> ETH </li>
@@ -986,7 +1042,7 @@
       <div translate="sidebar_TransHistory"> Transaction History: </div>
       <ul class="account-info">
         <li><strong> ETH: </strong> <a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
-        <li><strong> ETC: </strong> <a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://gastracker.io/addr/ {{wallet.getAddressString()}}</a></li>
+        <li><strong> ETC: </strong> <a href="https://gastracker.io/addr/{{wallet.getAddressString()}}" target="_blank">https://gastracker.io/addr/ {{wallet.getAddressString()}}</a></li>
       </ul>
     </div>
     <!-- / Sidebar -->
@@ -998,12 +1054,15 @@
 
       <div>
         <a class="btn btn-default" ng-class="curTab=='withdrawETC' ? 'btn-primary' : ''" ng-click="curTab='withdrawETC'"> <span translate="DAO_TitleETC"> Withdraw DAO for ETC </span></a>
+
         <a class="btn btn-default" ng-class="curTab=='withdraw' ? 'btn-primary' : ''" ng-click="curTab='withdraw'"> <span translate="DAO_TitleETH"> Withdraw DAO for ETH </span></a>
+
+        <a class="btn btn-default" ng-class="curTab=='withdrawEB' ? 'btn-primary' : ''" ng-click="curTab='withdrawEB'"> <span> Withdraw extraBalance </span></a>
       </div>
 
       <!-- Withdraw DAO For ETC -->
       <section class="daoGetTokens row" ng-show="curTab=='withdrawETC'">
-
+          <br />
           <h4 class="col-xs-12" translate="DAO_TitleETC"> Withdraw DAO for ETC </h4>
           <!-- Address for ETC to be Delivered -->
 
@@ -1021,7 +1080,7 @@
           <div class="form-group col-xs-10">
             <label translate="DAO_ETC_Label_2"> The 'White Hat Group' has been working tirelessly to get your ETC back to you. You can say 'thank you' by donating a percentage of your withdrawal, if you choose to. </label>
             <div class="input-group" style="max-width: 150px;">
-            <input type="number" class="form-control" placeholder="10" ng-model="daoC.donation" ng-class="Validator.isPositiveNumber(daoC.donation) ? 'is-valid' : 'is-invalid'"/>
+            <input type="number" min="0" class="form-control" placeholder="10" ng-model="daoC.donation" ng-class="Validator.isPositiveNumber(daoC.donation) ? 'is-valid' : 'is-invalid'"/>
             <span class="input-group-addon">%</span>
           </div>
 
@@ -1043,7 +1102,9 @@
 
       <!-- Withdraw DAO For ETH -->
       <section class="daoGetTokens clearfix" ng-show="curTab=='withdraw'">
+        <br />
         <h4 translate="DAO_TitleETH"> Withdraw DAO for ETH </h4>
+        <br /><br />
         <div class=" text-center">
           <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#withdrawTransaction" translate="DAO_TitleETH">
             Withdraw DAO for ETH
@@ -1055,6 +1116,32 @@
         <br /><br /><br />
         <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
       </section>
+      <!-- / Withdraw DAO For ETH -->
+
+
+
+     <!-- Extrabalance for ETH -->
+      <section class="daoGetTokens clearfix" ng-show="curTab=='withdrawEB'">
+        <br />
+        <h4> Withdraw extraBalance </h4>
+        <ul>
+          <li><a href="https://medium.com/curator-multisig-phf-official-channel/extrabalance-withdraw-contract-to-be-funded-on-september-15th-a800b4d746f0#.1qi06xq1c" target="_blank"> Learn More. </a></li>
+          <li><a href="https://etherscan.io/address/0x5c40ef6f527f4fba68368774e6130ce6515123f2#readContract" target="_blank"> Check your balance here. </a></li>
+        </ul>
+
+        <br /><br />
+        <div class=" text-center">
+          <a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#withdrawExtraBalance">
+            Withdraw Your ExtraBalance DAO
+          </a>
+          <p><small translate="DAO_Inst"> Yes. Just push the big red button. It's that easy. </small></p>
+          <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+          <div class="form-group col-xs-12" ng-bind-html="withdrawTxStatus"></div>
+        </div>
+        <br /><br /><br />
+        <p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add .01 ETH to this account and try again. </p>
+      </section>
+      <!-- / Extrabalance for ETH -->
 
 
     </div>
@@ -1111,7 +1198,34 @@
           </div>
           <div class="modal-footer text-center">
             <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
-            <button type="button" class="btn btn-primary" ng-click="generateAndSendWithdrawTx()" translate="SENDModal_Yes">Yes, I am sure! Withdraw.</button>
+            <button type="button" class="btn btn-primary" ng-click="generateAndSendWithdrawTx(slockitContract,withdrawContract,token.balanceBN,'withdrawModal')" translate="SENDModal_Yes">Yes, I am sure! Withdraw.</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- / Withdraw Modal ETH -->
+    <!-- Withdraw Modal ExtraBalance -->
+    <section class="modal fade" id="withdrawExtraBalance" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title text-danger" id="myModalLabel" translate="DAOModal_Title">Just making sure...</h3>
+          </div>
+          <div class="modal-body">
+            <h4>
+              <strong translate="DAOModal_1"> You are about to withdraw </strong>
+              <span>{{token.eBTokenBalance}}</span>
+              <strong translate="DAOModal_2"> DAO Tokens to </strong>
+              <span> {{wallet.getChecksumAddressString()}} </span>
+              <strong translate="DAOModal_3"> for </strong>
+              <span>{{token.eBEthBalance}} ETH.</span>
+            </h4>
+            <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+          </div>
+          <div class="modal-footer text-center">
+            <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
+            <button type="button" class="btn btn-primary" ng-click="generateAndSendWithdrawTx(eBTokenContract,eBWithdrawContract,token.eBBalanceBN,'withdrawExtraBModal')" translate="SENDModal_Yes">Yes, I am sure! Withdraw.</button>
           </div>
         </div>
       </div>
@@ -1277,13 +1391,13 @@
       <!-- Data -->
       <div class="form-group">
         <h4> Byte Code: </h4>
-        <textarea class="form-control" ng-model="tx.data" rows="8"></textarea>
+        <textarea class="form-control" ng-model="tx.data" rows="8" ng-class="Validator.isValidHex(tx.data)&&tx.data!='' ? 'is-valid' : 'is-invalid'"></textarea>
       </div>
 
       <!-- Gas -->
       <div class="form-group">
         <h4 translate="TRANS_gas"> Gas: </h4>
-        <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit"/>
+        <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
       </div>
 
       <!-- Wallet Decrypt -->

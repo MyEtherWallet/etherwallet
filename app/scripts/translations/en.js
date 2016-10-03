@@ -4,6 +4,12 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
+  /* Mnemonic Additions */
+  /* Tay TODO: add to all language files, reach out to people to translate, update any other pages at that time too */
+  x_Mnemonic:           'Mnemonic Phrase',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:           'Custom Token',
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -16,7 +22,7 @@ en.data = {
   DAO_TitleLong:        'Withdraw Your Dao Tokens For ETH',
   NAV_ClaimDGD:         'Claim DGD',
   DGD_TitleLong:        'Claim Your DGD Tokens',
-  NAV_DeployContract:  'Deploy Contract',
+  NAV_DeployContract:   'Deploy Contract',
   NAV_MyWallets:        'My Wallets',
   NAV_ViewWallet:       'View Wallet Info',
   NAV_Help:             'Help',
@@ -55,7 +61,7 @@ en.data = {
   FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',
-  FOOTER_4:               'Disclaimer',
+  FOOTER_4:             'Disclaimer',
 
   /* Sidebar */
   sidebar_AccountInfo:  'Account Information: ',
@@ -110,7 +116,6 @@ en.data = {
   SEND_addr:             'To Address: ',
   SEND_amount:           'Amount to Send: ',
   SEND_amount_short:     'Amount',
-  SEND_custom:           'Custom',
   SEND_gas:              'Gas',
   SEND_TransferTotal:   'Send Entire Balance',
   SEND_generate:         'Generate Transaction',
@@ -137,7 +142,7 @@ en.data = {
   TRANS_standard:        'ETH (Standard Transaction)',
   TRANS_eth:             'Only ETH',
   TRANS_etc:             'Only ETC',
-  TRANS_advanced:        '+Advanced: Add More Gas or Data ',
+  TRANS_advanced:        '+Advanced: Add Data ',
   TRANS_data:            ' Data: ',
   TRANS_gas:             ' Gas: ',
   TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
