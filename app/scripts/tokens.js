@@ -59,6 +59,12 @@ Token.popTokens = [{
 	"type": "default"
 },
 {
+	"address": "0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5",
+	"symbol": "REP",
+	"decimal": 18,
+	"type": "default"
+},
+{
 	"address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
 	"symbol": "Unicorn 🦄 ",
 	"decimal": 0,
