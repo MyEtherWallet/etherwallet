@@ -62,7 +62,7 @@
             <li><a ng-class="{true:'active'}[curLang=='Deutsch']" ng-click="changeLanguage('de','Deutsch')">Deutsch</a></li>
             <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']" ng-click="changeLanguage('el','Ελληνικά')">Ελληνικά</a></li>
             <li><a ng-class="{true:'active'}[curLang=='English']" ng-click="changeLanguage('en','English')">English</a></li>
-        <!--<li><a ng-class="{true:'active'}[curLang=='Español']" ng-click="changeLanguage('es','Español')">Español</a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='Español']" ng-click="changeLanguage('es','Español')">Español</a></li>
         <!--<li><a ng-class="{true:'active'}[curLang=='Eesti']" ng-click="changeLanguage('et','Eesti')">Eesti</a></li>-->
             <li><a ng-class="{true:'active'}[curLang=='Suomi']" ng-click="changeLanguage('fi','Suomi')">Suomi</a></li>
             <li><a ng-class="{true:'active'}[curLang=='Français']" ng-click="changeLanguage('fr','Français')">Français</a></li>

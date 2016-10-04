@@ -7,8 +7,3 @@ ehthumbs.db
 Thumbs.db
 
 node_modules/
-
-chrome-extension/embedded.html
-chrome-extension/index.html
-chrome-extension/images/fav
-dist/cx-wallet.html

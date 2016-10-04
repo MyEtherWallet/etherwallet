@@ -34,11 +34,13 @@ gulp.task('less', function (cb) {
       .pipe(less({ compress: false })).on('error', notify.onError(function (error) {
         return "ERROR! Problem file : " + error.message;
       }))
-      .pipe(autoprefixer('last 2 version', 'ios 6', 'android 4'))
+      .pipe( autoprefixer({
+        browsers: ['last 3 version', 'ios 6', 'android 4'], remove: false
+      } ) )
       .pipe(rename(lessOutputFile))
       //.pipe(gulp.dest(lessOutputFolder)) // unminified css
       //.pipe(gulp.dest(cxLessOutputFolder)) // unminified css
-      .pipe(cssnano()).on('error', notify.onError(function (error) {
+      .pipe(cssnano({ autoprefixer: false })).on('error', notify.onError(function (error) {
         return "ERROR! minify CSS Problem file : " + error.message;
       }))
       .pipe(rename(lessOutputFileMin))
@@ -171,8 +173,23 @@ gulp.task('buildHTML', function () {
 });
 
 
-
-
+// Clean files that get compiled but shouldn't
+gulp.task('clean1', function () {
+    gulp.src('./chrome-extension/images/fav', {read: false})
+    .pipe(clean())
+});
+gulp.task('clean2', function () {
+    gulp.src('./chrome-extension/embedded.html', {read: false})
+    .pipe(clean())
+});
+gulp.task('clean3', function () {
+    gulp.src('./chrome-extension/index.html', {read: false})
+    .pipe(clean())
+});
+gulp.task('clean4', function () {
+    gulp.src('./dist/cx-wallet.html', {read: false})
+    .pipe(clean())
+});
 
 
 // Watch Tasks
@@ -204,5 +221,7 @@ gulp.task('watchCX', function() {
 
 gulp.task('build', ['buildHTML','less', 'staticJS', 'browserify', 'cxBrowserify', 'minJS', 'cxMinJS', 'copy-images','copy-fonts', 'copy-cx']);
 gulp.task('watch', ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX']);
+
+gulp.task('clean', ['clean1', 'clean2', 'clean3', 'clean4']);
 
 gulp.task('default', ['build', 'watch']);
