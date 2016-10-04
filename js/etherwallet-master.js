@@ -1439,7 +1439,8 @@
       $scope.localToken = {
         contractAdd: "",
         symbol: "",
-        decimals: ""
+        decimals: "",
+        type: "custom"
       };
       $scope.$watch(function () {
         if (walletService.wallet == null) return null;
@@ -1454,11 +1455,11 @@
       $scope.setTokens = function () {
         $scope.tokenObjs = [];
         for (var i = 0; i < $scope.tokens.length; i++) {
-          $scope.tokenObjs.push(new Token($scope.tokens[i].address, $scope.wallet.getAddressString(), $scope.tokens[i].symbol, $scope.tokens[i].decimal));
+          $scope.tokenObjs.push(new Token($scope.tokens[i].address, $scope.wallet.getAddressString(), $scope.tokens[i].symbol, $scope.tokens[i].decimal, $scope.tokens[i].type));
         }
         var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
         for (var i = 0; i < storedTokens.length; i++) {
-          $scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal));
+          $scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
         }
         $scope.tokenTx.id = 0;
       };
@@ -1552,18 +1553,37 @@
           storedTokens.push({
             contractAddress: $scope.localToken.contractAdd,
             symbol: $scope.localToken.symbol,
-            decimal: parseInt($scope.localToken.decimals)
+            decimal: parseInt($scope.localToken.decimals),
+            type: "custom"
           });
           $scope.localToken = {
             contractAdd: "",
             symbol: "",
-            decimals: ""
+            decimals: "",
+            type: "custom"
           };
           localStorage.setItem("localTokens", JSON.stringify(storedTokens));
           $scope.setTokens();
           $scope.validateLocalToken = $sce.trustAsHtml('');
         } catch (e) {
           $scope.validateLocalToken = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+        }
+      };
+
+      $scope.removeTokenFromLocal = function (tokenSymbol) {
+        var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+
+        // remove from localstorage so it doesn't show up on refresh
+        for (var i = 0; i < storedTokens.length; i++) if (storedTokens[i].symbol === tokenSymbol) {
+          storedTokens.splice(i, 1);
+          break;
+        }
+        localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+
+        // remove from tokenObj so it removes from display
+        for (var i = 0; i < $scope.tokenObjs.length; i++) if ($scope.tokenObjs[i].symbol === tokenSymbol) {
+          $scope.tokenObjs.splice(i, 1);
+          break;
         }
       };
     };
@@ -2126,7 +2146,7 @@
     globalFuncs.getDangerText = function (str) {
       return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>';
     };
-    globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol"];
+    globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", " is not a valid ERC-20 token, or the balance cannot be loaded at this time. If other token balances are loading, please remove the token and try again."];
     globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "You have successfully voted. Thank you for being an active participant in The DAO.", "File Selected: "];
     globalFuncs.gethErrors = {
       "Invalid sender": "GETH_InvalidSender",
@@ -2667,11 +2687,12 @@
   }, {}], 34: [function (require, module, exports) {
     'use strict';
 
-    var Token = function (contractAddress, userAddress, symbol, decimal) {
+    var Token = function (contractAddress, userAddress, symbol, decimal, type) {
       this.contractAddress = contractAddress;
       this.userAddress = userAddress;
       this.symbol = symbol;;
       this.decimal = decimal;
+      this.type = type;
       this.setBalance();
       this.balance = "loading";
     };
@@ -2680,43 +2701,53 @@
     Token.popTokens = [{
       "address": "0x74c1e4b8cae59269ec1d85d3d4f324396048f4ac",
       "symbol": "BeerCoin 🍺 ",
-      "decimal": 0
+      "decimal": 0,
+      "type": "default"
     }, {
       "address": "0xbb9bc244d798123fde783fcc1c72d3bb8c189413",
       "symbol": "DAO",
-      "decimal": 16
+      "decimal": 16,
+      "type": "default"
     }, {
       "address": "0x5c40eF6f527f4FbA68368774E6130cE6515123f2",
       "symbol": "DAO extraBalance",
-      "decimal": 0
+      "decimal": 0,
+      "type": "default"
     }, {
       "address": "0xe0b7927c4af23765cb51314a0e0521a9645f0e2a",
       "symbol": "DGD",
-      "decimal": 9
+      "decimal": 9,
+      "type": "default"
     }, {
       "address": "0x54bda709fed875224eae569bb6817d96ef7ed9ad",
       "symbol": "DGDb",
-      "decimal": 0
+      "decimal": 0,
+      "type": "default"
     }, {
       "address": "0xc66ea802717bfb9833400264dd12c2bceaa34a6d",
       "symbol": "MKR",
-      "decimal": 18
+      "decimal": 18,
+      "type": "default"
     }, {
       "address": "0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
       "symbol": "Nexium",
-      "decimal": 3
+      "decimal": 3,
+      "type": "default"
     }, {
       "address": "0xD8912C10681D8B21Fd3742244f44658dBA12264E",
       "symbol": "PLU",
-      "decimal": 18
+      "decimal": 18,
+      "type": "default"
     }, {
       "address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
       "symbol": "Unicorn 🦄 ",
-      "decimal": 0
+      "decimal": 0,
+      "type": "default"
     }, {
       "address": "0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
       "symbol": "XAUR",
-      "decimal": 8
+      "decimal": 8,
+      "type": "default"
     }];
     Token.prototype.getContractAddress = function () {
       return this.contractAddress;
@@ -2740,9 +2771,13 @@
       var balanceCall = ethFuncs.getDataObj(this.contractAddress, Token.balanceHex, [ethFuncs.getNakedAddress(this.userAddress)]);
       var parentObj = this;
       ajaxReq.getEthCall(balanceCall, false, function (data) {
-        if (!data.error) {
-          parentObj.balance = new BigNumber(data.data).div(new BigNumber(10).pow(parentObj.getDecimal())).toString();
-          parentObj.balanceBN = new BigNumber(data.data).toString();
+        try {
+          if (!data.error) {
+            parentObj.balance = new BigNumber(data.data).div(new BigNumber(10).pow(parentObj.getDecimal())).toString();
+            parentObj.balanceBN = new BigNumber(data.data).toString();
+          }
+        } catch (e) {
+          alert(parentObj.symbol + " is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.");
         }
       });
     };
@@ -3880,6 +3915,7 @@
       x_Mnemonic: 'Mnemonic Phrase',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
+      ERROR_21: ' is not a valid ERC-20 token, or the balance cannot be loaded at this time. If other token balances are loading, please remove the token and try again.',
 
       /* Navigation*/
       NAV_YourWallets: 'Your Wallets',
