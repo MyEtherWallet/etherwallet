@@ -8,7 +8,8 @@ en.data = {
   /* Tay TODO: add to all language files, reach out to people to translate, update any other pages at that time too */
   x_Mnemonic:           'Mnemonic Phrase',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:           'Custom Token',
+  SEND_custom:          'Custom Token',
+  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
 
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
