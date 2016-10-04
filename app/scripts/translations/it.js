@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 6e37c4aa8f2954dc8dfdef1ac162bb5
+// Last sync with en.js: commit 655718da3d9723a0a3c1faa01d47392b
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -10,6 +10,7 @@ it.data = {
   x_Mnemonic:           'Frase mnemonica',
   ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
   SEND_custom:          'Altro token',
+  ERROR_21:             ' non è un token ERC-20 valido. Se ci sono altri token in caricamento, rimuovi questo token e riprova.',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
