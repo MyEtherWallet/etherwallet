@@ -225,7 +225,7 @@ footer {
   table& {
     font-weight: 200;
     border-bottom: 0;
-    min-width: 150px;
+    min-width: 200px;
     td {
       padding: 4px 5px;
       line-height: 1;
@@ -238,8 +238,9 @@ footer {
     tr:nth-child(even) {
       background-color: @gray-lightest;
     }
+    tr:nth-last-child(2),
     tr:last-child {
-      background-color: white;
+      background-color: white!important;
     }
   }
 }

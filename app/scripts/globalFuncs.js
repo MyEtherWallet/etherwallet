@@ -48,7 +48,9 @@ globalFuncs.errorMsgs = [
 	"A wallet with this address already exists in storage. Please check your wallets page. ",
 	"You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ",
 	"All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.",
-	"Invalid symbol"];
+	"Invalid symbol",
+	" is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.", // 20
+	];
 globalFuncs.successMsgs = [
 	"Valid address",
 	"Wallet successfully decrypted",
