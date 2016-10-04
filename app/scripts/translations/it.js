@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 655718da3d9723a0a3c1faa01d47392b
+// Last sync with en.js: commit 675893bf686f4f748f61
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -7,13 +7,13 @@ it.data = {
 
   /* Mnemonic Additions */
   x_Mnemonic:           'Frase mnemonica',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_12Word:             'Seme di recupero a 12 parole',
+  x_24Word:             'Seme di recupero a 24 parole',
   ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
   SEND_custom:          'Altro token',
   ERROR_21:             ' non è un token ERC-20 valido. Se ci sono altri token in caricamento, rimuovi questo token e riprova.',
-  TOKEN_show:           'Show All Tokens',
-  TOKEN_hide:           'Hide Tokens',
+  TOKEN_show:           'Mostra tutti i token',
+  TOKEN_hide:           'Nascondi token',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
