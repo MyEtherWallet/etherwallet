@@ -194,7 +194,7 @@ id.data = {
   DAO_ETC_Label_2:        'Atas kerja keras "White Hat Group" yang telah berhasil merebut kembali ETC Anda, wujudkan rasa "terima kasih" Anda dengan mendonasikan sebagian dari jumlah penarikan. ',
   DAO_Desc:               'Pakai halaman ini untuk penarikan ETH **& ETC** dari DAO Anda. Untuk pengiriman DAO, gunakan halaman "Kirim Token".',
   DAO_Inst:               'Cukup dengan menekan tombol merah besar ini. Mudah kan!.',
-  DAO_Warning:            'Jika terjadi error "Insufficient balance for gas", pastikan terdapat sejumlah kecil Ether di Akun untuk menutup biaya gas. Tambahkan 0.001 ether ke akun ini dan silakan coba lagi. ',
+  DAO_Warning:            'Jika terjadi error "Insufficient balance for gas", pastikan terdapat sejumlah kecil Ether di Akun untuk menutup biaya gas. Tambahkan 0.01 ether ke akun ini dan silakan coba lagi. ',
   DAOModal_Title:         'Hanya untuk meyakinkan...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Anda akan melakukan penarikan',
@@ -259,7 +259,7 @@ id.data = {
   ERROR_15:            'Dompet tidak ditemukan. ',
   ERROR_16:            'Tidak ditemukan proposal dengan ID ini atau terjadi error saat membaca proposal ini. ',
   ERROR_17:            'Terdapat dompet dengan alamat yang sama di storage. Cek kembali halaman dompet Anda. ',
-  ERROR_18:            'Minimal harus ada 0.001 ether di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
+  ERROR_18:            'Minimal harus ada 0.01 ether di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
   ERROR_19:            'Semua gas akan digunakan pada transaksi ini. Ini berarti Anda telah memberikan suara pada proposal ini atau periode perdebatan telah berakhir.',
   ERROR_20:            'Simbol tidak valid',
   SUCCESS_1:           'Alamat valid',

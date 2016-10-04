@@ -194,7 +194,7 @@ zh.data = {
   DAO_ETC_Label_2:        '白帽黑客为取回你的ETC不知疲倦地工作。 你可以将一定比例的ETC捐赠给白帽黑客，以表感谢之意。 ',
   DAO_Desc:               '使用这个标签销毁DAO代币，换回ETH和ETC。如果你想发送DAO，请使用发送代币标签。',
   DAO_Inst:               '是的。只需按红色按钮。非常简单。',
-  DAO_Warning:            '如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。向这个账户发送0.001以太币，再次尝试。',
+  DAO_Warning:            '如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。向这个账户发送0.01以太币，再次尝试。',
   DAOModal_Title:         '确保...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             '你将要销毁',
@@ -259,7 +259,7 @@ zh.data = {
   ERROR_15:             '找不到钱包。',
   ERROR_16:             '看起来这个提议不存在或者读取这个提议时出现错误。',
   ERROR_17:             '这个地址钱包已经存在于存储中。请查看你的钱包页面。',
-  ERROR_18:             '你的账户需要至少0.001以太币，已支付gas费用。请添加一些以太币，再次尝试。',
+  ERROR_18:             '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。',
   ERROR_19:             '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。',
   ERROR_20:             '无效符号',
   SUCCESS_1:            '有效地址',
@@ -349,7 +349,7 @@ zh.data = {
   HELP_3_Desc_5:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_3_Desc_6:        'Click the "Unlock Wallet" button.',
   HELP_3_Desc_7:        'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
-  HELP_3_Desc_8:        'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly.',
+  HELP_3_Desc_8:        'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.01 ether to your new wallet, access that wallet, send that 0.01 ether to another address, and ensure everything works smoothly.',
 
   HELP_4_Title:         '4) How do I send Ether from one wallet to another?',
   HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',

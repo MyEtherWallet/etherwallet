@@ -259,7 +259,7 @@ nl.data = {
   ERROR_15:             'Wallet niet gevonden. ',
   ERROR_16:             'Het ziet er niet naar uit dat een proposal met dit ID bestaat of dat er een  fout is opgetreden bij het lezenvan dit proposal. ',
   ERROR_17:             'Een wallet met dit adres bestaat reeds. Check alsjeblileft je wallet pagina. ',
-  ERROR_18:             'Je hebt mininaal 0.001 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
+  ERROR_18:             'Je hebt mininaal 0.01 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
   ERROR_19:             'Alle gas zou worden verbruikt op deze transactie. Dit betekend dat je al gestemd hebt op dit proposal of dat de debateerperiode is verstreken.',
   ERROR_20:             'Ongeldig symbol',
   SUCCESS_1:            'Geldig adres',

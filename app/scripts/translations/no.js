@@ -194,7 +194,7 @@ no.data = {
   DAO_ETC_Label_2:        '"White Hat Group" har jobbet utrettelig for å gi deg tilbake dine ETC. Du kan takke dem ved å donere en prosentandel av uttaket ditt, hvis du ønsker det. ',
   DAO_Desc:               'Bruk denne siden til å veksle inn dine DAO-token for ETH. Hvis du ønsker å sende DAO-token, vennligst bruk "Send Token"-siden.',
   DAO_Inst:               'Ja. Bare trykk på den store røde knappen. Det er så enkelt som det.',
-  DAO_Warning:            'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,001 ether til denne kontoen og prøv igjen. ',
+  DAO_Warning:            'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,01 ether til denne kontoen og prøv igjen. ',
   DAOModal_Title:         'Bare for å være sikker...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Du er i ferd med å veksle inn ',
@@ -259,7 +259,7 @@ no.data = {
   ERROR_15:             'Lommebok ikke funnet. ',
   ERROR_16:             'Det ser ikke ut til at et forslag med denne ID-en eksisterer ennå, eller det er en feil ved innlesning av dette forslaget. ',
   ERROR_17:             'En lommebok med denne adressen er allerede lagret. Vennligst sjekk lommebok-siden din. ',
-  ERROR_18:             'Du trenger minst 0,001 ether på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ether og prøv igjen. ',
+  ERROR_18:             'Du trenger minst 0,01 ether på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ether og prøv igjen. ',
   ERROR_19:             'All gas vil bli brukt på denne transaksjonen. Dette betyr at du allerede har stemt på dette forslaget, eller at debatt-perioden er over.',
   ERROR_20:             'Ugyldig symbol',
   SUCCESS_1:            'Gyldig adresse',

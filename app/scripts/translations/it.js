@@ -195,7 +195,7 @@ it.data = {
   DAO_ETC_Label_2:        'Il gruppo "White Hat" ha lavorato senza sosta per farti riavere i tuoi ETC. Puoi dire "grazie" donando una percentuale della somma che prelevi, se lo desideri. ',
   DAO_Desc:               'Usa questa scheda per prelevare i tuoi token DAO e ottenere ETH **& ETC**. Se invece vuoi inviare token DAO, utilizza la scheda "Invia token".',
   DAO_Inst:               'Sì. Devi solo premere questo grosso pulsante rosso. È davvero così semplice.',
-  DAO_Warning:            'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0,001 ETH a questo conto e riprova. ',
+  DAO_Warning:            'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0,01 ETH a questo conto e riprova. ',
   DAOModal_Title:         'Tanto per essere sicuri...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Stai per prelevare',
@@ -260,7 +260,7 @@ it.data = {
   ERROR_15:             'Portafoglio non trovato. ',
   ERROR_16:             'Sembra che non esista ancora una proposta con questo ID o c\'è un errore nella lettura della proposta. ',
   ERROR_17:             'C\'è già un portafoglio con questo indirizzo fra quelli salvati. Controlla la pagina dei tuoi portafogli. ',
-  ERROR_18:             'Devi avere almeno 0,001 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
+  ERROR_18:             'Devi avere almeno 0,01 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
   ERROR_19:             'Questa transazione consumerebbe tutto il gas. Ciò significa che hai già votato questa proposta o che il periodo di discussione è terminato.',
   ERROR_20:             'Simbolo non valido',
   SUCCESS_1:            'Indirizzo valido',

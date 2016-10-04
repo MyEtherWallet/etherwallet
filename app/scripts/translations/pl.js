@@ -259,7 +259,7 @@ pl.data = {
   ERROR_15:             'Nie znaleziono portfela. ',
   ERROR_16:             'Wygląda, że propozycja z tym ID jeszcze nie istnieje, lub wystąpił błąd odczytu tej propozycji. ',
   ERROR_17:             'Portfel z tym adresem już istnieje w konfiguracji. Sprawdź zakładkę portfeli. ',
-  ERROR_18:             'Musisz mieć co najmniej 0.001 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
+  ERROR_18:             'Musisz mieć co najmniej 0.01 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
   ERROR_19:             'Całe paliwo było by zużyte w tej transakcji. Oznacza to, że głosowałeś już w tej propozycji albo minął termin głosowania.',
   ERROR_20:             'Nieprawidłowy symbol',
   SUCCESS_1:            'Prawidłowy adres',

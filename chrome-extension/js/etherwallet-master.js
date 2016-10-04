@@ -2167,7 +2167,7 @@
     globalFuncs.getDangerText = function (str) {
       return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>';
     };
-    globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", " is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again."];
+    globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", " is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again."];
     globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "You have successfully voted. Thank you for being an active participant in The DAO.", "File Selected: "];
     globalFuncs.gethErrors = {
       "Invalid sender": "GETH_InvalidSender",
@@ -3034,7 +3034,7 @@
       DAO_ETC_Label_2: 'Die "White Hat Group" hat unermüdlich gearbeitet um deine ETC zurückzuholen. Wenn du möchtest, kannst du dich bedanken indem du einen Teil deiner ETC an sie spendest. ',
       DAO_Desc: 'Nutze diesen Tab um deine DAO Token in ETH auszuzahlen. Wenn du DAO Token verschicken willst, nutze bitten den "Sende Tokens" Tab',
       DAO_Inst: 'Ja, du musst einfach den großen roten Knopf drücken. Es ist so einfach.',
-      DAO_Warning: 'Wenn du den Fehler "Zu geringer Kontostand um Gaskosten zu decken" erhälst, musst du einen kleinen ether Betrag auf dein Konto überweisen um die Kosten zu decken. Überweise 0.001 Ether an dieses Konto und versuche es erneut. ',
+      DAO_Warning: 'Wenn du den Fehler "Zu geringer Kontostand um Gaskosten zu decken" erhälst, musst du einen kleinen ether Betrag auf dein Konto überweisen um die Kosten zu decken. Überweise 0.01 Ether an dieses Konto und versuche es erneut. ',
       DAOModal_Title: 'Nur zur Sicherheit...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Du bist dabei',
@@ -3099,7 +3099,7 @@
       ERROR_15: 'Wallet nicht gefunden. ',
       ERROR_16: 'Es sieht nicht so aus als würde ein Proposal mit dieser ID existieren oder es gab einen Fehler beim Lesen des Proposal. ',
       ERROR_17: 'Es ist bereits ein Wallet mit dieser Adresse gespeichert. Bitte überprüfe die Seite deines Wallets. ',
-      ERROR_18: 'Du brauchst zumindest 0.001 ETH in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
+      ERROR_18: 'Du brauchst zumindest 0.01 ETH in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
       ERROR_19: 'Diese Transaktion würde dein gesamtes verbleibendes Gas verbrauchen. Das bedeutet, du hast bereits über dieses Proposal abgestimmt oder die Debattierphase ist zu Ende.',
       ERROR_20: 'Ungültiges Symbol',
       SUCCESS_1: 'Gültige Addresse',
@@ -3609,7 +3609,7 @@
       /* DAO */
       DAO_Desc: 'Χρησιμοποιείστε αυτήν την καρτέλα για να κάνετε Ανάληψη των DAO Tokens σας ως ETH. Αν επιθυμείτε να αποστείλετε DAO, παρακαλώ χρησιμοποιήστε την καρτέλα Αποστολή Tokens.',
       DAO_Inst: 'Ναι. Απλά πατάτε το μεγάλο κόκκινο κουμπί. Είναι τόσο απλό.',
-      DAO_Warning: 'Αν δέχεστε σφάλμα "Aνεπαρκές υπόλοιπο για gas", θα πρέπει να έχετε ένα μικρό ποσό ether στον λογαριασμό σας έτσι ώστε να καλύψετε το κόστος του gas. Προσθέστε 0.001 ether στον λογαριασμό αυτό και προσπαθήστε ξανά. ',
+      DAO_Warning: 'Αν δέχεστε σφάλμα "Aνεπαρκές υπόλοιπο για gas", θα πρέπει να έχετε ένα μικρό ποσό ether στον λογαριασμό σας έτσι ώστε να καλύψετε το κόστος του gas. Προσθέστε 0.01 ether στον λογαριασμό αυτό και προσπαθήστε ξανά. ',
       DAOModal_Title: 'Απλά για σιγουριά...',
 
       /* Digix */
@@ -4808,7 +4808,7 @@
       ERROR_15: 'Lompakkoa ei löytynyt. ',
       ERROR_16: 'Ei näytä että ehdotusta tällä ID:llä olisi vielä olemassa tai tapahtui virhe ehdotusta luettaessa. ',
       ERROR_17: 'Lompakko jolla on tämä osoite on jo muistissa. Ole hyvä ja tarkista oma lompakko sivusi. ',
-      ERROR_18: 'Sinulla täytyy olla vähintään .001 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. ',
+      ERROR_18: 'Sinulla täytyy olla vähintään 0.01 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. ',
       ERROR_19: 'Kaikki gas käytettäisiin tässä siirrossa. Tämä tarkoittaa että olet jo äänestänyt tässä ehdotuksessa tai debaatti aika on jo päättynyt.',
       ERROR_20: 'Virheellinen merkki',
       SUCCESS_1: 'Validi osoite',
@@ -5302,7 +5302,7 @@
       DAO_ETC_Label_2: 'Le "White Hat Group" a travaillé sans relâche pour vous rendre vos ETC. Vous pouvez les remercier par une donation d\'un pourcentage de votre retrait si vous le souhaitez. ',
       DAO_Desc: 'Utilisez cet onglet pour retirer et convertir vos tokens en ETH. Si vous désirez envoyer des tokens DAO, utilisez l\'onglet Envoi de tokens.',
       DAO_Inst: 'Oui. Cliquez simplement sur le gros bouton rouge. Vous voyez, c\'est simple.',
-      DAO_Warning: 'Si vous obtenez une erreur "Montant insuffisant pour le paiement du gaz", vous devez disposer d\'un petit montant en ether sur votre compte pour couvrir le coût en gaz. Ajoutez 0,001 ether sur votre compte et réessayez. ',
+      DAO_Warning: 'Si vous obtenez une erreur "Montant insuffisant pour le paiement du gaz", vous devez disposer d\'un petit montant en ether sur votre compte pour couvrir le coût en gaz. Ajoutez 0,01 ether sur votre compte et réessayez. ',
       DAOModal_Title: 'Juste pour être sûr...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Vous êtes sur le point de retirer',
@@ -5367,7 +5367,7 @@
       ERROR_15: 'Portefeuille non trouvé. ',
       ERROR_16: 'Il semble qu\'aucune proposition n\'existe encore avec cet identifiant ou qu\'il y a une erreur lors de la consultation de cette proposition. ',
       ERROR_17: 'Un portefeuille avec cette adresse existe déja. Merci de consulter la page listant vos portefeuilles. ',
-      ERROR_18: 'Il vous faut au moins 0.001 ether sur votre compte pour couvrir les coûts du gaz. Ajoutez des ether et réessayez. ',
+      ERROR_18: 'Il vous faut au moins 0,01 ether sur votre compte pour couvrir les coûts du gaz. Ajoutez des ether et réessayez. ',
       ERROR_19: 'Tout le gaz serait consommé lors de cette transaction. Cela signifie que vous avez déjà voté pour cette proposition ou que la période du débat est terminée.',
       ERROR_20: 'Symbole invalide',
       SUCCESS_1: 'Adresse valide',
@@ -5862,7 +5862,7 @@
       DAO_ETC_Label_2: 'A "White Hat Group" fáradhatatlanul dolgozik azon, hogy visszajuttassa hozzád az ETC-det. Mondhatsz egy "köszönömöt" azzal, hogy a kifizetésed bizonyos százalékát eladományozod nekik, ha ezt választod. ',
       DAO_Desc: 'Használd ezt az oldalt, hogy Kifizesd a DAO tokenedet ETH-ért **és ETC-ért**. Ha DAO-t szeretnél küldeni, kérlek használd a Token Küldése oldalt.',
       DAO_Inst: 'Igen. Csak nyomd meg a nagy piros gombot. Ez ilyen egyszerű.',
-      DAO_Warning: 'Ha "nincs elegendő egyenleg a gas-hoz" hibaüzenetet kaptál, egy kis összegnyi etherre szükséged lesz a számládon, hogy fedezni tudd a gas költségeit. Adj hozzá 0.001 ethert ehhez a számlához és próbáld újra. ',
+      DAO_Warning: 'Ha "nincs elegendő egyenleg a gas-hoz" hibaüzenetet kaptál, egy kis összegnyi etherre szükséged lesz a számládon, hogy fedezni tudd a gas költségeit. Adj hozzá 0.01 ethert ehhez a számlához és próbáld újra. ',
       DAOModal_Title: 'Csak megbizonyosodunk...',
       DAOModal_1: 'Most készülsz kifizetni',
       DAOModal_2: 'DAO Tokeneket erre a címre',
@@ -5926,7 +5926,7 @@
       ERROR_15: 'Tárca nem található. ',
       ERROR_16: 'Úgy tűnik ezzel az ID-vel nem létezik javaslat, vagy hiba történt a javaslat beolvasása közben. ',
       ERROR_17: 'Egy tárca ezzel a címmel már létezik a tárolóban. Kérlek ellenőrizd a tárcák oldalán. ',
-      ERROR_18: 'Legalább 0.001 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra!',
+      ERROR_18: 'Legalább 0.01 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra!',
       ERROR_19: 'Az összes gas felhasználásra kerülne ezen a tranzakción. Ez azt jelenti, hogy már szavaztál erre a javaslatra vagy a vita periódus már lejárt.',
       ERROR_20: 'Érvénytelen szimbólum',
       SUCCESS_1: 'Érvényes cím',
@@ -6419,7 +6419,7 @@
       DAO_ETC_Label_2: 'Atas kerja keras "White Hat Group" yang telah berhasil merebut kembali ETC Anda, wujudkan rasa "terima kasih" Anda dengan mendonasikan sebagian dari jumlah penarikan. ',
       DAO_Desc: 'Pakai halaman ini untuk penarikan ETH **& ETC** dari DAO Anda. Untuk pengiriman DAO, gunakan halaman "Kirim Token".',
       DAO_Inst: 'Cukup dengan menekan tombol merah besar ini. Mudah kan!.',
-      DAO_Warning: 'Jika terjadi error "Insufficient balance for gas", pastikan terdapat sejumlah kecil Ether di Akun untuk menutup biaya gas. Tambahkan 0.001 ether ke akun ini dan silakan coba lagi. ',
+      DAO_Warning: 'Jika terjadi error "Insufficient balance for gas", pastikan terdapat sejumlah kecil Ether di Akun untuk menutup biaya gas. Tambahkan 0.01 ether ke akun ini dan silakan coba lagi. ',
       DAOModal_Title: 'Hanya untuk meyakinkan...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Anda akan melakukan penarikan',
@@ -6484,7 +6484,7 @@
       ERROR_15: 'Dompet tidak ditemukan. ',
       ERROR_16: 'Tidak ditemukan proposal dengan ID ini atau terjadi error saat membaca proposal ini. ',
       ERROR_17: 'Terdapat dompet dengan alamat yang sama di storage. Cek kembali halaman dompet Anda. ',
-      ERROR_18: 'Minimal harus ada 0.001 ether di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
+      ERROR_18: 'Minimal harus ada 0.01 ether di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
       ERROR_19: 'Semua gas akan digunakan pada transaksi ini. Ini berarti Anda telah memberikan suara pada proposal ini atau periode perdebatan telah berakhir.',
       ERROR_20: 'Simbol tidak valid',
       SUCCESS_1: 'Alamat valid',
@@ -6979,7 +6979,7 @@
       DAO_ETC_Label_2: 'Il gruppo "White Hat" ha lavorato senza sosta per farti riavere i tuoi ETC. Puoi dire "grazie" donando una percentuale della somma che prelevi, se lo desideri. ',
       DAO_Desc: 'Usa questa scheda per prelevare i tuoi token DAO e ottenere ETH **& ETC**. Se invece vuoi inviare token DAO, utilizza la scheda "Invia token".',
       DAO_Inst: 'Sì. Devi solo premere questo grosso pulsante rosso. È davvero così semplice.',
-      DAO_Warning: 'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0,001 ETH a questo conto e riprova. ',
+      DAO_Warning: 'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0,01 ETH a questo conto e riprova. ',
       DAOModal_Title: 'Tanto per essere sicuri...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Stai per prelevare',
@@ -7044,7 +7044,7 @@
       ERROR_15: 'Portafoglio non trovato. ',
       ERROR_16: 'Sembra che non esista ancora una proposta con questo ID o c\'è un errore nella lettura della proposta. ',
       ERROR_17: 'C\'è già un portafoglio con questo indirizzo fra quelli salvati. Controlla la pagina dei tuoi portafogli. ',
-      ERROR_18: 'Devi avere almeno 0,001 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
+      ERROR_18: 'Devi avere almeno 0,01 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
       ERROR_19: 'Questa transazione consumerebbe tutto il gas. Ciò significa che hai già votato questa proposta o che il periodo di discussione è terminato.',
       ERROR_20: 'Simbolo non valido',
       SUCCESS_1: 'Indirizzo valido',
@@ -7613,7 +7613,7 @@
       ERROR_15: 'ウォレットが見つかりません。 ',
       ERROR_16: 'このIDのプロポーサルは存在しない、あるいは正常に読み込みできません。 ',
       ERROR_17: '同じアドレスのウォレットが既に存在します。ウォレットのページをご確認ください。',
-      ERROR_18: 'ガスとして使われるために、少なくとも0.001 etherがウォレット上に必要です。 ',
+      ERROR_18: 'ガスとして使われるために、少なくとも0.01 etherがウォレット上に必要です。 ',
       ERROR_19: '全てのガスがこのトランザクションにより消費されます。これは、既に投票を行ったか、あるいはディベート期間が終了したためです。',
       ERROR_20: '無効なシンボル',
       SUCCESS_1: '有効なアドレス',
@@ -8161,7 +8161,7 @@
       ERROR_15: 'Wallet niet gevonden. ',
       ERROR_16: 'Het ziet er niet naar uit dat een proposal met dit ID bestaat of dat er een  fout is opgetreden bij het lezenvan dit proposal. ',
       ERROR_17: 'Een wallet met dit adres bestaat reeds. Check alsjeblileft je wallet pagina. ',
-      ERROR_18: 'Je hebt mininaal 0.001 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
+      ERROR_18: 'Je hebt mininaal 0.01 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
       ERROR_19: 'Alle gas zou worden verbruikt op deze transactie. Dit betekend dat je al gestemd hebt op dit proposal of dat de debateerperiode is verstreken.',
       ERROR_20: 'Ongeldig symbol',
       SUCCESS_1: 'Geldig adres',
@@ -8655,7 +8655,7 @@
       DAO_ETC_Label_2: '"White Hat Group" har jobbet utrettelig for å gi deg tilbake dine ETC. Du kan takke dem ved å donere en prosentandel av uttaket ditt, hvis du ønsker det. ',
       DAO_Desc: 'Bruk denne siden til å veksle inn dine DAO-token for ETH. Hvis du ønsker å sende DAO-token, vennligst bruk "Send Token"-siden.',
       DAO_Inst: 'Ja. Bare trykk på den store røde knappen. Det er så enkelt som det.',
-      DAO_Warning: 'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,001 ether til denne kontoen og prøv igjen. ',
+      DAO_Warning: 'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,01 ether til denne kontoen og prøv igjen. ',
       DAOModal_Title: 'Bare for å være sikker...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Du er i ferd med å veksle inn ',
@@ -8720,7 +8720,7 @@
       ERROR_15: 'Lommebok ikke funnet. ',
       ERROR_16: 'Det ser ikke ut til at et forslag med denne ID-en eksisterer ennå, eller det er en feil ved innlesning av dette forslaget. ',
       ERROR_17: 'En lommebok med denne adressen er allerede lagret. Vennligst sjekk lommebok-siden din. ',
-      ERROR_18: 'Du trenger minst 0,001 ether på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ether og prøv igjen. ',
+      ERROR_18: 'Du trenger minst 0,01 ether på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ether og prøv igjen. ',
       ERROR_19: 'All gas vil bli brukt på denne transaksjonen. Dette betyr at du allerede har stemt på dette forslaget, eller at debatt-perioden er over.',
       ERROR_20: 'Ugyldig symbol',
       SUCCESS_1: 'Gyldig adresse',
@@ -9279,7 +9279,7 @@
       ERROR_15: 'Nie znaleziono portfela. ',
       ERROR_16: 'Wygląda, że propozycja z tym ID jeszcze nie istnieje, lub wystąpił błąd odczytu tej propozycji. ',
       ERROR_17: 'Portfel z tym adresem już istnieje w konfiguracji. Sprawdź zakładkę portfeli. ',
-      ERROR_18: 'Musisz mieć co najmniej 0.001 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
+      ERROR_18: 'Musisz mieć co najmniej 0.01 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
       ERROR_19: 'Całe paliwo było by zużyte w tej transakcji. Oznacza to, że głosowałeś już w tej propozycji albo minął termin głosowania.',
       ERROR_20: 'Nieprawidłowy symbol',
       SUCCESS_1: 'Prawidłowy adres',
@@ -9784,7 +9784,7 @@
       DAO_ETC_Label_2: 'Группа "White Hat" работала не покладая рук для того, чтобы Вы смогли получить обратно Ваш ETC. Вы можете сказать им "спасибо", пожертвовав небольшой процент от суммы, если хотите, конечно. ',
       DAO_Desc: 'Используйте эту вкладку, чтобы обменять Ваши DAO токены на эфир (ether). Если вы хотите перевести DAO токены, используйте вкладку "Перевести токены".',
       DAO_Inst: 'Да. Просто нажмите большую красную кнопку. Это действительно просто.',
-      DAO_Warning: 'Если Вы видите ошибку "Недостаточно средств для оплаты газа", то это значит, что на Вашем счету не хватает эфира (ether), чтобы покрыть расходы на газ. Переведите 0,001 эфира (ether) на Ваш счёт и попробуйте снова. ',
+      DAO_Warning: 'Если Вы видите ошибку "Недостаточно средств для оплаты газа", то это значит, что на Вашем счету не хватает эфира (ether), чтобы покрыть расходы на газ. Переведите 0,01 эфира (ether) на Ваш счёт и попробуйте снова. ',
       DAOModal_Title: 'Просто чтобы убедиться...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Вы собираетесь обменять',
@@ -9850,7 +9850,7 @@
       ERROR_15: 'Кошелёк не найден. ',
       ERROR_16: 'Предложение с таким идентификатором не существует или при чтении предложения произошла ошибка. ',
       ERROR_17: 'Кошелёк с таким адресом уже находится в хранилище. Просмотрите в списке кошельков. ',
-      ERROR_18: 'Вам необходимо иметь не менее 0.001 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
+      ERROR_18: 'Вам необходимо иметь не менее 0.01 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
       ERROR_19: 'Транзакция могла бы истратить весь газ. Это значит, что Вы уже голосовали по данному предложению, или период обсуждения данного предложения закончился.',
       ERROR_20: 'Неправильный символ',
       SUCCESS_1: 'Адрес указан верно',
@@ -10346,7 +10346,7 @@
       DAO_ETC_Label_2: '"Beyaz Şapka Grubu" ETC\'lerini geri almak için yorulmadan çalışmaktadır. Eğer istiyorsan, senin çekiminden yüzdesi bağışlayarak "teşekkür ederim" diyebilirsin.',
       DAO_Desc: 'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
       DAO_Inst: 'Evet. Sadece büyük kırmızı düğmeye bas. Bu kadar kolay.',
-      DAO_Warning: 'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
+      DAO_Warning: 'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ether to this account and try again. ',
       DAOModal_Title: 'Sadece emin olmak için...',
 
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
@@ -10412,7 +10412,7 @@
       ERROR_15: 'Cüzdan bulunmadi. ',
       ERROR_16: 'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
       ERROR_17: 'A wallet with this address already exists in storage. Please check your wallets page. ',
-      ERROR_18: 'You need to have at least 0.001 ether in your account to cover the cost of gas. Please add some ether and try again. ',
+      ERROR_18: 'You need to have at least 0.01 ether in your account to cover the cost of gas. Please add some ether and try again. ',
       ERROR_19: 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
       ERROR_20: 'Geçersiz sembol',
       SUCCESS_1: 'Geçerli adres',
@@ -10968,7 +10968,7 @@
       DAO_ETC_Label_2: 'Nhóm Whitehat đã làm việc cật lực để đòi lại số ETC và mang về cho bạn. Bạn có thể nói lời cảm ơn đến họ bằng cách quyên góp một phần tỷ lệ % từ khoảng hoàn lại của bạn. ',
       DAO_Desc: 'Sử dụng phần này cho việc thu hồi DAO Token và hoàn trả lại **ETH & ETC**. Nếu bạn muốn gửi DAO Token, xin vui lòng sử dụng mục "gửi Token".',
       DAO_Inst: 'Đúng rồi, Bạn chỉ cần chọn vào nút lớn màu đỏ.',
-      DAO_Warning: 'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hãy thêm vào 0.001 ether vào tài khoản và thực hiện lại. ',
+      DAO_Warning: 'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hãy thêm vào 0.01 ether vào tài khoản và thực hiện lại. ',
       DAOModal_Title: 'Đảm bảo rằng...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Bạn Muốn thực hiện việc "Thu Hồi"',
@@ -11033,7 +11033,7 @@
       ERROR_15: 'Không tìm thấy Ví. ',
       ERROR_16: 'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
       ERROR_17: 'Đã có một ví với địa chỉ này đang tồn tại trong mục lưu trữ. Vui lòng kiễm tra trang ví của bạn. ',
-      ERROR_18: 'Bạn cần có ít nhất 0.001 ether trong tài khoản để thanh toán chi phí gas. Hãy thêm một số ether và thực hiện lại. ',
+      ERROR_18: 'Bạn cần có ít nhất 0.01 ether trong tài khoản để thanh toán chi phí gas. Hãy thêm một số ether và thực hiện lại. ',
       ERROR_19: 'Toàn bộ gas sẽ được sử dụng trong giao dịch này. Việc làm này có nghĩa là bạn đã bỏ phiếu cho đề xuất này hoặc kỳ hạn của cuộc tranh luận đã kết thúc.',
       ERROR_20: 'Biểu tượng không hợp lệ',
       SUCCESS_1: 'Địa Chỉ Hợp Lệ',
@@ -11527,7 +11527,7 @@
       DAO_ETC_Label_2: '白帽黑客为取回你的ETC不知疲倦地工作。 你可以将一定比例的ETC捐赠给白帽黑客，以表感谢之意。 ',
       DAO_Desc: '使用这个标签销毁DAO代币，换回ETH和ETC。如果你想发送DAO，请使用发送代币标签。',
       DAO_Inst: '是的。只需按红色按钮。非常简单。',
-      DAO_Warning: '如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。向这个账户发送0.001以太币，再次尝试。',
+      DAO_Warning: '如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。向这个账户发送0.01以太币，再次尝试。',
       DAOModal_Title: '确保...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: '你将要销毁',
@@ -11592,7 +11592,7 @@
       ERROR_15: '找不到钱包。',
       ERROR_16: '看起来这个提议不存在或者读取这个提议时出现错误。',
       ERROR_17: '这个地址钱包已经存在于存储中。请查看你的钱包页面。',
-      ERROR_18: '你的账户需要至少0.001以太币，已支付gas费用。请添加一些以太币，再次尝试。',
+      ERROR_18: '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。',
       ERROR_19: '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。',
       ERROR_20: '无效符号',
       SUCCESS_1: '有效地址',
@@ -11680,7 +11680,7 @@
       HELP_3_Desc_5: 'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
       HELP_3_Desc_6: 'Click the "Unlock Wallet" button.',
       HELP_3_Desc_7: 'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
-      HELP_3_Desc_8: 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly.',
+      HELP_3_Desc_8: 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.01 ether to your new wallet, access that wallet, send that 0.01 ether to another address, and ensure everything works smoothly.',
 
       HELP_4_Title: '4) How do I send Ether from one wallet to another?',
       HELP_4_Desc_1: 'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',

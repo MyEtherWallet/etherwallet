@@ -194,7 +194,7 @@ fr.data = {
   DAO_ETC_Label_2:        'Le "White Hat Group" a travaillé sans relâche pour vous rendre vos ETC. Vous pouvez les remercier par une donation d\'un pourcentage de votre retrait si vous le souhaitez. ',
   DAO_Desc:               'Utilisez cet onglet pour retirer et convertir vos tokens en ETH. Si vous désirez envoyer des tokens DAO, utilisez l\'onglet Envoi de tokens.',
   DAO_Inst:               'Oui. Cliquez simplement sur le gros bouton rouge. Vous voyez, c\'est simple.',
-  DAO_Warning:            'Si vous obtenez une erreur "Montant insuffisant pour le paiement du gaz", vous devez disposer d\'un petit montant en ether sur votre compte pour couvrir le coût en gaz. Ajoutez 0,001 ether sur votre compte et réessayez. ',
+  DAO_Warning:            'Si vous obtenez une erreur "Montant insuffisant pour le paiement du gaz", vous devez disposer d\'un petit montant en ether sur votre compte pour couvrir le coût en gaz. Ajoutez 0,01 ether sur votre compte et réessayez. ',
   DAOModal_Title:         'Juste pour être sûr...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Vous êtes sur le point de retirer',
@@ -259,7 +259,7 @@ fr.data = {
   ERROR_15:             'Portefeuille non trouvé. ',
   ERROR_16:             'Il semble qu\'aucune proposition n\'existe encore avec cet identifiant ou qu\'il y a une erreur lors de la consultation de cette proposition. ',
   ERROR_17:             'Un portefeuille avec cette adresse existe déja. Merci de consulter la page listant vos portefeuilles. ',
-  ERROR_18:             'Il vous faut au moins 0.001 ether sur votre compte pour couvrir les coûts du gaz. Ajoutez des ether et réessayez. ',
+  ERROR_18:             'Il vous faut au moins 0,01 ether sur votre compte pour couvrir les coûts du gaz. Ajoutez des ether et réessayez. ',
   ERROR_19:             'Tout le gaz serait consommé lors de cette transaction. Cela signifie que vous avez déjà voté pour cette proposition ou que la période du débat est terminée.',
   ERROR_20:             'Symbole invalide',
   SUCCESS_1:            'Adresse valide',

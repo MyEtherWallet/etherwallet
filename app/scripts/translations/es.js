@@ -194,7 +194,7 @@ es.data = {
   DAO_ETC_Label_2:        'El "White Hat Group" ha trabajado sin descanso para devolverte tus ETC. Puedes agradecérselo donando un porcentaje de tu reintegro si así lo eliges. ',
   DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
   DAO_Inst:               'Sí. Simplemente pulsa el botón rojo grande. Es así de sencillo.',
-  DAO_Warning:            'Si estás obteniendo un error de "Saldo insuficiente para gas", debes tener una pequeña cantidad de ether en tu cuenta para poder cubrir el coste del gas. Añade 0.001 ether a esta cuenta y prueba de nuevo. ',
+  DAO_Warning:            'Si estás obteniendo un error de "Saldo insuficiente para gas", debes tener una pequeña cantidad de ether en tu cuenta para poder cubrir el coste del gas. Añade 0.01 ether a esta cuenta y prueba de nuevo. ',
   DAOModal_Title:         'Solamente asegurándonos...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Estás a punto de retirar',
@@ -259,7 +259,7 @@ es.data = {
   ERROR_15:             'Cartera no encontrada. ',
   ERROR_16:             'No parece que exista todavía una propuesta con este ID o hay un error al leer esta propuesta. ',
   ERROR_17:             'Ya hay almacenada una cartera con esta dirección. Por favor comprueba la página de carteras. ',
-  ERROR_18:             'Es necesario tener al menos 0.001 ether en tu cuenta para cubrir el coste del gas. Añade algo de ether e inténtalo de nuevo. ',
+  ERROR_18:             'Es necesario tener al menos 0.01 ether en tu cuenta para cubrir el coste del gas. Añade algo de ether e inténtalo de nuevo. ',
   ERROR_19:             'Sería necesario utilizar todo el gas en esta transacción. Esto significa que ya has votado en esta propuesta o que el periodo de debate ha concluido.',
   ERROR_20:             'Símbolo no válido',
   SUCCESS_1:            'Dirección válida',
