@@ -75,6 +75,12 @@ Token.popTokens = [{
 	"symbol": "XAUR",
 	"decimal": 8,
 	"type": "default"
+},
+{
+	"address": "0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
+	"symbol": "SNGLS",
+	"decimal": 16,
+	"type": "default"
 }
 ];
 Token.prototype.getContractAddress = function() {

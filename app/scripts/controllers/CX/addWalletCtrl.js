@@ -20,7 +20,8 @@ var addWalletCtrl = function($scope, $sce) {
 	};
 	$scope.onMnemonicChange = function() {
 		$scope.addWalletStats = "";
-		$scope.showBtnUnlock = bip39.validateMnemonic($scope.manualmnemonic);
+        var numWords = $scope.manualmnemonic.trim().split(' ').length;
+		$scope.showBtnUnlock = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
 	};
 	$scope.showContent = function($fileContent) {
 		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[5] + document.getElementById('fselector').files[0].name));
@@ -53,7 +54,12 @@ var addWalletCtrl = function($scope, $sce) {
 				$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
 				$scope.addAccount.password = $scope.filePassword;
 			} else if ($scope.walletType == "pastemnemonic") {
-				$scope.wallet = new Wallet(bip39.mnemonicToSeed($scope.manualmnemonic).slice(0, 32));
+				var numWords = $scope.manualmnemonic.trim().split(' ').length;
+                var hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim()));
+                if(numWords==12) //jaxx and metamask
+                    $scope.wallet = new Wallet(hdk.derive("m/44'/60'/0'/0/0")._privateKey);
+                else if(numWords==24) //ledger
+                    $scope.wallet = new Wallet(hdk.derive("m/44'/60'/0'/0")._privateKey);
 			}
 			$scope.addAccount.address = $scope.wallet.getAddressString();
 		} catch (e) {
