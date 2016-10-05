@@ -5,9 +5,7 @@ ru.code = 'ru';
 ru.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -53,9 +51,9 @@ ru.data = {
   x_PrivKey:            'Закрытый ключ (не зашифрован)',
   x_PrivKey2:           'Закрытый ключ',
   x_PrivKeyDesc:        'Это незашифрованное текстовое представление Вашего закрытого ключа, для использования которого не требуется вводить пароль. Если посторонние узнают Ваш закрытый ключ, они смогут распоряжаться Вашим кошельком без ввода пароля. По этой причине, обычно рекомендуют использовать зашифрованную версию закрытого ключа.',
-  x_Keystore:           'Файл Keystore/JSON (рекомендуется · зашифрован · совместим с Mist и geth)',
-  x_Keystore2:          'Файл Keystore/JSON',
-  x_KeystoreDesc:       'Этот файл Keystore/JSON использует формат совместимый с Mist и geth. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию.',
+  x_Keystore:           'Файл Keystore (UTC / JSON · рекомендуется · зашифрован · совместим с Mist)',
+  x_Keystore2:          'Файл Keystore (UTC / JSON)',
+  x_KeystoreDesc:       'Этот файл Keystore использует формат совместимый с Mist. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию.',
   x_Json:               'Файл JSON (не зашифрован)',
   x_JsonDesc:           'Это Ваш незашифрованный закрытый ключ в формате JSON, для использования которого не требуется воодить пароль. Любой, у кого есть этот файл, может распоряжаться вашим кошельком и эфиром (ether) без ввода пароля.',
   x_PrintShort:         'Печать',

@@ -5,9 +5,7 @@ sl.code = 'sl';
 sl.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -42,9 +40,9 @@ sl.data = {
   x_Download:           'Prenesi',
   x_Json:               'JSON Datoteka (nekriptirana)',
   x_JsonDesc:           'To je nekriptirana, JSON datoteka vašega osebnega ključa. To pomeni, da za uporabo ne potrebujete gesla. V primeru da kdorkoli najde datoteko vašega ključa, dobi takojšen dostop do vaše denarnice in vašega Ethra brez uporabe gesla.',
-  x_Keystore:           'Datoteka za Shrambo ključa Keystore/JSON  (Priporočeno · Kriptirano · Mist/Geth Format)',
-  x_Keystore2:          'Datoteka za Shrambo ključa Keystore/JSON',
-  x_KeystoreDesc:       'Ta datoteka za shrambo osebnega ključa Keystore/JSON se ujema s formatom datoteke, ki jo uporabljata programa Mist in Geth, kar pomeni da ga lahko v prihodnosti enostavno izvozite iz te internetne strani in uvozite v Mist ali Geth. Priporočamo vam da to datoteko prenesete na vaš računalnik in jo shranite na varnem mestu. Za dodatno varnost priporočamo, da datoteko shranite na večih napravah.',
+  x_Keystore:           'Datoteka za Shrambo ključa Keystore (UTC / JSON · Priporočeno · Kriptirano · Mist Format)',
+  x_Keystore2:          'Datoteka za Shrambo ključa Keystore (UTC / JSON)',
+  x_KeystoreDesc:       'Ta datoteka za shrambo osebnega ključa Keystore se ujema s formatom datoteke, ki jo uporabljata programa Mist, kar pomeni da ga lahko v prihodnosti enostavno izvozite iz te internetne strani in uvozite v Mist ali Geth. Priporočamo vam da to datoteko prenesete na vaš računalnik in jo shranite na varnem mestu. Za dodatno varnost priporočamo, da datoteko shranite na večih napravah.',
   x_Password:           'Geslo',
   x_Print:              'Natisni Papirnato Denarnico',
   x_PrintDesc:          'Napotek: V primeru da nimate printerja lahko vseeno pritisnete natisni in izberete tiskalnik PDF, s tem boste natisnili datoteko PDF, ki jo lahko po želji shranite ali natisnete.',

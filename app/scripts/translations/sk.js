@@ -5,9 +5,7 @@ sk.code = 'sk';
 sk.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -40,9 +38,9 @@ sk.data = {
   x_Download:           'Stiahnuť',
   x_Json:               'JSON Súbor (nezašifrovaný)',
   x_JsonDesc:           'Toto je nezašifrovaný JSON format vášho sukromného kľúča. To znamená, že nepotrebujete heslo, ale ak niekto získa váš JSON, je schopný sprístupniť vašu peňaženku a Ether bez hesla.',
-  x_Keystore:           'Keystore/JSON Súbor (Odporúčané · Šifrované · Mist/Geth Format)',
-  x_Keystore2:          'Keystore/JSON Súbor',
-  x_KeystoreDesc:       'Tento Keystore / JSON súbor je rovnakého formatu ako  Mist & Geth takže ho budete môcť jednoducho importovať. Tento subor odporúčame stiahnuť a zálohovať.',
+  x_Keystore:           'Keystore Súbor (UTC / JSON · Odporúčané · Šifrované · Mist Format)',
+  x_Keystore2:          'Keystore Súbor (UTC / JSON) ',
+  x_KeystoreDesc:       'Tento Keystore súbor je rovnakého formatu ako  Mist takže ho budete môcť jednoducho importovať. Tento subor odporúčame stiahnuť a zálohovať.',
   x_Password:           'Heslo',
   x_Print:              'Vytlačiť Papierovú Peňaženku',
   x_PrintDesc:          'Rada: Ak nevlastnite tlačiareň, jednoducho kliknite tlačiť a uložte to ako PDF.',
@@ -106,8 +104,8 @@ sk.data = {
   GEN_Label_1:            'Enter a strong password (at least 9 characters)',
   GEN_Placeholder_1:      'Do NOT forget to save this!',
   GEN_SuccessMsg:         'Success! Your wallet has been generated.',
-  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
-  GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
+  GEN_Warning:            '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
+  GEN_Label_2:            'Save your Keystore File. Don\'t forget your password above.',
   GEN_Label_3:            'Save Your Address.',
   GEN_Label_4:            'Print your paper wallet, or store a QR code version. (optional)',
 

@@ -5,9 +5,7 @@ vi.code = 'vi';
 vi.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -40,9 +38,9 @@ vi.data = {
   x_Download:           'Tải Về Máy',
   x_Json:               'Định Dạng JSON (Không mã hoá)',
   x_JsonDesc:           'Định Dạng JSON là một tập tin chứa dữ liệu ví chưa được mã hoá của Private Key. Bạn có thể đăng nhập vào ví của bạn bằng việc sử dụng định dạng JSON mà không cần đến mật khẩu. Vì vậy, bất kỳ người nào sở hữu định dạng  JSON của bạn thì họ đều có khả năng đăng nhập vào ví của bạn mà không cần đến mật khẩu.',
-  x_Keystore:           'Định Dạng Keystore/JSON (Đã mã hoá. Định Dạng này sử dụng cho Mist/Geth)',
-  x_Keystore2:          'Định Dạng Keystore / JSON',
-  x_KeystoreDesc:       'Định dạng Keystore/JSON là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist & Geth. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist & Geth và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
+  x_Keystore:           'Định Dạng Keystore (UTC / JSON) (Đã mã hoá. Định Dạng này sử dụng cho Mist)',
+  x_Keystore2:          'Định Dạng Keystore (UTC / JSON)',
+  x_KeystoreDesc:       'Định dạng Keystore là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
   x_Password:           'Mật Khẩu',
   x_Print:              'Tạo Ví Giấy',
   x_PrintDesc:          'Mẹo: kích chuột trái vào nút "In Ví" sau đó chọn "Save this as a PDF" đễ lưu nó thành định dạng PDF trên máy tính của bạn nếu bạn không sở hữu máy in cá nhân!',

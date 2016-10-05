@@ -5,9 +5,7 @@ no.code = 'no';
 no.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -40,9 +38,9 @@ no.data = {
   x_Download:           'Last ned',
   x_Json:               'JSON-fil (ukryptert)',
   x_JsonDesc:           'Dette er det ukrypterte JSON-formatet av din private nøkkel. Dette betyr at du ikke trenger noe passord, men også at den som finner din JSON kan få tilgang til lommeboken din og etherne dine uten passord.',
-  x_Keystore2:          'Keystore/JSON-fil',
-  x_Keystore:           'Keystore/JSON-fil (Anbefalt · Kryptert · Mist/Geth-format)',
-  x_KeystoreDesc:       'Denne Keystore/JSON-filen samsvarer med formatet som brukes av Mist & Geth, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere.',
+  x_Keystore2:          'Keystore-fil (UTC / JSON)',
+  x_Keystore:           'Keystore-fil (UTC / JSON · Anbefalt · Kryptert · Mist-format)',
+  x_KeystoreDesc:       'Denne Keystore-filen samsvarer med formatet som brukes av Mist, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere.',
   x_Password:           'Passord',
   x_Print:              'Skriv ut papirlommebok',
   x_PrintDesc:          'Profftips: Klikk "skriv ut" og lagre som PDF, selv om du ikke har noen skriver!',
@@ -106,8 +104,8 @@ no.data = {
   GEN_Label_1:            'Oppgi et sterkt passord (minst 9 tegn)',
   GEN_Placeholder_1:      'Glem IKKE å ta vare på dette!',
   GEN_SuccessMsg:         'Suksess! Lommeboken din har blitt opprettet.',
-  GEN_Warning:            '**Du trenger din Keystore/JSON-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk).',
-  GEN_Label_2:            'Lagre din Keystore/JSON og/eller private nøkkel. Ikke glem passordet ditt ovenfor.',
+  GEN_Warning:            '**Du trenger din Keystore-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk).',
+  GEN_Label_2:            'Lagre din Keystore-fil og/eller private nøkkel. Ikke glem passordet ditt ovenfor.',
   GEN_Label_3:            'Lagre adressen din.',
   GEN_Label_4:            'Skriv ut din papir-lommebok, eller lagre en QR-kode-versjon. (valgfritt)',
 
