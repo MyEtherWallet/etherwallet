@@ -8,11 +8,11 @@ nl.data = {
   x_Mnemonic:           'Mnemonic Phrase',
   x_12Word:             '12 Word Recovery Seed',
   x_24Word:             '24 Word Recovery Seed',
-  ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Custom Token',
-  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
-  TOKEN_show:           'Show All Tokens',
-  TOKEN_hide:           'Hide Tokens',
+  ADD_Radio_5:          'Plak/type je Mnemonic',
+  SEND_custom:          'Aangepaste Token',
+  ERROR_21:             ' is geen geldige ERC-20 token. Als andere tokens nog aan het laden zijn, verwijder dan deze token en probeer het opnieuw.',
+  TOKEN_show:           'Toon alle Tokens',
+  TOKEN_hide:           'Verberg Tokens',
 
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
