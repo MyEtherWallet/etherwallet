@@ -118,7 +118,8 @@
       };
       $scope.onMnemonicChange = function () {
         $scope.addWalletStats = "";
-        $scope.showBtnUnlock = bip39.validateMnemonic($scope.manualmnemonic);
+        var numWords = $scope.manualmnemonic.trim().split(' ').length;
+        $scope.showBtnUnlock = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
       };
       $scope.showContent = function ($fileContent) {
         $scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[5] + document.getElementById('fselector').files[0].name));
@@ -151,7 +152,11 @@
             $scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
             $scope.addAccount.password = $scope.filePassword;
           } else if ($scope.walletType == "pastemnemonic") {
-            $scope.wallet = new Wallet(bip39.mnemonicToSeed($scope.manualmnemonic).slice(0, 32));
+            var numWords = $scope.manualmnemonic.trim().split(' ').length;
+            var hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim()));
+            if (numWords == 12) //jaxx and metamask
+              $scope.wallet = new Wallet(hdk.derive("m/44'/60'/0'/0/0")._privateKey);else if (numWords == 24) //ledger
+              $scope.wallet = new Wallet(hdk.derive("m/44'/60'/0'/0")._privateKey);
           }
           $scope.addAccount.address = $scope.wallet.getAddressString();
         } catch (e) {
@@ -661,7 +666,8 @@
         $scope.showPDecrypt = $scope.privPassword.length > 6;
       };
       $scope.onMnemonicChange = function () {
-        $scope.showMDecrypt = bip39.validateMnemonic($scope.manualmnemonic);
+        var numWords = $scope.manualmnemonic.trim().split(' ').length;
+        $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
       };
       $scope.decryptWallet = function () {
         $scope.wallet = null;
@@ -677,7 +683,11 @@
             $scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
             walletService.password = $scope.filePassword;
           } else if ($scope.showMDecrypt) {
-            $scope.wallet = new Wallet(bip39.mnemonicToSeed($scope.manualmnemonic).slice(0, 32));
+            var numWords = $scope.manualmnemonic.trim().split(' ').length;
+            var hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim()));
+            if (numWords == 12) //jaxx and metamask
+              $scope.wallet = new Wallet(hdk.derive("m/44'/60'/0'/0/0")._privateKey);else if (numWords == 24) //ledger
+              $scope.wallet = new Wallet(hdk.derive("m/44'/60'/0'/0")._privateKey);
           }
           walletService.wallet = $scope.wallet;
         } catch (e) {
@@ -997,7 +1007,7 @@
       };
       module.exports = sendOfflineTxCtrl;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 13: [function (require, module, exports) {
+  }, { "buffer": 111 }], 13: [function (require, module, exports) {
     'use strict';
 
     var sendTxCtrl = function ($scope, $sce, walletService) {
@@ -1433,7 +1443,7 @@
       $scope.tokenTx = {
         to: '',
         value: 0,
-        id: 0,
+        id: -1,
         gasLimit: 150000
       };
       $scope.localToken = {
@@ -1461,7 +1471,7 @@
         for (var i = 0; i < storedTokens.length; i++) {
           $scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
         }
-        $scope.tokenTx.id = 0;
+        $scope.tokenTx.id = -1;
       };
       $scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function () {
         if ($scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id] !== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to) && $scope.Validator.isPositiveNumber($scope.tokenTx.value)) {
@@ -1508,6 +1518,10 @@
         $scope.tokenTx.value = "50";
       };
       $scope.generateTokenTx = function () {
+        if ($scope.tokenTx.id == -1) {
+          $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[19]));
+          return;
+        }
         var tokenData = $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value);
         if (tokenData.isError) {
           $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(tokenData.error));
@@ -1740,7 +1754,7 @@
       renderer: myRenderer
     });
     module.exports = marked;
-  }, { "marked": 165 }], 21: [function (require, module, exports) {
+  }, { "marked": 168 }], 21: [function (require, module, exports) {
     'use strict';
 
     var cxFuncs = function () {};
@@ -2050,6 +2064,35 @@
         data: func + val
       };
     };
+    ethFuncs.vmTraceEstimate = function (data) {
+      if (!data.data.vmTrace.ops.length) return -1;
+      var ops = data.data.vmTrace.ops;
+      var gasLimit = 50000000;
+      var smallest = gasLimit;
+      function recurSmallest(ops) {
+        for (var i = 0; i < ops.length; i++) {
+          if (!ops[i].sub && ops[i].ex.used < smallest && ops[i].ex.used > 100000) smallest = ops[i].ex.used;else if (ops[i].sub) recurSmallest(ops[i].sub.ops);
+        }
+      }
+      recurSmallest(ops);
+      gasLimit -= smallest;
+      return gasLimit;
+    };
+    ethFuncs.traceEstimate = function (data) {
+      var calls = data.data.trace;
+      var gasAssigned = new BigNumber(0);
+      var maxGas = new BigNumber(50000000);
+      for (var i = 0; i < calls.length; i++) {
+        if (calls[i].result.failedCall !== undefined || calls[i].result.failedCreate !== undefined) {
+          gasAssigned = new BigNumber(-1);
+          break;
+        }
+        var cType = calls[i].action.create !== undefined ? 'create' : 'call';
+        var gas = new BigNumber(calls[i].action[cType].gas).sub(new BigNumber(calls[i].result[cType].gasUsed));
+        if (maxGas.sub(gas).gt(gasAssigned) && gas.gt(100000)) gasAssigned = maxGas.sub(gas);
+      }
+      return gasAssigned.toNumber();
+    };
     ethFuncs.estimateGas = function (dataObj, isClassic, callback) {
       dataObj.gasPrice = '0x01';
       ajaxReq.getTraceCall(dataObj, isClassic, function (data) {
@@ -2057,22 +2100,15 @@
           callback(data);
           return;
         }
-        var calls = data.data.trace;
-        var gasAssigned = new BigNumber(0);
-        var maxGas = new BigNumber(50000000);
-        for (var i = 0; i < calls.length; i++) {
-          if (calls[i].result.failedCall !== undefined || calls[i].result.failedCreate !== undefined) {
-            gasAssigned = new BigNumber(-1);
-            break;
-          }
-          var cType = calls[i].action.create !== undefined ? 'create' : 'call';
-          var gas = new BigNumber(calls[i].action[cType].gas).sub(new BigNumber(calls[i].result[cType].gasUsed));
-          if (maxGas.sub(gas).gt(gasAssigned) && gas.gt(100000)) gasAssigned = maxGas.sub(gas);
-        }
+        var traceEst = ethFuncs.traceEstimate(data);
+        var vmTraceEst = ethFuncs.vmTraceEstimate(data);
+        var estVal = -1;
+        if (traceEst != -1) estVal = traceEst > vmTraceEst ? traceEst : vmTraceEst;
+
         callback({
           "error": false,
           "msg": "",
-          "data": gasAssigned.toString()
+          "data": estVal.toString()
         });
       });
     };
@@ -2167,7 +2203,7 @@
     globalFuncs.getDangerText = function (str) {
       return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>';
     };
-    globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", " is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again."];
+    globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", " is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again."];
     globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "You have successfully voted. Thank you for being an active participant in The DAO.", "File Selected: "];
     globalFuncs.gethErrors = {
       "Invalid sender": "GETH_InvalidSender",
@@ -2239,7 +2275,11 @@
     var angularTranslateErrorLog = require('angular-translate-handler-log');
     var angularSanitize = require('angular-sanitize');
     var bip39 = require('bip39');
-    window.bip39 = bip39;
+    var HDKey = require('hdkey');
+    window.hd = {
+      bip39: bip39,
+      HDKey: HDKey
+    };
     var BigNumber = require('bignumber.js');
     window.BigNumber = BigNumber;
     var marked = require('./customMarked');
@@ -2333,7 +2373,7 @@
       app.controller('quickSendCtrl', ['$scope', '$sce', quickSendCtrl]);
       app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
     }
-  }, { "./ajaxReq": 1, "./controllers/CX/addWalletCtrl": 2, "./controllers/CX/cxDecryptWalletCtrl": 3, "./controllers/CX/mainPopCtrl": 4, "./controllers/CX/myWalletsCtrl": 5, "./controllers/CX/quickSendCtrl": 6, "./controllers/bulkGenCtrl": 7, "./controllers/decryptWalletCtrl": 8, "./controllers/deployContractCtrl": 9, "./controllers/digixCtrl": 10, "./controllers/footerCtrl": 11, "./controllers/sendOfflineTxCtrl": 12, "./controllers/sendTxCtrl": 13, "./controllers/tabsCtrl": 14, "./controllers/theDaoCtrl": 15, "./controllers/tokenCtrl": 16, "./controllers/viewCtrl": 17, "./controllers/viewWalletCtrl": 18, "./controllers/walletGenCtrl": 19, "./customMarked": 20, "./cxFuncs": 21, "./directives/QRCodeDrtv": 22, "./directives/blockiesDrtv": 23, "./directives/cxWalletDecryptDrtv": 24, "./directives/fileReaderDrtv": 25, "./directives/walletDecryptDrtv": 26, "./ethFuncs": 27, "./etherUnits": 28, "./globalFuncs": 29, "./myetherwallet": 31, "./services/globalService": 32, "./services/walletService": 33, "./tokens": 34, "./translations/translate.js": 49, "./uiFuncs": 52, "./validator": 53, "angular": 59, "angular-sanitize": 55, "angular-translate": 57, "angular-translate-handler-log": 56, "bignumber.js": 76, "bip39": 77, "crypto": 118, "ethereumjs-tx": 148, "ethereumjs-util": 149, "scryptsy": 196, "uuid": 219 }], 31: [function (require, module, exports) {
+  }, { "./ajaxReq": 1, "./controllers/CX/addWalletCtrl": 2, "./controllers/CX/cxDecryptWalletCtrl": 3, "./controllers/CX/mainPopCtrl": 4, "./controllers/CX/myWalletsCtrl": 5, "./controllers/CX/quickSendCtrl": 6, "./controllers/bulkGenCtrl": 7, "./controllers/decryptWalletCtrl": 8, "./controllers/deployContractCtrl": 9, "./controllers/digixCtrl": 10, "./controllers/footerCtrl": 11, "./controllers/sendOfflineTxCtrl": 12, "./controllers/sendTxCtrl": 13, "./controllers/tabsCtrl": 14, "./controllers/theDaoCtrl": 15, "./controllers/tokenCtrl": 16, "./controllers/viewCtrl": 17, "./controllers/viewWalletCtrl": 18, "./controllers/walletGenCtrl": 19, "./customMarked": 20, "./cxFuncs": 21, "./directives/QRCodeDrtv": 22, "./directives/blockiesDrtv": 23, "./directives/cxWalletDecryptDrtv": 24, "./directives/fileReaderDrtv": 25, "./directives/walletDecryptDrtv": 26, "./ethFuncs": 27, "./etherUnits": 28, "./globalFuncs": 29, "./myetherwallet": 31, "./services/globalService": 32, "./services/walletService": 33, "./tokens": 34, "./translations/translate.js": 49, "./uiFuncs": 52, "./validator": 53, "angular": 59, "angular-sanitize": 55, "angular-translate": 57, "angular-translate-handler-log": 56, "bignumber.js": 76, "bip39": 77, "crypto": 120, "ethereumjs-tx": 150, "ethereumjs-util": 151, "hdkey": 160, "scryptsy": 199, "uuid": 222 }], 31: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -2593,7 +2633,7 @@
       };
       module.exports = Wallet;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 32: [function (require, module, exports) {
+  }, { "buffer": 111 }], 32: [function (require, module, exports) {
     'use strict';
 
     var globalService = function ($http, $httpParamSerializerJQLike) {
@@ -2765,6 +2805,11 @@
       "decimal": 18,
       "type": "default"
     }, {
+      "address": "0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
+      "symbol": "SNGLS",
+      "decimal": 16,
+      "type": "default"
+    }, {
       "address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
       "symbol": "Unicorn 🦄 ",
       "decimal": 0,
@@ -2834,9 +2879,7 @@
     de.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -2883,9 +2926,9 @@
       x_PrivKey: 'Privater Schlüssel (unverschlüsselt)',
       x_PrivKey2: 'Privater Schlüssel',
       x_PrivKeyDesc: 'Dies ist die unverschlüsselte Textversion deines privaten Schlüssels, d. h. du benötigst kein Passwort. Wenn jemand über diesen unverschlüsselten privaten Schlüssel verfügt, hat er/sie ohne Passwort Zugang zu deinem Wallet. Es wird daher empfohlen, den privaten Schlüssel zu verschlüsseln.',
-      x_Keystore: 'Keystore/JSON File (Empfohlen · Verschlüsselt · Im Mist/Geth-Format)',
-      x_Keystore2: 'Keystore/JSON File',
-      x_KeystoreDesc: 'Diese Keystore / JSON-Datei passt zu dem Format, das von Mist & Geth verwendet wird, sodass du diese Datei dort zukünftig einfach importieren kannst. Es ist empfehlenswert, diese Datei herunterzuladen und zu sichern.',
+      x_Keystore: 'Keystore File (UTC / JSON · Empfohlen · Verschlüsselt · Im Mist-Format)',
+      x_Keystore2: 'Keystore File (UTC / JSON)',
+      x_KeystoreDesc: 'Diese Keystore-Datei passt zu dem Format, das von Mist verwendet wird, sodass du diese Datei dort zukünftig einfach importieren kannst. Es ist empfehlenswert, diese Datei herunterzuladen und zu sichern.',
       x_Json: 'JSON-Datei (unverschlüsselt)',
       x_JsonDesc: 'Dies ist die unverschlüsselte Version deines privaten Schlüssels im JSON-Format. Du benötigst daher kein Passwort, aber jeder, der über diese JSON-Datei verfügt, hat ohne Passwort Zugang zu deinem Wallet und dem darin enthaltenen Ether.',
       x_PrintShort: 'Drucken',
@@ -2946,8 +2989,8 @@
       GEN_Label_1: 'Gib ein starkes Passwort ein (mindestens 9 Zeichen)',
       GEN_Placeholder_1: 'BITTE VERGISS NICHT dieses Passwort an einem sicheren Ort zu notieren!',
       GEN_SuccessMsg: 'Erfolgreich! Dein Wallet wurde erzeugt.',
-      GEN_Warning: '**Du benötigst deine Keystore/JSON-Datei & das Passwort oder den privaten Schlüssel**, um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen.',
-      GEN_Label_2: 'Sichere deine Keystore/JSON-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort!',
+      GEN_Warning: '**Du benötigst deine Keystore-Datei & das Passwort** (oder den privaten Schlüssel) um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen.',
+      GEN_Label_2: 'Sichere deine Keystore-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort!',
       GEN_Label_3: 'Sichere deine Kontoadresse.',
       GEN_Label_4: 'Drucke dein Papier-Wallet oder speichere einen QR-Code davon: (optional)',
 
@@ -3034,7 +3077,7 @@
       DAO_ETC_Label_2: 'Die "White Hat Group" hat unermüdlich gearbeitet um deine ETC zurückzuholen. Wenn du möchtest, kannst du dich bedanken indem du einen Teil deiner ETC an sie spendest. ',
       DAO_Desc: 'Nutze diesen Tab um deine DAO Token in ETH auszuzahlen. Wenn du DAO Token verschicken willst, nutze bitten den "Sende Tokens" Tab',
       DAO_Inst: 'Ja, du musst einfach den großen roten Knopf drücken. Es ist so einfach.',
-      DAO_Warning: 'Wenn du den Fehler "Zu geringer Kontostand um Gaskosten zu decken" erhälst, musst du einen kleinen ether Betrag auf dein Konto überweisen um die Kosten zu decken. Überweise 0.001 Ether an dieses Konto und versuche es erneut. ',
+      DAO_Warning: 'Wenn du den Fehler "Zu geringer Kontostand um Gaskosten zu decken" erhälst, musst du einen kleinen ether Betrag auf dein Konto überweisen um die Kosten zu decken. Überweise 0.01 Ether an dieses Konto und versuche es erneut. ',
       DAOModal_Title: 'Nur zur Sicherheit...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Du bist dabei',
@@ -3099,7 +3142,7 @@
       ERROR_15: 'Wallet nicht gefunden. ',
       ERROR_16: 'Es sieht nicht so aus als würde ein Proposal mit dieser ID existieren oder es gab einen Fehler beim Lesen des Proposal. ',
       ERROR_17: 'Es ist bereits ein Wallet mit dieser Adresse gespeichert. Bitte überprüfe die Seite deines Wallets. ',
-      ERROR_18: 'Du brauchst zumindest 0.001 ETH in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
+      ERROR_18: 'Du brauchst zumindest 0.01 ETH in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
       ERROR_19: 'Diese Transaktion würde dein gesamtes verbleibendes Gas verbrauchen. Das bedeutet, du hast bereits über dieses Proposal abgestimmt oder die Debattierphase ist zu Ende.',
       ERROR_20: 'Ungültiges Symbol',
       SUCCESS_1: 'Gültige Addresse',
@@ -3393,9 +3436,7 @@
     el.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -3465,9 +3506,9 @@
       x_PrivKey: 'Ιδιωτικό Κλειδί (μη κρυπτογραφημένο)',
       x_PrivKey2: 'Ιδιωτικό Κλειδί',
       x_PrivKeyDesc: 'Αυτό το κείμενο είναι η μη κρυπτογραφημένη εκδοχή του Ιδιωτικού Κλειδιού σας που σημαίνει ότι δεν απαιτείται κωδικός. Στην περίπτωση που κάποιος βρει το μη κρυπτογραφημένο Ιδιωτικό Κλειδί σας, έχει πρόσβαση στο πορτοφόλι σας χωρίς κωδικό. Για αυτόν τον λόγο, συνήθως συνιστώνται οι κρυπτογραφημένες εκδοχές.',
-      x_Keystore: 'Αρχείο Keystore/JSON (Συνιστάται · Κρυπτογραφημένο · Μορφή Mist/Geth)',
-      x_Keystore2: 'Αρχείο Keystore/JSON',
-      x_KeystoreDesc: 'Αυτό το Αρχείο Keystore/JSON έχει την ίδια μορφή που χρησιμοποιείται από το Mist & Geth ώστε να μπορείτε εύκολα να το εισάγετε στο μέλλον. Είναι το συνιστώμενο αρχείο για λήψη και δημιουργία αντιγράφου ασφαλείας.',
+      x_Keystore: 'Αρχείο Keystore (UTC / JSON · Συνιστάται · Κρυπτογραφημένο · Μορφή Mist)',
+      x_Keystore2: 'Αρχείο Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'Αυτό το Αρχείο Keystore έχει την ίδια μορφή που χρησιμοποιείται από το Mist ώστε να μπορείτε εύκολα να το εισάγετε στο μέλλον. Είναι το συνιστώμενο αρχείο για λήψη και δημιουργία αντιγράφου ασφαλείας.',
       x_Json: 'Αρχείο JSON (μη κρυπτογραφημένο)',
       x_JsonDesc: 'Αυτή είναι η μη κρυπτογραφημένη, JSON μορφή του Ιδιωτικού Κλειδιού σας. Αυτό σημαίνει ότι δεν απαιτείται κωδικός όμως οποιοσδήποτε βρει το JSON σας έχει πρόσβαση στο πορτοφόλι και τα Ether σας χωρίς κωδικό.',
       x_PrintShort: 'Εκτύπωση',
@@ -3609,7 +3650,7 @@
       /* DAO */
       DAO_Desc: 'Χρησιμοποιείστε αυτήν την καρτέλα για να κάνετε Ανάληψη των DAO Tokens σας ως ETH. Αν επιθυμείτε να αποστείλετε DAO, παρακαλώ χρησιμοποιήστε την καρτέλα Αποστολή Tokens.',
       DAO_Inst: 'Ναι. Απλά πατάτε το μεγάλο κόκκινο κουμπί. Είναι τόσο απλό.',
-      DAO_Warning: 'Αν δέχεστε σφάλμα "Aνεπαρκές υπόλοιπο για gas", θα πρέπει να έχετε ένα μικρό ποσό ether στον λογαριασμό σας έτσι ώστε να καλύψετε το κόστος του gas. Προσθέστε 0.001 ether στον λογαριασμό αυτό και προσπαθήστε ξανά. ',
+      DAO_Warning: 'Αν δέχεστε σφάλμα "Aνεπαρκές υπόλοιπο για gas", θα πρέπει να έχετε ένα μικρό ποσό ether στον λογαριασμό σας έτσι ώστε να καλύψετε το κόστος του gas. Προσθέστε 0.01 ether στον λογαριασμό αυτό και προσπαθήστε ξανά. ',
       DAOModal_Title: 'Απλά για σιγουριά...',
 
       /* Digix */
@@ -3957,9 +3998,7 @@
     en.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -3992,9 +4031,9 @@
       x_Download: 'Download',
       x_Json: 'JSON File (unencrypted)',
       x_JsonDesc: 'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
-      x_Keystore: 'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-      x_Keystore2: 'Keystore / JSON File',
-      x_KeystoreDesc: 'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+      x_Keystore: 'Keystore File (UTC / JSON · Recommended · Encrypted · Mist Format)',
+      x_Keystore2: 'Keystore File (UTC / JSON)',
+      x_KeystoreDesc: 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up.',
       x_Password: 'Password',
       x_Print: 'Print Paper Wallet',
       x_PrintDesc: 'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
@@ -4058,8 +4097,8 @@
       GEN_Label_1: 'Enter a strong password (at least 9 characters)',
       GEN_Placeholder_1: 'Do NOT forget to save this!',
       GEN_SuccessMsg: 'Success! Your wallet has been generated.',
-      GEN_Warning: '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
-      GEN_Label_2: 'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
+      GEN_Warning: '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
+      GEN_Label_2: 'Save your Keystore File. Don\'t forget your password above.',
       GEN_Label_3: 'Save Your Address.',
       GEN_Label_4: 'Print your paper wallet, or store a QR code version. (optional)',
 
@@ -4145,7 +4184,7 @@
       DAO_ETC_Label_2: 'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
       DAO_Desc: 'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
       DAO_Inst: 'Yes. Just push the big red button. It\'s that easy.',
-      DAO_Warning: 'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ETH to this account and try again. ',
+      DAO_Warning: 'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again. ',
       DAOModal_Title: 'Just making sure...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'You are about to withdraw',
@@ -4515,9 +4554,7 @@
     fi.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -4589,9 +4626,9 @@
       x_Download: 'Lataa',
       x_Json: 'JSON Tiedosto (salaamaton)',
       x_JsonDesc: 'Tämä on salaamaton JSON tiedosto yksityisestä salausavaimestasi. Tämä tarkoittaa että et tarvitse salasanaa mutta kuka tahansa joka löytää JSON tiedostosi saa pääsyn lompakkoosi ja sen sisältämään Etheriin ilman salasanaa.',
-      x_Keystore: 'Avainsäilö/JSON Tiedosto (Suositeltu · Salattu · Mist/Geth Tiedostoformaatti)',
-      x_Keystore2: 'Avainsäilö/JSON Tiedosto',
-      x_KeystoreDesc: 'Tämä Avainsäilö / JSON tiedosto vastaa sitä tiedostoformaattia jota Mist & Geth käyttävät, joten voit helposti importata sen tulevaisuudessa. Se on suositeltu tiedostomuoto ladata ja varmuuskopioida.',
+      x_Keystore: 'Avainsäilö Tiedosto (UTC / JSON · Suositeltu · Salattu · Mist Tiedostoformaatti)',
+      x_Keystore2: 'Avainsäilö Tiedosto (UTC / JSON)',
+      x_KeystoreDesc: 'Tämä Avainsäilö tiedosto vastaa sitä tiedostoformaattia jota Mist käyttävät, joten voit helposti importata sen tulevaisuudessa. Se on suositeltu tiedostomuoto ladata ja varmuuskopioida.',
       x_Password: 'Salasana',
       x_Print: 'Tulosta Paperi Lompakko',
       x_PrintDesc: 'ProTip: Klikkaa Tulosta ja tallenna tämä PDF:nä, vaikka et omistaisikaan tulostinta!',
@@ -4655,8 +4692,8 @@
       GEN_Label_1: 'Syötä vahva salasana (vähintään 9 merkkiä)',
       GEN_Placeholder_1: 'ÄLÄ unohda tallentaa tätä!',
       GEN_SuccessMsg: 'Onnistui! Sinun lompakkosi on luotu.',
-      GEN_Warning: '**Tarvitset Avainsäilö/JSON Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help).',
-      GEN_Label_2: 'Tallenna Avainsäilö/JSON tai Yksityinen salausavaimesi. Älä unohda yllä olevaa salasanaasi.',
+      GEN_Warning: '**Tarvitset Avainsäilö Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help).',
+      GEN_Label_2: 'Tallenna Avainsäilö tai Yksityinen salausavaimesi. Älä unohda yllä olevaa salasanaasi.',
       GEN_Label_3: 'Tallenna Osoitteesi.',
       GEN_Label_4: 'Tulosta paperi lompakkosi, tai säilö QR koodi versio. (valinnainen)',
 
@@ -4808,7 +4845,7 @@
       ERROR_15: 'Lompakkoa ei löytynyt. ',
       ERROR_16: 'Ei näytä että ehdotusta tällä ID:llä olisi vielä olemassa tai tapahtui virhe ehdotusta luettaessa. ',
       ERROR_17: 'Lompakko jolla on tämä osoite on jo muistissa. Ole hyvä ja tarkista oma lompakko sivusi. ',
-      ERROR_18: 'Sinulla täytyy olla vähintään .001 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. ',
+      ERROR_18: 'Sinulla täytyy olla vähintään 0.01 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. ',
       ERROR_19: 'Kaikki gas käytettäisiin tässä siirrossa. Tämä tarkoittaa että olet jo äänestänyt tässä ehdotuksessa tai debaatti aika on jo päättynyt.',
       ERROR_20: 'Virheellinen merkki',
       SUCCESS_1: 'Validi osoite',
@@ -5113,9 +5150,7 @@
     fr.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -5151,9 +5186,9 @@
       x_PrivKey: 'Clé privée (non-chiffrée)',
       x_PrivKey2: 'Clé privée',
       x_PrivKeyDesc: 'C\'est la version textuelle non-chiffrée de votre clé privée, ce qui signifie qu\'aucun mot de passe n\'est nécessaire pour l\'utiliser. Si quelqu\'un venait à découvrir cette clé privée, il pourrrait accéder à votre portefeuille sans mot de passe. Pour cette raison, la version chiffrée de votre clé privée est recommandée.',
-      x_Keystore: 'Fichier Keystore/JSON (Recommandé · Chiffré · Format Mist/Geth)',
-      x_Keystore2: 'Fichier Keystore/JSON',
-      x_KeystoreDesc: 'Ce fichier Keystore / JSON utilise le même format que celui que Mist & Geth, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
+      x_Keystore: 'Fichier Keystore (UTC / JSON · Recommandé · Chiffré · Format Mist)',
+      x_Keystore2: 'Fichier Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'Ce fichier Keystore utilise le même format que celui que Mist, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
       x_Json: 'Fichier JSON (non-chiffré)',
       x_JsonDesc: 'C\'est la version non-chiffrée au format JSON de votre clé privée. Cela signifie que vous n\'avez pas besoin de votre mot de passe pour l\'utiliser mais que toute personne qui trouve ce JSON peut accéder à votre portefeuille et vos Ether sans mot de passe.',
       x_PrintShort: 'Imprimer',
@@ -5214,8 +5249,8 @@
       GEN_Label_1: 'Entrez un mot de passe fort (au moins 9 caractères)',
       GEN_Placeholder_1: 'N\'oubliez PAS de sauvegarder ceci !',
       GEN_SuccessMsg: 'Succès ! Votre portefeuille a été généré.',
-      GEN_Warning: '**Vous avez besoin de votre fichier Keystore/JSON et du mot de passe ou de la clé privée** pour accéder à ce portefeuille dans le futur. Merci de le télécharger et d\'en faire une sauvegarde externe ! Il n\'existe aucun moyen de récupérer un portefeuille si vous ne le sauvegardez pas. Merci de lire la [page d\'Aide](https://www.myetherwallet.com/#help) pour plus de détails.',
-      GEN_Label_2: 'Sauvegardez votre fichier Keystore/JSON ou votre clé privée. N\'oubliez pas votre mot de passe ci-dessus.',
+      GEN_Warning: '**Vous avez besoin de votre fichier Keystore et du mot de passe** (ou de la clé privée) pour accéder à ce portefeuille dans le futur. Merci de le télécharger et d\'en faire une sauvegarde externe ! Il n\'existe aucun moyen de récupérer un portefeuille si vous ne le sauvegardez pas. Merci de lire la [page d\'Aide](https://www.myetherwallet.com/#help) pour plus de détails.',
+      GEN_Label_2: 'Sauvegardez votre fichier Keystore ou votre clé privée. N\'oubliez pas votre mot de passe ci-dessus.',
       GEN_Label_3: 'Sauvegarder votre portefeuille.',
       GEN_Label_4: 'Imprimer votre portefeuille papier, ou conserver une version QR code. (optionnel)',
 
@@ -5302,7 +5337,7 @@
       DAO_ETC_Label_2: 'Le "White Hat Group" a travaillé sans relâche pour vous rendre vos ETC. Vous pouvez les remercier par une donation d\'un pourcentage de votre retrait si vous le souhaitez. ',
       DAO_Desc: 'Utilisez cet onglet pour retirer et convertir vos tokens en ETH. Si vous désirez envoyer des tokens DAO, utilisez l\'onglet Envoi de tokens.',
       DAO_Inst: 'Oui. Cliquez simplement sur le gros bouton rouge. Vous voyez, c\'est simple.',
-      DAO_Warning: 'Si vous obtenez une erreur "Montant insuffisant pour le paiement du gaz", vous devez disposer d\'un petit montant en ether sur votre compte pour couvrir le coût en gaz. Ajoutez 0,001 ether sur votre compte et réessayez. ',
+      DAO_Warning: 'Si vous obtenez une erreur "Montant insuffisant pour le paiement du gaz", vous devez disposer d\'un petit montant en ether sur votre compte pour couvrir le coût en gaz. Ajoutez 0,01 ether sur votre compte et réessayez. ',
       DAOModal_Title: 'Juste pour être sûr...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Vous êtes sur le point de retirer',
@@ -5367,7 +5402,7 @@
       ERROR_15: 'Portefeuille non trouvé. ',
       ERROR_16: 'Il semble qu\'aucune proposition n\'existe encore avec cet identifiant ou qu\'il y a une erreur lors de la consultation de cette proposition. ',
       ERROR_17: 'Un portefeuille avec cette adresse existe déja. Merci de consulter la page listant vos portefeuilles. ',
-      ERROR_18: 'Il vous faut au moins 0.001 ether sur votre compte pour couvrir les coûts du gaz. Ajoutez des ether et réessayez. ',
+      ERROR_18: 'Il vous faut au moins 0,01 ether sur votre compte pour couvrir les coûts du gaz. Ajoutez des ether et réessayez. ',
       ERROR_19: 'Tout le gaz serait consommé lors de cette transaction. Cela signifie que vous avez déjà voté pour cette proposition ou que la période du débat est terminée.',
       ERROR_20: 'Symbole invalide',
       SUCCESS_1: 'Adresse valide',
@@ -5672,9 +5707,7 @@
     hu.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -5707,9 +5740,9 @@
       x_Download: 'Letöltés',
       x_Json: 'JSON Fájl (kódolatlan/unencrypted)',
       x_JsonDesc: 'Ez a kódolatlan, JSON formátumú változata a privát kulcsodnak. Ez azt jelenti, hogy nincs szükség jelszóra az eléréséhez, viszont ha bárki megtalálja a JSON fájlt, akkor hozzáférhet a tárcádhoz és az Etheredhez a jelszó ismerete nélkül.',
-      x_Keystore: 'Keystore/JSON Fájl (Ajánlott · Kódolt/Encrypted · Mist/Geth Formátum)',
-      x_Keystore2: 'Keystore/JSON Fájl',
-      x_KeystoreDesc: 'Ez a Keystore / JSON fájl ugyanolyan formátumú, amit a Mist és a Geth használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
+      x_Keystore: 'Keystore Fájl (UTC / JSON · Ajánlott · Kódolt/Encrypted · Mist Formátum)',
+      x_Keystore2: 'Keystore Fájl (UTC / JSON)',
+      x_KeystoreDesc: 'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
       x_Password: 'Jelszó',
       x_Print: 'PapírTárca Nyomtatása ',
       x_PrintDesc: 'Profi Tipp: Kattints a nyomtatásra és mentsd el PDF formátumban, még abban az esetben is, ha nincs nyomtatód!',
@@ -5774,8 +5807,8 @@
       GEN_Label_1: 'Adj meg egy erős jelszót! (legalább 9 karakter)',
       GEN_Placeholder_1: 'NE felejtsd el elmenteni! ',
       GEN_SuccessMsg: 'Sikerült! A Tárcád legenerálódott.',
-      GEN_Warning: '**Szükséged van a Keystore/JSON Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért.',
-      GEN_Label_2: 'Mentsd el a Keystore/JSON fájlt vagy a Privát Kulcsot. Ne felejtsd el a fenti jelszót!',
+      GEN_Warning: '**Szükséged van a Keystore Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért.',
+      GEN_Label_2: 'Mentsd el a Keystore fájlt vagy a Privát Kulcsot. Ne felejtsd el a fenti jelszót!',
       GEN_Label_3: 'Mentsd el a címed.',
       GEN_Label_4: 'Nyomtasd ki a papír tárcádat vagy tárold a QR kód változatot. (választható) ',
 
@@ -5862,7 +5895,7 @@
       DAO_ETC_Label_2: 'A "White Hat Group" fáradhatatlanul dolgozik azon, hogy visszajuttassa hozzád az ETC-det. Mondhatsz egy "köszönömöt" azzal, hogy a kifizetésed bizonyos százalékát eladományozod nekik, ha ezt választod. ',
       DAO_Desc: 'Használd ezt az oldalt, hogy Kifizesd a DAO tokenedet ETH-ért **és ETC-ért**. Ha DAO-t szeretnél küldeni, kérlek használd a Token Küldése oldalt.',
       DAO_Inst: 'Igen. Csak nyomd meg a nagy piros gombot. Ez ilyen egyszerű.',
-      DAO_Warning: 'Ha "nincs elegendő egyenleg a gas-hoz" hibaüzenetet kaptál, egy kis összegnyi etherre szükséged lesz a számládon, hogy fedezni tudd a gas költségeit. Adj hozzá 0.001 ethert ehhez a számlához és próbáld újra. ',
+      DAO_Warning: 'Ha "nincs elegendő egyenleg a gas-hoz" hibaüzenetet kaptál, egy kis összegnyi etherre szükséged lesz a számládon, hogy fedezni tudd a gas költségeit. Adj hozzá 0.01 ethert ehhez a számlához és próbáld újra. ',
       DAOModal_Title: 'Csak megbizonyosodunk...',
       DAOModal_1: 'Most készülsz kifizetni',
       DAOModal_2: 'DAO Tokeneket erre a címre',
@@ -5926,7 +5959,7 @@
       ERROR_15: 'Tárca nem található. ',
       ERROR_16: 'Úgy tűnik ezzel az ID-vel nem létezik javaslat, vagy hiba történt a javaslat beolvasása közben. ',
       ERROR_17: 'Egy tárca ezzel a címmel már létezik a tárolóban. Kérlek ellenőrizd a tárcák oldalán. ',
-      ERROR_18: 'Legalább 0.001 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra!',
+      ERROR_18: 'Legalább 0.01 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra!',
       ERROR_19: 'Az összes gas felhasználásra kerülne ezen a tranzakción. Ez azt jelenti, hogy már szavaztál erre a javaslatra vagy a vita periódus már lejárt.',
       ERROR_20: 'Érvénytelen szimbólum',
       SUCCESS_1: 'Érvényes cím',
@@ -6230,9 +6263,7 @@
     id.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -6265,9 +6296,9 @@
       x_Download: 'Unduh',
       x_Json: 'File JSON (tidak ter-enkripsi)',
       x_JsonDesc: 'Ini adalah "Private Key" Anda dalam format JSON yang tidak ter-enkripsi. Tidak diperlukan password dan siapapun yang memiliki JSON Anda dapat mengakses dompet dan Ether Anda tanpa password.',
-      x_Keystore: 'File Keystore/JSON (Format yang direkomendasikan · Ter-enkripsi · Format Mist/Geth)',
-      x_Keystore2: 'File Keystore/JSON',
-      x_KeystoreDesc: 'File Keystore/JSON ini sesuai dengan format yang dipakai Mist & Geth sehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
+      x_Keystore: 'File Keystore (UTC / JSON · Format yang direkomendasikan · Ter-enkripsi · Format Mist)',
+      x_Keystore2: 'File Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'File Keystore ini sesuai dengan format yang dipakai Mistsehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
       x_Password: 'Password',
       x_Print: 'Print Dompet Kertas',
       x_PrintDesc: 'ProTip: klik print dan simpan sebagai PDF jika Anda tidak memiliki printer!',
@@ -6331,8 +6362,8 @@
       GEN_Label_1: 'Masukkan password yang kuat (setidaknya 9 karakter)',
       GEN_Placeholder_1: 'JANGAN LUPA untuk mengingat & menyimpannya!',
       GEN_SuccessMsg: 'Berhasil! Dompet Anda sudah dibuat.',
-      GEN_Warning: '**DIPERLUKAN File Keystore/JSON & password atau Private Key** untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help).',
-      GEN_Label_2: 'Simpan Keystore/JSON atau Private Key. Jangan lupa Password-nya.',
+      GEN_Warning: '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help).',
+      GEN_Label_2: 'Simpan Keystore atau Private Key. Jangan lupa Password-nya.',
       GEN_Label_3: 'Simpan alamat dompet Anda.',
       GEN_Label_4: 'Print Dompet Kertas Anda, atau simpan versi QR code-nya. (Opsional)',
 
@@ -6419,7 +6450,7 @@
       DAO_ETC_Label_2: 'Atas kerja keras "White Hat Group" yang telah berhasil merebut kembali ETC Anda, wujudkan rasa "terima kasih" Anda dengan mendonasikan sebagian dari jumlah penarikan. ',
       DAO_Desc: 'Pakai halaman ini untuk penarikan ETH **& ETC** dari DAO Anda. Untuk pengiriman DAO, gunakan halaman "Kirim Token".',
       DAO_Inst: 'Cukup dengan menekan tombol merah besar ini. Mudah kan!.',
-      DAO_Warning: 'Jika terjadi error "Insufficient balance for gas", pastikan terdapat sejumlah kecil Ether di Akun untuk menutup biaya gas. Tambahkan 0.001 ether ke akun ini dan silakan coba lagi. ',
+      DAO_Warning: 'Jika terjadi error "Insufficient balance for gas", pastikan terdapat sejumlah kecil Ether di Akun untuk menutup biaya gas. Tambahkan 0.01 ether ke akun ini dan silakan coba lagi. ',
       DAOModal_Title: 'Hanya untuk meyakinkan...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Anda akan melakukan penarikan',
@@ -6484,7 +6515,7 @@
       ERROR_15: 'Dompet tidak ditemukan. ',
       ERROR_16: 'Tidak ditemukan proposal dengan ID ini atau terjadi error saat membaca proposal ini. ',
       ERROR_17: 'Terdapat dompet dengan alamat yang sama di storage. Cek kembali halaman dompet Anda. ',
-      ERROR_18: 'Minimal harus ada 0.001 ether di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
+      ERROR_18: 'Minimal harus ada 0.01 ether di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
       ERROR_19: 'Semua gas akan digunakan pada transaksi ini. Ini berarti Anda telah memberikan suara pada proposal ini atau periode perdebatan telah berakhir.',
       ERROR_20: 'Simbol tidak valid',
       SUCCESS_1: 'Alamat valid',
@@ -6790,9 +6821,7 @@
     it.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -6827,9 +6856,9 @@
       x_PrivKey: 'Chiave privata (non crittografata)',
       x_PrivKey2: 'Chiave privata',
       x_PrivKeyDesc: 'Questa è la versione testuale non crittografata della tua chiave privata, il che significa che non serve una password. Se qualcuno trovasse la tua chiave privata non crittografata potrebbe avere accesso al tuo portafoglio senza una password. Per questa ragione di solito si consigliano le versioni crittografate.',
-      x_Keystore: 'File Keystore/JSON (Consigliato · Crittografato · Formato Mist/Geth)',
-      x_Keystore2: 'File Keystore / JSON',
-      x_KeystoreDesc: 'Questo file Keystore/JSON è compatibile con il formato usato da Mist e Geth, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
+      x_Keystore: 'File Keystore (UTC / JSON · Consigliato · Crittografato · Formato Mist)',
+      x_Keystore2: 'File Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'Questo file Keystore è compatibile con il formato usato da Mist, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
       x_Json: 'File JSON (non crittografato)',
       x_JsonDesc: 'Questa è la tua chiave privata in formato JSON non crittografato. Significa che non hai bisogno della password, ma chiunque trovi questo file JSON potrà avere accesso al tuo portafoglio e ai tuoi ether senza password.',
       x_PrintShort: 'Stampa',
@@ -6891,8 +6920,8 @@
       GEN_Label_1: 'Inserisci una password robusta (almeno 9 caratteri)',
       GEN_Placeholder_1: 'NON dimenticarti di salvarla!',
       GEN_SuccessMsg: 'Perfetto! Il tuo portafoglio è stato generato.',
-      GEN_Warning: '**Avrai bisogno del tuo file Keystore/JSON e della password o della chiave privata** per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni.',
-      GEN_Label_2: 'Salva il tuo file Keystore/JSON o la chiave privata. Non dimenticare la password che hai inserito.',
+      GEN_Warning: '**Avrai bisogno del tuo file Keystore e della password** (o della chiave privata) per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni.',
+      GEN_Label_2: 'Salva il tuo file Keystore. Non dimenticare la password che hai inserito.',
       GEN_Label_3: 'Salva il tuo indirizzo.',
       GEN_Label_4: 'Stampa il tuo portafoglio cartaceo, o salva una versione QR code. (facoltativo)',
 
@@ -6979,7 +7008,7 @@
       DAO_ETC_Label_2: 'Il gruppo "White Hat" ha lavorato senza sosta per farti riavere i tuoi ETC. Puoi dire "grazie" donando una percentuale della somma che prelevi, se lo desideri. ',
       DAO_Desc: 'Usa questa scheda per prelevare i tuoi token DAO e ottenere ETH **& ETC**. Se invece vuoi inviare token DAO, utilizza la scheda "Invia token".',
       DAO_Inst: 'Sì. Devi solo premere questo grosso pulsante rosso. È davvero così semplice.',
-      DAO_Warning: 'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0,001 ETH a questo conto e riprova. ',
+      DAO_Warning: 'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0,01 ETH a questo conto e riprova. ',
       DAOModal_Title: 'Tanto per essere sicuri...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Stai per prelevare',
@@ -7044,7 +7073,7 @@
       ERROR_15: 'Portafoglio non trovato. ',
       ERROR_16: 'Sembra che non esista ancora una proposta con questo ID o c\'è un errore nella lettura della proposta. ',
       ERROR_17: 'C\'è già un portafoglio con questo indirizzo fra quelli salvati. Controlla la pagina dei tuoi portafogli. ',
-      ERROR_18: 'Devi avere almeno 0,001 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
+      ERROR_18: 'Devi avere almeno 0,01 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
       ERROR_19: 'Questa transazione consumerebbe tutto il gas. Ciò significa che hai già votato questa proposta o che il periodo di discussione è terminato.',
       ERROR_20: 'Simbolo non valido',
       SUCCESS_1: 'Indirizzo valido',
@@ -7349,9 +7378,7 @@
     ja.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -7395,9 +7422,9 @@
       x_Download: 'ダウンロード',
       x_Json: 'JSON ファイル (未暗号化)',
       x_JsonDesc: 'これはパスワードが不要な暗号化されていないJSONフォーマットのプライベートキーです。この暗号化されていないJSONフォーマットのプライベートキーを使えば、誰でもパスワードを使わずに自分のウォレットとEtherにアクセスできます。',
-      x_Keystore: 'Keystore/JSON ファイル (推奨 · 暗号化 · Mist/Geth フォーマット)',
-      x_Keystore2: 'Keystore / JSON ファイル',
-      x_KeystoreDesc: 'この Keystore / JSON ファイルは、後で容易にインポートするため、Mist & Gethで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
+      x_Keystore: 'Keystore ファイル (UTC / JSON · 推奨 · 暗号化 · Mist フォーマット)',
+      x_Keystore2: 'Keystore ファイル (UTC / JSON) ',
+      x_KeystoreDesc: 'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
       x_Password: 'パスワード',
       x_Print: 'ペーパーウォレットを印刷',
       x_PrintDesc: 'ProTip: プリンターが接続されていなくても、「印刷」をクリックしてPDFで保存できます。',
@@ -7613,7 +7640,7 @@
       ERROR_15: 'ウォレットが見つかりません。 ',
       ERROR_16: 'このIDのプロポーサルは存在しない、あるいは正常に読み込みできません。 ',
       ERROR_17: '同じアドレスのウォレットが既に存在します。ウォレットのページをご確認ください。',
-      ERROR_18: 'ガスとして使われるために、少なくとも0.001 etherがウォレット上に必要です。 ',
+      ERROR_18: 'ガスとして使われるために、少なくとも0.01 etherがウォレット上に必要です。 ',
       ERROR_19: '全てのガスがこのトランザクションにより消費されます。これは、既に投票を行ったか、あるいはディベート期間が終了したためです。',
       ERROR_20: '無効なシンボル',
       SUCCESS_1: '有効なアドレス',
@@ -7907,9 +7934,7 @@
     nl.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -7945,9 +7970,9 @@
       x_PrivKey: 'Prive Sleutel (onversleuteld)',
       x_PrivKey2: 'Prive Sleutel',
       x_PrivKeyDesc: 'Dit is een onversleutelde tekst versie van je prive sleutel waarbij geen wachtwoord benodigd is. Mocht iemand deze unversleutelde prive sleutel vinden, kunnen zij zonder wachtwoord bij je account. Om deze reden zijn versleutelde versies aanbevolen.',
-      x_Keystore: 'Keystore/JSON Bestand (Aangeraden · versleuteld · Mist/Geth Formaat)',
-      x_Keystore2: 'Keystore/JSON Bestand',
-      x_KeystoreDesc: 'Dit Keystore / JSON bestand voldoen aan het formaat zoals gebruikt door Mist & Geth waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
+      x_Keystore: 'Keystore Bestand (UTC / JSON · Aangeraden · versleuteld · Mist Formaat)',
+      x_Keystore2: 'Keystore Bestand (UTC / JSON) ',
+      x_KeystoreDesc: 'Dit Keystore bestand voldoen aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
       x_Json: 'JSON Bestand (onversleuteld)',
       x_JsonDesc: 'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',
       x_PrintShort: 'Afdrukken',
@@ -8008,8 +8033,8 @@
       GEN_Label_1: 'Geef een sterk wachtwoord (ten minste 9 karakters)',
       GEN_Placeholder_1: 'Vergeet NIET om dit op te slaan!',
       GEN_SuccessMsg: 'Gelukt! Je wallet is gegenereerd.',
-      GEN_Warning: '**Je hebt je Keystore/JSON Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
-      GEN_Label_2: 'Sla je Keystore/JSON of Prive Sleutel op. Vergeet je wachtwoord hierboven niet.',
+      GEN_Warning: '**Je hebt je Keystore Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
+      GEN_Label_2: 'Sla je Keystore of Prive Sleutel op. Vergeet je wachtwoord hierboven niet.',
       GEN_Label_3: 'Sla je adres op.',
       GEN_Label_4: 'Druk je papieren wallet af, of bewaar hem als QR code. (optioneel)',
 
@@ -8161,7 +8186,7 @@
       ERROR_15: 'Wallet niet gevonden. ',
       ERROR_16: 'Het ziet er niet naar uit dat een proposal met dit ID bestaat of dat er een  fout is opgetreden bij het lezenvan dit proposal. ',
       ERROR_17: 'Een wallet met dit adres bestaat reeds. Check alsjeblileft je wallet pagina. ',
-      ERROR_18: 'Je hebt mininaal 0.001 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
+      ERROR_18: 'Je hebt mininaal 0.01 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
       ERROR_19: 'Alle gas zou worden verbruikt op deze transactie. Dit betekend dat je al gestemd hebt op dit proposal of dat de debateerperiode is verstreken.',
       ERROR_20: 'Ongeldig symbol',
       SUCCESS_1: 'Geldig adres',
@@ -8466,9 +8491,7 @@
     no.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -8501,9 +8524,9 @@
       x_Download: 'Last ned',
       x_Json: 'JSON-fil (ukryptert)',
       x_JsonDesc: 'Dette er det ukrypterte JSON-formatet av din private nøkkel. Dette betyr at du ikke trenger noe passord, men også at den som finner din JSON kan få tilgang til lommeboken din og etherne dine uten passord.',
-      x_Keystore2: 'Keystore/JSON-fil',
-      x_Keystore: 'Keystore/JSON-fil (Anbefalt · Kryptert · Mist/Geth-format)',
-      x_KeystoreDesc: 'Denne Keystore/JSON-filen samsvarer med formatet som brukes av Mist & Geth, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere.',
+      x_Keystore2: 'Keystore-fil (UTC / JSON)',
+      x_Keystore: 'Keystore-fil (UTC / JSON · Anbefalt · Kryptert · Mist-format)',
+      x_KeystoreDesc: 'Denne Keystore-filen samsvarer med formatet som brukes av Mist, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere.',
       x_Password: 'Passord',
       x_Print: 'Skriv ut papirlommebok',
       x_PrintDesc: 'Profftips: Klikk "skriv ut" og lagre som PDF, selv om du ikke har noen skriver!',
@@ -8567,8 +8590,8 @@
       GEN_Label_1: 'Oppgi et sterkt passord (minst 9 tegn)',
       GEN_Placeholder_1: 'Glem IKKE å ta vare på dette!',
       GEN_SuccessMsg: 'Suksess! Lommeboken din har blitt opprettet.',
-      GEN_Warning: '**Du trenger din Keystore/JSON-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk).',
-      GEN_Label_2: 'Lagre din Keystore/JSON og/eller private nøkkel. Ikke glem passordet ditt ovenfor.',
+      GEN_Warning: '**Du trenger din Keystore-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk).',
+      GEN_Label_2: 'Lagre din Keystore-fil og/eller private nøkkel. Ikke glem passordet ditt ovenfor.',
       GEN_Label_3: 'Lagre adressen din.',
       GEN_Label_4: 'Skriv ut din papir-lommebok, eller lagre en QR-kode-versjon. (valgfritt)',
 
@@ -8655,7 +8678,7 @@
       DAO_ETC_Label_2: '"White Hat Group" har jobbet utrettelig for å gi deg tilbake dine ETC. Du kan takke dem ved å donere en prosentandel av uttaket ditt, hvis du ønsker det. ',
       DAO_Desc: 'Bruk denne siden til å veksle inn dine DAO-token for ETH. Hvis du ønsker å sende DAO-token, vennligst bruk "Send Token"-siden.',
       DAO_Inst: 'Ja. Bare trykk på den store røde knappen. Det er så enkelt som det.',
-      DAO_Warning: 'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,001 ether til denne kontoen og prøv igjen. ',
+      DAO_Warning: 'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,01 ether til denne kontoen og prøv igjen. ',
       DAOModal_Title: 'Bare for å være sikker...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Du er i ferd med å veksle inn ',
@@ -8720,7 +8743,7 @@
       ERROR_15: 'Lommebok ikke funnet. ',
       ERROR_16: 'Det ser ikke ut til at et forslag med denne ID-en eksisterer ennå, eller det er en feil ved innlesning av dette forslaget. ',
       ERROR_17: 'En lommebok med denne adressen er allerede lagret. Vennligst sjekk lommebok-siden din. ',
-      ERROR_18: 'Du trenger minst 0,001 ether på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ether og prøv igjen. ',
+      ERROR_18: 'Du trenger minst 0,01 ether på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ether og prøv igjen. ',
       ERROR_19: 'All gas vil bli brukt på denne transaksjonen. Dette betyr at du allerede har stemt på dette forslaget, eller at debatt-perioden er over.',
       ERROR_20: 'Ugyldig symbol',
       SUCCESS_1: 'Gyldig adresse',
@@ -9025,9 +9048,7 @@
     pl.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -9061,9 +9082,9 @@
       x_PrivKey: 'Klucz Prywatny (nieszyfrowany)',
       x_PrivKey2: 'Klucz Prywatny',
       x_PrivKeyDesc: 'Nieszyfrowana, tekstowa wersja Twojego klucza prywatnego, nie wymaga hasła. Jeżeli ktoś zdobędzie nieszyfrowany klucz, będzie mógł uzyskać pełen dostęp do Twojego portfela bez podania hasła. Z tego powodu zaleca się używanie jego szyfrowanej wersji.',
-      x_Keystore: 'Plik Keystore/JSON (Zalecany · Szyfrowany · Format Mist/Geth)',
-      x_Keystore2: 'Plik Keystore/JSON',
-      x_KeystoreDesc: 'Ten plik Keystore / JSON odpowiada formatowi stosowanemu przez Mist i Geth, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
+      x_Keystore: 'Plik Keystore (UTC / JSON · Zalecany · Szyfrowany · Format Mist)',
+      x_Keystore2: 'Plik Keystore (UTC / JSON) ',
+      x_KeystoreDesc: 'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
       x_Json: 'Plik JSON (nieszyfrowany)',
       x_JsonDesc: 'Nieszyfrowany klucz prywatny, plik w formacie JSON. Nie wymaga podania hasła, ale każdy kto zdobędzie ten plik uzyska również pełny dostęp do Twojego portfela i zgromadzonych na nim środków.',
       x_PrintShort: 'Drukuj',
@@ -9125,8 +9146,8 @@
       GEN_Label_1: 'Wpisz silne hasło (co najmniej 9 znaków)',
       GEN_Placeholder_1: 'NIE zapomnij tego hasła!',
       GEN_SuccessMsg: 'Sukces! Twój portfel został wygenerowany.',
-      GEN_Warning: '**Potrzebujesz plik Keystore/JSON i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje.',
-      GEN_Label_2: 'Zapisz Twój plik Keystore/JSON lub Klucz Prywatny. Nie zapomnij powyższego hasła.',
+      GEN_Warning: '**Potrzebujesz plik Keystore i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje.',
+      GEN_Label_2: 'Zapisz Twój plik Keystore lub Klucz Prywatny. Nie zapomnij powyższego hasła.',
       GEN_Label_3: 'Zapisz swój adres.',
       GEN_Label_4: 'Wydrukuj swój Portfel Papierowy, lub zachowaj obrazek z kodem QR. (opcjonalnie)',
 
@@ -9279,7 +9300,7 @@
       ERROR_15: 'Nie znaleziono portfela. ',
       ERROR_16: 'Wygląda, że propozycja z tym ID jeszcze nie istnieje, lub wystąpił błąd odczytu tej propozycji. ',
       ERROR_17: 'Portfel z tym adresem już istnieje w konfiguracji. Sprawdź zakładkę portfeli. ',
-      ERROR_18: 'Musisz mieć co najmniej 0.001 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
+      ERROR_18: 'Musisz mieć co najmniej 0.01 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
       ERROR_19: 'Całe paliwo było by zużyte w tej transakcji. Oznacza to, że głosowałeś już w tej propozycji albo minął termin głosowania.',
       ERROR_20: 'Nieprawidłowy symbol',
       SUCCESS_1: 'Prawidłowy adres',
@@ -9584,9 +9605,7 @@
     ru.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -9632,9 +9651,9 @@
       x_PrivKey: 'Закрытый ключ (не зашифрован)',
       x_PrivKey2: 'Закрытый ключ',
       x_PrivKeyDesc: 'Это незашифрованное текстовое представление Вашего закрытого ключа, для использования которого не требуется вводить пароль. Если посторонние узнают Ваш закрытый ключ, они смогут распоряжаться Вашим кошельком без ввода пароля. По этой причине, обычно рекомендуют использовать зашифрованную версию закрытого ключа.',
-      x_Keystore: 'Файл Keystore/JSON (рекомендуется · зашифрован · совместим с Mist и geth)',
-      x_Keystore2: 'Файл Keystore/JSON',
-      x_KeystoreDesc: 'Этот файл Keystore/JSON использует формат совместимый с Mist и geth. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию.',
+      x_Keystore: 'Файл Keystore (UTC / JSON · рекомендуется · зашифрован · совместим с Mist)',
+      x_Keystore2: 'Файл Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'Этот файл Keystore использует формат совместимый с Mist. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию.',
       x_Json: 'Файл JSON (не зашифрован)',
       x_JsonDesc: 'Это Ваш незашифрованный закрытый ключ в формате JSON, для использования которого не требуется воодить пароль. Любой, у кого есть этот файл, может распоряжаться вашим кошельком и эфиром (ether) без ввода пароля.',
       x_PrintShort: 'Печать',
@@ -9784,7 +9803,7 @@
       DAO_ETC_Label_2: 'Группа "White Hat" работала не покладая рук для того, чтобы Вы смогли получить обратно Ваш ETC. Вы можете сказать им "спасибо", пожертвовав небольшой процент от суммы, если хотите, конечно. ',
       DAO_Desc: 'Используйте эту вкладку, чтобы обменять Ваши DAO токены на эфир (ether). Если вы хотите перевести DAO токены, используйте вкладку "Перевести токены".',
       DAO_Inst: 'Да. Просто нажмите большую красную кнопку. Это действительно просто.',
-      DAO_Warning: 'Если Вы видите ошибку "Недостаточно средств для оплаты газа", то это значит, что на Вашем счету не хватает эфира (ether), чтобы покрыть расходы на газ. Переведите 0,001 эфира (ether) на Ваш счёт и попробуйте снова. ',
+      DAO_Warning: 'Если Вы видите ошибку "Недостаточно средств для оплаты газа", то это значит, что на Вашем счету не хватает эфира (ether), чтобы покрыть расходы на газ. Переведите 0,01 эфира (ether) на Ваш счёт и попробуйте снова. ',
       DAOModal_Title: 'Просто чтобы убедиться...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Вы собираетесь обменять',
@@ -9850,7 +9869,7 @@
       ERROR_15: 'Кошелёк не найден. ',
       ERROR_16: 'Предложение с таким идентификатором не существует или при чтении предложения произошла ошибка. ',
       ERROR_17: 'Кошелёк с таким адресом уже находится в хранилище. Просмотрите в списке кошельков. ',
-      ERROR_18: 'Вам необходимо иметь не менее 0.001 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
+      ERROR_18: 'Вам необходимо иметь не менее 0.01 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
       ERROR_19: 'Транзакция могла бы истратить весь газ. Это значит, что Вы уже голосовали по данному предложению, или период обсуждения данного предложения закончился.',
       ERROR_20: 'Неправильный символ',
       SUCCESS_1: 'Адрес указан верно',
@@ -10144,9 +10163,7 @@
     tr.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -10190,9 +10207,9 @@
       x_Download: 'Indir',
       x_Json: 'JSON dosya (şifrelenmemis)',
       x_JsonDesc: 'Bu özel anahtarinin sifresiz, JSON formatidir. Demekki parolasiz cüzdanini acabilirsin. Özel anahatarina sahip olan herkez sifresiz cüzdani aca bilir.',
-      x_Keystore: 'Keystore/JSON dosya (Tavsiye edilen· şifrelenmiş · Mist/Geth formati)',
-      x_Keystore2: 'Keystore/JSON dosya',
-      x_KeystoreDesc: 'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+      x_Keystore: 'Keystore dosya (UTC / JSON · Tavsiye edilen · şifrelenmiş · Mist formati)',
+      x_Keystore2: 'Keystore dosya (UTC / JSON) ',
+      x_KeystoreDesc: 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up.',
       x_Password: 'Parola',
       x_Print: 'Cüzdanin kağıt versiyonunu yazdir',
       x_PrintDesc: 'ProTavsiye: Eğer yazıcınız olmasa bile, "Yazdır" seçeneğini tıklayın ve PDF dosyası olarak kaydedin!',
@@ -10257,8 +10274,8 @@
       GEN_Label_1: 'Güçlü bir şifre sec (en az 9 sembol)',
       GEN_Placeholder_1: 'Bunu kaydetmeyi unutma!',
       GEN_SuccessMsg: 'Başarı! Cüzdan oluşturuldu.',
-      GEN_Warning: 'Ilerde cüzdanini acmak icin **Keystore/JSON dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve  dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
-      GEN_Label_2: 'Keystore/JSON dosyayi veya özel anahtranini kaydet. Yukarıdaki şifreni unutma.',
+      GEN_Warning: 'Ilerde cüzdanini acmak icin **Keystore dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
+      GEN_Label_2: 'Keystore dosyayi veya özel anahtranini kaydet. Yukarıdaki şifreni unutma.',
       GEN_Label_3: 'Adresini kaydet.',
       GEN_Label_4: 'Cüzdanin kağıt versiyonunu yazdir veya QR code versiyonunu sakla. (Isteye bagli)',
 
@@ -10346,7 +10363,7 @@
       DAO_ETC_Label_2: '"Beyaz Şapka Grubu" ETC\'lerini geri almak için yorulmadan çalışmaktadır. Eğer istiyorsan, senin çekiminden yüzdesi bağışlayarak "teşekkür ederim" diyebilirsin.',
       DAO_Desc: 'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
       DAO_Inst: 'Evet. Sadece büyük kırmızı düğmeye bas. Bu kadar kolay.',
-      DAO_Warning: 'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
+      DAO_Warning: 'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ether to this account and try again. ',
       DAOModal_Title: 'Sadece emin olmak için...',
 
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
@@ -10412,7 +10429,7 @@
       ERROR_15: 'Cüzdan bulunmadi. ',
       ERROR_16: 'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
       ERROR_17: 'A wallet with this address already exists in storage. Please check your wallets page. ',
-      ERROR_18: 'You need to have at least 0.001 ether in your account to cover the cost of gas. Please add some ether and try again. ',
+      ERROR_18: 'You need to have at least 0.01 ether in your account to cover the cost of gas. Please add some ether and try again. ',
       ERROR_19: 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
       ERROR_20: 'Geçersiz sembol',
       SUCCESS_1: 'Geçerli adres',
@@ -10779,9 +10796,7 @@
     vi.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -10814,9 +10829,9 @@
       x_Download: 'Tải Về Máy',
       x_Json: 'Định Dạng JSON (Không mã hoá)',
       x_JsonDesc: 'Định Dạng JSON là một tập tin chứa dữ liệu ví chưa được mã hoá của Private Key. Bạn có thể đăng nhập vào ví của bạn bằng việc sử dụng định dạng JSON mà không cần đến mật khẩu. Vì vậy, bất kỳ người nào sở hữu định dạng  JSON của bạn thì họ đều có khả năng đăng nhập vào ví của bạn mà không cần đến mật khẩu.',
-      x_Keystore: 'Định Dạng Keystore/JSON (Đã mã hoá. Định Dạng này sử dụng cho Mist/Geth)',
-      x_Keystore2: 'Định Dạng Keystore / JSON',
-      x_KeystoreDesc: 'Định dạng Keystore/JSON là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist & Geth. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist & Geth và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
+      x_Keystore: 'Định Dạng Keystore (UTC / JSON) (Đã mã hoá. Định Dạng này sử dụng cho Mist)',
+      x_Keystore2: 'Định Dạng Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'Định dạng Keystore là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
       x_Password: 'Mật Khẩu',
       x_Print: 'Tạo Ví Giấy',
       x_PrintDesc: 'Mẹo: kích chuột trái vào nút "In Ví" sau đó chọn "Save this as a PDF" đễ lưu nó thành định dạng PDF trên máy tính của bạn nếu bạn không sở hữu máy in cá nhân!',
@@ -10968,7 +10983,7 @@
       DAO_ETC_Label_2: 'Nhóm Whitehat đã làm việc cật lực để đòi lại số ETC và mang về cho bạn. Bạn có thể nói lời cảm ơn đến họ bằng cách quyên góp một phần tỷ lệ % từ khoảng hoàn lại của bạn. ',
       DAO_Desc: 'Sử dụng phần này cho việc thu hồi DAO Token và hoàn trả lại **ETH & ETC**. Nếu bạn muốn gửi DAO Token, xin vui lòng sử dụng mục "gửi Token".',
       DAO_Inst: 'Đúng rồi, Bạn chỉ cần chọn vào nút lớn màu đỏ.',
-      DAO_Warning: 'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hãy thêm vào 0.001 ether vào tài khoản và thực hiện lại. ',
+      DAO_Warning: 'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hãy thêm vào 0.01 ether vào tài khoản và thực hiện lại. ',
       DAOModal_Title: 'Đảm bảo rằng...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'Bạn Muốn thực hiện việc "Thu Hồi"',
@@ -11033,7 +11048,7 @@
       ERROR_15: 'Không tìm thấy Ví. ',
       ERROR_16: 'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
       ERROR_17: 'Đã có một ví với địa chỉ này đang tồn tại trong mục lưu trữ. Vui lòng kiễm tra trang ví của bạn. ',
-      ERROR_18: 'Bạn cần có ít nhất 0.001 ether trong tài khoản để thanh toán chi phí gas. Hãy thêm một số ether và thực hiện lại. ',
+      ERROR_18: 'Bạn cần có ít nhất 0.01 ether trong tài khoản để thanh toán chi phí gas. Hãy thêm một số ether và thực hiện lại. ',
       ERROR_19: 'Toàn bộ gas sẽ được sử dụng trong giao dịch này. Việc làm này có nghĩa là bạn đã bỏ phiếu cho đề xuất này hoặc kỳ hạn của cuộc tranh luận đã kết thúc.',
       ERROR_20: 'Biểu tượng không hợp lệ',
       SUCCESS_1: 'Địa Chỉ Hợp Lệ',
@@ -11338,9 +11353,7 @@
     zh.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -11373,8 +11386,8 @@
       x_Download: '下载',
       x_Json: 'JSON文件（未加密）',
       x_JsonDesc: '这是你的未加密JSON格式的私钥文件。 这意味着你发送交易时不需要密码，也意味着拿到你的JSON文件的可以无需密码就可以控制你的钱包和以太币。',
-      x_Keystore: 'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)Keystore/JSON文件（推荐加密的Mist/Geth格式文件）',
-      x_Keystore2: 'Keystore/JSON文件',
+      x_Keystore: 'Keystore File (UTC / JSON · 推荐加密的 · Mist 格式文件)',
+      x_Keystore2: 'Keystore File (UTC / JSON)',
       x_KeystoreDesc: '这个Keystore/JSON文件和Mist、Geth使用的钱包文件是一样的，所以将来你可以非常容易地导入。 It is the recommended file to download and back up.推荐下载和备份这个文件。',
       x_Password: '密码',
       x_Print: '打印纸钱包',
@@ -11439,8 +11452,8 @@
       GEN_Label_1: '输入一个强密码（至少9位）',
       GEN_Placeholder_1: '不要忘记保存！',
       GEN_SuccessMsg: '成功！你的钱包已经生成。',
-      GEN_Warning: '将来使用钱包时，你需要Keystore/JSON文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。',
-      GEN_Label_2: '保存你的Keystore/JSON或者私钥。不要忘记你的密码。',
+      GEN_Warning: '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。',
+      GEN_Label_2: '保存你的Keystore或者私钥。不要忘记你的密码。',
       GEN_Label_3: '保存你的地址。',
       GEN_Label_4: '打印你的纸钱包，或者存储二维码。（可选）',
 
@@ -11527,7 +11540,7 @@
       DAO_ETC_Label_2: '白帽黑客为取回你的ETC不知疲倦地工作。 你可以将一定比例的ETC捐赠给白帽黑客，以表感谢之意。 ',
       DAO_Desc: '使用这个标签销毁DAO代币，换回ETH和ETC。如果你想发送DAO，请使用发送代币标签。',
       DAO_Inst: '是的。只需按红色按钮。非常简单。',
-      DAO_Warning: '如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。向这个账户发送0.001以太币，再次尝试。',
+      DAO_Warning: '如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。向这个账户发送0.01以太币，再次尝试。',
       DAOModal_Title: '确保...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: '你将要销毁',
@@ -11592,7 +11605,7 @@
       ERROR_15: '找不到钱包。',
       ERROR_16: '看起来这个提议不存在或者读取这个提议时出现错误。',
       ERROR_17: '这个地址钱包已经存在于存储中。请查看你的钱包页面。',
-      ERROR_18: '你的账户需要至少0.001以太币，已支付gas费用。请添加一些以太币，再次尝试。',
+      ERROR_18: '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。',
       ERROR_19: '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。',
       ERROR_20: '无效符号',
       SUCCESS_1: '有效地址',
@@ -11680,7 +11693,7 @@
       HELP_3_Desc_5: 'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
       HELP_3_Desc_6: 'Click the "Unlock Wallet" button.',
       HELP_3_Desc_7: 'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
-      HELP_3_Desc_8: 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly.',
+      HELP_3_Desc_8: 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.01 ether to your new wallet, access that wallet, send that 0.01 ether to another address, and ensure everything works smoothly.',
 
       HELP_4_Title: '4) How do I send Ether from one wallet to another?',
       HELP_4_Desc_1: 'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
@@ -11976,7 +11989,7 @@
       };
       module.exports = uiFuncs;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 53: [function (require, module, exports) {
+  }, { "buffer": 111 }], 53: [function (require, module, exports) {
     'use strict';
 
     var validator = function () {};
@@ -11993,7 +12006,7 @@
       return privkeyLen == 64 || privkeyLen == 128 || privkeyLen == 132;
     };
     validator.isValidMnemonic = function (mnemonic) {
-      return bip39.validateMnemonic(mnemonic);
+      return hd.bip39.validateMnemonic(mnemonic);
     };
     validator.isPasswordLenValid = function (pass, len) {
       if (pass === 'undefined' || pass == null) return false;
@@ -47552,7 +47565,7 @@
     Entity.prototype.encode = function encode(data, enc, /* internal */reporter) {
       return this._getEncoder(enc).encode(data, reporter);
     };
-  }, { "../asn1": 60, "inherits": 160, "vm": 220 }], 62: [function (require, module, exports) {
+  }, { "../asn1": 60, "inherits": 163, "vm": 223 }], 62: [function (require, module, exports) {
     var inherits = require('inherits');
     var Reporter = require('../base').Reporter;
     var Buffer = require('buffer').Buffer;
@@ -47655,7 +47668,7 @@
 
       return out;
     };
-  }, { "../base": 63, "buffer": 110, "inherits": 160 }], 63: [function (require, module, exports) {
+  }, { "../base": 63, "buffer": 111, "inherits": 163 }], 63: [function (require, module, exports) {
     var base = exports;
 
     base.Reporter = require('./reporter').Reporter;
@@ -48185,7 +48198,7 @@
       return (/^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str)
       );
     };
-  }, { "../base": 63, "minimalistic-assert": 167 }], 65: [function (require, module, exports) {
+  }, { "../base": 63, "minimalistic-assert": 170 }], 65: [function (require, module, exports) {
     var inherits = require('inherits');
 
     function Reporter(options) {
@@ -48302,7 +48315,7 @@
       }
       return this;
     };
-  }, { "inherits": 160 }], 66: [function (require, module, exports) {
+  }, { "inherits": 163 }], 66: [function (require, module, exports) {
     var constants = require('../constants');
 
     exports.tagClass = {
@@ -48637,7 +48650,7 @@
 
       return len;
     }
-  }, { "../../asn1": 60, "inherits": 160 }], 69: [function (require, module, exports) {
+  }, { "../../asn1": 60, "inherits": 163 }], 69: [function (require, module, exports) {
     var decoders = exports;
 
     decoders.der = require('./der');
@@ -48687,7 +48700,7 @@
       var input = new Buffer(base64, 'base64');
       return DERDecoder.prototype.decode.call(this, input, options);
     };
-  }, { "./der": 68, "buffer": 110, "inherits": 160 }], 71: [function (require, module, exports) {
+  }, { "./der": 68, "buffer": 111, "inherits": 163 }], 71: [function (require, module, exports) {
     var inherits = require('inherits');
     var Buffer = require('buffer').Buffer;
 
@@ -48919,7 +48932,7 @@
 
       return res;
     }
-  }, { "../../asn1": 60, "buffer": 110, "inherits": 160 }], 72: [function (require, module, exports) {
+  }, { "../../asn1": 60, "buffer": 111, "inherits": 163 }], 72: [function (require, module, exports) {
     var encoders = exports;
 
     encoders.der = require('./der');
@@ -48945,7 +48958,7 @@
       out.push('-----END ' + options.label + '-----');
       return out.join('\n');
     };
-  }, { "./der": 71, "inherits": 160 }], 74: [function (require, module, exports) {
+  }, { "./der": 71, "inherits": 163 }], 74: [function (require, module, exports) {
     // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
     //
     // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -49296,7 +49309,7 @@
       }
       return keys;
     };
-  }, { "util/": 217 }], 75: [function (require, module, exports) {
+  }, { "util/": 220 }], 75: [function (require, module, exports) {
     'use strict';
 
     exports.byteLength = byteLength;
@@ -52273,7 +52286,7 @@
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./wordlists/en.json": 78, "assert": 74, "buffer": 110, "create-hash": 114, "pbkdf2": 172, "randombytes": 182, "unorm": 213 }], 78: [function (require, module, exports) {
+  }, { "./wordlists/en.json": 78, "assert": 74, "buffer": 111, "create-hash": 116, "pbkdf2": 175, "randombytes": 185, "unorm": 216 }], 78: [function (require, module, exports) {
     module.exports = ["abandon", "ability", "able", "about", "above", "absent", "absorb", "abstract", "absurd", "abuse", "access", "accident", "account", "accuse", "achieve", "acid", "acoustic", "acquire", "across", "act", "action", "actor", "actress", "actual", "adapt", "add", "addict", "address", "adjust", "admit", "adult", "advance", "advice", "aerobic", "affair", "afford", "afraid", "again", "age", "agent", "agree", "ahead", "aim", "air", "airport", "aisle", "alarm", "album", "alcohol", "alert", "alien", "all", "alley", "allow", "almost", "alone", "alpha", "already", "also", "alter", "always", "amateur", "amazing", "among", "amount", "amused", "analyst", "anchor", "ancient", "anger", "angle", "angry", "animal", "ankle", "announce", "annual", "another", "answer", "antenna", "antique", "anxiety", "any", "apart", "apology", "appear", "apple", "approve", "april", "arch", "arctic", "area", "arena", "argue", "arm", "armed", "armor", "army", "around", "arrange", "arrest", "arrive", "arrow", "art", "artefact", "artist", "artwork", "ask", "aspect", "assault", "asset", "assist", "assume", "asthma", "athlete", "atom", "attack", "attend", "attitude", "attract", "auction", "audit", "august", "aunt", "author", "auto", "autumn", "average", "avocado", "avoid", "awake", "aware", "away", "awesome", "awful", "awkward", "axis", "baby", "bachelor", "bacon", "badge", "bag", "balance", "balcony", "ball", "bamboo", "banana", "banner", "bar", "barely", "bargain", "barrel", "base", "basic", "basket", "battle", "beach", "bean", "beauty", "because", "become", "beef", "before", "begin", "behave", "behind", "believe", "below", "belt", "bench", "benefit", "best", "betray", "better", "between", "beyond", "bicycle", "bid", "bike", "bind", "biology", "bird", "birth", "bitter", "black", "blade", "blame", "blanket", "blast", "bleak", "bless", "blind", "blood", "blossom", "blouse", "blue", "blur", "blush", "board", "boat", "body", "boil", "bomb", "bone", "bonus", "book", "boost", "border", "boring", "borrow", "boss", "bottom", "bounce", "box", "boy", "bracket", "brain", "brand", "brass", "brave", "bread", "breeze", "brick", "bridge", "brief", "bright", "bring", "brisk", "broccoli", "broken", "bronze", "broom", "brother", "brown", "brush", "bubble", "buddy", "budget", "buffalo", "build", "bulb", "bulk", "bullet", "bundle", "bunker", "burden", "burger", "burst", "bus", "business", "busy", "butter", "buyer", "buzz", "cabbage", "cabin", "cable", "cactus", "cage", "cake", "call", "calm", "camera", "camp", "can", "canal", "cancel", "candy", "cannon", "canoe", "canvas", "canyon", "capable", "capital", "captain", "car", "carbon", "card", "cargo", "carpet", "carry", "cart", "case", "cash", "casino", "castle", "casual", "cat", "catalog", "catch", "category", "cattle", "caught", "cause", "caution", "cave", "ceiling", "celery", "cement", "census", "century", "cereal", "certain", "chair", "chalk", "champion", "change", "chaos", "chapter", "charge", "chase", "chat", "cheap", "check", "cheese", "chef", "cherry", "chest", "chicken", "chief", "child", "chimney", "choice", "choose", "chronic", "chuckle", "chunk", "churn", "cigar", "cinnamon", "circle", "citizen", "city", "civil", "claim", "clap", "clarify", "claw", "clay", "clean", "clerk", "clever", "click", "client", "cliff", "climb", "clinic", "clip", "clock", "clog", "close", "cloth", "cloud", "clown", "club", "clump", "cluster", "clutch", "coach", "coast", "coconut", "code", "coffee", "coil", "coin", "collect", "color", "column", "combine", "come", "comfort", "comic", "common", "company", "concert", "conduct", "confirm", "congress", "connect", "consider", "control", "convince", "cook", "cool", "copper", "copy", "coral", "core", "corn", "correct", "cost", "cotton", "couch", "country", "couple", "course", "cousin", "cover", "coyote", "crack", "cradle", "craft", "cram", "crane", "crash", "crater", "crawl", "crazy", "cream", "credit", "creek", "crew", "cricket", "crime", "crisp", "critic", "crop", "cross", "crouch", "crowd", "crucial", "cruel", "cruise", "crumble", "crunch", "crush", "cry", "crystal", "cube", "culture", "cup", "cupboard", "curious", "current", "curtain", "curve", "cushion", "custom", "cute", "cycle", "dad", "damage", "damp", "dance", "danger", "daring", "dash", "daughter", "dawn", "day", "deal", "debate", "debris", "decade", "december", "decide", "decline", "decorate", "decrease", "deer", "defense", "define", "defy", "degree", "delay", "deliver", "demand", "demise", "denial", "dentist", "deny", "depart", "depend", "deposit", "depth", "deputy", "derive", "describe", "desert", "design", "desk", "despair", "destroy", "detail", "detect", "develop", "device", "devote", "diagram", "dial", "diamond", "diary", "dice", "diesel", "diet", "differ", "digital", "dignity", "dilemma", "dinner", "dinosaur", "direct", "dirt", "disagree", "discover", "disease", "dish", "dismiss", "disorder", "display", "distance", "divert", "divide", "divorce", "dizzy", "doctor", "document", "dog", "doll", "dolphin", "domain", "donate", "donkey", "donor", "door", "dose", "double", "dove", "draft", "dragon", "drama", "drastic", "draw", "dream", "dress", "drift", "drill", "drink", "drip", "drive", "drop", "drum", "dry", "duck", "dumb", "dune", "during", "dust", "dutch", "duty", "dwarf", "dynamic", "eager", "eagle", "early", "earn", "earth", "easily", "east", "easy", "echo", "ecology", "economy", "edge", "edit", "educate", "effort", "egg", "eight", "either", "elbow", "elder", "electric", "elegant", "element", "elephant", "elevator", "elite", "else", "embark", "embody", "embrace", "emerge", "emotion", "employ", "empower", "empty", "enable", "enact", "end", "endless", "endorse", "enemy", "energy", "enforce", "engage", "engine", "enhance", "enjoy", "enlist", "enough", "enrich", "enroll", "ensure", "enter", "entire", "entry", "envelope", "episode", "equal", "equip", "era", "erase", "erode", "erosion", "error", "erupt", "escape", "essay", "essence", "estate", "eternal", "ethics", "evidence", "evil", "evoke", "evolve", "exact", "example", "excess", "exchange", "excite", "exclude", "excuse", "execute", "exercise", "exhaust", "exhibit", "exile", "exist", "exit", "exotic", "expand", "expect", "expire", "explain", "expose", "express", "extend", "extra", "eye", "eyebrow", "fabric", "face", "faculty", "fade", "faint", "faith", "fall", "false", "fame", "family", "famous", "fan", "fancy", "fantasy", "farm", "fashion", "fat", "fatal", "father", "fatigue", "fault", "favorite", "feature", "february", "federal", "fee", "feed", "feel", "female", "fence", "festival", "fetch", "fever", "few", "fiber", "fiction", "field", "figure", "file", "film", "filter", "final", "find", "fine", "finger", "finish", "fire", "firm", "first", "fiscal", "fish", "fit", "fitness", "fix", "flag", "flame", "flash", "flat", "flavor", "flee", "flight", "flip", "float", "flock", "floor", "flower", "fluid", "flush", "fly", "foam", "focus", "fog", "foil", "fold", "follow", "food", "foot", "force", "forest", "forget", "fork", "fortune", "forum", "forward", "fossil", "foster", "found", "fox", "fragile", "frame", "frequent", "fresh", "friend", "fringe", "frog", "front", "frost", "frown", "frozen", "fruit", "fuel", "fun", "funny", "furnace", "fury", "future", "gadget", "gain", "galaxy", "gallery", "game", "gap", "garage", "garbage", "garden", "garlic", "garment", "gas", "gasp", "gate", "gather", "gauge", "gaze", "general", "genius", "genre", "gentle", "genuine", "gesture", "ghost", "giant", "gift", "giggle", "ginger", "giraffe", "girl", "give", "glad", "glance", "glare", "glass", "glide", "glimpse", "globe", "gloom", "glory", "glove", "glow", "glue", "goat", "goddess", "gold", "good", "goose", "gorilla", "gospel", "gossip", "govern", "gown", "grab", "grace", "grain", "grant", "grape", "grass", "gravity", "great", "green", "grid", "grief", "grit", "grocery", "group", "grow", "grunt", "guard", "guess", "guide", "guilt", "guitar", "gun", "gym", "habit", "hair", "half", "hammer", "hamster", "hand", "happy", "harbor", "hard", "harsh", "harvest", "hat", "have", "hawk", "hazard", "head", "health", "heart", "heavy", "hedgehog", "height", "hello", "helmet", "help", "hen", "hero", "hidden", "high", "hill", "hint", "hip", "hire", "history", "hobby", "hockey", "hold", "hole", "holiday", "hollow", "home", "honey", "hood", "hope", "horn", "horror", "horse", "hospital", "host", "hotel", "hour", "hover", "hub", "huge", "human", "humble", "humor", "hundred", "hungry", "hunt", "hurdle", "hurry", "hurt", "husband", "hybrid", "ice", "icon", "idea", "identify", "idle", "ignore", "ill", "illegal", "illness", "image", "imitate", "immense", "immune", "impact", "impose", "improve", "impulse", "inch", "include", "income", "increase", "index", "indicate", "indoor", "industry", "infant", "inflict", "inform", "inhale", "inherit", "initial", "inject", "injury", "inmate", "inner", "innocent", "input", "inquiry", "insane", "insect", "inside", "inspire", "install", "intact", "interest", "into", "invest", "invite", "involve", "iron", "island", "isolate", "issue", "item", "ivory", "jacket", "jaguar", "jar", "jazz", "jealous", "jeans", "jelly", "jewel", "job", "join", "joke", "journey", "joy", "judge", "juice", "jump", "jungle", "junior", "junk", "just", "kangaroo", "keen", "keep", "ketchup", "key", "kick", "kid", "kidney", "kind", "kingdom", "kiss", "kit", "kitchen", "kite", "kitten", "kiwi", "knee", "knife", "knock", "know", "lab", "label", "labor", "ladder", "lady", "lake", "lamp", "language", "laptop", "large", "later", "latin", "laugh", "laundry", "lava", "law", "lawn", "lawsuit", "layer", "lazy", "leader", "leaf", "learn", "leave", "lecture", "left", "leg", "legal", "legend", "leisure", "lemon", "lend", "length", "lens", "leopard", "lesson", "letter", "level", "liar", "liberty", "library", "license", "life", "lift", "light", "like", "limb", "limit", "link", "lion", "liquid", "list", "little", "live", "lizard", "load", "loan", "lobster", "local", "lock", "logic", "lonely", "long", "loop", "lottery", "loud", "lounge", "love", "loyal", "lucky", "luggage", "lumber", "lunar", "lunch", "luxury", "lyrics", "machine", "mad", "magic", "magnet", "maid", "mail", "main", "major", "make", "mammal", "man", "manage", "mandate", "mango", "mansion", "manual", "maple", "marble", "march", "margin", "marine", "market", "marriage", "mask", "mass", "master", "match", "material", "math", "matrix", "matter", "maximum", "maze", "meadow", "mean", "measure", "meat", "mechanic", "medal", "media", "melody", "melt", "member", "memory", "mention", "menu", "mercy", "merge", "merit", "merry", "mesh", "message", "metal", "method", "middle", "midnight", "milk", "million", "mimic", "mind", "minimum", "minor", "minute", "miracle", "mirror", "misery", "miss", "mistake", "mix", "mixed", "mixture", "mobile", "model", "modify", "mom", "moment", "monitor", "monkey", "monster", "month", "moon", "moral", "more", "morning", "mosquito", "mother", "motion", "motor", "mountain", "mouse", "move", "movie", "much", "muffin", "mule", "multiply", "muscle", "museum", "mushroom", "music", "must", "mutual", "myself", "mystery", "myth", "naive", "name", "napkin", "narrow", "nasty", "nation", "nature", "near", "neck", "need", "negative", "neglect", "neither", "nephew", "nerve", "nest", "net", "network", "neutral", "never", "news", "next", "nice", "night", "noble", "noise", "nominee", "noodle", "normal", "north", "nose", "notable", "note", "nothing", "notice", "novel", "now", "nuclear", "number", "nurse", "nut", "oak", "obey", "object", "oblige", "obscure", "observe", "obtain", "obvious", "occur", "ocean", "october", "odor", "off", "offer", "office", "often", "oil", "okay", "old", "olive", "olympic", "omit", "once", "one", "onion", "online", "only", "open", "opera", "opinion", "oppose", "option", "orange", "orbit", "orchard", "order", "ordinary", "organ", "orient", "original", "orphan", "ostrich", "other", "outdoor", "outer", "output", "outside", "oval", "oven", "over", "own", "owner", "oxygen", "oyster", "ozone", "pact", "paddle", "page", "pair", "palace", "palm", "panda", "panel", "panic", "panther", "paper", "parade", "parent", "park", "parrot", "party", "pass", "patch", "path", "patient", "patrol", "pattern", "pause", "pave", "payment", "peace", "peanut", "pear", "peasant", "pelican", "pen", "penalty", "pencil", "people", "pepper", "perfect", "permit", "person", "pet", "phone", "photo", "phrase", "physical", "piano", "picnic", "picture", "piece", "pig", "pigeon", "pill", "pilot", "pink", "pioneer", "pipe", "pistol", "pitch", "pizza", "place", "planet", "plastic", "plate", "play", "please", "pledge", "pluck", "plug", "plunge", "poem", "poet", "point", "polar", "pole", "police", "pond", "pony", "pool", "popular", "portion", "position", "possible", "post", "potato", "pottery", "poverty", "powder", "power", "practice", "praise", "predict", "prefer", "prepare", "present", "pretty", "prevent", "price", "pride", "primary", "print", "priority", "prison", "private", "prize", "problem", "process", "produce", "profit", "program", "project", "promote", "proof", "property", "prosper", "protect", "proud", "provide", "public", "pudding", "pull", "pulp", "pulse", "pumpkin", "punch", "pupil", "puppy", "purchase", "purity", "purpose", "purse", "push", "put", "puzzle", "pyramid", "quality", "quantum", "quarter", "question", "quick", "quit", "quiz", "quote", "rabbit", "raccoon", "race", "rack", "radar", "radio", "rail", "rain", "raise", "rally", "ramp", "ranch", "random", "range", "rapid", "rare", "rate", "rather", "raven", "raw", "razor", "ready", "real", "reason", "rebel", "rebuild", "recall", "receive", "recipe", "record", "recycle", "reduce", "reflect", "reform", "refuse", "region", "regret", "regular", "reject", "relax", "release", "relief", "rely", "remain", "remember", "remind", "remove", "render", "renew", "rent", "reopen", "repair", "repeat", "replace", "report", "require", "rescue", "resemble", "resist", "resource", "response", "result", "retire", "retreat", "return", "reunion", "reveal", "review", "reward", "rhythm", "rib", "ribbon", "rice", "rich", "ride", "ridge", "rifle", "right", "rigid", "ring", "riot", "ripple", "risk", "ritual", "rival", "river", "road", "roast", "robot", "robust", "rocket", "romance", "roof", "rookie", "room", "rose", "rotate", "rough", "round", "route", "royal", "rubber", "rude", "rug", "rule", "run", "runway", "rural", "sad", "saddle", "sadness", "safe", "sail", "salad", "salmon", "salon", "salt", "salute", "same", "sample", "sand", "satisfy", "satoshi", "sauce", "sausage", "save", "say", "scale", "scan", "scare", "scatter", "scene", "scheme", "school", "science", "scissors", "scorpion", "scout", "scrap", "screen", "script", "scrub", "sea", "search", "season", "seat", "second", "secret", "section", "security", "seed", "seek", "segment", "select", "sell", "seminar", "senior", "sense", "sentence", "series", "service", "session", "settle", "setup", "seven", "shadow", "shaft", "shallow", "share", "shed", "shell", "sheriff", "shield", "shift", "shine", "ship", "shiver", "shock", "shoe", "shoot", "shop", "short", "shoulder", "shove", "shrimp", "shrug", "shuffle", "shy", "sibling", "sick", "side", "siege", "sight", "sign", "silent", "silk", "silly", "silver", "similar", "simple", "since", "sing", "siren", "sister", "situate", "six", "size", "skate", "sketch", "ski", "skill", "skin", "skirt", "skull", "slab", "slam", "sleep", "slender", "slice", "slide", "slight", "slim", "slogan", "slot", "slow", "slush", "small", "smart", "smile", "smoke", "smooth", "snack", "snake", "snap", "sniff", "snow", "soap", "soccer", "social", "sock", "soda", "soft", "solar", "soldier", "solid", "solution", "solve", "someone", "song", "soon", "sorry", "sort", "soul", "sound", "soup", "source", "south", "space", "spare", "spatial", "spawn", "speak", "special", "speed", "spell", "spend", "sphere", "spice", "spider", "spike", "spin", "spirit", "split", "spoil", "sponsor", "spoon", "sport", "spot", "spray", "spread", "spring", "spy", "square", "squeeze", "squirrel", "stable", "stadium", "staff", "stage", "stairs", "stamp", "stand", "start", "state", "stay", "steak", "steel", "stem", "step", "stereo", "stick", "still", "sting", "stock", "stomach", "stone", "stool", "story", "stove", "strategy", "street", "strike", "strong", "struggle", "student", "stuff", "stumble", "style", "subject", "submit", "subway", "success", "such", "sudden", "suffer", "sugar", "suggest", "suit", "summer", "sun", "sunny", "sunset", "super", "supply", "supreme", "sure", "surface", "surge", "surprise", "surround", "survey", "suspect", "sustain", "swallow", "swamp", "swap", "swarm", "swear", "sweet", "swift", "swim", "swing", "switch", "sword", "symbol", "symptom", "syrup", "system", "table", "tackle", "tag", "tail", "talent", "talk", "tank", "tape", "target", "task", "taste", "tattoo", "taxi", "teach", "team", "tell", "ten", "tenant", "tennis", "tent", "term", "test", "text", "thank", "that", "theme", "then", "theory", "there", "they", "thing", "this", "thought", "three", "thrive", "throw", "thumb", "thunder", "ticket", "tide", "tiger", "tilt", "timber", "time", "tiny", "tip", "tired", "tissue", "title", "toast", "tobacco", "today", "toddler", "toe", "together", "toilet", "token", "tomato", "tomorrow", "tone", "tongue", "tonight", "tool", "tooth", "top", "topic", "topple", "torch", "tornado", "tortoise", "toss", "total", "tourist", "toward", "tower", "town", "toy", "track", "trade", "traffic", "tragic", "train", "transfer", "trap", "trash", "travel", "tray", "treat", "tree", "trend", "trial", "tribe", "trick", "trigger", "trim", "trip", "trophy", "trouble", "truck", "true", "truly", "trumpet", "trust", "truth", "try", "tube", "tuition", "tumble", "tuna", "tunnel", "turkey", "turn", "turtle", "twelve", "twenty", "twice", "twin", "twist", "two", "type", "typical", "ugly", "umbrella", "unable", "unaware", "uncle", "uncover", "under", "undo", "unfair", "unfold", "unhappy", "uniform", "unique", "unit", "universe", "unknown", "unlock", "until", "unusual", "unveil", "update", "upgrade", "uphold", "upon", "upper", "upset", "urban", "urge", "usage", "use", "used", "useful", "useless", "usual", "utility", "vacant", "vacuum", "vague", "valid", "valley", "valve", "van", "vanish", "vapor", "various", "vast", "vault", "vehicle", "velvet", "vendor", "venture", "venue", "verb", "verify", "version", "very", "vessel", "veteran", "viable", "vibrant", "vicious", "victory", "video", "view", "village", "vintage", "violin", "virtual", "virus", "visa", "visit", "visual", "vital", "vivid", "vocal", "voice", "void", "volcano", "volume", "vote", "voyage", "wage", "wagon", "wait", "walk", "wall", "walnut", "want", "warfare", "warm", "warrior", "wash", "wasp", "waste", "water", "wave", "way", "wealth", "weapon", "wear", "weasel", "weather", "web", "wedding", "weekend", "weird", "welcome", "west", "wet", "whale", "what", "wheat", "wheel", "when", "where", "whip", "whisper", "wide", "width", "wife", "wild", "will", "win", "window", "wine", "wing", "wink", "winner", "winter", "wire", "wisdom", "wise", "wish", "witness", "wolf", "woman", "wonder", "wood", "wool", "word", "work", "world", "worry", "worth", "wrap", "wreck", "wrestle", "wrist", "write", "wrong", "yard", "year", "yellow", "you", "young", "youth", "zebra", "zero", "zone", "zoo"];
   }, {}], 79: [function (require, module, exports) {
     (function (Buffer) {
@@ -52389,7 +52402,7 @@
         encode: encode
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 80: [function (require, module, exports) {
+  }, { "buffer": 111 }], 80: [function (require, module, exports) {
     (function (module, exports) {
       'use strict';
 
@@ -55980,7 +55993,7 @@
 
       exports.AES = AES;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 84: [function (require, module, exports) {
+  }, { "buffer": 111 }], 84: [function (require, module, exports) {
     (function (Buffer) {
       var aes = require('./aes');
       var Transform = require('cipher-base');
@@ -56080,7 +56093,7 @@
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 83, "./ghash": 88, "buffer": 110, "buffer-xor": 109, "cipher-base": 111, "inherits": 160 }], 85: [function (require, module, exports) {
+  }, { "./aes": 83, "./ghash": 88, "buffer": 111, "buffer-xor": 110, "cipher-base": 112, "inherits": 163 }], 85: [function (require, module, exports) {
     var ciphers = require('./encrypter');
     exports.createCipher = exports.Cipher = ciphers.createCipher;
     exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv;
@@ -56232,7 +56245,7 @@
       exports.createDecipher = createDecipher;
       exports.createDecipheriv = createDecipheriv;
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 83, "./authCipher": 84, "./modes": 89, "./modes/cbc": 90, "./modes/cfb": 91, "./modes/cfb1": 92, "./modes/cfb8": 93, "./modes/ctr": 94, "./modes/ecb": 95, "./modes/ofb": 96, "./streamCipher": 97, "buffer": 110, "cipher-base": 111, "evp_bytestokey": 151, "inherits": 160 }], 87: [function (require, module, exports) {
+  }, { "./aes": 83, "./authCipher": 84, "./modes": 89, "./modes/cbc": 90, "./modes/cfb": 91, "./modes/cfb1": 92, "./modes/cfb8": 93, "./modes/ctr": 94, "./modes/ecb": 95, "./modes/ofb": 96, "./streamCipher": 97, "buffer": 111, "cipher-base": 112, "evp_bytestokey": 153, "inherits": 163 }], 87: [function (require, module, exports) {
     (function (Buffer) {
       var aes = require('./aes');
       var Transform = require('cipher-base');
@@ -56357,7 +56370,7 @@
       exports.createCipheriv = createCipheriv;
       exports.createCipher = createCipher;
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 83, "./authCipher": 84, "./modes": 89, "./modes/cbc": 90, "./modes/cfb": 91, "./modes/cfb1": 92, "./modes/cfb8": 93, "./modes/ctr": 94, "./modes/ecb": 95, "./modes/ofb": 96, "./streamCipher": 97, "buffer": 110, "cipher-base": 111, "evp_bytestokey": 151, "inherits": 160 }], 88: [function (require, module, exports) {
+  }, { "./aes": 83, "./authCipher": 84, "./modes": 89, "./modes/cbc": 90, "./modes/cfb": 91, "./modes/cfb1": 92, "./modes/cfb8": 93, "./modes/ctr": 94, "./modes/ecb": 95, "./modes/ofb": 96, "./streamCipher": 97, "buffer": 111, "cipher-base": 112, "evp_bytestokey": 153, "inherits": 163 }], 88: [function (require, module, exports) {
     (function (Buffer) {
       var zeros = new Buffer(16);
       zeros.fill(0);
@@ -56445,7 +56458,7 @@
         return [a[0] ^ b[0], a[1] ^ b[1], a[2] ^ b[2], a[3] ^ b[3]];
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 89: [function (require, module, exports) {
+  }, { "buffer": 111 }], 89: [function (require, module, exports) {
     exports['aes-128-ecb'] = {
       cipher: 'AES',
       key: 128,
@@ -56635,7 +56648,7 @@
 
       return xor(out, pad);
     };
-  }, { "buffer-xor": 109 }], 91: [function (require, module, exports) {
+  }, { "buffer-xor": 110 }], 91: [function (require, module, exports) {
     (function (Buffer) {
       var xor = require('buffer-xor');
 
@@ -56669,7 +56682,7 @@
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110, "buffer-xor": 109 }], 92: [function (require, module, exports) {
+  }, { "buffer": 111, "buffer-xor": 110 }], 92: [function (require, module, exports) {
     (function (Buffer) {
       function encryptByte(self, byteParam, decrypt) {
         var pad;
@@ -56706,7 +56719,7 @@
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 93: [function (require, module, exports) {
+  }, { "buffer": 111 }], 93: [function (require, module, exports) {
     (function (Buffer) {
       function encryptByte(self, byteParam, decrypt) {
         var pad = self._cipher.encryptBlock(self._prev);
@@ -56724,7 +56737,7 @@
         return out;
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 94: [function (require, module, exports) {
+  }, { "buffer": 111 }], 94: [function (require, module, exports) {
     (function (Buffer) {
       var xor = require('buffer-xor');
 
@@ -56758,7 +56771,7 @@
         return xor(chunk, pad);
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110, "buffer-xor": 109 }], 95: [function (require, module, exports) {
+  }, { "buffer": 111, "buffer-xor": 110 }], 95: [function (require, module, exports) {
     exports.encrypt = function (self, block) {
       return self._cipher.encryptBlock(block);
     };
@@ -56784,7 +56797,7 @@
         return xor(chunk, pad);
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110, "buffer-xor": 109 }], 97: [function (require, module, exports) {
+  }, { "buffer": 111, "buffer-xor": 110 }], 97: [function (require, module, exports) {
     (function (Buffer) {
       var aes = require('./aes');
       var Transform = require('cipher-base');
@@ -56812,7 +56825,7 @@
         this._cipher.scrub();
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 83, "buffer": 110, "cipher-base": 111, "inherits": 160 }], 98: [function (require, module, exports) {
+  }, { "./aes": 83, "buffer": 111, "cipher-base": 112, "inherits": 163 }], 98: [function (require, module, exports) {
     var ebtk = require('evp_bytestokey');
     var aes = require('browserify-aes/browser');
     var DES = require('browserify-des');
@@ -56886,7 +56899,7 @@
       return Object.keys(desModes).concat(aes.getCiphers());
     }
     exports.listCiphers = exports.getCiphers = getCiphers;
-  }, { "browserify-aes/browser": 85, "browserify-aes/modes": 89, "browserify-des": 99, "browserify-des/modes": 100, "evp_bytestokey": 151 }], 99: [function (require, module, exports) {
+  }, { "browserify-aes/browser": 85, "browserify-aes/modes": 89, "browserify-des": 99, "browserify-des/modes": 100, "evp_bytestokey": 153 }], 99: [function (require, module, exports) {
     (function (Buffer) {
       var CipherBase = require('cipher-base');
       var des = require('des.js');
@@ -56932,7 +56945,7 @@
         return new Buffer(this._des.final());
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110, "cipher-base": 111, "des.js": 119, "inherits": 160 }], 100: [function (require, module, exports) {
+  }, { "buffer": 111, "cipher-base": 112, "des.js": 121, "inherits": 163 }], 100: [function (require, module, exports) {
     exports['des-ecb'] = {
       key: 8,
       iv: 0
@@ -56999,7 +57012,7 @@
         return r;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 80, "buffer": 110, "randombytes": 182 }], 102: [function (require, module, exports) {
+  }, { "bn.js": 80, "buffer": 111, "randombytes": 185 }], 102: [function (require, module, exports) {
     (function (Buffer) {
       const Sha3 = require('js-sha3');
 
@@ -57025,7 +57038,7 @@
         SHA3Hash: hash
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110, "js-sha3": 163 }], 103: [function (require, module, exports) {
+  }, { "buffer": 111, "js-sha3": 166 }], 103: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -57101,7 +57114,7 @@
         id: new Buffer('3020300c06082a864886f70d020505000410', 'hex')
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 104: [function (require, module, exports) {
+  }, { "buffer": 111 }], 104: [function (require, module, exports) {
     (function (Buffer) {
       var _algos = require('./algos');
       var createHash = require('create-hash');
@@ -57207,7 +57220,7 @@
         createVerify: createVerify
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./algos": 103, "./sign": 106, "./verify": 107, "buffer": 110, "create-hash": 114, "inherits": 160, "stream": 211 }], 105: [function (require, module, exports) {
+  }, { "./algos": 103, "./sign": 106, "./verify": 107, "buffer": 111, "create-hash": 116, "inherits": 163, "stream": 214 }], 105: [function (require, module, exports) {
     'use strict';
 
     exports['1.3.132.0.10'] = 'secp256k1';
@@ -57388,7 +57401,7 @@
       module.exports.getKey = getKey;
       module.exports.makeKey = makeKey;
     }).call(this, require("buffer").Buffer);
-  }, { "./curves": 105, "bn.js": 80, "browserify-rsa": 101, "buffer": 110, "create-hmac": 117, "elliptic": 129, "parse-asn1": 171 }], 107: [function (require, module, exports) {
+  }, { "./curves": 105, "bn.js": 80, "browserify-rsa": 101, "buffer": 111, "create-hmac": 119, "elliptic": 131, "parse-asn1": 174 }], 107: [function (require, module, exports) {
     (function (Buffer) {
       // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
       var curves = require('./curves');
@@ -57487,7 +57500,97 @@
 
       module.exports = verify;
     }).call(this, require("buffer").Buffer);
-  }, { "./curves": 105, "bn.js": 80, "buffer": 110, "elliptic": 129, "parse-asn1": 171 }], 108: [function (require, module, exports) {
+  }, { "./curves": 105, "bn.js": 80, "buffer": 111, "elliptic": 131, "parse-asn1": 174 }], 108: [function (require, module, exports) {
+    // Base58 encoding/decoding
+    // Originally written by Mike Hearn for BitcoinJ
+    // Copyright (c) 2011 Google Inc
+    // Ported to JavaScript by Stefan Thomas
+    // Merged Buffer refactorings from base58-native by Stephen Pair
+    // Copyright (c) 2013 BitPay Inc
+
+    var ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+    var ALPHABET_MAP = {};
+    for (var i = 0; i < ALPHABET.length; i++) {
+      ALPHABET_MAP[ALPHABET.charAt(i)] = i;
+    }
+    var BASE = 58;
+
+    function encode(buffer) {
+      if (buffer.length === 0) return '';
+
+      var i,
+          j,
+          digits = [0];
+      for (i = 0; i < buffer.length; i++) {
+        for (j = 0; j < digits.length; j++) digits[j] <<= 8;
+
+        digits[0] += buffer[i];
+
+        var carry = 0;
+        for (j = 0; j < digits.length; ++j) {
+          digits[j] += carry;
+
+          carry = digits[j] / BASE | 0;
+          digits[j] %= BASE;
+        }
+
+        while (carry) {
+          digits.push(carry % BASE);
+
+          carry = carry / BASE | 0;
+        }
+      }
+
+      // deal with leading zeros
+      for (i = 0; buffer[i] === 0 && i < buffer.length - 1; i++) digits.push(0);
+
+      // convert digits to a string
+      var stringOutput = "";
+      for (var i = digits.length - 1; i >= 0; i--) {
+        stringOutput = stringOutput + ALPHABET[digits[i]];
+      }
+      return stringOutput;
+    }
+
+    function decode(string) {
+      if (string.length === 0) return [];
+
+      var i,
+          j,
+          bytes = [0];
+      for (i = 0; i < string.length; i++) {
+        var c = string[i];
+        if (!(c in ALPHABET_MAP)) throw new Error('Non-base58 character');
+
+        for (j = 0; j < bytes.length; j++) bytes[j] *= BASE;
+        bytes[0] += ALPHABET_MAP[c];
+
+        var carry = 0;
+        for (j = 0; j < bytes.length; ++j) {
+          bytes[j] += carry;
+
+          carry = bytes[j] >> 8;
+          bytes[j] &= 0xff;
+        }
+
+        while (carry) {
+          bytes.push(carry & 0xff);
+
+          carry >>= 8;
+        }
+      }
+
+      // deal with leading zeros
+      for (i = 0; string[i] === '1' && i < string.length - 1; i++) bytes.push(0);
+
+      return bytes.reverse();
+    }
+
+    module.exports = {
+      encode: encode,
+      decode: decode
+    };
+  }, {}], 109: [function (require, module, exports) {
     (function (global) {
       'use strict';
 
@@ -57598,7 +57701,7 @@
         return new SlowBuffer(size);
       };
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, { "buffer": 110 }], 109: [function (require, module, exports) {
+  }, { "buffer": 111 }], 110: [function (require, module, exports) {
     (function (Buffer) {
       module.exports = function xor(a, b) {
         var length = Math.min(a.length, b.length);
@@ -57611,7 +57714,7 @@
         return buffer;
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 110: [function (require, module, exports) {
+  }, { "buffer": 111 }], 111: [function (require, module, exports) {
     (function (global) {
       /*!
        * The buffer module from node.js, for the browser.
@@ -59351,7 +59454,7 @@
         return val !== val; // eslint-disable-line no-self-compare
       }
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, { "base64-js": 75, "ieee754": 158, "isarray": 162 }], 111: [function (require, module, exports) {
+  }, { "base64-js": 75, "ieee754": 161, "isarray": 165 }], 112: [function (require, module, exports) {
     (function (Buffer) {
       var Transform = require('stream').Transform;
       var inherits = require('inherits');
@@ -59444,7 +59547,103 @@
         return out;
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110, "inherits": 160, "stream": 211, "string_decoder": 212 }], 112: [function (require, module, exports) {
+  }, { "buffer": 111, "inherits": 163, "stream": 214, "string_decoder": 215 }], 113: [function (require, module, exports) {
+    (function (Buffer) {
+      var base58 = require('bs58');
+      var createHash = require('create-hash');
+
+      function encode(payload, version) {
+        if (Array.isArray(payload) || payload instanceof Uint8Array) {
+          payload = new Buffer(payload);
+        }
+
+        var buf;
+        if (version != null) {
+          if (typeof version === 'number') {
+            version = new Buffer([version]);
+          }
+          buf = Buffer.concat([version, payload]);
+        } else {
+          buf = payload;
+        }
+
+        var checksum = sha256x2(buf).slice(0, 4);
+        var result = Buffer.concat([buf, checksum]);
+        return base58.encode(result);
+      }
+
+      function decode(base58str, version) {
+        var arr = base58.decode(base58str);
+        var buf = new Buffer(arr);
+        var versionLength;
+
+        if (version == null) {
+          versionLength = 0;
+        } else {
+          if (typeof version === 'number') version = new Buffer([version]);
+
+          versionLength = version.length;
+          var versionCompare = buf.slice(0, versionLength);
+          if (versionCompare.toString('hex') !== version.toString('hex')) {
+            throw new Error('Invalid version');
+          }
+        }
+
+        var checksum = buf.slice(-4);
+        var endPos = buf.length - 4;
+        var bytes = buf.slice(0, endPos);
+
+        var newChecksum = sha256x2(bytes).slice(0, 4);
+        if (checksum.toString('hex') !== newChecksum.toString('hex')) {
+          throw new Error('Invalid checksum');
+        }
+
+        return bytes.slice(versionLength);
+      }
+
+      function isValid(base58str, version) {
+        try {
+          decode(base58str, version);
+        } catch (e) {
+          return false;
+        }
+
+        return true;
+      }
+
+      function createEncoder(version) {
+        return function (payload) {
+          return encode(payload, version);
+        };
+      }
+
+      function createDecoder(version) {
+        return function (base58str) {
+          return decode(base58str, version);
+        };
+      }
+
+      function createValidator(version) {
+        return function (base58str) {
+          return isValid(base58str, version);
+        };
+      }
+
+      function sha256x2(buffer) {
+        var sha = createHash('sha256').update(buffer).digest();
+        return createHash('sha256').update(sha).digest();
+      }
+
+      module.exports = {
+        encode: encode,
+        decode: decode,
+        isValid: isValid,
+        createEncoder: createEncoder,
+        createDecoder: createDecoder,
+        createValidator: createValidator
+      };
+    }).call(this, require("buffer").Buffer);
+  }, { "bs58": 108, "buffer": 111, "create-hash": 116 }], 114: [function (require, module, exports) {
     (function (Buffer) {
       // Copyright Joyent, Inc. and other Node contributors.
       //
@@ -59550,7 +59749,7 @@
         return Object.prototype.toString.call(o);
       }
     }).call(this, { "isBuffer": require("../../is-buffer/index.js") });
-  }, { "../../is-buffer/index.js": 161 }], 113: [function (require, module, exports) {
+  }, { "../../is-buffer/index.js": 164 }], 115: [function (require, module, exports) {
     (function (Buffer) {
       var elliptic = require('elliptic');
       var BN = require('bn.js');
@@ -59675,7 +59874,7 @@
         }
       }
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 80, "buffer": 110, "elliptic": 129 }], 114: [function (require, module, exports) {
+  }, { "bn.js": 80, "buffer": 111, "elliptic": 131 }], 116: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -59731,7 +59930,7 @@
         return new Hash(sha(alg));
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./md5": 116, "buffer": 110, "cipher-base": 111, "inherits": 160, "ripemd160": 194, "sha.js": 204 }], 115: [function (require, module, exports) {
+  }, { "./md5": 118, "buffer": 111, "cipher-base": 112, "inherits": 163, "ripemd160": 197, "sha.js": 207 }], 117: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -59769,7 +59968,7 @@
       }
       exports.hash = hash;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 116: [function (require, module, exports) {
+  }, { "buffer": 111 }], 118: [function (require, module, exports) {
     'use strict';
     /*
      * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -59916,7 +60115,7 @@
     module.exports = function md5(buf) {
       return helpers.hash(buf, core_md5, 16);
     };
-  }, { "./helpers": 115 }], 117: [function (require, module, exports) {
+  }, { "./helpers": 117 }], 119: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -59987,7 +60186,7 @@
         return new Hmac(alg, key);
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110, "create-hash/browser": 114, "inherits": 160, "stream": 211 }], 118: [function (require, module, exports) {
+  }, { "buffer": 111, "create-hash/browser": 116, "inherits": 163, "stream": 214 }], 120: [function (require, module, exports) {
     'use strict';
 
     exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes');
@@ -60027,7 +60226,7 @@
         throw new Error(['sorry, ' + name + ' is not implemented yet', 'we accept pull requests', 'https://github.com/crypto-browserify/crypto-browserify'].join('\n'));
       };
     });
-  }, { "browserify-cipher": 98, "browserify-sign": 104, "browserify-sign/algos": 103, "create-ecdh": 113, "create-hash": 114, "create-hmac": 117, "diffie-hellman": 125, "pbkdf2": 172, "public-encrypt": 176, "randombytes": 182 }], 119: [function (require, module, exports) {
+  }, { "browserify-cipher": 98, "browserify-sign": 104, "browserify-sign/algos": 103, "create-ecdh": 115, "create-hash": 116, "create-hmac": 119, "diffie-hellman": 127, "pbkdf2": 175, "public-encrypt": 179, "randombytes": 185 }], 121: [function (require, module, exports) {
     'use strict';
 
     exports.utils = require('./des/utils');
@@ -60035,7 +60234,7 @@
     exports.DES = require('./des/des');
     exports.CBC = require('./des/cbc');
     exports.EDE = require('./des/ede');
-  }, { "./des/cbc": 120, "./des/cipher": 121, "./des/des": 122, "./des/ede": 123, "./des/utils": 124 }], 120: [function (require, module, exports) {
+  }, { "./des/cbc": 122, "./des/cipher": 123, "./des/des": 124, "./des/ede": 125, "./des/utils": 126 }], 122: [function (require, module, exports) {
     'use strict';
 
     var assert = require('minimalistic-assert');
@@ -60096,7 +60295,7 @@
         for (var i = 0; i < this.blockSize; i++) iv[i] = inp[inOff + i];
       }
     };
-  }, { "inherits": 160, "minimalistic-assert": 167 }], 121: [function (require, module, exports) {
+  }, { "inherits": 163, "minimalistic-assert": 170 }], 123: [function (require, module, exports) {
     'use strict';
 
     var assert = require('minimalistic-assert');
@@ -60221,7 +60420,7 @@
 
       return this._unpad(out);
     };
-  }, { "minimalistic-assert": 167 }], 122: [function (require, module, exports) {
+  }, { "minimalistic-assert": 170 }], 124: [function (require, module, exports) {
     'use strict';
 
     var assert = require('minimalistic-assert');
@@ -60357,7 +60556,7 @@
       // Reverse Initial Permutation
       utils.rip(l, r, out, off);
     };
-  }, { "../des": 119, "inherits": 160, "minimalistic-assert": 167 }], 123: [function (require, module, exports) {
+  }, { "../des": 121, "inherits": 163, "minimalistic-assert": 170 }], 125: [function (require, module, exports) {
     'use strict';
 
     var assert = require('minimalistic-assert');
@@ -60405,7 +60604,7 @@
 
     EDE.prototype._pad = DES.prototype._pad;
     EDE.prototype._unpad = DES.prototype._unpad;
-  }, { "../des": 119, "inherits": 160, "minimalistic-assert": 167 }], 124: [function (require, module, exports) {
+  }, { "../des": 121, "inherits": 163, "minimalistic-assert": 170 }], 126: [function (require, module, exports) {
     'use strict';
 
     exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -60609,7 +60808,7 @@
       for (var i = 0; i < size; i += group) out.push(str.slice(i, i + group));
       return out.join(' ');
     };
-  }, {}], 125: [function (require, module, exports) {
+  }, {}], 127: [function (require, module, exports) {
     (function (Buffer) {
       var generatePrime = require('./lib/generatePrime');
       var primes = require('./lib/primes.json');
@@ -60654,7 +60853,7 @@
       exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffieHellman = getDiffieHellman;
       exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman;
     }).call(this, require("buffer").Buffer);
-  }, { "./lib/dh": 126, "./lib/generatePrime": 127, "./lib/primes.json": 128, "buffer": 110 }], 126: [function (require, module, exports) {
+  }, { "./lib/dh": 128, "./lib/generatePrime": 129, "./lib/primes.json": 130, "buffer": 111 }], 128: [function (require, module, exports) {
     (function (Buffer) {
       var BN = require('bn.js');
       var MillerRabin = require('miller-rabin');
@@ -60818,7 +61017,7 @@
         }
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./generatePrime": 127, "bn.js": 80, "buffer": 110, "miller-rabin": 166, "randombytes": 182 }], 127: [function (require, module, exports) {
+  }, { "./generatePrime": 129, "bn.js": 80, "buffer": 111, "miller-rabin": 169, "randombytes": 185 }], 129: [function (require, module, exports) {
     var randomBytes = require('randombytes');
     module.exports = findPrime;
     findPrime.simpleSieve = simpleSieve;
@@ -60916,7 +61115,7 @@
         }
       }
     }
-  }, { "bn.js": 80, "miller-rabin": 166, "randombytes": 182 }], 128: [function (require, module, exports) {
+  }, { "bn.js": 80, "miller-rabin": 169, "randombytes": 185 }], 130: [function (require, module, exports) {
     module.exports = {
       "modp1": {
         "gen": "02",
@@ -60951,7 +61150,7 @@
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
       }
     };
-  }, {}], 129: [function (require, module, exports) {
+  }, {}], 131: [function (require, module, exports) {
     'use strict';
 
     var elliptic = exports;
@@ -60966,7 +61165,7 @@
     // Protocols
     elliptic.ec = require('./elliptic/ec');
     elliptic.eddsa = require('./elliptic/eddsa');
-  }, { "../package.json": 145, "./elliptic/curve": 132, "./elliptic/curves": 135, "./elliptic/ec": 136, "./elliptic/eddsa": 139, "./elliptic/hmac-drbg": 142, "./elliptic/utils": 144, "brorand": 81 }], 130: [function (require, module, exports) {
+  }, { "../package.json": 147, "./elliptic/curve": 134, "./elliptic/curves": 137, "./elliptic/ec": 138, "./elliptic/eddsa": 141, "./elliptic/hmac-drbg": 144, "./elliptic/utils": 146, "brorand": 81 }], 132: [function (require, module, exports) {
     'use strict';
 
     var BN = require('bn.js');
@@ -61292,7 +61491,7 @@
       for (var i = 0; i < k; i++) r = r.dbl();
       return r;
     };
-  }, { "../../elliptic": 129, "bn.js": 80 }], 131: [function (require, module, exports) {
+  }, { "../../elliptic": 131, "bn.js": 80 }], 133: [function (require, module, exports) {
     'use strict';
 
     var curve = require('../curve');
@@ -61679,7 +61878,7 @@
     // Compatibility with BaseCurve
     Point.prototype.toP = Point.prototype.normalize;
     Point.prototype.mixedAdd = Point.prototype.add;
-  }, { "../../elliptic": 129, "../curve": 132, "bn.js": 80, "inherits": 160 }], 132: [function (require, module, exports) {
+  }, { "../../elliptic": 131, "../curve": 134, "bn.js": 80, "inherits": 163 }], 134: [function (require, module, exports) {
     'use strict';
 
     var curve = exports;
@@ -61688,7 +61887,7 @@
     curve.short = require('./short');
     curve.mont = require('./mont');
     curve.edwards = require('./edwards');
-  }, { "./base": 130, "./edwards": 131, "./mont": 133, "./short": 134 }], 133: [function (require, module, exports) {
+  }, { "./base": 132, "./edwards": 133, "./mont": 135, "./short": 136 }], 135: [function (require, module, exports) {
     'use strict';
 
     var curve = require('../curve');
@@ -61864,7 +62063,7 @@
 
       return this.x.fromRed();
     };
-  }, { "../../elliptic": 129, "../curve": 132, "bn.js": 80, "inherits": 160 }], 134: [function (require, module, exports) {
+  }, { "../../elliptic": 131, "../curve": 134, "bn.js": 80, "inherits": 163 }], 136: [function (require, module, exports) {
     'use strict';
 
     var curve = require('../curve');
@@ -62727,7 +62926,7 @@
       // XXX This code assumes that zero is always zero in red
       return this.z.cmpn(0) === 0;
     };
-  }, { "../../elliptic": 129, "../curve": 132, "bn.js": 80, "inherits": 160 }], 135: [function (require, module, exports) {
+  }, { "../../elliptic": 131, "../curve": 134, "bn.js": 80, "inherits": 163 }], 137: [function (require, module, exports) {
     'use strict';
 
     var curves = exports;
@@ -62884,7 +63083,7 @@
       gRed: false,
       g: ['79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798', '483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8', pre]
     });
-  }, { "../elliptic": 129, "./precomputed/secp256k1": 143, "hash.js": 152 }], 136: [function (require, module, exports) {
+  }, { "../elliptic": 131, "./precomputed/secp256k1": 145, "hash.js": 154 }], 138: [function (require, module, exports) {
     'use strict';
 
     var BN = require('bn.js');
@@ -63096,7 +63295,7 @@
       }
       throw new Error('Unable to find valid recovery factor');
     };
-  }, { "../../elliptic": 129, "./key": 137, "./signature": 138, "bn.js": 80 }], 137: [function (require, module, exports) {
+  }, { "../../elliptic": 131, "./key": 139, "./signature": 140, "bn.js": 80 }], 139: [function (require, module, exports) {
     'use strict';
 
     var BN = require('bn.js');
@@ -63191,7 +63390,7 @@
     KeyPair.prototype.inspect = function inspect() {
       return '<Key priv: ' + (this.priv && this.priv.toString(16, 2)) + ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
     };
-  }, { "bn.js": 80 }], 138: [function (require, module, exports) {
+  }, { "bn.js": 80 }], 140: [function (require, module, exports) {
     'use strict';
 
     var BN = require('bn.js');
@@ -63320,7 +63519,7 @@
       res = res.concat(backHalf);
       return utils.encode(res, enc);
     };
-  }, { "../../elliptic": 129, "bn.js": 80 }], 139: [function (require, module, exports) {
+  }, { "../../elliptic": 131, "bn.js": 80 }], 141: [function (require, module, exports) {
     'use strict';
 
     var hash = require('hash.js');
@@ -63435,7 +63634,7 @@
     EDDSA.prototype.isPoint = function isPoint(val) {
       return val instanceof this.pointClass;
     };
-  }, { "../../elliptic": 129, "./key": 140, "./signature": 141, "hash.js": 152 }], 140: [function (require, module, exports) {
+  }, { "../../elliptic": 131, "./key": 142, "./signature": 143, "hash.js": 154 }], 142: [function (require, module, exports) {
     'use strict';
 
     var elliptic = require('../../elliptic');
@@ -63526,7 +63725,7 @@
     };
 
     module.exports = KeyPair;
-  }, { "../../elliptic": 129 }], 141: [function (require, module, exports) {
+  }, { "../../elliptic": 131 }], 143: [function (require, module, exports) {
     'use strict';
 
     var BN = require('bn.js');
@@ -63590,7 +63789,7 @@
     };
 
     module.exports = Signature;
-  }, { "../../elliptic": 129, "bn.js": 80 }], 142: [function (require, module, exports) {
+  }, { "../../elliptic": 131, "bn.js": 80 }], 144: [function (require, module, exports) {
     'use strict';
 
     var hash = require('hash.js');
@@ -63693,7 +63892,7 @@
       this.reseed++;
       return utils.encode(res, enc);
     };
-  }, { "../elliptic": 129, "hash.js": 152 }], 143: [function (require, module, exports) {
+  }, { "../elliptic": 131, "hash.js": 154 }], 145: [function (require, module, exports) {
     module.exports = {
       doubles: {
         step: 4,
@@ -63704,7 +63903,7 @@
         points: [['f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9', '388f7b0f632de8140fe337e62a37f3566500a99934c2231b6cb9fd7584b8e672'], ['2f8bde4d1a07209355b4a7250a5c5128e88b84bddc619ab7cba8d569b240efe4', 'd8ac222636e5e3d6d4dba9dda6c9c426f788271bab0d6840dca87d3aa6ac62d6'], ['5cbdf0646e5db4eaa398f365f2ea7a0e3d419b7e0330e39ce92bddedcac4f9bc', '6aebca40ba255960a3178d6d861a54dba813d0b813fde7b5a5082628087264da'], ['acd484e2f0c7f65309ad178a9f559abde09796974c57e714c35f110dfc27ccbe', 'cc338921b0a7d9fd64380971763b61e9add888a4375f8e0f05cc262ac64f9c37'], ['774ae7f858a9411e5ef4246b70c65aac5649980be5c17891bbec17895da008cb', 'd984a032eb6b5e190243dd56d7b7b365372db1e2dff9d6a8301d74c9c953c61b'], ['f28773c2d975288bc7d1d205c3748651b075fbc6610e58cddeeddf8f19405aa8', 'ab0902e8d880a89758212eb65cdaf473a1a06da521fa91f29b5cb52db03ed81'], ['d7924d4f7d43ea965a465ae3095ff41131e5946f3c85f79e44adbcf8e27e080e', '581e2872a86c72a683842ec228cc6defea40af2bd896d3a5c504dc9ff6a26b58'], ['defdea4cdb677750a420fee807eacf21eb9898ae79b9768766e4faa04a2d4a34', '4211ab0694635168e997b0ead2a93daeced1f4a04a95c0f6cfb199f69e56eb77'], ['2b4ea0a797a443d293ef5cff444f4979f06acfebd7e86d277475656138385b6c', '85e89bc037945d93b343083b5a1c86131a01f60c50269763b570c854e5c09b7a'], ['352bbf4a4cdd12564f93fa332ce333301d9ad40271f8107181340aef25be59d5', '321eb4075348f534d59c18259dda3e1f4a1b3b2e71b1039c67bd3d8bcf81998c'], ['2fa2104d6b38d11b0230010559879124e42ab8dfeff5ff29dc9cdadd4ecacc3f', '2de1068295dd865b64569335bd5dd80181d70ecfc882648423ba76b532b7d67'], ['9248279b09b4d68dab21a9b066edda83263c3d84e09572e269ca0cd7f5453714', '73016f7bf234aade5d1aa71bdea2b1ff3fc0de2a887912ffe54a32ce97cb3402'], ['daed4f2be3a8bf278e70132fb0beb7522f570e144bf615c07e996d443dee8729', 'a69dce4a7d6c98e8d4a1aca87ef8d7003f83c230f3afa726ab40e52290be1c55'], ['c44d12c7065d812e8acf28d7cbb19f9011ecd9e9fdf281b0e6a3b5e87d22e7db', '2119a460ce326cdc76c45926c982fdac0e106e861edf61c5a039063f0e0e6482'], ['6a245bf6dc698504c89a20cfded60853152b695336c28063b61c65cbd269e6b4', 'e022cf42c2bd4a708b3f5126f16a24ad8b33ba48d0423b6efd5e6348100d8a82'], ['1697ffa6fd9de627c077e3d2fe541084ce13300b0bec1146f95ae57f0d0bd6a5', 'b9c398f186806f5d27561506e4557433a2cf15009e498ae7adee9d63d01b2396'], ['605bdb019981718b986d0f07e834cb0d9deb8360ffb7f61df982345ef27a7479', '2972d2de4f8d20681a78d93ec96fe23c26bfae84fb14db43b01e1e9056b8c49'], ['62d14dab4150bf497402fdc45a215e10dcb01c354959b10cfe31c7e9d87ff33d', '80fc06bd8cc5b01098088a1950eed0db01aa132967ab472235f5642483b25eaf'], ['80c60ad0040f27dade5b4b06c408e56b2c50e9f56b9b8b425e555c2f86308b6f', '1c38303f1cc5c30f26e66bad7fe72f70a65eed4cbe7024eb1aa01f56430bd57a'], ['7a9375ad6167ad54aa74c6348cc54d344cc5dc9487d847049d5eabb0fa03c8fb', 'd0e3fa9eca8726909559e0d79269046bdc59ea10c70ce2b02d499ec224dc7f7'], ['d528ecd9b696b54c907a9ed045447a79bb408ec39b68df504bb51f459bc3ffc9', 'eecf41253136e5f99966f21881fd656ebc4345405c520dbc063465b521409933'], ['49370a4b5f43412ea25f514e8ecdad05266115e4a7ecb1387231808f8b45963', '758f3f41afd6ed428b3081b0512fd62a54c3f3afbb5b6764b653052a12949c9a'], ['77f230936ee88cbbd73df930d64702ef881d811e0e1498e2f1c13eb1fc345d74', '958ef42a7886b6400a08266e9ba1b37896c95330d97077cbbe8eb3c7671c60d6'], ['f2dac991cc4ce4b9ea44887e5c7c0bce58c80074ab9d4dbaeb28531b7739f530', 'e0dedc9b3b2f8dad4da1f32dec2531df9eb5fbeb0598e4fd1a117dba703a3c37'], ['463b3d9f662621fb1b4be8fbbe2520125a216cdfc9dae3debcba4850c690d45b', '5ed430d78c296c3543114306dd8622d7c622e27c970a1de31cb377b01af7307e'], ['f16f804244e46e2a09232d4aff3b59976b98fac14328a2d1a32496b49998f247', 'cedabd9b82203f7e13d206fcdf4e33d92a6c53c26e5cce26d6579962c4e31df6'], ['caf754272dc84563b0352b7a14311af55d245315ace27c65369e15f7151d41d1', 'cb474660ef35f5f2a41b643fa5e460575f4fa9b7962232a5c32f908318a04476'], ['2600ca4b282cb986f85d0f1709979d8b44a09c07cb86d7c124497bc86f082120', '4119b88753c15bd6a693b03fcddbb45d5ac6be74ab5f0ef44b0be9475a7e4b40'], ['7635ca72d7e8432c338ec53cd12220bc01c48685e24f7dc8c602a7746998e435', '91b649609489d613d1d5e590f78e6d74ecfc061d57048bad9e76f302c5b9c61'], ['754e3239f325570cdbbf4a87deee8a66b7f2b33479d468fbc1a50743bf56cc18', '673fb86e5bda30fb3cd0ed304ea49a023ee33d0197a695d0c5d98093c536683'], ['e3e6bd1071a1e96aff57859c82d570f0330800661d1c952f9fe2694691d9b9e8', '59c9e0bba394e76f40c0aa58379a3cb6a5a2283993e90c4167002af4920e37f5'], ['186b483d056a033826ae73d88f732985c4ccb1f32ba35f4b4cc47fdcf04aa6eb', '3b952d32c67cf77e2e17446e204180ab21fb8090895138b4a4a797f86e80888b'], ['df9d70a6b9876ce544c98561f4be4f725442e6d2b737d9c91a8321724ce0963f', '55eb2dafd84d6ccd5f862b785dc39d4ab157222720ef9da217b8c45cf2ba2417'], ['5edd5cc23c51e87a497ca815d5dce0f8ab52554f849ed8995de64c5f34ce7143', 'efae9c8dbc14130661e8cec030c89ad0c13c66c0d17a2905cdc706ab7399a868'], ['290798c2b6476830da12fe02287e9e777aa3fba1c355b17a722d362f84614fba', 'e38da76dcd440621988d00bcf79af25d5b29c094db2a23146d003afd41943e7a'], ['af3c423a95d9f5b3054754efa150ac39cd29552fe360257362dfdecef4053b45', 'f98a3fd831eb2b749a93b0e6f35cfb40c8cd5aa667a15581bc2feded498fd9c6'], ['766dbb24d134e745cccaa28c99bf274906bb66b26dcf98df8d2fed50d884249a', '744b1152eacbe5e38dcc887980da38b897584a65fa06cedd2c924f97cbac5996'], ['59dbf46f8c94759ba21277c33784f41645f7b44f6c596a58ce92e666191abe3e', 'c534ad44175fbc300f4ea6ce648309a042ce739a7919798cd85e216c4a307f6e'], ['f13ada95103c4537305e691e74e9a4a8dd647e711a95e73cb62dc6018cfd87b8', 'e13817b44ee14de663bf4bc808341f326949e21a6a75c2570778419bdaf5733d'], ['7754b4fa0e8aced06d4167a2c59cca4cda1869c06ebadfb6488550015a88522c', '30e93e864e669d82224b967c3020b8fa8d1e4e350b6cbcc537a48b57841163a2'], ['948dcadf5990e048aa3874d46abef9d701858f95de8041d2a6828c99e2262519', 'e491a42537f6e597d5d28a3224b1bc25df9154efbd2ef1d2cbba2cae5347d57e'], ['7962414450c76c1689c7b48f8202ec37fb224cf5ac0bfa1570328a8a3d7c77ab', '100b610ec4ffb4760d5c1fc133ef6f6b12507a051f04ac5760afa5b29db83437'], ['3514087834964b54b15b160644d915485a16977225b8847bb0dd085137ec47ca', 'ef0afbb2056205448e1652c48e8127fc6039e77c15c2378b7e7d15a0de293311'], ['d3cc30ad6b483e4bc79ce2c9dd8bc54993e947eb8df787b442943d3f7b527eaf', '8b378a22d827278d89c5e9be8f9508ae3c2ad46290358630afb34db04eede0a4'], ['1624d84780732860ce1c78fcbfefe08b2b29823db913f6493975ba0ff4847610', '68651cf9b6da903e0914448c6cd9d4ca896878f5282be4c8cc06e2a404078575'], ['733ce80da955a8a26902c95633e62a985192474b5af207da6df7b4fd5fc61cd4', 'f5435a2bd2badf7d485a4d8b8db9fcce3e1ef8e0201e4578c54673bc1dc5ea1d'], ['15d9441254945064cf1a1c33bbd3b49f8966c5092171e699ef258dfab81c045c', 'd56eb30b69463e7234f5137b73b84177434800bacebfc685fc37bbe9efe4070d'], ['a1d0fcf2ec9de675b612136e5ce70d271c21417c9d2b8aaaac138599d0717940', 'edd77f50bcb5a3cab2e90737309667f2641462a54070f3d519212d39c197a629'], ['e22fbe15c0af8ccc5780c0735f84dbe9a790badee8245c06c7ca37331cb36980', 'a855babad5cd60c88b430a69f53a1a7a38289154964799be43d06d77d31da06'], ['311091dd9860e8e20ee13473c1155f5f69635e394704eaa74009452246cfa9b3', '66db656f87d1f04fffd1f04788c06830871ec5a64feee685bd80f0b1286d8374'], ['34c1fd04d301be89b31c0442d3e6ac24883928b45a9340781867d4232ec2dbdf', '9414685e97b1b5954bd46f730174136d57f1ceeb487443dc5321857ba73abee'], ['f219ea5d6b54701c1c14de5b557eb42a8d13f3abbcd08affcc2a5e6b049b8d63', '4cb95957e83d40b0f73af4544cccf6b1f4b08d3c07b27fb8d8c2962a400766d1'], ['d7b8740f74a8fbaab1f683db8f45de26543a5490bca627087236912469a0b448', 'fa77968128d9c92ee1010f337ad4717eff15db5ed3c049b3411e0315eaa4593b'], ['32d31c222f8f6f0ef86f7c98d3a3335ead5bcd32abdd94289fe4d3091aa824bf', '5f3032f5892156e39ccd3d7915b9e1da2e6dac9e6f26e961118d14b8462e1661'], ['7461f371914ab32671045a155d9831ea8793d77cd59592c4340f86cbc18347b5', '8ec0ba238b96bec0cbdddcae0aa442542eee1ff50c986ea6b39847b3cc092ff6'], ['ee079adb1df1860074356a25aa38206a6d716b2c3e67453d287698bad7b2b2d6', '8dc2412aafe3be5c4c5f37e0ecc5f9f6a446989af04c4e25ebaac479ec1c8c1e'], ['16ec93e447ec83f0467b18302ee620f7e65de331874c9dc72bfd8616ba9da6b5', '5e4631150e62fb40d0e8c2a7ca5804a39d58186a50e497139626778e25b0674d'], ['eaa5f980c245f6f038978290afa70b6bd8855897f98b6aa485b96065d537bd99', 'f65f5d3e292c2e0819a528391c994624d784869d7e6ea67fb18041024edc07dc'], ['78c9407544ac132692ee1910a02439958ae04877151342ea96c4b6b35a49f51', 'f3e0319169eb9b85d5404795539a5e68fa1fbd583c064d2462b675f194a3ddb4'], ['494f4be219a1a77016dcd838431aea0001cdc8ae7a6fc688726578d9702857a5', '42242a969283a5f339ba7f075e36ba2af925ce30d767ed6e55f4b031880d562c'], ['a598a8030da6d86c6bc7f2f5144ea549d28211ea58faa70ebf4c1e665c1fe9b5', '204b5d6f84822c307e4b4a7140737aec23fc63b65b35f86a10026dbd2d864e6b'], ['c41916365abb2b5d09192f5f2dbeafec208f020f12570a184dbadc3e58595997', '4f14351d0087efa49d245b328984989d5caf9450f34bfc0ed16e96b58fa9913'], ['841d6063a586fa475a724604da03bc5b92a2e0d2e0a36acfe4c73a5514742881', '73867f59c0659e81904f9a1c7543698e62562d6744c169ce7a36de01a8d6154'], ['5e95bb399a6971d376026947f89bde2f282b33810928be4ded112ac4d70e20d5', '39f23f366809085beebfc71181313775a99c9aed7d8ba38b161384c746012865'], ['36e4641a53948fd476c39f8a99fd974e5ec07564b5315d8bf99471bca0ef2f66', 'd2424b1b1abe4eb8164227b085c9aa9456ea13493fd563e06fd51cf5694c78fc'], ['336581ea7bfbbb290c191a2f507a41cf5643842170e914faeab27c2c579f726', 'ead12168595fe1be99252129b6e56b3391f7ab1410cd1e0ef3dcdcabd2fda224'], ['8ab89816dadfd6b6a1f2634fcf00ec8403781025ed6890c4849742706bd43ede', '6fdcef09f2f6d0a044e654aef624136f503d459c3e89845858a47a9129cdd24e'], ['1e33f1a746c9c5778133344d9299fcaa20b0938e8acff2544bb40284b8c5fb94', '60660257dd11b3aa9c8ed618d24edff2306d320f1d03010e33a7d2057f3b3b6'], ['85b7c1dcb3cec1b7ee7f30ded79dd20a0ed1f4cc18cbcfcfa410361fd8f08f31', '3d98a9cdd026dd43f39048f25a8847f4fcafad1895d7a633c6fed3c35e999511'], ['29df9fbd8d9e46509275f4b125d6d45d7fbe9a3b878a7af872a2800661ac5f51', 'b4c4fe99c775a606e2d8862179139ffda61dc861c019e55cd2876eb2a27d84b'], ['a0b1cae06b0a847a3fea6e671aaf8adfdfe58ca2f768105c8082b2e449fce252', 'ae434102edde0958ec4b19d917a6a28e6b72da1834aff0e650f049503a296cf2'], ['4e8ceafb9b3e9a136dc7ff67e840295b499dfb3b2133e4ba113f2e4c0e121e5', 'cf2174118c8b6d7a4b48f6d534ce5c79422c086a63460502b827ce62a326683c'], ['d24a44e047e19b6f5afb81c7ca2f69080a5076689a010919f42725c2b789a33b', '6fb8d5591b466f8fc63db50f1c0f1c69013f996887b8244d2cdec417afea8fa3'], ['ea01606a7a6c9cdd249fdfcfacb99584001edd28abbab77b5104e98e8e3b35d4', '322af4908c7312b0cfbfe369f7a7b3cdb7d4494bc2823700cfd652188a3ea98d'], ['af8addbf2b661c8a6c6328655eb96651252007d8c5ea31be4ad196de8ce2131f', '6749e67c029b85f52a034eafd096836b2520818680e26ac8f3dfbcdb71749700'], ['e3ae1974566ca06cc516d47e0fb165a674a3dabcfca15e722f0e3450f45889', '2aeabe7e4531510116217f07bf4d07300de97e4874f81f533420a72eeb0bd6a4'], ['591ee355313d99721cf6993ffed1e3e301993ff3ed258802075ea8ced397e246', 'b0ea558a113c30bea60fc4775460c7901ff0b053d25ca2bdeee98f1a4be5d196'], ['11396d55fda54c49f19aa97318d8da61fa8584e47b084945077cf03255b52984', '998c74a8cd45ac01289d5833a7beb4744ff536b01b257be4c5767bea93ea57a4'], ['3c5d2a1ba39c5a1790000738c9e0c40b8dcdfd5468754b6405540157e017aa7a', 'b2284279995a34e2f9d4de7396fc18b80f9b8b9fdd270f6661f79ca4c81bd257'], ['cc8704b8a60a0defa3a99a7299f2e9c3fbc395afb04ac078425ef8a1793cc030', 'bdd46039feed17881d1e0862db347f8cf395b74fc4bcdc4e940b74e3ac1f1b13'], ['c533e4f7ea8555aacd9777ac5cad29b97dd4defccc53ee7ea204119b2889b197', '6f0a256bc5efdf429a2fb6242f1a43a2d9b925bb4a4b3a26bb8e0f45eb596096'], ['c14f8f2ccb27d6f109f6d08d03cc96a69ba8c34eec07bbcf566d48e33da6593', 'c359d6923bb398f7fd4473e16fe1c28475b740dd098075e6c0e8649113dc3a38'], ['a6cbc3046bc6a450bac24789fa17115a4c9739ed75f8f21ce441f72e0b90e6ef', '21ae7f4680e889bb130619e2c0f95a360ceb573c70603139862afd617fa9b9f'], ['347d6d9a02c48927ebfb86c1359b1caf130a3c0267d11ce6344b39f99d43cc38', '60ea7f61a353524d1c987f6ecec92f086d565ab687870cb12689ff1e31c74448'], ['da6545d2181db8d983f7dcb375ef5866d47c67b1bf31c8cf855ef7437b72656a', '49b96715ab6878a79e78f07ce5680c5d6673051b4935bd897fea824b77dc208a'], ['c40747cc9d012cb1a13b8148309c6de7ec25d6945d657146b9d5994b8feb1111', '5ca560753be2a12fc6de6caf2cb489565db936156b9514e1bb5e83037e0fa2d4'], ['4e42c8ec82c99798ccf3a610be870e78338c7f713348bd34c8203ef4037f3502', '7571d74ee5e0fb92a7a8b33a07783341a5492144cc54bcc40a94473693606437'], ['3775ab7089bc6af823aba2e1af70b236d251cadb0c86743287522a1b3b0dedea', 'be52d107bcfa09d8bcb9736a828cfa7fac8db17bf7a76a2c42ad961409018cf7'], ['cee31cbf7e34ec379d94fb814d3d775ad954595d1314ba8846959e3e82f74e26', '8fd64a14c06b589c26b947ae2bcf6bfa0149ef0be14ed4d80f448a01c43b1c6d'], ['b4f9eaea09b6917619f6ea6a4eb5464efddb58fd45b1ebefcdc1a01d08b47986', '39e5c9925b5a54b07433a4f18c61726f8bb131c012ca542eb24a8ac07200682a'], ['d4263dfc3d2df923a0179a48966d30ce84e2515afc3dccc1b77907792ebcc60e', '62dfaf07a0f78feb30e30d6295853ce189e127760ad6cf7fae164e122a208d54'], ['48457524820fa65a4f8d35eb6930857c0032acc0a4a2de422233eeda897612c4', '25a748ab367979d98733c38a1fa1c2e7dc6cc07db2d60a9ae7a76aaa49bd0f77'], ['dfeeef1881101f2cb11644f3a2afdfc2045e19919152923f367a1767c11cceda', 'ecfb7056cf1de042f9420bab396793c0c390bde74b4bbdff16a83ae09a9a7517'], ['6d7ef6b17543f8373c573f44e1f389835d89bcbc6062ced36c82df83b8fae859', 'cd450ec335438986dfefa10c57fea9bcc521a0959b2d80bbf74b190dca712d10'], ['e75605d59102a5a2684500d3b991f2e3f3c88b93225547035af25af66e04541f', 'f5c54754a8f71ee540b9b48728473e314f729ac5308b06938360990e2bfad125'], ['eb98660f4c4dfaa06a2be453d5020bc99a0c2e60abe388457dd43fefb1ed620c', '6cb9a8876d9cb8520609af3add26cd20a0a7cd8a9411131ce85f44100099223e'], ['13e87b027d8514d35939f2e6892b19922154596941888336dc3563e3b8dba942', 'fef5a3c68059a6dec5d624114bf1e91aac2b9da568d6abeb2570d55646b8adf1'], ['ee163026e9fd6fe017c38f06a5be6fc125424b371ce2708e7bf4491691e5764a', '1acb250f255dd61c43d94ccc670d0f58f49ae3fa15b96623e5430da0ad6c62b2'], ['b268f5ef9ad51e4d78de3a750c2dc89b1e626d43505867999932e5db33af3d80', '5f310d4b3c99b9ebb19f77d41c1dee018cf0d34fd4191614003e945a1216e423'], ['ff07f3118a9df035e9fad85eb6c7bfe42b02f01ca99ceea3bf7ffdba93c4750d', '438136d603e858a3a5c440c38eccbaddc1d2942114e2eddd4740d098ced1f0d8'], ['8d8b9855c7c052a34146fd20ffb658bea4b9f69e0d825ebec16e8c3ce2b526a1', 'cdb559eedc2d79f926baf44fb84ea4d44bcf50fee51d7ceb30e2e7f463036758'], ['52db0b5384dfbf05bfa9d472d7ae26dfe4b851ceca91b1eba54263180da32b63', 'c3b997d050ee5d423ebaf66a6db9f57b3180c902875679de924b69d84a7b375'], ['e62f9490d3d51da6395efd24e80919cc7d0f29c3f3fa48c6fff543becbd43352', '6d89ad7ba4876b0b22c2ca280c682862f342c8591f1daf5170e07bfd9ccafa7d'], ['7f30ea2476b399b4957509c88f77d0191afa2ff5cb7b14fd6d8e7d65aaab1193', 'ca5ef7d4b231c94c3b15389a5f6311e9daff7bb67b103e9880ef4bff637acaec'], ['5098ff1e1d9f14fb46a210fada6c903fef0fb7b4a1dd1d9ac60a0361800b7a00', '9731141d81fc8f8084d37c6e7542006b3ee1b40d60dfe5362a5b132fd17ddc0'], ['32b78c7de9ee512a72895be6b9cbefa6e2f3c4ccce445c96b9f2c81e2778ad58', 'ee1849f513df71e32efc3896ee28260c73bb80547ae2275ba497237794c8753c'], ['e2cb74fddc8e9fbcd076eef2a7c72b0ce37d50f08269dfc074b581550547a4f7', 'd3aa2ed71c9dd2247a62df062736eb0baddea9e36122d2be8641abcb005cc4a4'], ['8438447566d4d7bedadc299496ab357426009a35f235cb141be0d99cd10ae3a8', 'c4e1020916980a4da5d01ac5e6ad330734ef0d7906631c4f2390426b2edd791f'], ['4162d488b89402039b584c6fc6c308870587d9c46f660b878ab65c82c711d67e', '67163e903236289f776f22c25fb8a3afc1732f2b84b4e95dbda47ae5a0852649'], ['3fad3fa84caf0f34f0f89bfd2dcf54fc175d767aec3e50684f3ba4a4bf5f683d', 'cd1bc7cb6cc407bb2f0ca647c718a730cf71872e7d0d2a53fa20efcdfe61826'], ['674f2600a3007a00568c1a7ce05d0816c1fb84bf1370798f1c69532faeb1a86b', '299d21f9413f33b3edf43b257004580b70db57da0b182259e09eecc69e0d38a5'], ['d32f4da54ade74abb81b815ad1fb3b263d82d6c692714bcff87d29bd5ee9f08f', 'f9429e738b8e53b968e99016c059707782e14f4535359d582fc416910b3eea87'], ['30e4e670435385556e593657135845d36fbb6931f72b08cb1ed954f1e3ce3ff6', '462f9bce619898638499350113bbc9b10a878d35da70740dc695a559eb88db7b'], ['be2062003c51cc3004682904330e4dee7f3dcd10b01e580bf1971b04d4cad297', '62188bc49d61e5428573d48a74e1c655b1c61090905682a0d5558ed72dccb9bc'], ['93144423ace3451ed29e0fb9ac2af211cb6e84a601df5993c419859fff5df04a', '7c10dfb164c3425f5c71a3f9d7992038f1065224f72bb9d1d902a6d13037b47c'], ['b015f8044f5fcbdcf21ca26d6c34fb8197829205c7b7d2a7cb66418c157b112c', 'ab8c1e086d04e813744a655b2df8d5f83b3cdc6faa3088c1d3aea1454e3a1d5f'], ['d5e9e1da649d97d89e4868117a465a3a4f8a18de57a140d36b3f2af341a21b52', '4cb04437f391ed73111a13cc1d4dd0db1693465c2240480d8955e8592f27447a'], ['d3ae41047dd7ca065dbf8ed77b992439983005cd72e16d6f996a5316d36966bb', 'bd1aeb21ad22ebb22a10f0303417c6d964f8cdd7df0aca614b10dc14d125ac46'], ['463e2763d885f958fc66cdd22800f0a487197d0a82e377b49f80af87c897b065', 'bfefacdb0e5d0fd7df3a311a94de062b26b80c61fbc97508b79992671ef7ca7f'], ['7985fdfd127c0567c6f53ec1bb63ec3158e597c40bfe747c83cddfc910641917', '603c12daf3d9862ef2b25fe1de289aed24ed291e0ec6708703a5bd567f32ed03'], ['74a1ad6b5f76e39db2dd249410eac7f99e74c59cb83d2d0ed5ff1543da7703e9', 'cc6157ef18c9c63cd6193d83631bbea0093e0968942e8c33d5737fd790e0db08'], ['30682a50703375f602d416664ba19b7fc9bab42c72747463a71d0896b22f6da3', '553e04f6b018b4fa6c8f39e7f311d3176290d0e0f19ca73f17714d9977a22ff8'], ['9e2158f0d7c0d5f26c3791efefa79597654e7a2b2464f52b1ee6c1347769ef57', '712fcdd1b9053f09003a3481fa7762e9ffd7c8ef35a38509e2fbf2629008373'], ['176e26989a43c9cfeba4029c202538c28172e566e3c4fce7322857f3be327d66', 'ed8cc9d04b29eb877d270b4878dc43c19aefd31f4eee09ee7b47834c1fa4b1c3'], ['75d46efea3771e6e68abb89a13ad747ecf1892393dfc4f1b7004788c50374da8', '9852390a99507679fd0b86fd2b39a868d7efc22151346e1a3ca4726586a6bed8'], ['809a20c67d64900ffb698c4c825f6d5f2310fb0451c869345b7319f645605721', '9e994980d9917e22b76b061927fa04143d096ccc54963e6a5ebfa5f3f8e286c1'], ['1b38903a43f7f114ed4500b4eac7083fdefece1cf29c63528d563446f972c180', '4036edc931a60ae889353f77fd53de4a2708b26b6f5da72ad3394119daf408f9']]
       }
     };
-  }, {}], 144: [function (require, module, exports) {
+  }, {}], 146: [function (require, module, exports) {
     'use strict';
 
     var utils = exports;
@@ -63841,7 +64040,7 @@
       return new BN(bytes, 'hex', 'le');
     }
     utils.intFromLE = intFromLE;
-  }, { "bn.js": 80 }], 145: [function (require, module, exports) {
+  }, { "bn.js": 80 }], 147: [function (require, module, exports) {
     module.exports = {
       "_args": [["elliptic@^6.0.0", "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"]],
       "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -63935,7 +64134,7 @@
       },
       "version": "6.3.2"
     };
-  }, {}], 146: [function (require, module, exports) {
+  }, {}], 148: [function (require, module, exports) {
     module.exports = {
       "genesisGasLimit": {
         "v": 5000,
@@ -64167,9 +64366,9 @@
         "v": 2
       }
     };
-  }, {}], 147: [function (require, module, exports) {
+  }, {}], 149: [function (require, module, exports) {
     module.exports = require('./params.json');
-  }, { "./params.json": 146 }], 148: [function (require, module, exports) {
+  }, { "./params.json": 148 }], 150: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -64424,7 +64623,7 @@
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110, "ethereum-common/params": 147, "ethereumjs-util": 149 }], 149: [function (require, module, exports) {
+  }, { "buffer": 111, "ethereum-common/params": 149, "ethereumjs-util": 151 }], 151: [function (require, module, exports) {
     (function (Buffer) {
       const SHA3 = require('keccakjs');
       const secp256k1 = require('secp256k1');
@@ -65129,7 +65328,7 @@
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 74, "bn.js": 80, "buffer": 110, "create-hash": 114, "keccakjs": 164, "rlp": 195, "secp256k1": 197 }], 150: [function (require, module, exports) {
+  }, { "assert": 74, "bn.js": 80, "buffer": 111, "create-hash": 116, "keccakjs": 167, "rlp": 198, "secp256k1": 200 }], 152: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -65395,7 +65594,7 @@
     function isUndefined(arg) {
       return arg === void 0;
     }
-  }, {}], 151: [function (require, module, exports) {
+  }, {}], 153: [function (require, module, exports) {
     (function (Buffer) {
       var md5 = require('create-hash/md5');
       module.exports = EVP_BytesToKey;
@@ -65466,7 +65665,7 @@
         };
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110, "create-hash/md5": 116 }], 152: [function (require, module, exports) {
+  }, { "buffer": 111, "create-hash/md5": 118 }], 154: [function (require, module, exports) {
     var hash = exports;
 
     hash.utils = require('./hash/utils');
@@ -65482,7 +65681,7 @@
     hash.sha384 = hash.sha.sha384;
     hash.sha512 = hash.sha.sha512;
     hash.ripemd160 = hash.ripemd.ripemd160;
-  }, { "./hash/common": 153, "./hash/hmac": 154, "./hash/ripemd": 155, "./hash/sha": 156, "./hash/utils": 157 }], 153: [function (require, module, exports) {
+  }, { "./hash/common": 155, "./hash/hmac": 156, "./hash/ripemd": 157, "./hash/sha": 158, "./hash/utils": 159 }], 155: [function (require, module, exports) {
     var hash = require('../hash');
     var utils = hash.utils;
     var assert = utils.assert;
@@ -65566,7 +65765,7 @@
 
       return res;
     };
-  }, { "../hash": 152 }], 154: [function (require, module, exports) {
+  }, { "../hash": 154 }], 156: [function (require, module, exports) {
     var hmac = exports;
 
     var hash = require('../hash');
@@ -65610,7 +65809,7 @@
       this.outer.update(this.inner.digest());
       return this.outer.digest(enc);
     };
-  }, { "../hash": 152 }], 155: [function (require, module, exports) {
+  }, { "../hash": 154 }], 157: [function (require, module, exports) {
     var hash = require('../hash');
     var utils = hash.utils;
 
@@ -65692,7 +65891,7 @@
     var s = [11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8, 7, 6, 8, 13, 11, 9, 7, 15, 7, 12, 15, 9, 11, 7, 13, 12, 11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5, 11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12, 9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6];
 
     var sh = [8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6, 9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11, 9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5, 15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8, 8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11];
-  }, { "../hash": 152 }], 156: [function (require, module, exports) {
+  }, { "../hash": 154 }], 158: [function (require, module, exports) {
     var hash = require('../hash');
     var utils = hash.utils;
     var assert = utils.assert;
@@ -66125,7 +66324,7 @@
       if (r < 0) r += 0x100000000;
       return r;
     }
-  }, { "../hash": 152 }], 157: [function (require, module, exports) {
+  }, { "../hash": 154 }], 159: [function (require, module, exports) {
     var utils = exports;
     var inherits = require('inherits');
 
@@ -66348,7 +66547,245 @@
       return r >>> 0;
     };
     exports.shr64_lo = shr64_lo;
-  }, { "inherits": 160 }], 158: [function (require, module, exports) {
+  }, { "inherits": 163 }], 160: [function (require, module, exports) {
+    (function (Buffer) {
+      var assert = require('assert');
+      var crypto = require('crypto');
+      var cs = require('coinstring');
+      var secp256k1 = require('secp256k1');
+
+      var MASTER_SECRET = new Buffer('Bitcoin seed');
+      var HARDENED_OFFSET = 0x80000000;
+      var LEN = 78;
+
+      // Bitcoin hardcoded by default, can use package `coininfo` for others
+      var BITCOIN_VERSIONS = { private: 0x0488ADE4, public: 0x0488B21E };
+
+      function HDKey(versions) {
+        this.versions = versions || BITCOIN_VERSIONS;
+        this.depth = 0;
+        this.index = 0;
+        this._privateKey = null;
+        this._publicKey = null;
+        this.chainCode = null;
+        this._fingerprint = 0;
+        this.parentFingerprint = 0;
+      }
+
+      Object.defineProperty(HDKey.prototype, 'fingerprint', { get: function () {
+          return this._fingerprint;
+        } });
+      Object.defineProperty(HDKey.prototype, 'identifier', { get: function () {
+          return this._identifier;
+        } });
+      Object.defineProperty(HDKey.prototype, 'pubKeyHash', { get: function () {
+          return this.identifier;
+        } });
+
+      Object.defineProperty(HDKey.prototype, 'privateKey', {
+        get: function () {
+          return this._privateKey;
+        },
+        set: function (value) {
+          assert.equal(value.length, 32, 'Private key must be 32 bytes.');
+          assert(secp256k1.privateKeyVerify(value) === true, 'Invalid private key');
+
+          this._privateKey = value;
+          this._publicKey = secp256k1.publicKeyCreate(value, true);
+          this._identifier = hash160(this.publicKey);
+          this._fingerprint = this._identifier.slice(0, 4).readUInt32BE(0);
+        }
+      });
+
+      Object.defineProperty(HDKey.prototype, 'publicKey', {
+        get: function () {
+          return this._publicKey;
+        },
+        set: function (value) {
+          assert(value.length === 33 || value.length === 65, 'Public key must be 33 or 65 bytes.');
+          assert(secp256k1.publicKeyVerify(value) === true, 'Invalid public key');
+
+          this._publicKey = secp256k1.publicKeyConvert(value, true); // force compressed point
+          this._identifier = hash160(this.publicKey);
+          this._fingerprint = this._identifier.slice(0, 4).readUInt32BE(0);
+          this._privateKey = null;
+        }
+      });
+
+      Object.defineProperty(HDKey.prototype, 'privateExtendedKey', {
+        get: function () {
+          if (this._privateKey) return cs.encode(serialize(this, this.versions.private, Buffer.concat([new Buffer([0]), this.privateKey])));else return null;
+        }
+      });
+
+      Object.defineProperty(HDKey.prototype, 'publicExtendedKey', {
+        get: function () {
+          return cs.encode(serialize(this, this.versions.public, this.publicKey));
+        }
+      });
+
+      HDKey.prototype.derive = function (path) {
+        if (path === 'm' || path === 'M' || path === "m'" || path === "M'") {
+          return this;
+        }
+
+        var entries = path.split('/');
+        var hdkey = this;
+        entries.forEach(function (c, i) {
+          if (i === 0) {
+            assert(c, 'm', 'Invalid path');
+            return;
+          }
+
+          var hardened = c.length > 1 && c[c.length - 1] === "'";
+          var childIndex = parseInt(c, 10); // & (HARDENED_OFFSET - 1)
+          assert(childIndex < HARDENED_OFFSET, 'Invalid index');
+          if (hardened) childIndex += HARDENED_OFFSET;
+
+          hdkey = hdkey.deriveChild(childIndex);
+        });
+
+        return hdkey;
+      };
+
+      HDKey.prototype.deriveChild = function (index) {
+        var isHardened = index >= HARDENED_OFFSET;
+        var indexBuffer = new Buffer(4);
+        indexBuffer.writeUInt32BE(index, 0);
+
+        var data;
+
+        if (isHardened) {
+          // Hardened child
+          assert(this.privateKey, 'Could not derive hardened child key');
+
+          var pk = this.privateKey;
+          var zb = new Buffer([0]);
+          pk = Buffer.concat([zb, pk]);
+
+          // data = 0x00 || ser256(kpar) || ser32(index)
+          data = Buffer.concat([pk, indexBuffer]);
+        } else {
+          // Normal child
+          // data = serP(point(kpar)) || ser32(index)
+          //      = serP(Kpar) || ser32(index)
+          data = Buffer.concat([this.publicKey, indexBuffer]);
+        }
+
+        var I = crypto.createHmac('sha512', this.chainCode).update(data).digest();
+        var IL = I.slice(0, 32);
+        var IR = I.slice(32);
+
+        var hd = new HDKey(this.versions);
+
+        // Private parent key -> private child key
+        if (this.privateKey) {
+          // ki = parse256(IL) + kpar (mod n)
+          try {
+            hd.privateKey = secp256k1.privateKeyTweakAdd(this.privateKey, IL);
+            // throw if IL >= n || (privateKey + IL) === 0
+          } catch (err) {
+            // In case parse256(IL) >= n or ki == 0, one should proceed with the next value for i
+            return this.derive(index + 1);
+          }
+          // Public parent key -> public child key
+        } else {
+          // Ki = point(parse256(IL)) + Kpar
+          //    = G*IL + Kpar
+          try {
+            hd.publicKey = secp256k1.publicKeyTweakAdd(this.publicKey, IL, true);
+            // throw if IL >= n || (g**IL + publicKey) is infinity
+          } catch (err) {
+            // In case parse256(IL) >= n or Ki is the point at infinity, one should proceed with the next value for i
+            return this.derive(index + 1, isHardened);
+          }
+        }
+
+        hd.chainCode = IR;
+        hd.depth = this.depth + 1;
+        hd.parentFingerprint = this.fingerprint; // .readUInt32BE(0)
+        hd.index = index;
+
+        return hd;
+      };
+
+      HDKey.prototype.toJSON = function () {
+        return {
+          xpriv: this.privateExtendedKey,
+          xpub: this.publicExtendedKey
+        };
+      };
+
+      HDKey.fromMasterSeed = function (seedBuffer, versions) {
+        var I = crypto.createHmac('sha512', MASTER_SECRET).update(seedBuffer).digest();
+        var IL = I.slice(0, 32);
+        var IR = I.slice(32);
+
+        var hdkey = new HDKey(versions);
+        hdkey.chainCode = IR;
+        hdkey.privateKey = IL;
+
+        return hdkey;
+      };
+
+      HDKey.fromExtendedKey = function (base58key, versions) {
+        // => version(4) || depth(1) || fingerprint(4) || index(4) || chain(32) || key(33)
+        versions = versions || BITCOIN_VERSIONS;
+        var hdkey = new HDKey(versions);
+
+        var keyBuffer = cs.decode(base58key);
+
+        var version = keyBuffer.readUInt32BE(0);
+        assert(version === versions.private || version === versions.public, 'Version mismatch: does not match private or public');
+
+        hdkey.depth = keyBuffer.readUInt8(4);
+        hdkey.parentFingerprint = keyBuffer.readUInt32BE(5);
+        hdkey.index = keyBuffer.readUInt32BE(9);
+        hdkey.chainCode = keyBuffer.slice(13, 45);
+
+        var key = keyBuffer.slice(45);
+        if (key.readUInt8(0) === 0) {
+          // private
+          assert(version === versions.private, 'Version mismatch: version does not match private');
+          hdkey.privateKey = key.slice(1); // cut off first 0x0 byte
+        } else {
+          assert(version === versions.public, 'Version mismatch: version does not match public');
+          hdkey.publicKey = key;
+        }
+
+        return hdkey;
+      };
+
+      HDKey.fromJSON = function (obj) {
+        return HDKey.fromExtendedKey(obj.xpriv);
+      };
+
+      function serialize(hdkey, version, key) {
+        // => version(4) || depth(1) || fingerprint(4) || index(4) || chain(32) || key(33)
+        var buffer = new Buffer(LEN);
+
+        buffer.writeUInt32BE(version, 0);
+        buffer.writeUInt8(hdkey.depth, 4);
+
+        var fingerprint = hdkey.depth ? hdkey.parentFingerprint : 0x00000000;
+        buffer.writeUInt32BE(fingerprint, 5);
+        buffer.writeUInt32BE(hdkey.index, 9);
+
+        hdkey.chainCode.copy(buffer, 13);
+        key.copy(buffer, 45);
+
+        return buffer;
+      }
+
+      function hash160(buf) {
+        var sha = crypto.createHash('sha256').update(buf).digest();
+        return crypto.createHash('rmd160').update(sha).digest();
+      }
+
+      HDKey.HARDENED_OFFSET = HARDENED_OFFSET;
+      module.exports = HDKey;
+    }).call(this, require("buffer").Buffer);
+  }, { "assert": 74, "buffer": 111, "coinstring": 113, "crypto": 120, "secp256k1": 200 }], 161: [function (require, module, exports) {
     exports.read = function (buffer, offset, isLE, mLen, nBytes) {
       var e, m;
       var eLen = nBytes * 8 - mLen - 1;
@@ -66433,7 +66870,7 @@
 
       buffer[offset + i - d] |= s * 128;
     };
-  }, {}], 159: [function (require, module, exports) {
+  }, {}], 162: [function (require, module, exports) {
 
     var indexOf = [].indexOf;
 
@@ -66444,7 +66881,7 @@
       }
       return -1;
     };
-  }, {}], 160: [function (require, module, exports) {
+  }, {}], 163: [function (require, module, exports) {
     if (typeof Object.create === 'function') {
       // implementation from standard node.js 'util' module
       module.exports = function inherits(ctor, superCtor) {
@@ -66468,7 +66905,7 @@
         ctor.prototype.constructor = ctor;
       };
     }
-  }, {}], 161: [function (require, module, exports) {
+  }, {}], 164: [function (require, module, exports) {
     /*!
      * Determine if an object is a Buffer
      *
@@ -66490,13 +66927,13 @@
     function isSlowBuffer(obj) {
       return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0));
     }
-  }, {}], 162: [function (require, module, exports) {
+  }, {}], 165: [function (require, module, exports) {
     var toString = {}.toString;
 
     module.exports = Array.isArray || function (arr) {
       return toString.call(arr) == '[object Array]';
     };
-  }, {}], 163: [function (require, module, exports) {
+  }, {}], 166: [function (require, module, exports) {
     (function (global) {
       /*
        * js-sha3 v0.3.1
@@ -66930,9 +67367,9 @@
         }
       })(this);
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 164: [function (require, module, exports) {
+  }, {}], 167: [function (require, module, exports) {
     module.exports = require('browserify-sha3').SHA3Hash;
-  }, { "browserify-sha3": 102 }], 165: [function (require, module, exports) {
+  }, { "browserify-sha3": 102 }], 168: [function (require, module, exports) {
     (function (global) {
       /**
        * marked - a markdown parser
@@ -68115,7 +68552,7 @@
         return this || (typeof window !== 'undefined' ? window : global);
       }());
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 166: [function (require, module, exports) {
+  }, {}], 169: [function (require, module, exports) {
     var bn = require('bn.js');
     var brorand = require('brorand');
 
@@ -68217,7 +68654,7 @@
 
       return false;
     };
-  }, { "bn.js": 80, "brorand": 81 }], 167: [function (require, module, exports) {
+  }, { "bn.js": 80, "brorand": 81 }], 170: [function (require, module, exports) {
     module.exports = assert;
 
     function assert(val, msg) {
@@ -68227,7 +68664,7 @@
     assert.equal = function assertEqual(l, r, msg) {
       if (l != r) throw new Error(msg || 'Assertion failed: ' + l + ' != ' + r);
     };
-  }, {}], 168: [function (require, module, exports) {
+  }, {}], 171: [function (require, module, exports) {
     module.exports = { "2.16.840.1.101.3.4.1.1": "aes-128-ecb",
       "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
       "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -68241,7 +68678,7 @@
       "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
       "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
     };
-  }, {}], 169: [function (require, module, exports) {
+  }, {}], 172: [function (require, module, exports) {
     // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
     // Fedor, you are amazing.
 
@@ -68297,7 +68734,7 @@
     exports.signature = asn1.define('signature', function () {
       this.seq().obj(this.key('r').int(), this.key('s').int());
     });
-  }, { "asn1.js": 60 }], 170: [function (require, module, exports) {
+  }, { "asn1.js": 60 }], 173: [function (require, module, exports) {
     (function (Buffer) {
       // adapted from https://github.com/apatil/pemstrip
       var findProc = /Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\r?\n\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n/m;
@@ -68330,7 +68767,7 @@
         };
       };
     }).call(this, require("buffer").Buffer);
-  }, { "browserify-aes": 85, "buffer": 110, "evp_bytestokey": 151 }], 171: [function (require, module, exports) {
+  }, { "browserify-aes": 85, "buffer": 111, "evp_bytestokey": 153 }], 174: [function (require, module, exports) {
     (function (Buffer) {
       var asn1 = require('./asn1');
       var aesid = require('./aesid.json');
@@ -68437,7 +68874,7 @@
         return Buffer.concat(out);
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./aesid.json": 168, "./asn1": 169, "./fixProc": 170, "browserify-aes": 85, "buffer": 110, "pbkdf2": 172 }], 172: [function (require, module, exports) {
+  }, { "./aesid.json": 171, "./asn1": 172, "./fixProc": 173, "browserify-aes": 85, "buffer": 111, "pbkdf2": 175 }], 175: [function (require, module, exports) {
     (function (process, Buffer) {
       var createHmac = require('create-hmac');
       var checkParameters = require('./precondition');
@@ -68508,7 +68945,7 @@
         return DK;
       };
     }).call(this, require('_process'), require("buffer").Buffer);
-  }, { "./precondition": 173, "_process": 175, "buffer": 110, "create-hmac": 117 }], 173: [function (require, module, exports) {
+  }, { "./precondition": 176, "_process": 178, "buffer": 111, "create-hmac": 119 }], 176: [function (require, module, exports) {
     var MAX_ALLOC = Math.pow(2, 30) - 1; // default in iojs
     module.exports = function (iterations, keylen) {
       if (typeof iterations !== 'number') {
@@ -68528,7 +68965,7 @@
         throw new TypeError('Bad key length');
       }
     };
-  }, {}], 174: [function (require, module, exports) {
+  }, {}], 177: [function (require, module, exports) {
     (function (process) {
       'use strict';
 
@@ -68572,7 +69009,7 @@
         }
       }
     }).call(this, require('_process'));
-  }, { "_process": 175 }], 175: [function (require, module, exports) {
+  }, { "_process": 178 }], 178: [function (require, module, exports) {
     // shim for using process in browser
     var process = module.exports = {};
 
@@ -68752,7 +69189,7 @@
     process.umask = function () {
       return 0;
     };
-  }, {}], 176: [function (require, module, exports) {
+  }, {}], 179: [function (require, module, exports) {
     exports.publicEncrypt = require('./publicEncrypt');
     exports.privateDecrypt = require('./privateDecrypt');
 
@@ -68763,7 +69200,7 @@
     exports.publicDecrypt = function publicDecrypt(key, buf) {
       return exports.privateDecrypt(key, buf, true);
     };
-  }, { "./privateDecrypt": 178, "./publicEncrypt": 179 }], 177: [function (require, module, exports) {
+  }, { "./privateDecrypt": 181, "./publicEncrypt": 182 }], 180: [function (require, module, exports) {
     (function (Buffer) {
       var createHash = require('create-hash');
       module.exports = function (seed, len) {
@@ -68783,7 +69220,7 @@
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110, "create-hash": 114 }], 178: [function (require, module, exports) {
+  }, { "buffer": 111, "create-hash": 116 }], 181: [function (require, module, exports) {
     (function (Buffer) {
       var parseKeys = require('parse-asn1');
       var mgf = require('./mgf');
@@ -68894,7 +69331,7 @@
         return dif;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./mgf": 177, "./withPublic": 180, "./xor": 181, "bn.js": 80, "browserify-rsa": 101, "buffer": 110, "create-hash": 114, "parse-asn1": 171 }], 179: [function (require, module, exports) {
+  }, { "./mgf": 180, "./withPublic": 183, "./xor": 184, "bn.js": 80, "browserify-rsa": 101, "buffer": 111, "create-hash": 116, "parse-asn1": 174 }], 182: [function (require, module, exports) {
     (function (Buffer) {
       var parseKeys = require('parse-asn1');
       var randomBytes = require('randombytes');
@@ -68992,7 +69429,7 @@
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./mgf": 177, "./withPublic": 180, "./xor": 181, "bn.js": 80, "browserify-rsa": 101, "buffer": 110, "create-hash": 114, "parse-asn1": 171, "randombytes": 182 }], 180: [function (require, module, exports) {
+  }, { "./mgf": 180, "./withPublic": 183, "./xor": 184, "bn.js": 80, "browserify-rsa": 101, "buffer": 111, "create-hash": 116, "parse-asn1": 174, "randombytes": 185 }], 183: [function (require, module, exports) {
     (function (Buffer) {
       var bn = require('bn.js');
       function withPublic(paddedMsg, key) {
@@ -69001,7 +69438,7 @@
 
       module.exports = withPublic;
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 80, "buffer": 110 }], 181: [function (require, module, exports) {
+  }, { "bn.js": 80, "buffer": 111 }], 184: [function (require, module, exports) {
     module.exports = function xor(a, b) {
       var len = a.length;
       var i = -1;
@@ -69010,7 +69447,7 @@
       }
       return a;
     };
-  }, {}], 182: [function (require, module, exports) {
+  }, {}], 185: [function (require, module, exports) {
     (function (process, global, Buffer) {
       'use strict';
 
@@ -69050,9 +69487,9 @@
         return bytes;
       }
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer);
-  }, { "_process": 175, "buffer": 110 }], 183: [function (require, module, exports) {
+  }, { "_process": 178, "buffer": 111 }], 186: [function (require, module, exports) {
     module.exports = require("./lib/_stream_duplex.js");
-  }, { "./lib/_stream_duplex.js": 184 }], 184: [function (require, module, exports) {
+  }, { "./lib/_stream_duplex.js": 187 }], 187: [function (require, module, exports) {
     // a duplex stream is just a stream that is both readable and writable.
     // Since JS doesn't have multiple prototypal inheritance, this class
     // prototypally inherits from Readable, and then parasitically from
@@ -69128,7 +69565,7 @@
         f(xs[i], i);
       }
     }
-  }, { "./_stream_readable": 186, "./_stream_writable": 188, "core-util-is": 112, "inherits": 160, "process-nextick-args": 174 }], 185: [function (require, module, exports) {
+  }, { "./_stream_readable": 189, "./_stream_writable": 191, "core-util-is": 114, "inherits": 163, "process-nextick-args": 177 }], 188: [function (require, module, exports) {
     // a passthrough stream.
     // basically just the most minimal sort of Transform stream.
     // Every written chunk gets output as-is.
@@ -69155,7 +69592,7 @@
     PassThrough.prototype._transform = function (chunk, encoding, cb) {
       cb(null, chunk);
     };
-  }, { "./_stream_transform": 187, "core-util-is": 112, "inherits": 160 }], 186: [function (require, module, exports) {
+  }, { "./_stream_transform": 190, "core-util-is": 114, "inherits": 163 }], 189: [function (require, module, exports) {
     (function (process) {
       'use strict';
 
@@ -70095,7 +70532,7 @@
         return -1;
       }
     }).call(this, require('_process'));
-  }, { "./_stream_duplex": 184, "./internal/streams/BufferList": 189, "_process": 175, "buffer": 110, "buffer-shims": 108, "core-util-is": 112, "events": 150, "inherits": 160, "isarray": 162, "process-nextick-args": 174, "string_decoder/": 212, "util": 82 }], 187: [function (require, module, exports) {
+  }, { "./_stream_duplex": 187, "./internal/streams/BufferList": 192, "_process": 178, "buffer": 111, "buffer-shims": 109, "core-util-is": 114, "events": 152, "inherits": 163, "isarray": 165, "process-nextick-args": 177, "string_decoder/": 215, "util": 82 }], 190: [function (require, module, exports) {
     // a transform stream is a readable/writable stream where you do
     // something with the data.  Sometimes it's called a "filter",
     // but that's not a great name for it, since that implies a thing where
@@ -70276,7 +70713,7 @@
 
       return stream.push(null);
     }
-  }, { "./_stream_duplex": 184, "core-util-is": 112, "inherits": 160 }], 188: [function (require, module, exports) {
+  }, { "./_stream_duplex": 187, "core-util-is": 114, "inherits": 163 }], 191: [function (require, module, exports) {
     (function (process) {
       // A bit simpler than readable streams.
       // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -70805,7 +71242,7 @@
         };
       }
     }).call(this, require('_process'));
-  }, { "./_stream_duplex": 184, "_process": 175, "buffer": 110, "buffer-shims": 108, "core-util-is": 112, "events": 150, "inherits": 160, "process-nextick-args": 174, "util-deprecate": 214 }], 189: [function (require, module, exports) {
+  }, { "./_stream_duplex": 187, "_process": 178, "buffer": 111, "buffer-shims": 109, "core-util-is": 114, "events": 152, "inherits": 163, "process-nextick-args": 177, "util-deprecate": 217 }], 192: [function (require, module, exports) {
     'use strict';
 
     var Buffer = require('buffer').Buffer;
@@ -70870,9 +71307,9 @@
       }
       return ret;
     };
-  }, { "buffer": 110, "buffer-shims": 108 }], 190: [function (require, module, exports) {
+  }, { "buffer": 111, "buffer-shims": 109 }], 193: [function (require, module, exports) {
     module.exports = require("./lib/_stream_passthrough.js");
-  }, { "./lib/_stream_passthrough.js": 185 }], 191: [function (require, module, exports) {
+  }, { "./lib/_stream_passthrough.js": 188 }], 194: [function (require, module, exports) {
     (function (process) {
       var Stream = function () {
         try {
@@ -70891,11 +71328,11 @@
         module.exports = Stream;
       }
     }).call(this, require('_process'));
-  }, { "./lib/_stream_duplex.js": 184, "./lib/_stream_passthrough.js": 185, "./lib/_stream_readable.js": 186, "./lib/_stream_transform.js": 187, "./lib/_stream_writable.js": 188, "_process": 175 }], 192: [function (require, module, exports) {
+  }, { "./lib/_stream_duplex.js": 187, "./lib/_stream_passthrough.js": 188, "./lib/_stream_readable.js": 189, "./lib/_stream_transform.js": 190, "./lib/_stream_writable.js": 191, "_process": 178 }], 195: [function (require, module, exports) {
     module.exports = require("./lib/_stream_transform.js");
-  }, { "./lib/_stream_transform.js": 187 }], 193: [function (require, module, exports) {
+  }, { "./lib/_stream_transform.js": 190 }], 196: [function (require, module, exports) {
     module.exports = require("./lib/_stream_writable.js");
-  }, { "./lib/_stream_writable.js": 188 }], 194: [function (require, module, exports) {
+  }, { "./lib/_stream_writable.js": 191 }], 197: [function (require, module, exports) {
     (function (Buffer) {
       /*
       CryptoJS v3.1.2
@@ -71079,7 +71516,7 @@
 
       module.exports = ripemd160;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 195: [function (require, module, exports) {
+  }, { "buffer": 111 }], 198: [function (require, module, exports) {
     (function (Buffer) {
       const assert = require('assert');
       /**
@@ -71311,7 +71748,7 @@
         return v;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 74, "buffer": 110 }], 196: [function (require, module, exports) {
+  }, { "assert": 74, "buffer": 111 }], 199: [function (require, module, exports) {
     (function (Buffer) {
       var crypto = require('crypto');
       /* eslint-disable camelcase */
@@ -71494,11 +71931,11 @@
 
       module.exports = scrypt;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110, "crypto": 118 }], 197: [function (require, module, exports) {
+  }, { "buffer": 111, "crypto": 120 }], 200: [function (require, module, exports) {
     'use strict';
 
     module.exports = require('./lib')(require('./lib/elliptic'));
-  }, { "./lib": 201, "./lib/elliptic": 200 }], 198: [function (require, module, exports) {
+  }, { "./lib": 204, "./lib/elliptic": 203 }], 201: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -71546,7 +71983,7 @@
         if (number <= x || number >= y) throw RangeError(message);
       };
     }).call(this, { "isBuffer": require("../../is-buffer/index.js") });
-  }, { "../../is-buffer/index.js": 161 }], 199: [function (require, module, exports) {
+  }, { "../../is-buffer/index.js": 164 }], 202: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -71710,7 +72147,7 @@
         return { r: r, s: s };
       };
     }).call(this, require("buffer").Buffer);
-  }, { "bip66": 79, "buffer": 110 }], 200: [function (require, module, exports) {
+  }, { "bip66": 79, "buffer": 111 }], 203: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -71955,7 +72392,7 @@
         return new Buffer(pair.pub.mul(scalar).encode(true, compressed));
       };
     }).call(this, require("buffer").Buffer);
-  }, { "../messages.json": 202, "bn.js": 80, "buffer": 110, "create-hash": 114, "elliptic": 129 }], 201: [function (require, module, exports) {
+  }, { "../messages.json": 205, "bn.js": 80, "buffer": 111, "create-hash": 116, "elliptic": 131 }], 204: [function (require, module, exports) {
     'use strict';
 
     var assert = require('./assert');
@@ -72188,7 +72625,7 @@
         }
       };
     };
-  }, { "./assert": 198, "./der": 199, "./messages.json": 202 }], 202: [function (require, module, exports) {
+  }, { "./assert": 201, "./der": 202, "./messages.json": 205 }], 205: [function (require, module, exports) {
     module.exports = {
       "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
       "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -72225,7 +72662,7 @@
       "TWEAK_TYPE_INVALID": "tweak should be a Buffer",
       "TWEAK_LENGTH_INVALID": "tweak length is invalid"
     };
-  }, {}], 203: [function (require, module, exports) {
+  }, {}], 206: [function (require, module, exports) {
     (function (Buffer) {
       // prototype class for hash functions
       function Hash(blockSize, finalSize) {
@@ -72297,7 +72734,7 @@
 
       module.exports = Hash;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 110 }], 204: [function (require, module, exports) {
+  }, { "buffer": 111 }], 207: [function (require, module, exports) {
     var exports = module.exports = function SHA(algorithm) {
       algorithm = algorithm.toLowerCase();
 
@@ -72313,7 +72750,7 @@
     exports.sha256 = require('./sha256');
     exports.sha384 = require('./sha384');
     exports.sha512 = require('./sha512');
-  }, { "./sha": 205, "./sha1": 206, "./sha224": 207, "./sha256": 208, "./sha384": 209, "./sha512": 210 }], 205: [function (require, module, exports) {
+  }, { "./sha": 208, "./sha1": 209, "./sha224": 210, "./sha256": 211, "./sha384": 212, "./sha512": 213 }], 208: [function (require, module, exports) {
     (function (Buffer) {
       /*
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -72407,7 +72844,7 @@
 
       module.exports = Sha;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "buffer": 110, "inherits": 160 }], 206: [function (require, module, exports) {
+  }, { "./hash": 206, "buffer": 111, "inherits": 163 }], 209: [function (require, module, exports) {
     (function (Buffer) {
       /*
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -72506,7 +72943,7 @@
 
       module.exports = Sha1;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "buffer": 110, "inherits": 160 }], 207: [function (require, module, exports) {
+  }, { "./hash": 206, "buffer": 111, "inherits": 163 }], 210: [function (require, module, exports) {
     (function (Buffer) {
       /**
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -72561,7 +72998,7 @@
 
       module.exports = Sha224;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "./sha256": 208, "buffer": 110, "inherits": 160 }], 208: [function (require, module, exports) {
+  }, { "./hash": 206, "./sha256": 211, "buffer": 111, "inherits": 163 }], 211: [function (require, module, exports) {
     (function (Buffer) {
       /**
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -72681,7 +73118,7 @@
 
       module.exports = Sha256;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "buffer": 110, "inherits": 160 }], 209: [function (require, module, exports) {
+  }, { "./hash": 206, "buffer": 111, "inherits": 163 }], 212: [function (require, module, exports) {
     (function (Buffer) {
       var inherits = require('inherits');
       var SHA512 = require('./sha512');
@@ -72740,7 +73177,7 @@
 
       module.exports = Sha384;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "./sha512": 210, "buffer": 110, "inherits": 160 }], 210: [function (require, module, exports) {
+  }, { "./hash": 206, "./sha512": 213, "buffer": 111, "inherits": 163 }], 213: [function (require, module, exports) {
     (function (Buffer) {
       var inherits = require('inherits');
       var Hash = require('./hash');
@@ -72961,7 +73398,7 @@
 
       module.exports = Sha512;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "buffer": 110, "inherits": 160 }], 211: [function (require, module, exports) {
+  }, { "./hash": 206, "buffer": 111, "inherits": 163 }], 214: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -73086,7 +73523,7 @@
       // Allow for unix-like usage: A.pipe(B).pipe(C)
       return dest;
     };
-  }, { "events": 150, "inherits": 160, "readable-stream/duplex.js": 183, "readable-stream/passthrough.js": 190, "readable-stream/readable.js": 191, "readable-stream/transform.js": 192, "readable-stream/writable.js": 193 }], 212: [function (require, module, exports) {
+  }, { "events": 152, "inherits": 163, "readable-stream/duplex.js": 186, "readable-stream/passthrough.js": 193, "readable-stream/readable.js": 194, "readable-stream/transform.js": 195, "readable-stream/writable.js": 196 }], 215: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -73304,7 +73741,7 @@
       this.charReceived = buffer.length % 3;
       this.charLength = this.charReceived ? 3 : 0;
     }
-  }, { "buffer": 110 }], 213: [function (require, module, exports) {
+  }, { "buffer": 111 }], 216: [function (require, module, exports) {
     (function (root) {
       "use strict";
 
@@ -73749,7 +74186,7 @@
         unorm.shimApplied = true;
       }
     })(this);
-  }, {}], 214: [function (require, module, exports) {
+  }, {}], 217: [function (require, module, exports) {
     (function (global) {
 
       /**
@@ -73819,13 +74256,13 @@
         return String(val).toLowerCase() === 'true';
       }
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 215: [function (require, module, exports) {
-    arguments[4][160][0].apply(exports, arguments);
-  }, { "dup": 160 }], 216: [function (require, module, exports) {
+  }, {}], 218: [function (require, module, exports) {
+    arguments[4][163][0].apply(exports, arguments);
+  }, { "dup": 163 }], 219: [function (require, module, exports) {
     module.exports = function isBuffer(arg) {
       return arg && typeof arg === 'object' && typeof arg.copy === 'function' && typeof arg.fill === 'function' && typeof arg.readUInt8 === 'function';
     };
-  }, {}], 217: [function (require, module, exports) {
+  }, {}], 220: [function (require, module, exports) {
     (function (process, global) {
       // Copyright Joyent, Inc. and other Node contributors.
       //
@@ -74372,7 +74809,7 @@
         return Object.prototype.hasOwnProperty.call(obj, prop);
       }
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, { "./support/isBuffer": 216, "_process": 175, "inherits": 215 }], 218: [function (require, module, exports) {
+  }, { "./support/isBuffer": 219, "_process": 178, "inherits": 218 }], 221: [function (require, module, exports) {
     (function (global) {
 
       var rng;
@@ -74406,7 +74843,7 @@
 
       module.exports = rng;
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 219: [function (require, module, exports) {
+  }, {}], 222: [function (require, module, exports) {
     //     uuid.js
     //
     //     Copyright (c) 2010-2012 Robert Kieffer
@@ -74584,7 +75021,7 @@
     uuid.unparse = unparse;
 
     module.exports = uuid;
-  }, { "./rng": 218 }], 220: [function (require, module, exports) {
+  }, { "./rng": 221 }], 223: [function (require, module, exports) {
     var indexOf = require('indexof');
 
     var Object_keys = function (obj) {
@@ -74718,4 +75155,4 @@
       }
       return copy;
     };
-  }, { "indexof": 159 }] }, {}, [30]);
+  }, { "indexof": 162 }] }, {}, [30]);

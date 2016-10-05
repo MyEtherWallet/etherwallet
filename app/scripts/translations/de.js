@@ -5,9 +5,7 @@ de.code = 'de';
 de.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -54,9 +52,9 @@ de.data = {
   x_PrivKey:            'Privater Schlüssel (unverschlüsselt)',
   x_PrivKey2:           'Privater Schlüssel',
   x_PrivKeyDesc:        'Dies ist die unverschlüsselte Textversion deines privaten Schlüssels, d. h. du benötigst kein Passwort. Wenn jemand über diesen unverschlüsselten privaten Schlüssel verfügt, hat er/sie ohne Passwort Zugang zu deinem Wallet. Es wird daher empfohlen, den privaten Schlüssel zu verschlüsseln.',
-  x_Keystore:           'Keystore/JSON File (Empfohlen · Verschlüsselt · Im Mist/Geth-Format)',
-  x_Keystore2:          'Keystore/JSON File',
-  x_KeystoreDesc:       'Diese Keystore / JSON-Datei passt zu dem Format, das von Mist & Geth verwendet wird, sodass du diese Datei dort zukünftig einfach importieren kannst. Es ist empfehlenswert, diese Datei herunterzuladen und zu sichern.',
+  x_Keystore:           'Keystore File (UTC / JSON · Empfohlen · Verschlüsselt · Im Mist-Format)',
+  x_Keystore2:          'Keystore File (UTC / JSON)',
+  x_KeystoreDesc:       'Diese Keystore-Datei passt zu dem Format, das von Mist verwendet wird, sodass du diese Datei dort zukünftig einfach importieren kannst. Es ist empfehlenswert, diese Datei herunterzuladen und zu sichern.',
   x_Json:               'JSON-Datei (unverschlüsselt)',
   x_JsonDesc:           'Dies ist die unverschlüsselte Version deines privaten Schlüssels im JSON-Format. Du benötigst daher kein Passwort, aber jeder, der über diese JSON-Datei verfügt, hat ohne Passwort Zugang zu deinem Wallet und dem darin enthaltenen Ether.',
   x_PrintShort:         'Drucken',
@@ -117,8 +115,8 @@ de.data = {
   GEN_Label_1:            'Gib ein starkes Passwort ein (mindestens 9 Zeichen)',
   GEN_Placeholder_1:      'BITTE VERGISS NICHT dieses Passwort an einem sicheren Ort zu notieren!',
   GEN_SuccessMsg:         'Erfolgreich! Dein Wallet wurde erzeugt.',
-  GEN_Warning:            '**Du benötigst deine Keystore/JSON-Datei & das Passwort oder den privaten Schlüssel**, um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen.',
-  GEN_Label_2:            'Sichere deine Keystore/JSON-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort!',
+  GEN_Warning:            '**Du benötigst deine Keystore-Datei & das Passwort** (oder den privaten Schlüssel) um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen.',
+  GEN_Label_2:            'Sichere deine Keystore-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort!',
   GEN_Label_3:            'Sichere deine Kontoadresse.',
   GEN_Label_4:            'Drucke dein Papier-Wallet oder speichere einen QR-Code davon: (optional)',
 
@@ -205,7 +203,7 @@ de.data = {
   DAO_ETC_Label_2:        'Die "White Hat Group" hat unermüdlich gearbeitet um deine ETC zurückzuholen. Wenn du möchtest, kannst du dich bedanken indem du einen Teil deiner ETC an sie spendest. ',
   DAO_Desc:               'Nutze diesen Tab um deine DAO Token in ETH auszuzahlen. Wenn du DAO Token verschicken willst, nutze bitten den "Sende Tokens" Tab',
   DAO_Inst:               'Ja, du musst einfach den großen roten Knopf drücken. Es ist so einfach.',
-  DAO_Warning:            'Wenn du den Fehler "Zu geringer Kontostand um Gaskosten zu decken" erhälst, musst du einen kleinen ether Betrag auf dein Konto überweisen um die Kosten zu decken. Überweise 0.001 Ether an dieses Konto und versuche es erneut. ',
+  DAO_Warning:            'Wenn du den Fehler "Zu geringer Kontostand um Gaskosten zu decken" erhälst, musst du einen kleinen ether Betrag auf dein Konto überweisen um die Kosten zu decken. Überweise 0.01 Ether an dieses Konto und versuche es erneut. ',
   DAOModal_Title:         'Nur zur Sicherheit...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Du bist dabei',
@@ -270,7 +268,7 @@ de.data = {
   ERROR_15:             'Wallet nicht gefunden. ',
   ERROR_16:             'Es sieht nicht so aus als würde ein Proposal mit dieser ID existieren oder es gab einen Fehler beim Lesen des Proposal. ',
   ERROR_17:             'Es ist bereits ein Wallet mit dieser Adresse gespeichert. Bitte überprüfe die Seite deines Wallets. ',
-  ERROR_18:             'Du brauchst zumindest 0.001 ETH in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
+  ERROR_18:             'Du brauchst zumindest 0.01 ETH in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
   ERROR_19:             'Diese Transaktion würde dein gesamtes verbleibendes Gas verbrauchen. Das bedeutet, du hast bereits über dieses Proposal abgestimmt oder die Debattierphase ist zu Ende.',
   ERROR_20:             'Ungültiges Symbol',
   SUCCESS_1:            'Gültige Addresse',

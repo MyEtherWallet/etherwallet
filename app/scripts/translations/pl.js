@@ -5,9 +5,7 @@ pl.code = 'pl';
 pl.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -41,9 +39,9 @@ pl.data = {
   x_PrivKey:            'Klucz Prywatny (nieszyfrowany)',
   x_PrivKey2:           'Klucz Prywatny',
   x_PrivKeyDesc:        'Nieszyfrowana, tekstowa wersja Twojego klucza prywatnego, nie wymaga hasła. Jeżeli ktoś zdobędzie nieszyfrowany klucz, będzie mógł uzyskać pełen dostęp do Twojego portfela bez podania hasła. Z tego powodu zaleca się używanie jego szyfrowanej wersji.',
-  x_Keystore:           'Plik Keystore/JSON (Zalecany · Szyfrowany · Format Mist/Geth)',
-  x_Keystore2:          'Plik Keystore/JSON',
-  x_KeystoreDesc:       'Ten plik Keystore / JSON odpowiada formatowi stosowanemu przez Mist i Geth, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
+  x_Keystore:           'Plik Keystore (UTC / JSON · Zalecany · Szyfrowany · Format Mist)',
+  x_Keystore2:          'Plik Keystore (UTC / JSON) ',
+  x_KeystoreDesc:       'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
   x_Json:               'Plik JSON (nieszyfrowany)',
   x_JsonDesc:           'Nieszyfrowany klucz prywatny, plik w formacie JSON. Nie wymaga podania hasła, ale każdy kto zdobędzie ten plik uzyska również pełny dostęp do Twojego portfela i zgromadzonych na nim środków.',
   x_PrintShort:         'Drukuj',
@@ -105,8 +103,8 @@ pl.data = {
   GEN_Label_1:            'Wpisz silne hasło (co najmniej 9 znaków)',
   GEN_Placeholder_1:      'NIE zapomnij tego hasła!',
   GEN_SuccessMsg:         'Sukces! Twój portfel został wygenerowany.',
-  GEN_Warning:            '**Potrzebujesz plik Keystore/JSON i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje.',
-  GEN_Label_2:            'Zapisz Twój plik Keystore/JSON lub Klucz Prywatny. Nie zapomnij powyższego hasła.',
+  GEN_Warning:            '**Potrzebujesz plik Keystore i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje.',
+  GEN_Label_2:            'Zapisz Twój plik Keystore lub Klucz Prywatny. Nie zapomnij powyższego hasła.',
   GEN_Label_3:            'Zapisz swój adres.',
   GEN_Label_4:            'Wydrukuj swój Portfel Papierowy, lub zachowaj obrazek z kodem QR. (opcjonalnie)',
 
@@ -259,7 +257,7 @@ pl.data = {
   ERROR_15:             'Nie znaleziono portfela. ',
   ERROR_16:             'Wygląda, że propozycja z tym ID jeszcze nie istnieje, lub wystąpił błąd odczytu tej propozycji. ',
   ERROR_17:             'Portfel z tym adresem już istnieje w konfiguracji. Sprawdź zakładkę portfeli. ',
-  ERROR_18:             'Musisz mieć co najmniej 0.001 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
+  ERROR_18:             'Musisz mieć co najmniej 0.01 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
   ERROR_19:             'Całe paliwo było by zużyte w tej transakcji. Oznacza to, że głosowałeś już w tej propozycji albo minął termin głosowania.',
   ERROR_20:             'Nieprawidłowy symbol',
   SUCCESS_1:            'Prawidłowy adres',

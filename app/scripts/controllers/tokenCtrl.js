@@ -9,7 +9,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
 	$scope.tokenTx = {
 		to: '',
 		value: 0,
-		id: 0,
+		id: -1,
 		gasLimit: 150000
 	};
 	$scope.localToken = {
@@ -37,7 +37,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
     for (var i = 0; i < storedTokens.length; i++) {
 			$scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
 		}
-    $scope.tokenTx.id = 0;
+    $scope.tokenTx.id = -1;
 	}
     $scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function () {
         if($scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id]!== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to)&&$scope.Validator.isPositiveNumber($scope.tokenTx.value)){
@@ -84,6 +84,10 @@ var tokenCtrl = function($scope, $sce, walletService) {
 		$scope.tokenTx.value = "50";
 	}
 	$scope.generateTokenTx = function() {
+	   if($scope.tokenTx.id==-1){
+            $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[19]));
+            return;
+        }
 		var tokenData = $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value);
 		if (tokenData.isError) {
 			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(tokenData.error));

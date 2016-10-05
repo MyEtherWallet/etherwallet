@@ -5,9 +5,7 @@ zh.code = 'zh';
 zh.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -40,8 +38,8 @@ zh.data = {
   x_Download:           '下载',
   x_Json:               'JSON文件（未加密）',
   x_JsonDesc:           '这是你的未加密JSON格式的私钥文件。 这意味着你发送交易时不需要密码，也意味着拿到你的JSON文件的可以无需密码就可以控制你的钱包和以太币。',
-  x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)Keystore/JSON文件（推荐加密的Mist/Geth格式文件）',
-  x_Keystore2:          'Keystore/JSON文件',
+  x_Keystore:           'Keystore File (UTC / JSON · 推荐加密的 · Mist 格式文件)',
+  x_Keystore2:          'Keystore File (UTC / JSON)',
   x_KeystoreDesc:       '这个Keystore/JSON文件和Mist、Geth使用的钱包文件是一样的，所以将来你可以非常容易地导入。 It is the recommended file to download and back up.推荐下载和备份这个文件。',
   x_Password:           '密码',
   x_Print:              '打印纸钱包',
@@ -106,8 +104,8 @@ zh.data = {
   GEN_Label_1:            '输入一个强密码（至少9位）',
   GEN_Placeholder_1:      '不要忘记保存！',
   GEN_SuccessMsg:         '成功！你的钱包已经生成。',
-  GEN_Warning:            '将来使用钱包时，你需要Keystore/JSON文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。',
-  GEN_Label_2:            '保存你的Keystore/JSON或者私钥。不要忘记你的密码。',
+  GEN_Warning:            '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。',
+  GEN_Label_2:            '保存你的Keystore或者私钥。不要忘记你的密码。',
   GEN_Label_3:            '保存你的地址。',
   GEN_Label_4:            '打印你的纸钱包，或者存储二维码。（可选）',
 
@@ -194,7 +192,7 @@ zh.data = {
   DAO_ETC_Label_2:        '白帽黑客为取回你的ETC不知疲倦地工作。 你可以将一定比例的ETC捐赠给白帽黑客，以表感谢之意。 ',
   DAO_Desc:               '使用这个标签销毁DAO代币，换回ETH和ETC。如果你想发送DAO，请使用发送代币标签。',
   DAO_Inst:               '是的。只需按红色按钮。非常简单。',
-  DAO_Warning:            '如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。向这个账户发送0.001以太币，再次尝试。',
+  DAO_Warning:            '如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。向这个账户发送0.01以太币，再次尝试。',
   DAOModal_Title:         '确保...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             '你将要销毁',
@@ -259,7 +257,7 @@ zh.data = {
   ERROR_15:             '找不到钱包。',
   ERROR_16:             '看起来这个提议不存在或者读取这个提议时出现错误。',
   ERROR_17:             '这个地址钱包已经存在于存储中。请查看你的钱包页面。',
-  ERROR_18:             '你的账户需要至少0.001以太币，已支付gas费用。请添加一些以太币，再次尝试。',
+  ERROR_18:             '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。',
   ERROR_19:             '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。',
   ERROR_20:             '无效符号',
   SUCCESS_1:            '有效地址',
@@ -349,7 +347,7 @@ zh.data = {
   HELP_3_Desc_5:        'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
   HELP_3_Desc_6:        'Click the "Unlock Wallet" button.',
   HELP_3_Desc_7:        'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
-  HELP_3_Desc_8:        'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly.',
+  HELP_3_Desc_8:        'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.01 ether to your new wallet, access that wallet, send that 0.01 ether to another address, and ensure everything works smoothly.',
 
   HELP_4_Title:         '4) How do I send Ether from one wallet to another?',
   HELP_4_Desc_1:        'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',

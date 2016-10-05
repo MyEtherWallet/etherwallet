@@ -5,9 +5,7 @@ ja.code = 'ja';
 ja.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -51,9 +49,9 @@ ja.data = {
   x_Download:           'ダウンロード',
   x_Json:               'JSON ファイル (未暗号化)',
   x_JsonDesc:           'これはパスワードが不要な暗号化されていないJSONフォーマットのプライベートキーです。この暗号化されていないJSONフォーマットのプライベートキーを使えば、誰でもパスワードを使わずに自分のウォレットとEtherにアクセスできます。',
-  x_Keystore:           'Keystore/JSON ファイル (推奨 · 暗号化 · Mist/Geth フォーマット)',
-  x_Keystore2:          'Keystore / JSON ファイル',
-  x_KeystoreDesc:       'この Keystore / JSON ファイルは、後で容易にインポートするため、Mist & Gethで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
+  x_Keystore:           'Keystore ファイル (UTC / JSON · 推奨 · 暗号化 · Mist フォーマット)',
+  x_Keystore2:          'Keystore ファイル (UTC / JSON) ',
+  x_KeystoreDesc:       'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
   x_Password:           'パスワード',
   x_Print:              'ペーパーウォレットを印刷',
   x_PrintDesc:          'ProTip: プリンターが接続されていなくても、「印刷」をクリックしてPDFで保存できます。',
@@ -269,7 +267,7 @@ ja.data = {
   ERROR_15:             'ウォレットが見つかりません。 ',
   ERROR_16:             'このIDのプロポーサルは存在しない、あるいは正常に読み込みできません。 ',
   ERROR_17:             '同じアドレスのウォレットが既に存在します。ウォレットのページをご確認ください。',
-  ERROR_18:             'ガスとして使われるために、少なくとも0.001 etherがウォレット上に必要です。 ',
+  ERROR_18:             'ガスとして使われるために、少なくとも0.01 etherがウォレット上に必要です。 ',
   ERROR_19:             '全てのガスがこのトランザクションにより消費されます。これは、既に投票を行ったか、あるいはディベート期間が終了したためです。',　
   ERROR_20:             '無効なシンボル',
   SUCCESS_1:            '有効なアドレス',

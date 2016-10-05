@@ -53,14 +53,13 @@
       <div class="radio">
         <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tx.unit"/>Ether</label>
       </div>
+      <!--
       <div class="radio">
-        <!--
           TODO:
             - make these tokens show up
             - hide the data field if they selected a token as the address they have in the address field will be put into the data and we will use the address from the token in the generated TX
             - replace 21000 in Gas Limit field with 150000 if tokens are selected.
             - if they click "Ether", make the custom token dropdown hide again
-        -->
         <label ng-repeat="token in tokenObjs track by $index">
           <input type="radio" name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"/>
           {{token.getSymbol()}}
@@ -88,8 +87,8 @@
         </div>
         <div ng-bind-html="validateLocalToken"></div>
       </div>
-
     </div>
+      -->
     <div class="form-group col-sm-10">
       <div class="account-help-icon">
         <img src="images/helpicon.svg" class="help-icon" />
@@ -123,7 +122,6 @@
       <input class="form-control" type="text" placeholder="0x4d792045746865722057616c6c6574" id="offlineData" ng-model="tx.data" />
     </div>
     <div class="form-group col-sm-10">
-      <label translate="OFFLINE_Step2_Label_7"> Enter / Upload your Private Key / JSON. </label>
       <wallet-decrypt-drtv></wallet-decrypt-drtv>
     </div>
     <div class="form-group col-sm-10">

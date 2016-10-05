@@ -5,9 +5,7 @@ nl.code = 'nl';
 nl.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -43,9 +41,9 @@ nl.data = {
   x_PrivKey:            'Prive Sleutel (onversleuteld)',
   x_PrivKey2:           'Prive Sleutel',
   x_PrivKeyDesc:        'Dit is een onversleutelde tekst versie van je prive sleutel waarbij geen wachtwoord benodigd is. Mocht iemand deze unversleutelde prive sleutel vinden, kunnen zij zonder wachtwoord bij je account. Om deze reden zijn versleutelde versies aanbevolen.',
-  x_Keystore:           'Keystore/JSON Bestand (Aangeraden · versleuteld · Mist/Geth Formaat)',
-  x_Keystore2:          'Keystore/JSON Bestand',
-  x_KeystoreDesc:       'Dit Keystore / JSON bestand voldoen aan het formaat zoals gebruikt door Mist & Geth waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
+  x_Keystore:           'Keystore Bestand (UTC / JSON · Aangeraden · versleuteld · Mist Formaat)',
+  x_Keystore2:          'Keystore Bestand (UTC / JSON) ',
+  x_KeystoreDesc:       'Dit Keystore bestand voldoen aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
   x_Json:               'JSON Bestand (onversleuteld)',
   x_JsonDesc:           'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',
   x_PrintShort:         'Afdrukken',
@@ -106,8 +104,8 @@ nl.data = {
   GEN_Label_1:            'Geef een sterk wachtwoord (ten minste 9 karakters)',
   GEN_Placeholder_1:      'Vergeet NIET om dit op te slaan!',
   GEN_SuccessMsg:         'Gelukt! Je wallet is gegenereerd.',
-  GEN_Warning:            '**Je hebt je Keystore/JSON Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
-  GEN_Label_2:            'Sla je Keystore/JSON of Prive Sleutel op. Vergeet je wachtwoord hierboven niet.',
+  GEN_Warning:            '**Je hebt je Keystore Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
+  GEN_Label_2:            'Sla je Keystore of Prive Sleutel op. Vergeet je wachtwoord hierboven niet.',
   GEN_Label_3:            'Sla je adres op.',
   GEN_Label_4:            'Druk je papieren wallet af, of bewaar hem als QR code. (optioneel)',
 
@@ -259,7 +257,7 @@ nl.data = {
   ERROR_15:             'Wallet niet gevonden. ',
   ERROR_16:             'Het ziet er niet naar uit dat een proposal met dit ID bestaat of dat er een  fout is opgetreden bij het lezenvan dit proposal. ',
   ERROR_17:             'Een wallet met dit adres bestaat reeds. Check alsjeblileft je wallet pagina. ',
-  ERROR_18:             'Je hebt mininaal 0.001 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
+  ERROR_18:             'Je hebt mininaal 0.01 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
   ERROR_19:             'Alle gas zou worden verbruikt op deze transactie. Dit betekend dat je al gestemd hebt op dit proposal of dat de debateerperiode is verstreken.',
   ERROR_20:             'Ongeldig symbol',
   SUCCESS_1:            'Geldig adres',

@@ -5,9 +5,7 @@ sv.code = 'sv';
 sv.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -43,9 +41,9 @@ sv.data = {
   x_PrivKey:            'Privat Nyckel (okrypterad)',
   x_PrivKey2:           'Privat Nyckel',
   x_PrivKeyDesc:        'Det här är en okrypterad variant av din privata nyckel, vilket betyder att ett lösenord inte är nödvändigt. Om någon skulle hitta din okrypterade privata nyckel, så kan dom få tillgång till din plånbok utan lösenord. Av den anledningen så rekomenderas en krypterad variant av plånboken istället.',
-  x_Keystore:           'Keystore/JSON Fil (Rekomenderad · Krypterad · Mist/Geth Format)',
-  x_Keystore2:          'Keystore/JSON Fil',
-  x_KeystoreDesc:       'Den här Keystore / JSON filen matchar formatet som används av Mist & Geth så du kan enkelt importera det i framtiden. Det är det rekommenderade format att hämta för backup.',
+  x_Keystore:           'Keystore Fil (UTC / JSON · Rekomenderad · Krypterad · Mist Format)',
+  x_Keystore2:          'Keystore Fil (UTC / JSON) ',
+  x_KeystoreDesc:       'Den här Keystore filen matchar formatet som används av Mist så du kan enkelt importera det i framtiden. Det är det rekommenderade format att hämta för backup.',
   x_Json:               'JSON Fil (okrypterad)',
   x_JsonDesc:           'Det här är din okrypterade privata nyckel i JSON format. Det här betyder att du inte behöver ditt lösenord men vem som helst som hittar din JSON kan få tillgång till din plånbok och Ether utan ditt lösenord.',
   x_PrintShort:         'Skriv Ut',
@@ -107,8 +105,8 @@ sv.data = {
   GEN_Label_1:            'Enter a strong password (at least 9 characters)',
   GEN_Placeholder_1:      'Do NOT forget to save this!',
   GEN_SuccessMsg:         'Success! Your wallet has been generated.',
-  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
-  GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
+  GEN_Warning:            '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
+  GEN_Label_2:            'Save your Keystore File. Don\'t forget your password above.',
   GEN_Label_3:            'Save Your Adress.',
   GEN_Label_4:            'Print your paper wallet, or store a QR code verison. (optional)',
 
@@ -195,7 +193,7 @@ sv.data = {
   DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
   DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
   DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ETH to this account and try again. ',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again. ',
   DAOModal_Title:         'Just making sure...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'You are about to withdraw',
@@ -260,7 +258,7 @@ sv.data = {
   ERROR_15:             'Wallet not found. ',
   ERROR_16:             'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
   ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
-  ERROR_18:             'You need to have at least 0.001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_18:             'You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
   ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
   ERROR_20:             'Invalid symbol',
   SUCCESS_1:            'Valid address',

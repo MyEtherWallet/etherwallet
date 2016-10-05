@@ -168,6 +168,8 @@
 
         <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
 
+        <div class="form-group col-xs-12"><p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again. </p></div>
+
       </section>
 
     </div>

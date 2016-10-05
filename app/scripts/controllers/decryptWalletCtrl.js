@@ -29,7 +29,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 		$scope.showPDecrypt = $scope.privPassword.length > 6;
 	};
 	$scope.onMnemonicChange = function() {
-		$scope.showMDecrypt = bip39.validateMnemonic($scope.manualmnemonic);
+        var numWords = $scope.manualmnemonic.trim().split(' ').length;
+		$scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
 	};
 	$scope.decryptWallet = function() {
 	    $scope.wallet=null;
@@ -45,7 +46,12 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 				$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
                 walletService.password = $scope.filePassword;
 			} else if ($scope.showMDecrypt) {
-				$scope.wallet = new Wallet(bip39.mnemonicToSeed($scope.manualmnemonic).slice(0, 32));
+			     var numWords = $scope.manualmnemonic.trim().split(' ').length;
+                 var hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim()));
+                 if(numWords==12) //jaxx and metamask
+                    $scope.wallet = new Wallet(hdk.derive("m/44'/60'/0'/0/0")._privateKey);
+                 else if(numWords==24) //ledger
+                    $scope.wallet = new Wallet(hdk.derive("m/44'/60'/0'/0")._privateKey);
 			}
             walletService.wallet = $scope.wallet;
 		} catch (e) {

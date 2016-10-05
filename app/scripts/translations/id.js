@@ -5,9 +5,7 @@ id.code = 'id';
 id.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -40,9 +38,9 @@ id.data = {
   x_Download:           'Unduh',
   x_Json:               'File JSON (tidak ter-enkripsi)',
   x_JsonDesc:           'Ini adalah "Private Key" Anda dalam format JSON yang tidak ter-enkripsi. Tidak diperlukan password dan siapapun yang memiliki JSON Anda dapat mengakses dompet dan Ether Anda tanpa password.',
-  x_Keystore:           'File Keystore/JSON (Format yang direkomendasikan · Ter-enkripsi · Format Mist/Geth)',
-  x_Keystore2:          'File Keystore/JSON',
-  x_KeystoreDesc:       'File Keystore/JSON ini sesuai dengan format yang dipakai Mist & Geth sehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
+  x_Keystore:           'File Keystore (UTC / JSON · Format yang direkomendasikan · Ter-enkripsi · Format Mist)',
+  x_Keystore2:          'File Keystore (UTC / JSON)',
+  x_KeystoreDesc:       'File Keystore ini sesuai dengan format yang dipakai Mistsehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
   x_Password:           'Password',
   x_Print:              'Print Dompet Kertas',
   x_PrintDesc:          'ProTip: klik print dan simpan sebagai PDF jika Anda tidak memiliki printer!',
@@ -106,8 +104,8 @@ id.data = {
   GEN_Label_1:            'Masukkan password yang kuat (setidaknya 9 karakter)',
   GEN_Placeholder_1:      'JANGAN LUPA untuk mengingat & menyimpannya!',
   GEN_SuccessMsg:         'Berhasil! Dompet Anda sudah dibuat.',
-  GEN_Warning:            '**DIPERLUKAN File Keystore/JSON & password atau Private Key** untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help).',
-  GEN_Label_2:            'Simpan Keystore/JSON atau Private Key. Jangan lupa Password-nya.',
+  GEN_Warning:            '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help).',
+  GEN_Label_2:            'Simpan Keystore atau Private Key. Jangan lupa Password-nya.',
   GEN_Label_3:            'Simpan alamat dompet Anda.',
   GEN_Label_4:            'Print Dompet Kertas Anda, atau simpan versi QR code-nya. (Opsional)',
 
@@ -194,7 +192,7 @@ id.data = {
   DAO_ETC_Label_2:        'Atas kerja keras "White Hat Group" yang telah berhasil merebut kembali ETC Anda, wujudkan rasa "terima kasih" Anda dengan mendonasikan sebagian dari jumlah penarikan. ',
   DAO_Desc:               'Pakai halaman ini untuk penarikan ETH **& ETC** dari DAO Anda. Untuk pengiriman DAO, gunakan halaman "Kirim Token".',
   DAO_Inst:               'Cukup dengan menekan tombol merah besar ini. Mudah kan!.',
-  DAO_Warning:            'Jika terjadi error "Insufficient balance for gas", pastikan terdapat sejumlah kecil Ether di Akun untuk menutup biaya gas. Tambahkan 0.001 ether ke akun ini dan silakan coba lagi. ',
+  DAO_Warning:            'Jika terjadi error "Insufficient balance for gas", pastikan terdapat sejumlah kecil Ether di Akun untuk menutup biaya gas. Tambahkan 0.01 ether ke akun ini dan silakan coba lagi. ',
   DAOModal_Title:         'Hanya untuk meyakinkan...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Anda akan melakukan penarikan',
@@ -259,7 +257,7 @@ id.data = {
   ERROR_15:            'Dompet tidak ditemukan. ',
   ERROR_16:            'Tidak ditemukan proposal dengan ID ini atau terjadi error saat membaca proposal ini. ',
   ERROR_17:            'Terdapat dompet dengan alamat yang sama di storage. Cek kembali halaman dompet Anda. ',
-  ERROR_18:            'Minimal harus ada 0.001 ether di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
+  ERROR_18:            'Minimal harus ada 0.01 ether di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
   ERROR_19:            'Semua gas akan digunakan pada transaksi ini. Ini berarti Anda telah memberikan suara pada proposal ini atau periode perdebatan telah berakhir.',
   ERROR_20:            'Simbol tidak valid',
   SUCCESS_1:           'Alamat valid',
