@@ -149,24 +149,17 @@
     <!-- / 0. Warning -->
 
     <!-- 1. Private Keys -->
-    <h4> 1. <span translate="GEN_Label_2"> Save your Keystore/JSON or Private Key. Don't forget your password above. </span> </h4>
+    <h4> 1. <span translate="GEN_Label_2"> Save your Keystore File. Don't forget your password above. </span> </h4>
     <div class="row">
       <div class="col-sm-6">
+
         <div class="form-group">
           <div class="account-help-icon">
             <img src="images/helpicon.svg" class="help-icon" />
             <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
-            <h6 translate="x_Keystore" translate="x_Keystore">Keystore/JSON File (Recommended • Encrypted • Mist/Geth Format)</h6>
+            <h6 translate="x_Keystore" translate="x_Keystore">Keystore File (Recommended • Encrypted • Mist/Geth Format)</h6>
           </div>
-          <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
-        </div>
-        <div class="form-group">
-          <div class="account-help-icon">
-            <img src="images/helpicon.svg" class="help-icon" />
-            <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</p>
-            <h6 translate="x_Json"> JSON File (unencrypted) </h6>
-          </div>
-          <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
+          <a class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
         </div>
       </div>
       <div class="col-sm-6">
@@ -215,6 +208,14 @@
             <h6 translate="x_Print">Print Paper Wallet:</h6>
           </div>
           <a class="btn btn-info btn-block btnAction" ng-click="printQRCode()" translate="x_PrintShort">PRINT</a>
+        </div>
+        <div class="form-group">
+          <div class="account-help-icon">
+            <img src="images/helpicon.svg" class="help-icon" />
+            <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</p>
+            <h6 translate="x_Json"> JSON File (unencrypted) </h6>
+          </div>
+          <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
         </div>
       </div>
       <div class="form-group col-sm-3">
@@ -523,13 +524,6 @@
 
       <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
 
-      <div class="form-group col-xs-12 small">
-        <!--<p translate="TRANS_sendInfo">-->
-        <p> We use a gas price of 0.000000021 ETH to ensure your TX gets mined quickly. Multiply 0.000000021 by the gas of your TX to obtain the cost of the TX in ether. We do not take a transaction fee. </p>
-        <p> Standard TX: 21000 gas (0.000441 ether) <br />
-            TX to Wallet Contract: 23300 gas (0.0004893 ether) <br />
-            Only ETH / ETC TX: 60000 gas (0.00126 ether) </p>
-      </div>
       <!-- / Content -->
 
       <!-- Send Modal -->
@@ -655,14 +649,13 @@
       <div class="radio">
         <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tx.unit"/>Ether</label>
       </div>
+      <!--
       <div class="radio">
-        <!--
           TODO:
             - make these tokens show up
             - hide the data field if they selected a token as the address they have in the address field will be put into the data and we will use the address from the token in the generated TX
             - replace 21000 in Gas Limit field with 150000 if tokens are selected.
             - if they click "Ether", make the custom token dropdown hide again
-        -->
         <label ng-repeat="token in tokenObjs track by $index">
           <input type="radio" name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"/>
           {{token.getSymbol()}}
@@ -690,8 +683,8 @@
         </div>
         <div ng-bind-html="validateLocalToken"></div>
       </div>
-
     </div>
+      -->
     <div class="form-group col-sm-10">
       <div class="account-help-icon">
         <img src="images/helpicon.svg" class="help-icon" />
@@ -725,7 +718,6 @@
       <input class="form-control" type="text" placeholder="0x4d792045746865722057616c6c6574" id="offlineData" ng-model="tx.data" />
     </div>
     <div class="form-group col-sm-10">
-      <label translate="OFFLINE_Step2_Label_7"> Enter / Upload your Private Key / JSON. </label>
       <wallet-decrypt-drtv></wallet-decrypt-drtv>
     </div>
     <div class="form-group col-sm-10">
@@ -960,6 +952,8 @@
         </div>
 
         <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+
+        <div class="form-group col-xs-12"><p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again. </p></div>
 
       </section>
 

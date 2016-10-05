@@ -2373,7 +2373,7 @@
       app.controller('quickSendCtrl', ['$scope', '$sce', quickSendCtrl]);
       app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
     }
-  }, { "./ajaxReq": 1, "./controllers/CX/addWalletCtrl": 2, "./controllers/CX/cxDecryptWalletCtrl": 3, "./controllers/CX/mainPopCtrl": 4, "./controllers/CX/myWalletsCtrl": 5, "./controllers/CX/quickSendCtrl": 6, "./controllers/bulkGenCtrl": 7, "./controllers/decryptWalletCtrl": 8, "./controllers/deployContractCtrl": 9, "./controllers/digixCtrl": 10, "./controllers/footerCtrl": 11, "./controllers/sendOfflineTxCtrl": 12, "./controllers/sendTxCtrl": 13, "./controllers/tabsCtrl": 14, "./controllers/theDaoCtrl": 15, "./controllers/tokenCtrl": 16, "./controllers/viewCtrl": 17, "./controllers/viewWalletCtrl": 18, "./controllers/walletGenCtrl": 19, "./customMarked": 20, "./cxFuncs": 21, "./directives/QRCodeDrtv": 22, "./directives/blockiesDrtv": 23, "./directives/cxWalletDecryptDrtv": 24, "./directives/fileReaderDrtv": 25, "./directives/walletDecryptDrtv": 26, "./ethFuncs": 27, "./etherUnits": 28, "./globalFuncs": 29, "./myetherwallet": 31, "./services/globalService": 32, "./services/walletService": 33, "./tokens": 34, "./translations/translate.js": 49, "./uiFuncs": 52, "./validator": 53, "angular": 59, "angular-sanitize": 55, "angular-translate": 57, "angular-translate-handler-log": 56, "bignumber.js": 76, "bip39": 77, "crypto": 120, "ethereumjs-tx": 150, "ethereumjs-util": 151, "hdkey": 160, "scryptsy": 197, "uuid": 218 }], 31: [function (require, module, exports) {
+  }, { "./ajaxReq": 1, "./controllers/CX/addWalletCtrl": 2, "./controllers/CX/cxDecryptWalletCtrl": 3, "./controllers/CX/mainPopCtrl": 4, "./controllers/CX/myWalletsCtrl": 5, "./controllers/CX/quickSendCtrl": 6, "./controllers/bulkGenCtrl": 7, "./controllers/decryptWalletCtrl": 8, "./controllers/deployContractCtrl": 9, "./controllers/digixCtrl": 10, "./controllers/footerCtrl": 11, "./controllers/sendOfflineTxCtrl": 12, "./controllers/sendTxCtrl": 13, "./controllers/tabsCtrl": 14, "./controllers/theDaoCtrl": 15, "./controllers/tokenCtrl": 16, "./controllers/viewCtrl": 17, "./controllers/viewWalletCtrl": 18, "./controllers/walletGenCtrl": 19, "./customMarked": 20, "./cxFuncs": 21, "./directives/QRCodeDrtv": 22, "./directives/blockiesDrtv": 23, "./directives/cxWalletDecryptDrtv": 24, "./directives/fileReaderDrtv": 25, "./directives/walletDecryptDrtv": 26, "./ethFuncs": 27, "./etherUnits": 28, "./globalFuncs": 29, "./myetherwallet": 31, "./services/globalService": 32, "./services/walletService": 33, "./tokens": 34, "./translations/translate.js": 49, "./uiFuncs": 52, "./validator": 53, "angular": 59, "angular-sanitize": 55, "angular-translate": 57, "angular-translate-handler-log": 56, "bignumber.js": 76, "bip39": 77, "crypto": 120, "ethereumjs-tx": 150, "ethereumjs-util": 151, "hdkey": 160, "scryptsy": 199, "uuid": 222 }], 31: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -2805,6 +2805,11 @@
       "decimal": 18,
       "type": "default"
     }, {
+      "address": "0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
+      "symbol": "SNGLS",
+      "decimal": 16,
+      "type": "default"
+    }, {
       "address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
       "symbol": "Unicorn 🦄 ",
       "decimal": 0,
@@ -2813,11 +2818,6 @@
       "address": "0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
       "symbol": "XAUR",
       "decimal": 8,
-      "type": "default"
-    }, {
-      "address": "0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
-      "symbol": "SNGLS",
-      "decimal": 16,
       "type": "default"
     }];
     Token.prototype.getContractAddress = function () {
@@ -2879,9 +2879,7 @@
     de.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -2928,9 +2926,9 @@
       x_PrivKey: 'Privater Schlüssel (unverschlüsselt)',
       x_PrivKey2: 'Privater Schlüssel',
       x_PrivKeyDesc: 'Dies ist die unverschlüsselte Textversion deines privaten Schlüssels, d. h. du benötigst kein Passwort. Wenn jemand über diesen unverschlüsselten privaten Schlüssel verfügt, hat er/sie ohne Passwort Zugang zu deinem Wallet. Es wird daher empfohlen, den privaten Schlüssel zu verschlüsseln.',
-      x_Keystore: 'Keystore/JSON File (Empfohlen · Verschlüsselt · Im Mist/Geth-Format)',
-      x_Keystore2: 'Keystore/JSON File',
-      x_KeystoreDesc: 'Diese Keystore / JSON-Datei passt zu dem Format, das von Mist & Geth verwendet wird, sodass du diese Datei dort zukünftig einfach importieren kannst. Es ist empfehlenswert, diese Datei herunterzuladen und zu sichern.',
+      x_Keystore: 'Keystore File (UTC / JSON · Empfohlen · Verschlüsselt · Im Mist-Format)',
+      x_Keystore2: 'Keystore File (UTC / JSON)',
+      x_KeystoreDesc: 'Diese Keystore-Datei passt zu dem Format, das von Mist verwendet wird, sodass du diese Datei dort zukünftig einfach importieren kannst. Es ist empfehlenswert, diese Datei herunterzuladen und zu sichern.',
       x_Json: 'JSON-Datei (unverschlüsselt)',
       x_JsonDesc: 'Dies ist die unverschlüsselte Version deines privaten Schlüssels im JSON-Format. Du benötigst daher kein Passwort, aber jeder, der über diese JSON-Datei verfügt, hat ohne Passwort Zugang zu deinem Wallet und dem darin enthaltenen Ether.',
       x_PrintShort: 'Drucken',
@@ -2991,8 +2989,8 @@
       GEN_Label_1: 'Gib ein starkes Passwort ein (mindestens 9 Zeichen)',
       GEN_Placeholder_1: 'BITTE VERGISS NICHT dieses Passwort an einem sicheren Ort zu notieren!',
       GEN_SuccessMsg: 'Erfolgreich! Dein Wallet wurde erzeugt.',
-      GEN_Warning: '**Du benötigst deine Keystore/JSON-Datei & das Passwort oder den privaten Schlüssel**, um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen.',
-      GEN_Label_2: 'Sichere deine Keystore/JSON-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort!',
+      GEN_Warning: '**Du benötigst deine Keystore-Datei & das Passwort** (oder den privaten Schlüssel) um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen.',
+      GEN_Label_2: 'Sichere deine Keystore-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort!',
       GEN_Label_3: 'Sichere deine Kontoadresse.',
       GEN_Label_4: 'Drucke dein Papier-Wallet oder speichere einen QR-Code davon: (optional)',
 
@@ -3438,9 +3436,7 @@
     el.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -3510,9 +3506,9 @@
       x_PrivKey: 'Ιδιωτικό Κλειδί (μη κρυπτογραφημένο)',
       x_PrivKey2: 'Ιδιωτικό Κλειδί',
       x_PrivKeyDesc: 'Αυτό το κείμενο είναι η μη κρυπτογραφημένη εκδοχή του Ιδιωτικού Κλειδιού σας που σημαίνει ότι δεν απαιτείται κωδικός. Στην περίπτωση που κάποιος βρει το μη κρυπτογραφημένο Ιδιωτικό Κλειδί σας, έχει πρόσβαση στο πορτοφόλι σας χωρίς κωδικό. Για αυτόν τον λόγο, συνήθως συνιστώνται οι κρυπτογραφημένες εκδοχές.',
-      x_Keystore: 'Αρχείο Keystore/JSON (Συνιστάται · Κρυπτογραφημένο · Μορφή Mist/Geth)',
-      x_Keystore2: 'Αρχείο Keystore/JSON',
-      x_KeystoreDesc: 'Αυτό το Αρχείο Keystore/JSON έχει την ίδια μορφή που χρησιμοποιείται από το Mist & Geth ώστε να μπορείτε εύκολα να το εισάγετε στο μέλλον. Είναι το συνιστώμενο αρχείο για λήψη και δημιουργία αντιγράφου ασφαλείας.',
+      x_Keystore: 'Αρχείο Keystore (UTC / JSON · Συνιστάται · Κρυπτογραφημένο · Μορφή Mist)',
+      x_Keystore2: 'Αρχείο Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'Αυτό το Αρχείο Keystore έχει την ίδια μορφή που χρησιμοποιείται από το Mist ώστε να μπορείτε εύκολα να το εισάγετε στο μέλλον. Είναι το συνιστώμενο αρχείο για λήψη και δημιουργία αντιγράφου ασφαλείας.',
       x_Json: 'Αρχείο JSON (μη κρυπτογραφημένο)',
       x_JsonDesc: 'Αυτή είναι η μη κρυπτογραφημένη, JSON μορφή του Ιδιωτικού Κλειδιού σας. Αυτό σημαίνει ότι δεν απαιτείται κωδικός όμως οποιοσδήποτε βρει το JSON σας έχει πρόσβαση στο πορτοφόλι και τα Ether σας χωρίς κωδικό.',
       x_PrintShort: 'Εκτύπωση',
@@ -4002,9 +3998,7 @@
     en.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -4037,9 +4031,9 @@
       x_Download: 'Download',
       x_Json: 'JSON File (unencrypted)',
       x_JsonDesc: 'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.',
-      x_Keystore: 'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)',
-      x_Keystore2: 'Keystore / JSON File',
-      x_KeystoreDesc: 'This Keystore/JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+      x_Keystore: 'Keystore File (UTC / JSON · Recommended · Encrypted · Mist Format)',
+      x_Keystore2: 'Keystore File (UTC / JSON)',
+      x_KeystoreDesc: 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up.',
       x_Password: 'Password',
       x_Print: 'Print Paper Wallet',
       x_PrintDesc: 'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
@@ -4103,8 +4097,8 @@
       GEN_Label_1: 'Enter a strong password (at least 9 characters)',
       GEN_Placeholder_1: 'Do NOT forget to save this!',
       GEN_SuccessMsg: 'Success! Your wallet has been generated.',
-      GEN_Warning: '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
-      GEN_Label_2: 'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
+      GEN_Warning: '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
+      GEN_Label_2: 'Save your Keystore File. Don\'t forget your password above.',
       GEN_Label_3: 'Save Your Address.',
       GEN_Label_4: 'Print your paper wallet, or store a QR code version. (optional)',
 
@@ -4190,7 +4184,7 @@
       DAO_ETC_Label_2: 'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
       DAO_Desc: 'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
       DAO_Inst: 'Yes. Just push the big red button. It\'s that easy.',
-      DAO_Warning: 'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ETH to this account and try again. ',
+      DAO_Warning: 'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again. ',
       DAOModal_Title: 'Just making sure...',
       // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
       DAOModal_1: 'You are about to withdraw',
@@ -4560,9 +4554,7 @@
     fi.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -4634,9 +4626,9 @@
       x_Download: 'Lataa',
       x_Json: 'JSON Tiedosto (salaamaton)',
       x_JsonDesc: 'Tämä on salaamaton JSON tiedosto yksityisestä salausavaimestasi. Tämä tarkoittaa että et tarvitse salasanaa mutta kuka tahansa joka löytää JSON tiedostosi saa pääsyn lompakkoosi ja sen sisältämään Etheriin ilman salasanaa.',
-      x_Keystore: 'Avainsäilö/JSON Tiedosto (Suositeltu · Salattu · Mist/Geth Tiedostoformaatti)',
-      x_Keystore2: 'Avainsäilö/JSON Tiedosto',
-      x_KeystoreDesc: 'Tämä Avainsäilö / JSON tiedosto vastaa sitä tiedostoformaattia jota Mist & Geth käyttävät, joten voit helposti importata sen tulevaisuudessa. Se on suositeltu tiedostomuoto ladata ja varmuuskopioida.',
+      x_Keystore: 'Avainsäilö Tiedosto (UTC / JSON · Suositeltu · Salattu · Mist Tiedostoformaatti)',
+      x_Keystore2: 'Avainsäilö Tiedosto (UTC / JSON)',
+      x_KeystoreDesc: 'Tämä Avainsäilö tiedosto vastaa sitä tiedostoformaattia jota Mist käyttävät, joten voit helposti importata sen tulevaisuudessa. Se on suositeltu tiedostomuoto ladata ja varmuuskopioida.',
       x_Password: 'Salasana',
       x_Print: 'Tulosta Paperi Lompakko',
       x_PrintDesc: 'ProTip: Klikkaa Tulosta ja tallenna tämä PDF:nä, vaikka et omistaisikaan tulostinta!',
@@ -4700,8 +4692,8 @@
       GEN_Label_1: 'Syötä vahva salasana (vähintään 9 merkkiä)',
       GEN_Placeholder_1: 'ÄLÄ unohda tallentaa tätä!',
       GEN_SuccessMsg: 'Onnistui! Sinun lompakkosi on luotu.',
-      GEN_Warning: '**Tarvitset Avainsäilö/JSON Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help).',
-      GEN_Label_2: 'Tallenna Avainsäilö/JSON tai Yksityinen salausavaimesi. Älä unohda yllä olevaa salasanaasi.',
+      GEN_Warning: '**Tarvitset Avainsäilö Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help).',
+      GEN_Label_2: 'Tallenna Avainsäilö tai Yksityinen salausavaimesi. Älä unohda yllä olevaa salasanaasi.',
       GEN_Label_3: 'Tallenna Osoitteesi.',
       GEN_Label_4: 'Tulosta paperi lompakkosi, tai säilö QR koodi versio. (valinnainen)',
 
@@ -5158,9 +5150,7 @@
     fr.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -5196,9 +5186,9 @@
       x_PrivKey: 'Clé privée (non-chiffrée)',
       x_PrivKey2: 'Clé privée',
       x_PrivKeyDesc: 'C\'est la version textuelle non-chiffrée de votre clé privée, ce qui signifie qu\'aucun mot de passe n\'est nécessaire pour l\'utiliser. Si quelqu\'un venait à découvrir cette clé privée, il pourrrait accéder à votre portefeuille sans mot de passe. Pour cette raison, la version chiffrée de votre clé privée est recommandée.',
-      x_Keystore: 'Fichier Keystore/JSON (Recommandé · Chiffré · Format Mist/Geth)',
-      x_Keystore2: 'Fichier Keystore/JSON',
-      x_KeystoreDesc: 'Ce fichier Keystore / JSON utilise le même format que celui que Mist & Geth, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
+      x_Keystore: 'Fichier Keystore (UTC / JSON · Recommandé · Chiffré · Format Mist)',
+      x_Keystore2: 'Fichier Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'Ce fichier Keystore utilise le même format que celui que Mist, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
       x_Json: 'Fichier JSON (non-chiffré)',
       x_JsonDesc: 'C\'est la version non-chiffrée au format JSON de votre clé privée. Cela signifie que vous n\'avez pas besoin de votre mot de passe pour l\'utiliser mais que toute personne qui trouve ce JSON peut accéder à votre portefeuille et vos Ether sans mot de passe.',
       x_PrintShort: 'Imprimer',
@@ -5259,8 +5249,8 @@
       GEN_Label_1: 'Entrez un mot de passe fort (au moins 9 caractères)',
       GEN_Placeholder_1: 'N\'oubliez PAS de sauvegarder ceci !',
       GEN_SuccessMsg: 'Succès ! Votre portefeuille a été généré.',
-      GEN_Warning: '**Vous avez besoin de votre fichier Keystore/JSON et du mot de passe ou de la clé privée** pour accéder à ce portefeuille dans le futur. Merci de le télécharger et d\'en faire une sauvegarde externe ! Il n\'existe aucun moyen de récupérer un portefeuille si vous ne le sauvegardez pas. Merci de lire la [page d\'Aide](https://www.myetherwallet.com/#help) pour plus de détails.',
-      GEN_Label_2: 'Sauvegardez votre fichier Keystore/JSON ou votre clé privée. N\'oubliez pas votre mot de passe ci-dessus.',
+      GEN_Warning: '**Vous avez besoin de votre fichier Keystore et du mot de passe** (ou de la clé privée) pour accéder à ce portefeuille dans le futur. Merci de le télécharger et d\'en faire une sauvegarde externe ! Il n\'existe aucun moyen de récupérer un portefeuille si vous ne le sauvegardez pas. Merci de lire la [page d\'Aide](https://www.myetherwallet.com/#help) pour plus de détails.',
+      GEN_Label_2: 'Sauvegardez votre fichier Keystore ou votre clé privée. N\'oubliez pas votre mot de passe ci-dessus.',
       GEN_Label_3: 'Sauvegarder votre portefeuille.',
       GEN_Label_4: 'Imprimer votre portefeuille papier, ou conserver une version QR code. (optionnel)',
 
@@ -5717,9 +5707,7 @@
     hu.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -5752,9 +5740,9 @@
       x_Download: 'Letöltés',
       x_Json: 'JSON Fájl (kódolatlan/unencrypted)',
       x_JsonDesc: 'Ez a kódolatlan, JSON formátumú változata a privát kulcsodnak. Ez azt jelenti, hogy nincs szükség jelszóra az eléréséhez, viszont ha bárki megtalálja a JSON fájlt, akkor hozzáférhet a tárcádhoz és az Etheredhez a jelszó ismerete nélkül.',
-      x_Keystore: 'Keystore/JSON Fájl (Ajánlott · Kódolt/Encrypted · Mist/Geth Formátum)',
-      x_Keystore2: 'Keystore/JSON Fájl',
-      x_KeystoreDesc: 'Ez a Keystore / JSON fájl ugyanolyan formátumú, amit a Mist és a Geth használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
+      x_Keystore: 'Keystore Fájl (UTC / JSON · Ajánlott · Kódolt/Encrypted · Mist Formátum)',
+      x_Keystore2: 'Keystore Fájl (UTC / JSON)',
+      x_KeystoreDesc: 'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
       x_Password: 'Jelszó',
       x_Print: 'PapírTárca Nyomtatása ',
       x_PrintDesc: 'Profi Tipp: Kattints a nyomtatásra és mentsd el PDF formátumban, még abban az esetben is, ha nincs nyomtatód!',
@@ -5819,8 +5807,8 @@
       GEN_Label_1: 'Adj meg egy erős jelszót! (legalább 9 karakter)',
       GEN_Placeholder_1: 'NE felejtsd el elmenteni! ',
       GEN_SuccessMsg: 'Sikerült! A Tárcád legenerálódott.',
-      GEN_Warning: '**Szükséged van a Keystore/JSON Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért.',
-      GEN_Label_2: 'Mentsd el a Keystore/JSON fájlt vagy a Privát Kulcsot. Ne felejtsd el a fenti jelszót!',
+      GEN_Warning: '**Szükséged van a Keystore Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért.',
+      GEN_Label_2: 'Mentsd el a Keystore fájlt vagy a Privát Kulcsot. Ne felejtsd el a fenti jelszót!',
       GEN_Label_3: 'Mentsd el a címed.',
       GEN_Label_4: 'Nyomtasd ki a papír tárcádat vagy tárold a QR kód változatot. (választható) ',
 
@@ -6275,9 +6263,7 @@
     id.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -6310,9 +6296,9 @@
       x_Download: 'Unduh',
       x_Json: 'File JSON (tidak ter-enkripsi)',
       x_JsonDesc: 'Ini adalah "Private Key" Anda dalam format JSON yang tidak ter-enkripsi. Tidak diperlukan password dan siapapun yang memiliki JSON Anda dapat mengakses dompet dan Ether Anda tanpa password.',
-      x_Keystore: 'File Keystore/JSON (Format yang direkomendasikan · Ter-enkripsi · Format Mist/Geth)',
-      x_Keystore2: 'File Keystore/JSON',
-      x_KeystoreDesc: 'File Keystore/JSON ini sesuai dengan format yang dipakai Mist & Geth sehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
+      x_Keystore: 'File Keystore (UTC / JSON · Format yang direkomendasikan · Ter-enkripsi · Format Mist)',
+      x_Keystore2: 'File Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'File Keystore ini sesuai dengan format yang dipakai Mistsehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
       x_Password: 'Password',
       x_Print: 'Print Dompet Kertas',
       x_PrintDesc: 'ProTip: klik print dan simpan sebagai PDF jika Anda tidak memiliki printer!',
@@ -6376,8 +6362,8 @@
       GEN_Label_1: 'Masukkan password yang kuat (setidaknya 9 karakter)',
       GEN_Placeholder_1: 'JANGAN LUPA untuk mengingat & menyimpannya!',
       GEN_SuccessMsg: 'Berhasil! Dompet Anda sudah dibuat.',
-      GEN_Warning: '**DIPERLUKAN File Keystore/JSON & password atau Private Key** untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help).',
-      GEN_Label_2: 'Simpan Keystore/JSON atau Private Key. Jangan lupa Password-nya.',
+      GEN_Warning: '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help).',
+      GEN_Label_2: 'Simpan Keystore atau Private Key. Jangan lupa Password-nya.',
       GEN_Label_3: 'Simpan alamat dompet Anda.',
       GEN_Label_4: 'Print Dompet Kertas Anda, atau simpan versi QR code-nya. (Opsional)',
 
@@ -6835,9 +6821,7 @@
     it.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -6872,9 +6856,9 @@
       x_PrivKey: 'Chiave privata (non crittografata)',
       x_PrivKey2: 'Chiave privata',
       x_PrivKeyDesc: 'Questa è la versione testuale non crittografata della tua chiave privata, il che significa che non serve una password. Se qualcuno trovasse la tua chiave privata non crittografata potrebbe avere accesso al tuo portafoglio senza una password. Per questa ragione di solito si consigliano le versioni crittografate.',
-      x_Keystore: 'File Keystore/JSON (Consigliato · Crittografato · Formato Mist/Geth)',
-      x_Keystore2: 'File Keystore / JSON',
-      x_KeystoreDesc: 'Questo file Keystore/JSON è compatibile con il formato usato da Mist e Geth, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
+      x_Keystore: 'File Keystore (UTC / JSON · Consigliato · Crittografato · Formato Mist)',
+      x_Keystore2: 'File Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'Questo file Keystore è compatibile con il formato usato da Mist, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
       x_Json: 'File JSON (non crittografato)',
       x_JsonDesc: 'Questa è la tua chiave privata in formato JSON non crittografato. Significa che non hai bisogno della password, ma chiunque trovi questo file JSON potrà avere accesso al tuo portafoglio e ai tuoi ether senza password.',
       x_PrintShort: 'Stampa',
@@ -6936,8 +6920,8 @@
       GEN_Label_1: 'Inserisci una password robusta (almeno 9 caratteri)',
       GEN_Placeholder_1: 'NON dimenticarti di salvarla!',
       GEN_SuccessMsg: 'Perfetto! Il tuo portafoglio è stato generato.',
-      GEN_Warning: '**Avrai bisogno del tuo file Keystore/JSON e della password o della chiave privata** per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni.',
-      GEN_Label_2: 'Salva il tuo file Keystore/JSON o la chiave privata. Non dimenticare la password che hai inserito.',
+      GEN_Warning: '**Avrai bisogno del tuo file Keystore e della password** (o della chiave privata) per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni.',
+      GEN_Label_2: 'Salva il tuo file Keystore. Non dimenticare la password che hai inserito.',
       GEN_Label_3: 'Salva il tuo indirizzo.',
       GEN_Label_4: 'Stampa il tuo portafoglio cartaceo, o salva una versione QR code. (facoltativo)',
 
@@ -7394,9 +7378,7 @@
     ja.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -7440,9 +7422,9 @@
       x_Download: 'ダウンロード',
       x_Json: 'JSON ファイル (未暗号化)',
       x_JsonDesc: 'これはパスワードが不要な暗号化されていないJSONフォーマットのプライベートキーです。この暗号化されていないJSONフォーマットのプライベートキーを使えば、誰でもパスワードを使わずに自分のウォレットとEtherにアクセスできます。',
-      x_Keystore: 'Keystore/JSON ファイル (推奨 · 暗号化 · Mist/Geth フォーマット)',
-      x_Keystore2: 'Keystore / JSON ファイル',
-      x_KeystoreDesc: 'この Keystore / JSON ファイルは、後で容易にインポートするため、Mist & Gethで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
+      x_Keystore: 'Keystore ファイル (UTC / JSON · 推奨 · 暗号化 · Mist フォーマット)',
+      x_Keystore2: 'Keystore ファイル (UTC / JSON) ',
+      x_KeystoreDesc: 'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
       x_Password: 'パスワード',
       x_Print: 'ペーパーウォレットを印刷',
       x_PrintDesc: 'ProTip: プリンターが接続されていなくても、「印刷」をクリックしてPDFで保存できます。',
@@ -7952,9 +7934,7 @@
     nl.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -7990,9 +7970,9 @@
       x_PrivKey: 'Prive Sleutel (onversleuteld)',
       x_PrivKey2: 'Prive Sleutel',
       x_PrivKeyDesc: 'Dit is een onversleutelde tekst versie van je prive sleutel waarbij geen wachtwoord benodigd is. Mocht iemand deze unversleutelde prive sleutel vinden, kunnen zij zonder wachtwoord bij je account. Om deze reden zijn versleutelde versies aanbevolen.',
-      x_Keystore: 'Keystore/JSON Bestand (Aangeraden · versleuteld · Mist/Geth Formaat)',
-      x_Keystore2: 'Keystore/JSON Bestand',
-      x_KeystoreDesc: 'Dit Keystore / JSON bestand voldoen aan het formaat zoals gebruikt door Mist & Geth waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
+      x_Keystore: 'Keystore Bestand (UTC / JSON · Aangeraden · versleuteld · Mist Formaat)',
+      x_Keystore2: 'Keystore Bestand (UTC / JSON) ',
+      x_KeystoreDesc: 'Dit Keystore bestand voldoen aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
       x_Json: 'JSON Bestand (onversleuteld)',
       x_JsonDesc: 'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',
       x_PrintShort: 'Afdrukken',
@@ -8053,8 +8033,8 @@
       GEN_Label_1: 'Geef een sterk wachtwoord (ten minste 9 karakters)',
       GEN_Placeholder_1: 'Vergeet NIET om dit op te slaan!',
       GEN_SuccessMsg: 'Gelukt! Je wallet is gegenereerd.',
-      GEN_Warning: '**Je hebt je Keystore/JSON Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
-      GEN_Label_2: 'Sla je Keystore/JSON of Prive Sleutel op. Vergeet je wachtwoord hierboven niet.',
+      GEN_Warning: '**Je hebt je Keystore Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
+      GEN_Label_2: 'Sla je Keystore of Prive Sleutel op. Vergeet je wachtwoord hierboven niet.',
       GEN_Label_3: 'Sla je adres op.',
       GEN_Label_4: 'Druk je papieren wallet af, of bewaar hem als QR code. (optioneel)',
 
@@ -8511,9 +8491,7 @@
     no.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -8546,9 +8524,9 @@
       x_Download: 'Last ned',
       x_Json: 'JSON-fil (ukryptert)',
       x_JsonDesc: 'Dette er det ukrypterte JSON-formatet av din private nøkkel. Dette betyr at du ikke trenger noe passord, men også at den som finner din JSON kan få tilgang til lommeboken din og etherne dine uten passord.',
-      x_Keystore2: 'Keystore/JSON-fil',
-      x_Keystore: 'Keystore/JSON-fil (Anbefalt · Kryptert · Mist/Geth-format)',
-      x_KeystoreDesc: 'Denne Keystore/JSON-filen samsvarer med formatet som brukes av Mist & Geth, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere.',
+      x_Keystore2: 'Keystore-fil (UTC / JSON)',
+      x_Keystore: 'Keystore-fil (UTC / JSON · Anbefalt · Kryptert · Mist-format)',
+      x_KeystoreDesc: 'Denne Keystore-filen samsvarer med formatet som brukes av Mist, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere.',
       x_Password: 'Passord',
       x_Print: 'Skriv ut papirlommebok',
       x_PrintDesc: 'Profftips: Klikk "skriv ut" og lagre som PDF, selv om du ikke har noen skriver!',
@@ -8612,8 +8590,8 @@
       GEN_Label_1: 'Oppgi et sterkt passord (minst 9 tegn)',
       GEN_Placeholder_1: 'Glem IKKE å ta vare på dette!',
       GEN_SuccessMsg: 'Suksess! Lommeboken din har blitt opprettet.',
-      GEN_Warning: '**Du trenger din Keystore/JSON-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk).',
-      GEN_Label_2: 'Lagre din Keystore/JSON og/eller private nøkkel. Ikke glem passordet ditt ovenfor.',
+      GEN_Warning: '**Du trenger din Keystore-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk).',
+      GEN_Label_2: 'Lagre din Keystore-fil og/eller private nøkkel. Ikke glem passordet ditt ovenfor.',
       GEN_Label_3: 'Lagre adressen din.',
       GEN_Label_4: 'Skriv ut din papir-lommebok, eller lagre en QR-kode-versjon. (valgfritt)',
 
@@ -9070,9 +9048,7 @@
     pl.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -9106,9 +9082,9 @@
       x_PrivKey: 'Klucz Prywatny (nieszyfrowany)',
       x_PrivKey2: 'Klucz Prywatny',
       x_PrivKeyDesc: 'Nieszyfrowana, tekstowa wersja Twojego klucza prywatnego, nie wymaga hasła. Jeżeli ktoś zdobędzie nieszyfrowany klucz, będzie mógł uzyskać pełen dostęp do Twojego portfela bez podania hasła. Z tego powodu zaleca się używanie jego szyfrowanej wersji.',
-      x_Keystore: 'Plik Keystore/JSON (Zalecany · Szyfrowany · Format Mist/Geth)',
-      x_Keystore2: 'Plik Keystore/JSON',
-      x_KeystoreDesc: 'Ten plik Keystore / JSON odpowiada formatowi stosowanemu przez Mist i Geth, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
+      x_Keystore: 'Plik Keystore (UTC / JSON · Zalecany · Szyfrowany · Format Mist)',
+      x_Keystore2: 'Plik Keystore (UTC / JSON) ',
+      x_KeystoreDesc: 'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
       x_Json: 'Plik JSON (nieszyfrowany)',
       x_JsonDesc: 'Nieszyfrowany klucz prywatny, plik w formacie JSON. Nie wymaga podania hasła, ale każdy kto zdobędzie ten plik uzyska również pełny dostęp do Twojego portfela i zgromadzonych na nim środków.',
       x_PrintShort: 'Drukuj',
@@ -9170,8 +9146,8 @@
       GEN_Label_1: 'Wpisz silne hasło (co najmniej 9 znaków)',
       GEN_Placeholder_1: 'NIE zapomnij tego hasła!',
       GEN_SuccessMsg: 'Sukces! Twój portfel został wygenerowany.',
-      GEN_Warning: '**Potrzebujesz plik Keystore/JSON i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje.',
-      GEN_Label_2: 'Zapisz Twój plik Keystore/JSON lub Klucz Prywatny. Nie zapomnij powyższego hasła.',
+      GEN_Warning: '**Potrzebujesz plik Keystore i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje.',
+      GEN_Label_2: 'Zapisz Twój plik Keystore lub Klucz Prywatny. Nie zapomnij powyższego hasła.',
       GEN_Label_3: 'Zapisz swój adres.',
       GEN_Label_4: 'Wydrukuj swój Portfel Papierowy, lub zachowaj obrazek z kodem QR. (opcjonalnie)',
 
@@ -9629,9 +9605,7 @@
     ru.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -9677,9 +9651,9 @@
       x_PrivKey: 'Закрытый ключ (не зашифрован)',
       x_PrivKey2: 'Закрытый ключ',
       x_PrivKeyDesc: 'Это незашифрованное текстовое представление Вашего закрытого ключа, для использования которого не требуется вводить пароль. Если посторонние узнают Ваш закрытый ключ, они смогут распоряжаться Вашим кошельком без ввода пароля. По этой причине, обычно рекомендуют использовать зашифрованную версию закрытого ключа.',
-      x_Keystore: 'Файл Keystore/JSON (рекомендуется · зашифрован · совместим с Mist и geth)',
-      x_Keystore2: 'Файл Keystore/JSON',
-      x_KeystoreDesc: 'Этот файл Keystore/JSON использует формат совместимый с Mist и geth. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию.',
+      x_Keystore: 'Файл Keystore (UTC / JSON · рекомендуется · зашифрован · совместим с Mist)',
+      x_Keystore2: 'Файл Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'Этот файл Keystore использует формат совместимый с Mist. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию.',
       x_Json: 'Файл JSON (не зашифрован)',
       x_JsonDesc: 'Это Ваш незашифрованный закрытый ключ в формате JSON, для использования которого не требуется воодить пароль. Любой, у кого есть этот файл, может распоряжаться вашим кошельком и эфиром (ether) без ввода пароля.',
       x_PrintShort: 'Печать',
@@ -10189,9 +10163,7 @@
     tr.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -10235,9 +10207,9 @@
       x_Download: 'Indir',
       x_Json: 'JSON dosya (şifrelenmemis)',
       x_JsonDesc: 'Bu özel anahtarinin sifresiz, JSON formatidir. Demekki parolasiz cüzdanini acabilirsin. Özel anahatarina sahip olan herkez sifresiz cüzdani aca bilir.',
-      x_Keystore: 'Keystore/JSON dosya (Tavsiye edilen· şifrelenmiş · Mist/Geth formati)',
-      x_Keystore2: 'Keystore/JSON dosya',
-      x_KeystoreDesc: 'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+      x_Keystore: 'Keystore dosya (UTC / JSON · Tavsiye edilen · şifrelenmiş · Mist formati)',
+      x_Keystore2: 'Keystore dosya (UTC / JSON) ',
+      x_KeystoreDesc: 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up.',
       x_Password: 'Parola',
       x_Print: 'Cüzdanin kağıt versiyonunu yazdir',
       x_PrintDesc: 'ProTavsiye: Eğer yazıcınız olmasa bile, "Yazdır" seçeneğini tıklayın ve PDF dosyası olarak kaydedin!',
@@ -10302,8 +10274,8 @@
       GEN_Label_1: 'Güçlü bir şifre sec (en az 9 sembol)',
       GEN_Placeholder_1: 'Bunu kaydetmeyi unutma!',
       GEN_SuccessMsg: 'Başarı! Cüzdan oluşturuldu.',
-      GEN_Warning: 'Ilerde cüzdanini acmak icin **Keystore/JSON dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve  dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
-      GEN_Label_2: 'Keystore/JSON dosyayi veya özel anahtranini kaydet. Yukarıdaki şifreni unutma.',
+      GEN_Warning: 'Ilerde cüzdanini acmak icin **Keystore dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
+      GEN_Label_2: 'Keystore dosyayi veya özel anahtranini kaydet. Yukarıdaki şifreni unutma.',
       GEN_Label_3: 'Adresini kaydet.',
       GEN_Label_4: 'Cüzdanin kağıt versiyonunu yazdir veya QR code versiyonunu sakla. (Isteye bagli)',
 
@@ -10824,9 +10796,7 @@
     vi.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -10859,9 +10829,9 @@
       x_Download: 'Tải Về Máy',
       x_Json: 'Định Dạng JSON (Không mã hoá)',
       x_JsonDesc: 'Định Dạng JSON là một tập tin chứa dữ liệu ví chưa được mã hoá của Private Key. Bạn có thể đăng nhập vào ví của bạn bằng việc sử dụng định dạng JSON mà không cần đến mật khẩu. Vì vậy, bất kỳ người nào sở hữu định dạng  JSON của bạn thì họ đều có khả năng đăng nhập vào ví của bạn mà không cần đến mật khẩu.',
-      x_Keystore: 'Định Dạng Keystore/JSON (Đã mã hoá. Định Dạng này sử dụng cho Mist/Geth)',
-      x_Keystore2: 'Định Dạng Keystore / JSON',
-      x_KeystoreDesc: 'Định dạng Keystore/JSON là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist & Geth. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist & Geth và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
+      x_Keystore: 'Định Dạng Keystore (UTC / JSON) (Đã mã hoá. Định Dạng này sử dụng cho Mist)',
+      x_Keystore2: 'Định Dạng Keystore (UTC / JSON)',
+      x_KeystoreDesc: 'Định dạng Keystore là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
       x_Password: 'Mật Khẩu',
       x_Print: 'Tạo Ví Giấy',
       x_PrintDesc: 'Mẹo: kích chuột trái vào nút "In Ví" sau đó chọn "Save this as a PDF" đễ lưu nó thành định dạng PDF trên máy tính của bạn nếu bạn không sở hữu máy in cá nhân!',
@@ -11383,9 +11353,7 @@
     zh.data = {
 
       /* Mnemonic Additions */
-      x_Mnemonic: 'Mnemonic Phrase',
-      x_12Word: '12 Word Recovery Seed',
-      x_24Word: '24 Word Recovery Seed',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -11418,8 +11386,8 @@
       x_Download: '下载',
       x_Json: 'JSON文件（未加密）',
       x_JsonDesc: '这是你的未加密JSON格式的私钥文件。 这意味着你发送交易时不需要密码，也意味着拿到你的JSON文件的可以无需密码就可以控制你的钱包和以太币。',
-      x_Keystore: 'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)Keystore/JSON文件（推荐加密的Mist/Geth格式文件）',
-      x_Keystore2: 'Keystore/JSON文件',
+      x_Keystore: 'Keystore File (UTC / JSON · 推荐加密的 · Mist 格式文件)',
+      x_Keystore2: 'Keystore File (UTC / JSON)',
       x_KeystoreDesc: '这个Keystore/JSON文件和Mist、Geth使用的钱包文件是一样的，所以将来你可以非常容易地导入。 It is the recommended file to download and back up.推荐下载和备份这个文件。',
       x_Password: '密码',
       x_Print: '打印纸钱包',
@@ -11484,8 +11452,8 @@
       GEN_Label_1: '输入一个强密码（至少9位）',
       GEN_Placeholder_1: '不要忘记保存！',
       GEN_SuccessMsg: '成功！你的钱包已经生成。',
-      GEN_Warning: '将来使用钱包时，你需要Keystore/JSON文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。',
-      GEN_Label_2: '保存你的Keystore/JSON或者私钥。不要忘记你的密码。',
+      GEN_Warning: '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。',
+      GEN_Label_2: '保存你的Keystore或者私钥。不要忘记你的密码。',
       GEN_Label_3: '保存你的地址。',
       GEN_Label_4: '打印你的纸钱包，或者存储二维码。（可选）',
 
@@ -47597,7 +47565,7 @@
     Entity.prototype.encode = function encode(data, enc, /* internal */reporter) {
       return this._getEncoder(enc).encode(data, reporter);
     };
-  }, { "../asn1": 60, "inherits": 163, "vm": 219 }], 62: [function (require, module, exports) {
+  }, { "../asn1": 60, "inherits": 163, "vm": 223 }], 62: [function (require, module, exports) {
     var inherits = require('inherits');
     var Reporter = require('../base').Reporter;
     var Buffer = require('buffer').Buffer;
@@ -49341,9 +49309,10 @@
       }
       return keys;
     };
-  }, { "util/": 216 }], 75: [function (require, module, exports) {
+  }, { "util/": 220 }], 75: [function (require, module, exports) {
     'use strict';
 
+    exports.byteLength = byteLength;
     exports.toByteArray = toByteArray;
     exports.fromByteArray = fromByteArray;
 
@@ -49351,23 +49320,17 @@
     var revLookup = [];
     var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array;
 
-    function init() {
-      var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-      for (var i = 0, len = code.length; i < len; ++i) {
-        lookup[i] = code[i];
-        revLookup[code.charCodeAt(i)] = i;
-      }
-
-      revLookup['-'.charCodeAt(0)] = 62;
-      revLookup['_'.charCodeAt(0)] = 63;
+    var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+    for (var i = 0, len = code.length; i < len; ++i) {
+      lookup[i] = code[i];
+      revLookup[code.charCodeAt(i)] = i;
     }
 
-    init();
+    revLookup['-'.charCodeAt(0)] = 62;
+    revLookup['_'.charCodeAt(0)] = 63;
 
-    function toByteArray(b64) {
-      var i, j, l, tmp, placeHolders, arr;
+    function placeHoldersCount(b64) {
       var len = b64.length;
-
       if (len % 4 > 0) {
         throw new Error('Invalid string. Length must be a multiple of 4');
       }
@@ -49377,9 +49340,19 @@
       // represent one byte
       // if there is only one, then the three characters before it represent 2 bytes
       // this is just a cheap hack to not do indexOf twice
-      placeHolders = b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0;
+      return b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0;
+    }
 
+    function byteLength(b64) {
       // base64 is 4/3 + up to two characters of the original data
+      return b64.length * 3 / 4 - placeHoldersCount(b64);
+    }
+
+    function toByteArray(b64) {
+      var i, j, l, tmp, placeHolders, arr;
+      var len = b64.length;
+      placeHolders = placeHoldersCount(b64);
+
       arr = new Arr(len * 3 / 4 - placeHolders);
 
       // if there are placeholders, only get up to the last complete 4 chars
@@ -52313,7 +52286,7 @@
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./wordlists/en.json": 78, "assert": 74, "buffer": 111, "create-hash": 116, "pbkdf2": 175, "randombytes": 184, "unorm": 213 }], 78: [function (require, module, exports) {
+  }, { "./wordlists/en.json": 78, "assert": 74, "buffer": 111, "create-hash": 116, "pbkdf2": 175, "randombytes": 185, "unorm": 216 }], 78: [function (require, module, exports) {
     module.exports = ["abandon", "ability", "able", "about", "above", "absent", "absorb", "abstract", "absurd", "abuse", "access", "accident", "account", "accuse", "achieve", "acid", "acoustic", "acquire", "across", "act", "action", "actor", "actress", "actual", "adapt", "add", "addict", "address", "adjust", "admit", "adult", "advance", "advice", "aerobic", "affair", "afford", "afraid", "again", "age", "agent", "agree", "ahead", "aim", "air", "airport", "aisle", "alarm", "album", "alcohol", "alert", "alien", "all", "alley", "allow", "almost", "alone", "alpha", "already", "also", "alter", "always", "amateur", "amazing", "among", "amount", "amused", "analyst", "anchor", "ancient", "anger", "angle", "angry", "animal", "ankle", "announce", "annual", "another", "answer", "antenna", "antique", "anxiety", "any", "apart", "apology", "appear", "apple", "approve", "april", "arch", "arctic", "area", "arena", "argue", "arm", "armed", "armor", "army", "around", "arrange", "arrest", "arrive", "arrow", "art", "artefact", "artist", "artwork", "ask", "aspect", "assault", "asset", "assist", "assume", "asthma", "athlete", "atom", "attack", "attend", "attitude", "attract", "auction", "audit", "august", "aunt", "author", "auto", "autumn", "average", "avocado", "avoid", "awake", "aware", "away", "awesome", "awful", "awkward", "axis", "baby", "bachelor", "bacon", "badge", "bag", "balance", "balcony", "ball", "bamboo", "banana", "banner", "bar", "barely", "bargain", "barrel", "base", "basic", "basket", "battle", "beach", "bean", "beauty", "because", "become", "beef", "before", "begin", "behave", "behind", "believe", "below", "belt", "bench", "benefit", "best", "betray", "better", "between", "beyond", "bicycle", "bid", "bike", "bind", "biology", "bird", "birth", "bitter", "black", "blade", "blame", "blanket", "blast", "bleak", "bless", "blind", "blood", "blossom", "blouse", "blue", "blur", "blush", "board", "boat", "body", "boil", "bomb", "bone", "bonus", "book", "boost", "border", "boring", "borrow", "boss", "bottom", "bounce", "box", "boy", "bracket", "brain", "brand", "brass", "brave", "bread", "breeze", "brick", "bridge", "brief", "bright", "bring", "brisk", "broccoli", "broken", "bronze", "broom", "brother", "brown", "brush", "bubble", "buddy", "budget", "buffalo", "build", "bulb", "bulk", "bullet", "bundle", "bunker", "burden", "burger", "burst", "bus", "business", "busy", "butter", "buyer", "buzz", "cabbage", "cabin", "cable", "cactus", "cage", "cake", "call", "calm", "camera", "camp", "can", "canal", "cancel", "candy", "cannon", "canoe", "canvas", "canyon", "capable", "capital", "captain", "car", "carbon", "card", "cargo", "carpet", "carry", "cart", "case", "cash", "casino", "castle", "casual", "cat", "catalog", "catch", "category", "cattle", "caught", "cause", "caution", "cave", "ceiling", "celery", "cement", "census", "century", "cereal", "certain", "chair", "chalk", "champion", "change", "chaos", "chapter", "charge", "chase", "chat", "cheap", "check", "cheese", "chef", "cherry", "chest", "chicken", "chief", "child", "chimney", "choice", "choose", "chronic", "chuckle", "chunk", "churn", "cigar", "cinnamon", "circle", "citizen", "city", "civil", "claim", "clap", "clarify", "claw", "clay", "clean", "clerk", "clever", "click", "client", "cliff", "climb", "clinic", "clip", "clock", "clog", "close", "cloth", "cloud", "clown", "club", "clump", "cluster", "clutch", "coach", "coast", "coconut", "code", "coffee", "coil", "coin", "collect", "color", "column", "combine", "come", "comfort", "comic", "common", "company", "concert", "conduct", "confirm", "congress", "connect", "consider", "control", "convince", "cook", "cool", "copper", "copy", "coral", "core", "corn", "correct", "cost", "cotton", "couch", "country", "couple", "course", "cousin", "cover", "coyote", "crack", "cradle", "craft", "cram", "crane", "crash", "crater", "crawl", "crazy", "cream", "credit", "creek", "crew", "cricket", "crime", "crisp", "critic", "crop", "cross", "crouch", "crowd", "crucial", "cruel", "cruise", "crumble", "crunch", "crush", "cry", "crystal", "cube", "culture", "cup", "cupboard", "curious", "current", "curtain", "curve", "cushion", "custom", "cute", "cycle", "dad", "damage", "damp", "dance", "danger", "daring", "dash", "daughter", "dawn", "day", "deal", "debate", "debris", "decade", "december", "decide", "decline", "decorate", "decrease", "deer", "defense", "define", "defy", "degree", "delay", "deliver", "demand", "demise", "denial", "dentist", "deny", "depart", "depend", "deposit", "depth", "deputy", "derive", "describe", "desert", "design", "desk", "despair", "destroy", "detail", "detect", "develop", "device", "devote", "diagram", "dial", "diamond", "diary", "dice", "diesel", "diet", "differ", "digital", "dignity", "dilemma", "dinner", "dinosaur", "direct", "dirt", "disagree", "discover", "disease", "dish", "dismiss", "disorder", "display", "distance", "divert", "divide", "divorce", "dizzy", "doctor", "document", "dog", "doll", "dolphin", "domain", "donate", "donkey", "donor", "door", "dose", "double", "dove", "draft", "dragon", "drama", "drastic", "draw", "dream", "dress", "drift", "drill", "drink", "drip", "drive", "drop", "drum", "dry", "duck", "dumb", "dune", "during", "dust", "dutch", "duty", "dwarf", "dynamic", "eager", "eagle", "early", "earn", "earth", "easily", "east", "easy", "echo", "ecology", "economy", "edge", "edit", "educate", "effort", "egg", "eight", "either", "elbow", "elder", "electric", "elegant", "element", "elephant", "elevator", "elite", "else", "embark", "embody", "embrace", "emerge", "emotion", "employ", "empower", "empty", "enable", "enact", "end", "endless", "endorse", "enemy", "energy", "enforce", "engage", "engine", "enhance", "enjoy", "enlist", "enough", "enrich", "enroll", "ensure", "enter", "entire", "entry", "envelope", "episode", "equal", "equip", "era", "erase", "erode", "erosion", "error", "erupt", "escape", "essay", "essence", "estate", "eternal", "ethics", "evidence", "evil", "evoke", "evolve", "exact", "example", "excess", "exchange", "excite", "exclude", "excuse", "execute", "exercise", "exhaust", "exhibit", "exile", "exist", "exit", "exotic", "expand", "expect", "expire", "explain", "expose", "express", "extend", "extra", "eye", "eyebrow", "fabric", "face", "faculty", "fade", "faint", "faith", "fall", "false", "fame", "family", "famous", "fan", "fancy", "fantasy", "farm", "fashion", "fat", "fatal", "father", "fatigue", "fault", "favorite", "feature", "february", "federal", "fee", "feed", "feel", "female", "fence", "festival", "fetch", "fever", "few", "fiber", "fiction", "field", "figure", "file", "film", "filter", "final", "find", "fine", "finger", "finish", "fire", "firm", "first", "fiscal", "fish", "fit", "fitness", "fix", "flag", "flame", "flash", "flat", "flavor", "flee", "flight", "flip", "float", "flock", "floor", "flower", "fluid", "flush", "fly", "foam", "focus", "fog", "foil", "fold", "follow", "food", "foot", "force", "forest", "forget", "fork", "fortune", "forum", "forward", "fossil", "foster", "found", "fox", "fragile", "frame", "frequent", "fresh", "friend", "fringe", "frog", "front", "frost", "frown", "frozen", "fruit", "fuel", "fun", "funny", "furnace", "fury", "future", "gadget", "gain", "galaxy", "gallery", "game", "gap", "garage", "garbage", "garden", "garlic", "garment", "gas", "gasp", "gate", "gather", "gauge", "gaze", "general", "genius", "genre", "gentle", "genuine", "gesture", "ghost", "giant", "gift", "giggle", "ginger", "giraffe", "girl", "give", "glad", "glance", "glare", "glass", "glide", "glimpse", "globe", "gloom", "glory", "glove", "glow", "glue", "goat", "goddess", "gold", "good", "goose", "gorilla", "gospel", "gossip", "govern", "gown", "grab", "grace", "grain", "grant", "grape", "grass", "gravity", "great", "green", "grid", "grief", "grit", "grocery", "group", "grow", "grunt", "guard", "guess", "guide", "guilt", "guitar", "gun", "gym", "habit", "hair", "half", "hammer", "hamster", "hand", "happy", "harbor", "hard", "harsh", "harvest", "hat", "have", "hawk", "hazard", "head", "health", "heart", "heavy", "hedgehog", "height", "hello", "helmet", "help", "hen", "hero", "hidden", "high", "hill", "hint", "hip", "hire", "history", "hobby", "hockey", "hold", "hole", "holiday", "hollow", "home", "honey", "hood", "hope", "horn", "horror", "horse", "hospital", "host", "hotel", "hour", "hover", "hub", "huge", "human", "humble", "humor", "hundred", "hungry", "hunt", "hurdle", "hurry", "hurt", "husband", "hybrid", "ice", "icon", "idea", "identify", "idle", "ignore", "ill", "illegal", "illness", "image", "imitate", "immense", "immune", "impact", "impose", "improve", "impulse", "inch", "include", "income", "increase", "index", "indicate", "indoor", "industry", "infant", "inflict", "inform", "inhale", "inherit", "initial", "inject", "injury", "inmate", "inner", "innocent", "input", "inquiry", "insane", "insect", "inside", "inspire", "install", "intact", "interest", "into", "invest", "invite", "involve", "iron", "island", "isolate", "issue", "item", "ivory", "jacket", "jaguar", "jar", "jazz", "jealous", "jeans", "jelly", "jewel", "job", "join", "joke", "journey", "joy", "judge", "juice", "jump", "jungle", "junior", "junk", "just", "kangaroo", "keen", "keep", "ketchup", "key", "kick", "kid", "kidney", "kind", "kingdom", "kiss", "kit", "kitchen", "kite", "kitten", "kiwi", "knee", "knife", "knock", "know", "lab", "label", "labor", "ladder", "lady", "lake", "lamp", "language", "laptop", "large", "later", "latin", "laugh", "laundry", "lava", "law", "lawn", "lawsuit", "layer", "lazy", "leader", "leaf", "learn", "leave", "lecture", "left", "leg", "legal", "legend", "leisure", "lemon", "lend", "length", "lens", "leopard", "lesson", "letter", "level", "liar", "liberty", "library", "license", "life", "lift", "light", "like", "limb", "limit", "link", "lion", "liquid", "list", "little", "live", "lizard", "load", "loan", "lobster", "local", "lock", "logic", "lonely", "long", "loop", "lottery", "loud", "lounge", "love", "loyal", "lucky", "luggage", "lumber", "lunar", "lunch", "luxury", "lyrics", "machine", "mad", "magic", "magnet", "maid", "mail", "main", "major", "make", "mammal", "man", "manage", "mandate", "mango", "mansion", "manual", "maple", "marble", "march", "margin", "marine", "market", "marriage", "mask", "mass", "master", "match", "material", "math", "matrix", "matter", "maximum", "maze", "meadow", "mean", "measure", "meat", "mechanic", "medal", "media", "melody", "melt", "member", "memory", "mention", "menu", "mercy", "merge", "merit", "merry", "mesh", "message", "metal", "method", "middle", "midnight", "milk", "million", "mimic", "mind", "minimum", "minor", "minute", "miracle", "mirror", "misery", "miss", "mistake", "mix", "mixed", "mixture", "mobile", "model", "modify", "mom", "moment", "monitor", "monkey", "monster", "month", "moon", "moral", "more", "morning", "mosquito", "mother", "motion", "motor", "mountain", "mouse", "move", "movie", "much", "muffin", "mule", "multiply", "muscle", "museum", "mushroom", "music", "must", "mutual", "myself", "mystery", "myth", "naive", "name", "napkin", "narrow", "nasty", "nation", "nature", "near", "neck", "need", "negative", "neglect", "neither", "nephew", "nerve", "nest", "net", "network", "neutral", "never", "news", "next", "nice", "night", "noble", "noise", "nominee", "noodle", "normal", "north", "nose", "notable", "note", "nothing", "notice", "novel", "now", "nuclear", "number", "nurse", "nut", "oak", "obey", "object", "oblige", "obscure", "observe", "obtain", "obvious", "occur", "ocean", "october", "odor", "off", "offer", "office", "often", "oil", "okay", "old", "olive", "olympic", "omit", "once", "one", "onion", "online", "only", "open", "opera", "opinion", "oppose", "option", "orange", "orbit", "orchard", "order", "ordinary", "organ", "orient", "original", "orphan", "ostrich", "other", "outdoor", "outer", "output", "outside", "oval", "oven", "over", "own", "owner", "oxygen", "oyster", "ozone", "pact", "paddle", "page", "pair", "palace", "palm", "panda", "panel", "panic", "panther", "paper", "parade", "parent", "park", "parrot", "party", "pass", "patch", "path", "patient", "patrol", "pattern", "pause", "pave", "payment", "peace", "peanut", "pear", "peasant", "pelican", "pen", "penalty", "pencil", "people", "pepper", "perfect", "permit", "person", "pet", "phone", "photo", "phrase", "physical", "piano", "picnic", "picture", "piece", "pig", "pigeon", "pill", "pilot", "pink", "pioneer", "pipe", "pistol", "pitch", "pizza", "place", "planet", "plastic", "plate", "play", "please", "pledge", "pluck", "plug", "plunge", "poem", "poet", "point", "polar", "pole", "police", "pond", "pony", "pool", "popular", "portion", "position", "possible", "post", "potato", "pottery", "poverty", "powder", "power", "practice", "praise", "predict", "prefer", "prepare", "present", "pretty", "prevent", "price", "pride", "primary", "print", "priority", "prison", "private", "prize", "problem", "process", "produce", "profit", "program", "project", "promote", "proof", "property", "prosper", "protect", "proud", "provide", "public", "pudding", "pull", "pulp", "pulse", "pumpkin", "punch", "pupil", "puppy", "purchase", "purity", "purpose", "purse", "push", "put", "puzzle", "pyramid", "quality", "quantum", "quarter", "question", "quick", "quit", "quiz", "quote", "rabbit", "raccoon", "race", "rack", "radar", "radio", "rail", "rain", "raise", "rally", "ramp", "ranch", "random", "range", "rapid", "rare", "rate", "rather", "raven", "raw", "razor", "ready", "real", "reason", "rebel", "rebuild", "recall", "receive", "recipe", "record", "recycle", "reduce", "reflect", "reform", "refuse", "region", "regret", "regular", "reject", "relax", "release", "relief", "rely", "remain", "remember", "remind", "remove", "render", "renew", "rent", "reopen", "repair", "repeat", "replace", "report", "require", "rescue", "resemble", "resist", "resource", "response", "result", "retire", "retreat", "return", "reunion", "reveal", "review", "reward", "rhythm", "rib", "ribbon", "rice", "rich", "ride", "ridge", "rifle", "right", "rigid", "ring", "riot", "ripple", "risk", "ritual", "rival", "river", "road", "roast", "robot", "robust", "rocket", "romance", "roof", "rookie", "room", "rose", "rotate", "rough", "round", "route", "royal", "rubber", "rude", "rug", "rule", "run", "runway", "rural", "sad", "saddle", "sadness", "safe", "sail", "salad", "salmon", "salon", "salt", "salute", "same", "sample", "sand", "satisfy", "satoshi", "sauce", "sausage", "save", "say", "scale", "scan", "scare", "scatter", "scene", "scheme", "school", "science", "scissors", "scorpion", "scout", "scrap", "screen", "script", "scrub", "sea", "search", "season", "seat", "second", "secret", "section", "security", "seed", "seek", "segment", "select", "sell", "seminar", "senior", "sense", "sentence", "series", "service", "session", "settle", "setup", "seven", "shadow", "shaft", "shallow", "share", "shed", "shell", "sheriff", "shield", "shift", "shine", "ship", "shiver", "shock", "shoe", "shoot", "shop", "short", "shoulder", "shove", "shrimp", "shrug", "shuffle", "shy", "sibling", "sick", "side", "siege", "sight", "sign", "silent", "silk", "silly", "silver", "similar", "simple", "since", "sing", "siren", "sister", "situate", "six", "size", "skate", "sketch", "ski", "skill", "skin", "skirt", "skull", "slab", "slam", "sleep", "slender", "slice", "slide", "slight", "slim", "slogan", "slot", "slow", "slush", "small", "smart", "smile", "smoke", "smooth", "snack", "snake", "snap", "sniff", "snow", "soap", "soccer", "social", "sock", "soda", "soft", "solar", "soldier", "solid", "solution", "solve", "someone", "song", "soon", "sorry", "sort", "soul", "sound", "soup", "source", "south", "space", "spare", "spatial", "spawn", "speak", "special", "speed", "spell", "spend", "sphere", "spice", "spider", "spike", "spin", "spirit", "split", "spoil", "sponsor", "spoon", "sport", "spot", "spray", "spread", "spring", "spy", "square", "squeeze", "squirrel", "stable", "stadium", "staff", "stage", "stairs", "stamp", "stand", "start", "state", "stay", "steak", "steel", "stem", "step", "stereo", "stick", "still", "sting", "stock", "stomach", "stone", "stool", "story", "stove", "strategy", "street", "strike", "strong", "struggle", "student", "stuff", "stumble", "style", "subject", "submit", "subway", "success", "such", "sudden", "suffer", "sugar", "suggest", "suit", "summer", "sun", "sunny", "sunset", "super", "supply", "supreme", "sure", "surface", "surge", "surprise", "surround", "survey", "suspect", "sustain", "swallow", "swamp", "swap", "swarm", "swear", "sweet", "swift", "swim", "swing", "switch", "sword", "symbol", "symptom", "syrup", "system", "table", "tackle", "tag", "tail", "talent", "talk", "tank", "tape", "target", "task", "taste", "tattoo", "taxi", "teach", "team", "tell", "ten", "tenant", "tennis", "tent", "term", "test", "text", "thank", "that", "theme", "then", "theory", "there", "they", "thing", "this", "thought", "three", "thrive", "throw", "thumb", "thunder", "ticket", "tide", "tiger", "tilt", "timber", "time", "tiny", "tip", "tired", "tissue", "title", "toast", "tobacco", "today", "toddler", "toe", "together", "toilet", "token", "tomato", "tomorrow", "tone", "tongue", "tonight", "tool", "tooth", "top", "topic", "topple", "torch", "tornado", "tortoise", "toss", "total", "tourist", "toward", "tower", "town", "toy", "track", "trade", "traffic", "tragic", "train", "transfer", "trap", "trash", "travel", "tray", "treat", "tree", "trend", "trial", "tribe", "trick", "trigger", "trim", "trip", "trophy", "trouble", "truck", "true", "truly", "trumpet", "trust", "truth", "try", "tube", "tuition", "tumble", "tuna", "tunnel", "turkey", "turn", "turtle", "twelve", "twenty", "twice", "twin", "twist", "two", "type", "typical", "ugly", "umbrella", "unable", "unaware", "uncle", "uncover", "under", "undo", "unfair", "unfold", "unhappy", "uniform", "unique", "unit", "universe", "unknown", "unlock", "until", "unusual", "unveil", "update", "upgrade", "uphold", "upon", "upper", "upset", "urban", "urge", "usage", "use", "used", "useful", "useless", "usual", "utility", "vacant", "vacuum", "vague", "valid", "valley", "valve", "van", "vanish", "vapor", "various", "vast", "vault", "vehicle", "velvet", "vendor", "venture", "venue", "verb", "verify", "version", "very", "vessel", "veteran", "viable", "vibrant", "vicious", "victory", "video", "view", "village", "vintage", "violin", "virtual", "virus", "visa", "visit", "visual", "vital", "vivid", "vocal", "voice", "void", "volcano", "volume", "vote", "voyage", "wage", "wagon", "wait", "walk", "wall", "walnut", "want", "warfare", "warm", "warrior", "wash", "wasp", "waste", "water", "wave", "way", "wealth", "weapon", "wear", "weasel", "weather", "web", "wedding", "weekend", "weird", "welcome", "west", "wet", "whale", "what", "wheat", "wheel", "when", "where", "whip", "whisper", "wide", "width", "wife", "wild", "will", "win", "window", "wine", "wing", "wink", "winner", "winter", "wire", "wisdom", "wise", "wish", "witness", "wolf", "woman", "wonder", "wood", "wool", "word", "work", "world", "worry", "worth", "wrap", "wreck", "wrestle", "wrist", "write", "wrong", "yard", "year", "yellow", "you", "young", "youth", "zebra", "zero", "zone", "zoo"];
   }, {}], 79: [function (require, module, exports) {
     (function (Buffer) {
@@ -55831,7 +55804,7 @@
     } else {
       // Node.js or Web worker
       try {
-        var crypto = require('cry' + 'pto');
+        var crypto = require('crypto');
 
         Rand.prototype._rand = function _rand(n) {
           return crypto.randomBytes(n);
@@ -55845,7 +55818,7 @@
         };
       }
     }
-  }, {}], 82: [function (require, module, exports) {}, {}], 83: [function (require, module, exports) {
+  }, { "crypto": 82 }], 82: [function (require, module, exports) {}, {}], 83: [function (require, module, exports) {
     (function (Buffer) {
       // based on the aes implimentation in triple sec
       // https://github.com/keybase/triplesec
@@ -57039,7 +57012,7 @@
         return r;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 80, "buffer": 111, "randombytes": 184 }], 102: [function (require, module, exports) {
+  }, { "bn.js": 80, "buffer": 111, "randombytes": 185 }], 102: [function (require, module, exports) {
     (function (Buffer) {
       const Sha3 = require('js-sha3');
 
@@ -57247,7 +57220,7 @@
         createVerify: createVerify
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./algos": 103, "./sign": 106, "./verify": 107, "buffer": 111, "create-hash": 116, "inherits": 163, "stream": 211 }], 105: [function (require, module, exports) {
+  }, { "./algos": 103, "./sign": 106, "./verify": 107, "buffer": 111, "create-hash": 116, "inherits": 163, "stream": 214 }], 105: [function (require, module, exports) {
     'use strict';
 
     exports['1.3.132.0.10'] = 'secp256k1';
@@ -57905,6 +57878,8 @@
       function assertSize(size) {
         if (typeof size !== 'number') {
           throw new TypeError('"size" argument must be a number');
+        } else if (size < 0) {
+          throw new RangeError('"size" argument must not be negative');
         }
       }
 
@@ -57966,12 +57941,20 @@
         var length = byteLength(string, encoding) | 0;
         that = createBuffer(that, length);
 
-        that.write(string, encoding);
+        var actual = that.write(string, encoding);
+
+        if (actual !== length) {
+          // Writing a hex string, for example, that contains invalid characters will
+          // cause everything after the first invalid character to be ignored. (e.g.
+          // 'abxxcd' will be treated as 'ab')
+          that = that.slice(0, actual);
+        }
+
         return that;
       }
 
       function fromArrayLike(that, array) {
-        var length = checked(array.length) | 0;
+        var length = array.length < 0 ? 0 : checked(array.length) | 0;
         that = createBuffer(that, length);
         for (var i = 0; i < length; i += 1) {
           that[i] = array[i] & 255;
@@ -58039,7 +58022,7 @@
       }
 
       function checked(length) {
-        // Note: cannot use `length < kMaxLength` here because that fails when
+        // Note: cannot use `length < kMaxLength()` here because that fails when
         // length is NaN (which is otherwise coerced to zero.)
         if (length >= kMaxLength()) {
           throw new RangeError('Attempt to allocate Buffer larger than maximum ' + 'size: 0x' + kMaxLength().toString(16) + ' bytes');
@@ -58088,9 +58071,9 @@
           case 'utf8':
           case 'utf-8':
           case 'ascii':
+          case 'latin1':
           case 'binary':
           case 'base64':
-          case 'raw':
           case 'ucs2':
           case 'ucs-2':
           case 'utf16le':
@@ -58150,9 +58133,8 @@
         for (;;) {
           switch (encoding) {
             case 'ascii':
+            case 'latin1':
             case 'binary':
-            case 'raw':
-            case 'raws':
               return len;
             case 'utf8':
             case 'utf-8':
@@ -58225,8 +58207,9 @@
             case 'ascii':
               return asciiSlice(this, start, end);
 
+            case 'latin1':
             case 'binary':
-              return binarySlice(this, start, end);
+              return latin1Slice(this, start, end);
 
             case 'base64':
               return base64Slice(this, start, end);
@@ -58274,6 +58257,20 @@
         for (var i = 0; i < len; i += 4) {
           swap(this, i, i + 3);
           swap(this, i + 1, i + 2);
+        }
+        return this;
+      };
+
+      Buffer.prototype.swap64 = function swap64() {
+        var len = this.length;
+        if (len % 8 !== 0) {
+          throw new RangeError('Buffer size must be a multiple of 64-bits');
+        }
+        for (var i = 0; i < len; i += 8) {
+          swap(this, i, i + 7);
+          swap(this, i + 1, i + 6);
+          swap(this, i + 2, i + 5);
+          swap(this, i + 3, i + 4);
         }
         return this;
       };
@@ -58360,7 +58357,70 @@
         return 0;
       };
 
-      function arrayIndexOf(arr, val, byteOffset, encoding) {
+      // Finds either the first index of `val` in `buffer` at offset >= `byteOffset`,
+      // OR the last index of `val` in `buffer` at offset <= `byteOffset`.
+      //
+      // Arguments:
+      // - buffer - a Buffer to search
+      // - val - a string, Buffer, or number
+      // - byteOffset - an index into `buffer`; will be clamped to an int32
+      // - encoding - an optional encoding, relevant is val is a string
+      // - dir - true for indexOf, false for lastIndexOf
+      function bidirectionalIndexOf(buffer, val, byteOffset, encoding, dir) {
+        // Empty buffer means no match
+        if (buffer.length === 0) return -1;
+
+        // Normalize byteOffset
+        if (typeof byteOffset === 'string') {
+          encoding = byteOffset;
+          byteOffset = 0;
+        } else if (byteOffset > 0x7fffffff) {
+          byteOffset = 0x7fffffff;
+        } else if (byteOffset < -0x80000000) {
+          byteOffset = -0x80000000;
+        }
+        byteOffset = +byteOffset; // Coerce to Number.
+        if (isNaN(byteOffset)) {
+          // byteOffset: it it's undefined, null, NaN, "foo", etc, search whole buffer
+          byteOffset = dir ? 0 : buffer.length - 1;
+        }
+
+        // Normalize byteOffset: negative offsets start from the end of the buffer
+        if (byteOffset < 0) byteOffset = buffer.length + byteOffset;
+        if (byteOffset >= buffer.length) {
+          if (dir) return -1;else byteOffset = buffer.length - 1;
+        } else if (byteOffset < 0) {
+          if (dir) byteOffset = 0;else return -1;
+        }
+
+        // Normalize val
+        if (typeof val === 'string') {
+          val = Buffer.from(val, encoding);
+        }
+
+        // Finally, search either indexOf (if dir is true) or lastIndexOf
+        if (Buffer.isBuffer(val)) {
+          // Special case: looking for empty string/buffer always fails
+          if (val.length === 0) {
+            return -1;
+          }
+          return arrayIndexOf(buffer, val, byteOffset, encoding, dir);
+        } else if (typeof val === 'number') {
+          val = val & 0xFF; // Search for a byte value [0-255]
+          if (Buffer.TYPED_ARRAY_SUPPORT && typeof Uint8Array.prototype.indexOf === 'function') {
+            if (dir) {
+              return Uint8Array.prototype.indexOf.call(buffer, val, byteOffset);
+            } else {
+              return Uint8Array.prototype.lastIndexOf.call(buffer, val, byteOffset);
+            }
+          }
+          return arrayIndexOf(buffer, [val], byteOffset, encoding, dir);
+        }
+
+        throw new TypeError('val must be string, number or Buffer');
+      }
+
+      function arrayIndexOf(arr, val, byteOffset, encoding, dir) {
         var indexSize = 1;
         var arrLength = arr.length;
         var valLength = val.length;
@@ -58386,60 +58446,45 @@
           }
         }
 
-        var foundIndex = -1;
-        for (var i = byteOffset; i < arrLength; ++i) {
-          if (read(arr, i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
-            if (foundIndex === -1) foundIndex = i;
-            if (i - foundIndex + 1 === valLength) return foundIndex * indexSize;
-          } else {
-            if (foundIndex !== -1) i -= i - foundIndex;
-            foundIndex = -1;
+        var i;
+        if (dir) {
+          var foundIndex = -1;
+          for (i = byteOffset; i < arrLength; i++) {
+            if (read(arr, i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
+              if (foundIndex === -1) foundIndex = i;
+              if (i - foundIndex + 1 === valLength) return foundIndex * indexSize;
+            } else {
+              if (foundIndex !== -1) i -= i - foundIndex;
+              foundIndex = -1;
+            }
+          }
+        } else {
+          if (byteOffset + valLength > arrLength) byteOffset = arrLength - valLength;
+          for (i = byteOffset; i >= 0; i--) {
+            var found = true;
+            for (var j = 0; j < valLength; j++) {
+              if (read(arr, i + j) !== read(val, j)) {
+                found = false;
+                break;
+              }
+            }
+            if (found) return i;
           }
         }
 
         return -1;
       }
 
-      Buffer.prototype.indexOf = function indexOf(val, byteOffset, encoding) {
-        if (typeof byteOffset === 'string') {
-          encoding = byteOffset;
-          byteOffset = 0;
-        } else if (byteOffset > 0x7fffffff) {
-          byteOffset = 0x7fffffff;
-        } else if (byteOffset < -0x80000000) {
-          byteOffset = -0x80000000;
-        }
-        byteOffset >>= 0;
-
-        if (this.length === 0) return -1;
-        if (byteOffset >= this.length) return -1;
-
-        // Negative offsets start from the end of the buffer
-        if (byteOffset < 0) byteOffset = Math.max(this.length + byteOffset, 0);
-
-        if (typeof val === 'string') {
-          val = Buffer.from(val, encoding);
-        }
-
-        if (Buffer.isBuffer(val)) {
-          // special case: looking for empty string/buffer always fails
-          if (val.length === 0) {
-            return -1;
-          }
-          return arrayIndexOf(this, val, byteOffset, encoding);
-        }
-        if (typeof val === 'number') {
-          if (Buffer.TYPED_ARRAY_SUPPORT && Uint8Array.prototype.indexOf === 'function') {
-            return Uint8Array.prototype.indexOf.call(this, val, byteOffset);
-          }
-          return arrayIndexOf(this, [val], byteOffset, encoding);
-        }
-
-        throw new TypeError('val must be string, number or Buffer');
-      };
-
       Buffer.prototype.includes = function includes(val, byteOffset, encoding) {
         return this.indexOf(val, byteOffset, encoding) !== -1;
+      };
+
+      Buffer.prototype.indexOf = function indexOf(val, byteOffset, encoding) {
+        return bidirectionalIndexOf(this, val, byteOffset, encoding, true);
+      };
+
+      Buffer.prototype.lastIndexOf = function lastIndexOf(val, byteOffset, encoding) {
+        return bidirectionalIndexOf(this, val, byteOffset, encoding, false);
       };
 
       function hexWrite(buf, string, offset, length) {
@@ -58456,7 +58501,7 @@
 
         // must be an even number of digits
         var strLen = string.length;
-        if (strLen % 2 !== 0) throw new Error('Invalid hex string');
+        if (strLen % 2 !== 0) throw new TypeError('Invalid hex string');
 
         if (length > strLen / 2) {
           length = strLen / 2;
@@ -58477,7 +58522,7 @@
         return blitBuffer(asciiToBytes(string), buf, offset, length);
       }
 
-      function binaryWrite(buf, string, offset, length) {
+      function latin1Write(buf, string, offset, length) {
         return asciiWrite(buf, string, offset, length);
       }
 
@@ -58537,8 +58582,9 @@
             case 'ascii':
               return asciiWrite(this, string, offset, length);
 
+            case 'latin1':
             case 'binary':
-              return binaryWrite(this, string, offset, length);
+              return latin1Write(this, string, offset, length);
 
             case 'base64':
               // Warning: maxLength not taken into account in base64Write
@@ -58673,7 +58719,7 @@
         return ret;
       }
 
-      function binarySlice(buf, start, end) {
+      function latin1Slice(buf, start, end) {
         var ret = '';
         end = Math.min(buf.length, end);
 
@@ -59486,7 +59532,7 @@
         return outData;
       };
 
-      CipherBase.prototype._toString = function (value, enc, final) {
+      CipherBase.prototype._toString = function (value, enc, fin) {
         if (!this._decoder) {
           this._decoder = new StringDecoder(enc);
           this._encoding = enc;
@@ -59495,13 +59541,13 @@
           throw new Error('can\'t switch encodings');
         }
         var out = this._decoder.write(value);
-        if (final) {
+        if (fin) {
           out += this._decoder.end();
         }
         return out;
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 111, "inherits": 163, "stream": 211, "string_decoder": 212 }], 113: [function (require, module, exports) {
+  }, { "buffer": 111, "inherits": 163, "stream": 214, "string_decoder": 215 }], 113: [function (require, module, exports) {
     (function (Buffer) {
       var base58 = require('bs58');
       var createHash = require('create-hash');
@@ -59884,7 +59930,7 @@
         return new Hash(sha(alg));
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./md5": 118, "buffer": 111, "cipher-base": 112, "inherits": 163, "ripemd160": 195, "sha.js": 204 }], 117: [function (require, module, exports) {
+  }, { "./md5": 118, "buffer": 111, "cipher-base": 112, "inherits": 163, "ripemd160": 197, "sha.js": 207 }], 117: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -60140,7 +60186,7 @@
         return new Hmac(alg, key);
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 111, "create-hash/browser": 116, "inherits": 163, "stream": 211 }], 120: [function (require, module, exports) {
+  }, { "buffer": 111, "create-hash/browser": 116, "inherits": 163, "stream": 214 }], 120: [function (require, module, exports) {
     'use strict';
 
     exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes');
@@ -60180,7 +60226,7 @@
         throw new Error(['sorry, ' + name + ' is not implemented yet', 'we accept pull requests', 'https://github.com/crypto-browserify/crypto-browserify'].join('\n'));
       };
     });
-  }, { "browserify-cipher": 98, "browserify-sign": 104, "browserify-sign/algos": 103, "create-ecdh": 115, "create-hash": 116, "create-hmac": 119, "diffie-hellman": 127, "pbkdf2": 175, "public-encrypt": 178, "randombytes": 184 }], 121: [function (require, module, exports) {
+  }, { "browserify-cipher": 98, "browserify-sign": 104, "browserify-sign/algos": 103, "create-ecdh": 115, "create-hash": 116, "create-hmac": 119, "diffie-hellman": 127, "pbkdf2": 175, "public-encrypt": 179, "randombytes": 185 }], 121: [function (require, module, exports) {
     'use strict';
 
     exports.utils = require('./des/utils');
@@ -60971,7 +61017,7 @@
         }
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./generatePrime": 129, "bn.js": 80, "buffer": 111, "miller-rabin": 169, "randombytes": 184 }], 129: [function (require, module, exports) {
+  }, { "./generatePrime": 129, "bn.js": 80, "buffer": 111, "miller-rabin": 169, "randombytes": 185 }], 129: [function (require, module, exports) {
     var randomBytes = require('randombytes');
     module.exports = findPrime;
     findPrime.simpleSieve = simpleSieve;
@@ -61069,7 +61115,7 @@
         }
       }
     }
-  }, { "bn.js": 80, "miller-rabin": 169, "randombytes": 184 }], 130: [function (require, module, exports) {
+  }, { "bn.js": 80, "miller-rabin": 169, "randombytes": 185 }], 130: [function (require, module, exports) {
     module.exports = {
       "modp1": {
         "gen": "02",
@@ -63224,12 +63270,13 @@
       // 1.1. Let x = r + jn.
       if (isSecondKey) r = this.curve.pointFromX(r.add(this.curve.n), isYOdd);else r = this.curve.pointFromX(r, isYOdd);
 
-      var eNeg = n.sub(e);
+      var rInv = signature.r.invm(n);
+      var s1 = n.sub(e).mul(rInv).umod(n);
+      var s2 = s.mul(rInv).umod(n);
 
       // 1.6.1 Compute Q = r^-1 (sR -  eG)
       //               Q = r^-1 (sR + -eG)
-      var rInv = signature.r.invm(n);
-      return this.g.mulAdd(eNeg, r, s).mul(rInv);
+      return this.g.mulAdd(s1, r, s2);
     };
 
     EC.prototype.getKeyRecoveryParam = function (e, signature, Q, enc) {
@@ -63995,22 +64042,22 @@
     utils.intFromLE = intFromLE;
   }, { "bn.js": 80 }], 147: [function (require, module, exports) {
     module.exports = {
-      "_args": [["elliptic@^6.0.0", "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign"]],
+      "_args": [["elliptic@^6.0.0", "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"]],
       "_from": "elliptic@>=6.0.0 <7.0.0",
-      "_id": "elliptic@6.3.1",
+      "_id": "elliptic@6.3.2",
       "_inCache": true,
       "_installable": true,
       "_location": "/elliptic",
-      "_nodeVersion": "6.0.0",
+      "_nodeVersion": "6.3.0",
       "_npmOperationalInternal": {
         "host": "packages-16-east.internal.npmjs.com",
-        "tmp": "tmp/elliptic-6.3.1.tgz_1465921413402_0.5202967382501811"
+        "tmp": "tmp/elliptic-6.3.2.tgz_1473938837205_0.3108903462998569"
       },
       "_npmUser": {
         "email": "fedor@indutny.com",
         "name": "indutny"
       },
-      "_npmVersion": "3.8.6",
+      "_npmVersion": "3.10.3",
       "_phantomChildren": {},
       "_requested": {
         "name": "elliptic",
@@ -64021,11 +64068,11 @@
         "type": "range"
       },
       "_requiredBy": ["/browserify-sign", "/create-ecdh", "/secp256k1"],
-      "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.1.tgz",
-      "_shasum": "17781f2109ab0ec686b146bdcff5d2e8c6aeceda",
+      "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.2.tgz",
+      "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
       "_shrinkwrap": null,
       "_spec": "elliptic@^6.0.0",
-      "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign",
+      "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
       "author": {
         "email": "fedor@indutny.com",
         "name": "Fedor Indutny"
@@ -64057,11 +64104,11 @@
       },
       "directories": {},
       "dist": {
-        "shasum": "17781f2109ab0ec686b146bdcff5d2e8c6aeceda",
-        "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.1.tgz"
+        "shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
+        "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.2.tgz"
       },
       "files": ["lib"],
-      "gitHead": "c53f5cf3d832c0073eb4a4ed423a464cbce68f3e",
+      "gitHead": "cbace4683a4a548dc0306ef36756151a20299cd5",
       "homepage": "https://github.com/indutny/elliptic",
       "keywords": ["EC", "Elliptic", "curve", "Cryptography"],
       "license": "MIT",
@@ -64085,7 +64132,7 @@
         "unit": "istanbul test _mocha --reporter=spec test/index.js",
         "version": "grunt dist && git add dist/"
       },
-      "version": "6.3.1"
+      "version": "6.3.2"
     };
   }, {}], 148: [function (require, module, exports) {
     module.exports = {
@@ -65281,7 +65328,7 @@
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 74, "bn.js": 80, "buffer": 111, "create-hash": 116, "keccakjs": 167, "rlp": 196, "secp256k1": 198 }], 152: [function (require, module, exports) {
+  }, { "assert": 74, "bn.js": 80, "buffer": 111, "create-hash": 116, "keccakjs": 167, "rlp": 198, "secp256k1": 200 }], 152: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -66738,7 +66785,7 @@
       HDKey.HARDENED_OFFSET = HARDENED_OFFSET;
       module.exports = HDKey;
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 74, "buffer": 111, "coinstring": 113, "crypto": 120, "secp256k1": 198 }], 161: [function (require, module, exports) {
+  }, { "assert": 74, "buffer": 111, "coinstring": 113, "crypto": 120, "secp256k1": 200 }], 161: [function (require, module, exports) {
     exports.read = function (buffer, offset, isLE, mLen, nBytes) {
       var e, m;
       var eLen = nBytes * 8 - mLen - 1;
@@ -68828,49 +68875,40 @@
       }
     }).call(this, require("buffer").Buffer);
   }, { "./aesid.json": 171, "./asn1": 172, "./fixProc": 173, "browserify-aes": 85, "buffer": 111, "pbkdf2": 175 }], 175: [function (require, module, exports) {
-    (function (Buffer) {
+    (function (process, Buffer) {
       var createHmac = require('create-hmac');
-      var MAX_ALLOC = Math.pow(2, 30) - 1; // default in iojs
+      var checkParameters = require('./precondition');
 
-      exports.pbkdf2 = pbkdf2;
-      function pbkdf2(password, salt, iterations, keylen, digest, callback) {
+      exports.pbkdf2 = function (password, salt, iterations, keylen, digest, callback) {
         if (typeof digest === 'function') {
           callback = digest;
           digest = undefined;
         }
 
-        if (typeof callback !== 'function') {
-          throw new Error('No callback provided to pbkdf2');
-        }
+        checkParameters(iterations, keylen);
+        if (typeof callback !== 'function') throw new Error('No callback provided to pbkdf2');
 
-        var result = pbkdf2Sync(password, salt, iterations, keylen, digest);
         setTimeout(function () {
-          callback(undefined, result);
+          callback(null, exports.pbkdf2Sync(password, salt, iterations, keylen, digest));
         });
+      };
+
+      var defaultEncoding;
+      if (process.browser) {
+        defaultEncoding = 'utf-8';
+      } else {
+        var pVersionMajor = parseInt(process.version.split('.')[0].slice(1), 10);
+
+        defaultEncoding = pVersionMajor >= 6 ? 'utf-8' : 'binary';
       }
 
-      exports.pbkdf2Sync = pbkdf2Sync;
-      function pbkdf2Sync(password, salt, iterations, keylen, digest) {
-        if (typeof iterations !== 'number') {
-          throw new TypeError('Iterations not a number');
-        }
+      exports.pbkdf2Sync = function (password, salt, iterations, keylen, digest) {
+        if (!Buffer.isBuffer(password)) password = new Buffer(password, defaultEncoding);
+        if (!Buffer.isBuffer(salt)) salt = new Buffer(salt, defaultEncoding);
 
-        if (iterations < 0) {
-          throw new TypeError('Bad iterations');
-        }
-
-        if (typeof keylen !== 'number') {
-          throw new TypeError('Key length not a number');
-        }
-
-        if (keylen < 0 || keylen > MAX_ALLOC) {
-          throw new TypeError('Bad key length');
-        }
+        checkParameters(iterations, keylen);
 
         digest = digest || 'sha1';
-
-        if (!Buffer.isBuffer(password)) password = new Buffer(password, 'binary');
-        if (!Buffer.isBuffer(salt)) salt = new Buffer(salt, 'binary');
 
         var hLen;
         var l = 1;
@@ -68896,10 +68934,7 @@
 
           for (var j = 1; j < iterations; j++) {
             U = createHmac(digest, password).update(U).digest();
-
-            for (var k = 0; k < hLen; k++) {
-              T[k] ^= U[k];
-            }
+            for (var k = 0; k < hLen; k++) T[k] ^= U[k];
           }
 
           var destPos = (i - 1) * hLen;
@@ -68908,9 +68943,29 @@
         }
 
         return DK;
+      };
+    }).call(this, require('_process'), require("buffer").Buffer);
+  }, { "./precondition": 176, "_process": 178, "buffer": 111, "create-hmac": 119 }], 176: [function (require, module, exports) {
+    var MAX_ALLOC = Math.pow(2, 30) - 1; // default in iojs
+    module.exports = function (iterations, keylen) {
+      if (typeof iterations !== 'number') {
+        throw new TypeError('Iterations not a number');
       }
-    }).call(this, require("buffer").Buffer);
-  }, { "buffer": 111, "create-hmac": 119 }], 176: [function (require, module, exports) {
+
+      if (iterations < 0) {
+        throw new TypeError('Bad iterations');
+      }
+
+      if (typeof keylen !== 'number') {
+        throw new TypeError('Key length not a number');
+      }
+
+      if (keylen < 0 || keylen > MAX_ALLOC || keylen !== keylen) {
+        /* eslint no-self-compare: 0 */
+        throw new TypeError('Bad key length');
+      }
+    };
+  }, {}], 177: [function (require, module, exports) {
     (function (process) {
       'use strict';
 
@@ -68954,7 +69009,7 @@
         }
       }
     }).call(this, require('_process'));
-  }, { "_process": 177 }], 177: [function (require, module, exports) {
+  }, { "_process": 178 }], 178: [function (require, module, exports) {
     // shim for using process in browser
     var process = module.exports = {};
 
@@ -68966,34 +69021,77 @@
     var cachedSetTimeout;
     var cachedClearTimeout;
 
+    function defaultSetTimout() {
+      throw new Error('setTimeout has not been defined');
+    }
+    function defaultClearTimeout() {
+      throw new Error('clearTimeout has not been defined');
+    }
     (function () {
       try {
-        cachedSetTimeout = setTimeout;
+        if (typeof setTimeout === 'function') {
+          cachedSetTimeout = setTimeout;
+        } else {
+          cachedSetTimeout = defaultSetTimout;
+        }
       } catch (e) {
-        cachedSetTimeout = function () {
-          throw new Error('setTimeout is not defined');
-        };
+        cachedSetTimeout = defaultSetTimout;
       }
       try {
-        cachedClearTimeout = clearTimeout;
+        if (typeof clearTimeout === 'function') {
+          cachedClearTimeout = clearTimeout;
+        } else {
+          cachedClearTimeout = defaultClearTimeout;
+        }
       } catch (e) {
-        cachedClearTimeout = function () {
-          throw new Error('clearTimeout is not defined');
-        };
+        cachedClearTimeout = defaultClearTimeout;
       }
     })();
     function runTimeout(fun) {
       if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
         return setTimeout(fun, 0);
-      } else {
-        return cachedSetTimeout.call(null, fun, 0);
+      }
+      // if setTimeout wasn't available but was latter defined
+      if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+      }
+      try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+      } catch (e) {
+        try {
+          // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+          return cachedSetTimeout.call(null, fun, 0);
+        } catch (e) {
+          // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+          return cachedSetTimeout.call(this, fun, 0);
+        }
       }
     }
     function runClearTimeout(marker) {
       if (cachedClearTimeout === clearTimeout) {
-        clearTimeout(marker);
-      } else {
-        cachedClearTimeout.call(null, marker);
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+      }
+      // if clearTimeout wasn't available but was latter defined
+      if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+      }
+      try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+      } catch (e) {
+        try {
+          // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+          return cachedClearTimeout.call(null, marker);
+        } catch (e) {
+          // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+          // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+          return cachedClearTimeout.call(this, marker);
+        }
       }
     }
     var queue = [];
@@ -69091,7 +69189,7 @@
     process.umask = function () {
       return 0;
     };
-  }, {}], 178: [function (require, module, exports) {
+  }, {}], 179: [function (require, module, exports) {
     exports.publicEncrypt = require('./publicEncrypt');
     exports.privateDecrypt = require('./privateDecrypt');
 
@@ -69102,7 +69200,7 @@
     exports.publicDecrypt = function publicDecrypt(key, buf) {
       return exports.privateDecrypt(key, buf, true);
     };
-  }, { "./privateDecrypt": 180, "./publicEncrypt": 181 }], 179: [function (require, module, exports) {
+  }, { "./privateDecrypt": 181, "./publicEncrypt": 182 }], 180: [function (require, module, exports) {
     (function (Buffer) {
       var createHash = require('create-hash');
       module.exports = function (seed, len) {
@@ -69122,7 +69220,7 @@
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 111, "create-hash": 116 }], 180: [function (require, module, exports) {
+  }, { "buffer": 111, "create-hash": 116 }], 181: [function (require, module, exports) {
     (function (Buffer) {
       var parseKeys = require('parse-asn1');
       var mgf = require('./mgf');
@@ -69233,7 +69331,7 @@
         return dif;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./mgf": 179, "./withPublic": 182, "./xor": 183, "bn.js": 80, "browserify-rsa": 101, "buffer": 111, "create-hash": 116, "parse-asn1": 174 }], 181: [function (require, module, exports) {
+  }, { "./mgf": 180, "./withPublic": 183, "./xor": 184, "bn.js": 80, "browserify-rsa": 101, "buffer": 111, "create-hash": 116, "parse-asn1": 174 }], 182: [function (require, module, exports) {
     (function (Buffer) {
       var parseKeys = require('parse-asn1');
       var randomBytes = require('randombytes');
@@ -69331,7 +69429,7 @@
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./mgf": 179, "./withPublic": 182, "./xor": 183, "bn.js": 80, "browserify-rsa": 101, "buffer": 111, "create-hash": 116, "parse-asn1": 174, "randombytes": 184 }], 182: [function (require, module, exports) {
+  }, { "./mgf": 180, "./withPublic": 183, "./xor": 184, "bn.js": 80, "browserify-rsa": 101, "buffer": 111, "create-hash": 116, "parse-asn1": 174, "randombytes": 185 }], 183: [function (require, module, exports) {
     (function (Buffer) {
       var bn = require('bn.js');
       function withPublic(paddedMsg, key) {
@@ -69340,7 +69438,7 @@
 
       module.exports = withPublic;
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 80, "buffer": 111 }], 183: [function (require, module, exports) {
+  }, { "bn.js": 80, "buffer": 111 }], 184: [function (require, module, exports) {
     module.exports = function xor(a, b) {
       var len = a.length;
       var i = -1;
@@ -69349,7 +69447,7 @@
       }
       return a;
     };
-  }, {}], 184: [function (require, module, exports) {
+  }, {}], 185: [function (require, module, exports) {
     (function (process, global, Buffer) {
       'use strict';
 
@@ -69389,9 +69487,9 @@
         return bytes;
       }
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer);
-  }, { "_process": 177, "buffer": 111 }], 185: [function (require, module, exports) {
+  }, { "_process": 178, "buffer": 111 }], 186: [function (require, module, exports) {
     module.exports = require("./lib/_stream_duplex.js");
-  }, { "./lib/_stream_duplex.js": 186 }], 186: [function (require, module, exports) {
+  }, { "./lib/_stream_duplex.js": 187 }], 187: [function (require, module, exports) {
     // a duplex stream is just a stream that is both readable and writable.
     // Since JS doesn't have multiple prototypal inheritance, this class
     // prototypally inherits from Readable, and then parasitically from
@@ -69467,7 +69565,7 @@
         f(xs[i], i);
       }
     }
-  }, { "./_stream_readable": 188, "./_stream_writable": 190, "core-util-is": 114, "inherits": 163, "process-nextick-args": 176 }], 187: [function (require, module, exports) {
+  }, { "./_stream_readable": 189, "./_stream_writable": 191, "core-util-is": 114, "inherits": 163, "process-nextick-args": 177 }], 188: [function (require, module, exports) {
     // a passthrough stream.
     // basically just the most minimal sort of Transform stream.
     // Every written chunk gets output as-is.
@@ -69494,7 +69592,7 @@
     PassThrough.prototype._transform = function (chunk, encoding, cb) {
       cb(null, chunk);
     };
-  }, { "./_stream_transform": 189, "core-util-is": 114, "inherits": 163 }], 188: [function (require, module, exports) {
+  }, { "./_stream_transform": 190, "core-util-is": 114, "inherits": 163 }], 189: [function (require, module, exports) {
     (function (process) {
       'use strict';
 
@@ -69549,21 +69647,21 @@
       }
       /*</replacement>*/
 
+      var BufferList = require('./internal/streams/BufferList');
       var StringDecoder;
 
       util.inherits(Readable, Stream);
 
-      var hasPrependListener = typeof EE.prototype.prependListener === 'function';
-
       function prependListener(emitter, event, fn) {
-        if (hasPrependListener) return emitter.prependListener(event, fn);
-
-        // This is a brutally ugly hack to make sure that our error handler
-        // is attached before any userland ones.  NEVER DO THIS. This is here
-        // only because this code needs to continue to work with older versions
-        // of Node.js that do not include the prependListener() method. The goal
-        // is to eventually remove this hack.
-        if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
+        if (typeof emitter.prependListener === 'function') {
+          return emitter.prependListener(event, fn);
+        } else {
+          // This is a hack to make sure that our error handler is attached before any
+          // userland ones.  NEVER DO THIS. This is here only because this code needs
+          // to continue to work with older versions of Node.js that do not include
+          // the prependListener() method. The goal is to eventually remove this hack.
+          if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
+        }
       }
 
       var Duplex;
@@ -69587,7 +69685,10 @@
         // cast to ints.
         this.highWaterMark = ~~this.highWaterMark;
 
-        this.buffer = [];
+        // A linked list is used to store data chunks instead of an array because the
+        // linked list can remove elements from the beginning faster than
+        // array.shift()
+        this.buffer = new BufferList();
         this.length = 0;
         this.pipes = null;
         this.pipesCount = 0;
@@ -69750,7 +69851,8 @@
         if (n >= MAX_HWM) {
           n = MAX_HWM;
         } else {
-          // Get the next highest power of 2
+          // Get the next highest power of 2 to prevent increasing hwm excessively in
+          // tiny amounts
           n--;
           n |= n >>> 1;
           n |= n >>> 2;
@@ -69762,44 +69864,34 @@
         return n;
       }
 
+      // This function is designed to be inlinable, so please take care when making
+      // changes to the function body.
       function howMuchToRead(n, state) {
-        if (state.length === 0 && state.ended) return 0;
-
-        if (state.objectMode) return n === 0 ? 0 : 1;
-
-        if (n === null || isNaN(n)) {
-          // only flow one buffer at a time
-          if (state.flowing && state.buffer.length) return state.buffer[0].length;else return state.length;
+        if (n <= 0 || state.length === 0 && state.ended) return 0;
+        if (state.objectMode) return 1;
+        if (n !== n) {
+          // Only flow one buffer at a time
+          if (state.flowing && state.length) return state.buffer.head.data.length;else return state.length;
         }
-
-        if (n <= 0) return 0;
-
-        // If we're asking for more than the target buffer level,
-        // then raise the water mark.  Bump up to the next highest
-        // power of 2, to prevent increasing it excessively in tiny
-        // amounts.
+        // If we're asking for more than the current hwm, then raise the hwm.
         if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);
-
-        // don't have that much.  return null, unless we've ended.
-        if (n > state.length) {
-          if (!state.ended) {
-            state.needReadable = true;
-            return 0;
-          } else {
-            return state.length;
-          }
+        if (n <= state.length) return n;
+        // Don't have enough
+        if (!state.ended) {
+          state.needReadable = true;
+          return 0;
         }
-
-        return n;
+        return state.length;
       }
 
       // you can override either this method, or the async _read(n) below.
       Readable.prototype.read = function (n) {
         debug('read', n);
+        n = parseInt(n, 10);
         var state = this._readableState;
         var nOrig = n;
 
-        if (typeof n !== 'number' || n > 0) state.emittedReadable = false;
+        if (n !== 0) state.emittedReadable = false;
 
         // if we're doing read(0) to trigger a readable event, but we
         // already have a bunch of data in the buffer, then just trigger
@@ -69855,9 +69947,7 @@
         if (state.ended || state.reading) {
           doRead = false;
           debug('reading or ended', doRead);
-        }
-
-        if (doRead) {
+        } else if (doRead) {
           debug('do read');
           state.reading = true;
           state.sync = true;
@@ -69866,11 +69956,10 @@
           // call internal read method
           this._read(state.highWaterMark);
           state.sync = false;
+          // If _read pushed data synchronously, then `reading` will be false,
+          // and we need to re-evaluate how much data we can return to the user.
+          if (!state.reading) n = howMuchToRead(nOrig, state);
         }
-
-        // If _read pushed data synchronously, then `reading` will be false,
-        // and we need to re-evaluate how much data we can return to the user.
-        if (doRead && !state.reading) n = howMuchToRead(nOrig, state);
 
         var ret;
         if (n > 0) ret = fromList(n, state);else ret = null;
@@ -69878,16 +69967,18 @@
         if (ret === null) {
           state.needReadable = true;
           n = 0;
+        } else {
+          state.length -= n;
         }
 
-        state.length -= n;
+        if (state.length === 0) {
+          // If we have nothing in the buffer, then we want to know
+          // as soon as we *do* get something into the buffer.
+          if (!state.ended) state.needReadable = true;
 
-        // If we have nothing in the buffer, then we want to know
-        // as soon as we *do* get something into the buffer.
-        if (state.length === 0 && !state.ended) state.needReadable = true;
-
-        // If we tried to read() past the EOF, then emit end on the next tick.
-        if (nOrig !== n && state.ended && state.length === 0) endReadable(this);
+          // If we tried to read() past the EOF, then emit end on the next tick.
+          if (nOrig !== n && state.ended) endReadable(this);
+        }
 
         if (ret !== null) this.emit('data', ret);
 
@@ -70035,11 +70126,17 @@
           if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();
         }
 
+        // If the user pushes more data while we're writing to dest then we'll end up
+        // in ondata again. However, we only want to increase awaitDrain once because
+        // dest will only emit one 'drain' event for the multiple writes.
+        // => Introduce a guard on increasing awaitDrain.
+        var increasedAwaitDrain = false;
         src.on('data', ondata);
         function ondata(chunk) {
           debug('ondata');
+          increasedAwaitDrain = false;
           var ret = dest.write(chunk);
-          if (false === ret) {
+          if (false === ret && !increasedAwaitDrain) {
             // If the user unpiped during `dest.write()`, it is possible
             // to get stuck in a permanently paused state if that write
             // also returned false.
@@ -70047,6 +70144,7 @@
             if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {
               debug('false write response, pause', src._readableState.awaitDrain);
               src._readableState.awaitDrain++;
+              increasedAwaitDrain = true;
             }
             src.pause();
           }
@@ -70160,18 +70258,14 @@
       Readable.prototype.on = function (ev, fn) {
         var res = Stream.prototype.on.call(this, ev, fn);
 
-        // If listening to data, and it has not explicitly been paused,
-        // then call resume to start the flow of data on the next tick.
-        if (ev === 'data' && false !== this._readableState.flowing) {
-          this.resume();
-        }
-
-        if (ev === 'readable' && !this._readableState.endEmitted) {
+        if (ev === 'data') {
+          // Start flowing on next tick if stream isn't explicitly paused
+          if (this._readableState.flowing !== false) this.resume();
+        } else if (ev === 'readable') {
           var state = this._readableState;
-          if (!state.readableListening) {
-            state.readableListening = true;
+          if (!state.endEmitted && !state.readableListening) {
+            state.readableListening = state.needReadable = true;
             state.emittedReadable = false;
-            state.needReadable = true;
             if (!state.reading) {
               processNextTick(nReadingNextTick, this);
             } else if (state.length) {
@@ -70215,6 +70309,7 @@
         }
 
         state.resumeScheduled = false;
+        state.awaitDrain = 0;
         stream.emit('resume');
         flow(stream);
         if (state.flowing && !state.reading) stream.read(0);
@@ -70233,11 +70328,7 @@
       function flow(stream) {
         var state = stream._readableState;
         debug('flow', state.flowing);
-        if (state.flowing) {
-          do {
-            var chunk = stream.read();
-          } while (null !== chunk && state.flowing);
-        }
+        while (state.flowing && stream.read() !== null) {}
       }
 
       // wrap an old-style stream as the async data source.
@@ -70308,50 +70399,101 @@
 
       // Pluck off n bytes from an array of buffers.
       // Length is the combined lengths of all the buffers in the list.
+      // This function is designed to be inlinable, so please take care when making
+      // changes to the function body.
       function fromList(n, state) {
-        var list = state.buffer;
-        var length = state.length;
-        var stringMode = !!state.decoder;
-        var objectMode = !!state.objectMode;
+        // nothing buffered
+        if (state.length === 0) return null;
+
         var ret;
-
-        // nothing in the list, definitely empty.
-        if (list.length === 0) return null;
-
-        if (length === 0) ret = null;else if (objectMode) ret = list.shift();else if (!n || n >= length) {
-          // read it all, truncate the array.
-          if (stringMode) ret = list.join('');else if (list.length === 1) ret = list[0];else ret = Buffer.concat(list, length);
-          list.length = 0;
+        if (state.objectMode) ret = state.buffer.shift();else if (!n || n >= state.length) {
+          // read it all, truncate the list
+          if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.head.data;else ret = state.buffer.concat(state.length);
+          state.buffer.clear();
         } else {
-          // read just some of it.
-          if (n < list[0].length) {
-            // just take a part of the first list item.
-            // slice is the same for buffers and strings.
-            var buf = list[0];
-            ret = buf.slice(0, n);
-            list[0] = buf.slice(n);
-          } else if (n === list[0].length) {
-            // first list is a perfect match
-            ret = list.shift();
-          } else {
-            // complex case.
-            // we have enough to cover it, but it spans past the first buffer.
-            if (stringMode) ret = '';else ret = bufferShim.allocUnsafe(n);
-
-            var c = 0;
-            for (var i = 0, l = list.length; i < l && c < n; i++) {
-              var _buf = list[0];
-              var cpy = Math.min(n - c, _buf.length);
-
-              if (stringMode) ret += _buf.slice(0, cpy);else _buf.copy(ret, c, 0, cpy);
-
-              if (cpy < _buf.length) list[0] = _buf.slice(cpy);else list.shift();
-
-              c += cpy;
-            }
-          }
+          // read part of list
+          ret = fromListPartial(n, state.buffer, state.decoder);
         }
 
+        return ret;
+      }
+
+      // Extracts only enough buffered data to satisfy the amount requested.
+      // This function is designed to be inlinable, so please take care when making
+      // changes to the function body.
+      function fromListPartial(n, list, hasStrings) {
+        var ret;
+        if (n < list.head.data.length) {
+          // slice is the same for buffers and strings
+          ret = list.head.data.slice(0, n);
+          list.head.data = list.head.data.slice(n);
+        } else if (n === list.head.data.length) {
+          // first chunk is a perfect match
+          ret = list.shift();
+        } else {
+          // result spans more than one buffer
+          ret = hasStrings ? copyFromBufferString(n, list) : copyFromBuffer(n, list);
+        }
+        return ret;
+      }
+
+      // Copies a specified amount of characters from the list of buffered data
+      // chunks.
+      // This function is designed to be inlinable, so please take care when making
+      // changes to the function body.
+      function copyFromBufferString(n, list) {
+        var p = list.head;
+        var c = 1;
+        var ret = p.data;
+        n -= ret.length;
+        while (p = p.next) {
+          var str = p.data;
+          var nb = n > str.length ? str.length : n;
+          if (nb === str.length) ret += str;else ret += str.slice(0, n);
+          n -= nb;
+          if (n === 0) {
+            if (nb === str.length) {
+              ++c;
+              if (p.next) list.head = p.next;else list.head = list.tail = null;
+            } else {
+              list.head = p;
+              p.data = str.slice(nb);
+            }
+            break;
+          }
+          ++c;
+        }
+        list.length -= c;
+        return ret;
+      }
+
+      // Copies a specified amount of bytes from the list of buffered data chunks.
+      // This function is designed to be inlinable, so please take care when making
+      // changes to the function body.
+      function copyFromBuffer(n, list) {
+        var ret = bufferShim.allocUnsafe(n);
+        var p = list.head;
+        var c = 1;
+        p.data.copy(ret);
+        n -= p.data.length;
+        while (p = p.next) {
+          var buf = p.data;
+          var nb = n > buf.length ? buf.length : n;
+          buf.copy(ret, ret.length - n, 0, nb);
+          n -= nb;
+          if (n === 0) {
+            if (nb === buf.length) {
+              ++c;
+              if (p.next) list.head = p.next;else list.head = list.tail = null;
+            } else {
+              list.head = p;
+              p.data = buf.slice(nb);
+            }
+            break;
+          }
+          ++c;
+        }
+        list.length -= c;
         return ret;
       }
 
@@ -70390,7 +70532,7 @@
         return -1;
       }
     }).call(this, require('_process'));
-  }, { "./_stream_duplex": 186, "_process": 177, "buffer": 111, "buffer-shims": 109, "core-util-is": 114, "events": 152, "inherits": 163, "isarray": 165, "process-nextick-args": 176, "string_decoder/": 212, "util": 82 }], 189: [function (require, module, exports) {
+  }, { "./_stream_duplex": 187, "./internal/streams/BufferList": 192, "_process": 178, "buffer": 111, "buffer-shims": 109, "core-util-is": 114, "events": 152, "inherits": 163, "isarray": 165, "process-nextick-args": 177, "string_decoder/": 215, "util": 82 }], 190: [function (require, module, exports) {
     // a transform stream is a readable/writable stream where you do
     // something with the data.  Sometimes it's called a "filter",
     // but that's not a great name for it, since that implies a thing where
@@ -70571,7 +70713,7 @@
 
       return stream.push(null);
     }
-  }, { "./_stream_duplex": 186, "core-util-is": 114, "inherits": 163 }], 190: [function (require, module, exports) {
+  }, { "./_stream_duplex": 187, "core-util-is": 114, "inherits": 163 }], 191: [function (require, module, exports) {
     (function (process) {
       // A bit simpler than readable streams.
       // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -71100,9 +71242,74 @@
         };
       }
     }).call(this, require('_process'));
-  }, { "./_stream_duplex": 186, "_process": 177, "buffer": 111, "buffer-shims": 109, "core-util-is": 114, "events": 152, "inherits": 163, "process-nextick-args": 176, "util-deprecate": 214 }], 191: [function (require, module, exports) {
+  }, { "./_stream_duplex": 187, "_process": 178, "buffer": 111, "buffer-shims": 109, "core-util-is": 114, "events": 152, "inherits": 163, "process-nextick-args": 177, "util-deprecate": 217 }], 192: [function (require, module, exports) {
+    'use strict';
+
+    var Buffer = require('buffer').Buffer;
+    /*<replacement>*/
+    var bufferShim = require('buffer-shims');
+    /*</replacement>*/
+
+    module.exports = BufferList;
+
+    function BufferList() {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+    }
+
+    BufferList.prototype.push = function (v) {
+      var entry = { data: v, next: null };
+      if (this.length > 0) this.tail.next = entry;else this.head = entry;
+      this.tail = entry;
+      ++this.length;
+    };
+
+    BufferList.prototype.unshift = function (v) {
+      var entry = { data: v, next: this.head };
+      if (this.length === 0) this.tail = entry;
+      this.head = entry;
+      ++this.length;
+    };
+
+    BufferList.prototype.shift = function () {
+      if (this.length === 0) return;
+      var ret = this.head.data;
+      if (this.length === 1) this.head = this.tail = null;else this.head = this.head.next;
+      --this.length;
+      return ret;
+    };
+
+    BufferList.prototype.clear = function () {
+      this.head = this.tail = null;
+      this.length = 0;
+    };
+
+    BufferList.prototype.join = function (s) {
+      if (this.length === 0) return '';
+      var p = this.head;
+      var ret = '' + p.data;
+      while (p = p.next) {
+        ret += s + p.data;
+      }return ret;
+    };
+
+    BufferList.prototype.concat = function (n) {
+      if (this.length === 0) return bufferShim.alloc(0);
+      if (this.length === 1) return this.head.data;
+      var ret = bufferShim.allocUnsafe(n >>> 0);
+      var p = this.head;
+      var i = 0;
+      while (p) {
+        p.data.copy(ret, i);
+        i += p.data.length;
+        p = p.next;
+      }
+      return ret;
+    };
+  }, { "buffer": 111, "buffer-shims": 109 }], 193: [function (require, module, exports) {
     module.exports = require("./lib/_stream_passthrough.js");
-  }, { "./lib/_stream_passthrough.js": 187 }], 192: [function (require, module, exports) {
+  }, { "./lib/_stream_passthrough.js": 188 }], 194: [function (require, module, exports) {
     (function (process) {
       var Stream = function () {
         try {
@@ -71121,11 +71328,11 @@
         module.exports = Stream;
       }
     }).call(this, require('_process'));
-  }, { "./lib/_stream_duplex.js": 186, "./lib/_stream_passthrough.js": 187, "./lib/_stream_readable.js": 188, "./lib/_stream_transform.js": 189, "./lib/_stream_writable.js": 190, "_process": 177 }], 193: [function (require, module, exports) {
+  }, { "./lib/_stream_duplex.js": 187, "./lib/_stream_passthrough.js": 188, "./lib/_stream_readable.js": 189, "./lib/_stream_transform.js": 190, "./lib/_stream_writable.js": 191, "_process": 178 }], 195: [function (require, module, exports) {
     module.exports = require("./lib/_stream_transform.js");
-  }, { "./lib/_stream_transform.js": 189 }], 194: [function (require, module, exports) {
+  }, { "./lib/_stream_transform.js": 190 }], 196: [function (require, module, exports) {
     module.exports = require("./lib/_stream_writable.js");
-  }, { "./lib/_stream_writable.js": 190 }], 195: [function (require, module, exports) {
+  }, { "./lib/_stream_writable.js": 191 }], 197: [function (require, module, exports) {
     (function (Buffer) {
       /*
       CryptoJS v3.1.2
@@ -71309,7 +71516,7 @@
 
       module.exports = ripemd160;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 111 }], 196: [function (require, module, exports) {
+  }, { "buffer": 111 }], 198: [function (require, module, exports) {
     (function (Buffer) {
       const assert = require('assert');
       /**
@@ -71541,7 +71748,7 @@
         return v;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 74, "buffer": 111 }], 197: [function (require, module, exports) {
+  }, { "assert": 74, "buffer": 111 }], 199: [function (require, module, exports) {
     (function (Buffer) {
       var crypto = require('crypto');
       /* eslint-disable camelcase */
@@ -71724,11 +71931,11 @@
 
       module.exports = scrypt;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 111, "crypto": 120 }], 198: [function (require, module, exports) {
+  }, { "buffer": 111, "crypto": 120 }], 200: [function (require, module, exports) {
     'use strict';
 
     module.exports = require('./lib')(require('./lib/elliptic'));
-  }, { "./lib": 201, "./lib/elliptic": 200 }], 199: [function (require, module, exports) {
+  }, { "./lib": 204, "./lib/elliptic": 203 }], 201: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -71776,7 +71983,171 @@
         if (number <= x || number >= y) throw RangeError(message);
       };
     }).call(this, { "isBuffer": require("../../is-buffer/index.js") });
-  }, { "../../is-buffer/index.js": 164 }], 200: [function (require, module, exports) {
+  }, { "../../is-buffer/index.js": 164 }], 202: [function (require, module, exports) {
+    (function (Buffer) {
+      'use strict';
+
+      var bip66 = require('bip66');
+
+      var EC_PRIVKEY_EXPORT_DER_COMPRESSED = new Buffer([
+      // begin
+      0x30, 0x81, 0xd3, 0x02, 0x01, 0x01, 0x04, 0x20,
+      // private key
+      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+      // middle
+      0xa0, 0x81, 0x85, 0x30, 0x81, 0x82, 0x02, 0x01, 0x01, 0x30, 0x2c, 0x06, 0x07, 0x2a, 0x86, 0x48, 0xcE, 0x3d, 0x01, 0x01, 0x02, 0x21, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfE, 0xff, 0xff, 0xfc, 0x2f, 0x30, 0x06, 0x04, 0x01, 0x00, 0x04, 0x01, 0x07, 0x04, 0x21, 0x02, 0x79, 0xbE, 0x66, 0x7E, 0xf9, 0xdc, 0xbb, 0xac, 0x55, 0xa0, 0x62, 0x95, 0xcE, 0x87, 0x0b, 0x07, 0x02, 0x9b, 0xfc, 0xdb, 0x2d, 0xcE, 0x28, 0xd9, 0x59, 0xf2, 0x81, 0x5b, 0x16, 0xf8, 0x17, 0x98, 0x02, 0x21, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfE, 0xba, 0xaE, 0xdc, 0xE6, 0xaf, 0x48, 0xa0, 0x3b, 0xbf, 0xd2, 0x5E, 0x8c, 0xd0, 0x36, 0x41, 0x41, 0x02, 0x01, 0x01, 0xa1, 0x24, 0x03, 0x22, 0x00,
+      // public key
+      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
+
+      var EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED = new Buffer([
+      // begin
+      0x30, 0x82, 0x01, 0x13, 0x02, 0x01, 0x01, 0x04, 0x20,
+      // private key
+      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+      // middle
+      0xa0, 0x81, 0xa5, 0x30, 0x81, 0xa2, 0x02, 0x01, 0x01, 0x30, 0x2c, 0x06, 0x07, 0x2a, 0x86, 0x48, 0xcE, 0x3d, 0x01, 0x01, 0x02, 0x21, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfE, 0xff, 0xff, 0xfc, 0x2f, 0x30, 0x06, 0x04, 0x01, 0x00, 0x04, 0x01, 0x07, 0x04, 0x41, 0x04, 0x79, 0xbE, 0x66, 0x7E, 0xf9, 0xdc, 0xbb, 0xac, 0x55, 0xa0, 0x62, 0x95, 0xcE, 0x87, 0x0b, 0x07, 0x02, 0x9b, 0xfc, 0xdb, 0x2d, 0xcE, 0x28, 0xd9, 0x59, 0xf2, 0x81, 0x5b, 0x16, 0xf8, 0x17, 0x98, 0x48, 0x3a, 0xda, 0x77, 0x26, 0xa3, 0xc4, 0x65, 0x5d, 0xa4, 0xfb, 0xfc, 0x0E, 0x11, 0x08, 0xa8, 0xfd, 0x17, 0xb4, 0x48, 0xa6, 0x85, 0x54, 0x19, 0x9c, 0x47, 0xd0, 0x8f, 0xfb, 0x10, 0xd4, 0xb8, 0x02, 0x21, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfE, 0xba, 0xaE, 0xdc, 0xE6, 0xaf, 0x48, 0xa0, 0x3b, 0xbf, 0xd2, 0x5E, 0x8c, 0xd0, 0x36, 0x41, 0x41, 0x02, 0x01, 0x01, 0xa1, 0x44, 0x03, 0x42, 0x00,
+      // public key
+      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
+
+      var ZERO_BUFFER_32 = new Buffer([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
+
+      exports.privateKeyExport = function (privateKey, publicKey, compressed) {
+        var result = new Buffer(compressed ? EC_PRIVKEY_EXPORT_DER_COMPRESSED : EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED);
+        privateKey.copy(result, compressed ? 8 : 9);
+        publicKey.copy(result, compressed ? 181 : 214);
+        return result;
+      };
+
+      exports.privateKeyImport = function (privateKey) {
+        var length = privateKey.length;
+
+        // sequence header
+        var index = 0;
+        if (length < index + 1 || privateKey[index] !== 0x30) return;
+        index += 1;
+
+        // sequence length constructor
+        if (length < index + 1 || !(privateKey[index] & 0x80)) return;
+
+        var lenb = privateKey[index] & 0x7f;
+        index += 1;
+        if (lenb < 1 || lenb > 2) return;
+        if (length < index + lenb) return;
+
+        // sequence length
+        var len = privateKey[index + lenb - 1] | (lenb > 1 ? privateKey[index + lenb - 2] << 8 : 0);
+        index += lenb;
+        if (length < index + len) return;
+
+        // sequence element 0: version number (=1)
+        if (length < index + 3 || privateKey[index] !== 0x02 || privateKey[index + 1] !== 0x01 || privateKey[index + 2] !== 0x01) {
+          return;
+        }
+        index += 3;
+
+        // sequence element 1: octet string, up to 32 bytes
+        if (length < index + 2 || privateKey[index] !== 0x04 || privateKey[index + 1] > 0x20 || length < index + 2 + privateKey[index + 1]) {
+          return;
+        }
+
+        return privateKey.slice(index + 2, index + 2 + privateKey[index + 1]);
+      };
+
+      exports.signatureExport = function (sigObj) {
+        var r = Buffer.concat([new Buffer([0]), sigObj.r]);
+        for (var lenR = 33, posR = 0; lenR > 1 && r[posR] === 0x00 && !(r[posR + 1] & 0x80); --lenR, ++posR);
+
+        var s = Buffer.concat([new Buffer([0]), sigObj.s]);
+        for (var lenS = 33, posS = 0; lenS > 1 && s[posS] === 0x00 && !(s[posS + 1] & 0x80); --lenS, ++posS);
+
+        return bip66.encode(r.slice(posR), s.slice(posS));
+      };
+
+      exports.signatureImport = function (sig) {
+        var r = new Buffer(ZERO_BUFFER_32);
+        var s = new Buffer(ZERO_BUFFER_32);
+
+        try {
+          var sigObj = bip66.decode(sig);
+          if (sigObj.r.length === 33 && sigObj.r[0] === 0x00) sigObj.r = sigObj.r.slice(1);
+          if (sigObj.r.length > 32) throw new Error('R length is too long');
+          if (sigObj.s.length === 33 && sigObj.s[0] === 0x00) sigObj.s = sigObj.s.slice(1);
+          if (sigObj.s.length > 32) throw new Error('S length is too long');
+        } catch (err) {
+          return;
+        }
+
+        sigObj.r.copy(r, 32 - sigObj.r.length);
+        sigObj.s.copy(s, 32 - sigObj.s.length);
+
+        return { r: r, s: s };
+      };
+
+      exports.signatureImportLax = function (sig) {
+        var r = new Buffer(ZERO_BUFFER_32);
+        var s = new Buffer(ZERO_BUFFER_32);
+
+        var length = sig.length;
+        var index = 0;
+
+        // sequence tag byte
+        if (sig[index++] !== 0x30) return;
+
+        // sequence length byte
+        var lenbyte = sig[index++];
+        if (lenbyte & 0x80) {
+          index += lenbyte - 0x80;
+          if (index > length) return;
+        }
+
+        // sequence tag byte for r
+        if (sig[index++] !== 0x02) return;
+
+        // length for r
+        var rlen = sig[index++];
+        if (rlen & 0x80) {
+          lenbyte = rlen - 0x80;
+          if (index + lenbyte > length) return;
+          for (; lenbyte > 0 && sig[index] === 0x00; index += 1, lenbyte -= 1);
+          for (rlen = 0; lenbyte > 0; index += 1, lenbyte -= 1) rlen = (rlen << 8) + sig[index];
+        }
+        if (rlen > length - index) return;
+        var rindex = index;
+        index += rlen;
+
+        // sequence tag byte for s
+        if (sig[index++] !== 0x02) return;
+
+        // length for s
+        var slen = sig[index++];
+        if (slen & 0x80) {
+          lenbyte = slen - 0x80;
+          if (index + lenbyte > length) return;
+          for (; lenbyte > 0 && sig[index] === 0x00; index += 1, lenbyte -= 1);
+          for (slen = 0; lenbyte > 0; index += 1, lenbyte -= 1) slen = (slen << 8) + sig[index];
+        }
+        if (slen > length - index) return;
+        var sindex = index;
+        index += slen;
+
+        // ignore leading zeros in r
+        for (; rlen > 0 && sig[rindex] === 0x00; rlen -= 1, rindex += 1);
+        // copy r value
+        if (rlen > 32) return;
+        var rvalue = sig.slice(rindex, rindex + rlen);
+        rvalue.copy(r, 32 - rvalue.length);
+
+        // ignore leading zeros in s
+        for (; slen > 0 && sig[sindex] === 0x00; slen -= 1, sindex += 1);
+        // copy s value
+        if (slen > 32) return;
+        var svalue = sig.slice(sindex, sindex + slen);
+        svalue.copy(s, 32 - svalue.length);
+
+        return { r: r, s: s };
+      };
+    }).call(this, require("buffer").Buffer);
+  }, { "bip66": 79, "buffer": 111 }], 203: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -72021,317 +72392,240 @@
         return new Buffer(pair.pub.mul(scalar).encode(true, compressed));
       };
     }).call(this, require("buffer").Buffer);
-  }, { "../messages.json": 202, "bn.js": 80, "buffer": 111, "create-hash": 116, "elliptic": 131 }], 201: [function (require, module, exports) {
-    (function (Buffer) {
-      'use strict';
+  }, { "../messages.json": 205, "bn.js": 80, "buffer": 111, "create-hash": 116, "elliptic": 131 }], 204: [function (require, module, exports) {
+    'use strict';
 
-      var bip66 = require('bip66');
+    var assert = require('./assert');
+    var der = require('./der');
+    var messages = require('./messages.json');
 
-      var assert = require('./assert');
-      var messages = require('./messages.json');
+    function initCompressedValue(value, defaultValue) {
+      if (value === undefined) return defaultValue;
 
-      var EC_PRIVKEY_EXPORT_DER_COMPRESSED_BEGIN = new Buffer('3081d30201010420', 'hex');
-      var EC_PRIVKEY_EXPORT_DER_COMPRESSED_MIDDLE = new Buffer('a08185308182020101302c06072a8648ce3d0101022100fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f300604010004010704210279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798022100fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141020101a124032200', 'hex');
-      var EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_BEGIN = new Buffer('308201130201010420', 'hex');
-      var EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_MIDDLE = new Buffer('a081a53081a2020101302c06072a8648ce3d0101022100fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f300604010004010704410479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8022100fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141020101a144034200', 'hex');
+      assert.isBoolean(value, messages.COMPRESSED_TYPE_INVALID);
+      return value;
+    }
 
-      var ZERO_BUFFER_32 = new Buffer('0000000000000000000000000000000000000000000000000000000000000000', 'hex');
+    module.exports = function (secp256k1) {
+      return {
+        privateKeyVerify: function (privateKey) {
+          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+          return privateKey.length === 32 && secp256k1.privateKeyVerify(privateKey);
+        },
 
-      function initCompressedValue(value, defaultValue) {
-        if (value === undefined) return defaultValue;
+        privateKeyExport: function (privateKey, compressed) {
+          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
 
-        assert.isBoolean(value, messages.COMPRESSED_TYPE_INVALID);
-        return value;
-      }
+          compressed = initCompressedValue(compressed, true);
+          var publicKey = secp256k1.privateKeyExport(privateKey, compressed);
 
-      module.exports = function (secp256k1) {
-        return {
-          privateKeyVerify: function (privateKey) {
-            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-            return privateKey.length === 32 && secp256k1.privateKeyVerify(privateKey);
-          },
+          return der.privateKeyExport(privateKey, publicKey, compressed);
+        },
 
-          privateKeyExport: function (privateKey, compressed) {
-            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+        privateKeyImport: function (privateKey) {
+          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
 
-            compressed = initCompressedValue(compressed, true);
+          privateKey = der.privateKeyImport(privateKey);
+          if (privateKey && privateKey.length === 32 && secp256k1.privateKeyVerify(privateKey)) return privateKey;
 
-            var publicKey = secp256k1.privateKeyExport(privateKey, compressed);
+          throw new Error(messages.EC_PRIVATE_KEY_IMPORT_DER_FAIL);
+        },
 
-            var result = new Buffer(compressed ? 214 : 279);
-            var targetStart = 0;
-            if (compressed) {
-              EC_PRIVKEY_EXPORT_DER_COMPRESSED_BEGIN.copy(result, targetStart);
-              targetStart += EC_PRIVKEY_EXPORT_DER_COMPRESSED_BEGIN.length;
+        privateKeyTweakAdd: function (privateKey, tweak) {
+          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
 
-              privateKey.copy(result, targetStart);
-              targetStart += privateKey.length;
+          assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
+          assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
 
-              EC_PRIVKEY_EXPORT_DER_COMPRESSED_MIDDLE.copy(result, targetStart);
-              targetStart += EC_PRIVKEY_EXPORT_DER_COMPRESSED_MIDDLE.length;
+          return secp256k1.privateKeyTweakAdd(privateKey, tweak);
+        },
 
-              publicKey.copy(result, targetStart);
-            } else {
-              EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_BEGIN.copy(result, targetStart);
-              targetStart += EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_BEGIN.length;
+        privateKeyTweakMul: function (privateKey, tweak) {
+          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
 
-              privateKey.copy(result, targetStart);
-              targetStart += privateKey.length;
+          assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
+          assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
 
-              EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_MIDDLE.copy(result, targetStart);
-              targetStart += EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_MIDDLE.length;
+          return secp256k1.privateKeyTweakMul(privateKey, tweak);
+        },
 
-              publicKey.copy(result, targetStart);
-            }
+        publicKeyCreate: function (privateKey, compressed) {
+          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
 
-            return result;
-          },
+          compressed = initCompressedValue(compressed, true);
 
-          privateKeyImport: function (privateKey) {
-            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+          return secp256k1.publicKeyCreate(privateKey, compressed);
+        },
 
-            do {
-              var length = privateKey.length;
+        publicKeyConvert: function (publicKey, compressed) {
+          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
 
-              // sequence header
-              var index = 0;
-              if (length < index + 1 || privateKey[index] !== 0x30) break;
-              index += 1;
+          compressed = initCompressedValue(compressed, true);
 
-              // sequence length constructor
-              if (length < index + 1 || !(privateKey[index] & 0x80)) break;
+          return secp256k1.publicKeyConvert(publicKey, compressed);
+        },
 
-              var lenb = privateKey[index] & 0x7f;
-              index += 1;
-              if (lenb < 1 || lenb > 2) break;
-              if (length < index + lenb) break;
+        publicKeyVerify: function (publicKey) {
+          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+          return secp256k1.publicKeyVerify(publicKey);
+        },
 
-              // sequence length
-              var len = privateKey[index + lenb - 1] | (lenb > 1 ? privateKey[index + lenb - 2] << 8 : 0);
-              index += lenb;
-              if (length < index + len) break;
+        publicKeyTweakAdd: function (publicKey, tweak, compressed) {
+          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
 
-              // sequence element 0: version number (=1)
-              if (length < index + 3 || privateKey[index] !== 0x02 || privateKey[index + 1] !== 0x01 || privateKey[index + 2] !== 0x01) {
-                break;
-              }
-              index += 3;
+          assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
+          assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
 
-              // sequence element 1: octet string, up to 32 bytes
-              if (length < index + 2 || privateKey[index] !== 0x04 || privateKey[index + 1] > 0x20 || length < index + 2 + privateKey[index + 1]) {
-                break;
-              }
+          compressed = initCompressedValue(compressed, true);
 
-              privateKey = privateKey.slice(index + 2, index + 2 + privateKey[index + 1]);
-              if (privateKey.length === 32 && secp256k1.privateKeyVerify(privateKey)) return privateKey;
-            } while (false);
+          return secp256k1.publicKeyTweakAdd(publicKey, tweak, compressed);
+        },
 
-            throw new Error(messages.EC_PRIVATE_KEY_IMPORT_DER_FAIL);
-          },
+        publicKeyTweakMul: function (publicKey, tweak, compressed) {
+          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
 
-          privateKeyTweakAdd: function (privateKey, tweak) {
-            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
-
-            assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
-            assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
-
-            return secp256k1.privateKeyTweakAdd(privateKey, tweak);
-          },
-
-          privateKeyTweakMul: function (privateKey, tweak) {
-            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
-
-            assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
-            assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
-
-            return secp256k1.privateKeyTweakMul(privateKey, tweak);
-          },
-
-          publicKeyCreate: function (privateKey, compressed) {
-            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
-
-            compressed = initCompressedValue(compressed, true);
-
-            return secp256k1.publicKeyCreate(privateKey, compressed);
-          },
-
-          publicKeyConvert: function (publicKey, compressed) {
-            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-            compressed = initCompressedValue(compressed, true);
-
-            return secp256k1.publicKeyConvert(publicKey, compressed);
-          },
-
-          publicKeyVerify: function (publicKey) {
-            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-            return secp256k1.publicKeyVerify(publicKey);
-          },
-
-          publicKeyTweakAdd: function (publicKey, tweak, compressed) {
-            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-            assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
-            assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
-
-            compressed = initCompressedValue(compressed, true);
-
-            return secp256k1.publicKeyTweakAdd(publicKey, tweak, compressed);
-          },
-
-          publicKeyTweakMul: function (publicKey, tweak, compressed) {
-            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-            assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
-            assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
-
-            compressed = initCompressedValue(compressed, true);
-
-            return secp256k1.publicKeyTweakMul(publicKey, tweak, compressed);
-          },
-
-          publicKeyCombine: function (publicKeys, compressed) {
-            assert.isArray(publicKeys, messages.EC_PUBLIC_KEYS_TYPE_INVALID);
-            assert.isLengthGTZero(publicKeys, messages.EC_PUBLIC_KEYS_LENGTH_INVALID);
-            for (var i = 0; i < publicKeys.length; ++i) {
-              assert.isBuffer(publicKeys[i], messages.EC_PUBLIC_KEY_TYPE_INVALID);
-              assert.isBufferLength2(publicKeys[i], 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-            }
-
-            compressed = initCompressedValue(compressed, true);
-
-            return secp256k1.publicKeyCombine(publicKeys, compressed);
-          },
-
-          signatureNormalize: function (signature) {
-            assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
-            assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
-
-            return secp256k1.signatureNormalize(signature);
-          },
-
-          signatureExport: function (signature) {
-            assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
-            assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
-
-            var sigObj = secp256k1.signatureExport(signature);
-
-            var r = Buffer.concat([new Buffer([0]), sigObj.r]);
-            for (var lenR = 33, posR = 0; lenR > 1 && r[posR] === 0x00 && !(r[posR + 1] & 0x80); --lenR, ++posR);
-
-            var s = Buffer.concat([new Buffer([0]), sigObj.s]);
-            for (var lenS = 33, posS = 0; lenS > 1 && s[posS] === 0x00 && !(s[posS + 1] & 0x80); --lenS, ++posS);
-
-            return bip66.encode(r.slice(posR), s.slice(posS));
-          },
-
-          signatureImport: function (sig) {
-            assert.isBuffer(sig, messages.ECDSA_SIGNATURE_TYPE_INVALID);
-            assert.isLengthGTZero(sig, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
-
-            try {
-              var sigObj = bip66.decode(sig);
-              if (sigObj.r.length === 33 && sigObj.r[0] === 0x00) sigObj.r = sigObj.r.slice(1);
-              if (sigObj.r.length > 32) throw new Error('R length is too long');
-              if (sigObj.s.length === 33 && sigObj.s[0] === 0x00) sigObj.s = sigObj.s.slice(1);
-              if (sigObj.s.length > 32) throw new Error('S length is too long');
-            } catch (err) {
-              throw new Error(messages.ECDSA_SIGNATURE_PARSE_DER_FAIL);
-            }
-
-            return secp256k1.signatureImport({
-              r: Buffer.concat([ZERO_BUFFER_32, sigObj.r]).slice(-32),
-              s: Buffer.concat([ZERO_BUFFER_32, sigObj.s]).slice(-32)
-            });
-          },
-
-          sign: function (message, privateKey, options) {
-            assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
-            assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
-
-            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
-
-            var data = null;
-            var noncefn = null;
-            if (options !== undefined) {
-              assert.isObject(options, messages.OPTIONS_TYPE_INVALID);
-
-              if (options.data !== undefined) {
-                assert.isBuffer(options.data, messages.OPTIONS_DATA_TYPE_INVALID);
-                assert.isBufferLength(options.data, 32, messages.OPTIONS_DATA_LENGTH_INVALID);
-                data = options.data;
-              }
-
-              if (options.noncefn !== undefined) {
-                assert.isFunction(options.noncefn, messages.OPTIONS_NONCEFN_TYPE_INVALID);
-                noncefn = options.noncefn;
-              }
-            }
-
-            return secp256k1.sign(message, privateKey, noncefn, data);
-          },
-
-          verify: function (message, signature, publicKey) {
-            assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
-            assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
-
-            assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
-            assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
-
-            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-            return secp256k1.verify(message, signature, publicKey);
-          },
-
-          recover: function (message, signature, recovery, compressed) {
-            assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
-            assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
-
-            assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
-            assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
-
-            assert.isNumber(recovery, messages.RECOVERY_ID_TYPE_INVALID);
-            assert.isNumberInInterval(recovery, -1, 4, messages.RECOVERY_ID_VALUE_INVALID);
-
-            compressed = initCompressedValue(compressed, true);
-
-            return secp256k1.recover(message, signature, recovery, compressed);
-          },
-
-          ecdh: function (publicKey, privateKey) {
-            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
-
-            return secp256k1.ecdh(publicKey, privateKey);
-          },
-
-          ecdhUnsafe: function (publicKey, privateKey, compressed) {
-            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
-
-            compressed = initCompressedValue(compressed, true);
-
-            return secp256k1.ecdhUnsafe(publicKey, privateKey, compressed);
+          assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
+          assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
+
+          compressed = initCompressedValue(compressed, true);
+
+          return secp256k1.publicKeyTweakMul(publicKey, tweak, compressed);
+        },
+
+        publicKeyCombine: function (publicKeys, compressed) {
+          assert.isArray(publicKeys, messages.EC_PUBLIC_KEYS_TYPE_INVALID);
+          assert.isLengthGTZero(publicKeys, messages.EC_PUBLIC_KEYS_LENGTH_INVALID);
+          for (var i = 0; i < publicKeys.length; ++i) {
+            assert.isBuffer(publicKeys[i], messages.EC_PUBLIC_KEY_TYPE_INVALID);
+            assert.isBufferLength2(publicKeys[i], 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
           }
-        };
+
+          compressed = initCompressedValue(compressed, true);
+
+          return secp256k1.publicKeyCombine(publicKeys, compressed);
+        },
+
+        signatureNormalize: function (signature) {
+          assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
+          assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
+
+          return secp256k1.signatureNormalize(signature);
+        },
+
+        signatureExport: function (signature) {
+          assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
+          assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
+
+          var sigObj = secp256k1.signatureExport(signature);
+          return der.signatureExport(sigObj);
+        },
+
+        signatureImport: function (sig) {
+          assert.isBuffer(sig, messages.ECDSA_SIGNATURE_TYPE_INVALID);
+          assert.isLengthGTZero(sig, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
+
+          var sigObj = der.signatureImport(sig);
+          if (sigObj) return secp256k1.signatureImport(sigObj);
+
+          throw new Error(messages.ECDSA_SIGNATURE_PARSE_DER_FAIL);
+        },
+
+        signatureImportLax: function (sig) {
+          assert.isBuffer(sig, messages.ECDSA_SIGNATURE_TYPE_INVALID);
+          assert.isLengthGTZero(sig, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
+
+          var sigObj = der.signatureImportLax(sig);
+          if (sigObj) return secp256k1.signatureImport(sigObj);
+
+          throw new Error(messages.ECDSA_SIGNATURE_PARSE_DER_FAIL);
+        },
+
+        sign: function (message, privateKey, options) {
+          assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
+          assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
+
+          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+
+          var data = null;
+          var noncefn = null;
+          if (options !== undefined) {
+            assert.isObject(options, messages.OPTIONS_TYPE_INVALID);
+
+            if (options.data !== undefined) {
+              assert.isBuffer(options.data, messages.OPTIONS_DATA_TYPE_INVALID);
+              assert.isBufferLength(options.data, 32, messages.OPTIONS_DATA_LENGTH_INVALID);
+              data = options.data;
+            }
+
+            if (options.noncefn !== undefined) {
+              assert.isFunction(options.noncefn, messages.OPTIONS_NONCEFN_TYPE_INVALID);
+              noncefn = options.noncefn;
+            }
+          }
+
+          return secp256k1.sign(message, privateKey, noncefn, data);
+        },
+
+        verify: function (message, signature, publicKey) {
+          assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
+          assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
+
+          assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
+          assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
+
+          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
+
+          return secp256k1.verify(message, signature, publicKey);
+        },
+
+        recover: function (message, signature, recovery, compressed) {
+          assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
+          assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
+
+          assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
+          assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
+
+          assert.isNumber(recovery, messages.RECOVERY_ID_TYPE_INVALID);
+          assert.isNumberInInterval(recovery, -1, 4, messages.RECOVERY_ID_VALUE_INVALID);
+
+          compressed = initCompressedValue(compressed, true);
+
+          return secp256k1.recover(message, signature, recovery, compressed);
+        },
+
+        ecdh: function (publicKey, privateKey) {
+          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
+
+          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+
+          return secp256k1.ecdh(publicKey, privateKey);
+        },
+
+        ecdhUnsafe: function (publicKey, privateKey, compressed) {
+          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
+
+          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+
+          compressed = initCompressedValue(compressed, true);
+
+          return secp256k1.ecdhUnsafe(publicKey, privateKey, compressed);
+        }
       };
-    }).call(this, require("buffer").Buffer);
-  }, { "./assert": 199, "./messages.json": 202, "bip66": 79, "buffer": 111 }], 202: [function (require, module, exports) {
+    };
+  }, { "./assert": 201, "./der": 202, "./messages.json": 205 }], 205: [function (require, module, exports) {
     module.exports = {
       "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
       "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -72368,7 +72662,7 @@
       "TWEAK_TYPE_INVALID": "tweak should be a Buffer",
       "TWEAK_LENGTH_INVALID": "tweak length is invalid"
     };
-  }, {}], 203: [function (require, module, exports) {
+  }, {}], 206: [function (require, module, exports) {
     (function (Buffer) {
       // prototype class for hash functions
       function Hash(blockSize, finalSize) {
@@ -72440,7 +72734,7 @@
 
       module.exports = Hash;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 111 }], 204: [function (require, module, exports) {
+  }, { "buffer": 111 }], 207: [function (require, module, exports) {
     var exports = module.exports = function SHA(algorithm) {
       algorithm = algorithm.toLowerCase();
 
@@ -72456,7 +72750,7 @@
     exports.sha256 = require('./sha256');
     exports.sha384 = require('./sha384');
     exports.sha512 = require('./sha512');
-  }, { "./sha": 205, "./sha1": 206, "./sha224": 207, "./sha256": 208, "./sha384": 209, "./sha512": 210 }], 205: [function (require, module, exports) {
+  }, { "./sha": 208, "./sha1": 209, "./sha224": 210, "./sha256": 211, "./sha384": 212, "./sha512": 213 }], 208: [function (require, module, exports) {
     (function (Buffer) {
       /*
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -72550,7 +72844,7 @@
 
       module.exports = Sha;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "buffer": 111, "inherits": 163 }], 206: [function (require, module, exports) {
+  }, { "./hash": 206, "buffer": 111, "inherits": 163 }], 209: [function (require, module, exports) {
     (function (Buffer) {
       /*
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -72649,7 +72943,7 @@
 
       module.exports = Sha1;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "buffer": 111, "inherits": 163 }], 207: [function (require, module, exports) {
+  }, { "./hash": 206, "buffer": 111, "inherits": 163 }], 210: [function (require, module, exports) {
     (function (Buffer) {
       /**
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -72704,7 +72998,7 @@
 
       module.exports = Sha224;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "./sha256": 208, "buffer": 111, "inherits": 163 }], 208: [function (require, module, exports) {
+  }, { "./hash": 206, "./sha256": 211, "buffer": 111, "inherits": 163 }], 211: [function (require, module, exports) {
     (function (Buffer) {
       /**
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -72824,7 +73118,7 @@
 
       module.exports = Sha256;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "buffer": 111, "inherits": 163 }], 209: [function (require, module, exports) {
+  }, { "./hash": 206, "buffer": 111, "inherits": 163 }], 212: [function (require, module, exports) {
     (function (Buffer) {
       var inherits = require('inherits');
       var SHA512 = require('./sha512');
@@ -72883,7 +73177,7 @@
 
       module.exports = Sha384;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "./sha512": 210, "buffer": 111, "inherits": 163 }], 210: [function (require, module, exports) {
+  }, { "./hash": 206, "./sha512": 213, "buffer": 111, "inherits": 163 }], 213: [function (require, module, exports) {
     (function (Buffer) {
       var inherits = require('inherits');
       var Hash = require('./hash');
@@ -73104,7 +73398,7 @@
 
       module.exports = Sha512;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 203, "buffer": 111, "inherits": 163 }], 211: [function (require, module, exports) {
+  }, { "./hash": 206, "buffer": 111, "inherits": 163 }], 214: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -73229,7 +73523,7 @@
       // Allow for unix-like usage: A.pipe(B).pipe(C)
       return dest;
     };
-  }, { "events": 152, "inherits": 163, "readable-stream/duplex.js": 185, "readable-stream/passthrough.js": 191, "readable-stream/readable.js": 192, "readable-stream/transform.js": 193, "readable-stream/writable.js": 194 }], 212: [function (require, module, exports) {
+  }, { "events": 152, "inherits": 163, "readable-stream/duplex.js": 186, "readable-stream/passthrough.js": 193, "readable-stream/readable.js": 194, "readable-stream/transform.js": 195, "readable-stream/writable.js": 196 }], 215: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -73447,7 +73741,7 @@
       this.charReceived = buffer.length % 3;
       this.charLength = this.charReceived ? 3 : 0;
     }
-  }, { "buffer": 111 }], 213: [function (require, module, exports) {
+  }, { "buffer": 111 }], 216: [function (require, module, exports) {
     (function (root) {
       "use strict";
 
@@ -73892,7 +74186,7 @@
         unorm.shimApplied = true;
       }
     })(this);
-  }, {}], 214: [function (require, module, exports) {
+  }, {}], 217: [function (require, module, exports) {
     (function (global) {
 
       /**
@@ -73962,11 +74256,13 @@
         return String(val).toLowerCase() === 'true';
       }
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 215: [function (require, module, exports) {
+  }, {}], 218: [function (require, module, exports) {
+    arguments[4][163][0].apply(exports, arguments);
+  }, { "dup": 163 }], 219: [function (require, module, exports) {
     module.exports = function isBuffer(arg) {
       return arg && typeof arg === 'object' && typeof arg.copy === 'function' && typeof arg.fill === 'function' && typeof arg.readUInt8 === 'function';
     };
-  }, {}], 216: [function (require, module, exports) {
+  }, {}], 220: [function (require, module, exports) {
     (function (process, global) {
       // Copyright Joyent, Inc. and other Node contributors.
       //
@@ -74513,7 +74809,7 @@
         return Object.prototype.hasOwnProperty.call(obj, prop);
       }
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, { "./support/isBuffer": 215, "_process": 177, "inherits": 163 }], 217: [function (require, module, exports) {
+  }, { "./support/isBuffer": 219, "_process": 178, "inherits": 218 }], 221: [function (require, module, exports) {
     (function (global) {
 
       var rng;
@@ -74547,7 +74843,7 @@
 
       module.exports = rng;
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 218: [function (require, module, exports) {
+  }, {}], 222: [function (require, module, exports) {
     //     uuid.js
     //
     //     Copyright (c) 2010-2012 Robert Kieffer
@@ -74725,7 +75021,7 @@
     uuid.unparse = unparse;
 
     module.exports = uuid;
-  }, { "./rng": 217 }], 219: [function (require, module, exports) {
+  }, { "./rng": 221 }], 223: [function (require, module, exports) {
     var indexOf = require('indexof');
 
     var Object_keys = function (obj) {
