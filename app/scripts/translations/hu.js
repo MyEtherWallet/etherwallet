@@ -5,9 +5,7 @@ hu.code = 'hu';
 hu.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -40,9 +38,9 @@ hu.data = {
   x_Download:           'Letöltés',
   x_Json:               'JSON Fájl (kódolatlan/unencrypted)',
   x_JsonDesc:           'Ez a kódolatlan, JSON formátumú változata a privát kulcsodnak. Ez azt jelenti, hogy nincs szükség jelszóra az eléréséhez, viszont ha bárki megtalálja a JSON fájlt, akkor hozzáférhet a tárcádhoz és az Etheredhez a jelszó ismerete nélkül.',
-  x_Keystore:           'Keystore/JSON Fájl (Ajánlott · Kódolt/Encrypted · Mist/Geth Formátum)',
-  x_Keystore2:          'Keystore/JSON Fájl',
-  x_KeystoreDesc:       'Ez a Keystore / JSON fájl ugyanolyan formátumú, amit a Mist és a Geth használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
+  x_Keystore:           'Keystore Fájl (UTC / JSON · Ajánlott · Kódolt/Encrypted · Mist Formátum)',
+  x_Keystore2:          'Keystore Fájl (UTC / JSON)',
+  x_KeystoreDesc:       'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
   x_Password:           'Jelszó',
   x_Print:              'PapírTárca Nyomtatása ',
   x_PrintDesc:          'Profi Tipp: Kattints a nyomtatásra és mentsd el PDF formátumban, még abban az esetben is, ha nincs nyomtatód!',
@@ -107,8 +105,8 @@ hu.data = {
   GEN_Label_1:            'Adj meg egy erős jelszót! (legalább 9 karakter)',
   GEN_Placeholder_1:      'NE felejtsd el elmenteni! ',
   GEN_SuccessMsg:         'Sikerült! A Tárcád legenerálódott.',
-  GEN_Warning:            '**Szükséged van a Keystore/JSON Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért.',
-  GEN_Label_2:            'Mentsd el a Keystore/JSON fájlt vagy a Privát Kulcsot. Ne felejtsd el a fenti jelszót!',
+  GEN_Warning:            '**Szükséged van a Keystore Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért.',
+  GEN_Label_2:            'Mentsd el a Keystore fájlt vagy a Privát Kulcsot. Ne felejtsd el a fenti jelszót!',
   GEN_Label_3:            'Mentsd el a címed.',
   GEN_Label_4:            'Nyomtasd ki a papír tárcádat vagy tárold a QR kód változatot. (választható) ',
 

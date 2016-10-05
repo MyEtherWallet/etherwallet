@@ -5,9 +5,7 @@ tr.code = 'tr';
 tr.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -51,9 +49,9 @@ tr.data = {
   x_Download:           'Indir',
   x_Json:               'JSON dosya (şifrelenmemis)',
   x_JsonDesc:           'Bu özel anahtarinin sifresiz, JSON formatidir. Demekki parolasiz cüzdanini acabilirsin. Özel anahatarina sahip olan herkez sifresiz cüzdani aca bilir.',
-  x_Keystore:           'Keystore/JSON dosya (Tavsiye edilen· şifrelenmiş · Mist/Geth formati)',
-  x_Keystore2:          'Keystore/JSON dosya',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore:           'Keystore dosya (UTC / JSON · Tavsiye edilen · şifrelenmiş · Mist formati)',
+  x_Keystore2:          'Keystore dosya (UTC / JSON) ',
+  x_KeystoreDesc:       'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Parola',
   x_Print:              'Cüzdanin kağıt versiyonunu yazdir',
   x_PrintDesc:          'ProTavsiye: Eğer yazıcınız olmasa bile, "Yazdır" seçeneğini tıklayın ve PDF dosyası olarak kaydedin!',
@@ -118,8 +116,8 @@ tr.data = {
   GEN_Label_1:            'Güçlü bir şifre sec (en az 9 sembol)',
   GEN_Placeholder_1:      'Bunu kaydetmeyi unutma!',
   GEN_SuccessMsg:         'Başarı! Cüzdan oluşturuldu.',
-  GEN_Warning:            'Ilerde cüzdanini acmak icin **Keystore/JSON dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve  dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
-  GEN_Label_2:            'Keystore/JSON dosyayi veya özel anahtranini kaydet. Yukarıdaki şifreni unutma.',
+  GEN_Warning:            'Ilerde cüzdanini acmak icin **Keystore dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
+  GEN_Label_2:            'Keystore dosyayi veya özel anahtranini kaydet. Yukarıdaki şifreni unutma.',
   GEN_Label_3:            'Adresini kaydet.',
   GEN_Label_4:            'Cüzdanin kağıt versiyonunu yazdir veya QR code versiyonunu sakla. (Isteye bagli)',
 

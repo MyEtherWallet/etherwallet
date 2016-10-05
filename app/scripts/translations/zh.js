@@ -5,9 +5,7 @@ zh.code = 'zh';
 zh.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -40,8 +38,8 @@ zh.data = {
   x_Download:           '下载',
   x_Json:               'JSON文件（未加密）',
   x_JsonDesc:           '这是你的未加密JSON格式的私钥文件。 这意味着你发送交易时不需要密码，也意味着拿到你的JSON文件的可以无需密码就可以控制你的钱包和以太币。',
-  x_Keystore:           'Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format)Keystore/JSON文件（推荐加密的Mist/Geth格式文件）',
-  x_Keystore2:          'Keystore/JSON文件',
+  x_Keystore:           'Keystore File (UTC / JSON · 推荐加密的 · Mist 格式文件)',
+  x_Keystore2:          'Keystore File (UTC / JSON)',
   x_KeystoreDesc:       '这个Keystore/JSON文件和Mist、Geth使用的钱包文件是一样的，所以将来你可以非常容易地导入。 It is the recommended file to download and back up.推荐下载和备份这个文件。',
   x_Password:           '密码',
   x_Print:              '打印纸钱包',
@@ -106,8 +104,8 @@ zh.data = {
   GEN_Label_1:            '输入一个强密码（至少9位）',
   GEN_Placeholder_1:      '不要忘记保存！',
   GEN_SuccessMsg:         '成功！你的钱包已经生成。',
-  GEN_Warning:            '将来使用钱包时，你需要Keystore/JSON文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。',
-  GEN_Label_2:            '保存你的Keystore/JSON或者私钥。不要忘记你的密码。',
+  GEN_Warning:            '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。',
+  GEN_Label_2:            '保存你的Keystore或者私钥。不要忘记你的密码。',
   GEN_Label_3:            '保存你的地址。',
   GEN_Label_4:            '打印你的纸钱包，或者存储二维码。（可选）',
 

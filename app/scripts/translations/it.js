@@ -6,9 +6,7 @@ it.code = 'it';
 it.data = {
 
   /* Mnemonic Additions */
-  x_Mnemonic:           'Mnemonic Phrase',
-  x_12Word:             '12 Word Recovery Seed',
-  x_24Word:             '24 Word Recovery Seed',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -43,9 +41,9 @@ it.data = {
   x_PrivKey:            'Chiave privata (non crittografata)',
   x_PrivKey2:           'Chiave privata',
   x_PrivKeyDesc:        'Questa è la versione testuale non crittografata della tua chiave privata, il che significa che non serve una password. Se qualcuno trovasse la tua chiave privata non crittografata potrebbe avere accesso al tuo portafoglio senza una password. Per questa ragione di solito si consigliano le versioni crittografate.',
-  x_Keystore:           'File Keystore/JSON (Consigliato · Crittografato · Formato Mist/Geth)',
-  x_Keystore2:          'File Keystore / JSON',
-  x_KeystoreDesc:       'Questo file Keystore/JSON è compatibile con il formato usato da Mist e Geth, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
+  x_Keystore:           'File Keystore (UTC / JSON · Consigliato · Crittografato · Formato Mist)',
+  x_Keystore2:          'File Keystore (UTC / JSON)',
+  x_KeystoreDesc:       'Questo file Keystore è compatibile con il formato usato da Mist, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
   x_Json:               'File JSON (non crittografato)',
   x_JsonDesc:           'Questa è la tua chiave privata in formato JSON non crittografato. Significa che non hai bisogno della password, ma chiunque trovi questo file JSON potrà avere accesso al tuo portafoglio e ai tuoi ether senza password.',
   x_PrintShort:         'Stampa',
@@ -107,8 +105,8 @@ it.data = {
   GEN_Label_1:            'Inserisci una password robusta (almeno 9 caratteri)',
   GEN_Placeholder_1:      'NON dimenticarti di salvarla!',
   GEN_SuccessMsg:         'Perfetto! Il tuo portafoglio è stato generato.',
-  GEN_Warning:            '**Avrai bisogno del tuo file Keystore/JSON e della password o della chiave privata** per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni.',
-  GEN_Label_2:            'Salva il tuo file Keystore/JSON o la chiave privata. Non dimenticare la password che hai inserito.',
+  GEN_Warning:            '**Avrai bisogno del tuo file Keystore e della password** (o della chiave privata) per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni.',
+  GEN_Label_2:            'Salva il tuo file Keystore. Non dimenticare la password che hai inserito.',
   GEN_Label_3:            'Salva il tuo indirizzo.',
   GEN_Label_4:            'Stampa il tuo portafoglio cartaceo, o salva una versione QR code. (facoltativo)',
 

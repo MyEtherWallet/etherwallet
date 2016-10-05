@@ -143,7 +143,10 @@ footer {
 }
 
 .bigger-on-mobile.form-control[readonly] {
-  height: 120px;
+  height: 60px;
+  @media screen and (max-width: 767px) {
+    height: 100px;
+  }
 }
 
 // help page
