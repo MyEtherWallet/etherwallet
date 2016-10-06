@@ -64,7 +64,6 @@ ethFuncs.getDataObj = function(to, func, arrVals) {
 	};
 }
 ethFuncs.vmTraceEstimate = function(data) {
-    if (!data.data.vmTrace.ops.length) return -1;
 	var ops = data.data.vmTrace.ops;
 	var gasLimit = 50000000;
 	var smallest = gasLimit;
