@@ -66,7 +66,7 @@ Token.popTokens = [{
 {
 	"address": "0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
 	"symbol": "SNGLS",
-	"decimal": 16,
+	"decimal": 0,
 	"type": "default"
 },
 {
