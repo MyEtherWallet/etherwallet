@@ -2898,7 +2898,7 @@
     }, {
       "address": "0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
       "symbol": "SNGLS",
-      "decimal": 16,
+      "decimal": 0,
       "type": "default"
     }, {
       "address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
