@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit a5f3565264e4704961572430904d5a
+// Last sync with en.js: commit a9cd2a9b39ecebd7d0d783e8bab1fb7eb81bc791
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -9,7 +9,7 @@ it.data = {
   x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
   SEND_custom:          'Altro token',
-  ERROR_21:             ' non è un token ERC-20 valido. Se ci sono altri token in caricamento, rimuovi questo token e riprova.',
+  ERROR_21:             'Non è un token ERC-20 valido.',
   TOKEN_show:           'Mostra tutti i token',
   TOKEN_hide:           'Nascondi token',
 
