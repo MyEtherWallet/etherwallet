@@ -187,6 +187,9 @@
         if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
           $scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
           return;
+        } else if ($scope.nickNames.indexOf(ethUtil.toChecksumAddress($scope.addAccount.address)) !== -1) {
+          $scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[16]));
+          return;
         }
         cxFuncs.addWatchOnlyAddress($scope.addAccount.address, $scope.addAccount.nickName, function () {
           if (chrome.runtime.lastError) {
