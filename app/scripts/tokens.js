@@ -112,7 +112,8 @@ Token.prototype.setBalance = function() {
 				parentObj.balanceBN = new BigNumber(data.data).toString();
 			}
 		} catch (e) {
-			alert(parentObj.symbol + " is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.");
+			parentObj.balance = globalFuncs.errorMsgs[20];
+            parentObj.balanceBN = '0';
 		}
 	});
 }

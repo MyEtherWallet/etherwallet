@@ -8,7 +8,7 @@ en.data = {
   x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
-  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+  ERROR_21:             'Not a valid ERC-20 token',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
 
