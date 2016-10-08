@@ -53,7 +53,7 @@
       <div class="radio">
         <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tokenTx.id"/>Ether</label>
       </div>
-      
+
       <div class="radio">
         <label ng-repeat="token in tokenObjs track by $index">
           <input type="radio" name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"/>
@@ -146,7 +146,11 @@
     <div class="form-group col-sm-10">
       <a class="btn btn-info" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
     </div>
-    <div ng-bind-html="offlineTxPublishStatus"></div>
+  </section>
+  <section class="row">
+    <div class="form-group col-sm-10">
+      <div ng-bind-html="offlineTxPublishStatus"></div>
+    </div>
   </section>
   <!-- / Step 3 -->
 
@@ -160,11 +164,7 @@
         </div>
         <div class="modal-body">
           <h4>
-            <span translate="SENDModal_Content_1">You are about to send</span>
-            <strong class="text-primary"> {{tx.value}} </strong>
-            <strong class="text-primary"> {{tx.unit}} </strong>
-            <span translate="SENDModal_Content_2">to address</span>
-            <strong class="text-primary"> {{tx.to}} </strong>
+            <span translate="SENDModal_Content_1"> You are about to send </span> a transaction.
           </h4>
           <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
         </div>

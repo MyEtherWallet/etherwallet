@@ -1,5 +1,10 @@
 'use strict';
 var viewWalletCtrl = function($scope, walletService) {
+  $scope.usdBalance = "loading";
+  $scope.eurBalance = "loading";
+  $scope.btcBalance = "loading";
+  $scope.etherBalance = "loading";
+
   $scope.tokenVisibility = "hidden";
   walletService.wallet = null;
   walletService.password = '';
