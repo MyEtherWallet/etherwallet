@@ -2268,7 +2268,7 @@
     globalFuncs.getDangerText = function (str) {
       return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>';
     };
-    globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", " is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again."];
+    globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token"];
     globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "You have successfully voted. Thank you for being an active participant in The DAO.", "File Selected: "];
     globalFuncs.gethErrors = {
       "Invalid sender": "GETH_InvalidSender",
@@ -2915,7 +2915,8 @@
             parentObj.balanceBN = new BigNumber(data.data).toString();
           }
         } catch (e) {
-          alert(parentObj.symbol + " is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.");
+          parentObj.balance = globalFuncs.errorMsgs[20];
+          parentObj.balanceBN = '0';
         }
       });
     };
@@ -4068,7 +4069,7 @@
       x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Custom Token',
-      ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+      ERROR_21: 'Not a valid ERC-20 token',
       TOKEN_show: 'Show All Tokens',
       TOKEN_hide: 'Hide Tokens',
 
