@@ -19,4 +19,7 @@ validator.isPasswordLenValid = function(pass, len){
     if(pass === 'undefined' || pass == null ) return false;
     return pass.length > len;
 }
+validator.isAlphaNumeric = function(value){
+    return globalFuncs.isAlphaNumeric(value);
+}
 module.exports = validator;

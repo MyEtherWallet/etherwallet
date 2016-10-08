@@ -69,22 +69,18 @@
     <!-- Content -->
     <div class="col-sm-8">
 
-      <a data-toggle="modal" data-target="#txInfoModal" ng-click="txInfoModal.open()">
-        <div class="alert alert-danger small" translate="TRANS_warning">If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.</div>
-      </a>
-
       <h4 translate="SEND_trans">Send Transaction</h4>
 
       <div class="form-group col-xs-10">
         <label translate="SEND_addr"> To Address: </label>
         <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
       </div>
-
       <div class="col-xs-2 address-identicon-container">
         <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
       </div>
 
       <div class="form-group col-xs-12">
+
         <label translate="SEND_amount">Amount to Send:</label>
         <a class="pull-right" ng-click="transferAllBalance()" translate="SEND_TransferTotal">Send Entire Balance</a>
         <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
@@ -116,28 +112,33 @@
           </section>
         </div>
         <!-- / Advanced Option Panel -->
-      </div>
 
-      <div class="form-group col-xs-12">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
-      </div>
+        <div class="form-group ">
+          <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
+        </div>
 
-      <div class="col-xs-12">
-         <div ng-bind-html="validateTxStatus"></div>
-      </div>
+        <div class="clearfix">
+          <div ng-bind-html="validateTxStatus"></div>
+        </div>
 
-      <div class="form-group col-xs-12" ng-show="showRaw">
-        <label translate="SEND_raw"> Raw Transaction </label>
-        <textarea class="form-control" rows="4" disabled >{{rawTx}}</textarea>
-        <label translate="SEND_signed"> Signed Transaction </label>
-        <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
-      </div>
+        <div class="form-group" ng-show="showRaw">
+          <label translate="SEND_raw"> Raw Transaction </label>
+          <textarea class="form-control" rows="4" disabled >{{rawTx}}</textarea>
+          <label translate="SEND_signed"> Signed Transaction </label>
+          <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
+        </div>
 
-      <div class="form-group col-xs-12" ng-show="showRaw">
-        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
-      </div>
+        <div class="form-group" ng-show="showRaw">
+          <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
+        </div>
 
-      <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+        <div class="form-group" ng-bind-html="sendTxStatus"></div>
+
+        <a class="form-group" data-toggle="modal" data-target="#txInfoModal" ng-click="txInfoModal.open()">
+          <div class="alert alert-danger small" translate="TRANS_warning">If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.</div>
+        </a>
+
+      </div>
 
       <!-- / Content -->
 

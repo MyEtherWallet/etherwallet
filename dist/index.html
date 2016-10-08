@@ -454,22 +454,18 @@
     <!-- Content -->
     <div class="col-sm-8">
 
-      <a data-toggle="modal" data-target="#txInfoModal" ng-click="txInfoModal.open()">
-        <div class="alert alert-danger small" translate="TRANS_warning">If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.</div>
-      </a>
-
       <h4 translate="SEND_trans">Send Transaction</h4>
 
       <div class="form-group col-xs-10">
         <label translate="SEND_addr"> To Address: </label>
         <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
       </div>
-
       <div class="col-xs-2 address-identicon-container">
         <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
       </div>
 
       <div class="form-group col-xs-12">
+
         <label translate="SEND_amount">Amount to Send:</label>
         <a class="pull-right" ng-click="transferAllBalance()" translate="SEND_TransferTotal">Send Entire Balance</a>
         <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
@@ -501,28 +497,33 @@
           </section>
         </div>
         <!-- / Advanced Option Panel -->
-      </div>
 
-      <div class="form-group col-xs-12">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
-      </div>
+        <div class="form-group ">
+          <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
+        </div>
 
-      <div class="col-xs-12">
-         <div ng-bind-html="validateTxStatus"></div>
-      </div>
+        <div class="clearfix">
+          <div ng-bind-html="validateTxStatus"></div>
+        </div>
 
-      <div class="form-group col-xs-12" ng-show="showRaw">
-        <label translate="SEND_raw"> Raw Transaction </label>
-        <textarea class="form-control" rows="4" disabled >{{rawTx}}</textarea>
-        <label translate="SEND_signed"> Signed Transaction </label>
-        <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
-      </div>
+        <div class="form-group" ng-show="showRaw">
+          <label translate="SEND_raw"> Raw Transaction </label>
+          <textarea class="form-control" rows="4" disabled >{{rawTx}}</textarea>
+          <label translate="SEND_signed"> Signed Transaction </label>
+          <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
+        </div>
 
-      <div class="form-group col-xs-12" ng-show="showRaw">
-        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
-      </div>
+        <div class="form-group" ng-show="showRaw">
+          <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
+        </div>
 
-      <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+        <div class="form-group" ng-bind-html="sendTxStatus"></div>
+
+        <a class="form-group" data-toggle="modal" data-target="#txInfoModal" ng-click="txInfoModal.open()">
+          <div class="alert alert-danger small" translate="TRANS_warning">If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.</div>
+        </a>
+
+      </div>
 
       <!-- / Content -->
 
@@ -647,15 +648,10 @@
       <label translate="OFFLINE_Step2_Label_2"> Value / Amount to Send </label>
       <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
       <div class="radio">
-        <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tx.unit"/>Ether</label>
+        <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tokenTx.id"/>Ether</label>
       </div>
-      <!--
+
       <div class="radio">
-          TODO:
-            - make these tokens show up
-            - hide the data field if they selected a token as the address they have in the address field will be put into the data and we will use the address from the token in the generated TX
-            - replace 21000 in Gas Limit field with 150000 if tokens are selected.
-            - if they click "Ether", make the custom token dropdown hide again
         <label ng-repeat="token in tokenObjs track by $index">
           <input type="radio" name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"/>
           {{token.getSymbol()}}
@@ -684,7 +680,6 @@
         <div ng-bind-html="validateLocalToken"></div>
       </div>
     </div>
-      -->
     <div class="form-group col-sm-10">
       <div class="account-help-icon">
         <img src="images/helpicon.svg" class="help-icon" />
@@ -709,7 +704,7 @@
       </div>
       <input class="form-control" type="text" placeholder="" ng-model="nonceDec"/>
     </div>
-    <div class="form-group col-sm-10">
+    <div class="form-group col-sm-10" ng-show="tokenTx.id=='ether'">
       <div class="account-help-icon">
         <img src="images/helpicon.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional. Data is often used when you send transactions to contracts.</p>
@@ -748,7 +743,11 @@
     <div class="form-group col-sm-10">
       <a class="btn btn-info" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
     </div>
-    <div ng-bind-html="offlineTxPublishStatus"></div>
+  </section>
+  <section class="row">
+    <div class="form-group col-sm-10">
+      <div ng-bind-html="offlineTxPublishStatus"></div>
+    </div>
   </section>
   <!-- / Step 3 -->
 
@@ -762,11 +761,7 @@
         </div>
         <div class="modal-body">
           <h4>
-            <span translate="SENDModal_Content_1">You are about to send</span>
-            <strong class="text-primary"> {{tx.value}} </strong>
-            <strong class="text-primary"> {{tx.unit}} </strong>
-            <span translate="SENDModal_Content_2">to address</span>
-            <strong class="text-primary"> {{tx.to}} </strong>
+            <span translate="SENDModal_Content_1"> You are about to send </span> a transaction.
           </h4>
           <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
         </div>
@@ -787,25 +782,22 @@
 <article class="tab-pane page-tokens active" ng-if="globalService.currentTab==globalService.tabs.tokens.id"  ng-controller='tokenCtrl'>
 
   <article class="collapse-container">
+
     <div ng-click="wd = !wd">
       <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-
-        <h2 translate="NAV_SendTokens"> Send Tokens </h2>
-
+      <h2 translate="NAV_SendTokens"> Send Tokens </h2>
     </div>
-    <div ng-show="!wd">
 
+    <div ng-show="!wd">
         
           <wallet-decrypt-drtv></wallet-decrypt-drtv>         
-
     </div>
+
   </article>
 
-
   <section class="row" ng-show="wallet!=null">
+
     <hr ng-show="!wd" />
-
-
 
     <!-- Sidebar -->
     <div class="col-sm-4">
@@ -1294,11 +1286,11 @@
 
       <div translate="sidebar_DGDBal"> DGD Crowdsale Information: </div>
       <ul class="account-info">
-        <li>Centstotal: <strong>{{centsTotal}}</strong></li>
-        <li>Weitotal: <strong>{{weiTotal}}</strong></li>
-        <li>Share: <strong>{{shareTotal}}</strong></li>
-        <li>Badges: <strong>{{badgesTotal}}</strong></li>
-        <li>Claimed? <strong>{{claimedTotal}}</strong></li>
+        <li><strong>{{centsTotal}}</strong> Centstotal </li>
+        <li><strong>{{weiTotal}}</strong> Weitotal </li>
+        <li><strong>{{shareTotal}}</strong> Share </li>
+        <li><strong>{{badgesTotal}}</strong> Badges </li>
+        <li><strong>{{claimedTotal}}</strong> Claimed </li>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
