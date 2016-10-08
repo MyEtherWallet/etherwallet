@@ -40,10 +40,12 @@ var viewWalletCtrl = function($scope, walletService) {
     $scope.tokens = Token.popTokens;
     for (var i = 0; i < $scope.tokens.length; i++) {
       $scope.tokenObjs.push(new Token($scope.tokens[i].address, $scope.wallet.getAddressString(), $scope.tokens[i].symbol, $scope.tokens[i].decimal, $scope.tokens[i].type));
+      $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
     }
     var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
     for (var i = 0; i < storedTokens.length; i++) {
       $scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
+      $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
     }
   }
 
