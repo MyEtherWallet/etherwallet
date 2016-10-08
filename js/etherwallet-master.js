@@ -1500,6 +1500,7 @@
       walletService.password = '';
       $scope.tokens = Token.popTokens;
       $scope.Validator = Validator;
+      $scope.etherBalance = $scope.etcBalance = $scope.usdBalance = $scope.eurBalance = $scope.btcBalance = "loading";
       $scope.tokenTx = {
         to: '',
         value: 0,
