@@ -182,6 +182,38 @@
       <div ng-bind-html="addStatus"></div>
     </div>
   </article>
-
+    <div class="modal fade" tabindex="-1" role="dialog" id="mnemonicModel">
+        <div class="modal-dialog" role="document" style="top: 200px">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"> Please select the address you would like to interact with. </h4>
+            </div>
+            <div class="modal-body">
+              <p> Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. </p>
+              <table class="table table-striped table-mnemonic">
+                <tr>
+                  <th></th>
+                  <th> Address </th>
+                  <th> Balance </th>
+                <tr ng-repeat="wallet in HDWallet.wallets track by $index">
+                  <td> <input type="radio" name="addressSelect" value="{{$index}}" ng-model="HDWallet.id"/> </td>
+                  <td> {{wallet.getChecksumAddressString()}} </td>
+                  <td> {{wallet.getBalance()}} ETH </td>
+                </tr>
+                <tr>
+                  <td><a ng-show="HDWallet.numWallets > 5" ng-click="AddRemoveHDAddresses(false)">Previous Addresses</a></td>
+                  <td></td>
+                  <td><a ng-click="AddRemoveHDAddresses(true)">More Addresses</a></td>
+                </tr>
+              </table>
+            </div>
+            <div class="modal-footer text-center">
+              <button type="button" class="btn btn-default" data-dismiss="modal" translate="x_Cancel">Cancel</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="setHDWallet()">Access Wallet</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </section>
 

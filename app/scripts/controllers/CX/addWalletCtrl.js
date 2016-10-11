@@ -10,6 +10,17 @@ var addWalletCtrl = function($scope, $sce) {
 		encStr: "",
 		password: ""
 	};
+	$scope.HDWallet = {
+		numWallets: 0,
+		walletsPerDialog: 5,
+		wallets: [],
+		id: 0,
+		hdk: null,
+		dPath: '',
+		jmPath: "m/44'/60'/0'/0/0",
+		ledgerPath: "m/44'/60'/0'/0"
+	};
+	$scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
 	$scope.onPrivKeyChange = function() {
 		$scope.addWalletStats = "";
 		$scope.requirePPass = $scope.manualprivkey.length == 128 || $scope.manualprivkey.length == 132;
@@ -20,7 +31,7 @@ var addWalletCtrl = function($scope, $sce) {
 	};
 	$scope.onMnemonicChange = function() {
 		$scope.addWalletStats = "";
-        var numWords = $scope.manualmnemonic.trim().split(' ').length;
+		var numWords = $scope.manualmnemonic.trim().split(' ').length;
 		$scope.showBtnUnlock = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
 	};
 	$scope.showContent = function($fileContent) {
@@ -40,6 +51,30 @@ var addWalletCtrl = function($scope, $sce) {
 	$scope.onFilePassChange = function() {
 		$scope.showBtnUnlock = $scope.filePassword.length > 1;
 	};
+	$scope.setHDAddresses = function(start, limit) {
+		$scope.HDWallet.wallets = [];
+		var dPath = $scope.HDWallet.dPath;
+		dPath = dPath.substr(0, dPath.length - 1);
+		for (var i = start; i < start + limit; i++) {
+			$scope.HDWallet.wallets.push(new Wallet($scope.HDWallet.hdk.derive(dPath + i)._privateKey));
+			$scope.HDWallet.wallets[$scope.HDWallet.wallets.length - 1].setBalance(false);
+		}
+		$scope.HDWallet.id = 0;
+		$scope.HDWallet.numWallets = start + limit;
+	}
+	$scope.AddRemoveHDAddresses = function(isAdd) {
+		if (isAdd) $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
+		else $scope.setHDAddresses($scope.HDWallet.numWallets - 2 * $scope.HDWallet.walletsPerDialog, $scope.HDWallet.walletsPerDialog);
+	}
+	$scope.setHDWallet = function() {
+		$scope.wallet = $scope.HDWallet.wallets[$scope.HDWallet.id];
+		$scope.mnemonicModel.close();
+		$scope.addAccount.address = $scope.wallet.getAddressString();
+		$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+		$scope.showAddWallet = true;
+		$scope.showPassTxt = $scope.addAccount.password == '';
+		$scope.setBalance();
+	}
 	$scope.decryptWallet = function() {
 		$scope.wallet = null;
 		$scope.addWalletStats = "";
@@ -54,18 +89,23 @@ var addWalletCtrl = function($scope, $sce) {
 				$scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
 				$scope.addAccount.password = $scope.filePassword;
 			} else if ($scope.walletType == "pastemnemonic") {
+				$scope.mnemonicModel.open();
 				var numWords = $scope.manualmnemonic.trim().split(' ').length;
-                var hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim()));
-                if(numWords==12) //jaxx and metamask
-                    $scope.wallet = new Wallet(hdk.derive("m/44'/60'/0'/0/0")._privateKey);
-                else if(numWords==24) //ledger
-                    $scope.wallet = new Wallet(hdk.derive("m/44'/60'/0'/0")._privateKey);
+				$scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim()));
+				$scope.HDWallet.numWallets = 0;
+				if (numWords == 12) { //jaxx and metamask
+					$scope.HDWallet.dPath = $scope.HDWallet.jmPath;
+					$scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
+				} else if (numWords == 24) { //ledger
+					$scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
+					$scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
+				}
 			}
-			$scope.addAccount.address = $scope.wallet.getAddressString();
 		} catch (e) {
 			$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + e));
 		}
 		if ($scope.wallet != null) {
+			$scope.addAccount.address = $scope.wallet.getAddressString();
 			$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
 			$scope.showAddWallet = true;
 			$scope.showPassTxt = $scope.addAccount.password == '';
@@ -92,13 +132,13 @@ var addWalletCtrl = function($scope, $sce) {
 		else $scope.watchOnlyStatus = "";
 	}
 	$scope.addWatchOnly = function() {
-	   if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
-	       $scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
-           return;
-	    } else if($scope.nickNames.indexOf(ethUtil.toChecksumAddress($scope.addAccount.address)) !== -1){
-	      $scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[16]));
-           return;
-	    }
+		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
+			$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+			return;
+		} else if ($scope.nickNames.indexOf(ethUtil.toChecksumAddress($scope.addAccount.address)) !== -1) {
+			$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[16]));
+			return;
+		}
 		cxFuncs.addWatchOnlyAddress($scope.addAccount.address, $scope.addAccount.nickName, function() {
 			if (chrome.runtime.lastError) {
 				$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(chrome.runtime.lastError.message));
@@ -118,13 +158,13 @@ var addWalletCtrl = function($scope, $sce) {
 		$scope.addWalletStats = "";
 	});
 	$scope.addWalletToStorage = function(status) {
-	    if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
-	       $scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
-           return;
-	    } else if($scope.nickNames.indexOf(ethUtil.toChecksumAddress($scope.addAccount.address)) !== -1){
-	       $scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[16]));
-           return;
-	    }
+		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
+			$scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+			return;
+		} else if ($scope.nickNames.indexOf(ethUtil.toChecksumAddress($scope.addAccount.address)) !== -1) {
+			$scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[16]));
+			return;
+		}
 		cxFuncs.addWalletToStorage($scope.addAccount.address, $scope.addAccount.encStr, $scope.addAccount.nickName, function() {
 			if (chrome.runtime.lastError) {
 				$scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(chrome.runtime.lastError.message));
@@ -141,7 +181,7 @@ var addWalletCtrl = function($scope, $sce) {
 			n: globalFuncs.scrypt.n
 		});
 		$scope.addAccount.encStr = JSON.stringify(wStr);
-        $scope.addWalletToStorage('addStatus');
+		$scope.addWalletToStorage('addStatus');
 	}
 	$scope.generateWallet = function() {
 		var wallet = Wallet.generate(false);
