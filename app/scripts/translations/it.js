@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit aeefb6da17e37b703051085f3aa87f3
+// Last sync with en.js: commit a9cd2a9b39ecebd7d0d783e8bab1fb7eb81bc791
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -10,12 +10,12 @@ it.data = {
   MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
   MNEM_more:            'More Addresses',
   MNEM_prev:            'Previous Addresses',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
-  ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Custom Token',
-  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
-  TOKEN_show:           'Show All Tokens',
-  TOKEN_hide:           'Hide Tokens',
+  x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
+  SEND_custom:          'Altro token',
+  ERROR_21:             'Non è un token ERC-20 valido.',
+  TOKEN_show:           'Mostra tutti i token',
+  TOKEN_hide:           'Nascondi token',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
@@ -123,7 +123,6 @@ it.data = {
   SEND_addr:             'Indirizzo destinatario: ',
   SEND_amount:           'Importo da inviare: ',
   SEND_amount_short:     'Importo',
-  SEND_custom:           'Altro',
   SEND_gas:              'Gas',
   SEND_generate:         'Genera transazione',
   SEND_raw:              'Transazione grezza',
