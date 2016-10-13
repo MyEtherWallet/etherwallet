@@ -65,7 +65,11 @@ ajaxReq.queuePost = function() {
 ajaxReq.post = function(data, callback) {
 	this.pendingPosts.push({
 		data: data,
-		callback: callback
+		callback: function(_data) {
+			 if (_data && _data.error)
+			     _data.msg = globalFuncs.getEthNodeMsg(_data.msg);
+			callback(_data);
+		}
 	});
 	if (this.pendingPosts.length == 1) this.queuePost();
 }
