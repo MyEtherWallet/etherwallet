@@ -79,7 +79,7 @@ gulp.task('staticJS', function () {
 gulp.task('minJS',['browserify'],function () {
   return gulp
     .src('./dist/js/etherwallet-master.js')
-      .pipe(babel({ presets: ['es2016'], compact: false }))
+      .pipe(babel({ presets: ['es2015'], compact: false }))
       .pipe(gulp.dest('./dist/js/'))
       .pipe(notify('MEW MinJS'));
 });
@@ -87,7 +87,7 @@ gulp.task('minJS',['browserify'],function () {
 gulp.task('cxMinJS',['cxBrowserify'],function () {
   return gulp
     .src('./chrome-extension/js/etherwallet-master.js')
-      .pipe(babel({ presets: ['es2016'], compact: false}))
+      .pipe(babel({ presets: ['es2015'], compact: false}))
       .pipe(gulp.dest('./chrome-extension/js/'))
       .pipe(notify('CX MinJS'));
 });

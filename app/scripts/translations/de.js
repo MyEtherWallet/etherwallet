@@ -5,6 +5,10 @@ de.code = 'de';
 de.data = {
 
   /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
   x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
