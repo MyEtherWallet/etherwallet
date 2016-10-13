@@ -1,15 +1,15 @@
 // Italian
-// Last sync with en.js: commit a9cd2a9b39ecebd7d0d783e8bab1fb7eb81bc791
+// Last sync with en.js: commit 144f6c65578446bacf5e09632f36e906bdd0b639
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
 
   /* Mnemonic Additions */
-  MNEM_1:               'Please select the address you would like to interact with.',
-  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
-  MNEM_more:            'More Addresses',
-  MNEM_prev:            'Previous Addresses',
+  MNEM_1:               'Seleziona l\'indirizzo col quale vuoi interagire.',
+  MNEM_2:               'Con una singola frase mnemonica puoi avere accesso a un certo numero di portafogli / indirizzi. Seleziona l\'indirizzo con il quale vuoi interagire in questo momento.',
+  MNEM_more:            'Altri indirizzi',
+  MNEM_prev:            'Indirizzi precedenti',
   x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx / Ledger)',
   ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
   SEND_custom:          'Altro token',
