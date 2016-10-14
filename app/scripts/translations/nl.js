@@ -5,16 +5,10 @@ nl.code = 'nl';
 nl.data = {
 
   /* Mnemonic Additions */
-  MNEM_1:               'Please select the address you would like to interact with.',
-  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
-  MNEM_more:            'More Addresses',
-  MNEM_prev:            'Previous Addresses',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
-  ADD_Radio_5:          'Plak/type Mnemonic',
-  SEND_custom:          'Aangepaste Token',
-  ERROR_21:             ' is geen geldige ERC-20 token. Als andere tokens nog aan het laden zijn, verwijder dan deze token en probeer het opnieuw.',
-  TOKEN_show:           'Toon alle Tokens',
-  TOKEN_hide:           'Verberg Tokens',
+  MNEM_1:               'Selecteer het adres waarmee je wilt communiceren.',
+  MNEM_2:               'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren.',
+  MNEM_more:            'Meer Adressen',
+  MNEM_prev:            'Vorige Adresen',
 
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
@@ -55,6 +49,7 @@ nl.data = {
   x_PrintDesc:          'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
   x_CSV:                'CSV bestand (onverlseuteld)',
   x_TXT:                'TXT bestand (onverlseuteld)',
+  x_Mnemonic:           'Mnemonic Zin (MetaMask / Jaxx / Ledger)',
 
   /* Header */
   MEW_Warning_1:        'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites!',
@@ -94,6 +89,7 @@ nl.data = {
   ADD_Radio_2_short:      'SELECTEER WALLET BESTAND...',
   ADD_Radio_3:            'Plak/Type je prive sleutel ',
   ADD_Radio_4:            'Voeg een te bekijken account toe',
+  ADD_Radio_5:            'Plak/type Mnemonic',
   ADD_Label_2:            'Verzin een Nickname:',
   ADD_Label_3:            'Je wallet is versleuteld. Geef je wachtwoord: ',
   ADD_Label_4:            'Voeg een te bekijken account toe',
@@ -122,7 +118,7 @@ nl.data = {
   SEND_addr:             'Aan Adres: ',
   SEND_amount:           'Te verzenden bedrag: ',
   SEND_amount_short:     'Bedrag',
-  SEND_custom:           'Aangepast',
+  SEND_custom:           'Aangepast Token',
   SEND_gas:              'Gas',
   SEND_generate:         'Genereer Transactie',
   SEND_raw:              'Raw Transactie',
@@ -142,6 +138,8 @@ nl.data = {
   TOKEN_Addr:            'Adres: ',
   TOKEN_Symbol:          'Token Symbool: ',
   TOKEN_Dec:             'Decimalen: ',
+  TOKEN_hide:            'Verberg Tokens',
+  TOKEN_show:            'Toon alle Tokens',
 
   /* Send Transaction */
   TRANS_desc:            'Als je Tokens wilt versturen, gebruik dan de "Verzend Token" pagina i.p.v. deze pagina.',
@@ -264,6 +262,7 @@ nl.data = {
   ERROR_18:             'Je hebt mininaal 0.01 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
   ERROR_19:             'Alle gas zou worden verbruikt op deze transactie. Dit betekend dat je al gestemd hebt op dit proposal of dat de debateerperiode is verstreken.',
   ERROR_20:             'Ongeldig symbol',
+  ERROR_21:             ' is geen geldig ERC-20 token. Als andere tokens nog aan het laden zijn, verwijder dan dit token en probeer het opnieuw.',
   SUCCESS_1:            'Geldig adres',
   SUCCESS_2:            'Wallet succesvol ontsleuteld',
   SUCCESS_3:            'Transactie verzonden. TX ID: ',
@@ -282,21 +281,21 @@ nl.data = {
   GETH_GasLimit:           'Overstijgt blok gas limiet',
   GETH_NegativeValue:      'Negative waarde',
 
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transactie met dezelfde hash was reeds geimporteerd.",
+  PARITY_Old:                   "Transactie nonce is te laag. Probeer de nonce te verhogen.",
+  PARITY_TooCheapToReplace:     "Transactie vergoeding is te laag. Er staat een andere transactie met dezelfde nonce in de wachtrij. Probeer de transactie vergoeding of de nonce te verhogen.",
+  PARITY_LimitReached:          "Er staan te veel transacties in de wachtrij. Je transactie is afgewezen door deze limiet. Probeer je transactie vergoeding te verhogen.",
+  PARITY_InsufficientGasPrice:  "Transactie vergoeding is te laag. Het voldoet niet aan je node's minimale vergoeding (minimaal: {}, momenteel: {}). Probeer je transactie vergoeding te verhogen.",
+  PARITY_InsufficientBalance:   "Ontoereikend saldo. Het account waarvan je probeert te versturen bevat niet voldoende saldo. Vereist {} en momenteel: {}.",
+  PARITY_GasLimitExceeded:      "Transactie kosten overstijgen de huidige gas limiet. Limiet: {}, momenteel: {}. Probeer de hoeveelheid gas te verminderen.",
+  PARITY_InvalidGasLimit:       "Hoeveelheid gas is boven de limiet.",
+
   /* Translation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Veel dank voor onze vertalers: ',
   TranslatorName_1:     '[h3ll0fr13nd](https://www.myetherwallet.com/?gaslimit=21000&to=0xB5FbCE123F12347206c881cae73A3046BA1A90bA&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0xB5FbCE123F12347206c881cae73A3046BA1A90bA',
-  /* Parity Error Messages */
-  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
-  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
-  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
-
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     ' ',
   TranslatorAddr_2:     ' ',
