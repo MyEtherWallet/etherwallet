@@ -8,7 +8,7 @@ nl.data = {
   MNEM_1:               'Selecteer het adres waarmee je wilt communiceren.',
   MNEM_2:               'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren.',
   MNEM_more:            'Meer Adressen',
-  MNEM_prev:            'Vorige Adresen',
+  MNEM_prev:            'Vorige Adressen',
 
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
