@@ -5,16 +5,16 @@ vi.code = 'vi';
 vi.data = {
 
   /* Mnemonic Additions */
-  MNEM_1:               'Please select the address you would like to interact with.',
-  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
-  MNEM_more:            'More Addresses',
-  MNEM_prev:            'Previous Addresses',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
-  ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Custom Token',
-  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
-  TOKEN_show:           'Show All Tokens',
-  TOKEN_hide:           'Hide Tokens',
+  MNEM_1:               'Xin vui lòng, Chọn địa chỉ mà bạn muốn tương tác.',
+  MNEM_2:               'Cụm từ dễ nhớ đó có thể truy nhập vào số địa chỉ Ví của bạn. Vui lòng chọn địa chỉ mà bạn muốn tương tác tại thời điểm này.',
+  MNEM_more:            'Nhiều địa chỉ',
+  MNEM_prev:            'Địa chỉ trước đó',
+  x_Mnemonic:           'Cụm từ dễ nhớ (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Dán/Điền ký tự dễ nhớ của bạn',
+  SEND_custom:          'Token được yêu cầu!',
+  ERROR_21:             'Không tồn tại trên hệ thống ERC-20 token. Nếu bạn phải chờ lâu. Xin vui lòng thử lại lần nữa!.',
+  TOKEN_show:           'Hiển thị tất cả các loại Tokens',
+  TOKEN_hide:           'Ẩn Tokens',
 
   /* Navigation*/
   NAV_YourWallets:      'Ví Của Bạn',
