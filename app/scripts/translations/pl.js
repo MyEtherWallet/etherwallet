@@ -5,16 +5,16 @@ pl.code = 'pl';
 pl.data = {
 
   /* Mnemonic Additions */
-  MNEM_1:               'Please select the address you would like to interact with.',
-  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
-  MNEM_more:            'More Addresses',
-  MNEM_prev:            'Previous Addresses',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
-  ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Custom Token',
-  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
-  TOKEN_show:           'Show All Tokens',
-  TOKEN_hide:           'Hide Tokens',
+  MNEM_1:               'Wybierz adres, którego chcesz użyć.',
+  MNEM_2:               'Jedna grupa słów mnemonicznych ma dostęp do wielu portfeli / adresów. Wybierz adres, do którego chcesz uzyskać dostęp tym razem.',
+  MNEM_more:            'Więcej Adresów',
+  MNEM_prev:            'Poprzednie Adresy',
+  x_Mnemonic:           'Mnemonik (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Wklej/Wpisz Swój Mnemonik',
+  SEND_custom:          'Niestandardowy Token',
+  ERROR_21:             ' nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token.',
+  TOKEN_show:           'Pokaż Wszystkie Tokeny',
+  TOKEN_hide:           'Ukryj Tokeny',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
@@ -283,14 +283,14 @@ pl.data = {
   GETH_NegativeValue:      'Ujemna wartość',
 
   /* Parity Error Messages */
-  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
-  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
-  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
+  PARITY_AlreadyImported:       "Transakcja z takim samym hash'em została już zaimportowana.",
+  PARITY_Old:                   "Wyróżnik transakcji za niski. Spróbuj zwiększyć wartość wyróżnika.",
+  PARITY_TooCheapToReplace:     "Za niska opłata transakcyjna. Inna transakcja z tym samym wyróżnikiem znajduje się już w kolejce. Spróbuj dołączyć wyższą opłatę lub zwiększ wyróżnik transakcji.",
+  PARITY_LimitReached:          "Zbyt wiele transakcji w kolejce. Twoja transakcja została odrzucona ze względu na limity. Spróbuj dołączyć wyższą opłatę transakcyjną.",
+  PARITY_InsufficientGasPrice:  "Za niska opłata transakcyjna. Opłata jest niższa niż minimalnie wymaga węzeł (minimum: {}, dołączono: {}). Spróbuj dołączyć wyższą opłatę transakcyjną.",
+  PARITY_InsufficientBalance:   "Niewystarczające środki. Konto, z którego wysyłasz transakcję nie posiada wystarczających funduszy. Wymaga: {}, otrzymano: {}.",
+  PARITY_GasLimitExceeded:      "Koszt transakcji przekracza bieżący limit paliwa. Limit: {}, otrzymano: {}. Spróbuj zmniejszyć ilość paliwa.",
+  PARITY_InvalidGasLimit:       "Dostarczone paliwo wykracza ponad limit.",
 
   /* Tranlsation Info */
   translate_version:    '3.0 (0.3)',
