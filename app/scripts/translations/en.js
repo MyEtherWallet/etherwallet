@@ -16,6 +16,11 @@ en.data = {
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
 
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Wallet',
+  ADD_Ledger:           'Connect your Ledger Wallet, open the Ethereum application or a contract application and verify that Browser Support is enabled in Settings',
+  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
