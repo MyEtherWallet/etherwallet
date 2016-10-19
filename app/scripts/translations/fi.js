@@ -4,6 +4,18 @@ var fi = function() {}
 fi.code = 'fi';
 fi.data = {
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:          'Custom Token',
+  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+  TOKEN_show:           'Show All Tokens',
+  TOKEN_hide:           'Hide Tokens',
+
   /* Chrome Extension */
   CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
   CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
@@ -69,9 +81,9 @@ fi.data = {
   x_Download:           'Lataa',
   x_Json:               'JSON Tiedosto (salaamaton)',
   x_JsonDesc:           'Tämä on salaamaton JSON tiedosto yksityisestä salausavaimestasi. Tämä tarkoittaa että et tarvitse salasanaa mutta kuka tahansa joka löytää JSON tiedostosi saa pääsyn lompakkoosi ja sen sisältämään Etheriin ilman salasanaa.',
-  x_Keystore:           'Avainsäilö/JSON Tiedosto (Suositeltu · Salattu · Mist/Geth Tiedostoformaatti)',
-  x_Keystore2:          'Avainsäilö/JSON Tiedosto',
-  x_KeystoreDesc:       'Tämä Avainsäilö / JSON tiedosto vastaa sitä tiedostoformaattia jota Mist & Geth käyttävät, joten voit helposti importata sen tulevaisuudessa. Se on suositeltu tiedostomuoto ladata ja varmuuskopioida.',
+  x_Keystore:           'Avainsäilö Tiedosto (UTC / JSON · Suositeltu · Salattu · Mist Tiedostoformaatti)',
+  x_Keystore2:          'Avainsäilö Tiedosto (UTC / JSON)',
+  x_KeystoreDesc:       'Tämä Avainsäilö tiedosto vastaa sitä tiedostoformaattia jota Mist käyttävät, joten voit helposti importata sen tulevaisuudessa. Se on suositeltu tiedostomuoto ladata ja varmuuskopioida.',
   x_Password:           'Salasana',
   x_Print:              'Tulosta Paperi Lompakko',
   x_PrintDesc:          'ProTip: Klikkaa Tulosta ja tallenna tämä PDF:nä, vaikka et omistaisikaan tulostinta!',
@@ -135,8 +147,8 @@ fi.data = {
   GEN_Label_1:            'Syötä vahva salasana (vähintään 9 merkkiä)',
   GEN_Placeholder_1:      'ÄLÄ unohda tallentaa tätä!',
   GEN_SuccessMsg:         'Onnistui! Sinun lompakkosi on luotu.',
-  GEN_Warning:            '**Tarvitset Avainsäilö/JSON Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help).',
-  GEN_Label_2:            'Tallenna Avainsäilö/JSON tai Yksityinen salausavaimesi. Älä unohda yllä olevaa salasanaasi.',
+  GEN_Warning:            '**Tarvitset Avainsäilö Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help).',
+  GEN_Label_2:            'Tallenna Avainsäilö tai Yksityinen salausavaimesi. Älä unohda yllä olevaa salasanaasi.',
   GEN_Label_3:            'Tallenna Osoitteesi.',
   GEN_Label_4:            'Tulosta paperi lompakkosi, tai säilö QR koodi versio. (valinnainen)',
 
@@ -288,7 +300,7 @@ fi.data = {
   ERROR_15:             'Lompakkoa ei löytynyt. ',
   ERROR_16:             'Ei näytä että ehdotusta tällä ID:llä olisi vielä olemassa tai tapahtui virhe ehdotusta luettaessa. ',
   ERROR_17:             'Lompakko jolla on tämä osoite on jo muistissa. Ole hyvä ja tarkista oma lompakko sivusi. ',
-  ERROR_18:             'Sinulla täytyy olla vähintään .001 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. ',
+  ERROR_18:             'Sinulla täytyy olla vähintään 0.01 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. ',
   ERROR_19:             'Kaikki gas käytettäisiin tässä siirrossa. Tämä tarkoittaa että olet jo äänestänyt tässä ehdotuksessa tai debaatti aika on jo päättynyt.',
   ERROR_20:             'Virheellinen merkki',
   SUCCESS_1:            'Validi osoite',
@@ -308,6 +320,16 @@ fi.data = {
   GETH_IntrinsicGas:       'Olennainen gas liian pieni',
   GETH_GasLimit:           'Ylittää blockin gas rajan',
   GETH_NegativeValue:      'Negatiivinen arvo',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.4',

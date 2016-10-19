@@ -114,8 +114,28 @@ th {
 
 .table-striped {
   > tbody > tr:nth-of-type(odd) {
-    background-color: @table-bg-accent;
+    background-color: #f5f5f5;
   }
+  &>tbody>tr>td, &>tbody>tr>th, &>tfoot>tr>td, &>tfoot>tr>th, &>thead>tr>td, &>thead>tr>th {
+    border-top: 0;
+  }
+}
+.table-mnemonic {
+  border-bottom: 0;
+  th {
+    border-bottom: 1px solid @gray-lighter;
+  }
+  td:first-child {
+    text-align: center;
+  }
+  tr:last-child td:first-child {
+    text-align: left;
+  }
+  tr:last-child,
+  tr:first-child {
+    background-color: white!important;
+  }
+
 }
 
 

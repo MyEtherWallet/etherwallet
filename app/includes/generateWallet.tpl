@@ -39,24 +39,17 @@
     <!-- / 0. Warning -->
 
     <!-- 1. Private Keys -->
-    <h4> 1. <span translate="GEN_Label_2"> Save your Keystore/JSON or Private Key. Don't forget your password above. </span> </h4>
+    <h4> 1. <span translate="GEN_Label_2"> Save your Keystore File. Don't forget your password above. </span> </h4>
     <div class="row">
       <div class="col-sm-6">
+
         <div class="form-group">
           <div class="account-help-icon">
             <img src="images/helpicon.svg" class="help-icon" />
             <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
-            <h6 translate="x_Keystore" translate="x_Keystore">Keystore/JSON File (Recommended • Encrypted • Mist/Geth Format)</h6>
+            <h6 translate="x_Keystore" translate="x_Keystore">Keystore File (Recommended • Encrypted • Mist/Geth Format)</h6>
           </div>
-          <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
-        </div>
-        <div class="form-group">
-          <div class="account-help-icon">
-            <img src="images/helpicon.svg" class="help-icon" />
-            <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</p>
-            <h6 translate="x_Json"> JSON File (unencrypted) </h6>
-          </div>
-          <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
+          <a class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
         </div>
       </div>
       <div class="col-sm-6">
@@ -105,6 +98,14 @@
             <h6 translate="x_Print">Print Paper Wallet:</h6>
           </div>
           <a class="btn btn-info btn-block btnAction" ng-click="printQRCode()" translate="x_PrintShort">PRINT</a>
+        </div>
+        <div class="form-group">
+          <div class="account-help-icon">
+            <img src="images/helpicon.svg" class="help-icon" />
+            <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</p>
+            <h6 translate="x_Json"> JSON File (unencrypted) </h6>
+          </div>
+          <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
         </div>
       </div>
       <div class="form-group col-sm-3">

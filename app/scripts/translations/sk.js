@@ -4,6 +4,18 @@ var sk = function() {}
 sk.code = 'sk';
 sk.data = {
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:          'Custom Token',
+  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+  TOKEN_show:           'Show All Tokens',
+  TOKEN_hide:           'Hide Tokens',
+
   NAV_DeployContract:   'Deploy Contract',
   /* Navigation*/
   NAV_YourWallets:      'Vaše Peňaženky',
@@ -30,9 +42,9 @@ sk.data = {
   x_Download:           'Stiahnuť',
   x_Json:               'JSON Súbor (nezašifrovaný)',
   x_JsonDesc:           'Toto je nezašifrovaný JSON format vášho sukromného kľúča. To znamená, že nepotrebujete heslo, ale ak niekto získa váš JSON, je schopný sprístupniť vašu peňaženku a Ether bez hesla.',
-  x_Keystore:           'Keystore/JSON Súbor (Odporúčané · Šifrované · Mist/Geth Format)',
-  x_Keystore2:          'Keystore/JSON Súbor',
-  x_KeystoreDesc:       'Tento Keystore / JSON súbor je rovnakého formatu ako  Mist & Geth takže ho budete môcť jednoducho importovať. Tento subor odporúčame stiahnuť a zálohovať.',
+  x_Keystore:           'Keystore Súbor (UTC / JSON · Odporúčané · Šifrované · Mist Format)',
+  x_Keystore2:          'Keystore Súbor (UTC / JSON) ',
+  x_KeystoreDesc:       'Tento Keystore súbor je rovnakého formatu ako  Mist takže ho budete môcť jednoducho importovať. Tento subor odporúčame stiahnuť a zálohovať.',
   x_Password:           'Heslo',
   x_Print:              'Vytlačiť Papierovú Peňaženku',
   x_PrintDesc:          'Rada: Ak nevlastnite tlačiareň, jednoducho kliknite tlačiť a uložte to ako PDF.',
@@ -96,8 +108,8 @@ sk.data = {
   GEN_Label_1:            'Enter a strong password (at least 9 characters)',
   GEN_Placeholder_1:      'Do NOT forget to save this!',
   GEN_SuccessMsg:         'Success! Your wallet has been generated.',
-  GEN_Warning:            '**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
-  GEN_Label_2:            'Save your Keystore/JSON or Private Key. Don\'t forget your password above.',
+  GEN_Warning:            '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
+  GEN_Label_2:            'Save your Keystore File. Don\'t forget your password above.',
   GEN_Label_3:            'Save Your Address.',
   GEN_Label_4:            'Print your paper wallet, or store a QR code version. (optional)',
 
@@ -184,7 +196,7 @@ sk.data = {
   DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
   DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
   DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ETH to this account and try again. ',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again. ',
   DAOModal_Title:         'Just making sure...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'You are about to withdraw',
@@ -249,7 +261,7 @@ sk.data = {
   ERROR_15:             'Wallet not found. ',
   ERROR_16:             'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
   ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
-  ERROR_18:             'You need to have at least 0.001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_18:             'You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
   ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
   ERROR_20:             'Invalid symbol',
   SUCCESS_1:            'Valid address',
@@ -269,6 +281,16 @@ sk.data = {
   GETH_IntrinsicGas:       'Intrinsic gas too low',
   GETH_GasLimit:           'Exceeds block gas limit',
   GETH_NegativeValue:      'Negative value',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.3',

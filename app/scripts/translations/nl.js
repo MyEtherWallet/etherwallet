@@ -4,6 +4,12 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Selecteer het adres waarmee je wilt communiceren.',
+  MNEM_2:               'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren.',
+  MNEM_more:            'Meer Adressen',
+  MNEM_prev:            'Vorige Adressen',
+
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -33,9 +39,9 @@ nl.data = {
   x_PrivKey:            'Prive Sleutel (onversleuteld)',
   x_PrivKey2:           'Prive Sleutel',
   x_PrivKeyDesc:        'Dit is een onversleutelde tekst versie van je prive sleutel waarbij geen wachtwoord benodigd is. Mocht iemand deze unversleutelde prive sleutel vinden, kunnen zij zonder wachtwoord bij je account. Om deze reden zijn versleutelde versies aanbevolen.',
-  x_Keystore:           'Keystore/JSON Bestand (Aangeraden · versleuteld · Mist/Geth Formaat)',
-  x_Keystore2:          'Keystore/JSON Bestand',
-  x_KeystoreDesc:       'Dit Keystore / JSON bestand voldoen aan het formaat zoals gebruikt door Mist & Geth waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
+  x_Keystore:           'Keystore Bestand (UTC / JSON · Aangeraden · versleuteld · Mist Formaat)',
+  x_Keystore2:          'Keystore Bestand (UTC / JSON) ',
+  x_KeystoreDesc:       'Dit Keystore bestand voldoen aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
   x_Json:               'JSON Bestand (onversleuteld)',
   x_JsonDesc:           'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',
   x_PrintShort:         'Afdrukken',
@@ -43,6 +49,7 @@ nl.data = {
   x_PrintDesc:          'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
   x_CSV:                'CSV bestand (onverlseuteld)',
   x_TXT:                'TXT bestand (onverlseuteld)',
+  x_Mnemonic:           'Mnemonic Zin (MetaMask / Jaxx / Ledger)',
 
   /* Header */
   MEW_Warning_1:        'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites!',
@@ -82,6 +89,7 @@ nl.data = {
   ADD_Radio_2_short:      'SELECTEER WALLET BESTAND...',
   ADD_Radio_3:            'Plak/Type je prive sleutel ',
   ADD_Radio_4:            'Voeg een te bekijken account toe',
+  ADD_Radio_5:            'Plak/type Mnemonic',
   ADD_Label_2:            'Verzin een Nickname:',
   ADD_Label_3:            'Je wallet is versleuteld. Geef je wachtwoord: ',
   ADD_Label_4:            'Voeg een te bekijken account toe',
@@ -96,8 +104,8 @@ nl.data = {
   GEN_Label_1:            'Geef een sterk wachtwoord (ten minste 9 karakters)',
   GEN_Placeholder_1:      'Vergeet NIET om dit op te slaan!',
   GEN_SuccessMsg:         'Gelukt! Je wallet is gegenereerd.',
-  GEN_Warning:            '**Je hebt je Keystore/JSON Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
-  GEN_Label_2:            'Sla je Keystore/JSON of Prive Sleutel op. Vergeet je wachtwoord hierboven niet.',
+  GEN_Warning:            '**Je hebt je Keystore Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies.',
+  GEN_Label_2:            'Sla je Keystore of Prive Sleutel op. Vergeet je wachtwoord hierboven niet.',
   GEN_Label_3:            'Sla je adres op.',
   GEN_Label_4:            'Druk je papieren wallet af, of bewaar hem als QR code. (optioneel)',
 
@@ -110,7 +118,7 @@ nl.data = {
   SEND_addr:             'Aan Adres: ',
   SEND_amount:           'Te verzenden bedrag: ',
   SEND_amount_short:     'Bedrag',
-  SEND_custom:           'Aangepast',
+  SEND_custom:           'Aangepast Token',
   SEND_gas:              'Gas',
   SEND_generate:         'Genereer Transactie',
   SEND_raw:              'Raw Transactie',
@@ -130,6 +138,8 @@ nl.data = {
   TOKEN_Addr:            'Adres: ',
   TOKEN_Symbol:          'Token Symbool: ',
   TOKEN_Dec:             'Decimalen: ',
+  TOKEN_hide:            'Verberg Tokens',
+  TOKEN_show:            'Toon alle Tokens',
 
   /* Send Transaction */
   TRANS_desc:            'Als je Tokens wilt versturen, gebruik dan de "Verzend Token" pagina i.p.v. deze pagina.',
@@ -249,9 +259,10 @@ nl.data = {
   ERROR_15:             'Wallet niet gevonden. ',
   ERROR_16:             'Het ziet er niet naar uit dat een proposal met dit ID bestaat of dat er een  fout is opgetreden bij het lezenvan dit proposal. ',
   ERROR_17:             'Een wallet met dit adres bestaat reeds. Check alsjeblileft je wallet pagina. ',
-  ERROR_18:             'Je hebt mininaal 0.001 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
+  ERROR_18:             'Je hebt mininaal 0.01 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
   ERROR_19:             'Alle gas zou worden verbruikt op deze transactie. Dit betekend dat je al gestemd hebt op dit proposal of dat de debateerperiode is verstreken.',
   ERROR_20:             'Ongeldig symbol',
+  ERROR_21:             ' is geen geldig ERC-20 token. Als andere tokens nog aan het laden zijn, verwijder dan dit token en probeer het opnieuw.',
   SUCCESS_1:            'Geldig adres',
   SUCCESS_2:            'Wallet succesvol ontsleuteld',
   SUCCESS_3:            'Transactie verzonden. TX ID: ',
@@ -269,6 +280,16 @@ nl.data = {
   GETH_IntrinsicGas:       'Intrinsiek gas te laag',
   GETH_GasLimit:           'Overstijgt blok gas limiet',
   GETH_NegativeValue:      'Negative waarde',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transactie met dezelfde hash was reeds geimporteerd.",
+  PARITY_Old:                   "Transactie nonce is te laag. Probeer de nonce te verhogen.",
+  PARITY_TooCheapToReplace:     "Transactie vergoeding is te laag. Er staat een andere transactie met dezelfde nonce in de wachtrij. Probeer de transactie vergoeding of de nonce te verhogen.",
+  PARITY_LimitReached:          "Er staan te veel transacties in de wachtrij. Je transactie is afgewezen door deze limiet. Probeer je transactie vergoeding te verhogen.",
+  PARITY_InsufficientGasPrice:  "Transactie vergoeding is te laag. Het voldoet niet aan je node's minimale vergoeding (minimaal: {}, momenteel: {}). Probeer je transactie vergoeding te verhogen.",
+  PARITY_InsufficientBalance:   "Ontoereikend saldo. Het account waarvan je probeert te versturen bevat niet voldoende saldo. Vereist {} en momenteel: {}.",
+  PARITY_GasLimitExceeded:      "Transactie kosten overstijgen de huidige gas limiet. Limiet: {}, momenteel: {}. Probeer de hoeveelheid gas te verminderen.",
+  PARITY_InvalidGasLimit:       "Hoeveelheid gas is boven de limiet.",
 
   /* Translation Info */
   translate_version:    '0.3',

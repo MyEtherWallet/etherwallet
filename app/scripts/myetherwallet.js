@@ -1,6 +1,7 @@
 'use strict';
 var Wallet = function(priv) {
 	this.privKey = priv.length == 32 ? priv : Buffer(priv, 'hex')
+    this.balance = "loading";
 }
 Wallet.generate = function(icapDirect) {
 	if (icapDirect) {
@@ -13,6 +14,16 @@ Wallet.generate = function(icapDirect) {
 	} else {
 		return new Wallet(ethUtil.crypto.randomBytes(32))
 	}
+}
+Wallet.prototype.setBalance = function(isClassic){
+    var parentObj = this;
+    ajaxReq.getBalance(parentObj.getAddressString(),isClassic,function(data){
+       if (data.error) parentObj.balance = data.msg;
+       else parentObj.balance = etherUnits.toEther(data.data.balance, 'wei');
+    });
+}
+Wallet.prototype.getBalance = function(){
+    return this.balance;
 }
 Wallet.prototype.getPrivateKey = function() {
 	return this.privKey

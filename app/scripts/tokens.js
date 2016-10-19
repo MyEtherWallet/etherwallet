@@ -5,8 +5,7 @@ var Token = function(contractAddress, userAddress, symbol, decimal, type) {
 	this.symbol = symbol;;
 	this.decimal = decimal;
 	this.type = type;
-	this.setBalance();
-  this.balance = "loading";
+	this.balance = "loading";
 }
 Token.balanceHex = "0x70a08231";
 Token.transferHex = "0xa9059cbb";
@@ -59,6 +58,18 @@ Token.popTokens = [{
 	"type": "default"
 },
 {
+	"address": "0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5",
+	"symbol": "REP",
+	"decimal": 18,
+	"type": "default"
+},
+{
+	"address": "0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
+	"symbol": "SNGLS",
+	"decimal": 0,
+	"type": "default"
+},
+{
 	"address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
 	"symbol": "Unicorn 🦄 ",
 	"decimal": 0,
@@ -69,13 +80,15 @@ Token.popTokens = [{
 	"symbol": "XAUR",
 	"decimal": 8,
 	"type": "default"
-}
-];
+}];
 Token.prototype.getContractAddress = function() {
 	return this.contractAddress;
 }
 Token.prototype.getUserAddress = function() {
 	return this.userAddress;
+}
+Token.prototype.setUserAddress = function(address) {
+	this.userAddress = address;
 }
 Token.prototype.getSymbol = function() {
 	return this.symbol;
@@ -99,7 +112,8 @@ Token.prototype.setBalance = function() {
 				parentObj.balanceBN = new BigNumber(data.data).toString();
 			}
 		} catch (e) {
-			alert( parentObj.symbol + " is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.");
+			parentObj.balance = globalFuncs.errorMsgs[20];
+            parentObj.balanceBN = '0';
 		}
 	});
 }

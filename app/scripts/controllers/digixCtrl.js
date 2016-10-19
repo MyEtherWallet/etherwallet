@@ -1,5 +1,16 @@
 'use strict';
 var digixCtrl = function($scope, $sce, walletService) {
+	$scope.usdBalance = "loading";
+	$scope.eurBalance = "loading";
+	$scope.btcBalance = "loading";
+	$scope.etherBalance = "loading";
+	$scope.centsTotal = "loading";
+	$scope.weiTotal = "loading";
+	$scope.shareTotal = "loading";
+	$scope.badgesTotal = "loading";
+	$scope.claimedTotal = "loading";
+
+
 	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
 	walletService.wallet = null;
 	walletService.password = '';

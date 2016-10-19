@@ -52,7 +52,7 @@ uiFuncs.sendTx = function(signedTx, isClassic, callback) {
 		if (data.error) {
 			resp = {
 				isError: true,
-				error: globalFuncs.getGethMsg(data.msg)
+				error: data.msg
 			};
 		} else {
 			resp = {

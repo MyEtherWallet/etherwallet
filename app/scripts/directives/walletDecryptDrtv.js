@@ -61,6 +61,39 @@ var walletDecryptDrtv = function() {
       <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt||showMDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
       <div ng-bind-html="decryptStatus"></div>\n \
     </div>\n \
+    <div class="modal fade" tabindex="-1" role="dialog" id="mnemonicModel">\n \
+        <div class="modal-dialog" role="document" style="top: 200px">\n \
+          <div class="modal-content">\n \
+            <div class="modal-header">\n \
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n \
+              <h4 class="modal-title" translate="MNEM_1"> Please select the address you would like to interact with. </h4>\n \
+            </div>\n \
+            <div class="modal-body">\n \
+              <p translate="MNEM_2"> Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. </p>\n \
+              <table class="table table-striped table-mnemonic">\n \
+                <tr>\n \
+                  <th></th>\n \
+                  <th translate="x_Address"> Address </th>\n \
+                  <th translate="MYWAL_Bal"> Balance </th>\n \
+                <tr ng-repeat="wallet in HDWallet.wallets track by $index">\n \
+                  <td> <input type="radio" name="addressSelect" value="{{$index}}" ng-model="HDWallet.id"/> </td>\n \
+                  <td> {{wallet.getChecksumAddressString()}} </td>\n \
+                  <td> {{wallet.getBalance()}} ETH </td>\n \
+                </tr>\n \
+                <tr class="m-addresses">\n \
+                  <td><a ng-show="HDWallet.numWallets > 5" ng-click="AddRemoveHDAddresses(false)" translate="MNEM_prev">Previous Addresses</a></td>\n \
+                  <td></td>\n \
+                  <td><a ng-click="AddRemoveHDAddresses(true)" translate="MNEM_more">More<br />Addresses</a></td>\n \
+                </tr>\n \
+              </table>\n \
+            </div>\n \
+            <div class="modal-footer text-center">\n \
+              <button type="button" class="btn btn-default" data-dismiss="modal" translate="x_Cancel">Cancel</button>\n \
+              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="setHDWallet()" translate="ADD_Label_6_short">Access Wallet</button>\n \
+            </div>\n \
+          </div>\n \
+        </div>\n \
+      </div>\n \
   </section>'
   };
 };

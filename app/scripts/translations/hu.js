@@ -4,6 +4,18 @@ var hu = function() {}
 hu.code = 'hu';
 hu.data = {
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:          'Custom Token',
+  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+  TOKEN_show:           'Show All Tokens',
+  TOKEN_hide:           'Hide Tokens',
+
   /* Navigation*/
   NAV_YourWallets:      'A Te Tárcáid',
   NAV_AddWallet:        'Tárca hozzáadása',
@@ -30,9 +42,9 @@ hu.data = {
   x_Download:           'Letöltés',
   x_Json:               'JSON Fájl (kódolatlan/unencrypted)',
   x_JsonDesc:           'Ez a kódolatlan, JSON formátumú változata a privát kulcsodnak. Ez azt jelenti, hogy nincs szükség jelszóra az eléréséhez, viszont ha bárki megtalálja a JSON fájlt, akkor hozzáférhet a tárcádhoz és az Etheredhez a jelszó ismerete nélkül.',
-  x_Keystore:           'Keystore/JSON Fájl (Ajánlott · Kódolt/Encrypted · Mist/Geth Formátum)',
-  x_Keystore2:          'Keystore/JSON Fájl',
-  x_KeystoreDesc:       'Ez a Keystore / JSON fájl ugyanolyan formátumú, amit a Mist és a Geth használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
+  x_Keystore:           'Keystore Fájl (UTC / JSON · Ajánlott · Kódolt/Encrypted · Mist Formátum)',
+  x_Keystore2:          'Keystore Fájl (UTC / JSON)',
+  x_KeystoreDesc:       'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
   x_Password:           'Jelszó',
   x_Print:              'PapírTárca Nyomtatása ',
   x_PrintDesc:          'Profi Tipp: Kattints a nyomtatásra és mentsd el PDF formátumban, még abban az esetben is, ha nincs nyomtatód!',
@@ -97,8 +109,8 @@ hu.data = {
   GEN_Label_1:            'Adj meg egy erős jelszót! (legalább 9 karakter)',
   GEN_Placeholder_1:      'NE felejtsd el elmenteni! ',
   GEN_SuccessMsg:         'Sikerült! A Tárcád legenerálódott.',
-  GEN_Warning:            '**Szükséged van a Keystore/JSON Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért.',
-  GEN_Label_2:            'Mentsd el a Keystore/JSON fájlt vagy a Privát Kulcsot. Ne felejtsd el a fenti jelszót!',
+  GEN_Warning:            '**Szükséged van a Keystore Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért.',
+  GEN_Label_2:            'Mentsd el a Keystore fájlt vagy a Privát Kulcsot. Ne felejtsd el a fenti jelszót!',
   GEN_Label_3:            'Mentsd el a címed.',
   GEN_Label_4:            'Nyomtasd ki a papír tárcádat vagy tárold a QR kód változatot. (választható) ',
 
@@ -185,7 +197,7 @@ hu.data = {
   DAO_ETC_Label_2:        'A "White Hat Group" fáradhatatlanul dolgozik azon, hogy visszajuttassa hozzád az ETC-det. Mondhatsz egy "köszönömöt" azzal, hogy a kifizetésed bizonyos százalékát eladományozod nekik, ha ezt választod. ',
   DAO_Desc:               'Használd ezt az oldalt, hogy Kifizesd a DAO tokenedet ETH-ért **és ETC-ért**. Ha DAO-t szeretnél küldeni, kérlek használd a Token Küldése oldalt.',
   DAO_Inst:               'Igen. Csak nyomd meg a nagy piros gombot. Ez ilyen egyszerű.',
-  DAO_Warning:            'Ha "nincs elegendő egyenleg a gas-hoz" hibaüzenetet kaptál, egy kis összegnyi etherre szükséged lesz a számládon, hogy fedezni tudd a gas költségeit. Adj hozzá 0.001 ethert ehhez a számlához és próbáld újra. ',
+  DAO_Warning:            'Ha "nincs elegendő egyenleg a gas-hoz" hibaüzenetet kaptál, egy kis összegnyi etherre szükséged lesz a számládon, hogy fedezni tudd a gas költségeit. Adj hozzá 0.01 ethert ehhez a számlához és próbáld újra. ',
   DAOModal_Title:         'Csak megbizonyosodunk...',
   DAOModal_1:             'Most készülsz kifizetni',
   DAOModal_2:             'DAO Tokeneket erre a címre',
@@ -249,7 +261,7 @@ hu.data = {
   ERROR_15:             'Tárca nem található. ',
   ERROR_16:             'Úgy tűnik ezzel az ID-vel nem létezik javaslat, vagy hiba történt a javaslat beolvasása közben. ',
   ERROR_17:             'Egy tárca ezzel a címmel már létezik a tárolóban. Kérlek ellenőrizd a tárcák oldalán. ',
-  ERROR_18:             'Legalább 0.001 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra!',
+  ERROR_18:             'Legalább 0.01 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra!',
   ERROR_19:             'Az összes gas felhasználásra kerülne ezen a tranzakción. Ez azt jelenti, hogy már szavaztál erre a javaslatra vagy a vita periódus már lejárt.',
   ERROR_20:             'Érvénytelen szimbólum',
   SUCCESS_1:            'Érvényes cím',
@@ -269,6 +281,16 @@ hu.data = {
   GETH_IntrinsicGas:       'Intrinsic gas túl alacsony',
   GETH_GasLimit:           'Meghaladja a blokk gas limitjét',
   GETH_NegativeValue:      'Negatív érték',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.4.2',

@@ -137,13 +137,13 @@
 
     <div class="col-sm-6">
 
-      <div class="form-group" ng-show='showEnc'>
+      <div class="form-group">
         <div class="account-help-icon">
           <img src="images/helpicon.svg" class="help-icon" />
           <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
           <h4 translate="x_Keystore">Keystore/JSON File (Recommended • Encrypted • Mist/Geth Format)</h4>
         </div>
-        <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
+        <a class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
       </div>
 
       <div class="form-group">
@@ -164,21 +164,44 @@
         <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
       </div>
 
+      <!-- TODO: FIX
+
       <div translate="sidebar_AccountBal">Account Balance:</div>
       <ul class="account-info">
-        <li> {{etherBalance}} Ether </li>
-        <!-- TODO: Why isn't this working? -->
-        <span ng-repeat="token in twallet.tokens">
-          <li> {{token.getBalance()}} {{token.getSymbol()}} </li>
-        </span>
+        <li> {{twallet.balance}} Ether </li>
       </ul>
+
+      <div translate="sidebar_TokenBal"> Token Balances: </div>
+      <table class="account-info">
+          <tr ng-repeat="token in twallet.tokens track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+            <td class="mono wrap">
+              <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'"/>
+              {{token.getBalance()}}
+            </td>
+            <td> {{token.getSymbol()}} </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <p>
+                <a ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
+                <a ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+            <small ng-bind-html="validateTokenBalances"></small>
+            </td>
+          </tr>
+      </table>
 
       <div translate="sidebar_Equiv">Equivalent Values:</div>
       <ul class="account-info">
-        <li> {{usdBalance}} USD </li>
-        <li> {{eurBalance}} EUR </li>
-        <li> {{btcBalance}} BTC </li>
+        <li> {{twallet.usd }} USD </li>
+        <li> {{twallet.eur }} EUR </li>
+        <li> {{twallet.btc}} BTC </li>
       </ul>
+      -->
 
       <div translate="sidebar_TransHistory">See Transaction History:</div>
       <ul class="account-info">

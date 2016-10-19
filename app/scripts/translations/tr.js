@@ -4,6 +4,18 @@ var tr = function() {}
 tr.code = 'tr';
 tr.data = {
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:          'Custom Token',
+  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+  TOKEN_show:           'Show All Tokens',
+  TOKEN_hide:           'Hide Tokens',
+
   /* Geth Error Messages */
   GETH_InvalidSender:      'Invalid sender',
   GETH_Nonce:              'Nonce too low',
@@ -41,9 +53,9 @@ tr.data = {
   x_Download:           'Indir',
   x_Json:               'JSON dosya (şifrelenmemis)',
   x_JsonDesc:           'Bu özel anahtarinin sifresiz, JSON formatidir. Demekki parolasiz cüzdanini acabilirsin. Özel anahatarina sahip olan herkez sifresiz cüzdani aca bilir.',
-  x_Keystore:           'Keystore/JSON dosya (Tavsiye edilen· şifrelenmiş · Mist/Geth formati)',
-  x_Keystore2:          'Keystore/JSON dosya',
-  x_KeystoreDesc:       'This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Keystore:           'Keystore dosya (UTC / JSON · Tavsiye edilen · şifrelenmiş · Mist formati)',
+  x_Keystore2:          'Keystore dosya (UTC / JSON) ',
+  x_KeystoreDesc:       'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Password:           'Parola',
   x_Print:              'Cüzdanin kağıt versiyonunu yazdir',
   x_PrintDesc:          'ProTavsiye: Eğer yazıcınız olmasa bile, "Yazdır" seçeneğini tıklayın ve PDF dosyası olarak kaydedin!',
@@ -108,8 +120,8 @@ tr.data = {
   GEN_Label_1:            'Güçlü bir şifre sec (en az 9 sembol)',
   GEN_Placeholder_1:      'Bunu kaydetmeyi unutma!',
   GEN_SuccessMsg:         'Başarı! Cüzdan oluşturuldu.',
-  GEN_Warning:            'Ilerde cüzdanini acmak icin **Keystore/JSON dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve  dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
-  GEN_Label_2:            'Keystore/JSON dosyayi veya özel anahtranini kaydet. Yukarıdaki şifreni unutma.',
+  GEN_Warning:            'Ilerde cüzdanini acmak icin **Keystore dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
+  GEN_Label_2:            'Keystore dosyayi veya özel anahtranini kaydet. Yukarıdaki şifreni unutma.',
   GEN_Label_3:            'Adresini kaydet.',
   GEN_Label_4:            'Cüzdanin kağıt versiyonunu yazdir veya QR code versiyonunu sakla. (Isteye bagli)',
 
@@ -197,7 +209,7 @@ tr.data = {
   DAO_ETC_Label_2:        '"Beyaz Şapka Grubu" ETC\'lerini geri almak için yorulmadan çalışmaktadır. Eğer istiyorsan, senin çekiminden yüzdesi bağışlayarak "teşekkür ederim" diyebilirsin.',
   DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
   DAO_Inst:               'Evet. Sadece büyük kırmızı düğmeye bas. Bu kadar kolay.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ether to this account and try again. ',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ether to this account and try again. ',
   DAOModal_Title:         'Sadece emin olmak için...',
 
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
@@ -263,7 +275,7 @@ tr.data = {
   ERROR_15:             'Cüzdan bulunmadi. ',
   ERROR_16:             'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
   ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
-  ERROR_18:             'You need to have at least 0.001 ether in your account to cover the cost of gas. Please add some ether and try again. ',
+  ERROR_18:             'You need to have at least 0.01 ether in your account to cover the cost of gas. Please add some ether and try again. ',
   ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
   ERROR_20:             'Geçersiz sembol',
   SUCCESS_1:            'Geçerli adres',
@@ -272,6 +284,16 @@ tr.data = {
   SUCCESS_4:            'Cüzdanın başarıyla eklendi: ',
   SUCCESS_5:            'Başarıyla oy verdiniz. DAO aktif bir katılımcı olduğunuz için teşekkür ederiz.',
   SUCCESS_6:            'Dosya secildi ',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.3',

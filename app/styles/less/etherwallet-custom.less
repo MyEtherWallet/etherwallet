@@ -143,7 +143,10 @@ footer {
 }
 
 .bigger-on-mobile.form-control[readonly] {
-  height: 120px;
+  height: 60px;
+  @media screen and (max-width: 767px) {
+    height: 100px;
+  }
 }
 
 // help page
@@ -308,4 +311,13 @@ input[type="password"]+.eye {
   position: absolute;
   left: 18px;
   cursor: pointer;
+}
+
+.m-addresses td:first-child {
+  max-width: 50px;
+  min-widht: 50px;
+}
+
+.m-addresses td:last-child {
+  text-align: right;
 }

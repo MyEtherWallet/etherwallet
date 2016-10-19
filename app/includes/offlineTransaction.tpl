@@ -51,16 +51,10 @@
       <label translate="OFFLINE_Step2_Label_2"> Value / Amount to Send </label>
       <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
       <div class="radio">
-        <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tx.unit"/>Ether</label>
+        <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tokenTx.id"/>Ether</label>
       </div>
+
       <div class="radio">
-        <!--
-          TODO:
-            - make these tokens show up
-            - hide the data field if they selected a token as the address they have in the address field will be put into the data and we will use the address from the token in the generated TX
-            - replace 21000 in Gas Limit field with 150000 if tokens are selected.
-            - if they click "Ether", make the custom token dropdown hide again
-        -->
         <label ng-repeat="token in tokenObjs track by $index">
           <input type="radio" name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"/>
           {{token.getSymbol()}}
@@ -88,7 +82,6 @@
         </div>
         <div ng-bind-html="validateLocalToken"></div>
       </div>
-
     </div>
     <div class="form-group col-sm-10">
       <div class="account-help-icon">
@@ -114,7 +107,7 @@
       </div>
       <input class="form-control" type="text" placeholder="" ng-model="nonceDec"/>
     </div>
-    <div class="form-group col-sm-10">
+    <div class="form-group col-sm-10" ng-show="tokenTx.id=='ether'">
       <div class="account-help-icon">
         <img src="images/helpicon.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional. Data is often used when you send transactions to contracts.</p>
@@ -123,7 +116,6 @@
       <input class="form-control" type="text" placeholder="0x4d792045746865722057616c6c6574" id="offlineData" ng-model="tx.data" />
     </div>
     <div class="form-group col-sm-10">
-      <label translate="OFFLINE_Step2_Label_7"> Enter / Upload your Private Key / JSON. </label>
       <wallet-decrypt-drtv></wallet-decrypt-drtv>
     </div>
     <div class="form-group col-sm-10">
@@ -154,7 +146,11 @@
     <div class="form-group col-sm-10">
       <a class="btn btn-info" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
     </div>
-    <div ng-bind-html="offlineTxPublishStatus"></div>
+  </section>
+  <section class="row">
+    <div class="form-group col-sm-10">
+      <div ng-bind-html="offlineTxPublishStatus"></div>
+    </div>
   </section>
   <!-- / Step 3 -->
 
@@ -168,11 +164,7 @@
         </div>
         <div class="modal-body">
           <h4>
-            <span translate="SENDModal_Content_1">You are about to send</span>
-            <strong class="text-primary"> {{tx.value}} </strong>
-            <strong class="text-primary"> {{tx.unit}} </strong>
-            <span translate="SENDModal_Content_2">to address</span>
-            <strong class="text-primary"> {{tx.to}} </strong>
+            <span translate="SENDModal_Content_1"> You are about to send </span> a transaction.
           </h4>
           <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
         </div>

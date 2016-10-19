@@ -40,11 +40,11 @@
 
       <div translate="sidebar_DGDBal"> DGD Crowdsale Information: </div>
       <ul class="account-info">
-        <li>Centstotal: <strong>{{centsTotal}}</strong></li>
-        <li>Weitotal: <strong>{{weiTotal}}</strong></li>
-        <li>Share: <strong>{{shareTotal}}</strong></li>
-        <li>Badges: <strong>{{badgesTotal}}</strong></li>
-        <li>Claimed? <strong>{{claimedTotal}}</strong></li>
+        <li><strong>{{centsTotal}}</strong> Centstotal </li>
+        <li><strong>{{weiTotal}}</strong> Weitotal </li>
+        <li><strong>{{shareTotal}}</strong> Share </li>
+        <li><strong>{{badgesTotal}}</strong> Badges </li>
+        <li><strong>{{claimedTotal}}</strong> Claimed </li>
       </ul>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>

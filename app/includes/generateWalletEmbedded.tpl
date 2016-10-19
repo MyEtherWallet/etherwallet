@@ -38,13 +38,13 @@
           <a class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
         </div>
       </div>
-      <div class="col-md-5 col-xs-10">
+      <div class="col-md-5 col-sm-10 col-xs-12">
         <div class="form-group">
           <h4 translate="GEN_Label_3">2. Save Your Address</h4>
           <input class="form-control" type="text" readonly="readonly" ng-value="wallet.getChecksumAddressString()"/>
         </div>
       </div>
-      <div class="col-md-1 col-xs-2 address-identicon-container">
+      <div class="col-md-1 col-sm-2 col-xs-12 address-identicon-container">
         <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
       </div>
     </article>
