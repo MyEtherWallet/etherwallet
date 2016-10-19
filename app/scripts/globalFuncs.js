@@ -46,9 +46,11 @@ globalFuncs.errorMsgs = [
 	"Wallet not found. ",
 	"Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ",
 	"A wallet with this address already exists in storage. Please check your wallets page. ",
-	"You need to have at least .001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ",
+	"You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ",
 	"All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.",
-	"Invalid symbol"];
+	"Invalid symbol",
+	"Not a valid ERC-20 token", 
+	];
 globalFuncs.successMsgs = [
 	"Valid address",
 	"Wallet successfully decrypted",
@@ -75,6 +77,40 @@ globalFuncs.getGethMsg = function(str) {
 		}
 	}
 	return str;
+}
+globalFuncs.parityErrors = {
+	"Transaction with the same hash was already imported\\.": "PARITY_AlreadyImported",
+	"Transaction nonce is too low\\. Try incrementing the nonce\\.": "PARITY_Old",
+	"Transaction fee is too low\\. There is another transaction with same nonce in the queue\\. Try increasing the fee or incrementing the nonce\\.": "PARITY_TooCheapToReplace",
+	"There are too many transactions in the queue\\. Your transaction was dropped due to limit\\. Try increasing the fee\\.": "PARITY_LimitReached",
+	"Transaction fee is too low\\. It does not satisfy your node's minimal fee \\(minimal: (\\d+), got: (\\d+)\\)\\. Try increasing the fee\\.": "PARITY_InsufficientGasPrice",
+	"Insufficient funds\\. Account you try to send transaction from does not have enough funds\\. Required (\\d+) and got: (\\d+)\\.": "PARITY_InsufficientBalance",
+	"Transaction cost exceeds current gas limit\\. Limit: (\\d+), got: (\\d+)\\. Try decreasing supplied gas\\.": "PARITY_GasLimitExceeded",
+	"Supplied gas is beyond limit\\.": "PARITY_InvalidGasLimit"};
+globalFuncs.parityErrorMsgs = {};
+globalFuncs.getParityMsg = function(str) {
+	for (var reg in this.parityErrors) {
+		var args = str.match("^"+reg+"$");
+		if (args) {
+			var key = this.parityErrors[reg];
+			if (key in this.parityErrorMsgs) {
+				args[0] = this.parityErrorMsgs[key];
+				return format.apply(this,args);
+			}
+		}
+	}
+	return str;
+}
+globalFuncs.getEthNodeName = function() {
+//	return "geth";
+	return "parity";
+}
+globalFuncs.getEthNodeMsg = function(str) {
+	var ethNode = this.getEthNodeName();
+	if (ethNode == "geth")
+		return this.getGethMsg(str);
+	else
+		return this.getParityMsg(str);
 }
 globalFuncs.scrypt = {
 	n: 1024

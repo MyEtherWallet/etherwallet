@@ -4,6 +4,18 @@ var ja = function() {}
 ja.code = 'ja';
 ja.data = {
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:          'Custom Token',
+  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+  TOKEN_show:           'Show All Tokens',
+  TOKEN_hide:           'Hide Tokens',
+
   /* Geth Error Messages */
   GETH_InvalidSender:      '送出元が無効です',
   GETH_Nonce:              'Nonce が足りません',
@@ -41,9 +53,9 @@ ja.data = {
   x_Download:           'ダウンロード',
   x_Json:               'JSON ファイル (未暗号化)',
   x_JsonDesc:           'これはパスワードが不要な暗号化されていないJSONフォーマットのプライベートキーです。この暗号化されていないJSONフォーマットのプライベートキーを使えば、誰でもパスワードを使わずに自分のウォレットとEtherにアクセスできます。',
-  x_Keystore:           'Keystore/JSON ファイル (推奨 · 暗号化 · Mist/Geth フォーマット)',
-  x_Keystore2:          'Keystore / JSON ファイル',
-  x_KeystoreDesc:       'この Keystore / JSON ファイルは、後で容易にインポートするため、Mist & Gethで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
+  x_Keystore:           'Keystore ファイル (UTC / JSON · 推奨 · 暗号化 · Mist フォーマット)',
+  x_Keystore2:          'Keystore ファイル (UTC / JSON) ',
+  x_KeystoreDesc:       'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
   x_Password:           'パスワード',
   x_Print:              'ペーパーウォレットを印刷',
   x_PrintDesc:          'ProTip: プリンターが接続されていなくても、「印刷」をクリックしてPDFで保存できます。',
@@ -259,7 +271,7 @@ ja.data = {
   ERROR_15:             'ウォレットが見つかりません。 ',
   ERROR_16:             'このIDのプロポーサルは存在しない、あるいは正常に読み込みできません。 ',
   ERROR_17:             '同じアドレスのウォレットが既に存在します。ウォレットのページをご確認ください。',
-  ERROR_18:             'ガスとして使われるために、少なくとも0.001 etherがウォレット上に必要です。 ',
+  ERROR_18:             'ガスとして使われるために、少なくとも0.01 etherがウォレット上に必要です。 ',
   ERROR_19:             '全てのガスがこのトランザクションにより消費されます。これは、既に投票を行ったか、あるいはディベート期間が終了したためです。',　
   ERROR_20:             '無効なシンボル',
   SUCCESS_1:            '有効なアドレス',
@@ -268,6 +280,16 @@ ja.data = {
   SUCCESS_4:            'ウォレットが追加されました：',
   SUCCESS_5:            '投票が完了しました。The DAO への積極的な参加に感謝いたします。',
   SUCCESS_6:            '選択されました： ',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.3',

@@ -4,6 +4,18 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Wybierz adres, którego chcesz użyć.',
+  MNEM_2:               'Jedna grupa słów mnemonicznych ma dostęp do wielu portfeli / adresów. Wybierz adres, do którego chcesz uzyskać dostęp tym razem.',
+  MNEM_more:            'Więcej Adresów',
+  MNEM_prev:            'Poprzednie Adresy',
+  x_Mnemonic:           'Mnemonik (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Wklej/Wpisz Swój Mnemonik',
+  SEND_custom:          'Niestandardowy Token',
+  ERROR_21:             ' nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token.',
+  TOKEN_show:           'Pokaż Wszystkie Tokeny',
+  TOKEN_hide:           'Ukryj Tokeny',
+
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
   NAV_AddWallet:        'Dodaj Portfel',
@@ -31,9 +43,9 @@ pl.data = {
   x_PrivKey:            'Klucz Prywatny (nieszyfrowany)',
   x_PrivKey2:           'Klucz Prywatny',
   x_PrivKeyDesc:        'Nieszyfrowana, tekstowa wersja Twojego klucza prywatnego, nie wymaga hasła. Jeżeli ktoś zdobędzie nieszyfrowany klucz, będzie mógł uzyskać pełen dostęp do Twojego portfela bez podania hasła. Z tego powodu zaleca się używanie jego szyfrowanej wersji.',
-  x_Keystore:           'Plik Keystore/JSON (Zalecany · Szyfrowany · Format Mist/Geth)',
-  x_Keystore2:          'Plik Keystore/JSON',
-  x_KeystoreDesc:       'Ten plik Keystore / JSON odpowiada formatowi stosowanemu przez Mist i Geth, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
+  x_Keystore:           'Plik Keystore (UTC / JSON · Zalecany · Szyfrowany · Format Mist)',
+  x_Keystore2:          'Plik Keystore (UTC / JSON) ',
+  x_KeystoreDesc:       'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
   x_Json:               'Plik JSON (nieszyfrowany)',
   x_JsonDesc:           'Nieszyfrowany klucz prywatny, plik w formacie JSON. Nie wymaga podania hasła, ale każdy kto zdobędzie ten plik uzyska również pełny dostęp do Twojego portfela i zgromadzonych na nim środków.',
   x_PrintShort:         'Drukuj',
@@ -95,8 +107,8 @@ pl.data = {
   GEN_Label_1:            'Wpisz silne hasło (co najmniej 9 znaków)',
   GEN_Placeholder_1:      'NIE zapomnij tego hasła!',
   GEN_SuccessMsg:         'Sukces! Twój portfel został wygenerowany.',
-  GEN_Warning:            '**Potrzebujesz plik Keystore/JSON i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje.',
-  GEN_Label_2:            'Zapisz Twój plik Keystore/JSON lub Klucz Prywatny. Nie zapomnij powyższego hasła.',
+  GEN_Warning:            '**Potrzebujesz plik Keystore i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje.',
+  GEN_Label_2:            'Zapisz Twój plik Keystore lub Klucz Prywatny. Nie zapomnij powyższego hasła.',
   GEN_Label_3:            'Zapisz swój adres.',
   GEN_Label_4:            'Wydrukuj swój Portfel Papierowy, lub zachowaj obrazek z kodem QR. (opcjonalnie)',
 
@@ -249,7 +261,7 @@ pl.data = {
   ERROR_15:             'Nie znaleziono portfela. ',
   ERROR_16:             'Wygląda, że propozycja z tym ID jeszcze nie istnieje, lub wystąpił błąd odczytu tej propozycji. ',
   ERROR_17:             'Portfel z tym adresem już istnieje w konfiguracji. Sprawdź zakładkę portfeli. ',
-  ERROR_18:             'Musisz mieć co najmniej 0.001 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
+  ERROR_18:             'Musisz mieć co najmniej 0.01 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
   ERROR_19:             'Całe paliwo było by zużyte w tej transakcji. Oznacza to, że głosowałeś już w tej propozycji albo minął termin głosowania.',
   ERROR_20:             'Nieprawidłowy symbol',
   SUCCESS_1:            'Prawidłowy adres',
@@ -269,6 +281,16 @@ pl.data = {
   GETH_IntrinsicGas:       'Paliwo poniżej ilości obowiązkowej',
   GETH_GasLimit:           'Przekroczono limit paliwa na blok',
   GETH_NegativeValue:      'Ujemna wartość',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transakcja z takim samym hash'em została już zaimportowana.",
+  PARITY_Old:                   "Wyróżnik transakcji za niski. Spróbuj zwiększyć wartość wyróżnika.",
+  PARITY_TooCheapToReplace:     "Za niska opłata transakcyjna. Inna transakcja z tym samym wyróżnikiem znajduje się już w kolejce. Spróbuj dołączyć wyższą opłatę lub zwiększ wyróżnik transakcji.",
+  PARITY_LimitReached:          "Zbyt wiele transakcji w kolejce. Twoja transakcja została odrzucona ze względu na limity. Spróbuj dołączyć wyższą opłatę transakcyjną.",
+  PARITY_InsufficientGasPrice:  "Za niska opłata transakcyjna. Opłata jest niższa niż minimalnie wymaga węzeł (minimum: {}, dołączono: {}). Spróbuj dołączyć wyższą opłatę transakcyjną.",
+  PARITY_InsufficientBalance:   "Niewystarczające środki. Konto, z którego wysyłasz transakcję nie posiada wystarczających funduszy. Wymaga: {}, otrzymano: {}.",
+  PARITY_GasLimitExceeded:      "Koszt transakcji przekracza bieżący limit paliwa. Limit: {}, otrzymano: {}. Spróbuj zmniejszyć ilość paliwa.",
+  PARITY_InvalidGasLimit:       "Dostarczone paliwo wykracza ponad limit.",
 
   /* Tranlsation Info */
   translate_version:    '3.0 (0.3)',

@@ -2,25 +2,22 @@
 <article class="tab-pane page-tokens active" ng-if="globalService.currentTab==globalService.tabs.tokens.id"  ng-controller='tokenCtrl'>
 
   <article class="collapse-container">
+
     <div ng-click="wd = !wd">
       <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-
-        <h2 translate="NAV_SendTokens"> Send Tokens </h2>
-
+      <h2 translate="NAV_SendTokens"> Send Tokens </h2>
     </div>
-    <div ng-show="!wd">
 
+    <div ng-show="!wd">
         @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
         @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
-
     </div>
+
   </article>
 
-
   <section class="row" ng-show="wallet!=null">
+
     <hr ng-show="!wd" />
-
-
 
     <!-- Sidebar -->
     <div class="col-sm-4">
@@ -42,8 +39,11 @@
 
       <div translate="sidebar_TokenBal"> Token Balances: </div>
       <table class="account-info">
-          <tr ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || tokenVisibility=='shown' ">
-            <td class="mono wrap"><img src="images/icon-remove.svg" class="token-remove" title="Remove Token" /> {{token.getBalance()}}</td>
+          <tr ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+            <td class="mono wrap">
+              <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'"/>
+              {{token.getBalance()}}
+            </td>
             <td> {{token.getSymbol()}} </td>
           </tr>
           <tr>
@@ -52,6 +52,11 @@
                 <a ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
                 <a ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
               </p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+            <small ng-bind-html="validateTokenBalances"></small>
             </td>
           </tr>
       </table>
@@ -159,6 +164,8 @@
         </div>
 
         <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
+
+        <div class="form-group col-xs-12"><p translate="DAO_Warning">If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again. </p></div>
 
       </section>
 

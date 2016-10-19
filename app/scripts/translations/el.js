@@ -4,6 +4,18 @@ var el = function() {}
 el.code = 'el';
 el.data = {
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:          'Custom Token',
+  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+  TOKEN_show:           'Show All Tokens',
+  TOKEN_hide:           'Hide Tokens',
+
   /* Geth Error Messages */
   GETH_InvalidSender:      'Invalid sender',
   GETH_Nonce:              'Nonce too low',
@@ -67,9 +79,9 @@ el.data = {
   x_PrivKey:            'Ιδιωτικό Κλειδί (μη κρυπτογραφημένο)',
   x_PrivKey2:           'Ιδιωτικό Κλειδί',
   x_PrivKeyDesc:        'Αυτό το κείμενο είναι η μη κρυπτογραφημένη εκδοχή του Ιδιωτικού Κλειδιού σας που σημαίνει ότι δεν απαιτείται κωδικός. Στην περίπτωση που κάποιος βρει το μη κρυπτογραφημένο Ιδιωτικό Κλειδί σας, έχει πρόσβαση στο πορτοφόλι σας χωρίς κωδικό. Για αυτόν τον λόγο, συνήθως συνιστώνται οι κρυπτογραφημένες εκδοχές.',
-  x_Keystore:           'Αρχείο Keystore/JSON (Συνιστάται · Κρυπτογραφημένο · Μορφή Mist/Geth)',
-  x_Keystore2:          'Αρχείο Keystore/JSON',
-  x_KeystoreDesc:       'Αυτό το Αρχείο Keystore/JSON έχει την ίδια μορφή που χρησιμοποιείται από το Mist & Geth ώστε να μπορείτε εύκολα να το εισάγετε στο μέλλον. Είναι το συνιστώμενο αρχείο για λήψη και δημιουργία αντιγράφου ασφαλείας.',
+  x_Keystore:           'Αρχείο Keystore (UTC / JSON · Συνιστάται · Κρυπτογραφημένο · Μορφή Mist)',
+  x_Keystore2:          'Αρχείο Keystore (UTC / JSON)',
+  x_KeystoreDesc:       'Αυτό το Αρχείο Keystore έχει την ίδια μορφή που χρησιμοποιείται από το Mist ώστε να μπορείτε εύκολα να το εισάγετε στο μέλλον. Είναι το συνιστώμενο αρχείο για λήψη και δημιουργία αντιγράφου ασφαλείας.',
   x_Json:               'Αρχείο JSON (μη κρυπτογραφημένο)',
   x_JsonDesc:           'Αυτή είναι η μη κρυπτογραφημένη, JSON μορφή του Ιδιωτικού Κλειδιού σας. Αυτό σημαίνει ότι δεν απαιτείται κωδικός όμως οποιοσδήποτε βρει το JSON σας έχει πρόσβαση στο πορτοφόλι και τα Ether σας χωρίς κωδικό.',
   x_PrintShort:         'Εκτύπωση',
@@ -211,7 +223,7 @@ el.data = {
   /* DAO */
   DAO_Desc:               'Χρησιμοποιείστε αυτήν την καρτέλα για να κάνετε Ανάληψη των DAO Tokens σας ως ETH. Αν επιθυμείτε να αποστείλετε DAO, παρακαλώ χρησιμοποιήστε την καρτέλα Αποστολή Tokens.',
   DAO_Inst:               'Ναι. Απλά πατάτε το μεγάλο κόκκινο κουμπί. Είναι τόσο απλό.',
-  DAO_Warning:            'Αν δέχεστε σφάλμα "Aνεπαρκές υπόλοιπο για gas", θα πρέπει να έχετε ένα μικρό ποσό ether στον λογαριασμό σας έτσι ώστε να καλύψετε το κόστος του gas. Προσθέστε 0.001 ether στον λογαριασμό αυτό και προσπαθήστε ξανά. ',
+  DAO_Warning:            'Αν δέχεστε σφάλμα "Aνεπαρκές υπόλοιπο για gas", θα πρέπει να έχετε ένα μικρό ποσό ether στον λογαριασμό σας έτσι ώστε να καλύψετε το κόστος του gas. Προσθέστε 0.01 ether στον λογαριασμό αυτό και προσπαθήστε ξανά. ',
   DAOModal_Title:         'Απλά για σιγουριά...',
 
   /* Digix */
@@ -274,6 +286,16 @@ el.data = {
   SUCCESS_3:            'Η συναλλαγή υποβλήθηκε. TX ID: ',
   SUCCESS_4:            'Το πορτοφόλι σας προστέθηκε επιτυχώς: ',
   SUCCESS_5:            'Έχετε ψηφίσει επιτυχώς. Ευχαριστούμε για την ενεργή σας συμμετοχή στο DAO.',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.3',

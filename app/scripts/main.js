@@ -6,7 +6,11 @@ var angularTranslate = require('angular-translate');
 var angularTranslateErrorLog = require('angular-translate-handler-log');
 var angularSanitize = require('angular-sanitize');
 var bip39 = require('bip39');
-window.bip39 = bip39;
+var HDKey = require('hdkey');
+window.hd = {
+    bip39 : bip39,
+    HDKey : HDKey
+};
 var BigNumber = require('bignumber.js');
 window.BigNumber = BigNumber;
 var marked = require('./customMarked');
@@ -17,6 +21,8 @@ ethUtil.Tx = require('ethereumjs-tx');
 ethUtil.scrypt = require('scryptsy');
 ethUtil.uuid = require('uuid');
 window.ethUtil = ethUtil;
+var format = require('string-format');
+window.format = format;
 var Wallet = require('./myetherwallet');
 window.Wallet = Wallet;
 var Token = require('./tokens');

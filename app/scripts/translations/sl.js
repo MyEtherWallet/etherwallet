@@ -4,6 +4,18 @@ var sl = function() {}
 sl.code = 'sl';
 sl.data = {
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:          'Custom Token',
+  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+  TOKEN_show:           'Show All Tokens',
+  TOKEN_hide:           'Hide Tokens',
+
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethereum Wallets & sending transactions.',
   FOOTER_4:             'Disclaimer',
   NAV_DeployContract:   'Deploy Contract',
@@ -32,9 +44,9 @@ sl.data = {
   x_Download:           'Prenesi',
   x_Json:               'JSON Datoteka (nekriptirana)',
   x_JsonDesc:           'To je nekriptirana, JSON datoteka vašega osebnega ključa. To pomeni, da za uporabo ne potrebujete gesla. V primeru da kdorkoli najde datoteko vašega ključa, dobi takojšen dostop do vaše denarnice in vašega Ethra brez uporabe gesla.',
-  x_Keystore:           'Datoteka za Shrambo ključa Keystore/JSON  (Priporočeno · Kriptirano · Mist/Geth Format)',
-  x_Keystore2:          'Datoteka za Shrambo ključa Keystore/JSON',
-  x_KeystoreDesc:       'Ta datoteka za shrambo osebnega ključa Keystore/JSON se ujema s formatom datoteke, ki jo uporabljata programa Mist in Geth, kar pomeni da ga lahko v prihodnosti enostavno izvozite iz te internetne strani in uvozite v Mist ali Geth. Priporočamo vam da to datoteko prenesete na vaš računalnik in jo shranite na varnem mestu. Za dodatno varnost priporočamo, da datoteko shranite na večih napravah.',
+  x_Keystore:           'Datoteka za Shrambo ključa Keystore (UTC / JSON · Priporočeno · Kriptirano · Mist Format)',
+  x_Keystore2:          'Datoteka za Shrambo ključa Keystore (UTC / JSON)',
+  x_KeystoreDesc:       'Ta datoteka za shrambo osebnega ključa Keystore se ujema s formatom datoteke, ki jo uporabljata programa Mist, kar pomeni da ga lahko v prihodnosti enostavno izvozite iz te internetne strani in uvozite v Mist ali Geth. Priporočamo vam da to datoteko prenesete na vaš računalnik in jo shranite na varnem mestu. Za dodatno varnost priporočamo, da datoteko shranite na večih napravah.',
   x_Password:           'Geslo',
   x_Print:              'Natisni Papirnato Denarnico',
   x_PrintDesc:          'Napotek: V primeru da nimate printerja lahko vseeno pritisnete natisni in izberete tiskalnik PDF, s tem boste natisnili datoteko PDF, ki jo lahko po želji shranite ali natisnete.',
@@ -184,7 +196,7 @@ sl.data = {
   DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
   DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
   DAO_Inst:               'Yes. Just push the big red button. It\'s that easy.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.001 ETH to this account and try again. ',
+  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again. ',
   DAOModal_Title:         'Just making sure...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'You are about to withdraw',
@@ -249,7 +261,7 @@ sl.data = {
   ERROR_15:             'Wallet not found. ',
   ERROR_16:             'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
   ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
-  ERROR_18:             'You need to have at least 0.001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_18:             'You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
   ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
   ERROR_20:             'Invalid symbol',
   SUCCESS_1:            'Valid address',
@@ -269,6 +281,16 @@ sl.data = {
   GETH_IntrinsicGas:       'Intrinsic gas too low',
   GETH_GasLimit:           'Exceeds block gas limit',
   GETH_NegativeValue:      'Negative value',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.2',

@@ -1,9 +1,21 @@
 // Italian
-// Last sync with en.js: commit aeefb6da17e37b703051085f3aa87f3
+// Last sync with en.js: commit 144f6c65578446bacf5e09632f36e906bdd0b639
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
+
+  /* Mnemonic Additions */
+  MNEM_1:               'Seleziona l\'indirizzo col quale vuoi interagire.',
+  MNEM_2:               'Con una singola frase mnemonica puoi avere accesso a un certo numero di portafogli / indirizzi. Seleziona l\'indirizzo con il quale vuoi interagire in questo momento.',
+  MNEM_more:            'Altri indirizzi',
+  MNEM_prev:            'Indirizzi precedenti',
+  x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
+  SEND_custom:          'Altro token',
+  ERROR_21:             'Non è un token ERC-20 valido.',
+  TOKEN_show:           'Mostra tutti i token',
+  TOKEN_hide:           'Nascondi token',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
@@ -33,9 +45,9 @@ it.data = {
   x_PrivKey:            'Chiave privata (non crittografata)',
   x_PrivKey2:           'Chiave privata',
   x_PrivKeyDesc:        'Questa è la versione testuale non crittografata della tua chiave privata, il che significa che non serve una password. Se qualcuno trovasse la tua chiave privata non crittografata potrebbe avere accesso al tuo portafoglio senza una password. Per questa ragione di solito si consigliano le versioni crittografate.',
-  x_Keystore:           'File Keystore/JSON (Consigliato · Crittografato · Formato Mist/Geth)',
-  x_Keystore2:          'File Keystore / JSON',
-  x_KeystoreDesc:       'Questo file Keystore/JSON è compatibile con il formato usato da Mist e Geth, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
+  x_Keystore:           'File Keystore (UTC / JSON · Consigliato · Crittografato · Formato Mist)',
+  x_Keystore2:          'File Keystore (UTC / JSON)',
+  x_KeystoreDesc:       'Questo file Keystore è compatibile con il formato usato da Mist, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
   x_Json:               'File JSON (non crittografato)',
   x_JsonDesc:           'Questa è la tua chiave privata in formato JSON non crittografato. Significa che non hai bisogno della password, ma chiunque trovi questo file JSON potrà avere accesso al tuo portafoglio e ai tuoi ether senza password.',
   x_PrintShort:         'Stampa',
@@ -97,8 +109,8 @@ it.data = {
   GEN_Label_1:            'Inserisci una password robusta (almeno 9 caratteri)',
   GEN_Placeholder_1:      'NON dimenticarti di salvarla!',
   GEN_SuccessMsg:         'Perfetto! Il tuo portafoglio è stato generato.',
-  GEN_Warning:            '**Avrai bisogno del tuo file Keystore/JSON e della password o della chiave privata** per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni.',
-  GEN_Label_2:            'Salva il tuo file Keystore/JSON o la chiave privata. Non dimenticare la password che hai inserito.',
+  GEN_Warning:            '**Avrai bisogno del tuo file Keystore e della password** (o della chiave privata) per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni.',
+  GEN_Label_2:            'Salva il tuo file Keystore. Non dimenticare la password che hai inserito.',
   GEN_Label_3:            'Salva il tuo indirizzo.',
   GEN_Label_4:            'Stampa il tuo portafoglio cartaceo, o salva una versione QR code. (facoltativo)',
 
@@ -111,7 +123,6 @@ it.data = {
   SEND_addr:             'Indirizzo destinatario: ',
   SEND_amount:           'Importo da inviare: ',
   SEND_amount_short:     'Importo',
-  SEND_custom:           'Altro',
   SEND_gas:              'Gas',
   SEND_generate:         'Genera transazione',
   SEND_raw:              'Transazione grezza',
@@ -185,7 +196,7 @@ it.data = {
   DAO_ETC_Label_2:        'Il gruppo "White Hat" ha lavorato senza sosta per farti riavere i tuoi ETC. Puoi dire "grazie" donando una percentuale della somma che prelevi, se lo desideri. ',
   DAO_Desc:               'Usa questa scheda per prelevare i tuoi token DAO e ottenere ETH **& ETC**. Se invece vuoi inviare token DAO, utilizza la scheda "Invia token".',
   DAO_Inst:               'Sì. Devi solo premere questo grosso pulsante rosso. È davvero così semplice.',
-  DAO_Warning:            'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0,001 ETH a questo conto e riprova. ',
+  DAO_Warning:            'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0,01 ETH a questo conto e riprova. ',
   DAOModal_Title:         'Tanto per essere sicuri...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Stai per prelevare',
@@ -250,7 +261,7 @@ it.data = {
   ERROR_15:             'Portafoglio non trovato. ',
   ERROR_16:             'Sembra che non esista ancora una proposta con questo ID o c\'è un errore nella lettura della proposta. ',
   ERROR_17:             'C\'è già un portafoglio con questo indirizzo fra quelli salvati. Controlla la pagina dei tuoi portafogli. ',
-  ERROR_18:             'Devi avere almeno 0,001 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
+  ERROR_18:             'Devi avere almeno 0,01 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
   ERROR_19:             'Questa transazione consumerebbe tutto il gas. Ciò significa che hai già votato questa proposta o che il periodo di discussione è terminato.',
   ERROR_20:             'Simbolo non valido',
   SUCCESS_1:            'Indirizzo valido',
@@ -270,6 +281,16 @@ it.data = {
   GETH_IntrinsicGas:       'Gas intrinseco troppo basso',
   GETH_GasLimit:           'Eccede il limite gas per il blocco',
   GETH_NegativeValue:      'Valore negativo',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "È già stata importata una transazione con lo stesso hash.",
+  PARITY_Old:                   "Il nonce della transazione è troppo basso. Prova ad incrementare il nonce.",
+  PARITY_TooCheapToReplace:     "La commissione per la transazione è troppo bassa. Nella coda c'è un'altra transazione con lo stesso nonce. Prova ad aumentare la commissione o ad incrementare il nonce.",
+  PARITY_LimitReached:          "Ci sono troppe transazioni nella coda. La tua transazione è stata scartata per il superamento del limite. Prova ad aumentare la commissione.",
+  PARITY_InsufficientGasPrice:  "La commissione per la transazione è troppo bassa. Non soddisfa la commissione minima del tuo nodo (minima: {}, fornita: {}). Prova ad aumentare la commissione.",
+  PARITY_InsufficientBalance:   "Fondi insufficienti. L'account dal quale stai provando ad inviare la transazione non ha abbastanza fondi. Richiesti {} ma presenti: {}.",
+  PARITY_GasLimitExceeded:      "Il costo della transazione eccede il limite gas corrente. Limite: {}, fornito: {}. Prova a ridurre il gas fornito.",
+  PARITY_InvalidGasLimit:       "Il gas fornito supera il limite.",
 
   /* Tranlsation Info */
   translate_version:    '0.3',

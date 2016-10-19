@@ -4,6 +4,18 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:          'Custom Token',
+  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+  TOKEN_show:           'Show All Tokens',
+  TOKEN_hide:           'Hide Tokens',
+
   /* Geth Error Messages */
   GETH_InvalidSender:      'Неверный адрес отправителя',
   GETH_Nonce:              'Номер перевода (nonce) слишком мал',
@@ -43,9 +55,9 @@ ru.data = {
   x_PrivKey:            'Закрытый ключ (не зашифрован)',
   x_PrivKey2:           'Закрытый ключ',
   x_PrivKeyDesc:        'Это незашифрованное текстовое представление Вашего закрытого ключа, для использования которого не требуется вводить пароль. Если посторонние узнают Ваш закрытый ключ, они смогут распоряжаться Вашим кошельком без ввода пароля. По этой причине, обычно рекомендуют использовать зашифрованную версию закрытого ключа.',
-  x_Keystore:           'Файл Keystore/JSON (рекомендуется · зашифрован · совместим с Mist и geth)',
-  x_Keystore2:          'Файл Keystore/JSON',
-  x_KeystoreDesc:       'Этот файл Keystore/JSON использует формат совместимый с Mist и geth. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию.',
+  x_Keystore:           'Файл Keystore (UTC / JSON · рекомендуется · зашифрован · совместим с Mist)',
+  x_Keystore2:          'Файл Keystore (UTC / JSON)',
+  x_KeystoreDesc:       'Этот файл Keystore использует формат совместимый с Mist. Вы сможете в будущем импортировать его. Рекомендуется скачать этот файл и сделать резервную копию.',
   x_Json:               'Файл JSON (не зашифрован)',
   x_JsonDesc:           'Это Ваш незашифрованный закрытый ключ в формате JSON, для использования которого не требуется воодить пароль. Любой, у кого есть этот файл, может распоряжаться вашим кошельком и эфиром (ether) без ввода пароля.',
   x_PrintShort:         'Печать',
@@ -195,7 +207,7 @@ ru.data = {
   DAO_ETC_Label_2:        'Группа "White Hat" работала не покладая рук для того, чтобы Вы смогли получить обратно Ваш ETC. Вы можете сказать им "спасибо", пожертвовав небольшой процент от суммы, если хотите, конечно. ',
   DAO_Desc:               'Используйте эту вкладку, чтобы обменять Ваши DAO токены на эфир (ether). Если вы хотите перевести DAO токены, используйте вкладку "Перевести токены".',
   DAO_Inst:               'Да. Просто нажмите большую красную кнопку. Это действительно просто.',
-  DAO_Warning:            'Если Вы видите ошибку "Недостаточно средств для оплаты газа", то это значит, что на Вашем счету не хватает эфира (ether), чтобы покрыть расходы на газ. Переведите 0,001 эфира (ether) на Ваш счёт и попробуйте снова. ',
+  DAO_Warning:            'Если Вы видите ошибку "Недостаточно средств для оплаты газа", то это значит, что на Вашем счету не хватает эфира (ether), чтобы покрыть расходы на газ. Переведите 0,01 эфира (ether) на Ваш счёт и попробуйте снова. ',
   DAOModal_Title:         'Просто чтобы убедиться...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Вы собираетесь обменять',
@@ -261,7 +273,7 @@ ru.data = {
   ERROR_15:             'Кошелёк не найден. ',
   ERROR_16:             'Предложение с таким идентификатором не существует или при чтении предложения произошла ошибка. ',
   ERROR_17:             'Кошелёк с таким адресом уже находится в хранилище. Просмотрите в списке кошельков. ',
-  ERROR_18:             'Вам необходимо иметь не менее 0.001 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
+  ERROR_18:             'Вам необходимо иметь не менее 0.01 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
   ERROR_19:             'Транзакция могла бы истратить весь газ. Это значит, что Вы уже голосовали по данному предложению, или период обсуждения данного предложения закончился.',
   ERROR_20:             'Неправильный символ',
   SUCCESS_1:            'Адрес указан верно',
@@ -270,6 +282,16 @@ ru.data = {
   SUCCESS_4:            'Ваш кошелёк успешно добавлен: ',
   SUCCESS_5:            'Ваш голос учтён. Спасибо Вам за активное участие в работе DAO.',
   SUCCESS_6:            'Выбранный файл: ',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.3',

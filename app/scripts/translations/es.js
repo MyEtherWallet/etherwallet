@@ -5,6 +5,17 @@ es.code = 'es';
 es.data = {
 
   NAV_DeployContract:  'Deploy Contract',
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:          'Custom Token',
+  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+  TOKEN_show:           'Show All Tokens',
+  TOKEN_hide:           'Hide Tokens',
 
   /* Navigation*/
   NAV_YourWallets:      'Tus Carteras',
@@ -33,9 +44,9 @@ es.data = {
   x_PrivKey:            'Clave Privada (sin encriptar)',
   x_PrivKey2:           'Clave Privada',
   x_PrivKeyDesc:        'Esta es la versión en texto sin encriptar de tu clave privada, lo cual quiere decir que no hace falta contraseña. Si alguien encontrase tu clave privada sin encriptar, podrían acceder a tu cartera sin necesitar contraseña. Por esta razón, normalmente se recomiendan las versiones encriptadas.',
-  x_Keystore:           'Archivo Keystore/JSON (Recomendado · Encriptado · Formato Mist/Geth)',
-  x_Keystore2:          'Archivo Keystore/JSON',
-  x_KeystoreDesc:       'Este archivo Keystore/JSON concuerda con el formato usado por Mist y Geth para una fácil importación en el futuro. Es el archivo recomendado para descargar y guardar como copia de seguridad.',
+  x_Keystore:           'Archivo Keystore (UTC / JSON · Recomendado · Encriptado · Formato Mist)',
+  x_Keystore2:          'Archivo Keystore (UTC / JSON)',
+  x_KeystoreDesc:       'Este archivo Keystore/JSON concuerda con el formato usado por Mist para una fácil importación en el futuro. Es el archivo recomendado para descargar y guardar como copia de seguridad.',
   x_Json:               'Archivo JSON (sin encriptar)',
   x_JsonDesc:           'Esta es tu clave privada sin encriptar en formato JSON. Esto significa que no necesitas una contraseña, pero cualquiera que encuentre tu archivo JSON puede acceder a tu cartera y ether sin necesitar ninguna contraseña.',
   x_PrintShort:         'Imprimir',
@@ -97,8 +108,8 @@ es.data = {
   GEN_Label_1:            'Introduce una contraseña fuerte (mínimo 9 caracteres)',
   GEN_Placeholder_1:      '¡NO olvides guardar esto!',
   GEN_SuccessMsg:         '¡Enhorabuena! Se ha generado tu cartera.',
-  GEN_Warning:            '**Necesitas tu archivo Keystore/JSON y la contraseña o Clave Privada** para acceder a esta cartera en el futuro. Por favor ¡guárdala y respáldala externamente! No hay modo de recuperar una cartera si no la guardas. Lee la [página de ayuda](https://www.myetherwallet.com/#help) para instrucciones.',
-  GEN_Label_2:            'Guarda tu Keystore/JSON o Clave Privada. No olvides tu contraseña de arriba.',
+  GEN_Warning:            '**Necesitas tu archivo Keystore/JSON y la contraseña** (o Clave Privada) para acceder a esta cartera en el futuro. Por favor ¡guárdala y respáldala externamente! No hay modo de recuperar una cartera si no la guardas. Lee la [página de ayuda](https://www.myetherwallet.com/#help) para instrucciones.',
+  GEN_Label_2:            'Guarda tu Keystore. No olvides tu contraseña de arriba.',
   GEN_Label_3:            'Guarda tu dirección.',
   GEN_Label_4:            'Imprime tu cartera en papel o guarda una versión en código QR (opcional)',
 
@@ -185,7 +196,7 @@ es.data = {
   DAO_ETC_Label_2:        'El "White Hat Group" ha trabajado sin descanso para devolverte tus ETC. Puedes agradecérselo donando un porcentaje de tu reintegro si así lo eliges. ',
   DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
   DAO_Inst:               'Sí. Simplemente pulsa el botón rojo grande. Es así de sencillo.',
-  DAO_Warning:            'Si estás obteniendo un error de "Saldo insuficiente para gas", debes tener una pequeña cantidad de ether en tu cuenta para poder cubrir el coste del gas. Añade 0.001 ether a esta cuenta y prueba de nuevo. ',
+  DAO_Warning:            'Si estás obteniendo un error de "Saldo insuficiente para gas", debes tener una pequeña cantidad de ether en tu cuenta para poder cubrir el coste del gas. Añade 0.01 ether a esta cuenta y prueba de nuevo. ',
   DAOModal_Title:         'Solamente asegurándonos...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Estás a punto de retirar',
@@ -250,7 +261,7 @@ es.data = {
   ERROR_15:             'Cartera no encontrada. ',
   ERROR_16:             'No parece que exista todavía una propuesta con este ID o hay un error al leer esta propuesta. ',
   ERROR_17:             'Ya hay almacenada una cartera con esta dirección. Por favor comprueba la página de carteras. ',
-  ERROR_18:             'Es necesario tener al menos 0.001 ether en tu cuenta para cubrir el coste del gas. Añade algo de ether e inténtalo de nuevo. ',
+  ERROR_18:             'Es necesario tener al menos 0.01 ether en tu cuenta para cubrir el coste del gas. Añade algo de ether e inténtalo de nuevo. ',
   ERROR_19:             'Sería necesario utilizar todo el gas en esta transacción. Esto significa que ya has votado en esta propuesta o que el periodo de debate ha concluido.',
   ERROR_20:             'Símbolo no válido',
   SUCCESS_1:            'Dirección válida',
@@ -270,6 +281,16 @@ es.data = {
   GETH_IntrinsicGas:       'Gas intrínseco demasiado bajo',
   GETH_GasLimit:           'Sobrepasa el límite de gas del bloque',
   GETH_NegativeValue:      'Valor negativo',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.3',

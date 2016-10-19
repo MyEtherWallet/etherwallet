@@ -143,7 +143,10 @@ footer {
 }
 
 .bigger-on-mobile.form-control[readonly] {
-  height: 120px;
+  height: 60px;
+  @media screen and (max-width: 767px) {
+    height: 100px;
+  }
 }
 
 // help page
@@ -225,7 +228,7 @@ footer {
   table& {
     font-weight: 200;
     border-bottom: 0;
-    min-width: 150px;
+    min-width: 200px;
     td {
       padding: 4px 5px;
       line-height: 1;
@@ -238,8 +241,9 @@ footer {
     tr:nth-child(even) {
       background-color: @gray-lightest;
     }
+    tr:nth-last-child(2),
     tr:last-child {
-      background-color: white;
+      background-color: white!important;
     }
   }
 }
@@ -307,4 +311,13 @@ input[type="password"]+.eye {
   position: absolute;
   left: 18px;
   cursor: pointer;
+}
+
+.m-addresses td:first-child {
+  max-width: 50px;
+  min-widht: 50px;
+}
+
+.m-addresses td:last-child {
+  text-align: right;
 }

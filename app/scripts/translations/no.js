@@ -4,6 +4,18 @@ var no = function() {}
 no.code = 'no';
 no.data = {
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  ADD_Radio_5:          'Paste/Type Your Mnemonic',
+  SEND_custom:          'Custom Token',
+  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
+  TOKEN_show:           'Show All Tokens',
+  TOKEN_hide:           'Hide Tokens',
+
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
   NAV_AddWallet:        'Legg til lommebok',
@@ -30,9 +42,9 @@ no.data = {
   x_Download:           'Last ned',
   x_Json:               'JSON-fil (ukryptert)',
   x_JsonDesc:           'Dette er det ukrypterte JSON-formatet av din private nøkkel. Dette betyr at du ikke trenger noe passord, men også at den som finner din JSON kan få tilgang til lommeboken din og etherne dine uten passord.',
-  x_Keystore2:          'Keystore/JSON-fil',
-  x_Keystore:           'Keystore/JSON-fil (Anbefalt · Kryptert · Mist/Geth-format)',
-  x_KeystoreDesc:       'Denne Keystore/JSON-filen samsvarer med formatet som brukes av Mist & Geth, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere.',
+  x_Keystore2:          'Keystore-fil (UTC / JSON)',
+  x_Keystore:           'Keystore-fil (UTC / JSON · Anbefalt · Kryptert · Mist-format)',
+  x_KeystoreDesc:       'Denne Keystore-filen samsvarer med formatet som brukes av Mist, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere.',
   x_Password:           'Passord',
   x_Print:              'Skriv ut papirlommebok',
   x_PrintDesc:          'Profftips: Klikk "skriv ut" og lagre som PDF, selv om du ikke har noen skriver!',
@@ -96,8 +108,8 @@ no.data = {
   GEN_Label_1:            'Oppgi et sterkt passord (minst 9 tegn)',
   GEN_Placeholder_1:      'Glem IKKE å ta vare på dette!',
   GEN_SuccessMsg:         'Suksess! Lommeboken din har blitt opprettet.',
-  GEN_Warning:            '**Du trenger din Keystore/JSON-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk).',
-  GEN_Label_2:            'Lagre din Keystore/JSON og/eller private nøkkel. Ikke glem passordet ditt ovenfor.',
+  GEN_Warning:            '**Du trenger din Keystore-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk).',
+  GEN_Label_2:            'Lagre din Keystore-fil og/eller private nøkkel. Ikke glem passordet ditt ovenfor.',
   GEN_Label_3:            'Lagre adressen din.',
   GEN_Label_4:            'Skriv ut din papir-lommebok, eller lagre en QR-kode-versjon. (valgfritt)',
 
@@ -184,7 +196,7 @@ no.data = {
   DAO_ETC_Label_2:        '"White Hat Group" har jobbet utrettelig for å gi deg tilbake dine ETC. Du kan takke dem ved å donere en prosentandel av uttaket ditt, hvis du ønsker det. ',
   DAO_Desc:               'Bruk denne siden til å veksle inn dine DAO-token for ETH. Hvis du ønsker å sende DAO-token, vennligst bruk "Send Token"-siden.',
   DAO_Inst:               'Ja. Bare trykk på den store røde knappen. Det er så enkelt som det.',
-  DAO_Warning:            'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,001 ether til denne kontoen og prøv igjen. ',
+  DAO_Warning:            'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,01 ether til denne kontoen og prøv igjen. ',
   DAOModal_Title:         'Bare for å være sikker...',
   // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
   DAOModal_1:             'Du er i ferd med å veksle inn ',
@@ -249,7 +261,7 @@ no.data = {
   ERROR_15:             'Lommebok ikke funnet. ',
   ERROR_16:             'Det ser ikke ut til at et forslag med denne ID-en eksisterer ennå, eller det er en feil ved innlesning av dette forslaget. ',
   ERROR_17:             'En lommebok med denne adressen er allerede lagret. Vennligst sjekk lommebok-siden din. ',
-  ERROR_18:             'Du trenger minst 0,001 ether på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ether og prøv igjen. ',
+  ERROR_18:             'Du trenger minst 0,01 ether på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ether og prøv igjen. ',
   ERROR_19:             'All gas vil bli brukt på denne transaksjonen. Dette betyr at du allerede har stemt på dette forslaget, eller at debatt-perioden er over.',
   ERROR_20:             'Ugyldig symbol',
   SUCCESS_1:            'Gyldig adresse',
@@ -269,6 +281,16 @@ no.data = {
   GETH_IntrinsicGas:       'Gas-egenverdi for lav',
   GETH_GasLimit:           'Overskrider blokkens gas-grense',
   GETH_NegativeValue:      'Negativ verdi',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.4',
