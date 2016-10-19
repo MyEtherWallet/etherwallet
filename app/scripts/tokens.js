@@ -40,6 +40,12 @@ Token.popTokens = [{
 	"type": "default"
 },
 {
+  "address": "0xb582baaf5e749d6aa98a22355a9d08b4c4d013c8",
+  "symbol": "HKG",
+  "decimal": 3,
+  "type": "default"
+},
+{
 	"address": "0xc66ea802717bfb9833400264dd12c2bceaa34a6d",
 	"symbol": "MKR",
 	"decimal": 18,
