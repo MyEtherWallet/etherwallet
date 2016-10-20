@@ -9,7 +9,7 @@ en.data = {
   MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
   MNEM_more:            'More Addresses',
   MNEM_prev:            'Previous Addresses',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx )',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             'Not a valid ERC-20 token',
@@ -18,7 +18,9 @@ en.data = {
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Wallet',
-  ADD_Ledger:           'Connect your Ledger Wallet, open the Ethereum application or a contract application and verify that Browser Support is enabled in Settings',
+  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
+  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
   ADD_Ledger_scan:      'Connect to Ledger Wallet',
 
   /* Navigation*/

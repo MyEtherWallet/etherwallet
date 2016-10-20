@@ -59,7 +59,7 @@ var walletDecryptDrtv = function() {
       <!-- /if selected type mnemonic-->\n \
       <!-- if selected type ledger-->\n \
       <div id="selectedTypeLedger" ng-if="walletType==\'ledger\'">\n \
-        <h4 translate="ADD_Ledger">Connect your Ledger Wallet, open the Ethereum application or a contract application and verify that it is operating in U2F mode</h4>\n \
+        <h4><ol><li translate="ADD_Ledger_1">Connect your Ledger Wallet</li><li translate="ADD_Ledger_2">Open the Ethereum application (or a contract application)</li> <li translate="ADD_Ledger_3">Verify that Browser Support is enabled in Settings</li></ol></h4>\n \
       </div>\n \
       <!-- /if selected type ledger-->\n \
     </div>\n \

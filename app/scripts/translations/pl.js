@@ -9,12 +9,19 @@ pl.data = {
   MNEM_2:               'Jedna grupa słów mnemonicznych ma dostęp do wielu portfeli / adresów. Wybierz adres, do którego chcesz uzyskać dostęp tym razem.',
   MNEM_more:            'Więcej Adresów',
   MNEM_prev:            'Poprzednie Adresy',
-  x_Mnemonic:           'Mnemonik (MetaMask / Jaxx / Ledger)',
+  x_Mnemonic:           'Mnemonik (MetaMask / Jaxx )',
   ADD_Radio_5:          'Wklej/Wpisz Swój Mnemonik',
   SEND_custom:          'Niestandardowy Token',
   ERROR_21:             ' nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token.',
   TOKEN_show:           'Pokaż Wszystkie Tokeny',
   TOKEN_hide:           'Ukryj Tokeny',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Wallet',
+  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
+  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
+  ADD_Ledger_scan:      'Connect to Ledger Wallet',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',

@@ -10,12 +10,19 @@ it.data = {
   MNEM_2:               'Con una singola frase mnemonica puoi avere accesso a un certo numero di portafogli / indirizzi. Seleziona l\'indirizzo con il quale vuoi interagire in questo momento.',
   MNEM_more:            'Altri indirizzi',
   MNEM_prev:            'Indirizzi precedenti',
-  x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx / Ledger)',
+  x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx )',
   ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
   SEND_custom:          'Altro token',
   ERROR_21:             'Non è un token ERC-20 valido.',
   TOKEN_show:           'Mostra tutti i token',
   TOKEN_hide:           'Nascondi token',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Wallet',
+  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
+  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
+  ADD_Ledger_scan:      'Connect to Ledger Wallet',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',

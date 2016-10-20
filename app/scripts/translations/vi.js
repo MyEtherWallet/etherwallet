@@ -9,12 +9,19 @@ vi.data = {
   MNEM_2:               'Cụm từ dễ nhớ đó có thể truy nhập vào số địa chỉ Ví của bạn. Vui lòng chọn địa chỉ mà bạn muốn tương tác tại thời điểm này.',
   MNEM_more:            'Nhiều địa chỉ',
   MNEM_prev:            'Địa chỉ trước đó',
-  x_Mnemonic:           'Cụm từ dễ nhớ (MetaMask / Jaxx / Ledger)',
+  x_Mnemonic:           'Cụm từ dễ nhớ (MetaMask / Jaxx )',
   ADD_Radio_5:          'Dán/Điền ký tự dễ nhớ của bạn',
   SEND_custom:          'Token được yêu cầu!',
   ERROR_21:             'Không tồn tại trên hệ thống ERC-20 token. Nếu bạn phải chờ lâu. Xin vui lòng thử lại lần nữa!.',
   TOKEN_show:           'Hiển thị tất cả các loại Tokens',
   TOKEN_hide:           'Ẩn Tokens',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Wallet',
+  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
+  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
+  ADD_Ledger_scan:      'Connect to Ledger Wallet',
 
   /* Navigation*/
   NAV_YourWallets:      'Ví Của Bạn',

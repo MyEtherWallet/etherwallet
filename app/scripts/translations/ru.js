@@ -9,12 +9,19 @@ ru.data = {
   MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
   MNEM_more:            'More Addresses',
   MNEM_prev:            'Previous Addresses',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / Ledger)',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx )',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
   SEND_custom:          'Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Wallet',
+  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
+  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
+  ADD_Ledger_scan:      'Connect to Ledger Wallet',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Неверный адрес отправителя',
@@ -119,8 +126,8 @@ ru.data = {
   GEN_Label_1:            'Введите сложный пароль (не менее 9 символов)',
   GEN_Placeholder_1:      'Не забудьте сохранить это!',
   GEN_SuccessMsg:         'Поздравляем! Ваш кошелёк успешно создан.',
-  GEN_Warning:            'В будущем, для доступа к этому кошельку **Вам понадобится либо файл Keystore/JSON вместе с паролем,  либо зарытый ключ**. Пожалуйста, сохраните их и сделайте резервную копию! Если Вы потеряете их, то не сможете восстановить доступ к Вашему кошельку. Обратитесь к [справке](https://www.myetherwallet.com/#help) за инструкциями.',
-  GEN_Label_2:            'Сохраните Ваш файл Keystore/JSON или зарытый ключ. Не забывайте Ваш пароль!',
+  GEN_Warning:            'В будущем, для доступа к этому кошельку **Вам понадобится либо файл Keystore/JSON вместе с паролем,  либо закрытый ключ**. Пожалуйста, сохраните их и сделайте резервную копию! Если Вы потеряете их, то не сможете восстановить доступ к Вашему кошельку. Обратитесь к [справке](https://www.myetherwallet.com/#help) за инструкциями.',
+  GEN_Label_2:            'Сохраните Ваш файл Keystore/JSON или закрытый ключ. Не забывайте Ваш пароль!',
   GEN_Label_3:            'Сохраните Ваш адрес.',
   GEN_Label_4:            'Напечатайте бумажный кошелёк или сохраните QR код. (по желанию)',
 

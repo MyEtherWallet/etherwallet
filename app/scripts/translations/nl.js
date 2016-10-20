@@ -4,6 +4,13 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Wallet',
+  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
+  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
+  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+
   /* Mnemonic Additions */
   MNEM_1:               'Selecteer het adres waarmee je wilt communiceren.',
   MNEM_2:               'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren.',
@@ -49,7 +56,7 @@ nl.data = {
   x_PrintDesc:          'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
   x_CSV:                'CSV bestand (onverlseuteld)',
   x_TXT:                'TXT bestand (onverlseuteld)',
-  x_Mnemonic:           'Mnemonic Zin (MetaMask / Jaxx / Ledger)',
+  x_Mnemonic:           'Mnemonic Zin (MetaMask / Jaxx )',
 
   /* Header */
   MEW_Warning_1:        'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites!',
