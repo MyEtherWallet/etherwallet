@@ -44,6 +44,14 @@ if (IS_CX) {
 	var cxFuncs = require('./cxFuncs');
 	window.cxFuncs = cxFuncs;
 }
+else {
+	var u2f = require('./staticJS/u2f-api');
+	var ledger3 = require('./ledger3');
+	var ledgerEth = require('./ledger-eth');	
+	window.u2f = u2f;
+	window.Ledger3 = ledger3;
+	window.ledgerEth = ledgerEth;	
+}
 var tabsCtrl = require('./controllers/tabsCtrl');
 var viewCtrl = require('./controllers/viewCtrl');
 var walletGenCtrl = require('./controllers/walletGenCtrl');

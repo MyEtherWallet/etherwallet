@@ -104,7 +104,10 @@ var tokenCtrl = function($scope, $sce, walletService) {
 			gasLimit: $scope.tokenTx.gasLimit,
 			data: tokenData,
 			from: $scope.wallet.getAddressString(),
-			privKey: $scope.wallet.getPrivateKeyString()
+			privKey: $scope.wallet.getPrivateKeyString(),
+		  path: $scope.wallet.getPath(),
+		  hwType: $scope.wallet.getHWType(),
+		  hwTransport: $scope.wallet.getHWTransport()
 		}, false, function(rawTx) {
 			if (!rawTx.isError) {
 				$scope.rawTx = rawTx.rawTx;

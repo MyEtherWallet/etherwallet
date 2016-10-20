@@ -17,6 +17,10 @@ var walletDecryptDrtv = function() {
         <label>\n \
           <input type="radio" ng-model="walletType" value="pastemnemonic"/><span translate="x_Mnemonic">Mnemonic Phrase</span></label>\n \
       </div>\n \
+      <div class="radio">\n \
+        <label>\n \
+          <input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Wallet</span></label>\n \
+      </div>\n \
     </div>\n \
     <div class="col-md-4 col-sm-6">\n \
       <!-- if selected upload -->\n \
@@ -53,12 +57,18 @@ var walletDecryptDrtv = function() {
         </div>\n \
       </div>\n \
       <!-- /if selected type mnemonic-->\n \
+      <!-- if selected type ledger-->\n \
+      <div id="selectedTypeLedger" ng-if="walletType==\'ledger\'">\n \
+        <h4 translate="ADD_Ledger">Connect your Ledger Wallet, open the Ethereum application or a contract application and verify that it is operating in U2F mode</h4>\n \
+      </div>\n \
+      <!-- /if selected type ledger-->\n \
     </div>\n \
-    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt">\n \
+    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'">\n \
       <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt" translate="ADD_Label_6"> Access Your Wallet:</h4>\n \
       <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
       <h4 id="uploadbtntxt-mnemonic" ng-show="showMDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
       <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt||showMDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
+      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="walletType==\'ledger\'" ng-click="scanLedger()" translate="ADD_Ledger_scan">SCAN</a></div>\n \
       <div ng-bind-html="decryptStatus"></div>\n \
     </div>\n \
     <div class="modal fade" tabindex="-1" role="dialog" id="mnemonicModel">\n \
