@@ -17,7 +17,7 @@ var walletDecryptDrtv = function() {
         <label>\n \
           <input type="radio" ng-model="walletType" value="pastemnemonic"/><span translate="x_Mnemonic">Mnemonic Phrase</span></label>\n \
       </div>\n \
-      <div class="radio">\n \
+      <div class="radio" ng-show="isSSL">\n \
         <label>\n \
           <input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Wallet</span></label>\n \
       </div>\n \

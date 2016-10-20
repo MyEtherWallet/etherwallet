@@ -5,6 +5,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 	$scope.filePassword = "";
 	$scope.fileContent = "";
     $scope.Validator = Validator;
+    $scope.isSSL = window.location.protocol=='https:';
     $scope.HDWallet = {
         numWallets: 0,
         walletsPerDialog: 5,
