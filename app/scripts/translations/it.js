@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 144f6c65578446bacf5e09632f36e906bdd0b639
+// Last sync with en.js: commit 3f07fe25187ae421f9940f8dce281e01389080e7
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -10,7 +10,7 @@ it.data = {
   MNEM_2:               'Con una singola frase mnemonica puoi avere accesso a un certo numero di portafogli / indirizzi. Seleziona l\'indirizzo con il quale vuoi interagire in questo momento.',
   MNEM_more:            'Altri indirizzi',
   MNEM_prev:            'Indirizzi precedenti',
-  x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx )',
+  x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx)',
   ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
   SEND_custom:          'Altro token',
   ERROR_21:             'Non è un token ERC-20 valido.',
@@ -19,10 +19,10 @@ it.data = {
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
-  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
-  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_1:         'Collega il tuo Ledger Wallet',
+  ADD_Ledger_2:         'Apri l\'applicazione Ethereum (o l\'applicazione di un contratto)',
+  ADD_Ledger_3:         'Verifica che il supporto browser sia abilitato nelle impostazioni',
+  ADD_Ledger_scan:      'Collegati al Ledger Wallet',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
