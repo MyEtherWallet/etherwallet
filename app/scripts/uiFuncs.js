@@ -8,7 +8,10 @@ uiFuncs.getTxData = function($scope) {
 		gasLimit: $scope.tx.gasLimit,
 		data: $scope.tx.data,
 		from: $scope.wallet.getAddressString(),
-		privKey: $scope.wallet.getPrivateKeyString()
+		privKey: $scope.wallet.getPrivateKeyString(),
+		path: $scope.wallet.getPath(),
+		hwType: $scope.wallet.getHWType(),
+		hwTransport: $scope.wallet.getHWTransport()
 	};
 }
 uiFuncs.isTxDataValid = function(txData) {
@@ -17,6 +20,28 @@ uiFuncs.isTxDataValid = function(txData) {
 	else if (!globalFuncs.isNumeric(txData.gasLimit) || parseFloat(txData.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
 	else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
 	if (txData.to == "0xCONTRACT") txData.to = '';
+}
+uiFuncs.signTxLedger = function(eTx, rawTx, txData, callback) {
+	var txToSign = ethUtil.rlp.encode(eTx.raw.slice(0, 6));
+	var app = new ledgerEth(txData.hwTransport);
+	var localCallback = function(result, error) {
+		if (typeof error != "undefined") {
+			if (callback !== undefined) callback({
+				isError: true,
+				error: error
+			});
+			return;
+		}
+		rawTx.v = "0x" + result['v'];
+		rawTx.r = "0x" + result['r'];
+		rawTx.s = "0x" + result['s'];		
+		eTx = new ethUtil.Tx(rawTx);
+		rawTx.rawTx = JSON.stringify(rawTx);
+		rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
+		rawTx.isError = false;
+		if (callback !== undefined) callback(rawTx);
+	}
+	app.signTransaction(txData.path, txToSign.toString('hex'), localCallback);
 }
 uiFuncs.generateTx = function(txData, isClassic, callback) {
 	try {
@@ -33,11 +58,16 @@ uiFuncs.generateTx = function(txData, isClassic, callback) {
 				data: ethFuncs.sanitizeHex(txData.data)
 			}
 			var eTx = new ethUtil.Tx(rawTx);
-			eTx.sign(new Buffer(txData.privKey, 'hex'));
-			rawTx.rawTx = JSON.stringify(rawTx);
-			rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
-			rawTx.isError = false;
-			if (callback !== undefined) callback(rawTx);
+			if ((typeof txData.hwType != "undefined") && (txData.hwType == "ledger")) {
+				uiFuncs.signTxLedger(eTx, rawTx, txData, callback);
+			}
+			else {
+				eTx.sign(new Buffer(txData.privKey, 'hex'));
+				rawTx.rawTx = JSON.stringify(rawTx);
+				rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
+				rawTx.isError = false;
+				if (callback !== undefined) callback(rawTx);
+			}
 		});
 	} catch (e) {
 		if (callback !== undefined) callback({
