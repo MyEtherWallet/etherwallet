@@ -16,6 +16,12 @@ Token.popTokens = [{
 	"type": "default"
 },
 {
+  "address": "0xe4c94d45f7aef7018a5d66f44af780ec6023378e",
+  "symbol": "CryptoCarbon",
+  "decimal": 6,
+  "type": "default"
+},
+{
 	"address": "0xbb9bc244d798123fde783fcc1c72d3bb8c189413",
 	"symbol": "DAO",
 	"decimal": 16,
@@ -42,6 +48,12 @@ Token.popTokens = [{
 {
   "address": "0xb582baaf5e749d6aa98a22355a9d08b4c4d013c8",
   "symbol": "HKG",
+  "decimal": 18,
+  "type": "default"
+},
+{
+  "address": "0x888666CA69E0f178DED6D75b5726Cee99A87D698",
+  "symbol": "ICN",
   "decimal": 3,
   "type": "default"
 },
