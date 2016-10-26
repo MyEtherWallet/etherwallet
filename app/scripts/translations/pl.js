@@ -18,10 +18,10 @@ pl.data = {
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
-  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
-  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_1:         'Podłącz swój Ledger Wallet',
+  ADD_Ledger_2:         'Otwórz aplikację Ethereum (lub aplikację kontraktu)',
+  ADD_Ledger_3:         'Sprawdź czy opcja Obsługa Przeglądarki jest włączona w Ustawieniach',
+  ADD_Ledger_scan:      'Połącz z Ledger Wallet',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
