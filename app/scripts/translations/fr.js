@@ -5,23 +5,23 @@ fr.code = 'fr';
 fr.data = {
 
   /* Mnemonic Additions */
-  MNEM_1:               'Please select the address you would like to interact with.',
-  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
-  MNEM_more:            'More Addresses',
-  MNEM_prev:            'Previous Addresses',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx )',
-  ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Custom Token',
-  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
-  TOKEN_show:           'Show All Tokens',
-  TOKEN_hide:           'Hide Tokens',
+  MNEM_1:               'Sélectionnez l\'adresse avec laquelle vous désirez interagir.',
+  MNEM_2:               'Votre phrase mnémonique HD unique peut accéder à un certain nombre de portefeuilles/adresses. Sélectionnez l\'adresse avec laquelle vous désirez interagir actuellement.',
+  MNEM_more:            'Plus d\'adresses',
+  MNEM_prev:            'Adresses précédentes',
+  x_Mnemonic:           'Phrase mnémonique (MetaMask / Jaxx)',
+  ADD_Radio_5:          'Collez/entrez votre mnémonique',
+  SEND_custom:          'Token spécifique',
+  ERROR_21:             ' n\'est pas un token ERC-20 valide. Si d\'autres tokens sont en train de se charger, enlevez celui-ci et réessayez.',
+  TOKEN_show:           'Montrer tous les tokens',
+  TOKEN_hide:           'Cacher les tokens',
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
-  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
-  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_1:         'Connectez votre Ledger Wallet',
+  ADD_Ledger_2:         'Ouvrez l\'application Ethereum (ou une application de contrat)',
+  ADD_Ledger_3:         'Vérifiez que Browser Support est activé dans Settings',
+  ADD_Ledger_scan:      'Se connecter au Ledger Wallet',
 
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
