@@ -83,9 +83,9 @@ ja.data = {
   /* Footer */
   FOOTER_1:             'イサリアムウォレットの作成とトランザクション実行のためのオープンソース、javascript、 クライアントサイドツール。',
   FOOTER_1b:            '制作',
-  FOOTER_2:             ‘投げ銭に感謝致します！:’,
+  FOOTER_2:             '投げ銭に感謝致します！:',
   FOOTER_3:             'クライアントサイドウォレット制作',
-  FOOTER_4:               '免責事項',
+  FOOTER_4:             '免責事項',
 
   /* Sidebar */
   sidebar_AccountInfo:  'アカウント情報: ',
