@@ -6,10 +6,10 @@ nl.data = {
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
-  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
-  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_1:         'Verbind je Ledger Wallet',
+  ADD_Ledger_2:         'Open de Ethereum applicatie (of een contract applicatie)',
+  ADD_Ledger_3:         'Controleer of "Browser Support" is ingeschakeld in je instellingen',
+  ADD_Ledger_scan:      'Verbind met Ledger Wallet',
 
   /* Mnemonic Additions */
   MNEM_1:               'Selecteer het adres waarmee je wilt communiceren.',
