@@ -83,7 +83,7 @@ ja.data = {
   /* Footer */
   FOOTER_1:             'イサリアムウォレットの作成とトランザクション実行のためのオープンソース、javascript、 クライアントサイドツール。',
   FOOTER_1b:            '制作',
-  FOOTER_2:             '御寄付に感謝！:',
+  FOOTER_2:             ‘投げ銭に感謝致します！:’,
   FOOTER_3:             'クライアントサイドウォレット制作',
   FOOTER_4:               '免責事項',
 
@@ -300,7 +300,7 @@ ja.data = {
 
   /* Tranlsation Info */
   translate_version:    '0.3',
-  Translator_Desc:      'トランスレーターに感謝： ',
+  Translator_Desc:      'トランスレーターに感謝して投げ銭： ',
   TranslatorName_1:     '[sekisanchi](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction)',
   TranslatorAddr_1:     '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE',
   /* Translator 1: Kazunori Seki / 関一典 */
