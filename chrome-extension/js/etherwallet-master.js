@@ -4404,7 +4404,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       MNEM_prev: 'Previous Addresses',
       x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx )',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
-      SEND_custom: 'Custom Token',
+      SEND_custom: 'Add Custom Token',
       ERROR_21: 'Not a valid ERC-20 token',
       TOKEN_show: 'Show All Tokens',
       TOKEN_hide: 'Hide Tokens',

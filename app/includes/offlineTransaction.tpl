@@ -49,21 +49,21 @@
     </div>
     <div class="form-group col-sm-10">
       <label translate="OFFLINE_Step2_Label_2"> Value / Amount to Send </label>
-      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
-      <div class="radio">
-        <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tokenTx.id"/>Ether</label>
+      <div class="input-group">
+        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
+        <div class="input-group-btn">
+          <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount"> ETH <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
+            <li><a name="currencyRadioOffline" value="ether" ng-model="tokenTx.id">ETH</a></li>
+            <li role="separator" class="divider"></li>
+            <li ng-repeat="token in tokenObjs track by $index"><a name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"> {{token.getSymbol()}} </a></li>
+            <li role="separator" class="divider"></li>
+            <li><a name="currencyRadioOffline" value="99" ng-model="tokenTx.id"><span translate="SEND_custom">Custom Token</span></a></li>
+          </ul>
+        </div>
       </div>
 
-      <div class="radio">
-        <label ng-repeat="token in tokenObjs track by $index">
-          <input type="radio" name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"/>
-          {{token.getSymbol()}}
-        </label>
-        <label>
-          <input type="radio" name="currencyRadioOffline" value="99" ng-model="tokenTx.id"/>
-          <span translate="SEND_custom">Custom Token</span>
-        </label>
-      </div>
+
       <div class="custom-token-fields well" style="max-width: 600px" ng-show="tokenTx.id==99">
         <div class="form-group">
           <label translate="TOKEN_Addr"> Address: </label>
