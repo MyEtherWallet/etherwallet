@@ -428,6 +428,43 @@
         <li><span class="mono wrap">{{etcBalance}}</span> ETC </li>
       </ul>
 
+      <div class="token-balances">
+        <div translate="sidebar_TokenBal"> Token Balances: </div>
+        <table class="account-info">
+            <tr ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+              <td class="mono wrap">
+                <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'"/>
+                {{token.getBalance()}}
+              </td>
+              <td> {{token.getSymbol()}} </td>
+            </tr>
+        </table>
+
+        <a class="btn btn-info btn-sm" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
+        <a class="btn btn-info btn-sm" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
+        <a class="btn btn-info btn-sm"> <span translate="SEND_custom"> Add Custom Token </span> </a>
+
+        <div class="custom-token-fields" ng-show="tokenTx.id==99">
+          <div class="form-group">
+            <label translate="TOKEN_Addr"> Address: </label>
+            <input class="form-control input-sm" type="text" ng-model="localToken.contractAdd"/>
+          </div>
+          <div class="form-group">
+            <label translate="TOKEN_Symbol"> Token Symbol: </label>
+            <input class="form-control input-sm" type="text" ng-model="localToken.symbol"/>
+          </div>
+          <div class="form-group">
+            <label translate="TOKEN_Dec"> Decimals: </label>
+            <input class="form-control input-sm" type="text" ng-model="localToken.decimals"/>
+          </div>
+          <div class="form-group">
+            <div class="btn btn-primary btn-sm" ng-click="saveTokenToLocal()" translate="x_Save"> Save </div>
+          </div>
+          <div ng-bind-html="validateLocalToken"></div>
+        </div>
+      </div>
+
+
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
         <li><span class="mono wrap">{{usdBalance}}</span> USD </li>
@@ -465,18 +502,24 @@
       <div class="form-group col-xs-12">
 
         <label translate="SEND_amount">Amount to Send:</label>
-        <a class="pull-right" ng-click="transferAllBalance()" translate="SEND_TransferTotal">Send Entire Balance</a>
-        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
-        <div class="radio">
-          <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>
-            <span translate="TRANS_standard">ETH (Standard Transaction)</span></label>
-          <br />
-          <label><input type="radio" name="currencyRadio" value="1" ng-model="tx.sendMode"/>
-            <span translate="TRANS_eth">Only ETH </span></label>
-          <br />
-          <label><input type="radio" name="currencyRadio" value="2" ng-model="tx.sendMode"/>
-            <span translate="TRANS_etc">Only ETC </span></label>
+
+        <div class="form-group input-group">
+          <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+          <div class="input-group-btn">
+            <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount"> ETH <span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
+              <li><a name="currencyRadio" value="0" ng-model="tx.sendMode"><span translate="TRANS_standard">ETH (Standard Transaction)</span></a></li>
+              <li><a name="currencyRadio" value="1" ng-model="tx.sendMode"><span translate="TRANS_eth">Only ETH </span></a></li>
+              <li><a name="currencyRadio" value="2" ng-model="tx.sendMode"><span translate="TRANS_etc">Only ETC </span></a></li>
+              <li role="separator" class="divider"></li>
+              <li ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || tokenVisibility=='shown' ">
+                <a name="currencyRadio" value="{{$index}}" ng-model="tokenTx.id"> {{token.getSymbol()}} </a>
+              </li>
+            </ul>
+          </div>
         </div>
+        <a ng-click="transferAllBalance()"><p class="strong" translate="SEND_TransferTotal">Send Entire Balance</p></a>
+
         <div class="form-group">
           <label translate="TRANS_gas"> Gas: </label>
           <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
@@ -518,8 +561,9 @@
         <div class="form-group" ng-bind-html="sendTxStatus"></div>
 
         <a class="form-group" data-toggle="modal" data-target="#txInfoModal" ng-click="txInfoModal.open()">
-          <div class="alert alert-danger small" translate="TRANS_warning">If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.</div>
+          <div translate="TRANS_warning">* If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.</div>
         </a>
+        <div class="form-group" translate="DAO_Warning">** If you are getting an <em>insufficient balance for gas * ... </em> error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</div>
 
       </div>
 
@@ -644,21 +688,21 @@
     </div>
     <div class="form-group col-sm-10">
       <label translate="OFFLINE_Step2_Label_2"> Value / Amount to Send </label>
-      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
-      <div class="radio">
-        <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tokenTx.id"/>Ether</label>
+      <div class="input-group">
+        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
+        <div class="input-group-btn">
+          <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount"> ETH <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
+            <li><a name="currencyRadioOffline" value="ether" ng-model="tokenTx.id">ETH</a></li>
+            <li role="separator" class="divider"></li>
+            <li ng-repeat="token in tokenObjs track by $index"><a name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"> {{token.getSymbol()}} </a></li>
+            <li role="separator" class="divider"></li>
+            <li><a name="currencyRadioOffline" value="99" ng-model="tokenTx.id"><span translate="SEND_custom">Custom Token</span></a></li>
+          </ul>
+        </div>
       </div>
 
-      <div class="radio">
-        <label ng-repeat="token in tokenObjs track by $index">
-          <input type="radio" name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"/>
-          {{token.getSymbol()}}
-        </label>
-        <label>
-          <input type="radio" name="currencyRadioOffline" value="99" ng-model="tokenTx.id"/>
-          <span translate="SEND_custom">Custom Token</span>
-        </label>
-      </div>
+
       <div class="custom-token-fields well" style="max-width: 600px" ng-show="tokenTx.id==99">
         <div class="form-group">
           <label translate="TOKEN_Addr"> Address: </label>
@@ -815,29 +859,41 @@
         <li><span class="mono wrap">{{etcBalance}}</span> ETC</li>
       </ul>
 
-      <div translate="sidebar_TokenBal"> Token Balances: </div>
-      <table class="account-info">
-          <tr ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
-            <td class="mono wrap">
-              <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'"/>
-              {{token.getBalance()}}
-            </td>
-            <td> {{token.getSymbol()}} </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <p>
-                <a ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
-                <a ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-            <small ng-bind-html="validateTokenBalances"></small>
-            </td>
-          </tr>
-      </table>
+      <div class="token-balances">
+        <div translate="sidebar_TokenBal"> Token Balances: </div>
+        <table class="account-info">
+            <tr ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+              <td class="mono wrap">
+                <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'"/>
+                {{token.getBalance()}}
+              </td>
+              <td> {{token.getSymbol()}} </td>
+            </tr>
+        </table>
+
+        <a class="btn btn-info btn-sm" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
+        <a class="btn btn-info btn-sm" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
+        <a class="btn btn-info btn-sm"> <span translate="SEND_custom"> Add Custom Token </span> </a>
+
+        <div class="custom-token-fields" ng-show="tokenTx.id==99">
+          <div class="form-group">
+            <label translate="TOKEN_Addr"> Address: </label>
+            <input class="form-control input-sm" type="text" ng-model="localToken.contractAdd"/>
+          </div>
+          <div class="form-group">
+            <label translate="TOKEN_Symbol"> Token Symbol: </label>
+            <input class="form-control input-sm" type="text" ng-model="localToken.symbol"/>
+          </div>
+          <div class="form-group">
+            <label translate="TOKEN_Dec"> Decimals: </label>
+            <input class="form-control input-sm" type="text" ng-model="localToken.decimals"/>
+          </div>
+          <div class="form-group">
+            <div class="btn btn-primary btn-sm" ng-click="saveTokenToLocal()" translate="x_Save"> Save </div>
+          </div>
+          <div ng-bind-html="validateLocalToken"></div>
+        </div>
+      </div>
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
@@ -895,25 +951,7 @@
             </label>
           </div>
 
-          <div class="custom-token-fields well" ng-show="tokenTx.id==99">
-            <p translate="HELP_7_Desc_0">[Check out Ethplorer.io](https://ethplorer.io/) if you need help finding symbol / decimal.</p>
-            <div class="form-group">
-              <label translate="TOKEN_Addr"> Address: </label>
-              <input class="form-control" type="text" ng-model="localToken.contractAdd"/>
-            </div>
-            <div class="form-group">
-              <label translate="TOKEN_Symbol"> Token Symbol: </label>
-              <input class="form-control" type="text" ng-model="localToken.symbol"/>
-            </div>
-            <div class="form-group">
-              <label translate="TOKEN_Dec"> Decimals: </label>
-              <input class="form-control" type="text" ng-model="localToken.decimals"/>
-            </div>
-            <div class="form-group">
-              <div class="btn btn-info" ng-click="saveTokenToLocal()" translate="x_Save"> Save </div>
-            </div>
-            <div ng-bind-html="validateLocalToken"></div>
-          </div>
+
 
           <div class="form-group">
             <label class="SEND_gas"> Gas: </label>
