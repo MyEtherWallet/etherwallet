@@ -4,7 +4,7 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
-  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
   ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',

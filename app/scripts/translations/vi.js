@@ -11,7 +11,7 @@ vi.data = {
   ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
   ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   ADD_Ledger_scan:      'Connect to Ledger Nano S',

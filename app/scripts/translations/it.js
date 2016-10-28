@@ -245,7 +245,7 @@ it.data = {
   ADD_Ledger_1:         'Collega il tuo Ledger Nano S',
   ADD_Ledger_2:         'Apri l\'applicazione Ethereum (o l\'applicazione di un contratto)',
   ADD_Ledger_3:         'Verifica che il supporto browser sia abilitato nelle impostazioni',
-  ADD_Ledger_4:         'Se non c\'è l\'opzione per il supporto browser nelle impostazioni, verifica di avere un firmware > 1.2',
+  ADD_Ledger_4:         'Se non c\'è l\'opzione per il supporto browser nelle impostazioni, verifica di avere un [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
   ADD_Ledger_scan:      'Collegati al Ledger Nano S',
 
   /* CX */
