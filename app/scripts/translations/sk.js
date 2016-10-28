@@ -4,26 +4,6 @@ var sk = function() {}
 sk.code = 'sk';
 sk.data = {
 
-  /* Mnemonic Additions */
-  MNEM_1:               'Please select the address you would like to interact with.',
-  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
-  MNEM_more:            'More Addresses',
-  MNEM_prev:            'Previous Addresses',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx )',
-  ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Add Custom Token',
-  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
-  TOKEN_show:           'Show All Tokens',
-  TOKEN_hide:           'Hide Tokens',
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
-  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
-  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
-
-  NAV_DeployContract:   'Deploy Contract',
   /* Navigation*/
   NAV_YourWallets:      'Vaše Peňaženky',
   NAV_AddWallet:        'Pridať peňaženku',
@@ -36,6 +16,7 @@ sk.data = {
   DAO_TitleLong:        'Vymeniť Vaše Dao Tokens za ETH',
   NAV_ClaimDGD:         'Claim DGD',
   DGD_TitleLong:        'Claim Your DGD Tokens',
+  NAV_DeployContract:   'Deploy Contract',
   NAV_MyWallets:        'Moje peňaženky',
   NAV_ViewWallet:       'Zobraziť detaily peňaženky',
   NAV_Help:             'Pomoc',
@@ -101,6 +82,7 @@ sk.data = {
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
   ADD_Radio_3:            'Paste/Type Your Private Key ',
   ADD_Radio_4:            'Add an Account to Watch',
+  ADD_Radio_5:            'Paste/Type Your Mnemonic',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
@@ -129,9 +111,9 @@ sk.data = {
   SEND_addr:             'To Address: ',
   SEND_amount:           'Amount to Send: ',
   SEND_amount_short:     'Amount',
-  SEND_custom:           'Custom',
+  SEND_custom:           'Add Custom Token',
   SEND_gas:              'Gas',
-  SEND_TransferTotal:   'Send Entire Balance',
+  SEND_TransferTotal:    'Send Entire Balance',
   SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
@@ -149,14 +131,16 @@ sk.data = {
   TOKEN_Addr:            'Address: ',
   TOKEN_Symbol:          'Token Symbol: ',
   TOKEN_Dec:             'Decimals: ',
+  TOKEN_show:            'Show All Tokens',
+  TOKEN_hide:            'Hide Tokens',
 
   /* Send Transaction */
-  TRANS_desc:            '',
+  TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
   TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
   TRANS_standard:        'ETH (Standard Transaction)',
   TRANS_eth:             'Only ETH',
   TRANS_etc:             'Only ETC',
-  TRANS_advanced:        '+Advanced: Add  Data ',
+  TRANS_advanced:        '+Advanced: Add Data ',
   TRANS_data:            ' Data: ',
   TRANS_gas:             ' Gas: ',
   TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
@@ -246,6 +230,22 @@ sk.data = {
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
+  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
+  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
+
   /* Chrome Extension */
   CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
   CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
@@ -268,15 +268,18 @@ sk.data = {
   ERROR_15:             'Wallet not found. ',
   ERROR_16:             'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
   ERROR_17:             'A wallet with this address already exists in storage. Please check your wallets page. ',
-  ERROR_18:             'You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_18:             'You need to have at least 0.001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
   ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
   ERROR_20:             'Invalid symbol',
+  ERROR_21:             'Not a valid ERC-20 token',
   SUCCESS_1:            'Valid address',
   SUCCESS_2:            'Wallet successfully decrypted',
   SUCCESS_3:            'Transaction submitted. TX ID: ',
   SUCCESS_4:            'Your wallet was successfully added: ',
   SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
   SUCCESS_6:            'File Selected: ',
+
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Invalid sender',

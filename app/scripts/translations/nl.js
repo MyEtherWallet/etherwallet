@@ -4,18 +4,10 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Verbind je Ledger Wallet',
-  ADD_Ledger_2:         'Open de Ethereum applicatie (of een contract applicatie)',
-  ADD_Ledger_3:         'Controleer of "Browser Support" is ingeschakeld in je instellingen',
-  ADD_Ledger_scan:      'Verbind met Ledger Wallet',
-
-  /* Mnemonic Additions */
-  MNEM_1:               'Selecteer het adres waarmee je wilt communiceren.',
-  MNEM_2:               'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren.',
-  MNEM_more:            'Meer Adressen',
-  MNEM_prev:            'Vorige Adressen',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
 
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
@@ -243,6 +235,19 @@ nl.data = {
   VIEWWALLET_Subtitle:       'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. Je zou dit kunnen doen om [je account in Geth/Mist te importeren](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Als je enkel je saldo wilt checken adviseren we je om gebruik te maken van een blockchain explorer zoals [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. ',
   VIEWWALLET_SuccessMsg:     'Gelukt! Hier zijn je wallet details.',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Verbind je Ledger Nano S',
+  ADD_Ledger_2:         'Open de Ethereum applicatie (of een contract applicatie)',
+  ADD_Ledger_3:         'Controleer of "Browser Support" is ingeschakeld in je instellingen',
+  ADD_Ledger_scan:      'Verbind met Ledger Nano S',
+
+  /* Mnemonic Additions */
+  MNEM_1:               'Selecteer het adres waarmee je wilt communiceren.',
+  MNEM_2:               'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren.',
+  MNEM_more:            'Meer Adressen',
+  MNEM_prev:            'Vorige Adressen',
 
   /* Chrome Extension */
   CX_error_1:           'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',

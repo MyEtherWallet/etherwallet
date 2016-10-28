@@ -19,7 +19,7 @@ var walletDecryptDrtv = function() {
       </div>\n \
       <div class="radio">\n \
         <label>\n \
-          <input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Wallet</span></label>\n \
+          <input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Nano S</span></label>\n \
       </div>\n \
     </div>\n \
     <div class="col-md-4 col-sm-6">\n \

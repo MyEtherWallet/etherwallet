@@ -15,13 +15,17 @@ ja.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      '送出元が無効です',

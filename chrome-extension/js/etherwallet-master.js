@@ -2314,7 +2314,7 @@ var walletDecryptDrtv = function() {
       </div>\n \
       <div class="radio">\n \
         <label>\n \
-          <input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Wallet</span></label>\n \
+          <input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Nano S</span></label>\n \
       </div>\n \
     </div>\n \
     <div class="col-md-4 col-sm-6">\n \
@@ -4440,13 +4440,17 @@ de.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Invalid sender',
@@ -5018,20 +5022,17 @@ el.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
-  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
-  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Invalid sender',
@@ -5597,30 +5598,6 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
-  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-
-  /* Mnemonic Additions */
-  MNEM_1:               'Please select the address you would like to interact with.',
-  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
-  MNEM_more:            'More Addresses',
-  MNEM_prev:            'Previous Addresses',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx )',
-  ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Add Custom Token',
-  ERROR_21:             'Not a valid ERC-20 token',
-  TOKEN_show:           'Show All Tokens',
-  TOKEN_hide:           'Hide Tokens',
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Nano S',
-  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
-  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
-  ADD_Ledger_1:         'Connect your Ledger Nano S',
-  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
-  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
-  ADD_Ledger_scan:      'Connect to Ledger Nano S',
-
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -5650,6 +5627,7 @@ en.data = {
   x_Keystore:           'Keystore File (UTC / JSON · Recommended · Encrypted · Mist Format)',
   x_Keystore2:          'Keystore File (UTC / JSON)',
   x_KeystoreDesc:       'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up.',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx )',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
@@ -5699,6 +5677,7 @@ en.data = {
   ADD_Radio_2_short:      'SELECT WALLET FILE...',
   ADD_Radio_3:            'Paste/Type Your Private Key ',
   ADD_Radio_4:            'Add an Account to Watch',
+  ADD_Radio_5:            'Paste/Type Your Mnemonic',
   ADD_Label_2:            'Create a Nickname:',
   ADD_Label_3:            'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4:            'Add an Account to Watch',
@@ -5727,8 +5706,9 @@ en.data = {
   SEND_addr:             'To Address: ',
   SEND_amount:           'Amount to Send: ',
   SEND_amount_short:     'Amount',
+  SEND_custom:           'Add Custom Token',
   SEND_gas:              'Gas',
-  SEND_TransferTotal:   'Send Entire Balance',
+  SEND_TransferTotal:    'Send Entire Balance',
   SEND_generate:         'Generate Transaction',
   SEND_raw:              'Raw Transaction',
   SEND_signed:           'Signed Transaction',
@@ -5746,6 +5726,8 @@ en.data = {
   TOKEN_Addr:            'Address: ',
   TOKEN_Symbol:          'Token Symbol: ',
   TOKEN_Dec:             'Decimals: ',
+  TOKEN_show:            'Show All Tokens',
+  TOKEN_hide:            'Hide Tokens',
 
   /* Send Transaction */
   TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
@@ -5843,6 +5825,22 @@ en.data = {
   VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
   VIEWWALLET_SuccessMsg:     'Success! Here are your wallet details.',
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Please select the address you would like to interact with.',
+  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
+  MNEM_more:            'More Addresses',
+  MNEM_prev:            'Previous Addresses',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
+  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
+  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
+
   /* Chrome Extension */
   CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
   CX_quicksend:         'QuickSend', // if no appropriate translation, just use "Send"
@@ -5868,12 +5866,15 @@ en.data = {
   ERROR_18:             'You need to have at least 0.001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
   ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
   ERROR_20:             'Invalid symbol',
+  ERROR_21:             'Not a valid ERC-20 token',
   SUCCESS_1:            'Valid address',
   SUCCESS_2:            'Wallet successfully decrypted',
   SUCCESS_3:            'Transaction submitted. TX ID: ',
   SUCCESS_4:            'Your wallet was successfully added: ',
   SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
   SUCCESS_6:            'File Selected: ',
+
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Invalid sender',
@@ -6180,6 +6181,7 @@ es.code = 'es';
 es.data = {
 
   NAV_DeployContract:  'Deploy Contract',
+
   /* Mnemonic Additions */
   MNEM_1:               'Please select the address you would like to interact with.',
   MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
@@ -6191,13 +6193,17 @@ es.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Navigation*/
   NAV_YourWallets:      'Tus Carteras',
@@ -6768,13 +6774,17 @@ fi.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Chrome Extension */
   CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
@@ -7374,24 +7384,9 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
-  /* Mnemonic Additions */
-  MNEM_1:               'Sélectionnez l\'adresse avec laquelle vous désirez interagir.',
-  MNEM_2:               'Votre phrase mnémonique HD unique peut accéder à un certain nombre de portefeuilles/adresses. Sélectionnez l\'adresse avec laquelle vous désirez interagir actuellement.',
-  MNEM_more:            'Plus d\'adresses',
-  MNEM_prev:            'Adresses précédentes',
-  x_Mnemonic:           'Phrase mnémonique (MetaMask / Jaxx)',
-  ADD_Radio_5:          'Collez/entrez votre mnémonique',
-  SEND_custom:          'Token spécifique',
-  ERROR_21:             ' n\'est pas un token ERC-20 valide. Si d\'autres tokens sont en train de se charger, enlevez celui-ci et réessayez.',
-  TOKEN_show:           'Montrer tous les tokens',
-  TOKEN_hide:           'Cacher les tokens',
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connectez votre Ledger Wallet',
-  ADD_Ledger_2:         'Ouvrez l\'application Ethereum (ou une application de contrat)',
-  ADD_Ledger_3:         'Vérifiez que Browser Support est activé dans Settings',
-  ADD_Ledger_scan:      'Se connecter au Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
 
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
@@ -7425,6 +7420,7 @@ fr.data = {
   x_Keystore:           'Fichier Keystore (UTC / JSON · Recommandé · Chiffré · Format Mist)',
   x_Keystore2:          'Fichier Keystore (UTC / JSON)',
   x_KeystoreDesc:       'Ce fichier Keystore utilise le même format que celui que Mist, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
+  x_Mnemonic:           'Phrase mnémonique (MetaMask / Jaxx)',
   x_Json:               'Fichier JSON (non-chiffré)',
   x_JsonDesc:           'C\'est la version non-chiffrée au format JSON de votre clé privée. Cela signifie que vous n\'avez pas besoin de votre mot de passe pour l\'utiliser mais que toute personne qui trouve ce JSON peut accéder à votre portefeuille et vos Ether sans mot de passe.',
   x_PrintShort:         'Imprimer',
@@ -7471,6 +7467,7 @@ fr.data = {
   ADD_Radio_2_short:      'CHOISISSEZ LE FICHIER DU PORTEFEUILLE...',
   ADD_Radio_3:            'Collez/saisissez votre clé privée',
   ADD_Radio_4:            'Ajoutez un compte',
+  ADD_Radio_5:            'Collez/entrez votre mnémonique',
   ADD_Label_2:            'Nommez votre compte :',
   ADD_Label_3:            'Votre fichier est chiffré, merci de saisir le mot de passe : ',
   ADD_Label_4:            'Ajouter un compte à afficher',
@@ -7499,7 +7496,7 @@ fr.data = {
   SEND_addr:             'Adresse de destination : ',
   SEND_amount:           'Montant à envoyer : ',
   SEND_amount_short:     'Montant',
-  SEND_custom:           'Spécifique',
+  SEND_custom:           'Token spécifique',
   SEND_gas:              'Gaz',
   SEND_TransferTotal:    'Envoi du solde total', // updated to be shorter
   SEND_generate:         'Générer la transaction',
@@ -7615,6 +7612,19 @@ fr.data = {
   VIEWWALLET_Subtitle:      'Ceci vous permet de télécharger plusieurs versions des clefs privées et de ré-imprimer votre portefeuille papier. Vous devrez le faire pour [importer votre compte dans Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Si vous voulez consulter votre solde, nous recommandons d\'utiliser un explorateur de blockchain comme [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'Ceci vous permet de télécharger plusieurs versions des clefs privées et de ré-imprimer votre portefeuille papier. ',
   VIEWWALLET_SuccessMsg:     'Succès ! Voici les détails de votre portefeuille.',
+
+ /* Mnemonic Additions */
+  MNEM_1:               'Sélectionnez l\'adresse avec laquelle vous désirez interagir.',
+  MNEM_2:               'Votre phrase mnémonique HD unique peut accéder à un certain nombre de portefeuilles/adresses. Sélectionnez l\'adresse avec laquelle vous désirez interagir actuellement.',
+  MNEM_more:            'Plus d\'adresses',
+  MNEM_prev:            'Adresses précédentes',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connectez votre Ledger Nano S',
+  ADD_Ledger_2:         'Ouvrez l\'application Ethereum (ou une application de contrat)',
+  ADD_Ledger_3:         'Vérifiez que Browser Support est activé dans Settings',
+  ADD_Ledger_scan:      'Se connecter au Ledger Nano S',
 
   /* Chrome Extension */
   CX_error_1:           'Vous n\'avez pas de portefeuille sauvegardé. Cliquez sur ["Ajout de portefeuille"](/cx-wallet.html#add-wallet) pour en ajouter un !',
@@ -7952,26 +7962,10 @@ var hu = function() {}
 hu.code = 'hu';
 hu.data = {
 
-  /* Mnemonic Additions */
-  MNEM_1:               'Válaszd ki a címet amelyiket használni szeretnéd.',
-  MNEM_2:               'Egyetlen mnemonikus frázis egyszerre több tárcához / címhez ad hozzáférést. Válaszd ki a címet amelyiket most használni szeretnéd.',
-  MNEM_more:            'További Címek',
-  MNEM_prev:            'Előző Címek',
-  x_Mnemonic:           'Mnemonikus frázis (MetaMask / Jaxx )',
-  ADD_Radio_5:          'Másold/írd be a mnemonikus frázist',
-  SEND_custom:          'Saját Token',
-  ERROR_21:             ': érvénytelen ERC-20 token. Ha a többi token működik, akkor távolítsd ezt el és próbáld újra.',
-  TOKEN_show:           'Minden Token megjelenítése',
-  TOKEN_hide:           'Tokenek elrejtése',
-  /* szeretnék egy jobb kifejezást találni annál, hogy mnemonikus frázis */
-  /* just trying stuff */
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Csatlakoztasd a Ledger Wallet-et',
-  ADD_Ledger_2:         'Nyisd meg az Ethereum applikációt (vagy egy kontraktus applikációt)',
-  ADD_Ledger_3:         'Ellenőrizd, hogy a beállításokban engedélyezve van a Böngésző Támogatás (Browser Support)',
-  ADD_Ledger_scan:      'Csatlakozás a Ledger Wallet-hez',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Navigation*/
   NAV_YourWallets:      'Tárcáid',
@@ -8002,6 +7996,7 @@ hu.data = {
   x_Keystore:           'Keystore Fájl (UTC / JSON · Ajánlott · Titkosított · Mist Formátum)',
   x_Keystore2:          'Keystore Fájl (UTC / JSON)',
   x_KeystoreDesc:       'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
+  x_Mnemonic:           'Mnemonikus frázis (MetaMask / Jaxx )',
   x_Password:           'Jelszó',
   x_Print:              'PapírTárca Nyomtatása ',
   x_PrintDesc:          'Profi Tipp: Kattints a nyomtatásra és mentsd el PDF formátumban, még abban az esetben is, ha nincs nyomtatód!',
@@ -8052,6 +8047,7 @@ hu.data = {
   ADD_Radio_2_success:    'Kiválasztott Tárca: ',
   ADD_Radio_3:            'Illeszd be vagy írd be a Privát Kulcsodat ',
   ADD_Radio_4:            'Tárca hozzáadása megfigyelésre',
+  ADD_Radio_5:          'Másold/írd be a mnemonikus frázist',
   ADD_Label_2:            'Hozz létre egy Nicknevet:',
   ADD_Label_3:            'A Tárcád titkosítva van. Írj be a jelszót: ',
   ADD_Label_4:            'Számla hozzáadása megfigyelésre',
@@ -8080,7 +8076,7 @@ hu.data = {
   SEND_addr:             'Erre a címre: ',
   SEND_amount:           'Küldendő összeg: ',
   SEND_amount_short:     'Összeg',
-  SEND_custom:           'Egyéni',
+  SEND_custom:           'Saját Token',
   SEND_gas:              'Gas',
   SEND_TransferTotal:    'Teljes egyenleg küldése',
   SEND_generate:         'Tranzakció generálása',
@@ -8100,6 +8096,8 @@ hu.data = {
   TOKEN_Addr:            'Cím: ',
   TOKEN_Symbol:          'Token Szimbólum: ',
   TOKEN_Dec:             'Tizedesjegyek: ',
+  TOKEN_show:           'Minden Token megjelenítése',
+  TOKEN_hide:           'Tokenek elrejtése',
 
   /* Send Transaction */
   TRANS_desc:            'Ha Tokeneket akarsz küldeni, kérlek használd a Token Küldése oldalt ehelyett.',
@@ -8196,6 +8194,19 @@ hu.data = {
   VIEWWALLET_Subtitle_Short: 'Ez lehetővé teszi számodra, hogy különböző változatú privát kulcsokat tölts le és újranyomtasd a papírtárcádat.',
   VIEWWALLET_SuccessMsg:     'Sikerült! Itt vannak a tárcád részletei.',
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Válaszd ki a címet amelyiket használni szeretnéd.',
+  MNEM_2:               'Egyetlen mnemonikus frázis egyszerre több tárcához / címhez ad hozzáférést. Válaszd ki a címet amelyiket most használni szeretnéd.',
+  MNEM_more:            'További Címek',
+  MNEM_prev:            'Előző Címek',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Csatlakoztasd a Ledger Nano S-et',
+  ADD_Ledger_2:         'Nyisd meg az Ethereum applikációt (vagy egy kontraktus applikációt)',
+  ADD_Ledger_3:         'Ellenőrizd, hogy a beállításokban engedélyezve van a Böngésző Támogatás (Browser Support)',
+  ADD_Ledger_scan:      'Csatlakozás a Ledger Nano S-hez',
+
   /* Chrome Extension */
   CX_error_1:           'Nincsen mentett Tárcád. Kattints ["Tárca Hozzáadása"](/cx-wallet.html#add-wallet) ahhoz, hogy hozzáadj egyet!',
   CX_quicksend:         'GyorsKüldés', // if no appropriate translation, just use "Send"
@@ -8221,12 +8232,12 @@ hu.data = {
   ERROR_18:             'Legalább 0.01 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra!',
   ERROR_19:             'Az összes gas felhasználásra kerülne ezen a tranzakción. Ez azt jelenti, hogy már szavaztál erre a javaslatra vagy a vita periódus már lejárt.',
   ERROR_20:             'Érvénytelen szimbólum',
+  ERROR_21:             ': érvénytelen ERC-20 token. Ha a többi token működik, akkor távolítsd ezt el és próbáld újra.',
   SUCCESS_1:            'Érvényes cím',
   SUCCESS_2:            'Tárca sikeresen dekódolva',
   SUCCESS_3:            'Tranzakció elküldve. TX ID: ',
   SUCCESS_4:            'Tárcád sikeresen hozzáadva: ',
   SUCCESS_5:            'Sikeresen szavaztál. Köszönjük, hogy aktív tagja vagy a DAO-nak.',
-
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Érvénytelen küldő',
@@ -8543,13 +8554,17 @@ id.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Navigation*/
   NAV_YourWallets:      'Dompet Anda',
@@ -9105,30 +9120,11 @@ module.exports = id;
 
 },{}],46:[function(require,module,exports){
 // Italian
-// Last sync with en.js: commit 3f07fe25187ae421f9940f8dce281e01389080e7
+// Last sync with en.js: commit 5306eddd0c40c74531293042030a688e98acb65e
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
-
-  /* Mnemonic Additions */
-  MNEM_1:               'Seleziona l\'indirizzo col quale vuoi interagire.',
-  MNEM_2:               'Con una singola frase mnemonica puoi avere accesso a un certo numero di portafogli / indirizzi. Seleziona l\'indirizzo con il quale vuoi interagire in questo momento.',
-  MNEM_more:            'Altri indirizzi',
-  MNEM_prev:            'Indirizzi precedenti',
-  x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx)',
-  ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
-  SEND_custom:          'Altro token',
-  ERROR_21:             'Non è un token ERC-20 valido.',
-  TOKEN_show:           'Mostra tutti i token',
-  TOKEN_hide:           'Nascondi token',
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Collega il tuo Ledger Wallet',
-  ADD_Ledger_2:         'Apri l\'applicazione Ethereum (o l\'applicazione di un contratto)',
-  ADD_Ledger_3:         'Verifica che il supporto browser sia abilitato nelle impostazioni',
-  ADD_Ledger_scan:      'Collegati al Ledger Wallet',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
@@ -9161,6 +9157,7 @@ it.data = {
   x_Keystore:           'File Keystore (UTC / JSON · Consigliato · Crittografato · Formato Mist)',
   x_Keystore2:          'File Keystore (UTC / JSON)',
   x_KeystoreDesc:       'Questo file Keystore è compatibile con il formato usato da Mist, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
+  x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx)',
   x_Json:               'File JSON (non crittografato)',
   x_JsonDesc:           'Questa è la tua chiave privata in formato JSON non crittografato. Significa che non hai bisogno della password, ma chiunque trovi questo file JSON potrà avere accesso al tuo portafoglio e ai tuoi ether senza password.',
   x_PrintShort:         'Stampa',
@@ -9208,6 +9205,7 @@ it.data = {
   ADD_Radio_2_short:      'SELEZIONA FILE PORTAFOGLIO...',
   ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata ',
   ADD_Radio_4:            'Aggiungi un conto da osservare',
+  ADD_Radio_5:            'Incolla/Inserisci la tua frase mnemonica',
   ADD_Label_2:            'Crea un nome:',
   ADD_Label_3:            'Il portafoglio è crittografato. Inserire la password: ',
   ADD_Label_4:            'Aggiungi un conto da osservare',
@@ -9236,6 +9234,7 @@ it.data = {
   SEND_addr:             'Indirizzo destinatario: ',
   SEND_amount:           'Importo da inviare: ',
   SEND_amount_short:     'Importo',
+  SEND_custom:           'Aggiungi altro token',
   SEND_gas:              'Gas',
   SEND_generate:         'Genera transazione',
   SEND_raw:              'Transazione grezza',
@@ -9255,6 +9254,8 @@ it.data = {
   TOKEN_Addr:            'Indirizzo: ',
   TOKEN_Symbol:          'Simbolo del token: ',
   TOKEN_Dec:             'Decimali: ',
+  TOKEN_show:           'Mostra tutti i token',
+  TOKEN_hide:           'Nascondi token',
 
   /* Send Transaction */
   TRANS_desc:            'Se invece volevi inviare dei token, utilizza la pagina "Invia token".',
@@ -9352,6 +9353,22 @@ it.data = {
   VIEWWALLET_Subtitle_Short: 'Qui è possibile scaricare diverse versioni delle chiavi private e ristampare il portafoglio cartaceo. ',
   VIEWWALLET_SuccessMsg:     'Perfetto! Questi sono i dettagli del tuo portafoglio.',
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Seleziona l\'indirizzo col quale vuoi interagire.',
+  MNEM_2:               'Con una singola frase mnemonica puoi avere accesso a un certo numero di portafogli / indirizzi. Seleziona l\'indirizzo con il quale vuoi interagire in questo momento.',
+  MNEM_more:            'Altri indirizzi',
+  MNEM_prev:            'Indirizzi precedenti',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_0a:        'Riapri MyEtherWallet su una connessione sicura (SSL)',
+  ADD_Ledger_0b:        'Riapri MyEtherWallet utilizzando [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/)',
+  ADD_Ledger_1:         'Collega il tuo Ledger Nano S',
+  ADD_Ledger_2:         'Apri l\'applicazione Ethereum (o l\'applicazione di un contratto)',
+  ADD_Ledger_3:         'Verifica che il supporto browser sia abilitato nelle impostazioni',
+  ADD_Ledger_4:         'Se non c\'è l\'opzione per il supporto browser nelle impostazioni, verifica di avere un firmware > 1.2',
+  ADD_Ledger_scan:      'Collegati al Ledger Nano S',
+
   /* CX */
   CX_error_1:           'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno!',
   CX_quicksend:         'Invio rapido',
@@ -9377,12 +9394,15 @@ it.data = {
   ERROR_18:             'Devi avere almeno 0,01 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
   ERROR_19:             'Questa transazione consumerebbe tutto il gas. Ciò significa che hai già votato questa proposta o che il periodo di discussione è terminato.',
   ERROR_20:             'Simbolo non valido',
+  ERROR_21:             'Non è un token ERC-20 valido.',
   SUCCESS_1:            'Indirizzo valido',
   SUCCESS_2:            'Portafoglio decodificato correttamente',
   SUCCESS_3:            'Transazione inviata. TX ID: ',
   SUCCESS_4:            'Il portafoglio è stato aggiunto correttamente: ',
   SUCCESS_5:            'Hai votato con successo. Grazie per essere un partecipante attivo in The DAO.',
   SUCCESS_6:            'File selezionato: ',
+
+  WARN_Send_Link:       'Sei arrivato qui da un link che ha riempito per te i campi indirizzo, importo, gas o dati. Puoi cambiare queste informazioni prima di inviare. Sblocca il tuo portafoglio per iniziare.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Mittente non valido',
@@ -9699,13 +9719,17 @@ ja.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      '送出元が無効です',
@@ -10265,18 +10289,10 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Verbind je Ledger Wallet',
-  ADD_Ledger_2:         'Open de Ethereum applicatie (of een contract applicatie)',
-  ADD_Ledger_3:         'Controleer of "Browser Support" is ingeschakeld in je instellingen',
-  ADD_Ledger_scan:      'Verbind met Ledger Wallet',
-
-  /* Mnemonic Additions */
-  MNEM_1:               'Selecteer het adres waarmee je wilt communiceren.',
-  MNEM_2:               'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren.',
-  MNEM_more:            'Meer Adressen',
-  MNEM_prev:            'Vorige Adressen',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
 
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
@@ -10504,6 +10520,19 @@ nl.data = {
   VIEWWALLET_Subtitle:       'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. Je zou dit kunnen doen om [je account in Geth/Mist te importeren](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Als je enkel je saldo wilt checken adviseren we je om gebruik te maken van een blockchain explorer zoals [etherscan.io](http://etherscan.io/).',
   VIEWWALLET_Subtitle_Short: 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. ',
   VIEWWALLET_SuccessMsg:     'Gelukt! Hier zijn je wallet details.',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Verbind je Ledger Nano S',
+  ADD_Ledger_2:         'Open de Ethereum applicatie (of een contract applicatie)',
+  ADD_Ledger_3:         'Controleer of "Browser Support" is ingeschakeld in je instellingen',
+  ADD_Ledger_scan:      'Verbind met Ledger Nano S',
+
+  /* Mnemonic Additions */
+  MNEM_1:               'Selecteer het adres waarmee je wilt communiceren.',
+  MNEM_2:               'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren.',
+  MNEM_more:            'Meer Adressen',
+  MNEM_prev:            'Vorige Adressen',
 
   /* Chrome Extension */
   CX_error_1:           'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
@@ -10853,13 +10882,17 @@ no.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
@@ -11420,24 +11453,7 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-  /* Mnemonic Additions */
-  MNEM_1:               'Wybierz adres, którego chcesz użyć.',
-  MNEM_2:               'Jedna grupa słów mnemonicznych ma dostęp do wielu portfeli / adresów. Wybierz adres, do którego chcesz uzyskać dostęp tym razem.',
-  MNEM_more:            'Więcej Adresów',
-  MNEM_prev:            'Poprzednie Adresy',
-  x_Mnemonic:           'Mnemonik (MetaMask / Jaxx )',
-  ADD_Radio_5:          'Wklej/Wpisz Swój Mnemonik',
-  SEND_custom:          'Niestandardowy Token',
-  ERROR_21:             ' nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token.',
-  TOKEN_show:           'Pokaż Wszystkie Tokeny',
-  TOKEN_hide:           'Ukryj Tokeny',
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Podłącz swój Ledger Wallet',
-  ADD_Ledger_2:         'Otwórz aplikację Ethereum (lub aplikację kontraktu)',
-  ADD_Ledger_3:         'Sprawdź czy opcja Obsługa Przeglądarki jest włączona w Ustawieniach',
-  ADD_Ledger_scan:      'Połącz z Ledger Wallet',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
@@ -11469,6 +11485,7 @@ pl.data = {
   x_Keystore:           'Plik Keystore (UTC / JSON · Zalecany · Szyfrowany · Format Mist)',
   x_Keystore2:          'Plik Keystore (UTC / JSON) ',
   x_KeystoreDesc:       'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
+  x_Mnemonic:           'Mnemonik (MetaMask / Jaxx )',
   x_Json:               'Plik JSON (nieszyfrowany)',
   x_JsonDesc:           'Nieszyfrowany klucz prywatny, plik w formacie JSON. Nie wymaga podania hasła, ale każdy kto zdobędzie ten plik uzyska również pełny dostęp do Twojego portfela i zgromadzonych na nim środków.',
   x_PrintShort:         'Drukuj',
@@ -11516,6 +11533,7 @@ pl.data = {
   ADD_Radio_2_short:      'WYBIERZ PLIK PORTFELA...',
   ADD_Radio_3:            'Wklej/Wpisz Twój Klucz Prywatny',
   ADD_Radio_4:            'Dodaj Konto do Obserwacji',
+  ADD_Radio_5:            'Wklej/Wpisz Swój Mnemonik',
   ADD_Label_2:            'Utwórz Nazwę Użytkownika:',
   ADD_Label_3:            'Twój portfel jest zaszyfrowany. Podaj hasło: ',
   ADD_Label_4:            'Dodaj Konto do Obserwacji',
@@ -11544,7 +11562,7 @@ pl.data = {
   SEND_addr:             'Do Adresu: ',
   SEND_amount:           'Kwota do Wysłania: ',
   SEND_amount_short:     'Kwota',
-  SEND_custom:           'Inny',
+  SEND_custom:           'Niestandardowy Token',
   SEND_gas:              'Paliwo',
   SEND_TransferTotal:    'Wyślij wszystkie środki',
   SEND_generate:         'Wygeneruj Transakcję',
@@ -11564,6 +11582,8 @@ pl.data = {
   TOKEN_Addr:            'Adres: ',
   TOKEN_Symbol:          'Symbol Tokenu: ',
   TOKEN_Dec:             'Miejsc po przecinku: ',
+  TOKEN_show:           'Pokaż Wszystkie Tokeny',
+  TOKEN_hide:           'Ukryj Tokeny',
 
   /* Send Transaction */
   TRANS_desc:            'Jeśli chcesz wysłać Tokeny, użyj zakładki "Wyślij Tokeny".',
@@ -11662,6 +11682,22 @@ pl.data = {
   VIEWWALLET_Subtitle_Short: 'Ta zakładka pozwala Ci na pobranie różnych typów kluczy prywatnych oraz ponowne wydrukowanie portfeli papierowych. ',
   VIEWWALLET_SuccessMsg:     'Sukces! Oto dane twojego portfela.',
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Wybierz adres, którego chcesz użyć.',
+  MNEM_2:               'Jedna grupa słów mnemonicznych ma dostęp do wielu portfeli / adresów. Wybierz adres, do którego chcesz uzyskać dostęp tym razem.',
+  MNEM_more:            'Więcej Adresów',
+  MNEM_prev:            'Poprzednie Adresy',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Podłącz swój Ledger Nano S',
+  ADD_Ledger_2:         'Otwórz aplikację Ethereum (lub aplikację kontraktu)',
+  ADD_Ledger_3:         'Sprawdź czy opcja Obsługa Przeglądarki jest włączona w Ustawieniach',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Połącz z Ledger Nano S',
+
   /* Chrome Extension */
   CX_error_1:           'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)!',
   CX_quicksend:         'Wyślij',
@@ -11687,6 +11723,7 @@ pl.data = {
   ERROR_18:             'Musisz mieć co najmniej 0.01 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
   ERROR_19:             'Całe paliwo było by zużyte w tej transakcji. Oznacza to, że głosowałeś już w tej propozycji albo minął termin głosowania.',
   ERROR_20:             'Nieprawidłowy symbol',
+  ERROR_21:             ' nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token.',
   SUCCESS_1:            'Prawidłowy adres',
   SUCCESS_2:            'Portfel został odszyfrowany',
   SUCCESS_3:            'Transakcja zgłoszona. TX ID: ',
@@ -12009,13 +12046,17 @@ ru.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Неверный адрес отправителя',
@@ -12588,13 +12629,17 @@ tr.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Invalid sender',
@@ -12606,6 +12651,16 @@ tr.data = {
   GETH_IntrinsicGas:       'Intrinsic gas too low',
   GETH_GasLimit:           'Exceeds block gas limit',
   GETH_NegativeValue:      'Negative value',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   NAV_DeployContract:   'Sözleşme kur',
 
@@ -12864,16 +12919,6 @@ tr.data = {
   SUCCESS_4:            'Cüzdanın başarıyla eklendi: ',
   SUCCESS_5:            'Başarıyla oy verdiniz. DAO aktif bir katılımcı olduğunuz için teşekkür ederiz.',
   SUCCESS_6:            'Dosya secildi ',
-
-  /* Parity Error Messages */
-  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
-  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
-  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.3',
@@ -13215,24 +13260,17 @@ var vi = function() {}
 vi.code = 'vi';
 vi.data = {
 
-  /* Mnemonic Additions */
-  MNEM_1:               'Xin vui lòng, Chọn địa chỉ mà bạn muốn tương tác.',
-  MNEM_2:               'Cụm từ dễ nhớ đó có thể truy nhập vào số địa chỉ Ví của bạn. Vui lòng chọn địa chỉ mà bạn muốn tương tác tại thời điểm này.',
-  MNEM_more:            'Nhiều địa chỉ',
-  MNEM_prev:            'Địa chỉ trước đó',
-  x_Mnemonic:           'Cụm từ dễ nhớ (MetaMask / Jaxx )',
-  ADD_Radio_5:          'Dán/Điền ký tự dễ nhớ của bạn',
-  SEND_custom:          'Token được yêu cầu!',
-  ERROR_21:             'Không tồn tại trên hệ thống ERC-20 token. Nếu bạn phải chờ lâu. Xin vui lòng thử lại lần nữa!.',
-  TOKEN_show:           'Hiển thị tất cả các loại Tokens',
-  TOKEN_hide:           'Ẩn Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Navigation*/
   NAV_YourWallets:      'Ví Của Bạn',
@@ -13263,6 +13301,7 @@ vi.data = {
   x_Keystore:           'Định Dạng Keystore (UTC / JSON) (Đã mã hoá. Định Dạng này sử dụng cho Mist)',
   x_Keystore2:          'Định Dạng Keystore (UTC / JSON)',
   x_KeystoreDesc:       'Định dạng Keystore là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
+  x_Mnemonic:           'Cụm từ dễ nhớ (MetaMask / Jaxx )',
   x_Password:           'Mật Khẩu',
   x_Print:              'Tạo Ví Giấy',
   x_PrintDesc:          'Mẹo: kích chuột trái vào nút "In Ví" sau đó chọn "Save this as a PDF" đễ lưu nó thành định dạng PDF trên máy tính của bạn nếu bạn không sở hữu máy in cá nhân!',
@@ -13312,6 +13351,7 @@ vi.data = {
   ADD_Radio_2_short:      'CHỌN TẬP TIN VÍ...',
   ADD_Radio_3:            'Dán/Gõ Private Key Ví Của Bạn ',
   ADD_Radio_4:            'Thêm Tài Khoản đễ Theo Dõi',
+  ADD_Radio_5:          'Dán/Điền ký tự dễ nhớ của bạn',
   ADD_Label_2:            'Tạo Tên Gọi:',
   ADD_Label_3:            'Ví của bạn sẽ được giải mã. Xin vui lòng điền mật khẩu: ',
   ADD_Label_4:            'Thêm Tài Khoản đễ Theo Dõi',
@@ -13340,7 +13380,7 @@ vi.data = {
   SEND_addr:             'Địa Chỉ Đến: ',
   SEND_amount:           'Số Lượng Cần Gửi: ',
   SEND_amount_short:     'Số Lượng',
-  SEND_custom:           'Tuỳ Chỉnh',
+  SEND_custom:          'Token được yêu cầu!',
   SEND_gas:              'Gas',
   SEND_TransferTotal:    'Gửi Hết Số Dư Hiện Có',
   SEND_generate:         'Tạo Giao Dịch',
@@ -13360,6 +13400,8 @@ vi.data = {
   TOKEN_Addr:            'Địa Chỉ: ',
   TOKEN_Symbol:          'Ký Hiệu Token: ',
   TOKEN_Dec:             'Phân Số Thập Phân: ',
+  TOKEN_show:           'Hiển thị tất cả các loại Tokens',
+  TOKEN_hide:           'Ẩn Tokens',
 
   /* Send Transaction */
   TRANS_desc:            'Nếu bạn muốn gửi Token, xin vui lòng sử dụng danh mục "Gửi Token".',
@@ -13457,6 +13499,12 @@ vi.data = {
   VIEWWALLET_Subtitle_Short: 'Việc này cho phép bạn tải về các phiên bản khác nhau của Private Key và in lại ví giấy của bạn. ',
   VIEWWALLET_SuccessMsg:     'Đã Thành Công! Đây là thông tin chi tiết về Ví của bạn.',
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Xin vui lòng, Chọn địa chỉ mà bạn muốn tương tác.',
+  MNEM_2:               'Cụm từ dễ nhớ đó có thể truy nhập vào số địa chỉ Ví của bạn. Vui lòng chọn địa chỉ mà bạn muốn tương tác tại thời điểm này.',
+  MNEM_more:            'Nhiều địa chỉ',
+  MNEM_prev:            'Địa chỉ trước đó',
+
   /* Chrome Extension */
   CX_error_1:           'Bạn không có bất kỳ ví nào được lưu lại. Chọn Nút ["Thêm Ví"](/cx-wallet.html#add-wallet) để thêm ví!',
   CX_quicksend:         'Gửi Nhanh', // if no appropriate translation, just use "Send"
@@ -13482,6 +13530,7 @@ vi.data = {
   ERROR_18:             'Bạn cần có ít nhất 0.01 ether trong tài khoản để thanh toán chi phí gas. Hãy thêm một số ether và thực hiện lại. ',
   ERROR_19:             'Toàn bộ gas sẽ được sử dụng trong giao dịch này. Việc làm này có nghĩa là bạn đã bỏ phiếu cho đề xuất này hoặc kỳ hạn của cuộc tranh luận đã kết thúc.',
   ERROR_20:             'Biểu tượng không hợp lệ',
+  ERROR_21:             'Không tồn tại trên hệ thống ERC-20 token. Nếu bạn phải chờ lâu. Xin vui lòng thử lại lần nữa!.',
   SUCCESS_1:            'Địa Chỉ Hợp Lệ',
   SUCCESS_2:            'Ví đã được giải mã thành công',
   SUCCESS_3:            'Giao dịch đã gửi đi, TX ID:',
@@ -13804,13 +13853,27 @@ zh.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
+  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Navigation*/
   NAV_YourWallets:      '你的钱包',
@@ -14077,16 +14140,6 @@ zh.data = {
   GETH_IntrinsicGas:       '固有gas太低',
   GETH_GasLimit:           '超过区块gas上限',
   GETH_NegativeValue:      '负值',
-
-  /* Parity Error Messages */
-  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
-  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
-  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   /* Tranlsation Info */
   translate_version:    '0.3',

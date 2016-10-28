@@ -4,24 +4,10 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
-  /* Mnemonic Additions */
-  MNEM_1:               'Sélectionnez l\'adresse avec laquelle vous désirez interagir.',
-  MNEM_2:               'Votre phrase mnémonique HD unique peut accéder à un certain nombre de portefeuilles/adresses. Sélectionnez l\'adresse avec laquelle vous désirez interagir actuellement.',
-  MNEM_more:            'Plus d\'adresses',
-  MNEM_prev:            'Adresses précédentes',
-  x_Mnemonic:           'Phrase mnémonique (MetaMask / Jaxx)',
-  ADD_Radio_5:          'Collez/entrez votre mnémonique',
-  SEND_custom:          'Token spécifique',
-  ERROR_21:             ' n\'est pas un token ERC-20 valide. Si d\'autres tokens sont en train de se charger, enlevez celui-ci et réessayez.',
-  TOKEN_show:           'Montrer tous les tokens',
-  TOKEN_hide:           'Cacher les tokens',
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connectez votre Ledger Wallet',
-  ADD_Ledger_2:         'Ouvrez l\'application Ethereum (ou une application de contrat)',
-  ADD_Ledger_3:         'Vérifiez que Browser Support est activé dans Settings',
-  ADD_Ledger_scan:      'Se connecter au Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
@@ -55,6 +41,7 @@ fr.data = {
   x_Keystore:           'Fichier Keystore (UTC / JSON · Recommandé · Chiffré · Format Mist)',
   x_Keystore2:          'Fichier Keystore (UTC / JSON)',
   x_KeystoreDesc:       'Ce fichier Keystore utilise le même format que celui que Mist, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
+  x_Mnemonic:           'Phrase mnémonique (MetaMask / Jaxx)',
   x_Json:               'Fichier JSON (non-chiffré)',
   x_JsonDesc:           'C\'est la version non-chiffrée au format JSON de votre clé privée. Cela signifie que vous n\'avez pas besoin de votre mot de passe pour l\'utiliser mais que toute personne qui trouve ce JSON peut accéder à votre portefeuille et vos Ether sans mot de passe.',
   x_PrintShort:         'Imprimer',
@@ -101,6 +88,7 @@ fr.data = {
   ADD_Radio_2_short:      'CHOISISSEZ LE FICHIER DU PORTEFEUILLE...',
   ADD_Radio_3:            'Collez/saisissez votre clé privée',
   ADD_Radio_4:            'Ajoutez un compte',
+  ADD_Radio_5:            'Collez/entrez votre mnémonique',
   ADD_Label_2:            'Nommez votre compte :',
   ADD_Label_3:            'Votre fichier est chiffré, merci de saisir le mot de passe : ',
   ADD_Label_4:            'Ajouter un compte à afficher',
@@ -129,7 +117,7 @@ fr.data = {
   SEND_addr:             'Adresse de destination : ',
   SEND_amount:           'Montant à envoyer : ',
   SEND_amount_short:     'Montant',
-  SEND_custom:           'Spécifique',
+  SEND_custom:           'Token spécifique',
   SEND_gas:              'Gaz',
   SEND_TransferTotal:    'Envoi du solde total', // updated to be shorter
   SEND_generate:         'Générer la transaction',
@@ -149,6 +137,8 @@ fr.data = {
   TOKEN_Addr:            'Adresse : ',
   TOKEN_Symbol:          'Symbole du token : ',
   TOKEN_Dec:             'Décimales : ',
+  TOKEN_show:            'Montrer tous les tokens',
+  TOKEN_hide:            'Cacher les tokens',
 
   /* Send Transaction */
   TRANS_desc:            'Si vous voulez envoyer des tokens, allez plutôt à la page "Envoi de tokens".',
@@ -246,6 +236,19 @@ fr.data = {
   VIEWWALLET_Subtitle_Short: 'Ceci vous permet de télécharger plusieurs versions des clefs privées et de ré-imprimer votre portefeuille papier. ',
   VIEWWALLET_SuccessMsg:     'Succès ! Voici les détails de votre portefeuille.',
 
+ /* Mnemonic Additions */
+  MNEM_1:               'Sélectionnez l\'adresse avec laquelle vous désirez interagir.',
+  MNEM_2:               'Votre phrase mnémonique HD unique peut accéder à un certain nombre de portefeuilles/adresses. Sélectionnez l\'adresse avec laquelle vous désirez interagir actuellement.',
+  MNEM_more:            'Plus d\'adresses',
+  MNEM_prev:            'Adresses précédentes',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connectez votre Ledger Nano S',
+  ADD_Ledger_2:         'Ouvrez l\'application Ethereum (ou une application de contrat)',
+  ADD_Ledger_3:         'Vérifiez que Browser Support est activé dans Settings',
+  ADD_Ledger_scan:      'Se connecter au Ledger Nano S',
+
   /* Chrome Extension */
   CX_error_1:           'Vous n\'avez pas de portefeuille sauvegardé. Cliquez sur ["Ajout de portefeuille"](/cx-wallet.html#add-wallet) pour en ajouter un !',
   CX_quicksend:         'Envoi rapide', // if no appropriate translation, just use "Send"
@@ -271,6 +274,7 @@ fr.data = {
   ERROR_18:             'Il vous faut au moins 0,01 ether sur votre compte pour couvrir les coûts du gaz. Ajoutez des ether et réessayez. ',
   ERROR_19:             'Tout le gaz serait consommé lors de cette transaction. Cela signifie que vous avez déjà voté pour cette proposition ou que la période du débat est terminée.',
   ERROR_20:             'Symbole invalide',
+  ERROR_21:             ' n\'est pas un token ERC-20 valide. Si d\'autres tokens sont en train de se charger, enlevez celui-ci et réessayez.',
   SUCCESS_1:            'Adresse valide',
   SUCCESS_2:            'Portefeuille déchiffré avec succès',
   SUCCESS_3:            'Transaction envoyée. Identifiant de transaction : ',

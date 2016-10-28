@@ -4,26 +4,10 @@ var hu = function() {}
 hu.code = 'hu';
 hu.data = {
 
-  /* Mnemonic Additions */
-  MNEM_1:               'Válaszd ki a címet amelyiket használni szeretnéd.',
-  MNEM_2:               'Egyetlen mnemonikus frázis egyszerre több tárcához / címhez ad hozzáférést. Válaszd ki a címet amelyiket most használni szeretnéd.',
-  MNEM_more:            'További Címek',
-  MNEM_prev:            'Előző Címek',
-  x_Mnemonic:           'Mnemonikus frázis (MetaMask / Jaxx )',
-  ADD_Radio_5:          'Másold/írd be a mnemonikus frázist',
-  SEND_custom:          'Saját Token',
-  ERROR_21:             ': érvénytelen ERC-20 token. Ha a többi token működik, akkor távolítsd ezt el és próbáld újra.',
-  TOKEN_show:           'Minden Token megjelenítése',
-  TOKEN_hide:           'Tokenek elrejtése',
-  /* szeretnék egy jobb kifejezást találni annál, hogy mnemonikus frázis */
-  /* just trying stuff */
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Csatlakoztasd a Ledger Wallet-et',
-  ADD_Ledger_2:         'Nyisd meg az Ethereum applikációt (vagy egy kontraktus applikációt)',
-  ADD_Ledger_3:         'Ellenőrizd, hogy a beállításokban engedélyezve van a Böngésző Támogatás (Browser Support)',
-  ADD_Ledger_scan:      'Csatlakozás a Ledger Wallet-hez',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Navigation*/
   NAV_YourWallets:      'Tárcáid',
@@ -54,6 +38,7 @@ hu.data = {
   x_Keystore:           'Keystore Fájl (UTC / JSON · Ajánlott · Titkosított · Mist Formátum)',
   x_Keystore2:          'Keystore Fájl (UTC / JSON)',
   x_KeystoreDesc:       'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
+  x_Mnemonic:           'Mnemonikus frázis (MetaMask / Jaxx )',
   x_Password:           'Jelszó',
   x_Print:              'PapírTárca Nyomtatása ',
   x_PrintDesc:          'Profi Tipp: Kattints a nyomtatásra és mentsd el PDF formátumban, még abban az esetben is, ha nincs nyomtatód!',
@@ -104,6 +89,7 @@ hu.data = {
   ADD_Radio_2_success:    'Kiválasztott Tárca: ',
   ADD_Radio_3:            'Illeszd be vagy írd be a Privát Kulcsodat ',
   ADD_Radio_4:            'Tárca hozzáadása megfigyelésre',
+  ADD_Radio_5:          'Másold/írd be a mnemonikus frázist',
   ADD_Label_2:            'Hozz létre egy Nicknevet:',
   ADD_Label_3:            'A Tárcád titkosítva van. Írj be a jelszót: ',
   ADD_Label_4:            'Számla hozzáadása megfigyelésre',
@@ -132,7 +118,7 @@ hu.data = {
   SEND_addr:             'Erre a címre: ',
   SEND_amount:           'Küldendő összeg: ',
   SEND_amount_short:     'Összeg',
-  SEND_custom:           'Egyéni',
+  SEND_custom:           'Saját Token',
   SEND_gas:              'Gas',
   SEND_TransferTotal:    'Teljes egyenleg küldése',
   SEND_generate:         'Tranzakció generálása',
@@ -152,6 +138,8 @@ hu.data = {
   TOKEN_Addr:            'Cím: ',
   TOKEN_Symbol:          'Token Szimbólum: ',
   TOKEN_Dec:             'Tizedesjegyek: ',
+  TOKEN_show:           'Minden Token megjelenítése',
+  TOKEN_hide:           'Tokenek elrejtése',
 
   /* Send Transaction */
   TRANS_desc:            'Ha Tokeneket akarsz küldeni, kérlek használd a Token Küldése oldalt ehelyett.',
@@ -248,6 +236,19 @@ hu.data = {
   VIEWWALLET_Subtitle_Short: 'Ez lehetővé teszi számodra, hogy különböző változatú privát kulcsokat tölts le és újranyomtasd a papírtárcádat.',
   VIEWWALLET_SuccessMsg:     'Sikerült! Itt vannak a tárcád részletei.',
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Válaszd ki a címet amelyiket használni szeretnéd.',
+  MNEM_2:               'Egyetlen mnemonikus frázis egyszerre több tárcához / címhez ad hozzáférést. Válaszd ki a címet amelyiket most használni szeretnéd.',
+  MNEM_more:            'További Címek',
+  MNEM_prev:            'Előző Címek',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Csatlakoztasd a Ledger Nano S-et',
+  ADD_Ledger_2:         'Nyisd meg az Ethereum applikációt (vagy egy kontraktus applikációt)',
+  ADD_Ledger_3:         'Ellenőrizd, hogy a beállításokban engedélyezve van a Böngésző Támogatás (Browser Support)',
+  ADD_Ledger_scan:      'Csatlakozás a Ledger Nano S-hez',
+
   /* Chrome Extension */
   CX_error_1:           'Nincsen mentett Tárcád. Kattints ["Tárca Hozzáadása"](/cx-wallet.html#add-wallet) ahhoz, hogy hozzáadj egyet!',
   CX_quicksend:         'GyorsKüldés', // if no appropriate translation, just use "Send"
@@ -273,12 +274,12 @@ hu.data = {
   ERROR_18:             'Legalább 0.01 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra!',
   ERROR_19:             'Az összes gas felhasználásra kerülne ezen a tranzakción. Ez azt jelenti, hogy már szavaztál erre a javaslatra vagy a vita periódus már lejárt.',
   ERROR_20:             'Érvénytelen szimbólum',
+  ERROR_21:             ': érvénytelen ERC-20 token. Ha a többi token működik, akkor távolítsd ezt el és próbáld újra.',
   SUCCESS_1:            'Érvényes cím',
   SUCCESS_2:            'Tárca sikeresen dekódolva',
   SUCCESS_3:            'Tranzakció elküldve. TX ID: ',
   SUCCESS_4:            'Tárcád sikeresen hozzáadva: ',
   SUCCESS_5:            'Sikeresen szavaztál. Köszönjük, hogy aktív tagja vagy a DAO-nak.',
-
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Érvénytelen küldő',

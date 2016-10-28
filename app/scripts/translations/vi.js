@@ -4,24 +4,17 @@ var vi = function() {}
 vi.code = 'vi';
 vi.data = {
 
-  /* Mnemonic Additions */
-  MNEM_1:               'Xin vui lòng, Chọn địa chỉ mà bạn muốn tương tác.',
-  MNEM_2:               'Cụm từ dễ nhớ đó có thể truy nhập vào số địa chỉ Ví của bạn. Vui lòng chọn địa chỉ mà bạn muốn tương tác tại thời điểm này.',
-  MNEM_more:            'Nhiều địa chỉ',
-  MNEM_prev:            'Địa chỉ trước đó',
-  x_Mnemonic:           'Cụm từ dễ nhớ (MetaMask / Jaxx )',
-  ADD_Radio_5:          'Dán/Điền ký tự dễ nhớ của bạn',
-  SEND_custom:          'Token được yêu cầu!',
-  ERROR_21:             'Không tồn tại trên hệ thống ERC-20 token. Nếu bạn phải chờ lâu. Xin vui lòng thử lại lần nữa!.',
-  TOKEN_show:           'Hiển thị tất cả các loại Tokens',
-  TOKEN_hide:           'Ẩn Tokens',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Navigation*/
   NAV_YourWallets:      'Ví Của Bạn',
@@ -52,6 +45,7 @@ vi.data = {
   x_Keystore:           'Định Dạng Keystore (UTC / JSON) (Đã mã hoá. Định Dạng này sử dụng cho Mist)',
   x_Keystore2:          'Định Dạng Keystore (UTC / JSON)',
   x_KeystoreDesc:       'Định dạng Keystore là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
+  x_Mnemonic:           'Cụm từ dễ nhớ (MetaMask / Jaxx )',
   x_Password:           'Mật Khẩu',
   x_Print:              'Tạo Ví Giấy',
   x_PrintDesc:          'Mẹo: kích chuột trái vào nút "In Ví" sau đó chọn "Save this as a PDF" đễ lưu nó thành định dạng PDF trên máy tính của bạn nếu bạn không sở hữu máy in cá nhân!',
@@ -101,6 +95,7 @@ vi.data = {
   ADD_Radio_2_short:      'CHỌN TẬP TIN VÍ...',
   ADD_Radio_3:            'Dán/Gõ Private Key Ví Của Bạn ',
   ADD_Radio_4:            'Thêm Tài Khoản đễ Theo Dõi',
+  ADD_Radio_5:          'Dán/Điền ký tự dễ nhớ của bạn',
   ADD_Label_2:            'Tạo Tên Gọi:',
   ADD_Label_3:            'Ví của bạn sẽ được giải mã. Xin vui lòng điền mật khẩu: ',
   ADD_Label_4:            'Thêm Tài Khoản đễ Theo Dõi',
@@ -129,7 +124,7 @@ vi.data = {
   SEND_addr:             'Địa Chỉ Đến: ',
   SEND_amount:           'Số Lượng Cần Gửi: ',
   SEND_amount_short:     'Số Lượng',
-  SEND_custom:           'Tuỳ Chỉnh',
+  SEND_custom:          'Token được yêu cầu!',
   SEND_gas:              'Gas',
   SEND_TransferTotal:    'Gửi Hết Số Dư Hiện Có',
   SEND_generate:         'Tạo Giao Dịch',
@@ -149,6 +144,8 @@ vi.data = {
   TOKEN_Addr:            'Địa Chỉ: ',
   TOKEN_Symbol:          'Ký Hiệu Token: ',
   TOKEN_Dec:             'Phân Số Thập Phân: ',
+  TOKEN_show:           'Hiển thị tất cả các loại Tokens',
+  TOKEN_hide:           'Ẩn Tokens',
 
   /* Send Transaction */
   TRANS_desc:            'Nếu bạn muốn gửi Token, xin vui lòng sử dụng danh mục "Gửi Token".',
@@ -246,6 +243,12 @@ vi.data = {
   VIEWWALLET_Subtitle_Short: 'Việc này cho phép bạn tải về các phiên bản khác nhau của Private Key và in lại ví giấy của bạn. ',
   VIEWWALLET_SuccessMsg:     'Đã Thành Công! Đây là thông tin chi tiết về Ví của bạn.',
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Xin vui lòng, Chọn địa chỉ mà bạn muốn tương tác.',
+  MNEM_2:               'Cụm từ dễ nhớ đó có thể truy nhập vào số địa chỉ Ví của bạn. Vui lòng chọn địa chỉ mà bạn muốn tương tác tại thời điểm này.',
+  MNEM_more:            'Nhiều địa chỉ',
+  MNEM_prev:            'Địa chỉ trước đó',
+
   /* Chrome Extension */
   CX_error_1:           'Bạn không có bất kỳ ví nào được lưu lại. Chọn Nút ["Thêm Ví"](/cx-wallet.html#add-wallet) để thêm ví!',
   CX_quicksend:         'Gửi Nhanh', // if no appropriate translation, just use "Send"
@@ -271,6 +274,7 @@ vi.data = {
   ERROR_18:             'Bạn cần có ít nhất 0.01 ether trong tài khoản để thanh toán chi phí gas. Hãy thêm một số ether và thực hiện lại. ',
   ERROR_19:             'Toàn bộ gas sẽ được sử dụng trong giao dịch này. Việc làm này có nghĩa là bạn đã bỏ phiếu cho đề xuất này hoặc kỳ hạn của cuộc tranh luận đã kết thúc.',
   ERROR_20:             'Biểu tượng không hợp lệ',
+  ERROR_21:             'Không tồn tại trên hệ thống ERC-20 token. Nếu bạn phải chờ lâu. Xin vui lòng thử lại lần nữa!.',
   SUCCESS_1:            'Địa Chỉ Hợp Lệ',
   SUCCESS_2:            'Ví đã được giải mã thành công',
   SUCCESS_3:            'Giao dịch đã gửi đi, TX ID:',

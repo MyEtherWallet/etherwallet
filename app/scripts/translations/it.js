@@ -5,30 +5,6 @@ var it = function() {}
 it.code = 'it';
 it.data = {
 
-  WARN_Send_Link:       'Sei arrivato qui da un link che ha riempito per te i campi indirizzo, importo, gas o dati. Puoi cambiare queste informazioni prima di inviare. Sblocca il tuo portafoglio per iniziare.',
-
-  /* Mnemonic Additions */
-  MNEM_1:               'Seleziona l\'indirizzo col quale vuoi interagire.',
-  MNEM_2:               'Con una singola frase mnemonica puoi avere accesso a un certo numero di portafogli / indirizzi. Seleziona l\'indirizzo con il quale vuoi interagire in questo momento.',
-  MNEM_more:            'Altri indirizzi',
-  MNEM_prev:            'Indirizzi precedenti',
-  x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx)',
-  ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
-  SEND_custom:          'Aggiungi altro token',
-  ERROR_21:             'Non è un token ERC-20 valido.',
-  TOKEN_show:           'Mostra tutti i token',
-  TOKEN_hide:           'Nascondi token',
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Nano S',
-  ADD_Ledger_0a:        'Riapri MyEtherWallet su una connessione sicura (SSL)',
-  ADD_Ledger_0b:        'Riapri MyEtherWallet utilizzando [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/)',
-  ADD_Ledger_1:         'Collega il tuo Ledger Nano S',
-  ADD_Ledger_2:         'Apri l\'applicazione Ethereum (o l\'applicazione di un contratto)',
-  ADD_Ledger_3:         'Verifica che il supporto browser sia abilitato nelle impostazioni',
-  ADD_Ledger_4:         'Se non c\'è l\'opzione per il supporto browser nelle impostazioni, verifica di avere un firmware > 1.2',
-  ADD_Ledger_scan:      'Collegati al Ledger Nano S',
-
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
   NAV_AddWallet:        'Aggiungi portafoglio',
@@ -60,6 +36,7 @@ it.data = {
   x_Keystore:           'File Keystore (UTC / JSON · Consigliato · Crittografato · Formato Mist)',
   x_Keystore2:          'File Keystore (UTC / JSON)',
   x_KeystoreDesc:       'Questo file Keystore è compatibile con il formato usato da Mist, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
+  x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx)',
   x_Json:               'File JSON (non crittografato)',
   x_JsonDesc:           'Questa è la tua chiave privata in formato JSON non crittografato. Significa che non hai bisogno della password, ma chiunque trovi questo file JSON potrà avere accesso al tuo portafoglio e ai tuoi ether senza password.',
   x_PrintShort:         'Stampa',
@@ -107,6 +84,7 @@ it.data = {
   ADD_Radio_2_short:      'SELEZIONA FILE PORTAFOGLIO...',
   ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata ',
   ADD_Radio_4:            'Aggiungi un conto da osservare',
+  ADD_Radio_5:            'Incolla/Inserisci la tua frase mnemonica',
   ADD_Label_2:            'Crea un nome:',
   ADD_Label_3:            'Il portafoglio è crittografato. Inserire la password: ',
   ADD_Label_4:            'Aggiungi un conto da osservare',
@@ -135,6 +113,7 @@ it.data = {
   SEND_addr:             'Indirizzo destinatario: ',
   SEND_amount:           'Importo da inviare: ',
   SEND_amount_short:     'Importo',
+  SEND_custom:           'Aggiungi altro token',
   SEND_gas:              'Gas',
   SEND_generate:         'Genera transazione',
   SEND_raw:              'Transazione grezza',
@@ -154,6 +133,8 @@ it.data = {
   TOKEN_Addr:            'Indirizzo: ',
   TOKEN_Symbol:          'Simbolo del token: ',
   TOKEN_Dec:             'Decimali: ',
+  TOKEN_show:           'Mostra tutti i token',
+  TOKEN_hide:           'Nascondi token',
 
   /* Send Transaction */
   TRANS_desc:            'Se invece volevi inviare dei token, utilizza la pagina "Invia token".',
@@ -251,6 +232,22 @@ it.data = {
   VIEWWALLET_Subtitle_Short: 'Qui è possibile scaricare diverse versioni delle chiavi private e ristampare il portafoglio cartaceo. ',
   VIEWWALLET_SuccessMsg:     'Perfetto! Questi sono i dettagli del tuo portafoglio.',
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Seleziona l\'indirizzo col quale vuoi interagire.',
+  MNEM_2:               'Con una singola frase mnemonica puoi avere accesso a un certo numero di portafogli / indirizzi. Seleziona l\'indirizzo con il quale vuoi interagire in questo momento.',
+  MNEM_more:            'Altri indirizzi',
+  MNEM_prev:            'Indirizzi precedenti',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_0a:        'Riapri MyEtherWallet su una connessione sicura (SSL)',
+  ADD_Ledger_0b:        'Riapri MyEtherWallet utilizzando [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/)',
+  ADD_Ledger_1:         'Collega il tuo Ledger Nano S',
+  ADD_Ledger_2:         'Apri l\'applicazione Ethereum (o l\'applicazione di un contratto)',
+  ADD_Ledger_3:         'Verifica che il supporto browser sia abilitato nelle impostazioni',
+  ADD_Ledger_4:         'Se non c\'è l\'opzione per il supporto browser nelle impostazioni, verifica di avere un firmware > 1.2',
+  ADD_Ledger_scan:      'Collegati al Ledger Nano S',
+
   /* CX */
   CX_error_1:           'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno!',
   CX_quicksend:         'Invio rapido',
@@ -276,12 +273,15 @@ it.data = {
   ERROR_18:             'Devi avere almeno 0,01 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
   ERROR_19:             'Questa transazione consumerebbe tutto il gas. Ciò significa che hai già votato questa proposta o che il periodo di discussione è terminato.',
   ERROR_20:             'Simbolo non valido',
+  ERROR_21:             'Non è un token ERC-20 valido.',
   SUCCESS_1:            'Indirizzo valido',
   SUCCESS_2:            'Portafoglio decodificato correttamente',
   SUCCESS_3:            'Transazione inviata. TX ID: ',
   SUCCESS_4:            'Il portafoglio è stato aggiunto correttamente: ',
   SUCCESS_5:            'Hai votato con successo. Grazie per essere un partecipante attivo in The DAO.',
   SUCCESS_6:            'File selezionato: ',
+
+  WARN_Send_Link:       'Sei arrivato qui da un link che ha riempito per te i campi indirizzo, importo, gas o dati. Puoi cambiare queste informazioni prima di inviare. Sblocca il tuo portafoglio per iniziare.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Mittente non valido',

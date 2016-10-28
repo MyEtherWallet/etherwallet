@@ -4,24 +4,7 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-  /* Mnemonic Additions */
-  MNEM_1:               'Wybierz adres, którego chcesz użyć.',
-  MNEM_2:               'Jedna grupa słów mnemonicznych ma dostęp do wielu portfeli / adresów. Wybierz adres, do którego chcesz uzyskać dostęp tym razem.',
-  MNEM_more:            'Więcej Adresów',
-  MNEM_prev:            'Poprzednie Adresy',
-  x_Mnemonic:           'Mnemonik (MetaMask / Jaxx )',
-  ADD_Radio_5:          'Wklej/Wpisz Swój Mnemonik',
-  SEND_custom:          'Niestandardowy Token',
-  ERROR_21:             ' nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token.',
-  TOKEN_show:           'Pokaż Wszystkie Tokeny',
-  TOKEN_hide:           'Ukryj Tokeny',
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Podłącz swój Ledger Wallet',
-  ADD_Ledger_2:         'Otwórz aplikację Ethereum (lub aplikację kontraktu)',
-  ADD_Ledger_3:         'Sprawdź czy opcja Obsługa Przeglądarki jest włączona w Ustawieniach',
-  ADD_Ledger_scan:      'Połącz z Ledger Wallet',
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
@@ -53,6 +36,7 @@ pl.data = {
   x_Keystore:           'Plik Keystore (UTC / JSON · Zalecany · Szyfrowany · Format Mist)',
   x_Keystore2:          'Plik Keystore (UTC / JSON) ',
   x_KeystoreDesc:       'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
+  x_Mnemonic:           'Mnemonik (MetaMask / Jaxx )',
   x_Json:               'Plik JSON (nieszyfrowany)',
   x_JsonDesc:           'Nieszyfrowany klucz prywatny, plik w formacie JSON. Nie wymaga podania hasła, ale każdy kto zdobędzie ten plik uzyska również pełny dostęp do Twojego portfela i zgromadzonych na nim środków.',
   x_PrintShort:         'Drukuj',
@@ -100,6 +84,7 @@ pl.data = {
   ADD_Radio_2_short:      'WYBIERZ PLIK PORTFELA...',
   ADD_Radio_3:            'Wklej/Wpisz Twój Klucz Prywatny',
   ADD_Radio_4:            'Dodaj Konto do Obserwacji',
+  ADD_Radio_5:            'Wklej/Wpisz Swój Mnemonik',
   ADD_Label_2:            'Utwórz Nazwę Użytkownika:',
   ADD_Label_3:            'Twój portfel jest zaszyfrowany. Podaj hasło: ',
   ADD_Label_4:            'Dodaj Konto do Obserwacji',
@@ -128,7 +113,7 @@ pl.data = {
   SEND_addr:             'Do Adresu: ',
   SEND_amount:           'Kwota do Wysłania: ',
   SEND_amount_short:     'Kwota',
-  SEND_custom:           'Inny',
+  SEND_custom:           'Niestandardowy Token',
   SEND_gas:              'Paliwo',
   SEND_TransferTotal:    'Wyślij wszystkie środki',
   SEND_generate:         'Wygeneruj Transakcję',
@@ -148,6 +133,8 @@ pl.data = {
   TOKEN_Addr:            'Adres: ',
   TOKEN_Symbol:          'Symbol Tokenu: ',
   TOKEN_Dec:             'Miejsc po przecinku: ',
+  TOKEN_show:           'Pokaż Wszystkie Tokeny',
+  TOKEN_hide:           'Ukryj Tokeny',
 
   /* Send Transaction */
   TRANS_desc:            'Jeśli chcesz wysłać Tokeny, użyj zakładki "Wyślij Tokeny".',
@@ -246,6 +233,22 @@ pl.data = {
   VIEWWALLET_Subtitle_Short: 'Ta zakładka pozwala Ci na pobranie różnych typów kluczy prywatnych oraz ponowne wydrukowanie portfeli papierowych. ',
   VIEWWALLET_SuccessMsg:     'Sukces! Oto dane twojego portfela.',
 
+  /* Mnemonic Additions */
+  MNEM_1:               'Wybierz adres, którego chcesz użyć.',
+  MNEM_2:               'Jedna grupa słów mnemonicznych ma dostęp do wielu portfeli / adresów. Wybierz adres, do którego chcesz uzyskać dostęp tym razem.',
+  MNEM_more:            'Więcej Adresów',
+  MNEM_prev:            'Poprzednie Adresy',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         'Podłącz swój Ledger Nano S',
+  ADD_Ledger_2:         'Otwórz aplikację Ethereum (lub aplikację kontraktu)',
+  ADD_Ledger_3:         'Sprawdź czy opcja Obsługa Przeglądarki jest włączona w Ustawieniach',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Połącz z Ledger Nano S',
+
   /* Chrome Extension */
   CX_error_1:           'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)!',
   CX_quicksend:         'Wyślij',
@@ -271,6 +274,7 @@ pl.data = {
   ERROR_18:             'Musisz mieć co najmniej 0.01 ether na koncie aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
   ERROR_19:             'Całe paliwo było by zużyte w tej transakcji. Oznacza to, że głosowałeś już w tej propozycji albo minął termin głosowania.',
   ERROR_20:             'Nieprawidłowy symbol',
+  ERROR_21:             ' nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token.',
   SUCCESS_1:            'Prawidłowy adres',
   SUCCESS_2:            'Portfel został odszyfrowany',
   SUCCESS_3:            'Transakcja zgłoszona. TX ID: ',
