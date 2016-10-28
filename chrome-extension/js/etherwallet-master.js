@@ -4111,7 +4111,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }, {
       "address": "0xb582baaf5e749d6aa98a22355a9d08b4c4d013c8",
       "symbol": "HKG",
-      "decimal": 18,
+      "decimal": 3,
       "type": "default"
     }, {
       "address": "0x888666CA69E0f178DED6D75b5726Cee99A87D698",
