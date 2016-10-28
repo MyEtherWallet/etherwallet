@@ -1,9 +1,11 @@
 // Italian
-// Last sync with en.js: commit 3f07fe25187ae421f9940f8dce281e01389080e7
+// Last sync with en.js: commit 5306eddd0c40c74531293042030a688e98acb65e
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
+
+  WARN_Send_Link:       'Sei arrivato qui da un link che ha riempito per te i campi indirizzo, importo, gas o dati. Puoi cambiare queste informazioni prima di inviare. Sblocca il tuo portafoglio per iniziare.',
 
   /* Mnemonic Additions */
   MNEM_1:               'Seleziona l\'indirizzo col quale vuoi interagire.',
@@ -12,17 +14,20 @@ it.data = {
   MNEM_prev:            'Indirizzi precedenti',
   x_Mnemonic:           'Frase mnemonica (MetaMask / Jaxx)',
   ADD_Radio_5:          'Incolla/Inserisci la tua frase mnemonica',
-  SEND_custom:          'Altro token',
+  SEND_custom:          'Aggiungi altro token',
   ERROR_21:             'Non è un token ERC-20 valido.',
   TOKEN_show:           'Mostra tutti i token',
   TOKEN_hide:           'Nascondi token',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Collega il tuo Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_0a:        'Riapri MyEtherWallet su una connessione sicura (SSL)',
+  ADD_Ledger_0b:        'Riapri MyEtherWallet utilizzando [Chrome](https://www.google.com/chrome/browser/desktop/) o [Opera](https://www.opera.com/)',
+  ADD_Ledger_1:         'Collega il tuo Ledger Nano S',
   ADD_Ledger_2:         'Apri l\'applicazione Ethereum (o l\'applicazione di un contratto)',
   ADD_Ledger_3:         'Verifica che il supporto browser sia abilitato nelle impostazioni',
-  ADD_Ledger_scan:      'Collegati al Ledger Wallet',
+  ADD_Ledger_4:         'Se non c\'è l\'opzione per il supporto browser nelle impostazioni, verifica di avere un firmware > 1.2',
+  ADD_Ledger_scan:      'Collegati al Ledger Nano S',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
