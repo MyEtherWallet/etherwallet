@@ -1216,7 +1216,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
       $scope.etherBalance = $scope.etcBalance = $scope.usdBalance = $scope.eurBalance = $scope.btcBalance = "loading";
       $scope.unitReadable = "";
-      $scope.transUnitReadable = "TRANS_standard";
+      $scope.unitTranslation = "TRANS_standard";
       $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
       $scope.txInfoModal = new Modal(document.getElementById('txInfoModal'));
       walletService.wallet = null;
@@ -1229,8 +1229,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       // Tokens
       $scope.tokenVisibility = "hidden";
-      $scope.tokens = Token.popTokens;
       $scope.customTokenField = false;
+      $scope.tokens = Token.popTokens;
 
       $scope.tokenTx = {
         to: '',
@@ -1254,8 +1254,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         nonce: null,
         gasPrice: null,
         donate: false,
-        sendMode: globalFuncs.urlGet('sendMode') == null ? 0 : globalFuncs.urlGet('value')
+        sendMode: globalFuncs.urlGet('sendMode') == null ? 0 : globalFuncs.urlGet('value') // 0 = ETH (Standard)   1 = Only ETH    2 = Only ETC    3 = Token
       };
+
       globalFuncs.urlGet('gaslimit') == null ? '' : $scope.showAdvance = true;
       globalFuncs.urlGet('data') == null ? '' : $scope.showAdvance = true;
       $scope.$watch(function () {
@@ -1268,6 +1269,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         $scope.setBalance();
         $scope.setTokens();
       });
+
       $scope.$watch('[tx.to,tx.value,tx.data,tx.sendMode]', function () {
         if ($scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data)) {
           if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
@@ -1281,18 +1283,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit')) $scope.hasQueryString = true;
 
       $scope.estimateGasLimit = function () {
-        var estObj = {
-          to: $scope.tx.to,
-          from: $scope.wallet.getAddressString(),
-          value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit)))
-        };
+        // if tokens....
+        if ($scope.tx.sendMode == 4) {
+          var estObj = {
+            to: $scope.tokenObjs[$scope.tokenTx.id].getContractAddress(),
+            from: $scope.wallet.getAddressString(),
+            value: '0x00',
+            data: $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data
+          };
+        } else {
+          // if not tokens....
+          var estObj = {
+            to: $scope.tx.to,
+            from: $scope.wallet.getAddressString(),
+            value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit)))
+          };
+        }
         if ($scope.tx.data != "") estObj.data = ethFuncs.sanitizeHex($scope.tx.data);
-        if ($scope.tx.sendMode == 1) estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64);else if ($scope.tx.sendMode == 2) estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
-        if ($scope.tx.sendMode != 0) estObj.to = $scope.replayContract;
+        if ($scope.tx.sendMode == 1) {
+          estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64);
+          estObj.to = $scope.replayContract;
+        } else if ($scope.tx.sendMode == 2) {
+          estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
+          estObj.to = $scope.replayContract;
+        } else if ($scope.tx.sendMode == 4) {
+          // do token stuff
+        }
+
         ethFuncs.estimateGas(estObj, $scope.tx.sendMode == 2, function (data) {
           if (!data.error) $scope.tx.gasLimit = data.data;
         });
       };
+
       $scope.setBalance = function () {
         ajaxReq.getBalance($scope.wallet.getAddressString(), false, function (data) {
           if (data.error) {
@@ -1314,6 +1336,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         });
       };
+
       $scope.$watch('tx', function (newValue, oldValue) {
         $scope.showRaw = false;
         $scope.sendTxStatus = "";
@@ -1322,26 +1345,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
         }
       }, true);
+
       $scope.validateAddress = function () {
         return ethFuncs.validateEtherAddress($scope.tx.to);
       };
+
       $scope.toggleShowAdvance = function () {
         $scope.showAdvance = !$scope.showAdvance;
       };
+
       $scope.onDonateClick = function () {
         $scope.tx.to = globalFuncs.donateAddress;
-        $scope.tx.value = "0.5";
+        $scope.tx.value = "1";
         $scope.tx.donate = true;
       };
+
       $scope.generateTx = function () {
         if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
           $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
           return;
         }
         var txData = uiFuncs.getTxData($scope);
-        if ($scope.tx.sendMode != 0) {
+        if ($scope.tx.sendMode == 1) {
           txData.to = $scope.replayContract;
-          if ($scope.tx.sendMode == 1) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);else if ($scope.tx.sendMode == 2) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
+          txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);
+        } else if ($scope.tx.sendMode == 2) {
+          txData.to = $scope.replayContract;
+          txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
+        } else if ($scope.tx.sendMode == 4) {
+          // do token stuff
         }
         uiFuncs.generateTx(txData, $scope.tx.sendMode == 2, function (rawTx) {
           if (!rawTx.isError) {
@@ -1355,6 +1387,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         });
       };
+
       $scope.sendTx = function () {
         $scope.sendTxModal.close();
         uiFuncs.sendTx($scope.signedTx, $scope.tx.sendMode == 2, function (resp) {
@@ -1366,6 +1399,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         });
       };
+
       $scope.transferAllBalance = function () {
         uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, $scope.tx.sendMode == 2, function (resp) {
           if (!resp.isError) {
@@ -1378,16 +1412,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       };
 
-      $scope.changeTxUnit = function (unit, unitReadable) {
-        $scope.tx.unit = unit;
-        if (unit == 'ETH' || unit == 'onlyETH' || unit == 'onlyETC') {
+      $scope.setSendMode = function (sendMode) {
+        var tokenId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+        var tokenSymbol = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+
+        $scope.tx.sendMode = sendMode;
+        if (sendMode == 0) {
+          $scope.unitTranslation = 'TRANS_standard';
           $scope.unitReadable = '';
-          $scope.transUnitReadable = unitReadable;
-        } else {
-          $scope.unitReadable = unitReadable;
-          $scope.transUnitReadable = '';
+        } else if (sendMode == 1) {
+          $scope.unitTranslation = 'TRANS_eth';
+          $scope.unitReadable = '';
+        } else if (sendMode == 2) {
+          $scope.unitTranslation = 'TRANS_etc';
+          $scope.unitReadable = '';
+        } else if (sendMode == 4) {
+          $scope.unitTranslation = '';
+          $scope.unitReadable = tokenSymbol;
         }
         $scope.dropdownAmount = false;
+        //$scope.estimateGasLimit();
       };
 
       // Tokens
@@ -1437,6 +1481,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           $scope.validateLocalToken = $sce.trustAsHtml(globalFuncs.getDangerText(e));
         }
       };
+
       $scope.removeTokenFromLocal = function (tokenSymbol) {
         var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
         // remove from localstorage so it doesn't show up on refresh
@@ -4316,7 +4361,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
       MNEM_more: 'More Addresses',
       MNEM_prev: 'Previous Addresses',
-      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Add Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -4469,7 +4514,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
       MNEM_more: 'More Addresses',
       MNEM_prev: 'Previous Addresses',
-      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Add Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -4665,7 +4710,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       x_Keystore: 'Keystore File (UTC / JSON · Recommended · Encrypted · Mist Format)',
       x_Keystore2: 'Keystore File (UTC / JSON)',
       x_KeystoreDesc: 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up.',
-      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx)',
       x_Password: 'Password',
       x_Print: 'Print Paper Wallet',
       x_PrintDesc: 'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
@@ -5227,7 +5272,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
       MNEM_more: 'More Addresses',
       MNEM_prev: 'Previous Addresses',
-      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Add Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -5368,7 +5413,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
       MNEM_more: 'More Addresses',
       MNEM_prev: 'Previous Addresses',
-      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Add Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -5451,6 +5496,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
       ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
       ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Navigation*/
       NAV_YourWallets: 'Vos portefeuilles',
@@ -5560,7 +5606,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       SEND_addr: 'Adresse de destination : ',
       SEND_amount: 'Montant à envoyer : ',
       SEND_amount_short: 'Montant',
-      SEND_custom: 'Spécifique',
+      SEND_custom: 'Token spécifique',
       SEND_gas: 'Gaz',
       SEND_TransferTotal: 'Envoi du solde total', // updated to be shorter
       SEND_generate: 'Générer la transaction',
@@ -5580,6 +5626,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       TOKEN_Addr: 'Adresse : ',
       TOKEN_Symbol: 'Symbole du token : ',
       TOKEN_Dec: 'Décimales : ',
+      TOKEN_show: 'Montrer tous les tokens',
+      TOKEN_hide: 'Cacher les tokens',
 
       /* Send Transaction */
       TRANS_desc: 'Si vous voulez envoyer des tokens, allez plutôt à la page "Envoi de tokens".',
@@ -5715,6 +5763,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ERROR_18: 'Il vous faut au moins 0,01 ether sur votre compte pour couvrir les coûts du gaz. Ajoutez des ether et réessayez. ',
       ERROR_19: 'Tout le gaz serait consommé lors de cette transaction. Cela signifie que vous avez déjà voté pour cette proposition ou que la période du débat est terminée.',
       ERROR_20: 'Symbole invalide',
+      ERROR_21: ' n\'est pas un token ERC-20 valide. Si d\'autres tokens sont en train de se charger, enlevez celui-ci et réessayez.',
       SUCCESS_1: 'Adresse valide',
       SUCCESS_2: 'Portefeuille déchiffré avec succès',
       SUCCESS_3: 'Transaction envoyée. Identifiant de transaction : ',
@@ -6060,7 +6109,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       x_Keystore: 'Keystore Fájl (UTC / JSON · Ajánlott · Titkosított · Mist Formátum)',
       x_Keystore2: 'Keystore Fájl (UTC / JSON)',
       x_KeystoreDesc: 'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
-      x_Mnemonic: 'Mnemonikus frázis (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonikus frázis (MetaMask / Jaxx)',
       x_Password: 'Jelszó',
       x_Print: 'PapírTárca Nyomtatása ',
       x_PrintDesc: 'Profi Tipp: Kattints a nyomtatásra és mentsd el PDF formátumban, még abban az esetben is, ha nincs nyomtatód!',
@@ -6614,7 +6663,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
       MNEM_more: 'More Addresses',
       MNEM_prev: 'Previous Addresses',
-      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Add Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -7339,7 +7388,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
       MNEM_more: 'More Addresses',
       MNEM_prev: 'Previous Addresses',
-      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Add Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -7529,7 +7578,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       x_PrintDesc: 'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
       x_CSV: 'CSV bestand (onverlseuteld)',
       x_TXT: 'TXT bestand (onverlseuteld)',
-      x_Mnemonic: 'Mnemonic Zin (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonic Zin (MetaMask / Jaxx)',
 
       /* Header */
       MEW_Warning_1: 'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites!',
@@ -8074,7 +8123,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
       MNEM_more: 'More Addresses',
       MNEM_prev: 'Previous Addresses',
-      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Add Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -8241,7 +8290,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       x_Keystore: 'Plik Keystore (UTC / JSON · Zalecany · Szyfrowany · Format Mist)',
       x_Keystore2: 'Plik Keystore (UTC / JSON) ',
       x_KeystoreDesc: 'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
-      x_Mnemonic: 'Mnemonik (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonik (MetaMask / Jaxx)',
       x_Json: 'Plik JSON (nieszyfrowany)',
       x_JsonDesc: 'Nieszyfrowany klucz prywatny, plik w formacie JSON. Nie wymaga podania hasła, ale każdy kto zdobędzie ten plik uzyska również pełny dostęp do Twojego portfela i zgromadzonych na nim środków.',
       x_PrintShort: 'Drukuj',
@@ -8798,7 +8847,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
       MNEM_more: 'More Addresses',
       MNEM_prev: 'Previous Addresses',
-      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Add Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -8951,7 +9000,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
       MNEM_more: 'More Addresses',
       MNEM_prev: 'Previous Addresses',
-      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx )',
+      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx)',
       ADD_Radio_5: 'Paste/Type Your Mnemonic',
       SEND_custom: 'Add Custom Token',
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -9207,7 +9256,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       x_Keystore: 'Định Dạng Keystore (UTC / JSON) (Đã mã hoá. Định Dạng này sử dụng cho Mist)',
       x_Keystore2: 'Định Dạng Keystore (UTC / JSON)',
       x_KeystoreDesc: 'Định dạng Keystore là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
-      x_Mnemonic: 'Cụm từ dễ nhớ (MetaMask / Jaxx )',
+      x_Mnemonic: 'Cụm từ dễ nhớ (MetaMask / Jaxx)',
       x_Password: 'Mật Khẩu',
       x_Print: 'Tạo Ví Giấy',
       x_PrintDesc: 'Mẹo: kích chuột trái vào nút "In Ví" sau đó chọn "Save this as a PDF" đễ lưu nó thành định dạng PDF trên máy tính của bạn nếu bạn không sở hữu máy in cá nhân!',

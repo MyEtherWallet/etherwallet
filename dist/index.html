@@ -384,6 +384,7 @@
     <!-- Send Transaction Page -->
 <article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id" ng-controller='sendTxCtrl'>
 
+  <!-- Header -->
   <p class="alert alert-info" translate="WARN_Send_Link" ng-show="hasQueryString"> You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started. </p>
 
   <article class="collapse-container">
@@ -432,9 +433,9 @@
           </tr>
         </table>
 
-        <a class="btn btn-info btn-sm" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
-        <a class="btn btn-info btn-sm" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
-        <a class="btn btn-info btn-sm" ng-click="customTokenField = !customTokenField"> <span translate="SEND_custom"> Add Custom Token </span> </a>
+        <a class="btn btn-default btn-sm" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
+        <a class="btn btn-default btn-sm" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
+        <a class="btn btn-default btn-sm" ng-click="customTokenField = !customTokenField"> <span translate="SEND_custom"> Add Custom Token </span> </a>
 
         <div class="custom-token-fields" ng-show="customTokenField">
           <div class="form-group">
@@ -503,19 +504,18 @@
           <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
           <div class="input-group-btn">
             <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount">
-              <span translate="{{transUnitReadable}}"></span>
-              {{unitReadable}}
+              <span translate="{{unitTranslation}}"></span>{{unitReadable}}
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
-              <li><a ng-class="{true:'active'}[tx.unit=='ETH']" ng-click="changeTxUnit('ETH', 'TRANS_standard')"><span translate="TRANS_standard">ETH (Standard Transaction)</span></a></li>
-              <li><a ng-class="{true:'active'}[tx.unit=='onlyETH']" ng-click="changeTxUnit('onlyETH', 'TRANS_eth')"><span translate="TRANS_eth">Only ETH </span></a></li>
-              <li><a ng-class="{true:'active'}[tx.unit=='onlyETC']" ng-click="changeTxUnit('onlyETC', 'TRANS_etc')"><span translate="TRANS_etc">Only ETC </span></a></li>
+              <li><a ng-class="{true:'active'}[tx.sendMode==0]" ng-click="setSendMode(0)"><span translate="TRANS_standard">ETH (Standard Transaction)</span></a></li>
+              <li><a ng-class="{true:'active'}[tx.sendMode==1]" ng-click="setSendMode(1)"><span translate="TRANS_eth">Only ETH </span></a></li>
+              <li><a ng-class="{true:'active'}[tx.sendMode==2]" ng-click="setSendMode(2)"><span translate="TRANS_etc">Only ETC </span></a></li>
               <li role="separator" class="divider"></li>
 
               <li ng-repeat="token in tokenObjs track by $index">
          <!-- <li ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'"> -->
-                <a ng-class="{true:'active'}[tx.unit==token.getSymbol() ]" ng-click="changeTxUnit(token.getSymbol() , token.getSymbol() )"> {{token.getSymbol()}}  </a>
+                <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode(4, $index, token.getSymbol())"> {{token.getSymbol()}}  </a>
               </li>
 
             </ul>
@@ -590,7 +590,7 @@
               <h4>
                 <span translate="SENDModal_Content_1">You are about to send</span>
                 <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
-                <strong id="confirmCurrancy" class="text-primary"> {{tx.sendMode == 2 ? "ETC" : "ETH"}}  </strong>
+                <strong id="confirmCurrancy" class="text-primary"> {{tx.unitReadable}}  </strong>
                 <span translate="SENDModal_Content_2">to address</span>
                 <strong id="confirmAddress" class="text-primary"> {{tx.to}} </strong>
               </h4>
