@@ -49,7 +49,7 @@ gulp.task('less', function (cb) {
       .pipe(notify('MEW Styles Complete'))
       //cx css
       .pipe(gulp.dest(cxLessOutputFolder))
-      .pipe(notify('CX Styles Complete'));
+      //.pipe(notify('CX Styles Complete'));
 });
 
 
@@ -89,7 +89,7 @@ gulp.task('cxMinJS',['cxBrowserify'],function () {
     .src('./chrome-extension/js/etherwallet-master.js')
       .pipe(babel({ presets: ['es2015'], compact: false}))
       .pipe(gulp.dest('./chrome-extension/js/'))
-      .pipe(notify('CX MinJS'));
+      //.pipe(notify('CX MinJS'));
 });
 
 

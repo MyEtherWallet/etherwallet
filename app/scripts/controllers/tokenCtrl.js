@@ -33,13 +33,13 @@ var tokenCtrl = function($scope, $sce, walletService) {
 		$scope.tokenObjs = [];
 		for (var i = 0; i < $scope.tokens.length; i++) {
 			$scope.tokenObjs.push(new Token($scope.tokens[i].address, $scope.wallet.getAddressString(), $scope.tokens[i].symbol, $scope.tokens[i].decimal, $scope.tokens[i].type));
-            $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
+        $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
 		}
 		var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
 		for (var i = 0; i < storedTokens.length; i++) {
 			$scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
-            $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
-        }
+      $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
+    }
 		$scope.tokenTx.id = -1;
 	}
 	$scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function() {

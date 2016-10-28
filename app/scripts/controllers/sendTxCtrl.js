@@ -2,7 +2,7 @@
 var sendTxCtrl = function($scope, $sce, walletService) {
   $scope.etherBalance = $scope.etcBalance = $scope.usdBalance = $scope.eurBalance = $scope.btcBalance = "loading";
   $scope.unitReadable = "";
-  $scope.transUnitReadable = "TRANS_standard";
+  $scope.unitTranslation = "TRANS_standard";
   $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
   $scope.txInfoModal = new Modal(document.getElementById('txInfoModal'));
   walletService.wallet = null;
@@ -15,8 +15,8 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 
   // Tokens
   $scope.tokenVisibility = "hidden";
-  $scope.tokens = Token.popTokens;
   $scope.customTokenField = false;
+  $scope.tokens = Token.popTokens;
 
   $scope.tokenTx = {
     to: '',
@@ -40,8 +40,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     nonce: null,
     gasPrice: null,
     donate: false,
-    sendMode: globalFuncs.urlGet('sendMode') == null ? 0 : globalFuncs.urlGet('value')
+    sendMode: globalFuncs.urlGet('sendMode') == null ? 0 : globalFuncs.urlGet('value') // 0 = ETH (Standard)   1 = Only ETH    2 = Only ETC    3 = Token
   }
+
   globalFuncs.urlGet('gaslimit') == null ? '' : $scope.showAdvance = true
   globalFuncs.urlGet('data') == null ? '' : $scope.showAdvance = true
   $scope.$watch(function() {
@@ -54,6 +55,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.setBalance();
     $scope.setTokens();
   });
+
   $scope.$watch('[tx.to,tx.value,tx.data,tx.sendMode]', function() {
     if ($scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data)) {
       if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
@@ -67,19 +69,37 @@ var sendTxCtrl = function($scope, $sce, walletService) {
   if ( globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') ) $scope.hasQueryString = true
 
   $scope.estimateGasLimit = function() {
-    var estObj = {
-      to: $scope.tx.to,
-      from: $scope.wallet.getAddressString(),
-      value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit)))
+    // if tokens....
+    if ( $scope.tx.sendMode == 4) {
+      var estObj = {
+        to: $scope.tokenObjs[$scope.tokenTx.id].getContractAddress(),
+        from: $scope.wallet.getAddressString(),
+        value: '0x00',
+        data: $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data
+      }
+    } else {  // if not tokens....
+      var estObj = {
+        to: $scope.tx.to,
+        from: $scope.wallet.getAddressString(),
+        value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit)))
+      }
     }
     if ($scope.tx.data != "") estObj.data = ethFuncs.sanitizeHex($scope.tx.data);
-    if ($scope.tx.sendMode == 1) estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64);
-    else if ($scope.tx.sendMode == 2) estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
-    if ($scope.tx.sendMode != 0) estObj.to = $scope.replayContract;
+    if ($scope.tx.sendMode == 1) {
+      estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64);
+      estObj.to = $scope.replayContract;
+    } else if ($scope.tx.sendMode == 2) {
+      estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
+      estObj.to = $scope.replayContract;
+    } else if ($scope.tx.sendMode == 4) {
+      // do token stuff
+    }
+
     ethFuncs.estimateGas(estObj, $scope.tx.sendMode == 2, function(data) {
       if (!data.error) $scope.tx.gasLimit = data.data;
     });
   }
+
   $scope.setBalance = function() {
     ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data) {
       if (data.error) {
@@ -101,6 +121,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
       }
     });
   }
+
   $scope.$watch('tx', function(newValue, oldValue) {
     $scope.showRaw = false;
     $scope.sendTxStatus = "";
@@ -109,27 +130,35 @@ var sendTxCtrl = function($scope, $sce, walletService) {
       $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
     }
   }, true);
+
   $scope.validateAddress = function() {
     return ethFuncs.validateEtherAddress($scope.tx.to)
   }
+
   $scope.toggleShowAdvance = function() {
     $scope.showAdvance = !$scope.showAdvance;
   }
+
   $scope.onDonateClick = function() {
     $scope.tx.to = globalFuncs.donateAddress;
-    $scope.tx.value = "0.5";
+    $scope.tx.value = "1";
     $scope.tx.donate = true;
   }
+
   $scope.generateTx = function() {
     if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
       $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
       return;
     }
     var txData = uiFuncs.getTxData($scope);
-    if ($scope.tx.sendMode != 0) {
+    if ($scope.tx.sendMode == 1) {
       txData.to = $scope.replayContract;
-      if ($scope.tx.sendMode == 1) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);
-      else if ($scope.tx.sendMode == 2) txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
+      txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);
+    } else if ($scope.tx.sendMode == 2) {
+      txData.to = $scope.replayContract;
+      txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
+    } else if ( $scope.tx.sendMode == 4 ) {
+      // do token stuff
     }
     uiFuncs.generateTx(txData, $scope.tx.sendMode == 2, function(rawTx) {
       if (!rawTx.isError) {
@@ -143,6 +172,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
       }
     });
   }
+
   $scope.sendTx = function() {
     $scope.sendTxModal.close();
     uiFuncs.sendTx($scope.signedTx, $scope.tx.sendMode == 2, function(resp) {
@@ -154,6 +184,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
       }
     });
   }
+
   $scope.transferAllBalance = function() {
     uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, $scope.tx.sendMode == 2, function(resp) {
       if (!resp.isError) {
@@ -166,17 +197,23 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     });
   }
 
-
-  $scope.changeTxUnit = function(unit, unitReadable) {
-    $scope.tx.unit = unit;
-    if ( unit == 'ETH' || unit == 'onlyETH' || unit == 'onlyETC' ) {
+  $scope.setSendMode = function(sendMode, tokenId='', tokenSymbol='') {
+    $scope.tx.sendMode = sendMode;
+    if ( sendMode == 0 ) {
+      $scope.unitTranslation = 'TRANS_standard';
       $scope.unitReadable = '';
-      $scope.transUnitReadable = unitReadable;
-    } else {
-      $scope.unitReadable = unitReadable;
-      $scope.transUnitReadable = '';
+    } else if ( sendMode == 1 ) {
+      $scope.unitTranslation = 'TRANS_eth';
+      $scope.unitReadable = '';
+    } else if ( sendMode == 2 ) {
+      $scope.unitTranslation = 'TRANS_etc';
+      $scope.unitReadable = '';
+    } else if ( sendMode == 4 ) {
+      $scope.unitTranslation = '';
+      $scope.unitReadable = tokenSymbol;
     }
     $scope.dropdownAmount = false;
+    //$scope.estimateGasLimit();
   }
 
   // Tokens
@@ -184,13 +221,13 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.tokenObjs = [];
     for (var i = 0; i < $scope.tokens.length; i++) {
       $scope.tokenObjs.push(new Token($scope.tokens[i].address, $scope.wallet.getAddressString(), $scope.tokens[i].symbol, $scope.tokens[i].decimal, $scope.tokens[i].type));
-            $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
+      $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
     }
     var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
     for (var i = 0; i < storedTokens.length; i++) {
       $scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
-            $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
-        }
+      $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
+    }
     $scope.tokenTx.id = -1;
   }
   $scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function() {
@@ -228,6 +265,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
       $scope.validateLocalToken = $sce.trustAsHtml(globalFuncs.getDangerText(e));
     }
   }
+
   $scope.removeTokenFromLocal = function(tokenSymbol) {
     var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
     // remove from localstorage so it doesn't show up on refresh
