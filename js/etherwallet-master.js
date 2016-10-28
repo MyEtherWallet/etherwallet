@@ -1229,6 +1229,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // Tokens
       $scope.tokenVisibility = "hidden";
       $scope.tokens = Token.popTokens;
+      $scope.customTokenField = false;
 
       $scope.tokenTx = {
         to: '',
@@ -1430,6 +1431,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           localStorage.setItem("localTokens", JSON.stringify(storedTokens));
           $scope.setTokens();
           $scope.validateLocalToken = $sce.trustAsHtml('');
+          $scope.customTokenField = false;
         } catch (e) {
           $scope.validateLocalToken = $sce.trustAsHtml(globalFuncs.getDangerText(e));
         }
