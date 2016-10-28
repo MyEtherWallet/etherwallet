@@ -11,7 +11,7 @@ ar.data = {
   MNEM_prev:            'Previous Addresses',
   x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx )',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Custom Token',
+  SEND_custom:          'Add Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
@@ -151,7 +151,7 @@ ar.data = {
   TOKEN_Dec:             'Decimals: ',
 
   /* Send Transaction */
-  TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
+  TRANS_desc:            '',
   TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
   TRANS_standard:        'ETH (Standard Transaction)',
   TRANS_eth:             'Only ETH',

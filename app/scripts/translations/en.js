@@ -4,6 +4,8 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
+  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+
   /* Mnemonic Additions */
   MNEM_1:               'Please select the address you would like to interact with.',
   MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
@@ -28,7 +30,7 @@ en.data = {
   NAV_AddWallet:        'Add Wallet',
   NAV_GenerateWallet:   'Generate Wallet',
   NAV_BulkGenerate:     'Bulk Generate',
-  NAV_SendEther:        'Send Ether',
+  NAV_SendEther:        'Send Ether & Tokens',
   NAV_SendTokens:       'Send Tokens',
   NAV_Offline:          'Send Offline',
   NAV_WithdrawDAO:      'Withdraw DAO',

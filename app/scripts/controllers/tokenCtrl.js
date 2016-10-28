@@ -6,7 +6,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
 	walletService.password = '';
 	$scope.tokens = Token.popTokens;
 	$scope.Validator = Validator;
-    $scope.etherBalance = $scope.etcBalance = $scope.usdBalance = $scope.eurBalance = $scope.btcBalance = "loading";
+  $scope.etherBalance = $scope.etcBalance = $scope.usdBalance = $scope.eurBalance = $scope.btcBalance = "loading";
 	$scope.tokenTx = {
 		to: '',
 		value: 0,
@@ -84,7 +84,7 @@ var tokenCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.onDonateClick = function() {
 		$scope.tokenTx.to = globalFuncs.donateAddress;
-		$scope.tokenTx.value = "50";
+		$scope.tokenTx.value = "5";
 	}
 	$scope.generateTokenTx = function() {
 		if ($scope.tokenTx.id == -1) {

@@ -1,4 +1,4 @@
-// English
+// Finnish
 'use strict';
 var fi = function() {}
 fi.code = 'fi';
@@ -11,7 +11,7 @@ fi.data = {
   MNEM_prev:            'Previous Addresses',
   x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx )',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Custom Token',
+  SEND_custom:          'Add Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
@@ -67,7 +67,7 @@ fi.data = {
   NAV_AddWallet:        'Lisää Lompakko',
   NAV_GenerateWallet:   'Luo Lompakko',
   NAV_BulkGenerate:     'Massa Generoi',
-  NAV_SendEther:        'Lähetä Etheriä',
+  NAV_SendEther:        'Lähetä Etheriä ja Tokeneita',
   NAV_SendTokens:       'Lähetä Tokeneita',
   NAV_Offline:          'Lähetä Offlinena',
   NAV_WithdrawDAO:      'Nosta DAO',

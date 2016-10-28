@@ -22,7 +22,7 @@ nl.data = {
   NAV_AddWallet:        'Wallet Toevoegen',
   NAV_GenerateWallet:   'Genereer Wallet',
   NAV_BulkGenerate:     'Bulk Genereren',
-  NAV_SendEther:        'Verzend Ether',
+  NAV_SendEther:        'Verzend Ether en Tokens',
   NAV_SendTokens:       'Verzend Tokens',
   NAV_Offline:          'Verzend Offline',
   NAV_WithdrawDAO:      'DAO Opnemen',

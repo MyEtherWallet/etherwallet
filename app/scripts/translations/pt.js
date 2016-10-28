@@ -11,7 +11,7 @@ pt.data = {
   MNEM_prev:            'Previous Addresses',
   x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx )',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Custom Token',
+  SEND_custom:          'Add Custom Token',
   ERROR_21:             'Not a valid ERC-20 token',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
@@ -28,7 +28,7 @@ pt.data = {
   NAV_AddWallet:        'Add Wallet',
   NAV_GenerateWallet:   'Generate Wallet',
   NAV_BulkGenerate:     'Bulk Generate',
-  NAV_SendEther:        'Send Ether',
+  NAV_SendEther:        'Send Ether & Tokens',
   NAV_SendTokens:       'Send Tokens',
   NAV_Offline:          'Send Offline',
   NAV_WithdrawDAO:      'Withdraw DAO',
@@ -150,7 +150,7 @@ pt.data = {
   TOKEN_Dec:             'Decimals: ',
 
   /* Send Transaction */
-  TRANS_desc:            'If you want to send Tokens, please use the "Send Token" page instead.',
+  TRANS_desc:            '',
   TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
   TRANS_standard:        'ETH (Standard Transaction)',
   TRANS_eth:             'Only ETH',

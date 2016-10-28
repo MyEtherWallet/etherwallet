@@ -29,7 +29,7 @@ it.data = {
   NAV_AddWallet:        'Aggiungi portafoglio',
   NAV_GenerateWallet:   'Genera portafoglio',
   NAV_BulkGenerate:     'Generazione multipla',
-  NAV_SendEther:        'Invia ether',
+  NAV_SendEther:        'Invia ether e token',
   NAV_SendTokens:       'Invia token',
   NAV_Offline:          'Invia offline',
   NAV_WithdrawDAO:      'Preleva DAO',

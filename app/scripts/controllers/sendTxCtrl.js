@@ -1,12 +1,10 @@
 'use strict';
 var sendTxCtrl = function($scope, $sce, walletService) {
-  $scope.etherBalance = "loading";
-  $scope.etcBalance = "loading";
-  $scope.usdBalance = "loading";
-  $scope.eurBalance = "loading";
-  $scope.btcBalance = "loading";
+  $scope.etherBalance = $scope.etcBalance = $scope.usdBalance = $scope.eurBalance = $scope.btcBalance = "loading";
+  $scope.unitReadable = "";
+  $scope.transUnitReadable = "TRANS_standard";
   $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
-  $scope.txInfoModal = new Modal(document.getElementById('txInfoModal'));  
+  $scope.txInfoModal = new Modal(document.getElementById('txInfoModal'));
   walletService.wallet = null;
   walletService.password = '';
   $scope.showAdvance = false;
@@ -14,6 +12,24 @@ var sendTxCtrl = function($scope, $sce, walletService) {
   $scope.replayContract = "0xaa1a6e3e6ef20068f7f8d8c835d2d22fd5116444";
   $scope.splitHex = "0x0f2c9329";
   $scope.Validator = Validator;
+
+  // Tokens
+  $scope.tokenVisibility = "hidden";
+  $scope.tokens = Token.popTokens;
+
+  $scope.tokenTx = {
+    to: '',
+    value: 0,
+    id: -1,
+    gasLimit: 150000
+  };
+  $scope.localToken = {
+    contractAdd: "",
+    symbol: "",
+    decimals: "",
+    type: "custom",
+  };
+
   $scope.tx = {
     gasLimit: globalFuncs.urlGet('gaslimit') == null ? globalFuncs.defaultTxGasLimit : globalFuncs.urlGet('gaslimit'),
     data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
@@ -35,6 +51,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.wallet = walletService.wallet;
     $scope.wd = true;
     $scope.setBalance();
+    $scope.setTokens();
   });
   $scope.$watch('[tx.to,tx.value,tx.data,tx.sendMode]', function() {
     if ($scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data)) {
@@ -44,6 +61,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
       }, 500);
     }
   }, true);
+
+  // if there is a query string, show an warning at top of page
+  if ( globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') ) $scope.hasQueryString = true
+
   $scope.estimateGasLimit = function() {
     var estObj = {
       to: $scope.tx.to,
@@ -143,5 +164,84 @@ var sendTxCtrl = function($scope, $sce, walletService) {
       }
     });
   }
+
+
+  $scope.changeTxUnit = function(unit, unitReadable) {
+    $scope.tx.unit = unit;
+    if ( unit == 'ETH' || unit == 'onlyETH' || unit == 'onlyETC' ) {
+      $scope.unitReadable = '';
+      $scope.transUnitReadable = unitReadable;
+    } else {
+      $scope.unitReadable = unitReadable;
+      $scope.transUnitReadable = '';
+    }
+    $scope.dropdownAmount = false;
+  }
+
+  // Tokens
+  $scope.setTokens = function() {
+    $scope.tokenObjs = [];
+    for (var i = 0; i < $scope.tokens.length; i++) {
+      $scope.tokenObjs.push(new Token($scope.tokens[i].address, $scope.wallet.getAddressString(), $scope.tokens[i].symbol, $scope.tokens[i].decimal, $scope.tokens[i].type));
+            $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
+    }
+    var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+    for (var i = 0; i < storedTokens.length; i++) {
+      $scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
+            $scope.tokenObjs[$scope.tokenObjs.length-1].setBalance();
+        }
+    $scope.tokenTx.id = -1;
+  }
+  $scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function() {
+    if ($scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id] !== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to) && $scope.Validator.isPositiveNumber($scope.tokenTx.value)) {
+      if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
+      $scope.estimateTimer = setTimeout(function() {
+        $scope.estimateGasLimit();
+      }, 500);
+    }
+  }, true);
+
+  $scope.saveTokenToLocal = function() {
+    try {
+      if (!ethFuncs.validateEtherAddress($scope.localToken.contractAdd)) throw globalFuncs.errorMsgs[5];
+      else if (!globalFuncs.isNumeric($scope.localToken.decimals) || parseFloat($scope.localToken.decimals) < 0) throw globalFuncs.errorMsgs[7];
+      else if (!globalFuncs.isAlphaNumeric($scope.localToken.symbol) || $scope.localToken.symbol == "") throw globalFuncs.errorMsgs[19];
+      var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+      storedTokens.push({
+        contractAddress: $scope.localToken.contractAdd,
+        symbol: $scope.localToken.symbol,
+        decimal: parseInt($scope.localToken.decimals),
+        type: $scope.localToken.type
+      });
+      $scope.localToken = {
+        contractAdd: "",
+        symbol: "",
+        decimals: "",
+        type: "custom"
+      };
+      localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+      $scope.setTokens();
+      $scope.validateLocalToken = $sce.trustAsHtml('');
+    } catch (e) {
+      $scope.validateLocalToken = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+    }
+  }
+  $scope.removeTokenFromLocal = function(tokenSymbol) {
+    var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+    // remove from localstorage so it doesn't show up on refresh
+    for (var i = 0; i < storedTokens.length; i++)
+    if (storedTokens[i].symbol === tokenSymbol) {
+      storedTokens.splice(i, 1);
+      break;
+    }
+    localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+    // remove from tokenObj so it removes from display
+    for (var i = 0; i < $scope.tokenObjs.length; i++)
+    if ($scope.tokenObjs[i].symbol === tokenSymbol) {
+      $scope.tokenObjs.splice(i, 1);
+      break;
+    }
+  }
+
 };
 module.exports = sendTxCtrl;

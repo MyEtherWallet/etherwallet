@@ -11,7 +11,7 @@ zh.data = {
   MNEM_prev:            'Previous Addresses',
   x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx)',
   ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Custom Token',
+  SEND_custom:          'Add Custom Token',
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
@@ -28,7 +28,7 @@ zh.data = {
   NAV_AddWallet:        '添加钱包',
   NAV_GenerateWallet:   '生成钱包',
   NAV_BulkGenerate:     '批量生成',
-  NAV_SendEther:        '发送以太币',
+  NAV_SendEther:        '发送以太币 / 发送代币', //combined these tabs
   NAV_SendTokens:       '发送代币',
   NAV_Offline:          '离线发送',
   NAV_WithdrawDAO:      'DAO提取DAO',

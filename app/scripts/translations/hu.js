@@ -30,7 +30,7 @@ hu.data = {
   NAV_AddWallet:        'Tárca hozzáadása',
   NAV_GenerateWallet:   'Tárca generálása',
   NAV_BulkGenerate:     'Több tárca generálása',
-  NAV_SendEther:        'Ether küldése',
+  NAV_SendEther:        'Ether & Tokenek küldése',
   NAV_SendTokens:       'Tokenek küldése',
   NAV_Offline:          'Offline tranzakció',
   NAV_WithdrawDAO:      'DAO kifizetése',

@@ -28,7 +28,7 @@ vi.data = {
   NAV_AddWallet:        'Thêm Ví',
   NAV_GenerateWallet:   'Tạo Ví',
   NAV_BulkGenerate:     'Tạo Nhiều Ví',
-  NAV_SendEther:        'Gửi Ether',
+  NAV_SendEther:        'Gửi Ether và Tokens',
   NAV_SendTokens:       'Gửi Token',
   NAV_Offline:          'Giao Dịch Offline',
   NAV_WithdrawDAO:      'Thu Hồi DAO Token',

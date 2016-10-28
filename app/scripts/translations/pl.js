@@ -28,7 +28,7 @@ pl.data = {
   NAV_AddWallet:        'Dodaj Portfel',
   NAV_GenerateWallet:   'Wygeneruj Portfel',
   NAV_BulkGenerate:     'Generuj Hurtowo',
-  NAV_SendEther:        'Wyślij Ether',
+  NAV_SendEther:        'Wyślij Ether i Tokeny',
   NAV_SendTokens:       'Wyślij Tokeny',
   NAV_Offline:          'Wyślij Offline',
   NAV_WithdrawDAO:      'Wypłać DAO',
