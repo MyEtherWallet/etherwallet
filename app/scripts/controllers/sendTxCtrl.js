@@ -16,6 +16,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
   // Tokens
   $scope.tokenVisibility = "hidden";
   $scope.tokens = Token.popTokens;
+  $scope.customTokenField = false;
 
   $scope.tokenTx = {
     to: '',
@@ -222,6 +223,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
       localStorage.setItem("localTokens", JSON.stringify(storedTokens));
       $scope.setTokens();
       $scope.validateLocalToken = $sce.trustAsHtml('');
+      $scope.customTokenField = false;
     } catch (e) {
       $scope.validateLocalToken = $sce.trustAsHtml(globalFuncs.getDangerText(e));
     }
