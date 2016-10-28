@@ -38,7 +38,7 @@ hu.data = {
   x_Keystore:           'Keystore Fájl (UTC / JSON · Ajánlott · Titkosított · Mist Formátum)',
   x_Keystore2:          'Keystore Fájl (UTC / JSON)',
   x_KeystoreDesc:       'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
-  x_Mnemonic:           'Mnemonikus frázis (MetaMask / Jaxx )',
+  x_Mnemonic:           'Mnemonikus frázis (MetaMask / Jaxx)',
   x_Password:           'Jelszó',
   x_Print:              'PapírTárca Nyomtatása ',
   x_PrintDesc:          'Profi Tipp: Kattints a nyomtatásra és mentsd el PDF formátumban, még abban az esetben is, ha nincs nyomtatód!',

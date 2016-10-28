@@ -36,7 +36,7 @@ pl.data = {
   x_Keystore:           'Plik Keystore (UTC / JSON · Zalecany · Szyfrowany · Format Mist)',
   x_Keystore2:          'Plik Keystore (UTC / JSON) ',
   x_KeystoreDesc:       'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
-  x_Mnemonic:           'Mnemonik (MetaMask / Jaxx )',
+  x_Mnemonic:           'Mnemonik (MetaMask / Jaxx)',
   x_Json:               'Plik JSON (nieszyfrowany)',
   x_JsonDesc:           'Nieszyfrowany klucz prywatny, plik w formacie JSON. Nie wymaga podania hasła, ale każdy kto zdobędzie ten plik uzyska również pełny dostęp do Twojego portfela i zgromadzonych na nim środków.',
   x_PrintShort:         'Drukuj',

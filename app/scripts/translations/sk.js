@@ -43,6 +43,7 @@ sk.data = {
   x_Save:               'Uložiť',
   x_TXT:                'TXT súbor (nezašifrovaný)',
   x_Wallet:             'Peňaženka',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx )',
 
   /* Header */
   MEW_Warning_1:        'Vždy skontrolujte URL adresu pred tým ako vytvoríte alebo sprístupnite vašu peňaženku. Davajte si pozor na Phisingové stránky!',
