@@ -587,15 +587,27 @@
               <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body" ng-show="tx.sendMode!==4">
               <h4>
                 <span translate="SENDModal_Content_1">You are about to send</span>
                 <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
-                <strong id="confirmCurrancy" class="text-primary"> {{tx.unitReadable}}  </strong>
+                <span translate="{{unitTranslation}}"></span>{{unitReadable}}
                 <span translate="SENDModal_Content_2">to address</span>
                 <strong id="confirmAddress" class="text-primary"> {{tx.to}} </strong>
               </h4>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+            </div>
+
+            <div class="modal-body" ng-show="tx.sendMode==4">
+              <h4>
+                <span translate="SENDModal_Content_1">You are about to send</span>
+                <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
+                <span translate="{{unitTranslation}}"></span>{{unitReadable}}
+                <span translate="SENDModal_Content_2">to address</span>
+                <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
+              </h4>
+              <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+              <em><p translate="DAO_Warning">** If you are getting an insufficient balance for gas * ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p></em>
             </div>
 
             <div class="modal-footer text-center">
@@ -632,7 +644,7 @@
             </div>
 
             <div class="modal-footer text-center">
-              <a href="mailto:myetherwallet@gmail.com" type="button" class="btn btn-danger" translate="TRANSModal_No">Oh gosh, I'm more confused. Help me.</a>
+              <a href="mailto:myetherwallet@gmail.com" type="button" class="btn btn-default" translate="TRANSModal_No">Oh gosh, I'm more confused. Help me.</a>
               <button type="button" class="btn btn-primary" data-dismiss="modal" translate="TRANSModal_Yes">Sweet, I get it now.</button>
             </div>
 
