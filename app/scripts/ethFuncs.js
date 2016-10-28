@@ -63,36 +63,6 @@ ethFuncs.getDataObj = function(to, func, arrVals) {
 		data: func + val
 	};
 }
-ethFuncs.vmTraceEstimate = function(data) {
-    if (!data.data.vmTrace || !data.data.vmTrace.ops.length) return -1;
-	var ops = data.data.vmTrace.ops;
-	var gasLimit = 50000000;
-	var smallest = gasLimit;
-	function recurSmallest(ops) {
-		for (var i = 0; i < ops.length; i++) {
-			if (!ops[i].sub && ops[i].ex.used < smallest && ops[i].ex.used > 100000) smallest = ops[i].ex.used;
-			else if (ops[i].sub) recurSmallest(ops[i].sub.ops);
-		}
-	}
-	recurSmallest(ops);
-	gasLimit -= smallest;
-	return gasLimit;
-}
-ethFuncs.traceEstimate = function(data) {
-	var calls = data.data.trace;
-	var gasAssigned = new BigNumber(0);
-	var maxGas = new BigNumber(50000000);
-	for (var i = 0; i < calls.length; i++) {
-		if (calls[i].result.failedCall !== undefined || calls[i].result.failedCreate !== undefined) {
-			gasAssigned = new BigNumber(-1);
-			break;
-		}
-		var cType = calls[i].action.create !== undefined ? 'create' : 'call';
-		var gas = new BigNumber(calls[i].action[cType].gas).sub(new BigNumber(calls[i].result[cType].gasUsed));
-		if (maxGas.sub(gas).gt(gasAssigned) && gas.gt(100000)) gasAssigned = maxGas.sub(gas);
-	}
-	return gasAssigned.toNumber();
-}
 ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
 	dataObj.gasPrice = '0x01';
 	ajaxReq.getTraceCall(dataObj, isClassic, function(data) {
@@ -100,12 +70,11 @@ ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
 			callback(data);
 			return;
 		}
-        var traceEst = ethFuncs.traceEstimate(data);
-        var vmTraceEst = ethFuncs.vmTraceEstimate(data);
-        var estVal = -1;
-        if(traceEst!=-1)
-            estVal = traceEst > vmTraceEst ? traceEst:vmTraceEst;
-            
+        var stateDiff = data.data.stateDiff;
+        stateDiff = stateDiff[dataObj.from.toLowerCase()]['balance']['*'];
+        var estVal = new BigNumber(stateDiff['from']).sub(new BigNumber(stateDiff['to'])).sub(new BigNumber(dataObj.value));
+        if(estVal.lt(0)) estVal = -1;
+        else if(!estVal.eq(21000)) estVal = estVal.add(5000);
 		callback({
 			"error": false,
 			"msg": "",

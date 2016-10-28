@@ -2348,35 +2348,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         data: func + val
       };
     };
-    ethFuncs.vmTraceEstimate = function (data) {
-      if (!data.data.vmTrace || !data.data.vmTrace.ops.length) return -1;
-      var ops = data.data.vmTrace.ops;
-      var gasLimit = 50000000;
-      var smallest = gasLimit;
-      function recurSmallest(ops) {
-        for (var i = 0; i < ops.length; i++) {
-          if (!ops[i].sub && ops[i].ex.used < smallest && ops[i].ex.used > 100000) smallest = ops[i].ex.used;else if (ops[i].sub) recurSmallest(ops[i].sub.ops);
-        }
-      }
-      recurSmallest(ops);
-      gasLimit -= smallest;
-      return gasLimit;
-    };
-    ethFuncs.traceEstimate = function (data) {
-      var calls = data.data.trace;
-      var gasAssigned = new BigNumber(0);
-      var maxGas = new BigNumber(50000000);
-      for (var i = 0; i < calls.length; i++) {
-        if (calls[i].result.failedCall !== undefined || calls[i].result.failedCreate !== undefined) {
-          gasAssigned = new BigNumber(-1);
-          break;
-        }
-        var cType = calls[i].action.create !== undefined ? 'create' : 'call';
-        var gas = new BigNumber(calls[i].action[cType].gas).sub(new BigNumber(calls[i].result[cType].gasUsed));
-        if (maxGas.sub(gas).gt(gasAssigned) && gas.gt(100000)) gasAssigned = maxGas.sub(gas);
-      }
-      return gasAssigned.toNumber();
-    };
     ethFuncs.estimateGas = function (dataObj, isClassic, callback) {
       dataObj.gasPrice = '0x01';
       ajaxReq.getTraceCall(dataObj, isClassic, function (data) {
@@ -2384,11 +2355,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           callback(data);
           return;
         }
-        var traceEst = ethFuncs.traceEstimate(data);
-        var vmTraceEst = ethFuncs.vmTraceEstimate(data);
-        var estVal = -1;
-        if (traceEst != -1) estVal = traceEst > vmTraceEst ? traceEst : vmTraceEst;
-
+        var stateDiff = data.data.stateDiff;
+        stateDiff = stateDiff[dataObj.from.toLowerCase()]['balance']['*'];
+        var estVal = new BigNumber(stateDiff['from']).sub(new BigNumber(stateDiff['to'])).sub(new BigNumber(dataObj.value));
+        if (estVal.lt(0)) estVal = -1;else if (!estVal.eq(21000)) estVal = estVal.add(5000);
         callback({
           "error": false,
           "msg": "",
@@ -2927,7 +2897,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       app.controller('quickSendCtrl', ['$scope', '$sce', quickSendCtrl]);
       app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
     }
-  }, { "./ajaxReq": 1, "./controllers/CX/addWalletCtrl": 2, "./controllers/CX/cxDecryptWalletCtrl": 3, "./controllers/CX/mainPopCtrl": 4, "./controllers/CX/myWalletsCtrl": 5, "./controllers/CX/quickSendCtrl": 6, "./controllers/bulkGenCtrl": 7, "./controllers/decryptWalletCtrl": 8, "./controllers/deployContractCtrl": 9, "./controllers/digixCtrl": 10, "./controllers/footerCtrl": 11, "./controllers/sendOfflineTxCtrl": 12, "./controllers/sendTxCtrl": 13, "./controllers/tabsCtrl": 14, "./controllers/theDaoCtrl": 15, "./controllers/tokenCtrl": 16, "./controllers/viewCtrl": 17, "./controllers/viewWalletCtrl": 18, "./controllers/walletGenCtrl": 19, "./customMarked": 20, "./cxFuncs": 21, "./directives/QRCodeDrtv": 22, "./directives/blockiesDrtv": 23, "./directives/cxWalletDecryptDrtv": 24, "./directives/fileReaderDrtv": 25, "./directives/walletDecryptDrtv": 26, "./ethFuncs": 27, "./etherUnits": 28, "./globalFuncs": 29, "./ledger-eth": 30, "./ledger3": 31, "./myetherwallet": 33, "./services/globalService": 34, "./services/walletService": 35, "./staticJS/u2f-api": 36, "./tokens": 37, "./translations/translate.js": 53, "./uiFuncs": 56, "./validator": 57, "angular": 63, "angular-sanitize": 59, "angular-translate": 61, "angular-translate-handler-log": 60, "bignumber.js": 80, "bip39": 81, "crypto": 124, "ethereumjs-tx": 154, "ethereumjs-util": 155, "hdkey": 164, "scryptsy": 203, "string-format": 219, "uuid": 227 }], 33: [function (require, module, exports) {
+  }, { "./ajaxReq": 1, "./controllers/CX/addWalletCtrl": 2, "./controllers/CX/cxDecryptWalletCtrl": 3, "./controllers/CX/mainPopCtrl": 4, "./controllers/CX/myWalletsCtrl": 5, "./controllers/CX/quickSendCtrl": 6, "./controllers/bulkGenCtrl": 7, "./controllers/decryptWalletCtrl": 8, "./controllers/deployContractCtrl": 9, "./controllers/digixCtrl": 10, "./controllers/footerCtrl": 11, "./controllers/sendOfflineTxCtrl": 12, "./controllers/sendTxCtrl": 13, "./controllers/tabsCtrl": 14, "./controllers/theDaoCtrl": 15, "./controllers/tokenCtrl": 16, "./controllers/viewCtrl": 17, "./controllers/viewWalletCtrl": 18, "./controllers/walletGenCtrl": 19, "./customMarked": 20, "./cxFuncs": 21, "./directives/QRCodeDrtv": 22, "./directives/blockiesDrtv": 23, "./directives/cxWalletDecryptDrtv": 24, "./directives/fileReaderDrtv": 25, "./directives/walletDecryptDrtv": 26, "./ethFuncs": 27, "./etherUnits": 28, "./globalFuncs": 29, "./ledger-eth": 30, "./ledger3": 31, "./myetherwallet": 33, "./services/globalService": 34, "./services/walletService": 35, "./staticJS/u2f-api": 36, "./tokens": 37, "./translations/translate.js": 53, "./uiFuncs": 56, "./validator": 57, "angular": 63, "angular-sanitize": 59, "angular-translate": 61, "angular-translate-handler-log": 60, "bignumber.js": 80, "bip39": 81, "crypto": 124, "ethereumjs-tx": 154, "ethereumjs-util": 155, "hdkey": 164, "scryptsy": 201, "string-format": 216, "uuid": 223 }], 33: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -43515,7 +43485,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     Entity.prototype.encode = function encode(data, enc, /* internal */reporter) {
       return this._getEncoder(enc).encode(data, reporter);
     };
-  }, { "../asn1": 64, "inherits": 167, "vm": 228 }], 66: [function (require, module, exports) {
+  }, { "../asn1": 64, "inherits": 167, "vm": 224 }], 66: [function (require, module, exports) {
     var inherits = require('inherits');
     var Reporter = require('../base').Reporter;
     var Buffer = require('buffer').Buffer;
@@ -45268,10 +45238,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return keys;
     };
-  }, { "util/": 225 }], 79: [function (require, module, exports) {
+  }, { "util/": 221 }], 79: [function (require, module, exports) {
     'use strict';
 
-    exports.byteLength = byteLength;
     exports.toByteArray = toByteArray;
     exports.fromByteArray = fromByteArray;
 
@@ -45279,17 +45248,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var revLookup = [];
     var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array;
 
-    var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-    for (var i = 0, len = code.length; i < len; ++i) {
-      lookup[i] = code[i];
-      revLookup[code.charCodeAt(i)] = i;
+    function init() {
+      var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+      for (var i = 0, len = code.length; i < len; ++i) {
+        lookup[i] = code[i];
+        revLookup[code.charCodeAt(i)] = i;
+      }
+
+      revLookup['-'.charCodeAt(0)] = 62;
+      revLookup['_'.charCodeAt(0)] = 63;
     }
 
-    revLookup['-'.charCodeAt(0)] = 62;
-    revLookup['_'.charCodeAt(0)] = 63;
+    init();
 
-    function placeHoldersCount(b64) {
+    function toByteArray(b64) {
+      var i, j, l, tmp, placeHolders, arr;
       var len = b64.length;
+
       if (len % 4 > 0) {
         throw new Error('Invalid string. Length must be a multiple of 4');
       }
@@ -45299,19 +45274,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // represent one byte
       // if there is only one, then the three characters before it represent 2 bytes
       // this is just a cheap hack to not do indexOf twice
-      return b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0;
-    }
+      placeHolders = b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0;
 
-    function byteLength(b64) {
       // base64 is 4/3 + up to two characters of the original data
-      return b64.length * 3 / 4 - placeHoldersCount(b64);
-    }
-
-    function toByteArray(b64) {
-      var i, j, l, tmp, placeHolders, arr;
-      var len = b64.length;
-      placeHolders = placeHoldersCount(b64);
-
       arr = new Arr(len * 3 / 4 - placeHolders);
 
       // if there are placeholders, only get up to the last complete 4 chars
@@ -48246,7 +48211,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./wordlists/en.json": 82, "assert": 78, "buffer": 115, "create-hash": 120, "pbkdf2": 179, "randombytes": 189, "unorm": 221 }], 82: [function (require, module, exports) {
+  }, { "./wordlists/en.json": 82, "assert": 78, "buffer": 115, "create-hash": 120, "pbkdf2": 179, "randombytes": 188, "unorm": 218 }], 82: [function (require, module, exports) {
     module.exports = ["abandon", "ability", "able", "about", "above", "absent", "absorb", "abstract", "absurd", "abuse", "access", "accident", "account", "accuse", "achieve", "acid", "acoustic", "acquire", "across", "act", "action", "actor", "actress", "actual", "adapt", "add", "addict", "address", "adjust", "admit", "adult", "advance", "advice", "aerobic", "affair", "afford", "afraid", "again", "age", "agent", "agree", "ahead", "aim", "air", "airport", "aisle", "alarm", "album", "alcohol", "alert", "alien", "all", "alley", "allow", "almost", "alone", "alpha", "already", "also", "alter", "always", "amateur", "amazing", "among", "amount", "amused", "analyst", "anchor", "ancient", "anger", "angle", "angry", "animal", "ankle", "announce", "annual", "another", "answer", "antenna", "antique", "anxiety", "any", "apart", "apology", "appear", "apple", "approve", "april", "arch", "arctic", "area", "arena", "argue", "arm", "armed", "armor", "army", "around", "arrange", "arrest", "arrive", "arrow", "art", "artefact", "artist", "artwork", "ask", "aspect", "assault", "asset", "assist", "assume", "asthma", "athlete", "atom", "attack", "attend", "attitude", "attract", "auction", "audit", "august", "aunt", "author", "auto", "autumn", "average", "avocado", "avoid", "awake", "aware", "away", "awesome", "awful", "awkward", "axis", "baby", "bachelor", "bacon", "badge", "bag", "balance", "balcony", "ball", "bamboo", "banana", "banner", "bar", "barely", "bargain", "barrel", "base", "basic", "basket", "battle", "beach", "bean", "beauty", "because", "become", "beef", "before", "begin", "behave", "behind", "believe", "below", "belt", "bench", "benefit", "best", "betray", "better", "between", "beyond", "bicycle", "bid", "bike", "bind", "biology", "bird", "birth", "bitter", "black", "blade", "blame", "blanket", "blast", "bleak", "bless", "blind", "blood", "blossom", "blouse", "blue", "blur", "blush", "board", "boat", "body", "boil", "bomb", "bone", "bonus", "book", "boost", "border", "boring", "borrow", "boss", "bottom", "bounce", "box", "boy", "bracket", "brain", "brand", "brass", "brave", "bread", "breeze", "brick", "bridge", "brief", "bright", "bring", "brisk", "broccoli", "broken", "bronze", "broom", "brother", "brown", "brush", "bubble", "buddy", "budget", "buffalo", "build", "bulb", "bulk", "bullet", "bundle", "bunker", "burden", "burger", "burst", "bus", "business", "busy", "butter", "buyer", "buzz", "cabbage", "cabin", "cable", "cactus", "cage", "cake", "call", "calm", "camera", "camp", "can", "canal", "cancel", "candy", "cannon", "canoe", "canvas", "canyon", "capable", "capital", "captain", "car", "carbon", "card", "cargo", "carpet", "carry", "cart", "case", "cash", "casino", "castle", "casual", "cat", "catalog", "catch", "category", "cattle", "caught", "cause", "caution", "cave", "ceiling", "celery", "cement", "census", "century", "cereal", "certain", "chair", "chalk", "champion", "change", "chaos", "chapter", "charge", "chase", "chat", "cheap", "check", "cheese", "chef", "cherry", "chest", "chicken", "chief", "child", "chimney", "choice", "choose", "chronic", "chuckle", "chunk", "churn", "cigar", "cinnamon", "circle", "citizen", "city", "civil", "claim", "clap", "clarify", "claw", "clay", "clean", "clerk", "clever", "click", "client", "cliff", "climb", "clinic", "clip", "clock", "clog", "close", "cloth", "cloud", "clown", "club", "clump", "cluster", "clutch", "coach", "coast", "coconut", "code", "coffee", "coil", "coin", "collect", "color", "column", "combine", "come", "comfort", "comic", "common", "company", "concert", "conduct", "confirm", "congress", "connect", "consider", "control", "convince", "cook", "cool", "copper", "copy", "coral", "core", "corn", "correct", "cost", "cotton", "couch", "country", "couple", "course", "cousin", "cover", "coyote", "crack", "cradle", "craft", "cram", "crane", "crash", "crater", "crawl", "crazy", "cream", "credit", "creek", "crew", "cricket", "crime", "crisp", "critic", "crop", "cross", "crouch", "crowd", "crucial", "cruel", "cruise", "crumble", "crunch", "crush", "cry", "crystal", "cube", "culture", "cup", "cupboard", "curious", "current", "curtain", "curve", "cushion", "custom", "cute", "cycle", "dad", "damage", "damp", "dance", "danger", "daring", "dash", "daughter", "dawn", "day", "deal", "debate", "debris", "decade", "december", "decide", "decline", "decorate", "decrease", "deer", "defense", "define", "defy", "degree", "delay", "deliver", "demand", "demise", "denial", "dentist", "deny", "depart", "depend", "deposit", "depth", "deputy", "derive", "describe", "desert", "design", "desk", "despair", "destroy", "detail", "detect", "develop", "device", "devote", "diagram", "dial", "diamond", "diary", "dice", "diesel", "diet", "differ", "digital", "dignity", "dilemma", "dinner", "dinosaur", "direct", "dirt", "disagree", "discover", "disease", "dish", "dismiss", "disorder", "display", "distance", "divert", "divide", "divorce", "dizzy", "doctor", "document", "dog", "doll", "dolphin", "domain", "donate", "donkey", "donor", "door", "dose", "double", "dove", "draft", "dragon", "drama", "drastic", "draw", "dream", "dress", "drift", "drill", "drink", "drip", "drive", "drop", "drum", "dry", "duck", "dumb", "dune", "during", "dust", "dutch", "duty", "dwarf", "dynamic", "eager", "eagle", "early", "earn", "earth", "easily", "east", "easy", "echo", "ecology", "economy", "edge", "edit", "educate", "effort", "egg", "eight", "either", "elbow", "elder", "electric", "elegant", "element", "elephant", "elevator", "elite", "else", "embark", "embody", "embrace", "emerge", "emotion", "employ", "empower", "empty", "enable", "enact", "end", "endless", "endorse", "enemy", "energy", "enforce", "engage", "engine", "enhance", "enjoy", "enlist", "enough", "enrich", "enroll", "ensure", "enter", "entire", "entry", "envelope", "episode", "equal", "equip", "era", "erase", "erode", "erosion", "error", "erupt", "escape", "essay", "essence", "estate", "eternal", "ethics", "evidence", "evil", "evoke", "evolve", "exact", "example", "excess", "exchange", "excite", "exclude", "excuse", "execute", "exercise", "exhaust", "exhibit", "exile", "exist", "exit", "exotic", "expand", "expect", "expire", "explain", "expose", "express", "extend", "extra", "eye", "eyebrow", "fabric", "face", "faculty", "fade", "faint", "faith", "fall", "false", "fame", "family", "famous", "fan", "fancy", "fantasy", "farm", "fashion", "fat", "fatal", "father", "fatigue", "fault", "favorite", "feature", "february", "federal", "fee", "feed", "feel", "female", "fence", "festival", "fetch", "fever", "few", "fiber", "fiction", "field", "figure", "file", "film", "filter", "final", "find", "fine", "finger", "finish", "fire", "firm", "first", "fiscal", "fish", "fit", "fitness", "fix", "flag", "flame", "flash", "flat", "flavor", "flee", "flight", "flip", "float", "flock", "floor", "flower", "fluid", "flush", "fly", "foam", "focus", "fog", "foil", "fold", "follow", "food", "foot", "force", "forest", "forget", "fork", "fortune", "forum", "forward", "fossil", "foster", "found", "fox", "fragile", "frame", "frequent", "fresh", "friend", "fringe", "frog", "front", "frost", "frown", "frozen", "fruit", "fuel", "fun", "funny", "furnace", "fury", "future", "gadget", "gain", "galaxy", "gallery", "game", "gap", "garage", "garbage", "garden", "garlic", "garment", "gas", "gasp", "gate", "gather", "gauge", "gaze", "general", "genius", "genre", "gentle", "genuine", "gesture", "ghost", "giant", "gift", "giggle", "ginger", "giraffe", "girl", "give", "glad", "glance", "glare", "glass", "glide", "glimpse", "globe", "gloom", "glory", "glove", "glow", "glue", "goat", "goddess", "gold", "good", "goose", "gorilla", "gospel", "gossip", "govern", "gown", "grab", "grace", "grain", "grant", "grape", "grass", "gravity", "great", "green", "grid", "grief", "grit", "grocery", "group", "grow", "grunt", "guard", "guess", "guide", "guilt", "guitar", "gun", "gym", "habit", "hair", "half", "hammer", "hamster", "hand", "happy", "harbor", "hard", "harsh", "harvest", "hat", "have", "hawk", "hazard", "head", "health", "heart", "heavy", "hedgehog", "height", "hello", "helmet", "help", "hen", "hero", "hidden", "high", "hill", "hint", "hip", "hire", "history", "hobby", "hockey", "hold", "hole", "holiday", "hollow", "home", "honey", "hood", "hope", "horn", "horror", "horse", "hospital", "host", "hotel", "hour", "hover", "hub", "huge", "human", "humble", "humor", "hundred", "hungry", "hunt", "hurdle", "hurry", "hurt", "husband", "hybrid", "ice", "icon", "idea", "identify", "idle", "ignore", "ill", "illegal", "illness", "image", "imitate", "immense", "immune", "impact", "impose", "improve", "impulse", "inch", "include", "income", "increase", "index", "indicate", "indoor", "industry", "infant", "inflict", "inform", "inhale", "inherit", "initial", "inject", "injury", "inmate", "inner", "innocent", "input", "inquiry", "insane", "insect", "inside", "inspire", "install", "intact", "interest", "into", "invest", "invite", "involve", "iron", "island", "isolate", "issue", "item", "ivory", "jacket", "jaguar", "jar", "jazz", "jealous", "jeans", "jelly", "jewel", "job", "join", "joke", "journey", "joy", "judge", "juice", "jump", "jungle", "junior", "junk", "just", "kangaroo", "keen", "keep", "ketchup", "key", "kick", "kid", "kidney", "kind", "kingdom", "kiss", "kit", "kitchen", "kite", "kitten", "kiwi", "knee", "knife", "knock", "know", "lab", "label", "labor", "ladder", "lady", "lake", "lamp", "language", "laptop", "large", "later", "latin", "laugh", "laundry", "lava", "law", "lawn", "lawsuit", "layer", "lazy", "leader", "leaf", "learn", "leave", "lecture", "left", "leg", "legal", "legend", "leisure", "lemon", "lend", "length", "lens", "leopard", "lesson", "letter", "level", "liar", "liberty", "library", "license", "life", "lift", "light", "like", "limb", "limit", "link", "lion", "liquid", "list", "little", "live", "lizard", "load", "loan", "lobster", "local", "lock", "logic", "lonely", "long", "loop", "lottery", "loud", "lounge", "love", "loyal", "lucky", "luggage", "lumber", "lunar", "lunch", "luxury", "lyrics", "machine", "mad", "magic", "magnet", "maid", "mail", "main", "major", "make", "mammal", "man", "manage", "mandate", "mango", "mansion", "manual", "maple", "marble", "march", "margin", "marine", "market", "marriage", "mask", "mass", "master", "match", "material", "math", "matrix", "matter", "maximum", "maze", "meadow", "mean", "measure", "meat", "mechanic", "medal", "media", "melody", "melt", "member", "memory", "mention", "menu", "mercy", "merge", "merit", "merry", "mesh", "message", "metal", "method", "middle", "midnight", "milk", "million", "mimic", "mind", "minimum", "minor", "minute", "miracle", "mirror", "misery", "miss", "mistake", "mix", "mixed", "mixture", "mobile", "model", "modify", "mom", "moment", "monitor", "monkey", "monster", "month", "moon", "moral", "more", "morning", "mosquito", "mother", "motion", "motor", "mountain", "mouse", "move", "movie", "much", "muffin", "mule", "multiply", "muscle", "museum", "mushroom", "music", "must", "mutual", "myself", "mystery", "myth", "naive", "name", "napkin", "narrow", "nasty", "nation", "nature", "near", "neck", "need", "negative", "neglect", "neither", "nephew", "nerve", "nest", "net", "network", "neutral", "never", "news", "next", "nice", "night", "noble", "noise", "nominee", "noodle", "normal", "north", "nose", "notable", "note", "nothing", "notice", "novel", "now", "nuclear", "number", "nurse", "nut", "oak", "obey", "object", "oblige", "obscure", "observe", "obtain", "obvious", "occur", "ocean", "october", "odor", "off", "offer", "office", "often", "oil", "okay", "old", "olive", "olympic", "omit", "once", "one", "onion", "online", "only", "open", "opera", "opinion", "oppose", "option", "orange", "orbit", "orchard", "order", "ordinary", "organ", "orient", "original", "orphan", "ostrich", "other", "outdoor", "outer", "output", "outside", "oval", "oven", "over", "own", "owner", "oxygen", "oyster", "ozone", "pact", "paddle", "page", "pair", "palace", "palm", "panda", "panel", "panic", "panther", "paper", "parade", "parent", "park", "parrot", "party", "pass", "patch", "path", "patient", "patrol", "pattern", "pause", "pave", "payment", "peace", "peanut", "pear", "peasant", "pelican", "pen", "penalty", "pencil", "people", "pepper", "perfect", "permit", "person", "pet", "phone", "photo", "phrase", "physical", "piano", "picnic", "picture", "piece", "pig", "pigeon", "pill", "pilot", "pink", "pioneer", "pipe", "pistol", "pitch", "pizza", "place", "planet", "plastic", "plate", "play", "please", "pledge", "pluck", "plug", "plunge", "poem", "poet", "point", "polar", "pole", "police", "pond", "pony", "pool", "popular", "portion", "position", "possible", "post", "potato", "pottery", "poverty", "powder", "power", "practice", "praise", "predict", "prefer", "prepare", "present", "pretty", "prevent", "price", "pride", "primary", "print", "priority", "prison", "private", "prize", "problem", "process", "produce", "profit", "program", "project", "promote", "proof", "property", "prosper", "protect", "proud", "provide", "public", "pudding", "pull", "pulp", "pulse", "pumpkin", "punch", "pupil", "puppy", "purchase", "purity", "purpose", "purse", "push", "put", "puzzle", "pyramid", "quality", "quantum", "quarter", "question", "quick", "quit", "quiz", "quote", "rabbit", "raccoon", "race", "rack", "radar", "radio", "rail", "rain", "raise", "rally", "ramp", "ranch", "random", "range", "rapid", "rare", "rate", "rather", "raven", "raw", "razor", "ready", "real", "reason", "rebel", "rebuild", "recall", "receive", "recipe", "record", "recycle", "reduce", "reflect", "reform", "refuse", "region", "regret", "regular", "reject", "relax", "release", "relief", "rely", "remain", "remember", "remind", "remove", "render", "renew", "rent", "reopen", "repair", "repeat", "replace", "report", "require", "rescue", "resemble", "resist", "resource", "response", "result", "retire", "retreat", "return", "reunion", "reveal", "review", "reward", "rhythm", "rib", "ribbon", "rice", "rich", "ride", "ridge", "rifle", "right", "rigid", "ring", "riot", "ripple", "risk", "ritual", "rival", "river", "road", "roast", "robot", "robust", "rocket", "romance", "roof", "rookie", "room", "rose", "rotate", "rough", "round", "route", "royal", "rubber", "rude", "rug", "rule", "run", "runway", "rural", "sad", "saddle", "sadness", "safe", "sail", "salad", "salmon", "salon", "salt", "salute", "same", "sample", "sand", "satisfy", "satoshi", "sauce", "sausage", "save", "say", "scale", "scan", "scare", "scatter", "scene", "scheme", "school", "science", "scissors", "scorpion", "scout", "scrap", "screen", "script", "scrub", "sea", "search", "season", "seat", "second", "secret", "section", "security", "seed", "seek", "segment", "select", "sell", "seminar", "senior", "sense", "sentence", "series", "service", "session", "settle", "setup", "seven", "shadow", "shaft", "shallow", "share", "shed", "shell", "sheriff", "shield", "shift", "shine", "ship", "shiver", "shock", "shoe", "shoot", "shop", "short", "shoulder", "shove", "shrimp", "shrug", "shuffle", "shy", "sibling", "sick", "side", "siege", "sight", "sign", "silent", "silk", "silly", "silver", "similar", "simple", "since", "sing", "siren", "sister", "situate", "six", "size", "skate", "sketch", "ski", "skill", "skin", "skirt", "skull", "slab", "slam", "sleep", "slender", "slice", "slide", "slight", "slim", "slogan", "slot", "slow", "slush", "small", "smart", "smile", "smoke", "smooth", "snack", "snake", "snap", "sniff", "snow", "soap", "soccer", "social", "sock", "soda", "soft", "solar", "soldier", "solid", "solution", "solve", "someone", "song", "soon", "sorry", "sort", "soul", "sound", "soup", "source", "south", "space", "spare", "spatial", "spawn", "speak", "special", "speed", "spell", "spend", "sphere", "spice", "spider", "spike", "spin", "spirit", "split", "spoil", "sponsor", "spoon", "sport", "spot", "spray", "spread", "spring", "spy", "square", "squeeze", "squirrel", "stable", "stadium", "staff", "stage", "stairs", "stamp", "stand", "start", "state", "stay", "steak", "steel", "stem", "step", "stereo", "stick", "still", "sting", "stock", "stomach", "stone", "stool", "story", "stove", "strategy", "street", "strike", "strong", "struggle", "student", "stuff", "stumble", "style", "subject", "submit", "subway", "success", "such", "sudden", "suffer", "sugar", "suggest", "suit", "summer", "sun", "sunny", "sunset", "super", "supply", "supreme", "sure", "surface", "surge", "surprise", "surround", "survey", "suspect", "sustain", "swallow", "swamp", "swap", "swarm", "swear", "sweet", "swift", "swim", "swing", "switch", "sword", "symbol", "symptom", "syrup", "system", "table", "tackle", "tag", "tail", "talent", "talk", "tank", "tape", "target", "task", "taste", "tattoo", "taxi", "teach", "team", "tell", "ten", "tenant", "tennis", "tent", "term", "test", "text", "thank", "that", "theme", "then", "theory", "there", "they", "thing", "this", "thought", "three", "thrive", "throw", "thumb", "thunder", "ticket", "tide", "tiger", "tilt", "timber", "time", "tiny", "tip", "tired", "tissue", "title", "toast", "tobacco", "today", "toddler", "toe", "together", "toilet", "token", "tomato", "tomorrow", "tone", "tongue", "tonight", "tool", "tooth", "top", "topic", "topple", "torch", "tornado", "tortoise", "toss", "total", "tourist", "toward", "tower", "town", "toy", "track", "trade", "traffic", "tragic", "train", "transfer", "trap", "trash", "travel", "tray", "treat", "tree", "trend", "trial", "tribe", "trick", "trigger", "trim", "trip", "trophy", "trouble", "truck", "true", "truly", "trumpet", "trust", "truth", "try", "tube", "tuition", "tumble", "tuna", "tunnel", "turkey", "turn", "turtle", "twelve", "twenty", "twice", "twin", "twist", "two", "type", "typical", "ugly", "umbrella", "unable", "unaware", "uncle", "uncover", "under", "undo", "unfair", "unfold", "unhappy", "uniform", "unique", "unit", "universe", "unknown", "unlock", "until", "unusual", "unveil", "update", "upgrade", "uphold", "upon", "upper", "upset", "urban", "urge", "usage", "use", "used", "useful", "useless", "usual", "utility", "vacant", "vacuum", "vague", "valid", "valley", "valve", "van", "vanish", "vapor", "various", "vast", "vault", "vehicle", "velvet", "vendor", "venture", "venue", "verb", "verify", "version", "very", "vessel", "veteran", "viable", "vibrant", "vicious", "victory", "video", "view", "village", "vintage", "violin", "virtual", "virus", "visa", "visit", "visual", "vital", "vivid", "vocal", "voice", "void", "volcano", "volume", "vote", "voyage", "wage", "wagon", "wait", "walk", "wall", "walnut", "want", "warfare", "warm", "warrior", "wash", "wasp", "waste", "water", "wave", "way", "wealth", "weapon", "wear", "weasel", "weather", "web", "wedding", "weekend", "weird", "welcome", "west", "wet", "whale", "what", "wheat", "wheel", "when", "where", "whip", "whisper", "wide", "width", "wife", "wild", "will", "win", "window", "wine", "wing", "wink", "winner", "winter", "wire", "wisdom", "wise", "wish", "witness", "wolf", "woman", "wonder", "wood", "wool", "word", "work", "world", "worry", "worth", "wrap", "wreck", "wrestle", "wrist", "write", "wrong", "yard", "year", "yellow", "you", "young", "youth", "zebra", "zero", "zone", "zoo"];
   }, {}], 83: [function (require, module, exports) {
     (function (Buffer) {
@@ -51764,7 +51729,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     } else {
       // Node.js or Web worker
       try {
-        var crypto = require('crypto');
+        var crypto = require('cry' + 'pto');
 
         Rand.prototype._rand = function _rand(n) {
           return crypto.randomBytes(n);
@@ -51779,7 +51744,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         };
       }
     }
-  }, { "crypto": 86 }], 86: [function (require, module, exports) {}, {}], 87: [function (require, module, exports) {
+  }, {}], 86: [function (require, module, exports) {}, {}], 87: [function (require, module, exports) {
     (function (Buffer) {
       // based on the aes implimentation in triple sec
       // https://github.com/keybase/triplesec
@@ -52973,7 +52938,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return r;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 84, "buffer": 115, "randombytes": 189 }], 106: [function (require, module, exports) {
+  }, { "bn.js": 84, "buffer": 115, "randombytes": 188 }], 106: [function (require, module, exports) {
     (function (Buffer) {
       var Sha3 = require('js-sha3');
 
@@ -53181,7 +53146,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         createVerify: createVerify
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./algos": 107, "./sign": 110, "./verify": 111, "buffer": 115, "create-hash": 120, "inherits": 167, "stream": 218 }], 109: [function (require, module, exports) {
+  }, { "./algos": 107, "./sign": 110, "./verify": 111, "buffer": 115, "create-hash": 120, "inherits": 167, "stream": 215 }], 109: [function (require, module, exports) {
     'use strict';
 
     exports['1.3.132.0.10'] = 'secp256k1';
@@ -53840,8 +53805,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       function assertSize(size) {
         if (typeof size !== 'number') {
           throw new TypeError('"size" argument must be a number');
-        } else if (size < 0) {
-          throw new RangeError('"size" argument must not be negative');
         }
       }
 
@@ -53903,20 +53866,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var length = byteLength(string, encoding) | 0;
         that = createBuffer(that, length);
 
-        var actual = that.write(string, encoding);
-
-        if (actual !== length) {
-          // Writing a hex string, for example, that contains invalid characters will
-          // cause everything after the first invalid character to be ignored. (e.g.
-          // 'abxxcd' will be treated as 'ab')
-          that = that.slice(0, actual);
-        }
-
+        that.write(string, encoding);
         return that;
       }
 
       function fromArrayLike(that, array) {
-        var length = array.length < 0 ? 0 : checked(array.length) | 0;
+        var length = checked(array.length) | 0;
         that = createBuffer(that, length);
         for (var i = 0; i < length; i += 1) {
           that[i] = array[i] & 255;
@@ -53984,7 +53939,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       function checked(length) {
-        // Note: cannot use `length < kMaxLength()` here because that fails when
+        // Note: cannot use `length < kMaxLength` here because that fails when
         // length is NaN (which is otherwise coerced to zero.)
         if (length >= kMaxLength()) {
           throw new RangeError('Attempt to allocate Buffer larger than maximum ' + 'size: 0x' + kMaxLength().toString(16) + ' bytes');
@@ -54033,9 +53988,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           case 'utf8':
           case 'utf-8':
           case 'ascii':
-          case 'latin1':
           case 'binary':
           case 'base64':
+          case 'raw':
           case 'ucs2':
           case 'ucs-2':
           case 'utf16le':
@@ -54095,8 +54050,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         for (;;) {
           switch (encoding) {
             case 'ascii':
-            case 'latin1':
             case 'binary':
+            case 'raw':
+            case 'raws':
               return len;
             case 'utf8':
             case 'utf-8':
@@ -54169,9 +54125,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             case 'ascii':
               return asciiSlice(this, start, end);
 
-            case 'latin1':
             case 'binary':
-              return latin1Slice(this, start, end);
+              return binarySlice(this, start, end);
 
             case 'base64':
               return base64Slice(this, start, end);
@@ -54219,20 +54174,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         for (var i = 0; i < len; i += 4) {
           swap(this, i, i + 3);
           swap(this, i + 1, i + 2);
-        }
-        return this;
-      };
-
-      Buffer.prototype.swap64 = function swap64() {
-        var len = this.length;
-        if (len % 8 !== 0) {
-          throw new RangeError('Buffer size must be a multiple of 64-bits');
-        }
-        for (var i = 0; i < len; i += 8) {
-          swap(this, i, i + 7);
-          swap(this, i + 1, i + 6);
-          swap(this, i + 2, i + 5);
-          swap(this, i + 3, i + 4);
         }
         return this;
       };
@@ -54319,70 +54260,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return 0;
       };
 
-      // Finds either the first index of `val` in `buffer` at offset >= `byteOffset`,
-      // OR the last index of `val` in `buffer` at offset <= `byteOffset`.
-      //
-      // Arguments:
-      // - buffer - a Buffer to search
-      // - val - a string, Buffer, or number
-      // - byteOffset - an index into `buffer`; will be clamped to an int32
-      // - encoding - an optional encoding, relevant is val is a string
-      // - dir - true for indexOf, false for lastIndexOf
-      function bidirectionalIndexOf(buffer, val, byteOffset, encoding, dir) {
-        // Empty buffer means no match
-        if (buffer.length === 0) return -1;
-
-        // Normalize byteOffset
-        if (typeof byteOffset === 'string') {
-          encoding = byteOffset;
-          byteOffset = 0;
-        } else if (byteOffset > 0x7fffffff) {
-          byteOffset = 0x7fffffff;
-        } else if (byteOffset < -0x80000000) {
-          byteOffset = -0x80000000;
-        }
-        byteOffset = +byteOffset; // Coerce to Number.
-        if (isNaN(byteOffset)) {
-          // byteOffset: it it's undefined, null, NaN, "foo", etc, search whole buffer
-          byteOffset = dir ? 0 : buffer.length - 1;
-        }
-
-        // Normalize byteOffset: negative offsets start from the end of the buffer
-        if (byteOffset < 0) byteOffset = buffer.length + byteOffset;
-        if (byteOffset >= buffer.length) {
-          if (dir) return -1;else byteOffset = buffer.length - 1;
-        } else if (byteOffset < 0) {
-          if (dir) byteOffset = 0;else return -1;
-        }
-
-        // Normalize val
-        if (typeof val === 'string') {
-          val = Buffer.from(val, encoding);
-        }
-
-        // Finally, search either indexOf (if dir is true) or lastIndexOf
-        if (Buffer.isBuffer(val)) {
-          // Special case: looking for empty string/buffer always fails
-          if (val.length === 0) {
-            return -1;
-          }
-          return arrayIndexOf(buffer, val, byteOffset, encoding, dir);
-        } else if (typeof val === 'number') {
-          val = val & 0xFF; // Search for a byte value [0-255]
-          if (Buffer.TYPED_ARRAY_SUPPORT && typeof Uint8Array.prototype.indexOf === 'function') {
-            if (dir) {
-              return Uint8Array.prototype.indexOf.call(buffer, val, byteOffset);
-            } else {
-              return Uint8Array.prototype.lastIndexOf.call(buffer, val, byteOffset);
-            }
-          }
-          return arrayIndexOf(buffer, [val], byteOffset, encoding, dir);
-        }
-
-        throw new TypeError('val must be string, number or Buffer');
-      }
-
-      function arrayIndexOf(arr, val, byteOffset, encoding, dir) {
+      function arrayIndexOf(arr, val, byteOffset, encoding) {
         var indexSize = 1;
         var arrLength = arr.length;
         var valLength = val.length;
@@ -54408,45 +54286,60 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }
 
-        var i;
-        if (dir) {
-          var foundIndex = -1;
-          for (i = byteOffset; i < arrLength; i++) {
-            if (read(arr, i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
-              if (foundIndex === -1) foundIndex = i;
-              if (i - foundIndex + 1 === valLength) return foundIndex * indexSize;
-            } else {
-              if (foundIndex !== -1) i -= i - foundIndex;
-              foundIndex = -1;
-            }
-          }
-        } else {
-          if (byteOffset + valLength > arrLength) byteOffset = arrLength - valLength;
-          for (i = byteOffset; i >= 0; i--) {
-            var found = true;
-            for (var j = 0; j < valLength; j++) {
-              if (read(arr, i + j) !== read(val, j)) {
-                found = false;
-                break;
-              }
-            }
-            if (found) return i;
+        var foundIndex = -1;
+        for (var i = byteOffset; i < arrLength; ++i) {
+          if (read(arr, i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
+            if (foundIndex === -1) foundIndex = i;
+            if (i - foundIndex + 1 === valLength) return foundIndex * indexSize;
+          } else {
+            if (foundIndex !== -1) i -= i - foundIndex;
+            foundIndex = -1;
           }
         }
 
         return -1;
       }
 
+      Buffer.prototype.indexOf = function indexOf(val, byteOffset, encoding) {
+        if (typeof byteOffset === 'string') {
+          encoding = byteOffset;
+          byteOffset = 0;
+        } else if (byteOffset > 0x7fffffff) {
+          byteOffset = 0x7fffffff;
+        } else if (byteOffset < -0x80000000) {
+          byteOffset = -0x80000000;
+        }
+        byteOffset >>= 0;
+
+        if (this.length === 0) return -1;
+        if (byteOffset >= this.length) return -1;
+
+        // Negative offsets start from the end of the buffer
+        if (byteOffset < 0) byteOffset = Math.max(this.length + byteOffset, 0);
+
+        if (typeof val === 'string') {
+          val = Buffer.from(val, encoding);
+        }
+
+        if (Buffer.isBuffer(val)) {
+          // special case: looking for empty string/buffer always fails
+          if (val.length === 0) {
+            return -1;
+          }
+          return arrayIndexOf(this, val, byteOffset, encoding);
+        }
+        if (typeof val === 'number') {
+          if (Buffer.TYPED_ARRAY_SUPPORT && Uint8Array.prototype.indexOf === 'function') {
+            return Uint8Array.prototype.indexOf.call(this, val, byteOffset);
+          }
+          return arrayIndexOf(this, [val], byteOffset, encoding);
+        }
+
+        throw new TypeError('val must be string, number or Buffer');
+      };
+
       Buffer.prototype.includes = function includes(val, byteOffset, encoding) {
         return this.indexOf(val, byteOffset, encoding) !== -1;
-      };
-
-      Buffer.prototype.indexOf = function indexOf(val, byteOffset, encoding) {
-        return bidirectionalIndexOf(this, val, byteOffset, encoding, true);
-      };
-
-      Buffer.prototype.lastIndexOf = function lastIndexOf(val, byteOffset, encoding) {
-        return bidirectionalIndexOf(this, val, byteOffset, encoding, false);
       };
 
       function hexWrite(buf, string, offset, length) {
@@ -54463,7 +54356,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         // must be an even number of digits
         var strLen = string.length;
-        if (strLen % 2 !== 0) throw new TypeError('Invalid hex string');
+        if (strLen % 2 !== 0) throw new Error('Invalid hex string');
 
         if (length > strLen / 2) {
           length = strLen / 2;
@@ -54484,7 +54377,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return blitBuffer(asciiToBytes(string), buf, offset, length);
       }
 
-      function latin1Write(buf, string, offset, length) {
+      function binaryWrite(buf, string, offset, length) {
         return asciiWrite(buf, string, offset, length);
       }
 
@@ -54544,9 +54437,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             case 'ascii':
               return asciiWrite(this, string, offset, length);
 
-            case 'latin1':
             case 'binary':
-              return latin1Write(this, string, offset, length);
+              return binaryWrite(this, string, offset, length);
 
             case 'base64':
               // Warning: maxLength not taken into account in base64Write
@@ -54681,7 +54573,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return ret;
       }
 
-      function latin1Slice(buf, start, end) {
+      function binarySlice(buf, start, end) {
         var ret = '';
         end = Math.min(buf.length, end);
 
@@ -55494,7 +55386,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return outData;
       };
 
-      CipherBase.prototype._toString = function (value, enc, fin) {
+      CipherBase.prototype._toString = function (value, enc, final) {
         if (!this._decoder) {
           this._decoder = new StringDecoder(enc);
           this._encoding = enc;
@@ -55503,13 +55395,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           throw new Error('can\'t switch encodings');
         }
         var out = this._decoder.write(value);
-        if (fin) {
+        if (final) {
           out += this._decoder.end();
         }
         return out;
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "inherits": 167, "stream": 218, "string_decoder": 220 }], 117: [function (require, module, exports) {
+  }, { "buffer": 115, "inherits": 167, "stream": 215, "string_decoder": 217 }], 117: [function (require, module, exports) {
     (function (Buffer) {
       var base58 = require('bs58');
       var createHash = require('create-hash');
@@ -55892,7 +55784,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new Hash(sha(alg));
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./md5": 122, "buffer": 115, "cipher-base": 116, "inherits": 167, "ripemd160": 201, "sha.js": 211 }], 121: [function (require, module, exports) {
+  }, { "./md5": 122, "buffer": 115, "cipher-base": 116, "inherits": 167, "ripemd160": 199, "sha.js": 208 }], 121: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -56148,7 +56040,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new Hmac(alg, key);
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "create-hash/browser": 120, "inherits": 167, "stream": 218 }], 124: [function (require, module, exports) {
+  }, { "buffer": 115, "create-hash/browser": 120, "inherits": 167, "stream": 215 }], 124: [function (require, module, exports) {
     'use strict';
 
     exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes');
@@ -56188,7 +56080,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         throw new Error(['sorry, ' + name + ' is not implemented yet', 'we accept pull requests', 'https://github.com/crypto-browserify/crypto-browserify'].join('\n'));
       };
     });
-  }, { "browserify-cipher": 102, "browserify-sign": 108, "browserify-sign/algos": 107, "create-ecdh": 119, "create-hash": 120, "create-hmac": 123, "diffie-hellman": 131, "pbkdf2": 179, "public-encrypt": 183, "randombytes": 189 }], 125: [function (require, module, exports) {
+  }, { "browserify-cipher": 102, "browserify-sign": 108, "browserify-sign/algos": 107, "create-ecdh": 119, "create-hash": 120, "create-hmac": 123, "diffie-hellman": 131, "pbkdf2": 179, "public-encrypt": 182, "randombytes": 188 }], 125: [function (require, module, exports) {
     'use strict';
 
     exports.utils = require('./des/utils');
@@ -56987,7 +56879,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./generatePrime": 133, "bn.js": 84, "buffer": 115, "miller-rabin": 173, "randombytes": 189 }], 133: [function (require, module, exports) {
+  }, { "./generatePrime": 133, "bn.js": 84, "buffer": 115, "miller-rabin": 173, "randombytes": 188 }], 133: [function (require, module, exports) {
     var randomBytes = require('randombytes');
     module.exports = findPrime;
     findPrime.simpleSieve = simpleSieve;
@@ -57085,7 +56977,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     }
-  }, { "bn.js": 84, "miller-rabin": 173, "randombytes": 189 }], 134: [function (require, module, exports) {
+  }, { "bn.js": 84, "miller-rabin": 173, "randombytes": 188 }], 134: [function (require, module, exports) {
     module.exports = {
       "modp1": {
         "gen": "02",
@@ -59246,13 +59138,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // 1.1. Let x = r + jn.
       if (isSecondKey) r = this.curve.pointFromX(r.add(this.curve.n), isYOdd);else r = this.curve.pointFromX(r, isYOdd);
 
-      var rInv = signature.r.invm(n);
-      var s1 = n.sub(e).mul(rInv).umod(n);
-      var s2 = s.mul(rInv).umod(n);
+      var eNeg = n.sub(e);
 
       // 1.6.1 Compute Q = r^-1 (sR -  eG)
       //               Q = r^-1 (sR + -eG)
-      return this.g.mulAdd(s1, r, s2);
+      var rInv = signature.r.invm(n);
+      return this.g.mulAdd(eNeg, r, s).mul(rInv);
     };
 
     EC.prototype.getKeyRecoveryParam = function (e, signature, Q, enc) {
@@ -60024,22 +59915,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     utils.intFromLE = intFromLE;
   }, { "bn.js": 84 }], 151: [function (require, module, exports) {
     module.exports = {
-      "_args": [["elliptic@^6.0.0", "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"]],
+      "_args": [["elliptic@^6.0.0", "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign"]],
       "_from": "elliptic@>=6.0.0 <7.0.0",
-      "_id": "elliptic@6.3.2",
+      "_id": "elliptic@6.3.1",
       "_inCache": true,
       "_installable": true,
       "_location": "/elliptic",
-      "_nodeVersion": "6.3.0",
+      "_nodeVersion": "6.0.0",
       "_npmOperationalInternal": {
         "host": "packages-16-east.internal.npmjs.com",
-        "tmp": "tmp/elliptic-6.3.2.tgz_1473938837205_0.3108903462998569"
+        "tmp": "tmp/elliptic-6.3.1.tgz_1465921413402_0.5202967382501811"
       },
       "_npmUser": {
         "email": "fedor@indutny.com",
         "name": "indutny"
       },
-      "_npmVersion": "3.10.3",
+      "_npmVersion": "3.8.6",
       "_phantomChildren": {},
       "_requested": {
         "name": "elliptic",
@@ -60050,11 +59941,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "type": "range"
       },
       "_requiredBy": ["/browserify-sign", "/create-ecdh", "/secp256k1"],
-      "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.2.tgz",
-      "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
+      "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.1.tgz",
+      "_shasum": "17781f2109ab0ec686b146bdcff5d2e8c6aeceda",
       "_shrinkwrap": null,
       "_spec": "elliptic@^6.0.0",
-      "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
+      "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign",
       "author": {
         "email": "fedor@indutny.com",
         "name": "Fedor Indutny"
@@ -60086,11 +59977,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       "directories": {},
       "dist": {
-        "shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
-        "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.2.tgz"
+        "shasum": "17781f2109ab0ec686b146bdcff5d2e8c6aeceda",
+        "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.1.tgz"
       },
       "files": ["lib"],
-      "gitHead": "cbace4683a4a548dc0306ef36756151a20299cd5",
+      "gitHead": "c53f5cf3d832c0073eb4a4ed423a464cbce68f3e",
       "homepage": "https://github.com/indutny/elliptic",
       "keywords": ["EC", "Elliptic", "curve", "Cryptography"],
       "license": "MIT",
@@ -60114,7 +60005,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "unit": "istanbul test _mocha --reporter=spec test/index.js",
         "version": "grunt dist && git add dist/"
       },
-      "version": "6.3.2"
+      "version": "6.3.1"
     };
   }, {}], 152: [function (require, module, exports) {
     module.exports = {
@@ -61310,7 +61201,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 78, "bn.js": 84, "buffer": 115, "create-hash": 120, "keccakjs": 171, "rlp": 202, "secp256k1": 204 }], 156: [function (require, module, exports) {
+  }, { "assert": 78, "bn.js": 84, "buffer": 115, "create-hash": 120, "keccakjs": 171, "rlp": 200, "secp256k1": 202 }], 156: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -62784,7 +62675,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       HDKey.HARDENED_OFFSET = HARDENED_OFFSET;
       module.exports = HDKey;
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 78, "buffer": 115, "coinstring": 117, "crypto": 124, "secp256k1": 204 }], 165: [function (require, module, exports) {
+  }, { "assert": 78, "buffer": 115, "coinstring": 117, "crypto": 124, "secp256k1": 202 }], 165: [function (require, module, exports) {
     exports.read = function (buffer, offset, isLE, mLen, nBytes) {
       var e, m;
       var eLen = nBytes * 8 - mLen - 1;
@@ -64874,40 +64765,49 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     }).call(this, require("buffer").Buffer);
   }, { "./aesid.json": 175, "./asn1": 176, "./fixProc": 177, "browserify-aes": 89, "buffer": 115, "pbkdf2": 179 }], 179: [function (require, module, exports) {
-    (function (process, Buffer) {
+    (function (Buffer) {
       var createHmac = require('create-hmac');
-      var checkParameters = require('./precondition');
+      var MAX_ALLOC = Math.pow(2, 30) - 1; // default in iojs
 
-      exports.pbkdf2 = function (password, salt, iterations, keylen, digest, callback) {
+      exports.pbkdf2 = pbkdf2;
+      function pbkdf2(password, salt, iterations, keylen, digest, callback) {
         if (typeof digest === 'function') {
           callback = digest;
           digest = undefined;
         }
 
-        checkParameters(iterations, keylen);
-        if (typeof callback !== 'function') throw new Error('No callback provided to pbkdf2');
+        if (typeof callback !== 'function') {
+          throw new Error('No callback provided to pbkdf2');
+        }
 
+        var result = pbkdf2Sync(password, salt, iterations, keylen, digest);
         setTimeout(function () {
-          callback(null, exports.pbkdf2Sync(password, salt, iterations, keylen, digest));
+          callback(undefined, result);
         });
-      };
-
-      var defaultEncoding;
-      if (process.browser) {
-        defaultEncoding = 'utf-8';
-      } else {
-        var pVersionMajor = parseInt(process.version.split('.')[0].slice(1), 10);
-
-        defaultEncoding = pVersionMajor >= 6 ? 'utf-8' : 'binary';
       }
 
-      exports.pbkdf2Sync = function (password, salt, iterations, keylen, digest) {
-        if (!Buffer.isBuffer(password)) password = new Buffer(password, defaultEncoding);
-        if (!Buffer.isBuffer(salt)) salt = new Buffer(salt, defaultEncoding);
+      exports.pbkdf2Sync = pbkdf2Sync;
+      function pbkdf2Sync(password, salt, iterations, keylen, digest) {
+        if (typeof iterations !== 'number') {
+          throw new TypeError('Iterations not a number');
+        }
 
-        checkParameters(iterations, keylen);
+        if (iterations < 0) {
+          throw new TypeError('Bad iterations');
+        }
+
+        if (typeof keylen !== 'number') {
+          throw new TypeError('Key length not a number');
+        }
+
+        if (keylen < 0 || keylen > MAX_ALLOC) {
+          throw new TypeError('Bad key length');
+        }
 
         digest = digest || 'sha1';
+
+        if (!Buffer.isBuffer(password)) password = new Buffer(password, 'binary');
+        if (!Buffer.isBuffer(salt)) salt = new Buffer(salt, 'binary');
 
         var hLen;
         var l = 1;
@@ -64933,6 +64833,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
           for (var j = 1; j < iterations; j++) {
             U = createHmac(digest, password).update(U).digest();
+
             for (var k = 0; k < hLen; k++) {
               T[k] ^= U[k];
             }
@@ -64944,29 +64845,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
 
         return DK;
-      };
-    }).call(this, require('_process'), require("buffer").Buffer);
-  }, { "./precondition": 180, "_process": 182, "buffer": 115, "create-hmac": 123 }], 180: [function (require, module, exports) {
-    var MAX_ALLOC = Math.pow(2, 30) - 1; // default in iojs
-    module.exports = function (iterations, keylen) {
-      if (typeof iterations !== 'number') {
-        throw new TypeError('Iterations not a number');
       }
-
-      if (iterations < 0) {
-        throw new TypeError('Bad iterations');
-      }
-
-      if (typeof keylen !== 'number') {
-        throw new TypeError('Key length not a number');
-      }
-
-      if (keylen < 0 || keylen > MAX_ALLOC || keylen !== keylen) {
-        /* eslint no-self-compare: 0 */
-        throw new TypeError('Bad key length');
-      }
-    };
-  }, {}], 181: [function (require, module, exports) {
+    }).call(this, require("buffer").Buffer);
+  }, { "buffer": 115, "create-hmac": 123 }], 180: [function (require, module, exports) {
     (function (process) {
       'use strict';
 
@@ -65010,7 +64891,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     }).call(this, require('_process'));
-  }, { "_process": 182 }], 182: [function (require, module, exports) {
+  }, { "_process": 181 }], 181: [function (require, module, exports) {
     // shim for using process in browser
     var process = module.exports = {};
 
@@ -65022,77 +64903,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var cachedSetTimeout;
     var cachedClearTimeout;
 
-    function defaultSetTimout() {
-      throw new Error('setTimeout has not been defined');
-    }
-    function defaultClearTimeout() {
-      throw new Error('clearTimeout has not been defined');
-    }
     (function () {
       try {
-        if (typeof setTimeout === 'function') {
-          cachedSetTimeout = setTimeout;
-        } else {
-          cachedSetTimeout = defaultSetTimout;
-        }
+        cachedSetTimeout = setTimeout;
       } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
+        cachedSetTimeout = function cachedSetTimeout() {
+          throw new Error('setTimeout is not defined');
+        };
       }
       try {
-        if (typeof clearTimeout === 'function') {
-          cachedClearTimeout = clearTimeout;
-        } else {
-          cachedClearTimeout = defaultClearTimeout;
-        }
+        cachedClearTimeout = clearTimeout;
       } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
+        cachedClearTimeout = function cachedClearTimeout() {
+          throw new Error('clearTimeout is not defined');
+        };
       }
     })();
     function runTimeout(fun) {
       if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
         return setTimeout(fun, 0);
-      }
-      // if setTimeout wasn't available but was latter defined
-      if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-      }
-      try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-      } catch (e) {
-        try {
-          // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-          return cachedSetTimeout.call(null, fun, 0);
-        } catch (e) {
-          // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-          return cachedSetTimeout.call(this, fun, 0);
-        }
+      } else {
+        return cachedSetTimeout.call(null, fun, 0);
       }
     }
     function runClearTimeout(marker) {
       if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-      }
-      // if clearTimeout wasn't available but was latter defined
-      if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-      }
-      try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-      } catch (e) {
-        try {
-          // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-          return cachedClearTimeout.call(null, marker);
-        } catch (e) {
-          // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-          // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-          return cachedClearTimeout.call(this, marker);
-        }
+        clearTimeout(marker);
+      } else {
+        cachedClearTimeout.call(null, marker);
       }
     }
     var queue = [];
@@ -65190,7 +65028,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     process.umask = function () {
       return 0;
     };
-  }, {}], 183: [function (require, module, exports) {
+  }, {}], 182: [function (require, module, exports) {
     exports.publicEncrypt = require('./publicEncrypt');
     exports.privateDecrypt = require('./privateDecrypt');
 
@@ -65201,7 +65039,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     exports.publicDecrypt = function publicDecrypt(key, buf) {
       return exports.privateDecrypt(key, buf, true);
     };
-  }, { "./privateDecrypt": 185, "./publicEncrypt": 186 }], 184: [function (require, module, exports) {
+  }, { "./privateDecrypt": 184, "./publicEncrypt": 185 }], 183: [function (require, module, exports) {
     (function (Buffer) {
       var createHash = require('create-hash');
       module.exports = function (seed, len) {
@@ -65221,7 +65059,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "create-hash": 120 }], 185: [function (require, module, exports) {
+  }, { "buffer": 115, "create-hash": 120 }], 184: [function (require, module, exports) {
     (function (Buffer) {
       var parseKeys = require('parse-asn1');
       var mgf = require('./mgf');
@@ -65332,7 +65170,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return dif;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./mgf": 184, "./withPublic": 187, "./xor": 188, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hash": 120, "parse-asn1": 178 }], 186: [function (require, module, exports) {
+  }, { "./mgf": 183, "./withPublic": 186, "./xor": 187, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hash": 120, "parse-asn1": 178 }], 185: [function (require, module, exports) {
     (function (Buffer) {
       var parseKeys = require('parse-asn1');
       var randomBytes = require('randombytes');
@@ -65430,7 +65268,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./mgf": 184, "./withPublic": 187, "./xor": 188, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hash": 120, "parse-asn1": 178, "randombytes": 189 }], 187: [function (require, module, exports) {
+  }, { "./mgf": 183, "./withPublic": 186, "./xor": 187, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hash": 120, "parse-asn1": 178, "randombytes": 188 }], 186: [function (require, module, exports) {
     (function (Buffer) {
       var bn = require('bn.js');
       function withPublic(paddedMsg, key) {
@@ -65439,7 +65277,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = withPublic;
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 84, "buffer": 115 }], 188: [function (require, module, exports) {
+  }, { "bn.js": 84, "buffer": 115 }], 187: [function (require, module, exports) {
     module.exports = function xor(a, b) {
       var len = a.length;
       var i = -1;
@@ -65448,7 +65286,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return a;
     };
-  }, {}], 189: [function (require, module, exports) {
+  }, {}], 188: [function (require, module, exports) {
     (function (process, global, Buffer) {
       'use strict';
 
@@ -65488,9 +65326,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return bytes;
       }
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer);
-  }, { "_process": 182, "buffer": 115 }], 190: [function (require, module, exports) {
+  }, { "_process": 181, "buffer": 115 }], 189: [function (require, module, exports) {
     module.exports = require("./lib/_stream_duplex.js");
-  }, { "./lib/_stream_duplex.js": 191 }], 191: [function (require, module, exports) {
+  }, { "./lib/_stream_duplex.js": 190 }], 190: [function (require, module, exports) {
     // a duplex stream is just a stream that is both readable and writable.
     // Since JS doesn't have multiple prototypal inheritance, this class
     // prototypally inherits from Readable, and then parasitically from
@@ -65566,7 +65404,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         f(xs[i], i);
       }
     }
-  }, { "./_stream_readable": 193, "./_stream_writable": 195, "core-util-is": 118, "inherits": 167, "process-nextick-args": 181 }], 192: [function (require, module, exports) {
+  }, { "./_stream_readable": 192, "./_stream_writable": 194, "core-util-is": 118, "inherits": 167, "process-nextick-args": 180 }], 191: [function (require, module, exports) {
     // a passthrough stream.
     // basically just the most minimal sort of Transform stream.
     // Every written chunk gets output as-is.
@@ -65593,7 +65431,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     PassThrough.prototype._transform = function (chunk, encoding, cb) {
       cb(null, chunk);
     };
-  }, { "./_stream_transform": 194, "core-util-is": 118, "inherits": 167 }], 193: [function (require, module, exports) {
+  }, { "./_stream_transform": 193, "core-util-is": 118, "inherits": 167 }], 192: [function (require, module, exports) {
     (function (process) {
       'use strict';
 
@@ -65648,21 +65486,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       /*</replacement>*/
 
-      var BufferList = require('./internal/streams/BufferList');
       var StringDecoder;
 
       util.inherits(Readable, Stream);
 
+      var hasPrependListener = typeof EE.prototype.prependListener === 'function';
+
       function prependListener(emitter, event, fn) {
-        if (typeof emitter.prependListener === 'function') {
-          return emitter.prependListener(event, fn);
-        } else {
-          // This is a hack to make sure that our error handler is attached before any
-          // userland ones.  NEVER DO THIS. This is here only because this code needs
-          // to continue to work with older versions of Node.js that do not include
-          // the prependListener() method. The goal is to eventually remove this hack.
-          if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
-        }
+        if (hasPrependListener) return emitter.prependListener(event, fn);
+
+        // This is a brutally ugly hack to make sure that our error handler
+        // is attached before any userland ones.  NEVER DO THIS. This is here
+        // only because this code needs to continue to work with older versions
+        // of Node.js that do not include the prependListener() method. The goal
+        // is to eventually remove this hack.
+        if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
       }
 
       var Duplex;
@@ -65686,10 +65524,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // cast to ints.
         this.highWaterMark = ~~this.highWaterMark;
 
-        // A linked list is used to store data chunks instead of an array because the
-        // linked list can remove elements from the beginning faster than
-        // array.shift()
-        this.buffer = new BufferList();
+        this.buffer = [];
         this.length = 0;
         this.pipes = null;
         this.pipesCount = 0;
@@ -65852,8 +65687,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (n >= MAX_HWM) {
           n = MAX_HWM;
         } else {
-          // Get the next highest power of 2 to prevent increasing hwm excessively in
-          // tiny amounts
+          // Get the next highest power of 2
           n--;
           n |= n >>> 1;
           n |= n >>> 2;
@@ -65865,34 +65699,44 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return n;
       }
 
-      // This function is designed to be inlinable, so please take care when making
-      // changes to the function body.
       function howMuchToRead(n, state) {
-        if (n <= 0 || state.length === 0 && state.ended) return 0;
-        if (state.objectMode) return 1;
-        if (n !== n) {
-          // Only flow one buffer at a time
-          if (state.flowing && state.length) return state.buffer.head.data.length;else return state.length;
+        if (state.length === 0 && state.ended) return 0;
+
+        if (state.objectMode) return n === 0 ? 0 : 1;
+
+        if (n === null || isNaN(n)) {
+          // only flow one buffer at a time
+          if (state.flowing && state.buffer.length) return state.buffer[0].length;else return state.length;
         }
-        // If we're asking for more than the current hwm, then raise the hwm.
+
+        if (n <= 0) return 0;
+
+        // If we're asking for more than the target buffer level,
+        // then raise the water mark.  Bump up to the next highest
+        // power of 2, to prevent increasing it excessively in tiny
+        // amounts.
         if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);
-        if (n <= state.length) return n;
-        // Don't have enough
-        if (!state.ended) {
-          state.needReadable = true;
-          return 0;
+
+        // don't have that much.  return null, unless we've ended.
+        if (n > state.length) {
+          if (!state.ended) {
+            state.needReadable = true;
+            return 0;
+          } else {
+            return state.length;
+          }
         }
-        return state.length;
+
+        return n;
       }
 
       // you can override either this method, or the async _read(n) below.
       Readable.prototype.read = function (n) {
         debug('read', n);
-        n = parseInt(n, 10);
         var state = this._readableState;
         var nOrig = n;
 
-        if (n !== 0) state.emittedReadable = false;
+        if (typeof n !== 'number' || n > 0) state.emittedReadable = false;
 
         // if we're doing read(0) to trigger a readable event, but we
         // already have a bunch of data in the buffer, then just trigger
@@ -65948,7 +65792,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (state.ended || state.reading) {
           doRead = false;
           debug('reading or ended', doRead);
-        } else if (doRead) {
+        }
+
+        if (doRead) {
           debug('do read');
           state.reading = true;
           state.sync = true;
@@ -65957,10 +65803,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           // call internal read method
           this._read(state.highWaterMark);
           state.sync = false;
-          // If _read pushed data synchronously, then `reading` will be false,
-          // and we need to re-evaluate how much data we can return to the user.
-          if (!state.reading) n = howMuchToRead(nOrig, state);
         }
+
+        // If _read pushed data synchronously, then `reading` will be false,
+        // and we need to re-evaluate how much data we can return to the user.
+        if (doRead && !state.reading) n = howMuchToRead(nOrig, state);
 
         var ret;
         if (n > 0) ret = fromList(n, state);else ret = null;
@@ -65968,18 +65815,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (ret === null) {
           state.needReadable = true;
           n = 0;
-        } else {
-          state.length -= n;
         }
 
-        if (state.length === 0) {
-          // If we have nothing in the buffer, then we want to know
-          // as soon as we *do* get something into the buffer.
-          if (!state.ended) state.needReadable = true;
+        state.length -= n;
 
-          // If we tried to read() past the EOF, then emit end on the next tick.
-          if (nOrig !== n && state.ended) endReadable(this);
-        }
+        // If we have nothing in the buffer, then we want to know
+        // as soon as we *do* get something into the buffer.
+        if (state.length === 0 && !state.ended) state.needReadable = true;
+
+        // If we tried to read() past the EOF, then emit end on the next tick.
+        if (nOrig !== n && state.ended && state.length === 0) endReadable(this);
 
         if (ret !== null) this.emit('data', ret);
 
@@ -66127,17 +65972,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();
         }
 
-        // If the user pushes more data while we're writing to dest then we'll end up
-        // in ondata again. However, we only want to increase awaitDrain once because
-        // dest will only emit one 'drain' event for the multiple writes.
-        // => Introduce a guard on increasing awaitDrain.
-        var increasedAwaitDrain = false;
         src.on('data', ondata);
         function ondata(chunk) {
           debug('ondata');
-          increasedAwaitDrain = false;
           var ret = dest.write(chunk);
-          if (false === ret && !increasedAwaitDrain) {
+          if (false === ret) {
             // If the user unpiped during `dest.write()`, it is possible
             // to get stuck in a permanently paused state if that write
             // also returned false.
@@ -66145,7 +65984,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {
               debug('false write response, pause', src._readableState.awaitDrain);
               src._readableState.awaitDrain++;
-              increasedAwaitDrain = true;
             }
             src.pause();
           }
@@ -66259,14 +66097,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       Readable.prototype.on = function (ev, fn) {
         var res = Stream.prototype.on.call(this, ev, fn);
 
-        if (ev === 'data') {
-          // Start flowing on next tick if stream isn't explicitly paused
-          if (this._readableState.flowing !== false) this.resume();
-        } else if (ev === 'readable') {
+        // If listening to data, and it has not explicitly been paused,
+        // then call resume to start the flow of data on the next tick.
+        if (ev === 'data' && false !== this._readableState.flowing) {
+          this.resume();
+        }
+
+        if (ev === 'readable' && !this._readableState.endEmitted) {
           var state = this._readableState;
-          if (!state.endEmitted && !state.readableListening) {
-            state.readableListening = state.needReadable = true;
+          if (!state.readableListening) {
+            state.readableListening = true;
             state.emittedReadable = false;
+            state.needReadable = true;
             if (!state.reading) {
               processNextTick(nReadingNextTick, this);
             } else if (state.length) {
@@ -66310,7 +66152,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
 
         state.resumeScheduled = false;
-        state.awaitDrain = 0;
         stream.emit('resume');
         flow(stream);
         if (state.flowing && !state.reading) stream.read(0);
@@ -66329,7 +66170,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       function flow(stream) {
         var state = stream._readableState;
         debug('flow', state.flowing);
-        while (state.flowing && stream.read() !== null) {}
+        if (state.flowing) {
+          do {
+            var chunk = stream.read();
+          } while (null !== chunk && state.flowing);
+        }
       }
 
       // wrap an old-style stream as the async data source.
@@ -66400,101 +66245,50 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       // Pluck off n bytes from an array of buffers.
       // Length is the combined lengths of all the buffers in the list.
-      // This function is designed to be inlinable, so please take care when making
-      // changes to the function body.
       function fromList(n, state) {
-        // nothing buffered
-        if (state.length === 0) return null;
-
+        var list = state.buffer;
+        var length = state.length;
+        var stringMode = !!state.decoder;
+        var objectMode = !!state.objectMode;
         var ret;
-        if (state.objectMode) ret = state.buffer.shift();else if (!n || n >= state.length) {
-          // read it all, truncate the list
-          if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.head.data;else ret = state.buffer.concat(state.length);
-          state.buffer.clear();
+
+        // nothing in the list, definitely empty.
+        if (list.length === 0) return null;
+
+        if (length === 0) ret = null;else if (objectMode) ret = list.shift();else if (!n || n >= length) {
+          // read it all, truncate the array.
+          if (stringMode) ret = list.join('');else if (list.length === 1) ret = list[0];else ret = Buffer.concat(list, length);
+          list.length = 0;
         } else {
-          // read part of list
-          ret = fromListPartial(n, state.buffer, state.decoder);
-        }
+          // read just some of it.
+          if (n < list[0].length) {
+            // just take a part of the first list item.
+            // slice is the same for buffers and strings.
+            var buf = list[0];
+            ret = buf.slice(0, n);
+            list[0] = buf.slice(n);
+          } else if (n === list[0].length) {
+            // first list is a perfect match
+            ret = list.shift();
+          } else {
+            // complex case.
+            // we have enough to cover it, but it spans past the first buffer.
+            if (stringMode) ret = '';else ret = bufferShim.allocUnsafe(n);
 
-        return ret;
-      }
+            var c = 0;
+            for (var i = 0, l = list.length; i < l && c < n; i++) {
+              var _buf = list[0];
+              var cpy = Math.min(n - c, _buf.length);
 
-      // Extracts only enough buffered data to satisfy the amount requested.
-      // This function is designed to be inlinable, so please take care when making
-      // changes to the function body.
-      function fromListPartial(n, list, hasStrings) {
-        var ret;
-        if (n < list.head.data.length) {
-          // slice is the same for buffers and strings
-          ret = list.head.data.slice(0, n);
-          list.head.data = list.head.data.slice(n);
-        } else if (n === list.head.data.length) {
-          // first chunk is a perfect match
-          ret = list.shift();
-        } else {
-          // result spans more than one buffer
-          ret = hasStrings ? copyFromBufferString(n, list) : copyFromBuffer(n, list);
-        }
-        return ret;
-      }
+              if (stringMode) ret += _buf.slice(0, cpy);else _buf.copy(ret, c, 0, cpy);
 
-      // Copies a specified amount of characters from the list of buffered data
-      // chunks.
-      // This function is designed to be inlinable, so please take care when making
-      // changes to the function body.
-      function copyFromBufferString(n, list) {
-        var p = list.head;
-        var c = 1;
-        var ret = p.data;
-        n -= ret.length;
-        while (p = p.next) {
-          var str = p.data;
-          var nb = n > str.length ? str.length : n;
-          if (nb === str.length) ret += str;else ret += str.slice(0, n);
-          n -= nb;
-          if (n === 0) {
-            if (nb === str.length) {
-              ++c;
-              if (p.next) list.head = p.next;else list.head = list.tail = null;
-            } else {
-              list.head = p;
-              p.data = str.slice(nb);
+              if (cpy < _buf.length) list[0] = _buf.slice(cpy);else list.shift();
+
+              c += cpy;
             }
-            break;
           }
-          ++c;
         }
-        list.length -= c;
-        return ret;
-      }
 
-      // Copies a specified amount of bytes from the list of buffered data chunks.
-      // This function is designed to be inlinable, so please take care when making
-      // changes to the function body.
-      function copyFromBuffer(n, list) {
-        var ret = bufferShim.allocUnsafe(n);
-        var p = list.head;
-        var c = 1;
-        p.data.copy(ret);
-        n -= p.data.length;
-        while (p = p.next) {
-          var buf = p.data;
-          var nb = n > buf.length ? buf.length : n;
-          buf.copy(ret, ret.length - n, 0, nb);
-          n -= nb;
-          if (n === 0) {
-            if (nb === buf.length) {
-              ++c;
-              if (p.next) list.head = p.next;else list.head = list.tail = null;
-            } else {
-              list.head = p;
-              p.data = buf.slice(nb);
-            }
-            break;
-          }
-          ++c;
-        }
-        list.length -= c;
         return ret;
       }
 
@@ -66533,7 +66327,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return -1;
       }
     }).call(this, require('_process'));
-  }, { "./_stream_duplex": 191, "./internal/streams/BufferList": 196, "_process": 182, "buffer": 115, "buffer-shims": 113, "core-util-is": 118, "events": 156, "inherits": 167, "isarray": 169, "process-nextick-args": 181, "string_decoder/": 220, "util": 86 }], 194: [function (require, module, exports) {
+  }, { "./_stream_duplex": 190, "_process": 181, "buffer": 115, "buffer-shims": 113, "core-util-is": 118, "events": 156, "inherits": 167, "isarray": 169, "process-nextick-args": 180, "string_decoder/": 217, "util": 86 }], 193: [function (require, module, exports) {
     // a transform stream is a readable/writable stream where you do
     // something with the data.  Sometimes it's called a "filter",
     // but that's not a great name for it, since that implies a thing where
@@ -66714,7 +66508,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return stream.push(null);
     }
-  }, { "./_stream_duplex": 191, "core-util-is": 118, "inherits": 167 }], 195: [function (require, module, exports) {
+  }, { "./_stream_duplex": 190, "core-util-is": 118, "inherits": 167 }], 194: [function (require, module, exports) {
     (function (process) {
       // A bit simpler than readable streams.
       // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -67243,74 +67037,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         };
       }
     }).call(this, require('_process'));
-  }, { "./_stream_duplex": 191, "_process": 182, "buffer": 115, "buffer-shims": 113, "core-util-is": 118, "events": 156, "inherits": 167, "process-nextick-args": 181, "util-deprecate": 222 }], 196: [function (require, module, exports) {
-    'use strict';
-
-    var Buffer = require('buffer').Buffer;
-    /*<replacement>*/
-    var bufferShim = require('buffer-shims');
-    /*</replacement>*/
-
-    module.exports = BufferList;
-
-    function BufferList() {
-      this.head = null;
-      this.tail = null;
-      this.length = 0;
-    }
-
-    BufferList.prototype.push = function (v) {
-      var entry = { data: v, next: null };
-      if (this.length > 0) this.tail.next = entry;else this.head = entry;
-      this.tail = entry;
-      ++this.length;
-    };
-
-    BufferList.prototype.unshift = function (v) {
-      var entry = { data: v, next: this.head };
-      if (this.length === 0) this.tail = entry;
-      this.head = entry;
-      ++this.length;
-    };
-
-    BufferList.prototype.shift = function () {
-      if (this.length === 0) return;
-      var ret = this.head.data;
-      if (this.length === 1) this.head = this.tail = null;else this.head = this.head.next;
-      --this.length;
-      return ret;
-    };
-
-    BufferList.prototype.clear = function () {
-      this.head = this.tail = null;
-      this.length = 0;
-    };
-
-    BufferList.prototype.join = function (s) {
-      if (this.length === 0) return '';
-      var p = this.head;
-      var ret = '' + p.data;
-      while (p = p.next) {
-        ret += s + p.data;
-      }return ret;
-    };
-
-    BufferList.prototype.concat = function (n) {
-      if (this.length === 0) return bufferShim.alloc(0);
-      if (this.length === 1) return this.head.data;
-      var ret = bufferShim.allocUnsafe(n >>> 0);
-      var p = this.head;
-      var i = 0;
-      while (p) {
-        p.data.copy(ret, i);
-        i += p.data.length;
-        p = p.next;
-      }
-      return ret;
-    };
-  }, { "buffer": 115, "buffer-shims": 113 }], 197: [function (require, module, exports) {
+  }, { "./_stream_duplex": 190, "_process": 181, "buffer": 115, "buffer-shims": 113, "core-util-is": 118, "events": 156, "inherits": 167, "process-nextick-args": 180, "util-deprecate": 219 }], 195: [function (require, module, exports) {
     module.exports = require("./lib/_stream_passthrough.js");
-  }, { "./lib/_stream_passthrough.js": 192 }], 198: [function (require, module, exports) {
+  }, { "./lib/_stream_passthrough.js": 191 }], 196: [function (require, module, exports) {
     (function (process) {
       var Stream = function () {
         try {
@@ -67329,11 +67058,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         module.exports = Stream;
       }
     }).call(this, require('_process'));
-  }, { "./lib/_stream_duplex.js": 191, "./lib/_stream_passthrough.js": 192, "./lib/_stream_readable.js": 193, "./lib/_stream_transform.js": 194, "./lib/_stream_writable.js": 195, "_process": 182 }], 199: [function (require, module, exports) {
+  }, { "./lib/_stream_duplex.js": 190, "./lib/_stream_passthrough.js": 191, "./lib/_stream_readable.js": 192, "./lib/_stream_transform.js": 193, "./lib/_stream_writable.js": 194, "_process": 181 }], 197: [function (require, module, exports) {
     module.exports = require("./lib/_stream_transform.js");
-  }, { "./lib/_stream_transform.js": 194 }], 200: [function (require, module, exports) {
+  }, { "./lib/_stream_transform.js": 193 }], 198: [function (require, module, exports) {
     module.exports = require("./lib/_stream_writable.js");
-  }, { "./lib/_stream_writable.js": 195 }], 201: [function (require, module, exports) {
+  }, { "./lib/_stream_writable.js": 194 }], 199: [function (require, module, exports) {
     (function (Buffer) {
       /*
       CryptoJS v3.1.2
@@ -67517,7 +67246,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = ripemd160;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 202: [function (require, module, exports) {
+  }, { "buffer": 115 }], 200: [function (require, module, exports) {
     (function (Buffer) {
       var assert = require('assert');
       /**
@@ -67749,7 +67478,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return v;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 78, "buffer": 115 }], 203: [function (require, module, exports) {
+  }, { "assert": 78, "buffer": 115 }], 201: [function (require, module, exports) {
     (function (Buffer) {
       var crypto = require('crypto');
       /* eslint-disable camelcase */
@@ -67932,11 +67661,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = scrypt;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "crypto": 124 }], 204: [function (require, module, exports) {
+  }, { "buffer": 115, "crypto": 124 }], 202: [function (require, module, exports) {
     'use strict';
 
     module.exports = require('./lib')(require('./lib/elliptic'));
-  }, { "./lib": 208, "./lib/elliptic": 207 }], 205: [function (require, module, exports) {
+  }, { "./lib": 205, "./lib/elliptic": 204 }], 203: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -67984,175 +67713,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (number <= x || number >= y) throw RangeError(message);
       };
     }).call(this, { "isBuffer": require("../../is-buffer/index.js") });
-  }, { "../../is-buffer/index.js": 168 }], 206: [function (require, module, exports) {
-    (function (Buffer) {
-      'use strict';
-
-      var bip66 = require('bip66');
-
-      var EC_PRIVKEY_EXPORT_DER_COMPRESSED = new Buffer([
-      // begin
-      0x30, 0x81, 0xd3, 0x02, 0x01, 0x01, 0x04, 0x20,
-      // private key
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      // middle
-      0xa0, 0x81, 0x85, 0x30, 0x81, 0x82, 0x02, 0x01, 0x01, 0x30, 0x2c, 0x06, 0x07, 0x2a, 0x86, 0x48, 0xcE, 0x3d, 0x01, 0x01, 0x02, 0x21, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfE, 0xff, 0xff, 0xfc, 0x2f, 0x30, 0x06, 0x04, 0x01, 0x00, 0x04, 0x01, 0x07, 0x04, 0x21, 0x02, 0x79, 0xbE, 0x66, 0x7E, 0xf9, 0xdc, 0xbb, 0xac, 0x55, 0xa0, 0x62, 0x95, 0xcE, 0x87, 0x0b, 0x07, 0x02, 0x9b, 0xfc, 0xdb, 0x2d, 0xcE, 0x28, 0xd9, 0x59, 0xf2, 0x81, 0x5b, 0x16, 0xf8, 0x17, 0x98, 0x02, 0x21, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfE, 0xba, 0xaE, 0xdc, 0xE6, 0xaf, 0x48, 0xa0, 0x3b, 0xbf, 0xd2, 0x5E, 0x8c, 0xd0, 0x36, 0x41, 0x41, 0x02, 0x01, 0x01, 0xa1, 0x24, 0x03, 0x22, 0x00,
-      // public key
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
-
-      var EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED = new Buffer([
-      // begin
-      0x30, 0x82, 0x01, 0x13, 0x02, 0x01, 0x01, 0x04, 0x20,
-      // private key
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-      // middle
-      0xa0, 0x81, 0xa5, 0x30, 0x81, 0xa2, 0x02, 0x01, 0x01, 0x30, 0x2c, 0x06, 0x07, 0x2a, 0x86, 0x48, 0xcE, 0x3d, 0x01, 0x01, 0x02, 0x21, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfE, 0xff, 0xff, 0xfc, 0x2f, 0x30, 0x06, 0x04, 0x01, 0x00, 0x04, 0x01, 0x07, 0x04, 0x41, 0x04, 0x79, 0xbE, 0x66, 0x7E, 0xf9, 0xdc, 0xbb, 0xac, 0x55, 0xa0, 0x62, 0x95, 0xcE, 0x87, 0x0b, 0x07, 0x02, 0x9b, 0xfc, 0xdb, 0x2d, 0xcE, 0x28, 0xd9, 0x59, 0xf2, 0x81, 0x5b, 0x16, 0xf8, 0x17, 0x98, 0x48, 0x3a, 0xda, 0x77, 0x26, 0xa3, 0xc4, 0x65, 0x5d, 0xa4, 0xfb, 0xfc, 0x0E, 0x11, 0x08, 0xa8, 0xfd, 0x17, 0xb4, 0x48, 0xa6, 0x85, 0x54, 0x19, 0x9c, 0x47, 0xd0, 0x8f, 0xfb, 0x10, 0xd4, 0xb8, 0x02, 0x21, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfE, 0xba, 0xaE, 0xdc, 0xE6, 0xaf, 0x48, 0xa0, 0x3b, 0xbf, 0xd2, 0x5E, 0x8c, 0xd0, 0x36, 0x41, 0x41, 0x02, 0x01, 0x01, 0xa1, 0x44, 0x03, 0x42, 0x00,
-      // public key
-      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
-
-      var ZERO_BUFFER_32 = new Buffer([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
-
-      exports.privateKeyExport = function (privateKey, publicKey, compressed) {
-        var result = new Buffer(compressed ? EC_PRIVKEY_EXPORT_DER_COMPRESSED : EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED);
-        privateKey.copy(result, compressed ? 8 : 9);
-        publicKey.copy(result, compressed ? 181 : 214);
-        return result;
-      };
-
-      exports.privateKeyImport = function (privateKey) {
-        var length = privateKey.length;
-
-        // sequence header
-        var index = 0;
-        if (length < index + 1 || privateKey[index] !== 0x30) return;
-        index += 1;
-
-        // sequence length constructor
-        if (length < index + 1 || !(privateKey[index] & 0x80)) return;
-
-        var lenb = privateKey[index] & 0x7f;
-        index += 1;
-        if (lenb < 1 || lenb > 2) return;
-        if (length < index + lenb) return;
-
-        // sequence length
-        var len = privateKey[index + lenb - 1] | (lenb > 1 ? privateKey[index + lenb - 2] << 8 : 0);
-        index += lenb;
-        if (length < index + len) return;
-
-        // sequence element 0: version number (=1)
-        if (length < index + 3 || privateKey[index] !== 0x02 || privateKey[index + 1] !== 0x01 || privateKey[index + 2] !== 0x01) {
-          return;
-        }
-        index += 3;
-
-        // sequence element 1: octet string, up to 32 bytes
-        if (length < index + 2 || privateKey[index] !== 0x04 || privateKey[index + 1] > 0x20 || length < index + 2 + privateKey[index + 1]) {
-          return;
-        }
-
-        return privateKey.slice(index + 2, index + 2 + privateKey[index + 1]);
-      };
-
-      exports.signatureExport = function (sigObj) {
-        var r = Buffer.concat([new Buffer([0]), sigObj.r]);
-        for (var lenR = 33, posR = 0; lenR > 1 && r[posR] === 0x00 && !(r[posR + 1] & 0x80); --lenR, ++posR) {}
-
-        var s = Buffer.concat([new Buffer([0]), sigObj.s]);
-        for (var lenS = 33, posS = 0; lenS > 1 && s[posS] === 0x00 && !(s[posS + 1] & 0x80); --lenS, ++posS) {}
-
-        return bip66.encode(r.slice(posR), s.slice(posS));
-      };
-
-      exports.signatureImport = function (sig) {
-        var r = new Buffer(ZERO_BUFFER_32);
-        var s = new Buffer(ZERO_BUFFER_32);
-
-        try {
-          var sigObj = bip66.decode(sig);
-          if (sigObj.r.length === 33 && sigObj.r[0] === 0x00) sigObj.r = sigObj.r.slice(1);
-          if (sigObj.r.length > 32) throw new Error('R length is too long');
-          if (sigObj.s.length === 33 && sigObj.s[0] === 0x00) sigObj.s = sigObj.s.slice(1);
-          if (sigObj.s.length > 32) throw new Error('S length is too long');
-        } catch (err) {
-          return;
-        }
-
-        sigObj.r.copy(r, 32 - sigObj.r.length);
-        sigObj.s.copy(s, 32 - sigObj.s.length);
-
-        return { r: r, s: s };
-      };
-
-      exports.signatureImportLax = function (sig) {
-        var r = new Buffer(ZERO_BUFFER_32);
-        var s = new Buffer(ZERO_BUFFER_32);
-
-        var length = sig.length;
-        var index = 0;
-
-        // sequence tag byte
-        if (sig[index++] !== 0x30) return;
-
-        // sequence length byte
-        var lenbyte = sig[index++];
-        if (lenbyte & 0x80) {
-          index += lenbyte - 0x80;
-          if (index > length) return;
-        }
-
-        // sequence tag byte for r
-        if (sig[index++] !== 0x02) return;
-
-        // length for r
-        var rlen = sig[index++];
-        if (rlen & 0x80) {
-          lenbyte = rlen - 0x80;
-          if (index + lenbyte > length) return;
-          for (; lenbyte > 0 && sig[index] === 0x00; index += 1, lenbyte -= 1) {}
-          for (rlen = 0; lenbyte > 0; index += 1, lenbyte -= 1) {
-            rlen = (rlen << 8) + sig[index];
-          }
-        }
-        if (rlen > length - index) return;
-        var rindex = index;
-        index += rlen;
-
-        // sequence tag byte for s
-        if (sig[index++] !== 0x02) return;
-
-        // length for s
-        var slen = sig[index++];
-        if (slen & 0x80) {
-          lenbyte = slen - 0x80;
-          if (index + lenbyte > length) return;
-          for (; lenbyte > 0 && sig[index] === 0x00; index += 1, lenbyte -= 1) {}
-          for (slen = 0; lenbyte > 0; index += 1, lenbyte -= 1) {
-            slen = (slen << 8) + sig[index];
-          }
-        }
-        if (slen > length - index) return;
-        var sindex = index;
-        index += slen;
-
-        // ignore leading zeros in r
-        for (; rlen > 0 && sig[rindex] === 0x00; rlen -= 1, rindex += 1) {}
-        // copy r value
-        if (rlen > 32) return;
-        var rvalue = sig.slice(rindex, rindex + rlen);
-        rvalue.copy(r, 32 - rvalue.length);
-
-        // ignore leading zeros in s
-        for (; slen > 0 && sig[sindex] === 0x00; slen -= 1, sindex += 1) {}
-        // copy s value
-        if (slen > 32) return;
-        var svalue = sig.slice(sindex, sindex + slen);
-        svalue.copy(s, 32 - svalue.length);
-
-        return { r: r, s: s };
-      };
-    }).call(this, require("buffer").Buffer);
-  }, { "bip66": 83, "buffer": 115 }], 207: [function (require, module, exports) {
+  }, { "../../is-buffer/index.js": 168 }], 204: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -68398,240 +67959,317 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new Buffer(pair.pub.mul(scalar).encode(true, compressed));
       };
     }).call(this, require("buffer").Buffer);
-  }, { "../messages.json": 209, "bn.js": 84, "buffer": 115, "create-hash": 120, "elliptic": 135 }], 208: [function (require, module, exports) {
-    'use strict';
+  }, { "../messages.json": 206, "bn.js": 84, "buffer": 115, "create-hash": 120, "elliptic": 135 }], 205: [function (require, module, exports) {
+    (function (Buffer) {
+      'use strict';
 
-    var assert = require('./assert');
-    var der = require('./der');
-    var messages = require('./messages.json');
+      var bip66 = require('bip66');
 
-    function initCompressedValue(value, defaultValue) {
-      if (value === undefined) return defaultValue;
+      var assert = require('./assert');
+      var messages = require('./messages.json');
 
-      assert.isBoolean(value, messages.COMPRESSED_TYPE_INVALID);
-      return value;
-    }
+      var EC_PRIVKEY_EXPORT_DER_COMPRESSED_BEGIN = new Buffer('3081d30201010420', 'hex');
+      var EC_PRIVKEY_EXPORT_DER_COMPRESSED_MIDDLE = new Buffer('a08185308182020101302c06072a8648ce3d0101022100fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f300604010004010704210279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798022100fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141020101a124032200', 'hex');
+      var EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_BEGIN = new Buffer('308201130201010420', 'hex');
+      var EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_MIDDLE = new Buffer('a081a53081a2020101302c06072a8648ce3d0101022100fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f300604010004010704410479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8022100fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141020101a144034200', 'hex');
 
-    module.exports = function (secp256k1) {
-      return {
-        privateKeyVerify: function privateKeyVerify(privateKey) {
-          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-          return privateKey.length === 32 && secp256k1.privateKeyVerify(privateKey);
-        },
+      var ZERO_BUFFER_32 = new Buffer('0000000000000000000000000000000000000000000000000000000000000000', 'hex');
 
-        privateKeyExport: function privateKeyExport(privateKey, compressed) {
-          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+      function initCompressedValue(value, defaultValue) {
+        if (value === undefined) return defaultValue;
 
-          compressed = initCompressedValue(compressed, true);
-          var publicKey = secp256k1.privateKeyExport(privateKey, compressed);
+        assert.isBoolean(value, messages.COMPRESSED_TYPE_INVALID);
+        return value;
+      }
 
-          return der.privateKeyExport(privateKey, publicKey, compressed);
-        },
+      module.exports = function (secp256k1) {
+        return {
+          privateKeyVerify: function privateKeyVerify(privateKey) {
+            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+            return privateKey.length === 32 && secp256k1.privateKeyVerify(privateKey);
+          },
 
-        privateKeyImport: function privateKeyImport(privateKey) {
-          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+          privateKeyExport: function privateKeyExport(privateKey, compressed) {
+            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
 
-          privateKey = der.privateKeyImport(privateKey);
-          if (privateKey && privateKey.length === 32 && secp256k1.privateKeyVerify(privateKey)) return privateKey;
+            compressed = initCompressedValue(compressed, true);
 
-          throw new Error(messages.EC_PRIVATE_KEY_IMPORT_DER_FAIL);
-        },
+            var publicKey = secp256k1.privateKeyExport(privateKey, compressed);
 
-        privateKeyTweakAdd: function privateKeyTweakAdd(privateKey, tweak) {
-          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+            var result = new Buffer(compressed ? 214 : 279);
+            var targetStart = 0;
+            if (compressed) {
+              EC_PRIVKEY_EXPORT_DER_COMPRESSED_BEGIN.copy(result, targetStart);
+              targetStart += EC_PRIVKEY_EXPORT_DER_COMPRESSED_BEGIN.length;
 
-          assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
-          assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
+              privateKey.copy(result, targetStart);
+              targetStart += privateKey.length;
 
-          return secp256k1.privateKeyTweakAdd(privateKey, tweak);
-        },
+              EC_PRIVKEY_EXPORT_DER_COMPRESSED_MIDDLE.copy(result, targetStart);
+              targetStart += EC_PRIVKEY_EXPORT_DER_COMPRESSED_MIDDLE.length;
 
-        privateKeyTweakMul: function privateKeyTweakMul(privateKey, tweak) {
-          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+              publicKey.copy(result, targetStart);
+            } else {
+              EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_BEGIN.copy(result, targetStart);
+              targetStart += EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_BEGIN.length;
 
-          assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
-          assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
+              privateKey.copy(result, targetStart);
+              targetStart += privateKey.length;
 
-          return secp256k1.privateKeyTweakMul(privateKey, tweak);
-        },
+              EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_MIDDLE.copy(result, targetStart);
+              targetStart += EC_PRIVKEY_EXPORT_DER_UNCOMPRESSED_MIDDLE.length;
 
-        publicKeyCreate: function publicKeyCreate(privateKey, compressed) {
-          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
-
-          compressed = initCompressedValue(compressed, true);
-
-          return secp256k1.publicKeyCreate(privateKey, compressed);
-        },
-
-        publicKeyConvert: function publicKeyConvert(publicKey, compressed) {
-          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-          compressed = initCompressedValue(compressed, true);
-
-          return secp256k1.publicKeyConvert(publicKey, compressed);
-        },
-
-        publicKeyVerify: function publicKeyVerify(publicKey) {
-          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-          return secp256k1.publicKeyVerify(publicKey);
-        },
-
-        publicKeyTweakAdd: function publicKeyTweakAdd(publicKey, tweak, compressed) {
-          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-          assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
-          assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
-
-          compressed = initCompressedValue(compressed, true);
-
-          return secp256k1.publicKeyTweakAdd(publicKey, tweak, compressed);
-        },
-
-        publicKeyTweakMul: function publicKeyTweakMul(publicKey, tweak, compressed) {
-          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-          assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
-          assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
-
-          compressed = initCompressedValue(compressed, true);
-
-          return secp256k1.publicKeyTweakMul(publicKey, tweak, compressed);
-        },
-
-        publicKeyCombine: function publicKeyCombine(publicKeys, compressed) {
-          assert.isArray(publicKeys, messages.EC_PUBLIC_KEYS_TYPE_INVALID);
-          assert.isLengthGTZero(publicKeys, messages.EC_PUBLIC_KEYS_LENGTH_INVALID);
-          for (var i = 0; i < publicKeys.length; ++i) {
-            assert.isBuffer(publicKeys[i], messages.EC_PUBLIC_KEY_TYPE_INVALID);
-            assert.isBufferLength2(publicKeys[i], 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-          }
-
-          compressed = initCompressedValue(compressed, true);
-
-          return secp256k1.publicKeyCombine(publicKeys, compressed);
-        },
-
-        signatureNormalize: function signatureNormalize(signature) {
-          assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
-          assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
-
-          return secp256k1.signatureNormalize(signature);
-        },
-
-        signatureExport: function signatureExport(signature) {
-          assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
-          assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
-
-          var sigObj = secp256k1.signatureExport(signature);
-          return der.signatureExport(sigObj);
-        },
-
-        signatureImport: function signatureImport(sig) {
-          assert.isBuffer(sig, messages.ECDSA_SIGNATURE_TYPE_INVALID);
-          assert.isLengthGTZero(sig, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
-
-          var sigObj = der.signatureImport(sig);
-          if (sigObj) return secp256k1.signatureImport(sigObj);
-
-          throw new Error(messages.ECDSA_SIGNATURE_PARSE_DER_FAIL);
-        },
-
-        signatureImportLax: function signatureImportLax(sig) {
-          assert.isBuffer(sig, messages.ECDSA_SIGNATURE_TYPE_INVALID);
-          assert.isLengthGTZero(sig, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
-
-          var sigObj = der.signatureImportLax(sig);
-          if (sigObj) return secp256k1.signatureImport(sigObj);
-
-          throw new Error(messages.ECDSA_SIGNATURE_PARSE_DER_FAIL);
-        },
-
-        sign: function sign(message, privateKey, options) {
-          assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
-          assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
-
-          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
-
-          var data = null;
-          var noncefn = null;
-          if (options !== undefined) {
-            assert.isObject(options, messages.OPTIONS_TYPE_INVALID);
-
-            if (options.data !== undefined) {
-              assert.isBuffer(options.data, messages.OPTIONS_DATA_TYPE_INVALID);
-              assert.isBufferLength(options.data, 32, messages.OPTIONS_DATA_LENGTH_INVALID);
-              data = options.data;
+              publicKey.copy(result, targetStart);
             }
 
-            if (options.noncefn !== undefined) {
-              assert.isFunction(options.noncefn, messages.OPTIONS_NONCEFN_TYPE_INVALID);
-              noncefn = options.noncefn;
+            return result;
+          },
+
+          privateKeyImport: function privateKeyImport(privateKey) {
+            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+
+            do {
+              var length = privateKey.length;
+
+              // sequence header
+              var index = 0;
+              if (length < index + 1 || privateKey[index] !== 0x30) break;
+              index += 1;
+
+              // sequence length constructor
+              if (length < index + 1 || !(privateKey[index] & 0x80)) break;
+
+              var lenb = privateKey[index] & 0x7f;
+              index += 1;
+              if (lenb < 1 || lenb > 2) break;
+              if (length < index + lenb) break;
+
+              // sequence length
+              var len = privateKey[index + lenb - 1] | (lenb > 1 ? privateKey[index + lenb - 2] << 8 : 0);
+              index += lenb;
+              if (length < index + len) break;
+
+              // sequence element 0: version number (=1)
+              if (length < index + 3 || privateKey[index] !== 0x02 || privateKey[index + 1] !== 0x01 || privateKey[index + 2] !== 0x01) {
+                break;
+              }
+              index += 3;
+
+              // sequence element 1: octet string, up to 32 bytes
+              if (length < index + 2 || privateKey[index] !== 0x04 || privateKey[index + 1] > 0x20 || length < index + 2 + privateKey[index + 1]) {
+                break;
+              }
+
+              privateKey = privateKey.slice(index + 2, index + 2 + privateKey[index + 1]);
+              if (privateKey.length === 32 && secp256k1.privateKeyVerify(privateKey)) return privateKey;
+            } while (false);
+
+            throw new Error(messages.EC_PRIVATE_KEY_IMPORT_DER_FAIL);
+          },
+
+          privateKeyTweakAdd: function privateKeyTweakAdd(privateKey, tweak) {
+            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+
+            assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
+            assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
+
+            return secp256k1.privateKeyTweakAdd(privateKey, tweak);
+          },
+
+          privateKeyTweakMul: function privateKeyTweakMul(privateKey, tweak) {
+            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+
+            assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
+            assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
+
+            return secp256k1.privateKeyTweakMul(privateKey, tweak);
+          },
+
+          publicKeyCreate: function publicKeyCreate(privateKey, compressed) {
+            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+
+            compressed = initCompressedValue(compressed, true);
+
+            return secp256k1.publicKeyCreate(privateKey, compressed);
+          },
+
+          publicKeyConvert: function publicKeyConvert(publicKey, compressed) {
+            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
+
+            compressed = initCompressedValue(compressed, true);
+
+            return secp256k1.publicKeyConvert(publicKey, compressed);
+          },
+
+          publicKeyVerify: function publicKeyVerify(publicKey) {
+            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+            return secp256k1.publicKeyVerify(publicKey);
+          },
+
+          publicKeyTweakAdd: function publicKeyTweakAdd(publicKey, tweak, compressed) {
+            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
+
+            assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
+            assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
+
+            compressed = initCompressedValue(compressed, true);
+
+            return secp256k1.publicKeyTweakAdd(publicKey, tweak, compressed);
+          },
+
+          publicKeyTweakMul: function publicKeyTweakMul(publicKey, tweak, compressed) {
+            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
+
+            assert.isBuffer(tweak, messages.TWEAK_TYPE_INVALID);
+            assert.isBufferLength(tweak, 32, messages.TWEAK_LENGTH_INVALID);
+
+            compressed = initCompressedValue(compressed, true);
+
+            return secp256k1.publicKeyTweakMul(publicKey, tweak, compressed);
+          },
+
+          publicKeyCombine: function publicKeyCombine(publicKeys, compressed) {
+            assert.isArray(publicKeys, messages.EC_PUBLIC_KEYS_TYPE_INVALID);
+            assert.isLengthGTZero(publicKeys, messages.EC_PUBLIC_KEYS_LENGTH_INVALID);
+            for (var i = 0; i < publicKeys.length; ++i) {
+              assert.isBuffer(publicKeys[i], messages.EC_PUBLIC_KEY_TYPE_INVALID);
+              assert.isBufferLength2(publicKeys[i], 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
             }
+
+            compressed = initCompressedValue(compressed, true);
+
+            return secp256k1.publicKeyCombine(publicKeys, compressed);
+          },
+
+          signatureNormalize: function signatureNormalize(signature) {
+            assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
+            assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
+
+            return secp256k1.signatureNormalize(signature);
+          },
+
+          signatureExport: function signatureExport(signature) {
+            assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
+            assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
+
+            var sigObj = secp256k1.signatureExport(signature);
+
+            var r = Buffer.concat([new Buffer([0]), sigObj.r]);
+            for (var lenR = 33, posR = 0; lenR > 1 && r[posR] === 0x00 && !(r[posR + 1] & 0x80); --lenR, ++posR) {}
+
+            var s = Buffer.concat([new Buffer([0]), sigObj.s]);
+            for (var lenS = 33, posS = 0; lenS > 1 && s[posS] === 0x00 && !(s[posS + 1] & 0x80); --lenS, ++posS) {}
+
+            return bip66.encode(r.slice(posR), s.slice(posS));
+          },
+
+          signatureImport: function signatureImport(sig) {
+            assert.isBuffer(sig, messages.ECDSA_SIGNATURE_TYPE_INVALID);
+            assert.isLengthGTZero(sig, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
+
+            try {
+              var sigObj = bip66.decode(sig);
+              if (sigObj.r.length === 33 && sigObj.r[0] === 0x00) sigObj.r = sigObj.r.slice(1);
+              if (sigObj.r.length > 32) throw new Error('R length is too long');
+              if (sigObj.s.length === 33 && sigObj.s[0] === 0x00) sigObj.s = sigObj.s.slice(1);
+              if (sigObj.s.length > 32) throw new Error('S length is too long');
+            } catch (err) {
+              throw new Error(messages.ECDSA_SIGNATURE_PARSE_DER_FAIL);
+            }
+
+            return secp256k1.signatureImport({
+              r: Buffer.concat([ZERO_BUFFER_32, sigObj.r]).slice(-32),
+              s: Buffer.concat([ZERO_BUFFER_32, sigObj.s]).slice(-32)
+            });
+          },
+
+          sign: function sign(message, privateKey, options) {
+            assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
+            assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
+
+            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+
+            var data = null;
+            var noncefn = null;
+            if (options !== undefined) {
+              assert.isObject(options, messages.OPTIONS_TYPE_INVALID);
+
+              if (options.data !== undefined) {
+                assert.isBuffer(options.data, messages.OPTIONS_DATA_TYPE_INVALID);
+                assert.isBufferLength(options.data, 32, messages.OPTIONS_DATA_LENGTH_INVALID);
+                data = options.data;
+              }
+
+              if (options.noncefn !== undefined) {
+                assert.isFunction(options.noncefn, messages.OPTIONS_NONCEFN_TYPE_INVALID);
+                noncefn = options.noncefn;
+              }
+            }
+
+            return secp256k1.sign(message, privateKey, noncefn, data);
+          },
+
+          verify: function verify(message, signature, publicKey) {
+            assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
+            assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
+
+            assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
+            assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
+
+            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
+
+            return secp256k1.verify(message, signature, publicKey);
+          },
+
+          recover: function recover(message, signature, recovery, compressed) {
+            assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
+            assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
+
+            assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
+            assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
+
+            assert.isNumber(recovery, messages.RECOVERY_ID_TYPE_INVALID);
+            assert.isNumberInInterval(recovery, -1, 4, messages.RECOVERY_ID_VALUE_INVALID);
+
+            compressed = initCompressedValue(compressed, true);
+
+            return secp256k1.recover(message, signature, recovery, compressed);
+          },
+
+          ecdh: function ecdh(publicKey, privateKey) {
+            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
+
+            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+
+            return secp256k1.ecdh(publicKey, privateKey);
+          },
+
+          ecdhUnsafe: function ecdhUnsafe(publicKey, privateKey, compressed) {
+            assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
+            assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
+
+            assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
+            assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
+
+            compressed = initCompressedValue(compressed, true);
+
+            return secp256k1.ecdhUnsafe(publicKey, privateKey, compressed);
           }
-
-          return secp256k1.sign(message, privateKey, noncefn, data);
-        },
-
-        verify: function verify(message, signature, publicKey) {
-          assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
-          assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
-
-          assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
-          assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
-
-          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-          return secp256k1.verify(message, signature, publicKey);
-        },
-
-        recover: function recover(message, signature, recovery, compressed) {
-          assert.isBuffer(message, messages.MSG32_TYPE_INVALID);
-          assert.isBufferLength(message, 32, messages.MSG32_LENGTH_INVALID);
-
-          assert.isBuffer(signature, messages.ECDSA_SIGNATURE_TYPE_INVALID);
-          assert.isBufferLength(signature, 64, messages.ECDSA_SIGNATURE_LENGTH_INVALID);
-
-          assert.isNumber(recovery, messages.RECOVERY_ID_TYPE_INVALID);
-          assert.isNumberInInterval(recovery, -1, 4, messages.RECOVERY_ID_VALUE_INVALID);
-
-          compressed = initCompressedValue(compressed, true);
-
-          return secp256k1.recover(message, signature, recovery, compressed);
-        },
-
-        ecdh: function ecdh(publicKey, privateKey) {
-          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
-
-          return secp256k1.ecdh(publicKey, privateKey);
-        },
-
-        ecdhUnsafe: function ecdhUnsafe(publicKey, privateKey, compressed) {
-          assert.isBuffer(publicKey, messages.EC_PUBLIC_KEY_TYPE_INVALID);
-          assert.isBufferLength2(publicKey, 33, 65, messages.EC_PUBLIC_KEY_LENGTH_INVALID);
-
-          assert.isBuffer(privateKey, messages.EC_PRIVATE_KEY_TYPE_INVALID);
-          assert.isBufferLength(privateKey, 32, messages.EC_PRIVATE_KEY_LENGTH_INVALID);
-
-          compressed = initCompressedValue(compressed, true);
-
-          return secp256k1.ecdhUnsafe(publicKey, privateKey, compressed);
-        }
+        };
       };
-    };
-  }, { "./assert": 205, "./der": 206, "./messages.json": 209 }], 209: [function (require, module, exports) {
+    }).call(this, require("buffer").Buffer);
+  }, { "./assert": 203, "./messages.json": 206, "bip66": 83, "buffer": 115 }], 206: [function (require, module, exports) {
     module.exports = {
       "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
       "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -68668,7 +68306,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "TWEAK_TYPE_INVALID": "tweak should be a Buffer",
       "TWEAK_LENGTH_INVALID": "tweak length is invalid"
     };
-  }, {}], 210: [function (require, module, exports) {
+  }, {}], 207: [function (require, module, exports) {
     (function (Buffer) {
       // prototype class for hash functions
       function Hash(blockSize, finalSize) {
@@ -68740,7 +68378,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Hash;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 211: [function (require, module, exports) {
+  }, { "buffer": 115 }], 208: [function (require, module, exports) {
     var exports = module.exports = function SHA(algorithm) {
       algorithm = algorithm.toLowerCase();
 
@@ -68756,7 +68394,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     exports.sha256 = require('./sha256');
     exports.sha384 = require('./sha384');
     exports.sha512 = require('./sha512');
-  }, { "./sha": 212, "./sha1": 213, "./sha224": 214, "./sha256": 215, "./sha384": 216, "./sha512": 217 }], 212: [function (require, module, exports) {
+  }, { "./sha": 209, "./sha1": 210, "./sha224": 211, "./sha256": 212, "./sha384": 213, "./sha512": 214 }], 209: [function (require, module, exports) {
     (function (Buffer) {
       /*
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -68851,7 +68489,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 167 }], 213: [function (require, module, exports) {
+  }, { "./hash": 207, "buffer": 115, "inherits": 167 }], 210: [function (require, module, exports) {
     (function (Buffer) {
       /*
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -68951,7 +68589,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha1;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 167 }], 214: [function (require, module, exports) {
+  }, { "./hash": 207, "buffer": 115, "inherits": 167 }], 211: [function (require, module, exports) {
     (function (Buffer) {
       /**
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -69006,7 +68644,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha224;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "./sha256": 215, "buffer": 115, "inherits": 167 }], 215: [function (require, module, exports) {
+  }, { "./hash": 207, "./sha256": 212, "buffer": 115, "inherits": 167 }], 212: [function (require, module, exports) {
     (function (Buffer) {
       /**
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -69127,7 +68765,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha256;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 167 }], 216: [function (require, module, exports) {
+  }, { "./hash": 207, "buffer": 115, "inherits": 167 }], 213: [function (require, module, exports) {
     (function (Buffer) {
       var inherits = require('inherits');
       var SHA512 = require('./sha512');
@@ -69186,7 +68824,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha384;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "./sha512": 217, "buffer": 115, "inherits": 167 }], 217: [function (require, module, exports) {
+  }, { "./hash": 207, "./sha512": 214, "buffer": 115, "inherits": 167 }], 214: [function (require, module, exports) {
     (function (Buffer) {
       var inherits = require('inherits');
       var Hash = require('./hash');
@@ -69407,7 +69045,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha512;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 167 }], 218: [function (require, module, exports) {
+  }, { "./hash": 207, "buffer": 115, "inherits": 167 }], 215: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -69532,7 +69170,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // Allow for unix-like usage: A.pipe(B).pipe(C)
       return dest;
     };
-  }, { "events": 156, "inherits": 167, "readable-stream/duplex.js": 190, "readable-stream/passthrough.js": 197, "readable-stream/readable.js": 198, "readable-stream/transform.js": 199, "readable-stream/writable.js": 200 }], 219: [function (require, module, exports) {
+  }, { "events": 156, "inherits": 167, "readable-stream/duplex.js": 189, "readable-stream/passthrough.js": 195, "readable-stream/readable.js": 196, "readable-stream/transform.js": 197, "readable-stream/writable.js": 198 }], 216: [function (require, module, exports) {
     // Generated by CoffeeScript 1.8.0
     (function () {
       var ValueError,
@@ -69647,7 +69285,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         window.format = format;
       }
     }).call(this);
-  }, {}], 220: [function (require, module, exports) {
+  }, {}], 217: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -69865,7 +69503,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.charReceived = buffer.length % 3;
       this.charLength = this.charReceived ? 3 : 0;
     }
-  }, { "buffer": 115 }], 221: [function (require, module, exports) {
+  }, { "buffer": 115 }], 218: [function (require, module, exports) {
     (function (root) {
       "use strict";
 
@@ -70310,7 +69948,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         unorm.shimApplied = true;
       }
     })(this);
-  }, {}], 222: [function (require, module, exports) {
+  }, {}], 219: [function (require, module, exports) {
     (function (global) {
 
       /**
@@ -70380,13 +70018,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return String(val).toLowerCase() === 'true';
       }
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 223: [function (require, module, exports) {
-    arguments[4][167][0].apply(exports, arguments);
-  }, { "dup": 167 }], 224: [function (require, module, exports) {
+  }, {}], 220: [function (require, module, exports) {
     module.exports = function isBuffer(arg) {
       return arg && (typeof arg === "undefined" ? "undefined" : _typeof(arg)) === 'object' && typeof arg.copy === 'function' && typeof arg.fill === 'function' && typeof arg.readUInt8 === 'function';
     };
-  }, {}], 225: [function (require, module, exports) {
+  }, {}], 221: [function (require, module, exports) {
     (function (process, global) {
       // Copyright Joyent, Inc. and other Node contributors.
       //
@@ -70933,7 +70569,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return Object.prototype.hasOwnProperty.call(obj, prop);
       }
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, { "./support/isBuffer": 224, "_process": 182, "inherits": 223 }], 226: [function (require, module, exports) {
+  }, { "./support/isBuffer": 220, "_process": 181, "inherits": 167 }], 222: [function (require, module, exports) {
     (function (global) {
 
       var rng;
@@ -70967,7 +70603,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = rng;
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 227: [function (require, module, exports) {
+  }, {}], 223: [function (require, module, exports) {
     //     uuid.js
     //
     //     Copyright (c) 2010-2012 Robert Kieffer
@@ -71145,7 +70781,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     uuid.unparse = unparse;
 
     module.exports = uuid;
-  }, { "./rng": 226 }], 228: [function (require, module, exports) {
+  }, { "./rng": 222 }], 224: [function (require, module, exports) {
     var indexOf = require('indexof');
 
     var Object_keys = function Object_keys(obj) {
