@@ -1,0 +1,21 @@
+{
+  "name": "mew_rpc_relay",
+  "version": "1.0.0",
+  "description": "relay to connect between parity and web",
+  "main": "runServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kvhnuke",
+  "license": "ISC",
+  "dependencies": {
+    "bignumber.js": "^2.4.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "node-json-rpc": "0.0.1",
+    "vhost": "^3.0.2",
+    "wait.for": "^0.6.6"
+  }
+}

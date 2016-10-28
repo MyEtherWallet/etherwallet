@@ -1,18 +1,17 @@
 'use strict';
 var rpc = require('node-json-rpc');
-var Sync = require('sync');
 var BN = require('bignumber.js');
 var wait = require('wait.for');
 var Response = function() {}
 Response.client = new rpc.Client({
 	port: 8545,
-	host: '45.79.107.116',
+	host: '23.239.20.147',
 	path: '/',
 	strict: true
 });
 Response.clientClassic = new rpc.Client({
 	port: 8545,
-	host: '45.79.73.244',
+	host: '173.255.245.13',
 	path: '/',
 	strict: true
 });
@@ -52,6 +51,11 @@ Response.getBalance = function(addr, isClassic) {
 			address: addr,
 			balance: new BN(Response.getResponseSync("eth_getBalance", [addr, "pending"], isClassic))
 		};
+	});
+}
+Response.getTraceCall = function(objCall, isClassic) {
+	return this.runInTryCatch(function(data) {
+		data.data = Response.getResponseSync("trace_call", [objCall,["stateDiff","trace","vmTrace"]], isClassic);
 	});
 }
 Response.getCurrentBlock = function(isClassic) {
