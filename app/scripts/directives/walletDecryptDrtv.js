@@ -17,7 +17,7 @@ var walletDecryptDrtv = function() {
         <label>\n \
           <input type="radio" ng-model="walletType" value="pastemnemonic"/><span translate="x_Mnemonic">Mnemonic Phrase</span></label>\n \
       </div>\n \
-      <div class="radio" ng-show="isSSL">\n \
+      <div class="radio">\n \
         <label>\n \
           <input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Wallet</span></label>\n \
       </div>\n \
@@ -59,7 +59,14 @@ var walletDecryptDrtv = function() {
       <!-- /if selected type mnemonic-->\n \
       <!-- if selected type ledger-->\n \
       <div id="selectedTypeLedger" ng-if="walletType==\'ledger\'">\n \
-        <h4><ol><li translate="ADD_Ledger_1">Connect your Ledger Wallet</li><li translate="ADD_Ledger_2">Open the Ethereum application (or a contract application)</li> <li translate="ADD_Ledger_3">Verify that Browser Support is enabled in Settings</li></ol></h4>\n \
+        <ol>\n \
+          <li translate="ADD_Ledger_0a" class="text-danger" ng-hide="isSSL"> Re-open MyEtherWallet on a secure (SSL) connection </li>\n \
+          <li translate="ADD_Ledger_0b" class="text-danger" ng-hide="isChrome"> Re-open MyEtherWallet using Google Chrome or Opera </li>\n \
+          <li translate="ADD_Ledger_1">Connect your Ledger Nano S</li>\n \
+          <li translate="ADD_Ledger_2">Open the Ethereum application (or a contract application)</li>\n \
+          <li translate="ADD_Ledger_3">Verify that Browser Support is enabled in Settings</li>\n \
+          <li translate="ADD_Ledger_4">If no Browser Support is found in settings, verify that you have Firmware \>1.2</li>\n \
+        </ol>\n \
       </div>\n \
       <!-- /if selected type ledger-->\n \
     </div>\n \

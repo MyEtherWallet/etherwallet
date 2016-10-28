@@ -6,6 +6,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 	$scope.fileContent = "";
     $scope.Validator = Validator;
     $scope.isSSL = window.location.protocol=='https:';
+    $scope.isChrome = true;
     $scope.HDWallet = {
         numWallets: 0,
         walletsPerDialog: 5,
@@ -66,7 +67,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         }
         $scope.HDWallet.id = 0;
         $scope.HDWallet.numWallets = start+limit;
-    }    
+    }
     $scope.AddRemoveHDAddresses = function(isAdd){
         if ($scope.walletType == "ledger") {
             if(isAdd) $scope.setHDAddressesLedger($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);

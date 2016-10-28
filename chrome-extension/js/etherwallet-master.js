@@ -694,6 +694,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 	$scope.fileContent = "";
     $scope.Validator = Validator;
     $scope.isSSL = window.location.protocol=='https:';
+    $scope.isChrome = true;
     $scope.HDWallet = {
         numWallets: 0,
         walletsPerDialog: 5,
@@ -754,7 +755,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         }
         $scope.HDWallet.id = 0;
         $scope.HDWallet.numWallets = start+limit;
-    }    
+    }
     $scope.AddRemoveHDAddresses = function(isAdd){
         if ($scope.walletType == "ledger") {
             if(isAdd) $scope.setHDAddressesLedger($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
@@ -2311,7 +2312,7 @@ var walletDecryptDrtv = function() {
         <label>\n \
           <input type="radio" ng-model="walletType" value="pastemnemonic"/><span translate="x_Mnemonic">Mnemonic Phrase</span></label>\n \
       </div>\n \
-      <div class="radio" ng-show="isSSL">\n \
+      <div class="radio">\n \
         <label>\n \
           <input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Wallet</span></label>\n \
       </div>\n \
@@ -2353,7 +2354,14 @@ var walletDecryptDrtv = function() {
       <!-- /if selected type mnemonic-->\n \
       <!-- if selected type ledger-->\n \
       <div id="selectedTypeLedger" ng-if="walletType==\'ledger\'">\n \
-        <h4><ol><li translate="ADD_Ledger_1">Connect your Ledger Wallet</li><li translate="ADD_Ledger_2">Open the Ethereum application (or a contract application)</li> <li translate="ADD_Ledger_3">Verify that Browser Support is enabled in Settings</li></ol></h4>\n \
+        <ol>\n \
+          <li translate="ADD_Ledger_0a" class="text-danger" ng-hide="isSSL"> Re-open MyEtherWallet on a secure (SSL) connection </li>\n \
+          <li translate="ADD_Ledger_0b" class="text-danger" ng-hide="isChrome"> Re-open MyEtherWallet using Google Chrome or Opera </li>\n \
+          <li translate="ADD_Ledger_1">Connect your Ledger Nano S</li>\n \
+          <li translate="ADD_Ledger_2">Open the Ethereum application (or a contract application)</li>\n \
+          <li translate="ADD_Ledger_3">Verify that Browser Support is enabled in Settings</li>\n \
+          <li translate="ADD_Ledger_4">If no Browser Support is found in settings, verify that you have Firmware \>1.2</li>\n \
+        </ol>\n \
       </div>\n \
       <!-- /if selected type ledger-->\n \
     </div>\n \
@@ -5604,11 +5612,14 @@ en.data = {
   TOKEN_hide:           'Hide Tokens',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Wallet',
-  ADD_Ledger_1:         'Connect your Ledger Wallet',
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_1:         'Connect your Ledger Nano S',
   ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
   ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_scan:      'Connect to Ledger Wallet',
+  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+  ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
