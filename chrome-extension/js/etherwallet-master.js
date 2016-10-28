@@ -830,7 +830,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       };
       module.exports = decryptWalletCtrl;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 9: [function (require, module, exports) {
+  }, { "buffer": 116 }], 9: [function (require, module, exports) {
     'use strict';
 
     var deployContractCtrl = function deployContractCtrl($scope, $sce, walletService) {
@@ -1210,7 +1210,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       };
       module.exports = sendOfflineTxCtrl;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 13: [function (require, module, exports) {
+  }, { "buffer": 116 }], 13: [function (require, module, exports) {
     'use strict';
 
     var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
@@ -2155,7 +2155,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       renderer: myRenderer
     });
     module.exports = marked;
-  }, { "marked": 172 }], 21: [function (require, module, exports) {
+  }, { "marked": 173 }], 21: [function (require, module, exports) {
     'use strict';
 
     var cxFuncs = function cxFuncs() {};
@@ -2878,7 +2878,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = LedgerEth;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 31: [function (require, module, exports) {
+  }, { "buffer": 116 }], 31: [function (require, module, exports) {
     (function (Buffer) {
       /********************************************************************************
       *   Ledger Communication toolkit
@@ -2948,7 +2948,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Ledger3;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 32: [function (require, module, exports) {
+  }, { "buffer": 116 }], 32: [function (require, module, exports) {
     'use strict';
 
     var IS_CX = false;
@@ -3065,7 +3065,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       app.controller('quickSendCtrl', ['$scope', '$sce', quickSendCtrl]);
       app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
     }
-  }, { "./ajaxReq": 1, "./controllers/CX/addWalletCtrl": 2, "./controllers/CX/cxDecryptWalletCtrl": 3, "./controllers/CX/mainPopCtrl": 4, "./controllers/CX/myWalletsCtrl": 5, "./controllers/CX/quickSendCtrl": 6, "./controllers/bulkGenCtrl": 7, "./controllers/decryptWalletCtrl": 8, "./controllers/deployContractCtrl": 9, "./controllers/digixCtrl": 10, "./controllers/footerCtrl": 11, "./controllers/sendOfflineTxCtrl": 12, "./controllers/sendTxCtrl": 13, "./controllers/tabsCtrl": 14, "./controllers/theDaoCtrl": 15, "./controllers/tokenCtrl": 16, "./controllers/viewCtrl": 17, "./controllers/viewWalletCtrl": 18, "./controllers/walletGenCtrl": 19, "./customMarked": 20, "./cxFuncs": 21, "./directives/QRCodeDrtv": 22, "./directives/blockiesDrtv": 23, "./directives/cxWalletDecryptDrtv": 24, "./directives/fileReaderDrtv": 25, "./directives/walletDecryptDrtv": 26, "./ethFuncs": 27, "./etherUnits": 28, "./globalFuncs": 29, "./ledger-eth": 30, "./ledger3": 31, "./myetherwallet": 33, "./services/globalService": 34, "./services/walletService": 35, "./staticJS/u2f-api": 36, "./tokens": 37, "./translations/translate.js": 53, "./uiFuncs": 56, "./validator": 57, "angular": 63, "angular-sanitize": 59, "angular-translate": 61, "angular-translate-handler-log": 60, "bignumber.js": 80, "bip39": 81, "crypto": 124, "ethereumjs-tx": 154, "ethereumjs-util": 155, "hdkey": 164, "scryptsy": 203, "string-format": 219, "uuid": 227 }], 33: [function (require, module, exports) {
+  }, { "./ajaxReq": 1, "./controllers/CX/addWalletCtrl": 2, "./controllers/CX/cxDecryptWalletCtrl": 3, "./controllers/CX/mainPopCtrl": 4, "./controllers/CX/myWalletsCtrl": 5, "./controllers/CX/quickSendCtrl": 6, "./controllers/bulkGenCtrl": 7, "./controllers/decryptWalletCtrl": 8, "./controllers/deployContractCtrl": 9, "./controllers/digixCtrl": 10, "./controllers/footerCtrl": 11, "./controllers/sendOfflineTxCtrl": 12, "./controllers/sendTxCtrl": 13, "./controllers/tabsCtrl": 14, "./controllers/theDaoCtrl": 15, "./controllers/tokenCtrl": 16, "./controllers/viewCtrl": 17, "./controllers/viewWalletCtrl": 18, "./controllers/walletGenCtrl": 19, "./customMarked": 20, "./cxFuncs": 21, "./directives/QRCodeDrtv": 22, "./directives/blockiesDrtv": 23, "./directives/cxWalletDecryptDrtv": 24, "./directives/fileReaderDrtv": 25, "./directives/walletDecryptDrtv": 26, "./ethFuncs": 27, "./etherUnits": 28, "./globalFuncs": 29, "./ledger-eth": 30, "./ledger3": 31, "./myetherwallet": 33, "./services/globalService": 34, "./services/walletService": 35, "./staticJS/u2f-api": 36, "./tokens": 37, "./translations/translate.js": 54, "./uiFuncs": 57, "./validator": 58, "angular": 64, "angular-sanitize": 60, "angular-translate": 62, "angular-translate-handler-log": 61, "bignumber.js": 81, "bip39": 82, "crypto": 125, "ethereumjs-tx": 155, "ethereumjs-util": 156, "hdkey": 165, "scryptsy": 204, "string-format": 220, "uuid": 228 }], 33: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -3366,7 +3366,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       };
       module.exports = Wallet;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 34: [function (require, module, exports) {
+  }, { "buffer": 116 }], 34: [function (require, module, exports) {
     'use strict';
 
     var globalService = function globalService($http, $httpParamSerializerJQLike) {
@@ -8833,6 +8833,590 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     module.exports = pl;
   }, {}], 51: [function (require, module, exports) {
+    // Portuguese
+    'use strict';
+
+    var pt = function pt() {};
+    pt.code = 'pt';
+    pt.data = {
+
+      /* Hardware wallets */
+      ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+      ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
+      ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+
+      /* Navigation*/
+      NAV_YourWallets: 'Suas Carteiras',
+      NAV_AddWallet: 'Adicionar Carteira',
+      NAV_GenerateWallet: 'Gerar Carteira',
+      NAV_BulkGenerate: 'Gerar Bulk',
+      NAV_SendEther: 'Enviar Ether & Tokens',
+      NAV_SendTokens: 'Enviar Tokens',
+      NAV_Offline: 'Enviar Offline',
+      NAV_WithdrawDAO: 'Sacar DAO',
+      DAO_TitleLong: 'Sacar seus Tokens DAO por ETH',
+      NAV_ClaimDGD: 'Reinvidicar DGD',
+      DGD_TitleLong: 'Reinvidique seus Tokens DGD',
+      NAV_DeployContract: 'Implantar Contrato',
+      NAV_MyWallets: 'Minhas Carteiras',
+      NAV_ViewWallet: 'Ver Informação da Carteira',
+      NAV_Help: 'Ajuda',
+      NAV_Contact: 'Contato',
+
+      /* General */
+      x_Address: 'Seu Endereço',
+      x_AddessDesc: 'Você deve saber sua "Conta #" ou sua "Chave Pública". É o que você enviar para que as pessoas possam enviar-lhe ether. Esse ícone é uma maneira fácil de reconhecer o seu endereço.',
+      x_Cancel: 'Cancelar',
+      x_CSV: 'Arquivo CSV (não criptografado)',
+      x_Download: 'Download',
+      x_Json: 'Arquivo JSON (não criptografada)',
+      x_JsonDesc: 'Este é o descriptografado, formato JSON da sua chave privada. Isto significa que você não precisa da senha, mas qualquer um que encontrar o seu JSON pode acessar sua carteira & Éter sem a senha.',
+      x_Keystore: 'Arquivo de armazenamento de chaves (UTC / JSON · Recomendado · Criptografado · Formato Mist)',
+      x_Keystore2: 'Arquivo de armazenamento de chaves (UTC / JSON)',
+      x_KeystoreDesc: 'Este arquivo de armazenamento de chaves corresponde ao formato usado pela Mist para que você possa facilmente importá-lo no futuro. É recomendado que o arquivo seja transferido e feito seu backup.',
+      x_Mnemonic: 'Frase Mnemonic (MetaMask / Jaxx )',
+      x_Password: 'Senha',
+      x_Print: 'Imprimir Carteira de Papel',
+      x_PrintDesc: 'Dica: Clique impressão e salve como PDF, mesmo se você não possui uma impressora!',
+      x_PrintShort: 'Imprimir',
+      x_PrivKey: 'Chave Privada (não criptografada)',
+      x_PrivKey2: 'Chave Privada',
+      x_PrivKeyDesc: 'Essa é a versão de texto não criptografada da sua chave privada, o que significa que nenhuma senha é necessária. Se alguém encontrar a sua chave privada sem criptografia, eles podem acessar sua carteira sem a senha. Por esta razão, as versões codificadas são tipicamente recomendadas.',
+      x_Save: 'Salvar',
+      x_TXT: 'Arquivo TXT (não criptografado)',
+      x_Wallet: 'Carteira',
+
+      /* Header */
+      MEW_Warning_1: 'Sempre verifique a URL antes de acessar sua carteira ou criar uma nova carteira. Cuidado com os sites de phishing!',
+      CX_Warning_1: 'Certifique-se de que você tem ** backups externos ** de quaisquer carteiras armazenadas aqui. Muitas coisas podem acontecer que faria com que você perdesse os dados nesta extensão Chrome, incluindo desinstalar e reinstalar a extensão. Esta extensão é uma maneira de acessar facilmente as suas carteiras, ** não ** uma forma de apoiá-los.',
+      MEW_Tagline: 'Fonte aberta JavaScript para o client-side da Carteira Ether',
+      CX_Tagline: 'Fonte Aberta JavaScript para o client-side da Carteira Ether para extensão do Chrome ',
+
+      /* Footer */
+      FOOTER_1: 'Uma fonte aberta, javascript, ferramenta do client-side para gerar Carteiras Ethereum & envio de transações.',
+      FOOTER_1b: 'Criado por',
+      FOOTER_2: 'Doações serão muito apreciadas:',
+      FOOTER_3: 'Carteira Client-side gerada por',
+      FOOTER_4: 'Aviso Legal',
+
+      /* Sidebar */
+      sidebar_AccountInfo: 'Informações da Conta: ',
+      sidebar_AccountAddr: 'Endereço da Conta: ',
+      sidebar_AccountBal: 'Saldo da Conta: ',
+      sidebar_TokenBal: 'Saldo de Tokens: ',
+      sidebar_Equiv: 'Valor Equivalente: ',
+      sidebar_TransHistory: 'Histórico de Transações: ',
+      sidebar_DGDBal: 'Informações do Crowdsale DGD:',
+      sidebar_donation: 'MyEtherWallet é grátis, um serviço de fonte aberta dedicado a sua privacidade e segurança. Quanto mais doações nós recebermos, mais podemos gastar criando novidade, ouvindo seu feedback, e entregando o que você deseja. Somos apenas duas pessoas tentando mudar o mundo. Ajude-nos?',
+      sidebar_donate: 'De',
+      sidebar_thanks: 'OBRIGADO!!!',
+
+      /* Decrypt Panel */
+      decrypt_Access: 'Como você gostaria de acessar sua carteira?',
+      decrypt_Title: 'Selecione o formato da sua chave privada:',
+      decrypt_Select: 'Selecione uma Carteira:',
+
+      /* Add Wallet */
+      ADD_Label_1: 'O que você gostaria de fazer?',
+      ADD_Radio_1: 'Gerar Nova Carteira',
+      ADD_Radio_2: 'Selecione seu arquivo da Carteira (Keystore / JSON)',
+      ADD_Radio_2_alt: 'Selecione seu arquivo da Carteira: ',
+      ADD_Radio_2_short: 'SELECIONE O ARQUIVO DA CARTEIRA...',
+      ADD_Radio_3: 'Cole/Digite sua Chave Privada ',
+      ADD_Radio_4: 'Adicionar uma conta para ver',
+      ADD_Radio_5: 'Cole/Digite sua Mnemonic',
+      ADD_Label_2: 'Crie um Apelido:',
+      ADD_Label_3: 'Sua carteira é criptografada. Por favor, insira a senha: ',
+      ADD_Label_4: 'Adicionar uma conta para ver',
+      ADD_Warning_1: 'Você pode adicionar qualquer conta para "ver" na tab de carteiras sem fazer o upload da chave privada. Isso significa que você ** não **  tem acesso a essa carteira, nem pode transferir Ether a partir dela.',
+      ADD_Label_5: 'Insira o Endereço: ',
+      ADD_Label_6: 'Desbloqueie sua Carteira: ',
+      ADD_Label_6_short: 'Desbloqueie',
+      ADD_Label_7: 'Adicionar Conta',
+
+      /* Generate Wallets */
+      GEN_desc: 'Se você quer gerar multiplas carteiras. você pode fazer isso aqui: ',
+      GEN_Label_1: 'Insira uma senha forte (pelo menos 9 dígitos)',
+      GEN_Placeholder_1: 'NÃO esqueça de salvar isso!',
+      GEN_SuccessMsg: 'Sucesso! Sua carteira foi gerada.',
+      GEN_Warning: '**Você precisa do seu arquivo de armazenamento de chaves & senha** (ou Chave Privada) para acessar essa carteira no futuro. Por favor, salve e armazene ela externamente! Não há como recuperar uma carteira se você não salvar isso. Leia a [página de ajuda](https://www.myetherwallet.com/#help) para instruções.',
+      GEN_Label_2: 'Salve seu arquivo de armazenamento de chaves. Não esqueça da sua senha acima.',
+      GEN_Label_3: 'Salve Seu Enderço.',
+      GEN_Label_4: 'Imprima sua carteira de papel, ou guarde a versão do código QR. (opcional)',
+
+      /* Bulk Generate Wallets */
+      BULK_Label_1: 'Número de Carteiras a gerar',
+      BULK_Label_2: 'Gerar Carteiras',
+      BULK_SuccessMsg: 'Sucesso! Suas carteiras foram geradas.',
+
+      /* Sending Ether and Tokens */
+      SEND_addr: 'Para o Endereço: ',
+      SEND_amount: 'Valor a enviar: ',
+      SEND_amount_short: 'Valor',
+      SEND_custom: 'Adicionar token personalizado',
+      SEND_gas: 'Gás',
+      SEND_TransferTotal: 'Enviar o Salto Total',
+      SEND_generate: 'Gerar Transação',
+      SEND_raw: 'Transação Raw',
+      SEND_signed: 'Transação Assinada',
+      SEND_trans: 'Enviar Transação',
+      SENDModal_Title: 'Cuidado! ',
+      /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
+      SENDModal_Content_1: 'Você está prestes a enviar',
+      SENDModal_Content_2: 'para o endereço',
+      SENDModal_Content_3: 'Você tem certeza que quer fazer isso?',
+      SENDModal_Content_4: 'NOTA: Se você encontrar um erro, você provavelmente precisará adicionar ether a sua conta para cobrir o custo do gás para o envio de tokens. Gás é pago em ether.',
+      SENDModal_No: 'Não, me tire daqui!',
+      SENDModal_Yes: 'Sim, eu tenho certeza! Faça a transação.',
+
+      /* Tokens */
+      TOKEN_Addr: 'Endereço: ',
+      TOKEN_Symbol: 'Símbolo do Token: ',
+      TOKEN_Dec: 'Decimais: ',
+      TOKEN_show: 'Mostre todos os Tokens',
+      TOKEN_hide: 'Esconder Tokens',
+
+      /* Send Transaction */
+      TRANS_desc: '',
+      TRANS_warning: 'Se você estiver usando somente "ETH" ou "ETC" Funções que você está enviando através de um contrato. Alguns serviços têm problemas para aceitar essas transações. Leia mais.',
+      TRANS_standard: 'ETH (Transação Padrão)',
+      TRANS_eth: 'Só ETH',
+      TRANS_etc: 'Só ETC',
+      TRANS_advanced: '+Avançado: Adicionar dados ',
+      TRANS_data: ' Dados: ',
+      TRANS_gas: ' Gás: ',
+      TRANS_sendInfo: 'Uma transação padrão usando 21000 gás irá custar 0.000441 ETH. Nós usamos um preço ligeiramente acima do mínima de gás de 0,000000021 ETH para garantir que ele seja minado rapidamente. Nós não recebemos nenhuma taxa de transação.',
+
+      /* Send Transaction Modals */
+      TRANSModal_Title: '"Só ETH" e "Só ETC" Transações',
+      TRANSModal_Content_0: 'Uma nota sobre diferentes transações e diferentes serviços:',
+      TRANSModal_Content_1: '**ETH (Transação Padrão): ** Isso gera uma transação padrão diretamente de um endereço para outro. Tem um gás padrão de 21000. É provável que qualquer ETH enviados através deste método serão repetidos para a cadeia ETC..',
+      TRANSModal_Content_2: '**Só ETH: ** Isso envia via [Timon Rapp\'s contrato de proteção de repetição (como recomendado pelo VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) para que você só envie na cadeia **ETH**.',
+      TRANSModal_Content_3: '**Só ETC: ** Isso envia via [Timon Rapp\'s contrato de proteção de repetição (como recomendado pelo VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) para que você só envie na cadeia **ETC**. ',
+      TRANSModal_Content_4: '**Coinbase & ShapeShift: ** Envia somente via Transação Padrão. Se você enviar via contrato "único", você vai precisar contatar a equipe de suporte para adicionar manualmente o seu balanço ou reembolsá-lo. [Pode tentar Shapeshift\'s ferramenta de "mistura".](https://split.shapeshift.io/)',
+      TRANSModal_Content_5: '**Kraken & Poloniex:** Sem problemas conhecidos. Use qualquer um.',
+      TRANSModal_Yes: 'Legal, agora eu entendi.',
+      TRANSModal_No: 'Oh Deus, eu fiquei mais confuso. Ajude-me.',
+
+      /* Offline Transaction */
+      OFFLINE_Title: 'Gere & Envie Transações Offline',
+      OFFLINE_Desc: 'Gerar transações offline pode ser feita em três passos. Você vai completar os passos 1 e 3 em um computador online, e o passo 2 em um computador offline/airgapped. Isto garante que suas chaves privadas não sejam utilizadas em um dispositivo conectado à internet.',
+      OFFLLINE_Step1_Title: 'Passo 1: Gerar a Informação (Computador Online)',
+      OFFLINE_Step1_Button: 'Gerar Informaçoes',
+      OFFLINE_Step1_Label_1: 'Do Endereço: ',
+      OFFLINE_Step1_Label_2: 'Nota: Este é o endereço de partina, não o endereço de destino. O valor aleatório é gerado a partir da conta de origem. Se estiver usando um computador airgapped, seria o endereço da conta de armazenagem a frio.',
+      OFFLINE_Step2_Title: 'Step 2: Generate Transaction (Offline Computer)',
+      OFFLINE_Step2_Label_1: 'Para o Endereço: ',
+      OFFLINE_Step2_Label_2: 'Valor / Quantia para Enviar',
+      OFFLINE_Step2_Label_3: 'Preço do Gás ',
+      OFFLINE_Step2_Label_3b: 'Isto foi exibido no Passo 1 no seu computador on-line.',
+      OFFLINE_Step2_Label_4: 'Limite de Gás ',
+      OFFLINE_Step2_Label_4b: '21000 é o limite de gás padrão. Quando você envia contratos ou adiciona os dados, isso pode ter de ser diferente. Qualquer gás não utilizado será devolvido a você.',
+      OFFLINE_Step2_Label_5: 'Nonce',
+      OFFLINE_Step2_Label_5b: 'Isto foi exibido no Passo 1 no seu computador on-line.',
+      OFFLINE_Step2_Label_6: 'Dados',
+      OFFLINE_Step2_Label_6b: 'Isto é opcional. Os dados são frequentemente utilizados quando se envia transações com contratos.',
+      OFFLINE_Step2_Label_7: 'Insira / Selecione sua Chave Privada / JSON.',
+      OFFLINE_Step3_Title: 'Passo 3: Envia / Publica a Transação (Computador Online)',
+      OFFLINE_Step3_Label_1: 'Cole a transação assinada do Passo 2 e aperte o botão "ENVIAR TRANSAÇÃO".',
+
+      /* DAO */
+      DAO_bal1: 'no bloco 1,919,999',
+      DAO_bal2: 'atual',
+      DAO_TitleETH: 'Sacar DAO Para ETH',
+      DAO_TitleETC: 'Sacar DAO Para ETC',
+      DAO_ETC_Label_1: 'Para que endereço você quer seus ETC sejam enviados?',
+      DAO_ETC_Label_2: 'O "White Hat Group" tem trabalhado incansavelmente para devolver o seu ETC para você. Você pode dizer "obrigado", doando uma porcentagem de sua retirada, se você optar por isso. ',
+      DAO_Desc: 'Use esta tab para Sacar seus Tokens DAO por ETH **& ETC**. Se você deseja enviar DAO, por favor use a Tab Enviar Tokens.',
+      DAO_Inst: 'Sim. Apenas aperte o grande botão vermelhor. É fácil.',
+      DAO_Warning: 'Se você está recebendo um erro de "saldo insuficiente para o gás", você precisa ter uma pequena quantidade de ether em sua conta, afim de cobrir o custo do gás. Adicione 0,01 ETH a esta conta e tente novamente. ',
+      DAOModal_Title: 'Apenas certifique-se...',
+      // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
+      DAOModal_1: 'Você está prestes a sacar',
+      DAOModal_2: 'Tokens DAO',
+      DAOModal_3: 'para', // "in return for"
+
+      /* Digix */
+      DGD_Desc: 'Reivindique seus tokens & badges DigixDAO (DGD). Para revindicar, você deve ter participado na venda de token em 30 de março/31 de março de 2016. Se você deseja enviar DGD, por favor use a Tab Enviar Tokens.',
+      DGD_Label_1: 'Taxa de consumo estimada:',
+      DGD_Label_2: 'Taxa Máxima Fornecida:',
+      DGD_Label_3: 'Preço do Gás:',
+      DGD_Generate: 'Gerar Reivindicação',
+      DGD_Content: 'Você está prestes a reivindicar os seus Tokens DGD.',
+
+      /* Deploy Contracts */
+      DEP_generate: 'Generate Bytecode',
+      DEP_generated: 'Generated Bytecode',
+      DEP_signtx: 'Sign Transaction',
+      DEP_interface: 'Generated Interface',
+
+      /* My Wallet */
+      MYWAL_Nick: 'Wallet Nickname',
+      MYWAL_Address: 'Wallet Address',
+      MYWAL_Bal: 'Balance',
+      MYWAL_Edit: 'Edit',
+      MYWAL_View: 'View',
+      MYWAL_Remove: 'Remove',
+      MYWAL_RemoveWal: 'Remove Wallet:',
+      MYWAL_WatchOnly: 'Your Watch-Only Accounts',
+      MYWAL_Viewing: 'Viewing Wallet: ',
+      MYWAL_Hide: 'Hide Wallet Info',
+      MYWAL_Edit_2: 'Edit Wallet: ',
+      MYWAL_Name: 'Wallet Name',
+      MYWAL_Content_1: 'Warning! You are about to remove your wallet: ',
+      MYWAL_Content_2: 'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
+      MYWAL_Content_3: 'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
+
+      /* View Wallet Details */
+      VIEWWALLET_Subtitle: 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
+      VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+      VIEWWALLET_SuccessMsg: 'Success! Here are your wallet details.',
+
+      /* Mnemonic Additions */
+      MNEM_1: 'Por favor, selecione o endereço com o qual você gostaria de interagir.',
+      MNEM_2: 'Sua frase HD mnemônica única pode acessar uma série de carteiras/endereços. Por favor, selecione o endereço com o qual você gostaria interagir neste momento.',
+      MNEM_more: 'Mais Endereços',
+      MNEM_prev: 'Endereço Anterior',
+
+      /* Hardware wallets */
+      x_Ledger: 'Carteira Ledge',
+      ADD_Ledger_1: 'Conectar-se a Carteira Ledge',
+      ADD_Ledger_2: 'Abra a aplicação Ethereum (ou uma aplicação de contrato)',
+      ADD_Ledger_3: 'Verifique se o Suporte do Navegador está habilitado em Configurações',
+      ADD_Ledger_scan: 'Conectar-se a Ledger Wallet',
+
+      /* Chrome Extension */
+      CX_error_1: 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
+      CX_quicksend: 'QuickSend', // if no appropriate translation, just use "Send"
+
+      /* Error Messages */
+      ERROR_1: 'Please enter valid amount.',
+      ERROR_2: 'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+      ERROR_3: 'Sorry! We don\'t recognize this type of wallet file. ',
+      ERROR_4: 'This is not a valid wallet file. ',
+      ERROR_5: 'This unit doesn\'t exists, please use the one of the following units ',
+      ERROR_6: 'Invalid address. ',
+      ERROR_7: 'Invalid password. ',
+      ERROR_8: 'Invalid amount. ',
+      ERROR_9: 'Invalid gas limit. ',
+      ERROR_10: 'Invalid data value. ',
+      ERROR_11: 'Invalid gas amount. ',
+      ERROR_12: 'Invalid nonce. ',
+      ERROR_13: 'Invalid signed transaction. ',
+      ERROR_14: 'A wallet with this nickname already exists. ',
+      ERROR_15: 'Wallet not found. ',
+      ERROR_16: 'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+      ERROR_17: 'A wallet with this address already exists in storage. Please check your wallets page. ',
+      ERROR_18: 'You need to have at least 0.001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+      ERROR_19: 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
+      ERROR_20: 'Invalid symbol',
+      ERROR_21: 'Não é um token ERC-20 válido',
+      SUCCESS_1: 'Valid address',
+      SUCCESS_2: 'Wallet successfully decrypted',
+      SUCCESS_3: 'Transaction submitted. TX ID: ',
+      SUCCESS_4: 'Your wallet was successfully added: ',
+      SUCCESS_5: 'You have successfully voted. Thank you for being an active participant in The DAO.',
+      SUCCESS_6: 'File Selected: ',
+
+      /* Geth Error Messages */
+      GETH_InvalidSender: 'Invalid sender',
+      GETH_Nonce: 'Nonce too low',
+      GETH_Cheap: 'Gas price too low for acceptance',
+      GETH_Balance: 'Insufficient balance',
+      GETH_NonExistentAccount: 'Account does not exist or account balance too low',
+      GETH_InsufficientFunds: 'Insufficient funds for gas * price + value',
+      GETH_IntrinsicGas: 'Intrinsic gas too low',
+      GETH_GasLimit: 'Exceeds block gas limit',
+      GETH_NegativeValue: 'Negative value',
+
+      /* Parity Error Messages */
+      PARITY_AlreadyImported: "Transaction with the same hash was already imported.",
+      PARITY_Old: "Transaction nonce is too low. Try incrementing the nonce.",
+      PARITY_TooCheapToReplace: "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+      PARITY_LimitReached: "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+      PARITY_InsufficientGasPrice: "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+      PARITY_InsufficientBalance: "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+      PARITY_GasLimitExceeded: "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+      PARITY_InvalidGasLimit: "Supplied gas is beyond limit.",
+
+      /* Tranlsation Info */
+      translate_version: '0.3',
+      Translator_Desc: 'Thank you to our translators: ',
+      // fill in your name and address:
+      TranslatorName_1: '[ Pedro "ShooterXD" Vieira ](https://www.myetherwallet.com/?gaslimit=21000&to=0x24eB7d82166361A8B69adE6FEA187Cb00FD7c7E1&value=1.0#send-transaction)',
+      TranslatorAddr_1: '',
+      /* Translator 1: Insert Comments Here */
+      TranslatorName_2: ' ',
+      TranslatorAddr_2: ' ',
+      /* Translator 2: Insert Comments Here */
+      TranslatorName_3: ' ',
+      TranslatorAddr_3: ' ',
+      /* Translator 3: Insert Comments Here */
+      TranslatorName_4: ' ',
+      TranslatorAddr_4: ' ',
+      /* Translator 4: Insert Comments Here */
+      TranslatorName_5: ' ',
+      TranslatorAddr_5: ' ',
+      /* Translator 5: Insert Comments Here */
+
+      /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
+      HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
+      HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!',
+      HELP_Remind_Title: 'Some reminders',
+      HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**.',
+      HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.',
+      HELP_Remind_Desc_3: 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!',
+
+      HELP_0_Title: '0) I\'m new. What do I do?',
+      HELP_0_Desc_1: 'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.',
+      HELP_0_Desc_2: 'Create a new wallet.',
+      HELP_0_Desc_3: 'Back the wallet up.',
+      HELP_0_Desc_4: 'Verify you have access to this new wallet and have correctly saved all necessary information.',
+      HELP_0_Desc_5: 'Transfer Ether to this new wallet.',
+
+      HELP_1_Title: '1) How do I create a new wallet? ',
+      HELP_1_Desc_1: 'Go to the "Generate Wallet" page.',
+      HELP_1_Desc_2: 'Go to the "Add Wallet" page & select "Generate New Wallet"',
+      HELP_1_Desc_3: 'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.',
+      HELP_1_Desc_4: 'Click "GENERATE".',
+      HELP_1_Desc_5: 'Your wallet has now been generated.',
+
+      HELP_2a_Title: '2a) How do I save/backup my wallet?',
+      HELP_2a_Desc_1: 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.',
+      HELP_2a_Desc_2: 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you.',
+      HELP_2a_Desc_3: 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:',
+      HELP_2a_Desc_4: 'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.',
+      HELP_2a_Desc_5: 'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.',
+      HELP_2a_Desc_6: 'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).',
+
+      HELP_2b_Title: '2b) How do I safely / offline / cold storage with MyEtherWallet?',
+      HELP_2b_Desc_1: 'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+      HELP_2b_Desc_2: 'Click download zip in the upper right.',
+      HELP_2b_Desc_3: 'Move zip to an airgapped computer.',
+      HELP_2b_Desc_4: 'Unzip it and double-click `index.html`.',
+      HELP_2b_Desc_5: 'Generate a wallet with a strong password.',
+      HELP_2b_Desc_6: 'Save the address. Save versions of the private key. Save the password if you might not remember it forever.',
+      HELP_2b_Desc_7: 'Store these papers / USBs in multiple physically separate locations.',
+      HELP_2b_Desc_8: 'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same.',
+
+      HELP_3_Title: '3) How do I verify I have access to my new wallet?',
+      HELP_3_Desc_1: '**Before you send any Ether to your new wallet**, you should ensure you have access to it.',
+      HELP_3_Desc_2: 'Navigate to the "View Wallet Info" page.',
+      HELP_3_Desc_3: 'Navigate to the MyEtherWallet.com "View Wallet Info" page.',
+      HELP_3_Desc_4: 'Select your wallet file -or- your private key and unlock your wallet.',
+      HELP_3_Desc_5: 'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+      HELP_3_Desc_6: 'Click the "Unlock Wallet" button.',
+      HELP_3_Desc_7: 'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.',
+      HELP_3_Desc_8: 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly.',
+
+      HELP_4_Title: '4) How do I send Ether from one wallet to another?',
+      HELP_4_Desc_1: 'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.',
+      HELP_4_Desc_2: 'Navigate to the "Send Ether" page.',
+      HELP_4_Desc_3: 'Select your wallet file -or- your private key and unlock your wallet.',
+      HELP_4_Desc_4: 'If the wallet is encrypted, a text box will automatically appear. Enter the password.',
+      HELP_4_Desc_5: 'Click the "Unlock Wallet" button.',
+      HELP_4_Desc_6: 'Enter the address you would like to send to in the "To Address:" field.',
+      HELP_4_Desc_7: 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
+      HELP_4_Desc_8: 'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ether like you normally would. See Question #6 below for more information.',
+      HELP_4_Desc_9: 'Click "Generate Transaction".',
+      HELP_4_Desc_10: 'A couple more fields will appear. This is your browser generating the transaction.',
+      HELP_4_Desc_11: 'Click the blue "Send Transaction" button below that.',
+      HELP_4_Desc_12: 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+      HELP_4_Desc_13: 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+
+      HELP_4CX_Title: '4) How do I send Ether using MyEtherWallet CX?',
+      HELP_4CX_Desc_1: 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.',
+      HELP_4CX_Desc_2: 'QuickSend:',
+      HELP_4CX_Desc_3: 'Click the Chrome Extension Icon.',
+      HELP_4CX_Desc_4: 'Click the "QuickSend" button.',
+      HELP_4CX_Desc_5: 'Select the wallet you wish to send from.',
+      HELP_4CX_Desc_6: 'Enter the address you would like to send to in the "To Address:" field.',
+      HELP_4CX_Desc_7: 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.',
+      HELP_4CX_Desc_8: 'Click "Send Transaction". ',
+      HELP_4CX_Desc_9: 'Verify the address and the amount you are sending is correct.',
+      HELP_4CX_Desc_10: 'Enter the password for that wallet.',
+      HELP_4CX_Desc_11: 'Click "Send Transaction."',
+      HELP_4CX_Desc_12: 'Using "Send Ether" Page: ',
+
+      HELP_5_Title: '5) How do I run MyEtherWallet.com offline/locally? ',
+      HELP_5_Desc_1: 'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page.',
+      HELP_5_Desc_2: 'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).',
+      HELP_5_Desc_3: 'Click download zip in the upper right.',
+      HELP_5_Desc_4: 'Move zip to an airgapped computer.',
+      HELP_5_Desc_5: 'Unzip it.',
+      HELP_5_Desc_6: 'Double-Click `index.html`.',
+      HELP_5_Desc_7: 'MyEtherWallet.com is now running entirely on your computer.',
+      HELP_5_Desc_8: 'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.',
+      HELP_5_Desc_9: 'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.',
+
+      HELP_5CX_Title: '5) How can I install this extension from the repo instead of the Chrome Store? ',
+      HELP_5CX_Desc_1: 'Go to our github and find the most recent Chrome Extension release: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).',
+      HELP_5CX_Desc_2: 'Scroll to the very bottom and right click on the latest release. Click "save link as".',
+      HELP_5CX_Desc_3: 'Go to Google Chrome and find you settings (in the menu in the upper right).',
+      HELP_5CX_Desc_4: 'Click "Extensions" on the left.',
+      HELP_5CX_Desc_5: 'Check the "Developer Mode" button at the top of that page.',
+      HELP_5CX_Desc_6: 'Click the "Load unpacked extension..." button.',
+      HELP_5CX_Desc_7: 'Navigate to the now-unzipped folder that you downloaded earlier. Click "select".',
+      HELP_5CX_Desc_8: 'The extension should now show up in your extensions and in your Chrome Extension bar.',
+
+      HELP_6_Title: '6) How do I split my ETH / ETC? ',
+      HELP_6_Desc_1: 'When the hard fork happened, any ETH you had in your wallet now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original wallet into two wallets. Moving forward, you need to make sure only ETH goes to your ETH wallet and only ETC goes to your ETC wallet.',
+      HELP_6_Desc_2: 'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.',
+      HELP_6_Desc_3: '[Even more information about wallets and replay attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
+      HELP_6_Desc_4: 'Generate a new clean post-fork ETH wallet for yourself (to be the final destination of pure ETH).',
+      HELP_6_Desc_5: 'Generate a new clean post-fork ETC wallet for yourself (to be the final destination of pure ETC).',
+      HELP_6_Desc_6: 'Back up these new wallets and verify you can access them. See #2a and #3 above.',
+      HELP_6_Desc_7: 'Send 0.1234 ETH to your new "ETH" wallet using "Only ETH" option on the "Send Ether" page.',
+      HELP_6_Desc_8: 'Send 0.5678 ETC to your new "ETC" wallet using "Only ETC" option on the "Send Ether" page.',
+      HELP_6_Desc_9: 'Check that only the 0.1234 ETH moved on etherscan.io. Check that only the 0.5678 ETC moved on gastracker.io.',
+      HELP_6_Desc_10: 'Send a 0.0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the 0.0001 ETH moved.',
+      HELP_6_Desc_11: 'Generate (but do not send) a 0.0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. ',
+      HELP_6_Desc_12: 'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the 0.0002 ETC moved.',
+      HELP_6_Desc_13: 'If everything receives correctly and sends correctly then you are golden.',
+      HELP_6_Desc_14: 'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".',
+      HELP_6_Desc_15: 'Moving forward, you can use the standard transactions for these new wallets without risk of replay attacks. ',
+
+      HELP_7_Title: '7) How do I send Tokens & add custom tokens?',
+      HELP_7_Desc_0: '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token.',
+      HELP_7_Desc_1: 'Navigate to the "Send Token" page.',
+      HELP_7_Desc_2: 'Unlock your wallet.',
+      HELP_7_Desc_3: 'Enter the address you would like to send to in the "To Address:" field.',
+      HELP_7_Desc_4: 'Enter the amount you would like to send.',
+      HELP_7_Desc_5: 'Select which token you would like to send.',
+      HELP_7_Desc_6: 'If you do not see the token listed:',
+      HELP_7_Desc_7: 'Click "Custom".',
+      HELP_7_Desc_8: 'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.',
+      HELP_7_Desc_9: 'Click "Save".',
+      HELP_7_Desc_10: 'You can now send that token as well as see it\'s balance in the sidebar.',
+      HELP_7_Desc_11: 'Click "Generate Transaction".',
+      HELP_7_Desc_12: 'A couple more fields will appear. This is your browser generating the transaction.',
+      HELP_7_Desc_13: 'Click the blue "Send Transaction" button below that.',
+      HELP_7_Desc_14: 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.',
+      HELP_7_Desc_15: 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain.',
+
+      HELP_8_Title: '8) What happens if your site goes down?',
+      HELP_8_Desc_1: 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain.',
+      HELP_8_Desc_2: 'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site.',
+      HELP_8_Desc_3: 'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below.',
+      HELP_8_Desc_4: 'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. ',
+
+      HELP_8CX_Title: '8) What happens if MyEtherWallet CX disappears?',
+      HELP_8CX_Desc_1: 'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer.',
+      HELP_8CX_Desc_2: 'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.',
+      HELP_8CX_Desc_3: 'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.',
+
+      HELP_9_Title: '9) Is the "Send Ether" page offline?',
+      HELP_9_Desc_1: ' No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.',
+
+      HELP_10_Title: '10) How do I make an offline transaction?',
+      HELP_10_Desc_1: 'Navigate to the "Offline Transaction" page via your online computer.',
+      HELP_10_Desc_2: 'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.',
+      HELP_10_Desc_3: 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.',
+      HELP_10_Desc_4: 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.',
+      HELP_10_Desc_5: 'Enter the "NONCE" as it was displayed to you on your online computer in step #1.',
+      HELP_10_Desc_6: 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.',
+      HELP_10_Desc_7: 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.',
+      HELP_10_Desc_8: 'Select your wallet file -or- your private key and unlock your wallet.',
+      HELP_10_Desc_9: 'Press the "GENERATE SIGNED TRANSACTION" button.',
+      HELP_10_Desc_10: 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
+      HELP_10_Desc_11: 'On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.',
+
+      HELP_11_Title: '11) How do I send to a contract?',
+      HELP_11_Desc_1: 'Sending to a contract often requires you to include data or additional gas or both',
+      HELP_11_Desc_2: 'Navigate to the "Send Ether" page. ',
+      HELP_11_Desc_3: 'Select your wallet file -or- your private key and unlock your wallet. ',
+      HELP_11_Desc_4: 'Enter a "To Address" and "Amount to Send"',
+      HELP_11_Desc_5: 'Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+      HELP_12_Title: '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?',
+      HELP_12_Desc_1: 'Using an Geth/Mist JSON file from MyEtherWallet v2+....',
+      HELP_12_Desc_2: 'Go to the "View Wallet Info" page.',
+      HELP_12_Desc_3: 'Unlock your wallet using your **encrypted** private key or JSON file. ',
+      HELP_12_Desc_4: 'Go to the "My Wallets" page.',
+      HELP_12_Desc_5: 'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. ',
+      HELP_12_Desc_6: 'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.',
+      HELP_12_Desc_7: 'Open the Ethereum Wallet application. ',
+      HELP_12_Desc_8: 'In the menu bar, go "Accounts" -> "Backup" -> "Accounts"',
+      HELP_12_Desc_9: 'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder.',
+      HELP_12_Desc_10: 'Your account should show up immediately under "Accounts."',
+      HELP_12_Desc_11: 'Using your unencrypted private key...',
+      HELP_12_Desc_12: 'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.',
+      HELP_12_Desc_13: 'Select your wallet file -or- enter/paste your private key to unlock your wallet.',
+      HELP_12_Desc_14: 'Copy Your Private Key (unencrypted).',
+      HELP_12_Desc_15: 'If you are on a Mac:',
+      HELP_12_Desc_15b: 'If you are on a PC:',
+      HELP_12_Desc_16: 'Open Text Edit and paste this private key.',
+      HELP_12_Desc_17: 'Go to the menu bar and click "Format" -> "Make Plain Text".',
+      HELP_12_Desc_18: 'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.',
+      HELP_12_Desc_19: 'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`',
+      HELP_12_Desc_20: 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
+      HELP_12_Desc_21: 'After successful import, delete `nothing_special_delete_me.txt`',
+      HELP_12_Desc_22: 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".',
+      HELP_12_Desc_23: 'Open Notepad & paste the private key',
+      HELP_12_Desc_24: 'Save the file as `nothing_special_delete_me.txt` at `C:`',
+      HELP_12_Desc_25: 'Run the command, `geth account import C:\\nothing_special_delete_me.txt`',
+      HELP_12_Desc_26: 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.',
+      HELP_12_Desc_27: 'After successful import, delete `nothing_special_delete_me.txt`',
+      HELP_12_Desc_28: 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
+
+      HELP_13_Title: '13) What does "Gas Limit Too Low" Mean?',
+      HELP_13_Desc_1: 'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.',
+
+      HELP_14_Title: '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?',
+      HELP_14_Desc_1: 'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experiments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
+
+      HELP_15_Title: '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan)',
+      HELP_15_Desc_1: 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.',
+
+      HELP_16_Title: '16) How do I check the balance of my account? ',
+      HELP_16_Desc_1: 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io',
+
+      HELP_17_Title: '17) Why isn\'t my balance showing up when I unlock my wallet? ',
+      HELP_17_Desc_1: ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io',
+
+      HELP_18_Title: '18) Where is my geth wallet file?',
+
+      HELP_19_Title: '19) Where is my Mist wallet file? ',
+      HELP_19_Desc_1: 'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.',
+
+      HELP_20_Title: '20) Where is my pre-sale wallet file?',
+      HELP_20_Desc_1: 'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.',
+
+      HELP_21_Title: '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
+      HELP_21_Desc_1: 'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.',
+      HELP_21_Desc_2: 'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.',
+      HELP_21_Desc_3: 'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems.',
+      HELP_21_Desc_4: 'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.',
+      HELP_21_Desc_5: 'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.',
+      HELP_21_Desc_6: 'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.',
+      HELP_21_Desc_7: '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.',
+      HELP_21_Desc_8: 'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.',
+
+      HELP_SecCX_Title: 'Security - MyEtherWallet CX ',
+      HELP_SecCX_Desc_1: 'Where is this extension saving my information?',
+      HELP_SecCX_Desc_2: 'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.',
+      HELP_SecCX_Desc_3: 'What information is saved? ',
+      HELP_SecCX_Desc_4: 'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.',
+      HELP_SecCX_Desc_5: 'Why aren\'t the nickname and wallet address encrypted? ',
+      HELP_SecCX_Desc_6: 'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.',
+
+      HELP_Sec_Title: 'Security',
+      HELP_Sec_Desc_1: 'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. ',
+      HELP_Sec_Desc_2: 'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.',
+      HELP_Sec_Desc_3: 'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.',
+      HELP_Sec_Desc_4: 'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.',
+      HELP_Sec_Desc_5: 'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.',
+      HELP_Sec_Desc_6: 'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.',
+      HELP_Sec_Desc_7: 'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.',
+      HELP_Sec_Desc_8: 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
+
+      HELP_FAQ_Title: 'More Helpful Answers to Frequent Questions',
+      HELP_Contact_Title: 'Ways to Get in Touch'
+    };
+
+    module.exports = pt;
+  }, {}], 52: [function (require, module, exports) {
     // Russian
     'use strict';
 
@@ -8985,7 +9569,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }, _defineProperty(_ru$data, "SEND_custom", 'Другое'), _defineProperty(_ru$data, "SEND_gas", 'Газ'), _defineProperty(_ru$data, "SEND_TransferTotal", 'Перевести весь доступный баланс'), _defineProperty(_ru$data, "SEND_generate", 'Сформировать транзакцию'), _defineProperty(_ru$data, "SEND_raw", 'Готовая транзакция'), _defineProperty(_ru$data, "SEND_signed", 'Подписанная транзакция'), _defineProperty(_ru$data, "SEND_trans", 'Отправить транзакцию'), _defineProperty(_ru$data, "SENDModal_Title", 'Внимание! '), _defineProperty(_ru$data, "SENDModal_Content_1", 'Вы собираетесь перевести'), _defineProperty(_ru$data, "SENDModal_Content_2", 'на адрес'), _defineProperty(_ru$data, "SENDModal_Content_3", 'Вы уверены, что хотите сделать это?'), _defineProperty(_ru$data, "SENDModal_Content_4", 'К СВЕДЕНИЮ: Если произошла ошибка, Вам скорее всего надо положить ещё немного эфира (ether) на Ваш счёт, чтобы покрыть расходы на газ при пре переводе токенов. Расходы на газ оплачиваются эфиром (ether).'), _defineProperty(_ru$data, "SENDModal_No", 'Нет, отменить транзакцию!'), _defineProperty(_ru$data, "SENDModal_Yes", 'Да, я уверен! Выполнить транзакцию.'), _defineProperty(_ru$data, "TOKEN_Addr", 'Адрес: '), _defineProperty(_ru$data, "TOKEN_Symbol", 'Символ токена: '), _defineProperty(_ru$data, "TOKEN_Dec", 'Дробность (знаков после запятой): '), _defineProperty(_ru$data, "TRANS_desc", 'Если Вы хотите перевести токены, используйте страницу "Отправить токены".'), _defineProperty(_ru$data, "TRANS_warning", 'Если Вы используете функции "только ETH" или "только ETC", перевод будет выполнен с помощью контракта. У некоторых сервисов могут возникнуть проблемы с приёмом таких переводов. Уточните этот вопрос.'), _defineProperty(_ru$data, "TRANS_standard", 'Эфир (ether, обычная транзакция)'), _defineProperty(_ru$data, "TRANS_eth", 'Только ETH'), _defineProperty(_ru$data, "TRANS_etc", 'Только ETC'), _defineProperty(_ru$data, "TRANS_advanced", '+Дополнительно: добавить данные '), _defineProperty(_ru$data, "TRANS_data", ' Данные: '), _defineProperty(_ru$data, "TRANS_gas", ' Газ: '), _defineProperty(_ru$data, "TRANS_sendInfo", 'Стандартная транзакция, использующая 21000 газа, будет стоить 0,000441 эфира (ether). Мы указываем цену газа немного выше минимально возможной: 0,000000021 эфира (ether), для того, чтобы ускорить выполнение танзакций. Мы не берём комиссию за выполнение транзакций.'), _defineProperty(_ru$data, "TRANSModal_Title", 'Транзакции вида "только ETH" и "только ETC"'), _defineProperty(_ru$data, "TRANSModal_Content_0", 'О видах транзакций и сервисах:'), _defineProperty(_ru$data, "TRANSModal_Content_1", '**Эфир (ether, обычная транзакция): ** Выполняет обычный перевод напрямую с одного адреса на другой. Используется стандартное количесвто газа: 21000. В большинстве случаев, перевод ETH, выполненный этим способом, можно будет продублировать для ETC.'), _defineProperty(_ru$data, "TRANSModal_Content_2", '**Только ETH: ** Выполняет перевод через [контракт Тимона Раппа, защищающий от дублирования переводов (рекомендован ВБ)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), поэтому перевод будет выполнен только в **ETH**.'), _defineProperty(_ru$data, "TRANSModal_Content_3", '**Только ETC: ** Выполняет перевод через [контракт Тимона Раппа, защищающий от дублирования переводов (рекомендован ВБ)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/), поэтому перевод будет выполнен только в **ETC**. '), _defineProperty(_ru$data, "TRANSModal_Content_4", '**Coinbase и ShapeShift: ** Отправляйте им только обычные транзакции. Если Вы отправите им транзакцию вида "только ...", то Вам придётся обращаться к их службе поддержки, чтобы они вручную пополнили Ваш баланс или вернули бы Вам Ваш эфир (ether). [Вы также можете попробовать использовать инструмент "split" от Shapeshift.](https://split.shapeshift.io/)'), _defineProperty(_ru$data, "TRANSModal_Content_5", '**Kraken & Poloniex:** Проблем не выявлено.  Можно использовать транзакции любого вида.'), _defineProperty(_ru$data, "TRANSModal_Yes", 'Спасибо, я всё понял.'), _defineProperty(_ru$data, "TRANSModal_No", 'Чёрт, теперь я окончательно запутался.  Помогите мне.'), _defineProperty(_ru$data, "OFFLINE_Title", 'Сформировать и отправить оффлайн транзакцию'), _defineProperty(_ru$data, "OFFLINE_Desc", 'Оффлайн транзакция формируется за тра шага. Вы должны выполнить шаги №1 и №3 на компьютере, подключённом к интернету (на онлайн компьютере), а шаг №2 на компьютере, отсоединённом от сети (на оффлайн компьютере). Это гарантирует, что подключённые к интернет устройства не получат доступа к Вашим закрытым ключам.'), _defineProperty(_ru$data, "OFFLLINE_Step1_Title", 'Шаг №1: Подготовка информации (онлайн компьютер)'), _defineProperty(_ru$data, "OFFLINE_Step1_Button", 'Подготовка информации'), _defineProperty(_ru$data, "OFFLINE_Step1_Label_1", 'Адрес отправителя: '), _defineProperty(_ru$data, "OFFLINE_Step1_Label_2", 'Внимание: Это адрес ОТПРАВИТЕЛЯ, а не адрес получателя. № перевода (nonce) определяется для адреса отправителя. При использовании оффлайн компьютера, физически изолированного от сети, это будет адрес счёта "холодного хранения" (cold-storage).'), _defineProperty(_ru$data, "OFFLINE_Step2_Title", 'Шаг №2: Формирование транзакции (оффлайн компьютер)'), _defineProperty(_ru$data, "OFFLINE_Step2_Label_1", 'Адрес получателя: '), _defineProperty(_ru$data, "OFFLINE_Step2_Label_2", 'Сумма перевода'), _defineProperty(_ru$data, "OFFLINE_Step2_Label_3", 'Цена газа '), _defineProperty(_ru$data, "OFFLINE_Step2_Label_3b", 'Это отображалось на шаге №1 на Вашем онлайн компьютере.'), _defineProperty(_ru$data, "OFFLINE_Step2_Label_4", 'Лимит газа '), _defineProperty(_ru$data, "OFFLINE_Step2_Label_4b", 'Лимит газа по умолчанию: 21000. При использовании контрактов или передаче дополнительных данных может быть необходимо указать другое значение. Неистраченный газ будет Вам возвращён.'), _defineProperty(_ru$data, "OFFLINE_Step2_Label_5", '№ перевода (nonce)'), _defineProperty(_ru$data, "OFFLINE_Step2_Label_5b", 'Это отображалось на шаге №1 на Вашем онлайн компьютере.'), _defineProperty(_ru$data, "OFFLINE_Step2_Label_6", 'Данные'), _defineProperty(_ru$data, "OFFLINE_Step2_Label_6b", 'Это необязательный параметр. Данные обычно указывают при использовании контрактов.'), _defineProperty(_ru$data, "OFFLINE_Step2_Label_7", 'Выберите или введите ваш закрытый ключ или JSON.'), _defineProperty(_ru$data, "OFFLINE_Step3_Title", 'Шаг №3: Выполнить транзакцию (онлайн компьютер)'), _defineProperty(_ru$data, "OFFLINE_Step3_Label_1", 'Вставьте подписанную транзакцию с шага №2 и нажмите кнопку "ВЫПОЛНИТЬ ТРАНЗАКЦИЮ".'), _defineProperty(_ru$data, "DAO_bal1", 'на момент создания блока №1.919.999'), _defineProperty(_ru$data, "DAO_bal2", 'текущий'), _defineProperty(_ru$data, "DAO_TitleETH", 'Обменять DAO токены на ETH'), _defineProperty(_ru$data, "DAO_TitleETC", 'Обменять DAO токены на ETC'), _defineProperty(_ru$data, "DAO_ETC_Label_1", 'На какой адрес зачислить ETC?'), _defineProperty(_ru$data, "DAO_ETC_Label_2", 'Группа "White Hat" работала не покладая рук для того, чтобы Вы смогли получить обратно Ваш ETC. Вы можете сказать им "спасибо", пожертвовав небольшой процент от суммы, если хотите, конечно. '), _defineProperty(_ru$data, "DAO_Desc", 'Используйте эту вкладку, чтобы обменять Ваши DAO токены на эфир (ether). Если вы хотите перевести DAO токены, используйте вкладку "Перевести токены".'), _defineProperty(_ru$data, "DAO_Inst", 'Да. Просто нажмите большую красную кнопку. Это действительно просто.'), _defineProperty(_ru$data, "DAO_Warning", 'Если Вы видите ошибку "Недостаточно средств для оплаты газа", то это значит, что на Вашем счету не хватает эфира (ether), чтобы покрыть расходы на газ. Переведите 0,01 эфира (ether) на Ваш счёт и попробуйте снова. '), _defineProperty(_ru$data, "DAOModal_Title", 'Просто чтобы убедиться...'), _defineProperty(_ru$data, "DAOModal_1", 'Вы собираетесь обменять'), _defineProperty(_ru$data, "DAOModal_2", 'DAO токенов. На адрес'), _defineProperty(_ru$data, "DAOModal_3", 'будет зачислено'), _defineProperty(_ru$data, "DGD_Desc", 'Получить причитающиеся Вам DigixDAO (DGD) токены и бэйджи. Вы можете получить причитающиеся Вам токены, если Вы участвовали в в распродаже токенов 30–31 марта 2016 года.  Если Вы хотите перевести DGD токены, используйте вкладку "Перевести токены".'), _defineProperty(_ru$data, "DGD_Label_1", 'Предположительный размер комиссии:'), _defineProperty(_ru$data, "DGD_Label_2", 'Максимальный размер комиссии:'), _defineProperty(_ru$data, "DGD_Label_3", 'Цена газа:'), _defineProperty(_ru$data, "DGD_Generate", 'Сформировать требование'), _defineProperty(_ru$data, "DGD_Content", 'Вы собираетесь затребовать причитающиеся Вам DGD токены.'), _defineProperty(_ru$data, "DEP_generate", 'Сформировать байткод'), _defineProperty(_ru$data, "DEP_generated", 'Сформированный байткод'), _defineProperty(_ru$data, "DEP_signtx", 'Подписать транзакцию'), _defineProperty(_ru$data, "DEP_interface", 'Сформированный интерфейс'), _defineProperty(_ru$data, "MYWAL_Nick", 'Название кошелька'), _defineProperty(_ru$data, "MYWAL_Address", 'Адрес кошелька'), _defineProperty(_ru$data, "MYWAL_Bal", 'Баланс'), _defineProperty(_ru$data, "MYWAL_Edit", 'Редактировать'), _defineProperty(_ru$data, "MYWAL_View", 'Просмотреть'), _defineProperty(_ru$data, "MYWAL_Remove", 'Удалить'), _defineProperty(_ru$data, "MYWAL_RemoveWal", 'Удалить кошелёк:'), _defineProperty(_ru$data, "MYWAL_WatchOnly", 'Список слежения'), _defineProperty(_ru$data, "MYWAL_Viewing", 'Просматриваемый кошелёк: '), _defineProperty(_ru$data, "MYWAL_Hide", 'Скрыть информацию о кошельке'), _defineProperty(_ru$data, "MYWAL_Edit_2", 'Редактировать кошелёк: '), _defineProperty(_ru$data, "MYWAL_Name", 'Имя кошелька'), _defineProperty(_ru$data, "MYWAL_Content_1", 'Внимание! Вы собираетесь удалить кошелёк: '), _defineProperty(_ru$data, "MYWAL_Content_2", ' Убедитесь, что Вы **сохранили закрытый ключ или файл Keystore / JSON и пароль** от этого кошелька, прежде чем Вы удалите этот кошелёк.'), _defineProperty(_ru$data, "MYWAL_Content_3", 'Если Вы планируете в будущем использовать этот кошелёк в MyEtherWallet CX, Вам надо будет вручную заново добавить его, указав закрытый ключ или файл JSON и пароль.'), _defineProperty(_ru$data, "VIEWWALLET_Subtitle", 'Позволяет скачать закрытые ключи в различных форматах, а также повторно напечатать Ваши бумажные кошельки. Вам это понадобится, когда Вы захотите [импортировать Ваши счета в geth или Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Для проверки баланса Ваших счетов мы рекомендуем использовать браузер блокчейна, например [etherscan.io](http://etherscan.io/).'), _defineProperty(_ru$data, "VIEWWALLET_Subtitle_Short", 'Позволяет Вам скачать Ваши закрытые ключи в различных форматах, а также повторно напечатать Ваши бумажные кошельки. '), _defineProperty(_ru$data, "VIEWWALLET_SuccessMsg", 'Поздравляем! Вот информация о Вашем кошельке.'), _defineProperty(_ru$data, "CX_error_1", 'У Вас нет сохранённых кошельков. Чтобы создать кошелёк, нажмите ["Создать кошелёк"](/cx-wallet.html#add-wallet)!'), _defineProperty(_ru$data, "CX_quicksend", 'Моментальный перевод'), _defineProperty(_ru$data, "ERROR_1", 'Пожалуйста, введите сумму корректно.'), _defineProperty(_ru$data, "ERROR_2", 'Пароль должен содержать не менее 9 символов. Пожалуйста, используйте сложный пароль. '), _defineProperty(_ru$data, "ERROR_3", 'К сожалению, мы не смогли определить формат файла кошелька. '), _defineProperty(_ru$data, "ERROR_4", 'Этот файл не является файлом кошелька. '), _defineProperty(_ru$data, "ERROR_5", 'Такая единица измерения не существует. Пожалуйста, укажите одну из следующих единиц измерения '), _defineProperty(_ru$data, "ERROR_6", 'Неправильный адрес. '), _defineProperty(_ru$data, "ERROR_7", 'Неверный пароль. '), _defineProperty(_ru$data, "ERROR_8", 'Некорректная сумма. '), _defineProperty(_ru$data, "ERROR_9", 'Некорректно указан лимит газа. '), _defineProperty(_ru$data, "ERROR_10", 'Недопустимые данные. '), _defineProperty(_ru$data, "ERROR_11", 'Некорректно указано количество газа. '), _defineProperty(_ru$data, "ERROR_12", 'Неверный номер перевода (nonce). '), _defineProperty(_ru$data, "ERROR_13", 'Подписанная транзакция некорректна. '), _defineProperty(_ru$data, "ERROR_14", 'Кошелёк с таким названием уже существует. '), _defineProperty(_ru$data, "ERROR_15", 'Кошелёк не найден. '), _defineProperty(_ru$data, "ERROR_16", 'Предложение с таким идентификатором не существует или при чтении предложения произошла ошибка. '), _defineProperty(_ru$data, "ERROR_17", 'Кошелёк с таким адресом уже находится в хранилище. Просмотрите в списке кошельков. '), _defineProperty(_ru$data, "ERROR_18", 'Вам необходимо иметь не менее 0.01 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. '), _defineProperty(_ru$data, "ERROR_19", 'Транзакция могла бы истратить весь газ. Это значит, что Вы уже голосовали по данному предложению, или период обсуждения данного предложения закончился.'), _defineProperty(_ru$data, "ERROR_20", 'Неправильный символ'), _defineProperty(_ru$data, "SUCCESS_1", 'Адрес указан верно'), _defineProperty(_ru$data, "SUCCESS_2", 'Кошелёк успешно расшифрован'), _defineProperty(_ru$data, "SUCCESS_3", 'Транзакция отправлена на выполнение. TX ID: '), _defineProperty(_ru$data, "SUCCESS_4", 'Ваш кошелёк успешно добавлен: '), _defineProperty(_ru$data, "SUCCESS_5", 'Ваш голос учтён. Спасибо Вам за активное участие в работе DAO.'), _defineProperty(_ru$data, "SUCCESS_6", 'Выбранный файл: '), _defineProperty(_ru$data, "PARITY_AlreadyImported", "Transaction with the same hash was already imported."), _defineProperty(_ru$data, "PARITY_Old", "Transaction nonce is too low. Try incrementing the nonce."), _defineProperty(_ru$data, "PARITY_TooCheapToReplace", "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce."), _defineProperty(_ru$data, "PARITY_LimitReached", "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee."), _defineProperty(_ru$data, "PARITY_InsufficientGasPrice", "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee."), _defineProperty(_ru$data, "PARITY_InsufficientBalance", "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}."), _defineProperty(_ru$data, "PARITY_GasLimitExceeded", "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas."), _defineProperty(_ru$data, "PARITY_InvalidGasLimit", "Supplied gas is beyond limit."), _defineProperty(_ru$data, "translate_version", '0.3'), _defineProperty(_ru$data, "Translator_Desc", 'Спасибо нашим переводчикам: '), _defineProperty(_ru$data, "TranslatorName_1", '[Михаил Владимиров](https://www.myetherwallet.com/?gaslimit=21000&to=0x6ff323e36bfdb20502b23780695f4e77e36cde95&value=1.0#send-transaction)'), _defineProperty(_ru$data, "TranslatorAddr_1", '0x6ff323e36bfdb20502b23780695f4e77e36cde95'), _defineProperty(_ru$data, "TranslatorName_2", ' '), _defineProperty(_ru$data, "TranslatorAddr_2", ' '), _defineProperty(_ru$data, "TranslatorName_3", ' '), _defineProperty(_ru$data, "TranslatorAddr_3", ' '), _defineProperty(_ru$data, "TranslatorName_4", ' '), _defineProperty(_ru$data, "TranslatorAddr_4", ' '), _defineProperty(_ru$data, "TranslatorName_5", ' '), _defineProperty(_ru$data, "TranslatorAddr_5", ' '), _defineProperty(_ru$data, "HELP_Warning", 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.'), _defineProperty(_ru$data, "HELP_Desc", 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!'), _defineProperty(_ru$data, "HELP_Remind_Title", 'Some reminders'), _defineProperty(_ru$data, "HELP_Remind_Desc_1", '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**.'), _defineProperty(_ru$data, "HELP_Remind_Desc_2", 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.'), _defineProperty(_ru$data, "HELP_Remind_Desc_3", 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!'), _defineProperty(_ru$data, "HELP_0_Title", '0) I\'m new. What do I do?'), _defineProperty(_ru$data, "HELP_0_Desc_1", 'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.'), _defineProperty(_ru$data, "HELP_0_Desc_2", 'Create a new wallet.'), _defineProperty(_ru$data, "HELP_0_Desc_3", 'Back the wallet up.'), _defineProperty(_ru$data, "HELP_0_Desc_4", 'Verify you have access to this new wallet and have correctly saved all necessary information.'), _defineProperty(_ru$data, "HELP_0_Desc_5", 'Transfer Ether to this new wallet.'), _defineProperty(_ru$data, "HELP_1_Title", '1) How do I create a new wallet? '), _defineProperty(_ru$data, "HELP_1_Desc_1", 'Go to the "Generate Wallet" page.'), _defineProperty(_ru$data, "HELP_1_Desc_2", 'Go to the "Add Wallet" page & select "Generate New Wallet"'), _defineProperty(_ru$data, "HELP_1_Desc_3", 'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.'), _defineProperty(_ru$data, "HELP_1_Desc_4", 'Click "GENERATE".'), _defineProperty(_ru$data, "HELP_1_Desc_5", 'Your wallet has now been generated.'), _defineProperty(_ru$data, "HELP_2a_Title", '2a) How do I save/backup my wallet?'), _defineProperty(_ru$data, "HELP_2a_Desc_1", 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.'), _defineProperty(_ru$data, "HELP_2a_Desc_2", 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you.'), _defineProperty(_ru$data, "HELP_2a_Desc_3", 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:'), _defineProperty(_ru$data, "HELP_2a_Desc_4", 'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.'), _defineProperty(_ru$data, "HELP_2a_Desc_5", 'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.'), _defineProperty(_ru$data, "HELP_2a_Desc_6", 'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).'), _defineProperty(_ru$data, "HELP_2b_Title", '2b) How do I safely / offline / cold storage with MyEtherWallet?'), _defineProperty(_ru$data, "HELP_2b_Desc_1", 'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).'), _defineProperty(_ru$data, "HELP_2b_Desc_2", 'Click download zip in the upper right.'), _defineProperty(_ru$data, "HELP_2b_Desc_3", 'Move zip to an airgapped computer.'), _defineProperty(_ru$data, "HELP_2b_Desc_4", 'Unzip it and double-click `index.html`.'), _defineProperty(_ru$data, "HELP_2b_Desc_5", 'Generate a wallet with a strong password.'), _defineProperty(_ru$data, "HELP_2b_Desc_6", 'Save the address. Save versions of the private key. Save the password if you might not remember it forever.'), _defineProperty(_ru$data, "HELP_2b_Desc_7", 'Store these papers / USBs in multiple physically separate locations.'), _defineProperty(_ru$data, "HELP_2b_Desc_8", 'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same.'), _defineProperty(_ru$data, "HELP_3_Title", '3) How do I verify I have access to my new wallet?'), _defineProperty(_ru$data, "HELP_3_Desc_1", '**Before you send any Ether to your new wallet**, you should ensure you have access to it.'), _defineProperty(_ru$data, "HELP_3_Desc_2", 'Navigate to the "View Wallet Info" page.'), _defineProperty(_ru$data, "HELP_3_Desc_3", 'Navigate to the MyEtherWallet.com "View Wallet Info" page.'), _defineProperty(_ru$data, "HELP_3_Desc_4", 'Select your wallet file -or- your private key and unlock your wallet.'), _defineProperty(_ru$data, "HELP_3_Desc_5", 'If the wallet is encrypted, a text box will automatically appear. Enter the password.'), _defineProperty(_ru$data, "HELP_3_Desc_6", 'Click the "Unlock Wallet" button.'), _defineProperty(_ru$data, "HELP_3_Desc_7", 'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.'), _defineProperty(_ru$data, "HELP_3_Desc_8", 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly.'), _defineProperty(_ru$data, "HELP_4_Title", '4) How do I send Ether from one wallet to another?'), _defineProperty(_ru$data, "HELP_4_Desc_1", 'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.'), _defineProperty(_ru$data, "HELP_4_Desc_2", 'Navigate to the "Send Ether" page.'), _defineProperty(_ru$data, "HELP_4_Desc_3", 'Select your wallet file -or- your private key and unlock your wallet.'), _defineProperty(_ru$data, "HELP_4_Desc_4", 'If the wallet is encrypted, a text box will automatically appear. Enter the password.'), _defineProperty(_ru$data, "HELP_4_Desc_5", 'Click the "Unlock Wallet" button.'), _defineProperty(_ru$data, "HELP_4_Desc_6", 'Enter the address you would like to send to in the "To Address:" field.'), _defineProperty(_ru$data, "HELP_4_Desc_7", 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.'), _defineProperty(_ru$data, "HELP_4_Desc_8", 'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ether like you normally would. See Question #6 below for more information.'), _defineProperty(_ru$data, "HELP_4_Desc_9", 'Click "Generate Transaction".'), _defineProperty(_ru$data, "HELP_4_Desc_10", 'A couple more fields will appear. This is your browser generating the transaction.'), _defineProperty(_ru$data, "HELP_4_Desc_11", 'Click the blue "Send Transaction" button below that.'), _defineProperty(_ru$data, "HELP_4_Desc_12", 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.'), _defineProperty(_ru$data, "HELP_4_Desc_13", 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. '), _defineProperty(_ru$data, "HELP_4CX_Title", '4) How do I send Ether using MyEtherWallet CX?'), _defineProperty(_ru$data, "HELP_4CX_Desc_1", 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.'), _defineProperty(_ru$data, "HELP_4CX_Desc_2", 'QuickSend:'), _defineProperty(_ru$data, "HELP_4CX_Desc_3", 'Click the Chrome Extension Icon.'), _defineProperty(_ru$data, "HELP_4CX_Desc_4", 'Click the "QuickSend" button.'), _defineProperty(_ru$data, "HELP_4CX_Desc_5", 'Select the wallet you wish to send from.'), _defineProperty(_ru$data, "HELP_4CX_Desc_6", 'Enter the address you would like to send to in the "To Address:" field.'), _defineProperty(_ru$data, "HELP_4CX_Desc_7", 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.'), _defineProperty(_ru$data, "HELP_4CX_Desc_8", 'Click "Send Transaction". '), _defineProperty(_ru$data, "HELP_4CX_Desc_9", 'Verify the address and the amount you are sending is correct.'), _defineProperty(_ru$data, "HELP_4CX_Desc_10", 'Enter the password for that wallet.'), _defineProperty(_ru$data, "HELP_4CX_Desc_11", 'Click "Send Transaction."'), _defineProperty(_ru$data, "HELP_4CX_Desc_12", 'Using "Send Ether" Page: '), _defineProperty(_ru$data, "HELP_5_Title", '5) How do I run MyEtherWallet.com offline/locally? '), _defineProperty(_ru$data, "HELP_5_Desc_1", 'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page.'), _defineProperty(_ru$data, "HELP_5_Desc_2", 'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).'), _defineProperty(_ru$data, "HELP_5_Desc_3", 'Click download zip in the upper right.'), _defineProperty(_ru$data, "HELP_5_Desc_4", 'Move zip to an airgapped computer.'), _defineProperty(_ru$data, "HELP_5_Desc_5", 'Unzip it.'), _defineProperty(_ru$data, "HELP_5_Desc_6", 'Double-Click `index.html`.'), _defineProperty(_ru$data, "HELP_5_Desc_7", 'MyEtherWallet.com is now running entirely on your computer.'), _defineProperty(_ru$data, "HELP_5_Desc_8", 'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.'), _defineProperty(_ru$data, "HELP_5_Desc_9", 'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.'), _defineProperty(_ru$data, "HELP_5CX_Title", '5) How can I install this extension from the repo instead of the Chrome Store? '), _defineProperty(_ru$data, "HELP_5CX_Desc_1", 'Go to our github and find the most recent Chrome Extension release: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).'), _defineProperty(_ru$data, "HELP_5CX_Desc_2", 'Scroll to the very bottom and right click on the latest release. Click "save link as".'), _defineProperty(_ru$data, "HELP_5CX_Desc_3", 'Go to Google Chrome and find you settings (in the menu in the upper right).'), _defineProperty(_ru$data, "HELP_5CX_Desc_4", 'Click "Extensions" on the left.'), _defineProperty(_ru$data, "HELP_5CX_Desc_5", 'Check the "Developer Mode" button at the top of that page.'), _defineProperty(_ru$data, "HELP_5CX_Desc_6", 'Click the "Load unpacked extension..." button.'), _defineProperty(_ru$data, "HELP_5CX_Desc_7", 'Navigate to the now-unzipped folder that you downloaded earlier. Click "select".'), _defineProperty(_ru$data, "HELP_5CX_Desc_8", 'The extension should now show up in your extensions and in your Chrome Extension bar.'), _defineProperty(_ru$data, "HELP_6_Title", '6) How do I split my ETH / ETC? '), _defineProperty(_ru$data, "HELP_6_Desc_1", 'When the hard fork happened, any ETH you had in your wallet now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original wallet into two wallets. Moving forward, you need to make sure only ETH goes to your ETH wallet and only ETC goes to your ETC wallet.'), _defineProperty(_ru$data, "HELP_6_Desc_2", 'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.'), _defineProperty(_ru$data, "HELP_6_Desc_3", '[Even more information about wallets and replay attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).'), _defineProperty(_ru$data, "HELP_6_Desc_4", 'Generate a new clean post-fork ETH wallet for yourself (to be the final destination of pure ETH).'), _defineProperty(_ru$data, "HELP_6_Desc_5", 'Generate a new clean post-fork ETC wallet for yourself (to be the final destination of pure ETC).'), _defineProperty(_ru$data, "HELP_6_Desc_6", 'Back up these new wallets and verify you can access them. See #2a and #3 above.'), _defineProperty(_ru$data, "HELP_6_Desc_7", 'Send 0.1234 ETH to your new "ETH" wallet using "Only ETH" option on the "Send Ether" page.'), _defineProperty(_ru$data, "HELP_6_Desc_8", 'Send 0.5678 ETC to your new "ETC" wallet using "Only ETC" option on the "Send Ether" page.'), _defineProperty(_ru$data, "HELP_6_Desc_9", 'Check that only the 0.1234 ETH moved on etherscan.io. Check that only the 0.5678 ETC moved on gastracker.io.'), _defineProperty(_ru$data, "HELP_6_Desc_10", 'Send a 0.0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the 0.0001 ETH moved.'), _defineProperty(_ru$data, "HELP_6_Desc_11", 'Generate (but do not send) a 0.0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. '), _defineProperty(_ru$data, "HELP_6_Desc_12", 'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the 0.0002 ETC moved.'), _defineProperty(_ru$data, "HELP_6_Desc_13", 'If everything receives correctly and sends correctly then you are golden.'), _defineProperty(_ru$data, "HELP_6_Desc_14", 'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".'), _defineProperty(_ru$data, "HELP_6_Desc_15", 'Moving forward, you can use the standard transactions for these new wallets without risk of replay attacks. '), _defineProperty(_ru$data, "HELP_7_Title", '7) How do I send Tokens & add custom tokens?'), _defineProperty(_ru$data, "HELP_7_Desc_0", '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token.'), _defineProperty(_ru$data, "HELP_7_Desc_1", 'Navigate to the "Send Token" page.'), _defineProperty(_ru$data, "HELP_7_Desc_2", 'Unlock your wallet.'), _defineProperty(_ru$data, "HELP_7_Desc_3", 'Enter the address you would like to send to in the "To Address:" field.'), _defineProperty(_ru$data, "HELP_7_Desc_4", 'Enter the amount you would like to send.'), _defineProperty(_ru$data, "HELP_7_Desc_5", 'Select which token you would like to send.'), _defineProperty(_ru$data, "HELP_7_Desc_6", 'If you do not see the token listed:'), _defineProperty(_ru$data, "HELP_7_Desc_7", 'Click "Custom".'), _defineProperty(_ru$data, "HELP_7_Desc_8", 'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.'), _defineProperty(_ru$data, "HELP_7_Desc_9", 'Click "Save".'), _defineProperty(_ru$data, "HELP_7_Desc_10", 'You can now send that token as well as see it\'s balance in the sidebar.'), _defineProperty(_ru$data, "HELP_7_Desc_11", 'Click "Generate Transaction".'), _defineProperty(_ru$data, "HELP_7_Desc_12", 'A couple more fields will appear. This is your browser generating the transaction.'), _defineProperty(_ru$data, "HELP_7_Desc_13", 'Click the blue "Send Transaction" button below that.'), _defineProperty(_ru$data, "HELP_7_Desc_14", 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.'), _defineProperty(_ru$data, "HELP_7_Desc_15", 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain.'), _defineProperty(_ru$data, "HELP_8_Title", '8) What happens if your site goes down?'), _defineProperty(_ru$data, "HELP_8_Desc_1", 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain.'), _defineProperty(_ru$data, "HELP_8_Desc_2", 'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site.'), _defineProperty(_ru$data, "HELP_8_Desc_3", 'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below.'), _defineProperty(_ru$data, "HELP_8_Desc_4", 'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. '), _defineProperty(_ru$data, "HELP_8CX_Title", '8) What happens if MyEtherWallet CX disappears?'), _defineProperty(_ru$data, "HELP_8CX_Desc_1", 'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer.'), _defineProperty(_ru$data, "HELP_8CX_Desc_2", 'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.'), _defineProperty(_ru$data, "HELP_8CX_Desc_3", 'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.'), _defineProperty(_ru$data, "HELP_9_Title", '9) Is the "Send Ether" page offline?'), _defineProperty(_ru$data, "HELP_9_Desc_1", ' No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.'), _defineProperty(_ru$data, "HELP_10_Title", '10) How do I make an offline transaction?'), _defineProperty(_ru$data, "HELP_10_Desc_1", 'Navigate to the "Offline Transaction" page via your online computer.'), _defineProperty(_ru$data, "HELP_10_Desc_2", 'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.'), _defineProperty(_ru$data, "HELP_10_Desc_3", 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.'), _defineProperty(_ru$data, "HELP_10_Desc_4", 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.'), _defineProperty(_ru$data, "HELP_10_Desc_5", 'Enter the "NONCE" as it was displayed to you on your online computer in step #1.'), _defineProperty(_ru$data, "HELP_10_Desc_6", 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.'), _defineProperty(_ru$data, "HELP_10_Desc_7", 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.'), _defineProperty(_ru$data, "HELP_10_Desc_8", 'Select your wallet file -or- your private key and unlock your wallet.'), _defineProperty(_ru$data, "HELP_10_Desc_9", 'Press the "GENERATE SIGNED TRANSACTION" button.'), _defineProperty(_ru$data, "HELP_10_Desc_10", 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. '), _defineProperty(_ru$data, "HELP_10_Desc_11", 'On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.'), _defineProperty(_ru$data, "HELP_11_Title", '11) How do I send to a contract?'), _defineProperty(_ru$data, "HELP_11_Desc_1", 'Sending to a contract often requires you to include data or additional gas or both'), _defineProperty(_ru$data, "HELP_11_Desc_2", 'Navigate to the "Send Ether" page. '), _defineProperty(_ru$data, "HELP_11_Desc_3", 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_ru$data, "HELP_11_Desc_4", 'Enter a "To Address" and "Amount to Send"'), _defineProperty(_ru$data, "HELP_11_Desc_5", 'Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.'), _defineProperty(_ru$data, "HELP_12_Title", '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?'), _defineProperty(_ru$data, "HELP_12_Desc_1", 'Using an Geth/Mist JSON file from MyEtherWallet v2+....'), _defineProperty(_ru$data, "HELP_12_Desc_2", 'Go to the "View Wallet Info" page.'), _defineProperty(_ru$data, "HELP_12_Desc_3", 'Unlock your wallet using your **encrypted** private key or JSON file. '), _defineProperty(_ru$data, "HELP_12_Desc_4", 'Go to the "My Wallets" page.'), _defineProperty(_ru$data, "HELP_12_Desc_5", 'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. '), _defineProperty(_ru$data, "HELP_12_Desc_6", 'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.'), _defineProperty(_ru$data, "HELP_12_Desc_7", 'Open the Ethereum Wallet application. '), _defineProperty(_ru$data, "HELP_12_Desc_8", 'In the menu bar, go "Accounts" -> "Backup" -> "Accounts"'), _defineProperty(_ru$data, "HELP_12_Desc_9", 'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder.'), _defineProperty(_ru$data, "HELP_12_Desc_10", 'Your account should show up immediately under "Accounts."'), _defineProperty(_ru$data, "HELP_12_Desc_11", 'Using your unencrypted private key...'), _defineProperty(_ru$data, "HELP_12_Desc_12", 'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.'), _defineProperty(_ru$data, "HELP_12_Desc_13", 'Select your wallet file -or- enter/paste your private key to unlock your wallet.'), _defineProperty(_ru$data, "HELP_12_Desc_14", 'Copy Your Private Key (unencrypted).'), _defineProperty(_ru$data, "HELP_12_Desc_15", 'If you are on a Mac:'), _defineProperty(_ru$data, "HELP_12_Desc_15b", 'Если вы используете ПК:'), _defineProperty(_ru$data, "HELP_12_Desc_16", 'Open Text Edit and paste this private key.'), _defineProperty(_ru$data, "HELP_12_Desc_17", 'Go to the menu bar and click "Format" -> "Make Plain Text".'), _defineProperty(_ru$data, "HELP_12_Desc_18", 'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.'), _defineProperty(_ru$data, "HELP_12_Desc_19", 'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`'), _defineProperty(_ru$data, "HELP_12_Desc_20", 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. '), _defineProperty(_ru$data, "HELP_12_Desc_21", 'After successful import, delete `nothing_special_delete_me.txt`'), _defineProperty(_ru$data, "HELP_12_Desc_22", 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".'), _defineProperty(_ru$data, "HELP_12_Desc_23", 'Open Notepad & paste the private key'), _defineProperty(_ru$data, "HELP_12_Desc_24", 'Save the file as `nothing_special_delete_me.txt` at `C:`'), _defineProperty(_ru$data, "HELP_12_Desc_25", 'Run the command, `geth account import C:\\nothing_special_delete_me.txt`'), _defineProperty(_ru$data, "HELP_12_Desc_26", 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.'), _defineProperty(_ru$data, "HELP_12_Desc_27", 'After successful import, delete `nothing_special_delete_me.txt`'), _defineProperty(_ru$data, "HELP_12_Desc_28", 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". '), _defineProperty(_ru$data, "HELP_13_Title", '13) What does "Gas Limit Too Low" Mean?'), _defineProperty(_ru$data, "HELP_13_Desc_1", 'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.'), _defineProperty(_ru$data, "HELP_14_Title", '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?'), _defineProperty(_ru$data, "HELP_14_Desc_1", 'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experiments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).'), _defineProperty(_ru$data, "HELP_15_Title", '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan)'), _defineProperty(_ru$data, "HELP_15_Desc_1", 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.'), _defineProperty(_ru$data, "HELP_16_Title", '16) How do I check the balance of my account? '), _defineProperty(_ru$data, "HELP_16_Desc_1", 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io'), _defineProperty(_ru$data, "HELP_17_Title", '17) Why isn\'t my balance showing up when I unlock my wallet? '), _defineProperty(_ru$data, "HELP_17_Desc_1", ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io'), _defineProperty(_ru$data, "HELP_18_Title", '18) Where is my geth wallet file?'), _defineProperty(_ru$data, "HELP_19_Title", '19) Where is my Mist wallet file? '), _defineProperty(_ru$data, "HELP_19_Desc_1", 'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.'), _defineProperty(_ru$data, "HELP_20_Title", '20) Where is my pre-sale wallet file?'), _defineProperty(_ru$data, "HELP_20_Desc_1", 'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.'), _defineProperty(_ru$data, "HELP_21_Title", '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? '), _defineProperty(_ru$data, "HELP_21_Desc_1", 'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.'), _defineProperty(_ru$data, "HELP_21_Desc_2", 'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.'), _defineProperty(_ru$data, "HELP_21_Desc_3", 'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems.'), _defineProperty(_ru$data, "HELP_21_Desc_4", 'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.'), _defineProperty(_ru$data, "HELP_21_Desc_5", 'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.'), _defineProperty(_ru$data, "HELP_21_Desc_6", 'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.'), _defineProperty(_ru$data, "HELP_21_Desc_7", '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.'), _defineProperty(_ru$data, "HELP_21_Desc_8", 'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.'), _defineProperty(_ru$data, "HELP_SecCX_Title", 'Security - MyEtherWallet CX '), _defineProperty(_ru$data, "HELP_SecCX_Desc_1", 'Where is this extension saving my information?'), _defineProperty(_ru$data, "HELP_SecCX_Desc_2", 'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.'), _defineProperty(_ru$data, "HELP_SecCX_Desc_3", 'What information is saved? '), _defineProperty(_ru$data, "HELP_SecCX_Desc_4", 'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.'), _defineProperty(_ru$data, "HELP_SecCX_Desc_5", 'Why aren\'t the nickname and wallet address encrypted? '), _defineProperty(_ru$data, "HELP_SecCX_Desc_6", 'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.'), _defineProperty(_ru$data, "HELP_Sec_Title", 'Security'), _defineProperty(_ru$data, "HELP_Sec_Desc_1", 'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. '), _defineProperty(_ru$data, "HELP_Sec_Desc_2", 'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.'), _defineProperty(_ru$data, "HELP_Sec_Desc_3", 'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.'), _defineProperty(_ru$data, "HELP_Sec_Desc_4", 'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.'), _defineProperty(_ru$data, "HELP_Sec_Desc_5", 'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.'), _defineProperty(_ru$data, "HELP_Sec_Desc_6", 'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.'), _defineProperty(_ru$data, "HELP_Sec_Desc_7", 'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.'), _defineProperty(_ru$data, "HELP_Sec_Desc_8", 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! '), _defineProperty(_ru$data, "HELP_FAQ_Title", 'More Helpful Answers to Frequent Questions'), _defineProperty(_ru$data, "HELP_Contact_Title", 'Ways to Get in Touch'), _ru$data);
 
     module.exports = ru;
-  }, {}], 52: [function (require, module, exports) {
+  }, {}], 53: [function (require, module, exports) {
     // Turkish
     'use strict';
 
@@ -9149,7 +9733,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }, _defineProperty(_tr$data, "SEND_custom", 'Kullaniciya özel'), _defineProperty(_tr$data, "SEND_gas", 'Gas'), _defineProperty(_tr$data, "SEND_TransferTotal", 'Tüm dengeyi gönder'), _defineProperty(_tr$data, "SEND_generate", 'Generate Transaction'), _defineProperty(_tr$data, "SEND_raw", 'İşlem oluştur ikili sistem'), _defineProperty(_tr$data, "SEND_signed", 'Imzali İşlem'), _defineProperty(_tr$data, "SEND_trans", 'Islemi gönder'), _defineProperty(_tr$data, "SENDModal_Title", 'Uyarı! '), _defineProperty(_tr$data, "SENDModal_Content_1", 'şu an '), _defineProperty(_tr$data, "SENDModal_Content_2", 'bu adresse'), _defineProperty(_tr$data, "SENDModal_Content_3", 'Göndermek üzeresin. Emin misin?'), _defineProperty(_tr$data, "SENDModal_Content_4", 'NOTA: Eger bir hata ile karsilasirsan, büyük olasilikla token göndermeye gereken gaz maliyetini karsilamak için hesabina eter eklemen gerekir. Gas ether olarak ödenir.'), _defineProperty(_tr$data, "SENDModal_No", 'Hayir, cikar beni burdan!'), _defineProperty(_tr$data, "SENDModal_Yes", 'Evet, Eminim! Islemi tamamla.'), _defineProperty(_tr$data, "TOKEN_Addr", 'Adres: '), _defineProperty(_tr$data, "TOKEN_Symbol", 'Token symbolu: '), _defineProperty(_tr$data, "TOKEN_Dec", 'Ondalık: '), _defineProperty(_tr$data, "TRANS_desc", 'Eğer Token göndermek istiyorsan, bunun yerine "Token Gönder" sayfasını kullan.'), _defineProperty(_tr$data, "TRANS_warning", '"Yalnızca ETH" ya da "Yalnızca ETC" fonksiyonu kullanıyorsan, bir sözleşme yoluyla gönderiyorsun. Bazı servisler bu işlemleri kabul etmekde sorunları var. Daha fazla oku.'), _defineProperty(_tr$data, "TRANS_standard", 'ETH (Standart işlem)'), _defineProperty(_tr$data, "TRANS_eth", 'Yalnızca ETH'), _defineProperty(_tr$data, "TRANS_etc", 'Yalnızca ETC'), _defineProperty(_tr$data, "TRANS_advanced", '+Gelişmiş: Veri ekle'), _defineProperty(_tr$data, "TRANS_data", 'Veri: '), _defineProperty(_tr$data, "TRANS_gas", 'Gas: '), _defineProperty(_tr$data, "TRANS_sendInfo", '21000 gaz kullanan standart bir islem 0.000441 ETH ile mal olur. Biz hizli bir sekilde mayinlanmasi için, 0.000000021 ETH\'dan biraz daha yüksek gaz fiyatini kullaniyoruz. Biz herhangi bir islem ücreti almiyoruz.'), _defineProperty(_tr$data, "TRANSModal_Title", '"Yalnızca ETH" and "Yalnızca ETC" islemler'), _defineProperty(_tr$data, "TRANSModal_Content_0", 'Farklı işlemler ve farklı hizmetleri hakkında bir not:'), _defineProperty(_tr$data, "TRANSModal_Content_1", '**ETH (Standart islem): ** Bu standart bir islem baslatir bir hesapten direkt baska bir hesapa. Standart gas 21000\'dir. Bu islemlen gönderileren islem ETC zincirinde\'de yer bulabilir.'), _defineProperty(_tr$data, "TRANSModal_Content_2", '**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.'), _defineProperty(_tr$data, "TRANSModal_Content_3", '**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. '), _defineProperty(_tr$data, "TRANSModal_Content_4", '**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)'), _defineProperty(_tr$data, "TRANSModal_Content_5", '**Kraken & Poloniex:** Bilinen sorun yok, ikisinden birini sec'), _defineProperty(_tr$data, "TRANSModal_Yes", 'Güzel, şimdi anladım.'), _defineProperty(_tr$data, "TRANSModal_No", 'Aman, kafam daha cok karıştı. Yardım et.'), _defineProperty(_tr$data, "OFFLINE_Title", 'Olustur & offline islem'), _defineProperty(_tr$data, "OFFLINE_Desc", 'Offline islemler 3. adimda gerçeklestirir. 1. ve 3. adimi internete bagli olan bir bilgisayarda, 2. adimi offline olan bir bilgisayarda tamamliyorsun. Böyle özel anahtarinin internete bagli olan bir bilgisayara ulasmasini engelnenir.'), _defineProperty(_tr$data, "OFFLLINE_Step1_Title", 'Adim 1: Bilgileri olustur (Online Bilgisayar)'), _defineProperty(_tr$data, "OFFLINE_Step1_Button", 'Bilgileri olustur'), _defineProperty(_tr$data, "OFFLINE_Step1_Label_1", 'Adres\'den: '), _defineProperty(_tr$data, "OFFLINE_Step1_Label_2", 'Nota: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.'), _defineProperty(_tr$data, "OFFLINE_Step2_Title", 'Adim 2: Generate Transaction (Offline Computer)'), _defineProperty(_tr$data, "OFFLINE_Step2_Label_1", 'Adrese: '), _defineProperty(_tr$data, "OFFLINE_Step2_Label_2", 'Gönderilen miktar'), _defineProperty(_tr$data, "OFFLINE_Step2_Label_3", 'Gas fiyati '), _defineProperty(_tr$data, "OFFLINE_Step2_Label_3b", 'Bu online bilgisayarınızda adım 1\'de gösterilirdi.'), _defineProperty(_tr$data, "OFFLINE_Step2_Label_4", 'Gas limiti '), _defineProperty(_tr$data, "OFFLINE_Step2_Label_4b", '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you.'), _defineProperty(_tr$data, "OFFLINE_Step2_Label_5", 'Veri'), _defineProperty(_tr$data, "OFFLINE_Step2_Label_5b", 'Bu online bilgisayarınızda adım 1\'de gösterilir.'), _defineProperty(_tr$data, "OFFLINE_Step2_Label_6", 'Veri'), _defineProperty(_tr$data, "OFFLINE_Step2_Label_6b", 'Bu istege bagli. Data is often used when you send transactions to contracts.'), _defineProperty(_tr$data, "OFFLINE_Step2_Label_7", 'Enter / Select your Private Key / JSON.'), _defineProperty(_tr$data, "OFFLINE_Step3_Title", 'Adim 3: Gönder / Islemi duyur (Online Computer)'), _defineProperty(_tr$data, "OFFLINE_Step3_Label_1", 'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.'), _defineProperty(_tr$data, "DAO_bal1", 'block 1,919,999\'ta'), _defineProperty(_tr$data, "DAO_bal2", 'şimdiki'), _defineProperty(_tr$data, "DAO_TitleETH", 'DAO ETH olarak cek'), _defineProperty(_tr$data, "DAO_TitleETC", 'DAO ETC olarak cek'), _defineProperty(_tr$data, "DAO_ETC_Label_1", 'ETC hangi adrese gönderilmesini istiyorsun'), _defineProperty(_tr$data, "DAO_ETC_Label_2", '"Beyaz Şapka Grubu" ETC\'lerini geri almak için yorulmadan çalışmaktadır. Eğer istiyorsan, senin çekiminden yüzdesi bağışlayarak "teşekkür ederim" diyebilirsin.'), _defineProperty(_tr$data, "DAO_Desc", 'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.'), _defineProperty(_tr$data, "DAO_Inst", 'Evet. Sadece büyük kırmızı düğmeye bas. Bu kadar kolay.'), _defineProperty(_tr$data, "DAO_Warning", 'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ether to this account and try again. '), _defineProperty(_tr$data, "DAOModal_Title", 'Sadece emin olmak için...'), _defineProperty(_tr$data, "DAOModal_1", 'Cekmek üzeresin'), _defineProperty(_tr$data, "DAOModal_2", 'DAO token\'i '), _defineProperty(_tr$data, "DAOModal_3", ' yerine'), _defineProperty(_tr$data, "DGD_Desc", 'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.'), _defineProperty(_tr$data, "DGD_Label_1", 'Tahmini bedel:'), _defineProperty(_tr$data, "DGD_Label_2", 'Maximum bedel:'), _defineProperty(_tr$data, "DGD_Label_3", 'Gas fiyati:'), _defineProperty(_tr$data, "DGD_Generate", 'Talep oluştur'), _defineProperty(_tr$data, "DGD_Content", 'Suan DGD token\'lerini talep etmekdesin.'), _defineProperty(_tr$data, "DEP_generate", 'Bytecode oluştur'), _defineProperty(_tr$data, "DEP_generated", 'Oluşturulan Bytecode'), _defineProperty(_tr$data, "DEP_signtx", 'Islmemi Imzala'), _defineProperty(_tr$data, "DEP_interface", 'Interface oluştur'), _defineProperty(_tr$data, "MYWAL_Nick", 'Cüzdan nickname'), _defineProperty(_tr$data, "MYWAL_Address", 'Cüzdan adres'), _defineProperty(_tr$data, "MYWAL_Bal", 'Bakiye'), _defineProperty(_tr$data, "MYWAL_Edit", 'Düzenle'), _defineProperty(_tr$data, "MYWAL_View", 'Göster'), _defineProperty(_tr$data, "MYWAL_Remove", 'Kaldir'), _defineProperty(_tr$data, "MYWAL_RemoveWal", 'Cüzdani kaldir:'), _defineProperty(_tr$data, "MYWAL_WatchOnly", 'Sadece izlenen hesaplar'), _defineProperty(_tr$data, "MYWAL_Viewing", 'Izlenen Cüzdan: '), _defineProperty(_tr$data, "MYWAL_Hide", 'Cüzdan bilgilerini gizle'), _defineProperty(_tr$data, "MYWAL_Edit_2", 'Cüzdani düzenle: '), _defineProperty(_tr$data, "MYWAL_Name", 'Cüzdan Ismi'), _defineProperty(_tr$data, "MYWAL_Content_1", 'Uyarı! Cüzdanını silmek üzeresin: '), _defineProperty(_tr$data, "MYWAL_Content_2", 'Bunu kaldırmadan önce ** özel anahtarıni ve / veya Keystore Dosya ve şifreni ** kaydettiğinden emin ol.'), _defineProperty(_tr$data, "MYWAL_Content_3", 'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.'), _defineProperty(_tr$data, "VIEWWALLET_Subtitle", 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).'), _defineProperty(_tr$data, "VIEWWALLET_Subtitle_Short", 'This allows you to download different versions of private keys and re-print your paper wallet. '), _defineProperty(_tr$data, "VIEWWALLET_SuccessMsg", 'Success! Here are your wallet details.'), _defineProperty(_tr$data, "CX_error_1", 'Su an cüzdan eklenmemis. Cüzdan ekle tikla ["Add Wallet"](/cx-wallet.html#add-wallet) ve bir cüzdan ekle!'), _defineProperty(_tr$data, "CX_quicksend", 'Gönder'), _defineProperty(_tr$data, "ERROR_1", 'Geçerli tutar yaz.'), _defineProperty(_tr$data, "ERROR_2", 'Sifren en az 9 sembol\'dan olusmasi lazim. Güçlü bir parola sectiginden emin ol. '), _defineProperty(_tr$data, "ERROR_3", 'Sorry! We don\'t recognize this type of wallet file. '), _defineProperty(_tr$data, "ERROR_4", 'Geçerli bir cüzdan dosyası değil. '), _defineProperty(_tr$data, "ERROR_5", 'This unit doesn\'t exists, please use the one of the following units Var olmayan bir birim, bu birimlerden birini kullan lütfen'), _defineProperty(_tr$data, "ERROR_6", 'Geçersiz adres. '), _defineProperty(_tr$data, "ERROR_7", 'Geçersiz parola. '), _defineProperty(_tr$data, "ERROR_8", 'Yetersiz bakiye. '), _defineProperty(_tr$data, "ERROR_9", 'Geçersiz gas limit. '), _defineProperty(_tr$data, "ERROR_10", 'Geçersiz data value. '), _defineProperty(_tr$data, "ERROR_11", 'Yetersiz gas. '), _defineProperty(_tr$data, "ERROR_12", 'Geçersiz veri. '), _defineProperty(_tr$data, "ERROR_13", 'Geçersiz imzali isleme. '), _defineProperty(_tr$data, "ERROR_14", 'Secdigin Nickname baska bir cüzdanda kullaniliyor. '), _defineProperty(_tr$data, "ERROR_15", 'Cüzdan bulunmadi. '), _defineProperty(_tr$data, "ERROR_16", 'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. '), _defineProperty(_tr$data, "ERROR_17", 'A wallet with this address already exists in storage. Please check your wallets page. '), _defineProperty(_tr$data, "ERROR_18", 'You need to have at least 0.01 ether in your account to cover the cost of gas. Please add some ether and try again. '), _defineProperty(_tr$data, "ERROR_19", 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.'), _defineProperty(_tr$data, "ERROR_20", 'Geçersiz sembol'), _defineProperty(_tr$data, "SUCCESS_1", 'Geçerli adres'), _defineProperty(_tr$data, "SUCCESS_2", 'Cüzdan basariyla desifre edildi'), _defineProperty(_tr$data, "SUCCESS_3", 'İşlem teslim edildi TX ID: '), _defineProperty(_tr$data, "SUCCESS_4", 'Cüzdanın başarıyla eklendi: '), _defineProperty(_tr$data, "SUCCESS_5", 'Başarıyla oy verdiniz. DAO aktif bir katılımcı olduğunuz için teşekkür ederiz.'), _defineProperty(_tr$data, "SUCCESS_6", 'Dosya secildi '), _defineProperty(_tr$data, "translate_version", '0.3'), _defineProperty(_tr$data, "Translator_Desc", 'Thank you to our translators: '), _defineProperty(_tr$data, "TranslatorName_1", '[ffidan61](https://www.myetherwallet.com/?gaslimit=21000&to=0xF1Fdf8635cc35a084B97905F62a021cAd71fbC21&value=1.0#send-transaction)'), _defineProperty(_tr$data, "TranslatorAddr_1", '0xF1Fdf8635cc35a084B97905F62a021cAd71fbC21'), _defineProperty(_tr$data, "TranslatorName_2", ' '), _defineProperty(_tr$data, "TranslatorAddr_2", ' '), _defineProperty(_tr$data, "TranslatorName_3", ' '), _defineProperty(_tr$data, "TranslatorAddr_3", ' '), _defineProperty(_tr$data, "TranslatorName_4", ' '), _defineProperty(_tr$data, "TranslatorAddr_4", ' '), _defineProperty(_tr$data, "TranslatorName_5", ' '), _defineProperty(_tr$data, "TranslatorAddr_5", ' '), _defineProperty(_tr$data, "HELP_Warning", 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.'), _defineProperty(_tr$data, "HELP_Desc", 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!'), _defineProperty(_tr$data, "HELP_Remind_Title", 'Some reminders'), _defineProperty(_tr$data, "HELP_Remind_Desc_1", '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**.'), _defineProperty(_tr$data, "HELP_Remind_Desc_2", 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.'), _defineProperty(_tr$data, "HELP_Remind_Desc_3", 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!'), _defineProperty(_tr$data, "HELP_0_Title", '0) I\'m new. What do I do?'), _defineProperty(_tr$data, "HELP_0_Desc_1", 'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.'), _defineProperty(_tr$data, "HELP_0_Desc_2", 'Create a new wallet.'), _defineProperty(_tr$data, "HELP_0_Desc_3", 'Back the wallet up.'), _defineProperty(_tr$data, "HELP_0_Desc_4", 'Verify you have access to this new wallet and have correctly saved all necessary information.'), _defineProperty(_tr$data, "HELP_0_Desc_5", 'Transfer Ether to this new wallet.'), _defineProperty(_tr$data, "HELP_1_Title", '1) How do I create a new wallet? '), _defineProperty(_tr$data, "HELP_1_Desc_1", 'Go to the "Generate Wallet" page.'), _defineProperty(_tr$data, "HELP_1_Desc_2", 'Go to the "Add Wallet" page & select "Generate New Wallet"'), _defineProperty(_tr$data, "HELP_1_Desc_3", 'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.'), _defineProperty(_tr$data, "HELP_1_Desc_4", 'Click "GENERATE".'), _defineProperty(_tr$data, "HELP_1_Desc_5", 'Your wallet has now been generated.'), _defineProperty(_tr$data, "HELP_2a_Title", '2a) How do I save/backup my wallet?'), _defineProperty(_tr$data, "HELP_2a_Desc_1", 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.'), _defineProperty(_tr$data, "HELP_2a_Desc_2", 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you.'), _defineProperty(_tr$data, "HELP_2a_Desc_3", 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:'), _defineProperty(_tr$data, "HELP_2a_Desc_4", 'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.'), _defineProperty(_tr$data, "HELP_2a_Desc_5", 'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.'), _defineProperty(_tr$data, "HELP_2a_Desc_6", 'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).'), _defineProperty(_tr$data, "HELP_2b_Title", '2b) How do I safely / offline / cold storage with MyEtherWallet?'), _defineProperty(_tr$data, "HELP_2b_Desc_1", 'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).'), _defineProperty(_tr$data, "HELP_2b_Desc_2", 'Click download zip in the upper right.'), _defineProperty(_tr$data, "HELP_2b_Desc_3", 'Move zip to an airgapped computer.'), _defineProperty(_tr$data, "HELP_2b_Desc_4", 'Unzip it and double-click `index.html`.'), _defineProperty(_tr$data, "HELP_2b_Desc_5", 'Generate a wallet with a strong password.'), _defineProperty(_tr$data, "HELP_2b_Desc_6", 'Save the address. Save versions of the private key. Save the password if you might not remember it forever.'), _defineProperty(_tr$data, "HELP_2b_Desc_7", 'Store these papers / USBs in multiple physically separate locations.'), _defineProperty(_tr$data, "HELP_2b_Desc_8", 'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same.'), _defineProperty(_tr$data, "HELP_3_Title", '3) How do I verify I have access to my new wallet?'), _defineProperty(_tr$data, "HELP_3_Desc_1", '**Before you send any Ether to your new wallet**, you should ensure you have access to it.'), _defineProperty(_tr$data, "HELP_3_Desc_2", 'Navigate to the "View Wallet Info" page.'), _defineProperty(_tr$data, "HELP_3_Desc_3", 'Navigate to the MyEtherWallet.com "View Wallet Info" page.'), _defineProperty(_tr$data, "HELP_3_Desc_4", 'Select your wallet file -or- your private key and unlock your wallet.'), _defineProperty(_tr$data, "HELP_3_Desc_5", 'If the wallet is encrypted, a text box will automatically appear. Enter the password.'), _defineProperty(_tr$data, "HELP_3_Desc_6", 'Click the "Unlock Wallet" button.'), _defineProperty(_tr$data, "HELP_3_Desc_7", 'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.'), _defineProperty(_tr$data, "HELP_3_Desc_8", 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositting a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly.'), _defineProperty(_tr$data, "HELP_4_Title", '4) How do I send Ether from one wallet to another?'), _defineProperty(_tr$data, "HELP_4_Desc_1", 'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.'), _defineProperty(_tr$data, "HELP_4_Desc_2", 'Navigate to the "Send Ether" page.'), _defineProperty(_tr$data, "HELP_4_Desc_3", 'Select your wallet file -or- your private key and unlock your wallet.'), _defineProperty(_tr$data, "HELP_4_Desc_4", 'If the wallet is encrypted, a text box will automatically appear. Enter the password.'), _defineProperty(_tr$data, "HELP_4_Desc_5", 'Click the "Unlock Wallet" button.'), _defineProperty(_tr$data, "HELP_4_Desc_6", 'Enter the address you would like to send to in the "To Address:" field.'), _defineProperty(_tr$data, "HELP_4_Desc_7", 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.'), _defineProperty(_tr$data, "HELP_4_Desc_8", 'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ether like you normally would. See Question #6 below for more information.'), _defineProperty(_tr$data, "HELP_4_Desc_9", 'Click "Generate Transaction".'), _defineProperty(_tr$data, "HELP_4_Desc_10", 'A couple more fields will appear. This is your browser generating the transaction.'), _defineProperty(_tr$data, "HELP_4_Desc_11", 'Click the blue "Send Transaction" button below that.'), _defineProperty(_tr$data, "HELP_4_Desc_12", 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.'), _defineProperty(_tr$data, "HELP_4_Desc_13", 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. '), _defineProperty(_tr$data, "HELP_4CX_Title", '4) How do I send Ether using MyEtherWallet CX?'), _defineProperty(_tr$data, "HELP_4CX_Desc_1", 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.'), _defineProperty(_tr$data, "HELP_4CX_Desc_2", 'QuickSend:'), _defineProperty(_tr$data, "HELP_4CX_Desc_3", 'Click the Chrome Extension Icon.'), _defineProperty(_tr$data, "HELP_4CX_Desc_4", 'Click the "QuickSend" button.'), _defineProperty(_tr$data, "HELP_4CX_Desc_5", 'Select the wallet you wish to send from.'), _defineProperty(_tr$data, "HELP_4CX_Desc_6", 'Enter the address you would like to send to in the "To Address:" field.'), _defineProperty(_tr$data, "HELP_4CX_Desc_7", 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.'), _defineProperty(_tr$data, "HELP_4CX_Desc_8", 'Click "Send Transaction". '), _defineProperty(_tr$data, "HELP_4CX_Desc_9", 'Verify the address and the amount you are sending is correct.'), _defineProperty(_tr$data, "HELP_4CX_Desc_10", 'Enter the password for that wallet.'), _defineProperty(_tr$data, "HELP_4CX_Desc_11", 'Click "Send Transaction."'), _defineProperty(_tr$data, "HELP_4CX_Desc_12", 'Using "Send Ether" Page: '), _defineProperty(_tr$data, "HELP_5_Title", '5) How do I run MyEtherWallet.com offline/locally? '), _defineProperty(_tr$data, "HELP_5_Desc_1", 'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page.'), _defineProperty(_tr$data, "HELP_5_Desc_2", 'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).'), _defineProperty(_tr$data, "HELP_5_Desc_3", 'Click download zip in the upper right.'), _defineProperty(_tr$data, "HELP_5_Desc_4", 'Move zip to an airgapped computer.'), _defineProperty(_tr$data, "HELP_5_Desc_5", 'Unzip it.'), _defineProperty(_tr$data, "HELP_5_Desc_6", 'Double-Click `index.html`.'), _defineProperty(_tr$data, "HELP_5_Desc_7", 'MyEtherWallet.com is now running entirely on your computer.'), _defineProperty(_tr$data, "HELP_5_Desc_8", 'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.'), _defineProperty(_tr$data, "HELP_5_Desc_9", 'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.'), _defineProperty(_tr$data, "HELP_5CX_Title", '5) How can I install this extension from the repo instead of the Chrome Store? '), _defineProperty(_tr$data, "HELP_5CX_Desc_1", 'Go to our github and find the most recent Chrome Extension relase: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).'), _defineProperty(_tr$data, "HELP_5CX_Desc_2", 'Scroll to the very bottom and right click on the latest release. Click "save link as".'), _defineProperty(_tr$data, "HELP_5CX_Desc_3", 'Go to Google Chrome and find you settings (in the menu in the upper right).'), _defineProperty(_tr$data, "HELP_5CX_Desc_4", 'Click "Extensions" on the left.'), _defineProperty(_tr$data, "HELP_5CX_Desc_5", 'Check the "Developer Mode" button at the top of that page.'), _defineProperty(_tr$data, "HELP_5CX_Desc_6", 'Click the "Load unpacked extension..." button.'), _defineProperty(_tr$data, "HELP_5CX_Desc_7", 'Navigate to the now-unzipped folder that you downloaded earlier. Click "select".'), _defineProperty(_tr$data, "HELP_5CX_Desc_8", 'The extension should now show up in your extensions and in your Chrome Extension bar.'), _defineProperty(_tr$data, "HELP_6_Title", '6) How do I split my ETH / ETC? '), _defineProperty(_tr$data, "HELP_6_Desc_1", 'When the hard fork happened, any ETH you had in your wallet now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original wallet into two wallets. Moving forward, you need to make sure only ETH goes to your ETH wallet and only ETC goes to your ETC wallet.'), _defineProperty(_tr$data, "HELP_6_Desc_2", 'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.'), _defineProperty(_tr$data, "HELP_6_Desc_3", '[Even more information about wallets and reply attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).'), _defineProperty(_tr$data, "HELP_6_Desc_4", 'Generate a new clean post-fork ETH wallet for yourself (to be the final destination of pure ETH).'), _defineProperty(_tr$data, "HELP_6_Desc_5", 'Generate a new clean post-fork ETC wallet for yourself (to be the final destination of pure ETC).'), _defineProperty(_tr$data, "HELP_6_Desc_6", 'Back up these new wallets and verify you can access them. See #2a and #3 above.'), _defineProperty(_tr$data, "HELP_6_Desc_7", 'Send 0.1234 ETH to your new "ETH" wallet using "Only ETH" option on the "Send Ether" page.'), _defineProperty(_tr$data, "HELP_6_Desc_8", 'Send 0.5678 ETC to your new "ETC" wallet using "Only ETC" option on the "Send Ether" page.'), _defineProperty(_tr$data, "HELP_6_Desc_9", 'Check that only the 0.1234 ETH moved on etherscan.io. Check that only the 0.5678 ETC moved on gastracker.io.'), _defineProperty(_tr$data, "HELP_6_Desc_10", 'Send a 0.0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the 0.0001 ETH moved.'), _defineProperty(_tr$data, "HELP_6_Desc_11", 'Generate (but do not send) a 0.0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. '), _defineProperty(_tr$data, "HELP_6_Desc_12", 'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the 0.0002 ETC moved.'), _defineProperty(_tr$data, "HELP_6_Desc_13", 'If everything receives correctly and sends correctly then you are golden.'), _defineProperty(_tr$data, "HELP_6_Desc_14", 'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".'), _defineProperty(_tr$data, "HELP_6_Desc_15", 'Moving forward, you can use the standard transactions for these new wallets without risk of replay attacks. '), _defineProperty(_tr$data, "HELP_7_Title", '7) How do I send Tokens & add custom tokens?'), _defineProperty(_tr$data, "HELP_7_Desc_0", '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token.'), _defineProperty(_tr$data, "HELP_7_Desc_1", 'Navigate to the "Send Token" page.'), _defineProperty(_tr$data, "HELP_7_Desc_2", 'Unlock your wallet.'), _defineProperty(_tr$data, "HELP_7_Desc_3", 'Enter the address you would like to send to in the "To Address:" field.'), _defineProperty(_tr$data, "HELP_7_Desc_4", 'Enter the amount you would like to send.'), _defineProperty(_tr$data, "HELP_7_Desc_5", 'Select which token you would like to send.'), _defineProperty(_tr$data, "HELP_7_Desc_6", 'If you do not see the token listed:'), _defineProperty(_tr$data, "HELP_7_Desc_7", 'Click "Custom".'), _defineProperty(_tr$data, "HELP_7_Desc_8", 'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.'), _defineProperty(_tr$data, "HELP_7_Desc_9", 'Click "Save".'), _defineProperty(_tr$data, "HELP_7_Desc_10", 'You can now send that token as well as see it\'s balance in the sidebar.'), _defineProperty(_tr$data, "HELP_7_Desc_11", 'Click "Generate Transaction".'), _defineProperty(_tr$data, "HELP_7_Desc_12", 'A couple more fields will appear. This is your browser generating the transaction.'), _defineProperty(_tr$data, "HELP_7_Desc_13", 'Click the blue "Send Transaction" button below that.'), _defineProperty(_tr$data, "HELP_7_Desc_14", 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.'), _defineProperty(_tr$data, "HELP_7_Desc_15", 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain.'), _defineProperty(_tr$data, "HELP_8_Title", '8) What happens if your site goes down?'), _defineProperty(_tr$data, "HELP_8_Desc_1", 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain.'), _defineProperty(_tr$data, "HELP_8_Desc_2", 'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site.'), _defineProperty(_tr$data, "HELP_8_Desc_3", 'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below.'), _defineProperty(_tr$data, "HELP_8_Desc_4", 'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. '), _defineProperty(_tr$data, "HELP_8CX_Title", '8) What happens if MyEtherWallet CX disappears?'), _defineProperty(_tr$data, "HELP_8CX_Desc_1", 'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer.'), _defineProperty(_tr$data, "HELP_8CX_Desc_2", 'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.'), _defineProperty(_tr$data, "HELP_8CX_Desc_3", 'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.'), _defineProperty(_tr$data, "HELP_9_Title", '9) Is the "Send Ether" page offline?'), _defineProperty(_tr$data, "HELP_9_Desc_1", ' No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.'), _defineProperty(_tr$data, "HELP_10_Title", '10) How do I make an offline transaction?'), _defineProperty(_tr$data, "HELP_10_Desc_1", 'Navigate to the "Offline Transaction" page via your online computer.'), _defineProperty(_tr$data, "HELP_10_Desc_2", 'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.'), _defineProperty(_tr$data, "HELP_10_Desc_3", 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.'), _defineProperty(_tr$data, "HELP_10_Desc_4", 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.'), _defineProperty(_tr$data, "HELP_10_Desc_5", 'Enter the "NONCE" as it was displayed to you on your online computer in step #1.'), _defineProperty(_tr$data, "HELP_10_Desc_6", 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.'), _defineProperty(_tr$data, "HELP_10_Desc_7", 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.'), _defineProperty(_tr$data, "HELP_10_Desc_8", 'Select your wallet file -or- your private key and unlock your wallet.'), _defineProperty(_tr$data, "HELP_10_Desc_9", 'Press the "GENERATE SIGNED TRANSACTION" button.'), _defineProperty(_tr$data, "HELP_10_Desc_10", 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. '), _defineProperty(_tr$data, "HELP_10_Desc_11", 'On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.'), _defineProperty(_tr$data, "HELP_11_Title", '11) How do I send to a contract?'), _defineProperty(_tr$data, "HELP_11_Desc_1", 'Sending to a contract often requires you to include data or additional gas or both'), _defineProperty(_tr$data, "HELP_11_Desc_2", 'Navigate to the "Send Ether" page. '), _defineProperty(_tr$data, "HELP_11_Desc_3", 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_tr$data, "HELP_11_Desc_4", 'Enter a "To Address" and "Amount to Send"'), _defineProperty(_tr$data, "HELP_11_Desc_5", 'Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.'), _defineProperty(_tr$data, "HELP_12_Title", '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?'), _defineProperty(_tr$data, "HELP_12_Desc_1", 'Using an Geth/Mist JSON file from MyEtherWallet v2+....'), _defineProperty(_tr$data, "HELP_12_Desc_2", 'Go to the "View Wallet Info" page.'), _defineProperty(_tr$data, "HELP_12_Desc_3", 'Unlock your wallet using your **encrypted** private key or JSON file. '), _defineProperty(_tr$data, "HELP_12_Desc_4", 'Go to the "My Wallets" page.'), _defineProperty(_tr$data, "HELP_12_Desc_5", 'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. '), _defineProperty(_tr$data, "HELP_12_Desc_6", 'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.'), _defineProperty(_tr$data, "HELP_12_Desc_7", 'Open the Ethereum Wallet application. '), _defineProperty(_tr$data, "HELP_12_Desc_8", 'In the menu bar, go "Accounts" -> "Backup" -> "Accounts"'), _defineProperty(_tr$data, "HELP_12_Desc_9", 'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder.'), _defineProperty(_tr$data, "HELP_12_Desc_10", 'Your account should show up immediately under "Accounts."'), _defineProperty(_tr$data, "HELP_12_Desc_11", 'Using your unencrypted private key...'), _defineProperty(_tr$data, "HELP_12_Desc_12", 'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.'), _defineProperty(_tr$data, "HELP_12_Desc_13", 'Select your wallet file -or- enter/paste your private key to unlock your wallet.'), _defineProperty(_tr$data, "HELP_12_Desc_14", 'Copy Your Private Key (unencrypted).'), _defineProperty(_tr$data, "HELP_12_Desc_15", 'If you are on a Mac:'), _defineProperty(_tr$data, "HELP_12_Desc_15b", 'If you are on a PC:'), _defineProperty(_tr$data, "HELP_12_Desc_16", 'Open Text Edit and paste this private key.'), _defineProperty(_tr$data, "HELP_12_Desc_17", 'Go to the menu bar and click "Format" -> "Make Plain Text".'), _defineProperty(_tr$data, "HELP_12_Desc_18", 'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.'), _defineProperty(_tr$data, "HELP_12_Desc_19", 'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`'), _defineProperty(_tr$data, "HELP_12_Desc_20", 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. '), _defineProperty(_tr$data, "HELP_12_Desc_21", 'After successful import, delete `nothing_special_delete_me.txt`'), _defineProperty(_tr$data, "HELP_12_Desc_22", 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".'), _defineProperty(_tr$data, "HELP_12_Desc_23", 'Open Notepad & paste the private key'), _defineProperty(_tr$data, "HELP_12_Desc_24", 'Save the file as `nothing_special_delete_me.txt` at `C:`'), _defineProperty(_tr$data, "HELP_12_Desc_25", 'Run the command, `geth account import C:\\nothing_special_delete_me.txt`'), _defineProperty(_tr$data, "HELP_12_Desc_26", 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.'), _defineProperty(_tr$data, "HELP_12_Desc_27", 'After successful import, delete `nothing_special_delete_me.txt`'), _defineProperty(_tr$data, "HELP_12_Desc_28", 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". '), _defineProperty(_tr$data, "HELP_13_Title", '13) What does "Gas Limit Too Low" Mean?'), _defineProperty(_tr$data, "HELP_13_Desc_1", 'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.'), _defineProperty(_tr$data, "HELP_14_Title", '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?'), _defineProperty(_tr$data, "HELP_14_Desc_1", 'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).'), _defineProperty(_tr$data, "HELP_15_Title", '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan)'), _defineProperty(_tr$data, "HELP_15_Desc_1", 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.'), _defineProperty(_tr$data, "HELP_16_Title", '16) How do I check the balance of my account? '), _defineProperty(_tr$data, "HELP_16_Desc_1", 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your account and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io'), _defineProperty(_tr$data, "HELP_17_Title", '17) Why isn\'t my balance showing up when I unlock my wallet? '), _defineProperty(_tr$data, "HELP_17_Desc_1", ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io'), _defineProperty(_tr$data, "HELP_18_Title", '18) Where is my geth wallet file?'), _defineProperty(_tr$data, "HELP_19_Title", '19) Where is my Mist wallet file? '), _defineProperty(_tr$data, "HELP_19_Desc_1", 'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.'), _defineProperty(_tr$data, "HELP_20_Title", '20) Where is my pre-sale wallet file?'), _defineProperty(_tr$data, "HELP_20_Desc_1", 'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.'), _defineProperty(_tr$data, "HELP_21_Title", '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own account? '), _defineProperty(_tr$data, "HELP_21_Desc_1", 'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.'), _defineProperty(_tr$data, "HELP_21_Desc_2", 'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.'), _defineProperty(_tr$data, "HELP_21_Desc_3", 'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems.'), _defineProperty(_tr$data, "HELP_21_Desc_4", 'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.'), _defineProperty(_tr$data, "HELP_21_Desc_5", 'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.'), _defineProperty(_tr$data, "HELP_21_Desc_6", 'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.'), _defineProperty(_tr$data, "HELP_21_Desc_7", '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.'), _defineProperty(_tr$data, "HELP_21_Desc_8", 'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.'), _defineProperty(_tr$data, "HELP_SecCX_Title", 'Security - MyEtherWallet CX '), _defineProperty(_tr$data, "HELP_SecCX_Desc_1", 'Where is this extension saving my information?'), _defineProperty(_tr$data, "HELP_SecCX_Desc_2", 'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.'), _defineProperty(_tr$data, "HELP_SecCX_Desc_3", 'What information is saved? '), _defineProperty(_tr$data, "HELP_SecCX_Desc_4", 'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.'), _defineProperty(_tr$data, "HELP_SecCX_Desc_5", 'Why aren\'t the nickname and wallet address encrypted? '), _defineProperty(_tr$data, "HELP_SecCX_Desc_6", 'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.'), _defineProperty(_tr$data, "HELP_Sec_Title", 'Security'), _defineProperty(_tr$data, "HELP_Sec_Desc_1", 'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. '), _defineProperty(_tr$data, "HELP_Sec_Desc_2", 'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.'), _defineProperty(_tr$data, "HELP_Sec_Desc_3", 'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.'), _defineProperty(_tr$data, "HELP_Sec_Desc_4", 'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.'), _defineProperty(_tr$data, "HELP_Sec_Desc_5", 'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.'), _defineProperty(_tr$data, "HELP_Sec_Desc_6", 'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.'), _defineProperty(_tr$data, "HELP_Sec_Desc_7", 'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.'), _defineProperty(_tr$data, "HELP_Sec_Desc_8", 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! '), _defineProperty(_tr$data, "HELP_FAQ_Title", 'More Helpful Answers to Frequent Questions'), _defineProperty(_tr$data, "HELP_Contact_Title", 'Ways to Get in Touch'), _tr$data);
 
     module.exports = tr;
-  }, {}], 53: [function (require, module, exports) {
+  }, {}], 54: [function (require, module, exports) {
     'use strict';
     //var ar = require('./ar');
 
@@ -9166,6 +9750,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var nl = require('./nl');
     var no = require('./no');
     var pl = require('./pl');
+    var pt = require('./pt');
     var ru = require('./ru');
     //var sk = require('./sk');
     //var sl = require('./sl');
@@ -9189,6 +9774,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       $translateProvider.translations(nl.code, translate.marked(nl.data));
       $translateProvider.translations(no.code, translate.marked(no.data));
       $translateProvider.translations(pl.code, translate.marked(pl.data));
+      $translateProvider.translations(pt.code, translate.marked(pt.data));
       $translateProvider.translations(ru.code, translate.marked(ru.data));
       //$translateProvider.translations(sk.code, translate.marked(sk.data));
       //$translateProvider.translations(sl.code, translate.marked(sl.data));
@@ -9207,7 +9793,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }return tData;
     };
     module.exports = translate;
-  }, { "./de": 38, "./el": 39, "./en": 40, "./es": 41, "./fi": 42, "./fr": 43, "./hu": 44, "./id": 45, "./it": 46, "./ja": 47, "./nl": 48, "./no": 49, "./pl": 50, "./ru": 51, "./tr": 52, "./vi": 54, "./zh": 55 }], 54: [function (require, module, exports) {
+  }, { "./de": 38, "./el": 39, "./en": 40, "./es": 41, "./fi": 42, "./fr": 43, "./hu": 44, "./id": 45, "./it": 46, "./ja": 47, "./nl": 48, "./no": 49, "./pl": 50, "./pt": 51, "./ru": 52, "./tr": 53, "./vi": 55, "./zh": 56 }], 55: [function (require, module, exports) {
     // Vietnamese
     'use strict';
 
@@ -9789,7 +10375,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
 
     module.exports = vi;
-  }, {}], 55: [function (require, module, exports) {
+  }, {}], 56: [function (require, module, exports) {
     // Chinese
     'use strict';
 
@@ -9941,7 +10527,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }, _defineProperty(_zh$data, "SEND_custom", 'Custom'), _defineProperty(_zh$data, "SEND_gas", 'Gas'), _defineProperty(_zh$data, "SEND_TransferTotal", '发送所有余额'), _defineProperty(_zh$data, "SEND_generate", '生成交易'), _defineProperty(_zh$data, "SEND_raw", '未生效交易'), _defineProperty(_zh$data, "SEND_signed", '签名交易'), _defineProperty(_zh$data, "SEND_trans", '发送交易'), _defineProperty(_zh$data, "SENDModal_Title", '警告！'), _defineProperty(_zh$data, "SENDModal_Content_1", '你将发送'), _defineProperty(_zh$data, "SENDModal_Content_2", '到地址'), _defineProperty(_zh$data, "SENDModal_Content_3", '你确定这样做吗？'), _defineProperty(_zh$data, "SENDModal_Content_4", '注意：如果你遇到错误，你最有可能向你的账户添加以太币，用以支付发送代币所需的gas。 Gas is paid in ether.Gas用以太币支付。'), _defineProperty(_zh$data, "SENDModal_No", '不，离开这里。'), _defineProperty(_zh$data, "SENDModal_Yes", '是的，我确定！发送交易。'), _defineProperty(_zh$data, "TOKEN_Addr", '地址：'), _defineProperty(_zh$data, "TOKEN_Symbol", '代币符号：'), _defineProperty(_zh$data, "TOKEN_Dec", '小数点位数：'), _defineProperty(_zh$data, "TRANS_desc", '如果你想发送代币，请使用“发送代币”页面。'), _defineProperty(_zh$data, "TRANS_warning", '如果你使用“只发送ETH”或则“只发送ETC”功能，那么你是通过合约发送交易。 一些服务（例如交易所充值）接收这些交易时会遇到问题。阅读更多内容。'), _defineProperty(_zh$data, "TRANS_standard", '发送ETH（标准交易）'), _defineProperty(_zh$data, "TRANS_eth", '只发送ETH'), _defineProperty(_zh$data, "TRANS_etc", '只发送ETC'), _defineProperty(_zh$data, "TRANS_advanced", '高级功能：增加更多Gas或者数据'), _defineProperty(_zh$data, "TRANS_data", '数据：'), _defineProperty(_zh$data, "TRANS_gas", 'Gas：'), _defineProperty(_zh$data, "TRANS_sendInfo", '一笔标准交易需要21000gas，花费0.000441以太币。我们将gas价格设为0.000000021以太币，略高于最低价格，以保证交易被快速打包。我们不收取交易费用。'), _defineProperty(_zh$data, "TRANSModal_Title", '“只发送ETH”和“只发送ETC”交易'), _defineProperty(_zh$data, "TRANSModal_Content_0", '注意不同的交易和不同的服务：'), _defineProperty(_zh$data, "TRANSModal_Content_1", '**发送ETH（标准交易）：** 这将生成一个默认交易，直接从一个地址发送到另一个地址。它的默认gas是21000。 用这种方式发送ETH可能会在ETC链上重放。'), _defineProperty(_zh$data, "TRANSModal_Content_2", '**只发送：ETH：** 这是通过[Timon Rapp的重放保护合约（VB推荐）](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/)， 所以你只会在ETH链上发送交易。'), _defineProperty(_zh$data, "TRANSModal_Content_3", '**只发送：ETC：** 这是通过[Timon Rapp的重放保护合约（VB推荐）](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/)， 所以你只会在ETH链上发送交易。 '), _defineProperty(_zh$data, "TRANSModal_Content_4", '**Coinbase & ShapeShift: ** 通过标准交易只发送ETH或者ETC。如果你通过“只发送ETH或者ETC”合约发送交易，你需要联系他们的客服，让他们手动增加你的余额或者返币给你。 [你也可以尝试Shapeshift的”分割“工具。](https://split.shapeshift.io/)'), _defineProperty(_zh$data, "TRANSModal_Content_5", '**Kraken、Poloniex交易所：**向这两个交易所地址发送没币有遇到问题。可以使用。'), _defineProperty(_zh$data, "TRANSModal_Yes", '我理解了。'), _defineProperty(_zh$data, "TRANSModal_No", '我更加糊涂了，请帮助我。'), _defineProperty(_zh$data, "OFFLINE_Title", '生成、发送离线交易'), _defineProperty(_zh$data, "OFFLINE_Desc", '生成离线交易需要3个步骤。步骤1和步骤3在连网的电脑上完成，步骤2在离线电脑上完成。这确保了你的私钥不会接触到联网设备。'), _defineProperty(_zh$data, "OFFLLINE_Step1_Title", '步骤1：生成信息（联网电脑）'), _defineProperty(_zh$data, "OFFLINE_Step1_Button", '生成信息'), _defineProperty(_zh$data, "OFFLINE_Step1_Label_1", '发自地址：'), _defineProperty(_zh$data, "OFFLINE_Step1_Label_2", '注意：这是发自地址，不是发往地址。 Nonce是从起始账户生成的。如果使用一台隔离电脑，它就是冷存储的账户地址。'), _defineProperty(_zh$data, "OFFLINE_Step2_Title", '步骤2：生成交易（离线电脑）'), _defineProperty(_zh$data, "OFFLINE_Step2_Label_1", '发往地址：'), _defineProperty(_zh$data, "OFFLINE_Step2_Label_2", '发送数额'), _defineProperty(_zh$data, "OFFLINE_Step2_Label_3", 'Gas价格'), _defineProperty(_zh$data, "OFFLINE_Step2_Label_3b", '在你的连网电脑的第1步骤中显示了。'), _defineProperty(_zh$data, "OFFLINE_Step2_Label_4", 'Gas限制'), _defineProperty(_zh$data, "OFFLINE_Step2_Label_4b", '21000是默认的gas限制。当你发送合约或者添加数据时，gas限制可能会不同。没使用的gas将返回给你。'), _defineProperty(_zh$data, "OFFLINE_Step2_Label_5", 'Nonce'), _defineProperty(_zh$data, "OFFLINE_Step2_Label_5b", '在你的连网电脑的第1步中显示了。'), _defineProperty(_zh$data, "OFFLINE_Step2_Label_6", '数据'), _defineProperty(_zh$data, "OFFLINE_Step2_Label_6b", '这是可选项。当你向合约发送交易时，往往需要用到数据。'), _defineProperty(_zh$data, "OFFLINE_Step2_Label_7", '输入/选择你的私钥文件/JSON'), _defineProperty(_zh$data, "OFFLINE_Step3_Title", '步骤3：发送/公开交易（连网电脑）'), _defineProperty(_zh$data, "OFFLINE_Step3_Label_1", '将步骤2的签名交易粘贴到这里，点击“发送交易”按钮。'), _defineProperty(_zh$data, "DAO_bal1", '在第1919999个区块'), _defineProperty(_zh$data, "DAO_bal2", '当前'), _defineProperty(_zh$data, "DAO_TitleETH", '销毁DAO代币，取回ETH'), _defineProperty(_zh$data, "DAO_TitleETC", '销毁DAO代币，取回ETC'), _defineProperty(_zh$data, "DAO_ETC_Label_1", '你想把ETC发送到哪个地址？'), _defineProperty(_zh$data, "DAO_ETC_Label_2", '白帽黑客为取回你的ETC不知疲倦地工作。 你可以将一定比例的ETC捐赠给白帽黑客，以表感谢之意。 '), _defineProperty(_zh$data, "DAO_Desc", '使用这个标签销毁DAO代币，换回ETH和ETC。如果你想发送DAO，请使用发送代币标签。'), _defineProperty(_zh$data, "DAO_Inst", '是的。只需按红色按钮。非常简单。'), _defineProperty(_zh$data, "DAO_Warning", '如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。向这个账户发送0.01以太币，再次尝试。'), _defineProperty(_zh$data, "DAOModal_Title", '确保...'), _defineProperty(_zh$data, "DAOModal_1", '你将要销毁'), _defineProperty(_zh$data, "DAOModal_2", 'DAO代币'), _defineProperty(_zh$data, "DAOModal_3", '换回ETH，并发送到地址'), _defineProperty(_zh$data, "DGD_Desc", '认领你的DigixDAO(DGD）代币和勋章。只有你参加了2016年3月30日和31日的代币预售，才可以认领DGD代币。 如果你想发送DGD，请使用发送代币标签。'), _defineProperty(_zh$data, "DGD_Label_1", '预计所需交易费用：'), _defineProperty(_zh$data, "DGD_Label_2", '最多交易费用'), _defineProperty(_zh$data, "DGD_Label_3", 'Gas价格：'), _defineProperty(_zh$data, "DGD_Generate", '生成认领'), _defineProperty(_zh$data, "DGD_Content", '你将认领你的DGD代币。'), _defineProperty(_zh$data, "DEP_generate", '生成字节码'), _defineProperty(_zh$data, "DEP_generated", '生成字节码'), _defineProperty(_zh$data, "DEP_signtx", '签名交易'), _defineProperty(_zh$data, "DEP_interface", '生成界面'), _defineProperty(_zh$data, "MYWAL_Nick", '钱包昵称'), _defineProperty(_zh$data, "MYWAL_Address", '钱包地址'), _defineProperty(_zh$data, "MYWAL_Bal", '余额'), _defineProperty(_zh$data, "MYWAL_Edit", '编辑'), _defineProperty(_zh$data, "MYWAL_View", '查看'), _defineProperty(_zh$data, "MYWAL_Remove", '移除'), _defineProperty(_zh$data, "MYWAL_RemoveWal", '移除钱包：'), _defineProperty(_zh$data, "MYWAL_WatchOnly", '你的只可查看账户'), _defineProperty(_zh$data, "MYWAL_Viewing", '查看钱包：'), _defineProperty(_zh$data, "MYWAL_Hide", '隐藏钱包信息'), _defineProperty(_zh$data, "MYWAL_Edit_2", '编辑钱包：'), _defineProperty(_zh$data, "MYWAL_Name", '钱包名字'), _defineProperty(_zh$data, "MYWAL_Content_1", '警告！你将移除你的钱包：'), _defineProperty(_zh$data, "MYWAL_Content_2", '确保在移除以前你已经保存了私钥和Keystore文件，并记住了密码。'), _defineProperty(_zh$data, "MYWAL_Content_3", '如果你想将来在MyEtherWallet插件中使用该钱包，你需要手动添加私钥/JSON文件和密码。'), _defineProperty(_zh$data, "VIEWWALLET_Subtitle", '这允许你下载不同格式的私钥和重新打印你的纸钱包。为了将[你的账户导入到Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)，你可能需要这个操作。如果你想查看你的余额，我们推荐使用区块浏览器，例如[etherscan.io](http://etherscan.io/)。'), _defineProperty(_zh$data, "VIEWWALLET_Subtitle_Short", '这允许你下载不同格式的私钥和重新打印你的纸钱包。'), _defineProperty(_zh$data, "VIEWWALLET_SuccessMsg", '成功！这是你的钱包细节！'), _defineProperty(_zh$data, "CX_error_1", '你没有已保存的钱包。点击["添加钱包"](/cx-wallet.html#add-wallet)，添加一个钱包。'), _defineProperty(_zh$data, "CX_quicksend", '快速发送'), _defineProperty(_zh$data, "ERROR_1", '请输入有效数额。'), _defineProperty(_zh$data, "ERROR_2", '你的密码至少需要设置为9位。请确保密码足够强。'), _defineProperty(_zh$data, "ERROR_3", '抱歉！我们不能识别这种类型的钱包文件。 '), _defineProperty(_zh$data, "ERROR_4", '这不是一个有效的钱包文件。 '), _defineProperty(_zh$data, "ERROR_5", 'This unit doesn\'t exists, please use the one of the following units 这个单位不存在，请用下面给出的单位'), _defineProperty(_zh$data, "ERROR_6", '无效地址。'), _defineProperty(_zh$data, "ERROR_7", '无效密码。 '), _defineProperty(_zh$data, "ERROR_8", '无效数额。 '), _defineProperty(_zh$data, "ERROR_9", '无效gas上限。'), _defineProperty(_zh$data, "ERROR_10", '无效数据值。'), _defineProperty(_zh$data, "ERROR_11", '无效gas数额。 '), _defineProperty(_zh$data, "ERROR_12", '无效nonce。'), _defineProperty(_zh$data, "ERROR_13", '无效签名交易。 '), _defineProperty(_zh$data, "ERROR_14", '已经有一个钱包使用该昵称。 '), _defineProperty(_zh$data, "ERROR_15", '找不到钱包。'), _defineProperty(_zh$data, "ERROR_16", '看起来这个提议不存在或者读取这个提议时出现错误。'), _defineProperty(_zh$data, "ERROR_17", '这个地址钱包已经存在于存储中。请查看你的钱包页面。'), _defineProperty(_zh$data, "ERROR_18", '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。'), _defineProperty(_zh$data, "ERROR_19", '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。'), _defineProperty(_zh$data, "ERROR_20", '无效符号'), _defineProperty(_zh$data, "SUCCESS_1", '有效地址'), _defineProperty(_zh$data, "SUCCESS_2", '钱包解密成功'), _defineProperty(_zh$data, "SUCCESS_3", '交易已提交。TX ID：'), _defineProperty(_zh$data, "SUCCESS_4", '成功添加你的钱包：'), _defineProperty(_zh$data, "SUCCESS_5", '你已经成功投票。感谢你积极参与The DAO。'), _defineProperty(_zh$data, "SUCCESS_6", '选择的文件：'), _defineProperty(_zh$data, "GETH_InvalidSender", '无效发送者'), _defineProperty(_zh$data, "GETH_Nonce", 'Nonce太低'), _defineProperty(_zh$data, "GETH_Cheap", 'Gas价格太低，不被接受'), _defineProperty(_zh$data, "GETH_Balance", '余额不足'), _defineProperty(_zh$data, "GETH_NonExistentAccount", '账户不存在或者账户余额太低'), _defineProperty(_zh$data, "GETH_InsufficientFunds", '余额不足，余额低于 gas * price + 发送数额'), _defineProperty(_zh$data, "GETH_IntrinsicGas", '固有gas太低'), _defineProperty(_zh$data, "GETH_GasLimit", '超过区块gas上限'), _defineProperty(_zh$data, "GETH_NegativeValue", '负值'), _defineProperty(_zh$data, "translate_version", '0.3'), _defineProperty(_zh$data, "Translator_Desc", '感谢中文译者：'), _defineProperty(_zh$data, "TranslatorName_1", '[ Shaoping@ethfans.org （少平）]((https://www.myetherwallet.com/?gaslimit=21000&to=0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740&value=1.0#send-transaction))'), _defineProperty(_zh$data, "TranslatorAddr_1", '0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740'), _defineProperty(_zh$data, "TranslatorName_2", ' '), _defineProperty(_zh$data, "TranslatorAddr_2", ' '), _defineProperty(_zh$data, "TranslatorName_3", ' '), _defineProperty(_zh$data, "TranslatorAddr_3", ' '), _defineProperty(_zh$data, "TranslatorName_4", ' '), _defineProperty(_zh$data, "TranslatorAddr_4", ' '), _defineProperty(_zh$data, "TranslatorName_5", ' '), _defineProperty(_zh$data, "TranslatorAddr_5", ' '), _defineProperty(_zh$data, "HELP_Warning", 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.'), _defineProperty(_zh$data, "HELP_Desc", 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future!'), _defineProperty(_zh$data, "HELP_Remind_Title", 'Some reminders'), _defineProperty(_zh$data, "HELP_Remind_Desc_1", '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**.'), _defineProperty(_zh$data, "HELP_Remind_Desc_2", 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.'), _defineProperty(_zh$data, "HELP_Remind_Desc_3", 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!'), _defineProperty(_zh$data, "HELP_0_Title", '0) I\'m new. What do I do?'), _defineProperty(_zh$data, "HELP_0_Desc_1", 'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.'), _defineProperty(_zh$data, "HELP_0_Desc_2", 'Create a new wallet.'), _defineProperty(_zh$data, "HELP_0_Desc_3", 'Back the wallet up.'), _defineProperty(_zh$data, "HELP_0_Desc_4", 'Verify you have access to this new wallet and have correctly saved all necessary information.'), _defineProperty(_zh$data, "HELP_0_Desc_5", 'Transfer Ether to this new wallet.'), _defineProperty(_zh$data, "HELP_1_Title", '1) How do I create a new wallet? '), _defineProperty(_zh$data, "HELP_1_Desc_1", 'Go to the "Generate Wallet" page.'), _defineProperty(_zh$data, "HELP_1_Desc_2", 'Go to the "Add Wallet" page & select "Generate New Wallet"'), _defineProperty(_zh$data, "HELP_1_Desc_3", 'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions.'), _defineProperty(_zh$data, "HELP_1_Desc_4", 'Click "GENERATE".'), _defineProperty(_zh$data, "HELP_1_Desc_5", 'Your wallet has now been generated.'), _defineProperty(_zh$data, "HELP_2a_Title", '2a) How do I save/backup my wallet?'), _defineProperty(_zh$data, "HELP_2a_Desc_1", 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper.'), _defineProperty(_zh$data, "HELP_2a_Desc_2", 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you.'), _defineProperty(_zh$data, "HELP_2a_Desc_3", 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys:'), _defineProperty(_zh$data, "HELP_2a_Desc_4", 'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive.'), _defineProperty(_zh$data, "HELP_2a_Desc_5", 'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive.'), _defineProperty(_zh$data, "HELP_2a_Desc_6", 'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood).'), _defineProperty(_zh$data, "HELP_2b_Title", '2b) How do I safely / offline / cold storage with MyEtherWallet?'), _defineProperty(_zh$data, "HELP_2b_Desc_1", 'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).'), _defineProperty(_zh$data, "HELP_2b_Desc_2", 'Click download zip in the upper right.'), _defineProperty(_zh$data, "HELP_2b_Desc_3", 'Move zip to an airgapped computer.'), _defineProperty(_zh$data, "HELP_2b_Desc_4", 'Unzip it and double-click `index.html`.'), _defineProperty(_zh$data, "HELP_2b_Desc_5", 'Generate a wallet with a strong password.'), _defineProperty(_zh$data, "HELP_2b_Desc_6", 'Save the address. Save versions of the private key. Save the password if you might not remember it forever.'), _defineProperty(_zh$data, "HELP_2b_Desc_7", 'Store these papers / USBs in multiple physically separate locations.'), _defineProperty(_zh$data, "HELP_2b_Desc_8", 'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same.'), _defineProperty(_zh$data, "HELP_3_Title", '3) How do I verify I have access to my new wallet?'), _defineProperty(_zh$data, "HELP_3_Desc_1", '**Before you send any Ether to your new wallet**, you should ensure you have access to it.'), _defineProperty(_zh$data, "HELP_3_Desc_2", 'Navigate to the "View Wallet Info" page.'), _defineProperty(_zh$data, "HELP_3_Desc_3", 'Navigate to the MyEtherWallet.com "View Wallet Info" page.'), _defineProperty(_zh$data, "HELP_3_Desc_4", 'Select your wallet file -or- your private key and unlock your wallet.'), _defineProperty(_zh$data, "HELP_3_Desc_5", 'If the wallet is encrypted, a text box will automatically appear. Enter the password.'), _defineProperty(_zh$data, "HELP_3_Desc_6", 'Click the "Unlock Wallet" button.'), _defineProperty(_zh$data, "HELP_3_Desc_7", 'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet.'), _defineProperty(_zh$data, "HELP_3_Desc_8", 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.01 ether to your new wallet, access that wallet, send that 0.01 ether to another address, and ensure everything works smoothly.'), _defineProperty(_zh$data, "HELP_4_Title", '4) How do I send Ether from one wallet to another?'), _defineProperty(_zh$data, "HELP_4_Desc_1", 'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned.'), _defineProperty(_zh$data, "HELP_4_Desc_2", 'Navigate to the "Send Ether" page.'), _defineProperty(_zh$data, "HELP_4_Desc_3", 'Select your wallet file -or- your private key and unlock your wallet.'), _defineProperty(_zh$data, "HELP_4_Desc_4", 'If the wallet is encrypted, a text box will automatically appear. Enter the password.'), _defineProperty(_zh$data, "HELP_4_Desc_5", 'Click the "Unlock Wallet" button.'), _defineProperty(_zh$data, "HELP_4_Desc_6", 'Enter the address you would like to send to in the "To Address:" field.'), _defineProperty(_zh$data, "HELP_4_Desc_7", 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.'), _defineProperty(_zh$data, "HELP_4_Desc_8", 'Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ether like you normally would. See Question #6 below for more information.'), _defineProperty(_zh$data, "HELP_4_Desc_9", 'Click "Generate Transaction".'), _defineProperty(_zh$data, "HELP_4_Desc_10", 'A couple more fields will appear. This is your browser generating the transaction.'), _defineProperty(_zh$data, "HELP_4_Desc_11", 'Click the blue "Send Transaction" button below that.'), _defineProperty(_zh$data, "HELP_4_Desc_12", 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.'), _defineProperty(_zh$data, "HELP_4_Desc_13", 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. '), _defineProperty(_zh$data, "HELP_4CX_Title", '4) How do I send Ether using MyEtherWallet CX?'), _defineProperty(_zh$data, "HELP_4CX_Desc_1", 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether" page.'), _defineProperty(_zh$data, "HELP_4CX_Desc_2", 'QuickSend:'), _defineProperty(_zh$data, "HELP_4CX_Desc_3", 'Click the Chrome Extension Icon.'), _defineProperty(_zh$data, "HELP_4CX_Desc_4", 'Click the "QuickSend" button.'), _defineProperty(_zh$data, "HELP_4CX_Desc_5", 'Select the wallet you wish to send from.'), _defineProperty(_zh$data, "HELP_4CX_Desc_6", 'Enter the address you would like to send to in the "To Address:" field.'), _defineProperty(_zh$data, "HELP_4CX_Desc_7", 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance.'), _defineProperty(_zh$data, "HELP_4CX_Desc_8", 'Click "Send Transaction". '), _defineProperty(_zh$data, "HELP_4CX_Desc_9", 'Verify the address and the amount you are sending is correct.'), _defineProperty(_zh$data, "HELP_4CX_Desc_10", 'Enter the password for that wallet.'), _defineProperty(_zh$data, "HELP_4CX_Desc_11", 'Click "Send Transaction."'), _defineProperty(_zh$data, "HELP_4CX_Desc_12", 'Using "Send Ether" Page: '), _defineProperty(_zh$data, "HELP_5_Title", '5) How do I run MyEtherWallet.com offline/locally? '), _defineProperty(_zh$data, "HELP_5_Desc_1", 'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page.'), _defineProperty(_zh$data, "HELP_5_Desc_2", 'Go to our github: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages).'), _defineProperty(_zh$data, "HELP_5_Desc_3", 'Click download zip in the upper right.'), _defineProperty(_zh$data, "HELP_5_Desc_4", 'Move zip to an airgapped computer.'), _defineProperty(_zh$data, "HELP_5_Desc_5", 'Unzip it.'), _defineProperty(_zh$data, "HELP_5_Desc_6", 'Double-Click `index.html`.'), _defineProperty(_zh$data, "HELP_5_Desc_7", 'MyEtherWallet.com is now running entirely on your computer.'), _defineProperty(_zh$data, "HELP_5_Desc_8", 'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.'), _defineProperty(_zh$data, "HELP_5_Desc_9", 'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.'), _defineProperty(_zh$data, "HELP_5CX_Title", '5) How can I install this extension from the repo instead of the Chrome Store? '), _defineProperty(_zh$data, "HELP_5CX_Desc_1", 'Go to our github and find the most recent Chrome Extension release: [https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases](https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases).'), _defineProperty(_zh$data, "HELP_5CX_Desc_2", 'Scroll to the very bottom and right click on the latest release. Click "save link as".'), _defineProperty(_zh$data, "HELP_5CX_Desc_3", 'Go to Google Chrome and find you settings (in the menu in the upper right).'), _defineProperty(_zh$data, "HELP_5CX_Desc_4", 'Click "Extensions" on the left.'), _defineProperty(_zh$data, "HELP_5CX_Desc_5", 'Check the "Developer Mode" button at the top of that page.'), _defineProperty(_zh$data, "HELP_5CX_Desc_6", 'Click the "Load unpacked extension..." button.'), _defineProperty(_zh$data, "HELP_5CX_Desc_7", 'Navigate to the now-unzipped folder that you downloaded earlier. Click "select".'), _defineProperty(_zh$data, "HELP_5CX_Desc_8", 'The extension should now show up in your extensions and in your Chrome Extension bar.'), _defineProperty(_zh$data, "HELP_6_Title", '6) How do I split my ETH / ETC? '), _defineProperty(_zh$data, "HELP_6_Desc_1", 'When the hard fork happened, any ETH you had in your wallet now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original wallet into two wallets. Moving forward, you need to make sure only ETH goes to your ETH wallet and only ETC goes to your ETC wallet.'), _defineProperty(_zh$data, "HELP_6_Desc_2", 'You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.'), _defineProperty(_zh$data, "HELP_6_Desc_3", '[Even more information about wallets and replay attacks can be found here](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).'), _defineProperty(_zh$data, "HELP_6_Desc_4", 'Generate a new clean post-fork ETH wallet for yourself (to be the final destination of pure ETH).'), _defineProperty(_zh$data, "HELP_6_Desc_5", 'Generate a new clean post-fork ETC wallet for yourself (to be the final destination of pure ETC).'), _defineProperty(_zh$data, "HELP_6_Desc_6", 'Back up these new wallets and verify you can access them. See #2a and #3 above.'), _defineProperty(_zh$data, "HELP_6_Desc_7", 'Send 0.1234 ETH to your new "ETH" wallet using "Only ETH" option on the "Send Ether" page.'), _defineProperty(_zh$data, "HELP_6_Desc_8", 'Send 0.5678 ETC to your new "ETC" wallet using "Only ETC" option on the "Send Ether" page.'), _defineProperty(_zh$data, "HELP_6_Desc_9", 'Check that only the 0.1234 ETH moved on etherscan.io. Check that only the 0.5678 ETC moved on gastracker.io.'), _defineProperty(_zh$data, "HELP_6_Desc_10", 'Send a 0.0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the 0.0001 ETH moved.'), _defineProperty(_zh$data, "HELP_6_Desc_11", 'Generate (but do not send) a 0.0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. '), _defineProperty(_zh$data, "HELP_6_Desc_12", 'Go to [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) and paste that ETC TX into classicetherwallet.com\'s offline tab at the very bottom and send. Check gastracker.io. Make sure the 0.0002 ETC moved.'), _defineProperty(_zh$data, "HELP_6_Desc_13", 'If everything receives correctly and sends correctly then you are golden.'), _defineProperty(_zh$data, "HELP_6_Desc_14", 'Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".'), _defineProperty(_zh$data, "HELP_6_Desc_15", 'Moving forward, you can use the standard transactions for these new wallets without risk of replay attacks. '), _defineProperty(_zh$data, "HELP_7_Title", '7) How do I send Tokens & add custom tokens?'), _defineProperty(_zh$data, "HELP_7_Desc_0", '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token.'), _defineProperty(_zh$data, "HELP_7_Desc_1", 'Navigate to the "Send Token" page.'), _defineProperty(_zh$data, "HELP_7_Desc_2", 'Unlock your wallet.'), _defineProperty(_zh$data, "HELP_7_Desc_3", 'Enter the address you would like to send to in the "To Address:" field.'), _defineProperty(_zh$data, "HELP_7_Desc_4", 'Enter the amount you would like to send.'), _defineProperty(_zh$data, "HELP_7_Desc_5", 'Select which token you would like to send.'), _defineProperty(_zh$data, "HELP_7_Desc_6", 'If you do not see the token listed:'), _defineProperty(_zh$data, "HELP_7_Desc_7", 'Click "Custom".'), _defineProperty(_zh$data, "HELP_7_Desc_8", 'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist.'), _defineProperty(_zh$data, "HELP_7_Desc_9", 'Click "Save".'), _defineProperty(_zh$data, "HELP_7_Desc_10", 'You can now send that token as well as see it\'s balance in the sidebar.'), _defineProperty(_zh$data, "HELP_7_Desc_11", 'Click "Generate Transaction".'), _defineProperty(_zh$data, "HELP_7_Desc_12", 'A couple more fields will appear. This is your browser generating the transaction.'), _defineProperty(_zh$data, "HELP_7_Desc_13", 'Click the blue "Send Transaction" button below that.'), _defineProperty(_zh$data, "HELP_7_Desc_14", 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button.'), _defineProperty(_zh$data, "HELP_7_Desc_15", 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain.'), _defineProperty(_zh$data, "HELP_8_Title", '8) What happens if your site goes down?'), _defineProperty(_zh$data, "HELP_8_Desc_1", 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain.'), _defineProperty(_zh$data, "HELP_8_Desc_2", 'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site.'), _defineProperty(_zh$data, "HELP_8_Desc_3", 'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below.'), _defineProperty(_zh$data, "HELP_8_Desc_4", 'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. '), _defineProperty(_zh$data, "HELP_8CX_Title", '8) What happens if MyEtherWallet CX disappears?'), _defineProperty(_zh$data, "HELP_8CX_Desc_1", 'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer.'), _defineProperty(_zh$data, "HELP_8CX_Desc_2", 'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets.'), _defineProperty(_zh$data, "HELP_8CX_Desc_3", 'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above.'), _defineProperty(_zh$data, "HELP_9_Title", '9) Is the "Send Ether" page offline?'), _defineProperty(_zh$data, "HELP_9_Desc_1", ' No, the send transaction page is not offline. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times.'), _defineProperty(_zh$data, "HELP_10_Title", '10) How do I make an offline transaction?'), _defineProperty(_zh$data, "HELP_10_Desc_1", 'Navigate to the "Offline Transaction" page via your online computer.'), _defineProperty(_zh$data, "HELP_10_Desc_2", 'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price.'), _defineProperty(_zh$data, "HELP_10_Desc_3", 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send.'), _defineProperty(_zh$data, "HELP_10_Desc_4", 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1.'), _defineProperty(_zh$data, "HELP_10_Desc_5", 'Enter the "NONCE" as it was displayed to you on your online computer in step #1.'), _defineProperty(_zh$data, "HELP_10_Desc_6", 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you.'), _defineProperty(_zh$data, "HELP_10_Desc_7", 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format.'), _defineProperty(_zh$data, "HELP_10_Desc_8", 'Select your wallet file -or- your private key and unlock your wallet.'), _defineProperty(_zh$data, "HELP_10_Desc_9", 'Press the "GENERATE SIGNED TRANSACTION" button.'), _defineProperty(_zh$data, "HELP_10_Desc_10", 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. '), _defineProperty(_zh$data, "HELP_10_Desc_11", 'On your online computer, paste the signed transaction into the text field in step #3 and click "SEND Ether". This will broadcast your transaction.'), _defineProperty(_zh$data, "HELP_11_Title", '11) How do I send to a contract?'), _defineProperty(_zh$data, "HELP_11_Desc_1", 'Sending to a contract often requires you to include data or additional gas or both'), _defineProperty(_zh$data, "HELP_11_Desc_2", 'Navigate to the "Send Ether" page. '), _defineProperty(_zh$data, "HELP_11_Desc_3", 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_zh$data, "HELP_11_Desc_4", 'Enter a "To Address" and "Amount to Send"'), _defineProperty(_zh$data, "HELP_11_Desc_5", 'Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.'), _defineProperty(_zh$data, "HELP_12_Title", '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist?'), _defineProperty(_zh$data, "HELP_12_Desc_1", 'Using an Geth/Mist JSON file from MyEtherWallet v2+....'), _defineProperty(_zh$data, "HELP_12_Desc_2", 'Go to the "View Wallet Info" page.'), _defineProperty(_zh$data, "HELP_12_Desc_3", 'Unlock your wallet using your **encrypted** private key or JSON file. '), _defineProperty(_zh$data, "HELP_12_Desc_4", 'Go to the "My Wallets" page.'), _defineProperty(_zh$data, "HELP_12_Desc_5", 'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. '), _defineProperty(_zh$data, "HELP_12_Desc_6", 'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file.'), _defineProperty(_zh$data, "HELP_12_Desc_7", 'Open the Ethereum Wallet application. '), _defineProperty(_zh$data, "HELP_12_Desc_8", 'In the menu bar, go "Accounts" -> "Backup" -> "Accounts"'), _defineProperty(_zh$data, "HELP_12_Desc_9", 'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder.'), _defineProperty(_zh$data, "HELP_12_Desc_10", 'Your account should show up immediately under "Accounts."'), _defineProperty(_zh$data, "HELP_12_Desc_11", 'Using your unencrypted private key...'), _defineProperty(_zh$data, "HELP_12_Desc_12", 'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page.'), _defineProperty(_zh$data, "HELP_12_Desc_13", 'Select your wallet file -or- enter/paste your private key to unlock your wallet.'), _defineProperty(_zh$data, "HELP_12_Desc_14", 'Copy Your Private Key (unencrypted).'), _defineProperty(_zh$data, "HELP_12_Desc_15", 'If you are on a Mac:'), _defineProperty(_zh$data, "HELP_12_Desc_15b", 'If you are on a PC:'), _defineProperty(_zh$data, "HELP_12_Desc_16", 'Open Text Edit and paste this private key.'), _defineProperty(_zh$data, "HELP_12_Desc_17", 'Go to the menu bar and click "Format" -> "Make Plain Text".'), _defineProperty(_zh$data, "HELP_12_Desc_18", 'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog.'), _defineProperty(_zh$data, "HELP_12_Desc_19", 'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt`'), _defineProperty(_zh$data, "HELP_12_Desc_20", 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. '), _defineProperty(_zh$data, "HELP_12_Desc_21", 'After successful import, delete `nothing_special_delete_me.txt`'), _defineProperty(_zh$data, "HELP_12_Desc_22", 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts".'), _defineProperty(_zh$data, "HELP_12_Desc_23", 'Open Notepad & paste the private key'), _defineProperty(_zh$data, "HELP_12_Desc_24", 'Save the file as `nothing_special_delete_me.txt` at `C:`'), _defineProperty(_zh$data, "HELP_12_Desc_25", 'Run the command, `geth account import C:\\nothing_special_delete_me.txt`'), _defineProperty(_zh$data, "HELP_12_Desc_26", 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it.'), _defineProperty(_zh$data, "HELP_12_Desc_27", 'After successful import, delete `nothing_special_delete_me.txt`'), _defineProperty(_zh$data, "HELP_12_Desc_28", 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". '), _defineProperty(_zh$data, "HELP_13_Title", '13) What does "Gas Limit Too Low" Mean?'), _defineProperty(_zh$data, "HELP_13_Desc_1", 'Most likely, this means you are attempting to send Ether to a contract. Sending to a contract requires a bit more data and therefore a bit more gas. On the "Send Ether" page, click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.'), _defineProperty(_zh$data, "HELP_14_Title", '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe?'), _defineProperty(_zh$data, "HELP_14_Desc_1", 'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experiments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).'), _defineProperty(_zh$data, "HELP_15_Title", '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan)'), _defineProperty(_zh$data, "HELP_15_Desc_1", 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it.'), _defineProperty(_zh$data, "HELP_16_Title", '16) How do I check the balance of my account? '), _defineProperty(_zh$data, "HELP_16_Desc_1", 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io'), _defineProperty(_zh$data, "HELP_17_Title", '17) Why isn\'t my balance showing up when I unlock my wallet? '), _defineProperty(_zh$data, "HELP_17_Desc_1", ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io'), _defineProperty(_zh$data, "HELP_18_Title", '18) Where is my geth wallet file?'), _defineProperty(_zh$data, "HELP_19_Title", '19) Where is my Mist wallet file? '), _defineProperty(_zh$data, "HELP_19_Desc_1", 'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored.'), _defineProperty(_zh$data, "HELP_20_Title", '20) Where is my pre-sale wallet file?'), _defineProperty(_zh$data, "HELP_20_Desc_1", 'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale.'), _defineProperty(_zh$data, "HELP_21_Title", '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? '), _defineProperty(_zh$data, "HELP_21_Desc_1", 'Short version: yes, but finding an account with a balance would take longer than the universe...so...no.'), _defineProperty(_zh$data, "HELP_21_Desc_2", 'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts.'), _defineProperty(_zh$data, "HELP_21_Desc_3", 'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems.'), _defineProperty(_zh$data, "HELP_21_Desc_4", 'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password.'), _defineProperty(_zh$data, "HELP_21_Desc_5", 'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match.'), _defineProperty(_zh$data, "HELP_21_Desc_6", 'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion.'), _defineProperty(_zh$data, "HELP_21_Desc_7", '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space.'), _defineProperty(_zh$data, "HELP_21_Desc_8", 'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day.'), _defineProperty(_zh$data, "HELP_SecCX_Title", 'Security - MyEtherWallet CX '), _defineProperty(_zh$data, "HELP_SecCX_Desc_1", 'Where is this extension saving my information?'), _defineProperty(_zh$data, "HELP_SecCX_Desc_2", 'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome.'), _defineProperty(_zh$data, "HELP_SecCX_Desc_3", 'What information is saved? '), _defineProperty(_zh$data, "HELP_SecCX_Desc_4", 'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted.'), _defineProperty(_zh$data, "HELP_SecCX_Desc_5", 'Why aren\'t the nickname and wallet address encrypted? '), _defineProperty(_zh$data, "HELP_SecCX_Desc_6", 'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension.'), _defineProperty(_zh$data, "HELP_Sec_Title", 'Security安全'), _defineProperty(_zh$data, "HELP_Sec_Desc_1", 'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. '), _defineProperty(_zh$data, "HELP_Sec_Desc_2", 'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success.'), _defineProperty(_zh$data, "HELP_Sec_Desc_3", 'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere.'), _defineProperty(_zh$data, "HELP_Sec_Desc_4", 'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to the domains: [http://kvhnuke.github.io/etherwallet/](http://kvhnuke.github.io/etherwallet) and [https://www.myetherwallet.com](https://www.myetherwallet.com). You can verify it\'s hosted at GitHub by using [viewdns.info/dnsrecord/?domain=myetherwallet.com](http://viewdns.info/dnsrecord/?domain=myetherwallet.com") - last two A record IPs are owned by GitHub for their custom domain hosting.'), _defineProperty(_zh$data, "HELP_Sec_Desc_5", 'For generating wallets, you can download the [source code](https://github.com/kvhnuke/etherwallet/tree/gh-pages). See #5 above.'), _defineProperty(_zh$data, "HELP_Sec_Desc_6", 'Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.'), _defineProperty(_zh$data, "HELP_Sec_Desc_7", 'Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.'), _defineProperty(_zh$data, "HELP_Sec_Desc_8", 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! '), _defineProperty(_zh$data, "HELP_FAQ_Title", 'More Helpful Answers to Frequent Questions 常见问题的更多有用回答'), _defineProperty(_zh$data, "HELP_Contact_Title", 'Ways to Get in Touch 联系方式'), _zh$data);
 
     module.exports = zh;
-  }, {}], 56: [function (require, module, exports) {
+  }, {}], 57: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -10058,7 +10644,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       };
       module.exports = uiFuncs;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 57: [function (require, module, exports) {
+  }, { "buffer": 116 }], 58: [function (require, module, exports) {
     'use strict';
 
     var validator = function validator() {};
@@ -10085,7 +10671,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return globalFuncs.isAlphaNumeric(value);
     };
     module.exports = validator;
-  }, {}], 58: [function (require, module, exports) {
+  }, {}], 59: [function (require, module, exports) {
     /**
      * @license AngularJS v1.5.8
      * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -10780,10 +11366,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         };
       }]);
     })(window, window.angular);
-  }, {}], 59: [function (require, module, exports) {
+  }, {}], 60: [function (require, module, exports) {
     require('./angular-sanitize');
     module.exports = 'ngSanitize';
-  }, { "./angular-sanitize": 58 }], 60: [function (require, module, exports) {
+  }, { "./angular-sanitize": 59 }], 61: [function (require, module, exports) {
     /*!
      * angular-translate - v2.12.1 - 2016-09-15
      * 
@@ -10833,7 +11419,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       $translateMissingTranslationHandlerLog.displayName = '$translateMissingTranslationHandlerLog';
       return 'pascalprecht.translate';
     });
-  }, {}], 61: [function (require, module, exports) {
+  }, {}], 62: [function (require, module, exports) {
     /*!
      * angular-translate - v2.12.1 - 2016-09-15
      * 
@@ -14461,7 +15047,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       $translationCache.displayName = '$translationCache';
       return 'pascalprecht.translate';
     });
-  }, {}], 62: [function (require, module, exports) {
+  }, {}], 63: [function (require, module, exports) {
     /**
      * @license AngularJS v1.5.8
      * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -45571,10 +46157,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     })(window);
 
     !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-  }, {}], 63: [function (require, module, exports) {
+  }, {}], 64: [function (require, module, exports) {
     require('./angular');
     module.exports = angular;
-  }, { "./angular": 62 }], 64: [function (require, module, exports) {
+  }, { "./angular": 63 }], 65: [function (require, module, exports) {
     var asn1 = exports;
 
     asn1.bignum = require('bn.js');
@@ -45584,7 +46170,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     asn1.constants = require('./asn1/constants');
     asn1.decoders = require('./asn1/decoders');
     asn1.encoders = require('./asn1/encoders');
-  }, { "./asn1/api": 65, "./asn1/base": 67, "./asn1/constants": 71, "./asn1/decoders": 73, "./asn1/encoders": 76, "bn.js": 84 }], 65: [function (require, module, exports) {
+  }, { "./asn1/api": 66, "./asn1/base": 68, "./asn1/constants": 72, "./asn1/decoders": 74, "./asn1/encoders": 77, "bn.js": 85 }], 66: [function (require, module, exports) {
     var asn1 = require('../asn1');
     var inherits = require('inherits');
 
@@ -45640,7 +46226,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     Entity.prototype.encode = function encode(data, enc, /* internal */reporter) {
       return this._getEncoder(enc).encode(data, reporter);
     };
-  }, { "../asn1": 64, "inherits": 167, "vm": 228 }], 66: [function (require, module, exports) {
+  }, { "../asn1": 65, "inherits": 168, "vm": 229 }], 67: [function (require, module, exports) {
     var inherits = require('inherits');
     var Reporter = require('../base').Reporter;
     var Buffer = require('buffer').Buffer;
@@ -45743,14 +46329,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return out;
     };
-  }, { "../base": 67, "buffer": 115, "inherits": 167 }], 67: [function (require, module, exports) {
+  }, { "../base": 68, "buffer": 116, "inherits": 168 }], 68: [function (require, module, exports) {
     var base = exports;
 
     base.Reporter = require('./reporter').Reporter;
     base.DecoderBuffer = require('./buffer').DecoderBuffer;
     base.EncoderBuffer = require('./buffer').EncoderBuffer;
     base.Node = require('./node');
-  }, { "./buffer": 66, "./node": 68, "./reporter": 69 }], 68: [function (require, module, exports) {
+  }, { "./buffer": 67, "./node": 69, "./reporter": 70 }], 69: [function (require, module, exports) {
     var Reporter = require('../base').Reporter;
     var EncoderBuffer = require('../base').EncoderBuffer;
     var DecoderBuffer = require('../base').DecoderBuffer;
@@ -46273,7 +46859,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return (/^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str)
       );
     };
-  }, { "../base": 67, "minimalistic-assert": 174 }], 69: [function (require, module, exports) {
+  }, { "../base": 68, "minimalistic-assert": 175 }], 70: [function (require, module, exports) {
     var inherits = require('inherits');
 
     function Reporter(options) {
@@ -46390,7 +46976,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return this;
     };
-  }, { "inherits": 167 }], 70: [function (require, module, exports) {
+  }, { "inherits": 168 }], 71: [function (require, module, exports) {
     var constants = require('../constants');
 
     exports.tagClass = {
@@ -46433,7 +47019,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       0x1e: 'bmpstr'
     };
     exports.tagByName = constants._reverse(exports.tag);
-  }, { "../constants": 71 }], 71: [function (require, module, exports) {
+  }, { "../constants": 72 }], 72: [function (require, module, exports) {
     var constants = exports;
 
     // Helper
@@ -46452,7 +47038,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
 
     constants.der = require('./der');
-  }, { "./der": 70 }], 72: [function (require, module, exports) {
+  }, { "./der": 71 }], 73: [function (require, module, exports) {
     var inherits = require('inherits');
 
     var asn1 = require('../../asn1');
@@ -46725,12 +47311,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return len;
     }
-  }, { "../../asn1": 64, "inherits": 167 }], 73: [function (require, module, exports) {
+  }, { "../../asn1": 65, "inherits": 168 }], 74: [function (require, module, exports) {
     var decoders = exports;
 
     decoders.der = require('./der');
     decoders.pem = require('./pem');
-  }, { "./der": 72, "./pem": 74 }], 74: [function (require, module, exports) {
+  }, { "./der": 73, "./pem": 75 }], 75: [function (require, module, exports) {
     var inherits = require('inherits');
     var Buffer = require('buffer').Buffer;
 
@@ -46775,7 +47361,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var input = new Buffer(base64, 'base64');
       return DERDecoder.prototype.decode.call(this, input, options);
     };
-  }, { "./der": 72, "buffer": 115, "inherits": 167 }], 75: [function (require, module, exports) {
+  }, { "./der": 73, "buffer": 116, "inherits": 168 }], 76: [function (require, module, exports) {
     var inherits = require('inherits');
     var Buffer = require('buffer').Buffer;
 
@@ -47015,12 +47601,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return res;
     }
-  }, { "../../asn1": 64, "buffer": 115, "inherits": 167 }], 76: [function (require, module, exports) {
+  }, { "../../asn1": 65, "buffer": 116, "inherits": 168 }], 77: [function (require, module, exports) {
     var encoders = exports;
 
     encoders.der = require('./der');
     encoders.pem = require('./pem');
-  }, { "./der": 75, "./pem": 77 }], 77: [function (require, module, exports) {
+  }, { "./der": 76, "./pem": 78 }], 78: [function (require, module, exports) {
     var inherits = require('inherits');
 
     var DEREncoder = require('./der');
@@ -47042,7 +47628,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }out.push('-----END ' + options.label + '-----');
       return out.join('\n');
     };
-  }, { "./der": 75, "inherits": 167 }], 78: [function (require, module, exports) {
+  }, { "./der": 76, "inherits": 168 }], 79: [function (require, module, exports) {
     // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
     //
     // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -47393,7 +47979,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return keys;
     };
-  }, { "util/": 225 }], 79: [function (require, module, exports) {
+  }, { "util/": 226 }], 80: [function (require, module, exports) {
     'use strict';
 
     exports.byteLength = byteLength;
@@ -47508,7 +48094,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return parts.join('');
     }
-  }, {}], 80: [function (require, module, exports) {
+  }, {}], 81: [function (require, module, exports) {
     /*! bignumber.js v2.4.0 https://github.com/MikeMcl/bignumber.js/LICENCE */
 
     ;(function (globalObj) {
@@ -50238,7 +50824,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         globalObj.BigNumber = BigNumber;
       }
     })(this);
-  }, {}], 81: [function (require, module, exports) {
+  }, {}], 82: [function (require, module, exports) {
     (function (Buffer) {
       var assert = require('assert');
       var createHash = require('create-hash');
@@ -50371,9 +50957,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./wordlists/en.json": 82, "assert": 78, "buffer": 115, "create-hash": 120, "pbkdf2": 179, "randombytes": 189, "unorm": 221 }], 82: [function (require, module, exports) {
+  }, { "./wordlists/en.json": 83, "assert": 79, "buffer": 116, "create-hash": 121, "pbkdf2": 180, "randombytes": 190, "unorm": 222 }], 83: [function (require, module, exports) {
     module.exports = ["abandon", "ability", "able", "about", "above", "absent", "absorb", "abstract", "absurd", "abuse", "access", "accident", "account", "accuse", "achieve", "acid", "acoustic", "acquire", "across", "act", "action", "actor", "actress", "actual", "adapt", "add", "addict", "address", "adjust", "admit", "adult", "advance", "advice", "aerobic", "affair", "afford", "afraid", "again", "age", "agent", "agree", "ahead", "aim", "air", "airport", "aisle", "alarm", "album", "alcohol", "alert", "alien", "all", "alley", "allow", "almost", "alone", "alpha", "already", "also", "alter", "always", "amateur", "amazing", "among", "amount", "amused", "analyst", "anchor", "ancient", "anger", "angle", "angry", "animal", "ankle", "announce", "annual", "another", "answer", "antenna", "antique", "anxiety", "any", "apart", "apology", "appear", "apple", "approve", "april", "arch", "arctic", "area", "arena", "argue", "arm", "armed", "armor", "army", "around", "arrange", "arrest", "arrive", "arrow", "art", "artefact", "artist", "artwork", "ask", "aspect", "assault", "asset", "assist", "assume", "asthma", "athlete", "atom", "attack", "attend", "attitude", "attract", "auction", "audit", "august", "aunt", "author", "auto", "autumn", "average", "avocado", "avoid", "awake", "aware", "away", "awesome", "awful", "awkward", "axis", "baby", "bachelor", "bacon", "badge", "bag", "balance", "balcony", "ball", "bamboo", "banana", "banner", "bar", "barely", "bargain", "barrel", "base", "basic", "basket", "battle", "beach", "bean", "beauty", "because", "become", "beef", "before", "begin", "behave", "behind", "believe", "below", "belt", "bench", "benefit", "best", "betray", "better", "between", "beyond", "bicycle", "bid", "bike", "bind", "biology", "bird", "birth", "bitter", "black", "blade", "blame", "blanket", "blast", "bleak", "bless", "blind", "blood", "blossom", "blouse", "blue", "blur", "blush", "board", "boat", "body", "boil", "bomb", "bone", "bonus", "book", "boost", "border", "boring", "borrow", "boss", "bottom", "bounce", "box", "boy", "bracket", "brain", "brand", "brass", "brave", "bread", "breeze", "brick", "bridge", "brief", "bright", "bring", "brisk", "broccoli", "broken", "bronze", "broom", "brother", "brown", "brush", "bubble", "buddy", "budget", "buffalo", "build", "bulb", "bulk", "bullet", "bundle", "bunker", "burden", "burger", "burst", "bus", "business", "busy", "butter", "buyer", "buzz", "cabbage", "cabin", "cable", "cactus", "cage", "cake", "call", "calm", "camera", "camp", "can", "canal", "cancel", "candy", "cannon", "canoe", "canvas", "canyon", "capable", "capital", "captain", "car", "carbon", "card", "cargo", "carpet", "carry", "cart", "case", "cash", "casino", "castle", "casual", "cat", "catalog", "catch", "category", "cattle", "caught", "cause", "caution", "cave", "ceiling", "celery", "cement", "census", "century", "cereal", "certain", "chair", "chalk", "champion", "change", "chaos", "chapter", "charge", "chase", "chat", "cheap", "check", "cheese", "chef", "cherry", "chest", "chicken", "chief", "child", "chimney", "choice", "choose", "chronic", "chuckle", "chunk", "churn", "cigar", "cinnamon", "circle", "citizen", "city", "civil", "claim", "clap", "clarify", "claw", "clay", "clean", "clerk", "clever", "click", "client", "cliff", "climb", "clinic", "clip", "clock", "clog", "close", "cloth", "cloud", "clown", "club", "clump", "cluster", "clutch", "coach", "coast", "coconut", "code", "coffee", "coil", "coin", "collect", "color", "column", "combine", "come", "comfort", "comic", "common", "company", "concert", "conduct", "confirm", "congress", "connect", "consider", "control", "convince", "cook", "cool", "copper", "copy", "coral", "core", "corn", "correct", "cost", "cotton", "couch", "country", "couple", "course", "cousin", "cover", "coyote", "crack", "cradle", "craft", "cram", "crane", "crash", "crater", "crawl", "crazy", "cream", "credit", "creek", "crew", "cricket", "crime", "crisp", "critic", "crop", "cross", "crouch", "crowd", "crucial", "cruel", "cruise", "crumble", "crunch", "crush", "cry", "crystal", "cube", "culture", "cup", "cupboard", "curious", "current", "curtain", "curve", "cushion", "custom", "cute", "cycle", "dad", "damage", "damp", "dance", "danger", "daring", "dash", "daughter", "dawn", "day", "deal", "debate", "debris", "decade", "december", "decide", "decline", "decorate", "decrease", "deer", "defense", "define", "defy", "degree", "delay", "deliver", "demand", "demise", "denial", "dentist", "deny", "depart", "depend", "deposit", "depth", "deputy", "derive", "describe", "desert", "design", "desk", "despair", "destroy", "detail", "detect", "develop", "device", "devote", "diagram", "dial", "diamond", "diary", "dice", "diesel", "diet", "differ", "digital", "dignity", "dilemma", "dinner", "dinosaur", "direct", "dirt", "disagree", "discover", "disease", "dish", "dismiss", "disorder", "display", "distance", "divert", "divide", "divorce", "dizzy", "doctor", "document", "dog", "doll", "dolphin", "domain", "donate", "donkey", "donor", "door", "dose", "double", "dove", "draft", "dragon", "drama", "drastic", "draw", "dream", "dress", "drift", "drill", "drink", "drip", "drive", "drop", "drum", "dry", "duck", "dumb", "dune", "during", "dust", "dutch", "duty", "dwarf", "dynamic", "eager", "eagle", "early", "earn", "earth", "easily", "east", "easy", "echo", "ecology", "economy", "edge", "edit", "educate", "effort", "egg", "eight", "either", "elbow", "elder", "electric", "elegant", "element", "elephant", "elevator", "elite", "else", "embark", "embody", "embrace", "emerge", "emotion", "employ", "empower", "empty", "enable", "enact", "end", "endless", "endorse", "enemy", "energy", "enforce", "engage", "engine", "enhance", "enjoy", "enlist", "enough", "enrich", "enroll", "ensure", "enter", "entire", "entry", "envelope", "episode", "equal", "equip", "era", "erase", "erode", "erosion", "error", "erupt", "escape", "essay", "essence", "estate", "eternal", "ethics", "evidence", "evil", "evoke", "evolve", "exact", "example", "excess", "exchange", "excite", "exclude", "excuse", "execute", "exercise", "exhaust", "exhibit", "exile", "exist", "exit", "exotic", "expand", "expect", "expire", "explain", "expose", "express", "extend", "extra", "eye", "eyebrow", "fabric", "face", "faculty", "fade", "faint", "faith", "fall", "false", "fame", "family", "famous", "fan", "fancy", "fantasy", "farm", "fashion", "fat", "fatal", "father", "fatigue", "fault", "favorite", "feature", "february", "federal", "fee", "feed", "feel", "female", "fence", "festival", "fetch", "fever", "few", "fiber", "fiction", "field", "figure", "file", "film", "filter", "final", "find", "fine", "finger", "finish", "fire", "firm", "first", "fiscal", "fish", "fit", "fitness", "fix", "flag", "flame", "flash", "flat", "flavor", "flee", "flight", "flip", "float", "flock", "floor", "flower", "fluid", "flush", "fly", "foam", "focus", "fog", "foil", "fold", "follow", "food", "foot", "force", "forest", "forget", "fork", "fortune", "forum", "forward", "fossil", "foster", "found", "fox", "fragile", "frame", "frequent", "fresh", "friend", "fringe", "frog", "front", "frost", "frown", "frozen", "fruit", "fuel", "fun", "funny", "furnace", "fury", "future", "gadget", "gain", "galaxy", "gallery", "game", "gap", "garage", "garbage", "garden", "garlic", "garment", "gas", "gasp", "gate", "gather", "gauge", "gaze", "general", "genius", "genre", "gentle", "genuine", "gesture", "ghost", "giant", "gift", "giggle", "ginger", "giraffe", "girl", "give", "glad", "glance", "glare", "glass", "glide", "glimpse", "globe", "gloom", "glory", "glove", "glow", "glue", "goat", "goddess", "gold", "good", "goose", "gorilla", "gospel", "gossip", "govern", "gown", "grab", "grace", "grain", "grant", "grape", "grass", "gravity", "great", "green", "grid", "grief", "grit", "grocery", "group", "grow", "grunt", "guard", "guess", "guide", "guilt", "guitar", "gun", "gym", "habit", "hair", "half", "hammer", "hamster", "hand", "happy", "harbor", "hard", "harsh", "harvest", "hat", "have", "hawk", "hazard", "head", "health", "heart", "heavy", "hedgehog", "height", "hello", "helmet", "help", "hen", "hero", "hidden", "high", "hill", "hint", "hip", "hire", "history", "hobby", "hockey", "hold", "hole", "holiday", "hollow", "home", "honey", "hood", "hope", "horn", "horror", "horse", "hospital", "host", "hotel", "hour", "hover", "hub", "huge", "human", "humble", "humor", "hundred", "hungry", "hunt", "hurdle", "hurry", "hurt", "husband", "hybrid", "ice", "icon", "idea", "identify", "idle", "ignore", "ill", "illegal", "illness", "image", "imitate", "immense", "immune", "impact", "impose", "improve", "impulse", "inch", "include", "income", "increase", "index", "indicate", "indoor", "industry", "infant", "inflict", "inform", "inhale", "inherit", "initial", "inject", "injury", "inmate", "inner", "innocent", "input", "inquiry", "insane", "insect", "inside", "inspire", "install", "intact", "interest", "into", "invest", "invite", "involve", "iron", "island", "isolate", "issue", "item", "ivory", "jacket", "jaguar", "jar", "jazz", "jealous", "jeans", "jelly", "jewel", "job", "join", "joke", "journey", "joy", "judge", "juice", "jump", "jungle", "junior", "junk", "just", "kangaroo", "keen", "keep", "ketchup", "key", "kick", "kid", "kidney", "kind", "kingdom", "kiss", "kit", "kitchen", "kite", "kitten", "kiwi", "knee", "knife", "knock", "know", "lab", "label", "labor", "ladder", "lady", "lake", "lamp", "language", "laptop", "large", "later", "latin", "laugh", "laundry", "lava", "law", "lawn", "lawsuit", "layer", "lazy", "leader", "leaf", "learn", "leave", "lecture", "left", "leg", "legal", "legend", "leisure", "lemon", "lend", "length", "lens", "leopard", "lesson", "letter", "level", "liar", "liberty", "library", "license", "life", "lift", "light", "like", "limb", "limit", "link", "lion", "liquid", "list", "little", "live", "lizard", "load", "loan", "lobster", "local", "lock", "logic", "lonely", "long", "loop", "lottery", "loud", "lounge", "love", "loyal", "lucky", "luggage", "lumber", "lunar", "lunch", "luxury", "lyrics", "machine", "mad", "magic", "magnet", "maid", "mail", "main", "major", "make", "mammal", "man", "manage", "mandate", "mango", "mansion", "manual", "maple", "marble", "march", "margin", "marine", "market", "marriage", "mask", "mass", "master", "match", "material", "math", "matrix", "matter", "maximum", "maze", "meadow", "mean", "measure", "meat", "mechanic", "medal", "media", "melody", "melt", "member", "memory", "mention", "menu", "mercy", "merge", "merit", "merry", "mesh", "message", "metal", "method", "middle", "midnight", "milk", "million", "mimic", "mind", "minimum", "minor", "minute", "miracle", "mirror", "misery", "miss", "mistake", "mix", "mixed", "mixture", "mobile", "model", "modify", "mom", "moment", "monitor", "monkey", "monster", "month", "moon", "moral", "more", "morning", "mosquito", "mother", "motion", "motor", "mountain", "mouse", "move", "movie", "much", "muffin", "mule", "multiply", "muscle", "museum", "mushroom", "music", "must", "mutual", "myself", "mystery", "myth", "naive", "name", "napkin", "narrow", "nasty", "nation", "nature", "near", "neck", "need", "negative", "neglect", "neither", "nephew", "nerve", "nest", "net", "network", "neutral", "never", "news", "next", "nice", "night", "noble", "noise", "nominee", "noodle", "normal", "north", "nose", "notable", "note", "nothing", "notice", "novel", "now", "nuclear", "number", "nurse", "nut", "oak", "obey", "object", "oblige", "obscure", "observe", "obtain", "obvious", "occur", "ocean", "october", "odor", "off", "offer", "office", "often", "oil", "okay", "old", "olive", "olympic", "omit", "once", "one", "onion", "online", "only", "open", "opera", "opinion", "oppose", "option", "orange", "orbit", "orchard", "order", "ordinary", "organ", "orient", "original", "orphan", "ostrich", "other", "outdoor", "outer", "output", "outside", "oval", "oven", "over", "own", "owner", "oxygen", "oyster", "ozone", "pact", "paddle", "page", "pair", "palace", "palm", "panda", "panel", "panic", "panther", "paper", "parade", "parent", "park", "parrot", "party", "pass", "patch", "path", "patient", "patrol", "pattern", "pause", "pave", "payment", "peace", "peanut", "pear", "peasant", "pelican", "pen", "penalty", "pencil", "people", "pepper", "perfect", "permit", "person", "pet", "phone", "photo", "phrase", "physical", "piano", "picnic", "picture", "piece", "pig", "pigeon", "pill", "pilot", "pink", "pioneer", "pipe", "pistol", "pitch", "pizza", "place", "planet", "plastic", "plate", "play", "please", "pledge", "pluck", "plug", "plunge", "poem", "poet", "point", "polar", "pole", "police", "pond", "pony", "pool", "popular", "portion", "position", "possible", "post", "potato", "pottery", "poverty", "powder", "power", "practice", "praise", "predict", "prefer", "prepare", "present", "pretty", "prevent", "price", "pride", "primary", "print", "priority", "prison", "private", "prize", "problem", "process", "produce", "profit", "program", "project", "promote", "proof", "property", "prosper", "protect", "proud", "provide", "public", "pudding", "pull", "pulp", "pulse", "pumpkin", "punch", "pupil", "puppy", "purchase", "purity", "purpose", "purse", "push", "put", "puzzle", "pyramid", "quality", "quantum", "quarter", "question", "quick", "quit", "quiz", "quote", "rabbit", "raccoon", "race", "rack", "radar", "radio", "rail", "rain", "raise", "rally", "ramp", "ranch", "random", "range", "rapid", "rare", "rate", "rather", "raven", "raw", "razor", "ready", "real", "reason", "rebel", "rebuild", "recall", "receive", "recipe", "record", "recycle", "reduce", "reflect", "reform", "refuse", "region", "regret", "regular", "reject", "relax", "release", "relief", "rely", "remain", "remember", "remind", "remove", "render", "renew", "rent", "reopen", "repair", "repeat", "replace", "report", "require", "rescue", "resemble", "resist", "resource", "response", "result", "retire", "retreat", "return", "reunion", "reveal", "review", "reward", "rhythm", "rib", "ribbon", "rice", "rich", "ride", "ridge", "rifle", "right", "rigid", "ring", "riot", "ripple", "risk", "ritual", "rival", "river", "road", "roast", "robot", "robust", "rocket", "romance", "roof", "rookie", "room", "rose", "rotate", "rough", "round", "route", "royal", "rubber", "rude", "rug", "rule", "run", "runway", "rural", "sad", "saddle", "sadness", "safe", "sail", "salad", "salmon", "salon", "salt", "salute", "same", "sample", "sand", "satisfy", "satoshi", "sauce", "sausage", "save", "say", "scale", "scan", "scare", "scatter", "scene", "scheme", "school", "science", "scissors", "scorpion", "scout", "scrap", "screen", "script", "scrub", "sea", "search", "season", "seat", "second", "secret", "section", "security", "seed", "seek", "segment", "select", "sell", "seminar", "senior", "sense", "sentence", "series", "service", "session", "settle", "setup", "seven", "shadow", "shaft", "shallow", "share", "shed", "shell", "sheriff", "shield", "shift", "shine", "ship", "shiver", "shock", "shoe", "shoot", "shop", "short", "shoulder", "shove", "shrimp", "shrug", "shuffle", "shy", "sibling", "sick", "side", "siege", "sight", "sign", "silent", "silk", "silly", "silver", "similar", "simple", "since", "sing", "siren", "sister", "situate", "six", "size", "skate", "sketch", "ski", "skill", "skin", "skirt", "skull", "slab", "slam", "sleep", "slender", "slice", "slide", "slight", "slim", "slogan", "slot", "slow", "slush", "small", "smart", "smile", "smoke", "smooth", "snack", "snake", "snap", "sniff", "snow", "soap", "soccer", "social", "sock", "soda", "soft", "solar", "soldier", "solid", "solution", "solve", "someone", "song", "soon", "sorry", "sort", "soul", "sound", "soup", "source", "south", "space", "spare", "spatial", "spawn", "speak", "special", "speed", "spell", "spend", "sphere", "spice", "spider", "spike", "spin", "spirit", "split", "spoil", "sponsor", "spoon", "sport", "spot", "spray", "spread", "spring", "spy", "square", "squeeze", "squirrel", "stable", "stadium", "staff", "stage", "stairs", "stamp", "stand", "start", "state", "stay", "steak", "steel", "stem", "step", "stereo", "stick", "still", "sting", "stock", "stomach", "stone", "stool", "story", "stove", "strategy", "street", "strike", "strong", "struggle", "student", "stuff", "stumble", "style", "subject", "submit", "subway", "success", "such", "sudden", "suffer", "sugar", "suggest", "suit", "summer", "sun", "sunny", "sunset", "super", "supply", "supreme", "sure", "surface", "surge", "surprise", "surround", "survey", "suspect", "sustain", "swallow", "swamp", "swap", "swarm", "swear", "sweet", "swift", "swim", "swing", "switch", "sword", "symbol", "symptom", "syrup", "system", "table", "tackle", "tag", "tail", "talent", "talk", "tank", "tape", "target", "task", "taste", "tattoo", "taxi", "teach", "team", "tell", "ten", "tenant", "tennis", "tent", "term", "test", "text", "thank", "that", "theme", "then", "theory", "there", "they", "thing", "this", "thought", "three", "thrive", "throw", "thumb", "thunder", "ticket", "tide", "tiger", "tilt", "timber", "time", "tiny", "tip", "tired", "tissue", "title", "toast", "tobacco", "today", "toddler", "toe", "together", "toilet", "token", "tomato", "tomorrow", "tone", "tongue", "tonight", "tool", "tooth", "top", "topic", "topple", "torch", "tornado", "tortoise", "toss", "total", "tourist", "toward", "tower", "town", "toy", "track", "trade", "traffic", "tragic", "train", "transfer", "trap", "trash", "travel", "tray", "treat", "tree", "trend", "trial", "tribe", "trick", "trigger", "trim", "trip", "trophy", "trouble", "truck", "true", "truly", "trumpet", "trust", "truth", "try", "tube", "tuition", "tumble", "tuna", "tunnel", "turkey", "turn", "turtle", "twelve", "twenty", "twice", "twin", "twist", "two", "type", "typical", "ugly", "umbrella", "unable", "unaware", "uncle", "uncover", "under", "undo", "unfair", "unfold", "unhappy", "uniform", "unique", "unit", "universe", "unknown", "unlock", "until", "unusual", "unveil", "update", "upgrade", "uphold", "upon", "upper", "upset", "urban", "urge", "usage", "use", "used", "useful", "useless", "usual", "utility", "vacant", "vacuum", "vague", "valid", "valley", "valve", "van", "vanish", "vapor", "various", "vast", "vault", "vehicle", "velvet", "vendor", "venture", "venue", "verb", "verify", "version", "very", "vessel", "veteran", "viable", "vibrant", "vicious", "victory", "video", "view", "village", "vintage", "violin", "virtual", "virus", "visa", "visit", "visual", "vital", "vivid", "vocal", "voice", "void", "volcano", "volume", "vote", "voyage", "wage", "wagon", "wait", "walk", "wall", "walnut", "want", "warfare", "warm", "warrior", "wash", "wasp", "waste", "water", "wave", "way", "wealth", "weapon", "wear", "weasel", "weather", "web", "wedding", "weekend", "weird", "welcome", "west", "wet", "whale", "what", "wheat", "wheel", "when", "where", "whip", "whisper", "wide", "width", "wife", "wild", "will", "win", "window", "wine", "wing", "wink", "winner", "winter", "wire", "wisdom", "wise", "wish", "witness", "wolf", "woman", "wonder", "wood", "wool", "word", "work", "world", "worry", "worth", "wrap", "wreck", "wrestle", "wrist", "write", "wrong", "yard", "year", "yellow", "you", "young", "youth", "zebra", "zero", "zone", "zoo"];
-  }, {}], 83: [function (require, module, exports) {
+  }, {}], 84: [function (require, module, exports) {
     (function (Buffer) {
       // Reference https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
       // Format: 0x30 [total-length] 0x02 [R-length] [R] 0x02 [S-length] [S]
@@ -50487,7 +51073,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         encode: encode
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 84: [function (require, module, exports) {
+  }, { "buffer": 116 }], 85: [function (require, module, exports) {
     (function (module, exports) {
       'use strict';
 
@@ -53847,7 +54433,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return res._forceRed(this);
       };
     })(typeof module === 'undefined' || module, this);
-  }, {}], 85: [function (require, module, exports) {
+  }, {}], 86: [function (require, module, exports) {
     var r;
 
     module.exports = function rand(len) {
@@ -53904,7 +54490,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         };
       }
     }
-  }, { "crypto": 86 }], 86: [function (require, module, exports) {}, {}], 87: [function (require, module, exports) {
+  }, { "crypto": 87 }], 87: [function (require, module, exports) {}, {}], 88: [function (require, module, exports) {
     (function (Buffer) {
       // based on the aes implimentation in triple sec
       // https://github.com/keybase/triplesec
@@ -54079,7 +54665,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       exports.AES = AES;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 88: [function (require, module, exports) {
+  }, { "buffer": 116 }], 89: [function (require, module, exports) {
     (function (Buffer) {
       var aes = require('./aes');
       var Transform = require('cipher-base');
@@ -54179,7 +54765,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 87, "./ghash": 92, "buffer": 115, "buffer-xor": 114, "cipher-base": 116, "inherits": 167 }], 89: [function (require, module, exports) {
+  }, { "./aes": 88, "./ghash": 93, "buffer": 116, "buffer-xor": 115, "cipher-base": 117, "inherits": 168 }], 90: [function (require, module, exports) {
     var ciphers = require('./encrypter');
     exports.createCipher = exports.Cipher = ciphers.createCipher;
     exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv;
@@ -54191,7 +54777,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return Object.keys(modes);
     }
     exports.listCiphers = exports.getCiphers = getCiphers;
-  }, { "./decrypter": 90, "./encrypter": 91, "./modes": 93 }], 90: [function (require, module, exports) {
+  }, { "./decrypter": 91, "./encrypter": 92, "./modes": 94 }], 91: [function (require, module, exports) {
     (function (Buffer) {
       var aes = require('./aes');
       var Transform = require('cipher-base');
@@ -54331,7 +54917,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       exports.createDecipher = createDecipher;
       exports.createDecipheriv = createDecipheriv;
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 87, "./authCipher": 88, "./modes": 93, "./modes/cbc": 94, "./modes/cfb": 95, "./modes/cfb1": 96, "./modes/cfb8": 97, "./modes/ctr": 98, "./modes/ecb": 99, "./modes/ofb": 100, "./streamCipher": 101, "buffer": 115, "cipher-base": 116, "evp_bytestokey": 157, "inherits": 167 }], 91: [function (require, module, exports) {
+  }, { "./aes": 88, "./authCipher": 89, "./modes": 94, "./modes/cbc": 95, "./modes/cfb": 96, "./modes/cfb1": 97, "./modes/cfb8": 98, "./modes/ctr": 99, "./modes/ecb": 100, "./modes/ofb": 101, "./streamCipher": 102, "buffer": 116, "cipher-base": 117, "evp_bytestokey": 158, "inherits": 168 }], 92: [function (require, module, exports) {
     (function (Buffer) {
       var aes = require('./aes');
       var Transform = require('cipher-base');
@@ -54456,7 +55042,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       exports.createCipheriv = createCipheriv;
       exports.createCipher = createCipher;
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 87, "./authCipher": 88, "./modes": 93, "./modes/cbc": 94, "./modes/cfb": 95, "./modes/cfb1": 96, "./modes/cfb8": 97, "./modes/ctr": 98, "./modes/ecb": 99, "./modes/ofb": 100, "./streamCipher": 101, "buffer": 115, "cipher-base": 116, "evp_bytestokey": 157, "inherits": 167 }], 92: [function (require, module, exports) {
+  }, { "./aes": 88, "./authCipher": 89, "./modes": 94, "./modes/cbc": 95, "./modes/cfb": 96, "./modes/cfb1": 97, "./modes/cfb8": 98, "./modes/ctr": 99, "./modes/ecb": 100, "./modes/ofb": 101, "./streamCipher": 102, "buffer": 116, "cipher-base": 117, "evp_bytestokey": 158, "inherits": 168 }], 93: [function (require, module, exports) {
     (function (Buffer) {
       var zeros = new Buffer(16);
       zeros.fill(0);
@@ -54544,7 +55130,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return [a[0] ^ b[0], a[1] ^ b[1], a[2] ^ b[2], a[3] ^ b[3]];
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 93: [function (require, module, exports) {
+  }, { "buffer": 116 }], 94: [function (require, module, exports) {
     exports['aes-128-ecb'] = {
       cipher: 'AES',
       key: 128,
@@ -54716,7 +55302,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       mode: 'GCM',
       type: 'auth'
     };
-  }, {}], 94: [function (require, module, exports) {
+  }, {}], 95: [function (require, module, exports) {
     var xor = require('buffer-xor');
 
     exports.encrypt = function (self, block) {
@@ -54734,7 +55320,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return xor(out, pad);
     };
-  }, { "buffer-xor": 114 }], 95: [function (require, module, exports) {
+  }, { "buffer-xor": 115 }], 96: [function (require, module, exports) {
     (function (Buffer) {
       var xor = require('buffer-xor');
 
@@ -54768,7 +55354,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "buffer-xor": 114 }], 96: [function (require, module, exports) {
+  }, { "buffer": 116, "buffer-xor": 115 }], 97: [function (require, module, exports) {
     (function (Buffer) {
       function encryptByte(self, byteParam, decrypt) {
         var pad;
@@ -54805,7 +55391,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 97: [function (require, module, exports) {
+  }, { "buffer": 116 }], 98: [function (require, module, exports) {
     (function (Buffer) {
       function encryptByte(self, byteParam, decrypt) {
         var pad = self._cipher.encryptBlock(self._prev);
@@ -54823,7 +55409,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 98: [function (require, module, exports) {
+  }, { "buffer": 116 }], 99: [function (require, module, exports) {
     (function (Buffer) {
       var xor = require('buffer-xor');
 
@@ -54857,14 +55443,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return xor(chunk, pad);
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "buffer-xor": 114 }], 99: [function (require, module, exports) {
+  }, { "buffer": 116, "buffer-xor": 115 }], 100: [function (require, module, exports) {
     exports.encrypt = function (self, block) {
       return self._cipher.encryptBlock(block);
     };
     exports.decrypt = function (self, block) {
       return self._cipher.decryptBlock(block);
     };
-  }, {}], 100: [function (require, module, exports) {
+  }, {}], 101: [function (require, module, exports) {
     (function (Buffer) {
       var xor = require('buffer-xor');
 
@@ -54883,7 +55469,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return xor(chunk, pad);
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "buffer-xor": 114 }], 101: [function (require, module, exports) {
+  }, { "buffer": 116, "buffer-xor": 115 }], 102: [function (require, module, exports) {
     (function (Buffer) {
       var aes = require('./aes');
       var Transform = require('cipher-base');
@@ -54911,7 +55497,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this._cipher.scrub();
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 87, "buffer": 115, "cipher-base": 116, "inherits": 167 }], 102: [function (require, module, exports) {
+  }, { "./aes": 88, "buffer": 116, "cipher-base": 117, "inherits": 168 }], 103: [function (require, module, exports) {
     var ebtk = require('evp_bytestokey');
     var aes = require('browserify-aes/browser');
     var DES = require('browserify-des');
@@ -54985,7 +55571,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return Object.keys(desModes).concat(aes.getCiphers());
     }
     exports.listCiphers = exports.getCiphers = getCiphers;
-  }, { "browserify-aes/browser": 89, "browserify-aes/modes": 93, "browserify-des": 103, "browserify-des/modes": 104, "evp_bytestokey": 157 }], 103: [function (require, module, exports) {
+  }, { "browserify-aes/browser": 90, "browserify-aes/modes": 94, "browserify-des": 104, "browserify-des/modes": 105, "evp_bytestokey": 158 }], 104: [function (require, module, exports) {
     (function (Buffer) {
       var CipherBase = require('cipher-base');
       var des = require('des.js');
@@ -55031,7 +55617,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new Buffer(this._des.final());
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "cipher-base": 116, "des.js": 125, "inherits": 167 }], 104: [function (require, module, exports) {
+  }, { "buffer": 116, "cipher-base": 117, "des.js": 126, "inherits": 168 }], 105: [function (require, module, exports) {
     exports['des-ecb'] = {
       key: 8,
       iv: 0
@@ -55056,7 +55642,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       key: 16,
       iv: 0
     };
-  }, {}], 105: [function (require, module, exports) {
+  }, {}], 106: [function (require, module, exports) {
     (function (Buffer) {
       var bn = require('bn.js');
       var randomBytes = require('randombytes');
@@ -55098,7 +55684,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return r;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 84, "buffer": 115, "randombytes": 189 }], 106: [function (require, module, exports) {
+  }, { "bn.js": 85, "buffer": 116, "randombytes": 190 }], 107: [function (require, module, exports) {
     (function (Buffer) {
       var Sha3 = require('js-sha3');
 
@@ -55124,7 +55710,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         SHA3Hash: hash
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "js-sha3": 170 }], 107: [function (require, module, exports) {
+  }, { "buffer": 116, "js-sha3": 171 }], 108: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -55200,7 +55786,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         id: new Buffer('3020300c06082a864886f70d020505000410', 'hex')
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 108: [function (require, module, exports) {
+  }, { "buffer": 116 }], 109: [function (require, module, exports) {
     (function (Buffer) {
       var _algos = require('./algos');
       var createHash = require('create-hash');
@@ -55306,7 +55892,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         createVerify: createVerify
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./algos": 107, "./sign": 110, "./verify": 111, "buffer": 115, "create-hash": 120, "inherits": 167, "stream": 218 }], 109: [function (require, module, exports) {
+  }, { "./algos": 108, "./sign": 111, "./verify": 112, "buffer": 116, "create-hash": 121, "inherits": 168, "stream": 219 }], 110: [function (require, module, exports) {
     'use strict';
 
     exports['1.3.132.0.10'] = 'secp256k1';
@@ -55320,7 +55906,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     exports['1.3.132.0.34'] = 'p384';
 
     exports['1.3.132.0.35'] = 'p521';
-  }, {}], 110: [function (require, module, exports) {
+  }, {}], 111: [function (require, module, exports) {
     (function (Buffer) {
       // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
       var createHmac = require('create-hmac');
@@ -55487,7 +56073,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       module.exports.getKey = getKey;
       module.exports.makeKey = makeKey;
     }).call(this, require("buffer").Buffer);
-  }, { "./curves": 109, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hmac": 123, "elliptic": 135, "parse-asn1": 178 }], 111: [function (require, module, exports) {
+  }, { "./curves": 110, "bn.js": 85, "browserify-rsa": 106, "buffer": 116, "create-hmac": 124, "elliptic": 136, "parse-asn1": 179 }], 112: [function (require, module, exports) {
     (function (Buffer) {
       // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
       var curves = require('./curves');
@@ -55586,7 +56172,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = verify;
     }).call(this, require("buffer").Buffer);
-  }, { "./curves": 109, "bn.js": 84, "buffer": 115, "elliptic": 135, "parse-asn1": 178 }], 112: [function (require, module, exports) {
+  }, { "./curves": 110, "bn.js": 85, "buffer": 116, "elliptic": 136, "parse-asn1": 179 }], 113: [function (require, module, exports) {
     // Base58 encoding/decoding
     // Originally written by Mike Hearn for BitcoinJ
     // Copyright (c) 2011 Google Inc
@@ -55677,7 +56263,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       encode: encode,
       decode: decode
     };
-  }, {}], 113: [function (require, module, exports) {
+  }, {}], 114: [function (require, module, exports) {
     (function (global) {
       'use strict';
 
@@ -55788,7 +56374,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new SlowBuffer(size);
       };
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, { "buffer": 115 }], 114: [function (require, module, exports) {
+  }, { "buffer": 116 }], 115: [function (require, module, exports) {
     (function (Buffer) {
       module.exports = function xor(a, b) {
         var length = Math.min(a.length, b.length);
@@ -55801,7 +56387,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return buffer;
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 115: [function (require, module, exports) {
+  }, { "buffer": 116 }], 116: [function (require, module, exports) {
     (function (global) {
       /*!
        * The buffer module from node.js, for the browser.
@@ -57541,7 +58127,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return val !== val; // eslint-disable-line no-self-compare
       }
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, { "base64-js": 79, "ieee754": 165, "isarray": 169 }], 116: [function (require, module, exports) {
+  }, { "base64-js": 80, "ieee754": 166, "isarray": 170 }], 117: [function (require, module, exports) {
     (function (Buffer) {
       var Transform = require('stream').Transform;
       var inherits = require('inherits');
@@ -57634,7 +58220,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "inherits": 167, "stream": 218, "string_decoder": 220 }], 117: [function (require, module, exports) {
+  }, { "buffer": 116, "inherits": 168, "stream": 219, "string_decoder": 221 }], 118: [function (require, module, exports) {
     (function (Buffer) {
       var base58 = require('bs58');
       var createHash = require('create-hash');
@@ -57730,7 +58316,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         createValidator: createValidator
       };
     }).call(this, require("buffer").Buffer);
-  }, { "bs58": 112, "buffer": 115, "create-hash": 120 }], 118: [function (require, module, exports) {
+  }, { "bs58": 113, "buffer": 116, "create-hash": 121 }], 119: [function (require, module, exports) {
     (function (Buffer) {
       // Copyright Joyent, Inc. and other Node contributors.
       //
@@ -57836,7 +58422,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return Object.prototype.toString.call(o);
       }
     }).call(this, { "isBuffer": require("../../is-buffer/index.js") });
-  }, { "../../is-buffer/index.js": 168 }], 119: [function (require, module, exports) {
+  }, { "../../is-buffer/index.js": 169 }], 120: [function (require, module, exports) {
     (function (Buffer) {
       var elliptic = require('elliptic');
       var BN = require('bn.js');
@@ -57961,7 +58547,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 84, "buffer": 115, "elliptic": 135 }], 120: [function (require, module, exports) {
+  }, { "bn.js": 85, "buffer": 116, "elliptic": 136 }], 121: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -58017,7 +58603,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new Hash(sha(alg));
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./md5": 122, "buffer": 115, "cipher-base": 116, "inherits": 167, "ripemd160": 201, "sha.js": 211 }], 121: [function (require, module, exports) {
+  }, { "./md5": 123, "buffer": 116, "cipher-base": 117, "inherits": 168, "ripemd160": 202, "sha.js": 212 }], 122: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -58055,7 +58641,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       exports.hash = hash;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 122: [function (require, module, exports) {
+  }, { "buffer": 116 }], 123: [function (require, module, exports) {
     'use strict';
     /*
      * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -58202,7 +58788,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     module.exports = function md5(buf) {
       return helpers.hash(buf, core_md5, 16);
     };
-  }, { "./helpers": 121 }], 123: [function (require, module, exports) {
+  }, { "./helpers": 122 }], 124: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -58273,7 +58859,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new Hmac(alg, key);
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "create-hash/browser": 120, "inherits": 167, "stream": 218 }], 124: [function (require, module, exports) {
+  }, { "buffer": 116, "create-hash/browser": 121, "inherits": 168, "stream": 219 }], 125: [function (require, module, exports) {
     'use strict';
 
     exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes');
@@ -58313,7 +58899,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         throw new Error(['sorry, ' + name + ' is not implemented yet', 'we accept pull requests', 'https://github.com/crypto-browserify/crypto-browserify'].join('\n'));
       };
     });
-  }, { "browserify-cipher": 102, "browserify-sign": 108, "browserify-sign/algos": 107, "create-ecdh": 119, "create-hash": 120, "create-hmac": 123, "diffie-hellman": 131, "pbkdf2": 179, "public-encrypt": 183, "randombytes": 189 }], 125: [function (require, module, exports) {
+  }, { "browserify-cipher": 103, "browserify-sign": 109, "browserify-sign/algos": 108, "create-ecdh": 120, "create-hash": 121, "create-hmac": 124, "diffie-hellman": 132, "pbkdf2": 180, "public-encrypt": 184, "randombytes": 190 }], 126: [function (require, module, exports) {
     'use strict';
 
     exports.utils = require('./des/utils');
@@ -58321,7 +58907,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     exports.DES = require('./des/des');
     exports.CBC = require('./des/cbc');
     exports.EDE = require('./des/ede');
-  }, { "./des/cbc": 126, "./des/cipher": 127, "./des/des": 128, "./des/ede": 129, "./des/utils": 130 }], 126: [function (require, module, exports) {
+  }, { "./des/cbc": 127, "./des/cipher": 128, "./des/des": 129, "./des/ede": 130, "./des/utils": 131 }], 127: [function (require, module, exports) {
     'use strict';
 
     var assert = require('minimalistic-assert');
@@ -58388,7 +58974,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     };
-  }, { "inherits": 167, "minimalistic-assert": 174 }], 127: [function (require, module, exports) {
+  }, { "inherits": 168, "minimalistic-assert": 175 }], 128: [function (require, module, exports) {
     'use strict';
 
     var assert = require('minimalistic-assert');
@@ -58514,7 +59100,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return this._unpad(out);
     };
-  }, { "minimalistic-assert": 174 }], 128: [function (require, module, exports) {
+  }, { "minimalistic-assert": 175 }], 129: [function (require, module, exports) {
     'use strict';
 
     var assert = require('minimalistic-assert');
@@ -58650,7 +59236,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // Reverse Initial Permutation
       utils.rip(l, r, out, off);
     };
-  }, { "../des": 125, "inherits": 167, "minimalistic-assert": 174 }], 129: [function (require, module, exports) {
+  }, { "../des": 126, "inherits": 168, "minimalistic-assert": 175 }], 130: [function (require, module, exports) {
     'use strict';
 
     var assert = require('minimalistic-assert');
@@ -58698,7 +59284,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     EDE.prototype._pad = DES.prototype._pad;
     EDE.prototype._unpad = DES.prototype._unpad;
-  }, { "../des": 125, "inherits": 167, "minimalistic-assert": 174 }], 130: [function (require, module, exports) {
+  }, { "../des": 126, "inherits": 168, "minimalistic-assert": 175 }], 131: [function (require, module, exports) {
     'use strict';
 
     exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -58903,7 +59489,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         out.push(str.slice(i, i + group));
       }return out.join(' ');
     };
-  }, {}], 131: [function (require, module, exports) {
+  }, {}], 132: [function (require, module, exports) {
     (function (Buffer) {
       var generatePrime = require('./lib/generatePrime');
       var primes = require('./lib/primes.json');
@@ -58948,7 +59534,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffieHellman = getDiffieHellman;
       exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman;
     }).call(this, require("buffer").Buffer);
-  }, { "./lib/dh": 132, "./lib/generatePrime": 133, "./lib/primes.json": 134, "buffer": 115 }], 132: [function (require, module, exports) {
+  }, { "./lib/dh": 133, "./lib/generatePrime": 134, "./lib/primes.json": 135, "buffer": 116 }], 133: [function (require, module, exports) {
     (function (Buffer) {
       var BN = require('bn.js');
       var MillerRabin = require('miller-rabin');
@@ -59112,7 +59698,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./generatePrime": 133, "bn.js": 84, "buffer": 115, "miller-rabin": 173, "randombytes": 189 }], 133: [function (require, module, exports) {
+  }, { "./generatePrime": 134, "bn.js": 85, "buffer": 116, "miller-rabin": 174, "randombytes": 190 }], 134: [function (require, module, exports) {
     var randomBytes = require('randombytes');
     module.exports = findPrime;
     findPrime.simpleSieve = simpleSieve;
@@ -59210,7 +59796,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     }
-  }, { "bn.js": 84, "miller-rabin": 173, "randombytes": 189 }], 134: [function (require, module, exports) {
+  }, { "bn.js": 85, "miller-rabin": 174, "randombytes": 190 }], 135: [function (require, module, exports) {
     module.exports = {
       "modp1": {
         "gen": "02",
@@ -59245,7 +59831,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
       }
     };
-  }, {}], 135: [function (require, module, exports) {
+  }, {}], 136: [function (require, module, exports) {
     'use strict';
 
     var elliptic = exports;
@@ -59260,7 +59846,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     // Protocols
     elliptic.ec = require('./elliptic/ec');
     elliptic.eddsa = require('./elliptic/eddsa');
-  }, { "../package.json": 151, "./elliptic/curve": 138, "./elliptic/curves": 141, "./elliptic/ec": 142, "./elliptic/eddsa": 145, "./elliptic/hmac-drbg": 148, "./elliptic/utils": 150, "brorand": 85 }], 136: [function (require, module, exports) {
+  }, { "../package.json": 152, "./elliptic/curve": 139, "./elliptic/curves": 142, "./elliptic/ec": 143, "./elliptic/eddsa": 146, "./elliptic/hmac-drbg": 149, "./elliptic/utils": 151, "brorand": 86 }], 137: [function (require, module, exports) {
     'use strict';
 
     var BN = require('bn.js');
@@ -59591,7 +60177,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         r = r.dbl();
       }return r;
     };
-  }, { "../../elliptic": 135, "bn.js": 84 }], 137: [function (require, module, exports) {
+  }, { "../../elliptic": 136, "bn.js": 85 }], 138: [function (require, module, exports) {
     'use strict';
 
     var curve = require('../curve');
@@ -59978,7 +60564,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     // Compatibility with BaseCurve
     Point.prototype.toP = Point.prototype.normalize;
     Point.prototype.mixedAdd = Point.prototype.add;
-  }, { "../../elliptic": 135, "../curve": 138, "bn.js": 84, "inherits": 167 }], 138: [function (require, module, exports) {
+  }, { "../../elliptic": 136, "../curve": 139, "bn.js": 85, "inherits": 168 }], 139: [function (require, module, exports) {
     'use strict';
 
     var curve = exports;
@@ -59987,7 +60573,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     curve.short = require('./short');
     curve.mont = require('./mont');
     curve.edwards = require('./edwards');
-  }, { "./base": 136, "./edwards": 137, "./mont": 139, "./short": 140 }], 139: [function (require, module, exports) {
+  }, { "./base": 137, "./edwards": 138, "./mont": 140, "./short": 141 }], 140: [function (require, module, exports) {
     'use strict';
 
     var curve = require('../curve');
@@ -60163,7 +60749,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return this.x.fromRed();
     };
-  }, { "../../elliptic": 135, "../curve": 138, "bn.js": 84, "inherits": 167 }], 140: [function (require, module, exports) {
+  }, { "../../elliptic": 136, "../curve": 139, "bn.js": 85, "inherits": 168 }], 141: [function (require, module, exports) {
     'use strict';
 
     var curve = require('../curve');
@@ -61027,7 +61613,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // XXX This code assumes that zero is always zero in red
       return this.z.cmpn(0) === 0;
     };
-  }, { "../../elliptic": 135, "../curve": 138, "bn.js": 84, "inherits": 167 }], 141: [function (require, module, exports) {
+  }, { "../../elliptic": 136, "../curve": 139, "bn.js": 85, "inherits": 168 }], 142: [function (require, module, exports) {
     'use strict';
 
     var curves = exports;
@@ -61184,7 +61770,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       gRed: false,
       g: ['79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798', '483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8', pre]
     });
-  }, { "../elliptic": 135, "./precomputed/secp256k1": 149, "hash.js": 158 }], 142: [function (require, module, exports) {
+  }, { "../elliptic": 136, "./precomputed/secp256k1": 150, "hash.js": 159 }], 143: [function (require, module, exports) {
     'use strict';
 
     var BN = require('bn.js');
@@ -61396,7 +61982,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       throw new Error('Unable to find valid recovery factor');
     };
-  }, { "../../elliptic": 135, "./key": 143, "./signature": 144, "bn.js": 84 }], 143: [function (require, module, exports) {
+  }, { "../../elliptic": 136, "./key": 144, "./signature": 145, "bn.js": 85 }], 144: [function (require, module, exports) {
     'use strict';
 
     var BN = require('bn.js');
@@ -61491,7 +62077,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     KeyPair.prototype.inspect = function inspect() {
       return '<Key priv: ' + (this.priv && this.priv.toString(16, 2)) + ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
     };
-  }, { "bn.js": 84 }], 144: [function (require, module, exports) {
+  }, { "bn.js": 85 }], 145: [function (require, module, exports) {
     'use strict';
 
     var BN = require('bn.js');
@@ -61620,7 +62206,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       res = res.concat(backHalf);
       return utils.encode(res, enc);
     };
-  }, { "../../elliptic": 135, "bn.js": 84 }], 145: [function (require, module, exports) {
+  }, { "../../elliptic": 136, "bn.js": 85 }], 146: [function (require, module, exports) {
     'use strict';
 
     var hash = require('hash.js');
@@ -61736,7 +62322,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     EDDSA.prototype.isPoint = function isPoint(val) {
       return val instanceof this.pointClass;
     };
-  }, { "../../elliptic": 135, "./key": 146, "./signature": 147, "hash.js": 158 }], 146: [function (require, module, exports) {
+  }, { "../../elliptic": 136, "./key": 147, "./signature": 148, "hash.js": 159 }], 147: [function (require, module, exports) {
     'use strict';
 
     var elliptic = require('../../elliptic');
@@ -61827,7 +62413,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
 
     module.exports = KeyPair;
-  }, { "../../elliptic": 135 }], 147: [function (require, module, exports) {
+  }, { "../../elliptic": 136 }], 148: [function (require, module, exports) {
     'use strict';
 
     var BN = require('bn.js');
@@ -61891,7 +62477,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
 
     module.exports = Signature;
-  }, { "../../elliptic": 135, "bn.js": 84 }], 148: [function (require, module, exports) {
+  }, { "../../elliptic": 136, "bn.js": 85 }], 149: [function (require, module, exports) {
     'use strict';
 
     var hash = require('hash.js');
@@ -61994,7 +62580,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.reseed++;
       return utils.encode(res, enc);
     };
-  }, { "../elliptic": 135, "hash.js": 158 }], 149: [function (require, module, exports) {
+  }, { "../elliptic": 136, "hash.js": 159 }], 150: [function (require, module, exports) {
     module.exports = {
       doubles: {
         step: 4,
@@ -62005,7 +62591,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         points: [['f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9', '388f7b0f632de8140fe337e62a37f3566500a99934c2231b6cb9fd7584b8e672'], ['2f8bde4d1a07209355b4a7250a5c5128e88b84bddc619ab7cba8d569b240efe4', 'd8ac222636e5e3d6d4dba9dda6c9c426f788271bab0d6840dca87d3aa6ac62d6'], ['5cbdf0646e5db4eaa398f365f2ea7a0e3d419b7e0330e39ce92bddedcac4f9bc', '6aebca40ba255960a3178d6d861a54dba813d0b813fde7b5a5082628087264da'], ['acd484e2f0c7f65309ad178a9f559abde09796974c57e714c35f110dfc27ccbe', 'cc338921b0a7d9fd64380971763b61e9add888a4375f8e0f05cc262ac64f9c37'], ['774ae7f858a9411e5ef4246b70c65aac5649980be5c17891bbec17895da008cb', 'd984a032eb6b5e190243dd56d7b7b365372db1e2dff9d6a8301d74c9c953c61b'], ['f28773c2d975288bc7d1d205c3748651b075fbc6610e58cddeeddf8f19405aa8', 'ab0902e8d880a89758212eb65cdaf473a1a06da521fa91f29b5cb52db03ed81'], ['d7924d4f7d43ea965a465ae3095ff41131e5946f3c85f79e44adbcf8e27e080e', '581e2872a86c72a683842ec228cc6defea40af2bd896d3a5c504dc9ff6a26b58'], ['defdea4cdb677750a420fee807eacf21eb9898ae79b9768766e4faa04a2d4a34', '4211ab0694635168e997b0ead2a93daeced1f4a04a95c0f6cfb199f69e56eb77'], ['2b4ea0a797a443d293ef5cff444f4979f06acfebd7e86d277475656138385b6c', '85e89bc037945d93b343083b5a1c86131a01f60c50269763b570c854e5c09b7a'], ['352bbf4a4cdd12564f93fa332ce333301d9ad40271f8107181340aef25be59d5', '321eb4075348f534d59c18259dda3e1f4a1b3b2e71b1039c67bd3d8bcf81998c'], ['2fa2104d6b38d11b0230010559879124e42ab8dfeff5ff29dc9cdadd4ecacc3f', '2de1068295dd865b64569335bd5dd80181d70ecfc882648423ba76b532b7d67'], ['9248279b09b4d68dab21a9b066edda83263c3d84e09572e269ca0cd7f5453714', '73016f7bf234aade5d1aa71bdea2b1ff3fc0de2a887912ffe54a32ce97cb3402'], ['daed4f2be3a8bf278e70132fb0beb7522f570e144bf615c07e996d443dee8729', 'a69dce4a7d6c98e8d4a1aca87ef8d7003f83c230f3afa726ab40e52290be1c55'], ['c44d12c7065d812e8acf28d7cbb19f9011ecd9e9fdf281b0e6a3b5e87d22e7db', '2119a460ce326cdc76c45926c982fdac0e106e861edf61c5a039063f0e0e6482'], ['6a245bf6dc698504c89a20cfded60853152b695336c28063b61c65cbd269e6b4', 'e022cf42c2bd4a708b3f5126f16a24ad8b33ba48d0423b6efd5e6348100d8a82'], ['1697ffa6fd9de627c077e3d2fe541084ce13300b0bec1146f95ae57f0d0bd6a5', 'b9c398f186806f5d27561506e4557433a2cf15009e498ae7adee9d63d01b2396'], ['605bdb019981718b986d0f07e834cb0d9deb8360ffb7f61df982345ef27a7479', '2972d2de4f8d20681a78d93ec96fe23c26bfae84fb14db43b01e1e9056b8c49'], ['62d14dab4150bf497402fdc45a215e10dcb01c354959b10cfe31c7e9d87ff33d', '80fc06bd8cc5b01098088a1950eed0db01aa132967ab472235f5642483b25eaf'], ['80c60ad0040f27dade5b4b06c408e56b2c50e9f56b9b8b425e555c2f86308b6f', '1c38303f1cc5c30f26e66bad7fe72f70a65eed4cbe7024eb1aa01f56430bd57a'], ['7a9375ad6167ad54aa74c6348cc54d344cc5dc9487d847049d5eabb0fa03c8fb', 'd0e3fa9eca8726909559e0d79269046bdc59ea10c70ce2b02d499ec224dc7f7'], ['d528ecd9b696b54c907a9ed045447a79bb408ec39b68df504bb51f459bc3ffc9', 'eecf41253136e5f99966f21881fd656ebc4345405c520dbc063465b521409933'], ['49370a4b5f43412ea25f514e8ecdad05266115e4a7ecb1387231808f8b45963', '758f3f41afd6ed428b3081b0512fd62a54c3f3afbb5b6764b653052a12949c9a'], ['77f230936ee88cbbd73df930d64702ef881d811e0e1498e2f1c13eb1fc345d74', '958ef42a7886b6400a08266e9ba1b37896c95330d97077cbbe8eb3c7671c60d6'], ['f2dac991cc4ce4b9ea44887e5c7c0bce58c80074ab9d4dbaeb28531b7739f530', 'e0dedc9b3b2f8dad4da1f32dec2531df9eb5fbeb0598e4fd1a117dba703a3c37'], ['463b3d9f662621fb1b4be8fbbe2520125a216cdfc9dae3debcba4850c690d45b', '5ed430d78c296c3543114306dd8622d7c622e27c970a1de31cb377b01af7307e'], ['f16f804244e46e2a09232d4aff3b59976b98fac14328a2d1a32496b49998f247', 'cedabd9b82203f7e13d206fcdf4e33d92a6c53c26e5cce26d6579962c4e31df6'], ['caf754272dc84563b0352b7a14311af55d245315ace27c65369e15f7151d41d1', 'cb474660ef35f5f2a41b643fa5e460575f4fa9b7962232a5c32f908318a04476'], ['2600ca4b282cb986f85d0f1709979d8b44a09c07cb86d7c124497bc86f082120', '4119b88753c15bd6a693b03fcddbb45d5ac6be74ab5f0ef44b0be9475a7e4b40'], ['7635ca72d7e8432c338ec53cd12220bc01c48685e24f7dc8c602a7746998e435', '91b649609489d613d1d5e590f78e6d74ecfc061d57048bad9e76f302c5b9c61'], ['754e3239f325570cdbbf4a87deee8a66b7f2b33479d468fbc1a50743bf56cc18', '673fb86e5bda30fb3cd0ed304ea49a023ee33d0197a695d0c5d98093c536683'], ['e3e6bd1071a1e96aff57859c82d570f0330800661d1c952f9fe2694691d9b9e8', '59c9e0bba394e76f40c0aa58379a3cb6a5a2283993e90c4167002af4920e37f5'], ['186b483d056a033826ae73d88f732985c4ccb1f32ba35f4b4cc47fdcf04aa6eb', '3b952d32c67cf77e2e17446e204180ab21fb8090895138b4a4a797f86e80888b'], ['df9d70a6b9876ce544c98561f4be4f725442e6d2b737d9c91a8321724ce0963f', '55eb2dafd84d6ccd5f862b785dc39d4ab157222720ef9da217b8c45cf2ba2417'], ['5edd5cc23c51e87a497ca815d5dce0f8ab52554f849ed8995de64c5f34ce7143', 'efae9c8dbc14130661e8cec030c89ad0c13c66c0d17a2905cdc706ab7399a868'], ['290798c2b6476830da12fe02287e9e777aa3fba1c355b17a722d362f84614fba', 'e38da76dcd440621988d00bcf79af25d5b29c094db2a23146d003afd41943e7a'], ['af3c423a95d9f5b3054754efa150ac39cd29552fe360257362dfdecef4053b45', 'f98a3fd831eb2b749a93b0e6f35cfb40c8cd5aa667a15581bc2feded498fd9c6'], ['766dbb24d134e745cccaa28c99bf274906bb66b26dcf98df8d2fed50d884249a', '744b1152eacbe5e38dcc887980da38b897584a65fa06cedd2c924f97cbac5996'], ['59dbf46f8c94759ba21277c33784f41645f7b44f6c596a58ce92e666191abe3e', 'c534ad44175fbc300f4ea6ce648309a042ce739a7919798cd85e216c4a307f6e'], ['f13ada95103c4537305e691e74e9a4a8dd647e711a95e73cb62dc6018cfd87b8', 'e13817b44ee14de663bf4bc808341f326949e21a6a75c2570778419bdaf5733d'], ['7754b4fa0e8aced06d4167a2c59cca4cda1869c06ebadfb6488550015a88522c', '30e93e864e669d82224b967c3020b8fa8d1e4e350b6cbcc537a48b57841163a2'], ['948dcadf5990e048aa3874d46abef9d701858f95de8041d2a6828c99e2262519', 'e491a42537f6e597d5d28a3224b1bc25df9154efbd2ef1d2cbba2cae5347d57e'], ['7962414450c76c1689c7b48f8202ec37fb224cf5ac0bfa1570328a8a3d7c77ab', '100b610ec4ffb4760d5c1fc133ef6f6b12507a051f04ac5760afa5b29db83437'], ['3514087834964b54b15b160644d915485a16977225b8847bb0dd085137ec47ca', 'ef0afbb2056205448e1652c48e8127fc6039e77c15c2378b7e7d15a0de293311'], ['d3cc30ad6b483e4bc79ce2c9dd8bc54993e947eb8df787b442943d3f7b527eaf', '8b378a22d827278d89c5e9be8f9508ae3c2ad46290358630afb34db04eede0a4'], ['1624d84780732860ce1c78fcbfefe08b2b29823db913f6493975ba0ff4847610', '68651cf9b6da903e0914448c6cd9d4ca896878f5282be4c8cc06e2a404078575'], ['733ce80da955a8a26902c95633e62a985192474b5af207da6df7b4fd5fc61cd4', 'f5435a2bd2badf7d485a4d8b8db9fcce3e1ef8e0201e4578c54673bc1dc5ea1d'], ['15d9441254945064cf1a1c33bbd3b49f8966c5092171e699ef258dfab81c045c', 'd56eb30b69463e7234f5137b73b84177434800bacebfc685fc37bbe9efe4070d'], ['a1d0fcf2ec9de675b612136e5ce70d271c21417c9d2b8aaaac138599d0717940', 'edd77f50bcb5a3cab2e90737309667f2641462a54070f3d519212d39c197a629'], ['e22fbe15c0af8ccc5780c0735f84dbe9a790badee8245c06c7ca37331cb36980', 'a855babad5cd60c88b430a69f53a1a7a38289154964799be43d06d77d31da06'], ['311091dd9860e8e20ee13473c1155f5f69635e394704eaa74009452246cfa9b3', '66db656f87d1f04fffd1f04788c06830871ec5a64feee685bd80f0b1286d8374'], ['34c1fd04d301be89b31c0442d3e6ac24883928b45a9340781867d4232ec2dbdf', '9414685e97b1b5954bd46f730174136d57f1ceeb487443dc5321857ba73abee'], ['f219ea5d6b54701c1c14de5b557eb42a8d13f3abbcd08affcc2a5e6b049b8d63', '4cb95957e83d40b0f73af4544cccf6b1f4b08d3c07b27fb8d8c2962a400766d1'], ['d7b8740f74a8fbaab1f683db8f45de26543a5490bca627087236912469a0b448', 'fa77968128d9c92ee1010f337ad4717eff15db5ed3c049b3411e0315eaa4593b'], ['32d31c222f8f6f0ef86f7c98d3a3335ead5bcd32abdd94289fe4d3091aa824bf', '5f3032f5892156e39ccd3d7915b9e1da2e6dac9e6f26e961118d14b8462e1661'], ['7461f371914ab32671045a155d9831ea8793d77cd59592c4340f86cbc18347b5', '8ec0ba238b96bec0cbdddcae0aa442542eee1ff50c986ea6b39847b3cc092ff6'], ['ee079adb1df1860074356a25aa38206a6d716b2c3e67453d287698bad7b2b2d6', '8dc2412aafe3be5c4c5f37e0ecc5f9f6a446989af04c4e25ebaac479ec1c8c1e'], ['16ec93e447ec83f0467b18302ee620f7e65de331874c9dc72bfd8616ba9da6b5', '5e4631150e62fb40d0e8c2a7ca5804a39d58186a50e497139626778e25b0674d'], ['eaa5f980c245f6f038978290afa70b6bd8855897f98b6aa485b96065d537bd99', 'f65f5d3e292c2e0819a528391c994624d784869d7e6ea67fb18041024edc07dc'], ['78c9407544ac132692ee1910a02439958ae04877151342ea96c4b6b35a49f51', 'f3e0319169eb9b85d5404795539a5e68fa1fbd583c064d2462b675f194a3ddb4'], ['494f4be219a1a77016dcd838431aea0001cdc8ae7a6fc688726578d9702857a5', '42242a969283a5f339ba7f075e36ba2af925ce30d767ed6e55f4b031880d562c'], ['a598a8030da6d86c6bc7f2f5144ea549d28211ea58faa70ebf4c1e665c1fe9b5', '204b5d6f84822c307e4b4a7140737aec23fc63b65b35f86a10026dbd2d864e6b'], ['c41916365abb2b5d09192f5f2dbeafec208f020f12570a184dbadc3e58595997', '4f14351d0087efa49d245b328984989d5caf9450f34bfc0ed16e96b58fa9913'], ['841d6063a586fa475a724604da03bc5b92a2e0d2e0a36acfe4c73a5514742881', '73867f59c0659e81904f9a1c7543698e62562d6744c169ce7a36de01a8d6154'], ['5e95bb399a6971d376026947f89bde2f282b33810928be4ded112ac4d70e20d5', '39f23f366809085beebfc71181313775a99c9aed7d8ba38b161384c746012865'], ['36e4641a53948fd476c39f8a99fd974e5ec07564b5315d8bf99471bca0ef2f66', 'd2424b1b1abe4eb8164227b085c9aa9456ea13493fd563e06fd51cf5694c78fc'], ['336581ea7bfbbb290c191a2f507a41cf5643842170e914faeab27c2c579f726', 'ead12168595fe1be99252129b6e56b3391f7ab1410cd1e0ef3dcdcabd2fda224'], ['8ab89816dadfd6b6a1f2634fcf00ec8403781025ed6890c4849742706bd43ede', '6fdcef09f2f6d0a044e654aef624136f503d459c3e89845858a47a9129cdd24e'], ['1e33f1a746c9c5778133344d9299fcaa20b0938e8acff2544bb40284b8c5fb94', '60660257dd11b3aa9c8ed618d24edff2306d320f1d03010e33a7d2057f3b3b6'], ['85b7c1dcb3cec1b7ee7f30ded79dd20a0ed1f4cc18cbcfcfa410361fd8f08f31', '3d98a9cdd026dd43f39048f25a8847f4fcafad1895d7a633c6fed3c35e999511'], ['29df9fbd8d9e46509275f4b125d6d45d7fbe9a3b878a7af872a2800661ac5f51', 'b4c4fe99c775a606e2d8862179139ffda61dc861c019e55cd2876eb2a27d84b'], ['a0b1cae06b0a847a3fea6e671aaf8adfdfe58ca2f768105c8082b2e449fce252', 'ae434102edde0958ec4b19d917a6a28e6b72da1834aff0e650f049503a296cf2'], ['4e8ceafb9b3e9a136dc7ff67e840295b499dfb3b2133e4ba113f2e4c0e121e5', 'cf2174118c8b6d7a4b48f6d534ce5c79422c086a63460502b827ce62a326683c'], ['d24a44e047e19b6f5afb81c7ca2f69080a5076689a010919f42725c2b789a33b', '6fb8d5591b466f8fc63db50f1c0f1c69013f996887b8244d2cdec417afea8fa3'], ['ea01606a7a6c9cdd249fdfcfacb99584001edd28abbab77b5104e98e8e3b35d4', '322af4908c7312b0cfbfe369f7a7b3cdb7d4494bc2823700cfd652188a3ea98d'], ['af8addbf2b661c8a6c6328655eb96651252007d8c5ea31be4ad196de8ce2131f', '6749e67c029b85f52a034eafd096836b2520818680e26ac8f3dfbcdb71749700'], ['e3ae1974566ca06cc516d47e0fb165a674a3dabcfca15e722f0e3450f45889', '2aeabe7e4531510116217f07bf4d07300de97e4874f81f533420a72eeb0bd6a4'], ['591ee355313d99721cf6993ffed1e3e301993ff3ed258802075ea8ced397e246', 'b0ea558a113c30bea60fc4775460c7901ff0b053d25ca2bdeee98f1a4be5d196'], ['11396d55fda54c49f19aa97318d8da61fa8584e47b084945077cf03255b52984', '998c74a8cd45ac01289d5833a7beb4744ff536b01b257be4c5767bea93ea57a4'], ['3c5d2a1ba39c5a1790000738c9e0c40b8dcdfd5468754b6405540157e017aa7a', 'b2284279995a34e2f9d4de7396fc18b80f9b8b9fdd270f6661f79ca4c81bd257'], ['cc8704b8a60a0defa3a99a7299f2e9c3fbc395afb04ac078425ef8a1793cc030', 'bdd46039feed17881d1e0862db347f8cf395b74fc4bcdc4e940b74e3ac1f1b13'], ['c533e4f7ea8555aacd9777ac5cad29b97dd4defccc53ee7ea204119b2889b197', '6f0a256bc5efdf429a2fb6242f1a43a2d9b925bb4a4b3a26bb8e0f45eb596096'], ['c14f8f2ccb27d6f109f6d08d03cc96a69ba8c34eec07bbcf566d48e33da6593', 'c359d6923bb398f7fd4473e16fe1c28475b740dd098075e6c0e8649113dc3a38'], ['a6cbc3046bc6a450bac24789fa17115a4c9739ed75f8f21ce441f72e0b90e6ef', '21ae7f4680e889bb130619e2c0f95a360ceb573c70603139862afd617fa9b9f'], ['347d6d9a02c48927ebfb86c1359b1caf130a3c0267d11ce6344b39f99d43cc38', '60ea7f61a353524d1c987f6ecec92f086d565ab687870cb12689ff1e31c74448'], ['da6545d2181db8d983f7dcb375ef5866d47c67b1bf31c8cf855ef7437b72656a', '49b96715ab6878a79e78f07ce5680c5d6673051b4935bd897fea824b77dc208a'], ['c40747cc9d012cb1a13b8148309c6de7ec25d6945d657146b9d5994b8feb1111', '5ca560753be2a12fc6de6caf2cb489565db936156b9514e1bb5e83037e0fa2d4'], ['4e42c8ec82c99798ccf3a610be870e78338c7f713348bd34c8203ef4037f3502', '7571d74ee5e0fb92a7a8b33a07783341a5492144cc54bcc40a94473693606437'], ['3775ab7089bc6af823aba2e1af70b236d251cadb0c86743287522a1b3b0dedea', 'be52d107bcfa09d8bcb9736a828cfa7fac8db17bf7a76a2c42ad961409018cf7'], ['cee31cbf7e34ec379d94fb814d3d775ad954595d1314ba8846959e3e82f74e26', '8fd64a14c06b589c26b947ae2bcf6bfa0149ef0be14ed4d80f448a01c43b1c6d'], ['b4f9eaea09b6917619f6ea6a4eb5464efddb58fd45b1ebefcdc1a01d08b47986', '39e5c9925b5a54b07433a4f18c61726f8bb131c012ca542eb24a8ac07200682a'], ['d4263dfc3d2df923a0179a48966d30ce84e2515afc3dccc1b77907792ebcc60e', '62dfaf07a0f78feb30e30d6295853ce189e127760ad6cf7fae164e122a208d54'], ['48457524820fa65a4f8d35eb6930857c0032acc0a4a2de422233eeda897612c4', '25a748ab367979d98733c38a1fa1c2e7dc6cc07db2d60a9ae7a76aaa49bd0f77'], ['dfeeef1881101f2cb11644f3a2afdfc2045e19919152923f367a1767c11cceda', 'ecfb7056cf1de042f9420bab396793c0c390bde74b4bbdff16a83ae09a9a7517'], ['6d7ef6b17543f8373c573f44e1f389835d89bcbc6062ced36c82df83b8fae859', 'cd450ec335438986dfefa10c57fea9bcc521a0959b2d80bbf74b190dca712d10'], ['e75605d59102a5a2684500d3b991f2e3f3c88b93225547035af25af66e04541f', 'f5c54754a8f71ee540b9b48728473e314f729ac5308b06938360990e2bfad125'], ['eb98660f4c4dfaa06a2be453d5020bc99a0c2e60abe388457dd43fefb1ed620c', '6cb9a8876d9cb8520609af3add26cd20a0a7cd8a9411131ce85f44100099223e'], ['13e87b027d8514d35939f2e6892b19922154596941888336dc3563e3b8dba942', 'fef5a3c68059a6dec5d624114bf1e91aac2b9da568d6abeb2570d55646b8adf1'], ['ee163026e9fd6fe017c38f06a5be6fc125424b371ce2708e7bf4491691e5764a', '1acb250f255dd61c43d94ccc670d0f58f49ae3fa15b96623e5430da0ad6c62b2'], ['b268f5ef9ad51e4d78de3a750c2dc89b1e626d43505867999932e5db33af3d80', '5f310d4b3c99b9ebb19f77d41c1dee018cf0d34fd4191614003e945a1216e423'], ['ff07f3118a9df035e9fad85eb6c7bfe42b02f01ca99ceea3bf7ffdba93c4750d', '438136d603e858a3a5c440c38eccbaddc1d2942114e2eddd4740d098ced1f0d8'], ['8d8b9855c7c052a34146fd20ffb658bea4b9f69e0d825ebec16e8c3ce2b526a1', 'cdb559eedc2d79f926baf44fb84ea4d44bcf50fee51d7ceb30e2e7f463036758'], ['52db0b5384dfbf05bfa9d472d7ae26dfe4b851ceca91b1eba54263180da32b63', 'c3b997d050ee5d423ebaf66a6db9f57b3180c902875679de924b69d84a7b375'], ['e62f9490d3d51da6395efd24e80919cc7d0f29c3f3fa48c6fff543becbd43352', '6d89ad7ba4876b0b22c2ca280c682862f342c8591f1daf5170e07bfd9ccafa7d'], ['7f30ea2476b399b4957509c88f77d0191afa2ff5cb7b14fd6d8e7d65aaab1193', 'ca5ef7d4b231c94c3b15389a5f6311e9daff7bb67b103e9880ef4bff637acaec'], ['5098ff1e1d9f14fb46a210fada6c903fef0fb7b4a1dd1d9ac60a0361800b7a00', '9731141d81fc8f8084d37c6e7542006b3ee1b40d60dfe5362a5b132fd17ddc0'], ['32b78c7de9ee512a72895be6b9cbefa6e2f3c4ccce445c96b9f2c81e2778ad58', 'ee1849f513df71e32efc3896ee28260c73bb80547ae2275ba497237794c8753c'], ['e2cb74fddc8e9fbcd076eef2a7c72b0ce37d50f08269dfc074b581550547a4f7', 'd3aa2ed71c9dd2247a62df062736eb0baddea9e36122d2be8641abcb005cc4a4'], ['8438447566d4d7bedadc299496ab357426009a35f235cb141be0d99cd10ae3a8', 'c4e1020916980a4da5d01ac5e6ad330734ef0d7906631c4f2390426b2edd791f'], ['4162d488b89402039b584c6fc6c308870587d9c46f660b878ab65c82c711d67e', '67163e903236289f776f22c25fb8a3afc1732f2b84b4e95dbda47ae5a0852649'], ['3fad3fa84caf0f34f0f89bfd2dcf54fc175d767aec3e50684f3ba4a4bf5f683d', 'cd1bc7cb6cc407bb2f0ca647c718a730cf71872e7d0d2a53fa20efcdfe61826'], ['674f2600a3007a00568c1a7ce05d0816c1fb84bf1370798f1c69532faeb1a86b', '299d21f9413f33b3edf43b257004580b70db57da0b182259e09eecc69e0d38a5'], ['d32f4da54ade74abb81b815ad1fb3b263d82d6c692714bcff87d29bd5ee9f08f', 'f9429e738b8e53b968e99016c059707782e14f4535359d582fc416910b3eea87'], ['30e4e670435385556e593657135845d36fbb6931f72b08cb1ed954f1e3ce3ff6', '462f9bce619898638499350113bbc9b10a878d35da70740dc695a559eb88db7b'], ['be2062003c51cc3004682904330e4dee7f3dcd10b01e580bf1971b04d4cad297', '62188bc49d61e5428573d48a74e1c655b1c61090905682a0d5558ed72dccb9bc'], ['93144423ace3451ed29e0fb9ac2af211cb6e84a601df5993c419859fff5df04a', '7c10dfb164c3425f5c71a3f9d7992038f1065224f72bb9d1d902a6d13037b47c'], ['b015f8044f5fcbdcf21ca26d6c34fb8197829205c7b7d2a7cb66418c157b112c', 'ab8c1e086d04e813744a655b2df8d5f83b3cdc6faa3088c1d3aea1454e3a1d5f'], ['d5e9e1da649d97d89e4868117a465a3a4f8a18de57a140d36b3f2af341a21b52', '4cb04437f391ed73111a13cc1d4dd0db1693465c2240480d8955e8592f27447a'], ['d3ae41047dd7ca065dbf8ed77b992439983005cd72e16d6f996a5316d36966bb', 'bd1aeb21ad22ebb22a10f0303417c6d964f8cdd7df0aca614b10dc14d125ac46'], ['463e2763d885f958fc66cdd22800f0a487197d0a82e377b49f80af87c897b065', 'bfefacdb0e5d0fd7df3a311a94de062b26b80c61fbc97508b79992671ef7ca7f'], ['7985fdfd127c0567c6f53ec1bb63ec3158e597c40bfe747c83cddfc910641917', '603c12daf3d9862ef2b25fe1de289aed24ed291e0ec6708703a5bd567f32ed03'], ['74a1ad6b5f76e39db2dd249410eac7f99e74c59cb83d2d0ed5ff1543da7703e9', 'cc6157ef18c9c63cd6193d83631bbea0093e0968942e8c33d5737fd790e0db08'], ['30682a50703375f602d416664ba19b7fc9bab42c72747463a71d0896b22f6da3', '553e04f6b018b4fa6c8f39e7f311d3176290d0e0f19ca73f17714d9977a22ff8'], ['9e2158f0d7c0d5f26c3791efefa79597654e7a2b2464f52b1ee6c1347769ef57', '712fcdd1b9053f09003a3481fa7762e9ffd7c8ef35a38509e2fbf2629008373'], ['176e26989a43c9cfeba4029c202538c28172e566e3c4fce7322857f3be327d66', 'ed8cc9d04b29eb877d270b4878dc43c19aefd31f4eee09ee7b47834c1fa4b1c3'], ['75d46efea3771e6e68abb89a13ad747ecf1892393dfc4f1b7004788c50374da8', '9852390a99507679fd0b86fd2b39a868d7efc22151346e1a3ca4726586a6bed8'], ['809a20c67d64900ffb698c4c825f6d5f2310fb0451c869345b7319f645605721', '9e994980d9917e22b76b061927fa04143d096ccc54963e6a5ebfa5f3f8e286c1'], ['1b38903a43f7f114ed4500b4eac7083fdefece1cf29c63528d563446f972c180', '4036edc931a60ae889353f77fd53de4a2708b26b6f5da72ad3394119daf408f9']]
       }
     };
-  }, {}], 150: [function (require, module, exports) {
+  }, {}], 151: [function (require, module, exports) {
     'use strict';
 
     var utils = exports;
@@ -62147,7 +62733,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return new BN(bytes, 'hex', 'le');
     }
     utils.intFromLE = intFromLE;
-  }, { "bn.js": 84 }], 151: [function (require, module, exports) {
+  }, { "bn.js": 85 }], 152: [function (require, module, exports) {
     module.exports = {
       "_args": [["elliptic@^6.0.0", "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"]],
       "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -62241,7 +62827,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       "version": "6.3.2"
     };
-  }, {}], 152: [function (require, module, exports) {
+  }, {}], 153: [function (require, module, exports) {
     module.exports = {
       "genesisGasLimit": {
         "v": 5000,
@@ -62473,9 +63059,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "v": 2
       }
     };
-  }, {}], 153: [function (require, module, exports) {
+  }, {}], 154: [function (require, module, exports) {
     module.exports = require('./params.json');
-  }, { "./params.json": 152 }], 154: [function (require, module, exports) {
+  }, { "./params.json": 153 }], 155: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -62730,7 +63316,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "ethereum-common/params": 153, "ethereumjs-util": 155 }], 155: [function (require, module, exports) {
+  }, { "buffer": 116, "ethereum-common/params": 154, "ethereumjs-util": 156 }], 156: [function (require, module, exports) {
     (function (Buffer) {
       var SHA3 = require('keccakjs');
       var secp256k1 = require('secp256k1');
@@ -63435,7 +64021,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 78, "bn.js": 84, "buffer": 115, "create-hash": 120, "keccakjs": 171, "rlp": 202, "secp256k1": 204 }], 156: [function (require, module, exports) {
+  }, { "assert": 79, "bn.js": 85, "buffer": 116, "create-hash": 121, "keccakjs": 172, "rlp": 203, "secp256k1": 205 }], 157: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -63705,7 +64291,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     function isUndefined(arg) {
       return arg === void 0;
     }
-  }, {}], 157: [function (require, module, exports) {
+  }, {}], 158: [function (require, module, exports) {
     (function (Buffer) {
       var md5 = require('create-hash/md5');
       module.exports = EVP_BytesToKey;
@@ -63776,7 +64362,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         };
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "create-hash/md5": 122 }], 158: [function (require, module, exports) {
+  }, { "buffer": 116, "create-hash/md5": 123 }], 159: [function (require, module, exports) {
     var hash = exports;
 
     hash.utils = require('./hash/utils');
@@ -63792,7 +64378,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     hash.sha384 = hash.sha.sha384;
     hash.sha512 = hash.sha.sha512;
     hash.ripemd160 = hash.ripemd.ripemd160;
-  }, { "./hash/common": 159, "./hash/hmac": 160, "./hash/ripemd": 161, "./hash/sha": 162, "./hash/utils": 163 }], 159: [function (require, module, exports) {
+  }, { "./hash/common": 160, "./hash/hmac": 161, "./hash/ripemd": 162, "./hash/sha": 163, "./hash/utils": 164 }], 160: [function (require, module, exports) {
     var hash = require('../hash');
     var utils = hash.utils;
     var assert = utils.assert;
@@ -63880,7 +64466,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return res;
     };
-  }, { "../hash": 158 }], 160: [function (require, module, exports) {
+  }, { "../hash": 159 }], 161: [function (require, module, exports) {
     var hmac = exports;
 
     var hash = require('../hash');
@@ -63926,7 +64512,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.outer.update(this.inner.digest());
       return this.outer.digest(enc);
     };
-  }, { "../hash": 158 }], 161: [function (require, module, exports) {
+  }, { "../hash": 159 }], 162: [function (require, module, exports) {
     var hash = require('../hash');
     var utils = hash.utils;
 
@@ -64008,7 +64594,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var s = [11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8, 7, 6, 8, 13, 11, 9, 7, 15, 7, 12, 15, 9, 11, 7, 13, 12, 11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5, 11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12, 9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6];
 
     var sh = [8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6, 9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11, 9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5, 15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8, 8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11];
-  }, { "../hash": 158 }], 162: [function (require, module, exports) {
+  }, { "../hash": 159 }], 163: [function (require, module, exports) {
     var hash = require('../hash');
     var utils = hash.utils;
     var assert = utils.assert;
@@ -64443,7 +65029,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (r < 0) r += 0x100000000;
       return r;
     }
-  }, { "../hash": 158 }], 163: [function (require, module, exports) {
+  }, { "../hash": 159 }], 164: [function (require, module, exports) {
     var utils = exports;
     var inherits = require('inherits');
 
@@ -64671,7 +65257,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return r >>> 0;
     };
     exports.shr64_lo = shr64_lo;
-  }, { "inherits": 167 }], 164: [function (require, module, exports) {
+  }, { "inherits": 168 }], 165: [function (require, module, exports) {
     (function (Buffer) {
       var assert = require('assert');
       var crypto = require('crypto');
@@ -64909,7 +65495,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       HDKey.HARDENED_OFFSET = HARDENED_OFFSET;
       module.exports = HDKey;
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 78, "buffer": 115, "coinstring": 117, "crypto": 124, "secp256k1": 204 }], 165: [function (require, module, exports) {
+  }, { "assert": 79, "buffer": 116, "coinstring": 118, "crypto": 125, "secp256k1": 205 }], 166: [function (require, module, exports) {
     exports.read = function (buffer, offset, isLE, mLen, nBytes) {
       var e, m;
       var eLen = nBytes * 8 - mLen - 1;
@@ -64994,7 +65580,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       buffer[offset + i - d] |= s * 128;
     };
-  }, {}], 166: [function (require, module, exports) {
+  }, {}], 167: [function (require, module, exports) {
 
     var indexOf = [].indexOf;
 
@@ -65005,7 +65591,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return -1;
     };
-  }, {}], 167: [function (require, module, exports) {
+  }, {}], 168: [function (require, module, exports) {
     if (typeof Object.create === 'function') {
       // implementation from standard node.js 'util' module
       module.exports = function inherits(ctor, superCtor) {
@@ -65029,7 +65615,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         ctor.prototype.constructor = ctor;
       };
     }
-  }, {}], 168: [function (require, module, exports) {
+  }, {}], 169: [function (require, module, exports) {
     /*!
      * Determine if an object is a Buffer
      *
@@ -65051,13 +65637,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     function isSlowBuffer(obj) {
       return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0));
     }
-  }, {}], 169: [function (require, module, exports) {
+  }, {}], 170: [function (require, module, exports) {
     var toString = {}.toString;
 
     module.exports = Array.isArray || function (arr) {
       return toString.call(arr) == '[object Array]';
     };
-  }, {}], 170: [function (require, module, exports) {
+  }, {}], 171: [function (require, module, exports) {
     (function (global) {
       /*
        * js-sha3 v0.3.1
@@ -65491,9 +66077,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       })(this);
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 171: [function (require, module, exports) {
+  }, {}], 172: [function (require, module, exports) {
     module.exports = require('browserify-sha3').SHA3Hash;
-  }, { "browserify-sha3": 106 }], 172: [function (require, module, exports) {
+  }, { "browserify-sha3": 107 }], 173: [function (require, module, exports) {
     (function (global) {
       /**
        * marked - a markdown parser
@@ -66676,7 +67262,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return this || (typeof window !== 'undefined' ? window : global);
       }());
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 173: [function (require, module, exports) {
+  }, {}], 174: [function (require, module, exports) {
     var bn = require('bn.js');
     var brorand = require('brorand');
 
@@ -66778,7 +67364,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return false;
     };
-  }, { "bn.js": 84, "brorand": 85 }], 174: [function (require, module, exports) {
+  }, { "bn.js": 85, "brorand": 86 }], 175: [function (require, module, exports) {
     module.exports = assert;
 
     function assert(val, msg) {
@@ -66788,7 +67374,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     assert.equal = function assertEqual(l, r, msg) {
       if (l != r) throw new Error(msg || 'Assertion failed: ' + l + ' != ' + r);
     };
-  }, {}], 175: [function (require, module, exports) {
+  }, {}], 176: [function (require, module, exports) {
     module.exports = { "2.16.840.1.101.3.4.1.1": "aes-128-ecb",
       "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
       "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -66802,7 +67388,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
       "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
     };
-  }, {}], 176: [function (require, module, exports) {
+  }, {}], 177: [function (require, module, exports) {
     // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
     // Fedor, you are amazing.
 
@@ -66858,7 +67444,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     exports.signature = asn1.define('signature', function () {
       this.seq().obj(this.key('r').int(), this.key('s').int());
     });
-  }, { "asn1.js": 64 }], 177: [function (require, module, exports) {
+  }, { "asn1.js": 65 }], 178: [function (require, module, exports) {
     (function (Buffer) {
       // adapted from https://github.com/apatil/pemstrip
       var findProc = /Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\r?\n\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n/m;
@@ -66891,7 +67477,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         };
       };
     }).call(this, require("buffer").Buffer);
-  }, { "browserify-aes": 89, "buffer": 115, "evp_bytestokey": 157 }], 178: [function (require, module, exports) {
+  }, { "browserify-aes": 90, "buffer": 116, "evp_bytestokey": 158 }], 179: [function (require, module, exports) {
     (function (Buffer) {
       var asn1 = require('./asn1');
       var aesid = require('./aesid.json');
@@ -66998,7 +67584,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return Buffer.concat(out);
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./aesid.json": 175, "./asn1": 176, "./fixProc": 177, "browserify-aes": 89, "buffer": 115, "pbkdf2": 179 }], 179: [function (require, module, exports) {
+  }, { "./aesid.json": 176, "./asn1": 177, "./fixProc": 178, "browserify-aes": 90, "buffer": 116, "pbkdf2": 180 }], 180: [function (require, module, exports) {
     (function (process, Buffer) {
       var createHmac = require('create-hmac');
       var checkParameters = require('./precondition');
@@ -67071,7 +67657,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return DK;
       };
     }).call(this, require('_process'), require("buffer").Buffer);
-  }, { "./precondition": 180, "_process": 182, "buffer": 115, "create-hmac": 123 }], 180: [function (require, module, exports) {
+  }, { "./precondition": 181, "_process": 183, "buffer": 116, "create-hmac": 124 }], 181: [function (require, module, exports) {
     var MAX_ALLOC = Math.pow(2, 30) - 1; // default in iojs
     module.exports = function (iterations, keylen) {
       if (typeof iterations !== 'number') {
@@ -67091,7 +67677,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         throw new TypeError('Bad key length');
       }
     };
-  }, {}], 181: [function (require, module, exports) {
+  }, {}], 182: [function (require, module, exports) {
     (function (process) {
       'use strict';
 
@@ -67135,7 +67721,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     }).call(this, require('_process'));
-  }, { "_process": 182 }], 182: [function (require, module, exports) {
+  }, { "_process": 183 }], 183: [function (require, module, exports) {
     // shim for using process in browser
     var process = module.exports = {};
 
@@ -67315,7 +67901,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     process.umask = function () {
       return 0;
     };
-  }, {}], 183: [function (require, module, exports) {
+  }, {}], 184: [function (require, module, exports) {
     exports.publicEncrypt = require('./publicEncrypt');
     exports.privateDecrypt = require('./privateDecrypt');
 
@@ -67326,7 +67912,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     exports.publicDecrypt = function publicDecrypt(key, buf) {
       return exports.privateDecrypt(key, buf, true);
     };
-  }, { "./privateDecrypt": 185, "./publicEncrypt": 186 }], 184: [function (require, module, exports) {
+  }, { "./privateDecrypt": 186, "./publicEncrypt": 187 }], 185: [function (require, module, exports) {
     (function (Buffer) {
       var createHash = require('create-hash');
       module.exports = function (seed, len) {
@@ -67346,7 +67932,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "create-hash": 120 }], 185: [function (require, module, exports) {
+  }, { "buffer": 116, "create-hash": 121 }], 186: [function (require, module, exports) {
     (function (Buffer) {
       var parseKeys = require('parse-asn1');
       var mgf = require('./mgf');
@@ -67457,7 +68043,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return dif;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./mgf": 184, "./withPublic": 187, "./xor": 188, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hash": 120, "parse-asn1": 178 }], 186: [function (require, module, exports) {
+  }, { "./mgf": 185, "./withPublic": 188, "./xor": 189, "bn.js": 85, "browserify-rsa": 106, "buffer": 116, "create-hash": 121, "parse-asn1": 179 }], 187: [function (require, module, exports) {
     (function (Buffer) {
       var parseKeys = require('parse-asn1');
       var randomBytes = require('randombytes');
@@ -67555,7 +68141,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./mgf": 184, "./withPublic": 187, "./xor": 188, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hash": 120, "parse-asn1": 178, "randombytes": 189 }], 187: [function (require, module, exports) {
+  }, { "./mgf": 185, "./withPublic": 188, "./xor": 189, "bn.js": 85, "browserify-rsa": 106, "buffer": 116, "create-hash": 121, "parse-asn1": 179, "randombytes": 190 }], 188: [function (require, module, exports) {
     (function (Buffer) {
       var bn = require('bn.js');
       function withPublic(paddedMsg, key) {
@@ -67564,7 +68150,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = withPublic;
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 84, "buffer": 115 }], 188: [function (require, module, exports) {
+  }, { "bn.js": 85, "buffer": 116 }], 189: [function (require, module, exports) {
     module.exports = function xor(a, b) {
       var len = a.length;
       var i = -1;
@@ -67573,7 +68159,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return a;
     };
-  }, {}], 189: [function (require, module, exports) {
+  }, {}], 190: [function (require, module, exports) {
     (function (process, global, Buffer) {
       'use strict';
 
@@ -67613,9 +68199,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return bytes;
       }
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer);
-  }, { "_process": 182, "buffer": 115 }], 190: [function (require, module, exports) {
+  }, { "_process": 183, "buffer": 116 }], 191: [function (require, module, exports) {
     module.exports = require("./lib/_stream_duplex.js");
-  }, { "./lib/_stream_duplex.js": 191 }], 191: [function (require, module, exports) {
+  }, { "./lib/_stream_duplex.js": 192 }], 192: [function (require, module, exports) {
     // a duplex stream is just a stream that is both readable and writable.
     // Since JS doesn't have multiple prototypal inheritance, this class
     // prototypally inherits from Readable, and then parasitically from
@@ -67691,7 +68277,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         f(xs[i], i);
       }
     }
-  }, { "./_stream_readable": 193, "./_stream_writable": 195, "core-util-is": 118, "inherits": 167, "process-nextick-args": 181 }], 192: [function (require, module, exports) {
+  }, { "./_stream_readable": 194, "./_stream_writable": 196, "core-util-is": 119, "inherits": 168, "process-nextick-args": 182 }], 193: [function (require, module, exports) {
     // a passthrough stream.
     // basically just the most minimal sort of Transform stream.
     // Every written chunk gets output as-is.
@@ -67718,7 +68304,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     PassThrough.prototype._transform = function (chunk, encoding, cb) {
       cb(null, chunk);
     };
-  }, { "./_stream_transform": 194, "core-util-is": 118, "inherits": 167 }], 193: [function (require, module, exports) {
+  }, { "./_stream_transform": 195, "core-util-is": 119, "inherits": 168 }], 194: [function (require, module, exports) {
     (function (process) {
       'use strict';
 
@@ -68658,7 +69244,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return -1;
       }
     }).call(this, require('_process'));
-  }, { "./_stream_duplex": 191, "./internal/streams/BufferList": 196, "_process": 182, "buffer": 115, "buffer-shims": 113, "core-util-is": 118, "events": 156, "inherits": 167, "isarray": 169, "process-nextick-args": 181, "string_decoder/": 220, "util": 86 }], 194: [function (require, module, exports) {
+  }, { "./_stream_duplex": 192, "./internal/streams/BufferList": 197, "_process": 183, "buffer": 116, "buffer-shims": 114, "core-util-is": 119, "events": 157, "inherits": 168, "isarray": 170, "process-nextick-args": 182, "string_decoder/": 221, "util": 87 }], 195: [function (require, module, exports) {
     // a transform stream is a readable/writable stream where you do
     // something with the data.  Sometimes it's called a "filter",
     // but that's not a great name for it, since that implies a thing where
@@ -68839,7 +69425,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return stream.push(null);
     }
-  }, { "./_stream_duplex": 191, "core-util-is": 118, "inherits": 167 }], 195: [function (require, module, exports) {
+  }, { "./_stream_duplex": 192, "core-util-is": 119, "inherits": 168 }], 196: [function (require, module, exports) {
     (function (process) {
       // A bit simpler than readable streams.
       // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -69368,7 +69954,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         };
       }
     }).call(this, require('_process'));
-  }, { "./_stream_duplex": 191, "_process": 182, "buffer": 115, "buffer-shims": 113, "core-util-is": 118, "events": 156, "inherits": 167, "process-nextick-args": 181, "util-deprecate": 222 }], 196: [function (require, module, exports) {
+  }, { "./_stream_duplex": 192, "_process": 183, "buffer": 116, "buffer-shims": 114, "core-util-is": 119, "events": 157, "inherits": 168, "process-nextick-args": 182, "util-deprecate": 223 }], 197: [function (require, module, exports) {
     'use strict';
 
     var Buffer = require('buffer').Buffer;
@@ -69433,9 +70019,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return ret;
     };
-  }, { "buffer": 115, "buffer-shims": 113 }], 197: [function (require, module, exports) {
+  }, { "buffer": 116, "buffer-shims": 114 }], 198: [function (require, module, exports) {
     module.exports = require("./lib/_stream_passthrough.js");
-  }, { "./lib/_stream_passthrough.js": 192 }], 198: [function (require, module, exports) {
+  }, { "./lib/_stream_passthrough.js": 193 }], 199: [function (require, module, exports) {
     (function (process) {
       var Stream = function () {
         try {
@@ -69454,11 +70040,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         module.exports = Stream;
       }
     }).call(this, require('_process'));
-  }, { "./lib/_stream_duplex.js": 191, "./lib/_stream_passthrough.js": 192, "./lib/_stream_readable.js": 193, "./lib/_stream_transform.js": 194, "./lib/_stream_writable.js": 195, "_process": 182 }], 199: [function (require, module, exports) {
+  }, { "./lib/_stream_duplex.js": 192, "./lib/_stream_passthrough.js": 193, "./lib/_stream_readable.js": 194, "./lib/_stream_transform.js": 195, "./lib/_stream_writable.js": 196, "_process": 183 }], 200: [function (require, module, exports) {
     module.exports = require("./lib/_stream_transform.js");
-  }, { "./lib/_stream_transform.js": 194 }], 200: [function (require, module, exports) {
+  }, { "./lib/_stream_transform.js": 195 }], 201: [function (require, module, exports) {
     module.exports = require("./lib/_stream_writable.js");
-  }, { "./lib/_stream_writable.js": 195 }], 201: [function (require, module, exports) {
+  }, { "./lib/_stream_writable.js": 196 }], 202: [function (require, module, exports) {
     (function (Buffer) {
       /*
       CryptoJS v3.1.2
@@ -69642,7 +70228,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = ripemd160;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 202: [function (require, module, exports) {
+  }, { "buffer": 116 }], 203: [function (require, module, exports) {
     (function (Buffer) {
       var assert = require('assert');
       /**
@@ -69874,7 +70460,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return v;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 78, "buffer": 115 }], 203: [function (require, module, exports) {
+  }, { "assert": 79, "buffer": 116 }], 204: [function (require, module, exports) {
     (function (Buffer) {
       var crypto = require('crypto');
       /* eslint-disable camelcase */
@@ -70057,11 +70643,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = scrypt;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "crypto": 124 }], 204: [function (require, module, exports) {
+  }, { "buffer": 116, "crypto": 125 }], 205: [function (require, module, exports) {
     'use strict';
 
     module.exports = require('./lib')(require('./lib/elliptic'));
-  }, { "./lib": 208, "./lib/elliptic": 207 }], 205: [function (require, module, exports) {
+  }, { "./lib": 209, "./lib/elliptic": 208 }], 206: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -70109,7 +70695,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (number <= x || number >= y) throw RangeError(message);
       };
     }).call(this, { "isBuffer": require("../../is-buffer/index.js") });
-  }, { "../../is-buffer/index.js": 168 }], 206: [function (require, module, exports) {
+  }, { "../../is-buffer/index.js": 169 }], 207: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -70277,7 +70863,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return { r: r, s: s };
       };
     }).call(this, require("buffer").Buffer);
-  }, { "bip66": 83, "buffer": 115 }], 207: [function (require, module, exports) {
+  }, { "bip66": 84, "buffer": 116 }], 208: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -70523,7 +71109,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new Buffer(pair.pub.mul(scalar).encode(true, compressed));
       };
     }).call(this, require("buffer").Buffer);
-  }, { "../messages.json": 209, "bn.js": 84, "buffer": 115, "create-hash": 120, "elliptic": 135 }], 208: [function (require, module, exports) {
+  }, { "../messages.json": 210, "bn.js": 85, "buffer": 116, "create-hash": 121, "elliptic": 136 }], 209: [function (require, module, exports) {
     'use strict';
 
     var assert = require('./assert');
@@ -70756,7 +71342,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       };
     };
-  }, { "./assert": 205, "./der": 206, "./messages.json": 209 }], 209: [function (require, module, exports) {
+  }, { "./assert": 206, "./der": 207, "./messages.json": 210 }], 210: [function (require, module, exports) {
     module.exports = {
       "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
       "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -70793,7 +71379,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "TWEAK_TYPE_INVALID": "tweak should be a Buffer",
       "TWEAK_LENGTH_INVALID": "tweak length is invalid"
     };
-  }, {}], 210: [function (require, module, exports) {
+  }, {}], 211: [function (require, module, exports) {
     (function (Buffer) {
       // prototype class for hash functions
       function Hash(blockSize, finalSize) {
@@ -70865,7 +71451,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Hash;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 211: [function (require, module, exports) {
+  }, { "buffer": 116 }], 212: [function (require, module, exports) {
     var exports = module.exports = function SHA(algorithm) {
       algorithm = algorithm.toLowerCase();
 
@@ -70881,7 +71467,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     exports.sha256 = require('./sha256');
     exports.sha384 = require('./sha384');
     exports.sha512 = require('./sha512');
-  }, { "./sha": 212, "./sha1": 213, "./sha224": 214, "./sha256": 215, "./sha384": 216, "./sha512": 217 }], 212: [function (require, module, exports) {
+  }, { "./sha": 213, "./sha1": 214, "./sha224": 215, "./sha256": 216, "./sha384": 217, "./sha512": 218 }], 213: [function (require, module, exports) {
     (function (Buffer) {
       /*
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -70976,7 +71562,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 167 }], 213: [function (require, module, exports) {
+  }, { "./hash": 211, "buffer": 116, "inherits": 168 }], 214: [function (require, module, exports) {
     (function (Buffer) {
       /*
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -71076,7 +71662,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha1;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 167 }], 214: [function (require, module, exports) {
+  }, { "./hash": 211, "buffer": 116, "inherits": 168 }], 215: [function (require, module, exports) {
     (function (Buffer) {
       /**
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -71131,7 +71717,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha224;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "./sha256": 215, "buffer": 115, "inherits": 167 }], 215: [function (require, module, exports) {
+  }, { "./hash": 211, "./sha256": 216, "buffer": 116, "inherits": 168 }], 216: [function (require, module, exports) {
     (function (Buffer) {
       /**
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -71252,7 +71838,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha256;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 167 }], 216: [function (require, module, exports) {
+  }, { "./hash": 211, "buffer": 116, "inherits": 168 }], 217: [function (require, module, exports) {
     (function (Buffer) {
       var inherits = require('inherits');
       var SHA512 = require('./sha512');
@@ -71311,7 +71897,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha384;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "./sha512": 217, "buffer": 115, "inherits": 167 }], 217: [function (require, module, exports) {
+  }, { "./hash": 211, "./sha512": 218, "buffer": 116, "inherits": 168 }], 218: [function (require, module, exports) {
     (function (Buffer) {
       var inherits = require('inherits');
       var Hash = require('./hash');
@@ -71532,7 +72118,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha512;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 167 }], 218: [function (require, module, exports) {
+  }, { "./hash": 211, "buffer": 116, "inherits": 168 }], 219: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -71657,7 +72243,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // Allow for unix-like usage: A.pipe(B).pipe(C)
       return dest;
     };
-  }, { "events": 156, "inherits": 167, "readable-stream/duplex.js": 190, "readable-stream/passthrough.js": 197, "readable-stream/readable.js": 198, "readable-stream/transform.js": 199, "readable-stream/writable.js": 200 }], 219: [function (require, module, exports) {
+  }, { "events": 157, "inherits": 168, "readable-stream/duplex.js": 191, "readable-stream/passthrough.js": 198, "readable-stream/readable.js": 199, "readable-stream/transform.js": 200, "readable-stream/writable.js": 201 }], 220: [function (require, module, exports) {
     // Generated by CoffeeScript 1.8.0
     (function () {
       var ValueError,
@@ -71772,7 +72358,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         window.format = format;
       }
     }).call(this);
-  }, {}], 220: [function (require, module, exports) {
+  }, {}], 221: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -71990,7 +72576,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.charReceived = buffer.length % 3;
       this.charLength = this.charReceived ? 3 : 0;
     }
-  }, { "buffer": 115 }], 221: [function (require, module, exports) {
+  }, { "buffer": 116 }], 222: [function (require, module, exports) {
     (function (root) {
       "use strict";
 
@@ -72435,7 +73021,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         unorm.shimApplied = true;
       }
     })(this);
-  }, {}], 222: [function (require, module, exports) {
+  }, {}], 223: [function (require, module, exports) {
     (function (global) {
 
       /**
@@ -72505,13 +73091,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return String(val).toLowerCase() === 'true';
       }
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 223: [function (require, module, exports) {
-    arguments[4][167][0].apply(exports, arguments);
-  }, { "dup": 167 }], 224: [function (require, module, exports) {
+  }, {}], 224: [function (require, module, exports) {
+    arguments[4][168][0].apply(exports, arguments);
+  }, { "dup": 168 }], 225: [function (require, module, exports) {
     module.exports = function isBuffer(arg) {
       return arg && (typeof arg === "undefined" ? "undefined" : _typeof(arg)) === 'object' && typeof arg.copy === 'function' && typeof arg.fill === 'function' && typeof arg.readUInt8 === 'function';
     };
-  }, {}], 225: [function (require, module, exports) {
+  }, {}], 226: [function (require, module, exports) {
     (function (process, global) {
       // Copyright Joyent, Inc. and other Node contributors.
       //
@@ -73058,7 +73644,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return Object.prototype.hasOwnProperty.call(obj, prop);
       }
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, { "./support/isBuffer": 224, "_process": 182, "inherits": 223 }], 226: [function (require, module, exports) {
+  }, { "./support/isBuffer": 225, "_process": 183, "inherits": 224 }], 227: [function (require, module, exports) {
     (function (global) {
 
       var rng;
@@ -73092,7 +73678,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = rng;
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 227: [function (require, module, exports) {
+  }, {}], 228: [function (require, module, exports) {
     //     uuid.js
     //
     //     Copyright (c) 2010-2012 Robert Kieffer
@@ -73270,7 +73856,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     uuid.unparse = unparse;
 
     module.exports = uuid;
-  }, { "./rng": 226 }], 228: [function (require, module, exports) {
+  }, { "./rng": 227 }], 229: [function (require, module, exports) {
     var indexOf = require('indexof');
 
     var Object_keys = function Object_keys(obj) {
@@ -73405,4 +73991,4 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return copy;
     };
-  }, { "indexof": 166 }] }, {}, [32]);
+  }, { "indexof": 167 }] }, {}, [32]);

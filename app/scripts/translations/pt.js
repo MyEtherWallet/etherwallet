@@ -7,7 +7,7 @@ pt.data = {
   /* Hardware wallets */
   ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
   ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
-  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',fsend
+  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Navigation*/
@@ -307,12 +307,8 @@ pt.data = {
   /* Tranlsation Info */
   translate_version:    '0.3',
   Translator_Desc:      'Thank you to our translators: ',
-<<<<<<< HEAD
-  TranslatorName_1:     '',
-=======
   // fill in your name and address:
   TranslatorName_1:     '[ Pedro "ShooterXD" Vieira ](https://www.myetherwallet.com/?gaslimit=21000&to=0x24eB7d82166361A8B69adE6FEA187Cb00FD7c7E1&value=1.0#send-transaction)',
->>>>>>> 744243d3f9bf2a8f6ca98ce1ad0849378ea8b55b
   TranslatorAddr_1:     '',
   /* Translator 1: Insert Comments Here */
   TranslatorName_2:     ' ',
