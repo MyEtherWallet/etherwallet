@@ -4249,7 +4249,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }, {
       "address": "0xb582baaf5e749d6aa98a22355a9d08b4c4d013c8",
       "symbol": "HKG",
-      "decimal": 18,
+      "decimal": 3,
       "type": "default"
     }, {
       "address": "0x888666CA69E0f178DED6D75b5726Cee99A87D698",
@@ -4374,7 +4374,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ADD_Ledger_1: 'Connect your Ledger Nano S',
       ADD_Ledger_2: 'Open the Ethereum application (or a contract application)',
       ADD_Ledger_3: 'Verify that Browser Support is enabled in Settings',
-      ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+      ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
       ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
       ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
       ADD_Ledger_scan: 'Connect to Ledger Nano S',
@@ -4527,7 +4527,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ADD_Ledger_1: 'Connect your Ledger Nano S',
       ADD_Ledger_2: 'Open the Ethereum application (or a contract application)',
       ADD_Ledger_3: 'Verify that Browser Support is enabled in Settings',
-      ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have Firmware > 1.2',
+      ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
       ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
       ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
       ADD_Ledger_scan: 'Connect to Ledger Nano S',
