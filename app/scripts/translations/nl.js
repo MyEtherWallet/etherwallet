@@ -4,11 +4,6 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
-  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
-  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
-
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -54,7 +49,7 @@ nl.data = {
   MEW_Warning_1:        'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites!',
   CX_Warning_1:         'Zorg voor **externe backups** van alle wallets die je hier opslaat. Er kan kunnen diverse dingen gebeuren die ervoor kunnen zorgen dat je gegevens in deze Chrome Extensie verloren gaan, inclusief het deinstalleren en installeren van de extensie. Deze extensie is een manier om je wallet gemakkelijk toegankelijk te maken, **geen** manier om ze te backuppen.',
   MEW_Tagline:          'Open Source JavaScript Client-Side Ether Wallet',
-	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extensie',
+  CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extensie',
 
   /* Footer */
   FOOTER_1:             'Een open source, javascript, client-side tool om Ethereum Wallets te genereren & transacties te verzenden.',
@@ -238,10 +233,13 @@ nl.data = {
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_scan:      'Verbind met Ledger Nano S',
   ADD_Ledger_1:         'Verbind je Ledger Nano S',
   ADD_Ledger_2:         'Open de Ethereum applicatie (of een contract applicatie)',
   ADD_Ledger_3:         'Controleer of "Browser Support" is ingeschakeld in je instellingen',
-  ADD_Ledger_scan:      'Verbind met Ledger Nano S',
+  ADD_Ledger_4:         'Als je "Browser Support" niet in je instellingen kunt vinden, controleer dan dat je [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) is',
+  ADD_Ledger_0a:        'Her-open MyEtherWallet met een veilige (SSL) verbinding',
+  ADD_Ledger_0b:        'Her-open MyEtherWallet door gebruik te maken van [Chrome](https://www.google.com/chrome/browser/desktop/) of [Opera](https://www.opera.com/)',
 
   /* Mnemonic Additions */
   MNEM_1:               'Selecteer het adres waarmee je wilt communiceren.',
@@ -281,6 +279,7 @@ nl.data = {
   SUCCESS_4:            'Je Wallet is succesvol toegevoegd: ',
   SUCCESS_5:            'Je hebt succesvol gestemd. Fijn dat je een actief participerend DAO deelnemer bent.',
   SUCCESS_6:            'Bestand Geselecteerd: ',
+  WARN_Send_Link:       'Je bent hier gekomen via een link waarbij het adres, bedrag, gas of data velden al ingevuld zijn. Indien gewenst kun je elk veld nog aanpassen voor het verzenden. Ontgrendel je wallet on te beginnen.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Ongeldige verzender',
