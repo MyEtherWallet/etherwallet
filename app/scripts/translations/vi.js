@@ -8,13 +8,13 @@ vi.data = {
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Nano S',
-  ADD_Ledger_1:         'Connect your Ledger Nano S',
-  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
-  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
-  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
-  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
-  ADD_Ledger_scan:      'Connect to Ledger Nano S',
+  ADD_Ledger_1:         'Kết Nối Với Ledger Nano S Của Bạn',
+  ADD_Ledger_2:         'Mở Lên Ứng Dụng Của Ethereum (Hoặc một ứng dụng của Hợp Đồng)',
+  ADD_Ledger_3:         'Xác nhận lại phần Hổ Trợ dành cho Trình Duyệt đã được kích hoạt trong mục Cài Đặt',
+  ADD_Ledger_4:         'Nếu mục Hổ Trợ dành cho Trình duyệt không tìm thấy trong mục Cài Đặt, Xác nhận lại bạn đã có [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) hay chưa',
+  ADD_Ledger_0a:        'Hảy mở lại trang MyEtherWallet trên một kết nối có tính bảo mật (SSL)',
+  ADD_Ledger_0b:        'Sử dụng [Chrome](https://www.google.com/chrome/browser/desktop/) hoặc [Opera](https://www.opera.com/) Để mở lại trang MyEtherWallet',
+  ADD_Ledger_scan:      'Kết nối với Ledger Nano S',
 
   /* Navigation*/
   NAV_YourWallets:      'Ví Của Bạn',
@@ -269,7 +269,7 @@ vi.data = {
   ERROR_13:             'Chữ ký giao dịch không hợp lệ. ',
   ERROR_14:             'Tên gọi này đã được sữ dụng. ',
   ERROR_15:             'Không tìm thấy Ví. ',
-  ERROR_16:             'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+  ERROR_16:             'Trông có vẻ như một proposal ới số ID này chưa kết thúc hoặc đang có một lỗi xảy ra để đọc được proposal này. ',
   ERROR_17:             'Đã có một ví với địa chỉ này đang tồn tại trong mục lưu trữ. Vui lòng kiễm tra trang ví của bạn. ',
   ERROR_18:             'Bạn cần có ít nhất 0.01 ether trong tài khoản để thanh toán chi phí gas. Hãy thêm một số ether và thực hiện lại. ',
   ERROR_19:             'Toàn bộ gas sẽ được sử dụng trong giao dịch này. Việc làm này có nghĩa là bạn đã bỏ phiếu cho đề xuất này hoặc kỳ hạn của cuộc tranh luận đã kết thúc.',
