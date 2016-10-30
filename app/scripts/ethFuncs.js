@@ -64,21 +64,30 @@ ethFuncs.getDataObj = function(to, func, arrVals) {
 	};
 }
 ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
+    var gasLimit = 1000000;
 	dataObj.gasPrice = '0x01';
+    dataObj.gas = '0x' + new BigNumber(gasLimit).toString(16);
+    console.log(dataObj);
 	ajaxReq.getTraceCall(dataObj, isClassic, function(data) {
 		if (data.error) {
 			callback(data);
 			return;
 		}
-        var stateDiff = data.data.stateDiff;
-        stateDiff = stateDiff[dataObj.from.toLowerCase()]['balance']['*'];
-        var estVal = new BigNumber(stateDiff['from']).sub(new BigNumber(stateDiff['to'])).sub(new BigNumber(dataObj.value));
-        if(estVal.lt(0)) estVal = -1;
-        else if(!estVal.eq(21000)) estVal = estVal.add(5000);
+        var result = data.data.vmTrace.ops;
+        var smallest = gasLimit;
+        function recurSmallest(ops) {
+	       for (var i = 0; i < ops.length; i++) {
+		      if (ops[i].ex.used < smallest) smallest = ops[i].ex.used;
+		      else if (ops[i].sub) recurSmallest(ops[i].sub.ops);
+	       }
+        }
+        recurSmallest(result);
+        var estGas = gasLimit - smallest;
+        estGas =  estGas < 0 ? -1 : estGas;
 		callback({
 			"error": false,
 			"msg": "",
-			"data": estVal.toString()
+			"data": estGas.toString()
 		});
 	});
 }
