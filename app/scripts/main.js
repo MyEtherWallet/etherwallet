@@ -62,7 +62,6 @@ var sendTxCtrl = require('./controllers/sendTxCtrl');
 var deployContractCtrl = require('./controllers/deployContractCtrl');
 var digixCtrl = require('./controllers/digixCtrl');
 var theDaoCtrl = require('./controllers/theDaoCtrl');
-var tokenCtrl = require('./controllers/tokenCtrl');
 var footerCtrl = require('./controllers/footerCtrl');
 var sendOfflineTxCtrl = require('./controllers/sendOfflineTxCtrl');
 var globalService = require('./services/globalService');
@@ -104,7 +103,6 @@ app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', sendTxCtrl]);
 app.controller('deployContractCtrl', ['$scope', '$sce', 'walletService', deployContractCtrl]);
 app.controller('digixCtrl', ['$scope', '$sce', 'walletService', digixCtrl]);
 app.controller('theDaoCtrl', ['$scope', '$sce', 'walletService', theDaoCtrl]);
-app.controller('tokenCtrl', ['$scope', '$sce', 'walletService', tokenCtrl]);
 app.controller('footerCtrl', ['$scope', footerCtrl]);
 app.controller('sendOfflineTxCtrl', ['$scope', '$sce', 'walletService', sendOfflineTxCtrl]);
 if (IS_CX) {

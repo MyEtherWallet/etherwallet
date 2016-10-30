@@ -57,15 +57,15 @@
         <div class="custom-token-fields" ng-show="customTokenField">
           <div class="form-group">
             <label translate="TOKEN_Addr"> Address: </label>
-            <input class="form-control input-sm" type="text" ng-model="localToken.contractAdd"/>
+            <input class="form-control input-sm" type="text" ng-model="localToken.contractAdd" ng-class="Validator.isValidAddress(localToken.contractAdd) ? 'is-valid' : 'is-invalid'"/>
           </div>
           <div class="form-group">
             <label translate="TOKEN_Symbol"> Token Symbol: </label>
-            <input class="form-control input-sm" type="text" ng-model="localToken.symbol"/>
+            <input class="form-control input-sm" type="text" ng-model="localToken.symbol" ng-class="localToken.symbol!='' ? 'is-valid' : 'is-invalid'"/>
           </div>
           <div class="form-group">
             <label translate="TOKEN_Dec"> Decimals: </label>
-            <input class="form-control input-sm" type="text" ng-model="localToken.decimals"/>
+            <input class="form-control input-sm" type="text" ng-model="localToken.decimals" ng-class="Validator.isPositiveNumber(localToken.decimals) ? 'is-valid' : 'is-invalid'"/>
           </div>
           <div class="form-group">
             <div class="btn btn-primary btn-sm" ng-click="saveTokenToLocal()" translate="x_Save"> Save </div>

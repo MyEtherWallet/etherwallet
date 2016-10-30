@@ -64,26 +64,36 @@ ethFuncs.getDataObj = function(to, func, arrVals) {
 	};
 }
 ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
-    var gasLimit = 1000000;
+    var gasLimit = 2000000;
 	dataObj.gasPrice = '0x01';
     dataObj.gas = '0x' + new BigNumber(gasLimit).toString(16);
-    console.log(dataObj);
 	ajaxReq.getTraceCall(dataObj, isClassic, function(data) {
 		if (data.error) {
 			callback(data);
 			return;
 		}
-        var result = data.data.vmTrace.ops;
-        var smallest = gasLimit;
-        function recurSmallest(ops) {
-	       for (var i = 0; i < ops.length; i++) {
-		      if (ops[i].ex.used < smallest) smallest = ops[i].ex.used;
-		      else if (ops[i].sub) recurSmallest(ops[i].sub.ops);
-	       }
+        function recurCheckBalance(ops){
+            var startVal = 24088+ops[0].cost;
+            for(var i=0;i<ops.length-1;i++){
+                var remainder = startVal-(gasLimit-ops[i].ex.used);
+                if (ops[i+1].sub  && ops[i+1].sub.ops.length && (gasLimit-ops[i+1].cost)> remainder) startVal+= (gasLimit-ops[i+1].cost)-startVal;
+                else if (ops[i+1].cost > remainder) startVal+= ops[i+1].cost-remainder;
+            }
+            if(!dataObj.to) startVal+=37000; //add 37000 for contract creation
+            startVal = startVal==gasLimit ? -1: startVal;
+            return startVal;
         }
-        recurSmallest(result);
-        var estGas = gasLimit - smallest;
-        estGas =  estGas < 0 ? -1 : estGas;
+        if(data.data.vmTrace.ops.length) {
+            var result = data.data.vmTrace.ops;
+            var estGas = recurCheckBalance(result);
+            estGas =  estGas < 0 ? -1 : estGas;
+        }
+        else {
+            var stateDiff = data.data.stateDiff;
+            stateDiff = stateDiff[dataObj.from.toLowerCase()]['balance']['*'];
+            var estGas = new BigNumber(stateDiff['from']).sub(new BigNumber(stateDiff['to'])).sub(new BigNumber(dataObj.value));
+            if(estGas.lt(0)||estGas.eq(gasLimit)) estGas = -1;
+        }
 		callback({
 			"error": false,
 			"msg": "",
