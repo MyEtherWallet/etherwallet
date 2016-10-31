@@ -4,10 +4,10 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
-  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
-  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
-  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
-  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+  ADD_Ledger_4:         'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
+  ADD_Ledger_0a:        'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL)',
+  ADD_Ledger_0b:        'Réouvrir MyEtherWallet avec [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/)',
+  WARN_Send_Link:       'Vous être arrivé grâce à un lien qui a rempli l\'adresse, le montant, le gaz ou les champs de données pour vous. Vous pouvez modifier toutes les informations avant d\'envoyer. Débloquez votre portefeuille pour démarrer.',
 
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
