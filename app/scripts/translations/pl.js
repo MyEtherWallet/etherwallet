@@ -4,7 +4,7 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+  WARN_Send_Link:       'Znalazłeś się tu przez odnośnik, który zawiera wstępnie uzupełniony adres, kwotę, paliwo lub dane transakcji. Możesz zmienić dowolne parametry transakcji zanim ją zatwierdzisz. Odblokuj portfel aby kontynuować.',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
@@ -244,9 +244,9 @@ pl.data = {
   ADD_Ledger_1:         'Podłącz swój Ledger Nano S',
   ADD_Ledger_2:         'Otwórz aplikację Ethereum (lub aplikację kontraktu)',
   ADD_Ledger_3:         'Sprawdź czy opcja Obsługa Przeglądarki jest włączona w Ustawieniach',
-  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
-  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
-  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
+  ADD_Ledger_4:         'Jeżeli w ustawieniach brak jest opcji Obsługa Przeglądarki, sprawdź czy masz [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
+  ADD_Ledger_0a:        'Otwórz MyEtherWallet ponownie na bezpiecznym połączeniu (SSL)',
+  ADD_Ledger_0b:        'Otwórz MyEtherWallet w [Chrome](https://www.google.com/chrome/browser/desktop/) lub [Opera](https://www.opera.com/)',
   ADD_Ledger_scan:      'Połącz z Ledger Nano S',
 
   /* Chrome Extension */
