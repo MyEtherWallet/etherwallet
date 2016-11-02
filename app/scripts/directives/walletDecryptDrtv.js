@@ -6,20 +6,19 @@ var walletDecryptDrtv = function() {
      <div class="col-md-4 col-sm-6">\n \
       <h4 translate="decrypt_Title"> Select the format of your private key: </h4>\n \
       <div class="radio">\n \
-        <label>\n \
-          <input type="radio" ng-model="walletType" value="fileupload"/><span translate="x_Keystore2">Keystore / JSON File</span></label>\n \
+        <label><input type="radio" ng-model="walletType" value="fileupload"/><span translate="x_Keystore2">Keystore / JSON File</span></label>\n \
       </div>\n \
       <div class="radio">\n \
-        <label>\n \
-          <input type="radio" ng-model="walletType" value="pasteprivkey"/><span translate="x_PrivKey2">Private Key</span></label>\n \
+        <label><input type="radio" ng-model="walletType" value="pasteprivkey"/><span translate="x_PrivKey2">Private Key</span></label>\n \
       </div>\n \
       <div class="radio">\n \
-        <label>\n \
-          <input type="radio" ng-model="walletType" value="pastemnemonic"/><span translate="x_Mnemonic">Mnemonic Phrase</span></label>\n \
+        <label><input type="radio" ng-model="walletType" value="pastemnemonic"/><span translate="x_Mnemonic">Mnemonic Phrase</span></label>\n \
       </div>\n \
       <div class="radio">\n \
-        <label>\n \
-          <input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Nano S</span></label>\n \
+        <label><input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Nano S</span></label>\n \
+      </div>\n \
+      <div class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id" >\n \
+        <label><input type="radio" ng-model="walletType" value="addressOnly"/><span>View with Address Only</span></label>\n \
       </div>\n \
     </div>\n \
     <div class="col-md-4 col-sm-6">\n \
@@ -69,6 +68,14 @@ var walletDecryptDrtv = function() {
         </ol>\n \
       </div>\n \
       <!-- /if selected type ledger-->\n \
+      <!-- if selected addressOnly-->\n \
+      <div id="selectedTypeKey" ng-if="walletType==\'addressOnly\'">\n \
+        <h4 translate="x_Address"> Your Address </h4>\n \
+        <div class="form-group">\n \
+          <textarea rows="4" class="form-control" placeholder="{{ \'x_Address\' | translate }}" ng-model="$parent.$parent.address" ng-class="Validator.isValidAddress($parent.$parent.address) ? \'is-valid\' : \'is-invalid\'" ng-change="onAddressChange()"></textarea>\n \
+        </div>\n \
+      </div>\n \
+      <!-- /if selected addressOnly-->\n \
     </div>\n \
     <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'">\n \
       <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt" translate="ADD_Label_6"> Access Your Wallet:</h4>\n \

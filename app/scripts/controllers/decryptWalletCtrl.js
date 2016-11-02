@@ -45,6 +45,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         var numWords = $scope.manualmnemonic.trim().split(' ').length;
 		$scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
 	};
+    $scope.onAddressChange = function() {
+        $scope.showPDecrypt = $scope.address.length == 42;
+    };
     $scope.setHDAddresses = function(start, limit){
         $scope.HDWallet.wallets = [];
         var dPath = $scope.HDWallet.dPath;
