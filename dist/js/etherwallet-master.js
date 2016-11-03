@@ -728,7 +728,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           document.getElementById('fselector').click();
         };
         $scope.onFilePassChange = function () {
-          $scope.showFDecrypt = $scope.filePassword.length > 3;
+          $scope.showFDecrypt = $scope.filePassword.length >= 3;
         };
         $scope.onPrivKeyChange = function () {
           $scope.requirePPass = $scope.manualprivkey.length == 128 || $scope.manualprivkey.length == 132;
@@ -2356,7 +2356,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           startVal = startVal == gasLimit ? -1 : startVal;
           return startVal;
         }
-        if (data.data.vmTrace.ops.length) {
+        if (data.data.vmTrace && data.data.vmTrace.ops.length) {
           var result = data.data.vmTrace.ops;
           var estGas = recurCheckBalance(result);
           estGas = estGas < 0 ? -1 : estGas;
@@ -3136,6 +3136,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
         var decipher = ethUtil.crypto.createDecipheriv(json.crypto.cipher, derivedKey.slice(0, 16), new Buffer(json.crypto.cipherparams.iv, 'hex'));
         var seed = Wallet.decipherBuffer(decipher, ciphertext, 'hex');
+        while (seed.length < 32) {
+          var nullBuff = new Buffer([0x00]);
+          seed = Buffer.concat([nullBuff, seed]);
+        }
         return new Wallet(seed);
       };
       Wallet.prototype.toV3String = function (password, opts) {
@@ -62645,11 +62649,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     utils.intFromLE = intFromLE;
   }, { "bn.js": 84 }], 151: [function (require, module, exports) {
     module.exports = {
-      "_args": [["elliptic@^6.0.0", "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"]],
+      "_args": [[{
+        "raw": "elliptic@^6.0.0",
+        "scope": null,
+        "escapedName": "elliptic",
+        "name": "elliptic",
+        "rawSpec": "^6.0.0",
+        "spec": ">=6.0.0 <7.0.0",
+        "type": "range"
+      }, "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign"]],
       "_from": "elliptic@>=6.0.0 <7.0.0",
       "_id": "elliptic@6.3.2",
       "_inCache": true,
-      "_installable": true,
       "_location": "/elliptic",
       "_nodeVersion": "6.3.0",
       "_npmOperationalInternal": {
@@ -62657,16 +62668,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "tmp": "tmp/elliptic-6.3.2.tgz_1473938837205_0.3108903462998569"
       },
       "_npmUser": {
-        "email": "fedor@indutny.com",
-        "name": "indutny"
+        "name": "indutny",
+        "email": "fedor@indutny.com"
       },
       "_npmVersion": "3.10.3",
       "_phantomChildren": {},
       "_requested": {
-        "name": "elliptic",
         "raw": "elliptic@^6.0.0",
-        "rawSpec": "^6.0.0",
         "scope": null,
+        "escapedName": "elliptic",
+        "name": "elliptic",
+        "rawSpec": "^6.0.0",
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
@@ -62675,10 +62687,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
       "_shrinkwrap": null,
       "_spec": "elliptic@^6.0.0",
-      "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
+      "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign",
       "author": {
-        "email": "fedor@indutny.com",
-        "name": "Fedor Indutny"
+        "name": "Fedor Indutny",
+        "email": "fedor@indutny.com"
       },
       "bugs": {
         "url": "https://github.com/indutny/elliptic/issues"
@@ -62717,8 +62729,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "license": "MIT",
       "main": "lib/elliptic.js",
       "maintainers": [{
-        "email": "fedor@indutny.com",
-        "name": "indutny"
+        "name": "indutny",
+        "email": "fedor@indutny.com"
       }],
       "name": "elliptic",
       "optionalDependencies": {},

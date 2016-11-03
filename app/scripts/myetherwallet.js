@@ -232,6 +232,10 @@ Wallet.fromV3 = function(input, password, nonStrict) {
 	}
 	var decipher = ethUtil.crypto.createDecipheriv(json.crypto.cipher, derivedKey.slice(0, 16), new Buffer(json.crypto.cipherparams.iv, 'hex'))
 	var seed = Wallet.decipherBuffer(decipher, ciphertext, 'hex')
+    while(seed.length<32) {
+        var nullBuff = new Buffer ([0x00]);
+        seed = Buffer.concat([nullBuff, seed]);
+    }
 	return new Wallet(seed)
 }
 Wallet.prototype.toV3String = function(password, opts) {
