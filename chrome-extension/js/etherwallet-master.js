@@ -1968,7 +1968,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       renderer: myRenderer
     });
     module.exports = marked;
-  }, { "marked": 172 }], 20: [function (require, module, exports) {
+  }, { "marked": 174 }], 20: [function (require, module, exports) {
     'use strict';
 
     var cxFuncs = function cxFuncs() {};
@@ -2904,7 +2904,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       app.controller('quickSendCtrl', ['$scope', '$sce', quickSendCtrl]);
       app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
     }
-  }, { "./ajaxReq": 1, "./controllers/CX/addWalletCtrl": 2, "./controllers/CX/cxDecryptWalletCtrl": 3, "./controllers/CX/mainPopCtrl": 4, "./controllers/CX/myWalletsCtrl": 5, "./controllers/CX/quickSendCtrl": 6, "./controllers/bulkGenCtrl": 7, "./controllers/decryptWalletCtrl": 8, "./controllers/deployContractCtrl": 9, "./controllers/digixCtrl": 10, "./controllers/footerCtrl": 11, "./controllers/sendOfflineTxCtrl": 12, "./controllers/sendTxCtrl": 13, "./controllers/tabsCtrl": 14, "./controllers/theDaoCtrl": 15, "./controllers/viewCtrl": 16, "./controllers/viewWalletCtrl": 17, "./controllers/walletGenCtrl": 18, "./customMarked": 19, "./cxFuncs": 20, "./directives/QRCodeDrtv": 21, "./directives/blockiesDrtv": 22, "./directives/cxWalletDecryptDrtv": 23, "./directives/fileReaderDrtv": 24, "./directives/walletDecryptDrtv": 25, "./ethFuncs": 26, "./etherUnits": 27, "./globalFuncs": 28, "./ledger-eth": 29, "./ledger3": 30, "./myetherwallet": 32, "./services/globalService": 33, "./services/walletService": 34, "./staticJS/u2f-api": 35, "./tokens": 36, "./translations/translate.js": 53, "./uiFuncs": 56, "./validator": 57, "angular": 63, "angular-sanitize": 59, "angular-translate": 61, "angular-translate-handler-log": 60, "bignumber.js": 80, "bip39": 81, "crypto": 124, "ethereumjs-tx": 154, "ethereumjs-util": 155, "hdkey": 165, "scryptsy": 203, "string-format": 219, "uuid": 227 }], 32: [function (require, module, exports) {
+  }, { "./ajaxReq": 1, "./controllers/CX/addWalletCtrl": 2, "./controllers/CX/cxDecryptWalletCtrl": 3, "./controllers/CX/mainPopCtrl": 4, "./controllers/CX/myWalletsCtrl": 5, "./controllers/CX/quickSendCtrl": 6, "./controllers/bulkGenCtrl": 7, "./controllers/decryptWalletCtrl": 8, "./controllers/deployContractCtrl": 9, "./controllers/digixCtrl": 10, "./controllers/footerCtrl": 11, "./controllers/sendOfflineTxCtrl": 12, "./controllers/sendTxCtrl": 13, "./controllers/tabsCtrl": 14, "./controllers/theDaoCtrl": 15, "./controllers/viewCtrl": 16, "./controllers/viewWalletCtrl": 17, "./controllers/walletGenCtrl": 18, "./customMarked": 19, "./cxFuncs": 20, "./directives/QRCodeDrtv": 21, "./directives/blockiesDrtv": 22, "./directives/cxWalletDecryptDrtv": 23, "./directives/fileReaderDrtv": 24, "./directives/walletDecryptDrtv": 25, "./ethFuncs": 26, "./etherUnits": 27, "./globalFuncs": 28, "./ledger-eth": 29, "./ledger3": 30, "./myetherwallet": 32, "./services/globalService": 33, "./services/walletService": 34, "./staticJS/u2f-api": 35, "./tokens": 36, "./translations/translate.js": 53, "./uiFuncs": 56, "./validator": 57, "angular": 63, "angular-sanitize": 59, "angular-translate": 61, "angular-translate-handler-log": 60, "bignumber.js": 80, "bip39": 81, "crypto": 124, "ethereumjs-tx": 154, "ethereumjs-util": 157, "hdkey": 166, "scryptsy": 205, "string-format": 221, "uuid": 229 }], 32: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -46136,7 +46136,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     Entity.prototype.encode = function encode(data, enc, /* internal */reporter) {
       return this._getEncoder(enc).encode(data, reporter);
     };
-  }, { "../asn1": 64, "inherits": 168, "vm": 228 }], 66: [function (require, module, exports) {
+  }, { "../asn1": 64, "inherits": 169, "vm": 230 }], 66: [function (require, module, exports) {
     var inherits = require('inherits');
     var Reporter = require('../base').Reporter;
     var Buffer = require('buffer').Buffer;
@@ -46239,7 +46239,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return out;
     };
-  }, { "../base": 67, "buffer": 115, "inherits": 168 }], 67: [function (require, module, exports) {
+  }, { "../base": 67, "buffer": 115, "inherits": 169 }], 67: [function (require, module, exports) {
     var base = exports;
 
     base.Reporter = require('./reporter').Reporter;
@@ -46769,7 +46769,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return (/^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str)
       );
     };
-  }, { "../base": 67, "minimalistic-assert": 174 }], 69: [function (require, module, exports) {
+  }, { "../base": 67, "minimalistic-assert": 176 }], 69: [function (require, module, exports) {
     var inherits = require('inherits');
 
     function Reporter(options) {
@@ -46886,7 +46886,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return this;
     };
-  }, { "inherits": 168 }], 70: [function (require, module, exports) {
+  }, { "inherits": 169 }], 70: [function (require, module, exports) {
     var constants = require('../constants');
 
     exports.tagClass = {
@@ -47221,7 +47221,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return len;
     }
-  }, { "../../asn1": 64, "inherits": 168 }], 73: [function (require, module, exports) {
+  }, { "../../asn1": 64, "inherits": 169 }], 73: [function (require, module, exports) {
     var decoders = exports;
 
     decoders.der = require('./der');
@@ -47271,7 +47271,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var input = new Buffer(base64, 'base64');
       return DERDecoder.prototype.decode.call(this, input, options);
     };
-  }, { "./der": 72, "buffer": 115, "inherits": 168 }], 75: [function (require, module, exports) {
+  }, { "./der": 72, "buffer": 115, "inherits": 169 }], 75: [function (require, module, exports) {
     var inherits = require('inherits');
     var Buffer = require('buffer').Buffer;
 
@@ -47511,7 +47511,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return res;
     }
-  }, { "../../asn1": 64, "buffer": 115, "inherits": 168 }], 76: [function (require, module, exports) {
+  }, { "../../asn1": 64, "buffer": 115, "inherits": 169 }], 76: [function (require, module, exports) {
     var encoders = exports;
 
     encoders.der = require('./der');
@@ -47538,7 +47538,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }out.push('-----END ' + options.label + '-----');
       return out.join('\n');
     };
-  }, { "./der": 75, "inherits": 168 }], 78: [function (require, module, exports) {
+  }, { "./der": 75, "inherits": 169 }], 78: [function (require, module, exports) {
     // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
     //
     // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -47889,7 +47889,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return keys;
     };
-  }, { "util/": 225 }], 79: [function (require, module, exports) {
+  }, { "util/": 227 }], 79: [function (require, module, exports) {
     'use strict';
 
     exports.byteLength = byteLength;
@@ -50867,7 +50867,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./wordlists/en.json": 82, "assert": 78, "buffer": 115, "create-hash": 120, "pbkdf2": 179, "randombytes": 189, "unorm": 221 }], 82: [function (require, module, exports) {
+  }, { "./wordlists/en.json": 82, "assert": 78, "buffer": 115, "create-hash": 120, "pbkdf2": 181, "randombytes": 191, "unorm": 223 }], 82: [function (require, module, exports) {
     module.exports = ["abandon", "ability", "able", "about", "above", "absent", "absorb", "abstract", "absurd", "abuse", "access", "accident", "account", "accuse", "achieve", "acid", "acoustic", "acquire", "across", "act", "action", "actor", "actress", "actual", "adapt", "add", "addict", "address", "adjust", "admit", "adult", "advance", "advice", "aerobic", "affair", "afford", "afraid", "again", "age", "agent", "agree", "ahead", "aim", "air", "airport", "aisle", "alarm", "album", "alcohol", "alert", "alien", "all", "alley", "allow", "almost", "alone", "alpha", "already", "also", "alter", "always", "amateur", "amazing", "among", "amount", "amused", "analyst", "anchor", "ancient", "anger", "angle", "angry", "animal", "ankle", "announce", "annual", "another", "answer", "antenna", "antique", "anxiety", "any", "apart", "apology", "appear", "apple", "approve", "april", "arch", "arctic", "area", "arena", "argue", "arm", "armed", "armor", "army", "around", "arrange", "arrest", "arrive", "arrow", "art", "artefact", "artist", "artwork", "ask", "aspect", "assault", "asset", "assist", "assume", "asthma", "athlete", "atom", "attack", "attend", "attitude", "attract", "auction", "audit", "august", "aunt", "author", "auto", "autumn", "average", "avocado", "avoid", "awake", "aware", "away", "awesome", "awful", "awkward", "axis", "baby", "bachelor", "bacon", "badge", "bag", "balance", "balcony", "ball", "bamboo", "banana", "banner", "bar", "barely", "bargain", "barrel", "base", "basic", "basket", "battle", "beach", "bean", "beauty", "because", "become", "beef", "before", "begin", "behave", "behind", "believe", "below", "belt", "bench", "benefit", "best", "betray", "better", "between", "beyond", "bicycle", "bid", "bike", "bind", "biology", "bird", "birth", "bitter", "black", "blade", "blame", "blanket", "blast", "bleak", "bless", "blind", "blood", "blossom", "blouse", "blue", "blur", "blush", "board", "boat", "body", "boil", "bomb", "bone", "bonus", "book", "boost", "border", "boring", "borrow", "boss", "bottom", "bounce", "box", "boy", "bracket", "brain", "brand", "brass", "brave", "bread", "breeze", "brick", "bridge", "brief", "bright", "bring", "brisk", "broccoli", "broken", "bronze", "broom", "brother", "brown", "brush", "bubble", "buddy", "budget", "buffalo", "build", "bulb", "bulk", "bullet", "bundle", "bunker", "burden", "burger", "burst", "bus", "business", "busy", "butter", "buyer", "buzz", "cabbage", "cabin", "cable", "cactus", "cage", "cake", "call", "calm", "camera", "camp", "can", "canal", "cancel", "candy", "cannon", "canoe", "canvas", "canyon", "capable", "capital", "captain", "car", "carbon", "card", "cargo", "carpet", "carry", "cart", "case", "cash", "casino", "castle", "casual", "cat", "catalog", "catch", "category", "cattle", "caught", "cause", "caution", "cave", "ceiling", "celery", "cement", "census", "century", "cereal", "certain", "chair", "chalk", "champion", "change", "chaos", "chapter", "charge", "chase", "chat", "cheap", "check", "cheese", "chef", "cherry", "chest", "chicken", "chief", "child", "chimney", "choice", "choose", "chronic", "chuckle", "chunk", "churn", "cigar", "cinnamon", "circle", "citizen", "city", "civil", "claim", "clap", "clarify", "claw", "clay", "clean", "clerk", "clever", "click", "client", "cliff", "climb", "clinic", "clip", "clock", "clog", "close", "cloth", "cloud", "clown", "club", "clump", "cluster", "clutch", "coach", "coast", "coconut", "code", "coffee", "coil", "coin", "collect", "color", "column", "combine", "come", "comfort", "comic", "common", "company", "concert", "conduct", "confirm", "congress", "connect", "consider", "control", "convince", "cook", "cool", "copper", "copy", "coral", "core", "corn", "correct", "cost", "cotton", "couch", "country", "couple", "course", "cousin", "cover", "coyote", "crack", "cradle", "craft", "cram", "crane", "crash", "crater", "crawl", "crazy", "cream", "credit", "creek", "crew", "cricket", "crime", "crisp", "critic", "crop", "cross", "crouch", "crowd", "crucial", "cruel", "cruise", "crumble", "crunch", "crush", "cry", "crystal", "cube", "culture", "cup", "cupboard", "curious", "current", "curtain", "curve", "cushion", "custom", "cute", "cycle", "dad", "damage", "damp", "dance", "danger", "daring", "dash", "daughter", "dawn", "day", "deal", "debate", "debris", "decade", "december", "decide", "decline", "decorate", "decrease", "deer", "defense", "define", "defy", "degree", "delay", "deliver", "demand", "demise", "denial", "dentist", "deny", "depart", "depend", "deposit", "depth", "deputy", "derive", "describe", "desert", "design", "desk", "despair", "destroy", "detail", "detect", "develop", "device", "devote", "diagram", "dial", "diamond", "diary", "dice", "diesel", "diet", "differ", "digital", "dignity", "dilemma", "dinner", "dinosaur", "direct", "dirt", "disagree", "discover", "disease", "dish", "dismiss", "disorder", "display", "distance", "divert", "divide", "divorce", "dizzy", "doctor", "document", "dog", "doll", "dolphin", "domain", "donate", "donkey", "donor", "door", "dose", "double", "dove", "draft", "dragon", "drama", "drastic", "draw", "dream", "dress", "drift", "drill", "drink", "drip", "drive", "drop", "drum", "dry", "duck", "dumb", "dune", "during", "dust", "dutch", "duty", "dwarf", "dynamic", "eager", "eagle", "early", "earn", "earth", "easily", "east", "easy", "echo", "ecology", "economy", "edge", "edit", "educate", "effort", "egg", "eight", "either", "elbow", "elder", "electric", "elegant", "element", "elephant", "elevator", "elite", "else", "embark", "embody", "embrace", "emerge", "emotion", "employ", "empower", "empty", "enable", "enact", "end", "endless", "endorse", "enemy", "energy", "enforce", "engage", "engine", "enhance", "enjoy", "enlist", "enough", "enrich", "enroll", "ensure", "enter", "entire", "entry", "envelope", "episode", "equal", "equip", "era", "erase", "erode", "erosion", "error", "erupt", "escape", "essay", "essence", "estate", "eternal", "ethics", "evidence", "evil", "evoke", "evolve", "exact", "example", "excess", "exchange", "excite", "exclude", "excuse", "execute", "exercise", "exhaust", "exhibit", "exile", "exist", "exit", "exotic", "expand", "expect", "expire", "explain", "expose", "express", "extend", "extra", "eye", "eyebrow", "fabric", "face", "faculty", "fade", "faint", "faith", "fall", "false", "fame", "family", "famous", "fan", "fancy", "fantasy", "farm", "fashion", "fat", "fatal", "father", "fatigue", "fault", "favorite", "feature", "february", "federal", "fee", "feed", "feel", "female", "fence", "festival", "fetch", "fever", "few", "fiber", "fiction", "field", "figure", "file", "film", "filter", "final", "find", "fine", "finger", "finish", "fire", "firm", "first", "fiscal", "fish", "fit", "fitness", "fix", "flag", "flame", "flash", "flat", "flavor", "flee", "flight", "flip", "float", "flock", "floor", "flower", "fluid", "flush", "fly", "foam", "focus", "fog", "foil", "fold", "follow", "food", "foot", "force", "forest", "forget", "fork", "fortune", "forum", "forward", "fossil", "foster", "found", "fox", "fragile", "frame", "frequent", "fresh", "friend", "fringe", "frog", "front", "frost", "frown", "frozen", "fruit", "fuel", "fun", "funny", "furnace", "fury", "future", "gadget", "gain", "galaxy", "gallery", "game", "gap", "garage", "garbage", "garden", "garlic", "garment", "gas", "gasp", "gate", "gather", "gauge", "gaze", "general", "genius", "genre", "gentle", "genuine", "gesture", "ghost", "giant", "gift", "giggle", "ginger", "giraffe", "girl", "give", "glad", "glance", "glare", "glass", "glide", "glimpse", "globe", "gloom", "glory", "glove", "glow", "glue", "goat", "goddess", "gold", "good", "goose", "gorilla", "gospel", "gossip", "govern", "gown", "grab", "grace", "grain", "grant", "grape", "grass", "gravity", "great", "green", "grid", "grief", "grit", "grocery", "group", "grow", "grunt", "guard", "guess", "guide", "guilt", "guitar", "gun", "gym", "habit", "hair", "half", "hammer", "hamster", "hand", "happy", "harbor", "hard", "harsh", "harvest", "hat", "have", "hawk", "hazard", "head", "health", "heart", "heavy", "hedgehog", "height", "hello", "helmet", "help", "hen", "hero", "hidden", "high", "hill", "hint", "hip", "hire", "history", "hobby", "hockey", "hold", "hole", "holiday", "hollow", "home", "honey", "hood", "hope", "horn", "horror", "horse", "hospital", "host", "hotel", "hour", "hover", "hub", "huge", "human", "humble", "humor", "hundred", "hungry", "hunt", "hurdle", "hurry", "hurt", "husband", "hybrid", "ice", "icon", "idea", "identify", "idle", "ignore", "ill", "illegal", "illness", "image", "imitate", "immense", "immune", "impact", "impose", "improve", "impulse", "inch", "include", "income", "increase", "index", "indicate", "indoor", "industry", "infant", "inflict", "inform", "inhale", "inherit", "initial", "inject", "injury", "inmate", "inner", "innocent", "input", "inquiry", "insane", "insect", "inside", "inspire", "install", "intact", "interest", "into", "invest", "invite", "involve", "iron", "island", "isolate", "issue", "item", "ivory", "jacket", "jaguar", "jar", "jazz", "jealous", "jeans", "jelly", "jewel", "job", "join", "joke", "journey", "joy", "judge", "juice", "jump", "jungle", "junior", "junk", "just", "kangaroo", "keen", "keep", "ketchup", "key", "kick", "kid", "kidney", "kind", "kingdom", "kiss", "kit", "kitchen", "kite", "kitten", "kiwi", "knee", "knife", "knock", "know", "lab", "label", "labor", "ladder", "lady", "lake", "lamp", "language", "laptop", "large", "later", "latin", "laugh", "laundry", "lava", "law", "lawn", "lawsuit", "layer", "lazy", "leader", "leaf", "learn", "leave", "lecture", "left", "leg", "legal", "legend", "leisure", "lemon", "lend", "length", "lens", "leopard", "lesson", "letter", "level", "liar", "liberty", "library", "license", "life", "lift", "light", "like", "limb", "limit", "link", "lion", "liquid", "list", "little", "live", "lizard", "load", "loan", "lobster", "local", "lock", "logic", "lonely", "long", "loop", "lottery", "loud", "lounge", "love", "loyal", "lucky", "luggage", "lumber", "lunar", "lunch", "luxury", "lyrics", "machine", "mad", "magic", "magnet", "maid", "mail", "main", "major", "make", "mammal", "man", "manage", "mandate", "mango", "mansion", "manual", "maple", "marble", "march", "margin", "marine", "market", "marriage", "mask", "mass", "master", "match", "material", "math", "matrix", "matter", "maximum", "maze", "meadow", "mean", "measure", "meat", "mechanic", "medal", "media", "melody", "melt", "member", "memory", "mention", "menu", "mercy", "merge", "merit", "merry", "mesh", "message", "metal", "method", "middle", "midnight", "milk", "million", "mimic", "mind", "minimum", "minor", "minute", "miracle", "mirror", "misery", "miss", "mistake", "mix", "mixed", "mixture", "mobile", "model", "modify", "mom", "moment", "monitor", "monkey", "monster", "month", "moon", "moral", "more", "morning", "mosquito", "mother", "motion", "motor", "mountain", "mouse", "move", "movie", "much", "muffin", "mule", "multiply", "muscle", "museum", "mushroom", "music", "must", "mutual", "myself", "mystery", "myth", "naive", "name", "napkin", "narrow", "nasty", "nation", "nature", "near", "neck", "need", "negative", "neglect", "neither", "nephew", "nerve", "nest", "net", "network", "neutral", "never", "news", "next", "nice", "night", "noble", "noise", "nominee", "noodle", "normal", "north", "nose", "notable", "note", "nothing", "notice", "novel", "now", "nuclear", "number", "nurse", "nut", "oak", "obey", "object", "oblige", "obscure", "observe", "obtain", "obvious", "occur", "ocean", "october", "odor", "off", "offer", "office", "often", "oil", "okay", "old", "olive", "olympic", "omit", "once", "one", "onion", "online", "only", "open", "opera", "opinion", "oppose", "option", "orange", "orbit", "orchard", "order", "ordinary", "organ", "orient", "original", "orphan", "ostrich", "other", "outdoor", "outer", "output", "outside", "oval", "oven", "over", "own", "owner", "oxygen", "oyster", "ozone", "pact", "paddle", "page", "pair", "palace", "palm", "panda", "panel", "panic", "panther", "paper", "parade", "parent", "park", "parrot", "party", "pass", "patch", "path", "patient", "patrol", "pattern", "pause", "pave", "payment", "peace", "peanut", "pear", "peasant", "pelican", "pen", "penalty", "pencil", "people", "pepper", "perfect", "permit", "person", "pet", "phone", "photo", "phrase", "physical", "piano", "picnic", "picture", "piece", "pig", "pigeon", "pill", "pilot", "pink", "pioneer", "pipe", "pistol", "pitch", "pizza", "place", "planet", "plastic", "plate", "play", "please", "pledge", "pluck", "plug", "plunge", "poem", "poet", "point", "polar", "pole", "police", "pond", "pony", "pool", "popular", "portion", "position", "possible", "post", "potato", "pottery", "poverty", "powder", "power", "practice", "praise", "predict", "prefer", "prepare", "present", "pretty", "prevent", "price", "pride", "primary", "print", "priority", "prison", "private", "prize", "problem", "process", "produce", "profit", "program", "project", "promote", "proof", "property", "prosper", "protect", "proud", "provide", "public", "pudding", "pull", "pulp", "pulse", "pumpkin", "punch", "pupil", "puppy", "purchase", "purity", "purpose", "purse", "push", "put", "puzzle", "pyramid", "quality", "quantum", "quarter", "question", "quick", "quit", "quiz", "quote", "rabbit", "raccoon", "race", "rack", "radar", "radio", "rail", "rain", "raise", "rally", "ramp", "ranch", "random", "range", "rapid", "rare", "rate", "rather", "raven", "raw", "razor", "ready", "real", "reason", "rebel", "rebuild", "recall", "receive", "recipe", "record", "recycle", "reduce", "reflect", "reform", "refuse", "region", "regret", "regular", "reject", "relax", "release", "relief", "rely", "remain", "remember", "remind", "remove", "render", "renew", "rent", "reopen", "repair", "repeat", "replace", "report", "require", "rescue", "resemble", "resist", "resource", "response", "result", "retire", "retreat", "return", "reunion", "reveal", "review", "reward", "rhythm", "rib", "ribbon", "rice", "rich", "ride", "ridge", "rifle", "right", "rigid", "ring", "riot", "ripple", "risk", "ritual", "rival", "river", "road", "roast", "robot", "robust", "rocket", "romance", "roof", "rookie", "room", "rose", "rotate", "rough", "round", "route", "royal", "rubber", "rude", "rug", "rule", "run", "runway", "rural", "sad", "saddle", "sadness", "safe", "sail", "salad", "salmon", "salon", "salt", "salute", "same", "sample", "sand", "satisfy", "satoshi", "sauce", "sausage", "save", "say", "scale", "scan", "scare", "scatter", "scene", "scheme", "school", "science", "scissors", "scorpion", "scout", "scrap", "screen", "script", "scrub", "sea", "search", "season", "seat", "second", "secret", "section", "security", "seed", "seek", "segment", "select", "sell", "seminar", "senior", "sense", "sentence", "series", "service", "session", "settle", "setup", "seven", "shadow", "shaft", "shallow", "share", "shed", "shell", "sheriff", "shield", "shift", "shine", "ship", "shiver", "shock", "shoe", "shoot", "shop", "short", "shoulder", "shove", "shrimp", "shrug", "shuffle", "shy", "sibling", "sick", "side", "siege", "sight", "sign", "silent", "silk", "silly", "silver", "similar", "simple", "since", "sing", "siren", "sister", "situate", "six", "size", "skate", "sketch", "ski", "skill", "skin", "skirt", "skull", "slab", "slam", "sleep", "slender", "slice", "slide", "slight", "slim", "slogan", "slot", "slow", "slush", "small", "smart", "smile", "smoke", "smooth", "snack", "snake", "snap", "sniff", "snow", "soap", "soccer", "social", "sock", "soda", "soft", "solar", "soldier", "solid", "solution", "solve", "someone", "song", "soon", "sorry", "sort", "soul", "sound", "soup", "source", "south", "space", "spare", "spatial", "spawn", "speak", "special", "speed", "spell", "spend", "sphere", "spice", "spider", "spike", "spin", "spirit", "split", "spoil", "sponsor", "spoon", "sport", "spot", "spray", "spread", "spring", "spy", "square", "squeeze", "squirrel", "stable", "stadium", "staff", "stage", "stairs", "stamp", "stand", "start", "state", "stay", "steak", "steel", "stem", "step", "stereo", "stick", "still", "sting", "stock", "stomach", "stone", "stool", "story", "stove", "strategy", "street", "strike", "strong", "struggle", "student", "stuff", "stumble", "style", "subject", "submit", "subway", "success", "such", "sudden", "suffer", "sugar", "suggest", "suit", "summer", "sun", "sunny", "sunset", "super", "supply", "supreme", "sure", "surface", "surge", "surprise", "surround", "survey", "suspect", "sustain", "swallow", "swamp", "swap", "swarm", "swear", "sweet", "swift", "swim", "swing", "switch", "sword", "symbol", "symptom", "syrup", "system", "table", "tackle", "tag", "tail", "talent", "talk", "tank", "tape", "target", "task", "taste", "tattoo", "taxi", "teach", "team", "tell", "ten", "tenant", "tennis", "tent", "term", "test", "text", "thank", "that", "theme", "then", "theory", "there", "they", "thing", "this", "thought", "three", "thrive", "throw", "thumb", "thunder", "ticket", "tide", "tiger", "tilt", "timber", "time", "tiny", "tip", "tired", "tissue", "title", "toast", "tobacco", "today", "toddler", "toe", "together", "toilet", "token", "tomato", "tomorrow", "tone", "tongue", "tonight", "tool", "tooth", "top", "topic", "topple", "torch", "tornado", "tortoise", "toss", "total", "tourist", "toward", "tower", "town", "toy", "track", "trade", "traffic", "tragic", "train", "transfer", "trap", "trash", "travel", "tray", "treat", "tree", "trend", "trial", "tribe", "trick", "trigger", "trim", "trip", "trophy", "trouble", "truck", "true", "truly", "trumpet", "trust", "truth", "try", "tube", "tuition", "tumble", "tuna", "tunnel", "turkey", "turn", "turtle", "twelve", "twenty", "twice", "twin", "twist", "two", "type", "typical", "ugly", "umbrella", "unable", "unaware", "uncle", "uncover", "under", "undo", "unfair", "unfold", "unhappy", "uniform", "unique", "unit", "universe", "unknown", "unlock", "until", "unusual", "unveil", "update", "upgrade", "uphold", "upon", "upper", "upset", "urban", "urge", "usage", "use", "used", "useful", "useless", "usual", "utility", "vacant", "vacuum", "vague", "valid", "valley", "valve", "van", "vanish", "vapor", "various", "vast", "vault", "vehicle", "velvet", "vendor", "venture", "venue", "verb", "verify", "version", "very", "vessel", "veteran", "viable", "vibrant", "vicious", "victory", "video", "view", "village", "vintage", "violin", "virtual", "virus", "visa", "visit", "visual", "vital", "vivid", "vocal", "voice", "void", "volcano", "volume", "vote", "voyage", "wage", "wagon", "wait", "walk", "wall", "walnut", "want", "warfare", "warm", "warrior", "wash", "wasp", "waste", "water", "wave", "way", "wealth", "weapon", "wear", "weasel", "weather", "web", "wedding", "weekend", "weird", "welcome", "west", "wet", "whale", "what", "wheat", "wheel", "when", "where", "whip", "whisper", "wide", "width", "wife", "wild", "will", "win", "window", "wine", "wing", "wink", "winner", "winter", "wire", "wisdom", "wise", "wish", "witness", "wolf", "woman", "wonder", "wood", "wool", "word", "work", "world", "worry", "worth", "wrap", "wreck", "wrestle", "wrist", "write", "wrong", "yard", "year", "yellow", "you", "young", "youth", "zebra", "zero", "zone", "zoo"];
   }, {}], 83: [function (require, module, exports) {
     (function (Buffer) {
@@ -54675,7 +54675,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 87, "./ghash": 92, "buffer": 115, "buffer-xor": 114, "cipher-base": 116, "inherits": 168 }], 89: [function (require, module, exports) {
+  }, { "./aes": 87, "./ghash": 92, "buffer": 115, "buffer-xor": 114, "cipher-base": 116, "inherits": 169 }], 89: [function (require, module, exports) {
     var ciphers = require('./encrypter');
     exports.createCipher = exports.Cipher = ciphers.createCipher;
     exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv;
@@ -54827,7 +54827,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       exports.createDecipher = createDecipher;
       exports.createDecipheriv = createDecipheriv;
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 87, "./authCipher": 88, "./modes": 93, "./modes/cbc": 94, "./modes/cfb": 95, "./modes/cfb1": 96, "./modes/cfb8": 97, "./modes/ctr": 98, "./modes/ecb": 99, "./modes/ofb": 100, "./streamCipher": 101, "buffer": 115, "cipher-base": 116, "evp_bytestokey": 158, "inherits": 168 }], 91: [function (require, module, exports) {
+  }, { "./aes": 87, "./authCipher": 88, "./modes": 93, "./modes/cbc": 94, "./modes/cfb": 95, "./modes/cfb1": 96, "./modes/cfb8": 97, "./modes/ctr": 98, "./modes/ecb": 99, "./modes/ofb": 100, "./streamCipher": 101, "buffer": 115, "cipher-base": 116, "evp_bytestokey": 159, "inherits": 169 }], 91: [function (require, module, exports) {
     (function (Buffer) {
       var aes = require('./aes');
       var Transform = require('cipher-base');
@@ -54952,7 +54952,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       exports.createCipheriv = createCipheriv;
       exports.createCipher = createCipher;
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 87, "./authCipher": 88, "./modes": 93, "./modes/cbc": 94, "./modes/cfb": 95, "./modes/cfb1": 96, "./modes/cfb8": 97, "./modes/ctr": 98, "./modes/ecb": 99, "./modes/ofb": 100, "./streamCipher": 101, "buffer": 115, "cipher-base": 116, "evp_bytestokey": 158, "inherits": 168 }], 92: [function (require, module, exports) {
+  }, { "./aes": 87, "./authCipher": 88, "./modes": 93, "./modes/cbc": 94, "./modes/cfb": 95, "./modes/cfb1": 96, "./modes/cfb8": 97, "./modes/ctr": 98, "./modes/ecb": 99, "./modes/ofb": 100, "./streamCipher": 101, "buffer": 115, "cipher-base": 116, "evp_bytestokey": 159, "inherits": 169 }], 92: [function (require, module, exports) {
     (function (Buffer) {
       var zeros = new Buffer(16);
       zeros.fill(0);
@@ -55407,7 +55407,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this._cipher.scrub();
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./aes": 87, "buffer": 115, "cipher-base": 116, "inherits": 168 }], 102: [function (require, module, exports) {
+  }, { "./aes": 87, "buffer": 115, "cipher-base": 116, "inherits": 169 }], 102: [function (require, module, exports) {
     var ebtk = require('evp_bytestokey');
     var aes = require('browserify-aes/browser');
     var DES = require('browserify-des');
@@ -55481,7 +55481,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return Object.keys(desModes).concat(aes.getCiphers());
     }
     exports.listCiphers = exports.getCiphers = getCiphers;
-  }, { "browserify-aes/browser": 89, "browserify-aes/modes": 93, "browserify-des": 103, "browserify-des/modes": 104, "evp_bytestokey": 158 }], 103: [function (require, module, exports) {
+  }, { "browserify-aes/browser": 89, "browserify-aes/modes": 93, "browserify-des": 103, "browserify-des/modes": 104, "evp_bytestokey": 159 }], 103: [function (require, module, exports) {
     (function (Buffer) {
       var CipherBase = require('cipher-base');
       var des = require('des.js');
@@ -55527,7 +55527,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new Buffer(this._des.final());
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "cipher-base": 116, "des.js": 125, "inherits": 168 }], 104: [function (require, module, exports) {
+  }, { "buffer": 115, "cipher-base": 116, "des.js": 125, "inherits": 169 }], 104: [function (require, module, exports) {
     exports['des-ecb'] = {
       key: 8,
       iv: 0
@@ -55594,7 +55594,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return r;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 84, "buffer": 115, "randombytes": 189 }], 106: [function (require, module, exports) {
+  }, { "bn.js": 84, "buffer": 115, "randombytes": 191 }], 106: [function (require, module, exports) {
     (function (Buffer) {
       var Sha3 = require('js-sha3');
 
@@ -55620,7 +55620,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         SHA3Hash: hash
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "js-sha3": 171 }], 107: [function (require, module, exports) {
+  }, { "buffer": 115, "js-sha3": 172 }], 107: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -55802,7 +55802,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         createVerify: createVerify
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./algos": 107, "./sign": 110, "./verify": 111, "buffer": 115, "create-hash": 120, "inherits": 168, "stream": 218 }], 109: [function (require, module, exports) {
+  }, { "./algos": 107, "./sign": 110, "./verify": 111, "buffer": 115, "create-hash": 120, "inherits": 169, "stream": 220 }], 109: [function (require, module, exports) {
     'use strict';
 
     exports['1.3.132.0.10'] = 'secp256k1';
@@ -55983,7 +55983,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       module.exports.getKey = getKey;
       module.exports.makeKey = makeKey;
     }).call(this, require("buffer").Buffer);
-  }, { "./curves": 109, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hmac": 123, "elliptic": 135, "parse-asn1": 178 }], 111: [function (require, module, exports) {
+  }, { "./curves": 109, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hmac": 123, "elliptic": 135, "parse-asn1": 180 }], 111: [function (require, module, exports) {
     (function (Buffer) {
       // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
       var curves = require('./curves');
@@ -56082,7 +56082,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = verify;
     }).call(this, require("buffer").Buffer);
-  }, { "./curves": 109, "bn.js": 84, "buffer": 115, "elliptic": 135, "parse-asn1": 178 }], 112: [function (require, module, exports) {
+  }, { "./curves": 109, "bn.js": 84, "buffer": 115, "elliptic": 135, "parse-asn1": 180 }], 112: [function (require, module, exports) {
     // Base58 encoding/decoding
     // Originally written by Mike Hearn for BitcoinJ
     // Copyright (c) 2011 Google Inc
@@ -58037,7 +58037,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return val !== val; // eslint-disable-line no-self-compare
       }
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, { "base64-js": 79, "ieee754": 166, "isarray": 170 }], 116: [function (require, module, exports) {
+  }, { "base64-js": 79, "ieee754": 167, "isarray": 171 }], 116: [function (require, module, exports) {
     (function (Buffer) {
       var Transform = require('stream').Transform;
       var inherits = require('inherits');
@@ -58130,7 +58130,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "inherits": 168, "stream": 218, "string_decoder": 220 }], 117: [function (require, module, exports) {
+  }, { "buffer": 115, "inherits": 169, "stream": 220, "string_decoder": 222 }], 117: [function (require, module, exports) {
     (function (Buffer) {
       var base58 = require('bs58');
       var createHash = require('create-hash');
@@ -58332,7 +58332,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return Object.prototype.toString.call(o);
       }
     }).call(this, { "isBuffer": require("../../is-buffer/index.js") });
-  }, { "../../is-buffer/index.js": 169 }], 119: [function (require, module, exports) {
+  }, { "../../is-buffer/index.js": 170 }], 119: [function (require, module, exports) {
     (function (Buffer) {
       var elliptic = require('elliptic');
       var BN = require('bn.js');
@@ -58513,7 +58513,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new Hash(sha(alg));
       };
     }).call(this, require("buffer").Buffer);
-  }, { "./md5": 122, "buffer": 115, "cipher-base": 116, "inherits": 168, "ripemd160": 201, "sha.js": 211 }], 121: [function (require, module, exports) {
+  }, { "./md5": 122, "buffer": 115, "cipher-base": 116, "inherits": 169, "ripemd160": 203, "sha.js": 213 }], 121: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -58769,7 +58769,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new Hmac(alg, key);
       };
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "create-hash/browser": 120, "inherits": 168, "stream": 218 }], 124: [function (require, module, exports) {
+  }, { "buffer": 115, "create-hash/browser": 120, "inherits": 169, "stream": 220 }], 124: [function (require, module, exports) {
     'use strict';
 
     exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes');
@@ -58809,7 +58809,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         throw new Error(['sorry, ' + name + ' is not implemented yet', 'we accept pull requests', 'https://github.com/crypto-browserify/crypto-browserify'].join('\n'));
       };
     });
-  }, { "browserify-cipher": 102, "browserify-sign": 108, "browserify-sign/algos": 107, "create-ecdh": 119, "create-hash": 120, "create-hmac": 123, "diffie-hellman": 131, "pbkdf2": 179, "public-encrypt": 183, "randombytes": 189 }], 125: [function (require, module, exports) {
+  }, { "browserify-cipher": 102, "browserify-sign": 108, "browserify-sign/algos": 107, "create-ecdh": 119, "create-hash": 120, "create-hmac": 123, "diffie-hellman": 131, "pbkdf2": 181, "public-encrypt": 185, "randombytes": 191 }], 125: [function (require, module, exports) {
     'use strict';
 
     exports.utils = require('./des/utils');
@@ -58884,7 +58884,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     };
-  }, { "inherits": 168, "minimalistic-assert": 174 }], 127: [function (require, module, exports) {
+  }, { "inherits": 169, "minimalistic-assert": 176 }], 127: [function (require, module, exports) {
     'use strict';
 
     var assert = require('minimalistic-assert');
@@ -59010,7 +59010,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return this._unpad(out);
     };
-  }, { "minimalistic-assert": 174 }], 128: [function (require, module, exports) {
+  }, { "minimalistic-assert": 176 }], 128: [function (require, module, exports) {
     'use strict';
 
     var assert = require('minimalistic-assert');
@@ -59146,7 +59146,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // Reverse Initial Permutation
       utils.rip(l, r, out, off);
     };
-  }, { "../des": 125, "inherits": 168, "minimalistic-assert": 174 }], 129: [function (require, module, exports) {
+  }, { "../des": 125, "inherits": 169, "minimalistic-assert": 176 }], 129: [function (require, module, exports) {
     'use strict';
 
     var assert = require('minimalistic-assert');
@@ -59194,7 +59194,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     EDE.prototype._pad = DES.prototype._pad;
     EDE.prototype._unpad = DES.prototype._unpad;
-  }, { "../des": 125, "inherits": 168, "minimalistic-assert": 174 }], 130: [function (require, module, exports) {
+  }, { "../des": 125, "inherits": 169, "minimalistic-assert": 176 }], 130: [function (require, module, exports) {
     'use strict';
 
     exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -59608,7 +59608,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./generatePrime": 133, "bn.js": 84, "buffer": 115, "miller-rabin": 173, "randombytes": 189 }], 133: [function (require, module, exports) {
+  }, { "./generatePrime": 133, "bn.js": 84, "buffer": 115, "miller-rabin": 175, "randombytes": 191 }], 133: [function (require, module, exports) {
     var randomBytes = require('randombytes');
     module.exports = findPrime;
     findPrime.simpleSieve = simpleSieve;
@@ -59706,7 +59706,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     }
-  }, { "bn.js": 84, "miller-rabin": 173, "randombytes": 189 }], 134: [function (require, module, exports) {
+  }, { "bn.js": 84, "miller-rabin": 175, "randombytes": 191 }], 134: [function (require, module, exports) {
     module.exports = {
       "modp1": {
         "gen": "02",
@@ -60474,7 +60474,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     // Compatibility with BaseCurve
     Point.prototype.toP = Point.prototype.normalize;
     Point.prototype.mixedAdd = Point.prototype.add;
-  }, { "../../elliptic": 135, "../curve": 138, "bn.js": 84, "inherits": 168 }], 138: [function (require, module, exports) {
+  }, { "../../elliptic": 135, "../curve": 138, "bn.js": 84, "inherits": 169 }], 138: [function (require, module, exports) {
     'use strict';
 
     var curve = exports;
@@ -60659,7 +60659,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return this.x.fromRed();
     };
-  }, { "../../elliptic": 135, "../curve": 138, "bn.js": 84, "inherits": 168 }], 140: [function (require, module, exports) {
+  }, { "../../elliptic": 135, "../curve": 138, "bn.js": 84, "inherits": 169 }], 140: [function (require, module, exports) {
     'use strict';
 
     var curve = require('../curve');
@@ -61523,7 +61523,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // XXX This code assumes that zero is always zero in red
       return this.z.cmpn(0) === 0;
     };
-  }, { "../../elliptic": 135, "../curve": 138, "bn.js": 84, "inherits": 168 }], 141: [function (require, module, exports) {
+  }, { "../../elliptic": 135, "../curve": 138, "bn.js": 84, "inherits": 169 }], 141: [function (require, module, exports) {
     'use strict';
 
     var curves = exports;
@@ -61680,7 +61680,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       gRed: false,
       g: ['79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798', '483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8', pre]
     });
-  }, { "../elliptic": 135, "./precomputed/secp256k1": 149, "hash.js": 159 }], 142: [function (require, module, exports) {
+  }, { "../elliptic": 135, "./precomputed/secp256k1": 149, "hash.js": 160 }], 142: [function (require, module, exports) {
     'use strict';
 
     var BN = require('bn.js');
@@ -62232,7 +62232,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     EDDSA.prototype.isPoint = function isPoint(val) {
       return val instanceof this.pointClass;
     };
-  }, { "../../elliptic": 135, "./key": 146, "./signature": 147, "hash.js": 159 }], 146: [function (require, module, exports) {
+  }, { "../../elliptic": 135, "./key": 146, "./signature": 147, "hash.js": 160 }], 146: [function (require, module, exports) {
     'use strict';
 
     var elliptic = require('../../elliptic');
@@ -62490,7 +62490,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.reseed++;
       return utils.encode(res, enc);
     };
-  }, { "../elliptic": 135, "hash.js": 159 }], 149: [function (require, module, exports) {
+  }, { "../elliptic": 135, "hash.js": 160 }], 149: [function (require, module, exports) {
     module.exports = {
       doubles: {
         step: 4,
@@ -63931,9 +63931,577 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       };
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 78, "bn.js": 84, "buffer": 115, "create-hash": 120, "keccakjs": 156, "rlp": 202, "secp256k1": 204 }], 156: [function (require, module, exports) {
+  }, { "assert": 78, "bn.js": 84, "buffer": 115, "create-hash": 120, "keccakjs": 156, "rlp": 204, "secp256k1": 206 }], 156: [function (require, module, exports) {
     module.exports = require('browserify-sha3').SHA3Hash;
   }, { "browserify-sha3": 106 }], 157: [function (require, module, exports) {
+    (function (Buffer) {
+      var SHA3 = require('keccakjs');
+      var secp256k1 = require('secp256k1');
+      var assert = require('assert');
+      var rlp = require('rlp');
+      var BN = require('bn.js');
+      var crypto = require('crypto');
+
+      /**
+       * the max integer that this VM can handle (a ```BN```)
+       * @var {BN} MAX_INTEGER
+       */
+      exports.MAX_INTEGER = new BN('ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 16);
+
+      /**
+       * 2^256 (a ```BN```)
+       * @var {BN} TWO_POW256
+       */
+      exports.TWO_POW256 = new BN('10000000000000000000000000000000000000000000000000000000000000000', 16);
+
+      /**
+       * SHA3-256 hash of null (a ```String```)
+       * @var {String} SHA3_NULL_S
+       */
+      exports.SHA3_NULL_S = 'c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470';
+
+      /**
+       * SHA3-256 hash of null (a ```Buffer```)
+       * @var {Buffer} SHA3_NULL
+       */
+      exports.SHA3_NULL = new Buffer(exports.SHA3_NULL_S, 'hex');
+
+      /**
+       * SHA3-256 of an RLP of an empty array (a ```String```)
+       * @var {String} SHA3_RLP_ARRAY_S
+       */
+      exports.SHA3_RLP_ARRAY_S = '1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347';
+
+      /**
+       * SHA3-256 of an RLP of an empty array (a ```Buffer```)
+       * @var {Buffer} SHA3_RLP_ARRAY
+       */
+      exports.SHA3_RLP_ARRAY = new Buffer(exports.SHA3_RLP_ARRAY_S, 'hex');
+
+      /**
+       * SHA3-256 hash of the RLP of null  (a ```String```)
+       * @var {String} SHA3_RLP_S
+       */
+      exports.SHA3_RLP_S = '56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421';
+
+      /**
+       * SHA3-256 hash of the RLP of null (a ```Buffer```)
+       * @var {Buffer} SHA3_RLP
+       */
+      exports.SHA3_RLP = new Buffer(exports.SHA3_RLP_S, 'hex');
+
+      /**
+       * [`BN`](https://github.com/indutny/bn.js)
+       * @var {Function}
+       */
+      exports.BN = BN;
+
+      /**
+       * [`rlp`](https://github.com/ethereumjs/rlp)
+       * @var {Function}
+       */
+      exports.rlp = rlp;
+
+      /**
+       * [`secp256k1`](https://github.com/cryptocoinjs/secp256k1-node/)
+       * @var {Object}
+       */
+      exports.secp256k1 = secp256k1;
+
+      /**
+       * Returns a buffer filled with 0s
+       * @method zeros
+       * @param {Number} bytes  the number of bytes the buffer should be
+       * @return {Buffer}
+       */
+      exports.zeros = function (bytes) {
+        var buf = new Buffer(bytes);
+        buf.fill(0);
+        return buf;
+      };
+
+      /**
+       * Left Pads an `Array` or `Buffer` with leading zeros till it has `length` bytes.
+       * Or it truncates the beginning if it exceeds.
+       * @method lsetLength
+       * @param {Buffer|Array} msg the value to pad
+       * @param {Number} length the number of bytes the output should be
+       * @param {Boolean} [right=false] whether to start padding form the left or right
+       * @return {Buffer|Array}
+       */
+      exports.setLengthLeft = exports.setLength = function (msg, length, right) {
+        var buf = exports.zeros(length);
+        msg = exports.toBuffer(msg);
+        if (right) {
+          if (msg.length < length) {
+            msg.copy(buf);
+            return buf;
+          }
+          return msg.slice(0, length);
+        } else {
+          if (msg.length < length) {
+            msg.copy(buf, length - msg.length);
+            return buf;
+          }
+          return msg.slice(-length);
+        }
+      };
+
+      /**
+       * Right Pads an `Array` or `Buffer` with leading zeros till it has `length` bytes.
+       * Or it truncates the beginning if it exceeds.
+       * @method lsetLength
+       * @param {Buffer|Array} msg the value to pad
+       * @param {Number} length the number of bytes the output should be
+       * @return {Buffer|Array}
+       */
+      exports.setLengthRight = function (msg, length) {
+        return exports.setLength(msg, length, true);
+      };
+
+      /**
+       * Trims leading zeros from a `Buffer` or an `Array`
+       * @method unpad
+       * @param {Buffer|Array|String} a
+       * @return {Buffer|Array|String}
+       */
+      exports.unpad = exports.stripZeros = function (a) {
+        a = exports.stripHexPrefix(a);
+        var first = a[0];
+        while (a.length > 0 && first.toString() === '0') {
+          a = a.slice(1);
+          first = a[0];
+        }
+        return a;
+      };
+      /**
+       * Attempts to turn a value into a `Buffer`. As input it supports `Buffer`, `String`, `Number`, null/undefined, `BN` and other objects with a `toArray()` method.
+       * @method toBuffer
+       * @param {*} v the value
+       */
+      exports.toBuffer = function (v) {
+        if (!Buffer.isBuffer(v)) {
+          if (Array.isArray(v)) {
+            v = new Buffer(v);
+          } else if (typeof v === 'string') {
+            if (exports.isHexPrefixed(v)) {
+              v = new Buffer(exports.padToEven(exports.stripHexPrefix(v)), 'hex');
+            } else {
+              v = new Buffer(v);
+            }
+          } else if (typeof v === 'number') {
+            v = exports.intToBuffer(v);
+          } else if (v === null || v === undefined) {
+            v = new Buffer([]);
+          } else if (v.toArray) {
+            // converts a BN to a Buffer
+            v = new Buffer(v.toArray());
+          } else {
+            throw new Error('invalid type');
+          }
+        }
+        return v;
+      };
+
+      /**
+       * Converts a `Number` into a hex `String`
+       * @method intToHex
+       * @param {Number} i
+       * @return {String}
+       */
+      exports.intToHex = function (i) {
+        assert(i % 1 === 0, 'number is not a integer');
+        assert(i >= 0, 'number must be positive');
+        var hex = i.toString(16);
+        if (hex.length % 2) {
+          hex = '0' + hex;
+        }
+
+        return '0x' + hex;
+      };
+
+      /**
+       * Converts an `Number` to a `Buffer`
+       * @method intToBuffer
+       * @param {Number} i
+       * @return {Buffer}
+       */
+      exports.intToBuffer = function (i) {
+        var hex = exports.intToHex(i);
+        return new Buffer(hex.slice(2), 'hex');
+      };
+
+      /**
+       * Converts a `Buffer` to a `Number`
+       * @method bufferToInt
+       * @param {Buffer} buf
+       * @return {Number}
+       */
+      exports.bufferToInt = function (buf) {
+        buf = exports.toBuffer(buf);
+        if (buf.length === 0) {
+          return 0;
+        }
+
+        return parseInt(buf.toString('hex'), 16);
+      };
+
+      /**
+       * Interprets a `Buffer` as a signed integer and returns a `BN`. Assumes 256-bit numbers.
+       * @method fromSigned
+       * @param {Buffer} num
+       * @return {BN}
+       */
+      exports.fromSigned = function (num) {
+        return new BN(num).fromTwos(256);
+      };
+
+      /**
+       * Converts a `BN` to an unsigned integer and returns it as a `Buffer`. Assumes 256-bit numbers.
+       * @method toUnsigned
+       * @param {BN} num
+       * @return {Buffer}
+       */
+      exports.toUnsigned = function (num) {
+        return new Buffer(num.toTwos(256).toArray());
+      };
+
+      /**
+       * Creates SHA-3 hash of the input
+       * @method sha3
+       * @param {Buffer|Array|String|Number} a the input data
+       * @param {Number} [bytes=256] the SHA width
+       * @return {Buffer}
+       */
+      exports.sha3 = function (a, bytes) {
+        a = exports.toBuffer(a);
+        if (!bytes) bytes = 256;
+
+        var h = new SHA3(bytes);
+        if (a) {
+          h.update(a);
+        }
+        return new Buffer(h.digest('hex'), 'hex');
+      };
+
+      /**
+       * Creates SHA256 hash of the input
+       * @method sha256
+       * @param {Buffer|Array|String|Number} a the input data
+       * @return {Buffer}
+       */
+      exports.sha256 = function (a) {
+        a = exports.toBuffer(a);
+        return crypto.createHash('SHA256').update(a).digest();
+      };
+
+      /**
+       * Creates RIPEMD160 hash of the input
+       * @method ripemd160
+       * @param {Buffer|Array|String|Number} a the input data
+       * @param {Boolean} padded whether it should be padded to 256 bits or not
+       * @return {Buffer}
+       */
+      exports.ripemd160 = function (a, padded) {
+        a = exports.toBuffer(a);
+        var hash = crypto.createHash('rmd160').update(a).digest();
+        if (padded === true) {
+          return exports.setLength(hash, 32);
+        } else {
+          return hash;
+        }
+      };
+
+      /**
+       * Creates SHA-3 hash of the RLP encoded version of the input
+       * @method rlphash
+       * @param {Buffer|Array|String|Number} a the input data
+       * @return {Buffer}
+       */
+      exports.rlphash = function (a) {
+        return exports.sha3(rlp.encode(a));
+      };
+
+      /**
+       * Returns the ethereum address of a given public key.
+       * Accepts "Ethereum public keys" and SEC1 encoded keys.
+       * @method publicToAddress
+       * @param {Buffer} pubKey The two points of an uncompressed key, unless sanitize is enabled
+       * @param {Boolean} sanitize Accept public keys in other formats
+       * @return {Buffer}
+       */
+      exports.pubToAddress = exports.publicToAddress = function (pubKey, sanitize) {
+        pubKey = exports.toBuffer(pubKey);
+        if (sanitize && pubKey.length !== 64) {
+          pubKey = secp256k1.publicKeyConvert(pubKey, false).slice(1);
+        }
+        assert(pubKey.length === 64);
+        // Only take the lower 160bits of the hash
+        return exports.sha3(pubKey).slice(-20);
+      };
+
+      /**
+       * Returns the ethereum public key of a given private key
+       * @method privateToPublic
+       * @param {Buffer} privateKey A private key must be 256 bits wide
+       * @return {Buffer}
+       */
+      var privateToPublic = exports.privateToPublic = function (privateKey) {
+        privateKey = exports.toBuffer(privateKey);
+        // skip the type flag and use the X, Y points
+        return secp256k1.publicKeyConvert(secp256k1.publicKeyCreate(privateKey), false).slice(1);
+      };
+
+      /**
+       * Returns the ethereum address of a given private key
+       * @method privateToAddress
+       * @param {Buffer} privateKey A private key must be 256 bits wide
+       * @return {Buffer}
+       */
+      exports.privateToAddress = function (privateKey) {
+        return exports.publicToAddress(privateToPublic(privateKey));
+      };
+
+      /**
+       * Generates an address of a newly created contract
+       * @method generateAddress
+       * @param {Buffer} from the address which is creating this new address
+       * @param {Buffer} nonce the nonce of the from account
+       * @return {Buffer}
+       */
+      exports.generateAddress = function (from, nonce) {
+        from = exports.toBuffer(from);
+        nonce = new BN(nonce);
+
+        if (nonce.isZero()) {
+          // in RLP we want to encode null in the case of zero nonce
+          // read the RLP documentation for an answer if you dare
+          nonce = null;
+        } else {
+          nonce = new Buffer(nonce.toArray());
+        }
+
+        // Only take the lower 160bits of the hash
+        return exports.rlphash([from, nonce]).slice(-20);
+      };
+
+      /**
+       * Returns true if the supplied address belongs to a precompiled account
+       * @method isPrecompiled
+       * @param {Buffer|String} address
+       * @return {Boolean}
+       */
+      exports.isPrecompiled = function (address) {
+        var a = exports.unpad(address);
+        return a.length === 1 && a[0] > 0 && a[0] < 5;
+      };
+
+      /**
+       * Returns a `Boolean` on whether or not the a `String` starts with "0x"
+       * @method isHexPrefixed
+       * @param {String} str
+       * @return {Boolean}
+       */
+      exports.isHexPrefixed = function (str) {
+        return str.slice(0, 2) === '0x';
+      };
+
+      /**
+       * Removes "0x" from a given `String`
+       * @method stripHexPrefix
+       * @param {String} str
+       * @return {String}
+       */
+      exports.stripHexPrefix = function (str) {
+        if (typeof str !== 'string') {
+          return str;
+        }
+        return exports.isHexPrefixed(str) ? str.slice(2) : str;
+      };
+
+      /**
+       * Adds "0x" to a given `String` if it does not already start with "0x"
+       * @method addHexPrefix
+       * @param {String} str
+       * @return {String}
+       */
+      exports.addHexPrefix = function (str) {
+        if (typeof str !== 'string') {
+          return str;
+        }
+
+        return exports.isHexPrefixed(str) ? str : '0x' + str;
+      };
+
+      /**
+       * Pads a `String` to have an even length
+       * @method padToEven
+       * @param {String} a
+       * @return {String}
+       */
+      exports.padToEven = function (a) {
+        if (a.length % 2) a = '0' + a;
+        return a;
+      };
+
+      /**
+       * ECDSA sign
+       * @method ecsign
+       * @param {Buffer} msgHash
+       * @param {Buffer} privateKey
+       * @return {Object}
+       */
+      exports.ecsign = function (msgHash, privateKey) {
+        var sig = secp256k1.sign(msgHash, privateKey);
+
+        var ret = {};
+        ret.r = sig.signature.slice(0, 32);
+        ret.s = sig.signature.slice(32, 64);
+        ret.v = sig.recovery + 27;
+        return ret;
+      };
+
+      /**
+       * ECDSA public key recovery from signature
+       * @method ecrecover
+       * @param {Buffer} msgHash
+       * @param {Buffer} v
+       * @param {Buffer} r
+       * @param {Buffer} s
+       * @return {Buffer} publicKey
+       */
+      exports.ecrecover = function (msgHash, v, r, s) {
+        var signature = Buffer.concat([exports.setLength(r, 32), exports.setLength(s, 32)], 64);
+        var recovery = exports.bufferToInt(v) - 27;
+        var senderPubKey = secp256k1.recover(msgHash, signature, recovery);
+        return secp256k1.publicKeyConvert(senderPubKey, false).slice(1);
+      };
+
+      /**
+       * Converts a `Buffer` or `Array` to JSON
+       * @method BAToJSON
+       * @param {Buffer|Array} ba
+       * @return {Array|String|null}
+       */
+      exports.baToJSON = function (ba) {
+        if (Buffer.isBuffer(ba)) {
+          return '0x' + ba.toString('hex');
+        } else if (ba instanceof Array) {
+          var array = [];
+          for (var i = 0; i < ba.length; i++) {
+            array.push(exports.baToJSON(ba[i]));
+          }
+          return array;
+        }
+      };
+
+      /**
+       * Defines properties on a `Object`. It make the assumption that underlying data is binary.
+       * @method defineProperties
+       * @param {Object} self the `Object` to define properties on
+       * @param {Array} fields an array fields to define. Fields can contain:
+       * * `name` - the name of the properties
+       * * `length` - the number of bytes the field can have
+       * * `allowLess` - if the field can be less than the length
+       * * `allowEmpty`
+       * @param {*} data data to be validated against the definitions
+       */
+      exports.defineProperties = function (self, fields, data) {
+        self.raw = [];
+        self._fields = [];
+
+        // attach the `toJSON`
+        self.toJSON = function (label) {
+          if (label) {
+            var obj = {};
+            self._fields.forEach(function (field) {
+              obj[field] = '0x' + self[field].toString('hex');
+            });
+            return obj;
+          }
+          return exports.baToJSON(this.raw);
+        };
+
+        self.serialize = function serialize() {
+          return rlp.encode(self.raw);
+        };
+
+        fields.forEach(function (field, i) {
+          self._fields.push(field.name);
+          function getter() {
+            return self.raw[i];
+          }
+          function setter(v) {
+            v = exports.toBuffer(v);
+
+            if (v.toString('hex') === '00' && !field.allowZero) {
+              v = new Buffer([]);
+            }
+
+            if (field.allowLess && field.length) {
+              v = exports.stripZeros(v);
+              assert(field.length >= v.length, 'The field ' + field.name + ' must not have more ' + field.length + ' bytes');
+            } else if (!(field.allowZero && v.length === 0) && field.length) {
+              assert(field.length === v.length, 'The field ' + field.name + ' must have byte length of ' + field.length);
+            }
+
+            self.raw[i] = v;
+          }
+
+          Object.defineProperty(self, field.name, {
+            enumerable: true,
+            configurable: true,
+            get: getter,
+            set: setter
+          });
+
+          if (field.default) {
+            self[field.name] = field.default;
+          }
+
+          // attach alias
+          if (field.alias) {
+            Object.defineProperty(self, field.alias, {
+              enumerable: false,
+              configurable: true,
+              set: setter,
+              get: getter
+            });
+          }
+        });
+
+        // if the constuctor is passed data
+        if (data) {
+          if (typeof data === 'string') {
+            data = new Buffer(exports.stripHexPrefix(data), 'hex');
+          }
+
+          if (Buffer.isBuffer(data)) {
+            data = rlp.decode(data);
+          }
+
+          if (Array.isArray(data)) {
+            if (data.length > self._fields.length) {
+              throw new Error('wrong number of fields in data');
+            }
+
+            // make sure all the items are buffers
+            data.forEach(function (d, i) {
+              self[self._fields[i]] = exports.toBuffer(d);
+            });
+          } else if ((typeof data === "undefined" ? "undefined" : _typeof(data)) === 'object') {
+            for (var prop in data) {
+              if (self._fields.indexOf(prop) !== -1) {
+                self[prop] = data[prop];
+              }
+            }
+          } else {
+            throw new Error('invalid data');
+          }
+        }
+      };
+    }).call(this, require("buffer").Buffer);
+  }, { "assert": 78, "bn.js": 84, "buffer": 115, "crypto": 124, "keccakjs": 173, "rlp": 204, "secp256k1": 206 }], 158: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -64203,7 +64771,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     function isUndefined(arg) {
       return arg === void 0;
     }
-  }, {}], 158: [function (require, module, exports) {
+  }, {}], 159: [function (require, module, exports) {
     (function (Buffer) {
       var md5 = require('create-hash/md5');
       module.exports = EVP_BytesToKey;
@@ -64274,7 +64842,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         };
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "create-hash/md5": 122 }], 159: [function (require, module, exports) {
+  }, { "buffer": 115, "create-hash/md5": 122 }], 160: [function (require, module, exports) {
     var hash = exports;
 
     hash.utils = require('./hash/utils');
@@ -64290,7 +64858,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     hash.sha384 = hash.sha.sha384;
     hash.sha512 = hash.sha.sha512;
     hash.ripemd160 = hash.ripemd.ripemd160;
-  }, { "./hash/common": 160, "./hash/hmac": 161, "./hash/ripemd": 162, "./hash/sha": 163, "./hash/utils": 164 }], 160: [function (require, module, exports) {
+  }, { "./hash/common": 161, "./hash/hmac": 162, "./hash/ripemd": 163, "./hash/sha": 164, "./hash/utils": 165 }], 161: [function (require, module, exports) {
     var hash = require('../hash');
     var utils = hash.utils;
     var assert = utils.assert;
@@ -64378,7 +64946,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return res;
     };
-  }, { "../hash": 159 }], 161: [function (require, module, exports) {
+  }, { "../hash": 160 }], 162: [function (require, module, exports) {
     var hmac = exports;
 
     var hash = require('../hash');
@@ -64424,7 +64992,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.outer.update(this.inner.digest());
       return this.outer.digest(enc);
     };
-  }, { "../hash": 159 }], 162: [function (require, module, exports) {
+  }, { "../hash": 160 }], 163: [function (require, module, exports) {
     var hash = require('../hash');
     var utils = hash.utils;
 
@@ -64506,7 +65074,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var s = [11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8, 7, 6, 8, 13, 11, 9, 7, 15, 7, 12, 15, 9, 11, 7, 13, 12, 11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5, 11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12, 9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6];
 
     var sh = [8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6, 9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11, 9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5, 15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8, 8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11];
-  }, { "../hash": 159 }], 163: [function (require, module, exports) {
+  }, { "../hash": 160 }], 164: [function (require, module, exports) {
     var hash = require('../hash');
     var utils = hash.utils;
     var assert = utils.assert;
@@ -64941,7 +65509,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (r < 0) r += 0x100000000;
       return r;
     }
-  }, { "../hash": 159 }], 164: [function (require, module, exports) {
+  }, { "../hash": 160 }], 165: [function (require, module, exports) {
     var utils = exports;
     var inherits = require('inherits');
 
@@ -65169,7 +65737,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return r >>> 0;
     };
     exports.shr64_lo = shr64_lo;
-  }, { "inherits": 168 }], 165: [function (require, module, exports) {
+  }, { "inherits": 169 }], 166: [function (require, module, exports) {
     (function (Buffer) {
       var assert = require('assert');
       var crypto = require('crypto');
@@ -65407,7 +65975,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       HDKey.HARDENED_OFFSET = HARDENED_OFFSET;
       module.exports = HDKey;
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 78, "buffer": 115, "coinstring": 117, "crypto": 124, "secp256k1": 204 }], 166: [function (require, module, exports) {
+  }, { "assert": 78, "buffer": 115, "coinstring": 117, "crypto": 124, "secp256k1": 206 }], 167: [function (require, module, exports) {
     exports.read = function (buffer, offset, isLE, mLen, nBytes) {
       var e, m;
       var eLen = nBytes * 8 - mLen - 1;
@@ -65492,7 +66060,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       buffer[offset + i - d] |= s * 128;
     };
-  }, {}], 167: [function (require, module, exports) {
+  }, {}], 168: [function (require, module, exports) {
 
     var indexOf = [].indexOf;
 
@@ -65503,7 +66071,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return -1;
     };
-  }, {}], 168: [function (require, module, exports) {
+  }, {}], 169: [function (require, module, exports) {
     if (typeof Object.create === 'function') {
       // implementation from standard node.js 'util' module
       module.exports = function inherits(ctor, superCtor) {
@@ -65527,7 +66095,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         ctor.prototype.constructor = ctor;
       };
     }
-  }, {}], 169: [function (require, module, exports) {
+  }, {}], 170: [function (require, module, exports) {
     /*!
      * Determine if an object is a Buffer
      *
@@ -65549,13 +66117,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     function isSlowBuffer(obj) {
       return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0));
     }
-  }, {}], 170: [function (require, module, exports) {
+  }, {}], 171: [function (require, module, exports) {
     var toString = {}.toString;
 
     module.exports = Array.isArray || function (arr) {
       return toString.call(arr) == '[object Array]';
     };
-  }, {}], 171: [function (require, module, exports) {
+  }, {}], 172: [function (require, module, exports) {
     (function (global) {
       /*
        * js-sha3 v0.3.1
@@ -65989,7 +66557,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       })(this);
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 172: [function (require, module, exports) {
+  }, {}], 173: [function (require, module, exports) {
+    module.exports = require('sha3').SHA3Hash;
+  }, { "sha3": 106 }], 174: [function (require, module, exports) {
     (function (global) {
       /**
        * marked - a markdown parser
@@ -67172,7 +67742,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return this || (typeof window !== 'undefined' ? window : global);
       }());
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 173: [function (require, module, exports) {
+  }, {}], 175: [function (require, module, exports) {
     var bn = require('bn.js');
     var brorand = require('brorand');
 
@@ -67274,7 +67844,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return false;
     };
-  }, { "bn.js": 84, "brorand": 85 }], 174: [function (require, module, exports) {
+  }, { "bn.js": 84, "brorand": 85 }], 176: [function (require, module, exports) {
     module.exports = assert;
 
     function assert(val, msg) {
@@ -67284,7 +67854,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     assert.equal = function assertEqual(l, r, msg) {
       if (l != r) throw new Error(msg || 'Assertion failed: ' + l + ' != ' + r);
     };
-  }, {}], 175: [function (require, module, exports) {
+  }, {}], 177: [function (require, module, exports) {
     module.exports = { "2.16.840.1.101.3.4.1.1": "aes-128-ecb",
       "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
       "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -67298,7 +67868,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
       "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
     };
-  }, {}], 176: [function (require, module, exports) {
+  }, {}], 178: [function (require, module, exports) {
     // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
     // Fedor, you are amazing.
 
@@ -67354,7 +67924,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     exports.signature = asn1.define('signature', function () {
       this.seq().obj(this.key('r').int(), this.key('s').int());
     });
-  }, { "asn1.js": 64 }], 177: [function (require, module, exports) {
+  }, { "asn1.js": 64 }], 179: [function (require, module, exports) {
     (function (Buffer) {
       // adapted from https://github.com/apatil/pemstrip
       var findProc = /Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\r?\n\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n/m;
@@ -67387,7 +67957,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         };
       };
     }).call(this, require("buffer").Buffer);
-  }, { "browserify-aes": 89, "buffer": 115, "evp_bytestokey": 158 }], 178: [function (require, module, exports) {
+  }, { "browserify-aes": 89, "buffer": 115, "evp_bytestokey": 159 }], 180: [function (require, module, exports) {
     (function (Buffer) {
       var asn1 = require('./asn1');
       var aesid = require('./aesid.json');
@@ -67494,7 +68064,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return Buffer.concat(out);
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./aesid.json": 175, "./asn1": 176, "./fixProc": 177, "browserify-aes": 89, "buffer": 115, "pbkdf2": 179 }], 179: [function (require, module, exports) {
+  }, { "./aesid.json": 177, "./asn1": 178, "./fixProc": 179, "browserify-aes": 89, "buffer": 115, "pbkdf2": 181 }], 181: [function (require, module, exports) {
     (function (process, Buffer) {
       var createHmac = require('create-hmac');
       var checkParameters = require('./precondition');
@@ -67567,7 +68137,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return DK;
       };
     }).call(this, require('_process'), require("buffer").Buffer);
-  }, { "./precondition": 180, "_process": 182, "buffer": 115, "create-hmac": 123 }], 180: [function (require, module, exports) {
+  }, { "./precondition": 182, "_process": 184, "buffer": 115, "create-hmac": 123 }], 182: [function (require, module, exports) {
     var MAX_ALLOC = Math.pow(2, 30) - 1; // default in iojs
     module.exports = function (iterations, keylen) {
       if (typeof iterations !== 'number') {
@@ -67587,7 +68157,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         throw new TypeError('Bad key length');
       }
     };
-  }, {}], 181: [function (require, module, exports) {
+  }, {}], 183: [function (require, module, exports) {
     (function (process) {
       'use strict';
 
@@ -67631,7 +68201,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     }).call(this, require('_process'));
-  }, { "_process": 182 }], 182: [function (require, module, exports) {
+  }, { "_process": 184 }], 184: [function (require, module, exports) {
     // shim for using process in browser
     var process = module.exports = {};
 
@@ -67811,7 +68381,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     process.umask = function () {
       return 0;
     };
-  }, {}], 183: [function (require, module, exports) {
+  }, {}], 185: [function (require, module, exports) {
     exports.publicEncrypt = require('./publicEncrypt');
     exports.privateDecrypt = require('./privateDecrypt');
 
@@ -67822,7 +68392,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     exports.publicDecrypt = function publicDecrypt(key, buf) {
       return exports.privateDecrypt(key, buf, true);
     };
-  }, { "./privateDecrypt": 185, "./publicEncrypt": 186 }], 184: [function (require, module, exports) {
+  }, { "./privateDecrypt": 187, "./publicEncrypt": 188 }], 186: [function (require, module, exports) {
     (function (Buffer) {
       var createHash = require('create-hash');
       module.exports = function (seed, len) {
@@ -67842,7 +68412,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "create-hash": 120 }], 185: [function (require, module, exports) {
+  }, { "buffer": 115, "create-hash": 120 }], 187: [function (require, module, exports) {
     (function (Buffer) {
       var parseKeys = require('parse-asn1');
       var mgf = require('./mgf');
@@ -67953,7 +68523,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return dif;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./mgf": 184, "./withPublic": 187, "./xor": 188, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hash": 120, "parse-asn1": 178 }], 186: [function (require, module, exports) {
+  }, { "./mgf": 186, "./withPublic": 189, "./xor": 190, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hash": 120, "parse-asn1": 180 }], 188: [function (require, module, exports) {
     (function (Buffer) {
       var parseKeys = require('parse-asn1');
       var randomBytes = require('randombytes');
@@ -68051,7 +68621,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return out;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "./mgf": 184, "./withPublic": 187, "./xor": 188, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hash": 120, "parse-asn1": 178, "randombytes": 189 }], 187: [function (require, module, exports) {
+  }, { "./mgf": 186, "./withPublic": 189, "./xor": 190, "bn.js": 84, "browserify-rsa": 105, "buffer": 115, "create-hash": 120, "parse-asn1": 180, "randombytes": 191 }], 189: [function (require, module, exports) {
     (function (Buffer) {
       var bn = require('bn.js');
       function withPublic(paddedMsg, key) {
@@ -68060,7 +68630,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = withPublic;
     }).call(this, require("buffer").Buffer);
-  }, { "bn.js": 84, "buffer": 115 }], 188: [function (require, module, exports) {
+  }, { "bn.js": 84, "buffer": 115 }], 190: [function (require, module, exports) {
     module.exports = function xor(a, b) {
       var len = a.length;
       var i = -1;
@@ -68069,7 +68639,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return a;
     };
-  }, {}], 189: [function (require, module, exports) {
+  }, {}], 191: [function (require, module, exports) {
     (function (process, global, Buffer) {
       'use strict';
 
@@ -68109,9 +68679,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return bytes;
       }
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer);
-  }, { "_process": 182, "buffer": 115 }], 190: [function (require, module, exports) {
+  }, { "_process": 184, "buffer": 115 }], 192: [function (require, module, exports) {
     module.exports = require("./lib/_stream_duplex.js");
-  }, { "./lib/_stream_duplex.js": 191 }], 191: [function (require, module, exports) {
+  }, { "./lib/_stream_duplex.js": 193 }], 193: [function (require, module, exports) {
     // a duplex stream is just a stream that is both readable and writable.
     // Since JS doesn't have multiple prototypal inheritance, this class
     // prototypally inherits from Readable, and then parasitically from
@@ -68187,7 +68757,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         f(xs[i], i);
       }
     }
-  }, { "./_stream_readable": 193, "./_stream_writable": 195, "core-util-is": 118, "inherits": 168, "process-nextick-args": 181 }], 192: [function (require, module, exports) {
+  }, { "./_stream_readable": 195, "./_stream_writable": 197, "core-util-is": 118, "inherits": 169, "process-nextick-args": 183 }], 194: [function (require, module, exports) {
     // a passthrough stream.
     // basically just the most minimal sort of Transform stream.
     // Every written chunk gets output as-is.
@@ -68214,7 +68784,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     PassThrough.prototype._transform = function (chunk, encoding, cb) {
       cb(null, chunk);
     };
-  }, { "./_stream_transform": 194, "core-util-is": 118, "inherits": 168 }], 193: [function (require, module, exports) {
+  }, { "./_stream_transform": 196, "core-util-is": 118, "inherits": 169 }], 195: [function (require, module, exports) {
     (function (process) {
       'use strict';
 
@@ -69154,7 +69724,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return -1;
       }
     }).call(this, require('_process'));
-  }, { "./_stream_duplex": 191, "./internal/streams/BufferList": 196, "_process": 182, "buffer": 115, "buffer-shims": 113, "core-util-is": 118, "events": 157, "inherits": 168, "isarray": 170, "process-nextick-args": 181, "string_decoder/": 220, "util": 86 }], 194: [function (require, module, exports) {
+  }, { "./_stream_duplex": 193, "./internal/streams/BufferList": 198, "_process": 184, "buffer": 115, "buffer-shims": 113, "core-util-is": 118, "events": 158, "inherits": 169, "isarray": 171, "process-nextick-args": 183, "string_decoder/": 222, "util": 86 }], 196: [function (require, module, exports) {
     // a transform stream is a readable/writable stream where you do
     // something with the data.  Sometimes it's called a "filter",
     // but that's not a great name for it, since that implies a thing where
@@ -69335,7 +69905,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return stream.push(null);
     }
-  }, { "./_stream_duplex": 191, "core-util-is": 118, "inherits": 168 }], 195: [function (require, module, exports) {
+  }, { "./_stream_duplex": 193, "core-util-is": 118, "inherits": 169 }], 197: [function (require, module, exports) {
     (function (process) {
       // A bit simpler than readable streams.
       // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -69864,7 +70434,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         };
       }
     }).call(this, require('_process'));
-  }, { "./_stream_duplex": 191, "_process": 182, "buffer": 115, "buffer-shims": 113, "core-util-is": 118, "events": 157, "inherits": 168, "process-nextick-args": 181, "util-deprecate": 222 }], 196: [function (require, module, exports) {
+  }, { "./_stream_duplex": 193, "_process": 184, "buffer": 115, "buffer-shims": 113, "core-util-is": 118, "events": 158, "inherits": 169, "process-nextick-args": 183, "util-deprecate": 224 }], 198: [function (require, module, exports) {
     'use strict';
 
     var Buffer = require('buffer').Buffer;
@@ -69929,9 +70499,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return ret;
     };
-  }, { "buffer": 115, "buffer-shims": 113 }], 197: [function (require, module, exports) {
+  }, { "buffer": 115, "buffer-shims": 113 }], 199: [function (require, module, exports) {
     module.exports = require("./lib/_stream_passthrough.js");
-  }, { "./lib/_stream_passthrough.js": 192 }], 198: [function (require, module, exports) {
+  }, { "./lib/_stream_passthrough.js": 194 }], 200: [function (require, module, exports) {
     (function (process) {
       var Stream = function () {
         try {
@@ -69950,11 +70520,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         module.exports = Stream;
       }
     }).call(this, require('_process'));
-  }, { "./lib/_stream_duplex.js": 191, "./lib/_stream_passthrough.js": 192, "./lib/_stream_readable.js": 193, "./lib/_stream_transform.js": 194, "./lib/_stream_writable.js": 195, "_process": 182 }], 199: [function (require, module, exports) {
+  }, { "./lib/_stream_duplex.js": 193, "./lib/_stream_passthrough.js": 194, "./lib/_stream_readable.js": 195, "./lib/_stream_transform.js": 196, "./lib/_stream_writable.js": 197, "_process": 184 }], 201: [function (require, module, exports) {
     module.exports = require("./lib/_stream_transform.js");
-  }, { "./lib/_stream_transform.js": 194 }], 200: [function (require, module, exports) {
+  }, { "./lib/_stream_transform.js": 196 }], 202: [function (require, module, exports) {
     module.exports = require("./lib/_stream_writable.js");
-  }, { "./lib/_stream_writable.js": 195 }], 201: [function (require, module, exports) {
+  }, { "./lib/_stream_writable.js": 197 }], 203: [function (require, module, exports) {
     (function (Buffer) {
       /*
       CryptoJS v3.1.2
@@ -70138,7 +70708,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = ripemd160;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 202: [function (require, module, exports) {
+  }, { "buffer": 115 }], 204: [function (require, module, exports) {
     (function (Buffer) {
       var assert = require('assert');
       /**
@@ -70370,7 +70940,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return v;
       }
     }).call(this, require("buffer").Buffer);
-  }, { "assert": 78, "buffer": 115 }], 203: [function (require, module, exports) {
+  }, { "assert": 78, "buffer": 115 }], 205: [function (require, module, exports) {
     (function (Buffer) {
       var crypto = require('crypto');
       /* eslint-disable camelcase */
@@ -70553,11 +71123,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = scrypt;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115, "crypto": 124 }], 204: [function (require, module, exports) {
+  }, { "buffer": 115, "crypto": 124 }], 206: [function (require, module, exports) {
     'use strict';
 
     module.exports = require('./lib')(require('./lib/elliptic'));
-  }, { "./lib": 208, "./lib/elliptic": 207 }], 205: [function (require, module, exports) {
+  }, { "./lib": 210, "./lib/elliptic": 209 }], 207: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -70605,7 +71175,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         if (number <= x || number >= y) throw RangeError(message);
       };
     }).call(this, { "isBuffer": require("../../is-buffer/index.js") });
-  }, { "../../is-buffer/index.js": 169 }], 206: [function (require, module, exports) {
+  }, { "../../is-buffer/index.js": 170 }], 208: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -70773,7 +71343,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return { r: r, s: s };
       };
     }).call(this, require("buffer").Buffer);
-  }, { "bip66": 83, "buffer": 115 }], 207: [function (require, module, exports) {
+  }, { "bip66": 83, "buffer": 115 }], 209: [function (require, module, exports) {
     (function (Buffer) {
       'use strict';
 
@@ -71019,7 +71589,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return new Buffer(pair.pub.mul(scalar).encode(true, compressed));
       };
     }).call(this, require("buffer").Buffer);
-  }, { "../messages.json": 209, "bn.js": 84, "buffer": 115, "create-hash": 120, "elliptic": 135 }], 208: [function (require, module, exports) {
+  }, { "../messages.json": 211, "bn.js": 84, "buffer": 115, "create-hash": 120, "elliptic": 135 }], 210: [function (require, module, exports) {
     'use strict';
 
     var assert = require('./assert');
@@ -71252,7 +71822,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       };
     };
-  }, { "./assert": 205, "./der": 206, "./messages.json": 209 }], 209: [function (require, module, exports) {
+  }, { "./assert": 207, "./der": 208, "./messages.json": 211 }], 211: [function (require, module, exports) {
     module.exports = {
       "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
       "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -71289,7 +71859,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "TWEAK_TYPE_INVALID": "tweak should be a Buffer",
       "TWEAK_LENGTH_INVALID": "tweak length is invalid"
     };
-  }, {}], 210: [function (require, module, exports) {
+  }, {}], 212: [function (require, module, exports) {
     (function (Buffer) {
       // prototype class for hash functions
       function Hash(blockSize, finalSize) {
@@ -71361,7 +71931,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Hash;
     }).call(this, require("buffer").Buffer);
-  }, { "buffer": 115 }], 211: [function (require, module, exports) {
+  }, { "buffer": 115 }], 213: [function (require, module, exports) {
     var exports = module.exports = function SHA(algorithm) {
       algorithm = algorithm.toLowerCase();
 
@@ -71377,7 +71947,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     exports.sha256 = require('./sha256');
     exports.sha384 = require('./sha384');
     exports.sha512 = require('./sha512');
-  }, { "./sha": 212, "./sha1": 213, "./sha224": 214, "./sha256": 215, "./sha384": 216, "./sha512": 217 }], 212: [function (require, module, exports) {
+  }, { "./sha": 214, "./sha1": 215, "./sha224": 216, "./sha256": 217, "./sha384": 218, "./sha512": 219 }], 214: [function (require, module, exports) {
     (function (Buffer) {
       /*
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -71472,7 +72042,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 168 }], 213: [function (require, module, exports) {
+  }, { "./hash": 212, "buffer": 115, "inherits": 169 }], 215: [function (require, module, exports) {
     (function (Buffer) {
       /*
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -71572,7 +72142,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha1;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 168 }], 214: [function (require, module, exports) {
+  }, { "./hash": 212, "buffer": 115, "inherits": 169 }], 216: [function (require, module, exports) {
     (function (Buffer) {
       /**
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -71627,7 +72197,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha224;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "./sha256": 215, "buffer": 115, "inherits": 168 }], 215: [function (require, module, exports) {
+  }, { "./hash": 212, "./sha256": 217, "buffer": 115, "inherits": 169 }], 217: [function (require, module, exports) {
     (function (Buffer) {
       /**
        * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -71748,7 +72318,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha256;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 168 }], 216: [function (require, module, exports) {
+  }, { "./hash": 212, "buffer": 115, "inherits": 169 }], 218: [function (require, module, exports) {
     (function (Buffer) {
       var inherits = require('inherits');
       var SHA512 = require('./sha512');
@@ -71807,7 +72377,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha384;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "./sha512": 217, "buffer": 115, "inherits": 168 }], 217: [function (require, module, exports) {
+  }, { "./hash": 212, "./sha512": 219, "buffer": 115, "inherits": 169 }], 219: [function (require, module, exports) {
     (function (Buffer) {
       var inherits = require('inherits');
       var Hash = require('./hash');
@@ -72028,7 +72598,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = Sha512;
     }).call(this, require("buffer").Buffer);
-  }, { "./hash": 210, "buffer": 115, "inherits": 168 }], 218: [function (require, module, exports) {
+  }, { "./hash": 212, "buffer": 115, "inherits": 169 }], 220: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -72153,7 +72723,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // Allow for unix-like usage: A.pipe(B).pipe(C)
       return dest;
     };
-  }, { "events": 157, "inherits": 168, "readable-stream/duplex.js": 190, "readable-stream/passthrough.js": 197, "readable-stream/readable.js": 198, "readable-stream/transform.js": 199, "readable-stream/writable.js": 200 }], 219: [function (require, module, exports) {
+  }, { "events": 158, "inherits": 169, "readable-stream/duplex.js": 192, "readable-stream/passthrough.js": 199, "readable-stream/readable.js": 200, "readable-stream/transform.js": 201, "readable-stream/writable.js": 202 }], 221: [function (require, module, exports) {
     // Generated by CoffeeScript 1.8.0
     (function () {
       var ValueError,
@@ -72268,7 +72838,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         window.format = format;
       }
     }).call(this);
-  }, {}], 220: [function (require, module, exports) {
+  }, {}], 222: [function (require, module, exports) {
     // Copyright Joyent, Inc. and other Node contributors.
     //
     // Permission is hereby granted, free of charge, to any person obtaining a
@@ -72486,7 +73056,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.charReceived = buffer.length % 3;
       this.charLength = this.charReceived ? 3 : 0;
     }
-  }, { "buffer": 115 }], 221: [function (require, module, exports) {
+  }, { "buffer": 115 }], 223: [function (require, module, exports) {
     (function (root) {
       "use strict";
 
@@ -72931,7 +73501,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         unorm.shimApplied = true;
       }
     })(this);
-  }, {}], 222: [function (require, module, exports) {
+  }, {}], 224: [function (require, module, exports) {
     (function (global) {
 
       /**
@@ -73001,13 +73571,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return String(val).toLowerCase() === 'true';
       }
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 223: [function (require, module, exports) {
-    arguments[4][168][0].apply(exports, arguments);
-  }, { "dup": 168 }], 224: [function (require, module, exports) {
+  }, {}], 225: [function (require, module, exports) {
+    arguments[4][169][0].apply(exports, arguments);
+  }, { "dup": 169 }], 226: [function (require, module, exports) {
     module.exports = function isBuffer(arg) {
       return arg && (typeof arg === "undefined" ? "undefined" : _typeof(arg)) === 'object' && typeof arg.copy === 'function' && typeof arg.fill === 'function' && typeof arg.readUInt8 === 'function';
     };
-  }, {}], 225: [function (require, module, exports) {
+  }, {}], 227: [function (require, module, exports) {
     (function (process, global) {
       // Copyright Joyent, Inc. and other Node contributors.
       //
@@ -73554,7 +74124,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return Object.prototype.hasOwnProperty.call(obj, prop);
       }
     }).call(this, require('_process'), typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, { "./support/isBuffer": 224, "_process": 182, "inherits": 223 }], 226: [function (require, module, exports) {
+  }, { "./support/isBuffer": 226, "_process": 184, "inherits": 225 }], 228: [function (require, module, exports) {
     (function (global) {
 
       var rng;
@@ -73588,7 +74158,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       module.exports = rng;
     }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}], 227: [function (require, module, exports) {
+  }, {}], 229: [function (require, module, exports) {
     //     uuid.js
     //
     //     Copyright (c) 2010-2012 Robert Kieffer
@@ -73766,7 +74336,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     uuid.unparse = unparse;
 
     module.exports = uuid;
-  }, { "./rng": 226 }], 228: [function (require, module, exports) {
+  }, { "./rng": 228 }], 230: [function (require, module, exports) {
     var indexOf = require('indexof');
 
     var Object_keys = function Object_keys(obj) {
@@ -73901,4 +74471,4 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       return copy;
     };
-  }, { "indexof": 167 }] }, {}, [31]);
+  }, { "indexof": 168 }] }, {}, [31]);
