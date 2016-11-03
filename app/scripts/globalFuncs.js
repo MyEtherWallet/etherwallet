@@ -39,17 +39,18 @@ globalFuncs.errorMsgs = [
 	"Invalid amount. ",
 	"Invalid gas limit. ",
 	"Invalid data value. ",
-	"Invalid gas amount. ",
+	"Invalid gas amount. ", // 10
 	"Invalid nonce. ",
 	"Invalid signed transaction. ",
 	"A wallet with this nickname already exists. ",
 	"Wallet not found. ",
-	"Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ",
+	"Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", // 15
 	"A wallet with this address already exists in storage. Please check your wallets page. ",
 	"You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ",
 	"All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.",
 	"Invalid symbol",
-	"Not a valid ERC-20 token", 
+	"Not a valid ERC-20 token",
+	"Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative."
 	];
 globalFuncs.successMsgs = [
 	"Valid address",

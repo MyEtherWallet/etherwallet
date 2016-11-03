@@ -4,6 +4,8 @@ var sk = function() {}
 sk.code = 'sk';
 sk.data = {
 
+  ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.';
+
   /* Navigation*/
   NAV_YourWallets:      'Vaše Peňaženky',
   NAV_AddWallet:        'Pridať peňaženku',
