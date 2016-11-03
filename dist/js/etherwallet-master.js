@@ -6654,14 +6654,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     module.exports = id;
   }, {}], 45: [function (require, module, exports) {
     // Italian
-    // Last sync with en.js: commit 5306eddd0c40c74531293042030a688e98acb65e
+    // Last sync with en.js: commit cd58648be07d84435d6e917d5a1b3eb8a3814207
     'use strict';
 
     var it = function it() {};
     it.code = 'it';
     it.data = {
 
-      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+      ERROR_22: 'Impossibile eseguire una stima del gas necessario. Non ci sono abbastanza fondi nel conto, oppure l\'indirizzo del contratto ricevente genererebbe un errore. Puoi inserire il gas manualmente e procedere. Il messaggio di errore al momento dell\'invio potrebbe contenere ulteriori informazioni.',
 
       /* Navigation*/
       NAV_YourWallets: 'I tuoi portafogli',
