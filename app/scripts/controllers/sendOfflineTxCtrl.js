@@ -2,6 +2,8 @@
 var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 	walletService.wallet = null;
 	walletService.password = '';
+	$scope.unitReadable = "ETH";
+	$scope.valueReadable = "";
 	$scope.showAdvance = false;
 	$scope.showRaw = false;
 	$scope.showWalletInfo = false;
@@ -72,6 +74,15 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 		  $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
 		}
 	});
+	$scope.setSendMode = function(index) {
+		$scope.tokenTx.id = index;
+		if (index == 'ether') {
+			$scope.unitReadable = 'ETH';
+		} else {
+			$scope.unitReadable = $scope.tokens[index].symbol;
+		}
+		$scope.dropdownAmount = false;
+	}
 	$scope.validateAddress = function(address, status) {
 		if (ethFuncs.validateEtherAddress(address)) {
 			$scope[status] = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
@@ -95,11 +106,13 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 				value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit))),
 				data: ethFuncs.sanitizeHex($scope.tx.data)
 			}
-            if($scope.tokenTx.id!='ether'){
-                rawTx.data = $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tx.to, $scope.tx.value).data;
-                rawTx.to = $scope.tokenObjs[$scope.tokenTx.id].getContractAddress();
-                rawTx.value = '0x00';
-            }
+      if($scope.tokenTx.id!='ether'){
+          rawTx.data = $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tx.to, $scope.tx.value).data;
+          rawTx.to = $scope.tokenObjs[$scope.tokenTx.id].getContractAddress();
+          rawTx.value = '0x00';
+      }
+      $scope.valueReadable = $scope.tx.value;
+      //console.log(rawTx);
 			var eTx = new ethUtil.Tx(rawTx);
 			eTx.sign(new Buffer($scope.wallet.getPrivateKeyString(), 'hex'));
 			$scope.rawTx = JSON.stringify(rawTx);
@@ -114,9 +127,6 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 		try {
 			if ($scope.signedTx == "" || !ethFuncs.validateHexString($scope.signedTx)) throw globalFuncs.errorMsgs[12];
 			var eTx = new ethUtil.Tx($scope.signedTx);
-			$scope.tx.to = '0x' + eTx.to.toString('hex');
-			$scope.tx.value = eTx.value.toString('hex') != '' ? etherUnits.toEther('0x' + eTx.value.toString('hex'), 'wei') : 0;
-			$scope.tx.unit = 'ether';
 			new Modal(document.getElementById('sendTransactionOffline')).open();
 		} catch (e) {
 			$scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
@@ -131,31 +141,6 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 			     $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank'>" + data.data + "</a>"))
 			}
 		});
-	}
-	$scope.saveTokenToLocal = function() {
-		try {
-			if (!$scope.Validator.isValidAddress($scope.localToken.contractAdd)) throw globalFuncs.errorMsgs[5];
-			else if (!$scope.Validator.isPositiveNumber($scope.localToken.decimals)) throw globalFuncs.errorMsgs[7];
-			else if (!$scope.Validator.isAlphaNumeric($scope.localToken.symbol) || $scope.localToken.symbol == "") throw globalFuncs.errorMsgs[19];
-			var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
-			storedTokens.push({
-				contractAddress: $scope.localToken.contractAdd,
-				symbol: $scope.localToken.symbol,
-				decimal: parseInt($scope.localToken.decimals),
-				type: $scope.localToken.type
-			});
-			$scope.localToken = {
-				contractAdd: "",
-				symbol: "",
-				decimals: "",
-				type: "custom"
-			};
-			localStorage.setItem("localTokens", JSON.stringify(storedTokens));
-			$scope.setTokens();
-			$scope.validateLocalToken = $sce.trustAsHtml('');
-		} catch (e) {
-			$scope.validateLocalToken = $sce.trustAsHtml(globalFuncs.getDangerText(e));
-		}
 	}
 };
 module.exports = sendOfflineTxCtrl;

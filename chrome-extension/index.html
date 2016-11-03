@@ -43,7 +43,7 @@
 
 
 
-        &middot; v3.1 &middot;
+        &middot; v3.2 &middot;
         <span class="dropdown">
           <a href="#" class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdown" style="display:none;" id="langDrop">
@@ -513,9 +513,9 @@
               <li><a ng-class="{true:'active'}[tx.sendMode==1]" ng-click="setSendMode(1)"><span translate="TRANS_eth">Only ETH </span></a></li>
               <li><a ng-class="{true:'active'}[tx.sendMode==2]" ng-click="setSendMode(2)"><span translate="TRANS_etc">Only ETC </span></a></li>
               <li role="separator" class="divider"></li>
-              
+
               <li ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
-                <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode(4, $index, token.getSymbol())"> {{token.getSymbol()}}  </a>
+                <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode(4, $index, token.getSymbol())"> {{token.getSymbol()}} </a>
               </li>
 
             </ul>
@@ -712,35 +712,19 @@
       <div class="input-group">
         <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
         <div class="input-group-btn">
-          <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount"> ETH <span class="caret"></span></a>
+          <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount"> {{unitReadable}} <span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
-            <li><a name="currencyRadioOffline" value="ether" ng-model="tokenTx.id">ETH</a></li>
+            <li>
+              <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == 'ether']" ng-click="setSendMode('ether')">ETH</a>
+            </li>
             <li role="separator" class="divider"></li>
-            <li ng-repeat="token in tokenObjs track by $index"><a name="currencyRadioOffline" value="{{$index}}" ng-model="tokenTx.id"> {{token.getSymbol()}} </a></li>
+            <li ng-repeat="token in tokenObjs track by $index">
+              <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == $index]" ng-click="setSendMode($index)" > {{token.getSymbol()}} </a>
+            </li>
             <li role="separator" class="divider"></li>
             <li><a name="currencyRadioOffline" value="99" ng-model="tokenTx.id"><span translate="SEND_custom">Custom Token</span></a></li>
           </ul>
         </div>
-      </div>
-
-
-      <div class="custom-token-fields well" style="max-width: 600px" ng-show="tokenTx.id==99">
-        <div class="form-group">
-          <label translate="TOKEN_Addr"> Address: </label>
-          <input class="form-control" type="text" ng-model="localToken.contractAdd"/>
-        </div>
-        <div class="form-group">
-          <label translate="TOKEN_Symbol"> Token Symbol: </label>
-          <input class="form-control" type="text" ng-model="localToken.symbol"/>
-        </div>
-        <div class="form-group">
-          <label translate="TOKEN_Dec"> Decimals: </label>
-          <input class="form-control" type="text" ng-model="localToken.decimals"/>
-        </div>
-        <div class="form-group">
-          <div class="btn btn-info" ng-click="saveTokenToLocal()" translate="x_Save"> Save </div>
-        </div>
-        <div ng-bind-html="validateLocalToken"></div>
       </div>
     </div>
     <div class="form-group col-sm-10">
@@ -824,7 +808,8 @@
         </div>
         <div class="modal-body">
           <h4>
-            <span translate="SENDModal_Content_1"> You are about to send </span> a transaction.
+            <span translate="SENDModal_Content_1"> You are about to send </span>
+            <span class="text-primary">{{valueReadable}} {{unitReadable}}</span>
           </h4>
           <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
         </div>

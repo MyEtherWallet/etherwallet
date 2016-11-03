@@ -1078,6 +1078,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var sendOfflineTxCtrl = function sendOfflineTxCtrl($scope, $sce, walletService) {
         walletService.wallet = null;
         walletService.password = '';
+        $scope.unitReadable = "ETH";
+        $scope.valueReadable = "";
         $scope.showAdvance = false;
         $scope.showRaw = false;
         $scope.showWalletInfo = false;
@@ -1148,6 +1150,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
           }
         });
+        $scope.setSendMode = function (index) {
+          $scope.tokenTx.id = index;
+          if (index == 'ether') {
+            $scope.unitReadable = 'ETH';
+          } else {
+            $scope.unitReadable = $scope.tokens[index].symbol;
+          }
+          $scope.dropdownAmount = false;
+        };
         $scope.validateAddress = function (address, status) {
           if (ethFuncs.validateEtherAddress(address)) {
             $scope[status] = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
@@ -1171,6 +1182,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               rawTx.to = $scope.tokenObjs[$scope.tokenTx.id].getContractAddress();
               rawTx.value = '0x00';
             }
+            $scope.valueReadable = $scope.tx.value;
+            //console.log(rawTx);
             var eTx = new ethUtil.Tx(rawTx);
             eTx.sign(new Buffer($scope.wallet.getPrivateKeyString(), 'hex'));
             $scope.rawTx = JSON.stringify(rawTx);
@@ -1185,9 +1198,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           try {
             if ($scope.signedTx == "" || !ethFuncs.validateHexString($scope.signedTx)) throw globalFuncs.errorMsgs[12];
             var eTx = new ethUtil.Tx($scope.signedTx);
-            $scope.tx.to = '0x' + eTx.to.toString('hex');
-            $scope.tx.value = eTx.value.toString('hex') != '' ? etherUnits.toEther('0x' + eTx.value.toString('hex'), 'wei') : 0;
-            $scope.tx.unit = 'ether';
             new Modal(document.getElementById('sendTransactionOffline')).open();
           } catch (e) {
             $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
@@ -1202,29 +1212,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank'>" + data.data + "</a>"));
             }
           });
-        };
-        $scope.saveTokenToLocal = function () {
-          try {
-            if (!$scope.Validator.isValidAddress($scope.localToken.contractAdd)) throw globalFuncs.errorMsgs[5];else if (!$scope.Validator.isPositiveNumber($scope.localToken.decimals)) throw globalFuncs.errorMsgs[7];else if (!$scope.Validator.isAlphaNumeric($scope.localToken.symbol) || $scope.localToken.symbol == "") throw globalFuncs.errorMsgs[19];
-            var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
-            storedTokens.push({
-              contractAddress: $scope.localToken.contractAdd,
-              symbol: $scope.localToken.symbol,
-              decimal: parseInt($scope.localToken.decimals),
-              type: $scope.localToken.type
-            });
-            $scope.localToken = {
-              contractAdd: "",
-              symbol: "",
-              decimals: "",
-              type: "custom"
-            };
-            localStorage.setItem("localTokens", JSON.stringify(storedTokens));
-            $scope.setTokens();
-            $scope.validateLocalToken = $sce.trustAsHtml('');
-          } catch (e) {
-            $scope.validateLocalToken = $sce.trustAsHtml(globalFuncs.getDangerText(e));
-          }
         };
       };
       module.exports = sendOfflineTxCtrl;
@@ -62658,18 +62645,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     utils.intFromLE = intFromLE;
   }, { "bn.js": 84 }], 151: [function (require, module, exports) {
     module.exports = {
-      "_args": [[{
-        "raw": "elliptic@^6.0.0",
-        "scope": null,
-        "escapedName": "elliptic",
-        "name": "elliptic",
-        "rawSpec": "^6.0.0",
-        "spec": ">=6.0.0 <7.0.0",
-        "type": "range"
-      }, "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign"]],
+      "_args": [["elliptic@^6.0.0", "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"]],
       "_from": "elliptic@>=6.0.0 <7.0.0",
       "_id": "elliptic@6.3.2",
       "_inCache": true,
+      "_installable": true,
       "_location": "/elliptic",
       "_nodeVersion": "6.3.0",
       "_npmOperationalInternal": {
@@ -62677,17 +62657,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "tmp": "tmp/elliptic-6.3.2.tgz_1473938837205_0.3108903462998569"
       },
       "_npmUser": {
-        "name": "indutny",
-        "email": "fedor@indutny.com"
+        "email": "fedor@indutny.com",
+        "name": "indutny"
       },
       "_npmVersion": "3.10.3",
       "_phantomChildren": {},
       "_requested": {
-        "raw": "elliptic@^6.0.0",
-        "scope": null,
-        "escapedName": "elliptic",
         "name": "elliptic",
+        "raw": "elliptic@^6.0.0",
         "rawSpec": "^6.0.0",
+        "scope": null,
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
@@ -62696,10 +62675,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
       "_shrinkwrap": null,
       "_spec": "elliptic@^6.0.0",
-      "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign",
+      "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
       "author": {
-        "name": "Fedor Indutny",
-        "email": "fedor@indutny.com"
+        "email": "fedor@indutny.com",
+        "name": "Fedor Indutny"
       },
       "bugs": {
         "url": "https://github.com/indutny/elliptic/issues"
@@ -62738,8 +62717,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "license": "MIT",
       "main": "lib/elliptic.js",
       "maintainers": [{
-        "name": "indutny",
-        "email": "fedor@indutny.com"
+        "email": "fedor@indutny.com",
+        "name": "indutny"
       }],
       "name": "elliptic",
       "optionalDependencies": {},
