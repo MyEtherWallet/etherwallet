@@ -88,10 +88,13 @@ ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
             var estGas = recurCheckBalance(result);
             estGas =  estGas < 0 ? -1 : estGas;
         }
-        else {
+        else{
             var stateDiff = data.data.stateDiff;
             stateDiff = stateDiff[dataObj.from.toLowerCase()]['balance']['*'];
-            var estGas = new BigNumber(stateDiff['from']).sub(new BigNumber(stateDiff['to'])).sub(new BigNumber(dataObj.value));
+            if(stateDiff)
+                var estGas = new BigNumber(stateDiff['from']).sub(new BigNumber(stateDiff['to'])).sub(new BigNumber(dataObj.value));
+            else 
+                var estGas = new BigNumber(-1);
             if(estGas.lt(0)||estGas.eq(gasLimit)) estGas = -1;
         }
 		callback({

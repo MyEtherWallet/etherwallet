@@ -2353,7 +2353,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         } else {
           var stateDiff = data.data.stateDiff;
           stateDiff = stateDiff[dataObj.from.toLowerCase()]['balance']['*'];
-          var estGas = new BigNumber(stateDiff['from']).sub(new BigNumber(stateDiff['to'])).sub(new BigNumber(dataObj.value));
+          if (stateDiff) var estGas = new BigNumber(stateDiff['from']).sub(new BigNumber(stateDiff['to'])).sub(new BigNumber(dataObj.value));else var estGas = new BigNumber(-1);
           if (estGas.lt(0) || estGas.eq(gasLimit)) estGas = -1;
         }
         callback({
@@ -62596,11 +62596,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     utils.intFromLE = intFromLE;
   }, { "bn.js": 84 }], 151: [function (require, module, exports) {
     module.exports = {
-      "_args": [["elliptic@^6.0.0", "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"]],
+      "_args": [[{
+        "raw": "elliptic@^6.0.0",
+        "scope": null,
+        "escapedName": "elliptic",
+        "name": "elliptic",
+        "rawSpec": "^6.0.0",
+        "spec": ">=6.0.0 <7.0.0",
+        "type": "range"
+      }, "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign"]],
       "_from": "elliptic@>=6.0.0 <7.0.0",
       "_id": "elliptic@6.3.2",
       "_inCache": true,
-      "_installable": true,
       "_location": "/elliptic",
       "_nodeVersion": "6.3.0",
       "_npmOperationalInternal": {
@@ -62608,16 +62615,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "tmp": "tmp/elliptic-6.3.2.tgz_1473938837205_0.3108903462998569"
       },
       "_npmUser": {
-        "email": "fedor@indutny.com",
-        "name": "indutny"
+        "name": "indutny",
+        "email": "fedor@indutny.com"
       },
       "_npmVersion": "3.10.3",
       "_phantomChildren": {},
       "_requested": {
-        "name": "elliptic",
         "raw": "elliptic@^6.0.0",
-        "rawSpec": "^6.0.0",
         "scope": null,
+        "escapedName": "elliptic",
+        "name": "elliptic",
+        "rawSpec": "^6.0.0",
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
@@ -62626,10 +62634,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
       "_shrinkwrap": null,
       "_spec": "elliptic@^6.0.0",
-      "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
+      "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign",
       "author": {
-        "email": "fedor@indutny.com",
-        "name": "Fedor Indutny"
+        "name": "Fedor Indutny",
+        "email": "fedor@indutny.com"
       },
       "bugs": {
         "url": "https://github.com/indutny/elliptic/issues"
@@ -62668,8 +62676,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "license": "MIT",
       "main": "lib/elliptic.js",
       "maintainers": [{
-        "email": "fedor@indutny.com",
-        "name": "indutny"
+        "name": "indutny",
+        "email": "fedor@indutny.com"
       }],
       "name": "elliptic",
       "optionalDependencies": {},
