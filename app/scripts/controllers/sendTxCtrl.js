@@ -99,7 +99,13 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 			estObj.value = '0x00';
 		}
 		ethFuncs.estimateGas(estObj, $scope.tx.sendMode == 2, function(data) {
-			if (!data.error) $scope.tx.gasLimit = data.data;
+            $scope.validateTxStatus = "";
+			if (!data.error) {
+                if(data.data=='-1')   $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[21]));
+                $scope.tx.gasLimit = data.data;
+			} else {
+                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+			}
 		});
 	}
 	$scope.setBalance = function() {

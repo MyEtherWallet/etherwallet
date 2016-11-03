@@ -4,7 +4,7 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
-  ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.';
+  ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
   ADD_Ledger_4:         'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
   ADD_Ledger_0a:        'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL)',
