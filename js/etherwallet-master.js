@@ -1332,7 +1332,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           estObj.value = '0x00';
         }
         ethFuncs.estimateGas(estObj, $scope.tx.sendMode == 2, function (data) {
-          if (!data.error) $scope.tx.gasLimit = data.data;
+          $scope.validateTxStatus = "";
+          if (!data.error) {
+            if (data.data == '-1') $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[21]));
+            $scope.tx.gasLimit = data.data;
+          } else {
+            $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+          }
         });
       };
       $scope.setBalance = function () {
@@ -2471,7 +2477,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     globalFuncs.getDangerText = function (str) {
       return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>';
     };
-    globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token"];
+    globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", // 10
+    "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", // 15
+    "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative."];
     globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "You have successfully voted. Thank you for being an active participant in The DAO.", "File Selected: "];
     globalFuncs.gethErrors = {
       "Invalid sender": "GETH_InvalidSender",
@@ -4194,6 +4202,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     de.code = 'de';
     de.data = (_de$data = {
 
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+
       /* Mnemonic Additions */
       MNEM_1: 'Please select the address you would like to interact with.',
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
@@ -4346,6 +4356,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var el = function el() {};
     el.code = 'el';
     el.data = (_el$data = {
+
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       /* Mnemonic Additions */
       MNEM_1: 'Please select the address you would like to interact with.',
@@ -4518,6 +4530,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var en = function en() {};
     en.code = 'en';
     en.data = {
+
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       /* Navigation*/
       NAV_YourWallets: 'Your Wallets',
@@ -5103,6 +5117,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     es.code = 'es';
     es.data = (_es$data = {
 
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+
       NAV_DeployContract: 'Deploy Contract',
 
       /* Mnemonic Additions */
@@ -5246,6 +5262,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     fi.code = 'fi';
     fi.data = (_fi$data = {
 
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+
       /* Mnemonic Additions */
       MNEM_1: 'Please select the address you would like to interact with.',
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
@@ -5330,6 +5348,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var fr = function fr() {};
     fr.code = 'fr';
     fr.data = {
+
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       ADD_Ledger_4: 'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
       ADD_Ledger_0a: 'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL)',
@@ -5912,6 +5932,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var hu = function hu() {};
     hu.code = 'hu';
     hu.data = {
+
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
       ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
@@ -6496,6 +6518,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     id.code = 'id';
     id.data = (_id$data = {
 
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+
       /* Mnemonic Additions */
       MNEM_1: 'Please select the address you would like to interact with.',
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
@@ -6636,6 +6660,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var it = function it() {};
     it.code = 'it';
     it.data = {
+
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       /* Navigation*/
       NAV_YourWallets: 'I tuoi portafogli',
@@ -7221,6 +7247,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     ja.code = 'ja';
     ja.data = (_ja$data = {
 
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+
       /* Mnemonic Additions */
       MNEM_1: 'Please select the address you would like to interact with.',
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
@@ -7371,6 +7399,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var nl = function nl() {};
     nl.code = 'nl';
     nl.data = {
+
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       /* Navigation*/
       NAV_YourWallets: 'Jouw Wallets',
@@ -7955,6 +7985,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     no.code = 'no';
     no.data = (_no$data = {
 
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+
       /* Mnemonic Additions */
       MNEM_1: 'Please select the address you would like to interact with.',
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
@@ -8094,6 +8126,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var pl = function pl() {};
     pl.code = 'pl';
     pl.data = {
+
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       WARN_Send_Link: 'Znalazłeś się tu przez odnośnik, który zawiera wstępnie uzupełniony adres, kwotę, paliwo lub dane transakcji. Możesz zmienić dowolne parametry transakcji zanim ją zatwierdzisz. Odblokuj portfel aby kontynuować.',
 
@@ -8676,6 +8710,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var pt = function pt() {};
     pt.code = 'pt';
     pt.data = {
+
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       /* Hardware wallets */
       ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
@@ -9263,6 +9299,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     ru.code = 'ru';
     ru.data = (_ru$data = {
 
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+
       /* Mnemonic Additions */
       MNEM_1: 'Please select the address you would like to interact with.',
       MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
@@ -9415,6 +9453,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var tr = function tr() {};
     tr.code = 'tr';
     tr.data = (_tr$data = {
+
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       /* Mnemonic Additions */
       MNEM_1: 'Please select the address you would like to interact with.',
@@ -9639,6 +9679,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     vi.data = {
 
       WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       /* Hardware wallets */
       x_Ledger: 'Ledger Nano S',
@@ -10221,6 +10262,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var zh = function zh() {};
     zh.code = 'zh';
     zh.data = (_zh$data = {
+
+      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       /* Mnemonic Additions */
       MNEM_1: 'Please select the address you would like to interact with.',
