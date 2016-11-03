@@ -72,16 +72,17 @@ var walletDecryptDrtv = function() {
       <div id="selectedTypeKey" ng-if="walletType==\'addressOnly\'">\n \
         <h4 translate="x_Address"> Your Address </h4>\n \
         <div class="form-group">\n \
-          <textarea rows="4" class="form-control" placeholder="{{ \'x_Address\' | translate }}" ng-model="$parent.$parent.address" ng-class="Validator.isValidAddress($parent.$parent.address) ? \'is-valid\' : \'is-invalid\'" ng-change="onAddressChange()"></textarea>\n \
+          <textarea rows="4" class="form-control" placeholder="{{ \'x_Address\' | translate }}" ng-model="$parent.$parent.addressOnly" ng-class="Validator.isValidAddress($parent.$parent.addressOnly) ? \'is-valid\' : \'is-invalid\'" ng-change="onAddressChange()"></textarea>\n \
         </div>\n \
       </div>\n \
       <!-- /if selected addressOnly-->\n \
     </div>\n \
-    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'">\n \
+    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'||showAOnly">\n \
       <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt" translate="ADD_Label_6"> Access Your Wallet:</h4>\n \
       <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
       <h4 id="uploadbtntxt-mnemonic" ng-show="showMDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
       <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt||showMDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
+      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showAOnly" ng-click="decryptAddressOnly()" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
       <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="walletType==\'ledger\'" ng-click="scanLedger()" translate="ADD_Ledger_scan">SCAN</a></div>\n \
       <div ng-bind-html="decryptStatus"></div>\n \
     </div>\n \

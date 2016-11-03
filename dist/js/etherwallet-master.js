@@ -697,7 +697,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var decryptWalletCtrl = function decryptWalletCtrl($scope, $sce, walletService) {
         $scope.walletType = "";
-        $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = false;
+        $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = $scope.showAOnly = false;
         $scope.filePassword = "";
         $scope.fileContent = "";
         $scope.Validator = Validator;
@@ -742,7 +742,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
         };
         $scope.onAddressChange = function () {
-          $scope.showPDecrypt = $scope.address.length == 42;
+          $scope.showAOnly = $scope.Validator.isValidAddress($scope.addressOnly);
         };
         $scope.setHDAddresses = function (start, limit) {
           $scope.HDWallet.wallets = [];
@@ -812,6 +812,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + e));
           }
           if ($scope.wallet != null) $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+        };
+        $scope.decryptAddressOnly = function () {
+          if ($scope.Validator.isValidAddress($scope.addressOnly)) {
+            $scope.wallet = {
+              type: "addressOnly",
+              address: $scope.addressOnly,
+              getAddressString: function getAddressString() {
+                return this.address;
+              },
+              getChecksumAddressString: function getChecksumAddressString() {
+                return ethUtil.toChecksumAddress(this.getAddressString());
+              }
+            };
+            $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+            walletService.wallet = $scope.wallet;
+          }
         };
         $scope.ledgerCallback = function (result, error) {
           if (typeof result != "undefined") {
@@ -1824,7 +1840,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         $scope.wallet = walletService.wallet;
         $scope.wd = true;
         $scope.showEnc = walletService.password != '';
-        $scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
+        if (walletService.wallet.type == "default") $scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
         if (walletService.password != '') {
           $scope.blobEnc = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3(walletService.password, {
             kdf: globalFuncs.kdf,
@@ -2213,16 +2229,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       <div id="selectedTypeKey" ng-if="walletType==\'addressOnly\'">\n \
         <h4 translate="x_Address"> Your Address </h4>\n \
         <div class="form-group">\n \
-          <textarea rows="4" class="form-control" placeholder="{{ \'x_Address\' | translate }}" ng-model="$parent.$parent.address" ng-class="Validator.isValidAddress($parent.$parent.address) ? \'is-valid\' : \'is-invalid\'" ng-change="onAddressChange()"></textarea>\n \
+          <textarea rows="4" class="form-control" placeholder="{{ \'x_Address\' | translate }}" ng-model="$parent.$parent.addressOnly" ng-class="Validator.isValidAddress($parent.$parent.addressOnly) ? \'is-valid\' : \'is-invalid\'" ng-change="onAddressChange()"></textarea>\n \
         </div>\n \
       </div>\n \
       <!-- /if selected addressOnly-->\n \
     </div>\n \
-    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'">\n \
+    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'||showAOnly">\n \
       <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt" translate="ADD_Label_6"> Access Your Wallet:</h4>\n \
       <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
       <h4 id="uploadbtntxt-mnemonic" ng-show="showMDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
       <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showFDecrypt||showPDecrypt||showMDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
+      <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="showAOnly" ng-click="decryptAddressOnly()" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
       <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="walletType==\'ledger\'" ng-click="scanLedger()" translate="ADD_Ledger_scan">SCAN</a></div>\n \
       <div ng-bind-html="decryptStatus"></div>\n \
     </div>\n \
@@ -2905,6 +2922,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.hwType = hwType;
         this.hwTransport = hwTransport;
         this.balance = "loading";
+        this.type = "default";
       };
       Wallet.generate = function (icapDirect) {
         if (icapDirect) {
@@ -10468,7 +10486,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     var validator = function validator() {};
     validator.isValidAddress = function (address) {
-      return ethFuncs.validateEtherAddress(address);
+      if (address) return ethFuncs.validateEtherAddress(address);
+      return false;
     };
     validator.isPositiveNumber = function (value) {
       return globalFuncs.isNumeric(value) && parseFloat(value) >= 0;

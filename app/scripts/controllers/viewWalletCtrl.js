@@ -16,7 +16,7 @@ var viewWalletCtrl = function($scope, walletService) {
     $scope.wallet = walletService.wallet;
         $scope.wd = true;
         $scope.showEnc = walletService.password != '';
-    $scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
+    if(walletService.wallet.type=="default") $scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
     if (walletService.password != '') {
       $scope.blobEnc = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3(walletService.password, {
         kdf: globalFuncs.kdf,

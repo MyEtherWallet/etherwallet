@@ -1,7 +1,9 @@
 'use strict';
 var validator = function() {}
 validator.isValidAddress =  function(address){
-    return ethFuncs.validateEtherAddress(address);
+    if(address)
+        return ethFuncs.validateEtherAddress(address);
+    return false;
 }
 validator.isPositiveNumber = function(value){
     return globalFuncs.isNumeric(value) && parseFloat(value) >= 0;
