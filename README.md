@@ -101,6 +101,40 @@ The app folder (where you will be working):
 
 
 
+### Use Your Own Server/Node Guide
+
+This is a work in progress so please let us know if you get stuck or fail here: https://github.com/kvhnuke/etherwallet/issues/226. We will assist you and improve this guide for future people.
+
+1. Download the latest copy of the mew repo at https://github.com/kvhnuke/etherwallet/archive/f3849c90f85395d54492a524ecf76ae081b5ee0f.zip
+    - *(right now we are in the middle of a big update - normally you would use https://github.com/kvhnuke/etherwallet/archive/mercury.zip)*
+
+2. Extract it and navigate to `json_relay_node`.
+
+3. Open the terminal or command prompt (windows) and run `npm install`.
+    - *This assumes you have nodejs installed in your computer, if not install here: https://nodejs.org/en/download/*
+
+4. Once `npm install` is done, open `response.js` file
+
+![response](https://cloud.githubusercontent.com/assets/7924827/19823208/46f23f04-9d1c-11e6-8a35-e86977ad8434.jpg)
+
+5. In `response.js` file you should see two different ip addresses, currently these are set to MEW servers. You have to change these to point them to your own parity node.
+
+    * `Response.client.host` is for the ETH mainet and `Response.clientClassic.host` is for the EtherClassic node.
+
+    * If you only have one node running feel free to set both to same ip addresses. If you have a local node running then you have to set them to `127.0.0.1`.
+
+6. Once you configure `response.js file`, go back to terminal and run `node runLocalServer.js`
+
+7. Navigate to http://localhost/api.mew you should end up on a empty/white page. You shouldn't get any 404 or timeout errors.
+
+8. Navigate to `dist/js` and open `etherwallet-master.js`
+
+![screen shot 2016-10-28 at 2 38 33 pm](https://cloud.githubusercontent.com/assets/7924827/19823216/50d11c2a-9d1c-11e6-997e-3e585f3fb20d.jpg)
+
+9. Set the line 26, `ajaxReq.SERVERURL = “http://localhost/api.mew”`;
+
+10. Now navigate back to `dist` folder and open `index.html`. Now you are using your own custom node!
+
 
 
 ## How to Help Translate
