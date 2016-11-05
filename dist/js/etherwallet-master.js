@@ -5340,7 +5340,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     fr.code = 'fr';
     fr.data = {
 
-      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+      ERROR_22: 'Impossible d\'estimer le gaz. Il n\'y a pas assez de fonds sur le compte, ou l\'adresse du contrat de réception a pu renvoyer une erreur. Vous pouvez ajuster vous-même le gaz et recommencer. Le message d\'erreur à l\'envoi peut comporter plus d\'informations.',
 
       ADD_Ledger_4: 'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
       ADD_Ledger_0a: 'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL)',
@@ -6509,30 +6509,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     id.code = 'id';
     id.data = (_id$data = {
 
-      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+      ERROR_22: 'Tidak dapat memperkirakan gas. Saldo di akun tidak cukup, atau alamat kontrak penerima bisa mengeluarkan error. Cobalah untuk secara manual mengatur gas dan melanjutkan. Keterangan Error saat pengiriman mungkin lebih informatif.',
 
       /* Mnemonic Additions */
-      MNEM_1: 'Please select the address you would like to interact with.',
-      MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
-      MNEM_more: 'More Addresses',
-      MNEM_prev: 'Previous Addresses',
-      x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx)',
-      ADD_Radio_5: 'Paste/Type Your Mnemonic',
-      SEND_custom: 'Add Custom Token',
-      ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
-      TOKEN_show: 'Show All Tokens',
-      TOKEN_hide: 'Hide Tokens',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      MNEM_1: 'Pilih alamat yang Anda inginkan untuk berinteraksi.',
+      MNEM_2: 'Satu frasa "HD mnemonic" dapat mengakses beberapa  dompet / alamat. Pilih alamat yang Anda inginkan untuk dipakai.',
+      MNEM_more: 'Tampilkan Alamat berikutnya',
+      MNEM_prev: 'Tampilkan Alamat sebelumnya',
+      x_Mnemonic: '"Mnemonic Phrase" (MetaMask / Jaxx)',
+      ADD_Radio_5: 'Paste/Ketik Mnemonic Anda',
+      SEND_custom: 'Tambahkan "Custom Token"',
+      ERROR_21: ' bukan ERC-20 token yang valid. Jika token lain sedang loading, hapus token ini dan coba lagi.',
+      TOKEN_show: 'Tampilkan Semua Token',
+      TOKEN_hide: 'Jangan tampilkan Token',
+      WARN_Send_Link: 'Alamat, jumlah, gas atau informasi telah diisikan untuk Anda. Informasi tersebut dapat Anda rubah sebelum pengiriman. Buka kunci dompet Anda Untuk memulai.',
 
       /* Hardware wallets */
       x_Ledger: 'Ledger Nano S',
-      ADD_Ledger_1: 'Connect your Ledger Nano S',
-      ADD_Ledger_2: 'Open the Ethereum application (or a contract application)',
-      ADD_Ledger_3: 'Verify that Browser Support is enabled in Settings',
-      ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
-      ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
-      ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
-      ADD_Ledger_scan: 'Connect to Ledger Nano S',
+      ADD_Ledger_1: 'Hubungkan ke Ledger Nano S Anda',
+      ADD_Ledger_2: 'Buka Aplikasi Ethereum (atau aplikasi kontrak)',
+      ADD_Ledger_3: 'Periksa bahwa "Browser Support" sudah di aktifkan di "Settings"',
+      ADD_Ledger_4: 'Jika "Browser Support" tidak ditemukan di "Settings", pastikan sudah mengupdate ke [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
+      ADD_Ledger_0a: 'Buka kembali MyEtherWallet melalui koneksi (SSL) yang aman',
+      ADD_Ledger_0b: 'Buka kembali MyEtherWallet menggunakan [Chrome](https://www.google.com/chrome/browser/desktop/) atau [Opera](https://www.opera.com/)',
+      ADD_Ledger_scan: 'Hubungkan ke Ledger Nano S',
 
       /* Navigation*/
       NAV_YourWallets: 'Dompet Anda',
@@ -6562,7 +6562,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       x_JsonDesc: 'Ini adalah "Private Key" Anda dalam format JSON yang tidak ter-enkripsi. Tidak diperlukan password dan siapapun yang memiliki JSON Anda dapat mengakses dompet dan Ether Anda tanpa password.',
       x_Keystore: 'File Keystore (UTC / JSON · Format yang direkomendasikan · Ter-enkripsi · Format Mist)',
       x_Keystore2: 'File Keystore (UTC / JSON)',
-      x_KeystoreDesc: 'File Keystore ini sesuai dengan format yang dipakai Mistsehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
+      x_KeystoreDesc: 'File Keystore ini sesuai dengan format yang dipakai Mist sehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
       x_Password: 'Password',
       x_Print: 'Print Dompet Kertas',
       x_PrintDesc: 'ProTip: klik print dan simpan sebagai PDF jika Anda tidak memiliki printer!',
@@ -6624,7 +6624,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       /* Generate Wallets */
       GEN_desc: 'Jika Anda memerlukan lebih dari satu dompet, Anda dapat memakai fitur : ',
       GEN_Label_1: 'Masukkan password yang kuat (setidaknya 9 karakter)',
-      GEN_Placeholder_1: 'JANGAN LUPA untuk mengingat & menyimpannya!',
+      GEN_Placeholder_1: 'JANGAN LUPA untuk mengingat dan menyimpannya!',
       GEN_SuccessMsg: 'Berhasil! Dompet Anda sudah dibuat.',
       GEN_Warning: '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help).',
       GEN_Label_2: 'Simpan Keystore atau Private Key. Jangan lupa Password-nya.',
@@ -8702,13 +8702,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     pt.code = 'pt';
     pt.data = {
 
-      ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+      ERROR_22: 'Não foi possível estimar o gás. Não há fundos suficientes na conta, ou o endereço do contrato de recebimento iria lançar um erro. Sinta-se livre para definir manualmente o gás e prossiga. A mensagem de erro ao enviar pode ser mais informativa.',
 
       /* Hardware wallets */
-      ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
-      ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
-      ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      ADD_Ledger_4: 'Se nenhum suporte de navegador for encontrado nas configurações, verifique se [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
+      ADD_Ledger_0a: 'Re-abra MyEtherWallet em uma conexão (SSL) segura',
+      ADD_Ledger_0b: 'Re-abra MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/)',
+      WARN_Send_Link: 'Você chegou através de um link que tem o endereço, quantidade de gás, ou campos de dados preenchidos para você. Você pode alterar qualquer informação antes de enviar. Desbloqueie sua carteira para começar.',
 
       /* Navigation*/
       NAV_YourWallets: 'Suas Carteiras',
@@ -8910,27 +8910,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       DGD_Content: 'Você está prestes a reivindicar os seus Tokens DGD.',
 
       /* Deploy Contracts */
-      DEP_generate: 'Generate Bytecode',
-      DEP_generated: 'Generated Bytecode',
-      DEP_signtx: 'Sign Transaction',
-      DEP_interface: 'Generated Interface',
+      DEP_generate: 'Gerar Bytecode',
+      DEP_generated: 'Bytecode Gerado',
+      DEP_signtx: 'Transação Assinada',
+      DEP_interface: 'Interface Gerada',
 
       /* My Wallet */
-      MYWAL_Nick: 'Wallet Nickname',
-      MYWAL_Address: 'Wallet Address',
-      MYWAL_Bal: 'Balance',
-      MYWAL_Edit: 'Edit',
-      MYWAL_View: 'View',
-      MYWAL_Remove: 'Remove',
-      MYWAL_RemoveWal: 'Remove Wallet:',
-      MYWAL_WatchOnly: 'Your Watch-Only Accounts',
-      MYWAL_Viewing: 'Viewing Wallet: ',
-      MYWAL_Hide: 'Hide Wallet Info',
-      MYWAL_Edit_2: 'Edit Wallet: ',
-      MYWAL_Name: 'Wallet Name',
-      MYWAL_Content_1: 'Warning! You are about to remove your wallet: ',
-      MYWAL_Content_2: 'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it.',
-      MYWAL_Content_3: 'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password.',
+      MYWAL_Nick: 'Apelido da Carteira',
+      MYWAL_Address: 'Endereço da Carteira',
+      MYWAL_Bal: 'Saldo',
+      MYWAL_Edit: 'Editar',
+      MYWAL_View: 'Ver',
+      MYWAL_Remove: 'Remover',
+      MYWAL_RemoveWal: 'Remover Carteira:',
+      MYWAL_WatchOnly: 'Suas contas somente de exibição',
+      MYWAL_Viewing: 'Exibindo Carteira: ',
+      MYWAL_Hide: 'Esconder Info da Carteira',
+      MYWAL_Edit_2: 'Editar Carteira: ',
+      MYWAL_Name: 'Nome da Carteira',
+      MYWAL_Content_1: 'Cuidado! Você está prestes a remover sua carteira: ',
+      MYWAL_Content_2: 'Certifique-se de que **salvou a chave privada e / ou o Arquivo do Keystore e a senha** antes de removê-la.',
+      MYWAL_Content_3: 'Se pretender utilizar esta carteira com o MyEtherWallet CX no futuro, terá de voltar a adicioná-la manualmente utilizando a chave privada/JSON e a palavra-passe.',
 
       /* View Wallet Details */
       VIEWWALLET_Subtitle: 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/).',
@@ -62649,18 +62649,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     utils.intFromLE = intFromLE;
   }, { "bn.js": 84 }], 151: [function (require, module, exports) {
     module.exports = {
-      "_args": [[{
-        "raw": "elliptic@^6.0.0",
-        "scope": null,
-        "escapedName": "elliptic",
-        "name": "elliptic",
-        "rawSpec": "^6.0.0",
-        "spec": ">=6.0.0 <7.0.0",
-        "type": "range"
-      }, "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign"]],
+      "_args": [["elliptic@^6.0.0", "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"]],
       "_from": "elliptic@>=6.0.0 <7.0.0",
       "_id": "elliptic@6.3.2",
       "_inCache": true,
+      "_installable": true,
       "_location": "/elliptic",
       "_nodeVersion": "6.3.0",
       "_npmOperationalInternal": {
@@ -62668,17 +62661,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "tmp": "tmp/elliptic-6.3.2.tgz_1473938837205_0.3108903462998569"
       },
       "_npmUser": {
-        "name": "indutny",
-        "email": "fedor@indutny.com"
+        "email": "fedor@indutny.com",
+        "name": "indutny"
       },
       "_npmVersion": "3.10.3",
       "_phantomChildren": {},
       "_requested": {
-        "raw": "elliptic@^6.0.0",
-        "scope": null,
-        "escapedName": "elliptic",
         "name": "elliptic",
+        "raw": "elliptic@^6.0.0",
         "rawSpec": "^6.0.0",
+        "scope": null,
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
@@ -62687,10 +62679,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
       "_shrinkwrap": null,
       "_spec": "elliptic@^6.0.0",
-      "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign",
+      "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
       "author": {
-        "name": "Fedor Indutny",
-        "email": "fedor@indutny.com"
+        "email": "fedor@indutny.com",
+        "name": "Fedor Indutny"
       },
       "bugs": {
         "url": "https://github.com/indutny/elliptic/issues"
@@ -62729,8 +62721,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "license": "MIT",
       "main": "lib/elliptic.js",
       "maintainers": [{
-        "name": "indutny",
-        "email": "fedor@indutny.com"
+        "email": "fedor@indutny.com",
+        "name": "indutny"
       }],
       "name": "elliptic",
       "optionalDependencies": {},
