@@ -4,30 +4,30 @@ var id = function() {}
 id.code = 'id';
 id.data = {
 
-  ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+  ERROR_22:             'Tidak dapat memperkirakan gas. Saldo di akun tidak cukup, atau alamat kontrak penerima bisa mengeluarkan error. Cobalah untuk secara manual mengatur gas dan melanjutkan. Keterangan Error saat pengiriman mungkin lebih informatif.',
 
   /* Mnemonic Additions */
-  MNEM_1:               'Please select the address you would like to interact with.',
-  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
-  MNEM_more:            'More Addresses',
-  MNEM_prev:            'Previous Addresses',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx)',
-  ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Add Custom Token',
-  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
-  TOKEN_show:           'Show All Tokens',
-  TOKEN_hide:           'Hide Tokens',
-  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+  MNEM_1:               'Pilih alamat yang Anda inginkan untuk berinteraksi.',
+  MNEM_2:               'Satu frasa "HD mnemonic" dapat mengakses beberapa  dompet / alamat. Pilih alamat yang Anda inginkan untuk dipakai.',
+  MNEM_more:            'Tampilkan Alamat berikutnya',
+  MNEM_prev:            'Tampilkan Alamat sebelumnya',
+  x_Mnemonic:           '"Mnemonic Phrase" (MetaMask / Jaxx)',
+  ADD_Radio_5:          'Paste/Ketik Mnemonic Anda',
+  SEND_custom:          'Tambahkan "Custom Token"',
+  ERROR_21:             ' bukan ERC-20 token yang valid. Jika token lain sedang loading, hapus token ini dan coba lagi.',
+  TOKEN_show:           'Tampilkan Semua Token',
+  TOKEN_hide:           'Jangan tampilkan Token',
+  WARN_Send_Link:       'Alamat, jumlah, gas atau informasi telah diisikan untuk Anda. Informasi tersebut dapat Anda rubah sebelum pengiriman. Buka kunci dompet Anda Untuk memulai.',
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Nano S',
-  ADD_Ledger_1:         'Connect your Ledger Nano S',
-  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
-  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
-  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
-  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
-  ADD_Ledger_scan:      'Connect to Ledger Nano S',
+  ADD_Ledger_1:         'Hubungkan ke Ledger Nano S Anda',
+  ADD_Ledger_2:         'Buka Aplikasi Ethereum (atau aplikasi kontrak)',
+  ADD_Ledger_3:         'Periksa bahwa "Browser Support" sudah di aktifkan di "Settings"',
+  ADD_Ledger_4:         'Jika "Browser Support" tidak ditemukan di "Settings", pastikan sudah mengupdate ke [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
+  ADD_Ledger_0a:        'Buka kembali MyEtherWallet melalui koneksi (SSL) yang aman',
+  ADD_Ledger_0b:        'Buka kembali MyEtherWallet menggunakan [Chrome](https://www.google.com/chrome/browser/desktop/) atau [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan:      'Hubungkan ke Ledger Nano S',
 
   /* Navigation*/
   NAV_YourWallets:      'Dompet Anda',
@@ -57,7 +57,7 @@ id.data = {
   x_JsonDesc:           'Ini adalah "Private Key" Anda dalam format JSON yang tidak ter-enkripsi. Tidak diperlukan password dan siapapun yang memiliki JSON Anda dapat mengakses dompet dan Ether Anda tanpa password.',
   x_Keystore:           'File Keystore (UTC / JSON · Format yang direkomendasikan · Ter-enkripsi · Format Mist)',
   x_Keystore2:          'File Keystore (UTC / JSON)',
-  x_KeystoreDesc:       'File Keystore ini sesuai dengan format yang dipakai Mistsehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
+  x_KeystoreDesc:       'File Keystore ini sesuai dengan format yang dipakai Mist sehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
   x_Password:           'Password',
   x_Print:              'Print Dompet Kertas',
   x_PrintDesc:          'ProTip: klik print dan simpan sebagai PDF jika Anda tidak memiliki printer!',
@@ -119,7 +119,7 @@ id.data = {
   /* Generate Wallets */
   GEN_desc:               'Jika Anda memerlukan lebih dari satu dompet, Anda dapat memakai fitur : ',
   GEN_Label_1:            'Masukkan password yang kuat (setidaknya 9 karakter)',
-  GEN_Placeholder_1:      'JANGAN LUPA untuk mengingat & menyimpannya!',
+  GEN_Placeholder_1:      'JANGAN LUPA untuk mengingat dan menyimpannya!',
   GEN_SuccessMsg:         'Berhasil! Dompet Anda sudah dibuat.',
   GEN_Warning:            '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help).',
   GEN_Label_2:            'Simpan Keystore atau Private Key. Jangan lupa Password-nya.',
