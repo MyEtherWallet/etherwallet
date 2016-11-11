@@ -5,6 +5,7 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 	$scope.unitReadable = "ETH";
 	$scope.valueReadable = "";
 	$scope.showAdvance = false;
+	$scope.dropdownEnabled = true;
 	$scope.showRaw = false;
 	$scope.showWalletInfo = false;
 	$scope.gasPriceDec = 0;
@@ -67,13 +68,24 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 		$scope.showRaw = false;
 		$scope.sendTxStatus = "";
 	}, true);
-    $scope.$watch('tokenTx.id', function() {
+  $scope.$watch('tokenTx.id', function() {
 		if($scope.tokenTx.id!='ether'){
 		  $scope.tx.gasLimit = 150000;
 		} else {
 		  $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
 		}
 	});
+	$scope.$watch('[tx.to]', function() {
+		// if golem crowdfund address
+		if ( $scope.tx.to == "0xa74476443119A942dE498590Fe1f2454d7D4aC0d" ) {
+			$scope.setSendMode('ether')
+			$scope.dropdownEnabled = false
+			$scope.tx.data = '0xefc81a8c'
+			$scope.tx.gasLimit = 70000
+		} else {
+			$scope.dropdownEnabled = true
+		}
+	}, true);
 	$scope.setSendMode = function(index) {
 		$scope.tokenTx.id = index;
 		if (index == 'ether') {

@@ -148,7 +148,7 @@
         <!-- / Gas -->
 
         <!-- Advanced Option Panel -->
-        <div  ng-show="tx.sendMode==0">
+        <div ng-show="tx.sendMode==0">
           <a ng-click="toggleShowAdvance()">
             <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
           </a>

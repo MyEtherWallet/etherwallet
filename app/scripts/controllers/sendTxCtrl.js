@@ -66,10 +66,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 
 	$scope.$watch('[tx.to]', function() {
 		if ( $scope.tx.to == "0xa74476443119A942dE498590Fe1f2454d7D4aC0d" ) { // if golem crowdfund address
-			$scope.tx.data = '0xefc81a8c'
-			$scope.showAdvance = true
 			$scope.setSendMode(0);
 			$scope.dropdownEnabled = false
+			$scope.tx.data = '0xefc81a8c'
+			$scope.showAdvance = true
 		} else {
 			$scope.dropdownEnabled = true
 		}
