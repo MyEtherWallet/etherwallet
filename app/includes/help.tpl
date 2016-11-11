@@ -218,11 +218,10 @@
     <div ng-show="h5">
     <p translate="HELP_5_Desc_1"> You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generatea a wallet completely offline and send transactions from the "Offline Transaction" page. </p>
     <ol>
-      <li translate="HELP_5_Desc_2">Go to our github: <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages">https://github.com/kvhnuke/etherwallet/tree/gh-pages</a>.</li>
-      <li translate="HELP_5_Desc_3">Click download zip in the upper right.</li>
-      <li translate="HELP_5_Desc_4">Move zip to an airgapped computer.</li>
-      <li translate="HELP_5_Desc_5">Unzip it.</li>
-      <li translate="HELP_5_Desc_6">Double-Click index.html.</li>
+      <li translate="HELP_2b_Desc_1">Go to https://github.com/kvhnuke/etherwallet/releases/latest:</li>
+      <li translate="HELP_2b_Desc_2">Click the file below that looks like dist-v0.3.2.1.zip</li>
+      <li translate="HELP_2b_Desc_3">Move zip to an airgapped computer.</li>
+      <li translate="HELP_2b_Desc_4">Unzip it and double-click `index.html`.</li>
       <li translate="HELP_5_Desc_7">MyEtherWallet.com is now running entirely on your computer.</li>
     </ol>
     <p translate="HELP_5_Desc_8"> In case you are not familiar, you need to keep the entire folder in order to run the website, not just index.html. Don't touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.</p>
@@ -241,9 +240,8 @@
     </div>
     <div ng-show="h5cx">
     <ul>
-      <li translate="HELP_5CX_Desc_1"> Go to our github and find the most recent Chrome Extension relase: <a href="https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases">https://github.com/kvhnuke/etherwallet/tree/mercury/chrome-extension-releases</a>.</li>
-      <li translate="HELP_5CX_Desc_2"> Scroll to the very bottom and right click on the latest release. Click "save link as".</li>
-      <li translate="HELP_5_Desc_5"> Unzip it.</li>
+      <li translate="HELP_2b_Desc_1"> Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest).</li>
+      <li translate="HELP_5CX_Desc_2"> Download the file below that looks like `chrome-extension-v0.3.2.1.zip` and unzip it.</li>
       <li translate="HELP_5CX_Desc_3"> Go to Google Chrome and find you settings (in the menu in the upper right).</li>
       <li translate="HELP_5CX_Desc_4"> Click "Extensions" on the left. </li>
       <li translate="HELP_5CX_Desc_5"> Check the "Developer Mode" button at the top of that page. </li>
