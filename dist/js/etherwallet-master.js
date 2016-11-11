@@ -1288,7 +1288,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         $scope.setTokens();
       });
       $scope.$watch('[tx.to,tx.value,tx.data,tx.sendMode]', function () {
-        if ($scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data) && $scope.tx.sendMode != 4) {
+        if ($scope.wallet && $scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data) && $scope.tx.sendMode != 4) {
           if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
           $scope.estimateTimer = setTimeout(function () {
             $scope.estimateGasLimit();
@@ -1300,7 +1300,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }, true);
       $scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function () {
-        if ($scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id] !== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to) && $scope.Validator.isPositiveNumber($scope.tokenTx.value)) {
+        if ($scope.wallet && $scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id] !== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to) && $scope.Validator.isPositiveNumber($scope.tokenTx.value)) {
           if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
           $scope.estimateTimer = setTimeout(function () {
             $scope.estimateGasLimit();
