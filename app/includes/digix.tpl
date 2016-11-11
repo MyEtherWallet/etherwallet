@@ -72,19 +72,19 @@
         <h4 translate="DGD_TitleLong"> Claim Your DGD Tokens </h4>
         <div class="form-group col-xs-12">
           <label translate="DGD_Label_1">Estimated fee consumption:</label><br />
-          <input class="form-control disabled" type="text" value="0.00043598 ether (21,799 gas)" readonly />
+          <input class="form-control readonly" type="text" value="0.00043598 ether (21,799 gas)" readonly />
         </div>
         <div class="form-group col-xs-12">
           <label translate="DGD_Label_2">Provided Maximum Fee:</label><br />
-          <input class="form-control disabled" type="text" value="0.00243598 ether (121,799 gas)" readonly />
+          <input class="form-control readonly" type="text" value="0.00243598 ether (121,799 gas)" readonly />
         </div>
         <div class="form-group col-xs-12">
           <label translate="DGD_Label_3">Gas Price:</label><br />
-          <input class="form-control disabled" type="text" value="0.021 ether per million gas" readonly />
+          <input class="form-control readonly" type="text" value="0.021 ether per million gas" readonly />
         </div>
         <div class="form-group col-xs-12">
           <label translate="TRANS_data">Data:</label><br />
-          <input class="form-control disabled" type="text" readonly ng-model="tx.data"/>
+          <input class="form-control readonly" type="text" readonly ng-model="tx.data"/>
         </div>
         <div class="form-group col-xs-12">
           <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DGD_Generate">Generate Claim</a>
@@ -97,9 +97,9 @@
 
       <div class="form-group col-xs-12" ng-show="showRaw">
         <label translate="SEND_raw"> Raw Transaction </label>
-        <textarea class="form-control" rows="4" disabled >{{rawTx}}</textarea>
+        <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
         <label translate="SEND_signed"> Signed Transaction </label>
-        <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
+        <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
       </div>
 
       <div class="form-group col-xs-12" ng-show="showRaw">

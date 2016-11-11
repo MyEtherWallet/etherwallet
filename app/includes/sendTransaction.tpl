@@ -171,9 +171,9 @@
 
         <div class="form-group" ng-show="showRaw">
           <label translate="SEND_raw"> Raw Transaction </label>
-          <textarea class="form-control" rows="4" disabled >{{rawTx}}</textarea>
+          <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
           <label translate="SEND_signed"> Signed Transaction </label>
-          <textarea class="form-control" rows="4" disabled >{{signedTx}}</textarea>
+          <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
         </div>
 
         <div class="form-group" ng-show="showRaw">
