@@ -4,6 +4,7 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
+  TRANS_gas:             'Gaz : ', // changed in ENG to Gas Limit:
   ERROR_22:             'Impossible d\'estimer le gaz. Il n\'y a pas assez de fonds sur le compte, ou l\'adresse du contrat de réception a pu renvoyer une erreur. Vous pouvez ajuster vous-même le gaz et recommencer. Le message d\'erreur à l\'envoi peut comporter plus d\'informations.',
 
   ADD_Ledger_4:         'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
@@ -149,8 +150,7 @@ fr.data = {
   TRANS_eth:             'ETH seulement',
   TRANS_etc:             'ETC seulement',
   TRANS_advanced:        '+Avancé : Ajouter du gaz',
-  TRANS_data:            ' Données : ',
-  TRANS_gas:             ' Gaz : ',
+  TRANS_data:            'Données : ',
   TRANS_sendInfo:        'Une transaction standard utilisant 21000 gaz coûtera 0.000441 ETH. Le prix du gaz de 0.000000021 ETH que nous avons choisi est légèrement supérieur au minimum ain d\'assurer une confirmation rapide. Nous ne prenons pas de frais de transaction.',
 
   /* Send Transaction Modals */

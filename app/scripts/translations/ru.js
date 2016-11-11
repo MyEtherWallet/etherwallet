@@ -4,6 +4,7 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
+  TRANS_gas:             ' Газ: ', // changd in ENG to Gas Limit:
   ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
   /* Mnemonic Additions */
@@ -175,7 +176,6 @@ ru.data = {
   TRANS_etc:             'Только ETC',
   TRANS_advanced:        '+Дополнительно: добавить данные ',
   TRANS_data:            ' Данные: ',
-  TRANS_gas:             ' Газ: ',
   TRANS_sendInfo:        'Стандартная транзакция, использующая 21000 газа, будет стоить 0,000441 эфира (ether). Мы указываем цену газа немного выше минимально возможной: 0,000000021 эфира (ether), для того, чтобы ускорить выполнение танзакций. Мы не берём комиссию за выполнение транзакций.',
 
   /* Send Transaction Modals */

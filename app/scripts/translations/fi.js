@@ -202,8 +202,8 @@ fi.data = {
   TRANS_eth:             'Vain ETH',
   TRANS_etc:             'Vain ETC',
   TRANS_advanced:        '+Edistynyt: Lisää Tietoja ',
-  TRANS_data:            ' Tiedot: ',
-  TRANS_gas:             ' Gas: ',
+  TRANS_data:            'Tiedot: ',
+  TRANS_gas:             'Gas Limit: ',
   TRANS_sendInfo:        'Tavallinen siirto käyttäen 21000 gasia maksaa 0.000441 ETHiä. Me käytämme hieman-yli-minimin gasin hintaa 0.000000021 ETHiä varmistaaksemme että se louhitaan nopeasti. Me emme veloita siirto maksua.',
 
   /* Send Transaction Modals */

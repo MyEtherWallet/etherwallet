@@ -163,8 +163,8 @@ id.data = {
   TRANS_eth:             'Hanya ETH',
   TRANS_etc:             'Hanya ETC',
   TRANS_advanced:        '+Advanced: Tambah Data ',
-  TRANS_data:            ' Data: ',
-  TRANS_gas:             ' Gas: ',
+  TRANS_data:            'Data: ',
+  TRANS_gas:             'Gas Limit: ',
   TRANS_sendInfo:        'Transaksi standar menggunakan 21000 gas membutuhkan 0.000441 ETH. Kami memakai harga gas sedikit-diatas-harga-gas-minimum senilai 0.000000021 ETH untuk mempercepat. Kami tidak mengambil biaya atas transaksi.',
 
   /* Send Transaction Modals */

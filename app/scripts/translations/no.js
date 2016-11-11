@@ -164,7 +164,7 @@ no.data = {
   TRANS_etc:             'Kun ETC',
   TRANS_advanced:        '+Avansert: Legg til data ',
   TRANS_data:            ' Data: ',
-  TRANS_gas:             ' Gas: ',
+  TRANS_gas:             'Gas Limit: ',
   TRANS_sendInfo:        'En standard transaksjon som bruker 21000 gas vil koste 0,000441 ETH. Vi bruker en litt-over-minimum gas-pris på 0,000000021 ETH for å sikre at transaksjonen blir raskt behandlet. Vi tar ikke noe transaksjonsgebyr.',
 
   /* Send Transaction Modals */

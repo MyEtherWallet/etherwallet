@@ -196,8 +196,8 @@ el.data = {
   TRANS_eth:             'Μόνο ETH',
   TRANS_etc:             'Μόνο ETC',
   TRANS_advanced:        '+Για προχωρημένους: Προσθήκη Data ',
-  TRANS_data:            ' Data: ',
-  TRANS_gas:             ' Gas: ',
+  TRANS_data:            'Data: ',
+  TRANS_gas:             'Gas Limit: ',
   TRANS_sendInfo:        'Μία standard συναλλαγή που χρησιμοποιεί 21000 gas θα κοστίσει 0,000441 ETH. Χρησιμοποιούμε για τιμή gas 0.000000021 ETH που είναι λίγο πάνω απο την ελάχιστη ώστε διασφαλίσουμε οτι θα επικυρωθεί γρήγορα. Δεν παίρνουμε προμήθεια για την συναλλαγή.',
 
   /* Send Transaction Modals */

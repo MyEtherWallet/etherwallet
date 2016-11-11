@@ -164,8 +164,8 @@ es.data = {
   TRANS_eth:             'Sólo ETH',
   TRANS_etc:             'Sólo ETC',
   TRANS_advanced:        '+Avanzado: Añadir datos ',
-  TRANS_data:            ' Datos: ',
-  TRANS_gas:             ' Gas: ',
+  TRANS_data:            'Datos: ',
+  TRANS_gas:             'Gas Limit: ',
   TRANS_sendInfo:        'Una transacción estándar que utiliza 21000 gas cuesta 0.000441 ETH. Utilizamos un precio de gas de 0.000000021 ETH, ligeramente por encima del mínimo, para asegurarnos de que se mina con rapidez. Nosotros no recibimos ninguna comisión por la transacción.',
 
   /* Send Transaction Modals */

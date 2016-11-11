@@ -174,7 +174,7 @@ zh.data = {
   TRANS_etc:             '只发送ETC',
   TRANS_advanced:        '高级功能：增加更多Gas或者数据',
   TRANS_data:            '数据：',
-  TRANS_gas:             'Gas：',
+  TRANS_gas:             'Gas Limit：',
   TRANS_sendInfo:        '一笔标准交易需要21000gas，花费0.000441以太币。我们将gas价格设为0.000000021以太币，略高于最低价格，以保证交易被快速打包。我们不收取交易费用。',
 
   /* Send Transaction Modals */

@@ -4,6 +4,7 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
+  TRANS_gas:             ' Paliwo: ', // changd in ENG to Gas Limit:
   ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
   WARN_Send_Link:       'Znalazłeś się tu przez odnośnik, który zawiera wstępnie uzupełniony adres, kwotę, paliwo lub dane transakcji. Możesz zmienić dowolne parametry transakcji zanim ją zatwierdzisz. Odblokuj portfel aby kontynuować.',
@@ -146,7 +147,6 @@ pl.data = {
   TRANS_etc:             'Tylko ETC',
   TRANS_advanced:        '+Zaawansowane: Dodaj Dane ',
   TRANS_data:            ' Dane: ',
-  TRANS_gas:             ' Paliwo: ',
   TRANS_sendInfo:        'Standardowa transakcja, zużywająca 21000 paliwa, będzie kosztować 0.000441 ETH. My używamy ceny paliwa nieco-powyżej-minimum, co odpowiada 0.000000021 ETH aby upewnić się, że zostanie szybko zatwierdzona. Nie pobieramy żadnych dodatkowych opłat.',
 
   /* Send Transaction Modals */

@@ -3,7 +3,7 @@
 var ja = function() {}
 ja.code = 'ja';
 ja.data = {
-
+  TRANS_gas:             ' ガス： ', // changed in ENG to Gas Limit:
   ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
   /* Mnemonic Additions */
@@ -175,7 +175,7 @@ ja.data = {
   TRANS_etc:             'ETCのみ',
   TRANS_advanced:        '+Advanced: ガスあるいはデータを追加してください ',
   TRANS_data:            ' データ： ',
-  TRANS_gas:             ' ガス： ',
+
   TRANS_sendInfo:        '21000ガスを使用する標準トランザクションは、0.000441 ETHを消費します。迅速な処理を行うために、若干最小量よりも多めの0.000000021 ETHのガスを使用します。当サービスでは、トランザクション料金は徴収いたしません。',
 
   /* Send Transaction Modals */

@@ -5,7 +5,7 @@ en.code = 'en';
 en.data = {
 
   ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
-  
+
   /* Navigation*/
   NAV_YourWallets:      'Your Wallets',
   NAV_AddWallet:        'Add Wallet',
@@ -144,8 +144,8 @@ en.data = {
   TRANS_eth:             'Only ETH',
   TRANS_etc:             'Only ETC',
   TRANS_advanced:        '+Advanced: Add Data ',
-  TRANS_data:            ' Data: ',
-  TRANS_gas:             ' Gas: ',
+  TRANS_data:            'Data: ',
+  TRANS_gas:             'Gas Limit: ',
   TRANS_sendInfo:        'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.',
 
   /* Send Transaction Modals */

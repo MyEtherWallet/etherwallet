@@ -156,7 +156,7 @@ vi.data = {
   TRANS_etc:             'Chỉ ETC',
   TRANS_advanced:        'Nâng Cao: Thêm Dữ Liệu',
   TRANS_data:            'Dữ Liệu:',
-  TRANS_gas:             'Gas:',
+  TRANS_gas:             'Gas Limit:',
   TRANS_sendInfo:        'Mỗi Giao dịch Phổ Thông sử dụng hết 21000 gas có giá tương đương 0.000441 ETH. Chúng tôi áp dụng giá Gas dành cho một giao dịch cao hơn so với mức tối thiểu là 0.000000021 ETH nhằm đảm bảo một giao dịch được diễn ra nhanh. Chúng tôi hoàn toàn không nhận được khoản tiền phát sinh nào từ phí giao dịch.',
 
   /* Send Transaction Modals */

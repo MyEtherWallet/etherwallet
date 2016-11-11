@@ -151,7 +151,7 @@ pt.data = {
   TRANS_etc:             'Só ETC',
   TRANS_advanced:        '+Avançado: Adicionar dados ',
   TRANS_data:            ' Dados: ',
-  TRANS_gas:             ' Gás: ',
+  TRANS_gas:             'Gás Limit: ',
   TRANS_sendInfo:        'Uma transação padrão usando 21000 gás irá custar 0.000441 ETH. Nós usamos um preço ligeiramente acima do mínima de gás de 0,000000021 ETH para garantir que ele seja minado rapidamente. Nós não recebemos nenhuma taxa de transação.',
 
   /* Send Transaction Modals */
