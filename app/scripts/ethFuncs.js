@@ -27,7 +27,7 @@ ethFuncs.padLeftEven = function(hex) {
 }
 ethFuncs.addTinyMoreToGas = function(hex) {
 	hex = this.sanitizeHex(hex);
-	return new BigNumber(hex).plus(etherUnits.getValueOfUnit('gwei')).toDigits(2).toString(16);
+	return new BigNumber(hex).plus(etherUnits.getValueOfUnit('gwei')*41).toDigits(2).toString(16); //add 41 gwei extra for faster mining
 }
 ethFuncs.decimalToHex = function(dec) {
 	return new BigNumber(dec).toString(16);

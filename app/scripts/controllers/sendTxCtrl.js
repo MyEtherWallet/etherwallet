@@ -28,6 +28,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		decimals: "",
 		type: "custom",
 	};
+	$scope.crowdFundData = [{
+		to: "0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
+		data: "0xefc81a8c"
+	}];
 	$scope.tx = {
 		gasLimit: globalFuncs.urlGet('gaslimit') == null ? globalFuncs.defaultTxGasLimit : globalFuncs.urlGet('gaslimit'),
 		data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
@@ -63,17 +67,6 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 			$scope.tokenTx.value = $scope.tx.value;
 		}
 	}, true);
-
-	$scope.$watch('[tx.to]', function() {
-		if ( $scope.tx.to == "0xa74476443119A942dE498590Fe1f2454d7D4aC0d" ) { // if golem crowdfund address
-			$scope.setSendMode(0);
-			$scope.dropdownEnabled = false
-			$scope.tx.data = '0xefc81a8c'
-			$scope.showAdvance = true
-		} else {
-			$scope.dropdownEnabled = true
-		}
-	}, true);
 	$scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function() {
 		if ($scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id] !== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to) && $scope.Validator.isPositiveNumber($scope.tokenTx.value)) {
 			if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
@@ -88,6 +81,19 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		if (oldValue.sendMode != newValue.sendMode && newValue.sendMode == 0) {
 			$scope.tx.data = "";
 			$scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
+		}
+		if ($scope.Validator.isValidAddress($scope.tx.to)) {
+			for (var i = 0; i < $scope.crowdFundData.length; i++) {
+				if ($scope.tx.to.toLowerCase() == $scope.crowdFundData[i].to.toLowerCase()) {
+					$scope.tx.data = $scope.crowdFundData[i].data;
+					$scope.setSendMode(0);
+					$scope.dropdownEnabled = false
+					$scope.showAdvance = true;
+					break;
+				} else {
+					$scope.dropdownEnabled = true
+				}
+			}
 		}
 	}, true);
 	// if there is a query string, show an warning at top of page
@@ -111,12 +117,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 			estObj.value = '0x00';
 		}
 		ethFuncs.estimateGas(estObj, $scope.tx.sendMode == 2, function(data) {
-            $scope.validateTxStatus = "";
+			$scope.validateTxStatus = "";
 			if (!data.error) {
-                if(data.data=='-1')   $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[21]));
-                $scope.tx.gasLimit = data.data;
+				if (data.data == '-1') $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[21]));
+				$scope.tx.gasLimit = data.data;
 			} else {
-                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+				$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
 			}
 		});
 	}
@@ -205,7 +211,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 				}
 			});
 		} else {
-		  $scope.tx.value = $scope.tokenObjs[$scope.tokenTx.id].getBalance();
+			$scope.tx.value = $scope.tokenObjs[$scope.tokenTx.id].getBalance();
 		}
 	}
 	$scope.setSendMode = function(sendMode, tokenId = '', tokenSymbol = '') {
