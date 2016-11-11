@@ -8,6 +8,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.showAdvance = false;
+	$scope.dropdownEnabled = true;
 	$scope.showRaw = false;
 	$scope.replayContract = "0xaa1a6e3e6ef20068f7f8d8c835d2d22fd5116444";
 	$scope.splitHex = "0x0f2c9329";
@@ -60,6 +61,17 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		if ($scope.tx.sendMode == 4) {
 			$scope.tokenTx.to = $scope.tx.to;
 			$scope.tokenTx.value = $scope.tx.value;
+		}
+	}, true);
+
+	$scope.$watch('[tx.to]', function() {
+		if ( $scope.tx.to == "0xa74476443119A942dE498590Fe1f2454d7D4aC0d" ) { // if golem crowdfund address
+			$scope.tx.data = '0xefc81a8c'
+			$scope.showAdvance = true
+			$scope.setSendMode(0);
+			$scope.dropdownEnabled = false
+		} else {
+			$scope.dropdownEnabled = true
 		}
 	}, true);
 	$scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function() {

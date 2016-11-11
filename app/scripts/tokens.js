@@ -15,6 +15,12 @@ Token.popTokens = [{
 	"decimal": 0,
 	"type": "default"
 },
+/*{ http://www.blockcdn.org/
+  "address": "0x1e797Ce986C3CFF4472F7D38d5C4aba55DfEFE40",
+  "symbol": "BlockCDN",
+  "decimal": 0, // ???
+  "type": "default"
+},*/
 {
   "address": "0xe4c94d45f7aef7018a5d66f44af780ec6023378e",
   "symbol": "CryptoCarbon",
@@ -44,6 +50,12 @@ Token.popTokens = [{
 	"symbol": "DGDb",
 	"decimal": 0,
 	"type": "default"
+},
+{
+  "address": "0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
+  "symbol": "GNT (Golem)",
+  "decimal": 18,
+  "type": "default"
 },
 {
   "address": "0xb582baaf5e749d6aa98a22355a9d08b4c4d013c8",
