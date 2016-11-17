@@ -44,7 +44,7 @@ fr.data = {
   x_Keystore:           'Fichier Keystore (UTC / JSON · Recommandé · Chiffré · Format Mist)',
   x_Keystore2:          'Fichier Keystore (UTC / JSON)',
   x_KeystoreDesc:       'Ce fichier Keystore utilise le même format que celui que Mist, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
-  x_Mnemonic:           'Phrase mnémonique (MetaMask / Jaxx)',
+  x_Mnemonic:           'Phrase mnémonique (MetaMask / Jaxx / ether.cards)',
   x_Json:               'Fichier JSON (non-chiffré)',
   x_JsonDesc:           'C\'est la version non-chiffrée au format JSON de votre clé privée. Cela signifie que vous n\'avez pas besoin de votre mot de passe pour l\'utiliser mais que toute personne qui trouve ce JSON peut accéder à votre portefeuille et vos Ether sans mot de passe.',
   x_PrintShort:         'Imprimer',

@@ -35,7 +35,7 @@ en.data = {
   x_Keystore:           'Keystore File (UTC / JSON · Recommended · Encrypted · Mist Format)',
   x_Keystore2:          'Keystore File (UTC / JSON)',
   x_KeystoreDesc:       'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up.',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx)',
+  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / ether.cards)',
   x_Password:           'Password',
   x_Print:              'Print Paper Wallet',
   x_PrintDesc:          'ProTip: Click print and save this as a PDF, even if you do not own a printer!',

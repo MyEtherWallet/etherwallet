@@ -10,17 +10,23 @@ var Token = function(contractAddress, userAddress, symbol, decimal, type) {
 Token.balanceHex = "0x70a08231";
 Token.transferHex = "0xa9059cbb";
 Token.popTokens = [{
+  "address": "0xAc709FcB44a43c35F0DA4e3163b117A17F3770f5",
+  "symbol": "ARC",
+  "decimal": 18,
+  "type": "default"
+},
+{
 	"address": "0x74c1e4b8cae59269ec1d85d3d4f324396048f4ac",
 	"symbol": "BeerCoin 🍺 ",
 	"decimal": 0,
 	"type": "default"
 },
-/*{ http://www.blockcdn.org/
+{ //http://www.blockcdn.org/
   "address": "0x1e797Ce986C3CFF4472F7D38d5C4aba55DfEFE40",
-  "symbol": "BlockCDN",
-  "decimal": 0, // ???
+  "symbol": "BCDN",
+  "decimal": 15,
   "type": "default"
-},*/
+},
 {
   "address": "0xe4c94d45f7aef7018a5d66f44af780ec6023378e",
   "symbol": "CryptoCarbon",

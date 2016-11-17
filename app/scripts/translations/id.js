@@ -11,7 +11,7 @@ id.data = {
   MNEM_2:               'Satu frasa "HD mnemonic" dapat mengakses beberapa  dompet / alamat. Pilih alamat yang Anda inginkan untuk dipakai.',
   MNEM_more:            'Tampilkan Alamat berikutnya',
   MNEM_prev:            'Tampilkan Alamat sebelumnya',
-  x_Mnemonic:           '"Mnemonic Phrase" (MetaMask / Jaxx)',
+  x_Mnemonic:           '"Mnemonic Phrase" (MetaMask / Jaxx / ether.cards)',
   ADD_Radio_5:          'Paste/Ketik Mnemonic Anda',
   SEND_custom:          'Tambahkan "Custom Token"',
   ERROR_21:             ' bukan ERC-20 token yang valid. Jika token lain sedang loading, hapus token ini dan coba lagi.',

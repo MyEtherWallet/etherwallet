@@ -45,7 +45,7 @@ nl.data = {
   x_PrintDesc:          'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
   x_CSV:                'CSV bestand (onverlseuteld)',
   x_TXT:                'TXT bestand (onverlseuteld)',
-  x_Mnemonic:           'Mnemonic Zin (MetaMask / Jaxx)',
+  x_Mnemonic:           'Mnemonic Zin (MetaMask / Jaxx / ether.cards)',
 
   /* Header */
   MEW_Warning_1:        'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites!',
