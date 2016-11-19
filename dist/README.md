@@ -3,12 +3,13 @@
 
 ## Website: https://www.MyEtherWallet.com
 ## Chrome Extension: https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm
-## Download the Latest Release: github.com/kvhnuke/etherwallet/releases/latest
-    * dist-vX.X.X.X.zip is the smaller package containing the gh-pages branch aka MyEtherWallet.com
-    * chrome-extension-vX.X.X.X.zip is the chrome extension package
-    * source code is the full source for developers to get started with (although cloning or forking the mercury branch is probably a better choice)
+## Download the Latest Release: https://github.com/kvhnuke/etherwallet/releases/tag/v0.3.2.3
+- dist-vX.X.X.X.zip is the smaller package containing the gh-pages branch aka MyEtherWallet.com
+- chrome-extension-vX.X.X.X.zip is the chrome extension package
+- source code is the full source for developers to get started with (although cloning or forking the mercury branch is probably a better choice)
 
-Content of MyEtherWallet.com is served from github.
+
+Content of MyEtherWallet.com is served directly from this Github (gh-pages) via Cloudflare (for SSL and DDOS protection).
 
 
 
