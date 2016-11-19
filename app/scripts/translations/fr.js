@@ -4,7 +4,7 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
-  TRANS_gas:             'Gaz : ', // changed in ENG to Gas Limit:
+  TRANS_gas:            'Limite en gaz : ', // changed in ENG to Gas Limit:
   ERROR_22:             'Impossible d\'estimer le gaz. Il n\'y a pas assez de fonds sur le compte, ou l\'adresse du contrat de réception a pu renvoyer une erreur. Vous pouvez ajuster vous-même le gaz et recommencer. Le message d\'erreur à l\'envoi peut comporter plus d\'informations.',
 
   ADD_Ledger_4:         'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
