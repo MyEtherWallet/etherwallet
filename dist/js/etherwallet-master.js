@@ -5379,7 +5379,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     fr.code = 'fr';
     fr.data = {
 
-      TRANS_gas: 'Gaz : ', // changed in ENG to Gas Limit:
+      TRANS_gas: 'Limite en gaz : ', // changed in ENG to Gas Limit:
       ERROR_22: 'Impossible d\'estimer le gaz. Il n\'y a pas assez de fonds sur le compte, ou l\'adresse du contrat de réception a pu renvoyer une erreur. Vous pouvez ajuster vous-même le gaz et recommencer. Le message d\'erreur à l\'envoi peut comporter plus d\'informations.',
 
       ADD_Ledger_4: 'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
@@ -6672,7 +6672,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     module.exports = id;
   }, {}], 45: [function (require, module, exports) {
     // Italian
-    // Last sync with en.js: commit cd58648be07d84435d6e917d5a1b3eb8a3814207
+    // Last sync with en.js: commit 0db6913489a360e48155ec11c8832c9e824ef42d
     'use strict';
 
     var it = function it() {};
@@ -6820,7 +6820,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       TRANS_etc: 'Solo ETC',
       TRANS_advanced: '+Avanzate: aggiungi dati ',
       TRANS_data: 'Dati: ',
-      TRANS_gas: 'Gas Limit: ',
+      TRANS_gas: 'Limite gas: ',
       TRANS_sendInfo: 'Una transazione standard che utilizza 21000 gas costerà 0,000441 ETH. Utilizziamo un prezzo del gas leggermente al di sopra del minimo pari a 0,000000021 ETH per assicurarci che venga elaborata velocemente. Noi non prendiamo commissioni.',
 
       /* Send Transaction Modals */
@@ -7030,7 +7030,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       HELP_2a_Desc_6: 'Ricorda, devi evitare la perdita delle chiavi e della password in caso di smarrimento o malfunzionamento del tuo hard disk, penna USB, o pezzo di carta. Devi anche considerare la perdita fisica o il danneggiamento di una intera area (pensa a incendi o inondazioni).',
 
       HELP_2b_Title: '2b) Come implemento un portafoglio offline in maniera sicura con MyEtherWallet?',
-      HELP_2b_Desc_1: 'Vai sul nostro github: [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest).',
+      HELP_2b_Desc_1: 'Vai su [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest).',
       HELP_2b_Desc_2: 'Fai clic su `dist-vX.X.X.X.zip`.',
       HELP_2b_Desc_3: 'Sposta il file zip su un computer *air-gapped*.',
       HELP_2b_Desc_4: 'Decomprimilo e fai doppio clic su `index.html`.',
@@ -7085,7 +7085,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       HELP_5_Desc_9: 'Dal momento che stiamo costantemente aggiornando MyEtherWallet.com, ti consigliamo di aggiornare periodicamente la tua versione locale del repository.',
 
       HELP_5CX_Title: '5) Come posso installare questa estensione dal repository invece che dal Chrome Store? ',
-      HELP_5CX_Desc_2: 'Fai clic su `chrome-extension-vX.X.X.X.zip`.',
+      HELP_5CX_Desc_2: 'Fai clic su `chrome-extension-vX.X.X.X.zip` e decomprimi il file.',
       HELP_5CX_Desc_3: 'In Google Chrome, fai clic su Impostazioni (dal menu in alto a destra).',
       HELP_5CX_Desc_4: 'Fai clic su "Estensioni" sulla sinistra.',
       HELP_5CX_Desc_5: 'Seleziona la casella "Modalità sviluppatore" all\'inizio della pagina.',
