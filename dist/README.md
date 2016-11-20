@@ -20,12 +20,14 @@ Content of MyEtherWallet.com is served directly from this Github (gh-pages) via 
 MyEtherWallet is an open source, javascript, client-side tool for generating Ether wallets. It was created and is maintained by [kvhnuke](https://github.com/kvhnuke) and [tayvano](https://github.com/tayvano) aka [insomniasexx](https://www.reddit.com/user/insomniasexx).
 
 - Generate Wallets completely client side.
-- Unlock variety of key types: raw private key, encrypted private key, keystore file, mnemonics, hardware wallets.
-- Easily send Ether and Tokens (ERC-20 tokens)
-- Send "Only ETH" or "Only ETC" to ensure they are not victim of replay attacks.
+- Unlock variety of key types: raw private key, encrypted private key, keystore file, mnemonics, Ledger Nano S hardware wallet.
+- Easily send Ether and Tokens (ERC-20 tokens).
+- Send "Only ETH" or "Only ETC" to ensure you are not victim of replay attacks.
 - Generate and send offline transactions, ensuring your private keys never touch an internet-connected device.
+- Securely access your ETH & Tokens on your [Ledger Nano S](http://support.ledgerwallet.com/knowledge_base/topics/how-to-use-myetherwallet-with-your-nano-s) via the MyEtherWallet interface (Chrome & Opera natively, Firefox w/ [add-on](https://addons.mozilla.org/en-US/firefox/addon/u2f-support-add-on/))
+- Now in 18 languages thanks 100% to the amazing Ethereum community.
 - Include recommended address, amount, gas limit, and data via URL.
-    - ie: https://www.myetherwallet.com/?gaslimit=21000&to=0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8&value=0.5#send-transaction
+    - ie: https://www.myetherwallet.com/?to=0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8&value=0.5&gaslimit=21000&data=0x0#send-transaction
 
 **Goals**
 
