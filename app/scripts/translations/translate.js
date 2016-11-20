@@ -1,5 +1,4 @@
  'use strict';
-  //var ar = require('./ar');
   var de = require('./de');
   var el = require('./el');
   var en = require('./en');
@@ -23,7 +22,6 @@
   var zh = require('./zh');
 
  var translate = function($translateProvider) {
-  //$translateProvider.translations(ar.code, translate.marked(ar.data));
   $translateProvider.translations(de.code, translate.marked(de.data));
   $translateProvider.translations(el.code, translate.marked(el.data));
   $translateProvider.translations(en.code, translate.marked(en.data));
