@@ -228,7 +228,7 @@
           <form role="form">
             <div class="form-group">
               <label for="walletName" translate="MYWAL_Name">Wallet Name</label>
-              <input type="text" class="form-control" value="" ng-model="viewWallet.nick"/>
+              <input type="text" class="form-control" value="" ng-model="viewWallet.nick" ng-keyup="$event.keyCode == 13 && editSave()"/>
             </div>
           </form>
         </div>
@@ -260,7 +260,7 @@
             <div class="form-group">
               <label for="walletName" translate="ADD_Label_3">Your file is encrypted. Please enter the password: </label>
               <div class="input-group">
-                <input type="{{showPass && 'password' || 'text'}}" class="form-control" ng-model="password" />
+                <input type="{{showPass && 'password' || 'text'}}" class="form-control" ng-model="password" ng-keyup="$event.keyCode == 13 && decryptWallet()" />
                 <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
               </div>
               <div ng-bind-html="viewStatus"></div>

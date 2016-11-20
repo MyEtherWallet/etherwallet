@@ -40,11 +40,11 @@ var walletDecryptDrtv = function() {
       <div id="selectedTypeKey" ng-if="walletType==\'pasteprivkey\'">\n \
         <h4 translate="ADD_Radio_3"> Paste / type your private key: </h4>\n \
         <div class="form-group">\n \
-          <textarea rows="4" class="form-control" placeholder="{{ \'x_PrivKey2\' | translate }}" ng-model="$parent.$parent.manualprivkey" ng-class="Validator.isValidPrivKey($parent.$parent.manualprivkey.length) ? \'is-valid\' : \'is-invalid\'" ng-change="onPrivKeyChange()"></textarea>\n \
+          <textarea rows="4" class="form-control" placeholder="{{ \'x_PrivKey2\' | translate }}" ng-model="$parent.$parent.manualprivkey" ng-class="Validator.isValidPrivKey($parent.$parent.manualprivkey.length) ? \'is-valid\' : \'is-invalid\'" ng-change="onPrivKeyChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>\n \
         </div>\n \
         <div class="form-group" ng-if="requirePPass">\n \
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>\n \
-          <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="$parent.$parent.privPassword" ng-class="Validator.isPasswordLenValid($parent.$parent.privPassword,0) ? \'is-valid\' : \'is-invalid\'" ng-change="onPrivKeyPassChange()">\n \
+          <input class="form-control" type="password" placeholder="{{ \'x_Password\' | translate }}" ng-model="$parent.$parent.privPassword" ng-class="Validator.isPasswordLenValid($parent.$parent.privPassword,0) ? \'is-valid\' : \'is-invalid\'" ng-change="onPrivKeyPassChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()">\n \
         </div>\n \
       </div>\n \
       <!-- /if selected type key-->\n \
@@ -52,7 +52,7 @@ var walletDecryptDrtv = function() {
       <div id="selectedTypeMnemonic" ng-if="walletType==\'pastemnemonic\'">\n \
         <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>\n \
         <div class="form-group">\n \
-          <textarea rows="4" class="form-control" placeholder="{{ \'x_Mnemonic\' | translate}}" ng-model="$parent.$parent.manualmnemonic" ng-class="Validator.isValidMnemonic($parent.$parent.manualmnemonic) ? \'is-valid\' : \'is-invalid\'" ng-change="onMnemonicChange()"></textarea>\n \
+          <textarea rows="4" class="form-control" placeholder="{{ \'x_Mnemonic\' | translate}}" ng-model="$parent.$parent.manualmnemonic" ng-class="Validator.isValidMnemonic($parent.$parent.manualmnemonic) ? \'is-valid\' : \'is-invalid\'" ng-change="onMnemonicChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>\n \
         </div>\n \
       </div>\n \
       <!-- /if selected type mnemonic-->\n \
