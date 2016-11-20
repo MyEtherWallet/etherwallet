@@ -21,7 +21,7 @@ MyEtherWallet is an open source, javascript, client-side tool for generating Eth
 
 - Generate Wallets completely client side.
 - Unlock variety of key types: raw private key, encrypted private key, keystore file, mnemonics, Ledger Nano S hardware wallet.
-- Easily send Ether and Tokens (ERC-20 tokens).
+- Easily send Ether and *any* ERC-20 Standard Token. Many tokens included as default: DGD, GNT, ICN, MKR, PLU, REP, SNGLS, and more.
 - Send "Only ETH" or "Only ETC" to ensure you are not victim of replay attacks.
 - Generate and send offline transactions, ensuring your private keys never touch an internet-connected device.
 - Securely access your ETH & Tokens on your [Ledger Nano S](http://support.ledgerwallet.com/knowledge_base/topics/how-to-use-myetherwallet-with-your-nano-s) via the MyEtherWallet interface (Chrome & Opera natively, Firefox w/ [add-on](https://addons.mozilla.org/en-US/firefox/addon/u2f-support-add-on/))
