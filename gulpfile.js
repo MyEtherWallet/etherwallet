@@ -191,10 +191,6 @@ gulp.task('clean4', function () {
     gulp.src('./dist/cx-wallet.html', {read: false})
     .pipe(clean())
 });
-gulp.task('clean5', function () {
-    gulp.src('./chrome-extension/embedded-send.html', {read: false})
-    .pipe(clean())
-});
 
 
 // Watch Tasks
@@ -227,6 +223,6 @@ gulp.task('watchCX', function() {
 gulp.task('build', ['buildHTML','less', 'staticJS', 'browserify', 'minJS', 'copy-images','copy-fonts', 'copy-cx', 'cxBrowserify', 'cxMinJS',]);
 gulp.task('watch', ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX']);
 
-gulp.task('clean', ['clean1', 'clean2', 'clean3', 'clean4', 'clean5']);
+gulp.task('clean', ['clean1', 'clean2', 'clean3', 'clean4']);
 
 gulp.task('default', ['build', 'watch']);
