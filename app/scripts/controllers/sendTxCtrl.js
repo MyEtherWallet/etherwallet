@@ -114,7 +114,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		}
 	}, true);
 	// if there is a query string, show an warning at top of page
-	if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit')) $scope.hasQueryString = true
+	if ( globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol') )  $scope.hasQueryString = true
 	$scope.estimateGasLimit = function() {
 		var estObj = {
 			to: $scope.tx.to,

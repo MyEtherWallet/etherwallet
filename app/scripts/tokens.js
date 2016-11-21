@@ -41,7 +41,7 @@ Token.popTokens = [{
 },
 {
 	"address": "0x5c40eF6f527f4FbA68368774E6130cE6515123f2",
-	"symbol": "DAO extraBalance",
+	"symbol": "DAO_extraBalance",
 	"decimal": 0,
 	"type": "default"
 },
@@ -59,7 +59,7 @@ Token.popTokens = [{
 },
 {
   "address": "0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
-  "symbol": "GNT (Golem)",
+  "symbol": "GNT",
   "decimal": 18,
   "type": "default"
 },
