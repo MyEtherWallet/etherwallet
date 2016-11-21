@@ -35,21 +35,20 @@ gulp.task('less', function (cb) {
         return "ERROR! Problem file : " + error.message;
       }))
       .pipe( autoprefixer({
-        browsers: ['last 3 version', 'ios 6', 'android 4'], remove: false
+        browsers: ['last 3 versions', 'iOS > 7'], remove: false
       } ) )
       .pipe(rename(lessOutputFile))
       //.pipe(gulp.dest(lessOutputFolder)) // unminified css
       //.pipe(gulp.dest(cxLessOutputFolder)) // unminified css
-      .pipe(cssnano({ autoprefixer: false })).on('error', notify.onError(function (error) {
+      .pipe(cssnano({ autoprefixer: false, safe: true })).on('error', notify.onError(function (error) {
         return "ERROR! minify CSS Problem file : " + error.message;
       }))
       .pipe(rename(lessOutputFileMin))
       //mew css
       .pipe(gulp.dest(lessOutputFolder))
-      .pipe(notify('MEW Styles Complete'))
       //cx css
       .pipe(gulp.dest(cxLessOutputFolder))
-      //.pipe(notify('CX Styles Complete'));
+      .pipe(notify('Styles Complete'));
 });
 
 
@@ -70,20 +69,30 @@ gulp.task('staticJS', function () {
       .pipe(uglify())
       // mew static
       .pipe(gulp.dest('./dist/js/'))
-      .pipe(notify('MEW StaticJS Complete'))
       // mew staticxc
       .pipe(gulp.dest('./chrome-extension/js/'))
-      .pipe(notify('CX StaticJS Complete'));
+      .pipe(notify('StaticJS Complete'));
 });
+
+
+
+// Browserify
+gulp.task('browserify', shell.task([
+  'browserify '+mainjs+' -o dist/js/etherwallet-master.js'
+]));
+gulp.task('cxBrowserify', shell.task([
+  'browserify '+mainjs+' -o chrome-extension/js/etherwallet-master.js'
+]));
+
+
 
 gulp.task('minJS',['browserify'],function () {
   return gulp
     .src('./dist/js/etherwallet-master.js')
       .pipe(babel({ presets: ['es2015'], compact: false }))
       .pipe(gulp.dest('./dist/js/'))
-      .pipe(notify('MEW MinJS'));
+      .pipe(notify('MinJS Complete'));
 });
-
 gulp.task('cxMinJS',['cxBrowserify'],function () {
   return gulp
     .src('./chrome-extension/js/etherwallet-master.js')
@@ -95,14 +104,6 @@ gulp.task('cxMinJS',['cxBrowserify'],function () {
 
 
 
-// Browserify
-gulp.task('browserify', shell.task([
-  'browserify '+mainjs+' -o dist/js/etherwallet-master.js'
-]));
-
-gulp.task('cxBrowserify', shell.task([
-  'browserify '+mainjs+' -o chrome-extension/js/etherwallet-master.js'
-]));
 
 
 
@@ -190,14 +191,18 @@ gulp.task('clean4', function () {
     gulp.src('./dist/cx-wallet.html', {read: false})
     .pipe(clean())
 });
+gulp.task('clean5', function () {
+    gulp.src('./chrome-extension/embedded-send.html', {read: false})
+    .pipe(clean())
+});
 
 
 // Watch Tasks
 gulp.task('watchJS', function() {
   gulp.watch([jsFiles, AllJsFiles],[
     'browserify',
-    'cxBrowserify',
     'minJS',
+    'cxBrowserify',
     'cxMinJS'
   ]);
 });
@@ -219,9 +224,9 @@ gulp.task('watchCX', function() {
 
 
 
-gulp.task('build', ['buildHTML','less', 'staticJS', 'browserify', 'cxBrowserify', 'minJS', 'cxMinJS', 'copy-images','copy-fonts', 'copy-cx']);
+gulp.task('build', ['buildHTML','less', 'staticJS', 'browserify', 'minJS', 'copy-images','copy-fonts', 'copy-cx', 'cxBrowserify', 'cxMinJS',]);
 gulp.task('watch', ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX']);
 
-gulp.task('clean', ['clean1', 'clean2', 'clean3', 'clean4']);
+gulp.task('clean', ['clean1', 'clean2', 'clean3', 'clean4', 'clean5']);
 
 gulp.task('default', ['build', 'watch']);
