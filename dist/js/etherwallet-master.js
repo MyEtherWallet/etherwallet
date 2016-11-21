@@ -1284,7 +1284,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         $scope.dropdownAmount = false;
       };
       $scope.tx = {
-        gasLimit: globalFuncs.urlGet('gaslimit') == null ? globalFuncs.defaultTxGasLimit : globalFuncs.urlGet('gaslimit'),
+        // if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
+        gasLimit: globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null ? globalFuncs.urlGet('gaslimit') != null ? globalFuncs.urlGet('gaslimit') : globalFuncs.urlGet('gas') : globalFuncs.defaultTxGasLimit,
         data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
         to: globalFuncs.urlGet('to') == null ? "" : globalFuncs.urlGet('to'),
         unit: "ether",
@@ -1294,8 +1295,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         donate: false,
         tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null ? false : globalFuncs.urlGet('tokenSymbol')
       };
-      globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode(0) : $scope.setSendMode(globalFuncs.urlGet('sendMode')); // 0 = ETH (Standard)   1 = Only ETH    2 = Only ETC    4 = Token
-      globalFuncs.urlGet('gaslimit') == null ? '' : $scope.showAdvance = true;
+      globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode(0) : $scope.setSendMode(globalFuncs.urlGet('sendMode')); // 0 = ETH (Standard)    1 = Only ETH    2 = Only ETC    4 = Token
+      globalFuncs.urlGet('gaslimit') == null || globalFuncs.urlGet('gas') == null ? '' : $scope.showAdvance = true;
       globalFuncs.urlGet('data') == null ? '' : $scope.showAdvance = true;
       $scope.$watch(function () {
         if (walletService.wallet == null) return null;
