@@ -1268,6 +1268,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         to: "0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
         data: "0xefc81a8c"
       }];
+      $scope.setSendMode = function (sendMode) {
+        var tokenId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+        var tokenSymbol = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+
+        $scope.tx.sendMode = sendMode;
+        $scope.unitReadable = '';
+        if (sendMode == 0) {
+          $scope.unitTranslation = 'TRANS_standard';
+        } else if (sendMode == 1) {
+          $scope.unitTranslation = 'TRANS_eth';
+        } else if (sendMode == 2) {
+          $scope.unitTranslation = 'TRANS_etc';
+        } else if (sendMode == 4) {
+          $scope.unitTranslation = '';
+          $scope.unitReadable = tokenSymbol;
+          $scope.tokenTx.id = tokenId;
+        }
+        $scope.dropdownAmount = false;
+      };
       $scope.tx = {
         gasLimit: globalFuncs.urlGet('gaslimit') == null ? globalFuncs.defaultTxGasLimit : globalFuncs.urlGet('gaslimit'),
         data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
@@ -1277,8 +1296,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         nonce: null,
         gasPrice: null,
         donate: false,
-        sendMode: globalFuncs.urlGet('sendMode') == null ? 0 : globalFuncs.urlGet('value') // 0 = ETH (Standard)   1 = Only ETH    2 = Only ETC    3 = Token
+        tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null ? false : globalFuncs.urlGet('tokenSymbol')
       };
+      sendMode: globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode(0) : $scope.setSendMode(globalFuncs.urlGet('sendMode')), // 0 = ETH (Standard)   1 = Only ETH    2 = Only ETC    4 = Token
       globalFuncs.urlGet('gaslimit') == null ? '' : $scope.showAdvance = true;
       globalFuncs.urlGet('data') == null ? '' : $scope.showAdvance = true;
       $scope.$watch(function () {
@@ -1450,25 +1470,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           $scope.tx.value = $scope.tokenObjs[$scope.tokenTx.id].getBalance();
         }
       };
-      $scope.setSendMode = function (sendMode) {
-        var tokenId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-        var tokenSymbol = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-
-        $scope.tx.sendMode = sendMode;
-        $scope.unitReadable = '';
-        if (sendMode == 0) {
-          $scope.unitTranslation = 'TRANS_standard';
-        } else if (sendMode == 1) {
-          $scope.unitTranslation = 'TRANS_eth';
-        } else if (sendMode == 2) {
-          $scope.unitTranslation = 'TRANS_etc';
-        } else if (sendMode == 4) {
-          $scope.unitTranslation = '';
-          $scope.unitReadable = tokenSymbol;
-          $scope.tokenTx.id = tokenId;
-        }
-        $scope.dropdownAmount = false;
-      };
       // Tokens
       $scope.setTokens = function () {
         $scope.tokenObjs = [];
@@ -1481,7 +1482,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           $scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
           $scope.tokenObjs[$scope.tokenObjs.length - 1].setBalance();
         }
-        $scope.tokenTx.id = -1;
+        if ($scope.tx.sendMode == 4 && !$scope.tx.tokenSymbol) {
+          $scope.tokenTx.id = 0;
+          $scope.tx.tokenSymbol = $scope.tokenObjs[0].symbol;
+          $scope.tokenObjs[0].type = "custom";
+          $scope.setSendMode($scope.tx.sendMode, $scope.tokenTx.id, $scope.tx.tokenSymbol);
+        } else if ($scope.tx.tokenSymbol) {
+          for (var i = 0; i < $scope.tokenObjs.length; i++) {
+            if ($scope.tokenObjs[i].symbol.toLowerCase().indexOf($scope.tx.tokenSymbol.toLowerCase()) !== -1) {
+              $scope.tokenTx.id = i;
+              $scope.tokenObjs[i].type = "custom";
+              $scope.setSendMode(4, $scope.tokenTx.id, $scope.tokenObjs[i].symbol);
+              break;
+            }
+          }
+          $scope.tokenTx.id = -1;
+        }
+        if ($scope.tx.sendMode != 4) $scope.tokenTx.id = -1;
       };
       $scope.saveTokenToLocal = function () {
         try {
