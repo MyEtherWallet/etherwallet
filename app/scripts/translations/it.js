@@ -1,11 +1,11 @@
 // Italian
-// Last sync with en.js: commit a2553ad12b3fb0317cada7ef4f921846fcb89687
+// Last sync with en.js: commit a80dd24a9e7922fdbbe174de0f352ee858245430
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
 
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
+  WARN_Send_Link_2:     '**Attenzione:** Puoi includere dati solamente se invii tramite "ETH (transazione standard)". Rimuovi i parametri "sendMode" e/o "tokenSymbol" dall\'URI per inviare una transazione con dati.',
 
   /* Navigation*/
   NAV_YourWallets:      'I tuoi portafogli',
@@ -284,7 +284,7 @@ it.data = {
   SUCCESS_5:            'Hai votato con successo. Grazie per essere un partecipante attivo in The DAO.',
   SUCCESS_6:            'File selezionato: ',
 
-  WARN_Send_Link:       'Sei arrivato qui da un link che ha riempito per te i campi indirizzo, importo, gas o dati. Puoi cambiare queste informazioni prima di inviare. Sblocca il tuo portafoglio per iniziare.',
+  WARN_Send_Link:       'Sei arrivato qui da un link che ha riempito per te i campi indirizzo, importo, gas, dati o tipo di transazione (modalità di invio). Puoi cambiare queste informazioni prima di inviare. Sblocca il tuo portafoglio per iniziare.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Mittente non valido',
