@@ -11,6 +11,7 @@ pt.data = {
   ADD_Ledger_0a:        'Re-abra MyEtherWallet em uma conexão (SSL) segura',
   ADD_Ledger_0b:        'Re-abra MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/)',
   WARN_Send_Link:       'Você chegou através de um link que tem o endereço, quantidade de gás, ou campos de dados preenchidos para você. Você pode alterar qualquer informação antes de enviar. Desbloqueie sua carteira para começar.',
+  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Navigation*/
   NAV_YourWallets:      'Suas Carteiras',

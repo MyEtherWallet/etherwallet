@@ -4,13 +4,7 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
-  TRANS_gas:            'Limite en gaz : ', // changed in ENG to Gas Limit:
-  ERROR_22:             'Impossible d\'estimer le gaz. Il n\'y a pas assez de fonds sur le compte, ou l\'adresse du contrat de réception a pu renvoyer une erreur. Vous pouvez ajuster vous-même le gaz et recommencer. Le message d\'erreur à l\'envoi peut comporter plus d\'informations.',
-
-  ADD_Ledger_4:         'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
-  ADD_Ledger_0a:        'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL)',
-  ADD_Ledger_0b:        'Réouvrir MyEtherWallet avec [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/)',
-  WARN_Send_Link:       'Vous être arrivé grâce à un lien qui a rempli l\'adresse, le montant, le gaz ou les champs de données pour vous. Vous pouvez modifier toutes les informations avant d\'envoyer. Débloquez votre portefeuille pour démarrer.',
+  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
@@ -31,27 +25,28 @@ fr.data = {
   NAV_Contact:          'Contact',
 
   /* General */
-  x_Wallet:             'Portefeuille',
-  x_Password:           'Mot de passe',
-  x_Download:           'Télécharger',
-  x_Address:            'Votre adresse',
-  x_Save:               'Sauvegarder',
-  x_Cancel:             'Annuler',
   x_AddessDesc:         'Aussi appelé "Numéro de compte" ou "Clé publique". C\'est ce que vous envoyez aux gens pour qu\'ils puissent vous envoyer des ether. Cette icone est une façon simple de reconnaitre votre adresse.',
-  x_PrivKey:            'Clé privée (non-chiffrée)',
-  x_PrivKey2:           'Clé privée',
-  x_PrivKeyDesc:        'C\'est la version textuelle non-chiffrée de votre clé privée, ce qui signifie qu\'aucun mot de passe n\'est nécessaire pour l\'utiliser. Si quelqu\'un venait à découvrir cette clé privée, il pourrrait accéder à votre portefeuille sans mot de passe. Pour cette raison, la version chiffrée de votre clé privée est recommandée.',
-  x_Keystore:           'Fichier Keystore (UTC / JSON · Recommandé · Chiffré · Format Mist)',
-  x_Keystore2:          'Fichier Keystore (UTC / JSON)',
-  x_KeystoreDesc:       'Ce fichier Keystore utilise le même format que celui que Mist, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
-  x_Mnemonic:           'Phrase mnémonique (MetaMask / Jaxx / ether.cards)',
+  x_Address:            'Votre adresse',
+  x_Cancel:             'Annuler',
+  x_CSV:                'Fichier CSV (non-chiffré)',
+  x_Download:           'Télécharger',
   x_Json:               'Fichier JSON (non-chiffré)',
   x_JsonDesc:           'C\'est la version non-chiffrée au format JSON de votre clé privée. Cela signifie que vous n\'avez pas besoin de votre mot de passe pour l\'utiliser mais que toute personne qui trouve ce JSON peut accéder à votre portefeuille et vos Ether sans mot de passe.',
-  x_PrintShort:         'Imprimer',
+  x_Keystore2:          'Fichier Keystore (UTC / JSON)',
+  x_Keystore:           'Fichier Keystore (UTC / JSON · Recommandé · Chiffré · Format Mist)',
+  x_KeystoreDesc:       'Ce fichier Keystore utilise le même format que celui que Mist, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
+  x_Ledger:             'Ledger Nano S',
+  x_Mnemonic:           'Phrase mnémonique (MetaMask / Jaxx / ether.cards)',
+  x_Password:           'Mot de passe',
   x_Print:              'Imprimer un portefeuille papier',
   x_PrintDesc:          'Astuce : Cliquez sur Imprimer et sauvegardez le portefeuille papier comme un PDF, même si vous n\'avez pas d\'imprimante !',
-  x_CSV:                'Fichier CSV (non-chiffré)',
+  x_PrintShort:         'Imprimer',
+  x_PrivKey2:           'Clé privée',
+  x_PrivKey:            'Clé privée (non-chiffrée)',
+  x_PrivKeyDesc:        'C\'est la version textuelle non-chiffrée de votre clé privée, ce qui signifie qu\'aucun mot de passe n\'est nécessaire pour l\'utiliser. Si quelqu\'un venait à découvrir cette clé privée, il pourrrait accéder à votre portefeuille sans mot de passe. Pour cette raison, la version chiffrée de votre clé privée est recommandée.',
+  x_Save:               'Sauvegarder',
   x_TXT:                'Fichier TXT (non-chiffré)',
+  x_Wallet:             'Portefeuille',
 
   /* Header */
   MEW_Warning_1:        'Vérifiez toujours l\'URL avant d\'accéder à votre portefeuille ou de générer un nouveau portefeuille. Attentions aux sites de phishing !',
@@ -152,6 +147,7 @@ fr.data = {
   TRANS_advanced:        '+Avancé : Ajouter du gaz',
   TRANS_data:            'Données : ',
   TRANS_sendInfo:        'Une transaction standard utilisant 21000 gaz coûtera 0.000441 ETH. Le prix du gaz de 0.000000021 ETH que nous avons choisi est légèrement supérieur au minimum ain d\'assurer une confirmation rapide. Nous ne prenons pas de frais de transaction.',
+  TRANS_gas:            'Limite en gaz : ', // changed in ENG to Gas Limit:
 
   /* Send Transaction Modals */
   TRANSModal_Title:      'Transactions "ETH seulement" et "ETC seulement"',
@@ -245,11 +241,13 @@ fr.data = {
   MNEM_prev:            'Adresses précédentes',
 
   /* Hardware wallets */
-  x_Ledger:             'Ledger Nano S',
   ADD_Ledger_1:         'Connectez votre Ledger Nano S',
   ADD_Ledger_2:         'Ouvrez l\'application Ethereum (ou une application de contrat)',
   ADD_Ledger_3:         'Vérifiez que Browser Support est activé dans Settings',
   ADD_Ledger_scan:      'Se connecter au Ledger Nano S',
+  ADD_Ledger_4:         'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
+  ADD_Ledger_0a:        'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL)',
+  ADD_Ledger_0b:        'Réouvrir MyEtherWallet avec [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/)',
 
   /* Chrome Extension */
   CX_error_1:           'Vous n\'avez pas de portefeuille sauvegardé. Cliquez sur ["Ajout de portefeuille"](/cx-wallet.html#add-wallet) pour en ajouter un !',
@@ -277,12 +275,14 @@ fr.data = {
   ERROR_19:             'Tout le gaz serait consommé lors de cette transaction. Cela signifie que vous avez déjà voté pour cette proposition ou que la période du débat est terminée.',
   ERROR_20:             'Symbole invalide',
   ERROR_21:             ' n\'est pas un token ERC-20 valide. Si d\'autres tokens sont en train de se charger, enlevez celui-ci et réessayez.',
+  ERROR_22:             'Impossible d\'estimer le gaz. Il n\'y a pas assez de fonds sur le compte, ou l\'adresse du contrat de réception a pu renvoyer une erreur. Vous pouvez ajuster vous-même le gaz et recommencer. Le message d\'erreur à l\'envoi peut comporter plus d\'informations.',
   SUCCESS_1:            'Adresse valide',
   SUCCESS_2:            'Portefeuille déchiffré avec succès',
   SUCCESS_3:            'Transaction envoyée. Identifiant de transaction : ',
   SUCCESS_4:            'Votre portefeuille a été ajouté avec succès : ',
   SUCCESS_5:            'Vous avez voté avec succès. Merci d\'être un participant actif à The DAO.',
   SUCCESS_6:            'Fichier sélectionné : ',
+  WARN_Send_Link:       'Vous être arrivé grâce à un lien qui a rempli l\'adresse, le montant, le gaz ou les champs de données pour vous. Vous pouvez modifier toutes les informations avant d\'envoyer. Débloquez votre portefeuille pour démarrer.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Expéditeur invalide',

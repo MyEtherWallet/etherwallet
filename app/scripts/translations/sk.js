@@ -283,6 +283,7 @@ sk.data = {
   SUCCESS_6:            'File Selected: ',
 
   WARN_Send_Link:       'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Invalid sender',

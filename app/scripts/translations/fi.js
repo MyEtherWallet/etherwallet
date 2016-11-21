@@ -5,6 +5,8 @@ fi.code = 'fi';
 fi.data = {
 
   ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
+
 
   /* Mnemonic Additions */
   MNEM_1:               'Please select the address you would like to interact with.',
