@@ -282,7 +282,7 @@ sk.data = {
   SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
   SUCCESS_6:            'File Selected: ',
 
-  WARN_Send_Link:       'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+  WARN_Send_Link:       'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Invalid sender',

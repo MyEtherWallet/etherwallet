@@ -1353,7 +1353,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }, true);
       // if there is a query string, show an warning at top of page
-      if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit')) $scope.hasQueryString = true;
+      if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true;
       $scope.estimateGasLimit = function () {
         var estObj = {
           to: $scope.tx.to,
@@ -4141,7 +4141,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "type": "default"
     }, {
       "address": "0x5c40eF6f527f4FbA68368774E6130cE6515123f2",
-      "symbol": "DAO extraBalance",
+      "symbol": "DAO_extraBalance",
       "decimal": 0,
       "type": "default"
     }, {
@@ -4156,7 +4156,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       "type": "default"
     }, {
       "address": "0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
-      "symbol": "GNT (Golem)",
+      "symbol": "GNT",
       "decimal": 18,
       "type": "default"
     }, {
@@ -4282,7 +4282,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
       TOKEN_show: 'Show All Tokens',
       TOKEN_hide: 'Hide Tokens',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Hardware wallets */
       x_Ledger: 'Ledger Nano S',
@@ -4437,7 +4437,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
       TOKEN_show: 'Show All Tokens',
       TOKEN_hide: 'Hide Tokens',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Hardware wallets */
       x_Ledger: 'Ledger Nano S',
@@ -4876,7 +4876,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       SUCCESS_5: 'You have successfully voted. Thank you for being an active participant in The DAO.',
       SUCCESS_6: 'File Selected: ',
 
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Geth Error Messages */
       GETH_InvalidSender: 'Invalid sender',
@@ -5193,7 +5193,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
       TOKEN_show: 'Show All Tokens',
       TOKEN_hide: 'Hide Tokens',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Hardware wallets */
       x_Ledger: 'Ledger Nano S',
@@ -5336,7 +5336,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
       TOKEN_show: 'Show All Tokens',
       TOKEN_hide: 'Hide Tokens',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Hardware wallets */
       x_Ledger: 'Ledger Nano S',
@@ -5993,7 +5993,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
       ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
       ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Navigation*/
       NAV_YourWallets: 'Tárcáid',
@@ -7303,7 +7303,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
       TOKEN_show: 'Show All Tokens',
       TOKEN_hide: 'Hide Tokens',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Hardware wallets */
       x_Ledger: 'Ledger Nano S',
@@ -8035,7 +8035,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
       TOKEN_show: 'Show All Tokens',
       TOKEN_hide: 'Hide Tokens',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Hardware wallets */
       x_Ledger: 'Ledger Nano S',
@@ -9338,7 +9338,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
       TOKEN_show: 'Show All Tokens',
       TOKEN_hide: 'Hide Tokens',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Hardware wallets */
       x_Ledger: 'Ledger Nano S',
@@ -9493,7 +9493,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
       TOKEN_show: 'Show All Tokens',
       TOKEN_hide: 'Hide Tokens',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Hardware wallets */
       x_Ledger: 'Ledger Nano S',
@@ -9702,7 +9702,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     vi.code = 'vi';
     vi.data = {
 
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
       ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
       /* Hardware wallets */
@@ -10294,7 +10294,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
       TOKEN_show: 'Show All Tokens',
       TOKEN_hide: 'Hide Tokens',
-      WARN_Send_Link: 'You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.',
+      WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 
       /* Hardware wallets */
       x_Ledger: 'Ledger Nano S',
