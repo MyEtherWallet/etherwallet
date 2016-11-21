@@ -379,7 +379,12 @@
 <article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id" ng-controller='sendTxCtrl'>
 
   <!-- Header -->
-  <p class="alert alert-info" translate="WARN_Send_Link" ng-show="hasQueryString"> You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started. </p>
+  <div class="alert alert-info" ng-show="hasQueryString">
+    <p translate="WARN_Send_Link" >You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.</p>
+    <p translate="WARN_Send_Link_2" ng-show="hasInvalidSendModeAndData"> **Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data. </p>
+  </div>
+
+
 
   <article class="collapse-container">
     <div ng-click="wd = !wd">
@@ -2036,6 +2041,7 @@
     </p>
 
     <p><a data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
+    <p ng-show="showBlocks" class="text-right" style="font-size: 10px">ETH Block#: {{ethBlockNumber}} &middot; ETC Block#: {{etcBlockNumber}}</p>
 
   </div>
 

@@ -10,6 +10,6 @@ var footerCtrl = function($scope) {
         ajaxReq.getCurrentBlock(true, function(data){$scope.etcBlockNumber = data.data;});
     }
     $scope.setBlockNumbers();
-    setInterval($scope.setBlockNumbers,3000);
+    //setInterval($scope.setBlockNumbers,3000);
 };
 module.exports = footerCtrl;
