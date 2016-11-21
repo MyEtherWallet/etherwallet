@@ -1296,7 +1296,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null ? false : globalFuncs.urlGet('tokenSymbol')
       };
       globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode(0) : $scope.setSendMode(globalFuncs.urlGet('sendMode')); // 0 = ETH (Standard)    1 = Only ETH    2 = Only ETC    4 = Token
-      globalFuncs.urlGet('gaslimit') == null || globalFuncs.urlGet('gas') == null ? '' : $scope.showAdvance = true;
+      globalFuncs.urlGet('gaslimit') == null || globalFuncs.urlGet('gas') != null ? '' : $scope.showAdvance = true;
       globalFuncs.urlGet('data') == null ? '' : $scope.showAdvance = true;
       $scope.$watch(function () {
         if (walletService.wallet == null) return null;
@@ -7144,7 +7144,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     module.exports = id;
   }, {}], 45: [function (require, module, exports) {
     // Italian
-    // Last sync with en.js: commit 0db6913489a360e48155ec11c8832c9e824ef42d
+    // Last sync with en.js: commit a2553ad12b3fb0317cada7ef4f921846fcb89687
     'use strict';
 
     var it = function it() {};
@@ -7711,9 +7711,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       HELP_Sec_Desc_1: 'Se una delle prime domande che ti poni è "Perché dovrei fidarmi di questa gente?", è una cosa buona. Quanto segue dovrebbe aiutarti a calmare i tuoi timori. ',
       HELP_Sec_Desc_2: 'Siamo attivi da agosto 2015. Se cerchi ["myetherwallet" su reddit](https://www.reddit.com/search?q=myetherwallet), puoi vedere che molte persone ci utilizzano con grande successo.',
       HELP_Sec_Desc_3: 'Non prenderemo i tuoi soldi né ruberemo le tue chiavi private. Non c\'è codice malevolo su questo sito. Infatti le pagine "Genera portafoglio" sono completamente lato client. Ciò significa che tutto il codice è eseguito sul ** tuo computer** e non viene mai salvato e trasmesso da nessuna parte.',
-      HELP_Sec_Desc_4: 'Controlla l\'URL -- Questo sito viene servito attraverso GitHub e puoi vederne il codice sorgente qui: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) sui [https://www.myetherwallet.com](https://www.myetherwallet.com).',
-      HELP_Sec_Desc_5: 'Per la generazione dei portafogli, puoi scaricare il [codice sorgente](https://github.com/kvhnuke/etherwallet/releases/latest). Vedi la domanda 5 qui sopra.',
-      HELP_Sec_Desc_6: 'Fai una prova e controlla che attività di rete sono in corso. Il modo più facile e fare clic destro sulla pagina e scegliere "Analizza elemento". Vai sulla scheda "Rete". Genera un portafoglio di prova. Vedrai che non c\'è attività di rete. Potresti vedere accadere qualcosa che assomiglia a  data:image/gif e data:image/png. Sono i QR code che vengono generati...sul tuo computer...dal tuo computer. Non sono stati trasferiti byte.',
+      HELP_Sec_Desc_4: 'Controlla l\'URL -- Questo sito viene servito attraverso GitHub e puoi vederne il codice sorgente qui: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) su [https://www.myetherwallet.com](https://www.myetherwallet.com).',
+      HELP_Sec_Desc_5: 'Per la generazione dei portafogli, puoi scaricare il [codice sorgente](https://github.com/kvhnuke/etherwallet/releases/latest) ed eseguirlo in locale. Vedi la domanda 5 qui sopra.',
+      HELP_Sec_Desc_6: 'Genera un portafoglio di prova e controlla che attività di rete sono in corso. Il modo più facile e fare clic destro sulla pagina e scegliere "Analizza elemento". Vai sulla scheda "Rete". Genera un portafoglio di prova. Vedrai che non c\'è attività di rete. Potresti vedere accadere qualcosa che assomiglia a  data:image/gif e data:image/png. Sono i QR code che vengono generati...sul tuo computer...dal tuo computer. Non sono stati trasferiti byte.',
       HELP_Sec_Desc_7: 'Ora, per essere sicuro, vai alla scheda "Archiviazione". Qui puoi vedere tutti i diversi elementi che costituiscono un sito web. Se controlli Archiviazione locale, Cookie, e Archiviazione cache, vedrai che non c\'è nulla che viene memorizzato. Non viene salvato niente. Se ricarichi la pagina ricominci da capo.',
       HELP_Sec_Desc_8: 'Se non ti senti a tuo agio a usare questo strumento, allora certo, non usarlo. Abbiamo creato questo strumento per aiutare la gente a generare portafogli ed eseguire transazioni senza bisogno di usare la riga di comando o far girare un nodo completo. Di nuovo, sentiti libero di contattarci se hai dubbi e ti risponderemo appena possibile. Grazie! ',
 
