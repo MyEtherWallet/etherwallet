@@ -21,7 +21,7 @@
     <tbody>
       <tr ng-repeat="twallet in allWallets track by $index">
         <td>{{$index+1}}</td>
-        <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
+        <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div></td>
         <td>
           {{twallet.nick}} <br />
           <span class="mono small">{{twallet.addr}}</span>
@@ -66,7 +66,7 @@
       <tbody>
         <tr ng-repeat="twallet in allWatchOnly track by $index">
           <td>{{$index+1}}</td>
-          <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
+          <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div></td>
           <td>
             {{twallet.nick}}
             <br />
