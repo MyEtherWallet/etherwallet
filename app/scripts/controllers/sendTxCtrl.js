@@ -244,20 +244,17 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 			$scope.tokenObjs[$scope.tokenObjs.length - 1].setBalance();
 		}
 		if ($scope.tx.sendMode == 4 && !$scope.tx.tokenSymbol) {
-			$scope.tokenTx.id = 0;
 			$scope.tx.tokenSymbol = $scope.tokenObjs[0].symbol;
 			$scope.tokenObjs[0].type = "custom";
-			$scope.setSendMode($scope.tx.sendMode, $scope.tokenTx.id, $scope.tx.tokenSymbol);
+			$scope.setSendMode($scope.tx.sendMode, 0, $scope.tx.tokenSymbol);
 		} else if ($scope.tx.tokenSymbol) {
 			for (var i = 0; i < $scope.tokenObjs.length; i++) {
 				if ($scope.tokenObjs[i].symbol.toLowerCase().indexOf($scope.tx.tokenSymbol.toLowerCase()) !== -1) {
-					$scope.tokenTx.id = i;
 					$scope.tokenObjs[i].type = "custom";
-					$scope.setSendMode(4, $scope.tokenTx.id, $scope.tokenObjs[i].symbol);
+					$scope.setSendMode(4, i, $scope.tokenObjs[i].symbol);
 					break;
-				}
+				} else  $scope.tokenTx.id = -1;
 			}
-			$scope.tokenTx.id = -1;
 		}
 		if ($scope.tx.sendMode != 4) $scope.tokenTx.id = -1;
 	}
