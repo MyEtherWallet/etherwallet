@@ -1072,7 +1072,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       };
       $scope.setBlockNumbers();
-      setInterval($scope.setBlockNumbers, 3000);
+      //setInterval($scope.setBlockNumbers,3000);
     };
     module.exports = footerCtrl;
   }, {}], 12: [function (require, module, exports) {
