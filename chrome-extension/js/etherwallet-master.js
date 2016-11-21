@@ -2385,17 +2385,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         data: func + val
       };
     };
-    ethFuncs.ecSignEIP155 = function (msgHash, privateKey) {
+    ethFuncs.ecSignEIP155 = function (msgHash, privateKey, old) {
       var sig = ethUtil.secp256k1.sign(msgHash, privateKey);
       var ret = {};
       ret.r = sig.signature.slice(0, 32);
       ret.s = sig.signature.slice(32, 64);
-      ret.v = sig.recovery + 37;
+      ret.v = old ? sig.recovery + 27 : sig.recovery + 37;
       return ret;
     };
-    ethFuncs.hashEIP155 = function (tx) {
+    ethFuncs.hashEIP155 = function (tx, old) {
       tx.raw[6] = 18;
-      return ethUtil.rlphash(tx.raw);
+      var toHash = tx.raw;
+      if (old) toHash = toHash.splice(0, 6);
+      return ethUtil.rlphash(toHash);
     };
     ethFuncs.estimateGas = function (dataObj, isClassic, callback) {
       var gasLimit = 2000000;
