@@ -124,9 +124,8 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
           rawTx.value = '0x00';
       }
       $scope.valueReadable = $scope.tx.value;
-      //console.log(rawTx);
 			var eTx = new ethUtil.Tx(rawTx);
-			eTx.sign(new Buffer($scope.wallet.getPrivateKeyString(), 'hex'));
+            ethFuncs.ecSignEIP155(eTx, new Buffer(txData.privKey, 'hex'), false);
 			$scope.rawTx = JSON.stringify(rawTx);
 			$scope.signedTx = '0x' + eTx.serialize().toString('hex');
 			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));

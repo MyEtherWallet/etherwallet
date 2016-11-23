@@ -21,8 +21,11 @@ uiFuncs.isTxDataValid = function(txData) {
 	else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
 	if (txData.to == "0xCONTRACT") txData.to = '';
 }
-uiFuncs.signTxLedger = function(eTx, rawTx, txData, callback) {
-	var txToSign = ethUtil.rlp.encode(eTx.raw.slice(0, 6));
+uiFuncs.signTxLedger = function(eTx, rawTx, txData, old, callback) {
+    eTx.raw[6] = Buffer.from([1]); //ETH chain id
+    eTx.raw[7] = eTx.raw[8] = 0;
+    var toHash = old ? eTx.raw.slice(0,6) : eTx.raw;
+	var txToSign = ethUtil.rlp.encode(toHash);
 	var app = new ledgerEth(txData.hwTransport);
 	var localCallback = function(result, error) {
 		if (typeof error != "undefined") {
@@ -32,7 +35,7 @@ uiFuncs.signTxLedger = function(eTx, rawTx, txData, callback) {
 			});
 			return;
 		}
-		rawTx.v = "0x" + result['v'];
+		rawTx.v = old ? "0x"+result['v'] : "0x" + new BigNumber('0x'+result['v']).add(10).toString(16);
 		rawTx.r = "0x" + result['r'];
 		rawTx.s = "0x" + result['s'];		
 		eTx = new ethUtil.Tx(rawTx);
@@ -59,10 +62,10 @@ uiFuncs.generateTx = function(txData, isClassic, callback) {
 			}
 			var eTx = new ethUtil.Tx(rawTx);
 			if ((typeof txData.hwType != "undefined") && (txData.hwType == "ledger")) {
-				uiFuncs.signTxLedger(eTx, rawTx, txData, callback);
+				uiFuncs.signTxLedger(eTx, rawTx, txData, true, callback);
 			}
 			else {
-				eTx.sign(new Buffer(txData.privKey, 'hex'));
+                ethFuncs.ecSignEIP155(eTx,new Buffer(txData.privKey, 'hex'),isClassic);
 				rawTx.rawTx = JSON.stringify(rawTx);
 				rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
 				rawTx.isError = false;
