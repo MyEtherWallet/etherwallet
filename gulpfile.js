@@ -193,7 +193,7 @@ var versionMsg
 gulp.task('getVersion', function() {
   manifest = JSON.parse(fs.readFileSync(dist_CX + 'manifest.json'))
   versionNum = 'v' + manifest.version
-  versionMsg    = 'TESTING: ' + versionNum
+  versionMsg    = 'Release: ' + versionNum
   return gulp.src( './' )
   .pipe( notify    ({ message:'Got Version Number: ' + versionNum }))
 })
@@ -234,12 +234,7 @@ gulp.task('tag', ['commit'], function() {
   });
   return gulp.src( './' ).pipe( notify ({ message:'Tagged: ' + versionNum }))
 })
-gulp.task('push', ['tag'], function() {
-  git.push('origin', 'mercury', {args: " --tags"}, function (err) {
-    if (err) throw err;
-  });
-  return gulp.src( './' ).pipe( notify ({ message:'Pushed: ' + versionNum }))
-})
+
 
 
 // Watch Tasks
@@ -261,5 +256,12 @@ gulp.task('bump-minor', function() { return bumpFunc( 'minor' ) })
 // Prep for Release
 gulp.task('prep',       ['clean', 'getVersion', 'zip', 'zipCX'])
 
+// Push Release to Mercury
+gulp.task('push', ['tag'], function() {
+  git.push('origin', 'mercury', {args: " --tags"}, function (err) {
+    if (err) throw err;
+  });
+  return gulp.src( './' ).pipe( notify ({ message:'Pushed: ' + versionNum }))
+})
 
 gulp.task('default',    ['build', 'watch'])
