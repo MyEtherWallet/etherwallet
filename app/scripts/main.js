@@ -13,7 +13,7 @@ window.hd = {
 };
 var BigNumber = require('bignumber.js');
 window.BigNumber = BigNumber;
-var marked = require('./customMarked');
+var marked = require('./staticJS/customMarked');
 window.marked = marked;
 var ethUtil = require('ethereumjs-util');
 ethUtil.crypto = require('crypto');
@@ -46,8 +46,8 @@ if (IS_CX) {
 }
 else {
 	var u2f = require('./staticJS/u2f-api');
-	var ledger3 = require('./ledger3');
-	var ledgerEth = require('./ledger-eth');	
+	var ledger3 = require('./staticJS/ledger3');
+	var ledgerEth = require('./staticJS/ledger-eth');
 	window.u2f = u2f;
 	window.Ledger3 = ledger3;
 	window.ledgerEth = ledgerEth;	
