@@ -246,10 +246,9 @@ gulp.task('push', ['tag'], function() {
 })
 
 // Push Live
-gulp.task('pushLive', ['push'], function() {
-  // fuck we need git-shell
-  // git subtree push --prefix dist origin gh-pages
-})
+gulp.task('pushLive', ['push'], shell.task([
+  'git subtree push --prefix dist origin gh-pages'
+]))
 
 // Watch Tasks
 gulp.task('watchJS',    function() { gulp.watch( js_watchFolder,   ['js'    ]) })
