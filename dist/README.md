@@ -3,7 +3,7 @@
 
 ## Website: https://www.MyEtherWallet.com
 ## Chrome Extension: https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm
-## Download the Latest Release: https://github.com/kvhnuke/etherwallet/releases/tag/v0.3.2.3
+## Download the Latest Release: https://github.com/kvhnuke/etherwallet/releases/latest
 - dist-vX.X.X.X.zip is the smaller package containing the gh-pages branch aka MyEtherWallet.com
 - chrome-extension-vX.X.X.X.zip is the chrome extension package
 - source code is the full source for developers to get started with (although cloning or forking the mercury branch is probably a better choice)
@@ -221,7 +221,7 @@ If you can think of any other features or run into bugs, let us know. You can fo
 - 07/28/16: [MyEtherWallet, Preventing Replays, and Ethereum Classic (ETC)](https://www.reddit.com/r/ethereum/comments/4v1y2t/myetherwallet_preventing_replays_and_ethereum/)
 - 08/14/16: [⚠ Malicious Phisher is running Google Ads for MyEtherWallet.com ⚠ It does NOT go to MyEtherWallet.com. Always check the URL before accessing or creating a new wallet! Use your bookmarks bar!](https://www.reddit.com/r/ethereum/comments/4xpj0u/malicious_phisher_is_running_google_ads_for/)
 - 08/22/16: [Help us translate MyEtherWallet.com into ALL THE LANGUAGES!](https://www.reddit.com/r/ethereum/comments/4z55s2/help_us_translate_myetherwalletcom_into_all_the/)
-
+- 11/21/16: [Massive MyEtherWallet.com Update: Better URIs, The Hardfork, and looking back at the Golem Crowdfund.](https://www.reddit.com/r/ethereum/comments/5e3alw/massive_myetherwalletcom_update_better_uris_the/)
 
 
 
