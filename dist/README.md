@@ -1,6 +1,3 @@
-# The development branch is mercury. This branch contains the smaller dist folder only.
-
-
 ## Website: https://www.MyEtherWallet.com
 ## Chrome Extension: https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm
 ## Download the Latest Release: https://github.com/kvhnuke/etherwallet/releases/latest
@@ -8,9 +5,7 @@
 - chrome-extension-vX.X.X.X.zip is the chrome extension package
 - source code is the full source for developers to get started with (although cloning or forking the mercury branch is probably a better choice)
 
-
-Content of MyEtherWallet.com is served directly from this Github (gh-pages) via Cloudflare (for SSL and DDOS protection).
-
+## `mercury` is the development branch. gh-pages contains only the smaller dist folder only and is served to MyEtherWallet.com via CloudFlare.
 
 
 
