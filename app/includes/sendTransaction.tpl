@@ -187,10 +187,15 @@
 
         <div class="form-group" ng-bind-html="sendTxStatus"></div>
 
-        <em class="small">
-          <p><a class="form-group" data-toggle="modal" data-target="#txInfoModal" ng-click="txInfoModal.open()" translate="TRANS_warning">If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.</a></p>
-          <p translate="DAO_Warning">** If you are getting an insufficient balance for gas * ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
-        </em>
+        <div class="alert alert-danger" ng-show="tx.sendMode==2">
+          <p> <strong>You will not be able to "Send Only ETC" or view your ETC balance via MyEtherWallet.com after January 1, 2017.</strong> We will be switching fully to <a href="https://github.com/ethereum/EIPs/issues/155" target="_blank">EIP-155</a> for signing transactions and these are not valid on the ETC chain. Our existing ETC node will be converted to a Ropsten node in order to better support contract developement, testing, and interaction. (#MEWFOUR)</p>
+        </div>
+        <div class="alert alert-info" ng-hide="tx.sendMode==0">
+          <p ng-show="tx.sendMode==4" translate="DAO_Warning">If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
+
+          <p ng-show="tx.sendMode==1 || tx.sendMode==2"><a class="form-group" data-toggle="modal" data-target="#txInfoModal" ng-click="txInfoModal.open()" translate="TRANS_warning">If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.</a></p>
+        </div>
+
 
       </div>
       <!-- / Content -->
@@ -227,7 +232,6 @@
                 <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
               </h4>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-              <em><p translate="DAO_Warning">** If you are getting an insufficient balance for gas * ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p></em>
             </div>
 
             <div class="modal-footer text-center">
