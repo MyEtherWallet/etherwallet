@@ -4,7 +4,7 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
+  WARN_Send_Link_2:     '**Avertissement :** Vous ne pouvez inclure de données que si vous envoyez via "ETH (Transaction standard)". Enlevez "sendMode" et/ou "tokenSymbol" de l\'URI pour envoyer une transaction avec des données.',
 
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
