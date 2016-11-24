@@ -190,17 +190,17 @@ function bumpFunc(t) {
 // Get Version Number
 var versionNum
 var versionMsg
-gulp.task('getVersion', ['clean'], function() {
+gulp.task('getVersion', function() {
   manifest = JSON.parse(fs.readFileSync(dist_CX + 'manifest.json'))
   versionNum = 'v' + manifest.version
-  versionMsg    = 'TESTING' + versionNum
+  versionMsg    = 'TESTING: ' + versionNum
   return gulp.src( './' )
   .pipe( notify    ({ message:'Got Version Number: ' + versionNum }))
 })
 
 
 // zips dist folder
-gulp.task('zip', ['getVersion'], function() {
+gulp.task('zip', ['getVersion','clean'], function() {
  return gulp.src( dist + '*' )
     .pipe( plumber   ({ errorHandler: onError                      }))
     .pipe( zip       (  './dist-' + versionNum + '.zip'             ))
@@ -209,7 +209,7 @@ gulp.task('zip', ['getVersion'], function() {
 
 })
 // zips cx folder
-gulp.task('zipCX', ['getVersion'], function() {
+gulp.task('zipCX', ['getVersion','clean'], function() {
   return gulp.src( dist_CX + '*' )
     .pipe( plumber   ({ errorHandler: onError                       }))
     .pipe( zip       (  './chrome-extension-' + versionNum + '.zip'  ))
@@ -218,17 +218,28 @@ gulp.task('zipCX', ['getVersion'], function() {
 
 })
 
-
-
-gulp.task('commitTagPush', ['getVersion'], function() {
+gulp.task('add', ['getVersion'], function() {
   return gulp.src( './' )
-    .pipe(git.commit( versionMsg ))
-    .pipe(git.tag(versionNum, versionMsg))
-    // git.push('origin', 'mercury', {args: " --tags"}, function (err) {
-      //if (err) throw err;
-    //});
+    .pipe( git.add() )
+    .pipe( notify ({ message:'Added: ' + versionNum }))
 })
-
+gulp.task('commit', ['add'], function() {
+  return gulp.src( './' )
+    .pipe( git.commit(versionMsg) )
+    .pipe( notify ({ message:'Committed: ' + versionNum }))
+})
+gulp.task('tag', ['commit'], function() {
+  git.tag(versionNum, versionMsg, function (err) {
+    if (err) throw err;
+  });
+  return gulp.src( './' ).pipe( notify ({ message:'Tagged: ' + versionNum }))
+})
+gulp.task('push', ['tag'], function() {
+  git.push('origin', 'mercury', {args: " --tags"}, function (err) {
+    if (err) throw err;
+  });
+  return gulp.src( './' ).pipe( notify ({ message:'Pushed: ' + versionNum }))
+})
 
 
 // Watch Tasks
@@ -249,8 +260,6 @@ gulp.task('bump-minor', function() { return bumpFunc( 'minor' ) })
 
 // Prep for Release
 gulp.task('prep',       ['clean', 'getVersion', 'zip', 'zipCX'])
-
-// Commit Tag Push Live
 
 
 gulp.task('default',    ['build', 'watch'])
