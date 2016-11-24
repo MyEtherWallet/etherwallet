@@ -3,32 +3,32 @@
 var ja = function() {}
 ja.code = 'ja';
 ja.data = {
-  TRANS_gas:             ' ガス： ', // changed in ENG to Gas Limit:
-  ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+  TRANS_gas:             ' ガスリミット： ', // changed in ENG to Gas Limit:
+  ERROR_22:             'ガス量を推定できません。十分な資金が口座にないか、あるいは受け取り側のコントラクトがエラーになっています。ガス量を変更してから試してください。送出時にはより詳しいエラーメッセージが返ります。',
 
   /* Mnemonic Additions */
-  MNEM_1:               'Please select the address you would like to interact with.',
-  MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
-  MNEM_more:            'More Addresses',
-  MNEM_prev:            'Previous Addresses',
-  x_Mnemonic:           'Mnemonic Phrase (MetaMask / Jaxx / ether.cards)',
-  ADD_Radio_5:          'Paste/Type Your Mnemonic',
-  SEND_custom:          'Add Custom Token',
-  ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
-  TOKEN_show:           'Show All Tokens',
-  TOKEN_hide:           'Hide Tokens',
-  WARN_Send_Link:       'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
+  MNEM_1:               '操作したいアドレスを選択してください。',
+  MNEM_2:               'ＨＤニーモニックの一つの文節で、複数のウォレットやアドレスが操作可能です。操作したいアドレスを選択してください。',
+  MNEM_more:            'さらにアドレスを表示',
+  MNEM_prev:            '前のアドレス表示',
+  x_Mnemonic:           'ニーモニックフレーズ (MetaMask / Jaxx / ether.cards)',
+  ADD_Radio_5:          'ニーモニックを上書き/タイプ',
+  SEND_custom:          'カスタムトークンを追加',
+  ERROR_21:             '　は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。',
+  TOKEN_show:           '全てのトークンを表示',
+  TOKEN_hide:           'トークンを隠す',
+  WARN_Send_Link:       '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、ウォレットを解錠してください。',
+  WARN_Send_Link_2:     '**警告** 「ETH (Standard Transaction)」で送出する時には、データのみを含めることしかできません。 「sendMode」 及び/あるいは 「tokenSymbol」 を URIから取り除いてください。',
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Nano S',
-  ADD_Ledger_1:         'Connect your Ledger Nano S',
-  ADD_Ledger_2:         'Open the Ethereum application (or a contract application)',
-  ADD_Ledger_3:         'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_4:         'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
-  ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
-  ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
-  ADD_Ledger_scan:      'Connect to Ledger Nano S',
+  ADD_Ledger_1:         '自分の Ledger Nano S　を接続する',
+  ADD_Ledger_2:         'イサリアムアプリケーション（あるいはコントラクトアプリケーション）を開く　。',
+  ADD_Ledger_3:         '設定中で、ブラウザサポートが有効にされていることを確認してください。',
+  ADD_Ledger_4:         '設定にブラウザサポートが見つからなければ、[Firmware >1.2]を確認してください。(https://www.ledgerwallet.com/apps/manager)',
+  ADD_Ledger_0a:        'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。',
+  ADD_Ledger_0b:        'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。',
+  ADD_Ledger_scan:      'Ledger Nano S　に接続',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      '送出元が無効です',
@@ -296,14 +296,14 @@ ja.data = {
   SUCCESS_6:            '選択されました： ',
 
   /* Parity Error Messages */
-  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
-  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
-  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
+  PARITY_AlreadyImported:       "同じハッシュのトランザクションがすでにインポートされています。",
+  PARITY_Old:                   "Transaction nonceが小さすぎます。増やしてみてください。",
+  PARITY_TooCheapToReplace:     "Transaction fee が小さすぎます。同じ nonce のトランザクションが別のキューにあります。fee または nonce を増やしてみてください。",
+  PARITY_LimitReached:          "キューにあるトランザクションの数が多すぎます。上限を超えたため、対象のトランザクションは除外されています。その fee を増やしてみてください。",
+  PARITY_InsufficientGasPrice:  "Transaction fee が小さすぎます。 ノードの最小 fee を満たしていません。 (minimal: {}, got: {}). fee を増やしてください。",
+  PARITY_InsufficientBalance:   "ファンドが足りません。 トランザクション送出元のファンドが不足しています。 必要量 {} で 現在： {}　　です。",
+  PARITY_GasLimitExceeded:      "トランザクションコストがガスリミットを超過しました。 リミット： {}, 現在: {}. ガス供給量を減らして見てください。",　　　/* increasing gas limit??? */
+  PARITY_InvalidGasLimit:       "ガス供給量が制限を超過しています。",
 
   /* Tranlsation Info */
   translate_version:    '0.3',
