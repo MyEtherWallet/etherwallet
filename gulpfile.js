@@ -246,7 +246,7 @@ gulp.task('push', ['tag'], function() {
 })
 
 // Push Live
-gulp.task('pushLive', ['push'], shell.task([
+gulp.task('pushLive', shell.task([
   'git subtree push --prefix dist origin gh-pages'
 ]))
 
