@@ -218,24 +218,38 @@ gulp.task('zipCX', ['getVersion','clean'], function() {
 
 })
 
+// add all
 gulp.task('add', ['getVersion'], function() {
   return gulp.src( './' )
     .pipe( git.add() )
     .pipe( notify ({ message:'Added: ' + versionNum }))
 })
+// commit with current v# in manifest
 gulp.task('commit', ['add'], function() {
   return gulp.src( './' )
     .pipe( git.commit(versionMsg) )
     .pipe( notify ({ message:'Committed: ' + versionNum }))
 })
+// tag with current v# in manifest
 gulp.task('tag', ['commit'], function() {
   git.tag(versionNum, versionMsg, function (err) {
     if (err) throw err;
   });
   return gulp.src( './' ).pipe( notify ({ message:'Tagged: ' + versionNum }))
 })
+// Push Release to Mercury
+gulp.task('push', ['tag'], function() {
+  git.push('origin', 'mercury', {args: " --tags"}, function (err) {
+    if (err) throw err;
+  });
+  return gulp.src( './' ).pipe( notify ({ message:'Pushed: ' + versionNum }))
+})
 
-
+// Push Live
+gulp.task('pushLive', ['push'], function() {
+  // fuck we need git-shell
+  // git subtree push --prefix dist origin gh-pages
+})
 
 // Watch Tasks
 gulp.task('watchJS',    function() { gulp.watch( js_watchFolder,   ['js'    ]) })
@@ -256,12 +270,5 @@ gulp.task('bump-minor', function() { return bumpFunc( 'minor' ) })
 // Prep for Release
 gulp.task('prep',       ['clean', 'getVersion', 'zip', 'zipCX'])
 
-// Push Release to Mercury
-gulp.task('push', ['tag'], function() {
-  git.push('origin', 'mercury', {args: " --tags"}, function (err) {
-    if (err) throw err;
-  });
-  return gulp.src( './' ).pipe( notify ({ message:'Pushed: ' + versionNum }))
-})
 
-gulp.task('default',    ['build', 'watch'])
+gulp.task('default',      ['build', 'watch'])
