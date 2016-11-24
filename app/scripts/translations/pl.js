@@ -4,11 +4,11 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-  TRANS_gas:             ' Paliwo: ', // changd in ENG to Gas Limit:
+  TRANS_gas:             ' Limit Paliwa: ',
   ERROR_22:             'Nie można określić ilości paliwa. Brak wystarczających środków na koncie lub adres docelowego kontraktu zwróciłby błąd. Możesz ręcznie ustawić paliwo przed kontynuacją. Opis błędu po wysłaniu transakcji może dostarczyć więcej informacji.',
 
   WARN_Send_Link:       'Znalazłeś się tu przez odnośnik, który zawiera wstępnie uzupełniony adres, kwotę, paliwo lub dane transakcji. Możesz zmienić dowolne parametry transakcji zanim ją zatwierdzisz. Odblokuj portfel aby kontynuować.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
+  WARN_Send_Link_2:     '**Uwaga:** Dane można załączyć tylko wysyłając przez "ETH (Transakcja Standardowa)". Usuń parametr "sendMode" i/lub "tokenSymbol" z linku URI, aby wysłać transakcję z danymi.',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
@@ -357,7 +357,7 @@ pl.data = {
 
   HELP_2b_Title:       '2b) Jak mogę utworzyć portfel w 100% odizolowany od sieci globalnej (Cold Wallet) wykorzystując MyEtherWallet?',
   HELP_2b_Desc_1:      'Wejdź na nasze konto github: [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest).',
-  HELP_2b_Desc_2:      'Kliknij pobierz `dist-vX.X.X.X.zip`.',
+  HELP_2b_Desc_2:      'Pobierz `dist-vX.X.X.X.zip`.',
   HELP_2b_Desc_3:      'Przenieś paczkę zip na odizolowany system.',
   HELP_2b_Desc_4:      'Rozpakuj paczkę i kliknij 2-krotnie `index.html`.',
   HELP_2b_Desc_5:      'Wygeneruj portfel przy użyciu silnego hasła.',
@@ -411,7 +411,7 @@ pl.data = {
   HELP_5_Desc_9:        'Ponieważ ciągle aktualizujemy MyEtherWallet, zalecamy co jakiś czas aktualizować  zapisaną wersję repozytorium.',
 
   HELP_5CX_Title:       '5) Jak mogę zainstalować to rozszerzenie z repozytorium, zamiast z Chrome Web Store? ',
-  HELP_5CX_Desc_2:      'Kliknij pobierz `chrome-extension-vX.X.X.X.zip`.',
+  HELP_5CX_Desc_2:      'Pobierz `chrome-extension-vX.X.X.X.zip`.',
   HELP_5CX_Desc_3:      'Wejdź w ustawienia przeglądarki Google Chrome (w menu w górnym prawym rogu).',
   HELP_5CX_Desc_4:      'Kliknij "Rozszerzenia" po lewej.',
   HELP_5CX_Desc_5:      'Kliknij "Tryb programisty" na górze strony.',
