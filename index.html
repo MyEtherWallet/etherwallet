@@ -508,7 +508,6 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
               <li><a ng-class="{true:'active'}[tx.sendMode==0]" ng-click="setSendMode(0)"><span translate="TRANS_standard">ETH (Standard Transaction)</span></a></li>
-              <li><a ng-class="{true:'active'}[tx.sendMode==1]" ng-click="setSendMode(1)"><span translate="TRANS_eth">Only ETH </span></a></li>
               <li><a ng-class="{true:'active'}[tx.sendMode==2]" ng-click="setSendMode(2)"><span translate="TRANS_etc">Only ETC </span></a></li>
               <li role="separator" class="divider"></li>
 
@@ -566,11 +565,11 @@
 
         <div class="alert alert-danger" ng-show="tx.sendMode==2">
           <p> <strong>You will not be able to "Send Only ETC" or view your ETC balance via MyEtherWallet.com after January 1, 2017.</strong> We will be switching fully to <a href="https://github.com/ethereum/EIPs/issues/155" target="_blank">EIP-155</a> for signing transactions and these are not valid on the ETC chain. Our existing ETC node will be converted to a Ropsten node in order to better support contract developement, testing, and interaction. (#MEWFOUR)</p>
+          <p><a class="form-group" data-toggle="modal" data-target="#txInfoModal" ng-click="txInfoModal.open()" translate="TRANS_warning">If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.</a></p>
         </div>
-        <div class="alert alert-info" ng-hide="tx.sendMode==0">
-          <p ng-show="tx.sendMode==4" translate="DAO_Warning">If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
 
-          <p ng-show="tx.sendMode==1 || tx.sendMode==2"><a class="form-group" data-toggle="modal" data-target="#txInfoModal" ng-click="txInfoModal.open()" translate="TRANS_warning">If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.</a></p>
+        <div class="alert alert-info" ng-show="tx.sendMode==4">
+          <p translate="DAO_Warning">If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
         </div>
 
 
