@@ -1265,8 +1265,6 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 		$scope.unitReadable = '';
 		if (sendMode == 0) {
 			$scope.unitTranslation = 'TRANS_standard';
-		} else if (sendMode == 1) {
-			$scope.unitTranslation = 'TRANS_eth';
 		} else if (sendMode == 2) {
 			$scope.unitTranslation = 'TRANS_etc';
 		} else if (sendMode == 4) {
@@ -1288,7 +1286,7 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 		donate: false,
 		tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null ? false : globalFuncs.urlGet('tokenSymbol')
 	};
-	globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode(0) : $scope.setSendMode(globalFuncs.urlGet('sendMode')); // 0 = ETH (Standard)    1 = Only ETH    2 = Only ETC    4 = Token
+	globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode(0) : $scope.setSendMode(globalFuncs.urlGet('sendMode')); // 0 = ETH (Standard)  2 = Only ETC  4 = Token
 	globalFuncs.urlGet('gaslimit') == null || globalFuncs.urlGet('gas') != null ? '' : $scope.showAdvance = true;
 	globalFuncs.urlGet('data') == null ? '' : $scope.showAdvance = true;
 	$scope.$watch(function () {
@@ -1355,10 +1353,7 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 			value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit)))
 		};
 		if ($scope.tx.data != "") estObj.data = ethFuncs.sanitizeHex($scope.tx.data);
-		if ($scope.tx.sendMode == 1) {
-			estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64);
-			estObj.to = $scope.replayContract;
-		} else if ($scope.tx.sendMode == 2) {
+		if ($scope.tx.sendMode == 2) {
 			estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
 			estObj.to = $scope.replayContract;
 		} else if ($scope.tx.sendMode == 4) {
@@ -1414,10 +1409,7 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 			return;
 		}
 		var txData = uiFuncs.getTxData($scope);
-		if ($scope.tx.sendMode == 1) {
-			txData.to = $scope.replayContract;
-			txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64);
-		} else if ($scope.tx.sendMode == 2) {
+		if ($scope.tx.sendMode == 2) {
 			txData.to = $scope.replayContract;
 			txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
 		} else if ($scope.tx.sendMode == 4) {
@@ -67737,7 +67729,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign"
+      "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -67773,7 +67765,7 @@ module.exports={
   "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign",
+  "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
