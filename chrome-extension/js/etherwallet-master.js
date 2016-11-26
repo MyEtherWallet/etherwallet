@@ -1225,23 +1225,19 @@ module.exports = sendOfflineTxCtrl;
 'use strict';
 
 var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
-	$scope.etherBalance = $scope.etcBalance = $scope.usdBalance = $scope.eurBalance = $scope.btcBalance = "loading";
 	$scope.unitReadable = "";
 	$scope.unitTranslation = "TRANS_standard";
 	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
 	$scope.txInfoModal = new Modal(document.getElementById('txInfoModal'));
 	walletService.wallet = null;
 	walletService.password = '';
-	$scope.showAdvance = false;
+	$scope.showAdvance = $scope.customTokenField = $scope.showRaw = false;
 	$scope.dropdownEnabled = true;
-	$scope.showRaw = false;
 	$scope.replayContract = "0xaa1a6e3e6ef20068f7f8d8c835d2d22fd5116444";
 	$scope.splitHex = "0x0f2c9329";
 	$scope.Validator = Validator;
 	// Tokens
 	$scope.tokenVisibility = "hidden";
-	$scope.customTokenField = false;
-	$scope.tokens = Token.popTokens;
 	$scope.tokenTx = {
 		to: '',
 		value: 0,
@@ -1253,10 +1249,18 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 		decimals: "",
 		type: "custom"
 	};
-	$scope.crowdFundData = [{
-		to: "0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
-		data: "0xefc81a8c"
-	}];
+	$scope.tx = {
+		// if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
+		gasLimit: globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null ? globalFuncs.urlGet('gaslimit') != null ? globalFuncs.urlGet('gaslimit') : globalFuncs.urlGet('gas') : globalFuncs.defaultTxGasLimit,
+		data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
+		to: globalFuncs.urlGet('to') == null ? "" : globalFuncs.urlGet('to'),
+		unit: "ether",
+		value: globalFuncs.urlGet('value') == null ? "" : globalFuncs.urlGet('value'),
+		nonce: null,
+		gasPrice: null,
+		donate: false,
+		tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null ? false : globalFuncs.urlGet('tokenSymbol')
+	};
 	$scope.setSendMode = function (sendMode) {
 		var tokenId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 		var tokenSymbol = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
@@ -1274,21 +1278,26 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 		}
 		$scope.dropdownAmount = false;
 	};
-	$scope.tx = {
-		// if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
-		gasLimit: globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null ? globalFuncs.urlGet('gaslimit') != null ? globalFuncs.urlGet('gaslimit') : globalFuncs.urlGet('gas') : globalFuncs.defaultTxGasLimit,
-		data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
-		to: globalFuncs.urlGet('to') == null ? "" : globalFuncs.urlGet('to'),
-		unit: "ether",
-		value: globalFuncs.urlGet('value') == null ? "" : globalFuncs.urlGet('value'),
-		nonce: null,
-		gasPrice: null,
-		donate: false,
-		tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null ? false : globalFuncs.urlGet('tokenSymbol')
+	$scope.setTokenSendMode = function () {
+		if ($scope.tx.sendMode == 4 && !$scope.tx.tokenSymbol) {
+			$scope.tx.tokenSymbol = $scope.wallet.tokenObjs[0].symbol;
+			$scope.wallet.tokenObjs[0].type = "custom";
+			$scope.setSendMode($scope.tx.sendMode, 0, $scope.tx.tokenSymbol);
+		} else if ($scope.tx.tokenSymbol) {
+			for (var i = 0; i < $scope.wallet.tokenObjs.length; i++) {
+				if ($scope.wallet.tokenObjs[i].symbol.toLowerCase().indexOf($scope.tx.tokenSymbol.toLowerCase()) !== -1) {
+					$scope.wallet.tokenObjs[i].type = "custom";
+					$scope.setSendMode(4, i, $scope.wallet.tokenObjs[i].symbol);
+					break;
+				} else $scope.tokenTx.id = -1;
+			}
+		}
+		if ($scope.tx.sendMode != 4) $scope.tokenTx.id = -1;
 	};
 	globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode(0) : $scope.setSendMode(globalFuncs.urlGet('sendMode')); // 0 = ETH (Standard)  2 = Only ETC  4 = Token
-	globalFuncs.urlGet('gaslimit') == null || globalFuncs.urlGet('gas') != null ? '' : $scope.showAdvance = true;
-	globalFuncs.urlGet('data') == null ? '' : $scope.showAdvance = true;
+	$scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
+	if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true; // if there is a query string, show an warning at top of page
+	if (globalFuncs.urlGet('sendMode') && globalFuncs.urlGet('sendMode') != 0 && globalFuncs.urlGet('data')) $scope.hasInvalidSendModeAndData = true; // if the query string has a send mode of NOT standard tx and a data string, show another warning.
 	$scope.$watch(function () {
 		if (walletService.wallet == null) return null;
 		return walletService.wallet.getAddressString();
@@ -1296,23 +1305,12 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 		if (walletService.wallet == null) return;
 		$scope.wallet = walletService.wallet;
 		$scope.wd = true;
-		$scope.setBalance();
-		$scope.setTokens();
+		$scope.wallet.setBalance();
+		$scope.wallet.setTokens();
+		$scope.setTokenSendMode();
 	});
-	$scope.$watch('[tx.to,tx.value,tx.data,tx.sendMode]', function () {
-		if ($scope.wallet && $scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data) && $scope.tx.sendMode != 4) {
-			if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
-			$scope.estimateTimer = setTimeout(function () {
-				$scope.estimateGasLimit();
-			}, 500);
-		}
-		if ($scope.tx.sendMode == 4) {
-			$scope.tokenTx.to = $scope.tx.to;
-			$scope.tokenTx.value = $scope.tx.value;
-		}
-	}, true);
-	$scope.$watch('[tokenTx.to,tokenTx.value,tokenTx.id]', function () {
-		if ($scope.wallet && $scope.tokenObjs !== undefined && $scope.tokenObjs[$scope.tokenTx.id] !== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to) && $scope.Validator.isPositiveNumber($scope.tokenTx.value)) {
+	$scope.$watch('tokenTx', function () {
+		if ($scope.wallet && $scope.wallet.tokenObjs !== undefined && $scope.wallet.tokenObjs[$scope.tokenTx.id] !== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to) && $scope.Validator.isPositiveNumber($scope.tokenTx.value)) {
 			if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
 			$scope.estimateTimer = setTimeout(function () {
 				$scope.estimateGasLimit();
@@ -1326,27 +1324,22 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 			$scope.tx.data = "";
 			$scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
 		}
-		if ($scope.Validator.isValidAddress($scope.tx.to)) {
-			for (var i = 0; i < $scope.crowdFundData.length; i++) {
-				if ($scope.tx.to.toLowerCase() == $scope.crowdFundData[i].to.toLowerCase()) {
-					$scope.tx.data = $scope.crowdFundData[i].data;
-					$scope.setSendMode(0);
-					$scope.dropdownEnabled = false;
-					$scope.showAdvance = true;
-					break;
-				} else {
-					$scope.dropdownEnabled = true;
-				}
-			}
+		if ($scope.wallet && $scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data) && $scope.tx.sendMode != 4) {
+			if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
+			$scope.estimateTimer = setTimeout(function () {
+				$scope.estimateGasLimit();
+			}, 500);
+		}
+		if ($scope.tx.sendMode == 4) {
+			$scope.tokenTx.to = $scope.tx.to;
+			$scope.tokenTx.value = $scope.tx.value;
 		}
 	}, true);
-
-	// if there is a query string, show an warning at top of page
-	if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true;
-
-	// if the query string has a send mode of NOT standard tx and a data string, show another warning.
-	if (globalFuncs.urlGet('sendMode') && globalFuncs.urlGet('sendMode') != 0 && globalFuncs.urlGet('data')) $scope.hasInvalidSendModeAndData = true;
 	$scope.estimateGasLimit = function () {
+		if (globalFuncs.lightMode) {
+			$scope.tx.gasLimit = 100000;
+			return;
+		}
 		var estObj = {
 			to: $scope.tx.to,
 			from: $scope.wallet.getAddressString(),
@@ -1357,8 +1350,8 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 			estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
 			estObj.to = $scope.replayContract;
 		} else if ($scope.tx.sendMode == 4) {
-			estObj.to = $scope.tokenObjs[$scope.tokenTx.id].getContractAddress();
-			estObj.data = $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
+			estObj.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
+			estObj.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
 			estObj.value = '0x00';
 		}
 		ethFuncs.estimateGas(estObj, $scope.tx.sendMode == 2, function (data) {
@@ -1370,33 +1363,6 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 				$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
 			}
 		});
-	};
-	$scope.setBalance = function () {
-		ajaxReq.getBalance($scope.wallet.getAddressString(), false, function (data) {
-			if (data.error) {
-				$scope.etherBalance = data.msg;
-			} else {
-				$scope.etherBalance = etherUnits.toEther(data.data.balance, 'wei');
-				ajaxReq.getETHvalue(function (data) {
-					$scope.usdBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.usd);
-					$scope.eurBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.eur);
-					$scope.btcBalance = etherUnits.toFiat($scope.etherBalance, 'ether', data.btc);
-				});
-			}
-		});
-		ajaxReq.getBalance($scope.wallet.getAddressString(), true, function (data) {
-			if (data.error) {
-				$scope.etcBalance = data.msg;
-			} else {
-				$scope.etcBalance = etherUnits.toEther(data.data.balance, 'wei');
-			}
-		});
-	};
-	$scope.validateAddress = function () {
-		return ethFuncs.validateEtherAddress($scope.tx.to);
-	};
-	$scope.toggleShowAdvance = function () {
-		$scope.showAdvance = !$scope.showAdvance;
 	};
 	$scope.onDonateClick = function () {
 		$scope.tx.to = globalFuncs.donateAddress;
@@ -1413,8 +1379,8 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 			txData.to = $scope.replayContract;
 			txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
 		} else if ($scope.tx.sendMode == 4) {
-			txData.to = $scope.tokenObjs[$scope.tokenTx.id].getContractAddress();
-			txData.data = $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
+			txData.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
+			txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
 			txData.value = '0x00';
 		}
 		uiFuncs.generateTx(txData, $scope.tx.sendMode == 2, function (rawTx) {
@@ -1434,8 +1400,8 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 		uiFuncs.sendTx($scope.signedTx, $scope.tx.sendMode == 2, function (resp) {
 			if (!resp.isError) {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a> & <a href='http://gastracker.io/tx/" + resp.data + "' target='_blank'> ETC TX via GasTracker.io</a>"));
-				$scope.setBalance();
-				if ($scope.tx.sendMode == 4) $scope.tokenObjs[$scope.tokenTx.id].setBalance();
+				$scope.wallet.setBalance();
+				if ($scope.tx.sendMode == 4) $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
 			} else {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
 			}
@@ -1453,76 +1419,28 @@ var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
 				}
 			});
 		} else {
-			$scope.tx.value = $scope.tokenObjs[$scope.tokenTx.id].getBalance();
+			$scope.tx.value = $scope.wallet.tokenObjs[$scope.tokenTx.id].getBalance();
 		}
-	};
-	// Tokens
-	$scope.setTokens = function () {
-		$scope.tokenObjs = [];
-		for (var i = 0; i < $scope.tokens.length; i++) {
-			$scope.tokenObjs.push(new Token($scope.tokens[i].address, $scope.wallet.getAddressString(), $scope.tokens[i].symbol, $scope.tokens[i].decimal, $scope.tokens[i].type));
-			$scope.tokenObjs[$scope.tokenObjs.length - 1].setBalance();
-		}
-		var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
-		for (var i = 0; i < storedTokens.length; i++) {
-			$scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
-			$scope.tokenObjs[$scope.tokenObjs.length - 1].setBalance();
-		}
-		if ($scope.tx.sendMode == 4 && !$scope.tx.tokenSymbol) {
-			$scope.tx.tokenSymbol = $scope.tokenObjs[0].symbol;
-			$scope.tokenObjs[0].type = "custom";
-			$scope.setSendMode($scope.tx.sendMode, 0, $scope.tx.tokenSymbol);
-		} else if ($scope.tx.tokenSymbol) {
-			for (var i = 0; i < $scope.tokenObjs.length; i++) {
-				if ($scope.tokenObjs[i].symbol.toLowerCase().indexOf($scope.tx.tokenSymbol.toLowerCase()) !== -1) {
-					$scope.tokenObjs[i].type = "custom";
-					$scope.setSendMode(4, i, $scope.tokenObjs[i].symbol);
-					break;
-				} else $scope.tokenTx.id = -1;
-			}
-		}
-		if ($scope.tx.sendMode != 4) $scope.tokenTx.id = -1;
 	};
 	$scope.saveTokenToLocal = function () {
-		try {
-			if (!ethFuncs.validateEtherAddress($scope.localToken.contractAdd)) throw globalFuncs.errorMsgs[5];else if (!globalFuncs.isNumeric($scope.localToken.decimals) || parseFloat($scope.localToken.decimals) < 0) throw globalFuncs.errorMsgs[7];else if (!globalFuncs.isAlphaNumeric($scope.localToken.symbol) || $scope.localToken.symbol == "") throw globalFuncs.errorMsgs[19];
-			var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
-			storedTokens.push({
-				contractAddress: $scope.localToken.contractAdd,
-				symbol: $scope.localToken.symbol,
-				decimal: parseInt($scope.localToken.decimals),
-				type: $scope.localToken.type
-			});
-			$scope.localToken = {
-				contractAdd: "",
-				symbol: "",
-				decimals: "",
-				type: "custom"
-			};
-			localStorage.setItem("localTokens", JSON.stringify(storedTokens));
-			$scope.setTokens();
-			$scope.validateLocalToken = $sce.trustAsHtml('');
-			$scope.customTokenField = false;
-		} catch (e) {
-			$scope.validateLocalToken = $sce.trustAsHtml(globalFuncs.getDangerText(e));
-		}
+		globalFuncs.saveTokenToLocal($scope.localToken, function (data) {
+			if (!data.error) {
+				$scope.localToken = {
+					contractAdd: "",
+					symbol: "",
+					decimals: "",
+					type: "custom"
+				};
+				$scope.wallet.setTokens();
+				$scope.validateLocalToken = $sce.trustAsHtml('');
+				$scope.customTokenField = false;
+			} else {
+				$scope.validateLocalToken = $sce.trustAsHtml(data.msg);
+			}
+		});
 	};
 	$scope.removeTokenFromLocal = function (tokenSymbol) {
-		var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
-		// remove from localstorage so it doesn't show up on refresh
-		for (var i = 0; i < storedTokens.length; i++) {
-			if (storedTokens[i].symbol === tokenSymbol) {
-				storedTokens.splice(i, 1);
-				break;
-			}
-		}localStorage.setItem("localTokens", JSON.stringify(storedTokens));
-		// remove from tokenObj so it removes from display
-		for (var i = 0; i < $scope.tokenObjs.length; i++) {
-			if ($scope.tokenObjs[i].symbol === tokenSymbol) {
-				$scope.tokenObjs.splice(i, 1);
-				break;
-			}
-		}
+		globalFuncs.removeTokenFromLocal(tokenSymbol, $scope.wallet.tokenObjs);
 	};
 };
 module.exports = sendTxCtrl;
@@ -2473,6 +2391,7 @@ module.exports = etherUnits;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var globalFuncs = function globalFuncs() {};
+globalFuncs.lightMode = false;
 globalFuncs.getBlockie = function (address) {
 	return blockies.create({
 		seed: address.toLowerCase(),
@@ -2514,7 +2433,8 @@ globalFuncs.gethErrors = {
 	"Insufficient funds for gas * price + value": "GETH_InsufficientFunds",
 	"Intrinsic gas too low": "GETH_IntrinsicGas",
 	"Exceeds block gas limit": "GETH_GasLimit",
-	"Negative value": "GETH_NegativeValue" };
+	"Negative value": "GETH_NegativeValue"
+};
 globalFuncs.gethErrorMsgs = {};
 globalFuncs.getGethMsg = function (str) {
 	if (str in this.gethErrors) {
@@ -2533,7 +2453,8 @@ globalFuncs.parityErrors = {
 	"Transaction fee is too low\\. It does not satisfy your node's minimal fee \\(minimal: (\\d+), got: (\\d+)\\)\\. Try increasing the fee\\.": "PARITY_InsufficientGasPrice",
 	"Insufficient funds\\. Account you try to send transaction from does not have enough funds\\. Required (\\d+) and got: (\\d+)\\.": "PARITY_InsufficientBalance",
 	"Transaction cost exceeds current gas limit\\. Limit: (\\d+), got: (\\d+)\\. Try decreasing supplied gas\\.": "PARITY_GasLimitExceeded",
-	"Supplied gas is beyond limit\\.": "PARITY_InvalidGasLimit" };
+	"Supplied gas is beyond limit\\.": "PARITY_InvalidGasLimit"
+};
 globalFuncs.parityErrorMsgs = {};
 globalFuncs.getParityMsg = function (str) {
 	for (var reg in this.parityErrors) {
@@ -2595,6 +2516,45 @@ globalFuncs.hexToAscii = function (hex) {
 };
 globalFuncs.isAlphaNumeric = function (value) {
 	return !/[^a-zA-Z0-9]/.test(value);
+};
+globalFuncs.saveTokenToLocal = function (localToken, callback) {
+	try {
+		if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) throw globalFuncs.errorMsgs[5];else if (!globalFuncs.isNumeric(localToken.decimals) || parseFloat(localToken.decimals) < 0) throw globalFuncs.errorMsgs[7];else if (!globalFuncs.isAlphaNumeric(localToken.symbol) || localToken.symbol == "") throw globalFuncs.errorMsgs[19];
+		var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+		storedTokens.push({
+			contractAddress: localToken.contractAdd,
+			symbol: localToken.symbol,
+			decimal: parseInt(localToken.decimals),
+			type: "custom"
+		});
+		localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+		callback({
+			error: false
+		});
+	} catch (e) {
+		callback({
+			error: false,
+			msg: e
+		});
+	}
+};
+globalFuncs.removeTokenFromLocal = function (symbol, tokenObj) {
+	var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+	// remove from localstorage so it doesn't show up on refresh
+	for (var i = 0; i < storedTokens.length; i++) {
+		if (storedTokens[i].symbol === symbol) {
+			storedTokens.splice(i, 1);
+			break;
+		}
+	}localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+	if (!tokenObj) return;
+	// remove from tokenObj so it removes from display
+	for (var i = 0; i < tokenObj.length; i++) {
+		if (tokenObj[i].symbol === symbol) {
+			tokenObj.splice(i, 1);
+			break;
+		}
+	}
 };
 module.exports = globalFuncs;
 
@@ -2740,10 +2700,31 @@ Wallet.generate = function (icapDirect) {
 		return new Wallet(ethUtil.crypto.randomBytes(32));
 	}
 };
-Wallet.prototype.setBalance = function (isClassic) {
+Wallet.prototype.setTokens = function () {
+	this.tokenObjs = [];
+	var tokens = Token.popTokens;
+	for (var i = 0; i < tokens.length; i++) {
+		this.tokenObjs.push(new Token(tokens[i].address, this.getAddressString(), tokens[i].symbol, tokens[i].decimal, tokens[i].type));
+		this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+	}
+	var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+	for (var i = 0; i < storedTokens.length; i++) {
+		this.tokenObjs.push(new Token(storedTokens[i].contractAddress, this.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
+		this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+	}
+};
+Wallet.prototype.setBalance = function () {
 	var parentObj = this;
-	ajaxReq.getBalance(parentObj.getAddressString(), isClassic, function (data) {
-		if (data.error) parentObj.balance = data.msg;else parentObj.balance = etherUnits.toEther(data.data.balance, 'wei');
+	this.balance = this.usdBalance = this.eurBalance = this.btcBalance = 'loading';
+	ajaxReq.getBalance(parentObj.getAddressString(), false, function (data) {
+		if (data.error) parentObj.balance = data.msg;else {
+			parentObj.balance = etherUnits.toEther(data.data.balance, 'wei');
+			ajaxReq.getETHvalue(function (data) {
+				parentObj.usdBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.usd);
+				parentObj.eurBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.eur);
+				parentObj.btcBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.btc);
+			});
+		}
 	});
 };
 Wallet.prototype.getBalance = function () {
@@ -67729,7 +67710,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
+      "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -67765,7 +67746,7 @@ module.exports={
   "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
+  "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"

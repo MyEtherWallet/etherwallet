@@ -415,15 +415,14 @@
 
       <div translate="sidebar_AccountBal"> Account Balance: </div>
       <ul class="account-info">
-        <li><span class="mono wrap">{{etherBalance}}</span> ETH </li>
-        <li><span class="mono wrap">{{etcBalance}}</span> ETC </li>
+        <li><span class="mono wrap">{{wallet.balance}}</span> ETH </li>
       </ul>
 
       <!-- Token Balances -->
       <section class="token-balances">
         <div translate="sidebar_TokenBal"> Token Balances: </div>
         <table class="account-info">
-          <tr ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+          <tr ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
             <td class="mono wrap">
               <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'"/>
                 {{token.getBalance()}}
@@ -459,9 +458,9 @@
 
       <div translate="sidebar_Equiv"> Equivalent Values: </div>
       <ul class="account-info">
-        <li><span class="mono wrap">{{usdBalance}}</span> USD </li>
-        <li><span class="mono wrap">{{eurBalance}}</span> EUR </li>
-        <li><span class="mono wrap">{{btcBalance}}</span> BTC </li>
+        <li><span class="mono wrap">{{wallet.usdBalance}}</span> USD </li>
+        <li><span class="mono wrap">{{wallet.eurBalance}}</span> EUR </li>
+        <li><span class="mono wrap">{{wallet.btcBalance}}</span> BTC </li>
       </ul>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
@@ -511,7 +510,7 @@
               <li><a ng-class="{true:'active'}[tx.sendMode==2]" ng-click="setSendMode(2)"><span translate="TRANS_etc">Only ETC </span></a></li>
               <li role="separator" class="divider"></li>
 
-              <li ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+              <li ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
                 <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode(4, $index, token.getSymbol())"> {{token.getSymbol()}} </a>
               </li>
 
@@ -530,7 +529,7 @@
 
         <!-- Advanced Option Panel -->
         <div ng-show="tx.sendMode==0">
-          <a ng-click="toggleShowAdvance()">
+          <a ng-click="showAdvance=!showAdvance">
             <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
           </a>
           <section ng-show="showAdvance">
