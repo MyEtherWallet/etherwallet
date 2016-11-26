@@ -1,7 +1,7 @@
 'use strict';
 var sendTxCtrl = function($scope, $sce, walletService) {
 	$scope.unitReadable = "";
-	$scope.unitTranslation = "TRANS_standard";
+	$scope.unitTranslation = "TRANS_eth";
 	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
 	$scope.txInfoModal = new Modal(document.getElementById('txInfoModal'));
 	walletService.wallet = null;
@@ -34,9 +34,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		$scope.tx.sendMode = sendMode;
 		$scope.unitReadable = '';
 		if (sendMode == 0) {
-			$scope.unitTranslation = 'TRANS_standard';
+			$scope.unitTranslation = 'TRANS_eth';
 		} else if (sendMode == 2) {
-			$scope.unitTranslation = 'TRANS_etc';
+			$scope.unitTranslation = 'TRANS_eth';
 		} else if (sendMode == 4) {
 			$scope.unitTranslation = '';
 			$scope.unitReadable = tokenSymbol;

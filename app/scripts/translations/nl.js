@@ -138,8 +138,7 @@ nl.data = {
   /* Send Transaction */
   TRANS_desc:            'Als je Tokens wilt versturen, gebruik dan de "Verzend Token" pagina i.p.v. deze pagina.',
   TRANS_warning:         'Als je gebruik maakt van de "Enkel ETH" of "Enkel ETC" functies zul je de transactie uitvoeren via een contract. Sommige diensten hebben  problemen met het accepteren van deze transacties. Lees meer.',
-  TRANS_standard:        'ETH (Standaard Transactie)',
-  TRANS_eth:             'Enkel ETH',
+  TRANS_eth:             'ETH',
   TRANS_etc:             'Enkel ETC',
   TRANS_advanced:        '+Geavanceerd: Voeg Data toe ',
   TRANS_data:            ' Data: ',
@@ -282,7 +281,7 @@ nl.data = {
   SUCCESS_6:            'Bestand Geselecteerd: ',
   WARN_Send_Link:       'Je bent hier gekomen via een link waarbij het adres, bedrag, gas of data velden al ingevuld zijn. Indien gewenst kun je elk veld nog aanpassen voor het verzenden. Ontgrendel je wallet on te beginnen.',
   WARN_Send_Link_2:     '**Waarschuwing:** Je kunt alleen data toevoegen als je verzend via "ETH (Standaard Transactie)". Verwijder de "sendMode" en/of het "tokenSymbol" van de URI om een transactie te verzenden met data.',
-  
+
   /* Geth Error Messages */
   GETH_InvalidSender:      'Ongeldige verzender',
   GETH_Nonce:              'Nonce te laag',

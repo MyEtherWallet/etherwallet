@@ -160,8 +160,7 @@ no.data = {
   /* Send Transaction */
   TRANS_desc:            'Hvis du ønsker å sende token, vennligst bruk "Send Token"-siden i stedet.',
   TRANS_warning:         'Hvis du bruker "Kun ETH"- eller "Kun ETC"-funksjonene, sender du via en kontrakt. Noen tjenester har problemer med å akseptere disse transaksjonene. Les mer.',
-  TRANS_standard:        'ETH (Standard transaksjon)',
-  TRANS_eth:             'Kun ETH',
+  TRANS_eth:             'ETH',
   TRANS_etc:             'Kun ETC',
   TRANS_advanced:        '+Avansert: Legg til data ',
   TRANS_data:            ' Data: ',

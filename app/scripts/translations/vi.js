@@ -152,8 +152,7 @@ vi.data = {
   /* Send Transaction */
   TRANS_desc:            'Nếu bạn muốn gửi Token, xin vui lòng sử dụng danh mục "Gửi Token".',
   TRANS_warning:         'Nếu bạn sử dụng chức năng "Chỉ ETH" hoặc "Chỉ ETC" trong việc gửi đi thông qua một hợp đồng thông minh. Những dịch vụ có chức năng chấp nhận các giao dịch. Đọc Thêm.',
-  TRANS_standard:        'ETH (Giao Dịch Phổ Thông)',
-  TRANS_eth:             'Chỉ ETH',
+  TRANS_eth:             'ETH',
   TRANS_etc:             'Chỉ ETC',
   TRANS_advanced:        'Nâng Cao: Thêm Dữ Liệu',
   TRANS_data:            'Dữ Liệu:',

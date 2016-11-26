@@ -147,8 +147,7 @@ hu.data = {
   /* Send Transaction */
   TRANS_desc:            'Ha Tokeneket akarsz küldeni, kérlek használd a Token Küldése oldalt ehelyett.',
   TRANS_warning:         'Ha a "Csak ETH" vagy a "Csak ETC" Funkciókat használod a küldés kontraktuson keresztül megy végbe. Néhány szolgáltatásnak problémái lehetnek az ilyen tranzakciók elfogadásával. Kattints és tudj meg többet.',
-  TRANS_standard:        'ETH (Standard Tranzakció)',
-  TRANS_eth:             'Csak ETH',
+  TRANS_eth:             'ETH',
   TRANS_etc:             'Csak ETC',
   TRANS_advanced:        '+Haladó: Több Adat ',
   TRANS_data:            'Adat: ',

@@ -141,8 +141,7 @@ it.data = {
   /* Send Transaction */
   TRANS_desc:            'Se invece volevi inviare dei token, utilizza la pagina "Invia token".',
   TRANS_warning:         'Se usi le opzioni "Solo ETH" o "Solo ETC" invierai tramite un contratto. Certi servizi hanno difficoltà ad accettare queste transazioni. Leggi tutto.',
-  TRANS_standard:        'ETH (transazione standard)',
-  TRANS_eth:             'Solo ETH',
+  TRANS_eth:             'ETH',
   TRANS_etc:             'Solo ETC',
   TRANS_advanced:        '+Avanzate: aggiungi dati ',
   TRANS_data:            'Dati: ',

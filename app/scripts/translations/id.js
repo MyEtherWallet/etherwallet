@@ -156,8 +156,7 @@ id.data = {
   /* Send Transaction */
   TRANS_desc:            'Untuk pengiriman Token, gunakan halaman "Kirim Token".',
   TRANS_warning:         'Penggunaan fitur "Hanya ETH" atau "Hanya ETC" memakai pengiriman melalui Kontrak. Beberapa layanan tidak menerima transaksi jenis ini. Baca lebih lanjut.',
-  TRANS_standard:        'ETH (Transaksi Standar)',
-  TRANS_eth:             'Hanya ETH',
+  TRANS_eth:             'ETH',
   TRANS_etc:             'Hanya ETC',
   TRANS_advanced:        '+Advanced: Tambah Data ',
   TRANS_data:            'Data: ',

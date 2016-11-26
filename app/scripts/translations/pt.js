@@ -147,8 +147,7 @@ pt.data = {
   /* Send Transaction */
   TRANS_desc:            '',
   TRANS_warning:         'Se você estiver usando somente "ETH" ou "ETC" Funções que você está enviando através de um contrato. Alguns serviços têm problemas para aceitar essas transações. Leia mais.',
-  TRANS_standard:        'ETH (Transação Padrão)',
-  TRANS_eth:             'Só ETH',
+  TRANS_eth:             'ETH',
   TRANS_etc:             'Só ETC',
   TRANS_advanced:        '+Avançado: Adicionar dados ',
   TRANS_data:            ' Dados: ',

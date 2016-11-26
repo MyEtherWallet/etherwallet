@@ -200,8 +200,7 @@ fi.data = {
   /* Send Transaction */
   TRANS_desc:            'Jos haluat lähettää Tokeneita, ole hyvä ja käytä "Lähetä Tokeneita" sivua.',
   TRANS_warning:         'Jos käytät "Vain ETH" tai "Vain ETC" Toimintoja, niin lähetät sopimuksen kautta. Joillakin palveluilla on vaikeuksia hyväksyä näitä siirtoja. Lue lisää.',
-  TRANS_standard:        'ETH (Tavallinen Siirto)',
-  TRANS_eth:             'Vain ETH',
+  TRANS_eth:             'ETH',
   TRANS_etc:             'Vain ETC',
   TRANS_advanced:        '+Edistynyt: Lisää Tietoja ',
   TRANS_data:            'Tiedot: ',

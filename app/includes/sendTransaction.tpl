@@ -73,7 +73,7 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
-              <li><a ng-class="{true:'active'}[tx.sendMode==0]" ng-click="setSendMode(0)"><span translate="TRANS_standard">ETH (Standard Transaction)</span></a></li>
+              <li><a ng-class="{true:'active'}[tx.sendMode==0]" ng-click="setSendMode(0)"><span translate="TRANS_eth">ETH</span></a></li>
               <li><a ng-class="{true:'active'}[tx.sendMode==2]" ng-click="setSendMode(2)"><span translate="TRANS_etc">Only ETC </span></a></li>
               <li role="separator" class="divider"></li>
 
