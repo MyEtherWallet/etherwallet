@@ -40,11 +40,7 @@ var onError = function(err) {
 
 function onSuccess(msg) {
   return {
-    message: msg + " Complete! ",
-    subtitle: function(file) {
-      return file.relative
-    },
-    title:     msg + " Complete! ",
+    message:   msg + " Complete! ",
   //sound:     "Pop",
     icon:      app + "images/icons/icon48.png",
     onLast:    true
@@ -289,7 +285,7 @@ gulp.task('push', ['getVersion'], function () {
     .pipe(shell([
           'git push origin mercury ' + versionNum
          ]))
-    .pipe( notify ( onSuccess('Pushe' ) ))
+    .pipe( notify ( onSuccess('Push' ) ))
 })
 
 // Push Live
