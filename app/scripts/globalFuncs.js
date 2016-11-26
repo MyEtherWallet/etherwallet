@@ -1,5 +1,6 @@
 'use strict';
 var globalFuncs = function() {}
+globalFuncs.lightMode = false;
 globalFuncs.getBlockie = function(address) {
 	return blockies.create({
 		seed: address.toLowerCase(),
@@ -28,47 +29,21 @@ globalFuncs.getSuccessText = function(str) {
 globalFuncs.getDangerText = function(str) {
 	return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
 }
-globalFuncs.errorMsgs = [
-	"Please enter valid amount.",
-	"Your password must be at least 9 characters. Please ensure it is a strong password. ",
-	"Sorry! We don\'t recognize this type of wallet file. ",
-	"This is not a valid wallet file. ",
-	"This unit doesn\'t exists, please use the one of the following units ",
-	"Invalid address. ",
-	"Invalid password. ",
-	"Invalid amount. ",
-	"Invalid gas limit. ",
-	"Invalid data value. ",
-	"Invalid gas amount. ", // 10
-	"Invalid nonce. ",
-	"Invalid signed transaction. ",
-	"A wallet with this nickname already exists. ",
-	"Wallet not found. ",
-	"Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", // 15
-	"A wallet with this address already exists in storage. Please check your wallets page. ",
-	"You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ",
-	"All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.",
-	"Invalid symbol",
-	"Not a valid ERC-20 token",
-	"Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative."
-	];
-globalFuncs.successMsgs = [
-	"Valid address",
-	"Wallet successfully decrypted",
-	"Transaction submitted. TX ID: ",
-	"Your wallet was successfully added: ",
-	"You have successfully voted. Thank you for being an active participant in The DAO.",
-	"File Selected: "];
+globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", // 10
+"Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", // 15
+"A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative."];
+globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "You have successfully voted. Thank you for being an active participant in The DAO.", "File Selected: "];
 globalFuncs.gethErrors = {
-        "Invalid sender": "GETH_InvalidSender",
-        "Nonce too low": "GETH_Nonce",
-        "Gas price too low for acceptance": "GETH_Cheap",
-        "Insufficient balance": "GETH_Balance",
-        "Account does not exist or account balance too low": "GETH_NonExistentAccount",
-        "Insufficient funds for gas * price + value": "GETH_InsufficientFunds",
-        "Intrinsic gas too low": "GETH_IntrinsicGas",
-        "Exceeds block gas limit": "GETH_GasLimit",
-        "Negative value": "GETH_NegativeValue"};
+	"Invalid sender": "GETH_InvalidSender",
+	"Nonce too low": "GETH_Nonce",
+	"Gas price too low for acceptance": "GETH_Cheap",
+	"Insufficient balance": "GETH_Balance",
+	"Account does not exist or account balance too low": "GETH_NonExistentAccount",
+	"Insufficient funds for gas * price + value": "GETH_InsufficientFunds",
+	"Intrinsic gas too low": "GETH_IntrinsicGas",
+	"Exceeds block gas limit": "GETH_GasLimit",
+	"Negative value": "GETH_NegativeValue"
+};
 globalFuncs.gethErrorMsgs = {};
 globalFuncs.getGethMsg = function(str) {
 	if (str in this.gethErrors) {
@@ -87,31 +62,31 @@ globalFuncs.parityErrors = {
 	"Transaction fee is too low\\. It does not satisfy your node's minimal fee \\(minimal: (\\d+), got: (\\d+)\\)\\. Try increasing the fee\\.": "PARITY_InsufficientGasPrice",
 	"Insufficient funds\\. Account you try to send transaction from does not have enough funds\\. Required (\\d+) and got: (\\d+)\\.": "PARITY_InsufficientBalance",
 	"Transaction cost exceeds current gas limit\\. Limit: (\\d+), got: (\\d+)\\. Try decreasing supplied gas\\.": "PARITY_GasLimitExceeded",
-	"Supplied gas is beyond limit\\.": "PARITY_InvalidGasLimit"};
+	"Supplied gas is beyond limit\\.": "PARITY_InvalidGasLimit"
+};
 globalFuncs.parityErrorMsgs = {};
 globalFuncs.getParityMsg = function(str) {
 	for (var reg in this.parityErrors) {
-		var args = str.match("^"+reg+"$");
+		var args = str.match("^" + reg + "$");
 		if (args) {
 			var key = this.parityErrors[reg];
 			if (key in this.parityErrorMsgs) {
 				args[0] = this.parityErrorMsgs[key];
-				return format.apply(this,args);
+				return format.apply(this, args);
 			}
 		}
 	}
 	return str;
 }
 globalFuncs.getEthNodeName = function() {
-//	return "geth";
+	//	return "geth";
 	return "parity";
 }
 globalFuncs.getEthNodeMsg = function(str) {
 	var ethNode = this.getEthNodeName();
-	if (ethNode == "geth")
-		return this.getGethMsg(str);
+	if (ethNode == "geth") return this.getGethMsg(str);
 	else
-		return this.getParityMsg(str);
+	return this.getParityMsg(str);
 }
 globalFuncs.scrypt = {
 	n: 1024
@@ -125,7 +100,7 @@ globalFuncs.isNumeric = function(n) {
 	return !isNaN(parseFloat(n)) && isFinite(n);
 }
 globalFuncs.urlGet = function(name) {
-    name = name.toLowerCase();
+	name = name.toLowerCase();
 	if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search.toLowerCase())) return this.stripTags(decodeURIComponent(name[1]));
 }
 globalFuncs.stripTags = function(str) {
@@ -143,14 +118,54 @@ globalFuncs.checkAndRedirectHTTPS = function() {
 	if ((host == window.location.host || githost == window.location.host || hostw == window.location.host || githostw == window.location.host) && (window.location.protocol != "https:")) window.location.protocol = "https";
 }
 globalFuncs.isStrongPass = function(password) {
-    return password.length > 8;
+	return password.length > 8;
 }
 globalFuncs.hexToAscii = function(hex) {
 	return hex.match(/.{1,2}/g).map(function(v) {
 		return String.fromCharCode(parseInt(v, 16));
 	}).join('');
 }
-globalFuncs.isAlphaNumeric = function(value){
-    return !/[^a-zA-Z0-9]/.test(value);
+globalFuncs.isAlphaNumeric = function(value) {
+	return !/[^a-zA-Z0-9]/.test(value);
+}
+globalFuncs.saveTokenToLocal = function(localToken, callback) {
+	try {
+		if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) throw globalFuncs.errorMsgs[5];
+		else if (!globalFuncs.isNumeric(localToken.decimals) || parseFloat(localToken.decimals) < 0) throw globalFuncs.errorMsgs[7];
+		else if (!globalFuncs.isAlphaNumeric(localToken.symbol) || localToken.symbol == "") throw globalFuncs.errorMsgs[19];
+		var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+		storedTokens.push({
+			contractAddress: localToken.contractAdd,
+			symbol: localToken.symbol,
+			decimal: parseInt(localToken.decimals),
+			type: "custom"
+		});
+		localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+		callback({
+			error: false
+		});
+	} catch (e) {
+		callback({
+			error: false,
+			msg: e
+		});
+	}
+}
+globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
+	var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+	// remove from localstorage so it doesn't show up on refresh
+	for (var i = 0; i < storedTokens.length; i++)
+	if (storedTokens[i].symbol === symbol) {
+		storedTokens.splice(i, 1);
+		break;
+	}
+	localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+	if (!tokenObj) return;
+	// remove from tokenObj so it removes from display
+	for (var i = 0; i < tokenObj.length; i++)
+	if (tokenObj[i].symbol === symbol) {
+		tokenObj.splice(i, 1);
+		break;
+	}
 }
 module.exports = globalFuncs;

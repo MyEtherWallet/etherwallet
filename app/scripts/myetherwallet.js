@@ -7,8 +7,7 @@ var Wallet = function(priv, pub, path, hwType, hwTransport) {
 	this.path = path;
 	this.hwType = hwType;
 	this.hwTransport = hwTransport;
-	this.balance = "loading";
-    this.type = "default";
+	this.type = "default";
 }
 Wallet.generate = function(icapDirect) {
 	if (icapDirect) {
@@ -22,15 +21,36 @@ Wallet.generate = function(icapDirect) {
 		return new Wallet(ethUtil.crypto.randomBytes(32))
 	}
 }
-Wallet.prototype.setBalance = function(isClassic){
-    var parentObj = this;
-    ajaxReq.getBalance(parentObj.getAddressString(),isClassic,function(data){
-       if (data.error) parentObj.balance = data.msg;
-       else parentObj.balance = etherUnits.toEther(data.data.balance, 'wei');
-    });
+Wallet.prototype.setTokens = function() {
+	this.tokenObjs = [];
+    var tokens = Token.popTokens;
+	for (var i = 0; i < tokens.length; i++) {
+		this.tokenObjs.push(new Token(tokens[i].address, this.getAddressString(), tokens[i].symbol, tokens[i].decimal, tokens[i].type));
+		this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+	}
+	var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+	for (var i = 0; i < storedTokens.length; i++) {
+		this.tokenObjs.push(new Token(storedTokens[i].contractAddress, this.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
+		this.tokenObjs[this.tokenObjs.length - 1].setBalance();
+	}
 }
-Wallet.prototype.getBalance = function(){
-    return this.balance;
+Wallet.prototype.setBalance = function() {
+	var parentObj = this;
+	this.balance = this.usdBalance = this.eurBalance = this.btcBalance = 'loading';
+	ajaxReq.getBalance(parentObj.getAddressString(), false, function(data) {
+		if (data.error) parentObj.balance = data.msg;
+		else {
+			parentObj.balance = etherUnits.toEther(data.data.balance, 'wei');
+			ajaxReq.getETHvalue(function(data) {
+				parentObj.usdBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.usd);
+				parentObj.eurBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.eur);
+				parentObj.btcBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.btc);
+			});
+		}
+	});
+}
+Wallet.prototype.getBalance = function() {
+	return this.balance;
 }
 Wallet.prototype.getPath = function() {
 	return this.path;
@@ -47,32 +67,28 @@ Wallet.prototype.getPrivateKey = function() {
 Wallet.prototype.getPrivateKeyString = function() {
 	if (typeof this.privKey != "undefined") {
 		return this.getPrivateKey().toString('hex')
-	}
-	else {
+	} else {
 		return "";
 	}
 }
 Wallet.prototype.getPublicKey = function() {
 	if (typeof this.pubKey == "undefined") {
 		return ethUtil.privateToPublic(this.privKey)
-	}
-	else {
+	} else {
 		return this.pubKey;
 	}
 }
 Wallet.prototype.getPublicKeyString = function() {
 	if (typeof this.pubKey == "undefined") {
 		return '0x' + this.getPublicKey().toString('hex')
-	}
-	else {
+	} else {
 		return "0x" + this.pubKey.toString('hex')
 	}
 }
 Wallet.prototype.getAddress = function() {
 	if (typeof this.pubKey == "undefined") {
 		return ethUtil.privateToAddress(this.privKey)
-	}
-	else {
+	} else {
 		return ethUtil.publicToAddress(this.pubKey, true)
 	}
 }
@@ -138,9 +154,9 @@ Wallet.prototype.toJSON = function() {
 		checksumAddress: this.getChecksumAddressString(),
 		privKey: this.getPrivateKeyString(),
 		pubKey: this.getPublicKeyString(),
-        publisher:"MyEtherWallet",
-        encrypted:false,
-        version:2
+		publisher: "MyEtherWallet",
+		encrypted: false,
+		version: 2
 	}
 }
 Wallet.fromMyEtherWallet = function(input, password) {
@@ -174,13 +190,13 @@ Wallet.fromMyEtherWallet = function(input, password) {
 	}
 	return wallet
 }
-Wallet.fromMyEtherWalletV2 = function (input){
-    var json = (typeof input === 'object') ? input : JSON.parse(input);
-    if (json.privKey.length !== 64) {
-        throw new Error('Invalid private key length');
-    };
-    var privKey = new Buffer(json.privKey, 'hex');
-    return new Wallet(privKey);
+Wallet.fromMyEtherWalletV2 = function(input) {
+	var json = (typeof input === 'object') ? input : JSON.parse(input);
+	if (json.privKey.length !== 64) {
+		throw new Error('Invalid private key length');
+	};
+	var privKey = new Buffer(json.privKey, 'hex');
+	return new Wallet(privKey);
 }
 Wallet.fromEthSale = function(input, password) {
 	var json = (typeof input === 'object') ? input : JSON.parse(input)
@@ -232,23 +248,18 @@ Wallet.fromV3 = function(input, password, nonStrict) {
 	}
 	var decipher = ethUtil.crypto.createDecipheriv(json.crypto.cipher, derivedKey.slice(0, 16), new Buffer(json.crypto.cipherparams.iv, 'hex'))
 	var seed = Wallet.decipherBuffer(decipher, ciphertext, 'hex')
-    while(seed.length<32) {
-        var nullBuff = new Buffer ([0x00]);
-        seed = Buffer.concat([nullBuff, seed]);
-    }
+	while (seed.length < 32) {
+		var nullBuff = new Buffer([0x00]);
+		seed = Buffer.concat([nullBuff, seed]);
+	}
 	return new Wallet(seed)
 }
 Wallet.prototype.toV3String = function(password, opts) {
 	return JSON.stringify(this.toV3(password, opts))
 }
-Wallet.prototype.getV3Filename = function (timestamp) {
-  var ts = timestamp ? new Date(timestamp) : new Date()
-  return [
-    'UTC--',
-    ts.toJSON().replace(/:/g, '-'),
-    '--',
-    this.getAddress().toString('hex')
-  ].join('')
+Wallet.prototype.getV3Filename = function(timestamp) {
+	var ts = timestamp ? new Date(timestamp) : new Date()
+	return ['UTC--', ts.toJSON().replace(/:/g, '-'), '--', this.getAddress().toString('hex')].join('')
 }
 Wallet.decipherBuffer = function(decipher, data) {
 	return Buffer.concat([decipher.update(data), decipher.final()])
@@ -307,7 +318,7 @@ Wallet.walletRequirePass = function(ethjson) {
 	else if (jsonArr.Crypto != null || jsonArr.crypto != null) return true
 	else if (jsonArr.hash != null && jsonArr.locked) return true;
 	else if (jsonArr.hash != null && !jsonArr.locked) return false;
-    else if (jsonArr.publisher == "MyEtherWallet" && !jsonArr.encrypted) return false;
+	else if (jsonArr.publisher == "MyEtherWallet" && !jsonArr.encrypted) return false;
 	else
 	throw globalFuncs.errorMsgs[2];
 }
