@@ -9,11 +9,10 @@ gulp build              html styles js (staticJS) copy
      clean              cleans files we don't need that get compiled
      getVersion         gets version from manifest
      zip                zips dist folder w/ version number
-     zipCX              zips cx folder w/ version number
      bump-patch         bumps v from 0.0.1 to 0.0.2
      bump-minor         bumps v from 0.1.0 to 0.2.0
 gulp buildPush          no version increase nor tags nor zips: build clean add commit push
-gulp prepBump           cleans and zips it up: clean bump-patch getV zip zipCX
+gulp prepBump           cleans and zips it up: clean bump-patch getV zip
      add                git add
      commit             git commit without v number
      commitV            git commit with v number
@@ -247,22 +246,17 @@ gulp.task('getVersion', function() {
 
 // zips dist folder
 gulp.task('zip', ['getVersion'], function() {
- return gulp.src( dist + '*' )
+ return gulp.src( dist + '**/**/*' )
     .pipe( plumber   ({ errorHandler: onError                      }))
     .pipe( zip       (  './dist-' + versionNum + '.zip'             ))
     .pipe( gulp.dest (  './releases/'                               ))
     .pipe( notify ( onSuccess('Zip Dist ' + versionNum ) ))
-
-})
-// zips cx folder
-gulp.task('zipCX', ['getVersion'], function() {
-  return gulp.src( dist_CX + '*' )
+  return gulp.src( dist_CX + '**/**/*' )
     .pipe( plumber   ({ errorHandler: onError                       }))
     .pipe( zip       (  './chrome-extension-' + versionNum + '.zip'  ))
     .pipe( gulp.dest (  './releases/'                                ))
     .pipe( notify ( onSuccess('Zip CX ' + versionNum ) ))
 })
-
 
 
 
@@ -343,16 +337,16 @@ gulp.task('bump-patch',        function() { return bumpFunc( 'patch' ) })
 gulp.task('bump-minor',        function() { return bumpFunc( 'minor' ) })
 
 // Prep for Release
-gulp.task('prep',              function(cb) { runSequence('clean', ['zip', 'zipCX'], cb); });
+gulp.task('prep',              function(cb) { runSequence('clean', 'zip', cb); });
 
 // Build, Clean, Push (no v)
 gulp.task('buildPush',         function(cb) { runSequence('html', 'styles', 'js', 'copy', 'clean', 'add', 'commit', 'push', cb); });
 
 // All and Push
-gulp.task('buildBumpPush',     function(cb) { runSequence(['html', 'styles', 'js'], 'copy', ['clean', 'bump-patch'], ['zip', 'zipCX'], 'add', 'commitV', 'tag', 'push', cb); });
+gulp.task('buildBumpPush',     function(cb) { runSequence('html', 'styles', 'js', 'copy', 'clean', 'bump-patch', 'zip', 'add', 'commitV', 'tag', 'push', cb); });
 
 // All and Push Live
-gulp.task('buildBumpPushLive', function(cb) { runSequence(['html', 'styles', 'js'], 'copy', ['clean', 'bump-patch'], ['zip', 'zipCX'], 'add', 'commitV', 'tag', 'push', 'pushLive', cb); });
+gulp.task('buildBumpPushLive', function(cb) { runSequence('html', 'styles', 'js', 'copy', 'clean', 'bump-patch', 'zip', 'add', 'commitV', 'tag', 'push', 'pushLive', cb); });
 
 
 gulp.task('default',           ['build', 'watch'])
