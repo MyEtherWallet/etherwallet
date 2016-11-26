@@ -6,7 +6,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	$scope.txInfoModal = new Modal(document.getElementById('txInfoModal'));
 	walletService.wallet = null;
 	walletService.password = '';
-	$scope.showAdvance = $scope.customTokenField = $scope.showRaw = false;
+	$scope.showAdvance = $scope.showRaw = false;
 	$scope.dropdownEnabled = true;
 	$scope.replayContract = "0xaa1a6e3e6ef20068f7f8d8c835d2d22fd5116444";
 	$scope.splitHex = "0x0f2c9329";
@@ -17,12 +17,6 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		to: '',
 		value: 0,
 		id: -1
-	};
-	$scope.localToken = {
-		contractAdd: "",
-		symbol: "",
-		decimals: "",
-		type: "custom",
 	};
 	$scope.tx = {
 		// if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
@@ -193,26 +187,6 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		} else {
 			$scope.tx.value = $scope.wallet.tokenObjs[$scope.tokenTx.id].getBalance();
 		}
-	}
-	$scope.saveTokenToLocal = function() {
-		globalFuncs.saveTokenToLocal($scope.localToken, function(data) {
-			if (!data.error) {
-				$scope.localToken = {
-					contractAdd: "",
-					symbol: "",
-					decimals: "",
-					type: "custom"
-				};
-				$scope.wallet.setTokens();
-				$scope.validateLocalToken = $sce.trustAsHtml('');
-				$scope.customTokenField = false;
-			} else {
-				$scope.validateLocalToken = $sce.trustAsHtml(data.msg);
-			}
-		});
-	}
-	$scope.removeTokenFromLocal = function(tokenSymbol) {
-		globalFuncs.removeTokenFromLocal(tokenSymbol, $scope.wallet.tokenObjs);
 	}
 };
 module.exports = sendTxCtrl;

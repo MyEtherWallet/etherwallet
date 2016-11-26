@@ -7,7 +7,6 @@ var Wallet = function(priv, pub, path, hwType, hwTransport) {
 	this.path = path;
 	this.hwType = hwType;
 	this.hwTransport = hwTransport;
-	this.balance = "loading";
 	this.type = "default";
 }
 Wallet.generate = function(icapDirect) {
