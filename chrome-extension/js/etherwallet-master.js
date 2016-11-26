@@ -1065,7 +1065,6 @@ var footerCtrl = function footerCtrl($scope) {
 module.exports = footerCtrl;
 
 },{}],12:[function(require,module,exports){
-(function (Buffer){
 'use strict';
 
 var sendOfflineTxCtrl = function sendOfflineTxCtrl($scope, $sce, walletService) {
@@ -1189,7 +1188,7 @@ var sendOfflineTxCtrl = function sendOfflineTxCtrl($scope, $sce, walletService) 
 			}
 			$scope.valueReadable = $scope.tx.value;
 			var eTx = new ethUtil.Tx(rawTx);
-			ethFuncs.ecSignEIP155(eTx, new Buffer(txData.privKey, 'hex'), false);
+			ethFuncs.ecSignEIP155(eTx, $scope.wallet.getPrivateKey(), false);
 			$scope.rawTx = JSON.stringify(rawTx);
 			$scope.signedTx = '0x' + eTx.serialize().toString('hex');
 			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
@@ -1220,8 +1219,7 @@ var sendOfflineTxCtrl = function sendOfflineTxCtrl($scope, $sce, walletService) 
 };
 module.exports = sendOfflineTxCtrl;
 
-}).call(this,require("buffer").Buffer)
-},{"buffer":117}],13:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 var sendTxCtrl = function sendTxCtrl($scope, $sce, walletService) {
@@ -2312,7 +2310,7 @@ ethFuncs.padLeftEven = function (hex) {
 };
 ethFuncs.addTinyMoreToGas = function (hex) {
 	hex = this.sanitizeHex(hex);
-	return new BigNumber(hex).plus(etherUnits.getValueOfUnit('gwei') * 41).toDigits(2).toString(16); //add 41 gwei extra for faster mining
+	return new BigNumber(hex).plus(etherUnits.getValueOfUnit('gwei')).toDigits(2).toString(16);
 };
 ethFuncs.decimalToHex = function (dec) {
 	return new BigNumber(dec).toString(16);
@@ -67783,7 +67781,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
+      "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -67819,7 +67817,7 @@ module.exports={
   "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/Volumes/Macintosh HD/Users/TayTay/Documents/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
+  "_where": "C:\\Users\\Kosala\\Documents\\GitHub\\etherwallet\\node_modules\\browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
