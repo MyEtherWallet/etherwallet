@@ -4,10 +4,6 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
-
-  ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
-
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -277,6 +273,7 @@ nl.data = {
   ERROR_19:             'Alle gas zou worden verbruikt op deze transactie. Dit betekend dat je al gestemd hebt op dit proposal of dat de debateerperiode is verstreken.',
   ERROR_20:             'Ongeldig symbol',
   ERROR_21:             ' is geen geldig ERC-20 token. Als andere tokens nog aan het laden zijn, verwijder dan dit token en probeer het opnieuw.',
+  ERROR_22:             'Kon gas niet inschatten. Er is onvoldoende saldo in het account, of het ontvangende contract adres geeft een fout. Voel je vrij om het gas handmatig in te stellen en door te gaan. De foutmelding bij het verzenden kan informatiever zijn.',
   SUCCESS_1:            'Geldig adres',
   SUCCESS_2:            'Wallet succesvol ontsleuteld',
   SUCCESS_3:            'Transactie verzonden. TX ID: ',
@@ -284,7 +281,8 @@ nl.data = {
   SUCCESS_5:            'Je hebt succesvol gestemd. Fijn dat je een actief participerend DAO deelnemer bent.',
   SUCCESS_6:            'Bestand Geselecteerd: ',
   WARN_Send_Link:       'Je bent hier gekomen via een link waarbij het adres, bedrag, gas of data velden al ingevuld zijn. Indien gewenst kun je elk veld nog aanpassen voor het verzenden. Ontgrendel je wallet on te beginnen.',
-
+  WARN_Send_Link_2:     '**Waarschuwing:** Je kunt alleen data toevoegen als je verzend via "ETH (Standaard Transactie)". Verwijder de "sendMode" en/of het "tokenSymbol" van de URI om een transactie te verzenden met data.',
+  
   /* Geth Error Messages */
   GETH_InvalidSender:      'Ongeldige verzender',
   GETH_Nonce:              'Nonce te laag',
