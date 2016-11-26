@@ -1,3 +1,29 @@
+/*
+gulp html               builds html templates
+     styles             compiles and minfies less
+     js                 browserify, babel es2015
+gulp js-debug           browserify with soruce maps, babel es2015
+     staticJS           recompiles and uglifies staticJS files
+     copy               runs staticJS first. copies images, fonts, and other static files to cx and dist
+gulp build              html styles js (staticJS) copy
+     clean              cleans files we don't need that get compiled
+     getVersion         gets version from manifest
+     zip                zips dist folder w/ version number
+     zipCX              zips cx folder w/ version number
+     bump-patch         bumps v from 0.0.1 to 0.0.2
+     bump-minor         bumps v from 0.1.0 to 0.2.0
+gulp buildPush          no version increase nor tags nor zips: build clean add commit push
+gulp prepBump           cleans and zips it up: clean bump-patch getV zip zipCX
+     add                git add
+     commit             git commit without v number
+     commitV            git commit with v number
+     tag                git tag w/ with number
+     push               git push to mercury
+     pushLive           git push live to gh-pages
+gulp buildBumpPush      new release but not live: build bump-patch prep add commitV tag push
+gulp buildBumpPushLive  new release AND live:     build bump-patch prep add commitV tag push pushLive
+*/
+
 var fs           = require('fs')
 
 var autoprefixer = require('gulp-autoprefixer')
@@ -299,31 +325,6 @@ gulp.task('pushLive', ['getVersion'], function () {
 })
 
 
-/*
-gulp html               builds html templates
-     styles             compiles and minfies less
-     js                 browserify, babel es2015
-gulp js-debug           browserify with soruce maps, babel es2015
-     staticJS           recompiles and uglifies staticJS files
-     copy               runs staticJS first. copies images, fonts, and other static files to cx and dist
-gulp build              html styles js (staticJS) copy
-     clean              cleans files we don't need that get compiled
-     getVersion         gets version from manifest
-     zip                zips dist folder w/ version number
-     zipCX              zips cx folder w/ version number
-     bump-patch         bumps v from 0.0.1 to 0.0.2
-     bump-minor         bumps v from 0.1.0 to 0.2.0
-gulp buildPush          no version increase nor tags nor zips: build clean add commit push
-gulp prepBump           cleans and zips it up: clean bump-patch getV zip zipCX
-     add                git add
-     commit             git commit without v number
-     commitV            git commit with v number
-     tag                git tag w/ with number
-     push               git push to mercury
-     pushLive           git push live to gh-pages
-gulp buildBumpPush      new release but not live: build bump-patch prep add commitV tag push
-gulp buildBumpPushLive  new release AND live:     build bump-patch prep add commitV tag push pushLive
-*/
 
 // Watch Tasks
 gulp.task('watchJS',    function() { gulp.watch( js_watchFolder,   ['js'    ]) })
@@ -342,7 +343,7 @@ gulp.task('bump-patch',        function() { return bumpFunc( 'patch' ) })
 gulp.task('bump-minor',        function() { return bumpFunc( 'minor' ) })
 
 // Prep for Release
-gulp.task('prepBump',          function(cb) { runSequence('clean', 'bump-patch', ['zip', 'zipCX'], cb); });
+gulp.task('prep',              function(cb) { runSequence('clean', ['zip', 'zipCX'], cb); });
 
 // Build, Clean, Push (no v)
 gulp.task('buildPush',         function(cb) { runSequence('html', 'styles', 'js', 'copy', 'clean', 'add', 'commit', 'push', cb); });
