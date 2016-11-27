@@ -4167,6 +4167,7 @@ u2f.getApiVersion = function (callback, opt_timeoutSeconds) {
     port.postMessage(req);
   });
 };
+module.exports = u2f;
 
 },{}],38:[function(require,module,exports){
 'use strict';
