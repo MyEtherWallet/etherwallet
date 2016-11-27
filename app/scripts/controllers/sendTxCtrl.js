@@ -155,6 +155,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 				$scope.signedTx = rawTx.signedTx;
 				$scope.showRaw = true;
 				$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+                if(!$scope.$$phase) $scope.$apply();
 			} else {
 				$scope.showRaw = false;
 				$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
