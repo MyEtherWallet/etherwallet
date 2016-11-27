@@ -12,6 +12,7 @@ gulp build              html styles js (staticJS) copy
      bump-patch         bumps v from 0.0.1 to 0.0.2
      bump-minor         bumps v from 0.1.0 to 0.2.0
 gulp buildPush          no version increase nor tags nor zips: build clean add commit push
+gulp buildPrep          html styles js copy clean bump-patch zip
 gulp prepBump           cleans and zips it up: clean bump-patch getV zip
      add                git add
      commit             git commit without v number
@@ -116,7 +117,6 @@ gulp.task( 'styles', function () {
      .pipe( gulp.dest   (  less_destFolder_CX                                      ))
      .pipe( notify      (  onSuccess('Styles')                                     ))
 })
-
 
 
 // js: Browserify
@@ -246,7 +246,7 @@ gulp.task('getVersion', function() {
 
 // zips dist folder
 gulp.task('zip', ['getVersion'], function() {
- return gulp.src( dist + '**/**/*' )
+  gulp.src( dist + '**/**/*' )
     .pipe( plumber   ({ errorHandler: onError                      }))
     .pipe( zip       (  './dist-' + versionNum + '.zip'             ))
     .pipe( gulp.dest (  './releases/'                               ))
@@ -321,23 +321,25 @@ gulp.task('pushLive', ['getVersion'], function () {
 
 
 // Watch Tasks
-gulp.task('watchJS',    function() { gulp.watch( js_watchFolder,   ['js'    ]) })
-gulp.task('watchLess',  function() { gulp.watch( less_watchFolder, ['styles']) })
-gulp.task('watchPAGES', function() { gulp.watch( htmlFiles,        ['html'  ]) })
-gulp.task('watchTPL',   function() { gulp.watch( tplFiles,         ['html'  ]) })
-gulp.task('watchCX',    function() { gulp.watch( cxSrcFiles,       ['copy'  ]) })
+gulp.task('watchJS',           function() { gulp.watch( js_watchFolder,   ['js'    ]) })
+gulp.task('watchLess',         function() { gulp.watch( less_watchFolder, ['styles']) })
+gulp.task('watchPAGES',        function() { gulp.watch( htmlFiles,        ['html'  ]) })
+gulp.task('watchTPL',          function() { gulp.watch( tplFiles,         ['html'  ]) })
+gulp.task('watchCX',           function() { gulp.watch( cxSrcFiles,       ['copy'  ]) })
 
-gulp.task('watch',       ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
-
-// Build
-gulp.task('build',       ['html', 'styles', 'js', 'copy'])
+gulp.task('watch',             ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
 
 // Bump Version
 gulp.task('bump-patch',        function() { return bumpFunc( 'patch' ) })
 gulp.task('bump-minor',        function() { return bumpFunc( 'minor' ) })
 
+// Build
+gulp.task('build',             ['html', 'styles', 'js', 'copy'])
+
 // Prep for Release
 gulp.task('prep',              function(cb) { runSequence('clean', 'zip', cb); });
+
+gulp.task('prepBump',          function(cb) { runSequence('clean', 'bump-patch', 'zip', cb); });
 
 // Build, Clean, Push (no v)
 gulp.task('buildPush',         function(cb) { runSequence('html', 'styles', 'js', 'copy', 'clean', 'add', 'commit', 'push', cb); });
