@@ -1450,9 +1450,8 @@ var signMsgCtrl = function signMsgCtrl($scope, $sce, walletService) {
     var signed = ethUtil.ecsign(hash, $scope.wallet.getPrivateKey());
     var combined = Buffer.concat([Buffer.from(signed.r), Buffer.from(signed.s), Buffer.from([signed.v])]);
     var combinedHex = combined.toString('hex');
-    $scope.signMsg.signedMsg = '0x' + combinedHex;
+    $scope.signMsg.signedMsg = JSON.stringify({ address: $scope.wallet.getChecksumAddressString(), msg: thisMessage, signature: '0x' + combinedHex });
   };
-
   $scope.verifySignedMessage = function () {};
 };
 module.exports = signMsgCtrl;
