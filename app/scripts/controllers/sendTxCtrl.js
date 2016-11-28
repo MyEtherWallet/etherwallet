@@ -90,7 +90,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 			$scope.tx.data = "";
 			$scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
 		}
-		if ($scope.wallet && $scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data) && $scope.tx.sendMode != 4) {
+		if (newValue.gasLimit==oldValue.gasLimit && $scope.wallet && $scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data) && $scope.tx.sendMode != 4) {
 			if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
 			$scope.estimateTimer = setTimeout(function() {
 				$scope.estimateGasLimit();
