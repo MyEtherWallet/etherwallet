@@ -4,7 +4,15 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
-  WARN_Send_Link_2:     '**Avertissement :** Vous ne pouvez inclure de données que si vous envoyez via "ETH (Transaction standard)". Enlevez "sendMode" et/ou "tokenSymbol" de l\'URI pour envoyer une transaction avec des données.',
+  /* Sign Message */
+  NAV_SignMsg:          'Sign Message',
+  MSG_message:          'Message',
+  MSG_date:             'Date',
+  MSG_signature:        'Signature',
+  MSG_verify:           'Verify Message',
+  MSG_info1:            'Include the current date so the signature cannot be reused on a different date.',
+  MSG_info2:            'Include your nickname and where you use the nickname so someone else cannot use it.',
+  MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
 
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
@@ -282,6 +290,7 @@ fr.data = {
   SUCCESS_5:            'Vous avez voté avec succès. Merci d\'être un participant actif à The DAO.',
   SUCCESS_6:            'Fichier sélectionné : ',
   WARN_Send_Link:       'Vous être arrivé grâce à un lien qui a rempli l\'adresse, le montant, le gaz ou les champs de données pour vous. Vous pouvez modifier toutes les informations avant d\'envoyer. Débloquez votre portefeuille pour démarrer.',
+  WARN_Send_Link_2:     '**Avertissement :** Vous ne pouvez inclure de données que si vous envoyez via "ETH (Transaction standard)". Enlevez "sendMode" et/ou "tokenSymbol" de l\'URI pour envoyer une transaction avec des données.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Expéditeur invalide',

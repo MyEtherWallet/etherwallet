@@ -4,7 +4,15 @@ var pt = function() {}
 pt.code = 'pt';
 pt.data = {
 
-  ERROR_22:             'Não foi possível estimar o gás. Não há fundos suficientes na conta, ou o endereço do contrato de recebimento iria lançar um erro. Sinta-se livre para definir manualmente o gás e prossiga. A mensagem de erro ao enviar pode ser mais informativa.',
+  /* Sign Message */
+  NAV_SignMsg:          'Sign Message',
+  MSG_message:          'Message',
+  MSG_date:             'Date',
+  MSG_signature:        'Signature',
+  MSG_verify:           'Verify Message',
+  MSG_info1:            'Include the current date so the signature cannot be reused on a different date.',
+  MSG_info2:            'Include your nickname and where you use the nickname so someone else cannot use it.',
+  MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
 
   /* Hardware wallets */
   ADD_Ledger_4:         'Se nenhum suporte de navegador for encontrado nas configurações, verifique se [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
@@ -278,6 +286,7 @@ pt.data = {
   ERROR_19:             'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.',
   ERROR_20:             'Invalid symbol',
   ERROR_21:             'Não é um token ERC-20 válido',
+  ERROR_22:             'Não foi possível estimar o gás. Não há fundos suficientes na conta, ou o endereço do contrato de recebimento iria lançar um erro. Sinta-se livre para definir manualmente o gás e prossiga. A mensagem de erro ao enviar pode ser mais informativa.',
   SUCCESS_1:            'Valid address',
   SUCCESS_2:            'Wallet successfully decrypted',
   SUCCESS_3:            'Transaction submitted. TX ID: ',

@@ -4,6 +4,16 @@ var id = function() {}
 id.code = 'id';
 id.data = {
 
+  /* Sign Message */
+  NAV_SignMsg:          'Sign Message',
+  MSG_message:          'Message',
+  MSG_date:             'Date',
+  MSG_signature:        'Signature',
+  MSG_verify:           'Verify Message',
+  MSG_info1:            'Include the current date so the signature cannot be reused on a different date.',
+  MSG_info2:            'Include your nickname and where you use the nickname so someone else cannot use it.',
+  MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
+
   WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Navigation*/

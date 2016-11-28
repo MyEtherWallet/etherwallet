@@ -4,6 +4,16 @@ var el = function() {}
 el.code = 'el';
 el.data = {
 
+  /* Sign Message */
+  NAV_SignMsg:          'Sign Message',
+  MSG_message:          'Message',
+  MSG_date:             'Date',
+  MSG_signature:        'Signature',
+  MSG_verify:           'Verify Message',
+  MSG_info1:            'Include the current date so the signature cannot be reused on a different date.',
+  MSG_info2:            'Include your nickname and where you use the nickname so someone else cannot use it.',
+  MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
+
   /* Mnemonic Additions */
   MNEM_1:               'Please select the address you would like to interact with.',
   MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',

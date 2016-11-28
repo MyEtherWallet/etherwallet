@@ -3,32 +3,16 @@
 var ja = function() {}
 ja.code = 'ja';
 ja.data = {
-  TRANS_gas:             ' ガスリミット： ', // changed in ENG to Gas Limit:
-  ERROR_22:             'ガス量を推定できません。十分な資金が口座にないか、あるいは受け取り側のコントラクトがエラーになっています。ガス量を変更してから試してください。送出時にはより詳しいエラーメッセージが返ります。',
 
-  /* Mnemonic Additions */
-  MNEM_1:               '操作したいアドレスを選択してください。',
-  MNEM_2:               'ＨＤニーモニックの一つの文節で、複数のウォレットやアドレスが操作可能です。操作したいアドレスを選択してください。',
-  MNEM_more:            'さらにアドレスを表示',
-  MNEM_prev:            '前のアドレス表示',
-  x_Mnemonic:           'ニーモニックフレーズ (MetaMask / Jaxx / ether.cards)',
-  ADD_Radio_5:          'ニーモニックを上書き/タイプ',
-  SEND_custom:          'カスタムトークンを追加',
-  ERROR_21:             '　は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。',
-  TOKEN_show:           '全てのトークンを表示',
-  TOKEN_hide:           'トークンを隠す',
-  WARN_Send_Link:       '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、ウォレットを解錠してください。',
-  WARN_Send_Link_2:     '**警告** 「ETH (Standard Transaction)」で送出する時には、データのみを含めることしかできません。 「sendMode」 及び/あるいは 「tokenSymbol」 を URIから取り除いてください。',
-
-  /* Hardware wallets */
-  x_Ledger:             'Ledger Nano S',
-  ADD_Ledger_1:         '自分の Ledger Nano S　を接続する',
-  ADD_Ledger_2:         'イサリアムアプリケーション（あるいはコントラクトアプリケーション）を開く　。',
-  ADD_Ledger_3:         '設定中で、ブラウザサポートが有効にされていることを確認してください。',
-  ADD_Ledger_4:         '設定にブラウザサポートが見つからなければ、[Firmware >1.2]を確認してください。(https://www.ledgerwallet.com/apps/manager)',
-  ADD_Ledger_0a:        'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。',
-  ADD_Ledger_0b:        'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。',
-  ADD_Ledger_scan:      'Ledger Nano S　に接続',
+  /* Sign Message */
+  NAV_SignMsg:          'Sign Message',
+  MSG_message:          'Message',
+  MSG_date:             'Date',
+  MSG_signature:        'Signature',
+  MSG_verify:           'Verify Message',
+  MSG_info1:            'Include the current date so the signature cannot be reused on a different date.',
+  MSG_info2:            'Include your nickname and where you use the nickname so someone else cannot use it.',
+  MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      '送出元が無効です',
@@ -70,6 +54,7 @@ ja.data = {
   x_Keystore:           'Keystore ファイル (UTC / JSON · 推奨 · 暗号化 · Mist フォーマット)',
   x_Keystore2:          'Keystore ファイル (UTC / JSON) ',
   x_KeystoreDesc:       'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
+  x_Mnemonic:           'ニーモニックフレーズ (MetaMask / Jaxx / ether.cards)',
   x_Password:           'パスワード',
   x_Print:              'ペーパーウォレットを印刷',
   x_PrintDesc:          'ProTip: プリンターが接続されていなくても、「印刷」をクリックしてPDFで保存できます。',
@@ -119,6 +104,7 @@ ja.data = {
   ADD_Radio_2_short:      'ウォレットファイルを選択',
   ADD_Radio_3:            'プライベートキーをペースト/タイプ ',
   ADD_Radio_4:            '監視するアカウントを追加',
+  ADD_Radio_5:          'ニーモニックを上書き/タイプ',
   ADD_Label_2:            'ニックネームの作成：',
   ADD_Label_3:            'ウォレットが暗号化されました。パスワードを入力してください： ',
   ADD_Label_4:            '監視するアカウントを追加',
@@ -155,6 +141,8 @@ ja.data = {
   SEND_signed:           '署名済みトランザクション',
   SEND_trans:            'トランザクションの送出',
   SENDModal_Title:       '警告！ ',
+  SEND_custom:          'カスタムトークンを追加',
+
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1:   '送出準備が',
   SENDModal_Content_2:   'について、アドレス',
@@ -167,6 +155,8 @@ ja.data = {
   TOKEN_Addr:            'アドレス：',
   TOKEN_Symbol:          'トークンシンボル： ',
   TOKEN_Dec:             'ケタ数： ',
+  TOKEN_show:           '全てのトークンを表示',
+  TOKEN_hide:           'トークンを隠す',
 
   /* Send Transaction */
   TRANS_desc:            'トークンを送出するには「トークン送出」のタブを選択してください。',
@@ -175,7 +165,7 @@ ja.data = {
   TRANS_etc:             'ETCのみ',
   TRANS_advanced:        '+Advanced: ガスあるいはデータを追加してください ',
   TRANS_data:            ' データ： ',
-
+  TRANS_gas:             ' ガスリミット： ',
   TRANS_sendInfo:        '21000ガスを使用する標準トランザクションは、0.000441 ETHを消費します。迅速な処理を行うために、若干最小量よりも多めの0.000000021 ETHのガスを使用します。当サービスでは、トランザクション料金は徴収いたしません。',
 
   /* Send Transaction Modals */
@@ -210,6 +200,22 @@ ja.data = {
   OFFLINE_Step2_Label_7:  'プライベートキー/JSONの入力/選択',
   OFFLINE_Step3_Title:    'ステップ３: トランザクションの送出/公開(オンラインコンピューター)',
   OFFLINE_Step3_Label_1:  'ステップ２で署名されたトランザクションをここにペーストして「トランザクションの送出」ボタンをクリックする。',
+
+  /* Mnemonic Additions */
+  MNEM_1:               '操作したいアドレスを選択してください。',
+  MNEM_2:               'ＨＤニーモニックの一つの文節で、複数のウォレットやアドレスが操作可能です。操作したいアドレスを選択してください。',
+  MNEM_more:            'さらにアドレスを表示',
+  MNEM_prev:            '前のアドレス表示',
+
+  /* Hardware wallets */
+  x_Ledger:             'Ledger Nano S',
+  ADD_Ledger_1:         '自分の Ledger Nano S　を接続する',
+  ADD_Ledger_2:         'イサリアムアプリケーション（あるいはコントラクトアプリケーション）を開く　。',
+  ADD_Ledger_3:         '設定中で、ブラウザサポートが有効にされていることを確認してください。',
+  ADD_Ledger_4:         '設定にブラウザサポートが見つからなければ、[Firmware >1.2]を確認してください。(https://www.ledgerwallet.com/apps/manager)',
+  ADD_Ledger_0a:        'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。',
+  ADD_Ledger_0b:        'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。',
+  ADD_Ledger_scan:      'Ledger Nano S　に接続',
 
   /* DAO */
   DAO_bal1:               'ブロック 1,919,999',
@@ -287,12 +293,16 @@ ja.data = {
   ERROR_18:             'ガスとして使われるために、少なくとも0.01 etherがウォレット上に必要です。 ',
   ERROR_19:             '全てのガスがこのトランザクションにより消費されます。これは、既に投票を行ったか、あるいはディベート期間が終了したためです。',　
   ERROR_20:             '無効なシンボル',
+  ERROR_21:             '　は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。',
+  ERROR_22:             'ガス量を推定できません。十分な資金が口座にないか、あるいは受け取り側のコントラクトがエラーになっています。ガス量を変更してから試してください。送出時にはより詳しいエラーメッセージが返ります。',
   SUCCESS_1:            '有効なアドレス',
   SUCCESS_2:            'ウォレットは正常に暗号解除されました。',
   SUCCESS_3:            'トランザクションが送出されました。 TX ID: ',
   SUCCESS_4:            'ウォレットが追加されました：',
   SUCCESS_5:            '投票が完了しました。The DAO への積極的な参加に感謝いたします。',
   SUCCESS_6:            '選択されました： ',
+  WARN_Send_Link:       '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、ウォレットを解錠してください。',
+  WARN_Send_Link_2:     '**警告** 「ETH (Standard Transaction)」で送出する時には、データのみを含めることしかできません。 「sendMode」 及び/あるいは 「tokenSymbol」 を URIから取り除いてください。',
 
   /* Parity Error Messages */
   PARITY_AlreadyImported:       "同じハッシュのトランザクションがすでにインポートされています。",

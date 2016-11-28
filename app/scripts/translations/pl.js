@@ -4,11 +4,15 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-  TRANS_gas:             ' Limit Paliwa: ',
-  ERROR_22:             'Nie można określić ilości paliwa. Brak wystarczających środków na koncie lub adres docelowego kontraktu zwróciłby błąd. Możesz ręcznie ustawić paliwo przed kontynuacją. Opis błędu po wysłaniu transakcji może dostarczyć więcej informacji.',
-
-  WARN_Send_Link:       'Znalazłeś się tu przez odnośnik, który zawiera wstępnie uzupełniony adres, kwotę, paliwo lub dane transakcji. Możesz zmienić dowolne parametry transakcji zanim ją zatwierdzisz. Odblokuj portfel aby kontynuować.',
-  WARN_Send_Link_2:     '**Uwaga:** Dane można załączyć tylko wysyłając przez "ETH (Transakcja Standardowa)". Usuń parametr "sendMode" i/lub "tokenSymbol" z linku URI, aby wysłać transakcję z danymi.',
+  /* Sign Message */
+  NAV_SignMsg:          'Sign Message',
+  MSG_message:          'Message',
+  MSG_date:             'Date',
+  MSG_signature:        'Signature',
+  MSG_verify:           'Verify Message',
+  MSG_info1:            'Include the current date so the signature cannot be reused on a different date.',
+  MSG_info2:            'Include your nickname and where you use the nickname so someone else cannot use it.',
+  MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
@@ -148,6 +152,7 @@ pl.data = {
   TRANS_advanced:        '+Zaawansowane: Dodaj Dane ',
   TRANS_data:            ' Dane: ',
   TRANS_sendInfo:        'Standardowa transakcja, zużywająca 21000 paliwa, będzie kosztować 0.000441 ETH. My używamy ceny paliwa nieco-powyżej-minimum, co odpowiada 0.000000021 ETH aby upewnić się, że zostanie szybko zatwierdzona. Nie pobieramy żadnych dodatkowych opłat.',
+  TRANS_gas:             ' Limit Paliwa: ',
 
   /* Send Transaction Modals */
   TRANSModal_Title:      'Transakcje "Tylko ETH" i "Tylko ETC"',
@@ -277,12 +282,15 @@ pl.data = {
   ERROR_19:             'Całe paliwo było by zużyte w tej transakcji. Oznacza to, że głosowałeś już w tej propozycji albo minął termin głosowania.',
   ERROR_20:             'Nieprawidłowy symbol',
   ERROR_21:             ' nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token.',
+  ERROR_22:             'Nie można określić ilości paliwa. Brak wystarczających środków na koncie lub adres docelowego kontraktu zwróciłby błąd. Możesz ręcznie ustawić paliwo przed kontynuacją. Opis błędu po wysłaniu transakcji może dostarczyć więcej informacji.',
   SUCCESS_1:            'Prawidłowy adres',
   SUCCESS_2:            'Portfel został odszyfrowany',
   SUCCESS_3:            'Transakcja zgłoszona. TX ID: ',
   SUCCESS_4:            'Twój portfel został dodany: ',
   SUCCESS_5:            'Zagłosowałeś z powodzeniem. Dziękuję za bycie aktywnym uczestnikiem The DAO.',
   SUCCESS_6:            'Wybrany plik: ',
+  WARN_Send_Link:       'Znalazłeś się tu przez odnośnik, który zawiera wstępnie uzupełniony adres, kwotę, paliwo lub dane transakcji. Możesz zmienić dowolne parametry transakcji zanim ją zatwierdzisz. Odblokuj portfel aby kontynuować.',
+  WARN_Send_Link_2:     '**Uwaga:** Dane można załączyć tylko wysyłając przez "ETH (Transakcja Standardowa)". Usuń parametr "sendMode" i/lub "tokenSymbol" z linku URI, aby wysłać transakcję z danymi.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Nieprawidłowy nadawca',
