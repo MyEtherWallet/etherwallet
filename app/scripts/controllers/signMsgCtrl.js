@@ -25,16 +25,9 @@ var signMsgCtrl = function($scope, $sce, walletService) {
     var thisMessage          = $scope.signMsg.message + ' | ' + $scope.signMsg.dateTime;
     var hash                 = ethUtil.sha3( thisMessage )
     var signed               = ethUtil.ecsign( hash, $scope.wallet.getPrivateKey() )
-    var combined             = Buffer.concat([signed.r, signed.s, [signed.v]])
+    var combined             = Buffer.concat([Buffer.from(signed.r), Buffer.from(signed.s), Buffer.from([signed.v])])
     var combinedHex          = combined.toString('hex')
-    $scope.signMsg.signedMsg = combinedHex
-    console.log(
-     ' thisMessage: ' + thisMessage ,
-     ' hash: ' , hash ,
-     ' signed: ' , signed ,
-     ' combined: ' , combined,
-     ' combinedHex: ' , combinedHex
-   )
+    $scope.signMsg.signedMsg = '0x'+combinedHex
   }
 
   $scope.verifySignedMessage = function() {
