@@ -36,7 +36,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		if (sendMode == 0) {
 			$scope.unitTranslation = 'TRANS_eth';
 		} else if (sendMode == 2) {
-			$scope.unitTranslation = 'TRANS_eth';
+			$scope.unitTranslation = 'TRANS_etc';
 		} else if (sendMode == 4) {
 			$scope.unitTranslation = '';
 			$scope.unitReadable = tokenSymbol;
