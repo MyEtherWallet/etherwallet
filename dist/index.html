@@ -768,6 +768,188 @@
 <!-- /send transaction -->
 
 
+    <!-- Send Transaction Page -->
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.deployContract.id" ng-controller='deployContractCtrl'>
+
+  <h2 translate="NAV_DeployContract"> Deploy Contract </h2>
+
+  <section class="row" >
+
+    <div class="col-xs-12">
+      <!-- Data -->
+      <div class="form-group">
+        <h4> Byte Code: </h4>
+        <textarea class="form-control" ng-model="tx.data" rows="8" ng-class="Validator.isValidHex(tx.data)&&tx.data!='' ? 'is-valid' : 'is-invalid'"></textarea>
+      </div>
+
+      <!-- Gas -->
+      <div class="form-group">
+        <h4 translate="TRANS_gas"> Gas: </h4>
+        <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+      </div>
+
+      <!-- Wallet Decrypt -->
+      <div class="form-group">
+        <br />
+        
+          <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+        <br /><br />
+      </div>
+      <div ng-bind-html="deployContractStatus"></div>
+      <!-- Sign TX Button (once wallet has been unlocked) -->
+      <div class="form-group">
+        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DEP_signtx" ng-show="wallet!=null"> Sign Transaction </a>
+      </div>
+
+      <section class="row" ng-show="showRaw">
+        <!-- Raw TX -->
+        <div class="form-group col-sm-6">
+          <h4 translate="SEND_raw"> Raw Transaction </h4>
+          <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
+        </div>
+
+        <!-- Singed TX -->
+        <div class="form-group col-sm-6">
+          <h4 translate="SEND_signed"> Signed Transaction </h4>
+          <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
+        </div>
+      </section>
+
+      <!-- Deploy Contract Button (once tx has been signged) -->
+      <div class="form-group" ng-show="showRaw">
+        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="NAV_DeployContract"> Deploy Contract </a>
+      </div>
+
+      <div class="form-group" ng-bind-html="sendTxStatus"></div>
+
+
+
+      <!-- Deploy Modal -->
+      <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
+            </div>
+
+            <div class="modal-body">
+              <h4>
+                <span>You are about to deploy a contract to the blockchain.</span>
+              </h4>
+              <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+            </div>
+
+            <div class="modal-footer text-center">
+              <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
+              <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--/ Deploy Modal-->
+
+
+    </div>
+  </section>
+</article>
+<!-- / Send Transaction Page -->
+
+
+    <!-- Send Transaction Page -->
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.signMsg.id" ng-controller='signMsgCtrl'>
+
+  <h2>
+    <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="visibility='signView'"> Sign Message </a>
+    or
+    <a translate="MSG_verify"  ng-class="{'isActive': visibility=='verifyView'}" ng-click="visibility='verifyView'"> Verify Message </a> </h2>
+
+  <section class="row" ng-switch="visibility">
+
+
+<!-- Sign Message Stuff -->
+    <div class="col-xs-12" ng-switch-when="signView">
+
+      <div class="alert alert-info" >
+        <ul>
+          <li translate="MSG_info1">Include the current date so the signature cannot be reused on a different date.</li>
+          <li translate="MSG_info2">Include your nickname and where you use the nickname so someone else cannot use it.</li>
+          <li translate="MSG_info3">Inlude a specific reason for the message so it cannot be reused for a different purpose.</li>
+        </ul>
+      </div>
+      <!-- Message -->
+      <div class="form-group">
+        <h4 translate="MSG_message"> Message </h4>
+        <textarea class="form-control" ng-model="signMsg.message" placeholder="This is user kvhnuke on reddit. The purprose of this message is to prove that 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 is my address." rows="4"></textarea>
+      </div>
+
+      <!-- Date -->
+      <div class="form-group">
+        <h4 translate="MSG_date"> Date </h4>
+        <input class="form-control" ng-model="signMsg.dateTime" type="text" placeholder="1 JAN 2016 14:15" />
+      </div>
+
+      <!-- Wallet Decrypt -->
+      <div class="form-group">
+        <br />
+        
+          <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+        <br /><br />
+      </div>
+
+      <!-- Sign Message Button -->
+      <div class="form-group">
+        <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="NAV_SignMsg" ng-show="wallet!=null"> Sign Message </a>
+      </div>
+
+      <!-- Sign Message Status -->
+      <div class="form-group" ng-bind-html="signMsg.status"></div>
+
+      <!-- Signed Message -->
+      <div class="form-group" ng-show="signMsg.signedMsg">
+        <h4 translate="MSG_signature"> Signature </h4>
+        <textarea class="form-control" rows="4" readonly>{{ signMsg.signedMsg }}</textarea>
+      </div>
+
+    </div>
+<!-- / Sign Message Stuff -->
+
+
+
+<!-- Verify Message Stuff -->
+
+    <div class="col-xs-12" ng-switch-when="verifyView">
+
+      <!-- Address -->
+      <div class="form-group">
+        <h4 translate="TOKEN_Addr"> Address </h4>
+        <input class="form-control" ng-model="verifyMsg.address" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" />
+      </div>
+
+      <!-- Signature -->
+      <div class="form-group">
+        <h4 translate="MSG_signature"> Signature </h4>
+        <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="4"></textarea>
+      </div>
+
+      <!-- Verify Signature Message Button -->
+      <div class="form-group">
+        <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="wallet!=null"> Verify Message </a>
+      </div>
+
+      <!-- Verify Message Status -->
+      <div class="form-group" ng-bind-html="verifyMsg.status"></div>
+
+    </div>
+<!-- / Verify Message Stuff -->
+
+  </section>
+</article>
+<!-- / Send Transaction Page -->
+
+
     <!-- The DAO -->
 <article class="tab-pane page-dao active" ng-if="globalService.currentTab==globalService.tabs.dao.id" ng-controller='theDaoCtrl'>
 
@@ -1161,96 +1343,6 @@
 
 </div>
 <!-- / Digix -->
-
-
-    <!-- Send Transaction Page -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.deployContract.id" ng-controller='deployContractCtrl'>
-
-  <h2 translate="NAV_DeployContract"> Deploy Contract </h2>
-
-  <section class="row" >
-
-    <div class="col-xs-12">
-      <!-- Data -->
-      <div class="form-group">
-        <h4> Byte Code: </h4>
-        <textarea class="form-control" ng-model="tx.data" rows="8" ng-class="Validator.isValidHex(tx.data)&&tx.data!='' ? 'is-valid' : 'is-invalid'"></textarea>
-      </div>
-
-      <!-- Gas -->
-      <div class="form-group">
-        <h4 translate="TRANS_gas"> Gas: </h4>
-        <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
-      </div>
-
-      <!-- Wallet Decrypt -->
-      <div class="form-group">
-        <br />
-        
-          <wallet-decrypt-drtv></wallet-decrypt-drtv>         
-        <br /><br />
-      </div>
-      <div ng-bind-html="deployContractStatus"></div>
-      <!-- Sign TX Button (once wallet has been unlocked) -->
-      <div class="form-group">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DEP_signtx" ng-show="wallet!=null"> Sign Transaction </a>
-      </div>
-
-      <section class="row" ng-show="showRaw">
-        <!-- Raw TX -->
-        <div class="form-group col-sm-6">
-          <h4 translate="SEND_raw"> Raw Transaction </h4>
-          <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
-        </div>
-
-        <!-- Singed TX -->
-        <div class="form-group col-sm-6">
-          <h4 translate="SEND_signed"> Signed Transaction </h4>
-          <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
-        </div>
-      </section>
-
-      <!-- Deploy Contract Button (once tx has been signged) -->
-      <div class="form-group" ng-show="showRaw">
-        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="NAV_DeployContract"> Deploy Contract </a>
-      </div>
-
-      <div class="form-group" ng-bind-html="sendTxStatus"></div>
-
-
-
-      <!-- Deploy Modal -->
-      <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
-            </div>
-
-            <div class="modal-body">
-              <h4>
-                <span>You are about to deploy a contract to the blockchain.</span>
-              </h4>
-              <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-            </div>
-
-            <div class="modal-footer text-center">
-              <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
-              <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      <!--/ Deploy Modal-->
-
-
-    </div>
-  </section>
-</article>
-<!-- / Send Transaction Page -->
 
 
     <!-- Help -->
