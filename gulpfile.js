@@ -6,7 +6,7 @@ gulp html               builds html templates
      staticJS           recompiles and uglifies staticJS files
      copy               runs staticJS first. copies images, fonts, and other static files to cx and dist
 gulp build              html styles js (staticJS) copy
-gulp build-productions  html styles js-production (staticJS) copy
+gulp build-production   html styles js-production (staticJS) copy
      clean              cleans files we don't need that get compiled
      getVersion         gets version from manifest
      zip                zips dist folder w/ version number
