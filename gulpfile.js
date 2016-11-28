@@ -126,7 +126,10 @@ var js_destFolder    = dist    + 'js/'
 var js_destFolder_CX = dist_CX + 'js/'
 var js_destFile      =           'etherwallet-master.js'
 var browseOpts       = { debug: true } // generates inline source maps - only in js-debug
-var babelOpts        = { presets: ['es2015'], compact: false }
+var babelOpts        = { presets: ['es2015'],
+                         compact: false,
+                         global: true
+                       }
 
 function bundle_js(bundler) {
   return bundler.bundle()
