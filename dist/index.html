@@ -862,11 +862,11 @@
 <article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.signMsg.id" ng-controller='signMsgCtrl'>
 
   <h2>
-    <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="visibility='signView'"> Sign Message </a>
+    <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
     or
-    <a translate="MSG_verify"  ng-class="{'isActive': visibility=='verifyView'}" ng-click="visibility='verifyView'"> Verify Message </a> </h2>
+    <a translate="MSG_verify"  ng-class="{'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a> </h2>
 
-  <section class="row" ng-switch="visibility">
+  <section class="row" ng-switch on="visibility">
 
 
 <!-- Sign Message Stuff -->
@@ -921,22 +921,15 @@
 <!-- Verify Message Stuff -->
 
     <div class="col-xs-12" ng-switch-when="verifyView">
-
-      <!-- Address -->
-      <div class="form-group">
-        <h4 translate="TOKEN_Addr"> Address </h4>
-        <input class="form-control" ng-model="verifyMsg.address" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" />
-      </div>
-
       <!-- Signature -->
       <div class="form-group">
         <h4 translate="MSG_signature"> Signature </h4>
-        <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="4"></textarea>
+        <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="4" placeholder='{"address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
       </div>
 
       <!-- Verify Signature Message Button -->
       <div class="form-group">
-        <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="wallet!=null"> Verify Message </a>
+        <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
       </div>
 
       <!-- Verify Message Status -->
