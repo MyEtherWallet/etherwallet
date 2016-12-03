@@ -1,29 +1,28 @@
 /*
-gulp html               builds html templates
+     html               builds html templates
      styles             compiles and minfies less
      js                 browserify, babel no es2015
      js-production      browserify, babel es2015
      staticJS           recompiles and uglifies staticJS files
      copy               runs staticJS first. copies images, fonts, and other static files to cx and dist
 gulp build              html styles js (staticJS) copy
+gulp build-debug        html styles-debug js-debug (staticJS) copy
 gulp build-production   html styles js-production (staticJS) copy
      clean              cleans files we don't need that get compiled
      getVersion         gets version from manifest
      zip                zips dist folder w/ version number
      bump-patch         bumps v from 0.0.1 to 0.0.2
      bump-minor         bumps v from 0.1.0 to 0.2.0
-gulp prep               cleans and zips it up
-gulp prepBump           cleans and zips it up and bumps
-gulp buildPush          no version increase nor tags nor zips: build clean add commit push
-gulp buildPrep          html styles js copy clean bump-patch zip
+gulp prep               build-production and cleans and zips it up
+gulp prepBump           build-production and bumps and cleans and zips it up
      add                git add
      commit             git commit without v number
      commitV            git commit with v number
      tag                git tag w/ with number
      push               git push to mercury
      pushLive           git push live to gh-pages
-gulp buildBumpPush      new release but not live: build bump-patch prep add commitV tag push
-gulp buildBumpPushLive  new release AND live:     build bump-patch prep add commitV tag push pushLive
+gulp push               add commits tags pushes
+gulp pushLive           add commits tags pushes live
 */
 
 var fs           = require('fs')
@@ -144,6 +143,18 @@ function bundle_js(bundler) {
     .pipe( notify    ( onSuccess('JS')         ))
 }
 
+function bundle_js_debug(bundler) {
+  return bundler.bundle()
+    .pipe( plumber   ({ errorHandler: onError }))
+    .pipe( source    ( 'main.js'               ))
+    .pipe( buffer    (                         ))
+    .pipe( rename    ( js_destFile             ))
+    .pipe( gulp.dest ( js_destFolder           ))
+    .pipe( gulp.dest ( js_destFolder_CX        ))
+    .pipe( notify    ( onSuccess('JS')         ))
+}
+
+
 gulp.task('js', function () {
   var bundler = browserify( js_srcFile ).transform( babelify )
   bundle_js( bundler )
@@ -154,6 +165,10 @@ gulp.task('js-production', function () {
   bundle_js( bundler )
 })
 
+gulp.task('js-debug', function () {
+  var bundler = browserify( js_srcFile, browseOpts ).transform( babelify, babelOpts )
+  bundle_js_debug( bundler )
+})
 
 
 
@@ -338,24 +353,18 @@ gulp.task('watch',             ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL
 gulp.task('bump-patch',        function() { return bumpFunc( 'patch' ) })
 gulp.task('bump-minor',        function() { return bumpFunc( 'minor' ) })
 
-// Build
 gulp.task('build',             ['html', 'styles', 'js', 'copy'])
 
-gulp.task('build-production',  ['html', 'styles', 'js-production', 'copy'])
+gulp.task('build-debug',       ['html', 'styles-debug', 'js-debug'])
 
-// Prep for Release
-gulp.task('prep',              function(cb) { runSequence('clean', 'zip', cb); });
+gulp.task('build-production',  function(cb) { runSequence('html', 'styles', 'js-production', 'copy', cb); });
 
-gulp.task('prepBump',          function(cb) { runSequence('clean', 'bump-patch', 'zip', cb); });
+gulp.task('prep',              function(cb) { runSequence('build-production', 'clean', 'zip', cb); });
 
-// Build, Clean, Push (no v)
-gulp.task('buildPush',         function(cb) { runSequence('html', 'styles', 'js-production', 'copy', 'clean', 'add', 'commit', 'push', cb); });
+gulp.task('prepBump',          function(cb) { runSequence('build-production', 'clean', 'bump-patch', 'zip', cb); });
 
-// All and Push
-gulp.task('buildBumpPush',     function(cb) { runSequence('html', 'styles', 'js-production', 'copy', 'clean', 'bump-patch', 'zip', 'add', 'commitV', 'tag', 'push', cb); });
+gulp.task('push',              function(cb) { runSequence('add', 'commitV', 'tag', 'push', cb); });
 
-// All and Push Live
-gulp.task('buildBumpPushLive', function(cb) { runSequence('html', 'styles', 'js-production', 'copy', 'clean', 'bump-patch', 'zip', 'add', 'commitV', 'tag', 'push', 'pushLive', cb); });
-
+gulp.task('pushLive',          function(cb) { runSequence('add', 'commitV', 'tag', 'push', 'pushLive', cb); });
 
 gulp.task('default',           ['build', 'watch'])
