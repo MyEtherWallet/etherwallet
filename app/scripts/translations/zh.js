@@ -180,7 +180,7 @@ zh.data = {
   /* Send Transaction */
   TRANS_desc:            '如果你想发送代币，请使用“发送代币”页面。',
   TRANS_warning:         '如果你使用“只发送ETH”或则“只发送ETC”功能，那么你是通过合约发送交易。 一些服务（例如交易所充值）接收这些交易时会遇到问题。阅读更多内容。',
-  TRANS_eth:             'ETH',
+  TRANS_eth:             '只发送ETH',
   TRANS_etc:             '只发送ETC',
   TRANS_advanced:        '高级功能：增加更多Gas或者数据',
   TRANS_data:            '数据：',

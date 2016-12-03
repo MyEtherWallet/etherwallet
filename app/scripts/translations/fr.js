@@ -149,7 +149,7 @@ fr.data = {
   /* Send Transaction */
   TRANS_desc:            'Si vous voulez envoyer des tokens, allez plutôt à la page "Envoi de tokens".',
   TRANS_warning:         'L\'emploi des fonctions "ETH seulement" et "ETC seulement" vous fait passer par un contrat. Certains services ont des problèmes avec ces transactions. En savoir plus.',
-  TRANS_eth:             'ETH',
+  TRANS_eth:             'ETH seulement',
   TRANS_etc:             'ETC seulement',
   TRANS_advanced:        '+Avancé : Ajouter du gaz',
   TRANS_data:            'Données : ',

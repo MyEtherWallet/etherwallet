@@ -161,7 +161,7 @@ ja.data = {
   /* Send Transaction */
   TRANS_desc:            'トークンを送出するには「トークン送出」のタブを選択してください。',
   TRANS_warning:         'コントラクト上で、「ETHのみ」あるいは「ETCのみ」の送出を行う場合、受け入れサービスによって、これらのトランザクションに問題を生ずる場合があります。以下参照。',
-  TRANS_eth:             'ETH',
+  TRANS_eth:             'ETHのみ',
   TRANS_etc:             'ETCのみ',
   TRANS_advanced:        '+Advanced: ガスあるいはデータを追加してください ',
   TRANS_data:            ' データ： ',

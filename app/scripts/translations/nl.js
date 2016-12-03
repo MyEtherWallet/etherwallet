@@ -139,7 +139,7 @@ nl.data = {
   /* Send Transaction */
   TRANS_desc:            'Als je Tokens wilt versturen, gebruik dan de "Verzend Token" pagina i.p.v. deze pagina.',
   TRANS_warning:         'Als je gebruik maakt van de "Enkel ETH" of "Enkel ETC" functies zul je de transactie uitvoeren via een contract. Sommige diensten hebben  problemen met het accepteren van deze transacties. Lees meer.',
-  TRANS_eth:             'ETH',
+  TRANS_eth:             'Enkel ETH',
   TRANS_etc:             'Enkel ETC',
   TRANS_advanced:        '+Geavanceerd: Voeg Data toe ',
   TRANS_data:            ' Data: ',
@@ -178,7 +178,7 @@ nl.data = {
   OFFLINE_Step2_Label_7:  'Selecteer en geef je Prive Sleutel / JSON in.',
   OFFLINE_Step3_Title:    'Stap 3: Verstuur / Publiceer Transactie (Online Computer)',
   OFFLINE_Step3_Label_1:  'Plak de gesigneerde transactie van Stap 2 hier en click de "Verzend Transactie" knop.',
-  
+
   /* Sign Message */
   MSG_message:          'Bericht',
   MSG_date:             'Datum',
@@ -187,7 +187,7 @@ nl.data = {
   MSG_info1:            'Voeg de huidige datum toe zodat je handtekening niet opnieuw kan worden gebruikt op een andere datum.',
   MSG_info2:            'Voeg je nickname toe en waar je deze gebruikt zodat anderen deze niet kunnen gebruiken.',
   MSG_info3:            'Voeg een specifieke reden voor je bericht toe zodat het niet kunnen gebruiken voor een ander doel.',
-  
+
   /* DAO */
   DAO_bal1:               'bij blok 1.919.999',
   DAO_bal2:               'momenteel',

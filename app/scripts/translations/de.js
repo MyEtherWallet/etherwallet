@@ -180,7 +180,7 @@ de.data = {
   /* Send Transaction */
   TRANS_desc:            'Wenn du Token senden willst, nutze bitte die "Sende Tokens" Funktion',
   TRANS_warning:         'Wenn du die "Nur ETH" oder "Nur ETC" Funktionen benutzt, erfolgt die Transaktion über einen Vertrag. Einige Dienste haben ein Problem damit diese Transaktionen zu empfangen. Mehr lesen.',
-  TRANS_eth:             'ETH',
+  TRANS_eth:             'Nur ETH',
   TRANS_etc:             'Nur ETC',
   TRANS_advanced:        '+Fortgeschritten: Daten hinzufügen ',
   TRANS_data:            'Daten: ',
