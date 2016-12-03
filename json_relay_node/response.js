@@ -1,8 +1,11 @@
 'use strict';
 var rpc = require('node-json-rpc');
+var Sync = require('sync');
 var BN = require('bignumber.js');
 var wait = require('wait.for');
 var Response = function() {}
+var CACHE_DELAY = 15000;
+var LAST_CACHE = 0;
 Response.client = new rpc.Client({
 	port: 8545,
 	host: '23.239.20.147',

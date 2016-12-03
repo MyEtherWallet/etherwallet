@@ -11,4 +11,4 @@ app.use(vhost('rpc.myetherwallet.com', require('./index.js').app));
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 httpServer.listen(80);
-httpsServer2.listen(443);
+httpsServer.listen(443);
