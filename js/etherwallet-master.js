@@ -4547,7 +4547,7 @@ de.data = {
   /* Send Transaction */
   TRANS_desc: 'Wenn du Token senden willst, nutze bitte die "Sende Tokens" Funktion',
   TRANS_warning: 'Wenn du die "Nur ETH" oder "Nur ETC" Funktionen benutzt, erfolgt die Transaktion über einen Vertrag. Einige Dienste haben ein Problem damit diese Transaktionen zu empfangen. Mehr lesen.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Nur ETH',
   TRANS_etc: 'Nur ETC',
   TRANS_advanced: '+Fortgeschritten: Daten hinzufügen ',
   TRANS_data: 'Daten: ',
@@ -5158,7 +5158,7 @@ el.data = {
   /* Send Transaction */
   TRANS_desc: 'Άν επιθυμείτε να στείλετε Tokens, παρακαλώ χρησιμοποιήστε την σελίδα "Αποστολή Token".',
   TRANS_warning: 'Άν χρησιμοποιείτε τις λειτουργίες "Μόνο ETH" ή "Μόνο ETC", η αποστολή γίνεται μέσω contracts. Ορισμένες υπηρεσίες παρουσιάζουν προβλήματα με την αποδοχή τέτοιων συναλλαγών. Διαβάστε περισσότερα.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Μόνο ETH',
   TRANS_etc: 'Μόνο ETC',
   TRANS_advanced: '+Για προχωρημένους: Προσθήκη Data ',
   TRANS_data: 'Data: ',
@@ -5697,7 +5697,7 @@ en.data = {
   /* Send Transaction */
   TRANS_desc: 'If you want to send Tokens, please use the "Send Token" page instead.',
   TRANS_warning: 'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Only ETH',
   TRANS_etc: 'Only ETC',
   TRANS_advanced: '+Advanced: Add Data ',
   TRANS_data: 'Data: ',
@@ -6307,7 +6307,7 @@ es.data = {
   /* Send Transaction */
   TRANS_desc: 'Si quieres enviar tokens, utiliza la página "Enviar Tokens" en lugar de esta.',
   TRANS_warning: 'Si utilizas las funciones "Sólo ETH" o "Sólo ETC" estás enviando a través de un contrato. Algunos servicios tienen problemas aceptando estas transacciones. Leer más.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Sólo ETH',
   TRANS_etc: 'Sólo ETC',
   TRANS_advanced: '+Avanzado: Añadir datos ',
   TRANS_data: 'Datos: ',
@@ -6935,7 +6935,7 @@ fi.data = {
   /* Send Transaction */
   TRANS_desc: 'Jos haluat lähettää Tokeneita, ole hyvä ja käytä "Lähetä Tokeneita" sivua.',
   TRANS_warning: 'Jos käytät "Vain ETH" tai "Vain ETC" Toimintoja, niin lähetät sopimuksen kautta. Joillakin palveluilla on vaikeuksia hyväksyä näitä siirtoja. Lue lisää.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Vain ETH',
   TRANS_etc: 'Vain ETC',
   TRANS_advanced: '+Edistynyt: Lisää Tietoja ',
   TRANS_data: 'Tiedot: ',
@@ -7359,14 +7359,14 @@ fr.code = 'fr';
 fr.data = {
 
   /* Sign Message */
-  NAV_SignMsg: 'Sign Message',
+  NAV_SignMsg: 'Signer un message',
   MSG_message: 'Message',
   MSG_date: 'Date',
   MSG_signature: 'Signature',
-  MSG_verify: 'Verify Message',
-  MSG_info1: 'Include the current date so the signature cannot be reused on a different date.',
-  MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it.',
-  MSG_info3: 'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
+  MSG_verify: 'Verifier un message',
+  MSG_info1: 'Inclure la date courante afin que la signature ne puisse pas être réutilisée à un autre moment.',
+  MSG_info2: 'Inclure votre surnom et là où vous l\'utilisez afin que quelqu\'un d\'autre ne puisse l\'utiliser.',
+  MSG_info3: 'Inclure une raison spécifique pour le message afin qu\'il ne puisse être réutilisé pour une raison différente.',
 
   /* Navigation*/
   NAV_YourWallets: 'Vos portefeuilles',
@@ -7503,7 +7503,7 @@ fr.data = {
   /* Send Transaction */
   TRANS_desc: 'Si vous voulez envoyer des tokens, allez plutôt à la page "Envoi de tokens".',
   TRANS_warning: 'L\'emploi des fonctions "ETH seulement" et "ETC seulement" vous fait passer par un contrat. Certains services ont des problèmes avec ces transactions. En savoir plus.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'ETH seulement',
   TRANS_etc: 'ETC seulement',
   TRANS_advanced: '+Avancé : Ajouter du gaz',
   TRANS_data: 'Données : ',
@@ -8098,7 +8098,7 @@ hu.data = {
   /* Send Transaction */
   TRANS_desc: 'Ha Tokeneket akarsz küldeni, kérlek használd a Token Küldése oldalt ehelyett.',
   TRANS_warning: 'Ha a "Csak ETH" vagy a "Csak ETC" Funkciókat használod a küldés kontraktuson keresztül megy végbe. Néhány szolgáltatásnak problémái lehetnek az ilyen tranzakciók elfogadásával. Kattints és tudj meg többet.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Csak ETH',
   TRANS_etc: 'Csak ETC',
   TRANS_advanced: '+Haladó: Több Adat ',
   TRANS_data: 'Adat: ',
@@ -8695,7 +8695,7 @@ id.data = {
   /* Send Transaction */
   TRANS_desc: 'Untuk pengiriman Token, gunakan halaman "Kirim Token".',
   TRANS_warning: 'Penggunaan fitur "Hanya ETH" atau "Hanya ETC" memakai pengiriman melalui Kontrak. Beberapa layanan tidak menerima transaksi jenis ini. Baca lebih lanjut.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Hanya ETH',
   TRANS_etc: 'Hanya ETC',
   TRANS_advanced: '+Advanced: Tambah Data ',
   TRANS_data: 'Data: ',
@@ -9266,7 +9266,7 @@ it.data = {
   /* Send Transaction */
   TRANS_desc: 'Se invece volevi inviare dei token, utilizza la pagina "Invia token".',
   TRANS_warning: 'Se usi le opzioni "Solo ETH" o "Solo ETC" invierai tramite un contratto. Certi servizi hanno difficoltà ad accettare queste transazioni. Leggi tutto.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Solo ETH',
   TRANS_etc: 'Solo ETC',
   TRANS_advanced: '+Avanzate: aggiungi dati ',
   TRANS_data: 'Dati: ',
@@ -9812,7 +9812,7 @@ ja.data = {
   ADD_Radio_4: '監視するアカウントを追加',
   ADD_Radio_5: 'ニーモニックを上書き/タイプ',
   ADD_Label_2: 'ニックネームの作成：',
-  ADD_Label_3: 'ウォレットが暗号化されました。パスワードを入力してください： ',
+  ADD_Label_3: 'ウォレットが暗号化されています。パスワードを入力してください： ',
   ADD_Label_4: '監視するアカウントを追加',
   ADD_Warning_1: 'ウォレットタブには、プライベートキーをアップロードせずに任意の監視するアカウントを追加する事ができます。これによってウォレットのアクセスや、ETHERの移動が可能になるわけではありません。',
   ADD_Label_5: 'アドレスを入力: ',
@@ -9867,7 +9867,7 @@ ja.data = {
   /* Send Transaction */
   TRANS_desc: 'トークンを送出するには「トークン送出」のタブを選択してください。',
   TRANS_warning: 'コントラクト上で、「ETHのみ」あるいは「ETCのみ」の送出を行う場合、受け入れサービスによって、これらのトランザクションに問題を生ずる場合があります。以下参照。',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'ETHのみ',
   TRANS_etc: 'ETCのみ',
   TRANS_advanced: '+Advanced: ガスあるいはデータを追加してください ',
   TRANS_data: ' データ： ',
@@ -10298,16 +10298,6 @@ var nl = function () {};
 nl.code = 'nl';
 nl.data = {
 
-  /* Sign Message */
-  NAV_SignMsg: 'Sign Message',
-  MSG_message: 'Message',
-  MSG_date: 'Date',
-  MSG_signature: 'Signature',
-  MSG_verify: 'Verify Message',
-  MSG_info1: 'Include the current date so the signature cannot be reused on a different date.',
-  MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it.',
-  MSG_info3: 'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
-
   /* Navigation*/
   NAV_YourWallets: 'Jouw Wallets',
   NAV_AddWallet: 'Wallet Toevoegen',
@@ -10316,6 +10306,7 @@ nl.data = {
   NAV_SendEther: 'Verzend Ether en Tokens',
   NAV_SendTokens: 'Verzend Tokens',
   NAV_Offline: 'Verzend Offline',
+  NAV_SignMsg: 'Onderteken bericht',
   NAV_WithdrawDAO: 'DAO Opnemen',
   DAO_TitleLong: 'DAO Token in ETH omzetten',
   NAV_ClaimDGD: 'Claim DGD',
@@ -10442,7 +10433,7 @@ nl.data = {
   /* Send Transaction */
   TRANS_desc: 'Als je Tokens wilt versturen, gebruik dan de "Verzend Token" pagina i.p.v. deze pagina.',
   TRANS_warning: 'Als je gebruik maakt van de "Enkel ETH" of "Enkel ETC" functies zul je de transactie uitvoeren via een contract. Sommige diensten hebben  problemen met het accepteren van deze transacties. Lees meer.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Enkel ETH',
   TRANS_etc: 'Enkel ETC',
   TRANS_advanced: '+Geavanceerd: Voeg Data toe ',
   TRANS_data: ' Data: ',
@@ -10481,6 +10472,15 @@ nl.data = {
   OFFLINE_Step2_Label_7: 'Selecteer en geef je Prive Sleutel / JSON in.',
   OFFLINE_Step3_Title: 'Stap 3: Verstuur / Publiceer Transactie (Online Computer)',
   OFFLINE_Step3_Label_1: 'Plak de gesigneerde transactie van Stap 2 hier en click de "Verzend Transactie" knop.',
+
+  /* Sign Message */
+  MSG_message: 'Bericht',
+  MSG_date: 'Datum',
+  MSG_signature: 'Handtekening',
+  MSG_verify: 'Verifieer Bericht',
+  MSG_info1: 'Voeg de huidige datum toe zodat je handtekening niet opnieuw kan worden gebruikt op een andere datum.',
+  MSG_info2: 'Voeg je nickname toe en waar je deze gebruikt zodat anderen deze niet kunnen gebruiken.',
+  MSG_info3: 'Voeg een specifieke reden voor je bericht toe zodat het niet kunnen gebruiken voor een ander doel.',
 
   /* DAO */
   DAO_bal1: 'bij blok 1.919.999',
@@ -11051,7 +11051,7 @@ no.data = {
   /* Send Transaction */
   TRANS_desc: 'Hvis du ønsker å sende token, vennligst bruk "Send Token"-siden i stedet.',
   TRANS_warning: 'Hvis du bruker "Kun ETH"- eller "Kun ETC"-funksjonene, sender du via en kontrakt. Noen tjenester har problemer med å akseptere disse transaksjonene. Les mer.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Kun ETH',
   TRANS_etc: 'Kun ETC',
   TRANS_advanced: '+Avansert: Legg til data ',
   TRANS_data: ' Data: ',
@@ -11617,7 +11617,7 @@ pl.data = {
   /* Send Transaction */
   TRANS_desc: 'Jeśli chcesz wysłać Tokeny, użyj zakładki "Wyślij Tokeny".',
   TRANS_warning: 'Jeśli używasz funkcji "Tylko ETH" lub "Tylko ETC" wysyłasz przez kontrakt. Niektóre serwisy mają problemy z rozpoznawaniem tego typu transakcji. Czytaj dalej.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Tylko ETH',
   TRANS_etc: 'Tylko ETC',
   TRANS_advanced: '+Zaawansowane: Dodaj Dane ',
   TRANS_data: ' Dane: ',
@@ -12212,7 +12212,7 @@ pt.data = {
   /* Send Transaction */
   TRANS_desc: '',
   TRANS_warning: 'Se você estiver usando somente "ETH" ou "ETC" Funções que você está enviando através de um contrato. Alguns serviços têm problemas para aceitar essas transações. Leia mais.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Só ETH',
   TRANS_etc: 'Só ETC',
   TRANS_advanced: '+Avançado: Adicionar dados ',
   TRANS_data: ' Dados: ',
@@ -12829,7 +12829,7 @@ ru.data = {
   /* Send Transaction */
   TRANS_desc: 'Если Вы хотите перевести токены, используйте страницу "Отправить токены".',
   TRANS_warning: 'Если Вы используете функции "только ETH" или "только ETC", перевод будет выполнен с помощью контракта. У некоторых сервисов могут возникнуть проблемы с приёмом таких переводов. Уточните этот вопрос.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Только ETH',
   TRANS_etc: 'Только ETC',
   TRANS_advanced: '+Дополнительно: добавить данные ',
   TRANS_data: ' Данные: ',
@@ -13430,7 +13430,7 @@ tr.data = {
   /* Send Transaction */
   TRANS_desc: 'Eğer Token göndermek istiyorsan, bunun yerine "Token Gönder" sayfasını kullan.',
   TRANS_warning: '"Yalnızca ETH" ya da "Yalnızca ETC" fonksiyonu kullanıyorsan, bir sözleşme yoluyla gönderiyorsun. Bazı servisler bu işlemleri kabul etmekde sorunları var. Daha fazla oku.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Yalnızca ETH',
   TRANS_etc: 'Yalnızca ETC',
   TRANS_advanced: '+Gelişmiş: Veri ekle',
   TRANS_data: 'Veri: ',
@@ -14049,7 +14049,7 @@ vi.data = {
   /* Send Transaction */
   TRANS_desc: 'Nếu bạn muốn gửi Token, xin vui lòng sử dụng danh mục "Gửi Token".',
   TRANS_warning: 'Nếu bạn sử dụng chức năng "Chỉ ETH" hoặc "Chỉ ETC" trong việc gửi đi thông qua một hợp đồng thông minh. Những dịch vụ có chức năng chấp nhận các giao dịch. Đọc Thêm.',
-  TRANS_eth: 'ETH',
+  TRANS_eth: 'Chỉ ETH',
   TRANS_etc: 'Chỉ ETC',
   TRANS_advanced: 'Nâng Cao: Thêm Dữ Liệu',
   TRANS_data: 'Dữ Liệu:',
@@ -14655,7 +14655,7 @@ zh.data = {
   /* Send Transaction */
   TRANS_desc: '如果你想发送代币，请使用“发送代币”页面。',
   TRANS_warning: '如果你使用“只发送ETH”或则“只发送ETC”功能，那么你是通过合约发送交易。 一些服务（例如交易所充值）接收这些交易时会遇到问题。阅读更多内容。',
-  TRANS_eth: 'ETH',
+  TRANS_eth: '只发送ETH',
   TRANS_etc: '只发送ETC',
   TRANS_advanced: '高级功能：增加更多Gas或者数据',
   TRANS_data: '数据：',
