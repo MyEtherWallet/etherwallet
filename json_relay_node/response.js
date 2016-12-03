@@ -1,45 +1,59 @@
 'use strict';
 var rpc = require('node-json-rpc');
-var Sync = require('sync');
 var BN = require('bignumber.js');
 var wait = require('wait.for');
+var nodeInfo = require('./nodeIP.json');
 var Response = function() {}
-var CACHE_DELAY = 15000;
-var LAST_CACHE = 0;
+var clientConfigs = {
+	client: {
+		conns: 0,
+		maxConns: 10000
+	},
+	clientClassic: {
+		conns: 0,
+		maxConns: 10000
+	}
+};
 Response.client = new rpc.Client({
 	port: 8545,
-	host: '23.239.20.147',
+	host: nodeInfo.node_ip,
 	path: '/',
 	strict: true
 });
 Response.clientClassic = new rpc.Client({
 	port: 8545,
-	host: '173.255.245.13',
+	host: nodeInfo.node_classic_ip,
 	path: '/',
 	strict: true
 });
 Response.getResponse = function(method, data, isClassic, callback) {
-	var resp;
 	var client = isClassic ? "clientClassic" : "client";
-	Response[client].call({
-		"jsonrpc": "2.0",
-		"method": method,
-		"params": data,
-		"id": Math.floor(Math.random() * 100000)
-	}, function(err, res) {
-		if (err) callback(null, {
-			error: true,
-			data: err
-		})
-		else if ("error" in res) callback(null, {
-			error: true,
-			data: res.error.message
-		});
-		else callback(null, {
-			error: false,
-			data: res.result
-		});
-	});
+	var timer = setInterval(function() {
+		if (clientConfigs[client].conns < clientConfigs[client].maxConns) {
+			clearInterval(timer);
+            clientConfigs[client].conns++;
+			Response[client].call({
+				"jsonrpc": "2.0",
+				"method": method,
+				"params": data,
+				"id": Math.floor(Math.random() * 10000000)
+			}, function(err, res) {
+                clientConfigs[client].conns--;
+				if (err) callback(null, {
+					error: true,
+					data: err
+				})
+				else if (res && "error" in res) callback(null, {
+					error: true,
+					data: res.error.message
+				});
+				else callback(null, {
+					error: false,
+					data: res.result
+				});
+			});
+		}
+	}, 500);
 }
 Response.getResponseSync = function(method, data, isClassic) {
 	var resp = wait.
@@ -58,7 +72,7 @@ Response.getBalance = function(addr, isClassic) {
 }
 Response.getTraceCall = function(objCall, isClassic) {
 	return this.runInTryCatch(function(data) {
-		data.data = Response.getResponseSync("trace_call", [objCall,["stateDiff","trace","vmTrace"]], isClassic);
+		data.data = Response.getResponseSync("trace_call", [objCall, ["stateDiff", "trace", "vmTrace"]], isClassic);
 	});
 }
 Response.getCurrentBlock = function(isClassic) {
@@ -97,9 +111,10 @@ Response.getEstimatedGas = function(txObj, isClassic) {
 	});
 }
 Response.getErrorResponse = function(e) {
-    var data = this.getDefaultResponse();
-    data.error = true; data.msg = e;
-    return JSON.stringify(data);
+	var data = this.getDefaultResponse();
+	data.error = true;
+	data.msg = e;
+	return JSON.stringify(data);
 }
 Response.getDefaultResponse = function() {
 	return {
