@@ -171,7 +171,7 @@ sv.data = {
   /* Send Transaction */
   TRANS_desc:            '',
   TRANS_warning:         'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.',
-  TRANS_eth:             'ETH',
+  TRANS_eth:             'Only ETH',
   TRANS_etc:             'Only ETC',
   TRANS_advanced:        '+Advanced: Add Data ',
   TRANS_data:            'Data: ',

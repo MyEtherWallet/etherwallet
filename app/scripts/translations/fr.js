@@ -5,14 +5,14 @@ fr.code = 'fr';
 fr.data = {
 
   /* Sign Message */
-  NAV_SignMsg:          'Sign Message',
+  NAV_SignMsg:          'Signer un message',
   MSG_message:          'Message',
   MSG_date:             'Date',
   MSG_signature:        'Signature',
-  MSG_verify:           'Verify Message',
-  MSG_info1:            'Include the current date so the signature cannot be reused on a different date.',
-  MSG_info2:            'Include your nickname and where you use the nickname so someone else cannot use it.',
-  MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
+  MSG_verify:           'Verifier un message',
+  MSG_info1:            'Inclure la date courante afin que la signature ne puisse pas être réutilisée à un autre moment.',
+  MSG_info2:            'Inclure votre surnom et là où vous l\'utilisez afin que quelqu\'un d\'autre ne puisse l\'utiliser.',
+  MSG_info3:            'Inclure une raison spécifique pour le message afin qu\'il ne puisse être réutilisé pour une raison différente.',
 
   /* Navigation*/
   NAV_YourWallets:      'Vos portefeuilles',
@@ -149,7 +149,7 @@ fr.data = {
   /* Send Transaction */
   TRANS_desc:            'Si vous voulez envoyer des tokens, allez plutôt à la page "Envoi de tokens".',
   TRANS_warning:         'L\'emploi des fonctions "ETH seulement" et "ETC seulement" vous fait passer par un contrat. Certains services ont des problèmes avec ces transactions. En savoir plus.',
-  TRANS_eth:             'ETH',
+  TRANS_eth:             'ETH seulement',
   TRANS_etc:             'ETC seulement',
   TRANS_advanced:        '+Avancé : Ajouter du gaz',
   TRANS_data:            'Données : ',

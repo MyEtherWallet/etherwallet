@@ -147,7 +147,7 @@ pl.data = {
   /* Send Transaction */
   TRANS_desc:            'Jeśli chcesz wysłać Tokeny, użyj zakładki "Wyślij Tokeny".',
   TRANS_warning:         'Jeśli używasz funkcji "Tylko ETH" lub "Tylko ETC" wysyłasz przez kontrakt. Niektóre serwisy mają problemy z rozpoznawaniem tego typu transakcji. Czytaj dalej.',
-  TRANS_eth:             'ETH',
+  TRANS_eth:             'Tylko ETH',
   TRANS_etc:             'Tylko ETC',
   TRANS_advanced:        '+Zaawansowane: Dodaj Dane ',
   TRANS_data:            ' Dane: ',

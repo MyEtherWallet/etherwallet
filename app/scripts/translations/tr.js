@@ -193,7 +193,7 @@ tr.data = {
   /* Send Transaction */
   TRANS_desc:            'Eğer Token göndermek istiyorsan, bunun yerine "Token Gönder" sayfasını kullan.',
   TRANS_warning:         '"Yalnızca ETH" ya da "Yalnızca ETC" fonksiyonu kullanıyorsan, bir sözleşme yoluyla gönderiyorsun. Bazı servisler bu işlemleri kabul etmekde sorunları var. Daha fazla oku.',
-  TRANS_eth:             'ETH',
+  TRANS_eth:             'Yalnızca ETH',
   TRANS_etc:             'Yalnızca ETC',
   TRANS_advanced:        '+Gelişmiş: Veri ekle',
   TRANS_data:            'Veri: ',
