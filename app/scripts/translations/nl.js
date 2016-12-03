@@ -4,16 +4,6 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
-  /* Sign Message */
-  NAV_SignMsg:          'Sign Message',
-  MSG_message:          'Message',
-  MSG_date:             'Date',
-  MSG_signature:        'Signature',
-  MSG_verify:           'Verify Message',
-  MSG_info1:            'Include the current date so the signature cannot be reused on a different date.',
-  MSG_info2:            'Include your nickname and where you use the nickname so someone else cannot use it.',
-  MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
-
   /* Navigation*/
   NAV_YourWallets:      'Jouw Wallets',
   NAV_AddWallet:        'Wallet Toevoegen',
@@ -22,11 +12,12 @@ nl.data = {
   NAV_SendEther:        'Verzend Ether en Tokens',
   NAV_SendTokens:       'Verzend Tokens',
   NAV_Offline:          'Verzend Offline',
+  NAV_SignMsg:          'Onderteken bericht',
   NAV_WithdrawDAO:      'DAO Opnemen',
   DAO_TitleLong:        'DAO Token in ETH omzetten',
   NAV_ClaimDGD:         'Claim DGD',
   DGD_TitleLong:        'Claim je DGD Tokens',
-  NAV_DeployContract:  'Verspreid Contract',
+  NAV_DeployContract:   'Verspreid Contract',
   NAV_MyWallets:        'Mijn Wallets',
   NAV_ViewWallet:       'Bekijk Wallet Info',
   NAV_Help:             'Help',
@@ -167,13 +158,13 @@ nl.data = {
   TRANSModal_No:         'Oh jee, nu snap ik er nog niets van. Help me.',
 
   /* Offline Transaction */
-  OFFLINE_Title:         'Genereer & Verzend een Offline Transactie',
-  OFFLINE_Desc:          'Een offline transactie doe je in drie stappen. Stap 1 en 3 doe je op een online computer, terwijl je stap 2 uitvoert op een offline/afgeschermde computer. Dit zorgt ervoor dat je prive sleutel niet in aanraking komt met een met internet verbonden computer.',
+  OFFLINE_Title:          'Genereer & Verzend een Offline Transactie',
+  OFFLINE_Desc:           'Een offline transactie doe je in drie stappen. Stap 1 en 3 doe je op een online computer, terwijl je stap 2 uitvoert op een offline/afgeschermde computer. Dit zorgt ervoor dat je prive sleutel niet in aanraking komt met een met internet verbonden computer.',
   OFFLLINE_Step1_Title:   'Stap 1: Genereer Informatie (Online Computer)',
-  OFFLINE_Step1_Button:  'Genereer Informatie',
-  OFFLINE_Step1_Label_1: 'Van Adres: ',
-  OFFLINE_Step1_Label_2: 'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd van het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
-  OFFLINE_Step2_Title:   'Stap 2: Genereer Transactie (Offline Computer)',
+  OFFLINE_Step1_Button:   'Genereer Informatie',
+  OFFLINE_Step1_Label_1:  'Van Adres: ',
+  OFFLINE_Step1_Label_2:  'Opmerking: Dit is het VAN adress, niet het AAN adres. De Nonce wordt generenereerd van het oorspronkelijke account. Als je een afgeschermde (airgapped) computer gebruikt, zal dit het adres van het cold-storage account zijn.',
+  OFFLINE_Step2_Title:    'Stap 2: Genereer Transactie (Offline Computer)',
   OFFLINE_Step2_Label_1:  'Aan Adres: ',
   OFFLINE_Step2_Label_2:  'Waarde / Te Verzenden Bedrag',
   OFFLINE_Step2_Label_3:  'Gas Prijs ',
@@ -187,7 +178,16 @@ nl.data = {
   OFFLINE_Step2_Label_7:  'Selecteer en geef je Prive Sleutel / JSON in.',
   OFFLINE_Step3_Title:    'Stap 3: Verstuur / Publiceer Transactie (Online Computer)',
   OFFLINE_Step3_Label_1:  'Plak de gesigneerde transactie van Stap 2 hier en click de "Verzend Transactie" knop.',
-
+  
+  /* Sign Message */
+  MSG_message:          'Bericht',
+  MSG_date:             'Datum',
+  MSG_signature:        'Handtekening',
+  MSG_verify:           'Verifieer Bericht',
+  MSG_info1:            'Voeg de huidige datum toe zodat je handtekening niet opnieuw kan worden gebruikt op een andere datum.',
+  MSG_info2:            'Voeg je nickname toe en waar je deze gebruikt zodat anderen deze niet kunnen gebruiken.',
+  MSG_info3:            'Voeg een specifieke reden voor je bericht toe zodat het niet kunnen gebruiken voor een ander doel.',
+  
   /* DAO */
   DAO_bal1:               'bij blok 1.919.999',
   DAO_bal2:               'momenteel',
