@@ -39,7 +39,7 @@
       <section class="container">
         <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="My Ether Wallet" /></a>
         <div class="tagline">
-          <span style="max-width: 375px" translate="MEW_Tagline">Open Source JavaScript Client-Side Ether Wallet</span>
+          <span style="max-width: 375px">Open-Source & Client-Side Ether Wallet</span>
 }
 
 @@if (site === 'cx' ) {
@@ -53,7 +53,21 @@
         <div class="tagline">
           <span style="max-width: 375px" translate="CX_Tagline">Open Source JavaScript Client-Side Ether Wallet Chrome Extension</span>
 }
-        &middot; v3.3.4 &middot;
+        &middot; v3.3.4
+
+        &nbsp;&nbsp;
+
+        <span class="dropdown">
+          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode}} <span class="caret"></span></a>
+          <ul class="dropdown-menu" ng-show="dropdownNode">
+            <li><a ng-class="{true:'active'}[curNode=='mainnet']" ng-click="changeNode('mainnet', 'Mainnet')">Mainnet</a></li>
+            <li><a ng-class="{true:'active'}[curNode=='testnet']" ng-click="changeNode('testnet', 'Testnet (Ropsten)')">Testnet (Ropsten)</a></li>
+            <li><a ng-class="{true:'active'}[curNode=='local']" ng-click="changeNode('local', 'Local')">Local</a></li>
+          </ul>
+        </span>
+
+        &nbsp;&nbsp;
+
         <span class="dropdown">
           <a class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdown">
@@ -82,6 +96,9 @@
             <li><a data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></li>
           </ul>
         </span>
+
+
+
       </div>
     </section>
   </section>

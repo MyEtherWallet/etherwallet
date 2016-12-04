@@ -90,7 +90,7 @@ sv.data = {
 	CX_Tagline:           'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
-  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethereum Wallets & sending transactions.',
+  FOOTER_1:             'Open-Source, client-side tool for easily &amp; securely interacting with the Ethereum network.',
   FOOTER_1b:            'Created by',
   FOOTER_2:             'Donations greatly appreciated:',
   FOOTER_3:             'Client-side wallet generation by',

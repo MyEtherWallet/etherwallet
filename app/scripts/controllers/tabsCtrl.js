@@ -2,6 +2,7 @@
 var tabsCtrl = function($scope, globalService, $translate) {
 	$scope.tabNames = globalService.tabs;
 	$scope.curLang = "English";
+	$scope.curNode = "Mainnet"; //todo = fetch from localstorage
 	var hval = window.location.hash;
 
 	$scope.setArrowVisibility = function() {
@@ -80,6 +81,16 @@ var tabsCtrl = function($scope, globalService, $translate) {
 		$scope.setArrowVisibility();
 		$scope.dropdown = false;
 		localStorage.setItem("language", JSON.stringify({
+			key: key,
+			value: value
+		}));
+	}
+
+	$scope.changeNode = function(key, value) {
+		$scope.curNode = value;
+		$scope.setArrowVisibility();
+		$scope.dropdownNode = false;
+		localStorage.setItem("node", JSON.stringify({
 			key: key,
 			value: value
 		}));

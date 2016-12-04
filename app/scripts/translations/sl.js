@@ -40,7 +40,7 @@ sl.data = {
   ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
-  FOOTER_1:             'An open source, javascript, client-side tool for generating Ethereum Wallets & sending transactions.',
+  FOOTER_1:             'Open-Source, client-side tool for easily &amp; securely interacting with the Ethereum network.',
   FOOTER_4:             'Disclaimer',
   NAV_DeployContract:   'Deploy Contract',
   NAV_InteractContract: 'Interact with Contract',

@@ -1471,6 +1471,7 @@ module.exports = signMsgCtrl;
 var tabsCtrl = function ($scope, globalService, $translate) {
 	$scope.tabNames = globalService.tabs;
 	$scope.curLang = "English";
+	$scope.curNode = "Mainnet"; //todo = fetch from localstorage
 	var hval = window.location.hash;
 
 	$scope.setArrowVisibility = function () {
@@ -1546,6 +1547,16 @@ var tabsCtrl = function ($scope, globalService, $translate) {
 		$scope.setArrowVisibility();
 		$scope.dropdown = false;
 		localStorage.setItem("language", JSON.stringify({
+			key: key,
+			value: value
+		}));
+	};
+
+	$scope.changeNode = function (key, value) {
+		$scope.curNode = value;
+		$scope.setArrowVisibility();
+		$scope.dropdownNode = false;
+		localStorage.setItem("node", JSON.stringify({
 			key: key,
 			value: value
 		}));
@@ -5622,7 +5633,7 @@ en.data = {
   CX_Tagline: 'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
-  FOOTER_1: 'An open source, javascript, client-side tool for generating Ethereum Wallets & sending transactions.',
+  FOOTER_1: 'Open-Source, client-side tool for easily &amp; securely interacting with the Ethereum network.',
   FOOTER_1b: 'Created by',
   FOOTER_2: 'Donations greatly appreciated:',
   FOOTER_3: 'Client-side wallet generation by',
@@ -14001,7 +14012,7 @@ vi.data = {
   CX_Tagline: 'Open Source JavaScript Client-Side Ether Wallet Chrome Extension',
 
   /* Footer */
-  FOOTER_1: 'An open source, javascript, client-side tool for generating Ethereum Wallets &amp; sending transactions.',
+  FOOTER_1: 'Open-Source, client-side tool for easily &amp; securely interacting with the Ethereum network.',
   FOOTER_1b: 'Nhà Phát Triển:',
   FOOTER_2: 'Quyên Góp & Ủng Hộ Vào "Quỹ Phát Triển" Từ Bạn Là Một Hành Động Đáng Trân Trọng:',
   FOOTER_3: 'Client-side wallet generation by',

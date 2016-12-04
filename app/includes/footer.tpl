@@ -5,7 +5,7 @@
     </p>
 
     <p>
-      <span translate="FOOTER_1">An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.</span>
+      <span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span>
       <span translate="FOOTER_1b">Created by</span> <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a href="https://github.com/tayvano" target="_blank">tayvano</a>.
     </p>
 
