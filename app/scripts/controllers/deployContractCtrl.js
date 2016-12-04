@@ -1,5 +1,5 @@
 'use strict';
-var deployContractCtrl = function($scope, $sce, walletService) {
+var contractsCtrl = function($scope, $sce, walletService) {
     $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
 	$scope.tx = {
 		gasLimit: '',
@@ -37,7 +37,7 @@ var deployContractCtrl = function($scope, $sce, walletService) {
             data: ethFuncs.sanitizeHex($scope.tx.data)
         }
         ethFuncs.estimateGas(estObj,false,function(data){
-            if(!data.error) $scope.tx.gasLimit = data.data; 
+            if(!data.error) $scope.tx.gasLimit = data.data;
         });
     }
 	$scope.generateTx = function() {
@@ -79,4 +79,4 @@ var deployContractCtrl = function($scope, $sce, walletService) {
 		});
 	}
 }
-module.exports = deployContractCtrl;
+module.exports = contractsCtrl;

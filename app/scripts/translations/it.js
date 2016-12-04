@@ -28,6 +28,8 @@ it.data = {
   NAV_ClaimDGD:         'Richiedi DGD',
   DGD_TitleLong:        'Richiedi i tuoi token DGD',
   NAV_DeployContract:   'Pubblica contratto',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Contratti',
   NAV_MyWallets:        'I miei portafogli',
   NAV_ViewWallet:       'Informazioni portafoglio',
   NAV_Help:             'Aiuto',

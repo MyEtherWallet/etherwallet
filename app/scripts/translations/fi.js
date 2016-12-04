@@ -78,6 +78,8 @@ fi.data = {
   FOOTER_4:             'Disclaimer',
   x_Wallet:             'Wallet',
   NAV_DeployContract:   'Deploy Contract',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Contracts',
 
   /* Navigation*/
   NAV_YourWallets:      'Sinun Lompakkosi',

@@ -34,6 +34,8 @@ pt.data = {
   NAV_ClaimDGD:         'Reinvidicar DGD',
   DGD_TitleLong:        'Reinvidique seus Tokens DGD',
   NAV_DeployContract:   'Implantar Contrato',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Contratos',
   NAV_MyWallets:        'Minhas Carteiras',
   NAV_ViewWallet:       'Ver Informação da Carteira',
   NAV_Help:             'Ajuda',

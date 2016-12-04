@@ -63,6 +63,8 @@ zh.data = {
   NAV_ClaimDGD:         '领取DGD代币',
   DGD_TitleLong:        '领取你的DGD代币',
   NAV_DeployContract:   '部署合约',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        '合同',
   NAV_MyWallets:        '我的钱包',
   NAV_ViewWallet:       '查看钱包信息',
   NAV_Help:             '帮助',

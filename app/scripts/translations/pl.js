@@ -212,11 +212,13 @@ pl.data = {
   DGD_Content:            'Jesteś w trakcie odbierania tokenów DGD.',
 
   /* Deploy Contracts */
-  NAV_DeployContract:  'Wyślij Kontrakt',
-  DEP_generate:        'Wygeneruj Kod Bajtowy',
-  DEP_generated:       'Wygenerowany Kod Bajtowy',
-  DEP_signtx:          'Podpisz Transakcję',
-  DEP_interface:       'Wygeneruj Interfejs',
+  NAV_DeployContract:     'Wyślij Kontrakt',
+  NAV_InteractContract:   'Interact with Contract',
+  NAV_Contracts:          'Kontrakt',
+  DEP_generate:           'Wygeneruj Kod Bajtowy',
+  DEP_generated:          'Wygenerowany Kod Bajtowy',
+  DEP_signtx:             'Podpisz Transakcję',
+  DEP_interface:          'Wygeneruj Interfejs',
 
   /* My Wallet */
   MYWAL_Nick:             'Nazwa Portfela',

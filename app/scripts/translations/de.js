@@ -63,6 +63,8 @@ de.data = {
   NAV_ClaimDGD:         'DGD geltend machen',
   DGD_TitleLong:        'DGD Token geltend machen',
   NAV_DeployContract:   'Vertrag aufstellen',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Verträge',
   NAV_MyWallets:        'Meine Wallets',
   NAV_ViewWallet:       'Wallet Infos anzeigen',
   NAV_Help:             'Hilfe',

@@ -18,6 +18,8 @@ nl.data = {
   NAV_ClaimDGD:         'Claim DGD',
   DGD_TitleLong:        'Claim je DGD Tokens',
   NAV_DeployContract:   'Verspreid Contract',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Contracts',
   NAV_MyWallets:        'Mijn Wallets',
   NAV_ViewWallet:       'Bekijk Wallet Info',
   NAV_Help:             'Help',

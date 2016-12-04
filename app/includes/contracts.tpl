@@ -1,168 +1,294 @@
-<!-- Contracts -->
-<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contracts.id">
-  <h2> Contracts </h2>
+<!-- Send Transaction Page -->
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.deployContract.id" ng-controller='contractsCtrl'>
 
-  <wallet-decrypt-drtv></wallet-decrypt-drtv>
-
-  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
-
-    <div class="col-md-12"> <hr /> </div>
-
-    <!-- STEP 1 -->
-    <div class="col-md-12">
-      <span class="form-group">
-        <h4> Contract Address</h4>
-        <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" />
-        <h4> ABI / JSON Interface </h4>
-        <textarea class="form-control" rows="5" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] '></textarea>
-      </span>
-      <span class="form-group">
-        <button class="btn btn-primary"> ACCESS </button>
-      </span>
-    </div>
-    <!-- / STEP 1 -->
-
-    <div class="col-md-12"> <hr /> </div>
+  <h2>
+    <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
+    or
+    <a translate="NAV_DeployContract"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a> </h2>
+  </h2>
 
 
-    <!-- STEP READ -->
-    <div class="col-md-6">
+  <!-- <section ng-switch on="visibility">-->
 
-      <!-- Read - Step 1 -->
-      <span class="form-group">
-        <h4> 3. Read From Contract</h4>
-      </span>
-      <span class="form-group read-function">
-        <h5> Function Name (ie: User Info or Proposals) </h5>
-        <h6> Function Description (ie: user - adddress or 256 bits unsigned integer) </h6>
-        <input class="form-control" />
-        <span class="output">&#8627;  0x29384927349283 (output of the above) </span>
-      </span>
-      <!-- / Read - Step 1 -->
+    <!-- Read / Write Contracts -->
+    <section class="row"> <!-- ng-switch-when="interactView" -->
 
-      <!-- Read - Step 2 -->
-      <span class="form-group">
-        <!-- example: integer / string / bytes? /  -->
-         <p class="item">
-          <span class="label">Centstotal:</span>
-          <span class="output"> 123 </span>
-         </p>
-         <!-- example: address -->
-         <p class="item">
-          <span class="label">Recipient:</span>
-          <span class="output">
-            <div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div></div>
-            0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8
-          </span>
-        </p>
-          <!-- example: boolean YES -->
-         <p class="item">
-          <span class="label">Claimed:</span>
-          <span class="output boolean-yes"> YES </span>
-         </p>
-          <!-- example: boolean NO -->
-         <p class="item">
-          <span class="label">Open:</span>
-          <span class="output boolean-no"> NO </span>
-         </p>
-      </span>
-      <!--/ Read - Step 2 -->
+      <!-- Input address + JSON Interface -->
+      <div class="col-xs-12">
+        <span class="form-group">
+          <h4> Contract Address</h4>
+          <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" />
+          <h4> ABI / JSON Interface </h4>
+          <textarea class="form-control" rows="5" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] '></textarea>
+        </span>
+        <span class="form-group">
+          <button class="btn btn-primary"> ACCESS </button>
+        </span>
+      </div>
+      <!-- / Input address + JSON Interface -->
 
-    </div>
-    <!-- / STEP READ -->
+      <div class="col-xs-12"> <hr /> </div>
 
+      <!-- STEP READ -->
+      <div class="col-md-6">
 
-
-    <!-- STEP WRITE -->
-    <div class="col-md-6">
-
-      <!-- Write - Step 1 -->
-      <span class="form-group">
-        <h4> 3. Write To Contract </h4>
-        <div class="write-function" ng-controller="DropdownCtrl">
-          <div class="btn-group" uib-dropdown keyboard-nav>
-            <button id="simple-btn-keyboard-nav" type="button" class="btn btn-default" uib-dropdown-toggle>
-            Select A Function <span class="caret"></span></button>
-            <ul class="dropdown-menu" uib-dropdown-menu>
-              <li><a href="#">Claim</a></li>
-              <li><a href="#">Item 2</a></li>
-              <li><a href="#">Item 3</a></li>
+        <!-- Read - Step 1 -->
+        <div class="form-group">
+          <h4>Read From Contract</h4>
+          <div class="btn-group">
+            <a class="btn btn-default" ng-click="dropdown = !dropdown">
+            Select A Function <span class="caret"></span></a>
+            <ul class="dropdown-menu" ng-show="dropdown">
+              <li><a>Claim</a></li>
+              <li><a>Item 2</a></li>
+              <li><a>Item 3</a></li>
             </ul>
           </div>
         </div>
-      </span>
-      <!-- / Write - Step 1 -->
 
-
-      <!-- Write - Step 2 -->
-      <hr />
-      <span class="form-group">
-        <!-- address -->
-        <p class="item">
-          <label> Recipient — <small> address </small> </label>
-          <input class="form-control" type="text" placeholder="0x314156..."/>
-        </p>
-        <!-- 256 unsigned integer -->
-        <p class="item">
-          <label> Amount — <small> 256 unsigned integer </small> </label>
-          <input class="form-control" type="text" placeholder="151"/>
-        </p>
-        <!-- string -->
-        <p class="item">
-          <label> Description — <small> string </small> </label>
-          <input class="form-control" type="text" placeholder="Ohh! Shiny!"/>
-        </p>
-        <!-- bytes -->
-        <p class="item">
-          <label> Data — <small> bytes </small> </label>
-          <input class="form-control" type="text" placeholder="0x151bc..."/>
-        </p>
-        <!-- boolean -->
-        <p class="item">
-          <label> New Provider — <small> boolean </small> </label>
-          <label class="check"><input type="checkbox" value=""> Yes </label>
-        </p>
-        <!-- boolean -->
-        <p class="item">
-          <label> Amount to Send: (this is always here) </label>
-          <input class="form-control" placeholder="0" />
-        </p>
-      </span>
-      <span class="form-group">
-        <button class="btn btn-primary" >EXECUTE</button> <!-- this opens modal -->
-      </span>
-    </div>
-    <!-- / Write - Step 2 -->
-
-
-    <!-- Step 3 - Modal -->
-    <div class="modal fade" id="sendContract" tabindex="-1" role="dialog" aria-labelledby="sendContractLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="myModalLabel"> <strong class="text-danger">Warning!</strong></h3>
+        <div class="form-group">
+          <p class="item">
+            <label> Recipient <small> uint256 </small> </label>
+            <input class="form-control" placeholder="_owner address" />
+          </p>
+          <div class="output well">
+            <p class="output-address">&#8627; <span class="address-identicon-container small"><span id="addressIdenticon" title="Address Indenticon" blockie-address="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"> </span> </span> 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 </p>
+            <p class="output-address">&#8627; <span class="address-identicon-container small"><span id="addressIdenticon" title="Address Indenticon" blockie-address="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"> </span> </span> 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 </p>
+            <p class="output-address">&#8627;  12000 </p>
           </div>
-          <div class="modal-body">
-            <h4>You are about to execute a function on contract 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8.</h4>
-            <p> Estimated fee consumption: <strong> 0.00043598 ether (21,799 gas) </strong> </p>
-            <p> Provided Maximum Fee: <strong> 0.00243598 ether (121,799 gas) </strong> </p>
-            <p> Gas Price:  <strong> 0.021 ether per million gas </strong> </p>
-            <p> Data:  <strong> 0x4e71d92d </strong> </p>
-            <h4> Are you <span class="text-underline">sure</span> you want to do this?</h4>
+        </div>
+
+        <!-- example: UINT 265 -->
+        <div class="form-group">
+          <p class="item">
+            <label> minTokensToCreate <small> uint256 </small> </label>
+          </p>
+          <div class="output well">
+            <p class="output-unit">&#8627;  12000 </p>
           </div>
-          <div class="modal-footer text-center">
-            <button type="button" class="btn btn-default" data-dismiss="modal">No, get me out of here!</button>
-            <button type="button" class="btn btn-primary" ng-click="sendTx()">Yes, I am sure! Send transaction.</button>
+        </div>
+
+        <!-- example: ADDRESS -->
+        <div class="form-group">
+          <p class="item">
+            <label> recipient <small> address </small> </label>
+          </p>
+          <div class="output well">
+            <p class="output-address">&#8627; <span class="address-identicon-container small"><span id="addressIdenticon" title="Address Indenticon" blockie-address="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"> </span> </span> 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 </p>
+          </div>
+        </div>
+
+        <!-- example: BOOLEAN TRUE -->
+        <div class="form-group">
+          <p class="item">
+            <label> Claimed <small> boolean </small> </label>
+          </p>
+          <div class="output well">
+            <p class="output-boolean-true">&#8627;  YES </p>
+          </div>
+        </div>
+
+        <!-- example: BOOLEAN FALSE -->
+        <div class="form-group">
+          <p class="item">
+            <label> Claimed <small> boolean </small> </label>
+          </p>
+          <div class="output well">
+            <p class="output-boolean-false">&#8627;  NO </p>
+          </div>
+        </div>
+
+
+      </div>
+      <!-- / STEP READ -->
+
+      <!-- STEP WRITE -->
+      <div class="col-md-6">
+
+        <!-- Write - Step 1 -->
+        <span class="form-group">
+          <h4>Write To Contract </h4>
+          <div class="btn-group">
+            <a class="btn btn-default" ng-click="dropdown = !dropdown">
+            Select A Function <span class="caret"></span></a>
+            <ul class="dropdown-menu" ng-show="dropdown">
+              <li><a>Claim</a></li>
+              <li><a>Item 2</a></li>
+              <li><a>Item 3</a></li>
+            </ul>
+          </div>
+        </span>
+        <!-- / Write - Step 1 -->
+
+        <!-- Write - Step 2 -->
+        <span class="form-group">
+          <!-- address -->
+          <div class="item write-address">
+            <label> Recipient <small> address </small> </label>
+            <div class="row">
+              <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." /></div>
+              <div class="col-xs-1"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"> </div> </div></div>
+            </div>
+          </div>
+          <!-- 256 unsigned integer -->
+          <p class="item write-unit256">
+            <label> Amount <small> uint256 </small> </label>
+            <input class="form-control" type="text" placeholder="151"/>
+          </p>
+          <!-- string -->
+          <p class="item write-string">
+            <label> Description <small> string </small> </label>
+            <input class="form-control" type="text" placeholder="Ohh! Shiny!"/>
+          </p>
+          <!-- bytes -->
+          <p class="item write-bytes">
+            <label> Data <small> bytes </small> </label>
+            <input class="form-control" type="text" placeholder="0x151bc..."/>
+          </p>
+          <!-- boolean -->
+          <p class="item write-boolean">
+            <label> New Provider <small> boolean </small> </label>
+            <span class="check"><input type="checkbox" value="1"> Yes </span>
+            <span class="check"><input type="checkbox" value="0"> No </span>
+          </p>
+          <!-- boolean -->
+          <p class="item">
+            <label> Amount to Send: (this is always here) </label>
+            <input class="form-control" placeholder="0" />
+          </p>
+        </span>
+
+        <span class="form-group">
+          <button class="btn btn-primary">EXECUTE</button> <!-- this opens modal -->
+        </span>
+
+      </div>
+      <!-- / Write - Step 2 -->
+
+
+      <!-- Step 3 - Modal -->
+      <section class="modal fade" id="sendContract" tabindex="-1" role="dialog" aria-labelledby="sendContractLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <div ng-show="!wd">
+                @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
+                @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+              </div>
+              <div>
+                <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
+                <h4>You are about to execute a function on contract 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8.</h4>
+                <!-- Gas -->
+                <div class="form-group">
+                  <label translate="TRANS_gas"> Gas: </label>
+                  <input class="form-control" type="text" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+                </div>
+                <!-- Data -->
+                <div class="form-group">
+                  <label translate="TRANS_data"> Data: </label>
+                  <input readonly class="form-control" type="text" ng-model="tx.data" />
+                </div>
+                <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+              </div>
+            </div>
+            <div class="modal-footer text-center">
+              <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
+              <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- / Step 3 - Modal -->
+    </section>
+
+
+
+
+
+
+    <!-- Deploy Contract -->
+    <section class="row"> <!-- ng-switch-when="deployView" -->
+    <div class="col-xs-12">
+
+      <!-- Data -->
+      <div class="form-group">
+        <h4> Byte Code: </h4>
+        <textarea class="form-control" ng-model="tx.data" rows="8" ng-class="Validator.isValidHex(tx.data)&&tx.data!='' ? 'is-valid' : 'is-invalid'"></textarea>
+      </div>
+
+      <!-- Gas -->
+      <div class="form-group">
+        <h4 translate="TRANS_gas"> Gas: </h4>
+        <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+      </div>
+
+      <!-- Wallet Decrypt -->
+      <div class="form-group">
+        <br />
+        @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
+        @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+        <br /><br />
+      </div>
+      <div ng-bind-html="deployContractStatus"></div>
+
+      <!-- Sign TX Button (once wallet has been unlocked) -->
+      <div class="form-group">
+        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DEP_signtx" ng-show="wallet!=null"> Sign Transaction </a>
+      </div>
+
+      <!-- TXs -->
+      <section class="row" ng-show="showRaw">
+        <!-- Raw TX -->
+        <div class="form-group col-sm-6">
+          <h4 translate="SEND_raw"> Raw Transaction </h4>
+          <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
+        </div>
+        <!-- Singed TX -->
+        <div class="form-group col-sm-6">
+          <h4 translate="SEND_signed"> Signed Transaction </h4>
+          <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
+        </div>
+      </section>
+
+      <!-- Deploy Contract Button (once tx has been signed) -->
+      <div class="form-group" ng-show="showRaw">
+        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="NAV_DeployContract"> Deploy Contract </a>
+      </div>
+
+      <!-- Status -->
+      <div class="form-group" ng-bind-html="sendTxStatus"></div>
+
+      <!-- Deploy Modal -->
+      <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
+            </div>
+
+            <div class="modal-body">
+              <h4>
+                <span>You are about to deploy a contract to the blockchain.</span>
+              </h4>
+              <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+            </div>
+
+            <div class="modal-footer text-center">
+              <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
+              <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
+            </div>
+
           </div>
         </div>
       </div>
+      <!--/ Deploy Modal-->
     </div>
-    <!-- / Step 3 - Modal -->
-
-
   </section>
-
-
-</div>
-<!-- / contracts -->
+  <!-- / Deploy Contract -->
+</article>
+<!-- / Send Transaction Page -->

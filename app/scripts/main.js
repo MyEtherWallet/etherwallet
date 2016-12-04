@@ -56,7 +56,7 @@ var decryptWalletCtrl        = require('./controllers/decryptWalletCtrl');
 var viewWalletCtrl           = require('./controllers/viewWalletCtrl');
 var sendTxCtrl               = require('./controllers/sendTxCtrl');
 var signMsgCtrl              = require('./controllers/signMsgCtrl');
-var deployContractCtrl       = require('./controllers/deployContractCtrl');
+var contractsCtrl       = require('./controllers/contractsCtrl');
 var digixCtrl                = require('./controllers/digixCtrl');
 var theDaoCtrl               = require('./controllers/theDaoCtrl');
 var footerCtrl               = require('./controllers/footerCtrl');
@@ -101,7 +101,7 @@ app.controller  ('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryp
 app.controller  ('viewWalletCtrl', ['$scope', 'walletService', viewWalletCtrl]);
 app.controller  ('sendTxCtrl', ['$scope', '$sce', 'walletService', sendTxCtrl]);
 app.controller  ('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
-app.controller  ('deployContractCtrl', ['$scope', '$sce', 'walletService', deployContractCtrl]);
+app.controller  ('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
 app.controller  ('digixCtrl', ['$scope', '$sce', 'walletService', digixCtrl]);
 app.controller  ('theDaoCtrl', ['$scope', '$sce', 'walletService', theDaoCtrl]);
 app.controller  ('footerCtrl', ['$scope', footerCtrl]);

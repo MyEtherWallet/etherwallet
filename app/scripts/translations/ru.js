@@ -64,11 +64,13 @@ ru.data = {
   DAO_TitleLong:        'Обменять DAO токены на эфир (ether)',
   NAV_ClaimDGD:         'Получить DGD',
   DGD_TitleLong:        'Получить причитающиеся Вам DGD токены',
-  NAV_DeployContract:   'Опубликовать контракт',
   NAV_MyWallets:        'Мои кошельки',
   NAV_ViewWallet:       'Информация о кошельке',
   NAV_Help:             'Справка',
   NAV_Contact:          'Контакты',
+  NAV_DeployContract:   'Опубликовать контракт',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'контракт',
 
   /* General */
   x_Password:           'Пароль',

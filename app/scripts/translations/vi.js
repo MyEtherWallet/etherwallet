@@ -41,6 +41,8 @@ vi.data = {
   NAV_ClaimDGD:         'Khiếu Nại Về DGD',
   DGD_TitleLong:        'Khiếu Nại DGD Token Của Bạn',
   NAV_DeployContract:   'Phát Triển Hợp Đồng',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Hợp Đồng',
   NAV_MyWallets:        'Ví Của Tôi',
   NAV_ViewWallet:       'Thông Tin Ví',
   NAV_Help:             'Trợ Giúp',

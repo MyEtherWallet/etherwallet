@@ -56,7 +56,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     },
     deployContract: {
       id: 7,
-      name: "NAV_DeployContract",
+      name: "NAV_Contracts",
       url: "deploy-contract",
       mew: true,
       cx: true

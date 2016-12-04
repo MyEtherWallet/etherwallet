@@ -29,6 +29,8 @@ sk.data = {
   NAV_ClaimDGD:         'Claim DGD',
   DGD_TitleLong:        'Claim Your DGD Tokens',
   NAV_DeployContract:   'Deploy Contract',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Contracts',
   NAV_MyWallets:        'Moje peňaženky',
   NAV_ViewWallet:       'Zobraziť detaily peňaženky',
   NAV_Help:             'Pomoc',

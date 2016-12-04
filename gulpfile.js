@@ -342,6 +342,7 @@ gulp.task('pushLive', ['getVersion'], function () {
 
 // Watch Tasks
 gulp.task('watchJS',           function() { gulp.watch( js_watchFolder,   ['js'    ]) })
+gulp.task('watchJSDebug',      function() { gulp.watch( js_watchFolder,   ['js-debug' ]) })
 gulp.task('watchLess',         function() { gulp.watch( less_watchFolder, ['styles']) })
 gulp.task('watchPAGES',        function() { gulp.watch( htmlFiles,        ['html'  ]) })
 gulp.task('watchTPL',          function() { gulp.watch( tplFiles,         ['html'  ]) })
@@ -355,7 +356,7 @@ gulp.task('bump-minor',        function() { return bumpFunc( 'minor' ) })
 
 gulp.task('build',             ['html', 'styles', 'js', 'copy'])
 
-gulp.task('build-debug',       ['html', 'styles-debug', 'js-debug'])
+gulp.task('build-debug',       ['html', 'styles', 'js-debug', 'watchJSDebug', 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
 
 gulp.task('build-production',  function(cb) { runSequence('html', 'styles', 'js-production', 'copy', cb); });
 

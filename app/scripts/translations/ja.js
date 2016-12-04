@@ -38,6 +38,8 @@ ja.data = {
   NAV_ClaimDGD:         'DGD請求',
   DGD_TitleLong:        'DGDトークンを請求',
   NAV_DeployContract:   'コントラクトをデプロイ',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Contracts',
   NAV_MyWallets:        '自分のウォレット',
   NAV_ViewWallet:       'ウォレット情報を見る',
   NAV_Help:             'ヘルプ',

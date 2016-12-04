@@ -43,6 +43,8 @@ sl.data = {
   FOOTER_1:             'An open source, javascript, client-side tool for generating Ethereum Wallets & sending transactions.',
   FOOTER_4:             'Disclaimer',
   NAV_DeployContract:   'Deploy Contract',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Contracts',
 
   /* Navigation*/
   NAV_YourWallets:      'Vaše Denarnice',

@@ -41,6 +41,8 @@ sv.data = {
   ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
   NAV_DeployContract:   'Deploy Contract',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Contracts',
 
   /* Navigation*/
   NAV_YourWallets:      'Dina Plånböcker',

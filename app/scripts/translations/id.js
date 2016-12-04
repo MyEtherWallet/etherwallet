@@ -29,6 +29,8 @@ id.data = {
   NAV_ClaimDGD:         'Klaim DGD',
   DGD_TitleLong:        'Klaim DGD Token Anda',
   NAV_DeployContract:   'Buat Contract',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Contracts',
   NAV_MyWallets:        'Dompet Saya',
   NAV_ViewWallet:       'Lihat Info Dompet',
   NAV_Help:             'Bantuan',

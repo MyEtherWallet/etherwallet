@@ -62,6 +62,8 @@ tr.data = {
   PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
   NAV_DeployContract:   'Sözleşme kur',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Sözleşmeler',
 
   /* Navigation*/
   NAV_YourWallets:      'Cüzdanin',

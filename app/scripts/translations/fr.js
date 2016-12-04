@@ -27,6 +27,8 @@ fr.data = {
   NAV_ClaimDGD:         'Réclamer des DGD',
   DGD_TitleLong:        'Réclamer vos tokens DGD',
   NAV_DeployContract:   'Déployer un contrat',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Contrats',
   NAV_MyWallets:        'Mes portefeuilles',
   NAV_ViewWallet:       'Visualiser un portefeuille',
   NAV_Help:             'Aide',
