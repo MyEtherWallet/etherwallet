@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit c836bfee52741aefdf4de7e7fb0a2a88e2b3fc01
+// Last sync with en.js: commit d426365a21ba180fa850a4975e5f656b7fa803ce
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -28,7 +28,7 @@ it.data = {
   NAV_ClaimDGD:         'Richiedi DGD',
   DGD_TitleLong:        'Richiedi i tuoi token DGD',
   NAV_DeployContract:   'Pubblica contratto',
-  NAV_InteractContract: 'Interact with Contract',
+  NAV_InteractContract: 'Interagisci con un contratto',
   NAV_Contracts:        'Contratti',
   NAV_Multisig:         'Multisig',
   NAV_MyWallets:        'I miei portafogli',
@@ -66,7 +66,7 @@ it.data = {
 	CX_Tagline:           'Portafoglio ether JavaScript lato client Open Source (Estensione Chrome)',
 
   /* Footer */
-  FOOTER_1:             'Uno strumento open source, in javascript, lato client per generare portafogli Ethereum e inviare transazioni.',
+  FOOTER_1:             'Strumento open source lato client per interagire facilmente e in modo sicuro con la rete Ethereum.',
   FOOTER_1b:            'Creato da',
   FOOTER_2:             'Donazioni molto apprezzate:',
   FOOTER_3:             'Generazione portafogli lato client da parte di',
