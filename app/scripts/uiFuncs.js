@@ -21,12 +21,11 @@ uiFuncs.isTxDataValid = function(txData) {
 	else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
 	if (txData.to == "0xCONTRACT") txData.to = '';
 }
-uiFuncs.signTxLedger = function(eTx, rawTx, txData, old, callback) {
+uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
     eTx.raw[6] = Buffer.from([1]); //ETH chain id
     eTx.raw[7] = eTx.raw[8] = 0;
     var toHash = old ? eTx.raw.slice(0,6) : eTx.raw;
 	var txToSign = ethUtil.rlp.encode(toHash);
-	var app = new ledgerEth(txData.hwTransport);
 	var localCallback = function(result, error) {
 		if (typeof error != "undefined") {
 			if (callback !== undefined) callback({
@@ -35,7 +34,7 @@ uiFuncs.signTxLedger = function(eTx, rawTx, txData, old, callback) {
 			});
 			return;
 		}
-		rawTx.v = old ? "0x"+result['v'] : "0x" + new BigNumber('0x'+result['v']).add(10).toString(16);
+		rawTx.v = "0x" + result['v'];
 		rawTx.r = "0x" + result['r'];
 		rawTx.s = "0x" + result['s'];		
 		eTx = new ethUtil.Tx(rawTx);
@@ -62,7 +61,31 @@ uiFuncs.generateTx = function(txData, isClassic, callback) {
 			}
 			var eTx = new ethUtil.Tx(rawTx);
 			if ((typeof txData.hwType != "undefined") && (txData.hwType == "ledger")) {
-				uiFuncs.signTxLedger(eTx, rawTx, txData, true, callback);
+				var app = new ledgerEth(txData.hwTransport);
+				var EIP155Supported = false;
+				var localCallback = function(result, error) {
+					if (typeof error != "undefined") {
+						if (callback !== undefined) callback({
+							isError: true,
+							error: error
+						});
+						return;
+					}
+					var splitVersion = result['version'].split('.');
+					if (parseInt(splitVersion[0]) > 1) {
+						EIP155Supported = true;						
+					}
+					else
+					if (parseInt(splitVersion[1]) > 0) {
+						EIP155Supported = true;							
+					}
+					else
+					if (parseInt(splitVersion[2]) > 2) {
+						EIP155Supported = true;								
+					}
+					uiFuncs.signTxLedger(app, eTx, rawTx, txData, !EIP155Supported, callback);				
+				}
+				app.getAppConfiguration(localCallback);
 			}
 			else {
                 ethFuncs.ecSignEIP155(eTx,new Buffer(txData.privKey, 'hex'),isClassic);
