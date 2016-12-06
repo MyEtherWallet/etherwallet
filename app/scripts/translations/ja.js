@@ -40,6 +40,7 @@ ja.data = {
   NAV_DeployContract:   'コントラクトをデプロイ',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contracts',
+  NAV_Multisig:         'Multisig',
   NAV_MyWallets:        '自分のウォレット',
   NAV_ViewWallet:       'ウォレット情報を見る',
   NAV_Help:             'ヘルプ',

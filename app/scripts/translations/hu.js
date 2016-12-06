@@ -37,6 +37,7 @@ hu.data = {
   NAV_DeployContract:   'Kontraktus Telepítése',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Kontraktus',
+  NAV_Multisig:         'Multisig',
   NAV_MyWallets:        'Tárcáim',
   NAV_ViewWallet:       'Tárca adatainak megtekintése',
   NAV_Help:             'Segítség',

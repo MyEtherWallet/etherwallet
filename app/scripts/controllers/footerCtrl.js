@@ -1,5 +1,5 @@
 'use strict';
-var footerCtrl = function($scope) {
+var footerCtrl = function($scope, globalService) {
     $scope.footerModal = new Modal(document.getElementById('disclaimerModal'));
 	$scope.ethBlockNumber = "loading";
     $scope.etcBlockNumber = "loading";

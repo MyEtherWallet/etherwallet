@@ -56,7 +56,7 @@ var decryptWalletCtrl        = require('./controllers/decryptWalletCtrl');
 var viewWalletCtrl           = require('./controllers/viewWalletCtrl');
 var sendTxCtrl               = require('./controllers/sendTxCtrl');
 var signMsgCtrl              = require('./controllers/signMsgCtrl');
-var contractsCtrl       = require('./controllers/contractsCtrl');
+var contractsCtrl            = require('./controllers/contractsCtrl');
 var digixCtrl                = require('./controllers/digixCtrl');
 var theDaoCtrl               = require('./controllers/theDaoCtrl');
 var footerCtrl               = require('./controllers/footerCtrl');
@@ -104,7 +104,7 @@ app.controller  ('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]
 app.controller  ('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
 app.controller  ('digixCtrl', ['$scope', '$sce', 'walletService', digixCtrl]);
 app.controller  ('theDaoCtrl', ['$scope', '$sce', 'walletService', theDaoCtrl]);
-app.controller  ('footerCtrl', ['$scope', footerCtrl]);
+app.controller  ('footerCtrl', ['$scope','globalService', footerCtrl]);
 app.controller  ('sendOfflineTxCtrl', ['$scope', '$sce', 'walletService', sendOfflineTxCtrl]);
 app.controller  ('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
 if (IS_CX) {

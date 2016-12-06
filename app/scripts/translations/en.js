@@ -29,6 +29,7 @@ en.data = {
   NAV_DeployContract:   'Deploy Contract',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contracts',
+  NAV_Multisig:         'Multisig',
   NAV_MyWallets:        'My Wallets',
   NAV_ViewWallet:       'View Wallet Info',
   NAV_Help:             'Help',

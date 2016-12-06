@@ -71,6 +71,7 @@ ru.data = {
   NAV_DeployContract:   'Опубликовать контракт',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'контракт',
+  NAV_Multisig:         'Multisig',
 
   /* General */
   x_Password:           'Пароль',

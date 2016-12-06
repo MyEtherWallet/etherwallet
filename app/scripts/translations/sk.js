@@ -31,6 +31,7 @@ sk.data = {
   NAV_DeployContract:   'Deploy Contract',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contracts',
+  NAV_Multisig:         'Multisig',
   NAV_MyWallets:        'Moje peňaženky',
   NAV_ViewWallet:       'Zobraziť detaily peňaženky',
   NAV_Help:             'Pomoc',

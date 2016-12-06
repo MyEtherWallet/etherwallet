@@ -31,6 +31,7 @@ id.data = {
   NAV_DeployContract:   'Buat Contract',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contracts',
+  NAV_Multisig:         'Multisig',
   NAV_MyWallets:        'Dompet Saya',
   NAV_ViewWallet:       'Lihat Info Dompet',
   NAV_Help:             'Bantuan',

@@ -36,6 +36,7 @@ pt.data = {
   NAV_DeployContract:   'Implantar Contrato',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contratos',
+  NAV_Multisig:         'Multisig',
   NAV_MyWallets:        'Minhas Carteiras',
   NAV_ViewWallet:       'Ver Informação da Carteira',
   NAV_Help:             'Ajuda',

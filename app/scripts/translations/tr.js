@@ -61,10 +61,6 @@ tr.data = {
   PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
   PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
 
-  NAV_DeployContract:   'Sözleşme kur',
-  NAV_InteractContract: 'Interact with Contract',
-  NAV_Contracts:        'Sözleşmeler',
-
   /* Navigation*/
   NAV_YourWallets:      'Cüzdanin',
   NAV_AddWallet:        'Cüzdan ekle',
@@ -81,6 +77,10 @@ tr.data = {
   NAV_ViewWallet:       'Cüzdan bilgilerni göster',
   NAV_Help:             'Yardim et',
   NAV_Contact:          'Iletişime geç',
+  NAV_DeployContract:   'Sözleşme kur',
+  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contracts:        'Sözleşmeler',
+  NAV_Multisig:         'Multisig',
 
   /* General */
   x_AddessDesc:         'Bu "hesap numarası" veya "genel anahtar" dir. Birisi ether göndermek istiyorsa bu adresi kullanmasi gerekir. Ikon adresini kontrol etmek kolay bir yoldur',

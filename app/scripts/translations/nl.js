@@ -20,6 +20,7 @@ nl.data = {
   NAV_DeployContract:   'Verspreid Contract',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contracts',
+  NAV_Multisig:         'Multisig',
   NAV_MyWallets:        'Mijn Wallets',
   NAV_ViewWallet:       'Bekijk Wallet Info',
   NAV_Help:             'Help',

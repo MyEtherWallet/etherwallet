@@ -19,6 +19,7 @@ es.data = {
   NAV_DeployContract:   'Deploy Contract',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contracts',
+  NAV_Multisig:         'Multisig',
   /* Mnemonic Additions */
   MNEM_1:               'Please select the address you would like to interact with.',
   MNEM_2:               'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',

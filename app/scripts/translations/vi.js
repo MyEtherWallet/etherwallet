@@ -43,6 +43,7 @@ vi.data = {
   NAV_DeployContract:   'Phát Triển Hợp Đồng',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Hợp Đồng',
+  NAV_Multisig:         'Multisig',
   NAV_MyWallets:        'Ví Của Tôi',
   NAV_ViewWallet:       'Thông Tin Ví',
   NAV_Help:             'Trợ Giúp',

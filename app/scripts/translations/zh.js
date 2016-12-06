@@ -60,6 +60,7 @@ zh.data = {
   NAV_Offline:          '离线发送',
   NAV_WithdrawDAO:      'DAO提取DAO',
   DAO_TitleLong:        '兑换DAO代币为ETH',
+  NAV_Multisig:         'Multisig',
   NAV_ClaimDGD:         '领取DGD代币',
   DGD_TitleLong:        '领取你的DGD代币',
   NAV_DeployContract:   '部署合约',

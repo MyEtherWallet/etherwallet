@@ -13,6 +13,11 @@
       <span translate="FOOTER_2">Donations greatly appreciated:</span> <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span>
     </p>
 
+    <p> Deprecated Pages:
+      <a ng-click="globalService.currentTab=globalService.tabs.bulkGenerate.id" translate="NAV_BulkGenerate">Bulk Generate</a> &middot;
+      <a ng-click="globalService.currentTab=globalService.tabs.dao.id" translate="NAV_WithdrawDAO">DAO</a> &middot;
+      <a ng-click="globalService.currentTab=globalService.tabs.digix.id" translate="NAV_ClaimDGD">Digix</a>
+    </p>
     <p>
       URLs:
       <a href="https://www.myetherwallet.com" target="_blank">www.MyEtherWallet.com</a> &middot;

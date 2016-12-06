@@ -30,6 +30,7 @@ it.data = {
   NAV_DeployContract:   'Pubblica contratto',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contratti',
+  NAV_Multisig:         'Multisig',
   NAV_MyWallets:        'I miei portafogli',
   NAV_ViewWallet:       'Informazioni portafoglio',
   NAV_Help:             'Aiuto',

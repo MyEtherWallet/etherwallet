@@ -80,6 +80,7 @@ fi.data = {
   NAV_DeployContract:   'Deploy Contract',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contracts',
+  NAV_Multisig:         'Multisig',
 
   /* Navigation*/
   NAV_YourWallets:      'Sinun Lompakkosi',

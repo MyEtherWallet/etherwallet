@@ -215,6 +215,7 @@ pl.data = {
   NAV_DeployContract:     'Wyślij Kontrakt',
   NAV_InteractContract:   'Interact with Contract',
   NAV_Contracts:          'Kontrakt',
+  NAV_Multisig:           'Multisig',
   DEP_generate:           'Wygeneruj Kod Bajtowy',
   DEP_generated:          'Wygenerowany Kod Bajtowy',
   DEP_signtx:             'Podpisz Transakcję',
