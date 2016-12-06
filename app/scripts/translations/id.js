@@ -5,16 +5,16 @@ id.code = 'id';
 id.data = {
 
   /* Sign Message */
-  NAV_SignMsg:          'Sign Message',
-  MSG_message:          'Message',
-  MSG_date:             'Date',
+  NAV_SignMsg:          'Penandaan Pesan',
+  MSG_message:          'Pesan',
+  MSG_date:             'Tanggal',
   MSG_signature:        'Signature',
-  MSG_verify:           'Verify Message',
-  MSG_info1:            'Include the current date so the signature cannot be reused on a different date.',
-  MSG_info2:            'Include your nickname and where you use the nickname so someone else cannot use it.',
-  MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
+  MSG_verify:           'Verifikasi Pesan',
+  MSG_info1:            'Cantumkan tanggal hari ini sehingga "Signature" tidak dapat dipakai ulang pada tanggal yang berbeda.',
+  MSG_info2:            'Cantumkan nama atau "nickname" Anda dan dimana "nickname" tersebut dipakai sehingga pihak lain tidak dapat memakainya.',
+  MSG_info3:            'Cantumkan alasan yang spesifik untuk pesan ini sehingga pesan yang ditandai ini tidak dapat dipakai ulang untuk keperluan lain.',
 
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
+  WARN_Send_Link_2:     '**Peringatan:** Data hanya bisa disertakan jika pengiriman menggunakan "ETH (Standard Transaction)". Harap hilangkan "sendMode" dan/atau "tokenSymbol" dari URI untuk pengiriman transaksi dengan data.',
 
   /* Navigation*/
   NAV_YourWallets:      'Dompet Anda',
