@@ -54,7 +54,7 @@ no.data = {
   DGD_TitleLong:        'Gjør krav på dine DGD-token',
   NAV_DeployContract:   'Utplasser kontrakt',
   NAV_InteractContract: 'Interact with Contract',
-  NAV_Contracts:        'Kontrakt'
+  NAV_Contracts:        'Kontrakt',
   NAV_Multisig:         'Multisig',
   NAV_MyWallets:        'Mine lommebøker',
   NAV_ViewWallet:       'Vis lommebok-info',

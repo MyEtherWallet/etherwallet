@@ -1,5 +1,5 @@
 <!-- Send Transaction Page -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.deployContract.id" ng-controller='contractsCtrl'>
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl'>
 
   <h2>
     <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
