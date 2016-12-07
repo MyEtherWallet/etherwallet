@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit d426365a21ba180fa850a4975e5f656b7fa803ce
+// Last sync with en.js: commit 0684957b6867f83880ebd30b1cf03fc70e377dc8
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -30,7 +30,7 @@ it.data = {
   NAV_DeployContract:   'Pubblica contratto',
   NAV_InteractContract: 'Interagisci con un contratto',
   NAV_Contracts:        'Contratti',
-  NAV_Multisig:         'Multisig',
+  NAV_Multisig:         'Multifirma',
   NAV_MyWallets:        'I miei portafogli',
   NAV_ViewWallet:       'Informazioni portafoglio',
   NAV_Help:             'Aiuto',
