@@ -79,8 +79,8 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       id: 10,
       name: "NAV_WithdrawDAO",
       url: "the-dao",
-      mew: true,
-      cx: true
+      mew: false,
+      cx: false
     },
     digix: {
       id: 11,
