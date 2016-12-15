@@ -302,7 +302,7 @@ gulp.task('commit', function () {
 })
 
 // commit with current v# in manifest
-gulp.task('commitV', function () {
+gulp.task('commitV', ['getVersion'], function () {
   return gulp.src('*.js', {read: false})
     .pipe(shell([
           'git commit -m " ' + versionMsg + ' "'
@@ -360,9 +360,9 @@ gulp.task('build-debug',       ['html', 'styles', 'js-debug', 'watchJSDebug', 'w
 
 gulp.task('build-production',  function(cb) { runSequence('html', 'styles', 'js-production', 'copy', cb); });
 
-gulp.task('prep',              function(cb) { runSequence('build-production', 'clean', 'zip', cb); });
+gulp.task('prep',              function(cb) { runSequence('clean', 'zip', cb); });
 
-gulp.task('prepBump',          function(cb) { runSequence('build-production', 'clean', 'bump-patch', 'zip', cb); });
+gulp.task('prepBump',          function(cb) { runSequence('clean', 'bump-patch', 'zip', cb); });
 
 gulp.task('push',              function(cb) { runSequence('add', 'commitV', 'tag', 'push', cb); });
 

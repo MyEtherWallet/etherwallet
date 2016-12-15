@@ -57,14 +57,14 @@
 
         &nbsp;&nbsp;
 
-        <span class="dropdown">
+        <!--<span class="dropdown">
           <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode}} <span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
             <li><a ng-class="{true:'active'}[curNode=='mainnet']" ng-click="changeNode('mainnet', 'Mainnet')">Mainnet</a></li>
             <li><a ng-class="{true:'active'}[curNode=='testnet']" ng-click="changeNode('testnet', 'Testnet (Ropsten)')">Testnet (Ropsten)</a></li>
             <li><a ng-class="{true:'active'}[curNode=='local']" ng-click="changeNode('local', 'Local')">Local</a></li>
           </ul>
-        </span>
+        </span>-->
 
         &nbsp;&nbsp;
 
