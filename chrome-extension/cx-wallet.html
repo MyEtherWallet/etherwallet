@@ -108,6 +108,54 @@
     <a ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(100);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>
   </section>
 
+
+  <!-- Info Modal -->
+  <div class="modal fade" id="customNodeModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"> Set Up Your Custom Node </h4>
+        </div>
+        <div class="modal-body row">
+          <div class="form-group col-xs-12">
+            <label>Node Name</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.name">
+          </div>
+          <div class="form-group col-xs-9">
+            <label>URL</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.url">
+          </div>
+          <div class="form-group col-xs-3">
+            <label>Port</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.port">
+          </div>
+          <div class="form-group col-xs-12">
+            <label>Options</label>
+            <span class="radio">
+              <label><input name="options" type="radio" ng-model="customNode.options" value="eth"> ETH</label>
+              <label><input name="options" type="radio" ng-model="customNode.options" value="etc"> ETC</label>
+              <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten</label>
+              <label><input name="options" type="radio" ng-model="customNode.eip155" value="true"> Custom: Supports EIP-155</label>
+              <label><input name="options" type="radio" ng-model="customNode.eip155" value="false"> Custom: Does not support EIP-155</label>
+            </span>
+          </div>
+          <div class="col-sm-4 col-xs-12" ng-show="">
+            <label>Chain ID</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.chainId">
+          </div>
+        </div>
+
+        <div class="modal-footer text-center">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" ng-click="saveCustomNode()">Save & Use Custom Node</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- / Info Modal -->
+
 </header>
 
 

@@ -1471,13 +1471,19 @@ module.exports = signMsgCtrl;
 var tabsCtrl = function ($scope, globalService, $translate) {
   $scope.tabNames = globalService.tabs;
   $scope.curLang = 'English';
-
-  $scope.node = {
+  $scope.customNodeModal = new Modal(document.getElementById('customNodeModal'));
+  $scope.customNodeModal.open();
+  $scope.tokenFiles = {
+    'eth': 'tokens-eth.js',
+    'etc': 'tokens-etc.js',
+    'rop': 'tokens-rop.js'
+  };
+  $scope.node = [{
     'eth_mew': {
       'name': 'ETH',
       'eip155': true,
-      'chainID': '1',
-      'tokenList': 'tokens-eth.js',
+      'chainId': '1',
+      'tokenList': $scope.tokenFiles.eth,
       'estimateGas': true,
       'service': 'MyEtherWallet',
       'url': '',
@@ -1486,8 +1492,8 @@ var tabsCtrl = function ($scope, globalService, $translate) {
     'etc_mew': {
       'name': 'ETC',
       'eip155': false,
-      'chainID': false,
-      'tokenList': 'tokens-etc.js',
+      'chainId': false,
+      'tokenList': $scope.tokenFiles.etc,
       'estimateGas': true,
       'service': 'MyEtherWallet',
       'url': '',
@@ -1496,8 +1502,8 @@ var tabsCtrl = function ($scope, globalService, $translate) {
     'tst_mew': {
       'name': 'Ropsten',
       'eip155': true,
-      'chainID': '3',
-      'tokenList': 'tokens-rop.js',
+      'chainId': '3',
+      'tokenList': $scope.tokenFiles.rop,
       'estimateGas': true,
       'service': 'MyEtherWallet',
       'url': '',
@@ -1506,26 +1512,18 @@ var tabsCtrl = function ($scope, globalService, $translate) {
     'eth_ethscan': {
       'name': 'ETH',
       'eip155': true,
-      'chainID': '1',
-      'tokenList': 'tokens-eth.js',
+      'chainId': '1',
+      'tokenList': $scope.tokenFiles.eth,
       'estimateGas': false,
       'service': 'Etherscan.io',
       'url': '',
       'port': ''
-    },
-    'custom': {
-      'name': 'Custom',
-      'eip155': '',
-      'chainID': '',
-      'tokenList': '',
-      'estimateGas': false,
-      'service': 'Custom',
-      'url': '',
-      'port': ''
     }
-  };
+  }];
   $scope.curNodeKey = 'eth_mew';
   $scope.curNode = $scope.node.eth_mew;
+
+  $scope.customNode = [];
 
   var hval = window.location.hash;
 
@@ -1539,24 +1537,95 @@ var tabsCtrl = function ($scope, globalService, $translate) {
   $scope.setArrowVisibility();
 
   $scope.changeNode = function (key) {
-    $scope.curNodeKey = key;
     $scope.curNode = $scope.node[key];
     $scope.dropdownNode = false;
     localStorage.setItem('curNode', JSON.stringify({
       key: key
     }));
   };
-  $scope.setNodeFromStorage = function () {
+
+  $scope.setCurNodeFromStorage = function () {
     var node = localStorage.getItem('curNode');
     if (node == null) {
       $scope.changeNode($scope.curNodeKey);
     } else {
       node = JSON.parse(node);
       var key = globalFuncs.stripTags(node.key);
-      $scope.changeNode(key);
+      if ($scope.node.indexOf(key) > -1) {
+        $scope.changeNode(key);
+      } else {
+        $scope.changeNode($scope.curNodeKey);
+      }
     }
   };
-  $scope.setNodeFromStorage();
+  $scope.setCurNodeFromStorage();
+
+  $scope.saveCustomNodesFromStorage = function () {
+    var localNodes = localStorage.getItem('localNodes');
+    if (localNodes != null) {
+      localNodes = JSON.parse(localNodes);
+      alert(localNodes);
+      $scope.node.push(localNodes);
+    }
+  };
+  $scope.saveCustomNodesFromStorage();
+
+  $scope.saveCustomNode = function () {
+    var customNode = $scope.customNode;
+    if (customNode.options == 'eth') {
+      customNode.eip155 = true;
+      customNode.chainId = '1';
+      customNode.tokenList = $scope.tokenFiles.eth;
+    } else if (customNode.options == 'etc') {
+      customNode.eip155 = false;
+      customNode.chainId = false;
+      customNode.tokenList = $scope.tokenFiles.etc;
+    }
+    var d = new Date();
+    var localNodeIndex = 'custom' + d.getTime();
+
+    var localNodes = localStorage.getItem('localNodes');
+    if (localNodes == null) {
+      localNodes = [];
+    } else {
+      localNodes = JSON.parse(localNodes);
+    }
+
+    var newNode = {
+      localNodeIndex: {
+        'name': customNode.name,
+        'eip155': customNode.eip155,
+        'chainId': customNode.chainId,
+        'tokenList': customNode.tokenList,
+        'estimateGas': customNode.estimateGas,
+        'service': customNode.service,
+        'url': customNode.url,
+        'port': customNode.port,
+        'options': customNode.options
+      }
+    };
+    localNodes.push(newNode);
+    localStorage.setItem("localTokens", JSON.stringify(localNodes));
+    $scope.node.push(localNodes);
+
+    localStorage.setItem('curNode', JSON.stringify({
+      key: localNodeIndex
+    }));
+  };
+
+  $scope.removeNodeFromLocal = function (localNodeIndex) {
+    var localNodes = localStorage.getItem('localNodes');
+    if (localNodes != null) {
+      localNodes = JSON.parse(localNodes);
+    } else {
+      localNodes = [];
+    }
+
+    if (localNodes.indexOf(localNodeIndex) > -1) {
+      localNodes.splice(index, 1);
+    }
+    localStorage.setItem('localNodes', JSON.stringify(localNodes));
+  };
 
   $scope.setTab = function (hval) {
     if (hval != '') {
