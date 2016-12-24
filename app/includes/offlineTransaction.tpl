@@ -59,7 +59,7 @@
             </li>
             <li role="separator" class="divider"></li>
             <li ng-repeat="token in tokenObjs track by $index">
-              <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == $index]" ng-click="setSendMode($index)" > {{token.getSymbol()}} </a>
+              <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == $index]" ng-click="setSendMode($index, token.getSymbol())" > {{token.getSymbol()}} </a>
             </li>
           </ul>
         </div>
