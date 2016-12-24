@@ -266,7 +266,7 @@ gulp.task('add', function () {
 })
 
 // commit with current v# in manifest
-gulp.task('commit', function () {
+gulp.task('commit', ['getVersion'], function () {
   return gulp.src('*.js', {read: false})
     .pipe(shell([
           'git commit -m "Rebuilt and cleaned everything. Done for now."'
@@ -275,7 +275,7 @@ gulp.task('commit', function () {
 })
 
 // commit with current v# in manifest
-gulp.task('commitV', function () {
+gulp.task('commitV', ['getVersion'], function () {
   return gulp.src('*.js', {read: false})
     .pipe(shell([
           'git commit -m " ' + versionMsg + ' "'
@@ -339,7 +339,7 @@ gulp.task('bump',              function(cb) { runSequence('clean', 'bump-patch',
 
 gulp.task('cleanZip',          function(cb) { runSequence('clean', 'zip', cb); });
 
-gulp.task('push',              function(cb) { runSequence('add', 'commitV', 'tag', cb); });
+gulp.task('commit',            function(cb) { runSequence('add', 'commitV', 'tag', cb); });
 
 gulp.task('pushLive',          function(cb) { runSequence('add', 'commitV', 'tag', 'push', 'pushLive', cb); });
 
