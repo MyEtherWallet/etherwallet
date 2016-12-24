@@ -48,13 +48,13 @@
         &nbsp;&nbsp;
 
         <span class="dropdown">
-          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode}} <span class="caret"></span></a>
+          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small> <span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
-            <li><a ng-class="{true:'active'}[curNode=='eth-mew']"     ng-click="changeNode('eth-mew'     , 'ETH - MyEtherWallet')">     ETH - MyEtherWallet</a></li>
-            <li><a ng-class="{true:'active'}[curNode=='etc-mew']"     ng-click="changeNode('etc-mew'     , 'ETC - MyEtherWallet')">     ETC - MyEtherWallet</a></li>
-            <li><a ng-class="{true:'active'}[curNode=='tst-mew']"     ng-click="changeNode('tst-mew'     , 'Ropsten - MyEtherWallet')"> Ropsten - MyEtherWallet</a></li>
-            <li><a ng-class="{true:'active'}[curNode=='eth-ethscan']" ng-click="changeNode('eth-ethscan' , 'ETH - Etherscan.io')">      ETH - Etherscan.io</a></li>
-            <li><a ng-class="{true:'active'}[curNode=='custom']"      ng-click="changeNode('custom'      , 'custom')">                  Custom</a></li>
+            <li><a ng-class="{true:'active'}[curNode=='eth_mew']"     ng-click="changeNode( 'eth_mew' )">    {{node.eth_mew.name}}     <small> ({{node.eth_mew.service}})     </small></a></li>
+            <li><a ng-class="{true:'active'}[curNode=='eth_mew']"     ng-click="changeNode( 'etc_mew' )">    {{node.etc_mew.name}}     <small> ({{node.etc_mew.service}})     </small></a></li>
+            <li><a ng-class="{true:'active'}[curNode=='tst_mew']"     ng-click="changeNode( 'tst_mew' )">    {{node.tst_mew.name}}     <small> ({{node.tst_mew.service}})     </small></a></li>
+            <li><a ng-class="{true:'active'}[curNode=='eth_ethscan']" ng-click="changeNode( 'eth_ethscan' )">{{node.eth_ethscan.name}} <small> ({{node.eth_ethscan.service}}) </small></a></li>
+            <li><a ng-class="{true:'active'}[curNode=='custom']"      ng-click="changeNode( 'custom' )">     {{node.custom.name}}      <small> ({{node.custom.service}})      </small></a></li>
           </ul>
         </span>
 
