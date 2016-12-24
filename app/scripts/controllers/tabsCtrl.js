@@ -2,7 +2,7 @@
 var tabsCtrl = function($scope, globalService, $translate) {
 	$scope.tabNames = globalService.tabs;
 	$scope.curLang = "English";
-	$scope.curNode = "Mainnet"; //todo = fetch from localstorage
+	$scope.curNode = "Select Node"; //todo = fetch from localstorage
 	var hval = window.location.hash;
 
 	$scope.setArrowVisibility = function() {
