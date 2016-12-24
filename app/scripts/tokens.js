@@ -112,6 +112,12 @@ Token.popTokens = [{
 	"type": "default"
 },
 {
+  "address": "0x5c543e7AE0A1104f78406C340E9C64FD9fCE5170",
+  "symbol": "VSL",
+  "decimal": 18,
+  "type": "default"
+},
+{
 	"address": "0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
 	"symbol": "XAUR",
 	"decimal": 8,
