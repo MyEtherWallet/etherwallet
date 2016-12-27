@@ -86,12 +86,12 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 			$scope.dropdownEnabled = true
 		}
 	}, true);
-	$scope.setSendMode = function(index) {
+	$scope.setSendMode = function(index, tokenSymbol='') {
 		$scope.tokenTx.id = index;
 		if (index == 'ether') {
 			$scope.unitReadable = 'ETH';
 		} else {
-			$scope.unitReadable = $scope.tokens[index].symbol;
+			$scope.unitReadable = tokenSymbol;
 		}
 		$scope.dropdownAmount = false;
 	}

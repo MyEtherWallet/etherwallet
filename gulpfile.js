@@ -1,30 +1,3 @@
-/*
-     html               builds html templates
-     styles             compiles and minfies less
-     js                 browserify, babel no es2015
-     js-production      browserify, babel es2015
-     staticJS           recompiles and uglifies staticJS files
-     copy               runs staticJS first. copies images, fonts, and other static files to cx and dist
-gulp build              html styles js (staticJS) copy
-gulp build-debug        html styles-debug js-debug (staticJS) copy
-gulp build-production   html styles js-production (staticJS) copy
-     clean              cleans files we don't need that get compiled
-     getVersion         gets version from manifest
-     zip                zips dist folder w/ version number
-     bump-patch         bumps v from 0.0.1 to 0.0.2
-     bump-minor         bumps v from 0.1.0 to 0.2.0
-gulp prep               build-production and cleans and zips it up
-gulp prepBump           build-production and bumps and cleans and zips it up
-     add                git add
-     commit             git commit without v number
-     commitV            git commit with v number
-     tag                git tag w/ with number
-     push               git push to mercury
-     pushLive           git push live to gh-pages
-gulp push               add commits tags pushes
-gulp pushLive           add commits tags pushes live
-*/
-
 var fs           = require('fs')
 
 var autoprefixer = require('gulp-autoprefixer')
@@ -293,7 +266,7 @@ gulp.task('add', function () {
 })
 
 // commit with current v# in manifest
-gulp.task('commit', function () {
+gulp.task('commit', ['getVersion'], function () {
   return gulp.src('*.js', {read: false})
     .pipe(shell([
           'git commit -m "Rebuilt and cleaned everything. Done for now."'
@@ -343,28 +316,30 @@ gulp.task('pushLive', ['getVersion'], function () {
 // Watch Tasks
 gulp.task('watchJS',           function() { gulp.watch( js_watchFolder,   ['js'    ]) })
 gulp.task('watchJSDebug',      function() { gulp.watch( js_watchFolder,   ['js-debug' ]) })
+gulp.task('watchJSProd',       function() { gulp.watch( js_watchFolder,    ['js-production' ]) })
 gulp.task('watchLess',         function() { gulp.watch( less_watchFolder, ['styles']) })
 gulp.task('watchPAGES',        function() { gulp.watch( htmlFiles,        ['html'  ]) })
 gulp.task('watchTPL',          function() { gulp.watch( tplFiles,         ['html'  ]) })
 gulp.task('watchCX',           function() { gulp.watch( cxSrcFiles,       ['copy'  ]) })
 
-gulp.task('watch',             ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
+gulp.task('watch',             ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'    ])
+gulp.task('watchProd',         ['watchJSProd' , 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
 
 // Bump Version
 gulp.task('bump-patch',        function() { return bumpFunc( 'patch' ) })
 gulp.task('bump-minor',        function() { return bumpFunc( 'minor' ) })
 
-gulp.task('build',             ['html', 'styles', 'js', 'copy'])
+gulp.task('build',             ['js', 'html', 'styles', 'copy'])
 
-gulp.task('build-debug',       ['html', 'styles', 'js-debug', 'watchJSDebug', 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
+gulp.task('build-debug',       ['js-debug', 'html', 'styles', 'watchJSDebug', 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
 
-gulp.task('build-production',  function(cb) { runSequence('html', 'styles', 'js-production', 'copy', cb); });
+gulp.task('prep',              function(cb) { runSequence('js-production', 'html', 'styles', 'copy', cb); });
 
-gulp.task('prep',              function(cb) { runSequence('clean', 'zip', cb); });
+gulp.task('bump',              function(cb) { runSequence('clean', 'bump-patch', 'zip', cb); });
 
-gulp.task('prepBump',          function(cb) { runSequence('clean', 'bump-patch', 'zip', cb); });
+gulp.task('cleanZip',          function(cb) { runSequence('clean', 'zip', cb); });
 
-gulp.task('push',              function(cb) { runSequence('add', 'commitV', 'tag', 'push', cb); });
+gulp.task('commit',            function(cb) { runSequence('add', 'commitV', 'tag', cb); });
 
 gulp.task('pushLive',          function(cb) { runSequence('add', 'commitV', 'tag', 'push', 'pushLive', cb); });
 

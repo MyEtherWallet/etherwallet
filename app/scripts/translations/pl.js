@@ -5,14 +5,14 @@ pl.code = 'pl';
 pl.data = {
 
   /* Sign Message */
-  NAV_SignMsg:          'Sign Message',
-  MSG_message:          'Message',
-  MSG_date:             'Date',
-  MSG_signature:        'Signature',
-  MSG_verify:           'Verify Message',
-  MSG_info1:            'Include the current date so the signature cannot be reused on a different date.',
-  MSG_info2:            'Include your nickname and where you use the nickname so someone else cannot use it.',
-  MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
+  NAV_SignMsg:          'Podpisz Wiadomość',
+  MSG_message:          'Wiadomość',
+  MSG_date:             'Data',
+  MSG_signature:        'Podpis',
+  MSG_verify:           'Zweryfikuj Wiadomość',
+  MSG_info1:            'Załącz aktualną datę, aby podpis nie mógł być ponownie wykorzystany w innym czasie.',
+  MSG_info2:            'Załącz swój nick i napisz gdzie go wykorzystujesz, aby ktoś inny nie mógł powielić tej wiadomości.',
+  MSG_info3:            'Opisz powód zamieszczenia wiadomości, aby nikt inny nie mógł jej wykorzystać w innym celu.',
 
   /* Navigation*/
   NAV_YourWallets:      'Twoje Portfele',
@@ -213,9 +213,9 @@ pl.data = {
 
   /* Deploy Contracts */
   NAV_DeployContract:     'Wyślij Kontrakt',
-  NAV_InteractContract:   'Interact with Contract',
+  NAV_InteractContract:   'Pracuj z Kontraktem',
   NAV_Contracts:          'Kontrakt',
-  NAV_Multisig:           'Multisig',
+  NAV_Multisig:           'Multi-podpis',
   DEP_generate:           'Wygeneruj Kod Bajtowy',
   DEP_generated:          'Wygenerowany Kod Bajtowy',
   DEP_signtx:             'Podpisz Transakcję',
