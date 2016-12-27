@@ -37,7 +37,7 @@ Wallet.prototype.setTokens = function() {
 Wallet.prototype.setBalance = function() {
 	var parentObj = this;
 	this.balance = this.usdBalance = this.eurBalance = this.btcBalance = 'loading';
-	ajaxReq.getBalance(parentObj.getAddressString(), false, function(data) {
+	ajaxReq.getBalance(parentObj.getAddressString(), function(data) {
 		if (data.error) parentObj.balance = data.msg;
 		else {
 			parentObj.balance = etherUnits.toEther(data.data.balance, 'wei');

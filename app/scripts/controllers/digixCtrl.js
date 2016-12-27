@@ -46,7 +46,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 		}
 	}
 	$scope.setBalance = function() {
-		ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data) {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {
@@ -59,7 +59,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 			}
 		});
 		var userInfo = ethFuncs.getDataObj($scope.digixContract, $scope.digixUserInfo, [ethFuncs.getNakedAddress($scope.wallet.getAddressString())]);
-		ajaxReq.getEthCall(userInfo, false, function(data) {
+		ajaxReq.getEthCall(userInfo, function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {

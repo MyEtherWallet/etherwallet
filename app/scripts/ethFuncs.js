@@ -67,7 +67,7 @@ ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
     var gasLimit = 2000000;
 	dataObj.gasPrice = '0x01';
     dataObj.gas = '0x' + new BigNumber(gasLimit).toString(16);
-	ajaxReq.getTraceCall(dataObj, isClassic, function(data) {
+	ajaxReq.getTraceCall(dataObj, function(data) {
 		if (data.error) {
 			callback(data);
 			return;

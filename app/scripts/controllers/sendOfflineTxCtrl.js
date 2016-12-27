@@ -55,7 +55,7 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 	$scope.setTokens();
 	$scope.getWalletInfo = function() {
 		if (ethFuncs.validateEtherAddress($scope.tx.from)) {
-			ajaxReq.getTransactionData($scope.tx.from, false, function(data) {
+			ajaxReq.getTransactionData($scope.tx.from, function(data) {
 				if (data.error) throw data.msg;
 				data = data.data;
 				$scope.gasPriceDec = ethFuncs.hexToDecimal(ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)));
@@ -146,7 +146,7 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.sendTx = function() {
 		new Modal(document.getElementById('sendTransactionOffline')).close();
-		ajaxReq.sendRawTx($scope.signedTx, false, function(data) {
+		ajaxReq.sendRawTx($scope.signedTx, function(data) {
 			if (data.error) {
 				$scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
 			} else {

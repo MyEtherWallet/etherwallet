@@ -15,7 +15,7 @@ var cxDecryptWalletCtrl = function($scope, $sce, walletService) {
 		}
 	};
 	$scope.setBalance = function(address,id) {
-		ajaxReq.getBalance(address, false, function(data) {
+		ajaxReq.getBalance(address, function(data) {
 			if (data.error) {
 				$scope.allWallets[id].balance = data.msg;
 			} else {

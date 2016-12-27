@@ -50,7 +50,7 @@ var myWalletsCtrl = function($scope, $sce) {
 		}
 	};
 	$scope.setBalance = function(address, id, varWal) {
-		ajaxReq.getBalance(address, false, function(data) {
+		ajaxReq.getBalance(address, function(data) {
 			if (data.error) {
 				$scope[varWal][id].balance = data.msg;
 			} else {
@@ -130,7 +130,7 @@ var myWalletsCtrl = function($scope, $sce) {
 			}));
 			$scope.encFileName = $scope.wallet.getV3Filename();
 		}
-		ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data) {
+		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
 			if (data.error) {
 				$scope.etherBalance = data.msg;
 			} else {

@@ -24,7 +24,7 @@ var viewWalletCtrl = function($scope, walletService) {
       }));
             $scope.encFileName =  $scope.wallet.getV3Filename();
     }
-        ajaxReq.getBalance($scope.wallet.getAddressString(), false, function(data){
+        ajaxReq.getBalance($scope.wallet.getAddressString(), function(data){
             if(data.error){
                 $scope.etherBalance = data.msg;
             } else {
