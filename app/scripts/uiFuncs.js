@@ -59,6 +59,7 @@ uiFuncs.generateTx = function(txData, isClassic, callback) {
 				value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
 				data: ethFuncs.sanitizeHex(txData.data)
 			}
+			if(!isClassic) rawTx.chainId = 1;
 			var eTx = new ethUtil.Tx(rawTx);
 			if ((typeof txData.hwType != "undefined") && (txData.hwType == "ledger")) {
 				var app = new ledgerEth(txData.hwTransport);
@@ -88,7 +89,7 @@ uiFuncs.generateTx = function(txData, isClassic, callback) {
 				app.getAppConfiguration(localCallback);
 			}
 			else {
-                ethFuncs.ecSignEIP155(eTx,new Buffer(txData.privKey, 'hex'),isClassic);
+                eTx.sign(new Buffer(txData.privKey, 'hex'));
 				rawTx.rawTx = JSON.stringify(rawTx);
 				rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
 				rawTx.isError = false;

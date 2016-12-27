@@ -63,21 +63,6 @@ ethFuncs.getDataObj = function(to, func, arrVals) {
 		data: func + val
 	};
 }
-ethFuncs.ecSignEIP155 = function(tx, privateKey, old){
-  var msgHash = this.hashEIP155(tx, old);
-  var sig = ethUtil.secp256k1.sign(msgHash, privateKey);
-  var ret = {};
-  ret.r = sig.signature.slice(0, 32);
-  ret.s = sig.signature.slice(32, 64);
-  ret.v = old ? sig.recovery + 27 : sig.recovery + 37; // ethChainid*2+1
-  tx.raw[6] = Buffer.from([ret.v]); tx.raw[7] = ret.r; tx.raw[8] = ret.s;
-}
-ethFuncs.hashEIP155 = function(tx, old){
-    tx.raw[6] = Buffer.from([1]); //ETH chain id
-    tx.raw[7] = tx.raw[8] = 0;
-    var toHash = old ? tx.raw.slice(0,6) : tx.raw;
-    return ethUtil.rlphash(toHash);
-}
 ethFuncs.estimateGas = function(dataObj, isClassic, callback) {
     var gasLimit = 2000000;
 	dataObj.gasPrice = '0x01';

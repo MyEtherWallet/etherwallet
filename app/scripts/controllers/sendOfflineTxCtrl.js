@@ -116,7 +116,8 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 				gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex($scope.tx.gasLimit)),
 				to: ethFuncs.sanitizeHex($scope.tx.to),
 				value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit))),
-				data: ethFuncs.sanitizeHex($scope.tx.data)
+				data: ethFuncs.sanitizeHex($scope.tx.data),
+				chainId: 1
 			}
       if($scope.tokenTx.id!='ether'){
           rawTx.data = $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tx.to, $scope.tx.value).data;
@@ -125,7 +126,7 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
       }
       $scope.valueReadable = $scope.tx.value;
 			var eTx = new ethUtil.Tx(rawTx);
-            ethFuncs.ecSignEIP155(eTx, $scope.wallet.getPrivateKey(), false);
+            eTx.sign($scope.wallet.getPrivateKey());
 			$scope.rawTx = JSON.stringify(rawTx);
 			$scope.signedTx = '0x' + eTx.serialize().toString('hex');
 			$scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
