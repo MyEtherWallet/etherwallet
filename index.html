@@ -43,18 +43,20 @@
 
 
 
-        &middot; v3.3.4
+        &middot; v3.3.6
 
         &nbsp;&nbsp;
 
-        <!--<span class="dropdown">
-          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode}} <span class="caret"></span></a>
+        <span class="dropdown">
+          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small> <span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
-            <li><a ng-class="{true:'active'}[curNode=='mainnet']" ng-click="changeNode('mainnet', 'Mainnet')">Mainnet</a></li>
-            <li><a ng-class="{true:'active'}[curNode=='testnet']" ng-click="changeNode('testnet', 'Testnet (Ropsten)')">Testnet (Ropsten)</a></li>
-            <li><a ng-class="{true:'active'}[curNode=='local']" ng-click="changeNode('local', 'Local')">Local</a></li>
+            <li><a ng-class="{true:'active'}[curNode=='eth_mew']"     ng-click="changeNode( 'eth_mew' )">    {{node.eth_mew.name}}     <small> ({{node.eth_mew.service}})     </small></a></li>
+            <li><a ng-class="{true:'active'}[curNode=='eth_mew']"     ng-click="changeNode( 'etc_mew' )">    {{node.etc_mew.name}}     <small> ({{node.etc_mew.service}})     </small></a></li>
+            <li><a ng-class="{true:'active'}[curNode=='tst_mew']"     ng-click="changeNode( 'tst_mew' )">    {{node.tst_mew.name}}     <small> ({{node.tst_mew.service}})     </small></a></li>
+            <li><a ng-class="{true:'active'}[curNode=='eth_ethscan']" ng-click="changeNode( 'eth_ethscan' )">{{node.eth_ethscan.name}} <small> ({{node.eth_ethscan.service}}) </small></a></li>
+            <li><a ng-class="{true:'active'}[curNode=='custom']"      ng-click="changeNode( 'custom' )">     {{node.custom.name}}      <small> ({{node.custom.service}})      </small></a></li>
           </ul>
-        </span>-->
+        </span>
 
         &nbsp;&nbsp;
 
@@ -105,6 +107,54 @@
     </div>
     <a ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(100);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>
   </section>
+
+
+  <!-- Info Modal -->
+  <div class="modal fade" id="customNodeModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"> Set Up Your Custom Node </h4>
+        </div>
+        <div class="modal-body row">
+          <div class="form-group col-xs-12">
+            <label>Node Name</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.name">
+          </div>
+          <div class="form-group col-xs-9">
+            <label>URL</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.url">
+          </div>
+          <div class="form-group col-xs-3">
+            <label>Port</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.port">
+          </div>
+          <div class="form-group col-xs-12">
+            <label>Options</label>
+            <span class="radio">
+              <label><input name="options" type="radio" ng-model="customNode.options" value="eth"> ETH</label>
+              <label><input name="options" type="radio" ng-model="customNode.options" value="etc"> ETC</label>
+              <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten</label>
+              <label><input name="options" type="radio" ng-model="customNode.eip155" value="true"> Custom: Supports EIP-155</label>
+              <label><input name="options" type="radio" ng-model="customNode.eip155" value="false"> Custom: Does not support EIP-155</label>
+            </span>
+          </div>
+          <div class="col-sm-4 col-xs-12" ng-show="">
+            <label>Chain ID</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.chainId">
+          </div>
+        </div>
+
+        <div class="modal-footer text-center">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" ng-click="saveCustomNode()">Save & Use Custom Node</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- / Info Modal -->
 
 </header>
 
@@ -680,7 +730,7 @@
             </li>
             <li role="separator" class="divider"></li>
             <li ng-repeat="token in tokenObjs track by $index">
-              <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == $index]" ng-click="setSendMode($index)" > {{token.getSymbol()}} </a>
+              <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == $index]" ng-click="setSendMode($index, token.getSymbol())" > {{token.getSymbol()}} </a>
             </li>
           </ul>
         </div>
@@ -789,6 +839,8 @@
 <article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl'>
 
   <h2>
+    <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
+    or
     <a translate="NAV_DeployContract"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a> </h2>
   </h2>
 
@@ -796,7 +848,7 @@
   <!-- <section ng-switch on="visibility">-->
 
     <!-- Read / Write Contracts -->
-    <section class="row" ng-show="visibility!='deployView'"> <!-- ng-switch-when="interactView" -->
+    <section class="row"> <!-- ng-switch-when="interactView" -->
 
       <!-- Input address + JSON Interface -->
       <div class="col-xs-12">
@@ -995,7 +1047,7 @@
 
 
     <!-- Deploy Contract -->
-    <section class="row" ng-show="visibility=='deployView'">
+    <section class="row"> <!-- ng-switch-when="deployView" -->
     <div class="col-xs-12">
 
       <!-- Data -->

@@ -669,8 +669,9 @@ module.exports = bulkGenCtrl;
 'use strict';
 
 var contractsCtrl = function ($scope, $sce, walletService) {
-  $scope.visibility = "deployView";
+  $scope.visibility = "interactView";
   $scope.sendContractModal = new Modal(document.getElementById('sendContract'));
+  $scope.sendContractModal.open();
   $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
   $scope.tx = {
     gasLimit: '',
@@ -1144,12 +1145,12 @@ var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
 			$scope.dropdownEnabled = true;
 		}
 	}, true);
-	$scope.setSendMode = function (index) {
+	$scope.setSendMode = function (index, tokenSymbol = '') {
 		$scope.tokenTx.id = index;
 		if (index == 'ether') {
 			$scope.unitReadable = 'ETH';
 		} else {
-			$scope.unitReadable = $scope.tokens[index].symbol;
+			$scope.unitReadable = tokenSymbol;
 		}
 		$scope.dropdownAmount = false;
 	};
@@ -1469,145 +1470,278 @@ module.exports = signMsgCtrl;
 'use strict';
 
 var tabsCtrl = function ($scope, globalService, $translate) {
-	$scope.tabNames = globalService.tabs;
-	$scope.curLang = "English";
-	$scope.curNode = "Mainnet"; //todo = fetch from localstorage
-	var hval = window.location.hash;
+  $scope.tabNames = globalService.tabs;
+  $scope.curLang = 'English';
+  $scope.customNodeModal = new Modal(document.getElementById('customNodeModal'));
+  $scope.customNodeModal.open();
+  $scope.tokenFiles = {
+    'eth': 'tokens-eth.js',
+    'etc': 'tokens-etc.js',
+    'rop': 'tokens-rop.js'
+  };
+  $scope.node = [{
+    'eth_mew': {
+      'name': 'ETH',
+      'eip155': true,
+      'chainId': '1',
+      'tokenList': $scope.tokenFiles.eth,
+      'estimateGas': true,
+      'service': 'MyEtherWallet',
+      'url': '',
+      'port': ''
+    },
+    'etc_mew': {
+      'name': 'ETC',
+      'eip155': false,
+      'chainId': false,
+      'tokenList': $scope.tokenFiles.etc,
+      'estimateGas': true,
+      'service': 'MyEtherWallet',
+      'url': '',
+      'port': ''
+    },
+    'tst_mew': {
+      'name': 'Ropsten',
+      'eip155': true,
+      'chainId': '3',
+      'tokenList': $scope.tokenFiles.rop,
+      'estimateGas': true,
+      'service': 'MyEtherWallet',
+      'url': '',
+      'port': ''
+    },
+    'eth_ethscan': {
+      'name': 'ETH',
+      'eip155': true,
+      'chainId': '1',
+      'tokenList': $scope.tokenFiles.eth,
+      'estimateGas': false,
+      'service': 'Etherscan.io',
+      'url': '',
+      'port': ''
+    }
+  }];
+  $scope.curNodeKey = 'eth_mew';
+  $scope.curNode = $scope.node.eth_mew;
 
-	$scope.setArrowVisibility = function () {
-		setTimeout(function () {
-			$scope.showLeftArrow = false;
-			$scope.showRightArrow = !(document.querySelectorAll(".nav-inner")[0].clientWidth <= document.querySelectorAll(".nav-scroll")[0].clientWidth);
-			$scope.$apply();
-		}, 200);
-	};
-	$scope.setArrowVisibility();
+  $scope.customNode = [];
 
-	$scope.setTab = function (hval) {
-		if (hval != "") {
-			hval = hval.replace("#", '');
-			for (var key in $scope.tabNames) {
-				if ($scope.tabNames[key].url == hval) {
-					$scope.activeTab = globalService.currentTab = $scope.tabNames[key].id;
-					break;
-				}
-				$scope.activeTab = globalService.currentTab;
-			}
-		} else {
-			$scope.activeTab = globalService.currentTab;
-		}
-	};
-	$scope.setTab(hval);
+  var hval = window.location.hash;
 
-	$scope.tabClick = function (id) {
-		$scope.activeTab = globalService.currentTab = id;
-		for (var key in $scope.tabNames) {
-			if ($scope.tabNames[key].id == id) location.hash = $scope.tabNames[key].url;
-		}
-	};
+  $scope.setArrowVisibility = function () {
+    setTimeout(function () {
+      $scope.showLeftArrow = false;
+      $scope.showRightArrow = !(document.querySelectorAll('.nav-inner')[0].clientWidth <= document.querySelectorAll('.nav-scroll')[0].clientWidth);
+      $scope.$apply();
+    }, 200);
+  };
+  $scope.setArrowVisibility();
 
-	$scope.setLanguageVal = function (id, varName, pos) {
-		$translate(id).then(function (paragraph) {
-			globalFuncs[varName][pos] = paragraph;
-		}, function (translationId) {
-			globalFuncs[varName][pos] = translationId;
-		});
-	};
+  $scope.changeNode = function (key) {
+    $scope.curNode = $scope.node[key];
+    $scope.dropdownNode = false;
+    localStorage.setItem('curNode', JSON.stringify({
+      key: key
+    }));
+  };
 
-	$scope.setErrorMsgLanguage = function () {
-		for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + (i + 1), 'errorMsgs', i);
-		for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i + 1), 'successMsgs', i);
-	};
+  $scope.setCurNodeFromStorage = function () {
+    var node = localStorage.getItem('curNode');
+    if (node == null) {
+      $scope.changeNode($scope.curNodeKey);
+    } else {
+      node = JSON.parse(node);
+      var key = globalFuncs.stripTags(node.key);
+      if ($scope.node.indexOf(key) > -1) {
+        $scope.changeNode(key);
+      } else {
+        $scope.changeNode($scope.curNodeKey);
+      }
+    }
+  };
+  $scope.setCurNodeFromStorage();
 
-	$scope.setGethErrMsgLanguage = function () {
-		globalFuncs.gethErrorMsgs = {};
-		for (var s in globalFuncs.gethErrors) {
-			var key = globalFuncs.gethErrors[s];
-			if (key.indexOf("GETH_") === 0) {
-				$scope.setLanguageVal(key, 'gethErrorMsgs', key);
-			}
-		}
-	};
+  $scope.saveCustomNodesFromStorage = function () {
+    var localNodes = localStorage.getItem('localNodes');
+    if (localNodes != null) {
+      localNodes = JSON.parse(localNodes);
+      alert(localNodes);
+      $scope.node.push(localNodes);
+    }
+  };
+  $scope.saveCustomNodesFromStorage();
 
-	$scope.setParityErrMsgLanguage = function () {
-		globalFuncs.parityErrorMsgs = {};
-		for (var s in globalFuncs.parityErrors) {
-			var key = globalFuncs.parityErrors[s];
-			if (key.indexOf("PARITY_") === 0) {
-				$scope.setLanguageVal(key, 'parityErrorMsgs', key);
-			}
-		}
-	};
+  $scope.saveCustomNode = function () {
+    var customNode = $scope.customNode;
+    if (customNode.options == 'eth') {
+      customNode.eip155 = true;
+      customNode.chainId = '1';
+      customNode.tokenList = $scope.tokenFiles.eth;
+    } else if (customNode.options == 'etc') {
+      customNode.eip155 = false;
+      customNode.chainId = false;
+      customNode.tokenList = $scope.tokenFiles.etc;
+    }
+    var d = new Date();
+    var localNodeIndex = 'custom' + d.getTime();
 
-	$scope.changeLanguage = function (key, value) {
-		$translate.use(key);
-		$scope.setErrorMsgLanguage();
-		if (globalFuncs.getEthNodeName() == "geth") $scope.setGethErrMsgLanguage();else $scope.setParityErrMsgLanguage();
-		$scope.curLang = value;
-		$scope.setArrowVisibility();
-		$scope.dropdown = false;
-		localStorage.setItem("language", JSON.stringify({
-			key: key,
-			value: value
-		}));
-	};
+    var localNodes = localStorage.getItem('localNodes');
+    if (localNodes == null) {
+      localNodes = [];
+    } else {
+      localNodes = JSON.parse(localNodes);
+    }
 
-	$scope.changeNode = function (key, value) {
-		$scope.curNode = value;
-		$scope.setArrowVisibility();
-		$scope.dropdownNode = false;
-		localStorage.setItem("node", JSON.stringify({
-			key: key,
-			value: value
-		}));
-	};
+    var newNode = {
+      localNodeIndex: {
+        'name': customNode.name,
+        'eip155': customNode.eip155,
+        'chainId': customNode.chainId,
+        'tokenList': customNode.tokenList,
+        'estimateGas': customNode.estimateGas,
+        'service': customNode.service,
+        'url': customNode.url,
+        'port': customNode.port,
+        'options': customNode.options
+      }
+    };
+    localNodes.push(newNode);
+    localStorage.setItem("localTokens", JSON.stringify(localNodes));
+    $scope.node.push(localNodes);
 
-	$scope.setLanguageFromStorage = function () {
-		var lang = localStorage.getItem('language');
-		if (lang == null) return;
-		lang = JSON.parse(lang);
-		var key = globalFuncs.stripTags(lang.key);
-		var value = globalFuncs.stripTags(lang.value);
-		$scope.changeLanguage(key, value);
-	};
-	$scope.setLanguageFromStorage();
+    localStorage.setItem('curNode', JSON.stringify({
+      key: localNodeIndex
+    }));
+  };
 
-	$scope.setHash = function (hash) {
-		location.hash = hash;
-		$scope.setTab(hash);
-		$scope.$apply();
-	};
+  $scope.removeNodeFromLocal = function (localNodeIndex) {
+    var localNodes = localStorage.getItem('localNodes');
+    if (localNodes != null) {
+      localNodes = JSON.parse(localNodes);
+    } else {
+      localNodes = [];
+    }
 
-	$scope.scrollHoverIn = function (isLeft, val) {
-		clearInterval($scope.sHoverTimer);
-		$scope.sHoverTimer = setInterval(function () {
-			if (isLeft) $scope.scrollLeft(val);else $scope.scrollRight(val);
-		}, 20);
-	};
+    if (localNodes.indexOf(localNodeIndex) > -1) {
+      localNodes.splice(index, 1);
+    }
+    localStorage.setItem('localNodes', JSON.stringify(localNodes));
+  };
 
-	$scope.scrollHoverOut = function () {
-		clearInterval($scope.sHoverTimer);
-	};
+  $scope.setTab = function (hval) {
+    if (hval != '') {
+      hval = hval.replace('#', '');
+      for (var key in $scope.tabNames) {
+        if ($scope.tabNames[key].url == hval) {
+          $scope.activeTab = globalService.currentTab = $scope.tabNames[key].id;
+          break;
+        }
+        $scope.activeTab = globalService.currentTab;
+      }
+    } else {
+      $scope.activeTab = globalService.currentTab;
+    }
+  };
+  $scope.setTab(hval);
 
-	$scope.setOnScrollArrows = function () {
-		var ele = document.querySelectorAll(".nav-scroll")[0];
-		$scope.showLeftArrow = ele.scrollLeft > 0;
-		$scope.showRightArrow = document.querySelectorAll(".nav-inner")[0].clientWidth > ele.clientWidth + ele.scrollLeft;
-		$scope.$apply();
-	};
+  $scope.tabClick = function (id) {
+    $scope.activeTab = globalService.currentTab = id;
+    for (var key in $scope.tabNames) {
+      if ($scope.tabNames[key].id == id) location.hash = $scope.tabNames[key].url;
+    }
+  };
 
-	$scope.scrollLeft = function (val) {
-		var ele = document.querySelectorAll(".nav-scroll")[0];
-		ele.scrollLeft -= val;
-	};
+  $scope.setLanguageVal = function (id, varName, pos) {
+    $translate(id).then(function (paragraph) {
+      globalFuncs[varName][pos] = paragraph;
+    }, function (translationId) {
+      globalFuncs[varName][pos] = translationId;
+    });
+  };
 
-	$scope.scrollRight = function (val) {
-		var ele = document.querySelectorAll(".nav-scroll")[0];
-		ele.scrollLeft += val;
-	};
+  $scope.setErrorMsgLanguage = function () {
+    for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + (i + 1), 'errorMsgs', i);
+    for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i + 1), 'successMsgs', i);
+  };
 
-	angular.element(document.querySelectorAll(".nav-scroll")[0]).bind('scroll', $scope.setOnScrollArrows);
-	globalFuncs.changeHash = $scope.setHash;
+  $scope.setGethErrMsgLanguage = function () {
+    globalFuncs.gethErrorMsgs = {};
+    for (var s in globalFuncs.gethErrors) {
+      var key = globalFuncs.gethErrors[s];
+      if (key.indexOf('GETH_') === 0) {
+        $scope.setLanguageVal(key, 'gethErrorMsgs', key);
+      }
+    }
+  };
+
+  $scope.setParityErrMsgLanguage = function () {
+    globalFuncs.parityErrorMsgs = {};
+    for (var s in globalFuncs.parityErrors) {
+      var key = globalFuncs.parityErrors[s];
+      if (key.indexOf('PARITY_') === 0) {
+        $scope.setLanguageVal(key, 'parityErrorMsgs', key);
+      }
+    }
+  };
+
+  $scope.changeLanguage = function (key, value) {
+    $translate.use(key);
+    $scope.setErrorMsgLanguage();
+    if (globalFuncs.getEthNodeName() == 'geth') $scope.setGethErrMsgLanguage();else $scope.setParityErrMsgLanguage();
+    $scope.curLang = value;
+    $scope.setArrowVisibility();
+    $scope.dropdown = false;
+    localStorage.setItem('language', JSON.stringify({
+      key: key,
+      value: value
+    }));
+  };
+  $scope.setLanguageFromStorage = function () {
+    var lang = localStorage.getItem('language');
+    if (lang == null) return;
+    lang = JSON.parse(lang);
+    var key = globalFuncs.stripTags(lang.key);
+    var value = globalFuncs.stripTags(lang.value);
+    $scope.changeLanguage(key, value);
+  };
+  $scope.setLanguageFromStorage();
+
+  $scope.setHash = function (hash) {
+    location.hash = hash;
+    $scope.setTab(hash);
+    $scope.$apply();
+  };
+
+  $scope.scrollHoverIn = function (isLeft, val) {
+    clearInterval($scope.sHoverTimer);
+    $scope.sHoverTimer = setInterval(function () {
+      if (isLeft) $scope.scrollLeft(val);else $scope.scrollRight(val);
+    }, 20);
+  };
+
+  $scope.scrollHoverOut = function () {
+    clearInterval($scope.sHoverTimer);
+  };
+
+  $scope.setOnScrollArrows = function () {
+    var ele = document.querySelectorAll('.nav-scroll')[0];
+    $scope.showLeftArrow = ele.scrollLeft > 0;
+    $scope.showRightArrow = document.querySelectorAll('.nav-inner')[0].clientWidth > ele.clientWidth + ele.scrollLeft;
+    $scope.$apply();
+  };
+
+  $scope.scrollLeft = function (val) {
+    var ele = document.querySelectorAll('.nav-scroll')[0];
+    ele.scrollLeft -= val;
+  };
+
+  $scope.scrollRight = function (val) {
+    var ele = document.querySelectorAll('.nav-scroll')[0];
+    ele.scrollLeft += val;
+  };
+
+  angular.element(document.querySelectorAll('.nav-scroll')[0]).bind('scroll', $scope.setOnScrollArrows);
+  globalFuncs.changeHash = $scope.setHash;
 };
 module.exports = tabsCtrl;
 
@@ -1919,38 +2053,38 @@ module.exports = walletBalanceCtrl;
 'use strict';
 
 var walletGenCtrl = function ($scope) {
-	$scope.password = "";
-	$scope.wallet = null;
-	$scope.showWallet = false;
-	$scope.blob = $scope.blobEnc = "";
-	$scope.isDone = true;
-	$scope.showPass = true;
-	$scope.genNewWallet = function () {
-		if (!$scope.isStrongPass()) {
-			alert(globalFuncs.errorMsgs[1]);
-		} else if ($scope.isDone) {
-			$scope.isDone = false;
-			$scope.wallet = Wallet.generate(false);
-			$scope.showWallet = true;
-			$scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
-			$scope.blobEnc = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3($scope.password, {
-				kdf: globalFuncs.kdf,
-				n: globalFuncs.scrypt.n
-			}));
-			$scope.encFileName = $scope.wallet.getV3Filename();
-			if (parent != null) parent.postMessage(JSON.stringify({ address: $scope.wallet.getAddressString(), checksumAddress: $scope.wallet.getChecksumAddressString() }), "*");
-			$scope.isDone = true;
-		}
-	};
-	$scope.printQRCode = function () {
-		globalFuncs.printPaperWallets(JSON.stringify([{
-			address: $scope.wallet.getAddressString(),
-			private: $scope.wallet.getPrivateKeyString()
-		}]));
-	};
-	$scope.isStrongPass = function () {
-		return globalFuncs.isStrongPass($scope.password);
-	};
+  $scope.password = "";
+  $scope.wallet = null;
+  $scope.showWallet = false;
+  $scope.blob = $scope.blobEnc = "";
+  $scope.isDone = true;
+  $scope.showPass = true;
+  $scope.genNewWallet = function () {
+    if (!$scope.isStrongPass()) {
+      alert(globalFuncs.errorMsgs[1]);
+    } else if ($scope.isDone) {
+      $scope.isDone = false;
+      $scope.wallet = Wallet.generate(false);
+      $scope.showWallet = true;
+      $scope.blob = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toJSON());
+      $scope.blobEnc = globalFuncs.getBlob("text/json;charset=UTF-8", $scope.wallet.toV3($scope.password, {
+        kdf: globalFuncs.kdf,
+        n: globalFuncs.scrypt.n
+      }));
+      $scope.encFileName = $scope.wallet.getV3Filename();
+      if (parent != null) parent.postMessage(JSON.stringify({ address: $scope.wallet.getAddressString(), checksumAddress: $scope.wallet.getChecksumAddressString() }), "*");
+      $scope.isDone = true;
+    }
+  };
+  $scope.printQRCode = function () {
+    globalFuncs.printPaperWallets(JSON.stringify([{
+      address: $scope.wallet.getAddressString(),
+      private: $scope.wallet.getPrivateKeyString()
+    }]));
+  };
+  $scope.isStrongPass = function () {
+    return globalFuncs.isStrongPass($scope.password);
+  };
 };
 module.exports = walletGenCtrl;
 
@@ -4300,6 +4434,11 @@ Token.popTokens = [{
 	"address": "0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
 	"symbol": "Unicorn 🦄 ",
 	"decimal": 0,
+	"type": "default"
+}, {
+	"address": "0x5c543e7AE0A1104f78406C340E9C64FD9fCE5170",
+	"symbol": "VSL",
+	"decimal": 18,
 	"type": "default"
 }, {
 	"address": "0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
@@ -10917,40 +11056,40 @@ no.code = 'no';
 no.data = {
 
   /* Sign Message */
-  NAV_SignMsg: 'Sign Message',
-  MSG_message: 'Message',
-  MSG_date: 'Date',
-  MSG_signature: 'Signature',
-  MSG_verify: 'Verify Message',
-  MSG_info1: 'Include the current date so the signature cannot be reused on a different date.',
-  MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it.',
-  MSG_info3: 'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
+  NAV_SignMsg: 'Signér Melding',
+  MSG_message: 'Melding',
+  MSG_date: 'Dato',
+  MSG_signature: 'Signatur',
+  MSG_verify: 'Verifiser Melding',
+  MSG_info1: 'Inkluder dagens dato slik at signaturen ikke kan brukes på nytt på en annen dato.',
+  MSG_info2: 'Inkluder brukernavnet ditt og hvor du benytter dette navnet slik at ingen andre kan benytte det.',
+  MSG_info3: 'Inkluder en spesifikk grunn for meldingen så den ikke kan brukes på nytt for et annet formål.',
 
-  ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
+  ERROR_22: 'Kunne ikke estimere gas. Det er enten ikke nok midler på kontoen, eller så gir den mottakende kontraktadressen en feilmelding. Prøv å justere gas-mengden manuelt, og fortsett. Feilmeldingen du får når du sender kan være mer informativ.',
 
   /* Mnemonic Additions */
-  MNEM_1: 'Please select the address you would like to interact with.',
-  MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
-  MNEM_more: 'More Addresses',
-  MNEM_prev: 'Previous Addresses',
-  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards)',
-  ADD_Radio_5: 'Paste/Type Your Mnemonic',
-  SEND_custom: 'Add Custom Token',
-  ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
-  TOKEN_show: 'Show All Tokens',
-  TOKEN_hide: 'Hide Tokens',
-  WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
+  MNEM_1: 'Vennligst velg adressen du vil jobbe med.',
+  MNEM_2: 'Din "HD-mnemoniske frase" kan gi deg tilgang til flere lommebøker / adresser. Vennligst velg den adressen du vil jobbe med denne gangen.',
+  MNEM_more: 'Flere Adresser',
+  MNEM_prev: 'Forrige Adresse',
+  x_Mnemonic: 'Mnemonisk Frase (MetaMask / Jaxx / ether.cards)',
+  ADD_Radio_5: 'Lim inn/tast din mnemoniske frase',
+  SEND_custom: 'Legg til Token',
+  ERROR_21: ' er ikke en gyldig ERC-20-token. Hvis andre tokens holder på å lastes, vennligst fjern denne token og prøv igjen.',
+  TOKEN_show: 'Vis Alle Tokens',
+  TOKEN_hide: 'Skjul Tokens',
+  WARN_Send_Link: 'Du ankom via en lenke hvor adresse, verdi, gas, datafelt og/eller transaksjonstype (sendingsmodus) var ferdigutfylt. Du kan endre denne informasjonen før du sender. Lås opp lommeboken din for å komme i gang.',
+  WARN_Send_Link_2: '**Advarsel:** Du kan bare inkludere data hvis du sender via "ETH (Standardtransaksjon)". Vennligst ta bort "sendMode" og/eller "tokenSymbol" fra URL-en for å sende en transaksjon med data.',
 
   /* Hardware wallets */
   x_Ledger: 'Ledger Nano S',
-  ADD_Ledger_1: 'Connect your Ledger Nano S',
-  ADD_Ledger_2: 'Open the Ethereum application (or a contract application)',
-  ADD_Ledger_3: 'Verify that Browser Support is enabled in Settings',
-  ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
-  ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
-  ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
-  ADD_Ledger_scan: 'Connect to Ledger Nano S',
+  ADD_Ledger_1: 'Koble til din Ledger Nano S',
+  ADD_Ledger_2: 'Åpne Ethereum-applikasjonen (eller kontraktsapplisjonen)',
+  ADD_Ledger_3: 'Sjekk at nettleserstøtte er aktivert i innstillingene.',
+  ADD_Ledger_4: 'Hvis du ikke finner noen nettleserstøtte i innstillingene, sjekk at du har [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
+  ADD_Ledger_0a: 'Åpne MyEtherWallet på nytt på en sikker (SSL) forbindelse.',
+  ADD_Ledger_0b: 'Åpne MyEtherWallet på nytt med [Chrome](https://www.google.com/chrome/browser/desktop/) eller [Opera](https://www.opera.com/)',
+  ADD_Ledger_scan: 'Koble til Ledger Nano S',
 
   /* Navigation*/
   NAV_YourWallets: 'Dine lommebøker',
@@ -11509,14 +11648,14 @@ pl.code = 'pl';
 pl.data = {
 
   /* Sign Message */
-  NAV_SignMsg: 'Sign Message',
-  MSG_message: 'Message',
-  MSG_date: 'Date',
-  MSG_signature: 'Signature',
-  MSG_verify: 'Verify Message',
-  MSG_info1: 'Include the current date so the signature cannot be reused on a different date.',
-  MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it.',
-  MSG_info3: 'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
+  NAV_SignMsg: 'Podpisz Wiadomość',
+  MSG_message: 'Wiadomość',
+  MSG_date: 'Data',
+  MSG_signature: 'Podpis',
+  MSG_verify: 'Zweryfikuj Wiadomość',
+  MSG_info1: 'Załącz aktualną datę, aby podpis nie mógł być ponownie wykorzystany w innym czasie.',
+  MSG_info2: 'Załącz swój nick i napisz gdzie go wykorzystujesz, aby ktoś inny nie mógł powielić tej wiadomości.',
+  MSG_info3: 'Opisz powód zamieszczenia wiadomości, aby nikt inny nie mógł jej wykorzystać w innym celu.',
 
   /* Navigation*/
   NAV_YourWallets: 'Twoje Portfele',
@@ -11717,9 +11856,9 @@ pl.data = {
 
   /* Deploy Contracts */
   NAV_DeployContract: 'Wyślij Kontrakt',
-  NAV_InteractContract: 'Interact with Contract',
+  NAV_InteractContract: 'Pracuj z Kontraktem',
   NAV_Contracts: 'Kontrakt',
-  NAV_Multisig: 'Multisig',
+  NAV_Multisig: 'Multi-podpis',
   DEP_generate: 'Wygeneruj Kod Bajtowy',
   DEP_generated: 'Wygenerowany Kod Bajtowy',
   DEP_signtx: 'Podpisz Transakcję',
