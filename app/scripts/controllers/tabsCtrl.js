@@ -5,9 +5,9 @@ var tabsCtrl = function($scope, globalService, $translate) {
     $scope.customNodeModal = new Modal(document.getElementById('customNodeModal'));
     $scope.nodeList = nodes.nodeList;
     $scope.defaultNodeKey = 'eth_mew';
-    // $scope.customNodeModal.open();
-
-    // $scope.customNode = [];
+    $scope.customNodeModal.open();
+    $scope.customNode = { options: 'eth', name: '', url: '', port: '' };
+    $scope.customNodeCount = 0;
     var hval = window.location.hash;
     $scope.setArrowVisibility = function() {
         setTimeout(function() {
@@ -42,79 +42,48 @@ var tabsCtrl = function($scope, globalService, $translate) {
             $scope.changeNode(key);
         }
     }
+    $scope.addCustomNodeToList = function(nodeInfo) {
+        var tempObj = null;
+        if (nodeInfo.options == 'eth') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.eth_ethscan));
+        else if (nodeInfo.options == 'etc') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.etc_mew));
+        else if (nodeInfo.options == 'rop') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.rop_mew));;
+        if (tempObj) {
+            tempObj.name = nodeInfo.name + ':' + nodeInfo.options;
+            tempObj.service = 'Custom';
+            tempObj.lib = new nodes.customNode(nodeInfo.url, nodeInfo.port);
+            $scope.nodeList['cus_' + nodeInfo.options + '_' + $scope.customNodeCount] = tempObj;
+            $scope.customNodeCount++;
+        }
+    }
+    $scope.getCustomNodesFromStorage = function() {
+        var localNodes = localStorage.getItem('localNodes');
+        if (localNodes) {
+            localNodes = JSON.parse(localNodes);
+            for (var i = 0; i < localNodes.length; i++) $scope.addCustomNodeToList(localNodes[i]);
+        }
+    }
+    $scope.getCustomNodesFromStorage();
     $scope.setCurNodeFromStorage();
+    $scope.saveCustomNode = function() {
+        var customNode = $scope.customNode;
+        var localNodes = localStorage.getItem('localNodes');
+        localNodes = !localNodes ? [] : JSON.parse(localNodes);
+        localNodes.push(customNode);
+        $scope.addCustomNodeToList(customNode);
+        $scope.changeNode('cus_' + customNode.options + '_' + ($scope.customNodeCount-1));
+        localStorage.setItem("localNodes", JSON.stringify(localNodes));
+        $scope.customNodeModal.close();
+        $scope.customNode = { options: 'eth', name: '', url: '', port: '' };
+    }
 
-
-    /* $scope.saveCustomNodesFromStorage = function() {
-       var localNodes = localStorage.getItem('localNodes');
-       if (localNodes != null) {
-         localNodes = JSON.parse(localNodes)
-         alert(localNodes);
-         $scope.node.push( localNodes );
-       }
-     }
-     $scope.saveCustomNodesFromStorage();
-
-
-     $scope.saveCustomNode = function() {
-       var customNode = $scope.customNode;
-       if(customNode.options == 'eth') {
-         customNode.eip155 = true;
-         customNode.chainId = '1';
-         customNode.tokenList = $scope.tokenFiles.eth;
-       } else if(customNode.options == 'etc') {
-         customNode.eip155 = false;
-         customNode.chainId = false;
-         customNode.tokenList = $scope.tokenFiles.etc;
-       }
-       var d = new Date();
-       var localNodeIndex = 'custom' + d.getTime();
-
-       var localNodes = localStorage.getItem('localNodes');
-       if (localNodes == null) {
-         localNodes = [];
-       } else {
-         localNodes = JSON.parse(localNodes)
-       }
-
-       var newNode = {
-         localNodeIndex : {
-           'name'        : customNode.name,
-           'eip155'      : customNode.eip155,
-           'chainId'     : customNode.chainId,
-           'tokenList'   : customNode.tokenList,
-           'estimateGas' : customNode.estimateGas,
-           'service'     : customNode.service,
-           'url'         : customNode.url,
-           'port'        : customNode.port,
-           'options'     : customNode.options
-         }
-       };
-       localNodes.push( newNode );
-       localStorage.setItem("localTokens", JSON.stringify(localNodes));
-       $scope.node.push( localNodes );
-
-       localStorage.setItem('curNode', JSON.stringify({
-         key: localNodeIndex
-       }));
-
-     } 
-
-     $scope.removeNodeFromLocal = function(localNodeIndex) {
-       var localNodes = localStorage.getItem('localNodes');
-       if (localNodes != null) {
-         localNodes = JSON.parse(localNodes)
-       } else {
-         localNodes = [];
-       }
-
-       if (localNodes.indexOf(localNodeIndex) > -1) {
-         localNodes.splice(index, 1);
-       }
-       localStorage.setItem('localNodes', JSON.stringify( localNodes ));
-     } */
-
-
+    $scope.removeNodeFromLocal = function(localNodeName) {
+        var localNodes = localStorage.getItem('localNodes');
+        localNodes = !localNodes ? [] : JSON.parse(localNodes);
+        for (var i = 0; i < localNodes.length; i++) {
+            if (localNodes[i].name = localNodeName) localNodes.splice(i, 1);
+        }
+        localStorage.setItem('localNodes', JSON.stringify(localNodes));
+    }
 
     $scope.setTab = function(hval) {
         if (hval != '') {

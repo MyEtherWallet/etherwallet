@@ -116,15 +116,15 @@
         <div class="modal-body row">
           <div class="form-group col-xs-12">
             <label>Node Name</label>
-            <input class="form-control" type="text" placeholder="" ng-model="customNode.name">
+            <input class="form-control" type="text" placeholder="My ETH Node" ng-model="customNode.name">
           </div>
           <div class="form-group col-xs-9">
             <label>URL</label>
-            <input class="form-control" type="text" placeholder="" ng-model="customNode.url">
+            <input class="form-control" type="text" placeholder="http://127.0.0.1" ng-model="customNode.url">
           </div>
           <div class="form-group col-xs-3">
             <label>Port</label>
-            <input class="form-control" type="text" placeholder="" ng-model="customNode.port">
+            <input class="form-control" type="text" placeholder="8545" ng-model="customNode.port">
           </div>
           <div class="form-group col-xs-12">
             <label>Options</label>
@@ -132,8 +132,6 @@
               <label><input name="options" type="radio" ng-model="customNode.options" value="eth"> ETH</label>
               <label><input name="options" type="radio" ng-model="customNode.options" value="etc"> ETC</label>
               <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten</label>
-              <label><input name="options" type="radio" ng-model="customNode.eip155" value="true"> Custom: Supports EIP-155</label>
-              <label><input name="options" type="radio" ng-model="customNode.eip155" value="false"> Custom: Does not support EIP-155</label>
             </span>
           </div>
           <div class="col-sm-4 col-xs-12" ng-show="">

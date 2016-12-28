@@ -14,7 +14,7 @@ etherscan.getCurrentBlock = function(callback) {
         action: 'eth_blockNumber'
     }, function(data) {
         if (data.error) callback({ error: true, msg: data.error.message, data: '' });
-        else callback({ error: false, msg: '', data: new BigNumber(data.result).toNumber().toString() });
+        else callback({ error: false, msg: '', data: new BigNumber(data.result).toString() });
     });
 }
 etherscan.getBalance = function(addr, callback) {
@@ -31,29 +31,36 @@ etherscan.getBalance = function(addr, callback) {
 etherscan.getTransactionData = function(addr, callback) {
     var response = { error: false, msg: '', data: { address: addr, balance: '', gasprice: '', nonce: '' } };
     var parentObj = this;
-    try {
-        parentObj.getBalance(addr, function(data) {
-            if (data.error) throw data.msg;
-            response.data.balance = data.data.balance;
+    parentObj.getBalance(addr, function(data) {
+        if (data.error) {
+            callback({ error: true, msg: data.msg, data: '' });
+            return;
+        }
+        response.data.balance = data.data.balance;
+        parentObj.post({
+            module: 'proxy',
+            action: 'eth_gasPrice'
+        }, function(data) {
+            if (data.error) {
+                callback({ error: true, msg: data.error.message, data: '' });
+                return;
+            }
+            response.data.gasprice = data.result;
             parentObj.post({
                 module: 'proxy',
-                action: 'eth_gasPrice'
+                address: addr,
+                action: 'eth_getTransactionCount',
+                tag: 'latest'
             }, function(data) {
-                response.data.gasprice = data.result;
-                parentObj.post({
-                    module: 'proxy',
-                    address: addr,
-                    action: 'eth_getTransactionCount',
-                    tag: 'latest'
-                }, function(data) {
-                    response.data.nonce = data.result;
-                    callback(response);
-                });
+                if (data.error) {
+                    callback({ error: true, msg: data.error.message, data: '' });
+                    return;
+                }
+                response.data.nonce = data.result;
+                callback(response);
             });
         });
-    } catch (e) {
-        callback({ error: true, msg: e, data: '' });
-    }
+    });
 }
 etherscan.sendRawTx = function(rawTx, callback) {
     this.post({

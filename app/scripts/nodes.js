@@ -1,5 +1,6 @@
 'use strict';
 var nodes = function() {}
+nodes.customNode = require('./nodeHelpers/customNode');
 nodes.nodeList = {
     'eth_mew': {
         'name': 'ETH',
