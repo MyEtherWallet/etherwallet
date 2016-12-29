@@ -3113,7 +3113,7 @@ module.exports = Wallet;
 'use strict';
 
 var customNode = function (srvrUrl, port) {
-    this.SERVERURL = srvrUrl + ':' + port;
+    this.SERVERURL = port ? srvrUrl + ':' + port : srvrUrl;
 };
 customNode.prototype.config = {
     headers: {
