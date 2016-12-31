@@ -45,7 +45,7 @@ uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
     }
     app.signTransaction(txData.path, txToSign.toString('hex'), localCallback);
 }
-uiFuncs.generateTx = function(txData, isClassic, callback) {
+uiFuncs.generateTx = function(txData, callback) {
     try {
         uiFuncs.isTxDataValid(txData);
         ajaxReq.getTransactionData(txData.from, function(data) {
@@ -59,7 +59,7 @@ uiFuncs.generateTx = function(txData, isClassic, callback) {
                 value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
                 data: ethFuncs.sanitizeHex(txData.data)
             }
-            if (!isClassic) rawTx.chainId = 1;
+            if (ajaxReq.eip155) rawTx.chainId = ajaxReq.chainId;
             var eTx = new ethUtil.Tx(rawTx);
             if ((typeof txData.hwType != "undefined") && (txData.hwType == "ledger")) {
                 var app = new ledgerEth(txData.hwTransport);
@@ -100,7 +100,7 @@ uiFuncs.generateTx = function(txData, isClassic, callback) {
         });
     }
 }
-uiFuncs.sendTx = function(signedTx, isClassic, callback) {
+uiFuncs.sendTx = function(signedTx, callback) {
     ajaxReq.sendRawTx(signedTx, function(data) {
         var resp = {};
         if (data.error) {
@@ -117,7 +117,7 @@ uiFuncs.sendTx = function(signedTx, isClassic, callback) {
         if (callback !== undefined) callback(resp);
     });
 }
-uiFuncs.transferAllBalance = function(fromAdd, gasLimit, isClassic, callback) {
+uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
     try {
         ajaxReq.getTransactionData(fromAdd, function(data) {
             if (data.error) throw data.msg;

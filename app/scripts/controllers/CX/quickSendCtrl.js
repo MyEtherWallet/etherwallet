@@ -46,7 +46,7 @@ var quickSendCtrl = function($scope, $sce) {
 		$scope.wallet.getAddressString = function() {
 			return $scope.allWallets[$scope.selectedWallet].addr;
 		}
-        uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, false, function(resp) {
+        uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, function(resp) {
 			if (!resp.isError) {
 				$scope.tx.unit = resp.unit;
 				$scope.tx.value = resp.value;
@@ -68,9 +68,9 @@ var quickSendCtrl = function($scope, $sce) {
 		try {
 			$scope.decryptWallet();
 			var txData = uiFuncs.getTxData($scope);
-			uiFuncs.generateTx(txData, false, function(rawTx) {
+			uiFuncs.generateTx(txData, function(rawTx) {
 				if (!rawTx.isError) {
-					uiFuncs.sendTx(rawTx.signedTx, false, function(resp) {
+					uiFuncs.sendTx(rawTx.signedTx, function(resp) {
 						if (!resp.isError) {
 							$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a>"));
 							$scope.setBalance();

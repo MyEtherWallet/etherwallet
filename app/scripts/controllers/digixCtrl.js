@@ -85,7 +85,7 @@ var digixCtrl = function($scope, $sce, walletService) {
 		return digixObj;
 	}
 	$scope.generateTx = function(){
-	   uiFuncs.generateTx(uiFuncs.getTxData($scope), false, function(rawTx) {
+	   uiFuncs.generateTx(uiFuncs.getTxData($scope), function(rawTx) {
 			if (!rawTx.isError) {
 				$scope.rawTx =rawTx.rawTx;
 				$scope.signedTx = rawTx.signedTx;
@@ -99,7 +99,7 @@ var digixCtrl = function($scope, $sce, walletService) {
     }
 	$scope.sendTx = function() {
 		$scope.sendTxModal.close();
-		uiFuncs.sendTx($scope.signedTx, false, function(resp){
+		uiFuncs.sendTx($scope.signedTx, function(resp){
 		  if(!resp.isError) {
             $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'>" + resp.data + "</a>"));
 		      $scope.setBalance();

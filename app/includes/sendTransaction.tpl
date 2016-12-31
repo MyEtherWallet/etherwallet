@@ -74,7 +74,6 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
               <li><a ng-class="{true:'active'}[tx.sendMode==0]" ng-click="setSendMode(0)"><span translate="TRANS_eth">ETH</span></a></li>
-              <li><a ng-class="{true:'active'}[tx.sendMode==2]" ng-click="setSendMode(2)"><span translate="TRANS_etc">Only ETC </span></a></li>
               <li role="separator" class="divider"></li>
 
               <li ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
@@ -129,11 +128,6 @@
 
         <div class="form-group" ng-bind-html="sendTxStatus"></div>
 
-        <div class="alert alert-danger" ng-show="tx.sendMode==2">
-          <p> <strong>You will not be able to "Send Only ETC" or view your ETC balance via MyEtherWallet.com after January 1, 2017.</strong> We will be switching fully to <a href="https://github.com/ethereum/EIPs/issues/155" target="_blank">EIP-155</a> for signing transactions and these are not valid on the ETC chain. Our existing ETC node will be converted to a Ropsten node in order to better support contract developement, testing, and interaction. (#MEWFOUR)</p>
-          <p><a class="form-group" data-toggle="modal" data-target="#txInfoModal" ng-click="txInfoModal.open()" translate="TRANS_warning">If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.</a></p>
-        </div>
-
         <div class="alert alert-info" ng-show="tx.sendMode==4">
           <p translate="DAO_Warning">If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
         </div>
@@ -185,40 +179,6 @@
         </div>
       </div>
       <!--/ Send Modal-->
-
-
-
-      <!-- Info Modal -->
-      <div class="modal fade" id="txInfoModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title text-danger" id="myModalLabel" translate="TRANSModal_Title"> "Only ETH" and "Only ETC" Transactions </h4>
-            </div>
-
-            <div class="modal-body">
-              <p translate="TRANSModal_Content_0">A note about the different transactions and different services:</p>
-              <ul>
-                <li translate="TRANSModal_Content_1">**ETH (Standard Transaction): ** This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.</li>
-                <li translate="TRANSModal_Content_2">**Only ETH: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETH** chain.</li>
-                <li translate="TRANSModal_Content_3">**Only ETC: ** This sends via [Timon Rapp\'s replay protection contract (as recommended by VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) so that you only send on the **ETC** chain. </li>
-                <li translate="TRANSModal_Content_4">**Coinbase & ShapeShift: ** Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. [You can try Shapeshift\'s "split" tool as well.](https://split.shapeshift.io/)</li>
-                <li translate="TRANSModal_Content_5">**Kraken & Poloniex:** No known issues. Use whatever.</li>
-              </ul>
-            </div>
-
-            <div class="modal-footer text-center">
-              <a href="mailto:myetherwallet@gmail.com" type="button" class="btn btn-default" translate="TRANSModal_No">Oh gosh, I'm more confused. Help me.</a>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" translate="TRANSModal_Yes">Sweet, I get it now.</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      <!-- / Info Modal -->
-
     </div>
   </section>
 </article>

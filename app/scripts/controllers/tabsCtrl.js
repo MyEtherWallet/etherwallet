@@ -1,11 +1,11 @@
 'use strict';
-var tabsCtrl = function($scope, globalService, $translate) {
+var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.tabNames = globalService.tabs;
     $scope.curLang = 'English';
     $scope.customNodeModal = new Modal(document.getElementById('customNodeModal'));
+    $scope.Validator = Validator;
     $scope.nodeList = nodes.nodeList;
     $scope.defaultNodeKey = 'eth_mew';
-    $scope.customNodeModal.open();
     $scope.customNode = { options: 'eth', name: '', url: '', port: '' };
     $scope.customNodeCount = 0;
     var hval = window.location.hash;
@@ -26,11 +26,21 @@ var tabsCtrl = function($scope, globalService, $translate) {
         }
         $scope.dropdownNode = false;
         Token.popTokens = $scope.curNode.tokenList;
-        for (var attrname in $scope.curNode.lib) { ajaxReq[attrname] = $scope.curNode.lib[attrname]; }
+        for (var attrname in $scope.curNode.lib) ajaxReq[attrname] = $scope.curNode.lib[attrname];
+        for (var attrname in $scope.curNode)
+            if (attrname != 'name' && attrname != 'tokenList' && attrname != 'lib')
+                ajaxReq[attrname] = $scope.curNode[attrname];
         localStorage.setItem('curNode', JSON.stringify({
             isCustom: false,
             key: key
         }));
+    }
+    $scope.checkNodeUrl = function(nodeUrl) {
+        if ($scope.Validator.isValidURL(nodeUrl)) {
+            if (window.location.protocol == "https:") return nodeUrl.substring(0, 5) == 'https';
+            return true;
+        }
+        return false;
     }
     $scope.setCurNodeFromStorage = function() {
         var node = localStorage.getItem('curNode');
@@ -64,13 +74,22 @@ var tabsCtrl = function($scope, globalService, $translate) {
     }
     $scope.getCustomNodesFromStorage();
     $scope.setCurNodeFromStorage();
+
     $scope.saveCustomNode = function() {
+        try {
+            if (!$scope.Validator.isAlphaNumericSpace($scope.customNode.name)) throw globalFuncs.errorMsgs[22];
+            else if (!$scope.checkNodeUrl($scope.customNode.url)) throw globalFuncs.errorMsgs[23];
+            else if (!$scope.Validator.isPositiveNumber($scope.customNode.port) && $scope.customNode.port != '') throw globalFuncs.errorMsgs[24];
+        } catch (e) {
+            $scope.addNodeStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            return;
+        }
         var customNode = $scope.customNode;
         var localNodes = localStorage.getItem('localNodes');
         localNodes = !localNodes ? [] : JSON.parse(localNodes);
         localNodes.push(customNode);
         $scope.addCustomNodeToList(customNode);
-        $scope.changeNode('cus_' + customNode.options + '_' + ($scope.customNodeCount-1));
+        $scope.changeNode('cus_' + customNode.options + '_' + ($scope.customNodeCount - 1));
         localStorage.setItem("localNodes", JSON.stringify(localNodes));
         $scope.customNodeModal.close();
         $scope.customNode = { options: 'eth', name: '', url: '', port: '' };

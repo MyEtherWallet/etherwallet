@@ -21,13 +21,22 @@ nodes.nodeList = {
         'lib': require('./nodeHelpers/mewEtc')
     },
     'rop_mew': {
-        'name': 'Ropsten',
+        'name': 'Ropsten-beta',
         'eip155': true,
         'chainId': 3,
         'tokenList': require('./tokens/ropstenTokens.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': require('./nodeHelpers/mewRopsten')
+        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/rop','')
+    },
+    'eth2_mew': {
+        'name': 'ETH-beta',
+        'eip155': true,
+        'chainId': 1,
+        'tokenList': require('./tokens/ethTokens.json'),
+        'estimateGas': true,
+        'service': 'MyEtherWallet',
+        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/eth','')
     },
     'eth_ethscan': {
         'name': 'ETH',

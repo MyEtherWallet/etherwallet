@@ -61,6 +61,7 @@
           <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small> <span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">    {{value.name}}     <small> ({{value.service}})     </small></a></li>
+            <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;">    Add custom node  </a></li>
           </ul>
         </span>
 
@@ -128,15 +129,15 @@
         <div class="modal-body row">
           <div class="form-group col-xs-12">
             <label>Node Name</label>
-            <input class="form-control" type="text" placeholder="My ETH Node" ng-model="customNode.name">
+            <input class="form-control" type="text" placeholder="My ETH Node" ng-model="customNode.name"  ng-class="Validator.isAlphaNumericSpace(customNode.name) ? 'is-valid' : 'is-invalid'">
           </div>
           <div class="form-group col-xs-9">
             <label>URL</label>
-            <input class="form-control" type="text" placeholder="http://127.0.0.1" ng-model="customNode.url">
+            <input class="form-control" type="text" placeholder="https://127.0.0.1" ng-model="customNode.url" ng-class="checkNodeUrl(customNode.url) ? 'is-valid' : 'is-invalid'">
           </div>
           <div class="form-group col-xs-3">
             <label>Port</label>
-            <input class="form-control" type="text" placeholder="8545" ng-model="customNode.port">
+            <input class="form-control" type="text" placeholder="8545" ng-model="customNode.port" ng-class="Validator.isPositiveNumber(customNode.port) || customNode.port=='' ? 'is-valid' : 'is-invalid'">
           </div>
           <div class="form-group col-xs-12">
             <label>Options</label>
@@ -146,10 +147,7 @@
               <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten</label>
             </span>
           </div>
-          <div class="col-sm-4 col-xs-12" ng-show="">
-            <label>Chain ID</label>
-            <input class="form-control" type="text" placeholder="" ng-model="customNode.chainId">
-          </div>
+          <div class="form-group" ng-bind-html="addNodeStatus"></div>
         </div>
 
         <div class="modal-footer text-center">

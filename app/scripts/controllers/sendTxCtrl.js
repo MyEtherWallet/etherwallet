@@ -3,13 +3,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	$scope.unitReadable = "";
 	$scope.unitTranslation = "TRANS_eth";
 	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
-	$scope.txInfoModal = new Modal(document.getElementById('txInfoModal'));
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.showAdvance = $scope.showRaw = false;
 	$scope.dropdownEnabled = true;
-	$scope.replayContract = "0xaa1a6e3e6ef20068f7f8d8c835d2d22fd5116444";
-	$scope.splitHex = "0x0f2c9329";
 	$scope.Validator = Validator;
 	// Tokens
 	$scope.tokenVisibility = "hidden";
@@ -35,8 +32,6 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		$scope.unitReadable = '';
 		if (sendMode == 0) {
 			$scope.unitTranslation = 'TRANS_eth';
-		} else if (sendMode == 2) {
-			$scope.unitTranslation = 'TRANS_etc';
 		} else if (sendMode == 4) {
 			$scope.unitTranslation = '';
 			$scope.unitReadable = tokenSymbol;
@@ -60,7 +55,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 		}
 		if ($scope.tx.sendMode != 4) $scope.tokenTx.id = -1;
 	}
-	globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode(0) : $scope.setSendMode(globalFuncs.urlGet('sendMode')); // 0 = ETH (Standard)  2 = Only ETC  4 = Token
+	globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode(0) : $scope.setSendMode(globalFuncs.urlGet('sendMode')); // 0 = ETH (Standard) 4 = Token
 	$scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
 	if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true // if there is a query string, show an warning at top of page
 	if (globalFuncs.urlGet('sendMode') && globalFuncs.urlGet('sendMode') != 0 && globalFuncs.urlGet('data')) $scope.hasInvalidSendModeAndData = true // if the query string has a send mode of NOT standard tx and a data string, show another warning.
@@ -112,15 +107,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 			value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit)))
 		}
 		if ($scope.tx.data != "") estObj.data = ethFuncs.sanitizeHex($scope.tx.data);
-		if ($scope.tx.sendMode == 2) {
-			estObj.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.wallet.getAddressString()), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
-			estObj.to = $scope.replayContract;
-		} else if ($scope.tx.sendMode == 4) {
+		if ($scope.tx.sendMode == 4) {
 			estObj.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
 			estObj.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
 			estObj.value = '0x00';
 		}
-		ethFuncs.estimateGas(estObj, $scope.tx.sendMode == 2, function(data) {
+		ethFuncs.estimateGas(estObj, function(data) {
 			$scope.validateTxStatus = "";
 			if (!data.error) {
 				if (data.data == '-1') $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[21]));
@@ -141,15 +133,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 			return;
 		}
 		var txData = uiFuncs.getTxData($scope);
-		if ($scope.tx.sendMode == 2) {
-			txData.to = $scope.replayContract;
-			txData.data = $scope.splitHex + ethFuncs.padLeft(ethFuncs.getNakedAddress(txData.from), 64) + ethFuncs.padLeft(ethFuncs.getNakedAddress($scope.tx.to), 64);
-		} else if ($scope.tx.sendMode == 4) {
+		if ($scope.tx.sendMode == 4) {
 			txData.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
 			txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
 			txData.value = '0x00';
 		}
-		uiFuncs.generateTx(txData, $scope.tx.sendMode == 2, function(rawTx) {
+		uiFuncs.generateTx(txData, function(rawTx) {
 			if (!rawTx.isError) {
 				$scope.rawTx = rawTx.rawTx;
 				$scope.signedTx = rawTx.signedTx;
@@ -164,9 +153,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.sendTx = function() {
 		$scope.sendTxModal.close();
-		uiFuncs.sendTx($scope.signedTx, $scope.tx.sendMode == 2, function(resp) {
+		uiFuncs.sendTx($scope.signedTx, function(resp) {
 			if (!resp.isError) {
-				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a> & <a href='http://gastracker.io/tx/" + resp.data + "' target='_blank'> ETC TX via GasTracker.io</a>"));
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a>"));
 				$scope.wallet.setBalance();
 				if ($scope.tx.sendMode == 4) $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
 			} else {
@@ -176,7 +165,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.transferAllBalance = function() {
 		if ($scope.tx.sendMode != 4) {
-			uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, $scope.tx.sendMode == 2, function(resp) {
+			uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, function(resp) {
 				if (!resp.isError) {
 					$scope.tx.unit = resp.unit;
 					$scope.tx.value = resp.value;

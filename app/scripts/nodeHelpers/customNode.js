@@ -91,6 +91,15 @@ customNode.prototype.getEthCall = function(txobj, callback) {
         else callback({ error: false, msg: '', data: data.result });
     });
 }
+customNode.prototype.getTraceCall = function(txobj, callback) {
+    this.post({
+        method: 'trace_call',
+        params: [txobj, ["stateDiff", "trace", "vmTrace"]]
+    }, function(data) {
+        if (data.error) callback({ error: true, msg: data.error.message, data: '' });
+        else callback({ error: false, msg: '', data: data.result });
+    });
+}
 customNode.prototype.post = function(data, callback) {
     data.id = Math.floor((Math.random() * 99999999) + 1);
     data.jsonrpc = "2.0";

@@ -1,8 +1,8 @@
 'use strict';
 var contractsCtrl = function($scope, $sce, walletService) {
-  $scope.visibility = "interactView";
-  $scope.sendContractModal = new Modal(document.getElementById('sendContract'));
-  $scope.sendContractModal.open();
+  $scope.visibility = "deployView";
+ // $scope.sendContractModal = new Modal(document.getElementById('sendContract'));
+  //$scope.sendContractModal.open();
   $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
   $scope.tx = {
     gasLimit: '',
@@ -37,11 +37,11 @@ var contractsCtrl = function($scope, $sce, walletService) {
     var estObj = {
       from: globalFuncs.donateAddress,
       value: '0x00',
-      data: ethFuncs.sanitizeHex($scope.tx.data)
-    }
-    ethFuncs.estimateGas(estObj, false, function(data) {
-      if (!data.error) $scope.tx.gasLimit = data.data;
-    });
+            data: ethFuncs.sanitizeHex($scope.tx.data)
+        }
+        ethFuncs.estimateGas(estObj, function(data) {
+            if (!data.error) $scope.tx.gasLimit = data.data;
+        });
   }
   $scope.generateTx = function() {
     try {
@@ -55,7 +55,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
         $scope.tx.to = '0xCONTRACT';
         $scope.tx.contractAddr = ethFuncs.getDeteministicContractAddress($scope.wallet.getAddressString(), data.nonce);
         var txData = uiFuncs.getTxData($scope);
-        uiFuncs.generateTx(txData, false, function(rawTx) {
+        uiFuncs.generateTx(txData, function(rawTx) {
           if (!rawTx.isError) {
             $scope.rawTx = rawTx.rawTx;
             $scope.signedTx = rawTx.signedTx;
@@ -73,7 +73,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
   }
   $scope.sendTx = function() {
     $scope.sendTxModal.close();
-    uiFuncs.sendTx($scope.signedTx, false, function(resp) {
+    uiFuncs.sendTx($scope.signedTx, function(resp) {
       if (!resp.isError) {
         $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a> & Contract Address <a href='http://etherscan.io/address/" + $scope.tx.contractAddr + "' target='_blank'>" + $scope.tx.contractAddr + "</a>"));
       } else {

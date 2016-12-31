@@ -2,8 +2,8 @@
 <article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl'>
 
   <h2>
-    <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
-    or
+   <!--  <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
+    or -->
     <a translate="NAV_DeployContract"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a> </h2>
   </h2>
 
@@ -11,7 +11,7 @@
   <!-- <section ng-switch on="visibility">-->
 
     <!-- Read / Write Contracts -->
-    <section class="row"> <!-- ng-switch-when="interactView" -->
+    <section class="row" ng-show="visibility=='interactView'">
 
       <!-- Input address + JSON Interface -->
       <div class="col-xs-12">
@@ -210,7 +210,7 @@
 
 
     <!-- Deploy Contract -->
-    <section class="row"> <!-- ng-switch-when="deployView" -->
+    <section class="row" ng-show="visibility=='deployView'">
     <div class="col-xs-12">
 
       <!-- Data -->
