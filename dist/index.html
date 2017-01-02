@@ -39,7 +39,7 @@
       
 
 
-      <div class="tagline"><span style="max-width: 395px">Client-side tool for securely interacting with Ethereum</span>
+      <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
         &middot; v3.4.0 &nbsp;&nbsp;
 
@@ -422,7 +422,6 @@
   <!-- Header -->
   <div class="alert alert-info" ng-show="hasQueryString">
     <p translate="WARN_Send_Link" >You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.</p>
-    <p translate="WARN_Send_Link_2" ng-show="hasInvalidSendModeAndData"> **Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data. </p>
   </div>
 
 
@@ -490,9 +489,9 @@
               {{unitReadable}}<span class="caret"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
-              <li><a ng-class="{true:'active'}[tx.sendMode==0]" ng-click="setSendMode(0)">ETH</a></li>
+              <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
               <li ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
-                <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode(4, $index, token.getSymbol())"> {{token.getSymbol()}} </a>
+                <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode('token', $index, token.getSymbol())"> {{token.getSymbol()}} </a>
               </li>
 
             </ul>
@@ -509,7 +508,7 @@
         <!-- / Gas -->
 
         <!-- Advanced Option Panel -->
-        <div ng-show="tx.sendMode==0">
+        <div ng-show="tx.sendMode=='ether'">
           <a ng-click="showAdvance=!showAdvance">
             <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
           </a>
@@ -543,7 +542,7 @@
 
         <div class="form-group" ng-bind-html="sendTxStatus"></div>
 
-        <div class="alert alert-info" ng-show="tx.sendMode==4">
+        <div class="alert alert-info" ng-show="tx.sendMode=='token'">
           <p translate="DAO_Warning">If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
         </div>
 
@@ -563,25 +562,51 @@
               <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
             </div>
 
-            <div class="modal-body" ng-show="tx.sendMode!==4">
-              <h4>
+            <div class="modal-body larger" ng-show="tx.sendMode=='ether'">
+              <table class="table text-center"><tbody><tr>
+                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}"></div></td>
+                <td class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
+                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div></td>
+              </tr></tbody></table>
+
+              <p>
                 <span translate="SENDModal_Content_1">You are about to send</span>
-                <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
-                <span translate="{{unitTranslation}}"></span>{{unitReadable}}
+                <strong class="mono">{{tx.value}} {{unitReadable}}</strong>
+                <br />
                 <span translate="SENDModal_Content_2">to address</span>
-                <strong id="confirmAddress" class="text-primary"> {{tx.to}} </strong>
-              </h4>
+                <strong class="mono"> {{tx.to}}. </strong>
+              </p>
+              <p>
+                You are sending on an <strong>{{ajaxReq.type}}</strong> chain
+                provided by <strong>{{ajaxReq.service}}</strong>
+                that is
+                <strong class="text-danger" ng-show="ajaxReq.eip155==false"> susceptible to replay attacks.</strong>
+                <strong ng-show="ajaxReq.eip155==true"> not susceptible to replay attacks.</strong>
+              </p>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>
 
-            <div class="modal-body" ng-show="tx.sendMode==4">
-              <h4>
+            <div class="modal-body larger" ng-show="tx.sendMode!=='ether'">
+              <table class="table text-center"><tbody><tr>
+                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}"></div></td>
+                <td class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
+                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div></td>
+              </tr></tbody></table>
+
+              <p>
                 <span translate="SENDModal_Content_1">You are about to send</span>
-                <strong id="confirmAmount" class="text-primary"> {{tokenTx.value}} </strong>
-                <span translate="{{unitTranslation}}"></span>{{unitReadable}}
+                <strong class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
+                <br />
                 <span translate="SENDModal_Content_2">to address</span>
-                <strong id="confirmAddress" class="text-primary"> {{tokenTx.to}} </strong>
-              </h4>
+                <strong class="mono"> {{tokenTx.to}} </strong>
+              </p>
+              <p>
+                You are sending on an <strong>{{ajaxReq.type}}</strong> chain
+                provided by <strong>{{ajaxReq.service}}</strong>
+                that is
+                <strong class="text-danger" ng-show="ajaxReq.eip155==false"> susceptible to replay attacks.</strong>
+                <strong ng-show="ajaxReq.eip155==true"> not susceptible to replay attacks.</strong>
+              </p>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>
 
@@ -594,6 +619,7 @@
         </div>
       </div>
       <!--/ Send Modal-->
+
     </div>
   </section>
 </article>
@@ -657,7 +683,7 @@
           <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'"> {{unitReadable}} <span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
             <li>
-              <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == 'ether']" ng-click="setSendMode('ether')">ETH</a>
+              <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == 'ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a>
             </li>
             <li ng-repeat="token in tokenObjs track by $index">
               <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == $index]" ng-click="setSendMode($index, token.getSymbol())" > {{token.getSymbol()}} </a>
@@ -745,14 +771,23 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
         </div>
-        <div class="modal-body">
-          <h4>
-            <span translate="SENDModal_Content_1"> You are about to send </span>
-            <span class="text-primary">{{valueReadable}} {{unitReadable}}</span>
-          </h4>
-          <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-        </div>
-        <div class="modal-footer text-center">
+
+          <div class="modal-body larger">
+            <p>
+              <span translate="SENDModal_Content_1">You are about to send</span>
+              <strong class="mono">{{valueReadable}} {{unitReadable}}</strong>
+            </p>
+            <p>
+              You are sending on an <strong>{{ajaxReq.type}}</strong> chain
+              provided by <strong>{{ajaxReq.service}}</strong>
+              that is
+              <strong class="text-danger" ng-show="ajaxReq.eip155==false"> susceptible to replay attacks.</strong>
+              <strong ng-show="ajaxReq.eip155==true"> not susceptible to replay attacks.</strong>
+            </p>
+            <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+          </div>
+
+          <div class="modal-footer text-center">
             <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
             <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
           </div>

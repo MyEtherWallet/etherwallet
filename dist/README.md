@@ -24,10 +24,7 @@ MyEtherWallet is an open source, javascript, client-side tool for generating Eth
 - Supports URI Strings on Send Transaction Page. [Read More.](https://github.com/kvhnuke/etherwallet/issues/283#issuecomment-261849895)
     - to=[address]
     - value=[number]
-    - sendMode=[0 | 2 | 4]
-        * 0 is Only ETH
-        * 2 is Only ETC
-        * 4 is token
+    - sendMode=[ether | token]
     - tokenSymbol=[ARC | ICN | MKR | ....]
     - gasLimit=[number] OR gas=[number]
     - data=[hex data]

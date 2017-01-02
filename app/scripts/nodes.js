@@ -4,7 +4,7 @@ nodes.customNode = require('./nodeHelpers/customNode');
 nodes.nodeTypes = {
     ETH: "ETH",
     ETC: "ETC",
-    Ropsten: "TEST ETH",
+    Ropsten: "ROPSTEN ETH",
     Custom: "CUSTOM ETH"
 };
 nodes.customNodeObj = {

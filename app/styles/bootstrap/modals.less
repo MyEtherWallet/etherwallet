@@ -97,6 +97,15 @@
 .modal-body {
   position: relative;
   padding: @modal-inner-padding;
+  &.larger {
+    font-size: 20px;
+    .table > tbody > tr > td {
+      vertical-align: middle;
+    }
+    #addressIdenticon {
+      margin: auto;
+    }
+  }
 }
 
 // Footer (for actions)

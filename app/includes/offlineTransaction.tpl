@@ -143,14 +143,23 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
         </div>
-        <div class="modal-body">
-          <h4>
-            <span translate="SENDModal_Content_1"> You are about to send </span>
-            <span class="text-primary">{{valueReadable}} {{unitReadable}}</span>
-          </h4>
-          <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-        </div>
-        <div class="modal-footer text-center">
+
+          <div class="modal-body larger">
+            <p>
+              <span translate="SENDModal_Content_1">You are about to send</span>
+              <strong class="mono">{{valueReadable}} {{unitReadable}}</strong>
+            </p>
+            <p>
+              You are sending on an <strong>{{ajaxReq.type}}</strong> chain
+              provided by <strong>{{ajaxReq.service}}</strong>
+              that is
+              <strong class="text-danger" ng-show="ajaxReq.eip155==false"> susceptible to replay attacks.</strong>
+              <strong ng-show="ajaxReq.eip155==true"> not susceptible to replay attacks.</strong>
+            </p>
+            <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+          </div>
+
+          <div class="modal-footer text-center">
             <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
             <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
           </div>

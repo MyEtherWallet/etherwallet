@@ -887,9 +887,10 @@ module.exports = footerCtrl;
 'use strict';
 
 var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
+	$scope.ajaxReq = ajaxReq;
 	walletService.wallet = null;
 	walletService.password = '';
-	$scope.unitReadable = "ETH";
+	$scope.unitReadable = ajaxReq.type;
 	$scope.valueReadable = "";
 	$scope.showAdvance = false;
 	$scope.dropdownEnabled = true;
@@ -976,7 +977,7 @@ var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
 	$scope.setSendMode = function (index, tokenSymbol = '') {
 		$scope.tokenTx.id = index;
 		if (index == 'ether') {
-			$scope.unitReadable = 'ETH';
+			$scope.unitReadable = ajaxReq.type;
 		} else {
 			$scope.unitReadable = tokenSymbol;
 		}
@@ -1043,14 +1044,14 @@ module.exports = sendOfflineTxCtrl;
 'use strict';
 
 var sendTxCtrl = function ($scope, $sce, walletService) {
-    $scope.unitReadable = "ETH";
+    $scope.ajaxReq = ajaxReq;
+    $scope.unitReadable = ajaxReq.type;
     $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
     walletService.wallet = null;
     walletService.password = '';
     $scope.showAdvance = $scope.showRaw = false;
     $scope.dropdownEnabled = true;
     $scope.Validator = Validator;
-    $scope.ajaxReq = ajaxReq;
     // Tokens
     $scope.tokenVisibility = "hidden";
     $scope.tokenTx = {
@@ -1073,16 +1074,16 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
     $scope.setSendMode = function (sendMode, tokenId = '', tokenSymbol = '') {
         $scope.tx.sendMode = sendMode;
         $scope.unitReadable = '';
-        if (sendMode == 0) {
-            $scope.unitReadable = 'ETH';
-        } else if (sendMode == 4) {
+        if (sendMode == 'ether') {
+            $scope.unitReadable = ajaxReq.type;
+        } else {
             $scope.unitReadable = tokenSymbol;
             $scope.tokenTx.id = tokenId;
         }
         $scope.dropdownAmount = false;
     };
     $scope.setTokenSendMode = function () {
-        if ($scope.tx.sendMode == 4 && !$scope.tx.tokenSymbol) {
+        if ($scope.tx.sendMode == 'token' && !$scope.tx.tokenSymbol) {
             $scope.tx.tokenSymbol = $scope.wallet.tokenObjs[0].symbol;
             $scope.wallet.tokenObjs[0].type = "custom";
             $scope.setSendMode($scope.tx.sendMode, 0, $scope.tx.tokenSymbol);
@@ -1090,17 +1091,16 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
             for (var i = 0; i < $scope.wallet.tokenObjs.length; i++) {
                 if ($scope.wallet.tokenObjs[i].symbol.toLowerCase().indexOf($scope.tx.tokenSymbol.toLowerCase()) !== -1) {
                     $scope.wallet.tokenObjs[i].type = "custom";
-                    $scope.setSendMode(4, i, $scope.wallet.tokenObjs[i].symbol);
+                    $scope.setSendMode('token', i, $scope.wallet.tokenObjs[i].symbol);
                     break;
                 } else $scope.tokenTx.id = -1;
             }
         }
-        if ($scope.tx.sendMode != 4) $scope.tokenTx.id = -1;
+        if ($scope.tx.sendMode != 'token') $scope.tokenTx.id = -1;
     };
-    globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode(0) : $scope.setSendMode(globalFuncs.urlGet('sendMode')); // 0 = ETH (Standard) 4 = Token
+    globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('ether') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
     $scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
     if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true; // if there is a query string, show an warning at top of page
-    if (globalFuncs.urlGet('sendMode') && globalFuncs.urlGet('sendMode') != 0 && globalFuncs.urlGet('data')) $scope.hasInvalidSendModeAndData = true; // if the query string has a send mode of NOT standard tx and a data string, show another warning.
     $scope.$watch(function () {
         if (walletService.wallet == null) return null;
         return walletService.wallet.getAddressString();
@@ -1129,17 +1129,17 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
     $scope.$watch('tx', function (newValue, oldValue) {
         $scope.showRaw = false;
         $scope.sendTxStatus = "";
-        if (oldValue.sendMode != newValue.sendMode && newValue.sendMode == 0) {
+        if (oldValue.sendMode != newValue.sendMode && newValue.sendMode == 'ether') {
             $scope.tx.data = "";
             $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
         }
-        if (newValue.gasLimit == oldValue.gasLimit && $scope.wallet && $scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data) && $scope.tx.sendMode != 4) {
+        if (newValue.gasLimit == oldValue.gasLimit && $scope.wallet && $scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data) && $scope.tx.sendMode != 'token') {
             if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
             $scope.estimateTimer = setTimeout(function () {
                 $scope.estimateGasLimit();
             }, 500);
         }
-        if ($scope.tx.sendMode == 4) {
+        if ($scope.tx.sendMode == 'token') {
             $scope.tokenTx.to = $scope.tx.to;
             $scope.tokenTx.value = $scope.tx.value;
         }
@@ -1155,7 +1155,7 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
             value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit)))
         };
         if ($scope.tx.data != "") estObj.data = ethFuncs.sanitizeHex($scope.tx.data);
-        if ($scope.tx.sendMode == 4) {
+        if ($scope.tx.sendMode == 'token') {
             estObj.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
             estObj.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
             estObj.value = '0x00';
@@ -1181,7 +1181,7 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
             return;
         }
         var txData = uiFuncs.getTxData($scope);
-        if ($scope.tx.sendMode == 4) {
+        if ($scope.tx.sendMode == 'token') {
             txData.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
             txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
             txData.value = '0x00';
@@ -1206,14 +1206,14 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
                 var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
                 $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr));
                 $scope.wallet.setBalance();
-                if ($scope.tx.sendMode == 4) $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
+                if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
             } else {
                 $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
             }
         });
     };
     $scope.transferAllBalance = function () {
-        if ($scope.tx.sendMode != 4) {
+        if ($scope.tx.sendMode != 'token') {
             uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, function (resp) {
                 if (!resp.isError) {
                     $scope.tx.unit = resp.unit;
@@ -1782,7 +1782,7 @@ Account Address: <\/div>\n \
    <div translate=\"sidebar_AccountBal\">Account Balance: <\/div>\n \
    <ul class=\"account-info\">\n \
 <li>\n \
-   <span class=\"mono wrap\">{{wallet.balance}}<\/span> ETH <\/li>\n \
+   <span class=\"mono wrap\">{{wallet.balance}}<\/span> {{ajaxReq.type}} <\/li>\n \
    <\/ul>\n \
    <section class=\"token-balances\">\n \
    <div translate=\"sidebar_TokenBal\">\n \
@@ -3154,8 +3154,8 @@ nodes.customNode = require('./nodeHelpers/customNode');
 nodes.nodeTypes = {
     ETH: "ETH",
     ETC: "ETC",
-    Ropsten: "ROP",
-    Custom: "CUS"
+    Ropsten: "ROPSTEN ETH",
+    Custom: "CUSTOM ETH"
 };
 nodes.customNodeObj = {
     'name': 'CUS',
