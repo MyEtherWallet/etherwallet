@@ -1,7 +1,8 @@
 'use strict';
 var contractsCtrl = function($scope, $sce, walletService) {
+  $scope.ajaxReq = ajaxReq;
   $scope.visibility = "deployView";
- // $scope.sendContractModal = new Modal(document.getElementById('sendContract'));
+  //$scope.sendContractModal = new Modal(document.getElementById('sendContract'));
   //$scope.sendContractModal.open();
   $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
   $scope.tx = {
