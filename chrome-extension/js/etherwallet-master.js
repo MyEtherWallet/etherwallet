@@ -1302,6 +1302,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
     $scope.customNode = { options: 'eth', name: '', url: '', port: '', eip155: false, chainId: '' };
     $scope.customNodeCount = 0;
     $scope.nodeIsConnected = true;
+    $scope.browserProtocol = window.location.protocol;
     var hval = window.location.hash;
     $scope.setArrowVisibility = function () {
         setTimeout(function () {
@@ -1332,7 +1333,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
     };
     $scope.checkNodeUrl = function (nodeUrl) {
         if ($scope.Validator.isValidURL(nodeUrl)) {
-            if (window.location.protocol == "https:") return nodeUrl.substring(0, 5) == 'https';
+            if ($scope.browserProtocol == "https:") return nodeUrl.substring(0, 5) == 'https';
             return true;
         }
         return false;
