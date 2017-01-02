@@ -2,11 +2,11 @@
 var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.tabNames = globalService.tabs;
     $scope.curLang = 'English';
-    $scope.customNodeModal = new Modal(document.getElementById('customNodeModal'));
+    $scope.customNodeModal = document.getElementById('customNodeModal') ? new Modal(document.getElementById('customNodeModal')) : null;
     $scope.Validator = Validator;
     $scope.nodeList = nodes.nodeList;
     $scope.defaultNodeKey = 'eth_mew';
-    $scope.customNode = { options: 'eth', name: '', url: '', port: '' };
+    $scope.customNode = { options: 'eth', name: '', url: '', port: '', eip155: false, chainId: '' };
     $scope.customNodeCount = 0;
     $scope.nodeIsConnected = true;
     var hval = window.location.hash;
@@ -27,6 +27,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         }
         $scope.dropdownNode = false;
         Token.popTokens = $scope.curNode.tokenList;
+        ajaxReq['key'] = key;
         for (var attrname in $scope.curNode.lib) ajaxReq[attrname] = $scope.curNode.lib[attrname];
         for (var attrname in $scope.curNode)
             if (attrname != 'name' && attrname != 'tokenList' && attrname != 'lib')
@@ -34,8 +35,8 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         localStorage.setItem('curNode', JSON.stringify({
             key: key
         }));
-        ajaxReq.getCurrentBlock(function(data){
-            if(data.error) $scope.nodeIsConnected = false;
+        ajaxReq.getCurrentBlock(function(data) {
+            if (data.error) $scope.nodeIsConnected = false;
             else $scope.nodeIsConnected = true;
         });
     }
@@ -60,7 +61,12 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         var tempObj = null;
         if (nodeInfo.options == 'eth') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.eth_ethscan));
         else if (nodeInfo.options == 'etc') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.etc_mew));
-        else if (nodeInfo.options == 'rop') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.rop_mew));;
+        else if (nodeInfo.options == 'rop') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.rop_mew));
+        else if (nodeInfo.options == 'cus') {
+            tempObj = JSON.parse(JSON.stringify(nodes.customNodeObj));
+            tempObj.eip155 = nodeInfo.eip155;
+            tempObj.chainId = nodeInfo.chainId;
+        }
         if (tempObj) {
             tempObj.name = nodeInfo.name + ':' + nodeInfo.options;
             tempObj.service = 'Custom';
@@ -71,7 +77,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     }
     $scope.getCustomNodesFromStorage = function() {
         for (var key in $scope.nodeList) {
-            if(key.indexOf("cus_")!=-1) delete $scope.nodeList[key];
+            if (key.indexOf("cus_") != -1) delete $scope.nodeList[key];
         }
         var localNodes = localStorage.getItem('localNodes');
         if (localNodes) {
@@ -87,6 +93,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             if (!$scope.Validator.isAlphaNumericSpace($scope.customNode.name)) throw globalFuncs.errorMsgs[22];
             else if (!$scope.checkNodeUrl($scope.customNode.url)) throw globalFuncs.errorMsgs[23];
             else if (!$scope.Validator.isPositiveNumber($scope.customNode.port) && $scope.customNode.port != '') throw globalFuncs.errorMsgs[24];
+            else if ($scope.customNode.eip155 && !$scope.Validator.isPositiveNumber($scope.customNode.chainId)) throw globalFuncs.errorMsgs[25];
         } catch (e) {
             $scope.addNodeStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
             return;
@@ -99,14 +106,14 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         $scope.changeNode('cus_' + customNode.options + '_' + ($scope.customNodeCount - 1));
         localStorage.setItem("localNodes", JSON.stringify(localNodes));
         $scope.customNodeModal.close();
-        $scope.customNode = { options: 'eth', name: '', url: '', port: '' };
+        $scope.customNode = { options: 'eth', name: '', url: '', port: '', eip155: false, chainId: '' };
     }
 
     $scope.removeNodeFromLocal = function(localNodeName) {
         var localNodes = localStorage.getItem('localNodes');
         localNodes = !localNodes ? [] : JSON.parse(localNodes);
         for (var i = 0; i < localNodes.length; i++) {
-            if (localNodes[i].name+':'+localNodes[i].options == localNodeName) localNodes.splice(i, 1);
+            if (localNodes[i].name + ':' + localNodes[i].options == localNodeName) localNodes.splice(i, 1);
         }
         localStorage.setItem('localNodes', JSON.stringify(localNodes));
         $scope.getCustomNodesFromStorage();

@@ -27,7 +27,7 @@ var viewWalletCtrl = function($scope, walletService) {
         $scope.wallet.setBalance();
         $scope.wallet.setTokens();
     });
-    $scope.$watch('ajaxReq.type', function() {
+    $scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {
             $scope.wallet.setBalance();
             $scope.wallet.setTokens();

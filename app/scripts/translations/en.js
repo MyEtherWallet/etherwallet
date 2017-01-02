@@ -287,6 +287,7 @@ en.data = {
   ERROR_23:             'Please enter valid node name',
   ERROR_24:             'Enter valid url, if you are on https your url must be https',
   ERROR_25:             'Please enter valid port',
+  ERROR_26:             'Please enter valid chain ID',
   SUCCESS_1:            'Valid address',
   SUCCESS_2:            'Wallet successfully decrypted',
   SUCCESS_3:            'Transaction submitted. TX ID: ',

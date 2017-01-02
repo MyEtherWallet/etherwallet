@@ -31,7 +31,7 @@
           <br />
           <span class="small" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'"><strong>{{token.getBalance()}} </strong> {{token.getSymbol()}} &nbsp;&nbsp; </span>
           <br />
-          <span class="small"><strong>{{twallet.btc }}</strong>&nbsp;BTC &nbsp;&nbsp; $ <strong>{{twallet.usd }}</strong>&nbsp;USD &nbsp;&nbsp; € <strong>{{twallet.eur }}</strong>&nbsp;EUR </small>
+          <span ng-show="ajaxReq.type=='ETH'" class="small"><strong>{{twallet.btc }}</strong>&nbsp;BTC &nbsp;&nbsp; $ <strong>{{twallet.usd }}</strong>&nbsp;USD &nbsp;&nbsp; € <strong>{{twallet.eur }}</strong>&nbsp;EUR </small>
         </td>
         <td class="text-center">
           <a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a>
@@ -75,7 +75,7 @@
           <td class="chrome-tokens">
             <strong class="text-success">{{twallet.balance | number:4 }} ETH</strong><br>
             <span class="small" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'"><strong>{{token.getBalance() }}</strong>&nbsp;{{token.getSymbol()}} &nbsp;&nbsp;</span>
-            <span class="small"><strong>{{twallet.btc }}</strong> BTC &nbsp;&nbsp; $<strong>{{twallet.usd }}</strong> USD &nbsp;&nbsp; €<strong>{{twallet.eur }}</strong> EUR</span>
+            <span class="small" ng-show="ajaxReq.type=='ETH'"><strong>{{twallet.btc }}</strong> BTC &nbsp;&nbsp; $<strong>{{twallet.usd }}</strong> USD &nbsp;&nbsp; €<strong>{{twallet.eur }}</strong> EUR</span>
           </td>
           <td></td><td></td>
           <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove.svg" title="Remove" /></a></td>

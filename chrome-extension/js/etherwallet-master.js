@@ -320,6 +320,7 @@ var myWalletsCtrl = function ($scope, $sce) {
 		btc: 0
 	};
 	$scope.viewWallet = {};
+	$scope.ajaxReq = ajaxReq;
 	$scope.setNickNames = function () {
 		cxFuncs.getAllNickNames(function (nicks) {
 			$scope.nickNames = nicks;
@@ -337,6 +338,16 @@ var myWalletsCtrl = function ($scope, $sce) {
 			$scope.setTokens('allWatchOnly');
 		});
 	};
+	$scope.$watch('ajaxReq.key', function () {
+		if ($scope.allWallets) {
+			$scope.updateBalance('allWallets');
+			$scope.setTokens('allWallets');
+		}
+		if ($scope.allWatchOnly) {
+			$scope.updateBalance('allWatchOnly');
+			$scope.setTokens('allWatchOnly');
+		}
+	});
 	$scope.setTokens = function (varWal) {
 		for (var j = 0; j < $scope[varWal].length; j++) {
 			$scope.tokens = Token.popTokens;
@@ -1101,7 +1112,7 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
         $scope.wallet.setTokens();
         $scope.setTokenSendMode();
     });
-    $scope.$watch('ajaxReq.type', function () {
+    $scope.$watch('ajaxReq.key', function () {
         if ($scope.wallet) {
             $scope.wallet.setBalance();
             $scope.wallet.setTokens();
@@ -1284,11 +1295,11 @@ module.exports = signMsgCtrl;
 var tabsCtrl = function ($scope, globalService, $translate, $sce) {
     $scope.tabNames = globalService.tabs;
     $scope.curLang = 'English';
-    $scope.customNodeModal = new Modal(document.getElementById('customNodeModal'));
+    $scope.customNodeModal = document.getElementById('customNodeModal') ? new Modal(document.getElementById('customNodeModal')) : null;
     $scope.Validator = Validator;
     $scope.nodeList = nodes.nodeList;
     $scope.defaultNodeKey = 'eth_mew';
-    $scope.customNode = { options: 'eth', name: '', url: '', port: '' };
+    $scope.customNode = { options: 'eth', name: '', url: '', port: '', eip155: false, chainId: '' };
     $scope.customNodeCount = 0;
     $scope.nodeIsConnected = true;
     var hval = window.location.hash;
@@ -1309,6 +1320,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
         }
         $scope.dropdownNode = false;
         Token.popTokens = $scope.curNode.tokenList;
+        ajaxReq['key'] = key;
         for (var attrname in $scope.curNode.lib) ajaxReq[attrname] = $scope.curNode.lib[attrname];
         for (var attrname in $scope.curNode) if (attrname != 'name' && attrname != 'tokenList' && attrname != 'lib') ajaxReq[attrname] = $scope.curNode[attrname];
         localStorage.setItem('curNode', JSON.stringify({
@@ -1337,7 +1349,11 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
     };
     $scope.addCustomNodeToList = function (nodeInfo) {
         var tempObj = null;
-        if (nodeInfo.options == 'eth') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.eth_ethscan));else if (nodeInfo.options == 'etc') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.etc_mew));else if (nodeInfo.options == 'rop') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.rop_mew));;
+        if (nodeInfo.options == 'eth') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.eth_ethscan));else if (nodeInfo.options == 'etc') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.etc_mew));else if (nodeInfo.options == 'rop') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.rop_mew));else if (nodeInfo.options == 'cus') {
+            tempObj = JSON.parse(JSON.stringify(nodes.customNodeObj));
+            tempObj.eip155 = nodeInfo.eip155;
+            tempObj.chainId = nodeInfo.chainId;
+        }
         if (tempObj) {
             tempObj.name = nodeInfo.name + ':' + nodeInfo.options;
             tempObj.service = 'Custom';
@@ -1361,7 +1377,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
 
     $scope.saveCustomNode = function () {
         try {
-            if (!$scope.Validator.isAlphaNumericSpace($scope.customNode.name)) throw globalFuncs.errorMsgs[22];else if (!$scope.checkNodeUrl($scope.customNode.url)) throw globalFuncs.errorMsgs[23];else if (!$scope.Validator.isPositiveNumber($scope.customNode.port) && $scope.customNode.port != '') throw globalFuncs.errorMsgs[24];
+            if (!$scope.Validator.isAlphaNumericSpace($scope.customNode.name)) throw globalFuncs.errorMsgs[22];else if (!$scope.checkNodeUrl($scope.customNode.url)) throw globalFuncs.errorMsgs[23];else if (!$scope.Validator.isPositiveNumber($scope.customNode.port) && $scope.customNode.port != '') throw globalFuncs.errorMsgs[24];else if ($scope.customNode.eip155 && !$scope.Validator.isPositiveNumber($scope.customNode.chainId)) throw globalFuncs.errorMsgs[25];
         } catch (e) {
             $scope.addNodeStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
             return;
@@ -1374,7 +1390,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
         $scope.changeNode('cus_' + customNode.options + '_' + ($scope.customNodeCount - 1));
         localStorage.setItem("localNodes", JSON.stringify(localNodes));
         $scope.customNodeModal.close();
-        $scope.customNode = { options: 'eth', name: '', url: '', port: '' };
+        $scope.customNode = { options: 'eth', name: '', url: '', port: '', eip155: false, chainId: '' };
     };
 
     $scope.removeNodeFromLocal = function (localNodeName) {
@@ -1544,7 +1560,7 @@ var viewWalletCtrl = function ($scope, walletService) {
         $scope.wallet.setBalance();
         $scope.wallet.setTokens();
     });
-    $scope.$watch('ajaxReq.type', function () {
+    $scope.$watch('ajaxReq.key', function () {
         if ($scope.wallet) {
             $scope.wallet.setBalance();
             $scope.wallet.setTokens();
@@ -2224,7 +2240,7 @@ globalFuncs.getDangerText = function (str) {
 // These are translated in the translation files
 globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", // 10
 "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", // 15
-"A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.", "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port"];
+"A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.", "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port", "Please enter valid chain ID"];
 // These are translated in the translation files
 globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "You have successfully voted. Thank you for being an active participant in The DAO.", "File Selected: "];
 // These are translated in the translation files
@@ -3140,6 +3156,18 @@ nodes.nodeTypes = {
     Ropsten: "ROP",
     Custom: "CUS"
 };
+nodes.customNodeObj = {
+    'name': 'CUS',
+    'blockExplorerTX': '',
+    'blockExplorerAddr': '',
+    'type': nodes.nodeTypes.Custom,
+    'eip155': false,
+    'chainId': '',
+    'tokenList': [],
+    'estimateGas': false,
+    'service': 'Custom',
+    'lib': null
+};
 nodes.nodeList = {
     'eth_mew': {
         'name': 'ETH',
@@ -3151,8 +3179,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/ethTokens.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': require('./nodeHelpers/mewEth'),
-        'type': 'ETH'
+        'lib': require('./nodeHelpers/mewEth')
     },
     'etc_mew': {
         'name': 'ETC',
@@ -3164,8 +3191,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/etcTokens.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': require('./nodeHelpers/mewEtc'),
-        'type': 'ETC'
+        'lib': require('./nodeHelpers/mewEtc')
     },
     'rop_mew': {
         'name': 'Ropsten-beta',
@@ -3177,8 +3203,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/ropstenTokens.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/rop', ''),
-        'type': 'ROP'
+        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/rop', '')
     },
     'eth2_mew': {
         'name': 'ETH-beta',
@@ -3190,8 +3215,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/ethTokens.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/eth', ''),
-        'type': 'ETH'
+        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/eth', '')
     },
     'eth_ethscan': {
         'name': 'ETH',
@@ -3203,8 +3227,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/ethTokens.json'),
         'estimateGas': false,
         'service': 'Etherscan.io',
-        'lib': require('./nodeHelpers/etherscan'),
-        'type': 'ETH'
+        'lib': require('./nodeHelpers/etherscan')
     }
 };
 nodes.ethPrice = require('./nodeHelpers/ethPrice');
@@ -5908,6 +5931,7 @@ en.data = {
   ERROR_23: 'Please enter valid node name',
   ERROR_24: 'Enter valid url, if you are on https your url must be https',
   ERROR_25: 'Please enter valid port',
+  ERROR_26: 'Please enter valid chain ID',
   SUCCESS_1: 'Valid address',
   SUCCESS_2: 'Wallet successfully decrypted',
   SUCCESS_3: 'Transaction submitted. TX ID: ',

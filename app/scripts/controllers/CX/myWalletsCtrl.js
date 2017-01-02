@@ -12,6 +12,7 @@ var myWalletsCtrl = function($scope, $sce) {
 		btc: 0
 	};
 	$scope.viewWallet = {};
+	$scope.ajaxReq = ajaxReq;
 	$scope.setNickNames = function() {
 		cxFuncs.getAllNickNames(function(nicks) {
 			$scope.nickNames = nicks;
@@ -29,6 +30,16 @@ var myWalletsCtrl = function($scope, $sce) {
             $scope.setTokens('allWatchOnly');
 		});
 	};
+	$scope.$watch('ajaxReq.key', function() {
+        if ($scope.allWallets) {
+            $scope.updateBalance('allWallets');
+			$scope.setTokens('allWallets');
+        }
+        if($scope.allWatchOnly){
+        	$scope.updateBalance('allWatchOnly');
+            $scope.setTokens('allWatchOnly');
+        }
+    });
 	$scope.setTokens = function(varWal) {
 		for(var j=0;j<$scope[varWal].length; j++){
         $scope.tokens = Token.popTokens;
