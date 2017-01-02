@@ -152,7 +152,13 @@
               <label><input name="options" type="radio" ng-model="customNode.options" value="eth"> ETH </label>
               <label><input name="options" type="radio" ng-model="customNode.options" value="etc"> ETC </label>
               <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten </label>
+              <label><input name="options" type="radio" ng-model="customNode.options" value="cus"> Custom </label>
+              <label ng-show="customNode.options=='cus'"><input type="checkbox" ng-model="customNode.eip155" value="true">  Supports EIP-155</label><br>
             </span>
+          </div>
+          <div class="col-sm-4 col-xs-12" ng-show="customNode.eip155">
+            <label>Chain ID</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.chainId" ng-class="Validator.isPositiveNumber(customNode.chainId) ? 'is-valid' : 'is-invalid'">
           </div>
           <div class="form-group" ng-bind-html="addNodeStatus"></div>
         </div>
