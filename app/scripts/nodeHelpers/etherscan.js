@@ -103,6 +103,8 @@ etherscan.queuePost = function() {
         callback(data.data);
         parentObj.pendingPosts.splice(0, 1);
         if (parentObj.pendingPosts.length > 0) parentObj.queuePost();
+    }, function(data){
+        callback({ error: true, msg: "connection error", data: "" });
     });
 }
 etherscan.post = function(data, callback) {

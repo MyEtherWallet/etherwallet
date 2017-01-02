@@ -105,6 +105,8 @@ customNode.prototype.post = function(data, callback) {
     data.jsonrpc = "2.0";
     ajaxReq.http.post(this.SERVERURL, JSON.stringify(data), this.config).then(function(data) {
         callback(data.data);
+    }, function(data){
+        callback({ error: true, msg: "connection error", data: "" });
     });
 }
 module.exports = customNode;

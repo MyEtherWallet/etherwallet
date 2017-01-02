@@ -1,5 +1,6 @@
 'use strict';
 var walletBalanceCtrl = function($scope, $sce) {
+	$scope.ajaxReq = ajaxReq;
 	$scope.localToken = {
 		contractAdd: "",
 		symbol: "",

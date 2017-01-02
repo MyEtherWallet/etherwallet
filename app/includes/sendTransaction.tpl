@@ -31,8 +31,8 @@
       <wallet-balance-drtv></wallet-balance-drtv>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
-      <ul class="account-info">
-        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
+      <ul class="account-info" ng-show="ajaxReq.type != 'CUS'">
+        <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
       </ul>
 
       <div class="well">

@@ -52,13 +52,13 @@ Account Address: <\/div>\n \
       <\/div>\n \
       <\/div>\n \
       <\/section>\n \
-      <div translate=\"sidebar_Equiv\">\n \
+      <div ng-show=\"ajaxReq.type==\'ETH\'\"><div translate=\"sidebar_Equiv\">\n \
       Equivalent Values: <\/div>\n \
       <ul class=\"account-info\">\n \
         <li><span class=\"mono wrap\">{{wallet.usdBalance}}<\/span> USD <\/li>\n \
         <li><span class=\"mono wrap\">{{wallet.eurBalance}}<\/span> EUR <\/li>\n \
         <li><span class=\"mono wrap\">{{wallet.btcBalance}}<\/span> BTC <\/li>\n \
-      <\/ul></section>'
+      <\/ul></section></div>'
   };
 };
 module.exports = balanceDrtv;

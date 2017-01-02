@@ -1,9 +1,18 @@
 'use strict';
 var nodes = function() {}
 nodes.customNode = require('./nodeHelpers/customNode');
+nodes.nodeTypes = {
+    ETH: "ETH",
+    ETC: "ETC",
+    Ropsten: "ROP",
+    Custom: "CUS"
+};
 nodes.nodeList = {
     'eth_mew': {
         'name': 'ETH',
+        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+        'type': nodes.nodeTypes.ETH,
         'eip155': true,
         'chainId': 1,
         'tokenList': require('./tokens/ethTokens.json'),
@@ -14,6 +23,9 @@ nodes.nodeList = {
     },
     'etc_mew': {
         'name': 'ETC',
+        'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
+        'type': nodes.nodeTypes.ETC,
         'eip155': false,
         'chainId': 0,
         'tokenList': require('./tokens/etcTokens.json'),
@@ -24,6 +36,9 @@ nodes.nodeList = {
     },
     'rop_mew': {
         'name': 'Ropsten-beta',
+        'type': nodes.nodeTypes.Ropsten,
+        'blockExplorerTX': 'https://testnet.etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://testnet.etherscan.io/address/[[address]]',
         'eip155': true,
         'chainId': 3,
         'tokenList': require('./tokens/ropstenTokens.json'),
@@ -34,6 +49,9 @@ nodes.nodeList = {
     },
     'eth2_mew': {
         'name': 'ETH-beta',
+        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+        'type': nodes.nodeTypes.ETH,
         'eip155': true,
         'chainId': 1,
         'tokenList': require('./tokens/ethTokens.json'),
@@ -44,6 +62,9 @@ nodes.nodeList = {
     },
     'eth_ethscan': {
         'name': 'ETH',
+        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+        'type': nodes.nodeTypes.ETH,
         'eip155': true,
         'chainId': 1,
         'tokenList': require('./tokens/ethTokens.json'),

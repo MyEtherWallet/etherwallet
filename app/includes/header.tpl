@@ -32,8 +32,8 @@
 
 @@if (site === 'mew' ) {
   <header ng-controller='tabsCtrl'>
-    <div class="small announcement annoucement-warning">
-      <div class="container">Not able to connect to node: CUSTOM_NODE. See the help page for troubleshooting suggestions.</div>
+    <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected">
+      <div class="container">Not able to connect to node. See the help page for troubleshooting suggestions.</div>
     </div>
     <section class="container-fluid bg-gradient header-branding">
       <section class="container">
@@ -44,8 +44,8 @@
 
 @@if (site === 'cx' ) {
   <header ng-controller='tabsCtrl'>
-    <div class="small announcement annoucement-warning">
-      <div class="container">Not able to connect to node: CUSTOM_NODE. See the help page for troubleshooting suggestions.</div>
+    <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected">
+      <div class="container">Not able to connect to node. See the help page for troubleshooting suggestions.</div>
     </div>
     <a href="" class="small announcement annoucement-warning" target="_blank">
       <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
@@ -66,7 +66,7 @@
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
               {{value.name}}
               <small> ({{value.service}}) </small>
-              <img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" />
+              <img ng-show="value.service=='Custom'" img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
             </a></li>
             <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
           </ul>

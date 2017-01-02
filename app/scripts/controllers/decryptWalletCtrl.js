@@ -119,6 +119,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 	};
 	$scope.decryptAddressOnly = function() {
 		if ($scope.Validator.isValidAddress($scope.addressOnly)) {
+			var tempWallet = new Wallet();
 			$scope.wallet = {
 				type: "addressOnly",
 				address: $scope.addressOnly,
@@ -127,7 +128,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 				},
                 getChecksumAddressString: function(){
                     return ethUtil.toChecksumAddress(this.getAddressString());
-                }
+                },
+                setBalance: tempWallet.setBalance,
+                setTokens: tempWallet.setTokens
 			}
             $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
             walletService.wallet = $scope.wallet;

@@ -8,6 +8,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.defaultNodeKey = 'eth_mew';
     $scope.customNode = { options: 'eth', name: '', url: '', port: '' };
     $scope.customNodeCount = 0;
+    $scope.nodeIsConnected = true;
     var hval = window.location.hash;
     $scope.setArrowVisibility = function() {
         setTimeout(function() {
@@ -31,9 +32,12 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             if (attrname != 'name' && attrname != 'tokenList' && attrname != 'lib')
                 ajaxReq[attrname] = $scope.curNode[attrname];
         localStorage.setItem('curNode', JSON.stringify({
-            isCustom: false,
             key: key
         }));
+        ajaxReq.getCurrentBlock(function(data){
+            if(data.error) $scope.nodeIsConnected = false;
+            else $scope.nodeIsConnected = true;
+        });
     }
     $scope.checkNodeUrl = function(nodeUrl) {
         if ($scope.Validator.isValidURL(nodeUrl)) {
@@ -66,6 +70,9 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         }
     }
     $scope.getCustomNodesFromStorage = function() {
+        for (var key in $scope.nodeList) {
+            if(key.indexOf("cus_")!=-1) delete $scope.nodeList[key];
+        }
         var localNodes = localStorage.getItem('localNodes');
         if (localNodes) {
             localNodes = JSON.parse(localNodes);
@@ -99,9 +106,11 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         var localNodes = localStorage.getItem('localNodes');
         localNodes = !localNodes ? [] : JSON.parse(localNodes);
         for (var i = 0; i < localNodes.length; i++) {
-            if (localNodes[i].name = localNodeName) localNodes.splice(i, 1);
+            if (localNodes[i].name+':'+localNodes[i].options == localNodeName) localNodes.splice(i, 1);
         }
         localStorage.setItem('localNodes', JSON.stringify(localNodes));
+        $scope.getCustomNodesFromStorage();
+        $scope.setCurNodeFromStorage();
     }
 
     $scope.setTab = function(hval) {
