@@ -271,10 +271,13 @@
               <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
             </div>
 
-            <div class="modal-body">
-              <h4>
-                <span>You are about to deploy a contract to the blockchain.</span>
-              </h4>
+            <div class="modal-body larger">
+            <p>
+              You are about to deploy a contract on the <strong>{{ajaxReq.type}}</strong> chain, which
+              <strong class="text-danger" ng-show="ajaxReq.eip155==false"> susceptible to replay attacks.</strong>
+              <strong ng-show="ajaxReq.eip155==true"> not susceptible to replay attacks.</strong>
+            </p>
+            <p> The node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>. </p>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>
 
