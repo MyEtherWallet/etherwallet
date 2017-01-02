@@ -126,6 +126,7 @@
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title"> Set Up Your Custom Node </h4>
         </div>
+        <div class="modal-body row">
         <div class="col-xs-12">
           <!-- Only show this if they are NOT on https -->
           <p>
@@ -133,14 +134,14 @@
             <ul>
               <li> URL: http://127.0.0.1</li>
               <li> Port: 8545 </li>
-              <li> Run geth: <code>geth --rpc</code> or run parity: <code>parity</code></li>
+              <li> Run geth: <code>geth --rpc</code></li>
+              <li> Run Parity: <code>parity --rpccorsdomain "*"</code></li>
             </ul>
           </p>
 
           <!-- Only show this if they are ON on https AND trying to connect to an HTTP node-->
           <div class="alert alert-danger">Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can <a href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank">download the MyEtherWallet repo & run it locally</a> to connect to any node. Or, get free SSL certificate via <a href="https://letsencrypt.org/" target="_blank">LetsEncrypt</a>.</div>
         </div>
-        <div class="modal-body row">
           <div class="form-group col-xs-12">
             <label>Node Name</label>
             <input class="form-control" type="text" placeholder="My ETH Node" ng-model="customNode.name"  ng-class="Validator.isAlphaNumericSpace(customNode.name) ? 'is-valid' : 'is-invalid'">

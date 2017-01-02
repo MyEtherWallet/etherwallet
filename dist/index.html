@@ -114,6 +114,7 @@
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title"> Set Up Your Custom Node </h4>
         </div>
+        <div class="modal-body row">
         <div class="col-xs-12">
           <!-- Only show this if they are NOT on https -->
           <p>
@@ -121,14 +122,14 @@
             <ul>
               <li> URL: http://127.0.0.1</li>
               <li> Port: 8545 </li>
-              <li> Run geth: <code>geth --rpc</code> or run parity: <code>parity</code></li>
+              <li> Run geth: <code>geth --rpc</code></li>
+              <li> Run Parity: <code>parity --rpccorsdomain "*"</code></li>
             </ul>
           </p>
 
           <!-- Only show this if they are ON on https AND trying to connect to an HTTP node-->
           <div class="alert alert-danger">Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can <a href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank">download the MyEtherWallet repo & run it locally</a> to connect to any node. Or, get free SSL certificate via <a href="https://letsencrypt.org/" target="_blank">LetsEncrypt</a>.</div>
         </div>
-        <div class="modal-body row">
           <div class="form-group col-xs-12">
             <label>Node Name</label>
             <input class="form-control" type="text" placeholder="My ETH Node" ng-model="customNode.name"  ng-class="Validator.isAlphaNumericSpace(customNode.name) ? 'is-valid' : 'is-invalid'">
@@ -1179,145 +1180,6 @@
 <!-- / Send Transaction Page -->
 
 
-    <!-- Digix -->
-<div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.digix.id"  ng-controller='digixCtrl'>
-
-  <article class="collapse-container">
-    <div ng-click="wd = !wd">
-      <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-
-        <h2 translate="NAV_ClaimDGD"> Claim DGD </h2>
-
-    </div>
-    <div ng-show="!wd">
-
-      <p translate="DGD_Desc">Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.</p>
-      
-         <wallet-decrypt-drtv></wallet-decrypt-drtv>         
-
-    </div>
-  </article>
-
-
-
-  <section class="row" ng-show="wallet!=null">
-    <hr ng-show="!wd" />
-
-    <!-- Sidebar -->
-    <section class="col-sm-4">
-      <h4 translate="sidebar_AccountInfo"> Account Information: </h4>
-      <div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
-
-      <div translate="sidebar_AccountInfo"> Account Address: </div>
-      <ul class="account-info">
-        <li class="mono wrap"> {{wallet.getChecksumAddressString()}} </li>
-      </ul>
-
-      <div translate="sidebar_AccountBal"> Account Balance: </div>
-      <ul class="account-info">
-        <!--TODO: ADD DGD TOKEN BALANCE? <li>{{token.balance}} DGD Tokens</li>-->
-        <li><strong>{{etherBalance}}</strong> ETH </li>
-      </ul>
-
-      <div translate="sidebar_DGDBal"> DGD Crowdsale Information: </div>
-      <ul class="account-info">
-        <li><strong>{{centsTotal}}</strong> Centstotal </li>
-        <li><strong>{{weiTotal}}</strong> Weitotal </li>
-        <li><strong>{{shareTotal}}</strong> Share </li>
-        <li><strong>{{badgesTotal}}</strong> Badges </li>
-        <li><strong>{{claimedTotal}}</strong> Claimed </li>
-      </ul>
-
-      <div translate="sidebar_Equiv"> Equivalent Values: </div>
-      <ul class="account-info">
-        <li><strong>{{usdBalance}}</strong> USD</li>
-        <li><strong>{{eurBalance}}</strong> EUR</li>
-        <li><strong>{{btcBalance}}</strong> BTC</li>
-      </ul>
-
-      <div translate="sidebar_TransHistory"> Transaction History: </div>
-      <ul class="account-info">
-        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
-      </ul>
-
-    </section>
-    <!-- / Sidebar -->
-
-
-
-    <!-- Content -->
-    <section class="col-sm-8 digix-send">
-
-      <!-- Claim Interface -->
-      <article>
-        <h4 translate="DGD_TitleLong"> Claim Your DGD Tokens </h4>
-        <div class="form-group col-xs-12">
-          <label translate="DGD_Label_1">Estimated fee consumption:</label><br />
-          <input class="form-control readonly" type="text" value="0.00043598 ether (21,799 gas)" readonly />
-        </div>
-        <div class="form-group col-xs-12">
-          <label translate="DGD_Label_2">Provided Maximum Fee:</label><br />
-          <input class="form-control readonly" type="text" value="0.00243598 ether (121,799 gas)" readonly />
-        </div>
-        <div class="form-group col-xs-12">
-          <label translate="DGD_Label_3">Gas Price:</label><br />
-          <input class="form-control readonly" type="text" value="0.021 ether per million gas" readonly />
-        </div>
-        <div class="form-group col-xs-12">
-          <label translate="TRANS_data">Data:</label><br />
-          <input class="form-control readonly" type="text" readonly ng-model="tx.data"/>
-        </div>
-        <div class="form-group col-xs-12">
-          <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DGD_Generate">Generate Claim</a>
-        </div>
-      </article>
-      <!-- / Claim Interface -->
-
-      <!-- raw transaction / buttons -->
-      <div class="col-xs-12"><div ng-bind-html="validateTxStatus"></div></div>
-
-      <div class="form-group col-xs-12" ng-show="showRaw">
-        <label translate="SEND_raw"> Raw Transaction </label>
-        <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
-        <label translate="SEND_signed"> Signed Transaction </label>
-        <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
-      </div>
-
-      <div class="form-group col-xs-12" ng-show="showRaw">
-        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans">Send Transaction</a>
-      </div>
-
-      <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
-      <!-- / raw transaction / buttons -->
-    </section>
-    <!-- / Content -->
-
-    <!-- Modal -->
-    <section class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="myModalLabel"> <strong class="text-danger" translate="SENDModal_Title">Warning!</strong></h3>
-          </div>
-          <div class="modal-body">
-            <h4 translate="DGD_Content">You are about to claim your DGD Tokens.</h4>
-            <h4 translate="SENDModal_Content_3">Are you sure you want to do this?</h4>
-          </div>
-          <div class="modal-footer text-center">
-            <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
-            <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Execute transaction.</button>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--/ Modal -->
-  </section>
-
-</div>
-<!-- / Digix -->
-
-
     <!-- Help -->
 <article class="tab-pane help active" ng-if="globalService.currentTab==globalService.tabs.help.id">
 
@@ -1970,10 +1832,6 @@
       <span translate="FOOTER_2">Donations greatly appreciated:</span> <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span>
     </p>
 
-    <p> Deprecated Pages:
-      <a ng-click="globalService.currentTab=globalService.tabs.bulkGenerate.id" translate="NAV_BulkGenerate">Bulk Generate</a> &middot;
-      <a ng-click="globalService.currentTab=globalService.tabs.digix.id" translate="NAV_ClaimDGD">Digix</a>
-    </p>
     <p>
       URLs:
       <a href="https://www.myetherwallet.com" target="_blank">www.MyEtherWallet.com</a> &middot;
