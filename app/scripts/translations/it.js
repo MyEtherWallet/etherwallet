@@ -152,8 +152,6 @@ it.data = {
   /* Send Transaction */
   TRANS_desc:            'Se invece volevi inviare dei token, utilizza la pagina "Invia token".',
   TRANS_warning:         'Se usi le opzioni "Solo ETH" o "Solo ETC" invierai tramite un contratto. Certi servizi hanno difficoltà ad accettare queste transazioni. Leggi tutto.',
-  TRANS_eth:             'Solo ETH',
-  TRANS_etc:             'Solo ETC',
   TRANS_advanced:        '+Avanzate: aggiungi dati ',
   TRANS_data:            'Dati: ',
   TRANS_gas:             'Limite gas: ',
@@ -389,13 +387,12 @@ it.data = {
 
   HELP_4_Title:         '4) Come invio degli ether da un portafoglio a un altro?',
   HELP_4_Desc_1:        'Se stai pensando di spostare una grande quantità di ether, dovresti prima provare ad inviare una piccola somma al tuo portafoglio per assicurarti che tutto vada come previsto.',
-  HELP_4_Desc_2:        'Vai alla pagina "Invia ether".',
+  HELP_4_Desc_2:        'Vai alla pagina "Invia ether e token".',
   HELP_4_Desc_3:        'Seleziona il file del tuo portafoglio -oppure- la tua chiave privata e sblocca il portafoglio.',
   HELP_4_Desc_4:        'Se il portafoglio è crittografato, comparirà automaticamente una casella di testo. Inserisci la password.',
   HELP_4_Desc_5:        'Fai clic sul pulsante "Sblocca".',
   HELP_4_Desc_6:        'Inserisci l\'indirizzo al quale vuoi inviare nel campo "Indirizzo destinatario:".',
   HELP_4_Desc_7:        'Inserisci l\'importo che vuoi inviare. Puoi anche fare clic sul link "Invia l\'intero saldo" se desideri trasferire l\'intero saldo.',
-  HELP_4_Desc_8:        'Nota: A partire dalla fine di giugno 2016 dovrai assicurarti di separare i tuoi ETH/ETC prima di inviare ether come avresti fatto normalmente. Vedi la domanda n. 6 qui sotto per ulteriori informazioni.',
   HELP_4_Desc_9:        'Fai clic su "Genera transazione".',
   HELP_4_Desc_10:       'Compariranno un paio di ulteriori campi. È perché il tuo browser ha generato la transazione.',
   HELP_4_Desc_11:       'Fai clic sul pulsante azzurro "Invia transazione" in basso.',
@@ -403,7 +400,7 @@ it.data = {
   HELP_4_Desc_13:       'La transazione verrà inviata. Verrà mostrato l\'ID della transazione (*TX ID*). Puoi fare clic sul TX ID per vederla sulla *blockchain*. ',
 
   HELP_4CX_Title:       '4) Come invio degli ether utilizzando MyEtherWallet CX?',
-  HELP_4CX_Desc_1:      'Innanzitutto devi aggiungere un portafoglio. Dopo averlo fatto hai 2 opzioni: la funzionalità "Invio rapido" dall\'icona dell\'estensione di Chrome o la pagina "Invia ether".',
+  HELP_4CX_Desc_1:      'Innanzitutto devi aggiungere un portafoglio. Dopo averlo fatto hai 2 opzioni: la funzionalità "Invio rapido" dall\'icona dell\'estensione di Chrome o la pagina "Invia ether e token".',
   HELP_4CX_Desc_2:      'Invio rapido:',
   HELP_4CX_Desc_3:      'Fai clic sull\'icona dell\'estensione di Chrome.',
   HELP_4CX_Desc_4:      'Fai clic sul pulsante "Invio rapido".',
@@ -414,7 +411,7 @@ it.data = {
   HELP_4CX_Desc_9:      'Verifica che l\'importo e l\'indirizzo a cui stai inviando siano corretti.',
   HELP_4CX_Desc_10:     'Inserisci la password del portafoglio.',
   HELP_4CX_Desc_11:     'Fai clic su "Invia transazione."',
-  HELP_4CX_Desc_12:     'Tramite la pagina "Invia ether": ',
+  HELP_4CX_Desc_12:     'Tramite la pagina "Invia ether e token": ',
 
   HELP_5_Title:         '5) Come faccio ad eseguire MyEtherWallet.com offline/in locale? ',
   HELP_5_Desc_1:        'Puoi eseguire MyEtherWallet.com sul tuo computer invece che dai server di GitHub. Puoi generare un portafoglio completamente offline e inviare transazioni dalla pagina "Invia Offline".',
@@ -430,23 +427,6 @@ it.data = {
   HELP_5CX_Desc_6:      'Fai clic sul pulsante "Carica estensione non pacchettizzata...".',
   HELP_5CX_Desc_7:      'Vai alla cartella che hai precedentemente scaricato e decompresso. Fai clic su "Seleziona".',
   HELP_5CX_Desc_8:      'L\'estensione dovrebbe ora comparire fra le tue estensioni e nella barra delle estensioni di Chrome.',
-
-  HELP_6_Title:         '6) Come faccio a separare i miei ETH / ETC? ',
-  HELP_6_Desc_1:        'Come conseguenza della *hard fork*, a qualunque quantità di ETH precedentemente presente nel tuo portafoglio corrisponde ora una uguale quantità di ETC. Se invii degli ETH tramite una transazione standard, verranno anche inviati degli ETC. Per evitarlo, devi "separare" il tuo portafoglio originale in due portafogli. Dopodiché, ti devi assicurare che solamente gli ETH finiscano nel tuo portafoglio ETH e solamente gli ETC finiscano nel tuo portafoglio ETC.',
-  HELP_6_Desc_2:        'Puoi anche inviare tutti i tuoi ETH & ETC utilizzando una transazione standard a Kraken o Poloniex. Queste piattaforme di scambio separeranno automaticamente i tuoi ETH ed ETC. Potrai quindi spostare questi fondi in nuovi portafogli, o vendere i tuoi ETC o ETH.',
-  HELP_6_Desc_3:        '[Qui puoi trovare ulteriori informazioni su portafogli e *replay attack*](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
-  HELP_6_Desc_4:        'Genera un nuovo portafoglio ETH *post-fork* pulito per te (che sarà la destinazione finale degli ETH e nient\'altro).',
-  HELP_6_Desc_5:        'Genera un nuovo portafoglio ETC *post-fork* pulito per te (che sarà la destinazione finale degli ETC e nient\'altro).',
-  HELP_6_Desc_6:        'Fai un backup di questi nuovi portafogli e verifica di poterci accedere. Vedi domande n. 2a e n. 3 qui sopra.',
-  HELP_6_Desc_7:        'Invia 0,1234 ETH al nuovo portafoglio "ETH" utilizzando l\'opzione "Solo ETH" nella pagina "Invia ether".',
-  HELP_6_Desc_8:        'Invia 0,5678 ETC al nuovo portafoglio "ETC" utilizzando l\'opzione "Solo ETC" nella pagina "Invia ether".',
-  HELP_6_Desc_9:        'Controlla che si siano spostati solamente gli 0,1234 ETH su etherscan.io. Controlla che si siano spostati solamente gli 0,5678 ETC su gastracker.io.',
-  HELP_6_Desc_10:       'Esegui una transazione di 0,0001 ETH dal tuo nuovo portafoglio ETH. Controlla etherscan.io. Assicurati che gli 0,0001 ETH siano stati inviati.',
-  HELP_6_Desc_11:       'Genera (ma non inviare) una transazione di 0,0002 ETC dal tuo nuovo portafoglio ETC. Copia il campo "Transazione firmata". ',
-  HELP_6_Desc_12:       'Vai su [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) e incolla la transazione ETC nella scheda "Invia offline" di classicetherwallet.com, alla fine della pagina, e invia. Controlla gastracker.io. Assicurati che gli 0,0002 ETC siano stati inviati.',
-  HELP_6_Desc_13:       'Se tutto è stato ricevuto ed inviato correttamente allora sei a posto.',
-  HELP_6_Desc_14:       'Invia tutto il saldo ETH rimanente utilizzando l\'opzione "Solo ETH" e ripeti per il saldo ETC utilizzando "Solo ETC".',
-  HELP_6_Desc_15:       'Adesso puoi usare le transazioni standard per questi nuovi portafogli senza rischio di *replay attack*. ',
 
   HELP_7_Title:         '7) Come invio token e come aggiungo token personalizzati?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) è un ottimo modo di esplorare i token e trovarne i decimali.',
@@ -477,8 +457,8 @@ it.data = {
   HELP_8CX_Desc_2:       'Detto ciò, è **molto importante** che tu faccia un backup di tutte le informazioni relative a ogni nuovo portafoglio generato con MyEtherWallet CX. In questo modo se succede qualcosa a MyEtherWallet CX or al tuo computer avrai ancora tutte le informazioni necessarie ad accedere ai tuoi ether. Vedi la domanda n. 2a per come salvare i tuoi portafogli.',
   HELP_8CX_Desc_3:       'Se per qualche ragione MyEtherWallet CX sparisce dal Chrome Store, puoi trovare i sorgenti su Github e caricare l\'estensione manualmente. Vedi la domanda n. 5 qui sopra.',
 
-  HELP_9_Title:          '9) La pagina "Invia ether" è offline?',
-  HELP_9_Desc_1:         ' No, la pagina in cui si invia la transazione non è offline. Ha bisogno di Internet per poter ottenere il prezzo corrente del gas, il *nonce* del tuo conto, e per trasmettere la transazione (cioè per inviarla). Tuttavia, si limita ad inviare la transazione firmata. La tua chiave privata rimane al sicuro con te. Ora abbiamo inserito anche una pagina "Invia offline" così che ti possa assicurare che le tue chiavi private rimangano sempre su un computer offline/*air-gapped*.',
+  HELP_9_Title:          '9) La pagina "Invia ether e token" è offline?',
+  HELP_9_Desc_1:         'No. Ha bisogno di Internet per poter ottenere il prezzo corrente del gas, il *nonce* del tuo conto, e per trasmettere la transazione (cioè per inviarla). Tuttavia, si limita ad inviare la transazione firmata. La tua chiave privata rimane al sicuro con te. Ora abbiamo inserito anche una pagina "Invia offline" così che ti possa assicurare che le tue chiavi private rimangano sempre su un computer offline/*air-gapped*.',
 
   HELP_10_Title:         '10) Come creo una transazione offline?',
   HELP_10_Desc_1:        'Vai alla pagina "Invia offline" con il tuo computer online.',
@@ -492,13 +472,6 @@ it.data = {
   HELP_10_Desc_9:        'Premi il pulsante "GENERA TRANSAZIONE".',
   HELP_10_Desc_10:       'I campi sotto il pulsante saranno riempiti con la transazione firmata. Copiala e ritorna al tuo computer online. ',
   HELP_10_Desc_11:       'Sul tuo computer online, incolla la transazione firmata nel campo di testo nel passo n. 3 e fai clic su "Invia transazione". In questo modo la transazione verrà trasmessa.',
-
-  HELP_11_Title:          '11) Come faccio a inviare a un contratto?',
-  HELP_11_Desc_1:         'Inviare a un contratto richiede spesso l\'aggiunta di dati o di ulteriore gas o di entrambi',
-  HELP_11_Desc_2:         'Vai alla pagina "Invia ether". ',
-  HELP_11_Desc_3:         'Seleziona il file del tuo portafoglio -oppure- la tua chiave privata e sblocca il portafoglio. ',
-  HELP_11_Desc_4:         'Inserisci un "Indirizzo destinatario" e un "Importo da inviare"',
-  HELP_11_Desc_5:         'Fai clic sul pulsante "+Avanzate: aggiungi più gas o dei dati" sotto al campo dell\'importo. Verranno mostrati due ulteriori campi che puoi utilizzare per aumentare il gas sopra al valore predefinito di 21000, o per aggiungere dati alla transazione.',
 
   HELP_12_Title:          '12) Come faccio a importare un portafoglio creato con MyEtherWallet in geth / Ethereum Wallet / Mist?',
   HELP_12_Desc_1:         'Con un file JSON Geth/Mist generato da MyEtherWallet v2+....',
@@ -531,8 +504,8 @@ it.data = {
   HELP_12_Desc_27:        'A importazione conclusa positivamente, cancella `niente_di_speciale_cancellami.txt`',
   HELP_12_Desc_28:        'Alla prossima apertura dell\'applicazione Ethereum Wallet, il tuo conto sarà mostrato sotto "Accounts". ',
 
-  HELP_13_Title:          '13) Cosa significa "Limite gas troppo basso"?',
-  HELP_13_Desc_1:         'Molto probabilmente significa che stai tentando di inviare ether a un contratto. Inviare a un contratto richiede un po\' più di dati e quindi un po\' più di gas. Sulla pagina "Invia ether", fai clic sul pulsante "+Avanzate: aggiungi più gas o dei dati" sotto al campo dell\'importo. Compariranno due ulteriori campi che puoi utilizzare per aumentare il gas sopra al valore predefinito di 21000, o per aggiungere dati alla transazione.',
+  HELP_13_Title:          '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean?',
+  HELP_13_Desc_1:         'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction.',
 
   HELP_14_Title:          '14) Certi siti inizializzano il generatore di numeri casuali per la generazione della chiave privata tramite i movimenti del mouse. MyEtherWallet.com non lo fa. La generazione di numeri casuali di MyEtherWallet è sicura?',
   HELP_14_Desc_1:         'Sebbene usare i movimenti del mouse sia ingegnoso, e comprendiamo perché piaccia, la realtà è che window.crypto assicura maggiore entropia rispetto ai tuoi movimenti del mouse. Non che i movimenti del mouse siano insicuri, è solo che noi (e un sacco di altri critto-esperimenti) crediamo in window.crypto. Oltretutto, MyEtherWallet.com può essere utilizzato su dispositivi touch. Qui c\'è una [conversazione fra un utente di reddit arrabbiato e Vitalik Buterin su movimenti del mouse contro window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) e qui c\'è [la specifica del w3 di window.crypto](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
@@ -579,7 +552,6 @@ it.data = {
   HELP_Sec_Desc_4:        'Controlla l\'URL -- Questo sito viene servito attraverso GitHub e puoi vederne il codice sorgente qui: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) su [https://www.myetherwallet.com](https://www.myetherwallet.com).',
   HELP_Sec_Desc_5:        'Per la generazione dei portafogli, puoi scaricare il [codice sorgente](https://github.com/kvhnuke/etherwallet/releases/latest) ed eseguirlo in locale. Vedi la domanda 5 qui sopra.',
   HELP_Sec_Desc_6:        'Genera un portafoglio di prova e controlla che attività di rete sono in corso. Il modo più facile e fare clic destro sulla pagina e scegliere "Analizza elemento". Vai sulla scheda "Rete". Genera un portafoglio di prova. Vedrai che non c\'è attività di rete. Potresti vedere accadere qualcosa che assomiglia a  data:image/gif e data:image/png. Sono i QR code che vengono generati...sul tuo computer...dal tuo computer. Non sono stati trasferiti byte.',
-  HELP_Sec_Desc_7:        'Ora, per essere sicuro, vai alla scheda "Archiviazione". Qui puoi vedere tutti i diversi elementi che costituiscono un sito web. Se controlli Archiviazione locale, Cookie, e Archiviazione cache, vedrai che non c\'è nulla che viene memorizzato. Non viene salvato niente. Se ricarichi la pagina ricominci da capo.',
   HELP_Sec_Desc_8:        'Se non ti senti a tuo agio a usare questo strumento, allora certo, non usarlo. Abbiamo creato questo strumento per aiutare la gente a generare portafogli ed eseguire transazioni senza bisogno di usare la riga di comando o far girare un nodo completo. Di nuovo, sentiti libero di contattarci se hai dubbi e ti risponderemo appena possibile. Grazie! ',
 
   HELP_FAQ_Title:         'Risposte più utili alle domande frequenti (in Inglese)',

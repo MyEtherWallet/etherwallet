@@ -165,8 +165,6 @@ vi.data = {
   /* Send Transaction */
   TRANS_desc:            'Nếu bạn muốn gửi Token, xin vui lòng sử dụng danh mục "Gửi Token".',
   TRANS_warning:         'Nếu bạn sử dụng chức năng "Chỉ ETH" hoặc "Chỉ ETC" trong việc gửi đi thông qua một hợp đồng thông minh. Những dịch vụ có chức năng chấp nhận các giao dịch. Đọc Thêm.',
-  TRANS_eth:             'Chỉ ETH',
-  TRANS_etc:             'Chỉ ETC',
   TRANS_advanced:        'Nâng Cao: Thêm Dữ Liệu',
   TRANS_data:            'Dữ Liệu:',
   TRANS_gas:             'Gas Limit:',
@@ -388,13 +386,12 @@ vi.data = {
 
   HELP_4_Title:         '4) Làm thế nào dễ gửi Ether từ Ví này sang Ví khác ?',
   HELP_4_Desc_1:        'Nếu như bạn dự định dễ chuyển một số lượng lớn Ether, bạn nên gửi đi một lượng nhỏ đến Ví của bạn dễ thử nghiệm, nhằm xác định chắc chắn tất cả chức năng đều hoạt động đúng như dự định.',
-  HELP_4_Desc_2:        'Đi đến trang "Gửi Ether".',
+  HELP_4_Desc_2:        'Đi đến trang "Gửi Ether và Tokens".',
   HELP_4_Desc_3:        'Chọn tập tin Ví -hoặc- Private key của bạn dễ mở khoá cho Ví.',
   HELP_4_Desc_4:        'Nếu Ví của bạn đang trong tình trạng mã hoá,ô điền thông tin sẽ tự động báo lại. Nhập mật khẩu.',
   HELP_4_Desc_5:        'Chọn vào nút "Mở Khoá Ví".',
   HELP_4_Desc_6:        'Điền địa chỉ mà bạn muốn gửi đến tại khung trống "Địa chỉ đến:".',
   HELP_4_Desc_7:        'Điền số lượng Ether mà bạn muốn gửi đi.Hoặc bạn có thể chọn vào phần "Gửi toàn bộ số dư" nếu bạn muốn chuyển đi toàn bộ số Ether mà bạn hiện có trong tài khoản.',
-  HELP_4_Desc_8:        'Chú ý: kể từ cuối tháng 6 năm 2016, bạn phải chắc chắn rằng đã thực hiện chức năng tách đôi số lượng ETH/ETC ra làm hai trước khi bạn muốn gửi ether đi. Xem câu hỏi #6 dễ biết thêm chi tiết.',
   HELP_4_Desc_9:        'Chọn vào "Khởi tạo Giao dịch".',
   HELP_4_Desc_10:       'Một cửa sổ thông báo sẽ hiện ra. Việc khởi tạo giao dịch này được thực hiện từ trình duyệt của bạn.',
   HELP_4_Desc_11:       'Chọn vào nút màu xanh "Gửi giao dịch đi" phía dưới.',
@@ -402,7 +399,7 @@ vi.data = {
   HELP_4_Desc_13:       'Giao dịch của bạn sẽ được gửi đi. TX ID sẽ xuất hiện trên màn hình. Bạn có thể chọn vào TX ID dễ xem nó trên blockchain. ',
 
   HELP_4CX_Title:       '4) Làm thế nào dễ gửi đi Ether bằng cách sử dụng MyEtherWallet CX?',
-  HELP_4CX_Desc_1:      'Trước tiên, bạn cần phải thêm Ví của bạn vào. Sau khi thực hiện xong, Bạn sẽ có 2 lựa chọn: Chức năng "Gửi Nhanh" từ biểu tượng nằm trên thanh công cụ tiện ích của Google Chrome hoặc chọn vào "Gửi Ether" dễ đi đến trang trình duyệt.',
+  HELP_4CX_Desc_1:      'Trước tiên, bạn cần phải thêm Ví của bạn vào. Sau khi thực hiện xong, Bạn sẽ có 2 lựa chọn: Chức năng "Gửi Nhanh" từ biểu tượng nằm trên thanh công cụ tiện ích của Google Chrome hoặc chọn vào "Gửi Ether và Tokens" dễ đi đến trang trình duyệt.',
   HELP_4CX_Desc_2:      'Gửi Nhanh',
   HELP_4CX_Desc_3:      'Chọn vào biểu tượng trên thanh tiẹn ích của Google Chrome.',
   HELP_4CX_Desc_4:      'Chọn vào ô "Gửi Nhanh".',
@@ -413,7 +410,7 @@ vi.data = {
   HELP_4CX_Desc_9:      'Xác nhận lại số lượng cần gửi và địa chỉ đến.',
   HELP_4CX_Desc_10:     'Điền vào mật khẩu của Ví bạn dùng dễ gửi.',
   HELP_4CX_Desc_11:     'Chọn vào ô "Gửi giao dịch đi."',
-  HELP_4CX_Desc_12:     'Sử dụng trang "Gửi Ether": ',
+  HELP_4CX_Desc_12:     'Sử dụng trang "Gửi Ether và Tokens": ',
 
   HELP_5_Title:         '5) Làm thế nào dễ kích hoạt MyEtherWallet.com với tính năng offline? ',
   HELP_5_Desc_1:        'Bạn hãy kích hoạt MyEtherWallet.com trên máy tính của bạn thay thế cho việc chạy trên máy chủ của Github. Bạn có thể khởi tạo Ví mới hoàn toàn trong tình trạng offline và gửi giao dịch đi từ trang "Giao dịch Offline".',
@@ -430,26 +427,9 @@ vi.data = {
   HELP_5CX_Desc_7:      'Đưa chuột và chọn vào tập tin mà bạn vừa tải về và giải nén nó trước đó, nhấp vào nút "Select".',
   HELP_5CX_Desc_8:      'Ứng dụng mở rộng không nên cho xuất hiện tại mục mở rộng và thanh ứng dụng mở rộng tại Google Chrome.',
 
-  HELP_6_Title:         '6) Làm thế nào dễ tách đôi ETH / ETC? ',
-  HELP_6_Desc_1:        'Khi Hard fork diễn ra, số ETH mà bạn đang chứa trong ví thì bây giờ bạn sẽ có số lượng ETC tương ứng. Nếu bạn gửi ETH đi bằng giao dịch thông thường, thì nó đồng thời sẽ chuyển đi một số lượng ETC bằng với số ETH mà bạn lập giao dịch. dễ ngăn chặn điều này, bạn nên "Tách đôi" Ví hiện tại của bạn thành hai Ví riêng biệt. Tiếp tục bạn sẽ di chuyển số ETH vào đúng Ví ETH của bạn và số ETC vào trong ví ETC.',
-  HELP_6_Desc_2:        'Bạn cũng có thể gửi đi tất cả số ETH và ETC bằng hình thức gửi thông thường đi đến Poloniex và Kraken. Sàn giao dịch sẽ tự động chia đôi số ETC và ETH cho bạn, sau đó bạn có thể gửi nó vào một Ví mới hoặc bạn có thể bán chúng trực tiếp trên sàn giao dịch.',
-  HELP_6_Desc_3:        '[Thông tin về những Ví và các cuộc tấn công Replay Attacks có thể tìm thấy ở đây](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
-  HELP_6_Desc_4:        'Khởi tạo một Ví post-fork ETH cho chính bạn (sẽ là địa chỉ dùng dễ chứa số lượng ETH hoàn toàn đã được tách biệt ETC).',
-  HELP_6_Desc_5:        'Khởi tạo một Ví post-fork ETC cho chính bạn (sẽ là địa chỉ dùng dễ chứa số lượng ETC hoàn toàn đã được tách biệt ETH).',
-  HELP_6_Desc_6:        'Sao lưu lại dữ liệu của từng Ví và chắc chắn rằng bạn đã truy nhập thành công vào vý. Xem #2a and #3 ở trên.',
-  HELP_6_Desc_7:        'Gửi 0.1234 ETH đến ví mới "ETH" thông qua chức năng "Chỉ ETH" trên trang "gửi Ether".',
-  HELP_6_Desc_8:        'Gửi 0.1234 ETC đến ví mới "ETC" thông qua chức năng "Chỉ ETC" trên trang "gửi Ether.',
-  HELP_6_Desc_9:        'Để kiễm tra giao dịch với chỉ 0.1234 ETH hãy đi đến trang etherscan.io. Và làm tương tự với việc kiễm tra giao dịch với chỉ 0.5678 ETC thì hãy đi đến trang gastracker.io.',
-  HELP_6_Desc_10:       'Khởi tạo một giao dịch với 0.0001 ETH tại Ví ETH vừa được khởi tạo. Kiễm tra trên trang etherscan.io. Và chắc chắn số 0.0001 ETH đã được chuyển đi.',
-  HELP_6_Desc_11:       'Khởi tạo một giao dịch (Nhưng đừng gửi nó đi) chỉ với 0.0002 ETC từ Ví ETC vừa được khởi tạo. Sao chép phần kí tự tại "Chữ kí xác nhận giao dịch". ',
-  HELP_6_Desc_12:       'Đến trang [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) Và dán TXid của Ví ETC tại trang offline của  classicetherwallet.com sau đó nhấn nút Gửi đi. Hãy kiễm tra tại trang gastracker.io. Chắc chắn giao dịch với số 0.0002 ETC đã được chuyển đi.',
-  HELP_6_Desc_13:       'Nếu tất cả những giao dịch nhận và gửi đều được thực hiện thành công thì Các Ví của bạn đã hoàn toàn sữ dụng được rất tốt.',
-  HELP_6_Desc_14:       'Gửi đi toàn bộ số dư ETH thì bạn nên sử dụng chức năng "Chỉ ETH" Và làm giống vậy đối với số dư ETC bằng cách sử dụng chức năng  "Chỉ ETC".',
-  HELP_6_Desc_15:       'Về sau bạn có thể sử dụng để gửi đi các giao dịch bằng phương pháp tiêu chuẩn mà không bị ảnh hưởng và ngăn chặn việc Replay attack. ',
-
   HELP_7_Title:         '7) Làm thế nào dễ gửi token và thêm Token vào Ví?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) là cách tốt nhất dễ kiễm tra Token và số Token.',
-  HELP_7_Desc_1:        'Đi đến trang "Gửi Token".',
+  HELP_7_Desc_1:        'Đi đến trang "Gửi Ether và Tokens".',
   HELP_7_Desc_2:        'mở khoá Ví của bạn.',
   HELP_7_Desc_3:        'Điền địa chỉ mà bạn cần gửi đến tại ô trống "Địa chỉ đến:" .',
   HELP_7_Desc_4:        'Điền số lượng Token mà bạn muốn gửi.',
@@ -477,7 +457,7 @@ vi.data = {
   HELP_8CX_Desc_3:       'Nếu vì một lý do bất kì buộc MyEtherWallet CX không tồn tại trên kho tiện ích của Chrome, bạn có thể tìm thấy mã nguồn trên Github và tải về máy của bạn. Xem phần #5 ở trên.',
 
   HELP_9_Title:          '9) Có phải trang "Gửi Ether" là trang offline?',
-  HELP_9_Desc_1:         ' Không, Trang "gửi giao dịch đi" không offline. Nó cần kết nối internet dễ xác định được giá Gas hiện tại, nonce của tài khoản, và phát tán các dữ liệu dễ xác thực các giao dịch (không "gửi" nó đi). Tuy nhiên, nó chỉ gửi đi khi giao dịch của bạn được ký từ chính bạn. Private key của bạn hoàn toàn an toàn từ bạn. hiện nay, chúng tôi có hỗ trợ thêm chức năng "Giao dịch Offline" dễ bạn có thể đảm bảo Private key của bạn đang trong tình trạng offline/airgapped của máy tính trong bất cứ lúc nào.',
+  HELP_9_Desc_1:         'Không. Nó cần kết nối internet dễ xác định được giá Gas hiện tại, nonce của tài khoản, và phát tán các dữ liệu dễ xác thực các giao dịch (không "gửi" nó đi). Tuy nhiên, nó chỉ gửi đi khi giao dịch của bạn được ký từ chính bạn. Private key của bạn hoàn toàn an toàn từ bạn. hiện nay, chúng tôi có hỗ trợ thêm chức năng "Giao dịch Offline" dễ bạn có thể đảm bảo Private key của bạn đang trong tình trạng offline/airgapped của máy tính trong bất cứ lúc nào.',
 
   HELP_10_Title:         '10) Làm thế nào dễ tạo giao dịch Offline?',
   HELP_10_Desc_1:        'Đi đến trang "Giao dịch Offline" thông qua máy tính đang online.',
@@ -491,13 +471,6 @@ vi.data = {
   HELP_10_Desc_9:        'nhấn vào nút "Khởi tạo Chữ Ký cho giao dịch".',
   HELP_10_Desc_10:       'Các trường dữ liệu phía dưới nút này sẽ dùng dễ chứng thực chữ ký cho giao dịch của bạn. Cóp hết đoạn dữ liệu này và chuyển đến máy tính online của bạn. ',
   HELP_10_Desc_11:       'Trên máy tính online của bạn, bạn hãy dán chữ ký giao dịch vào khung điền văn bản tại bước #3 và chọn nút "Gửi Ether". Việc làm này sẽ phát sóng đi giao dịch của bạn.',
-
-  HELP_11_Title:          '11) Làm thế nào đễ gửi đi các Hợp đồng?',
-  HELP_11_Desc_1:         'Gửi đi một hợp đồng thường đòi hỏi bạn phải bao gồm dữ liệu hoặc phải bổ sung thêm Gas và có thể là yêu cầu bổ sung cả hai.',
-  HELP_11_Desc_2:         'Đi đến trang "Gửi Ether". ',
-  HELP_11_Desc_3:         'Chọn tập tin Ví của bạn -hoặc- Private key của bạn đễ mở khoá Ví. ',
-  HELP_11_Desc_4:         'Điền vào "Địa chỉ đến" và "Số lượng cần gửi"',
-  HELP_11_Desc_5:         'chọn "+ Nâng cao: Thêm dữ liệu" Bên dưới nút này là khung điền số lượng cần gửi. Điều này sẽ có hai trường hợp đễ bổ sung mà bạn có thể sử dụng dễ tăng gas nhiều hơn số 21000 được mặc định, hoặc thêm dữ liệu cho giao dịch của bạn.',
 
   HELP_12_Title:          '12) Làm thế nào dễ tôi sử dụng Ví được khởi tạo từ MyEtherWallet trên geth / Ví Ethereum / Mist?',
   HELP_12_Desc_1:         'Bạn phải sử dụng tập tin chứa định dạng JSON dành cho Geth/Mist từ MyEtherWallet v2+....',
@@ -530,8 +503,8 @@ vi.data = {
   HELP_12_Desc_27:        'Sau khi hoàn thành việc nhập Ví trên ứng dụng, bạn nên xoá tập tin `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'Trong lần sử dụng ứng dụng Ví Ethereum sau này, Tài khoản của bạn sẽ tự đọng liên kết và hiển thị dưới phần "Accounts". ',
 
-  HELP_13_Title:          '13) "Giới hạn Gas quá thấp" Có nghĩa là gì?',
-  HELP_13_Desc_1:         'Nhiều khả năng, nó có nghĩa là bạn đang cố gắng dễ gửi Ether đến một hợp đồng. Việc gửi đến một hợp đồng đòi hỏi nhiều dữ liệu do đó lượng Gas phải lớn hơn mức mạc định. Trên trang "Gửi Ether", chọn "+ Nâng cao: Thêm dữ liệu" Bên dưới nút này là khung điền số lượng cần gửi. Điều này sẽ có hai trường hợp dễ bổ sung mà bạn có thể sử dụng dễ tăng gas nhiều hơn số 21000 được mặc định, hoặc thêm dữ liệu cho giao dịch của bạn.',
+  HELP_13_Title:          '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean?',
+  HELP_13_Desc_1:         'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction.',
 
   HELP_14_Title:          '14) Một số trang khi khởi tạo Private key thông qua việc di chuyển con trỏ chuột máy tính trên màn hình. MyEtherWallet.com không làm theo cách này. Các ký tự Private key được tạo ra trên trang MyEtherWallet một cách an toàn nhất?',
   HELP_14_Desc_1:         'Mặc dù chúng tôi hiểu với việc di chuyển chuột xung quanh màn hình như vậy sẽ khá thú vị, nhưng thực tế window.crypto sẽ đảm bảo việc tạo ra những "dữ liệu ngẫu nhiên" hơn đối với việc di chuyển chuột. Việc di chuyển chuột như vậy không phải là không an toàn, nhưng thông qua rất nhiều những thử nghiệm về mật mã khác thì chúng tôi hoàn toàn tin tưởng vào window.crypto. Ngoài ra, MyEtherWallet.com còn được sử dụng trên những thiết bị cảm ứng. Đây là [Cuộc tranh cải tức giận giữa một redditor và Vitalik Buterin Liên quan đến vấn đề Di chuyển con chuột với window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
@@ -578,7 +551,6 @@ vi.data = {
   HELP_Sec_Desc_4:        'Hãy kiễm tra URL -- Trang của chúng tôi được cung cấp thông qua Github và bạn có thể kiễm tra lại toàn bộ mã nguồn ở đây: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) đến các tên miền: [https://www.myetherwallet.com](https://www.myetherwallet.com).',
   HELP_Sec_Desc_5:        'Đối với việc khởi tạo Ví, bạn có thể tải về [Mã nguồn](https://github.com/kvhnuke/etherwallet/releases/latest). Xem phần #5 phía trên.',
   HELP_Sec_Desc_6:        'Bạn hãy cho chạy thử đễ kiễm tra lại toàn bộ hoạt động của nó. Cách đơn giản nhất đễ bạn kiễm tra là nhấn chuột phải vào trang của chúng tôi vào chọn mục "inspect element". đi đến mục "Network". Khởi tạo thử một Ví. Lúc này bạn sẽ thấy được các hoạt động của hệ thống sẽ diễn ra như thế nào. Bạn sẽ thấy được dữ liệu sau: image/gif và image/png. Nó chính là mã QR đã được khởi tạo...trên máy tính của bạn. Và không có một dung lượng dữ liệu nào được chuyển ra khỏi máy của bạn.',
-  HELP_Sec_Desc_7:        'Bây giờ, cẩn thận hơn, hãy đến phần "Resources" của trang. Tại đây bạn sẽ thấy rõ toàn bộ những cấu tạo khác khác nhau trong việc hình thành và xây dựng lên một trang web. Nếu bạn chọn phần Local Storage, Cookies, and Cache, bạn sẽ thấy thực ra không có gì được lưu trữ. Và hoàn toàn không có gì được sao chép. Khi Refresh trang web, bạn sẽ quay về lại tình trạng ban đầu lức vừa mới truy cập.',
   HELP_Sec_Desc_8:        'Nếu bạn cảm thấy không an tâm khi sử dụng công cụ của chúng tôi, bạn có quyền không sử dụng nó. Chúng tôi tạo ra ứng dụng này nhằm giúp người sử dụng dễ dàng tạo Ví mới và lập giao dịch mà không cần dùng đến những câu lệnh trên Terminal hoặc tải về đầy đủ các node. Một lần nữa xin nhắc lại, bạn hoàn toàn có thể ngưng sử dụng và báo lại với chúng tôi nếu bạn có một mối quan ngại nào đó, chúng tôi sẽ chịu trách nhiệm chỉnh sửa hoặc giải đáp thắc mắc từ nơi bạn một cách sớm nhất có thể. Xin Chân Thành Cảm Ơn! ',
 
   HELP_FAQ_Title:         'Lời giãi đáp cho những câu hỏi thường gặp:',

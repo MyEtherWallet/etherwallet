@@ -152,8 +152,6 @@ fr.data = {
   /* Send Transaction */
   TRANS_desc:            'Si vous voulez envoyer des tokens, allez plutôt à la page "Envoi de tokens".',
   TRANS_warning:         'L\'emploi des fonctions "ETH seulement" et "ETC seulement" vous fait passer par un contrat. Certains services ont des problèmes avec ces transactions. En savoir plus.',
-  TRANS_eth:             'ETH seulement',
-  TRANS_etc:             'ETC seulement',
   TRANS_advanced:        '+Avancé : Ajouter du gaz',
   TRANS_data:            'Données : ',
   TRANS_sendInfo:        'Une transaction standard utilisant 21000 gaz coûtera 0.000441 ETH. Le prix du gaz de 0.000000021 ETH que nous avons choisi est légèrement supérieur au minimum ain d\'assurer une confirmation rapide. Nous ne prenons pas de frais de transaction.',
@@ -387,13 +385,12 @@ fr.data = {
 
   HELP_4_Title:         '4) Comment puis-je envoyer de l\'Ether d\'un portefeuille vers un autre ?',
   HELP_4_Desc_1:        'Si vous désirez transférer une grande quantité d\'Ether, vous devez d\'abord essayer d\'en envoyer d\'abord un petit montant vers votre portefeuille pour vous assurer que tout fonctionne comme prévu.',
-  HELP_4_Desc_2:        'Naviguez vers la page "Envoi d\'Ether".',
+  HELP_4_Desc_2:        'Naviguez vers la page "Envoyer des Ether et des Tokens".',
   HELP_4_Desc_3:        'Sélectionnez le fichier de votre portefeuille -ou- votre clef privée et déverrouillez votre portefeuille.',
   HELP_4_Desc_4:        'Si le portefeuille est chiffré, une zone texte apparaîtra automatiquement. Entrez le mot de passe.',
   HELP_4_Desc_5:        'Cliquez sur le bouton "Déverrouiller votre portefeuille".',
   HELP_4_Desc_6:        'Entrez l\'adresse du destinataire dans le champ "Adresse de destination".',
   HELP_4_Desc_7:        'Entrez le montant que vous voulez envoyer. Vous pouvez également cliquer sur "Envoyer le solde total" si vous voulez envoyer tout le contenu.',
-  HELP_4_Desc_8:        'Note : Depuis la fin juin 2016, vous devez vous assurer que les ETH et ETC sont bien séparés avant d\'envoyer des ETH. Voir la question n° 6 pour plus d\'informations.',
   HELP_4_Desc_9:        'Cliquez sur "Générer la transaction".',
   HELP_4_Desc_10:       'Quelques champs supplémentaires apparaîtront. Votre navigateur est en train de générer la transaction.',
   HELP_4_Desc_11:       'Cliquez sur le bouton bleu "Envoyer la transaction" en dessous.',
@@ -401,7 +398,7 @@ fr.data = {
   HELP_4_Desc_13:       'La transaction sera soumise. Son identifiant sera affiché. Vous pouvez cliquer sur l\'identifiant pour la voir sur la blockchain.',
 
   HELP_4CX_Title:       '4) Comment puis-je envoyer de l\'Ether avec MyEtherWallet CX ?',
-  HELP_4CX_Desc_1:      'D\'abord, vous devez ajouter un portefeuille. Ceci fait, deux possibilités s\'offrent à vous : la fonctionnalité "Envoi rapide" de l\'icône de l\'extension Chrome ou la page "Envoi d\'Ether".',
+  HELP_4CX_Desc_1:      'D\'abord, vous devez ajouter un portefeuille. Ceci fait, deux possibilités s\'offrent à vous : la fonctionnalité "Envoi rapide" de l\'icône de l\'extension Chrome ou la page "Envoyer des Ether et des Tokens".',
   HELP_4CX_Desc_2:      'Envoi rapide :',
   HELP_4CX_Desc_3:      'Cliquez sur l\'icône de l\'extension Chrome.',
   HELP_4CX_Desc_4:      'Cliquez sur le bouton "Envoi rapide".',
@@ -412,7 +409,7 @@ fr.data = {
   HELP_4CX_Desc_9:      'Vérifiez que l\'adresse et le montant envoyé sont corrects.',
   HELP_4CX_Desc_10:     'Entrez le mot de passe de ce portefeuille.',
   HELP_4CX_Desc_11:     'Cliquez sur "Envoyez la transaction."',
-  HELP_4CX_Desc_12:     'Avec la page "Envoi d\'Ether" : ',
+  HELP_4CX_Desc_12:     'Avec la page "Envoyer des Ether et des Tokens" : ',
 
   HELP_5_Title:         '5) Comment puis-je lancer MyEtherWallet.com hors ligne/localement ? ',
   HELP_5_Desc_1:        'Vous pouvez lancer MyEtherWallet.com sur votre ordinateur au lieu de passer par les serveurs GitHub. Vous pouvez générer un portefeuille en restant totalement hors ligne et envoyer des transactions depuis la page "Transaction hors ligne".',
@@ -428,23 +425,6 @@ fr.data = {
   HELP_5CX_Desc_6:      'Cliquez sur le bouton "Chargez l\'extension non empaquetée...".',
   HELP_5CX_Desc_7:      'Naviguez vers le dossier que vous avez téléchargé et dézippé auparavant. Cliquez sur "Sélectionner".',
   HELP_5CX_Desc_8:      'L\'extension doit maintenant apparaître dans vos extensions et dans la barre des extensions de Chrome.',
-
-  HELP_6_Title:         '6) Comment puis-je séparer mes ETH / ETC ? ',
-  HELP_6_Desc_1:        'Quand le hard fork s\'est produit, à tout ETH que vous possédiez dans votre portefeuille correspond maintenant un montant égal en ETC. Si vous envoyez des ETH par une transaction standard, cela enverra également des ETC et, pour l\'empêcher, il vous faut maintenant "séparer" votre portefeuille d\'origine en deux en vous assurant que seul du ETH va dans le portefeuille ETH et seul du ETC va dans le portefeuille ETC.',
-  HELP_6_Desc_2:        'Vous pouvez également envoyer tout votre ETH et ETC par une transaction standard vers Kraken ou Poloniex. Ces *exchanges* vont automatiquement séparer vos ETH et ETC. Vous pouvez alors déplacer ces fonds vers de nouveaux portefeuilles ou vendre vos ETH ou vos ETC.',
-  HELP_6_Desc_3:        '[Vous trouverez plus d\'informations sur les portefeuilles et les attaques par réexécution ici](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
-  HELP_6_Desc_4:        'Générer un nouveau portefeuille ETH post-fork vierge pour vous-même (destination finale du pur ETH).',
-  HELP_6_Desc_5:        'Générer un nouveau portefeuille ETC post-fork vierge pour vous-même (destination finale du pur ETC).',
-  HELP_6_Desc_6:        'Sauvegardez ces nouveaux portefeuilles et vérifiez que vous pouvez y accéder. Voir #2a et #3 ci-dessus.',
-  HELP_6_Desc_7:        'Envoyez 0.1234 ETH à votre nouveau portefeuille ETH en utilisant l\'option "ETH seulement" sur la page "Envoi d\'Ether".',
-  HELP_6_Desc_8:        'Envoyez 0.5678 ETC à votre nouveau portefeuille ETC en utilisant l\'option "ETC seulement" sur la page "Envoi d\'Ether".',
-  HELP_6_Desc_9:        'Vérifiez que seuls les 0.1234 ETH ont bougé sur etherscan.io. Vérifiez que seuls les 0.5678 ETC ont bougé sur gastracker.io.',
-  HELP_6_Desc_10:       'Envoyez une transaction de 0.0001 ETH depuis votre nouveau portefeuille ETH. Vérifiez sur etherscan.io. Assurez-vous que les 0.0001 ETH ont bougé.',
-  HELP_6_Desc_11:       'Générez (mais n\'envoyez pas) une transaction de 0.0002 ETC depuis votre nouveau portefeuille ETC. Copiez le champ "Transaction signée". ',
-  HELP_6_Desc_12:       'Allez sur [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) et copiez cette transaction ETC dans l\'onglet hors ligne de classicetherwallet.com tout en bas et envoyez-la. Vérifiez sur gastracker.io. Assurez-vous que les 0.0002 ETC ont bougé.',
-  HELP_6_Desc_13:       'Si tout est correctement reçu et envoyé, vous avez gagné.',
-  HELP_6_Desc_14:       'Envoyez le reste du solde ETH par l\'option "ETH seulement" et répétez l\'opération pour le solde ETC par l\'option "ETC seulement".',
-  HELP_6_Desc_15:       'Par la suite, vous pourrez utiliser les transactions standard pour ces portefeuilles sans risque d\'attaque par réexécution.',
 
   HELP_7_Title:         '7) Comment puis-je envoyer des tokens et ajouter des tokens spécifiques ?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) est un excellent moyen d\'explorer les tokens et de trouver les décimales d\'un token.',
@@ -475,8 +455,8 @@ fr.data = {
   HELP_8CX_Desc_2:       'Cela dit, il est **très important** que vous sauvegardiez toutes les données de tous les portefeuilles générés par MyEtherWallet CX. De cette manière, si quoi que ce soit arrivait à MyEtherWallet CX ou à votre ordinateur, vous conserveriez toutes les informations nécessaires pour accéder à votre Ether. Voir #2a pour la sauvegarde de vos portefeuilles.',
   HELP_8CX_Desc_3:       'Si, pour une raison quelconque, MyEtherWallet CX disparaissait du Chrome Store, vous pourrez en trouver le source sur Github et le charger manuellement. Voir #5 ci-dessus.',
 
-  HELP_9_Title:          '9) La page "Envoi d\'Ether" est-elle hors ligne ?',
-  HELP_9_Desc_1:         'Non, la page d\'envoi de transaction n\'est pas hors ligne. Elle a besoin de l\'internet pour obtenir le prix actuel du gaz, le nonce de votre compte et pour émettre la transaction (c\'est-à-dire "envoyer"). Cependant, elle n\'envoie que la transaction signée. Votre clef privée reste en sécurité chez vous. Nous fournissons maintenant aussi une page "Transaction hors ligne" pour vous permettre de conserver en permanence vos clefs privées sur une machine hors ligne.',
+  HELP_9_Title:          '9) La page "Envoyer des Ether et des Tokens" est-elle hors ligne ?',
+  HELP_9_Desc_1:         'Non. Elle a besoin de l\'internet pour obtenir le prix actuel du gaz, le nonce de votre compte et pour émettre la transaction (c\'est-à-dire "envoyer"). Cependant, elle n\'envoie que la transaction signée. Votre clef privée reste en sécurité chez vous. Nous fournissons maintenant aussi une page "Transaction hors ligne" pour vous permettre de conserver en permanence vos clefs privées sur une machine hors ligne.',
 
   HELP_10_Title:         '10) Comment puis-je faire une transaction hors ligne ?',
   HELP_10_Desc_1:        'Allez à la page "Transaction hors ligne" avec votre ordinateur en ligne.',
@@ -490,13 +470,6 @@ fr.data = {
   HELP_10_Desc_9:        'Cliquez sur le bouton "Générer la transaction signée".',
   HELP_10_Desc_10:       'Le champ de données sous ce bouton se remplit avec votre transaction signée. Copiez-la et revenez avec elle sur votre ordinateur en ligne. ',
   HELP_10_Desc_11:       'Sur votre ordinateur en ligne, collez la transaction signée dans le champ texte et cliquez sur "Envoyez l\'Ether". Ceci émettra votre transaction.',
-
-  HELP_11_Title:          '11) Comment puis-je envoyer à un contrat ?',
-  HELP_11_Desc_1:         'L\'envoi à un contrat vous impose souvent d\'inclure des données ou du gaz supplémentaire, ou les deux.',
-  HELP_11_Desc_2:         'Allez à la page "Envoi d\'Ether". ',
-  HELP_11_Desc_3:         'Sélectionnez le fichier de votre portefeuille -ou- votre clef privée et déverrouillez votre portefeuille. ',
-  HELP_11_Desc_4:         'Entrez une "Adresse de destination" et un "Montant à envoyer".',
-  HELP_11_Desc_5:         'Cliquez sur le bouton "+Avancé : Ajouter du gaz ou des données supplémentaires" sous le champ du montant. Ceci affiche deux champs additionnels que vous pouvez utiliser pour augmenter le gaz au dessus de la valeur par défaut de 21000 ainsi que d\'ajouter des données à votre transaction.',
 
   HELP_12_Title:          '12) Comment puis-je importer un portefeuille créé par MyEtherWallet dans geth / Ethereum Wallet / Mist ?',
   HELP_12_Desc_1:         'Avec un fichier Geth/Mist JSON de MyEtherWallet v2+....',
@@ -529,8 +502,8 @@ fr.data = {
   HELP_12_Desc_27:        'Après que l\'import a réussi, supprimez `nothing_special_delete_me.txt`',
   HELP_12_Desc_28:        'La prochaine fois que vous ouvrirez l\'application Ethereum Wallet, votre compte sera listé sous "Accounts".',
 
-  HELP_13_Title:          '13) Que signigie "Limite de gaz trop basse" ?',
-  HELP_13_Desc_1:         'Il est très probable que vous essayiez d\'envoyer de l\'Ether à un contrat, ce qui implique un peu plus de données et donc un peu plus de gaz. Sur la page "Envoi d\'Ether", cliquez sur le bouton "+Advancé : Ajouter du gaz ou des données supplémentaire" sous le champ du montant. Ceci fera afficher deux champs additionnels que vous pouvez utiliser pour augmenter le gaz au-dessus de sa valeur par défaut de 21000, ou pour ajouter des données à votre transaction.',
+  HELP_13_Title:          '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean?',
+  HELP_13_Desc_1:         'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction.',
 
   HELP_14_Title:          '14) Certains sites randomisent (initialisent) la génération de clef privée par les mouvements de la sours. Ce n\'est pas le cas de MyEtherWallet.com. La génération de nombres aléatoires de MyEtherWallet est-elle sûre ?',
   HELP_14_Desc_1:         'Bien que l\'interception des mouvement de la souris soit jugée attractive par beaucoup, et que nous en comprenions les raisons, la réalité est que window.crypto assure plus d\'entropie que les mouvements de votre souris. L\'utilisation de ces mouvements est sûre mais nous (ainsi que de nombreux projets crypto) avons de bonnes raisons de croire en window.crypto. De plus, MyEtherWallet.com peut être utilisé sur des périphériques tactiles. Voici une [conversation entre un redditor rageur et Vitalik Buterin sur les mouvements de souris et window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) et voici [les spécifications w3 de window.crypto](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
@@ -577,7 +550,6 @@ fr.data = {
   HELP_Sec_Desc_4:        'Vérifiez l\'URL -- Ce site est servi par Github et vous pouvez en voir le code source ici : [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) aux [https://www.myetherwallet.com](https://www.myetherwallet.com).',
   HELP_Sec_Desc_5:        'Pour générer les portefeuilles, vous pouvez télécharger le [code source](https://github.com/kvhnuke/etherwallet/releases/latest). Voir #5 ci-dessus.',
   HELP_Sec_Desc_6:        'Lancez un test et vérifiez le type d\'activité réseau. La manière la plus simple consiste en un clic droit sur la page, puis "Inspecter". Allez à l\'onglet "Network". Générez un portefeuille de test. Vous verrez qu\'il n\'y a pas d\'activité réseau. Vous pourrez voir quelque chose se produire ressemblant à data:image/gif et data:image/png. Ce sont les QR codes en cours de génération... sur votre ordinateur. Aucun octet n\'a été transféré.',
-  HELP_Sec_Desc_7:        'Maintenant, pour en être absolument sûr, allez à la page "Resources" (ou "Application"). Vous pouvez y voir tous les éléments qui constituent un site web. Si vous cliquez sur Local Storage, Cookies et Cache, vous verrez que rien n\'y est stocké. Rien n\'y est sauvegardé. Rafraîchissez la page et vous voilà revenu au départ."',
   HELP_Sec_Desc_8:        'Si cet outil ne vous plaît pas, alors ne l\'utilisez surtout pas. Nous l\'avons créé pour qu\'il aide les gens à générer des portefeuilles et à effectuer des transactions sans avoir besoin de plonger dans les lignes de commandes ni faire tourner un nœud complet. À nouveau, n\'hésitez pas à nous faire part de vos doutes et nous répondrons aussi rapidement que possible. Merci ! ',
 
   HELP_FAQ_Title:         'Plus de réponses utiles aux questions fréquentes',

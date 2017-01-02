@@ -156,7 +156,6 @@
         <li translate="HELP_4_Desc_5"> Click the "Unlock Wallet" button. </li>
         <li translate="HELP_4_Desc_6"> Enter the address you would like to send to in the "To Address:" field. </li>
         <li translate="HELP_4_Desc_7"> Enter the amount you would like to send. You can also click the "Transfer total available balance" link if you would like the transfer the entire balance. </li>
-        <li translate="HELP_4_Desc_8"> Note: Since the end of June 2016, you will need to make sure to split your ETH/ETC before sending ETH like you normally would. See Question #6 below for more information. </li>
         <li translate="HELP_4_Desc_9"> Click "Generate Transaction". </li>
         <li translate="HELP_4_Desc_10"> A couple more fields will appear. This is your browser generating the transaction. </li>
         <li translate="HELP_4_Desc_11"> Click the blue "Send Transaction" button below that. </li>
@@ -253,33 +252,6 @@
   </article>
 }
 
-
-
-  <article class="collapse-container">
-    <div ng-click="h6 = !h6">
-      <a class="collapse-button" ><span ng-show="!h6">+</span><span ng-show="h6">-</span></a>
-      <h4 translate="HELP_6_Title"> 6. How do I split my ETH / ETC? </h4>
-    </div>
-    <div ng-show="h6">
-      <p translate="HELP_6_Desc_1"> When the hard fork happened, any ETH you had in your account now has an equal amount of ETC. If you send ETH using a standard transaction, it will also send ETC. To prevent this, you must "split" your original account into two accounts. Moving forward, you need to make sure only ETH goes to your ETH account and only ETC goes to your ETC account.</p>
-      <p translate="HELP_6_Desc_2"> You can also send all your ETH & ETC using a standard transaction to Kraken or Poloniex. These exchanges will automatically split your ETH and ETC. You can then move those funds to new wallets, or sell your ETC or ETH.</p>
-      <p translate="HELP_6_Desc_3"> <a href="https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit" target="_blank">Even more information about wallets and reply attacks can be found here</a></p>
-      <ol>
-        <li translate="HELP_6_Desc_4">Generate a new clean post-fork ETH address for yourself (to be the final destination of pure ETH).</li>
-        <li translate="HELP_6_Desc_5">Generate a new clean post-fork ETC address for yourself (to be the final destination of pure ETC).</li>
-        <li translate="HELP_6_Desc_6">Back up these new wallets and verify you can access them. See #2a and #3 above.</li>
-        <li translate="HELP_6_Desc_7">Send .1234 ETH to your new "ETH" address using "Only ETH" option on the "Send Ether" page.</li>
-        <li translate="HELP_6_Desc_8">Send .5678 ETC to your new "ETC" address using "Only ETC" on MyEtherWallet.com</li>
-        <li translate="HELP_6_Desc_9">Check that only the .1234 ETH moved on etherscan.io. Check that only the .5678 ETC moved on gastracker.io.</li>
-        <li translate="HELP_6_Desc_10">Send a .0001 ETH transaction from your new ETH wallet. Check etherscan.io. Make sure the .0001 ETH moved.</li>
-        <li translate="HELP_6_Desc_11"> Generate (but do not send) a .0002 ETC transaction from your new ETC wallet. Copy the "Signed Transaction" field. </li>
-        <li translate="HELP_6_Desc_12">Go to <a href="http://classicetherwallet.com/#offline-transaction" target="_blank">classicetherwallet.com</a> and paste that ETC TX into classicetherwallet.com's offline tab at the very bottom and send. Check gastracker.io. Make sure the .0002 ETC moved.</li>
-        <li translate="HELP_6_Desc_13">If everything receives correctly and sends correctly then you are golden.</li>
-        <li translate="HELP_6_Desc_14">Send total remaining ETH balance using the "Only ETH" option and repeat for the ETC balance using "Only ETC".</li>
-        <li translate="HELP_6_Desc_15"> Moving forward, you can use the standard transactions for these new accounts without risk of replay attacks. </li>
-      </ol>
-    </div>
-  </article>
 
 
 
@@ -381,26 +353,6 @@
       </ol>
     </div>
   </article>
-
-
-
-
-  <article class="collapse-container">
-    <div ng-click="h11 = !h11" >
-      <a class="collapse-button"><span ng-show="!h11">+</span><span ng-show="h11">-</span></a>
-      <h4 translate="HELP_11_Title">11. How do I send to a contract?</h4>
-    </div>
-    <div ng-show="h11">
-    <p translate="HELP_11_Desc_1"> Sending to a contract often requires you to include data or additional gas or both.</p>
-    <ol>
-      <li translate="HELP_11_Desc_2"> Navigate to the "Send Ether" page. </li>
-      <li translate="HELP_11_Desc_3"> Select your wallet file -or- your private key and unlock your wallet. </li>
-      <li translate="HELP_11_Desc_4"> Enter a "To Address" and "Amount to Send"</li>
-      <li translate="HELP_11_Desc_5"> Click the "+ Advanced: Add More Gas or Data" button below the amount field. This will display two additional fields that you can use to increase the gas above the default 21000, or add data to your transaction.</li>
-    </ol>
-    </div>
-  </article>
-
 
 
 
@@ -610,7 +562,6 @@
         <li translate="HELP_Sec_Desc_4"> Check the URL -- This site is being served through GitHub and you can see the source code here: <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages" target="_blank">https://github.com/kvhnuke/etherwallet/tree/gh-pages</a> to the domains: <a href="http://kvhnuke.github.io/etherwallet/" target="_blank">http://kvhnuke.github.io/etherwallet/</a> and <a href="https://www.myetherwallet.com" target="_blank">https://www.myetherwallet.com</a>. You can verify it's hosted at GitHub by using <a href="http://viewdns.info/dnsrecord/?domain=myetherwallet.com" target="_blank">http://viewdns.info/dnsrecord/?domain=myetherwallet.com</a> - last two A record IPs are owned by GitHub for their custom domain hosting.</li>
         <li translate="HELP_Sec_Desc_5"> For generating wallets, you can download the <a href="https://github.com/kvhnuke/etherwallet/tree/gh-pages">source code</a>. See #5 above.</li>
         <li translate="HELP_Sec_Desc_6"> Do a test run and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred.</li>
-        <li translate="HELP_Sec_Desc_7"> Now, to be safe, move over to the "Resources" page. Here you can see all the different elements that make up a website. If you click through Local Storage, Cookies, and Cache, you will see nothing is being stored. Nothing is being saved. Refresh the page and you are back to square one.</li>
         <li translate="HELP_Sec_Desc_8"> If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! </li>
       </ul>
     </div>
@@ -625,12 +576,9 @@
     </div>
     <div ng-show="!hContact">
       <ul>
-        <li><a href="https://twitter.com/myetherwallet" target="_blank"> Follow Us on Twitter </a></li>
         <li><a href="mailto:myetherwallet@gmail.com" target="_blank"> Email Us </a></li>
         <li><a href="https://github.com/kvhnuke/etherwallet/issues" target="_blank"> Open a GitHub Issue</a></li>
-        <li><a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank"> Message kvhnuke on Reddit </a></li>
-        <li><a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank"> Message tayvano (she goes by insom over there) on Reddit </a></li>
-        <li><a href="https://hubski.com/user?id=insomniasexx" target="_blank"> Message tayvano (she goes by insom over there, too!) on Hubski </a></li>
+        <li><a href="https://twitter.com/myetherwallet" target="_blank"> Follow Us on Twitter </a></li>
       </ul>
     </div>
   </article>

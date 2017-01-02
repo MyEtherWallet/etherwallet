@@ -142,8 +142,6 @@ nl.data = {
   /* Send Transaction */
   TRANS_desc:            'Als je Tokens wilt versturen, gebruik dan de "Verzend Token" pagina i.p.v. deze pagina.',
   TRANS_warning:         'Als je gebruik maakt van de "Enkel ETH" of "Enkel ETC" functies zul je de transactie uitvoeren via een contract. Sommige diensten hebben  problemen met het accepteren van deze transacties. Lees meer.',
-  TRANS_eth:             'Enkel ETH',
-  TRANS_etc:             'Enkel ETC',
   TRANS_advanced:        '+Geavanceerd: Voeg Data toe ',
   TRANS_data:            ' Data: ',
   TRANS_gas:             ' Gas Limit: ',
@@ -387,13 +385,12 @@ nl.data = {
 
   HELP_4_Title:         '4) Hoe stuur ik Ether van het ene wallet naar het ander?',
   HELP_4_Desc_1:        'Als je van plan ben om een grote hoeveelheid ether te versturen/ontvangen, raden we je aan om eerst te testen met een klein bedrag om er zeker van te zijn dat alles gaat zoals je verwacht.',
-  HELP_4_Desc_2:        'Navigeer naar de "Verzend Ether" pagina.',
+  HELP_4_Desc_2:        'Navigeer naar de "Verzend Ether en Tokens" pagina.',
   HELP_4_Desc_3:        'Selecteer je wallet bestand -of- je prive sleutel en ontgrendel je wallet.',
   HELP_4_Desc_4:        'Als je wallet gecodeerd (encrypted) is, zal er automatisch een extra invoer veld verschijnen. Voer je wachtwoord in.',
   HELP_4_Desc_5:        'Klik op de "Ontsleutel Wallet" knop.',
   HELP_4_Desc_6:        'Voer het adres in waar naar je wilt versturen in het "Aan adres:" veld.',
   HELP_4_Desc_7:        'Voer het te verzenden bedrag in. Je kunt ook klikken op de "Verzend volledig saldo" link als je het totaal beschikbare saldo wilt overmaken.',
-  HELP_4_Desc_8:        'Opmerking: Sinds eind juni 2016 moet je ervoor zorgen dat je ETH/ETC is gesplitst voordat je ether verstuurd zoals je normaliter zou doen. Zie onderstaande vraag #6 voor meer informatie.',
   HELP_4_Desc_9:        'Klik "Genereer Transactie".',
   HELP_4_Desc_10:       'Enkele extra nieuwe invoer velden zullen verschijnen. Dit is jouw browser die de transactie genereert.',
   HELP_4_Desc_11:       'Klik op de blauwe "Verzend Transactie" knop eronder.',
@@ -401,7 +398,7 @@ nl.data = {
   HELP_4_Desc_13:       'De transactie zal worden verstuurt. Het TX ID zal worden weergegeven. Je kunt op dit TX ID klikken om het in de blockchain te bekijken. ',
 
   HELP_4CX_Title:       '4) Hoe verzend ik Ether met MyEtherWallet CX?',
-  HELP_4CX_Desc_1:      'Ten eerste heb je een wallet nodig. Zodra je die hebt, heb je 2 opties: De "VerzendSnel" functionalitiet vanuit het Chrome Extensie icoon of de "Verzend Ether" pagina.',
+  HELP_4CX_Desc_1:      'Ten eerste heb je een wallet nodig. Zodra je die hebt, heb je 2 opties: De "VerzendSnel" functionalitiet vanuit het Chrome Extensie icoon of de "Verzend Ether en Tokens" pagina.',
   HELP_4CX_Desc_2:      'VerzendSnel:',
   HELP_4CX_Desc_3:      'Klik op het Chrome Extensie icoon.',
   HELP_4CX_Desc_4:      'Klik op de "VerzendSnel" knop.',
@@ -412,7 +409,7 @@ nl.data = {
   HELP_4CX_Desc_9:      'Controleer dat het bedrag en het adres waarnaar je gaat verzenden correct zijn.',
   HELP_4CX_Desc_10:     'Voer het wachtwoord van je wallet in.',
   HELP_4CX_Desc_11:     'Klik "Verzend Transactie."',
-  HELP_4CX_Desc_12:     'Maak gebruik van de "Verzend Ether" Pagina: ',
+  HELP_4CX_Desc_12:     'Maak gebruik van de "Verzend Ether en Tokens" Pagina: ',
 
   HELP_5_Title:         '5) Hoe voer ik MyEtherWallet.com offline/lokaal uit? ',
   HELP_5_Desc_1:        'Je kunt MyEtherWallet.com uitvoeren op je eigen computer in plaats van op de GitHub servers. Je kunt een wallet volledig offline genereren en transacties versturen met behulp van de "Offline Transactie" pagina.',
@@ -428,23 +425,6 @@ nl.data = {
   HELP_5CX_Desc_6:      'Klik op de "Uitgepakte extensie laden..." knop.',
   HELP_5CX_Desc_7:      'Navigeer naar de nu ge-unzipte map die je eerder hebt gedownload. Klik "selecteer".',
   HELP_5CX_Desc_8:      'De extensie zou nu moeten verschijnen in je extensies en in je Chrome Extensie balk.',
-
-  HELP_6_Title:         '6) Hoe splits ik mijn ETH / ETC?',
-  HELP_6_Desc_1:        'Indien je op het moment dat de hard fork plaats vond ETH in je account had, heb je nu een even zo grote hoeveelheid ETC. Als je ETH heb verstuurd door gebruik te maken van een standaard transactie, verstuur je ook ETC. Om dit te voorkomen, dien je je originele account te splitsen ("split") in twee accounts. Bij nieuwe transacties moet je er zeker van zijn dat ETH enkel naar je  ETH account gaan en ETC enkel naar je ETC account.',
-  HELP_6_Desc_2:        'Je kunt ook al je ETH & ETC met een standaard transactie versturen naar Kraken or Poloniex. Deze wisselkantoren zullen je ETH and ETC automatisch splitsen. Vervolgens kun je deze saldi naar nieuwe wallets sturen, of je ETC of ETH verkopen.',
-  HELP_6_Desc_3:        '[Meer informatie met betrekking tot wallets en `reply attacks` is hier te vinden](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
-  HELP_6_Desc_4:        'Genereer een nieuw `clean` post-fork ETH adres voor jezelf (dit zal de uiteindelijke bestemming zijn van je pure ETH).',
-  HELP_6_Desc_5:        'Genereer een nieuw `clean` post-fork ETC adres voor jezelf (dit zal de uiteindelijke bestemming zijn van je pure ETC).',
-  HELP_6_Desc_6:        'Maak een back-up van deze wallets en verifieer dat je er toegang tot hebt. Zie #2a en #3 bovenstaand.',
-  HELP_6_Desc_7:        'Verstuur 0.1234 ETH naar je nieuwe "ETH" adres door gebruik te maken van de "Enkel ETH" optie op de "Verzend Ether" pagina.',
-  HELP_6_Desc_8:        'Verstuur 0.5678 ETC naar je nieuwe "ETC" adres door gebruik te maken van de "Enkel ETC" optie op de "Verzend Ether" pagina.',
-  HELP_6_Desc_9:        'Controleer dat enkel de 0.1234 ETH zich heeft verplaatst op etherscan.io. Controleer dan enkel de 0.5678 ETC zich heeft verplaatst op gastracker.io.',
-  HELP_6_Desc_10:       'Verstuur een 0.0001 ETH transactie vanuit je nieuwe ETH wallet. Controleer deze op etherscan.io. Controleer dat de 0.0001 ETH zich heeft verplaatst.',
-  HELP_6_Desc_11:       ' Genereer (maar verstuur niet) een 0.0002 ETC transactie vanuit je nieuwe ETC wallet. Kopier het "Gesigneerde Transactie" veld. ',
-  HELP_6_Desc_12:       'Ga naar [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction) en plak deze ETC TX in classicetherwallet.com\'s offline tab helemaal beneden op de pagina en verstuur. Ga naar gastracker.io encontroleer dat de 0.0002 ETC zich verplaatst heeft.',
-  HELP_6_Desc_13:       'Als alles correct ontvangen en verstuurd is zit je goed.',
-  HELP_6_Desc_14:       'Verstuur het volledige resterende ETH saldo door gebruik te maken van de "Enkel ETH" optie en herhaal voor het ETC saldo met gebruik van de "Enkel ETC" optie.',
-  HELP_6_Desc_15:       ' Vanaf nu kun je gebruik maken van de standaard transactie optie voor deze nieuwe accounts zonder het risico op `replay attacks`. ',
 
   HELP_7_Title:         '7) Hoe verzend ik Tokens & voeg ik alternatieve tokens toe?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) is a goede manier om tokens te verkenen en de getallen omtrent het token op te zoeken.',
@@ -475,8 +455,8 @@ nl.data = {
   HELP_8CX_Desc_2:       'Dat gezegd hebbende, is het dan ook **erg belangrijk** dat je een back-up maakt van je wallets die met MyEtherWallet CX zijn gegenereerd. Als er iets met MyEtherWallet CX of jouw computer gebeurd blijft op die manier je wallet bewaard, en heb alle noodzakelijke informatie bij de hand om toegang tot je Ether te verkrijgen. Zie vraag #2a om te leren hoe een back-up van je wallet kunt maken.',
   HELP_8CX_Desc_3:       'Als om wat voor reden dan ook MyEtherWallet CX verdwijnt van de Chrome Store, kunt je het altijd nog handmatig laden met de broncode van Github. Zie #5 hierboven.',
 
-  HELP_9_Title:          '9) Is de "Verzend Ether" pagina offline?',
-  HELP_9_Desc_1:         ' Nee, verstuur transactie pagina is niet offline. De pagina heeft een internet verbinding nodig voor het bepalen van de actuele gas prijs, nonce van je account, en het versturen (broadcasten) van de transactie. Echter, het enige wat verstuurd wordt is je ondertekende transactie. Je prive sleutel blijft veilig bij je. We hebben nu ook een "Offline Transactie" pagina zodat je ervoor kunt zorgen dat je prive sleutels ten alle tijden op een offline/airgapped computer blijven.',
+  HELP_9_Title:          '9) Is de "Verzend Ether en Tokens" pagina offline?',
+  HELP_9_Desc_1:         'Nee. De pagina heeft een internet verbinding nodig voor het bepalen van de actuele gas prijs, nonce van je account, en het versturen (broadcasten) van de transactie. Echter, het enige wat verstuurd wordt is je ondertekende transactie. Je prive sleutel blijft veilig bij je. We hebben nu ook een "Offline Transactie" pagina zodat je ervoor kunt zorgen dat je prive sleutels ten alle tijden op een offline/airgapped computer blijven.',
 
   HELP_10_Title:         '10) Hoe voer ik een offline transactie uit?',
   HELP_10_Desc_1:        'Navigeer naar de "Offline Transactie" pagina met je online computer.',
@@ -489,14 +469,7 @@ nl.data = {
   HELP_10_Desc_8:        'Selecteer je wallet bestand -of- je prive sleutel en ontsleutel je wallet.',
   HELP_10_Desc_9:        'Druk op de "GENEREREER ONDERTEKENDE TRANSACTIE" knop.',
   HELP_10_Desc_10:       'Het data veld eronder zal worden ingevuld met je ondertekende transactie. Kopier dit veld en neem het mee terug naar je online computer. ',
-  HELP_10_Desc_11:       'Plak de ondertekende transactie op je online computer in het tekst veld van stap #3 em klik "Verzend Ether". Dit zal je transactie publiceren op de blockchain (broadcasten).',
-
-  HELP_11_Title:          '11) Hoe verstuur ik naar een contract?',
-  HELP_11_Desc_1:         'Versturen naar een contract vereist vaak dat je data, extra gas, of beide dient toe te voegen.',
-  HELP_11_Desc_2:         'Navigeer naar de "Verzend Ether" pagina. ',
-  HELP_11_Desc_3:         'Selecteer je wallet bestand -of- je prive sleutel en  ontsleutel je wallet. ',
-  HELP_11_Desc_4:         'Voer een "Aan Adres" en een "Te Verzenden Bedrag" in.',
-  HELP_11_Desc_5:         'Klik op de "+Geavanceerd: Voeg meer Gas of Data toe" knop onder het bedrag veld. Er verschijnen nu twee extra velden die je kunt gebruiken om de hoeveelheid gas te verhoren bovenop de standaard 21000, of om extra data aan je transactie toe te voegen.',
+  HELP_10_Desc_11:       'Plak de ondertekende transactie op je online computer in het tekst veld van stap #3 em klik send. Dit zal je transactie publiceren op de blockchain (broadcasten).',
 
   HELP_12_Title:          '12) Hoe importeer ik een MyEtherWallet  wallet in geth / Ethereum Wallet / Mist?',
   HELP_12_Desc_1:         'Door gebruik te maken van een Geth/Mist JSON bestand van MyEtherWallet v2+....',
@@ -529,8 +502,8 @@ nl.data = {
   HELP_12_Desc_27:        'Verwijder het bestand `niets_bijzonders_verwijder_mij.txt` na een geslaagde import.',
   HELP_12_Desc_28:        'De volgende keer dat je de Ethereum Wallet applicatie opent, zal je account worden vermeld onder "Accounts". ',
 
-  HELP_13_Title:          '13) Wat betekend "Gas Limit Too Low"?',
-  HELP_13_Desc_1:         'Meestal betekend dit dat je probeerd om Ether naar een contract te verzenden. Naar een contract verzenden vereist iets meer data en dus ook iets meer gas. Op de "Verzend Ether" pagina kun je klikken op de "+Geavanceerd: Voeg meer Gas of Data toe" knop onder het bedrag veld. Hiermee verschijnen er twee extra velden die je kunt gebruiken om de hoeveelheid gas te verhogen boven de standaard 21000, of om data aan je transactie toe te voegen.',
+  HELP_13_Title:          '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean?',
+  HELP_13_Desc_1:         'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction.',
 
   HELP_14_Title:          '14) Sommige sites zorgen voor een willekeurigheid (seed) bij het genereren van de prive sleutel via muis bewegingen. MyEtherWallet.com doet dit niet. Is de wikkeleurigheid (random number generation) van MyEtherWallet wel veilig?',
   HELP_14_Desc_1:         'Hoewel het bewegen van de muis een slimme truck is en we begrijpen waarom mensen dit een goed idee vinden, is de werkelijkheid dat "window.crypto" een grotere willekeurigheid (hogere entropie) zeker stelt dan je muisbewegingen. De muisbewegingen zijn niet onveilig, echter wij (en enorm veel andere crypto experimenten) geloven in "window.crypto". Bovendien kan MyEtherWallet.com gebruikt worden op touchscreen apparaten. Hier vind je een [conversatie tussen een boze redditor en Vitalik Buterin over de muisbewegingen v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
@@ -577,7 +550,6 @@ nl.data = {
   HELP_Sec_Desc_4:        'Controleer de URL -- Deze website draait vanaf GitHub en je kunt de bron code hier vinden: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) naar de domein namen: [https://www.myetherwallet.com](https://www.myetherwallet.com). ',
   HELP_Sec_Desc_5:        'Om wallets te genereren, kun je ook de [source code](https://github.com/kvhnuke/etherwallet/releases/latest) downloaden. Zie #5 hierboven.',
   HELP_Sec_Desc_6:        'Doe een test ronde en controleer wat voor netwerk activiteit er plaats vind. De makkelijkste manier om dit te doen is door met de rechtermuisknop op de pagina de klikken en te kiezen voor "inspecteer element". Ga naar het "Netwerk" tab. Genereer een test wallet. Je zult zien dat er geen netwerk activiteit is. Je zou kunnen zien dat er iets gebeurd wat er als volgt uitziet: data:image/gif and data:image/png. Dit zijn de QR codes die worden gegenereerd...op jouw computer...door jouw computer. Er werden geen bytes overgedragen.',
-  HELP_Sec_Desc_7:        'Ga vervolgens, voor de zekerheid, naar de "Resources" pagina. Hier vind je alle verschillende elementen waaruit de website is opgebouwd. Als je door de items Local Storage, Cookies en Cache klikt zul je zien dat er niets wordt opgeslagen. Er wordt niets opgeslagen. Ververs de pagina en je bent terug waar je begon.',
   HELP_Sec_Desc_8:        'Als je je niet pettig voelt bij het gebruikt van deze tool, gebruik hem dan vooral niet. We hebben deze tool voor mensen gemaakt als een handige manier om wallets te genereren en transacties te maken zonder dat je in de command prompt hoeft te duiken of een "full node" moet draaien. Nogmaals, voel je vrij om contact met ons op te nemen als je je zorgen maakt en we zullen zo snel mogelijk reageren. Bedankt! ',
 
   HELP_FAQ_Title:         'Meer hulpzame antwoorden op veel voorkomende vragen:',

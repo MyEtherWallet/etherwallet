@@ -147,8 +147,6 @@ pl.data = {
   /* Send Transaction */
   TRANS_desc:            'Jeśli chcesz wysłać Tokeny, użyj zakładki "Wyślij Tokeny".',
   TRANS_warning:         'Jeśli używasz funkcji "Tylko ETH" lub "Tylko ETC" wysyłasz przez kontrakt. Niektóre serwisy mają problemy z rozpoznawaniem tego typu transakcji. Czytaj dalej.',
-  TRANS_eth:             'Tylko ETH',
-  TRANS_etc:             'Tylko ETC',
   TRANS_advanced:        '+Zaawansowane: Dodaj Dane ',
   TRANS_data:            ' Dane: ',
   TRANS_sendInfo:        'Standardowa transakcja, zużywająca 21000 paliwa, będzie kosztować 0.000441 ETH. My używamy ceny paliwa nieco-powyżej-minimum, co odpowiada 0.000000021 ETH aby upewnić się, że zostanie szybko zatwierdzona. Nie pobieramy żadnych dodatkowych opłat.',
@@ -393,7 +391,6 @@ pl.data = {
   HELP_4_Desc_5:        'Kliknij przycisk "Odblokuj Portfel".',
   HELP_4_Desc_6:        'Wpisz adres, na który chcesz przesłać środki w pole "Do adresu:".',
   HELP_4_Desc_7:        'Wpisz kwotę do wysyłania. Możesz też kliknąć "Wyślij wszystkie dostępne środki", jeśli chcesz przesłać całą dostępną kwotę.',
-  HELP_4_Desc_8:        'Notka: Od czerwca 2016, musisz się upewnić aby rozdzielić walutę ETC i ETH zanim prześlesz ether, jak byś to zrobił normalnie. Przejdź do pytania 6 poniżej po więcej informacji.',
   HELP_4_Desc_9:        'Kliknij "Wygeneruj i Podpisz Transakcję".',
   HELP_4_Desc_10:       'Pojawi się kilka kolejnych pól. Są to dane transakcji wygenerowane przez Twoją przeglądarkę.',
   HELP_4_Desc_11:       'Kliknij niebieski przycisk "Wyślij Transakcję" na dole strony.',
@@ -429,26 +426,9 @@ pl.data = {
   HELP_5CX_Desc_7:      'Nawiguj do rozpakowanego folderu, który ściągnąłeś wcześniej. Kliknij "OK".',
   HELP_5CX_Desc_8:      'Rozszerzenie powinno się pojawić na liście i w pasku rozszerzeń przeglądarki Chrome.',
 
-  HELP_6_Title:         '6) Jak rozdzielić środki ETH / ETC? ',
-  HELP_6_Desc_1:        'Kiedy w sieci Ethereum wprowadzono twarde zmiany (tzw. hard fork) w związku z wyprowadzeniem środków z The DAO, wszystkie środki ETH jakie posiadałeś mają teraz swoją równowartość w ETC. Jeśli wyślesz ETH za pomocą standardowej transakcji, zostaną wysłane również środki ETC. Aby temu zapobiec, musisz rozdzielić swoje środki z pierwotnego konta na dwa nowe konta. Idąc dalej, musisz się upewnić, że tylko ETH zostanie wysłane do konta ETH i tylko ETC zostanie wysłane do konta ETC.',
-  HELP_6_Desc_2:        'Możesz też wysłać połączone środki ETH i ETC za pomocą standardowej transakcji do portalu Kraken lub Poloniex. Te kantory rozdzielą Twoje środki na ETH i ETC. Możesz wtedy wypłacić te środki do osobnych portfeli lub sprzedać ETC lub ETH.',
-  HELP_6_Desc_3:        '[Więcej informacji na temat portfeli i ataków powielających znajdziesz tutaj](https://steemit.com/ethereum/@ktmgen/eli5-understanding-wallets-in-eth-and-etc-a-comment-from-reddit).',
-  HELP_6_Desc_4:        'Wygeneruj nowy, czysty adres, na który trafią jedynie środki ETH.',
-  HELP_6_Desc_5:        'Wygeneruj nowy, czysty adres, na który trafią jedynie środki ETC.',
-  HELP_6_Desc_6:        'Wykonaj kopie zapasowe tych portfeli i upewnij się, że masz do nich dostęp. Zobacz punkty 2a i 3 powyżej.',
-  HELP_6_Desc_7:        'Wyślij 0.1234 ETH do Twojego nowego adresu "ETH" używając opcji "Tylko ETH" na zakładce "Wyślij Ether".',
-  HELP_6_Desc_8:        'Wyślij 0.5678 ETC do Twojego nowego adresu "ETC" używając opcji "Tylko ETC".',
-  HELP_6_Desc_9:        'Sprawdź czy tylko kwota 0.1234 ETH została przesłana na etherscan.io. Sprawdź czy tylko kwota 0.5678 ETC została przesłana na gastracker.io.',
-  HELP_6_Desc_10:       'Wyślij transakcję o wartości 0.0001 ETH z Twojego nowego portfela ETH. Sprawdź na etherscan.io. Upewnij się, że 0.0001 ETH zostało przesłane.',
-  HELP_6_Desc_11:       ' Wygeneruj transakcję o wartości 0.0002 ETC (ale nie wysyłaj) z Twojego nowego portfela ETC. Skopiuj zawartość pola "Podpisana Transakcja". ',
-  HELP_6_Desc_12:       'Przejdź do [classicetherwallet.com](http://classicetherwallet.com/#offline-transaction), wklej skopiowane dane na classicetherwallet.com na zakładce "Wyślij offline" na samym dole strony i wyślij transakcję. Sprawdź na gastracker.io czy 0.0002 ETC zostało przetransferowane.',
-  HELP_6_Desc_13:       'Jeśli wszystko wysyła i odbiera się poprawnie, jesteś w domu.',
-  HELP_6_Desc_14:       'Wyślij pozostałe środki ETH z opcją "Tylko ETH", następnie powtórz tą czynność dla ETC z opcją "Tylko ETC".',
-  HELP_6_Desc_15:       ' Po wykonaniu tych czynności możesz używać standardowych transakcji na nowo utworzonych kontach bez ryzyka ataku powielającego. ',
-
   HELP_7_Title:         '7) Jak się wysyła Tokeny i jak tworzyć własne Tokeny?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) jest świetnym miejscem na przeglądanie tokenów oraz sprawdzenia ich ilości miejsc po przecinku.',
-  HELP_7_Desc_1:        'Przejdź na zakładkę "Wyślij Tokeny".',
+  HELP_7_Desc_1:        'Przejdź na zakładkę "Wyślij Ether i Tokeny".',
   HELP_7_Desc_2:        'Odblokuj portfel.',
   HELP_7_Desc_3:        'Wpisz adres, na który chcesz je przesłać w pole "Do Adresu:".',
   HELP_7_Desc_4:        'Wpisz wartość jaką chcesz wysłać.',
@@ -476,7 +456,7 @@ pl.data = {
   HELP_8CX_Desc_3:       'Jeżeli z jakiegoś powodu MyEtherWallet CX zniknie z Chrome Store, możesz wciąż znaleźć kod źródłowy na Github\'ie i załadować manualnie do Chrome. Zobacz pkt. 5 powyżej.',
 
   HELP_9_Title:          '9) Czy zakładka "Wyślij Ether" działa offline?',
-  HELP_9_Desc_1:         ' Nie, zakładka wysyłania transakcji nie działa offline. Potrzebuje dostępu do internetu w celu pobrania aktualnej ceny paliwa, wyróżnika dla konta, oraz rozgłoszenia transakcji (wysłania). Jednakże wysyłana jest jedynie podpisana transakcja, nic więcej. Twój klucz prywatny w żadnym momencie nie opuszcza Twojego komputera. Teraz zapewniamy również funkcję "Wyślij Offline", która umożliwia przechowywanie kluczy prywatnych na komputerze, który fizycznie jest odizolowany od sieci zewnętrznej.',
+  HELP_9_Desc_1:         'Nie. Potrzebuje dostępu do internetu w celu pobrania aktualnej ceny paliwa, wyróżnika dla konta, oraz rozgłoszenia transakcji (wysłania). Jednakże wysyłana jest jedynie podpisana transakcja, nic więcej. Twój klucz prywatny w żadnym momencie nie opuszcza Twojego komputera. Teraz zapewniamy również funkcję "Wyślij Offline", która umożliwia przechowywanie kluczy prywatnych na komputerze, który fizycznie jest odizolowany od sieci zewnętrznej.',
 
   HELP_10_Title:         '10) Jak wykonać transakcję offline (Cold Wallet)?',
   HELP_10_Desc_1:        'Przejdź na zakładkę "Wyślij Offline" na komputerze z dostępem do internetu.',
@@ -490,13 +470,6 @@ pl.data = {
   HELP_10_Desc_9:        'Kliknij przycisk "Wygeneruj Transakcję".',
   HELP_10_Desc_10:       'W polu poniżej pojawią się dane podpisanej transakcji. Skopiuj jego zawartość na komputer z dostępem do internetu. ',
   HELP_10_Desc_11:       'Na komputerze z internetem wklej podpisaną transakcję w pole tekstowe w kroku 3 i kliknij "Wyślij Transakcję". To spowoduje rozgłoszenie transakcji.',
-
-  HELP_11_Title:          '11) Jak wysłać transakcję do kontraktu?',
-  HELP_11_Desc_1:         'Wysyłanie do kontraktu zazwyczaj wymaga załączenia dodatkowych danych i/lub dodatkowej ilości paliwa',
-  HELP_11_Desc_2:         'Przejdź na zakładkę "Wyślij Ether". ',
-  HELP_11_Desc_3:         'Wybierz Twój plik portfela -lub- klucz prywatny i odblokuj portfel. ',
-  HELP_11_Desc_4:         'Wpisz adres i kwotę do wysłania.',
-  HELP_11_Desc_5:         'Kliknij "+Zaawansowane: Dodaj Więcej Paliwa lub Dane" pod polem z kwotą. Pojawią się 2 nowe pola gdzie możesz zwiększyć ilość paliwa powyżej domyślnej wartości 21000 lub wpisać dane do transakcji.',
 
   HELP_12_Title:          '12) Jak zaimportować portfel utworzony w MyEtherWallet do geth / Ethereum Wallet / Mist?',
   HELP_12_Desc_1:         'Używając pliku Keystore Geth/Mist z MyEtherWallet v2+....',
@@ -529,8 +502,8 @@ pl.data = {
   HELP_12_Desc_27:        'Po zaimportowaniu portfela, usuń `nic_specjalnego_usun_mnie.txt`',
   HELP_12_Desc_28:        'Po ponownym uruchomieniu aplikacji Ethereum Wallet Twój portfel pojawi się na zakładce "Accounts". ',
 
-  HELP_13_Title:          '13) Co oznacza "Gas Limit Too Low" ("Limit paliwa zbyt niski")?',
-  HELP_13_Desc_1:         'Najprawdopodobniej oznacza to, że chcesz wysłać Ether do kontraktu. Wysyłanie do kontraktu wymaga nieco więcej danych, a więc również więcej paliwa. Na zakładce "Wyślij Ether" kliknij "+Zaawansowane: Dodaj Więcej Paliwa lub Dane" poniżej pola kwoty. Pojawią się 2 nowe pola gdzie możesz zwiększyć ilość paliwa powyżej domyślnej wartości 21000 lub wpisać dane do transakcji.',
+  HELP_13_Title:          '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean?',
+  HELP_13_Desc_1:         'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction.',
 
   HELP_14_Title:          '14) Niektóre strony wykorzystują ruchy myszką przy generowaniu klucza prywatnego. MyEtherWallet tego nie robi. Czy generator liczb losowych w MyEtherWallet jest bezpieczny?',
   HELP_14_Desc_1:         'Chociaż generowanie liczb losowych przy udziale ruchów myszki jest sprytnie pomyślane i rozumiemy dlaczego ludzie to lubią, to jednak rzeczywistość jest taka, że window.crypto zapewnia większą entropię niż ruchy myszką. Generowanie z ruchów myszki nie jest niebezpieczne, ale my (oraz znaczna liczba innych ekspertów kryptografii) wierzymy w window.crypto. W dodatku MyEtherWallet może być używane na urządzeniach dotykowych. Tutaj można przeczytać [rozmowę rozeźlonego reddit\'ora i Vitalik\'a Buterin\'a odnośnie ruchów myszki kontra window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) a tutaj jest [specyfikacja window.crypto w3](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
@@ -577,7 +550,6 @@ pl.data = {
   HELP_Sec_Desc_4:        'Sprawdź adres URL -- Ta strona jest serwowana przez GitHub. Kod źródłowy jest dostępny pod: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages). Strona jest dostępna pod domenami: [https://www.myetherwallet.com](https://www.myetherwallet.com).',
   HELP_Sec_Desc_5:        ' Do generowania portfeli możesz pobrać [kod źródłowy](https://github.com/kvhnuke/etherwallet/releases/latest). Zobacz punkt 5 powyżej.',
   HELP_Sec_Desc_6:        'Wykonaj test i sprawdź jakie połączenia sieciowe są aktywowane. Najprostszą metodą jest kliknięcie prawym przyciskiem myszy na stronie i "Zbadaj". Przejdź na zakładkę "Network". Wygeneruj testowy portfel. Zobaczysz, że nie są aktywowane żadne połączenia. Możesz zobaczyć coś wyglądającego jak data:image/gif i data:image/png. To są kody QR generowane... na Twoim komputerze... przez Twój komputer. Żadne dane nie były transferowane.',
-  HELP_Sec_Desc_7:        'Teraz, żeby się upewnić przejdź na zakładkę "Resources". Możesz tu zobaczyć wszystkie elementy tworzące stronę. Jeśli przejdziesz przez Local Storage, Cookies i Cache zobaczysz, że nic nie jest przechowywane. Nic nie jst zapisywane. Odśwież stronę i wszystko zostanie wyczyszczone do wartości domyślnych.',
   HELP_Sec_Desc_8:        'Jeśli nie czujesz się komfortowo używając tego oprogramowania, bez względu na wszystko, nie używaj go. Stworzyliśmy te narzędzia jako pomoc w generowaniu nowych portfeli i wykonywaniu transakcji bez potrzeby zagłębiania się w linię poleceń lub prowadzenia pełnego węzła. Jeszcze raz, nie krępuj się z nami skontaktować jeżeli masz jakieś wątpliwości. Postaramy się odpowiedzieć tak szybko jak to możliwe. Dzięki! ',
 
   HELP_FAQ_Title:         'Więcej Pomocnych Odpowiedzi na Często Zadawane Pytania (tylko angielski)',
