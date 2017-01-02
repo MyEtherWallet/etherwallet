@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 0684957b6867f83880ebd30b1cf03fc70e377dc8
+// Last sync with en.js: commit 55c9ca100499ad7742bcca9b3770a634279eefdc
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -285,6 +285,9 @@ it.data = {
   ERROR_20:             'Simbolo non valido',
   ERROR_21:             'Non è un token ERC-20 valido.',
   ERROR_22:             'Impossibile eseguire una stima del gas necessario. Non ci sono abbastanza fondi nel conto, oppure l\'indirizzo del contratto ricevente genererebbe un errore. Puoi inserire il gas manualmente e procedere. Il messaggio di errore al momento dell\'invio potrebbe contenere ulteriori informazioni.',
+  ERROR_23:             'Inserisci un nome di nodo valido',
+  ERROR_24:             'Inserisci un url valido, se stai usando https l\'url deve cominciare per https',
+  ERROR_25:             'Inserisci una porta valida',
   SUCCESS_1:            'Indirizzo valido',
   SUCCESS_2:            'Portafoglio decodificato correttamente',
   SUCCESS_3:            'Transazione inviata. TX ID: ',
@@ -430,7 +433,7 @@ it.data = {
 
   HELP_7_Title:         '7) Come invio token e come aggiungo token personalizzati?',
   HELP_7_Desc_0:        '[Ethplorer.io](https://ethplorer.io/) è un ottimo modo di esplorare i token e trovarne i decimali.',
-  HELP_7_Desc_1:        'Vai alla pagina "Invia token".',
+  HELP_7_Desc_1:        'Vai alla pagina "Invia ether e token".',
   HELP_7_Desc_2:        'Sblocca il portafoglio.',
   HELP_7_Desc_3:        'Inserisci l\'indirizzo al quale vuoi inviare nel campo "Indirizzo destinatario:".',
   HELP_7_Desc_4:        'Inserisci l\'importo che vuoi inviare.',
@@ -504,8 +507,8 @@ it.data = {
   HELP_12_Desc_27:        'A importazione conclusa positivamente, cancella `niente_di_speciale_cancellami.txt`',
   HELP_12_Desc_28:        'Alla prossima apertura dell\'applicazione Ethereum Wallet, il tuo conto sarà mostrato sotto "Accounts". ',
 
-  HELP_13_Title:          '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean?',
-  HELP_13_Desc_1:         'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction.',
+  HELP_13_Title:          '13) Cosa significa "Fondi insufficienti. L\'account dal quale stai provando ad inviare la transazione non ha abbastanza fondi. Richiesti XXXXXXXXXXXXXXXXXXX ma presenti: XXXXXXXXXXXXXXXX."?',
+  HELP_13_Desc_1:         'Significa che non hai abbastanza ether nel tuo conto per coprire il costo del gas. Tutte le transazioni (comprese quelle che riguardano token e contratti) richiedono gas, e il gas si paga in ether. Il numero indicato è l\'importo richiesto per coprire il costo della transazione in wei. Prendi quel numero, dividilo per `1000000000000000000`, e sottrai la quantità di ether che stavi provando ad inviare (se stavi provando ad inviare ether). Il risultato è la somma in ether che devi inviare a quel conto per poter eseguire la transazione.',
 
   HELP_14_Title:          '14) Certi siti inizializzano il generatore di numeri casuali per la generazione della chiave privata tramite i movimenti del mouse. MyEtherWallet.com non lo fa. La generazione di numeri casuali di MyEtherWallet è sicura?',
   HELP_14_Desc_1:         'Sebbene usare i movimenti del mouse sia ingegnoso, e comprendiamo perché piaccia, la realtà è che window.crypto assicura maggiore entropia rispetto ai tuoi movimenti del mouse. Non che i movimenti del mouse siano insicuri, è solo che noi (e un sacco di altri critto-esperimenti) crediamo in window.crypto. Oltretutto, MyEtherWallet.com può essere utilizzato su dispositivi touch. Qui c\'è una [conversazione fra un utente di reddit arrabbiato e Vitalik Buterin su movimenti del mouse contro window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) e qui c\'è [la specifica del w3 di window.crypto](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
