@@ -9,7 +9,8 @@ nodes.nodeList = {
         'tokenList': require('./tokens/ethTokens.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': require('./nodeHelpers/mewEth')
+        'lib': require('./nodeHelpers/mewEth'),
+        'type': 'ETH'
     },
     'etc_mew': {
         'name': 'ETC',
@@ -18,7 +19,8 @@ nodes.nodeList = {
         'tokenList': require('./tokens/etcTokens.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': require('./nodeHelpers/mewEtc')
+        'lib': require('./nodeHelpers/mewEtc'),
+        'type': 'ETC'
     },
     'rop_mew': {
         'name': 'Ropsten-beta',
@@ -27,7 +29,8 @@ nodes.nodeList = {
         'tokenList': require('./tokens/ropstenTokens.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/rop','')
+        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/rop',''),
+        'type': 'ROP'
     },
     'eth2_mew': {
         'name': 'ETH-beta',
@@ -36,7 +39,8 @@ nodes.nodeList = {
         'tokenList': require('./tokens/ethTokens.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/eth','')
+        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/eth',''),
+        'type': 'ETH'
     },
     'eth_ethscan': {
         'name': 'ETH',
@@ -45,7 +49,8 @@ nodes.nodeList = {
         'tokenList': require('./tokens/ethTokens.json'),
         'estimateGas': false,
         'service': 'Etherscan.io',
-        'lib': require('./nodeHelpers/etherscan')
+        'lib': require('./nodeHelpers/etherscan'),
+        'type': 'ETH'
     }
 };
 nodes.ethPrice = require('./nodeHelpers/ethPrice');

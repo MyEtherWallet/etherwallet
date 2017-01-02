@@ -30,9 +30,7 @@
 
     <p><span translate="NAV_Contact">Contact</span>:
       <a href="mailto:myetherwallet@gmail.com" target="_blank">Email</a> &middot;
-      <a href="https://twitter.com/myetherwallet" target="_blank">Twitter</a> &middot;
-      <a href="https://www.reddit.com/message/compose/?to=kvhnuke" target="_blank">kvhnuke on reddit</a> &middot;
-      <a href="https://www.reddit.com/message/compose/?to=insomniasexx" target="_blank">tayvano (insom) on reddit</a>
+      <a href="https://twitter.com/myetherwallet" target="_blank">Twitter</a>
     </p>
 
     <p>

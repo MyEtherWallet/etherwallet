@@ -53,7 +53,7 @@
         <div class="tagline">
           <span style="max-width: 375px" translate="CX_Tagline">Open Source JavaScript Client-Side Ether Wallet Chrome Extension</span>
 }
-        &middot; v3.3.6
+        &middot; v3.4.0
 
         &nbsp;&nbsp;
 
@@ -61,7 +61,7 @@
           <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small> <span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">    {{value.name}}     <small> ({{value.service}})     </small></a></li>
-            <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;">    Add custom node  </a></li>
+            <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
           </ul>
         </span>
 
@@ -126,6 +126,20 @@
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title"> Set Up Your Custom Node </h4>
         </div>
+        <div class="col-xs-12">
+          <!-- Only show this if they are NOT on https -->
+          <p>
+            <strong>To connect to a local node...</strong>
+            <ul>
+              <li> URL: http://127.0.0.1</li>
+              <li> Port: 8545 </li>
+              <li> Run geth: <code>geth --rpc</code> or run parity: <code>parity</code></li>
+            </ul>
+          </p>
+
+          <!-- Only show this if they are ON on https AND trying to connect to an HTTP node-->
+          <div class="alert alert-danger">Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can <a href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank">download the MyEtherWallet repo & run it locally</a> to connect to any node. Or, get free SSL certificate via <a href="https://letsencrypt.org/" target="_blank">LetsEncrypt</a>.</div>
+        </div>
         <div class="modal-body row">
           <div class="form-group col-xs-12">
             <label>Node Name</label>
@@ -142,9 +156,9 @@
           <div class="form-group col-xs-12">
             <label>Options</label>
             <span class="radio">
-              <label><input name="options" type="radio" ng-model="customNode.options" value="eth"> ETH</label>
-              <label><input name="options" type="radio" ng-model="customNode.options" value="etc"> ETC</label>
-              <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten</label>
+              <label><input name="options" type="radio" ng-model="customNode.options" value="eth"> ETH </label>
+              <label><input name="options" type="radio" ng-model="customNode.options" value="etc"> ETC </label>
+              <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten </label>
             </span>
           </div>
           <div class="form-group" ng-bind-html="addNodeStatus"></div>

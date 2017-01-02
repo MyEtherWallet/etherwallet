@@ -69,13 +69,10 @@
           <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
           <div class="input-group-btn">
             <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
-              <span translate="{{unitTranslation}}"></span>{{unitReadable}}
-              <span class="caret"></span>
+              {{unitReadable}}<span class="caret"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
-              <li><a ng-class="{true:'active'}[tx.sendMode==0]" ng-click="setSendMode(0)"><span translate="TRANS_eth">ETH</span></a></li>
-              <li role="separator" class="divider"></li>
-
+              <li><a ng-class="{true:'active'}[tx.sendMode==0]" ng-click="setSendMode(0)">ETH</a></li>
               <li ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
                 <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode(4, $index, token.getSymbol())"> {{token.getSymbol()}} </a>
               </li>
