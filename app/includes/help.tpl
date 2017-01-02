@@ -255,14 +255,14 @@
   <article class="collapse-container">
     <div ng-click="h6 = !h6">
       <a class="collapse-button" ><span ng-show="!h6">+</span><span ng-show="h6">-</span></a>
-      <h4>6. I cannot connect to my custom node. What do I do? </h4>
+      <h4 class="text-danger">6) I cannot connect to my custom node. What do I do? </h4>
     </div>
     <div ng-show="h6">
       <ul>
         <li> Verify the URL you entered is correct. </li>
         <li> Verify the port you entered is correct. </li>
         <li> Verify that if you are connecting to an http:// node you are running MyEtherWallet locally (NOT over https://). </li>
-        <li> Verify geth is running with `geth --rpc` or parity is running with `parity --rpccorsdomain "*"` </li>
+        <li> Verify geth is running with <code>geth --rpc</code> or parity is running with <code>parity --rpccorsdomain "*"</code> </li>
         <li> Verify your node is actually up and running. </li>
         <li> Try removing the node and adding it again. </li>
       </ul>
@@ -547,10 +547,10 @@
 @@if (site === 'cx' ) {
   <article class="collapse-container">
     <div ng-click="hSecCX = !hSecCX">
-      <a class="collapse-button" ><span ng-show="hSecCX">+</span><span ng-show="!hSecCX">-</span></a>
+      <a class="collapse-button" ><span ng-show="!hSecCX">+</span><span ng-show="hSecCX">-</span></a>
       <h4 translate="HELP_SecCX_Title">Security - MyEtherWallet CX </h4>
     </div>
-    <div ng-show="!hSecCX">
+    <div ng-show="hSecCX">
       <h6 translate="HELP_SecCX_Desc_1"> Where is this extension saving my information?</h6>
       <p translate="HELP_SecCX_Desc_2"> The information you store in this Chrome Extension is saved via <a href="http://chrome.storage/" target="_blank">chrome.storage</a>. - this is the same place your passwords are saved when you save your password in Chrome. </p>
 
@@ -566,10 +566,10 @@
 
   <article class="collapse-container">
     <div ng-click="hSec = !hSec">
-      <a class="collapse-button" ><span ng-show="hSec">+</span><span ng-show="!hSec">-</span></a>
+      <a class="collapse-button" ><span ng-show="!hSec">+</span><span ng-show="hSec">-</span></a>
       <h4 translate="HELP_Sec_Title">Security </h4>
     </div>
-    <div ng-show="!hSec">
+    <div ng-show="hSec">
       <p translate="HELP_Sec_Desc_1"> If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. </p>
       <ul>
         <li translate="HELP_Sec_Desc_2">We've been up and running since August 2015. If you search for <a href="https://www.reddit.com/search?q=myetherwallet" target="_blank" />"myetherwallet" on reddit</a>, you can see numerous people who use us with great success.</li>

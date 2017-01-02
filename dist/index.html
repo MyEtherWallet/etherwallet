@@ -30,36 +30,18 @@
 
 <body>
 
+<header ng-controller='tabsCtrl'>
+  
+  <section class="container-fluid bg-gradient header-branding">
+    <section class="container">
 
-  <header ng-controller='tabsCtrl'>
-    <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected">
-      <div class="container">Not able to connect to node. See the help page for troubleshooting suggestions.</div>
-    </div>
-    <section class="container-fluid bg-gradient header-branding">
-      <section class="container">
-        <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="My Ether Wallet" /></a>
-        <div class="tagline">
-          <span style="max-width: 375px">Open-Source & Client-Side Ether Wallet</span>
+       <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> 
+      
 
 
+      <div class="tagline"><span style="max-width: 395px">Client-side tool for securely interacting with Ethereum</span>
 
-        &middot; v3.4.0
-
-        &nbsp;&nbsp;
-
-        <span class="dropdown">
-          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small> <span class="caret"></span></a>
-          <ul class="dropdown-menu" ng-show="dropdownNode">
-            <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
-              {{value.name}}
-              <small> ({{value.service}}) </small>
-              <img ng-show="value.service=='Custom'" img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
-            </a></li>
-            <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
-          </ul>
-        </span>
-
-        &nbsp;&nbsp;
+        &middot; v3.4.0 &nbsp;&nbsp;
 
         <span class="dropdown">
           <a class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
@@ -90,12 +72,26 @@
           </ul>
         </span>
 
+        &nbsp;&nbsp;
 
+        <span class="dropdown">
+          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small> <span class="caret"></span></a>
+          <ul class="dropdown-menu" ng-show="dropdownNode">
+            <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
+              {{value.name}}
+              <small> ({{value.service}}) </small>
+              <img ng-show="value.service=='Custom'" img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
+            </a></li>
+            <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
+          </ul>
+        </span>
 
       </div>
     </section>
   </section>
-
+  <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected">
+    <div class="container">Not able to connect to node. See the help page for troubleshooting suggestions.</div>
+  </div>
   <section class="container nav-container overflowing" >
     <a ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
     <div class="nav-scroll">
@@ -1349,14 +1345,14 @@
   <article class="collapse-container">
     <div ng-click="h6 = !h6">
       <a class="collapse-button" ><span ng-show="!h6">+</span><span ng-show="h6">-</span></a>
-      <h4>6. I cannot connect to my custom node. What do I do? </h4>
+      <h4 class="text-danger">6) I cannot connect to my custom node. What do I do? </h4>
     </div>
     <div ng-show="h6">
       <ul>
         <li> Verify the URL you entered is correct. </li>
         <li> Verify the port you entered is correct. </li>
         <li> Verify that if you are connecting to an http:// node you are running MyEtherWallet locally (NOT over https://). </li>
-        <li> Verify geth is running with `geth --rpc` or parity is running with `parity --rpccorsdomain "*"` </li>
+        <li> Verify geth is running with <code>geth --rpc</code> or parity is running with <code>parity --rpccorsdomain "*"</code> </li>
         <li> Verify your node is actually up and running. </li>
         <li> Try removing the node and adding it again. </li>
       </ul>
@@ -1629,10 +1625,10 @@
 
   <article class="collapse-container">
     <div ng-click="hSec = !hSec">
-      <a class="collapse-button" ><span ng-show="hSec">+</span><span ng-show="!hSec">-</span></a>
+      <a class="collapse-button" ><span ng-show="!hSec">+</span><span ng-show="hSec">-</span></a>
       <h4 translate="HELP_Sec_Title">Security </h4>
     </div>
-    <div ng-show="!hSec">
+    <div ng-show="hSec">
       <p translate="HELP_Sec_Desc_1"> If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. </p>
       <ul>
         <li translate="HELP_Sec_Desc_2">We've been up and running since August 2015. If you search for <a href="https://www.reddit.com/search?q=myetherwallet" target="_blank" />"myetherwallet" on reddit</a>, you can see numerous people who use us with great success.</li>

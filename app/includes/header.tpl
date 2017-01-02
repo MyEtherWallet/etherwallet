@@ -30,49 +30,22 @@
 
 <body>
 
-@@if (site === 'mew' ) {
-  <header ng-controller='tabsCtrl'>
-    <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected">
-      <div class="container">Not able to connect to node. See the help page for troubleshooting suggestions.</div>
-    </div>
-    <section class="container-fluid bg-gradient header-branding">
-      <section class="container">
-        <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="My Ether Wallet" /></a>
-        <div class="tagline">
-          <span style="max-width: 375px">Open-Source & Client-Side Ether Wallet</span>
-}
-
-@@if (site === 'cx' ) {
-  <header ng-controller='tabsCtrl'>
-    <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected">
-      <div class="container">Not able to connect to node. See the help page for troubleshooting suggestions.</div>
-    </div>
+<header ng-controller='tabsCtrl'>
+  @@if (site === 'cx' ) {
     <a href="" class="small announcement annoucement-warning" target="_blank">
       <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
     </a>
-    <section class="container-fluid bg-gradient header-branding">
-      <section class="container">
-        <a class="brand" href="/cx-wallet.html"><img src="images/etherwalletcx-logo.svg" height="64px" width="auto" alt="My Ether Wallet" /></a>
-        <div class="tagline">
-          <span style="max-width: 375px" translate="CX_Tagline">Open Source JavaScript Client-Side Ether Wallet Chrome Extension</span>
-}
-        &middot; v3.4.0
+  }
+  <section class="container-fluid bg-gradient header-branding">
+    <section class="container">
 
-        &nbsp;&nbsp;
+      @@if (site === 'mew' ) { <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> }
+      @@if (site === 'cx' ) { <a class="brand" href="/cx-wallet.html"><img src="images/etherwalletcx-logo.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> }
 
-        <span class="dropdown">
-          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small> <span class="caret"></span></a>
-          <ul class="dropdown-menu" ng-show="dropdownNode">
-            <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
-              {{value.name}}
-              <small> ({{value.service}}) </small>
-              <img ng-show="value.service=='Custom'" img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
-            </a></li>
-            <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
-          </ul>
-        </span>
 
-        &nbsp;&nbsp;
+      <div class="tagline"><span style="max-width: 395px">Client-side tool for securely interacting with Ethereum</span>
+
+        &middot; v3.4.0 &nbsp;&nbsp;
 
         <span class="dropdown">
           <a class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
@@ -103,12 +76,26 @@
           </ul>
         </span>
 
+        &nbsp;&nbsp;
 
+        <span class="dropdown">
+          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small> <span class="caret"></span></a>
+          <ul class="dropdown-menu" ng-show="dropdownNode">
+            <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
+              {{value.name}}
+              <small> ({{value.service}}) </small>
+              <img ng-show="value.service=='Custom'" img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
+            </a></li>
+            <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
+          </ul>
+        </span>
 
       </div>
     </section>
   </section>
-
+  <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected">
+    <div class="container">Not able to connect to node. See the help page for troubleshooting suggestions.</div>
+  </div>
   <section class="container nav-container overflowing" >
     <a ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
     <div class="nav-scroll">
