@@ -22,10 +22,6 @@ pl.data = {
   NAV_SendEther:        'Wyślij Ether i Tokeny',
   NAV_SendTokens:       'Wyślij Tokeny',
   NAV_Offline:          'Wyślij Offline',
-  NAV_WithdrawDAO:      'Wypłać DAO',
-  DAO_TitleLong:        'Zamień swoje Tokeny DAO na ETH',
-  NAV_ClaimDGD:         'Odbierz DGD',
-  DGD_TitleLong:        'Odbierz swoje Tokeny DGD',
   NAV_MyWallets:        'Moje Portfele',
   NAV_ViewWallet:       'Wyświetl informacje o portfelu',
   NAV_Help:             'Pomoc',
@@ -74,7 +70,6 @@ pl.data = {
   sidebar_TokenBal:     'Stan Tokenów: ',
   sidebar_Equiv:        'Ekwiwalent: ',
   sidebar_TransHistory: 'Historia Transakcji: ',
-  sidebar_DGDBal:       'Informacje o sprzedaży DGD:',
   sidebar_donation:     'MyEtherWallet jest darmową, otwarto-źródłową usługą stworzoną dla Twojej prywatności i bezpieczeństwa. Im więcej darowizn zbierzemy, tym więcej czasu będziemy w stanie poświęcić na dodawanie nowych funkcjonalności, analizowanie informacji zwrotnych oraz spełnianie waszych oczekiwań. Jesteśmy jedynie dwójką ludzi starającą się zmienić świat. Pomóż nam!',
   sidebar_donate:       'Prześlij darowiznę',
   sidebar_thanks:       'DZIĘKUJEMY!!!',
@@ -185,30 +180,6 @@ pl.data = {
   OFFLINE_Step3_Title:    'Krok 3: Wyślij / Opublikuj Transakcję (Komputer Online)',
   OFFLINE_Step3_Label_1:  'Wklej tu podpisaną transakcję z Kroku 2 i kliknij przycisk "WYŚLIJ TRANSAKCJĘ".',
 
-  /* DAO */
-  DAO_bal1:               'w bloku 1,919,999',
-  DAO_bal2:               'aktualny',
-  DAO_TitleETH:           'Wypłać DAO do ETH',
-  DAO_TitleETC:           'Wypłać DAO do ETC',
-  DAO_ETC_Label_1:        'Na jaki adres chcesz wysłać swoje ETC?',
-  DAO_ETC_Label_2:        '"White Hat Group" (Grupa Białych Kapeluszy) ciężko pracowała, aby pomóc Ci odzyskać Twoje ETC. Jeżeli chcesz, możesz im podziękować wysyłając procent z wypłacanych przez Ciebie środków. ',
-  DAO_Desc:               'Użyj tej zakładki aby wypłacić tokeny DAO w zamian za ETH. Jeżeli chcesz wysłać tokeny DAO użyj zakładki Wyślij Tokeny.',
-  DAO_Inst:               'Tak. Po prostu naciśnij duży czerwony przycisk. To jest tak proste.',
-  DAO_Warning:            'Jeśli dostajesz błąd "Niewystarczające środki na paliwo", musisz doładować konto niewielką ilością ETH aby pokryć koszty transakcji. Dodaj 0.01 ETH do tego konta i spróbuj ponownie. ',
-  DAOModal_Title:         'Tylko się upewniam...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Zamierzasz wypłacić',
-  DAOModal_2:             'DAO tokenów do',
-  DAOModal_3:             'za', // "w zamian za"
-
-  /* Digix */
-  DGD_Desc:               'Odbierz swoje tokeny i odznaki DigixDAO (DGD). Aby odebrać, musisz być osobą uczestniczącą w wyprzedaży tokenów w 30-31 marca 2016.  Jeśli chcesz wysłać DGD, użyj zakładki Wyślij Tokeny.',
-  DGD_Label_1:            'Szacunkowa Opłata:',
-  DGD_Label_2:            'Zapewniona Maksymalna Opłata:',
-  DGD_Label_3:            'Cena Paliwa:',
-  DGD_Generate:           'Wygeneruj Żądanie',
-  DGD_Content:            'Jesteś w trakcie odbierania tokenów DGD.',
-
   /* Deploy Contracts */
   NAV_DeployContract:     'Wyślij Kontrakt',
   NAV_InteractContract:   'Pracuj z Kontraktem',
@@ -288,10 +259,8 @@ pl.data = {
   SUCCESS_2:            'Portfel został odszyfrowany',
   SUCCESS_3:            'Transakcja zgłoszona. TX ID: ',
   SUCCESS_4:            'Twój portfel został dodany: ',
-  SUCCESS_5:            'Zagłosowałeś z powodzeniem. Dziękuję za bycie aktywnym uczestnikiem The DAO.',
   SUCCESS_6:            'Wybrany plik: ',
   WARN_Send_Link:       'Znalazłeś się tu przez odnośnik, który zawiera wstępnie uzupełniony adres, kwotę, paliwo lub dane transakcji. Możesz zmienić dowolne parametry transakcji zanim ją zatwierdzisz. Odblokuj portfel aby kontynuować.',
-  WARN_Send_Link_2:     '**Uwaga:** Dane można załączyć tylko wysyłając przez "ETH (Transakcja Standardowa)". Usuń parametr "sendMode" i/lub "tokenSymbol" z linku URI, aby wysłać transakcję z danymi.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Nieprawidłowy nadawca',

@@ -28,7 +28,6 @@ tr.data = {
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
   WARN_Send_Link:       'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Nano S',
@@ -69,10 +68,6 @@ tr.data = {
   NAV_SendEther:        'Ether ve Tokens göndermek',
   NAV_SendTokens:       'Tokens gönder',
   NAV_Offline:          'Offline gönder',
-  NAV_WithdrawDAO:      'DAO çek',
-  DAO_TitleLong:        'DAO tokenlerini ETH olarak çek',
-  NAV_ClaimDGD:         'DGD talep et',
-  DGD_TitleLong:        'DGD tokenlerini talep et',
   NAV_MyWallets:        'Cüzdanim',
   NAV_ViewWallet:       'Cüzdan bilgilerni göster',
   NAV_Help:             'Yardim et',
@@ -124,7 +119,6 @@ tr.data = {
   sidebar_TokenBal:     'Token bakiye: ',
   sidebar_Equiv:        'Eşdeğer Değerler: ', /* Belki sadece Esdeger yeter */
   sidebar_TransHistory: 'Işlem geçmişi: ',
-  sidebar_DGDBal:       'DGD Crowdsale bilgileri: ',
   sidebar_donation:     'MyEtherWallet gizlilik ve güvenlike adanmış ücretsiz ve açık kaynak kodlu bir hizmettir. Ne kadar cok bagis edilirse o kadar cok yeni özellik programlamaya, görüşlerinizi işlemeye yatitim yapabiliriz. Biz sadece dünyayı değiştirmek isteyen iki kişiyiz. Bize yardım edermisin?',
   sidebar_donate:       'Bağışta bulun',
   sidebar_thanks:       'TEŞEKKÜRLER!!!',
@@ -233,31 +227,6 @@ tr.data = {
   OFFLINE_Step3_Title:    'Adim 3: Gönder / Islemi duyur (Online Computer)',
   OFFLINE_Step3_Label_1:  'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
 
-  /* DAO */
-  DAO_bal1:               'block 1,919,999\'ta',
-  DAO_bal2:               'şimdiki',
-  DAO_TitleETH:           'DAO ETH olarak cek',
-  DAO_TitleETC:           'DAO ETC olarak cek',
-  DAO_ETC_Label_1:        'ETC hangi adrese gönderilmesini istiyorsun',
-  DAO_ETC_Label_2:        '"Beyaz Şapka Grubu" ETC\'lerini geri almak için yorulmadan çalışmaktadır. Eğer istiyorsan, senin çekiminden yüzdesi bağışlayarak "teşekkür ederim" diyebilirsin.',
-  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
-  DAO_Inst:               'Evet. Sadece büyük kırmızı düğmeye bas. Bu kadar kolay.',
-  DAO_Warning:            'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ether to this account and try again. ',
-  DAOModal_Title:         'Sadece emin olmak için...',
-
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Cekmek üzeresin',
-  DAOModal_2:             'DAO token\'i ',
-  DAOModal_3:             ' yerine', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
-  DGD_Label_1:            'Tahmini bedel:',
-  DGD_Label_2:            'Maximum bedel:',
-  DGD_Label_3:            'Gas fiyati:',
-  DGD_Generate:           'Talep oluştur', /* Maybe "Talep" is the wrong word for "Claim" */
-  DGD_Content:            'Suan DGD token\'lerini talep etmekdesin.',
-
   /* Deploy Contracts */
   DEP_generate:           'Bytecode oluştur',
   DEP_generated:          'Oluşturulan Bytecode',
@@ -315,7 +284,6 @@ tr.data = {
   SUCCESS_2:            'Cüzdan basariyla desifre edildi',
   SUCCESS_3:            'İşlem teslim edildi TX ID: ',
   SUCCESS_4:            'Cüzdanın başarıyla eklendi: ',
-  SUCCESS_5:            'Başarıyla oy verdiniz. DAO aktif bir katılımcı olduğunuz için teşekkür ederiz.',
   SUCCESS_6:            'Dosya secildi ',
 
   /* Tranlsation Info */

@@ -22,10 +22,6 @@ fr.data = {
   NAV_SendEther:        'Envoyer des Ether et des Tokens',
   NAV_SendTokens:       'Envoyer des tokens',
   NAV_Offline:          'Envoyer hors-ligne',
-  NAV_WithdrawDAO:      'Retirer de la DAO',
-  DAO_TitleLong:        'Échanger des tokens DAO contre des ETH',
-  NAV_ClaimDGD:         'Réclamer des DGD',
-  DGD_TitleLong:        'Réclamer vos tokens DGD',
   NAV_DeployContract:   'Déployer un contrat',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contrats',
@@ -79,7 +75,6 @@ fr.data = {
   sidebar_TokenBal:     'Solde en tokens : ',
   sidebar_Equiv:        'Valeur correspondante : ',
   sidebar_TransHistory: 'Historique des transactions: ',
-  sidebar_DGDBal:       'Informations sur la *crowdsale* DGD :',
   sidebar_donation:     'MyEtherWallet est un service gratuit et open source respectueux de votre vie privée et de votre sécurité. Plus nous recevons de donations, plus nous dédions du temps à développer de nouvelles fonctions, à écouter vos retours et à vous fournir ce dont vous avez besoin. Nous ne sommes que deux personnes qui essayent de changer le monde. Aidez nous !',
   sidebar_donate:       'Faire une donation',
   sidebar_thanks:       'MERCI !!!',
@@ -190,29 +185,6 @@ fr.data = {
   OFFLINE_Step3_Title:    'Étape 3 : Envoyer / publier la transaction (ordinateur en ligne)',
   OFFLINE_Step3_Label_1:  'Copier ici la transaction signée à l\'étape 2 et cliquez sur le bouton "ENVOYER LA TRANSACTION".',
 
-  /* DAO */
-  DAO_bal1:               'au bloc 1.919.999',
-  DAO_bal2:               'actuel',
-  DAO_TitleETH:           'Retrait de DAO en ETH',
-  DAO_TitleETC:           'Retrait de DAO en ETC',
-  DAO_ETC_Label_1:        'À quelle adresse voulez-vous que les ETC soient envoyés ?',
-  DAO_ETC_Label_2:        'Le "White Hat Group" a travaillé sans relâche pour vous rendre vos ETC. Vous pouvez les remercier par une donation d\'un pourcentage de votre retrait si vous le souhaitez. ',
-  DAO_Desc:               'Utilisez cet onglet pour retirer et convertir vos tokens en ETH. Si vous désirez envoyer des tokens DAO, utilisez l\'onglet Envoi de tokens.',
-  DAO_Inst:               'Oui. Cliquez simplement sur le gros bouton rouge. Vous voyez, c\'est simple.',
-  DAO_Warning:            'Si vous obtenez une erreur "Montant insuffisant pour le paiement du gaz", vous devez disposer d\'un petit montant en ether sur votre compte pour couvrir le coût en gaz. Ajoutez 0,01 ether sur votre compte et réessayez. ',
-  DAOModal_Title:         'Juste pour être sûr...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Vous êtes sur le point de retirer',
-  DAOModal_2:             'tokens DAO vers',
-  DAOModal_3:             'pour', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               'Réclamez vos tokens et vos badges DigixDAO (DGD). Pour ce faire, vous devez avoir participé à la vente de tokens du 30 et 31 mars 2016. Si vous désirez envoyez des DGD, utilisez l\'onglet Envoi de tokens.',
-  DGD_Label_1:            'Estimation des frais consommés :',
-  DGD_Label_2:            'Frais maximum fournis :',
-  DGD_Label_3:            'Prix du gaz :',
-  DGD_Generate:           'Générer une réclamation',
-  DGD_Content:            'Vous allez réclamer vos tokens DGD.',
 
   /* Deploy Contracts */
   DEP_generate:        'Générer le bytecode',
@@ -288,10 +260,8 @@ fr.data = {
   SUCCESS_2:            'Portefeuille déchiffré avec succès',
   SUCCESS_3:            'Transaction envoyée. Identifiant de transaction : ',
   SUCCESS_4:            'Votre portefeuille a été ajouté avec succès : ',
-  SUCCESS_5:            'Vous avez voté avec succès. Merci d\'être un participant actif à The DAO.',
   SUCCESS_6:            'Fichier sélectionné : ',
   WARN_Send_Link:       'Vous être arrivé grâce à un lien qui a rempli l\'adresse, le montant, le gaz ou les champs de données pour vous. Vous pouvez modifier toutes les informations avant d\'envoyer. Débloquez votre portefeuille pour démarrer.',
-  WARN_Send_Link_2:     '**Avertissement :** Vous ne pouvez inclure de données que si vous envoyez via "ETH (Transaction standard)". Enlevez "sendMode" et/ou "tokenSymbol" de l\'URI pour envoyer une transaction avec des données.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Expéditeur invalide',

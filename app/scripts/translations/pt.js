@@ -19,7 +19,6 @@ pt.data = {
   ADD_Ledger_0a:        'Re-abra MyEtherWallet em uma conexão (SSL) segura',
   ADD_Ledger_0b:        'Re-abra MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/)',
   WARN_Send_Link:       'Você chegou através de um link que tem o endereço, quantidade de gás, ou campos de dados preenchidos para você. Você pode alterar qualquer informação antes de enviar. Desbloqueie sua carteira para começar.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Navigation*/
   NAV_YourWallets:      'Suas Carteiras',
@@ -29,10 +28,6 @@ pt.data = {
   NAV_SendEther:        'Enviar Ether & Tokens',
   NAV_SendTokens:       'Enviar Tokens',
   NAV_Offline:          'Enviar Offline',
-  NAV_WithdrawDAO:      'Sacar DAO',
-  DAO_TitleLong:        'Sacar seus Tokens DAO por ETH',
-  NAV_ClaimDGD:         'Reinvidicar DGD',
-  DGD_TitleLong:        'Reinvidique seus Tokens DGD',
   NAV_DeployContract:   'Implantar Contrato',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contratos',
@@ -85,7 +80,6 @@ pt.data = {
   sidebar_TokenBal:     'Saldo de Tokens: ',
   sidebar_Equiv:        'Valor Equivalente: ',
   sidebar_TransHistory: 'Histórico de Transações: ',
-  sidebar_DGDBal:       'Informações do Crowdsale DGD:',
   sidebar_donation:     'MyEtherWallet é grátis, um serviço de fonte aberta dedicado a sua privacidade e segurança. Quanto mais doações nós recebermos, mais podemos gastar criando novidade, ouvindo seu feedback, e entregando o que você deseja. Somos apenas duas pessoas tentando mudar o mundo. Ajude-nos?',
   sidebar_donate:       'De',
   sidebar_thanks:       'OBRIGADO!!!',
@@ -196,30 +190,6 @@ pt.data = {
   OFFLINE_Step3_Title:    'Passo 3: Envia / Publica a Transação (Computador Online)',
   OFFLINE_Step3_Label_1:  'Cole a transação assinada do Passo 2 e aperte o botão "ENVIAR TRANSAÇÃO".',
 
-  /* DAO */
-  DAO_bal1:               'no bloco 1,919,999',
-  DAO_bal2:               'atual',
-  DAO_TitleETH:           'Sacar DAO Para ETH',
-  DAO_TitleETC:           'Sacar DAO Para ETC',
-  DAO_ETC_Label_1:        'Para que endereço você quer seus ETC sejam enviados?',
-  DAO_ETC_Label_2:        'O "White Hat Group" tem trabalhado incansavelmente para devolver o seu ETC para você. Você pode dizer "obrigado", doando uma porcentagem de sua retirada, se você optar por isso. ',
-  DAO_Desc:               'Use esta tab para Sacar seus Tokens DAO por ETH **& ETC**. Se você deseja enviar DAO, por favor use a Tab Enviar Tokens.',
-  DAO_Inst:               'Sim. Apenas aperte o grande botão vermelhor. É fácil.',
-  DAO_Warning:            'Se você está recebendo um erro de "saldo insuficiente para o gás", você precisa ter uma pequena quantidade de ether em sua conta, afim de cobrir o custo do gás. Adicione 0,01 ETH a esta conta e tente novamente. ',
-  DAOModal_Title:         'Apenas certifique-se...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Você está prestes a sacar',
-  DAOModal_2:             'Tokens DAO',
-  DAOModal_3:             'para', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               'Reivindique seus tokens & badges DigixDAO (DGD). Para revindicar, você deve ter participado na venda de token em 30 de março/31 de março de 2016. Se você deseja enviar DGD, por favor use a Tab Enviar Tokens.',
-  DGD_Label_1:            'Taxa de consumo estimada:',
-  DGD_Label_2:            'Taxa Máxima Fornecida:',
-  DGD_Label_3:            'Preço do Gás:',
-  DGD_Generate:           'Gerar Reivindicação',
-  DGD_Content:            'Você está prestes a reivindicar os seus Tokens DGD.',
-
   /* Deploy Contracts */
   DEP_generate:        'Gerar Bytecode',
   DEP_generated:       'Bytecode Gerado',
@@ -292,7 +262,6 @@ pt.data = {
   SUCCESS_2:            'Wallet successfully decrypted',
   SUCCESS_3:            'Transaction submitted. TX ID: ',
   SUCCESS_4:            'Your wallet was successfully added: ',
-  SUCCESS_5:            'You have successfully voted. Thank you for being an active participant in The DAO.',
   SUCCESS_6:            'File Selected: ',
 
   /* Geth Error Messages */

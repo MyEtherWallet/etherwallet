@@ -14,7 +14,6 @@ es.data = {
   MSG_info2:            'Include your nickname and where you use the nickname so someone else cannot use it.',
   MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
   ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   NAV_DeployContract:   'Deploy Contract',
   NAV_InteractContract: 'Interact with Contract',
@@ -51,10 +50,6 @@ es.data = {
   NAV_SendEther:        'Enviar Ether y Tokens',
   NAV_SendTokens:       'Enviar Tokens',
   NAV_Offline:          'Enviar sin conexión',
-  NAV_WithdrawDAO:      'Retirar DAO',
-  DAO_TitleLong:        'Retirar Tus Vales Dao Por ETH',
-  NAV_ClaimDGD:         'Reclamar DGD',
-  DGD_TitleLong:        'Reclamar Tus Vales DGD',
   NAV_MyWallets:        'Mis Carteras',
   NAV_ViewWallet:       'Ver Información de las Carteras',
   NAV_Help:             'Ayuda',
@@ -102,7 +97,6 @@ es.data = {
   sidebar_TokenBal:     'Saldos de tokens: ',
   sidebar_Equiv:        'Valores equivalentes: ',
   sidebar_TransHistory: 'Historial de transacciones: ',
-  sidebar_DGDBal:       'Información del Crowdsale de DGD:',
   sidebar_donation:     'MyEtherWallet es un servicio gratuito y de código abierto dedicado a tu privacidad y seguridad. Cuantas más donaciones recibimos, más tiempo dedicamos creando nuevas características, escuchando vuestros comentarios y proporcionando lo que queréis. Sólo somos dos personas intentando cambiar el mundo. ¿Nos ayudas?',
   sidebar_donate:       'Donar',
   sidebar_thanks:       '¡¡¡GRACIAS!!!',
@@ -210,29 +204,6 @@ es.data = {
   OFFLINE_Step3_Title:    'Paso 3: Enviar / Publicar transacción (con conexión)',
   OFFLINE_Step3_Label_1:  'Pega aquí la transacción firmada del paso 2 y pulsa el botón "ENVIAR TRANSACCIÓN".',
 
-  /* DAO */
-  DAO_bal1:               'en el bloque 1,919,999',
-  DAO_bal2:               'actual',
-  DAO_TitleETH:           'Retirar DAO por ETH',
-  DAO_TitleETC:           'Retirar DAO por ETC',
-  DAO_ETC_Label_1:        '¿A qué dirección quieres que se envíen tus ETC?',
-  DAO_ETC_Label_2:        'El "White Hat Group" ha trabajado sin descanso para devolverte tus ETC. Puedes agradecérselo donando un porcentaje de tu reintegro si así lo eliges. ',
-  DAO_Desc:               'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
-  DAO_Inst:               'Sí. Simplemente pulsa el botón rojo grande. Es así de sencillo.',
-  DAO_Warning:            'Si estás obteniendo un error de "Saldo insuficiente para gas", debes tener una pequeña cantidad de ether en tu cuenta para poder cubrir el coste del gas. Añade 0.01 ether a esta cuenta y prueba de nuevo. ',
-  DAOModal_Title:         'Solamente asegurándonos...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Estás a punto de retirar',
-  DAOModal_2:             'DAO Tokens a',
-  DAOModal_3:             'para recibir', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               'Reclama tus tokens e insignias DigixDAO (DGD). Para reclamarlos, debes haber participado en la venta de tokens de los días 30 y 31 de marzo de 2016. Si quieres enviar DGD, por favor utiliza la pestaña Enviar Tokens.',
-  DGD_Label_1:            'Comisión estimada:',
-  DGD_Label_2:            'Comisión máxima proporcionada:',
-  DGD_Label_3:            'Precio del gas:',
-  DGD_Generate:           'Generar solicitud',
-  DGD_Content:            'Estás a punto de reclamar tus tokens DGD.',
 
   /* Deploy Contracts */
   DEP_generate:           'Generar Bytecode',
@@ -291,7 +262,6 @@ es.data = {
   SUCCESS_2:            'Cartera descifrada con éxito',
   SUCCESS_3:            'Transacción enviada. TX ID: ',
   SUCCESS_4:            'Se ha añadido tu cartera: ',
-  SUCCESS_5:            'Has votado con éxito. Gracias por ser un participante activo en The DAO.',
   SUCCESS_6:            'Archivo seleccionado: ',
 
   /* Geth Error Messages */

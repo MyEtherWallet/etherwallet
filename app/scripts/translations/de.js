@@ -27,7 +27,6 @@ de.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
   WARN_Send_Link:       'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Nano S',
@@ -58,10 +57,6 @@ de.data = {
   NAV_SendEther:        'Sende Ether und Tokens',
   NAV_SendTokens:       'Sende Tokens',
   NAV_Offline:          'Sende offline',
-  NAV_WithdrawDAO:      'DAO Token entnehmen',
-  DAO_TitleLong:        'DAO Token in ETH umwandeln',
-  NAV_ClaimDGD:         'DGD geltend machen',
-  DGD_TitleLong:        'DGD Token geltend machen',
   NAV_DeployContract:   'Vertrag aufstellen',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Verträge',
@@ -113,7 +108,6 @@ de.data = {
   sidebar_TokenBal:     'Token Kontostand: ',
   sidebar_Equiv:        'Währungs-Gegenwerte: ',
   sidebar_TransHistory: 'Transaktions-Historie: ',
-  sidebar_DGDBal:       'DGD Crowdsale Information:',
   sidebar_donation:     'MyEtherWallet ist ein freier, quelloffener Service, der deiner Privatsphäre und Sicherheit gewidmet ist. Je mehr Spenden wir erhalten, desto mehr Zeit können wir investieren, um neue Funktionen zu programmieren, dein Feedback zu verarbeiten und dir zu geben, was du dir wünschst. Wir sind nur zwei Leute, die die Welt ändern möchten. Hilfst du uns dabei?',
   sidebar_donate:       'Spenden',
   sidebar_thanks:       'Dankeschön!!!',
@@ -221,30 +215,6 @@ de.data = {
   OFFLINE_Step3_Title:    'Schritt 3: Transaktion senden/veröffentlichen (Online Computer)',
   OFFLINE_Step3_Label_1:  'Kopiere die signierte Transaktion aus Schritt 2 hier hinein und drücke "TRANSAKTION SENDEN".',
 
-  /* DAO */
-  DAO_bal1:               'Bei Block 1,919,999',
-  DAO_bal2:               'momentan', // momentaner?
-  DAO_TitleETH:           'DAO Token in ETH umwandeln',
-  DAO_TitleETC:           'DAO Token in ETC umwandeln',
-  DAO_ETC_Label_1:        'An welche Adresse möchtest du deine ETC gesendet haben?',
-  DAO_ETC_Label_2:        'Die "White Hat Group" hat unermüdlich gearbeitet um deine ETC zurückzuholen. Wenn du möchtest, kannst du dich bedanken indem du einen Teil deiner ETC an sie spendest. ',
-  DAO_Desc:               'Nutze diesen Tab um deine DAO Token in ETH auszuzahlen. Wenn du DAO Token verschicken willst, nutze bitten den "Sende Tokens" Tab',
-  DAO_Inst:               'Ja, du musst einfach den großen roten Knopf drücken. Es ist so einfach.',
-  DAO_Warning:            'Wenn du den Fehler "Zu geringer Kontostand um Gaskosten zu decken" erhälst, musst du einen kleinen ether Betrag auf dein Konto überweisen um die Kosten zu decken. Überweise 0.01 Ether an dieses Konto und versuche es erneut. ',
-  DAOModal_Title:         'Nur zur Sicherheit...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Du bist dabei',
-  DAOModal_2:             'DAO Token an',
-  DAOModal_3:             'zu senden im Austausch für', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               'Erhebe Anspruch auf deine DigixDAO (DGD) Token und Badges. Um dies zu tun, musst du bei dem Token Verkauf am 30./31. Mai 2016 teilgenommen haben. Falls du DGD versenden möchtest, nutze bitte den Sende Tokens Tab.',
-  DGD_Label_1:            'Erwartete Gebühren:',
-  DGD_Label_2:            'Maximal mögliche Gebühren:', /* Provided = Mögliche? */
-  DGD_Label_3:            'Gaspreis:',
-  DGD_Generate:           'Anspruch geltend machen',
-  DGD_Content:            'Du bist dabei, deine DGD Token geltend zu machen.',
-
   /* Deploy Contracts */
   DEP_generate:        'Bytecode generieren',
   DEP_generated:       'Generierter Bytecode',
@@ -302,7 +272,6 @@ de.data = {
   SUCCESS_2:            'Wallet erfolgreich entschlüsselt',
   SUCCESS_3:            'Transaktion übermittelt. TX ID: ',
   SUCCESS_4:            'Dein Wallet wurde erfolgreich hinzugefügt: ',
-  SUCCESS_5:            'Du hast erfolgreich abgestimmt. Danke, dass du eine aktive Teilnehmerin/aktiver Teilnehmer am DAO bist.',
   SUCCESS_6:            'Ausgewählte Datei: ',
 
   /* Parity Error Messages */

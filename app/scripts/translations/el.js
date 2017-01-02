@@ -28,7 +28,6 @@ el.data = {
   ERROR_21:             ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
   WARN_Send_Link:       'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Nano S',
@@ -55,19 +54,6 @@ el.data = {
   SUCCESS_6:              'File Selected: ',
   FOOTER_4:               'Disclaimer',
 
-  /* New - DAO ETC Withdrawal */
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'You are about to withdraw',
-  DAOModal_2:             'DAO Tokens to',
-  DAOModal_3:             'for', // "in return for"
-
-  DAO_bal1:               'at block 1,919,999',
-  DAO_bal2:               'current',
-  DAO_TitleETH:           'Withdraw DAO For ETH',
-  DAO_TitleETC:           'Withdraw DAO For ETC',
-  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
-  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
-
   /* New - Deploy Contracts */
   NAV_DeployContract:     'Deploy Contract',
   NAV_InteractContract:   'Interact with Contract',
@@ -86,10 +72,6 @@ el.data = {
   NAV_SendEther:        'Αποστολή Ether και Tokens',
   NAV_SendTokens:       'Αποστολή Tokens',
   NAV_Offline:          'Αποστολή εκτός Σύνδεσης',
-  NAV_WithdrawDAO:      'Ανάληψη DAO',
-  DAO_TitleLong:        'Ανάληψη των Dao Tokens σας ως ETH',
-  NAV_ClaimDGD:         'Διεκδίκηση DGD',
-  DGD_TitleLong:        'Διεκδικήστε τα DGD Tokens σας',
   NAV_MyWallets:        'Τα Πορτοφόλια μου',
   NAV_ViewWallet:       'Προβολή Πληροφοριών Πορτοφολιού',
   NAV_Help:             'Βοήθεια',
@@ -136,7 +118,6 @@ el.data = {
   sidebar_TokenBal:     'Υπόλοιπο Token: ',
   sidebar_Equiv:        'Ισότιμες Αξίες: ',
   sidebar_TransHistory: 'Ιστορικό Συναλλαγών',
-  sidebar_DGDBal:       'Πληροφορίες Προαγοράς DGD:',
   sidebar_donation:     'Το MyEtherWallet είναι μία δωρεάν υπηρεσία ανοιχτού κώδικα αφοσιωμένη στην ιδιωτικότητα και την ασφάλεια σας. Όσο περισσότερες δωρεές λαμβάνουμε, τόσο περισσότερο χρόνο αφιερώνουμε στη δημιουργία νέων χαρακτηριστικών καθώς και την αξιολόγηση και εφαρμογή όσων μας προτείνετε. Είμαστε απλά δύο άνθρωποι που προσπαθούν να αλλάξουν τον κόσμο. Θα μας βοηθήσετε; ',
   sidebar_donate:       'Δωρεά',
   sidebar_thanks:       'ΣΑΣ ΕΥΧΑΡΙΣΤΟΥΜΕ!!!',
@@ -244,20 +225,6 @@ el.data = {
   OFFLINE_Step3_Title:    'Βήμα 3: Δημοσίευση Συναλλαγής (Συνδεδεμένος Υπολογιστής)',
   OFFLINE_Step3_Label_1:  'Επικολλήστε την υπογεγραμμένη συναλλαγή εδώ και πατήστε το κουμπί "ΑΠΟΣΤΟΛΗ ΣΥΝΑΛΛΑΓΗΣ".',
 
-  /* DAO */
-  DAO_Desc:               'Χρησιμοποιείστε αυτήν την καρτέλα για να κάνετε Ανάληψη των DAO Tokens σας ως ETH. Αν επιθυμείτε να αποστείλετε DAO, παρακαλώ χρησιμοποιήστε την καρτέλα Αποστολή Tokens.',
-  DAO_Inst:               'Ναι. Απλά πατάτε το μεγάλο κόκκινο κουμπί. Είναι τόσο απλό.',
-  DAO_Warning:            'Αν δέχεστε σφάλμα "Aνεπαρκές υπόλοιπο για gas", θα πρέπει να έχετε ένα μικρό ποσό ether στον λογαριασμό σας έτσι ώστε να καλύψετε το κόστος του gas. Προσθέστε 0.01 ether στον λογαριασμό αυτό και προσπαθήστε ξανά. ',
-  DAOModal_Title:         'Απλά για σιγουριά...',
-
-  /* Digix */
-  DGD_Desc:               'Διεκδικήστε τα DigixDAO (DGD) tokens & badges σας. Για να τα διεκδικήσετε, πρέπει να είχατε συμμετάσχει στην προαγορά tokens στις 30/31 Μαρτίου του 2016. Αν επιθυμείτε να αποστείλετε DGD, παρακαλώ χρησιμοποιήστε την καρτέλα Αποστολή Tokens.',
-  DGD_Label_1:            'Εκτιμώμενη Κατανάλωση Εξόδων:',
-  DGD_Label_2:            'Παρεχόμενα Μέγιστα Έξοδα:',
-  DGD_Label_3:            'Τιμή Gas:',
-  DGD_Generate:           'Δημιουργία Διεκδίκησης',
-  DGD_Content:            'Πρόκειται να διεκδικήσετε τα DGD Tokens σας.',
-
   /* My Wallet */
   MYWAL_Nick:             'Ψευδώνυμο Πορτοφολιού',
   MYWAL_Address:          'Διεύθυνση Πορτοφολιού',
@@ -309,7 +276,6 @@ el.data = {
   SUCCESS_2:            'Το πορτοφόλι αποκρυπτογραφήθηκε επιτυχώς',
   SUCCESS_3:            'Η συναλλαγή υποβλήθηκε. TX ID: ',
   SUCCESS_4:            'Το πορτοφόλι σας προστέθηκε επιτυχώς: ',
-  SUCCESS_5:            'Έχετε ψηφίσει επιτυχώς. Ευχαριστούμε για την ενεργή σας συμμετοχή στο DAO.',
 
   /* Parity Error Messages */
   PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",

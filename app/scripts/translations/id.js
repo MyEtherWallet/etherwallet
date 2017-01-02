@@ -14,8 +14,6 @@ id.data = {
   MSG_info2:            'Cantumkan nama atau "nickname" Anda dan dimana "nickname" tersebut dipakai sehingga pihak lain tidak dapat memakainya.',
   MSG_info3:            'Cantumkan alasan yang spesifik untuk pesan ini sehingga pesan yang ditandai ini tidak dapat dipakai ulang untuk keperluan lain.',
 
-  WARN_Send_Link_2:     '**Peringatan:** Data hanya bisa disertakan jika pengiriman menggunakan "ETH (Standard Transaction)". Harap hilangkan "sendMode" dan/atau "tokenSymbol" dari URI untuk pengiriman transaksi dengan data.',
-
   /* Navigation*/
   NAV_YourWallets:      'Dompet Anda',
   NAV_AddWallet:        'Tambahkan Dompet',
@@ -24,10 +22,6 @@ id.data = {
   NAV_SendEther:        'Kirim Ether dan Tokens',
   NAV_SendTokens:       'Kirim Token',
   NAV_Offline:          'Kirim Offline',
-  NAV_WithdrawDAO:      'Tarik DAO',
-  DAO_TitleLong:        'Tarik ETH dari Token DAO Anda',
-  NAV_ClaimDGD:         'Klaim DGD',
-  DGD_TitleLong:        'Klaim DGD Token Anda',
   NAV_DeployContract:   'Buat Contract',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contracts',
@@ -81,7 +75,6 @@ id.data = {
   sidebar_TokenBal:     'Saldo Token: ',
   sidebar_Equiv:        'Nilai Ekuivalent: ',
   sidebar_TransHistory: 'Sejarah Transaksi: ',
-  sidebar_DGDBal:       'Informasi Crowdsale DGD:',
   sidebar_donation:     'MyEtherWallet dapat dipergunakan secara cuma-cuma berdasarkan prinsip open source dengan tetap menjaga privasi dan keamanan. Semakin banyak donasi yang kami terima, semakin banyak waktu yang kami dapat luangkan untuk membuat fitur-fitur baru dan mewujudkan usulan dan keinginan para penggunanya. Tim kami yang terdiri dari hanya dua orang sangat membutuhkan dukungan Anda untuk mewujudkan cita-cita kami dalam membuat dunia yang semakin baik',
   sidebar_donate:       'Kirim Donasi',
   sidebar_thanks:       'Terima Kasih!!!',
@@ -207,30 +200,6 @@ id.data = {
   OFFLINE_Step3_Title:    'Langkah 3: Kirim/Publikasikan Transaksi (komputer Online)',
   OFFLINE_Step3_Label_1:  '"Paste" data "Signed Transaction" dari Langkah 2 di atas dan klik tombol "Kirim Transaksi".',
 
-  /* DAO */
-  DAO_bal1:               'pada blok 1,919,999',
-  DAO_bal2:               'saat ini',
-  DAO_TitleETH:           'Tarik DAO untuk ETH',
-  DAO_TitleETC:           'Tarik DAO untuk ETC',
-  DAO_ETC_Label_1:        'Ke alamat mana ETC harus dikirimkan?',
-  DAO_ETC_Label_2:        'Atas kerja keras "White Hat Group" yang telah berhasil merebut kembali ETC Anda, wujudkan rasa "terima kasih" Anda dengan mendonasikan sebagian dari jumlah penarikan. ',
-  DAO_Desc:               'Pakai halaman ini untuk penarikan ETH **& ETC** dari DAO Anda. Untuk pengiriman DAO, gunakan halaman "Kirim Token".',
-  DAO_Inst:               'Cukup dengan menekan tombol merah besar ini. Mudah kan!.',
-  DAO_Warning:            'Jika terjadi error "Insufficient balance for gas", pastikan terdapat sejumlah kecil Ether di Akun untuk menutup biaya gas. Tambahkan 0.01 ether ke akun ini dan silakan coba lagi. ',
-  DAOModal_Title:         'Hanya untuk meyakinkan...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Anda akan melakukan penarikan',
-  DAOModal_2:             'Token DAO ke',
-  DAOModal_3:             'untuk', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               'Pakai halaman ini untuk meng-klaim Token & Badge DigixDAO (DGD). Klaim hanya bisa dilakukan jika Anda berpatisipasi dalam penjualan token pada tanggal 30/31 Maret 2016.  Untuk pengiriman DGD, pakai halaman "Kirim Token".',
-  DGD_Label_1:            'Perkiraan biaya:',
-  DGD_Label_2:            'Biaya maksimal yang disediakan:',
-  DGD_Label_3:            'Harga Gas:',
-  DGD_Generate:           'Buat Klaim',
-  DGD_Content:            'Anda akan melakukan klaim Token DGD.',
-
   /* Deploy Contracts */
   DEP_generate:           'Buat Bytecode',
   DEP_generated:          'Bytecode yang dibuat',
@@ -290,7 +259,6 @@ id.data = {
   SUCCESS_2:           'Dompet telah ter-dekripsi',
   SUCCESS_3:           'Transaksi diajukan. TX ID: ',
   SUCCESS_4:           'Dompet Anda telah ditambahkan: ',
-  SUCCESS_5:           'Anda telah berhasil melakukan voting. Terima kasih untuk menjadi peserta aktif dalam The DAO.',
   SUCCESS_6:           'File Terpilih: ',
   WARN_Send_Link:       'Alamat, jumlah, gas atau informasi telah diisikan untuk Anda. Informasi tersebut dapat Anda rubah sebelum pengiriman. Buka kunci dompet Anda Untuk memulai.',
 

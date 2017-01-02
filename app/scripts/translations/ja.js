@@ -33,10 +33,6 @@ ja.data = {
   NAV_SendEther:        'Ether送出 トークン送出',
   NAV_SendTokens:       'トークン送出',
   NAV_Offline:          'オフライン送出',
-  NAV_WithdrawDAO:      'DAO払い戻し',
-  DAO_TitleLong:        'DAOトークンをETHで払い出し',
-  NAV_ClaimDGD:         'DGD請求',
-  DGD_TitleLong:        'DGDトークンを請求',
   NAV_DeployContract:   'コントラクトをデプロイ',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Contracts',
@@ -89,7 +85,6 @@ ja.data = {
   sidebar_TokenBal:     'トークン残高: ',
   sidebar_Equiv:        '等価: ',
   sidebar_TransHistory: 'トランザクション履歴: ',
-  sidebar_DGDBal:       'DGDクラウドセール情報:',
   sidebar_donation:     'MyEtherWalletは、プライバシーとセキュリティのための無料のオープンソースサービスです。　寄付が増えることによって、新機能やフィードバックの反映を行い、よりユーザーの皆様のご希望に沿った制作の時間を増やす事が可能になります。私たちは、たった二人で世界を変えようとしています。お手伝いいただけますか?',
   sidebar_donate:       '寄付する',
   sidebar_thanks:       '感謝します!!!',
@@ -218,29 +213,6 @@ ja.data = {
   ADD_Ledger_0b:        'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。',
   ADD_Ledger_scan:      'Ledger Nano S　に接続',
 
-  /* DAO */
-  DAO_bal1:               'ブロック 1,919,999',
-  DAO_bal2:               '現在の',
-  DAO_TitleETH:           'ETHでDAOを払い出し',
-  DAO_TitleETC:           'ETCでDAOを払い出し',
-  DAO_ETC_Label_1:        'どのアドレスにETCを送りますか？',
-  DAO_ETC_Label_2:        'ホワイトハックグループは日夜ETCを取り戻すべために働いています。希望すれば、払い戻しの何パーセントかを感謝をこめて贈る事ができます。',
-  DAO_Desc:               'このタブ上で、DAOトークンから、ETH **& ETC**の払い戻してください。DAOトークンの送るためには、トークン送出タブを選んでください。',
-  DAO_Inst:               '赤いボタンをクリックしてください。簡単です。',
-  DAO_Warning:            '「ガス残高不足」エラーの時は、アカウントにガスを供給するためにに少量のEtherが必要です。このアカウントに0.01 ETHを追加して、再度操作してください。',
-  DAOModal_Title:         '確認中/...',
-  DAOModal_1:             '払い出しを進めます',
-  DAOModal_2:             'DAOトークンを',
-  DAOModal_3:             'に対し', // “の代わりに”
-
-  /* Digix */
-  DGD_Desc:               'DigixDAO (DGD) トークンとバッジを請求してください。３月３０/３１日に行われた、トークンセールに参加した場合にのみ請求可能です。DGDを送出するためには「トークン送出」のタブ　を使用してください。',
-  DGD_Label_1:            'フィー消費量概算：',
-  DGD_Label_2:            'フィー最大消費量：',
-  DGD_Label_3:            'ガス価格：',
-  DGD_Generate:           '請求の生成',
-  DGD_Content:            'DGDトークンの請求を進めます',
-
   /* Deploy Contracts */
   DEP_generate:           'バイトコードを生成する',
   DEP_generated:          '生成されたバイトコード',
@@ -300,10 +272,8 @@ ja.data = {
   SUCCESS_2:            'ウォレットは正常に暗号解除されました。',
   SUCCESS_3:            'トランザクションが送出されました。 TX ID: ',
   SUCCESS_4:            'ウォレットが追加されました：',
-  SUCCESS_5:            '投票が完了しました。The DAO への積極的な参加に感謝いたします。',
   SUCCESS_6:            '選択されました： ',
   WARN_Send_Link:       '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、ウォレットを解錠してください。',
-  WARN_Send_Link_2:     '**警告** 「ETH (Standard Transaction)」で送出する時には、データのみを含めることしかできません。 「sendMode」 及び/あるいは 「tokenSymbol」 を URIから取り除いてください。',
 
   /* Parity Error Messages */
   PARITY_AlreadyImported:       "同じハッシュのトランザクションがすでにインポートされています。",

@@ -15,7 +15,6 @@ vi.data = {
   MSG_info3:            'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
 
   WARN_Send_Link:       'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
   ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
   /* Hardware wallets */
@@ -36,10 +35,6 @@ vi.data = {
   NAV_SendEther:        'Gửi Ether và Tokens',
   NAV_SendTokens:       'Gửi Token',
   NAV_Offline:          'Giao Dịch Offline',
-  NAV_WithdrawDAO:      'Thu Hồi DAO Token',
-  DAO_TitleLong:        'Thu Hồi DAO Token và Hoàn Trả ETH',
-  NAV_ClaimDGD:         'Khiếu Nại Về DGD',
-  DGD_TitleLong:        'Khiếu Nại DGD Token Của Bạn',
   NAV_DeployContract:   'Phát Triển Hợp Đồng',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Hợp Đồng',
@@ -92,7 +87,6 @@ vi.data = {
   sidebar_TokenBal:     'Số Dư Token: ',
   sidebar_Equiv:        'Giá Trị Tương Đương: ',
   sidebar_TransHistory: 'Lịch Sử Giao Dịch: ',
-  sidebar_DGDBal:       'Thông Tin Crowdsale DGD:',
   sidebar_donation:     'MyEtherWallet là một ứng dụng miễn phí được xây dựng trên mã nguồn mở nhằm bảo vệ quyền riêng tư và sự bảo mật của người sử dụng. các khoản quyên góp mà chúng tôi nhận được sẽ giúp chúng tôi có cơ hội dành nhiều thơi gian hơn cho việc lắng nghe những phản hồi từ người sử dụng nhằm tạo ra những ứng dụng mới nhằm đáp ứng những mong muốn từ người sử dụng. Chúng tôi hiện tại là hai cá nhân đang cố gắng làm cho thế giới ngày một tốt hơn. Hãy cùng chung giúp chúng tôi',
   sidebar_donate:       'Quyên Góp',
   sidebar_thanks:       'Xin Chân Thành Cảm Ơn!!!',
@@ -203,30 +197,6 @@ vi.data = {
   OFFLINE_Step3_Title:    'Bước 3: Gửi / Làm rõ Giao Dịch (Máy tính đang Online)',
   OFFLINE_Step3_Label_1:  'Dán chữ ký Giao Dịch được tạo từ Bước 2 vào đây và chọn nút "Thực hiện Giao Dịch".',
 
-  /* DAO */
-  DAO_bal1:               'Tại Block 1,919,999',
-  DAO_bal2:               'Hiện Tại',
-  DAO_TitleETH:           'Thu Hồi DAO Và Hoàn Trả ETH',
-  DAO_TitleETC:           'Thu Hồi DAO Và Hoàn Trả ETC',
-  DAO_ETC_Label_1:        'Địa chỉ mà bạn muốn số lượng ETC của bạn được gửi đến?',
-  DAO_ETC_Label_2:        'Nhóm Whitehat đã làm việc cật lực để đòi lại số ETC và mang về cho bạn. Bạn có thể nói lời cảm ơn đến họ bằng cách quyên góp một phần tỷ lệ % từ khoảng hoàn lại của bạn. ',
-  DAO_Desc:               'Sử dụng phần này cho việc thu hồi DAO Token và hoàn trả lại **ETH & ETC**. Nếu bạn muốn gửi DAO Token, xin vui lòng sử dụng mục "gửi Token".',
-  DAO_Inst:               'Đúng rồi, Bạn chỉ cần chọn vào nút lớn màu đỏ.',
-  DAO_Warning:            'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hãy thêm vào 0.01 ether vào tài khoản và thực hiện lại. ',
-  DAOModal_Title:         'Đảm bảo rằng...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Bạn Muốn thực hiện việc "Thu Hồi"',
-  DAOModal_2:             'Số Dao Token đến',
-  DAOModal_3:             'Hoàn Lại', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               'Khiếu nại về DigixDAO(DGD) Token & Danh Hiệu. Để thực hiện việc khiếu nại, bạn phải tham gia vào buổi bán token vào ngày 30 và 31 tháng 3 năm 2016. Nếu bạn muốn gửi DGD, xin vui lòng sử dụng Mục "Gửi Token".',
-  DGD_Label_1:            'Phí Giao Dịch Ước Tínhn:',
-  DGD_Label_2:            'Cung Cấp Phí Tối Đa:',
-  DGD_Label_3:            'Giá Gas:',
-  DGD_Generate:           'Tạo Khiếu Nại',
-  DGD_Content:            'Bạn Muốn Khiếu Nại về DGD Token?',
-
   /* Deploy Contracts */
   DEP_generate:           'Tạo Bytecode',
   DEP_generated:          'Bytecode Đã Được Tạo',
@@ -291,7 +261,6 @@ vi.data = {
   SUCCESS_2:            'Ví đã được giải mã thành công',
   SUCCESS_3:            'Giao dịch đã gửi đi, TX ID:',
   SUCCESS_4:            'Ví của bạn đã được thêm thành công:',
-  SUCCESS_5:            'Bạn đã bỏ phiếu thành công. Cảm ơn vì đã tham gia tích cực trong The DAO.',
   SUCCESS_6:            'Tập Tin Được Chọn: ',
 
    /* Geth Error Messages */

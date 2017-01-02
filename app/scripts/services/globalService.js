@@ -75,13 +75,6 @@ var globalService = function($http, $httpParamSerializerJQLike) {
       url: "bulk-generate",
       mew: false,
       cx: false
-    },
-    digix: {
-      id: 10,
-      name: "NAV_ClaimDGD",
-      url: "digix",
-      mew: false,
-      cx: false
     }
   };
   var currentTab = 0;

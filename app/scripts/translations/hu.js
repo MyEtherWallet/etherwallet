@@ -20,7 +20,6 @@ hu.data = {
   ADD_Ledger_0a:        'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   WARN_Send_Link:       'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Navigation*/
   NAV_YourWallets:      'Tárcáid',
@@ -30,10 +29,6 @@ hu.data = {
   NAV_SendEther:        'Ether & Tokenek küldése',
   NAV_SendTokens:       'Tokenek küldése',
   NAV_Offline:          'Offline tranzakció',
-  NAV_WithdrawDAO:      'DAO kifizetése',
-  DAO_TitleLong:        'Dao tokenek kifizetése ETH-ért',
-  NAV_ClaimDGD:         'DGD igénylése',
-  DGD_TitleLong:        'DGD Tokenek igénylése',
   NAV_DeployContract:   'Kontraktus Telepítése',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Kontraktus',
@@ -86,7 +81,6 @@ hu.data = {
   sidebar_TokenBal:     'Token Egyenleg: ',
   sidebar_Equiv:        'Ezzel egyenértékű: ',
   sidebar_TransHistory: 'Tranzakció Történet: ',
-  sidebar_DGDBal:       'DGD Crowdsale Információ:',
   sidebar_donation:     'A MyEtherWallet egy szabad, nyílt forrású szolgáltatás az adatod védelmének és a biztonságodnak szentelve. Minél több adomány érkezik, annál több időt tudunk fordítani új funkciók létrehozására, a visszajelzéseidre és olyan szolgáltatást nyújtani, amilyet szeretnél. Mindössze két ember, akik megpróbálnak változtatni a világon. Segítesz nekünk?',
   sidebar_donate:       'Adományozok',
   sidebar_thanks:       'KÖSZÖNJÜK!!!',
@@ -198,29 +192,6 @@ hu.data = {
   OFFLINE_Step3_Title:    'Lépés 3: Küld / Közzétesz (Online Számítógép)',
   OFFLINE_Step3_Label_1:  'Illeszd be ide az aláírt tranzakciót a második lépésből (Lépés 2) és nyomd meg a "TRANZAKCIÓ KÜLDÉSE" gombot.',
 
-  /* DAO */
-  DAO_bal1:               'a 1,919,999. blokknál',
-  DAO_bal2:               'jelenlegi',
-  DAO_TitleETH:           'DAO kifizetése ETH-ért',
-  DAO_TitleETC:           'DAO kifizetése ETC-ért',
-  DAO_ETC_Label_1:        'Milyen címre szeretnéd az ETC-t küldeni?',
-  DAO_ETC_Label_2:        'A "White Hat Group" fáradhatatlanul dolgozik azon, hogy visszajuttassa hozzád az ETC-det. Mondhatsz egy "köszönömöt" azzal, hogy a kifizetésed bizonyos százalékát eladományozod nekik, ha ezt választod. ',
-  DAO_Desc:               'Használd ezt az oldalt, hogy Kifizesd a DAO tokenedet ETH-ért **és ETC-ért**. Ha DAO-t szeretnél küldeni, kérlek használd a Token Küldése oldalt.',
-  DAO_Inst:               'Igen. Csak nyomd meg a nagy piros gombot. Ez ilyen egyszerű.',
-  DAO_Warning:            'Ha "nincs elegendő egyenleg a gas-hoz" hibaüzenetet kaptál, egy kis összegnyi etherre szükséged lesz a számládon, hogy fedezni tudd a gas költségeit. Adj hozzá 0.01 ethert ehhez a számlához és próbáld újra. ',
-  DAOModal_Title:         'Csak megbizonyosodunk...',
-  DAOModal_1:             'Most készülsz kifizetni',
-  DAOModal_2:             'DAO Tokeneket erre a címre',
-  DAOModal_3:             'ezért:', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               'Igényeld a DigixDAO (DGD) tokened és a badge-eket. Ahhoz, hogy igényelni tudj részt kellett venned a token eladásban 2016. március 30-án vagy 31-én. Ha DGD-t akarsz küldeni, kérlek használd a Token küldése oldalt.',
-  DGD_Label_1:            'A díj becsült költsége:',
-  DGD_Label_2:            'Biztosított Maximum Díj:',
-  DGD_Label_3:            'Gas Ár:',
-  DGD_Generate:           'Igény Generálása',
-  DGD_Content:            'Most készülsz igényelni a DGD Tokenjeidet.',
-
   /* Deploy Contracts */
   DEP_generate:           'Byte-kód Generálása',
   DEP_generated:          'Generált Byte-kód',
@@ -292,7 +263,6 @@ hu.data = {
   SUCCESS_2:            'Tárca sikeresen dekódolva',
   SUCCESS_3:            'Tranzakció elküldve. TX ID: ',
   SUCCESS_4:            'Tárcád sikeresen hozzáadva: ',
-  SUCCESS_5:            'Sikeresen szavaztál. Köszönjük, hogy aktív tagja vagy a DAO-nak.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Érvénytelen küldő',

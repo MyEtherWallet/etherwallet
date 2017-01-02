@@ -28,7 +28,6 @@ zh.data = {
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
   WARN_Send_Link:       'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Nano S',
@@ -57,11 +56,7 @@ zh.data = {
   NAV_BulkGenerate:     '批量生成',
   NAV_SendEther:        '发送以太币 / 发送代币', //combined these tabs
   NAV_Offline:          '离线发送',
-  NAV_WithdrawDAO:      'DAO提取DAO',
-  DAO_TitleLong:        '兑换DAO代币为ETH',
   NAV_Multisig:         'Multisig',
-  NAV_ClaimDGD:         '领取DGD代币',
-  DGD_TitleLong:        '领取你的DGD代币',
   NAV_DeployContract:   '部署合约',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        '合同',
@@ -112,7 +107,6 @@ zh.data = {
   sidebar_TokenBal:     '代币余额：',
   sidebar_Equiv:        '价值： ',
   sidebar_TransHistory: '交易历史： ',
-  sidebar_DGDBal:       'DGD代币众筹信息：',
   sidebar_donation:     'MyEtherWallet是保护你的隐私和安全的免费、开源服务。 我们收到的捐赠越多，我们开发新特性、听取你的反馈的时间就越多。我们只是两个尝试改变世界的两个开发者。您能帮助我们吗？',
   sidebar_donate:       '捐赠',
   sidebar_thanks:       '感谢你！！！',
@@ -220,30 +214,6 @@ zh.data = {
   OFFLINE_Step3_Title:    '步骤3：发送/公开交易（连网电脑）',
   OFFLINE_Step3_Label_1:  '将步骤2的签名交易粘贴到这里，点击“发送交易”按钮。',
 
-  /* DAO */
-  DAO_bal1:               '在第1919999个区块',
-  DAO_bal2:               '当前',
-  DAO_TitleETH:           '销毁DAO代币，取回ETH',
-  DAO_TitleETC:           '销毁DAO代币，取回ETC',
-  DAO_ETC_Label_1:        '你想把ETC发送到哪个地址？',
-  DAO_ETC_Label_2:        '白帽黑客为取回你的ETC不知疲倦地工作。 你可以将一定比例的ETC捐赠给白帽黑客，以表感谢之意。 ',
-  DAO_Desc:               '使用这个标签销毁DAO代币，换回ETH和ETC。如果你想发送DAO，请使用发送代币标签。',
-  DAO_Inst:               '是的。只需按红色按钮。非常简单。',
-  DAO_Warning:            '如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。向这个账户发送0.01以太币，再次尝试。',
-  DAOModal_Title:         '确保...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             '你将要销毁',
-  DAOModal_2:             'DAO代币',
-  DAOModal_3:             '换回ETH，并发送到地址', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               '认领你的DigixDAO(DGD）代币和勋章。只有你参加了2016年3月30日和31日的代币预售，才可以认领DGD代币。 如果你想发送DGD，请使用发送代币标签。',
-  DGD_Label_1:            '预计所需交易费用：',
-  DGD_Label_2:            '最多交易费用',
-  DGD_Label_3:            'Gas价格：',
-  DGD_Generate:           '生成认领',
-  DGD_Content:            '你将认领你的DGD代币。',
-
   /* Deploy Contracts */
   DEP_generate:           '生成字节码',
   DEP_generated:          '生成字节码',
@@ -301,7 +271,6 @@ zh.data = {
   SUCCESS_2:            '钱包解密成功',
   SUCCESS_3:            '交易已提交。TX ID：',
   SUCCESS_4:            '成功添加你的钱包：',
-  SUCCESS_5:            '你已经成功投票。感谢你积极参与The DAO。',
   SUCCESS_6:            '选择的文件：',
 
   /* Geth Error Messages */

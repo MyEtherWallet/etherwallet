@@ -13,10 +13,6 @@ nl.data = {
   NAV_SendTokens:       'Verzend Tokens',
   NAV_Offline:          'Verzend Offline',
   NAV_SignMsg:          'Onderteken bericht',
-  NAV_WithdrawDAO:      'DAO Opnemen',
-  DAO_TitleLong:        'DAO Token in ETH omzetten',
-  NAV_ClaimDGD:         'Claim DGD',
-  DGD_TitleLong:        'Claim je DGD Tokens',
   NAV_DeployContract:   'Verspreid Contract',
   NAV_InteractContract: 'Interactie met Contract',
   NAV_Contracts:        'Contracten',
@@ -69,7 +65,6 @@ nl.data = {
   sidebar_TokenBal:     'Token Saldo: ',
   sidebar_Equiv:        'Equivalente Waarde: ',
   sidebar_TransHistory: 'Transactie Geschiedenis: ',
-  sidebar_DGDBal:       'DGD Crowdsale Informatie:',
   sidebar_donation:     'MyEtherWallet is een gratis, open-source service toegewijd aan  jouw privacy en beveiliging. Des te meer donaties we ontvangen, des te meer tijd we zullen spenderen aan nieuwe functies, aan de hand van jouw terugkoppeling, en we je kunnen geven wat jij wilt. Wij zijn slechts twee mensen die de wereld een stukje beter willen maken. Help jij mee?',
   sidebar_donate:       'Doneer',
   sidebar_thanks:       'BEDANKT!!!',
@@ -189,30 +184,6 @@ nl.data = {
   MSG_info2:            'Voeg je nickname toe en waar je deze gebruikt zodat anderen deze niet kunnen gebruiken.',
   MSG_info3:            'Voeg een specifieke reden voor je bericht toe zodat het niet kunnen gebruiken voor een ander doel.',
 
-  /* DAO */
-  DAO_bal1:               'bij blok 1.919.999',
-  DAO_bal2:               'momenteel',
-  DAO_TitleETH:           'DAO voor ETH opnemen',
-  DAO_TitleETC:           'DAO voor ETC opnemen',
-  DAO_ETC_Label_1:        'Naar welk adres wil je je ETC verzenden?',
-  DAO_ETC_Label_2:        'De "White Hat Group" is onvermoeibaar aan het werk geweest om jouw ETC terug bij jouw te krijgen. Je kunt ze bedankten door een percentage van je opname te doneren, als je daarvoor kiest. ',
-  DAO_Desc:               'Gebruik dit tab om je DAO Tokens om te zitten in ether. Als je DOA Tokens wilt versturen, gebruik dan het Verzend Tokens Tab.',
-  DAO_Inst:               'Ja. Klik simpelweg op de grote rode knop. Zo makkelijk is het.',
-  DAO_Warning:            'Als je een "Insufficient balance for gas" fout krijgt, zul je een kleine hoeveelheid ETH in je account moeten storten om de gas kosten voor deze actie te betalen. Voeg 0.01 ETH toe aan je account en probeer het opnieuw. ',
-  DAOModal_Title:         'Voor de zekerheid...',
-  // full sentance is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Je staat op het punt om',
-  DAOModal_2:             'DAO Tokens op te nemen voor',
-  DAOModal_3:             'voor', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               'Claim je DigixDAO (DGD) tokens & badges. Om te claimen zul je meegedaan moeten hebben met de token sale van 30/31 maart 2016.  Als je DGD wilt versturen, gebruik dan het Verzend Tokens Tab.',
-  DGD_Label_1:            'Geschatte transactie kosten:',
-  DGD_Label_2:            'Gegeven Maximum Transactie Kosten:',
-  DGD_Label_3:            'Gas Prijs:',
-  DGD_Generate:           'Genereer Claim',
-  DGD_Content:            'Je staat op het punt om je DGD Tokens te claimen.',
-
   /* Deploy Contracts */
   DEP_generate:        'Genereer Bytecode',
   DEP_generated:       'Gegenereerde Bytecode',
@@ -288,10 +259,8 @@ nl.data = {
   SUCCESS_2:            'Wallet succesvol ontsleuteld',
   SUCCESS_3:            'Transactie verzonden. TX ID: ',
   SUCCESS_4:            'Je Wallet is succesvol toegevoegd: ',
-  SUCCESS_5:            'Je hebt succesvol gestemd. Fijn dat je een actief participerend DAO deelnemer bent.',
   SUCCESS_6:            'Bestand Geselecteerd: ',
   WARN_Send_Link:       'Je bent hier gekomen via een link waarbij het adres, bedrag, gas of data velden al ingevuld zijn. Indien gewenst kun je elk veld nog aanpassen voor het verzenden. Ontgrendel je wallet on te beginnen.',
-  WARN_Send_Link_2:     '**Waarschuwing:** Je kunt alleen data toevoegen als je verzend via "ETH (Standaard Transactie)". Verwijder de "sendMode" en/of het "tokenSymbol" van de URI om een transactie te verzenden met data.',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Ongeldige verzender',

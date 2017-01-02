@@ -29,7 +29,6 @@ ru.data = {
   TOKEN_show:           'Show All Tokens',
   TOKEN_hide:           'Hide Tokens',
   WARN_Send_Link:       'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Nano S',
@@ -60,10 +59,6 @@ ru.data = {
   NAV_SendEther:        'Перевести эфир (ether) и токены',
   NAV_SendTokens:       'Перевести токены',
   NAV_Offline:          'Оффлайн-перевод',
-  NAV_WithdrawDAO:      'Обменять DAO',
-  DAO_TitleLong:        'Обменять DAO токены на эфир (ether)',
-  NAV_ClaimDGD:         'Получить DGD',
-  DGD_TitleLong:        'Получить причитающиеся Вам DGD токены',
   NAV_MyWallets:        'Мои кошельки',
   NAV_ViewWallet:       'Информация о кошельке',
   NAV_Help:             'Справка',
@@ -115,7 +110,6 @@ ru.data = {
   sidebar_TokenBal:     'Балансы токенов: ',
   sidebar_Equiv:        'Эквивалентные значения: ',
   sidebar_TransHistory: 'История транзакций: ',
-  sidebar_DGDBal:       'Информация о распродаже DGD:',
   sidebar_donation:     'MyEtherWallet — это бесплатный сервис с открытым исходным кодом, заботящийся о Вашей безопасности и неприкосновенности Вашей частной жизни. Чем больше пожертвований мы получаем, тем больше времени мы проводим, добавляя новые возможности, прислушиваясь к Вашим пожеланиям и предоставляя Вам то, что Вам необходимо. Мы — всего лишь два человека, пытающиеся изменить Мир. Вы поможете нам?',
   sidebar_donate:       'Пожертвовать',
   sidebar_thanks:       'СПАСИБО!!!',
@@ -222,30 +216,6 @@ ru.data = {
   OFFLINE_Step3_Title:    'Шаг №3: Выполнить транзакцию (онлайн компьютер)',
   OFFLINE_Step3_Label_1:  'Вставьте подписанную транзакцию с шага №2 и нажмите кнопку "ВЫПОЛНИТЬ ТРАНЗАКЦИЮ".',
 
-  /* DAO */
-  DAO_bal1:               'на момент создания блока №1.919.999',
-  DAO_bal2:               'текущий',
-  DAO_TitleETH:           'Обменять DAO токены на ETH',
-  DAO_TitleETC:           'Обменять DAO токены на ETC',
-  DAO_ETC_Label_1:        'На какой адрес зачислить ETC?',
-  DAO_ETC_Label_2:        'Группа "White Hat" работала не покладая рук для того, чтобы Вы смогли получить обратно Ваш ETC. Вы можете сказать им "спасибо", пожертвовав небольшой процент от суммы, если хотите, конечно. ',
-  DAO_Desc:               'Используйте эту вкладку, чтобы обменять Ваши DAO токены на эфир (ether). Если вы хотите перевести DAO токены, используйте вкладку "Перевести токены".',
-  DAO_Inst:               'Да. Просто нажмите большую красную кнопку. Это действительно просто.',
-  DAO_Warning:            'Если Вы видите ошибку "Недостаточно средств для оплаты газа", то это значит, что на Вашем счету не хватает эфира (ether), чтобы покрыть расходы на газ. Переведите 0,01 эфира (ether) на Ваш счёт и попробуйте снова. ',
-  DAOModal_Title:         'Просто чтобы убедиться...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Вы собираетесь обменять',
-  DAOModal_2:             'DAO токенов. На адрес',
-  DAOModal_3:             'будет зачислено', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               'Получить причитающиеся Вам DigixDAO (DGD) токены и бэйджи. Вы можете получить причитающиеся Вам токены, если Вы участвовали в в распродаже токенов 30–31 марта 2016 года.  Если Вы хотите перевести DGD токены, используйте вкладку "Перевести токены".',
-  DGD_Label_1:            'Предположительный размер комиссии:',
-  DGD_Label_2:            'Максимальный размер комиссии:',
-  DGD_Label_3:            'Цена газа:',
-  DGD_Generate:           'Сформировать требование',
-  DGD_Content:            'Вы собираетесь затребовать причитающиеся Вам DGD токены.',
-
   /* Deploy Contracts */
   DEP_generate:        'Сформировать байткод',
   DEP_generated:       'Сформированный байткод',
@@ -304,7 +274,6 @@ ru.data = {
   SUCCESS_2:            'Кошелёк успешно расшифрован',
   SUCCESS_3:            'Транзакция отправлена на выполнение. TX ID: ',
   SUCCESS_4:            'Ваш кошелёк успешно добавлен: ',
-  SUCCESS_5:            'Ваш голос учтён. Спасибо Вам за активное участие в работе DAO.',
   SUCCESS_6:            'Выбранный файл: ',
 
   /* Parity Error Messages */

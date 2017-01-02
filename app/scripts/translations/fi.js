@@ -5,7 +5,6 @@ fi.code = 'fi';
 fi.data = {
 
   ERROR_22:             'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
-  WARN_Send_Link_2:     '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Sign Message */
   NAV_SignMsg:          'Sign Message',
@@ -61,17 +60,6 @@ fi.data = {
   DEP_signtx:             'Sign Transaction',
   DEP_interface:          'Generated Interface',
 
-  /* DAO */
-  DAO_bal1:               'at block 1,919,999',
-  DAO_bal2:               'current',
-  DAO_TitleETH:           'Withdraw DAO For ETH',
-  DAO_TitleETC:           'Withdraw DAO For ETC',
-  DAO_ETC_Label_1:        'What address do you want your ETC to be sent to?',
-  DAO_ETC_Label_2:        'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'You are about to withdraw',
-  DAOModal_2:             'DAO Tokens to',
-  DAOModal_3:             'for', // "in return for"
 
   /* Misc */
   FOOTER_1b:            'Created by',
@@ -90,10 +78,6 @@ fi.data = {
   NAV_SendEther:        'Lähetä Etheriä ja Tokeneita',
   NAV_SendTokens:       'Lähetä Tokeneita',
   NAV_Offline:          'Lähetä Offlinena',
-  NAV_WithdrawDAO:      'Nosta DAO',
-  DAO_TitleLong:        'Muuta DAO Tokenisi ETH:iksi',
-  NAV_ClaimDGD:         'Lunasta DGD',
-  DGD_TitleLong:        'Lunasta DGD Tokenisi',
   NAV_DeployContract:  'Ota Käyttöön Sopimus',
   NAV_MyWallets:        'Minun Lompakkoni',
   NAV_ViewWallet:       'Tarkastele Lompakon Tietoja',
@@ -142,7 +126,6 @@ fi.data = {
   sidebar_TokenBal:     'Tokenien Saldo: ',
   sidebar_Equiv:        'Vastaavat Arvot: ',
   sidebar_TransHistory: 'Siirto Historia',
-  sidebar_DGDBal:       'DGD Joukkomyynnin Tiedot:',
   sidebar_donation:     'MyEtherWallet on ilmainen, avoimen lähdekoodin palvelu joka on omistautunut sinun yksityisyyteesi ja turvallisuuteesi. Mitä enemmän lahjoituksia me vastaanotamme, sitä enemmän aikaa me käytämme uusien toimintojen luomiseksi, kuunnellen teidän palautettanne ja antaen teille juuri sitä mitä te tahdotte. Me olemme vain kaksi ihmistä jotka koittavat muuttaa maailmaa. Auta meitä?',
   sidebar_donate:       'Lahjoita',
   sidebar_thanks:       'KIITOS!!!',
@@ -250,29 +233,6 @@ fi.data = {
   OFFLINE_Step3_Title:    'Vaihe 3: Lähetä / Julkaise Siirto (Verkkoon yhdistetty (online) tietokone)',
   OFFLINE_Step3_Label_1:  'Liitä allekirjoitettu siirto Vaiheesta 2 tähän ja paina "LÄHETÄ SIIRTO" nappia.',
 
-  /* DAO */
-  DAO_bal1:               'lohkossa 1,919,999',
-  DAO_bal2:               'tällä hetkellä',
-  DAO_TitleETH:           'Nosta DAO ETHeinä',
-  DAO_TitleETC:           'Nosta DAO ETCeinä',
-  DAO_ETC_Label_1:        'Mihin osoitteeseen haluat että ETC lähetetään?',
-  DAO_ETC_Label_2:        '"White Hat Group" on työskennellyt väsymättömästi saadakseen ETCsi takaisin sinulle. Voit sanoa "kiitos" lahjoittamalla prosentuaalisen osuuden nostostasi, mikäli niin haluat. ',
-  DAO_Desc:               'Käytä tätä välilehteä muuttaaksesi DAO Tokenisi ETHiksi. Mikäli haluat lähettää DAO:ta, ole hyvä ja käytä Lähetä Tokeneita välilehteä.',
-  DAO_Inst:               'Kyllä. Paina vain isoa punaista nappia. Se on niin helppoa.',
-  DAO_Warning:            'Jos sinulla tulee "Riittämätön saldo gasille" virhe, sinulla täytyy olla pieni määrä ETHiä tililläsi kattaaksesi gasin hinnan. Lisää .01 ETHiä tälle tilille ja koita uudestaan. ',
-  DAOModal_Title:         'Varmistetaan vain...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Olet nostamassa',
-  DAOModal_2:             'DAO Tokenia',
-  DAOModal_3:             'vaihdossa', // "in return for"
-
-  /* Digix */
-  DGD_Desc:               'Lunasta DigixDAO (DGD) tokenisi & badgesi. Lunastaaksesi, sinun on täytynyt osallistua tokenien myyntiin Maaliskuun 30/31 päivänä, 2016.  Jos haluat lähettää DGDtä, ole hyvä ja käytä Lähetä Tokeneita välilehteä.',
-  DGD_Label_1:            'Arvioitu kulutus maksu:',
-  DGD_Label_2:            'Annettu Maksimi Maksu:',
-  DGD_Label_3:            'Gas Hinta:',
-  DGD_Generate:           'Luo Lunastus',
-  DGD_Content:            'Olet lunastamassa DGD Tokenisi.',
 
   /* Deploy Contracts */
   DEP_generate:        'Generoi Bytecode',
@@ -331,7 +291,6 @@ fi.data = {
   SUCCESS_2:            'Lompakon salaus onnistuneesti purettu',
   SUCCESS_3:            'Siirto lähetetty. TX ID: ',
   SUCCESS_4:            'Lompakkosi lisätty onnistuneesti: ',
-  SUCCESS_5:            'Olet äänestänyt onnistuneesti. Kiitos että olet ollut aktiivinen osanottaja The DAOssa.',
   SUCCESS_6:            'Valittu Tiedosto: ',
 
   /* Geth Error Messages */

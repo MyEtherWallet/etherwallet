@@ -28,7 +28,6 @@ no.data = {
   TOKEN_show:           'Vis Alle Tokens',
   TOKEN_hide:           'Skjul Tokens',
   WARN_Send_Link:       'Du ankom via en lenke hvor adresse, verdi, gas, datafelt og/eller transaksjonstype (sendingsmodus) var ferdigutfylt. Du kan endre denne informasjonen før du sender. Lås opp lommeboken din for å komme i gang.',
-  WARN_Send_Link_2:     '**Advarsel:** Du kan bare inkludere data hvis du sender via "ETH (Standardtransaksjon)". Vennligst ta bort "sendMode" og/eller "tokenSymbol" fra URL-en for å sende en transaksjon med data.',
 
   /* Hardware wallets */
   x_Ledger:             'Ledger Nano S',
@@ -48,10 +47,6 @@ no.data = {
   NAV_SendEther:        'Send Ether & Tokens',
   NAV_SendTokens:       'Send Tokens',
   NAV_Offline:          'Send Offline',
-  NAV_WithdrawDAO:      'Ta ut DAO',
-  DAO_TitleLong:        'Løs inn dine DAO-token for ether (ETH)',
-  NAV_ClaimDGD:         'Gjør krav på DGD',
-  DGD_TitleLong:        'Gjør krav på dine DGD-token',
   NAV_DeployContract:   'Utplasser kontrakt',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts:        'Kontrakt',
@@ -103,7 +98,6 @@ no.data = {
   sidebar_TokenBal:     'Token-saldo: ',
   sidebar_Equiv:        'Tilsvarende verdier: ',
   sidebar_TransHistory: 'Transaksjonshistorikk: ',
-  sidebar_DGDBal:       'DGD Crowdsale informasjon:',
   sidebar_donation:     'MyEtherWallet er en gratis åpen-kildekode-service som er dedikert til å ivareta ditt personvern og din sikkerhet. Jo flere donasjoner vi får, jo mer tid kan vi bruke til å lage nye funksjoner, lytte til tilbakemeldinger, og gi deg det du ønsker. Vi er bare to personer som prøver å forandre verden. Vil du hjelpe oss?',
   sidebar_donate:       'Doner',
   sidebar_thanks:       'TAKK!!!',
@@ -211,30 +205,6 @@ no.data = {
   OFFLINE_Step3_Title:    'Steg 3: Send / Publiser transaksjon (internettilknyttet datamaskin)',
   OFFLINE_Step3_Label_1:  'Overfør (f.eks. via USB-minnepinne) den signerte transaksjonen fra steg 2 og lim den inn her. Trykk så "SEND TRANSAKSJON"-knappen.',
 
-  /* DAO */
-  DAO_bal1:               'ved blokk 1,919,999',
-  DAO_bal2:               'nåværende',
-  DAO_TitleETH:           'Veksle inn DAO mot ETH',
-  DAO_TitleETC:           'Veksle inn DAO mot ETC',
-  DAO_ETC_Label_1:        'Hvilken adresse ønsker du å sende dine ETC til?',
-  DAO_ETC_Label_2:        '"White Hat Group" har jobbet utrettelig for å gi deg tilbake dine ETC. Du kan takke dem ved å donere en prosentandel av uttaket ditt, hvis du ønsker det. ',
-  DAO_Desc:               'Bruk denne siden til å veksle inn dine DAO-token for ETH. Hvis du ønsker å sende DAO-token, vennligst bruk "Send Token"-siden.',
-  DAO_Inst:               'Ja. Bare trykk på den store røde knappen. Det er så enkelt som det.',
-  DAO_Warning:            'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,01 ether til denne kontoen og prøv igjen. ',
-  DAOModal_Title:         'Bare for å være sikker...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1:             'Du er i ferd med å veksle inn ',
-  DAOModal_2:             'DAO-tokens til ',
-  DAOModal_3:             'i bytte mot',
-
-  /* Digix */
-  DGD_Desc:               'Krev inn dine DigixDAO (DGD)-tokens & badges. For å gjøre dette, må du ha deltatt i token-salget 30-31. mars 2016.  Hvis du ønsker å sende DGD, vennligst bruk "Send Token"-siden.',
-  DGD_Label_1:            'Estimert avgiftsforbruk:',
-  DGD_Label_2:            'Oppgitt maksimal avgift:',
-  DGD_Label_3:            'Gas-pris:',
-  DGD_Generate:           'Opprett krav',
-  DGD_Content:            'Du er i ferd med å kreve inn dine DGD-token.',
-
   /* Deploy Contracts */
   DEP_generate:        'Generer Bytecode',
   DEP_generated:       'Generert Bytecode',
@@ -292,7 +262,6 @@ no.data = {
   SUCCESS_2:            'Dekrypteringen av lommeboken var vellykket',
   SUCCESS_3:            'Transaksjonen ble sendt inn. TX ID: ',
   SUCCESS_4:            'Lommeboken din ble lagt til: ',
-  SUCCESS_5:            'Du har stemt. Takk for at du er en aktiv deltaker i "The DAO".',
   SUCCESS_6:            'Valgt fil: ',
 
   /* Geth Error Messages */
