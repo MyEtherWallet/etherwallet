@@ -13,7 +13,7 @@ Account Address: <\/div>\n \
    <div translate=\"sidebar_AccountBal\">Account Balance: <\/div>\n \
    <ul class=\"account-info\">\n \
 <li>\n \
-   <span class=\"mono wrap\">{{wallet.balance}}<\/span> ETH <\/li>\n \
+   <span class=\"mono wrap\">{{wallet.balance}}<\/span> {{ajaxReq.type}} <\/li>\n \
    <\/ul>\n \
    <section class=\"token-balances\">\n \
    <div translate=\"sidebar_TokenBal\">\n \

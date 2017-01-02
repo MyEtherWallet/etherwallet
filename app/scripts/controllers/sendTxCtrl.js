@@ -1,13 +1,13 @@
 'use strict';
 var sendTxCtrl = function($scope, $sce, walletService) {
-    $scope.unitReadable = "ETH";
+    $scope.ajaxReq = ajaxReq;
+    $scope.unitReadable = ajaxReq.type;
     $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
     walletService.wallet = null;
     walletService.password = '';
     $scope.showAdvance = $scope.showRaw = false;
     $scope.dropdownEnabled = true;
     $scope.Validator = Validator;
-   	$scope.ajaxReq = ajaxReq;
     // Tokens
     $scope.tokenVisibility = "hidden";
     $scope.tokenTx = {
@@ -31,7 +31,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.tx.sendMode = sendMode;
         $scope.unitReadable = '';
         if (sendMode == 0) {
-            $scope.unitReadable = 'ETH';
+            $scope.unitReadable = ajaxReq.type;
         } else if (sendMode == 4) {
             $scope.unitReadable = tokenSymbol;
             $scope.tokenTx.id = tokenId;

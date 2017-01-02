@@ -1,8 +1,9 @@
 'use strict';
 var sendOfflineTxCtrl = function($scope, $sce, walletService) {
-	walletService.wallet = null;
+	$scope.ajaxReq = ajaxReq;
+  walletService.wallet = null;
 	walletService.password = '';
-	$scope.unitReadable = "ETH";
+	$scope.unitReadable = ajaxReq.type;
 	$scope.valueReadable = "";
 	$scope.showAdvance = false;
 	$scope.dropdownEnabled = true;
@@ -89,7 +90,7 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
 	$scope.setSendMode = function(index, tokenSymbol='') {
 		$scope.tokenTx.id = index;
 		if (index == 'ether') {
-			$scope.unitReadable = 'ETH';
+			$scope.unitReadable = ajaxReq.type;
 		} else {
 			$scope.unitReadable = tokenSymbol;
 		}

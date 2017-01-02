@@ -55,7 +55,7 @@
           <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'"> {{unitReadable}} <span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
             <li>
-              <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == 'ether']" ng-click="setSendMode('ether')">ETH</a>
+              <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == 'ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a>
             </li>
             <li ng-repeat="token in tokenObjs track by $index">
               <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == $index]" ng-click="setSendMode($index, token.getSymbol())" > {{token.getSymbol()}} </a>

@@ -43,7 +43,7 @@
       @@if (site === 'cx' ) { <a class="brand" href="/cx-wallet.html"><img src="images/etherwalletcx-logo.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> }
 
 
-      <div class="tagline"><span style="max-width: 395px">Client-side tool for securely interacting with Ethereum</span>
+      <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
         &middot; v3.4.0 &nbsp;&nbsp;
 

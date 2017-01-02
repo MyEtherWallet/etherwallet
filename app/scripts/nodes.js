@@ -4,8 +4,8 @@ nodes.customNode = require('./nodeHelpers/customNode');
 nodes.nodeTypes = {
     ETH: "ETH",
     ETC: "ETC",
-    Ropsten: "ROP",
-    Custom: "CUS"
+    Ropsten: "TEST ETH",
+    Custom: "CUSTOM ETH"
 };
 nodes.customNodeObj = {
     'name': 'CUS',
