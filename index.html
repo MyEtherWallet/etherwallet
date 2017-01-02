@@ -32,8 +32,8 @@
 
 
   <header ng-controller='tabsCtrl'>
-    <div class="small announcement annoucement-warning">
-      <div class="container">Not able to connect to node: CUSTOM_NODE. See the help page for troubleshooting suggestions.</div>
+    <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected">
+      <div class="container">Not able to connect to node. See the help page for troubleshooting suggestions.</div>
     </div>
     <section class="container-fluid bg-gradient header-branding">
       <section class="container">
@@ -53,7 +53,7 @@
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
               {{value.name}}
               <small> ({{value.service}}) </small>
-              <img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" />
+              <img ng-show="value.service=='Custom'" img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
             </a></li>
             <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
           </ul>
@@ -402,47 +402,10 @@
       </div>
 
       <br />
-
-      <div translate="sidebar_AccountBal"> Account Balance: </div>
-      <ul class="account-info">
-        <li><span class="mono wrap">{{etherBalance}}</span> Ether </li>
-      </ul>
-
-
-      <div translate="sidebar_TokenBal"> Token Balances: </div>
-      <table class="account-info">
-          <tr ng-repeat="token in tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
-            <td class="mono wrap">
-              <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'"/>
-              {{token.getBalance()}}
-            </td>
-            <td> {{token.getSymbol()}} </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <p>
-                <a ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
-                <a ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-            <small ng-bind-html="validateTokenBalances"></small>
-            </td>
-          </tr>
-      </table>
-
-      <div translate="sidebar_Equiv"> Equivalent Values: </div>
-      <ul class="account-info">
-        <li><span class="mono wrap">{{usdBalance}}</span> USD</li>
-        <li><span class="mono wrap">{{eurBalance}}</span> EUR</li>
-        <li><span class="mono wrap">{{btcBalance}}</span> BTC</li>
-      </ul>
-
+      <wallet-balance-drtv></wallet-balance-drtv>
       <div translate="sidebar_TransHistory"> Transaction History: </div>
       <ul class="account-info">
-        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
+        <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
       </ul>
 
     </section>
@@ -486,8 +449,8 @@
       <wallet-balance-drtv></wallet-balance-drtv>
 
       <div translate="sidebar_TransHistory"> Transaction History: </div>
-      <ul class="account-info">
-        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
+      <ul class="account-info" ng-show="ajaxReq.type != 'CUS'">
+        <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
       </ul>
 
       <div class="well">
