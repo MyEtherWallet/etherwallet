@@ -32,9 +32,9 @@
 
 @@if (site === 'mew' ) {
   <header ng-controller='tabsCtrl'>
-    <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" class="small announcement annoucement-warning" target="_blank">
-      <div class="container" translate="MEW_Warning_1">Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites!</div>
-    </a>
+    <div class="small announcement annoucement-warning">
+      <div class="container">Not able to connect to node: CUSTOM_NODE. See the help page for troubleshooting suggestions.</div>
+    </div>
     <section class="container-fluid bg-gradient header-branding">
       <section class="container">
         <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="My Ether Wallet" /></a>
@@ -44,8 +44,11 @@
 
 @@if (site === 'cx' ) {
   <header ng-controller='tabsCtrl'>
+    <div class="small announcement annoucement-warning">
+      <div class="container">Not able to connect to node: CUSTOM_NODE. See the help page for troubleshooting suggestions.</div>
+    </div>
     <a href="" class="small announcement annoucement-warning" target="_blank">
-      <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
+      <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
     </a>
     <section class="container-fluid bg-gradient header-branding">
       <section class="container">
@@ -60,7 +63,11 @@
         <span class="dropdown">
           <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small> <span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
-            <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">    {{value.name}}     <small> ({{value.service}})     </small></a></li>
+            <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
+              {{value.name}}
+              <small> ({{value.service}}) </small>
+              <img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" />
+            </a></li>
             <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
           </ul>
         </span>

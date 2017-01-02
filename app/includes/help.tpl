@@ -252,7 +252,22 @@
   </article>
 }
 
-
+  <article class="collapse-container">
+    <div ng-click="h6 = !h6">
+      <a class="collapse-button" ><span ng-show="!h6">+</span><span ng-show="h6">-</span></a>
+      <h4>6. I cannot connect to my custom node. What do I do? </h4>
+    </div>
+    <div ng-show="h6">
+      <ul>
+        <li> Verify the URL you entered is correct. </li>
+        <li> Verify the port you entered is correct. </li>
+        <li> Verify that if you are connecting to an http:// node you are running MyEtherWallet locally (NOT over https://). </li>
+        <li> Verify geth is running with `geth --rpc` or parity is running with `parity --rpccorsdomain "*"` </li>
+        <li> Verify your node is actually up and running. </li>
+        <li> Try removing the node and adding it again. </li>
+      </ul>
+    </div>
+  </article>
 
 
   <article class="collapse-container">

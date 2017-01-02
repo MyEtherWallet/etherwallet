@@ -1785,7 +1785,6 @@ Account Address: <\/div>\n \
 <li>\n \
    <span class=\"mono wrap\">{{wallet.balance}}<\/span> ETH <\/li>\n \
    <\/ul>\n \
-   <!-- Token Balances -->\n \
    <section class=\"token-balances\">\n \
    <div translate=\"sidebar_TokenBal\">\n \
    Token Balances: <\/div>\n \
@@ -1823,7 +1822,6 @@ Account Address: <\/div>\n \
       <\/div>\n \
       <\/div>\n \
       <\/section>\n \
-      <!-- \/ Token Balances -->\n \
       <div translate=\"sidebar_Equiv\">\n \
       Equivalent Values: <\/div>\n \
       <ul class=\"account-info\">\n \
