@@ -1116,6 +1116,7 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
     });
     $scope.$watch('ajaxReq.key', function () {
         if ($scope.wallet) {
+            $scope.setSendMode('ether');
             $scope.wallet.setBalance();
             $scope.wallet.setTokens();
         }
