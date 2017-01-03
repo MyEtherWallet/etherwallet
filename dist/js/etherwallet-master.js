@@ -3314,13 +3314,6 @@ var globalService = function ($http, $httpParamSerializerJQLike) {
       url: "bulk-generate",
       mew: false,
       cx: false
-    },
-    digix: {
-      id: 10,
-      name: "NAV_ClaimDGD",
-      url: "digix",
-      mew: false,
-      cx: false
     }
   };
   var currentTab = 0;
@@ -4541,7 +4534,6 @@ de.data = {
   ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
   WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Hardware wallets */
   x_Ledger: 'Ledger Nano S',
@@ -4572,10 +4564,6 @@ de.data = {
   NAV_SendEther: 'Sende Ether und Tokens',
   NAV_SendTokens: 'Sende Tokens',
   NAV_Offline: 'Sende offline',
-  NAV_WithdrawDAO: 'DAO Token entnehmen',
-  DAO_TitleLong: 'DAO Token in ETH umwandeln',
-  NAV_ClaimDGD: 'DGD geltend machen',
-  DGD_TitleLong: 'DGD Token geltend machen',
   NAV_DeployContract: 'Vertrag aufstellen',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts: 'Verträge',
@@ -4627,7 +4615,6 @@ de.data = {
   sidebar_TokenBal: 'Token Kontostand: ',
   sidebar_Equiv: 'Währungs-Gegenwerte: ',
   sidebar_TransHistory: 'Transaktions-Historie: ',
-  sidebar_DGDBal: 'DGD Crowdsale Information:',
   sidebar_donation: 'MyEtherWallet ist ein freier, quelloffener Service, der deiner Privatsphäre und Sicherheit gewidmet ist. Je mehr Spenden wir erhalten, desto mehr Zeit können wir investieren, um neue Funktionen zu programmieren, dein Feedback zu verarbeiten und dir zu geben, was du dir wünschst. Wir sind nur zwei Leute, die die Welt ändern möchten. Hilfst du uns dabei?',
   sidebar_donate: 'Spenden',
   sidebar_thanks: 'Dankeschön!!!',
@@ -4735,30 +4722,6 @@ de.data = {
   OFFLINE_Step3_Title: 'Schritt 3: Transaktion senden/veröffentlichen (Online Computer)',
   OFFLINE_Step3_Label_1: 'Kopiere die signierte Transaktion aus Schritt 2 hier hinein und drücke "TRANSAKTION SENDEN".',
 
-  /* DAO */
-  DAO_bal1: 'Bei Block 1,919,999',
-  DAO_bal2: 'momentan', // momentaner?
-  DAO_TitleETH: 'DAO Token in ETH umwandeln',
-  DAO_TitleETC: 'DAO Token in ETC umwandeln',
-  DAO_ETC_Label_1: 'An welche Adresse möchtest du deine ETC gesendet haben?',
-  DAO_ETC_Label_2: 'Die "White Hat Group" hat unermüdlich gearbeitet um deine ETC zurückzuholen. Wenn du möchtest, kannst du dich bedanken indem du einen Teil deiner ETC an sie spendest. ',
-  DAO_Desc: 'Nutze diesen Tab um deine DAO Token in ETH auszuzahlen. Wenn du DAO Token verschicken willst, nutze bitten den "Sende Tokens" Tab',
-  DAO_Inst: 'Ja, du musst einfach den großen roten Knopf drücken. Es ist so einfach.',
-  DAO_Warning: 'Wenn du den Fehler "Zu geringer Kontostand um Gaskosten zu decken" erhälst, musst du einen kleinen ether Betrag auf dein Konto überweisen um die Kosten zu decken. Überweise 0.01 Ether an dieses Konto und versuche es erneut. ',
-  DAOModal_Title: 'Nur zur Sicherheit...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Du bist dabei',
-  DAOModal_2: 'DAO Token an',
-  DAOModal_3: 'zu senden im Austausch für', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Erhebe Anspruch auf deine DigixDAO (DGD) Token und Badges. Um dies zu tun, musst du bei dem Token Verkauf am 30./31. Mai 2016 teilgenommen haben. Falls du DGD versenden möchtest, nutze bitte den Sende Tokens Tab.',
-  DGD_Label_1: 'Erwartete Gebühren:',
-  DGD_Label_2: 'Maximal mögliche Gebühren:', /* Provided = Mögliche? */
-  DGD_Label_3: 'Gaspreis:',
-  DGD_Generate: 'Anspruch geltend machen',
-  DGD_Content: 'Du bist dabei, deine DGD Token geltend zu machen.',
-
   /* Deploy Contracts */
   DEP_generate: 'Bytecode generieren',
   DEP_generated: 'Generierter Bytecode',
@@ -4816,7 +4779,6 @@ de.data = {
   SUCCESS_2: 'Wallet erfolgreich entschlüsselt',
   SUCCESS_3: 'Transaktion übermittelt. TX ID: ',
   SUCCESS_4: 'Dein Wallet wurde erfolgreich hinzugefügt: ',
-  SUCCESS_5: 'Du hast erfolgreich abgestimmt. Danke, dass du eine aktive Teilnehmerin/aktiver Teilnehmer am DAO bist.',
   SUCCESS_6: 'Ausgewählte Datei: ',
 
   /* Parity Error Messages */
@@ -5105,7 +5067,6 @@ el.data = {
   ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
   ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
   WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Hardware wallets */
   x_Ledger: 'Ledger Nano S',
@@ -5132,19 +5093,6 @@ el.data = {
   SUCCESS_6: 'File Selected: ',
   FOOTER_4: 'Disclaimer',
 
-  /* New - DAO ETC Withdrawal */
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'You are about to withdraw',
-  DAOModal_2: 'DAO Tokens to',
-  DAOModal_3: 'for', // "in return for"
-
-  DAO_bal1: 'at block 1,919,999',
-  DAO_bal2: 'current',
-  DAO_TitleETH: 'Withdraw DAO For ETH',
-  DAO_TitleETC: 'Withdraw DAO For ETC',
-  DAO_ETC_Label_1: 'What address do you want your ETC to be sent to?',
-  DAO_ETC_Label_2: 'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
-
   /* New - Deploy Contracts */
   NAV_DeployContract: 'Deploy Contract',
   NAV_InteractContract: 'Interact with Contract',
@@ -5163,10 +5111,6 @@ el.data = {
   NAV_SendEther: 'Αποστολή Ether και Tokens',
   NAV_SendTokens: 'Αποστολή Tokens',
   NAV_Offline: 'Αποστολή εκτός Σύνδεσης',
-  NAV_WithdrawDAO: 'Ανάληψη DAO',
-  DAO_TitleLong: 'Ανάληψη των Dao Tokens σας ως ETH',
-  NAV_ClaimDGD: 'Διεκδίκηση DGD',
-  DGD_TitleLong: 'Διεκδικήστε τα DGD Tokens σας',
   NAV_MyWallets: 'Τα Πορτοφόλια μου',
   NAV_ViewWallet: 'Προβολή Πληροφοριών Πορτοφολιού',
   NAV_Help: 'Βοήθεια',
@@ -5213,7 +5157,6 @@ el.data = {
   sidebar_TokenBal: 'Υπόλοιπο Token: ',
   sidebar_Equiv: 'Ισότιμες Αξίες: ',
   sidebar_TransHistory: 'Ιστορικό Συναλλαγών',
-  sidebar_DGDBal: 'Πληροφορίες Προαγοράς DGD:',
   sidebar_donation: 'Το MyEtherWallet είναι μία δωρεάν υπηρεσία ανοιχτού κώδικα αφοσιωμένη στην ιδιωτικότητα και την ασφάλεια σας. Όσο περισσότερες δωρεές λαμβάνουμε, τόσο περισσότερο χρόνο αφιερώνουμε στη δημιουργία νέων χαρακτηριστικών καθώς και την αξιολόγηση και εφαρμογή όσων μας προτείνετε. Είμαστε απλά δύο άνθρωποι που προσπαθούν να αλλάξουν τον κόσμο. Θα μας βοηθήσετε; ',
   sidebar_donate: 'Δωρεά',
   sidebar_thanks: 'ΣΑΣ ΕΥΧΑΡΙΣΤΟΥΜΕ!!!',
@@ -5321,20 +5264,6 @@ el.data = {
   OFFLINE_Step3_Title: 'Βήμα 3: Δημοσίευση Συναλλαγής (Συνδεδεμένος Υπολογιστής)',
   OFFLINE_Step3_Label_1: 'Επικολλήστε την υπογεγραμμένη συναλλαγή εδώ και πατήστε το κουμπί "ΑΠΟΣΤΟΛΗ ΣΥΝΑΛΛΑΓΗΣ".',
 
-  /* DAO */
-  DAO_Desc: 'Χρησιμοποιείστε αυτήν την καρτέλα για να κάνετε Ανάληψη των DAO Tokens σας ως ETH. Αν επιθυμείτε να αποστείλετε DAO, παρακαλώ χρησιμοποιήστε την καρτέλα Αποστολή Tokens.',
-  DAO_Inst: 'Ναι. Απλά πατάτε το μεγάλο κόκκινο κουμπί. Είναι τόσο απλό.',
-  DAO_Warning: 'Αν δέχεστε σφάλμα "Aνεπαρκές υπόλοιπο για gas", θα πρέπει να έχετε ένα μικρό ποσό ether στον λογαριασμό σας έτσι ώστε να καλύψετε το κόστος του gas. Προσθέστε 0.01 ether στον λογαριασμό αυτό και προσπαθήστε ξανά. ',
-  DAOModal_Title: 'Απλά για σιγουριά...',
-
-  /* Digix */
-  DGD_Desc: 'Διεκδικήστε τα DigixDAO (DGD) tokens & badges σας. Για να τα διεκδικήσετε, πρέπει να είχατε συμμετάσχει στην προαγορά tokens στις 30/31 Μαρτίου του 2016. Αν επιθυμείτε να αποστείλετε DGD, παρακαλώ χρησιμοποιήστε την καρτέλα Αποστολή Tokens.',
-  DGD_Label_1: 'Εκτιμώμενη Κατανάλωση Εξόδων:',
-  DGD_Label_2: 'Παρεχόμενα Μέγιστα Έξοδα:',
-  DGD_Label_3: 'Τιμή Gas:',
-  DGD_Generate: 'Δημιουργία Διεκδίκησης',
-  DGD_Content: 'Πρόκειται να διεκδικήσετε τα DGD Tokens σας.',
-
   /* My Wallet */
   MYWAL_Nick: 'Ψευδώνυμο Πορτοφολιού',
   MYWAL_Address: 'Διεύθυνση Πορτοφολιού',
@@ -5386,7 +5315,6 @@ el.data = {
   SUCCESS_2: 'Το πορτοφόλι αποκρυπτογραφήθηκε επιτυχώς',
   SUCCESS_3: 'Η συναλλαγή υποβλήθηκε. TX ID: ',
   SUCCESS_4: 'Το πορτοφόλι σας προστέθηκε επιτυχώς: ',
-  SUCCESS_5: 'Έχετε ψηφίσει επιτυχώς. Ευχαριστούμε για την ενεργή σας συμμετοχή στο DAO.',
 
   /* Parity Error Messages */
   PARITY_AlreadyImported: "Transaction with the same hash was already imported.",
@@ -5668,10 +5596,6 @@ en.data = {
   NAV_SendEther: 'Send Ether & Tokens',
   NAV_SendTokens: 'Send Tokens',
   NAV_Offline: 'Send Offline',
-  NAV_WithdrawDAO: 'Withdraw DAO',
-  DAO_TitleLong: 'Withdraw Your Dao Tokens For ETH',
-  NAV_ClaimDGD: 'Claim DGD',
-  DGD_TitleLong: 'Claim Your DGD Tokens',
   NAV_DeployContract: 'Deploy Contract',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts: 'Contracts',
@@ -5724,7 +5648,6 @@ en.data = {
   sidebar_TokenBal: 'Token Balances: ',
   sidebar_Equiv: 'Equivalent Values: ',
   sidebar_TransHistory: 'Transaction History: ',
-  sidebar_DGDBal: 'DGD Crowdsale Information:',
   sidebar_donation: 'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate: 'Donate',
   sidebar_thanks: 'THANK YOU!!!',
@@ -5835,30 +5758,6 @@ en.data = {
   OFFLINE_Step3_Title: 'Step 3: Send / Publish Transaction (Online Computer)',
   OFFLINE_Step3_Label_1: 'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
 
-  /* DAO */
-  DAO_bal1: 'at block 1,919,999',
-  DAO_bal2: 'current',
-  DAO_TitleETH: 'Withdraw DAO For ETH',
-  DAO_TitleETC: 'Withdraw DAO For ETC',
-  DAO_ETC_Label_1: 'What address do you want your ETC to be sent to?',
-  DAO_ETC_Label_2: 'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
-  DAO_Desc: 'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
-  DAO_Inst: 'Yes. Just push the big red button. It\'s that easy.',
-  DAO_Warning: 'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again. ',
-  DAOModal_Title: 'Just making sure...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'You are about to withdraw',
-  DAOModal_2: 'DAO Tokens to',
-  DAOModal_3: 'for', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
-  DGD_Label_1: 'Estimated fee consumption:',
-  DGD_Label_2: 'Provided Maximum Fee:',
-  DGD_Label_3: 'Gas Price:',
-  DGD_Generate: 'Generate Claim',
-  DGD_Content: 'You are about to claim your DGD Tokens.',
-
   /* Deploy Contracts */
   DEP_generate: 'Generate Bytecode',
   DEP_generated: 'Generated Bytecode',
@@ -5938,11 +5837,9 @@ en.data = {
   SUCCESS_2: 'Wallet successfully decrypted',
   SUCCESS_3: 'Transaction submitted. TX ID: ',
   SUCCESS_4: 'Your wallet was successfully added: ',
-  SUCCESS_5: 'You have successfully voted. Thank you for being an active participant in The DAO.',
   SUCCESS_6: 'File Selected: ',
 
   WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Geth Error Messages */
   GETH_InvalidSender: 'Invalid sender',
@@ -6227,7 +6124,6 @@ es.data = {
   MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it.',
   MSG_info3: 'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
   ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   NAV_DeployContract: 'Deploy Contract',
   NAV_InteractContract: 'Interact with Contract',
@@ -6264,10 +6160,6 @@ es.data = {
   NAV_SendEther: 'Enviar Ether y Tokens',
   NAV_SendTokens: 'Enviar Tokens',
   NAV_Offline: 'Enviar sin conexión',
-  NAV_WithdrawDAO: 'Retirar DAO',
-  DAO_TitleLong: 'Retirar Tus Vales Dao Por ETH',
-  NAV_ClaimDGD: 'Reclamar DGD',
-  DGD_TitleLong: 'Reclamar Tus Vales DGD',
   NAV_MyWallets: 'Mis Carteras',
   NAV_ViewWallet: 'Ver Información de las Carteras',
   NAV_Help: 'Ayuda',
@@ -6315,7 +6207,6 @@ es.data = {
   sidebar_TokenBal: 'Saldos de tokens: ',
   sidebar_Equiv: 'Valores equivalentes: ',
   sidebar_TransHistory: 'Historial de transacciones: ',
-  sidebar_DGDBal: 'Información del Crowdsale de DGD:',
   sidebar_donation: 'MyEtherWallet es un servicio gratuito y de código abierto dedicado a tu privacidad y seguridad. Cuantas más donaciones recibimos, más tiempo dedicamos creando nuevas características, escuchando vuestros comentarios y proporcionando lo que queréis. Sólo somos dos personas intentando cambiar el mundo. ¿Nos ayudas?',
   sidebar_donate: 'Donar',
   sidebar_thanks: '¡¡¡GRACIAS!!!',
@@ -6423,30 +6314,6 @@ es.data = {
   OFFLINE_Step3_Title: 'Paso 3: Enviar / Publicar transacción (con conexión)',
   OFFLINE_Step3_Label_1: 'Pega aquí la transacción firmada del paso 2 y pulsa el botón "ENVIAR TRANSACCIÓN".',
 
-  /* DAO */
-  DAO_bal1: 'en el bloque 1,919,999',
-  DAO_bal2: 'actual',
-  DAO_TitleETH: 'Retirar DAO por ETH',
-  DAO_TitleETC: 'Retirar DAO por ETC',
-  DAO_ETC_Label_1: '¿A qué dirección quieres que se envíen tus ETC?',
-  DAO_ETC_Label_2: 'El "White Hat Group" ha trabajado sin descanso para devolverte tus ETC. Puedes agradecérselo donando un porcentaje de tu reintegro si así lo eliges. ',
-  DAO_Desc: 'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
-  DAO_Inst: 'Sí. Simplemente pulsa el botón rojo grande. Es así de sencillo.',
-  DAO_Warning: 'Si estás obteniendo un error de "Saldo insuficiente para gas", debes tener una pequeña cantidad de ether en tu cuenta para poder cubrir el coste del gas. Añade 0.01 ether a esta cuenta y prueba de nuevo. ',
-  DAOModal_Title: 'Solamente asegurándonos...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Estás a punto de retirar',
-  DAOModal_2: 'DAO Tokens a',
-  DAOModal_3: 'para recibir', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Reclama tus tokens e insignias DigixDAO (DGD). Para reclamarlos, debes haber participado en la venta de tokens de los días 30 y 31 de marzo de 2016. Si quieres enviar DGD, por favor utiliza la pestaña Enviar Tokens.',
-  DGD_Label_1: 'Comisión estimada:',
-  DGD_Label_2: 'Comisión máxima proporcionada:',
-  DGD_Label_3: 'Precio del gas:',
-  DGD_Generate: 'Generar solicitud',
-  DGD_Content: 'Estás a punto de reclamar tus tokens DGD.',
-
   /* Deploy Contracts */
   DEP_generate: 'Generar Bytecode',
   DEP_generated: 'Bytecode generado',
@@ -6504,7 +6371,6 @@ es.data = {
   SUCCESS_2: 'Cartera descifrada con éxito',
   SUCCESS_3: 'Transacción enviada. TX ID: ',
   SUCCESS_4: 'Se ha añadido tu cartera: ',
-  SUCCESS_5: 'Has votado con éxito. Gracias por ser un participante activo en The DAO.',
   SUCCESS_6: 'Archivo seleccionado: ',
 
   /* Geth Error Messages */
@@ -6781,7 +6647,6 @@ fi.code = 'fi';
 fi.data = {
 
   ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Sign Message */
   NAV_SignMsg: 'Sign Message',
@@ -6837,18 +6702,6 @@ fi.data = {
   DEP_signtx: 'Sign Transaction',
   DEP_interface: 'Generated Interface',
 
-  /* DAO */
-  DAO_bal1: 'at block 1,919,999',
-  DAO_bal2: 'current',
-  DAO_TitleETH: 'Withdraw DAO For ETH',
-  DAO_TitleETC: 'Withdraw DAO For ETC',
-  DAO_ETC_Label_1: 'What address do you want your ETC to be sent to?',
-  DAO_ETC_Label_2: 'The "White Hat Group" has been working tirelessly to get your ETC back to you. You can say "thank you" by donating a percentage of your withdrawal, if you choose to. ',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'You are about to withdraw',
-  DAOModal_2: 'DAO Tokens to',
-  DAOModal_3: 'for', // "in return for"
-
   /* Misc */
   FOOTER_1b: 'Created by',
   FOOTER_4: 'Disclaimer',
@@ -6866,10 +6719,6 @@ fi.data = {
   NAV_SendEther: 'Lähetä Etheriä ja Tokeneita',
   NAV_SendTokens: 'Lähetä Tokeneita',
   NAV_Offline: 'Lähetä Offlinena',
-  NAV_WithdrawDAO: 'Nosta DAO',
-  DAO_TitleLong: 'Muuta DAO Tokenisi ETH:iksi',
-  NAV_ClaimDGD: 'Lunasta DGD',
-  DGD_TitleLong: 'Lunasta DGD Tokenisi',
   NAV_DeployContract: 'Ota Käyttöön Sopimus',
   NAV_MyWallets: 'Minun Lompakkoni',
   NAV_ViewWallet: 'Tarkastele Lompakon Tietoja',
@@ -6918,7 +6767,6 @@ fi.data = {
   sidebar_TokenBal: 'Tokenien Saldo: ',
   sidebar_Equiv: 'Vastaavat Arvot: ',
   sidebar_TransHistory: 'Siirto Historia',
-  sidebar_DGDBal: 'DGD Joukkomyynnin Tiedot:',
   sidebar_donation: 'MyEtherWallet on ilmainen, avoimen lähdekoodin palvelu joka on omistautunut sinun yksityisyyteesi ja turvallisuuteesi. Mitä enemmän lahjoituksia me vastaanotamme, sitä enemmän aikaa me käytämme uusien toimintojen luomiseksi, kuunnellen teidän palautettanne ja antaen teille juuri sitä mitä te tahdotte. Me olemme vain kaksi ihmistä jotka koittavat muuttaa maailmaa. Auta meitä?',
   sidebar_donate: 'Lahjoita',
   sidebar_thanks: 'KIITOS!!!',
@@ -7026,30 +6874,6 @@ fi.data = {
   OFFLINE_Step3_Title: 'Vaihe 3: Lähetä / Julkaise Siirto (Verkkoon yhdistetty (online) tietokone)',
   OFFLINE_Step3_Label_1: 'Liitä allekirjoitettu siirto Vaiheesta 2 tähän ja paina "LÄHETÄ SIIRTO" nappia.',
 
-  /* DAO */
-  DAO_bal1: 'lohkossa 1,919,999',
-  DAO_bal2: 'tällä hetkellä',
-  DAO_TitleETH: 'Nosta DAO ETHeinä',
-  DAO_TitleETC: 'Nosta DAO ETCeinä',
-  DAO_ETC_Label_1: 'Mihin osoitteeseen haluat että ETC lähetetään?',
-  DAO_ETC_Label_2: '"White Hat Group" on työskennellyt väsymättömästi saadakseen ETCsi takaisin sinulle. Voit sanoa "kiitos" lahjoittamalla prosentuaalisen osuuden nostostasi, mikäli niin haluat. ',
-  DAO_Desc: 'Käytä tätä välilehteä muuttaaksesi DAO Tokenisi ETHiksi. Mikäli haluat lähettää DAO:ta, ole hyvä ja käytä Lähetä Tokeneita välilehteä.',
-  DAO_Inst: 'Kyllä. Paina vain isoa punaista nappia. Se on niin helppoa.',
-  DAO_Warning: 'Jos sinulla tulee "Riittämätön saldo gasille" virhe, sinulla täytyy olla pieni määrä ETHiä tililläsi kattaaksesi gasin hinnan. Lisää .01 ETHiä tälle tilille ja koita uudestaan. ',
-  DAOModal_Title: 'Varmistetaan vain...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Olet nostamassa',
-  DAOModal_2: 'DAO Tokenia',
-  DAOModal_3: 'vaihdossa', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Lunasta DigixDAO (DGD) tokenisi & badgesi. Lunastaaksesi, sinun on täytynyt osallistua tokenien myyntiin Maaliskuun 30/31 päivänä, 2016.  Jos haluat lähettää DGDtä, ole hyvä ja käytä Lähetä Tokeneita välilehteä.',
-  DGD_Label_1: 'Arvioitu kulutus maksu:',
-  DGD_Label_2: 'Annettu Maksimi Maksu:',
-  DGD_Label_3: 'Gas Hinta:',
-  DGD_Generate: 'Luo Lunastus',
-  DGD_Content: 'Olet lunastamassa DGD Tokenisi.',
-
   /* Deploy Contracts */
   DEP_generate: 'Generoi Bytecode',
   DEP_generated: 'Generoitu Bytecode',
@@ -7107,7 +6931,6 @@ fi.data = {
   SUCCESS_2: 'Lompakon salaus onnistuneesti purettu',
   SUCCESS_3: 'Siirto lähetetty. TX ID: ',
   SUCCESS_4: 'Lompakkosi lisätty onnistuneesti: ',
-  SUCCESS_5: 'Olet äänestänyt onnistuneesti. Kiitos että olet ollut aktiivinen osanottaja The DAOssa.',
   SUCCESS_6: 'Valittu Tiedosto: ',
 
   /* Geth Error Messages */
@@ -7401,10 +7224,6 @@ fr.data = {
   NAV_SendEther: 'Envoyer des Ether et des Tokens',
   NAV_SendTokens: 'Envoyer des tokens',
   NAV_Offline: 'Envoyer hors-ligne',
-  NAV_WithdrawDAO: 'Retirer de la DAO',
-  DAO_TitleLong: 'Échanger des tokens DAO contre des ETH',
-  NAV_ClaimDGD: 'Réclamer des DGD',
-  DGD_TitleLong: 'Réclamer vos tokens DGD',
   NAV_DeployContract: 'Déployer un contrat',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts: 'Contrats',
@@ -7458,7 +7277,6 @@ fr.data = {
   sidebar_TokenBal: 'Solde en tokens : ',
   sidebar_Equiv: 'Valeur correspondante : ',
   sidebar_TransHistory: 'Historique des transactions: ',
-  sidebar_DGDBal: 'Informations sur la *crowdsale* DGD :',
   sidebar_donation: 'MyEtherWallet est un service gratuit et open source respectueux de votre vie privée et de votre sécurité. Plus nous recevons de donations, plus nous dédions du temps à développer de nouvelles fonctions, à écouter vos retours et à vous fournir ce dont vous avez besoin. Nous ne sommes que deux personnes qui essayent de changer le monde. Aidez nous !',
   sidebar_donate: 'Faire une donation',
   sidebar_thanks: 'MERCI !!!',
@@ -7569,30 +7387,6 @@ fr.data = {
   OFFLINE_Step3_Title: 'Étape 3 : Envoyer / publier la transaction (ordinateur en ligne)',
   OFFLINE_Step3_Label_1: 'Copier ici la transaction signée à l\'étape 2 et cliquez sur le bouton "ENVOYER LA TRANSACTION".',
 
-  /* DAO */
-  DAO_bal1: 'au bloc 1.919.999',
-  DAO_bal2: 'actuel',
-  DAO_TitleETH: 'Retrait de DAO en ETH',
-  DAO_TitleETC: 'Retrait de DAO en ETC',
-  DAO_ETC_Label_1: 'À quelle adresse voulez-vous que les ETC soient envoyés ?',
-  DAO_ETC_Label_2: 'Le "White Hat Group" a travaillé sans relâche pour vous rendre vos ETC. Vous pouvez les remercier par une donation d\'un pourcentage de votre retrait si vous le souhaitez. ',
-  DAO_Desc: 'Utilisez cet onglet pour retirer et convertir vos tokens en ETH. Si vous désirez envoyer des tokens DAO, utilisez l\'onglet Envoi de tokens.',
-  DAO_Inst: 'Oui. Cliquez simplement sur le gros bouton rouge. Vous voyez, c\'est simple.',
-  DAO_Warning: 'Si vous obtenez une erreur "Montant insuffisant pour le paiement du gaz", vous devez disposer d\'un petit montant en ether sur votre compte pour couvrir le coût en gaz. Ajoutez 0,01 ether sur votre compte et réessayez. ',
-  DAOModal_Title: 'Juste pour être sûr...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Vous êtes sur le point de retirer',
-  DAOModal_2: 'tokens DAO vers',
-  DAOModal_3: 'pour', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Réclamez vos tokens et vos badges DigixDAO (DGD). Pour ce faire, vous devez avoir participé à la vente de tokens du 30 et 31 mars 2016. Si vous désirez envoyez des DGD, utilisez l\'onglet Envoi de tokens.',
-  DGD_Label_1: 'Estimation des frais consommés :',
-  DGD_Label_2: 'Frais maximum fournis :',
-  DGD_Label_3: 'Prix du gaz :',
-  DGD_Generate: 'Générer une réclamation',
-  DGD_Content: 'Vous allez réclamer vos tokens DGD.',
-
   /* Deploy Contracts */
   DEP_generate: 'Générer le bytecode',
   DEP_generated: 'Bytecode généré',
@@ -7667,10 +7461,8 @@ fr.data = {
   SUCCESS_2: 'Portefeuille déchiffré avec succès',
   SUCCESS_3: 'Transaction envoyée. Identifiant de transaction : ',
   SUCCESS_4: 'Votre portefeuille a été ajouté avec succès : ',
-  SUCCESS_5: 'Vous avez voté avec succès. Merci d\'être un participant actif à The DAO.',
   SUCCESS_6: 'Fichier sélectionné : ',
   WARN_Send_Link: 'Vous être arrivé grâce à un lien qui a rempli l\'adresse, le montant, le gaz ou les champs de données pour vous. Vous pouvez modifier toutes les informations avant d\'envoyer. Débloquez votre portefeuille pour démarrer.',
-  WARN_Send_Link_2: '**Avertissement :** Vous ne pouvez inclure de données que si vous envoyez via "ETH (Transaction standard)". Enlevez "sendMode" et/ou "tokenSymbol" de l\'URI pour envoyer une transaction avec des données.',
 
   /* Geth Error Messages */
   GETH_InvalidSender: 'Expéditeur invalide',
@@ -7961,7 +7753,6 @@ hu.data = {
   ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Navigation*/
   NAV_YourWallets: 'Tárcáid',
@@ -7971,10 +7762,6 @@ hu.data = {
   NAV_SendEther: 'Ether & Tokenek küldése',
   NAV_SendTokens: 'Tokenek küldése',
   NAV_Offline: 'Offline tranzakció',
-  NAV_WithdrawDAO: 'DAO kifizetése',
-  DAO_TitleLong: 'Dao tokenek kifizetése ETH-ért',
-  NAV_ClaimDGD: 'DGD igénylése',
-  DGD_TitleLong: 'DGD Tokenek igénylése',
   NAV_DeployContract: 'Kontraktus Telepítése',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts: 'Kontraktus',
@@ -8027,7 +7814,6 @@ hu.data = {
   sidebar_TokenBal: 'Token Egyenleg: ',
   sidebar_Equiv: 'Ezzel egyenértékű: ',
   sidebar_TransHistory: 'Tranzakció Történet: ',
-  sidebar_DGDBal: 'DGD Crowdsale Információ:',
   sidebar_donation: 'A MyEtherWallet egy szabad, nyílt forrású szolgáltatás az adatod védelmének és a biztonságodnak szentelve. Minél több adomány érkezik, annál több időt tudunk fordítani új funkciók létrehozására, a visszajelzéseidre és olyan szolgáltatást nyújtani, amilyet szeretnél. Mindössze két ember, akik megpróbálnak változtatni a világon. Segítesz nekünk?',
   sidebar_donate: 'Adományozok',
   sidebar_thanks: 'KÖSZÖNJÜK!!!',
@@ -8139,29 +7925,6 @@ hu.data = {
   OFFLINE_Step3_Title: 'Lépés 3: Küld / Közzétesz (Online Számítógép)',
   OFFLINE_Step3_Label_1: 'Illeszd be ide az aláírt tranzakciót a második lépésből (Lépés 2) és nyomd meg a "TRANZAKCIÓ KÜLDÉSE" gombot.',
 
-  /* DAO */
-  DAO_bal1: 'a 1,919,999. blokknál',
-  DAO_bal2: 'jelenlegi',
-  DAO_TitleETH: 'DAO kifizetése ETH-ért',
-  DAO_TitleETC: 'DAO kifizetése ETC-ért',
-  DAO_ETC_Label_1: 'Milyen címre szeretnéd az ETC-t küldeni?',
-  DAO_ETC_Label_2: 'A "White Hat Group" fáradhatatlanul dolgozik azon, hogy visszajuttassa hozzád az ETC-det. Mondhatsz egy "köszönömöt" azzal, hogy a kifizetésed bizonyos százalékát eladományozod nekik, ha ezt választod. ',
-  DAO_Desc: 'Használd ezt az oldalt, hogy Kifizesd a DAO tokenedet ETH-ért **és ETC-ért**. Ha DAO-t szeretnél küldeni, kérlek használd a Token Küldése oldalt.',
-  DAO_Inst: 'Igen. Csak nyomd meg a nagy piros gombot. Ez ilyen egyszerű.',
-  DAO_Warning: 'Ha "nincs elegendő egyenleg a gas-hoz" hibaüzenetet kaptál, egy kis összegnyi etherre szükséged lesz a számládon, hogy fedezni tudd a gas költségeit. Adj hozzá 0.01 ethert ehhez a számlához és próbáld újra. ',
-  DAOModal_Title: 'Csak megbizonyosodunk...',
-  DAOModal_1: 'Most készülsz kifizetni',
-  DAOModal_2: 'DAO Tokeneket erre a címre',
-  DAOModal_3: 'ezért:', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Igényeld a DigixDAO (DGD) tokened és a badge-eket. Ahhoz, hogy igényelni tudj részt kellett venned a token eladásban 2016. március 30-án vagy 31-én. Ha DGD-t akarsz küldeni, kérlek használd a Token küldése oldalt.',
-  DGD_Label_1: 'A díj becsült költsége:',
-  DGD_Label_2: 'Biztosított Maximum Díj:',
-  DGD_Label_3: 'Gas Ár:',
-  DGD_Generate: 'Igény Generálása',
-  DGD_Content: 'Most készülsz igényelni a DGD Tokenjeidet.',
-
   /* Deploy Contracts */
   DEP_generate: 'Byte-kód Generálása',
   DEP_generated: 'Generált Byte-kód',
@@ -8233,7 +7996,6 @@ hu.data = {
   SUCCESS_2: 'Tárca sikeresen dekódolva',
   SUCCESS_3: 'Tranzakció elküldve. TX ID: ',
   SUCCESS_4: 'Tárcád sikeresen hozzáadva: ',
-  SUCCESS_5: 'Sikeresen szavaztál. Köszönjük, hogy aktív tagja vagy a DAO-nak.',
 
   /* Geth Error Messages */
   GETH_InvalidSender: 'Érvénytelen küldő',
@@ -8518,8 +8280,6 @@ id.data = {
   MSG_info2: 'Cantumkan nama atau "nickname" Anda dan dimana "nickname" tersebut dipakai sehingga pihak lain tidak dapat memakainya.',
   MSG_info3: 'Cantumkan alasan yang spesifik untuk pesan ini sehingga pesan yang ditandai ini tidak dapat dipakai ulang untuk keperluan lain.',
 
-  WARN_Send_Link_2: '**Peringatan:** Data hanya bisa disertakan jika pengiriman menggunakan "ETH (Standard Transaction)". Harap hilangkan "sendMode" dan/atau "tokenSymbol" dari URI untuk pengiriman transaksi dengan data.',
-
   /* Navigation*/
   NAV_YourWallets: 'Dompet Anda',
   NAV_AddWallet: 'Tambahkan Dompet',
@@ -8528,10 +8288,6 @@ id.data = {
   NAV_SendEther: 'Kirim Ether dan Tokens',
   NAV_SendTokens: 'Kirim Token',
   NAV_Offline: 'Kirim Offline',
-  NAV_WithdrawDAO: 'Tarik DAO',
-  DAO_TitleLong: 'Tarik ETH dari Token DAO Anda',
-  NAV_ClaimDGD: 'Klaim DGD',
-  DGD_TitleLong: 'Klaim DGD Token Anda',
   NAV_DeployContract: 'Buat Contract',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts: 'Contracts',
@@ -8585,7 +8341,6 @@ id.data = {
   sidebar_TokenBal: 'Saldo Token: ',
   sidebar_Equiv: 'Nilai Ekuivalent: ',
   sidebar_TransHistory: 'Sejarah Transaksi: ',
-  sidebar_DGDBal: 'Informasi Crowdsale DGD:',
   sidebar_donation: 'MyEtherWallet dapat dipergunakan secara cuma-cuma berdasarkan prinsip open source dengan tetap menjaga privasi dan keamanan. Semakin banyak donasi yang kami terima, semakin banyak waktu yang kami dapat luangkan untuk membuat fitur-fitur baru dan mewujudkan usulan dan keinginan para penggunanya. Tim kami yang terdiri dari hanya dua orang sangat membutuhkan dukungan Anda untuk mewujudkan cita-cita kami dalam membuat dunia yang semakin baik',
   sidebar_donate: 'Kirim Donasi',
   sidebar_thanks: 'Terima Kasih!!!',
@@ -8711,30 +8466,6 @@ id.data = {
   OFFLINE_Step3_Title: 'Langkah 3: Kirim/Publikasikan Transaksi (komputer Online)',
   OFFLINE_Step3_Label_1: '"Paste" data "Signed Transaction" dari Langkah 2 di atas dan klik tombol "Kirim Transaksi".',
 
-  /* DAO */
-  DAO_bal1: 'pada blok 1,919,999',
-  DAO_bal2: 'saat ini',
-  DAO_TitleETH: 'Tarik DAO untuk ETH',
-  DAO_TitleETC: 'Tarik DAO untuk ETC',
-  DAO_ETC_Label_1: 'Ke alamat mana ETC harus dikirimkan?',
-  DAO_ETC_Label_2: 'Atas kerja keras "White Hat Group" yang telah berhasil merebut kembali ETC Anda, wujudkan rasa "terima kasih" Anda dengan mendonasikan sebagian dari jumlah penarikan. ',
-  DAO_Desc: 'Pakai halaman ini untuk penarikan ETH **& ETC** dari DAO Anda. Untuk pengiriman DAO, gunakan halaman "Kirim Token".',
-  DAO_Inst: 'Cukup dengan menekan tombol merah besar ini. Mudah kan!.',
-  DAO_Warning: 'Jika terjadi error "Insufficient balance for gas", pastikan terdapat sejumlah kecil Ether di Akun untuk menutup biaya gas. Tambahkan 0.01 ether ke akun ini dan silakan coba lagi. ',
-  DAOModal_Title: 'Hanya untuk meyakinkan...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Anda akan melakukan penarikan',
-  DAOModal_2: 'Token DAO ke',
-  DAOModal_3: 'untuk', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Pakai halaman ini untuk meng-klaim Token & Badge DigixDAO (DGD). Klaim hanya bisa dilakukan jika Anda berpatisipasi dalam penjualan token pada tanggal 30/31 Maret 2016.  Untuk pengiriman DGD, pakai halaman "Kirim Token".',
-  DGD_Label_1: 'Perkiraan biaya:',
-  DGD_Label_2: 'Biaya maksimal yang disediakan:',
-  DGD_Label_3: 'Harga Gas:',
-  DGD_Generate: 'Buat Klaim',
-  DGD_Content: 'Anda akan melakukan klaim Token DGD.',
-
   /* Deploy Contracts */
   DEP_generate: 'Buat Bytecode',
   DEP_generated: 'Bytecode yang dibuat',
@@ -8794,7 +8525,6 @@ id.data = {
   SUCCESS_2: 'Dompet telah ter-dekripsi',
   SUCCESS_3: 'Transaksi diajukan. TX ID: ',
   SUCCESS_4: 'Dompet Anda telah ditambahkan: ',
-  SUCCESS_5: 'Anda telah berhasil melakukan voting. Terima kasih untuk menjadi peserta aktif dalam The DAO.',
   SUCCESS_6: 'File Terpilih: ',
   WARN_Send_Link: 'Alamat, jumlah, gas atau informasi telah diisikan untuk Anda. Informasi tersebut dapat Anda rubah sebelum pengiriman. Buka kunci dompet Anda Untuk memulai.',
 
@@ -9090,10 +8820,6 @@ it.data = {
   NAV_SendEther: 'Invia ether e token',
   NAV_SendTokens: 'Invia token',
   NAV_Offline: 'Invia offline',
-  NAV_WithdrawDAO: 'Preleva DAO',
-  DAO_TitleLong: 'Preleva i tuoi token DAO convertendoli in ETH',
-  NAV_ClaimDGD: 'Richiedi DGD',
-  DGD_TitleLong: 'Richiedi i tuoi token DGD',
   NAV_DeployContract: 'Pubblica contratto',
   NAV_InteractContract: 'Interagisci con un contratto',
   NAV_Contracts: 'Contratti',
@@ -9146,7 +8872,6 @@ it.data = {
   sidebar_TokenBal: 'Saldo token: ',
   sidebar_Equiv: 'Valori equivalenti: ',
   sidebar_TransHistory: 'Storico transazioni: ',
-  sidebar_DGDBal: 'Informazioni crowdsale DGD:',
   sidebar_donation: 'MyEtherWallet è un servizio gratuito e open-source votato alla tua privacy e sicurezza. Più donazioni riceviamo, più tempo dedichiamo a creare nuove funzionalità, considerare i tuoi commenti, e darti ciò che vuoi. Siamo solo due persone che provano a cambiare il mondo. Ci aiuti?',
   sidebar_donate: 'Dona',
   sidebar_thanks: 'GRAZIE!!!',
@@ -9257,30 +8982,6 @@ it.data = {
   OFFLINE_Step3_Title: 'Passo 3: Invia / pubblica la transazione (computer online)',
   OFFLINE_Step3_Label_1: 'Incolla la transazione firmata dal passo 2 qui e premi il pulsante "INVIA TRANSAZIONE".',
 
-  /* DAO */
-  DAO_bal1: 'al blocco 1.919.999',
-  DAO_bal2: 'adesso',
-  DAO_TitleETH: 'Preleva DAO e ricevi ETH',
-  DAO_TitleETC: 'Preleva DAO e ricevi ETC',
-  DAO_ETC_Label_1: 'A che indirizzo vuoi che vengano inviati i tuoi ETC?',
-  DAO_ETC_Label_2: 'Il gruppo "White Hat" ha lavorato senza sosta per farti riavere i tuoi ETC. Puoi dire "grazie" donando una percentuale della somma che prelevi, se lo desideri. ',
-  DAO_Desc: 'Usa questa scheda per prelevare i tuoi token DAO e ottenere ETH **& ETC**. Se invece vuoi inviare token DAO, utilizza la scheda "Invia token".',
-  DAO_Inst: 'Sì. Devi solo premere questo grosso pulsante rosso. È davvero così semplice.',
-  DAO_Warning: 'Se ricevi l\'errore "Saldo insufficiente per il gas", è perché devi avere una piccola quantità di ether nel tuo conto per coprire i costi del gas. Aggiungi 0,01 ETH a questo conto e riprova. ',
-  DAOModal_Title: 'Tanto per essere sicuri...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Stai per prelevare',
-  DAOModal_2: 'token DAO inviando a',
-  DAOModal_3: 'una somma di', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Richiedi i tuoi token e le tue medaglie DigixDAO (DGD). Per poterli richiedere devi aver partecipato alla vendita dei token del 30 e 31 marzo 2016.  Se invece desideri inviare DGD, utilizza la scheda "Invia token".',
-  DGD_Label_1: 'Stima commissione utilizzata:',
-  DGD_Label_2: 'Commissione massima fornita:',
-  DGD_Label_3: 'Prezzo gas:',
-  DGD_Generate: 'Genera richiesta',
-  DGD_Content: 'Stai per richiedere i tuoi token DGD.',
-
   /* Deploy Contracts */
   DEP_generate: 'Genera bytecode',
   DEP_generated: 'Bytecode generato',
@@ -9359,11 +9060,9 @@ it.data = {
   SUCCESS_2: 'Portafoglio decodificato correttamente',
   SUCCESS_3: 'Transazione inviata. TX ID: ',
   SUCCESS_4: 'Il portafoglio è stato aggiunto correttamente: ',
-  SUCCESS_5: 'Hai votato con successo. Grazie per essere un partecipante attivo in The DAO.',
   SUCCESS_6: 'File selezionato: ',
 
   WARN_Send_Link: 'Sei arrivato qui da un link che ha riempito per te i campi indirizzo, importo, gas, dati o tipo di transazione (modalità di invio). Puoi cambiare queste informazioni prima di inviare. Sblocca il tuo portafoglio per iniziare.',
-  WARN_Send_Link_2: '**Attenzione:** Puoi includere dati solamente se invii tramite "ETH (transazione standard)". Rimuovi i parametri "sendMode" e/o "tokenSymbol" dall\'URI per inviare una transazione con dati.',
 
   /* Geth Error Messages */
   GETH_InvalidSender: 'Mittente non valido',
@@ -9667,10 +9366,6 @@ ja.data = {
   NAV_SendEther: 'Ether送出 トークン送出',
   NAV_SendTokens: 'トークン送出',
   NAV_Offline: 'オフライン送出',
-  NAV_WithdrawDAO: 'DAO払い戻し',
-  DAO_TitleLong: 'DAOトークンをETHで払い出し',
-  NAV_ClaimDGD: 'DGD請求',
-  DGD_TitleLong: 'DGDトークンを請求',
   NAV_DeployContract: 'コントラクトをデプロイ',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts: 'Contracts',
@@ -9723,7 +9418,6 @@ ja.data = {
   sidebar_TokenBal: 'トークン残高: ',
   sidebar_Equiv: '等価: ',
   sidebar_TransHistory: 'トランザクション履歴: ',
-  sidebar_DGDBal: 'DGDクラウドセール情報:',
   sidebar_donation: 'MyEtherWalletは、プライバシーとセキュリティのための無料のオープンソースサービスです。　寄付が増えることによって、新機能やフィードバックの反映を行い、よりユーザーの皆様のご希望に沿った制作の時間を増やす事が可能になります。私たちは、たった二人で世界を変えようとしています。お手伝いいただけますか?',
   sidebar_donate: '寄付する',
   sidebar_thanks: '感謝します!!!',
@@ -9852,29 +9546,6 @@ ja.data = {
   ADD_Ledger_0b: 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。',
   ADD_Ledger_scan: 'Ledger Nano S　に接続',
 
-  /* DAO */
-  DAO_bal1: 'ブロック 1,919,999',
-  DAO_bal2: '現在の',
-  DAO_TitleETH: 'ETHでDAOを払い出し',
-  DAO_TitleETC: 'ETCでDAOを払い出し',
-  DAO_ETC_Label_1: 'どのアドレスにETCを送りますか？',
-  DAO_ETC_Label_2: 'ホワイトハックグループは日夜ETCを取り戻すべために働いています。希望すれば、払い戻しの何パーセントかを感謝をこめて贈る事ができます。',
-  DAO_Desc: 'このタブ上で、DAOトークンから、ETH **& ETC**の払い戻してください。DAOトークンの送るためには、トークン送出タブを選んでください。',
-  DAO_Inst: '赤いボタンをクリックしてください。簡単です。',
-  DAO_Warning: '「ガス残高不足」エラーの時は、アカウントにガスを供給するためにに少量のEtherが必要です。このアカウントに0.01 ETHを追加して、再度操作してください。',
-  DAOModal_Title: '確認中/...',
-  DAOModal_1: '払い出しを進めます',
-  DAOModal_2: 'DAOトークンを',
-  DAOModal_3: 'に対し', // “の代わりに”
-
-  /* Digix */
-  DGD_Desc: 'DigixDAO (DGD) トークンとバッジを請求してください。３月３０/３１日に行われた、トークンセールに参加した場合にのみ請求可能です。DGDを送出するためには「トークン送出」のタブ　を使用してください。',
-  DGD_Label_1: 'フィー消費量概算：',
-  DGD_Label_2: 'フィー最大消費量：',
-  DGD_Label_3: 'ガス価格：',
-  DGD_Generate: '請求の生成',
-  DGD_Content: 'DGDトークンの請求を進めます',
-
   /* Deploy Contracts */
   DEP_generate: 'バイトコードを生成する',
   DEP_generated: '生成されたバイトコード',
@@ -9934,10 +9605,8 @@ ja.data = {
   SUCCESS_2: 'ウォレットは正常に暗号解除されました。',
   SUCCESS_3: 'トランザクションが送出されました。 TX ID: ',
   SUCCESS_4: 'ウォレットが追加されました：',
-  SUCCESS_5: '投票が完了しました。The DAO への積極的な参加に感謝いたします。',
   SUCCESS_6: '選択されました： ',
   WARN_Send_Link: '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、ウォレットを解錠してください。',
-  WARN_Send_Link_2: '**警告** 「ETH (Standard Transaction)」で送出する時には、データのみを含めることしかできません。 「sendMode」 及び/あるいは 「tokenSymbol」 を URIから取り除いてください。',
 
   /* Parity Error Messages */
   PARITY_AlreadyImported: "同じハッシュのトランザクションがすでにインポートされています。",
@@ -10210,10 +9879,6 @@ nl.data = {
   NAV_SendTokens: 'Verzend Tokens',
   NAV_Offline: 'Verzend Offline',
   NAV_SignMsg: 'Onderteken bericht',
-  NAV_WithdrawDAO: 'DAO Opnemen',
-  DAO_TitleLong: 'DAO Token in ETH omzetten',
-  NAV_ClaimDGD: 'Claim DGD',
-  DGD_TitleLong: 'Claim je DGD Tokens',
   NAV_DeployContract: 'Verspreid Contract',
   NAV_InteractContract: 'Interactie met Contract',
   NAV_Contracts: 'Contracten',
@@ -10266,7 +9931,6 @@ nl.data = {
   sidebar_TokenBal: 'Token Saldo: ',
   sidebar_Equiv: 'Equivalente Waarde: ',
   sidebar_TransHistory: 'Transactie Geschiedenis: ',
-  sidebar_DGDBal: 'DGD Crowdsale Informatie:',
   sidebar_donation: 'MyEtherWallet is een gratis, open-source service toegewijd aan  jouw privacy en beveiliging. Des te meer donaties we ontvangen, des te meer tijd we zullen spenderen aan nieuwe functies, aan de hand van jouw terugkoppeling, en we je kunnen geven wat jij wilt. Wij zijn slechts twee mensen die de wereld een stukje beter willen maken. Help jij mee?',
   sidebar_donate: 'Doneer',
   sidebar_thanks: 'BEDANKT!!!',
@@ -10386,30 +10050,6 @@ nl.data = {
   MSG_info2: 'Voeg je nickname toe en waar je deze gebruikt zodat anderen deze niet kunnen gebruiken.',
   MSG_info3: 'Voeg een specifieke reden voor je bericht toe zodat het niet kunnen gebruiken voor een ander doel.',
 
-  /* DAO */
-  DAO_bal1: 'bij blok 1.919.999',
-  DAO_bal2: 'momenteel',
-  DAO_TitleETH: 'DAO voor ETH opnemen',
-  DAO_TitleETC: 'DAO voor ETC opnemen',
-  DAO_ETC_Label_1: 'Naar welk adres wil je je ETC verzenden?',
-  DAO_ETC_Label_2: 'De "White Hat Group" is onvermoeibaar aan het werk geweest om jouw ETC terug bij jouw te krijgen. Je kunt ze bedankten door een percentage van je opname te doneren, als je daarvoor kiest. ',
-  DAO_Desc: 'Gebruik dit tab om je DAO Tokens om te zitten in ether. Als je DOA Tokens wilt versturen, gebruik dan het Verzend Tokens Tab.',
-  DAO_Inst: 'Ja. Klik simpelweg op de grote rode knop. Zo makkelijk is het.',
-  DAO_Warning: 'Als je een "Insufficient balance for gas" fout krijgt, zul je een kleine hoeveelheid ETH in je account moeten storten om de gas kosten voor deze actie te betalen. Voeg 0.01 ETH toe aan je account en probeer het opnieuw. ',
-  DAOModal_Title: 'Voor de zekerheid...',
-  // full sentance is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Je staat op het punt om',
-  DAOModal_2: 'DAO Tokens op te nemen voor',
-  DAOModal_3: 'voor', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Claim je DigixDAO (DGD) tokens & badges. Om te claimen zul je meegedaan moeten hebben met de token sale van 30/31 maart 2016.  Als je DGD wilt versturen, gebruik dan het Verzend Tokens Tab.',
-  DGD_Label_1: 'Geschatte transactie kosten:',
-  DGD_Label_2: 'Gegeven Maximum Transactie Kosten:',
-  DGD_Label_3: 'Gas Prijs:',
-  DGD_Generate: 'Genereer Claim',
-  DGD_Content: 'Je staat op het punt om je DGD Tokens te claimen.',
-
   /* Deploy Contracts */
   DEP_generate: 'Genereer Bytecode',
   DEP_generated: 'Gegenereerde Bytecode',
@@ -10485,10 +10125,8 @@ nl.data = {
   SUCCESS_2: 'Wallet succesvol ontsleuteld',
   SUCCESS_3: 'Transactie verzonden. TX ID: ',
   SUCCESS_4: 'Je Wallet is succesvol toegevoegd: ',
-  SUCCESS_5: 'Je hebt succesvol gestemd. Fijn dat je een actief participerend DAO deelnemer bent.',
   SUCCESS_6: 'Bestand Geselecteerd: ',
   WARN_Send_Link: 'Je bent hier gekomen via een link waarbij het adres, bedrag, gas of data velden al ingevuld zijn. Indien gewenst kun je elk veld nog aanpassen voor het verzenden. Ontgrendel je wallet on te beginnen.',
-  WARN_Send_Link_2: '**Waarschuwing:** Je kunt alleen data toevoegen als je verzend via "ETH (Standaard Transactie)". Verwijder de "sendMode" en/of het "tokenSymbol" van de URI om een transactie te verzenden met data.',
 
   /* Geth Error Messages */
   GETH_InvalidSender: 'Ongeldige verzender',
@@ -10787,7 +10425,6 @@ no.data = {
   TOKEN_show: 'Vis Alle Tokens',
   TOKEN_hide: 'Skjul Tokens',
   WARN_Send_Link: 'Du ankom via en lenke hvor adresse, verdi, gas, datafelt og/eller transaksjonstype (sendingsmodus) var ferdigutfylt. Du kan endre denne informasjonen før du sender. Lås opp lommeboken din for å komme i gang.',
-  WARN_Send_Link_2: '**Advarsel:** Du kan bare inkludere data hvis du sender via "ETH (Standardtransaksjon)". Vennligst ta bort "sendMode" og/eller "tokenSymbol" fra URL-en for å sende en transaksjon med data.',
 
   /* Hardware wallets */
   x_Ledger: 'Ledger Nano S',
@@ -10807,10 +10444,6 @@ no.data = {
   NAV_SendEther: 'Send Ether & Tokens',
   NAV_SendTokens: 'Send Tokens',
   NAV_Offline: 'Send Offline',
-  NAV_WithdrawDAO: 'Ta ut DAO',
-  DAO_TitleLong: 'Løs inn dine DAO-token for ether (ETH)',
-  NAV_ClaimDGD: 'Gjør krav på DGD',
-  DGD_TitleLong: 'Gjør krav på dine DGD-token',
   NAV_DeployContract: 'Utplasser kontrakt',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts: 'Kontrakt',
@@ -10862,7 +10495,6 @@ no.data = {
   sidebar_TokenBal: 'Token-saldo: ',
   sidebar_Equiv: 'Tilsvarende verdier: ',
   sidebar_TransHistory: 'Transaksjonshistorikk: ',
-  sidebar_DGDBal: 'DGD Crowdsale informasjon:',
   sidebar_donation: 'MyEtherWallet er en gratis åpen-kildekode-service som er dedikert til å ivareta ditt personvern og din sikkerhet. Jo flere donasjoner vi får, jo mer tid kan vi bruke til å lage nye funksjoner, lytte til tilbakemeldinger, og gi deg det du ønsker. Vi er bare to personer som prøver å forandre verden. Vil du hjelpe oss?',
   sidebar_donate: 'Doner',
   sidebar_thanks: 'TAKK!!!',
@@ -10970,30 +10602,6 @@ no.data = {
   OFFLINE_Step3_Title: 'Steg 3: Send / Publiser transaksjon (internettilknyttet datamaskin)',
   OFFLINE_Step3_Label_1: 'Overfør (f.eks. via USB-minnepinne) den signerte transaksjonen fra steg 2 og lim den inn her. Trykk så "SEND TRANSAKSJON"-knappen.',
 
-  /* DAO */
-  DAO_bal1: 'ved blokk 1,919,999',
-  DAO_bal2: 'nåværende',
-  DAO_TitleETH: 'Veksle inn DAO mot ETH',
-  DAO_TitleETC: 'Veksle inn DAO mot ETC',
-  DAO_ETC_Label_1: 'Hvilken adresse ønsker du å sende dine ETC til?',
-  DAO_ETC_Label_2: '"White Hat Group" har jobbet utrettelig for å gi deg tilbake dine ETC. Du kan takke dem ved å donere en prosentandel av uttaket ditt, hvis du ønsker det. ',
-  DAO_Desc: 'Bruk denne siden til å veksle inn dine DAO-token for ETH. Hvis du ønsker å sende DAO-token, vennligst bruk "Send Token"-siden.',
-  DAO_Inst: 'Ja. Bare trykk på den store røde knappen. Det er så enkelt som det.',
-  DAO_Warning: 'Hvis du får en "Insufficient balance for gas"-feilmelding, må du ha en liten mengde ether på kontoen for å dekke gas-kostnadene. Overfør 0,01 ether til denne kontoen og prøv igjen. ',
-  DAOModal_Title: 'Bare for å være sikker...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Du er i ferd med å veksle inn ',
-  DAOModal_2: 'DAO-tokens til ',
-  DAOModal_3: 'i bytte mot',
-
-  /* Digix */
-  DGD_Desc: 'Krev inn dine DigixDAO (DGD)-tokens & badges. For å gjøre dette, må du ha deltatt i token-salget 30-31. mars 2016.  Hvis du ønsker å sende DGD, vennligst bruk "Send Token"-siden.',
-  DGD_Label_1: 'Estimert avgiftsforbruk:',
-  DGD_Label_2: 'Oppgitt maksimal avgift:',
-  DGD_Label_3: 'Gas-pris:',
-  DGD_Generate: 'Opprett krav',
-  DGD_Content: 'Du er i ferd med å kreve inn dine DGD-token.',
-
   /* Deploy Contracts */
   DEP_generate: 'Generer Bytecode',
   DEP_generated: 'Generert Bytecode',
@@ -11051,7 +10659,6 @@ no.data = {
   SUCCESS_2: 'Dekrypteringen av lommeboken var vellykket',
   SUCCESS_3: 'Transaksjonen ble sendt inn. TX ID: ',
   SUCCESS_4: 'Lommeboken din ble lagt til: ',
-  SUCCESS_5: 'Du har stemt. Takk for at du er en aktiv deltaker i "The DAO".',
   SUCCESS_6: 'Valgt fil: ',
 
   /* Geth Error Messages */
@@ -11345,10 +10952,6 @@ pl.data = {
   NAV_SendEther: 'Wyślij Ether i Tokeny',
   NAV_SendTokens: 'Wyślij Tokeny',
   NAV_Offline: 'Wyślij Offline',
-  NAV_WithdrawDAO: 'Wypłać DAO',
-  DAO_TitleLong: 'Zamień swoje Tokeny DAO na ETH',
-  NAV_ClaimDGD: 'Odbierz DGD',
-  DGD_TitleLong: 'Odbierz swoje Tokeny DGD',
   NAV_MyWallets: 'Moje Portfele',
   NAV_ViewWallet: 'Wyświetl informacje o portfelu',
   NAV_Help: 'Pomoc',
@@ -11397,7 +11000,6 @@ pl.data = {
   sidebar_TokenBal: 'Stan Tokenów: ',
   sidebar_Equiv: 'Ekwiwalent: ',
   sidebar_TransHistory: 'Historia Transakcji: ',
-  sidebar_DGDBal: 'Informacje o sprzedaży DGD:',
   sidebar_donation: 'MyEtherWallet jest darmową, otwarto-źródłową usługą stworzoną dla Twojej prywatności i bezpieczeństwa. Im więcej darowizn zbierzemy, tym więcej czasu będziemy w stanie poświęcić na dodawanie nowych funkcjonalności, analizowanie informacji zwrotnych oraz spełnianie waszych oczekiwań. Jesteśmy jedynie dwójką ludzi starającą się zmienić świat. Pomóż nam!',
   sidebar_donate: 'Prześlij darowiznę',
   sidebar_thanks: 'DZIĘKUJEMY!!!',
@@ -11508,30 +11110,6 @@ pl.data = {
   OFFLINE_Step3_Title: 'Krok 3: Wyślij / Opublikuj Transakcję (Komputer Online)',
   OFFLINE_Step3_Label_1: 'Wklej tu podpisaną transakcję z Kroku 2 i kliknij przycisk "WYŚLIJ TRANSAKCJĘ".',
 
-  /* DAO */
-  DAO_bal1: 'w bloku 1,919,999',
-  DAO_bal2: 'aktualny',
-  DAO_TitleETH: 'Wypłać DAO do ETH',
-  DAO_TitleETC: 'Wypłać DAO do ETC',
-  DAO_ETC_Label_1: 'Na jaki adres chcesz wysłać swoje ETC?',
-  DAO_ETC_Label_2: '"White Hat Group" (Grupa Białych Kapeluszy) ciężko pracowała, aby pomóc Ci odzyskać Twoje ETC. Jeżeli chcesz, możesz im podziękować wysyłając procent z wypłacanych przez Ciebie środków. ',
-  DAO_Desc: 'Użyj tej zakładki aby wypłacić tokeny DAO w zamian za ETH. Jeżeli chcesz wysłać tokeny DAO użyj zakładki Wyślij Tokeny.',
-  DAO_Inst: 'Tak. Po prostu naciśnij duży czerwony przycisk. To jest tak proste.',
-  DAO_Warning: 'Jeśli dostajesz błąd "Niewystarczające środki na paliwo", musisz doładować konto niewielką ilością ETH aby pokryć koszty transakcji. Dodaj 0.01 ETH do tego konta i spróbuj ponownie. ',
-  DAOModal_Title: 'Tylko się upewniam...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Zamierzasz wypłacić',
-  DAOModal_2: 'DAO tokenów do',
-  DAOModal_3: 'za', // "w zamian za"
-
-  /* Digix */
-  DGD_Desc: 'Odbierz swoje tokeny i odznaki DigixDAO (DGD). Aby odebrać, musisz być osobą uczestniczącą w wyprzedaży tokenów w 30-31 marca 2016.  Jeśli chcesz wysłać DGD, użyj zakładki Wyślij Tokeny.',
-  DGD_Label_1: 'Szacunkowa Opłata:',
-  DGD_Label_2: 'Zapewniona Maksymalna Opłata:',
-  DGD_Label_3: 'Cena Paliwa:',
-  DGD_Generate: 'Wygeneruj Żądanie',
-  DGD_Content: 'Jesteś w trakcie odbierania tokenów DGD.',
-
   /* Deploy Contracts */
   NAV_DeployContract: 'Wyślij Kontrakt',
   NAV_InteractContract: 'Pracuj z Kontraktem',
@@ -11611,10 +11189,8 @@ pl.data = {
   SUCCESS_2: 'Portfel został odszyfrowany',
   SUCCESS_3: 'Transakcja zgłoszona. TX ID: ',
   SUCCESS_4: 'Twój portfel został dodany: ',
-  SUCCESS_5: 'Zagłosowałeś z powodzeniem. Dziękuję za bycie aktywnym uczestnikiem The DAO.',
   SUCCESS_6: 'Wybrany plik: ',
   WARN_Send_Link: 'Znalazłeś się tu przez odnośnik, który zawiera wstępnie uzupełniony adres, kwotę, paliwo lub dane transakcji. Możesz zmienić dowolne parametry transakcji zanim ją zatwierdzisz. Odblokuj portfel aby kontynuować.',
-  WARN_Send_Link_2: '**Uwaga:** Dane można załączyć tylko wysyłając przez "ETH (Transakcja Standardowa)". Usuń parametr "sendMode" i/lub "tokenSymbol" z linku URI, aby wysłać transakcję z danymi.',
 
   /* Geth Error Messages */
   GETH_InvalidSender: 'Nieprawidłowy nadawca',
@@ -11904,7 +11480,6 @@ pt.data = {
   ADD_Ledger_0a: 'Re-abra MyEtherWallet em uma conexão (SSL) segura',
   ADD_Ledger_0b: 'Re-abra MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/)',
   WARN_Send_Link: 'Você chegou através de um link que tem o endereço, quantidade de gás, ou campos de dados preenchidos para você. Você pode alterar qualquer informação antes de enviar. Desbloqueie sua carteira para começar.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Navigation*/
   NAV_YourWallets: 'Suas Carteiras',
@@ -11914,10 +11489,6 @@ pt.data = {
   NAV_SendEther: 'Enviar Ether & Tokens',
   NAV_SendTokens: 'Enviar Tokens',
   NAV_Offline: 'Enviar Offline',
-  NAV_WithdrawDAO: 'Sacar DAO',
-  DAO_TitleLong: 'Sacar seus Tokens DAO por ETH',
-  NAV_ClaimDGD: 'Reinvidicar DGD',
-  DGD_TitleLong: 'Reinvidique seus Tokens DGD',
   NAV_DeployContract: 'Implantar Contrato',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts: 'Contratos',
@@ -11970,7 +11541,6 @@ pt.data = {
   sidebar_TokenBal: 'Saldo de Tokens: ',
   sidebar_Equiv: 'Valor Equivalente: ',
   sidebar_TransHistory: 'Histórico de Transações: ',
-  sidebar_DGDBal: 'Informações do Crowdsale DGD:',
   sidebar_donation: 'MyEtherWallet é grátis, um serviço de fonte aberta dedicado a sua privacidade e segurança. Quanto mais doações nós recebermos, mais podemos gastar criando novidade, ouvindo seu feedback, e entregando o que você deseja. Somos apenas duas pessoas tentando mudar o mundo. Ajude-nos?',
   sidebar_donate: 'De',
   sidebar_thanks: 'OBRIGADO!!!',
@@ -12081,30 +11651,6 @@ pt.data = {
   OFFLINE_Step3_Title: 'Passo 3: Envia / Publica a Transação (Computador Online)',
   OFFLINE_Step3_Label_1: 'Cole a transação assinada do Passo 2 e aperte o botão "ENVIAR TRANSAÇÃO".',
 
-  /* DAO */
-  DAO_bal1: 'no bloco 1,919,999',
-  DAO_bal2: 'atual',
-  DAO_TitleETH: 'Sacar DAO Para ETH',
-  DAO_TitleETC: 'Sacar DAO Para ETC',
-  DAO_ETC_Label_1: 'Para que endereço você quer seus ETC sejam enviados?',
-  DAO_ETC_Label_2: 'O "White Hat Group" tem trabalhado incansavelmente para devolver o seu ETC para você. Você pode dizer "obrigado", doando uma porcentagem de sua retirada, se você optar por isso. ',
-  DAO_Desc: 'Use esta tab para Sacar seus Tokens DAO por ETH **& ETC**. Se você deseja enviar DAO, por favor use a Tab Enviar Tokens.',
-  DAO_Inst: 'Sim. Apenas aperte o grande botão vermelhor. É fácil.',
-  DAO_Warning: 'Se você está recebendo um erro de "saldo insuficiente para o gás", você precisa ter uma pequena quantidade de ether em sua conta, afim de cobrir o custo do gás. Adicione 0,01 ETH a esta conta e tente novamente. ',
-  DAOModal_Title: 'Apenas certifique-se...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Você está prestes a sacar',
-  DAOModal_2: 'Tokens DAO',
-  DAOModal_3: 'para', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Reivindique seus tokens & badges DigixDAO (DGD). Para revindicar, você deve ter participado na venda de token em 30 de março/31 de março de 2016. Se você deseja enviar DGD, por favor use a Tab Enviar Tokens.',
-  DGD_Label_1: 'Taxa de consumo estimada:',
-  DGD_Label_2: 'Taxa Máxima Fornecida:',
-  DGD_Label_3: 'Preço do Gás:',
-  DGD_Generate: 'Gerar Reivindicação',
-  DGD_Content: 'Você está prestes a reivindicar os seus Tokens DGD.',
-
   /* Deploy Contracts */
   DEP_generate: 'Gerar Bytecode',
   DEP_generated: 'Bytecode Gerado',
@@ -12177,7 +11723,6 @@ pt.data = {
   SUCCESS_2: 'Wallet successfully decrypted',
   SUCCESS_3: 'Transaction submitted. TX ID: ',
   SUCCESS_4: 'Your wallet was successfully added: ',
-  SUCCESS_5: 'You have successfully voted. Thank you for being an active participant in The DAO.',
   SUCCESS_6: 'File Selected: ',
 
   /* Geth Error Messages */
@@ -12479,7 +12024,6 @@ ru.data = {
   TOKEN_show: 'Show All Tokens',
   TOKEN_hide: 'Hide Tokens',
   WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Hardware wallets */
   x_Ledger: 'Ledger Nano S',
@@ -12510,10 +12054,6 @@ ru.data = {
   NAV_SendEther: 'Перевести эфир (ether) и токены',
   NAV_SendTokens: 'Перевести токены',
   NAV_Offline: 'Оффлайн-перевод',
-  NAV_WithdrawDAO: 'Обменять DAO',
-  DAO_TitleLong: 'Обменять DAO токены на эфир (ether)',
-  NAV_ClaimDGD: 'Получить DGD',
-  DGD_TitleLong: 'Получить причитающиеся Вам DGD токены',
   NAV_MyWallets: 'Мои кошельки',
   NAV_ViewWallet: 'Информация о кошельке',
   NAV_Help: 'Справка',
@@ -12565,7 +12105,6 @@ ru.data = {
   sidebar_TokenBal: 'Балансы токенов: ',
   sidebar_Equiv: 'Эквивалентные значения: ',
   sidebar_TransHistory: 'История транзакций: ',
-  sidebar_DGDBal: 'Информация о распродаже DGD:',
   sidebar_donation: 'MyEtherWallet — это бесплатный сервис с открытым исходным кодом, заботящийся о Вашей безопасности и неприкосновенности Вашей частной жизни. Чем больше пожертвований мы получаем, тем больше времени мы проводим, добавляя новые возможности, прислушиваясь к Вашим пожеланиям и предоставляя Вам то, что Вам необходимо. Мы — всего лишь два человека, пытающиеся изменить Мир. Вы поможете нам?',
   sidebar_donate: 'Пожертвовать',
   sidebar_thanks: 'СПАСИБО!!!',
@@ -12672,30 +12211,6 @@ ru.data = {
   OFFLINE_Step3_Title: 'Шаг №3: Выполнить транзакцию (онлайн компьютер)',
   OFFLINE_Step3_Label_1: 'Вставьте подписанную транзакцию с шага №2 и нажмите кнопку "ВЫПОЛНИТЬ ТРАНЗАКЦИЮ".',
 
-  /* DAO */
-  DAO_bal1: 'на момент создания блока №1.919.999',
-  DAO_bal2: 'текущий',
-  DAO_TitleETH: 'Обменять DAO токены на ETH',
-  DAO_TitleETC: 'Обменять DAO токены на ETC',
-  DAO_ETC_Label_1: 'На какой адрес зачислить ETC?',
-  DAO_ETC_Label_2: 'Группа "White Hat" работала не покладая рук для того, чтобы Вы смогли получить обратно Ваш ETC. Вы можете сказать им "спасибо", пожертвовав небольшой процент от суммы, если хотите, конечно. ',
-  DAO_Desc: 'Используйте эту вкладку, чтобы обменять Ваши DAO токены на эфир (ether). Если вы хотите перевести DAO токены, используйте вкладку "Перевести токены".',
-  DAO_Inst: 'Да. Просто нажмите большую красную кнопку. Это действительно просто.',
-  DAO_Warning: 'Если Вы видите ошибку "Недостаточно средств для оплаты газа", то это значит, что на Вашем счету не хватает эфира (ether), чтобы покрыть расходы на газ. Переведите 0,01 эфира (ether) на Ваш счёт и попробуйте снова. ',
-  DAOModal_Title: 'Просто чтобы убедиться...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Вы собираетесь обменять',
-  DAOModal_2: 'DAO токенов. На адрес',
-  DAOModal_3: 'будет зачислено', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Получить причитающиеся Вам DigixDAO (DGD) токены и бэйджи. Вы можете получить причитающиеся Вам токены, если Вы участвовали в в распродаже токенов 30–31 марта 2016 года.  Если Вы хотите перевести DGD токены, используйте вкладку "Перевести токены".',
-  DGD_Label_1: 'Предположительный размер комиссии:',
-  DGD_Label_2: 'Максимальный размер комиссии:',
-  DGD_Label_3: 'Цена газа:',
-  DGD_Generate: 'Сформировать требование',
-  DGD_Content: 'Вы собираетесь затребовать причитающиеся Вам DGD токены.',
-
   /* Deploy Contracts */
   DEP_generate: 'Сформировать байткод',
   DEP_generated: 'Сформированный байткод',
@@ -12754,7 +12269,6 @@ ru.data = {
   SUCCESS_2: 'Кошелёк успешно расшифрован',
   SUCCESS_3: 'Транзакция отправлена на выполнение. TX ID: ',
   SUCCESS_4: 'Ваш кошелёк успешно добавлен: ',
-  SUCCESS_5: 'Ваш голос учтён. Спасибо Вам за активное участие в работе DAO.',
   SUCCESS_6: 'Выбранный файл: ',
 
   /* Parity Error Messages */
@@ -13043,7 +12557,6 @@ tr.data = {
   TOKEN_show: 'Show All Tokens',
   TOKEN_hide: 'Hide Tokens',
   WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Hardware wallets */
   x_Ledger: 'Ledger Nano S',
@@ -13084,10 +12597,6 @@ tr.data = {
   NAV_SendEther: 'Ether ve Tokens göndermek',
   NAV_SendTokens: 'Tokens gönder',
   NAV_Offline: 'Offline gönder',
-  NAV_WithdrawDAO: 'DAO çek',
-  DAO_TitleLong: 'DAO tokenlerini ETH olarak çek',
-  NAV_ClaimDGD: 'DGD talep et',
-  DGD_TitleLong: 'DGD tokenlerini talep et',
   NAV_MyWallets: 'Cüzdanim',
   NAV_ViewWallet: 'Cüzdan bilgilerni göster',
   NAV_Help: 'Yardim et',
@@ -13139,7 +12648,6 @@ tr.data = {
   sidebar_TokenBal: 'Token bakiye: ',
   sidebar_Equiv: 'Eşdeğer Değerler: ', /* Belki sadece Esdeger yeter */
   sidebar_TransHistory: 'Işlem geçmişi: ',
-  sidebar_DGDBal: 'DGD Crowdsale bilgileri: ',
   sidebar_donation: 'MyEtherWallet gizlilik ve güvenlike adanmış ücretsiz ve açık kaynak kodlu bir hizmettir. Ne kadar cok bagis edilirse o kadar cok yeni özellik programlamaya, görüşlerinizi işlemeye yatitim yapabiliriz. Biz sadece dünyayı değiştirmek isteyen iki kişiyiz. Bize yardım edermisin?',
   sidebar_donate: 'Bağışta bulun',
   sidebar_thanks: 'TEŞEKKÜRLER!!!',
@@ -13248,31 +12756,6 @@ tr.data = {
   OFFLINE_Step3_Title: 'Adim 3: Gönder / Islemi duyur (Online Computer)',
   OFFLINE_Step3_Label_1: 'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button.',
 
-  /* DAO */
-  DAO_bal1: 'block 1,919,999\'ta',
-  DAO_bal2: 'şimdiki',
-  DAO_TitleETH: 'DAO ETH olarak cek',
-  DAO_TitleETC: 'DAO ETC olarak cek',
-  DAO_ETC_Label_1: 'ETC hangi adrese gönderilmesini istiyorsun',
-  DAO_ETC_Label_2: '"Beyaz Şapka Grubu" ETC\'lerini geri almak için yorulmadan çalışmaktadır. Eğer istiyorsan, senin çekiminden yüzdesi bağışlayarak "teşekkür ederim" diyebilirsin.',
-  DAO_Desc: 'Use this tab to Withdraw your DAO Tokens for ETH **& ETC**. If you wish to send DAO, please use the Send Tokens Tab.',
-  DAO_Inst: 'Evet. Sadece büyük kırmızı düğmeye bas. Bu kadar kolay.',
-  DAO_Warning: 'If you are getting an "Insufficient balance for gas" error, you must have a small amount of ether in your account in order to cover the cost of gas. Add 0.01 ether to this account and try again. ',
-  DAOModal_Title: 'Sadece emin olmak için...',
-
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Cekmek üzeresin',
-  DAOModal_2: 'DAO token\'i ',
-  DAOModal_3: ' yerine', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Claim your DigixDAO (DGD) tokens & badges. In order to claim, you must have participated in the token sale on March 30th/31st, 2016.  If you wish to send DGD, please use the Send Tokens Tab.',
-  DGD_Label_1: 'Tahmini bedel:',
-  DGD_Label_2: 'Maximum bedel:',
-  DGD_Label_3: 'Gas fiyati:',
-  DGD_Generate: 'Talep oluştur', /* Maybe "Talep" is the wrong word for "Claim" */
-  DGD_Content: 'Suan DGD token\'lerini talep etmekdesin.',
-
   /* Deploy Contracts */
   DEP_generate: 'Bytecode oluştur',
   DEP_generated: 'Oluşturulan Bytecode',
@@ -13330,7 +12813,6 @@ tr.data = {
   SUCCESS_2: 'Cüzdan basariyla desifre edildi',
   SUCCESS_3: 'İşlem teslim edildi TX ID: ',
   SUCCESS_4: 'Cüzdanın başarıyla eklendi: ',
-  SUCCESS_5: 'Başarıyla oy verdiniz. DAO aktif bir katılımcı olduğunuz için teşekkür ederiz.',
   SUCCESS_6: 'Dosya secildi ',
 
   /* Tranlsation Info */
@@ -13654,7 +13136,6 @@ vi.data = {
   MSG_info3: 'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
 
   WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
   ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
   /* Hardware wallets */
@@ -13675,10 +13156,6 @@ vi.data = {
   NAV_SendEther: 'Gửi Ether và Tokens',
   NAV_SendTokens: 'Gửi Token',
   NAV_Offline: 'Giao Dịch Offline',
-  NAV_WithdrawDAO: 'Thu Hồi DAO Token',
-  DAO_TitleLong: 'Thu Hồi DAO Token và Hoàn Trả ETH',
-  NAV_ClaimDGD: 'Khiếu Nại Về DGD',
-  DGD_TitleLong: 'Khiếu Nại DGD Token Của Bạn',
   NAV_DeployContract: 'Phát Triển Hợp Đồng',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts: 'Hợp Đồng',
@@ -13731,7 +13208,6 @@ vi.data = {
   sidebar_TokenBal: 'Số Dư Token: ',
   sidebar_Equiv: 'Giá Trị Tương Đương: ',
   sidebar_TransHistory: 'Lịch Sử Giao Dịch: ',
-  sidebar_DGDBal: 'Thông Tin Crowdsale DGD:',
   sidebar_donation: 'MyEtherWallet là một ứng dụng miễn phí được xây dựng trên mã nguồn mở nhằm bảo vệ quyền riêng tư và sự bảo mật của người sử dụng. các khoản quyên góp mà chúng tôi nhận được sẽ giúp chúng tôi có cơ hội dành nhiều thơi gian hơn cho việc lắng nghe những phản hồi từ người sử dụng nhằm tạo ra những ứng dụng mới nhằm đáp ứng những mong muốn từ người sử dụng. Chúng tôi hiện tại là hai cá nhân đang cố gắng làm cho thế giới ngày một tốt hơn. Hãy cùng chung giúp chúng tôi',
   sidebar_donate: 'Quyên Góp',
   sidebar_thanks: 'Xin Chân Thành Cảm Ơn!!!',
@@ -13842,30 +13318,6 @@ vi.data = {
   OFFLINE_Step3_Title: 'Bước 3: Gửi / Làm rõ Giao Dịch (Máy tính đang Online)',
   OFFLINE_Step3_Label_1: 'Dán chữ ký Giao Dịch được tạo từ Bước 2 vào đây và chọn nút "Thực hiện Giao Dịch".',
 
-  /* DAO */
-  DAO_bal1: 'Tại Block 1,919,999',
-  DAO_bal2: 'Hiện Tại',
-  DAO_TitleETH: 'Thu Hồi DAO Và Hoàn Trả ETH',
-  DAO_TitleETC: 'Thu Hồi DAO Và Hoàn Trả ETC',
-  DAO_ETC_Label_1: 'Địa chỉ mà bạn muốn số lượng ETC của bạn được gửi đến?',
-  DAO_ETC_Label_2: 'Nhóm Whitehat đã làm việc cật lực để đòi lại số ETC và mang về cho bạn. Bạn có thể nói lời cảm ơn đến họ bằng cách quyên góp một phần tỷ lệ % từ khoảng hoàn lại của bạn. ',
-  DAO_Desc: 'Sử dụng phần này cho việc thu hồi DAO Token và hoàn trả lại **ETH & ETC**. Nếu bạn muốn gửi DAO Token, xin vui lòng sử dụng mục "gửi Token".',
-  DAO_Inst: 'Đúng rồi, Bạn chỉ cần chọn vào nút lớn màu đỏ.',
-  DAO_Warning: 'Nếu bạn nhận được một thông báo lỗi "số dư tài khoản không đủ cho Gas", thì bạn cần có mộ lượng nhỏ ether trong tài khoản được dùng để thanh toán chi phí gas. Bạn hãy thêm vào 0.01 ether vào tài khoản và thực hiện lại. ',
-  DAOModal_Title: 'Đảm bảo rằng...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: 'Bạn Muốn thực hiện việc "Thu Hồi"',
-  DAOModal_2: 'Số Dao Token đến',
-  DAOModal_3: 'Hoàn Lại', // "in return for"
-
-  /* Digix */
-  DGD_Desc: 'Khiếu nại về DigixDAO(DGD) Token & Danh Hiệu. Để thực hiện việc khiếu nại, bạn phải tham gia vào buổi bán token vào ngày 30 và 31 tháng 3 năm 2016. Nếu bạn muốn gửi DGD, xin vui lòng sử dụng Mục "Gửi Token".',
-  DGD_Label_1: 'Phí Giao Dịch Ước Tínhn:',
-  DGD_Label_2: 'Cung Cấp Phí Tối Đa:',
-  DGD_Label_3: 'Giá Gas:',
-  DGD_Generate: 'Tạo Khiếu Nại',
-  DGD_Content: 'Bạn Muốn Khiếu Nại về DGD Token?',
-
   /* Deploy Contracts */
   DEP_generate: 'Tạo Bytecode',
   DEP_generated: 'Bytecode Đã Được Tạo',
@@ -13930,7 +13382,6 @@ vi.data = {
   SUCCESS_2: 'Ví đã được giải mã thành công',
   SUCCESS_3: 'Giao dịch đã gửi đi, TX ID:',
   SUCCESS_4: 'Ví của bạn đã được thêm thành công:',
-  SUCCESS_5: 'Bạn đã bỏ phiếu thành công. Cảm ơn vì đã tham gia tích cực trong The DAO.',
   SUCCESS_6: 'Tập Tin Được Chọn: ',
 
   /* Geth Error Messages */
@@ -14230,7 +13681,6 @@ zh.data = {
   TOKEN_show: 'Show All Tokens',
   TOKEN_hide: 'Hide Tokens',
   WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
-  WARN_Send_Link_2: '**Warning:** You can only include data if you are sending via "ETH (Standard Transaction)". Please remove the "sendMode" and/or "tokenSymbol" from the URI to send a transaction with data.',
 
   /* Hardware wallets */
   x_Ledger: 'Ledger Nano S',
@@ -14259,11 +13709,7 @@ zh.data = {
   NAV_BulkGenerate: '批量生成',
   NAV_SendEther: '发送以太币 / 发送代币', //combined these tabs
   NAV_Offline: '离线发送',
-  NAV_WithdrawDAO: 'DAO提取DAO',
-  DAO_TitleLong: '兑换DAO代币为ETH',
   NAV_Multisig: 'Multisig',
-  NAV_ClaimDGD: '领取DGD代币',
-  DGD_TitleLong: '领取你的DGD代币',
   NAV_DeployContract: '部署合约',
   NAV_InteractContract: 'Interact with Contract',
   NAV_Contracts: '合同',
@@ -14314,7 +13760,6 @@ zh.data = {
   sidebar_TokenBal: '代币余额：',
   sidebar_Equiv: '价值： ',
   sidebar_TransHistory: '交易历史： ',
-  sidebar_DGDBal: 'DGD代币众筹信息：',
   sidebar_donation: 'MyEtherWallet是保护你的隐私和安全的免费、开源服务。 我们收到的捐赠越多，我们开发新特性、听取你的反馈的时间就越多。我们只是两个尝试改变世界的两个开发者。您能帮助我们吗？',
   sidebar_donate: '捐赠',
   sidebar_thanks: '感谢你！！！',
@@ -14422,30 +13867,6 @@ zh.data = {
   OFFLINE_Step3_Title: '步骤3：发送/公开交易（连网电脑）',
   OFFLINE_Step3_Label_1: '将步骤2的签名交易粘贴到这里，点击“发送交易”按钮。',
 
-  /* DAO */
-  DAO_bal1: '在第1919999个区块',
-  DAO_bal2: '当前',
-  DAO_TitleETH: '销毁DAO代币，取回ETH',
-  DAO_TitleETC: '销毁DAO代币，取回ETC',
-  DAO_ETC_Label_1: '你想把ETC发送到哪个地址？',
-  DAO_ETC_Label_2: '白帽黑客为取回你的ETC不知疲倦地工作。 你可以将一定比例的ETC捐赠给白帽黑客，以表感谢之意。 ',
-  DAO_Desc: '使用这个标签销毁DAO代币，换回ETH和ETC。如果你想发送DAO，请使用发送代币标签。',
-  DAO_Inst: '是的。只需按红色按钮。非常简单。',
-  DAO_Warning: '如果你遇到了“余额不足以支付gas"的错误，你的账户中必须有少量以太币，以支付gas费用。向这个账户发送0.01以太币，再次尝试。',
-  DAOModal_Title: '确保...',
-  // full sentence is "You are about to withdraw 100 DAO tokens to address 0x12344 for 1 ETH.
-  DAOModal_1: '你将要销毁',
-  DAOModal_2: 'DAO代币',
-  DAOModal_3: '换回ETH，并发送到地址', // "in return for"
-
-  /* Digix */
-  DGD_Desc: '认领你的DigixDAO(DGD）代币和勋章。只有你参加了2016年3月30日和31日的代币预售，才可以认领DGD代币。 如果你想发送DGD，请使用发送代币标签。',
-  DGD_Label_1: '预计所需交易费用：',
-  DGD_Label_2: '最多交易费用',
-  DGD_Label_3: 'Gas价格：',
-  DGD_Generate: '生成认领',
-  DGD_Content: '你将认领你的DGD代币。',
-
   /* Deploy Contracts */
   DEP_generate: '生成字节码',
   DEP_generated: '生成字节码',
@@ -14503,7 +13924,6 @@ zh.data = {
   SUCCESS_2: '钱包解密成功',
   SUCCESS_3: '交易已提交。TX ID：',
   SUCCESS_4: '成功添加你的钱包：',
-  SUCCESS_5: '你已经成功投票。感谢你积极参与The DAO。',
   SUCCESS_6: '选择的文件：',
 
   /* Geth Error Messages */
