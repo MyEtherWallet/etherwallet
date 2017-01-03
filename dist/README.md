@@ -220,4 +220,5 @@ If you can think of any other features or run into bugs, let us know. You can fo
 - 1/2/17: [Announcing MyEtherWallet v3.4: The Node Switcher](https://www.reddit.com/r/ethereum/comments/5lqx90/announcing_myetherwallet_v34_the_node_switcher/)
 
 
+
 #### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).
