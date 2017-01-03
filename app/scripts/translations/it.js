@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 55c9ca100499ad7742bcca9b3770a634279eefdc
+// Last sync with en.js: commit 4628e0d5eb086474511e810e134b7d8833659500
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -259,6 +259,7 @@ it.data = {
   ERROR_23:             'Inserisci un nome di nodo valido',
   ERROR_24:             'Inserisci un url valido, se stai usando https l\'url deve cominciare per https',
   ERROR_25:             'Inserisci una porta valida',
+  ERROR_26:             'Inserisci un ID catena valido',
   SUCCESS_1:            'Indirizzo valido',
   SUCCESS_2:            'Portafoglio decodificato correttamente',
   SUCCESS_3:            'Transazione inviata. TX ID: ',
