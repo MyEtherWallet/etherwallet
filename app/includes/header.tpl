@@ -128,8 +128,8 @@
             <ul>
               <li> URL: http://127.0.0.1</li>
               <li> Port: 8545 </li>
-              <li> Run geth: <code>geth --rpc</code></li>
-              <li> Run Parity: <code>parity --rpccorsdomain "*"</code></li>
+              <li> Run geth: <code>geth --rpc --rpccorsdomain "null"</code></li>
+              <li> Run Parity: <code>parity --rpccorsdomain "*" --rpcaddr "127.0.0.1"</code></li>
             </ul>
           </p>
           <div ng-show="browserProtocol=='https:'" class="alert alert-danger">Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can <a href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank">download the MyEtherWallet repo & run it locally</a> to connect to any node. Or, get free SSL certificate via <a href="https://letsencrypt.org/" target="_blank">LetsEncrypt</a>.</div>

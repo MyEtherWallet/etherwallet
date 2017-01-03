@@ -35,7 +35,7 @@ globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at
 "A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.",
 "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port","Please enter valid chain ID"];
 // These are translated in the translation files
-globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "You have successfully voted. Thank you for being an active participant in The DAO.", "File Selected: "];
+globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "File Selected: "];
 // These are translated in the translation files
 globalFuncs.gethErrors = {
 	"Invalid sender": "GETH_InvalidSender",

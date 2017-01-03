@@ -259,7 +259,7 @@ nl.data = {
   SUCCESS_2:            'Wallet succesvol ontsleuteld',
   SUCCESS_3:            'Transactie verzonden. TX ID: ',
   SUCCESS_4:            'Je Wallet is succesvol toegevoegd: ',
-  SUCCESS_6:            'Bestand Geselecteerd: ',
+  SUCCESS_5:            'Bestand Geselecteerd: ',
   WARN_Send_Link:       'Je bent hier gekomen via een link waarbij het adres, bedrag, gas of data velden al ingevuld zijn. Indien gewenst kun je elk veld nog aanpassen voor het verzenden. Ontgrendel je wallet on te beginnen.',
 
   /* Geth Error Messages */

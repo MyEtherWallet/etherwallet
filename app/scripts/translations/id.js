@@ -259,7 +259,7 @@ id.data = {
   SUCCESS_2:           'Dompet telah ter-dekripsi',
   SUCCESS_3:           'Transaksi diajukan. TX ID: ',
   SUCCESS_4:           'Dompet Anda telah ditambahkan: ',
-  SUCCESS_6:           'File Terpilih: ',
+  SUCCESS_5:           'File Terpilih: ',
   WARN_Send_Link:       'Alamat, jumlah, gas atau informasi telah diisikan untuk Anda. Informasi tersebut dapat Anda rubah sebelum pengiriman. Buka kunci dompet Anda Untuk memulai.',
 
   /* Geth Error Messages */

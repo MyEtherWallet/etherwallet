@@ -274,7 +274,7 @@ ru.data = {
   SUCCESS_2:            'Кошелёк успешно расшифрован',
   SUCCESS_3:            'Транзакция отправлена на выполнение. TX ID: ',
   SUCCESS_4:            'Ваш кошелёк успешно добавлен: ',
-  SUCCESS_6:            'Выбранный файл: ',
+  SUCCESS_5:            'Выбранный файл: ',
 
   /* Parity Error Messages */
   PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",

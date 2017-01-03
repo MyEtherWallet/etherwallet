@@ -35,7 +35,7 @@ var addWalletCtrl = function($scope, $sce) {
 		$scope.showBtnUnlock = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
 	};
 	$scope.showContent = function($fileContent) {
-		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[5] + document.getElementById('fselector').files[0].name));
+		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name));
 		try {
 			$scope.requireFPass = Wallet.walletRequirePass($fileContent);
 			$scope.showBtnUnlock = !$scope.requireFPass;

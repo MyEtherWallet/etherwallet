@@ -262,7 +262,7 @@ no.data = {
   SUCCESS_2:            'Dekrypteringen av lommeboken var vellykket',
   SUCCESS_3:            'Transaksjonen ble sendt inn. TX ID: ',
   SUCCESS_4:            'Lommeboken din ble lagt til: ',
-  SUCCESS_6:            'Valgt fil: ',
+  SUCCESS_5:            'Valgt fil: ',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Feil på avsender',

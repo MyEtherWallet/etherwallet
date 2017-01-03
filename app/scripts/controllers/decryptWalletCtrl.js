@@ -19,7 +19,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 	};
 	$scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
 	$scope.showContent = function($fileContent) {
-		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[5] + document.getElementById('fselector').files[0].name));
+		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name));
 		try {
 			$scope.requireFPass = Wallet.walletRequirePass($fileContent);
 			$scope.showFDecrypt = !$scope.requireFPass;

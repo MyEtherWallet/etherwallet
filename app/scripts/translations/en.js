@@ -263,7 +263,7 @@ en.data = {
   SUCCESS_2:            'Wallet successfully decrypted',
   SUCCESS_3:            'Transaction submitted. TX ID: ',
   SUCCESS_4:            'Your wallet was successfully added: ',
-  SUCCESS_6:            'File Selected: ',
+  SUCCESS_5:            'File Selected: ',
 
   WARN_Send_Link:       'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
 

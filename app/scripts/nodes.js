@@ -54,7 +54,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/ropstenTokens.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/rop', '')
+        'lib': new nodes.customNode('https://api.myetherapi.com/rop', '')
     },
     'eth2_mew': {
         'name': 'ETH-beta',
@@ -66,7 +66,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/ethTokens.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': new nodes.customNode('https://pdm265ix8j.execute-api.us-west-2.amazonaws.com/latest/eth', '')
+        'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
     },
     'eth_ethscan': {
         'name': 'ETH',

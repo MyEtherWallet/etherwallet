@@ -291,7 +291,7 @@ fi.data = {
   SUCCESS_2:            'Lompakon salaus onnistuneesti purettu',
   SUCCESS_3:            'Siirto lähetetty. TX ID: ',
   SUCCESS_4:            'Lompakkosi lisätty onnistuneesti: ',
-  SUCCESS_6:            'Valittu Tiedosto: ',
+  SUCCESS_5:            'Valittu Tiedosto: ',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Virheellinen lähettäjä',

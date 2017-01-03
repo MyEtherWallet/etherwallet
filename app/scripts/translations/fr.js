@@ -260,7 +260,7 @@ fr.data = {
   SUCCESS_2:            'Portefeuille déchiffré avec succès',
   SUCCESS_3:            'Transaction envoyée. Identifiant de transaction : ',
   SUCCESS_4:            'Votre portefeuille a été ajouté avec succès : ',
-  SUCCESS_6:            'Fichier sélectionné : ',
+  SUCCESS_5:            'Fichier sélectionné : ',
   WARN_Send_Link:       'Vous être arrivé grâce à un lien qui a rempli l\'adresse, le montant, le gaz ou les champs de données pour vous. Vous pouvez modifier toutes les informations avant d\'envoyer. Débloquez votre portefeuille pour démarrer.',
 
   /* Geth Error Messages */

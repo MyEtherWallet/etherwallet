@@ -272,7 +272,7 @@ de.data = {
   SUCCESS_2:            'Wallet erfolgreich entschlüsselt',
   SUCCESS_3:            'Transaktion übermittelt. TX ID: ',
   SUCCESS_4:            'Dein Wallet wurde erfolgreich hinzugefügt: ',
-  SUCCESS_6:            'Ausgewählte Datei: ',
+  SUCCESS_5:            'Ausgewählte Datei: ',
 
   /* Parity Error Messages */
   PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",

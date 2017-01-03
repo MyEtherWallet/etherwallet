@@ -122,8 +122,8 @@
             <ul>
               <li> URL: http://127.0.0.1</li>
               <li> Port: 8545 </li>
-              <li> Run geth: <code>geth --rpc</code></li>
-              <li> Run Parity: <code>parity --rpccorsdomain "*"</code></li>
+              <li> Run geth: <code>geth --rpc --rpccorsdomain "null"</code></li>
+              <li> Run Parity: <code>parity --rpccorsdomain "*" --rpcaddr "127.0.0.1"</code></li>
             </ul>
           </p>
           <div ng-show="browserProtocol=='https:'" class="alert alert-danger">Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can <a href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank">download the MyEtherWallet repo & run it locally</a> to connect to any node. Or, get free SSL certificate via <a href="https://letsencrypt.org/" target="_blank">LetsEncrypt</a>.</div>
@@ -447,11 +447,11 @@
 
       <wallet-balance-drtv></wallet-balance-drtv>
 
+
       <div translate="sidebar_TransHistory"> Transaction History: </div>
       <ul class="account-info" ng-show="ajaxReq.type != 'CUS'">
         <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
       </ul>
-
       <div class="well">
         <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
         <a class="btn btn-primary btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
@@ -543,7 +543,7 @@
         <div class="form-group" ng-bind-html="sendTxStatus"></div>
 
         <div class="alert alert-info" ng-show="tx.sendMode=='token'">
-          <p translate="DAO_Warning">If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
+          <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
         </div>
 
 
@@ -564,7 +564,7 @@
 
             <div class="modal-body larger" ng-show="tx.sendMode=='ether'">
               <table class="table text-center"><tbody><tr>
-                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}"></div></td>
+                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div></td>
                 <td class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
                 <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div></td>
               </tr></tbody></table>
@@ -587,7 +587,7 @@
 
             <div class="modal-body larger" ng-show="tx.sendMode!=='ether'">
               <table class="table text-center"><tbody><tr>
-                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}"></div></td>
+                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div></td>
                 <td class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
                 <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div></td>
               </tr></tbody></table>
@@ -601,8 +601,8 @@
               </p>
               <p>
                 You are sending on the <strong>{{ajaxReq.type}}</strong> chain, which
-                <strong class="text-danger" ng-show="ajaxReq.eip155==false"> susceptible to replay attacks.</strong>
-                <strong ng-show="ajaxReq.eip155==true"> not susceptible to replay attacks.</strong>
+                <strong class="text-danger" ng-show="!ajaxReq.eip155"> susceptible to replay attacks.</strong>
+                <strong ng-show="ajaxReq.eip155"> not susceptible to replay attacks.</strong>
               </p>
               <p> The node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>. </p>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>

@@ -67,6 +67,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.wallet.setBalance();
         $scope.wallet.setTokens();
         $scope.setTokenSendMode();
+        $scope.setTokenSendMode();
     });
 	$scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {

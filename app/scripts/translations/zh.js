@@ -271,7 +271,7 @@ zh.data = {
   SUCCESS_2:            '钱包解密成功',
   SUCCESS_3:            '交易已提交。TX ID：',
   SUCCESS_4:            '成功添加你的钱包：',
-  SUCCESS_6:            '选择的文件：',
+  SUCCESS_5:            '选择的文件：',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      '无效发送者',

@@ -261,7 +261,7 @@ vi.data = {
   SUCCESS_2:            'Ví đã được giải mã thành công',
   SUCCESS_3:            'Giao dịch đã gửi đi, TX ID:',
   SUCCESS_4:            'Ví của bạn đã được thêm thành công:',
-  SUCCESS_6:            'Tập Tin Được Chọn: ',
+  SUCCESS_5:            'Tập Tin Được Chọn: ',
 
    /* Geth Error Messages */
   GETH_InvalidSender:      'Sai người nhận',

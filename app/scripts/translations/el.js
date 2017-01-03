@@ -51,7 +51,7 @@ el.data = {
   GETH_NegativeValue:      'Negative value',
 
   HELP_12_Desc_15b:       'If you are on a PC:',
-  SUCCESS_6:              'File Selected: ',
+  SUCCESS_5:              'File Selected: ',
   FOOTER_4:               'Disclaimer',
 
   /* New - Deploy Contracts */

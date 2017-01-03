@@ -263,7 +263,7 @@ sv.data = {
   SUCCESS_2:            'Wallet successfully decrypted',
   SUCCESS_3:            'Transaction submitted. TX ID: ',
   SUCCESS_4:            'Your wallet was successfully added: ',
-  SUCCESS_6:            'File Selected: ',
+  SUCCESS_5:            'File Selected: ',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Invalid sender',

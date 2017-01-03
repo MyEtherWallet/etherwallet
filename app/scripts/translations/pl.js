@@ -259,7 +259,7 @@ pl.data = {
   SUCCESS_2:            'Portfel został odszyfrowany',
   SUCCESS_3:            'Transakcja zgłoszona. TX ID: ',
   SUCCESS_4:            'Twój portfel został dodany: ',
-  SUCCESS_6:            'Wybrany plik: ',
+  SUCCESS_5:            'Wybrany plik: ',
   WARN_Send_Link:       'Znalazłeś się tu przez odnośnik, który zawiera wstępnie uzupełniony adres, kwotę, paliwo lub dane transakcji. Możesz zmienić dowolne parametry transakcji zanim ją zatwierdzisz. Odblokuj portfel aby kontynuować.',
 
   /* Geth Error Messages */

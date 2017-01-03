@@ -262,7 +262,7 @@ es.data = {
   SUCCESS_2:            'Cartera descifrada con éxito',
   SUCCESS_3:            'Transacción enviada. TX ID: ',
   SUCCESS_4:            'Se ha añadido tu cartera: ',
-  SUCCESS_6:            'Archivo seleccionado: ',
+  SUCCESS_5:            'Archivo seleccionado: ',
 
   /* Geth Error Messages */
   GETH_InvalidSender:      'Remitente no válido',

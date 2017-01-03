@@ -284,7 +284,7 @@ tr.data = {
   SUCCESS_2:            'Cüzdan basariyla desifre edildi',
   SUCCESS_3:            'İşlem teslim edildi TX ID: ',
   SUCCESS_4:            'Cüzdanın başarıyla eklendi: ',
-  SUCCESS_6:            'Dosya secildi ',
+  SUCCESS_5:            'Dosya secildi ',
 
   /* Tranlsation Info */
   translate_version:    '0.3',

@@ -263,7 +263,7 @@ it.data = {
   SUCCESS_2:            'Portafoglio decodificato correttamente',
   SUCCESS_3:            'Transazione inviata. TX ID: ',
   SUCCESS_4:            'Il portafoglio è stato aggiunto correttamente: ',
-  SUCCESS_6:            'File selezionato: ',
+  SUCCESS_5:            'File selezionato: ',
 
   WARN_Send_Link:       'Sei arrivato qui da un link che ha riempito per te i campi indirizzo, importo, gas, dati o tipo di transazione (modalità di invio). Puoi cambiare queste informazioni prima di inviare. Sblocca il tuo portafoglio per iniziare.',
 
