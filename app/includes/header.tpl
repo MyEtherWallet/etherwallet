@@ -53,7 +53,7 @@
         <div class="tagline">
           <span style="max-width: 375px" translate="CX_Tagline">Open Source JavaScript Client-Side Ether Wallet Chrome Extension</span>
 }
-        &middot; v3.3.6
+        &middot; v3.3.7
 
         &nbsp;&nbsp;
 
