@@ -94,7 +94,7 @@
     </section>
   </section>
   <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected">
-    <div class="container">Not able to connect to node. See the help page for troubleshooting suggestions.</div>
+    <div class="container">Unable to connect to node. See the help page for troubleshooting suggestions.</div>
   </div>
   <section class="container nav-container overflowing" >
     <a ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
