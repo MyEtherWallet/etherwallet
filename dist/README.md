@@ -217,7 +217,7 @@ If you can think of any other features or run into bugs, let us know. You can fo
 - 08/14/16: [⚠ Malicious Phisher is running Google Ads for MyEtherWallet.com ⚠ It does NOT go to MyEtherWallet.com. Always check the URL before accessing or creating a new wallet! Use your bookmarks bar!](https://www.reddit.com/r/ethereum/comments/4xpj0u/malicious_phisher_is_running_google_ads_for/)
 - 08/22/16: [Help us translate MyEtherWallet.com into ALL THE LANGUAGES!](https://www.reddit.com/r/ethereum/comments/4z55s2/help_us_translate_myetherwalletcom_into_all_the/)
 - 11/21/16: [Massive MyEtherWallet.com Update: Better URIs, The Hardfork, and looking back at the Golem Crowdfund.](https://www.reddit.com/r/ethereum/comments/5e3alw/massive_myetherwalletcom_update_better_uris_the/)
-
+- 1/2/17: [Announcing MyEtherWallet v3.4: The Node Switcher](https://www.reddit.com/r/ethereum/comments/5lqx90/announcing_myetherwallet_v34_the_node_switcher/)
 
 
 #### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).
