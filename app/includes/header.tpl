@@ -45,7 +45,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.4.0 &nbsp;&nbsp;
+        &middot; v3.4.1 &nbsp;&nbsp;
 
         <span class="dropdown">
           <a class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
@@ -128,7 +128,7 @@
             <ul>
               <li> URL: http://127.0.0.1</li>
               <li> Port: 8545 </li>
-              <li> Run geth: <code>geth --rpc --rpccorsdomain "null"</code></li>
+              <li> Run geth: <code>geth --rpc --rpccorsdomain "127.0.0.1"</code></li>
               <li> Run Parity: <code>parity --rpccorsdomain "*" --rpcaddr "127.0.0.1"</code></li>
             </ul>
           </p>
