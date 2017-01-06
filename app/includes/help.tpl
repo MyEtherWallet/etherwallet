@@ -262,7 +262,7 @@
         <li> Verify the URL you entered is correct. </li>
         <li> Verify the port you entered is correct. </li>
         <li> Verify that if you are connecting to an http:// node you are running MyEtherWallet locally (NOT over https://). </li>
-        <li> Verify geth is running with <code>geth --rpc --rpccorsdomain "127.0.0.1"</code> or parity is running with <code>parity --rpccorsdomain "*"</code> </li>
+        <li> Verify geth is running with <code>geth --rpc --rpccorsdomain "null" --keystore "dont_put_secret_files_here_ever"</code> or parity is running with <code>parity --rpccorsdomain "*" --keys-path "dont_put_secret_files_here_ever"</code> </li>
         <li> Verify your node is actually up and running. </li>
         <li> Try removing the node and adding it again. </li>
       </ul>

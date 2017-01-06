@@ -45,7 +45,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.4.1 &nbsp;&nbsp;
+        &middot; v3.4.2 &nbsp;&nbsp;
 
         <span class="dropdown">
           <a class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
@@ -128,8 +128,8 @@
             <ul>
               <li> URL: http://127.0.0.1</li>
               <li> Port: 8545 </li>
-              <li> Run geth: <code>geth --rpc --rpccorsdomain "127.0.0.1"</code></li>
-              <li> Run Parity: <code>parity --rpccorsdomain "*" --rpcaddr "127.0.0.1"</code></li>
+              <li> Run geth: <code>geth --rpc --rpccorsdomain "null" --keystore "dont_put_secret_files_here_ever"</code></li>
+              <li> Run Parity: <code>parity --rpccorsdomain "*" --keys-path "dont_put_secret_files_here_ever"</code></li>
             </ul>
           </p>
           <div ng-show="browserProtocol=='https:'" class="alert alert-danger">Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can <a href="https://github.com/kvhnuke/etherwallet/releases/latest" target="_blank">download the MyEtherWallet repo & run it locally</a> to connect to any node. Or, get free SSL certificate via <a href="https://letsencrypt.org/" target="_blank">LetsEncrypt</a>.</div>

@@ -4412,6 +4412,12 @@ module.exports=[]
 },{}],46:[function(require,module,exports){
 module.exports=[
   {
+    "address":"0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
+    "symbol":"1ST",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xAc709FcB44a43c35F0DA4e3163b117A17F3770f5",
     "symbol":"ARC",
     "decimal":18,
@@ -4454,9 +4460,9 @@ module.exports=[
     "type":"default"
   },
   {
-    "address":"0x54bda709fed875224eae569bb6817d96ef7ed9ad",
-    "symbol":"DGDb",
-    "decimal":0,
+    "address":"0x55b9a11c2e8351b4ffc7b11561148bfac9977855",
+    "symbol":"DGX 1.0",
+    "decimal":9,
     "type":"default"
   },
   {
@@ -4467,7 +4473,7 @@ module.exports=[
   },
   {
     "address":"0xb582baaf5e749d6aa98a22355a9d08b4c4d013c8",
-    "symbol":"HKG",
+    "symbol":"HKG - DO NOT SEND!",
     "decimal":3,
     "type":"default"
   },
@@ -4524,14 +4530,9 @@ module.exports=[
     "symbol":"XAUR",
     "decimal":8,
     "type":"default"
-  },
-  {
-    "address":"0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
-    "symbol":"1ST",
-    "decimal":18,
-    "type":"default"
   }
 ]
+
 },{}],47:[function(require,module,exports){
 arguments[4][45][0].apply(exports,arguments)
 },{"dup":45}],48:[function(require,module,exports){
@@ -7249,7 +7250,7 @@ module.exports = id;
 
 },{}],56:[function(require,module,exports){
 // Italian
-// Last sync with en.js: commit 55c9ca100499ad7742bcca9b3770a634279eefdc
+// Last sync with en.js: commit 4628e0d5eb086474511e810e134b7d8833659500
 'use strict';
 
 var it = function it() {};
@@ -7510,6 +7511,7 @@ it.data = {
   ERROR_23: 'Inserisci un nome di nodo valido',
   ERROR_24: 'Inserisci un url valido, se stai usando https l\'url deve cominciare per https',
   ERROR_25: 'Inserisci una porta valida',
+  ERROR_26: 'Inserisci un ID catena valido',
   SUCCESS_1: 'Indirizzo valido',
   SUCCESS_2: 'Portafoglio decodificato correttamente',
   SUCCESS_3: 'Transazione inviata. TX ID: ',
@@ -7961,27 +7963,27 @@ nl.data = {
   NAV_Contact: 'Contact',
 
   /* General */
-  x_Wallet: 'Wallet',
-  x_Password: 'Wachtwoord',
-  x_Download: 'Download',
   x_Address: 'Je Adres',
-  x_Save: 'Opslaan',
-  x_Cancel: 'Annuleren',
   x_AddessDesc: 'Dit is je "Account #" ofwel je "Publieke Sleutel". Maak dit bekend aan anderen zodat ze je ether kunnen sturen. Dit icoon is een makkelijke manier om je adres te herkennen.',
-  x_PrivKey: 'Prive Sleutel (onversleuteld)',
-  x_PrivKey2: 'Prive Sleutel',
-  x_PrivKeyDesc: 'Dit is een onversleutelde tekst versie van je prive sleutel waarbij geen wachtwoord benodigd is. Mocht iemand deze unversleutelde prive sleutel vinden, kunnen zij zonder wachtwoord bij je account. Om deze reden zijn versleutelde versies aanbevolen.',
+  x_Cancel: 'Annuleren',
+  x_CSV: 'CSV bestand (onverlseuteld)',
+  x_Download: 'Download',
+  x_Json: 'JSON Bestand (onversleuteld)',
+  x_JsonDesc: 'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',
   x_Keystore: 'Keystore Bestand (UTC / JSON · Aangeraden · versleuteld · Mist Formaat)',
   x_Keystore2: 'Keystore Bestand (UTC / JSON) ',
   x_KeystoreDesc: 'Dit Keystore bestand voldoen aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
-  x_Json: 'JSON Bestand (onversleuteld)',
-  x_JsonDesc: 'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord.',
-  x_PrintShort: 'Afdrukken',
+  x_Mnemonic: 'Mnemonic Zin (MetaMask / Jaxx / ether.cards)',
+  x_Password: 'Wachtwoord',
   x_Print: 'Druk je papieren wallet af',
   x_PrintDesc: 'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
-  x_CSV: 'CSV bestand (onverlseuteld)',
+  x_PrintShort: 'Afdrukken',
+  x_PrivKey: 'Prive Sleutel (onversleuteld)',
+  x_PrivKey2: 'Prive Sleutel',
+  x_PrivKeyDesc: 'Dit is een onversleutelde tekst versie van je prive sleutel waarbij geen wachtwoord benodigd is. Mocht iemand deze unversleutelde prive sleutel vinden, kunnen zij zonder wachtwoord bij je account. Om deze reden zijn versleutelde versies aanbevolen.',
+  x_Save: 'Opslaan',
   x_TXT: 'TXT bestand (onverlseuteld)',
-  x_Mnemonic: 'Mnemonic Zin (MetaMask / Jaxx / ether.cards)',
+  x_Wallet: 'Wallet',
 
   /* Header */
   MEW_Warning_1: 'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites!',
@@ -8150,6 +8152,12 @@ nl.data = {
   VIEWWALLET_Subtitle_Short: 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. ',
   VIEWWALLET_SuccessMsg: 'Gelukt! Hier zijn je wallet details.',
 
+  /* Mnemonic Additions */
+  MNEM_1: 'Selecteer het adres waarmee je wilt communiceren.',
+  MNEM_2: 'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren.',
+  MNEM_more: 'Meer Adressen',
+  MNEM_prev: 'Vorige Adressen',
+
   /* Hardware wallets */
   x_Ledger: 'Ledger Nano S',
   ADD_Ledger_scan: 'Verbind met Ledger Nano S',
@@ -8159,12 +8167,6 @@ nl.data = {
   ADD_Ledger_4: 'Als je "Browser Support" niet in je instellingen kunt vinden, controleer dan dat je [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) is',
   ADD_Ledger_0a: 'Her-open MyEtherWallet met een veilige (SSL) verbinding',
   ADD_Ledger_0b: 'Her-open MyEtherWallet door gebruik te maken van [Chrome](https://www.google.com/chrome/browser/desktop/) of [Opera](https://www.opera.com/)',
-
-  /* Mnemonic Additions */
-  MNEM_1: 'Selecteer het adres waarmee je wilt communiceren.',
-  MNEM_2: 'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren.',
-  MNEM_more: 'Meer Adressen',
-  MNEM_prev: 'Vorige Adressen',
 
   /* Chrome Extension */
   CX_error_1: 'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
@@ -8193,11 +8195,16 @@ nl.data = {
   ERROR_20: 'Ongeldig symbol',
   ERROR_21: ' is geen geldig ERC-20 token. Als andere tokens nog aan het laden zijn, verwijder dan dit token en probeer het opnieuw.',
   ERROR_22: 'Kon gas niet inschatten. Er is onvoldoende saldo in het account, of het ontvangende contract adres geeft een fout. Voel je vrij om het gas handmatig in te stellen en door te gaan. De foutmelding bij het verzenden kan informatiever zijn.',
+  ERROR_23: 'Geef een geldige node naam in',
+  ERROR_24: 'Geef een geldige url in, als je van https gebruik maakt moet je url https bevatten',
+  ERROR_25: 'Geef een geldige poort in',
+  ERROR_26: 'Geef een geldig chain ID in',
   SUCCESS_1: 'Geldig adres',
   SUCCESS_2: 'Wallet succesvol ontsleuteld',
   SUCCESS_3: 'Transactie verzonden. TX ID: ',
   SUCCESS_4: 'Je Wallet is succesvol toegevoegd: ',
   SUCCESS_5: 'Bestand Geselecteerd: ',
+
   WARN_Send_Link: 'Je bent hier gekomen via een link waarbij het adres, bedrag, gas of data velden al ingevuld zijn. Indien gewenst kun je elk veld nog aanpassen voor het verzenden. Ontgrendel je wallet on te beginnen.',
 
   /* Geth Error Messages */
@@ -8409,8 +8416,8 @@ nl.data = {
   HELP_12_Desc_27: 'Verwijder het bestand `niets_bijzonders_verwijder_mij.txt` na een geslaagde import.',
   HELP_12_Desc_28: 'De volgende keer dat je de Ethereum Wallet applicatie opent, zal je account worden vermeld onder "Accounts". ',
 
-  HELP_13_Title: '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean?',
-  HELP_13_Desc_1: 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction.',
+  HELP_13_Title: '13) Wat betekend "Ontoereikend saldo. Het account waarvan je de transactie verstuurd bevat niet voldoende saldo. Vereist XXXXXXXXXXXXXXXXXXX en heeft: XXXXXXXXXXXXXXXX."?',
+  HELP_13_Desc_1: 'Dit betekend dat je account onvoldoende Ether bevat om de kosten voor het vereiste gas te dekken. Elke transactie (inclusief token en contract transacties) vereisen gas en dit gas wordt betaald in Ether. Het weergegeven nummer is de hoeveelheid die voor de transactie vereist in Wei. Neem dit nummer, deel het door `1000000000000000000`, en trek daarvan de hoeveelheid Ether die je probeerde te verzenden af (als je probeerde Ether te versturen). Dit geeft je de hoeveelheid Ether die je dient te versturen naar het account om de transactie te maken.',
 
   HELP_14_Title: '14) Sommige sites zorgen voor een willekeurigheid (seed) bij het genereren van de prive sleutel via muis bewegingen. MyEtherWallet.com doet dit niet. Is de wikkeleurigheid (random number generation) van MyEtherWallet wel veilig?',
   HELP_14_Desc_1: 'Hoewel het bewegen van de muis een slimme truck is en we begrijpen waarom mensen dit een goed idee vinden, is de werkelijkheid dat "window.crypto" een grotere willekeurigheid (hogere entropie) zeker stelt dan je muisbewegingen. De muisbewegingen zijn niet onveilig, echter wij (en enorm veel andere crypto experimenten) geloven in "window.crypto". Bovendien kan MyEtherWallet.com gebruikt worden op touchscreen apparaten. Hier vind je een [conversatie tussen een boze redditor en Vitalik Buterin over de muisbewegingen v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',

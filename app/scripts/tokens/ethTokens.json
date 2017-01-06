@@ -1,5 +1,11 @@
 [
   {
+    "address":"0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
+    "symbol":"1ST",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xAc709FcB44a43c35F0DA4e3163b117A17F3770f5",
     "symbol":"ARC",
     "decimal":18,
@@ -42,9 +48,9 @@
     "type":"default"
   },
   {
-    "address":"0x54bda709fed875224eae569bb6817d96ef7ed9ad",
-    "symbol":"DGDb",
-    "decimal":0,
+    "address":"0x55b9a11c2e8351b4ffc7b11561148bfac9977855",
+    "symbol":"DGX 1.0",
+    "decimal":9,
     "type":"default"
   },
   {
@@ -55,7 +61,7 @@
   },
   {
     "address":"0xb582baaf5e749d6aa98a22355a9d08b4c4d013c8",
-    "symbol":"HKG",
+    "symbol":"HKG - DO NOT SEND!",
     "decimal":3,
     "type":"default"
   },
@@ -111,12 +117,6 @@
     "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
     "symbol":"XAUR",
     "decimal":8,
-    "type":"default"
-  },
-  {
-    "address":"0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
-    "symbol":"1ST",
-    "decimal":18,
     "type":"default"
   }
 ]
