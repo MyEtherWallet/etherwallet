@@ -63,6 +63,9 @@ ethFuncs.getDataObj = function(to, func, arrVals) {
         data: func + val
     };
 }
+ethFuncs.getFunctionSignature = function (name) {
+    return ethUtil.sha3(name).toString('hex').slice(0, 8);
+};
 ethFuncs.estimateGas = function(dataObj, callback) {
     if (ajaxReq.estimateGas) {
         var gasLimit = 2000000;
