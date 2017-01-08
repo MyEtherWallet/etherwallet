@@ -43,9 +43,7 @@
     "string-format": "^0.5.0",
     "uuid": "^2.0.3",
     "vinyl-buffer": "1.0.0",
-    "vinyl-source-stream": "^1.1.0"
-  },
-  "dependencies": {
+    "vinyl-source-stream": "^1.1.0",
     "utf8": "^2.1.2"
   }
 }

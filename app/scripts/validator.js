@@ -28,6 +28,9 @@ validator.isAlphaNumericSpace = function(value) {
     if (!value) return false;
     return globalFuncs.isAlphaNumeric(value.replace(/ /g, ''));
 }
+validator.isJSON = function(json) {
+    return ethUtil.solidityUtils.isJson(json);
+}
 validator.isValidURL = function(str) {
     var pattern = new RegExp('^(https?:\\/\\/)' + // protocol
         '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
