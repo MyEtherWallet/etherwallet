@@ -1,4 +1,4 @@
-<section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.addWallet.id" ng-controller='addWalletCtrl'>
+<section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.addWallet.id" ng-controller='addWalletCtrl'  ng-cloak>
   <h2 translate="NAV_AddWallet"> Add Wallet </h2>
 
   <section class="row" id="walletselection">

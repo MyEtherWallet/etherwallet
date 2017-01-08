@@ -1,5 +1,5 @@
 <!-- View Wallet Info Panel -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id" ng-controller='viewWalletCtrl'>
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id" ng-controller='viewWalletCtrl' ng-cloak>
 
   <article class="collapse-container">
     <div ng-click="wd = !wd">

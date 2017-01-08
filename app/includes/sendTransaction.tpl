@@ -1,5 +1,5 @@
 <!-- Send Transaction Page -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id" ng-controller='sendTxCtrl'>
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id" ng-controller='sendTxCtrl'  ng-cloak>
 
   <!-- Header -->
   <div class="alert alert-info" ng-show="hasQueryString">

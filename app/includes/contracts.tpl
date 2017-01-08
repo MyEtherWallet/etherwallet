@@ -1,51 +1,51 @@
 <!-- Send Transaction Page -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl'>
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl'  ng-cloak>
 
   <h2>
     <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
-    or 
+    or
     <a translate="NAV_DeployContract"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a> </h2>
   </h2>
 
+  <!-- Read / Write Contracts -->
+  <section class="row" ng-show="visibility=='interactView'">
 
-  <!-- <section ng-switch on="visibility">-->
+    <!-- Input address + JSON Interface -->
+    <div class="col-xs-12">
+      <span class="form-group">
+        <h4> Contract Address</h4>
+        <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(contract.address) ? 'is-valid' : 'is-invalid'" ng-model="contract.address"/>
+        <h4> ABI / JSON Interface </h4>
+        <textarea class="form-control" rows="5" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
+      </span>
+      <span class="form-group">
+        <button class="btn btn-primary" ng-click="initContract()"> ACCESS </button>
+      </span>
+      <div ng-bind-html="accessContractStatus"></div>
+    </div>
+    <!-- / Input address + JSON Interface -->
 
-    <!-- Read / Write Contracts -->
-    <section class="row" ng-show="visibility=='interactView'">
+    <div class="col-xs-12"> <hr /> </div>
 
-      <!-- Input address + JSON Interface -->
-      <div class="col-xs-12">
-        <span class="form-group">
-          <h4> Contract Address</h4>
-          <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(contract.address) ? 'is-valid' : 'is-invalid'" ng-model="contract.address"/>
-          <h4> ABI / JSON Interface </h4>
-          <textarea class="form-control" rows="5" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
-        </span>
-        <span class="form-group">
-          <button class="btn btn-primary" ng-click="initContract()"> ACCESS </button>
-        </span>
-        <div ng-bind-html="accessContractStatus"></div>
-      </div>
-      <!-- / Input address + JSON Interface -->
+    <div ng-show="showReadWrite">
 
-      <div class="col-xs-12"> <hr /> </div>
-
-      <div ng-show="showReadWrite">
       <!-- STEP READ/WRITE -->
       <div class="col-md-12">
+
+        <!-- Contract Info -->
         <span class="form-group">
           <h4>Read / Write Contract </h4>
           <div class="btn-group">
-            <a class="btn btn-default" ng-click="dropdown = !dropdown">
+            <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
             {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}} <span class="caret"></span></a>
-            <ul class="dropdown-menu" ng-show="dropdown">
+            <ul class="dropdown-menu" ng-show="dropdownContracts">
               <li ng-repeat="func in contract.functions track by $index"><a ng-click="selectFunc($index)">{{func.name}}</a></li>
             </ul>
           </div>
         </span>
-        <!-- / Write - Step 1 -->
+        <!-- / Contract Info -->
 
-        <!-- Write - Step 2 -->
+        <!-- Write -->
         <span class="form-group" ng-show="contract.selectedFunc!=null">
           <div ng-repeat="input in contract.functions[contract.selectedFunc.index].inputs track by $index">
             <div ng-switch on="input.type">
@@ -57,116 +57,132 @@
                 </div>
                 </div>
                 <p class="item write-unit256" ng-switch-when="uint256">
-                <label> {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="151" ng-model="input.value" ng-class="Validator.isPositiveNumber(input.value) ? 'is-valid' : 'is-invalid'"/>
+                  <label> {{input.name}} <small> {{input.type}} </small> </label>
+                  <input class="form-control" type="text" placeholder="151" ng-model="input.value" ng-class="Validator.isPositiveNumber(input.value) ? 'is-valid' : 'is-invalid'"/>
                 </p>
                 <p class="item write-string" ng-switch-when="string">
-                <label> {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="Ohh! Shiny!" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
+                  <label> {{input.name}} <small> {{input.type}} </small> </label>
+                  <input class="form-control" type="text" placeholder="Ohh! Shiny!" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
                 </p>
                 <p class="item write-bytes" ng-switch-when="bytes">
-                <label> {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="0x151bc..." ng-model="input.value" ng-class="Validator.isValidHex(input.value) ? 'is-valid' : 'is-invalid'"/>
+                  <label> {{input.name}} <small> {{input.type}} </small> </label>
+                  <input class="form-control" type="text" placeholder="0x151bc..." ng-model="input.value" ng-class="Validator.isValidHex(input.value) ? 'is-valid' : 'is-invalid'"/>
                 </p>
                 <p class="item write-boolean" ng-switch-when="bool">
-                <label> {{input.name}} <small> {{input.type}} </small> </label>
-                <span class="check"><input type="checkbox" ng-model="input.value"> True/False </span>
+                  <label> {{input.name}} <small> {{input.type}} </small> </label>
+                  <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio" value="true">True</label></span>
+                  <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio" value="false">False</label></span>
                 </p>
                 <p class="item" ng-switch-default>
-                <label> {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
-                </p>
-            </div>
-          </div>
-        <span class="form-group">
-          <button class="btn btn-primary" ng-click="readFromContract()">READ</button> <!-- this opens modal -->
-          <!-- <button class="btn btn-primary">WRITE</button> --><!-- this opens modal -->
-        </span></br>
-        <h4>Output from the contract </h4>
-        <div ng-repeat="input in contract.functions[contract.selectedFunc.index].outputs track by $index">
-            <div ng-switch on="input.type">
-                <div class="item write-address" ng-switch-when="address">
-                <label> {{input.name}} <small> {{input.type}} </small> </label>
-                <div class="row">
-                  <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="input.value" ng-class="Validator.isValidAddress(input.value) ? 'is-valid' : 'is-invalid'" disabled/></div>
-                  <div class="col-xs-1"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{input.value}}" watch-var="input.value" > </div> </div></div>
-                </div>
-                </div>
-                <p class="item write-unit256" ng-switch-when="uint256">
-                <label> {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="151" ng-model="input.value" ng-class="Validator.isPositiveNumber(input.value) ? 'is-valid' : 'is-invalid'" disabled/>
-                </p>
-                <p class="item write-string" ng-switch-when="string">
-                <label> {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="Ohh! Shiny!" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'" disabled/>
-                </p>
-                <p class="item write-bytes" ng-switch-when="bytes">
-                <label> {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="0x151bc..." ng-model="input.value" ng-class="Validator.isValidHex(input.value) ? 'is-valid' : 'is-invalid'" disabled/>
-                </p>
-                <p class="item write-boolean" ng-switch-when="bool">
-                <label> {{input.name}} <small> {{input.type}} </small> </label>
-                <span class="check"><input type="checkbox" ng-model="input.value" disabled> True/False </span>
-                </p>
-                <p class="item" ng-switch-default>
-                <label> {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'" disabled/>
+                  <label> {{input.name}} <small> {{input.type}} </small> </label>
+                  <input class="form-control" type="text" placeholder="" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'"/>
                 </p>
             </div>
           </div>
         </span>
-      </div>
-      </div>
-      <!-- Read / Write - Step 2 -->
+        <!-- / Write -->
 
+        <span class="form-group">
+          <button class="btn btn-primary" ng-click="readFromContract()">READ</button> <!-- this opens modal -->
+          <!-- <button class="btn btn-primary">WRITE</button> --><!-- this opens modal -->
+        </span>
 
-      <!-- Step 3 - Modal -->
-      <section class="modal fade" id="sendContract" tabindex="-1" role="dialog" aria-labelledby="sendContractLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-              <div ng-show="!wd">
-                @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
-                @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
-              </div>
-              <div>
-                <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
-                <h4>You are about to execute a function on contract 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8.</h4>
-                <!-- Gas -->
-                <div class="form-group">
-                  <label translate="TRANS_gas"> Gas: </label>
-                  <input class="form-control" type="text" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+        </br>
+
+        <!-- Output -->
+        <span class="form-group output well">
+          <div ng-repeat="input in contract.functions[contract.selectedFunc.index].outputs track by $index" class="form-group">
+            <div ng-switch on="input.type">
+              <!-- Address -->
+              <div class="item write-address" ng-switch-when="address">
+                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
+                <div class="row">
+                  <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="input.value" ng-class="Validator.isValidAddress(input.value) ? 'is-valid' : 'is-invalid'" readonly/></div>
+                  <div class="col-xs-1"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{input.value}}" watch-var="input.value" > </div> </div></div>
                 </div>
-                <!-- Data -->
-                <div class="form-group">
-                  <label translate="TRANS_data"> Data: </label>
-                  <input readonly class="form-control" type="text" ng-model="tx.data" />
-                </div>
-                <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
               </div>
-            </div>
-            <div class="modal-footer text-center">
-              <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
-              <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
+              <!-- unit256 -->
+              <p class="item write-unit256" ng-switch-when="uint256">
+                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
+                <input class="form-control" type="text" placeholder="151" ng-model="input.value" ng-class="Validator.isPositiveNumber(input.value) ? 'is-valid' : 'is-invalid'" readonly/>
+              </p>
+              <!-- Address -->
+              <p class="item write-string" ng-switch-when="string">
+                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
+                <input class="form-control" type="text" placeholder="Ohh! Shiny!" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'" readonly/>
+              </p>
+              <!-- Bytes -->
+              <p class="item write-bytes" ng-switch-when="bytes">
+                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
+                <input class="form-control" type="text" placeholder="0x151bc..." ng-model="input.value" ng-class="Validator.isValidHex(input.value) ? 'is-valid' : s-invalid'" readonly/>
+              </p>
+              <!-- Boolean -->
+              <p class="item write-boolean" ng-switch-when="bool">
+                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
+                <span ng-show="input.value==true" class="output-boolean-true"> <img src="images/icon-check.svg" width="16px" height="16px" /> TRUE </span>
+                <span ng-show="input.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="16px" height="16px" />  FALSE </span>
+              </p>
+              <!--  -->
+              <p class="item" ng-switch-default>
+                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
+                <input class="form-control" type="text" placeholder="" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'" readonly/>
+              </p>
             </div>
           </div>
+        </span>
+        <!-- / Output -->
+
+      </div>
+      <!-- STEP READ/WRITE -->
+    </div>
+    <!-- Read / Write -->
+
+    <!-- Modal -->
+    <section class="modal fade" id="sendContract" tabindex="-1" role="dialog" aria-labelledby="sendContractLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div ng-show="!wd">
+              @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
+              @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+            </div>
+            <div>
+              <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
+              <h4>You are about to execute a function on contract 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8.</h4>
+              <!-- Gas -->
+              <div class="form-group">
+                <label translate="TRANS_gas"> Gas: </label>
+                <input class="form-control" type="text" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+              </div>
+              <!-- Data -->
+              <div class="form-group">
+                <label translate="TRANS_data"> Data: </label>
+                <input readonly class="form-control" type="text" ng-model="tx.data" />
+              </div>
+              <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+            </div>
+          </div>
+          <div class="modal-footer text-center">
+            <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
+            <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
+          </div>
         </div>
-      </section>
-      <!-- / Step 3 - Modal -->
+      </div>
     </section>
+    <!-- / Modal -->
+
+  </section>
+  <!-- / Read / Write Contracts -->
 
 
 
+  <!-- Deploy Contract -->
+  <section class="row" ng-show="visibility=='deployView'">
 
-
-
-    <!-- Deploy Contract -->
-    <section class="row" ng-show="visibility=='deployView'">
     <div class="col-xs-12">
-
       <!-- Data -->
       <div class="form-group">
         <h4> Byte Code: </h4>
@@ -247,5 +263,8 @@
     </div>
   </section>
   <!-- / Deploy Contract -->
+
+
+
 </article>
 <!-- / Send Transaction Page -->

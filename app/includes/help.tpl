@@ -1,5 +1,5 @@
 <!-- Help -->
-<article class="tab-pane help active" ng-if="globalService.currentTab==globalService.tabs.help.id">
+<article class="tab-pane help active" ng-if="globalService.currentTab==globalService.tabs.help.id"  ng-cloak>
 
   <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" target="_blank">
     <div class="alert alert-danger" translate="HELP_Warning">If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.</div>

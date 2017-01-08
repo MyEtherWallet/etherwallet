@@ -1,5 +1,5 @@
 <!-- My Wallet Page -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'>
+<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'  ng-cloak>
 
 
   <h2 translate="NAV_YourWallets"> Your Wallets </h2>
