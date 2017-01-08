@@ -111,38 +111,43 @@ If you want to help contribute, here's what you need to know to get it up and ru
 
 ### Use Your Own Server/Node Guide
 
-*This is a work in progress so please let us know if you get stuck or fail here: https://github.com/kvhnuke/etherwallet/issues/226. We will assist you and improve this guide for future people.*
+*Old: https://github.com/kvhnuke/etherwallet/issues/226.*
 
-1. Download the latest copy of the repo at https://github.com/kvhnuke/etherwallet/releases/latest. You will need to download the "Source Code". The dist and chrome extension packages do not have all the files you need.
+New:[Announcing MyEtherWallet v3.4: The Node Switcher](https://www.reddit.com/r/ethereum/comments/5lqx90/announcing_myetherwallet_v34_the_node_switcher/)
 
-2. Extract it and navigate to `json_relay_node`.
+**That node must have an SSL certificate (aka be https://) or you must run MyEtherWallet locally. [Download the latest version of MyEtherWallet here](https://github.com/kvhnuke/etherwallet/releases/latest) and in order to connect to a non-SSL node. Or, you can get a free SSL certificate via [LetsEncrypt](https://letsencrypt.org/).**
 
-3. Open you command line and run `npm install`.
-    - *This assumes you have nodejs installed in your computer, if not install here: https://nodejs.org/en/download/*
+- Enter a name for your node
 
-4. Once `npm install` is done, open `response.js` file
+- Enter the URL
 
-![response](https://cloud.githubusercontent.com/assets/7924827/19823208/46f23f04-9d1c-11e6-8a35-e86977ad8434.jpg)
+- Enter the port
 
-5. In `response.js` file you should see two different ip addresses, currently these are set to MyEtherWallet.com servers. You have to change these to point them to your own parity node.
+- Select whether it is a ETH / ETC / Ropsten / Custom chain.
 
-    * `Response.client.host` is for the ETH mainet and `Response.clientClassic.host` is for the EtherClassic node.
+    - **ETH**: Shows default ETH tokens, EIP-155=true, chainid=1, uses etherscan.io for links to addresses and txs.
 
-    * If you only have one node running feel free to set both to same ip addresses. If you have a local node running then you have to set them to `127.0.0.1`.
+    - **ETC**: Shows default ETC tokens (none...yet?), EIP-155=false, chainid=false, uses gastracker.io for links to addresses and txs.
 
-6. Once you configure `response.js file`, go back to terminal and run `node runLocalServer.js`
+    - **Ropsten**: Shows default ROP tokens (none...yet?), EIP-155=true, chainid=3, uses testnet.etherscan.io for links to addresses and txs.
 
-7. Navigate to http://localhost/api.mew you should end up on a empty/white page. You shouldn't get any 404 or timeout errors.
+    - **Custom**: Allows you to select whether EIP-155 is true or false, and provide a chainid if it's true.
 
-8. Navigate to `dist/js` and open `etherwallet-master.js`
+**If you want to connect to your own local geth or parity...**
 
-![screen shot 2016-10-28 at 2 38 33 pm](https://cloud.githubusercontent.com/assets/7924827/19823216/50d11c2a-9d1c-11e6-997e-3e585f3fb20d.jpg)
+You must run MyEtherWallet locally. This is due to the fact that our SSL site won't connect to your non-SSL local node. [Download the latest version of MyEtherWallet here](https://github.com/kvhnuke/etherwallet/releases/latest) and use that to connect to your local node.
 
-9. Set the line 26, `ajaxReq.SERVERURL = “http://localhost/api.mew”`;
+- Enter a name for your node
 
-10. Now navigate back to `dist` folder and open `index.html`. Now you are using your own custom node!
+- URL: http://127.0.0.1
 
+- Port: 8545
 
+- Select whether it is a ETH / ETC / Ropsten or Custom chain. (see above)
+
+- Run geth using `geth --rpc --rpccorsdomain "null" --keystore "dont_put_secret_files_here_ever"`
+
+- or run parity using `parity --rpccorsdomain "*" --keys-path "dont_put_secret_files_here_ever"`
 
 
 
