@@ -1,5 +1,6 @@
 'use strict'
 var signMsgCtrl = function($scope, $sce, walletService) {
+	walletService.wallet = null;
 	$scope.visibility = "signView";
 	$scope.$watch(function() {
 		if (walletService.wallet == null) return null

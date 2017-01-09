@@ -615,6 +615,7 @@ module.exports = bulkGenCtrl;
 
 var contractsCtrl = function ($scope, $sce, walletService) {
     $scope.ajaxReq = ajaxReq;
+    walletService.wallet = null;
     $scope.visibility = "interactView";
     $scope.sendContractModal = new Modal(document.getElementById('sendContract'));
     $scope.showReadWrite = false;
@@ -1315,6 +1316,7 @@ module.exports = sendTxCtrl;
 'use strict';
 
 var signMsgCtrl = function ($scope, $sce, walletService) {
+	walletService.wallet = null;
 	$scope.visibility = "signView";
 	$scope.$watch(function () {
 		if (walletService.wallet == null) return null;
