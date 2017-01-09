@@ -133,6 +133,9 @@ globalFuncs.hexToAscii = function(hex) {
 globalFuncs.isAlphaNumeric = function(value) {
 	return !/[^a-zA-Z0-9]/.test(value);
 }
+globalFuncs.getRandomBytes = function (num) {
+	return ethUtil.crypto.randomBytes(num);
+}
 globalFuncs.saveTokenToLocal = function(localToken, callback) {
 	try {
 		if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) throw globalFuncs.errorMsgs[5];
