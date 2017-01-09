@@ -2,8 +2,7 @@
 var contractsCtrl = function($scope, $sce, walletService) {
     $scope.ajaxReq = ajaxReq;
     $scope.visibility = "interactView";
-    //$scope.sendContractModal = new Modal(document.getElementById('sendContract'));
-    //$scope.sendContractModal.open();
+    $scope.sendContractModal = new Modal(document.getElementById('sendContract'));
     $scope.showReadWrite = false;
     $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
     $scope.tx = {
@@ -30,12 +29,25 @@ var contractsCtrl = function($scope, $sce, walletService) {
     }, function() {
         if (walletService.wallet == null) return;
         $scope.wallet = walletService.wallet;
+        $scope.wd = true;
+        $scope.tx.nonce = 0;
+    });
+    $scope.$watch('visibility', function(newValue, oldValue) {
+        $scope.tx = {
+            gasLimit: '',
+            data: '',
+            to: '',
+            unit: "ether",
+            value: 0,
+            nonce: null,
+            gasPrice: null
+        }
+        $scope.accessContractStatus = $scope.deployContractStatus = $scope.sendTxStatus = "";
+
     });
     $scope.$watch('tx', function(newValue, oldValue) {
         $scope.showRaw = false;
-    }, true);
-    $scope.$watch('[tx.data]', function() {
-        if ($scope.Validator.isValidHex($scope.tx.data) && $scope.tx.data != '') {
+        if (newValue.gasLimit == oldValue.gasLimit && $scope.Validator.isValidHex($scope.tx.data) && $scope.tx.data != '' && $scope.Validator.isPositiveNumber($scope.tx.value)) {
             if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
             $scope.estimateTimer = setTimeout(function() {
                 $scope.estimateGasLimit();
@@ -44,10 +56,11 @@ var contractsCtrl = function($scope, $sce, walletService) {
     }, true);
     $scope.estimateGasLimit = function() {
         var estObj = {
-            from: globalFuncs.donateAddress,
-            value: '0x00',
-            data: ethFuncs.sanitizeHex($scope.tx.data)
+            from: $scope.wallet != null ? $scope.wallet.getAddressString() : globalFuncs.donateAddress,
+            value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit))),
+            data: ethFuncs.sanitizeHex($scope.tx.data),
         }
+        if ($scope.tx.to != '') estObj.to = $scope.tx.to;
         ethFuncs.estimateGas(estObj, function(data) {
             if (!data.error) $scope.tx.gasLimit = data.data;
         });
@@ -61,8 +74,8 @@ var contractsCtrl = function($scope, $sce, walletService) {
             ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
                 if (data.error) throw data.msg;
                 data = data.data;
-                $scope.tx.to = '0xCONTRACT';
-                $scope.tx.contractAddr = ethFuncs.getDeteministicContractAddress($scope.wallet.getAddressString(), data.nonce);
+                $scope.tx.to = $scope.tx.to == '' ? '0xCONTRACT' : $scope.tx.to;
+                $scope.tx.contractAddr = $scope.tx.to == '0xCONTRACT' ? ethFuncs.getDeteministicContractAddress($scope.wallet.getAddressString(), data.nonce) : '';
                 var txData = uiFuncs.getTxData($scope);
                 uiFuncs.generateTx(txData, function(rawTx) {
                     if (!rawTx.isError) {
@@ -72,7 +85,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
                         $scope.showRaw = true;
                     } else {
                         $scope.showRaw = false;
-                        $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+                        $scope.deployContractStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
                     }
                 });
             });
@@ -82,9 +95,12 @@ var contractsCtrl = function($scope, $sce, walletService) {
     }
     $scope.sendTx = function() {
         $scope.sendTxModal.close();
+        $scope.sendContractModal.close();
         uiFuncs.sendTx($scope.signedTx, function(resp) {
             if (!resp.isError) {
-                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a> & Contract Address <a href='http://etherscan.io/address/" + $scope.tx.contractAddr + "' target='_blank'>" + $scope.tx.contractAddr + "</a>"));
+                var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
+                var contractAddr = $scope.tx.contractAddr != '' ? " & Contract Address <a href='" + ajaxReq.blockExplorerAddr.replace('[[address]]', $scope.tx.contractAddr) + "' target='_blank'>" + $scope.tx.contractAddr + "</a>" : '';
+                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr + contractAddr));
             } else {
                 $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
             }
@@ -97,7 +113,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
         $scope.contract.selectedFunc = { name: $scope.contract.functions[index].name, index: index };
         $scope.dropdownContracts = !$scope.dropdownContracts;
     }
-    $scope.readFromContract = function() {
+    $scope.getTxData = function() {
         var curFunc = $scope.contract.functions[$scope.contract.selectedFunc.index];
         var fullFuncName = ethUtil.solidityUtils.transformToFullName(curFunc);
         var funcSig = ethFuncs.getFunctionSignature(fullFuncName);
@@ -111,16 +127,21 @@ var contractsCtrl = function($scope, $sce, walletService) {
                 else values.push(curFunc.inputs[i].value);
             } else values.push('');
         }
-        ajaxReq.getEthCall({ to: $scope.contract.address, data: '0x' + funcSig + ethUtil.solidityCoder.encodeParams(types, values) }, function(data) {
+        return '0x' + funcSig + ethUtil.solidityCoder.encodeParams(types, values);
+    }
+    $scope.readFromContract = function() {
+        ajaxReq.getEthCall({ to: $scope.contract.address, data: $scope.getTxData() }, function(data) {
             if (!data.error) {
+                var curFunc = $scope.contract.functions[$scope.contract.selectedFunc.index];
                 var outTypes = curFunc.outputs.map(function(i) {
-                    return i.type; });
+                    return i.type;
+                });
                 var decoded = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''));
-                for(var i in decoded){
-                  if(decoded[i] instanceof BigNumber) curFunc.outputs[i].value = decoded[i].toFixed(0);
-                  else curFunc.outputs[i].value = decoded[i];
+                for (var i in decoded) {
+                    if (decoded[i] instanceof BigNumber) curFunc.outputs[i].value = decoded[i].toFixed(0);
+                    else curFunc.outputs[i].value = decoded[i];
                 }
-            }
+            } else throw data.msg;
 
         });
     }
@@ -131,12 +152,20 @@ var contractsCtrl = function($scope, $sce, walletService) {
             $scope.contract.functions = [];
             var tAbi = JSON.parse($scope.contract.abi);
             for (var i in tAbi)
-                if (tAbi[i].type == "function") $scope.contract.functions.push(tAbi[i]);
+                if (tAbi[i].type == "function") {
+                    tAbi[i].inputs.map(function(i) { i.value = ''; });
+                    $scope.contract.functions.push(tAbi[i]);
+                }
             $scope.showReadWrite = true;
 
         } catch (e) {
             $scope.accessContractStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
         }
+    }
+    $scope.generateContractTx = function() {
+        $scope.tx.data = $scope.getTxData();
+        $scope.tx.to = $scope.contract.address;
+        $scope.sendContractModal.open();
     }
 }
 module.exports = contractsCtrl;

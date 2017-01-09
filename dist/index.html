@@ -869,8 +869,8 @@
                 </p>
                 <p class="item write-boolean" ng-switch-when="bool">
                   <label> {{input.name}} <small> {{input.type}} </small> </label>
-                  <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio" value="true">True</label></span>
-                  <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio" value="false">False</label></span>
+                  <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio" ng-value="true">True</label></span>
+                  <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio" ng-value="false">False</label></span>
                 </p>
                 <p class="item" ng-switch-default>
                   <label> {{input.name}} <small> {{input.type}} </small> </label>
@@ -878,18 +878,19 @@
                 </p>
             </div>
           </div>
+          <span class="form-group">
+          <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant">READ</button> <!-- this opens modal -->
+          <button class="btn btn-primary" ng-show="!contract.functions[contract.selectedFunc.index].constant" ng-click="generateContractTx()">WRITE</button>
+        </span>
+        </br>
+        <div class="form-group" ng-bind-html="sendTxStatus" ng-show="!contract.functions[contract.selectedFunc.index].constant"></div>
         </span>
         <!-- / Write -->
-
-        <span class="form-group">
-          <button class="btn btn-primary" ng-click="readFromContract()">READ</button> <!-- this opens modal -->
-          <!-- <button class="btn btn-primary">WRITE</button> --><!-- this opens modal -->
-        </span>
 
         </br>
 
         <!-- Output -->
-        <span class="form-group output well">
+        <span class="form-group output well" ng-show="contract.functions[contract.selectedFunc.index].constant">
           <div ng-repeat="input in contract.functions[contract.selectedFunc.index].outputs track by $index" class="form-group">
             <div ng-switch on="input.type">
               <!-- Address -->
@@ -948,26 +949,45 @@
               
                 <wallet-decrypt-drtv></wallet-decrypt-drtv>         
             </div>
+            <div ng-show="wd">
+            <div>
             <div>
               <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
-              <h4>You are about to execute a function on contract 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8.</h4>
+              <h4>You are about to execute a function on contract {{tx.to}}.</h4>
               <!-- Gas -->
               <div class="form-group">
-                <label translate="TRANS_gas"> Gas: </label>
-                <input class="form-control" type="text" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+                <label translate="SEND_amount"> Value: </label>
+                <input class="form-control" type="text" placeholder="10" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
               </div>
-              <!-- Data -->
               <div class="form-group">
-                <label translate="TRANS_data"> Data: </label>
-                <input readonly class="form-control" type="text" ng-model="tx.data" />
+                <label translate="TRANS_gas"> Gas: </label>
+                <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
               </div>
+              <div class="form-group ">
+              <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
+              <div ng-bind-html="deployContractStatus"></div>
+            </div>
+              <!-- Data -->
+              <section class="row" ng-show="showRaw">
+              <!-- Raw TX -->
+              <div class="form-group col-sm-6">
+              <h4 translate="SEND_raw"> Raw Transaction </h4>
+              <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
+              </div>
+        <!-- Singed TX -->
+              <div class="form-group col-sm-6">
+              <h4 translate="SEND_signed"> Signed Transaction </h4>
+              <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
+              </div>
+              </section>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>
           </div>
-          <div class="modal-footer text-center">
+          <div class="modal-footer text-center" ng-show="showRaw">
             <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
             <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
           </div>
+        </div>
         </div>
       </div>
     </section>
@@ -995,7 +1015,7 @@
       </div>
 
       <!-- Wallet Decrypt -->
-      <div class="form-group">
+      <div class="form-group" ng-show="!wd">
         <br />
         
           <wallet-decrypt-drtv></wallet-decrypt-drtv>         
@@ -1005,7 +1025,7 @@
 
       <!-- Sign TX Button (once wallet has been unlocked) -->
       <div class="form-group">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DEP_signtx" ng-show="wallet!=null"> Sign Transaction </a>
+        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="DEP_signtx" ng-show="wd"> Sign Transaction </a>
       </div>
 
       <!-- TXs -->
