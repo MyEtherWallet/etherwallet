@@ -950,13 +950,19 @@
                 <wallet-decrypt-drtv></wallet-decrypt-drtv>         
             </div>
             <div ng-show="wd">
-            <div>
-            <div>
-              <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
-              <h4>You are about to execute a function on contract {{tx.to}}.</h4>
+              <div class="larger">
+                <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
+                <p>
+                  You are about to <strong>execute a function on contract</strong> on <strong> {{tx.to}} </strong> on the  <strong> {{ajaxReq.type}}</strong> chain, which
+                  <strong class="text-danger" ng-show="ajaxReq.eip155==false"> susceptible to replay attacks.</strong>
+                  <strong ng-show="ajaxReq.eip155==true"> not susceptible to replay attacks.</strong>
+                </p>
+                <p> The node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>. </p>
+              </div>
               <!-- Gas -->
               <div class="form-group">
                 <label translate="SEND_amount"> Value: </label>
+                <p><em> In most cases you should leave this as <code>0</code>.</em></p>
                 <input class="form-control" type="text" placeholder="10" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
               </div>
               <div class="form-group">
@@ -964,30 +970,28 @@
                 <input class="form-control" type="text" placeholder="300000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
               </div>
               <div class="form-group ">
-              <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
-              <div ng-bind-html="deployContractStatus"></div>
-            </div>
+                <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
+                <div ng-bind-html="deployContractStatus"></div>
+              </div>
               <!-- Data -->
               <section class="row" ng-show="showRaw">
-              <!-- Raw TX -->
-              <div class="form-group col-sm-6">
-              <h4 translate="SEND_raw"> Raw Transaction </h4>
-              <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
-              </div>
-        <!-- Singed TX -->
-              <div class="form-group col-sm-6">
-              <h4 translate="SEND_signed"> Signed Transaction </h4>
-              <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
-              </div>
+                <!-- Raw TX -->
+                <div class="form-group col-sm-6">
+                  <h4 translate="SEND_raw"> Raw Transaction </h4>
+                  <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
+                </div>
+                <!-- Singed TX -->
+                <div class="form-group col-sm-6">
+                  <h4 translate="SEND_signed"> Signed Transaction </h4>
+                  <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
+                </div>
               </section>
-              <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+            </div>
+            <div class="modal-footer text-center" ng-show="showRaw">
+              <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
+              <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
             </div>
           </div>
-          <div class="modal-footer text-center" ng-show="showRaw">
-            <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
-            <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
-          </div>
-        </div>
         </div>
       </div>
     </section>
