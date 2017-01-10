@@ -879,7 +879,7 @@
             </div>
           </div>
           <span class="form-group">
-          <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant">READ</button> <!-- this opens modal -->
+          <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead">READ</button> <!-- this opens modal -->
           <button class="btn btn-primary" ng-show="!contract.functions[contract.selectedFunc.index].constant" ng-click="generateContractTx()">WRITE</button>
         </span>
         </br>
@@ -891,41 +891,41 @@
 
         <!-- Output -->
         <span class="form-group output well" ng-show="contract.functions[contract.selectedFunc.index].constant">
-          <div ng-repeat="input in contract.functions[contract.selectedFunc.index].outputs track by $index" class="form-group">
-            <div ng-switch on="input.type">
+          <div ng-repeat="output in contract.functions[contract.selectedFunc.index].outputs track by $index" class="form-group">
+            <div ng-switch on="output.type">
               <!-- Address -->
               <div class="item write-address" ng-switch-when="address">
-                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
+                <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
                 <div class="row">
-                  <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="input.value" ng-class="Validator.isValidAddress(input.value) ? 'is-valid' : 'is-invalid'" readonly/></div>
-                  <div class="col-xs-1"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{input.value}}" watch-var="input.value" > </div> </div></div>
+                  <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="output.value" readonly/></div>
+                  <div class="col-xs-1"><div class="address-identicon-container small"><div id="addressIdenticon" title="Address Indenticon" blockie-address="{{output.value}}" watch-var="output.value" > </div> </div></div>
                 </div>
               </div>
               <!-- unit256 -->
               <p class="item write-unit256" ng-switch-when="uint256">
-                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="151" ng-model="input.value" ng-class="Validator.isPositiveNumber(input.value) ? 'is-valid' : 'is-invalid'" readonly/>
+                <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
+                <input class="form-control" type="text" placeholder="151" ng-model="output.value" readonly/>
               </p>
               <!-- Address -->
               <p class="item write-string" ng-switch-when="string">
-                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="Ohh! Shiny!" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'" readonly/>
+                <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
+                <input class="form-control" type="text" placeholder="Ohh! Shiny!" ng-model="output.value" readonly/>
               </p>
               <!-- Bytes -->
               <p class="item write-bytes" ng-switch-when="bytes">
-                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="0x151bc..." ng-model="input.value" ng-class="Validator.isValidHex(input.value) ? 'is-valid' : s-invalid'" readonly/>
+                <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
+                <input class="form-control" type="text" placeholder="0x151bc..." ng-model="output.value" readonly/>
               </p>
               <!-- Boolean -->
               <p class="item write-boolean" ng-switch-when="bool">
-                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
-                <span ng-show="input.value==true" class="output-boolean-true"> <img src="images/icon-check.svg" width="16px" height="16px" /> TRUE </span>
-                <span ng-show="input.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="16px" height="16px" />  FALSE </span>
+                <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
+                <span ng-show="output.value==true" class="output-boolean-true"> <img src="images/icon-check.svg" width="16px" height="16px" /> TRUE </span>
+                <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="16px" height="16px" />  FALSE </span>
               </p>
               <!--  -->
               <p class="item" ng-switch-default>
-                <label> &#8627; {{input.name}} <small> {{input.type}} </small> </label>
-                <input class="form-control" type="text" placeholder="" ng-model="input.value" ng-class="input.value!='' ? 'is-valid' : 'is-invalid'" readonly/>
+                <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
+                <input class="form-control" type="text" placeholder="" ng-model="output.value" readonly/>
               </p>
             </div>
           </div>
