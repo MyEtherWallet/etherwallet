@@ -32,14 +32,14 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
 		document.getElementById('fselector').click();
 	};
 	$scope.onFilePassChange = function() {
-		$scope.showFDecrypt = $scope.filePassword.length >= 3;
+		$scope.showFDecrypt = $scope.filePassword.length > 0;
 	};
 	$scope.onPrivKeyChange = function() {
 		$scope.requirePPass = $scope.manualprivkey.length == 128 || $scope.manualprivkey.length == 132;
 		$scope.showPDecrypt = $scope.manualprivkey.length == 64;
 	};
 	$scope.onPrivKeyPassChange = function() {
-		$scope.showPDecrypt = $scope.privPassword.length > 6;
+		$scope.showPDecrypt = $scope.privPassword.length > 0;
 	};
 	$scope.onMnemonicChange = function() {
 		var numWords = $scope.manualmnemonic.trim().split(' ').length;

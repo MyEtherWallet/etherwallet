@@ -56,6 +56,16 @@ var contractsCtrl = function($scope, $sce, walletService) {
             }, 500);
         }
     }, true);
+    $scope.$watch('contract.address', function(newValue, oldValue) {
+        if ($scope.Validator.isValidAddress($scope.contract.address)) {
+            for (var i in ajaxReq.abiList) {
+                if (ajaxReq.abiList[i].address.toLowerCase() == $scope.contract.address.toLowerCase()) {
+                    $scope.contract.abi = ajaxReq.abiList[i].abi;
+                    break;
+                }
+            }
+        }
+    });
     $scope.estimateGasLimit = function() {
         var estObj = {
             from: $scope.wallet != null ? $scope.wallet.getAddressString() : globalFuncs.donateAddress,
@@ -113,6 +123,10 @@ var contractsCtrl = function($scope, $sce, walletService) {
     }
     $scope.selectFunc = function(index) {
         $scope.contract.selectedFunc = { name: $scope.contract.functions[index].name, index: index };
+        if (!$scope.contract.functions[index].inputs.length) {
+            $scope.readFromContract();
+            $scope.showRead = false;
+        } else $scope.showRead = true;
         $scope.dropdownContracts = !$scope.dropdownContracts;
     }
     $scope.getTxData = function() {

@@ -15,6 +15,7 @@ nodes.customNodeObj = {
     'eip155': false,
     'chainId': '',
     'tokenList': [],
+    'abiList': [],
     'estimateGas': false,
     'service': 'Custom',
     'lib': null
@@ -28,6 +29,7 @@ nodes.nodeList = {
         'eip155': true,
         'chainId': 1,
         'tokenList': require('./tokens/ethTokens.json'),
+        'abiList': require('./abiDefinitions/ethAbi.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
         'lib': require('./nodeHelpers/mewEth')
@@ -40,6 +42,7 @@ nodes.nodeList = {
         'eip155': false,
         'chainId': 0,
         'tokenList': require('./tokens/etcTokens.json'),
+        'abiList': require('./abiDefinitions/etcAbi.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
         'lib': require('./nodeHelpers/mewEtc')
@@ -52,6 +55,7 @@ nodes.nodeList = {
         'eip155': true,
         'chainId': 3,
         'tokenList': require('./tokens/ropstenTokens.json'),
+        'abiList': require('./abiDefinitions/ropstenAbi.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
         'lib': new nodes.customNode('https://api.myetherapi.com/rop', '')
@@ -64,6 +68,7 @@ nodes.nodeList = {
         'eip155': true,
         'chainId': 1,
         'tokenList': require('./tokens/ethTokens.json'),
+        'abiList': require('./abiDefinitions/ethAbi.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
         'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
@@ -76,6 +81,7 @@ nodes.nodeList = {
         'eip155': true,
         'chainId': 1,
         'tokenList': require('./tokens/ethTokens.json'),
+        'abiList': require('./abiDefinitions/ethAbi.json'),
         'estimateGas': false,
         'service': 'Etherscan.io',
         'lib': require('./nodeHelpers/etherscan')
