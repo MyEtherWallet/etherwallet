@@ -91,7 +91,7 @@ ethFuncs.estimateGas = function(dataObj, callback) {
             if (data.data.vmTrace && data.data.vmTrace.ops.length) {
                 var result = data.data.vmTrace.ops;
                 var estGas = recurCheckBalance(result);
-                estGas = estGas < 0 ? -1 : estGas;
+                estGas = estGas < 0 ? -1 : estGas+5000;
             } else {
                 var stateDiff = data.data.stateDiff;
                 stateDiff = stateDiff[dataObj.from.toLowerCase()]['balance']['*'];
