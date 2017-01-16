@@ -33,7 +33,7 @@ nl.data = {
   x_Keystore:           'Keystore Bestand (UTC / JSON · Aangeraden · versleuteld · Mist Formaat)',
   x_Keystore2:          'Keystore Bestand (UTC / JSON) ',
   x_KeystoreDesc:       'Dit Keystore bestand voldoen aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
-  x_Mnemonic:           'Mnemonic Zin (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic:           'Mnemonic Zin (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password:           'Wachtwoord',
   x_Print:              'Druk je papieren wallet af',
   x_PrintDesc:          'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',

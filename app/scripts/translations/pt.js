@@ -48,7 +48,7 @@ pt.data = {
   x_Keystore:           'Arquivo de armazenamento de chaves (UTC / JSON · Recomendado · Criptografado · Formato Mist)',
   x_Keystore2:          'Arquivo de armazenamento de chaves (UTC / JSON)',
   x_KeystoreDesc:       'Este arquivo de armazenamento de chaves corresponde ao formato usado pela Mist para que você possa facilmente importá-lo no futuro. É recomendado que o arquivo seja transferido e feito seu backup.',
-  x_Mnemonic:           'Frase Mnemonic (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic:           'Frase Mnemonic (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password:           'Senha',
   x_Print:              'Imprimir Carteira de Papel',
   x_PrintDesc:          'Dica: Clique impressão e salve como PDF, mesmo se você não possui uma impressora!',

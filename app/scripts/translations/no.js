@@ -21,7 +21,7 @@ no.data = {
   MNEM_2:               'Din "HD-mnemoniske frase" kan gi deg tilgang til flere lommebøker / adresser. Vennligst velg den adressen du vil jobbe med denne gangen.',
   MNEM_more:            'Flere Adresser',
   MNEM_prev:            'Forrige Adresse',
-  x_Mnemonic:           'Mnemonisk Frase (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic:           'Mnemonisk Frase (MetaMask / Jaxx / ether.cards / imToken)',
   ADD_Radio_5:          'Lim inn/tast din mnemoniske frase',
   SEND_custom:          'Legg til Token',
   ERROR_21:             ' er ikke en gyldig ERC-20-token. Hvis andre tokens holder på å lastes, vennligst fjern denne token og prøv igjen.',

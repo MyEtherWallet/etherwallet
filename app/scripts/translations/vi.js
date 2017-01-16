@@ -55,7 +55,7 @@ vi.data = {
   x_Keystore:           'Định Dạng Keystore (UTC / JSON) (Đã mã hoá. Định Dạng này sử dụng cho Mist)',
   x_Keystore2:          'Định Dạng Keystore (UTC / JSON)',
   x_KeystoreDesc:       'Định dạng Keystore là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
-  x_Mnemonic:           'Cụm từ dễ nhớ (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic:           'Cụm từ dễ nhớ (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password:           'Mật Khẩu',
   x_Print:              'Tạo Ví Giấy',
   x_PrintDesc:          'Mẹo: kích chuột trái vào nút "In Ví" sau đó chọn "Save this as a PDF" đễ lưu nó thành định dạng PDF trên máy tính của bạn nếu bạn không sở hữu máy in cá nhân!',
