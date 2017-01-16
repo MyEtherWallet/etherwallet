@@ -43,7 +43,7 @@ id.data = {
   x_Keystore:           'File Keystore (UTC / JSON · Format yang direkomendasikan · Ter-enkripsi · Format Mist)',
   x_KeystoreDesc:       'File Keystore ini sesuai dengan format yang dipakai Mist sehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
   x_Ledger:             'Ledger Nano S',
-  x_Mnemonic:           '"Mnemonic Phrase" (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic:           '"Mnemonic Phrase" (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password:           'Password',
   x_Print:              'Print Dompet Kertas',
   x_PrintDesc:          'ProTip: klik print dan simpan sebagai PDF jika Anda tidak memiliki printer!',

@@ -53,7 +53,7 @@ ja.data = {
   x_Keystore:           'Keystore ファイル (UTC / JSON · 推奨 · 暗号化 · Mist フォーマット)',
   x_Keystore2:          'Keystore ファイル (UTC / JSON) ',
   x_KeystoreDesc:       'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
-  x_Mnemonic:           'ニーモニックフレーズ (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic:           'ニーモニックフレーズ (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password:           'パスワード',
   x_Print:              'ペーパーウォレットを印刷',
   x_PrintDesc:          'ProTip: プリンターが接続されていなくても、「印刷」をクリックしてPDFで保存できます。',

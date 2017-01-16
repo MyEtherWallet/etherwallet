@@ -43,7 +43,7 @@ fr.data = {
   x_Keystore:           'Fichier Keystore (UTC / JSON · Recommandé · Chiffré · Format Mist)',
   x_KeystoreDesc:       'Ce fichier Keystore utilise le même format que celui que Mist, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
   x_Ledger:             'Ledger Nano S',
-  x_Mnemonic:           'Phrase mnémonique (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic:           'Phrase mnémonique (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password:           'Mot de passe',
   x_Print:              'Imprimer un portefeuille papier',
   x_PrintDesc:          'Astuce : Cliquez sur Imprimer et sauvegardez le portefeuille papier comme un PDF, même si vous n\'avez pas d\'imprimante !',
