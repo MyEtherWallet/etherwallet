@@ -1486,11 +1486,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
         });
     };
     $scope.checkNodeUrl = function (nodeUrl) {
-        if ($scope.Validator.isValidURL(nodeUrl)) {
-            if ($scope.browserProtocol == "https:") return nodeUrl.substring(0, 5) == 'https';
-            return true;
-        }
-        return false;
+        return $scope.Validator.isValidURL(nodeUrl);
     };
     $scope.setCurNodeFromStorage = function () {
         var node = localStorage.getItem('curNode');
