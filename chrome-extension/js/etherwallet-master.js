@@ -6555,7 +6555,7 @@ de.data = (_de$data = {
   MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
   MNEM_more: 'More Addresses',
   MNEM_prev: 'Previous Addresses',
-  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards / imToken)',
   ADD_Radio_5: 'Paste/Type Your Mnemonic',
   SEND_custom: 'Add Custom Token',
   TOKEN_show: 'Show All Tokens',
@@ -6720,7 +6720,7 @@ el.data = (_el$data = {
   MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
   MNEM_more: 'More Addresses',
   MNEM_prev: 'Previous Addresses',
-  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards / imToken)',
   ADD_Radio_5: 'Paste/Type Your Mnemonic',
   SEND_custom: 'Add Custom Token',
   TOKEN_show: 'Show All Tokens',
@@ -6913,7 +6913,7 @@ en.data = {
   x_Keystore: 'Keystore File (UTC / JSON · Recommended · Encrypted · Mist Format)',
   x_Keystore2: 'Keystore File (UTC / JSON)',
   x_KeystoreDesc: 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up.',
-  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password: 'Password',
   x_Print: 'Print Paper Wallet',
   x_PrintDesc: 'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
@@ -7436,7 +7436,7 @@ es.data = (_es$data = {
   MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
   MNEM_more: 'More Addresses',
   MNEM_prev: 'Previous Addresses',
-  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards / imToken)',
   ADD_Radio_5: 'Paste/Type Your Mnemonic',
   SEND_custom: 'Add Custom Token',
   ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -7587,7 +7587,7 @@ fi.data = (_fi$data = {
   MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
   MNEM_more: 'More Addresses',
   MNEM_prev: 'Previous Addresses',
-  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards / imToken)',
   ADD_Radio_5: 'Paste/Type Your Mnemonic',
   SEND_custom: 'Add Custom Token',
   ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -7694,7 +7694,7 @@ fr.data = {
   x_Keystore: 'Fichier Keystore (UTC / JSON · Recommandé · Chiffré · Format Mist)',
   x_KeystoreDesc: 'Ce fichier Keystore utilise le même format que celui que Mist, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder.',
   x_Ledger: 'Ledger Nano S',
-  x_Mnemonic: 'Phrase mnémonique (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Phrase mnémonique (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password: 'Mot de passe',
   x_Print: 'Imprimer un portefeuille papier',
   x_PrintDesc: 'Astuce : Cliquez sur Imprimer et sauvegardez le portefeuille papier comme un PDF, même si vous n\'avez pas d\'imprimante !',
@@ -8231,7 +8231,7 @@ hu.data = {
   x_Keystore: 'Keystore Fájl (UTC / JSON · Ajánlott · Titkosított · Mist Formátum)',
   x_Keystore2: 'Keystore Fájl (UTC / JSON)',
   x_KeystoreDesc: 'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni.',
-  x_Mnemonic: 'Mnemonikus frázis (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonikus frázis (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password: 'Jelszó',
   x_Print: 'PapírTárca Nyomtatása ',
   x_PrintDesc: 'Profi Tipp: Kattints a nyomtatásra és mentsd el PDF formátumban, még abban az esetben is, ha nincs nyomtatód!',
@@ -8758,7 +8758,7 @@ id.data = {
   x_Keystore: 'File Keystore (UTC / JSON · Format yang direkomendasikan · Ter-enkripsi · Format Mist)',
   x_KeystoreDesc: 'File Keystore ini sesuai dengan format yang dipakai Mist sehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup.',
   x_Ledger: 'Ledger Nano S',
-  x_Mnemonic: '"Mnemonic Phrase" (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: '"Mnemonic Phrase" (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password: 'Password',
   x_Print: 'Print Dompet Kertas',
   x_PrintDesc: 'ProTip: klik print dan simpan sebagai PDF jika Anda tidak memiliki printer!',
@@ -9291,7 +9291,7 @@ it.data = {
   x_Keystore: 'File Keystore (UTC / JSON · Consigliato · Crittografato · Formato Mist)',
   x_Keystore2: 'File Keystore (UTC / JSON)',
   x_KeystoreDesc: 'Questo file Keystore è compatibile con il formato usato da Mist, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare.',
-  x_Mnemonic: 'Frase mnemonica (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Frase mnemonica (MetaMask / Jaxx / ether.cards / imToken)',
   x_Json: 'File JSON (non crittografato)',
   x_JsonDesc: 'Questa è la tua chiave privata in formato JSON non crittografato. Significa che non hai bisogno della password, ma chiunque trovi questo file JSON potrà avere accesso al tuo portafoglio e ai tuoi ether senza password.',
   x_PrintShort: 'Stampa',
@@ -9840,7 +9840,7 @@ ja.data = (_ja$data = {
   x_Keystore: 'Keystore ファイル (UTC / JSON · 推奨 · 暗号化 · Mist フォーマット)',
   x_Keystore2: 'Keystore ファイル (UTC / JSON) ',
   x_KeystoreDesc: 'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。',
-  x_Mnemonic: 'ニーモニックフレーズ (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'ニーモニックフレーズ (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password: 'パスワード',
   x_Print: 'ペーパーウォレットを印刷',
   x_PrintDesc: 'ProTip: プリンターが接続されていなくても、「印刷」をクリックしてPDFで保存できます。',
@@ -9967,7 +9967,7 @@ nl.data = {
   x_Keystore: 'Keystore Bestand (UTC / JSON · Aangeraden · versleuteld · Mist Formaat)',
   x_Keystore2: 'Keystore Bestand (UTC / JSON) ',
   x_KeystoreDesc: 'Dit Keystore bestand voldoen aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up.',
-  x_Mnemonic: 'Mnemonic Zin (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonic Zin (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password: 'Wachtwoord',
   x_Print: 'Druk je papieren wallet af',
   x_PrintDesc: 'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt!',
@@ -10495,7 +10495,7 @@ no.data = (_no$data = {
   MNEM_2: 'Din "HD-mnemoniske frase" kan gi deg tilgang til flere lommebøker / adresser. Vennligst velg den adressen du vil jobbe med denne gangen.',
   MNEM_more: 'Flere Adresser',
   MNEM_prev: 'Forrige Adresse',
-  x_Mnemonic: 'Mnemonisk Frase (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonisk Frase (MetaMask / Jaxx / ether.cards / imToken)',
   ADD_Radio_5: 'Lim inn/tast din mnemoniske frase',
   SEND_custom: 'Legg til Token',
   ERROR_21: ' er ikke en gyldig ERC-20-token. Hvis andre tokens holder på å lastes, vennligst fjern denne token og prøv igjen.',
@@ -10665,7 +10665,7 @@ pl.data = {
   x_Keystore: 'Plik Keystore (UTC / JSON · Zalecany · Szyfrowany · Format Mist)',
   x_Keystore2: 'Plik Keystore (UTC / JSON) ',
   x_KeystoreDesc: 'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej.',
-  x_Mnemonic: 'Mnemonik (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonik (MetaMask / Jaxx / ether.cards / imToken)',
   x_Json: 'Plik JSON (nieszyfrowany)',
   x_JsonDesc: 'Nieszyfrowany klucz prywatny, plik w formacie JSON. Nie wymaga podania hasła, ale każdy kto zdobędzie ten plik uzyska również pełny dostęp do Twojego portfela i zgromadzonych na nim środków.',
   x_PrintShort: 'Drukuj',
@@ -11204,7 +11204,7 @@ pt.data = {
   x_Keystore: 'Arquivo de armazenamento de chaves (UTC / JSON · Recomendado · Criptografado · Formato Mist)',
   x_Keystore2: 'Arquivo de armazenamento de chaves (UTC / JSON)',
   x_KeystoreDesc: 'Este arquivo de armazenamento de chaves corresponde ao formato usado pela Mist para que você possa facilmente importá-lo no futuro. É recomendado que o arquivo seja transferido e feito seu backup.',
-  x_Mnemonic: 'Frase Mnemonic (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Frase Mnemonic (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password: 'Senha',
   x_Print: 'Imprimir Carteira de Papel',
   x_PrintDesc: 'Dica: Clique impressão e salve como PDF, mesmo se você não possui uma impressora!',
@@ -11716,7 +11716,7 @@ ru.data = (_ru$data = {
   MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
   MNEM_more: 'More Addresses',
   MNEM_prev: 'Previous Addresses',
-  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards / imToken)',
   ADD_Radio_5: 'Paste/Type Your Mnemonic',
   SEND_custom: 'Add Custom Token',
   ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -11882,7 +11882,7 @@ tr.data = (_tr$data = {
   MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
   MNEM_more: 'More Addresses',
   MNEM_prev: 'Previous Addresses',
-  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards / imToken)',
   ADD_Radio_5: 'Paste/Type Your Mnemonic',
   SEND_custom: 'Add Custom Token',
   ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -12147,7 +12147,7 @@ vi.data = {
   x_Keystore: 'Định Dạng Keystore (UTC / JSON) (Đã mã hoá. Định Dạng này sử dụng cho Mist)',
   x_Keystore2: 'Định Dạng Keystore (UTC / JSON)',
   x_KeystoreDesc: 'Định dạng Keystore là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân.',
-  x_Mnemonic: 'Cụm từ dễ nhớ (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Cụm từ dễ nhớ (MetaMask / Jaxx / ether.cards / imToken)',
   x_Password: 'Mật Khẩu',
   x_Print: 'Tạo Ví Giấy',
   x_PrintDesc: 'Mẹo: kích chuột trái vào nút "In Ví" sau đó chọn "Save this as a PDF" đễ lưu nó thành định dạng PDF trên máy tính của bạn nếu bạn không sở hữu máy in cá nhân!',
@@ -12649,7 +12649,7 @@ zh.data = (_zh$data = {
   MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time.',
   MNEM_more: 'More Addresses',
   MNEM_prev: 'Previous Addresses',
-  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards)',
+  x_Mnemonic: 'Mnemonic Phrase (MetaMask / Jaxx / ether.cards / imToken)',
   ADD_Radio_5: 'Paste/Type Your Mnemonic',
   SEND_custom: 'Add Custom Token',
   ERROR_21: ' is not a valid ERC-20 token. If other tokens are loading, please remove this token and try again.',
@@ -51283,53 +51283,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
 };
 
 },{"./der":104,"inherits":197}],107:[function(require,module,exports){
-(function (global){
 'use strict';
-
-// compare and isBuffer taken from https://github.com/feross/buffer/blob/680e9e5e488f22aac27599a57dc844a6315928dd/index.js
-// original notice:
-
-/*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
- * @license  MIT
- */
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-function compare(a, b) {
-  if (a === b) {
-    return 0;
-  }
-
-  var x = a.length;
-  var y = b.length;
-
-  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
-    if (a[i] !== b[i]) {
-      x = a[i];
-      y = b[i];
-      break;
-    }
-  }
-
-  if (x < y) {
-    return -1;
-  }
-  if (y < x) {
-    return 1;
-  }
-  return 0;
-}
-function isBuffer(b) {
-  if (global.Buffer && typeof global.Buffer.isBuffer === 'function') {
-    return global.Buffer.isBuffer(b);
-  }
-  return !!(b != null && b._isBuffer);
-}
-
-// based on node assert, original notice:
 
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
 //
@@ -51355,36 +51309,14 @@ function isBuffer(b) {
 // ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+// when used in node, this will actually load the util module we depend on
+// versus loading the builtin util module as happens otherwise
+// this is a bug in node module loading as far as I am concerned
 var util = require('util/');
-var hasOwn = Object.prototype.hasOwnProperty;
+
 var pSlice = Array.prototype.slice;
-var functionsHaveNames = function () {
-  return function foo() {}.name === 'foo';
-}();
-function pToString(obj) {
-  return Object.prototype.toString.call(obj);
-}
-function isView(arrbuf) {
-  if (isBuffer(arrbuf)) {
-    return false;
-  }
-  if (typeof global.ArrayBuffer !== 'function') {
-    return false;
-  }
-  if (typeof ArrayBuffer.isView === 'function') {
-    return ArrayBuffer.isView(arrbuf);
-  }
-  if (!arrbuf) {
-    return false;
-  }
-  if (arrbuf instanceof DataView) {
-    return true;
-  }
-  if (arrbuf.buffer && arrbuf.buffer instanceof ArrayBuffer) {
-    return true;
-  }
-  return false;
-}
+var hasOwn = Object.prototype.hasOwnProperty;
+
 // 1. The assert module provides functions that throw
 // AssertionError's when particular conditions are not met. The
 // assert module must conform to the following interface.
@@ -51396,19 +51328,6 @@ var assert = module.exports = ok;
 //                             actual: actual,
 //                             expected: expected })
 
-var regex = /\s*function\s+([^\(\s]*)\s*/;
-// based on https://github.com/ljharb/function.prototype.name/blob/adeeeec8bfcc6068b187d7d9fb3d5bb1d3a30899/implementation.js
-function getName(func) {
-  if (!util.isFunction(func)) {
-    return;
-  }
-  if (functionsHaveNames) {
-    return func.name;
-  }
-  var str = func.toString();
-  var match = str.match(regex);
-  return match && match[1];
-}
 assert.AssertionError = function AssertionError(options) {
   this.name = 'AssertionError';
   this.actual = options.actual;
@@ -51422,6 +51341,7 @@ assert.AssertionError = function AssertionError(options) {
     this.generatedMessage = true;
   }
   var stackStartFunction = options.stackStartFunction || fail;
+
   if (Error.captureStackTrace) {
     Error.captureStackTrace(this, stackStartFunction);
   } else {
@@ -51431,7 +51351,7 @@ assert.AssertionError = function AssertionError(options) {
       var out = err.stack;
 
       // try to strip useless frames
-      var fn_name = getName(stackStartFunction);
+      var fn_name = stackStartFunction.name;
       var idx = out.indexOf('\n' + fn_name);
       if (idx >= 0) {
         // once we have located the function frame
@@ -51448,23 +51368,29 @@ assert.AssertionError = function AssertionError(options) {
 // assert.AssertionError instanceof Error
 util.inherits(assert.AssertionError, Error);
 
+function replacer(key, value) {
+  if (util.isUndefined(value)) {
+    return '' + value;
+  }
+  if (util.isNumber(value) && !isFinite(value)) {
+    return value.toString();
+  }
+  if (util.isFunction(value) || util.isRegExp(value)) {
+    return value.toString();
+  }
+  return value;
+}
+
 function truncate(s, n) {
-  if (typeof s === 'string') {
+  if (util.isString(s)) {
     return s.length < n ? s : s.slice(0, n);
   } else {
     return s;
   }
 }
-function inspect(something) {
-  if (functionsHaveNames || !util.isFunction(something)) {
-    return util.inspect(something);
-  }
-  var rawname = getName(something);
-  var name = rawname ? ': ' + rawname : '';
-  return '[Function' + name + ']';
-}
+
 function getMessage(self) {
-  return truncate(inspect(self.actual), 128) + ' ' + self.operator + ' ' + truncate(inspect(self.expected), 128);
+  return truncate(JSON.stringify(self.actual, replacer), 128) + ' ' + self.operator + ' ' + truncate(JSON.stringify(self.expected, replacer), 128);
 }
 
 // At present only the three keys mentioned above are used and
@@ -51524,23 +51450,23 @@ assert.notEqual = function notEqual(actual, expected, message) {
 // assert.deepEqual(actual, expected, message_opt);
 
 assert.deepEqual = function deepEqual(actual, expected, message) {
-  if (!_deepEqual(actual, expected, false)) {
+  if (!_deepEqual(actual, expected)) {
     fail(actual, expected, message, 'deepEqual', assert.deepEqual);
   }
 };
 
-assert.deepStrictEqual = function deepStrictEqual(actual, expected, message) {
-  if (!_deepEqual(actual, expected, true)) {
-    fail(actual, expected, message, 'deepStrictEqual', assert.deepStrictEqual);
-  }
-};
-
-function _deepEqual(actual, expected, strict, memos) {
+function _deepEqual(actual, expected) {
   // 7.1. All identical values are equivalent, as determined by ===.
   if (actual === expected) {
     return true;
-  } else if (isBuffer(actual) && isBuffer(expected)) {
-    return compare(actual, expected) === 0;
+  } else if (util.isBuffer(actual) && util.isBuffer(expected)) {
+    if (actual.length != expected.length) return false;
+
+    for (var i = 0; i < actual.length; i++) {
+      if (actual[i] !== expected[i]) return false;
+    }
+
+    return true;
 
     // 7.2. If the expected value is a Date object, the actual value is
     // equivalent if it is also a Date object that refers to the same time.
@@ -51555,17 +51481,8 @@ function _deepEqual(actual, expected, strict, memos) {
 
     // 7.4. Other pairs that do not both pass typeof value == 'object',
     // equivalence is determined by ==.
-  } else if ((actual === null || (typeof actual === 'undefined' ? 'undefined' : _typeof(actual)) !== 'object') && (expected === null || (typeof expected === 'undefined' ? 'undefined' : _typeof(expected)) !== 'object')) {
-    return strict ? actual === expected : actual == expected;
-
-    // If both values are instances of typed arrays, wrap their underlying
-    // ArrayBuffers in a Buffer each to increase performance
-    // This optimization requires the arrays to have the same type as checked by
-    // Object.prototype.toString (aka pToString). Never perform binary
-    // comparisons for Float*Arrays, though, since e.g. +0 === -0 but their
-    // bit patterns are not identical.
-  } else if (isView(actual) && isView(expected) && pToString(actual) === pToString(expected) && !(actual instanceof Float32Array || actual instanceof Float64Array)) {
-    return compare(new Uint8Array(actual.buffer), new Uint8Array(expected.buffer)) === 0;
+  } else if (!util.isObject(actual) && !util.isObject(expected)) {
+    return actual == expected;
 
     // 7.5 For all other Object pairs, including Array objects, equivalence is
     // determined by having the same number of owned properties (as verified
@@ -51573,22 +51490,8 @@ function _deepEqual(actual, expected, strict, memos) {
     // (although not necessarily the same order), equivalent values for every
     // corresponding key, and an identical 'prototype' property. Note: this
     // accounts for both named and indexed properties on Arrays.
-  } else if (isBuffer(actual) !== isBuffer(expected)) {
-    return false;
   } else {
-    memos = memos || { actual: [], expected: [] };
-
-    var actualIndex = memos.actual.indexOf(actual);
-    if (actualIndex !== -1) {
-      if (actualIndex === memos.expected.indexOf(expected)) {
-        return true;
-      }
-    }
-
-    memos.actual.push(actual);
-    memos.expected.push(expected);
-
-    return objEquiv(actual, expected, strict, memos);
+    return objEquiv(actual, expected);
   }
 }
 
@@ -51596,37 +51499,41 @@ function isArguments(object) {
   return Object.prototype.toString.call(object) == '[object Arguments]';
 }
 
-function objEquiv(a, b, strict, actualVisitedObjects) {
-  if (a === null || a === undefined || b === null || b === undefined) return false;
+function objEquiv(a, b) {
+  if (util.isNullOrUndefined(a) || util.isNullOrUndefined(b)) return false;
+  // an identical 'prototype' property.
+  if (a.prototype !== b.prototype) return false;
   // if one is a primitive, the other must be same
-  if (util.isPrimitive(a) || util.isPrimitive(b)) return a === b;
-  if (strict && Object.getPrototypeOf(a) !== Object.getPrototypeOf(b)) return false;
-  var aIsArgs = isArguments(a);
-  var bIsArgs = isArguments(b);
+  if (util.isPrimitive(a) || util.isPrimitive(b)) {
+    return a === b;
+  }
+  var aIsArgs = isArguments(a),
+      bIsArgs = isArguments(b);
   if (aIsArgs && !bIsArgs || !aIsArgs && bIsArgs) return false;
   if (aIsArgs) {
     a = pSlice.call(a);
     b = pSlice.call(b);
-    return _deepEqual(a, b, strict);
+    return _deepEqual(a, b);
   }
-  var ka = objectKeys(a);
-  var kb = objectKeys(b);
-  var key, i;
+  var ka = objectKeys(a),
+      kb = objectKeys(b),
+      key,
+      i;
   // having the same number of owned properties (keys incorporates
   // hasOwnProperty)
-  if (ka.length !== kb.length) return false;
+  if (ka.length != kb.length) return false;
   //the same set of keys (although not necessarily the same order),
   ka.sort();
   kb.sort();
   //~~~cheap key test
   for (i = ka.length - 1; i >= 0; i--) {
-    if (ka[i] !== kb[i]) return false;
+    if (ka[i] != kb[i]) return false;
   }
   //equivalent values for every corresponding key, and
   //~~~possibly expensive deep test
   for (i = ka.length - 1; i >= 0; i--) {
     key = ka[i];
-    if (!_deepEqual(a[key], b[key], strict, actualVisitedObjects)) return false;
+    if (!_deepEqual(a[key], b[key])) return false;
   }
   return true;
 }
@@ -51635,17 +51542,10 @@ function objEquiv(a, b, strict, actualVisitedObjects) {
 // assert.notDeepEqual(actual, expected, message_opt);
 
 assert.notDeepEqual = function notDeepEqual(actual, expected, message) {
-  if (_deepEqual(actual, expected, false)) {
+  if (_deepEqual(actual, expected)) {
     fail(actual, expected, message, 'notDeepEqual', assert.notDeepEqual);
   }
 };
-
-assert.notDeepStrictEqual = notDeepStrictEqual;
-function notDeepStrictEqual(actual, expected, message) {
-  if (_deepEqual(actual, expected, true)) {
-    fail(actual, expected, message, 'notDeepStrictEqual', notDeepStrictEqual);
-  }
-}
 
 // 9. The strict equality assertion tests strict equality, as determined by ===.
 // assert.strictEqual(actual, expected, message_opt);
@@ -51672,46 +51572,28 @@ function expectedException(actual, expected) {
 
   if (Object.prototype.toString.call(expected) == '[object RegExp]') {
     return expected.test(actual);
+  } else if (actual instanceof expected) {
+    return true;
+  } else if (expected.call({}, actual) === true) {
+    return true;
   }
 
-  try {
-    if (actual instanceof expected) {
-      return true;
-    }
-  } catch (e) {
-    // Ignore.  The instanceof check doesn't work for arrow functions.
-  }
-
-  if (Error.isPrototypeOf(expected)) {
-    return false;
-  }
-
-  return expected.call({}, actual) === true;
-}
-
-function _tryBlock(block) {
-  var error;
-  try {
-    block();
-  } catch (e) {
-    error = e;
-  }
-  return error;
+  return false;
 }
 
 function _throws(shouldThrow, block, expected, message) {
   var actual;
 
-  if (typeof block !== 'function') {
-    throw new TypeError('"block" argument must be a function');
-  }
-
-  if (typeof expected === 'string') {
+  if (util.isString(expected)) {
     message = expected;
     expected = null;
   }
 
-  actual = _tryBlock(block);
+  try {
+    block();
+  } catch (e) {
+    actual = e;
+  }
 
   message = (expected && expected.name ? ' (' + expected.name + ').' : '.') + (message ? ' ' + message : '.');
 
@@ -51719,11 +51601,7 @@ function _throws(shouldThrow, block, expected, message) {
     fail(actual, expected, 'Missing expected exception' + message);
   }
 
-  var userProvidedMessage = typeof message === 'string';
-  var isUnwantedException = !shouldThrow && util.isError(actual);
-  var isUnexpectedException = !shouldThrow && actual && !expected;
-
-  if (isUnwantedException && userProvidedMessage && expectedException(actual, expected) || isUnexpectedException) {
+  if (!shouldThrow && expectedException(actual, expected)) {
     fail(actual, expected, 'Got unwanted exception' + message);
   }
 
@@ -51736,16 +51614,18 @@ function _throws(shouldThrow, block, expected, message) {
 // assert.throws(block, Error_opt, message_opt);
 
 assert.throws = function (block, /*optional*/error, /*optional*/message) {
-  _throws(true, block, error, message);
+  _throws.apply(this, [true].concat(pSlice.call(arguments)));
 };
 
 // EXTENSION! This is annoying to write outside this module.
-assert.doesNotThrow = function (block, /*optional*/error, /*optional*/message) {
-  _throws(false, block, error, message);
+assert.doesNotThrow = function (block, /*optional*/message) {
+  _throws.apply(this, [false].concat(pSlice.call(arguments)));
 };
 
 assert.ifError = function (err) {
-  if (err) throw err;
+  if (err) {
+    throw err;
+  }
 };
 
 var objectKeys = Object.keys || function (obj) {
@@ -51756,7 +51636,6 @@ var objectKeys = Object.keys || function (obj) {
   return keys;
 };
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"util/":255}],108:[function(require,module,exports){
 'use strict';
 
@@ -68729,14 +68608,21 @@ utils.intFromLE = intFromLE;
 module.exports={
   "_args": [
     [
-      "elliptic@^6.0.0",
-      "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign"
+      {
+        "raw": "elliptic@^6.0.0",
+        "scope": null,
+        "escapedName": "elliptic",
+        "name": "elliptic",
+        "rawSpec": "^6.0.0",
+        "spec": ">=6.0.0 <7.0.0",
+        "type": "range"
+      },
+      "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
   "_id": "elliptic@6.3.2",
   "_inCache": true,
-  "_installable": true,
   "_location": "/elliptic",
   "_nodeVersion": "6.3.0",
   "_npmOperationalInternal": {
@@ -68744,16 +68630,17 @@ module.exports={
     "tmp": "tmp/elliptic-6.3.2.tgz_1473938837205_0.3108903462998569"
   },
   "_npmUser": {
-    "email": "fedor@indutny.com",
-    "name": "indutny"
+    "name": "indutny",
+    "email": "fedor@indutny.com"
   },
   "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
-    "name": "elliptic",
     "raw": "elliptic@^6.0.0",
-    "rawSpec": "^6.0.0",
     "scope": null,
+    "escapedName": "elliptic",
+    "name": "elliptic",
+    "rawSpec": "^6.0.0",
     "spec": ">=6.0.0 <7.0.0",
     "type": "range"
   },
@@ -68766,10 +68653,10 @@ module.exports={
   "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign",
+  "_where": "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
   "author": {
-    "email": "fedor@indutny.com",
-    "name": "Fedor Indutny"
+    "name": "Fedor Indutny",
+    "email": "fedor@indutny.com"
   },
   "bugs": {
     "url": "https://github.com/indutny/elliptic/issues"
@@ -68807,10 +68694,10 @@ module.exports={
   "gitHead": "cbace4683a4a548dc0306ef36756151a20299cd5",
   "homepage": "https://github.com/indutny/elliptic",
   "keywords": [
-    "Cryptography",
     "EC",
     "Elliptic",
-    "curve"
+    "curve",
+    "Cryptography"
   ],
   "license": "MIT",
   "main": "lib/elliptic.js",
