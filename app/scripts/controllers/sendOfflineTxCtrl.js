@@ -140,6 +140,9 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
         try {
             if ($scope.signedTx == "" || !ethFuncs.validateHexString($scope.signedTx)) throw globalFuncs.errorMsgs[12];
             var eTx = new ethUtil.Tx($scope.signedTx);
+            $scope.valueReadable = etherUnits.toEther('0x' + eTx.value.toString('hex'), 'wei');
+            $scope.sendingFrom = '0x'+eTx.from.toString('hex');
+            $scope.sendingTo = '0x'+eTx.to.toString('hex');
             new Modal(document.getElementById('sendTransactionOffline')).open();
         } catch (e) {
             $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
