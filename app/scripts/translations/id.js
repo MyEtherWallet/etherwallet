@@ -94,9 +94,11 @@ id.data = {
   ADD_Radio_4:            'Tambah akun untuk dilihat',
   ADD_Radio_5:          'Paste/Ketik Mnemonic Anda',
   ADD_Radio_5_Path:       'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
-  ADD_Radio_5_PathCustom:  '(custom)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
+  ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2:            'Buat Alias:',
   ADD_Label_3:            'File Dompet anda ter-enkripsi. Masukkan password: ',
   ADD_Label_4:            'Tambah akun untuk dilihat',
@@ -120,6 +122,10 @@ id.data = {
   ADD_Ledger_0a:        'Buka kembali MyEtherWallet melalui koneksi (SSL) yang aman',
   ADD_Ledger_0b:        'Buka kembali MyEtherWallet menggunakan [Chrome](https://www.google.com/chrome/browser/desktop/) atau [Opera](https://www.opera.com/)',
   ADD_Ledger_scan:      'Hubungkan ke Ledger Nano S',
+
+  x_Trezor:             'TREZOR',
+  ADD_Trezor_scan:      'Connect to TREZOR',
+  ADD_Trezor_select:    'This is a TREZOR seed',
 
   /* Generate Wallets */
   GEN_desc:               'Jika Anda memerlukan lebih dari satu dompet, Anda dapat memakai fitur : ',

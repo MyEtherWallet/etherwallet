@@ -48,9 +48,11 @@ if (IS_CX) {
     var u2f = require('./staticJS/u2f-api');
     var ledger3 = require('./staticJS/ledger3');
     var ledgerEth = require('./staticJS/ledger-eth');
+    var trezorConnect = require('./staticJS/trezorConnect');
     window.u2f = u2f;
     window.Ledger3 = ledger3;
     window.ledgerEth = ledgerEth;
+    window.TrezorConnect = trezorConnect.TrezorConnect;
 }
 var tabsCtrl = require('./controllers/tabsCtrl');
 var viewCtrl = require('./controllers/viewCtrl');

@@ -104,9 +104,11 @@ ja.data = {
   ADD_Radio_4:            '監視するアカウントを追加',
   ADD_Radio_5:          'ニーモニックを上書き/タイプ',
   ADD_Radio_5_Path:       'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
-  ADD_Radio_5_PathCustom:  '(custom)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
+  ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2:            'ニックネームの作成：',
   ADD_Label_3:            'ウォレットが暗号化されています。パスワードを入力してください： ',
   ADD_Label_4:            '監視するアカウントを追加',
@@ -216,6 +218,10 @@ ja.data = {
   ADD_Ledger_0a:        'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。',
   ADD_Ledger_0b:        'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。',
   ADD_Ledger_scan:      'Ledger Nano S　に接続',
+
+  x_Trezor:             'TREZOR',
+  ADD_Trezor_scan:      'Connect to TREZOR',
+  ADD_Trezor_select:    'This is a TREZOR seed',
 
   /* Deploy Contracts */
   DEP_generate:           'バイトコードを生成する',

@@ -94,9 +94,11 @@ it.data = {
   ADD_Radio_4:            'Aggiungi un conto da osservare',
   ADD_Radio_5:            'Incolla/Inserisci la tua frase mnemonica',
   ADD_Radio_5_Path:       'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
-  ADD_Radio_5_PathCustom:  '(custom)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
+  ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2:            'Crea un nome:',
   ADD_Label_3:            'Il portafoglio è crittografato. Inserire la password: ',
   ADD_Label_4:            'Aggiungi un conto da osservare',
@@ -232,6 +234,10 @@ it.data = {
   ADD_Ledger_3:         'Verifica che il supporto browser sia abilitato nelle impostazioni',
   ADD_Ledger_4:         'Se non c\'è l\'opzione per il supporto browser nelle impostazioni, verifica di avere un [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
   ADD_Ledger_scan:      'Collegati al Ledger Nano S',
+
+  x_Trezor:             'TREZOR',
+  ADD_Trezor_scan:      'Connect to TREZOR',
+  ADD_Trezor_select:    'This is a TREZOR seed',
 
   /* CX */
   CX_error_1:           'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno!',

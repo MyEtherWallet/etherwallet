@@ -21,6 +21,50 @@ uiFuncs.isTxDataValid = function(txData) {
     else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
     if (txData.to == "0xCONTRACT") txData.to = '';
 }
+uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
+    var path = txData.path;
+    var nonce = ethFuncs.getNakedAddress(rawTx.nonce);
+    var gasPrice = ethFuncs.getNakedAddress(rawTx.gasPrice);
+    var gasLimit = ethFuncs.getNakedAddress(rawTx.gasLimit);
+    var to = ethFuncs.getNakedAddress(rawTx.to);
+    var value = ethFuncs.getNakedAddress(rawTx.value);
+    var data = ethFuncs.getNakedAddress(rawTx.data);
+    var chainId = rawTx.chainId;
+
+    var localCallback = function(result) {
+        if (!result.success) {
+            if (callback !== undefined) {
+                callback({
+                    isError: true,
+                    error: result.error
+                });
+            }
+            return;
+        }
+
+        rawTx.v = "0x" + ethFuncs.decimalToHex(result.v);
+        rawTx.r = "0x" + result.r;
+        rawTx.s = "0x" + result.s;
+        var eTx = new ethUtil.Tx(rawTx);
+        rawTx.rawTx = JSON.stringify(rawTx);
+        rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
+        rawTx.isError = false;
+        if (callback !== undefined) callback(rawTx);
+    }
+
+    TrezorConnect.signEthereumTx(
+        path,
+        nonce,
+        gasPrice,
+        gasLimit,
+        to,
+        value,
+        data,
+        chainId,
+        localCallback
+    );
+}
+
 uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
     eTx.raw[6] = Buffer.from([1]); //ETH chain id
     eTx.raw[7] = eTx.raw[8] = 0;
@@ -85,6 +129,8 @@ uiFuncs.generateTx = function(txData, callback) {
                     uiFuncs.signTxLedger(app, eTx, rawTx, txData, !EIP155Supported, callback);
                 }
                 app.getAppConfiguration(localCallback);
+            } else if ((typeof txData.hwType != "undefined") && (txData.hwType == "trezor")) {
+                uiFuncs.signTxTrezor(rawTx, txData, callback);
             } else {
                 eTx.sign(new Buffer(txData.privKey, 'hex'));
                 rawTx.rawTx = JSON.stringify(rawTx);

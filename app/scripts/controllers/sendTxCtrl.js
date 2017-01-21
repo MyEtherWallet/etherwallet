@@ -138,24 +138,42 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
             return;
         }
-        var txData = uiFuncs.getTxData($scope);
-        if ($scope.tx.sendMode == 'token') {
-            txData.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
-            txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
-            txData.value = '0x00';
+
+        if ($scope.wallet && $scope.wallet.hwType === 'trezor') {
+            TrezorConnect.open(function (error) {
+                if (error) {
+                    $scope.showRaw = false;
+                    $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(error));
+                    $scope.$apply();
+                } else {
+                    callback();
+                }
+            });
+        } else {
+            callback();
         }
-        uiFuncs.generateTx(txData, function(rawTx) {
-            if (!rawTx.isError) {
-                $scope.rawTx = rawTx.rawTx;
-                $scope.signedTx = rawTx.signedTx;
-                $scope.showRaw = true;
-                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
-                if (!$scope.$$phase) $scope.$apply();
-            } else {
-                $scope.showRaw = false;
-                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+
+        function callback() {
+            var txData = uiFuncs.getTxData($scope);
+            if ($scope.tx.sendMode == 'token') {
+                txData.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
+                txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
+                txData.value = '0x00';
             }
-        });
+            uiFuncs.generateTx(txData, function(rawTx) {
+                if (!rawTx.isError) {
+                    $scope.rawTx = rawTx.rawTx;
+                    $scope.signedTx = rawTx.signedTx;
+                    $scope.showRaw = true;
+                    $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+                    if (!$scope.$$phase) $scope.$apply();
+                } else {
+                    $scope.showRaw = false;
+                    $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+                    if (!$scope.$$phase) $scope.$apply();
+                }
+            });
+        };
     }
     $scope.sendTx = function() {
         $scope.sendTxModal.close();

@@ -99,9 +99,11 @@ pt.data = {
   ADD_Radio_4:            'Adicionar uma conta para ver',
   ADD_Radio_5:            'Cole/Digite sua Mnemonic',
   ADD_Radio_5_Path:       'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
-  ADD_Radio_5_PathCustom:  '(custom)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
+  ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2:            'Crie um Apelido:',
   ADD_Label_3:            'Sua carteira é criptografada. Por favor, insira a senha: ',
   ADD_Label_4:            'Adicionar uma conta para ver',
@@ -234,6 +236,10 @@ pt.data = {
   ADD_Ledger_2:         'Abra a aplicação Ethereum (ou uma aplicação de contrato)',
   ADD_Ledger_3:         'Verifique se o Suporte do Navegador está habilitado em Configurações',
   ADD_Ledger_scan:      'Conectar-se a Ledger Wallet',
+
+  x_Trezor:             'TREZOR',
+  ADD_Trezor_scan:      'Connect to TREZOR',
+  ADD_Trezor_select:    'This is a TREZOR seed',
 
   /* Chrome Extension */
   CX_error_1:           'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',

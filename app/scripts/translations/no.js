@@ -39,6 +39,10 @@ no.data = {
   ADD_Ledger_0b:        'Åpne MyEtherWallet på nytt med [Chrome](https://www.google.com/chrome/browser/desktop/) eller [Opera](https://www.opera.com/)',
   ADD_Ledger_scan:      'Koble til Ledger Nano S',
 
+  x_Trezor:             'TREZOR',
+  ADD_Trezor_scan:      'Connect to TREZOR',
+  ADD_Trezor_select:    'This is a TREZOR seed',
+
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
   NAV_AddWallet:        'Legg til lommebok',
@@ -116,9 +120,11 @@ no.data = {
   ADD_Radio_3:            'Lim/skriv inn din private nøkkel',
   ADD_Radio_4:            'Legg til en konto for overvåkning',
   ADD_Radio_5_Path:       'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
-  ADD_Radio_5_PathCustom:  '(custom)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
+  ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2:            'Lag et kallenavn:',
   ADD_Label_3:            'Filen din er kryptert. Vennligst oppgi passordet: ',
   ADD_Label_4:            'Legg til en konto for overvåkning',
