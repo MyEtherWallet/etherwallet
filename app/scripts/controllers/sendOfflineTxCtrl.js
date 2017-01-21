@@ -140,9 +140,21 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
         try {
             if ($scope.signedTx == "" || !ethFuncs.validateHexString($scope.signedTx)) throw globalFuncs.errorMsgs[12];
             var eTx = new ethUtil.Tx($scope.signedTx);
-            $scope.valueReadable = eTx.value.length ? etherUnits.toEther('0x' + eTx.value.toString('hex'), 'wei') : 0;
-            $scope.sendingFrom = '0x' + eTx.from.toString('hex');
-            $scope.sendingTo = '0x' + eTx.to.toString('hex');
+            if (eTx.data.length && Token.transferHex == ethFuncs.sanitizeHex(eTx.data.toString('hex').substr(0, 8))) {
+                var token = Token.getTokenByAddress(ethFuncs.sanitizeHex(eTx.to.toString('hex')));
+                var decoded = ethUtil.solidityCoder.decodeParams(["address", "uint256"], ethFuncs.sanitizeHex(eTx.data.toString('hex').substr(10)));
+                $scope.tx.sendMode = 'token';
+                $scope.tokenTx.value = decoded[1].div(new BigNumber(10).pow(token.decimal)).toString();
+                $scope.tokenTx.to = decoded[0];
+                $scope.unitReadable = token.symbol;
+                $scope.tokenTx.from = ethFuncs.sanitizeHex(eTx.getSenderAddress().toString('hex'));
+            } else {
+                $scope.tx.sendMode = 'ether';
+                $scope.tx.value = eTx.value.length ? etherUnits.toEther(ethFuncs.sanitizeHex(eTx.value.toString('hex')), 'wei') : 0;
+                $scope.unitReadable = ajaxReq.type;
+                $scope.tx.from = ethFuncs.sanitizeHex(eTx.getSenderAddress().toString('hex'));
+                $scope.tx.to = ethFuncs.sanitizeHex(eTx.to.toString('hex'));
+            }
             new Modal(document.getElementById('sendTransactionOffline')).open();
         } catch (e) {
             $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
