@@ -17,10 +17,15 @@ var addWalletCtrl = function($scope, $sce) {
 		id: 0,
 		hdk: null,
 		dPath: '',
-		jmPath: "m/44'/60'/0'/0/0",
-		ledgerPath: "m/44'/60'/0'/0"
+		defaultDPath     : "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
+		alternativeDPath : "m/44'/60'/0'", // first address: m/44'/60'/0'/0
+		customDPath      : "m/44'/60'/1'/0"
 	};
+	$scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
 	$scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
+	$scope.onCustomHDDPathChange = function() {
+		$scope.HDWallet.dPath = $scope.HDWallet.customDPath;
+	}
 	$scope.onPrivKeyChange = function() {
 		$scope.addWalletStats = "";
 		$scope.requirePPass = $scope.manualprivkey.length == 128 || $scope.manualprivkey.length == 132;
@@ -31,8 +36,7 @@ var addWalletCtrl = function($scope, $sce) {
 	};
 	$scope.onMnemonicChange = function() {
 		$scope.addWalletStats = "";
-		var numWords = $scope.manualmnemonic.trim().split(' ').length;
-		$scope.showBtnUnlock = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
+		$scope.showBtnUnlock = hd.bip39.validateMnemonic($scope.manualmnemonic);
 	};
 	$scope.showContent = function($fileContent) {
 		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name));
@@ -53,10 +57,8 @@ var addWalletCtrl = function($scope, $sce) {
 	};
 	$scope.setHDAddresses = function(start, limit) {
 		$scope.HDWallet.wallets = [];
-		var dPath = $scope.HDWallet.dPath;
-		dPath = dPath.substr(0, dPath.length - 1);
 		for (var i = start; i < start + limit; i++) {
-			$scope.HDWallet.wallets.push(new Wallet($scope.HDWallet.hdk.derive(dPath + i)._privateKey));
+			$scope.HDWallet.wallets.push(new Wallet($scope.HDWallet.hdk.derive($scope.HDWallet.dPath + "/" + i)._privateKey));
 			$scope.HDWallet.wallets[$scope.HDWallet.wallets.length - 1].setBalance(false);
 		}
 		$scope.HDWallet.id = 0;
@@ -90,16 +92,9 @@ var addWalletCtrl = function($scope, $sce) {
 				$scope.addAccount.password = $scope.filePassword;
 			} else if ($scope.walletType == "pastemnemonic") {
 				$scope.mnemonicModel.open();
-				var numWords = $scope.manualmnemonic.trim().split(' ').length;
 				$scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim()));
 				$scope.HDWallet.numWallets = 0;
-				if (numWords == 12) { //jaxx and metamask
-					$scope.HDWallet.dPath = $scope.HDWallet.jmPath;
-					$scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
-				} else if (numWords == 24) { //ledger
-					$scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
-					$scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
-				}
+				$scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
 			}
 		} catch (e) {
 			$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + e));

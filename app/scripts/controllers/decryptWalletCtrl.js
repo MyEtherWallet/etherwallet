@@ -14,10 +14,16 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                           id               : 0,
                           hdk              : null,
                           dPath            : '',
-                          jmPath           : "m/44'/60'/0'/0/0",
-                          ledgerPath       : "m/44'/60'/0'/0"
+                          defaultDPath     : "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
+                          alternativeDPath : "m/44'/60'/0'", // first address: m/44'/60'/0'/0
+                          customDPath      : "m/44'/60'/1'/0",
+                          ledgerPath       : "m/44'/60'/0'"
                         };
+  $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
   $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
+  $scope.onCustomHDDPathChange = function() {
+      $scope.HDWallet.dPath = $scope.HDWallet.customDPath;
+  }
   $scope.showContent = function($fileContent) {
     $scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name));
     try {
@@ -42,18 +48,15 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.showPDecrypt = $scope.privPassword.length > 0;
   };
   $scope.onMnemonicChange = function() {
-    var numWords = $scope.manualmnemonic.trim().split(' ').length;
-    $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
+    $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic);
   };
   $scope.onAddressChange = function() {
     $scope.showAOnly = $scope.Validator.isValidAddress($scope.addressOnly);
   };
   $scope.setHDAddresses = function(start, limit) {
     $scope.HDWallet.wallets = [];
-    var dPath = $scope.HDWallet.dPath;
-    dPath = dPath.substr(0, dPath.length - 1);
     for (var i = start; i < start + limit; i++) {
-      $scope.HDWallet.wallets.push(new Wallet($scope.HDWallet.hdk.derive(dPath + i)._privateKey));
+      $scope.HDWallet.wallets.push(new Wallet($scope.HDWallet.hdk.derive($scope.HDWallet.dPath + "/" + i)._privateKey));
       $scope.HDWallet.wallets[$scope.HDWallet.wallets.length - 1].setBalance(false);
     }
     $scope.HDWallet.id = 0;
@@ -61,11 +64,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
   }
   $scope.setHDAddressesLedger = function(start, limit) {
     $scope.HDWallet.wallets = [];
-    var dPath = $scope.HDWallet.dPath;
-    dPath = dPath.substr(0, dPath.length - 1);
     for (var i = start; i < start + limit; i++) {
       var derivedKey = $scope.HDWallet.hdk.derive("m/" + i);
-      $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, dPath + i, "ledger", $scope.ledger));
+      $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, "ledger", $scope.ledger));
       $scope.HDWallet.wallets[$scope.HDWallet.wallets.length - 1].setBalance(false);
     }
     $scope.HDWallet.id = 0;
@@ -100,16 +101,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         walletService.password = $scope.filePassword;
       } else if ($scope.showMDecrypt) {
         $scope.mnemonicModel.open();
-        var numWords = $scope.manualmnemonic.trim().split(' ').length;
         $scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim()));
         $scope.HDWallet.numWallets = 0;
-        if (numWords == 12) { //jaxx and metamask
-          $scope.HDWallet.dPath = $scope.HDWallet.jmPath;
-          $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
-        } else if (numWords == 24) { //ledger
-          $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
-          $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
-        }
+        $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
       }
       walletService.wallet = $scope.wallet;
     } catch (e) {
