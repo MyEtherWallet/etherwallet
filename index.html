@@ -769,7 +769,11 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
         </div>
-
+        <table class="table text-center"><tbody><tr>
+          <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{sendingFrom}}" watch-var="sendingFrom"></div></td>
+          <td class="mono">-><br />{{valueReadable}} {{unitReadable}}</td>
+          <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{sendingTo}}" watch-var="sendingTo"></div></td>
+        </tr></tbody></table>
           <div class="modal-body larger">
             <p>
               <span translate="SENDModal_Content_1">You are about to send</span>
