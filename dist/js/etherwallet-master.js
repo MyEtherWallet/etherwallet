@@ -1173,9 +1173,21 @@ var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
         try {
             if ($scope.signedTx == "" || !ethFuncs.validateHexString($scope.signedTx)) throw globalFuncs.errorMsgs[12];
             var eTx = new ethUtil.Tx($scope.signedTx);
-            $scope.valueReadable = etherUnits.toEther('0x' + eTx.value.toString('hex'), 'wei');
-            $scope.sendingFrom = '0x' + eTx.from.toString('hex');
-            $scope.sendingTo = '0x' + eTx.to.toString('hex');
+            if (eTx.data.length && Token.transferHex == ethFuncs.sanitizeHex(eTx.data.toString('hex').substr(0, 8))) {
+                var token = Token.getTokenByAddress(ethFuncs.sanitizeHex(eTx.to.toString('hex')));
+                var decoded = ethUtil.solidityCoder.decodeParams(["address", "uint256"], ethFuncs.sanitizeHex(eTx.data.toString('hex').substr(10)));
+                $scope.tx.sendMode = 'token';
+                $scope.tokenTx.value = decoded[1].div(new BigNumber(10).pow(token.decimal)).toString();
+                $scope.tokenTx.to = decoded[0];
+                $scope.unitReadable = token.symbol;
+                $scope.tokenTx.from = ethFuncs.sanitizeHex(eTx.getSenderAddress().toString('hex'));
+            } else {
+                $scope.tx.sendMode = 'ether';
+                $scope.tx.value = eTx.value.length ? etherUnits.toEther(ethFuncs.sanitizeHex(eTx.value.toString('hex')), 'wei') : 0;
+                $scope.unitReadable = ajaxReq.type;
+                $scope.tx.from = ethFuncs.sanitizeHex(eTx.getSenderAddress().toString('hex'));
+                $scope.tx.to = ethFuncs.sanitizeHex(eTx.to.toString('hex'));
+            }
             new Modal(document.getElementById('sendTransactionOffline')).open();
         } catch (e) {
             $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
@@ -3322,6 +3334,19 @@ nodes.customNodeObj = {
     'lib': null
 };
 nodes.nodeList = {
+    'eth2_mew': {
+        'name': 'ETH-beta',
+        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+        'type': nodes.nodeTypes.ETH,
+        'eip155': true,
+        'chainId': 1,
+        'tokenList': require('./tokens/ethTokens.json'),
+        'abiList': require('./abiDefinitions/ethAbi.json'),
+        'estimateGas': true,
+        'service': 'MyEtherWallet',
+        'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
+    },
     'eth_mew': {
         'name': 'ETH',
         'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
@@ -3335,18 +3360,18 @@ nodes.nodeList = {
         'service': 'MyEtherWallet',
         'lib': require('./nodeHelpers/mewEth')
     },
-    'etc_mew': {
-        'name': 'ETC',
-        'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
-        'type': nodes.nodeTypes.ETC,
+    'eth_ethscan': {
+        'name': 'ETH',
+        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+        'type': nodes.nodeTypes.ETH,
         'eip155': true,
-        'chainId': 61,
-        'tokenList': require('./tokens/etcTokens.json'),
-        'abiList': require('./abiDefinitions/etcAbi.json'),
-        'estimateGas': true,
-        'service': 'MyEtherWallet',
-        'lib': require('./nodeHelpers/mewEtc')
+        'chainId': 1,
+        'tokenList': require('./tokens/ethTokens.json'),
+        'abiList': require('./abiDefinitions/ethAbi.json'),
+        'estimateGas': false,
+        'service': 'Etherscan.io',
+        'lib': require('./nodeHelpers/etherscan')
     },
     'rop_mew': {
         'name': 'Ropsten-beta',
@@ -3361,31 +3386,31 @@ nodes.nodeList = {
         'service': 'MyEtherWallet',
         'lib': new nodes.customNode('https://api.myetherapi.com/rop', '')
     },
-    'eth2_mew': {
-        'name': 'ETH-beta',
-        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
-        'type': nodes.nodeTypes.ETH,
+    'etc_epool': {
+        'name': 'ETC',
+        'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
+        'type': nodes.nodeTypes.ETC,
         'eip155': true,
-        'chainId': 1,
-        'tokenList': require('./tokens/ethTokens.json'),
-        'abiList': require('./abiDefinitions/ethAbi.json'),
+        'chainId': 61,
+        'tokenList': require('./tokens/etcTokens.json'),
+        'abiList': require('./abiDefinitions/etcAbi.json'),
+        'estimateGas': false,
+        'service': 'Epool.io',
+        'lib': new nodes.customNode('https://mewapi.epool.io', '')
+    },
+    'etc_mew': {
+        'name': 'ETC',
+        'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
+        'type': nodes.nodeTypes.ETC,
+        'eip155': true,
+        'chainId': 61,
+        'tokenList': require('./tokens/etcTokens.json'),
+        'abiList': require('./abiDefinitions/etcAbi.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
-    },
-    'eth_ethscan': {
-        'name': 'ETH',
-        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
-        'type': nodes.nodeTypes.ETH,
-        'eip155': true,
-        'chainId': 1,
-        'tokenList': require('./tokens/ethTokens.json'),
-        'abiList': require('./abiDefinitions/ethAbi.json'),
-        'estimateGas': false,
-        'service': 'Etherscan.io',
-        'lib': require('./nodeHelpers/etherscan')
+        'lib': require('./nodeHelpers/mewEtc')
     }
 };
 nodes.ethPrice = require('./nodeHelpers/ethPrice');
@@ -6283,68 +6308,80 @@ module.exports = u2f;
 'use strict';
 
 var Token = function (contractAddress, userAddress, symbol, decimal, type) {
-	this.contractAddress = contractAddress;
-	this.userAddress = userAddress;
-	this.symbol = symbol;;
-	this.decimal = decimal;
-	this.type = type;
-	this.balance = "loading";
+    this.contractAddress = contractAddress;
+    this.userAddress = userAddress;
+    this.symbol = symbol;;
+    this.decimal = decimal;
+    this.type = type;
+    this.balance = "loading";
 };
 Token.balanceHex = "0x70a08231";
 Token.transferHex = "0xa9059cbb";
 Token.popTokens = [];
 Token.prototype.getContractAddress = function () {
-	return this.contractAddress;
+    return this.contractAddress;
 };
 Token.prototype.getUserAddress = function () {
-	return this.userAddress;
+    return this.userAddress;
 };
 Token.prototype.setUserAddress = function (address) {
-	this.userAddress = address;
+    this.userAddress = address;
 };
 Token.prototype.getSymbol = function () {
-	return this.symbol;
+    return this.symbol;
 };
 Token.prototype.getDecimal = function () {
-	return this.decimal;
+    return this.decimal;
 };
 Token.prototype.getBalance = function () {
-	return this.balance;
+    return this.balance;
 };
 Token.prototype.getBalanceBN = function () {
-	return this.balanceBN;
+    return this.balanceBN;
 };
 Token.prototype.setBalance = function () {
-	var balanceCall = ethFuncs.getDataObj(this.contractAddress, Token.balanceHex, [ethFuncs.getNakedAddress(this.userAddress)]);
-	var parentObj = this;
-	ajaxReq.getEthCall(balanceCall, function (data) {
-		try {
-			if (!data.error) {
-				parentObj.balance = new BigNumber(data.data).div(new BigNumber(10).pow(parentObj.getDecimal())).toString();
-				parentObj.balanceBN = new BigNumber(data.data).toString();
-			}
-		} catch (e) {
-			parentObj.balance = globalFuncs.errorMsgs[20];
-			parentObj.balanceBN = '0';
-		}
-	});
+    var balanceCall = ethFuncs.getDataObj(this.contractAddress, Token.balanceHex, [ethFuncs.getNakedAddress(this.userAddress)]);
+    var parentObj = this;
+    ajaxReq.getEthCall(balanceCall, function (data) {
+        try {
+            if (!data.error) {
+                parentObj.balance = new BigNumber(data.data).div(new BigNumber(10).pow(parentObj.getDecimal())).toString();
+                parentObj.balanceBN = new BigNumber(data.data).toString();
+            }
+        } catch (e) {
+            parentObj.balance = globalFuncs.errorMsgs[20];
+            parentObj.balanceBN = '0';
+        }
+    });
+};
+Token.getTokenByAddress = function (toAdd) {
+    toAdd = ethFuncs.sanitizeHex(toAdd);
+    for (var i = 0; i < Token.popTokens.length; i++) {
+        if (toAdd.toLowerCase() == Token.popTokens[i].address.toLowerCase()) return Token.popTokens[i];
+    }
+    return {
+        "address": toAdd,
+        "symbol": "Unknown",
+        "decimal": 0,
+        "type": "default"
+    };
 };
 Token.prototype.getData = function (toAdd, value) {
-	try {
-		if (!ethFuncs.validateEtherAddress(toAdd)) throw globalFuncs.errorMsgs[5];else if (!globalFuncs.isNumeric(value) || parseFloat(value) < 0) throw globalFuncs.errorMsgs[7];
-		var value = ethFuncs.padLeft(new BigNumber(value).times(new BigNumber(10).pow(this.getDecimal())).toString(16), 64);
-		var toAdd = ethFuncs.padLeft(ethFuncs.getNakedAddress(toAdd), 64);
-		var data = Token.transferHex + toAdd + value;
-		return {
-			isError: false,
-			data: data
-		};
-	} catch (e) {
-		return {
-			isError: true,
-			error: e
-		};
-	}
+    try {
+        if (!ethFuncs.validateEtherAddress(toAdd)) throw globalFuncs.errorMsgs[5];else if (!globalFuncs.isNumeric(value) || parseFloat(value) < 0) throw globalFuncs.errorMsgs[7];
+        var value = ethFuncs.padLeft(new BigNumber(value).times(new BigNumber(10).pow(this.getDecimal())).toString(16), 64);
+        var toAdd = ethFuncs.padLeft(ethFuncs.getNakedAddress(toAdd), 64);
+        var data = Token.transferHex + toAdd + value;
+        return {
+            isError: false,
+            data: data
+        };
+    } catch (e) {
+        return {
+            isError: true,
+            error: e
+        };
+    }
 };
 module.exports = Token;
 
@@ -9431,6 +9468,11 @@ fr.data = {
   ERROR_20: 'Symbole invalide',
   ERROR_21: ' n\'est pas un token ERC-20 valide. Si d\'autres tokens sont en train de se charger, enlevez celui-ci et réessayez.',
   ERROR_22: 'Impossible d\'estimer le gaz. Il n\'y a pas assez de fonds sur le compte, ou l\'adresse du contrat de réception a pu renvoyer une erreur. Vous pouvez ajuster vous-même le gaz et recommencer. Le message d\'erreur à l\'envoi peut comporter plus d\'informations.',
+  ERROR_23: 'Entrez un nom de nœud valide',
+  ERROR_24: 'Entrez une URL valide ; si vous êtes en https votre URL doit être https.',
+  ERROR_25: 'Entrez un port valide',
+  ERROR_26: 'Entrez un ID de chaîne valide',
+  ERROR_27: 'Entrez une ABI valide',
   SUCCESS_1: 'Adresse valide',
   SUCCESS_2: 'Portefeuille déchiffré avec succès',
   SUCCESS_3: 'Transaction envoyée. Identifiant de transaction : ',
@@ -10769,7 +10811,7 @@ module.exports = id;
 
 },{}],74:[function(require,module,exports){
 // Italian
-// Last sync with en.js: commit 4628e0d5eb086474511e810e134b7d8833659500
+// Last sync with en.js: commit 575529128d59cb75048917d66758204df286e727
 'use strict';
 
 var it = function () {};
@@ -11031,6 +11073,7 @@ it.data = {
   ERROR_24: 'Inserisci un url valido, se stai usando https l\'url deve cominciare per https',
   ERROR_25: 'Inserisci una porta valida',
   ERROR_26: 'Inserisci un ID catena valido',
+  ERROR_27: 'Inserisci una ABI valida',
   SUCCESS_1: 'Indirizzo valido',
   SUCCESS_2: 'Portafoglio decodificato correttamente',
   SUCCESS_3: 'Transazione inviata. TX ID: ',
