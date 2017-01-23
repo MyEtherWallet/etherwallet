@@ -113,7 +113,9 @@ If you want to help contribute, here's what you need to know to get it up and ru
 
 *Old: https://github.com/kvhnuke/etherwallet/issues/226.*
 
-New:[Announcing MyEtherWallet v3.4: The Node Switcher](https://www.reddit.com/r/ethereum/comments/5lqx90/announcing_myetherwallet_v34_the_node_switcher/)
+**Guide by benjaminion for MEW + Ledger Nano S + Local Parity Node: https://github.com/benjaminion/eth-parity-qnap/wiki/Connecting-to-MyEtherWallet**
+
+**[Announcing MyEtherWallet v3.4: The Node Switcher](https://www.reddit.com/r/ethereum/comments/5lqx90/announcing_myetherwallet_v34_the_node_switcher/)**
 
 **That node must have an SSL certificate (aka be https://) or you must run MyEtherWallet locally. [Download the latest version of MyEtherWallet here](https://github.com/kvhnuke/etherwallet/releases/latest) and in order to connect to a non-SSL node. Or, you can get a free SSL certificate via [LetsEncrypt](https://letsencrypt.org/).**
 
