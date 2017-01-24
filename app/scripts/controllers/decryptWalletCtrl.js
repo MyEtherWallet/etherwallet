@@ -43,7 +43,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
   };
   $scope.onMnemonicChange = function() {
     var numWords = $scope.manualmnemonic.trim().split(' ').length;
-    $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
+    $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 18 || numWords == 24);
   };
   $scope.onAddressChange = function() {
     $scope.showAOnly = $scope.Validator.isValidAddress($scope.addressOnly);
@@ -106,7 +106,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         if (numWords == 12) { //jaxx and metamask
           $scope.HDWallet.dPath = $scope.HDWallet.jmPath;
           $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
-        } else if (numWords == 24) { //ledger
+        } else if (numWords == 18 || numWords == 24) { //ledger
           $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
           $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
         }
