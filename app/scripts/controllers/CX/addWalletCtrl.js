@@ -32,7 +32,7 @@ var addWalletCtrl = function($scope, $sce) {
 	$scope.onMnemonicChange = function() {
 		$scope.addWalletStats = "";
 		var numWords = $scope.manualmnemonic.trim().split(' ').length;
-		$scope.showBtnUnlock = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 24);
+		$scope.showBtnUnlock = hd.bip39.validateMnemonic($scope.manualmnemonic) && (numWords == 12 || numWords == 18 || numWords == 24);
 	};
 	$scope.showContent = function($fileContent) {
 		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name));
@@ -96,7 +96,7 @@ var addWalletCtrl = function($scope, $sce) {
 				if (numWords == 12) { //jaxx and metamask
 					$scope.HDWallet.dPath = $scope.HDWallet.jmPath;
 					$scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
-				} else if (numWords == 24) { //ledger
+				} else if (numWords == 18 || numWords == 24) { //ledger
 					$scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
 					$scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
 				}
