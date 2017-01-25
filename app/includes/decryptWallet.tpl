@@ -62,6 +62,21 @@
       <div class="form-group">
         <textarea rows="4" class="form-control" placeholder="{{ 'x_Mnemonic' | translate }}" ng-model="$parent.$parent.manualmnemonic" ng-change="onMnemonicChange()"></textarea>
       </div>
+      <h4 translate="ADD_Radio_5_Path"> Select HD derivation path: </h4>
+      <div class="form-group">
+        <div class="radio">
+          <label><input type="radio" id="hd_derivation_path_default" ng-model="$parent.HDWallet.dPath" value="{{ $parent.HDWallet.defaultDPath}}"/>
+          <span ng-bind="$parent.HDWallet.defaultDPath"></span> <span translate="ADD_Radio_5_PathDefault">(default)</span></label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" id="hd_derivation_path_alternative" ng-model="$parent.HDWallet.dPath" value="{{ $parent.HDWallet.alternativeDPath}}"/>
+          <span ng-bind="$parent.HDWallet.alternativeDPath"></span> <span translate="ADD_Radio_5_PathAlternative">(alternative)</span></label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" id="hd_derivation_path_custom" ng-model="$parent.HDWallet.dPath" value="{{$parent.HDWallet.customDPath}}"/>
+          <input type="text" class="form-control" style="display: inline; width: 70%" ng-model="$parent.HDWallet.customDPath" id="hd_derivation_path_custom_value" ng-change="onCustomHDDPathChange()"/> <span translate="ADD_Radio_5_PathCustom">(custom)</label>
+        </div>
+      </div>
     </div>
     <!-- /if selected type mnemonic-->
   </section>

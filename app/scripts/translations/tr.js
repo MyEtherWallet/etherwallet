@@ -136,6 +136,10 @@ tr.data = {
   ADD_Radio_2_short:      'CÜZDAN DOSYAYI SEC...',
   ADD_Radio_3:            'Özel anahatarini Yaspistir/Yaz ',
   ADD_Radio_4:            'Izlenecek hesap adresi ekle', /* maybe another word for watch/izlencek --> Takip edilecek? */
+  ADD_Radio_5_Path:       'Select HD derivation path',
+  ADD_Radio_5_PathDefault: '(default)',
+  ADD_Radio_5_PathAlternative:'(alternative)',
+  ADD_Radio_5_PathCustom:  '(custom)',
   ADD_Label_2:            'Bir nickname oluştur: ',
   ADD_Label_3:            'Cüzdan şifrelidir. Parolayi yaz:  ',
   ADD_Label_4:            'Izlenecek hesap adresi ekle',
