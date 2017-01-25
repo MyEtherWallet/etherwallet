@@ -54,20 +54,22 @@ var walletDecryptDrtv = function() {
         <div class="form-group">\n \
           <textarea rows="4" class="form-control" placeholder="{{ \'x_Mnemonic\' | translate}}" ng-model="$parent.$parent.manualmnemonic" ng-class="Validator.isValidMnemonic($parent.$parent.manualmnemonic) ? \'is-valid\' : \'is-invalid\'" ng-change="onMnemonicChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>\n \
         </div>\n \
+        <div ng-show="showMDecrypt">\n\
         <h4 translate="ADD_Radio_5_Path"> Select HD derivation path: </h4>\n \
         <div class="form-group">\n \
           <div class="radio">\n \
-            <label><input type="radio" id="hd_derivation_path_default" ng-model="$parent.HDWallet.dPath" value="{{ $parent.HDWallet.defaultDPath}}"/>\n \
+            <label><input type="radio" id="hd_derivation_path_default" ng-model="$parent.HDWallet.dPath" value="{{$parent.HDWallet.defaultDPath}}"/>\n \
             <span ng-bind="$parent.HDWallet.defaultDPath"></span> <span translate="ADD_Radio_5_PathDefault">(default)</span></label>\n \
           </div>\n \
           <div class="radio">\n \
-            <label><input type="radio" id="hd_derivation_path_alternative" ng-model="$parent.HDWallet.dPath" value="{{ $parent.HDWallet.alternativeDPath}}"/>\n \
+            <label><input type="radio" id="hd_derivation_path_alternative" ng-model="$parent.HDWallet.dPath" value="{{$parent.HDWallet.alternativeDPath}}"/>\n \
             <span ng-bind="$parent.HDWallet.alternativeDPath"></span> <span translate="ADD_Radio_5_PathAlternative">(alternative)</span></label>\n \
           </div>\n \
           <div class="radio">\n \
             <label><input type="radio" id="hd_derivation_path_custom" ng-model="$parent.HDWallet.dPath" value="{{$parent.HDWallet.customDPath}}"/>\n \
             <input type="text" class="form-control" style="display: inline; width: 70%" ng-model="$parent.HDWallet.customDPath" id="hd_derivation_path_custom_value" ng-change="onCustomHDDPathChange()"/> <span translate="ADD_Radio_5_PathCustom">(custom)</label> \n \
           </div>\n \
+        </div>\n \
         </div>\n \
       </div>\n \
       <!-- /if selected type mnemonic-->\n \

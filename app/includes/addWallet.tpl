@@ -90,6 +90,7 @@
         <div class="form-group">
           <textarea rows="4" class="form-control" placeholder="{{ 'x_Mnemonic' | translate }}" ng-model="manualmnemonic" ng-change="onMnemonicChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>
         </div>
+        <div ng-show="showDPaths">
         <h4 translate="ADD_Radio_5_Path"> Select HD derivation path: </h4>
         <div class="form-group">
           <div class="radio">
@@ -104,6 +105,7 @@
             <label><input type="radio" id="hd_derivation_path_custom" ng-model="HDWallet.dPath" value="{{HDWallet.customDPath}}"/>
             <input type="text" class="form-control" style="display: inline; width: 70%" ng-model="HDWallet.customDPath" id="hd_derivation_path_custom_value" ng-change="onCustomHDDPathChange()"/> <span translate="ADD_Radio_5_PathCustom">(custom)</label>
           </div>
+        </div>
         </div>
       </div>
 

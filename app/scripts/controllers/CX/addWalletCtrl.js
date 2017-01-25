@@ -36,7 +36,7 @@ var addWalletCtrl = function($scope, $sce) {
 	};
 	$scope.onMnemonicChange = function() {
 		$scope.addWalletStats = "";
-		$scope.showBtnUnlock = hd.bip39.validateMnemonic($scope.manualmnemonic);
+		$scope.showBtnUnlock = $scope.showDPaths = hd.bip39.validateMnemonic($scope.manualmnemonic);
 	};
 	$scope.showContent = function($fileContent) {
 		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name));
