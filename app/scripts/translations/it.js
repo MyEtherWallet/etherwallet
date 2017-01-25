@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 575529128d59cb75048917d66758204df286e727
+// Last sync with en.js: commit 8814566ca19a85ae300330f42c40e3363b7dbdb5
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -93,10 +93,10 @@ it.data = {
   ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata ',
   ADD_Radio_4:            'Aggiungi un conto da osservare',
   ADD_Radio_5:            'Incolla/Inserisci la tua frase mnemonica',
-  ADD_Radio_5_Path:       'Select HD derivation path',
+  ADD_Radio_5_Path:       'Seleziona un percorso di derivazione HD',
   ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
-  ADD_Radio_5_PathCustom:  '(custom)',
+  ADD_Radio_5_PathCustom:  '(altro)',
   ADD_Label_2:            'Crea un nome:',
   ADD_Label_3:            'Il portafoglio è crittografato. Inserire la password: ',
   ADD_Label_4:            'Aggiungi un conto da osservare',
