@@ -101,9 +101,11 @@ hu.data = {
   ADD_Radio_4:            'Tárca hozzáadása megfigyelésre',
   ADD_Radio_5:          'Másold/írd be a mnemonikus frázist',
   ADD_Radio_5_Path:       'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
-  ADD_Radio_5_PathCustom:  '(custom)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
+  ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2:            'Hozz létre egy Nicknevet:',
   ADD_Label_3:            'A Tárcád titkosítva van. Írj be a jelszót: ',
   ADD_Label_4:            'Számla hozzáadása megfigyelésre',
@@ -236,6 +238,10 @@ hu.data = {
   ADD_Ledger_2:         'Nyisd meg az Ethereum applikációt (vagy egy kontraktus applikációt)',
   ADD_Ledger_3:         'Ellenőrizd, hogy a beállításokban engedélyezve van a Böngésző Támogatás (Browser Support)',
   ADD_Ledger_scan:      'Csatlakozás a Ledger Nano S-hez',
+
+  x_Trezor:             'TREZOR',
+  ADD_Trezor_scan:      'Connect to TREZOR',
+  ADD_Trezor_select:    'This is a TREZOR seed',
 
   /* Chrome Extension */
   CX_error_1:           'Nincsen mentett Tárcád. Kattints ["Tárca Hozzáadása"](/cx-wallet.html#add-wallet) ahhoz, hogy hozzáadj egyet!',

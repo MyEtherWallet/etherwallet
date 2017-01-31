@@ -17,6 +17,9 @@ var walletDecryptDrtv = function() {
       <div class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">\n \
         <label><input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Nano S</span></label>\n \
       </div>\n \
+      <div class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">\n \
+        <label><input type="radio" ng-model="walletType" value="trezor"/><span translate="x_Trezor">TREZOR</span></label>\n \
+      </div>\n \
       <div class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id" >\n \
         <label><input type="radio" ng-model="walletType" value="addressOnly"/><span>View with Address Only</span></label>\n \
       </div>\n \
@@ -59,11 +62,18 @@ var walletDecryptDrtv = function() {
         <div class="form-group">\n \
           <div class="radio">\n \
             <label><input type="radio" id="hd_derivation_path_default" ng-model="$parent.HDWallet.dPath" value="{{$parent.HDWallet.defaultDPath}}"/>\n \
-            <span ng-bind="$parent.HDWallet.defaultDPath"></span> <span translate="ADD_Radio_5_PathDefault">(default)</span></label>\n \
+            <span ng-bind="$parent.HDWallet.defaultDPath"></span> \n \
+            <span ng-if="!showTrezorSeparate" translate="ADD_Radio_5_PathDefault_withTrezor">(default with trezor)</span>\n \
+            <span ng-if="showTrezorSeparate" translate="ADD_Radio_5_PathDefault_withoutTrezor">(default without trezor)</span>\n \
+            </label>\n \
           </div>\n \
           <div class="radio">\n \
             <label><input type="radio" id="hd_derivation_path_alternative" ng-model="$parent.HDWallet.dPath" value="{{$parent.HDWallet.alternativeDPath}}"/>\n \
             <span ng-bind="$parent.HDWallet.alternativeDPath"></span> <span translate="ADD_Radio_5_PathAlternative">(alternative)</span></label>\n \
+          </div>\n \
+          <div class="radio" ng-if="showTrezorSeparate">\n \
+            <label><input type="radio" id="hd_derivation_path_trezor" ng-model="$parent.HDWallet.dPath" value="{{$parent.getTrezorPath()}}"/>\n \
+            <span ng-bind="$parent.getTrezorPath()"></span> <span translate="ADD_Radio_5_PathTrezor">(Trezor)</span></label>\n \
           </div>\n \
           <div class="radio">\n \
             <label><input type="radio" id="hd_derivation_path_custom" ng-model="$parent.HDWallet.dPath" value="{{$parent.HDWallet.customDPath}}"/>\n \
@@ -85,6 +95,12 @@ var walletDecryptDrtv = function() {
         </ol>\n \
       </div>\n \
       <!-- /if selected type ledger-->\n \
+      <!-- if selected type trezor-->\n \
+      <div id="selectedTypeTrezor" ng-if="walletType==\'trezor\'">\n \
+        <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="walletType==\'trezor\'" ng-click="scanTrezor()" translate="ADD_Trezor_scan">SCAN</a></div>\n \
+        <p ng-show="trezorError" class="text-center text-danger"><strong>{{trezorErrorString}}</strong></p>\n \
+      </div>\n \
+      <!-- /if selected type ledger-->\n \
       <!-- if selected addressOnly-->\n \
       <div id="selectedTypeKey" ng-if="walletType==\'addressOnly\'">\n \
         <h4 translate="x_Address"> Your Address </h4>\n \
@@ -94,7 +110,7 @@ var walletDecryptDrtv = function() {
       </div>\n \
       <!-- /if selected addressOnly-->\n \
     </div>\n \
-    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'||showAOnly">\n \
+    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'||walletType==\'trezor\'||showAOnly">\n \
       <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt" translate="ADD_Label_6"> Access Your Wallet:</h4>\n \
       <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
       <h4 id="uploadbtntxt-mnemonic" ng-show="showMDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \

@@ -84,9 +84,11 @@ nl.data = {
   ADD_Radio_4:            'Voeg een te bekijken account toe',
   ADD_Radio_5:            'Plak/type Mnemonic',
   ADD_Radio_5_Path:       'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
-  ADD_Radio_5_PathCustom:  '(custom)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
+  ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2:            'Verzin een Nickname:',
   ADD_Label_3:            'Je wallet is versleuteld. Geef je wachtwoord: ',
   ADD_Label_4:            'Voeg een te bekijken account toe',
@@ -231,6 +233,10 @@ nl.data = {
   ADD_Ledger_4:         'Als je "Browser Support" niet in je instellingen kunt vinden, controleer dan dat je [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) is',
   ADD_Ledger_0a:        'Her-open MyEtherWallet met een veilige (SSL) verbinding',
   ADD_Ledger_0b:        'Her-open MyEtherWallet door gebruik te maken van [Chrome](https://www.google.com/chrome/browser/desktop/) of [Opera](https://www.opera.com/)',
+
+  x_Trezor:             'TREZOR',
+  ADD_Trezor_scan:      'Connect to TREZOR',
+  ADD_Trezor_select:    'This is a TREZOR seed',
 
   /* Chrome Extension */
   CX_error_1:           'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',

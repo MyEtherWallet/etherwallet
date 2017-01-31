@@ -868,8 +868,10 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     defaultDPath: "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
     alternativeDPath: "m/44'/60'/0'", // first address: m/44'/60'/0'/0
     customDPath: "m/44'/60'/1'/0",
-    ledgerPath: "m/44'/60'/0'"
-  };
+    ledgerPath: "m/44'/60'/0'",
+    trezorTestnetPath: "m/44'/1'/0'/0", // first address: m/44'/1'/0'/0/0
+    trezorClassicPath: "m/44'/61'/0'/0", // first address: m/44'/61'/0'/0/0
+    trezorPath: "m/44'/60'/0'/0" };
   $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
   $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
   $scope.onCustomHDDPathChange = function () {
@@ -900,6 +902,7 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
   };
   $scope.onMnemonicChange = function () {
     $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic);
+    $scope.showTrezorSeparate = ajaxReq.type !== 'ETH';
   };
   $scope.onAddressChange = function () {
     $scope.showAOnly = $scope.Validator.isValidAddress($scope.addressOnly);
@@ -913,19 +916,24 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     $scope.HDWallet.id = 0;
     $scope.HDWallet.numWallets = start + limit;
   };
-  $scope.setHDAddressesLedger = function (start, limit) {
+  $scope.setHDAddressesHWWallet = function (start, limit, ledger) {
     $scope.HDWallet.wallets = [];
     for (var i = start; i < start + limit; i++) {
       var derivedKey = $scope.HDWallet.hdk.derive("m/" + i);
-      $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, "ledger", $scope.ledger));
+      if (ledger) {
+        $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, "ledger", $scope.ledger));
+      } else {
+        $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, "trezor"));
+      }
       $scope.HDWallet.wallets[$scope.HDWallet.wallets.length - 1].setBalance(false);
     }
     $scope.HDWallet.id = 0;
     $scope.HDWallet.numWallets = start + limit;
   };
   $scope.AddRemoveHDAddresses = function (isAdd) {
-    if ($scope.walletType == "ledger") {
-      if (isAdd) $scope.setHDAddressesLedger($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);else $scope.setHDAddressesLedger($scope.HDWallet.numWallets - 2 * $scope.HDWallet.walletsPerDialog, $scope.HDWallet.walletsPerDialog);
+    if ($scope.walletType == "ledger" || $scope.walletType == "trezor") {
+      var ledger = $scope.walletType == "ledger";
+      if (isAdd) $scope.setHDAddressesHWWallet($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog, ledger);else $scope.setHDAddressesHWWallet($scope.HDWallet.numWallets - 2 * $scope.HDWallet.walletsPerDialog, $scope.HDWallet.walletsPerDialog, ledger);
     } else {
       if (isAdd) $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);else $scope.setHDAddresses($scope.HDWallet.numWallets - 2 * $scope.HDWallet.walletsPerDialog, $scope.HDWallet.walletsPerDialog);
     }
@@ -979,28 +987,56 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
       walletService.wallet = $scope.wallet;
     }
   };
+  $scope.HWWalletCreate = function (publicKey, chainCode, ledger, path) {
+    $scope.mnemonicModel.open();
+    $scope.HDWallet.hdk = new hd.HDKey();
+    $scope.HDWallet.hdk.publicKey = new Buffer(publicKey, 'hex');
+    $scope.HDWallet.hdk.chainCode = new Buffer(chainCode, 'hex');
+    $scope.HDWallet.numWallets = 0;
+    $scope.HDWallet.dPath = path;
+    $scope.setHDAddressesHWWallet($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog, ledger);
+    walletService.wallet = null;
+  };
   $scope.ledgerCallback = function (result, error) {
     if (typeof result != "undefined") {
-      $scope.mnemonicModel.open();
-      $scope.HDWallet.hdk = new hd.HDKey();
-      $scope.HDWallet.hdk.publicKey = new Buffer(result['publicKey'], 'hex');
-      $scope.HDWallet.hdk.chainCode = new Buffer(result['chainCode'], 'hex');
-      $scope.HDWallet.numWallets = 0;
-      $scope.HDWallet.dPath = $scope.HDWallet.ledgerPath;
-      $scope.setHDAddressesLedger($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
-      walletService.wallet = null;
+      $scope.HWWalletCreate(result['publicKey'], result['chainCode'], true, $scope.HDWallet.ledgerPath);
+    }
+  };
+  $scope.trezorCallback = function (response) {
+    if (response.success) {
+      $scope.HWWalletCreate(response.publicKey, response.chainCode, false, $scope.getTrezorPath());
+    } else {
+      $scope.trezorError = true;
+      $scope.trezorErrorString = response.error;
+      $scope.$apply();
     }
   };
   $scope.scanLedger = function () {
     $scope.ledger = new Ledger3("w0w");
     var app = new ledgerEth($scope.ledger);
-    app.getAddress("44'/60'/0'", $scope.ledgerCallback, false, true);
+    var path = $scope.HDWallet.ledgerPath;
+    app.getAddress(path, $scope.ledgerCallback, false, true);
+  };
+  $scope.scanTrezor = function () {
+    // trezor is using the path without change level id
+    var path = $scope.getTrezorPath();
+    TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.4.0');
+  };
+  $scope.getTrezorPath = function () {
+    var type = ajaxReq.type;
+    if (type === "ETH") {
+      return $scope.HDWallet.trezorPath;
+    } else if (type === "ETC") {
+      return $scope.HDWallet.trezorClassicPath;
+    } else {
+      return $scope.HDWallet.trezorTestnetPath;
+    }
   };
 };
 module.exports = decryptWalletCtrl;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],13:[function(require,module,exports){
+},{"buffer":145}],13:[function(require,module,exports){
 'use strict';
 
 var footerCtrl = function ($scope, globalService) {
@@ -1349,6 +1385,7 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
             } else {
                 $scope.showRaw = false;
                 $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+                if (!$scope.$$phase) $scope.$apply();
             }
         });
     };
@@ -1443,7 +1480,7 @@ var signMsgCtrl = function ($scope, $sce, walletService) {
 module.exports = signMsgCtrl;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],17:[function(require,module,exports){
+},{"buffer":145}],17:[function(require,module,exports){
 'use strict';
 
 var tabsCtrl = function ($scope, globalService, $translate, $sce) {
@@ -2072,6 +2109,9 @@ var walletDecryptDrtv = function () {
       <div class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">\n \
         <label><input type="radio" ng-model="walletType" value="ledger"/><span translate="x_Ledger">Ledger Nano S</span></label>\n \
       </div>\n \
+      <div class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">\n \
+        <label><input type="radio" ng-model="walletType" value="trezor"/><span translate="x_Trezor">TREZOR</span></label>\n \
+      </div>\n \
       <div class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id" >\n \
         <label><input type="radio" ng-model="walletType" value="addressOnly"/><span>View with Address Only</span></label>\n \
       </div>\n \
@@ -2114,11 +2154,18 @@ var walletDecryptDrtv = function () {
         <div class="form-group">\n \
           <div class="radio">\n \
             <label><input type="radio" id="hd_derivation_path_default" ng-model="$parent.HDWallet.dPath" value="{{$parent.HDWallet.defaultDPath}}"/>\n \
-            <span ng-bind="$parent.HDWallet.defaultDPath"></span> <span translate="ADD_Radio_5_PathDefault">(default)</span></label>\n \
+            <span ng-bind="$parent.HDWallet.defaultDPath"></span> \n \
+            <span ng-if="!showTrezorSeparate" translate="ADD_Radio_5_PathDefault_withTrezor">(default with trezor)</span>\n \
+            <span ng-if="showTrezorSeparate" translate="ADD_Radio_5_PathDefault_withoutTrezor">(default without trezor)</span>\n \
+            </label>\n \
           </div>\n \
           <div class="radio">\n \
             <label><input type="radio" id="hd_derivation_path_alternative" ng-model="$parent.HDWallet.dPath" value="{{$parent.HDWallet.alternativeDPath}}"/>\n \
             <span ng-bind="$parent.HDWallet.alternativeDPath"></span> <span translate="ADD_Radio_5_PathAlternative">(alternative)</span></label>\n \
+          </div>\n \
+          <div class="radio" ng-if="showTrezorSeparate">\n \
+            <label><input type="radio" id="hd_derivation_path_trezor" ng-model="$parent.HDWallet.dPath" value="{{$parent.getTrezorPath()}}"/>\n \
+            <span ng-bind="$parent.getTrezorPath()"></span> <span translate="ADD_Radio_5_PathTrezor">(Trezor)</span></label>\n \
           </div>\n \
           <div class="radio">\n \
             <label><input type="radio" id="hd_derivation_path_custom" ng-model="$parent.HDWallet.dPath" value="{{$parent.HDWallet.customDPath}}"/>\n \
@@ -2140,6 +2187,12 @@ var walletDecryptDrtv = function () {
         </ol>\n \
       </div>\n \
       <!-- /if selected type ledger-->\n \
+      <!-- if selected type trezor-->\n \
+      <div id="selectedTypeTrezor" ng-if="walletType==\'trezor\'">\n \
+        <div class="form-group"><a class="btn btn-primary btn-block btnAction" ng-show="walletType==\'trezor\'" ng-click="scanTrezor()" translate="ADD_Trezor_scan">SCAN</a></div>\n \
+        <p ng-show="trezorError" class="text-center text-danger"><strong>{{trezorErrorString}}</strong></p>\n \
+      </div>\n \
+      <!-- /if selected type ledger-->\n \
       <!-- if selected addressOnly-->\n \
       <div id="selectedTypeKey" ng-if="walletType==\'addressOnly\'">\n \
         <h4 translate="x_Address"> Your Address </h4>\n \
@@ -2149,7 +2202,7 @@ var walletDecryptDrtv = function () {
       </div>\n \
       <!-- /if selected addressOnly-->\n \
     </div>\n \
-    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'||showAOnly">\n \
+    <div class="col-md-4 col-sm-6"   ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'||walletType==\'trezor\'||showAOnly">\n \
       <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt" translate="ADD_Label_6"> Access Your Wallet:</h4>\n \
       <h4 id="uploadbtntxt-privkey" ng-show="showPDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
       <h4 id="uploadbtntxt-mnemonic" ng-show="showMDecrypt" translate="ADD_Label_6"> Access Your Wallet: </h4>\n \
@@ -2602,9 +2655,11 @@ if (IS_CX) {
     var u2f = require('./staticJS/u2f-api');
     var ledger3 = require('./staticJS/ledger3');
     var ledgerEth = require('./staticJS/ledger-eth');
+    var trezorConnect = require('./staticJS/trezorConnect');
     window.u2f = u2f;
     window.Ledger3 = ledger3;
     window.ledgerEth = ledgerEth;
+    window.TrezorConnect = trezorConnect.TrezorConnect;
 }
 var tabsCtrl = require('./controllers/tabsCtrl');
 var viewCtrl = require('./controllers/viewCtrl');
@@ -2669,7 +2724,7 @@ if (IS_CX) {
     app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
 }
 
-},{"./ajaxReq":4,"./controllers/CX/addWalletCtrl":5,"./controllers/CX/cxDecryptWalletCtrl":6,"./controllers/CX/mainPopCtrl":7,"./controllers/CX/myWalletsCtrl":8,"./controllers/CX/quickSendCtrl":9,"./controllers/bulkGenCtrl":10,"./controllers/contractsCtrl":11,"./controllers/decryptWalletCtrl":12,"./controllers/footerCtrl":13,"./controllers/sendOfflineTxCtrl":14,"./controllers/sendTxCtrl":15,"./controllers/signMsgCtrl":16,"./controllers/tabsCtrl":17,"./controllers/viewCtrl":18,"./controllers/viewWalletCtrl":19,"./controllers/walletBalanceCtrl":20,"./controllers/walletGenCtrl":21,"./cxFuncs":22,"./directives/QRCodeDrtv":23,"./directives/balanceDrtv":24,"./directives/blockiesDrtv":25,"./directives/cxWalletDecryptDrtv":26,"./directives/fileReaderDrtv":27,"./directives/walletDecryptDrtv":28,"./ethFuncs":29,"./etherUnits":30,"./globalFuncs":31,"./myetherwallet":33,"./nodes":40,"./services/globalService":41,"./services/walletService":42,"./solidity/coder":46,"./solidity/utils":57,"./staticJS/customMarked":58,"./staticJS/ledger-eth":59,"./staticJS/ledger3":60,"./staticJS/u2f-api":61,"./tokenlib":62,"./translations/translate.js":82,"./uiFuncs":85,"./validator":86,"angular":92,"angular-sanitize":88,"angular-translate":90,"angular-translate-handler-log":89,"bignumber.js":109,"bip39":110,"crypto":153,"ethereumjs-tx":183,"ethereumjs-util":184,"hdkey":194,"scryptsy":232,"string-format":248,"uuid":257}],33:[function(require,module,exports){
+},{"./ajaxReq":4,"./controllers/CX/addWalletCtrl":5,"./controllers/CX/cxDecryptWalletCtrl":6,"./controllers/CX/mainPopCtrl":7,"./controllers/CX/myWalletsCtrl":8,"./controllers/CX/quickSendCtrl":9,"./controllers/bulkGenCtrl":10,"./controllers/contractsCtrl":11,"./controllers/decryptWalletCtrl":12,"./controllers/footerCtrl":13,"./controllers/sendOfflineTxCtrl":14,"./controllers/sendTxCtrl":15,"./controllers/signMsgCtrl":16,"./controllers/tabsCtrl":17,"./controllers/viewCtrl":18,"./controllers/viewWalletCtrl":19,"./controllers/walletBalanceCtrl":20,"./controllers/walletGenCtrl":21,"./cxFuncs":22,"./directives/QRCodeDrtv":23,"./directives/balanceDrtv":24,"./directives/blockiesDrtv":25,"./directives/cxWalletDecryptDrtv":26,"./directives/fileReaderDrtv":27,"./directives/walletDecryptDrtv":28,"./ethFuncs":29,"./etherUnits":30,"./globalFuncs":31,"./myetherwallet":33,"./nodes":40,"./services/globalService":41,"./services/walletService":42,"./solidity/coder":46,"./solidity/utils":57,"./staticJS/customMarked":58,"./staticJS/ledger-eth":59,"./staticJS/ledger3":60,"./staticJS/trezorConnect":61,"./staticJS/u2f-api":62,"./tokenlib":63,"./translations/translate.js":83,"./uiFuncs":86,"./validator":87,"angular":93,"angular-sanitize":89,"angular-translate":91,"angular-translate-handler-log":90,"bignumber.js":110,"bip39":111,"crypto":154,"ethereumjs-tx":184,"ethereumjs-util":185,"hdkey":195,"scryptsy":233,"string-format":249,"uuid":258}],33:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -2996,7 +3051,7 @@ Wallet.getWalletFromPrivKeyFile = function (strjson, password) {
 module.exports = Wallet;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],34:[function(require,module,exports){
+},{"buffer":145}],34:[function(require,module,exports){
 'use strict';
 
 var customNode = function (srvrUrl, port) {
@@ -3418,7 +3473,7 @@ nodes.nodeList = {
 nodes.ethPrice = require('./nodeHelpers/ethPrice');
 module.exports = nodes;
 
-},{"./abiDefinitions/etcAbi.json":1,"./abiDefinitions/ethAbi.json":2,"./abiDefinitions/ropstenAbi.json":3,"./nodeHelpers/customNode":34,"./nodeHelpers/ethPrice":35,"./nodeHelpers/etherscan":36,"./nodeHelpers/mewEtc":37,"./nodeHelpers/mewEth":38,"./tokens/etcTokens.json":63,"./tokens/ethTokens.json":64,"./tokens/ropstenTokens.json":65}],41:[function(require,module,exports){
+},{"./abiDefinitions/etcAbi.json":1,"./abiDefinitions/ethAbi.json":2,"./abiDefinitions/ropstenAbi.json":3,"./nodeHelpers/customNode":34,"./nodeHelpers/ethPrice":35,"./nodeHelpers/etherscan":36,"./nodeHelpers/mewEtc":37,"./nodeHelpers/mewEth":38,"./tokens/etcTokens.json":64,"./tokens/ethTokens.json":65,"./tokens/ropstenTokens.json":66}],41:[function(require,module,exports){
 'use strict';
 
 var globalService = function ($http, $httpParamSerializerJQLike) {
@@ -3908,7 +3963,7 @@ module.exports = {
     defaultAccount: undefined
 };
 
-},{"bignumber.js":109}],48:[function(require,module,exports){
+},{"bignumber.js":110}],48:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4183,7 +4238,7 @@ module.exports = {
     formatOutputAddress: formatOutputAddress
 };
 
-},{"./config":47,"./param":51,"./utils":57,"bignumber.js":109}],50:[function(require,module,exports){
+},{"./config":47,"./param":51,"./utils":57,"bignumber.js":110}],50:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -5329,7 +5384,7 @@ module.exports = {
     isJson: isJson
 };
 
-},{"bignumber.js":109,"ethereumjs-util":184,"utf8":251}],58:[function(require,module,exports){
+},{"bignumber.js":110,"ethereumjs-util":185,"utf8":252}],58:[function(require,module,exports){
 'use strict';
 
 var marked = require('marked');
@@ -5360,7 +5415,7 @@ marked.setOptions({
 });
 module.exports = marked;
 
-},{"marked":201}],59:[function(require,module,exports){
+},{"marked":202}],59:[function(require,module,exports){
 (function (Buffer){
 /********************************************************************************
 *   Ledger Communication toolkit
@@ -5521,7 +5576,7 @@ LedgerEth.prototype.getAppConfiguration = function (callback) {
 module.exports = LedgerEth;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],60:[function(require,module,exports){
+},{"buffer":145}],60:[function(require,module,exports){
 (function (Buffer){
 /********************************************************************************
 *   Ledger Communication toolkit
@@ -5592,7 +5647,789 @@ Ledger3.prototype.exchange = function (apduHex, callback) {
 module.exports = Ledger3;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],61:[function(require,module,exports){
+},{"buffer":145}],61:[function(require,module,exports){
+/**
+ * (C) 2017 SatoshiLabs
+ *
+ * GPLv3
+ */
+
+if (!Array.isArray) {
+    Array.isArray = function (arg) {
+        return Object.prototype.toString.call(arg) === '[object Array]';
+    };
+}
+
+var HD_HARDENED = 0x80000000;
+
+'use strict';
+
+var chrome = window.chrome;
+var IS_CHROME_APP = chrome && chrome.app && chrome.app.window;
+
+var ERR_TIMED_OUT = 'Loading timed out';
+var ERR_WINDOW_CLOSED = 'Window closed';
+var ERR_WINDOW_BLOCKED = 'Window blocked';
+var ERR_ALREADY_WAITING = 'Already waiting for a response';
+var ERR_CHROME_NOT_CONNECTED = 'Internal Chrome popup is not responding.';
+
+var DISABLE_LOGIN_BUTTONS = window.TREZOR_DISABLE_LOGIN_BUTTONS || false;
+var CHROME_URL = window.TREZOR_CHROME_URL || './chrome/wrapper.html';
+var POPUP_URL = window.TREZOR_POPUP_URL || 'https://connect.trezor.io/1/popup/popup.html';
+var POPUP_PATH = window.TREZOR_POPUP_PATH || 'https://connect.trezor.io/1/';
+var POPUP_ORIGIN = window.TREZOR_POPUP_ORIGIN || 'https://connect.trezor.io';
+
+var INSIGHT_URLS = window.TREZOR_INSIGHT_URLS || ['https://bitcore1.trezor.io/api/', 'https://bitcore3.trezor.io/api/'];
+
+var POPUP_INIT_TIMEOUT = 15000;
+
+/**
+  * Public API.
+  */
+function TrezorConnect() {
+
+    var manager = new PopupManager();
+
+    /**
+      * Popup errors.
+      */
+    this.ERR_TIMED_OUT = ERR_TIMED_OUT;
+    this.ERR_WINDOW_CLOSED = ERR_WINDOW_CLOSED;
+    this.ERR_WINDOW_BLOCKED = ERR_WINDOW_BLOCKED;
+    this.ERR_ALREADY_WAITING = ERR_ALREADY_WAITING;
+    this.ERR_CHROME_NOT_CONNECTED = ERR_CHROME_NOT_CONNECTED;
+
+    /**
+      * Open the popup for further communication. All API functions open the
+      * popup automatically, but if you need to generate some parameters
+      * asynchronously, use `open` first to avoid popup blockers.
+      * @param {function(?Error)} callback
+      */
+    this.open = function (callback) {
+        var onchannel = function (result) {
+            if (result instanceof Error) {
+                callback(result);
+            } else {
+                callback();
+            }
+        };
+        manager.waitForChannel(onchannel);
+    };
+
+    /**
+      * Close the opened popup, if any.
+      */
+    this.close = function () {
+        manager.close();
+    };
+
+    /**
+      * Enable or disable closing the opened popup after a successful call.
+      * @param {boolean} value
+      */
+    this.closeAfterSuccess = function (value) {
+        manager.closeAfterSuccess = value;
+    };
+
+    /**
+      * Enable or disable closing the opened popup after a failed call.
+      * @param {boolean} value
+      */
+    this.closeAfterFailure = function (value) {
+        manager.closeAfterFailure = value;
+    };
+
+    /**
+      * @typedef XPubKeyResult
+      * @param {boolean} success
+      * @param {?string} error
+      * @param {?string} xpubkey  serialized extended public key
+      * @param {?string} path     BIP32 serializd path of the key
+      */
+
+    /**
+      * Load BIP32 extended public key by path.
+      *
+      * Path can be specified either in the string form ("m/44'/1/0") or as
+      * raw integer array. In case you omit the path, user is asked to select
+      * a BIP32 account to export, and the result contains m/44'/0'/x' node
+      * of the account.
+      *
+      * @param {?(string|array<number>)} path
+      * @param {function(XPubKeyResult)} callback
+      * @param {?(string|array<number>)} requiredFirmware
+      */
+    this.getXPubKey = function (path, callback, requiredFirmware) {
+        if (typeof path === 'string') {
+            path = parseHDPath(path);
+        }
+        manager.sendWithChannel({
+            type: 'xpubkey',
+            path: path,
+            requiredFirmware: requiredFirmware
+        }, callback);
+    };
+
+    this.getFreshAddress = function (callback, requiredFirmware) {
+        var wrapperCallback = function (result) {
+            if (result.success) {
+                callback({ success: true, address: result.freshAddress });
+            } else {
+                callback(result);
+            }
+        };
+
+        manager.sendWithChannel({
+            type: 'accountinfo'
+        }, wrapperCallback);
+    };
+
+    this.getAccountInfo = function (input, callback, requiredFirmware) {
+        try {
+            var description = parseAccountInfoInput(input);
+            manager.sendWithChannel({
+                type: 'accountinfo',
+                description: description,
+                requiredFirmware: requiredFirmware
+            }, callback);
+        } catch (e) {
+            callback({ success: false, error: e });
+        }
+    };
+
+    this.getBalance = function (callback, requiredFirmware) {
+        manager.sendWithChannel({
+            type: 'accountinfo',
+            requiredFirmware: requiredFirmware
+        }, callback);
+    };
+
+    /**
+      * @typedef SignTxResult
+      * @param {boolean} success
+      * @param {?string} error
+      * @param {?string} serialized_tx      serialized tx, in hex, including signatures
+      * @param {?array<string>} signatures  array of input signatures, in hex
+      */
+
+    /**
+      * Sign a transaction in the device and return both serialized
+      * transaction and the signatures.
+      *
+      * @param {array<TxInputType>} inputs
+      * @param {array<TxOutputType>} outputs
+      * @param {function(SignTxResult)} callback
+      * @param {?(string|array<number>)} requiredFirmware
+      *
+      * @see https://github.com/trezor/trezor-common/blob/master/protob/types.proto
+      */
+    this.signTx = function (inputs, outputs, callback, requiredFirmware) {
+        manager.sendWithChannel({
+            type: 'signtx',
+            inputs: inputs,
+            outputs: outputs,
+            requiredFirmware: requiredFirmware
+        }, callback);
+    };
+
+    this.signEthereumTx = function (address_n, nonce, gas_price, gas_limit, to, value, data, chain_id, callback, requiredFirmware) {
+        if (requiredFirmware == null) {
+            requiredFirmware = '1.4.0'; // first firmware that supports ethereum
+        }
+        if (typeof address_n === 'string') {
+            address_n = parseHDPath(address_n);
+        }
+        manager.sendWithChannel({
+            type: 'signethtx',
+            address_n: address_n,
+            nonce: nonce,
+            gas_price: gas_price,
+            gas_limit: gas_limit,
+            to: to,
+            value: value,
+            data: data,
+            chain_id: chain_id,
+            requiredFirmware: requiredFirmware
+        }, callback);
+    };
+
+    /**
+      * @typedef TxRecipient
+      * @param {number} amount   the amount to send, in satoshis
+      * @param {string} address  the address of the recipient
+      */
+
+    /**
+      * Compose a transaction by doing BIP-0044 discovery, letting the user
+      * select an account, and picking UTXO by internal preferences.
+      * Transaction is then signed and returned in the same format as
+      * `signTx`.  Only supports BIP-0044 accounts (single-signature).
+      *
+      * @param {array<TxRecipient>} recipients
+      * @param {function(SignTxResult)} callback
+      * @param {?(string|array<number>)} requiredFirmware
+      */
+    this.composeAndSignTx = function (recipients, callback, requiredFirmware) {
+        manager.sendWithChannel({
+            type: 'composetx',
+            recipients: recipients,
+            requiredFirmware: requiredFirmware
+        }, callback);
+    };
+
+    /**
+      * @typedef RequestLoginResult
+      * @param {boolean} success
+      * @param {?string} error
+      * @param {?string} public_key  public key used for signing, in hex
+      * @param {?string} signature   signature, in hex
+      */
+
+    /**
+      * Sign a login challenge for active origin.
+      *
+      * @param {?string} hosticon
+      * @param {string} challenge_hidden
+      * @param {string} challenge_visual
+      * @param {string|function(RequestLoginResult)} callback
+      * @param {?(string|array<number>)} requiredFirmware
+      *
+      * @see https://github.com/trezor/trezor-common/blob/master/protob/messages.proto
+      */
+    this.requestLogin = function (hosticon, challenge_hidden, challenge_visual, callback, requiredFirmware) {
+        if (typeof callback === 'string') {
+            // special case for a login through <trezor:login> button.
+            // `callback` is name of global var
+            callback = window[callback];
+        }
+        if (!callback) {
+            throw new TypeError('TrezorConnect: login callback not found');
+        }
+        manager.sendWithChannel({
+            type: 'login',
+            icon: hosticon,
+            challenge_hidden: challenge_hidden,
+            challenge_visual: challenge_visual,
+            requiredFirmware: requiredFirmware
+        }, callback);
+    };
+
+    /**
+      * @typedef SignMessageResult
+      * @param {boolean} success
+      * @param {?string} error
+      * @param {?string} address address (in base58check)
+      * @param {?string} signature   signature, in base64
+      */
+
+    /**
+      * Sign a message
+      *
+      * @param {string|array} path  
+      * @param {string} message to sign (ascii)
+      * @param {string|function(SignMessageResult)} callback
+      * @param {?string} opt_coin - (optional) name of coin (default Bitcoin)
+      * @param {?(string|array<number>)} requiredFirmware
+      *
+      */
+    this.signMessage = function (path, message, callback, opt_coin, requiredFirmware) {
+        if (typeof path === 'string') {
+            path = parseHDPath(path);
+        }
+        if (!opt_coin) {
+            opt_coin = 'Bitcoin';
+        }
+        if (!callback) {
+            throw new TypeError('TrezorConnect: callback not found');
+        }
+        manager.sendWithChannel({
+            type: 'signmsg',
+            path: path,
+            message: message,
+            coin: { coin_name: opt_coin },
+            requiredFirmware: requiredFirmware
+        }, callback);
+    };
+
+    /**
+      * Verify message
+      *
+      * @param {string} address
+      * @param {string} signature (base64)
+      * @param {string} message (string)
+      * @param {string|function()} callback
+      * @param {?string} opt_coin - (optional) name of coin (default Bitcoin)
+      * @param {?(string|array<number>)} requiredFirmware
+      *
+      */
+    this.verifyMessage = function (address, signature, message, callback, opt_coin, requiredFirmware) {
+        if (!opt_coin) {
+            opt_coin = 'Bitcoin';
+        }
+        if (!callback) {
+            throw new TypeError('TrezorConnect: callback not found');
+        }
+        manager.sendWithChannel({
+            type: 'verifymsg',
+            address: address,
+            signature: signature,
+            message: message,
+            coin: { coin_name: opt_coin },
+            requiredFirmware: requiredFirmware
+        }, callback);
+    };
+
+    /**
+      * Symmetric key-value encryption
+      *
+      * @param {string|array} path
+      * @param {string} key to show on device display
+      * @param {string} value hexadecimal value, length a multiple of 16 bytes
+      * @param {boolean} encrypt / decrypt direction
+      * @param {boolean} ask_on_encrypt (should user confirm on encrypt?)
+      * @param {boolean} ask_on_decrypt (should user confirm on decrypt?)
+      * @param {string|function()} callback
+      * @param {?(string|array<number>)} requiredFirmware
+      *
+      */
+    this.cipherKeyValue = function (path, key, value, encrypt, ask_on_encrypt, ask_on_decrypt, callback, requiredFirmware) {
+        if (typeof path === 'string') {
+            path = parseHDPath(path);
+        }
+        if (typeof value !== 'string') {
+            throw new TypeError('TrezorConnect: Value must be a string');
+        }
+        if (!/^[0-9A-Fa-f]*$/.test(value)) {
+            throw new TypeError('TrezorConnect: Value must be hexadecimal');
+        }
+        if (value.length % 32 !== 0) {
+            // 1 byte == 2 hex strings
+            throw new TypeError('TrezorConnect: Value length must be multiple of 16 bytes');
+        }
+        if (!callback) {
+            throw new TypeError('TrezorConnect: callback not found');
+        }
+        manager.sendWithChannel({
+            type: 'cipherkeyvalue',
+            path: path,
+            key: key,
+            value: value,
+            encrypt: !!encrypt,
+            ask_on_encrypt: !!ask_on_encrypt,
+            ask_on_decrypt: !!ask_on_decrypt,
+            requiredFirmware: requiredFirmware
+        }, callback);
+    };
+
+    this.pushTransaction = function (rawTx, callback) {
+        if (!/^[0-9A-Fa-f]*$/.test(rawTx)) {
+            throw new TypeError('TrezorConnect: Transaction must be hexadecimal');
+        }
+        if (!callback) {
+            throw new TypeError('TrezorConnect: callback not found');
+        }
+
+        var tryUrl = function (i) {
+            var insight_url = INSIGHT_URLS[i];
+            var xhr = new XMLHttpRequest();
+            var method = 'POST';
+            var url = insight_url + '/tx/send';
+            var data = {
+                rawtx: rawTx
+            };
+
+            xhr.open(method, url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var txid = JSON.parse(xhr.responseText).txid;
+                        callback({ success: true, txid: txid });
+                    } else {
+                        if (i === INSIGHT_URLS.length - 1) {
+                            callback({ error: new Error(xhr.responseText) });
+                        } else {
+                            tryUrl(i + 1);
+                        }
+                    }
+                }
+            };
+            xhr.send(JSON.stringify(data));
+        };
+
+        tryUrl(0);
+    };
+
+    var LOGIN_CSS = '<style>@import url("@connect_path@/login_buttons.css")</style>';
+
+    var LOGIN_ONCLICK = 'TrezorConnect.requestLogin(' + "'@hosticon@','@challenge_hidden@','@challenge_visual@','@callback@'" + ')';
+
+    var LOGIN_HTML = '<div id="trezorconnect-wrapper">' + '  <a id="trezorconnect-button" onclick="' + LOGIN_ONCLICK + '">' + '    <span id="trezorconnect-icon"></span>' + '    <span id="trezorconnect-text">@text@</span>' + '  </a>' + '  <span id="trezorconnect-info">' + '    <a id="trezorconnect-infolink" href="https://www.buytrezor.com/"' + '       target="_blank">What is TREZOR?</a>' + '  </span>' + '</div>';
+
+    /**
+      * Find <trezor:login> elements and replace them with login buttons.
+      * It's not required to use these special elements, feel free to call
+      * `TrezorConnect.requestLogin` directly.
+      */
+    this.renderLoginButtons = function () {
+        var elements = document.getElementsByTagName('trezor:login');
+
+        for (var i = 0; i < elements.length; i++) {
+            var e = elements[i];
+            var text = e.getAttribute('text') || 'Sign in with TREZOR';
+            var callback = e.getAttribute('callback') || '';
+            var hosticon = e.getAttribute('icon') || '';
+            var challenge_hidden = e.getAttribute('challenge_hidden') || '';
+            var challenge_visual = e.getAttribute('challenge_visual') || '';
+
+            // it's not valid to put markup into attributes, so let users
+            // supply a raw text and make TREZOR bold
+            text = text.replace('TREZOR', '<strong>TREZOR</strong>');
+            e.outerHTML = (LOGIN_CSS + LOGIN_HTML).replace('@text@', text).replace('@callback@', callback).replace('@hosticon@', hosticon).replace('@challenge_hidden@', challenge_hidden).replace('@challenge_visual@', challenge_visual).replace('@connect_path@', POPUP_PATH);
+        }
+    };
+}
+
+/*
+  * `getXPubKey()`
+  */
+
+function parseHDPath(string) {
+    return string.toLowerCase().split('/').filter(function (p) {
+        return p !== 'm';
+    }).map(function (p) {
+        var hardened = false;
+        if (p[p.length - 1] === "'") {
+            hardened = true;
+            p = p.substr(0, p.length - 1);
+        }
+        if (isNaN(p)) {
+            throw new Error('Not a valid path.');
+        }
+        var n = parseInt(p);
+        if (hardened) {
+            // hardened index
+            n = (n | 0x80000000) >>> 0;
+        }
+        return n;
+    });
+}
+
+function getIdFromPath(path) {
+    if (path.length !== 3) {
+        throw new Error();
+    }
+    if (path[0] >>> 0 !== (44 | HD_HARDENED) >>> 0) {
+        throw new Error();
+    }
+    if (path[1] >>> 0 !== (0 | HD_HARDENED) >>> 0) {
+        throw new Error();
+    }
+    return (path[2] & ~HD_HARDENED) >>> 0;
+}
+
+// parses first argument from getAccountInfo
+function parseAccountInfoInput(input) {
+    if (input == null) {
+        return null;
+    }
+
+    if (typeof input === 'string') {
+        if (input.substr(0, 4) === 'xpub') {
+            return input;
+        }
+        if (isNaN(input)) {
+            var parsedPath = parseHDPath(input);
+            return getIdFromPath(parsedPath);
+        } else {
+            return parseInt(input);
+        }
+    } else if (Array.isArray(input)) {
+        return getIdFromPath(input);
+    } else if (typeof input === 'number') {
+        return input;
+    }
+    throw new Error('Unknown input format.');
+}
+
+/*
+  * Popup management
+  */
+
+function ChromePopup(url, name, width, height) {
+    var left = (screen.width - width) / 2;
+    var top = (screen.height - height) / 2;
+    var opts = {
+        id: name,
+        innerBounds: {
+            width: width,
+            height: height,
+            left: left,
+            top: top
+        }
+    };
+
+    var closed = function () {
+        if (this.onclose) {
+            this.onclose(false); // never report as blocked
+        }
+    }.bind(this);
+
+    var opened = function (w) {
+        this.window = w;
+        this.window.onClosed.addListener(closed);
+    }.bind(this);
+
+    chrome.app.window.create(url, opts, opened);
+
+    this.name = name;
+    this.window = null;
+    this.onclose = null;
+}
+
+function ChromeChannel(popup, waiting) {
+    var port = null;
+
+    var respond = function (data) {
+        if (waiting) {
+            var w = waiting;
+            waiting = null;
+            w(data);
+        }
+    };
+
+    var setup = function (p) {
+        if (p.name === popup.name) {
+            port = p;
+            port.onMessage.addListener(respond);
+            chrome.runtime.onConnect.removeListener(setup);
+        }
+    };
+
+    chrome.runtime.onConnect.addListener(setup);
+
+    this.respond = respond;
+
+    this.close = function () {
+        chrome.runtime.onConnect.removeListener(setup);
+        port.onMessage.removeListener(respond);
+        port.disconnect();
+        port = null;
+    };
+
+    this.send = function (value, callback) {
+        if (waiting === null) {
+            waiting = callback;
+
+            if (port) {
+                port.postMessage(value);
+            } else {
+                throw new Error(ERR_CHROME_NOT_CONNECTED);
+            }
+        } else {
+            throw new Error(ERR_ALREADY_WAITING);
+        }
+    };
+}
+
+function Popup(url, origin, name, width, height) {
+    var left = (screen.width - width) / 2;
+    var top = (screen.height - height) / 2;
+    var opts = 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',menubar=no' + ',toolbar=no' + ',location=no' + ',personalbar=no' + ',status=no';
+    var w = window.open(url, name, opts);
+
+    var interval;
+    var blocked = w.closed;
+    var iterate = function () {
+        if (w.closed) {
+            clearInterval(interval);
+            if (this.onclose) {
+                this.onclose(blocked);
+            }
+        }
+    }.bind(this);
+    interval = setInterval(iterate, 100);
+
+    this.window = w;
+    this.origin = origin;
+    this.onclose = null;
+}
+
+function Channel(popup, waiting) {
+
+    var respond = function (data) {
+        if (waiting) {
+            var w = waiting;
+            waiting = null;
+            w(data);
+        }
+    };
+
+    var receive = function (event) {
+        if (event.source === popup.window && event.origin === popup.origin) {
+            respond(event.data);
+        }
+    };
+
+    window.addEventListener('message', receive);
+
+    this.respond = respond;
+
+    this.close = function () {
+        window.removeEventListener('message', receive);
+    };
+
+    this.send = function (value, callback) {
+        if (waiting === null) {
+            waiting = callback;
+            popup.window.postMessage(value, popup.origin);
+        } else {
+            throw new Error(ERR_ALREADY_WAITING);
+        }
+    };
+}
+
+function ConnectedChannel(p) {
+
+    var ready = function () {
+        clearTimeout(this.timeout);
+        this.popup.onclose = null;
+        this.ready = true;
+        this.onready();
+    }.bind(this);
+
+    var closed = function (blocked) {
+        clearTimeout(this.timeout);
+        this.channel.close();
+        if (blocked) {
+            this.onerror(new Error(ERR_WINDOW_BLOCKED));
+        } else {
+            this.onerror(new Error(ERR_WINDOW_CLOSED));
+        }
+    }.bind(this);
+
+    var timedout = function () {
+        this.popup.onclose = null;
+        if (this.popup.window) {
+            this.popup.window.close();
+        }
+        this.channel.close();
+        this.onerror(new Error(ERR_TIMED_OUT));
+    }.bind(this);
+
+    if (IS_CHROME_APP) {
+        this.popup = new ChromePopup(p.chromeUrl, p.name, p.width, p.height);
+        this.channel = new ChromeChannel(this.popup, ready);
+    } else {
+        this.popup = new Popup(p.url, p.origin, p.name, p.width, p.height);
+        this.channel = new Channel(this.popup, ready);
+    }
+
+    this.timeout = setTimeout(timedout, POPUP_INIT_TIMEOUT);
+
+    this.popup.onclose = closed;
+
+    this.ready = false;
+    this.onready = null;
+    this.onerror = null;
+}
+
+function PopupManager() {
+    var cc = null;
+
+    var closed = function () {
+        cc.channel.respond(new Error(ERR_WINDOW_CLOSED));
+        cc.channel.close();
+        cc = null;
+    };
+
+    var open = function (callback) {
+        cc = new ConnectedChannel({
+            name: 'trezor-connect',
+            width: 600,
+            height: 500,
+            origin: POPUP_ORIGIN,
+            path: POPUP_PATH,
+            url: POPUP_URL,
+            chromeUrl: CHROME_URL
+        });
+        cc.onready = function () {
+            cc.popup.onclose = closed;
+            callback(cc.channel);
+        };
+        cc.onerror = function (error) {
+            cc = null;
+            callback(error);
+        };
+    }.bind(this);
+
+    this.closeAfterSuccess = true;
+    this.closeAfterFailure = true;
+
+    this.close = function () {
+        if (cc && cc.popup.window) {
+            cc.popup.window.close();
+        }
+    };
+
+    this.waitForChannel = function (callback) {
+        if (cc) {
+            if (cc.ready) {
+                callback(cc.channel);
+            } else {
+                callback(new Error(ERR_ALREADY_WAITING));
+            }
+        } else {
+            try {
+                open(callback);
+            } catch (e) {
+                callback(new Error(ERR_WINDOW_BLOCKED));
+            }
+        }
+    };
+
+    this.sendWithChannel = function (message, callback) {
+
+        var respond = function (response) {
+            var succ = response.success && this.closeAfterSuccess;
+            var fail = !response.success && this.closeAfterFailure;
+            if (succ || fail) {
+                this.close();
+            }
+            callback(response);
+        }.bind(this);
+
+        var onresponse = function (response) {
+            if (response instanceof Error) {
+                var error = response;
+                respond({ success: false, error: error.message });
+            } else {
+                respond(response);
+            }
+        };
+
+        var onchannel = function (channel) {
+            if (channel instanceof Error) {
+                var error = channel;
+                respond({ success: false, error: error.message });
+            } else {
+                channel.send(message, onresponse);
+            }
+        };
+
+        this.waitForChannel(onchannel);
+    };
+}
+
+var connect = new TrezorConnect();
+
+if (!IS_CHROME_APP && !DISABLE_LOGIN_BUTTONS) {
+    connect.renderLoginButtons();
+}
+
+module.exports = { TrezorConnect: connect };
+
+},{}],62:[function(require,module,exports){
 //Copyright 2014-2015 Google Inc. All rights reserved.
 
 //Use of this source code is governed by a BSD-style
@@ -6306,7 +7143,7 @@ u2f.getApiVersion = function (callback, opt_timeoutSeconds) {
 };
 module.exports = u2f;
 
-},{}],62:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 'use strict';
 
 var Token = function (contractAddress, userAddress, symbol, decimal, type) {
@@ -6387,9 +7224,9 @@ Token.prototype.getData = function (toAdd, value) {
 };
 module.exports = Token;
 
-},{}],63:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 arguments[4][3][0].apply(exports,arguments)
-},{"dup":3}],64:[function(require,module,exports){
+},{"dup":3}],65:[function(require,module,exports){
 module.exports=[
   {
     "address":"0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
@@ -6513,9 +7350,9 @@ module.exports=[
   }
 ]
 
-},{}],65:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 arguments[4][3][0].apply(exports,arguments)
-},{"dup":3}],66:[function(require,module,exports){
+},{"dup":3}],67:[function(require,module,exports){
 // German
 'use strict';
 
@@ -6556,6 +7393,10 @@ de.data = {
   ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   ADD_Ledger_scan: 'Connect to Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Geth Error Messages */
   GETH_InvalidSender: 'Invalid sender',
@@ -6645,8 +7486,10 @@ de.data = {
   ADD_Radio_3: 'Kopiere/Tippe deinen privaten Schlüssel ein',
   ADD_Radio_4: 'Kontoadresse zur Beobachtung hinzufügen',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Wähle ein Kürzel:',
   ADD_Label_3: 'Deine Datei ist verschlüsselt. Bitte gib das Passwort ein: ',
@@ -7051,7 +7894,7 @@ de.data = {
 
 module.exports = de;
 
-},{}],67:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 // Greek
 'use strict';
 
@@ -7093,6 +7936,10 @@ el.data = {
   ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   ADD_Ledger_scan: 'Connect to Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Geth Error Messages */
   GETH_InvalidSender: 'Invalid sender',
@@ -7190,8 +8037,10 @@ el.data = {
   ADD_Radio_3: 'Επικολλήστε/Πληκτρολογήστε το Ιδιωτικό Κλειδί σας',
   ADD_Radio_4: 'Προσθήκη Λογαριασμού προς Παρακολούθηση',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Δημιουργία Ψευδωνύμου:',
   ADD_Label_3: 'Το πορτοφόλι σας είναι κρυπτογραφημένο. Παρακαλώ εισάγετε τον κωδικό: ',
@@ -7590,7 +8439,7 @@ el.data = {
 
 module.exports = el;
 
-},{}],68:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 // English
 'use strict';
 
@@ -7687,8 +8536,10 @@ en.data = {
   ADD_Radio_4: 'Add an Account to Watch',
   ADD_Radio_5: 'Paste/Type Your Mnemonic',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Create a Nickname:',
   ADD_Label_3: 'Your wallet is encrypted. Please enter the password: ',
@@ -7825,6 +8676,9 @@ en.data = {
   ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   ADD_Ledger_scan: 'Connect to Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
 
   /* Chrome Extension */
   CX_error_1: 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
@@ -8131,7 +8985,7 @@ en.data = {
 
 module.exports = en;
 
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 // Spanish
 'use strict';
 
@@ -8176,6 +9030,10 @@ es.data = {
   ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   ADD_Ledger_scan: 'Connect to Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Navigation*/
   NAV_YourWallets: 'Tus Carteras',
@@ -8250,8 +9108,10 @@ es.data = {
   ADD_Radio_3: 'Pega/escribe tu clave privada ',
   ADD_Radio_4: 'Añade una cuenta para supervisar',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Crear un alias:',
   ADD_Label_3: 'Tu cartera está encriptada. Introduce tu contraseña: ',
@@ -8667,7 +9527,7 @@ es.data = {
 
 module.exports = es;
 
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 // Finnish
 'use strict';
 
@@ -8709,6 +9569,10 @@ fi.data = {
   ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   ADD_Ledger_scan: 'Connect to Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Chrome Extension */
   CX_error_1: 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
@@ -8814,8 +9678,10 @@ fi.data = {
   ADD_Radio_3: 'Liitä/Kirjoita Yksityinen Salausavaimesi',
   ADD_Radio_4: 'Lisää Tili Jota Seurata',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Luo Kutsumanimi:',
   ADD_Label_3: 'Lompakkosi on salattu, ole hyvä ja syötä salasanasi: ',
@@ -9231,7 +10097,7 @@ fi.data = {
 
 module.exports = fi;
 
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 // French
 'use strict';
 
@@ -9329,8 +10195,10 @@ fr.data = {
   ADD_Radio_4: 'Ajoutez un compte',
   ADD_Radio_5: 'Collez/entrez votre mnémonique',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Nommez votre compte :',
   ADD_Label_3: 'Votre fichier est chiffré, merci de saisir le mot de passe : ',
@@ -9466,6 +10334,10 @@ fr.data = {
   ADD_Ledger_4: 'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
   ADD_Ledger_0a: 'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL)',
   ADD_Ledger_0b: 'Réouvrir MyEtherWallet avec [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/)',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Chrome Extension */
   CX_error_1: 'Vous n\'avez pas de portefeuille sauvegardé. Cliquez sur ["Ajout de portefeuille"](/cx-wallet.html#add-wallet) pour en ajouter un !',
@@ -9771,7 +10643,7 @@ fr.data = {
 
 module.exports = fr;
 
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 // Hungarian
 'use strict';
 
@@ -9876,8 +10748,10 @@ hu.data = {
   ADD_Radio_4: 'Tárca hozzáadása megfigyelésre',
   ADD_Radio_5: 'Másold/írd be a mnemonikus frázist',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Hozz létre egy Nicknevet:',
   ADD_Label_3: 'A Tárcád titkosítva van. Írj be a jelszót: ',
@@ -10011,6 +10885,10 @@ hu.data = {
   ADD_Ledger_2: 'Nyisd meg az Ethereum applikációt (vagy egy kontraktus applikációt)',
   ADD_Ledger_3: 'Ellenőrizd, hogy a beállításokban engedélyezve van a Böngésző Támogatás (Browser Support)',
   ADD_Ledger_scan: 'Csatlakozás a Ledger Nano S-hez',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Chrome Extension */
   CX_error_1: 'Nincsen mentett Tárcád. Kattints ["Tárca Hozzáadása"](/cx-wallet.html#add-wallet) ahhoz, hogy hozzáadj egyet!',
@@ -10308,7 +11186,7 @@ hu.data = {
 
 module.exports = hu;
 
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 // Indonesian
 'use strict';
 
@@ -10406,8 +11284,10 @@ id.data = {
   ADD_Radio_4: 'Tambah akun untuk dilihat',
   ADD_Radio_5: 'Paste/Ketik Mnemonic Anda',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Buat Alias:',
   ADD_Label_3: 'File Dompet anda ter-enkripsi. Masukkan password: ',
@@ -10432,6 +11312,10 @@ id.data = {
   ADD_Ledger_0a: 'Buka kembali MyEtherWallet melalui koneksi (SSL) yang aman',
   ADD_Ledger_0b: 'Buka kembali MyEtherWallet menggunakan [Chrome](https://www.google.com/chrome/browser/desktop/) atau [Opera](https://www.opera.com/)',
   ADD_Ledger_scan: 'Hubungkan ke Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Generate Wallets */
   GEN_desc: 'Jika Anda memerlukan lebih dari satu dompet, Anda dapat memakai fitur : ',
@@ -10843,7 +11727,7 @@ id.data = {
 
 module.exports = id;
 
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 // Italian
 // Last sync with en.js: commit 575529128d59cb75048917d66758204df286e727
 'use strict';
@@ -10941,8 +11825,10 @@ it.data = {
   ADD_Radio_4: 'Aggiungi un conto da osservare',
   ADD_Radio_5: 'Incolla/Inserisci la tua frase mnemonica',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Crea un nome:',
   ADD_Label_3: 'Il portafoglio è crittografato. Inserire la password: ',
@@ -11079,6 +11965,10 @@ it.data = {
   ADD_Ledger_3: 'Verifica che il supporto browser sia abilitato nelle impostazioni',
   ADD_Ledger_4: 'Se non c\'è l\'opzione per il supporto browser nelle impostazioni, verifica di avere un [Firmware >1.2](https://www.ledgerwallet.com/apps/manager)',
   ADD_Ledger_scan: 'Collegati al Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* CX */
   CX_error_1: 'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno!',
@@ -11385,7 +12275,7 @@ it.data = {
 
 module.exports = it;
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 // Japanese
 'use strict';
 
@@ -11493,8 +12383,10 @@ ja.data = {
   ADD_Radio_4: '監視するアカウントを追加',
   ADD_Radio_5: 'ニーモニックを上書き/タイプ',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'ニックネームの作成：',
   ADD_Label_3: 'ウォレットが暗号化されています。パスワードを入力してください： ',
@@ -11605,6 +12497,10 @@ ja.data = {
   ADD_Ledger_0a: 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。',
   ADD_Ledger_0b: 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。',
   ADD_Ledger_scan: 'Ledger Nano S　に接続',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Deploy Contracts */
   DEP_generate: 'バイトコードを生成する',
@@ -11922,7 +12818,7 @@ ja.data = {
 
 module.exports = ja;
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 // Dutch
 'use strict';
 
@@ -12010,8 +12906,10 @@ nl.data = {
   ADD_Radio_4: 'Voeg een te bekijken account toe',
   ADD_Radio_5: 'Plak/type Mnemonic',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Verzin een Nickname:',
   ADD_Label_3: 'Je wallet is versleuteld. Geef je wachtwoord: ',
@@ -12157,6 +13055,10 @@ nl.data = {
   ADD_Ledger_4: 'Als je "Browser Support" niet in je instellingen kunt vinden, controleer dan dat je [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) is',
   ADD_Ledger_0a: 'Her-open MyEtherWallet met een veilige (SSL) verbinding',
   ADD_Ledger_0b: 'Her-open MyEtherWallet door gebruik te maken van [Chrome](https://www.google.com/chrome/browser/desktop/) of [Opera](https://www.opera.com/)',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Chrome Extension */
   CX_error_1: 'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen!',
@@ -12462,7 +13364,7 @@ nl.data = {
 
 module.exports = nl;
 
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 // Norwegian
 'use strict';
 
@@ -12504,6 +13406,10 @@ no.data = {
   ADD_Ledger_0a: 'Åpne MyEtherWallet på nytt på en sikker (SSL) forbindelse.',
   ADD_Ledger_0b: 'Åpne MyEtherWallet på nytt med [Chrome](https://www.google.com/chrome/browser/desktop/) eller [Opera](https://www.opera.com/)',
   ADD_Ledger_scan: 'Koble til Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Navigation*/
   NAV_YourWallets: 'Dine lommebøker',
@@ -12582,8 +13488,10 @@ no.data = {
   ADD_Radio_3: 'Lim/skriv inn din private nøkkel',
   ADD_Radio_4: 'Legg til en konto for overvåkning',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Lag et kallenavn:',
   ADD_Label_3: 'Filen din er kryptert. Vennligst oppgi passordet: ',
@@ -12999,7 +13907,7 @@ no.data = {
 
 module.exports = no;
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 // Polish
 'use strict';
 
@@ -13092,8 +14000,10 @@ pl.data = {
   ADD_Radio_4: 'Dodaj Konto do Obserwacji',
   ADD_Radio_5: 'Wklej/Wpisz Swój Mnemonik',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Utwórz Nazwę Użytkownika:',
   ADD_Label_3: 'Twój portfel jest zaszyfrowany. Podaj hasło: ',
@@ -13234,6 +14144,10 @@ pl.data = {
   ADD_Ledger_0a: 'Otwórz MyEtherWallet ponownie na bezpiecznym połączeniu (SSL)',
   ADD_Ledger_0b: 'Otwórz MyEtherWallet w [Chrome](https://www.google.com/chrome/browser/desktop/) lub [Opera](https://www.opera.com/)',
   ADD_Ledger_scan: 'Połącz z Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Chrome Extension */
   CX_error_1: 'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)!',
@@ -13534,7 +14448,7 @@ pl.data = {
 
 module.exports = pl;
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 // Portuguese
 'use strict';
 
@@ -13637,8 +14551,10 @@ pt.data = {
   ADD_Radio_4: 'Adicionar uma conta para ver',
   ADD_Radio_5: 'Cole/Digite sua Mnemonic',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Crie um Apelido:',
   ADD_Label_3: 'Sua carteira é criptografada. Por favor, insira a senha: ',
@@ -13772,6 +14688,10 @@ pt.data = {
   ADD_Ledger_2: 'Abra a aplicação Ethereum (ou uma aplicação de contrato)',
   ADD_Ledger_3: 'Verifique se o Suporte do Navegador está habilitado em Configurações',
   ADD_Ledger_scan: 'Conectar-se a Ledger Wallet',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Chrome Extension */
   CX_error_1: 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one!',
@@ -14072,7 +14992,7 @@ pt.data = {
 
 module.exports = pt;
 
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 // Russian
 'use strict';
 
@@ -14115,6 +15035,10 @@ ru.data = {
   ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   ADD_Ledger_scan: 'Connect to Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Geth Error Messages */
   GETH_InvalidSender: 'Неверный адрес отправителя',
@@ -14204,8 +15128,10 @@ ru.data = {
   ADD_Radio_3: 'Вставить или ввести Ваш закрытый ключ',
   ADD_Radio_4: 'Добавить счёт в список слежения',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Присвоить название:',
   ADD_Label_3: 'Ваш кошелёк зашифрован.  Пожалуйста, введите пароль: ',
@@ -14610,7 +15536,7 @@ ru.data = {
 
 module.exports = ru;
 
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 // Turkish
 'use strict';
 
@@ -14652,6 +15578,10 @@ tr.data = {
   ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   ADD_Ledger_scan: 'Connect to Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Geth Error Messages */
   GETH_InvalidSender: 'Invalid sender',
@@ -14751,8 +15681,10 @@ tr.data = {
   ADD_Radio_3: 'Özel anahatarini Yaspistir/Yaz ',
   ADD_Radio_4: 'Izlenecek hesap adresi ekle', /* maybe another word for watch/izlencek --> Takip edilecek? */
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Bir nickname oluştur: ',
   ADD_Label_3: 'Cüzdan şifrelidir. Parolayi yaz:  ',
@@ -15148,7 +16080,7 @@ tr.data = {
 
 module.exports = tr;
 
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 'use strict';
 
 var de = require('./de');
@@ -15206,7 +16138,7 @@ translate.marked = function (data) {
 };
 module.exports = translate;
 
-},{"./de":66,"./el":67,"./en":68,"./es":69,"./fi":70,"./fr":71,"./hu":72,"./id":73,"./it":74,"./ja":75,"./nl":76,"./no":77,"./pl":78,"./pt":79,"./ru":80,"./tr":81,"./vi":83,"./zh":84}],83:[function(require,module,exports){
+},{"./de":67,"./el":68,"./en":69,"./es":70,"./fi":71,"./fr":72,"./hu":73,"./id":74,"./it":75,"./ja":76,"./nl":77,"./no":78,"./pl":79,"./pt":80,"./ru":81,"./tr":82,"./vi":84,"./zh":85}],84:[function(require,module,exports){
 // Vietnamese
 'use strict';
 
@@ -15236,6 +16168,10 @@ vi.data = {
   ADD_Ledger_0a: 'Hảy mở lại trang MyEtherWallet trên một kết nối có tính bảo mật (SSL)',
   ADD_Ledger_0b: 'Sử dụng [Chrome](https://www.google.com/chrome/browser/desktop/) hoặc [Opera](https://www.opera.com/) Để mở lại trang MyEtherWallet',
   ADD_Ledger_scan: 'Kết nối với Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Navigation*/
   NAV_YourWallets: 'Ví Của Bạn',
@@ -15316,8 +16252,10 @@ vi.data = {
   ADD_Radio_4: 'Thêm Tài Khoản đễ Theo Dõi',
   ADD_Radio_5: 'Dán/Điền ký tự dễ nhớ của bạn',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: 'Tạo Tên Gọi:',
   ADD_Label_3: 'Ví của bạn sẽ được giải mã. Xin vui lòng điền mật khẩu: ',
@@ -15742,7 +16680,7 @@ vi.data = {
 
 module.exports = vi;
 
-},{}],84:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 // Chinese
 'use strict';
 
@@ -15784,6 +16722,10 @@ zh.data = {
   ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection',
   ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   ADD_Ledger_scan: 'Connect to Ledger Nano S',
+
+  x_Trezor: 'TREZOR',
+  ADD_Trezor_scan: 'Connect to TREZOR',
+  ADD_Trezor_select: 'This is a TREZOR seed',
 
   /* Parity Error Messages */
   PARITY_AlreadyImported: "Transaction with the same hash was already imported.",
@@ -15871,8 +16813,10 @@ zh.data = {
   ADD_Radio_3: '粘贴/输入你的私钥 ',
   ADD_Radio_4: '添加一个查看账户',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2: '生成一个钱包昵称：',
   ADD_Label_3: '你的钱包被加密，请输入密码：',
@@ -16278,7 +17222,7 @@ zh.data = {
 
 module.exports = zh;
 
-},{}],85:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -16300,6 +17244,30 @@ uiFuncs.getTxData = function ($scope) {
 uiFuncs.isTxDataValid = function (txData) {
     if (txData.to != "0xCONTRACT" && !ethFuncs.validateEtherAddress(txData.to)) throw globalFuncs.errorMsgs[5];else if (!globalFuncs.isNumeric(txData.value) || parseFloat(txData.value) < 0) throw globalFuncs.errorMsgs[7];else if (!globalFuncs.isNumeric(txData.gasLimit) || parseFloat(txData.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];else if (!ethFuncs.validateHexString(txData.data)) throw globalFuncs.errorMsgs[9];
     if (txData.to == "0xCONTRACT") txData.to = '';
+};
+uiFuncs.signTxTrezor = function (rawTx, txData, callback) {
+    var localCallback = function (result) {
+        if (!result.success) {
+            if (callback !== undefined) {
+                callback({
+                    isError: true,
+                    error: result.error
+                });
+            }
+            return;
+        }
+
+        rawTx.v = "0x" + ethFuncs.decimalToHex(result.v);
+        rawTx.r = "0x" + result.r;
+        rawTx.s = "0x" + result.s;
+        var eTx = new ethUtil.Tx(rawTx);
+        rawTx.rawTx = JSON.stringify(rawTx);
+        rawTx.signedTx = '0x' + eTx.serialize().toString('hex');
+        rawTx.isError = false;
+        if (callback !== undefined) callback(rawTx);
+    };
+
+    TrezorConnect.signEthereumTx(txData.path, ethFuncs.getNakedAddress(rawTx.nonce), ethFuncs.getNakedAddress(rawTx.gasPrice), ethFuncs.getNakedAddress(rawTx.gasLimit), ethFuncs.getNakedAddress(rawTx.to), ethFuncs.getNakedAddress(rawTx.value), ethFuncs.getNakedAddress(rawTx.data), rawTx.chainId, localCallback);
 };
 uiFuncs.signTxLedger = function (app, eTx, rawTx, txData, old, callback) {
     eTx.raw[6] = Buffer.from([1]); //ETH chain id
@@ -16325,7 +17293,24 @@ uiFuncs.signTxLedger = function (app, eTx, rawTx, txData, old, callback) {
     };
     app.signTransaction(txData.path, txToSign.toString('hex'), localCallback);
 };
+uiFuncs.trezorUnlockCallback = function (txData, callback) {
+    TrezorConnect.open(function (error) {
+        if (error) {
+            if (callback !== undefined) callback({
+                isError: true,
+                error: error
+            });
+        } else {
+            txData.trezorUnlocked = true;
+            uiFuncs.generateTx(txData, callback);
+        }
+    });
+};
 uiFuncs.generateTx = function (txData, callback) {
+    if (typeof txData.hwType != "undefined" && txData.hwType == "trezor" && !txData.trezorUnlocked) {
+        uiFuncs.trezorUnlockCallback(txData, callback);
+        return;
+    }
     try {
         uiFuncs.isTxDataValid(txData);
         ajaxReq.getTransactionData(txData.from, function (data) {
@@ -16363,6 +17348,8 @@ uiFuncs.generateTx = function (txData, callback) {
                     uiFuncs.signTxLedger(app, eTx, rawTx, txData, !EIP155Supported, callback);
                 };
                 app.getAppConfiguration(localCallback);
+            } else if (typeof txData.hwType != "undefined" && txData.hwType == "trezor") {
+                uiFuncs.signTxTrezor(rawTx, txData, callback);
             } else {
                 eTx.sign(new Buffer(txData.privKey, 'hex'));
                 rawTx.rawTx = JSON.stringify(rawTx);
@@ -16419,7 +17406,7 @@ uiFuncs.transferAllBalance = function (fromAdd, gasLimit, callback) {
 module.exports = uiFuncs;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],86:[function(require,module,exports){
+},{"buffer":145}],87:[function(require,module,exports){
 'use strict';
 
 var validator = function () {};
@@ -16464,7 +17451,7 @@ validator.isValidURL = function (str) {
 };
 module.exports = validator;
 
-},{}],87:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 /**
  * @license AngularJS v1.6.1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -17205,11 +18192,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],88:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":87}],89:[function(require,module,exports){
+},{"./angular-sanitize":88}],90:[function(require,module,exports){
 /*!
  * angular-translate - v2.13.1 - 2016-12-06
  * 
@@ -17261,7 +18248,7 @@ return 'pascalprecht.translate';
 
 }));
 
-},{}],90:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 /*!
  * angular-translate - v2.13.1 - 2016-12-06
  * 
@@ -20954,7 +21941,7 @@ return 'pascalprecht.translate';
 
 }));
 
-},{}],91:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 /**
  * @license AngularJS v1.6.1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -53937,11 +54924,11 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],92:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":91}],93:[function(require,module,exports){
+},{"./angular":92}],94:[function(require,module,exports){
 var asn1 = exports;
 
 asn1.bignum = require('bn.js');
@@ -53952,7 +54939,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":94,"./asn1/base":96,"./asn1/constants":100,"./asn1/decoders":102,"./asn1/encoders":105,"bn.js":113}],94:[function(require,module,exports){
+},{"./asn1/api":95,"./asn1/base":97,"./asn1/constants":101,"./asn1/decoders":103,"./asn1/encoders":106,"bn.js":114}],95:[function(require,module,exports){
 var asn1 = require('../asn1');
 var inherits = require('inherits');
 
@@ -54015,7 +55002,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":93,"inherits":197,"vm":258}],95:[function(require,module,exports){
+},{"../asn1":94,"inherits":198,"vm":259}],96:[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -54133,7 +55120,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":96,"buffer":144,"inherits":197}],96:[function(require,module,exports){
+},{"../base":97,"buffer":145,"inherits":198}],97:[function(require,module,exports){
 var base = exports;
 
 base.Reporter = require('./reporter').Reporter;
@@ -54141,7 +55128,7 @@ base.DecoderBuffer = require('./buffer').DecoderBuffer;
 base.EncoderBuffer = require('./buffer').EncoderBuffer;
 base.Node = require('./node');
 
-},{"./buffer":95,"./node":97,"./reporter":98}],97:[function(require,module,exports){
+},{"./buffer":96,"./node":98,"./reporter":99}],98:[function(require,module,exports){
 var Reporter = require('../base').Reporter;
 var EncoderBuffer = require('../base').EncoderBuffer;
 var DecoderBuffer = require('../base').DecoderBuffer;
@@ -54777,7 +55764,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
   return /^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str);
 };
 
-},{"../base":96,"minimalistic-assert":203}],98:[function(require,module,exports){
+},{"../base":97,"minimalistic-assert":204}],99:[function(require,module,exports){
 var inherits = require('inherits');
 
 function Reporter(options) {
@@ -54900,7 +55887,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":197}],99:[function(require,module,exports){
+},{"inherits":198}],100:[function(require,module,exports){
 var constants = require('../constants');
 
 exports.tagClass = {
@@ -54944,7 +55931,7 @@ exports.tag = {
 };
 exports.tagByName = constants._reverse(exports.tag);
 
-},{"../constants":100}],100:[function(require,module,exports){
+},{"../constants":101}],101:[function(require,module,exports){
 var constants = exports;
 
 // Helper
@@ -54965,7 +55952,7 @@ constants._reverse = function reverse(map) {
 
 constants.der = require('./der');
 
-},{"./der":99}],101:[function(require,module,exports){
+},{"./der":100}],102:[function(require,module,exports){
 var inherits = require('inherits');
 
 var asn1 = require('../../asn1');
@@ -55291,13 +56278,13 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":93,"inherits":197}],102:[function(require,module,exports){
+},{"../../asn1":94,"inherits":198}],103:[function(require,module,exports){
 var decoders = exports;
 
 decoders.der = require('./der');
 decoders.pem = require('./pem');
 
-},{"./der":101,"./pem":103}],103:[function(require,module,exports){
+},{"./der":102,"./pem":104}],104:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -55348,7 +56335,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"./der":101,"buffer":144,"inherits":197}],104:[function(require,module,exports){
+},{"./der":102,"buffer":145,"inherits":198}],105:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -55645,13 +56632,13 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":93,"buffer":144,"inherits":197}],105:[function(require,module,exports){
+},{"../../asn1":94,"buffer":145,"inherits":198}],106:[function(require,module,exports){
 var encoders = exports;
 
 encoders.der = require('./der');
 encoders.pem = require('./pem');
 
-},{"./der":104,"./pem":106}],106:[function(require,module,exports){
+},{"./der":105,"./pem":107}],107:[function(require,module,exports){
 var inherits = require('inherits');
 
 var DEREncoder = require('./der');
@@ -55674,7 +56661,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"./der":104,"inherits":197}],107:[function(require,module,exports){
+},{"./der":105,"inherits":198}],108:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -56168,7 +57155,7 @@ var objectKeys = Object.keys || function (obj) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"util/":255}],108:[function(require,module,exports){
+},{"util/":256}],109:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -56284,7 +57271,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],109:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 /*! bignumber.js v3.0.1 https://github.com/MikeMcl/bignumber.js/LICENCE */
 
 ;(function (globalObj) {
@@ -59029,7 +60016,7 @@ function fromByteArray (uint8) {
     }
 })(this);
 
-},{}],110:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 (function (Buffer){
 var assert = require('assert')
 var createHash = require('create-hash')
@@ -59162,7 +60149,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./wordlists/en.json":111,"assert":107,"buffer":144,"create-hash":149,"pbkdf2":208,"randombytes":218,"unorm":250}],111:[function(require,module,exports){
+},{"./wordlists/en.json":112,"assert":108,"buffer":145,"create-hash":150,"pbkdf2":209,"randombytes":219,"unorm":251}],112:[function(require,module,exports){
 module.exports=[
   "abandon",
   "ability",
@@ -61214,7 +62201,7 @@ module.exports=[
   "zoo"
 ]
 
-},{}],112:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 (function (Buffer){
 // Reference https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 // Format: 0x30 [total-length] 0x02 [R-length] [R] 0x02 [S-length] [S]
@@ -61329,7 +62316,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],113:[function(require,module,exports){
+},{"buffer":145}],114:[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -64758,7 +65745,7 @@ module.exports = {
   };
 })(typeof module === 'undefined' || module, this);
 
-},{}],114:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -64817,9 +65804,9 @@ if (typeof window === 'object') {
   }
 }
 
-},{"crypto":115}],115:[function(require,module,exports){
+},{"crypto":116}],116:[function(require,module,exports){
 
-},{}],116:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 (function (Buffer){
 // based on the aes implimentation in triple sec
 // https://github.com/keybase/triplesec
@@ -65000,7 +65987,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],117:[function(require,module,exports){
+},{"buffer":145}],118:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -65101,7 +66088,7 @@ function xorTest (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":116,"./ghash":121,"buffer":144,"buffer-xor":143,"cipher-base":145,"inherits":197}],118:[function(require,module,exports){
+},{"./aes":117,"./ghash":122,"buffer":145,"buffer-xor":144,"cipher-base":146,"inherits":198}],119:[function(require,module,exports){
 var ciphers = require('./encrypter')
 exports.createCipher = exports.Cipher = ciphers.createCipher
 exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv
@@ -65114,7 +66101,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"./decrypter":119,"./encrypter":120,"./modes":122}],119:[function(require,module,exports){
+},{"./decrypter":120,"./encrypter":121,"./modes":123}],120:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -65255,7 +66242,7 @@ exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":116,"./authCipher":117,"./modes":122,"./modes/cbc":123,"./modes/cfb":124,"./modes/cfb1":125,"./modes/cfb8":126,"./modes/ctr":127,"./modes/ecb":128,"./modes/ofb":129,"./streamCipher":130,"buffer":144,"cipher-base":145,"evp_bytestokey":187,"inherits":197}],120:[function(require,module,exports){
+},{"./aes":117,"./authCipher":118,"./modes":123,"./modes/cbc":124,"./modes/cfb":125,"./modes/cfb1":126,"./modes/cfb8":127,"./modes/ctr":128,"./modes/ecb":129,"./modes/ofb":130,"./streamCipher":131,"buffer":145,"cipher-base":146,"evp_bytestokey":188,"inherits":198}],121:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -65381,7 +66368,7 @@ exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":116,"./authCipher":117,"./modes":122,"./modes/cbc":123,"./modes/cfb":124,"./modes/cfb1":125,"./modes/cfb8":126,"./modes/ctr":127,"./modes/ecb":128,"./modes/ofb":129,"./streamCipher":130,"buffer":144,"cipher-base":145,"evp_bytestokey":187,"inherits":197}],121:[function(require,module,exports){
+},{"./aes":117,"./authCipher":118,"./modes":123,"./modes/cbc":124,"./modes/cfb":125,"./modes/cfb1":126,"./modes/cfb8":127,"./modes/ctr":128,"./modes/ecb":129,"./modes/ofb":130,"./streamCipher":131,"buffer":145,"cipher-base":146,"evp_bytestokey":188,"inherits":198}],122:[function(require,module,exports){
 (function (Buffer){
 var zeros = new Buffer(16)
 zeros.fill(0)
@@ -65483,7 +66470,7 @@ function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],122:[function(require,module,exports){
+},{"buffer":145}],123:[function(require,module,exports){
 exports['aes-128-ecb'] = {
   cipher: 'AES',
   key: 128,
@@ -65656,7 +66643,7 @@ exports['aes-256-gcm'] = {
   type: 'auth'
 }
 
-},{}],123:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 var xor = require('buffer-xor')
 
 exports.encrypt = function (self, block) {
@@ -65675,7 +66662,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":143}],124:[function(require,module,exports){
+},{"buffer-xor":144}],125:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -65710,7 +66697,7 @@ function encryptStart (self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144,"buffer-xor":143}],125:[function(require,module,exports){
+},{"buffer":145,"buffer-xor":144}],126:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -65748,7 +66735,7 @@ function shiftIn (buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],126:[function(require,module,exports){
+},{"buffer":145}],127:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)
@@ -65767,7 +66754,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],127:[function(require,module,exports){
+},{"buffer":145}],128:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -65802,7 +66789,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144,"buffer-xor":143}],128:[function(require,module,exports){
+},{"buffer":145,"buffer-xor":144}],129:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -65810,7 +66797,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block)
 }
 
-},{}],129:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -65830,7 +66817,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144,"buffer-xor":143}],130:[function(require,module,exports){
+},{"buffer":145,"buffer-xor":144}],131:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -65859,7 +66846,7 @@ StreamCipher.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":116,"buffer":144,"cipher-base":145,"inherits":197}],131:[function(require,module,exports){
+},{"./aes":117,"buffer":145,"cipher-base":146,"inherits":198}],132:[function(require,module,exports){
 var ebtk = require('evp_bytestokey')
 var aes = require('browserify-aes/browser')
 var DES = require('browserify-des')
@@ -65934,7 +66921,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"browserify-aes/browser":118,"browserify-aes/modes":122,"browserify-des":132,"browserify-des/modes":133,"evp_bytestokey":187}],132:[function(require,module,exports){
+},{"browserify-aes/browser":119,"browserify-aes/modes":123,"browserify-des":133,"browserify-des/modes":134,"evp_bytestokey":188}],133:[function(require,module,exports){
 (function (Buffer){
 var CipherBase = require('cipher-base')
 var des = require('des.js')
@@ -65981,7 +66968,7 @@ DES.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144,"cipher-base":145,"des.js":154,"inherits":197}],133:[function(require,module,exports){
+},{"buffer":145,"cipher-base":146,"des.js":155,"inherits":198}],134:[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -66007,7 +66994,7 @@ exports['des-ede'] = {
   iv: 0
 }
 
-},{}],134:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 var randomBytes = require('randombytes');
@@ -66051,7 +67038,7 @@ function getr(priv) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":113,"buffer":144,"randombytes":218}],135:[function(require,module,exports){
+},{"bn.js":114,"buffer":145,"randombytes":219}],136:[function(require,module,exports){
 (function (Buffer){
 const Sha3 = require('js-sha3')
 
@@ -66089,7 +67076,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144,"js-sha3":200}],136:[function(require,module,exports){
+},{"buffer":145,"js-sha3":201}],137:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 exports['RSA-SHA224'] = exports.sha224WithRSAEncryption = {
@@ -66165,7 +67152,7 @@ exports['RSA-MD5'] = exports.md5WithRSAEncryption = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],137:[function(require,module,exports){
+},{"buffer":145}],138:[function(require,module,exports){
 (function (Buffer){
 var _algos = require('./algos')
 var createHash = require('create-hash')
@@ -66272,7 +67259,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algos":136,"./sign":139,"./verify":140,"buffer":144,"create-hash":149,"inherits":197,"stream":247}],138:[function(require,module,exports){
+},{"./algos":137,"./sign":140,"./verify":141,"buffer":145,"create-hash":150,"inherits":198,"stream":248}],139:[function(require,module,exports){
 'use strict'
 exports['1.3.132.0.10'] = 'secp256k1'
 
@@ -66286,7 +67273,7 @@ exports['1.3.132.0.34'] = 'p384'
 
 exports['1.3.132.0.35'] = 'p521'
 
-},{}],139:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var createHmac = require('create-hmac')
@@ -66475,7 +67462,7 @@ module.exports.getKey = getKey
 module.exports.makeKey = makeKey
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":138,"bn.js":113,"browserify-rsa":134,"buffer":144,"create-hmac":152,"elliptic":164,"parse-asn1":207}],140:[function(require,module,exports){
+},{"./curves":139,"bn.js":114,"browserify-rsa":135,"buffer":145,"create-hmac":153,"elliptic":165,"parse-asn1":208}],141:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var curves = require('./curves')
@@ -66582,7 +67569,7 @@ function checkValue (b, q) {
 module.exports = verify
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":138,"bn.js":113,"buffer":144,"elliptic":164,"parse-asn1":207}],141:[function(require,module,exports){
+},{"./curves":139,"bn.js":114,"buffer":145,"elliptic":165,"parse-asn1":208}],142:[function(require,module,exports){
 // Base58 encoding/decoding
 // Originally written by Mike Hearn for BitcoinJ
 // Copyright (c) 2011 Google Inc
@@ -66669,7 +67656,7 @@ module.exports = {
   decode: decode
 }
 
-},{}],142:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -66781,7 +67768,7 @@ exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"buffer":144}],143:[function(require,module,exports){
+},{"buffer":145}],144:[function(require,module,exports){
 (function (Buffer){
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)
@@ -66795,7 +67782,7 @@ module.exports = function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],144:[function(require,module,exports){
+},{"buffer":145}],145:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -68588,7 +69575,7 @@ function isnan (val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":108,"ieee754":195,"isarray":199}],145:[function(require,module,exports){
+},{"base64-js":109,"ieee754":196,"isarray":200}],146:[function(require,module,exports){
 (function (Buffer){
 var Transform = require('stream').Transform
 var inherits = require('inherits')
@@ -68682,7 +69669,7 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144,"inherits":197,"stream":247,"string_decoder":249}],146:[function(require,module,exports){
+},{"buffer":145,"inherits":198,"stream":248,"string_decoder":250}],147:[function(require,module,exports){
 (function (Buffer){
 var base58 = require('bs58')
 var createHash = require('create-hash')
@@ -68779,7 +69766,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bs58":141,"buffer":144,"create-hash":149}],147:[function(require,module,exports){
+},{"bs58":142,"buffer":145,"create-hash":150}],148:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -68890,7 +69877,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":198}],148:[function(require,module,exports){
+},{"../../is-buffer/index.js":199}],149:[function(require,module,exports){
 (function (Buffer){
 var elliptic = require('elliptic');
 var BN = require('bn.js');
@@ -69016,7 +70003,7 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":113,"buffer":144,"elliptic":164}],149:[function(require,module,exports){
+},{"bn.js":114,"buffer":145,"elliptic":165}],150:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var inherits = require('inherits')
@@ -69072,7 +70059,7 @@ module.exports = function createHash (alg) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./md5":151,"buffer":144,"cipher-base":145,"inherits":197,"ripemd160":230,"sha.js":240}],150:[function(require,module,exports){
+},{"./md5":152,"buffer":145,"cipher-base":146,"inherits":198,"ripemd160":231,"sha.js":241}],151:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var intSize = 4;
@@ -69109,7 +70096,7 @@ function hash(buf, fn, hashSize, bigEndian) {
 }
 exports.hash = hash;
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],151:[function(require,module,exports){
+},{"buffer":145}],152:[function(require,module,exports){
 'use strict';
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -69266,7 +70253,7 @@ function bit_rol(num, cnt)
 module.exports = function md5(buf) {
   return helpers.hash(buf, core_md5, 16);
 };
-},{"./helpers":150}],152:[function(require,module,exports){
+},{"./helpers":151}],153:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var createHash = require('create-hash/browser');
@@ -69338,7 +70325,7 @@ module.exports = function createHmac(alg, key) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144,"create-hash/browser":149,"inherits":197,"stream":247}],153:[function(require,module,exports){
+},{"buffer":145,"create-hash/browser":150,"inherits":198,"stream":248}],154:[function(require,module,exports){
 'use strict'
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -69417,7 +70404,7 @@ var publicEncrypt = require('public-encrypt')
   }
 })
 
-},{"browserify-cipher":131,"browserify-sign":137,"browserify-sign/algos":136,"create-ecdh":148,"create-hash":149,"create-hmac":152,"diffie-hellman":160,"pbkdf2":208,"public-encrypt":212,"randombytes":218}],154:[function(require,module,exports){
+},{"browserify-cipher":132,"browserify-sign":138,"browserify-sign/algos":137,"create-ecdh":149,"create-hash":150,"create-hmac":153,"diffie-hellman":161,"pbkdf2":209,"public-encrypt":213,"randombytes":219}],155:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -69426,7 +70413,7 @@ exports.DES = require('./des/des');
 exports.CBC = require('./des/cbc');
 exports.EDE = require('./des/ede');
 
-},{"./des/cbc":155,"./des/cipher":156,"./des/des":157,"./des/ede":158,"./des/utils":159}],155:[function(require,module,exports){
+},{"./des/cbc":156,"./des/cipher":157,"./des/des":158,"./des/ede":159,"./des/utils":160}],156:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -69493,7 +70480,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
   }
 };
 
-},{"inherits":197,"minimalistic-assert":203}],156:[function(require,module,exports){
+},{"inherits":198,"minimalistic-assert":204}],157:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -69636,7 +70623,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
   return this._unpad(out);
 };
 
-},{"minimalistic-assert":203}],157:[function(require,module,exports){
+},{"minimalistic-assert":204}],158:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -69781,7 +70768,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
   utils.rip(l, r, out, off);
 };
 
-},{"../des":154,"inherits":197,"minimalistic-assert":203}],158:[function(require,module,exports){
+},{"../des":155,"inherits":198,"minimalistic-assert":204}],159:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -69838,7 +70825,7 @@ EDE.prototype._update = function _update(inp, inOff, out, outOff) {
 EDE.prototype._pad = DES.prototype._pad;
 EDE.prototype._unpad = DES.prototype._unpad;
 
-},{"../des":154,"inherits":197,"minimalistic-assert":203}],159:[function(require,module,exports){
+},{"../des":155,"inherits":198,"minimalistic-assert":204}],160:[function(require,module,exports){
 'use strict';
 
 exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -70096,7 +71083,7 @@ exports.padSplit = function padSplit(num, size, group) {
   return out.join(' ');
 };
 
-},{}],160:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 (function (Buffer){
 var generatePrime = require('./lib/generatePrime')
 var primes = require('./lib/primes.json')
@@ -70142,7 +71129,7 @@ exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffi
 exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/dh":161,"./lib/generatePrime":162,"./lib/primes.json":163,"buffer":144}],161:[function(require,module,exports){
+},{"./lib/dh":162,"./lib/generatePrime":163,"./lib/primes.json":164,"buffer":145}],162:[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -70310,7 +71297,7 @@ function formatReturnValue(bn, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":162,"bn.js":113,"buffer":144,"miller-rabin":202,"randombytes":218}],162:[function(require,module,exports){
+},{"./generatePrime":163,"bn.js":114,"buffer":145,"miller-rabin":203,"randombytes":219}],163:[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -70417,7 +71404,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":113,"miller-rabin":202,"randombytes":218}],163:[function(require,module,exports){
+},{"bn.js":114,"miller-rabin":203,"randombytes":219}],164:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -70452,7 +71439,7 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -70468,7 +71455,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":180,"./elliptic/curve":167,"./elliptic/curves":170,"./elliptic/ec":171,"./elliptic/eddsa":174,"./elliptic/hmac-drbg":177,"./elliptic/utils":179,"brorand":114}],165:[function(require,module,exports){
+},{"../package.json":181,"./elliptic/curve":168,"./elliptic/curves":171,"./elliptic/ec":172,"./elliptic/eddsa":175,"./elliptic/hmac-drbg":178,"./elliptic/utils":180,"brorand":115}],166:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -70845,7 +71832,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":164,"bn.js":113}],166:[function(require,module,exports){
+},{"../../elliptic":165,"bn.js":114}],167:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -71280,7 +72267,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":164,"../curve":167,"bn.js":113,"inherits":197}],167:[function(require,module,exports){
+},{"../../elliptic":165,"../curve":168,"bn.js":114,"inherits":198}],168:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -71290,7 +72277,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":165,"./edwards":166,"./mont":168,"./short":169}],168:[function(require,module,exports){
+},{"./base":166,"./edwards":167,"./mont":169,"./short":170}],169:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -71472,7 +72459,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":164,"../curve":167,"bn.js":113,"inherits":197}],169:[function(require,module,exports){
+},{"../../elliptic":165,"../curve":168,"bn.js":114,"inherits":198}],170:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -72412,7 +73399,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":164,"../curve":167,"bn.js":113,"inherits":197}],170:[function(require,module,exports){
+},{"../../elliptic":165,"../curve":168,"bn.js":114,"inherits":198}],171:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -72619,7 +73606,7 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"../elliptic":164,"./precomputed/secp256k1":178,"hash.js":188}],171:[function(require,module,exports){
+},{"../elliptic":165,"./precomputed/secp256k1":179,"hash.js":189}],172:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -72858,7 +73845,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":164,"./key":172,"./signature":173,"bn.js":113}],172:[function(require,module,exports){
+},{"../../elliptic":165,"./key":173,"./signature":174,"bn.js":114}],173:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -72967,7 +73954,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"bn.js":113}],173:[function(require,module,exports){
+},{"bn.js":114}],174:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -73104,7 +74091,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":164,"bn.js":113}],174:[function(require,module,exports){
+},{"../../elliptic":165,"bn.js":114}],175:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -73224,7 +74211,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../../elliptic":164,"./key":175,"./signature":176,"hash.js":188}],175:[function(require,module,exports){
+},{"../../elliptic":165,"./key":176,"./signature":177,"hash.js":189}],176:[function(require,module,exports){
 'use strict';
 
 var elliptic = require('../../elliptic');
@@ -73322,7 +74309,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../../elliptic":164}],176:[function(require,module,exports){
+},{"../../elliptic":165}],177:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -73390,7 +74377,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":164,"bn.js":113}],177:[function(require,module,exports){
+},{"../../elliptic":165,"bn.js":114}],178:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -73506,7 +74493,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"../elliptic":164,"hash.js":188}],178:[function(require,module,exports){
+},{"../elliptic":165,"hash.js":189}],179:[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -74288,7 +75275,7 @@ module.exports = {
   }
 };
 
-},{}],179:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -74462,7 +75449,7 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":113}],180:[function(require,module,exports){
+},{"bn.js":114}],181:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -74575,7 +75562,7 @@ module.exports={
   "version": "6.3.2"
 }
 
-},{}],181:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 module.exports={
   "genesisGasLimit": {
     "v": 5000,
@@ -74808,10 +75795,10 @@ module.exports={
   }
 }
 
-},{}],182:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 module.exports = require('./params.json')
 
-},{"./params.json":181}],183:[function(require,module,exports){
+},{"./params.json":182}],184:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 const ethUtil = require('ethereumjs-util')
@@ -75090,7 +76077,7 @@ module.exports = class Transaction {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144,"ethereum-common/params":182,"ethereumjs-util":184}],184:[function(require,module,exports){
+},{"buffer":145,"ethereum-common/params":183,"ethereumjs-util":185}],185:[function(require,module,exports){
 (function (Buffer){
 const SHA3 = require('keccakjs')
 const secp256k1 = require('secp256k1')
@@ -75799,10 +76786,10 @@ exports.defineProperties = function (self, fields, data) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":107,"bn.js":113,"buffer":144,"create-hash":149,"keccakjs":185,"rlp":231,"secp256k1":233}],185:[function(require,module,exports){
+},{"assert":108,"bn.js":114,"buffer":145,"create-hash":150,"keccakjs":186,"rlp":232,"secp256k1":234}],186:[function(require,module,exports){
 module.exports = require('browserify-sha3').SHA3Hash
 
-},{"browserify-sha3":135}],186:[function(require,module,exports){
+},{"browserify-sha3":136}],187:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -76106,7 +77093,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],187:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 (function (Buffer){
 var md5 = require('create-hash/md5')
 module.exports = EVP_BytesToKey
@@ -76178,7 +77165,7 @@ function EVP_BytesToKey (password, salt, keyLen, ivLen) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144,"create-hash/md5":151}],188:[function(require,module,exports){
+},{"buffer":145,"create-hash/md5":152}],189:[function(require,module,exports){
 var hash = exports;
 
 hash.utils = require('./hash/utils');
@@ -76195,7 +77182,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":189,"./hash/hmac":190,"./hash/ripemd":191,"./hash/sha":192,"./hash/utils":193}],189:[function(require,module,exports){
+},{"./hash/common":190,"./hash/hmac":191,"./hash/ripemd":192,"./hash/sha":193,"./hash/utils":194}],190:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -76288,7 +77275,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"../hash":188}],190:[function(require,module,exports){
+},{"../hash":189}],191:[function(require,module,exports){
 var hmac = exports;
 
 var hash = require('../hash');
@@ -76338,7 +77325,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"../hash":188}],191:[function(require,module,exports){
+},{"../hash":189}],192:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 
@@ -76484,7 +77471,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"../hash":188}],192:[function(require,module,exports){
+},{"../hash":189}],193:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -77050,7 +78037,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../hash":188}],193:[function(require,module,exports){
+},{"../hash":189}],194:[function(require,module,exports){
 var utils = exports;
 var inherits = require('inherits');
 
@@ -77309,7 +78296,7 @@ function shr64_lo(ah, al, num) {
 };
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":197}],194:[function(require,module,exports){
+},{"inherits":198}],195:[function(require,module,exports){
 (function (Buffer){
 var assert = require('assert')
 var crypto = require('crypto')
@@ -77540,7 +78527,7 @@ HDKey.HARDENED_OFFSET = HARDENED_OFFSET
 module.exports = HDKey
 
 }).call(this,require("buffer").Buffer)
-},{"assert":107,"buffer":144,"coinstring":146,"crypto":153,"secp256k1":233}],195:[function(require,module,exports){
+},{"assert":108,"buffer":145,"coinstring":147,"crypto":154,"secp256k1":234}],196:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -77626,7 +78613,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],196:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 
 var indexOf = [].indexOf;
 
@@ -77637,7 +78624,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],197:[function(require,module,exports){
+},{}],198:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -77662,7 +78649,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],198:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -77685,14 +78672,14 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],199:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],200:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 (function (global){
 /*
  * js-sha3 v0.3.1
@@ -78128,7 +79115,7 @@ module.exports = Array.isArray || function (arr) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],201:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 (function (global){
 /**
  * marked - a markdown parser
@@ -79418,7 +80405,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
 }());
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],202:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -79533,7 +80520,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":113,"brorand":114}],203:[function(require,module,exports){
+},{"bn.js":114,"brorand":115}],204:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -79546,7 +80533,7 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],204:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -79560,7 +80547,7 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],205:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
 // Fedor, you are amazing.
 
@@ -79679,7 +80666,7 @@ exports.signature = asn1.define('signature', function () {
   )
 })
 
-},{"asn1.js":93}],206:[function(require,module,exports){
+},{"asn1.js":94}],207:[function(require,module,exports){
 (function (Buffer){
 // adapted from https://github.com/apatil/pemstrip
 var findProc = /Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\r?\n\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n/m
@@ -79713,7 +80700,7 @@ module.exports = function (okey, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"browserify-aes":118,"buffer":144,"evp_bytestokey":187}],207:[function(require,module,exports){
+},{"browserify-aes":119,"buffer":145,"evp_bytestokey":188}],208:[function(require,module,exports){
 (function (Buffer){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
@@ -79818,7 +80805,7 @@ function decrypt (data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":204,"./asn1":205,"./fixProc":206,"browserify-aes":118,"buffer":144,"pbkdf2":208}],208:[function(require,module,exports){
+},{"./aesid.json":205,"./asn1":206,"./fixProc":207,"browserify-aes":119,"buffer":145,"pbkdf2":209}],209:[function(require,module,exports){
 (function (process,Buffer){
 var createHmac = require('create-hmac')
 var checkParameters = require('./precondition')
@@ -79890,7 +80877,7 @@ exports.pbkdf2Sync = function (password, salt, iterations, keylen, digest) {
 }
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"./precondition":209,"_process":211,"buffer":144,"create-hmac":152}],209:[function(require,module,exports){
+},{"./precondition":210,"_process":212,"buffer":145,"create-hmac":153}],210:[function(require,module,exports){
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
 module.exports = function (iterations, keylen) {
   if (typeof iterations !== 'number') {
@@ -79910,7 +80897,7 @@ module.exports = function (iterations, keylen) {
   }
 }
 
-},{}],210:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -79957,7 +80944,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 }).call(this,require('_process'))
-},{"_process":211}],211:[function(require,module,exports){
+},{"_process":212}],212:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -80139,7 +81126,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],212:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 exports.publicEncrypt = require('./publicEncrypt');
 exports.privateDecrypt = require('./privateDecrypt');
 
@@ -80150,7 +81137,7 @@ exports.privateEncrypt = function privateEncrypt(key, buf) {
 exports.publicDecrypt = function publicDecrypt(key, buf) {
   return exports.privateDecrypt(key, buf, true);
 };
-},{"./privateDecrypt":214,"./publicEncrypt":215}],213:[function(require,module,exports){
+},{"./privateDecrypt":215,"./publicEncrypt":216}],214:[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash');
 module.exports = function (seed, len) {
@@ -80169,7 +81156,7 @@ function i2ops(c) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"buffer":144,"create-hash":149}],214:[function(require,module,exports){
+},{"buffer":145,"create-hash":150}],215:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var mgf = require('./mgf');
@@ -80280,7 +81267,7 @@ function compare(a, b){
   return dif;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":213,"./withPublic":216,"./xor":217,"bn.js":113,"browserify-rsa":134,"buffer":144,"create-hash":149,"parse-asn1":207}],215:[function(require,module,exports){
+},{"./mgf":214,"./withPublic":217,"./xor":218,"bn.js":114,"browserify-rsa":135,"buffer":145,"create-hash":150,"parse-asn1":208}],216:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var randomBytes = require('randombytes');
@@ -80378,7 +81365,7 @@ function nonZero(len, crypto) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":213,"./withPublic":216,"./xor":217,"bn.js":113,"browserify-rsa":134,"buffer":144,"create-hash":149,"parse-asn1":207,"randombytes":218}],216:[function(require,module,exports){
+},{"./mgf":214,"./withPublic":217,"./xor":218,"bn.js":114,"browserify-rsa":135,"buffer":145,"create-hash":150,"parse-asn1":208,"randombytes":219}],217:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 function withPublic(paddedMsg, key) {
@@ -80391,7 +81378,7 @@ function withPublic(paddedMsg, key) {
 
 module.exports = withPublic;
 }).call(this,require("buffer").Buffer)
-},{"bn.js":113,"buffer":144}],217:[function(require,module,exports){
+},{"bn.js":114,"buffer":145}],218:[function(require,module,exports){
 module.exports = function xor(a, b) {
   var len = a.length;
   var i = -1;
@@ -80400,7 +81387,7 @@ module.exports = function xor(a, b) {
   }
   return a
 };
-},{}],218:[function(require,module,exports){
+},{}],219:[function(require,module,exports){
 (function (process,global,Buffer){
 'use strict'
 
@@ -80440,10 +81427,10 @@ function randomBytes (size, cb) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"_process":211,"buffer":144}],219:[function(require,module,exports){
+},{"_process":212,"buffer":145}],220:[function(require,module,exports){
 module.exports = require("./lib/_stream_duplex.js")
 
-},{"./lib/_stream_duplex.js":220}],220:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":221}],221:[function(require,module,exports){
 // a duplex stream is just a stream that is both readable and writable.
 // Since JS doesn't have multiple prototypal inheritance, this class
 // prototypally inherits from Readable, and then parasitically from
@@ -80519,7 +81506,7 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
-},{"./_stream_readable":222,"./_stream_writable":224,"core-util-is":147,"inherits":197,"process-nextick-args":210}],221:[function(require,module,exports){
+},{"./_stream_readable":223,"./_stream_writable":225,"core-util-is":148,"inherits":198,"process-nextick-args":211}],222:[function(require,module,exports){
 // a passthrough stream.
 // basically just the most minimal sort of Transform stream.
 // Every written chunk gets output as-is.
@@ -80546,7 +81533,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":223,"core-util-is":147,"inherits":197}],222:[function(require,module,exports){
+},{"./_stream_transform":224,"core-util-is":148,"inherits":198}],223:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -81490,7 +82477,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":220,"./internal/streams/BufferList":225,"_process":211,"buffer":144,"buffer-shims":142,"core-util-is":147,"events":186,"inherits":197,"isarray":199,"process-nextick-args":210,"string_decoder/":249,"util":115}],223:[function(require,module,exports){
+},{"./_stream_duplex":221,"./internal/streams/BufferList":226,"_process":212,"buffer":145,"buffer-shims":143,"core-util-is":148,"events":187,"inherits":198,"isarray":200,"process-nextick-args":211,"string_decoder/":250,"util":116}],224:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -81673,7 +82660,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":220,"core-util-is":147,"inherits":197}],224:[function(require,module,exports){
+},{"./_stream_duplex":221,"core-util-is":148,"inherits":198}],225:[function(require,module,exports){
 (function (process){
 // A bit simpler than readable streams.
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -82230,7 +83217,7 @@ function CorkedRequest(state) {
   };
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":220,"_process":211,"buffer":144,"buffer-shims":142,"core-util-is":147,"events":186,"inherits":197,"process-nextick-args":210,"util-deprecate":252}],225:[function(require,module,exports){
+},{"./_stream_duplex":221,"_process":212,"buffer":145,"buffer-shims":143,"core-util-is":148,"events":187,"inherits":198,"process-nextick-args":211,"util-deprecate":253}],226:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('buffer').Buffer;
@@ -82295,10 +83282,10 @@ BufferList.prototype.concat = function (n) {
   }
   return ret;
 };
-},{"buffer":144,"buffer-shims":142}],226:[function(require,module,exports){
+},{"buffer":145,"buffer-shims":143}],227:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
-},{"./lib/_stream_passthrough.js":221}],227:[function(require,module,exports){
+},{"./lib/_stream_passthrough.js":222}],228:[function(require,module,exports){
 (function (process){
 var Stream = (function (){
   try {
@@ -82318,13 +83305,13 @@ if (!process.browser && process.env.READABLE_STREAM === 'disable' && Stream) {
 }
 
 }).call(this,require('_process'))
-},{"./lib/_stream_duplex.js":220,"./lib/_stream_passthrough.js":221,"./lib/_stream_readable.js":222,"./lib/_stream_transform.js":223,"./lib/_stream_writable.js":224,"_process":211}],228:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":221,"./lib/_stream_passthrough.js":222,"./lib/_stream_readable.js":223,"./lib/_stream_transform.js":224,"./lib/_stream_writable.js":225,"_process":212}],229:[function(require,module,exports){
 module.exports = require("./lib/_stream_transform.js")
 
-},{"./lib/_stream_transform.js":223}],229:[function(require,module,exports){
+},{"./lib/_stream_transform.js":224}],230:[function(require,module,exports){
 module.exports = require("./lib/_stream_writable.js")
 
-},{"./lib/_stream_writable.js":224}],230:[function(require,module,exports){
+},{"./lib/_stream_writable.js":225}],231:[function(require,module,exports){
 (function (Buffer){
 /*
 CryptoJS v3.1.2
@@ -82538,7 +83525,7 @@ function ripemd160 (message) {
 module.exports = ripemd160
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],231:[function(require,module,exports){
+},{"buffer":145}],232:[function(require,module,exports){
 (function (Buffer){
 const assert = require('assert')
 /**
@@ -82771,7 +83758,7 @@ function toBuffer (v) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":107,"buffer":144}],232:[function(require,module,exports){
+},{"assert":108,"buffer":145}],233:[function(require,module,exports){
 (function (Buffer){
 var crypto = require('crypto')
 /* eslint-disable camelcase */
@@ -82955,11 +83942,11 @@ function arraycopy (src, srcPos, dest, destPos, length) {
 module.exports = scrypt
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144,"crypto":153}],233:[function(require,module,exports){
+},{"buffer":145,"crypto":154}],234:[function(require,module,exports){
 'use strict'
 module.exports = require('./lib')(require('./lib/elliptic'))
 
-},{"./lib":237,"./lib/elliptic":236}],234:[function(require,module,exports){
+},{"./lib":238,"./lib/elliptic":237}],235:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var toString = Object.prototype.toString
@@ -83007,7 +83994,7 @@ exports.isNumberInInterval = function (number, x, y, message) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":198}],235:[function(require,module,exports){
+},{"../../is-buffer/index.js":199}],236:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var bip66 = require('bip66')
@@ -83208,7 +84195,7 @@ exports.signatureImportLax = function (sig) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bip66":112,"buffer":144}],236:[function(require,module,exports){
+},{"bip66":113,"buffer":145}],237:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var createHash = require('create-hash')
@@ -83459,7 +84446,7 @@ exports.ecdhUnsafe = function (publicKey, privateKey, compressed) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../messages.json":238,"bn.js":113,"buffer":144,"create-hash":149,"elliptic":164}],237:[function(require,module,exports){
+},{"../messages.json":239,"bn.js":114,"buffer":145,"create-hash":150,"elliptic":165}],238:[function(require,module,exports){
 'use strict'
 var assert = require('./assert')
 var der = require('./der')
@@ -83692,7 +84679,7 @@ module.exports = function (secp256k1) {
   }
 }
 
-},{"./assert":234,"./der":235,"./messages.json":238}],238:[function(require,module,exports){
+},{"./assert":235,"./der":236,"./messages.json":239}],239:[function(require,module,exports){
 module.exports={
   "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
   "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -83730,7 +84717,7 @@ module.exports={
   "TWEAK_LENGTH_INVALID": "tweak length is invalid"
 }
 
-},{}],239:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 (function (Buffer){
 // prototype class for hash functions
 function Hash (blockSize, finalSize) {
@@ -83803,7 +84790,7 @@ Hash.prototype._update = function () {
 module.exports = Hash
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":144}],240:[function(require,module,exports){
+},{"buffer":145}],241:[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -83820,7 +84807,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":241,"./sha1":242,"./sha224":243,"./sha256":244,"./sha384":245,"./sha512":246}],241:[function(require,module,exports){
+},{"./sha":242,"./sha1":243,"./sha224":244,"./sha256":245,"./sha384":246,"./sha512":247}],242:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -83917,7 +84904,7 @@ Sha.prototype._hash = function () {
 module.exports = Sha
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":239,"buffer":144,"inherits":197}],242:[function(require,module,exports){
+},{"./hash":240,"buffer":145,"inherits":198}],243:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -84019,7 +85006,7 @@ Sha1.prototype._hash = function () {
 module.exports = Sha1
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":239,"buffer":144,"inherits":197}],243:[function(require,module,exports){
+},{"./hash":240,"buffer":145,"inherits":198}],244:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -84075,7 +85062,7 @@ Sha224.prototype._hash = function () {
 module.exports = Sha224
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":239,"./sha256":244,"buffer":144,"inherits":197}],244:[function(require,module,exports){
+},{"./hash":240,"./sha256":245,"buffer":145,"inherits":198}],245:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -84213,7 +85200,7 @@ Sha256.prototype._hash = function () {
 module.exports = Sha256
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":239,"buffer":144,"inherits":197}],245:[function(require,module,exports){
+},{"./hash":240,"buffer":145,"inherits":198}],246:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
@@ -84273,7 +85260,7 @@ Sha384.prototype._hash = function () {
 module.exports = Sha384
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":239,"./sha512":246,"buffer":144,"inherits":197}],246:[function(require,module,exports){
+},{"./hash":240,"./sha512":247,"buffer":145,"inherits":198}],247:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var Hash = require('./hash')
@@ -84536,7 +85523,7 @@ Sha512.prototype._hash = function () {
 module.exports = Sha512
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":239,"buffer":144,"inherits":197}],247:[function(require,module,exports){
+},{"./hash":240,"buffer":145,"inherits":198}],248:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -84665,7 +85652,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":186,"inherits":197,"readable-stream/duplex.js":219,"readable-stream/passthrough.js":226,"readable-stream/readable.js":227,"readable-stream/transform.js":228,"readable-stream/writable.js":229}],248:[function(require,module,exports){
+},{"events":187,"inherits":198,"readable-stream/duplex.js":220,"readable-stream/passthrough.js":227,"readable-stream/readable.js":228,"readable-stream/transform.js":229,"readable-stream/writable.js":230}],249:[function(require,module,exports){
 // Generated by CoffeeScript 1.8.0
 (function() {
   var ValueError, create, explicitToImplicit, format, implicitToExplicit, lookup, resolve,
@@ -84771,7 +85758,7 @@ Stream.prototype.pipe = function(dest, options) {
 
 }).call(this);
 
-},{}],249:[function(require,module,exports){
+},{}],250:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -84994,7 +85981,7 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":144}],250:[function(require,module,exports){
+},{"buffer":145}],251:[function(require,module,exports){
 (function (root) {
    "use strict";
 
@@ -85438,7 +86425,7 @@ UChar.udata={
    }
 }(this));
 
-},{}],251:[function(require,module,exports){
+},{}],252:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
 ;(function(root) {
@@ -85686,7 +86673,7 @@ UChar.udata={
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],252:[function(require,module,exports){
+},{}],253:[function(require,module,exports){
 (function (global){
 
 /**
@@ -85757,16 +86744,16 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],253:[function(require,module,exports){
-arguments[4][197][0].apply(exports,arguments)
-},{"dup":197}],254:[function(require,module,exports){
+},{}],254:[function(require,module,exports){
+arguments[4][198][0].apply(exports,arguments)
+},{"dup":198}],255:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],255:[function(require,module,exports){
+},{}],256:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -86356,7 +87343,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":254,"_process":211,"inherits":253}],256:[function(require,module,exports){
+},{"./support/isBuffer":255,"_process":212,"inherits":254}],257:[function(require,module,exports){
 (function (global){
 
 var rng;
@@ -86392,7 +87379,7 @@ module.exports = rng;
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],257:[function(require,module,exports){
+},{}],258:[function(require,module,exports){
 //     uuid.js
 //
 //     Copyright (c) 2010-2012 Robert Kieffer
@@ -86577,7 +87564,7 @@ uuid.unparse = unparse;
 
 module.exports = uuid;
 
-},{"./rng":256}],258:[function(require,module,exports){
+},{"./rng":257}],259:[function(require,module,exports){
 var indexOf = require('indexof');
 
 var Object_keys = function (obj) {
@@ -86717,4 +87704,4 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":196}]},{},[32]);
+},{"indexof":197}]},{},[32]);
