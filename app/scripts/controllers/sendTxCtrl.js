@@ -69,11 +69,11 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.setTokenSendMode();
         $scope.setTokenSendMode();
     });
-	$scope.$watch('ajaxReq.key', function() {
+    $scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {
             $scope.setSendMode('ether');
             $scope.wallet.setBalance();
-        	$scope.wallet.setTokens();
+            $scope.wallet.setTokens();
         }
     });
     $scope.$watch('tokenTx', function() {
@@ -138,48 +138,31 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
             return;
         }
-
-        if ($scope.wallet && $scope.wallet.hwType === 'trezor') {
-            TrezorConnect.open(function (error) {
-                if (error) {
-                    $scope.showRaw = false;
-                    $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(error));
-                    $scope.$apply();
-                } else {
-                    callback();
-                }
-            });
-        } else {
-            callback();
+        var txData = uiFuncs.getTxData($scope);
+        if ($scope.tx.sendMode == 'token') {
+            txData.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
+            txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
+            txData.value = '0x00';
         }
-
-        function callback() {
-            var txData = uiFuncs.getTxData($scope);
-            if ($scope.tx.sendMode == 'token') {
-                txData.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
-                txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
-                txData.value = '0x00';
+        uiFuncs.generateTx(txData, function(rawTx) {
+            if (!rawTx.isError) {
+                $scope.rawTx = rawTx.rawTx;
+                $scope.signedTx = rawTx.signedTx;
+                $scope.showRaw = true;
+                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+                if (!$scope.$$phase) $scope.$apply();
+            } else {
+                $scope.showRaw = false;
+                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+                if (!$scope.$$phase) $scope.$apply();
             }
-            uiFuncs.generateTx(txData, function(rawTx) {
-                if (!rawTx.isError) {
-                    $scope.rawTx = rawTx.rawTx;
-                    $scope.signedTx = rawTx.signedTx;
-                    $scope.showRaw = true;
-                    $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
-                    if (!$scope.$$phase) $scope.$apply();
-                } else {
-                    $scope.showRaw = false;
-                    $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
-                    if (!$scope.$$phase) $scope.$apply();
-                }
-            });
-        };
+        });
     }
     $scope.sendTx = function() {
         $scope.sendTxModal.close();
         uiFuncs.sendTx($scope.signedTx, function(resp) {
             if (!resp.isError) {
-            	var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
+                var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
                 $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr));
                 $scope.wallet.setBalance();
                 if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();

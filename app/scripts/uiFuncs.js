@@ -22,15 +22,6 @@ uiFuncs.isTxDataValid = function(txData) {
     if (txData.to == "0xCONTRACT") txData.to = '';
 }
 uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
-    var path = txData.path;
-    var nonce = ethFuncs.getNakedAddress(rawTx.nonce);
-    var gasPrice = ethFuncs.getNakedAddress(rawTx.gasPrice);
-    var gasLimit = ethFuncs.getNakedAddress(rawTx.gasLimit);
-    var to = ethFuncs.getNakedAddress(rawTx.to);
-    var value = ethFuncs.getNakedAddress(rawTx.value);
-    var data = ethFuncs.getNakedAddress(rawTx.data);
-    var chainId = rawTx.chainId;
-
     var localCallback = function(result) {
         if (!result.success) {
             if (callback !== undefined) {
@@ -53,18 +44,17 @@ uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
     }
 
     TrezorConnect.signEthereumTx(
-        path,
-        nonce,
-        gasPrice,
-        gasLimit,
-        to,
-        value,
-        data,
-        chainId,
+        txData.path,
+        ethFuncs.getNakedAddress(rawTx.nonce),
+        ethFuncs.getNakedAddress(rawTx.gasPrice),
+        ethFuncs.getNakedAddress(rawTx.gasLimit),
+        ethFuncs.getNakedAddress(rawTx.to),
+        ethFuncs.getNakedAddress(rawTx.value),
+        ethFuncs.getNakedAddress(rawTx.data),
+        rawTx.chainId,
         localCallback
     );
 }
-
 uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
     eTx.raw[6] = Buffer.from([1]); //ETH chain id
     eTx.raw[7] = eTx.raw[8] = 0;
@@ -89,7 +79,24 @@ uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
     }
     app.signTransaction(txData.path, txToSign.toString('hex'), localCallback);
 }
+uiFuncs.trezorUnlockCallback = function(txData, callback) {
+    TrezorConnect.open(function(error) {
+        if (error) {
+            if (callback !== undefined) callback({
+                isError: true,
+                error: error
+            });
+        } else {
+            txData.trezorUnlocked = true;
+            uiFuncs.generateTx(txData, callback);
+        }
+    });
+}
 uiFuncs.generateTx = function(txData, callback) {
+    if ((typeof txData.hwType != "undefined") && (txData.hwType == "trezor") && !txData.trezorUnlocked) {
+        uiFuncs.trezorUnlockCallback(txData, callback);
+        return;
+    }
     try {
         uiFuncs.isTxDataValid(txData);
         ajaxReq.getTransactionData(txData.from, function(data) {
