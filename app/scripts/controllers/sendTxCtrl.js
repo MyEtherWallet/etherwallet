@@ -69,11 +69,11 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.setTokenSendMode();
         $scope.setTokenSendMode();
     });
-	$scope.$watch('ajaxReq.key', function() {
+    $scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {
             $scope.setSendMode('ether');
             $scope.wallet.setBalance();
-        	$scope.wallet.setTokens();
+            $scope.wallet.setTokens();
         }
     });
     $scope.$watch('tokenTx', function() {
@@ -154,6 +154,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             } else {
                 $scope.showRaw = false;
                 $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+                if (!$scope.$$phase) $scope.$apply();
             }
         });
     }
@@ -161,7 +162,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.sendTxModal.close();
         uiFuncs.sendTx($scope.signedTx, function(resp) {
             if (!resp.isError) {
-            	var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
+                var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
                 $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr));
                 $scope.wallet.setBalance();
                 if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();

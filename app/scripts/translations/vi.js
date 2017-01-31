@@ -27,6 +27,10 @@ vi.data = {
   ADD_Ledger_0b:        'Sử dụng [Chrome](https://www.google.com/chrome/browser/desktop/) hoặc [Opera](https://www.opera.com/) Để mở lại trang MyEtherWallet',
   ADD_Ledger_scan:      'Kết nối với Ledger Nano S',
 
+  x_Trezor:             'TREZOR',
+  ADD_Trezor_scan:      'Connect to TREZOR',
+  ADD_Trezor_select:    'This is a TREZOR seed',
+
   /* Navigation*/
   NAV_YourWallets:      'Ví Của Bạn',
   NAV_AddWallet:        'Thêm Ví',
@@ -106,8 +110,10 @@ vi.data = {
   ADD_Radio_4:            'Thêm Tài Khoản đễ Theo Dõi',
   ADD_Radio_5:          'Dán/Điền ký tự dễ nhớ của bạn',
   ADD_Radio_5_Path:       'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom:  '(custom)',
   ADD_Label_2:            'Tạo Tên Gọi:',
   ADD_Label_3:            'Ví của bạn sẽ được giải mã. Xin vui lòng điền mật khẩu: ',

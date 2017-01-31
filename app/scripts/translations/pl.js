@@ -89,9 +89,11 @@ pl.data = {
   ADD_Radio_4:            'Dodaj Konto do Obserwacji',
   ADD_Radio_5:            'Wklej/Wpisz Swój Mnemonik',
   ADD_Radio_5_Path:       'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
-  ADD_Radio_5_PathCustom:  '(custom)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
+  ADD_Radio_5_PathCustom: '(custom)',
   ADD_Label_2:            'Utwórz Nazwę Użytkownika:',
   ADD_Label_3:            'Twój portfel jest zaszyfrowany. Podaj hasło: ',
   ADD_Label_4:            'Dodaj Konto do Obserwacji',
@@ -231,6 +233,10 @@ pl.data = {
   ADD_Ledger_0a:        'Otwórz MyEtherWallet ponownie na bezpiecznym połączeniu (SSL)',
   ADD_Ledger_0b:        'Otwórz MyEtherWallet w [Chrome](https://www.google.com/chrome/browser/desktop/) lub [Opera](https://www.opera.com/)',
   ADD_Ledger_scan:      'Połącz z Ledger Nano S',
+
+  x_Trezor:             'TREZOR',
+  ADD_Trezor_scan:      'Connect to TREZOR',
+  ADD_Trezor_select:    'This is a TREZOR seed',
 
   /* Chrome Extension */
   CX_error_1:           'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)!',

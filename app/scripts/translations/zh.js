@@ -39,6 +39,10 @@ zh.data = {
   ADD_Ledger_0b:        'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/)',
   ADD_Ledger_scan:      'Connect to Ledger Nano S',
 
+  x_Trezor:             'TREZOR',
+  ADD_Trezor_scan:      'Connect to TREZOR',
+  ADD_Trezor_select:    'This is a TREZOR seed',
+
   /* Parity Error Messages */
   PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
   PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
@@ -125,8 +129,10 @@ zh.data = {
   ADD_Radio_3:            '粘贴/输入你的私钥 ',
   ADD_Radio_4:            '添加一个查看账户',
   ADD_Radio_5_Path:       'Select HD derivation path',
-  ADD_Radio_5_PathDefault: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
+  ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom:  '(custom)',
   ADD_Label_2:            '生成一个钱包昵称：',
   ADD_Label_3:            '你的钱包被加密，请输入密码：',
