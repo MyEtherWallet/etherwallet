@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 8814566ca19a85ae300330f42c40e3363b7dbdb5
+// Last sync with en.js: commit 9aaeb1e8e4fee299887e0f8393c1c074b581b9f0
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -236,8 +236,8 @@ it.data = {
   ADD_Ledger_scan:      'Collegati al Ledger Nano S',
 
   x_Trezor:             'TREZOR',
-  ADD_Trezor_scan:      'Connect to TREZOR',
-  ADD_Trezor_select:    'This is a TREZOR seed',
+  ADD_Trezor_scan:      'Collegati al TREZOR',
+  ADD_Trezor_select:    'Questo è un seme TREZOR',
 
   /* CX */
   CX_error_1:           'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno!',
