@@ -700,6 +700,7 @@ var contractsCtrl = function ($scope, $sce, walletService) {
         $scope.wallet = walletService.wallet;
         $scope.wd = true;
         $scope.tx.nonce = 0;
+        $scope.sendTxStatus = "";
     });
     $scope.$watch('visibility', function (newValue, oldValue) {
         $scope.tx = {
@@ -763,6 +764,7 @@ var contractsCtrl = function ($scope, $sce, walletService) {
                         $scope.showRaw = false;
                         $scope.deployContractStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
                     }
+                    if (!$scope.$$phase) $scope.$apply();
                 });
             });
         } catch (e) {
@@ -839,6 +841,10 @@ var contractsCtrl = function ($scope, $sce, walletService) {
         }
     };
     $scope.generateContractTx = function () {
+        if (!$scope.wd) {
+            $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[3]));
+            return;
+        }
         $scope.tx.data = $scope.getTxData();
         $scope.tx.to = $scope.contract.address;
         $scope.sendContractModal.open();
@@ -1381,12 +1387,11 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
                 $scope.signedTx = rawTx.signedTx;
                 $scope.showRaw = true;
                 $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
-                if (!$scope.$$phase) $scope.$apply();
             } else {
                 $scope.showRaw = false;
                 $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
-                if (!$scope.$$phase) $scope.$apply();
             }
+            if (!$scope.$$phase) $scope.$apply();
         });
     };
     $scope.sendTx = function () {

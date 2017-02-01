@@ -146,10 +146,6 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <div class="modal-body">
-            <div ng-show="!wd">
-              @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
-              @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
-            </div>
             <div ng-show="wd">
               <div class="larger">
                 <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
@@ -220,12 +216,6 @@
       </div>
 
       <!-- Wallet Decrypt -->
-      <div class="form-group" ng-show="!wd">
-        <br />
-        @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
-        @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
-        <br /><br />
-      </div>
       <div ng-bind-html="deployContractStatus"></div>
 
       <!-- Sign TX Button (once wallet has been unlocked) -->
@@ -287,7 +277,11 @@
     </div>
   </section>
   <!-- / Deploy Contract -->
-
+  <!--wallet decrypt-->
+  <div class="form-group" ng-show="(!wd && visibility=='deployView') || (!wd && visibility=='interactView' && contract.selectedFunc && !contract.functions[contract.selectedFunc.index].constant)">
+      @@if (site === 'cx' )  {  <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   }
+      @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
+  </div>
 
 
 </article>
