@@ -24,8 +24,15 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                         };
   $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
   $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
+
+  $scope.onHDDPathChange = function() {
+    $scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim()));
+    $scope.HDWallet.numWallets = 0;
+    $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
+  }
   $scope.onCustomHDDPathChange = function() {
-      $scope.HDWallet.dPath = $scope.HDWallet.customDPath;
+    $scope.HDWallet.dPath = $scope.HDWallet.customDPath;
+    $scope.onHDDPathChange();
   }
   $scope.showContent = function($fileContent) {
     $scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name));
@@ -110,9 +117,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         walletService.password = $scope.filePassword;
       } else if ($scope.showMDecrypt) {
         $scope.mnemonicModel.open();
-        $scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim()));
-        $scope.HDWallet.numWallets = 0;
-        $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
+        $scope.onHDDPathChange();
       }
       walletService.wallet = $scope.wallet;
     } catch (e) {

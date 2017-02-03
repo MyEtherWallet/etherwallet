@@ -79,12 +79,6 @@
                 </p>
             </div>
           </div>
-          <span class="form-group">
-          <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead">READ</button> <!-- this opens modal -->
-          <button class="btn btn-primary" ng-show="!contract.functions[contract.selectedFunc.index].constant" ng-click="generateContractTx()">WRITE</button>
-        </span>
-        </br>
-        <div class="form-group" ng-bind-html="sendTxStatus" ng-show="!contract.functions[contract.selectedFunc.index].constant"></div>
         </span>
         <!-- / Write -->
 
@@ -283,6 +277,14 @@
       @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
   </div>
 
+<article ng-show="contract.selectedFunc!=null">
+  <span class="form-group" class="form-group">
+    <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead">READ</button>
+    <button class="btn btn-primary" ng-show="!contract.functions[contract.selectedFunc.index].constant" ng-click="generateContractTx()">WRITE</button>
+  </span>
+  </br>
+  <div class="form-group" ng-bind-html="sendTxStatus" ng-show="!contract.functions[contract.selectedFunc.index].constant"></div>
+</article>
 
 </article>
 <!-- / Send Transaction Page -->
