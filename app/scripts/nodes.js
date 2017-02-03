@@ -21,7 +21,7 @@ nodes.customNodeObj = {
     'lib': null
 };
 nodes.nodeList = {
-    'eth2_mew': {
+    'eth_mew': {
         'name': 'ETH-beta',
         'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
         'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
@@ -34,7 +34,7 @@ nodes.nodeList = {
         'service': 'MyEtherWallet',
         'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
     },
-    'eth_mew': {
+    'eth2_mew': {
         'name': 'ETH',
         'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
         'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
