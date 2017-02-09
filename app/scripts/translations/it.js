@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js: commit 575529128d59cb75048917d66758204df286e727
+// Last sync with en.js: commit 9aaeb1e8e4fee299887e0f8393c1c074b581b9f0
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -93,12 +93,12 @@ it.data = {
   ADD_Radio_3:            'Incolla/Inserisci la tua chiave privata ',
   ADD_Radio_4:            'Aggiungi un conto da osservare',
   ADD_Radio_5:            'Incolla/Inserisci la tua frase mnemonica',
-  ADD_Radio_5_Path:       'Select HD derivation path',
+  ADD_Radio_5_Path:       'Seleziona un percorso di derivazione HD',
   ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
   ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
-  ADD_Radio_5_PathCustom: '(custom)',
+  ADD_Radio_5_PathCustom: '(altro)',
   ADD_Label_2:            'Crea un nome:',
   ADD_Label_3:            'Il portafoglio è crittografato. Inserire la password: ',
   ADD_Label_4:            'Aggiungi un conto da osservare',
@@ -236,8 +236,8 @@ it.data = {
   ADD_Ledger_scan:      'Collegati al Ledger Nano S',
 
   x_Trezor:             'TREZOR',
-  ADD_Trezor_scan:      'Connect to TREZOR',
-  ADD_Trezor_select:    'This is a TREZOR seed',
+  ADD_Trezor_scan:      'Collegati al TREZOR',
+  ADD_Trezor_select:    'Questo è un seme TREZOR',
 
   /* CX */
   CX_error_1:           'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno!',
