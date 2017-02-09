@@ -40,8 +40,8 @@ no.data = {
   ADD_Ledger_scan:      'Koble til Ledger Nano S',
 
   x_Trezor:             'TREZOR',
-  ADD_Trezor_scan:      'Connect to TREZOR',
-  ADD_Trezor_select:    'This is a TREZOR seed',
+  ADD_Trezor_scan:      'Koble til TREZOR',
+  ADD_Trezor_select:    'Dette er en TREZOR seed',
 
   /* Navigation*/
   NAV_YourWallets:      'Dine lommebøker',
@@ -52,7 +52,7 @@ no.data = {
   NAV_SendTokens:       'Send Tokens',
   NAV_Offline:          'Send Offline',
   NAV_DeployContract:   'Utplasser kontrakt',
-  NAV_InteractContract: 'Interact with Contract',
+  NAV_InteractContract: 'Samhandle med Kontrakt',
   NAV_Contracts:        'Kontrakt',
   NAV_Multisig:         'Multisig',
   NAV_MyWallets:        'Mine lommebøker',
@@ -119,12 +119,12 @@ no.data = {
   ADD_Radio_2_short:      'VELG LOMMEBOK-FIL...',
   ADD_Radio_3:            'Lim/skriv inn din private nøkkel',
   ADD_Radio_4:            'Legg til en konto for overvåkning',
-  ADD_Radio_5_Path:       'Select HD derivation path',
+  ADD_Radio_5_Path:       'Velg "HD derivation" variant',
   ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
   ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative:'(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
-  ADD_Radio_5_PathCustom: '(custom)',
+  ADD_Radio_5_PathCustom: '(tilpasset)',
   ADD_Label_2:            'Lag et kallenavn:',
   ADD_Label_3:            'Filen din er kryptert. Vennligst oppgi passordet: ',
   ADD_Label_4:            'Legg til en konto for overvåkning',
@@ -286,14 +286,14 @@ no.data = {
   GETH_NegativeValue:      'Negativ verdi',
 
   /* Parity Error Messages */
-  PARITY_AlreadyImported:       "Transaction with the same hash was already imported.",
-  PARITY_Old:                   "Transaction nonce is too low. Try incrementing the nonce.",
-  PARITY_TooCheapToReplace:     "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-  PARITY_LimitReached:          "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-  PARITY_InsufficientGasPrice:  "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-  PARITY_InsufficientBalance:   "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-  PARITY_GasLimitExceeded:      "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-  PARITY_InvalidGasLimit:       "Supplied gas is beyond limit.",
+  PARITY_AlreadyImported:       "En transaksjon med samme hash har allerede blitt importert.",
+  PARITY_Old:                   "Transaksjonens nonce er for lav. Prøv å øke nonce gradvis (+1).",
+  PARITY_TooCheapToReplace:     "Transaksjonsavgiften er for lav. Det er en annen transaksjon med samme nonce i køen. Prøv å øke avgiften eller øke nonce (+1).",
+  PARITY_LimitReached:          "Det er for mange transaksjoner i køen. Transaksjonen din ble derfor droppet. Prøv å øke avgiften.",
+  PARITY_InsufficientGasPrice:  "Transaksjonsavgiften er for lav. Den tilfredsstiller ikke minimumsavgiften til noden din. (minimum: {}, fått: {}). Prøv å øke avgiften.",
+  PARITY_InsufficientBalance:   "Utilstrekkelige midler. Kontoen du prøver å sende transaksjon fra har ikke nok midler. Påkrevd {} og fått: {}.",
+  PARITY_GasLimitExceeded:      "Transaksjonskostnaden overskrider nåværende gas-grense. Grense: {}, fått: {}. Prøv å redusere tilført gas.",
+  PARITY_InvalidGasLimit:       "Tilført mengde gas er over grensen.",
 
   /* Tranlsation Info */
   translate_version:    '0.4',
@@ -483,8 +483,8 @@ no.data = {
   HELP_12_Desc_27:        'Etter at du har lykkes med å importere kontoen, slett `ikke_noe_spesielt_slett_meg.txt`',
   HELP_12_Desc_28:        'Neste gangen du åpner "Ethereum Wallet"-programmet, vil kontoen din være listet under "Accounts". ',
 
-  HELP_13_Title:          '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean?',
-  HELP_13_Desc_1:         'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction.',
+  HELP_13_Title:          '13) Hva betyr "Utilstrekkelige midler. Kontoen du prøver å sende transaksjon fra har ikke nok midler. Påkrevd XXXXXXXXXXXXXXXXXXX og fått: XXXXXXXXXXXXXXXX." ?',
+  HELP_13_Desc_1:         'Dette betyr at du ikke har nok Ether på kontoen din til å dekke gas-kostnaden. Hver transaksjon (inkludert token- og kontrakt-transaksjoner) krever gas, og gas betales med Ether. Tallet som vises er beløpet som kreves for å dekke transaksjonskostnaden i Wei (1 ETH = 10^18 Wei). Ta dette tallet, del det på `1000000000000000000`, og trekk fra Ether-beløpet som du prøvde å sende (hvis du prøvde å sende Ether). Dette vil gi deg Ether-beløpet som du mangler på (trenger å sende til) denne kontoen for å gjennomføre transaksjonen.',
 
   HELP_14_Title:          '14) Noen nettsider randomiserer genereringen av den private nøkkelen via musebevegelser. MyEtherWallet.com gjør ikke dette. Er metoden som MyEtherWallet bruker til å generere tilfeldige tall sikker?',
   HELP_14_Desc_1:         'Selv om musebevegelses-metoden er smart og vi skjønner hvorfor folk liker den, så er realiteten at window.crypto sikrer mer entropi (tilfeldighet) enn musebevegelser. Musebevegelses-metoden er ikke usikker, men det er bare det at vi (og mange andre kryptoeksperter) har tro på window.crypto. I tillegg kan MyEtherWallet.com også benyttes på fingerstyrte enheter. Her er en [konversasjon mellom en sint redditor og Vitalik Buterin angående musebevegelser versus window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) og her er [window.crypto w3 spesifikasjonen](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
