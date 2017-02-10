@@ -1,6 +1,6 @@
 <article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.bulkGenerate.id" ng-controller='bulkGenCtrl'  ng-cloak>
 
-  <h2 translate="NAV_BulkGenerate"> Bulk Generate Wallets </h2>
+  <h1 translate="NAV_BulkGenerate"> Bulk Generate Wallets </h1>
 
   <!-- Top - Bulk Generate -->
   <section class="row">
@@ -22,7 +22,7 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <h2 translate="BULK_SuccessMsg">Success! Your wallets have been generated.</h2>
+        <h1 translate="BULK_SuccessMsg">Success! Your wallets have been generated.</h1>
 
         <div class="alert alert-danger" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
       </div>
@@ -37,7 +37,7 @@
             </tr>
             <tr class="privaddkey" ng-repeat="wallet in wallets">
             <td>
-                <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+                <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
             </td>
             <td>
                 <textarea class="form-control" rows="4" type="text" readonly>{{wallet.getChecksumAddressString()}}</textarea>

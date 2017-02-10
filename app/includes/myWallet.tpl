@@ -2,7 +2,7 @@
 <article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'  ng-cloak>
 
 
-  <h2 translate="NAV_YourWallets"> Your Wallets </h2>
+  <h1 translate="NAV_YourWallets"> Your Wallets </h1>
 
 
   <!-- Your Wallet Table -->
@@ -21,7 +21,7 @@
     <tbody>
       <tr ng-repeat="twallet in allWallets track by $index">
         <td>{{$index+1}}</td>
-        <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div></td>
+        <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div></td>
         <td>
           {{twallet.nick}} <br />
           <span class="mono small">{{twallet.addr}}</span>
@@ -50,7 +50,7 @@
 
   <!-- Watch Only Account Table -->
   <section id="secWatchOnlyMain">
-    <h2 translate="MYWAL_WatchOnly"> Your Watch-Only Accounts </h2>
+    <h1 translate="MYWAL_WatchOnly"> Your Watch-Only Accounts </h1>
     <table class="table table-striped" id="tblWatchOnlyMain">
       <thead>
         <tr>
@@ -66,7 +66,7 @@
       <tbody>
         <tr ng-repeat="twallet in allWatchOnly track by $index">
           <td>{{$index+1}}</td>
-          <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div></td>
+          <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="twallet"></div></td>
           <td>
             {{twallet.nick}}
             <br />
@@ -91,7 +91,7 @@
     <hr />
 
     <div class="col-sm-8">
-      <h2><span translate="MYWAL_Viewing">Viewing Wallet: </span> {{viewWallet.nick}}</h2>
+      <h1><span translate="MYWAL_Viewing">Viewing Wallet: </span> {{viewWallet.nick}}</h1>
     </div>
     <div class="col-sm-4 text-right" style="margin-top: 16px;">
       <a class="btn btn-warning" ng-click="resetWallet()" translate="MYWAL_Hide"> Hide Wallet Info </a>
@@ -111,7 +111,7 @@
           <input class="form-control" type="text" ng-value="wallet.getChecksumAddressString()" readonly="readonly">
         </div>
         <div class="col-sm-2 address-identicon-container">
-          <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+          <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
         </div>
       </div>
       <div class="form-group">

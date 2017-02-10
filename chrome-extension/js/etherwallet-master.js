@@ -49,6 +49,14 @@ module.exports=[
       "name": "Replay Safe Split",
       "address": "0xAA1A6e3e6EF20068f7F8d8C835d2D22fd5116444",
       "abi": '[{"constant":false,"inputs":[{"name":"targetFork","type":"address"},{"name":"targetNoFork","type":"address"}],"name":"split","outputs":[{"name":"","type":"bool"}],"type":"function"}]'
+  },{
+      "name": "Pass DAO Committees Contract",
+      "address": "0x3c01ddc7af41e6888cbd8d0398fe34a81c3c7f36",
+      "abi": '[{ "constant": false, "inputs": [ { "name": "_committeeID", "type": "uint256" }, { "name": "_supportsProposal", "type": "bool" } ], "name": "vote", "outputs": [], "payable": false, "type": "function" },{ "constant": false, "inputs": [ { "name": "_proposalID", "type": "uint256" } ], "name": "buySharesForProposal", "outputs": [ { "name": "", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [], "name": "withdrawPendingAmounts", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function"}, { "constant": false, "inputs": [ { "name": "_contractorCreator", "type": "address" }, { "name": "_recipient", "type": "address" }, { "name": "_metaProject", "type": "bool" }, { "name": "_passProject", "type": "address" }, { "name": "_projectName", "type": "string" }, { "name": "_projectDescription", "type": "string" } ], "name": "createContractor", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "_amount", "type": "uint256" }, { "name": "_contractor", "type": "address" }, { "name": "_contractorProposalID", "type": "uint256" }, { "name": "_proposalDescription", "type": "string" }, { "name": "_hashOfTheContractorProposalDocument", "type": "bytes32" }, { "name": "_moderator", "typPassDe": "address" }, { "name": "_initialSharePriceMultiplier", "type": "uint256" }, { "name": "_minutesFundingPeriod", "type": "uint256" }, { "name": "_minutesDebatingPeriod", "type": "uint256" } ], "name": "contractorProposal", "outputs": [ { "name": "", "type": "uint256" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "_name", "type": "string" }, { "name": "_description", "type": "string" }, { "name": "_project", "type": "address" }, { "name": "_minutesDebatingPeriod", "type": "uint256" } ], "name": "resolutionProposal", "outputs": [ { "name": "", "type": "uint256" } ], "payable": true, "type": "function" },  { "constant": false, "inputs": [ { "name": "_minQuorumDivisor", "type": "uint256" }, { "name": "_minCommitteeFees", "type": "uint256" }, { "name": "_minPercentageOfLikes", "type": "uint256" }, { "name": "_minutesSetProposalPeriod", "type": "uint256" }, { "name": "_minMinutesDebatePeriod", "type": "uint256" }, { "name": "_feesRewardInflationRate", "type": "uint256" }, { "name": "_defaultMinutesFundingPeriod", "type": "uint256" }, { "name": "_tokenPriceInflationRate", "type": "uint256" } ], "name": "rulesProposal", "outputs": [ { "name": "", "type": "uint256" } ], "payable": true, "type": "function" },  { "constant": false, "inputs": [ { "name": "_newCommitteeRoom", "type": "address" }, { "name": "_newShareManager", "type": "address" }, { "name": "_newTokenManager", "type": "address" }, { "name": "_minutesDebatingPeriod", "type": "uint256" } ], "name": "upgradeProposal", "outputs": [ { "name": "", "type": "uint256" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "_committeeID", "type": "uint256" } ], "name": "executeDecision", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "_proposalID", "type": "uint256" } ], "name": "orderToContractor", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }]'
+  },{
+      "name": "Pass DAO Tokens Contract",
+      "address": "0x3c01ddc7af41e6888cbd8d0398fe34a81c3c7f36",
+      "abi": '[{ "constant": false, "inputs": [ { "name": "_proposalID", "type": "uint256" }, { "name": "_buyer", "type": "address" } ], "name": "buyTokensForProposal", "outputs": [ { "name": "", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [], "name": "withdrawPendingAmounts", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "buyTokens", "outputs": [ { "name": "", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "_from", "type": "uint256" }, { "name": "_to", "type": "uint256" } ], "name": "removeOrders", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "_tokenAmount", "type": "uint256" }, { "name": "_from", "type": "uint256" }, { "name": "_to", "type": "uint256" } ], "name": "sellTokens", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "type": "function" } ]'
   }
 ]
 
@@ -1966,66 +1974,53 @@ module.exports = QRCodeDrtv;
 'use strict';
 
 var balanceDrtv = function () {
-   return {
-      restrict: "E",
-      template: '<section ng-controller=\'walletBalanceCtrl\'><h4 translate=\"sidebar_AccountInfo\">\n \
-                        Account Information: <\/h4>\n \
-        <div translate=\"sidebar_AccountAddr\">\n \
-Account Address: <\/div>\n \
-<ul class=\"account-info\">\n \
-<div id=\"addressIdenticon\" class=\"med\" title=\"Address Indenticon\" blockie-address=\"{{wallet.getAddressString()}}\" watch-var=\"wallet\"><\/div>\n \
-<li class=\"mono wrap\">{{wallet.getChecksumAddressString()}}  <\/li>\n \
-   <\/ul>\n \
-   <div translate=\"sidebar_AccountBal\">Account Balance: <\/div>\n \
-   <ul class=\"account-info\">\n \
-<li>\n \
-   <span class=\"mono wrap\">{{wallet.balance}}<\/span> {{ajaxReq.type}} <\/li>\n \
-   <\/ul>\n \
-   <section class=\"token-balances\">\n \
-   <div translate=\"sidebar_TokenBal\">\n \
-   Token Balances: <\/div>\n \
-   <table class=\"account-info\">\n \
-   <tr ng-repeat=\"token in wallet.tokenObjs track by $index\" ng-show=\"token.balance!=0 && token.balance!=\'loading\' || token.type!==\'default\' || tokenVisibility==\'shown\'\">\n \
-   <td class=\"mono wrap\">\n \
-      <img src=\"images\/icon-remove.svg\" class=\"token-remove\" title=\"Remove Token\" ng-click=\"removeTokenFromLocal(token.symbol)\" ng-show=\"token.type!==\'default\'\"\/>\n \
-      {{token.getBalance()}}\n \
-      <\/td>\n \
-   <td>\n \
-      {{token.getSymbol()}} <\/td>\n \
-      <\/tr>\n \
-      <\/table>\n \
-      <a class=\"btn btn-default btn-sm\" ng-click=\"tokenVisibility=\'shown\'\" ng-show=\"tokenVisibility==\'hidden\'\"> Show All Tokens <\/a>\n \
-      <a class=\"btn btn-default btn-sm\" ng-click=\"tokenVisibility=\'hidden\'\" ng-show=\"tokenVisibility==\'shown\'\">  Hide Tokens <\/a>\n \
-      <a class=\"btn btn-default btn-sm\" ng-click=\"customTokenField = !customTokenField\"> <span translate=\"SEND_custom\"> Add Custom Token <\/span> <\/a>\n \
-      <div class=\"custom-token-fields\" ng-show=\"customTokenField\">\n \
-      <div class=\"form-group\">\n \
-      <label translate=\"TOKEN_Addr\"> Address: <\/label>\n \
-      <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.contractAdd\" ng-class=\"Validator.isValidAddress(localToken.contractAdd) ? \'is-valid\' : \'is-invalid\'\"\/>\n \
-      <\/div>\n \
-      <div class=\"form-group\">\n \
-      <label translate=\"TOKEN_Symbol\"> Token Symbol: <\/label>\n \
-      <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.symbol\" ng-class=\"localToken.symbol!=\'\' ? \'is-valid\' : \'is-invalid\'\"\/>\n \
-      <\/div>\n \
-      <div class=\"form-group\">\n \
-      <label translate=\"TOKEN_Dec\"> Decimals: <\/label>\n \
-      <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.decimals\" ng-class=\"Validator.isPositiveNumber(localToken.decimals) ? \'is-valid\' : \'is-invalid\'\"\/>\n \
-      <\/div>\n \
-      <div class=\"form-group\">\n \
-      <div class=\"btn btn-primary btn-sm\" ng-click=\"saveTokenToLocal()\" translate=\"x_Save\">\n \
-      Save <\/div>\n \
-      <\/div>\n \
-      <div ng-bind-html=\"validateLocalToken\">\n \
-      <\/div>\n \
-      <\/div>\n \
-      <\/section>\n \
-      <div ng-show=\"ajaxReq.type==\'ETH\'\"><div translate=\"sidebar_Equiv\">\n \
-      Equivalent Values: <\/div>\n \
-      <ul class=\"account-info\">\n \
-        <li><span class=\"mono wrap\">{{wallet.usdBalance}}<\/span> USD <\/li>\n \
-        <li><span class=\"mono wrap\">{{wallet.eurBalance}}<\/span> EUR <\/li>\n \
-        <li><span class=\"mono wrap\">{{wallet.btcBalance}}<\/span> BTC <\/li>\n \
-      <\/ul></section></div>'
-   };
+  return {
+    restrict: "E",
+    template: '<aside ng-controller=\'walletBalanceCtrl\'>\n\
+                      <h5 translate=\"sidebar_AccountAddr\">Account Address:</h5>\n\
+                      <ul class=\"account-info\">\n\
+                        <div class=\"addressIdenticon med float\" title=\"Address Indenticon\" blockie-address=\"{{wallet.getAddressString()}}\" watch-var=\"wallet\"></div>\n\
+                        <span class=\"mono wrap\">{{wallet.getChecksumAddressString()}}</span>\n\
+                      </ul>\n\
+                      <h5 translate=\"sidebar_AccountBal\">Account Balance:</h5>\n\
+                      <ul class=\"account-info\">\n\
+                        <li><span class=\"mono wrap\">{{wallet.balance}}</span> {{ajaxReq.type}}</li>\n\
+                      </ul>\n\
+                      <section class=\"token-balances\">\n\
+                        <h5 translate=\"sidebar_TokenBal\">Token Balances:</h5>\n\
+                        <table class=\"account-info\">\n\
+                          <tr ng-repeat=\"token in wallet.tokenObjs track by $index\" ng-show=\"token.balance!=0 \&\& token.balance!=\'loading\' || token.type!==\'default\' || tokenVisibility==\'shown\'\">\n\
+                            <td class=\"mono wrap\"><img src=\"images/icon-remove.svg\" class=\"token-remove\" title=\"Remove Token\" ng-click=\"removeTokenFromLocal(token.symbol)\" ng-show=\"token.type!==\'default\'\" />{{token.getBalance()}}</td>\n\
+                            <td>{{token.getSymbol()}} </td>\n\
+                          </tr>\n\
+                        </table>\n\
+                        <a class=\"btn btn-default btn-sm\" ng-click=\"tokenVisibility=\'shown\'\" ng-show=\"tokenVisibility==\'hidden\'\">Show All Tokens</a>\n\
+                        <a class=\"btn btn-default btn-sm\" ng-click=\"tokenVisibility=\'hidden\'\" ng-show=\"tokenVisibility==\'shown\'\">Hide Tokens</a>\n\
+                        <a class=\"btn btn-default btn-sm\" ng-click=\"customTokenField=!customTokenField\"><span translate=\"SEND_custom\"translate=\"SEND_custom\">Add Custom Token<\/span><\/a>\n \
+                        <div class=\"custom-token-fields\" ng-show=\"customTokenField\">\n\
+                          <label translate=\"TOKEN_Addr\">Address:</label>\n\
+                          <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.contractAdd\" ng-class=\"Validator.isValidAddress(localToken.contractAdd) ? \'is-valid\' : \'is-invalid\'\" />\n\
+                          <label translate=\"TOKEN_Symbol\">Token Symbol:</label>\n\
+                          <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.symbol\" ng-class=\"localToken.symbol!=\'\' ? \'is-valid\' : \'is-invalid\'\" />\n\
+                          <label translate=\"TOKEN_Dec\"> Decimals:</label>\n\
+                          <input class=\"form-control input-sm\" type=\"text\" ng-model=\"localToken.decimals\" ng-class=\"Validator.isPositiveNumber(localToken.decimals) ? \'is-valid\' : \'is-invalid\'\" />\n\
+                          <div class=\"btn btn-primary btn-sm\" ng-click=\"saveTokenToLocal()\" translate=\"x_Save\">Save</div>\n\
+                          <div ng-bind-html=\"validateLocalToken\"></div>\n\
+                        </div>\n\
+                      </section>\n\
+                      <section ng-show=\"ajaxReq.type==\'ETH\'\">\n\
+                        <h5 translate=\"sidebar_Equiv\">Equivalent Values:</h5>\n\
+                        <ul class=\"account-info\">\n\
+                          <li><span class=\"mono wrap\">{{wallet.btcBalance}}</span> BTC</li>\n\
+                          <li><span class=\"mono wrap\">{{wallet.repBalance}}</span> REP</li>\n\
+                          <li><span class=\"mono wrap\">{{wallet.eurBalance}}</span> EUR</li>\n\
+                          <li><span class=\"mono wrap\">{{wallet.chfBalance}}</span> CHF</li>\n\
+                          <li><span class=\"mono wrap\">{{wallet.usdBalance}}</span> USD</li>\n\
+                        </ul>\n\
+                        <a class=\"btn btn-primary btn-sm\">Exchange via Bity</a>\n\
+                      </section>\n\
+                    </aside>'
+  };
 };
 module.exports = balanceDrtv;
 
@@ -11755,7 +11750,7 @@ module.exports = id;
 
 },{}],75:[function(require,module,exports){
 // Italian
-// Last sync with en.js: commit 575529128d59cb75048917d66758204df286e727
+// Last sync with en.js: commit 9aaeb1e8e4fee299887e0f8393c1c074b581b9f0
 'use strict';
 
 var it = function () {};
@@ -11850,12 +11845,12 @@ it.data = {
   ADD_Radio_3: 'Incolla/Inserisci la tua chiave privata ',
   ADD_Radio_4: 'Aggiungi un conto da osservare',
   ADD_Radio_5: 'Incolla/Inserisci la tua frase mnemonica',
-  ADD_Radio_5_Path: 'Select HD derivation path',
+  ADD_Radio_5_Path: 'Seleziona un percorso di derivazione HD',
   ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
   ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
-  ADD_Radio_5_PathCustom: '(custom)',
+  ADD_Radio_5_PathCustom: '(altro)',
   ADD_Label_2: 'Crea un nome:',
   ADD_Label_3: 'Il portafoglio è crittografato. Inserire la password: ',
   ADD_Label_4: 'Aggiungi un conto da osservare',
@@ -11993,8 +11988,8 @@ it.data = {
   ADD_Ledger_scan: 'Collegati al Ledger Nano S',
 
   x_Trezor: 'TREZOR',
-  ADD_Trezor_scan: 'Connect to TREZOR',
-  ADD_Trezor_select: 'This is a TREZOR seed',
+  ADD_Trezor_scan: 'Collegati al TREZOR',
+  ADD_Trezor_select: 'Questo è un seme TREZOR',
 
   /* CX */
   CX_error_1: 'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno!',
@@ -13434,8 +13429,8 @@ no.data = {
   ADD_Ledger_scan: 'Koble til Ledger Nano S',
 
   x_Trezor: 'TREZOR',
-  ADD_Trezor_scan: 'Connect to TREZOR',
-  ADD_Trezor_select: 'This is a TREZOR seed',
+  ADD_Trezor_scan: 'Koble til TREZOR',
+  ADD_Trezor_select: 'Dette er en TREZOR seed',
 
   /* Navigation*/
   NAV_YourWallets: 'Dine lommebøker',
@@ -13446,7 +13441,7 @@ no.data = {
   NAV_SendTokens: 'Send Tokens',
   NAV_Offline: 'Send Offline',
   NAV_DeployContract: 'Utplasser kontrakt',
-  NAV_InteractContract: 'Interact with Contract',
+  NAV_InteractContract: 'Samhandle med Kontrakt',
   NAV_Contracts: 'Kontrakt',
   NAV_Multisig: 'Multisig',
   NAV_MyWallets: 'Mine lommebøker',
@@ -13513,12 +13508,12 @@ no.data = {
   ADD_Radio_2_short: 'VELG LOMMEBOK-FIL...',
   ADD_Radio_3: 'Lim/skriv inn din private nøkkel',
   ADD_Radio_4: 'Legg til en konto for overvåkning',
-  ADD_Radio_5_Path: 'Select HD derivation path',
+  ADD_Radio_5_Path: 'Velg "HD derivation" variant',
   ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
   ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
-  ADD_Radio_5_PathCustom: '(custom)',
+  ADD_Radio_5_PathCustom: '(tilpasset)',
   ADD_Label_2: 'Lag et kallenavn:',
   ADD_Label_3: 'Filen din er kryptert. Vennligst oppgi passordet: ',
   ADD_Label_4: 'Legg til en konto for overvåkning',
@@ -13680,14 +13675,14 @@ no.data = {
   GETH_NegativeValue: 'Negativ verdi',
 
   /* Parity Error Messages */
-  PARITY_AlreadyImported: "Transaction with the same hash was already imported.",
-  PARITY_Old: "Transaction nonce is too low. Try incrementing the nonce.",
-  PARITY_TooCheapToReplace: "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-  PARITY_LimitReached: "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-  PARITY_InsufficientGasPrice: "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-  PARITY_InsufficientBalance: "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-  PARITY_GasLimitExceeded: "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-  PARITY_InvalidGasLimit: "Supplied gas is beyond limit.",
+  PARITY_AlreadyImported: "En transaksjon med samme hash har allerede blitt importert.",
+  PARITY_Old: "Transaksjonens nonce er for lav. Prøv å øke nonce gradvis (+1).",
+  PARITY_TooCheapToReplace: "Transaksjonsavgiften er for lav. Det er en annen transaksjon med samme nonce i køen. Prøv å øke avgiften eller øke nonce (+1).",
+  PARITY_LimitReached: "Det er for mange transaksjoner i køen. Transaksjonen din ble derfor droppet. Prøv å øke avgiften.",
+  PARITY_InsufficientGasPrice: "Transaksjonsavgiften er for lav. Den tilfredsstiller ikke minimumsavgiften til noden din. (minimum: {}, fått: {}). Prøv å øke avgiften.",
+  PARITY_InsufficientBalance: "Utilstrekkelige midler. Kontoen du prøver å sende transaksjon fra har ikke nok midler. Påkrevd {} og fått: {}.",
+  PARITY_GasLimitExceeded: "Transaksjonskostnaden overskrider nåværende gas-grense. Grense: {}, fått: {}. Prøv å redusere tilført gas.",
+  PARITY_InvalidGasLimit: "Tilført mengde gas er over grensen.",
 
   /* Tranlsation Info */
   translate_version: '0.4',
@@ -13877,8 +13872,8 @@ no.data = {
   HELP_12_Desc_27: 'Etter at du har lykkes med å importere kontoen, slett `ikke_noe_spesielt_slett_meg.txt`',
   HELP_12_Desc_28: 'Neste gangen du åpner "Ethereum Wallet"-programmet, vil kontoen din være listet under "Accounts". ',
 
-  HELP_13_Title: '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean?',
-  HELP_13_Desc_1: 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction.',
+  HELP_13_Title: '13) Hva betyr "Utilstrekkelige midler. Kontoen du prøver å sende transaksjon fra har ikke nok midler. Påkrevd XXXXXXXXXXXXXXXXXXX og fått: XXXXXXXXXXXXXXXX." ?',
+  HELP_13_Desc_1: 'Dette betyr at du ikke har nok Ether på kontoen din til å dekke gas-kostnaden. Hver transaksjon (inkludert token- og kontrakt-transaksjoner) krever gas, og gas betales med Ether. Tallet som vises er beløpet som kreves for å dekke transaksjonskostnaden i Wei (1 ETH = 10^18 Wei). Ta dette tallet, del det på `1000000000000000000`, og trekk fra Ether-beløpet som du prøvde å sende (hvis du prøvde å sende Ether). Dette vil gi deg Ether-beløpet som du mangler på (trenger å sende til) denne kontoen for å gjennomføre transaksjonen.',
 
   HELP_14_Title: '14) Noen nettsider randomiserer genereringen av den private nøkkelen via musebevegelser. MyEtherWallet.com gjør ikke dette. Er metoden som MyEtherWallet bruker til å generere tilfeldige tall sikker?',
   HELP_14_Desc_1: 'Selv om musebevegelses-metoden er smart og vi skjønner hvorfor folk liker den, så er realiteten at window.crypto sikrer mer entropi (tilfeldighet) enn musebevegelser. Musebevegelses-metoden er ikke usikker, men det er bare det at vi (og mange andre kryptoeksperter) har tro på window.crypto. I tillegg kan MyEtherWallet.com også benyttes på fingerstyrte enheter. Her er en [konversasjon mellom en sint redditor og Vitalik Buterin angående musebevegelser versus window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) og her er [window.crypto w3 spesifikasjonen](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto).',
@@ -56688,51 +56683,6 @@ PEMEncoder.prototype.encode = function encode(data, options) {
 };
 
 },{"./der":105,"inherits":198}],108:[function(require,module,exports){
-(function (global){
-'use strict';
-
-// compare and isBuffer taken from https://github.com/feross/buffer/blob/680e9e5e488f22aac27599a57dc844a6315928dd/index.js
-// original notice:
-
-/*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
- * @license  MIT
- */
-function compare(a, b) {
-  if (a === b) {
-    return 0;
-  }
-
-  var x = a.length;
-  var y = b.length;
-
-  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
-    if (a[i] !== b[i]) {
-      x = a[i];
-      y = b[i];
-      break;
-    }
-  }
-
-  if (x < y) {
-    return -1;
-  }
-  if (y < x) {
-    return 1;
-  }
-  return 0;
-}
-function isBuffer(b) {
-  if (global.Buffer && typeof global.Buffer.isBuffer === 'function') {
-    return global.Buffer.isBuffer(b);
-  }
-  return !!(b != null && b._isBuffer);
-}
-
-// based on node assert, original notice:
-
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
 //
 // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -56757,36 +56707,14 @@ function isBuffer(b) {
 // ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+// when used in node, this will actually load the util module we depend on
+// versus loading the builtin util module as happens otherwise
+// this is a bug in node module loading as far as I am concerned
 var util = require('util/');
-var hasOwn = Object.prototype.hasOwnProperty;
+
 var pSlice = Array.prototype.slice;
-var functionsHaveNames = (function () {
-  return function foo() {}.name === 'foo';
-}());
-function pToString (obj) {
-  return Object.prototype.toString.call(obj);
-}
-function isView(arrbuf) {
-  if (isBuffer(arrbuf)) {
-    return false;
-  }
-  if (typeof global.ArrayBuffer !== 'function') {
-    return false;
-  }
-  if (typeof ArrayBuffer.isView === 'function') {
-    return ArrayBuffer.isView(arrbuf);
-  }
-  if (!arrbuf) {
-    return false;
-  }
-  if (arrbuf instanceof DataView) {
-    return true;
-  }
-  if (arrbuf.buffer && arrbuf.buffer instanceof ArrayBuffer) {
-    return true;
-  }
-  return false;
-}
+var hasOwn = Object.prototype.hasOwnProperty;
+
 // 1. The assert module provides functions that throw
 // AssertionError's when particular conditions are not met. The
 // assert module must conform to the following interface.
@@ -56798,19 +56726,6 @@ var assert = module.exports = ok;
 //                             actual: actual,
 //                             expected: expected })
 
-var regex = /\s*function\s+([^\(\s]*)\s*/;
-// based on https://github.com/ljharb/function.prototype.name/blob/adeeeec8bfcc6068b187d7d9fb3d5bb1d3a30899/implementation.js
-function getName(func) {
-  if (!util.isFunction(func)) {
-    return;
-  }
-  if (functionsHaveNames) {
-    return func.name;
-  }
-  var str = func.toString();
-  var match = str.match(regex);
-  return match && match[1];
-}
 assert.AssertionError = function AssertionError(options) {
   this.name = 'AssertionError';
   this.actual = options.actual;
@@ -56824,16 +56739,18 @@ assert.AssertionError = function AssertionError(options) {
     this.generatedMessage = true;
   }
   var stackStartFunction = options.stackStartFunction || fail;
+
   if (Error.captureStackTrace) {
     Error.captureStackTrace(this, stackStartFunction);
-  } else {
+  }
+  else {
     // non v8 browsers so we can have a stacktrace
     var err = new Error();
     if (err.stack) {
       var out = err.stack;
 
       // try to strip useless frames
-      var fn_name = getName(stackStartFunction);
+      var fn_name = stackStartFunction.name;
       var idx = out.indexOf('\n' + fn_name);
       if (idx >= 0) {
         // once we have located the function frame
@@ -56850,25 +56767,31 @@ assert.AssertionError = function AssertionError(options) {
 // assert.AssertionError instanceof Error
 util.inherits(assert.AssertionError, Error);
 
+function replacer(key, value) {
+  if (util.isUndefined(value)) {
+    return '' + value;
+  }
+  if (util.isNumber(value) && !isFinite(value)) {
+    return value.toString();
+  }
+  if (util.isFunction(value) || util.isRegExp(value)) {
+    return value.toString();
+  }
+  return value;
+}
+
 function truncate(s, n) {
-  if (typeof s === 'string') {
+  if (util.isString(s)) {
     return s.length < n ? s : s.slice(0, n);
   } else {
     return s;
   }
 }
-function inspect(something) {
-  if (functionsHaveNames || !util.isFunction(something)) {
-    return util.inspect(something);
-  }
-  var rawname = getName(something);
-  var name = rawname ? ': ' + rawname : '';
-  return '[Function' +  name + ']';
-}
+
 function getMessage(self) {
-  return truncate(inspect(self.actual), 128) + ' ' +
+  return truncate(JSON.stringify(self.actual, replacer), 128) + ' ' +
          self.operator + ' ' +
-         truncate(inspect(self.expected), 128);
+         truncate(JSON.stringify(self.expected, replacer), 128);
 }
 
 // At present only the three keys mentioned above are used and
@@ -56928,23 +56851,24 @@ assert.notEqual = function notEqual(actual, expected, message) {
 // assert.deepEqual(actual, expected, message_opt);
 
 assert.deepEqual = function deepEqual(actual, expected, message) {
-  if (!_deepEqual(actual, expected, false)) {
+  if (!_deepEqual(actual, expected)) {
     fail(actual, expected, message, 'deepEqual', assert.deepEqual);
   }
 };
 
-assert.deepStrictEqual = function deepStrictEqual(actual, expected, message) {
-  if (!_deepEqual(actual, expected, true)) {
-    fail(actual, expected, message, 'deepStrictEqual', assert.deepStrictEqual);
-  }
-};
-
-function _deepEqual(actual, expected, strict, memos) {
+function _deepEqual(actual, expected) {
   // 7.1. All identical values are equivalent, as determined by ===.
   if (actual === expected) {
     return true;
-  } else if (isBuffer(actual) && isBuffer(expected)) {
-    return compare(actual, expected) === 0;
+
+  } else if (util.isBuffer(actual) && util.isBuffer(expected)) {
+    if (actual.length != expected.length) return false;
+
+    for (var i = 0; i < actual.length; i++) {
+      if (actual[i] !== expected[i]) return false;
+    }
+
+    return true;
 
   // 7.2. If the expected value is a Date object, the actual value is
   // equivalent if it is also a Date object that refers to the same time.
@@ -56963,22 +56887,8 @@ function _deepEqual(actual, expected, strict, memos) {
 
   // 7.4. Other pairs that do not both pass typeof value == 'object',
   // equivalence is determined by ==.
-  } else if ((actual === null || typeof actual !== 'object') &&
-             (expected === null || typeof expected !== 'object')) {
-    return strict ? actual === expected : actual == expected;
-
-  // If both values are instances of typed arrays, wrap their underlying
-  // ArrayBuffers in a Buffer each to increase performance
-  // This optimization requires the arrays to have the same type as checked by
-  // Object.prototype.toString (aka pToString). Never perform binary
-  // comparisons for Float*Arrays, though, since e.g. +0 === -0 but their
-  // bit patterns are not identical.
-  } else if (isView(actual) && isView(expected) &&
-             pToString(actual) === pToString(expected) &&
-             !(actual instanceof Float32Array ||
-               actual instanceof Float64Array)) {
-    return compare(new Uint8Array(actual.buffer),
-                   new Uint8Array(expected.buffer)) === 0;
+  } else if (!util.isObject(actual) && !util.isObject(expected)) {
+    return actual == expected;
 
   // 7.5 For all other Object pairs, including Array objects, equivalence is
   // determined by having the same number of owned properties (as verified
@@ -56986,22 +56896,8 @@ function _deepEqual(actual, expected, strict, memos) {
   // (although not necessarily the same order), equivalent values for every
   // corresponding key, and an identical 'prototype' property. Note: this
   // accounts for both named and indexed properties on Arrays.
-  } else if (isBuffer(actual) !== isBuffer(expected)) {
-    return false;
   } else {
-    memos = memos || {actual: [], expected: []};
-
-    var actualIndex = memos.actual.indexOf(actual);
-    if (actualIndex !== -1) {
-      if (actualIndex === memos.expected.indexOf(expected)) {
-        return true;
-      }
-    }
-
-    memos.actual.push(actual);
-    memos.expected.push(expected);
-
-    return objEquiv(actual, expected, strict, memos);
+    return objEquiv(actual, expected);
   }
 }
 
@@ -57009,44 +56905,44 @@ function isArguments(object) {
   return Object.prototype.toString.call(object) == '[object Arguments]';
 }
 
-function objEquiv(a, b, strict, actualVisitedObjects) {
-  if (a === null || a === undefined || b === null || b === undefined)
+function objEquiv(a, b) {
+  if (util.isNullOrUndefined(a) || util.isNullOrUndefined(b))
     return false;
+  // an identical 'prototype' property.
+  if (a.prototype !== b.prototype) return false;
   // if one is a primitive, the other must be same
-  if (util.isPrimitive(a) || util.isPrimitive(b))
+  if (util.isPrimitive(a) || util.isPrimitive(b)) {
     return a === b;
-  if (strict && Object.getPrototypeOf(a) !== Object.getPrototypeOf(b))
-    return false;
-  var aIsArgs = isArguments(a);
-  var bIsArgs = isArguments(b);
+  }
+  var aIsArgs = isArguments(a),
+      bIsArgs = isArguments(b);
   if ((aIsArgs && !bIsArgs) || (!aIsArgs && bIsArgs))
     return false;
   if (aIsArgs) {
     a = pSlice.call(a);
     b = pSlice.call(b);
-    return _deepEqual(a, b, strict);
+    return _deepEqual(a, b);
   }
-  var ka = objectKeys(a);
-  var kb = objectKeys(b);
-  var key, i;
+  var ka = objectKeys(a),
+      kb = objectKeys(b),
+      key, i;
   // having the same number of owned properties (keys incorporates
   // hasOwnProperty)
-  if (ka.length !== kb.length)
+  if (ka.length != kb.length)
     return false;
   //the same set of keys (although not necessarily the same order),
   ka.sort();
   kb.sort();
   //~~~cheap key test
   for (i = ka.length - 1; i >= 0; i--) {
-    if (ka[i] !== kb[i])
+    if (ka[i] != kb[i])
       return false;
   }
   //equivalent values for every corresponding key, and
   //~~~possibly expensive deep test
   for (i = ka.length - 1; i >= 0; i--) {
     key = ka[i];
-    if (!_deepEqual(a[key], b[key], strict, actualVisitedObjects))
-      return false;
+    if (!_deepEqual(a[key], b[key])) return false;
   }
   return true;
 }
@@ -57055,18 +56951,10 @@ function objEquiv(a, b, strict, actualVisitedObjects) {
 // assert.notDeepEqual(actual, expected, message_opt);
 
 assert.notDeepEqual = function notDeepEqual(actual, expected, message) {
-  if (_deepEqual(actual, expected, false)) {
+  if (_deepEqual(actual, expected)) {
     fail(actual, expected, message, 'notDeepEqual', assert.notDeepEqual);
   }
 };
-
-assert.notDeepStrictEqual = notDeepStrictEqual;
-function notDeepStrictEqual(actual, expected, message) {
-  if (_deepEqual(actual, expected, true)) {
-    fail(actual, expected, message, 'notDeepStrictEqual', notDeepStrictEqual);
-  }
-}
-
 
 // 9. The strict equality assertion tests strict equality, as determined by ===.
 // assert.strictEqual(actual, expected, message_opt);
@@ -57093,46 +56981,28 @@ function expectedException(actual, expected) {
 
   if (Object.prototype.toString.call(expected) == '[object RegExp]') {
     return expected.test(actual);
+  } else if (actual instanceof expected) {
+    return true;
+  } else if (expected.call({}, actual) === true) {
+    return true;
   }
 
-  try {
-    if (actual instanceof expected) {
-      return true;
-    }
-  } catch (e) {
-    // Ignore.  The instanceof check doesn't work for arrow functions.
-  }
-
-  if (Error.isPrototypeOf(expected)) {
-    return false;
-  }
-
-  return expected.call({}, actual) === true;
-}
-
-function _tryBlock(block) {
-  var error;
-  try {
-    block();
-  } catch (e) {
-    error = e;
-  }
-  return error;
+  return false;
 }
 
 function _throws(shouldThrow, block, expected, message) {
   var actual;
 
-  if (typeof block !== 'function') {
-    throw new TypeError('"block" argument must be a function');
-  }
-
-  if (typeof expected === 'string') {
+  if (util.isString(expected)) {
     message = expected;
     expected = null;
   }
 
-  actual = _tryBlock(block);
+  try {
+    block();
+  } catch (e) {
+    actual = e;
+  }
 
   message = (expected && expected.name ? ' (' + expected.name + ').' : '.') +
             (message ? ' ' + message : '.');
@@ -57141,14 +57011,7 @@ function _throws(shouldThrow, block, expected, message) {
     fail(actual, expected, 'Missing expected exception' + message);
   }
 
-  var userProvidedMessage = typeof message === 'string';
-  var isUnwantedException = !shouldThrow && util.isError(actual);
-  var isUnexpectedException = !shouldThrow && actual && !expected;
-
-  if ((isUnwantedException &&
-      userProvidedMessage &&
-      expectedException(actual, expected)) ||
-      isUnexpectedException) {
+  if (!shouldThrow && expectedException(actual, expected)) {
     fail(actual, expected, 'Got unwanted exception' + message);
   }
 
@@ -57162,15 +57025,15 @@ function _throws(shouldThrow, block, expected, message) {
 // assert.throws(block, Error_opt, message_opt);
 
 assert.throws = function(block, /*optional*/error, /*optional*/message) {
-  _throws(true, block, error, message);
+  _throws.apply(this, [true].concat(pSlice.call(arguments)));
 };
 
 // EXTENSION! This is annoying to write outside this module.
-assert.doesNotThrow = function(block, /*optional*/error, /*optional*/message) {
-  _throws(false, block, error, message);
+assert.doesNotThrow = function(block, /*optional*/message) {
+  _throws.apply(this, [false].concat(pSlice.call(arguments)));
 };
 
-assert.ifError = function(err) { if (err) throw err; };
+assert.ifError = function(err) { if (err) {throw err;}};
 
 var objectKeys = Object.keys || function (obj) {
   var keys = [];
@@ -57180,7 +57043,6 @@ var objectKeys = Object.keys || function (obj) {
   return keys;
 };
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"util/":256}],109:[function(require,module,exports){
 'use strict'
 
@@ -75479,14 +75341,21 @@ utils.intFromLE = intFromLE;
 module.exports={
   "_args": [
     [
-      "elliptic@^6.0.0",
-      "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign"
+      {
+        "raw": "elliptic@^6.0.0",
+        "scope": null,
+        "escapedName": "elliptic",
+        "name": "elliptic",
+        "rawSpec": "^6.0.0",
+        "spec": ">=6.0.0 <7.0.0",
+        "type": "range"
+      },
+      "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
   "_id": "elliptic@6.3.2",
   "_inCache": true,
-  "_installable": true,
   "_location": "/elliptic",
   "_nodeVersion": "6.3.0",
   "_npmOperationalInternal": {
@@ -75494,16 +75363,17 @@ module.exports={
     "tmp": "tmp/elliptic-6.3.2.tgz_1473938837205_0.3108903462998569"
   },
   "_npmUser": {
-    "email": "fedor@indutny.com",
-    "name": "indutny"
+    "name": "indutny",
+    "email": "fedor@indutny.com"
   },
   "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
-    "name": "elliptic",
     "raw": "elliptic@^6.0.0",
-    "rawSpec": "^6.0.0",
     "scope": null,
+    "escapedName": "elliptic",
+    "name": "elliptic",
+    "rawSpec": "^6.0.0",
     "spec": ">=6.0.0 <7.0.0",
     "type": "range"
   },
@@ -75516,10 +75386,10 @@ module.exports={
   "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign",
+  "_where": "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
   "author": {
-    "email": "fedor@indutny.com",
-    "name": "Fedor Indutny"
+    "name": "Fedor Indutny",
+    "email": "fedor@indutny.com"
   },
   "bugs": {
     "url": "https://github.com/indutny/elliptic/issues"
@@ -75557,10 +75427,10 @@ module.exports={
   "gitHead": "cbace4683a4a548dc0306ef36756151a20299cd5",
   "homepage": "https://github.com/indutny/elliptic",
   "keywords": [
-    "Cryptography",
     "EC",
     "Elliptic",
-    "curve"
+    "curve",
+    "Cryptography"
   ],
   "license": "MIT",
   "main": "lib/elliptic.js",

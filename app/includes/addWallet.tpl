@@ -1,5 +1,5 @@
 <section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.addWallet.id" ng-controller='addWalletCtrl'  ng-cloak>
-  <h2 translate="NAV_AddWallet"> Add Wallet </h2>
+  <h1 translate="NAV_AddWallet"> Add Wallet </h1>
 
   <section class="row" id="walletselection">
 
@@ -151,7 +151,7 @@
 
       <h4 translate="sidebar_AccountInfo"> Account Information: </h4>
 
-      <div id="addressIdenticon" class="med"  title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+      <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
 
       <div translate="sidebar_AccountAddr"> Account Address: </div>
       <ul class="account-info">

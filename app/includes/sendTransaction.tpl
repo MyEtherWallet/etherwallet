@@ -11,7 +11,7 @@
   <article class="collapse-container">
     <div ng-click="wd = !wd">
       <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-      <h2 translate="NAV_SendEther"> Send Ether & Tokens </h2>
+      <h1 translate="NAV_SendEther"> Send Ether & Tokens </h1>
     </div>
 
     <div ng-show="!wd">
@@ -30,7 +30,7 @@
       <wallet-balance-drtv></wallet-balance-drtv>
 
 
-      <div translate="sidebar_TransHistory"> Transaction History: </div>
+      <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
       <ul class="account-info" ng-show="ajaxReq.type != 'CUS'">
         <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
       </ul>
@@ -55,7 +55,7 @@
           <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
         </div>
         <div class="col-xs-2 address-identicon-container">
-          <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+          <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
         </div>
       </div>
       <!-- / To Address -->
@@ -146,9 +146,9 @@
 
             <div class="modal-body larger" ng-show="tx.sendMode=='ether'">
               <table class="table text-center"><tbody><tr>
-                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div></td>
+                <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div></td>
                 <td class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
-                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div></td>
+                <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div></td>
               </tr></tbody></table>
 
               <p>
@@ -169,9 +169,9 @@
 
             <div class="modal-body larger" ng-show="tx.sendMode!=='ether'">
               <table class="table text-center"><tbody><tr>
-                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div></td>
+                <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div></td>
                 <td class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
-                <td><div id="addressIdenticon" class="med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div></td>
+                <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div></td>
               </tr></tbody></table>
 
               <p>

@@ -27,7 +27,7 @@
         <td></td>
       </tr>
       <tr ng-repeat="twallet in allWallets track by $index">
-        <td><div id="addressIdenticon" class="small" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
+        <td><div class="addressIdenticon small" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
         <td><label>{{twallet.nick}}</label><small class="quicksend-address">{{twallet.addr}}</small></td>
         <td>{{twallet.balanceR | number:2 }} ETH</td>
       </tr>
@@ -45,7 +45,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="twallet in allWatchOnly track by $index">
-        <td><div id="addressIdenticon" class="small" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
+        <td><div class="addressIdenticon small" title="Address Indenticon" blockie-address="{{twallet.addr}}" watch-var="wallet"></div></td>
         <td><label>{{twallet.nick}}</label><small class="quicksend-address">{{twallet.addr}}</small></td>
         <td>{{twallet.balance | number:2 }} ETH</td>
       </tr>
