@@ -1055,7 +1055,199 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
 module.exports = decryptWalletCtrl;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],13:[function(require,module,exports){
+},{"buffer":146}],13:[function(require,module,exports){
+'use strict';
+
+var exchangeCtrl = function ($scope, $sce, walletService) {
+    $scope.ajaxReq = ajaxReq;
+    $scope.unitReadable = ajaxReq.type;
+    $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
+    walletService.wallet = null;
+    walletService.password = '';
+    $scope.showAdvance = $scope.showRaw = false;
+    $scope.dropdownEnabled = true;
+    $scope.Validator = Validator;
+    // Tokens
+    $scope.tokenVisibility = "hidden";
+    $scope.tokenTx = {
+        to: '',
+        value: 0,
+        id: -1
+    };
+    $scope.tx = {
+        // if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
+        gasLimit: globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null ? globalFuncs.urlGet('gaslimit') != null ? globalFuncs.urlGet('gaslimit') : globalFuncs.urlGet('gas') : globalFuncs.defaultTxGasLimit,
+        data: globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data'),
+        to: globalFuncs.urlGet('to') == null ? "" : globalFuncs.urlGet('to'),
+        unit: "ether",
+        value: globalFuncs.urlGet('value') == null ? "" : globalFuncs.urlGet('value'),
+        nonce: null,
+        gasPrice: null,
+        donate: false,
+        tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null ? false : globalFuncs.urlGet('tokenSymbol')
+    };
+    $scope.setSendMode = function (sendMode, tokenId = '', tokenSymbol = '') {
+        $scope.tx.sendMode = sendMode;
+        $scope.unitReadable = '';
+        if (sendMode == 'ether') {
+            $scope.unitReadable = ajaxReq.type;
+        } else {
+            $scope.unitReadable = tokenSymbol;
+            $scope.tokenTx.id = tokenId;
+        }
+        $scope.dropdownAmount = false;
+    };
+    $scope.setTokenSendMode = function () {
+        if ($scope.tx.sendMode == 'token' && !$scope.tx.tokenSymbol) {
+            $scope.tx.tokenSymbol = $scope.wallet.tokenObjs[0].symbol;
+            $scope.wallet.tokenObjs[0].type = "custom";
+            $scope.setSendMode($scope.tx.sendMode, 0, $scope.tx.tokenSymbol);
+        } else if ($scope.tx.tokenSymbol) {
+            for (var i = 0; i < $scope.wallet.tokenObjs.length; i++) {
+                if ($scope.wallet.tokenObjs[i].symbol.toLowerCase().indexOf($scope.tx.tokenSymbol.toLowerCase()) !== -1) {
+                    $scope.wallet.tokenObjs[i].type = "custom";
+                    $scope.setSendMode('token', i, $scope.wallet.tokenObjs[i].symbol);
+                    break;
+                } else $scope.tokenTx.id = -1;
+            }
+        }
+        if ($scope.tx.sendMode != 'token') $scope.tokenTx.id = -1;
+    };
+    globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('ether') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
+    $scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
+    if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true; // if there is a query string, show an warning at top of page
+    $scope.$watch(function () {
+        if (walletService.wallet == null) return null;
+        return walletService.wallet.getAddressString();
+    }, function () {
+        if (walletService.wallet == null) return;
+        $scope.wallet = walletService.wallet;
+        $scope.wd = true;
+        $scope.wallet.setBalance();
+        $scope.wallet.setTokens();
+        $scope.setTokenSendMode();
+        $scope.setTokenSendMode();
+    });
+    $scope.$watch('ajaxReq.key', function () {
+        if ($scope.wallet) {
+            $scope.setSendMode('ether');
+            $scope.wallet.setBalance();
+            $scope.wallet.setTokens();
+        }
+    });
+    $scope.$watch('tokenTx', function () {
+        if ($scope.wallet && $scope.wallet.tokenObjs !== undefined && $scope.wallet.tokenObjs[$scope.tokenTx.id] !== undefined && $scope.Validator.isValidAddress($scope.tokenTx.to) && $scope.Validator.isPositiveNumber($scope.tokenTx.value)) {
+            if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
+            $scope.estimateTimer = setTimeout(function () {
+                $scope.estimateGasLimit();
+            }, 500);
+        }
+    }, true);
+    $scope.$watch('tx', function (newValue, oldValue) {
+        $scope.showRaw = false;
+        $scope.sendTxStatus = "";
+        if (oldValue.sendMode != newValue.sendMode && newValue.sendMode == 'ether') {
+            $scope.tx.data = "";
+            $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
+        }
+        if (newValue.gasLimit == oldValue.gasLimit && $scope.wallet && $scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data) && $scope.tx.sendMode != 'token') {
+            if ($scope.estimateTimer) clearTimeout($scope.estimateTimer);
+            $scope.estimateTimer = setTimeout(function () {
+                $scope.estimateGasLimit();
+            }, 500);
+        }
+        if ($scope.tx.sendMode == 'token') {
+            $scope.tokenTx.to = $scope.tx.to;
+            $scope.tokenTx.value = $scope.tx.value;
+        }
+    }, true);
+    $scope.estimateGasLimit = function () {
+        if (globalFuncs.lightMode) {
+            $scope.tx.gasLimit = 100000;
+            return;
+        }
+        var estObj = {
+            to: $scope.tx.to,
+            from: $scope.wallet.getAddressString(),
+            value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit)))
+        };
+        if ($scope.tx.data != "") estObj.data = ethFuncs.sanitizeHex($scope.tx.data);
+        if ($scope.tx.sendMode == 'token') {
+            estObj.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
+            estObj.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
+            estObj.value = '0x00';
+        }
+        ethFuncs.estimateGas(estObj, function (data) {
+            $scope.validateTxStatus = "";
+            if (!data.error) {
+                if (data.data == '-1') $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[21]));
+                $scope.tx.gasLimit = data.data;
+            } else {
+                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+            }
+        });
+    };
+    $scope.onDonateClick = function () {
+        $scope.tx.to = globalFuncs.donateAddress;
+        $scope.tx.value = "1";
+        $scope.tx.donate = true;
+    };
+    $scope.generateTx = function () {
+        if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
+            $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+            return;
+        }
+        var txData = uiFuncs.getTxData($scope);
+        if ($scope.tx.sendMode == 'token') {
+            txData.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
+            txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
+            txData.value = '0x00';
+        }
+        uiFuncs.generateTx(txData, function (rawTx) {
+            if (!rawTx.isError) {
+                $scope.rawTx = rawTx.rawTx;
+                $scope.signedTx = rawTx.signedTx;
+                $scope.showRaw = true;
+                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+            } else {
+                $scope.showRaw = false;
+                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+            }
+            if (!$scope.$$phase) $scope.$apply();
+        });
+    };
+    $scope.sendTx = function () {
+        $scope.sendTxModal.close();
+        uiFuncs.sendTx($scope.signedTx, function (resp) {
+            if (!resp.isError) {
+                var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
+                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr));
+                $scope.wallet.setBalance();
+                if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
+            } else {
+                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
+            }
+        });
+    };
+    $scope.transferAllBalance = function () {
+        if ($scope.tx.sendMode != 'token') {
+            uiFuncs.transferAllBalance($scope.wallet.getAddressString(), $scope.tx.gasLimit, function (resp) {
+                if (!resp.isError) {
+                    $scope.tx.unit = resp.unit;
+                    $scope.tx.value = resp.value;
+                } else {
+                    $scope.showRaw = false;
+                    $scope.validateTxStatus = $sce.trustAsHtml(resp.error);
+                }
+            });
+        } else {
+            $scope.tx.value = $scope.wallet.tokenObjs[$scope.tokenTx.id].getBalance();
+        }
+    };
+};
+module.exports = exchangeCtrl;
+
+},{}],14:[function(require,module,exports){
 'use strict';
 
 var footerCtrl = function ($scope, globalService) {
@@ -1074,7 +1266,7 @@ var footerCtrl = function ($scope, globalService) {
 };
 module.exports = footerCtrl;
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
@@ -1246,7 +1438,7 @@ var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
 };
 module.exports = sendOfflineTxCtrl;
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 var sendTxCtrl = function ($scope, $sce, walletService) {
@@ -1438,7 +1630,7 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
 };
 module.exports = sendTxCtrl;
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -1498,7 +1690,7 @@ var signMsgCtrl = function ($scope, $sce, walletService) {
 module.exports = signMsgCtrl;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],17:[function(require,module,exports){
+},{"buffer":146}],18:[function(require,module,exports){
 'use strict';
 
 var tabsCtrl = function ($scope, globalService, $translate, $sce) {
@@ -1727,7 +1919,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
 };
 module.exports = tabsCtrl;
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 var viewCtrl = function ($scope, globalService) {
@@ -1735,7 +1927,7 @@ var viewCtrl = function ($scope, globalService) {
 };
 module.exports = viewCtrl;
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 var viewWalletCtrl = function ($scope, walletService) {
@@ -1782,7 +1974,7 @@ var viewWalletCtrl = function ($scope, walletService) {
 };
 module.exports = viewWalletCtrl;
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 var walletBalanceCtrl = function ($scope, $sce) {
@@ -1817,7 +2009,7 @@ var walletBalanceCtrl = function ($scope, $sce) {
 };
 module.exports = walletBalanceCtrl;
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 var walletGenCtrl = function ($scope) {
@@ -1856,7 +2048,7 @@ var walletGenCtrl = function ($scope) {
 };
 module.exports = walletGenCtrl;
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 var cxFuncs = function () {};
@@ -1944,7 +2136,7 @@ cxFuncs.editNickName = function (address, newNick, callback) {
 };
 module.exports = cxFuncs;
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 var QRCodeDrtv = function () {
@@ -1970,7 +2162,7 @@ var QRCodeDrtv = function () {
 };
 module.exports = QRCodeDrtv;
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 var balanceDrtv = function () {
@@ -2024,7 +2216,7 @@ var balanceDrtv = function () {
 };
 module.exports = balanceDrtv;
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 var blockiesDrtv = function () {
@@ -2041,7 +2233,7 @@ var blockiesDrtv = function () {
 };
 module.exports = blockiesDrtv;
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 var cxWalletDecryptDrtv = function () {
@@ -2068,7 +2260,7 @@ var cxWalletDecryptDrtv = function () {
 };
 module.exports = cxWalletDecryptDrtv;
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict';
 
 var fileReaderDrtv = function ($parse) {
@@ -2093,7 +2285,7 @@ var fileReaderDrtv = function ($parse) {
 };
 module.exports = fileReaderDrtv;
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 // use this tool to be able to edit in HTML. I'm sorry. http://www.freeformatter.com/javascript-escape.html#ad-output
@@ -2102,16 +2294,16 @@ module.exports = fileReaderDrtv;
 var walletDecryptDrtv = function () {
   return {
     restrict: "E",
-    template: '<article class=\"row\" ng-controller=\'decryptWalletCtrl\'>\r\n \
+    template: '<article class=\"well decrypt-drtv row\" ng-controller=\'decryptWalletCtrl\'>\r\n \
   <!-- Column 1 - Select Type of Key -->\r\n \
   <section class=\"col-md-4 col-sm-6\">\r\n \
     <h4 translate=\"decrypt_Title\"> Select the format of your private key: <\/h4>\r\n \
-    <div class=\"radio\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"fileupload\" \/><span translate=\"x_Keystore2\">Keystore \/ JSON File<\/span><\/label><\/div>\r\n \
-    <div class=\"radio\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"pasteprivkey\" \/><span translate=\"x_PrivKey2\">Private Key<\/span><\/label><\/div>\r\n \
-    <div class=\"radio\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"pastemnemonic\" \/><span translate=\"x_Mnemonic\">Mnemonic Phrase<\/span><\/label><\/div>\r\n \
-    <div class=\"radio\" ng-hide=\"globalService.currentTab==globalService.tabs.signMsg.id\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"ledger\" \/>Ledger Nano S<\/label><\/div>\r\n \
-    <div class=\"radio\" ng-hide=\"globalService.currentTab==globalService.tabs.signMsg.id\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"trezor\" \/>TREZOR<\/label><\/div>\r\n \
-    <div class=\"radio\" ng-hide=\"globalService.currentTab!==globalService.tabs.viewWalletInfo.id\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"addressOnly\" \/><span>View with Address Only<\/span><\/label><\/div>\r\n \
+    <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"fileupload\" \/><span translate=\"x_Keystore2\">Keystore \/ JSON File<\/span><\/label>\r\n \
+    <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"pasteprivkey\" \/><span translate=\"x_PrivKey2\">Private Key<\/span><\/label>\r\n \
+    <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"pastemnemonic\" \/><span translate=\"x_Mnemonic\">Mnemonic Phrase<\/span><\/label>\r\n \
+    <label class=\"radio\" ng-hide=\"globalService.currentTab==globalService.tabs.signMsg.id\"><input type=\"radio\" ng-model=\"walletType\" value=\"ledger\" \/>Ledger Nano S<\/label>\r\n \
+    <label class=\"radio\" ng-hide=\"globalService.currentTab==globalService.tabs.signMsg.id\"><input type=\"radio\" ng-model=\"walletType\" value=\"trezor\" \/>TREZOR<\/label>\r\n \
+    <label class=\"radio\" ng-hide=\"globalService.currentTab!==globalService.tabs.viewWalletInfo.id\"><input type=\"radio\" ng-model=\"walletType\" value=\"addressOnly\" \/><span>View with Address Only<\/span><\/label>\r\n \
   <\/section>\r\n \
   <!-- Column 1 - Select Type of Key -->\r\n \
   <!-- Column 2 - Unlock That Key -->\r\n \
@@ -2178,9 +2370,7 @@ var walletDecryptDrtv = function () {
   <!-- \/ Column 2 - Unlock That Key -->\r\n \
   <!-- Column 3 -The Unlock Button -->\r\n \
   <section class=\"col-md-4 col-sm-6\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'||walletType==\'trezor\'||showAOnly\">\r\n \
-    <h4 id=\"uploadbtntxt-wallet\" ng-show=\"showFDecrypt\" translate=\"ADD_Label_6\"> Access Your Wallet:<\/h4>\r\n \
-    <h4 id=\"uploadbtntxt-privkey\" ng-show=\"showPDecrypt\" translate=\"ADD_Label_6\"> Access Your Wallet: <\/h4>\r\n \
-    <h4 id=\"uploadbtntxt-mnemonic\" ng-show=\"showMDecrypt\" translate=\"ADD_Label_6\"> Access Your Wallet: <\/h4>\r\n \
+    <h4 id=\"uploadbtntxt-wallet\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt\" translate=\"ADD_Label_6\"> Access Your Wallet:<\/h4>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt\" ng-click=\"decryptWallet()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showAOnly\" ng-click=\"decryptAddressOnly()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"walletType==\'ledger\'\" ng-click=\"scanLedger()\" translate=\"ADD_Ledger_scan\">SCAN<\/a><\/div>\r\n \
@@ -2201,8 +2391,8 @@ var walletDecryptDrtv = function () {
               <label>\r\n \
                 <input type=\"radio\" id=\"hd_derivation_path_default\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.defaultDPath}}\" ng-change=\"onHDDPathChange()\"\/>\r\n \
                 <span ng-bind=\"HDWallet.defaultDPath\"><\/span>\r\n \
-                <span ng-if=\"!showTrezorSeparate\" translate=\"ADD_Radio_5_PathDefault_withTrezor\">(default with trezor)<\/span>\r\n \
-                <span ng-if=\"showTrezorSeparate\" translate=\"ADD_Radio_5_PathDefault_withoutTrezor\">(default without trezor)<\/span>\r\n \
+                <span ng-if=\"!showTrezorSeparate\" translate=\"ADD_Radio_5_withTrezor\">(default with trezor)<\/span>\r\n \
+                <span ng-if=\"showTrezorSeparate\" translate=\"ADD_Radio_5_woTrezor\">(default without trezor)<\/span>\r\n \
               <\/label>\r\n \
             <\/div>\r\n \
             <div class=\"radio\">\r\n \
@@ -2264,7 +2454,7 @@ var walletDecryptDrtv = function () {
 };
 module.exports = walletDecryptDrtv;
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 var ethFuncs = function () {};
@@ -2384,7 +2574,7 @@ ethFuncs.estimateGas = function (dataObj, callback) {
 };
 module.exports = ethFuncs;
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict';
 
 var etherUnits = function () {};
@@ -2443,7 +2633,7 @@ etherUnits.toWei = function (number, unit) {
 };
 module.exports = etherUnits;
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 'use strict';
 
 var globalFuncs = function () {};
@@ -2618,7 +2808,7 @@ globalFuncs.removeTokenFromLocal = function (symbol, tokenObj) {
 };
 module.exports = globalFuncs;
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 'use strict';
 
 var IS_CX = false;
@@ -2664,17 +2854,17 @@ var Validator = require('./validator');
 window.Validator = Validator;
 var translate = require('./translations/translate.js');
 if (IS_CX) {
-    var cxFuncs = require('./cxFuncs');
-    window.cxFuncs = cxFuncs;
+  var cxFuncs = require('./cxFuncs');
+  window.cxFuncs = cxFuncs;
 } else {
-    var u2f = require('./staticJS/u2f-api');
-    var ledger3 = require('./staticJS/ledger3');
-    var ledgerEth = require('./staticJS/ledger-eth');
-    var trezorConnect = require('./staticJS/trezorConnect');
-    window.u2f = u2f;
-    window.Ledger3 = ledger3;
-    window.ledgerEth = ledgerEth;
-    window.TrezorConnect = trezorConnect.TrezorConnect;
+  var u2f = require('./staticJS/u2f-api');
+  var ledger3 = require('./staticJS/ledger3');
+  var ledgerEth = require('./staticJS/ledger-eth');
+  var trezorConnect = require('./staticJS/trezorConnect');
+  window.u2f = u2f;
+  window.Ledger3 = ledger3;
+  window.ledgerEth = ledgerEth;
+  window.TrezorConnect = trezorConnect.TrezorConnect;
 }
 var tabsCtrl = require('./controllers/tabsCtrl');
 var viewCtrl = require('./controllers/viewCtrl');
@@ -2683,6 +2873,7 @@ var bulkGenCtrl = require('./controllers/bulkGenCtrl');
 var decryptWalletCtrl = require('./controllers/decryptWalletCtrl');
 var viewWalletCtrl = require('./controllers/viewWalletCtrl');
 var sendTxCtrl = require('./controllers/sendTxCtrl');
+var exchangeCtrl = require('./controllers/exchangeCtrl');
 var signMsgCtrl = require('./controllers/signMsgCtrl');
 var contractsCtrl = require('./controllers/contractsCtrl');
 var footerCtrl = require('./controllers/footerCtrl');
@@ -2697,19 +2888,19 @@ var cxWalletDecryptDrtv = require('./directives/cxWalletDecryptDrtv');
 var fileReaderDrtv = require('./directives/fileReaderDrtv');
 var balanceDrtv = require('./directives/balanceDrtv');
 if (IS_CX) {
-    var addWalletCtrl = require('./controllers/CX/addWalletCtrl');
-    var cxDecryptWalletCtrl = require('./controllers/CX/cxDecryptWalletCtrl');
-    var myWalletsCtrl = require('./controllers/CX/myWalletsCtrl');
-    var mainPopCtrl = require('./controllers/CX/mainPopCtrl');
-    var quickSendCtrl = require('./controllers/CX/quickSendCtrl');
+  var addWalletCtrl = require('./controllers/CX/addWalletCtrl');
+  var cxDecryptWalletCtrl = require('./controllers/CX/cxDecryptWalletCtrl');
+  var myWalletsCtrl = require('./controllers/CX/myWalletsCtrl');
+  var mainPopCtrl = require('./controllers/CX/mainPopCtrl');
+  var quickSendCtrl = require('./controllers/CX/quickSendCtrl');
 }
 var app = angular.module('mewApp', ['pascalprecht.translate', 'ngSanitize']);
 app.config(['$compileProvider', function ($compileProvider) {
-    $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|):/);
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|):/);
 }]);
 app.config(['$translateProvider', function ($translateProvider) {
-    $translateProvider.useMissingTranslationHandlerLog();
-    new translate($translateProvider);
+  $translateProvider.useMissingTranslationHandlerLog();
+  new translate($translateProvider);
 }]);
 app.factory('globalService', ['$http', '$httpParamSerializerJQLike', globalService]);
 app.factory('walletService', walletService);
@@ -2726,20 +2917,21 @@ app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
 app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptWalletCtrl]);
 app.controller('viewWalletCtrl', ['$scope', 'walletService', viewWalletCtrl]);
 app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', sendTxCtrl]);
+app.controller('exchangeCtrl', ['$scope', '$sce', 'walletService', exchangeCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
 app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
 app.controller('sendOfflineTxCtrl', ['$scope', '$sce', 'walletService', sendOfflineTxCtrl]);
 app.controller('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
 if (IS_CX) {
-    app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);
-    app.controller('myWalletsCtrl', ['$scope', '$sce', myWalletsCtrl]);
-    app.controller('mainPopCtrl', ['$scope', '$sce', mainPopCtrl]);
-    app.controller('quickSendCtrl', ['$scope', '$sce', quickSendCtrl]);
-    app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
+  app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);
+  app.controller('myWalletsCtrl', ['$scope', '$sce', myWalletsCtrl]);
+  app.controller('mainPopCtrl', ['$scope', '$sce', mainPopCtrl]);
+  app.controller('quickSendCtrl', ['$scope', '$sce', quickSendCtrl]);
+  app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
 }
 
-},{"./ajaxReq":4,"./controllers/CX/addWalletCtrl":5,"./controllers/CX/cxDecryptWalletCtrl":6,"./controllers/CX/mainPopCtrl":7,"./controllers/CX/myWalletsCtrl":8,"./controllers/CX/quickSendCtrl":9,"./controllers/bulkGenCtrl":10,"./controllers/contractsCtrl":11,"./controllers/decryptWalletCtrl":12,"./controllers/footerCtrl":13,"./controllers/sendOfflineTxCtrl":14,"./controllers/sendTxCtrl":15,"./controllers/signMsgCtrl":16,"./controllers/tabsCtrl":17,"./controllers/viewCtrl":18,"./controllers/viewWalletCtrl":19,"./controllers/walletBalanceCtrl":20,"./controllers/walletGenCtrl":21,"./cxFuncs":22,"./directives/QRCodeDrtv":23,"./directives/balanceDrtv":24,"./directives/blockiesDrtv":25,"./directives/cxWalletDecryptDrtv":26,"./directives/fileReaderDrtv":27,"./directives/walletDecryptDrtv":28,"./ethFuncs":29,"./etherUnits":30,"./globalFuncs":31,"./myetherwallet":33,"./nodes":40,"./services/globalService":41,"./services/walletService":42,"./solidity/coder":46,"./solidity/utils":57,"./staticJS/customMarked":58,"./staticJS/ledger-eth":59,"./staticJS/ledger3":60,"./staticJS/trezorConnect":61,"./staticJS/u2f-api":62,"./tokenlib":63,"./translations/translate.js":83,"./uiFuncs":86,"./validator":87,"angular":93,"angular-sanitize":89,"angular-translate":91,"angular-translate-handler-log":90,"bignumber.js":110,"bip39":111,"crypto":154,"ethereumjs-tx":184,"ethereumjs-util":185,"hdkey":195,"scryptsy":233,"string-format":249,"uuid":258}],33:[function(require,module,exports){
+},{"./ajaxReq":4,"./controllers/CX/addWalletCtrl":5,"./controllers/CX/cxDecryptWalletCtrl":6,"./controllers/CX/mainPopCtrl":7,"./controllers/CX/myWalletsCtrl":8,"./controllers/CX/quickSendCtrl":9,"./controllers/bulkGenCtrl":10,"./controllers/contractsCtrl":11,"./controllers/decryptWalletCtrl":12,"./controllers/exchangeCtrl":13,"./controllers/footerCtrl":14,"./controllers/sendOfflineTxCtrl":15,"./controllers/sendTxCtrl":16,"./controllers/signMsgCtrl":17,"./controllers/tabsCtrl":18,"./controllers/viewCtrl":19,"./controllers/viewWalletCtrl":20,"./controllers/walletBalanceCtrl":21,"./controllers/walletGenCtrl":22,"./cxFuncs":23,"./directives/QRCodeDrtv":24,"./directives/balanceDrtv":25,"./directives/blockiesDrtv":26,"./directives/cxWalletDecryptDrtv":27,"./directives/fileReaderDrtv":28,"./directives/walletDecryptDrtv":29,"./ethFuncs":30,"./etherUnits":31,"./globalFuncs":32,"./myetherwallet":34,"./nodes":41,"./services/globalService":42,"./services/walletService":43,"./solidity/coder":47,"./solidity/utils":58,"./staticJS/customMarked":59,"./staticJS/ledger-eth":60,"./staticJS/ledger3":61,"./staticJS/trezorConnect":62,"./staticJS/u2f-api":63,"./tokenlib":64,"./translations/translate.js":84,"./uiFuncs":87,"./validator":88,"angular":94,"angular-sanitize":90,"angular-translate":92,"angular-translate-handler-log":91,"bignumber.js":111,"bip39":112,"crypto":155,"ethereumjs-tx":185,"ethereumjs-util":186,"hdkey":196,"scryptsy":234,"string-format":250,"uuid":259}],34:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -3072,7 +3264,7 @@ Wallet.getWalletFromPrivKeyFile = function (strjson, password) {
 module.exports = Wallet;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],34:[function(require,module,exports){
+},{"buffer":146}],35:[function(require,module,exports){
 'use strict';
 
 var customNode = function (srvrUrl, port) {
@@ -3169,7 +3361,7 @@ customNode.prototype.post = function (data, callback) {
 };
 module.exports = customNode;
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 'use strict';
 
 var http;
@@ -3189,7 +3381,7 @@ ethPrice.getETHvalue = function (callback) {
 };
 module.exports = ethPrice;
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
 
 var etherscan = function () {};
@@ -3307,7 +3499,7 @@ etherscan.post = function (data, callback) {
 };
 module.exports = etherscan;
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 var mewSrv = require('./mewServerTpl');
@@ -3322,7 +3514,7 @@ mewEtc.post = function (data, callback) {
 };
 module.exports = mewEtc;
 
-},{"./mewServerTpl":39}],38:[function(require,module,exports){
+},{"./mewServerTpl":40}],39:[function(require,module,exports){
 'use strict';
 
 var mewSrv = require('./mewServerTpl');
@@ -3337,7 +3529,7 @@ mewEth.post = function (data, callback) {
 };
 module.exports = mewEth;
 
-},{"./mewServerTpl":39}],39:[function(require,module,exports){
+},{"./mewServerTpl":40}],40:[function(require,module,exports){
 'use strict';
 
 var mewServer = function () {};
@@ -3387,7 +3579,7 @@ mewServer.prototype.post = function (data, callback) {
 };
 module.exports = mewServer;
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 var nodes = function () {};
@@ -3494,7 +3686,7 @@ nodes.nodeList = {
 nodes.ethPrice = require('./nodeHelpers/ethPrice');
 module.exports = nodes;
 
-},{"./abiDefinitions/etcAbi.json":1,"./abiDefinitions/ethAbi.json":2,"./abiDefinitions/ropstenAbi.json":3,"./nodeHelpers/customNode":34,"./nodeHelpers/ethPrice":35,"./nodeHelpers/etherscan":36,"./nodeHelpers/mewEtc":37,"./nodeHelpers/mewEth":38,"./tokens/etcTokens.json":64,"./tokens/ethTokens.json":65,"./tokens/ropstenTokens.json":66}],41:[function(require,module,exports){
+},{"./abiDefinitions/etcAbi.json":1,"./abiDefinitions/ethAbi.json":2,"./abiDefinitions/ropstenAbi.json":3,"./nodeHelpers/customNode":35,"./nodeHelpers/ethPrice":36,"./nodeHelpers/etherscan":37,"./nodeHelpers/mewEtc":38,"./nodeHelpers/mewEth":39,"./tokens/etcTokens.json":65,"./tokens/ethTokens.json":66,"./tokens/ropstenTokens.json":67}],42:[function(require,module,exports){
 'use strict';
 
 var globalService = function ($http, $httpParamSerializerJQLike) {
@@ -3532,43 +3724,50 @@ var globalService = function ($http, $httpParamSerializerJQLike) {
       mew: true,
       cx: true
     },
-    offlineTransaction: {
+    exchange: {
       id: 4,
+      name: "NAV_Exchange",
+      url: "exchange",
+      mew: true,
+      cx: true
+    },
+    offlineTransaction: {
+      id: 5,
       name: "NAV_Offline",
       url: "offline-transaction",
       mew: true,
       cx: false
     },
     signMsg: {
-      id: 5,
+      id: 6,
       name: "NAV_SignMsg",
       url: "sign-message",
       mew: true,
       cx: true
     },
     contracts: {
-      id: 6,
+      id: 7,
       name: "NAV_Contracts",
       url: "contracts",
       mew: true,
       cx: true
     },
     viewWalletInfo: {
-      id: 7,
+      id: 8,
       name: "NAV_ViewWallet",
       url: "view-wallet-info",
       mew: true,
       cx: false
     },
     help: {
-      id: 8,
+      id: 9,
       name: "NAV_Help",
       url: "help",
       mew: true,
       cx: true
     },
     bulkGenerate: {
-      id: 9,
+      id: 10,
       name: "NAV_BulkGenerate",
       url: "bulk-generate",
       mew: false,
@@ -3584,7 +3783,7 @@ var globalService = function ($http, $httpParamSerializerJQLike) {
 };
 module.exports = globalService;
 
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 'use strict';
 
 var walletService = function () {
@@ -3595,7 +3794,7 @@ var walletService = function () {
 };
 module.exports = walletService;
 
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -3623,7 +3822,7 @@ SolidityTypeAddress.prototype.isType = function (name) {
 
 module.exports = SolidityTypeAddress;
 
-},{"./formatters":49,"./type":54}],44:[function(require,module,exports){
+},{"./formatters":50,"./type":55}],45:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -3651,7 +3850,7 @@ SolidityTypeBool.prototype.isType = function (name) {
 
 module.exports = SolidityTypeBool;
 
-},{"./formatters":49,"./type":54}],45:[function(require,module,exports){
+},{"./formatters":50,"./type":55}],46:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -3682,7 +3881,7 @@ SolidityTypeBytes.prototype.isType = function (name) {
 
 module.exports = SolidityTypeBytes;
 
-},{"./formatters":49,"./type":54}],46:[function(require,module,exports){
+},{"./formatters":50,"./type":55}],47:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -3933,7 +4132,7 @@ var coder = new SolidityCoder([new SolidityTypeAddress(), new SolidityTypeBool()
 
 module.exports = coder;
 
-},{"./address":43,"./bool":44,"./bytes":45,"./dynamicbytes":48,"./formatters":49,"./int":50,"./real":52,"./string":53,"./uint":55,"./ureal":56,"./utils":57}],47:[function(require,module,exports){
+},{"./address":44,"./bool":45,"./bytes":46,"./dynamicbytes":49,"./formatters":50,"./int":51,"./real":53,"./string":54,"./uint":56,"./ureal":57,"./utils":58}],48:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -3984,7 +4183,7 @@ module.exports = {
     defaultAccount: undefined
 };
 
-},{"bignumber.js":110}],48:[function(require,module,exports){
+},{"bignumber.js":111}],49:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4006,7 +4205,7 @@ SolidityTypeDynamicBytes.prototype.isDynamicType = function () {
 
 module.exports = SolidityTypeDynamicBytes;
 
-},{"./formatters":49,"./type":54}],49:[function(require,module,exports){
+},{"./formatters":50,"./type":55}],50:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -4259,7 +4458,7 @@ module.exports = {
     formatOutputAddress: formatOutputAddress
 };
 
-},{"./config":47,"./param":51,"./utils":57,"bignumber.js":110}],50:[function(require,module,exports){
+},{"./config":48,"./param":52,"./utils":58,"bignumber.js":111}],51:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4293,7 +4492,7 @@ SolidityTypeInt.prototype.isType = function (name) {
 
 module.exports = SolidityTypeInt;
 
-},{"./formatters":49,"./type":54}],51:[function(require,module,exports){
+},{"./formatters":50,"./type":55}],52:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -4444,7 +4643,7 @@ SolidityParam.encodeList = function (params) {
 
 module.exports = SolidityParam;
 
-},{"./utils":57}],52:[function(require,module,exports){
+},{"./utils":58}],53:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4478,7 +4677,7 @@ SolidityTypeReal.prototype.isType = function (name) {
 
 module.exports = SolidityTypeReal;
 
-},{"./formatters":49,"./type":54}],53:[function(require,module,exports){
+},{"./formatters":50,"./type":55}],54:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4500,7 +4699,7 @@ SolidityTypeString.prototype.isDynamicType = function () {
 
 module.exports = SolidityTypeString;
 
-},{"./formatters":49,"./type":54}],54:[function(require,module,exports){
+},{"./formatters":50,"./type":55}],55:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityParam = require('./param');
 
@@ -4752,7 +4951,7 @@ SolidityType.prototype.decode = function (bytes, offset, name) {
 
 module.exports = SolidityType;
 
-},{"./formatters":49,"./param":51}],55:[function(require,module,exports){
+},{"./formatters":50,"./param":52}],56:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4786,7 +4985,7 @@ SolidityTypeUInt.prototype.isType = function (name) {
 
 module.exports = SolidityTypeUInt;
 
-},{"./formatters":49,"./type":54}],56:[function(require,module,exports){
+},{"./formatters":50,"./type":55}],57:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4820,7 +5019,7 @@ SolidityTypeUReal.prototype.isType = function (name) {
 
 module.exports = SolidityTypeUReal;
 
-},{"./formatters":49,"./type":54}],57:[function(require,module,exports){
+},{"./formatters":50,"./type":55}],58:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -5405,7 +5604,7 @@ module.exports = {
     isJson: isJson
 };
 
-},{"bignumber.js":110,"ethereumjs-util":185,"utf8":252}],58:[function(require,module,exports){
+},{"bignumber.js":111,"ethereumjs-util":186,"utf8":253}],59:[function(require,module,exports){
 'use strict';
 
 var marked = require('marked');
@@ -5436,7 +5635,7 @@ marked.setOptions({
 });
 module.exports = marked;
 
-},{"marked":202}],59:[function(require,module,exports){
+},{"marked":203}],60:[function(require,module,exports){
 (function (Buffer){
 /********************************************************************************
 *   Ledger Communication toolkit
@@ -5597,7 +5796,7 @@ LedgerEth.prototype.getAppConfiguration = function (callback) {
 module.exports = LedgerEth;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],60:[function(require,module,exports){
+},{"buffer":146}],61:[function(require,module,exports){
 (function (Buffer){
 /********************************************************************************
 *   Ledger Communication toolkit
@@ -5668,7 +5867,7 @@ Ledger3.prototype.exchange = function (apduHex, callback) {
 module.exports = Ledger3;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],61:[function(require,module,exports){
+},{"buffer":146}],62:[function(require,module,exports){
 /**
  * (C) 2017 SatoshiLabs
  *
@@ -6450,7 +6649,7 @@ if (!IS_CHROME_APP && !DISABLE_LOGIN_BUTTONS) {
 
 module.exports = { TrezorConnect: connect };
 
-},{}],62:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 //Copyright 2014-2015 Google Inc. All rights reserved.
 
 //Use of this source code is governed by a BSD-style
@@ -7164,7 +7363,7 @@ u2f.getApiVersion = function (callback, opt_timeoutSeconds) {
 };
 module.exports = u2f;
 
-},{}],63:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 'use strict';
 
 var Token = function (contractAddress, userAddress, symbol, decimal, type) {
@@ -7245,9 +7444,9 @@ Token.prototype.getData = function (toAdd, value) {
 };
 module.exports = Token;
 
-},{}],64:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 arguments[4][3][0].apply(exports,arguments)
-},{"dup":3}],65:[function(require,module,exports){
+},{"dup":3}],66:[function(require,module,exports){
 module.exports=[
   {
     "address":"0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
@@ -7371,9 +7570,9 @@ module.exports=[
   }
 ]
 
-},{}],66:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 arguments[4][3][0].apply(exports,arguments)
-},{"dup":3}],67:[function(require,module,exports){
+},{"dup":3}],68:[function(require,module,exports){
 // German
 'use strict';
 
@@ -7381,6 +7580,7 @@ var de = function () {};
 de.code = 'de';
 de.data = {
 
+  NAV_Exchange: 'Exchange',
   /* Sign Message */
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
@@ -7507,8 +7707,8 @@ de.data = {
   ADD_Radio_3: 'Kopiere/Tippe deinen privaten Schlüssel ein',
   ADD_Radio_4: 'Kontoadresse zur Beobachtung hinzufügen',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -7676,19 +7876,19 @@ de.data = {
   Translator_Desc: 'Vielen Dank an unsere ÜbersetzerInnen:',
   TranslatorName_1: 'christoph2806 · K ·',
   TranslatorAddr_1: '',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: '[mawalu](https://www.myetherwallet.com/?gaslimit=21000&to=0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3&value=1.0#send-transaction) ·',
   TranslatorAddr_2: '0xA6e9A24981aFB71f96C7330618139a7B34BCdEc3',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: '[huhn_solo](https://www.myetherwallet.com/?gaslimit=21000&to=0x1DAd1765381460db9A44846cDfA6f74c65A06B77&value=1.0#send-transaction) · ',
   TranslatorAddr_3: '0x1DAd1765381460db9A44846cDfA6f74c65A06B77',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: '[FelixA](https://www.myetherwallet.com/?gaslimit=21000&to=0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D&value=1.0#send-transaction) · ',
   TranslatorAddr_4: '0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: 'danielsun174 · ffidan61',
   TranslatorAddr_5: '',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Falls du vor dem **31.12.2015** ein Wallet generiert, oder das Repository heruntergeladen hast, bitte überprüfe deine Wallets &amp; lade eine neue Version des Repositories herunter. Klick für details.',
@@ -7915,13 +8115,15 @@ de.data = {
 
 module.exports = de;
 
-},{}],68:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 // Greek
 'use strict';
 
 var el = function () {};
 el.code = 'el';
 el.data = {
+
+  NAV_Exchange: 'Exchange',
 
   /* Sign Message */
   NAV_SignMsg: 'Sign Message',
@@ -8058,8 +8260,8 @@ el.data = {
   ADD_Radio_3: 'Επικολλήστε/Πληκτρολογήστε το Ιδιωτικό Κλειδί σας',
   ADD_Radio_4: 'Προσθήκη Λογαριασμού προς Παρακολούθηση',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -8221,19 +8423,19 @@ el.data = {
   Translator_Desc: 'Ευχαριστούμε τους μεταφραστές μας: ',
   TranslatorName_1: '[VitalikFanBoy#117](https://www.myetherwallet.com/?gaslimit=21000&to=0x245f27796a44d7e3d30654ed62850ff09ee85656&value=1.0#send-transaction) · ',
   TranslatorAddr_1: '0x245f27796a44d7e3d30654ed62850ff09ee85656',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: 'LefterisJP  · ',
   TranslatorAddr_2: '',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: '[Nikos Vavoulas](https://www.myetherwallet.com/?gaslimit=21000&to=0x062711C89Bd46E9765CfF0b743Cb83a9dBA2d2d2&value=1.0#send-transaction) · ',
   TranslatorAddr_3: '0x062711C89Bd46E9765CfF0b743Cb83a9dBA2d2d2',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
@@ -8460,7 +8662,7 @@ el.data = {
 
 module.exports = el;
 
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 // English
 'use strict';
 
@@ -8479,21 +8681,22 @@ en.data = {
   MSG_info3: 'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
 
   /* Navigation*/
-  NAV_YourWallets: 'Your Wallets',
   NAV_AddWallet: 'Add Wallet',
-  NAV_GenerateWallet: 'Generate Wallet',
   NAV_BulkGenerate: 'Bulk Generate',
-  NAV_SendEther: 'Send Ether & Tokens',
-  NAV_SendTokens: 'Send Tokens',
-  NAV_Offline: 'Send Offline',
-  NAV_DeployContract: 'Deploy Contract',
-  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contact: 'Contact',
   NAV_Contracts: 'Contracts',
+  NAV_DeployContract: 'Deploy Contract',
+  NAV_Exchange: 'Exchange',
+  NAV_GenerateWallet: 'Generate Wallet',
+  NAV_Help: 'Help',
+  NAV_InteractContract: 'Interact with Contract',
   NAV_Multisig: 'Multisig',
   NAV_MyWallets: 'My Wallets',
+  NAV_Offline: 'Send Offline',
+  NAV_SendEther: 'Send Ether & Tokens',
+  NAV_SendTokens: 'Send Tokens',
   NAV_ViewWallet: 'View Wallet Info',
-  NAV_Help: 'Help',
-  NAV_Contact: 'Contact',
+  NAV_YourWallets: 'Your Wallets',
 
   /* General */
   x_Address: 'Your Address',
@@ -8557,8 +8760,8 @@ en.data = {
   ADD_Radio_4: 'Add an Account to Watch',
   ADD_Radio_5: 'Paste/Type Your Mnemonic',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -8767,19 +8970,19 @@ en.data = {
   Translator_Desc: '',
   TranslatorName_1: '',
   TranslatorAddr_1: '',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: ' ',
   TranslatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
@@ -9006,13 +9209,15 @@ en.data = {
 
 module.exports = en;
 
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 // Spanish
 'use strict';
 
 var es = function () {};
 es.code = 'es';
 es.data = {
+
+  NAV_Exchange: 'Exchange',
 
   /* Sign Message */
   NAV_SignMsg: 'Sign Message',
@@ -9129,8 +9334,8 @@ es.data = {
   ADD_Radio_3: 'Pega/escribe tu clave privada ',
   ADD_Radio_4: 'Añade una cuenta para supervisar',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -9309,19 +9514,19 @@ es.data = {
   Translator_Desc: 'Gracias a nuestros traductores: ',
   TranslatorName_1: 'Ignacio Fernández del Álamo  · ',
   TranslatorAddr_1: '',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: 'Carlos Lizarraga Rodrigo',
   TranslatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Si creaste una cartera -o- descargaste el repositorio antes del **31 de diciembre de 2015**, por favor comprueba tus carteras y descarga una nueva versión del repositorio. Haz clic para más información.',
@@ -9548,13 +9753,15 @@ es.data = {
 
 module.exports = es;
 
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 // Finnish
 'use strict';
 
 var fi = function () {};
 fi.code = 'fi';
 fi.data = {
+
+  NAV_Exchange: 'Exchange',
 
   ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
@@ -9699,8 +9906,8 @@ fi.data = {
   ADD_Radio_3: 'Liitä/Kirjoita Yksityinen Salausavaimesi',
   ADD_Radio_4: 'Lisää Tili Jota Seurata',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -9879,19 +10086,19 @@ fi.data = {
   Translator_Desc: 'Kiitos kääntäjillemme...',
   TranslatorName_1: 'Smokyish',
   TranslatorAddr_1: '0xac9a2c1dd946da64c0dc8e70cec2cfb14304fd4f',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranlsatorName_2: ' ',
   TranlsatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranlsatorName_3: ' ',
   TranlsatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranlsatorName_4: ' ',
   TranlsatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranlsatorName_5: ' ',
   TranlsatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
@@ -10118,7 +10325,7 @@ fi.data = {
 
 module.exports = fi;
 
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 // French
 'use strict';
 
@@ -10127,6 +10334,7 @@ fr.code = 'fr';
 fr.data = {
 
   /* Sign Message */
+  NAV_Exchange: 'Exchange',
   NAV_SignMsg: 'Signer un message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -10216,8 +10424,8 @@ fr.data = {
   ADD_Radio_4: 'Ajoutez un compte',
   ADD_Radio_5: 'Collez/entrez votre mnémonique',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -10425,19 +10633,19 @@ fr.data = {
   Translator_Desc: 'Thank you to our translators: ',
   TranslatorName_1: '[Simon P](https://www.myetherwallet.com/?gaslimit=21000&to=0x89a18eE46b5aabC62e94b1830881887D04C687f3&value=1.0#send-transaction) · ',
   TranslatorAddr_1: '0x89a18eE46b5aabC62e94b1830881887D04C687f3',
-  /* Translator 1: Translation in French. Début de la traduction, il reste encore du travail... Je continue dès que j'ai un peu de temps :) */
+  /* Translator 1             : Translation in French. Début de la traduction, il reste encore du travail... Je continue dès que j'ai un peu de temps :) */
   TranslatorName_2: 'Jean Zundel · ',
   TranslatorAddr_2: '',
-  /* Translator 2:  */
+  /* Translator 2             : */
   TranslatorName_3: 'girards',
   TranslatorAddr_3: '',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: '',
   TranslatorAddr_4: '',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: '',
   TranslatorAddr_5: '',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Si vous avez créé un portefeuille -ou- téléchargé le repo avant **le 31 déc. 2015**, merci de vérifier vos portefeuilles / de télécharger une nouvelle version du repo. Cliquez ici pour plus de détails.',
@@ -10664,7 +10872,7 @@ fr.data = {
 
 module.exports = fr;
 
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 // Hungarian
 'use strict';
 
@@ -10673,6 +10881,7 @@ hu.code = 'hu';
 hu.data = {
 
   /* Sign Message */
+  NAV_Exchange: 'Exchange',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -10769,8 +10978,8 @@ hu.data = {
   ADD_Radio_4: 'Tárca hozzáadása megfigyelésre',
   ADD_Radio_5: 'Másold/írd be a mnemonikus frázist',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -10968,19 +11177,19 @@ hu.data = {
   Translator_Desc: 'Köszönet a fordításért: ',
   TranslatorName_1: '[belpheg](https://www.myetherwallet.com/?gaslimit=21000&to=0xBF8C35176eAD29257834D5A1592ed50Adb0b6e4f&value=1.0#send-transaction) ·',
   TranslatorAddr_1: '0xBF8C35176eAD29257834D5A1592ed50Adb0b6e4f',
-  /* Translator 1: email: zoltan.tapi@donamin.com */
+  /* Translator 1             : email: zoltan.tapi@donamin.com */
   TranslatorName_2: ' [bluqesh](https://www.myetherwallet.com/?gaslimit=21000&to=0x4270A331d14CcdB6FB941f3f5De9Cf01607Bff9F&value=1.0#send-transaction)',
   TranslatorAddr_2: '0x4270A331d14CcdB6FB941f3f5De9Cf01607Bff9F',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Ha **2015 december 31** előtt készítettél egy tárcát vagy töltötted le a repo-t, akkor ellenőrizd a tárcáidat és töltsd le a repo új verzióját. Kattints a részletekért.',
@@ -11207,7 +11416,7 @@ hu.data = {
 
 module.exports = hu;
 
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 // Indonesian
 'use strict';
 
@@ -11216,6 +11425,7 @@ id.code = 'id';
 id.data = {
 
   /* Sign Message */
+  NAV_Exchange: 'Exchange',
   NAV_SignMsg: 'Penandaan Pesan',
   MSG_message: 'Pesan',
   MSG_date: 'Tanggal',
@@ -11305,8 +11515,8 @@ id.data = {
   ADD_Radio_4: 'Tambah akun untuk dilihat',
   ADD_Radio_5: 'Paste/Ketik Mnemonic Anda',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -11509,19 +11719,19 @@ id.data = {
   Translator_Desc: 'Thank you to our translators: ',
   TranslatorName_1: '[Yos Ginting](https://www.myetherwallet.com/?gaslimit=21000&to=0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c&value=1.0#send-transaction)',
   TranslatorAddr_1: '0x8F646C5c215be6E0163f02Bd2eB97AFC2DF70e5c',
-  /* Translator 1: 05 Sep 2016: Translation completed (except HELP texts); 09 Sep 2016: Revisions on some words and phrases */
+  /* Translator 1             : 05 Sep 2016: Translation completed (except HELP texts); 09 Sep 2016: Revisions on some words and phrases */
   TranslatorName_2: ' ',
   TranslatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
@@ -11748,17 +11958,18 @@ id.data = {
 
 module.exports = id;
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 // Italian
-// Last sync with en.js: commit 9aaeb1e8e4fee299887e0f8393c1c074b581b9f0
+// Last sync with en.js     : commit 9aaeb1e8e4fee299887e0f8393c1c074b581b9f0
 'use strict';
 
 var it = function () {};
 it.code = 'it';
 it.data = {
 
+  NAV_Exchange: 'Exchange',
+
   /* Sign Message */
-  NAV_SignMsg: 'Firma messaggio',
   MSG_message: 'Messaggio',
   MSG_date: 'Data',
   MSG_signature: 'Firma',
@@ -11768,21 +11979,22 @@ it.data = {
   MSG_info3: 'Includi una ragione specifica per il messaggio, così che non possa essere riutilizzato per uno scopo diverso.',
 
   /* Navigation*/
-  NAV_YourWallets: 'I tuoi portafogli',
   NAV_AddWallet: 'Aggiungi portafoglio',
-  NAV_GenerateWallet: 'Genera portafoglio',
   NAV_BulkGenerate: 'Generazione multipla',
-  NAV_SendEther: 'Invia ether e token',
-  NAV_SendTokens: 'Invia token',
-  NAV_Offline: 'Invia offline',
-  NAV_DeployContract: 'Pubblica contratto',
-  NAV_InteractContract: 'Interagisci con un contratto',
+  NAV_Contact: 'Contatti',
   NAV_Contracts: 'Contratti',
+  NAV_DeployContract: 'Pubblica contratto',
+  NAV_GenerateWallet: 'Genera portafoglio',
+  NAV_Help: 'Aiuto',
+  NAV_InteractContract: 'Interagisci con un contratto',
   NAV_Multisig: 'Multifirma',
   NAV_MyWallets: 'I miei portafogli',
+  NAV_Offline: 'Invia offline',
+  NAV_SendEther: 'Invia ether e token',
+  NAV_SendTokens: 'Invia token',
+  NAV_SignMsg: 'Firma messaggio',
   NAV_ViewWallet: 'Informazioni portafoglio',
-  NAV_Help: 'Aiuto',
-  NAV_Contact: 'Contatti',
+  NAV_YourWallets: 'I tuoi portafogli',
 
   /* General */
   x_Password: 'Password',
@@ -11846,8 +12058,8 @@ it.data = {
   ADD_Radio_4: 'Aggiungi un conto da osservare',
   ADD_Radio_5: 'Incolla/Inserisci la tua frase mnemonica',
   ADD_Radio_5_Path: 'Seleziona un percorso di derivazione HD',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(altro)',
@@ -12057,19 +12269,19 @@ it.data = {
   Translator_Desc: 'Grazie ai nostri traduttori: ',
   TranslatorName_1: '[ugilio](https://www.myetherwallet.com/?gaslimit=21000&to=0x07932bc1c68c8ff188f4225e892178ab6d8c4eaa&value=1.0#send-transaction)',
   TranslatorAddr_1: '0x07932bc1c68c8ff188f4225e892178ab6d8c4eaa',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: ' ',
   TranslatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Se hai creato un portafoglio -oppure- hai scaricato il repository prima del **31 Dicembre 2015**, controlla i tuoi portafogli e scarica una nuova versione del repository. Fai clic qui per i dettagli.',
@@ -12296,7 +12508,7 @@ it.data = {
 
 module.exports = it;
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 // Japanese
 'use strict';
 
@@ -12304,8 +12516,9 @@ var ja = function () {};
 ja.code = 'ja';
 ja.data = {
 
+  NAV_Exchange: 'Exchange',
+
   /* Sign Message */
-  NAV_SignMsg: 'メッセージ署名',
   MSG_message: 'メッセージ',
   MSG_date: '日付',
   MSG_signature: '署名',
@@ -12314,33 +12527,23 @@ ja.data = {
   MSG_info2: '他人に使われないようにするため、あなたのニックネームとそれが使われるところを入れてください。',
   MSG_info3: '異なった目的で使用されないようにするために、利用目的を入れてください。',
 
-  /* Geth Error Messages */
-  GETH_InvalidSender: '送出元が無効です',
-  GETH_Nonce: 'Nonce が足りません',
-  GETH_Cheap: 'ガス価格が低すぎます',
-  GETH_Balance: '残高不足',
-  GETH_NonExistentAccount: 'アカウントが存在しない、あるいはその残高不足です',
-  GETH_InsufficientFunds: 'ガス*価格+数量に足りません',
-  GETH_IntrinsicGas: '基本のガス不足です',
-  GETH_GasLimit: 'ブロックガスリミットを越えています',
-  GETH_NegativeValue: '負の値です',
-
   /* Navigation*/
-  NAV_YourWallets: '自分のウォレット',
   NAV_AddWallet: 'ウォレット追加',
-  NAV_GenerateWallet: 'ウォレット作成',
   NAV_BulkGenerate: 'バルク作成',
-  NAV_SendEther: 'Ether送出 トークン送出',
-  NAV_SendTokens: 'トークン送出',
-  NAV_Offline: 'オフライン送出',
-  NAV_DeployContract: 'コントラクトをデプロイ',
-  NAV_InteractContract: 'Interact with Contract',
+  NAV_Contact: '連絡する',
   NAV_Contracts: 'Contracts',
+  NAV_DeployContract: 'コントラクトをデプロイ',
+  NAV_GenerateWallet: 'ウォレット作成',
+  NAV_Help: 'ヘルプ',
+  NAV_InteractContract: 'Interact with Contract',
   NAV_Multisig: 'Multisig',
   NAV_MyWallets: '自分のウォレット',
+  NAV_Offline: 'オフライン送出',
+  NAV_SendEther: 'Ether送出 トークン送出',
+  NAV_SendTokens: 'トークン送出',
+  NAV_SignMsg: 'メッセージ署名',
   NAV_ViewWallet: 'ウォレット情報を見る',
-  NAV_Help: 'ヘルプ',
-  NAV_Contact: '連絡する',
+  NAV_YourWallets: '自分のウォレット',
 
   /* General */
   x_Address: '自分のアドレス',
@@ -12404,8 +12607,8 @@ ja.data = {
   ADD_Radio_4: '監視するアカウントを追加',
   ADD_Radio_5: 'ニーモニックを上書き/タイプ',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -12595,24 +12798,35 @@ ja.data = {
   PARITY_GasLimitExceeded: "トランザクションコストがガスリミットを超過しました。 リミット： {}, 現在: {}. ガス供給量を減らして見てください。", /* increasing gas limit??? */
   PARITY_InvalidGasLimit: "ガス供給量が制限を超過しています。",
 
+  /* Geth Error Messages */
+  GETH_InvalidSender: '送出元が無効です',
+  GETH_Nonce: 'Nonce が足りません',
+  GETH_Cheap: 'ガス価格が低すぎます',
+  GETH_Balance: '残高不足',
+  GETH_NonExistentAccount: 'アカウントが存在しない、あるいはその残高不足です',
+  GETH_InsufficientFunds: 'ガス*価格+数量に足りません',
+  GETH_IntrinsicGas: '基本のガス不足です',
+  GETH_GasLimit: 'ブロックガスリミットを越えています',
+  GETH_NegativeValue: '負の値です',
+
   /* Tranlsation Info */
   translate_version: '0.3',
   Translator_Desc: 'トランスレーターに感謝して投げ銭： ',
   TranslatorName_1: '[sekisanchi](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction)',
   TranslatorAddr_1: '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE',
-  /* Translator 1: Kazunori Seki / 関一典 */
+  /* Translator 1             : Kazunori Seki / 関一典 */
   TranslatorName_2: ' ',
   TranslatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
@@ -12839,7 +13053,7 @@ ja.data = {
 
 module.exports = ja;
 
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 // Dutch
 'use strict';
 
@@ -12848,22 +13062,23 @@ nl.code = 'nl';
 nl.data = {
 
   /* Navigation*/
-  NAV_YourWallets: 'Jouw Wallets',
   NAV_AddWallet: 'Wallet Toevoegen',
-  NAV_GenerateWallet: 'Genereer Wallet',
   NAV_BulkGenerate: 'Bulk Genereren',
-  NAV_SendEther: 'Verzend Ether en Tokens',
-  NAV_SendTokens: 'Verzend Tokens',
-  NAV_Offline: 'Verzend Offline',
-  NAV_SignMsg: 'Onderteken bericht',
-  NAV_DeployContract: 'Verspreid Contract',
-  NAV_InteractContract: 'Interactie met Contract',
+  NAV_Contact: 'Contact',
   NAV_Contracts: 'Contracten',
+  NAV_DeployContract: 'Verspreid Contract',
+  NAV_Exchange: 'Exchange',
+  NAV_GenerateWallet: 'Genereer Wallet',
+  NAV_Help: 'Help',
+  NAV_InteractContract: 'Interactie met Contract',
   NAV_Multisig: 'Multisig',
   NAV_MyWallets: 'Mijn Wallets',
+  NAV_Offline: 'Verzend Offline',
+  NAV_SendEther: 'Verzend Ether en Tokens',
+  NAV_SendTokens: 'Verzend Tokens',
+  NAV_SignMsg: 'Onderteken bericht',
   NAV_ViewWallet: 'Bekijk Wallet Info',
-  NAV_Help: 'Help',
-  NAV_Contact: 'Contact',
+  NAV_YourWallets: 'Jouw Wallets',
 
   /* General */
   x_Address: 'Je Adres',
@@ -12927,8 +13142,8 @@ nl.data = {
   ADD_Radio_4: 'Voeg een te bekijken account toe',
   ADD_Radio_5: 'Plak/type Mnemonic',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -13146,19 +13361,19 @@ nl.data = {
   Translator_Desc: 'Veel dank voor onze vertalers: ',
   TranslatorName_1: '[h3ll0fr13nd](https://www.myetherwallet.com/?gaslimit=21000&to=0xB5FbCE123F12347206c881cae73A3046BA1A90bA&value=1.0#send-transaction)',
   TranslatorAddr_1: '0xB5FbCE123F12347206c881cae73A3046BA1A90bA',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: ' ',
   TranslatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Als je een wallet aangemaakt hebt -of repo hebt gedownload- voor **31 december 2015**, check dan alsjebieft je wallets en download een nieuwe versie van de repo. Klik voor detais.',
@@ -13385,7 +13600,7 @@ nl.data = {
 
 module.exports = nl;
 
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 // Norwegian
 'use strict';
 
@@ -13394,6 +13609,7 @@ no.code = 'no';
 no.data = {
 
   /* Sign Message */
+  NAV_Exchange: 'Exchange',
   NAV_SignMsg: 'Signér Melding',
   MSG_message: 'Melding',
   MSG_date: 'Dato',
@@ -13509,8 +13725,8 @@ no.data = {
   ADD_Radio_3: 'Lim/skriv inn din private nøkkel',
   ADD_Radio_4: 'Legg til en konto for overvåkning',
   ADD_Radio_5_Path: 'Velg "HD derivation" variant',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(tilpasset)',
@@ -13689,19 +13905,19 @@ no.data = {
   Translator_Desc: 'Takk til oversetterne våre: ',
   TranslatorName_1: '[mrstormlars](https://www.myetherwallet.com/?gaslimit=21000&to=0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08&value=1.0#send-transaction)',
   TranslatorAddr_1: '0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: ' ',
   TranslatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Hvis du opprettet en lommebok -eller- lastet ned repoet før **31. desember 2015**, vennligst sjekk lommebøkene dine &amp; last ned en ny versjon av repoet. Klikk for detaljer.',
@@ -13928,13 +14144,15 @@ no.data = {
 
 module.exports = no;
 
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 // Polish
 'use strict';
 
 var pl = function () {};
 pl.code = 'pl';
 pl.data = {
+
+  NAV_Exchange: 'Exchange',
 
   /* Sign Message */
   NAV_SignMsg: 'Podpisz Wiadomość',
@@ -14021,8 +14239,8 @@ pl.data = {
   ADD_Radio_4: 'Dodaj Konto do Obserwacji',
   ADD_Radio_5: 'Wklej/Wpisz Swój Mnemonik',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -14230,19 +14448,19 @@ pl.data = {
   Translator_Desc: 'Podziękowania tłumaczom: ',
   TranslatorName_1: '[egzi](?to=0xef39C3C51615B6e52e7D5B743BeaecdDcA822386&value=1.0#send-transaction)',
   TranslatorAddr_1: '0xef39C3C51615B6e52e7D5B743BeaecdDcA822386', // donation address 0x1234
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: '',
   TranslatorAddr_2: '',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: '',
   TranslatorAddr_3: '',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: '',
   TranslatorAddr_4: '',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: '',
   TranslatorAddr_5: '',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Jeśli wygenerowałeś portfel -lub- ściągnąłeś repozytorium przed **31.12.2015**, sprawdź swoje portfele i ściągnij nową wersję repozytorium. Kliknij po szczegóły.',
@@ -14469,7 +14687,7 @@ pl.data = {
 
 module.exports = pl;
 
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 // Portuguese
 'use strict';
 
@@ -14478,6 +14696,7 @@ pt.code = 'pt';
 pt.data = {
 
   /* Sign Message */
+  NAV_Exchange: 'Exchange',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -14572,8 +14791,8 @@ pt.data = {
   ADD_Radio_4: 'Adicionar uma conta para ver',
   ADD_Radio_5: 'Cole/Digite sua Mnemonic',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -14771,22 +14990,22 @@ pt.data = {
   /* Tranlsation Info */
   translate_version: '0.3',
   Translator_Desc: 'Thank you to our translators: ',
-  // fill in your name and address:
+  // fill in your name and address :
   TranslatorName_1: '[ Pedro "ShooterXD" Vieira ](https://www.myetherwallet.com/?gaslimit=21000&to=0x24eB7d82166361A8B69adE6FEA187Cb00FD7c7E1&value=1.0#send-transaction)',
   TranslatorAddr_1: '',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1                  : Insert Comments Here */
   TranslatorName_2: ' ',
   TranslatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2                  : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3                  : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4                  : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5                  : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
@@ -15013,7 +15232,7 @@ pt.data = {
 
 module.exports = pt;
 
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 // Russian
 'use strict';
 
@@ -15022,6 +15241,7 @@ ru.code = 'ru';
 ru.data = {
 
   /* Sign Message */
+  NAV_Exchange: 'Exchange',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -15149,8 +15369,8 @@ ru.data = {
   ADD_Radio_3: 'Вставить или ввести Ваш закрытый ключ',
   ADD_Radio_4: 'Добавить счёт в список слежения',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -15318,19 +15538,19 @@ ru.data = {
   Translator_Desc: 'Спасибо нашим переводчикам: ',
   TranslatorName_1: '[Михаил Владимиров](https://www.myetherwallet.com/?gaslimit=21000&to=0x6ff323e36bfdb20502b23780695f4e77e36cde95&value=1.0#send-transaction)',
   TranslatorAddr_1: '0x6ff323e36bfdb20502b23780695f4e77e36cde95',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: ' ',
   TranslatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
@@ -15557,7 +15777,7 @@ ru.data = {
 
 module.exports = ru;
 
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 // Turkish
 'use strict';
 
@@ -15566,6 +15786,7 @@ tr.code = 'tr';
 tr.data = {
 
   /* Sign Message */
+  NAV_Exchange: 'Exchange',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -15702,8 +15923,8 @@ tr.data = {
   ADD_Radio_3: 'Özel anahatarini Yaspistir/Yaz ',
   ADD_Radio_4: 'Izlenecek hesap adresi ekle', /* maybe another word for watch/izlencek --> Takip edilecek? */
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -15862,19 +16083,19 @@ tr.data = {
   Translator_Desc: 'Thank you to our translators: ',
   TranslatorName_1: '[ffidan61](https://www.myetherwallet.com/?gaslimit=21000&to=0xF1Fdf8635cc35a084B97905F62a021cAd71fbC21&value=1.0#send-transaction)',
   TranslatorAddr_1: '0xF1Fdf8635cc35a084B97905F62a021cAd71fbC21',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: ' ',
   TranslatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
@@ -16101,7 +16322,7 @@ tr.data = {
 
 module.exports = tr;
 
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 'use strict';
 
 var de = require('./de');
@@ -16159,7 +16380,7 @@ translate.marked = function (data) {
 };
 module.exports = translate;
 
-},{"./de":67,"./el":68,"./en":69,"./es":70,"./fi":71,"./fr":72,"./hu":73,"./id":74,"./it":75,"./ja":76,"./nl":77,"./no":78,"./pl":79,"./pt":80,"./ru":81,"./tr":82,"./vi":84,"./zh":85}],84:[function(require,module,exports){
+},{"./de":68,"./el":69,"./en":70,"./es":71,"./fi":72,"./fr":73,"./hu":74,"./id":75,"./it":76,"./ja":77,"./nl":78,"./no":79,"./pl":80,"./pt":81,"./ru":82,"./tr":83,"./vi":85,"./zh":86}],85:[function(require,module,exports){
 // Vietnamese
 'use strict';
 
@@ -16168,6 +16389,7 @@ vi.code = 'vi';
 vi.data = {
 
   /* Sign Message */
+  NAV_Exchange: 'Exchange',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -16176,20 +16398,8 @@ vi.data = {
   MSG_info1: 'Include the current date so the signature cannot be reused on a different date.',
   MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it.',
   MSG_info3: 'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
-
   WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started.',
   ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
-
-  /* Hardware wallets */
-  x_Ledger: 'Ledger Nano S',
-  ADD_Ledger_1: 'Kết Nối Với Ledger Nano S Của Bạn',
-  ADD_Ledger_2: 'Mở Lên Ứng Dụng Của Ethereum (Hoặc một ứng dụng của Hợp Đồng)',
-  ADD_Ledger_3: 'Xác nhận lại phần Hổ Trợ dành cho Trình Duyệt đã được kích hoạt trong mục Cài Đặt',
-  ADD_Ledger_4: 'Nếu mục Hổ Trợ dành cho Trình duyệt không tìm thấy trong mục Cài Đặt, Xác nhận lại bạn đã có [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) hay chưa',
-  ADD_Ledger_0a: 'Hảy mở lại trang MyEtherWallet trên một kết nối có tính bảo mật (SSL)',
-  ADD_Ledger_0b: 'Sử dụng [Chrome](https://www.google.com/chrome/browser/desktop/) hoặc [Opera](https://www.opera.com/) Để mở lại trang MyEtherWallet',
-  ADD_Ledger_scan: 'Kết nối với Ledger Nano S',
-
   x_Trezor: 'TREZOR',
   ADD_Trezor_scan: 'Connect to TREZOR',
   ADD_Trezor_select: 'This is a TREZOR seed',
@@ -16273,8 +16483,8 @@ vi.data = {
   ADD_Radio_4: 'Thêm Tài Khoản đễ Theo Dõi',
   ADD_Radio_5: 'Dán/Điền ký tự dễ nhớ của bạn',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -16370,6 +16580,16 @@ vi.data = {
   OFFLINE_Step3_Title: 'Bước 3: Gửi / Làm rõ Giao Dịch (Máy tính đang Online)',
   OFFLINE_Step3_Label_1: 'Dán chữ ký Giao Dịch được tạo từ Bước 2 vào đây và chọn nút "Thực hiện Giao Dịch".',
 
+  /* Hardware wallets */
+  x_Ledger: 'Ledger Nano S',
+  ADD_Ledger_1: 'Kết Nối Với Ledger Nano S Của Bạn',
+  ADD_Ledger_2: 'Mở Lên Ứng Dụng Của Ethereum (Hoặc một ứng dụng của Hợp Đồng)',
+  ADD_Ledger_3: 'Xác nhận lại phần Hổ Trợ dành cho Trình Duyệt đã được kích hoạt trong mục Cài Đặt',
+  ADD_Ledger_4: 'Nếu mục Hổ Trợ dành cho Trình duyệt không tìm thấy trong mục Cài Đặt, Xác nhận lại bạn đã có [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) hay chưa',
+  ADD_Ledger_0a: 'Hảy mở lại trang MyEtherWallet trên một kết nối có tính bảo mật (SSL)',
+  ADD_Ledger_0b: 'Sử dụng [Chrome](https://www.google.com/chrome/browser/desktop/) hoặc [Opera](https://www.opera.com/) Để mở lại trang MyEtherWallet',
+  ADD_Ledger_scan: 'Kết nối với Ledger Nano S',
+
   /* Deploy Contracts */
   DEP_generate: 'Tạo Bytecode',
   DEP_generated: 'Bytecode Đã Được Tạo',
@@ -16462,19 +16682,19 @@ vi.data = {
   Translator_Desc: 'Chân Thành Cảm Ơn: ',
   TranslatorName_1: '[Phạm Thế Vũ](https://twitter.com/PhamTheVu3) · ',
   TranslatorAddr_1: 'https://twitter.com/PhamTheVu3',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: '[và Ethereum Vietnam](https://www.ethereumvn.com)',
   TranslatorAddr_2: 'https://www.facebook.com/ethereumvietnam https://www.ethereumvn.com',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Nếu bạn đã khởi tạo Ví -hoặc- đã tải về máy tập tin có chứa dữ liệu ví trước **Ngày 31 Tháng 12 năm 2015**, xin vui lòng kiễm tra lại dữ liệu Ví; dễ tải về phiên bản mới của tập tin Ví. Chi tiết xem tại.',
@@ -16701,7 +16921,7 @@ vi.data = {
 
 module.exports = vi;
 
-},{}],85:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 // Chinese
 'use strict';
 
@@ -16710,6 +16930,7 @@ zh.code = 'zh';
 zh.data = {
 
   /* Sign Message */
+  NAV_Exchange: 'Exchange',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -16718,8 +16939,6 @@ zh.data = {
   MSG_info1: 'Include the current date so the signature cannot be reused on a different date.',
   MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it.',
   MSG_info3: 'Inlude a specific reason for the message so it cannot be reused for a different purpose.',
-
-  ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
   /* Mnemonic Additions */
   MNEM_1: 'Please select the address you would like to interact with.',
@@ -16757,6 +16976,7 @@ zh.data = {
   PARITY_InsufficientBalance: "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
   PARITY_GasLimitExceeded: "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
   PARITY_InvalidGasLimit: "Supplied gas is beyond limit.",
+  ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
   /* Navigation*/
   NAV_YourWallets: '你的钱包',
@@ -16834,8 +17054,8 @@ zh.data = {
   ADD_Radio_3: '粘贴/输入你的私钥 ',
   ADD_Radio_4: '添加一个查看账户',
   ADD_Radio_5_Path: 'Select HD derivation path',
-  ADD_Radio_5_PathDefault_withoutTrezor: '(Jaxx, Metamask, Exodus, imToken)',
-  ADD_Radio_5_PathDefault_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken)',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR)',
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
@@ -17004,19 +17224,19 @@ zh.data = {
   Translator_Desc: '感谢中文译者：',
   TranslatorName_1: '[ Shaoping@ethfans.org （少平）]((https://www.myetherwallet.com/?gaslimit=21000&to=0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740&value=1.0#send-transaction))',
   TranslatorAddr_1: '0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740',
-  /* Translator 1: Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: ' ',
   TranslatorAddr_2: ' ',
-  /* Translator 2: Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: ' ',
   TranslatorAddr_3: ' ',
-  /* Translator 3: Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: ' ',
   TranslatorAddr_4: ' ',
-  /* Translator 4: Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: ' ',
   TranslatorAddr_5: ' ',
-  /* Translator 5: Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.',
@@ -17243,7 +17463,7 @@ zh.data = {
 
 module.exports = zh;
 
-},{}],86:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -17427,7 +17647,7 @@ uiFuncs.transferAllBalance = function (fromAdd, gasLimit, callback) {
 module.exports = uiFuncs;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],87:[function(require,module,exports){
+},{"buffer":146}],88:[function(require,module,exports){
 'use strict';
 
 var validator = function () {};
@@ -17472,7 +17692,7 @@ validator.isValidURL = function (str) {
 };
 module.exports = validator;
 
-},{}],88:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 /**
  * @license AngularJS v1.6.1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -18213,11 +18433,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],89:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":88}],90:[function(require,module,exports){
+},{"./angular-sanitize":89}],91:[function(require,module,exports){
 /*!
  * angular-translate - v2.13.1 - 2016-12-06
  * 
@@ -18269,7 +18489,7 @@ return 'pascalprecht.translate';
 
 }));
 
-},{}],91:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 /*!
  * angular-translate - v2.13.1 - 2016-12-06
  * 
@@ -21962,7 +22182,7 @@ return 'pascalprecht.translate';
 
 }));
 
-},{}],92:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 /**
  * @license AngularJS v1.6.1
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -54945,11 +55165,11 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],93:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":92}],94:[function(require,module,exports){
+},{"./angular":93}],95:[function(require,module,exports){
 var asn1 = exports;
 
 asn1.bignum = require('bn.js');
@@ -54960,7 +55180,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":95,"./asn1/base":97,"./asn1/constants":101,"./asn1/decoders":103,"./asn1/encoders":106,"bn.js":114}],95:[function(require,module,exports){
+},{"./asn1/api":96,"./asn1/base":98,"./asn1/constants":102,"./asn1/decoders":104,"./asn1/encoders":107,"bn.js":115}],96:[function(require,module,exports){
 var asn1 = require('../asn1');
 var inherits = require('inherits');
 
@@ -55023,7 +55243,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":94,"inherits":198,"vm":259}],96:[function(require,module,exports){
+},{"../asn1":95,"inherits":199,"vm":260}],97:[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -55141,7 +55361,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":97,"buffer":145,"inherits":198}],97:[function(require,module,exports){
+},{"../base":98,"buffer":146,"inherits":199}],98:[function(require,module,exports){
 var base = exports;
 
 base.Reporter = require('./reporter').Reporter;
@@ -55149,7 +55369,7 @@ base.DecoderBuffer = require('./buffer').DecoderBuffer;
 base.EncoderBuffer = require('./buffer').EncoderBuffer;
 base.Node = require('./node');
 
-},{"./buffer":96,"./node":98,"./reporter":99}],98:[function(require,module,exports){
+},{"./buffer":97,"./node":99,"./reporter":100}],99:[function(require,module,exports){
 var Reporter = require('../base').Reporter;
 var EncoderBuffer = require('../base').EncoderBuffer;
 var DecoderBuffer = require('../base').DecoderBuffer;
@@ -55785,7 +56005,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
   return /^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str);
 };
 
-},{"../base":97,"minimalistic-assert":204}],99:[function(require,module,exports){
+},{"../base":98,"minimalistic-assert":205}],100:[function(require,module,exports){
 var inherits = require('inherits');
 
 function Reporter(options) {
@@ -55908,7 +56128,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":198}],100:[function(require,module,exports){
+},{"inherits":199}],101:[function(require,module,exports){
 var constants = require('../constants');
 
 exports.tagClass = {
@@ -55952,7 +56172,7 @@ exports.tag = {
 };
 exports.tagByName = constants._reverse(exports.tag);
 
-},{"../constants":101}],101:[function(require,module,exports){
+},{"../constants":102}],102:[function(require,module,exports){
 var constants = exports;
 
 // Helper
@@ -55973,7 +56193,7 @@ constants._reverse = function reverse(map) {
 
 constants.der = require('./der');
 
-},{"./der":100}],102:[function(require,module,exports){
+},{"./der":101}],103:[function(require,module,exports){
 var inherits = require('inherits');
 
 var asn1 = require('../../asn1');
@@ -56299,13 +56519,13 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":94,"inherits":198}],103:[function(require,module,exports){
+},{"../../asn1":95,"inherits":199}],104:[function(require,module,exports){
 var decoders = exports;
 
 decoders.der = require('./der');
 decoders.pem = require('./pem');
 
-},{"./der":102,"./pem":104}],104:[function(require,module,exports){
+},{"./der":103,"./pem":105}],105:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -56356,7 +56576,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"./der":102,"buffer":145,"inherits":198}],105:[function(require,module,exports){
+},{"./der":103,"buffer":146,"inherits":199}],106:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -56653,13 +56873,13 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":94,"buffer":145,"inherits":198}],106:[function(require,module,exports){
+},{"../../asn1":95,"buffer":146,"inherits":199}],107:[function(require,module,exports){
 var encoders = exports;
 
 encoders.der = require('./der');
 encoders.pem = require('./pem');
 
-},{"./der":105,"./pem":107}],107:[function(require,module,exports){
+},{"./der":106,"./pem":108}],108:[function(require,module,exports){
 var inherits = require('inherits');
 
 var DEREncoder = require('./der');
@@ -56682,7 +56902,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"./der":105,"inherits":198}],108:[function(require,module,exports){
+},{"./der":106,"inherits":199}],109:[function(require,module,exports){
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
 //
 // THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -57043,7 +57263,7 @@ var objectKeys = Object.keys || function (obj) {
   return keys;
 };
 
-},{"util/":256}],109:[function(require,module,exports){
+},{"util/":257}],110:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -57159,7 +57379,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],110:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 /*! bignumber.js v3.0.1 https://github.com/MikeMcl/bignumber.js/LICENCE */
 
 ;(function (globalObj) {
@@ -59904,7 +60124,7 @@ function fromByteArray (uint8) {
     }
 })(this);
 
-},{}],111:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 (function (Buffer){
 var assert = require('assert')
 var createHash = require('create-hash')
@@ -60037,7 +60257,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./wordlists/en.json":112,"assert":108,"buffer":145,"create-hash":150,"pbkdf2":209,"randombytes":219,"unorm":251}],112:[function(require,module,exports){
+},{"./wordlists/en.json":113,"assert":109,"buffer":146,"create-hash":151,"pbkdf2":210,"randombytes":220,"unorm":252}],113:[function(require,module,exports){
 module.exports=[
   "abandon",
   "ability",
@@ -62089,7 +62309,7 @@ module.exports=[
   "zoo"
 ]
 
-},{}],113:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 (function (Buffer){
 // Reference https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 // Format: 0x30 [total-length] 0x02 [R-length] [R] 0x02 [S-length] [S]
@@ -62204,7 +62424,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],114:[function(require,module,exports){
+},{"buffer":146}],115:[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -65633,7 +65853,7 @@ module.exports = {
   };
 })(typeof module === 'undefined' || module, this);
 
-},{}],115:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -65692,9 +65912,9 @@ if (typeof window === 'object') {
   }
 }
 
-},{"crypto":116}],116:[function(require,module,exports){
+},{"crypto":117}],117:[function(require,module,exports){
 
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 (function (Buffer){
 // based on the aes implimentation in triple sec
 // https://github.com/keybase/triplesec
@@ -65875,7 +66095,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],118:[function(require,module,exports){
+},{"buffer":146}],119:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -65976,7 +66196,7 @@ function xorTest (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":117,"./ghash":122,"buffer":145,"buffer-xor":144,"cipher-base":146,"inherits":198}],119:[function(require,module,exports){
+},{"./aes":118,"./ghash":123,"buffer":146,"buffer-xor":145,"cipher-base":147,"inherits":199}],120:[function(require,module,exports){
 var ciphers = require('./encrypter')
 exports.createCipher = exports.Cipher = ciphers.createCipher
 exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv
@@ -65989,7 +66209,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"./decrypter":120,"./encrypter":121,"./modes":123}],120:[function(require,module,exports){
+},{"./decrypter":121,"./encrypter":122,"./modes":124}],121:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -66130,7 +66350,7 @@ exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":117,"./authCipher":118,"./modes":123,"./modes/cbc":124,"./modes/cfb":125,"./modes/cfb1":126,"./modes/cfb8":127,"./modes/ctr":128,"./modes/ecb":129,"./modes/ofb":130,"./streamCipher":131,"buffer":145,"cipher-base":146,"evp_bytestokey":188,"inherits":198}],121:[function(require,module,exports){
+},{"./aes":118,"./authCipher":119,"./modes":124,"./modes/cbc":125,"./modes/cfb":126,"./modes/cfb1":127,"./modes/cfb8":128,"./modes/ctr":129,"./modes/ecb":130,"./modes/ofb":131,"./streamCipher":132,"buffer":146,"cipher-base":147,"evp_bytestokey":189,"inherits":199}],122:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -66256,7 +66476,7 @@ exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":117,"./authCipher":118,"./modes":123,"./modes/cbc":124,"./modes/cfb":125,"./modes/cfb1":126,"./modes/cfb8":127,"./modes/ctr":128,"./modes/ecb":129,"./modes/ofb":130,"./streamCipher":131,"buffer":145,"cipher-base":146,"evp_bytestokey":188,"inherits":198}],122:[function(require,module,exports){
+},{"./aes":118,"./authCipher":119,"./modes":124,"./modes/cbc":125,"./modes/cfb":126,"./modes/cfb1":127,"./modes/cfb8":128,"./modes/ctr":129,"./modes/ecb":130,"./modes/ofb":131,"./streamCipher":132,"buffer":146,"cipher-base":147,"evp_bytestokey":189,"inherits":199}],123:[function(require,module,exports){
 (function (Buffer){
 var zeros = new Buffer(16)
 zeros.fill(0)
@@ -66358,7 +66578,7 @@ function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],123:[function(require,module,exports){
+},{"buffer":146}],124:[function(require,module,exports){
 exports['aes-128-ecb'] = {
   cipher: 'AES',
   key: 128,
@@ -66531,7 +66751,7 @@ exports['aes-256-gcm'] = {
   type: 'auth'
 }
 
-},{}],124:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 var xor = require('buffer-xor')
 
 exports.encrypt = function (self, block) {
@@ -66550,7 +66770,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":144}],125:[function(require,module,exports){
+},{"buffer-xor":145}],126:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -66585,7 +66805,7 @@ function encryptStart (self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145,"buffer-xor":144}],126:[function(require,module,exports){
+},{"buffer":146,"buffer-xor":145}],127:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -66623,7 +66843,7 @@ function shiftIn (buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],127:[function(require,module,exports){
+},{"buffer":146}],128:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)
@@ -66642,7 +66862,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],128:[function(require,module,exports){
+},{"buffer":146}],129:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -66677,7 +66897,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145,"buffer-xor":144}],129:[function(require,module,exports){
+},{"buffer":146,"buffer-xor":145}],130:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -66685,7 +66905,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block)
 }
 
-},{}],130:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -66705,7 +66925,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145,"buffer-xor":144}],131:[function(require,module,exports){
+},{"buffer":146,"buffer-xor":145}],132:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -66734,7 +66954,7 @@ StreamCipher.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":117,"buffer":145,"cipher-base":146,"inherits":198}],132:[function(require,module,exports){
+},{"./aes":118,"buffer":146,"cipher-base":147,"inherits":199}],133:[function(require,module,exports){
 var ebtk = require('evp_bytestokey')
 var aes = require('browserify-aes/browser')
 var DES = require('browserify-des')
@@ -66809,7 +67029,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"browserify-aes/browser":119,"browserify-aes/modes":123,"browserify-des":133,"browserify-des/modes":134,"evp_bytestokey":188}],133:[function(require,module,exports){
+},{"browserify-aes/browser":120,"browserify-aes/modes":124,"browserify-des":134,"browserify-des/modes":135,"evp_bytestokey":189}],134:[function(require,module,exports){
 (function (Buffer){
 var CipherBase = require('cipher-base')
 var des = require('des.js')
@@ -66856,7 +67076,7 @@ DES.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145,"cipher-base":146,"des.js":155,"inherits":198}],134:[function(require,module,exports){
+},{"buffer":146,"cipher-base":147,"des.js":156,"inherits":199}],135:[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -66882,7 +67102,7 @@ exports['des-ede'] = {
   iv: 0
 }
 
-},{}],135:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 var randomBytes = require('randombytes');
@@ -66926,7 +67146,7 @@ function getr(priv) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":114,"buffer":145,"randombytes":219}],136:[function(require,module,exports){
+},{"bn.js":115,"buffer":146,"randombytes":220}],137:[function(require,module,exports){
 (function (Buffer){
 const Sha3 = require('js-sha3')
 
@@ -66964,7 +67184,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145,"js-sha3":201}],137:[function(require,module,exports){
+},{"buffer":146,"js-sha3":202}],138:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 exports['RSA-SHA224'] = exports.sha224WithRSAEncryption = {
@@ -67040,7 +67260,7 @@ exports['RSA-MD5'] = exports.md5WithRSAEncryption = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],138:[function(require,module,exports){
+},{"buffer":146}],139:[function(require,module,exports){
 (function (Buffer){
 var _algos = require('./algos')
 var createHash = require('create-hash')
@@ -67147,7 +67367,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algos":137,"./sign":140,"./verify":141,"buffer":145,"create-hash":150,"inherits":198,"stream":248}],139:[function(require,module,exports){
+},{"./algos":138,"./sign":141,"./verify":142,"buffer":146,"create-hash":151,"inherits":199,"stream":249}],140:[function(require,module,exports){
 'use strict'
 exports['1.3.132.0.10'] = 'secp256k1'
 
@@ -67161,7 +67381,7 @@ exports['1.3.132.0.34'] = 'p384'
 
 exports['1.3.132.0.35'] = 'p521'
 
-},{}],140:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var createHmac = require('create-hmac')
@@ -67350,7 +67570,7 @@ module.exports.getKey = getKey
 module.exports.makeKey = makeKey
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":139,"bn.js":114,"browserify-rsa":135,"buffer":145,"create-hmac":153,"elliptic":165,"parse-asn1":208}],141:[function(require,module,exports){
+},{"./curves":140,"bn.js":115,"browserify-rsa":136,"buffer":146,"create-hmac":154,"elliptic":166,"parse-asn1":209}],142:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var curves = require('./curves')
@@ -67457,7 +67677,7 @@ function checkValue (b, q) {
 module.exports = verify
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":139,"bn.js":114,"buffer":145,"elliptic":165,"parse-asn1":208}],142:[function(require,module,exports){
+},{"./curves":140,"bn.js":115,"buffer":146,"elliptic":166,"parse-asn1":209}],143:[function(require,module,exports){
 // Base58 encoding/decoding
 // Originally written by Mike Hearn for BitcoinJ
 // Copyright (c) 2011 Google Inc
@@ -67544,7 +67764,7 @@ module.exports = {
   decode: decode
 }
 
-},{}],143:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -67656,7 +67876,7 @@ exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"buffer":145}],144:[function(require,module,exports){
+},{"buffer":146}],145:[function(require,module,exports){
 (function (Buffer){
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)
@@ -67670,7 +67890,7 @@ module.exports = function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],145:[function(require,module,exports){
+},{"buffer":146}],146:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -69463,7 +69683,7 @@ function isnan (val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":109,"ieee754":196,"isarray":200}],146:[function(require,module,exports){
+},{"base64-js":110,"ieee754":197,"isarray":201}],147:[function(require,module,exports){
 (function (Buffer){
 var Transform = require('stream').Transform
 var inherits = require('inherits')
@@ -69557,7 +69777,7 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145,"inherits":198,"stream":248,"string_decoder":250}],147:[function(require,module,exports){
+},{"buffer":146,"inherits":199,"stream":249,"string_decoder":251}],148:[function(require,module,exports){
 (function (Buffer){
 var base58 = require('bs58')
 var createHash = require('create-hash')
@@ -69654,7 +69874,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bs58":142,"buffer":145,"create-hash":150}],148:[function(require,module,exports){
+},{"bs58":143,"buffer":146,"create-hash":151}],149:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -69765,7 +69985,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":199}],149:[function(require,module,exports){
+},{"../../is-buffer/index.js":200}],150:[function(require,module,exports){
 (function (Buffer){
 var elliptic = require('elliptic');
 var BN = require('bn.js');
@@ -69891,7 +70111,7 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":114,"buffer":145,"elliptic":165}],150:[function(require,module,exports){
+},{"bn.js":115,"buffer":146,"elliptic":166}],151:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var inherits = require('inherits')
@@ -69947,7 +70167,7 @@ module.exports = function createHash (alg) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./md5":152,"buffer":145,"cipher-base":146,"inherits":198,"ripemd160":231,"sha.js":241}],151:[function(require,module,exports){
+},{"./md5":153,"buffer":146,"cipher-base":147,"inherits":199,"ripemd160":232,"sha.js":242}],152:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var intSize = 4;
@@ -69984,7 +70204,7 @@ function hash(buf, fn, hashSize, bigEndian) {
 }
 exports.hash = hash;
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],152:[function(require,module,exports){
+},{"buffer":146}],153:[function(require,module,exports){
 'use strict';
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -70141,7 +70361,7 @@ function bit_rol(num, cnt)
 module.exports = function md5(buf) {
   return helpers.hash(buf, core_md5, 16);
 };
-},{"./helpers":151}],153:[function(require,module,exports){
+},{"./helpers":152}],154:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var createHash = require('create-hash/browser');
@@ -70213,7 +70433,7 @@ module.exports = function createHmac(alg, key) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145,"create-hash/browser":150,"inherits":198,"stream":248}],154:[function(require,module,exports){
+},{"buffer":146,"create-hash/browser":151,"inherits":199,"stream":249}],155:[function(require,module,exports){
 'use strict'
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -70292,7 +70512,7 @@ var publicEncrypt = require('public-encrypt')
   }
 })
 
-},{"browserify-cipher":132,"browserify-sign":138,"browserify-sign/algos":137,"create-ecdh":149,"create-hash":150,"create-hmac":153,"diffie-hellman":161,"pbkdf2":209,"public-encrypt":213,"randombytes":219}],155:[function(require,module,exports){
+},{"browserify-cipher":133,"browserify-sign":139,"browserify-sign/algos":138,"create-ecdh":150,"create-hash":151,"create-hmac":154,"diffie-hellman":162,"pbkdf2":210,"public-encrypt":214,"randombytes":220}],156:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -70301,7 +70521,7 @@ exports.DES = require('./des/des');
 exports.CBC = require('./des/cbc');
 exports.EDE = require('./des/ede');
 
-},{"./des/cbc":156,"./des/cipher":157,"./des/des":158,"./des/ede":159,"./des/utils":160}],156:[function(require,module,exports){
+},{"./des/cbc":157,"./des/cipher":158,"./des/des":159,"./des/ede":160,"./des/utils":161}],157:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -70368,7 +70588,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
   }
 };
 
-},{"inherits":198,"minimalistic-assert":204}],157:[function(require,module,exports){
+},{"inherits":199,"minimalistic-assert":205}],158:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -70511,7 +70731,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
   return this._unpad(out);
 };
 
-},{"minimalistic-assert":204}],158:[function(require,module,exports){
+},{"minimalistic-assert":205}],159:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -70656,7 +70876,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
   utils.rip(l, r, out, off);
 };
 
-},{"../des":155,"inherits":198,"minimalistic-assert":204}],159:[function(require,module,exports){
+},{"../des":156,"inherits":199,"minimalistic-assert":205}],160:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -70713,7 +70933,7 @@ EDE.prototype._update = function _update(inp, inOff, out, outOff) {
 EDE.prototype._pad = DES.prototype._pad;
 EDE.prototype._unpad = DES.prototype._unpad;
 
-},{"../des":155,"inherits":198,"minimalistic-assert":204}],160:[function(require,module,exports){
+},{"../des":156,"inherits":199,"minimalistic-assert":205}],161:[function(require,module,exports){
 'use strict';
 
 exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -70971,7 +71191,7 @@ exports.padSplit = function padSplit(num, size, group) {
   return out.join(' ');
 };
 
-},{}],161:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 (function (Buffer){
 var generatePrime = require('./lib/generatePrime')
 var primes = require('./lib/primes.json')
@@ -71017,7 +71237,7 @@ exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffi
 exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/dh":162,"./lib/generatePrime":163,"./lib/primes.json":164,"buffer":145}],162:[function(require,module,exports){
+},{"./lib/dh":163,"./lib/generatePrime":164,"./lib/primes.json":165,"buffer":146}],163:[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -71185,7 +71405,7 @@ function formatReturnValue(bn, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":163,"bn.js":114,"buffer":145,"miller-rabin":203,"randombytes":219}],163:[function(require,module,exports){
+},{"./generatePrime":164,"bn.js":115,"buffer":146,"miller-rabin":204,"randombytes":220}],164:[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -71292,7 +71512,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":114,"miller-rabin":203,"randombytes":219}],164:[function(require,module,exports){
+},{"bn.js":115,"miller-rabin":204,"randombytes":220}],165:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -71327,7 +71547,7 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],165:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -71343,7 +71563,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":181,"./elliptic/curve":168,"./elliptic/curves":171,"./elliptic/ec":172,"./elliptic/eddsa":175,"./elliptic/hmac-drbg":178,"./elliptic/utils":180,"brorand":115}],166:[function(require,module,exports){
+},{"../package.json":182,"./elliptic/curve":169,"./elliptic/curves":172,"./elliptic/ec":173,"./elliptic/eddsa":176,"./elliptic/hmac-drbg":179,"./elliptic/utils":181,"brorand":116}],167:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -71720,7 +71940,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":165,"bn.js":114}],167:[function(require,module,exports){
+},{"../../elliptic":166,"bn.js":115}],168:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -72155,7 +72375,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":165,"../curve":168,"bn.js":114,"inherits":198}],168:[function(require,module,exports){
+},{"../../elliptic":166,"../curve":169,"bn.js":115,"inherits":199}],169:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -72165,7 +72385,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":166,"./edwards":167,"./mont":169,"./short":170}],169:[function(require,module,exports){
+},{"./base":167,"./edwards":168,"./mont":170,"./short":171}],170:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -72347,7 +72567,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":165,"../curve":168,"bn.js":114,"inherits":198}],170:[function(require,module,exports){
+},{"../../elliptic":166,"../curve":169,"bn.js":115,"inherits":199}],171:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -73287,7 +73507,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":165,"../curve":168,"bn.js":114,"inherits":198}],171:[function(require,module,exports){
+},{"../../elliptic":166,"../curve":169,"bn.js":115,"inherits":199}],172:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -73494,7 +73714,7 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"../elliptic":165,"./precomputed/secp256k1":179,"hash.js":189}],172:[function(require,module,exports){
+},{"../elliptic":166,"./precomputed/secp256k1":180,"hash.js":190}],173:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -73733,7 +73953,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":165,"./key":173,"./signature":174,"bn.js":114}],173:[function(require,module,exports){
+},{"../../elliptic":166,"./key":174,"./signature":175,"bn.js":115}],174:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -73842,7 +74062,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"bn.js":114}],174:[function(require,module,exports){
+},{"bn.js":115}],175:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -73979,7 +74199,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":165,"bn.js":114}],175:[function(require,module,exports){
+},{"../../elliptic":166,"bn.js":115}],176:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -74099,7 +74319,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../../elliptic":165,"./key":176,"./signature":177,"hash.js":189}],176:[function(require,module,exports){
+},{"../../elliptic":166,"./key":177,"./signature":178,"hash.js":190}],177:[function(require,module,exports){
 'use strict';
 
 var elliptic = require('../../elliptic');
@@ -74197,7 +74417,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../../elliptic":165}],177:[function(require,module,exports){
+},{"../../elliptic":166}],178:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -74265,7 +74485,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":165,"bn.js":114}],178:[function(require,module,exports){
+},{"../../elliptic":166,"bn.js":115}],179:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -74381,7 +74601,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"../elliptic":165,"hash.js":189}],179:[function(require,module,exports){
+},{"../elliptic":166,"hash.js":190}],180:[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -75163,7 +75383,7 @@ module.exports = {
   }
 };
 
-},{}],180:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -75337,7 +75557,7 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":114}],181:[function(require,module,exports){
+},{"bn.js":115}],182:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -75458,7 +75678,7 @@ module.exports={
   "version": "6.3.2"
 }
 
-},{}],182:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 module.exports={
   "genesisGasLimit": {
     "v": 5000,
@@ -75691,10 +75911,10 @@ module.exports={
   }
 }
 
-},{}],183:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 module.exports = require('./params.json')
 
-},{"./params.json":182}],184:[function(require,module,exports){
+},{"./params.json":183}],185:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 const ethUtil = require('ethereumjs-util')
@@ -75973,7 +76193,7 @@ module.exports = class Transaction {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145,"ethereum-common/params":183,"ethereumjs-util":185}],185:[function(require,module,exports){
+},{"buffer":146,"ethereum-common/params":184,"ethereumjs-util":186}],186:[function(require,module,exports){
 (function (Buffer){
 const SHA3 = require('keccakjs')
 const secp256k1 = require('secp256k1')
@@ -76682,10 +76902,10 @@ exports.defineProperties = function (self, fields, data) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":108,"bn.js":114,"buffer":145,"create-hash":150,"keccakjs":186,"rlp":232,"secp256k1":234}],186:[function(require,module,exports){
+},{"assert":109,"bn.js":115,"buffer":146,"create-hash":151,"keccakjs":187,"rlp":233,"secp256k1":235}],187:[function(require,module,exports){
 module.exports = require('browserify-sha3').SHA3Hash
 
-},{"browserify-sha3":136}],187:[function(require,module,exports){
+},{"browserify-sha3":137}],188:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -76989,7 +77209,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],188:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 (function (Buffer){
 var md5 = require('create-hash/md5')
 module.exports = EVP_BytesToKey
@@ -77061,7 +77281,7 @@ function EVP_BytesToKey (password, salt, keyLen, ivLen) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145,"create-hash/md5":152}],189:[function(require,module,exports){
+},{"buffer":146,"create-hash/md5":153}],190:[function(require,module,exports){
 var hash = exports;
 
 hash.utils = require('./hash/utils');
@@ -77078,7 +77298,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":190,"./hash/hmac":191,"./hash/ripemd":192,"./hash/sha":193,"./hash/utils":194}],190:[function(require,module,exports){
+},{"./hash/common":191,"./hash/hmac":192,"./hash/ripemd":193,"./hash/sha":194,"./hash/utils":195}],191:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -77171,7 +77391,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"../hash":189}],191:[function(require,module,exports){
+},{"../hash":190}],192:[function(require,module,exports){
 var hmac = exports;
 
 var hash = require('../hash');
@@ -77221,7 +77441,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"../hash":189}],192:[function(require,module,exports){
+},{"../hash":190}],193:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 
@@ -77367,7 +77587,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"../hash":189}],193:[function(require,module,exports){
+},{"../hash":190}],194:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -77933,7 +78153,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../hash":189}],194:[function(require,module,exports){
+},{"../hash":190}],195:[function(require,module,exports){
 var utils = exports;
 var inherits = require('inherits');
 
@@ -78192,7 +78412,7 @@ function shr64_lo(ah, al, num) {
 };
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":198}],195:[function(require,module,exports){
+},{"inherits":199}],196:[function(require,module,exports){
 (function (Buffer){
 var assert = require('assert')
 var crypto = require('crypto')
@@ -78423,7 +78643,7 @@ HDKey.HARDENED_OFFSET = HARDENED_OFFSET
 module.exports = HDKey
 
 }).call(this,require("buffer").Buffer)
-},{"assert":108,"buffer":145,"coinstring":147,"crypto":154,"secp256k1":234}],196:[function(require,module,exports){
+},{"assert":109,"buffer":146,"coinstring":148,"crypto":155,"secp256k1":235}],197:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -78509,7 +78729,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],197:[function(require,module,exports){
+},{}],198:[function(require,module,exports){
 
 var indexOf = [].indexOf;
 
@@ -78520,7 +78740,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],198:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -78545,7 +78765,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],199:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -78568,14 +78788,14 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],200:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],201:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 (function (global){
 /*
  * js-sha3 v0.3.1
@@ -79011,7 +79231,7 @@ module.exports = Array.isArray || function (arr) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],202:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 (function (global){
 /**
  * marked - a markdown parser
@@ -80301,7 +80521,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
 }());
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],203:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -80416,7 +80636,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":114,"brorand":115}],204:[function(require,module,exports){
+},{"bn.js":115,"brorand":116}],205:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -80429,7 +80649,7 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],205:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -80443,7 +80663,7 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],206:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
 // Fedor, you are amazing.
 
@@ -80562,7 +80782,7 @@ exports.signature = asn1.define('signature', function () {
   )
 })
 
-},{"asn1.js":94}],207:[function(require,module,exports){
+},{"asn1.js":95}],208:[function(require,module,exports){
 (function (Buffer){
 // adapted from https://github.com/apatil/pemstrip
 var findProc = /Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\r?\n\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n/m
@@ -80596,7 +80816,7 @@ module.exports = function (okey, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"browserify-aes":119,"buffer":145,"evp_bytestokey":188}],208:[function(require,module,exports){
+},{"browserify-aes":120,"buffer":146,"evp_bytestokey":189}],209:[function(require,module,exports){
 (function (Buffer){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
@@ -80701,7 +80921,7 @@ function decrypt (data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":205,"./asn1":206,"./fixProc":207,"browserify-aes":119,"buffer":145,"pbkdf2":209}],209:[function(require,module,exports){
+},{"./aesid.json":206,"./asn1":207,"./fixProc":208,"browserify-aes":120,"buffer":146,"pbkdf2":210}],210:[function(require,module,exports){
 (function (process,Buffer){
 var createHmac = require('create-hmac')
 var checkParameters = require('./precondition')
@@ -80773,7 +80993,7 @@ exports.pbkdf2Sync = function (password, salt, iterations, keylen, digest) {
 }
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"./precondition":210,"_process":212,"buffer":145,"create-hmac":153}],210:[function(require,module,exports){
+},{"./precondition":211,"_process":213,"buffer":146,"create-hmac":154}],211:[function(require,module,exports){
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
 module.exports = function (iterations, keylen) {
   if (typeof iterations !== 'number') {
@@ -80793,7 +81013,7 @@ module.exports = function (iterations, keylen) {
   }
 }
 
-},{}],211:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -80840,7 +81060,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 }).call(this,require('_process'))
-},{"_process":212}],212:[function(require,module,exports){
+},{"_process":213}],213:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -81022,7 +81242,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],213:[function(require,module,exports){
+},{}],214:[function(require,module,exports){
 exports.publicEncrypt = require('./publicEncrypt');
 exports.privateDecrypt = require('./privateDecrypt');
 
@@ -81033,7 +81253,7 @@ exports.privateEncrypt = function privateEncrypt(key, buf) {
 exports.publicDecrypt = function publicDecrypt(key, buf) {
   return exports.privateDecrypt(key, buf, true);
 };
-},{"./privateDecrypt":215,"./publicEncrypt":216}],214:[function(require,module,exports){
+},{"./privateDecrypt":216,"./publicEncrypt":217}],215:[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash');
 module.exports = function (seed, len) {
@@ -81052,7 +81272,7 @@ function i2ops(c) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"buffer":145,"create-hash":150}],215:[function(require,module,exports){
+},{"buffer":146,"create-hash":151}],216:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var mgf = require('./mgf');
@@ -81163,7 +81383,7 @@ function compare(a, b){
   return dif;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":214,"./withPublic":217,"./xor":218,"bn.js":114,"browserify-rsa":135,"buffer":145,"create-hash":150,"parse-asn1":208}],216:[function(require,module,exports){
+},{"./mgf":215,"./withPublic":218,"./xor":219,"bn.js":115,"browserify-rsa":136,"buffer":146,"create-hash":151,"parse-asn1":209}],217:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var randomBytes = require('randombytes');
@@ -81261,7 +81481,7 @@ function nonZero(len, crypto) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":214,"./withPublic":217,"./xor":218,"bn.js":114,"browserify-rsa":135,"buffer":145,"create-hash":150,"parse-asn1":208,"randombytes":219}],217:[function(require,module,exports){
+},{"./mgf":215,"./withPublic":218,"./xor":219,"bn.js":115,"browserify-rsa":136,"buffer":146,"create-hash":151,"parse-asn1":209,"randombytes":220}],218:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 function withPublic(paddedMsg, key) {
@@ -81274,7 +81494,7 @@ function withPublic(paddedMsg, key) {
 
 module.exports = withPublic;
 }).call(this,require("buffer").Buffer)
-},{"bn.js":114,"buffer":145}],218:[function(require,module,exports){
+},{"bn.js":115,"buffer":146}],219:[function(require,module,exports){
 module.exports = function xor(a, b) {
   var len = a.length;
   var i = -1;
@@ -81283,7 +81503,7 @@ module.exports = function xor(a, b) {
   }
   return a
 };
-},{}],219:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 (function (process,global,Buffer){
 'use strict'
 
@@ -81323,10 +81543,10 @@ function randomBytes (size, cb) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"_process":212,"buffer":145}],220:[function(require,module,exports){
+},{"_process":213,"buffer":146}],221:[function(require,module,exports){
 module.exports = require("./lib/_stream_duplex.js")
 
-},{"./lib/_stream_duplex.js":221}],221:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":222}],222:[function(require,module,exports){
 // a duplex stream is just a stream that is both readable and writable.
 // Since JS doesn't have multiple prototypal inheritance, this class
 // prototypally inherits from Readable, and then parasitically from
@@ -81402,7 +81622,7 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
-},{"./_stream_readable":223,"./_stream_writable":225,"core-util-is":148,"inherits":198,"process-nextick-args":211}],222:[function(require,module,exports){
+},{"./_stream_readable":224,"./_stream_writable":226,"core-util-is":149,"inherits":199,"process-nextick-args":212}],223:[function(require,module,exports){
 // a passthrough stream.
 // basically just the most minimal sort of Transform stream.
 // Every written chunk gets output as-is.
@@ -81429,7 +81649,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":224,"core-util-is":148,"inherits":198}],223:[function(require,module,exports){
+},{"./_stream_transform":225,"core-util-is":149,"inherits":199}],224:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -82373,7 +82593,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":221,"./internal/streams/BufferList":226,"_process":212,"buffer":145,"buffer-shims":143,"core-util-is":148,"events":187,"inherits":198,"isarray":200,"process-nextick-args":211,"string_decoder/":250,"util":116}],224:[function(require,module,exports){
+},{"./_stream_duplex":222,"./internal/streams/BufferList":227,"_process":213,"buffer":146,"buffer-shims":144,"core-util-is":149,"events":188,"inherits":199,"isarray":201,"process-nextick-args":212,"string_decoder/":251,"util":117}],225:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -82556,7 +82776,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":221,"core-util-is":148,"inherits":198}],225:[function(require,module,exports){
+},{"./_stream_duplex":222,"core-util-is":149,"inherits":199}],226:[function(require,module,exports){
 (function (process){
 // A bit simpler than readable streams.
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -83113,7 +83333,7 @@ function CorkedRequest(state) {
   };
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":221,"_process":212,"buffer":145,"buffer-shims":143,"core-util-is":148,"events":187,"inherits":198,"process-nextick-args":211,"util-deprecate":253}],226:[function(require,module,exports){
+},{"./_stream_duplex":222,"_process":213,"buffer":146,"buffer-shims":144,"core-util-is":149,"events":188,"inherits":199,"process-nextick-args":212,"util-deprecate":254}],227:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('buffer').Buffer;
@@ -83178,10 +83398,10 @@ BufferList.prototype.concat = function (n) {
   }
   return ret;
 };
-},{"buffer":145,"buffer-shims":143}],227:[function(require,module,exports){
+},{"buffer":146,"buffer-shims":144}],228:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
-},{"./lib/_stream_passthrough.js":222}],228:[function(require,module,exports){
+},{"./lib/_stream_passthrough.js":223}],229:[function(require,module,exports){
 (function (process){
 var Stream = (function (){
   try {
@@ -83201,13 +83421,13 @@ if (!process.browser && process.env.READABLE_STREAM === 'disable' && Stream) {
 }
 
 }).call(this,require('_process'))
-},{"./lib/_stream_duplex.js":221,"./lib/_stream_passthrough.js":222,"./lib/_stream_readable.js":223,"./lib/_stream_transform.js":224,"./lib/_stream_writable.js":225,"_process":212}],229:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":222,"./lib/_stream_passthrough.js":223,"./lib/_stream_readable.js":224,"./lib/_stream_transform.js":225,"./lib/_stream_writable.js":226,"_process":213}],230:[function(require,module,exports){
 module.exports = require("./lib/_stream_transform.js")
 
-},{"./lib/_stream_transform.js":224}],230:[function(require,module,exports){
+},{"./lib/_stream_transform.js":225}],231:[function(require,module,exports){
 module.exports = require("./lib/_stream_writable.js")
 
-},{"./lib/_stream_writable.js":225}],231:[function(require,module,exports){
+},{"./lib/_stream_writable.js":226}],232:[function(require,module,exports){
 (function (Buffer){
 /*
 CryptoJS v3.1.2
@@ -83421,7 +83641,7 @@ function ripemd160 (message) {
 module.exports = ripemd160
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],232:[function(require,module,exports){
+},{"buffer":146}],233:[function(require,module,exports){
 (function (Buffer){
 const assert = require('assert')
 /**
@@ -83654,7 +83874,7 @@ function toBuffer (v) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":108,"buffer":145}],233:[function(require,module,exports){
+},{"assert":109,"buffer":146}],234:[function(require,module,exports){
 (function (Buffer){
 var crypto = require('crypto')
 /* eslint-disable camelcase */
@@ -83838,11 +84058,11 @@ function arraycopy (src, srcPos, dest, destPos, length) {
 module.exports = scrypt
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145,"crypto":154}],234:[function(require,module,exports){
+},{"buffer":146,"crypto":155}],235:[function(require,module,exports){
 'use strict'
 module.exports = require('./lib')(require('./lib/elliptic'))
 
-},{"./lib":238,"./lib/elliptic":237}],235:[function(require,module,exports){
+},{"./lib":239,"./lib/elliptic":238}],236:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var toString = Object.prototype.toString
@@ -83890,7 +84110,7 @@ exports.isNumberInInterval = function (number, x, y, message) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":199}],236:[function(require,module,exports){
+},{"../../is-buffer/index.js":200}],237:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var bip66 = require('bip66')
@@ -84091,7 +84311,7 @@ exports.signatureImportLax = function (sig) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bip66":113,"buffer":145}],237:[function(require,module,exports){
+},{"bip66":114,"buffer":146}],238:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var createHash = require('create-hash')
@@ -84342,7 +84562,7 @@ exports.ecdhUnsafe = function (publicKey, privateKey, compressed) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../messages.json":239,"bn.js":114,"buffer":145,"create-hash":150,"elliptic":165}],238:[function(require,module,exports){
+},{"../messages.json":240,"bn.js":115,"buffer":146,"create-hash":151,"elliptic":166}],239:[function(require,module,exports){
 'use strict'
 var assert = require('./assert')
 var der = require('./der')
@@ -84575,7 +84795,7 @@ module.exports = function (secp256k1) {
   }
 }
 
-},{"./assert":235,"./der":236,"./messages.json":239}],239:[function(require,module,exports){
+},{"./assert":236,"./der":237,"./messages.json":240}],240:[function(require,module,exports){
 module.exports={
   "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
   "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -84613,7 +84833,7 @@ module.exports={
   "TWEAK_LENGTH_INVALID": "tweak length is invalid"
 }
 
-},{}],240:[function(require,module,exports){
+},{}],241:[function(require,module,exports){
 (function (Buffer){
 // prototype class for hash functions
 function Hash (blockSize, finalSize) {
@@ -84686,7 +84906,7 @@ Hash.prototype._update = function () {
 module.exports = Hash
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":145}],241:[function(require,module,exports){
+},{"buffer":146}],242:[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -84703,7 +84923,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":242,"./sha1":243,"./sha224":244,"./sha256":245,"./sha384":246,"./sha512":247}],242:[function(require,module,exports){
+},{"./sha":243,"./sha1":244,"./sha224":245,"./sha256":246,"./sha384":247,"./sha512":248}],243:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -84800,7 +85020,7 @@ Sha.prototype._hash = function () {
 module.exports = Sha
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":240,"buffer":145,"inherits":198}],243:[function(require,module,exports){
+},{"./hash":241,"buffer":146,"inherits":199}],244:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -84902,7 +85122,7 @@ Sha1.prototype._hash = function () {
 module.exports = Sha1
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":240,"buffer":145,"inherits":198}],244:[function(require,module,exports){
+},{"./hash":241,"buffer":146,"inherits":199}],245:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -84958,7 +85178,7 @@ Sha224.prototype._hash = function () {
 module.exports = Sha224
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":240,"./sha256":245,"buffer":145,"inherits":198}],245:[function(require,module,exports){
+},{"./hash":241,"./sha256":246,"buffer":146,"inherits":199}],246:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -85096,7 +85316,7 @@ Sha256.prototype._hash = function () {
 module.exports = Sha256
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":240,"buffer":145,"inherits":198}],246:[function(require,module,exports){
+},{"./hash":241,"buffer":146,"inherits":199}],247:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
@@ -85156,7 +85376,7 @@ Sha384.prototype._hash = function () {
 module.exports = Sha384
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":240,"./sha512":247,"buffer":145,"inherits":198}],247:[function(require,module,exports){
+},{"./hash":241,"./sha512":248,"buffer":146,"inherits":199}],248:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var Hash = require('./hash')
@@ -85419,7 +85639,7 @@ Sha512.prototype._hash = function () {
 module.exports = Sha512
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":240,"buffer":145,"inherits":198}],248:[function(require,module,exports){
+},{"./hash":241,"buffer":146,"inherits":199}],249:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -85548,7 +85768,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":187,"inherits":198,"readable-stream/duplex.js":220,"readable-stream/passthrough.js":227,"readable-stream/readable.js":228,"readable-stream/transform.js":229,"readable-stream/writable.js":230}],249:[function(require,module,exports){
+},{"events":188,"inherits":199,"readable-stream/duplex.js":221,"readable-stream/passthrough.js":228,"readable-stream/readable.js":229,"readable-stream/transform.js":230,"readable-stream/writable.js":231}],250:[function(require,module,exports){
 // Generated by CoffeeScript 1.8.0
 (function() {
   var ValueError, create, explicitToImplicit, format, implicitToExplicit, lookup, resolve,
@@ -85654,7 +85874,7 @@ Stream.prototype.pipe = function(dest, options) {
 
 }).call(this);
 
-},{}],250:[function(require,module,exports){
+},{}],251:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -85877,7 +86097,7 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":145}],251:[function(require,module,exports){
+},{"buffer":146}],252:[function(require,module,exports){
 (function (root) {
    "use strict";
 
@@ -86321,7 +86541,7 @@ UChar.udata={
    }
 }(this));
 
-},{}],252:[function(require,module,exports){
+},{}],253:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
 ;(function(root) {
@@ -86569,7 +86789,7 @@ UChar.udata={
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],253:[function(require,module,exports){
+},{}],254:[function(require,module,exports){
 (function (global){
 
 /**
@@ -86640,16 +86860,16 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],254:[function(require,module,exports){
-arguments[4][198][0].apply(exports,arguments)
-},{"dup":198}],255:[function(require,module,exports){
+},{}],255:[function(require,module,exports){
+arguments[4][199][0].apply(exports,arguments)
+},{"dup":199}],256:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],256:[function(require,module,exports){
+},{}],257:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -87239,7 +87459,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":255,"_process":212,"inherits":254}],257:[function(require,module,exports){
+},{"./support/isBuffer":256,"_process":213,"inherits":255}],258:[function(require,module,exports){
 (function (global){
 
 var rng;
@@ -87275,7 +87495,7 @@ module.exports = rng;
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],258:[function(require,module,exports){
+},{}],259:[function(require,module,exports){
 //     uuid.js
 //
 //     Copyright (c) 2010-2012 Robert Kieffer
@@ -87460,7 +87680,7 @@ uuid.unparse = unparse;
 
 module.exports = uuid;
 
-},{"./rng":257}],259:[function(require,module,exports){
+},{"./rng":258}],260:[function(require,module,exports){
 var indexOf = require('indexof');
 
 var Object_keys = function (obj) {
@@ -87600,4 +87820,4 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":197}]},{},[32]);
+},{"indexof":198}]},{},[33]);

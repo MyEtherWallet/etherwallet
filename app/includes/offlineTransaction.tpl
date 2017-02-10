@@ -160,12 +160,7 @@
                 <span translate="SENDModal_Content_2">to address</span>
                 <strong class="mono"> {{tx.to}}. </strong>
               </p>
-              <p>
-                You are sending on the <strong>{{ajaxReq.type}}</strong> chain, which
-                <strong class="text-danger" ng-show="ajaxReq.eip155==false"> susceptible to replay attacks.</strong>
-                <strong ng-show="ajaxReq.eip155==true"> not susceptible to replay attacks.</strong>
-              </p>
-              <p> The node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>. </p>
+              <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>
 
@@ -183,12 +178,7 @@
                 <span translate="SENDModal_Content_2">to address</span>
                 <strong class="mono"> {{tokenTx.to}} </strong>
               </p>
-              <p>
-                You are sending on the <strong>{{ajaxReq.type}}</strong> chain, which
-                <strong class="text-danger" ng-show="!ajaxReq.eip155"> susceptible to replay attacks.</strong>
-                <strong ng-show="ajaxReq.eip155"> not susceptible to replay attacks.</strong>
-              </p>
-              <p> The node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>. </p>
+              <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
               <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>
 

@@ -93,9 +93,21 @@ footer {
 
 // address icenticons
 .address-identicon-container {
-padding-left: 0;
-  padding-top: @space-xl;
-  text-align: center;
+  padding-left: 0;
+  padding-top: @space-md;
+  text-align: left;
+  @media screen and (max-width: @grid-float-breakpoint) {
+    padding-left: @space-lg;
+    padding-right: @space-lg;
+    padding-top: 0;
+  }
+}
+
+.address-identicon-container-right {
+  padding-right: 0;
+  padding-top: @space-md;
+  text-align: right;
+  .addressIdenticon { float: right; }
   @media screen and (max-width: @grid-float-breakpoint) {
     padding-left: @space-lg;
     padding-right: @space-lg;
@@ -357,6 +369,7 @@ h2 a.isActive {
 
 .output.well {
   padding: @space-sm @space;
+  margin-top: -1.5rem;
   p {
     margin: @space-sm 0;
   }
@@ -377,5 +390,110 @@ label small {
 
 .write-boolean label {
   display: block;
+}
+
+
+.decrypt-drtv {
+  padding: 1.5rem .25rem .5rem;
+  label.radio {
+    padding: @space-xs @space-lg ;
+  }
+}
+
+.exchange-tab {
+
+  .btn svg, .btn img {
+    margin-right: @space-sm;
+    margin-left: -@space-xs;
+    vertical-align: middle;
+  }
+
+  .exchange-rates {
+    text-align: center;
+    .form-control.input-sm {
+      width: 16%;
+      min-width: 3.5rem;
+      display: inline-block;
+      margin-right: @space;
+      text-align: right;
+      background-color: transparent;
+      color: white;
+      box-shadow: 0 0 0 white;
+      border: 0 solid white;
+      border-bottom: 2px solid white;
+    }
+    p {
+      margin: 0;
+      span { opacity: .9; }
+    }
+  }
+
+  .exchange-panel {
+    padding-top: @space*5;
+    padding-bottom: @space*5;
+    text-align: center;
+    > * {
+      display: inline-block;
+      margin: @space-xs @space-sm;
+      vertical-align: middle;
+    }
+    .btn {
+      margin: 0;
+    }
+    .form-control {
+      width: 10rem;
+    }
+    .dropdown {
+      margin-left: 0;
+    }
+  }
+
+  .exchange-start {
+    text-align: center;
+    padding-top: @space*5;
+    padding-bottom: @space*5;
+    .exchange-info {
+      text-align: left;
+      margin-bottom: @space*5;
+    }
+  }
+
+  .exchange-order {
+    text-align: left;
+    padding-top: @space*5;
+    padding-bottom: @space*5;
+    h1 {
+      margin-bottom: @space*2;
+    }
+    .qr-code {
+      max-width: 17rem;
+      margin: auto;
+    }
+  }
+
+  .order-info-wrap {
+    margin-bottom: @space*3;
+  }
+
+  .order-info {
+    .clearfix;
+    text-align: center;
+    padding: @space 0;
+    color: white;
+    h3,h4,p {  margin: 0;  }
+    &:nth-child(4n+1) { background-color: #175575;  }
+    &:nth-child(4n+2) { background-color: #1e92ba;  }
+    &:nth-child(4n+3) { background-color: #143955;  }
+    &:nth-child(4n+4) { background-color: #19b3ae;  }
+  }
+
+
+
+}
+
+
+.contracts h4 + .dropdown,
+.contracts h4 + .dropdown .btn {
+  margin-top: 0;
 }
 

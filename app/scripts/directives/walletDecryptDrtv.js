@@ -6,16 +6,16 @@
 var walletDecryptDrtv = function() {
 	return {
         restrict : "E",
-        template : '<article class=\"row\" ng-controller=\'decryptWalletCtrl\'>\r\n \
+        template : '<article class=\"well decrypt-drtv row\" ng-controller=\'decryptWalletCtrl\'>\r\n \
   <!-- Column 1 - Select Type of Key -->\r\n \
   <section class=\"col-md-4 col-sm-6\">\r\n \
     <h4 translate=\"decrypt_Title\"> Select the format of your private key: <\/h4>\r\n \
-    <div class=\"radio\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"fileupload\" \/><span translate=\"x_Keystore2\">Keystore \/ JSON File<\/span><\/label><\/div>\r\n \
-    <div class=\"radio\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"pasteprivkey\" \/><span translate=\"x_PrivKey2\">Private Key<\/span><\/label><\/div>\r\n \
-    <div class=\"radio\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"pastemnemonic\" \/><span translate=\"x_Mnemonic\">Mnemonic Phrase<\/span><\/label><\/div>\r\n \
-    <div class=\"radio\" ng-hide=\"globalService.currentTab==globalService.tabs.signMsg.id\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"ledger\" \/>Ledger Nano S<\/label><\/div>\r\n \
-    <div class=\"radio\" ng-hide=\"globalService.currentTab==globalService.tabs.signMsg.id\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"trezor\" \/>TREZOR<\/label><\/div>\r\n \
-    <div class=\"radio\" ng-hide=\"globalService.currentTab!==globalService.tabs.viewWalletInfo.id\"><label><input type=\"radio\" ng-model=\"walletType\" value=\"addressOnly\" \/><span>View with Address Only<\/span><\/label><\/div>\r\n \
+    <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"fileupload\" \/><span translate=\"x_Keystore2\">Keystore \/ JSON File<\/span><\/label>\r\n \
+    <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"pasteprivkey\" \/><span translate=\"x_PrivKey2\">Private Key<\/span><\/label>\r\n \
+    <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"pastemnemonic\" \/><span translate=\"x_Mnemonic\">Mnemonic Phrase<\/span><\/label>\r\n \
+    <label class=\"radio\" ng-hide=\"globalService.currentTab==globalService.tabs.signMsg.id\"><input type=\"radio\" ng-model=\"walletType\" value=\"ledger\" \/>Ledger Nano S<\/label>\r\n \
+    <label class=\"radio\" ng-hide=\"globalService.currentTab==globalService.tabs.signMsg.id\"><input type=\"radio\" ng-model=\"walletType\" value=\"trezor\" \/>TREZOR<\/label>\r\n \
+    <label class=\"radio\" ng-hide=\"globalService.currentTab!==globalService.tabs.viewWalletInfo.id\"><input type=\"radio\" ng-model=\"walletType\" value=\"addressOnly\" \/><span>View with Address Only<\/span><\/label>\r\n \
   <\/section>\r\n \
   <!-- Column 1 - Select Type of Key -->\r\n \
   <!-- Column 2 - Unlock That Key -->\r\n \
@@ -82,9 +82,7 @@ var walletDecryptDrtv = function() {
   <!-- \/ Column 2 - Unlock That Key -->\r\n \
   <!-- Column 3 -The Unlock Button -->\r\n \
   <section class=\"col-md-4 col-sm-6\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'||walletType==\'trezor\'||showAOnly\">\r\n \
-    <h4 id=\"uploadbtntxt-wallet\" ng-show=\"showFDecrypt\" translate=\"ADD_Label_6\"> Access Your Wallet:<\/h4>\r\n \
-    <h4 id=\"uploadbtntxt-privkey\" ng-show=\"showPDecrypt\" translate=\"ADD_Label_6\"> Access Your Wallet: <\/h4>\r\n \
-    <h4 id=\"uploadbtntxt-mnemonic\" ng-show=\"showMDecrypt\" translate=\"ADD_Label_6\"> Access Your Wallet: <\/h4>\r\n \
+    <h4 id=\"uploadbtntxt-wallet\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt\" translate=\"ADD_Label_6\"> Access Your Wallet:<\/h4>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt\" ng-click=\"decryptWallet()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showAOnly\" ng-click=\"decryptAddressOnly()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"walletType==\'ledger\'\" ng-click=\"scanLedger()\" translate=\"ADD_Ledger_scan\">SCAN<\/a><\/div>\r\n \
@@ -105,8 +103,8 @@ var walletDecryptDrtv = function() {
               <label>\r\n \
                 <input type=\"radio\" id=\"hd_derivation_path_default\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.defaultDPath}}\" ng-change=\"onHDDPathChange()\"\/>\r\n \
                 <span ng-bind=\"HDWallet.defaultDPath\"><\/span>\r\n \
-                <span ng-if=\"!showTrezorSeparate\" translate=\"ADD_Radio_5_PathDefault_withTrezor\">(default with trezor)<\/span>\r\n \
-                <span ng-if=\"showTrezorSeparate\" translate=\"ADD_Radio_5_PathDefault_withoutTrezor\">(default without trezor)<\/span>\r\n \
+                <span ng-if=\"!showTrezorSeparate\" translate=\"ADD_Radio_5_withTrezor\">(default with trezor)<\/span>\r\n \
+                <span ng-if=\"showTrezorSeparate\" translate=\"ADD_Radio_5_woTrezor\">(default without trezor)<\/span>\r\n \
               <\/label>\r\n \
             <\/div>\r\n \
             <div class=\"radio\">\r\n \

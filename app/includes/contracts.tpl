@@ -1,5 +1,5 @@
 <!-- Send Transaction Page -->
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl'  ng-cloak>
+<article class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl'  ng-cloak>
 
   <h1>
     <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
@@ -11,16 +11,27 @@
   <section class="row" ng-show="visibility=='interactView'">
 
     <!-- Input address + JSON Interface -->
+    <div class="col-sm-6">
+      <h4> Contract Address</h4>
+      <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(contract.address) ? 'is-valid' : 'is-invalid'" ng-model="contract.address"/>
+    </div>
+    <div class="col-sm-6">
+      <h4><small> or </small> Select Existing Contract </h4>
+      <div class="dropdown">
+        <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
+          The DAO <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small> <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownExistingContracts">
+          <li><a>DGD Crowdsale (Claim) <br /> <small class="mono">0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A</small></a></li>
+          <li><a class="active">The DAO <br /> <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small></a></li>
+          <li><a>Replay Safe Split <br /> <small class="mono">0xAA1A6e3e6EF20068f7F8d8C835d2D22fd5116444</small></a></li>
+        </ul>
+      </div>
+    </div>
     <div class="col-xs-12">
-      <span class="form-group">
-        <h4> Contract Address</h4>
-        <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(contract.address) ? 'is-valid' : 'is-invalid'" ng-model="contract.address"/>
-        <h4> ABI / JSON Interface </h4>
-        <textarea class="form-control" rows="5" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
-      </span>
-      <span class="form-group">
-        <button class="btn btn-primary" ng-click="initContract()"> ACCESS </button>
-      </span>
+      <h4> ABI / JSON Interface </h4>
+      <textarea class="form-control" rows="5" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
+      <button class="btn btn-primary" ng-click="initContract()"> ACCESS </button>
       <div ng-bind-html="accessContractStatus"></div>
     </div>
     <!-- / Input address + JSON Interface -->
@@ -250,13 +261,9 @@
             </div>
 
             <div class="modal-body larger">
-            <p>
-              You are about to <strong>deploy a contract</strong> on the <strong>{{ajaxReq.type}}</strong> chain, which
-              <strong class="text-danger" ng-show="ajaxReq.eip155==false"> susceptible to replay attacks.</strong>
-              <strong ng-show="ajaxReq.eip155==true"> not susceptible to replay attacks.</strong>
-            </p>
-            <p> The node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>. </p>
-              <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+            <p>You are about to <strong>deploy a contract</strong> on the <strong>{{ajaxReq.type}}</strong> chain.</p>
+            <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
+            <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
             </div>
 
             <div class="modal-footer text-center">

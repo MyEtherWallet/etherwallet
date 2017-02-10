@@ -96,8 +96,8 @@
               <label>
                 <input type="radio" id="hd_derivation_path_default" ng-model="HDWallet.dPath" value="{{HDWallet.defaultDPath}}" ng-change="onHDDPathChange()"/>
                 <span ng-bind="HDWallet.defaultDPath"></span>
-                <span ng-if="!showTrezorSeparate" translate="ADD_Radio_5_PathDefault_withTrezor">(default with trezor)</span>
-                <span ng-if="showTrezorSeparate" translate="ADD_Radio_5_PathDefault_withoutTrezor">(default without trezor)</span>
+                <span ng-if="!showTrezorSeparate" translate="ADD_Radio_5_withTrezor">(default with trezor)</span>
+                <span ng-if="showTrezorSeparate" translate="ADD_Radio_5_woTrezor">(default without trezor)</span>
               </label>
             </div>
             <div class="radio">
