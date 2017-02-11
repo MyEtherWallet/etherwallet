@@ -5,6 +5,9 @@ validator.isValidAddress = function(address) {
         return ethFuncs.validateEtherAddress(address);
     return false;
 }
+validator.isValidBTCAddress = function(address) {
+    return ethUtil.WAValidator.validate(address, 'BTC');
+}
 validator.isPositiveNumber = function(value) {
     return globalFuncs.isNumeric(value) && parseFloat(value) >= 0;
 }

@@ -19,6 +19,7 @@ ethUtil.scrypt               = require('scryptsy');
 ethUtil.uuid                 = require('uuid');
 ethUtil.solidityCoder        = require('./solidity/coder');
 ethUtil.solidityUtils        = require('./solidity/utils');
+ethUtil.WAValidator          = require('wallet-address-validator');
 window.ethUtil               = ethUtil;
 var format                   = require('string-format');
 window.format                = format;
