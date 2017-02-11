@@ -12,16 +12,16 @@
         <div class="col-xs-3"><img class="pull-right" src="images/bity.jpg" width="100" height="38" /></div>
       </div>
         <div class="col-sm-4 order-info">
-          <p><input class="form-control input-sm" value="1" /><span>ETH = 0.01131311 BTC</span></p>
-          <p><input class="form-control input-sm" value="1" /><span>ETH = 2.56986932 REP</span></p>
+          <p><input class="form-control input-sm" ng-model="priceTicker.ETHBTC"/><span>ETH = {{bity.curRate.ETHBTC*priceTicker.ETHBTC | number:5}} BTC</span></p>
+          <p><input class="form-control input-sm" ng-model="priceTicker.ETHREP"/><span>ETH = {{bity.curRate.ETHREP*priceTicker.ETHREP | number:5}} REP</span></p>
         </div>
         <div class="col-sm-4 order-info">
-          <p><input class="form-control input-sm" value="1" /><span>BTC = 226.875435 REP</span></p>
-          <p><input class="form-control input-sm" value="1" /><span>BTC = 87.8653452 ETH</span></p>
+          <p><input class="form-control input-sm" ng-model="priceTicker.BTCREP"/><span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number:5}} REP</span></p>
+          <p><input class="form-control input-sm" ng-model="priceTicker.BTCETH"/><span>BTC = {{bity.curRate.BTCETH*priceTicker.BTCETH | number:5}} ETH</span></p>
         </div>
         <div class="col-sm-4 order-info">
-          <p><input class="form-control input-sm" value="1" /><span>REP = 0.00434002 BTC</span></p>
-          <p><input class="form-control input-sm" value="1" /><span>REP = 0.38061579 ETH</span></p>
+          <p><input class="form-control input-sm" ng-model="priceTicker.REPBTC"/><span>REP = {{bity.curRate.REPBTC*priceTicker.REPBTC | number:5}} BTC</span></p>
+          <p><input class="form-control input-sm" ng-model="priceTicker.REPETH"/><span>REP = {{bity.curRate.REPETH*priceTicker.REPETH | number:5}} ETH</span></p>
         </div>
     </section>
     <!-- / Rates Panel -->
@@ -33,7 +33,7 @@
 
       <h1> I want to exchange my </h1>
 
-      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}"  ng-class="Validator.isPositiveNumber(1) ? 'is-valid' : 'is-invalid'"/>
 
       <span class="dropdown">
         <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownSend = !dropdownSend">ETH <span class="caret"></span></a>
@@ -44,7 +44,7 @@
 
       <h1> for </h1>
 
-      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}"  ng-class="Validator.isPositiveNumber(1) ? 'is-valid' : 'is-invalid'"/>
 
       <div class="dropdown">
         <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownSend = !dropdownSend">BTC<span class="caret"></span></a>
@@ -80,7 +80,7 @@
           </div>
           <div class="col-xs-10">
             <label> Your Receiving <strong>(BTC)</strong> Address </label>
-            <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
+            <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress('1') ? 'is-valid' : 'is-invalid'"/>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
         <div class="row">
           <div class="col-xs-10">
             <label> Your Sending <strong>(ETH)</strong> Address </label>
-            <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
+            <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"  ng-class="Validator.isValidAddress('1') ? 'is-valid' : 'is-invalid'"/>
           </div>
           <div class="col-xs-2 address-identicon-container">
             <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
@@ -148,8 +148,8 @@
       </div>
       <article class="row" ng-show="wallet!=null">
 
-        @@if (site === 'cx' )  {  @@include( './sendTransactionContent.tpl', { "site": "mew" } )   }
-        @@if (site === 'mew' ) {  @@include( './sendTransactionContent.tpl', { "site": "cx" } )    }
+        @@if (site === 'cx1' )  {  @@include( './sendTransactionContent.tpl', { "site": "mew" } )   }
+        @@if (site === 'mew1' ) {  @@include( './sendTransactionContent.tpl', { "site": "cx" } )    }
 
       </article>
 
