@@ -24,11 +24,24 @@
   <section class="row" ng-show="wallet!=null">
     <hr />
 
-    <h1 class="col-xs-12" translate="VIEWWALLET_SuccessMsg">Success! Here are your wallet details.</h1>
+    <section class="col-sm-4">
 
-    <section class="col-sm-6">
+      <br />
+      <wallet-balance-drtv></wallet-balance-drtv>
+      <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
+      <ul class="account-info">
+        <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
+      </ul>
+      <h5 translate="x_Address">Your Address:</h5>
+        <div class="qr-code" qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
+      <h5 translate="x_PrivKey">Private Key (unencrypted):</h5>
+        <div class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+    </section>
+
+    <section class="col-sm-8">
 
       <div class="row">
+        <h1 class="col-xs-12" translate="VIEWWALLET_SuccessMsg">Success! Here are your wallet details.</h1>
         <div class="col-sm-10">
           <div class="account-help-icon">
             <img src="images/helpicon.svg" class="help-icon" />
@@ -80,29 +93,13 @@
       </div>
 
 
-      <div class="row">
-        <div class="col-sm-6">
-          <h5 translate="x_Address">Your Address:</h5>
-          <div qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
-        </div>
-        <div class="col-sm-6" ng-show="wallet.type=='default'">
-          <h5 translate="x_PrivKey">Private Key (unencrypted):</h5>
-          <div qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
-        </div>
-      </div>
+      @@if (site === 'cx' )  {  @@include( './signMsg.tpl', { "site": "mew" } )   }
+      @@if (site === 'mew' ) {  @@include( './signMsg.tpl', { "site": "cx" } )    }
+
 
     </section>
 
-    <section class="col-sm-6">
 
-      <br />
-      <wallet-balance-drtv></wallet-balance-drtv>
-      <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
-      <ul class="account-info">
-        <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
-      </ul>
-
-    </section>
 
   </section>
 
