@@ -925,7 +925,7 @@ module.exports = contractsCtrl;
 
 var decryptWalletCtrl = function ($scope, $sce, walletService) {
     $scope.walletType = "";
-    $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = $scope.showAOnly = false;
+    $scope.requireFPass = $scope.requirePPass = $scope.showFDecrypt = $scope.showPDecrypt = $scope.showAOnly = $scope.showParityDecrypt = false;
     $scope.filePassword = "";
     $scope.fileContent = "";
     $scope.Validator = Validator;
@@ -984,6 +984,9 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
         $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic);
         $scope.showTrezorSeparate = ajaxReq.type !== 'ETH';
     };
+    $scope.onParityPhraseChange = function () {
+        if ($scope.parityPhrase) $scope.showParityDecrypt = true;else $scope.showParityDecrypt = false;
+    };
     $scope.onAddressChange = function () {
         $scope.showAOnly = $scope.Validator.isValidAddress($scope.addressOnly);
     };
@@ -1039,6 +1042,8 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
             } else if ($scope.showMDecrypt) {
                 $scope.mnemonicModel.open();
                 $scope.onHDDPathChange();
+            } else if ($scope.showParityDecrypt) {
+                $scope.wallet = Wallet.fromParityPhrase($scope.parityPhrase);
             }
             walletService.wallet = $scope.wallet;
         } catch (e) {
@@ -1660,7 +1665,8 @@ module.exports = signMsgCtrl;
 'use strict';
 
 var tabsCtrl = function ($scope, globalService, $translate, $sce) {
-    $scope.tabNames = globalService.tabs;
+    $scope.gService = globalService;
+    $scope.tabNames = $scope.gService.tabs;
     $scope.curLang = 'English';
     $scope.customNodeModal = document.getElementById('customNodeModal') ? new Modal(document.getElementById('customNodeModal')) : null;
     $scope.Validator = Validator;
@@ -2274,6 +2280,7 @@ var walletDecryptDrtv = function () {
     <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"fileupload\" \/><span translate=\"x_Keystore2\">Keystore \/ JSON File<\/span><\/label>\r\n \
     <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"pasteprivkey\" \/><span translate=\"x_PrivKey2\">Private Key<\/span><\/label>\r\n \
     <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"pastemnemonic\" \/><span translate=\"x_Mnemonic\">Mnemonic Phrase<\/span><\/label>\r\n \
+    <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"parityBWallet\" \/><span translate=\"x_ParityPhrase\">Parity Phrase<\/span><\/label>\r\n \
     <label class=\"radio\" ng-hide=\"globalService.currentTab==globalService.tabs.signMsg.id\"><input type=\"radio\" ng-model=\"walletType\" value=\"ledger\" \/>Ledger Nano S<\/label>\r\n \
     <label class=\"radio\" ng-hide=\"globalService.currentTab==globalService.tabs.signMsg.id\"><input type=\"radio\" ng-model=\"walletType\" value=\"trezor\" \/>TREZOR<\/label>\r\n \
     <label class=\"radio\" ng-hide=\"globalService.currentTab!==globalService.tabs.viewWalletInfo.id\"><input type=\"radio\" ng-model=\"walletType\" value=\"addressOnly\" \/><span>View with Address Only<\/span><\/label>\r\n \
@@ -2314,6 +2321,14 @@ var walletDecryptDrtv = function () {
       <\/div>\r\n \
     <\/div>\r\n \
     <!-- \/if selected type mnemonic-->\r\n \
+    <!-- if selected parity phrase-->\r\n \
+    <div id=\"selectedTypeMnemonic\" ng-if=\"walletType==\'parityBWallet\'\">\r\n \
+      <h4 translate=\"ADD_Radio_5\"> Paste \/ type your mnemonic: <\/h4>\r\n \
+      <div class=\"form-group\">\r\n \
+        <textarea rows=\"4\" class=\"form-control\" placeholder=\"{{ \'x_ParityPhrase\' | translate}}\" ng-model=\"$parent.$parent.parityPhrase\" ng-class=\"$parent.$parent.parityPhrase != \'\' ? \'is-valid\' : \'is-invalid\'\" ng-change=\"onParityPhraseChange()\" ng-keyup=\"$event.keyCode == 13 && decryptWallet()\"><\/textarea>\r\n \
+      <\/div>\r\n \
+    <\/div>\r\n \
+    <!-- \/if selected parity phrase-->\r\n \
     <!-- if selected type ledger-->\r\n \
     <div id=\"selectedTypeLedger\" ng-if=\"walletType==\'ledger\'\">\r\n \
       <ol>\r\n \
@@ -2341,9 +2356,9 @@ var walletDecryptDrtv = function () {
   <\/section>\r\n \
   <!-- \/ Column 2 - Unlock That Key -->\r\n \
   <!-- Column 3 -The Unlock Button -->\r\n \
-  <section class=\"col-md-4 col-sm-6\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'||walletType==\'trezor\'||showAOnly\">\r\n \
+  <section class=\"col-md-4 col-sm-6\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'||walletType==\'trezor\'||showAOnly||showParityDecrypt\">\r\n \
     <h4 id=\"uploadbtntxt-wallet\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt\" translate=\"ADD_Label_6\"> Access Your Wallet:<\/h4>\r\n \
-    <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt\" ng-click=\"decryptWallet()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
+    <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt||showParityDecrypt\" ng-click=\"decryptWallet()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showAOnly\" ng-click=\"decryptAddressOnly()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"walletType==\'ledger\'\" ng-click=\"scanLedger()\" translate=\"ADD_Ledger_scan\">SCAN<\/a><\/div>\r\n \
   <\/section>\r\n \
@@ -8681,6 +8696,7 @@ en.data = {
   x_Keystore2: 'Keystore File (UTC / JSON)',
   x_KeystoreDesc: 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up.',
   x_Mnemonic: 'Mnemonic Phrase',
+  x_ParityPhrase: 'Parity Phrase',
   x_Password: 'Password',
   x_Print: 'Print Paper Wallet',
   x_PrintDesc: 'ProTip: Click print and save this as a PDF, even if you do not own a printer!',
