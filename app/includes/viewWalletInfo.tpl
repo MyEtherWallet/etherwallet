@@ -9,23 +9,18 @@
 
     </div>
     <div ng-show="!wd">
-
         <p translate="VIEWWALLET_Subtitle">
           This page allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like <a href="http://etherscan.io/" target="_blank">etherscan.io</a>.
         </p>
-
         <wallet-decrypt-drtv></wallet-decrypt-drtv>
-
     </div>
   </article>
 
 
 
   <section class="row" ng-show="wallet!=null">
-    <hr />
 
     <section class="col-sm-4">
-
       <br />
       <wallet-balance-drtv></wallet-balance-drtv>
       <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
@@ -38,7 +33,7 @@
         <div ng-show="wallet.type=='default'" class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
     </section>
 
-    <section class="col-sm-8">
+    <section class="col-sm-8 view-wallet-content">
 
       <div class="row">
         <h1 class="col-xs-12" translate="VIEWWALLET_SuccessMsg">Success! Here are your wallet details.</h1>
@@ -63,7 +58,6 @@
         </div>
         <textarea class="form-control" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
       </div>
-
 
       <div ng-show="wallet.type=='default'">
         <div class="account-help-icon">

@@ -48,6 +48,13 @@ var tabs = {
     mew: true,
     cx: false
   },
+  signMsg: {
+    id: 6,
+    name: "NAV_SignMsg",
+    url: "sign-message",
+    mew: false,
+    cx: true
+  },
   contracts: {
     id: 6,
     name: "NAV_Contracts",

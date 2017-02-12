@@ -30,7 +30,7 @@
 
 <body>
 
-<header class="container-fluid bg-gradient text-white">
+<header class="bg-gradient text-white">
 <section class="container text-center">
   <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="50px" width="auto" alt="Ether Wallet" /></a>
 </section>
