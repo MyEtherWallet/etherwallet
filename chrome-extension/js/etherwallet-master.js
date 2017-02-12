@@ -7577,7 +7577,7 @@ var de = function () {};
 de.code = 'de';
 de.data = {
 
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
   /* Sign Message */
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
@@ -8120,7 +8120,7 @@ var el = function () {};
 el.code = 'el';
 el.data = {
 
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
 
   /* Sign Message */
   NAV_SignMsg: 'Sign Message',
@@ -8673,7 +8673,7 @@ en.data = {
   NAV_Contact: 'Contact',
   NAV_Contracts: 'Contracts',
   NAV_DeployContract: 'Deploy Contract',
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
   NAV_GenerateWallet: 'Generate Wallet',
   NAV_Help: 'Help',
   NAV_InteractContract: 'Interact with Contract',
@@ -9204,7 +9204,7 @@ var es = function () {};
 es.code = 'es';
 es.data = {
 
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
 
   /* Sign Message */
   NAV_SignMsg: 'Sign Message',
@@ -9748,7 +9748,7 @@ var fi = function () {};
 fi.code = 'fi';
 fi.data = {
 
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
 
   ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
@@ -10321,7 +10321,7 @@ fr.code = 'fr';
 fr.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
   NAV_SignMsg: 'Signer un message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -10868,7 +10868,7 @@ hu.code = 'hu';
 hu.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -11412,7 +11412,7 @@ id.code = 'id';
 id.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
   NAV_SignMsg: 'Penandaan Pesan',
   MSG_message: 'Pesan',
   MSG_date: 'Tanggal',
@@ -11954,7 +11954,7 @@ var it = function () {};
 it.code = 'it';
 it.data = {
 
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
 
   /* Sign Message */
   MSG_message: 'Messaggio',
@@ -12503,7 +12503,7 @@ var ja = function () {};
 ja.code = 'ja';
 ja.data = {
 
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
 
   /* Sign Message */
   MSG_message: 'メッセージ',
@@ -13054,7 +13054,7 @@ nl.data = {
   NAV_Contact: 'Contact',
   NAV_Contracts: 'Contracten',
   NAV_DeployContract: 'Verspreid Contract',
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
   NAV_GenerateWallet: 'Genereer Wallet',
   NAV_Help: 'Help',
   NAV_InteractContract: 'Interactie met Contract',
@@ -13596,7 +13596,7 @@ no.code = 'no';
 no.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
   NAV_SignMsg: 'Signér Melding',
   MSG_message: 'Melding',
   MSG_date: 'Dato',
@@ -14139,7 +14139,7 @@ var pl = function () {};
 pl.code = 'pl';
 pl.data = {
 
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
 
   /* Sign Message */
   NAV_SignMsg: 'Podpisz Wiadomość',
@@ -15229,7 +15229,7 @@ ru.code = 'ru';
 ru.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -15774,7 +15774,7 @@ tr.code = 'tr';
 tr.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -16377,7 +16377,7 @@ vi.code = 'vi';
 vi.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -16918,7 +16918,7 @@ zh.code = 'zh';
 zh.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Exchange',
+  NAV_Exchange: 'Swap',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',

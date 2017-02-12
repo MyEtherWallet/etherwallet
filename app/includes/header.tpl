@@ -101,7 +101,7 @@
     <div class="nav-scroll">
       <nav class="nav-inner">
         @@if (site === 'mew' ) {
-        <span ng-repeat="tab in tabNames track by $index" class="nav-item" ng-class="{active: $index==gService.currentTab}" ng-show="{{tab.mew}}" ng-click="tabClick($index)"> <a translate="{{tab.name}}"></a></span>
+        <span ng-repeat="tab in tabNames track by $index" class="nav-item {{tab.name}}" ng-class="{active: $index==gService.currentTab}" ng-show="{{tab.mew}}" ng-click="tabClick($index)"> <a translate="{{tab.name}}"></a></span>
         }
         @@if (site === 'cx' ) {
         <span ng-repeat="tab in tabNames track by $index" class="nav-item" ng-class="{active: $index==gService.currentTab}" ng-show="{{tab.cx}}" ng-click="tabClick($index)"> <a translate="{{tab.name}}"></a></span>

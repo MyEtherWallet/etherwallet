@@ -5,7 +5,7 @@ id.code = 'id';
 id.data = {
 
 /* Sign Message */
-NAV_Exchange                : 'Exchange',
+NAV_Exchange                : 'Swap',
 NAV_SignMsg                 : 'Penandaan Pesan',
 MSG_message                 : 'Pesan',
 MSG_date                    : 'Tanggal',

@@ -5,7 +5,7 @@ vi.code = 'vi';
 vi.data = {
 
 /* Sign Message */
-NAV_Exchange                : 'Exchange',
+NAV_Exchange                : 'Swap',
 NAV_SignMsg                 : 'Sign Message',
 MSG_message                 : 'Message',
 MSG_date                    : 'Date',

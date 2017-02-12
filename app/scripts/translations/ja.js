@@ -4,7 +4,7 @@ var ja = function() {}
 ja.code = 'ja';
 ja.data = {
 
-NAV_Exchange                : 'Exchange',
+NAV_Exchange                : 'Swap',
 
 /* Sign Message */
 MSG_message                 : 'メッセージ',
