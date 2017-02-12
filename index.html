@@ -154,7 +154,7 @@
             <label>Chain ID</label>
             <input class="form-control" type="text" placeholder="" ng-model="customNode.chainId" ng-class="Validator.isPositiveNumber(customNode.chainId) ? 'is-valid' : 'is-invalid'">
           </div>
-          <div class="form-group" ng-bind-html="addNodeStatus"></div>
+          
         </div>
 
         <div class="modal-footer text-center">
@@ -166,7 +166,6 @@
     </div>
   </div>
   <!-- / Info Modal -->
-
 </header>
 
 
@@ -417,7 +416,7 @@
 
       <!-- Sign Message Button -->
       <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="NAV_SignMsg" ng-show="wallet!=null"> Sign Message </a>
-      <div class="form-group" ng-bind-html="signMsg.status"></div>
+      
 
       <!-- Signed Message -->
       <div ng-show="signMsg.signedMsg">
@@ -438,8 +437,8 @@
       <!-- Verify Signature Message Button -->
       <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
 
-      <!-- Verify Message Status -->
-      <div class="form-group" ng-bind-html="verifyMsg.status"></div>
+      
+      
     </section>
     <!-- / Verify Message Stuff -->
 
@@ -560,9 +559,6 @@
   <div class="form-group ">
     <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
   </div>
-
-  <div class="clearfix"><div ng-bind-html="validateTxStatus"></div></div>
-
   <div class="form-group" ng-show="showRaw">
     <label translate="SEND_raw"> Raw Transaction </label>
     <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
@@ -573,9 +569,6 @@
   <div class="form-group" ng-show="showRaw">
     <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
   </div>
-
-  <div class="form-group" ng-bind-html="sendTxStatus"></div>
-
   <div class="alert alert-warning" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
@@ -688,8 +681,6 @@
     </div>
 
     <div class="col-xs-12 clearfix text-center"><a ng-click="setFinalPrices()"class="btn btn-info btn-lg"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 451.847 451.847"><path d="M225.923 354.706c-8.098 0-16.195-3.092-22.369-9.263L9.27 151.157c-12.359-12.359-12.359-32.397 0-44.751 12.354-12.354 32.388-12.354 44.748 0l171.905 171.915 171.906-171.909c12.359-12.354 32.391-12.354 44.744 0 12.365 12.354 12.365 32.392 0 44.751L248.292 345.449c-6.177 6.172-14.274 9.257-22.369 9.257z" fill="#FFF"/></svg> Let's do this! </a></div>
-
-    <div ng-bind-html="stage1Status"></div>
   </section>
   <!-- / Exchange Panel -->
 
@@ -722,7 +713,6 @@
     <div class="text-center">
       <a ng-click="openOrder()" class="btn btn-primary btn-lg"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 451.847 451.847"><path d="M225.923 354.706c-8.098 0-16.195-3.092-22.369-9.263L9.27 151.157c-12.359-12.359-12.359-32.397 0-44.751 12.354-12.354 32.388-12.354 44.748 0l171.905 171.915 171.906-171.909c12.359-12.354 32.391-12.354 44.744 0 12.365 12.354 12.365 32.392 0 44.751L248.292 345.449c-6.177 6.172-14.274 9.257-22.369 9.257z" fill="#FFF"/></svg> Start Transaction </a>
     </div>
-    <div ng-bind-html="stage2Status"></div>
   </section>
   <!-- / Exchange Start 1 -->
 
@@ -906,9 +896,6 @@
   <div class="form-group ">
     <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
   </div>
-
-  <div class="clearfix"><div ng-bind-html="validateTxStatus"></div></div>
-
   <div class="form-group" ng-show="showRaw">
     <label translate="SEND_raw"> Raw Transaction </label>
     <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
@@ -919,9 +906,6 @@
   <div class="form-group" ng-show="showRaw">
     <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
   </div>
-
-  <div class="form-group" ng-bind-html="sendTxStatus"></div>
-
   <div class="alert alert-warning" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
@@ -997,8 +981,8 @@
     <div class="col-xs-10">
       <label translate="OFFLINE_Step1_Label_1"> From Address: </label>
       <p class="small" translate="OFFLINE_Step1_Label_2">Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.</p>
-      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'validateAddressStatus')"/>
-      <div ng-bind-html="validateAddressStatus"></div>
+      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'')"/>
+      
     </div>
     <div class="col-xs-2 address-identicon-container-offline">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.from}}" watch-var="tx.from"></div>
@@ -1025,8 +1009,8 @@
     <h4 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h4>
     <div class="col-xs-10">
       <label translate="OFFLINE_Step2_Label_1"> To Address: </label>
-      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress(tx.to,'validateToAddressStatus')"/>
-      <div ng-bind-html="validateToAddressStatus"></div>
+      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress(tx.to,'')"/>
+      
     </div>
     <div class="col-xs-2 address-identicon-container-offline">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
@@ -1085,9 +1069,11 @@
     </div>
     <div class="col-sm-10">
       <a class="btn btn-info" ng-click="generateTx()" translate="SEND_generate">Generate Signed Transaction</a>
-      <div ng-bind-html="validateTxStatus"></div>
+      
     </div>
     <section id="step2Output">
+
+
       <div class="col-sm-8">
         <label translate="SEND_signed"> Signed Transaction </label>
         <textarea class="form-control" placeholder="" readonly="readonly" rows="3" ng-model="signedTx"></textarea>
@@ -1114,7 +1100,7 @@
   </section>
   <section class="row">
     <div class="col-sm-10">
-      <div ng-bind-html="offlineTxPublishStatus"></div>
+      
     </div>
   </section>
   <!-- / Step 3 -->
@@ -1200,12 +1186,10 @@
       <h4><small> or </small> Select Existing Contract </h4>
       <div class="dropdown">
         <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
-          The DAO <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small><span class="caret"></span>
+          {{selectedAbi.name}} <small class="mono">{{selectedAbi.address}}</small><span class="caret"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownExistingContracts">
-          <li><a>DGD Crowdsale (Claim) <br /> <small class="mono">0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A</small></a></li>
-          <li><a class="active">The DAO <br /> <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small></a></li>
-          <li><a>Replay Safe Split <br /> <small class="mono">0xAA1A6e3e6EF20068f7F8d8C835d2D22fd5116444</small></a></li>
+          <li ng-repeat="abi in ajaxReq.abiList track by $index"><a ng-click="selectExistingAbi($index)">{{abi.name}} <br /> <small class="mono">{{abi.address}}</small></a></li>
         </ul>
       </div>
     </div>
@@ -1213,7 +1197,7 @@
       <h4> ABI / JSON Interface </h4>
       <textarea class="form-control" rows="5" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
       <button class="btn btn-primary" ng-click="initContract()"> ACCESS </button>
-      <div ng-bind-html="accessContractStatus"></div>
+      
     </div>
     <!-- / Input address + JSON Interface -->
 
@@ -1354,7 +1338,7 @@
               </div>
               <div class="form-group ">
                 <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
-                <div ng-bind-html="deployContractStatus"></div>
+                
               </div>
               <!-- Data -->
               <section class="row" ng-show="showRaw">
@@ -1402,7 +1386,7 @@
       </div>
 
       <!-- Wallet Decrypt -->
-      <div ng-bind-html="deployContractStatus"></div>
+      
 
       <!-- Sign TX Button (once wallet has been unlocked) -->
       <div class="form-group">
@@ -1428,8 +1412,8 @@
         <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="NAV_DeployContract"> Deploy Contract </a>
       </div>
 
-      <!-- Status -->
-      <div class="form-group" ng-bind-html="sendTxStatus"></div>
+      
+      
 
       <!-- Deploy Modal -->
       <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
@@ -1471,7 +1455,7 @@
     <button class="btn btn-primary" ng-show="!contract.functions[contract.selectedFunc.index].constant" ng-click="generateContractTx()">WRITE</button>
   </span>
   </br>
-  <div class="form-group" ng-bind-html="sendTxStatus" ng-show="!contract.functions[contract.selectedFunc.index].constant"></div>
+  
 </article>
 
 </article>
@@ -2131,11 +2115,9 @@
 
   <!-- Add classes:
     alert-success alert-danger alert-warning -->
-  <article class="alert popup" ng-hide="1===1">
-    <div class="container">
-      Aliquam mi nibh, fermentum vel dapibus vitae, posuere vel nunc. Nunc a enim gravida, molestie ex non, imperdiet diam. Aliquam mi nibh, fermentum vel dapibus vitae, posuere vel nunc. Nunc a enim gravida, molestie ex non, imperdiet diam.
-    </div>
-    <i class="icon-close"></i>
+  <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
+    <div class="container" ng-bind-html="notifier.message"></div>
+    <i class="icon-close" ng-click="notifier.close()"></i>
   </article>
 
 </section>
