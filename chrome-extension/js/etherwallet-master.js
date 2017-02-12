@@ -1,6 +1,10 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports=[
   {
+      "name": "Select a contract...",
+      "address": "",
+      "abi": ' '
+  },{
       "name": "DAO Classic Withdraw",
       "address": "0x180826b05452ce96e157f0708c43381fee64a6b8",
       "abi": '[{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[],"name":"seal","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"totalAccounts","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"data","type":"uint256[]"}],"name":"fill","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"type":"function"},{"constant":true,"inputs":[],"name":"sealed","outputs":[{"name":"","type":"bool"}],"type":"function"},{"inputs":[],"type":"constructor"}]'
@@ -10,6 +14,10 @@ module.exports=[
 },{}],2:[function(require,module,exports){
 module.exports=[
   {
+      "name": "Select a contract...",
+      "address": "",
+      "abi": ' '
+  },{
       "name": "Augur / REP",
       "address": "0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5",
       "abi": '[{"name": "allowance","type": "function","constant": true,"inputs": [{ "name": "owner", "type": "address" }, { "name": "spender", "type": "address" }],"outputs": [{ "name": "out", "type": "uint256" }]},{"name": "approve","type": "function","constant": false,"inputs": [{ "name": "spender", "type": "address" }, { "name": "amount", "type": "uint256" }],"outputs": [{ "name": "out", "type": "uint256" }]},{"name": "balanceOf","type": "function","constant": true,"inputs": [{ "name": "address", "type": "address" }],"outputs": [{ "name": "out", "type": "uint256" }]},{"name": "decimals","type": "function","constant": true,"inputs": [],"outputs": [{ "name": "out", "type": "uint256" }]},{"name": "getSeeded","type": "function","constant": true,"inputs": [],"outputs": [{ "name": "out", "type": "uint256" }]},{"name": "name","type": "function","constant": true,"inputs": [],"outputs": [{ "name": "out", "type": "uint256" }]},{"name": "setSaleDistribution","type": "function","constant": false,"inputs": [{ "name": "addresses", "type": "address[]" }, { "name": "balances", "type": "uint256[]" }],"outputs": [{ "name": "out", "type": "uint256" }]},{"name": "symbol","type": "function","constant": true,"inputs": [],"outputs": [{ "name": "out", "type": "uint256" }]},{"name": "totalSupply","type": "function","constant": true,"inputs": [],"outputs": [{ "name": "out", "type": "uint256" }]},{"name": "transfer","type": "function","constant": false,"inputs": [{ "name": "receiver", "type": "address" }, { "name": "fxpValue", "type": "uint256" }],"outputs": [{ "name": "out", "type": "uint256" }]},{"name": "transferFrom","type": "function","constant": false,"inputs": [{ "name": "from", "type": "address" }, { "name": "receiver", "type": "address" }, { "name": "fxpValue", "type": "uint256" }],"outputs": [{ "name": "out", "type": "uint256" }]},{"name": "Approval(address,address,uint256)","type": "event","inputs": [{ "name": "owner", "type": "address", "indexed": true }, { "name": "spender", "type": "address", "indexed": true }, { "name": "fxpValue", "type": "uint256", "indexed": false }]},{"name": "Transfer(address,address,uint256)","type": "event","inputs": [{ "name": "from", "type": "address", "indexed": true }, { "name": "to", "type": "address", "indexed": true }, { "name": "value", "type": "uint256", "indexed": false }]}]'
@@ -64,7 +72,14 @@ module.exports=[
 
 
 },{}],3:[function(require,module,exports){
-module.exports=[]
+module.exports=[
+  {
+    "name": "Select a contract...",
+    "address": "",
+    "abi": ' '
+  }
+]
+
 },{}],4:[function(require,module,exports){
 'use strict';
 
@@ -7404,8 +7419,8 @@ Token.prototype.getData = function (toAdd, value) {
 module.exports = Token;
 
 },{}],66:[function(require,module,exports){
-arguments[4][3][0].apply(exports,arguments)
-},{"dup":3}],67:[function(require,module,exports){
+module.exports=[]
+},{}],67:[function(require,module,exports){
 module.exports=[
   {
     "address":"0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
@@ -7530,8 +7545,8 @@ module.exports=[
 ]
 
 },{}],68:[function(require,module,exports){
-arguments[4][3][0].apply(exports,arguments)
-},{"dup":3}],69:[function(require,module,exports){
+arguments[4][66][0].apply(exports,arguments)
+},{"dup":66}],69:[function(require,module,exports){
 // German
 'use strict';
 
@@ -17607,7 +17622,6 @@ uiFuncs.notifier = {
     scope: null,
     warning: function (msg) {
         this.setClassAndOpen("alert-warning", msg);
-        this.setTimer();
     },
     info: function (msg) {
         this.setClassAndOpen("", msg);
@@ -17615,7 +17629,6 @@ uiFuncs.notifier = {
     },
     danger: function (msg) {
         this.setClassAndOpen("alert-danger", msg);
-        this.setTimer();
     },
     success: function (msg) {
         this.setClassAndOpen("alert-success", msg);

@@ -32,7 +32,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
         $scope.wallet = walletService.wallet;
         $scope.wd = true;
         $scope.tx.nonce = 0;
-        
+
     });
     $scope.$watch('visibility', function(newValue, oldValue) {
         $scope.tx = {
@@ -44,7 +44,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
             nonce: null,
             gasPrice: null
         }
-        
+
     });
     $scope.$watch('tx', function(newValue, oldValue) {
         $scope.showRaw = false;
@@ -97,7 +97,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
                     if (!rawTx.isError) {
                         $scope.rawTx = rawTx.rawTx;
                         $scope.signedTx = rawTx.signedTx;
-                        
+
                         $scope.showRaw = true;
                     } else {
                         $scope.showRaw = false;

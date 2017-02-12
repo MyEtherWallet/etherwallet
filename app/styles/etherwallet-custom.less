@@ -468,8 +468,10 @@ label small {
 
   .exchange-order {
     text-align: left;
+    .order-info-wrap { margin-bottom: 0; }
     h1 {
-      margin-bottom: @space*2;
+      margin-top: @space*3;
+      margin-bottom: @space*3;
     }
   }
 
@@ -500,7 +502,7 @@ label small {
 @progress-breakpoint: 675px;
 .exchange-progress {
   margin-top: @space*2;
-  margin-bottom: @space*4;
+  margin-bottom: 0;
   position: relative;
   .sep {
     position: absolute;
@@ -611,9 +613,28 @@ label small {
   margin: auto;
 }
 
-.contracts h4 + .dropdown,
-.contracts h4 + .dropdown .btn {
-  margin-top: 0;
+.contracts {
+  h4 + .dropdown,
+  h4 + .dropdown .btn {
+    margin-top: 0;
+  }
+  .dropdown-toggle {
+    display: block;
+    text-align: left;
+    white-space: normal;
+    .caret {
+      position: absolute;
+      right: @space;
+      top: 1.25rem;
+    }
+  }
+  .dropdown-menu-left {
+    font-size: @font-size-small;
+    left: auto;
+    right: 0;
+    min-width: 37rem;
+    small { float: right; }
+  }
 }
 
 .view-wallet-content {

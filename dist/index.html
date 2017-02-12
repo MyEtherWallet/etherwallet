@@ -1188,25 +1188,25 @@
         <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
           {{selectedAbi.name}} <small class="mono">{{selectedAbi.address}}</small><span class="caret"></span>
         </a>
-        <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownExistingContracts">
-          <li ng-repeat="abi in ajaxReq.abiList track by $index"><a ng-click="selectExistingAbi($index)">{{abi.name}} <br /> <small class="mono">{{abi.address}}</small></a></li>
+        <ul class="dropdown-menu dropdown-menu-left" ng-show="dropdownExistingContracts">
+          <li ng-repeat="abi in ajaxReq.abiList track by $index"><a ng-click="selectExistingAbi($index)">{{abi.name}} <small class="mono">{{abi.address}}</small></a></li>
         </ul>
       </div>
     </div>
-    <div class="col-xs-12">
+    <div class="col-xs-12 clearfix">
       <h4> ABI / JSON Interface </h4>
-      <textarea class="form-control" rows="5" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
+      <textarea class="form-control" rows="6" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
       <button class="btn btn-primary" ng-click="initContract()"> ACCESS </button>
-      
+
     </div>
     <!-- / Input address + JSON Interface -->
 
-    <div class="col-xs-12"> <hr /> </div>
+    <div class="col-xs-12 clearfix"> <hr /> </div>
 
     <div ng-show="showReadWrite">
 
       <!-- STEP READ/WRITE -->
-      <div class="col-md-12">
+      <div class="col-xs-12 clearfix">
 
         <!-- Contract Info -->
         <span class="form-group">
@@ -1338,7 +1338,7 @@
               </div>
               <div class="form-group ">
                 <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
-                
+
               </div>
               <!-- Data -->
               <section class="row" ng-show="showRaw">
@@ -1386,7 +1386,7 @@
       </div>
 
       <!-- Wallet Decrypt -->
-      
+
 
       <!-- Sign TX Button (once wallet has been unlocked) -->
       <div class="form-group">
@@ -1412,8 +1412,8 @@
         <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="NAV_DeployContract"> Deploy Contract </a>
       </div>
 
-      
-      
+
+
 
       <!-- Deploy Modal -->
       <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
@@ -1455,7 +1455,7 @@
     <button class="btn btn-primary" ng-show="!contract.functions[contract.selectedFunc.index].constant" ng-click="generateContractTx()">WRITE</button>
   </span>
   </br>
-  
+
 </article>
 
 </article>

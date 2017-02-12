@@ -202,7 +202,6 @@ uiFuncs.notifier = {
     scope:null,
     warning: function(msg) {
         this.setClassAndOpen("alert-warning", msg);
-        this.setTimer();
     },
     info: function(msg) {
         this.setClassAndOpen("", msg);
@@ -210,7 +209,6 @@ uiFuncs.notifier = {
     },
     danger: function(msg) {
         this.setClassAndOpen("alert-danger", msg);
-        this.setTimer();
     },
     success: function(msg) {
         this.setClassAndOpen("alert-success", msg);
