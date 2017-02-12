@@ -181,20 +181,29 @@ footer {
 
 .account-help-text {
   background: white;
-  border-radius: 3px;
+  border-radius: @border-radius;
   border: 1px solid #CDCDCD;
-  box-shadow: 0 0 5px rgba(100, 100, 100, .2);
+  box-shadow: 0 0 @space-sm rgba(100, 100, 100, .2);
   display: none;
-  font-size: 14px;
+  font-size: @font-size-xs;
   font-weight: 400;
-  padding: 5px;
+  padding: @space-xs;
   position: absolute;;
-  width: 280px;
+  width: 18rem;
   z-index: 999;
+  ul& {
+    padding-left: 1.6rem;
+  }
+  li {
+    font-size: @font-size-xs;
+    font-weight: 400;
+  }
 }
 
 
+
 @media screen and (max-width:767px) {
+  .account-help-icon li,
   .account-help-icon img,
   .account-help-icon p, {
     display: none;
@@ -319,8 +328,8 @@ input[type="password"]+.eye {
 
 // little x image next to custom tokens
 .token-remove {
-  width: 14px;
-  height: 14px;
+  width: @font-size-small;
+  height: @font-size-small;
   position: absolute;
   left: 18px;
   cursor: pointer;
@@ -394,9 +403,9 @@ label small {
 
 
 .decrypt-drtv {
-  padding: 1.5rem .25rem .5rem;
+  padding: @space 0;
   label.radio {
-    padding: @space-xs @space-lg ;
+    padding: 0 @space-lg;
   }
 }
 
@@ -465,10 +474,6 @@ label small {
     h1 {
       margin-bottom: @space*2;
     }
-    .qr-code {
-      max-width: 17rem;
-      margin: auto;
-    }
   }
 
   .order-info-wrap {
@@ -486,14 +491,24 @@ label small {
     &:nth-child(4n+3) { background-color: #143955;  }
     &:nth-child(4n+4) { background-color: #19b3ae;  }
   }
-
-
-
 }
 
+.qr-code {
+  max-width: 17rem;
+  margin: auto;
+}
 
 .contracts h4 + .dropdown,
 .contracts h4 + .dropdown .btn {
   margin-top: 0;
 }
 
+.view-wallet-content {
+  @media screen and (min-width: @grid-float-breakpoint) {
+    padding-left: @space*3;
+  }
+  h5 {
+    margin-bottom: 0;
+  }
+  a.isActive { color: @text-color; }
+}

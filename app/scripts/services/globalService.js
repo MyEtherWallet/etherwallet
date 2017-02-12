@@ -52,7 +52,7 @@ var tabs = {
     id: 6,
     name: "NAV_SignMsg",
     url: "sign-message",
-    mew: true,
+    mew: false,
     cx: true
   },
   contracts: {
