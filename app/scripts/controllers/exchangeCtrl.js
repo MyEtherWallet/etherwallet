@@ -20,6 +20,7 @@ var exchangeCtrl = function($scope, $sce, walletService) {
         exchangeRate: '',
         exchangePair: ''
     }
+
     $scope.setOrderCoin = function(isFrom, coin) {
         if (isFrom) $scope.exchangeOrder.fromCoin = coin;
         else $scope.exchangeOrder.toCoin = coin;

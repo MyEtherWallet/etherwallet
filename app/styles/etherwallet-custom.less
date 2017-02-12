@@ -411,11 +411,16 @@ label small {
 
 .exchange-tab {
 
+  .btn-lg {
+    margin-top: @space*5;
+  }
   .btn svg, .btn img {
     margin-right: @space-sm;
     margin-left: -@space-xs;
     vertical-align: middle;
   }
+
+  .order-info-wrap { margin-bottom: @space*5; }
 
   .exchange-rates {
     text-align: center;
@@ -439,15 +444,11 @@ label small {
 
   .exchange-panel {
     padding-top: @space*5;
-    padding-bottom: @space*5;
     text-align: center;
     > * {
       display: inline-block;
       margin: @space-xs @space-sm;
       vertical-align: middle;
-    }
-    .btn {
-      margin: 0;
     }
     .form-control {
       width: 10rem;
@@ -459,8 +460,6 @@ label small {
 
   .exchange-start {
     text-align: center;
-    padding-top: @space*5;
-    padding-bottom: @space*5;
     .exchange-info {
       text-align: left;
       margin-bottom: @space*5;
@@ -469,15 +468,9 @@ label small {
 
   .exchange-order {
     text-align: left;
-    padding-top: @space*5;
-    padding-bottom: @space*5;
     h1 {
       margin-bottom: @space*2;
     }
-  }
-
-  .order-info-wrap {
-    margin-bottom: @space*3;
   }
 
   .order-info {
@@ -491,7 +484,127 @@ label small {
     &:nth-child(4n+3) { background-color: #143955;  }
     &:nth-child(4n+4) { background-color: #19b3ae;  }
   }
+
+  .collapse-container {
+    h5 {  display: inline-block;  }
+    .collapse-button {
+      float: none;
+      margin: 0;
+    }
+  }
 }
+
+
+@circle-width: 4rem;
+@circle-width-phone: 3rem;
+@progress-breakpoint: 675px;
+.exchange-progress {
+  margin-top: @space*2;
+  margin-bottom: @space*4;
+  position: relative;
+  .sep {
+    position: absolute;
+    top: 3.5rem;
+    left: @cont-padding-lg;
+    right: @cont-padding-lg;
+    height: .25rem;
+    background-color: @gray-lighter;
+    @media screen and (max-width: @progress-breakpoint) {
+      display: none;
+    }
+  }
+  .clearfix();
+  .progress-item {
+    width: 20%;
+    float: left;
+    text-align: center;
+    margin: .25rem 0;
+    @media screen and (max-width: @progress-breakpoint) { width: 100%; }
+    &:nth-child(4n+1) .progress-circle { border-color: fadeout(#1e92ba, 60%); color:fadeout(#1e92ba, 60%); }
+    &:nth-child(4n+2) .progress-circle { border-color: fadeout(#175575, 60%); color:fadeout(#175575, 60%); }
+    &:nth-child(4n+3) .progress-circle { border-color: fadeout(#19b3ae, 60%); color:fadeout(#19b3ae, 60%); }
+    &:nth-child(4n+4) .progress-circle { border-color: fadeout(#143955, 60%); color:fadeout(#143955, 60%); }
+   .progress-circle {
+      border-radius: 50%;
+      border-width: @space-xs;
+      border-style: solid;
+      box-sizing: content-box;
+      margin: @space auto;
+      padding-bottom: @circle-width;
+      position: relative;
+      width: @circle-width;
+      background: white;
+      @media screen and (max-width: @progress-breakpoint) {
+        margin: @space-xs @space @space-xs @space*2;
+        padding-bottom: @circle-width-phone;
+        width: @circle-width-phone;
+        float: left;
+      }
+      i {
+        font-size: @space*1.5;
+        line-height: @space*1.75;
+        height: @space*1.75;
+        width: @space*1.75;
+        font-weight: 900;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        @media screen and (max-width: @progress-breakpoint) {
+          font-size: @space*1.5;
+          line-height: @space*1.5;
+          height: @space*1.5;
+          width: @space*1.5;
+        }
+      }
+    }
+
+
+    p {
+      font-size: @font-size-small;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: fadeout(lighten(@gray, 10%), 50%);
+      letter-spacing: .1em;
+      @media screen and (max-width: @progress-breakpoint) {
+        line-height: 4rem;
+        margin: 0;
+        text-align: left;
+      }
+    }
+
+
+    &.progress-active {
+      p { color: lighten(@gray, 10%); }
+    }
+    &.progress-active:nth-child(4n+1) .progress-circle { border-color: #1e92ba; color:#1e92ba; }
+    &.progress-active:nth-child(4n+2) .progress-circle { border-color: #175575; color:#175575; }
+    &.progress-active:nth-child(4n+3) .progress-circle { border-color: #19b3ae; color:#19b3ae; }
+    &.progress-active:nth-child(4n+4) .progress-circle { border-color: #143955; color:#143955; }
+
+
+    &.progress-true {
+      .progress-circle {
+        background-color: @brand-success;
+        border-color: @brand-success;
+        box-shadow: inset 0px 0px 0px 5px white;
+        i {
+          background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20426.67%20426.67%22%20width%3D%2232%22%20height%3D%2232%22%3E%3Cpath%20d%3D%22M153.504%20366.839c-8.657%200-17.323-3.302-23.927-9.911L9.914%20237.265c-13.218-13.218-13.218-34.645%200-47.863%2013.218-13.218%2034.645-13.218%2047.863%200l95.727%2095.727%20215.39-215.386c13.218-13.214%2034.65-13.218%2047.859%200%2013.222%2013.218%2013.222%2034.65%200%2047.863L177.436%20356.928c-6.609%206.605-15.271%209.911-23.932%209.911z%22%20fill%3D%22%23ffffff%22/%3E%3C/svg%3E);
+          background-position: 50%;
+          background-repeat: no-repeat;
+          background-size: contain;
+          font-size: 0;
+        }
+      }
+      p { color: @brand-success; }
+    }
+  }
+}
+
+
+
+
+
 
 .qr-code {
   max-width: 17rem;
