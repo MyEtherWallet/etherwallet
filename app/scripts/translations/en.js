@@ -92,7 +92,6 @@ ADD_Ledger_scan             : 'Connect to Ledger Nano S',
 x_Trezor                    : 'TREZOR',
 ADD_Trezor_scan             : 'Connect to TREZOR',
 
-
 /* Add Wallet */
 ADD_Label_1                 : 'What would you like to do?',
 ADD_Radio_1                 : 'Generate New Wallet',
@@ -122,7 +121,6 @@ GEN_desc                    : 'If you want to generate multiple wallets, you can
 GEN_Label_1                 : 'Enter a strong password (at least 9 characters)',
 GEN_Placeholder_1           : 'Do NOT forget to save this!',
 GEN_SuccessMsg              : 'Success! Your wallet has been generated.',
-GEN_Warning                 : '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
 GEN_Label_2                 : 'Save your Keystore File. Don\'t forget your password above.',
 GEN_Label_3                 : 'Save Your Address.',
 GEN_Label_4                 : 'Print your paper wallet, or store a QR code version. (optional)',
@@ -260,6 +258,7 @@ ERROR_25                    : 'Please enter valid port',
 ERROR_26                    : 'Please enter valid chain ID',
 ERROR_27                    : 'Please enter valid ABI',
 ERROR_28                    : 'Minimum amount 0.01',
+ERROR_29                    : '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.',
 SUCCESS_1                   : 'Valid address',
 SUCCESS_2                   : 'Wallet successfully decrypted',
 SUCCESS_3                   : 'Transaction submitted. TX ID: ',

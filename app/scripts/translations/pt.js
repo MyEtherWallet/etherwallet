@@ -119,7 +119,6 @@ GEN_desc                         : 'Se você quer gerar multiplas carteiras. voc
 GEN_Label_1                      : 'Insira uma senha forte (pelo menos 9 dígitos)',
 GEN_Placeholder_1                : 'NÃO esqueça de salvar isso!',
 GEN_SuccessMsg                   : 'Sucesso! Sua carteira foi gerada.',
-GEN_Warning                      : '**Você precisa do seu arquivo de armazenamento de chaves & senha** (ou Chave Privada) para acessar essa carteira no futuro. Por favor, salve e armazene ela externamente! Não há como recuperar uma carteira se você não salvar isso. Leia a [página de ajuda](https://www.myetherwallet.com/#help) para instruções.',
 GEN_Label_2                      : 'Salve seu arquivo de armazenamento de chaves. Não esqueça da sua senha acima.',
 GEN_Label_3                      : 'Salve Seu Enderço.',
 GEN_Label_4                      : 'Imprima sua carteira de papel, ou guarde a versão do código QR. (opcional)',
@@ -269,6 +268,8 @@ ERROR_19                         : 'All gas would be used on this transaction. T
 ERROR_20                         : 'Invalid symbol',
 ERROR_21                         : 'Não é um token ERC-20 válido',
 ERROR_22                         : 'Não foi possível estimar o gás. Não há fundos suficientes na conta, ou o endereço do contrato de recebimento iria lançar um erro. Sinta-se livre para definir manualmente o gás e prossiga. A mensagem de erro ao enviar pode ser mais informativa.',
+ERROR_29                      : '**Você precisa do seu arquivo de armazenamento de chaves & senha** (ou Chave Privada) para acessar essa carteira no futuro. Por favor, salve e armazene ela externamente! Não há como recuperar uma carteira se você não salvar isso. Leia a [página de ajuda](https://www.myetherwallet.com/#help) para instruções.',
+
 SUCCESS_1                        : 'Valid address',
 SUCCESS_2                        : 'Wallet successfully decrypted',
 SUCCESS_3                        : 'Transaction submitted. TX ID: ',
