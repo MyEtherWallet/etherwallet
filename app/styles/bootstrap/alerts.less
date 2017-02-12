@@ -1,9 +1,10 @@
 // Alerts
 .alert {
-  padding: @alert-padding;
+  padding: @space-sm @space;
   margin: @space 0;
   border-radius: @alert-border-radius;
-
+  font-weight: 300;
+  font-size: @font-size-bump;
   h4 {
     margin-top: 0;
     color: inherit;
@@ -17,6 +18,10 @@
   > p, > ul      { margin-bottom: 0;                     }
 
   > p + p        { margin-top: 5px;                      }
+
+  a { color: white; text-decoration: underline; }
+  a:hover { opacity: .8 }
+  a:active, a:focus { opacity: 1 }
 }
 
 
@@ -26,8 +31,6 @@
   left: 0;
   right: 0;
   padding: @space 0;
-  font-weight: 300;
-  font-size: @font-size-bump;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.33);
   transition: @transition;
   z-index: @zindex-alerts;

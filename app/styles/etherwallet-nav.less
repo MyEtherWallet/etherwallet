@@ -10,6 +10,8 @@
     align-items: center;
     @media screen and (max-width: 900px) {
       flex-direction: column;
+      padding-left: @cont-padding;
+      padding-right: @cont-padding;
     }
   }
   .brand {
@@ -53,6 +55,7 @@
   .dropdown {
     padding: 0;
     text-align: right;
+    white-space: nowrap;
     .dropdown-menu {
       right: -10px;
       left: auto;

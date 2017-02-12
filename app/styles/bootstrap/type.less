@@ -77,10 +77,10 @@ a {
   color: @link-color;
   text-decoration: none;
   cursor: pointer;
+  transition: @transition;
 
-  &:hover  { color: @link-hover-color; }
-  &:active { opacity: .8; }
-  &:focus  { opacity: 1; }
+  &:hover           { opacity: .8; color: @link-hover-color; transition: @transition;}
+  &:active, &:focus { opacity: 1; transition: @transition;}
 
   &:focus {
     .tab-focus();

@@ -48,7 +48,7 @@
         &middot; v3.4.7 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
-          <a class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
+          <a class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdown">
             <li><a ng-class="{true:'active'}[curLang=='Deutsch']" ng-click="changeLanguage('de','Deutsch')">Deutsch</a></li>
             <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']" ng-click="changeLanguage('el','Ελληνικά')">Ελληνικά</a></li>
@@ -79,7 +79,7 @@
         &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
-          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small> <span class="caret"></span></a>
+          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small><span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
               {{value.name}}
@@ -760,6 +760,7 @@
         <!-- Sidebar -->
 <section class="col-sm-4">
   <wallet-balance-drtv></wallet-balance-drtv>
+  <hr />
   <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
   <ul class="account-info" ng-show="ajaxReq.type != 'CUS'">
     <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
@@ -848,7 +849,7 @@
 
   <div class="form-group" ng-bind-html="sendTxStatus"></div>
 
-  <div class="alert alert-info" ng-show="tx.sendMode=='token'">
+  <div class="alert alert-warning" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
 
@@ -943,7 +944,7 @@
       <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}"  ng-change ="updateEstimate(true)" ng-model="exchangeOrder.fromVal" ng-class="Validator.isPositiveNumber(exchangeOrder.fromVal) ? 'is-valid' : 'is-invalid'"/>
 
       <span class="dropdown">
-        <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownFrom = !dropdownFrom">{{exchangeOrder.fromCoin}} <span class="caret"></span></a>
+        <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownFrom = !dropdownFrom">{{exchangeOrder.fromCoin}}<span class="caret"></span></a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownFrom">
           <li ng-repeat="coin in availableCoins track by $index">
           <a ng-class="{true:'active'}[coin == exchangeOrder.fromCoin]" ng-click="setOrderCoin(true, coin)"> {{coin}} </a>
@@ -1106,7 +1107,7 @@
       <div class="input-group">
         <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
         <div class="input-group-btn">
-          <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'"> {{unitReadable}} <span class="caret"></span></a>
+          <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'"> {{unitReadable}}<span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
             <li>
               <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == 'ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a>
@@ -1150,7 +1151,7 @@
       </div>
       <input class="form-control" type="text" placeholder="0x4d792045746865722057616c6c6574" id="offlineData" ng-model="tx.data" />
     </div>
-    <div class="col-sm-10">
+    <div class="col-xs-12">
       <wallet-decrypt-drtv></wallet-decrypt-drtv>
     </div>
     <div class="col-sm-10">
@@ -1270,7 +1271,7 @@
       <h4><small> or </small> Select Existing Contract </h4>
       <div class="dropdown">
         <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
-          The DAO <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small> <span class="caret"></span>
+          The DAO <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small><span class="caret"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownExistingContracts">
           <li><a>DGD Crowdsale (Claim) <br /> <small class="mono">0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A</small></a></li>
@@ -1299,7 +1300,7 @@
           <h4>Read / Write Contract </h4>
           <div class="btn-group">
             <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
-            {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}} <span class="caret"></span></a>
+            {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}<span class="caret"></span></a>
             <ul class="dropdown-menu" ng-show="dropdownContracts">
               <li ng-repeat="func in contract.functions track by $index"><a ng-click="selectFunc($index)">{{func.name}}</a></li>
             </ul>

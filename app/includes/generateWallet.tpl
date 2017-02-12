@@ -5,14 +5,14 @@
 
   <article class="row">
     <div class="col-sm-6">
-      <h3 translate="GEN_Label_1"> Enter a strong password (at least 9 characters) </h3>
+      <h4 translate="GEN_Label_1"> Enter a strong password (at least 9 characters) </h4>
       <div class="input-group">
         <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}" ng-model="password" ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"/>
         <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
       </div>
     </div>
     <div class="col-sm-6">
-      <h3 translate="NAV_GenerateWallet"> Generate Wallet </h3>
+      <h4 translate="NAV_GenerateWallet"> Generate Wallet </h4>
       <a class="btn btn-primary btn-block btnAction" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
     </div>
   </article>
@@ -31,7 +31,7 @@
     <br />
 
     <!-- 1. Private Keys -->
-    <h3> 1. <span translate="GEN_Label_2"> Save your Keystore File. Don't forget your password above. </span> </h3>
+    <h4> 1. <span translate="GEN_Label_2"> Save your Keystore File. Don't forget your password above. </span> </h4>
     <section class="row">
       <div class="col-sm-6">
         <div class="account-help-icon">
@@ -60,7 +60,7 @@
         <div class="account-help-icon">
           <img src="images/helpicon.svg" class="help-icon" />
           <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
-          <h3> 2. <span translate="GEN_Label_3"> Save Your Address. </span> </h3>
+          <h4> 2. <span translate="GEN_Label_3"> Save Your Address. </span> </h4>
         </div>
         <input class="form-control" type="text" readonly="readonly" ng-value="wallet.getChecksumAddressString()"/>
       </div>
@@ -73,7 +73,7 @@
     <br />
 
     <!-- 3. Extras -->
-    <h3> 3. <span translate="GEN_Label_4"> Print your paper wallet, or store a QR code verison. (optional) </span></h3>
+    <h4> 3. <span translate="GEN_Label_4"> Print your paper wallet, or store a QR code verison. (optional) </span></h4>
     <div class="row">
       <div class="col-sm-6">
         <div class="account-help-icon">

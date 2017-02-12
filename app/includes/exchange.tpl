@@ -36,7 +36,7 @@
       <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}"  ng-change ="updateEstimate(true)" ng-model="exchangeOrder.fromVal" ng-class="Validator.isPositiveNumber(exchangeOrder.fromVal) ? 'is-valid' : 'is-invalid'"/>
 
       <span class="dropdown">
-        <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownFrom = !dropdownFrom">{{exchangeOrder.fromCoin}} <span class="caret"></span></a>
+        <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownFrom = !dropdownFrom">{{exchangeOrder.fromCoin}}<span class="caret"></span></a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownFrom">
           <li ng-repeat="coin in availableCoins track by $index">
           <a ng-class="{true:'active'}[coin == exchangeOrder.fromCoin]" ng-click="setOrderCoin(true, coin)"> {{coin}} </a>

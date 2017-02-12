@@ -1,6 +1,7 @@
 <!-- Sidebar -->
 <section class="col-sm-4">
   <wallet-balance-drtv></wallet-balance-drtv>
+  <hr />
   <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
   <ul class="account-info" ng-show="ajaxReq.type != 'CUS'">
     <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
@@ -89,7 +90,7 @@
 
   <div class="form-group" ng-bind-html="sendTxStatus"></div>
 
-  <div class="alert alert-info" ng-show="tx.sendMode=='token'">
+  <div class="alert alert-warning" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
 

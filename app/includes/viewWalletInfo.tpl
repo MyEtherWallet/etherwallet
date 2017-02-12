@@ -23,10 +23,12 @@
     <section class="col-sm-4">
       <br />
       <wallet-balance-drtv></wallet-balance-drtv>
+      <hr />
       <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
       <ul class="account-info">
         <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
       </ul>
+      <hr />
       <h5 translate="x_Address">Your Address:</h5>
         <div class="qr-code" qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
       <h5 translate="x_PrivKey">Private Key (unencrypted):</h5>

@@ -9,7 +9,7 @@ var walletDecryptDrtv = function() {
         template : '<article class=\"well decrypt-drtv row\" ng-controller=\'decryptWalletCtrl\'>\r\n \
   <!-- Column 1 - Select Type of Key -->\r\n \
   <section class=\"col-md-4 col-sm-6\">\r\n \
-    <h4 translate=\"decrypt_Title\"> Select the format of your private key: <\/h4>\r\n \
+    <h4 translate=\"decrypt_Access\"> Select the format of your private key: <\/h4>\r\n \
     <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"fileupload\" \/><span translate=\"x_Keystore2\">Keystore \/ JSON File<\/span><\/label>\r\n \
     <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"pasteprivkey\" \/><span translate=\"x_PrivKey2\">Private Key<\/span><\/label>\r\n \
     <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"pastemnemonic\" \/><span translate=\"x_Mnemonic\">Mnemonic Phrase<\/span><\/label>\r\n \

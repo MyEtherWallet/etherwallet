@@ -19,7 +19,7 @@
       <h4><small> or </small> Select Existing Contract </h4>
       <div class="dropdown">
         <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
-          The DAO <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small> <span class="caret"></span>
+          The DAO <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small><span class="caret"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownExistingContracts">
           <li><a>DGD Crowdsale (Claim) <br /> <small class="mono">0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A</small></a></li>
@@ -48,7 +48,7 @@
           <h4>Read / Write Contract </h4>
           <div class="btn-group">
             <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
-            {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}} <span class="caret"></span></a>
+            {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}<span class="caret"></span></a>
             <ul class="dropdown-menu" ng-show="dropdownContracts">
               <li ng-repeat="func in contract.functions track by $index"><a ng-click="selectFunc($index)">{{func.name}}</a></li>
             </ul>

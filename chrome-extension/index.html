@@ -44,7 +44,7 @@
         &middot; v3.4.7 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
-          <a class="dropdown-toggle" ng-click="dropdown = !dropdown"> {{curLang}} <span class="caret"></span></a>
+          <a class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdown">
             <li><a ng-class="{true:'active'}[curLang=='Deutsch']" ng-click="changeLanguage('de','Deutsch')">Deutsch</a></li>
             <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']" ng-click="changeLanguage('el','Ελληνικά')">Ελληνικά</a></li>
@@ -75,7 +75,7 @@
         &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
-          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small> <span class="caret"></span></a>
+          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small><span class="caret"></span></a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
               {{value.name}}
@@ -183,14 +183,14 @@
 
   <article class="row">
     <div class="col-sm-6">
-      <h3 translate="GEN_Label_1"> Enter a strong password (at least 9 characters) </h3>
+      <h4 translate="GEN_Label_1"> Enter a strong password (at least 9 characters) </h4>
       <div class="input-group">
         <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}" ng-model="password" ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"/>
         <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
       </div>
     </div>
     <div class="col-sm-6">
-      <h3 translate="NAV_GenerateWallet"> Generate Wallet </h3>
+      <h4 translate="NAV_GenerateWallet"> Generate Wallet </h4>
       <a class="btn btn-primary btn-block btnAction" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
     </div>
   </article>
@@ -209,7 +209,7 @@
     <br />
 
     <!-- 1. Private Keys -->
-    <h3> 1. <span translate="GEN_Label_2"> Save your Keystore File. Don't forget your password above. </span> </h3>
+    <h4> 1. <span translate="GEN_Label_2"> Save your Keystore File. Don't forget your password above. </span> </h4>
     <section class="row">
       <div class="col-sm-6">
         <div class="account-help-icon">
@@ -238,7 +238,7 @@
         <div class="account-help-icon">
           <img src="images/helpicon.svg" class="help-icon" />
           <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
-          <h3> 2. <span translate="GEN_Label_3"> Save Your Address. </span> </h3>
+          <h4> 2. <span translate="GEN_Label_3"> Save Your Address. </span> </h4>
         </div>
         <input class="form-control" type="text" readonly="readonly" ng-value="wallet.getChecksumAddressString()"/>
       </div>
@@ -251,7 +251,7 @@
     <br />
 
     <!-- 3. Extras -->
-    <h3> 3. <span translate="GEN_Label_4"> Print your paper wallet, or store a QR code verison. (optional) </span></h3>
+    <h4> 3. <span translate="GEN_Label_4"> Print your paper wallet, or store a QR code verison. (optional) </span></h4>
     <div class="row">
       <div class="col-sm-6">
         <div class="account-help-icon">
@@ -308,10 +308,12 @@
     <section class="col-sm-4">
       <br />
       <wallet-balance-drtv></wallet-balance-drtv>
+      <hr />
       <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
       <ul class="account-info">
         <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
       </ul>
+      <hr />
       <h5 translate="x_Address">Your Address:</h5>
         <div class="qr-code" qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
       <h5 translate="x_PrivKey">Private Key (unencrypted):</h5>
@@ -485,6 +487,7 @@
         <!-- Sidebar -->
 <section class="col-sm-4">
   <wallet-balance-drtv></wallet-balance-drtv>
+  <hr />
   <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
   <ul class="account-info" ng-show="ajaxReq.type != 'CUS'">
     <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
@@ -573,7 +576,7 @@
 
   <div class="form-group" ng-bind-html="sendTxStatus"></div>
 
-  <div class="alert alert-info" ng-show="tx.sendMode=='token'">
+  <div class="alert alert-warning" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
 
@@ -667,7 +670,7 @@
       <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}"  ng-change ="updateEstimate(true)" ng-model="exchangeOrder.fromVal" ng-class="Validator.isPositiveNumber(exchangeOrder.fromVal) ? 'is-valid' : 'is-invalid'"/>
 
       <span class="dropdown">
-        <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownFrom = !dropdownFrom">{{exchangeOrder.fromCoin}} <span class="caret"></span></a>
+        <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownFrom = !dropdownFrom">{{exchangeOrder.fromCoin}}<span class="caret"></span></a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownFrom">
           <li ng-repeat="coin in availableCoins track by $index">
           <a ng-class="{true:'active'}[coin == exchangeOrder.fromCoin]" ng-click="setOrderCoin(true, coin)"> {{coin}} </a>
@@ -830,7 +833,7 @@
       <div class="input-group">
         <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
         <div class="input-group-btn">
-          <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'"> {{unitReadable}} <span class="caret"></span></a>
+          <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'"> {{unitReadable}}<span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
             <li>
               <a name="currencyRadioOffline" ng-class="{true:'active'}[tokenTx.id == 'ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a>
@@ -874,7 +877,7 @@
       </div>
       <input class="form-control" type="text" placeholder="0x4d792045746865722057616c6c6574" id="offlineData" ng-model="tx.data" />
     </div>
-    <div class="col-sm-10">
+    <div class="col-xs-12">
       <wallet-decrypt-drtv></wallet-decrypt-drtv>
     </div>
     <div class="col-sm-10">
@@ -994,7 +997,7 @@
       <h4><small> or </small> Select Existing Contract </h4>
       <div class="dropdown">
         <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
-          The DAO <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small> <span class="caret"></span>
+          The DAO <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small><span class="caret"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownExistingContracts">
           <li><a>DGD Crowdsale (Claim) <br /> <small class="mono">0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A</small></a></li>
@@ -1023,7 +1026,7 @@
           <h4>Read / Write Contract </h4>
           <div class="btn-group">
             <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
-            {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}} <span class="caret"></span></a>
+            {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}<span class="caret"></span></a>
             <ul class="dropdown-menu" ng-show="dropdownContracts">
               <li ng-repeat="func in contract.functions track by $index"><a ng-click="selectFunc($index)">{{func.name}}</a></li>
             </ul>
@@ -1925,7 +1928,7 @@
 
   <!-- Add classes:
     alert-success alert-danger alert-warning -->
-  <article class="alert popup">
+  <article class="alert popup" ng-hide="1===1">
     <div class="container">
       Aliquam mi nibh, fermentum vel dapibus vitae, posuere vel nunc. Nunc a enim gravida, molestie ex non, imperdiet diam. Aliquam mi nibh, fermentum vel dapibus vitae, posuere vel nunc. Nunc a enim gravida, molestie ex non, imperdiet diam.
     </div>

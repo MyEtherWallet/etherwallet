@@ -8,10 +8,12 @@ var balanceDrtv = function() {
                         <div class=\"addressIdenticon med float\" title=\"Address Indenticon\" blockie-address=\"{{wallet.getAddressString()}}\" watch-var=\"wallet\"></div>\n\
                         <span class=\"mono wrap\">{{wallet.getChecksumAddressString()}}</span>\n\
                       </ul>\n\
+                      <hr />\n\
                       <h5 translate=\"sidebar_AccountBal\">Account Balance:</h5>\n\
                       <ul class=\"account-info\">\n\
                         <li><span class=\"mono wrap\">{{wallet.balance}}</span> {{ajaxReq.type}}</li>\n\
                       </ul>\n\
+                      <hr />\n\
                       <section class=\"token-balances\">\n\
                         <h5 translate=\"sidebar_TokenBal\">Token Balances:</h5>\n\
                         <table class=\"account-info\">\n\
@@ -34,6 +36,7 @@ var balanceDrtv = function() {
                           <div ng-bind-html=\"validateLocalToken\"></div>\n\
                         </div>\n\
                       </section>\n\
+                      <hr />\n\
                       <section ng-show=\"ajaxReq.type==\'ETH\'\">\n\
                         <h5 translate=\"sidebar_Equiv\">Equivalent Values:</h5>\n\
                         <ul class=\"account-info\">\n\

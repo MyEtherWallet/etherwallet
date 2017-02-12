@@ -1,7 +1,7 @@
 <article class="row" ng-controller='decryptWalletCtrl'>
   <!-- Column 1 - Select Type of Key -->
   <section class="col-md-4 col-sm-6">
-    <h4 translate="decrypt_Title"> Select the format of your private key: </h4>
+    <h4 translate="decrypt_Access"> Select the format of your private key: </h4>
     <div class="radio"><label><input type="radio" ng-model="walletType" value="fileupload" /><span translate="x_Keystore2">Keystore / JSON File</span></label></div>
     <div class="radio"><label><input type="radio" ng-model="walletType" value="pasteprivkey" /><span translate="x_PrivKey2">Private Key</span></label></div>
     <div class="radio"><label><input type="radio" ng-model="walletType" value="pastemnemonic" /><span translate="x_Mnemonic">Mnemonic Phrase</span></label></div>
