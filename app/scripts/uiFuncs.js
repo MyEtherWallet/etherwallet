@@ -193,13 +193,13 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
 }
 uiFuncs.notifier = {
     show: false,
-    close: function() { this.show = false; },
+    close: function() { this.show = false; if (!this.scope.$$phase) this.scope.$apply()},
     open: function() { this.show = true; },
     class: '',
     message: '',
     timer: null,
     sce: null,
-    scope:null,
+    scope: null,
     warning: function(msg) {
         this.setClassAndOpen("alert-warning", msg);
     },
@@ -215,7 +215,7 @@ uiFuncs.notifier = {
     },
     setClassAndOpen: function(_class, msg) {
         this.class = _class;
-        this.message = msg.message ? this.sce.trustAsHtml(msg.message) : this.sce.trustAsHtml(msg) ;
+        this.message = msg.message ? this.sce.trustAsHtml(msg.message) : this.sce.trustAsHtml(msg);
         this.open();
     },
     setTimer: function() {
