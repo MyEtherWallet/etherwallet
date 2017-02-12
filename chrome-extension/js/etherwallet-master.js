@@ -2183,7 +2183,7 @@ var balanceDrtv = function () {
                           <li><span class=\"mono wrap\">{{wallet.chfBalance}}</span> CHF</li>\n\
                           <li><span class=\"mono wrap\">{{wallet.usdBalance}}</span> USD</li>\n\
                         </ul>\n\
-                        <a class=\"btn btn-primary btn-sm\">Exchange via Bity</a>\n\
+                        <a target="_blank" href="https://bity.com/af/jshkb37v" class=\"btn btn-primary btn-sm\">Exchange via Bity</a>\n\
                       </section>\n\
                     </aside>'
   };
@@ -2947,7 +2947,7 @@ Wallet.prototype.setTokens = function () {
 };
 Wallet.prototype.setBalance = function () {
     var parentObj = this;
-    this.balance = this.usdBalance = this.eurBalance = this.btcBalance = 'loading';
+    this.balance = this.usdBalance = this.eurBalance = this.btcBalance = this.chfBalance = this.repBalance = 'loading';
     ajaxReq.getBalance(parentObj.getAddressString(), function (data) {
         if (data.error) parentObj.balance = data.msg;else {
             parentObj.balance = etherUnits.toEther(data.data.balance, 'wei');
@@ -2955,6 +2955,8 @@ Wallet.prototype.setBalance = function () {
                 parentObj.usdBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.usd);
                 parentObj.eurBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.eur);
                 parentObj.btcBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.btc);
+                parentObj.chfBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.chf);
+                parentObj.repBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.rep);
             });
         }
     });
@@ -3341,18 +3343,22 @@ module.exports = customNode;
 
 var http;
 var ethPrice = function () {};
+var getValue = function (arr, pair) {
+    for (var i in arr) if (arr[i].pair == pair) return arr[i].rate;
+};
 ethPrice.getETHvalue = function (callback) {
-	var COINMARKETCAPAPI = "https://coinmarketcap-nexuist.rhcloud.com/api/";
-	var prefix = "eth";
-	ajaxReq.http.get(COINMARKETCAPAPI + prefix).then(function (data) {
-		data = data['data']['price'];
-		var priceObj = {
-			usd: data['usd'].toFixed(6),
-			eur: data['eur'].toFixed(6),
-			btc: data['btc'].toFixed(6)
-		};
-		callback(priceObj);
-	});
+    var BITYRATEAPI = "https://bity.com/api/v1/rate2/";
+    ajaxReq.http.get(BITYRATEAPI).then(function (data) {
+        data = data['data']['objects'];
+        var priceObj = {
+            usd: parseFloat(getValue(data, 'ETHUSD')).toFixed(6),
+            eur: parseFloat(getValue(data, 'ETHEUR')).toFixed(6),
+            btc: parseFloat(getValue(data, 'ETHBTC')).toFixed(6),
+            chf: parseFloat(getValue(data, 'ETHCHF')).toFixed(6),
+            rep: parseFloat(getValue(data, 'ETHREP')).toFixed(6)
+        };
+        callback(priceObj);
+    });
 };
 module.exports = ethPrice;
 

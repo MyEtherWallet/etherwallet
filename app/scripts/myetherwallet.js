@@ -36,7 +36,7 @@ Wallet.prototype.setTokens = function() {
 }
 Wallet.prototype.setBalance = function() {
     var parentObj = this;
-    this.balance = this.usdBalance = this.eurBalance = this.btcBalance = 'loading';
+    this.balance = this.usdBalance = this.eurBalance = this.btcBalance = this.chfBalance = this.repBalance = 'loading';
     ajaxReq.getBalance(parentObj.getAddressString(), function(data) {
         if (data.error) parentObj.balance = data.msg;
         else {
@@ -45,6 +45,8 @@ Wallet.prototype.setBalance = function() {
                 parentObj.usdBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.usd);
                 parentObj.eurBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.eur);
                 parentObj.btcBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.btc);
+                parentObj.chfBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.chf);
+                parentObj.repBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.rep);
             });
         }
     });
