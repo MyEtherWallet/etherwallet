@@ -1140,12 +1140,10 @@
       <h4><small> or </small> Select Existing Contract </h4>
       <div class="dropdown">
         <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
-          The DAO <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small><span class="caret"></span>
+          {{selectedAbi.name}} <small class="mono">{{selectedAbi.address}}</small><span class="caret"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownExistingContracts">
-          <li><a>DGD Crowdsale (Claim) <br /> <small class="mono">0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A</small></a></li>
-          <li><a class="active">The DAO <br /> <small class="mono">0xbb9bc244d798123fde783fcc1c72d3bb8c189413</small></a></li>
-          <li><a>Replay Safe Split <br /> <small class="mono">0xAA1A6e3e6EF20068f7F8d8C835d2D22fd5116444</small></a></li>
+          <li ng-repeat="abi in ajaxReq.abiList track by $index"><a ng-click="selectExistingAbi($index)">{{abi.name}} <br /> <small class="mono">{{abi.address}}</small></a></li>
         </ul>
       </div>
     </div>
