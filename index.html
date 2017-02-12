@@ -35,7 +35,7 @@
   <section class="bg-gradient header-branding">
     <section class="container">
 
-       <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> 
+       <a class="brand" href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> 
       
 
 
@@ -154,7 +154,7 @@
             <label>Chain ID</label>
             <input class="form-control" type="text" placeholder="" ng-model="customNode.chainId" ng-class="Validator.isPositiveNumber(customNode.chainId) ? 'is-valid' : 'is-invalid'">
           </div>
-          
+
         </div>
 
         <div class="modal-footer text-center">
@@ -212,7 +212,7 @@
     <section class="row">
       <div class="col-sm-6">
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
           <label translate="x_Keystore" translate="x_Keystore">Keystore File (Recommended • Encrypted • Mist/Geth Format)</label>
         </div>
@@ -220,7 +220,7 @@
       </div>
       <div class="col-sm-6">
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
           <label translate="x_PrivKey">Private Key (unencrypted)</label>
         </div>
@@ -235,7 +235,7 @@
     <section class="row">
       <div class="col-sm-10">
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
           <h4> 2. <span translate="GEN_Label_3"> Save Your Address. </span> </h4>
         </div>
@@ -254,13 +254,13 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_PrintDesc">ProTip: Click print and save this as a PDF, even if you do not own a printer!</p>
           <label translate="x_Print">Print Paper Wallet:</label>
         </div>
         <a class="btn btn-info btn-block btnAction" ng-click="printQRCode()" translate="x_PrintShort">PRINT</a>
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</p>
           <label translate="x_Json"> JSON File (unencrypted) </label>
         </div>
@@ -325,7 +325,7 @@
         <h1 class="col-xs-12" translate="VIEWWALLET_SuccessMsg">Success! Here are your wallet details.</h1>
         <div class="col-sm-10">
           <div class="account-help-icon">
-            <img src="images/helpicon.svg" class="help-icon" />
+            <img src="images/icon-help.svg" class="help-icon" />
             <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
             <h5 translate="x_Address">Your Address:</h5>
           </div>
@@ -338,7 +338,7 @@
 
       <div ng-show="wallet.type=='default'">
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
           <h5 translate="x_PrivKey">Private Key (unencrypted)</h5>
         </div>
@@ -347,7 +347,7 @@
 
       <div ng-show="wallet.type=='default'">
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_PrintDesc">ProTip: Click print and save this as a PDF, even if you do not own a printer!</p>
           <h5 translate="x_Print">Print Paper Wallet:</h5>
         </div>
@@ -356,7 +356,7 @@
 
       <div ng-show='showEnc'>
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
           <h5 translate="x_Keystore">Keystore/JSON File (Recommended • Encrypted • Mist/Geth Format)</h5>
         </div>
@@ -365,7 +365,7 @@
 
       <div ng-show="wallet.type=='default'">
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</p>
           <h5 translate="x_Json">JSON File (Unencrypted)</h5>
         </div>
@@ -395,7 +395,7 @@
 
       <!-- Message -->
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <ul class="account-help-text">
           <li translate="MSG_info2">Include your nickname and where you use the nickname so someone else cannot use it.</li>
           <li translate="MSG_info3">Include a specific reason for the message so it cannot be reused for a different purpose.</li>
@@ -408,7 +408,7 @@
 
       <!-- Date -->
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="MSG_info1">Include the current date so the signature cannot be reused on a different date.</p>
         <h5 translate="MSG_date"> Date </h5>
       </div>
@@ -416,7 +416,7 @@
 
       <!-- Sign Message Button -->
       <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="NAV_SignMsg" ng-show="wallet!=null"> Sign Message </a>
-      
+
 
       <!-- Signed Message -->
       <div ng-show="signMsg.signedMsg">
@@ -437,8 +437,8 @@
       <!-- Verify Signature Message Button -->
       <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
 
-      
-      
+
+
     </section>
     <!-- / Verify Message Stuff -->
 
@@ -633,15 +633,15 @@
   <section class="row exchange-rates" ng-show="showStage1">
     <div class="clearfix">
       <h5 class="col-xs-6 col-xs-offset-3">Current Rates</h5>
-      <div class="col-xs-3"><img class="pull-right" src="images/bity.jpg" width="100" height="38" /></div>
+      <div class="col-xs-3"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></div>
     </div>
       <div class="col-sm-6 order-info">
-        <p><input class="form-control input-sm" ng-model="priceTicker.ETHBTC"/><span>ETH = {{bity.curRate.ETHBTC*priceTicker.ETHBTC | number: 6}} BTC</span></p>
-        <p><input class="form-control input-sm" ng-model="priceTicker.ETHREP"/><span>ETH = {{bity.curRate.ETHREP*priceTicker.ETHREP | number: 6}} REP</span></p>
+        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.ETHBTC"/><span>ETH = {{bity.curRate.ETHBTC*priceTicker.ETHBTC | number: 6}} BTC</span></p>
+        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.ETHREP"/><span>ETH = {{bity.curRate.ETHREP*priceTicker.ETHREP | number: 6}} REP</span></p>
       </div>
       <div class="col-sm-6 order-info">
-        <p><input class="form-control input-sm" ng-model="priceTicker.BTCREP"/><span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span></p>
-        <p><input class="form-control input-sm" ng-model="priceTicker.BTCETH"/><span>BTC = {{bity.curRate.BTCETH*priceTicker.BTCETH | number: 6}} ETH</span></p>
+        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.BTCETH"/><span>BTC = {{bity.curRate.BTCETH*priceTicker.BTCETH | number: 6}} ETH</span></p>
+        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.BTCREP"/><span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span></p>
       </div>
       <!--<div class="col-sm-4 order-info">
         <p><input class="form-control input-sm" ng-model="priceTicker.REPBTC"/><span>REP = {{bity.curRate.REPBTC*priceTicker.REPBTC | number: 6}} BTC</span></p>
@@ -689,7 +689,7 @@
   <section class="exchange-start row" ng-show="showStage2">
     <div class="clearfix">
       <h5 class="col-xs-6 col-xs-offset-3">Your Information</h5>
-      <div class="col-xs-3"><img class="pull-right" src="images/bity.jpg" width="100" height="38" /></div>
+      <div class="col-xs-3"><a href="https://bity.com/" target="_blank"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></a></div>
     </div>
     <div class="order-info-wrap clearfix">
       <div class="col-sm-4 order-info"><h4>{{exchangeOrder.fromVal}} {{exchangeOrder.fromCoin}}</h4><p>Amount to send</p></div>
@@ -721,12 +721,12 @@
   <section class="exchange-order row" ng-show="showStage3Btc">
     <div class="clearfix">
       <h5 class="col-xs-6 col-xs-offset-3 text-center">Your Order Information - Please Save</h5>
-      <div class="col-xs-3"><img class="pull-right" src="images/bity.jpg" width="100" height="38" /></div>
+      <div class="col-xs-3"><a href="https://bity.com/" target="_blank"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></a></div>
     </div>
     <!-- Order Info -->
     <div class="order-info-wrap clearfix">
       <div class="col-sm-3 order-info"><h3>{{orderResult.reference}}</h3><p>Your reference number</p></div>
-      <div class="col-sm-3 order-info"><h3>{{orderResult.timeRemaining}}</h3><p>Time remaining to send {{orderResult.input.amount}} {{orderResult.input.currency}}</p></div>
+      <div class="col-sm-3 order-info"><h3>{{orderResult.timeRemaining}}</h3><p>Time remaining to send {{orderResult.input.amount}}&nbsp;{{orderResult.input.currency}}</p></div>
       <div class="col-sm-3 order-info"><h3>{{orderResult.output.amount}} {{orderResult.output.currency}}</h3><p>Amount of {{orderResult.output.currency}} to receive</p></div>
       <div class="col-sm-3 order-info"><h3>{{orderResult.input.amount/orderResult.output.amount  | number: 6}} {{orderResult.output.currency}}/{{orderResult.input.currency}}</h3><p>Your rate</p></div>
     </div>
@@ -757,7 +757,7 @@
     </div>
     <!-- / Exchange Progress -->
     <div class="text-center">
-      <h1> Please send <strong>{{orderResult.input.amount}} {{orderResult.input.currency}}</strong> to <br /> <strong class="mono primary">{{orderResult.payment_address}}</strong></h1>
+      <h1> Please send <strong>{{orderResult.input.amount}} {{orderResult.input.currency}}</strong> to <br /> <strong class="mono text-primary">{{orderResult.payment_address}}</strong></h1>
       <label> Scan BTC Address </label>
       <div class="qr-code" qr-code="{{orderResult.payment_address}}" watch-var="orderResult" ></div>
     </div>
@@ -769,11 +769,11 @@
   <section class="exchange-order row" ng-show="showStage3Eth">
     <div class="clearfix">
       <h5 class="col-xs-6 col-xs-offset-3 text-center">Your Order Information - Please Save</h5>
-      <div class="col-xs-3"><img class="pull-right" src="images/bity.jpg" width="100" height="38" /></div>
+      <div class="col-xs-3"><a href="https://bity.com/" target="_blank"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></a></div>
     </div>
     <div class="order-info-wrap clearfix">
       <div class="col-sm-3 order-info"><h3>{{orderResult.reference}}</h3><p>Your reference number</p></div>
-      <div class="col-sm-3 order-info"><h3>{{orderResult.timeRemaining}}</h3><p>Time remaining to send {{orderResult.input.amount}} {{orderResult.input.currency}}</p></div>
+      <div class="col-sm-3 order-info"><h3>{{orderResult.timeRemaining}}</h3><p>Time remaining</p></div>
       <div class="col-sm-3 order-info"><h3>{{orderResult.output.amount}} {{orderResult.output.currency}}</h3><p>Amount of {{orderResult.output.currency}} to receive</p></div>
       <div class="col-sm-3 order-info"><h3>{{orderResult.input.amount/orderResult.output.amount  | number: 6}} {{orderResult.output.currency}}/{{orderResult.input.currency}}</h3><p>Your rate</p></div>
     </div>
@@ -803,7 +803,7 @@
     </div>
     <!-- / Exchange Progress -->
     <div class="text-center">
-      <h1> Please send <strong>{{orderResult.input.amount}} {{orderResult.input.currency}}</strong> to <br /> <strong class="mono primary">{{orderResult.payment_address}}</strong></h1>
+      <h1> Please send <strong>{{orderResult.input.amount}} {{orderResult.input.currency}}</strong> to <br /> <strong class="mono text-primary">{{orderResult.payment_address}}</strong></h1>
     </div>
     <!-- Unlock Wallet Drtv -->
     <article class="collapse-container">
@@ -982,7 +982,7 @@
       <label translate="OFFLINE_Step1_Label_1"> From Address: </label>
       <p class="small" translate="OFFLINE_Step1_Label_2">Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.</p>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'')"/>
-      
+
     </div>
     <div class="col-xs-2 address-identicon-container-offline">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.from}}" watch-var="tx.from"></div>
@@ -1010,7 +1010,7 @@
     <div class="col-xs-10">
       <label translate="OFFLINE_Step2_Label_1"> To Address: </label>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress(tx.to,'')"/>
-      
+
     </div>
     <div class="col-xs-2 address-identicon-container-offline">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
@@ -1034,7 +1034,7 @@
     </div>
     <div class="col-sm-10">
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1 on your online computer.</p>
         <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
       </div>
@@ -1042,7 +1042,7 @@
     </div>
     <div class="col-sm-10">
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_4b">21000 is the default gas limit. When you send contracts or add'l data, this may need to be different. Any unused gas will be returned to you.</p>
         <label translate="OFFLINE_Step2_Label_4"> Gas Limit </label>
       </div>
@@ -1050,7 +1050,7 @@
     </div>
     <div class="col-sm-10">
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_5b">This was displayed in Step 1 on your online computer.</p>
         <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
       </div>
@@ -1058,7 +1058,7 @@
     </div>
     <div class="col-sm-10" ng-show="tokenTx.id=='ether'">
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional. Data is often used when you send transactions to contracts.</p>
         <label translate="OFFLINE_Step2_Label_6"> Data </label>
       </div>
@@ -1069,7 +1069,7 @@
     </div>
     <div class="col-sm-10">
       <a class="btn btn-info" ng-click="generateTx()" translate="SEND_generate">Generate Signed Transaction</a>
-      
+
     </div>
     <section id="step2Output">
 
@@ -1100,7 +1100,7 @@
   </section>
   <section class="row">
     <div class="col-sm-10">
-      
+
     </div>
   </section>
   <!-- / Step 3 -->
@@ -1229,7 +1229,7 @@
                 <label> {{input.name}} <small> {{input.type}} </small> </label>
                 <div class="row">
                   <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="input.value" ng-class="Validator.isValidAddress(input.value) ? 'is-valid' : 'is-invalid'"/></div>
-                  <div class="col-xs-1"><div class="addressIdenticon small inline" title="Address Indenticon" blockie-address="{{input.value}}" watch-var="input.value" ></div></div>
+                  <div class="col-xs-1"><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{input.value}}" watch-var="input.value" ></div></div>
                 </div>
                 </div>
                 <p class="item write-unit256" ng-switch-when="uint256">
@@ -1258,7 +1258,6 @@
         </span>
         <!-- / Write -->
 
-        </br>
 
         <!-- Output -->
         <span class="form-group output well" ng-show="contract.functions[contract.selectedFunc.index].constant">
@@ -1269,7 +1268,7 @@
                 <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
                 <div class="row">
                   <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="output.value" readonly/></div>
-                  <div class="col-xs-1"><div class="addressIdenticon small inline" title="Address Indenticon" blockie-address="{{output.value}}" watch-var="output.value" > </div> </div>
+                  <div class="col-xs-1"><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{output.value}}" watch-var="output.value" > </div> </div>
                 </div>
               </div>
               <!-- unit256 -->
@@ -2077,9 +2076,9 @@
 <div class="tab-pane" id="panePrint" style="display: none;">
   <div class="print-container">
     <span id="printwalletjson" style="display: none;"></span>
-    <img src="images/logo-1.png" class="ether-logo-1" height="100%" width="auto" />
-    <img src="images/logo-2.png" class="ether-logo-2" />
-    <img src="images/ether-title.png" height="100%" width="auto" class="print-title" />
+    <img src="images/logo-ethereum-1.png" class="ether-logo-1" height="100%" width="auto" />
+    <img src="images/logo-ethereum-2.png" class="ether-logo-2" />
+    <img src="images/print-sidebar.png" height="100%" width="auto" class="print-title" />
     <div class="print-qr-code-1">
       <div id="paperwalletaddqr"></div>
       <!--<img src="images/qrcode_test.png" width="90%;" height="auto" class="pull-left" />-->
@@ -2125,7 +2124,7 @@
 <footer ng-controller='footerCtrl'>
   <div class="container">
     <p>
-      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="55px" width="auto" alt="Ether Wallet" /></a>
+      <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" /></a>
     </p>
 
     <p>
