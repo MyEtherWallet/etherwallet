@@ -2191,7 +2191,7 @@ var balanceDrtv = function () {
                           <li><span class=\"mono wrap\">{{wallet.chfBalance}}</span> CHF</li>\n\
                           <li><span class=\"mono wrap\">{{wallet.usdBalance}}</span> USD</li>\n\
                         </ul>\n\
-                        <a target="_blank" ng-click=\"globalService.currentTab=globalService.tabs.swap.id\" class=\"btn btn-primary btn-sm\">swap via Bity</a>\n\
+                        <a target="_blank" ng-click=\"globalService.currentTab=globalService.tabs.swap.id\" class=\"btn btn-primary btn-sm\">Swap via Bity</a>\n\
                       </section>\n\
                     </aside>'
   };
