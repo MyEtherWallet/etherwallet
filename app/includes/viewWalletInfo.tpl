@@ -34,8 +34,8 @@
       </ul>
       <h5 translate="x_Address">Your Address:</h5>
         <div class="qr-code" qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
-      <h5 translate="x_PrivKey">Private Key (unencrypted):</h5>
-        <div class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+      <h5 translate="x_PrivKey" ng-show="wallet.type=='default'">Private Key (unencrypted):</h5>
+        <div ng-show="wallet.type=='default'" class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
     </section>
 
     <section class="col-sm-8">
@@ -92,10 +92,10 @@
         <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
       </div>
 
-
-      @@if (site === 'cx' )  {  @@include( './signMsg.tpl', { "site": "mew" } )   }
-      @@if (site === 'mew' ) {  @@include( './signMsg.tpl', { "site": "cx" } )    }
-
+      <div ng-show="wallet.type=='default'">
+        @@if (site === 'cx' )  {  @@include( './signMsg.tpl', { "site": "mew" } )   }
+        @@if (site === 'mew' ) {  @@include( './signMsg.tpl', { "site": "cx" } )    }
+      </div>
 
     </section>
 

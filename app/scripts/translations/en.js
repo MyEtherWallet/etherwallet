@@ -271,6 +271,7 @@ ERROR_24                    : 'Enter valid url, if you are on https your url mus
 ERROR_25                    : 'Please enter valid port',
 ERROR_26                    : 'Please enter valid chain ID',
 ERROR_27                    : 'Please enter valid ABI',
+ERROR_28                    : 'Minimum amount 0.01',
 SUCCESS_1                   : 'Valid address',
 SUCCESS_2                   : 'Wallet successfully decrypted',
 SUCCESS_3                   : 'Transaction submitted. TX ID: ',

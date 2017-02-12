@@ -82,6 +82,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             } else {
                 $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, "trezor"));
             }
+            $scope.HDWallet.wallets[$scope.HDWallet.wallets.length - 1].type = "addressOnly";
             $scope.HDWallet.wallets[$scope.HDWallet.wallets.length - 1].setBalance(false);
         }
         $scope.HDWallet.id = 0;

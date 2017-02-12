@@ -66,7 +66,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.wd = true;
         $scope.wallet.setBalance();
         $scope.wallet.setTokens();
-        $scope.setTokenSendMode();
+        if ($scope.parentTxConfig) {
+            $scope.tx.to = $scope.parentTxConfig.to;
+            $scope.tx.value = $scope.parentTxConfig.value;
+            $scope.tx.sendMode = $scope.parentTxConfig.sendMode;
+            $scope.tx.tokenSymbol = $scope.parentTxConfig.tokenSymbol;
+        }
         $scope.setTokenSendMode();
     });
     $scope.$watch('ajaxReq.key', function() {
