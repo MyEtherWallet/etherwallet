@@ -13,7 +13,6 @@ var balanceDrtv = function() {
                       <ul class=\"account-info\">\n\
                         <li><span class=\"mono wrap\">{{wallet.balance}}</span> {{ajaxReq.type}}</li>\n\
                       </ul>\n\
-                      <hr />\n\
                       <section class=\"token-balances\">\n\
                         <h5 translate=\"sidebar_TokenBal\">Token Balances:</h5>\n\
                         <table class=\"account-info\">\n\

@@ -44,7 +44,7 @@ var signMsgCtrl = function($scope, $sce, walletService) {
           var hash = ethUtil.sha3(json.msg);
           var pubKey = ethUtil.ecrecover(hash, sig[64], sig.slice(0,32), sig.slice(32,64));
           if(ethFuncs.getNakedAddress(json.address)!=ethUtil.pubToAddress(pubKey).toString('hex')) throw globalFuncs.errorMsgs[12];
-          else $scope.notifier.info(globalFuncs.successMsgs[0]);
+          else $scope.notifier.success(globalFuncs.successMsgs[0]);
 		} catch (e){
 		  $scope.notifier.danger(e);
 		}
