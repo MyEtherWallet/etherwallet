@@ -5,7 +5,7 @@ zh.code = 'zh';
 zh.data = {
 
 /* Sign Message */
-NAV_Exchange                : 'Swap',
+NAV_Swap                : 'Swap',
 NAV_SignMsg                 : 'Sign Message',
 MSG_message                 : 'Message',
 MSG_date                    : 'Date',

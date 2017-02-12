@@ -4,7 +4,7 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-  NAV_Exchange                : 'Swap',
+  NAV_Swap                : 'Swap',
 
   /* Sign Message */
   NAV_SignMsg                 : 'Podpisz Wiadomość',

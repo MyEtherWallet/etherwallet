@@ -5,7 +5,7 @@ fr.code = 'fr';
 fr.data = {
 
 /* Sign Message */
-NAV_Exchange                : 'Swap',
+NAV_Swap                : 'Swap',
 NAV_SignMsg                 : 'Signer un message',
 MSG_message                 : 'Message',
 MSG_date                    : 'Date',

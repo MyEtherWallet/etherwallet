@@ -5,7 +5,7 @@ de.code = 'de';
 de.data = {
 
 
-NAV_Exchange                : 'Swap',
+NAV_Swap                : 'Swap',
   /* Sign Message */
 NAV_SignMsg                 : 'Sign Message',
 MSG_message                 : 'Message',

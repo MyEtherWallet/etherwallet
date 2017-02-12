@@ -5,7 +5,7 @@ no.code = 'no';
 no.data = {
 
 /* Sign Message */
-NAV_Exchange                : 'Swap',
+NAV_Swap                : 'Swap',
 NAV_SignMsg                 : 'Signér Melding',
 MSG_message                 : 'Melding',
 MSG_date                    : 'Dato',

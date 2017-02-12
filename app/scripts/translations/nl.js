@@ -10,7 +10,7 @@ nl.data = {
   NAV_Contact                 : 'Contact',
   NAV_Contracts               : 'Contracten',
   NAV_DeployContract          : 'Verspreid Contract',
-  NAV_Exchange                : 'Swap',
+  NAV_Swap                : 'Swap',
   NAV_GenerateWallet          : 'Genereer Wallet',
   NAV_Help                    : 'Help',
   NAV_InteractContract        : 'Interactie met Contract',

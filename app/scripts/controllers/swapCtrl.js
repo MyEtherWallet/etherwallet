@@ -1,5 +1,5 @@
 'use strict';
-var exchangeCtrl = function($scope, $sce, walletService) {
+var swapCtrl = function($scope, $sce, walletService) {
     $scope.ajaxReq = ajaxReq;
     $scope.Validator = Validator;
     $scope.bity = new bity();
@@ -10,43 +10,43 @@ var exchangeCtrl = function($scope, $sce, walletService) {
     $scope.showStage2 = $scope.showStage3Eth = $scope.showStage3Btc = false;
     $scope.priceTicker = { ETHBTC: 1, ETHREP: 1, BTCREP: 1, BTCETH: 1, REPBTC: 1, REPETH: 1 };
     $scope.availableCoins = ["ETH", "BTC", "REP"];
-    $scope.exchangeOrder = {
+    $scope.swapOrder = {
         fromCoin: "ETH",
         toCoin: "BTC",
         isFrom: true,
         fromVal: '',
         toVal: '',
         toAddress: '',
-        exchangeRate: '',
-        exchangePair: ''
+        swapRate: '',
+        swapPair: ''
     }
 
     $scope.setOrderCoin = function(isFrom, coin) {
-        if (isFrom) $scope.exchangeOrder.fromCoin = coin;
-        else $scope.exchangeOrder.toCoin = coin;
-        if ($scope.exchangeOrder.fromCoin == $scope.exchangeOrder.toCoin)
+        if (isFrom) $scope.swapOrder.fromCoin = coin;
+        else $scope.swapOrder.toCoin = coin;
+        if ($scope.swapOrder.fromCoin == $scope.swapOrder.toCoin)
             for (var i in $scope.availableCoins)
-                if ($scope.availableCoins[i] != $scope.exchangeOrder.fromCoin) {
-                    $scope.exchangeOrder.toCoin = $scope.availableCoins[i];
+                if ($scope.availableCoins[i] != $scope.swapOrder.fromCoin) {
+                    $scope.swapOrder.toCoin = $scope.availableCoins[i];
                     break;
                 }
-        $scope.exchangeOrder.exchangeRate = $scope.bity.curRate[$scope.exchangeOrder.fromCoin + $scope.exchangeOrder.toCoin];
-        $scope.exchangeOrder.exchangePair = $scope.exchangeOrder.fromCoin + "/" + $scope.exchangeOrder.toCoin;
+        $scope.swapOrder.swapRate = $scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin];
+        $scope.swapOrder.swapPair = $scope.swapOrder.fromCoin + "/" + $scope.swapOrder.toCoin;
         $scope.updateEstimate(isFrom);
         $scope.dropdownFrom = $scope.dropdownTo = false;
     }
     $scope.updateEstimate = function(isFrom) {
-        if (isFrom) $scope.exchangeOrder.toVal = parseFloat(($scope.bity.curRate[$scope.exchangeOrder.fromCoin + $scope.exchangeOrder.toCoin] * $scope.exchangeOrder.fromVal).toFixed(bity.decimals));
-        else $scope.exchangeOrder.fromVal = parseFloat(($scope.exchangeOrder.toVal / $scope.bity.curRate[$scope.exchangeOrder.fromCoin + $scope.exchangeOrder.toCoin]).toFixed(bity.decimals));
-        $scope.exchangeOrder.isFrom = isFrom;
+        if (isFrom) $scope.swapOrder.toVal = parseFloat(($scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin] * $scope.swapOrder.fromVal).toFixed(bity.decimals));
+        else $scope.swapOrder.fromVal = parseFloat(($scope.swapOrder.toVal / $scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin]).toFixed(bity.decimals));
+        $scope.swapOrder.isFrom = isFrom;
     }
     $scope.setFinalPrices = function() {
         try {
-            
-            if (!$scope.Validator.isPositiveNumber($scope.exchangeOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.exchangeOrder.toVal)) throw globalFuncs.errorMsgs[0];
-            else if ($scope.exchangeOrder.fromVal < 0.01 || $scope.exchangeOrder.toVal < 0.01) throw globalFuncs.errorMsgs[27];
+
+            if (!$scope.Validator.isPositiveNumber($scope.swapOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.swapOrder.toVal)) throw globalFuncs.errorMsgs[0];
+            else if ($scope.swapOrder.fromVal < 0.01 || $scope.swapOrder.toVal < 0.01) throw globalFuncs.errorMsgs[27];
             $scope.bity.refreshRates(function() {
-                $scope.updateEstimate($scope.exchangeOrder.isFrom);
+                $scope.updateEstimate($scope.swapOrder.isFrom);
                 $scope.showStage1 = false;
                 $scope.showStage2 = true;
             });
@@ -56,13 +56,13 @@ var exchangeCtrl = function($scope, $sce, walletService) {
 
     }
     $scope.openOrder = function() {
-        
-        if (($scope.exchangeOrder.toCoin != 'BTC' && $scope.Validator.isValidAddress($scope.exchangeOrder.toAddress)) || ($scope.exchangeOrder.toCoin == 'BTC' && $scope.Validator.isValidBTCAddress($scope.exchangeOrder.toAddress))) {
+
+        if (($scope.swapOrder.toCoin != 'BTC' && $scope.Validator.isValidAddress($scope.swapOrder.toAddress)) || ($scope.swapOrder.toCoin == 'BTC' && $scope.Validator.isValidBTCAddress($scope.swapOrder.toAddress))) {
             var order = {
-                amount: $scope.exchangeOrder.isFrom ? $scope.exchangeOrder.fromVal : $scope.exchangeOrder.toVal,
-                mode: $scope.exchangeOrder.isFrom ? 0 : 1,
-                pair: $scope.exchangeOrder.fromCoin + $scope.exchangeOrder.toCoin,
-                destAddress: $scope.exchangeOrder.toAddress
+                amount: $scope.swapOrder.isFrom ? $scope.swapOrder.fromVal : $scope.swapOrder.toVal,
+                mode: $scope.swapOrder.isFrom ? 0 : 1,
+                pair: $scope.swapOrder.fromCoin + $scope.swapOrder.toCoin,
+                destAddress: $scope.swapOrder.toAddress
             }
             $scope.bity.openOrder(order, function(data) {
                 if (!data.error) {
@@ -103,4 +103,4 @@ var exchangeCtrl = function($scope, $sce, walletService) {
         }
     }
 };
-module.exports = exchangeCtrl;
+module.exports = swapCtrl;

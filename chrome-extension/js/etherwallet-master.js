@@ -1122,108 +1122,6 @@ module.exports = decryptWalletCtrl;
 },{"buffer":148}],14:[function(require,module,exports){
 'use strict';
 
-var exchangeCtrl = function ($scope, $sce, walletService) {
-    $scope.ajaxReq = ajaxReq;
-    $scope.Validator = Validator;
-    $scope.bity = new bity();
-    $scope.bity.refreshRates(function () {
-        $scope.setOrderCoin(true, "ETH");
-    });
-    $scope.showStage1 = true;
-    $scope.showStage2 = $scope.showStage3Eth = $scope.showStage3Btc = false;
-    $scope.priceTicker = { ETHBTC: 1, ETHREP: 1, BTCREP: 1, BTCETH: 1, REPBTC: 1, REPETH: 1 };
-    $scope.availableCoins = ["ETH", "BTC", "REP"];
-    $scope.exchangeOrder = {
-        fromCoin: "ETH",
-        toCoin: "BTC",
-        isFrom: true,
-        fromVal: '',
-        toVal: '',
-        toAddress: '',
-        exchangeRate: '',
-        exchangePair: ''
-    };
-
-    $scope.setOrderCoin = function (isFrom, coin) {
-        if (isFrom) $scope.exchangeOrder.fromCoin = coin;else $scope.exchangeOrder.toCoin = coin;
-        if ($scope.exchangeOrder.fromCoin == $scope.exchangeOrder.toCoin) for (var i in $scope.availableCoins) if ($scope.availableCoins[i] != $scope.exchangeOrder.fromCoin) {
-            $scope.exchangeOrder.toCoin = $scope.availableCoins[i];
-            break;
-        }
-        $scope.exchangeOrder.exchangeRate = $scope.bity.curRate[$scope.exchangeOrder.fromCoin + $scope.exchangeOrder.toCoin];
-        $scope.exchangeOrder.exchangePair = $scope.exchangeOrder.fromCoin + "/" + $scope.exchangeOrder.toCoin;
-        $scope.updateEstimate(isFrom);
-        $scope.dropdownFrom = $scope.dropdownTo = false;
-    };
-    $scope.updateEstimate = function (isFrom) {
-        if (isFrom) $scope.exchangeOrder.toVal = parseFloat(($scope.bity.curRate[$scope.exchangeOrder.fromCoin + $scope.exchangeOrder.toCoin] * $scope.exchangeOrder.fromVal).toFixed(bity.decimals));else $scope.exchangeOrder.fromVal = parseFloat(($scope.exchangeOrder.toVal / $scope.bity.curRate[$scope.exchangeOrder.fromCoin + $scope.exchangeOrder.toCoin]).toFixed(bity.decimals));
-        $scope.exchangeOrder.isFrom = isFrom;
-    };
-    $scope.setFinalPrices = function () {
-        try {
-
-            if (!$scope.Validator.isPositiveNumber($scope.exchangeOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.exchangeOrder.toVal)) throw globalFuncs.errorMsgs[0];else if ($scope.exchangeOrder.fromVal < 0.01 || $scope.exchangeOrder.toVal < 0.01) throw globalFuncs.errorMsgs[27];
-            $scope.bity.refreshRates(function () {
-                $scope.updateEstimate($scope.exchangeOrder.isFrom);
-                $scope.showStage1 = false;
-                $scope.showStage2 = true;
-            });
-        } catch (e) {
-            $scope.notifier.danger(e);
-        }
-    };
-    $scope.openOrder = function () {
-
-        if ($scope.exchangeOrder.toCoin != 'BTC' && $scope.Validator.isValidAddress($scope.exchangeOrder.toAddress) || $scope.exchangeOrder.toCoin == 'BTC' && $scope.Validator.isValidBTCAddress($scope.exchangeOrder.toAddress)) {
-            var order = {
-                amount: $scope.exchangeOrder.isFrom ? $scope.exchangeOrder.fromVal : $scope.exchangeOrder.toVal,
-                mode: $scope.exchangeOrder.isFrom ? 0 : 1,
-                pair: $scope.exchangeOrder.fromCoin + $scope.exchangeOrder.toCoin,
-                destAddress: $scope.exchangeOrder.toAddress
-            };
-            $scope.bity.openOrder(order, function (data) {
-                if (!data.error) {
-                    $scope.orderResult = data.data;
-                    $scope.orderResult.timeRemaining = '10:00';
-                    var timeRem = setInterval(function () {
-                        if ($scope.orderResult.validFor > 0) {
-                            $scope.orderResult.validFor--;
-                            var minutes = Math.floor($scope.orderResult.validFor / 60);
-                            var seconds = $scope.orderResult.validFor - minutes * 60;
-                            minutes = minutes < 10 ? '0' + minutes : minutes;
-                            seconds = seconds < 10 ? '0' + seconds : seconds;
-                            $scope.orderResult.timeRemaining = minutes + ':' + seconds;
-                            if (!$scope.$$phase) $scope.$apply();
-                        } else {
-                            clearInterval(timeRem);
-                            timeRem = null;
-                        }
-                    }, 1000);
-                    console.log($scope.orderResult);
-                    $scope.showStage2 = false;
-                    if ($scope.orderResult.input.currency == 'BTC') $scope.showStage3Btc = true;else {
-                        $scope.parentTxConfig = {
-                            to: $scope.orderResult.payment_address,
-                            value: $scope.orderResult.input.amount,
-                            sendMode: $scope.orderResult.input.currency == 'ETH' ? 'ether' : 'token',
-                            tokenSymbol: $scope.orderResult.input.currency == 'ETH' ? '' : orderResult.input.currency
-                        };
-                        new Modal(document.getElementById('sendTransaction'));
-                        $scope.showStage3Eth = true;
-                    }
-                } else $scope.notifier.danger(data.msg);
-                if (!$scope.$$phase) $scope.$apply();
-            });
-        } else {
-            $scope.notifier.danger(globalFuncs.errorMsgs[5]);
-        }
-    };
-};
-module.exports = exchangeCtrl;
-
-},{}],15:[function(require,module,exports){
-'use strict';
-
 var footerCtrl = function ($scope, globalService) {
     $scope.footerModal = new Modal(document.getElementById('disclaimerModal'));
     $scope.ethBlockNumber = "loading";
@@ -1240,7 +1138,7 @@ var footerCtrl = function ($scope, globalService) {
 };
 module.exports = footerCtrl;
 
-},{}],16:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
@@ -1410,7 +1308,7 @@ var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
 };
 module.exports = sendOfflineTxCtrl;
 
-},{}],17:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 var sendTxCtrl = function ($scope, $sce, walletService) {
@@ -1602,7 +1500,7 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
 };
 module.exports = sendTxCtrl;
 
-},{}],18:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -1662,7 +1560,109 @@ var signMsgCtrl = function ($scope, $sce, walletService) {
 module.exports = signMsgCtrl;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],19:[function(require,module,exports){
+},{"buffer":148}],18:[function(require,module,exports){
+'use strict';
+
+var swapCtrl = function ($scope, $sce, walletService) {
+    $scope.ajaxReq = ajaxReq;
+    $scope.Validator = Validator;
+    $scope.bity = new bity();
+    $scope.bity.refreshRates(function () {
+        $scope.setOrderCoin(true, "ETH");
+    });
+    $scope.showStage1 = true;
+    $scope.showStage2 = $scope.showStage3Eth = $scope.showStage3Btc = false;
+    $scope.priceTicker = { ETHBTC: 1, ETHREP: 1, BTCREP: 1, BTCETH: 1, REPBTC: 1, REPETH: 1 };
+    $scope.availableCoins = ["ETH", "BTC", "REP"];
+    $scope.swapOrder = {
+        fromCoin: "ETH",
+        toCoin: "BTC",
+        isFrom: true,
+        fromVal: '',
+        toVal: '',
+        toAddress: '',
+        swapRate: '',
+        swapPair: ''
+    };
+
+    $scope.setOrderCoin = function (isFrom, coin) {
+        if (isFrom) $scope.swapOrder.fromCoin = coin;else $scope.swapOrder.toCoin = coin;
+        if ($scope.swapOrder.fromCoin == $scope.swapOrder.toCoin) for (var i in $scope.availableCoins) if ($scope.availableCoins[i] != $scope.swapOrder.fromCoin) {
+            $scope.swapOrder.toCoin = $scope.availableCoins[i];
+            break;
+        }
+        $scope.swapOrder.swapRate = $scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin];
+        $scope.swapOrder.swapPair = $scope.swapOrder.fromCoin + "/" + $scope.swapOrder.toCoin;
+        $scope.updateEstimate(isFrom);
+        $scope.dropdownFrom = $scope.dropdownTo = false;
+    };
+    $scope.updateEstimate = function (isFrom) {
+        if (isFrom) $scope.swapOrder.toVal = parseFloat(($scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin] * $scope.swapOrder.fromVal).toFixed(bity.decimals));else $scope.swapOrder.fromVal = parseFloat(($scope.swapOrder.toVal / $scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin]).toFixed(bity.decimals));
+        $scope.swapOrder.isFrom = isFrom;
+    };
+    $scope.setFinalPrices = function () {
+        try {
+
+            if (!$scope.Validator.isPositiveNumber($scope.swapOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.swapOrder.toVal)) throw globalFuncs.errorMsgs[0];else if ($scope.swapOrder.fromVal < 0.01 || $scope.swapOrder.toVal < 0.01) throw globalFuncs.errorMsgs[27];
+            $scope.bity.refreshRates(function () {
+                $scope.updateEstimate($scope.swapOrder.isFrom);
+                $scope.showStage1 = false;
+                $scope.showStage2 = true;
+            });
+        } catch (e) {
+            $scope.notifier.danger(e);
+        }
+    };
+    $scope.openOrder = function () {
+
+        if ($scope.swapOrder.toCoin != 'BTC' && $scope.Validator.isValidAddress($scope.swapOrder.toAddress) || $scope.swapOrder.toCoin == 'BTC' && $scope.Validator.isValidBTCAddress($scope.swapOrder.toAddress)) {
+            var order = {
+                amount: $scope.swapOrder.isFrom ? $scope.swapOrder.fromVal : $scope.swapOrder.toVal,
+                mode: $scope.swapOrder.isFrom ? 0 : 1,
+                pair: $scope.swapOrder.fromCoin + $scope.swapOrder.toCoin,
+                destAddress: $scope.swapOrder.toAddress
+            };
+            $scope.bity.openOrder(order, function (data) {
+                if (!data.error) {
+                    $scope.orderResult = data.data;
+                    $scope.orderResult.timeRemaining = '10:00';
+                    var timeRem = setInterval(function () {
+                        if ($scope.orderResult.validFor > 0) {
+                            $scope.orderResult.validFor--;
+                            var minutes = Math.floor($scope.orderResult.validFor / 60);
+                            var seconds = $scope.orderResult.validFor - minutes * 60;
+                            minutes = minutes < 10 ? '0' + minutes : minutes;
+                            seconds = seconds < 10 ? '0' + seconds : seconds;
+                            $scope.orderResult.timeRemaining = minutes + ':' + seconds;
+                            if (!$scope.$$phase) $scope.$apply();
+                        } else {
+                            clearInterval(timeRem);
+                            timeRem = null;
+                        }
+                    }, 1000);
+                    console.log($scope.orderResult);
+                    $scope.showStage2 = false;
+                    if ($scope.orderResult.input.currency == 'BTC') $scope.showStage3Btc = true;else {
+                        $scope.parentTxConfig = {
+                            to: $scope.orderResult.payment_address,
+                            value: $scope.orderResult.input.amount,
+                            sendMode: $scope.orderResult.input.currency == 'ETH' ? 'ether' : 'token',
+                            tokenSymbol: $scope.orderResult.input.currency == 'ETH' ? '' : orderResult.input.currency
+                        };
+                        new Modal(document.getElementById('sendTransaction'));
+                        $scope.showStage3Eth = true;
+                    }
+                } else $scope.notifier.danger(data.msg);
+                if (!$scope.$$phase) $scope.$apply();
+            });
+        } else {
+            $scope.notifier.danger(globalFuncs.errorMsgs[5]);
+        }
+    };
+};
+module.exports = swapCtrl;
+
+},{}],19:[function(require,module,exports){
 'use strict';
 
 var tabsCtrl = function ($scope, globalService, $translate, $sce) {
@@ -2191,7 +2191,7 @@ var balanceDrtv = function () {
                           <li><span class=\"mono wrap\">{{wallet.chfBalance}}</span> CHF</li>\n\
                           <li><span class=\"mono wrap\">{{wallet.usdBalance}}</span> USD</li>\n\
                         </ul>\n\
-                        <a target="_blank" ng-click=\"globalService.currentTab=globalService.tabs.exchange.id\" class=\"btn btn-primary btn-sm\">Exchange via Bity</a>\n\
+                        <a target="_blank" ng-click=\"globalService.currentTab=globalService.tabs.swap.id\" class=\"btn btn-primary btn-sm\">swap via Bity</a>\n\
                       </section>\n\
                     </aside>'
   };
@@ -2865,7 +2865,7 @@ var bulkGenCtrl = require('./controllers/bulkGenCtrl');
 var decryptWalletCtrl = require('./controllers/decryptWalletCtrl');
 var viewWalletCtrl = require('./controllers/viewWalletCtrl');
 var sendTxCtrl = require('./controllers/sendTxCtrl');
-var exchangeCtrl = require('./controllers/exchangeCtrl');
+var swapCtrl = require('./controllers/swapCtrl');
 var signMsgCtrl = require('./controllers/signMsgCtrl');
 var contractsCtrl = require('./controllers/contractsCtrl');
 var footerCtrl = require('./controllers/footerCtrl');
@@ -2909,7 +2909,7 @@ app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
 app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptWalletCtrl]);
 app.controller('viewWalletCtrl', ['$scope', 'walletService', viewWalletCtrl]);
 app.controller('sendTxCtrl', ['$scope', '$sce', 'walletService', sendTxCtrl]);
-app.controller('exchangeCtrl', ['$scope', '$sce', 'walletService', exchangeCtrl]);
+app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
 app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
@@ -2923,7 +2923,7 @@ if (IS_CX) {
   app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
 }
 
-},{"./ajaxReq":4,"./bity":5,"./controllers/CX/addWalletCtrl":6,"./controllers/CX/cxDecryptWalletCtrl":7,"./controllers/CX/mainPopCtrl":8,"./controllers/CX/myWalletsCtrl":9,"./controllers/CX/quickSendCtrl":10,"./controllers/bulkGenCtrl":11,"./controllers/contractsCtrl":12,"./controllers/decryptWalletCtrl":13,"./controllers/exchangeCtrl":14,"./controllers/footerCtrl":15,"./controllers/sendOfflineTxCtrl":16,"./controllers/sendTxCtrl":17,"./controllers/signMsgCtrl":18,"./controllers/tabsCtrl":19,"./controllers/viewCtrl":20,"./controllers/viewWalletCtrl":21,"./controllers/walletBalanceCtrl":22,"./controllers/walletGenCtrl":23,"./cxFuncs":24,"./directives/QRCodeDrtv":25,"./directives/balanceDrtv":26,"./directives/blockiesDrtv":27,"./directives/cxWalletDecryptDrtv":28,"./directives/fileReaderDrtv":29,"./directives/walletDecryptDrtv":30,"./ethFuncs":31,"./etherUnits":32,"./globalFuncs":33,"./myetherwallet":35,"./nodes":42,"./services/globalService":43,"./services/walletService":44,"./solidity/coder":48,"./solidity/utils":59,"./staticJS/customMarked":60,"./staticJS/ledger-eth":61,"./staticJS/ledger3":62,"./staticJS/trezorConnect":63,"./staticJS/u2f-api":64,"./tokenlib":65,"./translations/translate.js":85,"./uiFuncs":88,"./validator":89,"angular":97,"angular-animate":91,"angular-sanitize":93,"angular-translate":95,"angular-translate-handler-log":94,"bignumber.js":114,"bip39":115,"crypto":157,"ethereumjs-tx":186,"ethereumjs-util":187,"hdkey":197,"scryptsy":242,"string-format":258,"uuid":268,"wallet-address-validator":273}],35:[function(require,module,exports){
+},{"./ajaxReq":4,"./bity":5,"./controllers/CX/addWalletCtrl":6,"./controllers/CX/cxDecryptWalletCtrl":7,"./controllers/CX/mainPopCtrl":8,"./controllers/CX/myWalletsCtrl":9,"./controllers/CX/quickSendCtrl":10,"./controllers/bulkGenCtrl":11,"./controllers/contractsCtrl":12,"./controllers/decryptWalletCtrl":13,"./controllers/footerCtrl":14,"./controllers/sendOfflineTxCtrl":15,"./controllers/sendTxCtrl":16,"./controllers/signMsgCtrl":17,"./controllers/swapCtrl":18,"./controllers/tabsCtrl":19,"./controllers/viewCtrl":20,"./controllers/viewWalletCtrl":21,"./controllers/walletBalanceCtrl":22,"./controllers/walletGenCtrl":23,"./cxFuncs":24,"./directives/QRCodeDrtv":25,"./directives/balanceDrtv":26,"./directives/blockiesDrtv":27,"./directives/cxWalletDecryptDrtv":28,"./directives/fileReaderDrtv":29,"./directives/walletDecryptDrtv":30,"./ethFuncs":31,"./etherUnits":32,"./globalFuncs":33,"./myetherwallet":35,"./nodes":42,"./services/globalService":43,"./services/walletService":44,"./solidity/coder":48,"./solidity/utils":59,"./staticJS/customMarked":60,"./staticJS/ledger-eth":61,"./staticJS/ledger3":62,"./staticJS/trezorConnect":63,"./staticJS/u2f-api":64,"./tokenlib":65,"./translations/translate.js":85,"./uiFuncs":88,"./validator":89,"angular":97,"angular-animate":91,"angular-sanitize":93,"angular-translate":95,"angular-translate-handler-log":94,"bignumber.js":113,"bip39":114,"crypto":157,"ethereumjs-tx":186,"ethereumjs-util":187,"hdkey":197,"scryptsy":242,"string-format":258,"uuid":268,"wallet-address-validator":273}],35:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -3722,10 +3722,10 @@ var globalService = function ($http, $httpParamSerializerJQLike) {
       mew: true,
       cx: true
     },
-    exchange: {
+    swap: {
       id: 4,
-      name: "NAV_Exchange",
-      url: "exchange",
+      name: "NAV_Swap",
+      url: "swap",
       mew: true,
       cx: true
     },
@@ -4181,7 +4181,7 @@ module.exports = {
     defaultAccount: undefined
 };
 
-},{"bignumber.js":114}],50:[function(require,module,exports){
+},{"bignumber.js":113}],50:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4456,7 +4456,7 @@ module.exports = {
     formatOutputAddress: formatOutputAddress
 };
 
-},{"./config":49,"./param":53,"./utils":59,"bignumber.js":114}],52:[function(require,module,exports){
+},{"./config":49,"./param":53,"./utils":59,"bignumber.js":113}],52:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -5602,7 +5602,7 @@ module.exports = {
     isJson: isJson
 };
 
-},{"bignumber.js":114,"ethereumjs-util":187,"utf8":262}],60:[function(require,module,exports){
+},{"bignumber.js":113,"ethereumjs-util":187,"utf8":262}],60:[function(require,module,exports){
 'use strict';
 
 var marked = require('marked');
@@ -7578,7 +7578,7 @@ var de = function () {};
 de.code = 'de';
 de.data = {
 
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
   /* Sign Message */
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
@@ -8121,7 +8121,7 @@ var el = function () {};
 el.code = 'el';
 el.data = {
 
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
 
   /* Sign Message */
   NAV_SignMsg: 'Sign Message',
@@ -8674,7 +8674,7 @@ en.data = {
   NAV_Contact: 'Contact',
   NAV_Contracts: 'Contracts',
   NAV_DeployContract: 'Deploy Contract',
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
   NAV_GenerateWallet: 'Generate Wallet',
   NAV_Help: 'Help',
   NAV_InteractContract: 'Interact with Contract',
@@ -9205,7 +9205,7 @@ var es = function () {};
 es.code = 'es';
 es.data = {
 
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
 
   /* Sign Message */
   NAV_SignMsg: 'Sign Message',
@@ -9749,7 +9749,7 @@ var fi = function () {};
 fi.code = 'fi';
 fi.data = {
 
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
 
   ERROR_22: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.',
 
@@ -10322,7 +10322,7 @@ fr.code = 'fr';
 fr.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
   NAV_SignMsg: 'Signer un message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -10869,7 +10869,7 @@ hu.code = 'hu';
 hu.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -11413,7 +11413,7 @@ id.code = 'id';
 id.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
   NAV_SignMsg: 'Penandaan Pesan',
   MSG_message: 'Pesan',
   MSG_date: 'Tanggal',
@@ -11955,7 +11955,7 @@ var it = function () {};
 it.code = 'it';
 it.data = {
 
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
 
   /* Sign Message */
   MSG_message: 'Messaggio',
@@ -12504,7 +12504,7 @@ var ja = function () {};
 ja.code = 'ja';
 ja.data = {
 
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
 
   /* Sign Message */
   MSG_message: 'メッセージ',
@@ -13055,7 +13055,7 @@ nl.data = {
   NAV_Contact: 'Contact',
   NAV_Contracts: 'Contracten',
   NAV_DeployContract: 'Verspreid Contract',
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
   NAV_GenerateWallet: 'Genereer Wallet',
   NAV_Help: 'Help',
   NAV_InteractContract: 'Interactie met Contract',
@@ -13597,7 +13597,7 @@ no.code = 'no';
 no.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
   NAV_SignMsg: 'Signér Melding',
   MSG_message: 'Melding',
   MSG_date: 'Dato',
@@ -14140,7 +14140,7 @@ var pl = function () {};
 pl.code = 'pl';
 pl.data = {
 
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
 
   /* Sign Message */
   NAV_SignMsg: 'Podpisz Wiadomość',
@@ -14684,7 +14684,7 @@ pt.code = 'pt';
 pt.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Exchange',
+  NAV_Swap: 'Exchange',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -15230,7 +15230,7 @@ ru.code = 'ru';
 ru.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -15775,7 +15775,7 @@ tr.code = 'tr';
 tr.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -16378,7 +16378,7 @@ vi.code = 'vi';
 vi.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -16919,7 +16919,7 @@ zh.code = 'zh';
 zh.data = {
 
   /* Sign Message */
-  NAV_Exchange: 'Swap',
+  NAV_Swap: 'Swap',
   NAV_SignMsg: 'Sign Message',
   MSG_message: 'Message',
   MSG_date: 'Date',
@@ -59533,7 +59533,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":99,"./asn1/base":101,"./asn1/constants":105,"./asn1/decoders":107,"./asn1/encoders":110,"bn.js":118}],99:[function(require,module,exports){
+},{"./asn1/api":99,"./asn1/base":101,"./asn1/constants":105,"./asn1/decoders":107,"./asn1/encoders":110,"bn.js":117}],99:[function(require,module,exports){
 var asn1 = require('../asn1');
 var inherits = require('inherits');
 
@@ -61256,500 +61256,6 @@ PEMEncoder.prototype.encode = function encode(data, options) {
 };
 
 },{"./der":109,"inherits":200}],112:[function(require,module,exports){
-(function (global){
-'use strict';
-
-// compare and isBuffer taken from https://github.com/feross/buffer/blob/680e9e5e488f22aac27599a57dc844a6315928dd/index.js
-// original notice:
-
-/*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
- * @license  MIT
- */
-function compare(a, b) {
-  if (a === b) {
-    return 0;
-  }
-
-  var x = a.length;
-  var y = b.length;
-
-  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
-    if (a[i] !== b[i]) {
-      x = a[i];
-      y = b[i];
-      break;
-    }
-  }
-
-  if (x < y) {
-    return -1;
-  }
-  if (y < x) {
-    return 1;
-  }
-  return 0;
-}
-function isBuffer(b) {
-  if (global.Buffer && typeof global.Buffer.isBuffer === 'function') {
-    return global.Buffer.isBuffer(b);
-  }
-  return !!(b != null && b._isBuffer);
-}
-
-// based on node assert, original notice:
-
-// http://wiki.commonjs.org/wiki/Unit_Testing/1.0
-//
-// THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
-//
-// Originally from narwhal.js (http://narwhaljs.org)
-// Copyright (c) 2009 Thomas Robinson <280north.com>
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the 'Software'), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
-// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-var util = require('util/');
-var hasOwn = Object.prototype.hasOwnProperty;
-var pSlice = Array.prototype.slice;
-var functionsHaveNames = (function () {
-  return function foo() {}.name === 'foo';
-}());
-function pToString (obj) {
-  return Object.prototype.toString.call(obj);
-}
-function isView(arrbuf) {
-  if (isBuffer(arrbuf)) {
-    return false;
-  }
-  if (typeof global.ArrayBuffer !== 'function') {
-    return false;
-  }
-  if (typeof ArrayBuffer.isView === 'function') {
-    return ArrayBuffer.isView(arrbuf);
-  }
-  if (!arrbuf) {
-    return false;
-  }
-  if (arrbuf instanceof DataView) {
-    return true;
-  }
-  if (arrbuf.buffer && arrbuf.buffer instanceof ArrayBuffer) {
-    return true;
-  }
-  return false;
-}
-// 1. The assert module provides functions that throw
-// AssertionError's when particular conditions are not met. The
-// assert module must conform to the following interface.
-
-var assert = module.exports = ok;
-
-// 2. The AssertionError is defined in assert.
-// new assert.AssertionError({ message: message,
-//                             actual: actual,
-//                             expected: expected })
-
-var regex = /\s*function\s+([^\(\s]*)\s*/;
-// based on https://github.com/ljharb/function.prototype.name/blob/adeeeec8bfcc6068b187d7d9fb3d5bb1d3a30899/implementation.js
-function getName(func) {
-  if (!util.isFunction(func)) {
-    return;
-  }
-  if (functionsHaveNames) {
-    return func.name;
-  }
-  var str = func.toString();
-  var match = str.match(regex);
-  return match && match[1];
-}
-assert.AssertionError = function AssertionError(options) {
-  this.name = 'AssertionError';
-  this.actual = options.actual;
-  this.expected = options.expected;
-  this.operator = options.operator;
-  if (options.message) {
-    this.message = options.message;
-    this.generatedMessage = false;
-  } else {
-    this.message = getMessage(this);
-    this.generatedMessage = true;
-  }
-  var stackStartFunction = options.stackStartFunction || fail;
-  if (Error.captureStackTrace) {
-    Error.captureStackTrace(this, stackStartFunction);
-  } else {
-    // non v8 browsers so we can have a stacktrace
-    var err = new Error();
-    if (err.stack) {
-      var out = err.stack;
-
-      // try to strip useless frames
-      var fn_name = getName(stackStartFunction);
-      var idx = out.indexOf('\n' + fn_name);
-      if (idx >= 0) {
-        // once we have located the function frame
-        // we need to strip out everything before it (and its line)
-        var next_line = out.indexOf('\n', idx + 1);
-        out = out.substring(next_line + 1);
-      }
-
-      this.stack = out;
-    }
-  }
-};
-
-// assert.AssertionError instanceof Error
-util.inherits(assert.AssertionError, Error);
-
-function truncate(s, n) {
-  if (typeof s === 'string') {
-    return s.length < n ? s : s.slice(0, n);
-  } else {
-    return s;
-  }
-}
-function inspect(something) {
-  if (functionsHaveNames || !util.isFunction(something)) {
-    return util.inspect(something);
-  }
-  var rawname = getName(something);
-  var name = rawname ? ': ' + rawname : '';
-  return '[Function' +  name + ']';
-}
-function getMessage(self) {
-  return truncate(inspect(self.actual), 128) + ' ' +
-         self.operator + ' ' +
-         truncate(inspect(self.expected), 128);
-}
-
-// At present only the three keys mentioned above are used and
-// understood by the spec. Implementations or sub modules can pass
-// other keys to the AssertionError's constructor - they will be
-// ignored.
-
-// 3. All of the following functions must throw an AssertionError
-// when a corresponding condition is not met, with a message that
-// may be undefined if not provided.  All assertion methods provide
-// both the actual and expected values to the assertion error for
-// display purposes.
-
-function fail(actual, expected, message, operator, stackStartFunction) {
-  throw new assert.AssertionError({
-    message: message,
-    actual: actual,
-    expected: expected,
-    operator: operator,
-    stackStartFunction: stackStartFunction
-  });
-}
-
-// EXTENSION! allows for well behaved errors defined elsewhere.
-assert.fail = fail;
-
-// 4. Pure assertion tests whether a value is truthy, as determined
-// by !!guard.
-// assert.ok(guard, message_opt);
-// This statement is equivalent to assert.equal(true, !!guard,
-// message_opt);. To test strictly for the value true, use
-// assert.strictEqual(true, guard, message_opt);.
-
-function ok(value, message) {
-  if (!value) fail(value, true, message, '==', assert.ok);
-}
-assert.ok = ok;
-
-// 5. The equality assertion tests shallow, coercive equality with
-// ==.
-// assert.equal(actual, expected, message_opt);
-
-assert.equal = function equal(actual, expected, message) {
-  if (actual != expected) fail(actual, expected, message, '==', assert.equal);
-};
-
-// 6. The non-equality assertion tests for whether two objects are not equal
-// with != assert.notEqual(actual, expected, message_opt);
-
-assert.notEqual = function notEqual(actual, expected, message) {
-  if (actual == expected) {
-    fail(actual, expected, message, '!=', assert.notEqual);
-  }
-};
-
-// 7. The equivalence assertion tests a deep equality relation.
-// assert.deepEqual(actual, expected, message_opt);
-
-assert.deepEqual = function deepEqual(actual, expected, message) {
-  if (!_deepEqual(actual, expected, false)) {
-    fail(actual, expected, message, 'deepEqual', assert.deepEqual);
-  }
-};
-
-assert.deepStrictEqual = function deepStrictEqual(actual, expected, message) {
-  if (!_deepEqual(actual, expected, true)) {
-    fail(actual, expected, message, 'deepStrictEqual', assert.deepStrictEqual);
-  }
-};
-
-function _deepEqual(actual, expected, strict, memos) {
-  // 7.1. All identical values are equivalent, as determined by ===.
-  if (actual === expected) {
-    return true;
-  } else if (isBuffer(actual) && isBuffer(expected)) {
-    return compare(actual, expected) === 0;
-
-  // 7.2. If the expected value is a Date object, the actual value is
-  // equivalent if it is also a Date object that refers to the same time.
-  } else if (util.isDate(actual) && util.isDate(expected)) {
-    return actual.getTime() === expected.getTime();
-
-  // 7.3 If the expected value is a RegExp object, the actual value is
-  // equivalent if it is also a RegExp object with the same source and
-  // properties (`global`, `multiline`, `lastIndex`, `ignoreCase`).
-  } else if (util.isRegExp(actual) && util.isRegExp(expected)) {
-    return actual.source === expected.source &&
-           actual.global === expected.global &&
-           actual.multiline === expected.multiline &&
-           actual.lastIndex === expected.lastIndex &&
-           actual.ignoreCase === expected.ignoreCase;
-
-  // 7.4. Other pairs that do not both pass typeof value == 'object',
-  // equivalence is determined by ==.
-  } else if ((actual === null || typeof actual !== 'object') &&
-             (expected === null || typeof expected !== 'object')) {
-    return strict ? actual === expected : actual == expected;
-
-  // If both values are instances of typed arrays, wrap their underlying
-  // ArrayBuffers in a Buffer each to increase performance
-  // This optimization requires the arrays to have the same type as checked by
-  // Object.prototype.toString (aka pToString). Never perform binary
-  // comparisons for Float*Arrays, though, since e.g. +0 === -0 but their
-  // bit patterns are not identical.
-  } else if (isView(actual) && isView(expected) &&
-             pToString(actual) === pToString(expected) &&
-             !(actual instanceof Float32Array ||
-               actual instanceof Float64Array)) {
-    return compare(new Uint8Array(actual.buffer),
-                   new Uint8Array(expected.buffer)) === 0;
-
-  // 7.5 For all other Object pairs, including Array objects, equivalence is
-  // determined by having the same number of owned properties (as verified
-  // with Object.prototype.hasOwnProperty.call), the same set of keys
-  // (although not necessarily the same order), equivalent values for every
-  // corresponding key, and an identical 'prototype' property. Note: this
-  // accounts for both named and indexed properties on Arrays.
-  } else if (isBuffer(actual) !== isBuffer(expected)) {
-    return false;
-  } else {
-    memos = memos || {actual: [], expected: []};
-
-    var actualIndex = memos.actual.indexOf(actual);
-    if (actualIndex !== -1) {
-      if (actualIndex === memos.expected.indexOf(expected)) {
-        return true;
-      }
-    }
-
-    memos.actual.push(actual);
-    memos.expected.push(expected);
-
-    return objEquiv(actual, expected, strict, memos);
-  }
-}
-
-function isArguments(object) {
-  return Object.prototype.toString.call(object) == '[object Arguments]';
-}
-
-function objEquiv(a, b, strict, actualVisitedObjects) {
-  if (a === null || a === undefined || b === null || b === undefined)
-    return false;
-  // if one is a primitive, the other must be same
-  if (util.isPrimitive(a) || util.isPrimitive(b))
-    return a === b;
-  if (strict && Object.getPrototypeOf(a) !== Object.getPrototypeOf(b))
-    return false;
-  var aIsArgs = isArguments(a);
-  var bIsArgs = isArguments(b);
-  if ((aIsArgs && !bIsArgs) || (!aIsArgs && bIsArgs))
-    return false;
-  if (aIsArgs) {
-    a = pSlice.call(a);
-    b = pSlice.call(b);
-    return _deepEqual(a, b, strict);
-  }
-  var ka = objectKeys(a);
-  var kb = objectKeys(b);
-  var key, i;
-  // having the same number of owned properties (keys incorporates
-  // hasOwnProperty)
-  if (ka.length !== kb.length)
-    return false;
-  //the same set of keys (although not necessarily the same order),
-  ka.sort();
-  kb.sort();
-  //~~~cheap key test
-  for (i = ka.length - 1; i >= 0; i--) {
-    if (ka[i] !== kb[i])
-      return false;
-  }
-  //equivalent values for every corresponding key, and
-  //~~~possibly expensive deep test
-  for (i = ka.length - 1; i >= 0; i--) {
-    key = ka[i];
-    if (!_deepEqual(a[key], b[key], strict, actualVisitedObjects))
-      return false;
-  }
-  return true;
-}
-
-// 8. The non-equivalence assertion tests for any deep inequality.
-// assert.notDeepEqual(actual, expected, message_opt);
-
-assert.notDeepEqual = function notDeepEqual(actual, expected, message) {
-  if (_deepEqual(actual, expected, false)) {
-    fail(actual, expected, message, 'notDeepEqual', assert.notDeepEqual);
-  }
-};
-
-assert.notDeepStrictEqual = notDeepStrictEqual;
-function notDeepStrictEqual(actual, expected, message) {
-  if (_deepEqual(actual, expected, true)) {
-    fail(actual, expected, message, 'notDeepStrictEqual', notDeepStrictEqual);
-  }
-}
-
-
-// 9. The strict equality assertion tests strict equality, as determined by ===.
-// assert.strictEqual(actual, expected, message_opt);
-
-assert.strictEqual = function strictEqual(actual, expected, message) {
-  if (actual !== expected) {
-    fail(actual, expected, message, '===', assert.strictEqual);
-  }
-};
-
-// 10. The strict non-equality assertion tests for strict inequality, as
-// determined by !==.  assert.notStrictEqual(actual, expected, message_opt);
-
-assert.notStrictEqual = function notStrictEqual(actual, expected, message) {
-  if (actual === expected) {
-    fail(actual, expected, message, '!==', assert.notStrictEqual);
-  }
-};
-
-function expectedException(actual, expected) {
-  if (!actual || !expected) {
-    return false;
-  }
-
-  if (Object.prototype.toString.call(expected) == '[object RegExp]') {
-    return expected.test(actual);
-  }
-
-  try {
-    if (actual instanceof expected) {
-      return true;
-    }
-  } catch (e) {
-    // Ignore.  The instanceof check doesn't work for arrow functions.
-  }
-
-  if (Error.isPrototypeOf(expected)) {
-    return false;
-  }
-
-  return expected.call({}, actual) === true;
-}
-
-function _tryBlock(block) {
-  var error;
-  try {
-    block();
-  } catch (e) {
-    error = e;
-  }
-  return error;
-}
-
-function _throws(shouldThrow, block, expected, message) {
-  var actual;
-
-  if (typeof block !== 'function') {
-    throw new TypeError('"block" argument must be a function');
-  }
-
-  if (typeof expected === 'string') {
-    message = expected;
-    expected = null;
-  }
-
-  actual = _tryBlock(block);
-
-  message = (expected && expected.name ? ' (' + expected.name + ').' : '.') +
-            (message ? ' ' + message : '.');
-
-  if (shouldThrow && !actual) {
-    fail(actual, expected, 'Missing expected exception' + message);
-  }
-
-  var userProvidedMessage = typeof message === 'string';
-  var isUnwantedException = !shouldThrow && util.isError(actual);
-  var isUnexpectedException = !shouldThrow && actual && !expected;
-
-  if ((isUnwantedException &&
-      userProvidedMessage &&
-      expectedException(actual, expected)) ||
-      isUnexpectedException) {
-    fail(actual, expected, 'Got unwanted exception' + message);
-  }
-
-  if ((shouldThrow && actual && expected &&
-      !expectedException(actual, expected)) || (!shouldThrow && actual)) {
-    throw actual;
-  }
-}
-
-// 11. Expected to throw an error:
-// assert.throws(block, Error_opt, message_opt);
-
-assert.throws = function(block, /*optional*/error, /*optional*/message) {
-  _throws(true, block, error, message);
-};
-
-// EXTENSION! This is annoying to write outside this module.
-assert.doesNotThrow = function(block, /*optional*/error, /*optional*/message) {
-  _throws(false, block, error, message);
-};
-
-assert.ifError = function(err) { if (err) throw err; };
-
-var objectKeys = Object.keys || function (obj) {
-  var keys = [];
-  for (var key in obj) {
-    if (hasOwn.call(obj, key)) keys.push(key);
-  }
-  return keys;
-};
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"util/":266}],113:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -61865,7 +61371,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],114:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 /*! bignumber.js v3.1.2 https://github.com/MikeMcl/bignumber.js/LICENCE */
 
 ;(function (globalObj) {
@@ -64612,7 +64118,7 @@ function fromByteArray (uint8) {
     }
 })(this);
 
-},{}],115:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 (function (Buffer){
 var assert = require('assert')
 var createHash = require('create-hash')
@@ -64745,7 +64251,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./wordlists/en.json":116,"assert":112,"buffer":148,"create-hash":153,"pbkdf2":218,"randombytes":228,"unorm":261}],116:[function(require,module,exports){
+},{"./wordlists/en.json":115,"assert":144,"buffer":148,"create-hash":153,"pbkdf2":218,"randombytes":228,"unorm":261}],115:[function(require,module,exports){
 module.exports=[
   "abandon",
   "ability",
@@ -66797,7 +66303,7 @@ module.exports=[
   "zoo"
 ]
 
-},{}],117:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 (function (Buffer){
 // Reference https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 // Format: 0x30 [total-length] 0x02 [R-length] [R] 0x02 [S-length] [S]
@@ -66912,7 +66418,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],118:[function(require,module,exports){
+},{"buffer":148}],117:[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -70341,7 +69847,7 @@ module.exports = {
   };
 })(typeof module === 'undefined' || module, this);
 
-},{}],119:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -70360,19 +69866,19 @@ Rand.prototype.generate = function generate(len) {
   return this._rand(len);
 };
 
-if (typeof self === 'object') {
-  if (self.crypto && self.crypto.getRandomValues) {
+if (typeof window === 'object') {
+  if (window.crypto && window.crypto.getRandomValues) {
     // Modern browsers
     Rand.prototype._rand = function _rand(n) {
       var arr = new Uint8Array(n);
-      self.crypto.getRandomValues(arr);
+      window.crypto.getRandomValues(arr);
       return arr;
     };
-  } else if (self.msCrypto && self.msCrypto.getRandomValues) {
+  } else if (window.msCrypto && window.msCrypto.getRandomValues) {
     // IE
     Rand.prototype._rand = function _rand(n) {
       var arr = new Uint8Array(n);
-      self.msCrypto.getRandomValues(arr);
+      window.msCrypto.getRandomValues(arr);
       return arr;
     };
   } else {
@@ -70382,7 +69888,7 @@ if (typeof self === 'object') {
     };
   }
 } else {
-  // Node.js or Web worker with no crypto support
+  // Node.js or Web worker
   try {
     var crypto = require('crypto');
 
@@ -70400,9 +69906,9 @@ if (typeof self === 'object') {
   }
 }
 
-},{"crypto":120}],120:[function(require,module,exports){
+},{"crypto":119}],119:[function(require,module,exports){
 
-},{}],121:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 (function (Buffer){
 // based on the aes implimentation in triple sec
 // https://github.com/keybase/triplesec
@@ -70583,7 +70089,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],122:[function(require,module,exports){
+},{"buffer":148}],121:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -70684,7 +70190,7 @@ function xorTest (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"./ghash":126,"buffer":148,"buffer-xor":147,"cipher-base":149,"inherits":200}],123:[function(require,module,exports){
+},{"./aes":120,"./ghash":125,"buffer":148,"buffer-xor":147,"cipher-base":149,"inherits":200}],122:[function(require,module,exports){
 var ciphers = require('./encrypter')
 exports.createCipher = exports.Cipher = ciphers.createCipher
 exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv
@@ -70697,7 +70203,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"./decrypter":124,"./encrypter":125,"./modes":127}],124:[function(require,module,exports){
+},{"./decrypter":123,"./encrypter":124,"./modes":126}],123:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -70838,7 +70344,7 @@ exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"./authCipher":122,"./modes":127,"./modes/cbc":128,"./modes/cfb":129,"./modes/cfb1":130,"./modes/cfb8":131,"./modes/ctr":132,"./modes/ecb":133,"./modes/ofb":134,"./streamCipher":135,"buffer":148,"cipher-base":149,"evp_bytestokey":190,"inherits":200}],125:[function(require,module,exports){
+},{"./aes":120,"./authCipher":121,"./modes":126,"./modes/cbc":127,"./modes/cfb":128,"./modes/cfb1":129,"./modes/cfb8":130,"./modes/ctr":131,"./modes/ecb":132,"./modes/ofb":133,"./streamCipher":134,"buffer":148,"cipher-base":149,"evp_bytestokey":190,"inherits":200}],124:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -70964,7 +70470,7 @@ exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"./authCipher":122,"./modes":127,"./modes/cbc":128,"./modes/cfb":129,"./modes/cfb1":130,"./modes/cfb8":131,"./modes/ctr":132,"./modes/ecb":133,"./modes/ofb":134,"./streamCipher":135,"buffer":148,"cipher-base":149,"evp_bytestokey":190,"inherits":200}],126:[function(require,module,exports){
+},{"./aes":120,"./authCipher":121,"./modes":126,"./modes/cbc":127,"./modes/cfb":128,"./modes/cfb1":129,"./modes/cfb8":130,"./modes/ctr":131,"./modes/ecb":132,"./modes/ofb":133,"./streamCipher":134,"buffer":148,"cipher-base":149,"evp_bytestokey":190,"inherits":200}],125:[function(require,module,exports){
 (function (Buffer){
 var zeros = new Buffer(16)
 zeros.fill(0)
@@ -71066,7 +70572,7 @@ function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],127:[function(require,module,exports){
+},{"buffer":148}],126:[function(require,module,exports){
 exports['aes-128-ecb'] = {
   cipher: 'AES',
   key: 128,
@@ -71239,7 +70745,7 @@ exports['aes-256-gcm'] = {
   type: 'auth'
 }
 
-},{}],128:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 var xor = require('buffer-xor')
 
 exports.encrypt = function (self, block) {
@@ -71258,7 +70764,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":147}],129:[function(require,module,exports){
+},{"buffer-xor":147}],128:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -71293,7 +70799,7 @@ function encryptStart (self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"buffer-xor":147}],130:[function(require,module,exports){
+},{"buffer":148,"buffer-xor":147}],129:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -71331,7 +70837,7 @@ function shiftIn (buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],131:[function(require,module,exports){
+},{"buffer":148}],130:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)
@@ -71350,7 +70856,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],132:[function(require,module,exports){
+},{"buffer":148}],131:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -71385,7 +70891,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"buffer-xor":147}],133:[function(require,module,exports){
+},{"buffer":148,"buffer-xor":147}],132:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -71393,7 +70899,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block)
 }
 
-},{}],134:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -71413,7 +70919,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"buffer-xor":147}],135:[function(require,module,exports){
+},{"buffer":148,"buffer-xor":147}],134:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -71442,7 +70948,7 @@ StreamCipher.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"buffer":148,"cipher-base":149,"inherits":200}],136:[function(require,module,exports){
+},{"./aes":120,"buffer":148,"cipher-base":149,"inherits":200}],135:[function(require,module,exports){
 var ebtk = require('evp_bytestokey')
 var aes = require('browserify-aes/browser')
 var DES = require('browserify-des')
@@ -71517,7 +71023,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"browserify-aes/browser":123,"browserify-aes/modes":127,"browserify-des":137,"browserify-des/modes":138,"evp_bytestokey":190}],137:[function(require,module,exports){
+},{"browserify-aes/browser":122,"browserify-aes/modes":126,"browserify-des":136,"browserify-des/modes":137,"evp_bytestokey":190}],136:[function(require,module,exports){
 (function (Buffer){
 var CipherBase = require('cipher-base')
 var des = require('des.js')
@@ -71564,7 +71070,7 @@ DES.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"cipher-base":149,"des.js":158,"inherits":200}],138:[function(require,module,exports){
+},{"buffer":148,"cipher-base":149,"des.js":158,"inherits":200}],137:[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -71590,7 +71096,7 @@ exports['des-ede'] = {
   iv: 0
 }
 
-},{}],139:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 var randomBytes = require('randombytes');
@@ -71634,7 +71140,7 @@ function getr(priv) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":118,"buffer":148,"randombytes":228}],140:[function(require,module,exports){
+},{"bn.js":117,"buffer":148,"randombytes":228}],139:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 exports['RSA-SHA224'] = exports.sha224WithRSAEncryption = {
@@ -71710,7 +71216,7 @@ exports['RSA-MD5'] = exports.md5WithRSAEncryption = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],141:[function(require,module,exports){
+},{"buffer":148}],140:[function(require,module,exports){
 (function (Buffer){
 var _algos = require('./algos')
 var createHash = require('create-hash')
@@ -71817,7 +71323,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algos":140,"./sign":143,"./verify":144,"buffer":148,"create-hash":153,"inherits":200,"stream":257}],142:[function(require,module,exports){
+},{"./algos":139,"./sign":142,"./verify":143,"buffer":148,"create-hash":153,"inherits":200,"stream":257}],141:[function(require,module,exports){
 'use strict'
 exports['1.3.132.0.10'] = 'secp256k1'
 
@@ -71831,7 +71337,7 @@ exports['1.3.132.0.34'] = 'p384'
 
 exports['1.3.132.0.35'] = 'p521'
 
-},{}],143:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var createHmac = require('create-hmac')
@@ -72020,7 +71526,7 @@ module.exports.getKey = getKey
 module.exports.makeKey = makeKey
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":142,"bn.js":118,"browserify-rsa":139,"buffer":148,"create-hmac":156,"elliptic":168,"parse-asn1":217}],144:[function(require,module,exports){
+},{"./curves":141,"bn.js":117,"browserify-rsa":138,"buffer":148,"create-hmac":156,"elliptic":168,"parse-asn1":217}],143:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var curves = require('./curves')
@@ -72127,7 +71633,501 @@ function checkValue (b, q) {
 module.exports = verify
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":142,"bn.js":118,"buffer":148,"elliptic":168,"parse-asn1":217}],145:[function(require,module,exports){
+},{"./curves":141,"bn.js":117,"buffer":148,"elliptic":168,"parse-asn1":217}],144:[function(require,module,exports){
+(function (global){
+'use strict';
+
+// compare and isBuffer taken from https://github.com/feross/buffer/blob/680e9e5e488f22aac27599a57dc844a6315928dd/index.js
+// original notice:
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @license  MIT
+ */
+function compare(a, b) {
+  if (a === b) {
+    return 0;
+  }
+
+  var x = a.length;
+  var y = b.length;
+
+  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
+    if (a[i] !== b[i]) {
+      x = a[i];
+      y = b[i];
+      break;
+    }
+  }
+
+  if (x < y) {
+    return -1;
+  }
+  if (y < x) {
+    return 1;
+  }
+  return 0;
+}
+function isBuffer(b) {
+  if (global.Buffer && typeof global.Buffer.isBuffer === 'function') {
+    return global.Buffer.isBuffer(b);
+  }
+  return !!(b != null && b._isBuffer);
+}
+
+// based on node assert, original notice:
+
+// http://wiki.commonjs.org/wiki/Unit_Testing/1.0
+//
+// THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
+//
+// Originally from narwhal.js (http://narwhaljs.org)
+// Copyright (c) 2009 Thomas Robinson <280north.com>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the 'Software'), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var util = require('util/');
+var hasOwn = Object.prototype.hasOwnProperty;
+var pSlice = Array.prototype.slice;
+var functionsHaveNames = (function () {
+  return function foo() {}.name === 'foo';
+}());
+function pToString (obj) {
+  return Object.prototype.toString.call(obj);
+}
+function isView(arrbuf) {
+  if (isBuffer(arrbuf)) {
+    return false;
+  }
+  if (typeof global.ArrayBuffer !== 'function') {
+    return false;
+  }
+  if (typeof ArrayBuffer.isView === 'function') {
+    return ArrayBuffer.isView(arrbuf);
+  }
+  if (!arrbuf) {
+    return false;
+  }
+  if (arrbuf instanceof DataView) {
+    return true;
+  }
+  if (arrbuf.buffer && arrbuf.buffer instanceof ArrayBuffer) {
+    return true;
+  }
+  return false;
+}
+// 1. The assert module provides functions that throw
+// AssertionError's when particular conditions are not met. The
+// assert module must conform to the following interface.
+
+var assert = module.exports = ok;
+
+// 2. The AssertionError is defined in assert.
+// new assert.AssertionError({ message: message,
+//                             actual: actual,
+//                             expected: expected })
+
+var regex = /\s*function\s+([^\(\s]*)\s*/;
+// based on https://github.com/ljharb/function.prototype.name/blob/adeeeec8bfcc6068b187d7d9fb3d5bb1d3a30899/implementation.js
+function getName(func) {
+  if (!util.isFunction(func)) {
+    return;
+  }
+  if (functionsHaveNames) {
+    return func.name;
+  }
+  var str = func.toString();
+  var match = str.match(regex);
+  return match && match[1];
+}
+assert.AssertionError = function AssertionError(options) {
+  this.name = 'AssertionError';
+  this.actual = options.actual;
+  this.expected = options.expected;
+  this.operator = options.operator;
+  if (options.message) {
+    this.message = options.message;
+    this.generatedMessage = false;
+  } else {
+    this.message = getMessage(this);
+    this.generatedMessage = true;
+  }
+  var stackStartFunction = options.stackStartFunction || fail;
+  if (Error.captureStackTrace) {
+    Error.captureStackTrace(this, stackStartFunction);
+  } else {
+    // non v8 browsers so we can have a stacktrace
+    var err = new Error();
+    if (err.stack) {
+      var out = err.stack;
+
+      // try to strip useless frames
+      var fn_name = getName(stackStartFunction);
+      var idx = out.indexOf('\n' + fn_name);
+      if (idx >= 0) {
+        // once we have located the function frame
+        // we need to strip out everything before it (and its line)
+        var next_line = out.indexOf('\n', idx + 1);
+        out = out.substring(next_line + 1);
+      }
+
+      this.stack = out;
+    }
+  }
+};
+
+// assert.AssertionError instanceof Error
+util.inherits(assert.AssertionError, Error);
+
+function truncate(s, n) {
+  if (typeof s === 'string') {
+    return s.length < n ? s : s.slice(0, n);
+  } else {
+    return s;
+  }
+}
+function inspect(something) {
+  if (functionsHaveNames || !util.isFunction(something)) {
+    return util.inspect(something);
+  }
+  var rawname = getName(something);
+  var name = rawname ? ': ' + rawname : '';
+  return '[Function' +  name + ']';
+}
+function getMessage(self) {
+  return truncate(inspect(self.actual), 128) + ' ' +
+         self.operator + ' ' +
+         truncate(inspect(self.expected), 128);
+}
+
+// At present only the three keys mentioned above are used and
+// understood by the spec. Implementations or sub modules can pass
+// other keys to the AssertionError's constructor - they will be
+// ignored.
+
+// 3. All of the following functions must throw an AssertionError
+// when a corresponding condition is not met, with a message that
+// may be undefined if not provided.  All assertion methods provide
+// both the actual and expected values to the assertion error for
+// display purposes.
+
+function fail(actual, expected, message, operator, stackStartFunction) {
+  throw new assert.AssertionError({
+    message: message,
+    actual: actual,
+    expected: expected,
+    operator: operator,
+    stackStartFunction: stackStartFunction
+  });
+}
+
+// EXTENSION! allows for well behaved errors defined elsewhere.
+assert.fail = fail;
+
+// 4. Pure assertion tests whether a value is truthy, as determined
+// by !!guard.
+// assert.ok(guard, message_opt);
+// This statement is equivalent to assert.equal(true, !!guard,
+// message_opt);. To test strictly for the value true, use
+// assert.strictEqual(true, guard, message_opt);.
+
+function ok(value, message) {
+  if (!value) fail(value, true, message, '==', assert.ok);
+}
+assert.ok = ok;
+
+// 5. The equality assertion tests shallow, coercive equality with
+// ==.
+// assert.equal(actual, expected, message_opt);
+
+assert.equal = function equal(actual, expected, message) {
+  if (actual != expected) fail(actual, expected, message, '==', assert.equal);
+};
+
+// 6. The non-equality assertion tests for whether two objects are not equal
+// with != assert.notEqual(actual, expected, message_opt);
+
+assert.notEqual = function notEqual(actual, expected, message) {
+  if (actual == expected) {
+    fail(actual, expected, message, '!=', assert.notEqual);
+  }
+};
+
+// 7. The equivalence assertion tests a deep equality relation.
+// assert.deepEqual(actual, expected, message_opt);
+
+assert.deepEqual = function deepEqual(actual, expected, message) {
+  if (!_deepEqual(actual, expected, false)) {
+    fail(actual, expected, message, 'deepEqual', assert.deepEqual);
+  }
+};
+
+assert.deepStrictEqual = function deepStrictEqual(actual, expected, message) {
+  if (!_deepEqual(actual, expected, true)) {
+    fail(actual, expected, message, 'deepStrictEqual', assert.deepStrictEqual);
+  }
+};
+
+function _deepEqual(actual, expected, strict, memos) {
+  // 7.1. All identical values are equivalent, as determined by ===.
+  if (actual === expected) {
+    return true;
+  } else if (isBuffer(actual) && isBuffer(expected)) {
+    return compare(actual, expected) === 0;
+
+  // 7.2. If the expected value is a Date object, the actual value is
+  // equivalent if it is also a Date object that refers to the same time.
+  } else if (util.isDate(actual) && util.isDate(expected)) {
+    return actual.getTime() === expected.getTime();
+
+  // 7.3 If the expected value is a RegExp object, the actual value is
+  // equivalent if it is also a RegExp object with the same source and
+  // properties (`global`, `multiline`, `lastIndex`, `ignoreCase`).
+  } else if (util.isRegExp(actual) && util.isRegExp(expected)) {
+    return actual.source === expected.source &&
+           actual.global === expected.global &&
+           actual.multiline === expected.multiline &&
+           actual.lastIndex === expected.lastIndex &&
+           actual.ignoreCase === expected.ignoreCase;
+
+  // 7.4. Other pairs that do not both pass typeof value == 'object',
+  // equivalence is determined by ==.
+  } else if ((actual === null || typeof actual !== 'object') &&
+             (expected === null || typeof expected !== 'object')) {
+    return strict ? actual === expected : actual == expected;
+
+  // If both values are instances of typed arrays, wrap their underlying
+  // ArrayBuffers in a Buffer each to increase performance
+  // This optimization requires the arrays to have the same type as checked by
+  // Object.prototype.toString (aka pToString). Never perform binary
+  // comparisons for Float*Arrays, though, since e.g. +0 === -0 but their
+  // bit patterns are not identical.
+  } else if (isView(actual) && isView(expected) &&
+             pToString(actual) === pToString(expected) &&
+             !(actual instanceof Float32Array ||
+               actual instanceof Float64Array)) {
+    return compare(new Uint8Array(actual.buffer),
+                   new Uint8Array(expected.buffer)) === 0;
+
+  // 7.5 For all other Object pairs, including Array objects, equivalence is
+  // determined by having the same number of owned properties (as verified
+  // with Object.prototype.hasOwnProperty.call), the same set of keys
+  // (although not necessarily the same order), equivalent values for every
+  // corresponding key, and an identical 'prototype' property. Note: this
+  // accounts for both named and indexed properties on Arrays.
+  } else if (isBuffer(actual) !== isBuffer(expected)) {
+    return false;
+  } else {
+    memos = memos || {actual: [], expected: []};
+
+    var actualIndex = memos.actual.indexOf(actual);
+    if (actualIndex !== -1) {
+      if (actualIndex === memos.expected.indexOf(expected)) {
+        return true;
+      }
+    }
+
+    memos.actual.push(actual);
+    memos.expected.push(expected);
+
+    return objEquiv(actual, expected, strict, memos);
+  }
+}
+
+function isArguments(object) {
+  return Object.prototype.toString.call(object) == '[object Arguments]';
+}
+
+function objEquiv(a, b, strict, actualVisitedObjects) {
+  if (a === null || a === undefined || b === null || b === undefined)
+    return false;
+  // if one is a primitive, the other must be same
+  if (util.isPrimitive(a) || util.isPrimitive(b))
+    return a === b;
+  if (strict && Object.getPrototypeOf(a) !== Object.getPrototypeOf(b))
+    return false;
+  var aIsArgs = isArguments(a);
+  var bIsArgs = isArguments(b);
+  if ((aIsArgs && !bIsArgs) || (!aIsArgs && bIsArgs))
+    return false;
+  if (aIsArgs) {
+    a = pSlice.call(a);
+    b = pSlice.call(b);
+    return _deepEqual(a, b, strict);
+  }
+  var ka = objectKeys(a);
+  var kb = objectKeys(b);
+  var key, i;
+  // having the same number of owned properties (keys incorporates
+  // hasOwnProperty)
+  if (ka.length !== kb.length)
+    return false;
+  //the same set of keys (although not necessarily the same order),
+  ka.sort();
+  kb.sort();
+  //~~~cheap key test
+  for (i = ka.length - 1; i >= 0; i--) {
+    if (ka[i] !== kb[i])
+      return false;
+  }
+  //equivalent values for every corresponding key, and
+  //~~~possibly expensive deep test
+  for (i = ka.length - 1; i >= 0; i--) {
+    key = ka[i];
+    if (!_deepEqual(a[key], b[key], strict, actualVisitedObjects))
+      return false;
+  }
+  return true;
+}
+
+// 8. The non-equivalence assertion tests for any deep inequality.
+// assert.notDeepEqual(actual, expected, message_opt);
+
+assert.notDeepEqual = function notDeepEqual(actual, expected, message) {
+  if (_deepEqual(actual, expected, false)) {
+    fail(actual, expected, message, 'notDeepEqual', assert.notDeepEqual);
+  }
+};
+
+assert.notDeepStrictEqual = notDeepStrictEqual;
+function notDeepStrictEqual(actual, expected, message) {
+  if (_deepEqual(actual, expected, true)) {
+    fail(actual, expected, message, 'notDeepStrictEqual', notDeepStrictEqual);
+  }
+}
+
+
+// 9. The strict equality assertion tests strict equality, as determined by ===.
+// assert.strictEqual(actual, expected, message_opt);
+
+assert.strictEqual = function strictEqual(actual, expected, message) {
+  if (actual !== expected) {
+    fail(actual, expected, message, '===', assert.strictEqual);
+  }
+};
+
+// 10. The strict non-equality assertion tests for strict inequality, as
+// determined by !==.  assert.notStrictEqual(actual, expected, message_opt);
+
+assert.notStrictEqual = function notStrictEqual(actual, expected, message) {
+  if (actual === expected) {
+    fail(actual, expected, message, '!==', assert.notStrictEqual);
+  }
+};
+
+function expectedException(actual, expected) {
+  if (!actual || !expected) {
+    return false;
+  }
+
+  if (Object.prototype.toString.call(expected) == '[object RegExp]') {
+    return expected.test(actual);
+  }
+
+  try {
+    if (actual instanceof expected) {
+      return true;
+    }
+  } catch (e) {
+    // Ignore.  The instanceof check doesn't work for arrow functions.
+  }
+
+  if (Error.isPrototypeOf(expected)) {
+    return false;
+  }
+
+  return expected.call({}, actual) === true;
+}
+
+function _tryBlock(block) {
+  var error;
+  try {
+    block();
+  } catch (e) {
+    error = e;
+  }
+  return error;
+}
+
+function _throws(shouldThrow, block, expected, message) {
+  var actual;
+
+  if (typeof block !== 'function') {
+    throw new TypeError('"block" argument must be a function');
+  }
+
+  if (typeof expected === 'string') {
+    message = expected;
+    expected = null;
+  }
+
+  actual = _tryBlock(block);
+
+  message = (expected && expected.name ? ' (' + expected.name + ').' : '.') +
+            (message ? ' ' + message : '.');
+
+  if (shouldThrow && !actual) {
+    fail(actual, expected, 'Missing expected exception' + message);
+  }
+
+  var userProvidedMessage = typeof message === 'string';
+  var isUnwantedException = !shouldThrow && util.isError(actual);
+  var isUnexpectedException = !shouldThrow && actual && !expected;
+
+  if ((isUnwantedException &&
+      userProvidedMessage &&
+      expectedException(actual, expected)) ||
+      isUnexpectedException) {
+    fail(actual, expected, 'Got unwanted exception' + message);
+  }
+
+  if ((shouldThrow && actual && expected &&
+      !expectedException(actual, expected)) || (!shouldThrow && actual)) {
+    throw actual;
+  }
+}
+
+// 11. Expected to throw an error:
+// assert.throws(block, Error_opt, message_opt);
+
+assert.throws = function(block, /*optional*/error, /*optional*/message) {
+  _throws(true, block, error, message);
+};
+
+// EXTENSION! This is annoying to write outside this module.
+assert.doesNotThrow = function(block, /*optional*/error, /*optional*/message) {
+  _throws(false, block, error, message);
+};
+
+assert.ifError = function(err) { if (err) throw err; };
+
+var objectKeys = Object.keys || function (obj) {
+  var keys = [];
+  for (var key in obj) {
+    if (hasOwn.call(obj, key)) keys.push(key);
+  }
+  return keys;
+};
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"util/":266}],145:[function(require,module,exports){
 // Base58 encoding/decoding
 // Originally written by Mike Hearn for BitcoinJ
 // Copyright (c) 2011 Google Inc
@@ -74133,7 +74133,7 @@ function isnan (val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":113,"ieee754":198,"isarray":203}],149:[function(require,module,exports){
+},{"base64-js":112,"ieee754":198,"isarray":203}],149:[function(require,module,exports){
 (function (Buffer){
 var Transform = require('stream').Transform
 var inherits = require('inherits')
@@ -74561,7 +74561,7 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":118,"buffer":148,"elliptic":168}],153:[function(require,module,exports){
+},{"bn.js":117,"buffer":148,"elliptic":168}],153:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var inherits = require('inherits')
@@ -74962,7 +74962,7 @@ var publicEncrypt = require('public-encrypt')
   }
 })
 
-},{"browserify-cipher":136,"browserify-sign":141,"browserify-sign/algos":140,"create-ecdh":152,"create-hash":153,"create-hmac":156,"diffie-hellman":164,"pbkdf2":218,"public-encrypt":222,"randombytes":228}],158:[function(require,module,exports){
+},{"browserify-cipher":135,"browserify-sign":140,"browserify-sign/algos":139,"create-ecdh":152,"create-hash":153,"create-hmac":156,"diffie-hellman":164,"pbkdf2":218,"public-encrypt":222,"randombytes":228}],158:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -75855,7 +75855,7 @@ function formatReturnValue(bn, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":166,"bn.js":118,"buffer":148,"miller-rabin":212,"randombytes":228}],166:[function(require,module,exports){
+},{"./generatePrime":166,"bn.js":117,"buffer":148,"miller-rabin":212,"randombytes":228}],166:[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -75962,7 +75962,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":118,"miller-rabin":212,"randombytes":228}],167:[function(require,module,exports){
+},{"bn.js":117,"miller-rabin":212,"randombytes":228}],167:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -76013,7 +76013,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":184,"./elliptic/curve":171,"./elliptic/curves":174,"./elliptic/ec":175,"./elliptic/eddsa":178,"./elliptic/hmac-drbg":181,"./elliptic/utils":183,"brorand":119}],169:[function(require,module,exports){
+},{"../package.json":184,"./elliptic/curve":171,"./elliptic/curves":174,"./elliptic/ec":175,"./elliptic/eddsa":178,"./elliptic/hmac-drbg":181,"./elliptic/utils":183,"brorand":118}],169:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -76390,7 +76390,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":168,"bn.js":118}],170:[function(require,module,exports){
+},{"../../elliptic":168,"bn.js":117}],170:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -76825,7 +76825,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":168,"../curve":171,"bn.js":118,"inherits":200}],171:[function(require,module,exports){
+},{"../../elliptic":168,"../curve":171,"bn.js":117,"inherits":200}],171:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -77017,7 +77017,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":168,"../curve":171,"bn.js":118,"inherits":200}],173:[function(require,module,exports){
+},{"../../elliptic":168,"../curve":171,"bn.js":117,"inherits":200}],173:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -77957,7 +77957,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":168,"../curve":171,"bn.js":118,"inherits":200}],174:[function(require,module,exports){
+},{"../../elliptic":168,"../curve":171,"bn.js":117,"inherits":200}],174:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -78097,7 +78097,7 @@ defineCurve('curve25519', {
   prime: 'p25519',
   p: '7fffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffed',
   a: '76d06',
-  b: '1',
+  b: '0',
   n: '1000000000000000 0000000000000000 14def9dea2f79cd6 5812631a5cf5d3ed',
   hash: hash.sha256,
   gRed: false,
@@ -78403,13 +78403,10 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":168,"./key":176,"./signature":177,"bn.js":118}],176:[function(require,module,exports){
+},{"../../elliptic":168,"./key":176,"./signature":177,"bn.js":117}],176:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
-var elliptic = require('../../elliptic');
-var utils = elliptic.utils;
-var assert = utils.assert;
 
 function KeyPair(ec, options) {
   this.ec = ec;
@@ -78490,15 +78487,6 @@ KeyPair.prototype._importPrivate = function _importPrivate(key, enc) {
 
 KeyPair.prototype._importPublic = function _importPublic(key, enc) {
   if (key.x || key.y) {
-    // Montgomery points only have an `x` coordinate.
-    // Weierstrass/Edwards points on the other hand have both `x` and
-    // `y` coordinates.
-    if (this.ec.curve.type === 'mont') {
-      assert(key.x, 'Need x coordinate');
-    } else if (this.ec.curve.type === 'short' ||
-               this.ec.curve.type === 'edwards') {
-      assert(key.x && key.y, 'Need both x and y coordinate');
-    }
     this.pub = this.ec.curve.point(key.x, key.y);
     return;
   }
@@ -78524,7 +78512,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"../../elliptic":168,"bn.js":118}],177:[function(require,module,exports){
+},{"bn.js":117}],177:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -78661,7 +78649,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":168,"bn.js":118}],178:[function(require,module,exports){
+},{"../../elliptic":168,"bn.js":117}],178:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -78947,7 +78935,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":168,"bn.js":118}],181:[function(require,module,exports){
+},{"../../elliptic":168,"bn.js":117}],181:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -80019,7 +80007,7 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":118}],184:[function(require,module,exports){
+},{"bn.js":117}],184:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -80032,23 +80020,23 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign"
+      "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
-  "_id": "elliptic@6.3.3",
+  "_id": "elliptic@6.3.2",
   "_inCache": true,
   "_location": "/elliptic",
-  "_nodeVersion": "7.0.0",
+  "_nodeVersion": "6.3.0",
   "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/elliptic-6.3.3.tgz_1486422837740_0.10658654430881143"
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/elliptic-6.3.2.tgz_1473938837205_0.3108903462998569"
   },
   "_npmUser": {
     "name": "indutny",
     "email": "fedor@indutny.com"
   },
-  "_npmVersion": "3.10.8",
+  "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
     "raw": "elliptic@^6.0.0",
@@ -80064,11 +80052,11 @@ module.exports={
     "/create-ecdh",
     "/secp256k1"
   ],
-  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.3.tgz",
-  "_shasum": "5482d9646d54bcb89fd7d994fc9e2e9568876e3f",
+  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.2.tgz",
+  "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign",
+  "_where": "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -80088,7 +80076,6 @@ module.exports={
     "coveralls": "^2.11.3",
     "grunt": "^0.4.5",
     "grunt-browserify": "^5.0.0",
-    "grunt-cli": "^1.2.0",
     "grunt-contrib-connect": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
@@ -80101,13 +80088,13 @@ module.exports={
   },
   "directories": {},
   "dist": {
-    "shasum": "5482d9646d54bcb89fd7d994fc9e2e9568876e3f",
-    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.3.tgz"
+    "shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
+    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.2.tgz"
   },
   "files": [
     "lib"
   ],
-  "gitHead": "63aee8d697e9b7fac37ece24222029117a890a7e",
+  "gitHead": "cbace4683a4a548dc0306ef36756151a20299cd5",
   "homepage": "https://github.com/indutny/elliptic",
   "keywords": [
     "EC",
@@ -80138,7 +80125,7 @@ module.exports={
     "unit": "istanbul test _mocha --reporter=spec test/index.js",
     "version": "grunt dist && git add dist/"
   },
-  "version": "6.3.3"
+  "version": "6.3.2"
 }
 
 },{}],185:[function(require,module,exports){
@@ -81332,7 +81319,7 @@ exports.defineProperties = function (self, fields, data) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":112,"bn.js":118,"buffer":148,"create-hash":153,"ethjs-util":188,"keccak":205,"rlp":241,"secp256k1":243}],188:[function(require,module,exports){
+},{"assert":144,"bn.js":117,"buffer":148,"create-hash":153,"ethjs-util":188,"keccak":205,"rlp":241,"secp256k1":243}],188:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -83293,7 +83280,7 @@ HDKey.HARDENED_OFFSET = HARDENED_OFFSET
 module.exports = HDKey
 
 }).call(this,require("buffer").Buffer)
-},{"assert":112,"buffer":148,"coinstring":150,"crypto":157,"secp256k1":243}],198:[function(require,module,exports){
+},{"assert":144,"buffer":148,"coinstring":150,"crypto":157,"secp256k1":243}],198:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -85364,7 +85351,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":118,"brorand":119}],213:[function(require,module,exports){
+},{"bn.js":117,"brorand":118}],213:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -85544,7 +85531,7 @@ module.exports = function (okey, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"browserify-aes":123,"buffer":148,"evp_bytestokey":190}],217:[function(require,module,exports){
+},{"browserify-aes":122,"buffer":148,"evp_bytestokey":190}],217:[function(require,module,exports){
 (function (Buffer){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
@@ -85649,7 +85636,7 @@ function decrypt (data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":214,"./asn1":215,"./fixProc":216,"browserify-aes":123,"buffer":148,"pbkdf2":218}],218:[function(require,module,exports){
+},{"./aesid.json":214,"./asn1":215,"./fixProc":216,"browserify-aes":122,"buffer":148,"pbkdf2":218}],218:[function(require,module,exports){
 (function (process,Buffer){
 var createHmac = require('create-hmac')
 var checkParameters = require('./precondition')
@@ -86111,7 +86098,7 @@ function compare(a, b){
   return dif;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":223,"./withPublic":226,"./xor":227,"bn.js":118,"browserify-rsa":139,"buffer":148,"create-hash":153,"parse-asn1":217}],225:[function(require,module,exports){
+},{"./mgf":223,"./withPublic":226,"./xor":227,"bn.js":117,"browserify-rsa":138,"buffer":148,"create-hash":153,"parse-asn1":217}],225:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var randomBytes = require('randombytes');
@@ -86209,7 +86196,7 @@ function nonZero(len, crypto) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":223,"./withPublic":226,"./xor":227,"bn.js":118,"browserify-rsa":139,"buffer":148,"create-hash":153,"parse-asn1":217,"randombytes":228}],226:[function(require,module,exports){
+},{"./mgf":223,"./withPublic":226,"./xor":227,"bn.js":117,"browserify-rsa":138,"buffer":148,"create-hash":153,"parse-asn1":217,"randombytes":228}],226:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 function withPublic(paddedMsg, key) {
@@ -86222,7 +86209,7 @@ function withPublic(paddedMsg, key) {
 
 module.exports = withPublic;
 }).call(this,require("buffer").Buffer)
-},{"bn.js":118,"buffer":148}],227:[function(require,module,exports){
+},{"bn.js":117,"buffer":148}],227:[function(require,module,exports){
 module.exports = function xor(a, b) {
   var len = a.length;
   var i = -1;
@@ -87321,7 +87308,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":230,"./internal/streams/BufferList":235,"_process":221,"buffer":148,"buffer-shims":146,"core-util-is":151,"events":189,"inherits":200,"isarray":203,"process-nextick-args":220,"string_decoder/":259,"util":120}],233:[function(require,module,exports){
+},{"./_stream_duplex":230,"./internal/streams/BufferList":235,"_process":221,"buffer":148,"buffer-shims":146,"core-util-is":151,"events":189,"inherits":200,"isarray":203,"process-nextick-args":220,"string_decoder/":259,"util":119}],233:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -88602,7 +88589,7 @@ function toBuffer (v) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":112,"buffer":148}],242:[function(require,module,exports){
+},{"assert":144,"buffer":148}],242:[function(require,module,exports){
 (function (Buffer){
 var crypto = require('crypto')
 /* eslint-disable camelcase */
@@ -89039,7 +89026,7 @@ exports.signatureImportLax = function (sig) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bip66":117,"buffer":148}],246:[function(require,module,exports){
+},{"bip66":116,"buffer":148}],246:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var createHash = require('create-hash')
@@ -89290,7 +89277,7 @@ exports.ecdhUnsafe = function (publicKey, privateKey, compressed) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../messages.json":248,"bn.js":118,"buffer":148,"create-hash":153,"elliptic":168}],247:[function(require,module,exports){
+},{"../messages.json":248,"bn.js":117,"buffer":148,"create-hash":153,"elliptic":168}],247:[function(require,module,exports){
 'use strict'
 var assert = require('./assert')
 var der = require('./der')

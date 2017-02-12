@@ -5,7 +5,7 @@ var it = function() {}
 it.code = 'it';
 it.data = {
 
-NAV_Exchange                : 'Swap',
+NAV_Swap                : 'Swap',
 
 /* Sign Message */
 MSG_message                 : 'Messaggio',

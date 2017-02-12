@@ -34,10 +34,10 @@ var tabs = {
     mew: true,
     cx: true
   },
-  exchange: {
+  swap: {
     id: 4,
-    name: "NAV_Exchange",
-    url: "exchange",
+    name: "NAV_Swap",
+    url: "swap",
     mew: true,
     cx: true
   },

@@ -5,7 +5,7 @@ pt.code = 'pt';
 pt.data = {
 
 /* Sign Message */
-NAV_Exchange                     : 'Exchange',
+NAV_Swap                     : 'Exchange',
 NAV_SignMsg                      : 'Sign Message',
 MSG_message                      : 'Message',
 MSG_date                         : 'Date',

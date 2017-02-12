@@ -4,7 +4,7 @@ var es = function() {}
 es.code = 'es';
 es.data = {
 
-NAV_Exchange                : 'Swap',
+NAV_Swap                : 'Swap',
 
   /* Sign Message */
 NAV_SignMsg                 : 'Sign Message',
