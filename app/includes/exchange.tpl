@@ -6,15 +6,15 @@
   <section class="row exchange-rates" ng-show="showStage1">
     <div class="clearfix">
       <h5 class="col-xs-6 col-xs-offset-3">Current Rates</h5>
-      <div class="col-xs-3"><img class="pull-right" src="images/bity.jpg" width="100" height="38" /></div>
+      <div class="col-xs-3"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></div>
     </div>
       <div class="col-sm-6 order-info">
-        <p><input class="form-control input-sm" ng-model="priceTicker.ETHBTC"/><span>ETH = {{bity.curRate.ETHBTC*priceTicker.ETHBTC | number: 6}} BTC</span></p>
-        <p><input class="form-control input-sm" ng-model="priceTicker.ETHREP"/><span>ETH = {{bity.curRate.ETHREP*priceTicker.ETHREP | number: 6}} REP</span></p>
+        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.ETHBTC"/><span>ETH = {{bity.curRate.ETHBTC*priceTicker.ETHBTC | number: 6}} BTC</span></p>
+        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.ETHREP"/><span>ETH = {{bity.curRate.ETHREP*priceTicker.ETHREP | number: 6}} REP</span></p>
       </div>
       <div class="col-sm-6 order-info">
-        <p><input class="form-control input-sm" ng-model="priceTicker.BTCREP"/><span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span></p>
-        <p><input class="form-control input-sm" ng-model="priceTicker.BTCETH"/><span>BTC = {{bity.curRate.BTCETH*priceTicker.BTCETH | number: 6}} ETH</span></p>
+        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.BTCETH"/><span>BTC = {{bity.curRate.BTCETH*priceTicker.BTCETH | number: 6}} ETH</span></p>
+        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.BTCREP"/><span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span></p>
       </div>
       <!--<div class="col-sm-4 order-info">
         <p><input class="form-control input-sm" ng-model="priceTicker.REPBTC"/><span>REP = {{bity.curRate.REPBTC*priceTicker.REPBTC | number: 6}} BTC</span></p>
@@ -62,7 +62,7 @@
   <section class="exchange-start row" ng-show="showStage2">
     <div class="clearfix">
       <h5 class="col-xs-6 col-xs-offset-3">Your Information</h5>
-      <div class="col-xs-3"><img class="pull-right" src="images/bity.jpg" width="100" height="38" /></div>
+      <div class="col-xs-3"><a href="https://bity.com/" target="_blank"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></a></div>
     </div>
     <div class="order-info-wrap clearfix">
       <div class="col-sm-4 order-info"><h4>{{exchangeOrder.fromVal}} {{exchangeOrder.fromCoin}}</h4><p>Amount to send</p></div>
@@ -94,12 +94,12 @@
   <section class="exchange-order row" ng-show="showStage3Btc">
     <div class="clearfix">
       <h5 class="col-xs-6 col-xs-offset-3 text-center">Your Order Information - Please Save</h5>
-      <div class="col-xs-3"><img class="pull-right" src="images/bity.jpg" width="100" height="38" /></div>
+      <div class="col-xs-3"><a href="https://bity.com/" target="_blank"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></a></div>
     </div>
     <!-- Order Info -->
     <div class="order-info-wrap clearfix">
       <div class="col-sm-3 order-info"><h3>{{orderResult.reference}}</h3><p>Your reference number</p></div>
-      <div class="col-sm-3 order-info"><h3>{{orderResult.timeRemaining}}</h3><p>Time remaining to send {{orderResult.input.amount}} {{orderResult.input.currency}}</p></div>
+      <div class="col-sm-3 order-info"><h3>{{orderResult.timeRemaining}}</h3><p>Time remaining to send {{orderResult.input.amount}}&nbsp;{{orderResult.input.currency}}</p></div>
       <div class="col-sm-3 order-info"><h3>{{orderResult.output.amount}} {{orderResult.output.currency}}</h3><p>Amount of {{orderResult.output.currency}} to receive</p></div>
       <div class="col-sm-3 order-info"><h3>{{orderResult.input.amount/orderResult.output.amount  | number: 6}} {{orderResult.output.currency}}/{{orderResult.input.currency}}</h3><p>Your rate</p></div>
     </div>
@@ -130,7 +130,7 @@
     </div>
     <!-- / Exchange Progress -->
     <div class="text-center">
-      <h1> Please send <strong>{{orderResult.input.amount}} {{orderResult.input.currency}}</strong> to <br /> <strong class="mono primary">{{orderResult.payment_address}}</strong></h1>
+      <h1> Please send <strong>{{orderResult.input.amount}} {{orderResult.input.currency}}</strong> to <br /> <strong class="mono text-primary">{{orderResult.payment_address}}</strong></h1>
       <label> Scan BTC Address </label>
       <div class="qr-code" qr-code="{{orderResult.payment_address}}" watch-var="orderResult" ></div>
     </div>
@@ -142,11 +142,11 @@
   <section class="exchange-order row" ng-show="showStage3Eth">
     <div class="clearfix">
       <h5 class="col-xs-6 col-xs-offset-3 text-center">Your Order Information - Please Save</h5>
-      <div class="col-xs-3"><img class="pull-right" src="images/bity.jpg" width="100" height="38" /></div>
+      <div class="col-xs-3"><a href="https://bity.com/" target="_blank"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></a></div>
     </div>
     <div class="order-info-wrap clearfix">
       <div class="col-sm-3 order-info"><h3>{{orderResult.reference}}</h3><p>Your reference number</p></div>
-      <div class="col-sm-3 order-info"><h3>{{orderResult.timeRemaining}}</h3><p>Time remaining to send {{orderResult.input.amount}} {{orderResult.input.currency}}</p></div>
+      <div class="col-sm-3 order-info"><h3>{{orderResult.timeRemaining}}</h3><p>Time remaining</p></div>
       <div class="col-sm-3 order-info"><h3>{{orderResult.output.amount}} {{orderResult.output.currency}}</h3><p>Amount of {{orderResult.output.currency}} to receive</p></div>
       <div class="col-sm-3 order-info"><h3>{{orderResult.input.amount/orderResult.output.amount  | number: 6}} {{orderResult.output.currency}}/{{orderResult.input.currency}}</h3><p>Your rate</p></div>
     </div>
@@ -176,7 +176,7 @@
     </div>
     <!-- / Exchange Progress -->
     <div class="text-center">
-      <h1> Please send <strong>{{orderResult.input.amount}} {{orderResult.input.currency}}</strong> to <br /> <strong class="mono primary">{{orderResult.payment_address}}</strong></h1>
+      <h1> Please send <strong>{{orderResult.input.amount}} {{orderResult.input.currency}}</strong> to <br /> <strong class="mono text-primary">{{orderResult.payment_address}}</strong></h1>
     </div>
     <!-- Unlock Wallet Drtv -->
     <article class="collapse-container">

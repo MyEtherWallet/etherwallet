@@ -62,7 +62,7 @@
                 <label> {{input.name}} <small> {{input.type}} </small> </label>
                 <div class="row">
                   <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="input.value" ng-class="Validator.isValidAddress(input.value) ? 'is-valid' : 'is-invalid'"/></div>
-                  <div class="col-xs-1"><div class="addressIdenticon small inline" title="Address Indenticon" blockie-address="{{input.value}}" watch-var="input.value" ></div></div>
+                  <div class="col-xs-1"><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{input.value}}" watch-var="input.value" ></div></div>
                 </div>
                 </div>
                 <p class="item write-unit256" ng-switch-when="uint256">
@@ -91,7 +91,6 @@
         </span>
         <!-- / Write -->
 
-        </br>
 
         <!-- Output -->
         <span class="form-group output well" ng-show="contract.functions[contract.selectedFunc.index].constant">
@@ -102,7 +101,7 @@
                 <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
                 <div class="row">
                   <div class="col-xs-11"><input class="form-control" type="text" placeholder="0x314156..." ng-model="output.value" readonly/></div>
-                  <div class="col-xs-1"><div class="addressIdenticon small inline" title="Address Indenticon" blockie-address="{{output.value}}" watch-var="output.value" > </div> </div>
+                  <div class="col-xs-1"><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{output.value}}" watch-var="output.value" > </div> </div>
                 </div>
               </div>
               <!-- unit256 -->

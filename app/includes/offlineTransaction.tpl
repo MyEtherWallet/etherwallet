@@ -14,7 +14,7 @@
       <label translate="OFFLINE_Step1_Label_1"> From Address: </label>
       <p class="small" translate="OFFLINE_Step1_Label_2">Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.</p>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'')"/>
-      
+
     </div>
     <div class="col-xs-2 address-identicon-container-offline">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.from}}" watch-var="tx.from"></div>
@@ -42,7 +42,7 @@
     <div class="col-xs-10">
       <label translate="OFFLINE_Step2_Label_1"> To Address: </label>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress(tx.to,'')"/>
-      
+
     </div>
     <div class="col-xs-2 address-identicon-container-offline">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
@@ -66,7 +66,7 @@
     </div>
     <div class="col-sm-10">
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1 on your online computer.</p>
         <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
       </div>
@@ -74,7 +74,7 @@
     </div>
     <div class="col-sm-10">
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_4b">21000 is the default gas limit. When you send contracts or add'l data, this may need to be different. Any unused gas will be returned to you.</p>
         <label translate="OFFLINE_Step2_Label_4"> Gas Limit </label>
       </div>
@@ -82,7 +82,7 @@
     </div>
     <div class="col-sm-10">
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_5b">This was displayed in Step 1 on your online computer.</p>
         <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
       </div>
@@ -90,7 +90,7 @@
     </div>
     <div class="col-sm-10" ng-show="tokenTx.id=='ether'">
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional. Data is often used when you send transactions to contracts.</p>
         <label translate="OFFLINE_Step2_Label_6"> Data </label>
       </div>
@@ -101,7 +101,7 @@
     </div>
     <div class="col-sm-10">
       <a class="btn btn-info" ng-click="generateTx()" translate="SEND_generate">Generate Signed Transaction</a>
-      
+
     </div>
     <section id="step2Output">
 
@@ -132,7 +132,7 @@
   </section>
   <section class="row">
     <div class="col-sm-10">
-      
+
     </div>
   </section>
   <!-- / Step 3 -->

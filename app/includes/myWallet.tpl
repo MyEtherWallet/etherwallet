@@ -104,7 +104,7 @@
       <div class="row">
         <div class="form-group col-sm-10">
           <div class="account-help-icon">
-            <img src="images/helpicon.svg" class="help-icon" />
+            <img src="images/icon-help.svg" class="help-icon" />
             <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
             <h4 translate="x_Address">Your Address:</h4>
           </div>
@@ -116,7 +116,7 @@
       </div>
       <div class="form-group">
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
           <h4 translate="x_PrivKey">Private Key (unencrypted)</h4>
         </div>
@@ -139,7 +139,7 @@
 
       <div class="form-group">
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
           <h4 translate="x_Keystore">Keystore/JSON File (Recommended • Encrypted • Mist/Geth Format)</h4>
         </div>
@@ -148,7 +148,7 @@
 
       <div class="form-group">
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_PrintDesc">ProTip: Click print and save this as a PDF, even if you do not own a printer!</p>
           <h4 translate="x_Print">Print Paper Wallet:</h4>
         </div>
@@ -157,7 +157,7 @@
 
       <div class="form-group">
         <div class="account-help-icon">
-          <img src="images/helpicon.svg" class="help-icon" />
+          <img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</p>
           <h4 translate="x_Json">JSON File (Unencrypted)</h4>
         </div>
@@ -236,7 +236,7 @@
           <button type="button" class="btn btn-default" data-dismiss="modal" translate="x_Cancel">Cancel</button>
           <button type="button" ng-show="viewWallet.nick.length>0" class="btn btn-primary" ng-click="editSave()" translate="x_Save">Save</button>
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -263,7 +263,7 @@
                 <input type="{{showPass && 'password' || 'text'}}" class="form-control" ng-model="password" ng-keyup="$event.keyCode == 13 && decryptWallet()" />
                 <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
               </div>
-              
+
             </div>
           </form>
         </div>

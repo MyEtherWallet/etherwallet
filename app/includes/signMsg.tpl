@@ -21,7 +21,7 @@
 
       <!-- Message -->
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <ul class="account-help-text">
           <li translate="MSG_info2">Include your nickname and where you use the nickname so someone else cannot use it.</li>
           <li translate="MSG_info3">Include a specific reason for the message so it cannot be reused for a different purpose.</li>
@@ -34,7 +34,7 @@
 
       <!-- Date -->
       <div class="account-help-icon">
-        <img src="images/helpicon.svg" class="help-icon" />
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="MSG_info1">Include the current date so the signature cannot be reused on a different date.</p>
         <h5 translate="MSG_date"> Date </h5>
       </div>
@@ -42,7 +42,7 @@
 
       <!-- Sign Message Button -->
       <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="NAV_SignMsg" ng-show="wallet!=null"> Sign Message </a>
-      
+
 
       <!-- Signed Message -->
       <div ng-show="signMsg.signedMsg">
@@ -63,8 +63,8 @@
       <!-- Verify Signature Message Button -->
       <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
 
-      
-      
+
+
     </section>
     <!-- / Verify Message Stuff -->
 

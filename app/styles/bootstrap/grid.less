@@ -8,16 +8,16 @@
 // Set the container width, and override it for fixed navbars in media queries.
 
 .container {
-  .container-fixed();
-
+  width: 100%;
+  max-width: 1400px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  @cont-padding;
+  padding-right: @cont-padding;
+  &:extend(.clearfix all);
   @media (min-width: @screen-sm-min) {
-    width: @container-sm;
-  }
-  @media (min-width: @screen-md-min) {
-    width: @container-md;
-  }
-  @media (min-width: @screen-lg-min) {
-    width: @container-lg;
+    padding-left:  @cont-padding-lg;
+    padding-right: @cont-padding-lg;
   }
 }
 

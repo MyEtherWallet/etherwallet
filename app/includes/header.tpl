@@ -39,8 +39,8 @@
   <section class="bg-gradient header-branding">
     <section class="container">
 
-      @@if (site === 'mew' ) { <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> }
-      @@if (site === 'cx' ) { <a class="brand" href="/cx-wallet.html"><img src="images/etherwalletcx-logo.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> }
+      @@if (site === 'mew' ) { <a class="brand" href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> }
+      @@if (site === 'cx' ) { <a class="brand" href="/cx-wallet.html"><img src="images/logo-myetherwalletcx.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> }
 
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
@@ -160,7 +160,7 @@
             <label>Chain ID</label>
             <input class="form-control" type="text" placeholder="" ng-model="customNode.chainId" ng-class="Validator.isPositiveNumber(customNode.chainId) ? 'is-valid' : 'is-invalid'">
           </div>
-          
+
         </div>
 
         <div class="modal-footer text-center">

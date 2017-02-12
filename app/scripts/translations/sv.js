@@ -72,7 +72,7 @@ x_AddessDesc                : 'Det här är vad som ibland kallas "Publik Nyckel
 x_PrivKey                   : 'Privat Nyckel (okrypterad)',
 x_PrivKey2                  : 'Privat Nyckel',
 x_PrivKeyDesc               : 'Det här är en okrypterad variant av din privata nyckel, vilket betyder att ett lösenord inte är nödvändigt. Om någon skulle hitta din okrypterade privata nyckel, så kan dom få tillgång till din plånbok utan lösenord. Av den anledningen så rekomenderas en krypterad variant av plånboken istället.',
-x_Keystore                  : 'Keystore Fil (UTC / JSON · Rekomenderad · Krypterad · Mist Format)',
+x_Keystore                  : 'Keystore Fil (UTC / JSON · Rekomenderad · Krypterad)',
 x_Keystore2                 : 'Keystore Fil (UTC / JSON) ',
 x_KeystoreDesc              : 'Den här Keystore filen matchar formatet som används av Mist så du kan enkelt importera det i framtiden. Det är det rekommenderade format att hämta för backup.',
 x_Json                      : 'JSON Fil (okrypterad)',

@@ -2,9 +2,9 @@
 <div class="tab-pane" id="panePrint" style="display: none;">
   <div class="print-container">
     <span id="printwalletjson" style="display: none;"></span>
-    <img src="images/logo-1.png" class="ether-logo-1" height="100%" width="auto" />
-    <img src="images/logo-2.png" class="ether-logo-2" />
-    <img src="images/ether-title.png" height="100%" width="auto" class="print-title" />
+    <img src="images/logo-ethereum-1.png" class="ether-logo-1" height="100%" width="auto" />
+    <img src="images/logo-ethereum-2.png" class="ether-logo-2" />
+    <img src="images/print-sidebar.png" height="100%" width="auto" class="print-title" />
     <div class="print-qr-code-1">
       <div id="paperwalletaddqr"></div>
       <!--<img src="images/qrcode_test.png" width="90%;" height="auto" class="pull-left" />-->
