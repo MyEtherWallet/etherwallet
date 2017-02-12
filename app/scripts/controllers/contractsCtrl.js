@@ -32,7 +32,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
         $scope.wallet = walletService.wallet;
         $scope.wd = true;
         $scope.tx.nonce = 0;
-        $scope.sendTxStatus = "";
+        
     });
     $scope.$watch('visibility', function(newValue, oldValue) {
         $scope.tx = {
@@ -44,7 +44,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
             nonce: null,
             gasPrice: null
         }
-        $scope.accessContractStatus = $scope.deployContractStatus = $scope.sendTxStatus = "";
+        
     });
     $scope.$watch('tx', function(newValue, oldValue) {
         $scope.showRaw = false;
@@ -97,17 +97,17 @@ var contractsCtrl = function($scope, $sce, walletService) {
                     if (!rawTx.isError) {
                         $scope.rawTx = rawTx.rawTx;
                         $scope.signedTx = rawTx.signedTx;
-                        $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+                        
                         $scope.showRaw = true;
                     } else {
                         $scope.showRaw = false;
-                        $scope.deployContractStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+                        $scope.notifier.danger(rawTx.error);
                     }
                     if (!$scope.$$phase) $scope.$apply();
                 });
             });
         } catch (e) {
-            $scope.deployContractStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
     }
     $scope.sendTx = function() {
@@ -117,9 +117,9 @@ var contractsCtrl = function($scope, $sce, walletService) {
             if (!resp.isError) {
                 var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
                 var contractAddr = $scope.tx.contractAddr != '' ? " & Contract Address <a href='" + ajaxReq.blockExplorerAddr.replace('[[address]]', $scope.tx.contractAddr) + "' target='_blank'>" + $scope.tx.contractAddr + "</a>" : '';
-                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr + contractAddr));
+                $scope.notifier.success(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr + contractAddr);
             } else {
-                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
+                $scope.notifier.danger(resp.error);
             }
         });
     }
@@ -180,12 +180,12 @@ var contractsCtrl = function($scope, $sce, walletService) {
             $scope.showReadWrite = true;
 
         } catch (e) {
-            $scope.accessContractStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
     }
     $scope.generateContractTx = function() {
         if (!$scope.wd) {
-            $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[3]));
+            $scope.notifier.danger(globalFuncs.errorMsgs[3]);
             return;
         }
         $scope.tx.data = $scope.getTxData();

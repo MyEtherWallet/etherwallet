@@ -34,7 +34,7 @@ var cxDecryptWalletCtrl = function($scope, $sce, walletService) {
     }
     $scope.decryptWallet = function() {
 	    $scope.wallet=null;
-        $scope.decryptStatus="";
+        
 		try {
             var priv = $scope.getPrivFromAdd();
             if (priv.length==132)
@@ -44,9 +44,9 @@ var cxDecryptWalletCtrl = function($scope, $sce, walletService) {
             walletService.password = $scope.password;
             walletService.wallet = $scope.wallet;
 		} catch (e) {
-            $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + ":" + e));
+            $scope.notifier.danger(globalFuncs.errorMsgs[6] + ":" + e);
 		}
-        if($scope.wallet!=null) $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+        if($scope.wallet!=null) $scope.notifier.info(globalFuncs.successMsgs[1]);
 	};
 };
 module.exports = cxDecryptWalletCtrl;

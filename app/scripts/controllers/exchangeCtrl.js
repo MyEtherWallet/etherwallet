@@ -41,7 +41,7 @@ var exchangeCtrl = function($scope, $sce, walletService) {
     }
     $scope.setFinalPrices = function() {
         try {
-            $scope.stage1Status = '';
+            
             if (!$scope.Validator.isPositiveNumber($scope.exchangeOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.exchangeOrder.toVal)) throw globalFuncs.errorMsgs[0];
             else if ($scope.exchangeOrder.fromVal < 0.01 || $scope.exchangeOrder.toVal < 0.01) throw globalFuncs.errorMsgs[27];
             $scope.bity.refreshRates(function() {
@@ -50,12 +50,12 @@ var exchangeCtrl = function($scope, $sce, walletService) {
                 $scope.showStage2 = true;
             });
         } catch (e) {
-            $scope.stage1Status = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
 
     }
     $scope.openOrder = function() {
-        $scope.stage2Status = '';
+        
         if (($scope.exchangeOrder.toCoin != 'BTC' && $scope.Validator.isValidAddress($scope.exchangeOrder.toAddress)) || ($scope.exchangeOrder.toCoin == 'BTC' && $scope.Validator.isValidBTCAddress($scope.exchangeOrder.toAddress))) {
             var order = {
                 amount: $scope.exchangeOrder.isFrom ? $scope.exchangeOrder.fromVal : $scope.exchangeOrder.toVal,
@@ -93,11 +93,11 @@ var exchangeCtrl = function($scope, $sce, walletService) {
                         }
                         $scope.showStage3Eth = true;
                     }
-                } else $scope.stage2Status = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+                } else $scope.notifier.danger(data.msg);
                 if (!$scope.$$phase) $scope.$apply();
             });
         } else {
-            $scope.stage2Status = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+            $scope.notifier.danger(globalFuncs.errorMsgs[5]);
         }
     }
 };

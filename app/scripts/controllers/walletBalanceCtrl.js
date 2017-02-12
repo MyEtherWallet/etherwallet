@@ -21,7 +21,7 @@ var walletBalanceCtrl = function($scope, $sce) {
 				$scope.validateLocalToken = $sce.trustAsHtml('');
 				$scope.customTokenField = false;
 			} else {
-				$scope.validateLocalToken = $sce.trustAsHtml(data.msg);
+				$scope.notifier.danger(data.msg);
 			}
 		});
 	}

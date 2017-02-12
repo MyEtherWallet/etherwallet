@@ -30,7 +30,7 @@
       <h4> ABI / JSON Interface </h4>
       <textarea class="form-control" rows="5" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
       <button class="btn btn-primary" ng-click="initContract()"> ACCESS </button>
-      <div ng-bind-html="accessContractStatus"></div>
+      
     </div>
     <!-- / Input address + JSON Interface -->
 
@@ -171,7 +171,7 @@
               </div>
               <div class="form-group ">
                 <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
-                <div ng-bind-html="deployContractStatus"></div>
+                
               </div>
               <!-- Data -->
               <section class="row" ng-show="showRaw">
@@ -219,7 +219,7 @@
       </div>
 
       <!-- Wallet Decrypt -->
-      <div ng-bind-html="deployContractStatus"></div>
+      
 
       <!-- Sign TX Button (once wallet has been unlocked) -->
       <div class="form-group">
@@ -245,8 +245,8 @@
         <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="NAV_DeployContract"> Deploy Contract </a>
       </div>
 
-      <!-- Status -->
-      <div class="form-group" ng-bind-html="sendTxStatus"></div>
+      
+      
 
       <!-- Deploy Modal -->
       <div class="modal fade" id="sendTransaction" tabindex="-1" role="dialog" aria-labelledby="sendTransactionLabel">
@@ -288,7 +288,7 @@
     <button class="btn btn-primary" ng-show="!contract.functions[contract.selectedFunc.index].constant" ng-click="generateContractTx()">WRITE</button>
   </span>
   </br>
-  <div class="form-group" ng-bind-html="sendTxStatus" ng-show="!contract.functions[contract.selectedFunc.index].constant"></div>
+  
 </article>
 
 </article>

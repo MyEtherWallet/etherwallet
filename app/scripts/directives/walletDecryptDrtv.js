@@ -26,7 +26,6 @@ var walletDecryptDrtv = function() {
       <div class=\"form-group\">\r\n \
         <input style=\"display:none;\" type=\"file\" on-read-file=\"showContent($fileContent)\" id=\"fselector\" \/>\r\n \
         <a class=\"file-input btn btn-block btn-default btn-file marg-v-sm\" ng-click=\"openFileDialog()\" translate=\"ADD_Radio_2_short\">SELECT WALLET FILE... <\/a>\r\n \
-        <div id=\"fuploadStatus\" ng-bind-html=\"fileStatus\"><\/div>\r\n \
       <\/div>\r\n \
       <div class=\"form-group\" ng-if=\"requireFPass\">\r\n \
         <p translate=\"ADD_Label_3\"> Your file is encrypted. Please enter the password: <\/p>\r\n \
@@ -86,7 +85,6 @@ var walletDecryptDrtv = function() {
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt\" ng-click=\"decryptWallet()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showAOnly\" ng-click=\"decryptAddressOnly()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"walletType==\'ledger\'\" ng-click=\"scanLedger()\" translate=\"ADD_Ledger_scan\">SCAN<\/a><\/div>\r\n \
-    <div ng-bind-html=\"decryptStatus\"><\/div>\r\n \
   <\/section>\r\n \
   <!-- \/ Column 3 -The Unlock Button -->\r\n \
   <!-- MODAL -->\r\n \

@@ -32,7 +32,7 @@ var signMsgCtrl = function($scope, $sce, walletService) {
 				sig: '0x' + combinedHex
 			});
 		} catch (e) {
-			$scope.signMsg.status = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+			$scope.notifier.danger(e);
 		}
 	}
 	$scope.verifySignedMessage = function() {
@@ -44,9 +44,9 @@ var signMsgCtrl = function($scope, $sce, walletService) {
           var hash = ethUtil.sha3(json.msg);
           var pubKey = ethUtil.ecrecover(hash, sig[64], sig.slice(0,32), sig.slice(32,64));
           if(ethFuncs.getNakedAddress(json.address)!=ethUtil.pubToAddress(pubKey).toString('hex')) throw globalFuncs.errorMsgs[12];
-          else $scope.verifyMsg.status = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
+          else $scope.notifier.info(globalFuncs.successMsgs[0]);
 		} catch (e){
-		  $scope.verifyMsg.status = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+		  $scope.notifier.danger(e);
 		}
 	}
 	$scope.setVisibility = function(str) {

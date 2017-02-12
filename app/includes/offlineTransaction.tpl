@@ -13,8 +13,8 @@
     <div class="col-xs-10">
       <label translate="OFFLINE_Step1_Label_1"> From Address: </label>
       <p class="small" translate="OFFLINE_Step1_Label_2">Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account.</p>
-      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'validateAddressStatus')"/>
-      <div ng-bind-html="validateAddressStatus"></div>
+      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'')"/>
+      
     </div>
     <div class="col-xs-2 address-identicon-container-offline">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.from}}" watch-var="tx.from"></div>
@@ -41,8 +41,8 @@
     <h4 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h4>
     <div class="col-xs-10">
       <label translate="OFFLINE_Step2_Label_1"> To Address: </label>
-      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress(tx.to,'validateToAddressStatus')"/>
-      <div ng-bind-html="validateToAddressStatus"></div>
+      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress(tx.to,'')"/>
+      
     </div>
     <div class="col-xs-2 address-identicon-container-offline">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
@@ -101,9 +101,11 @@
     </div>
     <div class="col-sm-10">
       <a class="btn btn-info" ng-click="generateTx()" translate="SEND_generate">Generate Signed Transaction</a>
-      <div ng-bind-html="validateTxStatus"></div>
+      
     </div>
     <section id="step2Output">
+
+
       <div class="col-sm-8">
         <label translate="SEND_signed"> Signed Transaction </label>
         <textarea class="form-control" placeholder="" readonly="readonly" rows="3" ng-model="signedTx"></textarea>
@@ -130,7 +132,7 @@
   </section>
   <section class="row">
     <div class="col-sm-10">
-      <div ng-bind-html="offlineTxPublishStatus"></div>
+      
     </div>
   </section>
   <!-- / Step 3 -->

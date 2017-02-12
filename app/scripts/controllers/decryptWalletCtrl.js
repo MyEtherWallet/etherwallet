@@ -35,13 +35,13 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         $scope.onHDDPathChange();
     }
     $scope.showContent = function($fileContent) {
-        $scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name));
+        $scope.notifier.info(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name);
         try {
             $scope.requireFPass = Wallet.walletRequirePass($fileContent);
             $scope.showFDecrypt = !$scope.requireFPass;
             $scope.fileContent = $fileContent;
         } catch (e) {
-            $scope.fileStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
     };
     $scope.openFileDialog = function($fileContent) {
@@ -101,11 +101,10 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.setHDWallet = function() {
         walletService.wallet = $scope.wallet = $scope.HDWallet.wallets[$scope.HDWallet.id];
         $scope.mnemonicModel.close();
-        $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+        $scope.notifier.info(globalFuncs.successMsgs[1]);
     }
     $scope.decryptWallet = function() {
         $scope.wallet = null;
-        $scope.decryptStatus = "";
         try {
             if ($scope.showPDecrypt && $scope.requirePPass) {
                 $scope.wallet = Wallet.fromMyEtherWalletKey($scope.manualprivkey, $scope.privPassword);
@@ -122,9 +121,9 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             }
             walletService.wallet = $scope.wallet;
         } catch (e) {
-            $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + e));
+            $scope.notifier.danger(globalFuncs.errorMsgs[6] + e);
         }
-        if ($scope.wallet != null) $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+        if ($scope.wallet != null) $scope.notifier.info(globalFuncs.successMsgs[1]);
     };
     $scope.decryptAddressOnly = function() {
         if ($scope.Validator.isValidAddress($scope.addressOnly)) {
@@ -141,7 +140,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 setBalance: tempWallet.setBalance,
                 setTokens: tempWallet.setTokens
             }
-            $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+            $scope.notifier.info(globalFuncs.successMsgs[1]);
             walletService.wallet = $scope.wallet;
         }
     }

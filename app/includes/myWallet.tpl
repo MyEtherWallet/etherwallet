@@ -236,7 +236,7 @@
           <button type="button" class="btn btn-default" data-dismiss="modal" translate="x_Cancel">Cancel</button>
           <button type="button" ng-show="viewWallet.nick.length>0" class="btn btn-primary" ng-click="editSave()" translate="x_Save">Save</button>
         </div>
-        <div ng-bind-html="editStatus"></div>
+        
       </div>
     </div>
   </div>
@@ -263,7 +263,7 @@
                 <input type="{{showPass && 'password' || 'text'}}" class="form-control" ng-model="password" ng-keyup="$event.keyCode == 13 && decryptWallet()" />
                 <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
               </div>
-              <div ng-bind-html="viewStatus"></div>
+              
             </div>
           </form>
         </div>

@@ -42,7 +42,7 @@
 
       <!-- Sign Message Button -->
       <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="NAV_SignMsg" ng-show="wallet!=null"> Sign Message </a>
-      <div class="form-group" ng-bind-html="signMsg.status"></div>
+      
 
       <!-- Signed Message -->
       <div ng-show="signMsg.signedMsg">
@@ -63,8 +63,8 @@
       <!-- Verify Signature Message Button -->
       <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
 
-      <!-- Verify Message Status -->
-      <div class="form-group" ng-bind-html="verifyMsg.status"></div>
+      
+      
     </section>
     <!-- / Verify Message Stuff -->
 
