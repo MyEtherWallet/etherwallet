@@ -32,7 +32,7 @@
 
 <header ng-controller='tabsCtrl'>
   
-  <section class="container-fluid bg-gradient header-branding">
+  <section class="bg-gradient header-branding">
     <section class="container">
 
        <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> 
@@ -1923,14 +1923,18 @@
   </div>
 
 
-  <article class="alert alert-success popup">Aliquam mi nibh, fermentum vel dapibus vitae, posuere vel nunc. Nunc a enim gravida, molestie ex non, imperdiet diam.</article>
-  <article class="alert alert-danger popup">Aliquam mi nibh, fermentum vel dapibus vitae, posuere vel nunc. Nunc a enim gravida, molestie ex non, imperdiet diam.</article>
-  <article class="alert alert-info popup">Aliquam mi nibh, fermentum vel dapibus vitae, posuere vel nunc. Nunc a enim gravida, molestie ex non, imperdiet diam.</article>
-
+  <!-- Add classes:
+    alert-success alert-danger alert-warning -->
+  <article class="alert popup alert-success">
+    <div class="container">
+      Aliquam mi nibh, fermentum vel dapibus vitae, posuere vel nunc. Nunc a enim gravida, molestie ex non, imperdiet diam. Aliquam mi nibh, fermentum vel dapibus vitae, posuere vel nunc. Nunc a enim gravida, molestie ex non, imperdiet diam.
+    </div>
+    <i class="icon-close"></i>
+  </article>
 
 </section>
 
-<footer class="container-fluid" ng-controller='footerCtrl'>
+<footer ng-controller='footerCtrl'>
   <div class="container">
     <p>
       <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="55px" width="auto" alt="Ether Wallet" /></a>

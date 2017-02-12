@@ -18,10 +18,10 @@
 @gray-lightest                       : #FAFAFA;
 
 @brand-primary                       : @ether-blue;
-@brand-success                       : #5cb85c;
+@brand-success                       : #5dba5a;
 @brand-info                          : @ether-navy;
-@brand-warning                       : #f0ad4e;
-@brand-danger                        : #d9534f;
+@brand-warning                       : #ff9800;
+@brand-danger                        : #ea4b40;
 
 @body-bg                             : #fff;
 @text-color                          : @gray-dark;
@@ -29,6 +29,8 @@
 @link-color                          : @brand-primary;
 @link-hover-color                    : darken(@link-color, 5%);
 @link-hover-decoration               : none;
+
+@transition                          : 300ms all ease-in-out;
 
 
 // Typography
@@ -186,6 +188,7 @@
 @zindex-navbar-fixed                 : 1030;
 @zindex-modal-background             : 1040;
 @zindex-modal                        : 1050;
+@zindex-alerts                       : 1060;
 
 
 @screen-xs                           : 32rem;
@@ -217,6 +220,8 @@
 @grid-float-breakpoint               : @screen-sm-min;
 @grid-float-breakpoint-max           : (@grid-float-breakpoint - 1);
 
+@cont-padding                        : 5%;
+@cont-padding-lg                     : 10%;
 
 @container-tablet                    : (@screen-sm + @grid-gutter-width);
 @container-sm                        : @container-tablet;
@@ -283,21 +288,22 @@
 @alert-border-radius                 : @border-radius;
 @alert-link-font-weight              : bold;
 
-@alert-success-bg                    : @state-success-bg;
-@alert-success-text                  : @state-success-text;
-@alert-success-border                : @state-success-border;
 
-@alert-info-bg                       : @state-info-bg;
-@alert-info-text                     : @state-info-text;
-@alert-info-border                   : @state-info-border;
+@alert-success-bg                    : @brand-success;
+@alert-success-text                  : white;
+@alert-success-border                : @alert-success-bg;
 
-@alert-warning-bg                    : @state-warning-bg;
-@alert-warning-text                  : @state-warning-text;
-@alert-warning-border                : @state-warning-border;
+@alert-info-bg                       : @brand-primary;
+@alert-info-text                     : white;
+@alert-info-border                   : @alert-info-bg;
 
-@alert-danger-bg                     : @state-danger-bg;
-@alert-danger-text                   : @state-danger-text;
-@alert-danger-border                 : @state-danger-border;
+@alert-warning-bg                    : @brand-warning;
+@alert-warning-text                  : white;
+@alert-warning-border                : @alert-warning-bg;
+
+@alert-danger-bg                     : @brand-danger;
+@alert-danger-text                   : white;
+@alert-danger-border                 : @alert-danger-bg;
 
 @progress-bg                         : @gray-lightest;
 @progress-bar-color                  : #fff;

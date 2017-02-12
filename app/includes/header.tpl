@@ -36,7 +36,7 @@
       <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
     </a>
   }
-  <section class="container-fluid bg-gradient header-branding">
+  <section class="bg-gradient header-branding">
     <section class="container">
 
       @@if (site === 'mew' ) { <a class="brand" href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.svg" height="64px" width="auto" alt="MyEtherWallet" /></a> }
