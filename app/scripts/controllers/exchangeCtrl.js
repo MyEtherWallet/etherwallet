@@ -92,6 +92,7 @@ var exchangeCtrl = function($scope, $sce, walletService) {
                             sendMode: $scope.orderResult.input.currency == 'ETH' ? 'ether' : 'token',
                             tokenSymbol: $scope.orderResult.input.currency == 'ETH' ? '' : orderResult.input.currency
                         }
+                        new Modal(document.getElementById('sendTransaction'));
                         $scope.showStage3Eth = true;
                     }
                 } else $scope.notifier.danger(data.msg);
