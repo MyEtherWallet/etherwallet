@@ -2058,10 +2058,12 @@ var balanceDrtv = function () {
                         <div class=\"addressIdenticon med float\" title=\"Address Indenticon\" blockie-address=\"{{wallet.getAddressString()}}\" watch-var=\"wallet\"></div>\n\
                         <span class=\"mono wrap\">{{wallet.getChecksumAddressString()}}</span>\n\
                       </ul>\n\
+                      <hr />\n\
                       <h5 translate=\"sidebar_AccountBal\">Account Balance:</h5>\n\
                       <ul class=\"account-info\">\n\
                         <li><span class=\"mono wrap\">{{wallet.balance}}</span> {{ajaxReq.type}}</li>\n\
                       </ul>\n\
+                      <hr />\n\
                       <section class=\"token-balances\">\n\
                         <h5 translate=\"sidebar_TokenBal\">Token Balances:</h5>\n\
                         <table class=\"account-info\">\n\
@@ -2084,6 +2086,7 @@ var balanceDrtv = function () {
                           <div ng-bind-html=\"validateLocalToken\"></div>\n\
                         </div>\n\
                       </section>\n\
+                      <hr />\n\
                       <section ng-show=\"ajaxReq.type==\'ETH\'\">\n\
                         <h5 translate=\"sidebar_Equiv\">Equivalent Values:</h5>\n\
                         <ul class=\"account-info\">\n\
@@ -2181,7 +2184,7 @@ var walletDecryptDrtv = function () {
     template: '<article class=\"well decrypt-drtv row\" ng-controller=\'decryptWalletCtrl\'>\r\n \
   <!-- Column 1 - Select Type of Key -->\r\n \
   <section class=\"col-md-4 col-sm-6\">\r\n \
-    <h4 translate=\"decrypt_Title\"> Select the format of your private key: <\/h4>\r\n \
+    <h4 translate=\"decrypt_Access\"> Select the format of your private key: <\/h4>\r\n \
     <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"fileupload\" \/><span translate=\"x_Keystore2\">Keystore \/ JSON File<\/span><\/label>\r\n \
     <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"pasteprivkey\" \/><span translate=\"x_PrivKey2\">Private Key<\/span><\/label>\r\n \
     <label class=\"radio\"><input type=\"radio\" ng-model=\"walletType\" value=\"pastemnemonic\" \/><span translate=\"x_Mnemonic\">Mnemonic Phrase<\/span><\/label>\r\n \
@@ -7581,15 +7584,15 @@ de.data = {
   sidebar_thanks: 'Dankeschön!!!',
 
   /* Decrypt Panel */
-  decrypt_Access: 'Wie möchtst du auf dein Wallet zugreifen?',
-  decrypt_Title: 'Wähle das Format deines privaten Schlüssels:',
-  decrypt_Select: 'Wallet auswählen:',
+  decrypt_Access: 'Wie möchtst du auf dein wallet zugreifen?',
+  decrypt_Title: 'Wähle das format deines privaten schlüssels',
+  decrypt_Select: 'Wallet auswählen',
 
   /* Add Wallet */
   ADD_Label_1: 'Was möchtest du tun?',
   ADD_Radio_1: 'Neues Wallet erstellen',
   ADD_Radio_2: 'Wallet-Datei auswählen (Keystore / JSON)',
-  ADD_Radio_2_alt: 'Wallet-Datei auswählen: ',
+  ADD_Radio_2_alt: 'Wallet-Datei auswählen ',
   ADD_Radio_2_short: 'WALLET-DATEI AUSWÄHLEN...',
   ADD_Radio_3: 'Kopiere/Tippe deinen privaten Schlüssel ein',
   ADD_Radio_4: 'Kontoadresse zur Beobachtung hinzufügen',
@@ -7599,11 +7602,11 @@ de.data = {
   ADD_Radio_5_PathAlternative: '(Ledger)',
   ADD_Radio_5_PathTrezor: '(TREZOR)',
   ADD_Radio_5_PathCustom: '(custom)',
-  ADD_Label_2: 'Wähle ein Kürzel:',
-  ADD_Label_3: 'Deine Datei ist verschlüsselt. Bitte gib das Passwort ein: ',
+  ADD_Label_2: 'Wähle ein Kürzel',
+  ADD_Label_3: 'Deine Datei ist verschlüsselt. Bitte gib das Passwort ein ',
   ADD_Label_4: 'Kontoadresse zur Beobachtung hinzufügen',
   ADD_Warning_1: 'Du kannst unter dem "Wallet-Tab" eine Kontoadresse "beobachten", ohne den privaten Schlüssel hochzuladen. Du hast damit **keinen** Zugang zu diesem Wallet und kannst auch keinen Ether daraus versenden.',
-  ADD_Label_5: 'Kontoadresse eingeben: ',
+  ADD_Label_5: 'Kontoadresse eingeben ',
   ADD_Label_6: 'Wallet entsperren',
   ADD_Label_6_short: 'Entsperren',
   ADD_Label_7: 'Kontoadresse hinzufügen',
@@ -8612,20 +8615,20 @@ en.data = {
   FOOTER_4: 'Disclaimer',
 
   /* Sidebar */
-  sidebar_AccountInfo: 'Account Information: ',
-  sidebar_AccountAddr: 'Account Address: ',
-  sidebar_AccountBal: 'Account Balance: ',
-  sidebar_TokenBal: 'Token Balances: ',
-  sidebar_Equiv: 'Equivalent Values: ',
-  sidebar_TransHistory: 'Transaction History: ',
+  sidebar_AccountInfo: 'Account Information ',
+  sidebar_AccountAddr: 'Account Address ',
+  sidebar_AccountBal: 'Account Balance ',
+  sidebar_TokenBal: 'Token Balances ',
+  sidebar_Equiv: 'Equivalent Values ',
+  sidebar_TransHistory: 'Transaction History ',
   sidebar_donation: 'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?',
   sidebar_donate: 'Donate',
   sidebar_thanks: 'THANK YOU!!!',
 
   /* Decrypt Panel */
   decrypt_Access: 'How would you like to access your wallet?',
-  decrypt_Title: 'Select the format of your private key:',
-  decrypt_Select: 'Select a Wallet:',
+  decrypt_Title: 'Select the format of your private key',
+  decrypt_Select: 'Select a Wallet',
 
   /* Mnemonic Additions */
   MNEM_1: 'Please select the address you would like to interact with.',
@@ -8649,7 +8652,7 @@ en.data = {
   ADD_Label_1: 'What would you like to do?',
   ADD_Radio_1: 'Generate New Wallet',
   ADD_Radio_2: 'Select Your Wallet File (Keystore / JSON)',
-  ADD_Radio_2_alt: 'Select Your Wallet File: ',
+  ADD_Radio_2_alt: 'Select Your Wallet File ',
   ADD_Radio_2_short: 'SELECT WALLET FILE...',
   ADD_Radio_3: 'Paste/Type Your Private Key ',
   ADD_Radio_4: 'Add an Account to Watch',
@@ -8664,8 +8667,8 @@ en.data = {
   ADD_Label_3: 'Your wallet is encrypted. Please enter the password: ',
   ADD_Label_4: 'Add an Account to Watch',
   ADD_Warning_1: 'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it.',
-  ADD_Label_5: 'Enter the Address: ',
-  ADD_Label_6: 'Unlock your Wallet: ',
+  ADD_Label_5: 'Enter the Address ',
+  ADD_Label_6: 'Unlock your Wallet ',
   ADD_Label_6_short: 'Unlock',
   ADD_Label_7: 'Add Account',
 
