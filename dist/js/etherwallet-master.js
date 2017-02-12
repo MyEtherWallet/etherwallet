@@ -92,8 +92,24 @@ bity.prototype.refreshRates = function (callback) {
         callback();
     });
 };
+bity.prototype.openOrder = function (orderInfo, callback) {
+    var _this = this;
+    bity.post('/order', orderInfo, callback);
+};
+bity.postConfig = {
+    headers: {
+        'Content-Type': 'application/json; charset=UTF-8'
+    }
+};
 bity.get = function (path, callback) {
     ajaxReq.http.get(this.SERVERURL + path).then(function (data) {
+        callback(data.data);
+    }, function (data) {
+        callback({ error: true, msg: "connection error", data: "" });
+    });
+};
+bity.post = function (path, data, callback) {
+    ajaxReq.http.post(this.SERVERURL + path, JSON.stringify(data), bity.postConfig).then(function (data) {
         callback(data.data);
     }, function (data) {
         callback({ error: true, msg: "connection error", data: "" });
@@ -973,6 +989,7 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
             } else {
                 $scope.HDWallet.wallets.push(new Wallet(undefined, derivedKey.publicKey, $scope.HDWallet.dPath + "/" + i, "trezor"));
             }
+            $scope.HDWallet.wallets[$scope.HDWallet.wallets.length - 1].type = "addressOnly";
             $scope.HDWallet.wallets[$scope.HDWallet.wallets.length - 1].setBalance(false);
         }
         $scope.HDWallet.id = 0;
@@ -1122,11 +1139,62 @@ var exchangeCtrl = function ($scope, $sce, walletService) {
         $scope.exchangeOrder.isFrom = isFrom;
     };
     $scope.setFinalPrices = function () {
-        $scope.bity.refreshRates(function () {
-            $scope.updateEstimate($scope.exchangeOrder.isFrom);
-            $scope.showStage1 = false;
-            $scope.showStage2 = true;
-        });
+        try {
+            $scope.stage1Status = '';
+            if (!$scope.Validator.isPositiveNumber($scope.exchangeOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.exchangeOrder.toVal)) throw globalFuncs.errorMsgs[0];else if ($scope.exchangeOrder.fromVal < 0.01 || $scope.exchangeOrder.toVal < 0.01) throw globalFuncs.errorMsgs[27];
+            $scope.bity.refreshRates(function () {
+                $scope.updateEstimate($scope.exchangeOrder.isFrom);
+                $scope.showStage1 = false;
+                $scope.showStage2 = true;
+            });
+        } catch (e) {
+            $scope.stage1Status = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+        }
+    };
+    $scope.openOrder = function () {
+        $scope.stage2Status = '';
+        if ($scope.exchangeOrder.toCoin != 'BTC' && $scope.Validator.isValidAddress($scope.exchangeOrder.toAddress) || $scope.exchangeOrder.toCoin == 'BTC' && $scope.Validator.isValidBTCAddress($scope.exchangeOrder.toAddress)) {
+            var order = {
+                amount: $scope.exchangeOrder.isFrom ? $scope.exchangeOrder.fromVal : $scope.exchangeOrder.toVal,
+                mode: $scope.exchangeOrder.isFrom ? 0 : 1,
+                pair: $scope.exchangeOrder.fromCoin + $scope.exchangeOrder.toCoin,
+                destAddress: $scope.exchangeOrder.toAddress
+            };
+            $scope.bity.openOrder(order, function (data) {
+                if (!data.error) {
+                    $scope.orderResult = data.data;
+                    $scope.orderResult.timeRemaining = '10:00';
+                    var timeRem = setInterval(function () {
+                        if ($scope.orderResult.validFor > 0) {
+                            $scope.orderResult.validFor--;
+                            var minutes = Math.floor($scope.orderResult.validFor / 60);
+                            var seconds = $scope.orderResult.validFor - minutes * 60;
+                            minutes = minutes < 10 ? '0' + minutes : minutes;
+                            seconds = seconds < 10 ? '0' + seconds : seconds;
+                            $scope.orderResult.timeRemaining = minutes + ':' + seconds;
+                            if (!$scope.$$phase) $scope.$apply();
+                        } else {
+                            clearInterval(timeRem);
+                            timeRem = null;
+                        }
+                    }, 1000);
+                    console.log($scope.orderResult);
+                    $scope.showStage2 = false;
+                    if ($scope.orderResult.input.currency == 'BTC') $scope.showStage3Btc = true;else {
+                        $scope.parentTxConfig = {
+                            to: $scope.orderResult.payment_address,
+                            value: $scope.orderResult.input.amount,
+                            sendMode: $scope.orderResult.input.currency == 'ETH' ? 'ether' : 'token',
+                            tokenSymbol: $scope.orderResult.input.currency == 'ETH' ? '' : orderResult.input.currency
+                        };
+                        $scope.showStage3Eth = true;
+                    }
+                } else $scope.stage2Status = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+                if (!$scope.$$phase) $scope.$apply();
+            });
+        } else {
+            $scope.stage2Status = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+        }
     };
 };
 module.exports = exchangeCtrl;
@@ -1392,7 +1460,12 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
         $scope.wd = true;
         $scope.wallet.setBalance();
         $scope.wallet.setTokens();
-        $scope.setTokenSendMode();
+        if ($scope.parentTxConfig) {
+            $scope.tx.to = $scope.parentTxConfig.to;
+            $scope.tx.value = $scope.parentTxConfig.value;
+            $scope.tx.sendMode = $scope.parentTxConfig.sendMode;
+            $scope.tx.tokenSymbol = $scope.parentTxConfig.tokenSymbol;
+        }
         $scope.setTokenSendMode();
     });
     $scope.$watch('ajaxReq.key', function () {
@@ -2556,7 +2629,7 @@ globalFuncs.getDangerText = function (str) {
 // These are translated in the translation files
 globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", // 10
 "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", // 15
-"A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.", "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port", "Please enter valid chain ID", "Please enter valid ABI"];
+"A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.", "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port", "Please enter valid chain ID", "Please enter valid ABI", "Minimum amount 0.01"];
 // These are translated in the translation files
 globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "File Selected: "];
 // These are translated in the translation files
@@ -3636,28 +3709,28 @@ var globalService = function ($http, $httpParamSerializerJQLike) {
       cx: true
     },
     contracts: {
-      id: 7,
+      id: 6,
       name: "NAV_Contracts",
       url: "contracts",
       mew: true,
       cx: true
     },
     viewWalletInfo: {
-      id: 8,
+      id: 7,
       name: "NAV_ViewWallet",
       url: "view-wallet-info",
       mew: true,
       cx: false
     },
     help: {
-      id: 9,
+      id: 8,
       name: "NAV_Help",
       url: "help",
       mew: true,
       cx: true
     },
     bulkGenerate: {
-      id: 10,
+      id: 9,
       name: "NAV_BulkGenerate",
       url: "bulk-generate",
       mew: false,
@@ -8814,6 +8887,7 @@ en.data = {
   ERROR_25: 'Please enter valid port',
   ERROR_26: 'Please enter valid chain ID',
   ERROR_27: 'Please enter valid ABI',
+  ERROR_28: 'Minimum amount 0.01',
   SUCCESS_1: 'Valid address',
   SUCCESS_2: 'Wallet successfully decrypted',
   SUCCESS_3: 'Transaction submitted. TX ID: ',
