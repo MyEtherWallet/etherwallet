@@ -2069,11 +2069,11 @@
 
   <!-- Add classes:
     alert-success alert-danger alert-warning -->
-  <article class="alert popup" ng-hide="1===1">
+  <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
     <div class="container">
-      Aliquam mi nibh, fermentum vel dapibus vitae, posuere vel nunc. Nunc a enim gravida, molestie ex non, imperdiet diam. Aliquam mi nibh, fermentum vel dapibus vitae, posuere vel nunc. Nunc a enim gravida, molestie ex non, imperdiet diam.
+      {{notifier.message}}
     </div>
-    <i class="icon-close"></i>
+    <i class="icon-close" ng-click="notifier.close()"></i>
   </article>
 
 </section>
