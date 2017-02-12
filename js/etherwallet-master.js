@@ -160,13 +160,13 @@ var addWalletCtrl = function ($scope, $sce) {
 		$scope.showBtnUnlock = $scope.showDPaths = hd.bip39.validateMnemonic($scope.manualmnemonic);
 	};
 	$scope.showContent = function ($fileContent) {
-		$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name));
+		$scope.notifier.info(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name);
 		try {
 			$scope.requireFPass = Wallet.walletRequirePass($fileContent);
 			$scope.showBtnUnlock = !$scope.requireFPass;
 			$scope.fileContent = $fileContent;
 		} catch (e) {
-			$scope.fileStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+			$scope.notifier.danger(e);
 		}
 	};
 	$scope.openFileDialog = function ($fileContent) {
@@ -192,7 +192,7 @@ var addWalletCtrl = function ($scope, $sce) {
 		$scope.wallet = $scope.HDWallet.wallets[$scope.HDWallet.id];
 		$scope.mnemonicModel.close();
 		$scope.addAccount.address = $scope.wallet.getAddressString();
-		$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+		$scope.notifier.info(globalFuncs.successMsgs[1]);
 		$scope.showAddWallet = true;
 		$scope.showPassTxt = $scope.addAccount.password == '';
 		$scope.setBalance();
@@ -217,11 +217,11 @@ var addWalletCtrl = function ($scope, $sce) {
 				$scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
 			}
 		} catch (e) {
-			$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + e));
+			$scope.notifier.danger(globalFuncs.errorMsgs[6] + e);
 		}
 		if ($scope.wallet != null) {
 			$scope.addAccount.address = $scope.wallet.getAddressString();
-			$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+			$scope.notifier.info(globalFuncs.successMsgs[1]);
 			$scope.showAddWallet = true;
 			$scope.showPassTxt = $scope.addAccount.password == '';
 			$scope.setBalance();
@@ -235,25 +235,25 @@ var addWalletCtrl = function ($scope, $sce) {
 	$scope.setNickNames();
 	$scope.newWalletChange = function (varStatus, shwbtn) {
 		if ($scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && $scope.addAccount.password.length > 8) $scope[shwbtn] = true;else $scope[shwbtn] = false;
-		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope[varStatus] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));else $scope[varStatus] = "";
+		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope.notifier.danger(globalFuncs.errorMsgs[13]);
 	};
 	$scope.watchOnlyChange = function () {
 		if ($scope.addAccount.address != "" && $scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && ethFuncs.validateEtherAddress($scope.addAccount.address)) $scope.showBtnAdd = true;else $scope.showBtnAdd = false;
-		if ($scope.addAccount.address != "" && !ethFuncs.validateEtherAddress($scope.addAccount.address)) $scope.watchOnlyStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));else if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope.watchOnlyStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));else $scope.watchOnlyStatus = "";
+		if ($scope.addAccount.address != "" && !ethFuncs.validateEtherAddress($scope.addAccount.address)) $scope.notifier.danger(globalFuncs.errorMsgs[5]);else if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope.notifier.danger(globalFuncs.errorMsgs[13]);
 	};
 	$scope.addWatchOnly = function () {
 		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
-			$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+			$scope.notifier.danger(globalFuncs.errorMsgs[13]);
 			return;
 		} else if ($scope.nickNames.indexOf(ethUtil.toChecksumAddress($scope.addAccount.address)) !== -1) {
-			$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[16]));
+			$scope.notifier.danger(globalFuncs.errorMsgs[16]);
 			return;
 		}
 		cxFuncs.addWatchOnlyAddress($scope.addAccount.address, $scope.addAccount.nickName, function () {
 			if (chrome.runtime.lastError) {
-				$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getDangerText(chrome.runtime.lastError.message));
+				$scope.notifier.danger(chrome.runtime.lastError.message);
 			} else {
-				$scope.addWalletStats = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[3] + $scope.addAccount.address));
+				$scope.notifier.info(globalFuncs.successMsgs[3] + $scope.addAccount.address);
 				$scope.setNickNames();
 			}
 			$scope.$apply();
@@ -267,19 +267,19 @@ var addWalletCtrl = function ($scope, $sce) {
 		$scope.addNewNick = $scope.addNewPass = "";
 		$scope.addWalletStats = "";
 	});
-	$scope.addWalletToStorage = function (status) {
+	$scope.addWalletToStorage = function () {
 		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
-			$scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+			$scope.notifier.danger(globalFuncs.errorMsgs[13]);
 			return;
 		} else if ($scope.nickNames.indexOf(ethUtil.toChecksumAddress($scope.addAccount.address)) !== -1) {
-			$scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[16]));
+			$scope.notifier.danger(globalFuncs.errorMsgs[16]);
 			return;
 		}
 		cxFuncs.addWalletToStorage($scope.addAccount.address, $scope.addAccount.encStr, $scope.addAccount.nickName, function () {
 			if (chrome.runtime.lastError) {
-				$scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(chrome.runtime.lastError.message));
+				$scope.notifier.danger(chrome.runtime.lastError.message);
 			} else {
-				$scope[status] = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[3] + $scope.addAccount.address));
+				$scope.notifier.info(globalFuncs.successMsgs[3] + $scope.addAccount.address);
 				$scope.setNickNames();
 			}
 			$scope.$apply();
@@ -291,7 +291,7 @@ var addWalletCtrl = function ($scope, $sce) {
 			n: globalFuncs.scrypt.n
 		});
 		$scope.addAccount.encStr = JSON.stringify(wStr);
-		$scope.addWalletToStorage('addStatus');
+		$scope.addWalletToStorage();
 	};
 	$scope.generateWallet = function () {
 		var wallet = Wallet.generate(false);
@@ -357,16 +357,16 @@ var cxDecryptWalletCtrl = function ($scope, $sce, walletService) {
 	};
 	$scope.decryptWallet = function () {
 		$scope.wallet = null;
-		$scope.decryptStatus = "";
+
 		try {
 			var priv = $scope.getPrivFromAdd();
 			if (priv.length == 132) $scope.wallet = Wallet.fromMyEtherWalletKey(priv, $scope.password);else $scope.wallet = Wallet.getWalletFromPrivKeyFile(priv, $scope.password);
 			walletService.password = $scope.password;
 			walletService.wallet = $scope.wallet;
 		} catch (e) {
-			$scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + ":" + e));
+			$scope.notifier.danger(globalFuncs.errorMsgs[6] + ":" + e);
 		}
-		if ($scope.wallet != null) $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+		if ($scope.wallet != null) $scope.notifier.info(globalFuncs.successMsgs[1]);
 	};
 };
 module.exports = cxDecryptWalletCtrl;
@@ -500,11 +500,11 @@ var myWalletsCtrl = function ($scope, $sce) {
 	};
 	$scope.editSave = function () {
 		if ($scope.nickNames.indexOf($scope.viewWallet.nick) !== -1) {
-			$scope.editStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+			$scope.notifier.danger(globalFuncs.errorMsgs[13]);
 			return;
 		} else {
 			cxFuncs.editNickName($scope.viewWallet.addr, $scope.viewWallet.nick, function () {
-				if (chrome.runtime.lastError) $scope.editStatus = $sce.trustAsHtml(globalFuncs.getDangerText(chrome.runtime.lastError.message));else {
+				if (chrome.runtime.lastError) $scope.notifier.danger(chrome.runtime.lastError.message);else {
 					$scope.setAllWallets();
 					$scope.setNickNames();
 					$scope.editModal.close();
@@ -518,7 +518,7 @@ var myWalletsCtrl = function ($scope, $sce) {
 	};
 	$scope.decryptWallet = function () {
 		$scope.wallet = null;
-		$scope.viewStatus = "";
+
 		try {
 			var priv = $scope.allWallets[$scope.viewWallet.id].priv;
 			if (priv.length == 132) $scope.wallet = Wallet.fromMyEtherWalletKey(priv, $scope.password);else $scope.wallet = Wallet.getWalletFromPrivKeyFile(priv, $scope.password);
@@ -526,7 +526,7 @@ var myWalletsCtrl = function ($scope, $sce) {
 			$scope.setWalletInfo();
 			$scope.password = "";
 		} catch (e) {
-			$scope.viewStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + ":" + e));
+			$scope.notifier.danger(globalFuncs.errorMsgs[6] + ":" + e);
 		}
 	};
 	$scope.printQRCode = function () {
@@ -749,7 +749,6 @@ var contractsCtrl = function ($scope, $sce, walletService) {
         $scope.wallet = walletService.wallet;
         $scope.wd = true;
         $scope.tx.nonce = 0;
-        $scope.sendTxStatus = "";
     });
     $scope.$watch('visibility', function (newValue, oldValue) {
         $scope.tx = {
@@ -761,7 +760,6 @@ var contractsCtrl = function ($scope, $sce, walletService) {
             nonce: null,
             gasPrice: null
         };
-        $scope.accessContractStatus = $scope.deployContractStatus = $scope.sendTxStatus = "";
     });
     $scope.$watch('tx', function (newValue, oldValue) {
         $scope.showRaw = false;
@@ -812,17 +810,17 @@ var contractsCtrl = function ($scope, $sce, walletService) {
                     if (!rawTx.isError) {
                         $scope.rawTx = rawTx.rawTx;
                         $scope.signedTx = rawTx.signedTx;
-                        $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+
                         $scope.showRaw = true;
                     } else {
                         $scope.showRaw = false;
-                        $scope.deployContractStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+                        $scope.notifier.danger(rawTx.error);
                     }
                     if (!$scope.$$phase) $scope.$apply();
                 });
             });
         } catch (e) {
-            $scope.deployContractStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
     };
     $scope.sendTx = function () {
@@ -832,9 +830,9 @@ var contractsCtrl = function ($scope, $sce, walletService) {
             if (!resp.isError) {
                 var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
                 var contractAddr = $scope.tx.contractAddr != '' ? " & Contract Address <a href='" + ajaxReq.blockExplorerAddr.replace('[[address]]', $scope.tx.contractAddr) + "' target='_blank'>" + $scope.tx.contractAddr + "</a>" : '';
-                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr + contractAddr));
+                $scope.notifier.success(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr + contractAddr);
             } else {
-                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
+                $scope.notifier.danger(resp.error);
             }
         });
     };
@@ -891,12 +889,12 @@ var contractsCtrl = function ($scope, $sce, walletService) {
             }
             $scope.showReadWrite = true;
         } catch (e) {
-            $scope.accessContractStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
     };
     $scope.generateContractTx = function () {
         if (!$scope.wd) {
-            $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[3]));
+            $scope.notifier.danger(globalFuncs.errorMsgs[3]);
             return;
         }
         $scope.tx.data = $scope.getTxData();
@@ -945,13 +943,13 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
         $scope.onHDDPathChange();
     };
     $scope.showContent = function ($fileContent) {
-        $scope.fileStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name));
+        $scope.notifier.info(globalFuncs.successMsgs[4] + document.getElementById('fselector').files[0].name);
         try {
             $scope.requireFPass = Wallet.walletRequirePass($fileContent);
             $scope.showFDecrypt = !$scope.requireFPass;
             $scope.fileContent = $fileContent;
         } catch (e) {
-            $scope.fileStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
     };
     $scope.openFileDialog = function ($fileContent) {
@@ -1009,11 +1007,10 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
     $scope.setHDWallet = function () {
         walletService.wallet = $scope.wallet = $scope.HDWallet.wallets[$scope.HDWallet.id];
         $scope.mnemonicModel.close();
-        $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+        $scope.notifier.info(globalFuncs.successMsgs[1]);
     };
     $scope.decryptWallet = function () {
         $scope.wallet = null;
-        $scope.decryptStatus = "";
         try {
             if ($scope.showPDecrypt && $scope.requirePPass) {
                 $scope.wallet = Wallet.fromMyEtherWalletKey($scope.manualprivkey, $scope.privPassword);
@@ -1030,9 +1027,9 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
             }
             walletService.wallet = $scope.wallet;
         } catch (e) {
-            $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + e));
+            $scope.notifier.danger(globalFuncs.errorMsgs[6] + e);
         }
-        if ($scope.wallet != null) $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+        if ($scope.wallet != null) $scope.notifier.info(globalFuncs.successMsgs[1]);
     };
     $scope.decryptAddressOnly = function () {
         if ($scope.Validator.isValidAddress($scope.addressOnly)) {
@@ -1049,7 +1046,7 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
                 setBalance: tempWallet.setBalance,
                 setTokens: tempWallet.setTokens
             };
-            $scope.decryptStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[1]));
+            $scope.notifier.info(globalFuncs.successMsgs[1]);
             walletService.wallet = $scope.wallet;
         }
     };
@@ -1143,7 +1140,7 @@ var exchangeCtrl = function ($scope, $sce, walletService) {
     };
     $scope.setFinalPrices = function () {
         try {
-            $scope.stage1Status = '';
+
             if (!$scope.Validator.isPositiveNumber($scope.exchangeOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.exchangeOrder.toVal)) throw globalFuncs.errorMsgs[0];else if ($scope.exchangeOrder.fromVal < 0.01 || $scope.exchangeOrder.toVal < 0.01) throw globalFuncs.errorMsgs[27];
             $scope.bity.refreshRates(function () {
                 $scope.updateEstimate($scope.exchangeOrder.isFrom);
@@ -1151,11 +1148,11 @@ var exchangeCtrl = function ($scope, $sce, walletService) {
                 $scope.showStage2 = true;
             });
         } catch (e) {
-            $scope.stage1Status = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
     };
     $scope.openOrder = function () {
-        $scope.stage2Status = '';
+
         if ($scope.exchangeOrder.toCoin != 'BTC' && $scope.Validator.isValidAddress($scope.exchangeOrder.toAddress) || $scope.exchangeOrder.toCoin == 'BTC' && $scope.Validator.isValidBTCAddress($scope.exchangeOrder.toAddress)) {
             var order = {
                 amount: $scope.exchangeOrder.isFrom ? $scope.exchangeOrder.fromVal : $scope.exchangeOrder.toVal,
@@ -1192,11 +1189,11 @@ var exchangeCtrl = function ($scope, $sce, walletService) {
                         };
                         $scope.showStage3Eth = true;
                     }
-                } else $scope.stage2Status = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+                } else $scope.notifier.danger(data.msg);
                 if (!$scope.$$phase) $scope.$apply();
             });
         } else {
-            $scope.stage2Status = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+            $scope.notifier.danger(globalFuncs.errorMsgs[5]);
         }
     };
 };
@@ -1292,7 +1289,6 @@ var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
     };
     $scope.$watch('tx', function () {
         $scope.showRaw = false;
-        $scope.sendTxStatus = "";
     }, true);
     $scope.$watch('tokenTx.id', function () {
         if ($scope.tokenTx.id != 'ether') {
@@ -1323,9 +1319,9 @@ var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
     };
     $scope.validateAddress = function (address, status) {
         if (ethFuncs.validateEtherAddress(address)) {
-            $scope[status] = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
+            $scope.notifier.info(globalFuncs.successMsgs[0]);
         } else {
-            $scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+            $scope.notifier.danger(globalFuncs.errorMsgs[5]);
         }
     };
     $scope.generateTx = function () {
@@ -1350,10 +1346,9 @@ var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
             eTx.sign($scope.wallet.getPrivateKey());
             $scope.rawTx = JSON.stringify(rawTx);
             $scope.signedTx = '0x' + eTx.serialize().toString('hex');
-            $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
         } catch (e) {
             $scope.showRaw = false;
-            $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
     };
     $scope.confirmSendTx = function () {
@@ -1377,16 +1372,16 @@ var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
             }
             new Modal(document.getElementById('sendTransactionOffline')).open();
         } catch (e) {
-            $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
     };
     $scope.sendTx = function () {
         new Modal(document.getElementById('sendTransactionOffline')).close();
         ajaxReq.sendRawTx($scope.signedTx, function (data) {
             if (data.error) {
-                $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+                $scope.notifier.danger(data.msg);
             } else {
-                $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank'>" + data.data + "</a>"));
+                $scope.notifier.success(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank'>" + data.data + "</a>");
             }
         });
     };
@@ -1488,7 +1483,6 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
     }, true);
     $scope.$watch('tx', function (newValue, oldValue) {
         $scope.showRaw = false;
-        $scope.sendTxStatus = "";
         if (oldValue.sendMode != newValue.sendMode && newValue.sendMode == 'ether') {
             $scope.tx.data = "";
             $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
@@ -1521,13 +1515,10 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
             estObj.value = '0x00';
         }
         ethFuncs.estimateGas(estObj, function (data) {
-            $scope.validateTxStatus = "";
             if (!data.error) {
-                if (data.data == '-1') $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[21]));
+                if (data.data == '-1') $scope.notifier.danger(globalFuncs.errorMsgs[21]);
                 $scope.tx.gasLimit = data.data;
-            } else {
-                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
-            }
+            } else $scope.notifier.danger(data.msg);
         });
     };
     $scope.onDonateClick = function () {
@@ -1537,7 +1528,7 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
     };
     $scope.generateTx = function () {
         if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
-            $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+            $scope.notifier.danger(globalFuncs.errorMsgs[5]);
             return;
         }
         var txData = uiFuncs.getTxData($scope);
@@ -1551,10 +1542,9 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
                 $scope.rawTx = rawTx.rawTx;
                 $scope.signedTx = rawTx.signedTx;
                 $scope.showRaw = true;
-                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
             } else {
                 $scope.showRaw = false;
-                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+                $scope.notifier.danger(rawTx.error);
             }
             if (!$scope.$$phase) $scope.$apply();
         });
@@ -1564,11 +1554,11 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
         uiFuncs.sendTx($scope.signedTx, function (resp) {
             if (!resp.isError) {
                 var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
-                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr));
+                $scope.notifier.success(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr);
                 $scope.wallet.setBalance();
                 if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
             } else {
-                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
+                $scope.notifier.danger(resp.error);
             }
         });
     };
@@ -1580,7 +1570,7 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
                     $scope.tx.value = resp.value;
                 } else {
                     $scope.showRaw = false;
-                    $scope.validateTxStatus = $sce.trustAsHtml(resp.error);
+                    $scope.notifier.danger(resp.error);
                 }
             });
         } else {
@@ -1627,7 +1617,7 @@ var signMsgCtrl = function ($scope, $sce, walletService) {
 				sig: '0x' + combinedHex
 			});
 		} catch (e) {
-			$scope.signMsg.status = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+			$scope.notifier.danger(e);
 		}
 	};
 	$scope.verifySignedMessage = function () {
@@ -1638,9 +1628,9 @@ var signMsgCtrl = function ($scope, $sce, walletService) {
 			sig[64] = sig[64] == 0 || sig[64] == 1 ? sig[64] + 27 : sig[64];
 			var hash = ethUtil.sha3(json.msg);
 			var pubKey = ethUtil.ecrecover(hash, sig[64], sig.slice(0, 32), sig.slice(32, 64));
-			if (ethFuncs.getNakedAddress(json.address) != ethUtil.pubToAddress(pubKey).toString('hex')) throw globalFuncs.errorMsgs[12];else $scope.verifyMsg.status = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
+			if (ethFuncs.getNakedAddress(json.address) != ethUtil.pubToAddress(pubKey).toString('hex')) throw globalFuncs.errorMsgs[12];else $scope.notifier.info(globalFuncs.successMsgs[0]);
 		} catch (e) {
-			$scope.verifyMsg.status = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+			$scope.notifier.danger(e);
 		}
 	};
 	$scope.setVisibility = function (str) {
@@ -1665,6 +1655,8 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
     $scope.nodeIsConnected = true;
     $scope.browserProtocol = window.location.protocol;
     var hval = window.location.hash;
+    $scope.notifier = uiFuncs.notifier;
+    $scope.notifier.sce = $sce;$scope.notifier.scope = $scope;
     $scope.setArrowVisibility = function () {
         setTimeout(function () {
             $scope.showLeftArrow = false;
@@ -1737,7 +1729,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
         try {
             if (!$scope.Validator.isAlphaNumericSpace($scope.customNode.name)) throw globalFuncs.errorMsgs[22];else if (!$scope.checkNodeUrl($scope.customNode.url)) throw globalFuncs.errorMsgs[23];else if (!$scope.Validator.isPositiveNumber($scope.customNode.port) && $scope.customNode.port != '') throw globalFuncs.errorMsgs[24];else if ($scope.customNode.eip155 && !$scope.Validator.isPositiveNumber($scope.customNode.chainId)) throw globalFuncs.errorMsgs[25];
         } catch (e) {
-            $scope.addNodeStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
             return;
         }
         var customNode = $scope.customNode;
@@ -1882,48 +1874,10 @@ module.exports = tabsCtrl;
 },{}],20:[function(require,module,exports){
 'use strict';
 
-var viewCtrl = function ($scope, globalService) {
+var viewCtrl = function ($scope, globalService, $sce) {
     $scope.globalService = globalService;
-    $scope.notifier = {
-        show: false,
-        close: function () {
-            this.show = false;
-        },
-        open: function () {
-            this.show = true;
-        },
-        class: '',
-        message: '',
-        timer: null,
-        warning: function (msg) {
-            this.setClassAndOpen("alert-warning", msg);
-            this.setTimer();
-        },
-        info: function (msg) {
-            this.setClassAndOpen("", msg);
-            this.setTimer();
-        },
-        danger: function (msg) {
-            this.setClassAndOpen("alert-danger", msg);
-            this.setTimer();
-        },
-        success: function (msg) {
-            this.setClassAndOpen("alert-success", msg);
-        },
-        setClassAndOpen: function (_class, msg) {
-            this.class = _class;
-            this.message = msg;
-            this.open();
-        },
-        setTimer: function () {
-            var _this = this;
-            clearTimeout(_this.timer);
-            _this.timer = setTimeout(function () {
-                _this.show = false;
-                if (!$scope.$$phase) $scope.$apply();
-            }, 4000);
-        }
-    };
+    $scope.notifier = uiFuncs.notifier;
+    $scope.notifier.sce = $sce;$scope.notifier.scope = $scope;
 };
 module.exports = viewCtrl;
 
@@ -1999,7 +1953,7 @@ var walletBalanceCtrl = function ($scope, $sce) {
 				$scope.validateLocalToken = $sce.trustAsHtml('');
 				$scope.customTokenField = false;
 			} else {
-				$scope.validateLocalToken = $sce.trustAsHtml(data.msg);
+				$scope.notifier.danger(data.msg);
 			}
 		});
 	};
@@ -2256,7 +2210,6 @@ var cxWalletDecryptDrtv = function () {
       <div class="col-md-4 col-sm-6" id="walletuploadbutton" ng-show="password.length>0">\n \
         <h4 id="uploadbtntxt-wallet" translate="ADD_Label_6"> Unlock Your Wallet:</h4>\n \
         <div class="form-group"><a ng-click="decryptWallet()" class="btn btn-primary btn-block" translate="ADD_Label_6_short">UNLOCK</a></div>\n \
-        <div ng-bind-html="decryptStatus"></div>\n \
       </div>\n \
     </div>'
   };
@@ -2317,7 +2270,6 @@ var walletDecryptDrtv = function () {
       <div class=\"form-group\">\r\n \
         <input style=\"display:none;\" type=\"file\" on-read-file=\"showContent($fileContent)\" id=\"fselector\" \/>\r\n \
         <a class=\"file-input btn btn-block btn-default btn-file marg-v-sm\" ng-click=\"openFileDialog()\" translate=\"ADD_Radio_2_short\">SELECT WALLET FILE... <\/a>\r\n \
-        <div id=\"fuploadStatus\" ng-bind-html=\"fileStatus\"><\/div>\r\n \
       <\/div>\r\n \
       <div class=\"form-group\" ng-if=\"requireFPass\">\r\n \
         <p translate=\"ADD_Label_3\"> Your file is encrypted. Please enter the password: <\/p>\r\n \
@@ -2377,7 +2329,6 @@ var walletDecryptDrtv = function () {
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt\" ng-click=\"decryptWallet()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showAOnly\" ng-click=\"decryptAddressOnly()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
     <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"walletType==\'ledger\'\" ng-click=\"scanLedger()\" translate=\"ADD_Ledger_scan\">SCAN<\/a><\/div>\r\n \
-    <div ng-bind-html=\"decryptStatus\"><\/div>\r\n \
   <\/section>\r\n \
   <!-- \/ Column 3 -The Unlock Button -->\r\n \
   <!-- MODAL -->\r\n \
@@ -2918,7 +2869,7 @@ app.directive('walletBalanceDrtv', balanceDrtv);
 app.directive('walletDecryptDrtv', walletDecryptDrtv);
 app.directive('cxWalletDecryptDrtv', cxWalletDecryptDrtv);
 app.controller('tabsCtrl', ['$scope', 'globalService', '$translate', '$sce', tabsCtrl]);
-app.controller('viewCtrl', ['$scope', 'globalService', viewCtrl]);
+app.controller('viewCtrl', ['$scope', 'globalService', '$sce', viewCtrl]);
 app.controller('walletGenCtrl', ['$scope', walletGenCtrl]);
 app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
 app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptWalletCtrl]);
@@ -17638,6 +17589,48 @@ uiFuncs.transferAllBalance = function (fromAdd, gasLimit, callback) {
             isError: true,
             error: e
         });
+    }
+};
+uiFuncs.notifier = {
+    show: false,
+    close: function () {
+        this.show = false;
+    },
+    open: function () {
+        this.show = true;
+    },
+    class: '',
+    message: '',
+    timer: null,
+    sce: null,
+    scope: null,
+    warning: function (msg) {
+        this.setClassAndOpen("alert-warning", msg);
+        this.setTimer();
+    },
+    info: function (msg) {
+        this.setClassAndOpen("", msg);
+        this.setTimer();
+    },
+    danger: function (msg) {
+        this.setClassAndOpen("alert-danger", msg);
+        this.setTimer();
+    },
+    success: function (msg) {
+        this.setClassAndOpen("alert-success", msg);
+    },
+    setClassAndOpen: function (_class, msg) {
+        this.class = _class;
+        this.message = msg.message ? this.sce.trustAsHtml(msg.message) : this.sce.trustAsHtml(msg);
+        this.open();
+    },
+    setTimer: function () {
+        var _this = this;
+        clearTimeout(_this.timer);
+        _this.timer = setTimeout(function () {
+            _this.show = false;
+            if (!_this.scope.$$phase) _this.scope.$apply();
+        }, 5000);
     }
 };
 module.exports = uiFuncs;

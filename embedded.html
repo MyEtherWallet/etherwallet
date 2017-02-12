@@ -102,7 +102,11 @@
     </div>
 
     <!-- /tab panes -->
-
+  <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
+    <div class="container" ng-bind-html="notifier.message"></div>
+    <i class="icon-close" ng-click="notifier.close()"></i>
+  </article>
+  
   </section>
 
 
