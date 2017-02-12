@@ -97,7 +97,7 @@
     <div class="nav-scroll">
       <nav class="nav-inner">
         
-        <span ng-repeat="tab in tabNames track by $index" class="nav-item" ng-class="{active: $index==gService.currentTab}" ng-show="{{tab.mew}}" ng-click="tabClick($index)"> <a translate="{{tab.name}}"></a></span>
+        <span ng-repeat="tab in tabNames track by $index" class="nav-item {{tab.name}}" ng-class="{active: $index==gService.currentTab}" ng-show="{{tab.mew}}" ng-click="tabClick($index)"> <a translate="{{tab.name}}"></a></span>
         
         
       </nav>
@@ -752,7 +752,7 @@
       </div>
       <div class="progress-item progress-active">
         <div class="progress-circle"><i>2</i></div>
-        <p>Waiting for your ETH {{orderResult.input.currency}}</p>
+        <p>Waiting for your {{orderResult.input.currency}}</p>
       </div>
       <div class="progress-item">
         <div class="progress-circle"><i>3</i></div>
@@ -760,7 +760,7 @@
       </div>
       <div class="progress-item">
         <div class="progress-circle"><i>4</i></div>
-        <p>Sending you BTC {{orderResult.output.currency}} Now</p>
+        <p>Sending you {{orderResult.output.currency}} Now</p>
       </div>
       <div class="progress-item">
         <div class="progress-circle"><i>5</i></div>
