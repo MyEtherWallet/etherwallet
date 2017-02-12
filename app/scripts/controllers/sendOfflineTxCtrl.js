@@ -67,7 +67,7 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
     }
     $scope.$watch('tx', function() {
         $scope.showRaw = false;
-        $scope.sendTxStatus = "";
+        
     }, true);
     $scope.$watch('tokenTx.id', function() {
         if ($scope.tokenTx.id != 'ether') {
@@ -98,9 +98,9 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
     }
     $scope.validateAddress = function(address, status) {
         if (ethFuncs.validateEtherAddress(address)) {
-            $scope[status] = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[0]));
+            $scope.notifier.info(globalFuncs.successMsgs[0]);
         } else {
-            $scope[status] = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+            $scope.notifier.danger(globalFuncs.errorMsgs[5]);
         }
     }
     $scope.generateTx = function() {
@@ -130,10 +130,10 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
             eTx.sign($scope.wallet.getPrivateKey());
             $scope.rawTx = JSON.stringify(rawTx);
             $scope.signedTx = '0x' + eTx.serialize().toString('hex');
-            $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
+            
         } catch (e) {
             $scope.showRaw = false;
-            $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
     }
     $scope.confirmSendTx = function() {
@@ -157,16 +157,16 @@ var sendOfflineTxCtrl = function($scope, $sce, walletService) {
             }
             new Modal(document.getElementById('sendTransactionOffline')).open();
         } catch (e) {
-            $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
         }
     }
     $scope.sendTx = function() {
         new Modal(document.getElementById('sendTransactionOffline')).close();
         ajaxReq.sendRawTx($scope.signedTx, function(data) {
             if (data.error) {
-                $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
+                $scope.notifier.danger(data.msg);
             } else {
-                $scope.offlineTxPublishStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank'>" + data.data + "</a>"))
+                $scope.notifier.success(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank'>" + data.data + "</a>");
             }
         });
     }

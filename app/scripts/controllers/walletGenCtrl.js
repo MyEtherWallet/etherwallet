@@ -8,7 +8,7 @@ var walletGenCtrl = function($scope) {
   $scope.showPass = true;
   $scope.genNewWallet = function() {
     if (!$scope.isStrongPass()) {
-      alert(globalFuncs.errorMsgs[1]);
+      $scope.notifier.danger(globalFuncs.errorMsgs[1]);
     } else if ($scope.isDone) {
       $scope.isDone = false;
       $scope.wallet = Wallet.generate(false);

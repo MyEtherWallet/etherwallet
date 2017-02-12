@@ -45,16 +45,16 @@
 
         <div class="form-group">
           <label translate="ADD_Label_2"> Create a Nickname: </label>
-          <input class="form-control" type="text" placeholder="{{ 'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('nickNameStatus','showBtnGen')" ng-keyup="$event.keyCode == 13 && importWalletToStorage()"/>
+          <input class="form-control" type="text" placeholder="{{ 'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('','showBtnGen')" ng-keyup="$event.keyCode == 13 && importWalletToStorage()"/>
         </div>
         <div class="form-group">
           <label translate="GEN_Label_1"> Create a Password: (at least 9 characters)</label>
           <div class="input-group">
-            <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-model="addAccount.password" ng-change="newWalletChange('nickNameStatus','showBtnGen')" ng-keyup="$event.keyCode == 13 && generateWallet()"/>
+            <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-model="addAccount.password" ng-change="newWalletChange('','showBtnGen')" ng-keyup="$event.keyCode == 13 && generateWallet()"/>
             <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
           </div>
         </div>
-        <div ng-bind-html="nickNameStatus"></div>
+        
       </div>
       <!-- / Generate New Wallet -->
 
@@ -64,7 +64,7 @@
         <div class="form-group">
           <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector"/>
           <a class="file-input btn btn-block btn-default btn-file marg-v-sm" ng-click="openFileDialog()" translate="ADD_Radio_2_short">SELECT WALLET FILE...</a>
-          <div id="fuploadStatus" ng-bind-html="fileStatus"></div>
+          
         </div>
         <div class="form-group" ng-show="requireFPass">
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
@@ -122,7 +122,7 @@
           <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="addAccount.address" ng-change="watchOnlyChange()" ng-keyup="$event.keyCode == 13 && addWatchOnly()"/>
         </div>
       </div>
-      <div ng-bind-html="watchOnlyStatus"></div>
+      
     </article>
 
     <article class="col-md-4 col-sm-6" >
@@ -184,7 +184,7 @@
       <h4 translate="NAV_AddWallet">Add Wallet</h4>
       <div class="form-group">
         <label translate="ADD_Label_2"> Create a Nickname: </label>
-        <input class="form-control" type="text" placeholder="{{ 'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('addStatus','showBtnAddWallet')"/>
+        <input class="form-control" type="text" placeholder="{{ 'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('','showBtnAddWallet')"/>
       </div>
       <div class="form-group" ng-show="showPassTxt">
         <label translate="GEN_Label_1"> Enter a strong password (at least 9 characters)</label>
@@ -195,7 +195,7 @@
             placeholder="{{ 'GEN_Placeholder_1' | translate }}"
             ng-model="addAccount.password"
             ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'"
-            ng-change="newWalletChange('addStatus','showBtnAddWallet')"
+            ng-change="newWalletChange('','showBtnAddWallet')"
             ng-keyup="$event.keyCode == 13 && importWalletToStorage()"
           />
           <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
@@ -204,7 +204,7 @@
       <div class="form-group" ng-show="showBtnAddWallet">
         <a class="btn btn-info btn-block" ng-click="importWalletToStorage()" translate="NAV_AddWallet">ADD WALLET </a>
       </div>
-      <div ng-bind-html="addStatus"></div>
+      
     </div>
   </article>
     <div class="modal fade" tabindex="-1" role="dialog" id="mnemonicModel">

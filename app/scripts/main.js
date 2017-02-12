@@ -5,6 +5,7 @@ var angular                  = require('angular');
 var angularTranslate         = require('angular-translate');
 var angularTranslateErrorLog = require('angular-translate-handler-log');
 var angularSanitize          = require('angular-sanitize');
+var angularAnimate           = require('angular-animate');
 var bip39                    = require('bip39');
 var HDKey                    = require('hdkey');
 window.hd                    = { bip39: bip39, HDKey: HDKey };
@@ -85,7 +86,7 @@ if (IS_CX) {
   var mainPopCtrl            = require('./controllers/CX/mainPopCtrl');
   var quickSendCtrl          = require('./controllers/CX/quickSendCtrl');
 }
-var app = angular.module('mewApp', ['pascalprecht.translate', 'ngSanitize']);
+var app = angular.module('mewApp', ['pascalprecht.translate', 'ngSanitize','ngAnimate']);
 app.config(['$compileProvider', function($compileProvider) {
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|https|):/);
 }]);
@@ -102,7 +103,7 @@ app.directive('walletBalanceDrtv', balanceDrtv);
 app.directive('walletDecryptDrtv', walletDecryptDrtv);
 app.directive('cxWalletDecryptDrtv', cxWalletDecryptDrtv);
 app.controller('tabsCtrl', ['$scope', 'globalService', '$translate', '$sce', tabsCtrl]);
-app.controller('viewCtrl', ['$scope', 'globalService', viewCtrl]);
+app.controller('viewCtrl', ['$scope', 'globalService', '$sce', viewCtrl]);
 app.controller('walletGenCtrl', ['$scope', walletGenCtrl]);
 app.controller('bulkGenCtrl', ['$scope', bulkGenCtrl]);
 app.controller('decryptWalletCtrl', ['$scope', '$sce', 'walletService', decryptWalletCtrl]);

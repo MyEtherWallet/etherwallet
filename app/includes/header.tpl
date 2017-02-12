@@ -160,7 +160,7 @@
             <label>Chain ID</label>
             <input class="form-control" type="text" placeholder="" ng-model="customNode.chainId" ng-class="Validator.isPositiveNumber(customNode.chainId) ? 'is-valid' : 'is-invalid'">
           </div>
-          <div class="form-group" ng-bind-html="addNodeStatus"></div>
+          
         </div>
 
         <div class="modal-footer text-center">
@@ -172,5 +172,4 @@
     </div>
   </div>
   <!-- / Info Modal -->
-
 </header>

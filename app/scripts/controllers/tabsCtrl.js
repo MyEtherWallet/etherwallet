@@ -11,6 +11,8 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.nodeIsConnected = true;
     $scope.browserProtocol = window.location.protocol;
     var hval = window.location.hash;
+    $scope.notifier = uiFuncs.notifier;
+    $scope.notifier.sce = $sce; $scope.notifier.scope = $scope;
     $scope.setArrowVisibility = function() {
         setTimeout(function() {
             $scope.showLeftArrow = false;
@@ -92,7 +94,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             else if (!$scope.Validator.isPositiveNumber($scope.customNode.port) && $scope.customNode.port != '') throw globalFuncs.errorMsgs[24];
             else if ($scope.customNode.eip155 && !$scope.Validator.isPositiveNumber($scope.customNode.chainId)) throw globalFuncs.errorMsgs[25];
         } catch (e) {
-            $scope.addNodeStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
             return;
         }
         var customNode = $scope.customNode;
