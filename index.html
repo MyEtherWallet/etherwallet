@@ -737,7 +737,7 @@
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(true)"
          ng-model="swapOrder.fromVal"
-         ng-class="Validator.isPositiveNumber(swapOrder.fromVal)  && swapOrder.fromVal >= 0.01 ? 'is-valid' : 'is-invalid'" />
+         ng-class="Validator.isPositiveNumber(swapOrder.fromVal)  && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <span class="dropdown">
     <a class="btn btn-default dropdown-toggle" ng-click="dropdownFrom = !dropdownFrom">{{swapOrder.fromCoin}}<i class="caret"></i></a>
@@ -755,7 +755,7 @@
          placeholder="{{ 'SEND_amount_short' | translate }}"
          ng-change ="updateEstimate(false)"
          ng-model="swapOrder.toVal"
-         ng-class="Validator.isPositiveNumber(swapOrder.toVal) && swapOrder.toVal >= 0.01 ? 'is-valid' : 'is-invalid'" />
+         ng-class="Validator.isPositiveNumber(swapOrder.toVal) && verifyMinMaxValues() ? 'is-valid' : 'is-invalid'" />
 
   <div class="dropdown">
     <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownTo = !dropdownTo">{{swapOrder.toCoin}}<i class="caret"></i></a>
