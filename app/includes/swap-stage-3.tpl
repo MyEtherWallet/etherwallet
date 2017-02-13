@@ -3,7 +3,8 @@
 
   <!-- Title -->
   <section class="row text-center">
-    <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
+    <div class="col-xs-3 text-left"><a class="btn btn-danger btn-sm"> Start New Swap </a></div>
+    <h5 class="col-xs-6" translate="SWAP_information">Your Information</h5>
     <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank">
       <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
     </a></div>

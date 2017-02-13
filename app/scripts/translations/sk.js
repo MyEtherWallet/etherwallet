@@ -4,6 +4,49 @@ var sk = function() {}
 sk.code = 'sk';
 sk.data = {
 
+/* Misc */
+x_ParityPhrase              : 'Parity Phrase ',
+
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Contracts */
+x_Access                    : 'Access ',
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
 NAV_Swap                    : 'Swap ',
 NAV_SignMsg                 : 'Sign Message ',
 
@@ -250,15 +293,15 @@ CX_quicksend                : 'QuickSend ', // if no appropriate translation, ju
 
 /* Error Messages */
 ERROR_0                     : 'Please enter valid amount. ',
-ERROR_1                    : 'Your password must be at least 9 characters. Please ensure it is a strong password. ',
-ERROR_2                    : 'Sorry! We don\'t recognize this type of wallet file. ',
-ERROR_3                    : 'This is not a valid wallet file. ',
-ERROR_4                    : 'This unit doesn\'t exists, please use the one of the following units ',
-ERROR_5                    : 'Invalid address. ',
-ERROR_6                    : 'Invalid password. ',
-ERROR_7                    : 'Invalid amount. ',
-ERROR_8                    : 'Invalid gas limit. ',
-ERROR_9                    : 'Invalid data value. ',
+ERROR_1                     : 'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+ERROR_2                     : 'Sorry! We don\'t recognize this type of wallet file. ',
+ERROR_3                     : 'This is not a valid wallet file. ',
+ERROR_4                     : 'This unit doesn\'t exists, please use the one of the following units ',
+ERROR_5                     : 'Invalid address. ',
+ERROR_6                     : 'Invalid password. ',
+ERROR_7                     : 'Invalid amount. ',
+ERROR_8                     : 'Invalid gas limit. ',
+ERROR_9                     : 'Invalid data value. ',
 ERROR_10                    : 'Invalid gas amount. ',
 ERROR_11                    : 'Invalid nonce. ',
 ERROR_12                    : 'Invalid signed transaction. ',
@@ -270,6 +313,13 @@ ERROR_17                    : 'You need to have at least 0.001 ETH in your accou
 ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended. ',
 ERROR_19                    : 'Invalid symbol ',
 ERROR_20                    : 'Not a valid ERC-20 token ',
+ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+ERROR_22                    : 'Please enter valid node name ',
+ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_24                    : 'Please enter valid port ',
+ERROR_25                    : 'Please enter valid chain ID ',
+ERROR_26                    : 'Please enter valid ABI ',
+ERROR_27                    : 'Minimum amount 0.01 ',
 ERROR_28                    : '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions. ',
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',

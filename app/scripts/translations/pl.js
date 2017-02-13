@@ -4,7 +4,50 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-NAV_Swap                    : 'Swap ',
+/* Misc */
+x_ParityPhrase              : 'Parity Phrase ',
+
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Contracts */
+x_Access                    : 'Access ',
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+NAV_Swap                    : 'Giełda ',
 
 
 
@@ -89,12 +132,12 @@ ADD_Radio_2_short           : 'WYBIERZ PLIK PORTFELA... ',
 ADD_Radio_3                 : 'Wklej/Wpisz Twój Klucz Prywatny ',
 ADD_Radio_4                 : 'Dodaj Konto do Obserwacji ',
 ADD_Radio_5                 : 'Wklej/Wpisz Swój Mnemonik ',
-ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_Path            : 'Wybierz ścieżkę portfela HD ',
 ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken) ',
 ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR) ',
 ADD_Radio_5_PathAlternative : '(Ledger) ',
 ADD_Radio_5_PathTrezor      : '(TREZOR) ',
-ADD_Radio_5_PathCustom      : '(Custom) ',
+ADD_Radio_5_PathCustom      : '(Niestandardowy) ',
 ADD_Label_2                 : 'Utwórz Nazwę Użytkownika: ',
 ADD_Label_3                 : 'Twój portfel jest zaszyfrowany. Podaj hasło ',
 ADD_Label_4                 : 'Dodaj Konto do Obserwacji ',
@@ -239,8 +282,8 @@ ADD_Ledger_0a               : 'Otwórz MyEtherWallet ponownie na bezpiecznym po�
 ADD_Ledger_0b               : 'Otwórz MyEtherWallet w [Chrome](https://www.google.com/chrome/browser/desktop/) lub [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Połącz z Ledger Nano S ',
 x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Connect to TREZOR ',
-ADD_Trezor_select           : 'This is a TREZOR seed ',
+ADD_Trezor_scan             : 'Połącz z TREZOR ',
+ADD_Trezor_select           : 'To jest ziarno (seed) TREZOR',
 
 /* Chrome Extension */
 CX_error_1                  : 'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)! ',
@@ -248,15 +291,15 @@ CX_quicksend                : 'Wyślij ',
 
 /* Error Messages */
 ERROR_0                     : 'Wprowadź prawidłową kwotę. ',
-ERROR_1                    : 'Twoje hasło musi zawierać co najmniej 9 znaków. Upewnij się, że jest to silne hasło. ',
-ERROR_2                    : 'Przykro nam! Nie rozpoznajemy tego formatu pliku portfela. ',
-ERROR_3                    : 'To nie jest prawidłowy plik portfela. ',
-ERROR_4                    : 'Ta jednostka nie istnieje, użyj jednej z następujących jednostek ',
-ERROR_5                    : 'Błędny adres. ',
-ERROR_6                    : 'Błędne hasło. ',
-ERROR_7                    : 'Błędna wartość. ',
-ERROR_8                    : 'Błędny limit paliwa. ',
-ERROR_9                    : 'Błędne dane. ',
+ERROR_1                     : 'Twoje hasło musi zawierać co najmniej 9 znaków. Upewnij się, że jest to silne hasło. ',
+ERROR_2                     : 'Przykro nam! Nie rozpoznajemy tego formatu pliku portfela. ',
+ERROR_3                     : 'To nie jest prawidłowy plik portfela. ',
+ERROR_4                     : 'Ta jednostka nie istnieje, użyj jednej z następujących jednostek ',
+ERROR_5                     : 'Błędny adres. ',
+ERROR_6                     : 'Błędne hasło. ',
+ERROR_7                     : 'Błędna wartość. ',
+ERROR_8                     : 'Błędny limit paliwa. ',
+ERROR_9                     : 'Błędne dane. ',
 ERROR_10                    : 'Błędna ilość paliwa. ',
 ERROR_11                    : 'Błędny wyróżnik. ',
 ERROR_12                    : 'Błąd podpisu transakcji. ',
@@ -269,6 +312,12 @@ ERROR_18                    : 'Całe paliwo było by zużyte w tej transakcji. O
 ERROR_19                    : 'Nieprawidłowy symbol ',
 ERROR_20                    : 'nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token. ',
 ERROR_21                    : 'Nie można określić ilości paliwa. Brak wystarczających środków na koncie lub adres docelowego kontraktu zwróciłby błąd. Możesz ręcznie ustawić paliwo przed kontynuacją. Opis błędu po wysłaniu transakcji może dostarczyć więcej informacji. ',
+ERROR_22                    : 'Please enter valid node name ',
+ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_24                    : 'Please enter valid port ',
+ERROR_25                    : 'Please enter valid chain ID ',
+ERROR_26                    : 'Please enter valid ABI ',
+ERROR_27                    : 'Minimum amount 0.01 ',
 ERROR_28                    : '**Potrzebujesz plik Keystore i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje. ',
 SUCCESS_1                   : 'Prawidłowy adres ',
 SUCCESS_2                   : 'Portfel został odszyfrowany ',
@@ -487,7 +536,7 @@ HELP_12_Desc_27             : 'Po zaimportowaniu portfela, usuń `nic_specjalneg
 HELP_12_Desc_28             : 'Po ponownym uruchomieniu aplikacji Ethereum Wallet Twój portfel pojawi się na zakładce "Accounts". ',
 
 HELP_13_Title               : '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean? ',
-HELP_13_Desc_1              : 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction. ',
+HELP_13_Desc_1              : 'Oznacza to, że nie posiadasz wystarczającej ilości Ether na koncie, aby pokryć koszty paliwa. Każda transakcja (przesyłanie tokenów lub interakcja z kontraktem) wymaga paliwa, które jest opłacane w Ether\'ach. Wyświetlona wartość jest ilością potrzebną na pokrycie kosztów transakcji w Wei\'ach. Podziel tą liczbę przez `1000000000000000000` i odejmij wartość Ether, którą chciałeś wysłać (jeśli wysyłałeś Ether). Otrzymasz wartość, jaką musisz przesłać na swoje konto, aby wykonać transakcję.',
 
 HELP_14_Title               : '14) Niektóre strony wykorzystują ruchy myszką przy generowaniu klucza prywatnego. MyEtherWallet tego nie robi. Czy generator liczb losowych w MyEtherWallet jest bezpieczny? ',
 HELP_14_Desc_1              : 'Chociaż generowanie liczb losowych przy udziale ruchów myszki jest sprytnie pomyślane i rozumiemy dlaczego ludzie to lubią, to jednak rzeczywistość jest taka, że window.crypto zapewnia większą entropię niż ruchy myszką. Generowanie z ruchów myszki nie jest niebezpieczne, ale my (oraz znaczna liczba innych ekspertów kryptografii) wierzymy w window.crypto. W dodatku MyEtherWallet może być używane na urządzeniach dotykowych. Tutaj można przeczytać [rozmowę rozeźlonego reddit\'ora i Vitalik\'a Buterin\'a odnośnie ruchów myszki kontra window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) a tutaj jest [specyfikacja window.crypto w3](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto). ',

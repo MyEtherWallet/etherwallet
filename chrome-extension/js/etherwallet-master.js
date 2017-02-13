@@ -2937,7 +2937,7 @@ if (IS_CX) {
   app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
 }
 
-},{"./ajaxReq":4,"./bity":5,"./controllers/CX/addWalletCtrl":6,"./controllers/CX/cxDecryptWalletCtrl":7,"./controllers/CX/mainPopCtrl":8,"./controllers/CX/myWalletsCtrl":9,"./controllers/CX/quickSendCtrl":10,"./controllers/bulkGenCtrl":11,"./controllers/contractsCtrl":12,"./controllers/decryptWalletCtrl":13,"./controllers/footerCtrl":14,"./controllers/offlineTxCtrl":15,"./controllers/sendTxCtrl":16,"./controllers/signMsgCtrl":17,"./controllers/swapCtrl":18,"./controllers/tabsCtrl":19,"./controllers/viewCtrl":20,"./controllers/viewWalletCtrl":21,"./controllers/walletBalanceCtrl":22,"./controllers/walletGenCtrl":23,"./cxFuncs":24,"./directives/QRCodeDrtv":25,"./directives/balanceDrtv":26,"./directives/blockiesDrtv":27,"./directives/cxWalletDecryptDrtv":28,"./directives/fileReaderDrtv":29,"./directives/walletDecryptDrtv":30,"./ethFuncs":31,"./etherUnits":32,"./globalFuncs":33,"./myetherwallet":35,"./nodes":42,"./services/globalService":43,"./services/walletService":44,"./solidity/coder":48,"./solidity/utils":59,"./staticJS/customMarked":60,"./staticJS/ledger-eth":61,"./staticJS/ledger3":62,"./staticJS/trezorConnect":63,"./staticJS/u2f-api":64,"./tokenlib":65,"./translations/translate.js":85,"./uiFuncs":88,"./validator":89,"angular":97,"angular-animate":91,"angular-sanitize":93,"angular-translate":95,"angular-translate-handler-log":94,"bignumber.js":114,"bip39":115,"crypto":157,"ethereumjs-tx":186,"ethereumjs-util":187,"hdkey":197,"scryptsy":242,"string-format":258,"uuid":268,"wallet-address-validator":273}],35:[function(require,module,exports){
+},{"./ajaxReq":4,"./bity":5,"./controllers/CX/addWalletCtrl":6,"./controllers/CX/cxDecryptWalletCtrl":7,"./controllers/CX/mainPopCtrl":8,"./controllers/CX/myWalletsCtrl":9,"./controllers/CX/quickSendCtrl":10,"./controllers/bulkGenCtrl":11,"./controllers/contractsCtrl":12,"./controllers/decryptWalletCtrl":13,"./controllers/footerCtrl":14,"./controllers/offlineTxCtrl":15,"./controllers/sendTxCtrl":16,"./controllers/signMsgCtrl":17,"./controllers/swapCtrl":18,"./controllers/tabsCtrl":19,"./controllers/viewCtrl":20,"./controllers/viewWalletCtrl":21,"./controllers/walletBalanceCtrl":22,"./controllers/walletGenCtrl":23,"./cxFuncs":24,"./directives/QRCodeDrtv":25,"./directives/balanceDrtv":26,"./directives/blockiesDrtv":27,"./directives/cxWalletDecryptDrtv":28,"./directives/fileReaderDrtv":29,"./directives/walletDecryptDrtv":30,"./ethFuncs":31,"./etherUnits":32,"./globalFuncs":33,"./myetherwallet":35,"./nodes":42,"./services/globalService":43,"./services/walletService":44,"./solidity/coder":48,"./solidity/utils":59,"./staticJS/customMarked":60,"./staticJS/ledger-eth":61,"./staticJS/ledger3":62,"./staticJS/trezorConnect":63,"./staticJS/u2f-api":64,"./tokenlib":65,"./translations/translate.js":85,"./uiFuncs":88,"./validator":89,"angular":97,"angular-animate":91,"angular-sanitize":93,"angular-translate":95,"angular-translate-handler-log":94,"bignumber.js":113,"bip39":114,"crypto":157,"ethereumjs-tx":186,"ethereumjs-util":187,"hdkey":197,"scryptsy":242,"string-format":258,"uuid":268,"wallet-address-validator":273}],35:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -4200,7 +4200,7 @@ module.exports = {
     defaultAccount: undefined
 };
 
-},{"bignumber.js":114}],50:[function(require,module,exports){
+},{"bignumber.js":113}],50:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4475,7 +4475,7 @@ module.exports = {
     formatOutputAddress: formatOutputAddress
 };
 
-},{"./config":49,"./param":53,"./utils":59,"bignumber.js":114}],52:[function(require,module,exports){
+},{"./config":49,"./param":53,"./utils":59,"bignumber.js":113}],52:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -5621,7 +5621,7 @@ module.exports = {
     isJson: isJson
 };
 
-},{"bignumber.js":114,"ethereumjs-util":187,"utf8":262}],60:[function(require,module,exports){
+},{"bignumber.js":113,"ethereumjs-util":187,"utf8":262}],60:[function(require,module,exports){
 'use strict';
 
 var marked = require('marked');
@@ -7597,6 +7597,49 @@ var de = function () {};
 de.code = 'de';
 de.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
 
@@ -7869,6 +7912,14 @@ de.data = {
   ERROR_17: 'Du brauchst zumindest 0.01 ETH in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
   ERROR_18: 'Diese Transaktion würde dein gesamtes verbleibendes Gas verbrauchen. Das bedeutet, du hast bereits über dieses Proposal abgestimmt oder die Debattierphase ist zu Ende. ',
   ERROR_19: 'Ungültiges Symbol ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Du benötigst deine Keystore-Datei & das Passwort** (oder den privaten Schlüssel) um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen. ',
   SUCCESS_1: 'Gültige Addresse ',
   SUCCESS_2: 'Wallet erfolgreich entschlüsselt ',
@@ -8137,6 +8188,49 @@ module.exports = de;
 var el = function () {};
 el.code = 'el';
 el.data = {
+
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   NAV_Contracts: 'Contracts ',
   NAV_DeployContract: 'Deploy Contract ',
@@ -8412,6 +8506,14 @@ el.data = {
   ERROR_17: 'Πρέπει να έχετε τουλάχιστον 0.001 ETH στον λογαριασμό σας για να καλύψετε το κόστος του gas. Παρακαλώ προσθέστε μερικά ether και δοκιμάστε ξανά. ',
   ERROR_18: 'Όλο το gas θα είχε δαπανηθεί στην συναλλαγή αυτή. Αυτό σημαίνει ότι έχετε ήδη ψηφίσει στην πρόταση αυτή ή ότι η περίοδος συζήτησης έχει λήξει. ',
   ERROR_19: 'Λάθος σύμβολο ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'Προκειμένου να έχετε πρόσβαση σε αυτό το πορτοφόλι στο μέλλον **είναι απαραίτητο το αρχείο Keystore/JSON & ο κωδικός ή το Ιδιωτικό Κλειδί σας**. Παρακαλούμε κρατήστε ένα εξωτερικό αντίγραφο ασφαλείας! Δεν υπάρχει τρόπος ανάκτησης ενός πορτοφολιού άν δεν το αποθηκέυσετε. Διαβάστε την σελίδα [Βοήθειας](https://www.myetherwallet.com/#help) για οδηγίες. ',
   SUCCESS_1: 'Έγκυρη διεύθυνση ',
   SUCCESS_2: 'Το πορτοφόλι αποκρυπτογραφήθηκε επιτυχώς ',
@@ -8680,49 +8782,6 @@ var en = function () {};
 en.code = 'en';
 en.data = {
 
-  /* Misc */
-  x_ParityPhrase: 'Parity Phrase ',
-
-  /* Node Switcher */
-  NODE_Title: 'Set Up Your Custom Node',
-  NODE_Subtitle: 'To connect to a local node...',
-  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-  NODE_Name: 'Node Name',
-  NODE_Port: 'Node Port',
-  NODE_CTA: 'Save & Use Custom Node',
-
-  /* Contracts */
-  x_Access: 'Access ',
-  CONTRACT_Title: 'Contract Address ',
-  CONTRACT_Title_2: 'Select Existing Contract ',
-  CONTRACT_Json: 'ABI / JSON Interface ',
-  CONTRACT_Interact_Title: 'Read / Write Contract ',
-  CONTRACT_Interact_CTA: 'Select a function ',
-  CONTRACT_ByteCode: 'Byte Code ',
-  CONTRACT_Read: 'READ ',
-  CONTRACT_Write: 'WRITE ',
-
-  /* Swap / Exchange */
-  SWAP_rates: "Current Rates ",
-  SWAP_init_1: "I want to swap my ",
-  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
-  SWAP_init_CTA: "Let's do this! ", // or "Continue"
-  SWAP_information: "Your Information ",
-  SWAP_send_amt: "Amount to send ",
-  SWAP_rec_amt: "Amount to receive ",
-  SWAP_your_rate: "Your rate ",
-  SWAP_rec_add: "Your Receiving Address ",
-  SWAP_start_CTA: "Start Swap ",
-  SWAP_ref_num: "Your reference number ",
-  SWAP_time: "Time remaining to send ",
-  SWAP_progress_1: "Order Initiated ",
-  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
-  SWAP_progress_3: "Received! ", // ETH Received!
-  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
-  SWAP_progress_5: "Order Complete ",
-  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
-  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
   /* Navigation*/
   NAV_AddWallet: 'Add Wallet ',
   NAV_BulkGenerate: 'Bulk Generate ',
@@ -8753,6 +8812,7 @@ en.data = {
   x_Keystore2: 'Keystore File (UTC / JSON) ',
   x_KeystoreDesc: 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up. ',
   x_Mnemonic: 'Mnemonic Phrase ',
+  x_ParityPhrase: 'Parity Phrase ',
   x_Password: 'Password ',
   x_Print: 'Print Paper Wallet ',
   x_PrintDesc: 'ProTip: Click print and save this as a PDF, even if you do not own a printer! ',
@@ -8835,6 +8895,23 @@ en.data = {
   ADD_Label_6_short: 'Unlock ',
   ADD_Label_7: 'Add Account ',
 
+  /* My Wallet */
+  MYWAL_Nick: 'Wallet Nickname ',
+  MYWAL_Address: 'Wallet Address ',
+  MYWAL_Bal: 'Balance ',
+  MYWAL_Edit: 'Edit ',
+  MYWAL_View: 'View ',
+  MYWAL_Remove: 'Remove ',
+  MYWAL_RemoveWal: 'Remove Wallet ',
+  MYWAL_WatchOnly: 'Your Watch-Only Accounts ',
+  MYWAL_Viewing: 'Viewing Wallet ',
+  MYWAL_Hide: 'Hide Wallet Info ',
+  MYWAL_Edit_2: 'Edit Wallet ',
+  MYWAL_Name: 'Wallet Name ',
+  MYWAL_Content_1: 'Warning! You are about to remove your wallet ',
+  MYWAL_Content_2: 'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it. ',
+  MYWAL_Content_3: 'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password. ',
+
   /* Generate Wallets */
   GEN_desc: 'If you want to generate multiple wallets, you can do so here ',
   GEN_Label_1: 'Enter a strong password (at least 9 characters) ',
@@ -8906,33 +8983,49 @@ en.data = {
   OFFLINE_Step3_Title: 'Step 3: Send / Publish Transaction (Online Computer) ',
   OFFLINE_Step3_Label_1: 'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button. ',
 
-  /* My Wallet */
-  MYWAL_Nick: 'Wallet Nickname ',
-  MYWAL_Address: 'Wallet Address ',
-  MYWAL_Bal: 'Balance ',
-  MYWAL_Edit: 'Edit ',
-  MYWAL_View: 'View ',
-  MYWAL_Remove: 'Remove ',
-  MYWAL_RemoveWal: 'Remove Wallet ',
-  MYWAL_WatchOnly: 'Your Watch-Only Accounts ',
-  MYWAL_Viewing: 'Viewing Wallet ',
-  MYWAL_Hide: 'Hide Wallet Info ',
-  MYWAL_Edit_2: 'Edit Wallet ',
-  MYWAL_Name: 'Wallet Name ',
-  MYWAL_Content_1: 'Warning! You are about to remove your wallet ',
-  MYWAL_Content_2: 'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it. ',
-  MYWAL_Content_3: 'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password. ',
-
-  /* View Wallet Details */
-  VIEWWALLET_Subtitle: 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
-  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
-  VIEWWALLET_SuccessMsg: 'Success! Here are your wallet details. ',
-
-  /* Deploy Contracts */
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
   DEP_generate: 'Generate Bytecode ',
   DEP_generated: 'Generated Bytecode ',
   DEP_signtx: 'Sign Transaction ',
   DEP_interface: 'Generated Interface ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   /* Sign Message */
   NAV_SignMsg: 'Sign Message ',
@@ -8943,6 +9036,11 @@ en.data = {
   MSG_info1: 'Include the current date so the signature cannot be reused on a different date. ',
   MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it. ',
   MSG_info3: 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+
+  /* View Wallet Details */
+  VIEWWALLET_Subtitle: 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
+  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+  VIEWWALLET_SuccessMsg: 'Success! Here are your wallet details. ',
 
   /* Chrome Extension */
   CX_error_1: 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one! ',
@@ -9259,6 +9357,49 @@ var es = function () {};
 es.code = 'es';
 es.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
   NAV_DeployContract: 'Deploy Contract ',
@@ -9530,6 +9671,14 @@ es.data = {
   ERROR_17: 'Es necesario tener al menos 0.01 ether en tu cuenta para cubrir el coste del gas. Añade algo de ether e inténtalo de nuevo. ',
   ERROR_18: 'Sería necesario utilizar todo el gas en esta transacción. Esto significa que ya has votado en esta propuesta o que el periodo de debate ha concluido. ',
   ERROR_19: 'Símbolo no válido ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Necesitas tu archivo Keystore/JSON y la contraseña** (o Clave Privada) para acceder a esta cartera en el futuro. Por favor ¡guárdala y respáldala externamente! No hay modo de recuperar una cartera si no la guardas. Lee la [página de ayuda](https://www.myetherwallet.com/#help) para instrucciones. ',
   SUCCESS_1: 'Dirección válida ',
   SUCCESS_2: 'Cartera descifrada con éxito ',
@@ -9799,6 +9948,49 @@ module.exports = es;
 var fi = function () {};
 fi.code = 'fi';
 fi.data = {
+
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   NAV_Contracts: 'Contracts ',
   NAV_DeployContract: 'Deploy Contract ',
@@ -10087,6 +10279,14 @@ fi.data = {
   ERROR_17: 'Sinulla täytyy olla vähintään 0.01 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. ',
   ERROR_18: 'Kaikki gas käytettäisiin tässä siirrossa. Tämä tarkoittaa että olet jo äänestänyt tässä ehdotuksessa tai debaatti aika on jo päättynyt. ',
   ERROR_19: 'Virheellinen merkki ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Tarvitset Avainsäilö Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help). ',
   SUCCESS_1: 'Validi osoite ',
   SUCCESS_2: 'Lompakon salaus onnistuneesti purettu ',
@@ -10356,6 +10556,49 @@ module.exports = fi;
 var fr = function () {};
 fr.code = 'fr';
 fr.data = {
+
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   NAV_Swap: 'Swap ',
 
@@ -10905,6 +11148,49 @@ var hu = function () {};
 hu.code = 'hu';
 hu.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
 
@@ -11168,7 +11454,14 @@ hu.data = {
   ERROR_17: 'Legalább 0.01 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra! ',
   ERROR_18: 'Az összes gas felhasználásra kerülne ezen a tranzakción. Ez azt jelenti, hogy már szavaztál erre a javaslatra vagy a vita periódus már lejárt. ',
   ERROR_19: 'Érvénytelen szimbólum ',
-  ERROR_20: ': érvénytelen ERC-20 token. Ha a többi token működik, akkor távolítsd ezt el és próbáld újra. ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Szükséged lesz a Keystore Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért. ',
   SUCCESS_1: 'Érvényes cím ',
   SUCCESS_2: 'Tárca sikeresen dekódolva ',
@@ -11448,6 +11741,49 @@ var id = function () {};
 id.code = 'id';
 id.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
 
   x_Trezor: 'TREZOR ',
@@ -11718,8 +12054,14 @@ id.data = {
   ERROR_17: 'Minimal harus ada 0.01 ether di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
   ERROR_18: 'Semua gas akan digunakan pada transaksi ini. Ini berarti Anda telah memberikan suara pada proposal ini atau periode perdebatan telah berakhir. ',
   ERROR_19: 'Simbol tidak valid ',
-  ERROR_20: 'bukan ERC-20 token yang valid. Jika token lain sedang loading, hapus token ini dan coba lagi. ',
+  ERROR_20: 'Bukan ERC-20 token yang valid.',
   ERROR_21: 'Tidak dapat memperkirakan gas. Saldo di akun tidak cukup, atau alamat kontrak penerima bisa mengeluarkan error. Cobalah untuk secara manual mengatur gas dan melanjutkan. Keterangan Error saat pengiriman mungkin lebih informatif. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help). ',
   SUCCESS_1: 'Alamat valid ',
   SUCCESS_2: 'Dompet telah ter-dekripsi ',
@@ -11992,6 +12334,49 @@ var it = function () {};
 it.code = 'it';
 it.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
 
   /* Navigation*/
@@ -12258,6 +12643,7 @@ it.data = {
   ERROR_24: 'Inserisci una porta valida ',
   ERROR_25: 'Inserisci un ID catena valido ',
   ERROR_26: 'Inserisci una ABI valida ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Avrai bisogno del tuo file Keystore e della password** (o della chiave privata) per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni. ',
   SUCCESS_1: 'Indirizzo valido ',
   SUCCESS_2: 'Portafoglio decodificato correttamente ',
@@ -12540,6 +12926,49 @@ var ja = function () {};
 ja.code = 'ja';
 ja.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_InteractContract: 'Interact with Contract ',
 
@@ -12804,6 +13233,12 @@ ja.data = {
   ERROR_19: '無効なシンボル ',
   ERROR_20: '　は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。 ',
   ERROR_21: 'ガス量を推定できません。十分な資金が口座にないか、あるいは受け取り側のコントラクトがエラーになっています。ガス量を変更してから試してください。送出時にはより詳しいエラーメッセージが返ります。 ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'ウォレットを操作するためには**Keystore/JSONとパスワードかプライベートキーが必要** 保存してから、外部バックアップしてください！ここで保存しないとウォレットが使用できなくなります。詳細はヘルプページを参照してください。(https://www.myetherwallet.com/#help) ',
   SUCCESS_1: '有効なアドレス ',
   SUCCESS_2: 'ウォレットは正常に暗号解除されました。 ',
@@ -13085,6 +13520,51 @@ var nl = function () {};
 nl.code = 'nl';
 nl.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+  NAV_Swap: 'Swap ',
+
   /* Navigation*/
   NAV_AddWallet: 'Wallet Toevoegen ',
   NAV_BulkGenerate: 'Bulk Genereren ',
@@ -13350,6 +13830,8 @@ nl.data = {
   ERROR_23: 'Geef een geldige url in, als je van https gebruik maakt moet je url https bevatten ',
   ERROR_24: 'Geef een geldige poort in ',
   ERROR_25: 'Geef een geldig chain ID in ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Je hebt je Keystore Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies. ',
   SUCCESS_1: 'Geldig adres ',
   SUCCESS_2: 'Wallet succesvol ontsleuteld ',
@@ -13632,6 +14114,49 @@ var no = function () {};
 no.code = 'no';
 no.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
 
   /* Navigation*/
@@ -13894,6 +14419,12 @@ no.data = {
   ERROR_19: 'Ugyldig symbol ',
   ERROR_20: 'er ikke en gyldig ERC-20-token. Hvis andre tokens holder på å lastes, vennligst fjern denne token og prøv igjen. ',
   ERROR_21: 'Kunne ikke estimere gas. Det er enten ikke nok midler på kontoen, eller så gir den mottakende kontraktadressen en feilmelding. Prøv å justere gas-mengden manuelt, og fortsett. Feilmeldingen du får når du sender kan være mer informativ. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Du trenger din Keystore-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk). ',
   SUCCESS_1: 'Gyldig adresse ',
   SUCCESS_2: 'Dekrypteringen av lommeboken var vellykket ',
@@ -14176,7 +14707,50 @@ var pl = function () {};
 pl.code = 'pl';
 pl.data = {
 
-  NAV_Swap: 'Swap ',
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+  NAV_Swap: 'Giełda ',
 
   /* Navigation*/
   NAV_AddWallet: 'Dodaj Portfel ',
@@ -14257,12 +14831,12 @@ pl.data = {
   ADD_Radio_3: 'Wklej/Wpisz Twój Klucz Prywatny ',
   ADD_Radio_4: 'Dodaj Konto do Obserwacji ',
   ADD_Radio_5: 'Wklej/Wpisz Swój Mnemonik ',
-  ADD_Radio_5_Path: 'Select HD derivation path ',
+  ADD_Radio_5_Path: 'Wybierz ścieżkę portfela HD ',
   ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken) ',
   ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR) ',
   ADD_Radio_5_PathAlternative: '(Ledger) ',
   ADD_Radio_5_PathTrezor: '(TREZOR) ',
-  ADD_Radio_5_PathCustom: '(Custom) ',
+  ADD_Radio_5_PathCustom: '(Niestandardowy) ',
   ADD_Label_2: 'Utwórz Nazwę Użytkownika: ',
   ADD_Label_3: 'Twój portfel jest zaszyfrowany. Podaj hasło ',
   ADD_Label_4: 'Dodaj Konto do Obserwacji ',
@@ -14407,8 +14981,8 @@ pl.data = {
   ADD_Ledger_0b: 'Otwórz MyEtherWallet w [Chrome](https://www.google.com/chrome/browser/desktop/) lub [Opera](https://www.opera.com/) ',
   ADD_Ledger_scan: 'Połącz z Ledger Nano S ',
   x_Trezor: 'TREZOR ',
-  ADD_Trezor_scan: 'Connect to TREZOR ',
-  ADD_Trezor_select: 'This is a TREZOR seed ',
+  ADD_Trezor_scan: 'Połącz z TREZOR ',
+  ADD_Trezor_select: 'To jest ziarno (seed) TREZOR',
 
   /* Chrome Extension */
   CX_error_1: 'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)! ',
@@ -14437,6 +15011,12 @@ pl.data = {
   ERROR_19: 'Nieprawidłowy symbol ',
   ERROR_20: 'nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token. ',
   ERROR_21: 'Nie można określić ilości paliwa. Brak wystarczających środków na koncie lub adres docelowego kontraktu zwróciłby błąd. Możesz ręcznie ustawić paliwo przed kontynuacją. Opis błędu po wysłaniu transakcji może dostarczyć więcej informacji. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Potrzebujesz plik Keystore i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje. ',
   SUCCESS_1: 'Prawidłowy adres ',
   SUCCESS_2: 'Portfel został odszyfrowany ',
@@ -14655,7 +15235,7 @@ pl.data = {
   HELP_12_Desc_28: 'Po ponownym uruchomieniu aplikacji Ethereum Wallet Twój portfel pojawi się na zakładce "Accounts". ',
 
   HELP_13_Title: '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean? ',
-  HELP_13_Desc_1: 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction. ',
+  HELP_13_Desc_1: 'Oznacza to, że nie posiadasz wystarczającej ilości Ether na koncie, aby pokryć koszty paliwa. Każda transakcja (przesyłanie tokenów lub interakcja z kontraktem) wymaga paliwa, które jest opłacane w Ether\'ach. Wyświetlona wartość jest ilością potrzebną na pokrycie kosztów transakcji w Wei\'ach. Podziel tą liczbę przez `1000000000000000000` i odejmij wartość Ether, którą chciałeś wysłać (jeśli wysyłałeś Ether). Otrzymasz wartość, jaką musisz przesłać na swoje konto, aby wykonać transakcję.',
 
   HELP_14_Title: '14) Niektóre strony wykorzystują ruchy myszką przy generowaniu klucza prywatnego. MyEtherWallet tego nie robi. Czy generator liczb losowych w MyEtherWallet jest bezpieczny? ',
   HELP_14_Desc_1: 'Chociaż generowanie liczb losowych przy udziale ruchów myszki jest sprytnie pomyślane i rozumiemy dlaczego ludzie to lubią, to jednak rzeczywistość jest taka, że window.crypto zapewnia większą entropię niż ruchy myszką. Generowanie z ruchów myszki nie jest niebezpieczne, ale my (oraz znaczna liczba innych ekspertów kryptografii) wierzymy w window.crypto. W dodatku MyEtherWallet może być używane na urządzeniach dotykowych. Tutaj można przeczytać [rozmowę rozeźlonego reddit\'ora i Vitalik\'a Buterin\'a odnośnie ruchów myszki kontra window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) a tutaj jest [specyfikacja window.crypto w3](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto). ',
@@ -14718,6 +15298,49 @@ var pt = function () {};
 pt.code = 'pt';
 pt.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Exchange ',
   NAV_SignMsg: 'Sign Message ',
 
@@ -14761,6 +15384,12 @@ pt.data = {
   ERROR_19: 'Invalid symbol ',
   ERROR_20: 'Não é um token ERC-20 válido ',
   ERROR_21: 'Não foi possível estimar o gás. Não há fundos suficientes na conta, ou o endereço do contrato de recebimento iria lançar um erro. Sinta-se livre para definir manualmente o gás e prossiga. A mensagem de erro ao enviar pode ser mais informativa. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Você precisa do seu arquivo de armazenamento de chaves & senha** (ou Chave Privada) para acessar essa carteira no futuro. Por favor, salve e armazene ela externamente! Não há como recuperar uma carteira se você não salvar isso. Leia a [página de ajuda](https://www.myetherwallet.com/#help) para instruções. ',
 
   SUCCESS_1: 'Valid address ',
@@ -15013,22 +15642,22 @@ pt.data = {
   /* Tranlsation Info */
   translate_version: '0.3 ',
   Translator_Desc: 'Thank you to our translators ',
-  // fill in your name and address :
+  // fill in your name and address
   TranslatorName_1: '[ Pedro "ShooterXD" Vieira ](https://www.myetherwallet.com/?gaslimit=21000&to=0x24eB7d82166361A8B69adE6FEA187Cb00FD7c7E1&value=1.0#send-transaction) ',
   TranslatorAddr_1: '',
-  /* Translator 1                  : Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: '',
   TranslatorAddr_2: '',
-  /* Translator 2                  : Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: '',
   TranslatorAddr_3: '',
-  /* Translator 3                  : Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: '',
   TranslatorAddr_4: '',
-  /* Translator 4                  : Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: '',
   TranslatorAddr_5: '',
-  /* Translator 5                  : Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
@@ -15262,6 +15891,49 @@ module.exports = pt;
 var ru = function () {};
 ru.code = 'ru';
 ru.data = {
+
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
@@ -15535,6 +16207,14 @@ ru.data = {
   ERROR_17: 'Вам необходимо иметь не менее 0.01 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
   ERROR_18: 'Транзакция могла бы истратить весь газ. Это значит, что Вы уже голосовали по данному предложению, или период обсуждения данного предложения закончился. ',
   ERROR_19: 'Неправильный символ ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'В будущем, для доступа к этому кошельку **Вам понадобится либо файл Keystore/JSON вместе с паролем,  либо закрытый ключ**. Пожалуйста, сохраните их и сделайте резервную копию! Если Вы потеряете их, то не сможете восстановить доступ к Вашему кошельку. Обратитесь к [справке](https://www.myetherwallet.com/#help) за инструкциями. ',
   SUCCESS_1: 'Адрес указан верно ',
   SUCCESS_2: 'Кошелёк успешно расшифрован ',
@@ -15804,6 +16484,49 @@ module.exports = ru;
 var tr = function () {};
 tr.code = 'tr';
 tr.data = {
+
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
@@ -16088,6 +16811,14 @@ tr.data = {
   ERROR_17: 'You need to have at least 0.01 ether in your account to cover the cost of gas. Please add some ether and try again. ',
   ERROR_18: 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended. ',
   ERROR_19: 'Geçersiz sembol ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'Ilerde cüzdanini acmak icin **Keystore dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
   SUCCESS_1: 'Geçerli adres ',
   SUCCESS_2: 'Cüzdan basariyla desifre edildi ',
@@ -16405,6 +17136,49 @@ var vi = function () {};
 vi.code = 'vi';
 vi.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
 
@@ -16667,6 +17441,13 @@ vi.data = {
   ERROR_18: 'Toàn bộ gas sẽ được sử dụng trong giao dịch này. Việc làm này có nghĩa là bạn đã bỏ phiếu cho đề xuất này hoặc kỳ hạn của cuộc tranh luận đã kết thúc. ',
   ERROR_19: 'Biểu tượng không hợp lệ ',
   ERROR_20: 'Không tồn tại trên hệ thống ERC-20 token. Nếu bạn phải chờ lâu. Xin vui lòng thử lại lần nữa!. ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Bạn cần sử dụng tập tin chứa định dạng Keystore/JSON cùng với Mật khẩu hoặc Private Key của bạn** cho việc đăng nhập vào ví này trong tương lai. Hãy sao lưu và cất giữ nó cẩn thận tại kho lưu trữ của bạn! Không có cách nào đễ khôi phục Ví của bạn nếu bạn không sao lưu dữ liệu ví lại. Đọc Thêm [trang trợ giúp] (https://www.myetherwallet.com/#help) đễ được hướng dẫn cụ thể. ',
   SUCCESS_1: 'Địa Chỉ Hợp Lệ ',
   SUCCESS_2: 'Ví đã được giải mã thành công ',
@@ -16947,6 +17728,49 @@ var zh = function () {};
 zh.code = 'zh';
 zh.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
 
@@ -17198,25 +18022,33 @@ zh.data = {
 
   /* Error Messages */
   ERROR_0: '请输入有效数额。 ',
-  ERROR_: '你的密码至少需要设置为9位。请确保密码足够强。 ',
-  ERROR_: '抱歉！我们不能识别这种类型的钱包文件。 ',
-  ERROR_: '这不是一个有效的钱包文件。 ',
-  ERROR_: 'This unit doesn\'t exists, please use the one of the following units 这个单位不存在，请用下面给出的单位 ',
-  ERROR_: '无效地址。 ',
-  ERROR_: '无效密码。 ',
-  ERROR_: '无效数额。 ',
-  ERROR_: '无效gas上限。 ',
-  ERROR_: '无效数据值。 ',
-  ERROR_: '无效gas数额。 ',
-  ERROR_: '无效nonce。 ',
-  ERROR_: '无效签名交易。 ',
-  ERROR_: '已经有一个钱包使用该昵称。 ',
-  ERROR_: '找不到钱包。 ',
-  ERROR_: '看起来这个提议不存在或者读取这个提议时出现错误。 ',
-  ERROR_: '这个地址钱包已经存在于存储中。请查看你的钱包页面。 ',
-  ERROR_: '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。 ',
-  ERROR_: '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。 ',
-  ERROR_: '无效符号 ',
+  ERROR_1: '你的密码至少需要设置为9位。请确保密码足够强。 ',
+  ERROR_2: '抱歉！我们不能识别这种类型的钱包文件。 ',
+  ERROR_3: '这不是一个有效的钱包文件。 ',
+  ERROR_4: 'This unit doesn\'t exists, please use the one of the following units 这个单位不存在，请用下面给出的单位 ',
+  ERROR_5: '无效地址。 ',
+  ERROR_6: '无效密码。 ',
+  ERROR_7: '无效数额。 ',
+  ERROR_8: '无效gas上限。 ',
+  ERROR_9: '无效数据值。 ',
+  ERROR_10: '无效gas数额。 ',
+  ERROR_11: '无效nonce。 ',
+  ERROR_12: '无效签名交易。 ',
+  ERROR_13: '已经有一个钱包使用该昵称。 ',
+  ERROR_14: '找不到钱包。 ',
+  ERROR_15: '看起来这个提议不存在或者读取这个提议时出现错误。 ',
+  ERROR_16: '这个地址钱包已经存在于存储中。请查看你的钱包页面。 ',
+  ERROR_17: '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。 ',
+  ERROR_18: '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。 ',
+  ERROR_19: '无效符号 ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。 ',
   SUCCESS_1: '有效地址 ',
   SUCCESS_2: '钱包解密成功 ',
@@ -59560,7 +60392,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":99,"./asn1/base":101,"./asn1/constants":105,"./asn1/decoders":107,"./asn1/encoders":110,"bn.js":118}],99:[function(require,module,exports){
+},{"./asn1/api":99,"./asn1/base":101,"./asn1/constants":105,"./asn1/decoders":107,"./asn1/encoders":110,"bn.js":117}],99:[function(require,module,exports){
 var asn1 = require('../asn1');
 var inherits = require('inherits');
 
@@ -61283,500 +62115,6 @@ PEMEncoder.prototype.encode = function encode(data, options) {
 };
 
 },{"./der":109,"inherits":200}],112:[function(require,module,exports){
-(function (global){
-'use strict';
-
-// compare and isBuffer taken from https://github.com/feross/buffer/blob/680e9e5e488f22aac27599a57dc844a6315928dd/index.js
-// original notice:
-
-/*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
- * @license  MIT
- */
-function compare(a, b) {
-  if (a === b) {
-    return 0;
-  }
-
-  var x = a.length;
-  var y = b.length;
-
-  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
-    if (a[i] !== b[i]) {
-      x = a[i];
-      y = b[i];
-      break;
-    }
-  }
-
-  if (x < y) {
-    return -1;
-  }
-  if (y < x) {
-    return 1;
-  }
-  return 0;
-}
-function isBuffer(b) {
-  if (global.Buffer && typeof global.Buffer.isBuffer === 'function') {
-    return global.Buffer.isBuffer(b);
-  }
-  return !!(b != null && b._isBuffer);
-}
-
-// based on node assert, original notice:
-
-// http://wiki.commonjs.org/wiki/Unit_Testing/1.0
-//
-// THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
-//
-// Originally from narwhal.js (http://narwhaljs.org)
-// Copyright (c) 2009 Thomas Robinson <280north.com>
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the 'Software'), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
-// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-var util = require('util/');
-var hasOwn = Object.prototype.hasOwnProperty;
-var pSlice = Array.prototype.slice;
-var functionsHaveNames = (function () {
-  return function foo() {}.name === 'foo';
-}());
-function pToString (obj) {
-  return Object.prototype.toString.call(obj);
-}
-function isView(arrbuf) {
-  if (isBuffer(arrbuf)) {
-    return false;
-  }
-  if (typeof global.ArrayBuffer !== 'function') {
-    return false;
-  }
-  if (typeof ArrayBuffer.isView === 'function') {
-    return ArrayBuffer.isView(arrbuf);
-  }
-  if (!arrbuf) {
-    return false;
-  }
-  if (arrbuf instanceof DataView) {
-    return true;
-  }
-  if (arrbuf.buffer && arrbuf.buffer instanceof ArrayBuffer) {
-    return true;
-  }
-  return false;
-}
-// 1. The assert module provides functions that throw
-// AssertionError's when particular conditions are not met. The
-// assert module must conform to the following interface.
-
-var assert = module.exports = ok;
-
-// 2. The AssertionError is defined in assert.
-// new assert.AssertionError({ message: message,
-//                             actual: actual,
-//                             expected: expected })
-
-var regex = /\s*function\s+([^\(\s]*)\s*/;
-// based on https://github.com/ljharb/function.prototype.name/blob/adeeeec8bfcc6068b187d7d9fb3d5bb1d3a30899/implementation.js
-function getName(func) {
-  if (!util.isFunction(func)) {
-    return;
-  }
-  if (functionsHaveNames) {
-    return func.name;
-  }
-  var str = func.toString();
-  var match = str.match(regex);
-  return match && match[1];
-}
-assert.AssertionError = function AssertionError(options) {
-  this.name = 'AssertionError';
-  this.actual = options.actual;
-  this.expected = options.expected;
-  this.operator = options.operator;
-  if (options.message) {
-    this.message = options.message;
-    this.generatedMessage = false;
-  } else {
-    this.message = getMessage(this);
-    this.generatedMessage = true;
-  }
-  var stackStartFunction = options.stackStartFunction || fail;
-  if (Error.captureStackTrace) {
-    Error.captureStackTrace(this, stackStartFunction);
-  } else {
-    // non v8 browsers so we can have a stacktrace
-    var err = new Error();
-    if (err.stack) {
-      var out = err.stack;
-
-      // try to strip useless frames
-      var fn_name = getName(stackStartFunction);
-      var idx = out.indexOf('\n' + fn_name);
-      if (idx >= 0) {
-        // once we have located the function frame
-        // we need to strip out everything before it (and its line)
-        var next_line = out.indexOf('\n', idx + 1);
-        out = out.substring(next_line + 1);
-      }
-
-      this.stack = out;
-    }
-  }
-};
-
-// assert.AssertionError instanceof Error
-util.inherits(assert.AssertionError, Error);
-
-function truncate(s, n) {
-  if (typeof s === 'string') {
-    return s.length < n ? s : s.slice(0, n);
-  } else {
-    return s;
-  }
-}
-function inspect(something) {
-  if (functionsHaveNames || !util.isFunction(something)) {
-    return util.inspect(something);
-  }
-  var rawname = getName(something);
-  var name = rawname ? ': ' + rawname : '';
-  return '[Function' +  name + ']';
-}
-function getMessage(self) {
-  return truncate(inspect(self.actual), 128) + ' ' +
-         self.operator + ' ' +
-         truncate(inspect(self.expected), 128);
-}
-
-// At present only the three keys mentioned above are used and
-// understood by the spec. Implementations or sub modules can pass
-// other keys to the AssertionError's constructor - they will be
-// ignored.
-
-// 3. All of the following functions must throw an AssertionError
-// when a corresponding condition is not met, with a message that
-// may be undefined if not provided.  All assertion methods provide
-// both the actual and expected values to the assertion error for
-// display purposes.
-
-function fail(actual, expected, message, operator, stackStartFunction) {
-  throw new assert.AssertionError({
-    message: message,
-    actual: actual,
-    expected: expected,
-    operator: operator,
-    stackStartFunction: stackStartFunction
-  });
-}
-
-// EXTENSION! allows for well behaved errors defined elsewhere.
-assert.fail = fail;
-
-// 4. Pure assertion tests whether a value is truthy, as determined
-// by !!guard.
-// assert.ok(guard, message_opt);
-// This statement is equivalent to assert.equal(true, !!guard,
-// message_opt);. To test strictly for the value true, use
-// assert.strictEqual(true, guard, message_opt);.
-
-function ok(value, message) {
-  if (!value) fail(value, true, message, '==', assert.ok);
-}
-assert.ok = ok;
-
-// 5. The equality assertion tests shallow, coercive equality with
-// ==.
-// assert.equal(actual, expected, message_opt);
-
-assert.equal = function equal(actual, expected, message) {
-  if (actual != expected) fail(actual, expected, message, '==', assert.equal);
-};
-
-// 6. The non-equality assertion tests for whether two objects are not equal
-// with != assert.notEqual(actual, expected, message_opt);
-
-assert.notEqual = function notEqual(actual, expected, message) {
-  if (actual == expected) {
-    fail(actual, expected, message, '!=', assert.notEqual);
-  }
-};
-
-// 7. The equivalence assertion tests a deep equality relation.
-// assert.deepEqual(actual, expected, message_opt);
-
-assert.deepEqual = function deepEqual(actual, expected, message) {
-  if (!_deepEqual(actual, expected, false)) {
-    fail(actual, expected, message, 'deepEqual', assert.deepEqual);
-  }
-};
-
-assert.deepStrictEqual = function deepStrictEqual(actual, expected, message) {
-  if (!_deepEqual(actual, expected, true)) {
-    fail(actual, expected, message, 'deepStrictEqual', assert.deepStrictEqual);
-  }
-};
-
-function _deepEqual(actual, expected, strict, memos) {
-  // 7.1. All identical values are equivalent, as determined by ===.
-  if (actual === expected) {
-    return true;
-  } else if (isBuffer(actual) && isBuffer(expected)) {
-    return compare(actual, expected) === 0;
-
-  // 7.2. If the expected value is a Date object, the actual value is
-  // equivalent if it is also a Date object that refers to the same time.
-  } else if (util.isDate(actual) && util.isDate(expected)) {
-    return actual.getTime() === expected.getTime();
-
-  // 7.3 If the expected value is a RegExp object, the actual value is
-  // equivalent if it is also a RegExp object with the same source and
-  // properties (`global`, `multiline`, `lastIndex`, `ignoreCase`).
-  } else if (util.isRegExp(actual) && util.isRegExp(expected)) {
-    return actual.source === expected.source &&
-           actual.global === expected.global &&
-           actual.multiline === expected.multiline &&
-           actual.lastIndex === expected.lastIndex &&
-           actual.ignoreCase === expected.ignoreCase;
-
-  // 7.4. Other pairs that do not both pass typeof value == 'object',
-  // equivalence is determined by ==.
-  } else if ((actual === null || typeof actual !== 'object') &&
-             (expected === null || typeof expected !== 'object')) {
-    return strict ? actual === expected : actual == expected;
-
-  // If both values are instances of typed arrays, wrap their underlying
-  // ArrayBuffers in a Buffer each to increase performance
-  // This optimization requires the arrays to have the same type as checked by
-  // Object.prototype.toString (aka pToString). Never perform binary
-  // comparisons for Float*Arrays, though, since e.g. +0 === -0 but their
-  // bit patterns are not identical.
-  } else if (isView(actual) && isView(expected) &&
-             pToString(actual) === pToString(expected) &&
-             !(actual instanceof Float32Array ||
-               actual instanceof Float64Array)) {
-    return compare(new Uint8Array(actual.buffer),
-                   new Uint8Array(expected.buffer)) === 0;
-
-  // 7.5 For all other Object pairs, including Array objects, equivalence is
-  // determined by having the same number of owned properties (as verified
-  // with Object.prototype.hasOwnProperty.call), the same set of keys
-  // (although not necessarily the same order), equivalent values for every
-  // corresponding key, and an identical 'prototype' property. Note: this
-  // accounts for both named and indexed properties on Arrays.
-  } else if (isBuffer(actual) !== isBuffer(expected)) {
-    return false;
-  } else {
-    memos = memos || {actual: [], expected: []};
-
-    var actualIndex = memos.actual.indexOf(actual);
-    if (actualIndex !== -1) {
-      if (actualIndex === memos.expected.indexOf(expected)) {
-        return true;
-      }
-    }
-
-    memos.actual.push(actual);
-    memos.expected.push(expected);
-
-    return objEquiv(actual, expected, strict, memos);
-  }
-}
-
-function isArguments(object) {
-  return Object.prototype.toString.call(object) == '[object Arguments]';
-}
-
-function objEquiv(a, b, strict, actualVisitedObjects) {
-  if (a === null || a === undefined || b === null || b === undefined)
-    return false;
-  // if one is a primitive, the other must be same
-  if (util.isPrimitive(a) || util.isPrimitive(b))
-    return a === b;
-  if (strict && Object.getPrototypeOf(a) !== Object.getPrototypeOf(b))
-    return false;
-  var aIsArgs = isArguments(a);
-  var bIsArgs = isArguments(b);
-  if ((aIsArgs && !bIsArgs) || (!aIsArgs && bIsArgs))
-    return false;
-  if (aIsArgs) {
-    a = pSlice.call(a);
-    b = pSlice.call(b);
-    return _deepEqual(a, b, strict);
-  }
-  var ka = objectKeys(a);
-  var kb = objectKeys(b);
-  var key, i;
-  // having the same number of owned properties (keys incorporates
-  // hasOwnProperty)
-  if (ka.length !== kb.length)
-    return false;
-  //the same set of keys (although not necessarily the same order),
-  ka.sort();
-  kb.sort();
-  //~~~cheap key test
-  for (i = ka.length - 1; i >= 0; i--) {
-    if (ka[i] !== kb[i])
-      return false;
-  }
-  //equivalent values for every corresponding key, and
-  //~~~possibly expensive deep test
-  for (i = ka.length - 1; i >= 0; i--) {
-    key = ka[i];
-    if (!_deepEqual(a[key], b[key], strict, actualVisitedObjects))
-      return false;
-  }
-  return true;
-}
-
-// 8. The non-equivalence assertion tests for any deep inequality.
-// assert.notDeepEqual(actual, expected, message_opt);
-
-assert.notDeepEqual = function notDeepEqual(actual, expected, message) {
-  if (_deepEqual(actual, expected, false)) {
-    fail(actual, expected, message, 'notDeepEqual', assert.notDeepEqual);
-  }
-};
-
-assert.notDeepStrictEqual = notDeepStrictEqual;
-function notDeepStrictEqual(actual, expected, message) {
-  if (_deepEqual(actual, expected, true)) {
-    fail(actual, expected, message, 'notDeepStrictEqual', notDeepStrictEqual);
-  }
-}
-
-
-// 9. The strict equality assertion tests strict equality, as determined by ===.
-// assert.strictEqual(actual, expected, message_opt);
-
-assert.strictEqual = function strictEqual(actual, expected, message) {
-  if (actual !== expected) {
-    fail(actual, expected, message, '===', assert.strictEqual);
-  }
-};
-
-// 10. The strict non-equality assertion tests for strict inequality, as
-// determined by !==.  assert.notStrictEqual(actual, expected, message_opt);
-
-assert.notStrictEqual = function notStrictEqual(actual, expected, message) {
-  if (actual === expected) {
-    fail(actual, expected, message, '!==', assert.notStrictEqual);
-  }
-};
-
-function expectedException(actual, expected) {
-  if (!actual || !expected) {
-    return false;
-  }
-
-  if (Object.prototype.toString.call(expected) == '[object RegExp]') {
-    return expected.test(actual);
-  }
-
-  try {
-    if (actual instanceof expected) {
-      return true;
-    }
-  } catch (e) {
-    // Ignore.  The instanceof check doesn't work for arrow functions.
-  }
-
-  if (Error.isPrototypeOf(expected)) {
-    return false;
-  }
-
-  return expected.call({}, actual) === true;
-}
-
-function _tryBlock(block) {
-  var error;
-  try {
-    block();
-  } catch (e) {
-    error = e;
-  }
-  return error;
-}
-
-function _throws(shouldThrow, block, expected, message) {
-  var actual;
-
-  if (typeof block !== 'function') {
-    throw new TypeError('"block" argument must be a function');
-  }
-
-  if (typeof expected === 'string') {
-    message = expected;
-    expected = null;
-  }
-
-  actual = _tryBlock(block);
-
-  message = (expected && expected.name ? ' (' + expected.name + ').' : '.') +
-            (message ? ' ' + message : '.');
-
-  if (shouldThrow && !actual) {
-    fail(actual, expected, 'Missing expected exception' + message);
-  }
-
-  var userProvidedMessage = typeof message === 'string';
-  var isUnwantedException = !shouldThrow && util.isError(actual);
-  var isUnexpectedException = !shouldThrow && actual && !expected;
-
-  if ((isUnwantedException &&
-      userProvidedMessage &&
-      expectedException(actual, expected)) ||
-      isUnexpectedException) {
-    fail(actual, expected, 'Got unwanted exception' + message);
-  }
-
-  if ((shouldThrow && actual && expected &&
-      !expectedException(actual, expected)) || (!shouldThrow && actual)) {
-    throw actual;
-  }
-}
-
-// 11. Expected to throw an error:
-// assert.throws(block, Error_opt, message_opt);
-
-assert.throws = function(block, /*optional*/error, /*optional*/message) {
-  _throws(true, block, error, message);
-};
-
-// EXTENSION! This is annoying to write outside this module.
-assert.doesNotThrow = function(block, /*optional*/error, /*optional*/message) {
-  _throws(false, block, error, message);
-};
-
-assert.ifError = function(err) { if (err) throw err; };
-
-var objectKeys = Object.keys || function (obj) {
-  var keys = [];
-  for (var key in obj) {
-    if (hasOwn.call(obj, key)) keys.push(key);
-  }
-  return keys;
-};
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"util/":266}],113:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -61892,7 +62230,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],114:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 /*! bignumber.js v3.1.2 https://github.com/MikeMcl/bignumber.js/LICENCE */
 
 ;(function (globalObj) {
@@ -64639,7 +64977,7 @@ function fromByteArray (uint8) {
     }
 })(this);
 
-},{}],115:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 (function (Buffer){
 var assert = require('assert')
 var createHash = require('create-hash')
@@ -64772,7 +65110,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./wordlists/en.json":116,"assert":112,"buffer":148,"create-hash":153,"pbkdf2":218,"randombytes":228,"unorm":261}],116:[function(require,module,exports){
+},{"./wordlists/en.json":115,"assert":144,"buffer":148,"create-hash":153,"pbkdf2":218,"randombytes":228,"unorm":261}],115:[function(require,module,exports){
 module.exports=[
   "abandon",
   "ability",
@@ -66824,7 +67162,7 @@ module.exports=[
   "zoo"
 ]
 
-},{}],117:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 (function (Buffer){
 // Reference https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 // Format: 0x30 [total-length] 0x02 [R-length] [R] 0x02 [S-length] [S]
@@ -66939,7 +67277,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],118:[function(require,module,exports){
+},{"buffer":148}],117:[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -70368,7 +70706,7 @@ module.exports = {
   };
 })(typeof module === 'undefined' || module, this);
 
-},{}],119:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -70387,19 +70725,19 @@ Rand.prototype.generate = function generate(len) {
   return this._rand(len);
 };
 
-if (typeof self === 'object') {
-  if (self.crypto && self.crypto.getRandomValues) {
+if (typeof window === 'object') {
+  if (window.crypto && window.crypto.getRandomValues) {
     // Modern browsers
     Rand.prototype._rand = function _rand(n) {
       var arr = new Uint8Array(n);
-      self.crypto.getRandomValues(arr);
+      window.crypto.getRandomValues(arr);
       return arr;
     };
-  } else if (self.msCrypto && self.msCrypto.getRandomValues) {
+  } else if (window.msCrypto && window.msCrypto.getRandomValues) {
     // IE
     Rand.prototype._rand = function _rand(n) {
       var arr = new Uint8Array(n);
-      self.msCrypto.getRandomValues(arr);
+      window.msCrypto.getRandomValues(arr);
       return arr;
     };
   } else {
@@ -70409,7 +70747,7 @@ if (typeof self === 'object') {
     };
   }
 } else {
-  // Node.js or Web worker with no crypto support
+  // Node.js or Web worker
   try {
     var crypto = require('crypto');
 
@@ -70427,9 +70765,9 @@ if (typeof self === 'object') {
   }
 }
 
-},{"crypto":120}],120:[function(require,module,exports){
+},{"crypto":119}],119:[function(require,module,exports){
 
-},{}],121:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 (function (Buffer){
 // based on the aes implimentation in triple sec
 // https://github.com/keybase/triplesec
@@ -70610,7 +70948,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],122:[function(require,module,exports){
+},{"buffer":148}],121:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -70711,7 +71049,7 @@ function xorTest (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"./ghash":126,"buffer":148,"buffer-xor":147,"cipher-base":149,"inherits":200}],123:[function(require,module,exports){
+},{"./aes":120,"./ghash":125,"buffer":148,"buffer-xor":147,"cipher-base":149,"inherits":200}],122:[function(require,module,exports){
 var ciphers = require('./encrypter')
 exports.createCipher = exports.Cipher = ciphers.createCipher
 exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv
@@ -70724,7 +71062,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"./decrypter":124,"./encrypter":125,"./modes":127}],124:[function(require,module,exports){
+},{"./decrypter":123,"./encrypter":124,"./modes":126}],123:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -70865,7 +71203,7 @@ exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"./authCipher":122,"./modes":127,"./modes/cbc":128,"./modes/cfb":129,"./modes/cfb1":130,"./modes/cfb8":131,"./modes/ctr":132,"./modes/ecb":133,"./modes/ofb":134,"./streamCipher":135,"buffer":148,"cipher-base":149,"evp_bytestokey":190,"inherits":200}],125:[function(require,module,exports){
+},{"./aes":120,"./authCipher":121,"./modes":126,"./modes/cbc":127,"./modes/cfb":128,"./modes/cfb1":129,"./modes/cfb8":130,"./modes/ctr":131,"./modes/ecb":132,"./modes/ofb":133,"./streamCipher":134,"buffer":148,"cipher-base":149,"evp_bytestokey":190,"inherits":200}],124:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -70991,7 +71329,7 @@ exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"./authCipher":122,"./modes":127,"./modes/cbc":128,"./modes/cfb":129,"./modes/cfb1":130,"./modes/cfb8":131,"./modes/ctr":132,"./modes/ecb":133,"./modes/ofb":134,"./streamCipher":135,"buffer":148,"cipher-base":149,"evp_bytestokey":190,"inherits":200}],126:[function(require,module,exports){
+},{"./aes":120,"./authCipher":121,"./modes":126,"./modes/cbc":127,"./modes/cfb":128,"./modes/cfb1":129,"./modes/cfb8":130,"./modes/ctr":131,"./modes/ecb":132,"./modes/ofb":133,"./streamCipher":134,"buffer":148,"cipher-base":149,"evp_bytestokey":190,"inherits":200}],125:[function(require,module,exports){
 (function (Buffer){
 var zeros = new Buffer(16)
 zeros.fill(0)
@@ -71093,7 +71431,7 @@ function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],127:[function(require,module,exports){
+},{"buffer":148}],126:[function(require,module,exports){
 exports['aes-128-ecb'] = {
   cipher: 'AES',
   key: 128,
@@ -71266,7 +71604,7 @@ exports['aes-256-gcm'] = {
   type: 'auth'
 }
 
-},{}],128:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 var xor = require('buffer-xor')
 
 exports.encrypt = function (self, block) {
@@ -71285,7 +71623,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":147}],129:[function(require,module,exports){
+},{"buffer-xor":147}],128:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -71320,7 +71658,7 @@ function encryptStart (self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"buffer-xor":147}],130:[function(require,module,exports){
+},{"buffer":148,"buffer-xor":147}],129:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -71358,7 +71696,7 @@ function shiftIn (buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],131:[function(require,module,exports){
+},{"buffer":148}],130:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)
@@ -71377,7 +71715,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],132:[function(require,module,exports){
+},{"buffer":148}],131:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -71412,7 +71750,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"buffer-xor":147}],133:[function(require,module,exports){
+},{"buffer":148,"buffer-xor":147}],132:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -71420,7 +71758,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block)
 }
 
-},{}],134:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -71440,7 +71778,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"buffer-xor":147}],135:[function(require,module,exports){
+},{"buffer":148,"buffer-xor":147}],134:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -71469,7 +71807,7 @@ StreamCipher.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"buffer":148,"cipher-base":149,"inherits":200}],136:[function(require,module,exports){
+},{"./aes":120,"buffer":148,"cipher-base":149,"inherits":200}],135:[function(require,module,exports){
 var ebtk = require('evp_bytestokey')
 var aes = require('browserify-aes/browser')
 var DES = require('browserify-des')
@@ -71544,7 +71882,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"browserify-aes/browser":123,"browserify-aes/modes":127,"browserify-des":137,"browserify-des/modes":138,"evp_bytestokey":190}],137:[function(require,module,exports){
+},{"browserify-aes/browser":122,"browserify-aes/modes":126,"browserify-des":136,"browserify-des/modes":137,"evp_bytestokey":190}],136:[function(require,module,exports){
 (function (Buffer){
 var CipherBase = require('cipher-base')
 var des = require('des.js')
@@ -71591,7 +71929,7 @@ DES.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"cipher-base":149,"des.js":158,"inherits":200}],138:[function(require,module,exports){
+},{"buffer":148,"cipher-base":149,"des.js":158,"inherits":200}],137:[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -71617,7 +71955,7 @@ exports['des-ede'] = {
   iv: 0
 }
 
-},{}],139:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 var randomBytes = require('randombytes');
@@ -71661,7 +71999,7 @@ function getr(priv) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":118,"buffer":148,"randombytes":228}],140:[function(require,module,exports){
+},{"bn.js":117,"buffer":148,"randombytes":228}],139:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 exports['RSA-SHA224'] = exports.sha224WithRSAEncryption = {
@@ -71737,7 +72075,7 @@ exports['RSA-MD5'] = exports.md5WithRSAEncryption = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],141:[function(require,module,exports){
+},{"buffer":148}],140:[function(require,module,exports){
 (function (Buffer){
 var _algos = require('./algos')
 var createHash = require('create-hash')
@@ -71844,7 +72182,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algos":140,"./sign":143,"./verify":144,"buffer":148,"create-hash":153,"inherits":200,"stream":257}],142:[function(require,module,exports){
+},{"./algos":139,"./sign":142,"./verify":143,"buffer":148,"create-hash":153,"inherits":200,"stream":257}],141:[function(require,module,exports){
 'use strict'
 exports['1.3.132.0.10'] = 'secp256k1'
 
@@ -71858,7 +72196,7 @@ exports['1.3.132.0.34'] = 'p384'
 
 exports['1.3.132.0.35'] = 'p521'
 
-},{}],143:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var createHmac = require('create-hmac')
@@ -72047,7 +72385,7 @@ module.exports.getKey = getKey
 module.exports.makeKey = makeKey
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":142,"bn.js":118,"browserify-rsa":139,"buffer":148,"create-hmac":156,"elliptic":168,"parse-asn1":217}],144:[function(require,module,exports){
+},{"./curves":141,"bn.js":117,"browserify-rsa":138,"buffer":148,"create-hmac":156,"elliptic":168,"parse-asn1":217}],143:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var curves = require('./curves')
@@ -72154,7 +72492,501 @@ function checkValue (b, q) {
 module.exports = verify
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":142,"bn.js":118,"buffer":148,"elliptic":168,"parse-asn1":217}],145:[function(require,module,exports){
+},{"./curves":141,"bn.js":117,"buffer":148,"elliptic":168,"parse-asn1":217}],144:[function(require,module,exports){
+(function (global){
+'use strict';
+
+// compare and isBuffer taken from https://github.com/feross/buffer/blob/680e9e5e488f22aac27599a57dc844a6315928dd/index.js
+// original notice:
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @license  MIT
+ */
+function compare(a, b) {
+  if (a === b) {
+    return 0;
+  }
+
+  var x = a.length;
+  var y = b.length;
+
+  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
+    if (a[i] !== b[i]) {
+      x = a[i];
+      y = b[i];
+      break;
+    }
+  }
+
+  if (x < y) {
+    return -1;
+  }
+  if (y < x) {
+    return 1;
+  }
+  return 0;
+}
+function isBuffer(b) {
+  if (global.Buffer && typeof global.Buffer.isBuffer === 'function') {
+    return global.Buffer.isBuffer(b);
+  }
+  return !!(b != null && b._isBuffer);
+}
+
+// based on node assert, original notice:
+
+// http://wiki.commonjs.org/wiki/Unit_Testing/1.0
+//
+// THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
+//
+// Originally from narwhal.js (http://narwhaljs.org)
+// Copyright (c) 2009 Thomas Robinson <280north.com>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the 'Software'), to
+// deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+// sell copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var util = require('util/');
+var hasOwn = Object.prototype.hasOwnProperty;
+var pSlice = Array.prototype.slice;
+var functionsHaveNames = (function () {
+  return function foo() {}.name === 'foo';
+}());
+function pToString (obj) {
+  return Object.prototype.toString.call(obj);
+}
+function isView(arrbuf) {
+  if (isBuffer(arrbuf)) {
+    return false;
+  }
+  if (typeof global.ArrayBuffer !== 'function') {
+    return false;
+  }
+  if (typeof ArrayBuffer.isView === 'function') {
+    return ArrayBuffer.isView(arrbuf);
+  }
+  if (!arrbuf) {
+    return false;
+  }
+  if (arrbuf instanceof DataView) {
+    return true;
+  }
+  if (arrbuf.buffer && arrbuf.buffer instanceof ArrayBuffer) {
+    return true;
+  }
+  return false;
+}
+// 1. The assert module provides functions that throw
+// AssertionError's when particular conditions are not met. The
+// assert module must conform to the following interface.
+
+var assert = module.exports = ok;
+
+// 2. The AssertionError is defined in assert.
+// new assert.AssertionError({ message: message,
+//                             actual: actual,
+//                             expected: expected })
+
+var regex = /\s*function\s+([^\(\s]*)\s*/;
+// based on https://github.com/ljharb/function.prototype.name/blob/adeeeec8bfcc6068b187d7d9fb3d5bb1d3a30899/implementation.js
+function getName(func) {
+  if (!util.isFunction(func)) {
+    return;
+  }
+  if (functionsHaveNames) {
+    return func.name;
+  }
+  var str = func.toString();
+  var match = str.match(regex);
+  return match && match[1];
+}
+assert.AssertionError = function AssertionError(options) {
+  this.name = 'AssertionError';
+  this.actual = options.actual;
+  this.expected = options.expected;
+  this.operator = options.operator;
+  if (options.message) {
+    this.message = options.message;
+    this.generatedMessage = false;
+  } else {
+    this.message = getMessage(this);
+    this.generatedMessage = true;
+  }
+  var stackStartFunction = options.stackStartFunction || fail;
+  if (Error.captureStackTrace) {
+    Error.captureStackTrace(this, stackStartFunction);
+  } else {
+    // non v8 browsers so we can have a stacktrace
+    var err = new Error();
+    if (err.stack) {
+      var out = err.stack;
+
+      // try to strip useless frames
+      var fn_name = getName(stackStartFunction);
+      var idx = out.indexOf('\n' + fn_name);
+      if (idx >= 0) {
+        // once we have located the function frame
+        // we need to strip out everything before it (and its line)
+        var next_line = out.indexOf('\n', idx + 1);
+        out = out.substring(next_line + 1);
+      }
+
+      this.stack = out;
+    }
+  }
+};
+
+// assert.AssertionError instanceof Error
+util.inherits(assert.AssertionError, Error);
+
+function truncate(s, n) {
+  if (typeof s === 'string') {
+    return s.length < n ? s : s.slice(0, n);
+  } else {
+    return s;
+  }
+}
+function inspect(something) {
+  if (functionsHaveNames || !util.isFunction(something)) {
+    return util.inspect(something);
+  }
+  var rawname = getName(something);
+  var name = rawname ? ': ' + rawname : '';
+  return '[Function' +  name + ']';
+}
+function getMessage(self) {
+  return truncate(inspect(self.actual), 128) + ' ' +
+         self.operator + ' ' +
+         truncate(inspect(self.expected), 128);
+}
+
+// At present only the three keys mentioned above are used and
+// understood by the spec. Implementations or sub modules can pass
+// other keys to the AssertionError's constructor - they will be
+// ignored.
+
+// 3. All of the following functions must throw an AssertionError
+// when a corresponding condition is not met, with a message that
+// may be undefined if not provided.  All assertion methods provide
+// both the actual and expected values to the assertion error for
+// display purposes.
+
+function fail(actual, expected, message, operator, stackStartFunction) {
+  throw new assert.AssertionError({
+    message: message,
+    actual: actual,
+    expected: expected,
+    operator: operator,
+    stackStartFunction: stackStartFunction
+  });
+}
+
+// EXTENSION! allows for well behaved errors defined elsewhere.
+assert.fail = fail;
+
+// 4. Pure assertion tests whether a value is truthy, as determined
+// by !!guard.
+// assert.ok(guard, message_opt);
+// This statement is equivalent to assert.equal(true, !!guard,
+// message_opt);. To test strictly for the value true, use
+// assert.strictEqual(true, guard, message_opt);.
+
+function ok(value, message) {
+  if (!value) fail(value, true, message, '==', assert.ok);
+}
+assert.ok = ok;
+
+// 5. The equality assertion tests shallow, coercive equality with
+// ==.
+// assert.equal(actual, expected, message_opt);
+
+assert.equal = function equal(actual, expected, message) {
+  if (actual != expected) fail(actual, expected, message, '==', assert.equal);
+};
+
+// 6. The non-equality assertion tests for whether two objects are not equal
+// with != assert.notEqual(actual, expected, message_opt);
+
+assert.notEqual = function notEqual(actual, expected, message) {
+  if (actual == expected) {
+    fail(actual, expected, message, '!=', assert.notEqual);
+  }
+};
+
+// 7. The equivalence assertion tests a deep equality relation.
+// assert.deepEqual(actual, expected, message_opt);
+
+assert.deepEqual = function deepEqual(actual, expected, message) {
+  if (!_deepEqual(actual, expected, false)) {
+    fail(actual, expected, message, 'deepEqual', assert.deepEqual);
+  }
+};
+
+assert.deepStrictEqual = function deepStrictEqual(actual, expected, message) {
+  if (!_deepEqual(actual, expected, true)) {
+    fail(actual, expected, message, 'deepStrictEqual', assert.deepStrictEqual);
+  }
+};
+
+function _deepEqual(actual, expected, strict, memos) {
+  // 7.1. All identical values are equivalent, as determined by ===.
+  if (actual === expected) {
+    return true;
+  } else if (isBuffer(actual) && isBuffer(expected)) {
+    return compare(actual, expected) === 0;
+
+  // 7.2. If the expected value is a Date object, the actual value is
+  // equivalent if it is also a Date object that refers to the same time.
+  } else if (util.isDate(actual) && util.isDate(expected)) {
+    return actual.getTime() === expected.getTime();
+
+  // 7.3 If the expected value is a RegExp object, the actual value is
+  // equivalent if it is also a RegExp object with the same source and
+  // properties (`global`, `multiline`, `lastIndex`, `ignoreCase`).
+  } else if (util.isRegExp(actual) && util.isRegExp(expected)) {
+    return actual.source === expected.source &&
+           actual.global === expected.global &&
+           actual.multiline === expected.multiline &&
+           actual.lastIndex === expected.lastIndex &&
+           actual.ignoreCase === expected.ignoreCase;
+
+  // 7.4. Other pairs that do not both pass typeof value == 'object',
+  // equivalence is determined by ==.
+  } else if ((actual === null || typeof actual !== 'object') &&
+             (expected === null || typeof expected !== 'object')) {
+    return strict ? actual === expected : actual == expected;
+
+  // If both values are instances of typed arrays, wrap their underlying
+  // ArrayBuffers in a Buffer each to increase performance
+  // This optimization requires the arrays to have the same type as checked by
+  // Object.prototype.toString (aka pToString). Never perform binary
+  // comparisons for Float*Arrays, though, since e.g. +0 === -0 but their
+  // bit patterns are not identical.
+  } else if (isView(actual) && isView(expected) &&
+             pToString(actual) === pToString(expected) &&
+             !(actual instanceof Float32Array ||
+               actual instanceof Float64Array)) {
+    return compare(new Uint8Array(actual.buffer),
+                   new Uint8Array(expected.buffer)) === 0;
+
+  // 7.5 For all other Object pairs, including Array objects, equivalence is
+  // determined by having the same number of owned properties (as verified
+  // with Object.prototype.hasOwnProperty.call), the same set of keys
+  // (although not necessarily the same order), equivalent values for every
+  // corresponding key, and an identical 'prototype' property. Note: this
+  // accounts for both named and indexed properties on Arrays.
+  } else if (isBuffer(actual) !== isBuffer(expected)) {
+    return false;
+  } else {
+    memos = memos || {actual: [], expected: []};
+
+    var actualIndex = memos.actual.indexOf(actual);
+    if (actualIndex !== -1) {
+      if (actualIndex === memos.expected.indexOf(expected)) {
+        return true;
+      }
+    }
+
+    memos.actual.push(actual);
+    memos.expected.push(expected);
+
+    return objEquiv(actual, expected, strict, memos);
+  }
+}
+
+function isArguments(object) {
+  return Object.prototype.toString.call(object) == '[object Arguments]';
+}
+
+function objEquiv(a, b, strict, actualVisitedObjects) {
+  if (a === null || a === undefined || b === null || b === undefined)
+    return false;
+  // if one is a primitive, the other must be same
+  if (util.isPrimitive(a) || util.isPrimitive(b))
+    return a === b;
+  if (strict && Object.getPrototypeOf(a) !== Object.getPrototypeOf(b))
+    return false;
+  var aIsArgs = isArguments(a);
+  var bIsArgs = isArguments(b);
+  if ((aIsArgs && !bIsArgs) || (!aIsArgs && bIsArgs))
+    return false;
+  if (aIsArgs) {
+    a = pSlice.call(a);
+    b = pSlice.call(b);
+    return _deepEqual(a, b, strict);
+  }
+  var ka = objectKeys(a);
+  var kb = objectKeys(b);
+  var key, i;
+  // having the same number of owned properties (keys incorporates
+  // hasOwnProperty)
+  if (ka.length !== kb.length)
+    return false;
+  //the same set of keys (although not necessarily the same order),
+  ka.sort();
+  kb.sort();
+  //~~~cheap key test
+  for (i = ka.length - 1; i >= 0; i--) {
+    if (ka[i] !== kb[i])
+      return false;
+  }
+  //equivalent values for every corresponding key, and
+  //~~~possibly expensive deep test
+  for (i = ka.length - 1; i >= 0; i--) {
+    key = ka[i];
+    if (!_deepEqual(a[key], b[key], strict, actualVisitedObjects))
+      return false;
+  }
+  return true;
+}
+
+// 8. The non-equivalence assertion tests for any deep inequality.
+// assert.notDeepEqual(actual, expected, message_opt);
+
+assert.notDeepEqual = function notDeepEqual(actual, expected, message) {
+  if (_deepEqual(actual, expected, false)) {
+    fail(actual, expected, message, 'notDeepEqual', assert.notDeepEqual);
+  }
+};
+
+assert.notDeepStrictEqual = notDeepStrictEqual;
+function notDeepStrictEqual(actual, expected, message) {
+  if (_deepEqual(actual, expected, true)) {
+    fail(actual, expected, message, 'notDeepStrictEqual', notDeepStrictEqual);
+  }
+}
+
+
+// 9. The strict equality assertion tests strict equality, as determined by ===.
+// assert.strictEqual(actual, expected, message_opt);
+
+assert.strictEqual = function strictEqual(actual, expected, message) {
+  if (actual !== expected) {
+    fail(actual, expected, message, '===', assert.strictEqual);
+  }
+};
+
+// 10. The strict non-equality assertion tests for strict inequality, as
+// determined by !==.  assert.notStrictEqual(actual, expected, message_opt);
+
+assert.notStrictEqual = function notStrictEqual(actual, expected, message) {
+  if (actual === expected) {
+    fail(actual, expected, message, '!==', assert.notStrictEqual);
+  }
+};
+
+function expectedException(actual, expected) {
+  if (!actual || !expected) {
+    return false;
+  }
+
+  if (Object.prototype.toString.call(expected) == '[object RegExp]') {
+    return expected.test(actual);
+  }
+
+  try {
+    if (actual instanceof expected) {
+      return true;
+    }
+  } catch (e) {
+    // Ignore.  The instanceof check doesn't work for arrow functions.
+  }
+
+  if (Error.isPrototypeOf(expected)) {
+    return false;
+  }
+
+  return expected.call({}, actual) === true;
+}
+
+function _tryBlock(block) {
+  var error;
+  try {
+    block();
+  } catch (e) {
+    error = e;
+  }
+  return error;
+}
+
+function _throws(shouldThrow, block, expected, message) {
+  var actual;
+
+  if (typeof block !== 'function') {
+    throw new TypeError('"block" argument must be a function');
+  }
+
+  if (typeof expected === 'string') {
+    message = expected;
+    expected = null;
+  }
+
+  actual = _tryBlock(block);
+
+  message = (expected && expected.name ? ' (' + expected.name + ').' : '.') +
+            (message ? ' ' + message : '.');
+
+  if (shouldThrow && !actual) {
+    fail(actual, expected, 'Missing expected exception' + message);
+  }
+
+  var userProvidedMessage = typeof message === 'string';
+  var isUnwantedException = !shouldThrow && util.isError(actual);
+  var isUnexpectedException = !shouldThrow && actual && !expected;
+
+  if ((isUnwantedException &&
+      userProvidedMessage &&
+      expectedException(actual, expected)) ||
+      isUnexpectedException) {
+    fail(actual, expected, 'Got unwanted exception' + message);
+  }
+
+  if ((shouldThrow && actual && expected &&
+      !expectedException(actual, expected)) || (!shouldThrow && actual)) {
+    throw actual;
+  }
+}
+
+// 11. Expected to throw an error:
+// assert.throws(block, Error_opt, message_opt);
+
+assert.throws = function(block, /*optional*/error, /*optional*/message) {
+  _throws(true, block, error, message);
+};
+
+// EXTENSION! This is annoying to write outside this module.
+assert.doesNotThrow = function(block, /*optional*/error, /*optional*/message) {
+  _throws(false, block, error, message);
+};
+
+assert.ifError = function(err) { if (err) throw err; };
+
+var objectKeys = Object.keys || function (obj) {
+  var keys = [];
+  for (var key in obj) {
+    if (hasOwn.call(obj, key)) keys.push(key);
+  }
+  return keys;
+};
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"util/":266}],145:[function(require,module,exports){
 // Base58 encoding/decoding
 // Originally written by Mike Hearn for BitcoinJ
 // Copyright (c) 2011 Google Inc
@@ -74160,7 +74992,7 @@ function isnan (val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":113,"ieee754":198,"isarray":203}],149:[function(require,module,exports){
+},{"base64-js":112,"ieee754":198,"isarray":203}],149:[function(require,module,exports){
 (function (Buffer){
 var Transform = require('stream').Transform
 var inherits = require('inherits')
@@ -74588,7 +75420,7 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":118,"buffer":148,"elliptic":168}],153:[function(require,module,exports){
+},{"bn.js":117,"buffer":148,"elliptic":168}],153:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var inherits = require('inherits')
@@ -74989,7 +75821,7 @@ var publicEncrypt = require('public-encrypt')
   }
 })
 
-},{"browserify-cipher":136,"browserify-sign":141,"browserify-sign/algos":140,"create-ecdh":152,"create-hash":153,"create-hmac":156,"diffie-hellman":164,"pbkdf2":218,"public-encrypt":222,"randombytes":228}],158:[function(require,module,exports){
+},{"browserify-cipher":135,"browserify-sign":140,"browserify-sign/algos":139,"create-ecdh":152,"create-hash":153,"create-hmac":156,"diffie-hellman":164,"pbkdf2":218,"public-encrypt":222,"randombytes":228}],158:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -75882,7 +76714,7 @@ function formatReturnValue(bn, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":166,"bn.js":118,"buffer":148,"miller-rabin":212,"randombytes":228}],166:[function(require,module,exports){
+},{"./generatePrime":166,"bn.js":117,"buffer":148,"miller-rabin":212,"randombytes":228}],166:[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -75989,7 +76821,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":118,"miller-rabin":212,"randombytes":228}],167:[function(require,module,exports){
+},{"bn.js":117,"miller-rabin":212,"randombytes":228}],167:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -76040,7 +76872,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":184,"./elliptic/curve":171,"./elliptic/curves":174,"./elliptic/ec":175,"./elliptic/eddsa":178,"./elliptic/hmac-drbg":181,"./elliptic/utils":183,"brorand":119}],169:[function(require,module,exports){
+},{"../package.json":184,"./elliptic/curve":171,"./elliptic/curves":174,"./elliptic/ec":175,"./elliptic/eddsa":178,"./elliptic/hmac-drbg":181,"./elliptic/utils":183,"brorand":118}],169:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -76417,7 +77249,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":168,"bn.js":118}],170:[function(require,module,exports){
+},{"../../elliptic":168,"bn.js":117}],170:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -76852,7 +77684,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":168,"../curve":171,"bn.js":118,"inherits":200}],171:[function(require,module,exports){
+},{"../../elliptic":168,"../curve":171,"bn.js":117,"inherits":200}],171:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -77044,7 +77876,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":168,"../curve":171,"bn.js":118,"inherits":200}],173:[function(require,module,exports){
+},{"../../elliptic":168,"../curve":171,"bn.js":117,"inherits":200}],173:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -77984,7 +78816,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":168,"../curve":171,"bn.js":118,"inherits":200}],174:[function(require,module,exports){
+},{"../../elliptic":168,"../curve":171,"bn.js":117,"inherits":200}],174:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -78124,7 +78956,7 @@ defineCurve('curve25519', {
   prime: 'p25519',
   p: '7fffffffffffffff ffffffffffffffff ffffffffffffffff ffffffffffffffed',
   a: '76d06',
-  b: '1',
+  b: '0',
   n: '1000000000000000 0000000000000000 14def9dea2f79cd6 5812631a5cf5d3ed',
   hash: hash.sha256,
   gRed: false,
@@ -78430,13 +79262,10 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":168,"./key":176,"./signature":177,"bn.js":118}],176:[function(require,module,exports){
+},{"../../elliptic":168,"./key":176,"./signature":177,"bn.js":117}],176:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
-var elliptic = require('../../elliptic');
-var utils = elliptic.utils;
-var assert = utils.assert;
 
 function KeyPair(ec, options) {
   this.ec = ec;
@@ -78517,15 +79346,6 @@ KeyPair.prototype._importPrivate = function _importPrivate(key, enc) {
 
 KeyPair.prototype._importPublic = function _importPublic(key, enc) {
   if (key.x || key.y) {
-    // Montgomery points only have an `x` coordinate.
-    // Weierstrass/Edwards points on the other hand have both `x` and
-    // `y` coordinates.
-    if (this.ec.curve.type === 'mont') {
-      assert(key.x, 'Need x coordinate');
-    } else if (this.ec.curve.type === 'short' ||
-               this.ec.curve.type === 'edwards') {
-      assert(key.x && key.y, 'Need both x and y coordinate');
-    }
     this.pub = this.ec.curve.point(key.x, key.y);
     return;
   }
@@ -78551,7 +79371,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"../../elliptic":168,"bn.js":118}],177:[function(require,module,exports){
+},{"bn.js":117}],177:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -78688,7 +79508,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":168,"bn.js":118}],178:[function(require,module,exports){
+},{"../../elliptic":168,"bn.js":117}],178:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -78974,7 +79794,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":168,"bn.js":118}],181:[function(require,module,exports){
+},{"../../elliptic":168,"bn.js":117}],181:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -80046,7 +80866,7 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":118}],184:[function(require,module,exports){
+},{"bn.js":117}],184:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -80059,23 +80879,23 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign"
+      "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
-  "_id": "elliptic@6.3.3",
+  "_id": "elliptic@6.3.2",
   "_inCache": true,
   "_location": "/elliptic",
-  "_nodeVersion": "7.0.0",
+  "_nodeVersion": "6.3.0",
   "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/elliptic-6.3.3.tgz_1486422837740_0.10658654430881143"
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/elliptic-6.3.2.tgz_1473938837205_0.3108903462998569"
   },
   "_npmUser": {
     "name": "indutny",
     "email": "fedor@indutny.com"
   },
-  "_npmVersion": "3.10.8",
+  "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
     "raw": "elliptic@^6.0.0",
@@ -80091,11 +80911,11 @@ module.exports={
     "/create-ecdh",
     "/secp256k1"
   ],
-  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.3.tgz",
-  "_shasum": "5482d9646d54bcb89fd7d994fc9e2e9568876e3f",
+  "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.2.tgz",
+  "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign",
+  "_where": "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -80115,7 +80935,6 @@ module.exports={
     "coveralls": "^2.11.3",
     "grunt": "^0.4.5",
     "grunt-browserify": "^5.0.0",
-    "grunt-cli": "^1.2.0",
     "grunt-contrib-connect": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1",
@@ -80128,13 +80947,13 @@ module.exports={
   },
   "directories": {},
   "dist": {
-    "shasum": "5482d9646d54bcb89fd7d994fc9e2e9568876e3f",
-    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.3.tgz"
+    "shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
+    "tarball": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.2.tgz"
   },
   "files": [
     "lib"
   ],
-  "gitHead": "63aee8d697e9b7fac37ece24222029117a890a7e",
+  "gitHead": "cbace4683a4a548dc0306ef36756151a20299cd5",
   "homepage": "https://github.com/indutny/elliptic",
   "keywords": [
     "EC",
@@ -80165,7 +80984,7 @@ module.exports={
     "unit": "istanbul test _mocha --reporter=spec test/index.js",
     "version": "grunt dist && git add dist/"
   },
-  "version": "6.3.3"
+  "version": "6.3.2"
 }
 
 },{}],185:[function(require,module,exports){
@@ -81359,7 +82178,7 @@ exports.defineProperties = function (self, fields, data) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":112,"bn.js":118,"buffer":148,"create-hash":153,"ethjs-util":188,"keccak":205,"rlp":241,"secp256k1":243}],188:[function(require,module,exports){
+},{"assert":144,"bn.js":117,"buffer":148,"create-hash":153,"ethjs-util":188,"keccak":205,"rlp":241,"secp256k1":243}],188:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -83320,7 +84139,7 @@ HDKey.HARDENED_OFFSET = HARDENED_OFFSET
 module.exports = HDKey
 
 }).call(this,require("buffer").Buffer)
-},{"assert":112,"buffer":148,"coinstring":150,"crypto":157,"secp256k1":243}],198:[function(require,module,exports){
+},{"assert":144,"buffer":148,"coinstring":150,"crypto":157,"secp256k1":243}],198:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -85391,7 +86210,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":118,"brorand":119}],213:[function(require,module,exports){
+},{"bn.js":117,"brorand":118}],213:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -85571,7 +86390,7 @@ module.exports = function (okey, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"browserify-aes":123,"buffer":148,"evp_bytestokey":190}],217:[function(require,module,exports){
+},{"browserify-aes":122,"buffer":148,"evp_bytestokey":190}],217:[function(require,module,exports){
 (function (Buffer){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
@@ -85676,7 +86495,7 @@ function decrypt (data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":214,"./asn1":215,"./fixProc":216,"browserify-aes":123,"buffer":148,"pbkdf2":218}],218:[function(require,module,exports){
+},{"./aesid.json":214,"./asn1":215,"./fixProc":216,"browserify-aes":122,"buffer":148,"pbkdf2":218}],218:[function(require,module,exports){
 (function (process,Buffer){
 var createHmac = require('create-hmac')
 var checkParameters = require('./precondition')
@@ -86138,7 +86957,7 @@ function compare(a, b){
   return dif;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":223,"./withPublic":226,"./xor":227,"bn.js":118,"browserify-rsa":139,"buffer":148,"create-hash":153,"parse-asn1":217}],225:[function(require,module,exports){
+},{"./mgf":223,"./withPublic":226,"./xor":227,"bn.js":117,"browserify-rsa":138,"buffer":148,"create-hash":153,"parse-asn1":217}],225:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var randomBytes = require('randombytes');
@@ -86236,7 +87055,7 @@ function nonZero(len, crypto) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":223,"./withPublic":226,"./xor":227,"bn.js":118,"browserify-rsa":139,"buffer":148,"create-hash":153,"parse-asn1":217,"randombytes":228}],226:[function(require,module,exports){
+},{"./mgf":223,"./withPublic":226,"./xor":227,"bn.js":117,"browserify-rsa":138,"buffer":148,"create-hash":153,"parse-asn1":217,"randombytes":228}],226:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 function withPublic(paddedMsg, key) {
@@ -86249,7 +87068,7 @@ function withPublic(paddedMsg, key) {
 
 module.exports = withPublic;
 }).call(this,require("buffer").Buffer)
-},{"bn.js":118,"buffer":148}],227:[function(require,module,exports){
+},{"bn.js":117,"buffer":148}],227:[function(require,module,exports){
 module.exports = function xor(a, b) {
   var len = a.length;
   var i = -1;
@@ -87348,7 +88167,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":230,"./internal/streams/BufferList":235,"_process":221,"buffer":148,"buffer-shims":146,"core-util-is":151,"events":189,"inherits":200,"isarray":203,"process-nextick-args":220,"string_decoder/":259,"util":120}],233:[function(require,module,exports){
+},{"./_stream_duplex":230,"./internal/streams/BufferList":235,"_process":221,"buffer":148,"buffer-shims":146,"core-util-is":151,"events":189,"inherits":200,"isarray":203,"process-nextick-args":220,"string_decoder/":259,"util":119}],233:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -88629,7 +89448,7 @@ function toBuffer (v) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":112,"buffer":148}],242:[function(require,module,exports){
+},{"assert":144,"buffer":148}],242:[function(require,module,exports){
 (function (Buffer){
 var crypto = require('crypto')
 /* eslint-disable camelcase */
@@ -89066,7 +89885,7 @@ exports.signatureImportLax = function (sig) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bip66":117,"buffer":148}],246:[function(require,module,exports){
+},{"bip66":116,"buffer":148}],246:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var createHash = require('create-hash')
@@ -89317,7 +90136,7 @@ exports.ecdhUnsafe = function (publicKey, privateKey, compressed) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../messages.json":248,"bn.js":118,"buffer":148,"create-hash":153,"elliptic":168}],247:[function(require,module,exports){
+},{"../messages.json":248,"bn.js":117,"buffer":148,"create-hash":153,"elliptic":168}],247:[function(require,module,exports){
 'use strict'
 var assert = require('./assert')
 var der = require('./der')
