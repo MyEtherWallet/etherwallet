@@ -297,7 +297,7 @@ ERROR_23                    : 'Enter valid url, if you are on https your url mus
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount 0.01 ',
+ERROR_27                    : 'Minimum amount 0.01 and max 3 BTC ',
 ERROR_28                    : '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions. ',
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',

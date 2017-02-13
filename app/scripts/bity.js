@@ -6,15 +6,19 @@ bity.ethExplorer = 'https://etherscan.io/tx/[[txHash]]';
 bity.btcExplorer = 'https://blockchain.info/tx/[[txHash]]';
 bity.validStatus = ["RCVE","FILL","CONF","EXEC"];
 bity.invalidStatus = ["CANC"];
+bity.mainPairs = ['REP','ETH'];
+bity.min = 0.01;
+bity.max = 3;
 bity.prototype.refreshRates = function(callback) {
     var _this = this;
     ajaxReq.getRates(function(data) {
         _this.curRate = {};
         data.forEach(function(pair) {
-            _this.curRate[pair.pair] = parseFloat(pair.rate_we_buy);
-            _this.curRate[pair.pair.substring(3) + pair.pair.substring(0, 3)] = parseFloat((1.0 / pair.rate_we_sell).toFixed(bity.decimals));
+            if(bity.mainPairs.indexOf(pair.pair.substring(3)) != -1) _this.curRate[pair.pair] = parseFloat(pair.rate_we_sell);
+            else if(bity.mainPairs.indexOf(pair.pair.substring(0, 3)) != -1) _this.curRate[pair.pair] = parseFloat(pair.rate_we_buy);
+            else _this.curRate[pair.pair] = parseFloat(pair.rate);
         });
-        callback();
+        if(callback) callback();
     });
 }
 bity.prototype.openOrder = function(orderInfo, callback) {

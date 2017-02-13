@@ -154,7 +154,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
 
     $scope.setErrorMsgLanguage = function() {
         for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + i, 'errorMsgs', i);
-        for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + i, 'successMsgs', i);
+        for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i+1), 'successMsgs', i);
     }
 
     $scope.setGethErrMsgLanguage = function() {
@@ -194,7 +194,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     }
     $scope.setLanguageFromStorage = function() {
         var lang = localStorage.getItem('language');
-        if (lang == null) return;
+        if (lang == null) lang = "{\"key\":\"en\",\"value\":\"English\"}";
         lang = JSON.parse(lang);
         var key = globalFuncs.stripTags(lang.key);
         var value = globalFuncs.stripTags(lang.value);

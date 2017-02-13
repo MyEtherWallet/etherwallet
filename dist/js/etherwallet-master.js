@@ -100,15 +100,17 @@ bity.ethExplorer = 'https://etherscan.io/tx/[[txHash]]';
 bity.btcExplorer = 'https://blockchain.info/tx/[[txHash]]';
 bity.validStatus = ["RCVE", "FILL", "CONF", "EXEC"];
 bity.invalidStatus = ["CANC"];
+bity.mainPairs = ['REP', 'ETH'];
+bity.min = 0.01;
+bity.max = 3;
 bity.prototype.refreshRates = function (callback) {
     var _this = this;
     ajaxReq.getRates(function (data) {
         _this.curRate = {};
         data.forEach(function (pair) {
-            _this.curRate[pair.pair] = parseFloat(pair.rate_we_buy);
-            _this.curRate[pair.pair.substring(3) + pair.pair.substring(0, 3)] = parseFloat((1.0 / pair.rate_we_sell).toFixed(bity.decimals));
+            if (bity.mainPairs.indexOf(pair.pair.substring(3)) != -1) _this.curRate[pair.pair] = parseFloat(pair.rate_we_sell);else if (bity.mainPairs.indexOf(pair.pair.substring(0, 3)) != -1) _this.curRate[pair.pair] = parseFloat(pair.rate_we_buy);else _this.curRate[pair.pair] = parseFloat(pair.rate);
         });
-        callback();
+        if (callback) callback();
     });
 };
 bity.prototype.openOrder = function (orderInfo, callback) {
@@ -1602,6 +1604,9 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.bity.refreshRates(function () {
         $scope.setOrderCoin(true, "ETH");
     });
+    setInterval(function () {
+        $scope.bity.refreshRates();
+    }, 30000);
     $scope.priceTicker = { ETHBTC: 1, ETHREP: 1, BTCREP: 1, BTCETH: 1, REPBTC: 1, REPETH: 1 };
     $scope.availableCoins = ["ETH", "BTC", "REP"];
     var initValues = function () {
@@ -1618,6 +1623,10 @@ var swapCtrl = function ($scope, $sce, walletService) {
             swapRate: '',
             swapPair: ''
         };
+    };
+    $scope.verifyMinMaxValues = function () {
+        if ($scope.swapOrder.toVal < bity.min || $scope.swapOrder.fromVal < bity.min) return false;else if ($scope.swapOrder.toCoin == "BTC" && $scope.swapOrder.toVal > bity.max || $scope.swapOrder.fromCoin == "BTC" && $scope.swapOrder.fromVal > bity.max) return false;else if ($scope.swapOrder.toCoin == "ETH" && $scope.swapOrder.toVal * $scope.bity.curRate['ETHBTC'] > bity.max || $scope.swapOrder.fromCoin == "ETH" && $scope.swapOrder.fromVal * $scope.bity.curRate['ETHBTC'] > bity.max) return false;else if ($scope.swapOrder.toCoin == "REP" && $scope.swapOrder.toVal * $scope.bity.curRate['REPBTC'] > bity.max || $scope.swapOrder.fromCoin == "REP" && $scope.swapOrder.fromVal * $scope.bity.curRate['REPBTC'] > bity.max) return false;
+        return true;
     };
     $scope.setOrderCoin = function (isFrom, coin) {
         if (isFrom) $scope.swapOrder.fromCoin = coin;else $scope.swapOrder.toCoin = coin;
@@ -1637,12 +1646,10 @@ var swapCtrl = function ($scope, $sce, walletService) {
     $scope.setFinalPrices = function () {
         try {
 
-            if (!$scope.Validator.isPositiveNumber($scope.swapOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.swapOrder.toVal)) throw globalFuncs.errorMsgs[0];else if ($scope.swapOrder.fromVal < 0.01 || $scope.swapOrder.toVal < 0.01) throw globalFuncs.errorMsgs[27];
-            $scope.bity.refreshRates(function () {
-                $scope.updateEstimate($scope.swapOrder.isFrom);
-                $scope.showStage1 = false;
-                $scope.showStage2 = true;
-            });
+            if (!$scope.Validator.isPositiveNumber($scope.swapOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.swapOrder.toVal)) throw globalFuncs.errorMsgs[0];else if (!$scope.verifyMinMaxValues()) throw globalFuncs.errorMsgs[27];
+            $scope.updateEstimate($scope.swapOrder.isFrom);
+            $scope.showStage1 = false;
+            $scope.showStage2 = true;
         } catch (e) {
             $scope.notifier.danger(e);
         }
@@ -1923,7 +1930,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
 
     $scope.setErrorMsgLanguage = function () {
         for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + i, 'errorMsgs', i);
-        for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + i, 'successMsgs', i);
+        for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i + 1), 'successMsgs', i);
     };
 
     $scope.setGethErrMsgLanguage = function () {
@@ -1960,7 +1967,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
     };
     $scope.setLanguageFromStorage = function () {
         var lang = localStorage.getItem('language');
-        if (lang == null) return;
+        if (lang == null) lang = "{\"key\":\"en\",\"value\":\"English\"}";
         lang = JSON.parse(lang);
         var key = globalFuncs.stripTags(lang.key);
         var value = globalFuncs.stripTags(lang.value);
@@ -2756,7 +2763,7 @@ globalFuncs.getDangerText = function (str) {
 // These are translated in the translation files
 globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", // 10
 "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", // 15
-"A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.", "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port", "Please enter valid chain ID", "Please enter valid ABI", "Minimum amount 0.01", "You need your Keystore File & Password (or Private Key) to access this wallet in the future."];
+"A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.", "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port", "Please enter valid chain ID", "Please enter valid ABI", "Minimum amount 0.01 and max 3", "You need your Keystore File & Password (or Private Key) to access this wallet in the future."];
 // These are translated in the translation files
 globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "File Selected: "];
 // These are translated in the translation files
@@ -9160,7 +9167,7 @@ en.data = {
   ERROR_24: 'Please enter valid port ',
   ERROR_25: 'Please enter valid chain ID ',
   ERROR_26: 'Please enter valid ABI ',
-  ERROR_27: 'Minimum amount 0.01 ',
+  ERROR_27: 'Minimum amount 0.01 and max 3 BTC ',
   ERROR_28: '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions. ',
   SUCCESS_1: 'Valid address ',
   SUCCESS_2: 'Wallet successfully decrypted ',

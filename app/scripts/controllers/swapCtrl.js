@@ -7,6 +7,9 @@ var swapCtrl = function($scope, $sce, walletService) {
     $scope.bity.refreshRates(function() {
         $scope.setOrderCoin(true, "ETH");
     });
+    setInterval(function() {
+        $scope.bity.refreshRates();
+    }, 30000);
     $scope.priceTicker = { ETHBTC: 1, ETHREP: 1, BTCREP: 1, BTCETH: 1, REPBTC: 1, REPETH: 1 };
     $scope.availableCoins = ["ETH", "BTC", "REP"];
     var initValues = function() {
@@ -23,6 +26,13 @@ var swapCtrl = function($scope, $sce, walletService) {
             swapRate: '',
             swapPair: ''
         }
+    }
+    $scope.verifyMinMaxValues = function() {
+        if($scope.swapOrder.toVal < bity.min || $scope.swapOrder.fromVal < bity.min) return false;
+        else if(($scope.swapOrder.toCoin=="BTC" && $scope.swapOrder.toVal > bity.max) || ($scope.swapOrder.fromCoin=="BTC" && $scope.swapOrder.fromVal > bity.max)) return false;
+        else if(($scope.swapOrder.toCoin=="ETH" && $scope.swapOrder.toVal*$scope.bity.curRate['ETHBTC'] > bity.max) || ($scope.swapOrder.fromCoin=="ETH" && $scope.swapOrder.fromVal*$scope.bity.curRate['ETHBTC'] > bity.max)) return false;
+        else if(($scope.swapOrder.toCoin=="REP" && $scope.swapOrder.toVal*$scope.bity.curRate['REPBTC'] > bity.max) || ($scope.swapOrder.fromCoin=="REP" && $scope.swapOrder.fromVal*$scope.bity.curRate['REPBTC'] > bity.max)) return false;
+        return true;
     }
     $scope.setOrderCoin = function(isFrom, coin) {
         if (isFrom) $scope.swapOrder.fromCoin = coin;
@@ -47,12 +57,10 @@ var swapCtrl = function($scope, $sce, walletService) {
         try {
 
             if (!$scope.Validator.isPositiveNumber($scope.swapOrder.fromVal) || !$scope.Validator.isPositiveNumber($scope.swapOrder.toVal)) throw globalFuncs.errorMsgs[0];
-            else if ($scope.swapOrder.fromVal < 0.01 || $scope.swapOrder.toVal < 0.01) throw globalFuncs.errorMsgs[27];
-            $scope.bity.refreshRates(function() {
-                $scope.updateEstimate($scope.swapOrder.isFrom);
-                $scope.showStage1 = false;
-                $scope.showStage2 = true;
-            });
+            else if (!$scope.verifyMinMaxValues()) throw globalFuncs.errorMsgs[27];
+            $scope.updateEstimate($scope.swapOrder.isFrom);
+            $scope.showStage1 = false;
+            $scope.showStage2 = true;
         } catch (e) {
             $scope.notifier.danger(e);
         }
