@@ -47,11 +47,6 @@ SWAP_progress_5             : "Bestelling Voltooid ",
 SWAP_order_CTA              : "Verzend alsjeblieft ", // Please send 1 ETH...
 SWAP_unlock                 : "Open je Wallet op deze pagina om ETH of Tokens direct te verzenden. ",
 
-NAV_Swap                    : 'Omwisselen ',
-
-
-
-
 
 
 /* Navigation*/
