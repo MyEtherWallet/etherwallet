@@ -737,7 +737,7 @@ var contractsCtrl = function ($scope, $sce, walletService) {
     $scope.visibility = "interactView";
     $scope.sendContractModal = new Modal(document.getElementById('sendContract'));
     $scope.showReadWrite = false;
-    $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
+    $scope.sendTxModal = new Modal(document.getElementById('deployContract'));
     $scope.tx = {
         gasLimit: '',
         data: '',
@@ -1141,7 +1141,7 @@ module.exports = footerCtrl;
 },{}],15:[function(require,module,exports){
 'use strict';
 
-var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
+var offlineTxCtrl = function ($scope, $sce, walletService) {
     $scope.ajaxReq = ajaxReq;
     walletService.wallet = null;
     walletService.password = '';
@@ -1306,7 +1306,7 @@ var sendOfflineTxCtrl = function ($scope, $sce, walletService) {
         });
     };
 };
-module.exports = sendOfflineTxCtrl;
+module.exports = offlineTxCtrl;
 
 },{}],16:[function(require,module,exports){
 'use strict';
@@ -2366,75 +2366,62 @@ var walletDecryptDrtv = function () {
   <\/section>\r\n \
   <!-- \/ Column 3 -The Unlock Button -->\r\n \
   <!-- MODAL -->\r\n \
-  <section class=\"modal fade\" tabindex=\"-1\" role=\"dialog\" id=\"mnemonicModel\">\r\n \
-    <div class=\"modal-dialog\" role=\"document\" style=\"top: 200px\">\r\n \
-      <div class=\"modal-content\">\r\n \
-        <div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;<\/span><\/button><\/div>\r\n \
+  <article class=\"modal fade\" id=\"mnemonicModel\" tabindex=\"-1\">\r\n \
+    <section class=\"modal-dialog\">\r\n \
+      <section class=\"modal-content\">\r\n \
         <div class=\"modal-body\">\r\n \
+          <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;<\/button>\r\n \
           <!-- Select HD Path -->\r\n \
-          <span ng-show="showMDecrypt">\r\n \
-          <h4 translate=\"ADD_Radio_5_Path\"> Select HD derivation path: <\/h4>\r\n \
-          <div class=\"form-group\">\r\n \
-            <div class=\"radio\">\r\n \
-              <label>\r\n \
-                <input type=\"radio\" id=\"hd_derivation_path_default\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.defaultDPath}}\" ng-change=\"onHDDPathChange()\"\/>\r\n \
-                <span ng-bind=\"HDWallet.defaultDPath\"><\/span>\r\n \
-                <span ng-if=\"!showTrezorSeparate\" translate=\"ADD_Radio_5_withTrezor\">(default with trezor)<\/span>\r\n \
-                <span ng-if=\"showTrezorSeparate\" translate=\"ADD_Radio_5_woTrezor\">(default without trezor)<\/span>\r\n \
-              <\/label>\r\n \
-            <\/div>\r\n \
-            <div class=\"radio\">\r\n \
-              <label>\r\n \
-                <input type=\"radio\" id=\"hd_derivation_path_alternative\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.alternativeDPath}}\" ng-change=\"onHDDPathChange()\"\/>\r\n \
-                <span ng-bind=\"HDWallet.alternativeDPath\"><\/span>\r\n \
-                <span translate=\"ADD_Radio_5_PathAlternative\">(alternative)<\/span>\r\n \
-              <\/label>\r\n \
-            <\/div>\r\n \
-            <div class=\"radio\" ng-if=\"showTrezorSeparate\">\r\n \
-              <label>\r\n \
-                <input type=\"radio\" id=\"hd_derivation_path_trezor\" ng-model=\"HDWallet.dPath\" value=\"{{getTrezorPath()}}\" ng-change=\"onHDDPathChange()\" \/>\r\n \
-                <span ng-bind=\"getTrezorPath()\"><\/span>\r\n \
-                <span translate=\"ADD_Radio_5_PathTrezor\">(Trezor)<\/span>\r\n \
-              <\/label>\r\n \
-            <\/div>\r\n \
-            <div class=\"radio\">\r\n \
-              <label>\r\n \
-                <input type=\"radio\" id=\"hd_derivation_path_custom\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.customDPath}}\" ng-change=\"onHDDPathChange()\" \/>\r\n \
-                <input type=\"text\" class=\"form-control\" style=\"display: inline; width: 70%\" ng-model=\"HDWallet.customDPath\" id=\"hd_derivation_path_custom_value\" ng-change=\"onCustomHDDPathChange()\" \/>\r\n \
-                <span translate=\"ADD_Radio_5_PathCustom\">(custom)<\/span>\r\n \
-              <\/label>\r\n \
-            <\/div>\r\n \
-          <\/div>\r\n \
-          </span> \r\n \
-          <!-- \/ Select HD Path -->\r\n \
-          <!-- Select Address -->\r\n \
-          <h4 class=\"modal-title\" translate=\"MNEM_1\"> Please select the address you would like to interact with. <\/h4>\r\n \
-          <p translate=\"MNEM_2\"> Your single HD mnemonic phrase can access a number of wallets \/ addresses. Please select the address you would like to interact with at this time. <\/p>\r\n \
-          <table class=\"table table-striped table-mnemonic\">\r\n \
-            <tr>\r\n \
-              <th><\/th>\r\n \
-              <th translate=\"x_Address\"> Address <\/th>\r\n \
-              <th translate=\"MYWAL_Bal\"> Balance <\/th>\r\n \
-            <\/tr>\r\n \
-            <tr ng-repeat=\"wallet in HDWallet.wallets track by $index\">\r\n \
-              <td><input type=\"radio\" name=\"addressSelect\" value=\"{{$index}}\" ng-model=\"HDWallet.id\" \/><\/td>\r\n \
-              <td> {{wallet.getChecksumAddressString()}} <\/td>\r\n \
-              <td> {{wallet.getBalance()}} ETH <\/td>\r\n \
-            <\/tr>\r\n \
-            <tr class=\"m-addresses\">\r\n \
-              <td><a ng-show=\"HDWallet.numWallets > 5\" ng-click=\"AddRemoveHDAddresses(false)\" translate=\"MNEM_prev\">Previous Addresses<\/a><\/td>\r\n \
-              <td><\/td>\r\n \
-              <td><a ng-click=\"AddRemoveHDAddresses(true)\" translate=\"MNEM_more\">More<br \/>Addresses<\/a><\/td>\r\n \
-            <\/tr>\r\n \
-          <\/table>\r\n \
+          <span ng-show=\"showMDecrypt\">\r\n \
+            <h3 class=\"modal-title\" translate=\"ADD_Radio_5_Path\"> Select HD derivation path:<\/h3>\r\n \
+            <label class=\"radio\">\r\n \
+              <input type=\"radio\" id=\"hd_derivation_path_default\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.defaultDPath}}\" ng-change=\"onHDDPathChange()\"\/>\r\n \
+              <span ng-bind=\"HDWallet.defaultDPath\"><\/span>\r\n \
+              <span ng-if=\"!showTrezorSeparate\" translate=\"ADD_Radio_5_withTrezor\">(default with trezor)<\/span>\r\n \
+              <span ng-if=\"showTrezorSeparate\" translate=\"ADD_Radio_5_woTrezor\">(default without trezor)<\/span>\r\n \
+            <\/label>\r\n \
+            <label class=\"radio\">\r\n \
+              <input type=\"radio\" id=\"hd_derivation_path_alternative\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.alternativeDPath}}\" ng-change=\"onHDDPathChange()\"\/>\r\n \
+              <span ng-bind=\"HDWallet.alternativeDPath\"><\/span>\r\n \
+              <span translate=\"ADD_Radio_5_PathAlternative\">(alternative)<\/span>\r\n \
+            <\/label>\r\n \
+            <label class=\"radio\" ng-if=\"showTrezorSeparate\">\r\n \
+              <input type=\"radio\" id=\"hd_derivation_path_trezor\" ng-model=\"HDWallet.dPath\" value=\"{{getTrezorPath()}}\" ng-change=\"onHDDPathChange()\" \/>\r\n \
+              <span ng-bind=\"getTrezorPath()\"><\/span>\r\n \
+              <span translate=\"ADD_Radio_5_PathTrezor\">(Trezor)<\/span>\r\n \
+            <\/label>\r\n \
+            <label class=\"radio\">\r\n \
+              <input type=\"radio\" id=\"hd_derivation_path_custom\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.customDPath}}\" ng-change=\"onHDDPathChange()\" \/>\r\n \
+              <input type=\"text\" class=\"form-control\" style=\"display: inline; width: 70%\" ng-model=\"HDWallet.customDPath\" id=\"hd_derivation_path_custom_value\" ng-change=\"onCustomHDDPathChange()\" \/>\r\n \
+              <span translate=\"ADD_Radio_5_PathCustom\">(Custom)<\/span>\r\n \
+            <\/label>\r\n \
+          <\/span> \r\n \
+          <!-- END Select HD Path --><!-- Select Address --><hr \/>\r\n \
+          <h3 class=\"modal-title\" translate=\"MNEM_1\">Please select the address you would like to interact with.<\/h3>\r\n \
+          <p class=\"small\" translate=\"MNEM_2\">Your single HD mnemonic phrase can access a number of wallets \/ addresses.<\/p>\r\n \
+          <table class=\"small table table-striped table-mnemonic\"><tr><th><\/th>\r\n \
+            <th translate=\"x_Address\">Address<\/th>\r\n \
+            <th translate=\"MYWAL_Bal\">Balance<\/th>\r\n \
+          <\/tr>\r\n \
+          <tr ng-repeat=\"wallet in HDWallet.wallets track by $index\">\r\n \
+            <td><input type=\"radio\" name=\"addressSelect\" value=\"{{$index}}\" ng-model=\"HDWallet.id\" \/><\/td>\r\n \
+            <td>{{wallet.getChecksumAddressString()}}<\/td>\r\n \
+            <td>{{wallet.getBalance()}} ETH<\/td>\r\n \
+          <\/tr>\r\n \
+          <tr class=\"m-addresses\">\r\n \
+            <td class\"small\"><a ng-show=\"HDWallet.numWallets > 5\" ng-click=\"AddRemoveHDAddresses(false)\" translate=\"MNEM_prev\">Previous Addresses<\/a><\/td>\r\n \
+            <td><\/td>\r\n \
+            <td class\"small\"><a ng-click=\"AddRemoveHDAddresses(true)\" translate=\"MNEM_more\">More Addresses<\/a><\/td>\r\n \
+          <\/tr><\/table>\r\n \
+          <!-- END Select Address -->\r\n \
         <\/div>\r\n \
-        <div class=\"modal-footer text-center\">\r\n \
-          <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" translate=\"x_Cancel\">Cancel<\/button>\r\n \
-          <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\" ng-click=\"setHDWallet()\" translate=\"ADD_Label_6_short\">Access Wallet<\/button>\r\n \
+        <div class=\"modal-footer\">\r\n \
+          <button class=\"btn btn-default\" data-dismiss=\"modal\" translate=\"x_Cancel\">Cancel<\/button>\r\n \
+          <button class=\"btn btn-primary\" ng-click=\"setHDWallet()\" translate=\"ADD_Label_6_short\">Access Wallet<\/button>\r\n \
         <\/div>\r\n \
-      <\/div>\r\n \
-    <\/div>\r\n \
-  <\/section>\r\n \
+      <\/section>\r\n \
+    <\/section>\r\n \
+  <\/article>\r\n \
   <!-- \/ MODAL -->\r\n \
 <\/article>\r\n \
 '
@@ -2869,7 +2856,7 @@ var swapCtrl = require('./controllers/swapCtrl');
 var signMsgCtrl = require('./controllers/signMsgCtrl');
 var contractsCtrl = require('./controllers/contractsCtrl');
 var footerCtrl = require('./controllers/footerCtrl');
-var sendOfflineTxCtrl = require('./controllers/sendOfflineTxCtrl');
+var offlineTxCtrl = require('./controllers/offlineTxCtrl');
 var walletBalanceCtrl = require('./controllers/walletBalanceCtrl');
 var globalService = require('./services/globalService');
 var walletService = require('./services/walletService');
@@ -2913,7 +2900,7 @@ app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
 app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
-app.controller('sendOfflineTxCtrl', ['$scope', '$sce', 'walletService', sendOfflineTxCtrl]);
+app.controller('offlineTxCtrl', ['$scope', '$sce', 'walletService', offlineTxCtrl]);
 app.controller('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
 if (IS_CX) {
   app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);
@@ -2923,7 +2910,7 @@ if (IS_CX) {
   app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
 }
 
-},{"./ajaxReq":4,"./bity":5,"./controllers/CX/addWalletCtrl":6,"./controllers/CX/cxDecryptWalletCtrl":7,"./controllers/CX/mainPopCtrl":8,"./controllers/CX/myWalletsCtrl":9,"./controllers/CX/quickSendCtrl":10,"./controllers/bulkGenCtrl":11,"./controllers/contractsCtrl":12,"./controllers/decryptWalletCtrl":13,"./controllers/footerCtrl":14,"./controllers/sendOfflineTxCtrl":15,"./controllers/sendTxCtrl":16,"./controllers/signMsgCtrl":17,"./controllers/swapCtrl":18,"./controllers/tabsCtrl":19,"./controllers/viewCtrl":20,"./controllers/viewWalletCtrl":21,"./controllers/walletBalanceCtrl":22,"./controllers/walletGenCtrl":23,"./cxFuncs":24,"./directives/QRCodeDrtv":25,"./directives/balanceDrtv":26,"./directives/blockiesDrtv":27,"./directives/cxWalletDecryptDrtv":28,"./directives/fileReaderDrtv":29,"./directives/walletDecryptDrtv":30,"./ethFuncs":31,"./etherUnits":32,"./globalFuncs":33,"./myetherwallet":35,"./nodes":42,"./services/globalService":43,"./services/walletService":44,"./solidity/coder":48,"./solidity/utils":59,"./staticJS/customMarked":60,"./staticJS/ledger-eth":61,"./staticJS/ledger3":62,"./staticJS/trezorConnect":63,"./staticJS/u2f-api":64,"./tokenlib":65,"./translations/translate.js":85,"./uiFuncs":88,"./validator":89,"angular":97,"angular-animate":91,"angular-sanitize":93,"angular-translate":95,"angular-translate-handler-log":94,"bignumber.js":113,"bip39":114,"crypto":157,"ethereumjs-tx":186,"ethereumjs-util":187,"hdkey":197,"scryptsy":242,"string-format":258,"uuid":268,"wallet-address-validator":273}],35:[function(require,module,exports){
+},{"./ajaxReq":4,"./bity":5,"./controllers/CX/addWalletCtrl":6,"./controllers/CX/cxDecryptWalletCtrl":7,"./controllers/CX/mainPopCtrl":8,"./controllers/CX/myWalletsCtrl":9,"./controllers/CX/quickSendCtrl":10,"./controllers/bulkGenCtrl":11,"./controllers/contractsCtrl":12,"./controllers/decryptWalletCtrl":13,"./controllers/footerCtrl":14,"./controllers/offlineTxCtrl":15,"./controllers/sendTxCtrl":16,"./controllers/signMsgCtrl":17,"./controllers/swapCtrl":18,"./controllers/tabsCtrl":19,"./controllers/viewCtrl":20,"./controllers/viewWalletCtrl":21,"./controllers/walletBalanceCtrl":22,"./controllers/walletGenCtrl":23,"./cxFuncs":24,"./directives/QRCodeDrtv":25,"./directives/balanceDrtv":26,"./directives/blockiesDrtv":27,"./directives/cxWalletDecryptDrtv":28,"./directives/fileReaderDrtv":29,"./directives/walletDecryptDrtv":30,"./ethFuncs":31,"./etherUnits":32,"./globalFuncs":33,"./myetherwallet":35,"./nodes":42,"./services/globalService":43,"./services/walletService":44,"./solidity/coder":48,"./solidity/utils":59,"./staticJS/customMarked":60,"./staticJS/ledger-eth":61,"./staticJS/ledger3":62,"./staticJS/trezorConnect":63,"./staticJS/u2f-api":64,"./tokenlib":65,"./translations/translate.js":85,"./uiFuncs":88,"./validator":89,"angular":97,"angular-animate":91,"angular-sanitize":93,"angular-translate":95,"angular-translate-handler-log":94,"bignumber.js":113,"bip39":114,"crypto":157,"ethereumjs-tx":186,"ethereumjs-util":187,"hdkey":197,"scryptsy":242,"string-format":258,"uuid":268,"wallet-address-validator":273}],35:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -8661,6 +8648,17 @@ var en = function () {};
 en.code = 'en';
 en.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
   /* Contracts */
   x_Access: 'Access ',
   CONTRACT_Title: 'Contract Address ',
@@ -8723,7 +8721,6 @@ en.data = {
   x_Keystore2: 'Keystore File (UTC / JSON) ',
   x_KeystoreDesc: 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up. ',
   x_Mnemonic: 'Mnemonic Phrase ',
-  x_ParityPhrase: 'Parity Phrase ',
   x_Password: 'Password ',
   x_Print: 'Print Paper Wallet ',
   x_PrintDesc: 'ProTip: Click print and save this as a PDF, even if you do not own a printer! ',
