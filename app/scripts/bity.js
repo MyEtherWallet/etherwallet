@@ -2,6 +2,10 @@
 var bity = function() {}
 bity.SERVERURL = "https://bity.myetherapi.com";
 bity.decimals = 6;
+bity.ethExplorer = 'https://etherscan.io/tx/[[txHash]]';
+bity.btcExplorer = 'https://blockchain.info/tx/[[txHash]]';
+bity.validStatus = ["RCVE","FILL","CONF","EXEC"];
+bity.invalidStatus = ["CANC"];
 bity.prototype.refreshRates = function(callback) {
     var _this = this;
     ajaxReq.getRates(function(data) {

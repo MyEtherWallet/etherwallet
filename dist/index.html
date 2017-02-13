@@ -841,7 +841,7 @@
 
   <!-- Title -->
   <section class="row text-center">
-    <div class="col-xs-3 text-left"><a class="btn btn-danger btn-sm"> Start New Swap </a></div>
+    <div class="col-xs-3 text-left"><a class="btn btn-danger btn-sm" ng-click="newSwap()"> Start New Swap </a></div>
     <h5 class="col-xs-6" translate="SWAP_information">Your Information</h5>
     <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank">
       <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
@@ -856,8 +856,9 @@
       <p translate="SWAP_ref_num">Your reference number</p>
     </div>
     <div class="col-sm-3 order-info">
-      <h4>{{orderResult.timeRemaining}}</h4>
-      <p translate="SWAP_time">Time remaining to send {{orderResult.input.amount}}&nbsp;{{orderResult.input.currency}}</p>
+      <h4>{{orderResult.progress.timeRemaining}}</h4>
+      <p ng-show="orderResult.progress.showTimeRem" translate="SWAP_time">Time remaining to send</p>
+      <p translate="SWAP_elapsed" ng-show="!orderResult.progress.showTimeRem">Time elapsed since sent</p>
     </div>
     <div class="col-sm-3 order-info">
       <h4>{{orderResult.output.amount}} {{orderResult.output.currency}}</h4>
@@ -873,26 +874,26 @@
   <!-- Swap Progress -->
   <section class="row swap-progress">
     <div class="sep"></div>
-    <div class="progress-item progress-true">
+    <div class="progress-item {{orderResult.progress.bar[0]}}">
       <div class="progress-circle"><i>1</i></div><p translate="SWAP_progress_1">Order Initiated</p>
     </div>
-    <div class="progress-item progress-active">
+    <div class="progress-item {{orderResult.progress.bar[1]}}">
       <div class="progress-circle"><i>2</i></div><p><span translate="SWAP_progress_2">Waiting for your </span> {{orderResult.input.currency}}...</p>
     </div>
-    <div class="progress-item">
+    <div class="progress-item {{orderResult.progress.bar[2]}}">
       <div class="progress-circle"><i>3</i></div><p>{{orderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
     </div>
-    <div class="progress-item">
+    <div class="progress-item {{orderResult.progress.bar[3]}}">
       <div class="progress-circle"><i>4</i></div><p><span translate="SWAP_progress_4">Sending your </span> {{orderResult.output.currency}}</p>
     </div>
-    <div class="progress-item">
+    <div class="progress-item {{orderResult.progress.bar[4]}}">
       <div class="progress-circle"><i>5</i></div><p translate="SWAP_progress_5">Order Complete</p>
     </div>
   </section>
 
 
   <!-- Swap CTA -->
-  <section class="row text-center">
+  <section class="row text-center" ng-show="orderResult.progress.status=='OPEN'">
     <h1>
       <span translate="SWAP_order_CTA">      Please send                                                 </span>
       <strong>                               {{orderResult.input.amount}} {{orderResult.input.currency}} </strong>
@@ -903,7 +904,7 @@
 
 
   <!-- Swap CTA ETH -->
-  <article class="row" ng-show="showStage3Eth">
+  <article class="row" ng-show="showStage3Eth && orderResult.progress.status=='OPEN'">
     <section class="clearfix collapse-container">
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
@@ -1076,7 +1077,7 @@
 
 
   <!-- Swap CTA BTC -->
-  <section class="row" ng-show="showStage3Btc">
+  <section class="row" ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
     <label translate="x_Address"> Your Address </label>
     <div class="qr-code" qr-code="{{orderResult.payment_address}}" watch-var="orderResult" ></div>
   </section>
