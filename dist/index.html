@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" ng-app="mewApp">
 <head>
@@ -175,55 +176,50 @@
 
   <div class="tab-content" >
 
-    <section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl'>
+    <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl'>
+
+  <!-- Title -->
+  <h1 translate="NAV_GenerateWallet"> Generate Wallet</h1>
+  <!-- / Title -->
 
   <!-- Top -->
-  <h1 translate="NAV_GenerateWallet"> Generate Wallet</h1>
-
-  <article class="row">
+  <section class="row">
     <div class="col-sm-6">
-      <h4 translate="GEN_Label_1"> Enter a strong password (at least 9 characters) </h4>
+      <h4 translate="GEN_Label_1"> Enter password </h4>
       <div class="input-group">
-        <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}" ng-model="password" ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"/>
+        <input class="form-control"
+               type="{{showPass && 'password' || 'text'}}"
+               placeholder="{{ 'GEN_Placeholder_1' | translate }}"
+               ng-model="password"
+               ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"/>
         <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
       </div>
     </div>
     <div class="col-sm-6">
       <h4 translate="NAV_GenerateWallet"> Generate Wallet </h4>
-      <a class="btn btn-primary btn-block btnAction" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
+      <a class="btn btn-primary btn-block" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
     </div>
-  </article>
+  </section>
   <!-- / Top -->
 
-  <!-- Bottom - Display Generated Wallet -->
-  <section id="generatedWallet" ng-show="showWallet">
-    <br />
-    <hr />
 
-    <!-- 0. Warning -->
-    <h1 translate="GEN_SuccessMsg">Success! Your wallet has been generated.</h1>
-    <!-- / 0. Warning -->
+  <!-- Bottom -->
+  <section ng-show="showWallet">
+    <br /><hr /><br />
 
-    <br />
+    <!-- Title -->
+    <h3 translate="GEN_SuccessMsg">Success! Your wallet has been generated.</h3>
+    <!-- / Title -->
 
     <!-- 1. Private Keys -->
-    <h4> 1. <span translate="GEN_Label_2"> Save your Keystore File. Don't forget your password above. </span> </h4>
+    <h2>1. <span translate="GEN_Label_2"> Save your Keystore File. Don't forget your password above. </span></h2>
     <section class="row">
-      <div class="col-sm-6">
-        <div class="account-help-icon">
-          <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
-          <label translate="x_Keystore" translate="x_Keystore">Keystore File (Recommended • Encrypted • Mist/Geth Format)</label>
+      <div class="col-sm-10">
+        <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file</p>
+          <label translate="x_Keystore">Keystore File (Recommended • Encrypted)</label>
         </div>
-        <a class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
-      </div>
-      <div class="col-sm-6">
-        <div class="account-help-icon">
-          <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
-          <label translate="x_PrivKey">Private Key (unencrypted)</label>
-        </div>
-        <textarea class="form-control bigger-on-mobile" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
+        <a class="btn btn-success btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
       </div>
     </section>
     <!-- / 1. Private Keys -->
@@ -231,12 +227,12 @@
     <br />
 
     <!-- 2. Address -->
+    <h2>2. <span translate="GEN_Label_3"> Save Your Address. </span></h2>
     <section class="row">
       <div class="col-sm-10">
-        <div class="account-help-icon">
-          <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
-          <h4> 2. <span translate="GEN_Label_3"> Save Your Address. </span> </h4>
+        <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #"</p>
+          <label translate="x_Address">Your Address</label>
         </div>
         <input class="form-control" type="text" readonly="readonly" ng-value="wallet.getChecksumAddressString()"/>
       </div>
@@ -249,36 +245,45 @@
     <br />
 
     <!-- 3. Extras -->
-    <h4> 3. <span translate="GEN_Label_4"> Print your paper wallet, or store a QR code verison. (optional) </span></h4>
-    <div class="row">
+    <h2>3. <span translate="GEN_Label_4"> Print your paper wallet, or store a QR code version. (optional) </span></h2>
+    <section class="row">
+
       <div class="col-sm-6">
-        <div class="account-help-icon">
-          <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_PrintDesc">ProTip: Click print and save this as a PDF, even if you do not own a printer!</p>
+
+        <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted version of your private key.</p>
+          <label translate="x_PrivKey">Private Key (unencrypted)</label>
+        </div>
+        <textarea class="form-control bigger-on-mobile" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
+
+        <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="x_PrintDesc">ProTip: Click print and save this as a PDF</p>
           <label translate="x_Print">Print Paper Wallet:</label>
         </div>
-        <a class="btn btn-info btn-block btnAction" ng-click="printQRCode()" translate="x_PrintShort">PRINT</a>
-        <div class="account-help-icon">
-          <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</p>
-          <label translate="x_Json"> JSON File (unencrypted) </label>
+        <a class="btn btn-info btn-block" ng-click="printQRCode()" translate="x_PrintShort">PRINT</a>
+        <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key.</p>
+          <label translate="x_Json">JSON File (unencrypted)</label>
         </div>
         <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
       </div>
+
       <div class="col-sm-3">
-        <label translate="x_Address">Your Address:</label>
+        <label translate="x_Address">Your Address</label>
         <div qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
       </div>
+
       <div class="col-sm-3">
         <label translate="x_PrivKey">Private Key (unencrypted):</label>
         <div qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
       </div>
-    </div>
+
+    </section>
     <!-- /3. Extras -->
 
 
   </section>
-</section>
+</main>
 
 
     <!-- View Wallet Info Panel -->
@@ -472,28 +477,30 @@
 
 
     <!-- Send Transaction Page -->
-<main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id" ng-controller='sendTxCtrl'  ng-cloak>
+<main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id" ng-controller='sendTxCtrl' ng-cloak>
 
-  <!-- Header -->
+  <!-- Header : todo turn into warning notification-->
   <div class="alert alert-info" ng-show="hasQueryString">
     <p translate="WARN_Send_Link" >You arrived via a link that has the address, amount, gas or data fields filled in for you. You can change any information before sending. Unlock your wallet to get started.</p>
   </div>
+  <!-- / Header -->
 
+  <!-- Unlock Wallet -->
   <article class="collapse-container">
     <div ng-click="wd = !wd">
       <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
       <h1 translate="NAV_SendEther"> Send Ether & Tokens </h1>
     </div>
-
     <div ng-show="!wd">
         
           <wallet-decrypt-drtv></wallet-decrypt-drtv>         
     </div>
   </article>
+  <!-- / Unlock Wallet -->
 
+  <!-- Send Tx Content -->
   <article class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
-
       
         <!-- Sidebar -->
 <section class="col-sm-4">
@@ -631,8 +638,9 @@
 </section>
 <!--/ Send Modal-->
     
-
   </article>
+  <!-- / Send Tx Content -->
+
 </main>
 <!-- / Send Transaction Page -->
 
@@ -641,196 +649,234 @@
 <main class="tab-pane swap-tab active" ng-if="globalService.currentTab==globalService.tabs.swap.id" ng-controller='swapCtrl'  ng-cloak>
 
 
-  <!-- Rates Panel -->
-  <section class="row swap-rates" ng-show="showStage1">
-    <div class="clearfix">
-      <h5 class="col-xs-6 col-xs-offset-3">Current Rates</h5>
-      <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></a></div>
-    </div>
-      <div class="col-sm-6 order-info">
-        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.ETHBTC"/><span>ETH = {{bity.curRate.ETHBTC*priceTicker.ETHBTC | number: 6}} BTC</span></p>
-        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.ETHREP"/><span>ETH = {{bity.curRate.ETHREP*priceTicker.ETHREP | number: 6}} REP</span></p>
-      </div>
-      <div class="col-sm-6 order-info">
-        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.BTCETH"/><span>BTC = {{bity.curRate.BTCETH*priceTicker.BTCETH | number: 6}} ETH</span></p>
-        <p class="mono"><input class="form-control input-sm" ng-model="priceTicker.BTCREP"/><span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span></p>
-      </div>
-      <!--<div class="col-sm-4 order-info">
-        <p><input class="form-control input-sm" ng-model="priceTicker.REPBTC"/><span>REP = {{bity.curRate.REPBTC*priceTicker.REPBTC | number: 6}} BTC</span></p>
-        <p><input class="form-control input-sm" ng-model="priceTicker.REPETH"/><span>REP = {{bity.curRate.REPETH*priceTicker.REPETH | number: 6}} ETH</span></p>
-      </div>-->
+  <!-- Swap Rates Panel -->
+<article class="swap-rates" ng-show="showStage1">
+
+  <!-- Title -->
+  <section class="row">
+    <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_rates"> Current Rates </h5>
+    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank">
+      <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
+    </a></div>
   </section>
-  <!-- / Rates Panel -->
+  <!-- Title -->
+
+  <!-- Colored Columns -->
+  <section class="row">
+    <div class="col-sm-6 order-info">
+      <p class="mono">
+        <input class="form-control input-sm" ng-model="priceTicker.ETHBTC"/>
+        <span>ETH = {{bity.curRate.ETHBTC*priceTicker.ETHBTC | number: 6}} BTC</span>
+      </p>
+      <p class="mono">
+        <input class="form-control input-sm" ng-model="priceTicker.ETHREP"/>
+        <span>ETH = {{bity.curRate.ETHREP*priceTicker.ETHREP | number: 6}} REP</span>
+      </p>
+    </div>
+    <div class="col-sm-6 order-info">
+      <p class="mono">
+        <input class="form-control input-sm" ng-model="priceTicker.BTCETH"/>
+        <span>BTC = {{bity.curRate.BTCETH*priceTicker.BTCETH | number: 6}} ETH</span>
+      </p>
+      <p class="mono">
+        <input class="form-control input-sm" ng-model="priceTicker.BTCREP"/>
+        <span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span>
+      </p>
+    </div>
+  </section>
+  <!-- / Colored Columns -->
+
+</article>
+<!-- / Swap Rates Panel -->
 
 
-  <!-- swap Panel -->
-  <section class="swap-panel" ng-show="showStage1">
 
-    <h1> I want to swap my </h1>
+<!-- Swap Init Panel -->
+<article class="swap-panel" ng-show="showStage1">
 
-    <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}"  ng-change ="updateEstimate(true)" ng-model="swapOrder.fromVal" ng-class="Validator.isPositiveNumber(swapOrder.fromVal)  && swapOrder.fromVal >= 0.01 ? 'is-valid' : 'is-invalid'"/>
+  <h1 translate="SWAP_init_1"> I want to swap my </h1>
 
-    <span class="dropdown">
-      <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownFrom = !dropdownFrom">{{swapOrder.fromCoin}}<span class="caret"></span></a>
-      <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownFrom">
-        <li ng-repeat="coin in availableCoins track by $index" ng-show="coin !=  'REP'">
+  <input class="form-control"
+         type="text"
+         placeholder="{{ 'SEND_amount_short' | translate }}"
+         ng-change ="updateEstimate(true)"
+         ng-model="swapOrder.fromVal"
+         ng-class="Validator.isPositiveNumber(swapOrder.fromVal)  && swapOrder.fromVal >= 0.01 ? 'is-valid' : 'is-invalid'" />
+
+  <span class="dropdown">
+    <a class="btn btn-default dropdown-toggle" ng-click="dropdownFrom = !dropdownFrom">{{swapOrder.fromCoin}}<span class="caret"></span></a>
+    <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownFrom">
+      <li ng-repeat="coin in availableCoins track by $index" ng-show="coin != 'REP'">
         <a ng-class="{true:'active'}[coin == swapOrder.fromCoin]" ng-click="setOrderCoin(true, coin)"> {{coin}} </a>
-        </li>
-      </ul>
-    </span>
+      </li>
+    </ul>
+  </span>
 
-    <h1> for </h1>
+  <h1 translate="SWAP_init_2"> for </h1>
 
-    <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}"  ng-change ="updateEstimate(false)" ng-model="swapOrder.toVal" ng-class="Validator.isPositiveNumber(swapOrder.toVal) && swapOrder.toVal >= 0.01 ? 'is-valid' : 'is-invalid'"/>
+  <input class="form-control"
+         type="text"
+         placeholder="{{ 'SEND_amount_short' | translate }}"
+         ng-change ="updateEstimate(false)"
+         ng-model="swapOrder.toVal"
+         ng-class="Validator.isPositiveNumber(swapOrder.toVal) && swapOrder.toVal >= 0.01 ? 'is-valid' : 'is-invalid'" />
 
-    <div class="dropdown">
-      <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownTo = !dropdownTo">{{swapOrder.toCoin}}<span class="caret"></span></a>
-      <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownTo">
-        <li ng-repeat="coin in availableCoins track by $index" ng-show="coin != swapOrder.fromCoin">
+  <div class="dropdown">
+    <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownTo = !dropdownTo">{{swapOrder.toCoin}}<span class="caret"></span></a>
+    <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownTo">
+      <li ng-repeat="coin in availableCoins track by $index" ng-show="coin != swapOrder.fromCoin">
         <a ng-class="{true:'active'}[coin == swapOrder.toCoin]" ng-click="setOrderCoin(false, coin)"> {{coin}} </a>
-        </li>
-      </ul>
-    </div>
+      </li>
+    </ul>
+  </div>
 
-    <div class="col-xs-12 clearfix text-center"><a ng-click="setFinalPrices()" class="btn btn-info btn-lg"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 451.847 451.847"><path d="M225.923 354.706c-8.098 0-16.195-3.092-22.369-9.263L9.27 151.157c-12.359-12.359-12.359-32.397 0-44.751 12.354-12.354 32.388-12.354 44.748 0l171.905 171.915 171.906-171.909c12.359-12.354 32.391-12.354 44.744 0 12.365 12.354 12.365 32.392 0 44.751L248.292 345.449c-6.177 6.172-14.274 9.257-22.369 9.257z" fill="#FFF"/></svg> Let's do this! </a></div>
+  <div class="col-xs-12 clearfix text-center"><a ng-click="setFinalPrices()" class="btn btn-info btn-lg">
+    <span translate="SWAP_init_CTA"> Let's do this! </span>
+  </a></div>
+
+</article>
+<!-- / Swap Init Panel -->
+
+
+  <!-- Swap Start 2 -->
+<article class="swap-start" ng-show="showStage2">
+
+
+  <!-- Title -->
+  <section class="row">
+    <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
+    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank">
+      <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
+    </a></div>
   </section>
-  <!-- / swap Panel -->
+  <!-- Title -->
 
 
-  <!-- swap Start 1 -->
-  <section class="swap-start row" ng-show="showStage2">
-    <div class="clearfix">
-      <h5 class="col-xs-6 col-xs-offset-3">Your Information</h5>
-      <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></a></div>
+  <!-- Info Row -->
+  <section class="order-info-wrap row">
+    <div class="col-sm-4 order-info">
+      <h4> {{swapOrder.fromVal}} {{swapOrder.fromCoin}} </h4>
+      <p translate="SWAP_send_amt"> Amount to send </p>
     </div>
-    <div class="order-info-wrap clearfix">
-      <div class="col-sm-4 order-info"><h4>{{swapOrder.fromVal}} {{swapOrder.fromCoin}}</h4><p>Amount to send</p></div>
-      <div class="col-sm-4 order-info"><h4>{{swapOrder.toVal}} {{swapOrder.toCoin}}</h4><p>Amount to receive</p></div>
-      <div class="col-sm-4 order-info"><h4>{{swapOrder.swapRate}} {{swapOrder.swapPair}}</h4><p>Your rate</p></div>
+    <div class="col-sm-4 order-info">
+      <h4> {{swapOrder.toVal}} {{swapOrder.toCoin}} </h4>
+      <p translate="SWAP_rec_amt"> Amount to receive </p>
     </div>
-    <!-- Your Address -->
-    <div class="col-sm-12">
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-          <label> Your Receiving <strong>({{swapOrder.toCoin}})</strong> Address </label>
-          <input class="form-control" type="text" placeholder="{{swapOrder.toCoin=='BTC' ?  '1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6' : '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8'}}" ng-model="swapOrder.toAddress" ng-class="(swapOrder.toCoin!='BTC' && Validator.isValidAddress(swapOrder.toAddress)) || (swapOrder.toCoin=='BTC' && Validator.isValidBTCAddress(swapOrder.toAddress)) ? 'is-valid' : 'is-invalid'"/>
-        </div>
-        <div class="col-sm-2 col-xs-12 address-identicon-container">
-          <div ng-show="swapOrder.toCoin == 'ETH' || swapOrder.toCoin=='REP'" class="addressIdenticon" title="Address Indenticon" blockie-address="{{swapOrder.toAddress}}" watch-var="swapOrder.toAddress"></div>
-        </div>
-      </div>
-    </div>
-    <!-- /Your Address -->
-
-    <div class="text-center">
-      <a ng-click="openOrder()" class="btn btn-primary btn-lg"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 451.847 451.847"><path d="M225.923 354.706c-8.098 0-16.195-3.092-22.369-9.263L9.27 151.157c-12.359-12.359-12.359-32.397 0-44.751 12.354-12.354 32.388-12.354 44.748 0l171.905 171.915 171.906-171.909c12.359-12.354 32.391-12.354 44.744 0 12.365 12.354 12.365 32.392 0 44.751L248.292 345.449c-6.177 6.172-14.274 9.257-22.369 9.257z" fill="#FFF"/></svg> Start Transaction </a>
-    </div>
-  </section>
-  <!-- / swap Start 1 -->
-
-
-  <!-- Order Started Panel -->
-  <section class="swap-order row" ng-show="showStage3Btc">
-    <div class="clearfix">
-      <h5 class="col-xs-6 col-xs-offset-3 text-center">Your Order Information - Please Save</h5>
-      <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></a></div>
-    </div>
-    <!-- Order Info -->
-    <div class="order-info-wrap clearfix">
-      <div class="col-sm-3 order-info"><h3>{{orderResult.reference}}</h3><p>Your reference number</p></div>
-      <div class="col-sm-3 order-info"><h3>{{orderResult.timeRemaining}}</h3><p>Time remaining to send {{orderResult.input.amount}}&nbsp;{{orderResult.input.currency}}</p></div>
-      <div class="col-sm-3 order-info"><h3>{{orderResult.output.amount}} {{orderResult.output.currency}}</h3><p>Amount of {{orderResult.output.currency}} to receive</p></div>
-      <div class="col-sm-3 order-info"><h3>{{orderResult.input.amount/orderResult.output.amount  | number: 6}} {{orderResult.output.currency}}/{{orderResult.input.currency}}</h3><p>Your rate</p></div>
-    </div>
-    <!-- / Order Info -->
-    <!-- swap Progress -->
-    <div class="swap-progress">
-      <div class="sep"></div>
-      <div class="progress-item progress-true">
-        <div class="progress-circle"><i>1</i></div>
-        <p>Order Initiated</p>
-      </div>
-      <div class="progress-item progress-active">
-        <div class="progress-circle"><i>2</i></div>
-        <p>Waiting for your {{orderResult.input.currency}}</p>
-      </div>
-      <div class="progress-item">
-        <div class="progress-circle"><i>3</i></div>
-        <p>Payment Received</p>
-      </div>
-      <div class="progress-item">
-        <div class="progress-circle"><i>4</i></div>
-        <p>Sending you {{orderResult.output.currency}} Now</p>
-      </div>
-      <div class="progress-item">
-        <div class="progress-circle"><i>5</i></div>
-        <p>Order Complete</p>
-      </div>
-    </div>
-    <!-- / swap Progress -->
-    <div class="text-center">
-      <h1> Please send <strong>{{orderResult.input.amount}} {{orderResult.input.currency}}</strong> to <br /> <strong class="mono text-primary">{{orderResult.payment_address}}</strong></h1>
-      <label> Scan BTC Address </label>
-      <div class="qr-code" qr-code="{{orderResult.payment_address}}" watch-var="orderResult" ></div>
+    <div class="col-sm-4 order-info">
+      <h4> {{swapOrder.swapRate}} {{swapOrder.swapPair}} </h4>
+      <p translate="SWAP_your_rate"> Your rate </p>
     </div>
   </section>
-  <!-- / Order Started Panel -->
+  <!-- / Info Row -->
 
 
-  <!-- Order Started Panel - Sending ETH or REP -->
-  <section class="swap-order row" ng-show="showStage3Eth">
-    <div class="clearfix">
-      <h5 class="col-xs-6 col-xs-offset-3 text-center">Your Order Information - Please Save</h5>
-      <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank"><img class="pull-right" src="images/logo-bity.svg" width="100" height="38" /></a></div>
+  <!-- Your Address -->
+  <section class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+      <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>({{swapOrder.toCoin}})</strong></label>
+      <input class="form-control"
+              type="text"
+              placeholder="{{swapOrder.toCoin=='BTC' ? '1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6' : '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8'}}"
+              ng-model="swapOrder.toAddress"
+              ng-class="(swapOrder.toCoin!='BTC' && Validator.isValidAddress(swapOrder.toAddress)) || (swapOrder.toCoin=='BTC' && Validator.isValidBTCAddress(swapOrder.toAddress)) ? 'is-valid' : 'is-invalid'"/>
     </div>
-    <div class="order-info-wrap clearfix">
-      <div class="col-sm-3 order-info"><h3>{{orderResult.reference}}</h3><p>Your reference number</p></div>
-      <div class="col-sm-3 order-info"><h3>{{orderResult.timeRemaining}}</h3><p>Time remaining</p></div>
-      <div class="col-sm-3 order-info"><h3>{{orderResult.output.amount}} {{orderResult.output.currency}}</h3><p>Amount of {{orderResult.output.currency}} to receive</p></div>
-      <div class="col-sm-3 order-info"><h3>{{orderResult.input.amount/orderResult.output.amount  | number: 6}} {{orderResult.output.currency}}/{{orderResult.input.currency}}</h3><p>Your rate</p></div>
+    <div class="col-sm-2 col-xs-12 address-identicon-container">
+      <div ng-show="swapOrder.toCoin == 'ETH' || swapOrder.toCoin=='REP'" class="addressIdenticon" title="Address Indenticon" blockie-address="{{swapOrder.toAddress}}" watch-var="swapOrder.toAddress"></div>
     </div>
-    <!-- swap Progress -->
-    <div class="swap-progress">
-      <div class="sep"></div>
-      <div class="progress-item progress-true">
-        <div class="progress-circle"><i>1</i></div>
-        <p>Order Initiated</p>
-      </div>
-      <div class="progress-item progress-active">
-        <div class="progress-circle"><i>2</i></div>
-        <p>Waiting for your {{orderResult.input.currency}}</p>
-      </div>
-      <div class="progress-item">
-        <div class="progress-circle"><i>3</i></div>
-        <p>Payment Received</p>
-      </div>
-      <div class="progress-item">
-        <div class="progress-circle"><i>4</i></div>
-        <p>Sending you {{orderResult.output.currency}} Now</p>
-      </div>
-      <div class="progress-item">
-        <div class="progress-circle"><i>5</i></div>
-        <p>Order Complete</p>
-      </div>
+  </section>
+  <!-- /Your Address -->
+
+
+  <!-- CTA -->
+  <section class="row text-center">
+    <a ng-click="openOrder()" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+  </section>
+  <!-- / CTA -->
+
+
+</article>
+<!-- / Swap Start 2 -->
+
+
+  <article class="swap-order" ng-show="showStage3Btc || showStage3Eth">
+
+
+  <!-- Title -->
+  <section class="row">
+    <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
+    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank">
+      <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
+    </a></div>
+  </section>
+  <!-- Title -->
+
+
+  <!-- Order Info -->
+  <section class="row order-info-wrap">
+    <div class="col-sm-3 order-info">
+      <h4>{{orderResult.reference}}</h4>
+      <p translate="SWAP_ref_num">Your reference number</p>
     </div>
-    <!-- / swap Progress -->
-    <div class="text-center">
-      <h1> Please send <strong>{{orderResult.input.amount}} {{orderResult.input.currency}}</strong> to <br /> <strong class="mono text-primary">{{orderResult.payment_address}}</strong></h1>
+    <div class="col-sm-3 order-info">
+      <h4>{{orderResult.timeRemaining}}</h4>
+      <p translate="SWAP_time">Time remaining to send {{orderResult.input.amount}}&nbsp;{{orderResult.input.currency}}</p>
     </div>
-    <!-- Unlock Wallet Drtv -->
-    <article class="collapse-container">
+    <div class="col-sm-3 order-info">
+      <h4>{{orderResult.output.amount}} {{orderResult.output.currency}}</h4>
+      <p translate="SWAP_rec_amt">Amount to receive</p>
+    </div>
+    <div class="col-sm-3 order-info">
+      <h3>{{orderResult.input.amount/orderResult.output.amount  | number: 6}} {{orderResult.output.currency}}/{{orderResult.input.currency}}</h3>
+      <p translate="SWAP_your_rate">Your rate</p>
+    </div>
+  </section>
+  <!-- / Order Info -->
+
+
+  <!-- Swap Progress -->
+  <section class="row swap-progress">
+    <div class="sep"></div>
+    <div class="progress-item progress-true">
+      <div class="progress-circle"><i>1</i></div><p translate="SWAP_progress_1">Order Initiated</p>
+    </div>
+    <div class="progress-item progress-active">
+      <div class="progress-circle"><i>2</i></div><p translate="SWAP_progress_2">Waiting for your {{orderResult.input.currency}}...</p>
+    </div>
+    <div class="progress-item">
+      <div class="progress-circle"><i>3</i></div><p translate="SWAP_progress_3">{{orderResult.input.currency}} Received!</p>
+    </div>
+    <div class="progress-item">
+      <div class="progress-circle"><i>4</i></div><p translate="SWAP_progress_4">Sending your {{orderResult.output.currency}}</p>
+    </div>
+    <div class="progress-item">
+      <div class="progress-circle"><i>5</i></div><p translate="SWAP_progress_5">Order Complete</p>
+    </div>
+  </section>
+  <!-- / Swap Progress -->
+
+
+  <section class="row text-center">
+    <!-- Swap CTA -->
+    <h1>
+      <span translate="SWAP_order_CTA">      Please send                                                 </span>
+      <strong>                               {{orderResult.input.amount}} {{orderResult.input.currency}} </strong>
+      <span translate="SENDModal_Content_2"> to address                                                  </span><br />
+      <strong class="mono text-primary">     {{orderResult.payment_address}}                             </strong>
+    </h1>
+    <!-- / Swap CTA -->
+
+    <!-- Swap CTA ETH -->
+    <section class="collapse-container" ng-show="showStage3Eth">
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-        <h5> Unlock your wallet to send ETH or Tokens directly from this page. </h5>
+        <h5 traslate="SWAP_unlock"> Unlock your wallet to send ETH or Tokens directly from this page. </h5>
       </div>
       <div class="col-xs-12 clearfix" ng-show="!wd">
         
           <wallet-decrypt-drtv></wallet-decrypt-drtv>         
       </div>
-    </article>
-    <!-- / Unlock Wallet Drtv -->
-    <!-- Send Transaction Panel -->
-    <article class="clearfix" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+    </section>
+    <section class="clearfix" ng-show="wallet!=null" ng-controller='sendTxCtrl' ng-show="showStage3Eth">
       
         <!-- Sidebar -->
 <section class="col-sm-4">
@@ -968,10 +1014,401 @@
 </section>
 <!--/ Send Modal-->
     
-    </article>
-    <!-- / Send Transaction Panel -->
+    </section>
+    <!-- / Swap CTA ETH -->
+
+    <!-- Swap CTA BTC -->
+    <section class="clearfix" ng-show="showStage3Btc">
+      <label translate="x_Address"> Your Address </label>
+      <div class="qr-code" qr-code="{{orderResult.payment_address}}" watch-var="orderResult" ></div>
+    </section>
+    <!-- / Swap CTA BTC  -->
   </section>
-  <!-- / Order Started Panel -->
+
+
+</article>
+
+
+
+  <!-- Swap Rates Panel -->
+<article class="swap-rates" ng-show="showStage1">
+
+  <!-- Title -->
+  <section class="row">
+    <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_rates"> Current Rates </h5>
+    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank">
+      <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
+    </a></div>
+  </section>
+  <!-- Title -->
+
+  <!-- Colored Columns -->
+  <section class="row">
+    <div class="col-sm-6 order-info">
+      <p class="mono">
+        <input class="form-control input-sm" ng-model="priceTicker.ETHBTC"/>
+        <span>ETH = {{bity.curRate.ETHBTC*priceTicker.ETHBTC | number: 6}} BTC</span>
+      </p>
+      <p class="mono">
+        <input class="form-control input-sm" ng-model="priceTicker.ETHREP"/>
+        <span>ETH = {{bity.curRate.ETHREP*priceTicker.ETHREP | number: 6}} REP</span>
+      </p>
+    </div>
+    <div class="col-sm-6 order-info">
+      <p class="mono">
+        <input class="form-control input-sm" ng-model="priceTicker.BTCETH"/>
+        <span>BTC = {{bity.curRate.BTCETH*priceTicker.BTCETH | number: 6}} ETH</span>
+      </p>
+      <p class="mono">
+        <input class="form-control input-sm" ng-model="priceTicker.BTCREP"/>
+        <span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span>
+      </p>
+    </div>
+  </section>
+  <!-- / Colored Columns -->
+
+</article>
+<!-- / Swap Rates Panel -->
+
+
+
+<!-- Swap Init Panel -->
+<article class="swap-panel" ng-show="showStage1">
+
+  <h1 translate="SWAP_init_1"> I want to swap my </h1>
+
+  <input class="form-control"
+         type="text"
+         placeholder="{{ 'SEND_amount_short' | translate }}"
+         ng-change ="updateEstimate(true)"
+         ng-model="swapOrder.fromVal"
+         ng-class="Validator.isPositiveNumber(swapOrder.fromVal)  && swapOrder.fromVal >= 0.01 ? 'is-valid' : 'is-invalid'" />
+
+  <span class="dropdown">
+    <a class="btn btn-default dropdown-toggle" ng-click="dropdownFrom = !dropdownFrom">{{swapOrder.fromCoin}}<span class="caret"></span></a>
+    <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownFrom">
+      <li ng-repeat="coin in availableCoins track by $index" ng-show="coin != 'REP'">
+        <a ng-class="{true:'active'}[coin == swapOrder.fromCoin]" ng-click="setOrderCoin(true, coin)"> {{coin}} </a>
+      </li>
+    </ul>
+  </span>
+
+  <h1 translate="SWAP_init_2"> for </h1>
+
+  <input class="form-control"
+         type="text"
+         placeholder="{{ 'SEND_amount_short' | translate }}"
+         ng-change ="updateEstimate(false)"
+         ng-model="swapOrder.toVal"
+         ng-class="Validator.isPositiveNumber(swapOrder.toVal) && swapOrder.toVal >= 0.01 ? 'is-valid' : 'is-invalid'" />
+
+  <div class="dropdown">
+    <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownTo = !dropdownTo">{{swapOrder.toCoin}}<span class="caret"></span></a>
+    <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownTo">
+      <li ng-repeat="coin in availableCoins track by $index" ng-show="coin != swapOrder.fromCoin">
+        <a ng-class="{true:'active'}[coin == swapOrder.toCoin]" ng-click="setOrderCoin(false, coin)"> {{coin}} </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-xs-12 clearfix text-center"><a ng-click="setFinalPrices()" class="btn btn-info btn-lg">
+    <span translate="SWAP_init_CTA"> Let's do this! </span>
+  </a></div>
+
+</article>
+<!-- / Swap Init Panel -->
+
+
+  <!-- Swap Start 2 -->
+<article class="swap-start" ng-show="showStage2">
+
+
+  <!-- Title -->
+  <section class="row">
+    <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
+    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank">
+      <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
+    </a></div>
+  </section>
+  <!-- Title -->
+
+
+  <!-- Info Row -->
+  <section class="order-info-wrap row">
+    <div class="col-sm-4 order-info">
+      <h4> {{swapOrder.fromVal}} {{swapOrder.fromCoin}} </h4>
+      <p translate="SWAP_send_amt"> Amount to send </p>
+    </div>
+    <div class="col-sm-4 order-info">
+      <h4> {{swapOrder.toVal}} {{swapOrder.toCoin}} </h4>
+      <p translate="SWAP_rec_amt"> Amount to receive </p>
+    </div>
+    <div class="col-sm-4 order-info">
+      <h4> {{swapOrder.swapRate}} {{swapOrder.swapPair}} </h4>
+      <p translate="SWAP_your_rate"> Your rate </p>
+    </div>
+  </section>
+  <!-- / Info Row -->
+
+
+  <!-- Your Address -->
+  <section class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+      <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>({{swapOrder.toCoin}})</strong></label>
+      <input class="form-control"
+              type="text"
+              placeholder="{{swapOrder.toCoin=='BTC' ? '1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6' : '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8'}}"
+              ng-model="swapOrder.toAddress"
+              ng-class="(swapOrder.toCoin!='BTC' && Validator.isValidAddress(swapOrder.toAddress)) || (swapOrder.toCoin=='BTC' && Validator.isValidBTCAddress(swapOrder.toAddress)) ? 'is-valid' : 'is-invalid'"/>
+    </div>
+    <div class="col-sm-2 col-xs-12 address-identicon-container">
+      <div ng-show="swapOrder.toCoin == 'ETH' || swapOrder.toCoin=='REP'" class="addressIdenticon" title="Address Indenticon" blockie-address="{{swapOrder.toAddress}}" watch-var="swapOrder.toAddress"></div>
+    </div>
+  </section>
+  <!-- /Your Address -->
+
+
+  <!-- CTA -->
+  <section class="row text-center">
+    <a ng-click="openOrder()" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+  </section>
+  <!-- / CTA -->
+
+
+</article>
+<!-- / Swap Start 2 -->
+
+
+  <article class="swap-order" ng-show="showStage3Btc || showStage3Eth">
+
+
+  <!-- Title -->
+  <section class="row">
+    <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_information">Your Information</h5>
+    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank">
+      <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
+    </a></div>
+  </section>
+  <!-- Title -->
+
+
+  <!-- Order Info -->
+  <section class="row order-info-wrap">
+    <div class="col-sm-3 order-info">
+      <h4>{{orderResult.reference}}</h4>
+      <p translate="SWAP_ref_num">Your reference number</p>
+    </div>
+    <div class="col-sm-3 order-info">
+      <h4>{{orderResult.timeRemaining}}</h4>
+      <p translate="SWAP_time">Time remaining to send {{orderResult.input.amount}}&nbsp;{{orderResult.input.currency}}</p>
+    </div>
+    <div class="col-sm-3 order-info">
+      <h4>{{orderResult.output.amount}} {{orderResult.output.currency}}</h4>
+      <p translate="SWAP_rec_amt">Amount to receive</p>
+    </div>
+    <div class="col-sm-3 order-info">
+      <h3>{{orderResult.input.amount/orderResult.output.amount  | number: 6}} {{orderResult.output.currency}}/{{orderResult.input.currency}}</h3>
+      <p translate="SWAP_your_rate">Your rate</p>
+    </div>
+  </section>
+  <!-- / Order Info -->
+
+
+  <!-- Swap Progress -->
+  <section class="row swap-progress">
+    <div class="sep"></div>
+    <div class="progress-item progress-true">
+      <div class="progress-circle"><i>1</i></div><p translate="SWAP_progress_1">Order Initiated</p>
+    </div>
+    <div class="progress-item progress-active">
+      <div class="progress-circle"><i>2</i></div><p translate="SWAP_progress_2">Waiting for your {{orderResult.input.currency}}...</p>
+    </div>
+    <div class="progress-item">
+      <div class="progress-circle"><i>3</i></div><p translate="SWAP_progress_3">{{orderResult.input.currency}} Received!</p>
+    </div>
+    <div class="progress-item">
+      <div class="progress-circle"><i>4</i></div><p translate="SWAP_progress_4">Sending your {{orderResult.output.currency}}</p>
+    </div>
+    <div class="progress-item">
+      <div class="progress-circle"><i>5</i></div><p translate="SWAP_progress_5">Order Complete</p>
+    </div>
+  </section>
+  <!-- / Swap Progress -->
+
+
+  <section class="row text-center">
+    <!-- Swap CTA -->
+    <h1>
+      <span translate="SWAP_order_CTA">      Please send                                                 </span>
+      <strong>                               {{orderResult.input.amount}} {{orderResult.input.currency}} </strong>
+      <span translate="SENDModal_Content_2"> to address                                                  </span><br />
+      <strong class="mono text-primary">     {{orderResult.payment_address}}                             </strong>
+    </h1>
+    <!-- / Swap CTA -->
+
+    <!-- Swap CTA ETH -->
+    <section class="collapse-container" ng-show="showStage3Eth">
+      <div class="text-center" ng-click="wd = !wd">
+        <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
+        <h5 traslate="SWAP_unlock"> Unlock your wallet to send ETH or Tokens directly from this page. </h5>
+      </div>
+      <div class="col-xs-12 clearfix" ng-show="!wd">
+          <cx-wallet-decrypt-drtv></cx-wallet-decrypt-drtv>   
+        
+      </div>
+    </section>
+    <section class="clearfix" ng-show="wallet!=null" ng-controller='sendTxCtrl' ng-show="showStage3Eth">
+        <!-- Sidebar -->
+<section class="col-sm-4">
+  <wallet-balance-drtv></wallet-balance-drtv>
+  <hr />
+  <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
+  <ul class="account-info" ng-show="ajaxReq.type != 'CUS'">
+    <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
+  </ul>
+  <div class="well">
+    <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
+    <a class="btn btn-primary btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
+    <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
+  </div>
+</section>
+<!-- / Sidebar -->
+
+
+
+<!-- Content -->
+<section class="col-sm-8">
+
+  <!-- To Address -->
+  <div class="row form-group">
+    <h4 class="col-xs-12" translate="SEND_trans">Send Transaction</h4>
+    <div class="col-xs-10">
+      <label translate="SEND_addr"> To Address: </label>
+      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
+    </div>
+    <div class="col-xs-2 address-identicon-container">
+      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+    </div>
+  </div>
+  <!-- / To Address -->
+
+  <!-- Amount to Send -->
+  <label translate="SEND_amount">Amount to Send:</label>
+  <div class="input-group">
+    <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+    <div class="input-group-btn">
+      <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
+        {{unitReadable}}<span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
+        <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
+        <li ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+          <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode('token', $index, token.getSymbol())"> {{token.getSymbol()}} </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <a ng-click="transferAllBalance()"><p class="strong" translate="SEND_TransferTotal">Send Entire Balance</p></a>
+  <!-- / Amount to Send -->
+
+  <!-- Gas -->
+  <label translate="TRANS_gas"> Gas: </label>
+  <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+  <!-- / Gas -->
+
+  <!-- Advanced Option Panel -->
+  <div ng-show="tx.sendMode=='ether'">
+    <a ng-click="showAdvance=!showAdvance">
+      <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
+    </a>
+    <section ng-show="showAdvance">
+      <div class="form-group">
+        <label translate="TRANS_data"> Data: </label>
+        <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+      </div>
+    </section>
+  </div>
+  <!-- / Advanced Option Panel -->
+
+  <div class="form-group ">
+    <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
+  </div>
+  <div class="form-group" ng-show="showRaw">
+    <label translate="SEND_raw"> Raw Transaction </label>
+    <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
+    <label translate="SEND_signed"> Signed Transaction </label>
+    <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
+  </div>
+
+  <div class="form-group" ng-show="showRaw">
+    <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
+  </div>
+  <div class="alert alert-warning" ng-show="tx.sendMode=='token'">
+    <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
+  </div>
+
+</section>
+<!-- / Content -->
+
+
+
+<!-- Send Modal -->
+<section class="modal fade" id="sendTransaction" tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+        <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
+      </div>
+      <div class="modal-body larger">
+        <table class="table text-center"><tbody><tr>
+          <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div></td>
+          <td ng-show="tx.sendMode=='ether'" class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
+          <td ng-show="tx.sendMode!=='ether'" class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
+          <td ng-show="tx.sendMode=='ether'">
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+          </td>
+          <td ng-show="tx.sendMode!=='ether'">
+            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
+          </td>
+        </tr></tbody></table>
+        <p>
+          <span translate="SENDModal_Content_1">You are about to send</span>
+          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
+          <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
+          <br />
+          <span translate="SENDModal_Content_2">to address</span>
+          <strong ng-show="tx.sendMode=='ether'" class="mono"> {{tx.to}}. </strong>
+          <strong ng-show="tx.sendMode!=='ether'" class="mono"> {{tokenTx.to}} </strong>
+        </p>
+        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
+        <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
+        <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Send Modal-->
+   
+      
+    </section>
+    <!-- / Swap CTA ETH -->
+
+    <!-- Swap CTA BTC -->
+    <section class="clearfix" ng-show="showStage3Btc">
+      <label translate="x_Address"> Your Address </label>
+      <div class="qr-code" qr-code="{{orderResult.payment_address}}" watch-var="orderResult" ></div>
+    </section>
+    <!-- / Swap CTA BTC  -->
+  </section>
+
+
+</article>
+
 
 
 </main>
@@ -1178,7 +1615,7 @@
 
 
     <!-- Send Transaction Page -->
-<article class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl'  ng-cloak>
+<article class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak>
 
   <h1>
     <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
@@ -1191,11 +1628,11 @@
 
     <!-- Input address + JSON Interface -->
     <div class="col-sm-6">
-      <h4> Contract Address</h4>
+      <h4 translate="CONTRACT_Title"> Contract Address</h4>
       <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(contract.address) ? 'is-valid' : 'is-invalid'" ng-model="contract.address"/>
     </div>
     <div class="col-sm-6">
-      <h4><small> or </small> Select Existing Contract </h4>
+      <small> or </small><h4 translate="CONTRACT_Title_2"> Select Existing Contract </h4>
       <div class="dropdown">
         <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
           {{selectedAbi.name}} <small class="mono">{{selectedAbi.address}}</small><span class="caret"></span>
@@ -1206,9 +1643,9 @@
       </div>
     </div>
     <div class="col-xs-12 clearfix">
-      <h4> ABI / JSON Interface </h4>
+      <h4 translate="CONTRACT_Json"> ABI / JSON Interface </h4>
       <textarea class="form-control" rows="6" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
-      <button class="btn btn-primary" ng-click="initContract()"> ACCESS </button>
+      <button class="btn btn-primary" ng-click="initContract()" translate="x_Access"> ACCESS </button>
 
     </div>
     <!-- / Input address + JSON Interface -->
@@ -1220,9 +1657,9 @@
       <!-- STEP READ/WRITE -->
       <div class="col-xs-12 clearfix">
 
-        <!-- Contract Info -->
+        <!-- Contract Info CONTRACT_Interact_CTA -->
         <span class="form-group">
-          <h4>Read / Write Contract </h4>
+          <h4 translate="CONTRACT_Interact_Title">Read / Write Contract </h4>
           <div class="btn-group">
             <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
             {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}<span class="caret"></span></a>
@@ -1386,7 +1823,7 @@
     <div class="col-xs-12">
       <!-- Data -->
       <div class="form-group">
-        <h4> Byte Code: </h4>
+        <h4 translate="CONTRACT_ByteCode"> Byte Code: </h4>
         <textarea class="form-control" ng-model="tx.data" rows="8" ng-class="Validator.isValidHex(tx.data)&&tx.data!='' ? 'is-valid' : 'is-invalid'"></textarea>
       </div>
 
@@ -1462,8 +1899,8 @@
 
 <article ng-show="contract.selectedFunc!=null">
   <span class="form-group" class="form-group">
-    <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead">READ</button>
-    <button class="btn btn-primary" ng-show="!contract.functions[contract.selectedFunc.index].constant" ng-click="generateContractTx()">WRITE</button>
+    <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead"> <span translate="CONTRACT_Read"> READ</span></button>
+    <button class="btn btn-primary" ng-show="!contract.functions[contract.selectedFunc.index].constant" ng-click="generateContractTx()"> <span translate="CONTRACT_Read"> WRITE</span></button>
   </span>
   </br>
 
@@ -2018,7 +2455,7 @@
     </div>
     <div class="col-md-6 col-sm-12 form-group">
       <h4 translate="BULK_Label_2">Generate Wallets</h4>
-      <a class="btn btn-primary btn-block btnAction" ng-click="genWallets()" translate="BULK_Label_2">Generate Wallets</a>
+      <a class="btn btn-primary btn-block" ng-click="genWallets()" translate="BULK_Label_2">Generate Wallets</a>
     </div>
   </section>
   <!-- / Top - Bulk Generate -->
@@ -2124,12 +2561,10 @@
   </div>
 
 
-  <!-- Add classes:
-    alert-success alert-danger alert-warning -->
-  <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
+  <div class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
     <div class="container" ng-bind-html="notifier.message"></div>
     <i class="icon-close" ng-click="notifier.close()"></i>
-  </article>
+  </div>
 
 </section>
 

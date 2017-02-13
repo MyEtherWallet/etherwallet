@@ -1,3 +1,4 @@
+
 @@include( '../includes/header.tpl', { "site": "mew" } )
 
 <br />
@@ -12,7 +13,7 @@
 
     @@include( '../includes/sendTransaction.tpl',    { "site": "mew" } )
 
-    @@include( '../includes/swap.tpl',           { "site": "mew" } )
+    @@include( '../includes/swap.tpl',               { "site": "mew" } )
 
     @@include( '../includes/offlineTransaction.tpl', { "site": "mew" } )
 
@@ -27,12 +28,10 @@
   </div>
 
 
-  <!-- Add classes:
-    alert-success alert-danger alert-warning -->
-  <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
+  <div class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
     <div class="container" ng-bind-html="notifier.message"></div>
     <i class="icon-close" ng-click="notifier.close()"></i>
-  </article>
+  </div>
 
 </section>
 

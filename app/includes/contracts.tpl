@@ -1,5 +1,5 @@
 <!-- Send Transaction Page -->
-<article class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl'  ng-cloak>
+<article class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak>
 
   <h1>
     <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
@@ -12,11 +12,11 @@
 
     <!-- Input address + JSON Interface -->
     <div class="col-sm-6">
-      <h4> Contract Address</h4>
+      <h4 translate="CONTRACT_Title"> Contract Address</h4>
       <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(contract.address) ? 'is-valid' : 'is-invalid'" ng-model="contract.address"/>
     </div>
     <div class="col-sm-6">
-      <h4><small> or </small> Select Existing Contract </h4>
+      <small> or </small><h4 translate="CONTRACT_Title_2"> Select Existing Contract </h4>
       <div class="dropdown">
         <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
           {{selectedAbi.name}} <small class="mono">{{selectedAbi.address}}</small><span class="caret"></span>
@@ -27,9 +27,9 @@
       </div>
     </div>
     <div class="col-xs-12 clearfix">
-      <h4> ABI / JSON Interface </h4>
+      <h4 translate="CONTRACT_Json"> ABI / JSON Interface </h4>
       <textarea class="form-control" rows="6" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
-      <button class="btn btn-primary" ng-click="initContract()"> ACCESS </button>
+      <button class="btn btn-primary" ng-click="initContract()" translate="x_Access"> ACCESS </button>
 
     </div>
     <!-- / Input address + JSON Interface -->
@@ -41,9 +41,9 @@
       <!-- STEP READ/WRITE -->
       <div class="col-xs-12 clearfix">
 
-        <!-- Contract Info -->
+        <!-- Contract Info CONTRACT_Interact_CTA -->
         <span class="form-group">
-          <h4>Read / Write Contract </h4>
+          <h4 translate="CONTRACT_Interact_Title">Read / Write Contract </h4>
           <div class="btn-group">
             <a class="btn btn-default" ng-click="dropdownContracts = !dropdownContracts">
             {{contract.selectedFunc==null ? "Select a function" : contract.selectedFunc.name}}<span class="caret"></span></a>
@@ -207,7 +207,7 @@
     <div class="col-xs-12">
       <!-- Data -->
       <div class="form-group">
-        <h4> Byte Code: </h4>
+        <h4 translate="CONTRACT_ByteCode"> Byte Code: </h4>
         <textarea class="form-control" ng-model="tx.data" rows="8" ng-class="Validator.isValidHex(tx.data)&&tx.data!='' ? 'is-valid' : 'is-invalid'"></textarea>
       </div>
 
@@ -283,8 +283,8 @@
 
 <article ng-show="contract.selectedFunc!=null">
   <span class="form-group" class="form-group">
-    <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead">READ</button>
-    <button class="btn btn-primary" ng-show="!contract.functions[contract.selectedFunc.index].constant" ng-click="generateContractTx()">WRITE</button>
+    <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead"> <span translate="CONTRACT_Read"> READ</span></button>
+    <button class="btn btn-primary" ng-show="!contract.functions[contract.selectedFunc.index].constant" ng-click="generateContractTx()"> <span translate="CONTRACT_Read"> WRITE</span></button>
   </span>
   </br>
 

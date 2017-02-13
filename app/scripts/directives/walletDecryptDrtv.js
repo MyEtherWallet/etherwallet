@@ -76,7 +76,7 @@ var walletDecryptDrtv = function() {
     <!-- \/if selected type ledger-->\r\n \
     <!-- if selected type trezor-->\r\n \
     <div id=\"selectedTypeTrezor\" ng-if=\"walletType==\'trezor\'\">\r\n \
-      <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"walletType==\'trezor\'\" ng-click=\"scanTrezor()\" translate=\"ADD_Trezor_scan\">SCAN<\/a><\/div>\r\n \
+      <div class=\"form-group\"><a class=\"btn btn-primary btn-block\" ng-show=\"walletType==\'trezor\'\" ng-click=\"scanTrezor()\" translate=\"ADD_Trezor_scan\">SCAN<\/a><\/div>\r\n \
       <p ng-show=\"trezorError\" class=\"text-center text-danger\"><strong>{{trezorErrorString}}<\/strong><\/p>\r\n \
     <\/div>\r\n \
     <!-- \/if selected type ledger-->\r\n \
@@ -91,9 +91,9 @@ var walletDecryptDrtv = function() {
   <!-- Column 3 -The Unlock Button -->\r\n \
   <section class=\"col-md-4 col-sm-6\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt||walletType==\'ledger\'||walletType==\'trezor\'||showAOnly||showParityDecrypt\">\r\n \
     <h4 id=\"uploadbtntxt-wallet\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt\" translate=\"ADD_Label_6\"> Access Your Wallet:<\/h4>\r\n \
-    <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt||showParityDecrypt\" ng-click=\"decryptWallet()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
-    <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"showAOnly\" ng-click=\"decryptAddressOnly()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
-    <div class=\"form-group\"><a class=\"btn btn-primary btn-block btnAction\" ng-show=\"walletType==\'ledger\'\" ng-click=\"scanLedger()\" translate=\"ADD_Ledger_scan\">SCAN<\/a><\/div>\r\n \
+    <div class=\"form-group\"><a class=\"btn btn-primary btn-block\" ng-show=\"showFDecrypt||showPDecrypt||showMDecrypt||showParityDecrypt\" ng-click=\"decryptWallet()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
+    <div class=\"form-group\"><a class=\"btn btn-primary btn-block\" ng-show=\"showAOnly\" ng-click=\"decryptAddressOnly()\" translate=\"ADD_Label_6_short\">UNLOCK<\/a><\/div>\r\n \
+    <div class=\"form-group\"><a class=\"btn btn-primary btn-block\" ng-show=\"walletType==\'ledger\'\" ng-click=\"scanLedger()\" translate=\"ADD_Ledger_scan\">SCAN<\/a><\/div>\r\n \
   <\/section>\r\n \
   <!-- \/ Column 3 -The Unlock Button -->\r\n \
   <!-- MODAL -->\r\n \

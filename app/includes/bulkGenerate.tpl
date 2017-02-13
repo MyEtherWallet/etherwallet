@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-6 col-sm-12 form-group">
       <h4 translate="BULK_Label_2">Generate Wallets</h4>
-      <a class="btn btn-primary btn-block btnAction" ng-click="genWallets()" translate="BULK_Label_2">Generate Wallets</a>
+      <a class="btn btn-primary btn-block" ng-click="genWallets()" translate="BULK_Label_2">Generate Wallets</a>
     </div>
   </section>
   <!-- / Top - Bulk Generate -->
