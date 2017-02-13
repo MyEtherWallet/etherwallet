@@ -4,10 +4,9 @@ bity.SERVERURL = "https://bity.myetherapi.com";
 bity.decimals = 6;
 bity.prototype.refreshRates = function(callback) {
     var _this = this;
-    bity.get('/rates', function(data) {
-        if (data.error) throw data.msg;
+    ajaxReq.getRates(function(data) {
         _this.curRate = {};
-        data.data.forEach(function(pair) {
+        data.forEach(function(pair) {
             _this.curRate[pair.pair] = parseFloat(pair.rate_we_buy);
             _this.curRate[pair.pair.substring(3) + pair.pair.substring(0, 3)] = parseFloat((1.0 / pair.rate_we_sell).toFixed(bity.decimals));
         });
