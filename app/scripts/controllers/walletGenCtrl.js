@@ -18,7 +18,7 @@ var walletGenCtrl = function($scope) {
         kdf: globalFuncs.kdf,
         n: globalFuncs.scrypt.n
       }));
-      $scope.notifier.warning(globalFuncs.errorMsgs[28] + e);
+      $scope.notifier.warning(globalFuncs.errorMsgs[28]);
       $scope.encFileName = $scope.wallet.getV3Filename();
       if (parent != null)
         parent.postMessage(JSON.stringify({ address: $scope.wallet.getAddressString(), checksumAddress: $scope.wallet.getChecksumAddressString() }), "*");

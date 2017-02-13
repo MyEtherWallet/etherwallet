@@ -1837,8 +1837,8 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
     };
 
     $scope.setErrorMsgLanguage = function () {
-        for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + (i + 1), 'errorMsgs', i);
-        for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i + 1), 'successMsgs', i);
+        for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + i, 'errorMsgs', i);
+        for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + i, 'successMsgs', i);
     };
 
     $scope.setGethErrMsgLanguage = function () {
@@ -2037,7 +2037,7 @@ var walletGenCtrl = function ($scope) {
         kdf: globalFuncs.kdf,
         n: globalFuncs.scrypt.n
       }));
-      $scope.notifier.warning(globalFuncs.errorMsgs[28] + e);
+      $scope.notifier.warning(globalFuncs.errorMsgs[28]);
       $scope.encFileName = $scope.wallet.getV3Filename();
       if (parent != null) parent.postMessage(JSON.stringify({ address: $scope.wallet.getAddressString(), checksumAddress: $scope.wallet.getChecksumAddressString() }), "*");
       $scope.isDone = true;
