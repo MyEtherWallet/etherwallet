@@ -1,40 +1,30 @@
-<section class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.addWallet.id" ng-controller='addWalletCtrl'  ng-cloak>
+<main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.addWallet.id" ng-controller='addWalletCtrl'  ng-cloak>
   <h1 translate="NAV_AddWallet"> Add Wallet </h1>
 
   <section class="row" id="walletselection">
 
     <article class="col-md-4 col-sm-6">
       <h4 translate="ADD_Label_1"> What would you like to do? </h4>
-      <div class="radio">
-        <label>
+        <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="gennewwallet">
           <span translate="ADD_Radio_1">Generate New Wallet</span>
         </label>
-      </div>
-      <div class="radio">
-        <label>
+        <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="fileupload">
           <span translate="ADD_Radio_2">Select Your Wallet File (Keystore/JSON)</span>
         </label>
-      </div>
-      <div class="radio">
-        <label>
+        <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="pasteprivkey">
           <span translate="ADD_Radio_3">Paste/Type Your Private Key</span>
         </label>
-      </div>
-      <div class="radio">
-        <label>
+        <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="pastemnemonic">
           <span translate="ADD_Radio_5">Paste/Type Your Mnemonic</span>
         </label>
-      </div>
-      <div class="radio">
-        <label>
+        <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="watchonlyaccount">
           <span translate="ADD_Radio_4">Add an Account to Watch</span>
         </label>
-      </div>
     </article>
 
     <article class="col-md-4 col-sm-6">
@@ -54,7 +44,7 @@
             <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
           </div>
         </div>
-        
+
       </div>
       <!-- / Generate New Wallet -->
 
@@ -64,7 +54,7 @@
         <div class="form-group">
           <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector"/>
           <a class="file-input btn btn-block btn-default btn-file marg-v-sm" ng-click="openFileDialog()" translate="ADD_Radio_2_short">SELECT WALLET FILE...</a>
-          
+
         </div>
         <div class="form-group" ng-show="requireFPass">
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
@@ -122,7 +112,7 @@
           <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="addAccount.address" ng-change="watchOnlyChange()" ng-keyup="$event.keyCode == 13 && addWatchOnly()"/>
         </div>
       </div>
-      
+
     </article>
 
     <article class="col-md-4 col-sm-6" >
@@ -204,7 +194,7 @@
       <div class="form-group" ng-show="showBtnAddWallet">
         <a class="btn btn-info btn-block" ng-click="importWalletToStorage()" translate="NAV_AddWallet">ADD WALLET </a>
       </div>
-      
+
     </div>
   </article>
     <div class="modal fade" tabindex="-1" role="dialog" id="mnemonicModel">
@@ -240,5 +230,6 @@
           </div>
         </div>
       </div>
-</section>
+
+</main>
 

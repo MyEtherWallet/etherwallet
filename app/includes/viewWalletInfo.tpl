@@ -104,8 +104,8 @@
 
       <!-- Sign Message -->
       <div ng-show="wallet.type=='default'">
-        @@if (site === 'cx' )  {  @@include( './signMsg.tpl', { "site": "mew" } )   }
-        @@if (site === 'mew' ) {  @@include( './signMsg.tpl', { "site": "cx" } )    }
+        @@if (site === 'mew' ) { @@include( './signMsg.tpl', { "site": "mew" } ) }
+        @@if (site === 'cx'  ) { @@include( './signMsg.tpl', { "site": "cx"  } ) }
       </div>
 
     </section>
