@@ -109,7 +109,34 @@ bity.prototype.refreshRates = function (callback) {
 };
 bity.prototype.openOrder = function (orderInfo, callback) {
     var _this = this;
-    bity.post('/order', orderInfo, callback);
+    this.requireLogin(function () {
+        orderInfo.token = _this.token;
+        bity.post('/order', orderInfo, callback);
+    });
+};
+bity.prototype.getStatus = function (orderInfo, callback) {
+    var _this = this;
+    this.requireLogin(function () {
+        orderInfo.token = _this.token;
+        bity.post('/status', orderInfo, callback);
+    });
+};
+bity.prototype.requireLogin = function (callback) {
+    if (this.token) callback();else this.login(callback);
+};
+bity.prototype.login = function (callback) {
+    var _this = this;
+    bity.post('/login', {}, function (data) {
+        _this.token = data.data.token;
+        if (callback) callback();
+    });
+};
+bity.prototype.logout = function (callback) {
+    var _this = this;
+    bity.post('/logout', { token: _this.token }, function (data) {
+        _this.token = null;
+        if (callback) callback();
+    });
 };
 bity.postConfig = {
     headers: {
@@ -1647,7 +1674,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
                             to: $scope.orderResult.payment_address,
                             value: $scope.orderResult.input.amount,
                             sendMode: $scope.orderResult.input.currency == 'ETH' ? 'ether' : 'token',
-                            tokenSymbol: $scope.orderResult.input.currency == 'ETH' ? '' : orderResult.input.currency
+                            tokenSymbol: $scope.orderResult.input.currency == 'ETH' ? '' : $scope.orderResult.input.currency
                         };
                         new Modal(document.getElementById('sendTransaction'));
                         $scope.showStage3Eth = true;
