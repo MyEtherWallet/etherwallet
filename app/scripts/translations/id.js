@@ -4,6 +4,49 @@ var id = function() {}
 id.code = 'id';
 id.data = {
 
+/* Misc */
+x_ParityPhrase              : 'Parity Phrase ',
+
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Contracts */
+x_Access                    : 'Access ',
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
 NAV_Swap                    : 'Swap ',
 
 x_Trezor                    : 'TREZOR ',
@@ -261,15 +304,15 @@ CX_quicksend                : 'QuickSend ', // if no appropriate translation, ju
 
 /* Error Messages */
 ERROR_0                     : 'Masukkan jumlah yang valid. ',
-ERROR_1                    : 'Password minimal terdiri dari 9 huruf. Pastikan password Anda kuat. ',
-ERROR_2                    : 'Maaf! tipe dompet ini tidak dikenal. ',
-ERROR_3                    : 'Ini bukan file dompet yang valid. ',
-ERROR_4                    : 'Unit tidak valid, gunakan salah satu dari unit berikut ',
-ERROR_5                    : 'Alamat tidak valid. ',
-ERROR_6                    : 'Password tidak valid. ',
-ERROR_7                    : 'Jumlah tidak valid. ',
-ERROR_8                    : 'Gas limit tidak valid. ',
-ERROR_9                    : 'Nilai data tidak valid. ',
+ERROR_1                     : 'Password minimal terdiri dari 9 huruf. Pastikan password Anda kuat. ',
+ERROR_2                     : 'Maaf! tipe dompet ini tidak dikenal. ',
+ERROR_3                     : 'Ini bukan file dompet yang valid. ',
+ERROR_4                     : 'Unit tidak valid, gunakan salah satu dari unit berikut ',
+ERROR_5                     : 'Alamat tidak valid. ',
+ERROR_6                     : 'Password tidak valid. ',
+ERROR_7                     : 'Jumlah tidak valid. ',
+ERROR_8                     : 'Gas limit tidak valid. ',
+ERROR_9                     : 'Nilai data tidak valid. ',
 ERROR_10                    : 'Jumlah Gas tidak valid. ',
 ERROR_11                    : 'Nonce tidak valid. ',
 ERROR_12                    : 'Signed transaction tidak valid. ',
@@ -280,8 +323,14 @@ ERROR_16                    : 'Terdapat dompet dengan alamat yang sama di storag
 ERROR_17                    : 'Minimal harus ada 0.01 ether di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
 ERROR_18                    : 'Semua gas akan digunakan pada transaksi ini. Ini berarti Anda telah memberikan suara pada proposal ini atau periode perdebatan telah berakhir. ',
 ERROR_19                    : 'Simbol tidak valid ',
-ERROR_20                    : 'bukan ERC-20 token yang valid. Jika token lain sedang loading, hapus token ini dan coba lagi. ',
+ERROR_20                    : 'Bukan ERC-20 token yang valid.',
 ERROR_21                    : 'Tidak dapat memperkirakan gas. Saldo di akun tidak cukup, atau alamat kontrak penerima bisa mengeluarkan error. Cobalah untuk secara manual mengatur gas dan melanjutkan. Keterangan Error saat pengiriman mungkin lebih informatif. ',
+ERROR_22                    : 'Please enter valid node name ',
+ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_24                    : 'Please enter valid port ',
+ERROR_25                    : 'Please enter valid chain ID ',
+ERROR_26                    : 'Please enter valid ABI ',
+ERROR_27                    : 'Minimum amount 0.01 ',
 ERROR_28                    : '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help). ',
 SUCCESS_1                   : 'Alamat valid ',
 SUCCESS_2                   : 'Dompet telah ter-dekripsi ',

@@ -7565,6 +7565,49 @@ var de = function () {};
 de.code = 'de';
 de.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
 
@@ -7837,6 +7880,14 @@ de.data = {
   ERROR_17: 'Du brauchst zumindest 0.01 ETH in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
   ERROR_18: 'Diese Transaktion würde dein gesamtes verbleibendes Gas verbrauchen. Das bedeutet, du hast bereits über dieses Proposal abgestimmt oder die Debattierphase ist zu Ende. ',
   ERROR_19: 'Ungültiges Symbol ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Du benötigst deine Keystore-Datei & das Passwort** (oder den privaten Schlüssel) um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen. ',
   SUCCESS_1: 'Gültige Addresse ',
   SUCCESS_2: 'Wallet erfolgreich entschlüsselt ',
@@ -8105,6 +8156,49 @@ module.exports = de;
 var el = function () {};
 el.code = 'el';
 el.data = {
+
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   NAV_Contracts: 'Contracts ',
   NAV_DeployContract: 'Deploy Contract ',
@@ -8380,6 +8474,14 @@ el.data = {
   ERROR_17: 'Πρέπει να έχετε τουλάχιστον 0.001 ETH στον λογαριασμό σας για να καλύψετε το κόστος του gas. Παρακαλώ προσθέστε μερικά ether και δοκιμάστε ξανά. ',
   ERROR_18: 'Όλο το gas θα είχε δαπανηθεί στην συναλλαγή αυτή. Αυτό σημαίνει ότι έχετε ήδη ψηφίσει στην πρόταση αυτή ή ότι η περίοδος συζήτησης έχει λήξει. ',
   ERROR_19: 'Λάθος σύμβολο ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'Προκειμένου να έχετε πρόσβαση σε αυτό το πορτοφόλι στο μέλλον **είναι απαραίτητο το αρχείο Keystore/JSON & ο κωδικός ή το Ιδιωτικό Κλειδί σας**. Παρακαλούμε κρατήστε ένα εξωτερικό αντίγραφο ασφαλείας! Δεν υπάρχει τρόπος ανάκτησης ενός πορτοφολιού άν δεν το αποθηκέυσετε. Διαβάστε την σελίδα [Βοήθειας](https://www.myetherwallet.com/#help) για οδηγίες. ',
   SUCCESS_1: 'Έγκυρη διεύθυνση ',
   SUCCESS_2: 'Το πορτοφόλι αποκρυπτογραφήθηκε επιτυχώς ',
@@ -8648,49 +8750,6 @@ var en = function () {};
 en.code = 'en';
 en.data = {
 
-  /* Misc */
-  x_ParityPhrase: 'Parity Phrase ',
-
-  /* Node Switcher */
-  NODE_Title: 'Set Up Your Custom Node',
-  NODE_Subtitle: 'To connect to a local node...',
-  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-  NODE_Name: 'Node Name',
-  NODE_Port: 'Node Port',
-  NODE_CTA: 'Save & Use Custom Node',
-
-  /* Contracts */
-  x_Access: 'Access ',
-  CONTRACT_Title: 'Contract Address ',
-  CONTRACT_Title_2: 'Select Existing Contract ',
-  CONTRACT_Json: 'ABI / JSON Interface ',
-  CONTRACT_Interact_Title: 'Read / Write Contract ',
-  CONTRACT_Interact_CTA: 'Select a function ',
-  CONTRACT_ByteCode: 'Byte Code ',
-  CONTRACT_Read: 'READ ',
-  CONTRACT_Write: 'WRITE ',
-
-  /* Swap / Exchange */
-  SWAP_rates: "Current Rates ",
-  SWAP_init_1: "I want to swap my ",
-  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
-  SWAP_init_CTA: "Let's do this! ", // or "Continue"
-  SWAP_information: "Your Information ",
-  SWAP_send_amt: "Amount to send ",
-  SWAP_rec_amt: "Amount to receive ",
-  SWAP_your_rate: "Your rate ",
-  SWAP_rec_add: "Your Receiving Address ",
-  SWAP_start_CTA: "Start Swap ",
-  SWAP_ref_num: "Your reference number ",
-  SWAP_time: "Time remaining to send ",
-  SWAP_progress_1: "Order Initiated ",
-  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
-  SWAP_progress_3: "Received! ", // ETH Received!
-  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
-  SWAP_progress_5: "Order Complete ",
-  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
-  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
   /* Navigation*/
   NAV_AddWallet: 'Add Wallet ',
   NAV_BulkGenerate: 'Bulk Generate ',
@@ -8721,6 +8780,7 @@ en.data = {
   x_Keystore2: 'Keystore File (UTC / JSON) ',
   x_KeystoreDesc: 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up. ',
   x_Mnemonic: 'Mnemonic Phrase ',
+  x_ParityPhrase: 'Parity Phrase ',
   x_Password: 'Password ',
   x_Print: 'Print Paper Wallet ',
   x_PrintDesc: 'ProTip: Click print and save this as a PDF, even if you do not own a printer! ',
@@ -8891,16 +8951,49 @@ en.data = {
   MYWAL_Content_2: 'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it. ',
   MYWAL_Content_3: 'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password. ',
 
-  /* View Wallet Details */
-  VIEWWALLET_Subtitle: 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
-  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
-  VIEWWALLET_SuccessMsg: 'Success! Here are your wallet details. ',
-
-  /* Deploy Contracts */
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
   DEP_generate: 'Generate Bytecode ',
   DEP_generated: 'Generated Bytecode ',
   DEP_signtx: 'Sign Transaction ',
   DEP_interface: 'Generated Interface ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   /* Sign Message */
   NAV_SignMsg: 'Sign Message ',
@@ -8911,6 +9004,11 @@ en.data = {
   MSG_info1: 'Include the current date so the signature cannot be reused on a different date. ',
   MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it. ',
   MSG_info3: 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+
+  /* View Wallet Details */
+  VIEWWALLET_Subtitle: 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
+  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+  VIEWWALLET_SuccessMsg: 'Success! Here are your wallet details. ',
 
   /* Chrome Extension */
   CX_error_1: 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one! ',
@@ -9227,6 +9325,49 @@ var es = function () {};
 es.code = 'es';
 es.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
   NAV_DeployContract: 'Deploy Contract ',
@@ -9498,6 +9639,14 @@ es.data = {
   ERROR_17: 'Es necesario tener al menos 0.01 ether en tu cuenta para cubrir el coste del gas. Añade algo de ether e inténtalo de nuevo. ',
   ERROR_18: 'Sería necesario utilizar todo el gas en esta transacción. Esto significa que ya has votado en esta propuesta o que el periodo de debate ha concluido. ',
   ERROR_19: 'Símbolo no válido ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Necesitas tu archivo Keystore/JSON y la contraseña** (o Clave Privada) para acceder a esta cartera en el futuro. Por favor ¡guárdala y respáldala externamente! No hay modo de recuperar una cartera si no la guardas. Lee la [página de ayuda](https://www.myetherwallet.com/#help) para instrucciones. ',
   SUCCESS_1: 'Dirección válida ',
   SUCCESS_2: 'Cartera descifrada con éxito ',
@@ -9767,6 +9916,49 @@ module.exports = es;
 var fi = function () {};
 fi.code = 'fi';
 fi.data = {
+
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   NAV_Contracts: 'Contracts ',
   NAV_DeployContract: 'Deploy Contract ',
@@ -10055,6 +10247,14 @@ fi.data = {
   ERROR_17: 'Sinulla täytyy olla vähintään 0.01 ETHiä tililläsi kattaaksesi gasin hinnan. Ole hyvä ja lisää hieman ETHiä ja kokeile uudelleen. ',
   ERROR_18: 'Kaikki gas käytettäisiin tässä siirrossa. Tämä tarkoittaa että olet jo äänestänyt tässä ehdotuksessa tai debaatti aika on jo päättynyt. ',
   ERROR_19: 'Virheellinen merkki ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Tarvitset Avainsäilö Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help). ',
   SUCCESS_1: 'Validi osoite ',
   SUCCESS_2: 'Lompakon salaus onnistuneesti purettu ',
@@ -10324,6 +10524,49 @@ module.exports = fi;
 var fr = function () {};
 fr.code = 'fr';
 fr.data = {
+
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   NAV_Swap: 'Swap ',
 
@@ -10873,6 +11116,49 @@ var hu = function () {};
 hu.code = 'hu';
 hu.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
 
@@ -11136,7 +11422,14 @@ hu.data = {
   ERROR_17: 'Legalább 0.01 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra! ',
   ERROR_18: 'Az összes gas felhasználásra kerülne ezen a tranzakción. Ez azt jelenti, hogy már szavaztál erre a javaslatra vagy a vita periódus már lejárt. ',
   ERROR_19: 'Érvénytelen szimbólum ',
-  ERROR_20: ': érvénytelen ERC-20 token. Ha a többi token működik, akkor távolítsd ezt el és próbáld újra. ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Szükséged lesz a Keystore Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért. ',
   SUCCESS_1: 'Érvényes cím ',
   SUCCESS_2: 'Tárca sikeresen dekódolva ',
@@ -11416,6 +11709,49 @@ var id = function () {};
 id.code = 'id';
 id.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
 
   x_Trezor: 'TREZOR ',
@@ -11686,8 +12022,14 @@ id.data = {
   ERROR_17: 'Minimal harus ada 0.01 ether di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
   ERROR_18: 'Semua gas akan digunakan pada transaksi ini. Ini berarti Anda telah memberikan suara pada proposal ini atau periode perdebatan telah berakhir. ',
   ERROR_19: 'Simbol tidak valid ',
-  ERROR_20: 'bukan ERC-20 token yang valid. Jika token lain sedang loading, hapus token ini dan coba lagi. ',
+  ERROR_20: 'Bukan ERC-20 token yang valid.',
   ERROR_21: 'Tidak dapat memperkirakan gas. Saldo di akun tidak cukup, atau alamat kontrak penerima bisa mengeluarkan error. Cobalah untuk secara manual mengatur gas dan melanjutkan. Keterangan Error saat pengiriman mungkin lebih informatif. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help). ',
   SUCCESS_1: 'Alamat valid ',
   SUCCESS_2: 'Dompet telah ter-dekripsi ',
@@ -11960,6 +12302,49 @@ var it = function () {};
 it.code = 'it';
 it.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
 
   /* Navigation*/
@@ -12226,6 +12611,7 @@ it.data = {
   ERROR_24: 'Inserisci una porta valida ',
   ERROR_25: 'Inserisci un ID catena valido ',
   ERROR_26: 'Inserisci una ABI valida ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Avrai bisogno del tuo file Keystore e della password** (o della chiave privata) per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni. ',
   SUCCESS_1: 'Indirizzo valido ',
   SUCCESS_2: 'Portafoglio decodificato correttamente ',
@@ -12508,6 +12894,49 @@ var ja = function () {};
 ja.code = 'ja';
 ja.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_InteractContract: 'Interact with Contract ',
 
@@ -12772,6 +13201,12 @@ ja.data = {
   ERROR_19: '無効なシンボル ',
   ERROR_20: '　は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。 ',
   ERROR_21: 'ガス量を推定できません。十分な資金が口座にないか、あるいは受け取り側のコントラクトがエラーになっています。ガス量を変更してから試してください。送出時にはより詳しいエラーメッセージが返ります。 ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'ウォレットを操作するためには**Keystore/JSONとパスワードかプライベートキーが必要** 保存してから、外部バックアップしてください！ここで保存しないとウォレットが使用できなくなります。詳細はヘルプページを参照してください。(https://www.myetherwallet.com/#help) ',
   SUCCESS_1: '有効なアドレス ',
   SUCCESS_2: 'ウォレットは正常に暗号解除されました。 ',
@@ -13053,6 +13488,51 @@ var nl = function () {};
 nl.code = 'nl';
 nl.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+  NAV_Swap: 'Swap ',
+
   /* Navigation*/
   NAV_AddWallet: 'Wallet Toevoegen ',
   NAV_BulkGenerate: 'Bulk Genereren ',
@@ -13318,6 +13798,8 @@ nl.data = {
   ERROR_23: 'Geef een geldige url in, als je van https gebruik maakt moet je url https bevatten ',
   ERROR_24: 'Geef een geldige poort in ',
   ERROR_25: 'Geef een geldig chain ID in ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Je hebt je Keystore Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies. ',
   SUCCESS_1: 'Geldig adres ',
   SUCCESS_2: 'Wallet succesvol ontsleuteld ',
@@ -13600,6 +14082,49 @@ var no = function () {};
 no.code = 'no';
 no.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
 
   /* Navigation*/
@@ -13862,6 +14387,12 @@ no.data = {
   ERROR_19: 'Ugyldig symbol ',
   ERROR_20: 'er ikke en gyldig ERC-20-token. Hvis andre tokens holder på å lastes, vennligst fjern denne token og prøv igjen. ',
   ERROR_21: 'Kunne ikke estimere gas. Det er enten ikke nok midler på kontoen, eller så gir den mottakende kontraktadressen en feilmelding. Prøv å justere gas-mengden manuelt, og fortsett. Feilmeldingen du får når du sender kan være mer informativ. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Du trenger din Keystore-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk). ',
   SUCCESS_1: 'Gyldig adresse ',
   SUCCESS_2: 'Dekrypteringen av lommeboken var vellykket ',
@@ -14144,7 +14675,50 @@ var pl = function () {};
 pl.code = 'pl';
 pl.data = {
 
-  NAV_Swap: 'Swap ',
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+  NAV_Swap: 'Giełda ',
 
   /* Navigation*/
   NAV_AddWallet: 'Dodaj Portfel ',
@@ -14225,12 +14799,12 @@ pl.data = {
   ADD_Radio_3: 'Wklej/Wpisz Twój Klucz Prywatny ',
   ADD_Radio_4: 'Dodaj Konto do Obserwacji ',
   ADD_Radio_5: 'Wklej/Wpisz Swój Mnemonik ',
-  ADD_Radio_5_Path: 'Select HD derivation path ',
+  ADD_Radio_5_Path: 'Wybierz ścieżkę portfela HD ',
   ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken) ',
   ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR) ',
   ADD_Radio_5_PathAlternative: '(Ledger) ',
   ADD_Radio_5_PathTrezor: '(TREZOR) ',
-  ADD_Radio_5_PathCustom: '(Custom) ',
+  ADD_Radio_5_PathCustom: '(Niestandardowy) ',
   ADD_Label_2: 'Utwórz Nazwę Użytkownika: ',
   ADD_Label_3: 'Twój portfel jest zaszyfrowany. Podaj hasło ',
   ADD_Label_4: 'Dodaj Konto do Obserwacji ',
@@ -14375,8 +14949,8 @@ pl.data = {
   ADD_Ledger_0b: 'Otwórz MyEtherWallet w [Chrome](https://www.google.com/chrome/browser/desktop/) lub [Opera](https://www.opera.com/) ',
   ADD_Ledger_scan: 'Połącz z Ledger Nano S ',
   x_Trezor: 'TREZOR ',
-  ADD_Trezor_scan: 'Connect to TREZOR ',
-  ADD_Trezor_select: 'This is a TREZOR seed ',
+  ADD_Trezor_scan: 'Połącz z TREZOR ',
+  ADD_Trezor_select: 'To jest ziarno (seed) TREZOR',
 
   /* Chrome Extension */
   CX_error_1: 'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)! ',
@@ -14405,6 +14979,12 @@ pl.data = {
   ERROR_19: 'Nieprawidłowy symbol ',
   ERROR_20: 'nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token. ',
   ERROR_21: 'Nie można określić ilości paliwa. Brak wystarczających środków na koncie lub adres docelowego kontraktu zwróciłby błąd. Możesz ręcznie ustawić paliwo przed kontynuacją. Opis błędu po wysłaniu transakcji może dostarczyć więcej informacji. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Potrzebujesz plik Keystore i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje. ',
   SUCCESS_1: 'Prawidłowy adres ',
   SUCCESS_2: 'Portfel został odszyfrowany ',
@@ -14623,7 +15203,7 @@ pl.data = {
   HELP_12_Desc_28: 'Po ponownym uruchomieniu aplikacji Ethereum Wallet Twój portfel pojawi się na zakładce "Accounts". ',
 
   HELP_13_Title: '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean? ',
-  HELP_13_Desc_1: 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction. ',
+  HELP_13_Desc_1: 'Oznacza to, że nie posiadasz wystarczającej ilości Ether na koncie, aby pokryć koszty paliwa. Każda transakcja (przesyłanie tokenów lub interakcja z kontraktem) wymaga paliwa, które jest opłacane w Ether\'ach. Wyświetlona wartość jest ilością potrzebną na pokrycie kosztów transakcji w Wei\'ach. Podziel tą liczbę przez `1000000000000000000` i odejmij wartość Ether, którą chciałeś wysłać (jeśli wysyłałeś Ether). Otrzymasz wartość, jaką musisz przesłać na swoje konto, aby wykonać transakcję.',
 
   HELP_14_Title: '14) Niektóre strony wykorzystują ruchy myszką przy generowaniu klucza prywatnego. MyEtherWallet tego nie robi. Czy generator liczb losowych w MyEtherWallet jest bezpieczny? ',
   HELP_14_Desc_1: 'Chociaż generowanie liczb losowych przy udziale ruchów myszki jest sprytnie pomyślane i rozumiemy dlaczego ludzie to lubią, to jednak rzeczywistość jest taka, że window.crypto zapewnia większą entropię niż ruchy myszką. Generowanie z ruchów myszki nie jest niebezpieczne, ale my (oraz znaczna liczba innych ekspertów kryptografii) wierzymy w window.crypto. W dodatku MyEtherWallet może być używane na urządzeniach dotykowych. Tutaj można przeczytać [rozmowę rozeźlonego reddit\'ora i Vitalik\'a Buterin\'a odnośnie ruchów myszki kontra window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) a tutaj jest [specyfikacja window.crypto w3](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto). ',
@@ -14686,6 +15266,49 @@ var pt = function () {};
 pt.code = 'pt';
 pt.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Exchange ',
   NAV_SignMsg: 'Sign Message ',
 
@@ -14729,6 +15352,12 @@ pt.data = {
   ERROR_19: 'Invalid symbol ',
   ERROR_20: 'Não é um token ERC-20 válido ',
   ERROR_21: 'Não foi possível estimar o gás. Não há fundos suficientes na conta, ou o endereço do contrato de recebimento iria lançar um erro. Sinta-se livre para definir manualmente o gás e prossiga. A mensagem de erro ao enviar pode ser mais informativa. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Você precisa do seu arquivo de armazenamento de chaves & senha** (ou Chave Privada) para acessar essa carteira no futuro. Por favor, salve e armazene ela externamente! Não há como recuperar uma carteira se você não salvar isso. Leia a [página de ajuda](https://www.myetherwallet.com/#help) para instruções. ',
 
   SUCCESS_1: 'Valid address ',
@@ -14981,22 +15610,22 @@ pt.data = {
   /* Tranlsation Info */
   translate_version: '0.3 ',
   Translator_Desc: 'Thank you to our translators ',
-  // fill in your name and address :
+  // fill in your name and address
   TranslatorName_1: '[ Pedro "ShooterXD" Vieira ](https://www.myetherwallet.com/?gaslimit=21000&to=0x24eB7d82166361A8B69adE6FEA187Cb00FD7c7E1&value=1.0#send-transaction) ',
   TranslatorAddr_1: '',
-  /* Translator 1                  : Insert Comments Here */
+  /* Translator 1             : Insert Comments Here */
   TranslatorName_2: '',
   TranslatorAddr_2: '',
-  /* Translator 2                  : Insert Comments Here */
+  /* Translator 2             : Insert Comments Here */
   TranslatorName_3: '',
   TranslatorAddr_3: '',
-  /* Translator 3                  : Insert Comments Here */
+  /* Translator 3             : Insert Comments Here */
   TranslatorName_4: '',
   TranslatorAddr_4: '',
-  /* Translator 4                  : Insert Comments Here */
+  /* Translator 4             : Insert Comments Here */
   TranslatorName_5: '',
   TranslatorAddr_5: '',
-  /* Translator 5                  : Insert Comments Here */
+  /* Translator 5             : Insert Comments Here */
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
@@ -15230,6 +15859,49 @@ module.exports = pt;
 var ru = function () {};
 ru.code = 'ru';
 ru.data = {
+
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
@@ -15503,6 +16175,14 @@ ru.data = {
   ERROR_17: 'Вам необходимо иметь не менее 0.01 эфира (ether) на Вашем счету, чтобы покрыть расходы на газ. Пожалуйста, пложите немного эфира (ether) на счёт и попробуйте снова. ',
   ERROR_18: 'Транзакция могла бы истратить весь газ. Это значит, что Вы уже голосовали по данному предложению, или период обсуждения данного предложения закончился. ',
   ERROR_19: 'Неправильный символ ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'В будущем, для доступа к этому кошельку **Вам понадобится либо файл Keystore/JSON вместе с паролем,  либо закрытый ключ**. Пожалуйста, сохраните их и сделайте резервную копию! Если Вы потеряете их, то не сможете восстановить доступ к Вашему кошельку. Обратитесь к [справке](https://www.myetherwallet.com/#help) за инструкциями. ',
   SUCCESS_1: 'Адрес указан верно ',
   SUCCESS_2: 'Кошелёк успешно расшифрован ',
@@ -15772,6 +16452,49 @@ module.exports = ru;
 var tr = function () {};
 tr.code = 'tr';
 tr.data = {
+
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
@@ -16056,6 +16779,14 @@ tr.data = {
   ERROR_17: 'You need to have at least 0.01 ether in your account to cover the cost of gas. Please add some ether and try again. ',
   ERROR_18: 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended. ',
   ERROR_19: 'Geçersiz sembol ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'Ilerde cüzdanini acmak icin **Keystore dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
   SUCCESS_1: 'Geçerli adres ',
   SUCCESS_2: 'Cüzdan basariyla desifre edildi ',
@@ -16373,6 +17104,49 @@ var vi = function () {};
 vi.code = 'vi';
 vi.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
 
@@ -16635,6 +17409,13 @@ vi.data = {
   ERROR_18: 'Toàn bộ gas sẽ được sử dụng trong giao dịch này. Việc làm này có nghĩa là bạn đã bỏ phiếu cho đề xuất này hoặc kỳ hạn của cuộc tranh luận đã kết thúc. ',
   ERROR_19: 'Biểu tượng không hợp lệ ',
   ERROR_20: 'Không tồn tại trên hệ thống ERC-20 token. Nếu bạn phải chờ lâu. Xin vui lòng thử lại lần nữa!. ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Bạn cần sử dụng tập tin chứa định dạng Keystore/JSON cùng với Mật khẩu hoặc Private Key của bạn** cho việc đăng nhập vào ví này trong tương lai. Hãy sao lưu và cất giữ nó cẩn thận tại kho lưu trữ của bạn! Không có cách nào đễ khôi phục Ví của bạn nếu bạn không sao lưu dữ liệu ví lại. Đọc Thêm [trang trợ giúp] (https://www.myetherwallet.com/#help) đễ được hướng dẫn cụ thể. ',
   SUCCESS_1: 'Địa Chỉ Hợp Lệ ',
   SUCCESS_2: 'Ví đã được giải mã thành công ',
@@ -16915,6 +17696,49 @@ var zh = function () {};
 zh.code = 'zh';
 zh.data = {
 
+  /* Misc */
+  x_ParityPhrase: 'Parity Phrase ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
   NAV_Swap: 'Swap ',
   NAV_SignMsg: 'Sign Message ',
 
@@ -17166,25 +17990,33 @@ zh.data = {
 
   /* Error Messages */
   ERROR_0: '请输入有效数额。 ',
-  ERROR_: '你的密码至少需要设置为9位。请确保密码足够强。 ',
-  ERROR_: '抱歉！我们不能识别这种类型的钱包文件。 ',
-  ERROR_: '这不是一个有效的钱包文件。 ',
-  ERROR_: 'This unit doesn\'t exists, please use the one of the following units 这个单位不存在，请用下面给出的单位 ',
-  ERROR_: '无效地址。 ',
-  ERROR_: '无效密码。 ',
-  ERROR_: '无效数额。 ',
-  ERROR_: '无效gas上限。 ',
-  ERROR_: '无效数据值。 ',
-  ERROR_: '无效gas数额。 ',
-  ERROR_: '无效nonce。 ',
-  ERROR_: '无效签名交易。 ',
-  ERROR_: '已经有一个钱包使用该昵称。 ',
-  ERROR_: '找不到钱包。 ',
-  ERROR_: '看起来这个提议不存在或者读取这个提议时出现错误。 ',
-  ERROR_: '这个地址钱包已经存在于存储中。请查看你的钱包页面。 ',
-  ERROR_: '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。 ',
-  ERROR_: '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。 ',
-  ERROR_: '无效符号 ',
+  ERROR_1: '你的密码至少需要设置为9位。请确保密码足够强。 ',
+  ERROR_2: '抱歉！我们不能识别这种类型的钱包文件。 ',
+  ERROR_3: '这不是一个有效的钱包文件。 ',
+  ERROR_4: 'This unit doesn\'t exists, please use the one of the following units 这个单位不存在，请用下面给出的单位 ',
+  ERROR_5: '无效地址。 ',
+  ERROR_6: '无效密码。 ',
+  ERROR_7: '无效数额。 ',
+  ERROR_8: '无效gas上限。 ',
+  ERROR_9: '无效数据值。 ',
+  ERROR_10: '无效gas数额。 ',
+  ERROR_11: '无效nonce。 ',
+  ERROR_12: '无效签名交易。 ',
+  ERROR_13: '已经有一个钱包使用该昵称。 ',
+  ERROR_14: '找不到钱包。 ',
+  ERROR_15: '看起来这个提议不存在或者读取这个提议时出现错误。 ',
+  ERROR_16: '这个地址钱包已经存在于存储中。请查看你的钱包页面。 ',
+  ERROR_17: '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。 ',
+  ERROR_18: '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。 ',
+  ERROR_19: '无效符号 ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。 ',
   SUCCESS_1: '有效地址 ',
   SUCCESS_2: '钱包解密成功 ',

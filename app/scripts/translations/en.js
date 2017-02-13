@@ -4,49 +4,6 @@ var en = function() {}
 en.code = 'en';
 en.data = {
 
-/* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
-
-/* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
 /* Navigation*/
 NAV_AddWallet               : 'Add Wallet ',
 NAV_BulkGenerate            : 'Bulk Generate ',
@@ -77,6 +34,7 @@ x_Keystore                  : 'Keystore File (UTC / JSON · Recommended · Encry
 x_Keystore2                 : 'Keystore File (UTC / JSON) ',
 x_KeystoreDesc              : 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up. ',
 x_Mnemonic                  : 'Mnemonic Phrase ',
+x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Password ',
 x_Print                     : 'Print Paper Wallet ',
 x_PrintDesc                 : 'ProTip: Click print and save this as a PDF, even if you do not own a printer! ',
@@ -159,6 +117,23 @@ ADD_Label_6                 : 'Unlock your Wallet ',
 ADD_Label_6_short           : 'Unlock ',
 ADD_Label_7                 : 'Add Account ',
 
+/* My Wallet */
+MYWAL_Nick                  : 'Wallet Nickname ',
+MYWAL_Address               : 'Wallet Address ',
+MYWAL_Bal                   : 'Balance ',
+MYWAL_Edit                  : 'Edit ',
+MYWAL_View                  : 'View ',
+MYWAL_Remove                : 'Remove ',
+MYWAL_RemoveWal             : 'Remove Wallet ',
+MYWAL_WatchOnly             : 'Your Watch-Only Accounts ',
+MYWAL_Viewing               : 'Viewing Wallet ',
+MYWAL_Hide                  : 'Hide Wallet Info ',
+MYWAL_Edit_2                : 'Edit Wallet ',
+MYWAL_Name                  : 'Wallet Name ',
+MYWAL_Content_1             : 'Warning! You are about to remove your wallet ',
+MYWAL_Content_2             : 'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it. ',
+MYWAL_Content_3             : 'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password. ',
+
 /* Generate Wallets */
 GEN_desc                    : 'If you want to generate multiple wallets, you can do so here ',
 GEN_Label_1                 : 'Enter a strong password (at least 9 characters) ',
@@ -230,33 +205,49 @@ OFFLINE_Step2_Label_7       : 'Enter / Select your Private Key / JSON. ',
 OFFLINE_Step3_Title         : 'Step 3: Send / Publish Transaction (Online Computer) ',
 OFFLINE_Step3_Label_1       : 'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button. ',
 
-/* My Wallet */
-MYWAL_Nick                  : 'Wallet Nickname ',
-MYWAL_Address               : 'Wallet Address ',
-MYWAL_Bal                   : 'Balance ',
-MYWAL_Edit                  : 'Edit ',
-MYWAL_View                  : 'View ',
-MYWAL_Remove                : 'Remove ',
-MYWAL_RemoveWal             : 'Remove Wallet ',
-MYWAL_WatchOnly             : 'Your Watch-Only Accounts ',
-MYWAL_Viewing               : 'Viewing Wallet ',
-MYWAL_Hide                  : 'Hide Wallet Info ',
-MYWAL_Edit_2                : 'Edit Wallet ',
-MYWAL_Name                  : 'Wallet Name ',
-MYWAL_Content_1             : 'Warning! You are about to remove your wallet ',
-MYWAL_Content_2             : 'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it. ',
-MYWAL_Content_3             : 'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password. ',
-
-/* View Wallet Details */
-VIEWWALLET_Subtitle         : 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
-VIEWWALLET_Subtitle_Short   : 'This allows you to download different versions of private keys and re-print your paper wallet. ',
-VIEWWALLET_SuccessMsg       : 'Success! Here are your wallet details. ',
-
-/* Deploy Contracts */
+/* Contracts */
+x_Access                    : 'Access ',
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
 DEP_generate                : 'Generate Bytecode ',
 DEP_generated               : 'Generated Bytecode ',
 DEP_signtx                  : 'Sign Transaction ',
 DEP_interface               : 'Generated Interface ',
+
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
 /* Sign Message */
 NAV_SignMsg                 : 'Sign Message ',
@@ -267,6 +258,11 @@ MSG_verify                  : 'Verify Message ',
 MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
 MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
 MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+
+/* View Wallet Details */
+VIEWWALLET_Subtitle         : 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
+VIEWWALLET_Subtitle_Short   : 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+VIEWWALLET_SuccessMsg       : 'Success! Here are your wallet details. ',
 
 /* Chrome Extension */
 CX_error_1                  : 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one! ',

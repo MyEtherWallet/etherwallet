@@ -5,6 +5,49 @@ var it = function() {}
 it.code = 'it';
 it.data = {
 
+/* Misc */
+x_ParityPhrase              : 'Parity Phrase ',
+
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Contracts */
+x_Access                    : 'Access ',
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
 NAV_Swap                    : 'Swap ',
 
 
@@ -249,15 +292,15 @@ CX_quicksend                : 'Invio rapido ',
 
 /* Error Messages */
 ERROR_0                     : 'Ti preghiamo di inserire una quantità valida. ',
-ERROR_1                    : 'La password deve essere di almeno 9 caratteri. Assicurati che sia robusta. ',
-ERROR_2                    : 'Siamo spiacenti! Non riconosciamo questo tipo di file portafoglio. ',
-ERROR_3                    : 'Questo non è un file portafoglio valido. ',
-ERROR_4                    : 'Questa unità non esiste, ti preghiamo di usare una delle seguenti unità ',
-ERROR_5                    : 'Indirizzo non valido. ',
-ERROR_6                    : 'Password non valida. ',
-ERROR_7                    : 'Numero non valido. ',
-ERROR_8                    : 'Limite gas non valido. ',
-ERROR_9                    : 'Valori dati non validi. ',
+ERROR_1                     : 'La password deve essere di almeno 9 caratteri. Assicurati che sia robusta. ',
+ERROR_2                     : 'Siamo spiacenti! Non riconosciamo questo tipo di file portafoglio. ',
+ERROR_3                     : 'Questo non è un file portafoglio valido. ',
+ERROR_4                     : 'Questa unità non esiste, ti preghiamo di usare una delle seguenti unità ',
+ERROR_5                     : 'Indirizzo non valido. ',
+ERROR_6                     : 'Password non valida. ',
+ERROR_7                     : 'Numero non valido. ',
+ERROR_8                     : 'Limite gas non valido. ',
+ERROR_9                     : 'Valori dati non validi. ',
 ERROR_10                    : 'Quantità di gas non valida. ',
 ERROR_11                    : 'Nonce non valido. ',
 ERROR_12                    : 'Transazione firmata non valida. ',
@@ -275,6 +318,7 @@ ERROR_23                    : 'Inserisci un url valido, se stai usando https l\'
 ERROR_24                    : 'Inserisci una porta valida ',
 ERROR_25                    : 'Inserisci un ID catena valido ',
 ERROR_26                    : 'Inserisci una ABI valida ',
+ERROR_27                    : 'Minimum amount 0.01 ',
 ERROR_28                    : '**Avrai bisogno del tuo file Keystore e della password** (o della chiave privata) per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni. ',
 SUCCESS_1                   : 'Indirizzo valido ',
 SUCCESS_2                   : 'Portafoglio decodificato correttamente ',
