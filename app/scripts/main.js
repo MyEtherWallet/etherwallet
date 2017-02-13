@@ -69,7 +69,7 @@ var swapCtrl                 = require('./controllers/swapCtrl');
 var signMsgCtrl              = require('./controllers/signMsgCtrl');
 var contractsCtrl            = require('./controllers/contractsCtrl');
 var footerCtrl               = require('./controllers/footerCtrl');
-var sendOfflineTxCtrl        = require('./controllers/sendOfflineTxCtrl');
+var offlineTxCtrl        = require('./controllers/offlineTxCtrl');
 var walletBalanceCtrl        = require('./controllers/walletBalanceCtrl');
 var globalService            = require('./services/globalService');
 var walletService            = require('./services/walletService');
@@ -113,7 +113,7 @@ app.controller('swapCtrl', ['$scope', '$sce', 'walletService', swapCtrl]);
 app.controller('signMsgCtrl', ['$scope', '$sce', 'walletService', signMsgCtrl]);
 app.controller('contractsCtrl', ['$scope', '$sce', 'walletService', contractsCtrl]);
 app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
-app.controller('sendOfflineTxCtrl', ['$scope', '$sce', 'walletService', sendOfflineTxCtrl]);
+app.controller('offlineTxCtrl', ['$scope', '$sce', 'walletService', offlineTxCtrl]);
 app.controller('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
 if (IS_CX) {
   app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);

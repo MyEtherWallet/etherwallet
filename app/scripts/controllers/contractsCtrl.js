@@ -5,7 +5,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
     $scope.visibility = "interactView";
     $scope.sendContractModal = new Modal(document.getElementById('sendContract'));
     $scope.showReadWrite = false;
-    $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
+    $scope.sendTxModal = new Modal(document.getElementById('deployContract'));
     $scope.tx = {
         gasLimit: '',
         data: '',

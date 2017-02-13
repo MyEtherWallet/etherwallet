@@ -97,75 +97,62 @@ var walletDecryptDrtv = function() {
   <\/section>\r\n \
   <!-- \/ Column 3 -The Unlock Button -->\r\n \
   <!-- MODAL -->\r\n \
-  <section class=\"modal fade\" tabindex=\"-1\" role=\"dialog\" id=\"mnemonicModel\">\r\n \
-    <div class=\"modal-dialog\" role=\"document\" style=\"top: 200px\">\r\n \
-      <div class=\"modal-content\">\r\n \
-        <div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;<\/span><\/button><\/div>\r\n \
+  <article class=\"modal fade\" id=\"mnemonicModel\" tabindex=\"-1\">\r\n \
+    <section class=\"modal-dialog\">\r\n \
+      <section class=\"modal-content\">\r\n \
         <div class=\"modal-body\">\r\n \
+          <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;<\/button>\r\n \
           <!-- Select HD Path -->\r\n \
-          <span ng-show="showMDecrypt">\r\n \
-          <h4 translate=\"ADD_Radio_5_Path\"> Select HD derivation path: <\/h4>\r\n \
-          <div class=\"form-group\">\r\n \
-            <div class=\"radio\">\r\n \
-              <label>\r\n \
-                <input type=\"radio\" id=\"hd_derivation_path_default\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.defaultDPath}}\" ng-change=\"onHDDPathChange()\"\/>\r\n \
-                <span ng-bind=\"HDWallet.defaultDPath\"><\/span>\r\n \
-                <span ng-if=\"!showTrezorSeparate\" translate=\"ADD_Radio_5_withTrezor\">(default with trezor)<\/span>\r\n \
-                <span ng-if=\"showTrezorSeparate\" translate=\"ADD_Radio_5_woTrezor\">(default without trezor)<\/span>\r\n \
-              <\/label>\r\n \
-            <\/div>\r\n \
-            <div class=\"radio\">\r\n \
-              <label>\r\n \
-                <input type=\"radio\" id=\"hd_derivation_path_alternative\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.alternativeDPath}}\" ng-change=\"onHDDPathChange()\"\/>\r\n \
-                <span ng-bind=\"HDWallet.alternativeDPath\"><\/span>\r\n \
-                <span translate=\"ADD_Radio_5_PathAlternative\">(alternative)<\/span>\r\n \
-              <\/label>\r\n \
-            <\/div>\r\n \
-            <div class=\"radio\" ng-if=\"showTrezorSeparate\">\r\n \
-              <label>\r\n \
-                <input type=\"radio\" id=\"hd_derivation_path_trezor\" ng-model=\"HDWallet.dPath\" value=\"{{getTrezorPath()}}\" ng-change=\"onHDDPathChange()\" \/>\r\n \
-                <span ng-bind=\"getTrezorPath()\"><\/span>\r\n \
-                <span translate=\"ADD_Radio_5_PathTrezor\">(Trezor)<\/span>\r\n \
-              <\/label>\r\n \
-            <\/div>\r\n \
-            <div class=\"radio\">\r\n \
-              <label>\r\n \
-                <input type=\"radio\" id=\"hd_derivation_path_custom\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.customDPath}}\" ng-change=\"onHDDPathChange()\" \/>\r\n \
-                <input type=\"text\" class=\"form-control\" style=\"display: inline; width: 70%\" ng-model=\"HDWallet.customDPath\" id=\"hd_derivation_path_custom_value\" ng-change=\"onCustomHDDPathChange()\" \/>\r\n \
-                <span translate=\"ADD_Radio_5_PathCustom\">(custom)<\/span>\r\n \
-              <\/label>\r\n \
-            <\/div>\r\n \
-          <\/div>\r\n \
-          </span> \r\n \
-          <!-- \/ Select HD Path -->\r\n \
-          <!-- Select Address -->\r\n \
-          <h4 class=\"modal-title\" translate=\"MNEM_1\"> Please select the address you would like to interact with. <\/h4>\r\n \
-          <p translate=\"MNEM_2\"> Your single HD mnemonic phrase can access a number of wallets \/ addresses. Please select the address you would like to interact with at this time. <\/p>\r\n \
-          <table class=\"table table-striped table-mnemonic\">\r\n \
-            <tr>\r\n \
-              <th><\/th>\r\n \
-              <th translate=\"x_Address\"> Address <\/th>\r\n \
-              <th translate=\"MYWAL_Bal\"> Balance <\/th>\r\n \
-            <\/tr>\r\n \
-            <tr ng-repeat=\"wallet in HDWallet.wallets track by $index\">\r\n \
-              <td><input type=\"radio\" name=\"addressSelect\" value=\"{{$index}}\" ng-model=\"HDWallet.id\" \/><\/td>\r\n \
-              <td> {{wallet.getChecksumAddressString()}} <\/td>\r\n \
-              <td> {{wallet.getBalance()}} ETH <\/td>\r\n \
-            <\/tr>\r\n \
-            <tr class=\"m-addresses\">\r\n \
-              <td><a ng-show=\"HDWallet.numWallets > 5\" ng-click=\"AddRemoveHDAddresses(false)\" translate=\"MNEM_prev\">Previous Addresses<\/a><\/td>\r\n \
-              <td><\/td>\r\n \
-              <td><a ng-click=\"AddRemoveHDAddresses(true)\" translate=\"MNEM_more\">More<br \/>Addresses<\/a><\/td>\r\n \
-            <\/tr>\r\n \
-          <\/table>\r\n \
+          <span ng-show=\"showMDecrypt\">\r\n \
+            <h3 class=\"modal-title\" translate=\"ADD_Radio_5_Path\"> Select HD derivation path:<\/h3>\r\n \
+            <label class=\"radio\">\r\n \
+              <input type=\"radio\" id=\"hd_derivation_path_default\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.defaultDPath}}\" ng-change=\"onHDDPathChange()\"\/>\r\n \
+              <span ng-bind=\"HDWallet.defaultDPath\"><\/span>\r\n \
+              <span ng-if=\"!showTrezorSeparate\" translate=\"ADD_Radio_5_withTrezor\">(default with trezor)<\/span>\r\n \
+              <span ng-if=\"showTrezorSeparate\" translate=\"ADD_Radio_5_woTrezor\">(default without trezor)<\/span>\r\n \
+            <\/label>\r\n \
+            <label class=\"radio\">\r\n \
+              <input type=\"radio\" id=\"hd_derivation_path_alternative\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.alternativeDPath}}\" ng-change=\"onHDDPathChange()\"\/>\r\n \
+              <span ng-bind=\"HDWallet.alternativeDPath\"><\/span>\r\n \
+              <span translate=\"ADD_Radio_5_PathAlternative\">(alternative)<\/span>\r\n \
+            <\/label>\r\n \
+            <label class=\"radio\" ng-if=\"showTrezorSeparate\">\r\n \
+              <input type=\"radio\" id=\"hd_derivation_path_trezor\" ng-model=\"HDWallet.dPath\" value=\"{{getTrezorPath()}}\" ng-change=\"onHDDPathChange()\" \/>\r\n \
+              <span ng-bind=\"getTrezorPath()\"><\/span>\r\n \
+              <span translate=\"ADD_Radio_5_PathTrezor\">(Trezor)<\/span>\r\n \
+            <\/label>\r\n \
+            <label class=\"radio\">\r\n \
+              <input type=\"radio\" id=\"hd_derivation_path_custom\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.customDPath}}\" ng-change=\"onHDDPathChange()\" \/>\r\n \
+              <input type=\"text\" class=\"form-control\" style=\"display: inline; width: 70%\" ng-model=\"HDWallet.customDPath\" id=\"hd_derivation_path_custom_value\" ng-change=\"onCustomHDDPathChange()\" \/>\r\n \
+              <span translate=\"ADD_Radio_5_PathCustom\">(Custom)<\/span>\r\n \
+            <\/label>\r\n \
+          <\/span> \r\n \
+          <!-- END Select HD Path --><!-- Select Address --><hr \/>\r\n \
+          <h3 class=\"modal-title\" translate=\"MNEM_1\">Please select the address you would like to interact with.<\/h3>\r\n \
+          <p class=\"small\" translate=\"MNEM_2\">Your single HD mnemonic phrase can access a number of wallets \/ addresses.<\/p>\r\n \
+          <table class=\"small table table-striped table-mnemonic\"><tr><th><\/th>\r\n \
+            <th translate=\"x_Address\">Address<\/th>\r\n \
+            <th translate=\"MYWAL_Bal\">Balance<\/th>\r\n \
+          <\/tr>\r\n \
+          <tr ng-repeat=\"wallet in HDWallet.wallets track by $index\">\r\n \
+            <td><input type=\"radio\" name=\"addressSelect\" value=\"{{$index}}\" ng-model=\"HDWallet.id\" \/><\/td>\r\n \
+            <td>{{wallet.getChecksumAddressString()}}<\/td>\r\n \
+            <td>{{wallet.getBalance()}} ETH<\/td>\r\n \
+          <\/tr>\r\n \
+          <tr class=\"m-addresses\">\r\n \
+            <td class\"small\"><a ng-show=\"HDWallet.numWallets > 5\" ng-click=\"AddRemoveHDAddresses(false)\" translate=\"MNEM_prev\">Previous Addresses<\/a><\/td>\r\n \
+            <td><\/td>\r\n \
+            <td class\"small\"><a ng-click=\"AddRemoveHDAddresses(true)\" translate=\"MNEM_more\">More Addresses<\/a><\/td>\r\n \
+          <\/tr><\/table>\r\n \
+          <!-- END Select Address -->\r\n \
         <\/div>\r\n \
-        <div class=\"modal-footer text-center\">\r\n \
-          <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" translate=\"x_Cancel\">Cancel<\/button>\r\n \
-          <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\" ng-click=\"setHDWallet()\" translate=\"ADD_Label_6_short\">Access Wallet<\/button>\r\n \
+        <div class=\"modal-footer\">\r\n \
+          <button class=\"btn btn-default\" data-dismiss=\"modal\" translate=\"x_Cancel\">Cancel<\/button>\r\n \
+          <button class=\"btn btn-primary\" ng-click=\"setHDWallet()\" translate=\"ADD_Label_6_short\">Access Wallet<\/button>\r\n \
         <\/div>\r\n \
-      <\/div>\r\n \
-    <\/div>\r\n \
-  <\/section>\r\n \
+      <\/section>\r\n \
+    <\/section>\r\n \
+  <\/article>\r\n \
   <!-- \/ MODAL -->\r\n \
 <\/article>\r\n \
 '

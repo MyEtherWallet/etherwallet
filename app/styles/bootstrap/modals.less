@@ -1,20 +1,7 @@
-//
-// Modals
-// --------------------------------------------------
-
-// .modal-open      - body class for killing the scroll
-// .modal           - container to scroll within
-// .modal-dialog    - positioning shell for the actual modal
-// .modal-content   - actual modal w/ bg and corners and shit
-
-// Kill the scroll on the body
-/* uncss:ignore */
 .modal-open {
   overflow: hidden;
 }
 
-// Container that the modal scrolls within
-/* uncss:ignore */
 .modal {
   display: none;
   overflow: hidden;
@@ -27,40 +14,36 @@
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
-  /* uncss:ignore */
-  .modal.fade .modal-dialog {
-    .translate(0, -25%);
-    .transition-transform(~"0.3s ease-out");
-  }
-  /* uncss:ignore */
-  .modal.in .modal-dialog { .translate(0, 0) }
 
-/* uncss:ignore */
+.modal.fade .modal-dialog {
+  .translate(0, -25%);
+  .transition-transform(~"0.3s ease-out");
+}
+
+.modal.in .modal-dialog {
+  .translate(0, 0)
+}
+
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-/* uncss:ignore */
 .modal-dialog {
   position: relative;
   width: auto;
   margin: 10px;
 }
 
-/* uncss:ignore */
 .modal-content {
   position: relative;
   background-color: @modal-content-bg;
-  border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
-  border: 1px solid @modal-content-border-color;
   border-radius: @border-radius;
-  .box-shadow(0 3px 9px rgba(0,0,0,.5));
+  box-shadow: 1px 1px 60px rgba(0, 0, 0, 0.32);
   background-clip: padding-box;
   outline: 0;
 }
 
-/* uncss:ignore */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -70,66 +53,55 @@
   z-index: @zindex-modal-background;
   background-color: @modal-backdrop-bg;
 }
-  /* uncss:ignore */
-  .modal-backdrop.fade { .opacity(0); }
-  /* uncss:ignore */
-  .modal-backdrop.in { .opacity(@modal-backdrop-opacity); }
 
-// Modal header
-// Top section of the modal w/ title and dismiss
+.modal-backdrop.fade {
+  .opacity(0);
+}
+
+.modal-backdrop.in {
+  .opacity(@modal-backdrop-opacity);
+}
+
 .modal-header {
   padding: @modal-inner-padding/2 @modal-inner-padding;
 }
-// Close icon
+
 .modal-header .close {
   margin-top: -2px;
 }
 
-// Title text within header
 .modal-title {
-  margin: 0;
+  margin: 0 0 @space;
   line-height: @modal-title-line-height;
 }
 
-// Modal body
-// Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;
   padding: @modal-inner-padding;
-  &.larger {
-    font-size: 20px;
-    .table > tbody > tr > td {
-      vertical-align: middle;
-    }
-    .addressIdenticon {
-      margin: auto;
-    }
+  font-size: @font-size-bump-more;
+  .table > tbody > tr > td {
+    vertical-align: middle;
+  }
+  .addressIdenticon {
+    margin: auto;
   }
 }
 
-// Footer (for actions)
 .modal-footer {
-  padding: @modal-inner-padding/2 @modal-inner-padding;
-  text-align: right; // right align buttons
+  padding: @space 1.5rem;
+  text-align: right;
   border-top: 1px solid @modal-footer-border-color;
-  &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
-
-  // Properly space out buttons
+  &:extend(.clearfix all);
+  .btn {
+    margin-top: 0;
+  }
   .btn + .btn {
-    margin-left: 5px;
-    margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
-  }
-  // but override that for button groups
-  .btn-group .btn + .btn {
-    margin-left: -1px;
-  }
-  // and override it for block buttons as well
-  .btn-block + .btn-block {
-    margin-left: 0;
+    margin-left: @space-sm;
+    margin-bottom: 0;
+    margin-top: 0;
   }
 }
 
-// Measure scrollbar width for padding body during modal show/hide
 .modal-scrollbar-measure {
   position: absolute;
   top: -9999px;
@@ -138,22 +110,18 @@
   overflow: scroll;
 }
 
-// Scale up the modal
 @media (min-width: @screen-sm-min) {
-  // Automatically set modal's width for larger viewports
   .modal-dialog {
     width: 800px;
     margin: 30px auto;
   }
-
-  .modal-content {
-    .box-shadow(0 5px 15px rgba(0,0,0,.5));
+  .modal-sm {
+    width: @modal-sm;
   }
-
-  // Modal sizes
-  .modal-sm { width: @modal-sm; }
 }
 
 @media (min-width: @screen-md-min) {
-  .modal-lg { width: @modal-lg; }
+  .modal-lg {
+    width: @modal-lg;
+  }
 }

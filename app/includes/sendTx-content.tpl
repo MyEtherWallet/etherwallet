@@ -38,7 +38,7 @@
     <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
     <div class="input-group-btn">
       <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
-        {{unitReadable}}<span class="caret"></span>
+        {{unitReadable}}<i class="caret"></i>
       </a>
       <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
         <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
@@ -90,46 +90,3 @@
 
 </section>
 <!-- / Content -->
-
-
-
-<!-- Send Modal -->
-<section class="modal fade" id="sendTransaction" tabindex="-1">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
-        <h3 class="modal-title text-danger" id="myModalLabel" translate="SENDModal_Title">Warning!</h3>
-      </div>
-      <div class="modal-body larger">
-        <table class="table text-center"><tbody><tr>
-          <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div></td>
-          <td ng-show="tx.sendMode=='ether'" class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
-          <td ng-show="tx.sendMode!=='ether'" class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
-          <td ng-show="tx.sendMode=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-          </td>
-          <td ng-show="tx.sendMode!=='ether'">
-            <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tokenTx.to}}" watch-var="tokenTx.to"></div>
-          </td>
-        </tr></tbody></table>
-        <p>
-          <span translate="SENDModal_Content_1">You are about to send</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono">{{tx.value}} {{unitReadable}}</strong>
-          <strong ng-show="tx.sendMode!=='ether'" class="mono">{{tokenTx.value}} {{unitReadable}}</strong>
-          <br />
-          <span translate="SENDModal_Content_2">to address</span>
-          <strong ng-show="tx.sendMode=='ether'" class="mono"> {{tx.to}}. </strong>
-          <strong ng-show="tx.sendMode!=='ether'" class="mono"> {{tokenTx.to}} </strong>
-        </p>
-        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
-        <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-      </div>
-      <div class="modal-footer text-center">
-        <button type="button" class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">No, get me out of here!</button>
-        <button type="button" class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">Yes, I am sure! Make transaction.</button>
-      </div>
-    </div>
-  </div>
-</section>
-<!--/ Send Modal-->

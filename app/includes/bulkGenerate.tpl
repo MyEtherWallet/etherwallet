@@ -1,4 +1,4 @@
-<article class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.bulkGenerate.id" ng-controller='bulkGenCtrl'  ng-cloak>
+<main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.bulkGenerate.id" ng-controller='bulkGenCtrl'  ng-cloak>
 
   <h1 translate="NAV_BulkGenerate"> Bulk Generate Wallets </h1>
 
@@ -73,4 +73,4 @@
   </section>
   <!-- / Bottom - Display Bulk Generated Wallets -->
 
-</article>
+</main>
