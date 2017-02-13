@@ -335,13 +335,14 @@
       <hr />
       <h5 translate="x_Address">Your Address:</h5>
         <div class="qr-code" qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
+      <h5 translate="x_PrivKey" ng-show="wallet.type=='default'">Private Key (unencrypted):</h5>
+        <div ng-show="wallet.type=='default'" class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
     </section>
 
     <section class="col-sm-8 view-wallet-content">
 
       <div class="row">
         <h1 class="col-xs-12" translate="VIEWWALLET_SuccessMsg">Success! Here are your wallet details.</h1>
-        <!-- Your Address -->
         <div class="col-sm-10">
           <div class="account-help-icon">
             <img src="images/icon-help.svg" class="help-icon" />
@@ -355,7 +356,6 @@
         </div>
       </div>
 
-      <!-- Private Key Field -->
       <div ng-show="wallet.type=='default'">
         <div class="account-help-icon">
           <img src="images/icon-help.svg" class="help-icon" />
@@ -365,53 +365,39 @@
         <textarea class="form-control" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
       </div>
 
-      <section class="row">
-        <section class="col-sm-6">
-          <!-- Print Button -->
-          <div ng-show="wallet.type=='default'">
-            <div class="account-help-icon">
-              <img src="images/icon-help.svg" class="help-icon" />
-              <p class="account-help-text" translate="x_PrintDesc">ProTip: Click print and save this as a PDF, even if you do not own a printer!</p>
-              <h5 translate="x_Print">Print Paper Wallet:</h5>
-            </div>
-            <a class="btn btn-info btn-block" ng-click="printQRCode()" translate="x_Print">Print Paper Wallet</a>
-          </div>
-
-          <!-- JSON Encrypted -->
-          <div ng-show='showEnc'>
-            <div class="account-help-icon">
-              <img src="images/icon-help.svg" class="help-icon" />
-              <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
-              <h5 translate="x_Keystore">Keystore/JSON File (Recommended • Encrypted • Mist/Geth Format)</h5>
-            </div>
-            <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
-          </div>
-
-          <!-- JSON Unencrypted -->
-          <div ng-show="wallet.type=='default'">
-            <div class="account-help-icon">
-              <img src="images/icon-help.svg" class="help-icon" />
-              <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</p>
-              <h5 translate="x_Json">JSON File (Unencrypted)</h5>
-            </div>
-            <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
-          </div>
-        </section>
-        <section class="col-sm-6">
-          <!-- Private Key QR Code -->
-          <h5 translate="x_PrivKey" ng-show="wallet.type=='default'">Private Key (unencrypted):</h5>
-            <div ng-show="wallet.type=='default'" class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
-        </section>
-      </section>
-
-      <br /><hr />
-
-      <!-- Sign Message -->
       <div ng-show="wallet.type=='default'">
-         <!-- Sign Message Panel -->
+        <div class="account-help-icon">
+          <img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="x_PrintDesc">ProTip: Click print and save this as a PDF, even if you do not own a printer!</p>
+          <h5 translate="x_Print">Print Paper Wallet:</h5>
+        </div>
+        <a class="btn btn-info btn-block" ng-click="printQRCode()" translate="x_Print">Print Paper Wallet</a>
+      </div>
 
+      <div ng-show='showEnc'>
+        <div class="account-help-icon">
+          <img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
+          <h5 translate="x_Keystore">Keystore/JSON File (Recommended • Encrypted • Mist/Geth Format)</h5>
+        </div>
+        <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
+      </div>
 
-  <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.signMsg.id" ng-controller='signMsgCtrl'  ng-cloak>
+      <div ng-show="wallet.type=='default'">
+        <div class="account-help-icon">
+          <img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</p>
+          <h5 translate="x_Json">JSON File (Unencrypted)</h5>
+        </div>
+        <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
+      </div>
+
+      <div ng-show="wallet.type=='default'">
+        
+          <!-- Sign Message Panel -->
+
+  <main ng-controller='signMsgCtrl' ng-show="wallet!=null" ng-cloak>
+
 
 
   <h3>
@@ -478,8 +464,7 @@
 
 </main>
 <!-- / Sign Message Panel -->
- 
-        
+    
       </div>
 
     </section>
@@ -490,7 +475,6 @@
 
 </article>
 <!-- / View Wallet Info Tab -->
-
 
     <main class="tab-pane active"
       ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id"
@@ -1079,7 +1063,7 @@
   <!-- Swap CTA BTC -->
   <section class="row" ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
     <label translate="x_Address"> Your Address </label>
-    <div class="qr-code" qr-code="{{orderResult.payment_address}}" watch-var="orderResult" ></div>
+    <div class="qr-code" qr-code="{{'bitcoin:'+orderResult.payment_address+'?amount='+orderResult.input.amount}}" watch-var="orderResult" ></div>
   </section>
 
 

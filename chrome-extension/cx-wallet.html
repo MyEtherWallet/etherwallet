@@ -1328,7 +1328,7 @@
   <!-- Swap CTA BTC -->
   <section class="row" ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
     <label translate="x_Address"> Your Address </label>
-    <div class="qr-code" qr-code="{{orderResult.payment_address}}" watch-var="orderResult" ></div>
+    <div class="qr-code" qr-code="{{'bitcoin:'+orderResult.payment_address+'?amount='+orderResult.input.amount}}" watch-var="orderResult" ></div>
   </section>
 
 
