@@ -5,49 +5,49 @@ nl.code = 'nl';
 nl.data = {
 
 /* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
+x_ParityPhrase              : 'Parity herstel zin ',
 
 /* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
+NODE_Title                  : 'Stel je Custom Node in',
+NODE_Subtitle               : 'Om met een lokale node te verbinden...',
+NODE_Warning                : 'Je node dient HTTPS te zijn om met MyEtherWallet.com te kunnen verbinden. Je kunt de [MyEtherWallet repo downloaden](https://github.com/kvhnuke/etherwallet/releases/latest) en lokaal uitvoeren en vervolgens met iedere node verbinden. Of, verkrijg een gratis SSL certificaat via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Naam',
 NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
+NODE_CTA                    : 'Opslaan & Custom Node gebruiken',
 
 /* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
+x_Access                    : 'Verkrijg Toegang ',
+CONTRACT_Title              : 'Contract Adres ',
+CONTRACT_Title_2            : 'Selecteer Bestaand Contract ',
 CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_Interact_Title     : 'Lees / Schrijf Contract ',
+CONTRACT_Interact_CTA       : 'Selecteer een functie ',
 CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
+CONTRACT_Read               : 'LEES ',
+CONTRACT_Write              : 'SCHRIJF ',
 
 /* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+SWAP_rates                  : "Actuele Koersen ",
+SWAP_init_1                 : "Ik wil mijn ",
+SWAP_init_2                 : " omwisselen voor ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Naar de volgende stap ", // or "Continue"
+SWAP_information            : "Je informatie ",
+SWAP_send_amt               : "Te verzenden bedrag ",
+SWAP_rec_amt                : "Te ontvangen bedrag ",
+SWAP_your_rate              : "Je wisselkoers ",
+SWAP_rec_add                : "Je ontvangst Adres ",
+SWAP_start_CTA              : "Start Omwisselen ",
+SWAP_ref_num                : "Je referentie nummer ",
+SWAP_time                   : "Resterende tijd om te verzenden ",
+SWAP_progress_1             : "Bestelling Gestart ",
+SWAP_progress_2             : "Wachten op je ", // Waiting for your BTC...
+SWAP_progress_3             : "Ontvangen! ", // ETH Received!
+SWAP_progress_4             : "Verzenden van je {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Bestelling Voltooid ",
+SWAP_order_CTA              : "Verzend alsjeblieft ", // Please send 1 ETH...
+SWAP_unlock                 : "Open je Wallet op deze pagina om ETH of Tokens direct te verzenden. ",
 
-NAV_Swap                    : 'Swap ',
+NAV_Swap                    : 'Omwisselen ',
 
 
 
@@ -69,7 +69,7 @@ NAV_Offline                 : 'Verzend Offline ',
 NAV_SendEther               : 'Verzend Ether en Tokens ',
 NAV_SendTokens              : 'Verzend Tokens ',
 NAV_SignMsg                 : 'Onderteken bericht ',
-NAV_Swap                    : 'Swap ',
+NAV_Swap                    : 'Omwisselen ',
 NAV_ViewWallet              : 'Bekijk Wallet Info ',
 NAV_YourWallets             : 'Jouw Wallets ',
 
@@ -83,7 +83,7 @@ x_Json                      : 'JSON Bestand (onversleuteld) ',
 x_JsonDesc                  : 'Dit is het onversleutelde, JSON formaat van je prive sleutel. Dit betekend dat je het wachtwoord niet nodig hebt, maar ook dat een ieder die je JSON bestand vind toegang heeft tot je wallet & Ether zonder wachtwoord. ',
 x_Keystore                  : 'Keystore Bestand (UTC / JSON · Aangeraden · versleuteld) ',
 x_Keystore2                 : 'Keystore Bestand (UTC / JSON) ',
-x_KeystoreDesc              : 'Dit Keystore bestand voldoen aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up. ',
+x_KeystoreDesc              : 'Dit Keystore bestand voldoet aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up. ',
 x_Mnemonic                  : 'Mnemonic Zin ',
 x_Password                  : 'Wachtwoord ',
 x_Print                     : 'Druk je papieren wallet af ',
@@ -134,7 +134,7 @@ ADD_Radio_2_short           : 'SELECTEER WALLET BESTAND... ',
 ADD_Radio_3                 : 'Plak/Type je prive sleutel ',
 ADD_Radio_4                 : 'Voeg een te bekijken account toe ',
 ADD_Radio_5                 : 'Plak/type Mnemonic ',
-ADD_Radio_5_Path            : 'Select HD derivation path ',
+ADD_Radio_5_Path            : 'Selecteer HD derivation path ',
 ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken) ',
 ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR) ',
 ADD_Radio_5_PathAlternative : '(Ledger) ',
@@ -285,8 +285,8 @@ ADD_Ledger_0a               : 'Her-open MyEtherWallet met een veilige (SSL) verb
 ADD_Ledger_0b               : 'Her-open MyEtherWallet door gebruik te maken van [Chrome](https://www.google.com/chrome/browser/desktop/) of [Opera](https://www.opera.com/) ',
 
 x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Connect to TREZOR ',
-ADD_Trezor_select           : 'This is a TREZOR seed ',
+ADD_Trezor_scan             : 'Verbind met TREZOR ',
+ADD_Trezor_select           : 'Dit is een TREZOR seed ',
 
 /* Chrome Extension */
 CX_error_1                  : 'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen! ',
@@ -316,11 +316,11 @@ ERROR_19                    : 'Ongeldig symbol ',
 ERROR_20                    : 'is geen geldig ERC-20 token. Als andere tokens nog aan het laden zijn, verwijder dan dit token en probeer het opnieuw. ',
 ERROR_21                    : 'Kon gas niet inschatten. Er is onvoldoende saldo in het account, of het ontvangende contract adres geeft een fout. Voel je vrij om het gas handmatig in te stellen en door te gaan. De foutmelding bij het verzenden kan informatiever zijn. ',
 ERROR_22                    : 'Geef een geldige node naam in ',
-ERROR_23                    : 'Geef een geldige url in, als je van https gebruik maakt moet je url https bevatten ',
-ERROR_24                    : 'Geef een geldige poort in ',
-ERROR_25                    : 'Geef een geldig chain ID in ',
-ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount 0.01 ',
+ERROR_23                    : 'Voer een geldige url in, als je van https gebruik maakt moet je url met https beginnen ',
+ERROR_24                    : 'Voer een geldige poort in ',
+ERROR_25                    : 'Voer een geldig chain ID in ',
+ERROR_26                    : 'Voer een geldige ABI in ',
+ERROR_27                    : 'Minimale hoeveelheid is 0.01 ',
 ERROR_28                    : '**Je hebt je Keystore Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies. ',
 SUCCESS_1                   : 'Geldig adres ',
 SUCCESS_2                   : 'Wallet succesvol ontsleuteld ',
@@ -353,7 +353,7 @@ PARITY_InvalidGasLimit      : "Hoeveelheid gas is boven de limiet.",
 
 /* Translation Info */
 translate_version           : '0.3 ',
-Translator_Desc             : 'Veel dank voor onze vertalers ',
+Translator_Desc             : 'Bedank onze vertalers ',
 TranslatorName_1            : '[h3ll0fr13nd](https://www.myetherwallet.com/?gaslimit=21000&to=0xB5FbCE123F12347206c881cae73A3046BA1A90bA&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0xB5FbCE123F12347206c881cae73A3046BA1A90bA ',
 /* Translator 1             : Insert Comments Here */
