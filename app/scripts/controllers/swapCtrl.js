@@ -28,10 +28,11 @@ var swapCtrl = function($scope, $sce, walletService) {
         }
     }
     $scope.verifyMinMaxValues = function() {
-        if($scope.swapOrder.toVal < bity.min || $scope.swapOrder.fromVal < bity.min) return false;
-        else if(($scope.swapOrder.toCoin=="BTC" && $scope.swapOrder.toVal > bity.max) || ($scope.swapOrder.fromCoin=="BTC" && $scope.swapOrder.fromVal > bity.max)) return false;
-        else if(($scope.swapOrder.toCoin=="ETH" && $scope.swapOrder.toVal*$scope.bity.curRate['ETHBTC'] > bity.max) || ($scope.swapOrder.fromCoin=="ETH" && $scope.swapOrder.fromVal*$scope.bity.curRate['ETHBTC'] > bity.max)) return false;
-        else if(($scope.swapOrder.toCoin=="REP" && $scope.swapOrder.toVal*$scope.bity.curRate['REPBTC'] > bity.max) || ($scope.swapOrder.fromCoin=="REP" && $scope.swapOrder.fromVal*$scope.bity.curRate['REPBTC'] > bity.max)) return false;
+        if (!$scope.bity.priceLoaded) return false;
+        else if ($scope.swapOrder.toVal < bity.min || $scope.swapOrder.fromVal < bity.min) return false;
+        else if (($scope.swapOrder.toCoin == "BTC" && $scope.swapOrder.toVal > bity.max) || ($scope.swapOrder.fromCoin == "BTC" && $scope.swapOrder.fromVal > bity.max)) return false;
+        else if (($scope.swapOrder.toCoin == "ETH" && $scope.swapOrder.toVal * $scope.bity.curRate['ETHBTC'] > bity.max) || ($scope.swapOrder.fromCoin == "ETH" && $scope.swapOrder.fromVal * $scope.bity.curRate['ETHBTC'] > bity.max)) return false;
+        else if (($scope.swapOrder.toCoin == "REP" && $scope.swapOrder.toVal * $scope.bity.curRate['REPBTC'] > bity.max) || ($scope.swapOrder.fromCoin == "REP" && $scope.swapOrder.fromVal * $scope.bity.curRate['REPBTC'] > bity.max)) return false;
         return true;
     }
     $scope.setOrderCoin = function(isFrom, coin) {
@@ -96,7 +97,8 @@ var swapCtrl = function($scope, $sce, walletService) {
             showTimeRem: true,
             timeRemaining: '10:00',
             secsRemaining: orderResult.validFor - parseInt((new Date().getTime() - new Date(orderResult.timestamp_created).getTime()) / 1000),
-            pendingStatusReq: false
+            pendingStatusReq: false,
+            checkDelay: 1000
         };
         var timeRem = setInterval(function() {
             if (!orderResult) clearInterval(timeRem);
@@ -134,6 +136,7 @@ var swapCtrl = function($scope, $sce, walletService) {
                             uiFuncs.notifier.close();
                             orderResult.progress.status = "FILL";
                             orderResult.progress.bar = getProgressBarArr(5, 5);
+                            orderResult.progress.showTimeRem = false;
                             var url = orderResult.output.currency == 'BTC' ? bity.btcExplorer.replace("[[txHash]]", data.output.reference) : bity.ethExplorer.replace("[[txHash]]", data.output.reference)
                             var bExStr = "<a href='" + url + "' target='_blank'> View your transaction </a>";
                             $scope.notifier.success(globalFuncs.successMsgs[2] + data.output.reference + "<br />" + bExStr);
@@ -151,7 +154,7 @@ var swapCtrl = function($scope, $sce, walletService) {
                     orderResult.progress.pendingStatusReq = false;
                 });
             }
-        }, 1000);
+        }, orderResult.progress.checkDelay);
         $scope.showStage2 = false;
         if ($scope.orderResult.input.currency == 'BTC') $scope.showStage3Btc = true;
         else {

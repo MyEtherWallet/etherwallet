@@ -4,36 +4,32 @@ bity.SERVERURL = "https://bity.myetherapi.com";
 bity.decimals = 6;
 bity.ethExplorer = 'https://etherscan.io/tx/[[txHash]]';
 bity.btcExplorer = 'https://blockchain.info/tx/[[txHash]]';
-bity.validStatus = ["RCVE","FILL","CONF","EXEC"];
+bity.validStatus = ["RCVE", "FILL", "CONF", "EXEC"];
 bity.invalidStatus = ["CANC"];
-bity.mainPairs = ['REP','ETH'];
+bity.mainPairs = ['REP', 'ETH'];
 bity.min = 0.01;
 bity.max = 3;
+bity.prototype.priceLoaded = false;
 bity.prototype.refreshRates = function(callback) {
     var _this = this;
     ajaxReq.getRates(function(data) {
         _this.curRate = {};
         data.forEach(function(pair) {
-            if(bity.mainPairs.indexOf(pair.pair.substring(3)) != -1) _this.curRate[pair.pair] = parseFloat(pair.rate_we_sell);
-            else if(bity.mainPairs.indexOf(pair.pair.substring(0, 3)) != -1) _this.curRate[pair.pair] = parseFloat(pair.rate_we_buy);
+            if (bity.mainPairs.indexOf(pair.pair.substring(3)) != -1) _this.curRate[pair.pair] = parseFloat(pair.rate_we_sell);
+            else if (bity.mainPairs.indexOf(pair.pair.substring(0, 3)) != -1) _this.curRate[pair.pair] = parseFloat(pair.rate_we_buy);
             else _this.curRate[pair.pair] = parseFloat(pair.rate);
         });
-        if(callback) callback();
+        _this.priceLoaded = true;
+        if (callback) callback();
     });
 }
 bity.prototype.openOrder = function(orderInfo, callback) {
     var _this = this;
-    this.requireLogin(function() {
-        orderInfo.token = _this.token;
-        bity.post('/order', orderInfo, callback);
-    });
+    bity.post('/order', orderInfo, callback);
 }
 bity.prototype.getStatus = function(orderInfo, callback) {
     var _this = this;
-    this.requireLogin(function() {
-        orderInfo.token = _this.token;
-        bity.post('/status', orderInfo, callback);
-    });
+    bity.post('/status', orderInfo, callback);
 }
 bity.prototype.requireLogin = function(callback) {
     if (this.token) callback();
