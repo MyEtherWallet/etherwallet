@@ -767,6 +767,7 @@ var contractsCtrl = function ($scope, $sce, walletService) {
     $scope.sendContractModal = new Modal(document.getElementById('sendContract'));
     $scope.showReadWrite = false;
     $scope.sendTxModal = new Modal(document.getElementById('deployContract'));
+    $scope.Validator = Validator;
     $scope.tx = {
         gasLimit: '',
         data: '',
@@ -777,13 +778,12 @@ var contractsCtrl = function ($scope, $sce, walletService) {
         gasPrice: null
     };
     $scope.contract = {
-        address: '',
+        address: globalFuncs.urlGet('address') != null && $scope.Validator.isValidAddress(globalFuncs.urlGet('address')) ? globalFuncs.urlGet('address') : '',
         abi: '',
         functions: [],
         selectedFunc: null
     };
     $scope.selectedAbi = ajaxReq.abiList[0];
-    $scope.Validator = Validator;
     $scope.showRaw = false;
     $scope.$watch(function () {
         if (walletService.wallet == null) return null;
