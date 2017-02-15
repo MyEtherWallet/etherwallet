@@ -7674,6 +7674,12 @@ module.exports=[
     "symbol":"XAUR",
     "decimal":8,
     "type":"default"
+  },
+  {
+    "address":"0xBEB9eF514a379B997e0798FDcC901Ee474B6D9A1",
+    "symbol":"MLN",
+    "decimal":18,
+    "type":"default"
   }
 ]
 
