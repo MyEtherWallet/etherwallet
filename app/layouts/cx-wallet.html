@@ -23,10 +23,19 @@
     @@include( '../includes/print.tpl',              { "site": "cx" } )
 
   </div>
-  <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
+
+
+  <div class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
     <div class="container" ng-bind-html="notifier.message"></div>
     <i class="icon-close" ng-click="notifier.close()"></i>
-  </article>
+  </div>
+
+  <section class="loading-wrap" ng-hide="1==1">
+    <div class="loading">
+      <img src="images/loading.gif" />
+      <h1> Loading... </h1>
+  </section>
+
 </section>
 
 @@include( '../includes/footer.tpl', { "site": "cx" } )
