@@ -870,8 +870,8 @@
       <div class="progress-circle"><i>4</i></div>
       <p>
         <span translate="SWAP_progress_4">Sending your </span> {{orderResult.output.currency}} <br />
-        <small ng-show="orderResult.output.currency=='ETH'"> Waiting for 10 confirmations... </small>
-        <small ng-show="orderResult.output.currency!=='ETH'"> Waiting for 1 confirmation... </small>
+        <small ng-show="orderResult.input.currency=='ETH'"> Waiting for 10 confirmations... </small>
+        <small ng-show="orderResult.input.currency=='BTC'"> Waiting for 1 confirmation... </small>
       </p>
     </div>
     <div class="progress-item {{orderResult.progress.bar[4]}}">
