@@ -78,6 +78,12 @@
     "type":"default"
   },
   {
+    "address":"0xBEB9eF514a379B997e0798FDcC901Ee474B6D9A1",
+    "symbol":"MLN",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
     "symbol":"Nexium",
     "decimal":3,
@@ -117,12 +123,6 @@
     "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
     "symbol":"XAUR",
     "decimal":8,
-    "type":"default"
-  },
-  {
-    "address":"0xBEB9eF514a379B997e0798FDcC901Ee474B6D9A1",
-    "symbol":"MLN",
-    "decimal":18,
     "type":"default"
   }
 ]
