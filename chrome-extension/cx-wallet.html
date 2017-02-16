@@ -104,7 +104,7 @@
       <nav class="nav-inner">
         
         
-        <span ng-repeat="tab in tabNames track by $index" class="nav-item" ng-class="{active: $index==gService.currentTab}" ng-show="{{tab.cx}}" ng-click="tabClick($index)"> <a translate="{{tab.name}}"></a></span>
+        <span ng-repeat="tab in tabNames track by $index" class="nav-item {{tab.name}}" ng-class="{active: $index==gService.currentTab}" ng-show="{{tab.cx}}" ng-click="tabClick($index)"> <a translate="{{tab.name}}"></a></span>
         
       </nav>
     </div>
@@ -292,6 +292,7 @@
     </div>
     <div class="col-sm-4 text-right" style="margin-top: 16px;">
       <a class="btn btn-warning" ng-click="resetWallet()" translate="MYWAL_Hide"> Hide Wallet Info </a>
+      <br />
     </div>
     <div class="col-xs-12">
       <div class="alert alert-danger" translate="ERROR_28">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the help page for instructions.</div>
@@ -516,15 +517,15 @@
         </label>
         <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="fileupload">
-          <span translate="ADD_Radio_2">Select Your Wallet File (Keystore/JSON)</span>
+          <span translate="x_Keystore2">Keystore File</span>
         </label>
         <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="pasteprivkey">
-          <span translate="ADD_Radio_3">Paste/Type Your Private Key</span>
+          <span translate="x_PrivKey2">Private Key</span>
         </label>
         <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="pastemnemonic">
-          <span translate="ADD_Radio_5">Paste/Type Your Mnemonic</span>
+          <span translate="x_Mnemonic">Mnemonic</span>
         </label>
         <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="watchonlyaccount">
@@ -585,23 +586,6 @@
         <div class="form-group">
           <textarea rows="4" class="form-control" placeholder="{{ 'x_Mnemonic' | translate }}" ng-model="manualmnemonic" ng-change="onMnemonicChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>
         </div>
-        <div ng-show="showDPaths">
-        <h4 translate="ADD_Radio_5_Path"> Select HD derivation path: </h4>
-        <div class="form-group">
-          <div class="radio">
-            <label><input type="radio" id="hd_derivation_path_default" ng-model="HDWallet.dPath" value="{{ HDWallet.defaultDPath}}"/>
-            <span ng-bind="HDWallet.defaultDPath"></span> <span translate="ADD_Radio_5_PathDefault">(default)</span></label>
-          </div>
-          <div class="radio">
-            <label><input type="radio" id="hd_derivation_path_alternative" ng-model="HDWallet.dPath" value="{{ HDWallet.alternativeDPath}}"/>
-            <span ng-bind="HDWallet.alternativeDPath"></span> <span translate="ADD_Radio_5_PathAlternative">(alternative)</span></label>
-          </div>
-          <div class="radio">
-            <label><input type="radio" id="hd_derivation_path_custom" ng-model="HDWallet.dPath" value="{{HDWallet.customDPath}}"/>
-            <input type="text" class="form-control" style="display: inline; width: 70%" ng-model="HDWallet.customDPath" id="hd_derivation_path_custom_value" ng-change="onCustomHDDPathChange()"/> <span translate="ADD_Radio_5_PathCustom">(custom)</label>
-          </div>
-        </div>
-        </div>
       </div>
 
       <!-- Add an Account to Watch -->
@@ -644,31 +628,33 @@
     <!-- Sidebar -->
     <div class="col-sm-4">
 
-      <h4 translate="sidebar_AccountInfo"> Account Information: </h4>
+      <h5 translate="sidebar_AccountAddr">Account Address:</h5>
 
-      <div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
-
-      <div translate="sidebar_AccountAddr"> Account Address: </div>
       <ul class="account-info">
-        <li class="mono wrap"> {{wallet.getChecksumAddressString()}} </li>
+      <div class="addressIdenticon med float" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+      <span class="mono wrap">{{wallet.getChecksumAddressString()}}</span>
       </ul>
 
-      <div translate="sidebar_AccountBal"> Account Balance: </div>
+      <h5 translate="sidebar_AccountBal">Account Balance:</h5>
+
       <ul class="account-info">
         <li><strong>{{etherBalance}}</strong> ETH </li>
       </ul>
 
-      <div translate="sidebar_Equiv"> Equivalent Values: </div>
+      <h5 translate="sidebar_Equiv"> Equivalent Values: </h5>
       <ul class="account-info">
         <li><strong>{{usdBalance}}</strong> USD</li>
         <li><strong>{{eurBalance}}</strong> EUR</li>
         <li><strong>{{btcBalance}}</strong> BTC</li>
       </ul>
 
-      <div translate="sidebar_TransHistory"> Transaction History: </div>
+      <a target="_blank" ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-sm">Swap via Bity</a>
+
+      <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
       <ul class="account-info">
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
+
 
     </div>
 
@@ -702,39 +688,67 @@
 
     </div>
   </article>
-    <div class="modal fade" tabindex="-1" role="dialog" id="mnemonicModel">
-        <div class="modal-dialog" role="document" style="top: 200px">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" translate="MNEM_1"> Please select the address you would like to interact with. </h4>
-            </div>
-            <div class="modal-body">
-              <p translate="MNEM_2"> Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. </p>
-              <table class="table table-striped table-mnemonic">
-                <tr>
-                  <th></th>
-                  <th translate="x_Address"> Address </th>
-                  <th translate="MYWAL_Bal"> Balance </th>
-                <tr ng-repeat="wallet in HDWallet.wallets track by $index">
-                  <td> <input type="radio" name="addressSelect" value="{{$index}}" ng-model="HDWallet.id" /> </td>
-                  <td> {{wallet.getChecksumAddressString()}} </td>
-                  <td> {{wallet.getBalance()}} ETH </td>
-                </tr>
-                <tr class="m-addresses">
-                  <td><a ng-show="HDWallet.numWallets > 5" ng-click="AddRemoveHDAddresses(false)" translate="MNEM_prev">Previous Addresses</a></td>
-                  <td></td>
-                  <td><a ng-click="AddRemoveHDAddresses(true)" translate="MNEM_more">More<br />Addresses</a></td>
-                </tr>
-              </table>
-            </div>
-            <div class="modal-footer text-center">
-              <button type="button" class="btn btn-default" data-dismiss="modal" translate="x_Cancel">Cancel</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="setHDWallet()" translate="ADD_Label_6_short">Access Wallet</button>
-            </div>
-          </div>
+
+
+<!-- MODAL -->
+  <article class="modal fade" id="mnemonicModel" tabindex="-1">
+    <section class="modal-dialog">
+      <section class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <!-- Select HD Path -->
+          <span ng-show="showDPaths">
+            <h3 class="modal-title" translate="ADD_Radio_5_Path"> Select HD derivation path:</h3>
+            <label class="radio">
+              <input type="radio" id="hd_derivation_path_default" ng-model="HDWallet.dPath" value="{{HDWallet.defaultDPath}}" ng-change="onHDDPathChange()"/>
+              <span ng-bind="HDWallet.defaultDPath"></span>
+              <span ng-if="!showTrezorSeparate" translate="ADD_Radio_5_withTrezor">(default with trezor)</span>
+              <span ng-if="showTrezorSeparate" translate="ADD_Radio_5_woTrezor">(default without trezor)</span>
+            </label>
+            <label class="radio">
+              <input type="radio" id="hd_derivation_path_alternative" ng-model="HDWallet.dPath" value="{{HDWallet.alternativeDPath}}" ng-change="onHDDPathChange()"/>
+              <span ng-bind="HDWallet.alternativeDPath"></span>
+              <span translate="ADD_Radio_5_PathAlternative">(alternative)</span>
+            </label>
+            <label class="radio" ng-if="showTrezorSeparate">
+              <input type="radio" id="hd_derivation_path_trezor" ng-model="HDWallet.dPath" value="{{getTrezorPath()}}" ng-change="onHDDPathChange()" />
+              <span ng-bind="getTrezorPath()"></span>
+              <span translate="ADD_Radio_5_PathTrezor">(Trezor)</span>
+            </label>
+            <label class="radio">
+              <input type="radio" id="hd_derivation_path_custom" ng-model="HDWallet.dPath" value="{{HDWallet.customDPath}}" ng-change="onHDDPathChange()" />
+              <input type="text" class="form-control" style="display:inline;width:70%;max-width:15rem;" ng-model="HDWallet.customDPath" id="hd_derivation_path_custom_value" ng-change="onCustomHDDPathChange()" />
+              <span translate="ADD_Radio_5_PathCustom">(Custom)</span>
+            </label>
+          </span>
+          <!-- END Select HD Path --><!-- Select Address --><hr />
+          <h3 class="modal-title" translate="MNEM_1">Please select the address you would like to interact with.</h3>
+          <p class="small" translate="MNEM_2">Your single HD mnemonic phrase can access a number of wallets / addresses.</p>
+          <table class="small table table-striped table-mnemonic"><tr><th></th>
+            <th translate="x_Address">Address</th>
+            <th translate="MYWAL_Bal">Balance</th>
+          </tr>
+          <tr ng-repeat="wallet in HDWallet.wallets track by $index">
+            <td><input type="radio" name="addressSelect" value="{{$index}}" ng-model="HDWallet.id" /></td>
+            <td>{{wallet.getChecksumAddressString()}}</td>
+            <td>{{wallet.getBalance()}} ETH</td>
+          </tr>
+          <tr class="m-addresses">
+            <td class"small"><a ng-show="HDWallet.numWallets > 5" ng-click="AddRemoveHDAddresses(false)" translate="MNEM_prev">Previous Addresses</a></td>
+            <td></td>
+            <td class"small"><a ng-click="AddRemoveHDAddresses(true)" translate="MNEM_more">More Addresses</a></td>
+          </tr></table>
+          <!-- END Select Address -->
         </div>
-      </div>
+        <div class="modal-footer">
+          <button class="btn btn-default" data-dismiss="modal" translate="x_Cancel">Cancel</button>
+          <button class="btn btn-primary" ng-click="setHDWallet()" translate="ADD_Label_6_short">Access Wallet</button>
+        </div>
+      </section>
+    </section>
+  </article>
+  <!-- / MODAL -->
+
 
 </main>
 
@@ -2516,10 +2530,19 @@
 
 
   </div>
-  <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
+
+
+  <div class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
     <div class="container" ng-bind-html="notifier.message"></div>
     <i class="icon-close" ng-click="notifier.close()"></i>
-  </article>
+  </div>
+
+  <section class="loading-wrap" ng-hide="1==1">
+    <div class="loading">
+      <img src="images/loading.gif" />
+      <h1> Loading... </h1>
+  </section>
+
 </section>
 
 <footer ng-controller='footerCtrl'>

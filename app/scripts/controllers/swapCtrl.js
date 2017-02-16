@@ -28,7 +28,7 @@ var swapCtrl = function($scope, $sce, walletService) {
         }
     }
     $scope.verifyMinMaxValues = function() {
-        uiFuncs.notifier.close();
+        if(!$scope.orderResult) uiFuncs.notifier.close();
         var errors = {
             priceNotLoaded: 0,
             lessThanMin: 1,
