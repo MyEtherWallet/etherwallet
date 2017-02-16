@@ -62,18 +62,18 @@ var tabs = {
     mew: true,
     cx: false
   },
-  help: {
-    id: 8,
-    name: "NAV_Help",
-    url: "help",
-    mew: true,
-    cx: true
-  },
   signMsg: {
-    id: 9,
+    id: 8,
     name: "NAV_SignMsg",
     url: "sign-message",
     mew: false,
+    cx: false
+  },
+  help: {
+    id: 9,
+    name: "NAV_Help",
+    url: "help",
+    mew: true,
     cx: true
   },
   bulkGenerate: {
