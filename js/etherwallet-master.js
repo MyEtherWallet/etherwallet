@@ -1623,8 +1623,22 @@ var swapCtrl = function ($scope, $sce, walletService) {
         };
     };
     $scope.verifyMinMaxValues = function () {
-        if (!$scope.bity.priceLoaded) return false;else if ($scope.swapOrder.toVal < bity.min || $scope.swapOrder.fromVal < bity.min) return false;else if ($scope.swapOrder.toCoin == "BTC" && $scope.swapOrder.toVal > bity.max || $scope.swapOrder.fromCoin == "BTC" && $scope.swapOrder.fromVal > bity.max) return false;else if ($scope.swapOrder.toCoin == "ETH" && $scope.swapOrder.toVal * $scope.bity.curRate['ETHBTC'] > bity.max || $scope.swapOrder.fromCoin == "ETH" && $scope.swapOrder.fromVal * $scope.bity.curRate['ETHBTC'] > bity.max) return false;else if ($scope.swapOrder.toCoin == "REP" && $scope.swapOrder.toVal * $scope.bity.curRate['REPBTC'] > bity.max || $scope.swapOrder.fromCoin == "REP" && $scope.swapOrder.fromVal * $scope.bity.curRate['REPBTC'] > bity.max) return false;
-        return true;
+        uiFuncs.notifier.close();
+        var errors = {
+            priceNotLoaded: 0,
+            lessThanMin: 1,
+            greaterThanMax: 2,
+            noErrors: 3
+        };
+        var verify = function () {
+            if (!$scope.bity.priceLoaded) return errors.priceNotLoaded;else if ($scope.swapOrder.toVal < bity.min || $scope.swapOrder.fromVal < bity.min) return errors.lessThanMin;else if ($scope.swapOrder.toCoin == "BTC" && $scope.swapOrder.toVal > bity.max || $scope.swapOrder.fromCoin == "BTC" && $scope.swapOrder.fromVal > bity.max) return errors.greaterThanMax;else if ($scope.swapOrder.toCoin == "ETH" && $scope.swapOrder.toVal * $scope.bity.curRate['ETHBTC'] > bity.max || $scope.swapOrder.fromCoin == "ETH" && $scope.swapOrder.fromVal * $scope.bity.curRate['ETHBTC'] > bity.max) return errors.greaterThanMax;else if ($scope.swapOrder.toCoin == "REP" && $scope.swapOrder.toVal * $scope.bity.curRate['REPBTC'] > bity.max || $scope.swapOrder.fromCoin == "REP" && $scope.swapOrder.fromVal * $scope.bity.curRate['REPBTC'] > bity.max) return errors.greaterThanMax;
+            return errors.noErrors;
+        };
+        var vResult = verify();
+        if (vResult == errors.noErrors) return true;else if (vResult == errors.priceNotLoaded) return false;else if (vResult == errors.lessThanMin || vResult == errors.greaterThanMax) {
+            if ($scope.swapOrder.toVal && $scope.swapOrder.fromVal) uiFuncs.notifier.danger(globalFuncs.errorMsgs[27] + bity.max + " BTC/" + (bity.max / $scope.bity.curRate['ETHBTC']).toFixed(3) + " ETH/" + (bity.max / $scope.bity.curRate['REPBTC']).toFixed(3) + " REP");
+            return false;
+        }
     };
     $scope.setOrderCoin = function (isFrom, coin) {
         if (isFrom) $scope.swapOrder.fromCoin = coin;else $scope.swapOrder.toCoin = coin;
@@ -2771,7 +2785,7 @@ globalFuncs.getDangerText = function (str) {
 // These are translated in the translation files
 globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", // 10
 "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", // 15
-"A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.", "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port", "Please enter valid chain ID", "Please enter valid ABI", "Minimum amount 0.01 and max 3", "You need your Keystore File & Password (or Private Key) to access this wallet in the future."];
+"A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.", "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port", "Please enter valid chain ID", "Please enter valid ABI", "Minimum amount 0.01 and max", "You need your Keystore File & Password (or Private Key) to access this wallet in the future."];
 // These are translated in the translation files
 globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "File Selected: "];
 // These are translated in the translation files
@@ -9181,7 +9195,7 @@ en.data = {
   ERROR_24: 'Please enter valid port ',
   ERROR_25: 'Please enter valid chain ID ',
   ERROR_26: 'Please enter valid ABI ',
-  ERROR_27: 'Minimum amount 0.01 and max 3 BTC ',
+  ERROR_27: 'Minimum amount 0.01 and max',
   ERROR_28: '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions. ',
   SUCCESS_1: 'Valid address ',
   SUCCESS_2: 'Wallet successfully decrypted ',
@@ -80998,7 +81012,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
+      "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -81034,7 +81048,7 @@ module.exports={
   "_shasum": "5482d9646d54bcb89fd7d994fc9e2e9568876e3f",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
+  "_where": "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
