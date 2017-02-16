@@ -67,17 +67,24 @@ var walletDecryptDrtv = function() {
       <ol>\r\n \
         <li translate=\"ADD_Ledger_0a\" class=\"text-danger\" ng-hide=\"isSSL\"> Re-open MyEtherWallet on a secure (SSL) connection <\/li>\r\n \
         <li translate=\"ADD_Ledger_0b\" class=\"text-danger\" ng-hide=\"isChrome\"> Re-open MyEtherWallet using Google Chrome or Opera <\/li>\r\n \
-        <li translate=\"ADD_Ledger_1\">Connect your Ledger Nano S<\/li>\r\n \
-        <li translate=\"ADD_Ledger_2\">Open the Ethereum application (or a contract application)<\/li>\r\n \
+        <li><span translate=\"ADD_Ledger_1\">Connect your Ledger Nano S<\/span> & <span translate=\"ADD_Ledger_2\">Open the Ethereum application (or a contract application)<\/span></li>\r\n \
         <li translate=\"ADD_Ledger_3\">Verify that Browser Support is enabled in Settings<\/li>\r\n \
         <li translate=\"ADD_Ledger_4\">If no Browser Support is found in settings, verify that you have Firmware >1.2<\/li>\r\n \
       <\/ol>\r\n \
+      <div class="text-center">\r\n \
+        <p>Guides:<br /><a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-use-myetherwallet-with-your-nano-s" target="_blank">How to use MyEtherWallet with your Nano S</a><br />\r\n \
+        <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-secure-your-eth-tokens-augur-rep-dot-dot-dot-with-your-nano-s" target="_blank">How to secure your tokens with your Nano S</a><br />\r\n \
+        <br /><a class="btn btn-default btn-sm" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank">Don\'t have a Ledger? Buy one today.</a></p></div>\r\n \
     <\/div>\r\n \
     <!-- \/if selected type ledger-->\r\n \
     <!-- if selected type trezor-->\r\n \
-    <div id=\"selectedTypeTrezor\" ng-if=\"walletType==\'trezor\'\">\r\n \
+    <br /><div id=\"selectedTypeTrezor\" ng-if=\"walletType==\'trezor\'\">\r\n \
       <div class=\"form-group\"><a class=\"btn btn-primary btn-block\" ng-show=\"walletType==\'trezor\'\" ng-click=\"scanTrezor()\" translate=\"ADD_Trezor_scan\">SCAN<\/a><\/div>\r\n \
       <p ng-show=\"trezorError\" class=\"text-center text-danger\"><strong>{{trezorErrorString}}<\/strong><\/p>\r\n \
+      <br /><br />\r\n \
+      <div class="text-center">\r\n \
+      <p>Guide:<br /><a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08#.n5fddxmdg" target="_blank">How to use TREZOR with MyEtherWallet</a></p><br />\r\n \
+      <a class="btn btn-sm btn-default" href="https://trezor.io/?a=myetherwallet.com" target="_blank">Don\'t have a TREZOR? Order one now.</a></div>\r\n \
     <\/div>\r\n \
     <!-- \/if selected type ledger-->\r\n \
     <!-- if selected addressOnly-->\r\n \
@@ -123,7 +130,7 @@ var walletDecryptDrtv = function() {
             <\/label>\r\n \
             <label class=\"radio\">\r\n \
               <input type=\"radio\" id=\"hd_derivation_path_custom\" ng-model=\"HDWallet.dPath\" value=\"{{HDWallet.customDPath}}\" ng-change=\"onHDDPathChange()\" \/>\r\n \
-              <input type=\"text\" class=\"form-control\" style=\"display: inline; width: 70%\" ng-model=\"HDWallet.customDPath\" id=\"hd_derivation_path_custom_value\" ng-change=\"onCustomHDDPathChange()\" \/>\r\n \
+              <input type=\"text\" class=\"form-control\" style=\"display:inline;width:70%;max-width:15rem;\" ng-model=\"HDWallet.customDPath\" id=\"hd_derivation_path_custom_value\" ng-change=\"onCustomHDDPathChange()\" \/>\r\n \
               <span translate=\"ADD_Radio_5_PathCustom\">(Custom)<\/span>\r\n \
             <\/label>\r\n \
           <\/span> \r\n \

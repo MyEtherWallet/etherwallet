@@ -88,6 +88,8 @@
         <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
       </div>
 
+      <hr/>
+
       <div ng-show="wallet.type=='default'">
         @@if (site === 'cx' )  {  @@include( './signMsg.tpl', { "site": "mew" } )   }
         @@if (site === 'mew' ) {  @@include( './signMsg.tpl', { "site": "cx" } )    }

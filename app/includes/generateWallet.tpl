@@ -29,10 +29,6 @@
   <section ng-show="showWallet">
     <br /><hr /><br />
 
-    <!-- Title -->
-    <h3 translate="GEN_SuccessMsg">Success! Your wallet has been generated.</h3>
-    <!-- / Title -->
-
     <!-- 1. Private Keys -->
     <h2>1. <span translate="GEN_Label_2"> Save your Keystore File. Don't forget your password above. </span></h2>
     <section class="row">

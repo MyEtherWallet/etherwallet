@@ -46,7 +46,12 @@
       <div class="progress-circle"><i>3</i></div><p>{{orderResult.input.currency}} <span translate="SWAP_progress_3">Received!</span></p>
     </div>
     <div class="progress-item {{orderResult.progress.bar[3]}}">
-      <div class="progress-circle"><i>4</i></div><p><span translate="SWAP_progress_4">Sending your </span> {{orderResult.output.currency}}</p>
+      <div class="progress-circle"><i>4</i></div>
+      <p>
+        <span translate="SWAP_progress_4">Sending your </span> {{orderResult.output.currency}} <br />
+        <small ng-show="orderResult.output.currency=='ETH'"> Waiting for 10 confirmations... </small>
+        <small ng-show="orderResult.output.currency!=='ETH'"> Waiting for 1 confirmation... </small>
+      </p>
     </div>
     <div class="progress-item {{orderResult.progress.bar[4]}}">
       <div class="progress-circle"><i>5</i></div><p translate="SWAP_progress_5">Order Complete</p>
@@ -90,9 +95,11 @@
 
 
   <!-- Swap CTA BTC -->
-  <section class="row" ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
+  <section class="row text-center" ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
     <label translate="x_Address"> Your Address </label>
     <div class="qr-code" qr-code="{{'bitcoin:'+orderResult.payment_address+'?amount='+orderResult.input.amount}}" watch-var="orderResult" ></div>
+
+    <div class="alert alert-warning"> Be sure to provide enough gas for the transaction to be completely in a timely manner. </div>
   </section>
 
 

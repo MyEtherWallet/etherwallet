@@ -191,6 +191,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             key: key,
             value: value
         }));
+        globalFuncs.curLang = key;
     }
     $scope.setLanguageFromStorage = function() {
         var lang = localStorage.getItem('language');
