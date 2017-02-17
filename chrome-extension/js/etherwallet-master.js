@@ -3,11 +3,15 @@ module.exports=[
   {
       "name": "Select a contract...",
       "address": "",
-      "abi": ' '
+      "abi": ''
   },{
       "name": "DAO Classic Withdraw",
       "address": "0x180826b05452ce96e157f0708c43381fee64a6b8",
       "abi": '[{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[],"name":"seal","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"totalAccounts","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"data","type":"uint256[]"}],"name":"fill","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"type":"function"},{"constant":true,"inputs":[],"name":"sealed","outputs":[{"name":"","type":"bool"}],"type":"function"},{"inputs":[],"type":"constructor"}]'
+  },{
+	    "name": "BitEther",
+	    "address": "0x085fb4f24031eaedbc2b611aa528f22343eb52db",
+	    "abi": '[{"constant":false,"inputs":[],"name":"getEra","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_eraBlock","type":"uint256"},{"name":"_blockMined","type":"uint256"},{"name":"_blockNumber","type":"uint256"},{"name":"_rewardPrev","type":"uint256"},{"name":"_reward","type":"uint256"}],"name":"getUnclaimed","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_block","type":"uint256"}],"name":"getEraForBlock","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"claim","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"type":"function"},{"inputs":[],"type":"constructor"},{"payable":false,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_miner","type":"address"},{"indexed":false,"name":"_value","type":"uint256"},{"indexed":false,"name":"_current","type":"bool"}],"name":"Reward","type":"event"}]'
   }
 ]
 
@@ -51,8 +55,8 @@ module.exports=[
       "abi": '[{ "constant": false, "inputs": [ { "name": "_committeeID", "type": "uint256" }, { "name": "_supportsProposal", "type": "bool" } ], "name": "vote", "outputs": [], "payable": false, "type": "function" },{ "constant": false, "inputs": [ { "name": "_proposalID", "type": "uint256" } ], "name": "buySharesForProposal", "outputs": [ { "name": "", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [], "name": "withdrawPendingAmounts", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function"}, { "constant": false, "inputs": [ { "name": "_contractorCreator", "type": "address" }, { "name": "_recipient", "type": "address" }, { "name": "_metaProject", "type": "bool" }, { "name": "_passProject", "type": "address" }, { "name": "_projectName", "type": "string" }, { "name": "_projectDescription", "type": "string" } ], "name": "createContractor", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "_amount", "type": "uint256" }, { "name": "_contractor", "type": "address" }, { "name": "_contractorProposalID", "type": "uint256" }, { "name": "_proposalDescription", "type": "string" }, { "name": "_hashOfTheContractorProposalDocument", "type": "bytes32" }, { "name": "_moderator", "typPassDe": "address" }, { "name": "_initialSharePriceMultiplier", "type": "uint256" }, { "name": "_minutesFundingPeriod", "type": "uint256" }, { "name": "_minutesDebatingPeriod", "type": "uint256" } ], "name": "contractorProposal", "outputs": [ { "name": "", "type": "uint256" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "_name", "type": "string" }, { "name": "_description", "type": "string" }, { "name": "_project", "type": "address" }, { "name": "_minutesDebatingPeriod", "type": "uint256" } ], "name": "resolutionProposal", "outputs": [ { "name": "", "type": "uint256" } ], "payable": true, "type": "function" },  { "constant": false, "inputs": [ { "name": "_minQuorumDivisor", "type": "uint256" }, { "name": "_minCommitteeFees", "type": "uint256" }, { "name": "_minPercentageOfLikes", "type": "uint256" }, { "name": "_minutesSetProposalPeriod", "type": "uint256" }, { "name": "_minMinutesDebatePeriod", "type": "uint256" }, { "name": "_feesRewardInflationRate", "type": "uint256" }, { "name": "_defaultMinutesFundingPeriod", "type": "uint256" }, { "name": "_tokenPriceInflationRate", "type": "uint256" } ], "name": "rulesProposal", "outputs": [ { "name": "", "type": "uint256" } ], "payable": true, "type": "function" },  { "constant": false, "inputs": [ { "name": "_newCommitteeRoom", "type": "address" }, { "name": "_newShareManager", "type": "address" }, { "name": "_newTokenManager", "type": "address" }, { "name": "_minutesDebatingPeriod", "type": "uint256" } ], "name": "upgradeProposal", "outputs": [ { "name": "", "type": "uint256" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "_committeeID", "type": "uint256" } ], "name": "executeDecision", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "_proposalID", "type": "uint256" } ], "name": "orderToContractor", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }]'
   },{
       "name": "Pass DAO Tokens Contract",
-      "address": "0x3c01ddc7af41e6888cbd8d0398fe34a81c3c7f36",
-      "abi": '[{ "constant": false, "inputs": [ { "name": "_proposalID", "type": "uint256" }, { "name": "_buyer", "type": "address" } ], "name": "buyTokensForProposal", "outputs": [ { "name": "", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [], "name": "withdrawPendingAmounts", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "buyTokens", "outputs": [ { "name": "", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "_from", "type": "uint256" }, { "name": "_to", "type": "uint256" } ], "name": "removeOrders", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "_tokenAmount", "type": "uint256" }, { "name": "_from", "type": "uint256" }, { "name": "_to", "type": "uint256" } ], "name": "sellTokens", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "type": "function" } ]'
+      "address": "0x85bC00724203D53536072b000C44A2cc16CD12C5",
+      "abi": '[{ "constant": false, "inputs": [ { "name": "_proposalID", "type": "uint256" }, { "name": "_buyer", "type": "address" } ], "name": "buyTokensForProposal", "outputs": [ { "name": "", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [], "name": "withdrawPendingAmounts", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "buyTokens", "outputs": [ { "name": "", "type": "bool" } ], "payable": true, "type": "function" }, { "constant": false, "inputs": [ { "name": "_from", "type": "uint256" }, { "name": "_to", "type": "uint256" } ], "name": "removeOrders", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "_tokenAmount", "type": "uint256" }, { "name": "_from", "type": "uint256" }, { "name": "_to", "type": "uint256" } ], "name": "sellTokens", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "type": "function" }]'
   }
 ]
 
@@ -1137,7 +1141,7 @@ var decryptWalletCtrl = function decryptWalletCtrl($scope, $sce, walletService) 
 module.exports = decryptWalletCtrl;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],14:[function(require,module,exports){
+},{"buffer":149}],14:[function(require,module,exports){
 'use strict';
 
 var footerCtrl = function footerCtrl($scope, globalService) {
@@ -1585,7 +1589,7 @@ var signMsgCtrl = function signMsgCtrl($scope, $sce, walletService) {
 module.exports = signMsgCtrl;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],18:[function(require,module,exports){
+},{"buffer":149}],18:[function(require,module,exports){
 'use strict';
 
 var swapCtrl = function swapCtrl($scope, $sce, walletService) {
@@ -3059,7 +3063,7 @@ if (IS_CX) {
   app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
 }
 
-},{"./ajaxReq":4,"./bity":5,"./controllers/CX/addWalletCtrl":6,"./controllers/CX/cxDecryptWalletCtrl":7,"./controllers/CX/mainPopCtrl":8,"./controllers/CX/myWalletsCtrl":9,"./controllers/CX/quickSendCtrl":10,"./controllers/bulkGenCtrl":11,"./controllers/contractsCtrl":12,"./controllers/decryptWalletCtrl":13,"./controllers/footerCtrl":14,"./controllers/offlineTxCtrl":15,"./controllers/sendTxCtrl":16,"./controllers/signMsgCtrl":17,"./controllers/swapCtrl":18,"./controllers/tabsCtrl":19,"./controllers/viewCtrl":20,"./controllers/viewWalletCtrl":21,"./controllers/walletBalanceCtrl":22,"./controllers/walletGenCtrl":23,"./cxFuncs":24,"./directives/QRCodeDrtv":25,"./directives/balanceDrtv":26,"./directives/blockiesDrtv":27,"./directives/cxWalletDecryptDrtv":28,"./directives/fileReaderDrtv":29,"./directives/walletDecryptDrtv":30,"./ethFuncs":31,"./etherUnits":32,"./globalFuncs":33,"./myetherwallet":35,"./nodes":42,"./services/globalService":43,"./services/walletService":44,"./solidity/coder":48,"./solidity/utils":59,"./staticJS/customMarked":60,"./staticJS/ledger-eth":61,"./staticJS/ledger3":62,"./staticJS/trezorConnect":63,"./staticJS/u2f-api":64,"./tokenlib":65,"./translations/translate.js":85,"./uiFuncs":88,"./validator":89,"angular":97,"angular-animate":91,"angular-sanitize":93,"angular-translate":95,"angular-translate-handler-log":94,"bignumber.js":114,"bip39":115,"crypto":157,"ethereumjs-tx":186,"ethereumjs-util":187,"hdkey":197,"scryptsy":242,"string-format":258,"uuid":268,"wallet-address-validator":273}],35:[function(require,module,exports){
+},{"./ajaxReq":4,"./bity":5,"./controllers/CX/addWalletCtrl":6,"./controllers/CX/cxDecryptWalletCtrl":7,"./controllers/CX/mainPopCtrl":8,"./controllers/CX/myWalletsCtrl":9,"./controllers/CX/quickSendCtrl":10,"./controllers/bulkGenCtrl":11,"./controllers/contractsCtrl":12,"./controllers/decryptWalletCtrl":13,"./controllers/footerCtrl":14,"./controllers/offlineTxCtrl":15,"./controllers/sendTxCtrl":16,"./controllers/signMsgCtrl":17,"./controllers/swapCtrl":18,"./controllers/tabsCtrl":19,"./controllers/viewCtrl":20,"./controllers/viewWalletCtrl":21,"./controllers/walletBalanceCtrl":22,"./controllers/walletGenCtrl":23,"./cxFuncs":24,"./directives/QRCodeDrtv":25,"./directives/balanceDrtv":26,"./directives/blockiesDrtv":27,"./directives/cxWalletDecryptDrtv":28,"./directives/fileReaderDrtv":29,"./directives/walletDecryptDrtv":30,"./ethFuncs":31,"./etherUnits":32,"./globalFuncs":33,"./myetherwallet":35,"./nodes":42,"./services/globalService":43,"./services/walletService":44,"./solidity/coder":48,"./solidity/utils":59,"./staticJS/customMarked":60,"./staticJS/ledger-eth":61,"./staticJS/ledger3":62,"./staticJS/trezorConnect":63,"./staticJS/u2f-api":64,"./tokenlib":65,"./translations/translate.js":85,"./uiFuncs":89,"./validator":90,"angular":98,"angular-animate":92,"angular-sanitize":94,"angular-translate":96,"angular-translate-handler-log":95,"bignumber.js":115,"bip39":116,"crypto":158,"ethereumjs-tx":187,"ethereumjs-util":188,"hdkey":198,"scryptsy":243,"string-format":259,"uuid":269,"wallet-address-validator":274}],35:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -3398,7 +3402,7 @@ Wallet.getWalletFromPrivKeyFile = function (strjson, password) {
 module.exports = Wallet;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],36:[function(require,module,exports){
+},{"buffer":149}],36:[function(require,module,exports){
 'use strict';
 
 var customNode = function customNode(srvrUrl, port) {
@@ -4338,7 +4342,7 @@ module.exports = {
     defaultAccount: undefined
 };
 
-},{"bignumber.js":114}],50:[function(require,module,exports){
+},{"bignumber.js":115}],50:[function(require,module,exports){
 'use strict';
 
 var f = require('./formatters');
@@ -4617,7 +4621,7 @@ module.exports = {
     formatOutputAddress: formatOutputAddress
 };
 
-},{"./config":49,"./param":53,"./utils":59,"bignumber.js":114}],52:[function(require,module,exports){
+},{"./config":49,"./param":53,"./utils":59,"bignumber.js":115}],52:[function(require,module,exports){
 'use strict';
 
 var f = require('./formatters');
@@ -5781,7 +5785,7 @@ module.exports = {
     isJson: isJson
 };
 
-},{"bignumber.js":114,"ethereumjs-util":187,"utf8":262}],60:[function(require,module,exports){
+},{"bignumber.js":115,"ethereumjs-util":188,"utf8":263}],60:[function(require,module,exports){
 'use strict';
 
 var marked = require('marked');
@@ -5812,7 +5816,7 @@ marked.setOptions({
 });
 module.exports = marked;
 
-},{"marked":211}],61:[function(require,module,exports){
+},{"marked":212}],61:[function(require,module,exports){
 (function (Buffer){
 /********************************************************************************
 *   Ledger Communication toolkit
@@ -5973,7 +5977,7 @@ LedgerEth.prototype.getAppConfiguration = function (callback) {
 module.exports = LedgerEth;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],62:[function(require,module,exports){
+},{"buffer":149}],62:[function(require,module,exports){
 (function (Buffer){
 /********************************************************************************
 *   Ledger Communication toolkit
@@ -6044,7 +6048,7 @@ Ledger3.prototype.exchange = function (apduHex, callback) {
 module.exports = Ledger3;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],63:[function(require,module,exports){
+},{"buffer":149}],63:[function(require,module,exports){
 'use strict';
 
 /**
@@ -7626,7 +7630,15 @@ Token.prototype.getData = function (toAdd, value) {
 module.exports = Token;
 
 },{}],66:[function(require,module,exports){
-module.exports=[]
+module.exports=[
+  {
+    "address":"0x085fb4f24031eaedbc2b611aa528f22343eb52db",
+    "symbol":"BEC",
+    "decimal":8,
+    "type":"default"
+  }
+ ]
+
 },{}],67:[function(require,module,exports){
 module.exports=[
   {
@@ -7758,8 +7770,8 @@ module.exports=[
 ]
 
 },{}],68:[function(require,module,exports){
-arguments[4][66][0].apply(exports,arguments)
-},{"dup":66}],69:[function(require,module,exports){
+module.exports=[]
+},{}],69:[function(require,module,exports){
 // German
 'use strict';
 
@@ -11503,61 +11515,6 @@ var ja = function ja() {};
 ja.code = 'ja';
 ja.data = (_ja$data = {
 
-  /* Misc */
-  x_ParityPhrase: 'Parity Phrase ',
-
-  /* Node Switcher */
-  NODE_Title: 'Set Up Your Custom Node',
-  NODE_Subtitle: 'To connect to a local node...',
-  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-  NODE_Name: 'Node Name',
-  NODE_Port: 'Node Port',
-  NODE_CTA: 'Save & Use Custom Node',
-
-  /* Contracts */
-  x_Access: 'Access ',
-  CONTRACT_Title: 'Contract Address ',
-  CONTRACT_Title_2: 'Select Existing Contract ',
-  CONTRACT_Json: 'ABI / JSON Interface ',
-  CONTRACT_Interact_Title: 'Read / Write Contract ',
-  CONTRACT_Interact_CTA: 'Select a function ',
-  CONTRACT_ByteCode: 'Byte Code ',
-  CONTRACT_Read: 'READ ',
-  CONTRACT_Write: 'WRITE ',
-
-  /* Swap / Exchange */
-  SWAP_rates: "Current Rates ",
-  SWAP_init_1: "I want to swap my ",
-  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
-  SWAP_init_CTA: "Let's do this! ", // or "Continue"
-  SWAP_information: "Your Information ",
-  SWAP_send_amt: "Amount to send ",
-  SWAP_rec_amt: "Amount to receive ",
-  SWAP_your_rate: "Your rate ",
-  SWAP_rec_add: "Your Receiving Address ",
-  SWAP_start_CTA: "Start Swap ",
-  SWAP_ref_num: "Your reference number ",
-  SWAP_time: "Time remaining to send ",
-  SWAP_progress_1: "Order Initiated ",
-  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
-  SWAP_progress_3: "Received! ", // ETH Received!
-  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
-  SWAP_progress_5: "Order Complete ",
-  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
-  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
-  NAV_Swap: 'Swap ',
-  NAV_InteractContract: 'Interact with Contract ',
-
-  /* Sign Message */
-  MSG_message: 'メッセージ ',
-  MSG_date: '日付 ',
-  MSG_signature: '署名 ',
-  MSG_verify: 'メッセージを確認 ',
-  MSG_info1: 'この署名が別の日付で再度使われないようにするために、現時点の日付を入れてください。 ',
-  MSG_info2: '他人に使われないようにするため、あなたのニックネームとそれが使われるところを入れてください。 ',
-  MSG_info3: '異なった目的で使用されないようにするために、利用目的を入れてください。 ',
-
   /* Navigation*/
   NAV_AddWallet: 'ウォレット追加 ',
   NAV_BulkGenerate: 'バルク作成 ',
@@ -11566,27 +11523,32 @@ ja.data = (_ja$data = {
   NAV_DeployContract: 'コントラクトをデプロイ ',
   NAV_GenerateWallet: 'ウォレット作成 ',
   NAV_Help: 'ヘルプ ',
+  NAV_InteractContract: 'コントラクトを操作 ',
   NAV_Multisig: 'Multisig ',
   NAV_MyWallets: '自分のウォレット ',
   NAV_Offline: 'オフライン送出 ',
   NAV_SendEther: 'Ether送出 トークン送出 ',
   NAV_SendTokens: 'トークン送出 ',
   NAV_SignMsg: 'メッセージ署名 ',
+  NAV_Swap: '交換 ',
   NAV_ViewWallet: 'ウォレット情報を見る ',
   NAV_YourWallets: '自分のウォレット ',
 
   /* General */
-  x_Address: '自分のアドレス ',
+  x_Access: 'アクセス ',
   x_AddessDesc: 'これは自分のアカウント番号とパブリックキーになります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。 ',
-  x_CSV: 'CSV ファイル (未暗号化) ',
+  x_Address: '自分のアドレス ',
   x_Cancel: '取り消す ',
+  x_CSV: 'CSV ファイル (未暗号化) ',
   x_Download: 'ダウンロード ',
   x_Json: 'JSON ファイル (未暗号化) ',
   x_JsonDesc: 'これはパスワードが不要な暗号化されていないJSONフォーマットのプライベートキーです。この暗号化されていないJSONフォーマットのプライベートキーを使えば、誰でもパスワードを使わずに自分のウォレットとEtherにアクセスできます。 ',
   x_Keystore: 'Keystore ファイル (UTC / JSON · 推奨 · 暗号化) ',
   x_Keystore2: 'Keystore ファイル (UTC / JSON) ',
   x_KeystoreDesc: 'この Keystore / JSON ファイルは、後で容易にインポートするため、Mistで使われているフォーマットと一致させる必要があります。ダウンロードしてバックアップを取ることをおすすめします。 ',
+  x_Ledger: 'Ledger Nano S ',
   x_Mnemonic: 'ニーモニックフレーズ ',
+  x_ParityPhrase: 'Parityフレーズ ',
   x_Password: 'パスワード ',
   x_Print: 'ペーパーウォレットを印刷 ',
   x_PrintDesc: 'ProTip: プリンターが接続されていなくても、「印刷」をクリックしてPDFで保存できます。 ',
@@ -11595,6 +11557,7 @@ ja.data = (_ja$data = {
   x_PrivKey2: 'プライベートキー ',
   x_PrivKeyDesc: 'これはパスワードが不要な暗号化されていないプライベートキーです。この暗号化されていないプライベートキーを使えば、誰でもパスワードなしで自分のウォレットにアクセスできます。従って、暗号化されたものの利用をおすすめします。 ',
   x_Save: '保存する ',
+  x_Trezor: 'TREZOR ',
   x_TXT: 'TXT ファイル (未暗号化) ',
   x_Wallet: 'ウォレット ',
 
@@ -11621,6 +11584,10 @@ ja.data = (_ja$data = {
   sidebar_donation: 'MyEtherWalletは、プライバシーとセキュリティのための無料のオープンソースサービスです。　寄付が増えることによって、新機能やフィードバックの反映を行い、よりユーザーの皆様のご希望に沿った制作の時間を増やす事が可能になります。私たちは、たった二人で世界を変えようとしています。お手伝いいただけますか? ',
   sidebar_donate: '寄付する ',
   sidebar_thanks: '感謝します!!! ',
+
+  /* Chrome Extension */
+  CX_error_1: 'ウォレットが保存されていません。["Add Wallet"](/cx-wallet.html#add-wallet)をクリックして追加してください。 ',
+  CX_quicksend: '簡易送信 ', // if no appropriate translation, just use "Send"
 
   /* Decrypt Panel */
   decrypt_Access: 'どの方法でウォレットを操作しますか？ ',
@@ -11651,6 +11618,23 @@ ja.data = (_ja$data = {
   ADD_Label_6_short: 'アンロック ',
   ADD_Label_7: 'アカウント追加 ',
 
+  /* Mnemonic */
+  MNEM_1: '操作したいアドレスを選択してください。 ',
+  MNEM_2: 'ＨＤニーモニックの一つの文節で、複数のウォレットやアドレスが操作可能です。操作したいアドレスを選択してください。 ',
+  MNEM_more: 'さらにアドレスを表示 ',
+  MNEM_prev: '前のアドレス表示 ',
+
+  /* Hardware wallets */
+  ADD_Ledger_1: '自分の Ledger Nano S　を接続する ',
+  ADD_Ledger_2: 'イサリアムアプリケーション（あるいはコントラクトアプリケーション）を開く　。 ',
+  ADD_Ledger_3: '設定中で、ブラウザサポートが有効にされていることを確認してください。 ',
+  ADD_Ledger_4: '設定にブラウザサポートが見つからなければ、[Firmware >1.2]を確認してください。(https://www.ledgerwallet.com/apps/manager) ',
+  ADD_Ledger_0a: 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 ',
+  ADD_Ledger_0b: 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 ',
+  ADD_Ledger_scan: 'Ledger Nano S　に接続 ',
+  ADD_Trezor_scan: 'Connect to TREZOR ',
+  ADD_Trezor_select: 'This is a TREZOR seed ',
+
   /* Generate Wallets */
   GEN_desc: '複数のウォレットの作成をこのタブで行う事ができます： ',
   GEN_Label_1: '強固なパスワードを入力(９文字以上） ',
@@ -11677,7 +11661,7 @@ ja.data = (_ja$data = {
   SEND_signed: '署名済みトランザクション ',
   SEND_trans: 'トランザクションの送出 ',
   SENDModal_Title: '警告！ '
-}, _defineProperty(_ja$data, 'SEND_custom', 'カスタムトークンを追加 '), _defineProperty(_ja$data, 'SENDModal_Content_1', '送出準備が '), _defineProperty(_ja$data, 'SENDModal_Content_2', 'について、アドレス '), _defineProperty(_ja$data, 'SENDModal_Content_3', 'に対し完了。本当に送出してよろしいですか？ '), _defineProperty(_ja$data, 'SENDModal_Content_4', 'ノート：最も起こりやすいエラーの原因は、送出のためのガス不足で、その場合には、ETHを追加する必要があります。ガスはETHで支払われます。 '), _defineProperty(_ja$data, 'SENDModal_No', 'いいえ、中断します。 '), _defineProperty(_ja$data, 'SENDModal_Yes', 'はい、確かです。処理を実行します。 '), _defineProperty(_ja$data, 'TOKEN_Addr', 'アドレス： '), _defineProperty(_ja$data, 'TOKEN_Symbol', 'トークンシンボル： '), _defineProperty(_ja$data, 'TOKEN_Dec', 'ケタ数： '), _defineProperty(_ja$data, 'TOKEN_show', '全てのトークンを表示 '), _defineProperty(_ja$data, 'TOKEN_hide', 'トークンを隠す '), _defineProperty(_ja$data, 'TRANS_desc', 'トークンを送出するには「トークン送出」のタブを選択してください。 '), _defineProperty(_ja$data, 'TRANS_warning', 'コントラクト上で、「ETHのみ」あるいは「ETCのみ」の送出を行う場合、受け入れサービスによって、これらのトランザクションに問題を生ずる場合があります。以下参照。 '), _defineProperty(_ja$data, 'TRANS_advanced', '+Advanced: ガスあるいはデータを追加してください '), _defineProperty(_ja$data, 'TRANS_data', 'データ： '), _defineProperty(_ja$data, 'TRANS_gas', 'ガスリミット： '), _defineProperty(_ja$data, 'TRANS_sendInfo', '21000ガスを使用する標準トランザクションは、0.000441 ETHを消費します。迅速な処理を行うために、若干最小量よりも多めの0.000000021 ETHのガスを使用します。当サービスでは、トランザクション料金は徴収いたしません。 '), _defineProperty(_ja$data, 'TRANSModal_Title', '「ETHのみ」と「ETCのみ」トランザクション '), _defineProperty(_ja$data, 'TRANSModal_Content_0', '異なるトランザクションと異なるサービスの注釈： '), _defineProperty(_ja$data, 'TRANSModal_Content_1', '**ETH(標準トランザクション): ** これは、アドレス間移動のデファルトのトランザクションを生成します。デフォルトガス値は21000です。このメソッドで送出されたETHは、高い可能性でETCチェーンでリプレイされます。 '), _defineProperty(_ja$data, 'TRANSModal_Content_2', '**ETHのみ: ** [Timon Rappのリプレイコントラクト(VB推奨)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) を使用して、**ETH**チェーンのみに送出します。 '), _defineProperty(_ja$data, 'TRANSModal_Content_3', '**ETCのみ: ** [Timon Rappのリプレイコントラクト(VB推奨)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) を使用して、**ETC**チェーンのみに送出します。 '), _defineProperty(_ja$data, 'TRANSModal_Content_4', '**Coinbase & ShapeShift: ** スタンダードトランザクションのみで送出します。どちらかのみのコントラクトで送出する場合には、サポートスタッフに連絡して、手動で残高に追加したり払い戻しをする必要があります。[Shapeshiftの「スプリット」ツールも使用可能です。(https://split.shapeshift.io/) '), _defineProperty(_ja$data, 'TRANSModal_Content_5', '**Kraken & Poloniex:** No known issues. Use whatever. '), _defineProperty(_ja$data, 'TRANSModal_Yes', '理解しました。 '), _defineProperty(_ja$data, 'TRANSModal_No', '理解できません。ヘルプが必要です。 '), _defineProperty(_ja$data, 'OFFLINE_Title', 'オフライントランザクションを作成し送出 '), _defineProperty(_ja$data, 'OFFLINE_Desc', 'オフライントランザクションの作成は、3ステップで行う事ができます。ステップ１と３はオンラインのコンピューター上で行い、ステップ２は、オフライン、あるいは物理的にネットワークと切断されたコンピューターを用います。これにより、プライベートキーが、インターネットに接続したデバイスと接触する事を避ける事ができます。 '), _defineProperty(_ja$data, 'OFFLLINE_Step1_Title', 'ステップ1: 情報生成 (オンラインコンピューター) '), _defineProperty(_ja$data, 'OFFLINE_Step1_Button', '情報生成 '), _defineProperty(_ja$data, 'OFFLINE_Step1_Label_1', '送出元アドレス： '), _defineProperty(_ja$data, 'OFFLINE_Step1_Label_2', 'ノート：これは、送出元アドレスであって、送出先アドレスではありません。操作元アカウントからは「Nonce」が生成されます。切断されたコンピューターを使用する場合に、このアドレスはコールドストレージのアカウントのものになります。 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Title', 'ステップ2: 情報生成 (オフラインコンピューター) '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_1', '送出先アドレス： '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_2', '送出する値/総量 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_3', 'ガス価格 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_3b', 'これは、ステップ１でオンラインコンピューターに表示されたものです。 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_4', 'ガスリミット '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_4b', 'デフォルトガスリミット値は21000です。コントラクトや付加データーを送出する場合には、これらの値は　異なるものにする必要があります。使用されなかったガスは全て返却されます。 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_5', 'Nonce '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_5b', 'これらは、ステップ１でオンラインコンピューターに表示されたものです。 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_6', 'データ '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_6b', 'これは、任意の付加データです。コントラクトに対してトランザクションを送出する際などでよく使われます。 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_7', 'プライベートキー/JSONの入力/選択 '), _defineProperty(_ja$data, 'OFFLINE_Step3_Title', 'ステップ３: トランザクションの送出/公開(オンラインコンピューター) '), _defineProperty(_ja$data, 'OFFLINE_Step3_Label_1', 'ステップ２で署名されたトランザクションをここにペーストして「トランザクションの送出」ボタンをクリックする。 '), _defineProperty(_ja$data, 'MNEM_1', '操作したいアドレスを選択してください。 '), _defineProperty(_ja$data, 'MNEM_2', 'ＨＤニーモニックの一つの文節で、複数のウォレットやアドレスが操作可能です。操作したいアドレスを選択してください。 '), _defineProperty(_ja$data, 'MNEM_more', 'さらにアドレスを表示 '), _defineProperty(_ja$data, 'MNEM_prev', '前のアドレス表示 '), _defineProperty(_ja$data, 'x_Ledger', 'Ledger Nano S '), _defineProperty(_ja$data, 'ADD_Ledger_1', '自分の Ledger Nano S　を接続する '), _defineProperty(_ja$data, 'ADD_Ledger_2', 'イサリアムアプリケーション（あるいはコントラクトアプリケーション）を開く　。 '), _defineProperty(_ja$data, 'ADD_Ledger_3', '設定中で、ブラウザサポートが有効にされていることを確認してください。 '), _defineProperty(_ja$data, 'ADD_Ledger_4', '設定にブラウザサポートが見つからなければ、[Firmware >1.2]を確認してください。(https://www.ledgerwallet.com/apps/manager) '), _defineProperty(_ja$data, 'ADD_Ledger_0a', 'セキュアコネクション（SSL)で再度MyEtherWalletを開いてください。 '), _defineProperty(_ja$data, 'ADD_Ledger_0b', 'MyEtherWalletを再度「Chrome」(https://www.google.com/chrome/browser/desktop/) あるいは [Opera](https://www.opera.com/)で開いてください。 '), _defineProperty(_ja$data, 'ADD_Ledger_scan', 'Ledger Nano S　に接続 '), _defineProperty(_ja$data, 'x_Trezor', 'TREZOR '), _defineProperty(_ja$data, 'ADD_Trezor_scan', 'Connect to TREZOR '), _defineProperty(_ja$data, 'ADD_Trezor_select', 'This is a TREZOR seed '), _defineProperty(_ja$data, 'DEP_generate', 'バイトコードを生成する '), _defineProperty(_ja$data, 'DEP_generated', '生成されたバイトコード '), _defineProperty(_ja$data, 'DEP_signtx', 'トランザクションに署名 '), _defineProperty(_ja$data, 'DEP_interface', '生成されたインターフェース '), _defineProperty(_ja$data, 'MYWAL_Nick', 'ウォレットニックネーム '), _defineProperty(_ja$data, 'MYWAL_Address', 'ウォレットアドレス '), _defineProperty(_ja$data, 'MYWAL_Bal', '残高 '), _defineProperty(_ja$data, 'MYWAL_Edit', '編集 '), _defineProperty(_ja$data, 'MYWAL_View', '表示 '), _defineProperty(_ja$data, 'MYWAL_Remove', '除去 '), _defineProperty(_ja$data, 'MYWAL_RemoveWal', 'ウォレットを除去： '), _defineProperty(_ja$data, 'MYWAL_WatchOnly', '自分の監視専用アカウント '), _defineProperty(_ja$data, 'MYWAL_Viewing', 'ウォレットを表示： '), _defineProperty(_ja$data, 'MYWAL_Hide', 'ウォレット情報を隠す '), _defineProperty(_ja$data, 'MYWAL_Edit_2', 'ウォレットを編集： '), _defineProperty(_ja$data, 'MYWAL_Name', 'ウォレット名 '), _defineProperty(_ja$data, 'MYWAL_Content_1', '警告！　ウォレットを除去しようとしています： '), _defineProperty(_ja$data, 'MYWAL_Content_2', '**プライベートキーとキーストアファイル及びパスワード**が保管されているか確認してください。 '), _defineProperty(_ja$data, 'MYWAL_Content_3', 'MyEtherWallet CXでこのウォレットを使用するためには、プライベートキーあるいはJSONとパスワードを手動で追加する必要があります。 '), _defineProperty(_ja$data, 'VIEWWALLET_Subtitle', '異なったバージョンのプライベートキーをダウンロードしたり、ペーパーウォレットを再印刷することができます。[import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)する時に必要です。残高をチェックするためには、[etherscan.io](http://etherscan.io/)のようなブロックチェーンエクスプローラーサービスを使う事をおすすめします。 '), _defineProperty(_ja$data, 'VIEWWALLET_Subtitle_Short', '異なったバージョンのプライベートキーをダウンロードしたり、ペーパーウォレットを再印刷することができます。 '), _defineProperty(_ja$data, 'VIEWWALLET_SuccessMsg', '成功! ウォレットの詳細は以下の通りです。 '), _defineProperty(_ja$data, 'CX_error_1', 'ウォレットが保存されていません。["Add Wallet"](/cx-wallet.html#add-wallet)をクリックして追加してください。 '), _defineProperty(_ja$data, 'CX_quicksend', '簡易送信 '), _defineProperty(_ja$data, 'ERROR_0', '正しい値を入力してください。 '), _defineProperty(_ja$data, 'ERROR_1', 'パスワードは少なくとも９文字が必要です。強固なパスワードであることをお確かめください。 '), _defineProperty(_ja$data, 'ERROR_2', '申し訳ございませんが、このタイプのウォレットファイルは認識できません。 '), _defineProperty(_ja$data, 'ERROR_3', '正しいウォレットファイルではありません。 '), _defineProperty(_ja$data, 'ERROR_4', 'この単位は存在しませんので、下記の中からお選びください。 '), _defineProperty(_ja$data, 'ERROR_5', '無効なアドレスです。 '), _defineProperty(_ja$data, 'ERROR_6', '無効なパスワードです。 '), _defineProperty(_ja$data, 'ERROR_7', '無効な総量です。 '), _defineProperty(_ja$data, 'ERROR_8', '無効なガスリミットです。 '), _defineProperty(_ja$data, 'ERROR_9', '無効なデータです。 '), _defineProperty(_ja$data, 'ERROR_10', '無効なガス総量です。 '), _defineProperty(_ja$data, 'ERROR_11', '無効な nonce　です。 '), _defineProperty(_ja$data, 'ERROR_12', '無効な署名のトランザクションです。 '), _defineProperty(_ja$data, 'ERROR_13', '同じニックネームのウォレットが既にあります。 '), _defineProperty(_ja$data, 'ERROR_14', 'ウォレットが見つかりません。 '), _defineProperty(_ja$data, 'ERROR_15', 'このIDのプロポーサルは存在しない、あるいは正常に読み込みできません。 '), _defineProperty(_ja$data, 'ERROR_16', '同じアドレスのウォレットが既に存在します。ウォレットのページをご確認ください。 '), _defineProperty(_ja$data, 'ERROR_17', 'ガスとして使われるために、少なくとも0.01 etherがウォレット上に必要です。 '), _defineProperty(_ja$data, 'ERROR_18', '全てのガスがこのトランザクションにより消費されます。これは、既に投票を行ったか、あるいはディベート期間が終了したためです。 '), _defineProperty(_ja$data, 'ERROR_19', '無効なシンボル '), _defineProperty(_ja$data, 'ERROR_20', '　は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。 '), _defineProperty(_ja$data, 'ERROR_21', 'ガス量を推定できません。十分な資金が口座にないか、あるいは受け取り側のコントラクトがエラーになっています。ガス量を変更してから試してください。送出時にはより詳しいエラーメッセージが返ります。 '), _defineProperty(_ja$data, 'ERROR_22', 'Please enter valid node name '), _defineProperty(_ja$data, 'ERROR_23', 'Enter valid url, if you are on https your url must be https '), _defineProperty(_ja$data, 'ERROR_24', 'Please enter valid port '), _defineProperty(_ja$data, 'ERROR_25', 'Please enter valid chain ID '), _defineProperty(_ja$data, 'ERROR_26', 'Please enter valid ABI '), _defineProperty(_ja$data, 'ERROR_27', 'Minimum amount 0.01 '), _defineProperty(_ja$data, 'ERROR_28', 'ウォレットを操作するためには**Keystore/JSONとパスワードかプライベートキーが必要** 保存してから、外部バックアップしてください！ここで保存しないとウォレットが使用できなくなります。詳細はヘルプページを参照してください。(https://www.myetherwallet.com/#help) '), _defineProperty(_ja$data, 'SUCCESS_1', '有効なアドレス '), _defineProperty(_ja$data, 'SUCCESS_2', 'ウォレットは正常に暗号解除されました。 '), _defineProperty(_ja$data, 'SUCCESS_3', 'トランザクションが送出されました。 TX ID '), _defineProperty(_ja$data, 'SUCCESS_4', 'ウォレットが追加されました： '), _defineProperty(_ja$data, 'SUCCESS_5', '選択されました： '), _defineProperty(_ja$data, 'WARN_Send_Link', '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、ウォレットを解錠してください。 '), _defineProperty(_ja$data, 'PARITY_AlreadyImported', "同じハッシュのトランザクションがすでにインポートされています。"), _defineProperty(_ja$data, 'PARITY_Old', "Transaction nonceが小さすぎます。増やしてみてください。"), _defineProperty(_ja$data, 'PARITY_TooCheapToReplace', "Transaction fee が小さすぎます。同じ nonce のトランザクションが別のキューにあります。fee または nonce を増やしてみてください。"), _defineProperty(_ja$data, 'PARITY_LimitReached', "キューにあるトランザクションの数が多すぎます。上限を超えたため、対象のトランザクションは除外されています。その fee を増やしてみてください。"), _defineProperty(_ja$data, 'PARITY_InsufficientGasPrice', "Transaction fee が小さすぎます。 ノードの最小 fee を満たしていません。 (minimal: {}, got: {}). fee を増やしてください。"), _defineProperty(_ja$data, 'PARITY_InsufficientBalance', "ファンドが足りません。 トランザクション送出元のファンドが不足しています。 必要量 {} で 現在： {}　　です。"), _defineProperty(_ja$data, 'PARITY_GasLimitExceeded', "トランザクションコストがガスリミットを超過しました。 リミット： {}, 現在: {}. ガス供給量を減らして見てください。"), _defineProperty(_ja$data, 'PARITY_InvalidGasLimit', "ガス供給量が制限を超過しています。"), _defineProperty(_ja$data, 'GETH_InvalidSender', '送出元が無効です '), _defineProperty(_ja$data, 'GETH_Nonce', 'Nonce が足りません '), _defineProperty(_ja$data, 'GETH_Cheap', 'ガス価格が低すぎます '), _defineProperty(_ja$data, 'GETH_Balance', '残高不足 '), _defineProperty(_ja$data, 'GETH_NonExistentAccount', 'アカウントが存在しない、あるいはその残高不足です '), _defineProperty(_ja$data, 'GETH_InsufficientFunds', 'ガス*価格+数量に足りません '), _defineProperty(_ja$data, 'GETH_IntrinsicGas', '基本のガス不足です '), _defineProperty(_ja$data, 'GETH_GasLimit', 'ブロックガスリミットを越えています '), _defineProperty(_ja$data, 'GETH_NegativeValue', '負の値です '), _defineProperty(_ja$data, 'translate_version', '0.3 '), _defineProperty(_ja$data, 'Translator_Desc', 'トランスレーターに感謝して投げ銭： '), _defineProperty(_ja$data, 'TranslatorName_1', '[sekisanchi](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction) '), _defineProperty(_ja$data, 'TranslatorAddr_1', '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE '), _defineProperty(_ja$data, 'TranslatorName_2', ''), _defineProperty(_ja$data, 'TranslatorAddr_2', ''), _defineProperty(_ja$data, 'TranslatorName_3', ''), _defineProperty(_ja$data, 'TranslatorAddr_3', ''), _defineProperty(_ja$data, 'TranslatorName_4', ''), _defineProperty(_ja$data, 'TranslatorAddr_4', ''), _defineProperty(_ja$data, 'TranslatorName_5', ''), _defineProperty(_ja$data, 'TranslatorAddr_5', ''), _defineProperty(_ja$data, 'HELP_Warning', 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. '), _defineProperty(_ja$data, 'HELP_Desc', 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! '), _defineProperty(_ja$data, 'HELP_Remind_Title', 'Some reminders '), _defineProperty(_ja$data, 'HELP_Remind_Desc_1', '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. '), _defineProperty(_ja$data, 'HELP_Remind_Desc_2', 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. '), _defineProperty(_ja$data, 'HELP_Remind_Desc_3', 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer! '), _defineProperty(_ja$data, 'HELP_0_Title', '0) I\'m new. What do I do? '), _defineProperty(_ja$data, 'HELP_0_Desc_1', 'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**. '), _defineProperty(_ja$data, 'HELP_0_Desc_2', 'Create a new wallet. '), _defineProperty(_ja$data, 'HELP_0_Desc_3', 'Back the wallet up. '), _defineProperty(_ja$data, 'HELP_0_Desc_4', 'Verify you have access to this new wallet and have correctly saved all necessary information. '), _defineProperty(_ja$data, 'HELP_0_Desc_5', 'Transfer Ether to this new wallet. '), _defineProperty(_ja$data, 'HELP_1_Title', '1) How do I create a new wallet? '), _defineProperty(_ja$data, 'HELP_1_Desc_1', 'Go to the "Generate Wallet" page. '), _defineProperty(_ja$data, 'HELP_1_Desc_2', 'Go to the "Add Wallet" page & select "Generate New Wallet" '), _defineProperty(_ja$data, 'HELP_1_Desc_3', 'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions. '), _defineProperty(_ja$data, 'HELP_1_Desc_4', 'Click "GENERATE". '), _defineProperty(_ja$data, 'HELP_1_Desc_5', 'Your wallet has now been generated. '), _defineProperty(_ja$data, 'HELP_2a_Title', '2a) How do I save/backup my wallet? '), _defineProperty(_ja$data, 'HELP_2a_Desc_1', 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper. '), _defineProperty(_ja$data, 'HELP_2a_Desc_2', 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. '), _defineProperty(_ja$data, 'HELP_2a_Desc_3', 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys: '), _defineProperty(_ja$data, 'HELP_2a_Desc_4', 'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive. '), _defineProperty(_ja$data, 'HELP_2a_Desc_5', 'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive. '), _defineProperty(_ja$data, 'HELP_2a_Desc_6', 'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). '), _defineProperty(_ja$data, 'HELP_2b_Title', '2b) How do I safely / offline / cold storage with MyEtherWallet? '), _defineProperty(_ja$data, 'HELP_2b_Desc_1', 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). '), _defineProperty(_ja$data, 'HELP_2b_Desc_2', 'Click on `dist-vX.X.X.X.zip`. '), _defineProperty(_ja$data, 'HELP_2b_Desc_3', 'Move zip to an airgapped computer. '), _defineProperty(_ja$data, 'HELP_2b_Desc_4', 'Unzip it and double-click `index.html`. '), _defineProperty(_ja$data, 'HELP_2b_Desc_5', 'Generate a wallet with a strong password. '), _defineProperty(_ja$data, 'HELP_2b_Desc_6', 'Save the address. Save versions of the private key. Save the password if you might not remember it forever. '), _defineProperty(_ja$data, 'HELP_2b_Desc_7', 'Store these papers / USBs in multiple physically separate locations. '), _defineProperty(_ja$data, 'HELP_2b_Desc_8', 'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same. '), _defineProperty(_ja$data, 'HELP_3_Title', '3) How do I verify I have access to my new wallet? '), _defineProperty(_ja$data, 'HELP_3_Desc_1', '**Before you send any Ether to your new wallet**, you should ensure you have access to it. '), _defineProperty(_ja$data, 'HELP_3_Desc_2', 'Navigate to the "View Wallet Info" page. '), _defineProperty(_ja$data, 'HELP_3_Desc_3', 'Navigate to the MyEtherWallet.com "View Wallet Info" page. '), _defineProperty(_ja$data, 'HELP_3_Desc_4', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_ja$data, 'HELP_3_Desc_5', 'If the wallet is encrypted, a text box will automatically appear. Enter the password. '), _defineProperty(_ja$data, 'HELP_3_Desc_6', 'Click the "Unlock Wallet" button. '), _defineProperty(_ja$data, 'HELP_3_Desc_7', 'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet. '), _defineProperty(_ja$data, 'HELP_3_Desc_8', 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly. '), _defineProperty(_ja$data, 'HELP_4_Title', '4) How do I send Ether from one wallet to another? '), _defineProperty(_ja$data, 'HELP_4_Desc_1', 'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned. '), _defineProperty(_ja$data, 'HELP_4_Desc_2', 'Navigate to the "Ether送出 トークン送出" page. '), _defineProperty(_ja$data, 'HELP_4_Desc_3', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_ja$data, 'HELP_4_Desc_4', 'If the wallet is encrypted, a text box will automatically appear. Enter the password. '), _defineProperty(_ja$data, 'HELP_4_Desc_5', 'Click the "Unlock Wallet" button. '), _defineProperty(_ja$data, 'HELP_4_Desc_6', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_ja$data, 'HELP_4_Desc_7', 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. '), _defineProperty(_ja$data, 'HELP_4_Desc_9', 'Click "Generate Transaction". '), _defineProperty(_ja$data, 'HELP_4_Desc_10', 'A couple more fields will appear. This is your browser generating the transaction. '), _defineProperty(_ja$data, 'HELP_4_Desc_11', 'Click the blue "Send Transaction" button below that. '), _defineProperty(_ja$data, 'HELP_4_Desc_12', 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. '), _defineProperty(_ja$data, 'HELP_4_Desc_13', 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. '), _defineProperty(_ja$data, 'HELP_4CX_Title', '4) How do I send Ether using MyEtherWallet CX? '), _defineProperty(_ja$data, 'HELP_4CX_Desc_1', 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Ether送出 トークン送出" page. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_2', 'QuickSend: '), _defineProperty(_ja$data, 'HELP_4CX_Desc_3', 'Click the Chrome Extension Icon. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_4', 'Click the "QuickSend" button. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_5', 'Select the wallet you wish to send from. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_6', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_7', 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_8', 'Click "Send Transaction". '), _defineProperty(_ja$data, 'HELP_4CX_Desc_9', 'Verify the address and the amount you are sending is correct. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_10', 'Enter the password for that wallet. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_11', 'Click "Send Transaction." '), _defineProperty(_ja$data, 'HELP_4CX_Desc_12', 'Using "Ether送出 トークン送出" Page '), _defineProperty(_ja$data, 'HELP_5_Title', '5) How do I run MyEtherWallet.com offline/locally? '), _defineProperty(_ja$data, 'HELP_5_Desc_1', 'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page. '), _defineProperty(_ja$data, 'HELP_5_Desc_7', 'MyEtherWallet.com is now running entirely on your computer. '), _defineProperty(_ja$data, 'HELP_5_Desc_8', 'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact. '), _defineProperty(_ja$data, 'HELP_5_Desc_9', 'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo. '), _defineProperty(_ja$data, 'HELP_5CX_Title', '5) How can I install this extension from the repo instead of the Chrome Store? '), _defineProperty(_ja$data, 'HELP_5CX_Desc_2', 'Click on `chrome-extension-vX.X.X.X.zip` and unzip it. '), _defineProperty(_ja$data, 'HELP_5CX_Desc_3', 'Go to Google Chrome and find you settings (in the menu in the upper right). '), _defineProperty(_ja$data, 'HELP_5CX_Desc_4', 'Click "Extensions" on the left. '), _defineProperty(_ja$data, 'HELP_5CX_Desc_5', 'Check the "Developer Mode" button at the top of that page. '), _defineProperty(_ja$data, 'HELP_5CX_Desc_6', 'Click the "Load unpacked extension..." button. '), _defineProperty(_ja$data, 'HELP_5CX_Desc_7', 'Navigate to the now-unzipped folder that you downloaded earlier. Click "select". '), _defineProperty(_ja$data, 'HELP_5CX_Desc_8', 'The extension should now show up in your extensions and in your Chrome Extension bar. '), _defineProperty(_ja$data, 'HELP_7_Title', '7) How do I send Tokens & add custom tokens? '), _defineProperty(_ja$data, 'HELP_7_Desc_0', '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token. '), _defineProperty(_ja$data, 'HELP_7_Desc_1', 'Navigate to the "Ether送出 トークン送出" page. '), _defineProperty(_ja$data, 'HELP_7_Desc_2', 'Unlock your wallet. '), _defineProperty(_ja$data, 'HELP_7_Desc_3', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_ja$data, 'HELP_7_Desc_4', 'Enter the amount you would like to send. '), _defineProperty(_ja$data, 'HELP_7_Desc_5', 'Select which token you would like to send. '), _defineProperty(_ja$data, 'HELP_7_Desc_6', 'If you do not see the token listed: '), _defineProperty(_ja$data, 'HELP_7_Desc_7', 'Click "Custom". '), _defineProperty(_ja$data, 'HELP_7_Desc_8', 'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist. '), _defineProperty(_ja$data, 'HELP_7_Desc_9', 'Click "Save". '), _defineProperty(_ja$data, 'HELP_7_Desc_10', 'You can now send that token as well as see it\'s balance in the sidebar. '), _defineProperty(_ja$data, 'HELP_7_Desc_11', 'Click "Generate Transaction". '), _defineProperty(_ja$data, 'HELP_7_Desc_12', 'A couple more fields will appear. This is your browser generating the transaction. '), _defineProperty(_ja$data, 'HELP_7_Desc_13', 'Click the blue "Send Transaction" button below that. '), _defineProperty(_ja$data, 'HELP_7_Desc_14', 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. '), _defineProperty(_ja$data, 'HELP_7_Desc_15', 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. '), _defineProperty(_ja$data, 'HELP_8_Title', '8) What happens if your site goes down? '), _defineProperty(_ja$data, 'HELP_8_Desc_1', 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain. '), _defineProperty(_ja$data, 'HELP_8_Desc_2', 'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site. '), _defineProperty(_ja$data, 'HELP_8_Desc_3', 'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below. '), _defineProperty(_ja$data, 'HELP_8_Desc_4', 'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. '), _defineProperty(_ja$data, 'HELP_8CX_Title', '8) What happens if MyEtherWallet CX disappears? '), _defineProperty(_ja$data, 'HELP_8CX_Desc_1', 'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer. '), _defineProperty(_ja$data, 'HELP_8CX_Desc_2', 'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets. '), _defineProperty(_ja$data, 'HELP_8CX_Desc_3', 'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above. '), _defineProperty(_ja$data, 'HELP_9_Title', '9) Is the "Ether送出 トークン送出" page offline? '), _defineProperty(_ja$data, 'HELP_9_Desc_1', 'No. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times. '), _defineProperty(_ja$data, 'HELP_10_Title', '10) How do I make an offline transaction? '), _defineProperty(_ja$data, 'HELP_10_Desc_1', 'Navigate to the "Offline Transaction" page via your online computer. '), _defineProperty(_ja$data, 'HELP_10_Desc_2', 'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price. '), _defineProperty(_ja$data, 'HELP_10_Desc_3', 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. '), _defineProperty(_ja$data, 'HELP_10_Desc_4', 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. '), _defineProperty(_ja$data, 'HELP_10_Desc_5', 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. '), _defineProperty(_ja$data, 'HELP_10_Desc_6', 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. '), _defineProperty(_ja$data, 'HELP_10_Desc_7', 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. '), _defineProperty(_ja$data, 'HELP_10_Desc_8', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_ja$data, 'HELP_10_Desc_9', 'Press the "GENERATE SIGNED TRANSACTION" button. '), _defineProperty(_ja$data, 'HELP_10_Desc_10', 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. '), _defineProperty(_ja$data, 'HELP_10_Desc_11', 'On your online computer, paste the signed transaction into the text field in step #3 and click send. This will broadcast your transaction. '), _defineProperty(_ja$data, 'HELP_12_Title', '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist? '), _defineProperty(_ja$data, 'HELP_12_Desc_1', 'Using an Geth/Mist JSON file from MyEtherWallet v2+.... '), _defineProperty(_ja$data, 'HELP_12_Desc_2', 'Go to the "View Wallet Info" page. '), _defineProperty(_ja$data, 'HELP_12_Desc_3', 'Unlock your wallet using your **encrypted** private key or JSON file. '), _defineProperty(_ja$data, 'HELP_12_Desc_4', 'Go to the "My Wallets" page. '), _defineProperty(_ja$data, 'HELP_12_Desc_5', 'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. '), _defineProperty(_ja$data, 'HELP_12_Desc_6', 'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file. '), _defineProperty(_ja$data, 'HELP_12_Desc_7', 'Open the Ethereum Wallet application. '), _defineProperty(_ja$data, 'HELP_12_Desc_8', 'In the menu bar, go "Accounts" -> "Backup" -> "Accounts" '), _defineProperty(_ja$data, 'HELP_12_Desc_9', 'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder. '), _defineProperty(_ja$data, 'HELP_12_Desc_10', 'Your account should show up immediately under "Accounts." '), _defineProperty(_ja$data, 'HELP_12_Desc_11', 'Using your unencrypted private key... '), _defineProperty(_ja$data, 'HELP_12_Desc_12', 'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page. '), _defineProperty(_ja$data, 'HELP_12_Desc_13', 'Select your wallet file -or- enter/paste your private key to unlock your wallet. '), _defineProperty(_ja$data, 'HELP_12_Desc_14', 'Copy Your Private Key (unencrypted). '), _defineProperty(_ja$data, 'HELP_12_Desc_15', 'If you are on a Mac: '), _defineProperty(_ja$data, 'HELP_12_Desc_15b', 'If you are on a PC: '), _defineProperty(_ja$data, 'HELP_12_Desc_16', 'Open Text Edit and paste this private key. '), _defineProperty(_ja$data, 'HELP_12_Desc_17', 'Go to the menu bar and click "Format" -> "Make Plain Text". '), _defineProperty(_ja$data, 'HELP_12_Desc_18', 'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog. '), _defineProperty(_ja$data, 'HELP_12_Desc_19', 'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt` '), _defineProperty(_ja$data, 'HELP_12_Desc_20', 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. '), _defineProperty(_ja$data, 'HELP_12_Desc_21', 'After successful import, delete `nothing_special_delete_me.txt` '), _defineProperty(_ja$data, 'HELP_12_Desc_22', 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". '), _defineProperty(_ja$data, 'HELP_12_Desc_23', 'Open Notepad & paste the private key '), _defineProperty(_ja$data, 'HELP_12_Desc_24', 'Save the file as `nothing_special_delete_me.txt` at `C:` '), _defineProperty(_ja$data, 'HELP_12_Desc_25', 'Run the command, `geth account import C:\\nothing_special_delete_me.txt` '), _defineProperty(_ja$data, 'HELP_12_Desc_26', 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. '), _defineProperty(_ja$data, 'HELP_12_Desc_27', 'After successful import, delete `nothing_special_delete_me.txt` '), _defineProperty(_ja$data, 'HELP_12_Desc_28', 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". '), _defineProperty(_ja$data, 'HELP_13_Title', '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean? '), _defineProperty(_ja$data, 'HELP_13_Desc_1', 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction. '), _defineProperty(_ja$data, 'HELP_14_Title', '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe? '), _defineProperty(_ja$data, 'HELP_14_Desc_1', 'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experiments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto). '), _defineProperty(_ja$data, 'HELP_15_Title', '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan) '), _defineProperty(_ja$data, 'HELP_15_Desc_1', 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. '), _defineProperty(_ja$data, 'HELP_16_Title', '16) How do I check the balance of my account? '), _defineProperty(_ja$data, 'HELP_16_Desc_1', 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io '), _defineProperty(_ja$data, 'HELP_17_Title', '17) Why isn\'t my balance showing up when I unlock my wallet? '), _defineProperty(_ja$data, 'HELP_17_Desc_1', 'This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io '), _defineProperty(_ja$data, 'HELP_18_Title', '18) Where is my geth wallet file? '), _defineProperty(_ja$data, 'HELP_19_Title', '19) Where is my Mist wallet file? '), _defineProperty(_ja$data, 'HELP_19_Desc_1', 'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored. '), _defineProperty(_ja$data, 'HELP_20_Title', '20) Where is my pre-sale wallet file? '), _defineProperty(_ja$data, 'HELP_20_Desc_1', 'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale. '), _defineProperty(_ja$data, 'HELP_21_Title', '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? '), _defineProperty(_ja$data, 'HELP_21_Desc_1', 'Short version: yes, but finding an account with a balance would take longer than the universe...so...no. '), _defineProperty(_ja$data, 'HELP_21_Desc_2', 'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts. '), _defineProperty(_ja$data, 'HELP_21_Desc_3', 'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems. '), _defineProperty(_ja$data, 'HELP_21_Desc_4', 'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password. '), _defineProperty(_ja$data, 'HELP_21_Desc_5', 'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match. '), _defineProperty(_ja$data, 'HELP_21_Desc_6', 'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion. '), _defineProperty(_ja$data, 'HELP_21_Desc_7', '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space. '), _defineProperty(_ja$data, 'HELP_21_Desc_8', 'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day. '), _defineProperty(_ja$data, 'HELP_SecCX_Title', 'Security - MyEtherWallet CX '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_1', 'Where is this extension saving my information? '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_2', 'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome. '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_3', 'What information is saved? '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_4', 'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted. '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_5', 'Why aren\'t the nickname and wallet address encrypted? '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_6', 'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension. '), _defineProperty(_ja$data, 'HELP_Sec_Title', 'Security '), _defineProperty(_ja$data, 'HELP_Sec_Desc_1', 'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. '), _defineProperty(_ja$data, 'HELP_Sec_Desc_2', 'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success. '), _defineProperty(_ja$data, 'HELP_Sec_Desc_3', 'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere. '), _defineProperty(_ja$data, 'HELP_Sec_Desc_4', 'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to [https://www.myetherwallet.com](https://www.myetherwallet.com). '), _defineProperty(_ja$data, 'HELP_Sec_Desc_5', 'For generating wallets, you can download the [source code and run it locally](https://github.com/kvhnuke/etherwallet/releases/latest). See #5 above. '), _defineProperty(_ja$data, 'HELP_Sec_Desc_6', 'Generate a test wallet and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred. '), _defineProperty(_ja$data, 'HELP_Sec_Desc_8', 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! '), _defineProperty(_ja$data, 'HELP_FAQ_Title', 'More Helpful Answers to Frequent Questions '), _defineProperty(_ja$data, 'HELP_Contact_Title', 'Ways to Get in Touch'), _ja$data);
+}, _defineProperty(_ja$data, 'SEND_custom', 'カスタムトークンを追加 '), _defineProperty(_ja$data, 'SENDModal_Content_1', '送出準備が '), _defineProperty(_ja$data, 'SENDModal_Content_2', 'について、アドレス '), _defineProperty(_ja$data, 'SENDModal_Content_3', 'に対し完了。本当に送出してよろしいですか？ '), _defineProperty(_ja$data, 'SENDModal_Content_4', 'ノート：最も起こりやすいエラーの原因は、送出のためのガス不足で、その場合には、ETHを追加する必要があります。ガスはETHで支払われます。 '), _defineProperty(_ja$data, 'SENDModal_No', 'いいえ、中断します。 '), _defineProperty(_ja$data, 'SENDModal_Yes', 'はい、確かです。処理を実行します。 '), _defineProperty(_ja$data, 'TOKEN_Addr', 'アドレス： '), _defineProperty(_ja$data, 'TOKEN_Symbol', 'トークンシンボル： '), _defineProperty(_ja$data, 'TOKEN_Dec', 'ケタ数： '), _defineProperty(_ja$data, 'TOKEN_show', '全てのトークンを表示 '), _defineProperty(_ja$data, 'TOKEN_hide', 'トークンを隠す '), _defineProperty(_ja$data, 'TRANS_desc', 'トークンを送出するには「トークン送出」のタブを選択してください。 '), _defineProperty(_ja$data, 'TRANS_warning', 'コントラクト上で、「ETHのみ」あるいは「ETCのみ」の送出を行う場合、受け入れサービスによって、これらのトランザクションに問題を生ずる場合があります。以下参照。 '), _defineProperty(_ja$data, 'TRANS_advanced', '+Advanced: ガスあるいはデータを追加してください '), _defineProperty(_ja$data, 'TRANS_data', 'データ： '), _defineProperty(_ja$data, 'TRANS_gas', 'ガスリミット： '), _defineProperty(_ja$data, 'TRANS_sendInfo', '21000ガスを使用する標準トランザクションは、0.000441 ETHを消費します。迅速な処理を行うために、若干最小量よりも多めの0.000000021 ETHのガスを使用します。当サービスでは、トランザクション料金は徴収いたしません。 '), _defineProperty(_ja$data, 'TRANSModal_Title', '「ETHのみ」と「ETCのみ」トランザクション '), _defineProperty(_ja$data, 'TRANSModal_Content_0', '異なるトランザクションと異なるサービスの注釈： '), _defineProperty(_ja$data, 'TRANSModal_Content_1', '**ETH(標準トランザクション): ** これは、アドレス間移動のデファルトのトランザクションを生成します。デフォルトガス値は21000です。このメソッドで送出されたETHは、高い可能性でETCチェーンでリプレイされます。 '), _defineProperty(_ja$data, 'TRANSModal_Content_2', '**ETHのみ: ** [Timon Rappのリプレイコントラクト(VB推奨)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) を使用して、**ETH**チェーンのみに送出します。 '), _defineProperty(_ja$data, 'TRANSModal_Content_3', '**ETCのみ: ** [Timon Rappのリプレイコントラクト(VB推奨)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) を使用して、**ETC**チェーンのみに送出します。 '), _defineProperty(_ja$data, 'TRANSModal_Content_4', '**Coinbase & ShapeShift: ** スタンダードトランザクションのみで送出します。どちらかのみのコントラクトで送出する場合には、サポートスタッフに連絡して、手動で残高に追加したり払い戻しをする必要があります。[Shapeshiftの「スプリット」ツールも使用可能です。(https://split.shapeshift.io/) '), _defineProperty(_ja$data, 'TRANSModal_Content_5', '**Kraken & Poloniex:** No known issues. Use whatever. '), _defineProperty(_ja$data, 'TRANSModal_Yes', '理解しました。 '), _defineProperty(_ja$data, 'TRANSModal_No', '理解できません。ヘルプが必要です。 '), _defineProperty(_ja$data, 'OFFLINE_Title', 'オフライントランザクションを作成し送出 '), _defineProperty(_ja$data, 'OFFLINE_Desc', 'オフライントランザクションの作成は、3ステップで行う事ができます。ステップ１と３はオンラインのコンピューター上で行い、ステップ２は、オフライン、あるいは物理的にネットワークと切断されたコンピューターを用います。これにより、プライベートキーが、インターネットに接続したデバイスと接触する事を避ける事ができます。 '), _defineProperty(_ja$data, 'OFFLLINE_Step1_Title', 'ステップ1: 情報生成 (オンラインコンピューター) '), _defineProperty(_ja$data, 'OFFLINE_Step1_Button', '情報生成 '), _defineProperty(_ja$data, 'OFFLINE_Step1_Label_1', '送出元アドレス： '), _defineProperty(_ja$data, 'OFFLINE_Step1_Label_2', 'ノート：これは、送出元アドレスであって、送出先アドレスではありません。操作元アカウントからは「Nonce」が生成されます。切断されたコンピューターを使用する場合に、このアドレスはコールドストレージのアカウントのものになります。 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Title', 'ステップ2: 情報生成 (オフラインコンピューター) '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_1', '送出先アドレス： '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_2', '送出する値/総量 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_3', 'ガス価格 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_3b', 'これは、ステップ１でオンラインコンピューターに表示されたものです。 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_4', 'ガスリミット '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_4b', 'デフォルトガスリミット値は21000です。コントラクトや付加データーを送出する場合には、これらの値は　異なるものにする必要があります。使用されなかったガスは全て返却されます。 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_5', 'Nonce '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_5b', 'これらは、ステップ１でオンラインコンピューターに表示されたものです。 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_6', 'データ '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_6b', 'これは、任意の付加データです。コントラクトに対してトランザクションを送出する際などでよく使われます。 '), _defineProperty(_ja$data, 'OFFLINE_Step2_Label_7', 'プライベートキー/JSONの入力/選択 '), _defineProperty(_ja$data, 'OFFLINE_Step3_Title', 'ステップ３: トランザクションの送出/公開(オンラインコンピューター) '), _defineProperty(_ja$data, 'OFFLINE_Step3_Label_1', 'ステップ２で署名されたトランザクションをここにペーストして「トランザクションの送出」ボタンをクリックする。 '), _defineProperty(_ja$data, 'DEP_generate', 'バイトコードを生成する '), _defineProperty(_ja$data, 'DEP_generated', '生成されたバイトコード '), _defineProperty(_ja$data, 'DEP_signtx', 'トランザクションに署名 '), _defineProperty(_ja$data, 'DEP_interface', '生成されたインターフェース '), _defineProperty(_ja$data, 'CONTRACT_Title', 'コントラクトアドレス '), _defineProperty(_ja$data, 'CONTRACT_Title_2', '既存のコントラクトを選択 '), _defineProperty(_ja$data, 'CONTRACT_Json', 'ABI / JSON インターフェース '), _defineProperty(_ja$data, 'CONTRACT_Interact_Title', 'Read / Write コントラクト '), _defineProperty(_ja$data, 'CONTRACT_Interact_CTA', '機能を一つ選ぶ '), _defineProperty(_ja$data, 'CONTRACT_ByteCode', 'バイトコード '), _defineProperty(_ja$data, 'CONTRACT_Read', '読み取り '), _defineProperty(_ja$data, 'CONTRACT_Write', '書き込み '), _defineProperty(_ja$data, 'MYWAL_Nick', 'ウォレットニックネーム '), _defineProperty(_ja$data, 'MYWAL_Address', 'ウォレットアドレス '), _defineProperty(_ja$data, 'MYWAL_Bal', '残高 '), _defineProperty(_ja$data, 'MYWAL_Edit', '編集 '), _defineProperty(_ja$data, 'MYWAL_View', '表示 '), _defineProperty(_ja$data, 'MYWAL_Remove', '除去 '), _defineProperty(_ja$data, 'MYWAL_RemoveWal', 'ウォレットを除去： '), _defineProperty(_ja$data, 'MYWAL_WatchOnly', '自分の監視専用アカウント '), _defineProperty(_ja$data, 'MYWAL_Viewing', 'ウォレットを表示： '), _defineProperty(_ja$data, 'MYWAL_Hide', 'ウォレット情報を隠す '), _defineProperty(_ja$data, 'MYWAL_Edit_2', 'ウォレットを編集： '), _defineProperty(_ja$data, 'MYWAL_Name', 'ウォレット名 '), _defineProperty(_ja$data, 'MYWAL_Content_1', '警告！　ウォレットを除去しようとしています： '), _defineProperty(_ja$data, 'MYWAL_Content_2', '**プライベートキーとキーストアファイル及びパスワード**が保管されているか確認してください。 '), _defineProperty(_ja$data, 'MYWAL_Content_3', 'MyEtherWallet CXでこのウォレットを使用するためには、プライベートキーあるいはJSONとパスワードを手動で追加する必要があります。 '), _defineProperty(_ja$data, 'NODE_Title', 'カスタムノードをセットアップ'), _defineProperty(_ja$data, 'NODE_Subtitle', 'ローカルノードに接続するには...'), _defineProperty(_ja$data, 'NODE_Warning', 'MyEtherWallet.com 経由で接続するためには、HTTPSノードが必要です。[MyEtherWalletをレポジトリからダウンロードして、手元で走らせ、](https://github.com/kvhnuke/etherwallet/releases/latest)いずれかのノードに接続することもできます。 あるいは、無料のSSL証明書を[LetsEncrypt](https://letsencrypt.org/)から入手してください'), _defineProperty(_ja$data, 'NODE_Name', 'ノード名'), _defineProperty(_ja$data, 'NODE_Port', 'ノードポート'), _defineProperty(_ja$data, 'NODE_CTA', '保存してカスタムノードを使用'), _defineProperty(_ja$data, 'SWAP_rates', "現在のレート "), _defineProperty(_ja$data, 'SWAP_init_1', "行いたい交換対象は "), _defineProperty(_ja$data, 'SWAP_init_2', " を "), _defineProperty(_ja$data, 'SWAP_init_CTA', "操作を完了して次へ "), _defineProperty(_ja$data, 'SWAP_information', "あなたの情報 "), _defineProperty(_ja$data, 'SWAP_send_amt', "送出総額 "), _defineProperty(_ja$data, 'SWAP_rec_amt', "受け取り総額 "), _defineProperty(_ja$data, 'SWAP_your_rate', "変換レート "), _defineProperty(_ja$data, 'SWAP_rec_add', "受け取りアドレス "), _defineProperty(_ja$data, 'SWAP_start_CTA', "交換開始 "), _defineProperty(_ja$data, 'SWAP_ref_num', "参照番号 "), _defineProperty(_ja$data, 'SWAP_time', "送出するまでにあと、 "), _defineProperty(_ja$data, 'SWAP_progress_1', "注文を開始しました "), _defineProperty(_ja$data, 'SWAP_progress_2', "到着待機中 "), _defineProperty(_ja$data, 'SWAP_progress_3', "受け取り完了 "), _defineProperty(_ja$data, 'SWAP_progress_4', "送出中 {{orderResult.output.currency}} "), _defineProperty(_ja$data, 'SWAP_progress_5', "注文完了 "), _defineProperty(_ja$data, 'SWAP_order_CTA', "お送りいただきたいのは "), _defineProperty(_ja$data, 'SWAP_unlock', "このページから直接ETHあるいはトークンを送出するためには、ウォレットを解錠してください。"), _defineProperty(_ja$data, 'MSG_message', 'メッセージ '), _defineProperty(_ja$data, 'MSG_date', '日付 '), _defineProperty(_ja$data, 'MSG_signature', '署名 '), _defineProperty(_ja$data, 'MSG_verify', 'メッセージを確認 '), _defineProperty(_ja$data, 'MSG_info1', 'この署名が別の日付で再度使われないようにするために、現時点の日付を入れてください。 '), _defineProperty(_ja$data, 'MSG_info2', '他人に使われないようにするため、あなたのニックネームとそれが使われるところを入れてください。 '), _defineProperty(_ja$data, 'MSG_info3', '異なった目的で使用されないようにするために、利用目的を入れてください。 '), _defineProperty(_ja$data, 'VIEWWALLET_Subtitle', '異なったバージョンのプライベートキーをダウンロードしたり、ペーパーウォレットを再印刷することができます。[import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)する時に必要です。残高をチェックするためには、[etherscan.io](http://etherscan.io/)のようなブロックチェーンエクスプローラーサービスを使う事をおすすめします。 '), _defineProperty(_ja$data, 'VIEWWALLET_Subtitle_Short', '異なったバージョンのプライベートキーをダウンロードしたり、ペーパーウォレットを再印刷することができます。 '), _defineProperty(_ja$data, 'VIEWWALLET_SuccessMsg', '成功! ウォレットの詳細は以下の通りです。 '), _defineProperty(_ja$data, 'ERROR_0', '正しい値を入力してください。 '), _defineProperty(_ja$data, 'ERROR_1', 'パスワードは少なくとも９文字が必要です。強固なパスワードであることをお確かめください。 '), _defineProperty(_ja$data, 'ERROR_2', '申し訳ございませんが、このタイプのウォレットファイルは認識できません。 '), _defineProperty(_ja$data, 'ERROR_3', '正しいウォレットファイルではありません。 '), _defineProperty(_ja$data, 'ERROR_4', 'この単位は存在しませんので、下記の中からお選びください。 '), _defineProperty(_ja$data, 'ERROR_5', '無効なアドレスです。 '), _defineProperty(_ja$data, 'ERROR_6', '無効なパスワードです。 '), _defineProperty(_ja$data, 'ERROR_7', '無効な総量です。 '), _defineProperty(_ja$data, 'ERROR_8', '無効なガスリミットです。 '), _defineProperty(_ja$data, 'ERROR_9', '無効なデータです。 '), _defineProperty(_ja$data, 'ERROR_10', '無効なガス総量です。 '), _defineProperty(_ja$data, 'ERROR_11', '無効な nonce　です。 '), _defineProperty(_ja$data, 'ERROR_12', '無効な署名のトランザクションです。 '), _defineProperty(_ja$data, 'ERROR_13', '同じニックネームのウォレットが既にあります。 '), _defineProperty(_ja$data, 'ERROR_14', 'ウォレットが見つかりません。 '), _defineProperty(_ja$data, 'ERROR_15', 'このIDのプロポーサルは存在しない、あるいは正常に読み込みできません。 '), _defineProperty(_ja$data, 'ERROR_16', '同じアドレスのウォレットが既に存在します。ウォレットのページをご確認ください。 '), _defineProperty(_ja$data, 'ERROR_17', 'ガスとして使われるために、少なくとも0.01 etherがウォレット上に必要です。 '), _defineProperty(_ja$data, 'ERROR_18', '全てのガスがこのトランザクションにより消費されます。これは、既に投票を行ったか、あるいはディベート期間が終了したためです。 '), _defineProperty(_ja$data, 'ERROR_19', '無効なシンボル '), _defineProperty(_ja$data, 'ERROR_20', '　は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。 '), _defineProperty(_ja$data, 'ERROR_21', 'ガス量を推定できません。十分な資金が口座にないか、あるいは受け取り側のコントラクトがエラーになっています。ガス量を変更してから試してください。送出時にはより詳しいエラーメッセージが返ります。 '), _defineProperty(_ja$data, 'ERROR_22', 'Please enter valid node name '), _defineProperty(_ja$data, 'ERROR_23', 'Enter valid url, if you are on https your url must be https '), _defineProperty(_ja$data, 'ERROR_24', 'Please enter valid port '), _defineProperty(_ja$data, 'ERROR_25', 'Please enter valid chain ID '), _defineProperty(_ja$data, 'ERROR_26', 'Please enter valid ABI '), _defineProperty(_ja$data, 'ERROR_27', 'Minimum amount 0.01 '), _defineProperty(_ja$data, 'ERROR_28', 'ウォレットを操作するためには**Keystore/JSONとパスワードかプライベートキーが必要** 保存してから、外部バックアップしてください！ここで保存しないとウォレットが使用できなくなります。詳細はヘルプページを参照してください。(https://www.myetherwallet.com/#help) '), _defineProperty(_ja$data, 'SUCCESS_1', '有効なアドレス '), _defineProperty(_ja$data, 'SUCCESS_2', 'ウォレットは正常に暗号解除されました。 '), _defineProperty(_ja$data, 'SUCCESS_3', 'トランザクションが送出されました。 TX ID '), _defineProperty(_ja$data, 'SUCCESS_4', 'ウォレットが追加されました： '), _defineProperty(_ja$data, 'SUCCESS_5', '選択されました： '), _defineProperty(_ja$data, 'WARN_Send_Link', '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、ウォレットを解錠してください。 '), _defineProperty(_ja$data, 'PARITY_AlreadyImported', "同じハッシュのトランザクションがすでにインポートされています。"), _defineProperty(_ja$data, 'PARITY_Old', "Transaction nonceが小さすぎます。増やしてみてください。"), _defineProperty(_ja$data, 'PARITY_TooCheapToReplace', "Transaction fee が小さすぎます。同じ nonce のトランザクションが別のキューにあります。fee または nonce を増やしてみてください。"), _defineProperty(_ja$data, 'PARITY_LimitReached', "キューにあるトランザクションの数が多すぎます。上限を超えたため、対象のトランザクションは除外されています。その fee を増やしてみてください。"), _defineProperty(_ja$data, 'PARITY_InsufficientGasPrice', "Transaction fee が小さすぎます。 ノードの最小 fee を満たしていません。 (minimal: {}, got: {}). fee を増やしてください。"), _defineProperty(_ja$data, 'PARITY_InsufficientBalance', "ファンドが足りません。 トランザクション送出元のファンドが不足しています。 必要量 {} で 現在： {}　　です。"), _defineProperty(_ja$data, 'PARITY_GasLimitExceeded', "トランザクションコストがガスリミットを超過しました。 リミット： {}, 現在: {}. ガス供給量を減らして見てください。"), _defineProperty(_ja$data, 'PARITY_InvalidGasLimit', "ガス供給量が制限を超過しています。"), _defineProperty(_ja$data, 'GETH_InvalidSender', '送出元が無効です '), _defineProperty(_ja$data, 'GETH_Nonce', 'Nonce が足りません '), _defineProperty(_ja$data, 'GETH_Cheap', 'ガス価格が低すぎます '), _defineProperty(_ja$data, 'GETH_Balance', '残高不足 '), _defineProperty(_ja$data, 'GETH_NonExistentAccount', 'アカウントが存在しない、あるいはその残高不足です '), _defineProperty(_ja$data, 'GETH_InsufficientFunds', 'ガス*価格+数量に足りません '), _defineProperty(_ja$data, 'GETH_IntrinsicGas', '基本のガス不足です '), _defineProperty(_ja$data, 'GETH_GasLimit', 'ブロックガスリミットを越えています '), _defineProperty(_ja$data, 'GETH_NegativeValue', '負の値です '), _defineProperty(_ja$data, 'translate_version', '0.3 '), _defineProperty(_ja$data, 'Translator_Desc', 'トランスレーターにお恵みの投げ銭： '), _defineProperty(_ja$data, 'TranslatorName_1', 'sekisanchi '), _defineProperty(_ja$data, 'TranslatorAddr_1', '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE '), _defineProperty(_ja$data, 'TranslatorName_2', ''), _defineProperty(_ja$data, 'TranslatorAddr_2', ''), _defineProperty(_ja$data, 'TranslatorName_3', ''), _defineProperty(_ja$data, 'TranslatorAddr_3', ''), _defineProperty(_ja$data, 'TranslatorName_4', ''), _defineProperty(_ja$data, 'TranslatorAddr_4', ''), _defineProperty(_ja$data, 'TranslatorName_5', ''), _defineProperty(_ja$data, 'TranslatorAddr_5', ''), _defineProperty(_ja$data, 'HELP_Warning', 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. '), _defineProperty(_ja$data, 'HELP_Desc', 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! '), _defineProperty(_ja$data, 'HELP_Remind_Title', 'Some reminders '), _defineProperty(_ja$data, 'HELP_Remind_Desc_1', '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. '), _defineProperty(_ja$data, 'HELP_Remind_Desc_2', 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. '), _defineProperty(_ja$data, 'HELP_Remind_Desc_3', 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer! '), _defineProperty(_ja$data, 'HELP_0_Title', '0) I\'m new. What do I do? '), _defineProperty(_ja$data, 'HELP_0_Desc_1', 'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**. '), _defineProperty(_ja$data, 'HELP_0_Desc_2', 'Create a new wallet. '), _defineProperty(_ja$data, 'HELP_0_Desc_3', 'Back the wallet up. '), _defineProperty(_ja$data, 'HELP_0_Desc_4', 'Verify you have access to this new wallet and have correctly saved all necessary information. '), _defineProperty(_ja$data, 'HELP_0_Desc_5', 'Transfer Ether to this new wallet. '), _defineProperty(_ja$data, 'HELP_1_Title', '1) How do I create a new wallet? '), _defineProperty(_ja$data, 'HELP_1_Desc_1', 'Go to the "Generate Wallet" page. '), _defineProperty(_ja$data, 'HELP_1_Desc_2', 'Go to the "Add Wallet" page & select "Generate New Wallet" '), _defineProperty(_ja$data, 'HELP_1_Desc_3', 'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions. '), _defineProperty(_ja$data, 'HELP_1_Desc_4', 'Click "GENERATE". '), _defineProperty(_ja$data, 'HELP_1_Desc_5', 'Your wallet has now been generated. '), _defineProperty(_ja$data, 'HELP_2a_Title', '2a) How do I save/backup my wallet? '), _defineProperty(_ja$data, 'HELP_2a_Desc_1', 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper. '), _defineProperty(_ja$data, 'HELP_2a_Desc_2', 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. '), _defineProperty(_ja$data, 'HELP_2a_Desc_3', 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys: '), _defineProperty(_ja$data, 'HELP_2a_Desc_4', 'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive. '), _defineProperty(_ja$data, 'HELP_2a_Desc_5', 'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive. '), _defineProperty(_ja$data, 'HELP_2a_Desc_6', 'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). '), _defineProperty(_ja$data, 'HELP_2b_Title', '2b) How do I safely / offline / cold storage with MyEtherWallet? '), _defineProperty(_ja$data, 'HELP_2b_Desc_1', 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). '), _defineProperty(_ja$data, 'HELP_2b_Desc_2', 'Click on `dist-vX.X.X.X.zip`. '), _defineProperty(_ja$data, 'HELP_2b_Desc_3', 'Move zip to an airgapped computer. '), _defineProperty(_ja$data, 'HELP_2b_Desc_4', 'Unzip it and double-click `index.html`. '), _defineProperty(_ja$data, 'HELP_2b_Desc_5', 'Generate a wallet with a strong password. '), _defineProperty(_ja$data, 'HELP_2b_Desc_6', 'Save the address. Save versions of the private key. Save the password if you might not remember it forever. '), _defineProperty(_ja$data, 'HELP_2b_Desc_7', 'Store these papers / USBs in multiple physically separate locations. '), _defineProperty(_ja$data, 'HELP_2b_Desc_8', 'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same. '), _defineProperty(_ja$data, 'HELP_3_Title', '3) How do I verify I have access to my new wallet? '), _defineProperty(_ja$data, 'HELP_3_Desc_1', '**Before you send any Ether to your new wallet**, you should ensure you have access to it. '), _defineProperty(_ja$data, 'HELP_3_Desc_2', 'Navigate to the "View Wallet Info" page. '), _defineProperty(_ja$data, 'HELP_3_Desc_3', 'Navigate to the MyEtherWallet.com "View Wallet Info" page. '), _defineProperty(_ja$data, 'HELP_3_Desc_4', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_ja$data, 'HELP_3_Desc_5', 'If the wallet is encrypted, a text box will automatically appear. Enter the password. '), _defineProperty(_ja$data, 'HELP_3_Desc_6', 'Click the "Unlock Wallet" button. '), _defineProperty(_ja$data, 'HELP_3_Desc_7', 'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet. '), _defineProperty(_ja$data, 'HELP_3_Desc_8', 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly. '), _defineProperty(_ja$data, 'HELP_4_Title', '4) How do I send Ether from one wallet to another? '), _defineProperty(_ja$data, 'HELP_4_Desc_1', 'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned. '), _defineProperty(_ja$data, 'HELP_4_Desc_2', 'Navigate to the "Ether送出 トークン送出" page. '), _defineProperty(_ja$data, 'HELP_4_Desc_3', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_ja$data, 'HELP_4_Desc_4', 'If the wallet is encrypted, a text box will automatically appear. Enter the password. '), _defineProperty(_ja$data, 'HELP_4_Desc_5', 'Click the "Unlock Wallet" button. '), _defineProperty(_ja$data, 'HELP_4_Desc_6', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_ja$data, 'HELP_4_Desc_7', 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. '), _defineProperty(_ja$data, 'HELP_4_Desc_9', 'Click "Generate Transaction". '), _defineProperty(_ja$data, 'HELP_4_Desc_10', 'A couple more fields will appear. This is your browser generating the transaction. '), _defineProperty(_ja$data, 'HELP_4_Desc_11', 'Click the blue "Send Transaction" button below that. '), _defineProperty(_ja$data, 'HELP_4_Desc_12', 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. '), _defineProperty(_ja$data, 'HELP_4_Desc_13', 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. '), _defineProperty(_ja$data, 'HELP_4CX_Title', '4) How do I send Ether using MyEtherWallet CX? '), _defineProperty(_ja$data, 'HELP_4CX_Desc_1', 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Ether送出 トークン送出" page. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_2', 'QuickSend: '), _defineProperty(_ja$data, 'HELP_4CX_Desc_3', 'Click the Chrome Extension Icon. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_4', 'Click the "QuickSend" button. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_5', 'Select the wallet you wish to send from. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_6', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_7', 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_8', 'Click "Send Transaction". '), _defineProperty(_ja$data, 'HELP_4CX_Desc_9', 'Verify the address and the amount you are sending is correct. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_10', 'Enter the password for that wallet. '), _defineProperty(_ja$data, 'HELP_4CX_Desc_11', 'Click "Send Transaction." '), _defineProperty(_ja$data, 'HELP_4CX_Desc_12', 'Using "Ether送出 トークン送出" Page '), _defineProperty(_ja$data, 'HELP_5_Title', '5) How do I run MyEtherWallet.com offline/locally? '), _defineProperty(_ja$data, 'HELP_5_Desc_1', 'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page. '), _defineProperty(_ja$data, 'HELP_5_Desc_7', 'MyEtherWallet.com is now running entirely on your computer. '), _defineProperty(_ja$data, 'HELP_5_Desc_8', 'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact. '), _defineProperty(_ja$data, 'HELP_5_Desc_9', 'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo. '), _defineProperty(_ja$data, 'HELP_5CX_Title', '5) How can I install this extension from the repo instead of the Chrome Store? '), _defineProperty(_ja$data, 'HELP_5CX_Desc_2', 'Click on `chrome-extension-vX.X.X.X.zip` and unzip it. '), _defineProperty(_ja$data, 'HELP_5CX_Desc_3', 'Go to Google Chrome and find you settings (in the menu in the upper right). '), _defineProperty(_ja$data, 'HELP_5CX_Desc_4', 'Click "Extensions" on the left. '), _defineProperty(_ja$data, 'HELP_5CX_Desc_5', 'Check the "Developer Mode" button at the top of that page. '), _defineProperty(_ja$data, 'HELP_5CX_Desc_6', 'Click the "Load unpacked extension..." button. '), _defineProperty(_ja$data, 'HELP_5CX_Desc_7', 'Navigate to the now-unzipped folder that you downloaded earlier. Click "select". '), _defineProperty(_ja$data, 'HELP_5CX_Desc_8', 'The extension should now show up in your extensions and in your Chrome Extension bar. '), _defineProperty(_ja$data, 'HELP_7_Title', '7) How do I send Tokens & add custom tokens? '), _defineProperty(_ja$data, 'HELP_7_Desc_0', '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token. '), _defineProperty(_ja$data, 'HELP_7_Desc_1', 'Navigate to the "Ether送出 トークン送出" page. '), _defineProperty(_ja$data, 'HELP_7_Desc_2', 'Unlock your wallet. '), _defineProperty(_ja$data, 'HELP_7_Desc_3', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_ja$data, 'HELP_7_Desc_4', 'Enter the amount you would like to send. '), _defineProperty(_ja$data, 'HELP_7_Desc_5', 'Select which token you would like to send. '), _defineProperty(_ja$data, 'HELP_7_Desc_6', 'If you do not see the token listed: '), _defineProperty(_ja$data, 'HELP_7_Desc_7', 'Click "Custom". '), _defineProperty(_ja$data, 'HELP_7_Desc_8', 'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist. '), _defineProperty(_ja$data, 'HELP_7_Desc_9', 'Click "Save". '), _defineProperty(_ja$data, 'HELP_7_Desc_10', 'You can now send that token as well as see it\'s balance in the sidebar. '), _defineProperty(_ja$data, 'HELP_7_Desc_11', 'Click "Generate Transaction". '), _defineProperty(_ja$data, 'HELP_7_Desc_12', 'A couple more fields will appear. This is your browser generating the transaction. '), _defineProperty(_ja$data, 'HELP_7_Desc_13', 'Click the blue "Send Transaction" button below that. '), _defineProperty(_ja$data, 'HELP_7_Desc_14', 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. '), _defineProperty(_ja$data, 'HELP_7_Desc_15', 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. '), _defineProperty(_ja$data, 'HELP_8_Title', '8) What happens if your site goes down? '), _defineProperty(_ja$data, 'HELP_8_Desc_1', 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain. '), _defineProperty(_ja$data, 'HELP_8_Desc_2', 'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site. '), _defineProperty(_ja$data, 'HELP_8_Desc_3', 'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below. '), _defineProperty(_ja$data, 'HELP_8_Desc_4', 'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. '), _defineProperty(_ja$data, 'HELP_8CX_Title', '8) What happens if MyEtherWallet CX disappears? '), _defineProperty(_ja$data, 'HELP_8CX_Desc_1', 'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer. '), _defineProperty(_ja$data, 'HELP_8CX_Desc_2', 'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets. '), _defineProperty(_ja$data, 'HELP_8CX_Desc_3', 'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above. '), _defineProperty(_ja$data, 'HELP_9_Title', '9) Is the "Ether送出 トークン送出" page offline? '), _defineProperty(_ja$data, 'HELP_9_Desc_1', 'No. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times. '), _defineProperty(_ja$data, 'HELP_10_Title', '10) How do I make an offline transaction? '), _defineProperty(_ja$data, 'HELP_10_Desc_1', 'Navigate to the "Offline Transaction" page via your online computer. '), _defineProperty(_ja$data, 'HELP_10_Desc_2', 'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price. '), _defineProperty(_ja$data, 'HELP_10_Desc_3', 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. '), _defineProperty(_ja$data, 'HELP_10_Desc_4', 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. '), _defineProperty(_ja$data, 'HELP_10_Desc_5', 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. '), _defineProperty(_ja$data, 'HELP_10_Desc_6', 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. '), _defineProperty(_ja$data, 'HELP_10_Desc_7', 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. '), _defineProperty(_ja$data, 'HELP_10_Desc_8', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_ja$data, 'HELP_10_Desc_9', 'Press the "GENERATE SIGNED TRANSACTION" button. '), _defineProperty(_ja$data, 'HELP_10_Desc_10', 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. '), _defineProperty(_ja$data, 'HELP_10_Desc_11', 'On your online computer, paste the signed transaction into the text field in step #3 and click send. This will broadcast your transaction. '), _defineProperty(_ja$data, 'HELP_12_Title', '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist? '), _defineProperty(_ja$data, 'HELP_12_Desc_1', 'Using an Geth/Mist JSON file from MyEtherWallet v2+.... '), _defineProperty(_ja$data, 'HELP_12_Desc_2', 'Go to the "View Wallet Info" page. '), _defineProperty(_ja$data, 'HELP_12_Desc_3', 'Unlock your wallet using your **encrypted** private key or JSON file. '), _defineProperty(_ja$data, 'HELP_12_Desc_4', 'Go to the "My Wallets" page. '), _defineProperty(_ja$data, 'HELP_12_Desc_5', 'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. '), _defineProperty(_ja$data, 'HELP_12_Desc_6', 'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file. '), _defineProperty(_ja$data, 'HELP_12_Desc_7', 'Open the Ethereum Wallet application. '), _defineProperty(_ja$data, 'HELP_12_Desc_8', 'In the menu bar, go "Accounts" -> "Backup" -> "Accounts" '), _defineProperty(_ja$data, 'HELP_12_Desc_9', 'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder. '), _defineProperty(_ja$data, 'HELP_12_Desc_10', 'Your account should show up immediately under "Accounts." '), _defineProperty(_ja$data, 'HELP_12_Desc_11', 'Using your unencrypted private key... '), _defineProperty(_ja$data, 'HELP_12_Desc_12', 'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page. '), _defineProperty(_ja$data, 'HELP_12_Desc_13', 'Select your wallet file -or- enter/paste your private key to unlock your wallet. '), _defineProperty(_ja$data, 'HELP_12_Desc_14', 'Copy Your Private Key (unencrypted). '), _defineProperty(_ja$data, 'HELP_12_Desc_15', 'If you are on a Mac: '), _defineProperty(_ja$data, 'HELP_12_Desc_15b', 'If you are on a PC: '), _defineProperty(_ja$data, 'HELP_12_Desc_16', 'Open Text Edit and paste this private key. '), _defineProperty(_ja$data, 'HELP_12_Desc_17', 'Go to the menu bar and click "Format" -> "Make Plain Text". '), _defineProperty(_ja$data, 'HELP_12_Desc_18', 'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog. '), _defineProperty(_ja$data, 'HELP_12_Desc_19', 'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt` '), _defineProperty(_ja$data, 'HELP_12_Desc_20', 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. '), _defineProperty(_ja$data, 'HELP_12_Desc_21', 'After successful import, delete `nothing_special_delete_me.txt` '), _defineProperty(_ja$data, 'HELP_12_Desc_22', 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". '), _defineProperty(_ja$data, 'HELP_12_Desc_23', 'Open Notepad & paste the private key '), _defineProperty(_ja$data, 'HELP_12_Desc_24', 'Save the file as `nothing_special_delete_me.txt` at `C:` '), _defineProperty(_ja$data, 'HELP_12_Desc_25', 'Run the command, `geth account import C:\\nothing_special_delete_me.txt` '), _defineProperty(_ja$data, 'HELP_12_Desc_26', 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. '), _defineProperty(_ja$data, 'HELP_12_Desc_27', 'After successful import, delete `nothing_special_delete_me.txt` '), _defineProperty(_ja$data, 'HELP_12_Desc_28', 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". '), _defineProperty(_ja$data, 'HELP_13_Title', '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean? '), _defineProperty(_ja$data, 'HELP_13_Desc_1', 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction. '), _defineProperty(_ja$data, 'HELP_14_Title', '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe? '), _defineProperty(_ja$data, 'HELP_14_Desc_1', 'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experiments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto). '), _defineProperty(_ja$data, 'HELP_15_Title', '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan) '), _defineProperty(_ja$data, 'HELP_15_Desc_1', 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. '), _defineProperty(_ja$data, 'HELP_16_Title', '16) How do I check the balance of my account? '), _defineProperty(_ja$data, 'HELP_16_Desc_1', 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io '), _defineProperty(_ja$data, 'HELP_17_Title', '17) Why isn\'t my balance showing up when I unlock my wallet? '), _defineProperty(_ja$data, 'HELP_17_Desc_1', 'This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io '), _defineProperty(_ja$data, 'HELP_18_Title', '18) Where is my geth wallet file? '), _defineProperty(_ja$data, 'HELP_19_Title', '19) Where is my Mist wallet file? '), _defineProperty(_ja$data, 'HELP_19_Desc_1', 'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored. '), _defineProperty(_ja$data, 'HELP_20_Title', '20) Where is my pre-sale wallet file? '), _defineProperty(_ja$data, 'HELP_20_Desc_1', 'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale. '), _defineProperty(_ja$data, 'HELP_21_Title', '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? '), _defineProperty(_ja$data, 'HELP_21_Desc_1', 'Short version: yes, but finding an account with a balance would take longer than the universe...so...no. '), _defineProperty(_ja$data, 'HELP_21_Desc_2', 'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts. '), _defineProperty(_ja$data, 'HELP_21_Desc_3', 'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems. '), _defineProperty(_ja$data, 'HELP_21_Desc_4', 'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password. '), _defineProperty(_ja$data, 'HELP_21_Desc_5', 'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match. '), _defineProperty(_ja$data, 'HELP_21_Desc_6', 'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion. '), _defineProperty(_ja$data, 'HELP_21_Desc_7', '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space. '), _defineProperty(_ja$data, 'HELP_21_Desc_8', 'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day. '), _defineProperty(_ja$data, 'HELP_SecCX_Title', 'Security - MyEtherWallet CX '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_1', 'Where is this extension saving my information? '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_2', 'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome. '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_3', 'What information is saved? '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_4', 'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted. '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_5', 'Why aren\'t the nickname and wallet address encrypted? '), _defineProperty(_ja$data, 'HELP_SecCX_Desc_6', 'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension. '), _defineProperty(_ja$data, 'HELP_Sec_Title', 'Security '), _defineProperty(_ja$data, 'HELP_Sec_Desc_1', 'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. '), _defineProperty(_ja$data, 'HELP_Sec_Desc_2', 'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success. '), _defineProperty(_ja$data, 'HELP_Sec_Desc_3', 'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere. '), _defineProperty(_ja$data, 'HELP_Sec_Desc_4', 'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to [https://www.myetherwallet.com](https://www.myetherwallet.com). '), _defineProperty(_ja$data, 'HELP_Sec_Desc_5', 'For generating wallets, you can download the [source code and run it locally](https://github.com/kvhnuke/etherwallet/releases/latest). See #5 above. '), _defineProperty(_ja$data, 'HELP_Sec_Desc_6', 'Generate a test wallet and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred. '), _defineProperty(_ja$data, 'HELP_Sec_Desc_8', 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! '), _defineProperty(_ja$data, 'HELP_FAQ_Title', 'More Helpful Answers to Frequent Questions '), _defineProperty(_ja$data, 'HELP_Contact_Title', 'Ways to Get in Touch'), _ja$data);
 
 module.exports = ja;
 
@@ -14121,7 +14105,8 @@ var ru = require('./ru');
 //var sv = require('./sv');
 var tr = require('./tr');
 var vi = require('./vi');
-var zh = require('./zh');
+var zhcn = require('./zhcn');
+var zhtw = require('./zhtw');
 
 var translate = function translate($translateProvider) {
   $translateProvider.translations(de.code, translate.marked(de.data));
@@ -14144,7 +14129,8 @@ var translate = function translate($translateProvider) {
   //$translateProvider.translations(sv.code, translate.marked(sv.data));
   $translateProvider.translations(tr.code, translate.marked(tr.data));
   $translateProvider.translations(vi.code, translate.marked(vi.data));
-  $translateProvider.translations(zh.code, translate.marked(zh.data));
+  $translateProvider.translations(zhcn.code, translate.marked(zhcn.data));
+  $translateProvider.translations(zhtw.code, translate.marked(zhtw.data));
   $translateProvider.preferredLanguage('en');
   $translateProvider.useSanitizeValueStrategy(null);
 };
@@ -14157,7 +14143,7 @@ translate.marked = function (data) {
 };
 module.exports = translate;
 
-},{"./de":69,"./el":70,"./en":71,"./es":72,"./fi":73,"./fr":74,"./hu":75,"./id":76,"./it":77,"./ja":78,"./nl":79,"./no":80,"./pl":81,"./pt":82,"./ru":83,"./tr":84,"./vi":86,"./zh":87}],86:[function(require,module,exports){
+},{"./de":69,"./el":70,"./en":71,"./es":72,"./fi":73,"./fr":74,"./hu":75,"./id":76,"./it":77,"./ja":78,"./nl":79,"./no":80,"./pl":81,"./pt":82,"./ru":83,"./tr":84,"./vi":86,"./zhcn":87,"./zhtw":88}],86:[function(require,module,exports){
 // Vietnamese
 'use strict';
 
@@ -14750,16 +14736,16 @@ vi.data = {
 module.exports = vi;
 
 },{}],87:[function(require,module,exports){
-// Chinese
+// simplified Chinese, zh-CN, 简体中文
 'use strict';
 
-var _zh$data;
+var _zhcn$data;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var zh = function zh() {};
-zh.code = 'zh';
-zh.data = (_zh$data = {
+var zhcn = function zhcn() {};
+zhcn.code = 'zhcn';
+zhcn.data = (_zhcn$data = {
 
   /* Misc */
   x_ParityPhrase: 'Parity Phrase ',
@@ -14959,11 +14945,587 @@ zh.data = (_zh$data = {
   SEND_addr: '发送至地址： ',
   SEND_amount: '转账数额： ',
   SEND_amount_short: '数额 '
-}, _defineProperty(_zh$data, 'SEND_custom', 'Custom '), _defineProperty(_zh$data, 'SEND_gas', 'Gas '), _defineProperty(_zh$data, 'SEND_TransferTotal', '发送所有余额 '), _defineProperty(_zh$data, 'SEND_generate', '生成交易 '), _defineProperty(_zh$data, 'SEND_raw', '未生效交易 '), _defineProperty(_zh$data, 'SEND_signed', '签名交易 '), _defineProperty(_zh$data, 'SEND_trans', '发送交易 '), _defineProperty(_zh$data, 'SENDModal_Title', '警告！ '), _defineProperty(_zh$data, 'SENDModal_Content_1', '你将发送 '), _defineProperty(_zh$data, 'SENDModal_Content_2', '到地址 '), _defineProperty(_zh$data, 'SENDModal_Content_3', '你确定这样做吗？ '), _defineProperty(_zh$data, 'SENDModal_Content_4', '注意：如果你遇到错误，你最有可能向你的账户添加以太币，用以支付发送代币所需的gas。 Gas is paid in ether.Gas用以太币支付。 '), _defineProperty(_zh$data, 'SENDModal_No', '不，离开这里。 '), _defineProperty(_zh$data, 'SENDModal_Yes', '是的，我确定！发送交易。 '), _defineProperty(_zh$data, 'TOKEN_Addr', '地址： '), _defineProperty(_zh$data, 'TOKEN_Symbol', '代币符号： '), _defineProperty(_zh$data, 'TOKEN_Dec', '小数点位数： '), _defineProperty(_zh$data, 'TRANS_desc', '如果你想发送代币，请使用“发送代币”页面。 '), _defineProperty(_zh$data, 'TRANS_warning', '如果你使用“只发送ETH”或则“只发送ETC”功能，那么你是通过合约发送交易。 一些服务（例如交易所充值）接收这些交易时会遇到问题。阅读更多内容。 '), _defineProperty(_zh$data, 'TRANS_advanced', '高级功能：增加更多Gas或者数据 '), _defineProperty(_zh$data, 'TRANS_data', '数据： '), _defineProperty(_zh$data, 'TRANS_gas', 'Gas Limit： '), _defineProperty(_zh$data, 'TRANS_sendInfo', '一笔标准交易需要21000gas，花费0.000441以太币。我们将gas价格设为0.000000021以太币，略高于最低价格，以保证交易被快速打包。我们不收取交易费用。 '), _defineProperty(_zh$data, 'TRANSModal_Title', '“只发送ETH”和“只发送ETC”交易 '), _defineProperty(_zh$data, 'TRANSModal_Content_0', '注意不同的交易和不同的服务： '), _defineProperty(_zh$data, 'TRANSModal_Content_1', '**发送ETH（标准交易）：** 这将生成一个默认交易，直接从一个地址发送到另一个地址。它的默认gas是21000。 用这种方式发送ETH可能会在ETC链上重放。 '), _defineProperty(_zh$data, 'TRANSModal_Content_2', '**只发送：ETH：** 这是通过[Timon Rapp的重放保护合约（VB推荐）](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/)， 所以你只会在ETH链上发送交易。 '), _defineProperty(_zh$data, 'TRANSModal_Content_3', '**只发送：ETC：** 这是通过[Timon Rapp的重放保护合约（VB推荐）](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/)， 所以你只会在ETH链上发送交易。 '), _defineProperty(_zh$data, 'TRANSModal_Content_4', '**Coinbase & ShapeShift: ** 通过标准交易只发送ETH或者ETC。如果你通过“只发送ETH或者ETC”合约发送交易，你需要联系他们的客服，让他们手动增加你的余额或者返币给你。 [你也可以尝试Shapeshift的”分割“工具。](https://split.shapeshift.io/) '), _defineProperty(_zh$data, 'TRANSModal_Content_5', '**Kraken、Poloniex交易所：**向这两个交易所地址发送没币有遇到问题。可以使用。 '), _defineProperty(_zh$data, 'TRANSModal_Yes', '我理解了。 '), _defineProperty(_zh$data, 'TRANSModal_No', '我更加糊涂了，请帮助我。 '), _defineProperty(_zh$data, 'OFFLINE_Title', '生成、发送离线交易 '), _defineProperty(_zh$data, 'OFFLINE_Desc', '生成离线交易需要3个步骤。步骤1和步骤3在连网的电脑上完成，步骤2在离线电脑上完成。这确保了你的私钥不会接触到联网设备。 '), _defineProperty(_zh$data, 'OFFLLINE_Step1_Title', '步骤1：生成信息（联网电脑） '), _defineProperty(_zh$data, 'OFFLINE_Step1_Button', '生成信息 '), _defineProperty(_zh$data, 'OFFLINE_Step1_Label_1', '发自地址： '), _defineProperty(_zh$data, 'OFFLINE_Step1_Label_2', '注意：这是发自地址，不是发往地址。 Nonce是从起始账户生成的。如果使用一台隔离电脑，它就是冷存储的账户地址。 '), _defineProperty(_zh$data, 'OFFLINE_Step2_Title', '步骤2：生成交易（离线电脑） '), _defineProperty(_zh$data, 'OFFLINE_Step2_Label_1', '发往地址： '), _defineProperty(_zh$data, 'OFFLINE_Step2_Label_2', '发送数额 '), _defineProperty(_zh$data, 'OFFLINE_Step2_Label_3', 'Gas价格 '), _defineProperty(_zh$data, 'OFFLINE_Step2_Label_3b', '在你的连网电脑的第1步骤中显示了。 '), _defineProperty(_zh$data, 'OFFLINE_Step2_Label_4', 'Gas限制 '), _defineProperty(_zh$data, 'OFFLINE_Step2_Label_4b', '21000是默认的gas限制。当你发送合约或者添加数据时，gas限制可能会不同。没使用的gas将返回给你。 '), _defineProperty(_zh$data, 'OFFLINE_Step2_Label_5', 'Nonce '), _defineProperty(_zh$data, 'OFFLINE_Step2_Label_5b', '在你的连网电脑的第1步中显示了。 '), _defineProperty(_zh$data, 'OFFLINE_Step2_Label_6', '数据 '), _defineProperty(_zh$data, 'OFFLINE_Step2_Label_6b', '这是可选项。当你向合约发送交易时，往往需要用到数据。 '), _defineProperty(_zh$data, 'OFFLINE_Step2_Label_7', '输入/选择你的私钥文件/JSON '), _defineProperty(_zh$data, 'OFFLINE_Step3_Title', '步骤3：发送/公开交易（连网电脑） '), _defineProperty(_zh$data, 'OFFLINE_Step3_Label_1', '将步骤2的签名交易粘贴到这里，点击“发送交易”按钮。 '), _defineProperty(_zh$data, 'DEP_generate', '生成字节码 '), _defineProperty(_zh$data, 'DEP_generated', '生成字节码 '), _defineProperty(_zh$data, 'DEP_signtx', '签名交易 '), _defineProperty(_zh$data, 'DEP_interface', '生成界面 '), _defineProperty(_zh$data, 'MYWAL_Nick', '钱包昵称 '), _defineProperty(_zh$data, 'MYWAL_Address', '钱包地址 '), _defineProperty(_zh$data, 'MYWAL_Bal', '余额 '), _defineProperty(_zh$data, 'MYWAL_Edit', '编辑 '), _defineProperty(_zh$data, 'MYWAL_View', '查看 '), _defineProperty(_zh$data, 'MYWAL_Remove', '移除 '), _defineProperty(_zh$data, 'MYWAL_RemoveWal', '移除钱包： '), _defineProperty(_zh$data, 'MYWAL_WatchOnly', '你的只可查看账户 '), _defineProperty(_zh$data, 'MYWAL_Viewing', '查看钱包： '), _defineProperty(_zh$data, 'MYWAL_Hide', '隐藏钱包信息 '), _defineProperty(_zh$data, 'MYWAL_Edit_2', '编辑钱包： '), _defineProperty(_zh$data, 'MYWAL_Name', '钱包名字 '), _defineProperty(_zh$data, 'MYWAL_Content_1', '警告！你将移除你的钱包： '), _defineProperty(_zh$data, 'MYWAL_Content_2', '确保在移除以前你已经保存了私钥和Keystore文件，并记住了密码。 '), _defineProperty(_zh$data, 'MYWAL_Content_3', '如果你想将来在MyEtherWallet插件中使用该钱包，你需要手动添加私钥/JSON文件和密码。 '), _defineProperty(_zh$data, 'VIEWWALLET_Subtitle', '这允许你下载不同格式的私钥和重新打印你的纸钱包。为了将[你的账户导入到Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)，你可能需要这个操作。如果你想查看你的余额，我们推荐使用区块浏览器，例如[etherscan.io](http://etherscan.io/)。 '), _defineProperty(_zh$data, 'VIEWWALLET_Subtitle_Short', '这允许你下载不同格式的私钥和重新打印你的纸钱包。 '), _defineProperty(_zh$data, 'VIEWWALLET_SuccessMsg', '成功！这是你的钱包细节！ '), _defineProperty(_zh$data, 'CX_error_1', '你没有已保存的钱包。点击["添加钱包"](/cx-wallet.html#add-wallet)，添加一个钱包。 '), _defineProperty(_zh$data, 'CX_quicksend', '快速发送 '), _defineProperty(_zh$data, 'ERROR_0', '请输入有效数额。 '), _defineProperty(_zh$data, 'ERROR_1', '你的密码至少需要设置为9位。请确保密码足够强。 '), _defineProperty(_zh$data, 'ERROR_2', '抱歉！我们不能识别这种类型的钱包文件。 '), _defineProperty(_zh$data, 'ERROR_3', '这不是一个有效的钱包文件。 '), _defineProperty(_zh$data, 'ERROR_4', 'This unit doesn\'t exists, please use the one of the following units 这个单位不存在，请用下面给出的单位 '), _defineProperty(_zh$data, 'ERROR_5', '无效地址。 '), _defineProperty(_zh$data, 'ERROR_6', '无效密码。 '), _defineProperty(_zh$data, 'ERROR_7', '无效数额。 '), _defineProperty(_zh$data, 'ERROR_8', '无效gas上限。 '), _defineProperty(_zh$data, 'ERROR_9', '无效数据值。 '), _defineProperty(_zh$data, 'ERROR_10', '无效gas数额。 '), _defineProperty(_zh$data, 'ERROR_11', '无效nonce。 '), _defineProperty(_zh$data, 'ERROR_12', '无效签名交易。 '), _defineProperty(_zh$data, 'ERROR_13', '已经有一个钱包使用该昵称。 '), _defineProperty(_zh$data, 'ERROR_14', '找不到钱包。 '), _defineProperty(_zh$data, 'ERROR_15', '看起来这个提议不存在或者读取这个提议时出现错误。 '), _defineProperty(_zh$data, 'ERROR_16', '这个地址钱包已经存在于存储中。请查看你的钱包页面。 '), _defineProperty(_zh$data, 'ERROR_17', '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。 '), _defineProperty(_zh$data, 'ERROR_18', '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。 '), _defineProperty(_zh$data, 'ERROR_19', '无效符号 '), _defineProperty(_zh$data, 'ERROR_20', 'Not a valid ERC-20 token '), _defineProperty(_zh$data, 'ERROR_21', 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. '), _defineProperty(_zh$data, 'ERROR_22', 'Please enter valid node name '), _defineProperty(_zh$data, 'ERROR_23', 'Enter valid url, if you are on https your url must be https '), _defineProperty(_zh$data, 'ERROR_24', 'Please enter valid port '), _defineProperty(_zh$data, 'ERROR_25', 'Please enter valid chain ID '), _defineProperty(_zh$data, 'ERROR_26', 'Please enter valid ABI '), _defineProperty(_zh$data, 'ERROR_27', 'Minimum amount 0.01 '), _defineProperty(_zh$data, 'ERROR_28', '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。 '), _defineProperty(_zh$data, 'SUCCESS_1', '有效地址 '), _defineProperty(_zh$data, 'SUCCESS_2', '钱包解密成功 '), _defineProperty(_zh$data, 'SUCCESS_3', '交易已提交。TX ID： '), _defineProperty(_zh$data, 'SUCCESS_4', '成功添加你的钱包： '), _defineProperty(_zh$data, 'SUCCESS_5', '选择的文件： '), _defineProperty(_zh$data, 'GETH_InvalidSender', '无效发送者 '), _defineProperty(_zh$data, 'GETH_Nonce', 'Nonce太低 '), _defineProperty(_zh$data, 'GETH_Cheap', 'Gas价格太低，不被接受 '), _defineProperty(_zh$data, 'GETH_Balance', '余额不足 '), _defineProperty(_zh$data, 'GETH_NonExistentAccount', '账户不存在或者账户余额太低 '), _defineProperty(_zh$data, 'GETH_InsufficientFunds', '余额不足，余额低于 gas * price + 发送数额 '), _defineProperty(_zh$data, 'GETH_IntrinsicGas', '固有gas太低 '), _defineProperty(_zh$data, 'GETH_GasLimit', '超过区块gas上限 '), _defineProperty(_zh$data, 'GETH_NegativeValue', '负值 '), _defineProperty(_zh$data, 'translate_version', '0.3 '), _defineProperty(_zh$data, 'Translator_Desc', '感谢中文译者： '), _defineProperty(_zh$data, 'TranslatorName_1', '[ Shaoping@ethfans.org （少平）]((https://www.myetherwallet.com/?gaslimit=21000&to=0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740&value=1.0#send-transaction)) '), _defineProperty(_zh$data, 'TranslatorAddr_1', '0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740 '), _defineProperty(_zh$data, 'TranslatorName_2', ''), _defineProperty(_zh$data, 'TranslatorAddr_2', ''), _defineProperty(_zh$data, 'TranslatorName_3', ''), _defineProperty(_zh$data, 'TranslatorAddr_3', ''), _defineProperty(_zh$data, 'TranslatorName_4', ''), _defineProperty(_zh$data, 'TranslatorAddr_4', ''), _defineProperty(_zh$data, 'TranslatorName_5', ''), _defineProperty(_zh$data, 'TranslatorAddr_5', ''), _defineProperty(_zh$data, 'HELP_Warning', 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. '), _defineProperty(_zh$data, 'HELP_Desc', 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! '), _defineProperty(_zh$data, 'HELP_Remind_Title', 'Some reminders '), _defineProperty(_zh$data, 'HELP_Remind_Desc_1', '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. '), _defineProperty(_zh$data, 'HELP_Remind_Desc_2', 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. '), _defineProperty(_zh$data, 'HELP_Remind_Desc_3', 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer! '), _defineProperty(_zh$data, 'HELP_0_Title', '0) I\'m new. What do I do? '), _defineProperty(_zh$data, 'HELP_0_Desc_1', 'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**. '), _defineProperty(_zh$data, 'HELP_0_Desc_2', 'Create a new wallet. '), _defineProperty(_zh$data, 'HELP_0_Desc_3', 'Back the wallet up. '), _defineProperty(_zh$data, 'HELP_0_Desc_4', 'Verify you have access to this new wallet and have correctly saved all necessary information. '), _defineProperty(_zh$data, 'HELP_0_Desc_5', 'Transfer Ether to this new wallet. '), _defineProperty(_zh$data, 'HELP_1_Title', '1) How do I create a new wallet? '), _defineProperty(_zh$data, 'HELP_1_Desc_1', 'Go to the "Generate Wallet" page. '), _defineProperty(_zh$data, 'HELP_1_Desc_2', 'Go to the "Add Wallet" page & select "Generate New Wallet" '), _defineProperty(_zh$data, 'HELP_1_Desc_3', 'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions. '), _defineProperty(_zh$data, 'HELP_1_Desc_4', 'Click "GENERATE". '), _defineProperty(_zh$data, 'HELP_1_Desc_5', 'Your wallet has now been generated. '), _defineProperty(_zh$data, 'HELP_2a_Title', '2a) How do I save/backup my wallet? '), _defineProperty(_zh$data, 'HELP_2a_Desc_1', 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper. '), _defineProperty(_zh$data, 'HELP_2a_Desc_2', 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. '), _defineProperty(_zh$data, 'HELP_2a_Desc_3', 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys: '), _defineProperty(_zh$data, 'HELP_2a_Desc_4', 'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive. '), _defineProperty(_zh$data, 'HELP_2a_Desc_5', 'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive. '), _defineProperty(_zh$data, 'HELP_2a_Desc_6', 'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). '), _defineProperty(_zh$data, 'HELP_2b_Title', '2b) How do I safely / offline / cold storage with MyEtherWallet? '), _defineProperty(_zh$data, 'HELP_2b_Desc_1', 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). '), _defineProperty(_zh$data, 'HELP_2b_Desc_2', 'Click on `dist-vX.X.X.X.zip`. '), _defineProperty(_zh$data, 'HELP_2b_Desc_3', 'Move zip to an airgapped computer. '), _defineProperty(_zh$data, 'HELP_2b_Desc_4', 'Unzip it and double-click `index.html`. '), _defineProperty(_zh$data, 'HELP_2b_Desc_5', 'Generate a wallet with a strong password. '), _defineProperty(_zh$data, 'HELP_2b_Desc_6', 'Save the address. Save versions of the private key. Save the password if you might not remember it forever. '), _defineProperty(_zh$data, 'HELP_2b_Desc_7', 'Store these papers / USBs in multiple physically separate locations. '), _defineProperty(_zh$data, 'HELP_2b_Desc_8', 'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same. '), _defineProperty(_zh$data, 'HELP_3_Title', '3) How do I verify I have access to my new wallet? '), _defineProperty(_zh$data, 'HELP_3_Desc_1', '**Before you send any Ether to your new wallet**, you should ensure you have access to it. '), _defineProperty(_zh$data, 'HELP_3_Desc_2', 'Navigate to the "View Wallet Info" page. '), _defineProperty(_zh$data, 'HELP_3_Desc_3', 'Navigate to the MyEtherWallet.com "View Wallet Info" page. '), _defineProperty(_zh$data, 'HELP_3_Desc_4', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_zh$data, 'HELP_3_Desc_5', 'If the wallet is encrypted, a text box will automatically appear. Enter the password. '), _defineProperty(_zh$data, 'HELP_3_Desc_6', 'Click the "Unlock Wallet" button. '), _defineProperty(_zh$data, 'HELP_3_Desc_7', 'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet. '), _defineProperty(_zh$data, 'HELP_3_Desc_8', 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.01 ether to your new wallet, access that wallet, send that 0.01 ether to another address, and ensure everything works smoothly. '), _defineProperty(_zh$data, 'HELP_4_Title', '4) How do I send Ether from one wallet to another? '), _defineProperty(_zh$data, 'HELP_4_Desc_1', 'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned. '), _defineProperty(_zh$data, 'HELP_4_Desc_2', 'Navigate to the "发送以太币 / 发送代币" page. '), _defineProperty(_zh$data, 'HELP_4_Desc_3', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_zh$data, 'HELP_4_Desc_4', 'If the wallet is encrypted, a text box will automatically appear. Enter the password. '), _defineProperty(_zh$data, 'HELP_4_Desc_5', 'Click the "Unlock Wallet" button. '), _defineProperty(_zh$data, 'HELP_4_Desc_6', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_zh$data, 'HELP_4_Desc_7', 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. '), _defineProperty(_zh$data, 'HELP_4_Desc_9', 'Click "Generate Transaction". '), _defineProperty(_zh$data, 'HELP_4_Desc_10', 'A couple more fields will appear. This is your browser generating the transaction. '), _defineProperty(_zh$data, 'HELP_4_Desc_11', 'Click the blue "Send Transaction" button below that. '), _defineProperty(_zh$data, 'HELP_4_Desc_12', 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. '), _defineProperty(_zh$data, 'HELP_4_Desc_13', 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. '), _defineProperty(_zh$data, 'HELP_4CX_Title', '4) How do I send Ether using MyEtherWallet CX? '), _defineProperty(_zh$data, 'HELP_4CX_Desc_1', 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "发送以太币 / 发送代币" page. '), _defineProperty(_zh$data, 'HELP_4CX_Desc_2', 'QuickSend: '), _defineProperty(_zh$data, 'HELP_4CX_Desc_3', 'Click the Chrome Extension Icon. '), _defineProperty(_zh$data, 'HELP_4CX_Desc_4', 'Click the "QuickSend" button. '), _defineProperty(_zh$data, 'HELP_4CX_Desc_5', 'Select the wallet you wish to send from. '), _defineProperty(_zh$data, 'HELP_4CX_Desc_6', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_zh$data, 'HELP_4CX_Desc_7', 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. '), _defineProperty(_zh$data, 'HELP_4CX_Desc_8', 'Click "Send Transaction". '), _defineProperty(_zh$data, 'HELP_4CX_Desc_9', 'Verify the address and the amount you are sending is correct. '), _defineProperty(_zh$data, 'HELP_4CX_Desc_10', 'Enter the password for that wallet. '), _defineProperty(_zh$data, 'HELP_4CX_Desc_11', 'Click "Send Transaction." '), _defineProperty(_zh$data, 'HELP_4CX_Desc_12', 'Using "发送以太币 / 发送代币" Page '), _defineProperty(_zh$data, 'HELP_5_Title', '5) How do I run MyEtherWallet.com offline/locally? '), _defineProperty(_zh$data, 'HELP_5_Desc_1', 'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page. '), _defineProperty(_zh$data, 'HELP_5_Desc_7', 'MyEtherWallet.com is now running entirely on your computer. '), _defineProperty(_zh$data, 'HELP_5_Desc_8', 'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact. '), _defineProperty(_zh$data, 'HELP_5_Desc_9', 'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo. '), _defineProperty(_zh$data, 'HELP_5CX_Title', '5) How can I install this extension from the repo instead of the Chrome Store? '), _defineProperty(_zh$data, 'HELP_5CX_Desc_2', 'Click on `chrome-extension-vX.X.X.X.zip` and unzip it. '), _defineProperty(_zh$data, 'HELP_5CX_Desc_3', 'Go to Google Chrome and find you settings (in the menu in the upper right). '), _defineProperty(_zh$data, 'HELP_5CX_Desc_4', 'Click "Extensions" on the left. '), _defineProperty(_zh$data, 'HELP_5CX_Desc_5', 'Check the "Developer Mode" button at the top of that page. '), _defineProperty(_zh$data, 'HELP_5CX_Desc_6', 'Click the "Load unpacked extension..." button. '), _defineProperty(_zh$data, 'HELP_5CX_Desc_7', 'Navigate to the now-unzipped folder that you downloaded earlier. Click "select". '), _defineProperty(_zh$data, 'HELP_5CX_Desc_8', 'The extension should now show up in your extensions and in your Chrome Extension bar. '), _defineProperty(_zh$data, 'HELP_7_Title', '7) How do I send Tokens & add custom tokens? '), _defineProperty(_zh$data, 'HELP_7_Desc_0', '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token. '), _defineProperty(_zh$data, 'HELP_7_Desc_1', 'Navigate to the "发送以太币 / 发送代币" page. '), _defineProperty(_zh$data, 'HELP_7_Desc_2', 'Unlock your wallet. '), _defineProperty(_zh$data, 'HELP_7_Desc_3', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_zh$data, 'HELP_7_Desc_4', 'Enter the amount you would like to send. '), _defineProperty(_zh$data, 'HELP_7_Desc_5', 'Select which token you would like to send. '), _defineProperty(_zh$data, 'HELP_7_Desc_6', 'If you do not see the token listed: '), _defineProperty(_zh$data, 'HELP_7_Desc_7', 'Click "Custom". '), _defineProperty(_zh$data, 'HELP_7_Desc_8', 'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist. '), _defineProperty(_zh$data, 'HELP_7_Desc_9', 'Click "Save". '), _defineProperty(_zh$data, 'HELP_7_Desc_10', 'You can now send that token as well as see it\'s balance in the sidebar. '), _defineProperty(_zh$data, 'HELP_7_Desc_11', 'Click "Generate Transaction". '), _defineProperty(_zh$data, 'HELP_7_Desc_12', 'A couple more fields will appear. This is your browser generating the transaction. '), _defineProperty(_zh$data, 'HELP_7_Desc_13', 'Click the blue "Send Transaction" button below that. '), _defineProperty(_zh$data, 'HELP_7_Desc_14', 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. '), _defineProperty(_zh$data, 'HELP_7_Desc_15', 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. '), _defineProperty(_zh$data, 'HELP_8_Title', '8) What happens if your site goes down? '), _defineProperty(_zh$data, 'HELP_8_Desc_1', 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain. '), _defineProperty(_zh$data, 'HELP_8_Desc_2', 'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site. '), _defineProperty(_zh$data, 'HELP_8_Desc_3', 'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below. '), _defineProperty(_zh$data, 'HELP_8_Desc_4', 'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. '), _defineProperty(_zh$data, 'HELP_8CX_Title', '8) What happens if MyEtherWallet CX disappears? '), _defineProperty(_zh$data, 'HELP_8CX_Desc_1', 'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer. '), _defineProperty(_zh$data, 'HELP_8CX_Desc_2', 'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets. '), _defineProperty(_zh$data, 'HELP_8CX_Desc_3', 'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above. '), _defineProperty(_zh$data, 'HELP_9_Title', '9) Is the "发送以太币 / 发送代币" page offline? '), _defineProperty(_zh$data, 'HELP_9_Desc_1', 'No. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times. '), _defineProperty(_zh$data, 'HELP_10_Title', '10) How do I make an offline transaction? '), _defineProperty(_zh$data, 'HELP_10_Desc_1', 'Navigate to the "Offline Transaction" page via your online computer. '), _defineProperty(_zh$data, 'HELP_10_Desc_2', 'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price. '), _defineProperty(_zh$data, 'HELP_10_Desc_3', 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. '), _defineProperty(_zh$data, 'HELP_10_Desc_4', 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. '), _defineProperty(_zh$data, 'HELP_10_Desc_5', 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. '), _defineProperty(_zh$data, 'HELP_10_Desc_6', 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. '), _defineProperty(_zh$data, 'HELP_10_Desc_7', 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. '), _defineProperty(_zh$data, 'HELP_10_Desc_8', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_zh$data, 'HELP_10_Desc_9', 'Press the "GENERATE SIGNED TRANSACTION" button. '), _defineProperty(_zh$data, 'HELP_10_Desc_10', 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. '), _defineProperty(_zh$data, 'HELP_10_Desc_11', 'On your online computer, paste the signed transaction into the text field in step #3 and click send. This will broadcast your transaction. '), _defineProperty(_zh$data, 'HELP_12_Title', '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist? '), _defineProperty(_zh$data, 'HELP_12_Desc_1', 'Using an Geth/Mist JSON file from MyEtherWallet v2+.... '), _defineProperty(_zh$data, 'HELP_12_Desc_2', 'Go to the "View Wallet Info" page. '), _defineProperty(_zh$data, 'HELP_12_Desc_3', 'Unlock your wallet using your **encrypted** private key or JSON file. '), _defineProperty(_zh$data, 'HELP_12_Desc_4', 'Go to the "My Wallets" page. '), _defineProperty(_zh$data, 'HELP_12_Desc_5', 'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. '), _defineProperty(_zh$data, 'HELP_12_Desc_6', 'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file. '), _defineProperty(_zh$data, 'HELP_12_Desc_7', 'Open the Ethereum Wallet application. '), _defineProperty(_zh$data, 'HELP_12_Desc_8', 'In the menu bar, go "Accounts" -> "Backup" -> "Accounts" '), _defineProperty(_zh$data, 'HELP_12_Desc_9', 'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder. '), _defineProperty(_zh$data, 'HELP_12_Desc_10', 'Your account should show up immediately under "Accounts." '), _defineProperty(_zh$data, 'HELP_12_Desc_11', 'Using your unencrypted private key... '), _defineProperty(_zh$data, 'HELP_12_Desc_12', 'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page. '), _defineProperty(_zh$data, 'HELP_12_Desc_13', 'Select your wallet file -or- enter/paste your private key to unlock your wallet. '), _defineProperty(_zh$data, 'HELP_12_Desc_14', 'Copy Your Private Key (unencrypted). '), _defineProperty(_zh$data, 'HELP_12_Desc_15', 'If you are on a Mac: '), _defineProperty(_zh$data, 'HELP_12_Desc_15b', 'If you are on a PC: '), _defineProperty(_zh$data, 'HELP_12_Desc_16', 'Open Text Edit and paste this private key. '), _defineProperty(_zh$data, 'HELP_12_Desc_17', 'Go to the menu bar and click "Format" -> "Make Plain Text". '), _defineProperty(_zh$data, 'HELP_12_Desc_18', 'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog. '), _defineProperty(_zh$data, 'HELP_12_Desc_19', 'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt` '), _defineProperty(_zh$data, 'HELP_12_Desc_20', 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. '), _defineProperty(_zh$data, 'HELP_12_Desc_21', 'After successful import, delete `nothing_special_delete_me.txt` '), _defineProperty(_zh$data, 'HELP_12_Desc_22', 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". '), _defineProperty(_zh$data, 'HELP_12_Desc_23', 'Open Notepad & paste the private key '), _defineProperty(_zh$data, 'HELP_12_Desc_24', 'Save the file as `nothing_special_delete_me.txt` at `C:` '), _defineProperty(_zh$data, 'HELP_12_Desc_25', 'Run the command, `geth account import C:\\nothing_special_delete_me.txt` '), _defineProperty(_zh$data, 'HELP_12_Desc_26', 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. '), _defineProperty(_zh$data, 'HELP_12_Desc_27', 'After successful import, delete `nothing_special_delete_me.txt` '), _defineProperty(_zh$data, 'HELP_12_Desc_28', 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". '), _defineProperty(_zh$data, 'HELP_13_Title', '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean? '), _defineProperty(_zh$data, 'HELP_13_Desc_1', 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction. '), _defineProperty(_zh$data, 'HELP_14_Title', '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe? '), _defineProperty(_zh$data, 'HELP_14_Desc_1', 'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experiments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto). '), _defineProperty(_zh$data, 'HELP_15_Title', '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan) '), _defineProperty(_zh$data, 'HELP_15_Desc_1', 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. '), _defineProperty(_zh$data, 'HELP_16_Title', '16) How do I check the balance of my account? '), _defineProperty(_zh$data, 'HELP_16_Desc_1', 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io '), _defineProperty(_zh$data, 'HELP_17_Title', '17) Why isn\'t my balance showing up when I unlock my wallet? '), _defineProperty(_zh$data, 'HELP_17_Desc_1', 'This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io '), _defineProperty(_zh$data, 'HELP_18_Title', '18) Where is my geth wallet file? '), _defineProperty(_zh$data, 'HELP_19_Title', '19) Where is my Mist wallet file? '), _defineProperty(_zh$data, 'HELP_19_Desc_1', 'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored. '), _defineProperty(_zh$data, 'HELP_20_Title', '20) Where is my pre-sale wallet file? '), _defineProperty(_zh$data, 'HELP_20_Desc_1', 'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale. '), _defineProperty(_zh$data, 'HELP_21_Title', '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? '), _defineProperty(_zh$data, 'HELP_21_Desc_1', 'Short version: yes, but finding an account with a balance would take longer than the universe...so...no. '), _defineProperty(_zh$data, 'HELP_21_Desc_2', 'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts. '), _defineProperty(_zh$data, 'HELP_21_Desc_3', 'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems. '), _defineProperty(_zh$data, 'HELP_21_Desc_4', 'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password. '), _defineProperty(_zh$data, 'HELP_21_Desc_5', 'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match. '), _defineProperty(_zh$data, 'HELP_21_Desc_6', 'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion. '), _defineProperty(_zh$data, 'HELP_21_Desc_7', '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space. '), _defineProperty(_zh$data, 'HELP_21_Desc_8', 'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day. '), _defineProperty(_zh$data, 'HELP_SecCX_Title', 'Security - MyEtherWallet CX '), _defineProperty(_zh$data, 'HELP_SecCX_Desc_1', 'Where is this extension saving my information? '), _defineProperty(_zh$data, 'HELP_SecCX_Desc_2', 'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome. '), _defineProperty(_zh$data, 'HELP_SecCX_Desc_3', 'What information is saved? '), _defineProperty(_zh$data, 'HELP_SecCX_Desc_4', 'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted. '), _defineProperty(_zh$data, 'HELP_SecCX_Desc_5', 'Why aren\'t the nickname and wallet address encrypted? '), _defineProperty(_zh$data, 'HELP_SecCX_Desc_6', 'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension. '), _defineProperty(_zh$data, 'HELP_Sec_Title', 'Security安全 '), _defineProperty(_zh$data, 'HELP_Sec_Desc_1', 'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. '), _defineProperty(_zh$data, 'HELP_Sec_Desc_2', 'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success. '), _defineProperty(_zh$data, 'HELP_Sec_Desc_3', 'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere. '), _defineProperty(_zh$data, 'HELP_Sec_Desc_4', 'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to [https://www.myetherwallet.com](https://www.myetherwallet.com). '), _defineProperty(_zh$data, 'HELP_Sec_Desc_5', 'For generating wallets, you can download the [source code and run it locally](https://github.com/kvhnuke/etherwallet/releases/latest). See #5 above. '), _defineProperty(_zh$data, 'HELP_Sec_Desc_6', 'Generate a test wallet and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred. '), _defineProperty(_zh$data, 'HELP_Sec_Desc_8', 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! '), _defineProperty(_zh$data, 'HELP_FAQ_Title', 'More Helpful Answers to Frequent Questions 常见问题的更多有用回答 '), _defineProperty(_zh$data, 'HELP_Contact_Title', 'Ways to Get in Touch 联系方式'), _zh$data);
+}, _defineProperty(_zhcn$data, 'SEND_custom', 'Custom '), _defineProperty(_zhcn$data, 'SEND_gas', 'Gas '), _defineProperty(_zhcn$data, 'SEND_TransferTotal', '发送所有余额 '), _defineProperty(_zhcn$data, 'SEND_generate', '生成交易 '), _defineProperty(_zhcn$data, 'SEND_raw', '未生效交易 '), _defineProperty(_zhcn$data, 'SEND_signed', '签名交易 '), _defineProperty(_zhcn$data, 'SEND_trans', '发送交易 '), _defineProperty(_zhcn$data, 'SENDModal_Title', '警告！ '), _defineProperty(_zhcn$data, 'SENDModal_Content_1', '你将发送 '), _defineProperty(_zhcn$data, 'SENDModal_Content_2', '到地址 '), _defineProperty(_zhcn$data, 'SENDModal_Content_3', '你确定这样做吗？ '), _defineProperty(_zhcn$data, 'SENDModal_Content_4', '注意：如果你遇到错误，你最有可能向你的账户添加以太币，用以支付发送代币所需的gas。 Gas is paid in ether.Gas用以太币支付。 '), _defineProperty(_zhcn$data, 'SENDModal_No', '不，离开这里。 '), _defineProperty(_zhcn$data, 'SENDModal_Yes', '是的，我确定！发送交易。 '), _defineProperty(_zhcn$data, 'TOKEN_Addr', '地址： '), _defineProperty(_zhcn$data, 'TOKEN_Symbol', '代币符号： '), _defineProperty(_zhcn$data, 'TOKEN_Dec', '小数点位数： '), _defineProperty(_zhcn$data, 'TRANS_desc', '如果你想发送代币，请使用“发送代币”页面。 '), _defineProperty(_zhcn$data, 'TRANS_warning', '如果你使用“只发送ETH”或则“只发送ETC”功能，那么你是通过合约发送交易。 一些服务（例如交易所充值）接收这些交易时会遇到问题。阅读更多内容。 '), _defineProperty(_zhcn$data, 'TRANS_advanced', '高级功能：增加更多Gas或者数据 '), _defineProperty(_zhcn$data, 'TRANS_data', '数据： '), _defineProperty(_zhcn$data, 'TRANS_gas', 'Gas Limit： '), _defineProperty(_zhcn$data, 'TRANS_sendInfo', '一笔标准交易需要21000gas，花费0.000441以太币。我们将gas价格设为0.000000021以太币，略高于最低价格，以保证交易被快速打包。我们不收取交易费用。 '), _defineProperty(_zhcn$data, 'TRANSModal_Title', '“只发送ETH”和“只发送ETC”交易 '), _defineProperty(_zhcn$data, 'TRANSModal_Content_0', '注意不同的交易和不同的服务： '), _defineProperty(_zhcn$data, 'TRANSModal_Content_1', '**发送ETH（标准交易）：** 这将生成一个默认交易，直接从一个地址发送到另一个地址。它的默认gas是21000。 用这种方式发送ETH可能会在ETC链上重放。 '), _defineProperty(_zhcn$data, 'TRANSModal_Content_2', '**只发送：ETH：** 这是通过[Timon Rapp的重放保护合约（VB推荐）](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/)， 所以你只会在ETH链上发送交易。 '), _defineProperty(_zhcn$data, 'TRANSModal_Content_3', '**只发送：ETC：** 这是通过[Timon Rapp的重放保护合约（VB推荐）](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/)， 所以你只会在ETH链上发送交易。 '), _defineProperty(_zhcn$data, 'TRANSModal_Content_4', '**Coinbase & ShapeShift: ** 通过标准交易只发送ETH或者ETC。如果你通过“只发送ETH或者ETC”合约发送交易，你需要联系他们的客服，让他们手动增加你的余额或者返币给你。 [你也可以尝试Shapeshift的”分割“工具。](https://split.shapeshift.io/) '), _defineProperty(_zhcn$data, 'TRANSModal_Content_5', '**Kraken、Poloniex交易所：**向这两个交易所地址发送没币有遇到问题。可以使用。 '), _defineProperty(_zhcn$data, 'TRANSModal_Yes', '我理解了。 '), _defineProperty(_zhcn$data, 'TRANSModal_No', '我更加糊涂了，请帮助我。 '), _defineProperty(_zhcn$data, 'OFFLINE_Title', '生成、发送离线交易 '), _defineProperty(_zhcn$data, 'OFFLINE_Desc', '生成离线交易需要3个步骤。步骤1和步骤3在连网的电脑上完成，步骤2在离线电脑上完成。这确保了你的私钥不会接触到联网设备。 '), _defineProperty(_zhcn$data, 'OFFLLINE_Step1_Title', '步骤1：生成信息（联网电脑） '), _defineProperty(_zhcn$data, 'OFFLINE_Step1_Button', '生成信息 '), _defineProperty(_zhcn$data, 'OFFLINE_Step1_Label_1', '发自地址： '), _defineProperty(_zhcn$data, 'OFFLINE_Step1_Label_2', '注意：这是发自地址，不是发往地址。 Nonce是从起始账户生成的。如果使用一台隔离电脑，它就是冷存储的账户地址。 '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Title', '步骤2：生成交易（离线电脑） '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Label_1', '发往地址： '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Label_2', '发送数额 '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Label_3', 'Gas价格 '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Label_3b', '在你的连网电脑的第1步骤中显示了。 '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Label_4', 'Gas限制 '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Label_4b', '21000是默认的gas限制。当你发送合约或者添加数据时，gas限制可能会不同。没使用的gas将返回给你。 '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Label_5', 'Nonce '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Label_5b', '在你的连网电脑的第1步中显示了。 '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Label_6', '数据 '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Label_6b', '这是可选项。当你向合约发送交易时，往往需要用到数据。 '), _defineProperty(_zhcn$data, 'OFFLINE_Step2_Label_7', '输入/选择你的私钥文件/JSON '), _defineProperty(_zhcn$data, 'OFFLINE_Step3_Title', '步骤3：发送/公开交易（连网电脑） '), _defineProperty(_zhcn$data, 'OFFLINE_Step3_Label_1', '将步骤2的签名交易粘贴到这里，点击“发送交易”按钮。 '), _defineProperty(_zhcn$data, 'DEP_generate', '生成字节码 '), _defineProperty(_zhcn$data, 'DEP_generated', '生成字节码 '), _defineProperty(_zhcn$data, 'DEP_signtx', '签名交易 '), _defineProperty(_zhcn$data, 'DEP_interface', '生成界面 '), _defineProperty(_zhcn$data, 'MYWAL_Nick', '钱包昵称 '), _defineProperty(_zhcn$data, 'MYWAL_Address', '钱包地址 '), _defineProperty(_zhcn$data, 'MYWAL_Bal', '余额 '), _defineProperty(_zhcn$data, 'MYWAL_Edit', '编辑 '), _defineProperty(_zhcn$data, 'MYWAL_View', '查看 '), _defineProperty(_zhcn$data, 'MYWAL_Remove', '移除 '), _defineProperty(_zhcn$data, 'MYWAL_RemoveWal', '移除钱包： '), _defineProperty(_zhcn$data, 'MYWAL_WatchOnly', '你的只可查看账户 '), _defineProperty(_zhcn$data, 'MYWAL_Viewing', '查看钱包： '), _defineProperty(_zhcn$data, 'MYWAL_Hide', '隐藏钱包信息 '), _defineProperty(_zhcn$data, 'MYWAL_Edit_2', '编辑钱包： '), _defineProperty(_zhcn$data, 'MYWAL_Name', '钱包名字 '), _defineProperty(_zhcn$data, 'MYWAL_Content_1', '警告！你将移除你的钱包： '), _defineProperty(_zhcn$data, 'MYWAL_Content_2', '确保在移除以前你已经保存了私钥和Keystore文件，并记住了密码。 '), _defineProperty(_zhcn$data, 'MYWAL_Content_3', '如果你想将来在MyEtherWallet插件中使用该钱包，你需要手动添加私钥/JSON文件和密码。 '), _defineProperty(_zhcn$data, 'VIEWWALLET_Subtitle', '这允许你下载不同格式的私钥和重新打印你的纸钱包。为了将[你的账户导入到Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/)，你可能需要这个操作。如果你想查看你的余额，我们推荐使用区块浏览器，例如[etherscan.io](http://etherscan.io/)。 '), _defineProperty(_zhcn$data, 'VIEWWALLET_Subtitle_Short', '这允许你下载不同格式的私钥和重新打印你的纸钱包。 '), _defineProperty(_zhcn$data, 'VIEWWALLET_SuccessMsg', '成功！这是你的钱包细节！ '), _defineProperty(_zhcn$data, 'CX_error_1', '你没有已保存的钱包。点击["添加钱包"](/cx-wallet.html#add-wallet)，添加一个钱包。 '), _defineProperty(_zhcn$data, 'CX_quicksend', '快速发送 '), _defineProperty(_zhcn$data, 'ERROR_0', '请输入有效数额。 '), _defineProperty(_zhcn$data, 'ERROR_1', '你的密码至少需要设置为9位。请确保密码足够强。 '), _defineProperty(_zhcn$data, 'ERROR_2', '抱歉！我们不能识别这种类型的钱包文件。 '), _defineProperty(_zhcn$data, 'ERROR_3', '这不是一个有效的钱包文件。 '), _defineProperty(_zhcn$data, 'ERROR_4', 'This unit doesn\'t exists, please use the one of the following units 这个单位不存在，请用下面给出的单位 '), _defineProperty(_zhcn$data, 'ERROR_5', '无效地址。 '), _defineProperty(_zhcn$data, 'ERROR_6', '无效密码。 '), _defineProperty(_zhcn$data, 'ERROR_7', '无效数额。 '), _defineProperty(_zhcn$data, 'ERROR_8', '无效gas上限。 '), _defineProperty(_zhcn$data, 'ERROR_9', '无效数据值。 '), _defineProperty(_zhcn$data, 'ERROR_10', '无效gas数额。 '), _defineProperty(_zhcn$data, 'ERROR_11', '无效nonce。 '), _defineProperty(_zhcn$data, 'ERROR_12', '无效签名交易。 '), _defineProperty(_zhcn$data, 'ERROR_13', '已经有一个钱包使用该昵称。 '), _defineProperty(_zhcn$data, 'ERROR_14', '找不到钱包。 '), _defineProperty(_zhcn$data, 'ERROR_15', '看起来这个提议不存在或者读取这个提议时出现错误。 '), _defineProperty(_zhcn$data, 'ERROR_16', '这个地址钱包已经存在于存储中。请查看你的钱包页面。 '), _defineProperty(_zhcn$data, 'ERROR_17', '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。 '), _defineProperty(_zhcn$data, 'ERROR_18', '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。 '), _defineProperty(_zhcn$data, 'ERROR_19', '无效符号 '), _defineProperty(_zhcn$data, 'ERROR_20', 'Not a valid ERC-20 token '), _defineProperty(_zhcn$data, 'ERROR_21', 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. '), _defineProperty(_zhcn$data, 'ERROR_22', 'Please enter valid node name '), _defineProperty(_zhcn$data, 'ERROR_23', 'Enter valid url, if you are on https your url must be https '), _defineProperty(_zhcn$data, 'ERROR_24', 'Please enter valid port '), _defineProperty(_zhcn$data, 'ERROR_25', 'Please enter valid chain ID '), _defineProperty(_zhcn$data, 'ERROR_26', 'Please enter valid ABI '), _defineProperty(_zhcn$data, 'ERROR_27', 'Minimum amount 0.01 '), _defineProperty(_zhcn$data, 'ERROR_28', '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。 '), _defineProperty(_zhcn$data, 'SUCCESS_1', '有效地址 '), _defineProperty(_zhcn$data, 'SUCCESS_2', '钱包解密成功 '), _defineProperty(_zhcn$data, 'SUCCESS_3', '交易已提交。TX ID： '), _defineProperty(_zhcn$data, 'SUCCESS_4', '成功添加你的钱包： '), _defineProperty(_zhcn$data, 'SUCCESS_5', '选择的文件： '), _defineProperty(_zhcn$data, 'GETH_InvalidSender', '无效发送者 '), _defineProperty(_zhcn$data, 'GETH_Nonce', 'Nonce太低 '), _defineProperty(_zhcn$data, 'GETH_Cheap', 'Gas价格太低，不被接受 '), _defineProperty(_zhcn$data, 'GETH_Balance', '余额不足 '), _defineProperty(_zhcn$data, 'GETH_NonExistentAccount', '账户不存在或者账户余额太低 '), _defineProperty(_zhcn$data, 'GETH_InsufficientFunds', '余额不足，余额低于 gas * price + 发送数额 '), _defineProperty(_zhcn$data, 'GETH_IntrinsicGas', '固有gas太低 '), _defineProperty(_zhcn$data, 'GETH_GasLimit', '超过区块gas上限 '), _defineProperty(_zhcn$data, 'GETH_NegativeValue', '负值 '), _defineProperty(_zhcn$data, 'translate_version', '0.3 '), _defineProperty(_zhcn$data, 'Translator_Desc', '感谢中文译者： '), _defineProperty(_zhcn$data, 'TranslatorName_1', '[ Shaoping@ethfans.org （少平）]((https://www.myetherwallet.com/?gaslimit=21000&to=0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740&value=1.0#send-transaction)) '), _defineProperty(_zhcn$data, 'TranslatorAddr_1', '0x4dF5698B1B0195FC44Fe1D2d6037CE33F215c740 '), _defineProperty(_zhcn$data, 'TranslatorName_2', ''), _defineProperty(_zhcn$data, 'TranslatorAddr_2', ''), _defineProperty(_zhcn$data, 'TranslatorName_3', ''), _defineProperty(_zhcn$data, 'TranslatorAddr_3', ''), _defineProperty(_zhcn$data, 'TranslatorName_4', ''), _defineProperty(_zhcn$data, 'TranslatorAddr_4', ''), _defineProperty(_zhcn$data, 'TranslatorName_5', ''), _defineProperty(_zhcn$data, 'TranslatorAddr_5', ''), _defineProperty(_zhcn$data, 'HELP_Warning', 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. '), _defineProperty(_zhcn$data, 'HELP_Desc', 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! '), _defineProperty(_zhcn$data, 'HELP_Remind_Title', 'Some reminders '), _defineProperty(_zhcn$data, 'HELP_Remind_Desc_1', '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. '), _defineProperty(_zhcn$data, 'HELP_Remind_Desc_2', 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. '), _defineProperty(_zhcn$data, 'HELP_Remind_Desc_3', 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer! '), _defineProperty(_zhcn$data, 'HELP_0_Title', '0) I\'m new. What do I do? '), _defineProperty(_zhcn$data, 'HELP_0_Desc_1', 'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**. '), _defineProperty(_zhcn$data, 'HELP_0_Desc_2', 'Create a new wallet. '), _defineProperty(_zhcn$data, 'HELP_0_Desc_3', 'Back the wallet up. '), _defineProperty(_zhcn$data, 'HELP_0_Desc_4', 'Verify you have access to this new wallet and have correctly saved all necessary information. '), _defineProperty(_zhcn$data, 'HELP_0_Desc_5', 'Transfer Ether to this new wallet. '), _defineProperty(_zhcn$data, 'HELP_1_Title', '1) How do I create a new wallet? '), _defineProperty(_zhcn$data, 'HELP_1_Desc_1', 'Go to the "Generate Wallet" page. '), _defineProperty(_zhcn$data, 'HELP_1_Desc_2', 'Go to the "Add Wallet" page & select "Generate New Wallet" '), _defineProperty(_zhcn$data, 'HELP_1_Desc_3', 'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions. '), _defineProperty(_zhcn$data, 'HELP_1_Desc_4', 'Click "GENERATE". '), _defineProperty(_zhcn$data, 'HELP_1_Desc_5', 'Your wallet has now been generated. '), _defineProperty(_zhcn$data, 'HELP_2a_Title', '2a) How do I save/backup my wallet? '), _defineProperty(_zhcn$data, 'HELP_2a_Desc_1', 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper. '), _defineProperty(_zhcn$data, 'HELP_2a_Desc_2', 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. '), _defineProperty(_zhcn$data, 'HELP_2a_Desc_3', 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys: '), _defineProperty(_zhcn$data, 'HELP_2a_Desc_4', 'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive. '), _defineProperty(_zhcn$data, 'HELP_2a_Desc_5', 'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive. '), _defineProperty(_zhcn$data, 'HELP_2a_Desc_6', 'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). '), _defineProperty(_zhcn$data, 'HELP_2b_Title', '2b) How do I safely / offline / cold storage with MyEtherWallet? '), _defineProperty(_zhcn$data, 'HELP_2b_Desc_1', 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). '), _defineProperty(_zhcn$data, 'HELP_2b_Desc_2', 'Click on `dist-vX.X.X.X.zip`. '), _defineProperty(_zhcn$data, 'HELP_2b_Desc_3', 'Move zip to an airgapped computer. '), _defineProperty(_zhcn$data, 'HELP_2b_Desc_4', 'Unzip it and double-click `index.html`. '), _defineProperty(_zhcn$data, 'HELP_2b_Desc_5', 'Generate a wallet with a strong password. '), _defineProperty(_zhcn$data, 'HELP_2b_Desc_6', 'Save the address. Save versions of the private key. Save the password if you might not remember it forever. '), _defineProperty(_zhcn$data, 'HELP_2b_Desc_7', 'Store these papers / USBs in multiple physically separate locations. '), _defineProperty(_zhcn$data, 'HELP_2b_Desc_8', 'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same. '), _defineProperty(_zhcn$data, 'HELP_3_Title', '3) How do I verify I have access to my new wallet? '), _defineProperty(_zhcn$data, 'HELP_3_Desc_1', '**Before you send any Ether to your new wallet**, you should ensure you have access to it. '), _defineProperty(_zhcn$data, 'HELP_3_Desc_2', 'Navigate to the "View Wallet Info" page. '), _defineProperty(_zhcn$data, 'HELP_3_Desc_3', 'Navigate to the MyEtherWallet.com "View Wallet Info" page. '), _defineProperty(_zhcn$data, 'HELP_3_Desc_4', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_zhcn$data, 'HELP_3_Desc_5', 'If the wallet is encrypted, a text box will automatically appear. Enter the password. '), _defineProperty(_zhcn$data, 'HELP_3_Desc_6', 'Click the "Unlock Wallet" button. '), _defineProperty(_zhcn$data, 'HELP_3_Desc_7', 'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet. '), _defineProperty(_zhcn$data, 'HELP_3_Desc_8', 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.01 ether to your new wallet, access that wallet, send that 0.01 ether to another address, and ensure everything works smoothly. '), _defineProperty(_zhcn$data, 'HELP_4_Title', '4) How do I send Ether from one wallet to another? '), _defineProperty(_zhcn$data, 'HELP_4_Desc_1', 'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned. '), _defineProperty(_zhcn$data, 'HELP_4_Desc_2', 'Navigate to the "发送以太币 / 发送代币" page. '), _defineProperty(_zhcn$data, 'HELP_4_Desc_3', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_zhcn$data, 'HELP_4_Desc_4', 'If the wallet is encrypted, a text box will automatically appear. Enter the password. '), _defineProperty(_zhcn$data, 'HELP_4_Desc_5', 'Click the "Unlock Wallet" button. '), _defineProperty(_zhcn$data, 'HELP_4_Desc_6', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_zhcn$data, 'HELP_4_Desc_7', 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. '), _defineProperty(_zhcn$data, 'HELP_4_Desc_9', 'Click "Generate Transaction". '), _defineProperty(_zhcn$data, 'HELP_4_Desc_10', 'A couple more fields will appear. This is your browser generating the transaction. '), _defineProperty(_zhcn$data, 'HELP_4_Desc_11', 'Click the blue "Send Transaction" button below that. '), _defineProperty(_zhcn$data, 'HELP_4_Desc_12', 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. '), _defineProperty(_zhcn$data, 'HELP_4_Desc_13', 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. '), _defineProperty(_zhcn$data, 'HELP_4CX_Title', '4) How do I send Ether using MyEtherWallet CX? '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_1', 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "发送以太币 / 发送代币" page. '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_2', 'QuickSend: '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_3', 'Click the Chrome Extension Icon. '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_4', 'Click the "QuickSend" button. '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_5', 'Select the wallet you wish to send from. '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_6', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_7', 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_8', 'Click "Send Transaction". '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_9', 'Verify the address and the amount you are sending is correct. '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_10', 'Enter the password for that wallet. '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_11', 'Click "Send Transaction." '), _defineProperty(_zhcn$data, 'HELP_4CX_Desc_12', 'Using "发送以太币 / 发送代币" Page '), _defineProperty(_zhcn$data, 'HELP_5_Title', '5) How do I run MyEtherWallet.com offline/locally? '), _defineProperty(_zhcn$data, 'HELP_5_Desc_1', 'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page. '), _defineProperty(_zhcn$data, 'HELP_5_Desc_7', 'MyEtherWallet.com is now running entirely on your computer. '), _defineProperty(_zhcn$data, 'HELP_5_Desc_8', 'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact. '), _defineProperty(_zhcn$data, 'HELP_5_Desc_9', 'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo. '), _defineProperty(_zhcn$data, 'HELP_5CX_Title', '5) How can I install this extension from the repo instead of the Chrome Store? '), _defineProperty(_zhcn$data, 'HELP_5CX_Desc_2', 'Click on `chrome-extension-vX.X.X.X.zip` and unzip it. '), _defineProperty(_zhcn$data, 'HELP_5CX_Desc_3', 'Go to Google Chrome and find you settings (in the menu in the upper right). '), _defineProperty(_zhcn$data, 'HELP_5CX_Desc_4', 'Click "Extensions" on the left. '), _defineProperty(_zhcn$data, 'HELP_5CX_Desc_5', 'Check the "Developer Mode" button at the top of that page. '), _defineProperty(_zhcn$data, 'HELP_5CX_Desc_6', 'Click the "Load unpacked extension..." button. '), _defineProperty(_zhcn$data, 'HELP_5CX_Desc_7', 'Navigate to the now-unzipped folder that you downloaded earlier. Click "select". '), _defineProperty(_zhcn$data, 'HELP_5CX_Desc_8', 'The extension should now show up in your extensions and in your Chrome Extension bar. '), _defineProperty(_zhcn$data, 'HELP_7_Title', '7) How do I send Tokens & add custom tokens? '), _defineProperty(_zhcn$data, 'HELP_7_Desc_0', '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token. '), _defineProperty(_zhcn$data, 'HELP_7_Desc_1', 'Navigate to the "发送以太币 / 发送代币" page. '), _defineProperty(_zhcn$data, 'HELP_7_Desc_2', 'Unlock your wallet. '), _defineProperty(_zhcn$data, 'HELP_7_Desc_3', 'Enter the address you would like to send to in the "To Address:" field. '), _defineProperty(_zhcn$data, 'HELP_7_Desc_4', 'Enter the amount you would like to send. '), _defineProperty(_zhcn$data, 'HELP_7_Desc_5', 'Select which token you would like to send. '), _defineProperty(_zhcn$data, 'HELP_7_Desc_6', 'If you do not see the token listed: '), _defineProperty(_zhcn$data, 'HELP_7_Desc_7', 'Click "Custom". '), _defineProperty(_zhcn$data, 'HELP_7_Desc_8', 'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist. '), _defineProperty(_zhcn$data, 'HELP_7_Desc_9', 'Click "Save". '), _defineProperty(_zhcn$data, 'HELP_7_Desc_10', 'You can now send that token as well as see it\'s balance in the sidebar. '), _defineProperty(_zhcn$data, 'HELP_7_Desc_11', 'Click "Generate Transaction". '), _defineProperty(_zhcn$data, 'HELP_7_Desc_12', 'A couple more fields will appear. This is your browser generating the transaction. '), _defineProperty(_zhcn$data, 'HELP_7_Desc_13', 'Click the blue "Send Transaction" button below that. '), _defineProperty(_zhcn$data, 'HELP_7_Desc_14', 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. '), _defineProperty(_zhcn$data, 'HELP_7_Desc_15', 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. '), _defineProperty(_zhcn$data, 'HELP_8_Title', '8) What happens if your site goes down? '), _defineProperty(_zhcn$data, 'HELP_8_Desc_1', 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain. '), _defineProperty(_zhcn$data, 'HELP_8_Desc_2', 'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site. '), _defineProperty(_zhcn$data, 'HELP_8_Desc_3', 'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below. '), _defineProperty(_zhcn$data, 'HELP_8_Desc_4', 'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. '), _defineProperty(_zhcn$data, 'HELP_8CX_Title', '8) What happens if MyEtherWallet CX disappears? '), _defineProperty(_zhcn$data, 'HELP_8CX_Desc_1', 'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer. '), _defineProperty(_zhcn$data, 'HELP_8CX_Desc_2', 'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets. '), _defineProperty(_zhcn$data, 'HELP_8CX_Desc_3', 'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above. '), _defineProperty(_zhcn$data, 'HELP_9_Title', '9) Is the "发送以太币 / 发送代币" page offline? '), _defineProperty(_zhcn$data, 'HELP_9_Desc_1', 'No. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times. '), _defineProperty(_zhcn$data, 'HELP_10_Title', '10) How do I make an offline transaction? '), _defineProperty(_zhcn$data, 'HELP_10_Desc_1', 'Navigate to the "Offline Transaction" page via your online computer. '), _defineProperty(_zhcn$data, 'HELP_10_Desc_2', 'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price. '), _defineProperty(_zhcn$data, 'HELP_10_Desc_3', 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. '), _defineProperty(_zhcn$data, 'HELP_10_Desc_4', 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. '), _defineProperty(_zhcn$data, 'HELP_10_Desc_5', 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. '), _defineProperty(_zhcn$data, 'HELP_10_Desc_6', 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. '), _defineProperty(_zhcn$data, 'HELP_10_Desc_7', 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. '), _defineProperty(_zhcn$data, 'HELP_10_Desc_8', 'Select your wallet file -or- your private key and unlock your wallet. '), _defineProperty(_zhcn$data, 'HELP_10_Desc_9', 'Press the "GENERATE SIGNED TRANSACTION" button. '), _defineProperty(_zhcn$data, 'HELP_10_Desc_10', 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. '), _defineProperty(_zhcn$data, 'HELP_10_Desc_11', 'On your online computer, paste the signed transaction into the text field in step #3 and click send. This will broadcast your transaction. '), _defineProperty(_zhcn$data, 'HELP_12_Title', '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist? '), _defineProperty(_zhcn$data, 'HELP_12_Desc_1', 'Using an Geth/Mist JSON file from MyEtherWallet v2+.... '), _defineProperty(_zhcn$data, 'HELP_12_Desc_2', 'Go to the "View Wallet Info" page. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_3', 'Unlock your wallet using your **encrypted** private key or JSON file. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_4', 'Go to the "My Wallets" page. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_5', 'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_6', 'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_7', 'Open the Ethereum Wallet application. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_8', 'In the menu bar, go "Accounts" -> "Backup" -> "Accounts" '), _defineProperty(_zhcn$data, 'HELP_12_Desc_9', 'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_10', 'Your account should show up immediately under "Accounts." '), _defineProperty(_zhcn$data, 'HELP_12_Desc_11', 'Using your unencrypted private key... '), _defineProperty(_zhcn$data, 'HELP_12_Desc_12', 'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_13', 'Select your wallet file -or- enter/paste your private key to unlock your wallet. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_14', 'Copy Your Private Key (unencrypted). '), _defineProperty(_zhcn$data, 'HELP_12_Desc_15', 'If you are on a Mac: '), _defineProperty(_zhcn$data, 'HELP_12_Desc_15b', 'If you are on a PC: '), _defineProperty(_zhcn$data, 'HELP_12_Desc_16', 'Open Text Edit and paste this private key. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_17', 'Go to the menu bar and click "Format" -> "Make Plain Text". '), _defineProperty(_zhcn$data, 'HELP_12_Desc_18', 'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_19', 'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt` '), _defineProperty(_zhcn$data, 'HELP_12_Desc_20', 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_21', 'After successful import, delete `nothing_special_delete_me.txt` '), _defineProperty(_zhcn$data, 'HELP_12_Desc_22', 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". '), _defineProperty(_zhcn$data, 'HELP_12_Desc_23', 'Open Notepad & paste the private key '), _defineProperty(_zhcn$data, 'HELP_12_Desc_24', 'Save the file as `nothing_special_delete_me.txt` at `C:` '), _defineProperty(_zhcn$data, 'HELP_12_Desc_25', 'Run the command, `geth account import C:\\nothing_special_delete_me.txt` '), _defineProperty(_zhcn$data, 'HELP_12_Desc_26', 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. '), _defineProperty(_zhcn$data, 'HELP_12_Desc_27', 'After successful import, delete `nothing_special_delete_me.txt` '), _defineProperty(_zhcn$data, 'HELP_12_Desc_28', 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". '), _defineProperty(_zhcn$data, 'HELP_13_Title', '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean? '), _defineProperty(_zhcn$data, 'HELP_13_Desc_1', 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction. '), _defineProperty(_zhcn$data, 'HELP_14_Title', '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe? '), _defineProperty(_zhcn$data, 'HELP_14_Desc_1', 'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experiments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto). '), _defineProperty(_zhcn$data, 'HELP_15_Title', '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan) '), _defineProperty(_zhcn$data, 'HELP_15_Desc_1', 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. '), _defineProperty(_zhcn$data, 'HELP_16_Title', '16) How do I check the balance of my account? '), _defineProperty(_zhcn$data, 'HELP_16_Desc_1', 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io '), _defineProperty(_zhcn$data, 'HELP_17_Title', '17) Why isn\'t my balance showing up when I unlock my wallet? '), _defineProperty(_zhcn$data, 'HELP_17_Desc_1', 'This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io '), _defineProperty(_zhcn$data, 'HELP_18_Title', '18) Where is my geth wallet file? '), _defineProperty(_zhcn$data, 'HELP_19_Title', '19) Where is my Mist wallet file? '), _defineProperty(_zhcn$data, 'HELP_19_Desc_1', 'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored. '), _defineProperty(_zhcn$data, 'HELP_20_Title', '20) Where is my pre-sale wallet file? '), _defineProperty(_zhcn$data, 'HELP_20_Desc_1', 'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale. '), _defineProperty(_zhcn$data, 'HELP_21_Title', '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? '), _defineProperty(_zhcn$data, 'HELP_21_Desc_1', 'Short version: yes, but finding an account with a balance would take longer than the universe...so...no. '), _defineProperty(_zhcn$data, 'HELP_21_Desc_2', 'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts. '), _defineProperty(_zhcn$data, 'HELP_21_Desc_3', 'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems. '), _defineProperty(_zhcn$data, 'HELP_21_Desc_4', 'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password. '), _defineProperty(_zhcn$data, 'HELP_21_Desc_5', 'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match. '), _defineProperty(_zhcn$data, 'HELP_21_Desc_6', 'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion. '), _defineProperty(_zhcn$data, 'HELP_21_Desc_7', '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space. '), _defineProperty(_zhcn$data, 'HELP_21_Desc_8', 'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day. '), _defineProperty(_zhcn$data, 'HELP_SecCX_Title', 'Security - MyEtherWallet CX '), _defineProperty(_zhcn$data, 'HELP_SecCX_Desc_1', 'Where is this extension saving my information? '), _defineProperty(_zhcn$data, 'HELP_SecCX_Desc_2', 'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome. '), _defineProperty(_zhcn$data, 'HELP_SecCX_Desc_3', 'What information is saved? '), _defineProperty(_zhcn$data, 'HELP_SecCX_Desc_4', 'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted. '), _defineProperty(_zhcn$data, 'HELP_SecCX_Desc_5', 'Why aren\'t the nickname and wallet address encrypted? '), _defineProperty(_zhcn$data, 'HELP_SecCX_Desc_6', 'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension. '), _defineProperty(_zhcn$data, 'HELP_Sec_Title', 'Security安全 '), _defineProperty(_zhcn$data, 'HELP_Sec_Desc_1', 'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. '), _defineProperty(_zhcn$data, 'HELP_Sec_Desc_2', 'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success. '), _defineProperty(_zhcn$data, 'HELP_Sec_Desc_3', 'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere. '), _defineProperty(_zhcn$data, 'HELP_Sec_Desc_4', 'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to [https://www.myetherwallet.com](https://www.myetherwallet.com). '), _defineProperty(_zhcn$data, 'HELP_Sec_Desc_5', 'For generating wallets, you can download the [source code and run it locally](https://github.com/kvhnuke/etherwallet/releases/latest). See #5 above. '), _defineProperty(_zhcn$data, 'HELP_Sec_Desc_6', 'Generate a test wallet and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred. '), _defineProperty(_zhcn$data, 'HELP_Sec_Desc_8', 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! '), _defineProperty(_zhcn$data, 'HELP_FAQ_Title', 'More Helpful Answers to Frequent Questions 常见问题的更多有用回答 '), _defineProperty(_zhcn$data, 'HELP_Contact_Title', 'Ways to Get in Touch 联系方式'), _zhcn$data);
 
-module.exports = zh;
+module.exports = zhcn;
 
 },{}],88:[function(require,module,exports){
+// Traditional Chinese 繁體中文 - zh-tw.js
+'use strict';
+
+var zhtw = function zhtw() {};
+zhtw.code = 'zhtw';
+zhtw.data = {
+
+  /* Navigation*/
+  NAV_AddWallet: 'Add Wallet ',
+  NAV_BulkGenerate: 'Bulk Generate ',
+  NAV_Contact: 'Contact ',
+  NAV_Contracts: 'Contracts ',
+  NAV_DeployContract: 'Deploy Contract ',
+  NAV_GenerateWallet: 'Generate Wallet ',
+  NAV_Help: 'Help ',
+  NAV_InteractContract: 'Interact with Contract ',
+  NAV_Multisig: 'Multisig ',
+  NAV_MyWallets: 'My Wallets ',
+  NAV_Offline: 'Send Offline ',
+  NAV_SendEther: 'Send Ether & Tokens ',
+  NAV_SendTokens: 'Send Tokens ',
+  NAV_Swap: 'Swap ',
+  NAV_ViewWallet: 'View Wallet Info ',
+  NAV_YourWallets: 'Your Wallets ',
+
+  /* General */
+  x_AddessDesc: 'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address. ',
+  x_Address: 'Your Address ',
+  x_Cancel: 'Cancel ',
+  x_CSV: 'CSV file (unencrypted) ',
+  x_Download: 'Download ',
+  x_Json: 'JSON File (unencrypted) ',
+  x_JsonDesc: 'This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password. ',
+  x_Keystore: 'Keystore File (UTC / JSON · Recommended · Encrypted) ',
+  x_Keystore2: 'Keystore File (UTC / JSON) ',
+  x_KeystoreDesc: 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up. ',
+  x_Mnemonic: 'Mnemonic Phrase ',
+  x_ParityPhrase: 'Parity Phrase ',
+  x_Password: 'Password ',
+  x_Print: 'Print Paper Wallet ',
+  x_PrintDesc: 'ProTip: Click print and save this as a PDF, even if you do not own a printer! ',
+  x_PrintShort: 'Print ',
+  x_PrivKey: 'Private Key (unencrypted) ',
+  x_PrivKey2: 'Private Key ',
+  x_PrivKeyDesc: 'This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended. ',
+  x_Save: 'Save ',
+  x_TXT: 'TXT file (unencrypted) ',
+  x_Wallet: 'Wallet ',
+
+  /* Header */
+  CX_Tagline: 'Open Source JavaScript Client-Side Ether Wallet Chrome Extension ',
+  CX_Warning_1: 'Make sure you have **external backups** of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling and reinstalling the extension. This extension is a way to easily access your wallets, **not** a way to back them up. ',
+  MEW_Tagline: 'Open Source JavaScript Client-Side Ether Wallet ',
+  MEW_Warning_1: 'Always check the URL before accessing your wallet or creating a new wallet. Beware of phishing sites! ',
+
+  /* Footer */
+  FOOTER_1: 'Open-Source, client-side tool for easily &amp; securely interacting with the Ethereum network. ',
+  FOOTER_1b: 'Created by ',
+  FOOTER_2: 'Donations greatly appreciated ',
+  FOOTER_3: 'Client-side wallet generation by ',
+  FOOTER_4: 'Disclaimer ',
+
+  /* Sidebar */
+  sidebar_AccountInfo: 'Account Information ',
+  sidebar_AccountAddr: 'Account Address ',
+  sidebar_AccountBal: 'Account Balance ',
+  sidebar_TokenBal: 'Token Balances ',
+  sidebar_Equiv: 'Equivalent Values ',
+  sidebar_TransHistory: 'Transaction History ',
+  sidebar_donation: 'MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us? ',
+  sidebar_donate: 'Donate ',
+  sidebar_thanks: 'THANK YOU!!! ',
+
+  /* Decrypt Panel */
+  decrypt_Access: 'How would you like to access your wallet? ',
+  decrypt_Title: 'Select the format of your private key ',
+  decrypt_Select: 'Select a Wallet ',
+
+  /* Mnemonic */
+  MNEM_1: 'Please select the address you would like to interact with. ',
+  MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. ',
+  MNEM_more: 'More Addresses ',
+  MNEM_prev: 'Previous Addresses ',
+
+  /* Hardware wallets */
+  x_Ledger: 'Ledger Nano S ',
+  ADD_Ledger_1: 'Connect your Ledger Nano S ',
+  ADD_Ledger_2: 'Open the Ethereum application (or a contract application) ',
+  ADD_Ledger_3: 'Verify that Browser Support is enabled in Settings ',
+  ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
+  ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection ',
+  ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+  ADD_Ledger_scan: 'Connect to Ledger Nano S ',
+  x_Trezor: 'TREZOR ',
+  ADD_Trezor_scan: 'Connect to TREZOR ',
+
+  /* Add Wallet */
+  ADD_Label_1: 'What would you like to do? ',
+  ADD_Radio_1: 'Generate New Wallet ',
+  ADD_Radio_2: 'Select Your Wallet File (Keystore / JSON) ',
+  ADD_Radio_2_alt: 'Select Your Wallet File ',
+  ADD_Radio_2_short: 'SELECT WALLET FILE... ',
+  ADD_Radio_3: 'Paste/Type Your Private Key ',
+  ADD_Radio_4: 'Add an Account to Watch ',
+  ADD_Radio_5: 'Paste/Type Your Mnemonic ',
+  ADD_Radio_5_Path: 'Select HD derivation path ',
+  ADD_Radio_5_woTrezor: '(Jaxx, Metamask, Exodus, imToken) ',
+  ADD_Radio_5_withTrezor: '(Jaxx, Metamask, Exodus, imToken, TREZOR) ',
+  ADD_Radio_5_PathAlternative: '(Ledger) ',
+  ADD_Radio_5_PathTrezor: '(TREZOR) ',
+  ADD_Radio_5_PathCustom: '(Custom) ',
+  ADD_Label_2: 'Create a Nickname ',
+  ADD_Label_3: 'Your wallet is encrypted. Please enter the password. ',
+  ADD_Label_4: 'Add an Account to Watch ',
+  ADD_Warning_1: 'You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it. ',
+  ADD_Label_5: 'Enter the Address ',
+  ADD_Label_6: 'Unlock your Wallet ',
+  ADD_Label_6_short: 'Unlock ',
+  ADD_Label_7: 'Add Account ',
+
+  /* My Wallet */
+  MYWAL_Nick: 'Wallet Nickname ',
+  MYWAL_Address: 'Wallet Address ',
+  MYWAL_Bal: 'Balance ',
+  MYWAL_Edit: 'Edit ',
+  MYWAL_View: 'View ',
+  MYWAL_Remove: 'Remove ',
+  MYWAL_RemoveWal: 'Remove Wallet ',
+  MYWAL_WatchOnly: 'Your Watch-Only Accounts ',
+  MYWAL_Viewing: 'Viewing Wallet ',
+  MYWAL_Hide: 'Hide Wallet Info ',
+  MYWAL_Edit_2: 'Edit Wallet ',
+  MYWAL_Name: 'Wallet Name ',
+  MYWAL_Content_1: 'Warning! You are about to remove your wallet ',
+  MYWAL_Content_2: 'Be sure you have **saved the private key and/or Keystore File and the password** before you remove it. ',
+  MYWAL_Content_3: 'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password. ',
+
+  /* Generate Wallets */
+  GEN_desc: 'If you want to generate multiple wallets, you can do so here ',
+  GEN_Label_1: 'Enter a strong password (at least 9 characters) ',
+  GEN_Placeholder_1: 'Do NOT forget to save this! ',
+  GEN_SuccessMsg: 'Success! Your wallet has been generated. ',
+  GEN_Label_2: 'Save your Keystore File. Don\'t forget your password above. ',
+  GEN_Label_3: 'Save Your Address. ',
+  GEN_Label_4: 'Print your paper wallet, or store a QR code version. (optional) ',
+
+  /* Bulk Generate Wallets */
+  BULK_Label_1: 'Number of Wallets To Generate ',
+  BULK_Label_2: 'Generate Wallets ',
+  BULK_SuccessMsg: 'Success! Your wallets have been generated. ',
+
+  /* Sending Ether and Tokens */
+  SEND_addr: 'To Address ',
+  SEND_amount: 'Amount to Send ',
+  SEND_amount_short: 'Amount ',
+  SEND_custom: 'Add Custom Token ',
+  SEND_gas: 'Gas ',
+  SEND_TransferTotal: 'Send Entire Balance ',
+  SEND_generate: 'Generate Transaction ',
+  SEND_raw: 'Raw Transaction ',
+  SEND_signed: 'Signed Transaction ',
+  SEND_trans: 'Send Transaction ',
+  SENDModal_Title: 'Warning! ',
+  /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
+  SENDModal_Content_1: 'You are about to send ',
+  SENDModal_Content_2: 'to address ',
+  SENDModal_Content_3: 'Are you sure you want to do this? ',
+  SENDModal_Content_4: 'NOTE: If you encounter an error, you most likely need to add ether to your account to cover the gas cost of sending tokens. Gas is paid in ether. ',
+  SENDModal_No: 'No, get me out of here! ',
+  SENDModal_Yes: 'Yes, I am sure! Make transaction. ',
+
+  /* Tokens */
+  TOKEN_Addr: 'Address ',
+  TOKEN_Symbol: 'Token Symbol ',
+  TOKEN_Dec: 'Decimals ',
+  TOKEN_show: 'Show All Tokens ',
+  TOKEN_hide: 'Hide Tokens ',
+
+  /* Send Transaction */
+  TRANS_desc: 'If you want to send Tokens, please use the "Send Token" page instead. ',
+  TRANS_warning: 'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more. ',
+  TRANS_advanced: '+Advanced: Add Data ',
+  TRANS_data: 'Data ',
+  TRANS_gas: 'Gas Limit ',
+  TRANS_sendInfo: 'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee. ',
+
+  /* Offline Transaction */
+  OFFLINE_Title: 'Generate & Send Offline Transaction ',
+  OFFLINE_Desc: 'Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This ensures your private keys do not touch an internet-connected device. ',
+  OFFLLINE_Step1_Title: 'Step 1: Generate Information (Online Computer) ',
+  OFFLINE_Step1_Button: 'Generate Information ',
+  OFFLINE_Step1_Label_1: 'From Address ',
+  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account. ',
+  OFFLINE_Step2_Title: 'Step 2: Generate Transaction (Offline Computer) ',
+  OFFLINE_Step2_Label_1: 'To Address ',
+  OFFLINE_Step2_Label_2: 'Value / Amount to Send ',
+  OFFLINE_Step2_Label_3: 'Gas Price ',
+  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer. ',
+  OFFLINE_Step2_Label_4: 'Gas Limit ',
+  OFFLINE_Step2_Label_4b: '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you. ',
+  OFFLINE_Step2_Label_5: 'Nonce ',
+  OFFLINE_Step2_Label_5b: 'This was displayed in Step 1 on your online computer. ',
+  OFFLINE_Step2_Label_6: 'Data ',
+  OFFLINE_Step2_Label_6b: 'This is optional. Data is often used when you send transactions to contracts. ',
+  OFFLINE_Step2_Label_7: 'Enter / Select your Private Key / JSON. ',
+  OFFLINE_Step3_Title: 'Step 3: Send / Publish Transaction (Online Computer) ',
+  OFFLINE_Step3_Label_1: 'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button. ',
+
+  /* Contracts */
+  x_Access: 'Access ',
+  CONTRACT_Title: 'Contract Address ',
+  CONTRACT_Title_2: 'Select Existing Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Read / Write Contract ',
+  CONTRACT_Interact_CTA: 'Select a function ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'READ ',
+  CONTRACT_Write: 'WRITE ',
+  DEP_generate: 'Generate Bytecode ',
+  DEP_generated: 'Generated Bytecode ',
+  DEP_signtx: 'Sign Transaction ',
+  DEP_interface: 'Generated Interface ',
+
+  /* Node Switcher */
+  NODE_Title: 'Set Up Your Custom Node',
+  NODE_Subtitle: 'To connect to a local node...',
+  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Name',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Save & Use Custom Node',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Current Rates ",
+  SWAP_init_1: "I want to swap my ",
+  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Let's do this! ", // or "Continue"
+  SWAP_information: "Your Information ",
+  SWAP_send_amt: "Amount to send ",
+  SWAP_rec_amt: "Amount to receive ",
+  SWAP_your_rate: "Your rate ",
+  SWAP_rec_add: "Your Receiving Address ",
+  SWAP_start_CTA: "Start Swap ",
+  SWAP_ref_num: "Your reference number ",
+  SWAP_time: "Time remaining to send ",
+  SWAP_elapsed: "Time elapsed since sent ",
+  SWAP_progress_1: "Order Initiated ",
+  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
+  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Order Complete ",
+  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
+  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+  /* Sign Message */
+  NAV_SignMsg: 'Sign Message ',
+  MSG_message: 'Message ',
+  MSG_date: 'Date ',
+  MSG_signature: 'Signature ',
+  MSG_verify: 'Verify Message ',
+  MSG_info1: 'Include the current date so the signature cannot be reused on a different date. ',
+  MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it. ',
+  MSG_info3: 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+
+  /* View Wallet Details */
+  VIEWWALLET_Subtitle: 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
+  VIEWWALLET_Subtitle_Short: 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+  VIEWWALLET_SuccessMsg: 'Success! Here are your wallet details. ',
+
+  /* Chrome Extension */
+  CX_error_1: 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one! ',
+  CX_quicksend: 'QuickSend ', // if no appropriate translation, just use "Send"
+
+  /* Error Messages */
+  ERROR_0: 'Please enter valid amount. ',
+  ERROR_1: 'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+  ERROR_2: 'Sorry! We don\'t recognize this type of wallet file. ',
+  ERROR_3: 'This is not a valid wallet file. ',
+  ERROR_4: 'This unit doesn\'t exists, please use the one of the following units ',
+  ERROR_5: 'Invalid address. ',
+  ERROR_6: 'Invalid password. ',
+  ERROR_7: 'Invalid amount. ',
+  ERROR_8: 'Invalid gas limit. ',
+  ERROR_9: 'Invalid data value. ',
+  ERROR_10: 'Invalid gas amount. ',
+  ERROR_11: 'Invalid nonce. ',
+  ERROR_12: 'Invalid signed transaction. ',
+  ERROR_13: 'A wallet with this nickname already exists. ',
+  ERROR_14: 'Wallet not found. ',
+  ERROR_15: 'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+  ERROR_16: 'A wallet with this address already exists in storage. Please check your wallets page. ',
+  ERROR_17: 'You need to have at least 0.001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+  ERROR_18: 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended. ',
+  ERROR_19: 'Invalid symbol ',
+  ERROR_20: 'Not a valid ERC-20 token ',
+  ERROR_21: 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
+  ERROR_22: 'Please enter valid node name ',
+  ERROR_23: 'Enter valid url, if you are on https your url must be https ',
+  ERROR_24: 'Please enter valid port ',
+  ERROR_25: 'Please enter valid chain ID ',
+  ERROR_26: 'Please enter valid ABI ',
+  ERROR_27: 'Minimum amount 0.01 and max',
+  ERROR_28: '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions. ',
+  SUCCESS_1: 'Valid address ',
+  SUCCESS_2: 'Wallet successfully decrypted ',
+  SUCCESS_3: 'Transaction submitted. TX ID ',
+  SUCCESS_4: 'Your wallet was successfully added ',
+  SUCCESS_5: 'File Selected ',
+
+  WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
+
+  /* Geth Error Messages */
+  GETH_InvalidSender: 'Invalid sender ',
+  GETH_Nonce: 'Nonce too low ',
+  GETH_Cheap: 'Gas price too low for acceptance ',
+  GETH_Balance: 'Insufficient balance ',
+  GETH_NonExistentAccount: 'Account does not exist or account balance too low ',
+  GETH_InsufficientFunds: 'Insufficient funds for gas * price + value ',
+  GETH_IntrinsicGas: 'Intrinsic gas too low ',
+  GETH_GasLimit: 'Exceeds block gas limit ',
+  GETH_NegativeValue: 'Negative value ',
+
+  /* Parity Error Messages */
+  PARITY_AlreadyImported: "Transaction with the same hash was already imported.",
+  PARITY_Old: "Transaction nonce is too low. Try incrementing the nonce.",
+  PARITY_TooCheapToReplace: "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+  PARITY_LimitReached: "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+  PARITY_InsufficientGasPrice: "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+  PARITY_InsufficientBalance: "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} wei and got: {} wei.",
+  PARITY_GasLimitExceeded: "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+  PARITY_InvalidGasLimit: "Supplied gas is beyond limit.",
+
+  /* Tranlsation Info */
+  translate_version: '0.5 ',
+  Translator_Desc: ' ',
+  TranslatorName_1: ' ',
+  TranslatorAddr_1: ' ',
+  /* Translator 1             : Insert Comments Here */
+  TranslatorName_2: ' ',
+  TranslatorAddr_2: ' ',
+  /* Translator 2             : Insert Comments Here */
+  TranslatorName_3: ' ',
+  TranslatorAddr_3: ' ',
+  /* Translator 3             : Insert Comments Here */
+  TranslatorName_4: ' ',
+  TranslatorAddr_4: ' ',
+  /* Translator 4             : Insert Comments Here */
+  TranslatorName_5: ' ',
+  TranslatorAddr_5: ' ',
+  /* Translator 5             : Insert Comments Here */
+
+  /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
+  HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
+  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
+  HELP_Remind_Title: 'Some reminders ',
+  HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. ',
+  HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. ',
+  HELP_Remind_Desc_3: 'If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer! ',
+
+  HELP_0_Title: '0) I\'m new. What do I do? ',
+  HELP_0_Desc_1: 'MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**. ',
+  HELP_0_Desc_2: 'Create a new wallet. ',
+  HELP_0_Desc_3: 'Back the wallet up. ',
+  HELP_0_Desc_4: 'Verify you have access to this new wallet and have correctly saved all necessary information. ',
+  HELP_0_Desc_5: 'Transfer Ether to this new wallet. ',
+
+  HELP_1_Title: '1) How do I create a new wallet? ',
+  HELP_1_Desc_1: 'Go to the "Generate Wallet" page. ',
+  HELP_1_Desc_2: 'Go to the "Add Wallet" page & select "Generate New Wallet" ',
+  HELP_1_Desc_3: 'Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions. ',
+  HELP_1_Desc_4: 'Click "GENERATE". ',
+  HELP_1_Desc_5: 'Your wallet has now been generated. ',
+
+  HELP_2a_Title: '2a) How do I save/backup my wallet? ',
+  HELP_2a_Desc_1: 'You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper. ',
+  HELP_2a_Desc_2: 'Save the address. You can keep it to yourself or share it with others. That way, others can transfer ether to you. ',
+  HELP_2a_Desc_3: 'Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys ',
+  HELP_2a_Desc_4: 'Place your address, versions of the private key, and the PDF version of your paper wallet in a folder. Save this on your computer and a USB drive. ',
+  HELP_2a_Desc_5: 'Print the wallet if you have a printer. Otherwise, write down your private key and address on a piece of paper. Store this as a secure location, separate from your computer and the USB drive. ',
+  HELP_2a_Desc_6: 'Keep in mind, you must prevent loss of the keys and password due to loss or failure of you hard drive failure, or USB drive, or piece of paper. You also must keep in mind physical loss / damage of an entire area (think fire or flood). ',
+
+  HELP_2b_Title: '2b) How do I safely / offline / cold storage with MyEtherWallet? ',
+  HELP_2b_Desc_1: 'Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest). ',
+  HELP_2b_Desc_2: 'Click on `dist-vX.X.X.X.zip`. ',
+  HELP_2b_Desc_3: 'Move zip to an airgapped computer. ',
+  HELP_2b_Desc_4: 'Unzip it and double-click `index.html`. ',
+  HELP_2b_Desc_5: 'Generate a wallet with a strong password. ',
+  HELP_2b_Desc_6: 'Save the address. Save versions of the private key. Save the password if you might not remember it forever. ',
+  HELP_2b_Desc_7: 'Store these papers / USBs in multiple physically separate locations. ',
+  HELP_2b_Desc_8: 'Go to the "View Wallet Info" page and type in your private key / password to ensure they are correct and access your wallet. Check that the address you wrote down is the same. ',
+
+  HELP_3_Title: '3) How do I verify I have access to my new wallet? ',
+  HELP_3_Desc_1: '**Before you send any Ether to your new wallet**, you should ensure you have access to it. ',
+  HELP_3_Desc_2: 'Navigate to the "View Wallet Info" page. ',
+  HELP_3_Desc_3: 'Navigate to the MyEtherWallet.com "View Wallet Info" page. ',
+  HELP_3_Desc_4: 'Select your wallet file -or- your private key and unlock your wallet. ',
+  HELP_3_Desc_5: 'If the wallet is encrypted, a text box will automatically appear. Enter the password. ',
+  HELP_3_Desc_6: 'Click the "Unlock Wallet" button. ',
+  HELP_3_Desc_7: 'Your wallet information should show up. Find your account address, next to a colorful, circular icon. This icon visually represents your address. Be certain that the address is the address you have saved to your text document and is on your paper wallet. ',
+  HELP_3_Desc_8: 'If you are planning on holding a large amount of ether, we recommend that send a small amount of ether from new wallet before depositing a large amount. Send 0.001 ether to your new wallet, access that wallet, send that 0.001 ether to another address, and ensure everything works smoothly. ',
+
+  HELP_4_Title: '4) How do I send Ether from one wallet to another? ',
+  HELP_4_Desc_1: 'If you plan to move a large amount of ether, you should test sending a small amount to your wallet first to ensure everything goes as planned. ',
+  HELP_4_Desc_2: 'Navigate to the "Send Ether & Tokens" page. ',
+  HELP_4_Desc_3: 'Select your wallet file -or- your private key and unlock your wallet. ',
+  HELP_4_Desc_4: 'If the wallet is encrypted, a text box will automatically appear. Enter the password. ',
+  HELP_4_Desc_5: 'Click the "Unlock Wallet" button. ',
+  HELP_4_Desc_6: 'Enter the address you would like to send to in the "To Address:" field. ',
+  HELP_4_Desc_7: 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. ',
+  HELP_4_Desc_9: 'Click "Generate Transaction". ',
+  HELP_4_Desc_10: 'A couple more fields will appear. This is your browser generating the transaction. ',
+  HELP_4_Desc_11: 'Click the blue "Send Transaction" button below that. ',
+  HELP_4_Desc_12: 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
+  HELP_4_Desc_13: 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+
+  HELP_4CX_Title: '4) How do I send Ether using MyEtherWallet CX? ',
+  HELP_4CX_Desc_1: 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Send Ether & Tokens" page. ',
+  HELP_4CX_Desc_2: 'QuickSend ',
+  HELP_4CX_Desc_3: 'Click the Chrome Extension Icon. ',
+  HELP_4CX_Desc_4: 'Click the "QuickSend" button. ',
+  HELP_4CX_Desc_5: 'Select the wallet you wish to send from. ',
+  HELP_4CX_Desc_6: 'Enter the address you would like to send to in the "To Address:" field. ',
+  HELP_4CX_Desc_7: 'Enter the amount you would like to send. You can also click the "Send Entire Balance" link if you would like the transfer the entire balance. ',
+  HELP_4CX_Desc_8: 'Click "Send Transaction". ',
+  HELP_4CX_Desc_9: 'Verify the address and the amount you are sending is correct. ',
+  HELP_4CX_Desc_10: 'Enter the password for that wallet. ',
+  HELP_4CX_Desc_11: 'Click "Send Transaction." ',
+  HELP_4CX_Desc_12: 'Using "Send Ether & Tokens" Page ',
+
+  HELP_5_Title: '5) How do I run MyEtherWallet.com offline/locally? ',
+  HELP_5_Desc_1: 'You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page. ',
+  HELP_5_Desc_7: 'MyEtherWallet.com is now running entirely on your computer. ',
+  HELP_5_Desc_8: 'In case you are not familiar, you need to keep the entire folder in order to run the website, not just `index.html`. Don\'t touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact. ',
+  HELP_5_Desc_9: 'As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo. ',
+
+  HELP_5CX_Title: '5) How can I install this extension from the repo instead of the Chrome Store? ',
+  HELP_5CX_Desc_2: 'Click on `chrome-extension-vX.X.X.X.zip` and unzip it. ',
+  HELP_5CX_Desc_3: 'Go to Google Chrome and find you settings (in the menu in the upper right). ',
+  HELP_5CX_Desc_4: 'Click "Extensions" on the left. ',
+  HELP_5CX_Desc_5: 'Check the "Developer Mode" button at the top of that page. ',
+  HELP_5CX_Desc_6: 'Click the "Load unpacked extension..." button. ',
+  HELP_5CX_Desc_7: 'Navigate to the now-unzipped folder that you downloaded earlier. Click "select". ',
+  HELP_5CX_Desc_8: 'The extension should now show up in your extensions and in your Chrome Extension bar. ',
+
+  HELP_7_Title: '7) How do I send tokens & add custom tokens? ',
+  HELP_7_Desc_0: '[Ethplorer.io](https://ethplorer.io/) is a great way to explore tokens and find the decimals of a token. ',
+  HELP_7_Desc_1: 'Navigate to the "Send Ether & Tokens" page. ',
+  HELP_7_Desc_2: 'Unlock your wallet. ',
+  HELP_7_Desc_3: 'Enter the address you would like to send to in the "To Address:" field. ',
+  HELP_7_Desc_4: 'Enter the amount you would like to send. ',
+  HELP_7_Desc_5: 'Select which token you would like to send. ',
+  HELP_7_Desc_6: 'If you do not see the token listed ',
+  HELP_7_Desc_7: 'Click "Custom". ',
+  HELP_7_Desc_8: 'Enter the address, name, and decimals of the token. These are provided by the developers of the token and are also needed when you "Add a Watch Token" to Mist. ',
+  HELP_7_Desc_9: 'Click "Save". ',
+  HELP_7_Desc_10: 'You can now send that token as well as see it\'s balance in the sidebar. ',
+  HELP_7_Desc_11: 'Click "Generate Transaction". ',
+  HELP_7_Desc_12: 'A couple more fields will appear. This is your browser generating the transaction. ',
+  HELP_7_Desc_13: 'Click the blue "Send Transaction" button below that. ',
+  HELP_7_Desc_14: 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
+  HELP_7_Desc_15: 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+
+  HELP_8_Title: '8) What happens if your site goes down? ',
+  HELP_8_Desc_1: 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain. ',
+  HELP_8_Desc_2: 'If MyEtherWallet.com goes down, you would have to find another way (like geth or Ethereum Wallet / Mist) to do what we are doing. But you wouldn\'t have to "get" your Ether out of MyEtherWallet because it\'s not in MyEtherWallet. It\'s in whatever wallet your generated via our site. ',
+  HELP_8_Desc_3: 'You can import your unencrypted private key and your Geth/Mist Format (encrypted) files directly into geth / Ethereum Wallet / Mist very easily now. See question #12 below. ',
+  HELP_8_Desc_4: 'In addition, the likelihood of us taking MyEtherWallet down is slim to none. It costs us almost nothing to maintain as we aren\'t storing any information. If we do take the domain down, it still is, and always will be, publicly available at [https://github.com/kvhnuke/etherwallet](https://github.com/kvhnuke/etherwallet/tree/gh-pages). You can download the ZIP there and run it locally. ',
+
+  HELP_8CX_Title: '8) What happens if MyEtherWallet CX disappears? ',
+  HELP_8CX_Desc_1: 'First, all data is saved on your computer, not our servers. I know it can be confusing, but when you look at the Chrome Extension, you are NOT looking at stuff saved on our servers somewhere - it\'s all saved on your own computer. ',
+  HELP_8CX_Desc_2: 'That said, it is **very important** that you back up all your information for any new wallets generated with MyEtherWallet CX. That way if anything happens to MyEtherWallet CX or your computer, you still have all the information necessary to access your Ether. See the #2a for how to back up your wallets. ',
+  HELP_8CX_Desc_3: 'If for some reason MyEtherWallet CX disappears from the Chrome Store, you can find the source on Github and load it manually. See #5 above. ',
+
+  HELP_9_Title: '9) Is the "Send Ether & Tokens" page offline? ',
+  HELP_9_Desc_1: 'No. It needs the internet in order to get the current gas price, nonce of your account, and broadcast the transaction (aka "send"). However, it only sends the signed transaction. Your private key safely stays with you. We also now provide an "Offline Transaction" page so that you can ensure your private keys are on an offline/airgapped computer at all times. ',
+
+  HELP_10_Title: '10) How do I make an offline transaction? ',
+  HELP_10_Desc_1: 'Navigate to the "Offline Transaction" page via your online computer. ',
+  HELP_10_Desc_2: 'Enter the "From Address". Please note, this is the address you are sending FROM, not TO. This generates the nonce and gas price. ',
+  HELP_10_Desc_3: 'Move to your offline computer. Enter the "TO ADDRESS" and the "AMOUNT" you wish to send. ',
+  HELP_10_Desc_4: 'Enter the "GAS PRICE" as it was displayed to you on your online computer in step #1. ',
+  HELP_10_Desc_5: 'Enter the "NONCE" as it was displayed to you on your online computer in step #1. ',
+  HELP_10_Desc_6: 'The "GAS LIMIT" has a default value of 21000. This will cover a standard transaction. If you are sending to a contract or are including additional data with your transaction, you will need to increase the gas limit. Any excess gas will be returned to you. ',
+  HELP_10_Desc_7: 'If you wish, enter some data. If you enter data, you will need to include more than the 21000 default gas limit. All data is in HEX format. ',
+  HELP_10_Desc_8: 'Select your wallet file -or- your private key and unlock your wallet. ',
+  HELP_10_Desc_9: 'Press the "GENERATE SIGNED TRANSACTION" button. ',
+  HELP_10_Desc_10: 'The data field below this button will populate with your signed transaction. Copy this and move it back to your online computer. ',
+  HELP_10_Desc_11: 'On your online computer, paste the signed transaction into the text field in step #3 and click send. This will broadcast your transaction. ',
+
+  HELP_12_Title: '12) How do I import a wallet created with MyEtherWallet into geth / Ethereum Wallet / Mist? ',
+  HELP_12_Desc_1: 'Using an Geth/Mist JSON file from MyEtherWallet v2+.... ',
+  HELP_12_Desc_2: 'Go to the "View Wallet Info" page. ',
+  HELP_12_Desc_3: 'Unlock your wallet using your **encrypted** private key or JSON file. ',
+  HELP_12_Desc_4: 'Go to the "My Wallets" page. ',
+  HELP_12_Desc_5: 'Select the wallet you want to import into Mist, click the "View" icon, enter your password, and access your wallet. ',
+  HELP_12_Desc_6: 'Find the "Download JSON file - Geth/Mist Format (encrypted)" section. Press the "Download" button below that. You now have your keystore file. ',
+  HELP_12_Desc_7: 'Open the Ethereum Wallet application. ',
+  HELP_12_Desc_8: 'In the menu bar, go "Accounts" -> "Backup" -> "Accounts" ',
+  HELP_12_Desc_9: 'This will open your keystore folder. Copy the file you just downloaded (`UTC--2016-04-14......../`) into that keystore folder. ',
+  HELP_12_Desc_10: 'Your account should show up immediately under "Accounts." ',
+  HELP_12_Desc_11: 'Using your unencrypted private key... ',
+  HELP_12_Desc_12: 'If you do not already have your unencrypted private key, navigate to the "View Wallet Details" page. ',
+  HELP_12_Desc_13: 'Select your wallet file -or- enter/paste your private key to unlock your wallet. ',
+  HELP_12_Desc_14: 'Copy Your Private Key (unencrypted). ',
+  HELP_12_Desc_15: 'If you are on a Mac ',
+  HELP_12_Desc_15b: 'If you are on a PC ',
+  HELP_12_Desc_16: 'Open Text Edit and paste this private key. ',
+  HELP_12_Desc_17: 'Go to the menu bar and click "Format" -> "Make Plain Text". ',
+  HELP_12_Desc_18: 'Save this file to your `desktop/` as `nothing_special_delete_me.txt`. Make sure it says "UTF-8" and "If no extension is provided use .txt" in the save dialog. ',
+  HELP_12_Desc_19: 'Open terminal and run the following command: `geth account import ~/Desktop/nothing_special_delete_me.txt` ',
+  HELP_12_Desc_20: 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
+  HELP_12_Desc_21: 'After successful import, delete `nothing_special_delete_me.txt` ',
+  HELP_12_Desc_22: 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
+  HELP_12_Desc_23: 'Open Notepad & paste the private key ',
+  HELP_12_Desc_24: 'Save the file as `nothing_special_delete_me.txt` at `C:` ',
+  HELP_12_Desc_25: 'Run the command, `geth account import C:\\nothing_special_delete_me.txt` ',
+  HELP_12_Desc_26: 'This will prompt you to make a new password. This is the password you will use in geth / Ethereum Wallet / Mist whenever you send a transaction, so don\'t forget it. ',
+  HELP_12_Desc_27: 'After successful import, delete `nothing_special_delete_me.txt` ',
+  HELP_12_Desc_28: 'The next time you open the Ethereum Wallet application, your account will be listed under "Accounts". ',
+
+  HELP_13_Title: '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean? ',
+  HELP_13_Desc_1: 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction. ',
+
+  HELP_14_Title: '14) Some sites randomize (seed) the private key generation via mouse movements. MyEtherWallet.com doesn\'t do this. Is the random number generation for MyEtherWallet safe? ',
+  HELP_14_Desc_1: 'While the mouse moving thing is clever and we understand why people like it, the reality is window.crypto ensures more entropy than your mouse movements. The mouse movements aren\'t unsafe, it\'s just that we (and tons of other crypto experiments) believe in window.crypto. In addition, MyEtherWallet.com can be used on touch devices. Here\'s a [conversation between an angry redditor and Vitalik Buterin regarding mouse movements v. window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) and here is the [the window.crypto w3 spec](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto). ',
+
+  HELP_15_Title: '15) Why hasn\'t the account I just created show up in the blockchain explorer? (ie: etherchain, etherscan) ',
+  HELP_15_Desc_1: 'Accounts will only show up in a blockchain explorer once the account has activity on it&mdash;for example, once you have transferred some Ether to it. ',
+
+  HELP_16_Title: '16) How do I check the balance of my account? ',
+  HELP_16_Desc_1: 'You can use a blockchain explorer like [etherscan.io](http://etherscan.io/). Paste your address into the search bar and it will pull up your address and transaction history. For example, here\'s what our [donation account](http://etherscan.io/address/0x7cb57b5a97eabe94205c07890be4c1ad31e486a8) looks like on etherscan.io ',
+
+  HELP_17_Title: '17) Why isn\'t my balance showing up when I unlock my wallet? ',
+  HELP_17_Desc_1: ' This is most likely due to the fact that you are behind a firewall. The API that we use to get the balance and convert said balance is often blocked by firewalls for whatever reason. You will still be able to send transactions, you just need to use a different method to see said balance, like etherscan.io ',
+
+  HELP_18_Title: '18) Where is my geth wallet file? ',
+
+  HELP_19_Title: '19) Where is my Mist wallet file? ',
+  HELP_19_Desc_1: 'Mist files are typically found in the file locations above, but it\'s much easier to open Mist, select "Accounts" in the top bar, select "Backup", and select "Accounts". This will open the folder where your files are stored. ',
+
+  HELP_20_Title: '20) Where is my pre-sale wallet file? ',
+  HELP_20_Desc_1: 'Wherever you saved it. ;) It also was emailed to you, so check there. Look for the file called `"ethereum_wallet_backup.json"` and select that file. This wallet file will be encrypted with a password that you created during the purchase of the pre-sale. ',
+
+  HELP_21_Title: '21) Couldn\'t everybody put in random private keys, look for a balance, and send to their own address? ',
+  HELP_21_Desc_1: 'Short version: yes, but finding an account with a balance would take longer than the universe...so...no. ',
+  HELP_21_Desc_2: 'Long ELI5 Version: So Ethereum is based on [Public Key Cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography), specifically [Elliptic curve cryptography](https://eprint.iacr.org/2013/734.pdf) which is very widely used, not just in Ethereum. Most servers are protected via ECC. Bitcoin uses the same, as well as SSH and TLS and a lot of other stuff. The Ethereum keys specifically are 256-bit keys, which are stronger than 128-bit and 192-bit, which are also widely used and still considered secure by experts. ',
+  HELP_21_Desc_3: 'In this you have a private key and a public key. The private key can derive the public key, but the public key cannot be turned back into the private key. The fact that the internet and the world’s secrets are using this cryptography means that if there is a way to go from public key to private key, your lost ether is the least of everyone’s problems. ',
+  HELP_21_Desc_4: 'Now, that said, YES if someone else has your private key then they can indeed send ether from your account. Just like if someone has your password to your email, they can read and send your email, or the password to your bank account, they could make transfers. You could download the Keystore version of your private key which is the private key that is encrypted with a password. This is like having a password that is also protected by another password. ',
+  HELP_21_Desc_5: 'And YES, in theory you could just type in a string of 64 hexadecimal characters until you got one that matched. In fact, smart people could write a program to very quickly check random private keys. This is known as "brute-forcing" or "mining" private keys. People have thought about this long and hard. With a few very high end servers, they may be able to check 1M+ keys / second. However, even checking that many per second would not yield access to make the cost of running those servers even close to worthwhile - it is more likely you, and your great-grandchildren, will die before getting a match. ',
+  HELP_21_Desc_6: 'If you know anything about Bitcoin, [this will put it in perspective:](http://bitcoin.stackexchange.com/questions/32331/two-people-with-same-public-address-how-will-people-network-know-how-to-deliver) *To illustrate how unlikely this is: suppose every satoshi of every bitcoin ever to be generated was sent to its own unique private keys. The probability that among those keys there could be two that would correspond to the same address is roughly one in 100 quintillion. ',
+  HELP_21_Desc_7: '[If you want something a bit more technical:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *These numbers have nothing to do with the technology of the devices; they are the maximums that thermodynamics will allow. And they strongly imply that brute-force attacks against 256-bit keys will be infeasible until computers are built from something other than matter and occupy something other than space. ',
+  HELP_21_Desc_8: 'Of course, this all assumes that keys are generated in a truly random way & with sufficient entropy. The keys generated here meet that criteria, as do Jaxx and Mist/geth. The Ethereum wallets are all pretty good. Keys generated by brainwallets do not, as a person\'s brain is not capable of creating a truly random seed. There have been a number of other issues regarding lack of entropy or seeds not being generated in a truly random way in Bitcoin-land, but that\'s a separate issue that can wait for another day. ',
+
+  HELP_SecCX_Title: 'Security - MyEtherWallet CX ',
+  HELP_SecCX_Desc_1: 'Where is this extension saving my information? ',
+  HELP_SecCX_Desc_2: 'The information you store in this Chrome Extension is saved via [chrome.storage](http://chrome.storage/). - this is the same place your passwords are saved when you save your password in Chrome. ',
+  HELP_SecCX_Desc_3: 'What information is saved? ',
+  HELP_SecCX_Desc_4: 'The address, nickname, private key is stored in chrome.storage. The private key is encrypted using the password you set when you added the wallet. The nickname and wallet address is not encrypted. ',
+  HELP_SecCX_Desc_5: 'Why aren\'t the nickname and wallet address encrypted? ',
+  HELP_SecCX_Desc_6: 'If we were to encrypt these items, you would need to enter a password each time you wanted to view your account balance or view the nicknames. If this concerns you, we recommend you use MyEtherWallet.com instead of this Chrome Extension. ',
+
+  HELP_Sec_Title: 'Security ',
+  HELP_Sec_Desc_1: 'If one of your first questions is "Why should I trust these people?", that is a good thing. Hopefully the following will help ease your fears. ',
+  HELP_Sec_Desc_2: 'We\'ve been up and running since August 2015. If you search for ["myetherwallet" on reddit](https://www.reddit.com/search?q=myetherwallet), you can see numerous people who use us with great success. ',
+  HELP_Sec_Desc_3: 'We aren\'t going to take your money or steal your private key(s). There is no malicious code on this site. In fact the "GENERATE WALLET" pages are completely client-side. That means that all the code is executed on ** your computer** and it is never saved and transmitted anywhere. ',
+  HELP_Sec_Desc_4: 'Check the URL -- This site is being served through GitHub and you can see the source code here: [https://github.com/kvhnuke/etherwallet/tree/gh-pages](https://github.com/kvhnuke/etherwallet/tree/gh-pages) to [https://www.myetherwallet.com](https://www.myetherwallet.com). ',
+  HELP_Sec_Desc_5: 'For generating wallets, you can download the [source code and run it locally](https://github.com/kvhnuke/etherwallet/releases/latest). See #5 above. ',
+  HELP_Sec_Desc_6: 'Generate a test wallet and check and see what network activity is happening. The easiest way for you to do this is to right click on the page and click "inspect element". Go to the "Network" tab. Generate a test wallet. You will see there is no network activity. You may see something happening that looks like data:image/gif and data:image/png. Those are the QR codes being generated...on your computer...by your computer. No bytes were transferred. ',
+  HELP_Sec_Desc_8: 'If you do not feel comfortable using this tool, then by all means, do not use it. We created this tool as a helpful way for people to generate wallets and make transactions without needing to dive into command line or run a full node. Again, feel free to reach out if you have concerns and we will respond as quickly as possible. Thanks! ',
+
+  HELP_FAQ_Title: 'More Helpful Answers to Frequent Questions ',
+  HELP_Contact_Title: 'Ways to Get in Touch '
+};
+
+module.exports = zhtw;
+
+},{}],89:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -15187,7 +15749,7 @@ uiFuncs.notifier = {
 module.exports = uiFuncs;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],89:[function(require,module,exports){
+},{"buffer":149}],90:[function(require,module,exports){
 'use strict';
 
 var validator = function validator() {};
@@ -15235,7 +15797,7 @@ validator.isValidURL = function (str) {
 };
 module.exports = validator;
 
-},{}],90:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 'use strict';
 
 /**
@@ -19324,13 +19886,13 @@ module.exports = validator;
   }).directive('ngAnimateSwap', ngAnimateSwapDirective).directive('ngAnimateChildren', $$AnimateChildrenDirective).factory('$$rAFScheduler', $$rAFSchedulerFactory).provider('$$animateQueue', $$AnimateQueueProvider).provider('$$animation', $$AnimationProvider).provider('$animateCss', $AnimateCssProvider).provider('$$animateCssDriver', $$AnimateCssDriverProvider).provider('$$animateJs', $$AnimateJsProvider).provider('$$animateJsDriver', $$AnimateJsDriverProvider);
 })(window, window.angular);
 
-},{}],91:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 'use strict';
 
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":90}],92:[function(require,module,exports){
+},{"./angular-animate":91}],93:[function(require,module,exports){
 'use strict';
 
 /**
@@ -20029,13 +20591,13 @@ module.exports = 'ngAnimate';
   }]);
 })(window, window.angular);
 
-},{}],93:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 'use strict';
 
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":92}],94:[function(require,module,exports){
+},{"./angular-sanitize":93}],95:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -20090,7 +20652,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   return 'pascalprecht.translate';
 });
 
-},{}],95:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -23773,7 +24335,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   return 'pascalprecht.translate';
 });
 
-},{}],96:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -56273,13 +56835,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
-},{}],97:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 'use strict';
 
 require('./angular');
 module.exports = angular;
 
-},{"./angular":96}],98:[function(require,module,exports){
+},{"./angular":97}],99:[function(require,module,exports){
 'use strict';
 
 var asn1 = exports;
@@ -56292,7 +56854,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":99,"./asn1/base":101,"./asn1/constants":105,"./asn1/decoders":107,"./asn1/encoders":110,"bn.js":118}],99:[function(require,module,exports){
+},{"./asn1/api":100,"./asn1/base":102,"./asn1/constants":106,"./asn1/decoders":108,"./asn1/encoders":111,"bn.js":119}],100:[function(require,module,exports){
 'use strict';
 
 var asn1 = require('../asn1');
@@ -56351,7 +56913,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":98,"inherits":200,"vm":269}],100:[function(require,module,exports){
+},{"../asn1":99,"inherits":201,"vm":270}],101:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -56459,7 +57021,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":101,"buffer":148,"inherits":200}],101:[function(require,module,exports){
+},{"../base":102,"buffer":149,"inherits":201}],102:[function(require,module,exports){
 'use strict';
 
 var base = exports;
@@ -56469,7 +57031,7 @@ base.DecoderBuffer = require('./buffer').DecoderBuffer;
 base.EncoderBuffer = require('./buffer').EncoderBuffer;
 base.Node = require('./node');
 
-},{"./buffer":100,"./node":102,"./reporter":103}],102:[function(require,module,exports){
+},{"./buffer":101,"./node":103,"./reporter":104}],103:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -56998,7 +57560,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
   );
 };
 
-},{"../base":101,"minimalistic-assert":213}],103:[function(require,module,exports){
+},{"../base":102,"minimalistic-assert":214}],104:[function(require,module,exports){
 'use strict';
 
 var inherits = require('inherits');
@@ -57118,7 +57680,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":200}],104:[function(require,module,exports){
+},{"inherits":201}],105:[function(require,module,exports){
 'use strict';
 
 var constants = require('../constants');
@@ -57164,7 +57726,7 @@ exports.tag = {
 };
 exports.tagByName = constants._reverse(exports.tag);
 
-},{"../constants":105}],105:[function(require,module,exports){
+},{"../constants":106}],106:[function(require,module,exports){
 'use strict';
 
 var constants = exports;
@@ -57186,7 +57748,7 @@ constants._reverse = function reverse(map) {
 
 constants.der = require('./der');
 
-},{"./der":104}],106:[function(require,module,exports){
+},{"./der":105}],107:[function(require,module,exports){
 'use strict';
 
 var inherits = require('inherits');
@@ -57464,7 +58026,7 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":98,"inherits":200}],107:[function(require,module,exports){
+},{"../../asn1":99,"inherits":201}],108:[function(require,module,exports){
 'use strict';
 
 var decoders = exports;
@@ -57472,7 +58034,7 @@ var decoders = exports;
 decoders.der = require('./der');
 decoders.pem = require('./pem');
 
-},{"./der":106,"./pem":108}],108:[function(require,module,exports){
+},{"./der":107,"./pem":109}],109:[function(require,module,exports){
 'use strict';
 
 var inherits = require('inherits');
@@ -57520,7 +58082,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"./der":106,"buffer":148,"inherits":200}],109:[function(require,module,exports){
+},{"./der":107,"buffer":149,"inherits":201}],110:[function(require,module,exports){
 'use strict';
 
 var inherits = require('inherits');
@@ -57765,7 +58327,7 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":98,"buffer":148,"inherits":200}],110:[function(require,module,exports){
+},{"../../asn1":99,"buffer":149,"inherits":201}],111:[function(require,module,exports){
 'use strict';
 
 var encoders = exports;
@@ -57773,7 +58335,7 @@ var encoders = exports;
 encoders.der = require('./der');
 encoders.pem = require('./pem');
 
-},{"./der":109,"./pem":111}],111:[function(require,module,exports){
+},{"./der":110,"./pem":112}],112:[function(require,module,exports){
 'use strict';
 
 var inherits = require('inherits');
@@ -57798,7 +58360,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"./der":109,"inherits":200}],112:[function(require,module,exports){
+},{"./der":110,"inherits":201}],113:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -58273,7 +58835,7 @@ var objectKeys = Object.keys || function (obj) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"util/":266}],113:[function(require,module,exports){
+},{"util/":267}],114:[function(require,module,exports){
 'use strict';
 
 exports.byteLength = byteLength;
@@ -58389,7 +58951,7 @@ function fromByteArray(uint8) {
   return parts.join('');
 }
 
-},{}],114:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -61129,7 +61691,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }
 })(undefined);
 
-},{}],115:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -61265,7 +61827,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./wordlists/en.json":116,"assert":112,"buffer":148,"create-hash":153,"pbkdf2":218,"randombytes":228,"unorm":261}],116:[function(require,module,exports){
+},{"./wordlists/en.json":117,"assert":113,"buffer":149,"create-hash":154,"pbkdf2":219,"randombytes":229,"unorm":262}],117:[function(require,module,exports){
 module.exports=[
   "abandon",
   "ability",
@@ -63317,7 +63879,7 @@ module.exports=[
   "zoo"
 ]
 
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -63434,7 +63996,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],118:[function(require,module,exports){
+},{"buffer":149}],119:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -66799,7 +67361,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   };
 })(typeof module === 'undefined' || module, undefined);
 
-},{}],119:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -66861,10 +67423,10 @@ if ((typeof self === 'undefined' ? 'undefined' : _typeof(self)) === 'object') {
   }
 }
 
-},{"crypto":120}],120:[function(require,module,exports){
+},{"crypto":121}],121:[function(require,module,exports){
 "use strict";
 
-},{}],121:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -67042,7 +67604,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],122:[function(require,module,exports){
+},{"buffer":149}],123:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -67145,7 +67707,7 @@ function xorTest(a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"./ghash":126,"buffer":148,"buffer-xor":147,"cipher-base":149,"inherits":200}],123:[function(require,module,exports){
+},{"./aes":122,"./ghash":127,"buffer":149,"buffer-xor":148,"cipher-base":150,"inherits":201}],124:[function(require,module,exports){
 'use strict';
 
 var ciphers = require('./encrypter');
@@ -67160,7 +67722,7 @@ function getCiphers() {
 }
 exports.listCiphers = exports.getCiphers = getCiphers;
 
-},{"./decrypter":124,"./encrypter":125,"./modes":127}],124:[function(require,module,exports){
+},{"./decrypter":125,"./encrypter":126,"./modes":128}],125:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -67303,7 +67865,7 @@ exports.createDecipher = createDecipher;
 exports.createDecipheriv = createDecipheriv;
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"./authCipher":122,"./modes":127,"./modes/cbc":128,"./modes/cfb":129,"./modes/cfb1":130,"./modes/cfb8":131,"./modes/ctr":132,"./modes/ecb":133,"./modes/ofb":134,"./streamCipher":135,"buffer":148,"cipher-base":149,"evp_bytestokey":190,"inherits":200}],125:[function(require,module,exports){
+},{"./aes":122,"./authCipher":123,"./modes":128,"./modes/cbc":129,"./modes/cfb":130,"./modes/cfb1":131,"./modes/cfb8":132,"./modes/ctr":133,"./modes/ecb":134,"./modes/ofb":135,"./streamCipher":136,"buffer":149,"cipher-base":150,"evp_bytestokey":191,"inherits":201}],126:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -67431,7 +67993,7 @@ exports.createCipheriv = createCipheriv;
 exports.createCipher = createCipher;
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"./authCipher":122,"./modes":127,"./modes/cbc":128,"./modes/cfb":129,"./modes/cfb1":130,"./modes/cfb8":131,"./modes/ctr":132,"./modes/ecb":133,"./modes/ofb":134,"./streamCipher":135,"buffer":148,"cipher-base":149,"evp_bytestokey":190,"inherits":200}],126:[function(require,module,exports){
+},{"./aes":122,"./authCipher":123,"./modes":128,"./modes/cbc":129,"./modes/cfb":130,"./modes/cfb1":131,"./modes/cfb8":132,"./modes/ctr":133,"./modes/ecb":134,"./modes/ofb":135,"./streamCipher":136,"buffer":149,"cipher-base":150,"evp_bytestokey":191,"inherits":201}],127:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -67522,7 +68084,7 @@ function xor(a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],127:[function(require,module,exports){
+},{"buffer":149}],128:[function(require,module,exports){
 'use strict';
 
 exports['aes-128-ecb'] = {
@@ -67697,7 +68259,7 @@ exports['aes-256-gcm'] = {
   type: 'auth'
 };
 
-},{}],128:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 'use strict';
 
 var xor = require('buffer-xor');
@@ -67718,7 +68280,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad);
 };
 
-},{"buffer-xor":147}],129:[function(require,module,exports){
+},{"buffer-xor":148}],130:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -67755,7 +68317,7 @@ function encryptStart(self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"buffer-xor":147}],130:[function(require,module,exports){
+},{"buffer":149,"buffer-xor":148}],131:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -67795,7 +68357,7 @@ function shiftIn(buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],131:[function(require,module,exports){
+},{"buffer":149}],132:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -67816,7 +68378,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],132:[function(require,module,exports){
+},{"buffer":149}],133:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -67853,7 +68415,7 @@ exports.encrypt = function (self, chunk) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"buffer-xor":147}],133:[function(require,module,exports){
+},{"buffer":149,"buffer-xor":148}],134:[function(require,module,exports){
 "use strict";
 
 exports.encrypt = function (self, block) {
@@ -67863,7 +68425,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block);
 };
 
-},{}],134:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -67885,7 +68447,7 @@ exports.encrypt = function (self, chunk) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"buffer-xor":147}],135:[function(require,module,exports){
+},{"buffer":149,"buffer-xor":148}],136:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -67916,7 +68478,7 @@ StreamCipher.prototype._final = function () {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":121,"buffer":148,"cipher-base":149,"inherits":200}],136:[function(require,module,exports){
+},{"./aes":122,"buffer":149,"cipher-base":150,"inherits":201}],137:[function(require,module,exports){
 'use strict';
 
 var ebtk = require('evp_bytestokey');
@@ -67993,7 +68555,7 @@ function getCiphers() {
 }
 exports.listCiphers = exports.getCiphers = getCiphers;
 
-},{"browserify-aes/browser":123,"browserify-aes/modes":127,"browserify-des":137,"browserify-des/modes":138,"evp_bytestokey":190}],137:[function(require,module,exports){
+},{"browserify-aes/browser":124,"browserify-aes/modes":128,"browserify-des":138,"browserify-des/modes":139,"evp_bytestokey":191}],138:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -68042,7 +68604,7 @@ DES.prototype._final = function () {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"cipher-base":149,"des.js":158,"inherits":200}],138:[function(require,module,exports){
+},{"buffer":149,"cipher-base":150,"des.js":159,"inherits":201}],139:[function(require,module,exports){
 'use strict';
 
 exports['des-ecb'] = {
@@ -68070,7 +68632,7 @@ exports['des-ede'] = {
   iv: 0
 };
 
-},{}],139:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -68115,7 +68677,7 @@ function getr(priv) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":118,"buffer":148,"randombytes":228}],140:[function(require,module,exports){
+},{"bn.js":119,"buffer":149,"randombytes":229}],141:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -68192,7 +68754,7 @@ exports['RSA-MD5'] = exports.md5WithRSAEncryption = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],141:[function(require,module,exports){
+},{"buffer":149}],142:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -68301,7 +68863,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./algos":140,"./sign":143,"./verify":144,"buffer":148,"create-hash":153,"inherits":200,"stream":257}],142:[function(require,module,exports){
+},{"./algos":141,"./sign":144,"./verify":145,"buffer":149,"create-hash":154,"inherits":201,"stream":258}],143:[function(require,module,exports){
 'use strict';
 
 exports['1.3.132.0.10'] = 'secp256k1';
@@ -68316,7 +68878,7 @@ exports['1.3.132.0.34'] = 'p384';
 
 exports['1.3.132.0.35'] = 'p521';
 
-},{}],143:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -68486,7 +69048,7 @@ module.exports.getKey = getKey;
 module.exports.makeKey = makeKey;
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":142,"bn.js":118,"browserify-rsa":139,"buffer":148,"create-hmac":156,"elliptic":168,"parse-asn1":217}],144:[function(require,module,exports){
+},{"./curves":143,"bn.js":119,"browserify-rsa":140,"buffer":149,"create-hmac":157,"elliptic":169,"parse-asn1":218}],145:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -68588,7 +69150,7 @@ function checkValue(b, q) {
 module.exports = verify;
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":142,"bn.js":118,"buffer":148,"elliptic":168,"parse-asn1":217}],145:[function(require,module,exports){
+},{"./curves":143,"bn.js":119,"buffer":149,"elliptic":169,"parse-asn1":218}],146:[function(require,module,exports){
 'use strict';
 
 // Base58 encoding/decoding
@@ -68682,7 +69244,7 @@ module.exports = {
   decode: decode
 };
 
-},{}],146:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -68794,7 +69356,7 @@ exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"buffer":148}],147:[function(require,module,exports){
+},{"buffer":149}],148:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -68810,7 +69372,7 @@ module.exports = function xor(a, b) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],148:[function(require,module,exports){
+},{"buffer":149}],149:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -70551,7 +71113,7 @@ function isnan(val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":113,"ieee754":198,"isarray":203}],149:[function(require,module,exports){
+},{"base64-js":114,"ieee754":199,"isarray":204}],150:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -70647,7 +71209,7 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"inherits":200,"stream":257,"string_decoder":259}],150:[function(require,module,exports){
+},{"buffer":149,"inherits":201,"stream":258,"string_decoder":260}],151:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -70746,7 +71308,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"bs58":145,"buffer":148,"create-hash":153}],151:[function(require,module,exports){
+},{"bs58":146,"buffer":149,"create-hash":154}],152:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -70857,7 +71419,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":201}],152:[function(require,module,exports){
+},{"../../is-buffer/index.js":202}],153:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -70985,7 +71547,7 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":118,"buffer":148,"elliptic":168}],153:[function(require,module,exports){
+},{"bn.js":119,"buffer":149,"elliptic":169}],154:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -71042,7 +71604,7 @@ module.exports = function createHash(alg) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"./md5":155,"buffer":148,"cipher-base":149,"inherits":200,"ripemd160":240,"sha.js":250}],154:[function(require,module,exports){
+},{"./md5":156,"buffer":149,"cipher-base":150,"inherits":201,"ripemd160":241,"sha.js":251}],155:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -71081,7 +71643,7 @@ function hash(buf, fn, hashSize, bigEndian) {
 exports.hash = hash;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],155:[function(require,module,exports){
+},{"buffer":149}],156:[function(require,module,exports){
 'use strict';
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -71229,7 +71791,7 @@ module.exports = function md5(buf) {
   return helpers.hash(buf, core_md5, 16);
 };
 
-},{"./helpers":154}],156:[function(require,module,exports){
+},{"./helpers":155}],157:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -71301,7 +71863,7 @@ module.exports = function createHmac(alg, key) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"create-hash/browser":153,"inherits":200,"stream":257}],157:[function(require,module,exports){
+},{"buffer":149,"create-hash/browser":154,"inherits":201,"stream":258}],158:[function(require,module,exports){
 'use strict';
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes');
@@ -71342,7 +71904,7 @@ var publicEncrypt = require('public-encrypt');['publicEncrypt', 'privateEncrypt'
   };
 });
 
-},{"browserify-cipher":136,"browserify-sign":141,"browserify-sign/algos":140,"create-ecdh":152,"create-hash":153,"create-hmac":156,"diffie-hellman":164,"pbkdf2":218,"public-encrypt":222,"randombytes":228}],158:[function(require,module,exports){
+},{"browserify-cipher":137,"browserify-sign":142,"browserify-sign/algos":141,"create-ecdh":153,"create-hash":154,"create-hmac":157,"diffie-hellman":165,"pbkdf2":219,"public-encrypt":223,"randombytes":229}],159:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -71351,7 +71913,7 @@ exports.DES = require('./des/des');
 exports.CBC = require('./des/cbc');
 exports.EDE = require('./des/ede');
 
-},{"./des/cbc":159,"./des/cipher":160,"./des/des":161,"./des/ede":162,"./des/utils":163}],159:[function(require,module,exports){
+},{"./des/cbc":160,"./des/cipher":161,"./des/des":162,"./des/ede":163,"./des/utils":164}],160:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -71419,7 +71981,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
   }
 };
 
-},{"inherits":200,"minimalistic-assert":213}],160:[function(require,module,exports){
+},{"inherits":201,"minimalistic-assert":214}],161:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -71546,7 +72108,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
   return this._unpad(out);
 };
 
-},{"minimalistic-assert":213}],161:[function(require,module,exports){
+},{"minimalistic-assert":214}],162:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -71683,7 +72245,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
   utils.rip(l, r, out, off);
 };
 
-},{"../des":158,"inherits":200,"minimalistic-assert":213}],162:[function(require,module,exports){
+},{"../des":159,"inherits":201,"minimalistic-assert":214}],163:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -71732,7 +72294,7 @@ EDE.prototype._update = function _update(inp, inOff, out, outOff) {
 EDE.prototype._pad = DES.prototype._pad;
 EDE.prototype._unpad = DES.prototype._unpad;
 
-},{"../des":158,"inherits":200,"minimalistic-assert":213}],163:[function(require,module,exports){
+},{"../des":159,"inherits":201,"minimalistic-assert":214}],164:[function(require,module,exports){
 'use strict';
 
 exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -71938,7 +72500,7 @@ exports.padSplit = function padSplit(num, size, group) {
   }return out.join(' ');
 };
 
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -71986,7 +72548,7 @@ exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffi
 exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman;
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/dh":165,"./lib/generatePrime":166,"./lib/primes.json":167,"buffer":148}],165:[function(require,module,exports){
+},{"./lib/dh":166,"./lib/generatePrime":167,"./lib/primes.json":168,"buffer":149}],166:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -72153,7 +72715,7 @@ function formatReturnValue(bn, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":166,"bn.js":118,"buffer":148,"miller-rabin":212,"randombytes":228}],166:[function(require,module,exports){
+},{"./generatePrime":167,"bn.js":119,"buffer":149,"miller-rabin":213,"randombytes":229}],167:[function(require,module,exports){
 'use strict';
 
 var randomBytes = require('randombytes');
@@ -72254,7 +72816,7 @@ function findPrime(bits, gen) {
   }
 }
 
-},{"bn.js":118,"miller-rabin":212,"randombytes":228}],167:[function(require,module,exports){
+},{"bn.js":119,"miller-rabin":213,"randombytes":229}],168:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -72289,7 +72851,7 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],168:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -72305,7 +72867,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":184,"./elliptic/curve":171,"./elliptic/curves":174,"./elliptic/ec":175,"./elliptic/eddsa":178,"./elliptic/hmac-drbg":181,"./elliptic/utils":183,"brorand":119}],169:[function(require,module,exports){
+},{"../package.json":185,"./elliptic/curve":172,"./elliptic/curves":175,"./elliptic/ec":176,"./elliptic/eddsa":179,"./elliptic/hmac-drbg":182,"./elliptic/utils":184,"brorand":120}],170:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -72637,7 +73199,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   }return r;
 };
 
-},{"../../elliptic":168,"bn.js":118}],170:[function(require,module,exports){
+},{"../../elliptic":169,"bn.js":119}],171:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -73025,7 +73587,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":168,"../curve":171,"bn.js":118,"inherits":200}],171:[function(require,module,exports){
+},{"../../elliptic":169,"../curve":172,"bn.js":119,"inherits":201}],172:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -73035,7 +73597,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":169,"./edwards":170,"./mont":172,"./short":173}],172:[function(require,module,exports){
+},{"./base":170,"./edwards":171,"./mont":173,"./short":174}],173:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -73212,7 +73774,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":168,"../curve":171,"bn.js":118,"inherits":200}],173:[function(require,module,exports){
+},{"../../elliptic":169,"../curve":172,"bn.js":119,"inherits":201}],174:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -74077,7 +74639,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":168,"../curve":171,"bn.js":118,"inherits":200}],174:[function(require,module,exports){
+},{"../../elliptic":169,"../curve":172,"bn.js":119,"inherits":201}],175:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -74235,7 +74797,7 @@ defineCurve('secp256k1', {
   g: ['79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798', '483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8', pre]
 });
 
-},{"../elliptic":168,"./precomputed/secp256k1":182,"hash.js":191}],175:[function(require,module,exports){
+},{"../elliptic":169,"./precomputed/secp256k1":183,"hash.js":192}],176:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -74450,7 +75012,7 @@ EC.prototype.getKeyRecoveryParam = function (e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":168,"./key":176,"./signature":177,"bn.js":118}],176:[function(require,module,exports){
+},{"../../elliptic":169,"./key":177,"./signature":178,"bn.js":119}],177:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -74557,7 +75119,7 @@ KeyPair.prototype.inspect = function inspect() {
   return '<Key priv: ' + (this.priv && this.priv.toString(16, 2)) + ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"../../elliptic":168,"bn.js":118}],177:[function(require,module,exports){
+},{"../../elliptic":169,"bn.js":119}],178:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -74687,7 +75249,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":168,"bn.js":118}],178:[function(require,module,exports){
+},{"../../elliptic":169,"bn.js":119}],179:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -74804,7 +75366,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../../elliptic":168,"./key":179,"./signature":180,"hash.js":191}],179:[function(require,module,exports){
+},{"../../elliptic":169,"./key":180,"./signature":181,"hash.js":192}],180:[function(require,module,exports){
 'use strict';
 
 var elliptic = require('../../elliptic');
@@ -74896,7 +75458,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../../elliptic":168}],180:[function(require,module,exports){
+},{"../../elliptic":169}],181:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -74963,7 +75525,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":168,"bn.js":118}],181:[function(require,module,exports){
+},{"../../elliptic":169,"bn.js":119}],182:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -75067,7 +75629,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"../elliptic":168,"hash.js":191}],182:[function(require,module,exports){
+},{"../elliptic":169,"hash.js":192}],183:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -75081,7 +75643,7 @@ module.exports = {
   }
 };
 
-},{}],183:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -75224,7 +75786,7 @@ function intFromLE(bytes) {
 }
 utils.intFromLE = intFromLE;
 
-},{"bn.js":118}],184:[function(require,module,exports){
+},{"bn.js":119}],185:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -75346,7 +75908,7 @@ module.exports={
   "version": "6.3.3"
 }
 
-},{}],185:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 module.exports={
   "genesisGasLimit": {
     "v": 5000,
@@ -75583,7 +76145,7 @@ module.exports={
   }
 }
 
-},{}],186:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -75909,7 +76471,7 @@ module.exports = function () {
 }();
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"ethereum-common/params.json":185,"ethereumjs-util":187}],187:[function(require,module,exports){
+},{"buffer":149,"ethereum-common/params.json":186,"ethereumjs-util":188}],188:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -76580,7 +77142,7 @@ exports.defineProperties = function (self, fields, data) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"assert":112,"bn.js":118,"buffer":148,"create-hash":153,"ethjs-util":188,"keccak":205,"rlp":241,"secp256k1":243}],188:[function(require,module,exports){
+},{"assert":113,"bn.js":119,"buffer":149,"create-hash":154,"ethjs-util":189,"keccak":206,"rlp":242,"secp256k1":244}],189:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -76806,7 +77368,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"is-hex-prefixed":202,"strip-hex-prefix":260}],189:[function(require,module,exports){
+},{"buffer":149,"is-hex-prefixed":203,"strip-hex-prefix":261}],190:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -77081,7 +77643,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],190:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -77155,7 +77717,7 @@ function EVP_BytesToKey(password, salt, keyLen, ivLen) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"create-hash/md5":155}],191:[function(require,module,exports){
+},{"buffer":149,"create-hash/md5":156}],192:[function(require,module,exports){
 'use strict';
 
 var hash = exports;
@@ -77174,7 +77736,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":192,"./hash/hmac":193,"./hash/ripemd":194,"./hash/sha":195,"./hash/utils":196}],192:[function(require,module,exports){
+},{"./hash/common":193,"./hash/hmac":194,"./hash/ripemd":195,"./hash/sha":196,"./hash/utils":197}],193:[function(require,module,exports){
 'use strict';
 
 var hash = require('../hash');
@@ -77265,7 +77827,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"../hash":191}],193:[function(require,module,exports){
+},{"../hash":192}],194:[function(require,module,exports){
 'use strict';
 
 var hmac = exports;
@@ -77314,7 +77876,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"../hash":191}],194:[function(require,module,exports){
+},{"../hash":192}],195:[function(require,module,exports){
 'use strict';
 
 var hash = require('../hash');
@@ -77399,7 +77961,7 @@ var s = [11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8, 7, 6, 8, 13, 11
 
 var sh = [8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6, 9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11, 9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5, 15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8, 8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11];
 
-},{"../hash":191}],195:[function(require,module,exports){
+},{"../hash":192}],196:[function(require,module,exports){
 'use strict';
 
 var hash = require('../hash');
@@ -77837,7 +78399,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../hash":191}],196:[function(require,module,exports){
+},{"../hash":192}],197:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -78068,7 +78630,7 @@ function shr64_lo(ah, al, num) {
 };
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":200}],197:[function(require,module,exports){
+},{"inherits":201}],198:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -78309,7 +78871,7 @@ HDKey.HARDENED_OFFSET = HARDENED_OFFSET;
 module.exports = HDKey;
 
 }).call(this,require("buffer").Buffer)
-},{"assert":112,"buffer":148,"coinstring":150,"crypto":157,"secp256k1":243}],198:[function(require,module,exports){
+},{"assert":113,"buffer":149,"coinstring":151,"crypto":158,"secp256k1":244}],199:[function(require,module,exports){
 "use strict";
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -78397,7 +78959,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128;
 };
 
-},{}],199:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 "use strict";
 
 var indexOf = [].indexOf;
@@ -78410,7 +78972,7 @@ module.exports = function (arr, obj) {
   return -1;
 };
 
-},{}],200:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 'use strict';
 
 if (typeof Object.create === 'function') {
@@ -78437,7 +78999,7 @@ if (typeof Object.create === 'function') {
   };
 }
 
-},{}],201:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 'use strict';
 
 /*!
@@ -78462,7 +79024,7 @@ function isSlowBuffer(obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0));
 }
 
-},{}],202:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -78481,7 +79043,7 @@ module.exports = function isHexPrefixed(str) {
   return str.slice(0, 2) === '0x';
 };
 
-},{}],203:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 'use strict';
 
 var toString = {}.toString;
@@ -78490,7 +79052,7 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],204:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 /*
  A JavaScript implementation of the SHA family of hashes, as
  defined in FIPS PUB 180-2 as well as the corresponding HMAC implementation
@@ -78743,12 +79305,12 @@ module.exports = Array.isArray || function (arr) {
   }) : "undefined" !== typeof exports ? "undefined" !== typeof module && module.exports ? module.exports = exports = z : exports = z : U.jsSHA = z;
 })(undefined);
 
-},{}],205:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/api')(require('./lib/keccak'));
 
-},{"./lib/api":206,"./lib/keccak":210}],206:[function(require,module,exports){
+},{"./lib/api":207,"./lib/keccak":211}],207:[function(require,module,exports){
 'use strict';
 
 var createKeccak = require('./keccak');
@@ -78790,7 +79352,7 @@ module.exports = function (KeccakState) {
   };
 };
 
-},{"./keccak":207,"./shake":208}],207:[function(require,module,exports){
+},{"./keccak":208,"./shake":209}],208:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -78878,7 +79440,7 @@ module.exports = function (KeccakState) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"inherits":200,"stream":257}],208:[function(require,module,exports){
+},{"buffer":149,"inherits":201,"stream":258}],209:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -78957,7 +79519,7 @@ module.exports = function (KeccakState) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"inherits":200,"stream":257}],209:[function(require,module,exports){
+},{"buffer":149,"inherits":201,"stream":258}],210:[function(require,module,exports){
 'use strict';
 
 var P1600_ROUND_CONSTANTS = [1, 0, 32898, 0, 32906, 2147483648, 2147516416, 2147483648, 32907, 0, 2147483649, 0, 2147516545, 2147483648, 32777, 2147483648, 138, 0, 136, 0, 2147516425, 0, 2147483658, 0, 2147516555, 0, 139, 2147483648, 32905, 2147483648, 32771, 2147483648, 32770, 2147483648, 128, 2147483648, 32778, 0, 2147483658, 2147483648, 2147516545, 2147483648, 32896, 2147483648, 2147483649, 0, 2147516424, 2147483648];
@@ -79147,7 +79709,7 @@ exports.p1600 = function (s) {
   }
 };
 
-},{}],210:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -79217,7 +79779,7 @@ Keccak.prototype.copy = function (dest) {
 module.exports = Keccak;
 
 }).call(this,require("buffer").Buffer)
-},{"./keccak-state-unroll":209,"buffer":148}],211:[function(require,module,exports){
+},{"./keccak-state-unroll":210,"buffer":149}],212:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -80405,7 +80967,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 }());
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],212:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 'use strict';
 
 var bn = require('bn.js');
@@ -80510,7 +81072,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":118,"brorand":119}],213:[function(require,module,exports){
+},{"bn.js":119,"brorand":120}],214:[function(require,module,exports){
 'use strict';
 
 module.exports = assert;
@@ -80523,7 +81085,7 @@ assert.equal = function assertEqual(l, r, msg) {
   if (l != r) throw new Error(msg || 'Assertion failed: ' + l + ' != ' + r);
 };
 
-},{}],214:[function(require,module,exports){
+},{}],215:[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -80537,7 +81099,7 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],215:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 'use strict';
 
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
@@ -80596,7 +81158,7 @@ exports.signature = asn1.define('signature', function () {
   this.seq().obj(this.key('r').int(), this.key('s').int());
 });
 
-},{"asn1.js":98}],216:[function(require,module,exports){
+},{"asn1.js":99}],217:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -80632,7 +81194,7 @@ module.exports = function (okey, password) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"browserify-aes":123,"buffer":148,"evp_bytestokey":190}],217:[function(require,module,exports){
+},{"browserify-aes":124,"buffer":149,"evp_bytestokey":191}],218:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -80744,7 +81306,7 @@ function decrypt(data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":214,"./asn1":215,"./fixProc":216,"browserify-aes":123,"buffer":148,"pbkdf2":218}],218:[function(require,module,exports){
+},{"./aesid.json":215,"./asn1":216,"./fixProc":217,"browserify-aes":124,"buffer":149,"pbkdf2":219}],219:[function(require,module,exports){
 (function (process,Buffer){
 'use strict';
 
@@ -80820,7 +81382,7 @@ exports.pbkdf2Sync = function (password, salt, iterations, keylen, digest) {
 };
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"./precondition":219,"_process":221,"buffer":148,"create-hmac":156}],219:[function(require,module,exports){
+},{"./precondition":220,"_process":222,"buffer":149,"create-hmac":157}],220:[function(require,module,exports){
 'use strict';
 
 var MAX_ALLOC = Math.pow(2, 30) - 1; // default in iojs
@@ -80843,7 +81405,7 @@ module.exports = function (iterations, keylen) {
   }
 };
 
-},{}],220:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -80888,7 +81450,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 }).call(this,require('_process'))
-},{"_process":221}],221:[function(require,module,exports){
+},{"_process":222}],222:[function(require,module,exports){
 'use strict';
 
 // shim for using process in browser
@@ -81071,7 +81633,7 @@ process.umask = function () {
     return 0;
 };
 
-},{}],222:[function(require,module,exports){
+},{}],223:[function(require,module,exports){
 'use strict';
 
 exports.publicEncrypt = require('./publicEncrypt');
@@ -81085,7 +81647,7 @@ exports.publicDecrypt = function publicDecrypt(key, buf) {
   return exports.privateDecrypt(key, buf, true);
 };
 
-},{"./privateDecrypt":224,"./publicEncrypt":225}],223:[function(require,module,exports){
+},{"./privateDecrypt":225,"./publicEncrypt":226}],224:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -81108,7 +81670,7 @@ function i2ops(c) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"create-hash":153}],224:[function(require,module,exports){
+},{"buffer":149,"create-hash":154}],225:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -81222,7 +81784,7 @@ function compare(a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./mgf":223,"./withPublic":226,"./xor":227,"bn.js":118,"browserify-rsa":139,"buffer":148,"create-hash":153,"parse-asn1":217}],225:[function(require,module,exports){
+},{"./mgf":224,"./withPublic":227,"./xor":228,"bn.js":119,"browserify-rsa":140,"buffer":149,"create-hash":154,"parse-asn1":218}],226:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -81323,7 +81885,7 @@ function nonZero(len, crypto) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./mgf":223,"./withPublic":226,"./xor":227,"bn.js":118,"browserify-rsa":139,"buffer":148,"create-hash":153,"parse-asn1":217,"randombytes":228}],226:[function(require,module,exports){
+},{"./mgf":224,"./withPublic":227,"./xor":228,"bn.js":119,"browserify-rsa":140,"buffer":149,"create-hash":154,"parse-asn1":218,"randombytes":229}],227:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -81335,7 +81897,7 @@ function withPublic(paddedMsg, key) {
 module.exports = withPublic;
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":118,"buffer":148}],227:[function(require,module,exports){
+},{"bn.js":119,"buffer":149}],228:[function(require,module,exports){
 "use strict";
 
 module.exports = function xor(a, b) {
@@ -81347,7 +81909,7 @@ module.exports = function xor(a, b) {
   return a;
 };
 
-},{}],228:[function(require,module,exports){
+},{}],229:[function(require,module,exports){
 (function (process,global,Buffer){
 'use strict';
 
@@ -81388,12 +81950,12 @@ function randomBytes(size, cb) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"_process":221,"buffer":148}],229:[function(require,module,exports){
+},{"_process":222,"buffer":149}],230:[function(require,module,exports){
 "use strict";
 
 module.exports = require("./lib/_stream_duplex.js");
 
-},{"./lib/_stream_duplex.js":230}],230:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":231}],231:[function(require,module,exports){
 // a duplex stream is just a stream that is both readable and writable.
 // Since JS doesn't have multiple prototypal inheritance, this class
 // prototypally inherits from Readable, and then parasitically from
@@ -81470,7 +82032,7 @@ function forEach(xs, f) {
   }
 }
 
-},{"./_stream_readable":232,"./_stream_writable":234,"core-util-is":151,"inherits":200,"process-nextick-args":220}],231:[function(require,module,exports){
+},{"./_stream_readable":233,"./_stream_writable":235,"core-util-is":152,"inherits":201,"process-nextick-args":221}],232:[function(require,module,exports){
 // a passthrough stream.
 // basically just the most minimal sort of Transform stream.
 // Every written chunk gets output as-is.
@@ -81498,7 +82060,7 @@ PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
 
-},{"./_stream_transform":233,"core-util-is":151,"inherits":200}],232:[function(require,module,exports){
+},{"./_stream_transform":234,"core-util-is":152,"inherits":201}],233:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -82443,7 +83005,7 @@ function indexOf(xs, x) {
 }
 
 }).call(this,require('_process'))
-},{"./_stream_duplex":230,"./internal/streams/BufferList":235,"_process":221,"buffer":148,"buffer-shims":146,"core-util-is":151,"events":189,"inherits":200,"isarray":203,"process-nextick-args":220,"string_decoder/":259,"util":120}],233:[function(require,module,exports){
+},{"./_stream_duplex":231,"./internal/streams/BufferList":236,"_process":222,"buffer":149,"buffer-shims":147,"core-util-is":152,"events":190,"inherits":201,"isarray":204,"process-nextick-args":221,"string_decoder/":260,"util":121}],234:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -82627,7 +83189,7 @@ function done(stream, er, data) {
   return stream.push(null);
 }
 
-},{"./_stream_duplex":230,"core-util-is":151,"inherits":200}],234:[function(require,module,exports){
+},{"./_stream_duplex":231,"core-util-is":152,"inherits":201}],235:[function(require,module,exports){
 (function (process){
 // A bit simpler than readable streams.
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -83185,7 +83747,7 @@ function CorkedRequest(state) {
 }
 
 }).call(this,require('_process'))
-},{"./_stream_duplex":230,"_process":221,"buffer":148,"buffer-shims":146,"core-util-is":151,"events":189,"inherits":200,"process-nextick-args":220,"util-deprecate":263}],235:[function(require,module,exports){
+},{"./_stream_duplex":231,"_process":222,"buffer":149,"buffer-shims":147,"core-util-is":152,"events":190,"inherits":201,"process-nextick-args":221,"util-deprecate":264}],236:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('buffer').Buffer;
@@ -83251,12 +83813,12 @@ BufferList.prototype.concat = function (n) {
   return ret;
 };
 
-},{"buffer":148,"buffer-shims":146}],236:[function(require,module,exports){
+},{"buffer":149,"buffer-shims":147}],237:[function(require,module,exports){
 "use strict";
 
 module.exports = require("./lib/_stream_passthrough.js");
 
-},{"./lib/_stream_passthrough.js":231}],237:[function(require,module,exports){
+},{"./lib/_stream_passthrough.js":232}],238:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -83278,17 +83840,17 @@ if (!process.browser && process.env.READABLE_STREAM === 'disable' && Stream) {
 }
 
 }).call(this,require('_process'))
-},{"./lib/_stream_duplex.js":230,"./lib/_stream_passthrough.js":231,"./lib/_stream_readable.js":232,"./lib/_stream_transform.js":233,"./lib/_stream_writable.js":234,"_process":221}],238:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":231,"./lib/_stream_passthrough.js":232,"./lib/_stream_readable.js":233,"./lib/_stream_transform.js":234,"./lib/_stream_writable.js":235,"_process":222}],239:[function(require,module,exports){
 "use strict";
 
 module.exports = require("./lib/_stream_transform.js");
 
-},{"./lib/_stream_transform.js":233}],239:[function(require,module,exports){
+},{"./lib/_stream_transform.js":234}],240:[function(require,module,exports){
 "use strict";
 
 module.exports = require("./lib/_stream_writable.js");
 
-},{"./lib/_stream_writable.js":234}],240:[function(require,module,exports){
+},{"./lib/_stream_writable.js":235}],241:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -83475,7 +84037,7 @@ function ripemd160(message) {
 module.exports = ripemd160;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],241:[function(require,module,exports){
+},{"buffer":149}],242:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -83710,7 +84272,7 @@ function toBuffer(v) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":112,"buffer":148}],242:[function(require,module,exports){
+},{"assert":113,"buffer":149}],243:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -83896,12 +84458,12 @@ function arraycopy(src, srcPos, dest, destPos, length) {
 module.exports = scrypt;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148,"crypto":157}],243:[function(require,module,exports){
+},{"buffer":149,"crypto":158}],244:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib')(require('./lib/elliptic'));
 
-},{"./lib":247,"./lib/elliptic":246}],244:[function(require,module,exports){
+},{"./lib":248,"./lib/elliptic":247}],245:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -83950,7 +84512,7 @@ exports.isNumberInInterval = function (number, x, y, message) {
 };
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":201}],245:[function(require,module,exports){
+},{"../../is-buffer/index.js":202}],246:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -84119,7 +84681,7 @@ exports.signatureImportLax = function (sig) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"bip66":117,"buffer":148}],246:[function(require,module,exports){
+},{"bip66":118,"buffer":149}],247:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -84366,7 +84928,7 @@ exports.ecdhUnsafe = function (publicKey, privateKey, compressed) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../messages.json":248,"bn.js":118,"buffer":148,"create-hash":153,"elliptic":168}],247:[function(require,module,exports){
+},{"../messages.json":249,"bn.js":119,"buffer":149,"create-hash":154,"elliptic":169}],248:[function(require,module,exports){
 'use strict';
 
 var assert = require('./assert');
@@ -84600,7 +85162,7 @@ module.exports = function (secp256k1) {
   };
 };
 
-},{"./assert":244,"./der":245,"./messages.json":248}],248:[function(require,module,exports){
+},{"./assert":245,"./der":246,"./messages.json":249}],249:[function(require,module,exports){
 module.exports={
   "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
   "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -84638,7 +85200,7 @@ module.exports={
   "TWEAK_LENGTH_INVALID": "tweak length is invalid"
 }
 
-},{}],249:[function(require,module,exports){
+},{}],250:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -84713,7 +85275,7 @@ Hash.prototype._update = function () {
 module.exports = Hash;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":148}],250:[function(require,module,exports){
+},{"buffer":149}],251:[function(require,module,exports){
 'use strict';
 
 var _exports = module.exports = function SHA(algorithm) {
@@ -84732,7 +85294,7 @@ _exports.sha256 = require('./sha256');
 _exports.sha384 = require('./sha384');
 _exports.sha512 = require('./sha512');
 
-},{"./sha":251,"./sha1":252,"./sha224":253,"./sha256":254,"./sha384":255,"./sha512":256}],251:[function(require,module,exports){
+},{"./sha":252,"./sha1":253,"./sha224":254,"./sha256":255,"./sha384":256,"./sha512":257}],252:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -84830,7 +85392,7 @@ Sha.prototype._hash = function () {
 module.exports = Sha;
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":249,"buffer":148,"inherits":200}],252:[function(require,module,exports){
+},{"./hash":250,"buffer":149,"inherits":201}],253:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -84933,7 +85495,7 @@ Sha1.prototype._hash = function () {
 module.exports = Sha1;
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":249,"buffer":148,"inherits":200}],253:[function(require,module,exports){
+},{"./hash":250,"buffer":149,"inherits":201}],254:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -84991,7 +85553,7 @@ Sha224.prototype._hash = function () {
 module.exports = Sha224;
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":249,"./sha256":254,"buffer":148,"inherits":200}],254:[function(require,module,exports){
+},{"./hash":250,"./sha256":255,"buffer":149,"inherits":201}],255:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -85115,7 +85677,7 @@ Sha256.prototype._hash = function () {
 module.exports = Sha256;
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":249,"buffer":148,"inherits":200}],255:[function(require,module,exports){
+},{"./hash":250,"buffer":149,"inherits":201}],256:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -85177,7 +85739,7 @@ Sha384.prototype._hash = function () {
 module.exports = Sha384;
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":249,"./sha512":256,"buffer":148,"inherits":200}],256:[function(require,module,exports){
+},{"./hash":250,"./sha512":257,"buffer":149,"inherits":201}],257:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -85401,7 +85963,7 @@ Sha512.prototype._hash = function () {
 module.exports = Sha512;
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":249,"buffer":148,"inherits":200}],257:[function(require,module,exports){
+},{"./hash":250,"buffer":149,"inherits":201}],258:[function(require,module,exports){
 'use strict';
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -85529,7 +86091,7 @@ Stream.prototype.pipe = function (dest, options) {
   return dest;
 };
 
-},{"events":189,"inherits":200,"readable-stream/duplex.js":229,"readable-stream/passthrough.js":236,"readable-stream/readable.js":237,"readable-stream/transform.js":238,"readable-stream/writable.js":239}],258:[function(require,module,exports){
+},{"events":190,"inherits":201,"readable-stream/duplex.js":230,"readable-stream/passthrough.js":237,"readable-stream/readable.js":238,"readable-stream/transform.js":239,"readable-stream/writable.js":240}],259:[function(require,module,exports){
 'use strict';
 
 // Generated by CoffeeScript 1.8.0
@@ -85647,7 +86209,7 @@ Stream.prototype.pipe = function (dest, options) {
   }
 }).call(undefined);
 
-},{}],259:[function(require,module,exports){
+},{}],260:[function(require,module,exports){
 'use strict';
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -85868,7 +86430,7 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":148}],260:[function(require,module,exports){
+},{"buffer":149}],261:[function(require,module,exports){
 'use strict';
 
 var isHexPrefixed = require('is-hex-prefixed');
@@ -85886,7 +86448,7 @@ module.exports = function stripHexPrefix(str) {
   return isHexPrefixed(str) ? str.slice(2) : str;
 };
 
-},{"is-hex-prefixed":202}],261:[function(require,module,exports){
+},{"is-hex-prefixed":203}],262:[function(require,module,exports){
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -86336,7 +86898,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    }
 })(undefined);
 
-},{}],262:[function(require,module,exports){
+},{}],263:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -86584,7 +87146,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 })(undefined);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],263:[function(require,module,exports){
+},{}],264:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -86656,9 +87218,9 @@ function config(name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],264:[function(require,module,exports){
-arguments[4][200][0].apply(exports,arguments)
-},{"dup":200}],265:[function(require,module,exports){
+},{}],265:[function(require,module,exports){
+arguments[4][201][0].apply(exports,arguments)
+},{"dup":201}],266:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -86667,7 +87229,7 @@ module.exports = function isBuffer(arg) {
   return arg && (typeof arg === 'undefined' ? 'undefined' : _typeof(arg)) === 'object' && typeof arg.copy === 'function' && typeof arg.fill === 'function' && typeof arg.readUInt8 === 'function';
 };
 
-},{}],266:[function(require,module,exports){
+},{}],267:[function(require,module,exports){
 (function (process,global){
 'use strict';
 
@@ -87219,7 +87781,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":265,"_process":221,"inherits":264}],267:[function(require,module,exports){
+},{"./support/isBuffer":266,"_process":222,"inherits":265}],268:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -87255,7 +87817,7 @@ if (!rng) {
 module.exports = rng;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],268:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
 'use strict';
 
 //     uuid.js
@@ -87436,7 +87998,7 @@ uuid.unparse = unparse;
 
 module.exports = uuid;
 
-},{"./rng":267}],269:[function(require,module,exports){
+},{"./rng":268}],270:[function(require,module,exports){
 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -87576,7 +88138,7 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":199}],270:[function(require,module,exports){
+},{"indexof":200}],271:[function(require,module,exports){
 'use strict';
 
 // Base58 encoding/decoding
@@ -87638,7 +88200,7 @@ exports.createContext = Script.createContext = function (context) {
     }
 })(typeof module !== 'undefined' && typeof module.exports !== 'undefined');
 
-},{}],271:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 'use strict';
 
 (function (isNode) {
@@ -87677,7 +88239,7 @@ exports.createContext = Script.createContext = function (context) {
     }
 })(typeof module !== 'undefined' && typeof module.exports !== 'undefined');
 
-},{"jssha":204}],272:[function(require,module,exports){
+},{"jssha":205}],273:[function(require,module,exports){
 'use strict';
 
 (function (isNode) {
@@ -87752,7 +88314,7 @@ exports.createContext = Script.createContext = function (context) {
     }
 })(typeof module !== 'undefined' && typeof module.exports !== 'undefined');
 
-},{}],273:[function(require,module,exports){
+},{}],274:[function(require,module,exports){
 'use strict';
 
 (function (isNode) {
@@ -87822,4 +88384,4 @@ exports.createContext = Script.createContext = function (context) {
     }
 })(typeof module !== 'undefined' && typeof module.exports !== 'undefined');
 
-},{"./base58":270,"./crypto_utils":271,"./currencies":272}]},{},[34]);
+},{"./base58":271,"./crypto_utils":272,"./currencies":273}]},{},[34]);
