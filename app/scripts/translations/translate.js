@@ -19,7 +19,8 @@
   //var sv = require('./sv');
   var tr = require('./tr');
   var vi = require('./vi');
-  var zh = require('./zh');
+  var zhcn = require('./zhcn');
+  var zhtw = require('./zhtw');
 
  var translate = function($translateProvider) {
   $translateProvider.translations(de.code, translate.marked(de.data));
@@ -42,7 +43,8 @@
   //$translateProvider.translations(sv.code, translate.marked(sv.data));
   $translateProvider.translations(tr.code, translate.marked(tr.data));
   $translateProvider.translations(vi.code, translate.marked(vi.data));
-  $translateProvider.translations(zh.code, translate.marked(zh.data));
+  $translateProvider.translations(zhcn.code, translate.marked(zhcn.data));
+  $translateProvider.translations(zhtw.code, translate.marked(zhtw.data));
   $translateProvider.preferredLanguage('en');
   $translateProvider.useSanitizeValueStrategy(null);
  }
