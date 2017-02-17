@@ -1,4 +1,4 @@
-<footer class="container-fluid">
+<footer>
   <div class="container">
     <p>
       <span translate="FOOTER_3">Client-side wallet generation by</span>

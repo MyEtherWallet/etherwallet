@@ -31,9 +31,10 @@ legend {
 
 label {
   display: inline-block;
-  max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
-  margin-bottom: 5px;
-  font-weight: bold;
+  margin-top: @space-sm;
+  margin-bottom: @space-xs;
+  font-weight: 500;
+  font-size: @font-size-bump;
   small {
     font-weight: 300;
     font-size: 1em;
@@ -55,8 +56,7 @@ input[type="search"] {
 // Position radios and checkboxes better
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 4px 0 0;
-  margin-top: 1px \9; // IE8-9
+  margin: 3px 0 0;
   line-height: normal;
 }
 
@@ -94,26 +94,14 @@ output {
 
 
 // Common form controls
-//
-// Shared size and type resets for form controls. Apply `.form-control` to any
-// of the following form controls:
-//
-// select
-// textarea
-// input[type="text"]
-// input[type="password"]
-// input[type="datetime"]
-// input[type="datetime-local"]
-// input[type="date"]
-// input[type="month"]
-// input[type="time"]
-// input[type="week"]
-// input[type="number"]
-// input[type="email"]
-// input[type="url"]
-// input[type="search"]
-// input[type="tel"]
-// input[type="color"]
+label + .form-control,
+label + input,
+label + textarea,
+.account-help-icon + .btn,
+.account-help-icon + textarea,
+.account-help-icon + input {
+  margin-top: 0;
+}
 
 .form-control {
   display: block;
@@ -126,12 +114,17 @@ output {
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
-  border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+  border-radius: @border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: @transition;
 
-  // Customize the `:focus` state to imitate native WebKit styles.
-  .form-control-focus();
+  &:focus {
+    border-color: @input-border-focus;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 2px fadeout(@brand-primary, 50%);
+  }
 
   // Placeholder
   .placeholder();
@@ -244,18 +237,11 @@ input[type="search"] {
 .radio-inline input[type="radio"],
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
-  position: absolute;
   margin-left: -20px;
-  margin-top: 4px \9;
 }
 
 input[type=radio] {
   margin-right: 5px;
-}
-
-.radio + .radio,
-.checkbox + .checkbox {
-  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
 }
 
 // Radios and checkboxes on same line
@@ -313,10 +299,8 @@ input[type="checkbox"] {
 // a horizontal form layout.
 
 .form-control-static {
-  // Size it appropriately next to real form controls
   padding-top: (@padding-base-vertical + 1);
   padding-bottom: (@padding-base-vertical + 1);
-  // Remove default margin from `p`
   margin-bottom: 0;
   min-height: (@line-height-computed + @font-size-base);
 
@@ -337,7 +321,7 @@ input[type="checkbox"] {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius);
 }
 .form-group-sm {
   .form-control {
@@ -345,7 +329,7 @@ input[type="checkbox"] {
     padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
     line-height: @line-height-small;
-    border-radius: @input-border-radius-small;
+    border-radius: @border-radius;
   }
   select.form-control {
     height: @input-height-small;
@@ -365,7 +349,7 @@ input[type="checkbox"] {
 }
 
 .input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius);
 }
 .form-group-lg {
   .form-control {
@@ -373,7 +357,7 @@ input[type="checkbox"] {
     padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     line-height: @line-height-large;
-    border-radius: @input-border-radius-large;
+    border-radius: @border-radius;
   }
   select.form-control {
     height: @input-height-large;
@@ -393,249 +377,14 @@ input[type="checkbox"] {
 }
 
 // Custom Angular Form Validators
-
 .form-control.is-valid {
   border-color: lighten(@brand-success, 15%);
   outline: 0;
-  .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 4px @{brand-success}");
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 2px fadeout(@brand-success, 50%);
 }
 
 .form-control.is-invalid {
   border-color: lighten(@brand-danger, 15%);
   outline: 0;
-  .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 4px @{brand-danger}");
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 2px fadeout(@brand-danger, 50%);
 }
-
-
-
-
-// Form control feedback states
-//
-// Apply contextual and semantic states to individual form controls.
-/*
-.has-feedback {
-  // Enable absolute positioning
-  position: relative;
-
-  // Ensure icons don't overlap text
-  .form-control {
-    padding-right: (@input-height-base * 1.25);
-  }
-}
-// Feedback icon (requires .glyphicon classes)
-.form-control-feedback {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2; // Ensure icon is above input groups
-  display: block;
-  width: @input-height-base;
-  height: @input-height-base;
-  line-height: @input-height-base;
-  text-align: center;
-  pointer-events: none;
-}
-.input-lg + .form-control-feedback,
-.input-group-lg + .form-control-feedback,
-.form-group-lg .form-control + .form-control-feedback {
-  width: @input-height-large;
-  height: @input-height-large;
-  line-height: @input-height-large;
-}
-.input-sm + .form-control-feedback,
-.input-group-sm + .form-control-feedback,
-.form-group-sm .form-control + .form-control-feedback {
-  width: @input-height-small;
-  height: @input-height-small;
-  line-height: @input-height-small;
-}
-
-// Feedback states
-.has-success {
-  .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
-}
-.has-warning {
-  .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
-}
-.has-error {
-  .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
-}
-
-// Reposition feedback icon if input has visible label above
-.has-feedback label {
-
-  & ~ .form-control-feedback {
-     top: (@line-height-computed + 5); // Height of the `label` and its margin
-  }
-  &.sr-only ~ .form-control-feedback {
-     top: 0;
-  }
-}
-
-
-// Help text
-//
-// Apply to any element you wish to create light text for placement immediately
-// below a form control. Use for general help, formatting, or instructional text.
-
-.help-block {
-  display: block; // account for any element using help-block
-  margin-top: 5px;
-  margin-bottom: 10px;
-  color: lighten(@text-color, 25%); // lighten the text some for contrast
-}
-
-
-// Inline forms
-//
-// Make forms appear inline(-block) by adding the `.form-inline` class. Inline
-// forms begin stacked on extra small (mobile) devices and then go inline when
-// viewports reach <768px.
-//
-// Requires wrapping inputs and labels with `.form-group` for proper display of
-// default HTML form controls and our custom form controls (e.g., input groups).
-//
-// Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
-
-.form-inline {
-
-  // Kick in the inline
-  @media (min-width: @screen-sm-min) {
-    // Inline-block all the things for "inline"
-    .form-group {
-      display: inline-block;
-      margin-bottom: 0;
-      vertical-align: middle;
-    }
-
-    // In navbar-form, allow folks to *not* use `.form-group`
-    .form-control {
-      display: inline-block;
-      width: auto; // Prevent labels from stacking above inputs in `.form-group`
-      vertical-align: middle;
-    }
-
-    // Make static controls behave like regular ones
-    .form-control-static {
-      display: inline-block;
-    }
-
-    .input-group {
-      display: inline-table;
-      vertical-align: middle;
-
-      .input-group-addon,
-      .input-group-btn,
-      .form-control {
-        width: auto;
-      }
-    }
-
-    // Input groups need that 100% width though
-    .input-group > .form-control {
-      width: 100%;
-    }
-
-    .control-label {
-      margin-bottom: 0;
-      vertical-align: middle;
-    }
-
-    // Remove default margin on radios/checkboxes that were used for stacking, and
-    // then undo the floating of radios and checkboxes to match.
-    .radio,
-    .checkbox {
-      display: inline-block;
-      margin-top: 0;
-      margin-bottom: 0;
-      vertical-align: middle;
-
-      label {
-        padding-left: 0;
-      }
-    }
-    .radio input[type="radio"],
-    .checkbox input[type="checkbox"] {
-      position: relative;
-      margin-left: 0;
-    }
-
-    // Re-override the feedback icon.
-    .has-feedback .form-control-feedback {
-      top: 0;
-    }
-  }
-}
-
-
-// Horizontal forms
-//
-// Horizontal forms are built on grid classes and allow you to create forms with
-// labels on the left and inputs on the right.
-
-.form-horizontal {
-
-  // Consistent vertical alignment of radios and checkboxes
-  //
-  // Labels also get some reset styles, but that is scoped to a media query below.
-  .radio,
-  .checkbox,
-  .radio-inline,
-  .checkbox-inline {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: (@padding-base-vertical + 1); // Default padding plus a border
-  }
-  // Account for padding we're adding to ensure the alignment and of help text
-  // and other content below items
-  .radio,
-  .checkbox {
-    min-height: (@line-height-computed + (@padding-base-vertical + 1));
-  }
-
-  // Make form groups behave like rows
-  .form-group {
-    .make-row();
-  }
-
-  // Reset spacing and right align labels, but scope to media queries so that
-  // labels on narrow viewports stack the same as a default form example.
-  @media (min-width: @screen-sm-min) {
-    .control-label {
-      text-align: right;
-      margin-bottom: 0;
-      padding-top: (@padding-base-vertical + 1); // Default padding plus a border
-    }
-  }
-
-  // Validation states
-  //
-  // Reposition the icon because it's now within a grid column and columns have
-  // `position: relative;` on them. Also accounts for the grid gutter padding.
-  .has-feedback .form-control-feedback {
-    right: floor((@grid-gutter-width / 2));
-  }
-
-  // Form group sizes
-  //
-  // Quick utility class for applying `.input-lg` and `.input-sm` styles to the
-  // inputs and labels within a `.form-group`.
-  .form-group-lg {
-    @media (min-width: @screen-sm-min) {
-      .control-label {
-        padding-top: ((@padding-large-vertical * @line-height-large) + 1);
-        font-size: @font-size-large;
-      }
-    }
-  }
-  .form-group-sm {
-    @media (min-width: @screen-sm-min) {
-      .control-label {
-        padding-top: (@padding-small-vertical + 1);
-        font-size: @font-size-small;
-      }
-    }
-  }
-}
-
-*/

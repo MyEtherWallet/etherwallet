@@ -8,7 +8,7 @@ var walletGenCtrl = function($scope) {
   $scope.showPass = true;
   $scope.genNewWallet = function() {
     if (!$scope.isStrongPass()) {
-      alert(globalFuncs.errorMsgs[1]);
+      $scope.notifier.danger(globalFuncs.errorMsgs[1]);
     } else if ($scope.isDone) {
       $scope.isDone = false;
       $scope.wallet = Wallet.generate(false);
@@ -18,6 +18,7 @@ var walletGenCtrl = function($scope) {
         kdf: globalFuncs.kdf,
         n: globalFuncs.scrypt.n
       }));
+      $scope.notifier.warning(globalFuncs.errorMsgs[28]);
       $scope.encFileName = $scope.wallet.getV3Filename();
       if (parent != null)
         parent.postMessage(JSON.stringify({ address: $scope.wallet.getAddressString(), checksumAddress: $scope.wallet.getChecksumAddressString() }), "*");

@@ -5,7 +5,7 @@
     <div class="alert alert-danger" translate="HELP_Warning">If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.</div>
   </a>
 
-  <h2 translate="NAV_Help"> Help </h2>
+  <h1 translate="NAV_Help"> Help </h1>
 
   <p translate="HELP_Desc">Do you see something missing? Have another question? <a href="mailto:myetherwallet@gmail.com" target="_blank"> Get in touch with us</a>, and we will not only answer your question, we will update this page to be more useful to people in the future!</p>
 

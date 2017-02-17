@@ -1,7 +1,7 @@
 <div ng-controller='walletGenCtrl'>
 
   <!-- Top - Generate Wallet -->
-  <h2 translate="NAV_GenerateWallet"> Generate Wallet </h2>
+  <h1 translate="NAV_GenerateWallet"> Generate Wallet </h1>
   <article class="row">
     <div class="col-sm-6">
       <div class="form-group">
@@ -15,20 +15,20 @@
     <div class="col-sm-6">
       <div class="form-group">
         <h4 translate="NAV_GenerateWallet"> Generate Wallet </h4>
-        <a class="btn btn-primary btn-block btnAction" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
+        <a class="btn btn-primary btn-block" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
       </div>
     </div>
   </article>
   <!-- / Top - Generate Wallet -->
 
   <!-- Bottom - Display Generated Wallet -->
-  <section id="generatedWallet" ng-show="showWallet">
+  <section ng-show="showWallet">
 
     <hr />
 
     <!-- 0. Warning -->
-    <h2 translate="GEN_SuccessMsg">Success! Your wallet has been generated.</h2>
-    <div class="alert alert-danger" translate="GEN_Warning">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
+    <h1 translate="GEN_SuccessMsg">Success! Your wallet has been generated.</h1>
+    <div class="alert alert-danger" translate="ERROR_28">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
     <!-- / 0. Warning -->
 
     <article class="row">
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="col-md-1 col-sm-2 col-xs-12 address-identicon-container">
-        <div id="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+        <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
       </div>
     </article>
 

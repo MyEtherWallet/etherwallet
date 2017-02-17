@@ -66,14 +66,19 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.wd = true;
         $scope.wallet.setBalance();
         $scope.wallet.setTokens();
-        $scope.setTokenSendMode();
+        if ($scope.parentTxConfig) {
+            $scope.tx.to = $scope.parentTxConfig.to;
+            $scope.tx.value = $scope.parentTxConfig.value;
+            $scope.tx.sendMode = $scope.parentTxConfig.sendMode;
+            $scope.tx.tokenSymbol = $scope.parentTxConfig.tokenSymbol;
+        }
         $scope.setTokenSendMode();
     });
-	$scope.$watch('ajaxReq.key', function() {
+    $scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {
             $scope.setSendMode('ether');
             $scope.wallet.setBalance();
-        	$scope.wallet.setTokens();
+            $scope.wallet.setTokens();
         }
     });
     $scope.$watch('tokenTx', function() {
@@ -86,7 +91,6 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     }, true);
     $scope.$watch('tx', function(newValue, oldValue) {
         $scope.showRaw = false;
-        $scope.sendTxStatus = "";
         if (oldValue.sendMode != newValue.sendMode && newValue.sendMode == 'ether') {
             $scope.tx.data = "";
             $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
@@ -119,13 +123,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             estObj.value = '0x00';
         }
         ethFuncs.estimateGas(estObj, function(data) {
-            $scope.validateTxStatus = "";
             if (!data.error) {
-                if (data.data == '-1') $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[21]));
+                if (data.data == '-1') $scope.notifier.danger(globalFuncs.errorMsgs[21]);
                 $scope.tx.gasLimit = data.data;
-            } else {
-                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(data.msg));
-            }
+            } else $scope.notifier.danger(data.msg);
         });
     }
     $scope.onDonateClick = function() {
@@ -135,7 +136,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     }
     $scope.generateTx = function() {
         if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
-            $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[5]));
+            $scope.notifier.danger(globalFuncs.errorMsgs[5]);
             return;
         }
         var txData = uiFuncs.getTxData($scope);
@@ -149,24 +150,23 @@ var sendTxCtrl = function($scope, $sce, walletService) {
                 $scope.rawTx = rawTx.rawTx;
                 $scope.signedTx = rawTx.signedTx;
                 $scope.showRaw = true;
-                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(''));
-                if (!$scope.$$phase) $scope.$apply();
             } else {
                 $scope.showRaw = false;
-                $scope.validateTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(rawTx.error));
+                $scope.notifier.danger(rawTx.error);
             }
+            if (!$scope.$$phase) $scope.$apply();
         });
     }
     $scope.sendTx = function() {
         $scope.sendTxModal.close();
         uiFuncs.sendTx($scope.signedTx, function(resp) {
             if (!resp.isError) {
-            	var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
-                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr));
+                var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
+                $scope.notifier.success(globalFuncs.successMsgs[2] + resp.data + "<br />" + bExStr);
                 $scope.wallet.setBalance();
                 if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
             } else {
-                $scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));
+                $scope.notifier.danger(resp.error);
             }
         });
     }
@@ -178,7 +178,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
                     $scope.tx.value = resp.value;
                 } else {
                     $scope.showRaw = false;
-                    $scope.validateTxStatus = $sce.trustAsHtml(resp.error);
+                    $scope.notifier.danger(resp.error);
                 }
             });
         } else {

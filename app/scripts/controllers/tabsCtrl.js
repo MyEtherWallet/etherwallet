@@ -1,6 +1,7 @@
 'use strict';
 var tabsCtrl = function($scope, globalService, $translate, $sce) {
-    $scope.tabNames = globalService.tabs;
+    $scope.gService = globalService;
+    $scope.tabNames = $scope.gService.tabs;
     $scope.curLang = 'English';
     $scope.customNodeModal = document.getElementById('customNodeModal') ? new Modal(document.getElementById('customNodeModal')) : null;
     $scope.Validator = Validator;
@@ -11,6 +12,8 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.nodeIsConnected = true;
     $scope.browserProtocol = window.location.protocol;
     var hval = window.location.hash;
+    $scope.notifier = uiFuncs.notifier;
+    $scope.notifier.sce = $sce; $scope.notifier.scope = $scope;
     $scope.setArrowVisibility = function() {
         setTimeout(function() {
             $scope.showLeftArrow = false;
@@ -42,11 +45,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         });
     }
     $scope.checkNodeUrl = function(nodeUrl) {
-        if ($scope.Validator.isValidURL(nodeUrl)) {
-            if ($scope.browserProtocol == "https:") return nodeUrl.substring(0, 5) == 'https';
-            return true;
-        }
-        return false;
+        return $scope.Validator.isValidURL(nodeUrl);
     }
     $scope.setCurNodeFromStorage = function() {
         var node = localStorage.getItem('curNode');
@@ -96,7 +95,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             else if (!$scope.Validator.isPositiveNumber($scope.customNode.port) && $scope.customNode.port != '') throw globalFuncs.errorMsgs[24];
             else if ($scope.customNode.eip155 && !$scope.Validator.isPositiveNumber($scope.customNode.chainId)) throw globalFuncs.errorMsgs[25];
         } catch (e) {
-            $scope.addNodeStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));
+            $scope.notifier.danger(e);
             return;
         }
         var customNode = $scope.customNode;
@@ -138,6 +137,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.setTab(hval);
 
     $scope.tabClick = function(id) {
+        uiFuncs.notifier.close();
         $scope.activeTab = globalService.currentTab = id;
         for (var key in $scope.tabNames) {
             if ($scope.tabNames[key].id == id) location.hash = $scope.tabNames[key].url;
@@ -153,8 +153,8 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     }
 
     $scope.setErrorMsgLanguage = function() {
-        for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + (i + 1), 'errorMsgs', i);
-        for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i + 1), 'successMsgs', i);
+        for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + i, 'errorMsgs', i);
+        for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i+1), 'successMsgs', i);
     }
 
     $scope.setGethErrMsgLanguage = function() {
@@ -191,10 +191,11 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             key: key,
             value: value
         }));
+        globalFuncs.curLang = key;
     }
     $scope.setLanguageFromStorage = function() {
         var lang = localStorage.getItem('language');
-        if (lang == null) return;
+        if (lang == null) lang = "{\"key\":\"en\",\"value\":\"English\"}";
         lang = JSON.parse(lang);
         var key = globalFuncs.stripTags(lang.key);
         var value = globalFuncs.stripTags(lang.value);

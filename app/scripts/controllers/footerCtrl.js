@@ -10,5 +10,7 @@ var footerCtrl = function($scope, globalService) {
     }
     $scope.setBlockNumbers();
     $scope.globalService = globalService;
+
+    $scope.curLang = globalFuncs.curLang
 };
 module.exports = footerCtrl;

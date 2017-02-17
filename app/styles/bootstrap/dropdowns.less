@@ -8,10 +8,9 @@
   display: inline-block;
   width: 0;
   height: 0;
-  margin-left: 2px;
+  margin-left: @space-sm;
   vertical-align: middle;
   border-top:   @caret-width-base dashed;
-  border-top:   @caret-width-base solid ~"\9"; // IE8
   border-right: @caret-width-base solid transparent;
   border-left:  @caret-width-base solid transparent;
 }
@@ -23,6 +22,9 @@
 }
 
 // Prevent the focus on the dropdown toggle when closing dropdowns
+.dropdown-toggle {
+  margin-top: 0;
+}
 .dropdown-toggle:focus {
   outline: 0;
 }
@@ -47,7 +49,7 @@
   font-size: @font-size-base;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   background-color: @dropdown-bg;
-  border-radius: @border-radius-base;
+  border-radius: @border-radius;
   .box-shadow(0 6px 10px rgba(0,0,0,.175));
   background-clip: padding-box;
 

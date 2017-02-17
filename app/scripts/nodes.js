@@ -22,6 +22,19 @@ nodes.customNodeObj = {
 };
 nodes.nodeList = {
     'eth_mew': {
+        'name': 'ETH-beta',
+        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+        'type': nodes.nodeTypes.ETH,
+        'eip155': true,
+        'chainId': 1,
+        'tokenList': require('./tokens/ethTokens.json'),
+        'abiList': require('./abiDefinitions/ethAbi.json'),
+        'estimateGas': true,
+        'service': 'MyEtherWallet',
+        'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
+    },
+    'eth2_mew': {
         'name': 'ETH',
         'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
         'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
@@ -34,18 +47,18 @@ nodes.nodeList = {
         'service': 'MyEtherWallet',
         'lib': require('./nodeHelpers/mewEth')
     },
-    'etc_mew': {
-        'name': 'ETC',
-        'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
-        'type': nodes.nodeTypes.ETC,
-        'eip155': false,
-        'chainId': 0,
-        'tokenList': require('./tokens/etcTokens.json'),
-        'abiList': require('./abiDefinitions/etcAbi.json'),
-        'estimateGas': true,
-        'service': 'MyEtherWallet',
-        'lib': require('./nodeHelpers/mewEtc')
+    'eth_ethscan': {
+        'name': 'ETH',
+        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
+        'type': nodes.nodeTypes.ETH,
+        'eip155': true,
+        'chainId': 1,
+        'tokenList': require('./tokens/ethTokens.json'),
+        'abiList': require('./abiDefinitions/ethAbi.json'),
+        'estimateGas': false,
+        'service': 'Etherscan.io',
+        'lib': require('./nodeHelpers/etherscan')
     },
     'rop_mew': {
         'name': 'Ropsten-beta',
@@ -60,31 +73,31 @@ nodes.nodeList = {
         'service': 'MyEtherWallet',
         'lib': new nodes.customNode('https://api.myetherapi.com/rop', '')
     },
-    'eth2_mew': {
-        'name': 'ETH-beta',
-        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
-        'type': nodes.nodeTypes.ETH,
+    'etc_epool': {
+        'name': 'ETC',
+        'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
+        'type': nodes.nodeTypes.ETC,
         'eip155': true,
-        'chainId': 1,
-        'tokenList': require('./tokens/ethTokens.json'),
-        'abiList': require('./abiDefinitions/ethAbi.json'),
+        'chainId': 61,
+        'tokenList': require('./tokens/etcTokens.json'),
+        'abiList': require('./abiDefinitions/etcAbi.json'),
+        'estimateGas': false,
+        'service': 'Epool.io',
+        'lib': new nodes.customNode('https://mewapi.epool.io', '')
+    },
+    'etc_mew': {
+        'name': 'ETC',
+        'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
+        'type': nodes.nodeTypes.ETC,
+        'eip155': true,
+        'chainId': 61,
+        'tokenList': require('./tokens/etcTokens.json'),
+        'abiList': require('./abiDefinitions/etcAbi.json'),
         'estimateGas': true,
         'service': 'MyEtherWallet',
-        'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
-    },
-    'eth_ethscan': {
-        'name': 'ETH',
-        'blockExplorerTX': 'https://etherscan.io/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://etherscan.io/address/[[address]]',
-        'type': nodes.nodeTypes.ETH,
-        'eip155': true,
-        'chainId': 1,
-        'tokenList': require('./tokens/ethTokens.json'),
-        'abiList': require('./abiDefinitions/ethAbi.json'),
-        'estimateGas': false,
-        'service': 'Etherscan.io',
-        'lib': require('./nodeHelpers/etherscan')
+        'lib': require('./nodeHelpers/mewEtc')
     }
 };
 nodes.ethPrice = require('./nodeHelpers/ethPrice');

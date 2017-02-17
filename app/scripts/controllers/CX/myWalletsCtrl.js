@@ -89,11 +89,11 @@ var myWalletsCtrl = function($scope, $sce) {
 	}
 	$scope.editSave = function() {
 		if ($scope.nickNames.indexOf($scope.viewWallet.nick) !== -1) {
-			$scope.editStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[13]));
+			$scope.notifier.danger(globalFuncs.errorMsgs[13]);
 			return;
 		} else {
 			cxFuncs.editNickName($scope.viewWallet.addr, $scope.viewWallet.nick, function() {
-				if (chrome.runtime.lastError) $scope.editStatus = $sce.trustAsHtml(globalFuncs.getDangerText(chrome.runtime.lastError.message));
+				if (chrome.runtime.lastError) $scope.notifier.danger(chrome.runtime.lastError.message);
 				else {
 					$scope.setAllWallets();
 					$scope.setNickNames();
@@ -108,7 +108,7 @@ var myWalletsCtrl = function($scope, $sce) {
 	}
 	$scope.decryptWallet = function() {
 		$scope.wallet = null;
-		$scope.viewStatus = "";
+		
 		try {
 		   var priv = $scope.allWallets[$scope.viewWallet.id].priv;
 		   if (priv.length==132)
@@ -119,7 +119,7 @@ var myWalletsCtrl = function($scope, $sce) {
 			$scope.setWalletInfo();
             $scope.password = "";
 		} catch (e) {
-			$scope.viewStatus = $sce.trustAsHtml(globalFuncs.getDangerText(globalFuncs.errorMsgs[6] + ":" + e));
+			$scope.notifier.danger(globalFuncs.errorMsgs[6] + ":" + e);
 		}
 	};
 	$scope.printQRCode = function() {

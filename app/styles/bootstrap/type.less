@@ -25,27 +25,19 @@ h1, h2, h3, h4, h5, h6,
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  margin-top: @line-height-computed;
-  margin-bottom: (@line-height-computed / 2);
-
-  small,
-  .small {
+  margin-top: @space;
+  margin-bottom: @space-sm;
+  small,.small {
     font-size: 65%;
   }
-}
-
-h2 {
-  margin-top: (@line-height-computed / 2);
 }
 
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-top: (@line-height-computed / 2);
-  margin-bottom: (@line-height-computed / 2);
-
-  small,
-  .small {
+  margin-top: @space;
+  margin-bottom: @space-sm;
+  small, .small {
     font-size: 75%;
   }
 }
@@ -62,12 +54,14 @@ h6, .h6 { font-size: @font-size-h6; font-weight: 400; }
 // -------------------------
 
 p {
-  margin: 0 0 (@line-height-computed / 2);
+  margin: 0 0 @space-sm;
   font-weight: 300;
   strong, .strong, &.strong {
     font-weight: 400;
   }
 }
+
+i { font-style: normal }
 
 strong, .strong {
   font-weight: 600;
@@ -76,31 +70,32 @@ strong, .strong {
 .lead {
   margin-bottom: @line-height-computed;
   font-size: floor((@font-size-base * 1.15));
-  font-weight: 300;
-  line-height: 1.4;
+}
 
-  @media (min-width: @screen-sm-min) {
-    font-size: (@font-size-base * 1.5);
+
+a {
+  color: @link-color;
+  text-decoration: none;
+  cursor: pointer;
+  transition: @transition;
+
+  &:hover           { opacity: .8; color: @link-hover-color; transition: @transition;}
+  &:active, &:focus { opacity: 1; transition: @transition;}
+
+  &:focus {
+    .tab-focus();
   }
 }
 
-a {
-  cursor: pointer;
+.strike {
+  text-decoration: line-through;
 }
 
-
-
-// Emphasis & misc
-// -------------------------
-
-// Ex: (12px small font / 14px base font) * 100% = about 85%
-small,
-.small {
-  font-size: floor((100% * @font-size-small / @font-size-base));
+small, .small {
+  font-size: 85%;
 }
 
-mark,
-.mark {
+mark, .mark {
   background-color: @state-warning-bg;
   padding: .2em;
 }
@@ -172,7 +167,7 @@ mark,
 // -------------------------
 
 .page-header {
-  padding-bottom: ((@line-height-computed / 2) - 1);
+  padding-bottom: (@space-sm - 1);
   margin: (@line-height-computed * 2) 0 @line-height-computed;
   border-bottom: 1px solid @page-header-border-color;
 }
@@ -278,7 +273,7 @@ abbr[data-original-title] {
 
 // Blockquotes
 blockquote {
-  padding: (@line-height-computed / 2) @line-height-computed;
+  padding: @space-sm @line-height-computed;
   margin: 0 0 @line-height-computed;
   font-size: @blockquote-font-size;
   border-left: 5px solid @blockquote-border-color;
