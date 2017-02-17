@@ -5,50 +5,50 @@ ja.code = 'ja';
 ja.data = {
 
 /* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
+x_ParityPhrase              : 'Parityフレーズ ',
 
 /* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
+NODE_Title                  : 'カスタムノードをセットアップ',
+NODE_Subtitle               : 'ローカルノードに接続するには...',
+NODE_Warning                : 'MyEtherWallet.com 経由で接続するためには、HTTPSノードが必要です。　[MyEtherWalletをレポジトリからダウンロードして、手元で走らせ、](https://github.com/kvhnuke/etherwallet/releases/latest)いずれかのノードに接続することもできます。 あるいは、無料のSSL証明書を[LetsEncrypt](https://letsencrypt.org/)から入手してください',
+NODE_Name                   : 'ノード名',
+NODE_Port                   : 'ノードポート',
+NODE_CTA                    : '保存してカスタムノードを使用',
 
 /* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
+x_Access                    : 'アクセス ',
+CONTRACT_Title              : 'コントラクトアドレス ',
+CONTRACT_Title_2            : '既存のコントラクトを選択 ',
+CONTRACT_Json               : 'ABI / JSON インターフェース ',
+CONTRACT_Interact_Title     : 'Read / Write コントラクト ',
+CONTRACT_Interact_CTA       : '機能を一つ選ぶ ',
+CONTRACT_ByteCode           : 'バイトコード ',
+CONTRACT_Read               : '読み取り ',
+CONTRACT_Write              : '書き込み ',
 
 /* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+SWAP_rates                  : "現在のレート ",
+SWAP_init_1                 : "行いたい交換対象は ",
+SWAP_init_2                 : " を ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "操作を完了して次へ ", // or "Continue"
+SWAP_information            : "あなたの情報 ",
+SWAP_send_amt               : "送出総額 ",
+SWAP_rec_amt                : "受け取り総額 ",
+SWAP_your_rate              : "変換レート ",
+SWAP_rec_add                : "受け取りアドレス ",
+SWAP_start_CTA              : "交換開始 ",
+SWAP_ref_num                : "参照番号 ",
+SWAP_time                   : "送出するまでにあと、 ",
+SWAP_progress_1             : "注文を開始しました ",
+SWAP_progress_2             : "到着待機中 ", // Waiting for your BTC...
+SWAP_progress_3             : "受け取り完了 ", // ETH Received!
+SWAP_progress_4             : "送出中 {{orderResult.output.currency}} ",
+SWAP_progress_5             : "注文完了 ",
+SWAP_order_CTA              : "お送りいただきたいのは ", // Please send 1 ETH...
+SWAP_unlock                 : "このページから直接ETHあるいはトークンを送出するためには、ウォレットを解錠してください。",
 
-NAV_Swap                    : 'Swap ',
-NAV_InteractContract        : 'Interact with Contract ',
+NAV_Swap                    : '交換 ',
+NAV_InteractContract        : 'コントラクトを操作 ',
 
 
 
@@ -353,8 +353,8 @@ GETH_NegativeValue          : '負の値です ',
 
 /* Tranlsation Info */
 translate_version           : '0.3 ',
-Translator_Desc             : 'トランスレーターに感謝して投げ銭： ',
-TranslatorName_1            : '[sekisanchi](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction) ',
+Translator_Desc             : 'トランスレーターにお恵みの投げ銭： ',
+TranslatorName_1            : 'sekisanchi ',
 TranslatorAddr_1            : '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE ',
 /* Translator 1             : Kazunori Seki / 関一典 */
 TranslatorName_2            : '',
