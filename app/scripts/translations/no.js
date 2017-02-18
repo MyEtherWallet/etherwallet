@@ -5,49 +5,49 @@ no.code = 'no';
 no.data = {
 
 /* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
+x_ParityPhrase              : 'Parity-frase ',
 
 /* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
+NODE_Title                  : 'Sett opp en alternativ node',
+NODE_Subtitle               : 'For å koble til en lokal node...',
+NODE_Warning                : 'Noden din må være HTTPS for å muliggjøre tilkobling via MyEtherWallet.com. Du kan [laste ned MyEtherWallet-repoet & kjøre det lokalt](https://github.com/kvhnuke/etherwallet/releases/latest) for å koble til en hvilken som helst node. Eller du kan skaffe deg et gratis SSL-sertifikat via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Nodens navn',
+NODE_Port                   : 'Nodens port',
+NODE_CTA                    : 'Lagre & bruk alternativ node',
 
 /* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
+x_Access                    : 'Åpne ',
+CONTRACT_Title              : 'Kontraktadresse ',
+CONTRACT_Title_2            : 'Velg eksisterende kontrakt ',
+CONTRACT_Json               : 'ABI / JSON grensesnitt ',
+CONTRACT_Interact_Title     : 'Les fra / Skriv til kontrakt ',
+CONTRACT_Interact_CTA       : 'Velg en funksjon ',
 CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
+CONTRACT_Read               : 'LES ',
+CONTRACT_Write              : 'SKRIV ',
 
 /* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+SWAP_rates                  : "Aktuelle vekslingskurser ",
+SWAP_init_1                 : "Jeg vil bytte mine ",
+SWAP_init_2                 : " med ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Gjennomfør! ", // "Let's do this!" or "Continue"
+SWAP_information            : "Din informasjon ",
+SWAP_send_amt               : "Beløp som sendes ",
+SWAP_rec_amt                : "Beløp som mottas ",
+SWAP_your_rate              : "Din vekslingskurs ",
+SWAP_rec_add                : "Din mottakeradresse ",
+SWAP_start_CTA              : "Start byttet ",
+SWAP_ref_num                : "Ditt referansenummer ",
+SWAP_time                   : "Gjenstående tid til å sende ",
+SWAP_progress_1             : "Ordre initiert ",
+SWAP_progress_2             : "Venter på dine ", // Waiting for your BTC...
+SWAP_progress_3             : "Mottatt! ", // ETH Received!
+SWAP_progress_4             : "Sender dine {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Ordre fullført ",
+SWAP_order_CTA              : "Vennligst send ", // Please send 1 ETH...
+SWAP_unlock                 : "Lås opp din lommebok for å sende ETH eller Tokens direkte fra denne siden. ",
 
-NAV_Swap                    : 'Swap ',
+NAV_Swap                    : 'Byttehandel ',
 
 
 
@@ -90,7 +90,7 @@ x_PrintShort                : 'Skriv ut ',
 x_PrivKey                   : 'Privat nøkkel (ukryptert) ',
 x_PrivKey2                  : 'Privat nøkkel ',
 x_PrivKeyDesc               : 'Dette er den ukrypterte tekstversjonen av den private nøkkelen din, noe som betyr at det ikke er nødvendig med noe passord. Hvis noen skulle få tak i den ukrypterte private nøkkelen din, ville de få tilgang til lommeboken din uten å bruke passord. Derfor er krypterte nøkler vanligvis å anbefale. ',
-x_Save                      : 'x_Save ',
+x_Save                      : 'x_Lagre ',
 x_TXT                       : 'TXT-fil (ukryptert) ',
 x_Wallet                    : 'Lommebok ',
 
@@ -313,12 +313,12 @@ ERROR_18                    : 'All gas vil bli brukt på denne transaksjonen. De
 ERROR_19                    : 'Ugyldig symbol ',
 ERROR_20                    : 'er ikke en gyldig ERC-20-token. Hvis andre tokens holder på å lastes, vennligst fjern denne token og prøv igjen. ',
 ERROR_21                    : 'Kunne ikke estimere gas. Det er enten ikke nok midler på kontoen, eller så gir den mottakende kontraktadressen en feilmelding. Prøv å justere gas-mengden manuelt, og fortsett. Feilmeldingen du får når du sender kan være mer informativ. ',
-ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
-ERROR_24                    : 'Please enter valid port ',
-ERROR_25                    : 'Please enter valid chain ID ',
-ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount 0.01 ',
+ERROR_22                    : 'Vennligst oppgi gyldig nodenavn ',
+ERROR_23                    : 'Oppgi gyldig URL (internett-adresse), hvis du er på https må URL-en starte med https ',
+ERROR_24                    : 'Vennligst oppgi gyldig port ',
+ERROR_25                    : 'Vennligst oppgi gyldig kjede-ID ',
+ERROR_26                    : 'Vennligst oppgi gyldig ABI ',
+ERROR_27                    : 'Minimumsbeløp 0.01 ',
 ERROR_28                    : '**Du trenger din Keystore-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk). ',
 SUCCESS_1                   : 'Gyldig adresse ',
 SUCCESS_2                   : 'Dekrypteringen av lommeboken var vellykket ',
@@ -522,7 +522,7 @@ HELP_12_Desc_12             : 'Hvis du ikke allerede har den ukrypterte private 
 HELP_12_Desc_13             : 'Velg lommebok-filen din, eller oppgi/lim inn din private nøkkel, for å låse opp lommeboken. ',
 HELP_12_Desc_14             : 'Kopier den (ukrypterte) private nøkkelen. ',
 HELP_12_Desc_15             : 'Hvis du er på en Mac: ',
-HELP_12_Desc_15b            : 'If you are on a PC: ',
+HELP_12_Desc_15b            : 'Hvis du er på en PC: ',
 HELP_12_Desc_16             : 'Åpne Text Edit og lim inn denne private nøkkelen. ',
 HELP_12_Desc_17             : 'Gå til menylinjen og klikk "Format" -> "Make Plain Text". ',
 HELP_12_Desc_18             : 'Lagre denne fila på skrivebordet ditt som `ikke_noe_spesielt_slett_meg.txt`. Pass på at det står "UTF-8" og "If no extension is provided use .txt" i lagringsdialogen. ',
