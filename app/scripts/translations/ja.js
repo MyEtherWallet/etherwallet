@@ -19,7 +19,7 @@ NAV_Offline                 : 'オフライン送出 ',
 NAV_SendEther               : 'Ether送出 トークン送出 ',
 NAV_SendTokens              : 'トークン送出 ',
 NAV_SignMsg                 : 'メッセージ署名 ',
-NAV_Swap                    : '交換 ',
+NAV_Swap                    : '両替 ',
 NAV_ViewWallet              : 'ウォレット情報を見る ',
 NAV_YourWallets             : '自分のウォレット ',
 
@@ -248,9 +248,9 @@ NODE_CTA                    : '保存してカスタムノードを使用',
 
 /* Swap / Exchange */
 SWAP_rates                  : "現在のレート ",
-SWAP_init_1                 : "行いたい交換対象は ",
+SWAP_init_1                 : "これから両替で ",
 SWAP_init_2                 : " を ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "操作を完了して次へ ", // or "Continue"
+SWAP_init_CTA               : "やりましょう　！ ", // or "Continue"
 SWAP_information            : "あなたの情報 ",
 SWAP_send_amt               : "送出総額 ",
 SWAP_rec_amt                : "受け取り総額 ",
@@ -342,7 +342,7 @@ GETH_NegativeValue          : '負の値です ',
 /* Tranlsation Info */
 translate_version           : '0.3 ',
 Translator_Desc             : 'トランスレーターにお恵みの投げ銭： ',
-TranslatorName_1            : 'sekisanchi ',
+TranslatorName_1            : '[sekisanchi](https://www.myetherwallet.com/?gaslimit=21000&to=0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE&value=1.0#send-transaction) ',
 TranslatorAddr_1            : '0xf991119Eea62Eee1a6fdaA7f621e91A42f325FcE ',
 /* Translator 1             : Kazunori Seki / 関一典 */
 TranslatorName_2            : '',
