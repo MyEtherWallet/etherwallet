@@ -3,52 +3,52 @@
 var fr = function() {}
 fr.code = 'fr';
 fr.data = {
-
 /* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
+x_ParityPhrase              : 'Phrase Parity ',
 
 /* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
+NODE_Title                  : 'Installer votre nœud personnalisé',
+NODE_Subtitle               : 'Pour se connecter à un nœud local…',
+NODE_Warning                : 'Votre nœud doit être en HTTPS pour vous y connecter via MyEtherWallet.com. Vous pouvez [téléccharger le repo MyEtherWallet et le lancer localement](https://github.com/kvhnuke/etherwallet/releases/latest) pour vous connecter à un nœud quelconque, ou obtenir un certificat SSL gratuit via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Nom du nœud',
+NODE_Port                   : 'Port du nœud',
+NODE_CTA                    : 'Sauvegarder et utiliser un nœud personnalisé',
 
 /* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
+x_Access                    : 'Accès ',
+CONTRACT_Title              : 'Adresse de contrat ',
+CONTRACT_Title_2            : 'Sélectionner un contrat existant ',
+CONTRACT_Json               : 'Interface ABI / JSON ',
+CONTRACT_Interact_Title     : 'Lecture / écriture de contrat ',
+CONTRACT_Interact_CTA       : 'Sélectionnez une fonction ',
+CONTRACT_ByteCode           : 'Bytecode ',
+CONTRACT_Read               : 'LIRE ',
+CONTRACT_Write              : 'ECRIRE ',
 
 /* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+SWAP_rates                  : "Taux actuels ",
+SWAP_init_1                 : "Je veux échanger ",
+SWAP_init_2                 : " contre ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Allons-y ! ", // or "Continue"
+SWAP_information            : "Vos informations ",
+SWAP_send_amt               : "Montant à envoyer ",
+SWAP_rec_amt                : "Montant à recevoir ",
+SWAP_your_rate              : "Votre taux ",
+SWAP_rec_add                : "Votre adresse de réception ",
+SWAP_start_CTA              : "Commencer l'échange ",
+SWAP_ref_num                : "Votre numéro de référence ",
+SWAP_time                   : "Temps restant pour l'envoi ",
+SWAP_progress_1             : "Ordre déclenché ",
+SWAP_progress_2             : "En attente de vos ", // Waiting for your BTC...
+SWAP_progress_3             : "reçu ! ", // ETH Received!
+SWAP_progress_4             : "Envoi de vos {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Ordre exécuté ",
+SWAP_order_CTA              : "Envoyer ", // Please send 1 ETH...
+SWAP_unlock                 : "Déverrouillez votre portefeuille pour envoyer des ETH ou des tokens directement depuis cette page. ",
 
-NAV_Swap                    : 'Swap ',
+NAV_Swap                    : 'Échange ',
 
+  
 
 
 
@@ -338,20 +338,20 @@ GETH_InsufficientFunds      : 'Fonds insuffisants pour gaz * prix + valeur ',
 GETH_IntrinsicGas           : 'Gaz intrinsèque trop bas ',
 GETH_GasLimit               : 'Limite en gaz dépassée ',
 GETH_NegativeValue          : 'Valeur négative ',
-
 /* Parity Error Messages */
-PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
-PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
-PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
+PARITY_AlreadyImported      : "Une transaction avec un même hash a déjà été importée.",
+PARITY_Old                  : "Le nonce de la transaction est trop bas. Essayez d'incrémenter le nonce.",
+PARITY_TooCheapToReplace    : "Les frais de transaction sont trop bas. Il y a une autre transaction avec le même nonce en file d'attente. Essayez d'augmenter les frais ou d'incrémenter le nonce.",
+PARITY_LimitReached         : "Il y a trop de transactions en file d'attente. Votre transaction a été abandonnée en raison de cette limite. Essayez d'augmenter les frais.",
+PARITY_InsufficientGasPrice : "Les frais de transaction sont trop bas. Ils ne satisfont pas au minimum de votre nœud (minimum : {}, reçu : {}). Essayez d'augmenter les frais.",
+PARITY_InsufficientBalance  : "iFonds insuffisants. Le compte d'où vous essayez d'envoyer une transaction ne possède pas assez de fonds. Requis : {}, reçu : {}.",
+PARITY_GasLimitExceeded     : "Le coût de la transaction excède la limite en gaz courante. Limite : {}, reçu : {}. Essayez de réduire le gaz fourni.",
+PARITY_InvalidGasLimit      : "Le gaz fourni est en-deça de la limite.",
+
 
 /* Tranlsation Info */
 translate_version           : '0.3 ',
-Translator_Desc             : 'Thank you to our translators ',
+Translator_Desc             : 'Merci à nos traducteurs ',
 TranslatorName_1            : '[Simon P](https://www.myetherwallet.com/?gaslimit=21000&to=0x89a18eE46b5aabC62e94b1830881887D04C687f3&value=1.0#send-transaction) · ',
 TranslatorAddr_1            : '0x89a18eE46b5aabC62e94b1830881887D04C687f3 ',
 /* Translator 1             : Translation in French. Début de la traduction, il reste encore du travail... Je continue dès que j'ai un peu de temps :) */
@@ -537,8 +537,8 @@ HELP_12_Desc_26             : 'Ceci vous invitera à choisir un nouveau mot de p
 HELP_12_Desc_27             : 'Après que l\'import a réussi, supprimez `nothing_special_delete_me.txt` ',
 HELP_12_Desc_28             : 'La prochaine fois que vous ouvrirez l\'application Ethereum Wallet, votre compte sera listé sous "Accounts". ',
 
-HELP_13_Title               : '13) What does "Insufficient funds. Account you try to send transaction from does not have enough funds. Required XXXXXXXXXXXXXXXXXXX and got: XXXXXXXXXXXXXXXX." Mean? ',
-HELP_13_Desc_1              : 'This means you do not have enough Ether in your account to cover the cost of gas. Each transaction (including token and contract transactions) require gas and that gas is paid in Ether. The number displayed is the amount required to cover the cost of the transaction in Wei. Take that number, divide by `1000000000000000000`, and subtract the amount of Ether you were trying to send (if you were attempting to send Ether). This will give you the amount of Ether you need to send to that account to make the transaction. ',
+HELP_13_Title               : '13) Que signifie « Fonds insuffisants. Le compte d\'où vous essayez d\'envoyer une transaction ne possède pas assez de fonds. Requis : XXXXXXXXXXXXXXXXXXX, reçu : XXXXXXXXXXXXXXXXXXX. » ? ',
+HELP_13_Desc_1              : 'Cela signifie que vous n\'avez pas assez d\'Ether sur votre compte pour couvrir les coûts en gaz. Chaque transaction (y compris pour les tokens et les contrats) demandent du gaz, et ce gaz est payé en Ether. Le nombre affiché est le montant requis pour couvrir le coût de la transaction en Wei. Prenez ce nombre, divisez-le par `1000000000000000000` et soustrayez la somme en Ether que vous essayiez d\'envoyer (si vous tentiez d\'envoyer de l\'Ether). Cela vous donnera le montant en Ether dont vous avez besoin pour que le compte effectue la transaction. ',
 
 HELP_14_Title               : '14) Certains sites randomisent (initialisent) la génération de clef privée par les mouvements de la sours. Ce n\'est pas le cas de MyEtherWallet.com. La génération de nombres aléatoires de MyEtherWallet est-elle sûre ? ',
 HELP_14_Desc_1              : 'Bien que l\'interception des mouvement de la souris soit jugée attractive par beaucoup, et que nous en comprenions les raisons, la réalité est que window.crypto assure plus d\'entropie que les mouvements de votre souris. L\'utilisation de ces mouvements est sûre mais nous (ainsi que de nombreux projets crypto) avons de bonnes raisons de croire en window.crypto. De plus, MyEtherWallet.com peut être utilisé sur des périphériques tactiles. Voici une [conversation entre un redditor rageur et Vitalik Buterin sur les mouvements de souris et window.crypto](https://www.reddit.com/r/ethereum/comments/2bilqg/note_there_is_a_paranoid_highsecurity_way_to/cj5sgrm) et voici [les spécifications w3 de window.crypto](https://dvcs.w3.org/hg/webcrypto-api/raw-file/tip/spec/Overview.html#dfn-GlobalCrypto). ',
