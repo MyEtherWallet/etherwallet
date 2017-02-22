@@ -8,60 +8,60 @@ id.data = {
 x_ParityPhrase              : 'Parity Phrase ',
 
 /* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
+NODE_Title                  : 'Set Up Node Custom Anda',
+NODE_Subtitle               : 'Untuk terhubung ke node lokal...',
+NODE_Warning                : 'Node Anda harus berupa HTTPS untuk dapat terhubung melalui MyEtherWallet.com. Anda dapat [mengunduh MyEtherWallet repo & menjalankannya secara lokal](https://github.com/kvhnuke/etherwallet/releases/latest) untuk terhubung ke node apa saja. Atau, dapatkan SSL certificate gratis melalui [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Nama Node',
+NODE_Port                   : 'Port Node',
+NODE_CTA                    : 'Simpan & Pakai Node Custom',
 
 /* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
+x_Access                    : 'Akses ',
+CONTRACT_Title              : 'Alamat Kontrak ',
+CONTRACT_Title_2            : 'Pilih kontrak yang ada ',
+CONTRACT_Json               : 'Interface ABI / JSON ',
+CONTRACT_Interact_Title     : 'Kontrak Read / Write ',
+CONTRACT_Interact_CTA       : 'Pilih fungsi ',
 CONTRACT_ByteCode           : 'Byte Code ',
 CONTRACT_Read               : 'READ ',
 CONTRACT_Write              : 'WRITE ',
 
 /* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+SWAP_rates                  : "Nilai Tukar yang berlaku ",
+SWAP_init_1                 : "Saya ingin menukar ",
+SWAP_init_2                 : " menjadi ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Lanjutkan! ", // or "Continue"
+SWAP_information            : "Informasi Anda ",
+SWAP_send_amt               : "Jumlah untuk dikirim ",
+SWAP_rec_amt                : "Jumlah untuk diterima ",
+SWAP_your_rate              : "Nilai tukar Anda ",
+SWAP_rec_add                : "Alamat penerima Anda ",
+SWAP_start_CTA              : "Tukarkan ",
+SWAP_ref_num                : "Nomor referensi Anda ",
+SWAP_time                   : "Sisa waktu untuk mengirim ",
+SWAP_progress_1             : "Perintah Dijalankan ",
+SWAP_progress_2             : "Menunggu ", // Waiting for your BTC...
+SWAP_progress_3             : "Diterima! ", // ETH Received!
+SWAP_progress_4             : "Mengirim {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Perintah Selesai ",
+SWAP_order_CTA              : "Kirimkan ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock wallet Anda untuk mengirim ETH atau Token langsung dari halaman ini. ",
 
-NAV_Swap                    : 'Swap ',
+NAV_Swap                    : 'Tukarkan ',
 
 x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Connect to TREZOR ',
-ADD_Trezor_select           : 'This is a TREZOR seed ',
+ADD_Trezor_scan             : 'Hubungkan ke TREZOR ',
+ADD_Trezor_select           : 'Ini adalah TREZOR seed ',
 
 /* Parity Error Messages */
-PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
-PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
-PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
+PARITY_AlreadyImported      : "Transaksi dengan hash yang sama sudah pernah di-impor sebelumnya.",
+PARITY_Old                  : "Nonce transaksi terlalu kecil. Coba naikkan nilai Nonce-nya.",
+PARITY_TooCheapToReplace    : "Biaya transaksi terlalu rendah. Ada transaksi lain dengan nonce yang sama dalam antrian. Coba naikkan biaya transaksi atau naikkan nonce-nya.",
+PARITY_LimitReached         : "Terlalu banyak transaksi dalam antrian. Transaksi Anda gugur karena melampaui batas. Coba naikkan biaya transaksi",
+PARITY_InsufficientGasPrice : "Biaya transaksi terlalu rendah. Tidak memenuhi nilai biaya minimal untuk node Anda(minimal: {}, got: {}). Coba naikkan biaya transaksi.",
+PARITY_InsufficientBalance  : "Dana tidak mencukupi. Akun yang dipakai untuk mengirim tidak memiliki dana yang cukup. Diperlukan {} dan hanya tersedia: {}.",
+PARITY_GasLimitExceeded     : "Biaya transaksi melebihi limit gas yang berlaku. Limit: {}, tersedia: {}. Coba turunkan gas yang disediakan.",
+PARITY_InvalidGasLimit      : "Gas yang disediakan nilainya diatas limit.",
 
 
 
