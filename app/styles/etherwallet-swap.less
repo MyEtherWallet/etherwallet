@@ -15,6 +15,29 @@
 
   .swap-rates {
     text-align: center;
+    .order-panel {
+      background: linear-gradient(150deg, @ether-blue, @ether-navy);
+      position: relative;
+      .bity-logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      @media screen and (max-width: @screen-sm) {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        .order-info {
+          text-align: left;
+          padding: 0 0 0 22%;
+        }
+        .bity-logo {
+          left: -1rem;
+          top: 40%;
+          transform: rotate(-90deg);
+        }
+      }
+    }
     .form-control.input-sm {
       width: 16%;
       min-width: 3.5rem;
@@ -30,6 +53,13 @@
     p {
       margin: 0;
       span { opacity: .9; }
+    }
+    .order-info {
+      &:nth-child(4n+1),
+      &:nth-child(4n+2),
+      &:nth-child(4n+3) {
+        background: transparent;
+      }
     }
   }
 

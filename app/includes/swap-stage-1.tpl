@@ -4,14 +4,11 @@
   <!-- Title -->
   <section class="row">
     <h5 class="col-xs-6 col-xs-offset-3" translate="SWAP_rates"> Current Rates </h5>
-    <div class="col-xs-3"><a class="link" href="https://bity.com/af/jshkb37v" target="_blank">
-      <img class="pull-right" src="images/logo-bity.svg" width="100" height="38" />
-    </a></div>
   </section>
   <!-- Title -->
 
   <!-- Colored Columns -->
-  <section class="row">
+  <section class="row order-panel">
     <div class="col-sm-6 order-info">
       <p class="mono">
         <input class="form-control input-sm" ng-model="priceTicker.ETHBTC"/>
@@ -32,6 +29,7 @@
         <span>BTC = {{bity.curRate.BTCREP*priceTicker.BTCREP | number: 6}} REP</span>
       </p>
     </div>
+    <a class="link bity-logo" href="https://bity.com/af/jshkb37v" target="_blank"><img src="images/logo-bity-white.svg" width="120" height="49" /></a>
   </section>
   <!-- / Colored Columns -->
 

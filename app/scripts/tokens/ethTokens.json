@@ -54,6 +54,12 @@
     "type":"default"
   },
   {
+    "address":"0xbe87E87965b96D8174Eae4e3724A6D7417c488b0",
+    "symbol":"EDG",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0xa74476443119A942dE498590Fe1f2454d7D4aC0d",
     "symbol":"GNT",
     "decimal":18,
