@@ -30,12 +30,12 @@
 
 <body>
 
-<header ng-controller='tabsCtrl'>
+<header aria-label="header" ng-controller='tabsCtrl' >
   
   <section class="bg-gradient header-branding">
     <section class="container">
 
-       <a class="brand" href="https://www.myetherwallet.com/"> <img src="images/logo-myetherwallet.svg"   height="64px" width="auto" alt="MyEtherWallet" /></a> 
+       <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage"> <img src="images/logo-myetherwallet.svg"   height="64px" width="auto" alt="MyEtherWallet" /></a> 
       
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
@@ -43,7 +43,7 @@
         &middot; v3.5.0 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
-          <a class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
+          <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
           <ul class="dropdown-menu" ng-show="dropdown">
             <li><a ng-class="{true:'active'}[curLang=='Deutsch']"      ng-click="changeLanguage('de','Deutsch'     )"> Deutsch         </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']"     ng-click="changeLanguage('el','Ελληνικά'    )"> Ελληνικά        </a></li>
@@ -75,7 +75,7 @@
         &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
-          <a class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small><i class="caret"></i></a>
+          <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small><i class="caret"></i></a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
               {{value.name}}
@@ -96,18 +96,18 @@
   </div>
   <!-- / TODO: turn this into notification -->
 
-  <section class="container nav-container overflowing" >
-    <a ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
+  <nav role="navigation" aria-label="main navigation" class="container nav-container overflowing" >
+    <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
     <div class="nav-scroll">
-      <nav class="nav-inner">
+      <ul class="nav-inner">
         
-        <span ng-repeat="tab in tabNames track by $index" class="nav-item {{tab.name}}" ng-class="{active: $index==gService.currentTab}" ng-show="{{tab.mew}}" ng-click="tabClick($index)"> <a translate="{{tab.name}}"></a></span>
+        <li ng-repeat="tab in tabNames track by $index" class="nav-item {{tab.name}}" ng-class="{active: $index==gService.currentTab}" ng-show="{{tab.mew}}" ng-click="tabClick($index)"> <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a></li>
         
         
-      </nav>
+      </ul>
     </div>
-    <a ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(100);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>
-  </section>
+    <a aria-hidden="true" ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(100);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>
+  </nav>
 
    <article class="modal fade" id="customNodeModal" tabindex="-1">
   <section class="modal-dialog">
@@ -193,10 +193,10 @@
 
   <div class="tab-content" >
 
-    <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl'>
+    <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl' role="main">
 
   <!-- Title -->
-  <h1 translate="NAV_GenerateWallet"> Generate Wallet</h1>
+  <h1 translate="NAV_GenerateWallet" aria-live="polite"> Generate Wallet</h1>
   <!-- / Title -->
 
   <!-- Top -->
@@ -204,35 +204,38 @@
     <div class="col-sm-6">
       <h4 translate="GEN_Label_1"> Enter password </h4>
       <div class="input-group">
-        <input class="form-control"
+        <input name="password"
+               class="form-control"
                type="{{showPass && 'password' || 'text'}}"
                placeholder="{{ 'GEN_Placeholder_1' | translate }}"
                ng-model="password"
-               ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"/>
-        <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
+               ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"
+               aria-label="{{ 'GEN_Label_1' |translate}}"/>
+        <span tabindex="0" aria-label="make password visible" role="button" class="input-group-addon eye" ng-click="showPass=!showPass"></span>
       </div>
     </div>
     <div class="col-sm-6">
       <h4 translate="NAV_GenerateWallet"> Generate Wallet </h4>
-      <a class="btn btn-primary btn-block" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
+      <a tabindex="0" role="button" class="btn btn-primary btn-block" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
     </div>
   </section>
   <!-- / Top -->
 
 
   <!-- Bottom -->
-  <section ng-show="showWallet">
+  <section ng-show="showWallet" role="main">
     <br /><hr /><br />
 
     <!-- 1. Private Keys -->
     <h2>1. <span translate="GEN_Label_2"> Save your Keystore File. Don't forget your password above. </span></h2>
     <section class="row">
       <div class="col-sm-10">
-        <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+        <div aria-hidden="true" class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
           <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file</p>
           <label translate="x_Keystore">Keystore File (Recommended • Encrypted)</label>
         </div>
-        <a class="btn btn-success btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
+        <a tabindex="0" role="button" class="btn btn-success btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download" aria-label="{{'x_Download'|translate}} {{'x_Keystore'|translate}}" aria-describedby="x_KeystoreDesc"> DOWNLOAD </a>
+        <p class="sr-only" id="x_KeystoreDesc" translate="x_KeystoreDesc"></p>
       </div>
     </section>
     <!-- / 1. Private Keys -->
@@ -243,13 +246,13 @@
     <h2>2. <span translate="GEN_Label_3"> Save Your Address. </span></h2>
     <section class="row">
       <div class="col-sm-10">
-        <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #"</p>
+        <div aria-hidden="true" class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" id="x_AddessDesc" translate="x_AddessDesc">You may know this as your "Account #"</p>
           <label translate="x_Address">Your Address</label>
         </div>
-        <input class="form-control" type="text" readonly="readonly" ng-value="wallet.getChecksumAddressString()"/>
+        <input class="form-control" type="text" readonly="readonly" aria-label="{{'x_Address'|translate}}" aria-describedby="x_AddessDesc" ng-value="wallet.getChecksumAddressString()"/>
       </div>
-      <div class="col-sm-2 address-identicon-container">
+      <div class="col-sm-2 address-identicon-container" aria-hidden="true">
         <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
       </div>
     </section>
@@ -263,22 +266,23 @@
 
       <div class="col-sm-6">
 
-        <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted version of your private key.</p>
+        <div aria-hidden="true" class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" id="x_PrivKeyDesc" translate="x_PrivKeyDesc">This is the unencrypted version of your private key.</p>
           <label translate="x_PrivKey">Private Key (unencrypted)</label>
         </div>
-        <textarea class="form-control bigger-on-mobile" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
+        <textarea aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc" class="form-control bigger-on-mobile" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
 
-        <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_PrintDesc">ProTip: Click print and save this as a PDF</p>
+        <div aria-hidden="true" class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" id="x_PrintDesc" translate="x_PrintDesc">ProTip: Click print and save this as a PDF</p>
           <label translate="x_Print">Print Paper Wallet:</label>
         </div>
-        <a class="btn btn-info btn-block" ng-click="printQRCode()" translate="x_PrintShort">PRINT</a>
-        <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key.</p>
+        <a tabindex="0" aria-label="{{'x_Print'|translate}}" aria-describedby="x_PrintDesc" role="button" class="btn btn-info btn-block" ng-click="printQRCode()" translate="x_PrintShort">PRINT</a>
+
+        <div aria-hidden="true" class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+          <p class="account-help-text" id="x_JsonDesc" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key.</p>
           <label translate="x_Json">JSON File (unencrypted)</label>
         </div>
-        <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
+        <a tabindex="0" aria-label="{{'x_Download'|translate}} {{'x_Json'|translate}}" aria-describedby="x_JsonDesc" role="button" class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
       </div>
 
       <div class="col-sm-3">
@@ -2322,9 +2326,9 @@
   </div>
 
 
-  <div class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
-    <div class="container" ng-bind-html="notifier.message"></div>
-    <i class="icon-close" ng-click="notifier.close()"></i>
+  <div class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show" role="alert" aria-live="assertive">
+    <span class="sr-only">{{notifier.class}}</span><div class="container" ng-bind-html="notifier.message"></div>
+    <i tabindex="0" aria-label="dismiss" class="icon-close" ng-click="notifier.close()"></i>
   </div>
 
   <!--
@@ -2337,29 +2341,29 @@
 
 </section>
 
-<footer ng-controller='footerCtrl'>
+<footer role="contentinfo" aria-label="footer" ng-controller='footerCtrl' >
 
   <div class="container">
 
     <section class="row"><section class="row">
 
       <div class="col-sm-3 footer-1">
-        <p><a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" /></a></p>
-        <p><span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span> <span translate="FOOTER_1b">Created by</span> <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a href="https://github.com/tayvano" target="_blank">tayvano</a>.</p>
+        <p aria-hidden="true"><a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" /></a></p>
+        <p><span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span> <span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.</p>
         <br />
-        <p><a data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
+        <p><a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
       </div>
 
       <div class="col-sm-6 footer-2">
-        <h5> <i>💝</i> Donations are always appreciated!</h5>
+        <h5> <i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
         <ul>
           <li> ETH: <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span></li>
           <li> BTC: <span class="mono wrap">1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6</span></li>
         </ul>
 
-        <h5> <i>👫</i> You can also support us by supporting our blockchain-family.</h5><p>Consider using our affiliate links to...</h5>
+        <h5> <i aria-hidden="true">👫</i> You can also support us by supporting our blockchain-family.</h5><p>Consider using our affiliate links to...</h5>
         <ul>
-          <li><a href="https://bity.com/af/jshkb37v" target="_blank">Swap ETH/BTC/EUR/CHF via Bity.com</a></li>
+          <li><a aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank">Swap ETH/BTC/EUR/CHF via Bity.com</a></li>
           <li><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank">Buy a Ledger Nano S</a></li>
           <li><a href="https://trezor.io/?a=myetherwallet.com" target="_blank">Buy a TREZOR</a></li>
         </ul>
@@ -2375,19 +2379,19 @@
       </div>
 
       <div class="col-sm-3 footer-3">
-        <h5><i>🌎</i> On the Web</h5>
+        <h5><i aria-hidden="true">🌎</i> On the Web</h5>
         <ul>
-          <li><a href="https://www.MyEtherWallet.com" target="_blank">www.MyEtherWallet.com</a></li>
-          <li><a href="https://github.com/kvhnuke/etherwallet" target="_blank">Github: MyEtherWallet.com & CX</a></li>
-          <li><a href="https://github.com/MyEtherWallet" target="_blank">Github: MyEtherWallet (Org)</a></li>
-          <li><a href="https://twitter.com/myetherwallet" target="_blank">Twitter</a></li>
-          <li><a href="https://www.facebook.com/MyEtherWallet/" target="_blank">Facebook</a></li>
+          <li><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank">www.MyEtherWallet.com</a></li>
+          <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank">Github: MyEtherWallet.com & CX</a></li>
+          <li><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank">Github: MyEtherWallet (Org)</a></li>
+          <li><a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank">Twitter</a></li>
+          <li><a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank">Facebook</a></li>
         </ul>
 
-        <h5><i>🙏</i> Support</h5>
+        <h5><i aria-hidden="true">🙏</i> Support</h5>
         <ul>
-          <li><a href="mailto:myetherwallet@gmail.com" target="_blank">Email</a></li>
-          <li><a href="https://github.com/kvhnuke/etherwallet/issues" target="_blank">Github Issue</a></li>
+          <li><a aria-label="email myetherwallet at gmail.com" href="mailto:myetherwallet@gmail.com" target="_blank">Email</a></li>
+          <li><a aria-label="open a github issue" href="https://github.com/kvhnuke/etherwallet/issues" target="_blank">Github Issue</a></li>
         </ul>
       </div>
 
