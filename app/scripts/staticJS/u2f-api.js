@@ -50,7 +50,6 @@ u2f.MessageTypes = {
     'U2F_GET_API_VERSION_RESPONSE': 'u2f_get_api_version_response'
 };
 
-
 /**
  * Response status codes
  * @const
@@ -65,6 +64,14 @@ u2f.ErrorCodes = {
     'TIMEOUT': 5
 };
 
+u2f.getErrorByCode = function( code ) {
+    for( var prop in u2f.ErrorCodes ) {
+        if( u2f.ErrorCodes.hasOwnProperty( prop ) ) {
+             if( u2f.ErrorCodes[ prop ] === code )
+                 return prop;
+        }
+    }
+}
 
 /**
  * A message for registration requests

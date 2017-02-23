@@ -62,6 +62,7 @@ uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
     var txToSign = ethUtil.rlp.encode(toHash);
     var localCallback = function(result, error) {
         if (typeof error != "undefined") {
+            error = error.errorCode ? u2f.getErrorByCode(error.errorCode) : error;
             if (callback !== undefined) callback({
                 isError: true,
                 error: error

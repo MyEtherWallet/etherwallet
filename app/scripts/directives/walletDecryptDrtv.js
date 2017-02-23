@@ -142,9 +142,9 @@ var walletDecryptDrtv = function() {
             <th translate=\"MYWAL_Bal\">Balance<\/th>\r\n \
           <\/tr>\r\n \
           <tr ng-repeat=\"wallet in HDWallet.wallets track by $index\">\r\n \
-            <td><input aria-label=\"Unlock wallet with {{wallet.getBalance()}} ETH. Address: {{wallet.getChecksumAddressString()}}\" aria-describedby=\"modalTitle2\" type=\"radio\" name=\"addressSelect\" value=\"{{$index}}\" ng-model=\"HDWallet.id\" \/><\/td>\r\n \
+            <td><input aria-label=\"Unlock wallet with {{wallet.getBalance()}} {{nodeType}}. Address: {{wallet.getChecksumAddressString()}}\" aria-describedby=\"modalTitle2\" type=\"radio\" name=\"addressSelect\" value=\"{{$index}}\" ng-model=\"HDWallet.id\" \/><\/td>\r\n \
             <td>{{wallet.getChecksumAddressString()}}<\/td>\r\n \
-            <td>{{wallet.getBalance()}} ETH<\/td>\r\n \
+            <td>{{wallet.getBalance()}} {{nodeType}}<\/td>\r\n \
           <\/tr>\r\n \
           <tr class=\"m-addresses\">\r\n \
             <td class\"small\"><a role="link" tabindex="0" ng-show=\"HDWallet.numWallets > 5\" ng-click=\"AddRemoveHDAddresses(false)\" translate=\"MNEM_prev\">Previous Addresses<\/a><\/td>\r\n \

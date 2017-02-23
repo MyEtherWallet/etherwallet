@@ -7,6 +7,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.Validator = Validator;
     $scope.isSSL = window.location.protocol == 'https:';
     $scope.isChrome = true;
+    $scope.nodeType = ajaxReq.type;
     $scope.HDWallet = {
         numWallets: 0,
         walletsPerDialog: 5,
@@ -120,6 +121,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 $scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
                 walletService.password = $scope.filePassword;
             } else if ($scope.showMDecrypt) {
+                $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
                 $scope.mnemonicModel.open();
                 $scope.onHDDPathChange();
             } else if ($scope.showParityDecrypt) {
@@ -151,6 +153,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         }
     }
     $scope.HWWalletCreate = function(publicKey, chainCode, ledger, path) {
+        $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
         $scope.mnemonicModel.open();
         $scope.HDWallet.hdk = new hd.HDKey();
         $scope.HDWallet.hdk.publicKey = new Buffer(publicKey, 'hex');

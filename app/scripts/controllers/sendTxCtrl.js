@@ -2,7 +2,7 @@
 var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.ajaxReq = ajaxReq;
     $scope.unitReadable = ajaxReq.type;
-    $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
+   // $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
     walletService.wallet = null;
     walletService.password = '';
     $scope.showAdvance = $scope.showRaw = false;
@@ -25,7 +25,8 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         nonce: null,
         gasPrice: null,
         donate: false,
-        tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null ? false : globalFuncs.urlGet('tokenSymbol')
+        tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null ? false : globalFuncs.urlGet('tokenSymbol'),
+        readOnly: globalFuncs.urlGet('readOnly') == null ? false : true
     }
     $scope.setSendMode = function(sendMode, tokenId = '', tokenSymbol = '') {
         $scope.tx.sendMode = sendMode;
@@ -69,8 +70,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         if ($scope.parentTxConfig) {
             $scope.tx.to = $scope.parentTxConfig.to;
             $scope.tx.value = $scope.parentTxConfig.value;
-            $scope.tx.sendMode = $scope.parentTxConfig.sendMode;
-            $scope.tx.tokenSymbol = $scope.parentTxConfig.tokenSymbol;
+            $scope.tx.sendMode = $scope.parentTxConfig.sendMode ? $scope.parentTxConfig.sendMode : 'ether';
+            $scope.tx.tokenSymbol = $scope.parentTxConfig.tokenSymbol ? $scope.parentTxConfig.tokenSymbol : '';
+            $scope.tx.readOnly = $scope.parentTxConfig.readOnly ? $scope.parentTxConfig.readOnly : false;
         }
         $scope.setTokenSendMode();
     });
@@ -123,6 +125,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             estObj.value = '0x00';
         }
         ethFuncs.estimateGas(estObj, function(data) {
+            uiFuncs.notifier.close();
             if (!data.error) {
                 if (data.data == '-1') $scope.notifier.danger(globalFuncs.errorMsgs[21]);
                 $scope.tx.gasLimit = data.data;
