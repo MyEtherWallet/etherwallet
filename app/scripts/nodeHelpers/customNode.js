@@ -1,6 +1,10 @@
 'use strict';
-var customNode = function(srvrUrl, port) {
+var customNode = function(srvrUrl, port, httpBasicAuthentication) {
     this.SERVERURL = port ? srvrUrl + ':' + port : srvrUrl;
+    if(httpBasicAuthentication){
+        var authorization = 'Basic ' + btoa(httpBasicAuthentication.user + ":" + httpBasicAuthentication.password);
+        this.config.headers['Authorization'] = authorization;
+    }
 }
 customNode.prototype.config = {
     headers: {
