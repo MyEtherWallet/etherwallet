@@ -7665,6 +7665,12 @@ module.exports=[
     "type":"default"
   },
   {
+    "address":"0x6531f133e6DeeBe7F2dcE5A0441aA7ef330B4e53",
+    "symbol":"TIME",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
     "symbol":"Unicorn 🦄 ",
     "decimal":0,

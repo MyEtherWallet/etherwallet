@@ -551,7 +551,7 @@
       <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
         {{unitReadable}}<i class="caret"></i>
       </a>
-      <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
+      <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount && !tx.readOnly">
         <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
         <li ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
           <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode('token', $index, token.getSymbol())"> {{token.getSymbol()}} </a>
@@ -560,7 +560,7 @@
       </ul>
     </div>
   </div>
-  <a ng-click="transferAllBalance()"><p class="strong" translate="SEND_TransferTotal">Send Entire Balance</p></a>
+  <a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><p class="strong" translate="SEND_TransferTotal">Send Entire Balance</p></a>
   <!-- / Amount to Send -->
 
   <!-- Gas -->
@@ -582,7 +582,7 @@
   </div>
   <!-- / Advanced Option Panel -->
 
-  <div class="form-group ">
+  <div class="form-group" ng-hide="tx.value > wallet.balance && tx.sendMode!=='token'">
     <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
   </div>
   <div class="form-group" ng-show="showRaw">
@@ -598,6 +598,10 @@
   <div class="alert alert-info" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
+  <div class="alert alert-danger" ng-show="tx.value > wallet.balance && tx.sendMode!=='token'">
+    <p>You do not have enough funds in your account to complete this swap. Please add more funds or access a different wallet.</p>
+  </div>
+
 
 </section>
 <!-- / Content -->
@@ -950,7 +954,7 @@
       <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
         {{unitReadable}}<i class="caret"></i>
       </a>
-      <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount">
+      <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount && !tx.readOnly">
         <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
         <li ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
           <a ng-class="{true:'active'}[unitReadable == token.getSymbol()]" ng-click="setSendMode('token', $index, token.getSymbol())"> {{token.getSymbol()}} </a>
@@ -959,7 +963,7 @@
       </ul>
     </div>
   </div>
-  <a ng-click="transferAllBalance()"><p class="strong" translate="SEND_TransferTotal">Send Entire Balance</p></a>
+  <a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><p class="strong" translate="SEND_TransferTotal">Send Entire Balance</p></a>
   <!-- / Amount to Send -->
 
   <!-- Gas -->
@@ -981,7 +985,7 @@
   </div>
   <!-- / Advanced Option Panel -->
 
-  <div class="form-group ">
+  <div class="form-group" ng-hide="tx.value > wallet.balance && tx.sendMode!=='token'">
     <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
   </div>
   <div class="form-group" ng-show="showRaw">
@@ -997,6 +1001,10 @@
   <div class="alert alert-info" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
+  <div class="alert alert-danger" ng-show="tx.value > wallet.balance && tx.sendMode!=='token'">
+    <p>You do not have enough funds in your account to complete this swap. Please add more funds or access a different wallet.</p>
+  </div>
+
 
 </section>
 <!-- / Content -->
