@@ -94,7 +94,7 @@
   </section>
 
   <!-- TODO: turn this into notification -->
-  <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected">
+  <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected" ng-cloak>
     <div class="container">Unable to connect to node. See the help page for troubleshooting suggestions.</div>
   </div>
   <!-- / TODO: turn this into notification -->

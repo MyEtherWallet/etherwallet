@@ -71,7 +71,7 @@
   </div>
   <!-- / Advanced Option Panel -->
 
-  <div class="form-group" ng-hide="tx.value > wallet.balance && tx.sendMode!=='token'">
+  <div class="form-group" ng-hide="tx.value > wallet.balance && tx.readOnly">
     <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
   </div>
   <div class="form-group" ng-show="showRaw">
@@ -87,7 +87,7 @@
   <div class="alert alert-info" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
-  <div class="alert alert-danger" ng-show="tx.value > wallet.balance && tx.sendMode!=='token'">
+  <div class="alert alert-danger" ng-show="tx.value > wallet.balance && tx.readOnly">
     <p>You do not have enough funds in your account to complete this swap. Please add more funds or access a different wallet.</p>
   </div>
 
