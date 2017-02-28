@@ -7605,7 +7605,7 @@ module.exports=[
     "type":"default"
   },
   {
-    "address":"0xbe87E87965b96D8174Eae4e3724A6D7417c488b0",
+    "address":"0x362bb67f7fdbdd0dbba4bce16da6a284cf484ed6",
     "symbol":"EDG",
     "decimal":0,
     "type":"default"
