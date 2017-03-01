@@ -14,7 +14,7 @@ var QRCodeDrtv = function() {
 					height: element[0].clientWidth,
 					colorDark: "#000000",
 					colorLight: "#ffffff",
-					correctLevel: QRCode.CorrectLevel.H
+					correctLevel: QRCode.CorrectLevel.M
 				});
 			}, delay);
 		});
