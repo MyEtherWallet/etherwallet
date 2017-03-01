@@ -3066,7 +3066,12 @@ Wallet.generate = function (icapDirect) {
             }
         }
     } else {
-        return new Wallet(ethUtil.crypto.randomBytes(32));
+        while (true) {
+            var privKey = ethUtil.crypto.randomBytes(32);
+            if (ethUtil.privateToAddress(privKey)[0] === 0xFF) {
+                return new Wallet(privKey);
+            }
+        }
     }
 };
 Wallet.prototype.setTokens = function () {
