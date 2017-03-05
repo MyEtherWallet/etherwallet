@@ -114,6 +114,12 @@
     "type":"default"
   },
   {
+   "address":"0xB9e7F8568e08d5659f5D29C4997173d84CdF2607",
+   "symbol":"SWT",
+   "decimal":18,
+   "type":"default"
+  },
+  {
     "address":"0x6531f133e6DeeBe7F2dcE5A0441aA7ef330B4e53",
     "symbol":"TIME",
     "decimal":8,
