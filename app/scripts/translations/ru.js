@@ -8,56 +8,56 @@ ru.data = {
 x_ParityPhrase              : 'Parity Phrase ',
 
 /* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
+NODE_Title                  : 'Настроить собственный узел',
+NODE_Subtitle               : 'Для подключения к локальному узлу...',
+NODE_Warning                : 'Ваш узел должен использовать протокол HTTPS, чтобы MyEtherWallet.com мог с ним работать. Вы можете [скачать репозиторий MyEtherWallet & и запустить его локально](https://github.com/kvhnuke/etherwallet/releases/latest) чтобы иметь возможность работать с любыми узлами, или получите бесплатный SSL сертификат на [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Имя узла',
+NODE_Port                   : 'Порт узла',
+NODE_CTA                    : 'Сохранить и подключиться к собственному узлу',
 
 /* Contracts */
 x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
+CONTRACT_Title              : 'Адрес контракта ',
+CONTRACT_Title_2            : 'Выбрать имеющийся контракт ',
+CONTRACT_Json               : 'ABI / JSON интерфейс ',
+CONTRACT_Interact_Title     : 'Прочитать / записать контракт ',
+CONTRACT_Interact_CTA       : 'Выбрать функцию ',
+CONTRACT_ByteCode           : 'Байткод ',
+CONTRACT_Read               : 'ПРОЧИТАТь ',
+CONTRACT_Write              : 'ЗАПИСАТЬ ',
 
 /* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+SWAP_rates                  : "Текущие котировки ",
+SWAP_init_1                 : "Я хочу обменять мои ",
+SWAP_init_2                 : " на ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Поехали! ", // or "Continue"
+SWAP_information            : "Дополнительная информация ",
+SWAP_send_amt               : "Сумма для отправки ",
+SWAP_rec_amt                : "Сумма к получению ",
+SWAP_your_rate              : "Ваш курс ",
+SWAP_rec_add                : "Адрес получателя ",
+SWAP_start_CTA              : "Начать обмен ",
+SWAP_ref_num                : "Идентификатор операции ",
+SWAP_time                   : "Время до отправки ",
+SWAP_progress_1             : "Заявка выставлена ",
+SWAP_progress_2             : "Ждём получения ваших ", // Waiting for your BTC...
+SWAP_progress_3             : "Получено! ", // ETH Received!
+SWAP_progress_4             : "Отправляем ваши {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Заявка выполнена ",
+SWAP_order_CTA              : "Пожалуйста, отправьте ", // Please send 1 ETH...
+SWAP_unlock                 : "Отоприте ваш кошелёк для отправки ETH или Tokens непосредственно с этой страницы. ",
 
-NAV_Swap                    : 'Swap ',
-NAV_SignMsg                 : 'Sign Message ',
+NAV_Swap                    : 'Обмен ',
+NAV_SignMsg                 : 'Подписать сообщение ',
 
 /* Sign Message */
-MSG_message                 : 'Message ',
-MSG_date                    : 'Date ',
-MSG_signature               : 'Signature ',
-MSG_verify                  : 'Verify Message ',
-MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
-MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
-MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+MSG_message                 : 'Сообщение ',
+MSG_date                    : 'Дата ',
+MSG_signature               : 'Подпись ',
+MSG_verify                  : 'Проверить сообщение ',
+MSG_info1                   : 'Укажите сегдоняшную дату, чтобы подпись не могла быть повторно использована в другой день. ',
+MSG_info2                   : 'Укажите ваш псевдоним и то, где вы этот псевдоним используете, чтобы никто другой не смог его использовать. ',
+MSG_info3                   : 'Укажите цель отправки сообщения, чтобы оно не могло быть использовно с другой целью. ',
 
 /* Mnemonic */
 ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
