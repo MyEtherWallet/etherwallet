@@ -79,7 +79,7 @@ customNode.prototype.getEstimatedGas = function(txobj, callback) {
 customNode.prototype.getEthCall = function(txobj, callback) {
     this.post({
         method: 'eth_call',
-        params: [{ to: txobj.to, data: txobj.data }]
+        params: [{ to: txobj.to, data: txobj.data },'latest']
     }, function(data) {
         if (data.error) callback({ error: true, msg: data.error.message, data: '' });
         else callback({ error: false, msg: '', data: data.result });

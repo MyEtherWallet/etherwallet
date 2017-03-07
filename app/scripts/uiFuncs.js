@@ -216,7 +216,10 @@ uiFuncs.notifier = {
         this.show = false;
         if (!this.scope.$$phase) this.scope.$apply()
     },
-    open: function() { this.show = true; },
+    open: function() {
+        this.show = true;
+        if (!this.scope.$$phase) this.scope.$apply();
+    },
     class: '',
     message: '',
     timer: null,

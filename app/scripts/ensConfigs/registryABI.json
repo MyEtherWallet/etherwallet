@@ -1,0 +1,64 @@
+[{
+    "constant": true,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }],
+    "name": "resolver",
+    "outputs": [{
+        "name": "",
+        "type": "address"
+    }],
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }],
+    "name": "owner",
+    "outputs": [{
+        "name": "",
+        "type": "address"
+    }],
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }, {
+        "name": "resolver",
+        "type": "address"
+    }],
+    "name": "setResolver",
+    "outputs": [],
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }, {
+        "name": "label",
+        "type": "bytes32"
+    }, {
+        "name": "owner",
+        "type": "address"
+    }],
+    "name": "setSubnodeOwner",
+    "outputs": [],
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }, {
+        "name": "owner",
+        "type": "address"
+    }],
+    "name": "setOwner",
+    "outputs": [],
+    "type": "function"
+}]
