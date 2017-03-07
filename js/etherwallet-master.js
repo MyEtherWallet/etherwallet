@@ -1143,7 +1143,7 @@ var decryptWalletCtrl = function ($scope, $sce, walletService) {
 module.exports = decryptWalletCtrl;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],14:[function(require,module,exports){
+},{"buffer":152}],14:[function(require,module,exports){
 'use strict';
 
 var footerCtrl = function ($scope, globalService) {
@@ -1582,7 +1582,7 @@ var signMsgCtrl = function ($scope, $sce, walletService) {
 module.exports = signMsgCtrl;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],18:[function(require,module,exports){
+},{"buffer":152}],18:[function(require,module,exports){
 'use strict';
 
 var swapCtrl = function ($scope, $sce, walletService) {
@@ -1798,7 +1798,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
     $scope.Validator = Validator;
     $scope.nodeList = nodes.nodeList;
     $scope.defaultNodeKey = 'eth_mew';
-    $scope.customNode = { options: 'eth', name: '', url: '', port: '', eip155: false, chainId: '' };
+    $scope.customNode = { options: 'eth', name: '', url: '', port: '', httpBasicAuth: null, eip155: false, chainId: '' };
     $scope.customNodeCount = 0;
     $scope.nodeIsConnected = true;
     $scope.browserProtocol = window.location.protocol;
@@ -1855,7 +1855,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
         if (tempObj) {
             tempObj.name = nodeInfo.name + ':' + nodeInfo.options;
             tempObj.service = 'Custom';
-            tempObj.lib = new nodes.customNode(nodeInfo.url, nodeInfo.port);
+            tempObj.lib = new nodes.customNode(nodeInfo.url, nodeInfo.port, nodeInfo.httpBasicAuth);
             $scope.nodeList['cus_' + nodeInfo.options + '_' + $scope.customNodeCount] = tempObj;
             $scope.customNodeCount++;
         }
@@ -1875,7 +1875,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
 
     $scope.saveCustomNode = function () {
         try {
-            if (!$scope.Validator.isAlphaNumericSpace($scope.customNode.name)) throw globalFuncs.errorMsgs[22];else if (!$scope.checkNodeUrl($scope.customNode.url)) throw globalFuncs.errorMsgs[23];else if (!$scope.Validator.isPositiveNumber($scope.customNode.port) && $scope.customNode.port != '') throw globalFuncs.errorMsgs[24];else if ($scope.customNode.eip155 && !$scope.Validator.isPositiveNumber($scope.customNode.chainId)) throw globalFuncs.errorMsgs[25];
+            if (!$scope.Validator.isAlphaNumericSpace($scope.customNode.name)) throw globalFuncs.errorMsgs[22];else if (!$scope.checkNodeUrl($scope.customNode.url)) throw globalFuncs.errorMsgs[23];else if (!$scope.Validator.isPositiveNumber($scope.customNode.port) && $scope.customNode.port != '') throw globalFuncs.errorMsgs[24];else if ($scope.customNode.eip155 && !$scope.Validator.isPositiveNumber($scope.customNode.chainId)) throw globalFuncs.errorMsgs[25];else if ($scope.customNode.httpBasicAuth && ($scope.customNode.httpBasicAuth.user == '' || $scope.customNode.httpBasicAuth.password == '')) throw globalFuncs.errorMsgs[29];
         } catch (e) {
             $scope.notifier.danger(e);
             return;
@@ -1888,7 +1888,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
         $scope.changeNode('cus_' + customNode.options + '_' + ($scope.customNodeCount - 1));
         localStorage.setItem("localNodes", JSON.stringify(localNodes));
         $scope.customNodeModal.close();
-        $scope.customNode = { options: 'eth', name: '', url: '', port: '', eip155: false, chainId: '' };
+        $scope.customNode = { options: 'eth', name: '', url: '', port: '', httpBasicAuth: null, eip155: false, chainId: '' };
     };
 
     $scope.removeNodeFromLocal = function (localNodeName) {
@@ -2563,6 +2563,324 @@ var walletDecryptDrtv = function () {
 module.exports = walletDecryptDrtv;
 
 },{}],31:[function(require,module,exports){
+(function (Buffer){
+var uts46 = require('idna-uts46');
+var registryInterface = require('./ensConfigs/registryABI.json');
+var resolverInterface = require('./ensConfigs/resolverABI.json');
+var ens = function () {
+    var _this = this;
+    this.registryABI = {};
+    for (var i in registryInterface) this.registryABI[registryInterface[i].name] = registryInterface[i];
+    this.resolverABI = {};
+    for (var i in resolverInterface) this.resolverABI[resolverInterface[i].name] = resolverInterface[i];
+    switch (ajaxReq.type) {
+        case nodes.nodeTypes.ETH:
+            _this.setCurrentRegistry(ens.registry.ETH);
+            break;
+        case nodes.nodeTypes.ETC:
+            _this.setCurrentRegistry(ens.registry.ETC);
+            break;
+        case nodes.nodeTypes.Ropsten:
+            _this.setCurrentRegistry(ens.registry.ROPSTEN);
+            break;
+        default:
+            _this.setCurrentRegistry(ens.registry.NULL);
+    }
+};
+ens.registry = {
+    ETH: require('./ensConfigs/ETHConfig.json'),
+    ETC: require('./ensConfigs/ETCConfig.json'),
+    ROPSTEN: require('./ensConfigs/ROPConfig.json'),
+    NULL: {}
+};
+ens.normalise = function (name) {
+    try {
+        return uts46.toUnicode(name, { useStd3ASCII: true, transitional: false });
+    } catch (e) {
+        uiFuncs.notifier.danger(e.message);
+        throw e;
+    }
+};
+ens.prototype.setCurrentRegistry = function (_registry) {
+    this.curRegistry = _registry;
+};
+ens.prototype.getRegistryAddress = function (name) {
+    var tld = name.substr(name.lastIndexOf('.') + 1).toLowerCase();
+    if (this.curRegistry[tld]) return this.curRegistry[tld].registry;else return false;
+};
+
+function namehash(name) {
+    name = ens.normalise(name);
+    var node = Buffer.alloc(32);
+    if (name && name != '') {
+        var labels = name.split(".");
+        for (var i = labels.length - 1; i >= 0; i--) {
+            node = ethUtil.sha3(Buffer.concat([node, ethUtil.sha3(labels[i])]));
+        }
+    }
+    return '0x' + node.toString('hex');
+}
+ens.getNameHash = function (name) {
+    return namehash(name);
+};
+ens.prototype.getOwnerResolverAddress = function (funcABI, to, name, callback) {
+    var _this = this;
+    ajaxReq.getEthCall({ to: to, data: _this.getDataString(funcABI, [namehash(name)]) }, function (data) {
+        if (data.error) callback(data);else {
+            var outTypes = funcABI.outputs.map(function (i) {
+                return i.type;
+            });
+            data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0];
+            callback(data);
+        }
+    });
+};
+ens.prototype.getOwner = function (name, callback) {
+    this.getOwnerResolverAddress(this.registryABI.owner, this.getRegistryAddress(name), name, callback);
+};
+ens.prototype.getResolver = function (name, callback) {
+    this.getOwnerResolverAddress(this.registryABI.resolver, this.getRegistryAddress(name), name, callback);
+};
+ens.prototype.getAddress = function (name, callback) {
+    var _this = this;
+    _this.getResolver(name, function (data) {
+        if (data.error) callback(data);else {
+            _this.getOwnerResolverAddress(_this.resolverABI.addr, data.data, name, callback);
+        }
+    });
+};
+ens.prototype.getName = function (name, callback) {
+    var _this = this;
+    _this.getResolver(name, function (data) {
+        if (data.error) callback(data);else {
+            _this.getOwnerResolverAddress(_this.resolverABI.addr, data.data, name, function (data) {
+                if (data.error) callback(data);else {
+                    var outTypes = _this.resolverABI.name.outputs.map(function (i) {
+                        return i.type;
+                    });
+                    data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0];
+                    callback(data);
+                }
+            });
+        }
+    });
+};
+ens.prototype.getDataString = function (func, inputs) {
+    var fullFuncName = ethUtil.solidityUtils.transformToFullName(func);
+    var funcSig = ethFuncs.getFunctionSignature(fullFuncName);
+    var typeName = ethUtil.solidityUtils.extractTypeName(fullFuncName);
+    var types = typeName.split(',');
+    types = types[0] == "" ? [] : types;
+    return '0x' + funcSig + ethUtil.solidityCoder.encodeParams(types, inputs);
+};
+module.exports = ens;
+
+}).call(this,require("buffer").Buffer)
+},{"./ensConfigs/ETCConfig.json":32,"./ensConfigs/ETHConfig.json":33,"./ensConfigs/ROPConfig.json":34,"./ensConfigs/registryABI.json":35,"./ensConfigs/resolverABI.json":36,"buffer":152,"idna-uts46":203}],32:[function(require,module,exports){
+module.exports={
+    "eth": {
+        "registry": "0x0000000000000000000000000000000000000000",
+        "reverse": "0x0000000000000000000000000000000000000000",
+        "resolver": "0x0000000000000000000000000000000000000000"
+    },
+    "reverse": {
+        "registry": "0x0000000000000000000000000000000000000000",
+        "reverse": "0x0000000000000000000000000000000000000000",
+        "resolver": "0x0000000000000000000000000000000000000000"
+    }
+}
+
+},{}],33:[function(require,module,exports){
+arguments[4][32][0].apply(exports,arguments)
+},{"dup":32}],34:[function(require,module,exports){
+module.exports={
+    "eth": {
+        "registry": "0x112234455c3a32fd11230c42e7bccd4a84e02010",
+        "reverse": "0xDb6cEAD81ce14A63c284728eEd17738A81327fF0",
+        "resolver": "0x71E122FC87Aa184B966dfaaA81F9F37f45da9bae"
+    },
+    "reverse": {
+        "registry": "0x112234455c3a32fd11230c42e7bccd4a84e02010",
+        "reverse": "0xDb6cEAD81ce14A63c284728eEd17738A81327fF0",
+        "resolver": "0x71E122FC87Aa184B966dfaaA81F9F37f45da9bae"
+    }
+}
+
+},{}],35:[function(require,module,exports){
+module.exports=[{
+    "constant": true,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }],
+    "name": "resolver",
+    "outputs": [{
+        "name": "",
+        "type": "address"
+    }],
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }],
+    "name": "owner",
+    "outputs": [{
+        "name": "",
+        "type": "address"
+    }],
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }, {
+        "name": "resolver",
+        "type": "address"
+    }],
+    "name": "setResolver",
+    "outputs": [],
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }, {
+        "name": "label",
+        "type": "bytes32"
+    }, {
+        "name": "owner",
+        "type": "address"
+    }],
+    "name": "setSubnodeOwner",
+    "outputs": [],
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }, {
+        "name": "owner",
+        "type": "address"
+    }],
+    "name": "setOwner",
+    "outputs": [],
+    "type": "function"
+}]
+
+},{}],36:[function(require,module,exports){
+module.exports=[{
+    "constant": true,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }],
+    "name": "addr",
+    "outputs": [{
+        "name": "",
+        "type": "address"
+    }],
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }],
+    "name": "content",
+    "outputs": [{
+        "name": "",
+        "type": "bytes32"
+    }],
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }],
+    "name": "name",
+    "outputs": [{
+        "name": "",
+        "type": "string"
+    }],
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }, {
+        "name": "kind",
+        "type": "bytes32"
+    }],
+    "name": "has",
+    "outputs": [{
+        "name": "",
+        "type": "bool"
+    }],
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }, {
+        "name": "addr",
+        "type": "address"
+    }],
+    "name": "setAddr",
+    "outputs": [],
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }, {
+        "name": "hash",
+        "type": "bytes32"
+    }],
+    "name": "setContent",
+    "outputs": [],
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }, {
+        "name": "name",
+        "type": "string"
+    }],
+    "name": "setName",
+    "outputs": [],
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{
+        "name": "node",
+        "type": "bytes32"
+    }, {
+        "name": "contentType",
+        "type": "uint256"
+    }],
+    "name": "ABI",
+    "outputs": [{
+        "name": "",
+        "type": "uint256"
+    }, {
+        "name": "",
+        "type": "bytes"
+    }],
+    "payable": false,
+    "type": "function"
+}]
+},{}],37:[function(require,module,exports){
 'use strict';
 
 var ethFuncs = function () {};
@@ -2682,7 +3000,7 @@ ethFuncs.estimateGas = function (dataObj, callback) {
 };
 module.exports = ethFuncs;
 
-},{}],32:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 var etherUnits = function () {};
@@ -2741,7 +3059,7 @@ etherUnits.toWei = function (number, unit) {
 };
 module.exports = etherUnits;
 
-},{}],33:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 
 var globalFuncs = function () {};
@@ -2777,7 +3095,7 @@ globalFuncs.getDangerText = function (str) {
 // These are translated in the translation files
 globalFuncs.errorMsgs = ["Please enter valid amount.", "Your password must be at least 9 characters. Please ensure it is a strong password. ", "Sorry! We don\'t recognize this type of wallet file. ", "This is not a valid wallet file. ", "This unit doesn\'t exists, please use the one of the following units ", "Invalid address. ", "Invalid password. ", "Invalid amount. ", "Invalid gas limit. ", "Invalid data value. ", "Invalid gas amount. ", // 10
 "Invalid nonce. ", "Invalid signed transaction. ", "A wallet with this nickname already exists. ", "Wallet not found. ", "Whoops. It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ", // 15
-"A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.", "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port", "Please enter valid chain ID", "Please enter valid ABI", "Minimum amount 0.01 and max", "You need your Keystore File & Password (or Private Key) to access this wallet in the future."];
+"A wallet with this address already exists in storage. Please check your wallets page. ", "You need to have at least 0.01 ETH in your account to cover the cost of gas. Please add some ETH and try again. ", "All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.", "Invalid symbol", "Not a valid ERC-20 token", "Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.", "Please enter valid node name", "Enter valid url, if you are on https your url must be https", "Please enter valid port", "Please enter valid chain ID", "Please enter valid ABI", "Minimum amount 0.01 and max", "You need your Keystore File & Password (or Private Key) to access this wallet in the future.", "Please enter valid user and password"];
 // These are translated in the translation files
 globalFuncs.successMsgs = ["Valid address", "Wallet successfully decrypted", "Transaction submitted. TX ID: ", "Your wallet was successfully added: ", "File Selected: "];
 // These are translated in the translation files
@@ -2916,7 +3234,7 @@ globalFuncs.removeTokenFromLocal = function (symbol, tokenObj) {
 };
 module.exports = globalFuncs;
 
-},{}],34:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 'use strict';
 
 var IS_CX = false;
@@ -2964,6 +3282,8 @@ var Validator = require('./validator');
 window.Validator = Validator;
 var bity = require('./bity');
 window.bity = bity;
+var ens = require('./ens');
+window.ens = ens;
 var translate = require('./translations/translate.js');
 if (IS_CX) {
   var cxFuncs = require('./cxFuncs');
@@ -3043,7 +3363,7 @@ if (IS_CX) {
   app.controller('cxDecryptWalletCtrl', ['$scope', '$sce', 'walletService', cxDecryptWalletCtrl]);
 }
 
-},{"./ajaxReq":4,"./bity":5,"./controllers/CX/addWalletCtrl":6,"./controllers/CX/cxDecryptWalletCtrl":7,"./controllers/CX/mainPopCtrl":8,"./controllers/CX/myWalletsCtrl":9,"./controllers/CX/quickSendCtrl":10,"./controllers/bulkGenCtrl":11,"./controllers/contractsCtrl":12,"./controllers/decryptWalletCtrl":13,"./controllers/footerCtrl":14,"./controllers/offlineTxCtrl":15,"./controllers/sendTxCtrl":16,"./controllers/signMsgCtrl":17,"./controllers/swapCtrl":18,"./controllers/tabsCtrl":19,"./controllers/viewCtrl":20,"./controllers/viewWalletCtrl":21,"./controllers/walletBalanceCtrl":22,"./controllers/walletGenCtrl":23,"./cxFuncs":24,"./directives/QRCodeDrtv":25,"./directives/balanceDrtv":26,"./directives/blockiesDrtv":27,"./directives/cxWalletDecryptDrtv":28,"./directives/fileReaderDrtv":29,"./directives/walletDecryptDrtv":30,"./ethFuncs":31,"./etherUnits":32,"./globalFuncs":33,"./myetherwallet":35,"./nodes":39,"./services/globalService":40,"./services/walletService":41,"./solidity/coder":45,"./solidity/utils":56,"./staticJS/customMarked":57,"./staticJS/ledger-eth":58,"./staticJS/ledger3":59,"./staticJS/trezorConnect":60,"./staticJS/u2f-api":61,"./tokenlib":62,"./translations/translate.js":82,"./uiFuncs":86,"./validator":87,"angular":95,"angular-animate":89,"angular-sanitize":91,"angular-translate":93,"angular-translate-handler-log":92,"bignumber.js":112,"bip39":113,"crypto":155,"ethereumjs-tx":184,"ethereumjs-util":185,"hdkey":195,"scryptsy":240,"string-format":256,"uuid":266,"wallet-address-validator":271}],35:[function(require,module,exports){
+},{"./ajaxReq":4,"./bity":5,"./controllers/CX/addWalletCtrl":6,"./controllers/CX/cxDecryptWalletCtrl":7,"./controllers/CX/mainPopCtrl":8,"./controllers/CX/myWalletsCtrl":9,"./controllers/CX/quickSendCtrl":10,"./controllers/bulkGenCtrl":11,"./controllers/contractsCtrl":12,"./controllers/decryptWalletCtrl":13,"./controllers/footerCtrl":14,"./controllers/offlineTxCtrl":15,"./controllers/sendTxCtrl":16,"./controllers/signMsgCtrl":17,"./controllers/swapCtrl":18,"./controllers/tabsCtrl":19,"./controllers/viewCtrl":20,"./controllers/viewWalletCtrl":21,"./controllers/walletBalanceCtrl":22,"./controllers/walletGenCtrl":23,"./cxFuncs":24,"./directives/QRCodeDrtv":25,"./directives/balanceDrtv":26,"./directives/blockiesDrtv":27,"./directives/cxWalletDecryptDrtv":28,"./directives/fileReaderDrtv":29,"./directives/walletDecryptDrtv":30,"./ens":31,"./ethFuncs":37,"./etherUnits":38,"./globalFuncs":39,"./myetherwallet":41,"./nodes":45,"./services/globalService":46,"./services/walletService":47,"./solidity/coder":51,"./solidity/utils":62,"./staticJS/customMarked":63,"./staticJS/ledger-eth":64,"./staticJS/ledger3":65,"./staticJS/trezorConnect":66,"./staticJS/u2f-api":67,"./tokenlib":68,"./translations/translate.js":88,"./uiFuncs":92,"./validator":93,"angular":101,"angular-animate":95,"angular-sanitize":97,"angular-translate":99,"angular-translate-handler-log":98,"bignumber.js":118,"bip39":119,"crypto":161,"ethereumjs-tx":190,"ethereumjs-util":191,"hdkey":201,"scryptsy":249,"string-format":265,"uuid":275,"wallet-address-validator":280}],41:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -3383,11 +3703,15 @@ Wallet.getWalletFromPrivKeyFile = function (strjson, password) {
 module.exports = Wallet;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],36:[function(require,module,exports){
+},{"buffer":152}],42:[function(require,module,exports){
 'use strict';
 
-var customNode = function (srvrUrl, port) {
+var customNode = function (srvrUrl, port, httpBasicAuthentication) {
     this.SERVERURL = port ? srvrUrl + ':' + port : srvrUrl;
+    if (httpBasicAuthentication) {
+        var authorization = 'Basic ' + btoa(httpBasicAuthentication.user + ":" + httpBasicAuthentication.password);
+        this.config.headers['Authorization'] = authorization;
+    }
 };
 customNode.prototype.config = {
     headers: {
@@ -3453,7 +3777,7 @@ customNode.prototype.getEstimatedGas = function (txobj, callback) {
 customNode.prototype.getEthCall = function (txobj, callback) {
     this.post({
         method: 'eth_call',
-        params: [{ to: txobj.to, data: txobj.data }]
+        params: [{ to: txobj.to, data: txobj.data }, 'latest']
     }, function (data) {
         if (data.error) callback({ error: true, msg: data.error.message, data: '' });else callback({ error: false, msg: '', data: data.result });
     });
@@ -3480,7 +3804,7 @@ customNode.prototype.post = function (data, callback) {
 };
 module.exports = customNode;
 
-},{}],37:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 'use strict';
 
 var http;
@@ -3509,7 +3833,7 @@ ethPrice.getRates = function (callback) {
 };
 module.exports = ethPrice;
 
-},{}],38:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 'use strict';
 
 var etherscan = function () {};
@@ -3627,7 +3951,7 @@ etherscan.post = function (data, callback) {
 };
 module.exports = etherscan;
 
-},{}],39:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 var nodes = function () {};
@@ -3708,7 +4032,7 @@ nodes.nodeList = {
 nodes.ethPrice = require('./nodeHelpers/ethPrice');
 module.exports = nodes;
 
-},{"./abiDefinitions/etcAbi.json":1,"./abiDefinitions/ethAbi.json":2,"./abiDefinitions/ropstenAbi.json":3,"./nodeHelpers/customNode":36,"./nodeHelpers/ethPrice":37,"./nodeHelpers/etherscan":38,"./tokens/etcTokens.json":63,"./tokens/ethTokens.json":64,"./tokens/ropstenTokens.json":65}],40:[function(require,module,exports){
+},{"./abiDefinitions/etcAbi.json":1,"./abiDefinitions/ethAbi.json":2,"./abiDefinitions/ropstenAbi.json":3,"./nodeHelpers/customNode":42,"./nodeHelpers/ethPrice":43,"./nodeHelpers/etherscan":44,"./tokens/etcTokens.json":69,"./tokens/ethTokens.json":70,"./tokens/ropstenTokens.json":71}],46:[function(require,module,exports){
 'use strict';
 
 var globalService = function ($http, $httpParamSerializerJQLike) {
@@ -3805,7 +4129,7 @@ var globalService = function ($http, $httpParamSerializerJQLike) {
 };
 module.exports = globalService;
 
-},{}],41:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 'use strict';
 
 var walletService = function () {
@@ -3816,7 +4140,7 @@ var walletService = function () {
 };
 module.exports = walletService;
 
-},{}],42:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -3844,7 +4168,7 @@ SolidityTypeAddress.prototype.isType = function (name) {
 
 module.exports = SolidityTypeAddress;
 
-},{"./formatters":48,"./type":53}],43:[function(require,module,exports){
+},{"./formatters":54,"./type":59}],49:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -3872,7 +4196,7 @@ SolidityTypeBool.prototype.isType = function (name) {
 
 module.exports = SolidityTypeBool;
 
-},{"./formatters":48,"./type":53}],44:[function(require,module,exports){
+},{"./formatters":54,"./type":59}],50:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -3903,7 +4227,7 @@ SolidityTypeBytes.prototype.isType = function (name) {
 
 module.exports = SolidityTypeBytes;
 
-},{"./formatters":48,"./type":53}],45:[function(require,module,exports){
+},{"./formatters":54,"./type":59}],51:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -4154,7 +4478,7 @@ var coder = new SolidityCoder([new SolidityTypeAddress(), new SolidityTypeBool()
 
 module.exports = coder;
 
-},{"./address":42,"./bool":43,"./bytes":44,"./dynamicbytes":47,"./formatters":48,"./int":49,"./real":51,"./string":52,"./uint":54,"./ureal":55,"./utils":56}],46:[function(require,module,exports){
+},{"./address":48,"./bool":49,"./bytes":50,"./dynamicbytes":53,"./formatters":54,"./int":55,"./real":57,"./string":58,"./uint":60,"./ureal":61,"./utils":62}],52:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -4205,7 +4529,7 @@ module.exports = {
     defaultAccount: undefined
 };
 
-},{"bignumber.js":112}],47:[function(require,module,exports){
+},{"bignumber.js":118}],53:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4227,7 +4551,7 @@ SolidityTypeDynamicBytes.prototype.isDynamicType = function () {
 
 module.exports = SolidityTypeDynamicBytes;
 
-},{"./formatters":48,"./type":53}],48:[function(require,module,exports){
+},{"./formatters":54,"./type":59}],54:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -4480,7 +4804,7 @@ module.exports = {
     formatOutputAddress: formatOutputAddress
 };
 
-},{"./config":46,"./param":50,"./utils":56,"bignumber.js":112}],49:[function(require,module,exports){
+},{"./config":52,"./param":56,"./utils":62,"bignumber.js":118}],55:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4514,7 +4838,7 @@ SolidityTypeInt.prototype.isType = function (name) {
 
 module.exports = SolidityTypeInt;
 
-},{"./formatters":48,"./type":53}],50:[function(require,module,exports){
+},{"./formatters":54,"./type":59}],56:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -4665,7 +4989,7 @@ SolidityParam.encodeList = function (params) {
 
 module.exports = SolidityParam;
 
-},{"./utils":56}],51:[function(require,module,exports){
+},{"./utils":62}],57:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4699,7 +5023,7 @@ SolidityTypeReal.prototype.isType = function (name) {
 
 module.exports = SolidityTypeReal;
 
-},{"./formatters":48,"./type":53}],52:[function(require,module,exports){
+},{"./formatters":54,"./type":59}],58:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -4721,7 +5045,7 @@ SolidityTypeString.prototype.isDynamicType = function () {
 
 module.exports = SolidityTypeString;
 
-},{"./formatters":48,"./type":53}],53:[function(require,module,exports){
+},{"./formatters":54,"./type":59}],59:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityParam = require('./param');
 
@@ -4973,7 +5297,7 @@ SolidityType.prototype.decode = function (bytes, offset, name) {
 
 module.exports = SolidityType;
 
-},{"./formatters":48,"./param":50}],54:[function(require,module,exports){
+},{"./formatters":54,"./param":56}],60:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -5007,7 +5331,7 @@ SolidityTypeUInt.prototype.isType = function (name) {
 
 module.exports = SolidityTypeUInt;
 
-},{"./formatters":48,"./type":53}],55:[function(require,module,exports){
+},{"./formatters":54,"./type":59}],61:[function(require,module,exports){
 var f = require('./formatters');
 var SolidityType = require('./type');
 
@@ -5041,7 +5365,7 @@ SolidityTypeUReal.prototype.isType = function (name) {
 
 module.exports = SolidityTypeUReal;
 
-},{"./formatters":48,"./type":53}],56:[function(require,module,exports){
+},{"./formatters":54,"./type":59}],62:[function(require,module,exports){
 /*
     This file is part of web3.js.
 
@@ -5626,7 +5950,7 @@ module.exports = {
     isJson: isJson
 };
 
-},{"bignumber.js":112,"ethereumjs-util":185,"utf8":260}],57:[function(require,module,exports){
+},{"bignumber.js":118,"ethereumjs-util":191,"utf8":269}],63:[function(require,module,exports){
 'use strict';
 
 var marked = require('marked');
@@ -5657,7 +5981,7 @@ marked.setOptions({
 });
 module.exports = marked;
 
-},{"marked":209}],58:[function(require,module,exports){
+},{"marked":217}],64:[function(require,module,exports){
 (function (Buffer){
 /********************************************************************************
 *   Ledger Communication toolkit
@@ -5818,7 +6142,7 @@ LedgerEth.prototype.getAppConfiguration = function (callback) {
 module.exports = LedgerEth;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],59:[function(require,module,exports){
+},{"buffer":152}],65:[function(require,module,exports){
 (function (Buffer){
 /********************************************************************************
 *   Ledger Communication toolkit
@@ -5889,7 +6213,7 @@ Ledger3.prototype.exchange = function (apduHex, callback) {
 module.exports = Ledger3;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],60:[function(require,module,exports){
+},{"buffer":152}],66:[function(require,module,exports){
 /**
  * (C) 2017 SatoshiLabs
  *
@@ -6671,7 +6995,7 @@ if (!IS_CHROME_APP && !DISABLE_LOGIN_BUTTONS) {
 
 module.exports = { TrezorConnect: connect };
 
-},{}],61:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 //Copyright 2014-2015 Google Inc. All rights reserved.
 
 //Use of this source code is governed by a BSD-style
@@ -7393,7 +7717,7 @@ u2f.getApiVersion = function (callback, opt_timeoutSeconds) {
 };
 module.exports = u2f;
 
-},{}],62:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 'use strict';
 
 var Token = function (contractAddress, userAddress, symbol, decimal, type) {
@@ -7474,7 +7798,7 @@ Token.prototype.getData = function (toAdd, value) {
 };
 module.exports = Token;
 
-},{}],63:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 module.exports=[
   {
     "address":"0x085fb4f24031eaedbc2b611aa528f22343eb52db",
@@ -7484,7 +7808,7 @@ module.exports=[
   }
  ]
 
-},{}],64:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 module.exports=[
   {
     "address":"0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
@@ -7601,6 +7925,12 @@ module.exports=[
     "type":"default"
   },
   {
+   "address":"0xB9e7F8568e08d5659f5D29C4997173d84CdF2607",
+   "symbol":"SWT",
+   "decimal":18,
+   "type":"default"
+  },
+  {
     "address":"0x6531f133e6DeeBe7F2dcE5A0441aA7ef330B4e53",
     "symbol":"TIME",
     "decimal":8,
@@ -7626,9 +7956,9 @@ module.exports=[
   }
 ]
 
-},{}],65:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 module.exports=[]
-},{}],66:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 // German
 'use strict';
 
@@ -7960,6 +8290,7 @@ de.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Du benötigst deine Keystore-Datei & das Passwort** (oder den privaten Schlüssel) um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen. ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Gültige Addresse ',
   SUCCESS_2: 'Wallet erfolgreich entschlüsselt ',
   SUCCESS_3: 'Transaktion übermittelt. TX ID ',
@@ -8220,7 +8551,7 @@ de.data = {
 
 module.exports = de;
 
-},{}],67:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 // Greek
 'use strict';
 
@@ -8554,6 +8885,7 @@ el.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'Προκειμένου να έχετε πρόσβαση σε αυτό το πορτοφόλι στο μέλλον **είναι απαραίτητο το αρχείο Keystore/JSON & ο κωδικός ή το Ιδιωτικό Κλειδί σας**. Παρακαλούμε κρατήστε ένα εξωτερικό αντίγραφο ασφαλείας! Δεν υπάρχει τρόπος ανάκτησης ενός πορτοφολιού άν δεν το αποθηκέυσετε. Διαβάστε την σελίδα [Βοήθειας](https://www.myetherwallet.com/#help) για οδηγίες. ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Έγκυρη διεύθυνση ',
   SUCCESS_2: 'Το πορτοφόλι αποκρυπτογραφήθηκε επιτυχώς ',
   SUCCESS_3: 'Η συναλλαγή υποβλήθηκε. TX ID ',
@@ -8813,7 +9145,7 @@ el.data = {
 
 module.exports = el;
 
-},{}],68:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 // English
 'use strict';
 
@@ -9116,6 +9448,7 @@ en.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 and max',
   ERROR_28: '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions. ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Valid address ',
   SUCCESS_2: 'Wallet successfully decrypted ',
   SUCCESS_3: 'Transaction submitted. TX ID ',
@@ -9389,7 +9722,7 @@ en.data = {
 
 module.exports = en;
 
-},{}],69:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 // Spanish
 'use strict';
 
@@ -9720,6 +10053,7 @@ es.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Cantidad mínima 0.01 ',
   ERROR_28: '**Necesitas tu archivo Keystore/JSON y la contraseña** (o clave privada) para acceder a esta cartera en el futuro. Por favor ¡guárdala y respáldala externamente! No hay modo de recuperar una cartera si no la guardas. Lee la [página de ayuda](https://www.myetherwallet.com/#help) para instrucciones. ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Dirección válida ',
   SUCCESS_2: 'Cartera descifrada con éxito ',
   SUCCESS_3: 'Transacción enviada. TX ID ',
@@ -9981,7 +10315,7 @@ es.data = {
 
 module.exports = es;
 
-},{}],70:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 // Finnish
 'use strict';
 
@@ -10328,6 +10662,7 @@ fi.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Tarvitset Avainsäilö Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help). ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Validi osoite ',
   SUCCESS_2: 'Lompakon salaus onnistuneesti purettu ',
   SUCCESS_3: 'Siirto lähetetty. TX ID ',
@@ -10589,7 +10924,7 @@ fi.data = {
 
 module.exports = fi;
 
-},{}],71:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 // French
 'use strict';
 
@@ -10907,6 +11242,7 @@ fr.data = {
   ERROR_26: 'Entrez un ID de chaîne valide ',
   ERROR_27: 'Entrez une ABI valide ',
   ERROR_28: '**Vous avez besoin de votre fichier Keystore et du mot de passe** (ou de la clé privée) pour accéder à ce portefeuille dans le futur. Merci de le télécharger et d\'en faire une sauvegarde externe ! Il n\'existe aucun moyen de récupérer un portefeuille si vous ne le sauvegardez pas. Merci de lire la [page d\'Aide](https://www.myetherwallet.com/#help) pour plus de détails. ',
+  ERROR_29: 'Entrez un utilisateur et mot de passe valide ',
   SUCCESS_1: 'Adresse valide ',
   SUCCESS_2: 'Portefeuille déchiffré avec succès ',
   SUCCESS_3: 'Transaction envoyée. Identifiant de transaction ',
@@ -11178,7 +11514,7 @@ fr.data = {
 
 module.exports = fr;
 
-},{}],72:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 // Hungarian
 'use strict';
 
@@ -11501,6 +11837,7 @@ hu.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Szükséged lesz a Keystore Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért. ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Érvényes cím ',
   SUCCESS_2: 'Tárca sikeresen dekódolva ',
   SUCCESS_3: 'Tranzakció elküldve. TX ID ',
@@ -11771,7 +12108,7 @@ hu.data = {
 
 module.exports = hu;
 
-},{}],73:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 // Indonesian
 'use strict';
 
@@ -12101,6 +12438,7 @@ id.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help). ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Alamat valid ',
   SUCCESS_2: 'Dompet telah ter-dekripsi ',
   SUCCESS_3: 'Transaksi diajukan. TX ID ',
@@ -12363,7 +12701,7 @@ id.data = {
 
 module.exports = id;
 
-},{}],74:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 // Italian
 // Last sync with en.js     : commit 9aaeb1e8e4fee299887e0f8393c1c074b581b9f0
 'use strict';
@@ -12683,6 +13021,7 @@ it.data = {
   ERROR_26: 'Inserisci una ABI valida ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Avrai bisogno del tuo file Keystore e della password** (o della chiave privata) per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni. ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Indirizzo valido ',
   SUCCESS_2: 'Portafoglio decodificato correttamente ',
   SUCCESS_3: 'Transazione inviata. TX ID ',
@@ -12956,7 +13295,7 @@ it.data = {
 
 module.exports = it;
 
-},{}],75:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 // Japanese
 'use strict';
 
@@ -13271,6 +13610,7 @@ ja.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'ウォレットを操作するためには**Keystore/JSONとパスワードかプライベートキーが必要** 保存してから、外部バックアップしてください！ここで保存しないとウォレットが使用できなくなります。詳細はヘルプページを参照してください。(https://www.myetherwallet.com/#help) ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: '有効なアドレス ',
   SUCCESS_2: 'ウォレットは正常に暗号解除されました。 ',
   SUCCESS_3: 'トランザクションが送出されました。 TX ID ',
@@ -13543,7 +13883,7 @@ ja.data = {
 
 module.exports = ja;
 
-},{}],76:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 // Dutch
 'use strict';
 
@@ -13862,6 +14202,7 @@ nl.data = {
   ERROR_26: 'Voer een geldige ABI in ',
   ERROR_27: 'Minimale hoeveelheid is 0.01 ',
   ERROR_28: '**Je hebt je Keystore Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies. ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Geldig adres ',
   SUCCESS_2: 'Wallet succesvol ontsleuteld ',
   SUCCESS_3: 'Transactie verzonden. TX ID ',
@@ -14135,7 +14476,7 @@ nl.data = {
 
 module.exports = nl;
 
-},{}],77:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 // Norwegian
 'use strict';
 
@@ -14455,6 +14796,7 @@ no.data = {
   ERROR_26: 'Vennligst oppgi gyldig ABI ',
   ERROR_27: 'Minimumsbeløp 0.01 ',
   ERROR_28: '**Du trenger din Keystore-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk). ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Gyldig adresse ',
   SUCCESS_2: 'Dekrypteringen av lommeboken var vellykket ',
   SUCCESS_3: 'Transaksjonen ble sendt inn. TX ID ',
@@ -14728,7 +15070,7 @@ no.data = {
 
 module.exports = no;
 
-},{}],78:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 // Polish
 'use strict';
 
@@ -14737,47 +15079,47 @@ pl.code = 'pl';
 pl.data = {
 
   /* Misc */
-  x_ParityPhrase: 'Parity Phrase ',
+  x_ParityPhrase: 'Fraza Parity ',
 
   /* Node Switcher */
-  NODE_Title: 'Set Up Your Custom Node',
-  NODE_Subtitle: 'To connect to a local node...',
-  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-  NODE_Name: 'Node Name',
-  NODE_Port: 'Node Port',
-  NODE_CTA: 'Save & Use Custom Node',
+  NODE_Title: 'Zmień Domyślny Węzeł',
+  NODE_Subtitle: 'Aby połączyć się z lokalnym węzłem...',
+  NODE_Warning: 'Twój węzeł musi obsługiwać HTTPS, aby można było się połączyć z nim przez MyEtherWallet.com. Możesz pobrać [repozytorium MyEtherWallet](https://github.com/kvhnuke/etherwallet/releases/latest) i uruchomić lokalnie aby połączyć się z dowolnym węzłem. Możesz też pobrać darmowy certyfikat SSL przez [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Nazwa Węzła',
+  NODE_Port: 'Port Węzła',
+  NODE_CTA: 'Zapisz i Używaj Węzła',
 
   /* Contracts */
-  x_Access: 'Access ',
-  CONTRACT_Title: 'Contract Address ',
-  CONTRACT_Title_2: 'Select Existing Contract ',
-  CONTRACT_Json: 'ABI / JSON Interface ',
-  CONTRACT_Interact_Title: 'Read / Write Contract ',
-  CONTRACT_Interact_CTA: 'Select a function ',
-  CONTRACT_ByteCode: 'Byte Code ',
-  CONTRACT_Read: 'READ ',
-  CONTRACT_Write: 'WRITE ',
+  x_Access: 'Dostęp ',
+  CONTRACT_Title: 'Adres Kontraktu ',
+  CONTRACT_Title_2: 'Wybierz Istniejący Kontrakt ',
+  CONTRACT_Json: 'Interfejs ABI / JSON ',
+  CONTRACT_Interact_Title: 'Odczytaj / Zapisz Kontrakt ',
+  CONTRACT_Interact_CTA: 'Wybierz funkcję ',
+  CONTRACT_ByteCode: 'Kod Bajtowy ',
+  CONTRACT_Read: 'ODCZYTAJ ',
+  CONTRACT_Write: 'ZAPISZ ',
 
   /* Swap / Exchange */
-  SWAP_rates: "Current Rates ",
-  SWAP_init_1: "I want to swap my ",
-  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
-  SWAP_init_CTA: "Let's do this! ", // or "Continue"
-  SWAP_information: "Your Information ",
-  SWAP_send_amt: "Amount to send ",
-  SWAP_rec_amt: "Amount to receive ",
-  SWAP_your_rate: "Your rate ",
-  SWAP_rec_add: "Your Receiving Address ",
-  SWAP_start_CTA: "Start Swap ",
-  SWAP_ref_num: "Your reference number ",
-  SWAP_time: "Time remaining to send ",
-  SWAP_progress_1: "Order Initiated ",
-  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
-  SWAP_progress_3: "Received! ", // ETH Received!
-  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
-  SWAP_progress_5: "Order Complete ",
-  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
-  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+  SWAP_rates: "Aktualne Kursy ",
+  SWAP_init_1: "Chcę wymienić ",
+  SWAP_init_2: " na ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Zatwierdź! ", // or "Continue"
+  SWAP_information: "Twoja Adnotacja ",
+  SWAP_send_amt: "Kwota do wysłania ",
+  SWAP_rec_amt: "Kwota rządania ",
+  SWAP_your_rate: "Twój kurs ",
+  SWAP_rec_add: "Twój Adres Odbiorczy ",
+  SWAP_start_CTA: "Rozpocznij Wymianę ",
+  SWAP_ref_num: "Twój numer referencyjny ",
+  SWAP_time: "Pozostały czas na wysyłkę ",
+  SWAP_progress_1: "Zlecenie Rozpoczęte ",
+  SWAP_progress_2: "Oczekiwanie na Twoje ", // Waiting for your BTC...
+  SWAP_progress_3: "Otrzymano! ", // ETH Received!
+  SWAP_progress_4: "Wysyłanie Twoich {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Zlecenie Zakończone ",
+  SWAP_order_CTA: "Wyślij ", // Please send 1 ETH...
+  SWAP_unlock: "Odblokuj Twój portfel, aby wysłać ETH lub Tokeny wprost z tej strony. ",
 
   NAV_Swap: 'Giełda ',
 
@@ -15047,6 +15389,7 @@ pl.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Potrzebujesz plik Keystore i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje. ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Prawidłowy adres ',
   SUCCESS_2: 'Portfel został odszyfrowany ',
   SUCCESS_3: 'Transakcja zgłoszona. TX ID ',
@@ -15319,7 +15662,7 @@ pl.data = {
 
 module.exports = pl;
 
-},{}],79:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 // Portuguese
 'use strict';
 
@@ -15420,7 +15763,7 @@ pt.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Você precisa do seu arquivo de armazenamento de chaves & senha** (ou Chave Privada) para acessar essa carteira no futuro. Por favor, salve e armazene ela externamente! Não há como recuperar uma carteira se você não salvar isso. Leia a [página de ajuda](https://www.myetherwallet.com/#help) para instruções. ',
-
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Valid address ',
   SUCCESS_2: 'Wallet successfully decrypted ',
   SUCCESS_3: 'Transaction submitted. TX ID ',
@@ -15913,7 +16256,7 @@ pt.data = {
 
 module.exports = pt;
 
-},{}],80:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 // Russian
 'use strict';
 
@@ -15925,56 +16268,56 @@ ru.data = {
   x_ParityPhrase: 'Parity Phrase ',
 
   /* Node Switcher */
-  NODE_Title: 'Set Up Your Custom Node',
-  NODE_Subtitle: 'To connect to a local node...',
-  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-  NODE_Name: 'Node Name',
-  NODE_Port: 'Node Port',
-  NODE_CTA: 'Save & Use Custom Node',
+  NODE_Title: 'Настроить собственный узел',
+  NODE_Subtitle: 'Для подключения к локальному узлу...',
+  NODE_Warning: 'Ваш узел должен использовать протокол HTTPS, чтобы MyEtherWallet.com мог с ним работать. Вы можете [скачать репозиторий MyEtherWallet & и запустить его локально](https://github.com/kvhnuke/etherwallet/releases/latest) чтобы иметь возможность работать с любыми узлами, или получите бесплатный SSL сертификат на [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Имя узла',
+  NODE_Port: 'Порт узла',
+  NODE_CTA: 'Сохранить и подключиться к собственному узлу',
 
   /* Contracts */
   x_Access: 'Access ',
-  CONTRACT_Title: 'Contract Address ',
-  CONTRACT_Title_2: 'Select Existing Contract ',
-  CONTRACT_Json: 'ABI / JSON Interface ',
-  CONTRACT_Interact_Title: 'Read / Write Contract ',
-  CONTRACT_Interact_CTA: 'Select a function ',
-  CONTRACT_ByteCode: 'Byte Code ',
-  CONTRACT_Read: 'READ ',
-  CONTRACT_Write: 'WRITE ',
+  CONTRACT_Title: 'Адрес контракта ',
+  CONTRACT_Title_2: 'Выбрать имеющийся контракт ',
+  CONTRACT_Json: 'ABI / JSON интерфейс ',
+  CONTRACT_Interact_Title: 'Прочитать / записать контракт ',
+  CONTRACT_Interact_CTA: 'Выбрать функцию ',
+  CONTRACT_ByteCode: 'Байткод ',
+  CONTRACT_Read: 'ПРОЧИТАТь ',
+  CONTRACT_Write: 'ЗАПИСАТЬ ',
 
   /* Swap / Exchange */
-  SWAP_rates: "Current Rates ",
-  SWAP_init_1: "I want to swap my ",
-  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
-  SWAP_init_CTA: "Let's do this! ", // or "Continue"
-  SWAP_information: "Your Information ",
-  SWAP_send_amt: "Amount to send ",
-  SWAP_rec_amt: "Amount to receive ",
-  SWAP_your_rate: "Your rate ",
-  SWAP_rec_add: "Your Receiving Address ",
-  SWAP_start_CTA: "Start Swap ",
-  SWAP_ref_num: "Your reference number ",
-  SWAP_time: "Time remaining to send ",
-  SWAP_progress_1: "Order Initiated ",
-  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
-  SWAP_progress_3: "Received! ", // ETH Received!
-  SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
-  SWAP_progress_5: "Order Complete ",
-  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
-  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+  SWAP_rates: "Текущие котировки ",
+  SWAP_init_1: "Я хочу обменять мои ",
+  SWAP_init_2: " на ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Поехали! ", // or "Continue"
+  SWAP_information: "Дополнительная информация ",
+  SWAP_send_amt: "Сумма для отправки ",
+  SWAP_rec_amt: "Сумма к получению ",
+  SWAP_your_rate: "Ваш курс ",
+  SWAP_rec_add: "Адрес получателя ",
+  SWAP_start_CTA: "Начать обмен ",
+  SWAP_ref_num: "Идентификатор операции ",
+  SWAP_time: "Время до отправки ",
+  SWAP_progress_1: "Заявка выставлена ",
+  SWAP_progress_2: "Ждём получения ваших ", // Waiting for your BTC...
+  SWAP_progress_3: "Получено! ", // ETH Received!
+  SWAP_progress_4: "Отправляем ваши {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Заявка выполнена ",
+  SWAP_order_CTA: "Пожалуйста, отправьте ", // Please send 1 ETH...
+  SWAP_unlock: "Отоприте ваш кошелёк для отправки ETH или Tokens непосредственно с этой страницы. ",
 
-  NAV_Swap: 'Swap ',
-  NAV_SignMsg: 'Sign Message ',
+  NAV_Swap: 'Обмен ',
+  NAV_SignMsg: 'Подписать сообщение ',
 
   /* Sign Message */
-  MSG_message: 'Message ',
-  MSG_date: 'Date ',
-  MSG_signature: 'Signature ',
-  MSG_verify: 'Verify Message ',
-  MSG_info1: 'Include the current date so the signature cannot be reused on a different date. ',
-  MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it. ',
-  MSG_info3: 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+  MSG_message: 'Сообщение ',
+  MSG_date: 'Дата ',
+  MSG_signature: 'Подпись ',
+  MSG_verify: 'Проверить сообщение ',
+  MSG_info1: 'Укажите сегдоняшную дату, чтобы подпись не могла быть повторно использована в другой день. ',
+  MSG_info2: 'Укажите ваш псевдоним и то, где вы этот псевдоним используете, чтобы никто другой не смог его использовать. ',
+  MSG_info3: 'Укажите цель отправки сообщения, чтобы оно не могло быть использовно с другой целью. ',
 
   /* Mnemonic */
   ADD_Radio_5: 'Paste/Type Your Mnemonic ',
@@ -16245,6 +16588,7 @@ ru.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'В будущем, для доступа к этому кошельку **Вам понадобится либо файл Keystore/JSON вместе с паролем,  либо закрытый ключ**. Пожалуйста, сохраните их и сделайте резервную копию! Если Вы потеряете их, то не сможете восстановить доступ к Вашему кошельку. Обратитесь к [справке](https://www.myetherwallet.com/#help) за инструкциями. ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Адрес указан верно ',
   SUCCESS_2: 'Кошелёк успешно расшифрован ',
   SUCCESS_3: 'Транзакция отправлена на выполнение. TX ID ',
@@ -16506,7 +16850,7 @@ ru.data = {
 
 module.exports = ru;
 
-},{}],81:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 // Turkish
 'use strict';
 
@@ -16849,6 +17193,7 @@ tr.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: 'Ilerde cüzdanini acmak icin **Keystore dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Geçerli adres ',
   SUCCESS_2: 'Cüzdan basariyla desifre edildi ',
   SUCCESS_3: 'İşlem teslim edildi TX ID ',
@@ -17099,7 +17444,7 @@ tr.data = {
 
 module.exports = tr;
 
-},{}],82:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 'use strict';
 
 var de = require('./de');
@@ -17159,7 +17504,7 @@ translate.marked = function (data) {
 };
 module.exports = translate;
 
-},{"./de":66,"./el":67,"./en":68,"./es":69,"./fi":70,"./fr":71,"./hu":72,"./id":73,"./it":74,"./ja":75,"./nl":76,"./no":77,"./pl":78,"./pt":79,"./ru":80,"./tr":81,"./vi":83,"./zhcn":84,"./zhtw":85}],83:[function(require,module,exports){
+},{"./de":72,"./el":73,"./en":74,"./es":75,"./fi":76,"./fr":77,"./hu":78,"./id":79,"./it":80,"./ja":81,"./nl":82,"./no":83,"./pl":84,"./pt":85,"./ru":86,"./tr":87,"./vi":89,"./zhcn":90,"./zhtw":91}],89:[function(require,module,exports){
 // Vietnamese
 'use strict';
 
@@ -17480,6 +17825,7 @@ vi.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '**Bạn cần sử dụng tập tin chứa định dạng Keystore/JSON cùng với Mật khẩu hoặc Private Key của bạn** cho việc đăng nhập vào ví này trong tương lai. Hãy sao lưu và cất giữ nó cẩn thận tại kho lưu trữ của bạn! Không có cách nào đễ khôi phục Ví của bạn nếu bạn không sao lưu dữ liệu ví lại. Đọc Thêm [trang trợ giúp] (https://www.myetherwallet.com/#help) đễ được hướng dẫn cụ thể. ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Địa Chỉ Hợp Lệ ',
   SUCCESS_2: 'Ví đã được giải mã thành công ',
   SUCCESS_3: 'Giao dịch đã gửi đi, TX ID: ',
@@ -17751,7 +18097,7 @@ vi.data = {
 
 module.exports = vi;
 
-},{}],84:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 // simplified Chinese, zh-CN, 简体中文
 'use strict';
 
@@ -18081,6 +18427,7 @@ zhcn.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 ',
   ERROR_28: '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。 ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: '有效地址 ',
   SUCCESS_2: '钱包解密成功 ',
   SUCCESS_3: '交易已提交。TX ID： ',
@@ -18342,7 +18689,7 @@ zhcn.data = {
 
 module.exports = zhcn;
 
-},{}],85:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 // Traditional Chinese 繁體中文 - zh-tw.js
 'use strict';
 
@@ -18645,6 +18992,7 @@ zhtw.data = {
   ERROR_26: 'Please enter valid ABI ',
   ERROR_27: 'Minimum amount 0.01 and max',
   ERROR_28: '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions. ',
+  ERROR_29: 'Please enter valid user and password ',
   SUCCESS_1: 'Valid address ',
   SUCCESS_2: 'Wallet successfully decrypted ',
   SUCCESS_3: 'Transaction submitted. TX ID ',
@@ -18918,7 +19266,7 @@ zhtw.data = {
 
 module.exports = zhtw;
 
-},{}],86:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -19126,6 +19474,7 @@ uiFuncs.notifier = {
     },
     open: function () {
         this.show = true;
+        if (!this.scope.$$phase) this.scope.$apply();
     },
     class: '',
     message: '',
@@ -19162,7 +19511,7 @@ uiFuncs.notifier = {
 module.exports = uiFuncs;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],87:[function(require,module,exports){
+},{"buffer":152}],93:[function(require,module,exports){
 'use strict';
 
 var validator = function () {};
@@ -19210,7 +19559,7 @@ validator.isValidURL = function (str) {
 };
 module.exports = validator;
 
-},{}],88:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 /**
  * @license AngularJS v1.6.2
  * (c) 2010-2017 Google, Inc. http://angularjs.org
@@ -23362,11 +23711,11 @@ angular.module('ngAnimate', [], function initAngularHelpers() {
 
 })(window, window.angular);
 
-},{}],89:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 require('./angular-animate');
 module.exports = 'ngAnimate';
 
-},{"./angular-animate":88}],90:[function(require,module,exports){
+},{"./angular-animate":94}],96:[function(require,module,exports){
 /**
  * @license AngularJS v1.6.2
  * (c) 2010-2017 Google, Inc. http://angularjs.org
@@ -24107,11 +24456,11 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
-},{}],91:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 require('./angular-sanitize');
 module.exports = 'ngSanitize';
 
-},{"./angular-sanitize":90}],92:[function(require,module,exports){
+},{"./angular-sanitize":96}],98:[function(require,module,exports){
 /*!
  * angular-translate - v2.14.0 - 2017-02-11
  * 
@@ -24163,7 +24512,7 @@ return 'pascalprecht.translate';
 
 }));
 
-},{}],93:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 /*!
  * angular-translate - v2.14.0 - 2017-02-11
  * 
@@ -27869,7 +28218,7 @@ return 'pascalprecht.translate';
 
 }));
 
-},{}],94:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 /**
  * @license AngularJS v1.6.2
  * (c) 2010-2017 Google, Inc. http://angularjs.org
@@ -61004,11 +61353,11 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],95:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":94}],96:[function(require,module,exports){
+},{"./angular":100}],102:[function(require,module,exports){
 var asn1 = exports;
 
 asn1.bignum = require('bn.js');
@@ -61019,7 +61368,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":97,"./asn1/base":99,"./asn1/constants":103,"./asn1/decoders":105,"./asn1/encoders":108,"bn.js":116}],97:[function(require,module,exports){
+},{"./asn1/api":103,"./asn1/base":105,"./asn1/constants":109,"./asn1/decoders":111,"./asn1/encoders":114,"bn.js":122}],103:[function(require,module,exports){
 var asn1 = require('../asn1');
 var inherits = require('inherits');
 
@@ -61082,7 +61431,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":96,"inherits":198,"vm":267}],98:[function(require,module,exports){
+},{"../asn1":102,"inherits":206,"vm":276}],104:[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -61200,7 +61549,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":99,"buffer":146,"inherits":198}],99:[function(require,module,exports){
+},{"../base":105,"buffer":152,"inherits":206}],105:[function(require,module,exports){
 var base = exports;
 
 base.Reporter = require('./reporter').Reporter;
@@ -61208,7 +61557,7 @@ base.DecoderBuffer = require('./buffer').DecoderBuffer;
 base.EncoderBuffer = require('./buffer').EncoderBuffer;
 base.Node = require('./node');
 
-},{"./buffer":98,"./node":100,"./reporter":101}],100:[function(require,module,exports){
+},{"./buffer":104,"./node":106,"./reporter":107}],106:[function(require,module,exports){
 var Reporter = require('../base').Reporter;
 var EncoderBuffer = require('../base').EncoderBuffer;
 var DecoderBuffer = require('../base').DecoderBuffer;
@@ -61844,7 +62193,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
   return /^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str);
 };
 
-},{"../base":99,"minimalistic-assert":211}],101:[function(require,module,exports){
+},{"../base":105,"minimalistic-assert":219}],107:[function(require,module,exports){
 var inherits = require('inherits');
 
 function Reporter(options) {
@@ -61967,7 +62316,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":198}],102:[function(require,module,exports){
+},{"inherits":206}],108:[function(require,module,exports){
 var constants = require('../constants');
 
 exports.tagClass = {
@@ -62011,7 +62360,7 @@ exports.tag = {
 };
 exports.tagByName = constants._reverse(exports.tag);
 
-},{"../constants":103}],103:[function(require,module,exports){
+},{"../constants":109}],109:[function(require,module,exports){
 var constants = exports;
 
 // Helper
@@ -62032,7 +62381,7 @@ constants._reverse = function reverse(map) {
 
 constants.der = require('./der');
 
-},{"./der":102}],104:[function(require,module,exports){
+},{"./der":108}],110:[function(require,module,exports){
 var inherits = require('inherits');
 
 var asn1 = require('../../asn1');
@@ -62358,13 +62707,13 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":96,"inherits":198}],105:[function(require,module,exports){
+},{"../../asn1":102,"inherits":206}],111:[function(require,module,exports){
 var decoders = exports;
 
 decoders.der = require('./der');
 decoders.pem = require('./pem');
 
-},{"./der":104,"./pem":106}],106:[function(require,module,exports){
+},{"./der":110,"./pem":112}],112:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -62415,7 +62764,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"./der":104,"buffer":146,"inherits":198}],107:[function(require,module,exports){
+},{"./der":110,"buffer":152,"inherits":206}],113:[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -62712,13 +63061,13 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":96,"buffer":146,"inherits":198}],108:[function(require,module,exports){
+},{"../../asn1":102,"buffer":152,"inherits":206}],114:[function(require,module,exports){
 var encoders = exports;
 
 encoders.der = require('./der');
 encoders.pem = require('./pem');
 
-},{"./der":107,"./pem":109}],109:[function(require,module,exports){
+},{"./der":113,"./pem":115}],115:[function(require,module,exports){
 var inherits = require('inherits');
 
 var DEREncoder = require('./der');
@@ -62741,7 +63090,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"./der":107,"inherits":198}],110:[function(require,module,exports){
+},{"./der":113,"inherits":206}],116:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -63235,7 +63584,7 @@ var objectKeys = Object.keys || function (obj) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"util/":264}],111:[function(require,module,exports){
+},{"util/":273}],117:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -63351,7 +63700,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],112:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 /*! bignumber.js v3.1.2 https://github.com/MikeMcl/bignumber.js/LICENCE */
 
 ;(function (globalObj) {
@@ -66098,7 +66447,7 @@ function fromByteArray (uint8) {
     }
 })(this);
 
-},{}],113:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 (function (Buffer){
 var assert = require('assert')
 var createHash = require('create-hash')
@@ -66231,7 +66580,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./wordlists/en.json":114,"assert":110,"buffer":146,"create-hash":151,"pbkdf2":216,"randombytes":226,"unorm":259}],114:[function(require,module,exports){
+},{"./wordlists/en.json":120,"assert":116,"buffer":152,"create-hash":157,"pbkdf2":224,"randombytes":235,"unorm":268}],120:[function(require,module,exports){
 module.exports=[
   "abandon",
   "ability",
@@ -68283,7 +68632,7 @@ module.exports=[
   "zoo"
 ]
 
-},{}],115:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 (function (Buffer){
 // Reference https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki
 // Format: 0x30 [total-length] 0x02 [R-length] [R] 0x02 [S-length] [S]
@@ -68398,7 +68747,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],116:[function(require,module,exports){
+},{"buffer":152}],122:[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -71827,7 +72176,7 @@ module.exports = {
   };
 })(typeof module === 'undefined' || module, this);
 
-},{}],117:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -71886,9 +72235,9 @@ if (typeof self === 'object') {
   }
 }
 
-},{"crypto":118}],118:[function(require,module,exports){
+},{"crypto":124}],124:[function(require,module,exports){
 
-},{}],119:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 (function (Buffer){
 // based on the aes implimentation in triple sec
 // https://github.com/keybase/triplesec
@@ -72069,7 +72418,7 @@ AES.prototype._doCryptBlock = function (M, keySchedule, SUB_MIX, SBOX) {
 exports.AES = AES
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],120:[function(require,module,exports){
+},{"buffer":152}],126:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -72170,7 +72519,7 @@ function xorTest (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":119,"./ghash":124,"buffer":146,"buffer-xor":145,"cipher-base":147,"inherits":198}],121:[function(require,module,exports){
+},{"./aes":125,"./ghash":130,"buffer":152,"buffer-xor":151,"cipher-base":153,"inherits":206}],127:[function(require,module,exports){
 var ciphers = require('./encrypter')
 exports.createCipher = exports.Cipher = ciphers.createCipher
 exports.createCipheriv = exports.Cipheriv = ciphers.createCipheriv
@@ -72183,7 +72532,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"./decrypter":122,"./encrypter":123,"./modes":125}],122:[function(require,module,exports){
+},{"./decrypter":128,"./encrypter":129,"./modes":131}],128:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -72324,7 +72673,7 @@ exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":119,"./authCipher":120,"./modes":125,"./modes/cbc":126,"./modes/cfb":127,"./modes/cfb1":128,"./modes/cfb8":129,"./modes/ctr":130,"./modes/ecb":131,"./modes/ofb":132,"./streamCipher":133,"buffer":146,"cipher-base":147,"evp_bytestokey":188,"inherits":198}],123:[function(require,module,exports){
+},{"./aes":125,"./authCipher":126,"./modes":131,"./modes/cbc":132,"./modes/cfb":133,"./modes/cfb1":134,"./modes/cfb8":135,"./modes/ctr":136,"./modes/ecb":137,"./modes/ofb":138,"./streamCipher":139,"buffer":152,"cipher-base":153,"evp_bytestokey":194,"inherits":206}],129:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -72450,7 +72799,7 @@ exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":119,"./authCipher":120,"./modes":125,"./modes/cbc":126,"./modes/cfb":127,"./modes/cfb1":128,"./modes/cfb8":129,"./modes/ctr":130,"./modes/ecb":131,"./modes/ofb":132,"./streamCipher":133,"buffer":146,"cipher-base":147,"evp_bytestokey":188,"inherits":198}],124:[function(require,module,exports){
+},{"./aes":125,"./authCipher":126,"./modes":131,"./modes/cbc":132,"./modes/cfb":133,"./modes/cfb1":134,"./modes/cfb8":135,"./modes/ctr":136,"./modes/ecb":137,"./modes/ofb":138,"./streamCipher":139,"buffer":152,"cipher-base":153,"evp_bytestokey":194,"inherits":206}],130:[function(require,module,exports){
 (function (Buffer){
 var zeros = new Buffer(16)
 zeros.fill(0)
@@ -72552,7 +72901,7 @@ function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],125:[function(require,module,exports){
+},{"buffer":152}],131:[function(require,module,exports){
 exports['aes-128-ecb'] = {
   cipher: 'AES',
   key: 128,
@@ -72725,7 +73074,7 @@ exports['aes-256-gcm'] = {
   type: 'auth'
 }
 
-},{}],126:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 var xor = require('buffer-xor')
 
 exports.encrypt = function (self, block) {
@@ -72744,7 +73093,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":145}],127:[function(require,module,exports){
+},{"buffer-xor":151}],133:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -72779,7 +73128,7 @@ function encryptStart (self, data, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"buffer-xor":145}],128:[function(require,module,exports){
+},{"buffer":152,"buffer-xor":151}],134:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -72817,7 +73166,7 @@ function shiftIn (buffer, value) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],129:[function(require,module,exports){
+},{"buffer":152}],135:[function(require,module,exports){
 (function (Buffer){
 function encryptByte (self, byteParam, decrypt) {
   var pad = self._cipher.encryptBlock(self._prev)
@@ -72836,7 +73185,7 @@ exports.encrypt = function (self, chunk, decrypt) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],130:[function(require,module,exports){
+},{"buffer":152}],136:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -72871,7 +73220,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"buffer-xor":145}],131:[function(require,module,exports){
+},{"buffer":152,"buffer-xor":151}],137:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -72879,7 +73228,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block)
 }
 
-},{}],132:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -72899,7 +73248,7 @@ exports.encrypt = function (self, chunk) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"buffer-xor":145}],133:[function(require,module,exports){
+},{"buffer":152,"buffer-xor":151}],139:[function(require,module,exports){
 (function (Buffer){
 var aes = require('./aes')
 var Transform = require('cipher-base')
@@ -72928,7 +73277,7 @@ StreamCipher.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aes":119,"buffer":146,"cipher-base":147,"inherits":198}],134:[function(require,module,exports){
+},{"./aes":125,"buffer":152,"cipher-base":153,"inherits":206}],140:[function(require,module,exports){
 var ebtk = require('evp_bytestokey')
 var aes = require('browserify-aes/browser')
 var DES = require('browserify-des')
@@ -73003,7 +73352,7 @@ function getCiphers () {
 }
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"browserify-aes/browser":121,"browserify-aes/modes":125,"browserify-des":135,"browserify-des/modes":136,"evp_bytestokey":188}],135:[function(require,module,exports){
+},{"browserify-aes/browser":127,"browserify-aes/modes":131,"browserify-des":141,"browserify-des/modes":142,"evp_bytestokey":194}],141:[function(require,module,exports){
 (function (Buffer){
 var CipherBase = require('cipher-base')
 var des = require('des.js')
@@ -73050,7 +73399,7 @@ DES.prototype._final = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"cipher-base":147,"des.js":156,"inherits":198}],136:[function(require,module,exports){
+},{"buffer":152,"cipher-base":153,"des.js":162,"inherits":206}],142:[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -73076,7 +73425,7 @@ exports['des-ede'] = {
   iv: 0
 }
 
-},{}],137:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 var randomBytes = require('randombytes');
@@ -73120,7 +73469,7 @@ function getr(priv) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":116,"buffer":146,"randombytes":226}],138:[function(require,module,exports){
+},{"bn.js":122,"buffer":152,"randombytes":235}],144:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 exports['RSA-SHA224'] = exports.sha224WithRSAEncryption = {
@@ -73196,7 +73545,7 @@ exports['RSA-MD5'] = exports.md5WithRSAEncryption = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],139:[function(require,module,exports){
+},{"buffer":152}],145:[function(require,module,exports){
 (function (Buffer){
 var _algos = require('./algos')
 var createHash = require('create-hash')
@@ -73303,7 +73652,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algos":138,"./sign":141,"./verify":142,"buffer":146,"create-hash":151,"inherits":198,"stream":255}],140:[function(require,module,exports){
+},{"./algos":144,"./sign":147,"./verify":148,"buffer":152,"create-hash":157,"inherits":206,"stream":264}],146:[function(require,module,exports){
 'use strict'
 exports['1.3.132.0.10'] = 'secp256k1'
 
@@ -73317,7 +73666,7 @@ exports['1.3.132.0.34'] = 'p384'
 
 exports['1.3.132.0.35'] = 'p521'
 
-},{}],141:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var createHmac = require('create-hmac')
@@ -73506,7 +73855,7 @@ module.exports.getKey = getKey
 module.exports.makeKey = makeKey
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":140,"bn.js":116,"browserify-rsa":137,"buffer":146,"create-hmac":154,"elliptic":166,"parse-asn1":215}],142:[function(require,module,exports){
+},{"./curves":146,"bn.js":122,"browserify-rsa":143,"buffer":152,"create-hmac":160,"elliptic":172,"parse-asn1":223}],148:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var curves = require('./curves')
@@ -73613,7 +73962,7 @@ function checkValue (b, q) {
 module.exports = verify
 
 }).call(this,require("buffer").Buffer)
-},{"./curves":140,"bn.js":116,"buffer":146,"elliptic":166,"parse-asn1":215}],143:[function(require,module,exports){
+},{"./curves":146,"bn.js":122,"buffer":152,"elliptic":172,"parse-asn1":223}],149:[function(require,module,exports){
 // Base58 encoding/decoding
 // Originally written by Mike Hearn for BitcoinJ
 // Copyright (c) 2011 Google Inc
@@ -73700,7 +74049,7 @@ module.exports = {
   decode: decode
 }
 
-},{}],144:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -73812,7 +74161,7 @@ exports.allocUnsafeSlow = function allocUnsafeSlow(size) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"buffer":146}],145:[function(require,module,exports){
+},{"buffer":152}],151:[function(require,module,exports){
 (function (Buffer){
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)
@@ -73826,7 +74175,7 @@ module.exports = function xor (a, b) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],146:[function(require,module,exports){
+},{"buffer":152}],152:[function(require,module,exports){
 (function (global){
 /*!
  * The buffer module from node.js, for the browser.
@@ -75619,7 +75968,7 @@ function isnan (val) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":111,"ieee754":196,"isarray":201}],147:[function(require,module,exports){
+},{"base64-js":117,"ieee754":204,"isarray":209}],153:[function(require,module,exports){
 (function (Buffer){
 var Transform = require('stream').Transform
 var inherits = require('inherits')
@@ -75713,7 +76062,7 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"inherits":198,"stream":255,"string_decoder":257}],148:[function(require,module,exports){
+},{"buffer":152,"inherits":206,"stream":264,"string_decoder":266}],154:[function(require,module,exports){
 (function (Buffer){
 var base58 = require('bs58')
 var createHash = require('create-hash')
@@ -75810,7 +76159,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bs58":143,"buffer":146,"create-hash":151}],149:[function(require,module,exports){
+},{"bs58":149,"buffer":152,"create-hash":157}],155:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -75921,7 +76270,7 @@ function objectToString(o) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":199}],150:[function(require,module,exports){
+},{"../../is-buffer/index.js":207}],156:[function(require,module,exports){
 (function (Buffer){
 var elliptic = require('elliptic');
 var BN = require('bn.js');
@@ -76047,7 +76396,7 @@ function formatReturnValue(bn, enc, len) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":116,"buffer":146,"elliptic":166}],151:[function(require,module,exports){
+},{"bn.js":122,"buffer":152,"elliptic":172}],157:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var inherits = require('inherits')
@@ -76103,7 +76452,7 @@ module.exports = function createHash (alg) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./md5":153,"buffer":146,"cipher-base":147,"inherits":198,"ripemd160":238,"sha.js":248}],152:[function(require,module,exports){
+},{"./md5":159,"buffer":152,"cipher-base":153,"inherits":206,"ripemd160":247,"sha.js":257}],158:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var intSize = 4;
@@ -76140,7 +76489,7 @@ function hash(buf, fn, hashSize, bigEndian) {
 }
 exports.hash = hash;
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],153:[function(require,module,exports){
+},{"buffer":152}],159:[function(require,module,exports){
 'use strict';
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
@@ -76297,7 +76646,7 @@ function bit_rol(num, cnt)
 module.exports = function md5(buf) {
   return helpers.hash(buf, core_md5, 16);
 };
-},{"./helpers":152}],154:[function(require,module,exports){
+},{"./helpers":158}],160:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 var createHash = require('create-hash/browser');
@@ -76369,7 +76718,7 @@ module.exports = function createHmac(alg, key) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"create-hash/browser":151,"inherits":198,"stream":255}],155:[function(require,module,exports){
+},{"buffer":152,"create-hash/browser":157,"inherits":206,"stream":264}],161:[function(require,module,exports){
 'use strict'
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -76448,7 +76797,7 @@ var publicEncrypt = require('public-encrypt')
   }
 })
 
-},{"browserify-cipher":134,"browserify-sign":139,"browserify-sign/algos":138,"create-ecdh":150,"create-hash":151,"create-hmac":154,"diffie-hellman":162,"pbkdf2":216,"public-encrypt":220,"randombytes":226}],156:[function(require,module,exports){
+},{"browserify-cipher":140,"browserify-sign":145,"browserify-sign/algos":144,"create-ecdh":156,"create-hash":157,"create-hmac":160,"diffie-hellman":168,"pbkdf2":224,"public-encrypt":228,"randombytes":235}],162:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -76457,7 +76806,7 @@ exports.DES = require('./des/des');
 exports.CBC = require('./des/cbc');
 exports.EDE = require('./des/ede');
 
-},{"./des/cbc":157,"./des/cipher":158,"./des/des":159,"./des/ede":160,"./des/utils":161}],157:[function(require,module,exports){
+},{"./des/cbc":163,"./des/cipher":164,"./des/des":165,"./des/ede":166,"./des/utils":167}],163:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -76524,7 +76873,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
   }
 };
 
-},{"inherits":198,"minimalistic-assert":211}],158:[function(require,module,exports){
+},{"inherits":206,"minimalistic-assert":219}],164:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -76667,7 +77016,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
   return this._unpad(out);
 };
 
-},{"minimalistic-assert":211}],159:[function(require,module,exports){
+},{"minimalistic-assert":219}],165:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -76812,7 +77161,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
   utils.rip(l, r, out, off);
 };
 
-},{"../des":156,"inherits":198,"minimalistic-assert":211}],160:[function(require,module,exports){
+},{"../des":162,"inherits":206,"minimalistic-assert":219}],166:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -76869,7 +77218,7 @@ EDE.prototype._update = function _update(inp, inOff, out, outOff) {
 EDE.prototype._pad = DES.prototype._pad;
 EDE.prototype._unpad = DES.prototype._unpad;
 
-},{"../des":156,"inherits":198,"minimalistic-assert":211}],161:[function(require,module,exports){
+},{"../des":162,"inherits":206,"minimalistic-assert":219}],167:[function(require,module,exports){
 'use strict';
 
 exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -77127,7 +77476,7 @@ exports.padSplit = function padSplit(num, size, group) {
   return out.join(' ');
 };
 
-},{}],162:[function(require,module,exports){
+},{}],168:[function(require,module,exports){
 (function (Buffer){
 var generatePrime = require('./lib/generatePrime')
 var primes = require('./lib/primes.json')
@@ -77173,7 +77522,7 @@ exports.DiffieHellmanGroup = exports.createDiffieHellmanGroup = exports.getDiffi
 exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 
 }).call(this,require("buffer").Buffer)
-},{"./lib/dh":163,"./lib/generatePrime":164,"./lib/primes.json":165,"buffer":146}],163:[function(require,module,exports){
+},{"./lib/dh":169,"./lib/generatePrime":170,"./lib/primes.json":171,"buffer":152}],169:[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -77341,7 +77690,7 @@ function formatReturnValue(bn, enc) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./generatePrime":164,"bn.js":116,"buffer":146,"miller-rabin":210,"randombytes":226}],164:[function(require,module,exports){
+},{"./generatePrime":170,"bn.js":122,"buffer":152,"miller-rabin":218,"randombytes":235}],170:[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -77448,7 +77797,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":116,"miller-rabin":210,"randombytes":226}],165:[function(require,module,exports){
+},{"bn.js":122,"miller-rabin":218,"randombytes":235}],171:[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -77483,7 +77832,7 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],166:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -77499,7 +77848,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":182,"./elliptic/curve":169,"./elliptic/curves":172,"./elliptic/ec":173,"./elliptic/eddsa":176,"./elliptic/hmac-drbg":179,"./elliptic/utils":181,"brorand":117}],167:[function(require,module,exports){
+},{"../package.json":188,"./elliptic/curve":175,"./elliptic/curves":178,"./elliptic/ec":179,"./elliptic/eddsa":182,"./elliptic/hmac-drbg":185,"./elliptic/utils":187,"brorand":123}],173:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -77876,7 +78225,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../../elliptic":166,"bn.js":116}],168:[function(require,module,exports){
+},{"../../elliptic":172,"bn.js":122}],174:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -78311,7 +78660,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../../elliptic":166,"../curve":169,"bn.js":116,"inherits":198}],169:[function(require,module,exports){
+},{"../../elliptic":172,"../curve":175,"bn.js":122,"inherits":206}],175:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -78321,7 +78670,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":167,"./edwards":168,"./mont":170,"./short":171}],170:[function(require,module,exports){
+},{"./base":173,"./edwards":174,"./mont":176,"./short":177}],176:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -78503,7 +78852,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../../elliptic":166,"../curve":169,"bn.js":116,"inherits":198}],171:[function(require,module,exports){
+},{"../../elliptic":172,"../curve":175,"bn.js":122,"inherits":206}],177:[function(require,module,exports){
 'use strict';
 
 var curve = require('../curve');
@@ -79443,7 +79792,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../../elliptic":166,"../curve":169,"bn.js":116,"inherits":198}],172:[function(require,module,exports){
+},{"../../elliptic":172,"../curve":175,"bn.js":122,"inherits":206}],178:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -79650,7 +79999,7 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"../elliptic":166,"./precomputed/secp256k1":180,"hash.js":189}],173:[function(require,module,exports){
+},{"../elliptic":172,"./precomputed/secp256k1":186,"hash.js":195}],179:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -79889,7 +80238,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../../elliptic":166,"./key":174,"./signature":175,"bn.js":116}],174:[function(require,module,exports){
+},{"../../elliptic":172,"./key":180,"./signature":181,"bn.js":122}],180:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -80010,7 +80359,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"../../elliptic":166,"bn.js":116}],175:[function(require,module,exports){
+},{"../../elliptic":172,"bn.js":122}],181:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -80147,7 +80496,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../../elliptic":166,"bn.js":116}],176:[function(require,module,exports){
+},{"../../elliptic":172,"bn.js":122}],182:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -80267,7 +80616,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../../elliptic":166,"./key":177,"./signature":178,"hash.js":189}],177:[function(require,module,exports){
+},{"../../elliptic":172,"./key":183,"./signature":184,"hash.js":195}],183:[function(require,module,exports){
 'use strict';
 
 var elliptic = require('../../elliptic');
@@ -80365,7 +80714,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../../elliptic":166}],178:[function(require,module,exports){
+},{"../../elliptic":172}],184:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -80433,7 +80782,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../../elliptic":166,"bn.js":116}],179:[function(require,module,exports){
+},{"../../elliptic":172,"bn.js":122}],185:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -80549,7 +80898,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"../elliptic":166,"hash.js":189}],180:[function(require,module,exports){
+},{"../elliptic":172,"hash.js":195}],186:[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -81331,7 +81680,7 @@ module.exports = {
   }
 };
 
-},{}],181:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -81505,7 +81854,7 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":116}],182:[function(require,module,exports){
+},{"bn.js":122}],188:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -81627,7 +81976,7 @@ module.exports={
   "version": "6.3.3"
 }
 
-},{}],183:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 module.exports={
   "genesisGasLimit": {
     "v": 5000,
@@ -81864,7 +82213,7 @@ module.exports={
   }
 }
 
-},{}],184:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 const ethUtil = require('ethereumjs-util')
@@ -82148,7 +82497,7 @@ module.exports = class Transaction {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"ethereum-common/params.json":183,"ethereumjs-util":185}],185:[function(require,module,exports){
+},{"buffer":152,"ethereum-common/params.json":189,"ethereumjs-util":191}],191:[function(require,module,exports){
 (function (Buffer){
 const createKeccakHash = require('keccak')
 const secp256k1 = require('secp256k1')
@@ -82818,7 +83167,7 @@ exports.defineProperties = function (self, fields, data) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":110,"bn.js":116,"buffer":146,"create-hash":151,"ethjs-util":186,"keccak":203,"rlp":239,"secp256k1":241}],186:[function(require,module,exports){
+},{"assert":116,"bn.js":122,"buffer":152,"create-hash":157,"ethjs-util":192,"keccak":211,"rlp":248,"secp256k1":250}],192:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -83041,7 +83390,7 @@ module.exports = {
   isHexString: isHexString
 };
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"is-hex-prefixed":200,"strip-hex-prefix":258}],187:[function(require,module,exports){
+},{"buffer":152,"is-hex-prefixed":208,"strip-hex-prefix":267}],193:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -83345,7 +83694,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],188:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 (function (Buffer){
 var md5 = require('create-hash/md5')
 module.exports = EVP_BytesToKey
@@ -83417,7 +83766,7 @@ function EVP_BytesToKey (password, salt, keyLen, ivLen) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"create-hash/md5":153}],189:[function(require,module,exports){
+},{"buffer":152,"create-hash/md5":159}],195:[function(require,module,exports){
 var hash = exports;
 
 hash.utils = require('./hash/utils');
@@ -83434,7 +83783,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":190,"./hash/hmac":191,"./hash/ripemd":192,"./hash/sha":193,"./hash/utils":194}],190:[function(require,module,exports){
+},{"./hash/common":196,"./hash/hmac":197,"./hash/ripemd":198,"./hash/sha":199,"./hash/utils":200}],196:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -83527,7 +83876,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"../hash":189}],191:[function(require,module,exports){
+},{"../hash":195}],197:[function(require,module,exports){
 var hmac = exports;
 
 var hash = require('../hash');
@@ -83577,7 +83926,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"../hash":189}],192:[function(require,module,exports){
+},{"../hash":195}],198:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 
@@ -83723,7 +84072,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"../hash":189}],193:[function(require,module,exports){
+},{"../hash":195}],199:[function(require,module,exports){
 var hash = require('../hash');
 var utils = hash.utils;
 var assert = utils.assert;
@@ -84289,7 +84638,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../hash":189}],194:[function(require,module,exports){
+},{"../hash":195}],200:[function(require,module,exports){
 var utils = exports;
 var inherits = require('inherits');
 
@@ -84548,7 +84897,7 @@ function shr64_lo(ah, al, num) {
 };
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":198}],195:[function(require,module,exports){
+},{"inherits":206}],201:[function(require,module,exports){
 (function (Buffer){
 var assert = require('assert')
 var crypto = require('crypto')
@@ -84779,7 +85128,854 @@ HDKey.HARDENED_OFFSET = HARDENED_OFFSET
 module.exports = HDKey
 
 }).call(this,require("buffer").Buffer)
-},{"assert":110,"buffer":146,"coinstring":148,"crypto":155,"secp256k1":241}],196:[function(require,module,exports){
+},{"assert":116,"buffer":152,"coinstring":154,"crypto":161,"secp256k1":250}],202:[function(require,module,exports){
+/* This file is generated from the Unicode IDNA table, using
+   the build-unicode-tables.py script. Please edit that
+   script instead of this file. */
+
+/* istanbul ignore next */
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define([], function () { return factory(); });
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
+  } else {
+    root.uts46_map = factory();
+  }
+}(this, function () {
+var blocks = [
+  new Uint32Array([2157250,2157314,2157378,2157442,2157506,2157570,2157634,0,2157698,2157762,2157826,2157890,2157954,0,2158018,0]),
+  new Uint32Array([2100833,2100897,0,0,2101569,2101697,2101825,2101953,2102081,2102209,10575585,2187009,10502177,10489601,10489697,2112289]),
+  new Uint32Array([2179041,6291456,2179073,6291456,2179105,6291456,2179137,6291456,2179169,6291456,2179201,6291456,2179233,6291456,2179265,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,14680064,14680064,14680064,14680064,14680064]),
+  new Uint32Array([6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,23068672,23068672,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,0,0,0,0,23068672,23068672,23068672,0,0,0,0,23068672]),
+  new Uint32Array([14680064,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,14680064,14680064]),
+  new Uint32Array([2193057,2193089,2193121,2193153,2117665,2117569,2193185,2193217,2193249,2193281,2193313,2193345,2193377,2193409,2193441,2193473]),
+  new Uint32Array([2212481,2212513,2212545,2212577,2197089,2212609,2212641,2212673,2212705,2212737,2212769,2212801,2212833,2212865,2212897,2212929]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,6291456,0,0,0,0,0]),
+  new Uint32Array([2097281,2105921,2097729,2106081,0,2097601,2162337,2106017,2133281,2097505,2105889,2097185,2097697,2135777,2097633,2097441]),
+  new Uint32Array([2177025,6291456,2177057,6291456,2177089,6291456,2177121,6291456,2177153,6291456,2177185,6291456,2177217,6291456,2177249,6291456]),
+  new Uint32Array([2233665,2233697,2233729,2233761,2233793,2233825,2233825,2217537,2233857,2233889,2233921,2233953,2215649,2233985,2234017,2234049]),
+  new Uint32Array([0,0,0,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,0,6291456,6291456,0,0,0,0,0,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,6291456]),
+  new Uint32Array([0,23068672,23068672,23068672,0,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,6291456]),
+  new Uint32Array([2184705,6291456,2184737,6291456,2184769,6291456,2184801,6291456,2184833,6291456,2184865,6291456,2184897,6291456,2184929,6291456]),
+  new Uint32Array([2215425,2215457,2215489,2215521,2215553,2215585,2215617,2215649,2215681,2215713,2215745,2215777,2192001,2215809,2215841,2215873]),
+  new Uint32Array([0,0,0,0,0,0,0,6291456,2168673,2169249,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2128195,2128291,2128387,2128483,2128579,2128675,2128771,2128867,2128963,2129059,2129155,2129251,2129347,2129443,2129539,2129635]),
+  new Uint32Array([2147906,2147970,2148034,2148098,2148162,2148226,2148290,2148354,2147906,2147970,2148034,2148098,2148162,2148226,2148290,2148354]),
+  new Uint32Array([6291456,2186945,6291456,6291456,6291456,6291456,6291456,10537858,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2125219,2125315,2152834,2152898,2125411,2152962,2153026,2125506,2125507,2125603,2153090,2153154,2153218,2153282,2153346,2105348]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456,0,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,23068672,6291456,2145538,23068672,23068672,23068672,23068672,23068672,23068672,23068672,0,0,0,0,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,6291456,23068672,23068672,6291456]),
+  new Uint32Array([2119939,2124930,2125026,2106658,2125218,2128962,2129058,2129154,2129250,2129346,2129442,2108866,2108770,2150466,2150530,2150594]),
+  new Uint32Array([2201601,6291456,2201633,6291456,2201665,6291456,2201697,6291456,2201729,6291456,2201761,6291456,2201793,6291456,2201825,6291456]),
+  new Uint32Array([2202497,6291456,2202529,6291456,2202561,6291456,2202593,6291456,2202625,6291456,2202657,6291456,2202689,6291456,2202721,6291456]),
+  new Uint32Array([6291456,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([0,6291456,6291456,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2190529,6291456,2190561,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2190593,6291456,2190625,6291456,23068672]),
+  new Uint32Array([2097185,2097697,2097697,2097697,2097697,2135777,2135777,2135777,2135777,2097377,2097377,2097377,2097377,2097601,2097601,2097217]),
+  new Uint32Array([2232353,2232385,2232418,2232481,2232513,2231201,2232546,2232609,2232641,2232673,2232705,2217281,2232738,2191201,2232801,2232833]),
+  new Uint32Array([23068672,18884130,23068672,23068672,23068672,6291456,23068672,23068672,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672]),
+  new Uint32Array([6291456,6291456,23068672,23068672,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([0,0,2148994,2149058,2149122,0,6291456,2149186,2186913,2173537,2148993,2149121,2149058,10531458,10496066,0]),
+  new Uint32Array([2098209,2111137,2105505,2098241,2108353,2108417,2105825,2111713,2100897,2111905,2105473,2105569,2105601,2112289,2108193,2112481]),
+  new Uint32Array([2132227,2132323,2132419,2132419,2132515,2132515,2132611,2132707,2132707,2132803,2132899,2132899,2132995,2132995,2133091,2133187]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2185921,2185953,2185985,2186017,2186049,2186081,2186113,2186145]),
+  new Uint32Array([23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,6291456,0,0]),
+  new Uint32Array([2112481,2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441,10609889,10610785,10609921,10610817,2222241]),
+  new Uint32Array([6291456,6291456,6291456,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,0,0]),
+  new Uint32Array([2232865,2232897,2231745,2232929,2232961,2217441,2215521,2215553,2217473,2232993,2233025,2209697,2233057,2215585,2233089,2233121]),
+  new Uint32Array([2191649,2191681,2191713,2191745,2153281,2191777,2191809,2191841,2191873,2191905,2191937,2191969,2192001,2192033,2192065,2192097]),
+  new Uint32Array([0,0,0,0,6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2197857,2197889,2197921,2197953,2197985,2198017,2198049,2198081,2198113,2198145,2198177,2198209,2198241,2198273,2198305,2198337]),
+  new Uint32Array([6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,0,0,23068672,23068672,0,0,23068672,23068672,23068672,6291456,0]),
+  new Uint32Array([2192641,2192673,2192705,2192737,2192769,2192801,2192833,2118049,2192865,2117473,2117761,2192897,2192929,2192961,2192993,2193025]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2147905,2147969,2148033,2148097,2148161,2148225,2148289,2148353]),
+  new Uint32Array([2173921,2173953,2173985,2173761,2174017,2174049,2174081,2174113,2174145,2174177,2149057,2230753,2148481,2173601,2173633,2173665]),
+  new Uint32Array([2203777,6291456,2203809,6291456,2203841,6291456,2203873,6291456,2203905,6291456,2173121,2180961,2181217,2203937,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,23068672,23068672]),
+  new Uint32Array([0,23068672,23068672,23068672,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456]),
+  new Uint32Array([2180353,2180385,2144033,2180417,2180449,2180481,2180513,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2112481,2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441,10610209,10610465,10610241,10610753,10609857]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,0,0]),
+  new Uint32Array([2223842,2223906,2223970,2224034,2224098,2224162,2224226,2224290,2224354,2224418,2224482,2224546,2224610,2224674,2224738,2224802]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,6291456,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456]),
+  new Uint32Array([2192129,2192161,2192193,2192225,2192257,2192289,2192321,2192353,2192385,2192417,2192449,2192481,2192513,2192545,2192577,2192609]),
+  new Uint32Array([23068672,23068672,23068672,18923650,23068672,23068672,23068672,23068672,0,23068672,23068672,23068672,23068672,18923714,23068672,23068672]),
+  new Uint32Array([2126179,2125538,2126275,2126371,2126467,2125634,2126563,2105603,2105604,2125346,2126659,2126755,2126851,2098179,2098181,2098182]),
+  new Uint32Array([6291456,2170881,2170913,2170945,6291456,2170977,6291456,2171009,2171041,6291456,6291456,6291456,2171073,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([2132226,2132514,2163586,2132610,2160386,2133090,2133186,2160450,2160514,2160578,2133570,2106178,2160642,2133858,2160706,2160770]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([0,0,0,0,0,0,0,0,0,0,0,0,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,23068672]),
+  new Uint32Array([2098209,2108353,2108193,2108481,2170241,2111713,2105473,2105569,2105601,2112289,2112481,2098305,2108321,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,2186593,0,0,6291456,6291456,2186625,2186657,2186689,2173505,0,10496067,10496163,10496259]),
+  new Uint32Array([2240130,2240194,2240257,2240289,2218305,2240321,2240353,2240385,2240417,2240449,2240481,2240514,2240577,2240610,2240673,0]),
+  new Uint32Array([2246465,2246497,2246529,2246561,2194977,2246594,2246657,2246689,2246721,2246753,2246785,2246818,2246882,2246945,2246977,2247009]),
+  new Uint32Array([2215105,6291456,2215137,6291456,6291456,2215169,2215201,6291456,6291456,6291456,2215233,2215265,2215297,2215329,2215361,2215393]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,0,0,6291456,0,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,6291456,6291456,6291456,23068672,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([10505091,10505187,10505283,10505379,10505475,10505571,10505667,10505763,10505859,10505955,10506051,10506147,10506243,10506339,10506435,10506531]),
+  new Uint32Array([2105505,2098241,2108353,2108417,2105825,0,2100897,2111905,2105473,2105569,2105601,2112289,2108193,2112481,2112577,2098177]),
+  new Uint32Array([6291456,6291456,6291456,6291456,10502115,10502178,10502211,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([0,23068672,23068672,23068672,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,6291456]),
+  new Uint32Array([2192321,2236130,2236130,2236193,2236225,2236225,2236257,2236290,2236354,2236417,2236449,2236481,2236513,2236545,2236577,2236609]),
+  new Uint32Array([2173793,2173985,2174017,6291456,2173761,2173697,6291456,2174689,6291456,2174017,2174721,6291456,6291456,2174753,2174785,2174817]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([10485857,6291456,2197185,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2132898,2163842,2163906,2133282,2132034,2131938,2137410,2132802,2132706,2164866,2133282,2160578,2165186,2165186,6291456,6291456]),
+  new Uint32Array([2100833,2100737,2098337,2101441,2101569,2101697,2101825,2101953,2102081,2102209,10575585,2187009,10502177,10489601,10489697,0]),
+  new Uint32Array([10500003,10500099,10500195,10500291,10500387,10500483,10500579,10500675,10500771,10500867,10500963,10501059,10501155,10501251,10501347,10501443]),
+  new Uint32Array([2163458,2130978,2131074,2131266,2131362,2163522,2160130,2132066,2131010,2131106,2106018,2131618,2131298,2132034,2131938,2137410]),
+  new Uint32Array([2212961,2116993,2212993,2213025,2213057,2213089,2213121,2213153,2213185,2213217,2213249,2209633,2213281,2213313,2213345,2213377]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,23068672,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456]),
+  new Uint32Array([2167105,2167137,2167169,2167201,2167233,2167265,2167297,2167329,2167361,2167393,2167425,2167457,2167489,2167521,2167553,2167585]),
+  new Uint32Array([2174081,2174113,2174145,2174177,2149057,2230753,2148481,2173601,2173633,2173665,2173697,2173729,2148801,2173761,2143969,2173793]),
+  new Uint32Array([2108289,2100865,2113153,2108481,2113345,2113441,2098209,2111137,2105505,2098241,2108353,2108417,2105825,2111713,2100897,2111905]),
+  new Uint32Array([6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,0,0]),
+  new Uint32Array([6291456,0,6291456,2145026,0,6291456,2145090,0,6291456,6291456,0,0,23068672,0,23068672,23068672]),
+  new Uint32Array([6291456,6291456,6291456,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,23068672,6291456,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,23068672,23068672,0,0,23068672,23068672,23068672,23068672,23068672,23068672,23068672,0,0,0]),
+  new Uint32Array([0,10554498,10554562,10554626,10554690,10554754,10554818,10554882,10554946,10555010,10555074,6291456,6291456,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,2172833,6291456,2172865,2172897,2172929,2172961,6291456,2172993,6291456,2173025,6291456,2173057,6291456,2173089,6291456]),
+  new Uint32Array([2245986,2246050,2246113,2246145,2208321,2246177,2246209,2246241,2246273,2246305,2246337,2218945,2246369,2246401,2246433,0]),
+  new Uint32Array([6291456,0,6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,0,0,23068672,6291456,23068672,23068672]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,2190721]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,23068672,6291456,6291456]),
+  new Uint32Array([2168321,6291456,2168353,6291456,2168385,6291456,2168417,6291456,2168449,6291456,2168481,6291456,2168513,6291456,2168545,6291456]),
+  new Uint32Array([23068672,23068672,23068672,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([6291456,0,6291456,6291456,6291456,6291456,0,0,0,6291456,6291456,0,6291456,0,6291456,6291456]),
+  new Uint32Array([2139426,2160834,2160898,2160962,2134242,2161026,2161090,2161154,2161218,2161282,2161346,2161410,2138658,2161474,2161538,2134722]),
+  new Uint32Array([2178785,6291456,2178817,6291456,2178849,6291456,2178881,6291456,2178913,6291456,2178945,6291456,2178977,6291456,2179009,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456]),
+  new Uint32Array([6291456,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2098209,2167297,2111137,6291456]),
+  new Uint32Array([2171393,6291456,2171425,6291456,2171457,6291456,2171489,6291456,2171521,6291456,2171553,6291456,2171585,6291456,2171617,6291456]),
+  new Uint32Array([2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441,2098209,2111137,2105505,2098241,2108353,2108417,2105825,2111713]),
+  new Uint32Array([0,0,0,0,0,0,0,23068672,0,0,0,0,2144834,2144898,0,2144962]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,0,0,23068672]),
+  new Uint32Array([2108193,2112481,2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441,2098209,0,2105505,2098241]),
+  new Uint32Array([6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,2202049,6291456,2202081,6291456,2202113,6291456,2202145,6291456,2202177,6291456,2202209,6291456,2202241,6291456]),
+  new Uint32Array([10501155,10501251,10501347,10501443,10501539,10501635,10501731,10501827,10501923,10502019,2141731,2105505,2098177,2155586,2166530,0]),
+  new Uint32Array([10610305,10610337,10575585,2221761,10610401,10610433,10502177,0,10610465,10610497,10610529,10610561,0,0,0,0]),
+  new Uint32Array([2102081,2102209,2100833,2100737,2098337,2101441,2101569,2101697,2101825,2101953,2102081,2102209,2100833,2100737,2098337,2101441]),
+  new Uint32Array([2146882,2146946,2147010,2147074,2147138,2147202,2147266,2147330,2146882,2146946,2147010,2147074,2147138,2147202,2147266,2147330]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0]),
+  new Uint32Array([10502307,10502403,10502499,10502595,10502691,10502787,10502883,10502979,10503075,10503171,10503267,10503363,10503459,10503555,10503651,10503747]),
+  new Uint32Array([2179937,2179969,2180001,2180033,2156545,2180065,2156577,2180097,2180129,2180161,2180193,2180225,2180257,2180289,2156737,2180321]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456,0,0,0,6291456,0,0,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2165764,2140004]),
+  new Uint32Array([2177281,6291456,2177313,6291456,2177345,6291456,2177377,6291456,2177409,6291456,2177441,6291456,2177473,6291456,2177505,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2180641,6291456,6291456,6291456]),
+  new Uint32Array([2105601,2112289,2108193,2112481,2112577,0,2098305,2108321,2108289,2100865,2113153,2108481,2113345,0,2098209,2111137]),
+  new Uint32Array([0,6291456,6291456,6291456,0,6291456,0,6291456,0,0,6291456,6291456,0,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456]),
+  new Uint32Array([2221985,2165601,2165601,2165665,2165665,2222017,2222017,2165729,2165729,2158913,2158913,2158913,2158913,2097281,2097281,2105921]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,0,23068672,23068672,23068672,0,23068672,23068672,23068672,23068672,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2149634,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2176897,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,2176929,6291456,2176961,6291456,2176993,6291456]),
+  new Uint32Array([2172641,6291456,2172673,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2172705,2172737,6291456,2172769,2172801,6291456]),
+  new Uint32Array([2099173,2104196,2121667,2099395,2121763,2152258,2152322,2098946,2152386,2121859,2121955,2099333,2122051,2104324,2099493,2122147]),
+  new Uint32Array([2187041,6291456,6291456,6291456,6291456,2098241,2098241,2108353,2100897,2111905,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,2145794,6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,2145858,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,0,0,6291456,0]),
+  new Uint32Array([0,2105921,2097729,0,2097377,0,0,2106017,0,2097505,2105889,2097185,2097697,2135777,2097633,2097441]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([14680064,2098209,2111137,2105505,2098241,2108353,2108417,2105825,2111713,2100897,2111905,2105473,2105569,2105601,2112289,2108193]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,0,6291456,23068672]),
+  new Uint32Array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23068672]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2146114,6291456,6291456,6291456,0,0,0]),
+  new Uint32Array([2105921,2105921,2105921,2222049,2222049,2130977,2130977,2130977,2130977,2160065,2160065,2160065,2160065,2097729,2097729,2097729]),
+  new Uint32Array([2194529,2194561,2194593,2119777,2119873,2194625,2194657,2194689,2194721,2194753,2194785,2194817,2194849,2194881,2194913,2194945]),
+  new Uint32Array([0,0,0,2156546,2156610,2156674,2156738,2156802,0,0,0,0,0,2156866,23068672,2156930]),
+  new Uint32Array([23068672,23068672,23068672,0,0,0,0,23068672,23068672,0,0,23068672,23068672,23068672,0,0]),
+  new Uint32Array([2214369,2214401,2214433,2214465,2214497,2214529,2214561,2214593,2194945,2214625,2195041,2214657,2214689,2214721,6291456,6291456]),
+  new Uint32Array([2183585,6291456,2183617,6291456,2183649,6291456,2183681,6291456,2183713,6291456,2183745,6291456,2183777,6291456,2183809,6291456]),
+  new Uint32Array([2105601,2169121,2108193,2170049,2180993,2181025,2112481,2108321,2108289,2181057,2170497,2100865,2181089,2173601,2173633,2173665]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,0,0,2185729,2185761,2185793,2185825,2185857,2185889,0,0]),
+  new Uint32Array([0,10537921,10610689,10610273,10610497,10610529,10610305,10610721,10489601,10489697,10610337,10575585,10554529,2221761,2197185,10496577]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2201857,6291456,2201889,6291456,2201921,6291456,2201953,6291456,2201985,6291456,2202017,6291456,2176193,2176257,23068672,23068672]),
+  new Uint32Array([6291456,6291456,23068672,23068672,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([10554529,2221089,0,10502113,10562017,10537921,10538049,2221121,2221153,0,0,0,0,0,0,0]),
+  new Uint32Array([2181569,2170561,2181601,2181633,2170753,2181665,2172897,2170881,2181697,2170913,2172929,2113441,2181729,2181761,2171009,2173761]),
+  new Uint32Array([23068672,23068672,23068672,23068672,6291456,23068672,23068672,23068672,6291456,23068672,23068672,23068672,23068672,23068672,0,0]),
+  new Uint32Array([2166978,2167042,2099169,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2180545,6291456,6291456,6291456]),
+  new Uint32Array([2231265,2231297,2193601,2231329,2231361,2231393,2231425,2231457,2231489,2116513,2116705,2231521,2200481,2199873,2200513,2231553]),
+  new Uint32Array([10518915,10519011,10519107,10519203,2162242,2162306,2159554,2162370,2159362,2159618,2105922,2162434,2159746,2162498,2159810,2159874]),
+  new Uint32Array([2187649,2187681,2187713,2187745,2187777,2187809,2187841,2187873,2187905,2187937,2187969,2188001,2188033,2188065,2188097,2188129]),
+  new Uint32Array([2161730,2161794,2135586,2161858,2161922,2137186,2131810,2160290,2135170,2161986,2137954,2162050,2162114,2162178,10518723,10518819]),
+  new Uint32Array([2235073,2235106,2235169,2235201,0,2191937,2235233,2235265,2192001,2235297,2235329,2235362,2235425,2235458,2235521,2235553]),
+  new Uint32Array([10506627,10506723,10506819,10506915,10507011,10507107,10507203,10507299,10507395,10507491,10507587,10507683,10507779,10507875,10507971,10508067]),
+  new Uint32Array([2187105,2221473,2221505,2221537,2221569,6291456,6291456,10610209,10610241,10537986,10537986,10537986,10537986,10609857,10609857,10609857]),
+  new Uint32Array([23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0]),
+  new Uint32Array([2175873,2175905,2175937,2175969,2176001,2176033,2176065,2176097,2176129,2176161,2176193,2176225,2176257,2176289,2176321,2176353]),
+  new Uint32Array([2140006,2140198,2140390,2140582,2140774,23068672,23068672,23068672,23068672,23068672,6291456,6291456,6291456,23068672,23068672,23068672]),
+  new Uint32Array([2215905,2207041,2153185,2237057,2237089,2237121,2237153,2237185,2237218,2237281,2237313,2237345,2237377,2237409,2237442,2237505]),
+  new Uint32Array([2108193,2112481,2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441,2098209,2111137,2105505,2098241]),
+  new Uint32Array([0,23068672,0,0,0,0,0,0,0,2145154,2145218,2145282,6291456,0,2145346,0]),
+  new Uint32Array([0,0,0,0,10531458,10495395,2148545,2143201,2173473,2148865,2173505,0,2173537,0,2173569,2149121]),
+  new Uint32Array([6291456,6291456,6291456,0,0,0,0,0,0,0,0,0,0,0,0,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,23068672,23068672,23068672,6291456,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([10554529,2221089,0,0,10562017,10502113,10538049,10537921,2221185,10489601,10489697,10609889,10609921,2141729,2141793,10610273]),
+  new Uint32Array([2141923,2142019,2142115,2142211,2142307,2142403,2142499,2142595,2142691,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,0]),
+  new Uint32Array([2099233,2122017,2200641,2098113,2121537,2103201,2200673,2104033,2121857,2121953,2122401,2099649,2099969,2123009,2100129,2100289]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,18923970,23068672,23068672,23068672,0,6291456,6291456]),
+  new Uint32Array([2189761,6291456,2189793,6291456,2189825,6291456,2189857,6291456,2189889,6291456,2189921,6291456,2189953,6291456,2189985,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0]),
+  new Uint32Array([23068672,23068672,23068672,23068672,0,0,0,0,0,0,0,0,6291456,6291456,6291456,6291456]),
+  new Uint32Array([18884449,18884065,23068672,18884417,18884034,18921185,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,18874368]),
+  new Uint32Array([2101569,2101697,2101825,2101953,2102081,2102209,2100833,2100737,2098337,2101441,2101569,2101697,2101825,2101953,2102081,2102209]),
+  new Uint32Array([2101922,2102050,2102178,2102306,10498755,10498851,10498947,10499043,10499139,10499235,10499331,10499427,10499523,10489604,10489732,10489860]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,0,0,0,0,0]),
+  new Uint32Array([0,2105921,2097729,2106081,0,2097601,2162337,2106017,2133281,2097505,0,2097185,2097697,2135777,2097633,2097441]),
+  new Uint32Array([2218625,2241890,2241954,2242018,2242082,2242145,2242177,2242177,2218657,2219681,2242209,2242241,2242273,2242306,2242369,2208481]),
+  new Uint32Array([6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,0,0,0,0]),
+  new Uint32Array([6291456,6291456,0,0,0,0,0,0,0,6291456,6291456,6291456,6291456,0,0,0]),
+  new Uint32Array([2169729,6291456,2169761,6291456,2169793,6291456,2169825,6291456,2169857,2169889,6291456,2169921,6291456,2143329,6291456,2098305]),
+  new Uint32Array([2162178,2163202,2163266,2135170,2136226,2161986,2137954,2159426,2159490,2163330,2159554,2163394,2159682,2139522,2136450,2159746]),
+  new Uint32Array([2173953,2173985,0,2174017,2174049,2174081,2174113,2174145,2174177,2149057,2174209,2174241,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2213409,2213441,2213473,2213505,2213537,2213569,2213601,2213633,2213665,2195649,2213697,2213729,2213761,2213793,2213825,2213857]),
+  new Uint32Array([2183073,6291456,2183105,6291456,2183137,6291456,2183169,6291456,2183201,6291456,2183233,6291456,2183265,6291456,2183297,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([0,0,0,0,0,0,0,23068672,0,0,0,0,0,0,0,6291456]),
+  new Uint32Array([6291456,6291456,0,0,0,0,0,0,0,6291456,0,0,0,0,0,0]),
+  new Uint32Array([2171873,6291456,2171905,6291456,2171937,6291456,2171969,6291456,2172001,6291456,2172033,6291456,2172065,6291456,2172097,6291456]),
+  new Uint32Array([10575489,2098209,2111137,2105505,2098241,2108353,2108417,2105825,2111713,2100897,2111905,2105473,2105569,2105601,2112289,2108193]),
+  new Uint32Array([2172129,6291456,2172161,6291456,2172193,6291456,2172225,6291456,2172257,6291456,2172289,6291456,2172321,6291456,2172353,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,6291456,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2231873,2231905,2231937,2231970,2232033,2215425,2232065,2232097,2232129,2232161,2215457,2232193,2232225,2232258,2215489,2232321]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,14680064,14680064,14680064,14680064,14680064,14680064]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,23068672,0,0,0,0,23068672]),
+  new Uint32Array([2217249,2217281,2217313,2217345,2217377,2217409,2217441,2217473,2215617,2217505,2217537,2217569,2214753,2217601,2217633,2217665]),
+  new Uint32Array([2170273,2170305,6291456,2170337,2170369,6291456,2170401,2170433,2170465,6291456,6291456,6291456,2170497,2170529,6291456,2170561]),
+  new Uint32Array([2188641,6291456,2188673,2188705,2188737,6291456,6291456,2188769,6291456,2188801,6291456,2188833,6291456,2180897,2181473,2180865]),
+  new Uint32Array([10489988,10490116,10490244,10490372,10490500,10490628,10490756,10490884,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2147393,2147457,2147521,2147585,2147649,2147713,2147777,2147841]),
+  new Uint32Array([2244833,2244865,2244897,2244929,2244961,2244993,2245025,2245058,2210209,2245121,2245153,2245185,2245217,2245249,2245281,2216769]),
+  new Uint32Array([2185473,6291456,2185505,6291456,2185537,6291456,2185569,6291456,2185601,6291456,2185633,6291456,2185665,6291456,2185697,6291456]),
+  new Uint32Array([23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2220417,2220417,2220449,2220449,2220481,2220481,2220513,2220513,2220545,2220545,2220577,2220577,2220609,2220609,2220641,2220641]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,2144002,0,6291456,6291456,0,0,6291456,6291456,6291456]),
+  new Uint32Array([2198849,2198881,2198913,2198945,2198977,2199009,2199041,2199073,2199105,2199137,2199169,2199201,2199233,2199265,2199297,2199329]),
+  new Uint32Array([2173825,2153473,2173857,2173889,2173921,2173953,2173985,2173761,2174017,2174049,2174081,2174113,2174145,2174177,2149057,2230753]),
+  new Uint32Array([0,0,0,0,0,0,0,2180577,0,0,0,0,0,2180609,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,0,0,6291456,6291456]),
+  new Uint32Array([23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0]),
+  new Uint32Array([23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([10508163,10508259,10508355,10508451,2200097,2200129,2192705,2200161,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2116513,2190785,2190817,2190849,2190881,2190913,2116609,2190945,2190977,2191009,2191041,2117185,2191073,2191105,2191137,2191169]),
+  new Uint32Array([2228642,2228706,2228770,2228834,2228898,2228962,2229026,2229090,2229154,2229218,2229282,2229346,2229410,2229474,2229538,2229602]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0]),
+  new Uint32Array([23068672,23068672,23068672,0,0,0,23068672,23068672,23068672,0,23068672,23068672,23068672,23068672,0,0]),
+  new Uint32Array([2236641,2236673,2236705,2215809,2236738,2236801,2236833,2236865,2217921,2236865,2236897,2215873,2236929,2236961,2236993,2237025]),
+  new Uint32Array([2178017,6291456,2178049,6291456,2178081,6291456,2178113,6291456,2178145,6291456,2178177,6291456,2178209,6291456,2178241,6291456]),
+  new Uint32Array([10553858,2165314,10518722,6291456,10518818,0,10518914,2130690,10519010,2130786,10519106,2130882,10519202,2165378,10554050,2165506]),
+  new Uint32Array([0,0,2135491,2135587,2135683,2135779,2135875,2135971,2135971,2136067,2136163,2136259,2136355,2136355,2136451,2136547]),
+  new Uint32Array([23068672,23068672,23068672,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456]),
+  new Uint32Array([6291456,6291456,23068672,6291456,6291456,6291456,23068672,6291456,6291456,6291456,6291456,23068672,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2213889,2213921,2213953,2213985,2214017,2214049,2214081,2194145,2214113,2214145,2214177,2214209,2214241,2214273,2214305,2214337]),
+  new Uint32Array([6291456,6291456,6291456,0,0,0,0,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,0,23068672,0,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([2100897,2100898,2100899,2150018,2100865,2100866,2100867,2100868,2150082,2108481,2109858,2109859,2105569,2105505,2098241,2105601]),
+  new Uint32Array([2097217,2097505,2097505,2097505,2097505,2165570,2165570,2165634,2165634,2165698,2165698,2097858,2097858,0,0,2097152]),
+  new Uint32Array([23068672,6291456,23068672,23068672,23068672,6291456,6291456,23068672,23068672,6291456,6291456,6291456,6291456,6291456,23068672,23068672]),
+  new Uint32Array([10503843,10503939,10504035,10504131,10504227,10504323,10504419,10504515,10504611,10504707,10504803,10504899,10504995,10491140,10491268,0]),
+  new Uint32Array([2173697,2173729,2148801,2173761,2143969,2173793,2173825,2153473,2173857,2173889,2173921,2173953,2173985,2173761,2174017,2174049]),
+  new Uint32Array([2242881,2242914,2242977,2243009,2243041,2243074,2243137,2243169,2243201,2243233,2243265,2243298,2243361,2243393,2243425,2243457]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([2222401,2222433,2222465,10531394,2222497,2222529,2222561,0,2222593,2222625,2222657,2222689,2222721,2222753,2222785,0]),
+  new Uint32Array([2244194,2244257,2244289,2244321,2244353,2244385,2244417,2244450,2244514,2244578,2244642,2236193,2244705,2244737,2244769,2244801]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,23068672,23068672]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,23068672,23068672,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2105570,2156034,2126947,2156098,2153666,2127043,2127139,2156162,0,2127235,2156226,2156290,2156354,2156418,2127331,2127427]),
+  new Uint32Array([6291456,6291456,2148418,2148482,2148546,0,6291456,2148610,2186497,2186529,2148417,2148545,2148482,10495778,2143969,10495778]),
+  new Uint32Array([2183841,6291456,2183873,6291456,2183905,6291456,2183937,6291456,2183969,6291456,2184001,6291456,2184033,6291456,2184065,6291456]),
+  new Uint32Array([2187137,2187169,2187201,2187233,2187265,2187297,2187329,2187361,2187393,2187425,2187457,2187489,2187521,2187553,2187585,2187617]),
+  new Uint32Array([2184961,6291456,2184993,6291456,2185025,6291456,2185057,6291456,2185089,6291456,2185121,6291456,2185153,6291456,2185185,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,0,23068672,23068672,23068672,0,23068672,23068672,23068672,0,0]),
+  new Uint32Array([2173921,2173953,2173985,2174017,2174017,2174049,2174081,2174113,2174145,2174177,2149057,2230785,2173697,2173761,2173793,2174113]),
+  new Uint32Array([2212001,2212033,2212065,2212097,2212129,2212161,2212193,2212225,2212257,2212289,2212321,2212353,2212385,2212417,2212449,2207265]),
+  new Uint32Array([2234562,2234626,2234689,2234721,2234753,2234785,2234817,2234849,0,2234881,2234913,2234913,2234946,2235009,2235041,2209569]),
+  new Uint32Array([2194977,2195009,2195041,2195073,2195105,2195137,2195169,2195201,2195233,2195265,2195297,2195329,2195361,2195393,2195425,2195457]),
+  new Uint32Array([2192609,2230913,2230945,2152257,2116609,2230977,2231009,2200033,2231041,2231073,2231105,2212449,2231137,2231169,2231201,2231233]),
+  new Uint32Array([23068672,6291456,6291456,6291456,6291456,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2219969,2157121,2157441,2157505,2157889,2157953,2220001,2158465,2158529,10575585,2156994,2157058,2129923,2130019,2157122,2157186]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,18874368,18874368,18874368,0,0]),
+  new Uint32Array([2174081,2174113,2174145,2174177,2149057,2230785,2173697,2173761,2173793,2174113,2173985,2173953,2148481,2173601,2173633,2173665]),
+  new Uint32Array([2133089,2133281,2133281,2133281,2133281,2160577,2160577,2160577,2160577,2097441,2097441,2097441,2097441,2133857,2133857,2133857]),
+  new Uint32Array([23068672,6291456,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2182049,6291456,2182081,6291456,2182113,6291456,2182145,6291456,2182177,6291456,2182209,6291456,2182241,6291456,2182273,6291456]),
+  new Uint32Array([2178529,6291456,2178561,6291456,2178593,6291456,2178625,6291456,2178657,6291456,2178689,6291456,2178721,6291456,2178753,6291456]),
+  new Uint32Array([2221025,2221025,2221057,2221057,2159329,2159329,2159329,2159329,2097217,2097217,2158914,2158914,2158978,2158978,2159042,2159042]),
+  new Uint32Array([2169217,6291456,2169249,6291456,2169281,6291456,2169313,6291456,2169345,6291456,2169377,6291456,2169409,6291456,2169441,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2183329,6291456,2183361,6291456,2183393,6291456,2183425,6291456,2183457,6291456,2183489,6291456,2183521,6291456,2183553,6291456]),
+  new Uint32Array([2214849,2218433,2218465,2218497,2218529,2218561,2214881,2218593,2218625,2218657,2218689,2218721,2218753,2216545,2218785,2218817]),
+  new Uint32Array([2249346,2249409,2249442,2249506,2249570,2196705,2249633,2196833,2249665,2249697,2249729,2249761,2196993,2249794,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,0,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2182305,6291456,2182337,6291456,2182369,6291456,2182401,6291456,2182433,6291456,2182465,6291456,2182497,6291456,2182529,6291456]),
+  new Uint32Array([2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441,2100833,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2218721,2242401,2242434,2216385,2242498,2242562,2215009,2242625,2242657,2216481,2242689,2242721,2242754,2242818,2242818,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2187073,2187105,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,0,0,0,0,0,0,0,0,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,0,0,0,0,0]),
+  new Uint32Array([2173985,2174017,2174017,2174049,2174081,2174113,2174145,2174177,2149057,2230785,2173697,2173761,2173793,2174113,2173985,2173953]),
+  new Uint32Array([2237537,2237569,2237601,2237633,2237665,2237697,2237729,2237761,2215937,2237793,2237826,2237889,2237921,2237953,2237985,2216001]),
+  new Uint32Array([2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441,2098209,2111137,0,2098241,2108353,2108417,2105825,0]),
+  new Uint32Array([2134145,2097153,2134241,0,2132705,2130977,2160065,2131297,0,2133089,2160577,2133857,2230817,0,2230849,0]),
+  new Uint32Array([2160002,2160066,2160130,2160194,2160258,2132066,2131010,2131106,2106018,2131618,2160322,2131298,2132034,2131938,2137410,2132226]),
+  new Uint32Array([6291456,6291456,6291456,6291456,0,0,0,0,0,0,0,0,0,0,0,6291456]),
+  new Uint32Array([2184449,6291456,2184481,6291456,2184513,6291456,2184545,6291456,2184577,6291456,2184609,6291456,2184641,6291456,2184673,6291456]),
+  new Uint32Array([0,6291456,6291456,0,6291456,0,0,6291456,6291456,0,6291456,0,0,6291456,0,0]),
+  new Uint32Array([2205729,2205761,2205793,2205825,2205857,2205889,2205921,2205953,2205985,2206017,2206049,2206081,2206113,2206145,2206177,2206209]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2143170,2168993,6291456,2169025,6291456,2169057,6291456,2169089,6291456,2143234,2169121,6291456,2169153,6291456,2169185,6291456]),
+  new Uint32Array([2110051,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([10485857,6291456,6291456,6291456,6291456,6291456,6291456,6291456,10495394,6291456,2098209,6291456,6291456,2097152,6291456,10531394]),
+  new Uint32Array([0,6291456,6291456,6291456,6291456,6291456,6291456,0,0,6291456,6291456,6291456,6291456,6291456,6291456,0]),
+  new Uint32Array([2214369,2234081,2234113,2234145,2234177,2234209,2234241,2234273,2234305,2234338,2234401,2234433,2234465,2230977,2234497,2234529]),
+  new Uint32Array([2220641,2220641,2220673,2220673,2220673,2220673,2220705,2220705,2220705,2220705,2220737,2220737,2220737,2220737,2220769,2220769]),
+  new Uint32Array([0,0,2198209,2198241,2198273,2198305,2198337,2198369,0,0,2198401,2198433,2198465,0,0,0]),
+  new Uint32Array([14680064,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2173985,2173953,2148481,2173601,2173633,2173665,2173697,2173729,2148801,2173761,2143969,2173793,2173825,2153473,2173857,2173889]),
+  new Uint32Array([2209601,2209633,2209665,2209697,2209729,2209761,2209793,2209825,2209857,2209889,2209921,2209953,2209985,2210017,2210049,2210081]),
+  new Uint32Array([10501539,10501635,10501731,10501827,10501923,10502019,2098209,2111137,2105505,2098241,2108353,2108417,2105825,2111713,2100897,2111905]),
+  new Uint32Array([2220289,2220289,2220321,2220321,2220321,2220321,2220353,2220353,2220353,2220353,2220385,2220385,2220385,2220385,2220417,2220417]),
+  new Uint32Array([2173697,2173729,2148801,2173761,2143969,2173793,2173825,2153473,2173857,2173889,2173921,2173953,2173985,2174017,2174017,2174049]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,0,0]),
+  new Uint32Array([6291456,6291456,23068672,23068672,23068672,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2113153,2108481,2113345,2113441,2098209,2111137,2105505,2098241,2108353,2108417,2105825,2111713,2100897,2111905,2105473,2105569]),
+  new Uint32Array([2222818,2222882,2222946,2223010,2223074,2223138,2223202,2223266,2223330,2223394,2223458,2223522,2223586,2223650,2223714,2223778]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672]),
+  new Uint32Array([2248801,2248834,2248897,2248929,2248961,2248993,2249025,2249057,2249089,2249122,2219393,2249185,2249217,2249249,2249281,2249313]),
+  new Uint32Array([0,2179553,2179585,2179617,2179649,2144001,2179681,2179713,2179745,2179777,2179809,2156705,2179841,2156833,2179873,2179905]),
+  new Uint32Array([6291456,23068672,6291456,2145602,23068672,23068672,23068672,23068672,23068672,23068672,0,23068672,23068672,6291456,0,0]),
+  new Uint32Array([2204705,2204737,2204769,2204801,2204833,2204865,2204897,2204929,2204961,2204993,2205025,2205057,2205089,2205121,2205153,2205185]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2168577,6291456,2168609,6291456,2168641,6291456,2168673,6291456,2168705,6291456,2168737,6291456,2168769,6291456,2168801,6291456]),
+  new Uint32Array([10485857,10485857,10485857,10485857,10485857,10485857,10485857,10485857,10485857,10485857,10485857,2097152,4194304,4194304,0,0]),
+  new Uint32Array([2238497,2238529,2216033,2238562,2238625,2238657,2238689,2219617,2238721,2238753,2238785,2238817,2238850,2238913,2238945,2238977]),
+  new Uint32Array([2143042,6291456,2143106,2143106,2168833,6291456,2168865,6291456,6291456,2168897,6291456,2168929,6291456,2168961,6291456,2143170]),
+  new Uint32Array([6291456,6291456,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2204193,2204225,2204257,2204289,2204321,2204353,2204385,2204417,2204449,2204481,2204513,2204545,2204577,2204609,2204641,2204673]),
+  new Uint32Array([2202753,6291456,2202785,6291456,2202817,6291456,2202849,6291456,2202881,6291456,2202913,6291456,2202945,6291456,2202977,6291456]),
+  new Uint32Array([23068672,23068672,2190657,6291456,0,0,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2108353,2108417,2105825,2111713,2100897,2111905,2105473,2105569,2105601,2112289,2108193,2112481,2112577,2098177,2098305,2108321]),
+  new Uint32Array([2189249,6291456,2189281,6291456,2189313,6291456,2189345,6291456,2189377,6291456,2189409,6291456,2189441,6291456,2189473,6291456]),
+  new Uint32Array([2147394,2147458,2147522,2147586,2147650,2147714,2147778,2147842,2147394,2147458,2147522,2147586,2147650,2147714,2147778,2147842]),
+  new Uint32Array([2228450,2228514,2228578,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,6291456,6291456]),
+  new Uint32Array([2162562,2162626,2131362,2162690,2159938,2160002,2162754,2162818,2160130,2162882,2160194,2160258,2160834,2160898,2161026,2161090]),
+  new Uint32Array([2184193,6291456,2184225,6291456,2184257,6291456,2184289,6291456,2184321,6291456,2184353,6291456,2184385,6291456,2184417,6291456]),
+  new Uint32Array([2175361,2175393,2175425,2175457,2175489,2175521,2175553,2175585,2175617,2175649,2175681,2175713,2175745,2175777,2175809,2175841]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,0,6291456,6291456,6291456,6291456,0,0]),
+  new Uint32Array([2190017,6291456,2190049,6291456,2190081,6291456,2190113,6291456,2190145,6291456,2190177,6291456,2190209,6291456,2190241,6291456]),
+  new Uint32Array([2108289,2100865,2113153,2108481,2113345,2113441,2098209,2111137,2105505,2098241,0,2108417,0,2111713,2100897,2111905]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,2143298,2143298,2143298,2143362,2143362,2143362,2143426,2143426,2143426,2171105,6291456,2171137]),
+  new Uint32Array([2120162,2120258,2151618,2151682,2151746,2151810,2151874,2151938,2152002,2120035,2120131,2120227,2152066,2120323,2152130,2120419]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2238017,2238049,2238081,2238113,2238145,2238177,2238209,2238241,2207937,2218177,2238273,2238305,2238337,2238370,2238433,2238465]),
+  new Uint32Array([2233153,2233185,2233185,2233185,2233218,2233281,2233313,2233345,2233378,2233441,2233473,2233505,2233537,2233569,2233601,2233633]),
+  new Uint32Array([6291456,6291456,2145922,6291456,6291456,6291456,6291456,2145986,6291456,6291456,6291456,6291456,2146050,6291456,6291456,6291456]),
+  new Uint32Array([2100833,2100737,2098337,2101441,2101569,2101697,2101825,2101953,2102081,2102209,10502113,10562017,10610401,10502177,10610433,10538049]),
+  new Uint32Array([2099521,2099105,2120705,2098369,2120801,2103361,2097985,2098433,2121377,2121473,2099169,2099873,2098401,2099393,2152609,2100033]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,23068672,23068672,23068672]),
+  new Uint32Array([6291456,0,6291456,6291456,6291456,6291456,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,0,6291456,0,23068672,23068672,23068672,23068672,23068672,23068672,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,0,0,23068672,6291456,23068672,23068672]),
+  new Uint32Array([0,2105921,2097729,0,2097377,0,0,2106017,2133281,2097505,2105889,0,2097697,2135777,2097633,2097441]),
+  new Uint32Array([2132514,2132610,2160386,2133090,2133186,2160450,2160514,2133282,2160578,2133570,2106178,2160642,2133858,2160706,2160770,2134146]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,23068672,23068672,0,0,0,0,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,23068672,23068672,6291456,23068672,23068672,6291456,23068672,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2182817,6291456,2182849,6291456,2182881,6291456,2182913,6291456,2182945,6291456,2182977,6291456,2183009,6291456,2183041,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,2197217,6291456,2117377,2197249,2197281,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,0,6291456,6291456,6291456,6291456,0,6291456]),
+  new Uint32Array([6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2193505,2193537,2193569,2193601,2193633,2193665,2193697,2193729,2193761,2193793,2193825,2193857,2193889,2193921,2193953,2193985]),
+  new Uint32Array([0,0,2097729,0,0,0,0,2106017,0,2097505,0,2097185,0,2135777,2097633,2097441]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0,0,0,2190689]),
+  new Uint32Array([2218145,2214785,2207937,2218177,2218209,2192961,2210113,2212769,2218241,2218273,2216129,2218305,2216161,2218337,2218369,2218401]),
+  new Uint32Array([2184097,6291456,2184129,6291456,2184161,6291456,6291456,6291456,6291456,6291456,2146818,2183329,6291456,6291456,2142978,6291456]),
+  new Uint32Array([6291456,0,23068672,23068672,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,2190753,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,0,0,0,0,0,0,23068672,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,23068672,6291456,23068672,6291456,23068672,6291456,6291456,6291456,6291456,23068672,23068672]),
+  new Uint32Array([0,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2097281,2105921,2097729,2106081,2097377,2097601,2162337,2106017,2133281,2097505,0,2097185,2097697,2135777,2097633,2097441]),
+  new Uint32Array([2176641,6291456,2176673,6291456,2176705,6291456,2176737,6291456,2176769,6291456,2176801,6291456,2176833,6291456,2176865,6291456]),
+  new Uint32Array([2196641,2208641,2208673,2208705,2208737,2208769,2208801,2208833,2208865,2208897,2208929,2208961,2208993,2209025,2209057,2209089]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456]),
+  new Uint32Array([2167617,2167649,2167681,2167713,2167745,2167777,2167809,6291456,2167841,2167873,2167905,2167937,2167969,2168001,2168033,4240130]),
+  new Uint32Array([2165122,2163970,2164034,2164098,2164162,2164226,2164290,2164354,2164418,2164482,2164546,2133122,2134562,2132162,2132834,2136866]),
+  new Uint32Array([2112481,2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441,14680064,14680064,14680064,14680064,14680064]),
+  new Uint32Array([2149057,2230753,2148481,2173601,2173633,2173665,2173697,2173729,2148801,2173761,2143969,2173793,2173825,2153473,2173857,2173889]),
+  new Uint32Array([0,0,23068672,6291456,0,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,6291456,6291456]),
+  new Uint32Array([2148801,2173761,2143969,2173793,2173825,2153473,2173857,2173889,2173921,2173953,2173985,2174017,2174017,2174049,2174081,2174113]),
+  new Uint32Array([2243489,2243521,2243554,2243618,2243681,2243714,2243777,2243810,2243873,2243905,2216673,2243938,2244002,2244065,2244098,2244161]),
+  new Uint32Array([2105473,2105569,2105601,2112289,0,2112481,2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441]),
+  new Uint32Array([2100897,2111905,2105473,2105569,2105601,2112289,2108193,2112481,2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481]),
+  new Uint32Array([2125346,2153410,2153474,2127394,2153538,2153602,2153666,2153730,2105507,2105476,2153794,2153858,2153922,2153986,2154050,2105794]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2175777,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2201377,6291456,2201409,6291456,2201441,6291456,2201473,6291456,2201505,6291456,2201537,6291456,2201569,6291456,6291456,23068672]),
+  new Uint32Array([10537282,10495683,2148738,2148802,2148866,0,6291456,2148930,2186561,2173473,2148737,2148865,2148802,10495779,10495875,10495971]),
+  new Uint32Array([0,0,0,0,0,23068672,23068672,0,6291456,6291456,6291456,0,0,0,0,0]),
+  new Uint32Array([2161154,2161410,2138658,2161474,2161538,2097666,2097186,2097474,2162946,2132450,2163010,2163074,2136162,2163138,2161666,2161730]),
+  new Uint32Array([2148481,2173601,2173633,2173665,2173697,2173729,2148801,2173761,2143969,2173793,2173825,2153473,2173857,2173889,2173921,2173953]),
+  new Uint32Array([0,0,0,0,0,0,23068672,23068672,0,0,0,0,2145410,2145474,0,6291456]),
+  new Uint32Array([2125730,2125699,2125795,2125891,2125987,2154114,2154178,2154242,2154306,2154370,2154434,2154498,2126082,2126178,2126274,2126083]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,0,23068672,23068672,23068672,0,23068672,23068672,23068672,23068672,6291456,0]),
+  new Uint32Array([2188161,2188193,2188225,2188257,2188289,2188321,2188353,2188385,2188417,2188449,2188481,2188513,2188545,2188577,2188609,0]),
+  new Uint32Array([2220161,2220161,2220193,2220193,2220193,2220193,2220225,2220225,2220225,2220225,2220257,2220257,2220257,2220257,2220289,2220289]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,0,0,23068672,23068672,0,0,23068672,23068672,23068672,0,0]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,0,0,0,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2189505,6291456,2189537,6291456,2189569,6291456,2189601,6291456,2189633,6291456,2189665,6291456,2189697,6291456,2189729,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,10532162,10532226,10532290,10532354,10532418,10532482,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,0,0,2186177,2186209,2186241,2186273,2186305,2186337,0,0]),
+  new Uint32Array([2219490,2219554,2219617,2219649,2219681,2219714,2219778,2219842,2219905,2219937,0,0,0,0,0,0]),
+  new Uint32Array([6291456,23068672,23068672,23068672,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,6291456]),
+  new Uint32Array([2113345,2113441,2098209,2111137,2105505,2098241,2108353,2108417,2105825,2111713,2100897,2111905,2105473,2105569,2105601,2112289]),
+  new Uint32Array([2196993,2197025,2197057,2197089,2197121,2197153,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2200609,2150786,2150850,2150914,2150978,2151042,2106562,2151106,2150562,2151170,2151234,2151298,2151362,2151426,2151490,2151554]),
+  new Uint32Array([2248193,2248226,2248289,2248321,2248353,2248385,2248418,2248482,2248545,2248577,2248609,2248642,2248705,2248738,2219361,2219361]),
+  new Uint32Array([6291456,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2179297,6291456,2179329,6291456,2179361,6291456,2179393,6291456,2179425,6291456,2179457,6291456,2179489,6291456,2179521,6291456]),
+  new Uint32Array([6291456,6291456,6291456,23068672,6291456,6291456,6291456,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2113153,2108481,2113345,2113441,2230689,2230721,0,0,2148481,2173601,2173633,2173665,2173697,2173729,2148801,2173761]),
+  new Uint32Array([2170593,6291456,2170625,6291456,2170657,6291456,2170689,2170721,6291456,2170753,6291456,6291456,2170785,6291456,2170817,2170849]),
+  new Uint32Array([6291456,6291456,6291456,6291456,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456]),
+  new Uint32Array([2134562,2132162,2132834,2136866,2136482,2164610,2164674,2164738,2164802,2132802,2132706,2164866,2132898,2164930,2164994,2165058]),
+  new Uint32Array([6291456,6291456,2098337,2101441,10531458,2153473,6291456,6291456,10531522,2100737,2108193,6291456,2106499,2106595,2106691,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([23068672,6291456,23068672,23068672,23068672,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0]),
+  new Uint32Array([2188993,6291456,2189025,6291456,2189057,6291456,2189089,6291456,2189121,6291456,2189153,6291456,2189185,6291456,2189217,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2229666,2229730,2229794,2229858,2229922,2229986,2230050,2230114,2230178,2230242,2230306,2230370,2230434,2230498,2230562,2230626]),
+  new Uint32Array([2205217,2205249,2205281,2205313,2205345,2205377,2205409,2205441,2205473,2205505,2205537,2205569,2205601,2205633,2205665,2205697]),
+  new Uint32Array([2195329,2142433,2231585,2231617,2231649,2231681,2118241,2117473,2231713,2231745,2231777,0,0,0,0,0]),
+  new Uint32Array([6291456,0,6291456,0,0,0,6291456,6291456,6291456,6291456,0,0,23068672,6291456,23068672,23068672]),
+  new Uint32Array([2173601,2173761,2174081,2173569,2174241,2174113,2173953,6291456,2174305,6291456,2174337,6291456,2174369,6291456,2174401,6291456]),
+  new Uint32Array([2152450,2152514,2099653,2104452,2099813,2122243,2099973,2152578,2122339,2122435,2122531,2122627,2122723,2104580,2122819,2152642]),
+  new Uint32Array([2163394,2159746,2163458,2131362,2163522,2160130,2163778,2132226,2163842,2132898,2163906,2161410,2138658,2097666,2136162,2163650]),
+  new Uint32Array([6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2129730,2129762,2129858,2129731,2129827,2156482,2156482,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,6291456,6291456,6291456]),
+  new Uint32Array([2138179,2138275,2138371,2138467,2134243,2134435,2138563,2138659,2138755,2138851,2138947,2139043,2138947,2138755,2139139,2139235]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,0,0,0,0,0,6291456,0,0]),
+  new Uint32Array([2224866,2224930,2224994,2225058,2225122,2225186,2225250,2225314,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2169473,6291456,2169505,6291456,2169537,6291456,2169569,6291456,2169601,6291456,2169633,6291456,2169665,6291456,2169697,6291456]),
+  new Uint32Array([2141542,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2220801,2220801,2220801,2220801,2220833,2220833,2220865,2220865,2220865,2220865,2220897,2220897,2220897,2220897,2139873,2139873]),
+  new Uint32Array([0,0,0,0,0,23068672,23068672,0,0,0,0,0,0,0,6291456,0]),
+  new Uint32Array([2173697,2173761,2173793,2174113,2173985,2173953,2148481,2173601,2173633,2173665,2173697,2173729,2148801,2173761,2143969,2173793]),
+  new Uint32Array([23068672,23068672,23068672,23068672,0,0,0,0,0,0,0,0,0,0,0,6291456]),
+  new Uint32Array([2136482,2164610,2164674,2164738,2164802,2132802,2132706,2164866,2132898,2164930,2164994,2165058,2165122,2132802,2132706,2164866]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,0,0,0,0,0,0,23068672,23068672,23068672,23068672]),
+  new Uint32Array([2207649,2207681,2207713,2207745,2207777,2207809,2207841,2207873,2207905,2207937,2207969,2208001,2208033,2208065,2208097,2208129]),
+  new Uint32Array([2123683,2105092,2152706,2123779,2105220,2152770,2100453,2098755,2123906,2124002,2124098,2124194,2124290,2124386,2124482,2124578]),
+  new Uint32Array([0,2221185,2221217,10609857,10609857,10489601,10489697,10609889,10609921,2141729,2141793,2221345,2221377,2221409,2221441,2187073]),
+  new Uint32Array([6291456,6291456,6291456,6291456,0,0,0,6291456,0,0,0,0,0,0,0,10485857]),
+  new Uint32Array([6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([2108417,2181185,2181217,2181249,2170433,2170401,2181281,2181313,2181345,2181377,2181409,2181441,2181473,2181505,2170529,2181537]),
+  new Uint32Array([2185217,6291456,2185249,6291456,2185281,6291456,2185313,6291456,2185345,6291456,2185377,6291456,2185409,6291456,2185441,6291456]),
+  new Uint32Array([2203553,6291456,2203585,6291456,6291456,6291456,2203617,6291456,2203649,6291456,2203681,6291456,2203713,6291456,2203745,6291456]),
+  new Uint32Array([2191201,2191233,2191265,2191297,2191329,2191361,2191393,2117377,2191425,2191457,2191489,2191521,2191553,2191585,2191617,2117953]),
+  new Uint32Array([6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,23068672]),
+  new Uint32Array([2239649,2216065,2212769,2239681,2239713,2239745,2239778,2239841,2239873,2239905,2239937,2218273,2239969,2240002,2240065,2240097]),
+  new Uint32Array([2203969,2204001,2181345,2204033,2204065,6291456,2204097,6291456,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2102402,2102403,6291456,2110050]),
+  new Uint32Array([6291456,6291456,6291456,2186721,6291456,6291456,6291456,6291456,2186753,2186785,2186817,2173569,2186849,10496355,10495395,10575489]),
+  new Uint32Array([2149890,2108323,2149954,6291456,2113441,6291456,2149057,6291456,2113441,6291456,2105473,2167265,2111137,2105505,6291456,2108353]),
+  new Uint32Array([2203009,6291456,2203041,6291456,2203073,6291456,2203105,6291456,2203137,6291456,2203169,6291456,2203201,6291456,2203233,6291456]),
+  new Uint32Array([2181793,6291456,2181825,6291456,2181857,6291456,2181889,6291456,2181921,6291456,2181953,6291456,2181985,6291456,2182017,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2140964,2141156,2140966,2141158,2141350]),
+  new Uint32Array([0,0,0,0,0,0,0,0,0,0,0,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([2197665,2114113,2114209,2197697,2197729,2114305,2197761,2114401,2114497,2197793,2114593,2114689,2114785,2114881,2114977,2197825]),
+  new Uint32Array([2225378,2225442,2225506,2225570,2225634,2225698,2225762,2225826,2225890,2225954,2226018,2226082,2226146,2226210,2226274,2226338]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441,2098209,2111137,2105505,2098241,2108353,2108417]),
+  new Uint32Array([2108353,2108417,0,2105601,2108193,2157121,2157313,2157377,2157441,2100897,6291456,2108419,2173953,2173633,2173633,2173953]),
+  new Uint32Array([2111713,2173121,2111905,2098177,2173153,2173185,2173217,2113153,2113345,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2134435,2134531,2134627,2134723,2134723,2134819,2134819,2134915,2134915,2135011,2105987,2135107,2135203,2135299,2131587,2135395]),
+  new Uint32Array([2098337,2101441,2101569,2101697,2101825,2101953,2102081,2102209,2100833,2100737,2098337,2101441,2101569,2101697,2101825,2101953]),
+  new Uint32Array([23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0]),
+  new Uint32Array([2197665,2114113,2114209,2197697,2197729,2114305,2197761,2114401,2114497,2197793,2114593,2114689,2114785,2114881,2114977,0]),
+  new Uint32Array([2115265,2115361,2115457,2115553,2115649,2115745,2115841,2115937,2116033,2116129,2116225,2116321,2150658,2150722,2200193,6291456]),
+  new Uint32Array([0,0,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,23068672,23068672,23068672]),
+  new Uint32Array([2173281,6291456,2173313,6291456,2173345,6291456,2173377,6291456,0,0,10532546,6291456,6291456,6291456,10562017,2173441]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,0,0]),
+  new Uint32Array([23068672,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2159426,2159490,2159554,2159362,2159618,2159682,2139522,2136450,2159746,2159810,2159874,2130978,2131074,2131266,2131362,2159938]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2203233,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2203265,6291456,2203297,6291456,2203329,2203361,6291456]),
+  new Uint32Array([2134146,2139426,2160962,2134242,2161218,2161282,2161346,2161410,2138658,2134722,2134434,2134818,2097666,2097346,2097698,2105986]),
+  new Uint32Array([2194017,2194049,2194081,2194113,2194145,2194177,2194209,2194241,2194273,2194305,2194337,2194369,2194401,2194433,2194465,2194497]),
+  new Uint32Array([0,23068672,23068672,23068672,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456]),
+  new Uint32Array([10610561,2098209,2111137,2105505,2098241,2108353,2108417,2105825,2111713,2100897,2111905,2105473,2105569,2105601,2112289,2108193]),
+  new Uint32Array([2190273,6291456,2190305,6291456,2190337,6291456,2190369,6291456,2190401,6291456,2190433,6291456,2190465,6291456,2190497,6291456]),
+  new Uint32Array([0,0,0,0,0,0,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2181121,6291456,2188865,6291456,6291456,2188897,6291456,6291456,6291456,6291456,6291456,6291456,2111905,2100865,2188929,2188961]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,0,0,2180673,2180705,2180737,2180769,2180801,2180833,0,0]),
+  new Uint32Array([2098081,2099521,2099105,2120705,2098369,2120801,2103361,2097985,2098433,2121377,2121473,2099169,2099873,2098401,2099393,2152609]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2150402]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,2145666,2145730,6291456,6291456]),
+  new Uint32Array([2133187,2133283,2133283,2133379,2133475,2133571,2133667,2133667,2133763,2133859,2133955,2134051,2134147,2134147,2134243,2134339]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2102404,6291456,6291456,6291456]),
+  new Uint32Array([2239010,2239073,2239105,2239137,2239169,2210113,2239201,2239234,2239298,2239362,2239425,2239458,2239521,2239553,2239585,2239617]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,2100612,6291456,6291456,6291456,6291456,6291456,6291456,6291456,10485857]),
+  new Uint32Array([2195489,2195521,2195553,2195585,2195617,2195649,2117857,2195681,2195713,2195745,2195777,2195809,2195841,2195873,2195905,2195937]),
+  new Uint32Array([2217697,2217729,2217761,2217793,2217825,2217857,2217889,2217921,2217953,2215873,2217985,2215905,2218017,2218049,2218081,2218113]),
+  new Uint32Array([2220033,2220033,2220065,2220065,2220065,2220065,2220097,2220097,2220097,2220097,2220129,2220129,2220129,2220129,2220161,2220161]),
+  new Uint32Array([0,2097153,2134241,0,2132705,0,0,2131297,0,2133089,0,2133857,0,2220769,0,2230881]),
+  new Uint32Array([2211233,2218849,2216673,2218881,2218913,2218945,2218977,2219009,2216833,2219041,2215137,2219073,2216865,2209505,2219105,2216897]),
+  new Uint32Array([6291456,6291456,2202273,6291456,2202305,6291456,2202337,6291456,2202369,6291456,2202401,6291456,2202433,6291456,2202465,6291456]),
+  new Uint32Array([0,23068672,23068672,18923394,23068672,18923458,18923522,18884099,18923586,18884195,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([2134434,2134818,2097666,2097186,2097474,2097698,2105986,2131586,2132450,2131874,2131778,2135970,2135778,2161602,2136162,2161666]),
+  new Uint32Array([2201121,6291456,2201153,6291456,2201185,6291456,2201217,6291456,2201249,6291456,2201281,6291456,2201313,6291456,2201345,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,6291456,6291456]),
+  new Uint32Array([2211041,2211073,2211105,2211137,2211169,2211201,2211233,2211265,2211297,2211329,2211361,2211393,2211425,2211457,2211489,2211521]),
+  new Uint32Array([2195969,2196001,2196033,2196065,2196097,2196129,2196161,2196193,2196225,2196257,2196289,2196321,2196353,2196385,2196417,2196449]),
+  new Uint32Array([2162337,2097633,2097633,2097633,2097633,2132705,2132705,2132705,2132705,2097153,2097153,2097153,2097153,2133089,2133089,2133089]),
+  new Uint32Array([6291456,6291456,6291456,6291456,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,2148545,6291456,2173473,6291456,2148865,6291456,2173505,6291456,2173537,6291456,2173569,6291456,2149121,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456,0,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0]),
+  new Uint32Array([2105825,2111713,2100897,2111905,2105473,2105569,2105601,2112289,2108193,2112481,2112577,2098177,2098305,2108321,2108289,2100865]),
+  new Uint32Array([2207137,2207169,2207201,2207233,2207265,2207297,2207329,2207361,2207393,2207425,2207457,2207489,2207521,2207553,2207585,2207617]),
+  new Uint32Array([2219137,2216961,2219169,2219201,2219233,2219265,2219297,2217025,2215041,2219329,2217057,2219361,2217089,2219393,2197121,2219426]),
+  new Uint32Array([6291456,6291456,23068672,23068672,23068672,6291456,6291456,0,23068672,23068672,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2202113,2204129,2188673,2204161]),
+  new Uint32Array([2105505,2098241,2108353,2108417,2105825,2111713,2100897,2111905,2105473,2105569,2105601,2112289,2108193,2112481,2112577,2098177]),
+  new Uint32Array([23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,0,0]),
+  new Uint32Array([2216385,2118721,2216417,2216449,2216481,2216513,2216545,2211233,2216577,2216609,2216641,2216673,2216705,2216737,2216737,2216769]),
+  new Uint32Array([2216801,2216833,2216865,2216897,2216929,2216961,2216993,2215169,2217025,2217057,2217089,2217121,2217154,2217217,0,0]),
+  new Uint32Array([0,0,2197825,2197857,2197889,2197921,2197953,2197985,0,0,2198017,2198049,2198081,2198113,2198145,2198177]),
+  new Uint32Array([2211553,2210081,2211585,2211617,2211649,2211681,2211713,2211745,2211777,2211809,2209569,2211841,2211873,2211905,2211937,2211969]),
+  new Uint32Array([0,0,2105825,0,0,2111905,2105473,0,0,2112289,2108193,2112481,2112577,0,2098305,2108321]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2150146,6291456,6291456,6291456]),
+  new Uint32Array([0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,6291456,6291456,14680064]),
+  new Uint32Array([2098657,2098049,2200705,2123489,2123681,2200737,2098625,2100321,2098145,2100449,2098017,2098753,2200769,2200801,2200833,0]),
+  new Uint32Array([23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2220929,2220929,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2133857,2134145,2134145,2134145,2134145,2134241,2134241,2134241,2134241,2105889,2105889,2105889,2105889,2097185,2097185,2097185]),
+  new Uint32Array([0,0,0,0,0,0,0,0,0,0,0,0,10499619,10499715,10499811,10499907]),
+  new Uint32Array([2166914,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0]),
+  new Uint32Array([0,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([6291456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23068672]),
+  new Uint32Array([6291456,6291456,6291456,6291456,0,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,0,0,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([2182561,6291456,2182593,6291456,2182625,6291456,2182657,6291456,2182689,6291456,2182721,6291456,2182753,6291456,2182785,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456,6291456]),
+  new Uint32Array([2097152,0,0,0,2097152,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,6291456,23068672,23068672]),
+  new Uint32Array([2247554,2247618,2247681,2247713,2247745,2247778,2247841,2247873,2247905,2247937,2247969,2248001,2248033,2248066,2248129,2248161]),
+  new Uint32Array([6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,2144322,2144386,2144450,2144514,2144578,2144642,2144706,2144770]),
+  new Uint32Array([23068672,23068672,23068672,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2113153,2108481,2113345,2113441,2098209,2111137,0,2098241,2108353,2108417,2105825,0,0,2111905,2105473,2105569]),
+  new Uint32Array([2152194,2121283,2103684,2103812,2097986,2098533,2097990,2098693,2098595,2098853,2099013,2103940,2121379,2121475,2121571,2104068]),
+  new Uint32Array([2206241,2206273,2206305,2206337,2206369,2206401,2206433,2206465,2206497,2206529,2206561,2206593,2206625,2206657,2206689,2206721]),
+  new Uint32Array([6291456,6291456,6291456,6291456,16777216,16777216,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,23068672,23068672,10538818,10538882,6291456,6291456,2150338]),
+  new Uint32Array([6291456,6291456,6291456,0,0,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2215905,2215937,2215969,2216001,2216033,2216065,2216097,2216129,2216161,2216193,2216225,2216257,2105441,2216289,2216321,2216353]),
+  new Uint32Array([2097152,2097152,2097152,2097152,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2146881,2146945,2147009,2147073,2147137,2147201,2147265,2147329]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,6291456,23068672,23068672]),
+  new Uint32Array([0,0,0,0,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2122915,2123011,2123107,2104708,2123203,2123299,2123395,2100133,2104836,2100290,2100293,2104962,2104964,2098052,2123491,2123587]),
+  new Uint32Array([23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456]),
+  new Uint32Array([6291456,2171169,6291456,2171201,6291456,2171233,6291456,2171265,6291456,2171297,6291456,2171329,6291456,6291456,2171361,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2199361,2199393,2199425,2199457,2199489,2199521,2199553,2199585,2199617,2199649,2199681,2199713,2199745,2199777,2199809,0]),
+  new Uint32Array([2113729,2113825,2113921,2114017,2114113,2114209,2114305,2114401,2114497,2114593,2114689,2114785,2114881,2114977,2115073,2115169]),
+  new Uint32Array([2227426,2227490,2227554,2227618,2227682,2227746,2227810,2227874,2227938,2228002,2228066,2228130,2228194,2228258,2228322,2228386]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,0,0,6291456,6291456]),
+  new Uint32Array([2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441,2166594,2127298,2166658,2142978,2141827,2166722]),
+  new Uint32Array([2203393,6291456,2203425,6291456,2203457,6291456,2203489,6291456,6291456,6291456,6291456,2203521,6291456,2181249,6291456,6291456]),
+  new Uint32Array([6291456,2148481,2173601,2173633,2173665,2173697,2173729,2148801,2173761,2143969,2173793,2173825,2153473,2173857,2173889,2173921]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0,6291456]),
+  new Uint32Array([0,0,0,2220961,2220961,2220961,2220961,2144193,2144193,2159201,2159201,2159265,2159265,2144194,2220993,2220993]),
+  new Uint32Array([2100289,2098657,2098049,2200705,2123489,2123681,2200737,2098625,2100321,2098145,2100449,2098017,2098753,2098977,2150241,2150305]),
+  new Uint32Array([2210593,2191777,2210625,2210657,2210689,2210721,2210753,2210785,2210817,2210849,2191265,2210881,2210913,2210945,2210977,2211009]),
+  new Uint32Array([14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064,14680064]),
+  new Uint32Array([2139811,2139907,2097284,2105860,2105988,2106116,2106244,2097444,2097604,2097155,10485778,10486344,2106372,6291456,0,0]),
+  new Uint32Array([2108321,2108289,2113153,2098209,2180865,2180897,2180929,2111137,2098241,2108353,2170241,2170273,2180961,2105825,6291456,2105473]),
+  new Uint32Array([0,0,0,0,0,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2172385,6291456,2172417,6291456,2172449,6291456,2172481,6291456,2172513,6291456,2172545,6291456,2172577,6291456,2172609,6291456]),
+  new Uint32Array([0,0,23068672,23068672,6291456,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,23068672]),
+  new Uint32Array([2174145,2174177,2149057,2230785,2173697,2173761,2173793,2174113,2173985,2173953,2174369,2174369,0,0,2100833,2100737]),
+  new Uint32Array([2100033,2099233,2122017,2200641,2098113,2121537,2103201,2200673,2104033,2121857,2121953,2122401,2099649,2099969,2123009,2100129]),
+  new Uint32Array([2173825,2153473,2173857,2173889,2173921,2173953,2173985,2174017,2174017,2174049,2174081,2174113,2174145,2174177,2149057,2230785]),
+  new Uint32Array([2178273,6291456,2178305,6291456,2178337,6291456,2178369,6291456,2178401,6291456,2178433,6291456,2178465,6291456,2178497,6291456]),
+  new Uint32Array([2173985,2173761,2174017,2174049,2174081,2174113,2174145,2174177,2149057,2230753,2148481,2173601,2173633,2173665,2173697,2173729]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([0,0,0,6291456,6291456,0,0,0,6291456,6291456,6291456,0,0,0,6291456,6291456]),
+  new Uint32Array([2196481,2196513,2196545,2196577,2196609,2196641,2196673,2196705,2196737,2196769,2196801,2196833,2196865,2196897,2196929,2196961]),
+  new Uint32Array([2200417,2119681,2200449,2153313,2199841,2199873,2199905,2200481,2200513,2200545,2200577,2119105,2119201,2119297,2119393,2119489]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,0,0,0,0,0,0,0,0,0,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,6291456,6291456,6291456,6291456,0,0,0,0,0,0,0,0]),
+  new Uint32Array([0,0,23068672,23068672,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2231809,2231841,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2170369,2105569,2098305,2108481,2173249,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,6291456]),
+  new Uint32Array([2100897,2111905,2105473,2105569,2105601,0,2108193,0,0,0,2098305,2108321,2108289,2100865,2113153,2108481]),
+  new Uint32Array([2100897,2100897,2105569,2105569,6291456,2112289,2149826,6291456,6291456,2112481,2112577,2098177,2098177,2098177,6291456,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,0,0,6291456,6291456,6291456]),
+  new Uint32Array([6291456,2169953,2169985,6291456,2170017,6291456,2170049,2170081,6291456,2170113,2170145,2170177,6291456,6291456,2170209,2170241]),
+  new Uint32Array([6291456,6291456,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2181121,2105505,2181153,2167617,2180961]),
+  new Uint32Array([0,0,0,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2200865,6291456,2200897,6291456,2200929,6291456,2200961,6291456,2200993,6291456,2201025,6291456,2201057,6291456,2201089,6291456]),
+  new Uint32Array([2127650,2127746,2127842,2127938,2128034,2128130,2128226,2128322,2128418,2127523,2127619,2127715,2127811,2127907,2128003,2128099]),
+  new Uint32Array([2214753,6291456,2214785,6291456,6291456,2214817,2214849,2214881,2214913,2214945,2214977,2215009,2215041,2215073,2194369,6291456]),
+  new Uint32Array([2143969,2173793,2173825,2153473,2173857,2173889,2173921,2173953,2173985,2173761,2174017,2174049,2174081,2174113,2174145,2174177]),
+  new Uint32Array([2176385,6291456,2176417,6291456,2176449,6291456,2176481,6291456,2176513,6291456,2176545,6291456,2176577,6291456,2176609,6291456]),
+  new Uint32Array([2209121,2209153,2209185,2209217,2209249,2209281,2209313,2209345,2209377,2209409,2209441,2209473,2207265,2209505,2209537,2209569]),
+  new Uint32Array([2134145,2097153,2134241,2105953,2132705,2130977,2160065,2131297,2162049,2133089,2160577,2133857,2230817,2220769,2230849,2230881]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,2186369,0,2186401,0,2186433,0,2186465]),
+  new Uint32Array([2131586,2132450,2135970,2135778,2161602,2136162,2163650,2161794,2135586,2163714,2137186,2131810,2160290,2135170,2097506,2159554]),
+  new Uint32Array([2134145,2097153,2134241,2105953,2132705,2130977,2160065,2131297,2162049,2133089,2160577,2133857,0,0,0,0]),
+  new Uint32Array([2116513,2116609,2116705,2116801,2116897,2116993,2117089,2117185,2117281,2117377,2117473,2117569,2117665,2117761,2117857,2117953]),
+  new Uint32Array([2100737,2098337,2101441,2101569,2101697,2101825,2101953,2102081,2102209,2100802,2101154,2101282,2101410,2101538,2101666,2101794]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2166786,2166850,0,0,0,0]),
+  new Uint32Array([6291456,6291456,6291456,0,6291456,6291456,6291456,6291456,6291456,2109955,6291456,6291456,0,0,0,0]),
+  new Uint32Array([18874368,18874368,18874368,18874368,18874368,18874368,18874368,18874368,18874368,18874368,18874368,18874368,18874368,18874368,18874368,18874368]),
+  new Uint32Array([2130979,2131075,2131075,2131171,2131267,2131363,2131459,2131555,2131651,2131651,2131747,2131843,2131939,2132035,2132131,2132227]),
+  new Uint32Array([0,2177793,6291456,2177825,6291456,2177857,6291456,2177889,6291456,2177921,6291456,2177953,6291456,2177985,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672]),
+  new Uint32Array([6291456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2113345,0,2098209,2111137,2105505,2098241,2108353,2108417,2105825,2111713,2100897,2111905,2105473,2105569,2105601,2112289]),
+  new Uint32Array([2136643,2136739,2136835,2136931,2137027,2137123,2137219,2137315,2137411,2137507,2137603,2137699,2137795,2137891,2137987,2138083]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0]),
+  new Uint32Array([2174433,6291456,2174465,6291456,2174497,6291456,2174529,6291456,2174561,6291456,2174593,6291456,2174625,6291456,2174657,6291456]),
+  new Uint32Array([6291456,0,0,0,0,0,0,23068672,0,0,0,0,0,6291456,6291456,6291456]),
+  new Uint32Array([2235585,2235617,2235649,2235681,2235713,2235745,2235777,2235809,2235841,2235874,2235937,2235969,2236001,2236033,2207905,2236066]),
+  new Uint32Array([0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2198369,2198401,2198433,2198465,0,2198497,2198529,2198561,2198593,2198625,2198657,2198689,2198721,2198753,2198785,2198817]),
+  new Uint32Array([2105473,2105569,2105601,2112289,2108193,2112481,2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441]),
+  new Uint32Array([10496547,10496643,2105505,2149698,6291456,10496739,10496835,2170273,6291456,2149762,2105825,2111713,2111713,2111713,2111713,2168673]),
+  new Uint32Array([6291456,2143490,2143490,2143490,2171649,6291456,2171681,2171713,2171745,6291456,2171777,6291456,2171809,6291456,2171841,6291456]),
+  new Uint32Array([2159106,2159106,2159170,2159170,2159234,2159234,2159298,2159298,2159298,2159362,2159362,2159362,2106401,2106401,2106401,2106401]),
+  new Uint32Array([2105601,2112289,2108193,2112481,2112577,2098177,2098305,2108321,2108289,2100865,2113153,2108481,2113345,2113441,2098209,2111137]),
+  new Uint32Array([6291456,0,6291456,6291456,6291456,6291456,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,0,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2135170,2097506,2130691,2130787,2130883,2163970,2164034,2164098,2164162,2164226,2164290,2164354,2164418,2164482,2164546,2133122]),
+  new Uint32Array([6291456,6291456,4271169,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,2174273]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2206753,2206785,2195425,2206817,2206849,2206881,2206913,2197121,2197121,2206945,2117857,2206977,2207009,2207041,2207073,2207105]),
+  new Uint32Array([2245313,2245345,2245377,2245409,2245442,2245506,2245570,2245633,2245665,2245697,2245729,2245762,2245825,2245858,2245921,2245953]),
+  new Uint32Array([2210113,2195489,2210145,2210177,2210209,2210241,2210273,2210305,2210337,2210369,2210401,2210433,2210465,2210497,2210529,2210561]),
+  new Uint32Array([0,2113729,2197313,2197345,2113825,2197377,2197409,2113921,2197441,2114017,2197473,2197505,2197537,2197569,2197601,2197633]),
+  new Uint32Array([2219105,2219137,2195201,2247042,2247105,2247137,2247169,2247201,2247234,2247298,2247361,2247393,2247425,2247458,2247521,2219169]),
+  new Uint32Array([2218433,2241249,2241281,2241313,2241345,2241378,2241441,2241474,2209665,2241538,2241601,2241634,2241698,2241762,2241825,2241857]),
+  new Uint32Array([2108515,2108611,2100740,2108707,2108803,2108899,2108995,2109091,2109187,2109283,2109379,2109475,2109571,2109667,2109763,2100738]),
+  new Uint32Array([2102788,2102916,2103044,2120515,2103172,2120611,2120707,2098373,2103300,2120803,2120899,2120995,2103428,2103556,2121091,2121187]),
+  new Uint32Array([2158082,2158146,0,2158210,2158274,0,2158338,2158402,2158466,2129922,2158530,2158594,2158658,2158722,2158786,2158850]),
+  new Uint32Array([10499619,10499715,10499811,10499907,10500003,10500099,10500195,10500291,10500387,10500483,10500579,10500675,10500771,10500867,10500963,10501059]),
+  new Uint32Array([2208161,2208193,2208225,2208257,2194401,2208289,2208321,2208353,2208385,2208417,2208449,2208481,2208513,2208545,2208577,2208609]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,10538050,10538114,10538178,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2226402,2226466,2226530,2226594,2226658,2226722,2226786,2226850,2226914,2226978,2227042,2227106,2227170,2227234,2227298,2227362]),
+  new Uint32Array([23068672,6291456,6291456,6291456,6291456,2144066,2144130,2144194,2144258,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,23068672,23068672,23068672,6291456,23068672,23068672]),
+  new Uint32Array([6291456,23068672,23068672,23068672,0,23068672,23068672,0,0,0,0,0,23068672,23068672,23068672,23068672]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2124674,2124770,2123875,2123971,2124067,2124163,2124259,2124355,2124451,2124547,2124643,2124739,2124835,2124931,2125027,2125123]),
+  new Uint32Array([2168065,6291456,2168097,6291456,2168129,6291456,2168161,6291456,2168193,6291456,2168225,6291456,2168257,6291456,2168289,6291456]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,0,0,0,0]),
+  new Uint32Array([23068672,23068672,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,2100610,2100611,6291456,2107842,2107843,6291456,6291456,6291456,6291456,10537922,6291456,10537986,6291456]),
+  new Uint32Array([2174849,2174881,2174913,2174945,2174977,2175009,2175041,2175073,2175105,2175137,2175169,2175201,2175233,2175265,2175297,2175329]),
+  new Uint32Array([2154562,2154626,2154690,2154754,2141858,2154818,2154882,2127298,2154946,2127298,2155010,2155074,2155138,2155202,2155266,2155202]),
+  new Uint32Array([2240705,2218369,2240737,2240770,2240833,2240865,2240898,2240962,2241025,2241057,2241089,2241121,2241153,2241153,2241185,2241217]),
+  new Uint32Array([2118049,2105345,2118241,2105441,2118433,2118529,2118625,2118721,2118817,2200225,2200257,2191777,2200289,2200321,2200353,2200385]),
+  new Uint32Array([2155330,2155394,0,2155458,2155522,2155586,2105732,0,2155650,2155714,2155778,2125314,2155842,2155906,2126274,2155970]),
+  new Uint32Array([23068672,23068672,23068672,23068672,23068672,6291456,6291456,23068672,23068672,6291456,23068672,23068672,23068672,23068672,6291456,6291456]),
+  new Uint32Array([6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,6291456,0,0,0,0,0,0]),
+  new Uint32Array([2222273,2197185,2221473,2221505,2221089,2222305,2200833,2099681,2104481,2222337,2099905,2120737,2222369,2103713,2100225,2098785]),
+  new Uint32Array([6291456,6291456,2116513,2116609,2116705,2116801,2199841,2199873,2199905,2199937,2190881,2199969,2200001,2200033,2200065,2190977]),
+  new Uint32Array([2139331,2139427,2139523,2139043,2133571,2132611,2139619,2139715,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2174113,2174145,2100897,2098177,2108289,2100865,2173601,2173633,2173985,2174113,2174145,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([23068672,23068672,18923778,23068672,23068672,23068672,23068672,18923842,23068672,23068672,23068672,23068672,18923906,23068672,23068672,23068672]),
+  new Uint32Array([2134145,2097153,2134241,0,2132705,2130977,2160065,2131297,0,2133089,0,2133857,0,0,0,0]),
+  new Uint32Array([0,0,0,0,0,0,0,0,0,0,0,6291456,6291456,6291456,6291456,6291456]),
+  new Uint32Array([2177537,6291456,2177569,6291456,2177601,6291456,2177633,6291456,2177665,6291456,2177697,6291456,2177729,6291456,2177761,6291456]),
+  new Uint32Array([2097729,2106017,2106017,2106017,2106017,2131297,2131297,2131297,2131297,2106081,2106081,2162049,2162049,2105953,2105953,2162337]),
+  new Uint32Array([6291456,6291456,23068672,23068672,23068672,6291456,6291456,0,0,0,0,0,0,0,0,0]),
+  new Uint32Array([2098241,2108353,2170209,2105825,2111713,2100897,2111905,2105473,2105569,2105601,2112289,6291456,2108193,2172417,2112481,2098177]),
+  new Uint32Array([6291456,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,23068672,6291456,6291456]),
+];
+var blockIdxes = new Uint16Array([595,595,551,224,155,396,322,3,127,127,317,434,96,394,88,88,681,111,339,342,315,290,454,211,620,228,430,68,359,582,120,655,219,221,599,148,106,88,88,88,88,88,88,489,88,418,615,88,216,216,216,216,202,216,216,497,189,590,213,88,661,445,648,87,685,354,184,88,88,88,628,390,147,11,139,699,642,250,605,288,115,2,427,334,135,59,550,88,236,558,216,74,374,88,116,440,623,587,88,88,295,216,88,676,88,88,88,88,88,156,690,88,437,32,88,216,619,88,88,88,88,88,69,286,88,88,295,183,88,63,173,647,88,152,127,127,127,127,88,440,127,127,13,216,242,88,88,677,216,567,343,88,421,426,73,444,52,122,170,631,17,426,73,100,162,188,623,81,506,378,73,108,275,644,170,218,85,426,73,108,415,410,170,679,398,113,608,57,248,386,623,116,485,118,73,565,145,407,170,598,58,118,73,370,145,457,170,33,58,118,88,578,412,217,170,338,613,126,88,99,226,258,623,600,550,88,88,27,143,631,127,127,312,49,142,335,369,514,127,127,175,26,88,387,151,364,158,525,37,66,696,198,95,116,127,127,88,88,295,393,88,268,436,195,471,351,127,127,239,88,88,140,88,88,88,88,88,647,550,88,88,88,88,88,88,88,88,88,88,88,88,88,328,355,88,88,328,88,88,368,658,71,88,88,88,658,88,88,88,496,88,296,88,691,88,88,88,88,88,511,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,550,296,88,88,88,88,88,105,432,329,88,701,88,38,432,384,88,88,88,572,216,543,691,691,283,691,88,88,88,88,88,679,88,88,9,88,88,88,88,534,88,647,682,682,659,88,437,440,88,88,631,88,691,528,88,88,88,240,88,88,88,137,216,123,691,691,437,196,127,127,127,127,484,88,88,466,247,88,295,492,499,88,703,88,88,88,69,201,88,88,466,416,450,88,88,88,127,127,127,127,679,112,110,540,88,88,119,702,597,165,695,404,88,622,467,172,216,216,216,461,478,287,298,562,375,215,292,164,272,383,353,311,18,274,468,233,577,166,231,43,419,633,54,533,132,349,22,271,406,76,475,40,340,23,465,684,674,518,564,1,91,75,146,647,127,216,216,255,654,618,476,488,150,669,259,259,639,88,88,88,88,88,88,88,88,88,474,316,88,88,6,88,88,88,88,88,88,88,88,88,88,88,302,88,88,88,88,88,88,88,88,88,88,88,88,116,88,88,168,127,116,127,637,204,230,556,92,325,653,41,299,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,516,88,88,88,88,88,88,84,88,88,88,88,88,549,88,88,88,88,88,88,88,88,88,583,88,314,88,450,73,621,72,127,273,178,413,88,88,647,229,510,438,348,417,199,356,508,34,346,88,88,452,88,88,88,381,559,88,168,200,200,200,200,216,216,88,88,88,88,101,127,127,127,88,109,88,88,88,88,88,385,244,470,48,65,53,7,379,505,160,279,519,530,609,423,127,127,89,88,301,376,550,88,88,88,88,573,88,88,88,88,88,513,495,88,437,666,482,50,652,237,584,693,88,116,88,88,431,88,134,262,82,181,243,29,585,494,636,688,610,424,360,366,197,552,670,570,149,446,580,463,680,24,403,411,67,686,689,270,625,21,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,534,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,534,127,127,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,296,88,88,88,168,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,631,127,624,527,405,253,30,169,88,88,88,88,88,553,88,88,128,524,31,345,477,503,589,469,56,473,127,127,127,20,254,88,209,691,88,88,88,679,683,88,88,466,611,691,216,241,88,88,117,88,154,459,88,296,242,88,88,643,581,439,607,647,88,88,265,435,46,291,88,246,88,88,88,261,102,698,295,269,318,388,200,88,88,541,534,344,336,442,313,571,88,88,4,691,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,431,88,502,88,88,631,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,663,538,462,673,391,629,324,665,594,529,547,277,8,94,214,256,163,626,79,19,575,544,545,227,520,382,293,523,539,420,127,127,449,161,282,0,671,521,414,326,235,320,456,554,621,592,289,656,501,309,372,114,526,179,177,352,408,212,93,70,504,634,447,660,433,395,460,90,127,641,42,515,490,252,646,451,694,127,127,596,640,171,216,464,182,193,130,251,144,159,700,531,285,555,35,260,167,365,507,60,220,45,692,512,603,593,666,493,546,321,266,127,632,88,71,25,437,437,127,127,88,88,88,88,88,88,88,116,297,88,88,532,88,88,88,88,296,631,644,127,127,88,88,61,127,127,127,127,127,127,127,127,88,296,88,88,88,644,234,631,88,88,431,88,116,88,88,304,88,64,88,88,560,534,127,127,331,62,453,88,88,88,88,88,88,437,691,127,127,127,127,127,88,88,679,88,88,88,310,127,127,127,127,127,127,127,127,127,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,168,88,534,679,127,127,127,127,127,127,127,127,127,80,88,88,136,88,486,88,88,88,647,579,127,127,127,88,15,88,16,88,591,127,127,127,127,88,88,88,225,88,651,88,88,678,125,88,5,679,105,88,88,88,88,127,127,88,88,373,168,88,88,88,338,88,314,88,574,88,210,509,127,127,127,127,127,88,88,88,88,105,127,127,127,483,675,586,350,88,88,88,257,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,647,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,499,88,88,39,133,651,88,157,499,88,88,535,621,88,105,691,499,88,154,361,431,88,88,428,499,88,88,643,44,88,550,440,88,378,601,337,127,127,127,127,377,64,691,88,88,332,206,691,616,426,73,108,415,649,103,191,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,88,216,612,691,127,127,127,127,127,127,127,127,127,127,88,88,332,561,234,498,127,127,88,88,88,216,281,691,127,127,88,88,295,358,691,127,127,127,88,367,682,88,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,245,441,88,88,88,190,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,88,105,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,691,127,127,127,127,127,127,88,88,88,88,88,88,647,440,88,88,88,88,88,88,88,88,88,88,88,88,431,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,647,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,168,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,105,88,647,439,127,127,127,127,127,127,88,437,222,88,88,88,500,534,14,378,392,88,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,88,88,440,51,216,196,157,499,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,621,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,88,88,88,88,116,296,105,28,576,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,534,88,88,662,88,88,138,185,303,568,88,351,479,455,88,105,127,88,88,88,88,192,127,127,127,127,127,127,127,127,127,127,127,88,88,88,88,88,168,88,621,127,127,127,127,127,127,127,127,41,487,537,330,657,83,121,402,422,124,548,357,401,41,487,537,569,141,542,307,617,645,187,347,98,653,41,487,537,330,657,542,121,402,422,187,347,98,653,41,487,537,429,627,397,276,323,55,327,284,263,97,604,458,238,409,305,409,606,399,602,491,131,203,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,216,216,216,481,216,216,563,607,536,480,558,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,88,88,88,88,88,88,88,88,88,88,205,435,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,10,630,153,697,380,522,371,308,389,635,207,635,127,127,127,621,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,631,88,88,88,88,88,88,431,647,550,550,550,88,534,104,672,129,41,588,88,638,88,88,557,127,127,127,127,623,88,174,280,176,443,194,614,127,127,127,127,127,127,127,127,127,127,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,14,88,88,448,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,644,296,431,88,88,88,88,88,88,88,431,88,88,88,88,88,440,127,127,631,88,88,88,679,691,88,88,679,88,437,127,127,127,127,127,127,105,127,127,127,127,127,127,440,127,127,127,644,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,168,127,127,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,440,88,88,88,88,88,88,88,88,88,88,88,88,88,437,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,88,621,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,223,36,47,363,12,319,278,180,650,86,249,186,306,362,341,517,472,77,687,668,208,300,264,400,267,232,664,107,78,667,566,425,333,294,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127,127]);
+var mappingStr = "صلى الله عليه وسلمجل جلالهキロメートルrad∕s2エスクードキログラムキロワットグラムトンクルゼイロサンチームパーセントピアストルファラッドブッシェルヘクタールマンションミリバールレントゲン′′′′1⁄10viii(10)(11)(12)(13)(14)(15)(16)(17)(18)(19)(20)∫∫∫∫(오전)(오후)アパートアルファアンペアイニングエーカーカラットカロリーキュリーギルダークローネサイクルシリングバーレルフィートポイントマイクロミクロンメガトンリットルルーブル株式会社kcalm∕s2c∕kgاكبرمحمدصلعمرسولریال1⁄41⁄23⁄4 ̈́ྲཱྀླཱྀ ̈͂ ̓̀ ̓́ ̓͂ ̔̀ ̔́ ̔͂ ̈̀‵‵‵a/ca/sc/oc/utelfax1⁄71⁄91⁄32⁄31⁄52⁄53⁄54⁄51⁄65⁄61⁄83⁄85⁄87⁄8xii0⁄3∮∮∮(1)(2)(3)(4)(5)(6)(7)(8)(9)(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)(m)(n)(o)(p)(q)(r)(s)(t)(u)(v)(w)(x)(y)(z)::====(ᄀ)(ᄂ)(ᄃ)(ᄅ)(ᄆ)(ᄇ)(ᄉ)(ᄋ)(ᄌ)(ᄎ)(ᄏ)(ᄐ)(ᄑ)(ᄒ)(가)(나)(다)(라)(마)(바)(사)(아)(자)(차)(카)(타)(파)(하)(주)(一)(二)(三)(四)(五)(六)(七)(八)(九)(十)(月)(火)(水)(木)(金)(土)(日)(株)(有)(社)(名)(特)(財)(祝)(労)(代)(呼)(学)(監)(企)(資)(協)(祭)(休)(自)(至)pte10月11月12月ergltdアールインチウォンオンスオームカイリガロンガンマギニーケースコルナコーポセンチダースノットハイツパーツピクルフランペニヒヘルツペンスページベータボルトポンドホールホーンマイルマッハマルクヤードヤールユアンルピー10点11点12点13点14点15点16点17点18点19点20点21点22点23点24点hpabardm2dm3khzmhzghzthzmm2cm2km2mm3cm3km3kpampagpalogmilmolppmv∕ma∕m10日11日12日13日14日15日16日17日18日19日20日21日22日23日24日25日26日27日28日29日30日31日galffifflשּׁשּׂ ٌّ ٍّ َّ ُّ ِّ ّٰـَّـُّـِّتجمتحجتحمتخمتمجتمحتمخجمححميحمىسحجسجحسجىسمحسمجسممصححصممشحمشجيشمخشممضحىضخمطمحطممطميعجمعممعمىغممغميغمىفخمقمحقمملحملحيلحىلججلخملمحمحجمحيمجحمجممخممجخهمجهممنحمنحىنجمنجىنمينمىيممبخيتجيتجىتخيتخىتميتمىجميجحىجمىسخىصحيشحيضحيلجيلمييحييجييميمميقمينحيعميكمينجحمخيلجمكممجحيحجيمجيفميبحيسخينجيصلےقلے𝅘𝅥𝅮𝅘𝅥𝅯𝅘𝅥𝅰𝅘𝅥𝅱𝅘𝅥𝅲𝆹𝅥𝅮𝆺𝅥𝅮𝆹𝅥𝅯𝆺𝅥𝅯〔s〕ppv〔本〕〔三〕〔二〕〔安〕〔点〕〔打〕〔盗〕〔勝〕〔敗〕 ̄ ́ ̧ssi̇ijl·ʼndžljnjdz ̆ ̇ ̊ ̨ ̃ ̋ ιեւاٴوٴۇٴيٴक़ख़ग़ज़ड़ढ़फ़य़ড়ঢ়য়ਲ਼ਸ਼ਖ਼ਗ਼ਜ਼ਫ਼ଡ଼ଢ଼ําໍາຫນຫມགྷཌྷདྷབྷཛྷཀྵཱཱིུྲྀླྀྒྷྜྷྡྷྦྷྫྷྐྵaʾἀιἁιἂιἃιἄιἅιἆιἇιἠιἡιἢιἣιἤιἥιἦιἧιὠιὡιὢιὣιὤιὥιὦιὧιὰιαιάιᾶι ͂ὴιηιήιῆιὼιωιώιῶι ̳!! ̅???!!?rs°c°fnosmtmivix⫝̸ ゙ ゚よりコト333435참고주의363738394042444546474849503月4月5月6月7月8月9月hgevギガデシドルナノピコビルペソホンリラレムdaauovpciu平成昭和大正明治naμakakbmbgbpfnfμfμgmgμlmldlklfmnmμmpsnsμsmsnvμvkvpwnwμwmwkwkωmωbqcccddbgyhainkkktlnlxphprsrsvwbstմնմեմիվնմխיִײַשׁשׂאַאָאּבּגּדּהּוּזּטּיּךּכּלּמּנּסּףּפּצּקּרּתּוֹבֿכֿפֿאלئائەئوئۇئۆئۈئېئىئجئحئمئيبجبمبىبيتىتيثجثمثىثيخحضجضمطحظمغجفجفحفىفيقحقىقيكاكجكحكخكلكىكينخنىنيهجهىهييىذٰرٰىٰئرئزئنبزبنترتزتنثرثزثنمانرنزننيريزئخئهبهتهصخنههٰثهسهشهطىطيعىعيغىغيسىسيشىشيصىصيضىضيشخشرسرصرضراً ًـًـّ ْـْلآلألإ𝅗𝅥0,1,2,3,4,5,6,7,8,9,wzhvsdwcmcmddjほかココàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþāăąćĉċčďđēĕėęěĝğġģĥħĩīĭįĵķĺļľłńņňŋōŏőœŕŗřśŝşšţťŧũūŭůűųŵŷÿźżɓƃƅɔƈɖɗƌǝəɛƒɠɣɩɨƙɯɲɵơƣƥʀƨʃƭʈưʊʋƴƶʒƹƽǎǐǒǔǖǘǚǜǟǡǣǥǧǩǫǭǯǵƕƿǹǻǽǿȁȃȅȇȉȋȍȏȑȓȕȗșțȝȟƞȣȥȧȩȫȭȯȱȳⱥȼƚⱦɂƀʉʌɇɉɋɍɏɦɹɻʁʕͱͳʹͷ;ϳέίόύβγδεζθκλνξοπρστυφχψϊϋϗϙϛϝϟϡϣϥϧϩϫϭϯϸϻͻͼͽѐёђѓєѕіїјљњћќѝўџабвгдежзийклмнопрстуфхцчшщъыьэюяѡѣѥѧѩѫѭѯѱѳѵѷѹѻѽѿҁҋҍҏґғҕҗҙқҝҟҡңҥҧҩҫҭүұҳҵҷҹһҽҿӂӄӆӈӊӌӎӑӓӕӗәӛӝӟӡӣӥӧөӫӭӯӱӳӵӷӹӻӽӿԁԃԅԇԉԋԍԏԑԓԕԗԙԛԝԟԡԣԥԧԩԫԭԯաբգդզէըթժլծկհձղճյշոչպջռստրցփքօֆ་ⴧⴭნᏰᏱᏲᏳᏴᏵɐɑᴂɜᴖᴗᴝᴥɒɕɟɡɥɪᵻʝɭᶅʟɱɰɳɴɸʂƫᴜʐʑḁḃḅḇḉḋḍḏḑḓḕḗḙḛḝḟḡḣḥḧḩḫḭḯḱḳḵḷḹḻḽḿṁṃṅṇṉṋṍṏṑṓṕṗṙṛṝṟṡṣṥṧṩṫṭṯṱṳṵṷṹṻṽṿẁẃẅẇẉẋẍẏẑẓẕạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹỻỽỿἐἑἒἓἔἕἰἱἲἳἴἵἶἷὀὁὂὃὄὅὑὓὕὗᾰᾱὲΐῐῑὶΰῠῡὺῥ`ὸ‐+−∑〈〉ⰰⰱⰲⰳⰴⰵⰶⰷⰸⰹⰺⰻⰼⰽⰾⰿⱀⱁⱂⱃⱄⱅⱆⱇⱈⱉⱊⱋⱌⱍⱎⱏⱐⱑⱒⱓⱔⱕⱖⱗⱘⱙⱚⱛⱜⱝⱞⱡɫᵽɽⱨⱪⱬⱳⱶȿɀⲁⲃⲅⲇⲉⲋⲍⲏⲑⲓⲕⲗⲙⲛⲝⲟⲡⲣⲥⲧⲩⲫⲭⲯⲱⲳⲵⲷⲹⲻⲽⲿⳁⳃⳅⳇⳉⳋⳍⳏⳑⳓⳕⳗⳙⳛⳝⳟⳡⳣⳬⳮⳳⵡ母龟丨丶丿乙亅亠人儿入冂冖冫几凵刀力勹匕匚匸卜卩厂厶又口囗士夂夊夕女子宀寸小尢尸屮山巛工己巾干幺广廴廾弋弓彐彡彳心戈戶手支攴文斗斤方无曰欠止歹殳毋比毛氏气爪父爻爿片牙牛犬玄玉瓜瓦甘生用田疋疒癶白皮皿目矛矢石示禸禾穴立竹米糸缶网羊羽老而耒耳聿肉臣臼舌舛舟艮色艸虍虫血行衣襾見角言谷豆豕豸貝赤走足身車辛辰辵邑酉釆里長門阜隶隹雨靑非面革韋韭音頁風飛食首香馬骨高髟鬥鬯鬲鬼魚鳥鹵鹿麥麻黃黍黑黹黽鼎鼓鼠鼻齊齒龍龜龠.〒卄卅ᄁᆪᆬᆭᄄᆰᆱᆲᆳᆴᆵᄚᄈᄡᄊ짜ᅢᅣᅤᅥᅦᅧᅨᅩᅪᅫᅬᅭᅮᅯᅰᅱᅲᅳᅴᅵᄔᄕᇇᇈᇌᇎᇓᇗᇙᄜᇝᇟᄝᄞᄠᄢᄣᄧᄩᄫᄬᄭᄮᄯᄲᄶᅀᅇᅌᇱᇲᅗᅘᅙᆄᆅᆈᆑᆒᆔᆞᆡ上中下甲丙丁天地問幼箏우秘男適優印注項写左右医宗夜テヌモヨヰヱヲꙁꙃꙅꙇꙉꙋꙍꙏꙑꙓꙕꙗꙙꙛꙝꙟꙡꙣꙥꙧꙩꙫꙭꚁꚃꚅꚇꚉꚋꚍꚏꚑꚓꚕꚗꚙꚛꜣꜥꜧꜩꜫꜭꜯꜳꜵꜷꜹꜻꜽꜿꝁꝃꝅꝇꝉꝋꝍꝏꝑꝓꝕꝗꝙꝛꝝꝟꝡꝣꝥꝧꝩꝫꝭꝯꝺꝼᵹꝿꞁꞃꞅꞇꞌꞑꞓꞗꞙꞛꞝꞟꞡꞣꞥꞧꞩɬʞʇꭓꞵꞷꬷꭒᎠᎡᎢᎣᎤᎥᎦᎧᎨᎩᎪᎫᎬᎭᎮᎯᎰᎱᎲᎳᎴᎵᎶᎷᎸᎹᎺᎻᎼᎽᎾᎿᏀᏁᏂᏃᏄᏅᏆᏇᏈᏉᏊᏋᏌᏍᏎᏏᏐᏑᏒᏓᏔᏕᏖᏗᏘᏙᏚᏛᏜᏝᏞᏟᏠᏡᏢᏣᏤᏥᏦᏧᏨᏩᏪᏫᏬᏭᏮᏯ豈更賈滑串句契喇奈懶癩羅蘿螺裸邏樂洛烙珞落酪駱亂卵欄爛蘭鸞嵐濫藍襤拉臘蠟廊朗浪狼郎來冷勞擄櫓爐盧蘆虜路露魯鷺碌祿綠菉錄論壟弄籠聾牢磊賂雷壘屢樓淚漏累縷陋勒肋凜凌稜綾菱陵讀拏諾丹寧怒率異北磻便復不泌數索參塞省葉說殺沈拾若掠略亮兩凉梁糧良諒量勵呂廬旅濾礪閭驪麗黎曆歷轢年憐戀撚漣煉璉秊練聯輦蓮連鍊列劣咽烈裂廉念捻殮簾獵令囹嶺怜玲瑩羚聆鈴零靈領例禮醴隸惡了僚寮尿料燎療蓼遼暈阮劉杻柳流溜琉留硫紐類戮陸倫崙淪輪律慄栗隆利吏履易李梨泥理痢罹裏裡離匿溺吝燐璘藺隣鱗麟林淋臨笠粒狀炙識什茶刺切度拓糖宅洞暴輻降廓兀嗀塚晴凞猪益礼神祥福靖精蘒諸逸都飯飼館鶴郞隷侮僧免勉勤卑喝嘆器塀墨層悔慨憎懲敏既暑梅海渚漢煮爫琢碑祉祈祐祖禍禎穀突節縉繁署者臭艹著褐視謁謹賓贈辶難響頻恵𤋮舘並况全侀充冀勇勺啕喙嗢墳奄奔婢嬨廒廙彩徭惘慎愈慠戴揄搜摒敖望杖滛滋瀞瞧爵犯瑱甆画瘝瘟盛直睊着磌窱类絛缾荒華蝹襁覆調請諭變輸遲醙鉶陼韛頋鬒𢡊𢡄𣏕㮝䀘䀹𥉉𥳐𧻓齃龎עםٱٻپڀٺٿٹڤڦڄڃچڇڍڌڎڈژڑکگڳڱںڻۀہھۓڭۋۅۉ、〖〗—–_{}【】《》「」『』[]#&*-<>\\$%@ءؤة\"'^|~⦅⦆・ゥャ¢£¬¦¥₩│←↑→↓■○𐐨𐐩𐐪𐐫𐐬𐐭𐐮𐐯𐐰𐐱𐐲𐐳𐐴𐐵𐐶𐐷𐐸𐐹𐐺𐐻𐐼𐐽𐐾𐐿𐑀𐑁𐑂𐑃𐑄𐑅𐑆𐑇𐑈𐑉𐑊𐑋𐑌𐑍𐑎𐑏𐳀𐳁𐳂𐳃𐳄𐳅𐳆𐳇𐳈𐳉𐳊𐳋𐳌𐳍𐳎𐳏𐳐𐳑𐳒𐳓𐳔𐳕𐳖𐳗𐳘𐳙𐳚𐳛𐳜𐳝𐳞𐳟𐳠𐳡𐳢𐳣𐳤𐳥𐳦𐳧𐳨𐳩𐳪𐳫𐳬𐳭𐳮𐳯𐳰𐳱𐳲𑣀𑣁𑣂𑣃𑣄𑣅𑣆𑣇𑣈𑣉𑣊𑣋𑣌𑣍𑣎𑣏𑣐𑣑𑣒𑣓𑣔𑣕𑣖𑣗𑣘𑣙𑣚𑣛𑣜𑣝𑣞𑣟ıȷ∇∂ٮڡٯ字双多解交映無前後再新初終販声吹演投捕遊指禁空合満申割営得可丽丸乁𠄢你侻倂偺備像㒞𠘺兔兤具𠔜㒹內𠕋冗冤仌冬𩇟刃㓟刻剆剷㔕包匆卉博即卽卿𠨬灰及叟𠭣叫叱吆咞吸呈周咢哶唐啓啣善喫喳嗂圖圗噑噴壮城埴堍型堲報墬𡓤売壷夆夢奢𡚨𡛪姬娛娧姘婦㛮嬈嬾𡧈寃寘寳𡬘寿将㞁屠峀岍𡷤嵃𡷦嵮嵫嵼巡巢㠯巽帨帽幩㡢𢆃㡼庰庳庶𪎒𢌱舁弢㣇𣊸𦇚形彫㣣徚忍志忹悁㤺㤜𢛔惇慈慌慺憲憤憯懞戛扝抱拔捐𢬌挽拼捨掃揤𢯱搢揅掩㨮摩摾撝摷㩬敬𣀊旣書晉㬙㬈㫤冒冕最暜肭䏙朡杞杓𣏃㭉柺枅桒𣑭梎栟椔楂榣槪檨𣚣櫛㰘次𣢧歔㱎歲殟殻𣪍𡴋𣫺汎𣲼沿泍汧洖派浩浸涅𣴞洴港湮㴳滇𣻑淹潮𣽞𣾎濆瀹瀛㶖灊災灷炭𠔥煅𤉣熜爨牐𤘈犀犕𤜵𤠔獺王㺬玥㺸瑇瑜璅瓊㼛甤𤰶甾𤲒𢆟瘐𤾡𤾸𥁄㿼䀈𥃳𥃲𥄙𥄳眞真瞋䁆䂖𥐝硎䃣𥘦𥚚𥛅秫䄯穊穏𥥼𥪧䈂𥮫篆築䈧𥲀糒䊠糨糣紀𥾆絣䌁緇縂繅䌴𦈨𦉇䍙𦋙罺𦌾羕翺𦓚𦔣聠𦖨聰𣍟䏕育脃䐋脾媵𦞧𦞵𣎓𣎜舄辞䑫芑芋芝劳花芳芽苦𦬼茝荣莭茣莽菧荓菊菌菜𦰶𦵫𦳕䔫蓱蓳蔖𧏊蕤𦼬䕝䕡𦾱𧃒䕫虐虧虩蚩蚈蜎蛢蜨蝫螆蟡蠁䗹衠𧙧裗裞䘵裺㒻𧢮𧥦䚾䛇誠𧲨貫賁贛起𧼯𠠄跋趼跰𠣞軔𨗒𨗭邔郱鄑𨜮鄛鈸鋗鋘鉼鏹鐕𨯺開䦕閷𨵷䧦雃嶲霣𩅅𩈚䩮䩶韠𩐊䪲𩒖頩𩖶飢䬳餩馧駂駾䯎𩬰鱀鳽䳎䳭鵧𪃎䳸𪄅𪈎𪊑䵖黾鼅鼏鼖𪘀";
+
+function mapChar(codePoint) {
+  if (codePoint >= 0x30000) {
+    // High planes are special cased.
+    if (codePoint >= 0xE0100 && codePoint <= 0xE01EF)
+      return 18874368;
+    return 0;
+  }
+  return blocks[blockIdxes[codePoint >> 4]][codePoint & 15];
+}
+
+return {
+  mapStr: mappingStr,
+  mapChar: mapChar
+};
+}));
+
+},{}],203:[function(require,module,exports){
+/* istanbul ignore next */
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['punycode', './idna-map'], function (punycode, idna_map) {
+      return factory(punycode, idna_map);
+    });
+  } else if (typeof exports === 'object') {
+    module.exports = factory(require('punycode'), require('./idna-map'));
+  } else {
+    root.uts46 = factory(root.punycode, root.idna_map);
+  }
+}(this, function (punycode, idna_map) {
+
+function mapLabel(label, useStd3ASCII, transitional) {
+  var mapped = [];
+  for (var ch of label) {
+    var cp = ch.codePointAt(0);
+    var composite = idna_map.mapChar(cp);
+    var flags = (composite >> 23);
+    var kind = (composite >> 21) & 3;
+    var index = (composite >> 5) & 0xffff;
+    var length = composite & 0x1f;
+    var value = idna_map.mapStr.substr(index, length);
+    if (kind == 0 || (useStd3ASCII && (flags & 1))) {
+      throw new Error("Illegal char " + ch);
+    } else if (kind == 1) {
+      mapped.push(value);
+    } else if (kind == 2) {
+      mapped.push(transitional ? value : ch);
+    } else if (kind == 3) {
+      mapped.push(ch);
+    }
+  }
+
+  var newLabel = mapped.join("").normalize("NFC");
+  return newLabel;
+}
+
+function process(domain, transitional, useStd3ASCII) {
+  if (useStd3ASCII === undefined)
+      useStd3ASCII = false;
+  var mappedIDNA = mapLabel(domain, useStd3ASCII, transitional);
+
+  // Step 3. Break
+  var labels = mappedIDNA.split(".");
+
+  // Step 4. Convert/Validate
+  labels = labels.map(function (label) {
+    if (label.startsWith("xn--")) {
+      label = punycode.decode(label.substring(4));
+      validateLabel(label, useStd3ASCII, false);
+    } else {
+      validateLabel(label, useStd3ASCII, transitional);
+    }
+    return label;
+  });
+
+  return labels.join(".");
+}
+
+function validateLabel(label, useStd3ASCII, transitional) {
+  // 2. The label must not contain a U+002D HYPHEN-MINUS character in both the
+  // third position and fourth positions.
+  if (label[2] == '-' && label[3] == '-')
+    throw new Error("Failed to validate " + label);
+
+  // 3. The label must neither begin nor end with a U+002D HYPHEN-MINUS
+  // character.
+  if (label.startsWith('-') || label.endsWith('-'))
+    throw new Error("Failed to validate " + label);
+
+  // 4. The label must not contain a U+002E ( . ) FULL STOP.
+  if (label.includes('.'))
+    throw new Error("Failed to validate " + label);
+
+  if (mapLabel(label, useStd3ASCII, transitional) != label)
+    throw new Error("Failed to validate " + label);
+
+  // 5. The label must not begin with a combining mark, that is:
+  // General_Category=Mark.
+  var ch = label.codePointAt(0);
+  if (idna_map.mapChar(ch) & (0x2 << 23))
+    throw new Error("Label contains illegal character: " + ch);
+}
+
+function toAscii(domain, options) {
+  if (options === undefined)
+    options = { };
+  var transitional = 'transitional' in options ? options.transitional : true;
+  var useStd3ASCII = 'useStd3ASCII' in options ? options.useStd3ASCII : false;
+  var labels = process(domain, transitional, useStd3ASCII).split('.');
+  return labels.map(punycode.toASCII).join('.');
+}
+function toUnicode(domain, options) {
+  if (options === undefined)
+    options = { };
+  var useStd3ASCII = 'useStd3ASCII' in options ? options.useStd3ASCII : false;
+  return process(domain, false, useStd3ASCII);
+}
+
+return {
+  toUnicode: toUnicode,
+  toAscii: toAscii,
+};
+}));
+
+},{"./idna-map":202,"punycode":234}],204:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -84865,7 +86061,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],197:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 
 var indexOf = [].indexOf;
 
@@ -84876,7 +86072,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],198:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -84901,7 +86097,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],199:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -84924,7 +86120,7 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],200:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 /**
  * Returns a `Boolean` on whether or not the a `String` starts with '0x'
  * @param {String} str the string input value
@@ -84939,14 +86135,14 @@ module.exports = function isHexPrefixed(str) {
   return str.slice(0, 2) === '0x';
 }
 
-},{}],201:[function(require,module,exports){
+},{}],209:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],202:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 /*
  A JavaScript implementation of the SHA family of hashes, as
  defined in FIPS PUB 180-2 as well as the corresponding HMAC implementation
@@ -84984,11 +86180,11 @@ new g(1203062813,d[7])]:[new g(f[0],4089235720),new g(f[1],2227873595),new g(f[2
 z(G(B[t-2]),B[t-7],F(B[t-15]),B[t-16]),s=A(u,I(h),J(h,p,r),l[t],B[t]),y=v(H(b),K(b,e,f)),u=r,r=p,p=h,h=v(k,s),k=f,f=e,e=b,b=v(s,y);d[0]=v(b,d[0]);d[1]=v(e,d[1]);d[2]=v(f,d[2]);d[3]=v(k,d[3]);d[4]=v(h,d[4]);d[5]=v(p,d[5]);d[6]=v(r,d[6]);d[7]=v(u,d[7])}if("SHA-224"===c)a=[d[0],d[1],d[2],d[3],d[4],d[5],d[6]];else if("SHA-256"===c)a=d;else if("SHA-384"===c)a=[d[0].a,d[0].b,d[1].a,d[1].b,d[2].a,d[2].b,d[3].a,d[3].b,d[4].a,d[4].b,d[5].a,d[5].b];else if("SHA-512"===c)a=[d[0].a,d[0].b,d[1].a,d[1].b,d[2].a,
 d[2].b,d[3].a,d[3].b,d[4].a,d[4].b,d[5].a,d[5].b,d[6].a,d[6].b,d[7].a,d[7].b];else throw"Unexpected error in SHA-2 implementation";return a}"function"===typeof define&&define.amd?define(function(){return z}):"undefined"!==typeof exports?"undefined"!==typeof module&&module.exports?module.exports=exports=z:exports=z:U.jsSHA=z})(this);
 
-},{}],203:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 'use strict'
 module.exports = require('./lib/api')(require('./lib/keccak'))
 
-},{"./lib/api":204,"./lib/keccak":208}],204:[function(require,module,exports){
+},{"./lib/api":212,"./lib/keccak":216}],212:[function(require,module,exports){
 'use strict'
 var createKeccak = require('./keccak')
 var createShake = require('./shake')
@@ -85018,7 +86214,7 @@ module.exports = function (KeccakState) {
   }
 }
 
-},{"./keccak":205,"./shake":206}],205:[function(require,module,exports){
+},{"./keccak":213,"./shake":214}],213:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var Transform = require('stream').Transform
@@ -85105,7 +86301,7 @@ module.exports = function (KeccakState) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"inherits":198,"stream":255}],206:[function(require,module,exports){
+},{"buffer":152,"inherits":206,"stream":264}],214:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var Transform = require('stream').Transform
@@ -85183,7 +86379,7 @@ module.exports = function (KeccakState) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"inherits":198,"stream":255}],207:[function(require,module,exports){
+},{"buffer":152,"inherits":206,"stream":264}],215:[function(require,module,exports){
 'use strict'
 var P1600_ROUND_CONSTANTS = [1, 0, 32898, 0, 32906, 2147483648, 2147516416, 2147483648, 32907, 0, 2147483649, 0, 2147516545, 2147483648, 32777, 2147483648, 138, 0, 136, 0, 2147516425, 0, 2147483658, 0, 2147516555, 0, 139, 2147483648, 32905, 2147483648, 32771, 2147483648, 32770, 2147483648, 128, 2147483648, 32778, 0, 2147483658, 2147483648, 2147516545, 2147483648, 32896, 2147483648, 2147483649, 0, 2147516424, 2147483648]
 
@@ -85372,7 +86568,7 @@ exports.p1600 = function (s) {
   }
 }
 
-},{}],208:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var keccakState = require('./keccak-state-unroll')
@@ -85445,7 +86641,7 @@ Keccak.prototype.copy = function (dest) {
 module.exports = Keccak
 
 }).call(this,require("buffer").Buffer)
-},{"./keccak-state-unroll":207,"buffer":146}],209:[function(require,module,exports){
+},{"./keccak-state-unroll":215,"buffer":152}],217:[function(require,module,exports){
 (function (global){
 /**
  * marked - a markdown parser
@@ -86735,7 +87931,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
 }());
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],210:[function(require,module,exports){
+},{}],218:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -86850,7 +88046,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":116,"brorand":117}],211:[function(require,module,exports){
+},{"bn.js":122,"brorand":123}],219:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -86863,7 +88059,7 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],212:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -86877,7 +88073,7 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],213:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
 // Fedor, you are amazing.
 
@@ -86996,7 +88192,7 @@ exports.signature = asn1.define('signature', function () {
   )
 })
 
-},{"asn1.js":96}],214:[function(require,module,exports){
+},{"asn1.js":102}],222:[function(require,module,exports){
 (function (Buffer){
 // adapted from https://github.com/apatil/pemstrip
 var findProc = /Proc-Type: 4,ENCRYPTED\r?\nDEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\r?\n\r?\n([0-9A-z\n\r\+\/\=]+)\r?\n/m
@@ -87030,7 +88226,7 @@ module.exports = function (okey, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"browserify-aes":121,"buffer":146,"evp_bytestokey":188}],215:[function(require,module,exports){
+},{"browserify-aes":127,"buffer":152,"evp_bytestokey":194}],223:[function(require,module,exports){
 (function (Buffer){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
@@ -87135,7 +88331,7 @@ function decrypt (data, password) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./aesid.json":212,"./asn1":213,"./fixProc":214,"browserify-aes":121,"buffer":146,"pbkdf2":216}],216:[function(require,module,exports){
+},{"./aesid.json":220,"./asn1":221,"./fixProc":222,"browserify-aes":127,"buffer":152,"pbkdf2":224}],224:[function(require,module,exports){
 (function (process,Buffer){
 var createHmac = require('create-hmac')
 var checkParameters = require('./precondition')
@@ -87207,7 +88403,7 @@ exports.pbkdf2Sync = function (password, salt, iterations, keylen, digest) {
 }
 
 }).call(this,require('_process'),require("buffer").Buffer)
-},{"./precondition":217,"_process":219,"buffer":146,"create-hmac":154}],217:[function(require,module,exports){
+},{"./precondition":225,"_process":227,"buffer":152,"create-hmac":160}],225:[function(require,module,exports){
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
 module.exports = function (iterations, keylen) {
   if (typeof iterations !== 'number') {
@@ -87227,7 +88423,7 @@ module.exports = function (iterations, keylen) {
   }
 }
 
-},{}],218:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -87274,7 +88470,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 }
 
 }).call(this,require('_process'))
-},{"_process":219}],219:[function(require,module,exports){
+},{"_process":227}],227:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -87456,7 +88652,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],220:[function(require,module,exports){
+},{}],228:[function(require,module,exports){
 exports.publicEncrypt = require('./publicEncrypt');
 exports.privateDecrypt = require('./privateDecrypt');
 
@@ -87467,7 +88663,7 @@ exports.privateEncrypt = function privateEncrypt(key, buf) {
 exports.publicDecrypt = function publicDecrypt(key, buf) {
   return exports.privateDecrypt(key, buf, true);
 };
-},{"./privateDecrypt":222,"./publicEncrypt":223}],221:[function(require,module,exports){
+},{"./privateDecrypt":230,"./publicEncrypt":231}],229:[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash');
 module.exports = function (seed, len) {
@@ -87486,7 +88682,7 @@ function i2ops(c) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"create-hash":151}],222:[function(require,module,exports){
+},{"buffer":152,"create-hash":157}],230:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var mgf = require('./mgf');
@@ -87597,7 +88793,7 @@ function compare(a, b){
   return dif;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":221,"./withPublic":224,"./xor":225,"bn.js":116,"browserify-rsa":137,"buffer":146,"create-hash":151,"parse-asn1":215}],223:[function(require,module,exports){
+},{"./mgf":229,"./withPublic":232,"./xor":233,"bn.js":122,"browserify-rsa":143,"buffer":152,"create-hash":157,"parse-asn1":223}],231:[function(require,module,exports){
 (function (Buffer){
 var parseKeys = require('parse-asn1');
 var randomBytes = require('randombytes');
@@ -87695,7 +88891,7 @@ function nonZero(len, crypto) {
   return out;
 }
 }).call(this,require("buffer").Buffer)
-},{"./mgf":221,"./withPublic":224,"./xor":225,"bn.js":116,"browserify-rsa":137,"buffer":146,"create-hash":151,"parse-asn1":215,"randombytes":226}],224:[function(require,module,exports){
+},{"./mgf":229,"./withPublic":232,"./xor":233,"bn.js":122,"browserify-rsa":143,"buffer":152,"create-hash":157,"parse-asn1":223,"randombytes":235}],232:[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 function withPublic(paddedMsg, key) {
@@ -87708,7 +88904,7 @@ function withPublic(paddedMsg, key) {
 
 module.exports = withPublic;
 }).call(this,require("buffer").Buffer)
-},{"bn.js":116,"buffer":146}],225:[function(require,module,exports){
+},{"bn.js":122,"buffer":152}],233:[function(require,module,exports){
 module.exports = function xor(a, b) {
   var len = a.length;
   var i = -1;
@@ -87717,7 +88913,544 @@ module.exports = function xor(a, b) {
   }
   return a
 };
-},{}],226:[function(require,module,exports){
+},{}],234:[function(require,module,exports){
+(function (global){
+/*! https://mths.be/punycode v1.4.1 by @mathias */
+;(function(root) {
+
+	/** Detect free variables */
+	var freeExports = typeof exports == 'object' && exports &&
+		!exports.nodeType && exports;
+	var freeModule = typeof module == 'object' && module &&
+		!module.nodeType && module;
+	var freeGlobal = typeof global == 'object' && global;
+	if (
+		freeGlobal.global === freeGlobal ||
+		freeGlobal.window === freeGlobal ||
+		freeGlobal.self === freeGlobal
+	) {
+		root = freeGlobal;
+	}
+
+	/**
+	 * The `punycode` object.
+	 * @name punycode
+	 * @type Object
+	 */
+	var punycode,
+
+	/** Highest positive signed 32-bit float value */
+	maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
+
+	/** Bootstring parameters */
+	base = 36,
+	tMin = 1,
+	tMax = 26,
+	skew = 38,
+	damp = 700,
+	initialBias = 72,
+	initialN = 128, // 0x80
+	delimiter = '-', // '\x2D'
+
+	/** Regular expressions */
+	regexPunycode = /^xn--/,
+	regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
+	regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
+
+	/** Error messages */
+	errors = {
+		'overflow': 'Overflow: input needs wider integers to process',
+		'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
+		'invalid-input': 'Invalid input'
+	},
+
+	/** Convenience shortcuts */
+	baseMinusTMin = base - tMin,
+	floor = Math.floor,
+	stringFromCharCode = String.fromCharCode,
+
+	/** Temporary variable */
+	key;
+
+	/*--------------------------------------------------------------------------*/
+
+	/**
+	 * A generic error utility function.
+	 * @private
+	 * @param {String} type The error type.
+	 * @returns {Error} Throws a `RangeError` with the applicable error message.
+	 */
+	function error(type) {
+		throw new RangeError(errors[type]);
+	}
+
+	/**
+	 * A generic `Array#map` utility function.
+	 * @private
+	 * @param {Array} array The array to iterate over.
+	 * @param {Function} callback The function that gets called for every array
+	 * item.
+	 * @returns {Array} A new array of values returned by the callback function.
+	 */
+	function map(array, fn) {
+		var length = array.length;
+		var result = [];
+		while (length--) {
+			result[length] = fn(array[length]);
+		}
+		return result;
+	}
+
+	/**
+	 * A simple `Array#map`-like wrapper to work with domain name strings or email
+	 * addresses.
+	 * @private
+	 * @param {String} domain The domain name or email address.
+	 * @param {Function} callback The function that gets called for every
+	 * character.
+	 * @returns {Array} A new string of characters returned by the callback
+	 * function.
+	 */
+	function mapDomain(string, fn) {
+		var parts = string.split('@');
+		var result = '';
+		if (parts.length > 1) {
+			// In email addresses, only the domain name should be punycoded. Leave
+			// the local part (i.e. everything up to `@`) intact.
+			result = parts[0] + '@';
+			string = parts[1];
+		}
+		// Avoid `split(regex)` for IE8 compatibility. See #17.
+		string = string.replace(regexSeparators, '\x2E');
+		var labels = string.split('.');
+		var encoded = map(labels, fn).join('.');
+		return result + encoded;
+	}
+
+	/**
+	 * Creates an array containing the numeric code points of each Unicode
+	 * character in the string. While JavaScript uses UCS-2 internally,
+	 * this function will convert a pair of surrogate halves (each of which
+	 * UCS-2 exposes as separate characters) into a single code point,
+	 * matching UTF-16.
+	 * @see `punycode.ucs2.encode`
+	 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+	 * @memberOf punycode.ucs2
+	 * @name decode
+	 * @param {String} string The Unicode input string (UCS-2).
+	 * @returns {Array} The new array of code points.
+	 */
+	function ucs2decode(string) {
+		var output = [],
+		    counter = 0,
+		    length = string.length,
+		    value,
+		    extra;
+		while (counter < length) {
+			value = string.charCodeAt(counter++);
+			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
+				// high surrogate, and there is a next character
+				extra = string.charCodeAt(counter++);
+				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
+					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
+				} else {
+					// unmatched surrogate; only append this code unit, in case the next
+					// code unit is the high surrogate of a surrogate pair
+					output.push(value);
+					counter--;
+				}
+			} else {
+				output.push(value);
+			}
+		}
+		return output;
+	}
+
+	/**
+	 * Creates a string based on an array of numeric code points.
+	 * @see `punycode.ucs2.decode`
+	 * @memberOf punycode.ucs2
+	 * @name encode
+	 * @param {Array} codePoints The array of numeric code points.
+	 * @returns {String} The new Unicode string (UCS-2).
+	 */
+	function ucs2encode(array) {
+		return map(array, function(value) {
+			var output = '';
+			if (value > 0xFFFF) {
+				value -= 0x10000;
+				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
+				value = 0xDC00 | value & 0x3FF;
+			}
+			output += stringFromCharCode(value);
+			return output;
+		}).join('');
+	}
+
+	/**
+	 * Converts a basic code point into a digit/integer.
+	 * @see `digitToBasic()`
+	 * @private
+	 * @param {Number} codePoint The basic numeric code point value.
+	 * @returns {Number} The numeric value of a basic code point (for use in
+	 * representing integers) in the range `0` to `base - 1`, or `base` if
+	 * the code point does not represent a value.
+	 */
+	function basicToDigit(codePoint) {
+		if (codePoint - 48 < 10) {
+			return codePoint - 22;
+		}
+		if (codePoint - 65 < 26) {
+			return codePoint - 65;
+		}
+		if (codePoint - 97 < 26) {
+			return codePoint - 97;
+		}
+		return base;
+	}
+
+	/**
+	 * Converts a digit/integer into a basic code point.
+	 * @see `basicToDigit()`
+	 * @private
+	 * @param {Number} digit The numeric value of a basic code point.
+	 * @returns {Number} The basic code point whose value (when used for
+	 * representing integers) is `digit`, which needs to be in the range
+	 * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
+	 * used; else, the lowercase form is used. The behavior is undefined
+	 * if `flag` is non-zero and `digit` has no uppercase form.
+	 */
+	function digitToBasic(digit, flag) {
+		//  0..25 map to ASCII a..z or A..Z
+		// 26..35 map to ASCII 0..9
+		return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
+	}
+
+	/**
+	 * Bias adaptation function as per section 3.4 of RFC 3492.
+	 * https://tools.ietf.org/html/rfc3492#section-3.4
+	 * @private
+	 */
+	function adapt(delta, numPoints, firstTime) {
+		var k = 0;
+		delta = firstTime ? floor(delta / damp) : delta >> 1;
+		delta += floor(delta / numPoints);
+		for (/* no initialization */; delta > baseMinusTMin * tMax >> 1; k += base) {
+			delta = floor(delta / baseMinusTMin);
+		}
+		return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
+	}
+
+	/**
+	 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
+	 * symbols.
+	 * @memberOf punycode
+	 * @param {String} input The Punycode string of ASCII-only symbols.
+	 * @returns {String} The resulting string of Unicode symbols.
+	 */
+	function decode(input) {
+		// Don't use UCS-2
+		var output = [],
+		    inputLength = input.length,
+		    out,
+		    i = 0,
+		    n = initialN,
+		    bias = initialBias,
+		    basic,
+		    j,
+		    index,
+		    oldi,
+		    w,
+		    k,
+		    digit,
+		    t,
+		    /** Cached calculation results */
+		    baseMinusT;
+
+		// Handle the basic code points: let `basic` be the number of input code
+		// points before the last delimiter, or `0` if there is none, then copy
+		// the first basic code points to the output.
+
+		basic = input.lastIndexOf(delimiter);
+		if (basic < 0) {
+			basic = 0;
+		}
+
+		for (j = 0; j < basic; ++j) {
+			// if it's not a basic code point
+			if (input.charCodeAt(j) >= 0x80) {
+				error('not-basic');
+			}
+			output.push(input.charCodeAt(j));
+		}
+
+		// Main decoding loop: start just after the last delimiter if any basic code
+		// points were copied; start at the beginning otherwise.
+
+		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
+
+			// `index` is the index of the next character to be consumed.
+			// Decode a generalized variable-length integer into `delta`,
+			// which gets added to `i`. The overflow checking is easier
+			// if we increase `i` as we go, then subtract off its starting
+			// value at the end to obtain `delta`.
+			for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
+
+				if (index >= inputLength) {
+					error('invalid-input');
+				}
+
+				digit = basicToDigit(input.charCodeAt(index++));
+
+				if (digit >= base || digit > floor((maxInt - i) / w)) {
+					error('overflow');
+				}
+
+				i += digit * w;
+				t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+
+				if (digit < t) {
+					break;
+				}
+
+				baseMinusT = base - t;
+				if (w > floor(maxInt / baseMinusT)) {
+					error('overflow');
+				}
+
+				w *= baseMinusT;
+
+			}
+
+			out = output.length + 1;
+			bias = adapt(i - oldi, out, oldi == 0);
+
+			// `i` was supposed to wrap around from `out` to `0`,
+			// incrementing `n` each time, so we'll fix that now:
+			if (floor(i / out) > maxInt - n) {
+				error('overflow');
+			}
+
+			n += floor(i / out);
+			i %= out;
+
+			// Insert `n` at position `i` of the output
+			output.splice(i++, 0, n);
+
+		}
+
+		return ucs2encode(output);
+	}
+
+	/**
+	 * Converts a string of Unicode symbols (e.g. a domain name label) to a
+	 * Punycode string of ASCII-only symbols.
+	 * @memberOf punycode
+	 * @param {String} input The string of Unicode symbols.
+	 * @returns {String} The resulting Punycode string of ASCII-only symbols.
+	 */
+	function encode(input) {
+		var n,
+		    delta,
+		    handledCPCount,
+		    basicLength,
+		    bias,
+		    j,
+		    m,
+		    q,
+		    k,
+		    t,
+		    currentValue,
+		    output = [],
+		    /** `inputLength` will hold the number of code points in `input`. */
+		    inputLength,
+		    /** Cached calculation results */
+		    handledCPCountPlusOne,
+		    baseMinusT,
+		    qMinusT;
+
+		// Convert the input in UCS-2 to Unicode
+		input = ucs2decode(input);
+
+		// Cache the length
+		inputLength = input.length;
+
+		// Initialize the state
+		n = initialN;
+		delta = 0;
+		bias = initialBias;
+
+		// Handle the basic code points
+		for (j = 0; j < inputLength; ++j) {
+			currentValue = input[j];
+			if (currentValue < 0x80) {
+				output.push(stringFromCharCode(currentValue));
+			}
+		}
+
+		handledCPCount = basicLength = output.length;
+
+		// `handledCPCount` is the number of code points that have been handled;
+		// `basicLength` is the number of basic code points.
+
+		// Finish the basic string - if it is not empty - with a delimiter
+		if (basicLength) {
+			output.push(delimiter);
+		}
+
+		// Main encoding loop:
+		while (handledCPCount < inputLength) {
+
+			// All non-basic code points < n have been handled already. Find the next
+			// larger one:
+			for (m = maxInt, j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+				if (currentValue >= n && currentValue < m) {
+					m = currentValue;
+				}
+			}
+
+			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
+			// but guard against overflow
+			handledCPCountPlusOne = handledCPCount + 1;
+			if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
+				error('overflow');
+			}
+
+			delta += (m - n) * handledCPCountPlusOne;
+			n = m;
+
+			for (j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+
+				if (currentValue < n && ++delta > maxInt) {
+					error('overflow');
+				}
+
+				if (currentValue == n) {
+					// Represent delta as a generalized variable-length integer
+					for (q = delta, k = base; /* no condition */; k += base) {
+						t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+						if (q < t) {
+							break;
+						}
+						qMinusT = q - t;
+						baseMinusT = base - t;
+						output.push(
+							stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0))
+						);
+						q = floor(qMinusT / baseMinusT);
+					}
+
+					output.push(stringFromCharCode(digitToBasic(q, 0)));
+					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
+					delta = 0;
+					++handledCPCount;
+				}
+			}
+
+			++delta;
+			++n;
+
+		}
+		return output.join('');
+	}
+
+	/**
+	 * Converts a Punycode string representing a domain name or an email address
+	 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
+	 * it doesn't matter if you call it on a string that has already been
+	 * converted to Unicode.
+	 * @memberOf punycode
+	 * @param {String} input The Punycoded domain name or email address to
+	 * convert to Unicode.
+	 * @returns {String} The Unicode representation of the given Punycode
+	 * string.
+	 */
+	function toUnicode(input) {
+		return mapDomain(input, function(string) {
+			return regexPunycode.test(string)
+				? decode(string.slice(4).toLowerCase())
+				: string;
+		});
+	}
+
+	/**
+	 * Converts a Unicode string representing a domain name or an email address to
+	 * Punycode. Only the non-ASCII parts of the domain name will be converted,
+	 * i.e. it doesn't matter if you call it with a domain that's already in
+	 * ASCII.
+	 * @memberOf punycode
+	 * @param {String} input The domain name or email address to convert, as a
+	 * Unicode string.
+	 * @returns {String} The Punycode representation of the given domain name or
+	 * email address.
+	 */
+	function toASCII(input) {
+		return mapDomain(input, function(string) {
+			return regexNonASCII.test(string)
+				? 'xn--' + encode(string)
+				: string;
+		});
+	}
+
+	/*--------------------------------------------------------------------------*/
+
+	/** Define the public API */
+	punycode = {
+		/**
+		 * A string representing the current Punycode.js version number.
+		 * @memberOf punycode
+		 * @type String
+		 */
+		'version': '1.4.1',
+		/**
+		 * An object of methods to convert from JavaScript's internal character
+		 * representation (UCS-2) to Unicode code points, and back.
+		 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+		 * @memberOf punycode
+		 * @type Object
+		 */
+		'ucs2': {
+			'decode': ucs2decode,
+			'encode': ucs2encode
+		},
+		'decode': decode,
+		'encode': encode,
+		'toASCII': toASCII,
+		'toUnicode': toUnicode
+	};
+
+	/** Expose `punycode` */
+	// Some AMD build optimizers, like r.js, check for specific condition patterns
+	// like the following:
+	if (
+		typeof define == 'function' &&
+		typeof define.amd == 'object' &&
+		define.amd
+	) {
+		define('punycode', function() {
+			return punycode;
+		});
+	} else if (freeExports && freeModule) {
+		if (module.exports == freeExports) {
+			// in Node.js, io.js, or RingoJS v0.8.0+
+			freeModule.exports = punycode;
+		} else {
+			// in Narwhal or RingoJS v0.7.0-
+			for (key in punycode) {
+				punycode.hasOwnProperty(key) && (freeExports[key] = punycode[key]);
+			}
+		}
+	} else {
+		// in Rhino or a web browser
+		root.punycode = punycode;
+	}
+
+}(this));
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],235:[function(require,module,exports){
 (function (process,global,Buffer){
 'use strict'
 
@@ -87757,10 +89490,10 @@ function randomBytes (size, cb) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"_process":219,"buffer":146}],227:[function(require,module,exports){
+},{"_process":227,"buffer":152}],236:[function(require,module,exports){
 module.exports = require("./lib/_stream_duplex.js")
 
-},{"./lib/_stream_duplex.js":228}],228:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":237}],237:[function(require,module,exports){
 // a duplex stream is just a stream that is both readable and writable.
 // Since JS doesn't have multiple prototypal inheritance, this class
 // prototypally inherits from Readable, and then parasitically from
@@ -87836,7 +89569,7 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
-},{"./_stream_readable":230,"./_stream_writable":232,"core-util-is":149,"inherits":198,"process-nextick-args":218}],229:[function(require,module,exports){
+},{"./_stream_readable":239,"./_stream_writable":241,"core-util-is":155,"inherits":206,"process-nextick-args":226}],238:[function(require,module,exports){
 // a passthrough stream.
 // basically just the most minimal sort of Transform stream.
 // Every written chunk gets output as-is.
@@ -87863,7 +89596,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":231,"core-util-is":149,"inherits":198}],230:[function(require,module,exports){
+},{"./_stream_transform":240,"core-util-is":155,"inherits":206}],239:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -88807,7 +90540,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":228,"./internal/streams/BufferList":233,"_process":219,"buffer":146,"buffer-shims":144,"core-util-is":149,"events":187,"inherits":198,"isarray":201,"process-nextick-args":218,"string_decoder/":257,"util":118}],231:[function(require,module,exports){
+},{"./_stream_duplex":237,"./internal/streams/BufferList":242,"_process":227,"buffer":152,"buffer-shims":150,"core-util-is":155,"events":193,"inherits":206,"isarray":209,"process-nextick-args":226,"string_decoder/":266,"util":124}],240:[function(require,module,exports){
 // a transform stream is a readable/writable stream where you do
 // something with the data.  Sometimes it's called a "filter",
 // but that's not a great name for it, since that implies a thing where
@@ -88990,7 +90723,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":228,"core-util-is":149,"inherits":198}],232:[function(require,module,exports){
+},{"./_stream_duplex":237,"core-util-is":155,"inherits":206}],241:[function(require,module,exports){
 (function (process){
 // A bit simpler than readable streams.
 // Implement an async ._write(chunk, encoding, cb), and it'll handle all
@@ -89547,7 +91280,7 @@ function CorkedRequest(state) {
   };
 }
 }).call(this,require('_process'))
-},{"./_stream_duplex":228,"_process":219,"buffer":146,"buffer-shims":144,"core-util-is":149,"events":187,"inherits":198,"process-nextick-args":218,"util-deprecate":261}],233:[function(require,module,exports){
+},{"./_stream_duplex":237,"_process":227,"buffer":152,"buffer-shims":150,"core-util-is":155,"events":193,"inherits":206,"process-nextick-args":226,"util-deprecate":270}],242:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('buffer').Buffer;
@@ -89612,10 +91345,10 @@ BufferList.prototype.concat = function (n) {
   }
   return ret;
 };
-},{"buffer":146,"buffer-shims":144}],234:[function(require,module,exports){
+},{"buffer":152,"buffer-shims":150}],243:[function(require,module,exports){
 module.exports = require("./lib/_stream_passthrough.js")
 
-},{"./lib/_stream_passthrough.js":229}],235:[function(require,module,exports){
+},{"./lib/_stream_passthrough.js":238}],244:[function(require,module,exports){
 (function (process){
 var Stream = (function (){
   try {
@@ -89635,13 +91368,13 @@ if (!process.browser && process.env.READABLE_STREAM === 'disable' && Stream) {
 }
 
 }).call(this,require('_process'))
-},{"./lib/_stream_duplex.js":228,"./lib/_stream_passthrough.js":229,"./lib/_stream_readable.js":230,"./lib/_stream_transform.js":231,"./lib/_stream_writable.js":232,"_process":219}],236:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":237,"./lib/_stream_passthrough.js":238,"./lib/_stream_readable.js":239,"./lib/_stream_transform.js":240,"./lib/_stream_writable.js":241,"_process":227}],245:[function(require,module,exports){
 module.exports = require("./lib/_stream_transform.js")
 
-},{"./lib/_stream_transform.js":231}],237:[function(require,module,exports){
+},{"./lib/_stream_transform.js":240}],246:[function(require,module,exports){
 module.exports = require("./lib/_stream_writable.js")
 
-},{"./lib/_stream_writable.js":232}],238:[function(require,module,exports){
+},{"./lib/_stream_writable.js":241}],247:[function(require,module,exports){
 (function (Buffer){
 /*
 CryptoJS v3.1.2
@@ -89855,7 +91588,7 @@ function ripemd160 (message) {
 module.exports = ripemd160
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],239:[function(require,module,exports){
+},{"buffer":152}],248:[function(require,module,exports){
 (function (Buffer){
 const assert = require('assert')
 /**
@@ -90088,7 +91821,7 @@ function toBuffer (v) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"assert":110,"buffer":146}],240:[function(require,module,exports){
+},{"assert":116,"buffer":152}],249:[function(require,module,exports){
 (function (Buffer){
 var crypto = require('crypto')
 /* eslint-disable camelcase */
@@ -90272,11 +92005,11 @@ function arraycopy (src, srcPos, dest, destPos, length) {
 module.exports = scrypt
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146,"crypto":155}],241:[function(require,module,exports){
+},{"buffer":152,"crypto":161}],250:[function(require,module,exports){
 'use strict'
 module.exports = require('./lib')(require('./lib/elliptic'))
 
-},{"./lib":245,"./lib/elliptic":244}],242:[function(require,module,exports){
+},{"./lib":254,"./lib/elliptic":253}],251:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var toString = Object.prototype.toString
@@ -90324,7 +92057,7 @@ exports.isNumberInInterval = function (number, x, y, message) {
 }
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
-},{"../../is-buffer/index.js":199}],243:[function(require,module,exports){
+},{"../../is-buffer/index.js":207}],252:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var bip66 = require('bip66')
@@ -90525,7 +92258,7 @@ exports.signatureImportLax = function (sig) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"bip66":115,"buffer":146}],244:[function(require,module,exports){
+},{"bip66":121,"buffer":152}],253:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var createHash = require('create-hash')
@@ -90776,7 +92509,7 @@ exports.ecdhUnsafe = function (publicKey, privateKey, compressed) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"../messages.json":246,"bn.js":116,"buffer":146,"create-hash":151,"elliptic":166}],245:[function(require,module,exports){
+},{"../messages.json":255,"bn.js":122,"buffer":152,"create-hash":157,"elliptic":172}],254:[function(require,module,exports){
 'use strict'
 var assert = require('./assert')
 var der = require('./der')
@@ -91009,7 +92742,7 @@ module.exports = function (secp256k1) {
   }
 }
 
-},{"./assert":242,"./der":243,"./messages.json":246}],246:[function(require,module,exports){
+},{"./assert":251,"./der":252,"./messages.json":255}],255:[function(require,module,exports){
 module.exports={
   "COMPRESSED_TYPE_INVALID": "compressed should be a boolean",
   "EC_PRIVATE_KEY_TYPE_INVALID": "private key should be a Buffer",
@@ -91047,7 +92780,7 @@ module.exports={
   "TWEAK_LENGTH_INVALID": "tweak length is invalid"
 }
 
-},{}],247:[function(require,module,exports){
+},{}],256:[function(require,module,exports){
 (function (Buffer){
 // prototype class for hash functions
 function Hash (blockSize, finalSize) {
@@ -91120,7 +92853,7 @@ Hash.prototype._update = function () {
 module.exports = Hash
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":146}],248:[function(require,module,exports){
+},{"buffer":152}],257:[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -91137,7 +92870,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":249,"./sha1":250,"./sha224":251,"./sha256":252,"./sha384":253,"./sha512":254}],249:[function(require,module,exports){
+},{"./sha":258,"./sha1":259,"./sha224":260,"./sha256":261,"./sha384":262,"./sha512":263}],258:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
@@ -91234,7 +92967,7 @@ Sha.prototype._hash = function () {
 module.exports = Sha
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":247,"buffer":146,"inherits":198}],250:[function(require,module,exports){
+},{"./hash":256,"buffer":152,"inherits":206}],259:[function(require,module,exports){
 (function (Buffer){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
@@ -91336,7 +93069,7 @@ Sha1.prototype._hash = function () {
 module.exports = Sha1
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":247,"buffer":146,"inherits":198}],251:[function(require,module,exports){
+},{"./hash":256,"buffer":152,"inherits":206}],260:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -91392,7 +93125,7 @@ Sha224.prototype._hash = function () {
 module.exports = Sha224
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":247,"./sha256":252,"buffer":146,"inherits":198}],252:[function(require,module,exports){
+},{"./hash":256,"./sha256":261,"buffer":152,"inherits":206}],261:[function(require,module,exports){
 (function (Buffer){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -91530,7 +93263,7 @@ Sha256.prototype._hash = function () {
 module.exports = Sha256
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":247,"buffer":146,"inherits":198}],253:[function(require,module,exports){
+},{"./hash":256,"buffer":152,"inherits":206}],262:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
@@ -91590,7 +93323,7 @@ Sha384.prototype._hash = function () {
 module.exports = Sha384
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":247,"./sha512":254,"buffer":146,"inherits":198}],254:[function(require,module,exports){
+},{"./hash":256,"./sha512":263,"buffer":152,"inherits":206}],263:[function(require,module,exports){
 (function (Buffer){
 var inherits = require('inherits')
 var Hash = require('./hash')
@@ -91853,7 +93586,7 @@ Sha512.prototype._hash = function () {
 module.exports = Sha512
 
 }).call(this,require("buffer").Buffer)
-},{"./hash":247,"buffer":146,"inherits":198}],255:[function(require,module,exports){
+},{"./hash":256,"buffer":152,"inherits":206}],264:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -91982,7 +93715,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":187,"inherits":198,"readable-stream/duplex.js":227,"readable-stream/passthrough.js":234,"readable-stream/readable.js":235,"readable-stream/transform.js":236,"readable-stream/writable.js":237}],256:[function(require,module,exports){
+},{"events":193,"inherits":206,"readable-stream/duplex.js":236,"readable-stream/passthrough.js":243,"readable-stream/readable.js":244,"readable-stream/transform.js":245,"readable-stream/writable.js":246}],265:[function(require,module,exports){
 // Generated by CoffeeScript 1.8.0
 (function() {
   var ValueError, create, explicitToImplicit, format, implicitToExplicit, lookup, resolve,
@@ -92088,7 +93821,7 @@ Stream.prototype.pipe = function(dest, options) {
 
 }).call(this);
 
-},{}],257:[function(require,module,exports){
+},{}],266:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -92311,7 +94044,7 @@ function base64DetectIncompleteChar(buffer) {
   this.charLength = this.charReceived ? 3 : 0;
 }
 
-},{"buffer":146}],258:[function(require,module,exports){
+},{"buffer":152}],267:[function(require,module,exports){
 var isHexPrefixed = require('is-hex-prefixed');
 
 /**
@@ -92327,7 +94060,7 @@ module.exports = function stripHexPrefix(str) {
   return isHexPrefixed(str) ? str.slice(2) : str;
 }
 
-},{"is-hex-prefixed":200}],259:[function(require,module,exports){
+},{"is-hex-prefixed":208}],268:[function(require,module,exports){
 (function (root) {
    "use strict";
 
@@ -92771,7 +94504,7 @@ UChar.udata={
    }
 }(this));
 
-},{}],260:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
 (function (global){
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
 ;(function(root) {
@@ -93019,7 +94752,7 @@ UChar.udata={
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],261:[function(require,module,exports){
+},{}],270:[function(require,module,exports){
 (function (global){
 
 /**
@@ -93090,16 +94823,16 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],262:[function(require,module,exports){
-arguments[4][198][0].apply(exports,arguments)
-},{"dup":198}],263:[function(require,module,exports){
+},{}],271:[function(require,module,exports){
+arguments[4][206][0].apply(exports,arguments)
+},{"dup":206}],272:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],264:[function(require,module,exports){
+},{}],273:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -93689,7 +95422,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":263,"_process":219,"inherits":262}],265:[function(require,module,exports){
+},{"./support/isBuffer":272,"_process":227,"inherits":271}],274:[function(require,module,exports){
 (function (global){
 
 var rng;
@@ -93725,7 +95458,7 @@ module.exports = rng;
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],266:[function(require,module,exports){
+},{}],275:[function(require,module,exports){
 //     uuid.js
 //
 //     Copyright (c) 2010-2012 Robert Kieffer
@@ -93910,7 +95643,7 @@ uuid.unparse = unparse;
 
 module.exports = uuid;
 
-},{"./rng":265}],267:[function(require,module,exports){
+},{"./rng":274}],276:[function(require,module,exports){
 var indexOf = require('indexof');
 
 var Object_keys = function (obj) {
@@ -94050,7 +95783,7 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":197}],268:[function(require,module,exports){
+},{"indexof":205}],277:[function(require,module,exports){
 // Base58 encoding/decoding
 // Originally written by Mike Hearn for BitcoinJ
 // Copyright (c) 2011 Google Inc
@@ -94108,7 +95841,7 @@ exports.createContext = Script.createContext = function (context) {
 })(typeof module !== 'undefined' && typeof module.exports !== 'undefined');
 
 
-},{}],269:[function(require,module,exports){
+},{}],278:[function(require,module,exports){
 (function (isNode) {
     var jsSHA = isNode ? require('jssha') : window.jsSHA;
 
@@ -94144,7 +95877,7 @@ exports.createContext = Script.createContext = function (context) {
         window.WAValidator.__imports.cryptoUtils = cryptoUtils;
     }
 })(typeof module !== 'undefined' && typeof module.exports !== 'undefined');
-},{"jssha":202}],270:[function(require,module,exports){
+},{"jssha":210}],279:[function(require,module,exports){
 (function (isNode) {
     // defines P2PKH and P2SH address types for standard (prod) and testnet networks
     var CURRENCIES = [{
@@ -94217,7 +95950,7 @@ exports.createContext = Script.createContext = function (context) {
         window.WAValidator.__imports.currencies = currencies;
     }
 })(typeof module !== 'undefined' && typeof module.exports !== 'undefined');
-},{}],271:[function(require,module,exports){
+},{}],280:[function(require,module,exports){
 (function (isNode) {
     var base58, cryptoUtils, currencies;
 
@@ -94287,4 +96020,4 @@ exports.createContext = Script.createContext = function (context) {
 
 
 
-},{"./base58":268,"./crypto_utils":269,"./currencies":270}]},{},[34]);
+},{"./base58":277,"./crypto_utils":278,"./currencies":279}]},{},[40]);
