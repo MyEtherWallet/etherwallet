@@ -5,6 +5,16 @@ validator.isValidAddress = function(address) {
         return ethFuncs.validateEtherAddress(address);
     return false;
 }
+validator.isValidENSorEtherAddress = function(address) {
+    return (validator.isValidAddress(address) || validator.isValidENSAddress(address));
+}
+validator.isValidENSAddress = function(address) {
+    address = ens.normalise(address);
+    var tld = address.substr(address.lastIndexOf('.') + 1);
+    var _ens = new ens();
+    if (_ens.curRegistry.tlds[tld]) return true;
+    return false;
+}
 validator.isValidBTCAddress = function(address) {
     return ethUtil.WAValidator.validate(address, 'BTC');
 }

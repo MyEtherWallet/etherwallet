@@ -68,6 +68,7 @@ customNode.prototype.sendRawTx = function(rawTx, callback) {
     });
 }
 customNode.prototype.getEstimatedGas = function(txobj, callback) {
+    txobj.value = ethFuncs.trimHexZero(txobj.value);
     this.post({
         method: 'eth_estimateGas',
         params: [{ to: txobj.to, value: txobj.value, data: txobj.data }]

@@ -39,8 +39,9 @@ ens.prototype.setCurrentRegistry = function(_registry) {
     this.curRegistry = _registry;
 }
 ens.prototype.getRegistryAddress = function(name) {
+    name = ens.normalise(name);
     var tld = name.substr(name.lastIndexOf('.') + 1).toLowerCase();
-    if(this.curRegistry[tld]) return this.curRegistry[tld].registry;
+    if (this.curRegistry.tlds[tld]) return this.curRegistry.tlds[tld];
     else return false;
 }
 
@@ -55,8 +56,16 @@ function namehash(name) {
     }
     return '0x' + node.toString('hex');
 }
+
+function subnodehash(name) {
+    name = ens.normalise(name);
+    return '0x' + ethUtil.sha3(name).toString('hex');
+}
 ens.getNameHash = function(name) {
     return namehash(name);
+}
+ens.getSubNodeHash = function(name) {
+    return subnodehash(name);
 }
 ens.prototype.getOwnerResolverAddress = function(funcABI, to, name, callback) {
     var _this = this;

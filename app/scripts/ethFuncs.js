@@ -21,6 +21,11 @@ ethFuncs.sanitizeHex = function(hex) {
     if (hex == "") return "";
     return '0x' + this.padLeftEven(hex);
 }
+ethFuncs.trimHexZero = function(hex) {
+    hex = this.sanitizeHex(hex);
+    hex = hex.substring(2).replace(/^0+/, '');
+    return '0x'+hex;
+}
 ethFuncs.padLeftEven = function(hex) {
     hex = hex.length % 2 != 0 ? '0' + hex : hex;
     return hex;
@@ -63,7 +68,7 @@ ethFuncs.getDataObj = function(to, func, arrVals) {
         data: func + val
     };
 }
-ethFuncs.getFunctionSignature = function (name) {
+ethFuncs.getFunctionSignature = function(name) {
     return ethUtil.sha3(name).toString('hex').slice(0, 8);
 };
 ethFuncs.estimateGas = function(dataObj, callback) {
@@ -91,7 +96,7 @@ ethFuncs.estimateGas = function(dataObj, callback) {
             if (data.data.vmTrace && data.data.vmTrace.ops.length) {
                 var result = data.data.vmTrace.ops;
                 var estGas = recurCheckBalance(result);
-                estGas = estGas < 0 ? -1 : estGas+5000;
+                estGas = estGas < 0 ? -1 : estGas + 5000;
             } else {
                 var stateDiff = data.data.stateDiff;
                 stateDiff = stateDiff[dataObj.from.toLowerCase()]['balance']['*'];
