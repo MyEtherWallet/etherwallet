@@ -7629,6 +7629,12 @@ module.exports=[
     "type":"default"
   },
   {
+    "address":"0xe23cd160761f63fc3a1cf78aa034b6cdf97d3e0c",
+    "symbol":"MIT",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xc66ea802717bfb9833400264dd12c2bceaa34a6d",
     "symbol":"MKR",
     "decimal":18,
