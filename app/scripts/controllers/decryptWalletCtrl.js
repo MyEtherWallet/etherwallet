@@ -49,7 +49,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         document.getElementById('fselector').click();
     };
     $scope.onFilePassChange = function() {
-        $scope.showFDecrypt = $scope.filePassword.length > 0;
+        $scope.showFDecrypt = $scope.filePassword.length >= 0;
     };
     $scope.onPrivKeyChange = function() {
         $scope.requirePPass = $scope.manualprivkey.length == 128 || $scope.manualprivkey.length == 132;
