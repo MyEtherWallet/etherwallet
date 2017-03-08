@@ -104,37 +104,24 @@ var offlineTxCtrl = function($scope, $sce, walletService) {
         }
     }
     $scope.generateTx = function() {
-        try {
-            if (!$scope.Validator.isValidAddress($scope.tx.to)) throw globalFuncs.errorMsgs[5];
-            else if (!$scope.Validator.isPositiveNumber($scope.tx.value)) throw globalFuncs.errorMsgs[7];
-            else if (!$scope.Validator.isPositiveNumber($scope.gasPriceDec)) throw globalFuncs.errorMsgs[10];
-            else if (!$scope.Validator.isPositiveNumber($scope.nonceDec)) throw globalFuncs.errorMsgs[11];
-            else if (!$scope.Validator.isPositiveNumber($scope.tx.gasLimit)) throw globalFuncs.errorMsgs[8];
-            else if (!$scope.Validator.isValidHex($scope.tx.data)) throw globalFuncs.errorMsgs[9];
-            var rawTx = {
-                nonce: ethFuncs.sanitizeHex(ethFuncs.decimalToHex($scope.nonceDec)),
-                gasPrice: ethFuncs.sanitizeHex(ethFuncs.decimalToHex($scope.gasPriceDec)),
-                gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex($scope.tx.gasLimit)),
-                to: ethFuncs.sanitizeHex($scope.tx.to),
-                value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei($scope.tx.value, $scope.tx.unit))),
-                data: ethFuncs.sanitizeHex($scope.tx.data),
-            }
-            if (ajaxReq.eip155) rawTx.chainId = ajaxReq.chainId;
-            if ($scope.tokenTx.id != 'ether') {
-                rawTx.data = $scope.tokenObjs[$scope.tokenTx.id].getData($scope.tx.to, $scope.tx.value).data;
-                rawTx.to = $scope.tokenObjs[$scope.tokenTx.id].getContractAddress();
-                rawTx.value = '0x00';
-            }
-            $scope.valueReadable = $scope.tx.value;
-            var eTx = new ethUtil.Tx(rawTx);
-            eTx.sign($scope.wallet.getPrivateKey());
-            $scope.rawTx = JSON.stringify(rawTx);
-            $scope.signedTx = '0x' + eTx.serialize().toString('hex');
-
-        } catch (e) {
-            $scope.showRaw = false;
-            $scope.notifier.danger(e);
+        if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
+            $scope.notifier.danger(globalFuncs.errorMsgs[5]);
+            return;
         }
+        var txData = uiFuncs.getTxData($scope);
+        txData.nonce = ethFuncs.sanitizeHex(ethFuncs.decimalToHex($scope.nonceDec));
+        txData.gasPrice = ethFuncs.sanitizeHex(ethFuncs.decimalToHex($scope.gasPriceDec));
+        uiFuncs.generateTx(txData, function(rawTx) {
+            if (!rawTx.isError) {
+                $scope.rawTx = rawTx.rawTx;
+                $scope.signedTx = rawTx.signedTx;
+                $scope.showRaw = true;
+            } else {
+                $scope.showRaw = false;
+                $scope.notifier.danger(rawTx.error);
+            }
+            if (!$scope.$$phase) $scope.$apply();
+        });
     }
     $scope.confirmSendTx = function() {
         try {

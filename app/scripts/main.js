@@ -44,6 +44,8 @@ var Validator                = require('./validator');
 window.Validator             = Validator;
 var bity                     = require('./bity');
 window.bity                  = bity;
+var ens                      = require('./ens');
+window.ens                   = ens;
 var translate                = require('./translations/translate.js');
 if (IS_CX) {
   var cxFuncs                = require('./cxFuncs');

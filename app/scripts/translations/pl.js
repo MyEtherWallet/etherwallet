@@ -5,47 +5,47 @@ pl.code = 'pl';
 pl.data = {
 
 /* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
+x_ParityPhrase              : 'Fraza Parity ',
 
 /* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
+NODE_Title                  : 'Zmień Domyślny Węzeł',
+NODE_Subtitle               : 'Aby połączyć się z lokalnym węzłem...',
+NODE_Warning                : 'Twój węzeł musi obsługiwać HTTPS, aby można było się połączyć z nim przez MyEtherWallet.com. Możesz pobrać [repozytorium MyEtherWallet](https://github.com/kvhnuke/etherwallet/releases/latest) i uruchomić lokalnie aby połączyć się z dowolnym węzłem. Możesz też pobrać darmowy certyfikat SSL przez [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Nazwa Węzła',
+NODE_Port                   : 'Port Węzła',
+NODE_CTA                    : 'Zapisz i Używaj Węzła',
 
 /* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
+x_Access                    : 'Dostęp ',
+CONTRACT_Title              : 'Adres Kontraktu ',
+CONTRACT_Title_2            : 'Wybierz Istniejący Kontrakt ',
+CONTRACT_Json               : 'Interfejs ABI / JSON ',
+CONTRACT_Interact_Title     : 'Odczytaj / Zapisz Kontrakt ',
+CONTRACT_Interact_CTA       : 'Wybierz funkcję ',
+CONTRACT_ByteCode           : 'Kod Bajtowy ',
+CONTRACT_Read               : 'ODCZYTAJ ',
+CONTRACT_Write              : 'ZAPISZ ',
 
 /* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+SWAP_rates                  : "Aktualne Kursy ",
+SWAP_init_1                 : "Chcę wymienić ",
+SWAP_init_2                 : " na ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Zatwierdź! ", // or "Continue"
+SWAP_information            : "Twoja Adnotacja ",
+SWAP_send_amt               : "Kwota do wysłania ",
+SWAP_rec_amt                : "Kwota rządania ",
+SWAP_your_rate              : "Twój kurs ",
+SWAP_rec_add                : "Twój Adres Odbiorczy ",
+SWAP_start_CTA              : "Rozpocznij Wymianę ",
+SWAP_ref_num                : "Twój numer referencyjny ",
+SWAP_time                   : "Pozostały czas na wysyłkę ",
+SWAP_progress_1             : "Zlecenie Rozpoczęte ",
+SWAP_progress_2             : "Oczekiwanie na Twoje ", // Waiting for your BTC...
+SWAP_progress_3             : "Otrzymano! ", // ETH Received!
+SWAP_progress_4             : "Wysyłanie Twoich {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Zlecenie Zakończone ",
+SWAP_order_CTA              : "Wyślij ", // Please send 1 ETH...
+SWAP_unlock                 : "Odblokuj Twój portfel, aby wysłać ETH lub Tokeny wprost z tej strony. ",
 
 NAV_Swap                    : 'Giełda ',
 
@@ -319,6 +319,7 @@ ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Minimum amount 0.01 ',
 ERROR_28                    : '**Potrzebujesz plik Keystore i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje. ',
+ERROR_29                    : 'Please enter valid user and password ',
 SUCCESS_1                   : 'Prawidłowy adres ',
 SUCCESS_2                   : 'Portfel został odszyfrowany ',
 SUCCESS_3                   : 'Transakcja zgłoszona. TX ID ',

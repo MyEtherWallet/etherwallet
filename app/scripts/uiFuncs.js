@@ -8,7 +8,7 @@ uiFuncs.getTxData = function($scope) {
         gasLimit: $scope.tx.gasLimit,
         data: $scope.tx.data,
         from: $scope.wallet.getAddressString(),
-        privKey: $scope.wallet.getPrivateKeyString(),
+        privKey: $scope.wallet.privKey ? $scope.wallet.getPrivateKeyString() : '',
         path: $scope.wallet.getPath(),
         hwType: $scope.wallet.getHWType(),
         hwTransport: $scope.wallet.getHWTransport()
@@ -100,9 +100,7 @@ uiFuncs.generateTx = function(txData, callback) {
     }
     try {
         uiFuncs.isTxDataValid(txData);
-        ajaxReq.getTransactionData(txData.from, function(data) {
-            if (data.error) throw data.msg;
-            data = data.data;
+        var genTxWithInfo = function(data) {
             var rawTx = {
                 nonce: ethFuncs.sanitizeHex(data.nonce),
                 gasPrice: ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
@@ -146,7 +144,27 @@ uiFuncs.generateTx = function(txData, callback) {
                 rawTx.isError = false;
                 if (callback !== undefined) callback(rawTx);
             }
-        });
+        }
+        if (txData.nonce || txData.gasPrice) {
+            var data = {
+                nonce: txData.nonce,
+                gasprice: txData.gasPrice
+            }
+            genTxWithInfo(data);
+        } else {
+            ajaxReq.getTransactionData(txData.from, function(data) {
+                if (data.error && callback !== undefined) {
+                    callback({
+                        isError: true,
+                        error: e
+                    });
+                    return;
+                } else {
+                    data = data.data;
+                    genTxWithInfo(data);
+                }
+            });
+        }
     } catch (e) {
         if (callback !== undefined) callback({
             isError: true,
@@ -194,8 +212,14 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
 }
 uiFuncs.notifier = {
     show: false,
-    close: function() { this.show = false; if (!this.scope.$$phase) this.scope.$apply()},
-    open: function() { this.show = true; },
+    close: function() {
+        this.show = false;
+        if (!this.scope.$$phase) this.scope.$apply()
+    },
+    open: function() {
+        this.show = true;
+        if (!this.scope.$$phase) this.scope.$apply();
+    },
     class: '',
     message: '',
     timer: null,

@@ -1,0 +1,12 @@
+{
+    "eth": {
+        "registry": "0x112234455c3a32fd11230c42e7bccd4a84e02010",
+        "reverse": "0xDb6cEAD81ce14A63c284728eEd17738A81327fF0",
+        "resolver": "0x71E122FC87Aa184B966dfaaA81F9F37f45da9bae"
+    },
+    "reverse": {
+        "registry": "0x112234455c3a32fd11230c42e7bccd4a84e02010",
+        "reverse": "0xDb6cEAD81ce14A63c284728eEd17738A81327fF0",
+        "resolver": "0x71E122FC87Aa184B966dfaaA81F9F37f45da9bae"
+    }
+}
