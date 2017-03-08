@@ -53,7 +53,7 @@ var addWalletCtrl = function($scope, $sce) {
 		document.getElementById('fselector').click();
 	};
 	$scope.onFilePassChange = function() {
-		$scope.showBtnUnlock = $scope.filePassword.length > 1;
+		$scope.showBtnUnlock = $scope.filePassword.length >= 0;
 	};
 	$scope.setHDAddresses = function(start, limit) {
 		$scope.HDWallet.wallets = [];
