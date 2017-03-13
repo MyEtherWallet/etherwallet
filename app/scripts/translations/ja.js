@@ -4,7 +4,7 @@ var ja = function() {}
 ja.code = 'ja';
 ja.data = {
 
-NAV_ENS: 'Register ENS',
+NAV_ENS: 'ENS',
 
 
 /* Navigation*/

@@ -4,7 +4,7 @@ var sl = function() {}
 sl.code = 'sl';
 sl.data = {
 
-NAV_ENS: 'Register ENS',
+NAV_ENS: 'ENS',
 
 
 /* Misc */

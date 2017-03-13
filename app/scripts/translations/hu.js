@@ -4,7 +4,7 @@ var hu = function() {}
 hu.code = 'hu';
 hu.data = {
 
-NAV_ENS: 'Register ENS',
+NAV_ENS: 'ENS',
 
 
 /* Misc */

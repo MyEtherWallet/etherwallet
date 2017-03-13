@@ -3,7 +3,7 @@
 var de = function() {}
 de.code = 'de';
 de.data = {
-NAV_ENS: 'Register ENS',
+NAV_ENS: 'ENS',
 /* Misc */
 x_ParityPhrase              : 'Parity Phrase ',
 

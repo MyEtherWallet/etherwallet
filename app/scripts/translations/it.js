@@ -5,7 +5,7 @@ var it = function() {}
 it.code = 'it';
 it.data = {
 
-NAV_ENS: 'Register ENS',
+NAV_ENS: 'ENS',
 
 
 /* Misc */

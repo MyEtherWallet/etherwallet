@@ -4,7 +4,7 @@ var sv = function() {}
 sv.code = 'sv';
 sv.data = {
 
-NAV_ENS: 'Register ENS',
+NAV_ENS: 'ENS',
 
 
 /* Misc */

@@ -4,7 +4,7 @@ var vi = function() {}
 vi.code = 'vi';
 vi.data = {
 
-NAV_ENS: 'Register ENS',
+NAV_ENS: 'ENS',
 
 
 /* Misc */

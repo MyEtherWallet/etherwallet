@@ -66,7 +66,7 @@
   <!-- / Advanced Option Panel -->
 
   <div class="form-group" ng-hide="tx.value > wallet.balance && tx.readOnly">
-    <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> GENERATE TRANSACTION </a>
+    <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
   </div>
   <div class="form-group" ng-show="showRaw">
     <label translate="SEND_raw"> Raw Transaction </label>

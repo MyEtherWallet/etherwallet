@@ -4,7 +4,7 @@ var zhtw = function() {}
 zhtw.code = 'zhtw';
 zhtw.data = {
 
-NAV_ENS: 'Register ENS',
+NAV_ENS: 'ENS',
 
 /* Navigation*/
 NAV_AddWallet               : '新增錢包 ',

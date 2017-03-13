@@ -4,7 +4,7 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
-NAV_ENS: 'Register ENS',
+NAV_ENS: 'ENS',
 
 
 /* Misc */

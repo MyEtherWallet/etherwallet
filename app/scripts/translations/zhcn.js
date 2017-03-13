@@ -4,7 +4,7 @@ var zhcn = function() {}
 zhcn.code = 'zhcn';
 zhcn.data = {
 
-NAV_ENS: 'Register ENS',
+NAV_ENS: 'ENS',
 
 /* Misc */
 x_ParityPhrase              : 'Parity Phrase ',

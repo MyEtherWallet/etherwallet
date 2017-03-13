@@ -4,7 +4,7 @@ var fi = function() {}
 fi.code = 'fi';
 fi.data = {
 
-NAV_ENS: 'Register ENS',
+NAV_ENS: 'ENS',
 
 
 /* Misc */

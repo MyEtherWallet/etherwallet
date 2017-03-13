@@ -55,7 +55,7 @@ var tabs = {
     mew: true,
     cx: true
   },
-  contracts: {
+  ens: {
     id: 7,
     name: "NAV_ENS",
     url: "ens",
@@ -69,19 +69,19 @@ var tabs = {
     mew: true,
     cx: false
   },
-  signMsg: {
-    id: 9,
-    name: "NAV_SignMsg",
-    url: "sign-message",
-    mew: false,
-    cx: false
-  },
   help: {
-    id: 10,
+    id: 9,
     name: "NAV_Help",
     url: "help",
     mew: true,
     cx: true
+  },
+  signMsg: {
+    id: 10,
+    name: "NAV_SignMsg",
+    url: "sign-message",
+    mew: false,
+    cx: false
   },
   bulkGenerate: {
     id: 11,
