@@ -91,8 +91,18 @@
       <hr/>
 
       <div ng-show="wallet.type=='default'">
-        @@if (site === 'cx' )  {  @@include( './signMsg.tpl', { "site": "mew" } )   }
-        @@if (site === 'mew' ) {  @@include( './signMsg.tpl', { "site": "cx" } )    }
+        @@if (site === 'cx' )  {
+          <main ng-controller='signMsgCtrl' ng-show="wallet!=null" ng-cloak>
+            @@if (site === 'cx' ) {  @@include( './signMsg.tpl', { "site": "cx" } )    }
+          </main>
+        }
+        @@if (site === 'mew' ) {
+          <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.signMsg.id" ng-controller='signMsgCtrl'  ng-cloak>
+            @@if (site === 'mew') {  @@include( './signMsg.tpl', { "site": "mew" } )   }
+          </main>
+        }
+
+
       </div>
 
     </section>

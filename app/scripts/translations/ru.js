@@ -4,6 +4,9 @@ var ru = function() {}
 ru.code = 'ru';
 ru.data = {
 
+NAV_ENS: 'Register ENS',
+
+
 /* Misc */
 x_ParityPhrase              : 'Parity Phrase ',
 

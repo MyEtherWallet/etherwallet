@@ -3,7 +3,7 @@
 var el = function() {}
 el.code = 'el';
 el.data = {
-
+NAV_ENS: 'Register ENS',
 /* Misc */
 x_ParityPhrase              : 'Parity Phrase ',
 

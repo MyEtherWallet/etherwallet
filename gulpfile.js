@@ -205,6 +205,7 @@ gulp.task('clean', function () {
       dist_CX + 'images/fav',
       dist_CX + 'embedded.html',
       dist_CX + 'index.html',
+      dist_CX + 'signmsg.html',
       dist    + 'cx-wallet.html',
       dist    + 'images/icons'
     ], {read: false})

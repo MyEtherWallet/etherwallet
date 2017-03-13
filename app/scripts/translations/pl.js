@@ -4,6 +4,9 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
+NAV_ENS: 'Register ENS',
+
+
 /* Misc */
 x_ParityPhrase              : 'Fraza Parity ',
 

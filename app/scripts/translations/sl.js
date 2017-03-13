@@ -4,6 +4,9 @@ var sl = function() {}
 sl.code = 'sl';
 sl.data = {
 
+NAV_ENS: 'Register ENS',
+
+
 /* Misc */
 x_ParityPhrase              : 'Parity Phrase ',
 

@@ -4,6 +4,9 @@ var nl = function() {}
 nl.code = 'nl';
 nl.data = {
 
+NAV_ENS: 'Register ENS',
+
+
 /* Misc */
 x_ParityPhrase              : 'Parity herstel zin ',
 

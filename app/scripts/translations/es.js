@@ -4,6 +4,9 @@ var es = function() {}
 es.code = 'es';
 es.data = {
 
+NAV_ENS: 'Register ENS',
+
+
 /* Misc */
 x_ParityPhrase              : 'Parity Phrase ',
 

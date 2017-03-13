@@ -4,6 +4,8 @@ var zhtw = function() {}
 zhtw.code = 'zhtw';
 zhtw.data = {
 
+NAV_ENS: 'Register ENS',
+
 /* Navigation*/
 NAV_AddWallet               : '新增錢包 ',
 NAV_BulkGenerate            : '批量產生 ',

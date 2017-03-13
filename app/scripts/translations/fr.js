@@ -3,6 +3,10 @@
 var fr = function() {}
 fr.code = 'fr';
 fr.data = {
+
+NAV_ENS: 'Register ENS',
+
+
 /* Misc */
 x_ParityPhrase              : 'Phrase Parity ',
 
@@ -48,7 +52,7 @@ SWAP_unlock                 : "Déverrouillez votre portefeuille pour envoyer de
 
 NAV_Swap                    : 'Échange ',
 
-  
+
 
 
 

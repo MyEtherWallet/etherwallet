@@ -23,6 +23,7 @@ var addressFieldDrtv = function($compile) {
             element.html('<div class=\"col-xs-10\">\n \
                     <label translate=\"SEND_addr\"> To Address: </label>\n \
                     <input class=\"form-control\"  type=\"text\" placeholder=\"' + placeholder + '\" ng-model=\"addressDrtv.ensAddressField\" ng-disabled=\"' + readOnly + '\" ng-class=\"Validator.isValidENSorEtherAddress(' + varName + ') ? \'is-valid\' : \'is-invalid\'\"/>\n \
+                    <p class="ens-response"> ↳ <span class="mono ng-binding"> ENS_ADDRESS_GOES_HERE </span> </p>\n \
                     <input class=\"form-control\"  type=\"text\" show="addressDrtv.showEtherAddress" ng-model=\"' + varName + '\" ng-disabled=\"true\" ng-class=\"Validator.isValidAddress(' + varName + ') ? \'is-valid\' : \'is-invalid\'\"/>\n \
                 </div>\n \
                 <div class=\"col-xs-2 address-identicon-container\">\n \

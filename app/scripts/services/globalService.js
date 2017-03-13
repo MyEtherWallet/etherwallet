@@ -55,29 +55,36 @@ var tabs = {
     mew: true,
     cx: true
   },
-  viewWalletInfo: {
+  contracts: {
     id: 7,
+    name: "NAV_ENS",
+    url: "ens",
+    mew: true,
+    cx: true
+  },
+  viewWalletInfo: {
+    id: 8,
     name: "NAV_ViewWallet",
     url: "view-wallet-info",
     mew: true,
     cx: false
   },
   signMsg: {
-    id: 8,
+    id: 9,
     name: "NAV_SignMsg",
     url: "sign-message",
     mew: false,
     cx: false
   },
   help: {
-    id: 9,
+    id: 10,
     name: "NAV_Help",
     url: "help",
     mew: true,
     cx: true
   },
   bulkGenerate: {
-    id: 10,
+    id: 11,
     name: "NAV_BulkGenerate",
     url: "bulk-generate",
     mew: false,

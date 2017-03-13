@@ -4,6 +4,9 @@ var hu = function() {}
 hu.code = 'hu';
 hu.data = {
 
+NAV_ENS: 'Register ENS',
+
+
 /* Misc */
 x_ParityPhrase              : 'Parity Phrase ',
 

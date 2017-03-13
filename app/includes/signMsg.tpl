@@ -1,11 +1,4 @@
 <!-- Sign Message Panel -->
-@@if (site === 'cx' )  {
-  <main ng-controller='signMsgCtrl' ng-show="wallet!=null" ng-cloak>
-}
-@@if (site === 'mew' ) {
-  <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.signMsg.id" ng-controller='signMsgCtrl'  ng-cloak>
-}
-
   <h3>
     <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
     or
@@ -67,6 +60,4 @@
     <!-- / Verify Message Stuff -->
 
   </article>
-
-</main>
 <!-- / Sign Message Panel -->

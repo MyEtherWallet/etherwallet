@@ -1,17 +1,17 @@
 <footer>
   <div class="container">
     <p>
-      <span translate="FOOTER_3">Client-side wallet generation by</span>
-      <a href="https://www.myetherwallet.com" target="_blank">www.MyEtherWallet.com</a>:
-      <span translate="MEW_Tagline">An open source, javascript, client-side tool for generating Ethererum Wallets & sending transactions.</span>
+      <a href="https://www.myetherwallet.com" target="_blank">MyEtherWallet.com</a>:
+      Open-Source, client-side tool for easily & securely interacting with the Ethereum network.
+      Created by <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.
     </p>
     <p>
-      <a href="https://www.myetherwallet.com/#help" target="_blank"> <span translate="NAV_Help">Help</span> / FAQs </a> &middot;
-      <a href="https://github.com/kvhnuke/etherwallet" target="_blank">Github</a> &middot;
-      <a href="mailto:myetherwallet@gmail.com" target="_blank"> Email Us </a> &middot;
-      <a href="https://twitter.com/myetherwallet" target="_blank"> @MyEtherWallet </a> &middot;
-      Created by <a href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a href="https://github.com/tayvano" target="_blank">tayvano</a>
-    </p>
+    <a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank">www.MyEtherWallet.com</a> &middot;
+    <a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank">Github: MyEtherWallet.com & CX</a> &middot;
+    <a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank">Github: MyEtherWallet (Org)</a> &middot;
+    <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank">Twitter</a> &middot;
+    <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank">Facebook</a> &middot;
+    <a aria-label="email myetherwallet at gmail.com" href="mailto:myetherwallet@gmail.com" target="_blank">Email</a>
   </div>
 </footer>
 </body>

@@ -4,6 +4,9 @@ var id = function() {}
 id.code = 'id';
 id.data = {
 
+NAV_ENS: 'Register ENS',
+
+
 /* Misc */
 x_ParityPhrase              : 'Parity Phrase ',
 

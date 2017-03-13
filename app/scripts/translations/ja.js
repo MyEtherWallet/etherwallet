@@ -4,6 +4,9 @@ var ja = function() {}
 ja.code = 'ja';
 ja.data = {
 
+NAV_ENS: 'Register ENS',
+
+
 /* Navigation*/
 NAV_AddWallet               : 'ウォレット追加 ',
 NAV_BulkGenerate            : 'バルク作成 ',
