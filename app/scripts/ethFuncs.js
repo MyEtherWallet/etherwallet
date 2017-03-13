@@ -24,7 +24,7 @@ ethFuncs.sanitizeHex = function(hex) {
 ethFuncs.trimHexZero = function(hex) {
     hex = this.sanitizeHex(hex);
     hex = hex.substring(2).replace(/^0+/, '');
-    return '0x'+hex;
+    return '0x' + hex;
 }
 ethFuncs.padLeftEven = function(hex) {
     hex = hex.length % 2 != 0 ? '0' + hex : hex;

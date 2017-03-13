@@ -1,12 +1,18 @@
 var uts46 = require('idna-uts46');
 var registryInterface = require('./ensConfigs/registryABI.json');
 var resolverInterface = require('./ensConfigs/resolverABI.json');
+var auctionInterface = require('./ensConfigs/auctionABI.json');
+var deedInterface = require('./ensConfigs/deedABI.json');
 var ens = function() {
     var _this = this;
     this.registryABI = {};
     for (var i in registryInterface) this.registryABI[registryInterface[i].name] = registryInterface[i];
     this.resolverABI = {};
     for (var i in resolverInterface) this.resolverABI[resolverInterface[i].name] = resolverInterface[i];
+    this.auctionABI = {};
+    for (var i in auctionInterface) this.auctionABI[auctionInterface[i].name] = auctionInterface[i];
+    this.deedABI = {};
+    for (var i in deedInterface) this.deedABI[deedInterface[i].name] = deedInterface[i];
     switch (ajaxReq.type) {
         case nodes.nodeTypes.ETH:
             _this.setCurrentRegistry(ens.registry.ETH);
@@ -110,6 +116,20 @@ ens.prototype.getName = function(name, callback) {
                     callback(data);
                 }
             });
+        }
+    });
+}
+ens.prototype.shaBid = function(hash, owner, value, saltHash, callback) {
+    var _this = this;
+    var funcABI = _this.auctionABI.shaBid;
+    ajaxReq.getEthCall({ to: _this.curRegistry.public.ethAuction, data: _this.getDataString(funcABI, [hash, owner, value, saltHash]) }, function(data) {
+        if (data.error) callback(data);
+        else {
+            var outTypes = funcABI.outputs.map(function(i) {
+                return i.type;
+            });
+            data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0];
+            callback(data);
         }
     });
 }
