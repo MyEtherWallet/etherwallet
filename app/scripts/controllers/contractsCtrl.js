@@ -88,7 +88,7 @@ var contractsCtrl = function($scope, $sce, walletService) {
             else if (!globalFuncs.isNumeric($scope.tx.gasLimit) || parseFloat($scope.tx.gasLimit) <= 0) throw globalFuncs.errorMsgs[8];
             $scope.tx.data = ethFuncs.sanitizeHex($scope.tx.data);
             ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
-                if (data.error) throw data.msg;
+                if (data.error) $scope.notifier.danger(data.msg);
                 data = data.data;
                 $scope.tx.to = $scope.tx.to == '' ? '0xCONTRACT' : $scope.tx.to;
                 $scope.tx.contractAddr = $scope.tx.to == '0xCONTRACT' ? ethFuncs.getDeteministicContractAddress($scope.wallet.getAddressString(), data.nonce) : '';

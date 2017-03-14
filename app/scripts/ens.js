@@ -37,10 +37,16 @@ ens.normalise = function(name) {
     try {
         return uts46.toUnicode(name, { useStd3ASCII: true, transitional: false });
     } catch (e) {
-        uiFuncs.notifier.danger(e.message);
         throw e;
     }
 }
+ens.modes = {
+    open: 0,
+    auction: 1,
+    owned: 2,
+    forbidden: 3,
+    reveal: 4
+};
 ens.prototype.setCurrentRegistry = function(_registry) {
     this.curRegistry = _registry;
 }
@@ -103,6 +109,7 @@ ens.prototype.getAddress = function(name, callback) {
 }
 ens.prototype.getName = function(name, callback) {
     var _this = this;
+    name = ens.normalise(name);
     _this.getResolver(name, function(data) {
         if (data.error) callback(data);
         else {
@@ -116,6 +123,45 @@ ens.prototype.getName = function(name, callback) {
                     callback(data);
                 }
             });
+        }
+    });
+}
+ens.prototype.getAuctionAddress = function() {
+    return this.curRegistry.public.ethAuction;
+}
+ens.prototype.getStartAuctionData = function(name) {
+    var _this = this;
+    name = _this.getSHA3(ens.normalise(name));
+    var funcABI = _this.auctionABI.startAuction;
+    return _this.getDataString(funcABI, [name]);
+}
+ens.prototype.getSHA3 = function(str) {
+    return '0x' + ethUtil.sha3(str).toString('hex');
+}
+ens.prototype.getNewBidData = function(sealedHash) {
+    var _this = this;
+    var funcABI = _this.auctionABI.newBid;
+    return _this.getDataString(funcABI, [sealedHash]);
+}
+ens.prototype.getAuctionEntries = function(name, callback) {
+    var _this = this;
+    name = _this.getSHA3(ens.normalise(name));
+    var funcABI = _this.auctionABI.entries;
+    ajaxReq.getEthCall({ to: _this.curRegistry.public.ethAuction, data: _this.getDataString(funcABI, [name]) }, function(data) {
+        if (data.error) callback(data);
+        else {
+            var outTypes = funcABI.outputs.map(function(i) {
+                return i.type;
+            });
+            var res = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''));
+            data.data = {
+                status: res[0].toNumber(),
+                deed: res[1],
+                registrationDate: new Date(res[2].toNumber() * 1000),
+                value: res[3],
+                highestBid: res[4]
+            }
+            callback(data);
         }
     });
 }

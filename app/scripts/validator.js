@@ -8,6 +8,13 @@ validator.isValidAddress = function(address) {
 validator.isValidENSorEtherAddress = function(address) {
     return (validator.isValidAddress(address) || validator.isValidENSAddress(address));
 }
+validator.isValidENSName = function(str) {
+    try {
+        return (str.length > 6 && ens.normalise(str) != '');
+    } catch (e) {
+        return false;
+    }
+}
 validator.isValidENSAddress = function(address) {
     address = ens.normalise(address);
     var tld = address.substr(address.lastIndexOf('.') + 1);
