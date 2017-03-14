@@ -31,7 +31,7 @@ CONTRACT_Write              : 'SKRIV ',
 
 /* Swap / Exchange */
 SWAP_rates                  : "Aktuelle vekslingskurser ",
-SWAP_init_1                 : "Jeg vil bytte mine ",
+SWAP_init_1                 : "Jeg vil veksle mine ",
 SWAP_init_2                 : " med ", // "I want to swap my X ETH for X BTC"
 SWAP_init_CTA               : "Gjennomfør! ", // "Let's do this!" or "Continue"
 SWAP_information            : "Din informasjon ",
@@ -50,7 +50,7 @@ SWAP_progress_5             : "Ordre fullført ",
 SWAP_order_CTA              : "Vennligst send ", // Please send 1 ETH...
 SWAP_unlock                 : "Lås opp din lommebok for å sende ETH eller Tokens direkte fra denne siden. ",
 
-NAV_Swap                    : 'Byttehandel ',
+NAV_Swap                    : 'Veksling ',
 
 
 
@@ -77,7 +77,7 @@ NAV_YourWallets             : 'Dine lommebøker ',
 /* General */
 x_AddessDesc                : 'Du kjenner kanskje dette som ditt "kontonummer" eller din "offentlige nøkkel". Dette er informasjonen som du sender til folk så de kan sende deg ether (en lang rekke tilfeldige tall og bokstaver som starter med "0x"). Ikonet er en enkel måte å kjenne igjen adressen din på. ',
 x_Address                   : 'Din adresse ',
-x_Cancel                    : 'x_Cancel ',
+x_Cancel                    : 'x_Annuler ',
 x_CSV                       : 'CSV-fil (ukryptert) ',
 x_Download                  : 'Last ned ',
 x_Json                      : 'JSON-fil (ukryptert) ',
@@ -323,7 +323,7 @@ ERROR_25                    : 'Vennligst oppgi gyldig kjede-ID ',
 ERROR_26                    : 'Vennligst oppgi gyldig ABI ',
 ERROR_27                    : 'Minimumsbeløp 0.01 ',
 ERROR_28                    : '**Du trenger din Keystore-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk). ',
-ERROR_29                    : 'Please enter valid user and password ',
+ERROR_29                    : 'Vennligst oppgi gyldig brukernavn og passord ',
 SUCCESS_1                   : 'Gyldig adresse ',
 SUCCESS_2                   : 'Dekrypteringen av lommeboken var vellykket ',
 SUCCESS_3                   : 'Transaksjonen ble sendt inn. TX ID ',
