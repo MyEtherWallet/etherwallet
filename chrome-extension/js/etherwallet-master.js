@@ -72,6 +72,10 @@ module.exports=[{
     "name": "ENS-EthNameService",
     "address": "0x314159265dD8dbb310642f98f50C066173C1259b",
     "abi": '[{"constant":true,"inputs":[{"name":"node","type":"bytes32"}],"name":"resolver","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"node","type":"bytes32"}],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"label","type":"bytes32"},{"name":"owner","type":"address"}],"name":"setSubnodeOwner","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"ttl","type":"uint64"}],"name":"setTTL","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"node","type":"bytes32"}],"name":"ttl","outputs":[{"name":"","type":"uint64"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"resolver","type":"address"}],"name":"setResolver","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"owner","type":"address"}],"name":"setOwner","outputs":[],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"node","type":"bytes32"},{"indexed":false,"name":"owner","type":"address"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"node","type":"bytes32"},{"indexed":true,"name":"label","type":"bytes32"},{"indexed":false,"name":"owner","type":"address"}],"name":"NewOwner","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"node","type":"bytes32"},{"indexed":false,"name":"resolver","type":"address"}],"name":"NewResolver","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"node","type":"bytes32"},{"indexed":false,"name":"ttl","type":"uint64"}],"name":"NewTTL","type":"event"}]'
+}, {
+    "name": "ENS-ReverseRegistrar",
+    "address": "0xdA7fA6E0b04c76683F54c973931862D7fE474a85",
+    "abi": '[{"constant":false,"inputs":[{"name":"owner","type":"address"}],"name":"claim","outputs":[{"name":"node","type":"bytes32"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"ens","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"node","outputs":[{"name":"ret","type":"bytes32"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"rootNode","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"},{"inputs":[{"name":"ensAddr","type":"address"},{"name":"node","type":"bytes32"}],"payable":false,"type":"constructor"}]'
 }]
 
 },{}],3:[function(require,module,exports){
@@ -92,6 +96,10 @@ module.exports=[{
     "address": "0x112234455C3a32FD11230C42E7Bccd4A84e02010",
     "abi": '[{"constant":true,"inputs":[{"name":"node","type":"bytes32"}],"name":"resolver","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"node","type":"bytes32"}],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"label","type":"bytes32"},{"name":"owner","type":"address"}],"name":"setSubnodeOwner","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"ttl","type":"uint64"}],"name":"setTTL","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"node","type":"bytes32"}],"name":"ttl","outputs":[{"name":"","type":"uint64"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"resolver","type":"address"}],"name":"setResolver","outputs":[],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"owner","type":"address"}],"name":"setOwner","outputs":[],"payable":false,"type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"node","type":"bytes32"},{"indexed":false,"name":"owner","type":"address"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"node","type":"bytes32"},{"indexed":true,"name":"label","type":"bytes32"},{"indexed":false,"name":"owner","type":"address"}],"name":"NewOwner","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"node","type":"bytes32"},{"indexed":false,"name":"resolver","type":"address"}],"name":"NewResolver","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"node","type":"bytes32"},{"indexed":false,"name":"ttl","type":"uint64"}],"name":"NewTTL","type":"event"}]'
 }, {
+    "name": "ENS-Resolver",
+    "address": "0x71E122FC87Aa184B966dfaaA81F9F37f45da9bae",
+    "abi": '[{"constant":true,"inputs":[{"name":"node","type":"bytes32"}],"name":"addr","outputs":[{"name":"ret","type":"address"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"node","type":"bytes32"},{"name":"kind","type":"bytes32"}],"name":"has","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"node","type":"bytes32"},{"name":"addr","type":"address"}],"name":"setAddr","outputs":[],"payable":false,"type":"function"},{"inputs":[{"name":"ensAddr","type":"address"}],"type":"constructor"},{"payable":false,"type":"fallback"}]'
+},{
     "name": "Mist's Multisig Contract",
     "address": "0x0000000000000000000000000000000000000000",
     "abi": '[{"constant":false,"inputs":[{"name":"_owner","type":"address"}],"name":"removeOwner","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_addr","type":"address"}],"name":"isOwner","outputs":[{"name":"","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"m_numOwners","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"m_lastDay","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"version","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[],"name":"resetSpentToday","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"m_spentToday","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"_owner","type":"address"}],"name":"addOwner","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"m_required","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"_h","type":"bytes32"}],"name":"confirm","outputs":[{"name":"","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"_newLimit","type":"uint256"}],"name":"setDailyLimit","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"},{"name":"_data","type":"bytes"}],"name":"execute","outputs":[{"name":"_r","type":"bytes32"}],"type":"function"},{"constant":false,"inputs":[{"name":"_operation","type":"bytes32"}],"name":"revoke","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_newRequired","type":"uint256"}],"name":"changeRequirement","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"_operation","type":"bytes32"},{"name":"_owner","type":"address"}],"name":"hasConfirmed","outputs":[{"name":"","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"}],"name":"kill","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"}],"name":"changeOwner","outputs":[],"type":"function"},{"constant":true,"inputs":[],"name":"m_dailyLimit","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"inputs":[{"name":"_owners","type":"address[]"},{"name":"_required","type":"uint256"},{"name":"_daylimit","type":"uint256"}],"type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"operation","type":"bytes32"}],"name":"Confirmation","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"operation","type":"bytes32"}],"name":"Revoke","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldOwner","type":"address"},{"indexed":false,"name":"newOwner","type":"address"}],"name":"OwnerChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"newOwner","type":"address"}],"name":"OwnerAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"oldOwner","type":"address"}],"name":"OwnerRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"newRequirement","type":"uint256"}],"name":"RequirementChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"from","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Deposit","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"value","type":"uint256"},{"indexed":false,"name":"to","type":"address"},{"indexed":false,"name":"data","type":"bytes"}],"name":"SingleTransact","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"owner","type":"address"},{"indexed":false,"name":"operation","type":"bytes32"},{"indexed":false,"name":"value","type":"uint256"},{"indexed":false,"name":"to","type":"address"},{"indexed":false,"name":"data","type":"bytes"}],"name":"MultiTransact","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"operation","type":"bytes32"},{"indexed":false,"name":"initiator","type":"address"},{"indexed":false,"name":"value","type":"uint256"},{"indexed":false,"name":"to","type":"address"},{"indexed":false,"name":"data","type":"bytes"}],"name":"ConfirmationNeeded","type":"event"}]'
@@ -1187,7 +1195,8 @@ var ensCtrl = function ($scope, $sce, walletService) {
         timer: null,
         bidValue: 0.1,
         dValue: 0.1,
-        secret: hd.bip39.generateMnemonic().split(" ").splice(0, 3).join(" ")
+        secret: hd.bip39.generateMnemonic().split(" ").splice(0, 3).join(" "),
+        nameReadOnly: false
     };
     $scope.tx = {
         gasLimit: '100000',
@@ -1233,8 +1242,13 @@ var ensCtrl = function ($scope, $sce, walletService) {
         if ($scope.Validator.isValidENSName($scope.objENS.name)) {
             ENS.getAuctionEntries($scope.objENS.name, function (data) {
                 if (data.error) $scope.notifier.danger(data.msg);else {
+                    $scope.objENS.nameReadOnly = true;
                     var entries = data.data;
                     for (var key in entries) $scope.objENS[key] = entries[key];
+                    if ($scope.objENS.status == $scope.ensModes.owned) ENS.getOwner($scope.objENS.name + '.eth', function (data) {
+                        $scope.objENS.owner = data.data;
+                        if (!$scope.$$phase) $scope.$apply();
+                    });
                     if (!$scope.$$phase) $scope.$apply();
                     if ($scope.objENS.status == $scope.ensModes.auction) {
                         clearInterval($scope.objENS.timer);
@@ -2277,34 +2291,48 @@ module.exports = viewWalletCtrl;
 'use strict';
 
 var walletBalanceCtrl = function ($scope, $sce) {
-	$scope.ajaxReq = ajaxReq;
-	$scope.localToken = {
-		contractAdd: "",
-		symbol: "",
-		decimals: "",
-		type: "custom"
-	};
-	$scope.customTokenField = false;
-	$scope.saveTokenToLocal = function () {
-		globalFuncs.saveTokenToLocal($scope.localToken, function (data) {
-			if (!data.error) {
-				$scope.localToken = {
-					contractAdd: "",
-					symbol: "",
-					decimals: "",
-					type: "custom"
-				};
-				$scope.wallet.setTokens();
-				$scope.validateLocalToken = $sce.trustAsHtml('');
-				$scope.customTokenField = false;
-			} else {
-				$scope.notifier.danger(data.msg);
-			}
-		});
-	};
-	$scope.removeTokenFromLocal = function (tokenSymbol) {
-		globalFuncs.removeTokenFromLocal(tokenSymbol, $scope.wallet.tokenObjs);
-	};
+    $scope.ajaxReq = ajaxReq;
+    $scope.localToken = {
+        contractAdd: "",
+        symbol: "",
+        decimals: "",
+        type: "custom"
+    };
+    $scope.customTokenField = false;
+    $scope.saveTokenToLocal = function () {
+        globalFuncs.saveTokenToLocal($scope.localToken, function (data) {
+            if (!data.error) {
+                $scope.localToken = {
+                    contractAdd: "",
+                    symbol: "",
+                    decimals: "",
+                    type: "custom"
+                };
+                $scope.wallet.setTokens();
+                $scope.validateLocalToken = $sce.trustAsHtml('');
+                $scope.customTokenField = false;
+            } else {
+                $scope.notifier.danger(data.msg);
+            }
+        });
+    };
+    $scope.$watch('wallet', function () {
+        if ($scope.wallet) $scope.reverseLookup();
+    });
+    $scope.reverseLookup = function () {
+        var _ens = new ens();
+        _ens.getName($scope.wallet.getAddressString().substring(2) + '.addr.reverse', function (data) {
+            if (data.error) uiFuncs.notifier.danger(data.msg);else if (data.data == '0x') {
+                $scope.showens = false;
+            } else {
+                $scope.ensAddress = data.data;
+                $scope.showens = true;
+            }
+        });
+    };
+    $scope.removeTokenFromLocal = function (tokenSymbol) {
+        globalFuncs.removeTokenFromLocal(tokenSymbol, $scope.wallet.tokenObjs);
+    };
 };
 module.exports = walletBalanceCtrl;
 
@@ -2482,29 +2510,47 @@ var addressFieldDrtv = function ($compile) {
                 }
             };
             scope.addressDrtv = {
-                showEtherAddress: false,
-                ensAddressField: ''
+                showDerivedAddress: false,
+                ensAddressField: '',
+                derivedAddress: ''
             };
             element.html('<div class=\"col-xs-10\">\n \
                     <label translate=\"SEND_addr\"> To Address: </label>\n \
                     <input class=\"form-control\"  type=\"text\" placeholder=\"' + placeholder + '\" ng-model=\"addressDrtv.ensAddressField\" ng-disabled=\"' + readOnly + '\" ng-class=\"Validator.isValidENSorEtherAddress(' + varName + ') ? \'is-valid\' : \'is-invalid\'\"/>\n \
-                    <p class="ens-response"> ↳ <span class="mono ng-binding"> ENS_ADDRESS_GOES_HERE </span> </p>\n \
-                    <input class=\"form-control\"  type=\"text\" show="addressDrtv.showEtherAddress" ng-model=\"' + varName + '\" ng-disabled=\"true\" ng-class=\"Validator.isValidAddress(' + varName + ') ? \'is-valid\' : \'is-invalid\'\"/>\n \
+                    <p class="ens-response" ng-show="addressDrtv.showDerivedAddress"> ↳ <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span> </p>\n \
+                    <input ng-hide="true" class=\"form-control\"  type=\"text\" ng-model=\"' + varName + '\" ng-disabled=\"true\"/>\n \
                 </div>\n \
                 <div class=\"col-xs-2 address-identicon-container\">\n \
                    <div class=\"addressIdenticon\" title=\"Address Indenticon\" blockie-address=\"{{' + varName + '}}\" watch-var=\"' + varName + '\"></div>\n \
                 </div>');
             $compile(element.contents())(scope);
             scope.$watch('addressDrtv.ensAddressField', function () {
+                var _ens = new ens();
                 if (Validator.isValidAddress(scope.addressDrtv.ensAddressField)) {
                     setValue(scope.addressDrtv.ensAddressField);
+                    _ens.getName(scope.addressDrtv.ensAddressField.substring(2) + '.addr.reverse', function (data) {
+                        if (data.error) uiFuncs.notifier.danger(data.msg);else if (data.data == '0x') {
+                            scope.addressDrtv.showDerivedAddress = false;
+                        } else {
+                            scope.addressDrtv.derivedAddress = data.data;
+                            scope.addressDrtv.showDerivedAddress = true;
+                        }
+                    });
                 } else if (Validator.isValidENSAddress(scope.addressDrtv.ensAddressField)) {
-                    var _ens = new ens();
-                    _ens.getOwner(scope.addressDrtv.ensAddressField, function (data) {
-                        if (data.error) uiFuncs.notifier.danger(data.msg);else setValue(data.data);
+                    _ens.resolveAddressByName(scope.addressDrtv.ensAddressField, function (data) {
+                        if (data.error) uiFuncs.notifier.danger(data.msg);else if (data.data == '0x0000000000000000000000000000000000000000' || data.data == '0x') {
+                            setValue('0x0000000000000000000000000000000000000000');
+                            scope.addressDrtv.derivedAddress = '0x0000000000000000000000000000000000000000';
+                            scope.addressDrtv.showDerivedAddress = true;
+                        } else {
+                            setValue(data.data);
+                            scope.addressDrtv.derivedAddress = data.data;
+                            scope.addressDrtv.showDerivedAddress = true;
+                        }
                     });
                 } else {
                     setValue('');
+                    scope.addressDrtv.showDerivedAddress = false;
                 }
             });
         }
@@ -2523,7 +2569,7 @@ var balanceDrtv = function () {
                       <ul class=\"account-info\">\n\
                         <div class=\"addressIdenticon med float\" title=\"Address Indenticon\" blockie-address=\"{{wallet.getAddressString()}}\" watch-var=\"wallet\"></div>\n\
                         <span class=\"mono wrap\">{{wallet.getChecksumAddressString()}}</span>\n\
-                        <label class=\"ens-response\"> ↳ <span class=\"mono ng-binding\"> ENS_ADDRESS_GOES_HERE </span> </label>\n \
+                        <label class=\"ens-response\" ng-show=\"showens\"> ↳ <span class=\"mono ng-binding\"> {{ensAddress}} </span> </label>\n \
                       </ul>\n\
                       <hr />\n\
                       <h5 translate=\"sidebar_AccountBal\">Account Balance:</h5>\n\
@@ -2919,14 +2965,30 @@ ens.prototype.getName = function (name, callback) {
     var _this = this;
     name = ens.normalise(name);
     _this.getResolver(name, function (data) {
-        if (data.error) callback(data);else {
-            _this.getOwnerResolverAddress(_this.resolverABI.addr, data.data, name, function (data) {
-                if (data.error) callback(data);else {
+        if (data.error || data.data == '0x') callback(data);else {
+            ajaxReq.getEthCall({ to: data.data, data: _this.getDataString(_this.resolverABI.name, [namehash(name)]) }, function (data) {
+                if (data.error || data.data == '0x') callback(data);else {
                     var outTypes = _this.resolverABI.name.outputs.map(function (i) {
                         return i.type;
                     });
                     data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0];
                     callback(data);
+                }
+            });
+        }
+    });
+};
+ens.prototype.resolveAddressByName = function (name, callback) {
+    var _this = this;
+    name = ens.normalise(name);
+    _this.getOwner(name, function (data) {
+        if (data.error || data.data == '0x') callback(data);else {
+            var owner = data.data;
+            _this.getName(name, function (data) {
+                if (data.error || data.data == '0x') {
+                    callback({ data: owner, error: false });
+                } else {
+                    callback({ data: data.data, error: false });
                 }
             });
         }
@@ -20320,6 +20382,7 @@ module.exports = uiFuncs;
 
 var validator = function () {};
 validator.isValidAddress = function (address) {
+    if (address && address == "0x0000000000000000000000000000000000000000") return false;
     if (address) return ethFuncs.validateEtherAddress(address);
     return false;
 };

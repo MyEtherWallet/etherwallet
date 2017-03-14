@@ -1,6 +1,7 @@
 'use strict';
 var validator = function() {}
 validator.isValidAddress = function(address) {
+    if (address && address == "0x0000000000000000000000000000000000000000") return false;
     if (address)
         return ethFuncs.validateEtherAddress(address);
     return false;

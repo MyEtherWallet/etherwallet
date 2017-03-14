@@ -111,16 +111,33 @@ ens.prototype.getName = function(name, callback) {
     var _this = this;
     name = ens.normalise(name);
     _this.getResolver(name, function(data) {
-        if (data.error) callback(data);
+        if (data.error || data.data == '0x') callback(data);
         else {
-            _this.getOwnerResolverAddress(_this.resolverABI.addr, data.data, name, function(data) {
-                if (data.error) callback(data);
+            ajaxReq.getEthCall({ to: data.data, data: _this.getDataString(_this.resolverABI.name, [namehash(name)]) }, function(data) {
+                if (data.error || data.data == '0x') callback(data);
                 else {
                     var outTypes = _this.resolverABI.name.outputs.map(function(i) {
                         return i.type;
                     });
                     data.data = ethUtil.solidityCoder.decodeParams(outTypes, data.data.replace('0x', ''))[0];
                     callback(data);
+                }
+            });
+        }
+    });
+}
+ens.prototype.resolveAddressByName = function(name, callback) {
+    var _this = this;
+    name = ens.normalise(name);
+    _this.getOwner(name, function(data) {
+        if (data.error || data.data == '0x') callback(data);
+        else {
+            var owner = data.data;
+            _this.getName(name, function(data) {
+                if (data.error || data.data == '0x') {
+                    callback({ data: owner, error: false });
+                } else {
+                    callback({ data: data.data, error: false });
                 }
             });
         }

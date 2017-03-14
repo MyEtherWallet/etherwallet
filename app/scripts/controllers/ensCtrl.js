@@ -15,7 +15,8 @@ var ensCtrl = function($scope, $sce, walletService) {
         timer: null,
         bidValue: 0.1,
         dValue: 0.1,
-        secret: hd.bip39.generateMnemonic().split(" ").splice(0, 3).join(" ")
+        secret: hd.bip39.generateMnemonic().split(" ").splice(0, 3).join(" "),
+        nameReadOnly: false
     };
     $scope.tx = {
         gasLimit: '100000',
@@ -63,8 +64,13 @@ var ensCtrl = function($scope, $sce, walletService) {
             ENS.getAuctionEntries($scope.objENS.name, function(data) {
                 if (data.error) $scope.notifier.danger(data.msg);
                 else {
+                    $scope.objENS.nameReadOnly = true;
                     var entries = data.data;
                     for (var key in entries) $scope.objENS[key] = entries[key];
+                    if ($scope.objENS.status == $scope.ensModes.owned) ENS.getOwner($scope.objENS.name + '.eth', function(data) {
+                        $scope.objENS.owner = data.data;
+                        if (!$scope.$$phase) $scope.$apply();
+                    })
                     if (!$scope.$$phase) $scope.$apply();
                     if ($scope.objENS.status == $scope.ensModes.auction) {
                         clearInterval($scope.objENS.timer);
