@@ -1688,17 +1688,17 @@
 
   <!-- ALL: Title + Search -->
   <h1 class="text-center" translate="NAV_ENS"> Enter an ENS Name: </h1>
-  <article class="row">
+  <article class="row" ng-show="!wd">
     <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
       <!-- TODO: validation
         "Names are required to be at least 7 characters long."
         "Only .eth names are available to bid on (via MyEtherWallet) at this time"
       -->
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="myetherwallet" />
+        <input class="form-control" type="text" placeholder="myetherwallet" ng-model="objENS.name" ng-class="Validator.isValidENSName(objENS.name) ? 'is-valid' : 'is-invalid'"/>
         <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
       </div>
-      <button class="btn btn-primary"> Check ENS Name </button>
+      <button class="btn btn-primary" ng-click="checkName()"> Check ENS Name </button>
     </section>
   </article>
   <!-- / ALL: Title + Search -->
@@ -1706,14 +1706,25 @@
 
 
 
-
   <!-- ALL: Status of Name -->
-  <article class="row">
+  <article class="row" ng-show="!wd">
     <br /><br />
     <h1 class="text-center">
-      { An auction as been started for } { ENS_NAME.eth }
-      <br />
-      { ENS_NAME.eth } { is available! }
+      <span ng-show="objENS.status==ensModes.auction">
+        An auction as been started for {{objENS.name}}.eth
+      </span>
+      <span ng-show="objENS.status==ensModes.open">
+        {{objENS.name}}.eth is available!
+      </span>
+      <span ng-show="objENS.status==ensModes.owned">
+        {{objENS.name}}.eth  not available!. Already owned by {{objENS.owner}}
+      </span>
+      <span ng-show="objENS.status==ensModes.forbidden">
+        {{objENS.name}}.eth  not available!. Forbidden!
+      </span>
+      <span ng-show="objENS.status==ensModes.reveal">
+        {{objENS.name}}.eth  is in reveal period. Reveal your bids!
+      </span>
     </h1>
   </article>
   <!-- / ALL: Status of Name -->
@@ -1721,28 +1732,24 @@
 
 
 
-
+  <div ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open) && !wd">
   <!-- ALL: If auction has been started -->
   <article class="row">
     <!-- PLACEBID: Key Stats Row -->
-    <section class="order-info-wrap row">
-      <div class="col-sm-4 col-xs-12 order-info">
-        <h4> { 12 days, 8 hours, <br /> 32 minutes, 0 seconds } </h4>
+    <section class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
+      <div class="col-sm-6 col-xs-12 order-info">
+        <h4> {{objENS.timeRemaining}} </h4>
         <p> Time Remaining in Auction </p>
       </div>
-      <div class="col-sm-4 col-xs-12 order-info">
-        <h4>{ March 28, 2017 }</h4>
+      <div class="col-sm-6 col-xs-12 order-info">
+        <h4>{{objENS.registrationDate.toLocaleString()}}</h4>
         <p> End Date </p>
-      </div>
-      <div class="col-sm-4 col-xs-12 order-info">
-        <h4>{ 6 } Bids</h4>
-        <p> Number of Bids </p>
       </div>
     </section>
     <!-- / PLACEBID: Key Stats Row -->
     <!-- ALL: Info Row -->
     <section class="col-sm-8 col-xs-12 col-sm-offset-2">
-      <h3> Do you want {name.eth}? You can {place a bid | start an auction} now. </h3>
+      <h3> Do you want {{objENS.name}}.eth? You can <span ng-show="objENS.status==ensModes.auction">place a bid</span><span ng-show="objENS.status==ensModes.open">start an auction</span> now. </h3>
       <h6> What is the auction & bidding process like? </h6>
       <ol>
         <li><strong>Preparation:</strong>
@@ -1781,44 +1788,34 @@
     <section class="clearfix collapse-container">
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-        <h4 traslate="SWAP_unlock">Unlock your Wallet to { Place a Bid | Start an Auction }.</h4>
+        <h4 traslate="SWAP_unlock">Unlock your Wallet to <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span>.</h4>
       </div>
       <div ng-show="!wd">
             <wallet-decrypt-drtv></wallet-decrypt-drtv>         
           
       </div>
     </section>
-
-    <section class="clearfix" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
-
-    </section>
   </article>
+  </div>
   <!-- / ALL: Unlock Directive -->
 
 
 
 
 
+<div ng-show="wd && (objENS.status==ensModes.auction || objENS.status==ensModes.open)">
   <!-- PLACE BID: Key Stats Row  - Exact Duplicate of Above -->
-  <section class="row order-info-wrap ">
-    <div class="col-sm-4 col-xs-12 order-info">
-      <h4> { 12 days, 8 hours, <br /> 32 minutes, 0 seconds } </h4>
-      <p> Time Remaining in Auction </p>
-    </div>
-    <div class="col-sm-4 col-xs-12 order-info">
-      <h4>{ March 28, 2017 }</h4>
-      <p> End Date </p>
-    </div>
-    <div class="col-sm-4 col-xs-12 order-info">
-      <h4>{ 6 } Bids</h4>
-      <p> Number of Bids </p>
-    </div>
-  </section>
+  <section class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
+      <div class="col-sm-6 col-xs-12 order-info">
+        <h4> {{objENS.timeRemaining}} </h4>
+        <p> Time Remaining in Auction </p>
+      </div>
+      <div class="col-sm-6 col-xs-12 order-info">
+        <h4>{{objENS.registrationDate.toLocaleString()}}</h4>
+        <p> End Date </p>
+      </div>
+    </section>
   <!-- / PLACE BID: Key Stats Row - Exact Duplicate of Above  -->
-
-
-
-
 
   <!-- ALL: TX GEN -->
   <article class="row">
@@ -1838,7 +1835,7 @@
     <section class="col-sm-8">
       <!-- Title -->
       <div class="form-group">
-        <h2>{ Place a Bid | Start an Auction }</h2>
+        <h2><span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span></h2>
       </div>
       <!-- / Title -->
 
@@ -1846,7 +1843,7 @@
       <label>Name</label>
         <!-- TODO: prefill from above -->
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="myetherwallet" value="TODO prefill plz" />
+        <input class="form-control" type="text" placeholder="myetherwallet" readonly ng-model="objENS.name"/>
         <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
       </div>
       <!-- / Name -->
@@ -1854,9 +1851,8 @@
       <!-- Maximum -->
       <h5>Your Maximum Bid</h5>
       <p><em><small>You <u>must</u> remember this to claim your name!!</small></em></p>
-        <!-- Validation = Minimum 0.1 ETH, more than what is in account -->
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="1 {{ajaxReq.type}}" />
+        <input class="form-control" type="text" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.1 ? 'is-valid' : 'is-invalid'"/>
         <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
       </div>
       <!-- / Maximum -->
@@ -1865,7 +1861,7 @@
       <h5>The Amount You Wish to Send (to disguise your bid)</h5>
       <!-- Validation = more than Max. Bid Input, more than what is in account -->
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="2 {{ajaxReq.type}}" />
+        <input class="form-control" type="text" placeholder="2 {{ajaxReq.type}}" ng-model="objENS.dValue" ng-class="Validator.isPositiveNumber(objENS.dValue) && objENS.dValue >= objENS.bidValue ? 'is-valid' : 'is-invalid'"/>
         <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
       </div>
       <!-- / Disguise Bid  -->
@@ -1875,27 +1871,19 @@
       <p><em><small>You <u>must</u> remember this to claim your name!!</small></em></p>
       <!-- Validation = more than Max. Bid Input, more than what is in account -->
       <div class="form-group">
-        <input class="form-control" type="text" placeholder="I'm a secret. Don't forget me." value="TODO autogenerate plz" />
+        <input class="form-control" type="text" placeholder="I'm a secret. Don't forget me." value="" ng-model="objENS.secret" ng-class="Validator.isPasswordLenValid(objENS.secret,0) ? 'is-valid' : 'is-invalid'"/>
       </div>
       <!-- / Your Secret  -->
 
       <div class="form-group">
-        <a class="btn btn-info btn-block"> Generate Transaction </a>
-      </div>
-      <div class="form-group" ng-show="showRaw">
-        <label translate="SEND_raw"> Raw Transaction </label>
-        <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
-        <label translate="SEND_signed"> Signed Transaction </label>
-        <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
-      </div>
-
-      <div class="form-group" ng-show="showRaw">
-        <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#ensConfirmModal"> { Place a Bid | Start an Auction } </a>
+        <a class="btn btn-primary btn-block" ng-click="generateTx()"> <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span> </a>
       </div>
     </section>
     <!-- / Content -->
 
   </article>
+  </div>
+
   <!-- / ALL: TX GEN -->
 
 
@@ -1929,17 +1917,17 @@
           </table>
           <table class="table">
             <tbody>
-              <tr><td>Name:                            </td><td>{ namename.eth }</td></tr>
-              <tr><td>Bid Amount:                      </td><td>{ 1 ETH }</td></tr>
-              <tr><td>Disguise Amount (amount to send):</td><td>{ 2 ETH }</td></tr>
-              <tr><td>Your Secret:                     </td><td>{ happysecretprviatekey }</td></tr>
-              <tr><td>From Account:                    </td><td><small>{ 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 }</small></td></tr>
-              <tr><td>Must Reveal On:                  </td><td><small>{ March 28th, 2017 1:30:00 PM UTC }</small></td></tr>
-              <tr><td>Auction Ends:                    </td><td><small>{ March 30th, 2017 1:30:00 PM UTC }</small></td></tr>
+              <tr><td>Name:                            </td><td>{{objENS.name}}.eth</td></tr>
+              <tr><td>Bid Amount:                      </td><td>{{objENS.bidValue}}</td></tr>
+              <tr><td>Disguise Amount (amount to send):</td><td>{{objENS.dValue}}</td></tr>
+              <tr><td>Your Secret:                     </td><td>{{objENS.secret}}</td></tr>
+              <tr><td>From Account:                    </td><td><small>{{wallet.getAddressString()}}</small></td></tr>
+              <tr ng-show="showRegistrationDate()"><td>Must Reveal On:                  </td><td><small>{{getRevealTime().toLocaleString()}}</small></td></tr>
+              <tr ng-show="showRegistrationDate()"><td>Auction Ends:                    </td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td></tr>
               <tr>
                 <td colspan="2">
                   <p><small>Easily copy the above:</small></p>
-                  <textarea class="form-control small" readonly rows="2">Name: { namename.eth } | Bid Amount: { 1 ETH } | Disguise Amount (amount to send) : { 2 ETH } | Your Secret: { happysecretprviatekey } | From Account: { 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 } | Must Reveal On: { March 28th, 2017 1:30:00 PM UTC } | Auction Ends: { March 30th, 2017 1:30:00 PM UTC }</textarea>
+                  <textarea class="form-control small" readonly rows="2">{{bidObject}}</textarea>
                 </td>
               </tr>
             </tbody>
