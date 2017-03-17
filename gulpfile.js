@@ -207,7 +207,9 @@ gulp.task('clean', function () {
       dist_CX + 'index.html',
       dist_CX + 'signmsg.html',
       dist    + 'cx-wallet.html',
-      dist    + 'images/icons'
+      dist    + 'images/icons',
+      dist    + 'manifest.json',
+      dist_CX + 'package.json'
     ], {read: false})
     .pipe( plumber ({ errorHandler: onError }))
     .pipe( clean   (                         ))
@@ -218,10 +220,11 @@ gulp.task('clean', function () {
 
 // Bumps Version Number
 function bumpFunc(t) {
-  return gulp.src([dist_CX + 'manifest.json'])
+  return gulp.src([app + '*.json'])
     .pipe( plumber   ({ errorHandler: onError   }))
     .pipe( bump      ({ type: t                 }))
     .pipe( gulp.dest  ( './chrome-extension'    ))
+    .pipe( gulp.dest  ( './dist'    ))
     .pipe( notify     ( onSuccess('Bump ' + t ) ))
 }
 
@@ -336,7 +339,7 @@ gulp.task('build-debug',       ['js-debug', 'html', 'styles', 'watchJSDebug', 'w
 
 gulp.task('prep',              function(cb) { runSequence('js-production', 'html', 'styles', 'copy', cb); });
 
-gulp.task('bump',              function(cb) { runSequence('clean', 'bump-patch', 'zip', cb); });
+gulp.task('bump',              function(cb) { runSequence('bump-patch', 'clean', 'zip', cb); });
 
 gulp.task('cleanZip',          function(cb) { runSequence('clean', 'zip', cb); });
 
