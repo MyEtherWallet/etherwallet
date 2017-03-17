@@ -165,35 +165,48 @@ gulp.task( 'staticJS', function () {
 var imgSrcFolder          = app                 + 'images/**/*'
 var fontSrcFolder         = app                 + 'fonts/*.*'
 var cxSrcFiles            = app                 + 'includes/browser_action/*.*'
-var cxDestFolder          = dist_CX             + 'browser_action'
+var jsonFile              = app                 + '*.json'
+var jQueryFile            = app                 + 'scripts/staticJS/jquery-1.12.3.min.js'
+var bin                   = app                 + '/bin/*'
+var cname                 = app                 + 'CNAME'
 var staticJSSrcFile       = js_destFolderStatic + js_destFileStatic
-var jQueryFile            = './app/scripts/staticJS/jquery-1.12.3.min.js'
 var readMe                = './README.md'
+
 
 gulp.task('copy', ['staticJS'], function() {
  gulp.src ( imgSrcFolder )
-     .pipe( gulp.dest( dist    + 'images' ))
-     .pipe( gulp.dest( dist_CX + 'images' ))
+     .pipe( gulp.dest( dist    + 'images'      ))
+     .pipe( gulp.dest( dist_CX + 'images'      ))
 
  gulp.src ( fontSrcFolder )
-     .pipe( gulp.dest( dist    + 'fonts'  ))
-     .pipe( gulp.dest( dist_CX + 'fonts'  ))
+     .pipe( gulp.dest( dist    + 'fonts'       ))
+     .pipe( gulp.dest( dist_CX + 'fonts'       ))
 
  gulp.src ( staticJSSrcFile )
-     .pipe( gulp.dest( dist    + 'js'     ))
-     .pipe( gulp.dest( dist_CX + 'js'     ))
+     .pipe( gulp.dest( dist    + 'js'          ))
+     .pipe( gulp.dest( dist_CX + 'js'          ))
 
  gulp.src ( jQueryFile )
-     .pipe( gulp.dest( dist    + 'js'     ))
-     .pipe( gulp.dest( dist_CX + 'js'     ))
+     .pipe( gulp.dest( dist    + 'js'          ))
+     .pipe( gulp.dest( dist_CX + 'js'          ))
+
+ gulp.src ( jsonFile )
+     .pipe( gulp.dest( dist                    ))
+     .pipe( gulp.dest( dist_CX                 ))
 
  gulp.src ( readMe )
-     .pipe( gulp.dest( dist ))
+     .pipe( gulp.dest( dist                    ))
+
+ gulp.src ( bin )
+     .pipe( gulp.dest( dist    + 'bin'         ))
+
+ gulp.src ( cname )
+     .pipe( gulp.dest( dist                    ))
 
  return gulp.src ( cxSrcFiles )
-     .pipe( gulp.dest( cxDestFolder       ))
+     .pipe( gulp.dest( dist_CX+'browser_action'))
 
- .pipe( notify ( onSuccess(' Copy ' )))
+ .pipe( notify ( onSuccess(' Copy ')))
 })
 
 
@@ -233,7 +246,7 @@ function bumpFunc(t) {
 var versionNum
 var versionMsg
 gulp.task('getVersion', function() {
-  manifest = JSON.parse(fs.readFileSync(dist_CX + 'manifest.json'))
+  manifest = JSON.parse(fs.readFileSync(app + 'manifest.json'))
   versionNum = 'v' + manifest.version
   versionMsg    = 'Release: ' + versionNum
   //return gulp.src( './' )
