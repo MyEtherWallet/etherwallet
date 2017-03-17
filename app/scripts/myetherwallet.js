@@ -39,7 +39,7 @@ Wallet.prototype.setTokens = function() {
         this.tokenObjs[this.tokenObjs.length - 1].setBalance();
     }
 }
-Wallet.prototype.setBalance = function() {
+Wallet.prototype.setBalance = function(callback) {
     var parentObj = this;
     this.balance = this.usdBalance = this.eurBalance = this.btcBalance = this.chfBalance = this.repBalance = 'loading';
     ajaxReq.getBalance(parentObj.getAddressString(), function(data) {
@@ -52,6 +52,7 @@ Wallet.prototype.setBalance = function() {
                 parentObj.btcBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.btc);
                 parentObj.chfBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.chf);
                 parentObj.repBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.rep);
+                if(callback) callback();
             });
         }
     });

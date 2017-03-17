@@ -55,6 +55,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         }
         if ($scope.tx.sendMode != 'token') $scope.tokenTx.id = -1;
     }
+    var applyScope = function() {
+        if (!$scope.$$phase) $scope.$apply();
+        console.log("came here");
+    }
     globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('ether') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
     $scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
     if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true // if there is a query string, show an warning at top of page
@@ -65,21 +69,26 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         if (walletService.wallet == null) return;
         $scope.wallet = walletService.wallet;
         $scope.wd = true;
-        $scope.wallet.setBalance();
+        $scope.wallet.setBalance(applyScope);
         $scope.wallet.setTokens();
         if ($scope.parentTxConfig) {
-            $scope.tx.to = $scope.parentTxConfig.to;
-            $scope.tx.value = $scope.parentTxConfig.value;
-            $scope.tx.sendMode = $scope.parentTxConfig.sendMode ? $scope.parentTxConfig.sendMode : 'ether';
-            $scope.tx.tokenSymbol = $scope.parentTxConfig.tokenSymbol ? $scope.parentTxConfig.tokenSymbol : '';
-            $scope.tx.readOnly = $scope.parentTxConfig.readOnly ? $scope.parentTxConfig.readOnly : false;
+            var setTxObj = function() {
+                $scope.tx.to = $scope.parentTxConfig.to;
+                $scope.tx.value = $scope.parentTxConfig.value;
+                $scope.tx.sendMode = $scope.parentTxConfig.sendMode ? $scope.parentTxConfig.sendMode : 'ether';
+                $scope.tx.tokenSymbol = $scope.parentTxConfig.tokenSymbol ? $scope.parentTxConfig.tokenSymbol : '';
+                $scope.tx.readOnly = $scope.parentTxConfig.readOnly ? $scope.parentTxConfig.readOnly : false;
+            }
+            $scope.$watch('parentTxConfig', function() {
+                setTxObj();
+            }, true);
         }
         $scope.setTokenSendMode();
     });
     $scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {
             $scope.setSendMode('ether');
-            $scope.wallet.setBalance();
+            $scope.wallet.setBalance(applyScope);
             $scope.wallet.setTokens();
         }
     });
@@ -166,7 +175,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             if (!resp.isError) {
                 var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
                 $scope.notifier.success(globalFuncs.successMsgs[2] + resp.data + "<br />" + bExStr);
-                $scope.wallet.setBalance();
+                $scope.wallet.setBalance(applyScope);
                 if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
             } else {
                 $scope.notifier.danger(resp.error);

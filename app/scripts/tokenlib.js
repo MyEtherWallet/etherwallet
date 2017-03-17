@@ -31,7 +31,7 @@ Token.prototype.getBalance = function() {
 Token.prototype.getBalanceBN = function() {
     return this.balanceBN;
 }
-Token.prototype.setBalance = function() {
+Token.prototype.setBalance = function(callback) {
     var balanceCall = ethFuncs.getDataObj(this.contractAddress, Token.balanceHex, [ethFuncs.getNakedAddress(this.userAddress)]);
     var parentObj = this;
     ajaxReq.getEthCall(balanceCall, function(data) {
@@ -39,6 +39,7 @@ Token.prototype.setBalance = function() {
             if (!data.error) {
                 parentObj.balance = new BigNumber(data.data).div(new BigNumber(10).pow(parentObj.getDecimal())).toString();
                 parentObj.balanceBN = new BigNumber(data.data).toString();
+                if(callback) callback();
             }
         } catch (e) {
             parentObj.balance = globalFuncs.errorMsgs[20];
