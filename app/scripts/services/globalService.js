@@ -55,36 +55,36 @@ var tabs = {
     mew: true,
     cx: true
   },
-  ens: {
-    id: 7,
+  /*ens: {
+    id:7,
     name: "NAV_ENS",
     url: "ens",
     mew: true,
     cx: true
-  },
+  },*/
   viewWalletInfo: {
-    id: 8,
+    id: 7,
     name: "NAV_ViewWallet",
     url: "view-wallet-info",
     mew: true,
     cx: false
   },
   help: {
-    id: 9,
+    id: 8,
     name: "NAV_Help",
     url: "help",
     mew: true,
     cx: true
   },
   signMsg: {
-    id: 10,
+    id: 9,
     name: "NAV_SignMsg",
     url: "sign-message",
     mew: false,
     cx: false
   },
   bulkGenerate: {
-    id: 11,
+    id: 10,
     name: "NAV_BulkGenerate",
     url: "bulk-generate",
     mew: false,

@@ -25,6 +25,7 @@ var walletBalanceCtrl = function($scope, $sce) {
             }
         });
     }
+    /*
     $scope.$watch('wallet', function() {
         if ($scope.wallet) $scope.reverseLookup();
     });
@@ -40,6 +41,7 @@ var walletBalanceCtrl = function($scope, $sce) {
             }
         });
     }
+    */
     $scope.removeTokenFromLocal = function(tokenSymbol) {
         globalFuncs.removeTokenFromLocal(tokenSymbol, $scope.wallet.tokenObjs);
     }
