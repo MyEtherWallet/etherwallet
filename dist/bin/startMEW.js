@@ -1,4 +1,4 @@
 #! /usr/bin/env node
 
 var open = require("open");
-open("index.html");
+open(require('path').dirname(require.main.filename)+"/../index.html");
