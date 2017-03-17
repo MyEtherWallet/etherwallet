@@ -1,0 +1,13 @@
+{
+    "name": "MyEtherWallet",
+    "version": "1.0.0",
+    "description": "Load MyEtherWallet from Terminal",
+    "author": "MyEtherWallet",
+    "license": "ISC",
+    "devDependencies": {
+        "open": "0.0.5"
+    },
+    "bin": {
+        "mew": "bin/startMEW.js"
+    }
+}
