@@ -7,7 +7,6 @@ var balanceDrtv = function() {
                       <ul class=\"account-info\">\n\
                         <div class=\"addressIdenticon med float\" title=\"Address Indenticon\" blockie-address=\"{{wallet.getAddressString()}}\" watch-var=\"wallet\"></div>\n\
                         <span class=\"mono wrap\">{{wallet.getChecksumAddressString()}}</span>\n\
-                        <label class=\"ens-response\" ng-show=\"showens\"> ↳ <span class=\"mono ng-binding\"> {{ensAddress}} </span> </label>\n \
                       </ul>\n\
                       <hr />\n\
                       <h5 translate=\"sidebar_AccountBal\">Account Balance:</h5>\n\
@@ -52,3 +51,5 @@ var balanceDrtv = function() {
   };
 };
 module.exports = balanceDrtv;
+
+//<label class=\"ens-response\" ng-show=\"showens\"> ↳ <span class=\"mono ng-binding\"> {{ensAddress}} </span> </label>\n \
