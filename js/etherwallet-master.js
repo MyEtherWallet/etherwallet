@@ -1421,7 +1421,6 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
     };
     var applyScope = function () {
         if (!$scope.$$phase) $scope.$apply();
-        console.log("came here");
     };
     globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('ether') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
     $scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
@@ -1504,6 +1503,10 @@ var sendTxCtrl = function ($scope, $sce, walletService) {
                 $scope.tx.gasLimit = data.data;
             } else $scope.notifier.danger(data.msg);
         });
+    };
+    $scope.hasEnoughBalance = function () {
+        if ($scope.wallet.balance == 'loading') return false;
+        return new BigNumber($scope.tx.value).lt(new BigNumber($scope.wallet.balance));
     };
     $scope.onDonateClick = function () {
         $scope.tx.to = globalFuncs.donateAddress;
@@ -1657,6 +1660,7 @@ var swapCtrl = function ($scope, $sce, walletService) {
     };
     $scope.verifyMinMaxValues = function () {
         if (!$scope.orderResult) uiFuncs.notifier.close();
+        if ($scope.swapOrder.toVal == '' || $scope.swapOrder.fromVal == '') return false;
         var errors = {
             priceNotLoaded: 0,
             lessThanMin: 1,
@@ -2468,7 +2472,7 @@ var blockiesDrtv = function () {
         var watchVar = attrs.watchVar;
         scope.$watch(watchVar, function () {
             var address = attrs.blockieAddress;
-            var content = /*Validator.isValidENSorEtherAddress(address) ? globalFuncs.getBlockie(address):*/'';
+            var content = Validator.isValidAddress(address) ? globalFuncs.getBlockie(address) : '';
             element.css({
                 'background-image': 'url(' + content + ')'
             });
@@ -2730,7 +2734,7 @@ ethFuncs.padLeftEven = function (hex) {
 };
 ethFuncs.addTinyMoreToGas = function (hex) {
     hex = this.sanitizeHex(hex);
-    return new BigNumber(hex).plus(etherUnits.getValueOfUnit('gwei') * 21).toDigits(2).toString(16);
+    return new BigNumber(hex).plus(etherUnits.getValueOfUnit('gwei') * 0).toDigits(2).toString(16);
 };
 ethFuncs.decimalToHex = function (dec) {
     return new BigNumber(dec).toString(16);
@@ -14373,7 +14377,7 @@ no.data = {
 
   /* Swap / Exchange */
   SWAP_rates: "Aktuelle vekslingskurser ",
-  SWAP_init_1: "Jeg vil bytte mine ",
+  SWAP_init_1: "Jeg vil veksle mine ",
   SWAP_init_2: " med ", // "I want to swap my X ETH for X BTC"
   SWAP_init_CTA: "Gjennomfør! ", // "Let's do this!" or "Continue"
   SWAP_information: "Din informasjon ",
@@ -14392,7 +14396,7 @@ no.data = {
   SWAP_order_CTA: "Vennligst send ", // Please send 1 ETH...
   SWAP_unlock: "Lås opp din lommebok for å sende ETH eller Tokens direkte fra denne siden. ",
 
-  NAV_Swap: 'Byttehandel ',
+  NAV_Swap: 'Veksling ',
 
   /* Navigation*/
   NAV_AddWallet: 'Legg til lommebok ',
@@ -14415,7 +14419,7 @@ no.data = {
   /* General */
   x_AddessDesc: 'Du kjenner kanskje dette som ditt "kontonummer" eller din "offentlige nøkkel". Dette er informasjonen som du sender til folk så de kan sende deg ether (en lang rekke tilfeldige tall og bokstaver som starter med "0x"). Ikonet er en enkel måte å kjenne igjen adressen din på. ',
   x_Address: 'Din adresse ',
-  x_Cancel: 'x_Cancel ',
+  x_Cancel: 'x_Annuler ',
   x_CSV: 'CSV-fil (ukryptert) ',
   x_Download: 'Last ned ',
   x_Json: 'JSON-fil (ukryptert) ',
@@ -14661,7 +14665,7 @@ no.data = {
   ERROR_26: 'Vennligst oppgi gyldig ABI ',
   ERROR_27: 'Minimumsbeløp 0.01 ',
   ERROR_28: '**Du trenger din Keystore-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk). ',
-  ERROR_29: 'Please enter valid user and password ',
+  ERROR_29: 'Vennligst oppgi gyldig brukernavn og passord ',
   SUCCESS_1: 'Gyldig adresse ',
   SUCCESS_2: 'Dekrypteringen av lommeboken var vellykket ',
   SUCCESS_3: 'Transaksjonen ble sendt inn. TX ID ',
@@ -16147,7 +16151,7 @@ ru.data = {
   NODE_CTA: 'Сохранить и подключиться к собственному узлу',
 
   /* Contracts */
-  x_Access: 'Access ',
+  x_Access: 'Подключиться ',
   CONTRACT_Title: 'Адрес контракта ',
   CONTRACT_Title_2: 'Выбрать имеющийся контракт ',
   CONTRACT_Json: 'ABI / JSON интерфейс ',
@@ -16162,7 +16166,7 @@ ru.data = {
   SWAP_init_1: "Я хочу обменять мои ",
   SWAP_init_2: " на ", // "I want to swap my X ETH for X BTC"
   SWAP_init_CTA: "Поехали! ", // or "Continue"
-  SWAP_information: "Дополнительная информация ",
+  SWAP_information: "Информация об операции",
   SWAP_send_amt: "Сумма для отправки ",
   SWAP_rec_amt: "Сумма к получению ",
   SWAP_your_rate: "Ваш курс ",
@@ -16191,40 +16195,40 @@ ru.data = {
   MSG_info3: 'Укажите цель отправки сообщения, чтобы оно не могло быть использовно с другой целью. ',
 
   /* Mnemonic */
-  ADD_Radio_5: 'Paste/Type Your Mnemonic ',
-  MNEM_1: 'Please select the address you would like to interact with. ',
-  MNEM_2: 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. ',
-  MNEM_more: 'More Addresses ',
-  MNEM_prev: 'Previous Addresses ',
-  SEND_custom: 'Add Custom Token ',
-  TOKEN_hide: 'Hide Tokens ',
-  TOKEN_show: 'Show All Tokens ',
-  TRANS_gas: 'Газ ', // changd in ENG to Gas Limit:
-  WARN_Send_Link: 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
-  x_Mnemonic: 'Mnemonic Phrase ',
+  ADD_Radio_5: 'Скопируйте или введите кодовую фразу ',
+  MNEM_1: 'Пожалуйста, выберите адрес для выполнения операции. ',
+  MNEM_2: 'Одна кодовая фраза может использоваться для получения доступа к нескольким кошелькам или адресам. Пожалуйста, выберите адрес, который вы хотите использовать в этот раз. ',
+  MNEM_more: 'Следующие адреса ',
+  MNEM_prev: 'Предыдущие адреса ',
+  SEND_custom: 'Добавить свой токен ',
+  TOKEN_hide: 'Спрятать токены ',
+  TOKEN_show: 'Отправить все токены ',
+  TRANS_gas: 'Лимит газа ', // changd in ENG to Gas Limit:
+  WARN_Send_Link: 'Вы попали сюда по ссылке, которая уже содержит в себе адрес, сумму, лимит газа и дополнительные параметры транзакции. ВЫ можете изменить эти данные перед отправкой транзакции. Для начала отоприте ваш кошелёк. ',
+  x_Mnemonic: 'Кодовая фраза ',
 
   /* Hardware wallets */
   x_Ledger: 'Ledger Nano S ',
-  ADD_Ledger_1: 'Connect your Ledger Nano S ',
-  ADD_Ledger_2: 'Open the Ethereum application (or a contract application) ',
-  ADD_Ledger_3: 'Verify that Browser Support is enabled in Settings ',
-  ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-  ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection ',
-  ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
-  ADD_Ledger_scan: 'Connect to Ledger Nano S ',
+  ADD_Ledger_1: 'Присоедините ваш Ledger Nano S ',
+  ADD_Ledger_2: 'Запустите приложение Ethereum (или приложение контракта) ',
+  ADD_Ledger_3: 'Убедитесь, что использование из браузера разрешено в настройках ',
+  ADD_Ledger_4: 'Если в настройках нет использования из браузера, убедитесь, что у вас [прошивка версии >1.2](https://www.ledgerwallet.com/apps/manager) ',
+  ADD_Ledger_0a: 'Перезапустите MyEtherWallet через безопасное (SSL) соединение ',
+  ADD_Ledger_0b: 'Перезапустите MyEtherWallet с браузере [Chrome](https://www.google.com/chrome/browser/desktop/) или [Opera](https://www.opera.com/) ',
+  ADD_Ledger_scan: 'Подключиться к Ledger Nano S ',
   x_Trezor: 'TREZOR ',
-  ADD_Trezor_scan: 'Connect to TREZOR ',
-  ADD_Trezor_select: 'This is a TREZOR seed ',
+  ADD_Trezor_scan: 'Подключиться к TREZOR ',
+  ADD_Trezor_select: 'Это код восстановления TREZOR ',
 
   /* Parity Error Messages */
-  PARITY_AlreadyImported: "Transaction with the same hash was already imported.",
-  PARITY_Old: "Transaction nonce is too low. Try incrementing the nonce.",
-  PARITY_TooCheapToReplace: "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-  PARITY_LimitReached: "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-  PARITY_InsufficientGasPrice: "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-  PARITY_InsufficientBalance: "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-  PARITY_GasLimitExceeded: "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-  PARITY_InvalidGasLimit: "Supplied gas is beyond limit.",
+  PARITY_AlreadyImported: "Транзакция с данным хэшем уже импортирована.",
+  PARITY_Old: "Номер перевода (nonce) слишком маленький. Попробуйте увеличить номер перевода (nonce).",
+  PARITY_TooCheapToReplace: "Комиссия транзакции слишком низкая. В очереди уже есть другая транзакция с таким же номером перевода (nonce). Попробуйте увеличитьразмер комиссии или номер перевода (nonce).",
+  PARITY_LimitReached: "Слишком много транзакций в очереди. Ваша транзакция была удалена из-за превышения лимита. Попробуйте увеличить размер комиссии.",
+  PARITY_InsufficientGasPrice: "Комиссия транзакции слишком низкая. Она не соответствует минимальному размеру комиссии для вашего узла (минимальная комиссия: {}, ваша комиссия: {}). Попробуйте увеличить размер комиссии.",
+  PARITY_InsufficientBalance: "Недостаточно средств. На счёте, с которого вы пытаетесь отправить транзакцию, не хватает средств. Требуется {}, а имеется только: {}.",
+  PARITY_GasLimitExceeded: "Цена транзакции превышает текущий лимит газа. Лимит: {}, цена: {}. Поробуйте уменьшить отведённое количество газа.",
+  PARITY_InvalidGasLimit: "Отведённое количество газа меньше лимита.",
 
   /* Navigation*/
   NAV_YourWallets: 'Ваши кошельки ',
@@ -18654,16 +18658,15 @@ zhtw.data = {
   MNEM_prev: '之前的地址 ',
 
   /* Hardware wallets */
-  x_Ledger: 'Ledger Nano S ',
-  ADD_Ledger_1: 'Connect your Ledger Nano S ',
-  ADD_Ledger_2: 'Open the Ethereum application (or a contract application) ',
-  ADD_Ledger_3: 'Verify that Browser Support is enabled in Settings ',
-  ADD_Ledger_4: 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-  ADD_Ledger_0a: 'Re-open MyEtherWallet on a secure (SSL) connection ',
-  ADD_Ledger_0b: 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
-  ADD_Ledger_scan: 'Connect to Ledger Nano S ',
-  x_Trezor: 'TREZOR ',
-  ADD_Trezor_scan: 'Connect to TREZOR ',
+  x_Ledger: 'Ledger Nano S 錢包',
+  ADD_Ledger_1: '連接至你的 Ledger Nano S ',
+  ADD_Ledger_2: '開啟基於以太坊開發的應用程式（或一個寫成合約的應用程式） ',
+  ADD_Ledger_3: '確認已經開啟設定選項中的瀏覽器支援選項',
+  ADD_Ledger_4: '如果在設定選項中找不到瀏覽器支援選項，請確認你的韌體版本新於[1.2版](https://www.ledgerwallet.com/apps/manager)',
+  ADD_Ledger_0b: '以 [Chrome](https://www.google.com/chrome/browser/desktop/) 或 [Opera](https://www.opera.com/) 瀏覽器重新開啟MyEtherWallet',
+  ADD_Ledger_scan: '連接至 Ledger Nano S ',
+  x_Trezor: 'TREZOR 錢包 ',
+  ADD_Trezor_scan: '連接至 TREZOR ',
 
   /* Add Wallet */
   ADD_Label_1: '你想要做什麼？ ',
@@ -18748,89 +18751,88 @@ zhtw.data = {
   TOKEN_hide: '隱藏代幣 ',
 
   /* Send Transaction */
-  TRANS_desc: 'If you want to send Tokens, please use the "Send Token" page instead. ',
-  TRANS_warning: 'If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more. ',
-  TRANS_advanced: '+Advanced: Add Data ',
-  TRANS_data: 'Data ',
-  TRANS_gas: 'Gas Limit ',
-  TRANS_sendInfo: 'A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee. ',
+  TRANS_desc: '如果你是要傳送代幣(Token)，請使用“傳送代幣”功能',
+  TRANS_warning: '"Only ETH" 或 "Only ETC" 功能是透過一個合約來傳送，並非單純的轉錢。有些服務可能沒辦法接受這兩種功能。 了解更多。Functions you are sending via a contract. Some services have issues accepting these transactions. Read more. ',
+  TRANS_advanced: '進階功能：為交易新增Data',
+  TRANS_data: '交易的Data ',
+  TRANS_gas: 'Gas 總量 ',
+  TRANS_sendInfo: '我們使用比平均手續費略高的gas價格（每單位0.000000021 ETH）確保交易能快速被確認。我們並不收取任何手續費。',
 
   /* Offline Transaction */
-  OFFLINE_Title: 'Generate & Send Offline Transaction ',
-  OFFLINE_Desc: 'Generating offline transactions can be done in three steps. You will complete steps 1 and 3 on an online computer, and step 2 on an offline/airgapped computer. This ensures your private keys do not touch an internet-connected device. ',
-  OFFLLINE_Step1_Title: 'Step 1: Generate Information (Online Computer) ',
-  OFFLINE_Step1_Button: 'Generate Information ',
-  OFFLINE_Step1_Label_1: 'From Address ',
-  OFFLINE_Step1_Label_2: 'Note: This is the FROM address, not the TO address. Nonce is generated from the originating account. If using an airgapped computer, it would be the address of the cold-storage account. ',
-  OFFLINE_Step2_Title: 'Step 2: Generate Transaction (Offline Computer) ',
-  OFFLINE_Step2_Label_1: 'To Address ',
-  OFFLINE_Step2_Label_2: 'Value / Amount to Send ',
-  OFFLINE_Step2_Label_3: 'Gas Price ',
-  OFFLINE_Step2_Label_3b: 'This was displayed in Step 1 on your online computer. ',
-  OFFLINE_Step2_Label_4: 'Gas Limit ',
-  OFFLINE_Step2_Label_4b: '21000 is the default gas limit. When you send contracts or add\'l data, this may need to be different. Any unused gas will be returned to you. ',
-  OFFLINE_Step2_Label_5: 'Nonce ',
-  OFFLINE_Step2_Label_5b: 'This was displayed in Step 1 on your online computer. ',
-  OFFLINE_Step2_Label_6: 'Data ',
-  OFFLINE_Step2_Label_6b: 'This is optional. Data is often used when you send transactions to contracts. ',
-  OFFLINE_Step2_Label_7: 'Enter / Select your Private Key / JSON. ',
-  OFFLINE_Step3_Title: 'Step 3: Send / Publish Transaction (Online Computer) ',
-  OFFLINE_Step3_Label_1: 'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button. ',
+  OFFLINE_Title: '以離線的方式製作交易',
+  OFFLINE_Desc: '離線製作交易的方式包含三步驟。步驟一及三需要使用連網裝置，步驟二則使用離線的電腦以確保你的私鑰不會被連網裝置存取。',
+  OFFLLINE_Step1_Title: '步驟一： 產生交易相關訊息（在連網裝置上） ',
+  OFFLINE_Step1_Button: '產生交易相關訊息 ',
+  OFFLINE_Step1_Label_1: '交易發起方的地址 ',
+  OFFLINE_Step1_Label_2: '注意： 這是交易發起方的地址，不是交易接受方的地址。Nonce值是看交易發起方來決定。如果是使用離線裝置，則這個地址是離線儲存裝置的帳號地址。 ',
+  OFFLINE_Step2_Title: '步驟二： 製作交易（在離線裝置上） ',
+  OFFLINE_Step2_Label_1: '交易接收方的地址 ',
+  OFFLINE_Step2_Label_2: '送給交易接收方的金額',
+  OFFLINE_Step2_Label_3: '每單位gas的費用',
+  OFFLINE_Step2_Label_3b: '這會顯示於你步驟一連網裝置上。',
+  OFFLINE_Step2_Label_4: 'Gas 總量 ',
+  OFFLINE_Step2_Label_4b: '21000 是預設的gas總量（單純轉錢）。如果你是要執行合約，則會不一樣。多給的gas如果沒有用完會退還給你。',
+  OFFLINE_Step2_Label_5b: '這會顯示於你步驟一連網裝置上。',
+  OFFLINE_Step2_Label_6: '交易的Data ',
+  OFFLINE_Step2_Label_6b: '並非必需的，Data通常只有在你執行合約的時候才需要。 ',
+  OFFLINE_Step2_Label_7: '輸入/選擇 你的私鑰/JSON檔。 ',
+  OFFLINE_Step3_Title: '步驟三： 送出交易（在連網裝置上） ',
+  OFFLINE_Step3_Label_1: '將步驟二經過簽名的交易複製並貼上到這，最後按下送出交易的按鈕。',
 
   /* Contracts */
   x_Access: 'Access ',
-  CONTRACT_Title: 'Contract Address ',
-  CONTRACT_Title_2: 'Select Existing Contract ',
-  CONTRACT_Json: 'ABI / JSON Interface ',
-  CONTRACT_Interact_Title: 'Read / Write Contract ',
-  CONTRACT_Interact_CTA: 'Select a function ',
-  CONTRACT_ByteCode: 'Byte Code ',
-  CONTRACT_Read: 'READ ',
-  CONTRACT_Write: 'WRITE ',
-  DEP_generate: 'Generate Bytecode ',
-  DEP_generated: 'Generated Bytecode ',
-  DEP_signtx: 'Sign Transaction ',
-  DEP_interface: 'Generated Interface ',
+  CONTRACT_Title: '合約地址 ',
+  CONTRACT_Title_2: '選擇已經存在的合約 ',
+  CONTRACT_Json: '合約的 ABI / JSON 介面 ',
+  CONTRACT_Interact_Title: '讀取/寫入 合約',
+  CONTRACT_Interact_CTA: '選擇一個動作',
+  CONTRACT_ByteCode: '合約的程式碼 ',
+  CONTRACT_Read: '讀取 ',
+  CONTRACT_Write: '寫入 ',
+  DEP_generate: '產生程式碼 ',
+  DEP_generated: '已產生的程式碼 ',
+  DEP_signtx: '對交易做簽名 ',
+  DEP_interface: '已產生的合約介面 ',
 
   /* Node Switcher */
-  NODE_Title: 'Set Up Your Custom Node',
-  NODE_Subtitle: 'To connect to a local node...',
-  NODE_Warning: 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-  NODE_Name: 'Node Name',
-  NODE_Port: 'Node Port',
-  NODE_CTA: 'Save & Use Custom Node',
+  NODE_Title: '設定你的客製節點',
+  NODE_Subtitle: '連線至一個區域/私人節點...',
+  NODE_Warning: '你的節點必須使用HTTPS安全連線的方式才能夠由MyEtherWallet.com連接到它。 你可以下載[MyEtherWallet repo](https://github.com/kvhnuke/etherwallet/releases/latest)並建立起一個你的節點來連接至其他的節點。或著從[LetsEncrypt](https://letsencrypt.org/)獲取免費的SSL憑證',
+  NODE_Name: '節點名稱',
+  NODE_Port: '節點連線的埠號碼',
+  NODE_CTA: '儲存設定並使用客製節點',
 
   /* Swap / Exchange */
-  SWAP_rates: "Current Rates ",
-  SWAP_init_1: "I want to swap my ",
-  SWAP_init_2: " for ", // "I want to swap my X ETH for X BTC"
-  SWAP_init_CTA: "Let's do this! ", // or "Continue"
-  SWAP_information: "Your Information ",
-  SWAP_send_amt: "Amount to send ",
-  SWAP_rec_amt: "Amount to receive ",
-  SWAP_your_rate: "Your rate ",
-  SWAP_rec_add: "Your Receiving Address ",
-  SWAP_start_CTA: "Start Swap ",
-  SWAP_ref_num: "Your reference number ",
-  SWAP_time: "Time remaining to send ",
-  SWAP_elapsed: "Time elapsed since sent ",
-  SWAP_progress_1: "Order Initiated ",
-  SWAP_progress_2: "Waiting for your ", // Waiting for your BTC...
-  SWAP_progress_3: "Received! ", // ETH Received!
+  SWAP_rates: "當前的匯率 ",
+  SWAP_init_1: "我想要用我的 ",
+  SWAP_init_2: " 換 ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "下一步 ", // or "Continue"
+  SWAP_information: "你的相關資料 ",
+  SWAP_send_amt: "送出多少金額 ",
+  SWAP_rec_amt: "收入多少金額 ",
+  SWAP_your_rate: "你的匯率 ",
+  SWAP_rec_add: "你收錢的地址 ",
+  SWAP_start_CTA: "開始交換 ",
+  SWAP_ref_num: "你的交易編號 ",
+  SWAP_time: "剩餘多少時間可送出交易 ",
+  SWAP_elapsed: "送出交易後已經經過了 ",
+  SWAP_progress_1: "訂單已產生 ",
+  SWAP_progress_2: "正在等待你的 ", // Waiting for your BTC...
+  SWAP_progress_3: "收到了! ", // ETH Received!
   SWAP_progress_4: "Sending your {{orderResult.output.currency}} ",
-  SWAP_progress_5: "Order Complete ",
-  SWAP_order_CTA: "Please send ", // Please send 1 ETH...
-  SWAP_unlock: "Unlock your wallet to send ETH or Tokens directly from this page. ",
+  SWAP_progress_5: "訂單完成 ",
+  SWAP_order_CTA: "請傳送 ", // Please send 1 ETH...
+  SWAP_unlock: "解鎖你的錢包來從這個頁面轉錢或轉代幣 ",
 
   /* Sign Message */
-  NAV_SignMsg: 'Sign Message ',
-  MSG_message: 'Message ',
-  MSG_date: 'Date ',
-  MSG_signature: 'Signature ',
-  MSG_verify: 'Verify Message ',
-  MSG_info1: 'Include the current date so the signature cannot be reused on a different date. ',
-  MSG_info2: 'Include your nickname and where you use the nickname so someone else cannot use it. ',
-  MSG_info3: 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+  NAV_SignMsg: '對訊息做簽名 ',
+  MSG_message: '訊息 ',
+  MSG_date: '日期 ',
+  MSG_signature: '簽名 ',
+  MSG_verify: '驗證訊息 ',
+  MSG_info1: '填入當前時間來避免簽名在其他不同時間被重複利用。 ',
+  MSG_info2: '填入你的暱稱及你使用該暱稱的場合來避免其他人使用',
+  MSG_info3: '填入這個訊息的源由來避免被用在其他目的。 ',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle: 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
@@ -81766,7 +81768,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
+      "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -81802,7 +81804,7 @@ module.exports={
   "_shasum": "5482d9646d54bcb89fd7d994fc9e2e9568876e3f",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
+  "_where": "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
