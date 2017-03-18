@@ -88,16 +88,16 @@
         <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
       </div>
 
-      <hr/>
+      <br /><hr />
 
       <div ng-show="wallet.type=='default'">
         @@if (site === 'cx' )  {
-          <main ng-controller='signMsgCtrl' ng-show="wallet!=null" ng-cloak>
+          <main ng-controller='signMsgCtrl' ng-show="wallet!=null">
             @@if (site === 'cx' ) {  @@include( './signMsg.tpl', { "site": "cx" } )    }
           </main>
         }
         @@if (site === 'mew' ) {
-          <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl'  ng-cloak>
+          <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl' >
             @@if (site === 'mew') {  @@include( './signMsg.tpl', { "site": "mew" } )   }
           </main>
         }

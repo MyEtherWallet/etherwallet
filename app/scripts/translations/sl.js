@@ -324,7 +324,7 @@ ERROR_23                    : 'Enter valid url, if you are on https your url mus
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount 0.01 ',
+ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : '**Za dostop te denarnice v prihodnosti podrebujete vašo Datoteko za hrambo osebnega ključa Keystore/JSON ter geslo ali osebni ključ**. Prosimo vas da to datoteko shranite na enem ali več varnih mestih! V primeru da to datoteko izgubite, denarnice in vašega Ethra nihče ne mora obnoviti, kar pomeni da bo dostop do vašega Ethra za vedno izgubljen. Za več informacij preberite [help page](https://www.myetherwallet.com/#help). ',
 ERROR_29                    : 'Please enter valid user and password ',
 SUCCESS_1                   : 'Valid address ',

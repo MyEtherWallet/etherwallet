@@ -48,7 +48,7 @@ var swapCtrl = function($scope, $sce, walletService) {
         if (vResult == errors.noErrors) return true;
         else if (vResult == errors.priceNotLoaded) return false;
         else if (vResult == errors.lessThanMin || vResult == errors.greaterThanMax) {
-            if ($scope.swapOrder.toVal && $scope.swapOrder.fromVal) uiFuncs.notifier.danger(globalFuncs.errorMsgs[27] + bity.max + " BTC/" + (bity.max / $scope.bity.curRate['ETHBTC']).toFixed(3) + " ETH/" + (bity.max / $scope.bity.curRate['REPBTC']).toFixed(3) + " REP");
+            if (!isStorageOrderExists()) uiFuncs.notifier.danger(globalFuncs.errorMsgs[27] + bity.max + " BTC, " + (bity.max / $scope.bity.curRate['ETHBTC']).toFixed(3) + " ETH, or " + (bity.max / $scope.bity.curRate['REPBTC']).toFixed(3) + " REP");
             return false;
         }
     }

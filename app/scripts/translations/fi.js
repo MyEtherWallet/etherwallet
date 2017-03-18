@@ -353,7 +353,7 @@ ERROR_23                    : 'Enter valid url, if you are on https your url mus
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount 0.01 ',
+ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : '**Tarvitset Avainsäilö Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help). ',
 ERROR_29                    : 'Please enter valid user and password ',
 SUCCESS_1                   : 'Validi osoite ',
@@ -376,20 +376,20 @@ GETH_NegativeValue          : 'Negatiivinen arvo ',
 /* Tranlsation Info */
 translate_version           : '0.4 ',
 Translator_Desc             : 'Kiitos kääntäjillemme... ',
-TranslatorName_1            : 'Smokyish ',
-TranslatorAddr_1            : '0xac9a2c1dd946da64c0dc8e70cec2cfb14304fd4f ',
+TranslatorName_1            : '[Smokyish](https://www.myetherwallet.com/?gaslimit=21000&to=0xac9a2c1dd946da64c0dc8e70cec2cfb14304fd4f&value=1.0#send-transaction)',
+TranslatorAddr_1            : '',
 /* Translator 1             : Insert Comments Here */
-TranlsatorName_2            : '',
-TranlsatorAddr_2            : '',
+TranslatorName_2            : '',
+TranslatorAddr_2            : '',
 /* Translator 2             : Insert Comments Here */
-TranlsatorName_3            : '',
-TranlsatorAddr_3            : '',
+TranslatorName_3            : '',
+TranslatorAddr_3            : '',
 /* Translator 3             : Insert Comments Here */
-TranlsatorName_4            : '',
-TranlsatorAddr_4            : '',
+TranslatorName_4            : '',
+TranslatorAddr_4            : '',
 /* Translator 4             : Insert Comments Here */
-TranlsatorName_5            : '',
-TranlsatorAddr_5            : '',
+TranslatorName_5            : '',
+TranslatorAddr_5            : '',
 /* Translator 5             : Insert Comments Here */
 
 /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
