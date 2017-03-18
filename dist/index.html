@@ -412,7 +412,7 @@
       <div ng-show="wallet.type=='default'">
         
         
-          <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.signMsg.id" ng-controller='signMsgCtrl'  ng-cloak>
+          <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl'  ng-cloak>
               <!-- Sign Message Panel -->
   <h3>
     <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
@@ -595,7 +595,7 @@
   </div>
   <!-- / Advanced Option Panel -->
 
-  <div class="form-group" ng-hide="tx.value > wallet.balance && tx.readOnly">
+  <div class="form-group">
     <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
   </div>
   <div class="form-group" ng-show="showRaw">
@@ -605,13 +605,13 @@
     <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
   </div>
 
-  <div class="form-group" ng-show="showRaw">
+  <div class="form-group" ng-show="showRaw && hasEnoughBalance()">
     <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
   </div>
   <div class="alert alert-info" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
-  <div class="alert alert-danger" ng-show="tx.value > wallet.balance && tx.readOnly">
+  <div class="alert alert-danger" ng-show="showRaw && !hasEnoughBalance() && tx.readOnly">
     <p>You do not have enough funds in your account to complete this swap. Please add more funds or access a different wallet.</p>
   </div>
 
@@ -998,7 +998,7 @@
   </div>
   <!-- / Advanced Option Panel -->
 
-  <div class="form-group" ng-hide="tx.value > wallet.balance && tx.readOnly">
+  <div class="form-group">
     <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
   </div>
   <div class="form-group" ng-show="showRaw">
@@ -1008,13 +1008,13 @@
     <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
   </div>
 
-  <div class="form-group" ng-show="showRaw">
+  <div class="form-group" ng-show="showRaw && hasEnoughBalance()">
     <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
   </div>
   <div class="alert alert-info" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
-  <div class="alert alert-danger" ng-show="tx.value > wallet.balance && tx.readOnly">
+  <div class="alert alert-danger" ng-show="showRaw && !hasEnoughBalance() && tx.readOnly">
     <p>You do not have enough funds in your account to complete this swap. Please add more funds or access a different wallet.</p>
   </div>
 

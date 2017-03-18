@@ -97,7 +97,7 @@
           </main>
         }
         @@if (site === 'mew' ) {
-          <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.signMsg.id" ng-controller='signMsgCtrl'  ng-cloak>
+          <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl'  ng-cloak>
             @@if (site === 'mew') {  @@include( './signMsg.tpl', { "site": "mew" } )   }
           </main>
         }

@@ -32,7 +32,7 @@ ethFuncs.padLeftEven = function(hex) {
 }
 ethFuncs.addTinyMoreToGas = function(hex) {
     hex = this.sanitizeHex(hex);
-    return new BigNumber(hex).plus(etherUnits.getValueOfUnit('gwei') * 21).toDigits(2).toString(16);
+    return new BigNumber(hex).plus(etherUnits.getValueOfUnit('gwei') * 0).toDigits(2).toString(16);
 }
 ethFuncs.decimalToHex = function(dec) {
     return new BigNumber(dec).toString(16);

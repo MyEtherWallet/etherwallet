@@ -57,7 +57,6 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     }
     var applyScope = function() {
         if (!$scope.$$phase) $scope.$apply();
-        console.log("came here");
     }
     globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('ether') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
     $scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
@@ -140,6 +139,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
                 $scope.tx.gasLimit = data.data;
             } else $scope.notifier.danger(data.msg);
         });
+    }
+    $scope.hasEnoughBalance = function() {
+        if($scope.wallet.balance=='loading') return false;
+        return new BigNumber($scope.tx.value).lt(new BigNumber($scope.wallet.balance));
     }
     $scope.onDonateClick = function() {
         $scope.tx.to = globalFuncs.donateAddress;
