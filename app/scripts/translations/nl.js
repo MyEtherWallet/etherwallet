@@ -8,7 +8,7 @@ NAV_ENS: 'ENS',
 
 
 /* Misc */
-x_ParityPhrase              : 'Parity herstel zin ',
+x_ParityPhrase              : 'Parity herstelzin ',
 
 /* Node Switcher */
 NODE_Title                  : 'Stel je Custom Node in',
@@ -320,7 +320,9 @@ ERROR_25                    : 'Voer een geldig chain ID in ',
 ERROR_26                    : 'Voer een geldige ABI in ',
 ERROR_27                    : 'Minimale hoeveelheid is 0.01 ',
 ERROR_28                    : '**Je hebt je Keystore Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies. ',
-ERROR_29                    : 'Please enter valid user and password ',
+ERROR_29                    : 'Voer een valide gebruikersnaam en wachtwoord in ',
+ERROR_30                    : 'Voer een valide ENS naam in ',
+ERROR_31                    : 'Ongeldige geheime zin ',
 SUCCESS_1                   : 'Geldig adres ',
 SUCCESS_2                   : 'Wallet succesvol ontsleuteld ',
 SUCCESS_3                   : 'Transactie verzonden. TX ID ',
@@ -410,7 +412,7 @@ HELP_2b_Desc_7              : 'Bewaar deze papieren / USB drives op verschillend
 HELP_2b_Desc_8              : 'Ga naar de "Bekijk Wallet Info" pagina en voer je prive sleutel / wachtwoord in om zeker te stellen dat ze correct zijn en dat je toegang hebt tot je wallet. Controleer dat het adres wat je opgeschreven hebt gelijk is. ',
 
 HELP_3_Title                : '3) Hoe verifieer ik dat ik toegang hebt tot mijn nieuwe wallets? ',
-HELP_3_Desc_1               : 'Zorg **voordat je enige Ether naar je wallet verstuurd** dan je controleerd dat je er toegang toe hebt. ',
+HELP_3_Desc_1               : 'Zorg **voordat je enige Ether naar je wallet verstuurd** dat je controleerd dat je er toegang toe hebt. ',
 HELP_3_Desc_2               : 'Navigeer naar de "Bekijk Wallet Info" pagina. ',
 HELP_3_Desc_3               : 'Navigeer naar de MyEtherWallet.com "Bekijk Wallet Info" pagina. ',
 HELP_3_Desc_4               : 'Selecteer je wallet bestand -of- je prive sleutel en open je wallet. ',
@@ -434,7 +436,7 @@ HELP_4_Desc_12              : 'Een pop-up zal verschijnen. Controleer dat het be
 HELP_4_Desc_13              : 'De transactie zal worden verstuurt. Het TX ID zal worden weergegeven. Je kunt op dit TX ID klikken om het in de blockchain te bekijken. ',
 
 HELP_4CX_Title              : '4) Hoe verzend ik Ether met MyEtherWallet CX? ',
-HELP_4CX_Desc_1             : 'Ten eerste heb je een wallet nodig. Zodra je die hebt, heb je 2 opties: De "VerzendSnel" functionalitiet vanuit het Chrome Extensie icoon of de "Verzend Ether en Tokens" pagina. ',
+HELP_4CX_Desc_1             : 'Ten eerste heb je een wallet nodig. Zodra je die hebt, heb je 2 opties: De "VerzendSnel" functionaliteit vanuit het Chrome Extensie icoon of de "Verzend Ether en Tokens" pagina. ',
 HELP_4CX_Desc_2             : 'VerzendSnel: ',
 HELP_4CX_Desc_3             : 'Klik op het Chrome Extensie icoon. ',
 HELP_4CX_Desc_4             : 'Klik op de "VerzendSnel" knop. ',
@@ -519,7 +521,7 @@ HELP_12_Desc_8              : 'In de menu balk, ga naar "Accounts" -> "Backup" -
 HELP_12_Desc_9              : 'Hiermee open je de keystore map. Kopier het bestand wat je zojuist hebt gedownload (`UTC--2016-04-14......../`) naar deze keystore map. ',
 HELP_12_Desc_10             : 'Je account zou nu direct moeten verschijnen onder "Accounts." ',
 HELP_12_Desc_11             : 'Door gebruik te maken van je onversleutelde prive sleutel... ',
-HELP_12_Desc_12             : 'Indien je nog geen unversleutelde (unencrypted) prive sleutel van je wallet hebt, navigeer je naar de "Bekijk Wallet Info" pagina. ',
+HELP_12_Desc_12             : 'Indien je nog geen onversleutelde (unencrypted) prive sleutel van je wallet hebt, navigeer je naar de "Bekijk Wallet Info" pagina. ',
 HELP_12_Desc_13             : 'Selecteer je wallet bestand -of- voer je prive sleutel in om je wallet te ontsleutelen. ',
 HELP_12_Desc_14             : 'Kopier je prive sleutel (onversleuteld/unencrypted). ',
 HELP_12_Desc_15             : 'Als je op een Mac werkt: ',
@@ -559,7 +561,7 @@ HELP_19_Title               : '19) Waar is mijn Mist wallet bestand? ',
 HELP_19_Desc_1              : 'Mist bestanden zijn normaliter te vinden op de bovenstaande bestandslocaties, maar het volgende is veel makkelijker: open Mist, selecteer "Accounts" in de top balk, selecteer "Backup", en selecteer "Accounts". Hiermee open je de map waar je bestanden worden bewaard. ',
 
 HELP_20_Title               : '20) Waar is mijn pre-sale wallet bestand? ',
-HELP_20_Desc_1              : 'Waat jij het opgeslagen hebt. ;) Het was ook naar je gemailed, dus kijk ook daar. Zoek naar het bestand genaamd "ethereum_wallet_backup.json" en selecteer dit bestand. Dit wallet bestand zal versleuteld (encrypted) zijn met een wachtwoord dat je aangemaakt hebt tijdens de aankoop van de pre-sale. ',
+HELP_20_Desc_1              : 'Waar jij het opgeslagen hebt. ;) Het was ook naar je gemailed, dus kijk ook daar. Zoek naar het bestand genaamd "ethereum_wallet_backup.json" en selecteer dit bestand. Dit wallet bestand zal versleuteld (encrypted) zijn met een wachtwoord dat je aangemaakt hebt tijdens de aankoop van de pre-sale. ',
 
 HELP_21_Title               : '21) Kan iedereen niet simpelweg willekeurige prive sleutels invoeren, zoekend naar een saldo, en dit naar hun eigen adres versturen? ',
 HELP_21_Desc_1              : 'De korte versie: ja, echter het vinden van een account met saldo gaat je langer duren dan het universum...dus...nee. ',
