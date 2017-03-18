@@ -40,7 +40,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.5.5 &nbsp;&nbsp;
+        &middot; v3.5.6 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -552,7 +552,7 @@
     </div>
     <div class="col-xs-2 address-identicon-container">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-    </div>  
+    </div>
     </div>
   <!-- / To Address -->
 
@@ -605,12 +605,14 @@
     <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
   </div>
 
-  <div class="form-group" ng-show="showRaw && hasEnoughBalance()">
+  <div class="form-group" ng-show="showRaw">
     <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
   </div>
   <div class="alert alert-info" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
+
+
   <div class="alert alert-danger" ng-show="showRaw && !hasEnoughBalance() && tx.readOnly">
     <p>You do not have enough funds in your account to complete this swap. Please add more funds or access a different wallet.</p>
   </div>
@@ -954,7 +956,7 @@
     </div>
     <div class="col-xs-2 address-identicon-container">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-    </div>  
+    </div>
     </div>
   <!-- / To Address -->
 
@@ -1007,12 +1009,14 @@
     <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
   </div>
 
-  <div class="form-group" ng-show="showRaw && hasEnoughBalance()">
+  <div class="form-group" ng-show="showRaw">
     <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
   </div>
   <div class="alert alert-info" ng-show="tx.sendMode=='token'">
     <p>If you are getting an insufficient balance for gas ... error, you must have a small amount of ETH in your account in order to cover the cost of gas. Add 0.01 ETH to this account and try again.</p>
   </div>
+
+
   <div class="alert alert-danger" ng-show="showRaw && !hasEnoughBalance() && tx.readOnly">
     <p>You do not have enough funds in your account to complete this swap. Please add more funds or access a different wallet.</p>
   </div>
