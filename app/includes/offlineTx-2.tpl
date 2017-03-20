@@ -107,6 +107,13 @@
 </article>
 
 
+<!-- Raw Tx -->
+<article class="row" ng-show="wallet!=null">
+  <div class="col-sm-8">
+    <label translate="SEND_raw"> Raw Transaction </label>
+    <textarea class="form-control" placeholder="" readonly="readonly" rows="5" ng-model="rawTx"></textarea>
+  </div>
+</article>
 <!-- Signed Tx -->
 <article class="row" ng-show="wallet!=null">
   <div class="col-sm-8">
@@ -117,3 +124,4 @@
     <div class="qr-code" qr-code="{{signedTx}}" watch-var="signedTx" width="100%" style="margin-top: -6.5rem"></div>
   </div>
 </article>
+

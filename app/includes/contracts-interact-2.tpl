@@ -39,8 +39,8 @@
           </p>
           <p class="item write-boolean" ng-switch-when="bool">
             <label> {{input.name}} <small> {{input.type}} </small> </label>
-            <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio" ng-value="true">True</label></span>
-            <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio" ng-value="false">False</label></span>
+            <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio-{{input.name}}" ng-value="true">True</label></span>
+            <span class="radio"><label><input ng-model="input.value" type="radio" name="optradio-{{input.name}}" ng-value="false">False</label></span>
           </p>
           <p class="item" ng-switch-default>
             <label> {{input.name}} <small> {{input.type}} </small> </label>
