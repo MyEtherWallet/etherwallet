@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine-html.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/boot.min.js"></script>
+    <script type="text/javascript" src="../../dist/js/etherwallet-master.js"></script>
+    <script type="text/javascript" src="../../dist/js/etherwallet-static.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-mocks.js"></script>
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+var myApp = angular.module('myApp', []);
+myApp.filter('sce', ['$sce', function($sce) {
+    return function() {
+
+    };
+}]);
+describe('Wallet generation Test', function() {
+    beforeEach(angular.mock.module('mewApp'));
+    beforeEach(angular.mock.module('myApp'));
+    var codeFilter, $sce;
+    beforeEach(inject(function(_$sce_, $filter) {
+        $sce = _$sce_;
+    }));
+    var $controller;
+    var $scope = {};
+    beforeEach(angular.mock.inject(function(_$controller_, _$rootScope_) {
+        $rootScope = _$rootScope_;
+        $scope = _$rootScope_.$new();
+        $controller = _$controller_('walletGenCtrl', {
+            $rootScope: $rootScope,
+            $scope: $scope
+        });
+        $scope.notifier = uiFuncs.notifier;
+        $scope.notifier.sce = $sce;
+        $scope.notifier.scope = $scope;
+    }));
+    describe('Test', function() {
+        it('Generate 100 random wallet with random passwords', function() {
+            for (var i = 0; i < 100; i++) {
+                $scope.password = ethUtil.crypto.randomBytes(32).toString('hex');
+                $scope.genNewWallet();
+                var jsonOut = $scope.wallet.toJSON();
+                expect(jsonOut.address).toBe(new Wallet(jsonOut.privKey).getAddressString());
+                var encOut = $scope.wallet.toV3($scope.password, {
+                    kdf: globalFuncs.kdf,
+                    n: globalFuncs.scrypt.n
+                });
+                var fromV3 =  Wallet.fromV3(JSON.stringify(encOut), $scope.password, true);
+                expect(fromV3.getAddressString()).toBe(jsonOut.address);
+            }
+        });
+    });
+
+});
+</script>
+
+</html>
