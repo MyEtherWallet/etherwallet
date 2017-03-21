@@ -45,13 +45,17 @@ describe('Wallet generation Test', function() {
                 $scope.password = ethUtil.crypto.randomBytes(32).toString('hex');
                 $scope.genNewWallet();
                 var jsonOut = $scope.wallet.toJSON();
-                expect(jsonOut.address).toBe(new Wallet(jsonOut.privKey).getAddressString());
+                var fromPrivKey = new Wallet(jsonOut.privKey)
+                expect(jsonOut.address).toBe(fromPrivKey.getAddressString());
+                expect(jsonOut.address).toBe(fromPrivKey.getChecksumAddressString().toLowerCase());
+                expect($scope.wallet.getAddressString()).toBe(new Wallet($scope.wallet.getPrivateKeyString()).getAddressString());
                 var encOut = $scope.wallet.toV3($scope.password, {
                     kdf: globalFuncs.kdf,
                     n: globalFuncs.scrypt.n
                 });
-                var fromV3 =  Wallet.fromV3(JSON.stringify(encOut), $scope.password, true);
+                var fromV3 = Wallet.fromV3(JSON.stringify(encOut), $scope.password, true);
                 expect(fromV3.getAddressString()).toBe(jsonOut.address);
+                console.log(i, jsonOut.address);
             }
         });
     });
