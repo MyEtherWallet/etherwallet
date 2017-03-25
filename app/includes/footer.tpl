@@ -47,7 +47,7 @@
 
         <h5><i aria-hidden="true">🙏</i> Support</h5>
         <ul>
-          <li><a aria-label="email myetherwallet at gmail.com" href="mailto:myetherwallet@gmail.com" target="_blank">Email</a></li>
+          <li><a aria-label="email support at myetherwallet.com" href="mailto:support@myetherwallet.com" target="_blank">Email</a></li>
           <li><a aria-label="open a github issue" href="https://github.com/kvhnuke/etherwallet/issues" target="_blank">Github Issue</a></li>
         </ul>
       </div>

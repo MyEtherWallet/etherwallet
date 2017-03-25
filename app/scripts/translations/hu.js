@@ -375,7 +375,7 @@ TranslatorAddr_5            : '',
 
 /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
 HELP_Warning                : 'Ha **2015 december 31** előtt készítettél egy tárcát vagy töltötted le a repo-t, akkor ellenőrizd a tárcáidat és töltsd le a repo új verzióját. Kattints a részletekért. ',
-HELP_Desc                   : 'Valamit hiányolsz? Egyéb kérdésed lenne? [Írj nekünk](mailto:myetherwallet@gmail.com), és nem csak választ fogsz kapni, de még ezt az oldalt is frissítjük, hogy másoknak is hasznosabb legyen. ',
+HELP_Desc                   : 'Valamit hiányolsz? Egyéb kérdésed lenne? [Írj nekünk](mailto:support@myetherwallet.com), és nem csak választ fogsz kapni, de még ezt az oldalt is frissítjük, hogy másoknak is hasznosabb legyen. ',
 HELP_Remind_Title           : 'Néhány emlékeztető ',
 HELP_Remind_Desc_1          : 'Az **Ethereum, MyEtherWallet.com és MyEtherWallet CX, továbbá néhány, az oldal által használt JavaScript könyvtár aktív fejlesztés alatt állnak.** Az alapos tesztelés és a világszerte több tízezer sikeresen létrehozott tárca ellenére mindig fennáll az apró lehetőség arra, hogy valami váratlan esemény miatt elveszted az ETH-id. Ne fektess be annál többet, mint amit hajlandó lennél elveszítnei. Ha esetleg bármi ilyen történne, nagyon sajnáljuk, de **nem vagyunk a felősek az elvesztett Etherekért**. ',
 HELP_Remind_Desc_2          : 'A MyEtherWallet.com és a MyEtherWallet CX nem "web tárcák". Nem kell nálunk regisztrálnod, vagy ránk bízni az Ethereid megőrzésre. Semmilyen adat nem hagyja el a gépedet/böngésződet. Abban segítünk, hogy egyszerűen tudd az tárcáid látrehozni, lementeni és hozzájuk férni, és egyéb módon használni a blokkláncot. ',

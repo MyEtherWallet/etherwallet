@@ -7,7 +7,7 @@
 
   <h1 translate="NAV_Help"> Help </h1>
 
-  <p translate="HELP_Desc">Do you see something missing? Have another question? <a href="mailto:myetherwallet@gmail.com" target="_blank"> Get in touch with us</a>, and we will not only answer your question, we will update this page to be more useful to people in the future!</p>
+  <p translate="HELP_Desc">Do you see something missing? Have another question? <a href="mailto:support@myetherwallet.com" target="_blank"> Get in touch with us</a>, and we will not only answer your question, we will update this page to be more useful to people in the future!</p>
 
 
   <article class="collapse-container">
@@ -591,7 +591,7 @@
     </div>
     <div ng-show="!hContact">
       <ul>
-        <li><a href="mailto:myetherwallet@gmail.com" target="_blank"> Email Us </a></li>
+        <li><a href="mailto:support@myetherwallet.com" target="_blank"> Email Us </a></li>
         <li><a href="https://github.com/kvhnuke/etherwallet/issues" target="_blank"> Open a GitHub Issue</a></li>
         <li><a href="https://twitter.com/myetherwallet" target="_blank"> Follow Us on Twitter </a></li>
       </ul>
