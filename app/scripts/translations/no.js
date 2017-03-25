@@ -170,7 +170,7 @@ GEN_Placeholder_1           : 'Glem IKKE å ta vare på dette! ',
 GEN_SuccessMsg              : 'Suksess! Lommeboken din har blitt opprettet. ',
 GEN_Label_2                 : 'Lagre din Keystore-fil og/eller private nøkkel. Ikke glem passordet ditt ovenfor. ',
 GEN_Label_3                 : 'Lagre adressen din. ',
-GEN_Label_4                 : 'Skriv ut din papir-lommebok, eller lagre en QR-kode-versjon. (valgfritt) ',
+GEN_Label_4                 : 'Valgfritt: Skriv ut din papir-lommebok, eller lagre en QR-kode-versjon.',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Antall lommebøker som skal opprettes ',

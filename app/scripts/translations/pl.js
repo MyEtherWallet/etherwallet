@@ -157,7 +157,7 @@ GEN_Placeholder_1           : 'NIE zapomnij tego hasła! ',
 GEN_SuccessMsg              : 'Sukces! Twój portfel został wygenerowany. ',
 GEN_Label_2                 : 'Zapisz Twój plik Keystore lub Klucz Prywatny. Nie zapomnij powyższego hasła. ',
 GEN_Label_3                 : 'Zapisz swój adres. ',
-GEN_Label_4                 : 'Wydrukuj swój Portfel Papierowy, lub zachowaj obrazek z kodem QR. (opcjonalnie) ',
+GEN_Label_4                 : 'Opcjonalnie: Wydrukuj swój Portfel Papierowy, lub zachowaj obrazek z kodem QR. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Ilość Portfeli do Wygenerowania ',

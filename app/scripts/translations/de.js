@@ -197,7 +197,7 @@ GEN_Placeholder_1           : 'BITTE VERGISS NICHT dieses Passwort an einem sich
 GEN_SuccessMsg              : 'Erfolgreich! Dein Wallet wurde erzeugt. ',
 GEN_Label_2                 : 'Sichere deine Keystore-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort! ',
 GEN_Label_3                 : 'Sichere deine Kontoadresse. ',
-GEN_Label_4                 : 'Drucke dein Papier-Wallet oder speichere einen QR-Code davon: (optional) ',
+GEN_Label_4                 : 'Optional: Drucke dein Papier-Wallet oder speichere einen QR-Code. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Anzahl zu generierender Wallets ',

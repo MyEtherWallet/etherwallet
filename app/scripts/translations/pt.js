@@ -232,7 +232,7 @@ GEN_Placeholder_1           : 'NÃO esqueça de salvar isso! ',
 GEN_SuccessMsg              : 'Sucesso! Sua carteira foi gerada. ',
 GEN_Label_2                 : 'Salve seu arquivo de armazenamento de chaves. Não esqueça da sua senha acima. ',
 GEN_Label_3                 : 'Salve Seu Enderço. ',
-GEN_Label_4                 : 'Imprima sua carteira de papel, ou guarde a versão do código QR. (opcional) ',
+GEN_Label_4                 : 'Opcional: Imprima sua carteira de papel, ou guarde a versão do código QR. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Número de Carteiras a gerar ',

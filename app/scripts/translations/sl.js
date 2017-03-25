@@ -191,7 +191,7 @@ GEN_Placeholder_1           : 'NE pozabite shraniti tega! ',
 GEN_SuccessMsg              : 'Uspeh! Vaša denarnica je bila ustvarjena. ',
 GEN_Label_2                 : 'Shranite svojo datoteko za hrambo osebnega ključa Keystore/JSON ali vaš osebni ključ. Ne pozabite gesla. ',
 GEN_Label_3                 : 'Shranite Vaš Naslov. ',
-GEN_Label_4                 : 'Natisnite svojo papirnato denarnico, ali shranite QR kodo vaše denarnice. (neobvezno) ',
+GEN_Label_4                 : 'Neobvezno: Natisnite svojo papirnato denarnico, ali shranite QR kodo vaše denarnice.',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Number of Wallets To Generate ',

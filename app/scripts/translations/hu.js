@@ -177,7 +177,7 @@ GEN_Placeholder_1           : 'NE felejtsd el elmenteni! ',
 GEN_SuccessMsg              : 'Sikerült! A Tárcád legenerálódott. ',
 GEN_Label_2                 : 'Mentsd el a Keystore fájlt vagy a Privát Kulcsot. Ne felejtsd el a fenti jelszót! ',
 GEN_Label_3                 : 'Mentsd el a címed. ',
-GEN_Label_4                 : 'Nyomtasd ki a papír tárcádat vagy tárold a QR kód változatot. (választható) ',
+GEN_Label_4                 : 'Választható: Nyomtasd ki a papír tárcádat vagy tárold a QR kód változatot. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Generálni kívánt tárcák száma ',

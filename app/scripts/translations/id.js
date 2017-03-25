@@ -189,7 +189,7 @@ GEN_Placeholder_1           : 'JANGAN LUPA untuk mengingat dan menyimpannya! ',
 GEN_SuccessMsg              : 'Berhasil! Dompet Anda sudah dibuat. ',
 GEN_Label_2                 : 'Simpan Keystore atau Private Key. Jangan lupa Password-nya. ',
 GEN_Label_3                 : 'Simpan alamat dompet Anda. ',
-GEN_Label_4                 : 'Print Dompet Kertas Anda, atau simpan versi QR code-nya. (Opsional) ',
+GEN_Label_4                 : 'Opsional: Print Dompet Kertas Anda, atau simpan versi QR code-nya. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Jumlah Dompet yang akan dibuat ',

@@ -161,7 +161,7 @@ GEN_Placeholder_1           : 'N\'oubliez PAS de sauvegarder ceci ! ',
 GEN_SuccessMsg              : 'Succès ! Votre portefeuille a été généré. ',
 GEN_Label_2                 : 'Sauvegardez votre fichier Keystore ou votre clé privée. N\'oubliez pas votre mot de passe ci-dessus. ',
 GEN_Label_3                 : 'Sauvegarder votre portefeuille. ',
-GEN_Label_4                 : 'Imprimer votre portefeuille papier, ou conserver une version QR code. (optionnel) ',
+GEN_Label_4                 : 'Optionnel: Imprimer votre portefeuille papier, ou conserver une version QR code. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Nombre de portefeuilles à générer ',

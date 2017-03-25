@@ -154,7 +154,7 @@ GEN_Placeholder_1           : 'Vergeet NIET om dit op te slaan! ',
 GEN_SuccessMsg              : 'Gelukt! Je wallet is gegenereerd. ',
 GEN_Label_2                 : 'Sla je Keystore of Prive Sleutel op. Vergeet je wachtwoord hierboven niet. ',
 GEN_Label_3                 : 'Sla je adres op. ',
-GEN_Label_4                 : 'Druk je papieren wallet af, of bewaar hem als QR code. (optioneel) ',
+GEN_Label_4                 : 'Optioneel: Druk je papieren wallet af, of bewaar hem als QR code.',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Aantal te genereren wallets ',

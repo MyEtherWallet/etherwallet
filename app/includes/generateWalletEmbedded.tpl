@@ -33,7 +33,7 @@
 
     <article class="row">
       <div class="col-md-6 col-xs-12">
-        <h4 translate="GEN_Label_2"> 1. Save your Keystore/JSON or Private Key. Don't forget your password above. </h4>
+        <h4 translate="GEN_Label_2"> 1. Save your Keystore/JSON or Private Key. Don't forget your password. </h4>
         <div class="form-group">
           <a class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
         </div>

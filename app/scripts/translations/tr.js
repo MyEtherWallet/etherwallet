@@ -215,7 +215,7 @@ GEN_Placeholder_1           : 'Bunu kaydetmeyi unutma! ',
 GEN_SuccessMsg              : 'Başarı! Cüzdan oluşturuldu. ',
 GEN_Label_2                 : 'Keystore dosyayi veya özel anahtranini kaydet. Yukarıdaki şifreni unutma. ',
 GEN_Label_3                 : 'Adresini kaydet. ',
-GEN_Label_4                 : 'Cüzdanin kağıt versiyonunu yazdir veya QR code versiyonunu sakla. (Isteye bagli) ',
+GEN_Label_4                 : 'Isteye bagli: Cüzdanin kağıt versiyonunu yazdir veya QR code versiyonunu sakla.',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Oluşturulacak cüzdan sayısı ',

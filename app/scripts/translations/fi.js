@@ -219,7 +219,7 @@ GEN_Placeholder_1           : 'ÄLÄ unohda tallentaa tätä! ',
 GEN_SuccessMsg              : 'Onnistui! Sinun lompakkosi on luotu. ',
 GEN_Label_2                 : 'Tallenna Avainsäilö tai Yksityinen salausavaimesi. Älä unohda yllä olevaa salasanaasi. ',
 GEN_Label_3                 : 'Tallenna Osoitteesi. ',
-GEN_Label_4                 : 'Tulosta paperi lompakkosi, tai säilö QR koodi versio. (valinnainen) ',
+GEN_Label_4                 : 'Valinnainen: Tulosta paperi lompakkosi, tai säilö QR koodi versio. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Kuinka Monta Lompakkoa Luodaan ',

@@ -140,9 +140,9 @@ GEN_desc                    : 'If you want to generate multiple wallets, you can
 GEN_Label_1                 : 'Enter a strong password (at least 9 characters) ',
 GEN_Placeholder_1           : 'Do NOT forget to save this! ',
 GEN_SuccessMsg              : 'Success! Your wallet has been generated. ',
-GEN_Label_2                 : 'Save your Keystore File. Don\'t forget your password above. ',
+GEN_Label_2                 : 'Save your Wallet File. Don\'t forget your password. ',
 GEN_Label_3                 : 'Save Your Address. ',
-GEN_Label_4                 : 'Print your paper wallet, or store a QR code version. (optional) ',
+GEN_Label_4                 : 'Optional: Print your paper wallet or store a QR code. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Number of Wallets To Generate ',

@@ -200,9 +200,9 @@ GEN_desc                    : 'Si quieres generar varias carteras, puedes hacerl
 GEN_Label_1                 : 'Introduce una contraseña fuerte (mínimo 9 caracteres) ',
 GEN_Placeholder_1           : '¡NO olvides guardar esto! ',
 GEN_SuccessMsg              : '¡Enhorabuena! Se ha generado tu cartera. ',
-GEN_Label_2                 : 'Guarda tu Keystore. No olvides tu contraseña de arriba. ',
+GEN_Label_2                 : 'Guarda tu Keystore. No olvides tu contraseña. ',
 GEN_Label_3                 : 'Guarda tu dirección. ',
-GEN_Label_4                 : 'Imprime tu cartera en papel o guarda una versión en código QR (opcional) ',
+GEN_Label_4                 : 'Opcional: Imprime tu cartera en papel o guarda una versión en código QR. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Cantidad de carteras a generar ',

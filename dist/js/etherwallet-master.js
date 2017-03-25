@@ -8003,7 +8003,7 @@ de.data = {
   GEN_SuccessMsg: 'Erfolgreich! Dein Wallet wurde erzeugt. ',
   GEN_Label_2: 'Sichere deine Keystore-Datei oder deinen privaten Schlüssel. Sichere auch dein Passwort! ',
   GEN_Label_3: 'Sichere deine Kontoadresse. ',
-  GEN_Label_4: 'Drucke dein Papier-Wallet oder speichere einen QR-Code davon: (optional) ',
+  GEN_Label_4: 'Optional: Drucke dein Papier-Wallet oder speichere einen QR-Code. ',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Anzahl zu generierender Wallets ',
@@ -8176,7 +8176,7 @@ de.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Falls du vor dem **31.12.2015** ein Wallet generiert, oder das Repository heruntergeladen hast, bitte überprüfe deine Wallets &amp; lade eine neue Version des Repositories herunter. Klick für details. ',
-  HELP_Desc: 'Hast du das Gefühl etwas fehlt? Hast du eine andere Frage? [Schreib uns](mailto:myetherwallet@gmail.com) und wir werden nicht nur deine Frage beantworten, wir werden auch die Seite updaten, damit diese in der Zukunft noch einfacher zu bedienen sein wird! ',
+  HELP_Desc: 'Hast du das Gefühl etwas fehlt? Hast du eine andere Frage? [Schreib uns](mailto:support@myetherwallet.com) und wir werden nicht nur deine Frage beantworten, wir werden auch die Seite updaten, damit diese in der Zukunft noch einfacher zu bedienen sein wird! ',
   HELP_Remind_Title: 'Ein paar Reminder ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, sowie einige der verwendeten Javascript Bibliotheken, die wir verwenden, befinden sich noch in Entwicklung.** Zwar haben wir alles umfassend getestet und es wurden erfolgeich tausende Wallets von Menschen aus aller Welt kreiert, jedoch bestimmt immer eine gewisse Gefahr, dass etwas unerwartetes passiert und dein Ether verloren geht. Bitte investiere nicht mehr als du verlieren kannst, und sei immer vorsichtig. Sollte etwas schlimmes passieren, **können wir uns leider nicht verantwortlich für einen Verlust zeichnen**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX sind keine "web wallets". Du erstellst keinen Account oder sendest uns Ether den wir halten. Alle Daten bleiben auf deinem Computer, bzw. Browser. Unser Auftrag ist es, dir das Erstellen, Speichern und Zugreifen auf deine Accounts zu vereinfachen, sowie dir eine simple Möglichkeit zur Interaktion mit der Blockchain zu bieten. ',
@@ -8770,7 +8770,7 @@ el.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
-  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
+  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:support@myetherwallet.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
   HELP_Remind_Title: 'Some reminders ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. ',
@@ -9137,9 +9137,9 @@ en.data = {
   GEN_Label_1: 'Enter a strong password (at least 9 characters) ',
   GEN_Placeholder_1: 'Do NOT forget to save this! ',
   GEN_SuccessMsg: 'Success! Your wallet has been generated. ',
-  GEN_Label_2: 'Save your Keystore File. Don\'t forget your password above. ',
+  GEN_Label_2: 'Save your Wallet File. Don\'t forget your password. ',
   GEN_Label_3: 'Save Your Address. ',
-  GEN_Label_4: 'Print your paper wallet, or store a QR code version. (optional) ',
+  GEN_Label_4: 'Optional: Print your paper wallet or store a QR code. ',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Number of Wallets To Generate ',
@@ -9350,7 +9350,7 @@ en.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
-  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
+  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:support@myetherwallet.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
   HELP_Remind_Title: 'Some reminders ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. ',
@@ -9769,9 +9769,9 @@ es.data = {
   GEN_Label_1: 'Introduce una contraseña fuerte (mínimo 9 caracteres) ',
   GEN_Placeholder_1: '¡NO olvides guardar esto! ',
   GEN_SuccessMsg: '¡Enhorabuena! Se ha generado tu cartera. ',
-  GEN_Label_2: 'Guarda tu Keystore. No olvides tu contraseña de arriba. ',
+  GEN_Label_2: 'Guarda tu Keystore. No olvides tu contraseña. ',
   GEN_Label_3: 'Guarda tu dirección. ',
-  GEN_Label_4: 'Imprime tu cartera en papel o guarda una versión en código QR (opcional) ',
+  GEN_Label_4: 'Opcional: Imprime tu cartera en papel o guarda una versión en código QR. ',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Cantidad de carteras a generar ',
@@ -9945,7 +9945,7 @@ es.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Si creaste una cartera -o- descargaste el repositorio antes del **31 de diciembre de 2015**, por favor comprueba tus carteras y descarga una nueva versión del repositorio. Haz clic para más información. ',
-  HELP_Desc: '¿Echas algo en falta? ¿Tienes alguna otra pregunta? [Contacta con nosotros](mailto:myetherwallet@gmail.com) y no solamente contestaremos tu pregunta, sino que mejoraremos esta página para que sea más útil en el futuro. ',
+  HELP_Desc: '¿Echas algo en falta? ¿Tienes alguna otra pregunta? [Contacta con nosotros](mailto:support@myetherwallet.com) y no solamente contestaremos tu pregunta, sino que mejoraremos esta página para que sea más útil en el futuro. ',
   HELP_Remind_Title: 'Algunos recordatorios ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com y MyEtherWallet CX, así como algunas de las librerías JavaScript que utilizamos están en desarrollo activo.** Aunque hemos testeado ampliamente y decenas de miles de carteras han sido creadas exitosamente por personas en todo el planeta, siempre existe la remota posibilidad de que ocurra algo inesperado que haga que se pierdan tus ETH. Por favor no inviertas más de lo que estés dispuesto a perder y, por favor, sé cuidadoso. Si algo ocurriera, lo lamentamos, pero **no somos responsables del Ether perdido**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com y MyEtherWallet CX no son "carteras web". No estás creando una cuenta ni nos estás entregando tus Ether para que los guardemos. Toda tu información nunca abandona tu equipo o tu navegador. Te facilitamos que puedas crear, guardar y acceder a tu información e interactuar con la blockchain. ',
@@ -10382,7 +10382,7 @@ fi.data = {
   GEN_SuccessMsg: 'Onnistui! Sinun lompakkosi on luotu. ',
   GEN_Label_2: 'Tallenna Avainsäilö tai Yksityinen salausavaimesi. Älä unohda yllä olevaa salasanaasi. ',
   GEN_Label_3: 'Tallenna Osoitteesi. ',
-  GEN_Label_4: 'Tulosta paperi lompakkosi, tai säilö QR koodi versio. (valinnainen) ',
+  GEN_Label_4: 'Valinnainen: Tulosta paperi lompakkosi, tai säilö QR koodi versio. ',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Kuinka Monta Lompakkoa Luodaan ',
@@ -10556,7 +10556,7 @@ fi.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
-  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
+  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:support@myetherwallet.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
   HELP_Remind_Title: 'Some reminders ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. ',
@@ -10936,7 +10936,7 @@ fr.data = {
   GEN_SuccessMsg: 'Succès ! Votre portefeuille a été généré. ',
   GEN_Label_2: 'Sauvegardez votre fichier Keystore ou votre clé privée. N\'oubliez pas votre mot de passe ci-dessus. ',
   GEN_Label_3: 'Sauvegarder votre portefeuille. ',
-  GEN_Label_4: 'Imprimer votre portefeuille papier, ou conserver une version QR code. (optionnel) ',
+  GEN_Label_4: 'Optionnel: Imprimer votre portefeuille papier, ou conserver une version QR code. ',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Nombre de portefeuilles à générer ',
@@ -11149,7 +11149,7 @@ fr.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Si vous avez créé un portefeuille -ou- téléchargé le repo avant **le 31 déc. 2015**, merci de vérifier vos portefeuilles / de télécharger une nouvelle version du repo. Cliquez ici pour plus de détails. ',
-  HELP_Desc: 'Il manque quelque chose ? Vous avez d\'autres questions ? [Contactez-nous](mailto:myetherwallet@gmail.com), et non seulement nous allons vous répondre mais aussi mettre à jour cette page afin qu\'elle soit plus utile à tout le monde à l\'avenir ! ',
+  HELP_Desc: 'Il manque quelque chose ? Vous avez d\'autres questions ? [Contactez-nous](mailto:support@myetherwallet.com), et non seulement nous allons vous répondre mais aussi mettre à jour cette page afin qu\'elle soit plus utile à tout le monde à l\'avenir ! ',
   HELP_Remind_Title: 'Quelques rappels : ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, et certaines des bibliothèques Javascript sous-jacentes que nous employons sont en cours de développement.** Bien que nous les ayons testés intensivement et que des dizaines de milliez de portefeuilles aient été créés avec succès dans le monde entier, il existe toujours une faible possibilité qu\'un incident se produise conduisant à la perte de vos ETH. N\'investissez pas plus que ce que vous êtes prêt à perdre et soyez prudent. En cas d\'accident, nous en serons désolés mais **nous ne sommes pas responsables d\'une éventuelle perte de cet Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX ne sont pas des "portefeuilles web". Vous ne créez pas un compte, vous ne nous donnez pas votre Ether en dépôt. Aucune donnée ne sort de votre ordinateur ou votre navigateur. Nous vous facilitons la création, la sauvegarde et l\'accès à vos informations ainsi que l\'interaction avec la blockchain. ',
@@ -11547,7 +11547,7 @@ hu.data = {
   GEN_SuccessMsg: 'Sikerült! A Tárcád legenerálódott. ',
   GEN_Label_2: 'Mentsd el a Keystore fájlt vagy a Privát Kulcsot. Ne felejtsd el a fenti jelszót! ',
   GEN_Label_3: 'Mentsd el a címed. ',
-  GEN_Label_4: 'Nyomtasd ki a papír tárcádat vagy tárold a QR kód változatot. (választható) ',
+  GEN_Label_4: 'Választható: Nyomtasd ki a papír tárcádat vagy tárold a QR kód változatot. ',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Generálni kívánt tárcák száma ',
@@ -11745,7 +11745,7 @@ hu.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Ha **2015 december 31** előtt készítettél egy tárcát vagy töltötted le a repo-t, akkor ellenőrizd a tárcáidat és töltsd le a repo új verzióját. Kattints a részletekért. ',
-  HELP_Desc: 'Valamit hiányolsz? Egyéb kérdésed lenne? [Írj nekünk](mailto:myetherwallet@gmail.com), és nem csak választ fogsz kapni, de még ezt az oldalt is frissítjük, hogy másoknak is hasznosabb legyen. ',
+  HELP_Desc: 'Valamit hiányolsz? Egyéb kérdésed lenne? [Írj nekünk](mailto:support@myetherwallet.com), és nem csak választ fogsz kapni, de még ezt az oldalt is frissítjük, hogy másoknak is hasznosabb legyen. ',
   HELP_Remind_Title: 'Néhány emlékeztető ',
   HELP_Remind_Desc_1: 'Az **Ethereum, MyEtherWallet.com és MyEtherWallet CX, továbbá néhány, az oldal által használt JavaScript könyvtár aktív fejlesztés alatt állnak.** Az alapos tesztelés és a világszerte több tízezer sikeresen létrehozott tárca ellenére mindig fennáll az apró lehetőség arra, hogy valami váratlan esemény miatt elveszted az ETH-id. Ne fektess be annál többet, mint amit hajlandó lennél elveszítnei. Ha esetleg bármi ilyen történne, nagyon sajnáljuk, de **nem vagyunk a felősek az elvesztett Etherekért**. ',
   HELP_Remind_Desc_2: 'A MyEtherWallet.com és a MyEtherWallet CX nem "web tárcák". Nem kell nálunk regisztrálnod, vagy ránk bízni az Ethereid megőrzésre. Semmilyen adat nem hagyja el a gépedet/böngésződet. Abban segítünk, hogy egyszerűen tudd az tárcáid látrehozni, lementeni és hozzájuk férni, és egyéb módon használni a blokkláncot. ',
@@ -12154,7 +12154,7 @@ id.data = {
   GEN_SuccessMsg: 'Berhasil! Dompet Anda sudah dibuat. ',
   GEN_Label_2: 'Simpan Keystore atau Private Key. Jangan lupa Password-nya. ',
   GEN_Label_3: 'Simpan alamat dompet Anda. ',
-  GEN_Label_4: 'Print Dompet Kertas Anda, atau simpan versi QR code-nya. (Opsional) ',
+  GEN_Label_4: 'Opsional: Print Dompet Kertas Anda, atau simpan versi QR code-nya. ',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Jumlah Dompet yang akan dibuat ',
@@ -12340,7 +12340,7 @@ id.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
-  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
+  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:support@myetherwallet.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
   HELP_Remind_Title: 'Some reminders ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. ',
@@ -12720,7 +12720,7 @@ it.data = {
   GEN_SuccessMsg: 'Perfetto! Il tuo portafoglio è stato generato. ',
   GEN_Label_2: 'Salva il tuo file Keystore. Non dimenticare la password che hai inserito. ',
   GEN_Label_3: 'Salva il tuo indirizzo. ',
-  GEN_Label_4: 'Stampa il tuo portafoglio cartaceo, o salva una versione QR code. (facoltativo) ',
+  GEN_Label_4: 'Facoltativo: Stampa il tuo portafoglio cartaceo o salva una versione QR code. ',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Numero di portafogli da generare ',
@@ -12936,7 +12936,7 @@ it.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Se hai creato un portafoglio -oppure- hai scaricato il repository prima del **31 Dicembre 2015**, controlla i tuoi portafogli e scarica una nuova versione del repository. Fai clic qui per i dettagli. ',
-  HELP_Desc: 'Vedi che manca qualcosa? Hai un\'altra domanda? [Mettiti in contatto con noi](mailto:myetherwallet@gmail.com), e non solo risponderemo alla tua domanda, ma aggiorneremo anche questa pagina in modo che sia più utile ad altri in futuro! ',
+  HELP_Desc: 'Vedi che manca qualcosa? Hai un\'altra domanda? [Mettiti in contatto con noi](mailto:support@myetherwallet.com), e non solo risponderemo alla tua domanda, ma aggiorneremo anche questa pagina in modo che sia più utile ad altri in futuro! ',
   HELP_Remind_Title: 'Qualche promemoria ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, e alcune delle librerie Javascript che utilizziamo sono in continuo sviluppo.** Anche se abbiamo testato approfonditamente e persone di tutto il mondo hanno correttamente creato decine di migliaia di portafogli, c\'è sempre la remota possibilità che accada qualcosa di imprevisto che provochi la perdita dei tuoi ETH. Ti preghiamo di non investire più di quello che sei disposto a perdere, e di fare attenzione. Se dovesse capitare qualcosa, ci dispiace, ma **non siamo responsabili per gli ether perduti**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX non sono "portafogli web". Non stai creando un account né ci stai dando i tuoi ether da custodire. Tutti i dati non lasciano mai il tuo computer/il tuo browser. Quello che facciamo è renderti facile creare, salvare, e accedere alle tue informazioni e interagire con la *blockchain*. ',
@@ -13526,7 +13526,7 @@ ja.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
-  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
+  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:support@myetherwallet.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
   HELP_Remind_Title: 'Some reminders ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. ',
@@ -13760,7 +13760,7 @@ nl.data = {
   NAV_ENS: 'ENS',
 
   /* Misc */
-  x_ParityPhrase: 'Parity herstel zin ',
+  x_ParityPhrase: 'Parity herstelzin ',
 
   /* Node Switcher */
   NODE_Title: 'Stel je Custom Node in',
@@ -13904,7 +13904,7 @@ nl.data = {
   GEN_SuccessMsg: 'Gelukt! Je wallet is gegenereerd. ',
   GEN_Label_2: 'Sla je Keystore of Prive Sleutel op. Vergeet je wachtwoord hierboven niet. ',
   GEN_Label_3: 'Sla je adres op. ',
-  GEN_Label_4: 'Druk je papieren wallet af, of bewaar hem als QR code. (optioneel) ',
+  GEN_Label_4: 'Optioneel: Druk je papieren wallet af, of bewaar hem als QR code.',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Aantal te genereren wallets ',
@@ -14070,7 +14070,9 @@ nl.data = {
   ERROR_26: 'Voer een geldige ABI in ',
   ERROR_27: 'Minimale hoeveelheid is 0.01 ',
   ERROR_28: '**Je hebt je Keystore Bestand & wachtwoord of prive sleutel nodig** om toegang tot deze wallet te verkrijgen in de toekomst. Sla het op & maak een externe back-up! Er is geen enkele manier om je wallet te herstellen als je het nu niet opslaat. Lees ook de help pagina (https://www.myetherwallet.com/#help) voor instructies. ',
-  ERROR_29: 'Please enter valid user and password ',
+  ERROR_29: 'Voer een valide gebruikersnaam en wachtwoord in ',
+  ERROR_30: 'Voer een valide ENS naam in ',
+  ERROR_31: 'Ongeldige geheime zin ',
   SUCCESS_1: 'Geldig adres ',
   SUCCESS_2: 'Wallet succesvol ontsleuteld ',
   SUCCESS_3: 'Transactie verzonden. TX ID ',
@@ -14121,7 +14123,7 @@ nl.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Als je een wallet aangemaakt hebt -of repo hebt gedownload- voor **31 december 2015**, check dan alsjebieft je wallets en download een nieuwe versie van de repo. Klik voor detais. ',
-  HELP_Desc: 'Zie je dat er iets mist? Of heb je een andere vraag? [Neem contact met ons op](mailto:myetherwallet@gmail.com), en we zullen niet alleen je vraag beantwoorden, maar ook deze help pagina bijwerken zodat deze nog nuttiger wordt voor toekomstige gebruikers! ',
+  HELP_Desc: 'Zie je dat er iets mist? Of heb je een andere vraag? [Neem contact met ons op](mailto:support@myetherwallet.com), en we zullen niet alleen je vraag beantwoorden, maar ook deze help pagina bijwerken zodat deze nog nuttiger wordt voor toekomstige gebruikers! ',
   HELP_Remind_Title: 'Enkele herinneringen ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, en enkele onderliggende Javascript libraries waar we gebruik van maken zijn onderheving aan active ontwikkeling.** Hoewel we grondig testen & er inmiddels tienduizenden wallets succesvol zijn aangemaakt door mensen over de hele wereld, blijft er altijd een geringe kans dat iets er onverwachts optreedt waardoor je je ether kunt verliezen. Investeer alsjeblieft niet meer dan dat je bereid bent om te verliezen, en wees voorzichtig. Zou er onverhoopt toch iets gebeuren vinden we dat zeer spijtig, echter **zullen wij nooit verantwoordelijk zijn voor de verloren Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX zijn geen "web wallets". Je maakt bij ons geen account aan noch geef je ooit je Ether aan ons in bezit. Alle gegevens verlaten nooit je computer/je browser. We helpen je alleen gemakkelijk toegang te verkrijgen tot de blockchain zodat je er informatie in kunt opslaan en kunt uitlezen. ',
@@ -14160,7 +14162,7 @@ nl.data = {
   HELP_2b_Desc_8: 'Ga naar de "Bekijk Wallet Info" pagina en voer je prive sleutel / wachtwoord in om zeker te stellen dat ze correct zijn en dat je toegang hebt tot je wallet. Controleer dat het adres wat je opgeschreven hebt gelijk is. ',
 
   HELP_3_Title: '3) Hoe verifieer ik dat ik toegang hebt tot mijn nieuwe wallets? ',
-  HELP_3_Desc_1: 'Zorg **voordat je enige Ether naar je wallet verstuurd** dan je controleerd dat je er toegang toe hebt. ',
+  HELP_3_Desc_1: 'Zorg **voordat je enige Ether naar je wallet verstuurd** dat je controleerd dat je er toegang toe hebt. ',
   HELP_3_Desc_2: 'Navigeer naar de "Bekijk Wallet Info" pagina. ',
   HELP_3_Desc_3: 'Navigeer naar de MyEtherWallet.com "Bekijk Wallet Info" pagina. ',
   HELP_3_Desc_4: 'Selecteer je wallet bestand -of- je prive sleutel en open je wallet. ',
@@ -14184,7 +14186,7 @@ nl.data = {
   HELP_4_Desc_13: 'De transactie zal worden verstuurt. Het TX ID zal worden weergegeven. Je kunt op dit TX ID klikken om het in de blockchain te bekijken. ',
 
   HELP_4CX_Title: '4) Hoe verzend ik Ether met MyEtherWallet CX? ',
-  HELP_4CX_Desc_1: 'Ten eerste heb je een wallet nodig. Zodra je die hebt, heb je 2 opties: De "VerzendSnel" functionalitiet vanuit het Chrome Extensie icoon of de "Verzend Ether en Tokens" pagina. ',
+  HELP_4CX_Desc_1: 'Ten eerste heb je een wallet nodig. Zodra je die hebt, heb je 2 opties: De "VerzendSnel" functionaliteit vanuit het Chrome Extensie icoon of de "Verzend Ether en Tokens" pagina. ',
   HELP_4CX_Desc_2: 'VerzendSnel: ',
   HELP_4CX_Desc_3: 'Klik op het Chrome Extensie icoon. ',
   HELP_4CX_Desc_4: 'Klik op de "VerzendSnel" knop. ',
@@ -14269,7 +14271,7 @@ nl.data = {
   HELP_12_Desc_9: 'Hiermee open je de keystore map. Kopier het bestand wat je zojuist hebt gedownload (`UTC--2016-04-14......../`) naar deze keystore map. ',
   HELP_12_Desc_10: 'Je account zou nu direct moeten verschijnen onder "Accounts." ',
   HELP_12_Desc_11: 'Door gebruik te maken van je onversleutelde prive sleutel... ',
-  HELP_12_Desc_12: 'Indien je nog geen unversleutelde (unencrypted) prive sleutel van je wallet hebt, navigeer je naar de "Bekijk Wallet Info" pagina. ',
+  HELP_12_Desc_12: 'Indien je nog geen onversleutelde (unencrypted) prive sleutel van je wallet hebt, navigeer je naar de "Bekijk Wallet Info" pagina. ',
   HELP_12_Desc_13: 'Selecteer je wallet bestand -of- voer je prive sleutel in om je wallet te ontsleutelen. ',
   HELP_12_Desc_14: 'Kopier je prive sleutel (onversleuteld/unencrypted). ',
   HELP_12_Desc_15: 'Als je op een Mac werkt: ',
@@ -14309,7 +14311,7 @@ nl.data = {
   HELP_19_Desc_1: 'Mist bestanden zijn normaliter te vinden op de bovenstaande bestandslocaties, maar het volgende is veel makkelijker: open Mist, selecteer "Accounts" in de top balk, selecteer "Backup", en selecteer "Accounts". Hiermee open je de map waar je bestanden worden bewaard. ',
 
   HELP_20_Title: '20) Waar is mijn pre-sale wallet bestand? ',
-  HELP_20_Desc_1: 'Waat jij het opgeslagen hebt. ;) Het was ook naar je gemailed, dus kijk ook daar. Zoek naar het bestand genaamd "ethereum_wallet_backup.json" en selecteer dit bestand. Dit wallet bestand zal versleuteld (encrypted) zijn met een wachtwoord dat je aangemaakt hebt tijdens de aankoop van de pre-sale. ',
+  HELP_20_Desc_1: 'Waar jij het opgeslagen hebt. ;) Het was ook naar je gemailed, dus kijk ook daar. Zoek naar het bestand genaamd "ethereum_wallet_backup.json" en selecteer dit bestand. Dit wallet bestand zal versleuteld (encrypted) zijn met een wachtwoord dat je aangemaakt hebt tijdens de aankoop van de pre-sale. ',
 
   HELP_21_Title: '21) Kan iedereen niet simpelweg willekeurige prive sleutels invoeren, zoekend naar een saldo, en dit naar hun eigen adres versturen? ',
   HELP_21_Desc_1: 'De korte versie: ja, echter het vinden van een account met saldo gaat je langer duren dan het universum...dus...nee. ',
@@ -14513,7 +14515,7 @@ no.data = {
   GEN_SuccessMsg: 'Suksess! Lommeboken din har blitt opprettet. ',
   GEN_Label_2: 'Lagre din Keystore-fil og/eller private nøkkel. Ikke glem passordet ditt ovenfor. ',
   GEN_Label_3: 'Lagre adressen din. ',
-  GEN_Label_4: 'Skriv ut din papir-lommebok, eller lagre en QR-kode-versjon. (valgfritt) ',
+  GEN_Label_4: 'Valgfritt: Skriv ut din papir-lommebok, eller lagre en QR-kode-versjon.',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Antall lommebøker som skal opprettes ',
@@ -14717,7 +14719,7 @@ no.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Hvis du opprettet en lommebok -eller- lastet ned repoet før **31. desember 2015**, vennligst sjekk lommebøkene dine &amp; last ned en ny versjon av repoet. Klikk for detaljer. ',
-  HELP_Desc: 'Ser du noe som mangler? Har du flere spørsmål? [Ta kontakt med oss](mailto:myetherwallet@gmail.com), så vil vi ikke bare besvare spørsmålet ditt, men vi vil også oppdatere denne siden så den blir mer nyttig i framtiden! ',
+  HELP_Desc: 'Ser du noe som mangler? Har du flere spørsmål? [Ta kontakt med oss](mailto:support@myetherwallet.com), så vil vi ikke bare besvare spørsmålet ditt, men vi vil også oppdatere denne siden så den blir mer nyttig i framtiden! ',
   HELP_Remind_Title: 'Noen påminnelser ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, og noen av de underliggende Javascript-bibliotekene vi benytter er under aktiv utvikling.** Selv om vi har testet grundig, og titusenvis av lommebøker har blitt opprettet uten feil av folk over hele kloden, så er det alltid en liten mulighet for at noe uventet kan skje som kan medføre at dine ETH kan tapes. Vennligst ikke invester mer enn du er villig til å tape, and vær så snill å være forsiktig. Hvis noe skulle skje, er vi lei oss for det, men **vi er ikke ansvarlige for eventuelt tapte etere**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX er ikke "web wallets" (internettlommebøker). Du oppretter ikke en konto eller gir oss dine ethere for oppbevaring hos oss. Alle data forblir på din PC / i din nettleser. Vi gjør det enkelt for deg å opprette, lagre og få tilgang til din informasjon og samhogle med blokkjeden. ',
@@ -15096,7 +15098,7 @@ pl.data = {
   GEN_SuccessMsg: 'Sukces! Twój portfel został wygenerowany. ',
   GEN_Label_2: 'Zapisz Twój plik Keystore lub Klucz Prywatny. Nie zapomnij powyższego hasła. ',
   GEN_Label_3: 'Zapisz swój adres. ',
-  GEN_Label_4: 'Wydrukuj swój Portfel Papierowy, lub zachowaj obrazek z kodem QR. (opcjonalnie) ',
+  GEN_Label_4: 'Opcjonalnie: Wydrukuj swój Portfel Papierowy, lub zachowaj obrazek z kodem QR. ',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Ilość Portfeli do Wygenerowania ',
@@ -15311,7 +15313,7 @@ pl.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Jeśli wygenerowałeś portfel -lub- ściągnąłeś repozytorium przed **31.12.2015**, sprawdź swoje portfele i ściągnij nową wersję repozytorium. Kliknij po szczegóły. ',
-  HELP_Desc: 'Widzisz jakieś braki? Masz inne pytania? [Skontaktuj się z nami (tylko angielski)](mailto:myetherwallet@gmail.com), postaramy się odpowiedzieć, pomoże to nam również uaktualnić stronę aby w przyszłości była bardziej pomocna dla innych! ',
+  HELP_Desc: 'Widzisz jakieś braki? Masz inne pytania? [Skontaktuj się z nami (tylko angielski)](mailto:support@myetherwallet.com), postaramy się odpowiedzieć, pomoże to nam również uaktualnić stronę aby w przyszłości była bardziej pomocna dla innych! ',
   HELP_Remind_Title: 'W ramach uściślenia ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com i MyEtherWallet CX, jak również niektóre bazowe biblioteki Javascript, których używamy, są wciąż aktywnie rozwijane.** Pomimo tego, że dokładnie testujemy nasze oprogramowanie, pomimo że dziesiątki tysięcy portfeli zostało z powodzeniem wygenerowane przez użytkowników na całym świecie, zawsze istnieje pewne znikome prawdopodobieństwo, że nastąpi coś nieoczekiwanego, co spowoduje utratę Twoich środków. Nie inwestuj więc więcej niż jesteś gotów stracić i bądź ostrożny. Gdyby coś takiego się wydarzyło, będzie nam przykro, ale **nie weźmiemy za to odpowiedzialności**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com i MyEtherWallet CX nie są "portfelami internetowymi". Nie tworzysz kont internetowych i nie przekazujesz nam Twoich środków na przechowanie. W żadnym momencie Twoje klucze prywatne nie opuszczają Twojej przeglądarki/komputera. My jedynie ułatwiamy Ci tworzenie, zapisywanie, dostęp do twoich danych i interakcję z siecią Ethereum. ',
@@ -15765,7 +15767,7 @@ pt.data = {
   GEN_SuccessMsg: 'Sucesso! Sua carteira foi gerada. ',
   GEN_Label_2: 'Salve seu arquivo de armazenamento de chaves. Não esqueça da sua senha acima. ',
   GEN_Label_3: 'Salve Seu Enderço. ',
-  GEN_Label_4: 'Imprima sua carteira de papel, ou guarde a versão do código QR. (opcional) ',
+  GEN_Label_4: 'Opcional: Imprima sua carteira de papel, ou guarde a versão do código QR. ',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Número de Carteiras a gerar ',
@@ -15907,7 +15909,7 @@ pt.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
-  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
+  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:support@myetherwallet.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
   HELP_Remind_Title: 'Some reminders ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. ',
@@ -16503,7 +16505,7 @@ ru.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
-  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
+  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:support@myetherwallet.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
   HELP_Remind_Title: 'Some reminders ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. ',
@@ -16940,7 +16942,7 @@ tr.data = {
   GEN_SuccessMsg: 'Başarı! Cüzdan oluşturuldu. ',
   GEN_Label_2: 'Keystore dosyayi veya özel anahtranini kaydet. Yukarıdaki şifreni unutma. ',
   GEN_Label_3: 'Adresini kaydet. ',
-  GEN_Label_4: 'Cüzdanin kağıt versiyonunu yazdir veya QR code versiyonunu sakla. (Isteye bagli) ',
+  GEN_Label_4: 'Isteye bagli: Cüzdanin kağıt versiyonunu yazdir veya QR code versiyonunu sakla.',
 
   /* Bulk Generate Wallets */
   BULK_Label_1: 'Oluşturulacak cüzdan sayısı ',
@@ -17099,7 +17101,7 @@ tr.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
-  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
+  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:support@myetherwallet.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
   HELP_Remind_Title: 'Some reminders ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. ',
@@ -17754,7 +17756,7 @@ vi.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'Nếu bạn đã khởi tạo Ví -hoặc- đã tải về máy tập tin có chứa dữ liệu ví trước **Ngày 31 Tháng 12 năm 2015**, xin vui lòng kiễm tra lại dữ liệu Ví; dễ tải về phiên bản mới của tập tin Ví. Chi tiết xem tại. ',
-  HELP_Desc: 'Nếu bạn thấy có gì sai sót và có những câu hỏi nào khác cần được giải đáp. [Xin Liên Lạc Với Chúng Tôi](mailto:myetherwallet@gmail.com), và chúng tôi sẽ giải đáp những thắc mắc từ bạn, ngoài ra chúng tôi sẽ cập nhật lại trang web nhằm đem lại nhiều tiện lợi nhất có thể cho người sử dụng trong tương lai! ',
+  HELP_Desc: 'Nếu bạn thấy có gì sai sót và có những câu hỏi nào khác cần được giải đáp. [Xin Liên Lạc Với Chúng Tôi](mailto:support@myetherwallet.com), và chúng tôi sẽ giải đáp những thắc mắc từ bạn, ngoài ra chúng tôi sẽ cập nhật lại trang web nhằm đem lại nhiều tiện lợi nhất có thể cho người sử dụng trong tương lai! ',
   HELP_Remind_Title: 'Một số lưu ý! ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, và các nền tảng khác từ Javascript libraries mà chúng tôi sử dụng đang được phát triển một cách tích cực.** Mặc dù toàn bộ đã được chúng tôi kiễm tra rất kỹ lưỡng và hàng chục nghìn địa chỉ Ví đã được tạo thành công từ người sử dụng trên toàn cầu, nhưng vẫn có những vấn đề có thể xảy ra làm cho ETH của bạn bị mất đi. Xin vui lòng không nên đầu tư với số tiền nhiều hơn khả năng mà bạn đã cho rằng nó sẽ mất và hãy luôn cẩn thận. Trong trường hợp rủi ro xảy ra, chung tôi rất chân thành xin lỗi. Tuy nhiên **Chúng tôi sẽ không chịu bất cứ một trách nhiệm nào đối với số lượng Ether mà bạn đã bị mất!**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX không phải "Ví Web". Vì vậy bạn không tạo tài khoản sau đó gửi số Ether của bạn cho chúng tôi dễ giữ hộ. Toàn bộ Dữ liệu sẽ không bao giờ bị rò rỉ ra khỏi máy tính/trình duyệt của bạn. Chúng tôi xây dựng nó nhằm giúp người sử dụng có thể đễ dàng tạo mới, lưu trữ và truy cập thông tin Ví của bạn và tương tác với Blockchain. ',
@@ -18348,7 +18350,7 @@ zhcn.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
-  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
+  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:support@myetherwallet.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
   HELP_Remind_Title: 'Some reminders ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. ',
@@ -18925,7 +18927,7 @@ zhtw.data = {
 
   /* Help - Nothing after this point has to be translated. If you feel like being extra helpful, go for it. */
   HELP_Warning: 'If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details. ',
-  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:myetherwallet@gmail.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
+  HELP_Desc: 'Do you see something missing? Have another question? [Get in touch with us](mailto:support@myetherwallet.com), and we will not only answer your question, we will update this page to be more useful to people in the future! ',
   HELP_Remind_Title: 'Some reminders ',
   HELP_Remind_Desc_1: '**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but **we are not responsible for the lost Ether**. ',
   HELP_Remind_Desc_2: 'MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain. ',
@@ -81810,7 +81812,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign"
+      "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -81846,7 +81848,7 @@ module.exports={
   "_shasum": "5482d9646d54bcb89fd7d994fc9e2e9568876e3f",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign",
+  "_where": "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
