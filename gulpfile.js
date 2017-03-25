@@ -168,7 +168,6 @@ var cxSrcFiles            = app                 + 'includes/browser_action/*.*'
 var jsonFile              = app                 + '*.json'
 var jQueryFile            = app                 + 'scripts/staticJS/jquery-1.12.3.min.js'
 var bin                   = app                 + '/bin/*'
-var cname                 = app                 + 'CNAME'
 var staticJSSrcFile       = js_destFolderStatic + js_destFileStatic
 var readMe                = './README.md'
 
@@ -199,9 +198,6 @@ gulp.task('copy', ['staticJS'], function() {
 
  gulp.src ( bin )
      .pipe( gulp.dest( dist    + 'bin'         ))
-
- gulp.src ( cname )
-     .pipe( gulp.dest( dist                    ))
 
  return gulp.src ( cxSrcFiles )
      .pipe( gulp.dest( dist_CX+'browser_action'))
