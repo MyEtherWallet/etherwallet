@@ -1,6 +1,6 @@
 <main class="tab-pane active text-center" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl' role="main">
 
-  <section class="row">
+  <section class="row" ng-show="!wallet && !showGetAddress">
     <h1 translate="NAV_GenerateWallet" aria-live="polite"> Generate Wallet</h1>
     <div class="col-sm-8 col-sm-offset-2">
       <h4 translate="GEN_Label_1"> Enter password </h4>
@@ -20,7 +20,7 @@
   </section>
 
 
-  <section role="main" class="row"> <!--ng-show="showWallet" -->
+  <section role="main" class="row" ng-show="wallet && !fileDownloaded"> <!--ng-show="showWallet" -->
     <h1 translate="GEN_Label_2">Save your Wallet File. Don't forget your password.</h1>
     <div class="alert alert-danger" translate="ERROR_28"></div>
     <br>
@@ -29,13 +29,13 @@
         <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file</p>
         <h4 translate="x_Keystore2">Keystore File (Recommended • Encrypted)</h4>
       </div>
-      <a tabindex="0" role="button" class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download" aria-label="{{'x_Download'|translate}} {{'x_Keystore'|translate}}" aria-describedby="x_KeystoreDesc"> DOWNLOAD </a>
+      <a tabindex="0" role="button" class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download" aria-label="{{'x_Download'|translate}} {{'x_Keystore'|translate}}" aria-describedby="x_KeystoreDesc" ng-click="downloaded()"> DOWNLOAD </a>
       <p class="sr-only" id="x_KeystoreDesc" translate="x_KeystoreDesc"></p>
     </div>
   </section>
 
 
-  <section class="row">
+  <section class="row" ng-show="fileDownloaded">
     <h1 translate="GEN_Label_4"> Print your paper wallet, or store a QR code version. </h1>
     <div class="col-sm-8 col-sm-offset-2">
       <div aria-hidden="true" class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
@@ -52,14 +52,14 @@
     <br />
     <div class="col-sm-4 col-sm-offset-4">
       <label translate="x_PrivKey">Private Key (unencrypted):</label>
-      <div qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+      <div qr-code="{{wallet.getPrivateKeyString()}}" watch-var="fileDownloaded" width="100%"></div>
       <br />
       <br />
-      <a class="btn btn-info"> Next: Get your Address </a>
+      <a class="btn btn-info" ng-click="getAddress()"> Next: Get your Address </a>
     </div>
   </section>
 
-  <article class="row text-left">
+  <article class="row text-left" ng-show="showGetAddress">
     <section class="clearfix collapse-container">
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>

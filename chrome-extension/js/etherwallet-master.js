@@ -2187,6 +2187,8 @@ var walletGenCtrl = function ($scope) {
     $scope.blob = $scope.blobEnc = "";
     $scope.isDone = true;
     $scope.showPass = true;
+    $scope.fileDownloaded = false;
+    $scope.showGetAddress = false;
     $scope.genNewWallet = function () {
         if (!$scope.isStrongPass()) {
             $scope.notifier.danger(globalFuncs.errorMsgs[1]);
@@ -2216,6 +2218,14 @@ var walletGenCtrl = function ($scope) {
     };
     $scope.isStrongPass = function () {
         return globalFuncs.isStrongPass($scope.password);
+    };
+    $scope.downloaded = function () {
+        $scope.fileDownloaded = true;
+    };
+    $scope.getAddress = function () {
+        $scope.fileDownloaded = false;
+        $scope.wallet = null;
+        $scope.showGetAddress = true;
     };
 };
 module.exports = walletGenCtrl;
@@ -81812,7 +81822,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign"
+      "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -81848,7 +81858,7 @@ module.exports={
   "_shasum": "5482d9646d54bcb89fd7d994fc9e2e9568876e3f",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/tay/Dropbox/local-dev/etherwallet/node_modules/browserify-sign",
+  "_where": "/home/kvhnuke/GitHub/etherwallet/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"

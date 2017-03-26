@@ -6,6 +6,8 @@ var walletGenCtrl = function($scope) {
     $scope.blob = $scope.blobEnc = "";
     $scope.isDone = true;
     $scope.showPass = true;
+    $scope.fileDownloaded = false;
+    $scope.showGetAddress = false;
     $scope.genNewWallet = function() {
         if (!$scope.isStrongPass()) {
             $scope.notifier.danger(globalFuncs.errorMsgs[1]);
@@ -36,6 +38,14 @@ var walletGenCtrl = function($scope) {
     }
     $scope.isStrongPass = function() {
         return globalFuncs.isStrongPass($scope.password);
+    }
+    $scope.downloaded = function() {
+        $scope.fileDownloaded = true;
+    }
+    $scope.getAddress = function(){
+        $scope.fileDownloaded = false;
+        $scope.wallet = null;
+        $scope.showGetAddress = true;
     }
 };
 module.exports = walletGenCtrl;
