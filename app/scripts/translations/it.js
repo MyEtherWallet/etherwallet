@@ -201,17 +201,6 @@ TRANS_data                  : 'Dati ',
 TRANS_gas                   : 'Limite gas ',
 TRANS_sendInfo              : 'Una transazione standard che utilizza 21000 gas costerà 0,000441 ETH. Utilizziamo un prezzo del gas leggermente al di sopra del minimo pari a 0,000000021 ETH per assicurarci che venga elaborata velocemente. Noi non prendiamo commissioni. ',
 
-/* Send Transaction Modals */
-TRANSModal_Title            : 'Transazioni "Solo ETH" e "Solo ETC" ',
-TRANSModal_Content_0        : 'Una nota sulle varie transazioni e sui vari servizi: ',
-TRANSModal_Content_1        : '**ETH (transazione standard): ** Genera una transazione di default direttamente da un indirizzo ad un altro. La quantità di gas predefinita è 21000. È probabile che ogni ETH inviato con questo metodo sarà replicato sulla catena ETC. ',
-TRANSModal_Content_2        : '**Solo ETH: ** Invia tramite [il contratto di protezione dalle repliche di Timon Rapp (come consigliato da VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) in modo da inviare solamente sulla catena **ETH**. ',
-TRANSModal_Content_3        : '**Solo ETC: ** Invia tramite [il contratto di protezione dalle repliche di Timon Rapp (come consigliato da VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) in modo da inviare solamente sulla catena **ETC**. ',
-TRANSModal_Content_4        : '**Coinbase & ShapeShift: ** Inviare solamente tramite la transazione standard. Se utilizzi i contratti "Solo XXX", dovrai metterti in contatto con il loro staff di supporto in modo che aggiornino manualmente il tuo saldo o ti rimborsino. [Puoi anche provare lo strumento "split" di Shapeshift.](https://split.shapeshift.io/) ',
-TRANSModal_Content_5        : '**Kraken & Poloniex:** Nessun problema noto. Usa qualunque opzione. ',
-TRANSModal_Yes              : 'Bene, ho capito. ',
-TRANSModal_No               : 'Oh no, sono ancora più confuso. Aiuto. ',
-
 /* Offline Transaction */
 OFFLINE_Title               : 'Genera & invia una transazione offline ',
 OFFLINE_Desc                : 'Per generare transazioni offline sono necessari tre passaggi. Svolgerai i passi 1 e 3 su un computer online, e il passo 2 su un computer offline/*air-gapped*. Questo per assicurarsi che le tue chiavi private non tocchino un dispositivo connesso a Internet. ',
@@ -288,7 +277,6 @@ ADD_Ledger_4                : 'Se non c\'è l\'opzione per il supporto browser n
 ADD_Ledger_scan             : 'Collegati al Ledger Nano S ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Collegati al TREZOR ',
-ADD_Trezor_select           : 'Questo è un seme TREZOR ',
 
 /* CX */
 CX_error_1                  : 'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno! ',
