@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js     : commit 9aaeb1e8e4fee299887e0f8393c1c074b581b9f0
+// Last sync with en.js     : commit b1464a504b5c9b7140759ee53cac33efa617343a
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -9,49 +9,50 @@ NAV_ENS: 'ENS',
 
 
 /* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
+x_ParityPhrase              : 'Frase di Parity ',
 
 /* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
+NODE_Title                  : 'Configura nodo personalizzato',
+NODE_Subtitle               : 'Per collegarti a un nodo locale...',
+NODE_Warning                : 'Il tuo nodo deve utilizzare HTTPS per potertici collegare da MyEtherWallet.com. Puoi [scaricare il repository di MyEtherWallet ed eseguirlo in locale](https://github.com/kvhnuke/etherwallet/releases/latest) per collegarti ad altri tipi di nodo. Oppure, ottieni un certificato SSL gratuito tramite [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Nome del nodo',
+NODE_Port                   : 'Porta del nodo',
+NODE_CTA                    : 'Salva & utilizza il nodo',
 
 /* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
+x_Access                    : 'Accedi ',
+CONTRACT_Title              : 'Indirizzo contratto ',
+CONTRACT_Title_2            : 'Seleziona contratto esistente ',
+CONTRACT_Json               : 'Interfaccia ABI / JSON ',
+CONTRACT_Interact_Title     : 'Leggi da / Scrivi su contratto ',
+CONTRACT_Interact_CTA       : 'Seleziona una funzione ',
 CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
+CONTRACT_Read               : 'LEGGI ',
+CONTRACT_Write              : 'SCRIVI ',
 
 /* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+SWAP_rates                  : "Tassi correnti ",
+SWAP_init_1                 : "Voglio scambiare i miei ",
+SWAP_init_2                 : " per ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Facciamolo! ", // or "Continue"
+SWAP_information            : "Il tuo riepilogo ",
+SWAP_send_amt               : "Importo da inviare ",
+SWAP_rec_amt                : "Importo da ricevere ",
+SWAP_your_rate              : "Il tuo tasso ",
+SWAP_rec_add                : "Indirizzo di ricezione ",
+SWAP_start_CTA              : "Avvia scambio ",
+SWAP_ref_num                : "Il tuo codice di riferimento ",
+SWAP_time                   : "Tempo rimanente per l\'invio ",
+SWAP_elapsed				: "Tempo trascorso dall\'invio ",
+SWAP_progress_1             : "Ordine creato ",
+SWAP_progress_2             : "In attesa dei tuoi ", // Waiting for your BTC...
+SWAP_progress_3             : "ricevuti! ", // ETH Received!
+SWAP_progress_4             : "Invio dei tuoi {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Ordine completato ",
+SWAP_order_CTA              : "Invia ", // Please send 1 ETH...
+SWAP_unlock                 : "Sblocca il tuo portafoglio per inviare ETH o token direttamente da questa pagina. ",
 
-NAV_Swap                    : 'Swap ',
+NAV_Swap                    : 'Scambia ',
 
 
 
@@ -156,9 +157,9 @@ GEN_desc                    : 'Se vuoi generare più portafogli, puoi farlo qui 
 GEN_Label_1                 : 'Inserisci una password robusta (almeno 9 caratteri) ',
 GEN_Placeholder_1           : 'NON dimenticarti di salvarla! ',
 GEN_SuccessMsg              : 'Perfetto! Il tuo portafoglio è stato generato. ',
-GEN_Label_2                 : 'Salva il tuo file Keystore. Non dimenticare la password che hai inserito. ',
+GEN_Label_2                 : 'Salva il file del tuo portafoglio. Non dimenticare la password che hai inserito. ',
 GEN_Label_3                 : 'Salva il tuo indirizzo. ',
-GEN_Label_4                 : 'Facoltativo: Stampa il tuo portafoglio cartaceo o salva una versione QR code. ',
+GEN_Label_4                 : 'Facoltativo: stampa il tuo portafoglio cartaceo o salva una versione QR code. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Numero di portafogli da generare ',
@@ -321,9 +322,11 @@ ERROR_23                    : 'Inserisci un url valido, se stai usando https l\'
 ERROR_24                    : 'Inserisci una porta valida ',
 ERROR_25                    : 'Inserisci un ID catena valido ',
 ERROR_26                    : 'Inserisci una ABI valida ',
-ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
+ERROR_27                    : 'Importo minimo: 0.01. Importo massimo: ',
 ERROR_28                    : '**Avrai bisogno del tuo file Keystore e della password** (o della chiave privata) per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni. ',
-ERROR_29                    : 'Please enter valid user and password ',
+ERROR_29                    : 'Inserisci un nome utente e una password validi ',
+ERROR_30                    : 'Inserisci un nome ENS valido ',
+ERROR_31                    : 'Frase segreta non valida ',
 SUCCESS_1                   : 'Indirizzo valido ',
 SUCCESS_2                   : 'Portafoglio decodificato correttamente ',
 SUCCESS_3                   : 'Transazione inviata. TX ID ',
