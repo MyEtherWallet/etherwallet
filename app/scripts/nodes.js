@@ -5,6 +5,7 @@ nodes.nodeTypes = {
     ETH: "ETH",
     ETC: "ETC",
     Ropsten: "ROPSTEN ETH",
+    Kovan: "KOVAN ETH",
     Custom: "CUSTOM ETH"
 };
 nodes.customNodeObj = {
@@ -59,6 +60,19 @@ nodes.nodeList = {
         'estimateGas': false,
         'service': 'MyEtherWallet',
         'lib': new nodes.customNode('https://api.myetherapi.com/rop', '')
+    },
+    'kov_ethscan': {
+        'name': 'Kovan',
+        'type': nodes.nodeTypes.Kovan,
+        'blockExplorerTX': 'https://kovan.etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://kovan.etherscan.io/address/[[address]]',
+        'eip155': true,
+        'chainId': 42,
+        'tokenList': require('./tokens/kovanTokens.json'),
+        'abiList': require('./abiDefinitions/kovanAbi.json'),
+        'estimateGas': false,
+        'service': 'Etherscan.io',
+        'lib': require('./nodeHelpers/etherscanKov')
     },
     'etc_epool': {
         'name': 'ETC',
