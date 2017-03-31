@@ -1,0 +1,171 @@
+<article class="well decrypt-drtv row" ng-controller='decryptWalletCtrl as $crtl'>
+   <!-- Column 1 - Select Type of Key -->
+   <section class="col-md-4 col-sm-6">
+      <h4 translate="decrypt_Access"> Select the format of your private key: </h4>
+      <label class="radio"><input aria-flowto="aria1" aria-label="Keystore JSON file" type="radio" ng-model="walletType" value="fileupload" /><span translate="x_Keystore2">Keystore / JSON File</span></label>
+      <label class="radio"><input aria-flowto="aria2" aria-label="private key" type="radio" ng-model="walletType" value="pasteprivkey" /><span translate="x_PrivKey2">Private Key</span></label>
+      <label class="radio"><input aria-flowto="aria3" aria-label="mnemonic phrase" type="radio" ng-model="walletType" value="pastemnemonic" /><span translate="x_Mnemonic">Mnemonic Phrase</span></label>
+      <label class="radio"><input aria-flowto="aria4" aria-label="parity phrase" type="radio" ng-model="walletType" value="parityBWallet" /><span translate="x_ParityPhrase">Parity Phrase</span></label>
+      <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id"><input aria-flowto="aria5" type="radio" aria-label="Ledger Nano S hardware wallet" ng-model="walletType" value="ledger" />Ledger Nano S</label>
+      <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id"><input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor" />TREZOR</label>
+      <label class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id"><input aria-label="address" type="radio" ng-model="walletType" value="addressOnly" /><span>View with Address Only</span></label>
+   </section>
+   <!-- Column 1 - Select Type of Key -->
+   <!-- Column 2 - Unlock That Key -->
+   <section class="col-md-4 col-sm-6">
+      <!-- if selected upload -->
+      <div id="selectedUploadKey" ng-if="walletType=='fileupload'">
+         <h4 translate="ADD_Radio_2_alt">Select your wallet file:</h4>
+         <div class="form-group">
+            <input style="display:none;" type="file" on-read-file="showContent($fileContent)" id="fselector" />
+            <a id="aria1" tabindex="0" role="button" class="file-input btn btn-block btn-default btn-file marg-v-sm" ng-click="openFileDialog()" translate="ADD_Radio_2_short">SELECT WALLET FILE... </a>
+         </div>
+         <div class="form-group" ng-if="requireFPass">
+            <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
+            <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="$parent.$parent.filePassword" ng-class="Validator.isPasswordLenValid($parent.$parent.filePassword,0) ? 'is-valid' : 'is-invalid'" ng-change="onFilePassChange()" />
+         </div>
+      </div>
+      <!-- /if selected upload -->
+      <!-- if selected type key-->
+      <div id="selectedTypeKey" ng-if="walletType=='pasteprivkey'">
+         <h4 translate="ADD_Radio_3"> Paste / type your private key: </h4>
+         <div class="form-group">
+            <textarea id="aria2" rows="4" class="form-control" placeholder="{{ 'x_PrivKey2' | translate }}" ng-model="$parent.$parent.manualprivkey" ng-class="Validator.isValidPrivKey($parent.$parent.manualprivkey.length) ? 'is-valid' : 'is-invalid'" ng-change="onPrivKeyChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>
+         </div>
+         <div class="form-group" ng-if="requirePPass">
+            <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
+            <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="$parent.$parent.privPassword" ng-class="Validator.isPasswordLenValid($parent.$parent.privPassword,0) ? 'is-valid' : 'is-invalid'" ng-change="onPrivKeyPassChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()">
+         </div>
+      </div>
+      <!-- /if selected type key-->
+      <!-- if selected type mnemonic-->
+      <div id="selectedTypeMnemonic" ng-if="walletType=='pastemnemonic'">
+         <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
+         <div class="form-group">
+            <textarea id="aria3" rows="4" class="form-control" placeholder="{{ 'x_Mnemonic' | translate}}" ng-model="$parent.$parent.manualmnemonic" ng-class="Validator.isValidMnemonic($parent.$parent.manualmnemonic) ? 'is-valid' : 'is-invalid'" ng-change="onMnemonicChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>
+          </div>
+          <div class="form-group">
+            <p translate="ADD_Label_8">Password (optional): </p>
+            <div>
+              <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="$parent.$parent.mnemonicPassword" ng-keyup="$event.keyCode == 13 && decryptWallet()">
+            </div>
+         </div>
+      </div>
+      <!-- /if selected type mnemonic-->
+      <!-- if selected parity phrase-->
+      <div id="selectedTypeMnemonic" ng-if="walletType=='parityBWallet'">
+         <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
+         <div class="form-group">
+            <textarea rows="4" class="form-control" placeholder="{{ 'x_ParityPhrase' | translate}}" ng-model="$parent.$parent.parityPhrase" ng-class="$parent.$parent.parityPhrase != '' ? 'is-valid' : 'is-invalid'" ng-change="onParityPhraseChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>
+         </div>
+      </div>
+      <!-- /if selected parity phrase-->
+      <!-- if selected type ledger-->
+      <div id="selectedTypeLedger" ng-if="walletType=='ledger'">
+         <ol>
+            <li id="aria7" tabinex="0" translate="ADD_Ledger_0a" class="text-danger" ng-hide="isSSL"> Re-open MyEtherWallet on a secure (SSL) connection </li>
+            <li tabinex="0" translate="ADD_Ledger_0b" class="text-danger" ng-hide="isChrome"> Re-open MyEtherWallet using Google Chrome or Opera </li>
+            <li tabinex="0" ><span translate="ADD_Ledger_1">Connect your Ledger Nano S</span> & <span translate="ADD_Ledger_2">Open the Ethereum application (or a contract application)</span></li>
+            <li tabinex="0" translate="ADD_Ledger_3">Verify that Browser Support is enabled in Settings</li>
+            <li tabinex="0" translate="ADD_Ledger_4">If no Browser Support is found in settings, verify that you have Firmware >1.2</li>
+         </ol>
+         <div class="text-center">
+            <p>Guides:<br /><a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-use-myetherwallet-with-your-nano-s" target="_blank">How to use MyEtherWallet with your Nano S</a><br />
+               <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-secure-your-eth-tokens-augur-rep-dot-dot-dot-with-your-nano-s" target="_blank">How to secure your tokens with your Nano S</a><br />
+               <br /><a tabindex="0" role="button" class="btn btn-default btn-sm" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank">Don't have a Ledger? Buy one today.</a>
+            </p>
+         </div>
+      </div>
+      <!-- /if selected type ledger-->
+      <!-- if selected type trezor-->
+      <br />
+      <div id="selectedTypeTrezor" ng-if="walletType=='trezor'">
+         <div class="form-group"><a id="aria6" tabindex="0" role="button" class="btn btn-primary btn-block" ng-show="walletType=='trezor'" ng-click="scanTrezor()" translate="ADD_Trezor_scan">SCAN</a></div>
+         <p role="alert" ng-show="trezorError" class="text-center text-danger"><strong>{{trezorErrorString}}</strong></p>
+         <br /><br />
+         <div class="text-center">
+            <p>Guide:<br /><a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08#.n5fddxmdg" target="_blank">How to use TREZOR with MyEtherWallet</a></p>
+            <br />
+            <a tabindex="0" role="button" class="btn btn-sm btn-default" href="https://trezor.io/?a=myetherwallet.com" target="_blank">Don't have a TREZOR? Order one now.</a>
+         </div>
+      </div>
+      <!-- /if selected type ledger-->
+      <!-- if selected addressOnly-->
+      <div id="selectedTypeKey" ng-if="walletType=='addressOnly'">
+         <h4 translate="x_Address"> Your Address </h4>
+         <div class="form-group"><textarea rows="4" class="form-control" placeholder="{{ 'x_Address' | translate }}" ng-model="$parent.$parent.addressOnly" ng-class="Validator.isValidAddress($parent.$parent.addressOnly) ? 'is-valid' : 'is-invalid'" ng-change="onAddressChange()"></textarea></div>
+      </div>
+      <!-- /if selected addressOnly-->
+   </section>
+   <!-- / Column 2 - Unlock That Key -->
+   <!-- Column 3 -The Unlock Button -->
+   <section class="col-md-4 col-sm-6" ng-show="showFDecrypt||showPDecrypt||showMDecrypt||walletType=='ledger'||walletType=='trezor'||showAOnly||showParityDecrypt">
+      <h4 id="uploadbtntxt-wallet" ng-show="showFDecrypt||showPDecrypt||showMDecrypt" translate="ADD_Label_6"> Access Your Wallet:</h4>
+      <div class="form-group"><a tabindex="0" role="button" class="btn btn-primary btn-block" ng-show="showFDecrypt||showPDecrypt||showMDecrypt||showParityDecrypt" ng-click="decryptWallet()" translate="ADD_Label_6_short">UNLOCK</a></div>
+      <div class="form-group"><a tabindex="0" role="button" class="btn btn-primary btn-block" ng-show="showAOnly" ng-click="decryptAddressOnly()" translate="ADD_Label_6_short">UNLOCK</a></div>
+      <div class="form-group"><a tabindex="0" role="button" class="btn btn-primary btn-block" ng-show="walletType=='ledger'" ng-click="scanLedger()" translate="ADD_Ledger_scan">SCAN</a></div>
+   </section>
+   <!-- / Column 3 -The Unlock Button -->
+   <!-- MODAL -->
+   <article class="modal fade" id="mnemonicModel" tabindex="-1" role="dialog" aria-labelledby="modalTitle">
+      <section class="modal-dialog">
+         <section class="modal-content">
+            <div class="modal-body" role="document">
+               <button aria-label="Close" type="button" class="close" data-dismiss="modal">&times;</button>
+               <!-- Select HD Path -->
+               <span ng-show="showMDecrypt">
+                  <h3 id="modalTitle" class="modal-title" translate="ADD_Radio_5_Path"> Select HD derivation path:</h3>
+                  <label class="radio">
+                  <input aria-describedby="modalTitle" type="radio" id="hd_derivation_path_default" ng-model="HDWallet.dPath" value="{{HDWallet.defaultDPath}}" ng-change="onHDDPathChange()"/>
+                  <span ng-bind="HDWallet.defaultDPath"></span>
+                  <span ng-if="!showTrezorSeparate" translate="ADD_Radio_5_withTrezor">(default with trezor)</span>
+                  <span ng-if="showTrezorSeparate" translate="ADD_Radio_5_woTrezor">(default without trezor)</span>
+                  </label>
+                  <label class="radio">
+                  <input aria-describedby="modalTitle" type="radio" id="hd_derivation_path_alternative" ng-model="HDWallet.dPath" value="{{HDWallet.alternativeDPath}}" ng-change="onHDDPathChange()"/>
+                  <span ng-bind="HDWallet.alternativeDPath"></span>
+                  <span translate="ADD_Radio_5_PathAlternative">(alternative)</span>
+                  </label>
+                  <label class="radio" ng-if="showTrezorSeparate">
+                  <input aria-describedby="modalTitle" type="radio" id="hd_derivation_path_trezor" ng-model="HDWallet.dPath" value="{{getTrezorPath()}}" ng-change="onHDDPathChange()" />
+                  <span ng-bind="getTrezorPath()"></span>
+                  <span translate="ADD_Radio_5_PathTrezor">(Trezor)</span>
+                  </label>
+                  <label class="radio">
+                  <input aria-describedby="modalTitle" type="radio" id="hd_derivation_path_custom" ng-model="HDWallet.dPath" value="{{HDWallet.customDPath}}" ng-change="onHDDPathChange()" />
+                  <input type="text" class="form-control" style="display:inline;width:70%;max-width:15rem;" ng-model="HDWallet.customDPath" id="hd_derivation_path_custom_value" ng-change="onCustomHDDPathChange()" />
+                  <span translate="ADD_Radio_5_PathCustom">(Custom)</span>
+                  </label>
+               </span>
+               <!-- END Select HD Path --><!-- Select Address -->
+               <hr />
+               <h3 id="modalTitle2" class="modal-title" translate="MNEM_1">Please select the address you would like to interact with.</h3>
+               <p class="small" translate="MNEM_2">Your single HD mnemonic phrase can access a number of wallets / addresses.</p>
+               <table class="small table table-striped table-mnemonic">
+                  <tr>
+                     <th></th>
+                     <th translate="x_Address">Address</th>
+                     <th translate="MYWAL_Bal">Balance</th>
+                  </tr>
+                  <tr ng-repeat="wallet in HDWallet.wallets track by $index">
+                     <td><input aria-label="Unlock wallet with {{wallet.getBalance()}} {{nodeType}}. Address: {{wallet.getChecksumAddressString()}}" aria-describedby="modalTitle2" type="radio" name="addressSelect" value="{{$index}}" ng-model="HDWallet.id" /></td>
+                     <td>{{wallet.getChecksumAddressString()}}</td>
+                     <td>{{wallet.getBalance()}} {{nodeType}}</td>
+                  </tr>
+                  <tr class="m-addresses">
+                     <td class"small"><a role="link" tabindex="0" ng-show="HDWallet.numWallets > 5" ng-click="AddRemoveHDAddresses(false)" translate="MNEM_prev">Previous Addresses</a></td>
+                     <td></td>
+                     <td class"small"><a role="link" tabindex="0" ng-click="AddRemoveHDAddresses(true)" translate="MNEM_more">More Addresses</a></td>
+                  </tr>
+               </table>
+               <!-- END Select Address -->
+            </div>
+            <div class="modal-footer">
+               <button tabindex="0" role="button" aria-label="Cancel - Will close dialog" class="btn btn-default" data-dismiss="modal" translate="x_Cancel">Cancel</button>
+               <button tabindex="0" role="button" aria-label="Unlock this Wallet" class="btn btn-primary" ng-click="setHDWallet()" translate="ADD_Label_6_short">Access Wallet</button>
+            </div>
+         </section>
+      </section>
+   </article>
+   <!-- / MODAL -->
+</article>
