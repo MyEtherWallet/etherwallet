@@ -114,6 +114,12 @@
     "type":"default"
   },
   {
+    "address":"0x4993CB95c7443bdC06155c5f5688Be9D8f6999a5",
+    "symbol":"ROUND",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
     "symbol":"SNGLS",
     "decimal":0,
@@ -153,12 +159,6 @@
     "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
     "symbol":"XAUR",
     "decimal":8,
-    "type":"default"
-  },
-  {
-    "address":"0x4993CB95c7443bdC06155c5f5688Be9D8f6999a5",
-    "symbol":"ROUND",
-    "decimal":18,
     "type":"default"
   }
 ]
