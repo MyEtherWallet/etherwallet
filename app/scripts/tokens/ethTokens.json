@@ -66,6 +66,12 @@
     "type":"default"
   },
   {
+    "address":"0xf7B098298f7C69Fc14610bf71d5e02c60792894C",
+    "symbol":"GUP",
+    "decimal":3,
+    "type":"default"
+  },
+  {
     "address":"0x14F37B574242D366558dB61f3335289a5035c506",
     "symbol":"HKG",
     "decimal":3,
