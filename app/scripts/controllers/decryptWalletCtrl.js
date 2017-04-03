@@ -26,8 +26,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
 
-    $scope.onHDDPathChange = function() {
-        $scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim()));
+    $scope.onHDDPathChange = function(password = '') {
+        $scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim(), password));
         $scope.HDWallet.numWallets = 0;
         $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
     }
@@ -123,7 +123,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             } else if ($scope.showMDecrypt) {
                 $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
                 $scope.mnemonicModel.open();
-                $scope.onHDDPathChange();
+                $scope.onHDDPathChange($scope.mnemonicPassword);
             } else if ($scope.showParityDecrypt) {
                 $scope.wallet = Wallet.fromParityPhrase($scope.parityPhrase);
             }
