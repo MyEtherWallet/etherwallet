@@ -7952,6 +7952,12 @@ module.exports=[
     "type":"default"
   },
   {
+    "address":"0xfa05a73ffe78ef8f1a739473e462c54bae6567d9",
+    "symbol":"LUN",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xe23cd160761f63fc3a1cf78aa034b6cdf97d3e0c",
     "symbol":"MIT",
     "decimal":18,
@@ -7971,7 +7977,7 @@ module.exports=[
   },
   {
     "address":"0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
-    "symbol":"Nexium",
+    "symbol":"NxC",
     "decimal":3,
     "type":"default"
   },
