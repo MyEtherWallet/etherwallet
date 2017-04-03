@@ -46,6 +46,7 @@
   $translateProvider.translations(zhcn.code, translate.marked(zhcn.data));
   $translateProvider.translations(zhtw.code, translate.marked(zhtw.data));
   $translateProvider.preferredLanguage('en');
+  $translateProvider.fallbackLanguage('en');
   $translateProvider.useSanitizeValueStrategy(null);
  }
 
