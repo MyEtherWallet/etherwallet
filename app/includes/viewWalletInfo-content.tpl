@@ -13,9 +13,9 @@
     <span translate="x_PrivKey">Private Key (unencrypted)</span>
     <a class="no-animate" translate="VIEWWALLET_ShowPrivKey" ng-click="showPkey()" ng-show="!pkeyVisible">(show)</a>
   </h5>
-  <div class="qr-pkey-container">
+  <div class="qr-pkey-container" ng-show="wallet.type=='default'">
     <div class="qr-overlay" ng-show="!pkeyVisible"></div>
-    <div ng-show="wallet.type=='default'" class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+    <div class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
   </div>
 </section>
 
