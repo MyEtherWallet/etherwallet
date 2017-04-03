@@ -117,6 +117,7 @@ ADD_Label_5                 : 'Enter the Address ',
 ADD_Label_6                 : 'Unlock your Wallet ',
 ADD_Label_6_short           : 'Unlock ',
 ADD_Label_7                 : 'Add Account ',
+ADD_Label_8                 : 'Password (optional): ',
 
 /* My Wallet */
 MYWAL_Nick                  : 'Wallet Nickname ',

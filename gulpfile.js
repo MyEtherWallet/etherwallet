@@ -19,6 +19,7 @@ var shell        = require('gulp-shell')
 var source       = require('vinyl-source-stream')
 var uglify       = require('gulp-uglify')
 var zip          = require('gulp-zip')
+var html2js      = require('html2js-browserify')
 
 var app          = './app/'
 var dist         = './dist/'
@@ -94,7 +95,7 @@ gulp.task( 'styles', function () {
 
 
 // js: Browserify
-var js_watchFolder   = app     + 'scripts/**/*.js'
+var js_watchFolder   = app     + 'scripts/**/*.{js,html}'
 var js_srcFile       = app     + 'scripts/main.js'
 var js_destFolder    = dist    + 'js/'
 var js_destFolder_CX = dist_CX + 'js/'
@@ -129,17 +130,17 @@ function bundle_js_debug(bundler) {
 
 
 gulp.task('js', function () {
-  var bundler = browserify( js_srcFile ).transform( babelify )
+  var bundler = browserify( js_srcFile ).transform( babelify ).transform(html2js)
   bundle_js( bundler )
 })
 
 gulp.task('js-production', function () {
-  var bundler = browserify( js_srcFile ).transform( babelify, babelOpts )
+  var bundler = browserify( js_srcFile ).transform( babelify, babelOpts ).transform(html2js)
   bundle_js( bundler )
 })
 
 gulp.task('js-debug', function () {
-  var bundler = browserify( js_srcFile, browseOpts ).transform( babelify, babelOpts )
+  var bundler = browserify( js_srcFile, browseOpts ).transform( babelify, babelOpts ).transform(html2js)
   bundle_js_debug( bundler )
 })
 
