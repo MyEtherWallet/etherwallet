@@ -100,6 +100,9 @@ app.config(['$translateProvider', function($translateProvider) {
   $translateProvider.useMissingTranslationHandlerLog();
   new translate($translateProvider);
 }]);
+app.config(['$animateProvider', function($animateProvider) {
+    $animateProvider.classNameFilter(/^no-animate$/);
+}]);
 app.factory('globalService', ['$http', '$httpParamSerializerJQLike', globalService]);
 app.factory('walletService', walletService);
 app.directive('blockieAddress', blockiesDrtv);
