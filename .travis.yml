@@ -14,10 +14,10 @@ addons:
 before_script:
   npm install -g gulp
 script:
-  gulp prep
+  - gulp prep
 before_deploy:
-  mkdir deploy
-  gulp travisZip
+  - mkdir deploy
+  - gulp travisZip
 deploy:
   provider: releases
   api_key:
