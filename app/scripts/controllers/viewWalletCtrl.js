@@ -5,6 +5,8 @@ var viewWalletCtrl = function($scope, walletService) {
     $scope.btcBalance = "loading";
     $scope.etherBalance = "loading";
     $scope.tokenVisibility = "hidden";
+    $scope.pkeyVisible = false;
+
     walletService.wallet = null;
     walletService.password = '';
     $scope.ajaxReq = ajaxReq;
@@ -39,6 +41,10 @@ var viewWalletCtrl = function($scope, walletService) {
             address: $scope.wallet.getAddressString(),
             private: $scope.wallet.getPrivateKeyString()
         }]));
+    }
+
+    $scope.showPkey = function() {
+      $scope.pkeyVisible = true;
     }
 };
 module.exports = viewWalletCtrl;
