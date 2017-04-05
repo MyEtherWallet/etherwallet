@@ -78,6 +78,12 @@
     "type":"default"
   },
   {
+    "address":"0x9734c136f5c63531b60d02548bca73a3d72e024d",
+    "symbol":"HMQ",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x888666CA69E0f178DED6D75b5726Cee99A87D698",
     "symbol":"ICN",
     "decimal":18,
