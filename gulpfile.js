@@ -1,6 +1,7 @@
 var fs           = require('fs')
 
 var autoprefixer = require('gulp-autoprefixer')
+var archiver     = require('archiver');
 var bump         = require('gulp-bump')
 var babelify     = require('babelify')
 var browserify   = require('browserify')
@@ -233,8 +234,7 @@ function bumpFunc(t) {
   return gulp.src([app + '*.json'])
     .pipe( plumber   ({ errorHandler: onError   }))
     .pipe( bump      ({ type: t                 }))
-    .pipe( gulp.dest  ( './chrome-extension'    ))
-    .pipe( gulp.dest  ( './dist'    ))
+    .pipe( gulp.dest  ( './app'                 ))
     .pipe( notify     ( onSuccess('Bump ' + t ) ))
 }
 
@@ -266,8 +266,38 @@ gulp.task('zip', ['getVersion'], function() {
 })
 
 
+function archive() {
+  var outputZip = fs.createWriteStream(__dirname + '/example.zip');
+  var archiveZip = archiver('zip', {
+      gzip: true,
+  });
+  outputZip.on('close', function() {
+    console.log(archiveZip.pointer() + ' total bytes');
+    console.log('archiver has been finalized and the output file descriptor has closed.');
+  });
+  archiveZip.on('error', function(err) {
+    throw err;
+  });
+  archiveZip.pipe(outputZip);
+  archiveZip.directory(dist, 'test2');
+  archiveZip.finalize();
 
 
+  var outputTar = fs.createWriteStream(__dirname + '/example.tgz');
+  var archiveTar = archiver('tar', {
+      gzip: true,
+  });
+  outputTar.on('close', function() {
+    return gulp.src(archiveTar).pipe(onSuccess('Archive Complete: Tar, /dist' ));
+  });
+  archiveTar.on('error', function(err) {
+    throw err;
+  });
+  archiveTar.pipe(outputTar);
+  archiveTar.directory(dist, 'test2');
+  archiveTar.finalize();
+
+}
 
 
 // add all
@@ -340,8 +370,11 @@ gulp.task('watch',             ['watchJS' , 'watchLess', 'watchPAGES', 'watchTPL
 gulp.task('watchProd',         ['watchJSProd' , 'watchLess', 'watchPAGES', 'watchTPL', 'watchCX'])
 
 // Bump Version
+gulp.task('bump',              function() { return bumpFunc( 'patch' ) })
 gulp.task('bump-patch',        function() { return bumpFunc( 'patch' ) })
 gulp.task('bump-minor',        function() { return bumpFunc( 'minor' ) })
+
+gulp.task('archive',           function() { return archive() })
 
 gulp.task('build',             ['js', 'html', 'styles', 'copy'])
 
@@ -349,12 +382,16 @@ gulp.task('build-debug',       ['js-debug', 'html', 'styles', 'watchJSDebug', 'w
 
 gulp.task('prep',              function(cb) { runSequence('js-production', 'html', 'styles', 'copy', cb); });
 
-gulp.task('bump',              function(cb) { runSequence('bump-patch', 'clean', 'zip', cb); });
-
-gulp.task('cleanZip',          function(cb) { runSequence('clean', 'zip', cb); });
+gulp.task('zip',               function(cb) { runSequence('clean', 'zip', cb); });
 
 gulp.task('commit',            function(cb) { runSequence('add', 'commitV', 'tag', cb); });
 
-gulp.task('pushLive',          function(cb) { runSequence('add', 'commitV', 'tag', 'push', 'pushLive', cb); });
-
 gulp.task('default',           ['build', 'watch'])
+
+// Prep & Release
+// gulp prep
+// gulp bump
+// gulp zip
+// gulp commit
+// git push
+// gulp pushLive ( git subtree push --prefix dist origin gh-pages )

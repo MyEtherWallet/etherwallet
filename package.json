@@ -1,6 +1,6 @@
 {
   "name": "mew-custom",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "gulpfile.js",
   "author": "MyEtherWallet",
@@ -11,11 +11,6 @@
     "angular-sanitize": "^1.6.2",
     "angular-translate": "^2.14.0",
     "angular-translate-handler-log": "^2.14.0",
-    "babel-plugin-transform-es3-member-expression-literals": "6.5.0",
-    "babel-plugin-transform-es3-property-literals": "6.5.0",
-    "babel-plugin-transform-object-rest-spread": "6.19.0",
-    "babel-preset-es2015": "^6.22.0",
-    "babelify": "^7.3.0",
     "bignumber.js": "^3.1.2",
     "bip39": "^2.2.0",
     "browserify": "^13.3.0",
@@ -23,6 +18,26 @@
     "ethereumjs-abi": "^0.6.4",
     "ethereumjs-tx": "^1.2.5",
     "ethereumjs-util": "^5.1.1",
+    "hdkey": "^0.7.1",
+    "html2js-browserify": "^1.3.0",
+    "idna-uts46": "^1.0.1",
+    "install": "^0.8.7",
+    "detect-browser": "^1.6.2",
+    "marked": "^0.3.6",
+    "open": "0.0.5",
+    "scryptsy": "^2.0.0",
+    "string-format": "^0.5.0",
+    "utf8": "^2.1.2",
+    "uuid": "^2.0.3",
+    "wallet-address-validator": "^0.1.0"
+  },
+  "dependencies": {
+    "archiver": "^1.3.0",
+    "babel-plugin-transform-es3-member-expression-literals": "6.5.0",
+    "babel-plugin-transform-es3-property-literals": "6.5.0",
+    "babel-plugin-transform-object-rest-spread": "6.19.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babelify": "^7.3.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-bump": "^2.6.1",
@@ -38,23 +53,10 @@
     "gulp-template": "^4.0.0",
     "gulp-uglify": "^2.0.1",
     "gulp-zip": "^3.2.0",
-    "hdkey": "^0.7.1",
-    "html2js-browserify": "^1.3.0",
-    "idna-uts46": "^1.0.1",
-    "install": "^0.8.7",
-    "marked": "^0.3.6",
     "npm": "^3.10.10",
-    "open": "0.0.5",
     "run-sequence": "^1.2.2",
-    "scryptsy": "^2.0.0",
-    "string-format": "^0.5.0",
-    "utf8": "^2.1.2",
-    "uuid": "^2.0.3",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "wallet-address-validator": "^0.1.0"
-  },
-  "dependencies": {
-    "detect-browser": "^1.6.2"
+    "vinyl-source-stream": "^1.1.0"
+
   }
 }
