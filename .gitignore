@@ -7,5 +7,6 @@ ehthumbs.db
 Thumbs.db
 
 node_modules/
+deploy/
 json_relay_node/node_modules/
 dist/node_modules/

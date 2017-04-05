@@ -1,16 +1,31 @@
 language: node_js
+sudo: required
+dist: trusty
 node_js:
-  - "5"
-  - "6"
-  - "7"
+   "7"
 env:
-  - CXX=g++-4.8
+   CXX=g++-4.8
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+      ubuntu-toolchain-r-test
     packages:
-    - g++-4.8
+      g++-4.8
 before_script:
-  - npm install -g gulp
-script: gulp prep
+  npm install -g gulp
+script:
+  - gulp prep
+before_deploy:
+  - mkdir deploy
+  - gulp travisZip
+deploy:
+  provider: releases
+  api_key:
+    secure: NYFD7bSlHoGA/UahbPs8r8vKf5CAz78e4HFJyXsFGQN4oC1xc6TCl578WzUbahBCfgjeKOMKoG7eOQYPoPkgoX8Q62jDdPAIuC90dGpaPeYjoKZcESAI18kZHHsX3QWzUVxG83qjv4XD3ReoBdFzHqsR3FnPh3j1AdMCrIOHHuBViAARWPK+FvXyxRyiUYrAPr/Pemv8A8hroOm2KPhDVFfHBC9tOtoOeqiuvULlwoSnt9VWe4Uj80B+JB0wPmYbWs/K8jrq8iRfJTRMGdIaAulnxPGvG7Yl+0Zq8wCqz8ogZu5E5YxSxGT/2aU6xmBRThCsXR+bz0dHAou6t12GfJXo2EIBkSFXBk2lCu4mCrwFMIHOHjt0EACHTxdK8v564ec2Wa6Tfk3y+QGyhocSCBkyLwGLFFXflWWqwEYoAcZEc+A9AzolLboIT99XKaB/ofBNa7m7LL72Lg9crGMVcDIM/ilN87l3Osiy80rCXyJAkoOVeIhhd2f2wNybN0f0AMtHj8O1dio2IOqnRMmx4yEEbeIvLG30AiAkw0OI/DpAj0V1ZPWJh1a1KgUlSgvVKO+POI9bwZ3mKe81eiE/fhizNT4rEgN4qhyfXe0aV04Ox47Y2wxpxU+5MSltvRhvt3Ml/Q4RL1Ti4j0ewRQasD85lqO49wzGkpsjqJme6BQ=
+  file_glob: true
+  file: deploy/*
+  skip_cleanup: true
+  on:
+    repo: kvhnuke/etherwallet
+    branch: mercury
+    tags: true

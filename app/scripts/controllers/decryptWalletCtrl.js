@@ -52,8 +52,10 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         $scope.showFDecrypt = $scope.filePassword.length >= 0;
     };
     $scope.onPrivKeyChange = function() {
-        $scope.requirePPass = $scope.manualprivkey.length == 128 || $scope.manualprivkey.length == 132;
-        $scope.showPDecrypt = $scope.manualprivkey.length == 64;
+        const manualprivkey = fixPkey($scope.manualprivkey);
+
+        $scope.requirePPass = manualprivkey.length == 128 || manualprivkey.length == 132;
+        $scope.showPDecrypt = manualprivkey.length == 64;
     };
     $scope.onPrivKeyPassChange = function() {
         $scope.showPDecrypt = $scope.privPassword.length > 0;
@@ -115,7 +117,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                 $scope.wallet = Wallet.fromMyEtherWalletKey($scope.manualprivkey, $scope.privPassword);
                 walletService.password = $scope.privPassword;
             } else if ($scope.showPDecrypt && !$scope.requirePPass) {
-                $scope.wallet = new Wallet($scope.manualprivkey);
+                $scope.wallet = new Wallet(fixPkey($scope.manualprivkey));
                 walletService.password = '';
             } else if ($scope.showFDecrypt) {
                 $scope.wallet = Wallet.getWalletFromPrivKeyFile($scope.fileContent, $scope.filePassword);
@@ -198,5 +200,13 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             return $scope.HDWallet.trezorTestnetPath;
         }
     };
+
+    // helper function that removes 0x prefix from strings
+    function fixPkey(key) {
+        if (key.indexOf('0x') === 0) {
+          return key.slice(2);
+        }
+        return key;
+    }
 };
 module.exports = decryptWalletCtrl;
