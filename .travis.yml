@@ -28,3 +28,4 @@ deploy:
   on:
     repo: kvhnuke/etherwallet
     branch: mercury
+    tags: true
