@@ -303,8 +303,14 @@
 <hr />
 <h5 translate="x_Address">Your Address:</h5>
   <div class="qr-code" qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
-<h5 translate="x_PrivKey" ng-show="wallet.type=='default'">Private Key (unencrypted):</h5>
-  <div ng-show="wallet.type=='default'" class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+  <h5 ng-show="wallet.type=='default'">
+    <span translate="x_PrivKey">Private Key (unencrypted)</span>
+    <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
+  </h5>
+  <div class="qr-pkey-container" ng-show="wallet.type=='default'">
+    <div class="qr-overlay" ng-show="!pkeyVisible"></div>
+    <div class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+  </div>
 </section>
 
 <section class="col-sm-8 view-wallet-content">
@@ -328,9 +334,12 @@
   <div class="account-help-icon">
     <img src="images/icon-help.svg" class="help-icon" />
     <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
-    <h5 translate="x_PrivKey">Private Key (unencrypted)</h5>
+    <h5>
+      <span translate="x_PrivKey">Private Key (unencrypted)</span>
+      <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
+    </h5>
   </div>
-  <textarea class="form-control" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
+  <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly">
 </div>
 
 <div ng-show="wallet.type=='default'">
@@ -350,7 +359,6 @@
   </div>
   <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
 </div>
-
    
 
     </section>
@@ -393,8 +401,14 @@
 <hr />
 <h5 translate="x_Address">Your Address:</h5>
   <div class="qr-code" qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
-<h5 translate="x_PrivKey" ng-show="wallet.type=='default'">Private Key (unencrypted):</h5>
-  <div ng-show="wallet.type=='default'" class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+  <h5 ng-show="wallet.type=='default'">
+    <span translate="x_PrivKey">Private Key (unencrypted)</span>
+    <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
+  </h5>
+  <div class="qr-pkey-container" ng-show="wallet.type=='default'">
+    <div class="qr-overlay" ng-show="!pkeyVisible"></div>
+    <div class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+  </div>
 </section>
 
 <section class="col-sm-8 view-wallet-content">
@@ -418,9 +432,12 @@
   <div class="account-help-icon">
     <img src="images/icon-help.svg" class="help-icon" />
     <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
-    <h5 translate="x_PrivKey">Private Key (unencrypted)</h5>
+    <h5>
+      <span translate="x_PrivKey">Private Key (unencrypted)</span>
+      <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
+    </h5>
   </div>
-  <textarea class="form-control" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
+  <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly">
 </div>
 
 <div ng-show="wallet.type=='default'">
@@ -440,7 +457,6 @@
   </div>
   <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
 </div>
-
    
 
       <br /><hr />
