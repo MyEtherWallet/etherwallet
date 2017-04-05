@@ -132,6 +132,12 @@
     "type":"default"
   },
   {
+    "address":"0x2e071d2966aa7d8decb1005885ba1977d6038a65",
+    "symbol":"ROL",
+    "decimal":16,
+    "type":"default"
+  },
+  {
     "address":"0x4993CB95c7443bdC06155c5f5688Be9D8f6999a5",
     "symbol":"ROUND",
     "decimal":18,
