@@ -11,7 +11,7 @@
   <div class="qr-code" qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
   <h5 ng-show="wallet.type=='default'">
     <span translate="x_PrivKey">Private Key (unencrypted)</span>
-    <a class="no-animate" translate="VIEWWALLET_ShowPrivKey" ng-click="showPkey()" ng-show="!pkeyVisible">(show)</a>
+    <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
   </h5>
   <div class="qr-pkey-container" ng-show="wallet.type=='default'">
     <div class="qr-overlay" ng-show="!pkeyVisible"></div>
@@ -42,11 +42,10 @@
     <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
     <h5>
       <span translate="x_PrivKey">Private Key (unencrypted)</span>
-      <a class="no-animate" translate="VIEWWALLET_ShowPrivKey" ng-click="showPkey()" ng-show="!pkeyVisible">(show)</a>
+      <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
     </h5>
   </div>
-  <input class="form-control no-animate" type="password" ng-value="wallet.getPrivateKeyString()" ng-if="!pkeyVisible" readonly="readonly">
-  <textarea class="form-control no-animate" type="text" ng-if="pkeyVisible" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
+  <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly">
 </div>
 
 <div ng-show="wallet.type=='default'">

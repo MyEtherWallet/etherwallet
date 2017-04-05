@@ -43,8 +43,8 @@ var viewWalletCtrl = function($scope, walletService) {
         }]));
     }
 
-    $scope.showPkey = function() {
-      $scope.pkeyVisible = true;
+    $scope.showHidePkey = function() {
+      $scope.pkeyVisible = !$scope.pkeyVisible;
     }
 };
 module.exports = viewWalletCtrl;
