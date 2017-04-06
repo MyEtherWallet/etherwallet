@@ -24,6 +24,12 @@
     "type":"default"
   },
   {
+    "address":"0xaef38fbfbf932d1aef3b808bc8fbd8cd8e1f8bc5",
+    "symbol":"CRB",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xe4c94d45f7aef7018a5d66f44af780ec6023378e",
     "symbol":"CryptoCarbon",
     "decimal":6,
@@ -57,6 +63,12 @@
     "address":"0x08711D3B02C8758F2FB3ab4e80228418a7F8e39c",
     "symbol":"EDG",
     "decimal":0,
+    "type":"default"
+  },
+  {
+    "address":"0xb802b24e0637c2b87d2e8b7784c055bbe921011a",
+    "symbol":"EMV",
+    "decimal":2,
     "type":"default"
   },
   {
