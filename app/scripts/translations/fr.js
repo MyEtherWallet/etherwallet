@@ -282,9 +282,9 @@ MNEM_prev                   : 'Adresses précédentes ',
 /* Hardware wallets */
 ADD_Ledger_1                : 'Connectez votre Ledger Nano S ',
 ADD_Ledger_2                : 'Ouvrez l\'application Ethereum (ou une application de contrat) ',
-ADD_Ledger_3                : 'Vérifiez que Browser Support est activé dans Settings ',
+ADD_Ledger_3                : 'Vérifiez que l\'option Browser Support est activée dans Settings ',
 ADD_Ledger_scan             : 'Se connecter au Ledger Nano S ',
-ADD_Ledger_4                : 'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
+ADD_Ledger_4                : 'Si l\'option Browser Support n\'est pas présente dans Settings, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL) ',
 ADD_Ledger_0b               : 'Réouvrir MyEtherWallet avec [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/) ',
 
