@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js     : commit b1464a504b5c9b7140759ee53cac33efa617343a
+// Last sync with en.js     : commit ba11f84a469e2f8b3a0669dd7fc67af8be3920e0
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -151,6 +151,7 @@ ADD_Label_5                 : 'Inserisci l\'indirizzo ',
 ADD_Label_6                 : 'Sblocca portafoglio ',
 ADD_Label_6_short           : 'Sblocca ',
 ADD_Label_7                 : 'Aggiungi conto ',
+ADD_Label_8                 : 'Password (facoltativo): ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Se vuoi generare più portafogli, puoi farlo qui ',
@@ -259,6 +260,8 @@ MYWAL_Content_3             : 'Se vorrai utilizzare questo portafoglio con MyEth
 VIEWWALLET_Subtitle         : 'Qui è possibile scaricare diverse versioni delle chiavi private e ristampare il portafoglio cartaceo. Potresti volerlo fare per  [importare il tuo conto in Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Se vuoi controllare il tuo saldo, ti consigliamo di utilizzare uno strumento per esplorare la *blockchain* come [etherscan.io](http://etherscan.io/). ',
 VIEWWALLET_Subtitle_Short   : 'Qui è possibile scaricare diverse versioni delle chiavi private e ristampare il portafoglio cartaceo. ',
 VIEWWALLET_SuccessMsg       : 'Perfetto! Questi sono i dettagli del tuo portafoglio. ',
+VIEWWALLET_ShowPrivKey      : '(mostra)',
+VIEWWALLET_HidePrivKey      : '(nascondi)',
 
 /* Mnemonic */
 MNEM_1                      : 'Seleziona l\'indirizzo col quale vuoi interagire. ',
