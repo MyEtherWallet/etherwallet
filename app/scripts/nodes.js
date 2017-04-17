@@ -6,6 +6,7 @@ nodes.nodeTypes = {
     ETC: "ETC",
     Ropsten: "ROPSTEN ETH",
     Kovan: "KOVAN ETH",
+    Rinkeby: "RINKEBY ETH",
     Custom: "CUSTOM ETH"
 };
 nodes.customNodeObj = {
