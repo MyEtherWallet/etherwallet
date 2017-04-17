@@ -74,6 +74,19 @@ nodes.nodeList = {
         'service': 'Etherscan.io',
         'lib': require('./nodeHelpers/etherscanKov')
     },
+    'rin_ethscan': {
+        'name': 'Rinkeby',
+        'type': nodes.nodeTypes.Rinkeby,
+        'blockExplorerTX': 'https://rinkeby.etherscan.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://rinkeby.etherscan.io/address/[[address]]',
+        'eip155': true,
+        'chainId': 4,
+        'tokenList': require('./tokens/rinkebyTokens.json'),
+        'abiList': require('./abiDefinitions/rinkebyAbi.json'),
+        'estimateGas': false,
+        'service': 'Etherscan.io',
+        'lib': require('./nodeHelpers/etherscanRin')
+    },
     'etc_epool': {
         'name': 'ETC',
         'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
