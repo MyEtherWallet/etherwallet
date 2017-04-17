@@ -1872,12 +1872,15 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
     $scope.browserProtocol = window.location.protocol;
     var hval = window.location.hash;
     $scope.notifier = uiFuncs.notifier;
-    $scope.notifier.sce = $sce;$scope.notifier.scope = $scope;
+    $scope.notifier.sce = $sce;
+    $scope.notifier.scope = $scope;
     $scope.setArrowVisibility = function () {
         setTimeout(function () {
-            $scope.showLeftArrow = false;
-            $scope.showRightArrow = !(document.querySelectorAll('.nav-inner')[0].clientWidth <= document.querySelectorAll('.nav-scroll')[0].clientWidth);
-            $scope.$apply();
+            if (document.querySelectorAll('.nav-inner')[0] && document.querySelectorAll('.nav-scroll')[0]) {
+                $scope.showLeftArrow = false;
+                $scope.showRightArrow = !(document.querySelectorAll('.nav-inner')[0].clientWidth <= document.querySelectorAll('.nav-scroll')[0].clientWidth);
+                $scope.$apply();
+            }
         }, 200);
     };
     $scope.setArrowVisibility();
@@ -7696,6 +7699,12 @@ module.exports=[
     "type":"default"
   },
   {
+    "address":"0xaef38fbfbf932d1aef3b808bc8fbd8cd8e1f8bc5",
+    "symbol":"CRB",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xe4c94d45f7aef7018a5d66f44af780ec6023378e",
     "symbol":"CryptoCarbon",
     "decimal":6,
@@ -7729,6 +7738,12 @@ module.exports=[
     "address":"0x08711D3B02C8758F2FB3ab4e80228418a7F8e39c",
     "symbol":"EDG",
     "decimal":0,
+    "type":"default"
+  },
+  {
+    "address":"0xb802b24e0637c2b87d2e8b7784c055bbe921011a",
+    "symbol":"EMV",
+    "decimal":2,
     "type":"default"
   },
   {
@@ -11125,9 +11140,9 @@ fr.data = {
   /* Hardware wallets */
   ADD_Ledger_1: 'Connectez votre Ledger Nano S ',
   ADD_Ledger_2: 'Ouvrez l\'application Ethereum (ou une application de contrat) ',
-  ADD_Ledger_3: 'Vérifiez que Browser Support est activé dans Settings ',
+  ADD_Ledger_3: 'Vérifiez que l\'option Browser Support est activée dans Settings ',
   ADD_Ledger_scan: 'Se connecter au Ledger Nano S ',
-  ADD_Ledger_4: 'Si aucun Browser Support n\'est activé dans la configuration, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
+  ADD_Ledger_4: 'Si l\'option Browser Support n\'est pas présente dans Settings, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
   ADD_Ledger_0a: 'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL) ',
   ADD_Ledger_0b: 'Réouvrir MyEtherWallet avec [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/) ',
 
@@ -12633,7 +12648,7 @@ module.exports = id;
 
 },{}],79:[function(require,module,exports){
 // Italian
-// Last sync with en.js     : commit b1464a504b5c9b7140759ee53cac33efa617343a
+// Last sync with en.js     : commit ba11f84a469e2f8b3a0669dd7fc67af8be3920e0
 'use strict';
 
 var it = function () {};
@@ -12781,6 +12796,7 @@ it.data = {
   ADD_Label_6: 'Sblocca portafoglio ',
   ADD_Label_6_short: 'Sblocca ',
   ADD_Label_7: 'Aggiungi conto ',
+  ADD_Label_8: 'Password (facoltativo): ',
 
   /* Generate Wallets */
   GEN_desc: 'Se vuoi generare più portafogli, puoi farlo qui ',
@@ -12889,6 +12905,8 @@ it.data = {
   VIEWWALLET_Subtitle: 'Qui è possibile scaricare diverse versioni delle chiavi private e ristampare il portafoglio cartaceo. Potresti volerlo fare per  [importare il tuo conto in Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Se vuoi controllare il tuo saldo, ti consigliamo di utilizzare uno strumento per esplorare la *blockchain* come [etherscan.io](http://etherscan.io/). ',
   VIEWWALLET_Subtitle_Short: 'Qui è possibile scaricare diverse versioni delle chiavi private e ristampare il portafoglio cartaceo. ',
   VIEWWALLET_SuccessMsg: 'Perfetto! Questi sono i dettagli del tuo portafoglio. ',
+  VIEWWALLET_ShowPrivKey: '(mostra)',
+  VIEWWALLET_HidePrivKey: '(nascondi)',
 
   /* Mnemonic */
   MNEM_1: 'Seleziona l\'indirizzo col quale vuoi interagire. ',
@@ -13816,66 +13834,21 @@ var nl = function () {};
 nl.code = 'nl';
 nl.data = {
 
-  NAV_ENS: 'ENS',
-
-  /* Misc */
-  x_ParityPhrase: 'Parity herstelzin ',
-
-  /* Node Switcher */
-  NODE_Title: 'Stel je Custom Node in',
-  NODE_Subtitle: 'Om met een lokale node te verbinden...',
-  NODE_Warning: 'Je node dient HTTPS te zijn om met MyEtherWallet.com te kunnen verbinden. Je kunt de [MyEtherWallet repo downloaden](https://github.com/kvhnuke/etherwallet/releases/latest) en lokaal uitvoeren en vervolgens met iedere node verbinden. Of, verkrijg een gratis SSL certificaat via [LetsEncrypt](https://letsencrypt.org/)',
-  NODE_Name: 'Node Naam',
-  NODE_Port: 'Node Port',
-  NODE_CTA: 'Opslaan & Custom Node gebruiken',
-
-  /* Contracts */
-  x_Access: 'Verkrijg Toegang ',
-  CONTRACT_Title: 'Contract Adres ',
-  CONTRACT_Title_2: 'Selecteer Bestaand Contract ',
-  CONTRACT_Json: 'ABI / JSON Interface ',
-  CONTRACT_Interact_Title: 'Lees / Schrijf Contract ',
-  CONTRACT_Interact_CTA: 'Selecteer een functie ',
-  CONTRACT_ByteCode: 'Byte Code ',
-  CONTRACT_Read: 'LEES ',
-  CONTRACT_Write: 'SCHRIJF ',
-
-  /* Swap / Exchange */
-  SWAP_rates: "Actuele Koersen ",
-  SWAP_init_1: "Ik wil mijn ",
-  SWAP_init_2: " omwisselen voor ", // "I want to swap my X ETH for X BTC"
-  SWAP_init_CTA: "Naar de volgende stap ", // or "Continue"
-  SWAP_information: "Je informatie ",
-  SWAP_send_amt: "Te verzenden bedrag ",
-  SWAP_rec_amt: "Te ontvangen bedrag ",
-  SWAP_your_rate: "Je wisselkoers ",
-  SWAP_rec_add: "Je ontvangst Adres ",
-  SWAP_start_CTA: "Start Omwisselen ",
-  SWAP_ref_num: "Je referentie nummer ",
-  SWAP_time: "Resterende tijd om te verzenden ",
-  SWAP_progress_1: "Bestelling Gestart ",
-  SWAP_progress_2: "Wachten op je ", // Waiting for your BTC...
-  SWAP_progress_3: "Ontvangen! ", // ETH Received!
-  SWAP_progress_4: "Verzenden van je {{orderResult.output.currency}} ",
-  SWAP_progress_5: "Bestelling Voltooid ",
-  SWAP_order_CTA: "Verzend alsjeblieft ", // Please send 1 ETH...
-  SWAP_unlock: "Open je Wallet op deze pagina om ETH of Tokens direct te verzenden. ",
-
   /* Navigation*/
   NAV_AddWallet: 'Wallet Toevoegen ',
   NAV_BulkGenerate: 'Bulk Genereren ',
   NAV_Contact: 'Contact ',
   NAV_Contracts: 'Contracten ',
   NAV_DeployContract: 'Verspreid Contract ',
+  NAV_ENS: 'ENS',
   NAV_GenerateWallet: 'Genereer Wallet ',
   NAV_Help: 'Help ',
   NAV_InteractContract: 'Interactie met Contract ',
   NAV_Multisig: 'Multisig ',
   NAV_MyWallets: 'Mijn Wallets ',
   NAV_Offline: 'Verzend Offline ',
-  NAV_SendEther: 'Verzend Ether en Tokens ',
+  NAV_SendEther: 'Verzend Ether & Tokens ',
   NAV_SendTokens: 'Verzend Tokens ',
-  NAV_SignMsg: 'Onderteken bericht ',
   NAV_Swap: 'Omwisselen ',
   NAV_ViewWallet: 'Bekijk Wallet Info ',
   NAV_YourWallets: 'Jouw Wallets ',
@@ -13892,6 +13865,7 @@ nl.data = {
   x_Keystore2: 'Keystore Bestand (UTC / JSON) ',
   x_KeystoreDesc: 'Dit Keystore bestand voldoet aan het formaat zoals gebruikt door Mist waardoor je het gemakkelijk kunt importeren in de toekomst. Dit is de aanbevolen methode voor download en back up. ',
   x_Mnemonic: 'Mnemonic Zin ',
+  x_ParityPhrase: 'Parity herstelzin ',
   x_Password: 'Wachtwoord ',
   x_Print: 'Druk je papieren wallet af ',
   x_PrintDesc: 'ProTip: Klik Afdrukken en sla deze pagina op als PDF, zelfs als je geen printer hebt! ',
@@ -13904,10 +13878,10 @@ nl.data = {
   x_Wallet: 'Wallet ',
 
   /* Header */
-  MEW_Warning_1: 'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites! ',
+  CX_Tagline: 'Open Source JavaScript Client-Side Ether Wallet Chrome Extensie ',
   CX_Warning_1: 'Zorg voor **externe backups** van alle wallets die je hier opslaat. Er kan kunnen diverse dingen gebeuren die ervoor kunnen zorgen dat je gegevens in deze Chrome Extensie verloren gaan, inclusief het deinstalleren en installeren van de extensie. Deze extensie is een manier om je wallet gemakkelijk toegankelijk te maken, **geen** manier om ze te backuppen. ',
   MEW_Tagline: 'Open Source JavaScript Client-Side Ether Wallet ',
-  CX_Tagline: 'Open Source JavaScript Client-Side Ether Wallet Chrome Extensie ',
+  MEW_Warning_1: 'Check altijd de URL voordat je jouw wallet opent of een nieuwe wallet genereert. Pas op voor phishing sites! ',
 
   /* Footer */
   FOOTER_1: 'Een open source, javascript, client-side tool om Ethereum Wallets te genereren & transacties te verzenden. ',
@@ -13932,6 +13906,24 @@ nl.data = {
   decrypt_Title: 'Selecteer het formaat van je prive sleutel: ',
   decrypt_Select: 'Selecteer een Wallet: ',
 
+  /* Mnemonic */
+  MNEM_1: 'Selecteer het adres waarmee je wilt communiceren. ',
+  MNEM_2: 'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren. ',
+  MNEM_more: 'Meer Adressen ',
+  MNEM_prev: 'Vorige Adressen ',
+
+  /* Hardware wallets */
+  x_Ledger: 'Ledger Nano S ',
+  ADD_Ledger_1: 'Verbind je Ledger Nano S ',
+  ADD_Ledger_2: 'Open de Ethereum applicatie (of een contract applicatie) ',
+  ADD_Ledger_3: 'Controleer of "Browser Support" is ingeschakeld in je instellingen ',
+  ADD_Ledger_4: 'Als je "Browser Support" niet in je instellingen kunt vinden, controleer dan dat je [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) is ',
+  ADD_Ledger_0a: 'Her-open MyEtherWallet met een veilige (SSL) verbinding ',
+  ADD_Ledger_0b: 'Her-open MyEtherWallet door gebruik te maken van [Chrome](https://www.google.com/chrome/browser/desktop/) of [Opera](https://www.opera.com/) ',
+  ADD_Ledger_scan: 'Verbind met Ledger Nano S ',
+  x_Trezor: 'TREZOR ',
+  ADD_Trezor_scan: 'Verbind met TREZOR ',
+
   /* Add Wallet */
   ADD_Label_1: 'Wat wil je doen? ',
   ADD_Radio_1: 'Genereer nieuwe wallet ',
@@ -13955,6 +13947,24 @@ nl.data = {
   ADD_Label_6: 'Ontsleutel je wallet ',
   ADD_Label_6_short: 'Ontsleutel ',
   ADD_Label_7: 'Voeg account toe ',
+  ADD_Label_8: 'Wachtwoord (optioneel): ',
+
+  /* My Wallet */
+  MYWAL_Nick: 'Wallet Nickname ',
+  MYWAL_Address: 'Wallet Adres ',
+  MYWAL_Bal: 'Saldo ',
+  MYWAL_Edit: 'Bewerken ',
+  MYWAL_View: 'Bekijken ',
+  MYWAL_Remove: 'Verwijderen ',
+  MYWAL_RemoveWal: 'Verwijder Wallet: ',
+  MYWAL_WatchOnly: 'Je Watch-Only Accounts ',
+  MYWAL_Viewing: 'Te Bekijken Wallet ',
+  MYWAL_Hide: 'Verberg Wallet Info ',
+  MYWAL_Edit_2: 'Bewerk Wallet ',
+  MYWAL_Name: 'Wallet Naam ',
+  MYWAL_Content_1: 'Waarschuwing! Je staat op het punt om je Wallet te verwijderen ',
+  MYWAL_Content_2: 'Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze wallet voordat je het verwijderd. ',
+  MYWAL_Content_3: 'Als je deze wallet in de toekomst nog wilt gebruiken met MyEtherWallet CX, zul je het met de hand moeten toevoegen door gebruik te maken van de prive sleutel/JSON en wachtwoord. ',
 
   /* Generate Wallets */
   GEN_desc: 'Als je meerdere wallets wilt gererenen, kun je dat hier doen ',
@@ -13976,11 +13986,11 @@ nl.data = {
   SEND_amount_short: 'Bedrag ',
   SEND_custom: 'Aangepast Token ',
   SEND_gas: 'Gas ',
+  SEND_TransferTotal: 'Verzend volledig saldo ',
   SEND_generate: 'Genereer Transactie ',
   SEND_raw: 'Raw Transactie ',
   SEND_signed: 'Gesigneerde Transactie ',
   SEND_trans: 'Verzend Transactie ',
-  SEND_TransferTotal: 'Verzend volledig saldo ',
   SENDModal_Title: 'Waarschuwing! ',
   /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
   SENDModal_Content_1: 'Je staat op het punt om het volgende bedrag over te maken ',
@@ -13994,8 +14004,8 @@ nl.data = {
   TOKEN_Addr: 'Adres ',
   TOKEN_Symbol: 'Token Symbool ',
   TOKEN_Dec: 'Decimalen ',
-  TOKEN_hide: 'Verberg Tokens ',
   TOKEN_show: 'Toon alle Tokens ',
+  TOKEN_hide: 'Verberg Tokens ',
 
   /* Send Transaction */
   TRANS_desc: 'Als je Tokens wilt versturen, gebruik dan de "Verzend Token" pagina i.p.v. deze pagina. ',
@@ -14004,17 +14014,6 @@ nl.data = {
   TRANS_data: 'Data ',
   TRANS_gas: 'Gas Limit ',
   TRANS_sendInfo: 'Een standaard transactie met 21000 gas zal 0.000441 ETH kosten. Wij gebruiken een iets-boven-minimum gas prijs van 0.000000021 ETH om te garranderen dat de transactie snel uitgevoerd zal worden. Wij zijn niet verantwoordelijk voor je transactie kosten. ',
-
-  /* Send Transaction Modals */
-  TRANSModal_Title: '"Enkel ETH" en "Enkel ETC" Transacties ',
-  TRANSModal_Content_0: 'Een opmerking met betrekking tot de verschillende typen transacties en diensten: ',
-  TRANSModal_Content_1: '**ETH (Standaard Transactie): ** Hiermee genereer je een standaard transactie, direct van een adres naar een ander. Het verbruikt de standaard hoeveelheid gas van 21000. Het is waarschijnlijk dat elke verzonden ETH met deze methode zal worden nagespeeld (replayed) op de ETC blockchain. ',
-  TRANSModal_Content_2: '**Enkel ETH: ** Hiermee verstuur je via [Timon Rapp\'s "replay protection contract" (zoals aanbevolen door VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) zodat je enkel verstuurd op de **ETH** blockchain. ',
-  TRANSModal_Content_3: '**Enkel ETC: ** Hiermee verstuur je via [Timon Rapp\'s "replay protection contract" (zoals aanbevolen door VB)](https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/) zodat je enkel verstuurd op de **ETC** blockchain. ',
-  TRANSModal_Content_4: '**Coinbase & ShapeShift: ** Verstuur enkel via standaard transacties. Als je via de "Enkel" contracten hebt verstuurd zul je contact moeten opnemen met hun helpdesk zodat ze je kunnen restitueren [Je kunt ook Shapeshift\'s "split" tool uitproberen.](https://split.shapeshift.io/) ',
-  TRANSModal_Content_5: '**Kraken & Poloniex:** Geen problemen bekend. Gebruik wat je voorkeur heeft. ',
-  TRANSModal_Yes: 'Mooi, nu begrijp ik het. ',
-  TRANSModal_No: 'Oh jee, nu snap ik er nog niets van. Help me. ',
 
   /* Offline Transaction */
   OFFLINE_Title: 'Genereer & Verzend een Offline Transactie ',
@@ -14038,62 +14037,67 @@ nl.data = {
   OFFLINE_Step3_Title: 'Stap 3: Verstuur / Publiceer Transactie (Online Computer) ',
   OFFLINE_Step3_Label_1: 'Plak de gesigneerde transactie van Stap 2 hier en click de "Verzend Transactie" knop. ',
 
+  /* Contracts */
+  x_Access: 'Verkrijg Toegang ',
+  CONTRACT_Title: 'Contract Adres ',
+  CONTRACT_Title_2: 'Selecteer Bestaand Contract ',
+  CONTRACT_Json: 'ABI / JSON Interface ',
+  CONTRACT_Interact_Title: 'Lees / Schrijf Contract ',
+  CONTRACT_Interact_CTA: 'Selecteer een functie ',
+  CONTRACT_ByteCode: 'Byte Code ',
+  CONTRACT_Read: 'LEES ',
+  CONTRACT_Write: 'SCHRIJF ',
+  DEP_generate: 'Genereer Bytecode ',
+  DEP_generated: 'Gegenereerde Bytecode ',
+  DEP_signtx: 'Onderteken Transactie ',
+  DEP_interface: 'Gegenereerde Interface ',
+
+  /* Node Switcher */
+  NODE_Title: 'Stel je Custom Node in',
+  NODE_Subtitle: 'Om met een lokale node te verbinden...',
+  NODE_Warning: 'Je node dient HTTPS te zijn om met MyEtherWallet.com te kunnen verbinden. Je kunt de [MyEtherWallet repo downloaden](https://github.com/kvhnuke/etherwallet/releases/latest) en lokaal uitvoeren en vervolgens met iedere node verbinden. Of, verkrijg een gratis SSL certificaat via [LetsEncrypt](https://letsencrypt.org/)',
+  NODE_Name: 'Node Naam',
+  NODE_Port: 'Node Port',
+  NODE_CTA: 'Opslaan & Custom Node gebruiken',
+
+  /* Swap / Exchange */
+  SWAP_rates: "Actuele Koersen ",
+  SWAP_init_1: "Ik wil mijn ",
+  SWAP_init_2: " omwisselen voor ", // "I want to swap my X ETH for X BTC"
+  SWAP_init_CTA: "Naar de volgende stap ", // or "Continue"
+  SWAP_information: "Je informatie ",
+  SWAP_send_amt: "Te verzenden bedrag ",
+  SWAP_rec_amt: "Te ontvangen bedrag ",
+  SWAP_your_rate: "Je wisselkoers ",
+  SWAP_rec_add: "Je ontvangst Adres ",
+  SWAP_start_CTA: "Start Omwisselen ",
+  SWAP_ref_num: "Je referentie nummer ",
+  SWAP_time: "Resterende tijd om te verzenden ",
+  SWAP_elapsed: "Verstreken tijd sinds verzonden",
+  SWAP_progress_1: "Bestelling Gestart ",
+  SWAP_progress_2: "Wachten op je ", // Waiting for your BTC...
+  SWAP_progress_3: "Ontvangen! ", // ETH Received!
+  SWAP_progress_4: "Verzenden van je {{orderResult.output.currency}} ",
+  SWAP_progress_5: "Bestelling Voltooid ",
+  SWAP_order_CTA: "Verzend alsjeblieft ", // Please send 1 ETH...
+  SWAP_unlock: "Open je Wallet op deze pagina om ETH of Tokens direct te verzenden. ",
+
   /* Sign Message */
+  NAV_SignMsg: 'Onderteken Bericht ',
   MSG_message: 'Bericht ',
   MSG_date: 'Datum ',
   MSG_signature: 'Handtekening ',
   MSG_verify: 'Verifieer Bericht ',
   MSG_info1: 'Voeg de huidige datum toe zodat je handtekening niet opnieuw kan worden gebruikt op een andere datum. ',
   MSG_info2: 'Voeg je nickname toe en waar je deze gebruikt zodat anderen deze niet kunnen gebruiken. ',
-  MSG_info3: 'Voeg een specifieke reden voor je bericht toe zodat het niet kunnen gebruiken voor een ander doel. ',
-
-  /* Deploy Contracts */
-  DEP_generate: 'Genereer Bytecode ',
-  DEP_generated: 'Gegenereerde Bytecode ',
-  DEP_signtx: 'Onderteken Transactie ',
-  DEP_interface: 'Gegenereerde Interface ',
-
-  /* My Wallet */
-  MYWAL_Nick: 'Wallet Nickname ',
-  MYWAL_Address: 'Wallet Adres ',
-  MYWAL_Bal: 'Saldo ',
-  MYWAL_Edit: 'Bewerken ',
-  MYWAL_View: 'Bekijken ',
-  MYWAL_Remove: 'Verwijderen ',
-  MYWAL_RemoveWal: 'Verwijder Wallet: ',
-  MYWAL_WatchOnly: 'Je Watch-Only Accounts ',
-  MYWAL_Viewing: 'Te Bekijken Wallet ',
-  MYWAL_Hide: 'Verberg Wallet Info ',
-  MYWAL_Edit_2: 'Bewerk Wallet ',
-  MYWAL_Name: 'Wallet Naam ',
-  MYWAL_Content_1: 'Waarschuwing! Je staat op het punt om je Wallet te verwijderen ',
-  MYWAL_Content_2: 'Wees er zeker van dat je **de prive sleutel/JSON bestand en het wachtwoord opgeslagen hebt** van deze wallet voordat je het verwijderd. ',
-  MYWAL_Content_3: 'Als je deze wallet in de toekomst nog wilt gebruiken met MyEtherWallet CX, zul je het met de hand moeten toevoegen door gebruik te maken van de prive sleutel/JSON en wachtwoord. ',
+  MSG_info3: 'Geef een specifieke reden op voor de boodschap, zodat deze niet kan worden hergebruikt voor een ander doel. ',
 
   /* View Wallet Details */
   VIEWWALLET_Subtitle: 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. Je zou dit kunnen doen om [je account in Geth/Mist te importeren](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). Als je enkel je saldo wilt checken adviseren we je om gebruik te maken van een blockchain explorer zoals [etherscan.io](http://etherscan.io/). ',
   VIEWWALLET_Subtitle_Short: 'Hiermee kun je verschillende versies van je prive sleutels downloaden en je papieren wallet opnieuw afdrukken. ',
   VIEWWALLET_SuccessMsg: 'Gelukt! Hier zijn je wallet details. ',
-
-  /* Mnemonic */
-  MNEM_1: 'Selecteer het adres waarmee je wilt communiceren. ',
-  MNEM_2: 'Met jouw enkele HD mnemonic zin heb je toegang tot meerdere wallets / adressen. Selecteer het adres waarmee je nu wilt communiceren. ',
-  MNEM_more: 'Meer Adressen ',
-  MNEM_prev: 'Vorige Adressen ',
-
-  /* Hardware wallets */
-  x_Ledger: 'Ledger Nano S ',
-  ADD_Ledger_scan: 'Verbind met Ledger Nano S ',
-  ADD_Ledger_1: 'Verbind je Ledger Nano S ',
-  ADD_Ledger_2: 'Open de Ethereum applicatie (of een contract applicatie) ',
-  ADD_Ledger_3: 'Controleer of "Browser Support" is ingeschakeld in je instellingen ',
-  ADD_Ledger_4: 'Als je "Browser Support" niet in je instellingen kunt vinden, controleer dan dat je [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) is ',
-  ADD_Ledger_0a: 'Her-open MyEtherWallet met een veilige (SSL) verbinding ',
-  ADD_Ledger_0b: 'Her-open MyEtherWallet door gebruik te maken van [Chrome](https://www.google.com/chrome/browser/desktop/) of [Opera](https://www.opera.com/) ',
-
-  x_Trezor: 'TREZOR ',
-  ADD_Trezor_scan: 'Verbind met TREZOR ',
-  ADD_Trezor_select: 'Dit is een TREZOR seed ',
+  VIEWWALLET_ShowPrivKey: '(laat zien)',
+  VIEWWALLET_HidePrivKey: '(verberg)',
 
   /* Chrome Extension */
   CX_error_1: 'Je hebt nog geen enkele wallets opgeslagen. Klik ["Voeg wallet toe"](/cx-wallet.html#add-wallet) om er een toe te voegen! ',
@@ -14162,7 +14166,7 @@ nl.data = {
   PARITY_InvalidGasLimit: "Hoeveelheid gas is boven de limiet.",
 
   /* Translation Info */
-  translate_version: '0.3 ',
+  translate_version: '0.5 ',
   Translator_Desc: 'Bedank onze vertalers ',
   TranslatorName_1: '[h3ll0fr13nd](https://www.myetherwallet.com/?gaslimit=21000&to=0xB5FbCE123F12347206c881cae73A3046BA1A90bA&value=1.0#send-transaction) ',
   TranslatorAddr_1: '0xB5FbCE123F12347206c881cae73A3046BA1A90bA ',

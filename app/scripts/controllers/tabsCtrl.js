@@ -13,12 +13,15 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.browserProtocol = window.location.protocol;
     var hval = window.location.hash;
     $scope.notifier = uiFuncs.notifier;
-    $scope.notifier.sce = $sce; $scope.notifier.scope = $scope;
+    $scope.notifier.sce = $sce;
+    $scope.notifier.scope = $scope;
     $scope.setArrowVisibility = function() {
         setTimeout(function() {
-            $scope.showLeftArrow = false;
-            $scope.showRightArrow = !(document.querySelectorAll('.nav-inner')[0].clientWidth <= document.querySelectorAll('.nav-scroll')[0].clientWidth);
-            $scope.$apply();
+            if (document.querySelectorAll('.nav-inner')[0] && document.querySelectorAll('.nav-scroll')[0]) {
+                $scope.showLeftArrow = false;
+                $scope.showRightArrow = !(document.querySelectorAll('.nav-inner')[0].clientWidth <= document.querySelectorAll('.nav-scroll')[0].clientWidth);
+                $scope.$apply();
+            }
         }, 200);
     }
     $scope.setArrowVisibility();
@@ -155,7 +158,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
 
     $scope.setErrorMsgLanguage = function() {
         for (var i = 0; i < globalFuncs.errorMsgs.length; i++) $scope.setLanguageVal('ERROR_' + i, 'errorMsgs', i);
-        for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i+1), 'successMsgs', i);
+        for (var i = 0; i < globalFuncs.successMsgs.length; i++) $scope.setLanguageVal('SUCCESS_' + (i + 1), 'successMsgs', i);
     }
 
     $scope.setGethErrMsgLanguage = function() {
