@@ -36,14 +36,11 @@
 </section>
 </header>
 
-
-  <section class="container" style="min-height: 50%" ng-controller='signMsgCtrl'>
-
-  <!-- tab panes -->
-
-    <div class="tab-content" >
-
-      <!-- Sign Message Panel -->
+<section ng-controller="tabsCtrl">
+    <section class="container" style="min-height: 50%" ng-controller='signMsgCtrl'>
+        <!-- tab panes -->
+        <div class="tab-content">
+            <!-- Sign Message Panel -->
   <h3>
     <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
     or
@@ -107,18 +104,15 @@
   </article>
 <!-- / Sign Message Panel -->
 
-
-    </div>
-
-    <!-- /tab panes -->
-  <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
-    <div class="container" ng-bind-html="notifier.message"></div>
-    <i class="icon-close" ng-click="notifier.close()"></i>
-  </article>
-
-  </section>
-
-
+          <div ng-show="visibility=='signView' && wallet==null"><wallet-decrypt-drtv></wallet-decrypt-drtv></div>
+        </div>
+        <!-- /tab panes -->
+        <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
+            <div class="container" ng-bind-html="notifier.message"></div>
+            <i class="icon-close" ng-click="notifier.close()"></i>
+        </article>
+    </section>
+</section>
 <footer>
   <div class="container">
     <p>
