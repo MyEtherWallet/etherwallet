@@ -88,129 +88,19 @@
 
   <!-- View Wallet Section -->
   <section class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
-    <hr />
-
-    <div class="col-sm-8">
-      <h1><span translate="MYWAL_Viewing">Viewing Wallet: </span> {{viewWallet.nick}}</h1>
-    </div>
-    <div class="col-sm-4 text-right" style="margin-top: 16px;">
+    <section class="row">
+   <div class="col-sm-12 text-right" style="margin-top: 16px;" ng-show="wallet!=null">
       <a class="btn btn-warning" ng-click="resetWallet()" translate="MYWAL_Hide"> Hide Wallet Info </a>
       <br />
     </div>
-    <div class="col-xs-12">
-      <div class="alert alert-danger" translate="ERROR_28">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the help page for instructions.</div>
-    </div>
-
-    <div class="col-sm-6">
-      <div class="row">
-        <div class="form-group col-sm-10">
-          <div class="account-help-icon">
-            <img src="images/icon-help.svg" class="help-icon" />
-            <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
-            <h4 translate="x_Address">Your Address:</h4>
-          </div>
-          <input class="form-control" type="text" ng-value="wallet.getChecksumAddressString()" readonly="readonly">
-        </div>
-        <div class="col-sm-2 address-identicon-container">
-          <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="account-help-icon">
-          <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
-          <h4 translate="x_PrivKey">Private Key (unencrypted)</h4>
-        </div>
-        <textarea class="form-control" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
-      </div>
-      <div class="row">
-        <div class="form-group col-sm-6">
-          <h4 translate="x_Address">Your Address:</h4>
-          <div qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
-        </div>
-        <div class="form-group col-sm-6">
-          <h4 translate="x_PrivKey">Private Key (unencrypted):</h4>
-          <div qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-sm-6">
-
-      <div class="form-group">
-        <div class="account-help-icon">
-          <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
-          <h4 translate="x_Keystore">Keystore/JSON File (Recommended • Encrypted • Mist/Geth Format)</h4>
-        </div>
-        <a class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
-      </div>
-
-      <div class="form-group">
-        <div class="account-help-icon">
-          <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_PrintDesc">ProTip: Click print and save this as a PDF, even if you do not own a printer!</p>
-          <h4 translate="x_Print">Print Paper Wallet:</h4>
-        </div>
-        <a class="btn btn-info btn-block" ng-click="printQRCode()" translate="x_PrintShort">Print</a>
-      </div>
-
-      <div class="form-group">
-        <div class="account-help-icon">
-          <img src="images/icon-help.svg" class="help-icon" />
-          <p class="account-help-text" translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</p>
-          <h4 translate="x_Json">JSON File (Unencrypted)</h4>
-        </div>
-        <a class="btn btn-info btn-block" href="{{blob}}" download="{{wallet.getChecksumAddressString()}}-unencrypted.json" translate="x_Download">DOWNLOAD</a>
-      </div>
-
-      <!-- TODO: FIX
-
-      <div translate="sidebar_AccountBal">Account Balance:</div>
-      <ul class="account-info">
-        <li> {{twallet.balance}} Ether </li>
-      </ul>
-
-      <div translate="sidebar_TokenBal"> Token Balances: </div>
-      <table class="account-info">
-          <tr ng-repeat="token in twallet.tokens track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
-            <td class="mono wrap">
-              <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'"/>
-              {{token.getBalance()}}
-            </td>
-            <td> {{token.getSymbol()}} </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <p>
-                <a ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'"> Show All Tokens </a>
-                <a ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">  Hide Tokens </a>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-            <small ng-bind-html="validateTokenBalances"></small>
-            </td>
-          </tr>
-      </table>
-
-      <div translate="sidebar_Equiv">Equivalent Values:</div>
-      <ul class="account-info">
-        <li> {{twallet.usd }} USD </li>
-        <li> {{twallet.eur }} EUR </li>
-        <li> {{twallet.btc}} BTC </li>
-      </ul>
-      -->
-
-      <div translate="sidebar_TransHistory">See Transaction History:</div>
-      <ul class="account-info">
-        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/{{wallet.getAddressString()}}</a></li>
-      </ul>
-
-    </div>
   </section>
+      @@include( './viewWalletInfo-content.tpl', { "site": "cx" } )
+      <br /><hr />
+      <main ng-controller='signMsgCtrl'>
+        @@include( './signMsg.tpl', { "site": "cx" } )
+      </main>
+      </section>
+    </section>
   <!-- / View Wallet Section -->
 
 
