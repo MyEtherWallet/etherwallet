@@ -396,7 +396,7 @@ gulp.task('prep',   function(cb) { runSequence('js-production', 'html', 'styles'
 
 gulp.task('bump',   function(cb) { runSequence('bump-patch', 'clean', 'zip', cb);              });
 
-gulp.task('zip',    function(cb) { runSequence('clean', 'zip', cb);                            });
+gulp.task('zip',    function(cb) { runSequence('clean', 'travisZip', cb);                      });
 
 gulp.task('commit', function(cb) { runSequence('add', 'commitV', 'tag', cb);                   });
 
