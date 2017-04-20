@@ -214,7 +214,7 @@ gulp.task('copy', ['staticJS'], function() {
 // Clean files that get compiled but shouldn't
 gulp.task('clean', function() {
     return gulp.src([
-            dist_CX + 'images/fav',
+            dist_CX + 'images/fav/manifest.json',
             dist_CX + 'embedded.html',
             dist_CX + 'index.html',
             dist_CX + 'signmsg.html',

@@ -33,11 +33,15 @@
   margin: .5em;
 }
 
-.myWalletCtrl table {
-  h2 {  margin: 0;  }
-  h3 { font-weight: 400 }
+.myWalletCtrl table:not(.account-info) {
+  h2 {  margin: 0;    font-size: 1.6em;  }
+  h3 { font-weight: 400; font-size: 1.3em; }
   td:nth-child(2) {
     max-width: 380px;
+  }
+  td, th {
+    vertical-align: middle;
+    padding: .5em .75em;
   }
 }
 

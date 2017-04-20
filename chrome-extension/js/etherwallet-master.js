@@ -7833,6 +7833,12 @@ module.exports=[
     "type":"default"
   },
   {
+    "address":"0xcb94be6f13a1182e4a4b6140cb7bf2025d28e41b",
+    "symbol":"TRST",
+    "decimal":6,
+    "type":"default"
+  },
+  {
     "address":"0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7",
     "symbol":"Unicorn 🦄 ",
     "decimal":0,
