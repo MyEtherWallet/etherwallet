@@ -362,7 +362,7 @@ gulp.task('push', ['getVersion'], function() {
 
 // Push Live
 // Pushes dist folder to gh-pages branch
-gulp.task('pushLive', ['getVersion'], function() {
+gulp.task('pushlive', ['getVersion'], function() {
     return gulp.src('*.js', { read: false })
         .pipe(shell([
             'git subtree push --prefix dist origin gh-pages'
@@ -376,7 +376,7 @@ gulp.task('pushLive', ['getVersion'], function() {
 // gulp zipit
 // gulp commit
 // git push
-// gulp pushLive ( git subtree push --prefix dist origin gh-pages )
+// gulp pushlive ( git subtree push --prefix dist origin gh-pages )
 
 gulp.task('watchJS',      function() { gulp.watch(js_watchFolder,   ['js']            ) })
 gulp.task('watchJSDebug', function() { gulp.watch(js_watchFolder,   ['js-debug']      ) })
