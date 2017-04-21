@@ -4,58 +4,13 @@ var sv = function() {}
 sv.code = 'sv';
 sv.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
-
-/* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
 /* Navigation*/
 NAV_AddWallet               : 'Lägg till Plånbok ',
 NAV_BulkGenerate            : 'Mass Generera ',
 NAV_Contact                 : 'Kontakt ',
 NAV_Contracts               : 'Contracts ',
 NAV_DeployContract          : 'Deploy Contract ',
+NAV_ENS                     : 'ENS',
 NAV_GenerateWallet          : 'Generera Plånbok ',
 NAV_Help                    : 'Hjälp ',
 NAV_InteractContract        : 'Interact with Contract ',
@@ -64,11 +19,13 @@ NAV_MyWallets               : 'Mina Plånböcker ',
 NAV_Offline                 : 'Skicka Offline ',
 NAV_SendEther               : 'Skicka Ether och Tokens ',
 NAV_SendTokens              : 'Skicka Token ', /*Översätt token?*/
+NAV_SignMsg                 : 'Sign Message ',
 NAV_Swap                    : 'Swap ',
 NAV_ViewWallet              : 'Visa Plånboks Info ',
 NAV_YourWallets             : 'Dina Plånböcker ',
 
 /* General */
+x_Access                    : 'Access ',
 x_AddessDesc                : 'Det här är vad som ibland kallas "Publik Nyckel", "Adress" eller "Konto nr". Det är vad du ger människor så att de kan skicka dig ether. Den här ikonen är ett enkelt sätt att känna igen din adress. ',
 x_Address                   : 'Din Adress ',
 x_Cancel                    : 'Avbryt ',
@@ -91,6 +48,7 @@ x_PrivKeyDesc               : 'Det här är en okrypterad variant av din privata
 x_Save                      : 'Spara ',
 x_TXT                       : 'TXT fil (okrypterad) ',
 x_Wallet                    : 'Plånbok ',
+x_ParityPhrase              : 'Parity Phrase ',
 
 /* Header */
 CX_Tagline                  : 'Open Source JavaScript Client-Side Ether Wallet Chrome Extension ',
@@ -105,7 +63,6 @@ FOOTER_2                    : 'Donations greatly appreciated ',
 FOOTER_3                    : 'Client-side wallet generation by ',
 FOOTER_4                    : 'Disclaimer ',
 
-/* Sidebar */
 /* Sidebar */
 sidebar_AccountAddr         : 'Konto Adress ',
 sidebar_AccountBal          : 'Konto Saldo ',
@@ -264,7 +221,6 @@ DEP_signtx                  : 'Sign Transaction ',
 DEP_interface               : 'Generated Interface ',
 
 /* Sign Message */
-NAV_SignMsg                 : 'Sign Message ',
 MSG_message                 : 'Message ',
 MSG_date                    : 'Date ',
 MSG_signature               : 'Signature ',
@@ -301,18 +257,22 @@ ERROR_19                    : 'Invalid symbol ',
 ERROR_20                    : 'Not a valid ERC-20 token ',
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
 ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions. ',
 ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',
 SUCCESS_3                   : 'Transaction submitted. TX ID ',
 SUCCESS_4                   : 'Your wallet was successfully added ',
 SUCCESS_5                   : 'File Selected ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
 
 WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
 

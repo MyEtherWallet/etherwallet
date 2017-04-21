@@ -4,140 +4,13 @@ var pt = function() {}
 pt.code = 'pt';
 pt.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
-
-/* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
-NAV_Swap                    : 'Exchange ',
-NAV_SignMsg                 : 'Sign Message ',
-
-/* Sign Message */
-MSG_message                 : 'Message ',
-MSG_date                    : 'Date ',
-MSG_signature               : 'Signature ',
-MSG_verify                  : 'Verify Message ',
-MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
-MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
-MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
-
-x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Connect to TREZOR ',
-ADD_Trezor_select           : 'This is a TREZOR seed ',
-
-/* Chrome Extension */
-CX_error_1                  : 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one! ',
-CX_quicksend                : 'QuickSend ', // if no appropriate translation, just use "Send"
-
-/* Error Messages */
-ERROR_0                     : 'Please enter valid amount. ',
-ERROR_1                     : 'Your password must be at least 9 characters. Please ensure it is a strong password. ',
-ERROR_2                     : 'Sorry! We don\'t recognize this type of wallet file. ',
-ERROR_3                     : 'This is not a valid wallet file. ',
-ERROR_4                     : 'This unit doesn\'t exists, please use the one of the following units ',
-ERROR_5                     : 'Invalid address. ',
-ERROR_6                     : 'Invalid password. ',
-ERROR_7                     : 'Invalid amount. ',
-ERROR_8                     : 'Invalid gas limit. ',
-ERROR_9                     : 'Invalid data value. ',
-ERROR_10                    : 'Invalid gas amount. ',
-ERROR_11                    : 'Invalid nonce. ',
-ERROR_12                    : 'Invalid signed transaction. ',
-ERROR_13                    : 'A wallet with this nickname already exists. ',
-ERROR_14                    : 'Wallet not found. ',
-ERROR_15                    : 'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
-ERROR_16                    : 'A wallet with this address already exists in storage. Please check your wallets page. ',
-ERROR_17                    : 'You need to have at least 0.001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
-ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended. ',
-ERROR_19                    : 'Invalid symbol ',
-ERROR_20                    : 'Não é um token ERC-20 válido ',
-ERROR_21                    : 'Não foi possível estimar o gás. Não há fundos suficientes na conta, ou o endereço do contrato de recebimento iria lançar um erro. Sinta-se livre para definir manualmente o gás e prossiga. A mensagem de erro ao enviar pode ser mais informativa. ',
-ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
-ERROR_24                    : 'Please enter valid port ',
-ERROR_25                    : 'Please enter valid chain ID ',
-ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
-ERROR_28                    : '**Você precisa do seu arquivo de armazenamento de chaves & senha** (ou Chave Privada) para acessar essa carteira no futuro. Por favor, salve e armazene ela externamente! Não há como recuperar uma carteira se você não salvar isso. Leia a [página de ajuda](https://www.myetherwallet.com/#help) para instruções. ',
-ERROR_29                    : 'Please enter valid user and password ',
-SUCCESS_1                   : 'Valid address ',
-SUCCESS_2                   : 'Wallet successfully decrypted ',
-SUCCESS_3                   : 'Transaction submitted. TX ID ',
-SUCCESS_4                   : 'Your wallet was successfully added ',
-SUCCESS_5                   : 'File Selected ',
-
-/* Geth Error Messages */
-GETH_InvalidSender          : 'Invalid sender ',
-GETH_Nonce                  : 'Nonce too low ',
-GETH_Cheap                  : 'Gas price too low for acceptance ',
-GETH_Balance                : 'Insufficient balance ',
-GETH_NonExistentAccount     : 'Account does not exist or account balance too low ',
-GETH_InsufficientFunds      : 'Insufficient funds for gas * price + value ',
-GETH_IntrinsicGas           : 'Intrinsic gas too low ',
-GETH_GasLimit               : 'Exceeds block gas limit ',
-GETH_NegativeValue          : 'Negative value ',
-
-/* Parity Error Messages */
-PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
-PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
-PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
-
-
-
-
-
 /* Navigation*/
 NAV_AddWallet               : 'Adicionar Carteira ',
 NAV_BulkGenerate            : 'Gerar Bulk ',
 NAV_Contact                 : 'Contato ',
 NAV_Contracts               : 'Contratos ',
 NAV_DeployContract          : 'Implantar Contrato ',
+NAV_ENS                     : 'ENS',
 NAV_GenerateWallet          : 'Gerar Carteira ',
 NAV_Help                    : 'Ajuda ',
 NAV_InteractContract        : 'Interact with Contract ',
@@ -146,10 +19,13 @@ NAV_MyWallets               : 'Minhas Carteiras ',
 NAV_Offline                 : 'Enviar Offline ',
 NAV_SendEther               : 'Enviar Ether & Tokens ',
 NAV_SendTokens              : 'Enviar Tokens ',
+NAV_SignMsg                 : 'Sign Message ',
+NAV_Swap                    : 'Exchange ',
 NAV_ViewWallet              : 'Ver Informação da Carteira ',
 NAV_YourWallets             : 'Suas Carteiras ',
 
 /* General */
+x_Access                    : 'Access ',
 x_AddessDesc                : 'Você deve saber sua "Conta #" ou sua "Chave Pública". É o que você enviar para que as pessoas possam enviar-lhe ether. Esse ícone é uma maneira fácil de reconhecer o seu endereço. ',
 x_Address                   : 'Seu Endereço ',
 x_Cancel                    : 'Cancelar ',
@@ -161,6 +37,7 @@ x_Keystore                  : 'Arquivo de armazenamento de chaves (UTC / JSON ·
 x_Keystore2                 : 'Arquivo de armazenamento de chaves (UTC / JSON) ',
 x_KeystoreDesc              : 'Este arquivo de armazenamento de chaves corresponde ao formato usado pela Mist para que você possa facilmente importá-lo no futuro. É recomendado que o arquivo seja transferido e feito seu backup. ',
 x_Mnemonic                  : 'Frase Mnemonic ',
+x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Senha ',
 x_Print                     : 'Imprimir Carteira de Papel ',
 x_PrintDesc                 : 'Dica: Clique impressão e salve como PDF, mesmo se você não possui uma impressora! ',
@@ -307,12 +184,6 @@ OFFLINE_Step2_Label_7       : 'Insira / Selecione sua Chave Privada / JSON. ',
 OFFLINE_Step3_Title         : 'Passo 3: Envia / Publica a Transação (Computador Online) ',
 OFFLINE_Step3_Label_1       : 'Cole a transação assinada do Passo 2 e aperte o botão "ENVIAR TRANSAÇÃO". ',
 
-/* Deploy Contracts */
-DEP_generate                : 'Gerar Bytecode ',
-DEP_generated               : 'Bytecode Gerado ',
-DEP_signtx                  : 'Transação Assinada ',
-DEP_interface               : 'Interface Gerada ',
-
 /* My Wallet */
 MYWAL_Nick                  : 'Apelido da Carteira ',
 MYWAL_Address               : 'Endereço da Carteira ',
@@ -351,6 +222,127 @@ ADD_Ledger_4                : 'Se nenhum suporte de navegador for encontrado nas
 ADD_Ledger_0a               : 'Re-abra MyEtherWallet em uma conexão (SSL) segura ',
 ADD_Ledger_0b               : 'Re-abra MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/) ',
 WARN_Send_Link              : 'Você chegou através de um link que tem o endereço, quantidade de gás, ou campos de dados preenchidos para você. Você pode alterar qualquer informação antes de enviar. Desbloqueie sua carteira para começar. ',
+x_Trezor                    : 'TREZOR ',
+ADD_Trezor_scan             : 'Connect to TREZOR ',
+ADD_Trezor_select           : 'This is a TREZOR seed ',
+
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Contracts */
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+DEP_generate                : 'Gerar Bytecode ',
+DEP_generated               : 'Bytecode Gerado ',
+DEP_signtx                  : 'Transação Assinada ',
+DEP_interface               : 'Interface Gerada ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+/* Sign Message */
+MSG_message                 : 'Message ',
+MSG_date                    : 'Date ',
+MSG_signature               : 'Signature ',
+MSG_verify                  : 'Verify Message ',
+MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
+MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
+MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+
+/* Chrome Extension */
+CX_error_1                  : 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one! ',
+CX_quicksend                : 'QuickSend ', // if no appropriate translation, just use "Send"
+
+/* Error Messages */
+ERROR_0                     : 'Please enter valid amount. ',
+ERROR_1                     : 'Your password must be at least 9 characters. Please ensure it is a strong password. ',
+ERROR_2                     : 'Sorry! We don\'t recognize this type of wallet file. ',
+ERROR_3                     : 'This is not a valid wallet file. ',
+ERROR_4                     : 'This unit doesn\'t exists, please use the one of the following units ',
+ERROR_5                     : 'Invalid address. ',
+ERROR_6                     : 'Invalid password. ',
+ERROR_7                     : 'Invalid amount. ',
+ERROR_8                     : 'Invalid gas limit. ',
+ERROR_9                     : 'Invalid data value. ',
+ERROR_10                    : 'Invalid gas amount. ',
+ERROR_11                    : 'Invalid nonce. ',
+ERROR_12                    : 'Invalid signed transaction. ',
+ERROR_13                    : 'A wallet with this nickname already exists. ',
+ERROR_14                    : 'Wallet not found. ',
+ERROR_15                    : 'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+ERROR_16                    : 'A wallet with this address already exists in storage. Please check your wallets page. ',
+ERROR_17                    : 'You need to have at least 0.001 ETH in your account to cover the cost of gas. Please add some ETH and try again. ',
+ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended. ',
+ERROR_19                    : 'Invalid symbol ',
+ERROR_20                    : 'Não é um token ERC-20 válido ',
+ERROR_21                    : 'Não foi possível estimar o gás. Não há fundos suficientes na conta, ou o endereço do contrato de recebimento iria lançar um erro. Sinta-se livre para definir manualmente o gás e prossiga. A mensagem de erro ao enviar pode ser mais informativa. ',
+ERROR_22                    : 'Please enter valid node name ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
+ERROR_24                    : 'Please enter valid port ',
+ERROR_25                    : 'Please enter valid chain ID ',
+ERROR_26                    : 'Please enter valid ABI ',
+ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
+ERROR_28                    : '**Você precisa do seu arquivo de armazenamento de chaves & senha** (ou Chave Privada) para acessar essa carteira no futuro. Por favor, salve e armazene ela externamente! Não há como recuperar uma carteira se você não salvar isso. Leia a [página de ajuda](https://www.myetherwallet.com/#help) para instruções. ',
+ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
+SUCCESS_1                   : 'Valid address ',
+SUCCESS_2                   : 'Wallet successfully decrypted ',
+SUCCESS_3                   : 'Transaction submitted. TX ID ',
+SUCCESS_4                   : 'Your wallet was successfully added ',
+SUCCESS_5                   : 'File Selected ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
+
+/* Geth Error Messages */
+GETH_InvalidSender          : 'Invalid sender ',
+GETH_Nonce                  : 'Nonce too low ',
+GETH_Cheap                  : 'Gas price too low for acceptance ',
+GETH_Balance                : 'Insufficient balance ',
+GETH_NonExistentAccount     : 'Account does not exist or account balance too low ',
+GETH_InsufficientFunds      : 'Insufficient funds for gas * price + value ',
+GETH_IntrinsicGas           : 'Intrinsic gas too low ',
+GETH_GasLimit               : 'Exceeds block gas limit ',
+GETH_NegativeValue          : 'Negative value ',
+
+/* Parity Error Messages */
+PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
+PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
+PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 
 
 /* Tranlsation Info */

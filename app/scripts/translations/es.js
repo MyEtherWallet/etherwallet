@@ -4,142 +4,48 @@ var es = function() {}
 es.code = 'es';
 es.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Configurar nodo personalizado',
-NODE_Subtitle               : 'Para conectar a un nodo local...',
-NODE_Warning                : 'Tu nodo debe ser HTTPS para poder conectar a él desde MyEtherWallet.com. Para conectarte a cualquier nodo, puedes [descargar el repositorio de MyEtherWallet y ejecutarlo localmente](https://github.com/kvhnuke/etherwallet/releases/latest). También puedes conseguir un certificado SSL gratuito a través de [Let\'s Encrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Nombre del nodo',
-NODE_Port                   : 'Puerto del nodo',
-NODE_CTA                    : 'Guardar y usar nodo personalizado',
-
-/* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Dirección del contrato ',
-CONTRACT_Title_2            : 'Seleccionar contrato existente ',
-CONTRACT_Json               : 'Interfaz ABI / JSON ',
-CONTRACT_Interact_Title     : 'Leer/escribir contrato ',
-CONTRACT_Interact_CTA       : 'Seleccionar una función ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'LEER ',
-CONTRACT_Write              : 'ESCRIBIR ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Tipos de cambio actuales ",
-SWAP_init_1                 : "Quiero cambiar mis ",
-SWAP_init_2                 : " por ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Continuar", // or "Continue"
-SWAP_information            : "Tu información ",
-SWAP_send_amt               : "Cantidad a enviar ",
-SWAP_rec_amt                : "Cantidad a recibir ",
-SWAP_your_rate              : "Tu tipo de cambio ",
-SWAP_rec_add                : "Tu dirección de destino ",
-SWAP_start_CTA              : "Iniciar intercambio ",
-SWAP_ref_num                : "Tu número de referencia ",
-SWAP_time                   : "Tiempo restante para enviar ",
-SWAP_progress_1             : "Pedido iniciado ",
-SWAP_progress_2             : "Esperando recibir tus ", // Waiting for your BTC...
-SWAP_progress_3             : "¡Recibido! ", // ETH Received!
-SWAP_progress_4             : "Enviando tu {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Pedido completado ",
-SWAP_order_CTA              : "Por favor, envía ", // Please send 1 ETH...
-SWAP_unlock                 : "Desbloquea tu cartera para enviar ETH o tokens directamente desde esta página. ",
-
-NAV_Swap                    : 'Intercambiar ',
-NAV_SignMsg                 : 'Firmar mensaje ',
-NAV_DeployContract          : 'Desplegar contrato ',
-NAV_InteractContract        : 'Interactuar con un contrato ',
-NAV_Contracts               : 'Contratos ',
-NAV_Multisig                : 'Multifirma ',
-
-/* Sign Message */
-MSG_message                 : 'Mensaje ',
-MSG_date                    : 'Fecha ',
-MSG_signature               : 'Firma ',
-MSG_verify                  : 'Verificar mensaje ',
-MSG_info1                   : 'Incluye la fecha actual para que la firma no se pueda volver a utilizar en otra fecha. ',
-MSG_info2                   : 'Incluye tu apodo y dónde utilizas ese apodo para que otra persona no lo pueda utilizar. ',
-MSG_info3                   : 'Incluye una razón específica para el mensaje para que no se pueda volver a utilizar con otra finalidad. ',
-
-/* Mnemonic */
-ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
-MNEM_1                      : 'Selecciona la dirección con la que deseas interactuar. ',
-MNEM_2                      : 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. ',
-MNEM_more                   : 'Más direcciones ',
-MNEM_prev                   : 'Direcciones anteriores ',
-SEND_custom                 : 'Añadir token personalizado ',
-TOKEN_hide                  : 'Ocultar tokens ',
-TOKEN_show                  : 'Mostrar todos los tokens ',
-WARN_Send_Link              : 'Has llegado aquí a través de un enlace que ya tiene rellenados la dirección, cantidad, gas, campos de datos o el tipo de transacción (modo de envío). Puedes cambiar cualquier parámetro antes de enviar. Desbloquea tu cartera para comenzar. ',
-x_Mnemonic                  : 'Mnemonic Phrase ',
-
-/* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Conecta tu Ledger Nano S ',
-ADD_Ledger_2                : 'Inicia la aplicacin Ethereum (o una aplicación de contrato) ',
-ADD_Ledger_3                : 'Comprueba que "Browser Support" está activado en "Settings" ',
-ADD_Ledger_4                : 'Si no encuentras la opción "Browser Support" en "Settings", asegúrate de tener instalado el [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'Volver a abrir MyEtherWallet en una conexión segura (SSL) ',
-ADD_Ledger_0b               : 'Volver a abrir MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) u [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Conectar a Ledger Nano S ',
-x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Conectar a TREZOR ',
-ADD_Trezor_select           : 'Esto es una semilla TREZOR ',
-
-/* Parity Error Messages */
-PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
-PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
-PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
-PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-
-
-
-
-
-
-
-
 /* Navigation*/
-NAV_YourWallets             : 'Tus carteras ',
 NAV_AddWallet               : 'Añadir cartera ',
-NAV_GenerateWallet          : 'Generar cartera ',
 NAV_BulkGenerate            : 'Generar en masa ',
+NAV_Contact                 : 'Contacto ',
+NAV_Contracts               : 'Contratos ',
+NAV_DeployContract          : 'Desplegar contrato ',
+NAV_ENS                     : 'ENS',
+NAV_GenerateWallet          : 'Generar cartera ',
+NAV_Help                    : 'Ayuda ',
+NAV_InteractContract        : 'Interactuar con un contrato ',
+NAV_Multisig                : 'Multifirma ',
+NAV_MyWallets               : 'Mis carteras ',
+NAV_Offline                 : 'Enviar sin conexión ',
 NAV_SendEther               : 'Enviar ether y tokens ',
 NAV_SendTokens              : 'Enviar tokens ',
-NAV_Offline                 : 'Enviar sin conexión ',
-NAV_MyWallets               : 'Mis carteras ',
+NAV_SignMsg                 : 'Firmar mensaje ',
+NAV_Swap                    : 'Intercambiar ',
 NAV_ViewWallet              : 'Ver información de las carteras ',
-NAV_Help                    : 'Ayuda ',
-NAV_Contact                 : 'Contacto ',
+NAV_YourWallets             : 'Tus carteras ',
 
 /* General */
-x_Password                  : 'Contraseña ',
-x_Download                  : 'Descargar ',
-x_Address                   : 'Tu dirección ',
-x_Save                      : 'Guardar ',
-x_Cancel                    : 'Cancelar ',
+x_Access                    : 'Access ',
 x_AddessDesc                : 'Puedes pensar en esto como tu "número de cuenta" o tu "clave pública". Es lo que le das a la gente para que te puedan enviar ether. Ese icono es una forma fácil de reconocer tu dirección. ',
-x_PrivKey                   : 'Clave Privada (sin encriptar) ',
-x_PrivKey2                  : 'Clave Privada ',
-x_PrivKeyDesc               : 'Esta es la versión en texto sin encriptar de tu clave privada, lo cual quiere decir que no hace falta contraseña. Si alguien encontrase tu clave privada sin encriptar, podrían acceder a tu cartera sin necesitar contraseña. Por esta razón, normalmente se recomiendan las versiones encriptadas. ',
+x_Address                   : 'Tu dirección ',
+x_Cancel                    : 'Cancelar ',
+x_CSV                       : 'Archivo CSV (sin encriptar) ',
+x_Download                  : 'Descargar ',
+x_Json                      : 'Archivo JSON (sin encriptar) ',
+x_JsonDesc                  : 'Esta es tu clave privada sin encriptar en formato JSON. Esto significa que no necesitas una contraseña, pero cualquiera que encuentre tu archivo JSON puede acceder a tu cartera y ether sin necesitar ninguna contraseña. ',
 x_Keystore                  : 'Archivo Keystore (UTC / JSON · Recomendado · Encriptado) ',
 x_Keystore2                 : 'Archivo Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Este archivo Keystore/JSON concuerda con el formato usado por Mist para una fácil importación en el futuro. Es el archivo recomendado para descargar y guardar como copia de seguridad. ',
-x_Json                      : 'Archivo JSON (sin encriptar) ',
-x_JsonDesc                  : 'Esta es tu clave privada sin encriptar en formato JSON. Esto significa que no necesitas una contraseña, pero cualquiera que encuentre tu archivo JSON puede acceder a tu cartera y ether sin necesitar ninguna contraseña. ',
-x_PrintShort                : 'Imprimir ',
+x_Mnemonic                  : 'Mnemonic Phrase ',
+x_ParityPhrase              : 'Parity Phrase ',
+x_Password                  : 'Contraseña ',
 x_Print                     : 'Imprimir Cartera de Papel ',
 x_PrintDesc                 : 'Consejo: Hax clic en imprimir y guardar esto como un PDF, ¡incluso si no tienes impresora! ',
-x_CSV                       : 'Archivo CSV (sin encriptar) ',
+x_PrintShort                : 'Imprimir ',
+x_PrivKey                   : 'Clave Privada (sin encriptar) ',
+x_PrivKey2                  : 'Clave Privada ',
+x_PrivKeyDesc               : 'Esta es la versión en texto sin encriptar de tu clave privada, lo cual quiere decir que no hace falta contraseña. Si alguien encontrase tu clave privada sin encriptar, podrían acceder a tu cartera sin necesitar contraseña. Por esta razón, normalmente se recomiendan las versiones encriptadas. ',
+x_Save                      : 'Guardar ',
 x_TXT                       : 'Archivo TXT (sin encriptar) ',
 x_Wallet                    : 'Cartera ',
 
@@ -180,6 +86,7 @@ ADD_Radio_2_alt             : 'Elige tu archivo de cartera ',
 ADD_Radio_2_short           : 'ELIGE ARCHIVO DE CARTERA... ',
 ADD_Radio_3                 : 'Pega/escribe tu clave privada ',
 ADD_Radio_4                 : 'Añade una cuenta para supervisar ',
+ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
 ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken) ',
 ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR) ',
@@ -220,6 +127,7 @@ SEND_generate               : 'Generar transacción ',
 SEND_raw                    : 'Transacción en bruto ',
 SEND_signed                 : 'Transacción firmada ',
 SEND_trans                  : 'Enviar transacción ',
+SEND_custom                 : 'Añadir token personalizado ',
 SENDModal_Title             : '¡Atención! ',
 /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
 SENDModal_Content_1         : 'Vas a enviar ',
@@ -233,6 +141,8 @@ SENDModal_Yes               : 'Sí, estoy seguro. Hacer la transacción. ',
 TOKEN_Addr                  : 'Dirección ',
 TOKEN_Symbol                : 'Símbolo del token ',
 TOKEN_Dec                   : 'Decimales ',
+TOKEN_hide                  : 'Ocultar tokens ',
+TOKEN_show                  : 'Mostrar todos los tokens ',
 
 /* Send Transaction */
 TRANS_desc                  : 'Si quieres enviar tokens, utiliza la página "Enviar tokens" en lugar de esta. ',
@@ -307,6 +217,73 @@ VIEWWALLET_SuccessMsg       : '¡Enhorabuena! Estos son los detalles de tu carte
 CX_error_1                  : 'No tienes ninguna cartera guardada. ¡Haz clic en ["Añadir cartera"](/cx-wallet.html#add-wallet) para añadir una! ',
 CX_quicksend                : 'Enviar ', // if no appropriate translation, just use "Send"
 
+/* Node Switcher */
+NODE_Title                  : 'Configurar nodo personalizado',
+NODE_Subtitle               : 'Para conectar a un nodo local...',
+NODE_Warning                : 'Tu nodo debe ser HTTPS para poder conectar a él desde MyEtherWallet.com. Para conectarte a cualquier nodo, puedes [descargar el repositorio de MyEtherWallet y ejecutarlo localmente](https://github.com/kvhnuke/etherwallet/releases/latest). También puedes conseguir un certificado SSL gratuito a través de [Let\'s Encrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Nombre del nodo',
+NODE_Port                   : 'Puerto del nodo',
+NODE_CTA                    : 'Guardar y usar nodo personalizado',
+
+/* Contracts */
+CONTRACT_Title              : 'Dirección del contrato ',
+CONTRACT_Title_2            : 'Seleccionar contrato existente ',
+CONTRACT_Json               : 'Interfaz ABI / JSON ',
+CONTRACT_Interact_Title     : 'Leer/escribir contrato ',
+CONTRACT_Interact_CTA       : 'Seleccionar una función ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'LEER ',
+CONTRACT_Write              : 'ESCRIBIR ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Tipos de cambio actuales ",
+SWAP_init_1                 : "Quiero cambiar mis ",
+SWAP_init_2                 : " por ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Continuar", // or "Continue"
+SWAP_information            : "Tu información ",
+SWAP_send_amt               : "Cantidad a enviar ",
+SWAP_rec_amt                : "Cantidad a recibir ",
+SWAP_your_rate              : "Tu tipo de cambio ",
+SWAP_rec_add                : "Tu dirección de destino ",
+SWAP_start_CTA              : "Iniciar intercambio ",
+SWAP_ref_num                : "Tu número de referencia ",
+SWAP_time                   : "Tiempo restante para enviar ",
+SWAP_progress_1             : "Pedido iniciado ",
+SWAP_progress_2             : "Esperando recibir tus ", // Waiting for your BTC...
+SWAP_progress_3             : "¡Recibido! ", // ETH Received!
+SWAP_progress_4             : "Enviando tu {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Pedido completado ",
+SWAP_order_CTA              : "Por favor, envía ", // Please send 1 ETH...
+SWAP_unlock                 : "Desbloquea tu cartera para enviar ETH o tokens directamente desde esta página. ",
+
+/* Sign Message */
+MSG_message                 : 'Mensaje ',
+MSG_date                    : 'Fecha ',
+MSG_signature               : 'Firma ',
+MSG_verify                  : 'Verificar mensaje ',
+MSG_info1                   : 'Incluye la fecha actual para que la firma no se pueda volver a utilizar en otra fecha. ',
+MSG_info2                   : 'Incluye tu apodo y dónde utilizas ese apodo para que otra persona no lo pueda utilizar. ',
+MSG_info3                   : 'Incluye una razón específica para el mensaje para que no se pueda volver a utilizar con otra finalidad. ',
+
+/* Mnemonic */
+MNEM_1                      : 'Selecciona la dirección con la que deseas interactuar. ',
+MNEM_2                      : 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. ',
+MNEM_more                   : 'Más direcciones ',
+MNEM_prev                   : 'Direcciones anteriores ',
+
+/* Hardware wallets */
+x_Ledger                    : 'Ledger Nano S ',
+ADD_Ledger_1                : 'Conecta tu Ledger Nano S ',
+ADD_Ledger_2                : 'Inicia la aplicacin Ethereum (o una aplicación de contrato) ',
+ADD_Ledger_3                : 'Comprueba que "Browser Support" está activado en "Settings" ',
+ADD_Ledger_4                : 'Si no encuentras la opción "Browser Support" en "Settings", asegúrate de tener instalado el [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
+ADD_Ledger_0a               : 'Volver a abrir MyEtherWallet en una conexión segura (SSL) ',
+ADD_Ledger_0b               : 'Volver a abrir MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) u [Opera](https://www.opera.com/) ',
+ADD_Ledger_scan             : 'Conectar a Ledger Nano S ',
+x_Trezor                    : 'TREZOR ',
+ADD_Trezor_scan             : 'Conectar a TREZOR ',
+ADD_Trezor_select           : 'Esto es una semilla TREZOR ',
+
 /* Error Messages */
 ERROR_0                     : 'Introduce una cantidad válida. ',
 ERROR_1                     : 'Tu contraseña debe tener al menos 9 caracteres. Por favor utiliza una contraseña fuerte. ',
@@ -338,11 +315,17 @@ ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Cantidad mínima 0.01 ',
 ERROR_28                    : '**Necesitas tu archivo Keystore/JSON y la contraseña** (o clave privada) para acceder a esta cartera en el futuro. Por favor ¡guárdala y respáldala externamente! No hay modo de recuperar una cartera si no la guardas. Lee la [página de ayuda](https://www.myetherwallet.com/#help) para instrucciones. ',
 ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Dirección válida ',
 SUCCESS_2                   : 'Cartera descifrada con éxito ',
 SUCCESS_3                   : 'Transacción enviada. TX ID ',
 SUCCESS_4                   : 'Se ha añadido tu cartera ',
 SUCCESS_5                   : 'Archivo seleccionado ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
+
+WARN_Send_Link              : 'Has llegado aquí a través de un enlace que ya tiene rellenados la dirección, cantidad, gas, campos de datos o el tipo de transacción (modo de envío). Puedes cambiar cualquier parámetro antes de enviar. Desbloquea tu cartera para comenzar. ',
 
 /* Geth Error Messages */
 GETH_InvalidSender          : 'Remitente no válido ',
@@ -354,6 +337,16 @@ GETH_InsufficientFunds      : 'Fondos no suficientes para gas * precio + valor '
 GETH_IntrinsicGas           : 'Gas intrínseco demasiado bajo ',
 GETH_GasLimit               : 'Sobrepasa el límite de gas del bloque ',
 GETH_NegativeValue          : 'Valor negativo ',
+
+/* Parity Error Messages */
+PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
+PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
+PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
+PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
 
 /* Tranlsation Info */
 translate_version           : '0.3 ',

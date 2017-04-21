@@ -3,149 +3,51 @@
 var el = function() {}
 el.code = 'el';
 el.data = {
-NAV_ENS: 'ENS',
-/* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
-
-/* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
-NAV_Contracts               : 'Contracts ',
-NAV_DeployContract          : 'Deploy Contract ',
-NAV_InteractContract        : 'Interact with Contract ',
-NAV_Multisig                : 'Multisig ',
-NAV_SignMsg                 : 'Sign Message ',
-NAV_Swap                    : 'Swap ',
-
-/* Sign Message */
-MSG_message                 : 'Message ',
-MSG_date                    : 'Date ',
-MSG_signature               : 'Signature ',
-MSG_verify                  : 'Verify Message ',
-MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
-MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
-MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
-
-/* Mnemonic */
-ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
-MNEM_1                      : 'Please select the address you would like to interact with. ',
-MNEM_2                      : 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. ',
-MNEM_more                   : 'More Addresses ',
-MNEM_prev                   : 'Previous Addresses ',
-SEND_custom                 : 'Add Custom Token ',
-TOKEN_hide                  : 'Hide Tokens ',
-TOKEN_show                  : 'Show All Tokens ',
-WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
-x_Mnemonic                  : 'Mnemonic Phrase ',
-
-/* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Connect your Ledger Nano S ',
-ADD_Ledger_2                : 'Open the Ethereum application (or a contract application) ',
-ADD_Ledger_3                : 'Verify that Browser Support is enabled in Settings ',
-ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
-ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
-x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Connect to TREZOR ',
-ADD_Trezor_select           : 'This is a TREZOR seed ',
-
-/* Messages */
-GETH_InvalidSender          : 'Invalid sender ',
-GETH_Nonce                  : 'Nonce too low ',
-GETH_Cheap                  : 'Gas price too low for acceptance ',
-GETH_Balance                : 'Insufficient balance ',
-GETH_NonExistentAccount     : 'Account does not exist or account balance too low ',
-GETH_InsufficientFunds      : 'Insufficient funds for gas * price + value ',
-GETH_IntrinsicGas           : 'Intrinsic gas too low ',
-GETH_GasLimit               : 'Exceeds block gas limit ',
-GETH_NegativeValue          : 'Negative value ',
-HELP_12_Desc_15b            : 'If you are on a PC: ',
-SUCCESS_5                   : 'File Selected ',
-FOOTER_4                    : 'Disclaimer ',
-
-/* Deploy Contracts */
-DEP_generate                : 'Generate Bytecode ',
-DEP_generated               : 'Generated Bytecode ',
-DEP_signtx                  : 'Sign Transaction ',
-DEP_interface               : 'Generated Interface ',
-
-
-
-
 
 /* Navigation*/
-NAV_YourWallets             : 'Τα Πορτοφόλια σας ',
 NAV_AddWallet               : 'Προσθήκη Πορτοφολιού ',
-NAV_GenerateWallet          : 'Δημηουργία Πορτοφολιού ',
 NAV_BulkGenerate            : 'Δημιουργία Πολλών Πορτοφολιών ',
+NAV_Contact                 : 'Επικοινωνία ',
+NAV_Contracts               : 'Contracts ',
+NAV_DeployContract          : 'Deploy Contract ',
+NAV_ENS                     : 'ENS',
+NAV_GenerateWallet          : 'Δημηουργία Πορτοφολιού ',
+NAV_Help                    : 'Βοήθεια ',
+NAV_InteractContract        : 'Interact with Contract ',
+NAV_Multisig                : 'Multisig ',
+NAV_MyWallets               : 'Τα Πορτοφόλια μου ',
+NAV_Offline                 : 'Αποστολή εκτός Σύνδεσης ',
 NAV_SendEther               : 'Αποστολή Ether και Tokens ',
 NAV_SendTokens              : 'Αποστολή Tokens ',
-NAV_Offline                 : 'Αποστολή εκτός Σύνδεσης ',
-NAV_MyWallets               : 'Τα Πορτοφόλια μου ',
+NAV_SignMsg                 : 'Sign Message ',
+NAV_Swap                    : 'Swap ',
 NAV_ViewWallet              : 'Προβολή Πληροφοριών Πορτοφολιού ',
-NAV_Help                    : 'Βοήθεια ',
-NAV_Contact                 : 'Επικοινωνία ',
+NAV_YourWallets             : 'Τα Πορτοφόλια σας ',
 
 /* General */
-x_Wallet                    : 'Πορτοφόλι ',
-x_Password                  : 'Κωδικός ',
-x_Download                  : 'Λήψη ',
-x_Address                   : 'Η Διεύθυνσή σας ',
-x_Save                      : 'Αποθήκευση ',
-x_Cancel                    : 'Ακύρωση ',
+x_Access                    : 'Access ',
 x_AddessDesc                : 'Γνωστή και ως "Αριθμός Λογαριασμού" σας ή "Δημόσιο Κλειδί" σας. Αυτή δίνετε σε όσους επιθυμούν να σας στείλουν ether. Το εικονίδιο είναι ένας εύκολος τρόπος αναγνώρισης της διεύθυνσής σας. ',
-x_PrivKey                   : 'Ιδιωτικό Κλειδί (μη κρυπτογραφημένο) ',
-x_PrivKey2                  : 'Ιδιωτικό Κλειδί ',
-x_PrivKeyDesc               : 'Αυτό το κείμενο είναι η μη κρυπτογραφημένη εκδοχή του Ιδιωτικού Κλειδιού σας που σημαίνει ότι δεν απαιτείται κωδικός. Στην περίπτωση που κάποιος βρει το μη κρυπτογραφημένο Ιδιωτικό Κλειδί σας, έχει πρόσβαση στο πορτοφόλι σας χωρίς κωδικό. Για αυτόν τον λόγο, συνήθως συνιστώνται οι κρυπτογραφημένες εκδοχές. ',
+x_Address                   : 'Η Διεύθυνσή σας ',
+x_Cancel                    : 'Ακύρωση ',
+x_CSV                       : 'Αρχείο CSV (μη κρυπτογραφημένο) ',
+x_Download                  : 'Λήψη ',
+x_Json                      : 'Αρχείο JSON (μη κρυπτογραφημένο) ',
+x_JsonDesc                  : 'Αυτή είναι η μη κρυπτογραφημένη, JSON μορφή του Ιδιωτικού Κλειδιού σας. Αυτό σημαίνει ότι δεν απαιτείται κωδικός όμως οποιοσδήποτε βρει το JSON σας έχει πρόσβαση στο πορτοφόλι και τα Ether σας χωρίς κωδικό. ',
 x_Keystore                  : 'Αρχείο Keystore (UTC / JSON · Συνιστάται · Κρυπτογραφημένο) ',
 x_Keystore2                 : 'Αρχείο Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Αυτό το Αρχείο Keystore έχει την ίδια μορφή που χρησιμοποιείται από το Mist ώστε να μπορείτε εύκολα να το εισάγετε στο μέλλον. Είναι το συνιστώμενο αρχείο για λήψη και δημιουργία αντιγράφου ασφαλείας. ',
-x_Json                      : 'Αρχείο JSON (μη κρυπτογραφημένο) ',
-x_JsonDesc                  : 'Αυτή είναι η μη κρυπτογραφημένη, JSON μορφή του Ιδιωτικού Κλειδιού σας. Αυτό σημαίνει ότι δεν απαιτείται κωδικός όμως οποιοσδήποτε βρει το JSON σας έχει πρόσβαση στο πορτοφόλι και τα Ether σας χωρίς κωδικό. ',
-x_PrintShort                : 'Εκτύπωση ',
+x_Mnemonic                  : 'Mnemonic Phrase ',
+x_ParityPhrase              : 'Parity Phrase ',
+x_Password                  : 'Κωδικός ',
 x_Print                     : 'Εκτύπωση Χάρτινου Πορτοφολιού ',
 x_PrintDesc                 : 'Συμβουλή: Κλικάρετε "Εκτύπωση και Αποθήκευση ως PDF" ακόμη κι αν δεν έχετε εκτυπωτή! ',
-x_CSV                       : 'Αρχείο CSV (μη κρυπτογραφημένο) ',
+x_PrintShort                : 'Εκτύπωση ',
+x_PrivKey                   : 'Ιδιωτικό Κλειδί (μη κρυπτογραφημένο) ',
+x_PrivKey2                  : 'Ιδιωτικό Κλειδί ',
+x_PrivKeyDesc               : 'Αυτό το κείμενο είναι η μη κρυπτογραφημένη εκδοχή του Ιδιωτικού Κλειδιού σας που σημαίνει ότι δεν απαιτείται κωδικός. Στην περίπτωση που κάποιος βρει το μη κρυπτογραφημένο Ιδιωτικό Κλειδί σας, έχει πρόσβαση στο πορτοφόλι σας χωρίς κωδικό. Για αυτόν τον λόγο, συνήθως συνιστώνται οι κρυπτογραφημένες εκδοχές. ',
+x_Save                      : 'Αποθήκευση ',
 x_TXT                       : 'Αρχείο TXT (μη κρυπτογραφημένο) ',
+x_Wallet                    : 'Πορτοφόλι ',
 
 /* Header */
 MEW_Warning_1               : 'Πάντα να ελέγχετε την διεύθυνση URL προτού μπείτε στο πορτοφόλι σας ή δημιουργήσετε καινούριο πορτοφόλι. Προσοχή στις σελίδες ηλεκτρονικού ψαρέματος! ',
@@ -182,6 +84,7 @@ ADD_Radio_2                 : 'Επιλέξτε το αρχείο Πορτοφο
 ADD_Radio_2_short           : 'ΕΠΙΛΕΞΤΕ ΑΡΧΕΙΟ ΠΟΡΤΟΦΟΛΙΟΥ... ',
 ADD_Radio_3                 : 'Επικολλήστε/Πληκτρολογήστε το Ιδιωτικό Κλειδί σας ',
 ADD_Radio_4                 : 'Προσθήκη Λογαριασμού προς Παρακολούθηση ',
+ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
 ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken) ',
 ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR) ',
@@ -222,6 +125,7 @@ SEND_raw                    : 'Ακατέργαστη Συναλλαγή ',
 SEND_signed                 : 'Υπογεγραμμένη Συναλλαγή ',
 SEND_trans                  : 'Αποστολή Συναλλαγής ',
 SEND_TransferTotal          : 'Μεταφορά συνολικού διαθέσιμου υπολοίπου ',
+SEND_custom                 : 'Add Custom Token ',
 SENDModal_Title             : 'Προσοχή! ',
 /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
 SENDModal_Content_1         : 'Πρόκειται να στείλετε ',
@@ -236,6 +140,8 @@ SEND_TransferTotal          : 'Μεταφορά όλου του υπάρχοντ
 TOKEN_Addr                  : 'Διεύθυνση ',
 TOKEN_Symbol                : 'Σύμβολο Token ',
 TOKEN_Dec                   : 'Δεκαδικά ',
+TOKEN_hide                  : 'Hide Tokens ',
+TOKEN_show                  : 'Show All Tokens ',
 
 /* Send Transaction */
 TRANS_desc                  : 'Άν επιθυμείτε να στείλετε Tokens, παρακαλώ χρησιμοποιήστε την σελίδα "Αποστολή Token". ',
@@ -304,6 +210,77 @@ VIEWWALLET_SuccessMsg       : 'Επιτυχία! Εδώ είναι οι πληρ
 CX_error_1                  : 'Δεν έχετε αποθηκευμένα πορτοφόλια. Κάντε κλικ στο ["Προσθήκη Πορτοφολιού"](/cx-wallet.html#add-wallet) για να προσθεσετε ένα! ',
 CX_quicksend                : 'ΤαχυΑποστολή ',
 
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Contracts */
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+DEP_generate                : 'Generate Bytecode ',
+DEP_generated               : 'Generated Bytecode ',
+DEP_signtx                  : 'Sign Transaction ',
+DEP_interface               : 'Generated Interface ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+/* Sign Message */
+MSG_message                 : 'Message ',
+MSG_date                    : 'Date ',
+MSG_signature               : 'Signature ',
+MSG_verify                  : 'Verify Message ',
+MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
+MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
+MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+
+/* Mnemonic */
+MNEM_1                      : 'Please select the address you would like to interact with. ',
+MNEM_2                      : 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. ',
+MNEM_more                   : 'More Addresses ',
+MNEM_prev                   : 'Previous Addresses ',
+
+/* Hardware wallets */
+x_Ledger                    : 'Ledger Nano S ',
+ADD_Ledger_1                : 'Connect your Ledger Nano S ',
+ADD_Ledger_2                : 'Open the Ethereum application (or a contract application) ',
+ADD_Ledger_3                : 'Verify that Browser Support is enabled in Settings ',
+ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
+ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
+x_Trezor                    : 'TREZOR ',
+ADD_Trezor_scan             : 'Connect to TREZOR ',
+ADD_Trezor_select           : 'This is a TREZOR seed ',
+
 /* Error Messages */
 ERROR_0                     : 'Παρακαλώ εισάγετε έγκυρο ποσό. ',
 ERROR_1                     : 'Ο κωδικός σας πρέπει να αποτελείται απο τουλάχιστον 9 χαρακτήρες. Παρακαλώ σιγουρευτείτε ότι είναι ισχυρός κωδικός. ',
@@ -328,17 +305,36 @@ ERROR_19                    : 'Λάθος σύμβολο ',
 ERROR_20                    : 'Not a valid ERC-20 token ',
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
 ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : 'Προκειμένου να έχετε πρόσβαση σε αυτό το πορτοφόλι στο μέλλον **είναι απαραίτητο το αρχείο Keystore/JSON & ο κωδικός ή το Ιδιωτικό Κλειδί σας**. Παρακαλούμε κρατήστε ένα εξωτερικό αντίγραφο ασφαλείας! Δεν υπάρχει τρόπος ανάκτησης ενός πορτοφολιού άν δεν το αποθηκέυσετε. Διαβάστε την σελίδα [Βοήθειας](https://www.myetherwallet.com/#help) για οδηγίες. ',
 ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Έγκυρη διεύθυνση ',
 SUCCESS_2                   : 'Το πορτοφόλι αποκρυπτογραφήθηκε επιτυχώς ',
 SUCCESS_3                   : 'Η συναλλαγή υποβλήθηκε. TX ID ',
 SUCCESS_4                   : 'Το πορτοφόλι σας προστέθηκε επιτυχώς ',
+SUCCESS_5                   : 'File Selected ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
+
+/* Messages */
+GETH_InvalidSender          : 'Invalid sender ',
+GETH_Nonce                  : 'Nonce too low ',
+GETH_Cheap                  : 'Gas price too low for acceptance ',
+GETH_Balance                : 'Insufficient balance ',
+GETH_NonExistentAccount     : 'Account does not exist or account balance too low ',
+GETH_InsufficientFunds      : 'Insufficient funds for gas * price + value ',
+GETH_IntrinsicGas           : 'Intrinsic gas too low ',
+GETH_GasLimit               : 'Exceeds block gas limit ',
+GETH_NegativeValue          : 'Negative value ',
+HELP_12_Desc_15b            : 'If you are on a PC: ',
+SUCCESS_5                   : 'File Selected ',
+FOOTER_4                    : 'Disclaimer ',
 
 /* Parity Error Messages */
 PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
@@ -349,6 +345,8 @@ PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy y
 PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
 PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
 PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
+
+WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
 
 /* Tranlsation Info */
 translate_version           : '0.3 ',

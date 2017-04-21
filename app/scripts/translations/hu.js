@@ -4,78 +4,6 @@ var hu = function() {}
 hu.code = 'hu';
 hu.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
-
-/* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
-NAV_Swap                    : 'Swap ',
-NAV_SignMsg                 : 'Sign Message ',
-
-/* Sign Message */
-MSG_message                 : 'Message ',
-MSG_date                    : 'Date ',
-MSG_signature               : 'Signature ',
-MSG_verify                  : 'Verify Message ',
-MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
-MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
-MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
-
-/* Hardware Wallets */
-ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
-ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
-WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
-x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Connect to TREZOR ',
-ADD_Trezor_select           : 'This is a TREZOR seed ',
-
-
-
-
-
-
 /* Navigation*/
 NAV_YourWallets             : 'Tárcáid ',
 NAV_AddWallet               : 'Tárca hozzáadása ',
@@ -92,10 +20,13 @@ NAV_MyWallets               : 'Tárcáim ',
 NAV_ViewWallet              : 'Tárca adatainak megtekintése ',
 NAV_Help                    : 'Segítség ',
 NAV_Contact                 : 'Kapcsolat ',
+NAV_ENS                     : 'ENS',
+NAV_Swap                    : 'Swap ',
+NAV_SignMsg                 : 'Sign Message ',
 
 /* General */
-x_Address                   : 'A Te címed ',
 x_AddessDesc                : 'Úgy is ismerheted ezt, mint "Számlaszám" vagy "Publikus Kulcs". Ez az amit a partnereidnek küldesz, hogy tudjanak ETH-et küldeni neked. Az oldalsó ikon egyszerű módja a saját címed felismerésének. ',
+x_Address                   : 'A Te címed ',
 x_Cancel                    : 'Mégse ',
 x_CSV                       : 'CSV fájl (titkosítatlan) ',
 x_Download                  : 'Letöltés ',
@@ -105,6 +36,7 @@ x_Keystore                  : 'Keystore Fájl (UTC / JSON · Ajánlott · Titkos
 x_Keystore2                 : 'Keystore Fájl (UTC / JSON) ',
 x_KeystoreDesc              : 'Ez a Keystore fájl ugyanolyan formátumú, amit a Mist használ, tehát könnyedén importálhatod a későbbiekben. Leginkább ezt a fájlt ajánlott letölteni és elmenteni. ',
 x_Mnemonic                  : 'Mnemonikus frázis ',
+x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Jelszó ',
 x_Print                     : 'PapírTárca Nyomtatása ',
 x_PrintDesc                 : 'Profi Tipp: Kattints a nyomtatásra és mentsd el PDF formátumban, még abban az esetben is, ha nincs nyomtatód! ',
@@ -115,6 +47,7 @@ x_PrivKeyDesc               : 'Ez a titkosítatlan szöveges változata a privá
 x_Save                      : 'Mentés ',
 x_TXT                       : 'TXT fájl (titkosítatlan) ',
 x_Wallet                    : 'Tárca ',
+x_Access                    : 'Access ',
 
 /* Header */
 MEW_Warning_1               : 'Mindig ellenőrizd az URL-t mielőtt megpróbálod elérni a tárcádat vagy új tárcát hozol létre. Óvakodj az adathalász oldalalaktól! ',
@@ -252,12 +185,6 @@ OFFLINE_Step2_Label_7       : 'Írd be / Válaszd ki a Privát Kulcsodat / JSON-
 OFFLINE_Step3_Title         : 'Lépés 3: Küld / Közzétesz (Online Számítógép) ',
 OFFLINE_Step3_Label_1       : 'Illeszd be ide az aláírt tranzakciót a második lépésből (Lépés 2) és nyomd meg a "TRANZAKCIÓ KÜLDÉSE" gombot. ',
 
-/* Deploy Contracts */
-DEP_generate                : 'Byte-kód Generálása ',
-DEP_generated               : 'Generált Byte-kód ',
-DEP_signtx                  : 'Aláírt Tranzakció ',
-DEP_interface               : 'Generált Felület ',
-
 /* My Wallet */
 MYWAL_Nick                  : 'Tárca Nickname ',
 MYWAL_Address               : 'Tárca Cím ',
@@ -286,16 +213,75 @@ MNEM_2                      : 'Egyetlen mnemonikus frázis egyszerre több tárc
 MNEM_more                   : 'További Címek ',
 MNEM_prev                   : 'Előző Címek ',
 
-/* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Csatlakoztasd a Ledger Nano S-et ',
-ADD_Ledger_2                : 'Nyisd meg az Ethereum applikációt (vagy egy kontraktus applikációt) ',
-ADD_Ledger_3                : 'Ellenőrizd, hogy a beállításokban engedélyezve van a Böngésző Támogatás (Browser Support) ',
-ADD_Ledger_scan             : 'Csatlakozás a Ledger Nano S-hez ',
-
 /* Chrome Extension */
 CX_error_1                  : 'Nincsen mentett Tárcád. Kattints ["Tárca Hozzáadása"](/cx-wallet.html#add-wallet) ahhoz, hogy hozzáadj egyet! ',
 CX_quicksend                : 'GyorsKüldés ', // if no appropriate translation, just use "Send"
+
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Contracts */
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+DEP_generate                : 'Byte-kód Generálása ',
+DEP_generated               : 'Generált Byte-kód ',
+DEP_signtx                  : 'Aláírt Tranzakció ',
+DEP_interface               : 'Generált Felület ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+/* Sign Message */
+MSG_message                 : 'Message ',
+MSG_date                    : 'Date ',
+MSG_signature               : 'Signature ',
+MSG_verify                  : 'Verify Message ',
+MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
+MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
+MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+
+/* Hardware wallets */
+x_Ledger                    : 'Ledger Nano S ',
+ADD_Ledger_scan             : 'Csatlakozás a Ledger Nano S-hez ',
+ADD_Ledger_1                : 'Csatlakoztasd a Ledger Nano S-et ',
+ADD_Ledger_2                : 'Nyisd meg az Ethereum applikációt (vagy egy kontraktus applikációt) ',
+ADD_Ledger_3                : 'Ellenőrizd, hogy a beállításokban engedélyezve van a Böngésző Támogatás (Browser Support) ',
+ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
+ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
+x_Trezor                    : 'TREZOR ',
+ADD_Trezor_scan             : 'Connect to TREZOR ',
+ADD_Trezor_select           : 'This is a TREZOR seed ',
 
 /* Error Messages */
 ERROR_0                     : 'Kérlek írj be érvényes összeget! ',
@@ -321,17 +307,22 @@ ERROR_19                    : 'Érvénytelen szimbólum ',
 ERROR_20                    : 'Not a valid ERC-20 token ',
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
 ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : '**Szükséged lesz a Keystore Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért. ',
 ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Érvényes cím ',
 SUCCESS_2                   : 'Tárca sikeresen dekódolva ',
 SUCCESS_3                   : 'Tranzakció elküldve. TX ID ',
 SUCCESS_4                   : 'Tárcád sikeresen hozzáadva ',
+SUCCESS_5                   : 'File Selected ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
 
 /* Geth Error Messages */
 GETH_InvalidSender          : 'Érvénytelen küldő ',

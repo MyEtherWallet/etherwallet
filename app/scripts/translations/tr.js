@@ -4,146 +4,40 @@ var tr = function() {}
 tr.code = 'tr';
 tr.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
-
-/* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
-NAV_Swap                    : 'Swap ',
-NAV_SignMsg                 : 'Sign Message ',
-
-/* Sign Message */
-MSG_message                 : 'Message ',
-MSG_date                    : 'Date ',
-MSG_signature               : 'Signature ',
-MSG_verify                  : 'Verify Message ',
-MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
-MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
-MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
-
-/* Mnemonic */
-MNEM_1                      : 'Please select the address you would like to interact with. ',
-MNEM_2                      : 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. ',
-MNEM_more                   : 'More Addresses ',
-MNEM_prev                   : 'Previous Addresses ',
-x_Mnemonic                  : 'Mnemonic Phrase ',
-ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
-SEND_custom                 : 'Add Custom Token ',
-TOKEN_show                  : 'Show All Tokens ',
-TOKEN_hide                  : 'Hide Tokens ',
-WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
-
-/* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Connect your Ledger Nano S ',
-ADD_Ledger_2                : 'Open the Ethereum application (or a contract application) ',
-ADD_Ledger_3                : 'Verify that Browser Support is enabled in Settings ',
-ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
-ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
-x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Connect to TREZOR ',
-ADD_Trezor_select           : 'This is a TREZOR seed ',
-
-/* View Wallet Details */
-VIEWWALLET_Subtitle         : 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
-VIEWWALLET_Subtitle_Short   : 'This allows you to download different versions of private keys and re-print your paper wallet. ',
-VIEWWALLET_SuccessMsg       : 'Success! Here are your wallet details. ',
-
-/* Geth Error Messages */
-GETH_InvalidSender          : 'Invalid sender ',
-GETH_Nonce                  : 'Nonce too low ',
-GETH_Cheap                  : 'Gas price too low for acceptance ',
-GETH_Balance                : 'Insufficient balance ',
-GETH_NonExistentAccount     : 'Account does not exist or account balance too low ',
-GETH_InsufficientFunds      : 'Insufficient funds for gas * price + value ',
-GETH_IntrinsicGas           : 'Intrinsic gas too low ',
-GETH_GasLimit               : 'Exceeds block gas limit ',
-GETH_NegativeValue          : 'Negative value ',
-
-/* Parity Error Messages */
-PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
-PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
-PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
-
-
-
-
-
 /* Navigation*/
-NAV_YourWallets             : 'Cüzdanin ',
 NAV_AddWallet               : 'Cüzdan ekle ',
-NAV_GenerateWallet          : 'Cüzdan oluştur ',
 NAV_BulkGenerate            : 'Birkaç Cüzdan oluştur ',
+NAV_Contact                 : 'Iletişime geç ',
+NAV_Contracts               : 'Sözleşmeler ',
+NAV_DeployContract          : 'Sözleşme kur ',
+NAV_ENS                     : 'ENS',
+NAV_GenerateWallet          : 'Cüzdan oluştur ',
+NAV_Help                    : 'Yardim et ',
+NAV_InteractContract        : 'Interact with Contract ',
+NAV_Multisig                : 'Multisig ',
+NAV_MyWallets               : 'Cüzdanim ',
+NAV_Offline                 : 'Offline gönder ',
 NAV_SendEther               : 'Ether ve Tokens göndermek ',
 NAV_SendTokens              : 'Tokens gönder ',
-NAV_Offline                 : 'Offline gönder ',
-NAV_MyWallets               : 'Cüzdanim ',
+NAV_SignMsg                 : 'Sign Message ',
+NAV_Swap                    : 'Swap ',
 NAV_ViewWallet              : 'Cüzdan bilgilerni göster ',
-NAV_Help                    : 'Yardim et ',
-NAV_Contact                 : 'Iletişime geç ',
-NAV_DeployContract          : 'Sözleşme kur ',
-NAV_InteractContract        : 'Interact with Contract ',
-NAV_Contracts               : 'Sözleşmeler ',
-NAV_Multisig                : 'Multisig ',
+NAV_YourWallets             : 'Cüzdanin ',
 
 /* General */
+x_Access                    : 'Access ',
 x_AddessDesc                : 'Bu "hesap numarası" veya "genel anahtar" dir. Birisi ether göndermek istiyorsa bu adresi kullanmasi gerekir. Ikon adresini kontrol etmek kolay bir yoldur ',
 x_Address                   : 'Adresin ',
 x_Cancel                    : 'Iptal et ',
+x_CSV                       : 'CSV dosya (şifrelenmemis) ',
 x_Download                  : 'Indir ',
 x_Json                      : 'JSON dosya (şifrelenmemis) ',
 x_JsonDesc                  : 'Bu özel anahtarinin sifresiz, JSON formatidir. Demekki parolasiz cüzdanini acabilirsin. Özel anahatarina sahip olan herkez sifresiz cüzdani aca bilir. ',
 x_Keystore                  : 'Keystore dosya (UTC / JSON · Tavsiye edilen · şifrelenmiş) ',
 x_Keystore2                 : 'Keystore dosya (UTC / JSON) ',
 x_KeystoreDesc              : 'This Keystore file matches the format used by Mist so you can easily import it in the future. It is the recommended file to download and back up. ',
+x_Mnemonic                  : 'Mnemonic Phrase ',
+x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Parola ',
 x_Print                     : 'Cüzdanin kağıt versiyonunu yazdir ',
 x_PrintDesc                 : 'ProTavsiye: Eğer yazıcınız olmasa bile, "Yazdır" seçeneğini tıklayın ve PDF dosyası olarak kaydedin! ',
@@ -153,7 +47,6 @@ x_PrivKey2                  : 'Özel anahtar ',
 x_PrivKeyDesc               : 'Bu özel anahtarinin şifrelenmemiş metin sürümüdür. Birisi şifrelenmemiş özel anahtarı bulduysa, şifre olmadan cüzdani acabilir. Bu nedenle, şifrelenmiş sürümlerini genellikle tavsiye edilir. ',
 x_Save                      : 'Indir ',
 x_TXT                       : 'TXT dosya (şifrelenmemis) ',
-x_CSV                       : 'CSV dosya (şifrelenmemis) ',
 x_Wallet                    : 'Cüzdan ',
 
 /* Header */
@@ -193,6 +86,7 @@ ADD_Radio_2_alt             : 'Cüzdan dosyayi sec ',
 ADD_Radio_2_short           : 'CÜZDAN DOSYAYI SEC... ',
 ADD_Radio_3                 : 'Özel anahatarini Yaspistir/Yaz ',
 ADD_Radio_4                 : 'Izlenecek hesap adresi ekle ', /* maybe another word for watch/izlencek --> Takip edilecek? */
+ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
 ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken) ',
 ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR) ',
@@ -234,6 +128,7 @@ SEND_raw                    : 'İşlem oluştur ikili sistem ', /* add Binär */
 SEND_signed                 : 'Imzali İşlem ',
 SEND_trans                  : 'Islemi gönder ',
 SENDModal_Title             : 'Uyarı! ',
+SEND_custom                 : 'Add Custom Token ',
 
 /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
 SENDModal_Content_1         : 'şu an ',
@@ -247,6 +142,8 @@ SENDModal_Yes               : 'Evet, Eminim! Islemi tamamla. ',
 TOKEN_Addr                  : 'Adres ',
 TOKEN_Symbol                : 'Token symbolu ',
 TOKEN_Dec                   : 'Ondalık ',
+TOKEN_show                  : 'Show All Tokens ',
+TOKEN_hide                  : 'Hide Tokens ',
 
 /* Send Transaction */
 TRANS_desc                  : 'Eğer Token göndermek istiyorsan, bunun yerine "Token Gönder" sayfasını kullan. ',
@@ -312,6 +209,78 @@ MYWAL_Content_1             : 'Uyarı! Cüzdanını silmek üzeresin ',
 MYWAL_Content_2             : 'Bunu kaldırmadan önce ** özel anahtarıni ve / veya Keystore Dosya ve şifreni ** kaydettiğinden emin ol. ',
 MYWAL_Content_3             : 'If you want to use this wallet with your MyEtherWallet CX in the future, you will need to manually re-add it using the private key/JSON and password. ',
 
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Contracts */
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+/* Sign Message */
+MSG_message                 : 'Message ',
+MSG_date                    : 'Date ',
+MSG_signature               : 'Signature ',
+MSG_verify                  : 'Verify Message ',
+MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
+MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
+MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+
+/* Mnemonic */
+MNEM_1                      : 'Please select the address you would like to interact with. ',
+MNEM_2                      : 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. ',
+MNEM_more                   : 'More Addresses ',
+MNEM_prev                   : 'Previous Addresses ',
+
+/* Hardware wallets */
+x_Ledger                    : 'Ledger Nano S ',
+ADD_Ledger_1                : 'Connect your Ledger Nano S ',
+ADD_Ledger_2                : 'Open the Ethereum application (or a contract application) ',
+ADD_Ledger_3                : 'Verify that Browser Support is enabled in Settings ',
+ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
+ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
+x_Trezor                    : 'TREZOR ',
+ADD_Trezor_scan             : 'Connect to TREZOR ',
+ADD_Trezor_select           : 'This is a TREZOR seed ',
+
+/* View Wallet Details */
+VIEWWALLET_Subtitle         : 'This allows you to download different versions of private keys and re-print your paper wallet. You may want to do this in order to [import your account into Geth/Mist](http://ethereum.stackexchange.com/questions/465/how-to-import-a-plain-private-key-into-geth/). If you want to check your balance, we recommend using a blockchain explorer like [etherscan.io](http://etherscan.io/). ',
+VIEWWALLET_Subtitle_Short   : 'This allows you to download different versions of private keys and re-print your paper wallet. ',
+VIEWWALLET_SuccessMsg       : 'Success! Here are your wallet details. ',
+
 /* Chrome Extension */
 CX_error_1                  : 'Su an cüzdan eklenmemis. Cüzdan ekle tikla ["Add Wallet"](/cx-wallet.html#add-wallet) ve bir cüzdan ekle! ',
 CX_quicksend                : 'Gönder ', // if no appropriate translation, just use "Send" maybe add hizli
@@ -340,18 +309,45 @@ ERROR_19                    : 'Geçersiz sembol ',
 ERROR_20                    : 'Not a valid ERC-20 token ',
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
 ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : 'Ilerde cüzdanini acmak icin **Keystore dosyan ve parolan veya özel anahtarin** lazim olacak. Lütfen kaydet ve dista yedekle! Kaydedilmemiş cüzdanini kurtarmanin hiçbir yolu yoktur. Talimatlar icin yardim [help page](https://www.myetherwallet.com/#help) sayfasini oku ',
 ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Geçerli adres ',
 SUCCESS_2                   : 'Cüzdan basariyla desifre edildi ',
 SUCCESS_3                   : 'İşlem teslim edildi TX ID ',
 SUCCESS_4                   : 'Cüzdanın başarıyla eklendi ',
 SUCCESS_5                   : 'Dosya secildi ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
+
+WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
+
+/* Geth Error Messages */
+GETH_InvalidSender          : 'Invalid sender ',
+GETH_Nonce                  : 'Nonce too low ',
+GETH_Cheap                  : 'Gas price too low for acceptance ',
+GETH_Balance                : 'Insufficient balance ',
+GETH_NonExistentAccount     : 'Account does not exist or account balance too low ',
+GETH_InsufficientFunds      : 'Insufficient funds for gas * price + value ',
+GETH_IntrinsicGas           : 'Intrinsic gas too low ',
+GETH_GasLimit               : 'Exceeds block gas limit ',
+GETH_NegativeValue          : 'Negative value ',
+
+/* Parity Error Messages */
+PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
+PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
+PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 
 /* Tranlsation Info */
 translate_version           : '0.3 ',

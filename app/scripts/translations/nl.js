@@ -19,11 +19,13 @@ NAV_MyWallets               : 'Mijn Wallets ',
 NAV_Offline                 : 'Verzend Offline ',
 NAV_SendEther               : 'Verzend Ether & Tokens ',
 NAV_SendTokens              : 'Verzend Tokens ',
+NAV_SignMsg                 : 'Onderteken Bericht ',
 NAV_Swap                    : 'Omwisselen ',
 NAV_ViewWallet              : 'Bekijk Wallet Info ',
 NAV_YourWallets             : 'Jouw Wallets ',
 
 /* General */
+x_Access                    : 'Verkrijg Toegang ',
 x_AddessDesc                : 'Dit is je "Account #" ofwel je "Publieke Sleutel". Maak dit bekend aan anderen zodat ze je ether kunnen sturen. Dit icoon is een makkelijke manier om je adres te herkennen. ',
 x_Address                   : 'Je Adres ',
 x_Cancel                    : 'Annuleren ',
@@ -208,7 +210,6 @@ OFFLINE_Step3_Title         : 'Stap 3: Verstuur / Publiceer Transactie (Online C
 OFFLINE_Step3_Label_1       : 'Plak de gesigneerde transactie van Stap 2 hier en click de "Verzend Transactie" knop. ',
 
 /* Contracts */
-x_Access                    : 'Verkrijg Toegang ',
 CONTRACT_Title              : 'Contract Adres ',
 CONTRACT_Title_2            : 'Selecteer Bestaand Contract ',
 CONTRACT_Json               : 'ABI / JSON Interface ',
@@ -253,7 +254,6 @@ SWAP_order_CTA              : "Verzend alsjeblieft ", // Please send 1 ETH...
 SWAP_unlock                 : "Open je Wallet op deze pagina om ETH of Tokens direct te verzenden. ",
 
 /* Sign Message */
-NAV_SignMsg                 : 'Onderteken Bericht ',
 MSG_message                 : 'Bericht ',
 MSG_date                    : 'Datum ',
 MSG_signature               : 'Handtekening ',
@@ -306,11 +306,16 @@ ERROR_28                    : '**Je hebt je Keystore Bestand & wachtwoord of pri
 ERROR_29                    : 'Voer een valide gebruikersnaam en wachtwoord in ',
 ERROR_30                    : 'Voer een valide ENS naam in ',
 ERROR_31                    : 'Ongeldige geheime zin ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Geldig adres ',
 SUCCESS_2                   : 'Wallet succesvol ontsleuteld ',
 SUCCESS_3                   : 'Transactie verzonden. TX ID ',
 SUCCESS_4                   : 'Je Wallet is succesvol toegevoegd ',
 SUCCESS_5                   : 'Bestand Geselecteerd ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
 
 WARN_Send_Link              : 'Je bent hier gekomen via een link waarbij het adres, bedrag, gas of data velden al ingevuld zijn. Indien gewenst kun je elk veld nog aanpassen voor het verzenden. Ontgrendel je wallet on te beginnen. ',
 

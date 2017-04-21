@@ -4,14 +4,13 @@ var zhtw = function() {}
 zhtw.code = 'zhtw';
 zhtw.data = {
 
-NAV_ENS: 'ENS',
-
 /* Navigation*/
 NAV_AddWallet               : '新增錢包 ',
 NAV_BulkGenerate            : '批量產生 ',
 NAV_Contact                 : '聯繫我們 ',
 NAV_Contracts               : '合約 ',
 NAV_DeployContract          : '部署合約 ',
+NAV_ENS                     : 'ENS',
 NAV_GenerateWallet          : '產生錢包 ',
 NAV_Help                    : '幫助 ',
 NAV_InteractContract        : '和合約互動 ',
@@ -20,11 +19,13 @@ NAV_MyWallets               : '我的錢包 ',
 NAV_Offline                 : '離線發送 ',
 NAV_SendEther               : '發送乙太幣 / 代幣 ',
 NAV_SendTokens              : '發送代幣 ',
+NAV_SignMsg                 : '對訊息做簽名 ',
 NAV_Swap                    : 'Swap ',
 NAV_ViewWallet              : '查看錢包 ',
 NAV_YourWallets             : '你的錢包 ',
 
 /* General */
+x_Access                    : '存取合約 ',
 x_AddessDesc                : '你可以把地址當作是你的"帳號"或者"公鑰"。將地址告訴他人，他人就能發送乙太幣給你。這個圖標能幫助你判別地址。 ',
 x_Address                   : '你的地址 ',
 x_Cancel                    : '取消 ',
@@ -206,7 +207,6 @@ OFFLINE_Step3_Title         : '步驟三： 送出交易（在連網裝置上）
 OFFLINE_Step3_Label_1       : '將步驟二經過簽名的交易複製並貼上到這，最後按下送出交易的按鈕。',
 
 /* Contracts */
-x_Access                    : '存取合約 ',
 CONTRACT_Title              : '合約地址 ',
 CONTRACT_Title_2            : '選擇已經存在的合約 ',
 CONTRACT_Json               : '合約的 ABI / JSON 介面 ',
@@ -241,7 +241,7 @@ SWAP_rec_add                : "你收錢的地址 ",
 SWAP_start_CTA              : "開始交換 ",
 SWAP_ref_num                : "你的交易編號 ",
 SWAP_time                   : "剩餘多少時間可送出交易 ",
-SWAP_elapsed				: "送出交易後已經經過了 ",
+SWAP_elapsed                : "送出交易後已經經過了 ",
 SWAP_progress_1             : "訂單已產生 ",
 SWAP_progress_2             : "正在等待你的 ", // Waiting for your BTC...
 SWAP_progress_3             : "收到了! ", // ETH Received!
@@ -251,7 +251,6 @@ SWAP_order_CTA              : "請傳送 ", // Please send 1 ETH...
 SWAP_unlock                 : "解鎖你的錢包來從這個頁面轉錢或轉代幣 ",
 
 /* Sign Message */
-NAV_SignMsg                 : '對訊息做簽名 ',
 MSG_message                 : '訊息 ',
 MSG_date                    : '日期 ',
 MSG_signature               : '簽名 ',
@@ -300,11 +299,15 @@ ERROR_26                    : '請輸入有效的ABI ',
 ERROR_27                    : '最少數量 0.01 及最大',
 ERROR_28                    : '**以後你會需要密碼和Keystore檔案** (或私鑰)來存取你的錢包。請儲存並備份在額外的地方！如果沒有儲存你是沒有機會找回這個錢包的。 詳見[幫助頁面](https://www.myetherwallet.com/#help)來獲取更多資訊。 ',
 ERROR_29                    : '請輸入有效的使用者及密碼 ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : '有效的地址 ',
 SUCCESS_2                   : '成功解密錢包 ',
 SUCCESS_3                   : '交易已傳送。 交易的ID ',
 SUCCESS_4                   : '成功新增你的錢包 ',
 SUCCESS_5                   : '已選擇檔案 ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
 
 WARN_Send_Link              : '你藉由一條連結到達此頁面，且該連結已幫你將地址、金額、gas和data欄位或交易類別(傳送模式)填好。 送出前你可以自由更改其中的值。 首先先解鎖你的錢包。 ',
 
