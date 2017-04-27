@@ -56,7 +56,7 @@ uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
     );
 }
 uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
-    eTx.raw[6] = Buffer.from([1]); //ETH chain id
+    eTx.raw[6] = Buffer.from([ajaxReq.chainId]); //ETH chain id
     eTx.raw[7] = eTx.raw[8] = 0;
     var toHash = old ? eTx.raw.slice(0, 6) : eTx.raw;
     var txToSign = ethUtil.rlp.encode(toHash);

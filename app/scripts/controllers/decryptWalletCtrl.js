@@ -19,6 +19,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         alternativeDPath: "m/44'/60'/0'", // first address: m/44'/60'/0'/0
         customDPath: "m/44'/60'/1'/0",
         ledgerPath: "m/44'/60'/0'",
+        ledgerClassicPath: "m/44'/60'/160720'/0'",
         trezorTestnetPath: "m/44'/1'/0'/0", // first address: m/44'/1'/0'/0/0
         trezorClassicPath: "m/44'/61'/0'/0", // first address: m/44'/61'/0'/0/0
         trezorPath: "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
@@ -182,7 +183,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.scanLedger = function() {
         $scope.ledger = new Ledger3("w0w");
         var app = new ledgerEth($scope.ledger);
-        var path = $scope.HDWallet.ledgerPath;
+        var path = ajaxReq.type == 'ETC' ? $scope.HDWallet.ledgerClassicPath : $scope.HDWallet.ledgerPath;
         app.getAddress(path, $scope.ledgerCallback, false, true);
     };
     $scope.scanTrezor = function() {
@@ -204,7 +205,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     // helper function that removes 0x prefix from strings
     function fixPkey(key) {
         if (key.indexOf('0x') === 0) {
-          return key.slice(2);
+            return key.slice(2);
         }
         return key;
     }
