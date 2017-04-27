@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js     : commit ba11f84a469e2f8b3a0669dd7fc67af8be3920e0
+// Last sync with en.js     : commit cca1a65ee0194cc6e23747d228867e0bc105be20
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -298,7 +298,7 @@ ERROR_19                    : 'Simbolo non valido ',
 ERROR_20                    : 'Non è un token ERC-20 valido. ',
 ERROR_21                    : 'Impossibile eseguire una stima del gas necessario. Non ci sono abbastanza fondi nel conto, oppure l\'indirizzo del contratto ricevente genererebbe un errore. Puoi inserire il gas manualmente e procedere. Il messaggio di errore al momento dell\'invio potrebbe contenere ulteriori informazioni. ',
 ERROR_22                    : 'Inserisci un nome di nodo valido ',
-ERROR_23                    : 'Inserisci un url valido, se stai usando https l\'url deve cominciare per https ',
+ERROR_23                    : 'Inserisci un URL valido. Se ti stai collegando tramite HTTPS anche il nodo deve utilizzare HTTPS ',
 ERROR_24                    : 'Inserisci una porta valida ',
 ERROR_25                    : 'Inserisci un ID catena valido ',
 ERROR_26                    : 'Inserisci una ABI valida ',
@@ -307,13 +307,13 @@ ERROR_28                    : '**Avrai bisogno del tuo file Keystore e della pas
 ERROR_29                    : 'Inserisci un nome utente e una password validi ',
 ERROR_30                    : 'Inserisci un nome ENS valido ',
 ERROR_31                    : 'Frase segreta non valida ',
-ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
+ERROR_32                    : 'Impossibile cambiare il nodo o collegarsi al nodo selezionato. Aggiorna la pagina e riprova. ',
 SUCCESS_1                   : 'Indirizzo valido ',
 SUCCESS_2                   : 'Portafoglio decodificato correttamente ',
 SUCCESS_3                   : 'Transazione inviata. TX ID ',
 SUCCESS_4                   : 'Il portafoglio è stato aggiunto correttamente ',
 SUCCESS_5                   : 'File selezionato ',
-SUCCESS_6                   : 'You are successfully connected to the node   ',
+SUCCESS_6                   : 'Ora sei connesso al nodo   ',
 
 WARN_Send_Link              : 'Sei arrivato qui da un link che ha riempito per te i campi indirizzo, importo, gas, dati o tipo di transazione (modalità di invio). Puoi cambiare queste informazioni prima di inviare. Sblocca il tuo portafoglio per iniziare. ',
 
