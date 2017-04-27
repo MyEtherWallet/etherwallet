@@ -40,7 +40,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.6.3 &nbsp;&nbsp;
+        &middot; v3.6.4 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -225,6 +225,8 @@
       </div>
       <br />
       <a tabindex="0" role="button" class="btn btn-primary btn-block" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
+      <br /><br /><br /><br /><br /><br />
+      <p class="strong">Ledger & TREZOR users: Do not generate a new wallet&mdash;your hardware device <em> is </em> your wallet.<br /><a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">You can connect to your device, see your addresses, or send ETH or Tokens here.</a></p>
     </div>
   </section>
 

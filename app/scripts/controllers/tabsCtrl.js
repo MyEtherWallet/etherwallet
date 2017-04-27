@@ -43,8 +43,13 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             key: key
         }));
         ajaxReq.getCurrentBlock(function(data) {
-            if (data.error) $scope.nodeIsConnected = false;
-            else $scope.nodeIsConnected = true;
+            if (data.error) {
+              $scope.nodeIsConnected = false;
+              //$scope.notifier.danger(globalFuncs.errorMsgs[32]);
+            } else {
+              $scope.nodeIsConnected = true;
+              //$scope.notifier.success(globalFuncs.successMsgs[5]);
+            }
         });
     }
     $scope.checkNodeUrl = function(nodeUrl) {

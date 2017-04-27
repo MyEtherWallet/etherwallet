@@ -4,15 +4,13 @@ var ja = function() {}
 ja.code = 'ja';
 ja.data = {
 
-NAV_ENS: 'ENS',
-
-
 /* Navigation*/
 NAV_AddWallet               : 'ウォレット追加 ',
 NAV_BulkGenerate            : 'バルク作成 ',
 NAV_Contact                 : '連絡する ',
 NAV_Contracts               : 'Contracts ',
 NAV_DeployContract          : 'コントラクトをデプロイ ',
+NAV_ENS                     : 'ENS',
 NAV_GenerateWallet          : 'ウォレット作成 ',
 NAV_Help                    : 'ヘルプ ',
 NAV_InteractContract        : 'コントラクトを操作 ',
@@ -308,18 +306,23 @@ ERROR_19                    : '無効なシンボル ',
 ERROR_20                    : '　は有効なERC-20トークンではありません。もし他のトークンをロード中であれば、このトークンを取り除いてからもう一度試してください。 ',
 ERROR_21                    : 'ガス量を推定できません。十分な資金が口座にないか、あるいは受け取り側のコントラクトがエラーになっています。ガス量を変更してから試してください。送出時にはより詳しいエラーメッセージが返ります。 ',
 ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : 'ウォレットを操作するためには**Keystore/JSONとパスワードかプライベートキーが必要** 保存してから、外部バックアップしてください！ここで保存しないとウォレットが使用できなくなります。詳細はヘルプページを参照してください。(https://www.myetherwallet.com/#help) ',
 ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : '有効なアドレス ',
 SUCCESS_2                   : 'ウォレットは正常に暗号解除されました。 ',
 SUCCESS_3                   : 'トランザクションが送出されました。 TX ID ',
 SUCCESS_4                   : 'ウォレットが追加されました： ',
 SUCCESS_5                   : '選択されました： ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
+
 WARN_Send_Link              : '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、ウォレットを解錠してください。 ',
 
 /* Parity Error Messages */

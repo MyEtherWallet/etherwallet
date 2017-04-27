@@ -4,64 +4,13 @@ var pl = function() {}
 pl.code = 'pl';
 pl.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Fraza Parity ',
-
-/* Node Switcher */
-NODE_Title                  : 'Zmień Domyślny Węzeł',
-NODE_Subtitle               : 'Aby połączyć się z lokalnym węzłem...',
-NODE_Warning                : 'Twój węzeł musi obsługiwać HTTPS, aby można było się połączyć z nim przez MyEtherWallet.com. Możesz pobrać [repozytorium MyEtherWallet](https://github.com/kvhnuke/etherwallet/releases/latest) i uruchomić lokalnie aby połączyć się z dowolnym węzłem. Możesz też pobrać darmowy certyfikat SSL przez [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Nazwa Węzła',
-NODE_Port                   : 'Port Węzła',
-NODE_CTA                    : 'Zapisz i Używaj Węzła',
-
-/* Contracts */
-x_Access                    : 'Dostęp ',
-CONTRACT_Title              : 'Adres Kontraktu ',
-CONTRACT_Title_2            : 'Wybierz Istniejący Kontrakt ',
-CONTRACT_Json               : 'Interfejs ABI / JSON ',
-CONTRACT_Interact_Title     : 'Odczytaj / Zapisz Kontrakt ',
-CONTRACT_Interact_CTA       : 'Wybierz funkcję ',
-CONTRACT_ByteCode           : 'Kod Bajtowy ',
-CONTRACT_Read               : 'ODCZYTAJ ',
-CONTRACT_Write              : 'ZAPISZ ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Aktualne Kursy ",
-SWAP_init_1                 : "Chcę wymienić ",
-SWAP_init_2                 : " na ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Zatwierdź! ", // or "Continue"
-SWAP_information            : "Twoja Adnotacja ",
-SWAP_send_amt               : "Kwota do wysłania ",
-SWAP_rec_amt                : "Kwota rządania ",
-SWAP_your_rate              : "Twój kurs ",
-SWAP_rec_add                : "Twój Adres Odbiorczy ",
-SWAP_start_CTA              : "Rozpocznij Wymianę ",
-SWAP_ref_num                : "Twój numer referencyjny ",
-SWAP_time                   : "Pozostały czas na wysyłkę ",
-SWAP_progress_1             : "Zlecenie Rozpoczęte ",
-SWAP_progress_2             : "Oczekiwanie na Twoje ", // Waiting for your BTC...
-SWAP_progress_3             : "Otrzymano! ", // ETH Received!
-SWAP_progress_4             : "Wysyłanie Twoich {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Zlecenie Zakończone ",
-SWAP_order_CTA              : "Wyślij ", // Please send 1 ETH...
-SWAP_unlock                 : "Odblokuj Twój portfel, aby wysłać ETH lub Tokeny wprost z tej strony. ",
-
-NAV_Swap                    : 'Giełda ',
-
-
-
-
-
 /* Navigation*/
 NAV_AddWallet               : 'Dodaj Portfel ',
 NAV_BulkGenerate            : 'Generuj Hurtowo ',
 NAV_Contact                 : 'Kontakt ',
 NAV_Contracts               : 'Kontrakt ',
 NAV_DeployContract          : 'Wyślij Kontrakt ',
+NAV_ENS                     : 'ENS',
 NAV_GenerateWallet          : 'Wygeneruj Portfel ',
 NAV_Help                    : 'Pomoc ',
 NAV_InteractContract        : 'Pracuj z Kontraktem ',
@@ -71,10 +20,12 @@ NAV_Offline                 : 'Wyślij Offline ',
 NAV_SendEther               : 'Wyślij Ether i Tokeny ',
 NAV_SendTokens              : 'Wyślij Tokeny ',
 NAV_SignMsg                 : 'Podpisz Wiadomość ',
+NAV_Swap                    : 'Giełda ',
 NAV_ViewWallet              : 'Wyświetl informacje o portfelu ',
 NAV_YourWallets             : 'Twoje Portfele ',
 
 /* General */
+x_Access                    : 'Dostęp ',
 x_AddessDesc                : 'Inaczej "Numer konta" lub "Klucz publiczny". Wysyłasz go innym aby mogli Ci wysłać ether. Ikona umożliwia łatwe rozpoznanie Twojego adresu. ',
 x_Address                   : 'Twój Adres ',
 x_Cancel                    : 'Anuluj ',
@@ -86,6 +37,7 @@ x_Keystore                  : 'Plik Keystore (UTC / JSON · Zalecany · Szyfrowa
 x_Keystore2                 : 'Plik Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Ten plik Keystore odpowiada formatowi stosowanemu przez Mist, więc może być w prosty sposób zaimportowany w przyszłości. Jest to zalecana forma pliku do pobrania i przechowywania jako kopii zapasowej. ',
 x_Mnemonic                  : 'Mnemonik ',
+x_ParityPhrase              : 'Fraza Parity ',
 x_Password                  : 'Hasło ',
 x_Print                     : 'Drukuj Portfel Papierowy ',
 x_PrintDesc                 : 'Wskazówka: Kliknij drukuj i zapisz plik PDF, nawet jeżeli nie posiadasz drukarki! ',
@@ -292,6 +244,45 @@ ADD_Trezor_select           : 'To jest ziarno (seed) TREZOR',
 CX_error_1                  : 'Nie posiadasz żadnych zapisanych portfeli. ["Dodaj Portfel"](/cx-wallet.html#add-wallet)! ',
 CX_quicksend                : 'Wyślij ',
 
+/* Node Switcher */
+NODE_Title                  : 'Zmień Domyślny Węzeł',
+NODE_Subtitle               : 'Aby połączyć się z lokalnym węzłem...',
+NODE_Warning                : 'Twój węzeł musi obsługiwać HTTPS, aby można było się połączyć z nim przez MyEtherWallet.com. Możesz pobrać [repozytorium MyEtherWallet](https://github.com/kvhnuke/etherwallet/releases/latest) i uruchomić lokalnie aby połączyć się z dowolnym węzłem. Możesz też pobrać darmowy certyfikat SSL przez [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Nazwa Węzła',
+NODE_Port                   : 'Port Węzła',
+NODE_CTA                    : 'Zapisz i Używaj Węzła',
+
+/* Contracts */
+CONTRACT_Title              : 'Adres Kontraktu ',
+CONTRACT_Title_2            : 'Wybierz Istniejący Kontrakt ',
+CONTRACT_Json               : 'Interfejs ABI / JSON ',
+CONTRACT_Interact_Title     : 'Odczytaj / Zapisz Kontrakt ',
+CONTRACT_Interact_CTA       : 'Wybierz funkcję ',
+CONTRACT_ByteCode           : 'Kod Bajtowy ',
+CONTRACT_Read               : 'ODCZYTAJ ',
+CONTRACT_Write              : 'ZAPISZ ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Aktualne Kursy ",
+SWAP_init_1                 : "Chcę wymienić ",
+SWAP_init_2                 : " na ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Zatwierdź! ", // or "Continue"
+SWAP_information            : "Twoja Adnotacja ",
+SWAP_send_amt               : "Kwota do wysłania ",
+SWAP_rec_amt                : "Kwota rządania ",
+SWAP_your_rate              : "Twój kurs ",
+SWAP_rec_add                : "Twój Adres Odbiorczy ",
+SWAP_start_CTA              : "Rozpocznij Wymianę ",
+SWAP_ref_num                : "Twój numer referencyjny ",
+SWAP_time                   : "Pozostały czas na wysyłkę ",
+SWAP_progress_1             : "Zlecenie Rozpoczęte ",
+SWAP_progress_2             : "Oczekiwanie na Twoje ", // Waiting for your BTC...
+SWAP_progress_3             : "Otrzymano! ", // ETH Received!
+SWAP_progress_4             : "Wysyłanie Twoich {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Zlecenie Zakończone ",
+SWAP_order_CTA              : "Wyślij ", // Please send 1 ETH...
+SWAP_unlock                 : "Odblokuj Twój portfel, aby wysłać ETH lub Tokeny wprost z tej strony. ",
+
 /* Error Messages */
 ERROR_0                     : 'Wprowadź prawidłową kwotę. ',
 ERROR_1                     : 'Twoje hasło musi zawierać co najmniej 9 znaków. Upewnij się, że jest to silne hasło. ',
@@ -316,18 +307,23 @@ ERROR_19                    : 'Nieprawidłowy symbol ',
 ERROR_20                    : 'nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token. ',
 ERROR_21                    : 'Nie można określić ilości paliwa. Brak wystarczających środków na koncie lub adres docelowego kontraktu zwróciłby błąd. Możesz ręcznie ustawić paliwo przed kontynuacją. Opis błędu po wysłaniu transakcji może dostarczyć więcej informacji. ',
 ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : '**Potrzebujesz plik Keystore i hasło, lub Klucz Prywatny** aby uzyskać dostęp do tego portfela w przyszłości. Wykonaj zewnętrzną kopię bezpieczeństwa! Nie ma możliwości odzyskania portfela jeżeli go nie zapiszesz. Wejdź na [stronę pomocy](https://www.myetherwallet.com/#help) po instrukcje. ',
 ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Prawidłowy adres ',
 SUCCESS_2                   : 'Portfel został odszyfrowany ',
 SUCCESS_3                   : 'Transakcja zgłoszona. TX ID ',
 SUCCESS_4                   : 'Twój portfel został dodany ',
 SUCCESS_5                   : 'Wybrany plik ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
+
 WARN_Send_Link              : 'Znalazłeś się tu przez odnośnik, który zawiera wstępnie uzupełniony adres, kwotę, paliwo lub dane transakcji. Możesz zmienić dowolne parametry transakcji zanim ją zatwierdzisz. Odblokuj portfel aby kontynuować. ',
 
 /* Geth Error Messages */

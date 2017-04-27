@@ -4,67 +4,13 @@ var fr = function() {}
 fr.code = 'fr';
 fr.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Phrase Parity ',
-
-/* Node Switcher */
-NODE_Title                  : 'Installer votre nœud personnalisé',
-NODE_Subtitle               : 'Pour se connecter à un nœud local…',
-NODE_Warning                : 'Votre nœud doit être en HTTPS pour vous y connecter via MyEtherWallet.com. Vous pouvez [téléccharger le repo MyEtherWallet et le lancer localement](https://github.com/kvhnuke/etherwallet/releases/latest) pour vous connecter à un nœud quelconque, ou obtenir un certificat SSL gratuit via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Nom du nœud',
-NODE_Port                   : 'Port du nœud',
-NODE_CTA                    : 'Sauvegarder et utiliser un nœud personnalisé',
-
-/* Contracts */
-x_Access                    : 'Accès ',
-CONTRACT_Title              : 'Adresse de contrat ',
-CONTRACT_Title_2            : 'Sélectionner un contrat existant ',
-CONTRACT_Json               : 'Interface ABI / JSON ',
-CONTRACT_Interact_Title     : 'Lecture / écriture de contrat ',
-CONTRACT_Interact_CTA       : 'Sélectionnez une fonction ',
-CONTRACT_ByteCode           : 'Bytecode ',
-CONTRACT_Read               : 'LIRE ',
-CONTRACT_Write              : 'ECRIRE ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Taux actuels ",
-SWAP_init_1                 : "Je veux échanger ",
-SWAP_init_2                 : " contre ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Allons-y ! ", // or "Continue"
-SWAP_information            : "Vos informations ",
-SWAP_send_amt               : "Montant à envoyer ",
-SWAP_rec_amt                : "Montant à recevoir ",
-SWAP_your_rate              : "Votre taux ",
-SWAP_rec_add                : "Votre adresse de réception ",
-SWAP_start_CTA              : "Commencer l'échange ",
-SWAP_ref_num                : "Votre numéro de référence ",
-SWAP_time                   : "Temps restant pour l'envoi ",
-SWAP_progress_1             : "Ordre déclenché ",
-SWAP_progress_2             : "En attente de vos ", // Waiting for your BTC...
-SWAP_progress_3             : "reçu ! ", // ETH Received!
-SWAP_progress_4             : "Envoi de vos {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Ordre exécuté ",
-SWAP_order_CTA              : "Envoyer ", // Please send 1 ETH...
-SWAP_unlock                 : "Déverrouillez votre portefeuille pour envoyer des ETH ou des tokens directement depuis cette page. ",
-
-NAV_Swap                    : 'Échange ',
-
-
-
-
-
-
-
-
 /* Navigation*/
 NAV_AddWallet               : 'Ajouter un portefeuille ',
 NAV_BulkGenerate            : 'Générer des portefeuilles par lots ',
 NAV_Contact                 : 'Contact ',
 NAV_Contracts               : 'Contrats ',
 NAV_DeployContract          : 'Déployer un contrat ',
+NAV_ENS                     : 'ENS',
 NAV_GenerateWallet          : 'Générer un portefeuille ',
 NAV_Help                    : 'Aide ',
 NAV_InteractContract        : 'Interact with Contract ',
@@ -74,10 +20,12 @@ NAV_Offline                 : 'Envoyer hors-ligne ',
 NAV_SendEther               : 'Envoyer des Ether et des Tokens ',
 NAV_SendTokens              : 'Envoyer des tokens ',
 NAV_SignMsg                 : 'Signer un message ',
+NAV_Swap                    : 'Échange ',
 NAV_ViewWallet              : 'Visualiser un portefeuille ',
 NAV_YourWallets             : 'Vos portefeuilles ',
 
 /* General */
+x_Access                    : 'Accès ',
 x_AddessDesc                : 'Aussi appelé "Numéro de compte" ou "Clé publique". C\'est ce que vous envoyez aux gens pour qu\'ils puissent vous envoyer des ether. Cette icone est une façon simple de reconnaitre votre adresse. ',
 x_Address                   : 'Votre adresse ',
 x_Cancel                    : 'Annuler ',
@@ -90,6 +38,7 @@ x_Keystore2                 : 'Fichier Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Ce fichier Keystore utilise le même format que celui que Mist, vous pouvez donc facilement l\'importer plus tard dans ces logiciels. C\'est le fichier que nous vous recommandons de télécharger et sauvegarder. ',
 x_Ledger                    : 'Ledger Nano S ',
 x_Mnemonic                  : 'Phrase mnémonique ',
+x_ParityPhrase              : 'Phrase Parity ',
 x_Password                  : 'Mot de passe ',
 x_Print                     : 'Imprimer un portefeuille papier ',
 x_PrintDesc                 : 'Astuce : Cliquez sur Imprimer et sauvegardez le portefeuille papier comme un PDF, même si vous n\'avez pas d\'imprimante ! ',
@@ -245,12 +194,6 @@ MSG_info1                   : 'Inclure la date courante afin que la signature ne
 MSG_info2                   : 'Inclure votre surnom et là où vous l\'utilisez afin que quelqu\'un d\'autre ne puisse l\'utiliser. ',
 MSG_info3                   : 'Inclure une raison spécifique pour le message afin qu\'il ne puisse être réutilisé pour une raison différente. ',
 
-/* Deploy Contracts */
-DEP_generate                : 'Générer le bytecode ',
-DEP_generated               : 'Bytecode généré ',
-DEP_signtx                  : 'Signer la transaction ',
-DEP_interface               : 'Interface générée ',
-
 /* My Wallet */
 MYWAL_Nick                  : 'Nom du portefeuille ',
 MYWAL_Address               : 'Adresse du portefeuille ',
@@ -287,7 +230,6 @@ ADD_Ledger_scan             : 'Se connecter au Ledger Nano S ',
 ADD_Ledger_4                : 'Si l\'option Browser Support n\'est pas présente dans Settings, vérifiez que vous avez le [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'Réouvrir MyEtherWallet sur une connexion sécurisée (SSL) ',
 ADD_Ledger_0b               : 'Réouvrir MyEtherWallet avec [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/) ',
-
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Connect to TREZOR ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
@@ -295,6 +237,49 @@ ADD_Trezor_select           : 'This is a TREZOR seed ',
 /* Chrome Extension */
 CX_error_1                  : 'Vous n\'avez pas de portefeuille sauvegardé. Cliquez sur ["Ajout de portefeuille"](/cx-wallet.html#add-wallet) pour en ajouter un ! ',
 CX_quicksend                : 'Envoi rapide ', // if no appropriate translation, just use "Send"
+
+/* Misc *//* Node Switcher */
+NODE_Title                  : 'Installer votre nœud personnalisé',
+NODE_Subtitle               : 'Pour se connecter à un nœud local…',
+NODE_Warning                : 'Votre nœud doit être en HTTPS pour vous y connecter via MyEtherWallet.com. Vous pouvez [téléccharger le repo MyEtherWallet et le lancer localement](https://github.com/kvhnuke/etherwallet/releases/latest) pour vous connecter à un nœud quelconque, ou obtenir un certificat SSL gratuit via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Nom du nœud',
+NODE_Port                   : 'Port du nœud',
+NODE_CTA                    : 'Sauvegarder et utiliser un nœud personnalisé',
+
+/* Contracts */
+CONTRACT_Title              : 'Adresse de contrat ',
+CONTRACT_Title_2            : 'Sélectionner un contrat existant ',
+CONTRACT_Json               : 'Interface ABI / JSON ',
+CONTRACT_Interact_Title     : 'Lecture / écriture de contrat ',
+CONTRACT_Interact_CTA       : 'Sélectionnez une fonction ',
+CONTRACT_ByteCode           : 'Bytecode ',
+CONTRACT_Read               : 'LIRE ',
+CONTRACT_Write              : 'ECRIRE ',
+DEP_generate                : 'Générer le bytecode ',
+DEP_generated               : 'Bytecode généré ',
+DEP_signtx                  : 'Signer la transaction ',
+DEP_interface               : 'Interface générée ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Taux actuels ",
+SWAP_init_1                 : "Je veux échanger ",
+SWAP_init_2                 : " contre ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Allons-y ! ", // or "Continue"
+SWAP_information            : "Vos informations ",
+SWAP_send_amt               : "Montant à envoyer ",
+SWAP_rec_amt                : "Montant à recevoir ",
+SWAP_your_rate              : "Votre taux ",
+SWAP_rec_add                : "Votre adresse de réception ",
+SWAP_start_CTA              : "Commencer l'échange ",
+SWAP_ref_num                : "Votre numéro de référence ",
+SWAP_time                   : "Temps restant pour l'envoi ",
+SWAP_progress_1             : "Ordre déclenché ",
+SWAP_progress_2             : "En attente de vos ", // Waiting for your BTC...
+SWAP_progress_3             : "reçu ! ", // ETH Received!
+SWAP_progress_4             : "Envoi de vos {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Ordre exécuté ",
+SWAP_order_CTA              : "Envoyer ", // Please send 1 ETH...
+SWAP_unlock                 : "Déverrouillez votre portefeuille pour envoyer des ETH ou des tokens directement depuis cette page. ",
 
 /* Error Messages */
 ERROR_1                     : 'Veuillez entrer un montant valide. ',
@@ -326,11 +311,16 @@ ERROR_26                    : 'Entrez un ID de chaîne valide ',
 ERROR_27                    : 'Entrez une ABI valide ',
 ERROR_28                    : '**Vous avez besoin de votre fichier Keystore et du mot de passe** (ou de la clé privée) pour accéder à ce portefeuille dans le futur. Merci de le télécharger et d\'en faire une sauvegarde externe ! Il n\'existe aucun moyen de récupérer un portefeuille si vous ne le sauvegardez pas. Merci de lire la [page d\'Aide](https://www.myetherwallet.com/#help) pour plus de détails. ',
 ERROR_29                    : 'Entrez un utilisateur et mot de passe valide ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Adresse valide ',
 SUCCESS_2                   : 'Portefeuille déchiffré avec succès ',
 SUCCESS_3                   : 'Transaction envoyée. Identifiant de transaction ',
 SUCCESS_4                   : 'Votre portefeuille a été ajouté avec succès ',
 SUCCESS_5                   : 'Fichier sélectionné ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
+
 WARN_Send_Link              : 'Vous être arrivé grâce à un lien qui a rempli l\'adresse, le montant, le gaz ou les champs de données pour vous. Vous pouvez modifier toutes les informations avant d\'envoyer. Débloquez votre portefeuille pour démarrer. ',
 
 /* Geth Error Messages */
@@ -343,6 +333,7 @@ GETH_InsufficientFunds      : 'Fonds insuffisants pour gaz * prix + valeur ',
 GETH_IntrinsicGas           : 'Gaz intrinsèque trop bas ',
 GETH_GasLimit               : 'Limite en gaz dépassée ',
 GETH_NegativeValue          : 'Valeur négative ',
+
 /* Parity Error Messages */
 PARITY_AlreadyImported      : "Une transaction avec un même hash a déjà été importée.",
 PARITY_Old                  : "Le nonce de la transaction est trop bas. Essayez d'incrémenter le nonce.",
@@ -352,7 +343,6 @@ PARITY_InsufficientGasPrice : "Les frais de transaction sont trop bas. Ils ne sa
 PARITY_InsufficientBalance  : "iFonds insuffisants. Le compte d'où vous essayez d'envoyer une transaction ne possède pas assez de fonds. Requis : {}, reçu : {}.",
 PARITY_GasLimitExceeded     : "Le coût de la transaction excède la limite en gaz courante. Limite : {}, reçu : {}. Essayez de réduire le gaz fourni.",
 PARITY_InvalidGasLimit      : "Le gaz fourni est en-deça de la limite.",
-
 
 /* Tranlsation Info */
 translate_version           : '0.3 ',

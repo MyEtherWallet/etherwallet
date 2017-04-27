@@ -4,80 +4,13 @@ var id = function() {}
 id.code = 'id';
 id.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Set Up Node Custom Anda',
-NODE_Subtitle               : 'Untuk terhubung ke node lokal...',
-NODE_Warning                : 'Node Anda harus berupa HTTPS untuk dapat terhubung melalui MyEtherWallet.com. Anda dapat [mengunduh MyEtherWallet repo & menjalankannya secara lokal](https://github.com/kvhnuke/etherwallet/releases/latest) untuk terhubung ke node apa saja. Atau, dapatkan SSL certificate gratis melalui [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Nama Node',
-NODE_Port                   : 'Port Node',
-NODE_CTA                    : 'Simpan & Pakai Node Custom',
-
-/* Contracts */
-x_Access                    : 'Akses ',
-CONTRACT_Title              : 'Alamat Kontrak ',
-CONTRACT_Title_2            : 'Pilih kontrak yang ada ',
-CONTRACT_Json               : 'Interface ABI / JSON ',
-CONTRACT_Interact_Title     : 'Kontrak Read / Write ',
-CONTRACT_Interact_CTA       : 'Pilih fungsi ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Nilai Tukar yang berlaku ",
-SWAP_init_1                 : "Saya ingin menukar ",
-SWAP_init_2                 : " menjadi ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Lanjutkan! ", // or "Continue"
-SWAP_information            : "Informasi Anda ",
-SWAP_send_amt               : "Jumlah untuk dikirim ",
-SWAP_rec_amt                : "Jumlah untuk diterima ",
-SWAP_your_rate              : "Nilai tukar Anda ",
-SWAP_rec_add                : "Alamat penerima Anda ",
-SWAP_start_CTA              : "Tukarkan ",
-SWAP_ref_num                : "Nomor referensi Anda ",
-SWAP_time                   : "Sisa waktu untuk mengirim ",
-SWAP_progress_1             : "Perintah Dijalankan ",
-SWAP_progress_2             : "Menunggu ", // Waiting for your BTC...
-SWAP_progress_3             : "Diterima! ", // ETH Received!
-SWAP_progress_4             : "Mengirim {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Perintah Selesai ",
-SWAP_order_CTA              : "Kirimkan ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock wallet Anda untuk mengirim ETH atau Token langsung dari halaman ini. ",
-
-NAV_Swap                    : 'Tukarkan ',
-
-x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Hubungkan ke TREZOR ',
-ADD_Trezor_select           : 'Ini adalah TREZOR seed ',
-
-/* Parity Error Messages */
-PARITY_AlreadyImported      : "Transaksi dengan hash yang sama sudah pernah di-impor sebelumnya.",
-PARITY_Old                  : "Nonce transaksi terlalu kecil. Coba naikkan nilai Nonce-nya.",
-PARITY_TooCheapToReplace    : "Biaya transaksi terlalu rendah. Ada transaksi lain dengan nonce yang sama dalam antrian. Coba naikkan biaya transaksi atau naikkan nonce-nya.",
-PARITY_LimitReached         : "Terlalu banyak transaksi dalam antrian. Transaksi Anda gugur karena melampaui batas. Coba naikkan biaya transaksi",
-PARITY_InsufficientGasPrice : "Biaya transaksi terlalu rendah. Tidak memenuhi nilai biaya minimal untuk node Anda(minimal: {}, got: {}). Coba naikkan biaya transaksi.",
-PARITY_InsufficientBalance  : "Dana tidak mencukupi. Akun yang dipakai untuk mengirim tidak memiliki dana yang cukup. Diperlukan {} dan hanya tersedia: {}.",
-PARITY_GasLimitExceeded     : "Biaya transaksi melebihi limit gas yang berlaku. Limit: {}, tersedia: {}. Coba turunkan gas yang disediakan.",
-PARITY_InvalidGasLimit      : "Gas yang disediakan nilainya diatas limit.",
-
-
-
-
-
-
-
 /* Navigation*/
 NAV_AddWallet               : 'Tambahkan Dompet ',
 NAV_BulkGenerate            : 'Pembuatan Multiple Dompet ',
 NAV_Contact                 : 'Kontak ',
 NAV_Contracts               : 'Contracts ',
 NAV_DeployContract          : 'Buat Contract ',
+NAV_ENS                     : 'ENS',
 NAV_GenerateWallet          : 'Buat Dompet ',
 NAV_Help                    : 'Bantuan ',
 NAV_InteractContract        : 'Interact with Contract ',
@@ -87,10 +20,12 @@ NAV_Offline                 : 'Kirim Offline ',
 NAV_SendEther               : 'Kirim Ether dan Tokens ',
 NAV_SendTokens              : 'Kirim Token ',
 NAV_SignMsg                 : 'Penandaan Pesan ',
+NAV_Swap                    : 'Tukarkan ',
 NAV_ViewWallet              : 'Lihat Info Dompet ',
 NAV_YourWallets             : 'Dompet Anda ',
 
 /* General */
+x_Access                    : 'Akses ',
 x_AddessDesc                : 'Biasa dikenal dengan "Account #" atau "Public Key". Berikan alamat ini kepada yang ingin mengirim ether ke Anda. Icon yang ditampilkan di sampingnya memudahkan mengenal alamat Anda. ',
 x_Address                   : 'Alamat Anda ',
 x_Cancel                    : 'Batal ',
@@ -103,6 +38,7 @@ x_Keystore2                 : 'File Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'File Keystore ini sesuai dengan format yang dipakai Mist sehingga memudahkan untuk diimpor di kemudian hari. File ini yang disarankan untuk di unduh dan di backup. ',
 x_Ledger                    : 'Ledger Nano S ',
 x_Mnemonic                  : '"Mnemonic Phrase" ',
+x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Password ',
 x_Print                     : 'Print Dompet Kertas ',
 x_PrintDesc                 : 'ProTip: klik print dan simpan sebagai PDF jika Anda tidak memiliki printer! ',
@@ -181,6 +117,9 @@ ADD_Ledger_4                : 'Jika "Browser Support" tidak ditemukan di "Settin
 ADD_Ledger_0a               : 'Buka kembali MyEtherWallet melalui koneksi (SSL) yang aman ',
 ADD_Ledger_0b               : 'Buka kembali MyEtherWallet menggunakan [Chrome](https://www.google.com/chrome/browser/desktop/) atau [Opera](https://www.opera.com/) ',
 ADD_Ledger_scan             : 'Hubungkan ke Ledger Nano S ',
+x_Trezor                    : 'TREZOR ',
+ADD_Trezor_scan             : 'Hubungkan ke TREZOR ',
+ADD_Trezor_select           : 'Ini adalah TREZOR seed ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Jika Anda memerlukan lebih dari satu dompet, Anda dapat memakai fitur ',
@@ -273,12 +212,6 @@ MSG_info1                   : 'Cantumkan tanggal hari ini sehingga "Signature" t
 MSG_info2                   : 'Cantumkan nama atau "nickname" Anda dan dimana "nickname" tersebut dipakai sehingga pihak lain tidak dapat memakainya. ',
 MSG_info3                   : 'Cantumkan alasan yang spesifik untuk pesan ini sehingga pesan yang ditandai ini tidak dapat dipakai ulang untuk keperluan lain. ',
 
-/* Deploy Contracts */
-DEP_generate                : 'Buat Bytecode ',
-DEP_generated               : 'Bytecode yang dibuat ',
-DEP_signtx                  : 'Laksanakan Transaksi ',
-DEP_interface               : 'Interface yang dibuat ',
-
 /* My Wallet */
 MYWAL_Nick                  : 'Dompet Alias ',
 MYWAL_Address               : 'Alamat Dompet ',
@@ -305,6 +238,49 @@ VIEWWALLET_SuccessMsg       : 'Berhasil! Berikut detil dari dompet Anda. ',
 CX_error_1                  : 'Anda tidak memiliki Dompet yang disimpan sebelumnya. Klik ["Buat Dompet"](/cx-wallet.html#add-wallet) untuk membuatnya! ',
 CX_quicksend                : 'QuickSend ', // if no appropriate translation, just use "Send"
 
+/* Node Switcher */
+NODE_Title                  : 'Set Up Node Custom Anda',
+NODE_Subtitle               : 'Untuk terhubung ke node lokal...',
+NODE_Warning                : 'Node Anda harus berupa HTTPS untuk dapat terhubung melalui MyEtherWallet.com. Anda dapat [mengunduh MyEtherWallet repo & menjalankannya secara lokal](https://github.com/kvhnuke/etherwallet/releases/latest) untuk terhubung ke node apa saja. Atau, dapatkan SSL certificate gratis melalui [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Nama Node',
+NODE_Port                   : 'Port Node',
+NODE_CTA                    : 'Simpan & Pakai Node Custom',
+
+/* Contracts */
+CONTRACT_Title              : 'Alamat Kontrak ',
+CONTRACT_Title_2            : 'Pilih kontrak yang ada ',
+CONTRACT_Json               : 'Interface ABI / JSON ',
+CONTRACT_Interact_Title     : 'Kontrak Read / Write ',
+CONTRACT_Interact_CTA       : 'Pilih fungsi ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+DEP_generate                : 'Buat Bytecode ',
+DEP_generated               : 'Bytecode yang dibuat ',
+DEP_signtx                  : 'Laksanakan Transaksi ',
+DEP_interface               : 'Interface yang dibuat ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Nilai Tukar yang berlaku ",
+SWAP_init_1                 : "Saya ingin menukar ",
+SWAP_init_2                 : " menjadi ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Lanjutkan! ", // or "Continue"
+SWAP_information            : "Informasi Anda ",
+SWAP_send_amt               : "Jumlah untuk dikirim ",
+SWAP_rec_amt                : "Jumlah untuk diterima ",
+SWAP_your_rate              : "Nilai tukar Anda ",
+SWAP_rec_add                : "Alamat penerima Anda ",
+SWAP_start_CTA              : "Tukarkan ",
+SWAP_ref_num                : "Nomor referensi Anda ",
+SWAP_time                   : "Sisa waktu untuk mengirim ",
+SWAP_progress_1             : "Perintah Dijalankan ",
+SWAP_progress_2             : "Menunggu ", // Waiting for your BTC...
+SWAP_progress_3             : "Diterima! ", // ETH Received!
+SWAP_progress_4             : "Mengirim {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Perintah Selesai ",
+SWAP_order_CTA              : "Kirimkan ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock wallet Anda untuk mengirim ETH atau Token langsung dari halaman ini. ",
+
 /* Error Messages */
 ERROR_0                     : 'Masukkan jumlah yang valid. ',
 ERROR_1                     : 'Password minimal terdiri dari 9 huruf. Pastikan password Anda kuat. ',
@@ -329,13 +305,16 @@ ERROR_19                    : 'Simbol tidak valid ',
 ERROR_20                    : 'Bukan ERC-20 token yang valid.',
 ERROR_21                    : 'Tidak dapat memperkirakan gas. Saldo di akun tidak cukup, atau alamat kontrak penerima bisa mengeluarkan error. Cobalah untuk secara manual mengatur gas dan melanjutkan. Keterangan Error saat pengiriman mungkin lebih informatif. ',
 ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help). ',
 ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Alamat valid ',
 SUCCESS_2                   : 'Dompet telah ter-dekripsi ',
 SUCCESS_3                   : 'Transaksi diajukan. TX ID ',
@@ -353,6 +332,16 @@ GETH_InsufficientFunds      : 'Tidak cukup saldo untuk gas * harga + nilai ',
 GETH_IntrinsicGas           : 'Gas intrinsik terlalu rendah ',
 GETH_GasLimit               : 'Melebihi limit blok gas ',
 GETH_NegativeValue          : 'Nilai negatif ',
+
+/* Parity Error Messages */
+PARITY_AlreadyImported      : "Transaksi dengan hash yang sama sudah pernah di-impor sebelumnya.",
+PARITY_Old                  : "Nonce transaksi terlalu kecil. Coba naikkan nilai Nonce-nya.",
+PARITY_TooCheapToReplace    : "Biaya transaksi terlalu rendah. Ada transaksi lain dengan nonce yang sama dalam antrian. Coba naikkan biaya transaksi atau naikkan nonce-nya.",
+PARITY_LimitReached         : "Terlalu banyak transaksi dalam antrian. Transaksi Anda gugur karena melampaui batas. Coba naikkan biaya transaksi",
+PARITY_InsufficientGasPrice : "Biaya transaksi terlalu rendah. Tidak memenuhi nilai biaya minimal untuk node Anda(minimal: {}, got: {}). Coba naikkan biaya transaksi.",
+PARITY_InsufficientBalance  : "Dana tidak mencukupi. Akun yang dipakai untuk mengirim tidak memiliki dana yang cukup. Diperlukan {} dan hanya tersedia: {}.",
+PARITY_GasLimitExceeded     : "Biaya transaksi melebihi limit gas yang berlaku. Limit: {}, tersedia: {}. Coba turunkan gas yang disediakan.",
+PARITY_InvalidGasLimit      : "Gas yang disediakan nilainya diatas limit.",
 
 /* Tranlsation Info */
 translate_version           : '0.3 ',

@@ -4,143 +4,31 @@ var fi = function() {}
 fi.code = 'fi';
 fi.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
-
-/* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
+/* Navigation*/
+NAV_AddWallet               : 'Lisää Lompakko ',
+NAV_BulkGenerate            : 'Massa Generoi ',
+NAV_Contact                 : 'Yhteystiedot ',
 NAV_Contracts               : 'Contracts ',
 NAV_DeployContract          : 'Deploy Contract ',
+NAV_DeployContract          : 'Ota Käyttöön Sopimus ',
+NAV_ENS                     : 'ENS',
+NAV_GenerateWallet          : 'Luo Lompakko ',
+NAV_Help                    : 'Apua ',
 NAV_InteractContract        : 'Interact with Contract ',
 NAV_Multisig                : 'Multisig ',
-NAV_SignMsg                 : 'Sign Message ',
-NAV_Swap                    : 'Swap ',
-
-/* Sign Message */
-MSG_message                 : 'Message ',
-MSG_date                    : 'Date ',
-MSG_signature               : 'Signature ',
-MSG_verify                  : 'Verify Message ',
-MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
-MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
-MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
-
-/* Mnemonic */
-ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
-MNEM_1                      : 'Please select the address you would like to interact with. ',
-MNEM_2                      : 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. ',
-MNEM_more                   : 'More Addresses ',
-MNEM_prev                   : 'Previous Addresses ',
-SEND_custom                 : 'Add Custom Token ',
-TOKEN_hide                  : 'Hide Tokens ',
-TOKEN_show                  : 'Show All Tokens ',
-x_Mnemonic                  : 'Mnemonic Phrase ',
-
-/* Hardware wallets */
-x_Ledger                    : 'Ledger Nano S ',
-ADD_Ledger_1                : 'Connect your Ledger Nano S ',
-ADD_Ledger_2                : 'Open the Ethereum application (or a contract application) ',
-ADD_Ledger_3                : 'Verify that Browser Support is enabled in Settings ',
-ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
-ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
-ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
-ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
-x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Connect to TREZOR ',
-ADD_Trezor_select           : 'This is a TREZOR seed ',
-
-/* Chrome Extension */
-CX_error_1                  : 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one! ',
-CX_quicksend                : 'QuickSend ', // if no appropriate translation, just use "Send"
-
-/* Deploy Contracts */
-DEP_generate                : 'Generate Bytecode ',
-DEP_generated               : 'Generated Bytecode ',
-DEP_signtx                  : 'Sign Transaction ',
-DEP_interface               : 'Generated Interface ',
-
-/* Misc */
-FOOTER_1b                   : 'Created by ',
-FOOTER_4                    : 'Disclaimer ',
-x_Wallet                    : 'Wallet ',
-WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
-
-/* Parity Error Messages */
-PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
-PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
-PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
-PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
-PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
-PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
-PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
-
-
-
-
-
-
-
-
-
-/* Navigation*/
-NAV_YourWallets             : 'Sinun Lompakkosi ',
-NAV_AddWallet               : 'Lisää Lompakko ',
-NAV_GenerateWallet          : 'Luo Lompakko ',
-NAV_BulkGenerate            : 'Massa Generoi ',
+NAV_MyWallets               : 'Minun Lompakkoni ',
+NAV_Offline                 : 'Lähetä Offlinena ',
 NAV_SendEther               : 'Lähetä Etheriä ja Tokeneita ',
 NAV_SendTokens              : 'Lähetä Tokeneita ',
-NAV_Offline                 : 'Lähetä Offlinena ',
-NAV_DeployContract          : 'Ota Käyttöön Sopimus ',
-NAV_MyWallets               : 'Minun Lompakkoni ',
+NAV_SignMsg                 : 'Sign Message ',
+NAV_Swap                    : 'Swap ',
 NAV_ViewWallet              : 'Tarkastele Lompakon Tietoja ',
-NAV_Help                    : 'Apua ',
-NAV_Contact                 : 'Yhteystiedot ',
+NAV_YourWallets             : 'Sinun Lompakkosi ',
 
 /* General */
-x_Address                   : 'Sinun osoitteesi ',
+x_Access                    : 'Access ',
 x_AddessDesc                : 'Saatat tuntea tämän "Tilinumeronasi" tai "Julkisena Salausavaimenasi". Tämä on se jonka jaat ihmisille, jotta he voivat lähettää sinulle ETHiä. Tuo kuvake on helppo tapa tunnistaa sinun osoitteesi. ',
+x_Address                   : 'Sinun osoitteesi ',
 x_Cancel                    : 'Peruuta ',
 x_CSV                       : 'CSV tiedosto (salaamaton) ',
 x_Download                  : 'Lataa ',
@@ -149,6 +37,8 @@ x_JsonDesc                  : 'Tämä on salaamaton JSON tiedosto yksityisestä 
 x_Keystore                  : 'Avainsäilö Tiedosto (UTC / JSON · Suositeltu · Salattu) ',
 x_Keystore2                 : 'Avainsäilö Tiedosto (UTC / JSON) ',
 x_KeystoreDesc              : 'Tämä Avainsäilö tiedosto vastaa sitä tiedostoformaattia jota Mist käyttävät, joten voit helposti importata sen tulevaisuudessa. Se on suositeltu tiedostomuoto ladata ja varmuuskopioida. ',
+x_Mnemonic                  : 'Mnemonic Phrase ',
+x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Salasana ',
 x_Print                     : 'Tulosta Paperi Lompakko ',
 x_PrintDesc                 : 'ProTip: Klikkaa Tulosta ja tallenna tämä PDF:nä, vaikka et omistaisikaan tulostinta! ',
@@ -159,6 +49,7 @@ x_PrivKeyDesc               : 'Tämä on salaamaton versio sinun yksityisestä s
 x_Save                      : 'Tallenna ',
 x_TXT                       : 'TXT tiedosto (salaamaton) ',
 x_Wallet                    : 'Lompakko ',
+x_Wallet                    : 'Wallet ',
 
 /* Header */
 MEW_Warning_1               : 'Tarkista URL aina ennen kuin avaat lompakkosi tai luot uuden lompakon. Varo tietojen-kalastelu sivustoja! ',
@@ -197,6 +88,7 @@ ADD_Radio_2_alt             : 'Valitse Lompakko Tiedostosi ',
 ADD_Radio_2_short           : 'VALITSE LOMPAKKO TIEDOSTO... ',
 ADD_Radio_3                 : 'Liitä/Kirjoita Yksityinen Salausavaimesi ',
 ADD_Radio_4                 : 'Lisää Tili Jota Seurata ',
+ADD_Radio_5                 : 'Paste/Type Your Mnemonic ',
 ADD_Radio_5_Path            : 'Select HD derivation path ',
 ADD_Radio_5_woTrezor        : '(Jaxx, Metamask, Exodus, imToken) ',
 ADD_Radio_5_withTrezor      : '(Jaxx, Metamask, Exodus, imToken, TREZOR) ',
@@ -237,6 +129,7 @@ SEND_generate               : 'Luo Allekirjoitettu Siirto ',
 SEND_raw                    : 'Käsittelemätön Siirto ',
 SEND_signed                 : 'Allekirjoitettu Siirto ',
 SEND_trans                  : 'Lähetä Siirto ',
+SEND_custom                 : 'Add Custom Token ',
 SENDModal_Title             : 'Varoitus! ',
 /* full sentence reads "You are about to send "10 ETH" to address "0x1234". Are you sure you want to do this? " */
 SENDModal_Content_1         : 'Olet lähettämässä ',
@@ -250,6 +143,8 @@ SENDModal_Yes               : 'Kyllä, olen varma! Toteuta siirto. ',
 TOKEN_Addr                  : 'Osoite ',
 TOKEN_Symbol                : 'Token Tunnus ',
 TOKEN_Dec                   : 'Desimaalit ',
+TOKEN_hide                  : 'Hide Tokens ',
+TOKEN_show                  : 'Show All Tokens ',
 
 /* Send Transaction */
 TRANS_desc                  : 'Jos haluat lähettää Tokeneita, ole hyvä ja käytä "Lähetä Tokeneita" sivua. ',
@@ -292,7 +187,6 @@ OFFLINE_Step2_Label_7       : 'Syötä / Valitse Yksityinen salausavaimesi / JSO
 OFFLINE_Step3_Title         : 'Vaihe 3: Lähetä / Julkaise Siirto (Verkkoon yhdistetty (online) tietokone) ',
 OFFLINE_Step3_Label_1       : 'Liitä allekirjoitettu siirto Vaiheesta 2 tähän ja paina "LÄHETÄ SIIRTO" nappia. ',
 
-
 /* Deploy Contracts */
 DEP_generate                : 'Generoi Bytecode ',
 DEP_generated               : 'Generoitu Bytecode ',
@@ -325,6 +219,85 @@ VIEWWALLET_SuccessMsg       : 'Onnistui! Tässä ovat lompakkosi yksityiskohdat.
 CX_error_1                  : 'Sinulla ei ole lompakkoja tallennettuna. Klikkaa ["Lisää Lompakko"](/cx-wallet.html#add-wallet) lisätäksesi! ',
 CX_quicksend                : 'PikaLähetä ', // if no appropriate translation, just use "Send"
 
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Contracts */
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+DEP_generate                : 'Generate Bytecode ',
+DEP_generated               : 'Generated Bytecode ',
+DEP_signtx                  : 'Sign Transaction ',
+DEP_interface               : 'Generated Interface ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+/* Sign Message */
+MSG_message                 : 'Message ',
+MSG_date                    : 'Date ',
+MSG_signature               : 'Signature ',
+MSG_verify                  : 'Verify Message ',
+MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
+MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
+MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+
+/* Mnemonic */
+MNEM_1                      : 'Please select the address you would like to interact with. ',
+MNEM_2                      : 'Your single HD mnemonic phrase can access a number of wallets / addresses. Please select the address you would like to interact with at this time. ',
+MNEM_more                   : 'More Addresses ',
+MNEM_prev                   : 'Previous Addresses ',
+
+/* Hardware wallets */
+x_Ledger                    : 'Ledger Nano S ',
+ADD_Ledger_1                : 'Connect your Ledger Nano S ',
+ADD_Ledger_2                : 'Open the Ethereum application (or a contract application) ',
+ADD_Ledger_3                : 'Verify that Browser Support is enabled in Settings ',
+ADD_Ledger_4                : 'If no Browser Support is found in settings, verify that you have [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
+ADD_Ledger_0a               : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_Ledger_0b               : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
+x_Trezor                    : 'TREZOR ',
+ADD_Trezor_scan             : 'Connect to TREZOR ',
+ADD_Trezor_select           : 'This is a TREZOR seed ',
+
+/* Chrome Extension */
+CX_error_1                  : 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one! ',
+CX_quicksend                : 'QuickSend ', // if no appropriate translation, just use "Send"
+
+/* Misc */
+FOOTER_1b                   : 'Created by ',
+FOOTER_4                    : 'Disclaimer ',
+
 /* Error Messages */
 ERROR_0                     : 'Ole hyvä ja syötä kelpaava summa. ',
 ERROR_1                     : 'Salasanasi pitää olla vähintään 9 merkkiä pitkä. Ole hyvä ja varmista että käytät vahvaa salasanaa. ',
@@ -349,18 +322,24 @@ ERROR_19                    : 'Virheellinen merkki ',
 ERROR_20                    : 'Not a valid ERC-20 token ',
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
 ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : '**Tarvitset Avainsäilö Tiedostosi & salasanan tai Yksityisen salausavaimesi** saadaksesi pääsyn tähän lompakkoon tulevaisuudessa. Ole hyvä ja tallenna sekä varmuuskopioi se ulkoisesti! Ei ole mitään keinoa palauttaa sitä jos et tallenna sitä. Voit lukea ohjeet [Apua sivulta](https://www.myetherwallet.com/#help). ',
 ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Validi osoite ',
 SUCCESS_2                   : 'Lompakon salaus onnistuneesti purettu ',
 SUCCESS_3                   : 'Siirto lähetetty. TX ID ',
 SUCCESS_4                   : 'Lompakkosi lisätty onnistuneesti ',
 SUCCESS_5                   : 'Valittu Tiedosto ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
+
+WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
 
 /* Geth Error Messages */
 GETH_InvalidSender          : 'Virheellinen lähettäjä ',
@@ -372,6 +351,16 @@ GETH_InsufficientFunds      : 'Riittämätön saldo gas * hinta + arvo ',
 GETH_IntrinsicGas           : 'Olennainen gas liian pieni ',
 GETH_GasLimit               : 'Ylittää blockin gas rajan ',
 GETH_NegativeValue          : 'Negatiivinen arvo ',
+
+/* Parity Error Messages */
+PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",
+PARITY_Old                  : "Transaction nonce is too low. Try incrementing the nonce.",
+PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
+PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
+PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
+PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
+PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 
 /* Tranlsation Info */
 translate_version           : '0.4 ',

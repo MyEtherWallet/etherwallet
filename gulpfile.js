@@ -214,7 +214,7 @@ gulp.task('copy', ['staticJS'], function() {
 // Clean files that get compiled but shouldn't
 gulp.task('clean', function() {
     return gulp.src([
-            dist_CX + 'images/fav',
+            dist_CX + 'images/fav/manifest.json',
             dist_CX + 'embedded.html',
             dist_CX + 'index.html',
             dist_CX + 'signmsg.html',
@@ -362,7 +362,7 @@ gulp.task('push', ['getVersion'], function() {
 
 // Push Live
 // Pushes dist folder to gh-pages branch
-gulp.task('pushLive', ['getVersion'], function() {
+gulp.task('pushlive', ['getVersion'], function() {
     return gulp.src('*.js', { read: false })
         .pipe(shell([
             'git subtree push --prefix dist origin gh-pages'
@@ -373,10 +373,10 @@ gulp.task('pushLive', ['getVersion'], function() {
 // Prep & Release
 // gulp prep
 // gulp bump
-// gulp zip
+// gulp zipit
 // gulp commit
 // git push
-// gulp pushLive ( git subtree push --prefix dist origin gh-pages )
+// gulp pushlive ( git subtree push --prefix dist origin gh-pages )
 
 gulp.task('watchJS',      function() { gulp.watch(js_watchFolder,   ['js']            ) })
 gulp.task('watchJSDebug', function() { gulp.watch(js_watchFolder,   ['js-debug']      ) })
@@ -396,7 +396,7 @@ gulp.task('prep',   function(cb) { runSequence('js-production', 'html', 'styles'
 
 gulp.task('bump',   function(cb) { runSequence('bump-patch', 'clean', 'zip', cb);              });
 
-gulp.task('zip',    function(cb) { runSequence('clean', 'travisZip', cb);                      });
+gulp.task('zipit',  function(cb) { runSequence('clean', 'zip', cb);                            });
 
 gulp.task('commit', function(cb) { runSequence('add', 'commitV', 'tag', cb);                   });
 

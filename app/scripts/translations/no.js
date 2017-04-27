@@ -4,64 +4,13 @@ var no = function() {}
 no.code = 'no';
 no.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Parity-frase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Sett opp en alternativ node',
-NODE_Subtitle               : 'For å koble til en lokal node...',
-NODE_Warning                : 'Noden din må være HTTPS for å muliggjøre tilkobling via MyEtherWallet.com. Du kan [laste ned MyEtherWallet-repoet & kjøre det lokalt](https://github.com/kvhnuke/etherwallet/releases/latest) for å koble til en hvilken som helst node. Eller du kan skaffe deg et gratis SSL-sertifikat via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Nodens navn',
-NODE_Port                   : 'Nodens port',
-NODE_CTA                    : 'Lagre & bruk alternativ node',
-
-/* Contracts */
-x_Access                    : 'Åpne ',
-CONTRACT_Title              : 'Kontraktadresse ',
-CONTRACT_Title_2            : 'Velg eksisterende kontrakt ',
-CONTRACT_Json               : 'ABI / JSON grensesnitt ',
-CONTRACT_Interact_Title     : 'Les fra / Skriv til kontrakt ',
-CONTRACT_Interact_CTA       : 'Velg en funksjon ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'LES ',
-CONTRACT_Write              : 'SKRIV ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Aktuelle vekslingskurser ",
-SWAP_init_1                 : "Jeg vil veksle mine ",
-SWAP_init_2                 : " med ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Gjennomfør! ", // "Let's do this!" or "Continue"
-SWAP_information            : "Din informasjon ",
-SWAP_send_amt               : "Beløp som sendes ",
-SWAP_rec_amt                : "Beløp som mottas ",
-SWAP_your_rate              : "Din vekslingskurs ",
-SWAP_rec_add                : "Din mottakeradresse ",
-SWAP_start_CTA              : "Start byttet ",
-SWAP_ref_num                : "Ditt referansenummer ",
-SWAP_time                   : "Gjenstående tid til å sende ",
-SWAP_progress_1             : "Ordre initiert ",
-SWAP_progress_2             : "Venter på dine ", // Waiting for your BTC...
-SWAP_progress_3             : "Mottatt! ", // ETH Received!
-SWAP_progress_4             : "Sender dine {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Ordre fullført ",
-SWAP_order_CTA              : "Vennligst send ", // Please send 1 ETH...
-SWAP_unlock                 : "Lås opp din lommebok for å sende ETH eller Tokens direkte fra denne siden. ",
-
-NAV_Swap                    : 'Veksling ',
-
-
-
-
-
 /* Navigation*/
 NAV_AddWallet               : 'Legg til lommebok ',
 NAV_BulkGenerate            : 'Opprett flere lommebøker ',
 NAV_Contact                 : 'Kontakt ',
 NAV_Contracts               : 'Kontrakt ',
 NAV_DeployContract          : 'Utplasser kontrakt ',
+NAV_ENS                     : 'ENS',
 NAV_GenerateWallet          : 'Opprett lommebok ',
 NAV_Help                    : 'Hjelp ',
 NAV_InteractContract        : 'Samhandle med Kontrakt ',
@@ -71,10 +20,12 @@ NAV_Offline                 : 'Send Offline ',
 NAV_SendEther               : 'Send Ether & Tokens ',
 NAV_SendTokens              : 'Send Tokens ',
 NAV_SignMsg                 : 'Signér Melding ',
+NAV_Swap                    : 'Veksling ',
 NAV_ViewWallet              : 'Vis lommebok-info ',
 NAV_YourWallets             : 'Dine lommebøker ',
 
 /* General */
+x_Access                    : 'Åpne ',
 x_AddessDesc                : 'Du kjenner kanskje dette som ditt "kontonummer" eller din "offentlige nøkkel". Dette er informasjonen som du sender til folk så de kan sende deg ether (en lang rekke tilfeldige tall og bokstaver som starter med "0x"). Ikonet er en enkel måte å kjenne igjen adressen din på. ',
 x_Address                   : 'Din adresse ',
 x_Cancel                    : 'x_Annuler ',
@@ -86,6 +37,7 @@ x_Keystore                  : 'Keystore-fil (UTC / JSON · Anbefalt · Kryptert)
 x_Keystore2                 : 'Keystore-fil (UTC / JSON) ',
 x_KeystoreDesc              : 'Denne Keystore-filen samsvarer med formatet som brukes av Mist, så du enkelt kan importere den i fremtiden. Det er den anbefalte filen å laste ned og sikkerhetskopiere. ',
 x_Mnemonic                  : 'Mnemonisk Frase ',
+x_ParityPhrase              : 'Parity-frase ',
 x_Password                  : 'Passord ',
 x_Print                     : 'Skriv ut papirlommebok ',
 x_PrintDesc                 : 'Profftips: Klikk "skriv ut" og lagre som PDF, selv om du ikke har noen skriver! ',
@@ -153,7 +105,7 @@ ADD_Label_7                 : 'Legg til konto ',
 /* Hardware wallets */
 x_Ledger                    : 'Ledger Nano S ',
 ADD_Ledger_1                : 'Koble til din Ledger Nano S ',
-ADD_Ledger_2                : 'Åpne Ethereum-applikasjonen (eller kontraktsapplisjonen) ',
+ADD_Ledger_2                : 'Åpne Ethereum-applikasjonen (eller kontraktsapplikasjonen) ',
 ADD_Ledger_3                : 'Sjekk at nettleserstøtte er aktivert i innstillingene. ',
 ADD_Ledger_4                : 'Hvis du ikke finner noen nettleserstøtte i innstillingene, sjekk at du har [Firmware >1.2](https://www.ledgerwallet.com/apps/manager) ',
 ADD_Ledger_0a               : 'Åpne MyEtherWallet på nytt på en sikker (SSL) forbindelse. ',
@@ -261,11 +213,48 @@ MNEM_2                      : 'Din "HD-mnemoniske frase" kan gi deg tilgang til 
 MNEM_more                   : 'Flere Adresser ',
 MNEM_prev                   : 'Forrige Adresse ',
 
-/* Deploy Contracts */
+/* Node Switcher */
+NODE_Title                  : 'Sett opp en alternativ node',
+NODE_Subtitle               : 'For å koble til en lokal node...',
+NODE_Warning                : 'Noden din må være HTTPS for å muliggjøre tilkobling via MyEtherWallet.com. Du kan [laste ned MyEtherWallet-repoet & kjøre det lokalt](https://github.com/kvhnuke/etherwallet/releases/latest) for å koble til en hvilken som helst node. Eller du kan skaffe deg et gratis SSL-sertifikat via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Nodens navn',
+NODE_Port                   : 'Nodens port',
+NODE_CTA                    : 'Lagre & bruk alternativ node',
+
+/* Contracts */
+CONTRACT_Title              : 'Kontraktadresse ',
+CONTRACT_Title_2            : 'Velg eksisterende kontrakt ',
+CONTRACT_Json               : 'ABI / JSON grensesnitt ',
+CONTRACT_Interact_Title     : 'Les fra / Skriv til kontrakt ',
+CONTRACT_Interact_CTA       : 'Velg en funksjon ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'LES ',
+CONTRACT_Write              : 'SKRIV ',
 DEP_generate                : 'Generer Bytecode ',
 DEP_generated               : 'Generert Bytecode ',
 DEP_signtx                  : 'Signer transaksjon ',
 DEP_interface               : 'Generer grensesnitt ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Aktuelle vekslingskurser ",
+SWAP_init_1                 : "Jeg vil veksle mine ",
+SWAP_init_2                 : " med ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Gjennomfør! ", // "Let's do this!" or "Continue"
+SWAP_information            : "Din informasjon ",
+SWAP_send_amt               : "Beløp som sendes ",
+SWAP_rec_amt                : "Beløp som mottas ",
+SWAP_your_rate              : "Din vekslingskurs ",
+SWAP_rec_add                : "Din mottakeradresse ",
+SWAP_start_CTA              : "Start byttet ",
+SWAP_ref_num                : "Ditt referansenummer ",
+SWAP_time                   : "Gjenstående tid til å sende ",
+SWAP_progress_1             : "Ordre initiert ",
+SWAP_progress_2             : "Venter på dine ", // Waiting for your BTC...
+SWAP_progress_3             : "Mottatt! ", // ETH Received!
+SWAP_progress_4             : "Sender dine {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Ordre fullført ",
+SWAP_order_CTA              : "Vennligst send ", // Please send 1 ETH...
+SWAP_unlock                 : "Lås opp din lommebok for å sende ETH eller Tokens direkte fra denne siden. ",
 
 /* My Wallet */
 MYWAL_Nick                  : 'Lommebok-kallenavn ',
@@ -324,17 +313,21 @@ ERROR_26                    : 'Vennligst oppgi gyldig ABI ',
 ERROR_27                    : 'Minimumsbeløp 0.01 ',
 ERROR_28                    : '**Du trenger din Keystore-fil & passord eller din private nøkkel** for å få tilgang til denne lommeboken i framtiden. Vennligst lagre og sikkerhetskopier den eksternt! Det finnes ingen måte å gjenopprette en lommebok på hvis du ikke lagrer den. Les [hjelpesiden](https://www.myetherwallet.com/#help) for ytterligere instruksjoner (foreløpig kun på engelsk). ',
 ERROR_29                    : 'Vennligst oppgi gyldig brukernavn og passord ',
+ERROR_30                    : 'Vennligst oppgi et gyldig ENS-navn ',
+ERROR_31                    : 'Ugyldig hemmelig frase ',
+ERROR_32                    : 'Kunne ikke bytte node eller koble til noden du valgte. Vennligst last inn siden på nytt og prøv igjen. ',
 SUCCESS_1                   : 'Gyldig adresse ',
 SUCCESS_2                   : 'Dekrypteringen av lommeboken var vellykket ',
 SUCCESS_3                   : 'Transaksjonen ble sendt inn. TX ID ',
 SUCCESS_4                   : 'Lommeboken din ble lagt til ',
 SUCCESS_5                   : 'Valgt fil ',
+SUCCESS_6                   : 'Tilkobling til noden ble opprettet   ',
 
 WARN_Send_Link              : 'Du ankom via en lenke hvor adresse, verdi, gas, datafelt og/eller transaksjonstype (sendingsmodus) var ferdigutfylt. Du kan endre denne informasjonen før du sender. Lås opp lommeboken din for å komme i gang. ',
 
 /* Geth Error Messages */
 GETH_InvalidSender          : 'Feil på avsender ',
-GETH_Nonce                  : 'Nonce for liten ',
+GETH_Nonce                  : 'For liten Nonce ',
 GETH_Cheap                  : 'Gas-pris for lav til å kunne aksepteres ',
 GETH_Balance                : 'Utilstrekkelig saldo ',
 GETH_NonExistentAccount     : 'Kontoen eksisterer ikke eller saldoen er for lav ',
@@ -574,7 +567,7 @@ HELP_21_Desc_6              : 'Hvis du vet noe om Bitcoin, [dette vil sette det 
 HELP_21_Desc_7              : '[Hvis du ønsker en mer teknisk forklaring:](http://security.stackexchange.com/questions/25375/why-not-use-larger-cipher-keys/25392#25392) *Disse tallene har ikke noe å gjøre med teknologien til enhetene; de er det maksimale som termodynamikken vil tillate. Og de impliserer sterkt at "brute-force"-angrep mot 256-bit nøkler vil være uoppnåelig fram til datamaskiner lages av noe annet enn materie og befinner seg i noe annet enn rom. ',
 HELP_21_Desc_8              : 'Selvsagt betinger alt dette at nøkler blir generert på en virkelig tilfeldig måte & med tilstrekkelig entropi. Nøklene som genereres her tilfredsstiller dette kriteriet, det samme gjør Jaxx og Mist/geth. Alle Ethereum-lommebøker er OK. Nøkler som genereres av "brainwallets" er ikke like gode, siden en persons hjerne ikke er i stand til å lage en virkelig tilfeldig "seed". Det har vært noen andre tilfeller av manglende entropi eller "seeds" som ikke er generert på en virkelig tilfeldig måte i Bitcoin-land, men det er en historie som kan vente til en annen dag. ',
 
-HELP_SecCX_Title            : 'Sikring - MyEtherWallet CX (Chrome-utvidelsen) ',
+HELP_SecCX_Title            : 'Datasikkerhet - MyEtherWallet CX (Chrome-utvidelsen) ',
 HELP_SecCX_Desc_1           : 'Hvor lagrer denne utvidelsen informasjonen min? ',
 HELP_SecCX_Desc_2           : 'Informasjonen som du lager i denne Chrome-utvidelsen lagres via [chrome.storage](http://chrome.storage/). - dette er samme sted som passordene dine lagres når du lagrer passord i Chrome. ',
 HELP_SecCX_Desc_3           : 'Hvilken informasjon lages? ',
@@ -582,7 +575,7 @@ HELP_SecCX_Desc_4           : 'Adresser, kallenavn og private nøkler lagres i c
 HELP_SecCX_Desc_5           : 'Hvorfor er ikke kallenavn og lommebok-adresser kryptert? ',
 HELP_SecCX_Desc_6           : 'Hvis vi skulle kryptere disse, måtte du ha oppgitt et passord hver gang du ønsket å se saldo for kontoene dine eller vise kallenavnene. Hvis dette bekymrer deg, anbefaler vi deg å bruke MyEtherWallet.com i stedet for denne Chrome-utvidelsen. ',
 
-HELP_Sec_Title              : 'Sikring ',
+HELP_Sec_Title              : 'Datasikkerhet ',
 HELP_Sec_Desc_1             : 'Hvis en av dine første spørsmål er "Hvorfor skulle jeg stole på disse folkene?", så er det en god ting. Forhåpentligvis vil følgende bidra til å lette på frykten din. ',
 HELP_Sec_Desc_2             : 'Vi har vært oppe-og-gå siden august 2015. Hvis du søker etter ["myetherwallet" på reddit](https://www.reddit.com/search?q=myetherwallet), så kan du se mange folk som bruker oss med stor suksess. ',
 HELP_Sec_Desc_3             : 'Vi kommer ikke til å ta pengene dine eller stjele dine private nøkler. Det er ingen ondsinnet kode på denne siden. Faktisk er "Send Ether & Tokens"-siden fullstendig klient-drevet. Det betyr at all koden blir kjørt på ** din datamaskin ** og det blir aldri lagret eller overført noe sted. ',

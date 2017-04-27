@@ -4,96 +4,32 @@ var vi = function() {}
 vi.code = 'vi';
 vi.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
-
-/* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
-NAV_Swap                    : 'Swap ',
-NAV_SignMsg                 : 'Sign Message ',
-
-/* Sign Message */
-MSG_date                    : 'Date ',
-MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
-MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
-MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
-MSG_message                 : 'Message ',
-MSG_signature               : 'Signature ',
-MSG_verify                  : 'Verify Message ',
-WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
-
-x_Trezor                    : 'TREZOR ',
-ADD_Trezor_scan             : 'Connect to TREZOR ',
-ADD_Trezor_select           : 'This is a TREZOR seed ',
-
-
-
-
-
-
 /* Navigation*/
-NAV_YourWallets             : 'Ví Của Bạn ',
 NAV_AddWallet               : 'Thêm Ví ',
-NAV_GenerateWallet          : 'Tạo Ví ',
 NAV_BulkGenerate            : 'Tạo Nhiều Ví ',
-NAV_SendEther               : 'Gửi Ether và Tokens ',
-NAV_SendTokens              : 'Gửi Token ',
-NAV_Offline                 : 'Giao Dịch Offline ',
-NAV_DeployContract          : 'Phát Triển Hợp Đồng ',
-NAV_InteractContract        : 'Interact with Contract ',
+NAV_Contact                 : 'Liên Hệ ',
 NAV_Contracts               : 'Hợp Đồng ',
+NAV_DeployContract          : 'Phát Triển Hợp Đồng ',
+NAV_ENS                     : 'ENS',
+NAV_GenerateWallet          : 'Tạo Ví ',
+NAV_Help                    : 'Trợ Giúp ',
+NAV_InteractContract        : 'Interact with Contract ',
 NAV_Multisig                : 'Multisig ',
 NAV_MyWallets               : 'Ví Của Tôi ',
+NAV_Offline                 : 'Giao Dịch Offline ',
+NAV_SendEther               : 'Gửi Ether và Tokens ',
+NAV_SendTokens              : 'Gửi Token ',
+NAV_SignMsg                 : 'Sign Message ',
+NAV_Swap                    : 'Swap ',
 NAV_ViewWallet              : 'Thông Tin Ví ',
-NAV_Help                    : 'Trợ Giúp ',
-NAV_Contact                 : 'Liên Hệ ',
+NAV_YourWallets             : 'Ví Của Bạn ',
 
 /* General */
-x_Address                   : 'Địa Chỉ Của Bạn ',
+x_Access                    : 'Access ',
 x_AddessDesc                : 'Bạn có thể xem đây là Địa chỉ ví cá nhân của bạn. Bạn có thể gửi "Địa chỉ ví" này đến người mà bạn muốn nhận ETH từ họ. Biểu tượng bên cạnh giúp việc nhận dạng "Địa chỉ ví" của bạn dễ dàng hơn. ',
-x_CSV                       : 'Định Dạng CSV (Không mã hoá) ',
+x_Address                   : 'Địa Chỉ Của Bạn ',
 x_Cancel                    : 'Huỷ ',
+x_CSV                       : 'Định Dạng CSV (Không mã hoá) ',
 x_Download                  : 'Tải Về Máy ',
 x_Json                      : 'Định Dạng JSON (Không mã hoá) ',
 x_JsonDesc                  : 'Định Dạng JSON là một tập tin chứa dữ liệu ví chưa được mã hoá của Private Key. Bạn có thể đăng nhập vào ví của bạn bằng việc sử dụng định dạng JSON mà không cần đến mật khẩu. Vì vậy, bất kỳ người nào sở hữu định dạng  JSON của bạn thì họ đều có khả năng đăng nhập vào ví của bạn mà không cần đến mật khẩu. ',
@@ -101,6 +37,7 @@ x_Keystore                  : 'Định Dạng Keystore (UTC / JSON) (Đã mã ho
 x_Keystore2                 : 'Định Dạng Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Định dạng Keystore là tập một tin chứa dữ liệu ví đã được mã hoá của Private Key và sử dụng cho Mist. Do đó bạn có thể dễ dàng bỏ nó vào bên trong Mist và tiếp tục sử dụng ví của bạn. Đây là một tập tin được đề xuất nhằm sao lưu dữ liệu ví cá nhân. ',
 x_Mnemonic                  : 'Cụm từ dễ nhớ ',
+x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Mật Khẩu ',
 x_Print                     : 'Tạo Ví Giấy ',
 x_PrintDesc                 : 'Mẹo: kích chuột trái vào nút "In Ví" sau đó chọn "Save this as a PDF" đễ lưu nó thành định dạng PDF trên máy tính của bạn nếu bạn không sở hữu máy in cá nhân! ',
@@ -247,7 +184,58 @@ OFFLINE_Step2_Label_7       : 'Nhập / Chọn  Private Key / JSON của bạn. 
 OFFLINE_Step3_Title         : 'Bước 3: Gửi / Làm rõ Giao Dịch (Máy tính đang Online) ',
 OFFLINE_Step3_Label_1       : 'Dán chữ ký Giao Dịch được tạo từ Bước 2 vào đây và chọn nút "Thực hiện Giao Dịch". ',
 
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Contracts */
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+/* Sign Message */
+MSG_date                    : 'Date ',
+MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
+MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
+MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+MSG_message                 : 'Message ',
+MSG_signature               : 'Signature ',
+MSG_verify                  : 'Verify Message ',
+
 /* Hardware wallets */
+x_Trezor                    : 'TREZOR ',
+ADD_Trezor_scan             : 'Connect to TREZOR ',
+ADD_Trezor_select           : 'This is a TREZOR seed ',
 x_Ledger                    : 'Ledger Nano S ',
 ADD_Ledger_1                : 'Kết Nối Với Ledger Nano S Của Bạn ',
 ADD_Ledger_2                : 'Mở Lên Ứng Dụng Của Ethereum (Hoặc một ứng dụng của Hợp Đồng) ',
@@ -319,18 +307,24 @@ ERROR_19                    : 'Biểu tượng không hợp lệ ',
 ERROR_20                    : 'Không tồn tại trên hệ thống ERC-20 token. Nếu bạn phải chờ lâu. Xin vui lòng thử lại lần nữa!. ',
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
 ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : '**Bạn cần sử dụng tập tin chứa định dạng Keystore/JSON cùng với Mật khẩu hoặc Private Key của bạn** cho việc đăng nhập vào ví này trong tương lai. Hãy sao lưu và cất giữ nó cẩn thận tại kho lưu trữ của bạn! Không có cách nào đễ khôi phục Ví của bạn nếu bạn không sao lưu dữ liệu ví lại. Đọc Thêm [trang trợ giúp] (https://www.myetherwallet.com/#help) đễ được hướng dẫn cụ thể. ',
 ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Địa Chỉ Hợp Lệ ',
 SUCCESS_2                   : 'Ví đã được giải mã thành công ',
 SUCCESS_3                   : 'Giao dịch đã gửi đi, TX ID: ',
 SUCCESS_4                   : 'Ví của bạn đã được thêm thành công: ',
 SUCCESS_5                   : 'Tập Tin Được Chọn ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
+
+WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
 
 /* Geth Error Messages */
 GETH_InvalidSender          : 'Sai người nhận ',

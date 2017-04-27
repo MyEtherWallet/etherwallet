@@ -28,9 +28,14 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
 
     $scope.onHDDPathChange = function(password = '') {
-        $scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim(), password));
         $scope.HDWallet.numWallets = 0;
-        $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
+        if ($scope.walletType == 'pastemnemonic') {
+            $scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim(), password));
+            $scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
+        } else {
+            $scope.AddRemoveHDAddresses(true);
+        }
+
     }
     $scope.onCustomHDDPathChange = function() {
         $scope.HDWallet.dPath = $scope.HDWallet.customDPath;
@@ -168,7 +173,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     }
     $scope.ledgerCallback = function(result, error) {
         if (typeof result != "undefined") {
-            $scope.HWWalletCreate(result['publicKey'], result['chainCode'], true, $scope.HDWallet.ledgerPath);
+            $scope.HWWalletCreate(result['publicKey'], result['chainCode'], true, $scope.getLedgerPath());
         }
     }
     $scope.trezorCallback = function(response) {
@@ -183,7 +188,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.scanLedger = function() {
         $scope.ledger = new Ledger3("w0w");
         var app = new ledgerEth($scope.ledger);
-        var path = ajaxReq.type == 'ETC' ? $scope.HDWallet.ledgerClassicPath : $scope.HDWallet.ledgerPath;
+        var path = $scope.getLedgerPath();
         app.getAddress(path, $scope.ledgerCallback, false, true);
     };
     $scope.scanTrezor = function() {
@@ -191,6 +196,16 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         var path = $scope.getTrezorPath();
         TrezorConnect.getXPubKey(path, $scope.trezorCallback, '1.4.0');
     };
+    $scope.getLedgerPath = function() {
+        var type = ajaxReq.type;
+        if (type === "ETH") {
+            return $scope.HDWallet.ledgerPath;
+        } else if (type === "ETC") {
+            return $scope.HDWallet.ledgerClassicPath;
+        } else {
+            return $scope.HDWallet.ledgerPath;
+        }
+    }
     $scope.getTrezorPath = function() {
         var type = ajaxReq.type;
         if (type === "ETH") {

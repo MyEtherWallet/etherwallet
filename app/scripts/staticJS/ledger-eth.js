@@ -60,9 +60,9 @@ LedgerEth.prototype.getAddress = function(path, callback, boolDisplay, boolChain
 			response = new Buffer(response, 'hex');
 			var sw = response.readUInt16BE(response.length - 2);
 			if (sw != 0x9000) {
-				callback(undefined, "Invalid status " + sw.toString(16));
+				callback(undefined, "Invalid status " + sw.toString(16) + ". Check to make sure contract data is on?");
 				return;
-			}			
+			}
 			var publicKeyLength = response[0];
 			var addressLength = response[1 + publicKeyLength];
 			result['publicKey'] = response.slice(1, 1 + publicKeyLength).toString('hex');
@@ -113,11 +113,11 @@ LedgerEth.prototype.signTransaction = function(path, rawTxHex, callback) {
 			response = new Buffer(response, 'hex');
 			var sw = response.readUInt16BE(response.length - 2);
 			if (sw != 0x9000) {
-				callback(undefined, "Invalid status " + sw.toString(16));
+        callback(undefined, "Invalid status " + sw.toString(16) + ". Check to make sure contract data is on?");
 				return;
-			}			
+			}
 			if (apdus.length == 0) {
-					var result = {};					
+					var result = {};
 					result['v'] = response.slice(0, 1).toString('hex');
 					result['r'] = response.slice(1, 1 + 32).toString('hex');
 					result['s'] = response.slice(1 + 32, 1 + 32 + 32).toString('hex');
@@ -148,7 +148,7 @@ LedgerEth.prototype.getAppConfiguration = function(callback) {
 			var result = {};
 			var sw = response.readUInt16BE(response.length - 2);
 			if (sw != 0x9000) {
-				callback(undefined, "Invalid status " + sw.toString(16));
+				callback(undefined, "Invalid status " + sw.toString(16) + ". Check to make sure contract data is on?");
 				return;
 			}
 			result['arbitraryDataEnabled'] = (response[0] & 0x01);

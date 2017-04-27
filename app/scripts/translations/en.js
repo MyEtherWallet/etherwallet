@@ -19,11 +19,13 @@ NAV_MyWallets               : 'My Wallets ',
 NAV_Offline                 : 'Send Offline ',
 NAV_SendEther               : 'Send Ether & Tokens ',
 NAV_SendTokens              : 'Send Tokens ',
+NAV_SignMsg                 : 'Sign Message ',
 NAV_Swap                    : 'Swap ',
 NAV_ViewWallet              : 'View Wallet Info ',
 NAV_YourWallets             : 'Your Wallets ',
 
 /* General */
+x_Access                    : 'Access ',
 x_AddessDesc                : 'You may know this as your "Account #" or your "Public Key". It is what you send people so they can send you ether. That icon is an easy way to recognize your address. ',
 x_Address                   : 'Your Address ',
 x_Cancel                    : 'Cancel ',
@@ -208,7 +210,6 @@ OFFLINE_Step3_Title         : 'Step 3: Send / Publish Transaction (Online Comput
 OFFLINE_Step3_Label_1       : 'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button. ',
 
 /* Contracts */
-x_Access                    : 'Access ',
 CONTRACT_Title              : 'Contract Address ',
 CONTRACT_Title_2            : 'Select Existing Contract ',
 CONTRACT_Json               : 'ABI / JSON Interface ',
@@ -253,7 +254,6 @@ SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
 SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
 
 /* Sign Message */
-NAV_SignMsg                 : 'Sign Message ',
 MSG_message                 : 'Message ',
 MSG_date                    : 'Date ',
 MSG_signature               : 'Signature ',
@@ -297,7 +297,7 @@ ERROR_19                    : 'Invalid symbol ',
 ERROR_20                    : 'Not a valid ERC-20 token ',
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
 ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
@@ -306,11 +306,13 @@ ERROR_28                    : '**You need your Keystore File & Password** (or Pr
 ERROR_29                    : 'Please enter valid user and password ',
 ERROR_30                    : 'Please enter valid ENS name ',
 ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',
 SUCCESS_3                   : 'Transaction submitted. TX ID ',
 SUCCESS_4                   : 'Your wallet was successfully added ',
 SUCCESS_5                   : 'File Selected ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
 
 WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
 

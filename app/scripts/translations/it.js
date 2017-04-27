@@ -1,62 +1,9 @@
 // Italian
-// Last sync with en.js     : commit ba11f84a469e2f8b3a0669dd7fc67af8be3920e0
+// Last sync with en.js     : commit cca1a65ee0194cc6e23747d228867e0bc105be20
 'use strict';
 var it = function() {}
 it.code = 'it';
 it.data = {
-
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Frase di Parity ',
-
-/* Node Switcher */
-NODE_Title                  : 'Configura nodo personalizzato',
-NODE_Subtitle               : 'Per collegarti a un nodo locale...',
-NODE_Warning                : 'Il tuo nodo deve utilizzare HTTPS per potertici collegare da MyEtherWallet.com. Puoi [scaricare il repository di MyEtherWallet ed eseguirlo in locale](https://github.com/kvhnuke/etherwallet/releases/latest) per collegarti ad altri tipi di nodo. Oppure, ottieni un certificato SSL gratuito tramite [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Nome del nodo',
-NODE_Port                   : 'Porta del nodo',
-NODE_CTA                    : 'Salva & utilizza il nodo',
-
-/* Contracts */
-x_Access                    : 'Accedi ',
-CONTRACT_Title              : 'Indirizzo contratto ',
-CONTRACT_Title_2            : 'Seleziona contratto esistente ',
-CONTRACT_Json               : 'Interfaccia ABI / JSON ',
-CONTRACT_Interact_Title     : 'Leggi da / Scrivi su contratto ',
-CONTRACT_Interact_CTA       : 'Seleziona una funzione ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'LEGGI ',
-CONTRACT_Write              : 'SCRIVI ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Tassi correnti ",
-SWAP_init_1                 : "Voglio scambiare i miei ",
-SWAP_init_2                 : " per ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Facciamolo! ", // or "Continue"
-SWAP_information            : "Il tuo riepilogo ",
-SWAP_send_amt               : "Importo da inviare ",
-SWAP_rec_amt                : "Importo da ricevere ",
-SWAP_your_rate              : "Il tuo tasso ",
-SWAP_rec_add                : "Indirizzo di ricezione ",
-SWAP_start_CTA              : "Avvia scambio ",
-SWAP_ref_num                : "Il tuo codice di riferimento ",
-SWAP_time                   : "Tempo rimanente per l\'invio ",
-SWAP_elapsed				: "Tempo trascorso dall\'invio ",
-SWAP_progress_1             : "Ordine creato ",
-SWAP_progress_2             : "In attesa dei tuoi ", // Waiting for your BTC...
-SWAP_progress_3             : "ricevuti! ", // ETH Received!
-SWAP_progress_4             : "Invio dei tuoi {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Ordine completato ",
-SWAP_order_CTA              : "Invia ", // Please send 1 ETH...
-SWAP_unlock                 : "Sblocca il tuo portafoglio per inviare ETH o token direttamente da questa pagina. ",
-
-NAV_Swap                    : 'Scambia ',
-
-
-
-
 
 /* Navigation*/
 NAV_AddWallet               : 'Aggiungi portafoglio ',
@@ -64,6 +11,7 @@ NAV_BulkGenerate            : 'Generazione multipla ',
 NAV_Contact                 : 'Contatti ',
 NAV_Contracts               : 'Contratti ',
 NAV_DeployContract          : 'Pubblica contratto ',
+NAV_ENS                     : 'ENS',
 NAV_GenerateWallet          : 'Genera portafoglio ',
 NAV_Help                    : 'Aiuto ',
 NAV_InteractContract        : 'Interagisci con un contratto ',
@@ -73,10 +21,12 @@ NAV_Offline                 : 'Invia offline ',
 NAV_SendEther               : 'Invia ether e token ',
 NAV_SendTokens              : 'Invia token ',
 NAV_SignMsg                 : 'Firma messaggio ',
+NAV_Swap                    : 'Scambia ',
 NAV_ViewWallet              : 'Informazioni portafoglio ',
 NAV_YourWallets             : 'I tuoi portafogli ',
 
 /* General */
+x_Access                    : 'Accedi ',
 x_AddessDesc                : 'Potresti sentirlo chiamare "Numero di conto" o "Chiave pubblica". È ciò che dai a chi ti vuole inviare degli ether. L\'icona è un modo facile di riconoscere il tuo indirizzo. ',
 x_Address                   : 'Il tuo indirizzo ',
 x_Cancel                    : 'Annulla ',
@@ -88,6 +38,7 @@ x_Keystore                  : 'File Keystore (UTC / JSON · Consigliato · Critt
 x_Keystore2                 : 'File Keystore (UTC / JSON) ',
 x_KeystoreDesc              : 'Questo file Keystore è compatibile con il formato usato da Mist, in modo da poterlo facilmente importare in futuro. È il file consigliato da scaricare e conservare. ',
 x_Mnemonic                  : 'Frase mnemonica ',
+x_ParityPhrase              : 'Frase di Parity ',
 x_Password                  : 'Password ',
 x_Print                     : 'Stampa portafoglio cartaceo ',
 x_PrintDesc                 : 'Suggerimento Pro: Fai clic su stampa e salvalo come PDF, anche se non hai una stampante! ',
@@ -233,12 +184,6 @@ MSG_info1                   : 'Inserisci la data corrente per far sì che la fir
 MSG_info2                   : 'Indica il tuo nickname e dove lo usi in modo che qualcun altro non possa usarlo. ',
 MSG_info3                   : 'Includi una ragione specifica per il messaggio, così che non possa essere riutilizzato per uno scopo diverso. ',
 
-/* Deploy Contracts */
-DEP_generate                : 'Genera bytecode ',
-DEP_generated               : 'Bytecode generato ',
-DEP_signtx                  : 'Firma transazione ',
-DEP_interface               : 'Interfaccia generata ',
-
 /* My Wallet */
 MYWAL_Nick                  : 'Nome portafoglio ',
 MYWAL_Address               : 'Indirizzo portafoglio ',
@@ -285,6 +230,50 @@ ADD_Trezor_scan             : 'Collegati al TREZOR ',
 CX_error_1                  : 'Non c\'è nessun portafoglio. Fai clic su ["Aggiungi portafoglio"](/cx-wallet.html#add-wallet) per aggiungerne uno! ',
 CX_quicksend                : 'Invio rapido ',
 
+/* Contracts */
+CONTRACT_Title              : 'Indirizzo contratto ',
+CONTRACT_Title_2            : 'Seleziona contratto esistente ',
+CONTRACT_Json               : 'Interfaccia ABI / JSON ',
+CONTRACT_Interact_Title     : 'Leggi da / Scrivi su contratto ',
+CONTRACT_Interact_CTA       : 'Seleziona una funzione ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'LEGGI ',
+CONTRACT_Write              : 'SCRIVI ',
+DEP_generate                : 'Genera bytecode ',
+DEP_generated               : 'Bytecode generato ',
+DEP_signtx                  : 'Firma transazione ',
+DEP_interface               : 'Interfaccia generata ',
+
+/* Node Switcher */
+NODE_Title                  : 'Configura nodo personalizzato',
+NODE_Subtitle               : 'Per collegarti a un nodo locale...',
+NODE_Warning                : 'Il tuo nodo deve utilizzare HTTPS per potertici collegare da MyEtherWallet.com. Puoi [scaricare il repository di MyEtherWallet ed eseguirlo in locale](https://github.com/kvhnuke/etherwallet/releases/latest) per collegarti ad altri tipi di nodo. Oppure, ottieni un certificato SSL gratuito tramite [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Nome del nodo',
+NODE_Port                   : 'Porta del nodo',
+NODE_CTA                    : 'Salva & utilizza il nodo',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Tassi correnti ",
+SWAP_init_1                 : "Voglio scambiare i miei ",
+SWAP_init_2                 : " per ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Facciamolo! ", // or "Continue"
+SWAP_information            : "Il tuo riepilogo ",
+SWAP_send_amt               : "Importo da inviare ",
+SWAP_rec_amt                : "Importo da ricevere ",
+SWAP_your_rate              : "Il tuo tasso ",
+SWAP_rec_add                : "Indirizzo di ricezione ",
+SWAP_start_CTA              : "Avvia scambio ",
+SWAP_ref_num                : "Il tuo codice di riferimento ",
+SWAP_time                   : "Tempo rimanente per l\'invio ",
+SWAP_elapsed                : "Tempo trascorso dall\'invio ",
+SWAP_progress_1             : "Ordine creato ",
+SWAP_progress_2             : "In attesa dei tuoi ", // Waiting for your BTC...
+SWAP_progress_3             : "ricevuti! ", // ETH Received!
+SWAP_progress_4             : "Invio dei tuoi {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Ordine completato ",
+SWAP_order_CTA              : "Invia ", // Please send 1 ETH...
+SWAP_unlock                 : "Sblocca il tuo portafoglio per inviare ETH o token direttamente da questa pagina. ",
+
 /* Error Messages */
 ERROR_0                     : 'Ti preghiamo di inserire una quantità valida. ',
 ERROR_1                     : 'La password deve essere di almeno 9 caratteri. Assicurati che sia robusta. ',
@@ -309,7 +298,7 @@ ERROR_19                    : 'Simbolo non valido ',
 ERROR_20                    : 'Non è un token ERC-20 valido. ',
 ERROR_21                    : 'Impossibile eseguire una stima del gas necessario. Non ci sono abbastanza fondi nel conto, oppure l\'indirizzo del contratto ricevente genererebbe un errore. Puoi inserire il gas manualmente e procedere. Il messaggio di errore al momento dell\'invio potrebbe contenere ulteriori informazioni. ',
 ERROR_22                    : 'Inserisci un nome di nodo valido ',
-ERROR_23                    : 'Inserisci un url valido, se stai usando https l\'url deve cominciare per https ',
+ERROR_23                    : 'Inserisci un URL valido. Se ti stai collegando tramite HTTPS anche il nodo deve utilizzare HTTPS ',
 ERROR_24                    : 'Inserisci una porta valida ',
 ERROR_25                    : 'Inserisci un ID catena valido ',
 ERROR_26                    : 'Inserisci una ABI valida ',
@@ -318,11 +307,13 @@ ERROR_28                    : '**Avrai bisogno del tuo file Keystore e della pas
 ERROR_29                    : 'Inserisci un nome utente e una password validi ',
 ERROR_30                    : 'Inserisci un nome ENS valido ',
 ERROR_31                    : 'Frase segreta non valida ',
+ERROR_32                    : 'Impossibile cambiare il nodo o collegarsi al nodo selezionato. Aggiorna la pagina e riprova. ',
 SUCCESS_1                   : 'Indirizzo valido ',
 SUCCESS_2                   : 'Portafoglio decodificato correttamente ',
 SUCCESS_3                   : 'Transazione inviata. TX ID ',
 SUCCESS_4                   : 'Il portafoglio è stato aggiunto correttamente ',
 SUCCESS_5                   : 'File selezionato ',
+SUCCESS_6                   : 'Ora sei connesso al nodo   ',
 
 WARN_Send_Link              : 'Sei arrivato qui da un link che ha riempito per te i campi indirizzo, importo, gas, dati o tipo di transazione (modalità di invio). Puoi cambiare queste informazioni prima di inviare. Sblocca il tuo portafoglio per iniziare. ',
 

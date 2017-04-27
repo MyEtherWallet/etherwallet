@@ -4,89 +4,30 @@ var sk = function() {}
 sk.code = 'sk';
 sk.data = {
 
-NAV_ENS: 'ENS',
-
-
-/* Misc */
-x_ParityPhrase              : 'Parity Phrase ',
-
-/* Node Switcher */
-NODE_Title                  : 'Set Up Your Custom Node',
-NODE_Subtitle               : 'To connect to a local node...',
-NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
-NODE_Name                   : 'Node Name',
-NODE_Port                   : 'Node Port',
-NODE_CTA                    : 'Save & Use Custom Node',
-
-/* Contracts */
-x_Access                    : 'Access ',
-CONTRACT_Title              : 'Contract Address ',
-CONTRACT_Title_2            : 'Select Existing Contract ',
-CONTRACT_Json               : 'ABI / JSON Interface ',
-CONTRACT_Interact_Title     : 'Read / Write Contract ',
-CONTRACT_Interact_CTA       : 'Select a function ',
-CONTRACT_ByteCode           : 'Byte Code ',
-CONTRACT_Read               : 'READ ',
-CONTRACT_Write              : 'WRITE ',
-
-/* Swap / Exchange */
-SWAP_rates                  : "Current Rates ",
-SWAP_init_1                 : "I want to swap my ",
-SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
-SWAP_init_CTA               : "Let's do this! ", // or "Continue"
-SWAP_information            : "Your Information ",
-SWAP_send_amt               : "Amount to send ",
-SWAP_rec_amt                : "Amount to receive ",
-SWAP_your_rate              : "Your rate ",
-SWAP_rec_add                : "Your Receiving Address ",
-SWAP_start_CTA              : "Start Swap ",
-SWAP_ref_num                : "Your reference number ",
-SWAP_time                   : "Time remaining to send ",
-SWAP_progress_1             : "Order Initiated ",
-SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
-SWAP_progress_3             : "Received! ", // ETH Received!
-SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
-SWAP_progress_5             : "Order Complete ",
-SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
-SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
-
-NAV_Swap                    : 'Swap ',
-NAV_SignMsg                 : 'Sign Message ',
-
-/* Sign Message */
-MSG_message                 : 'Message ',
-MSG_date                    : 'Date ',
-MSG_signature               : 'Signature ',
-MSG_verify                  : 'Verify Message ',
-MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
-MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
-MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
-
-
-
-
-
-
 /* Navigation*/
-NAV_YourWallets             : 'Vaše Peňaženky ',
 NAV_AddWallet               : 'Pridať peňaženku ',
-NAV_GenerateWallet          : 'Vytvoriť peňaženku ',
 NAV_BulkGenerate            : 'Bulk Generate ',
-NAV_SendEther               : 'Poslať Ether a Tokens ',
-NAV_SendTokens              : 'Poslať Tokens ',
-NAV_Offline                 : 'Poslať Offline ',
-NAV_DeployContract          : 'Deploy Contract ',
-NAV_InteractContract        : 'Interact with Contract ',
+NAV_Contact                 : 'Kontakt ',
 NAV_Contracts               : 'Contracts ',
+NAV_DeployContract          : 'Deploy Contract ',
+NAV_ENS                     : 'ENS',
+NAV_GenerateWallet          : 'Vytvoriť peňaženku ',
+NAV_Help                    : 'Pomoc ',
+NAV_InteractContract        : 'Interact with Contract ',
 NAV_Multisig                : 'Multisig ',
 NAV_MyWallets               : 'Moje peňaženky ',
+NAV_Offline                 : 'Poslať Offline ',
+NAV_SendEther               : 'Poslať Ether a Tokens ',
+NAV_SendTokens              : 'Poslať Tokens ',
+NAV_SignMsg                 : 'Sign Message ',
+NAV_Swap                    : 'Swap ',
 NAV_ViewWallet              : 'Zobraziť detaily peňaženky ',
-NAV_Help                    : 'Pomoc ',
-NAV_Contact                 : 'Kontakt ',
+NAV_YourWallets             : 'Vaše Peňaženky ',
 
 /* General */
-x_Address                   : 'Vaša Adresa ',
+x_Access                    : 'Access ',
 x_AddessDesc                : 'Možno to poznate ako vaše "Konto #" alebo váš "Verejný Kľúč". Adresa je to, čo pošlete ľudom, aby vám mohli poslať ETH. Táto ikona vám pomôže rozpoznať vašu adresu. ',
+x_Address                   : 'Vaša Adresa ',
 x_Cancel                    : 'Zrušiť ',
 x_CSV                       : 'CSV súbor (nezašifrovaný) ',
 x_Download                  : 'Stiahnuť ',
@@ -95,6 +36,8 @@ x_JsonDesc                  : 'Toto je nezašifrovaný JSON format vášho sukro
 x_Keystore                  : 'Keystore Súbor (UTC / JSON · Odporúčané · Šifrované) ',
 x_Keystore2                 : 'Keystore Súbor (UTC / JSON) ',
 x_KeystoreDesc              : 'Tento Keystore súbor je rovnakého formatu ako  Mist takže ho budete môcť jednoducho importovať. Tento subor odporúčame stiahnuť a zálohovať. ',
+x_Mnemonic                  : 'Mnemonic Phrase (MetaMask / Jaxx ) ',
+x_ParityPhrase              : 'Parity Phrase ',
 x_Password                  : 'Heslo ',
 x_Print                     : 'Vytlačiť Papierovú Peňaženku ',
 x_PrintDesc                 : 'Rada: Ak nevlastnite tlačiareň, jednoducho kliknite tlačiť a uložte to ako PDF. ',
@@ -105,7 +48,6 @@ x_PrivKeyDesc               : 'Toto je nezašifrovaná textova verzia vašho Sú
 x_Save                      : 'Uložiť ',
 x_TXT                       : 'TXT súbor (nezašifrovaný) ',
 x_Wallet                    : 'Peňaženka ',
-x_Mnemonic                  : 'Mnemonic Phrase (MetaMask / Jaxx ) ',
 
 /* Header */
 MEW_Warning_1               : 'Vždy skontrolujte URL adresu pred tým ako vytvoríte alebo sprístupnite vašu peňaženku. Davajte si pozor na Phisingové stránky! ',
@@ -242,12 +184,6 @@ OFFLINE_Step2_Label_7       : 'Enter / Select your Private Key / JSON. ',
 OFFLINE_Step3_Title         : 'Step 3: Send / Publish Transaction (Online Computer) ',
 OFFLINE_Step3_Label_1       : 'Paste the signed transaction from Step 2 here and press the "SEND TRANSACTION" button. ',
 
-/* Deploy Contracts */
-DEP_generate                : 'Generate Bytecode ',
-DEP_generated               : 'Generated Bytecode ',
-DEP_signtx                  : 'Sign Transaction ',
-DEP_interface               : 'Generated Interface ',
-
 /* My Wallet */
 MYWAL_Nick                  : 'Wallet Nickname ',
 MYWAL_Address               : 'Wallet Address ',
@@ -294,6 +230,58 @@ ADD_Trezor_select           : 'This is a TREZOR seed ',
 CX_error_1                  : 'You don\'t have any wallets saved. Click ["Add Wallet"](/cx-wallet.html#add-wallet) to add one! ',
 CX_quicksend                : 'QuickSend ', // if no appropriate translation, just use "Send"
 
+/* Node Switcher */
+NODE_Title                  : 'Set Up Your Custom Node',
+NODE_Subtitle               : 'To connect to a local node...',
+NODE_Warning                : 'Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)',
+NODE_Name                   : 'Node Name',
+NODE_Port                   : 'Node Port',
+NODE_CTA                    : 'Save & Use Custom Node',
+
+/* Contracts */
+CONTRACT_Title              : 'Contract Address ',
+CONTRACT_Title_2            : 'Select Existing Contract ',
+CONTRACT_Json               : 'ABI / JSON Interface ',
+CONTRACT_Interact_Title     : 'Read / Write Contract ',
+CONTRACT_Interact_CTA       : 'Select a function ',
+CONTRACT_ByteCode           : 'Byte Code ',
+CONTRACT_Read               : 'READ ',
+CONTRACT_Write              : 'WRITE ',
+DEP_generate                : 'Generate Bytecode ',
+DEP_generated               : 'Generated Bytecode ',
+DEP_signtx                  : 'Sign Transaction ',
+DEP_interface               : 'Generated Interface ',
+
+/* Swap / Exchange */
+SWAP_rates                  : "Current Rates ",
+SWAP_init_1                 : "I want to swap my ",
+SWAP_init_2                 : " for ", // "I want to swap my X ETH for X BTC"
+SWAP_init_CTA               : "Let's do this! ", // or "Continue"
+SWAP_information            : "Your Information ",
+SWAP_send_amt               : "Amount to send ",
+SWAP_rec_amt                : "Amount to receive ",
+SWAP_your_rate              : "Your rate ",
+SWAP_rec_add                : "Your Receiving Address ",
+SWAP_start_CTA              : "Start Swap ",
+SWAP_ref_num                : "Your reference number ",
+SWAP_time                   : "Time remaining to send ",
+SWAP_progress_1             : "Order Initiated ",
+SWAP_progress_2             : "Waiting for your ", // Waiting for your BTC...
+SWAP_progress_3             : "Received! ", // ETH Received!
+SWAP_progress_4             : "Sending your {{orderResult.output.currency}} ",
+SWAP_progress_5             : "Order Complete ",
+SWAP_order_CTA              : "Please send ", // Please send 1 ETH...
+SWAP_unlock                 : "Unlock your wallet to send ETH or Tokens directly from this page. ",
+
+/* Sign Message */
+MSG_message                 : 'Message ',
+MSG_date                    : 'Date ',
+MSG_signature               : 'Signature ',
+MSG_verify                  : 'Verify Message ',
+MSG_info1                   : 'Include the current date so the signature cannot be reused on a different date. ',
+MSG_info2                   : 'Include your nickname and where you use the nickname so someone else cannot use it. ',
+MSG_info3                   : 'Include a specific reason for the message so it cannot be reused for a different purpose. ',
+
 /* Error Messages */
 ERROR_0                     : 'Please enter valid amount. ',
 ERROR_1                     : 'Your password must be at least 9 characters. Please ensure it is a strong password. ',
@@ -318,18 +306,22 @@ ERROR_19                    : 'Invalid symbol ',
 ERROR_20                    : 'Not a valid ERC-20 token ',
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
 ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Enter valid url, if you are on https your url must be https ',
+ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
 ERROR_24                    : 'Please enter valid port ',
 ERROR_25                    : 'Please enter valid chain ID ',
 ERROR_26                    : 'Please enter valid ABI ',
 ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
 ERROR_28                    : '**You need your Keystore File & Password** (or Private Key) to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions. ',
 ERROR_29                    : 'Please enter valid user and password ',
+ERROR_30                    : 'Please enter valid ENS name ',
+ERROR_31                    : 'Invalid secret phrase ',
+ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',
 SUCCESS_3                   : 'Transaction submitted. TX ID ',
 SUCCESS_4                   : 'Your wallet was successfully added ',
 SUCCESS_5                   : 'File Selected ',
+SUCCESS_6                   : 'You are successfully connected to the node   ',
 
 WARN_Send_Link              : 'You arrived via a link that has the address, value, gas, data fields, or transaction type (send mode) filled in for you. You can change any information before sending. Unlock your wallet to get started. ',
 
