@@ -144,6 +144,12 @@
     "type":"default"
   },
   {
+    "address":"0x607F4C5BB672230e8672085532f7e901544a7375",
+    "symbol":"RLC",
+    "decimal":9,
+    "type":"default"
+  },
+  {
     "address":"0x2e071d2966aa7d8decb1005885ba1977d6038a65",
     "symbol":"ROL",
     "decimal":16,
@@ -198,15 +204,15 @@
     "type":"default"
   },
   {
-    "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
-    "symbol":"XAUR",
-    "decimal":8,
+    "address":"0x667088b212ce3d06a1b553a7221E1fD19000d9aF",
+    "symbol":"WINGS",
+    "decimal":18,
     "type":"default"
   },
   {
-    "address":"0x607F4C5BB672230e8672085532f7e901544a7375",
-    "symbol":"RLC",
-    "decimal":9,
+    "address":"0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
+    "symbol":"XAUR",
+    "decimal":8,
     "type":"default"
   }
 ]
