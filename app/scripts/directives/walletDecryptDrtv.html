@@ -113,23 +113,37 @@
             <div class="modal-body" role="document">
                <button aria-label="Close" type="button" class="close" data-dismiss="modal">&times;</button>
                <!-- Select HD Path -->
-               <span ng-show="showMDecrypt">
+               <span>
                   <h3 id="modalTitle" class="modal-title" translate="ADD_Radio_5_Path"> Select HD derivation path:</h3>
                   <label class="radio">
                   <input aria-describedby="modalTitle" type="radio" id="hd_derivation_path_default" ng-model="HDWallet.dPath" value="{{HDWallet.defaultDPath}}" ng-change="onHDDPathChange()"/>
                   <span ng-bind="HDWallet.defaultDPath"></span>
-                  <span ng-if="!showTrezorSeparate" translate="ADD_Radio_5_withTrezor">(default with trezor)</span>
-                  <span ng-if="showTrezorSeparate" translate="ADD_Radio_5_woTrezor">(default without trezor)</span>
+                  <span translate="ADD_Radio_5_woTrezor">(Jaxx, Metamask, Exodus, imToken)</span>
                   </label>
                   <label class="radio">
-                  <input aria-describedby="modalTitle" type="radio" id="hd_derivation_path_alternative" ng-model="HDWallet.dPath" value="{{HDWallet.alternativeDPath}}" ng-change="onHDDPathChange()"/>
-                  <span ng-bind="HDWallet.alternativeDPath"></span>
-                  <span translate="ADD_Radio_5_PathAlternative">(alternative)</span>
+                  <input aria-describedby="modalTitle" type="radio" ng-model="HDWallet.dPath" value="{{HDWallet.ledgerPath}}" ng-change="onHDDPathChange()"/>
+                  <span ng-bind="HDWallet.ledgerPath"></span>
+                  <span translate="ADD_Radio_5_PathLedgerETH">(Ledger - ETH)</span>
                   </label>
-                  <label class="radio" ng-if="showTrezorSeparate">
-                  <input aria-describedby="modalTitle" type="radio" id="hd_derivation_path_trezor" ng-model="HDWallet.dPath" value="{{getTrezorPath()}}" ng-change="onHDDPathChange()" />
-                  <span ng-bind="getTrezorPath()"></span>
-                  <span translate="ADD_Radio_5_PathTrezor">(Trezor)</span>
+                  <label class="radio">
+                  <input aria-describedby="modalTitle" type="radio" ng-model="HDWallet.dPath" value="{{HDWallet.ledgerClassicPath}}" ng-change="onHDDPathChange()"/>
+                  <span ng-bind="HDWallet.ledgerClassicPath"></span>
+                  <span translate="ADD_Radio_5_PathLedgerETC">(Ledger - ETC)</span>
+                  </label>
+                  <label class="radio">
+                  <input aria-describedby="modalTitle" type="radio" ng-model="HDWallet.dPath" value="{{HDWallet.trezorPath}}" ng-change="onHDDPathChange()" />
+                  <span ng-bind="HDWallet.trezorPath"></span>
+                  <span translate="ADD_Radio_5_PathTrezorETH">(Trezor - ETH)</span>
+                  </label>
+                  <label class="radio">
+                  <input aria-describedby="modalTitle" type="radio" ng-model="HDWallet.dPath" value="{{HDWallet.trezorClassicPath}}" ng-change="onHDDPathChange()" />
+                  <span ng-bind="HDWallet.trezorClassicPath"></span>
+                  <span translate="ADD_Radio_5_PathTrezorETC">(Trezor - ETC)</span>
+                  </label>
+                  <label class="radio">
+                  <input aria-describedby="modalTitle" type="radio" ng-model="HDWallet.dPath" value="{{HDWallet.trezorTestnetPath}}" ng-change="onHDDPathChange()" />
+                  <span ng-bind="HDWallet.trezorTestnetPath"></span>
+                  <span translate="ADD_Radio_5_PathTrezorROP">(Trezor - ROP)</span>
                   </label>
                   <label class="radio">
                   <input aria-describedby="modalTitle" type="radio" id="hd_derivation_path_custom" ng-model="HDWallet.dPath" value="{{HDWallet.customDPath}}" ng-change="onHDDPathChange()" />
