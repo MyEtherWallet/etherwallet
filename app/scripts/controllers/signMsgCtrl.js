@@ -21,18 +21,21 @@ var signMsgCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.generateSignedMsg = function() {
 		try {
-			var thisMessage = $scope.signMsg.message + ' | ' + $scope.signMsg.dateTime;
-			var hash = ethUtil.sha3(thisMessage);
-			var signed = ethUtil.ecsign(hash, $scope.wallet.getPrivateKey());
-			var combined = Buffer.concat([Buffer.from(signed.r), Buffer.from(signed.s), Buffer.from([signed.v])]);
-			var combinedHex = combined.toString('hex');
+      var thisMsg    = $scope.signMsg.message
+      var thisDate   = $scope.signMsg.dateTime
+      var thisSpacer = (thisMsg.length > 0 && thisDate.length > 0) ? ' ' : ''
+			var thisMessage = thisMsg + thisSpacer + thisDate
+			var hash = ethUtil.sha3(thisMessage)
+			var signed = ethUtil.ecsign(hash, $scope.wallet.getPrivateKey())
+			var combined = Buffer.concat([Buffer.from(signed.r), Buffer.from(signed.s), Buffer.from([signed.v])])
+			var combinedHex = combined.toString('hex')
 			$scope.signMsg.signedMsg = JSON.stringify({
 				address: $scope.wallet.getChecksumAddressString(),
 				msg: thisMessage,
 				sig: '0x' + combinedHex
-			});
+			})
 		} catch (e) {
-			$scope.notifier.danger(e);
+			$scope.notifier.danger(e)
 		}
 	}
 	$scope.verifySignedMessage = function() {
@@ -44,7 +47,7 @@ var signMsgCtrl = function($scope, $sce, walletService) {
           var hash = ethUtil.sha3(json.msg);
           var pubKey = ethUtil.ecrecover(hash, sig[64], sig.slice(0,32), sig.slice(32,64));
           if(ethFuncs.getNakedAddress(json.address)!=ethUtil.pubToAddress(pubKey).toString('hex')) throw globalFuncs.errorMsgs[12];
-          else $scope.notifier.success(globalFuncs.successMsgs[0]);
+          else $scope.notifier.success(globalFuncs.successMsgs[6]);
 		} catch (e){
 		  $scope.notifier.danger(e);
 		}
