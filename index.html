@@ -30,7 +30,7 @@
 
 <body>
 
-<header aria-label="header" ng-controller='tabsCtrl' >
+<header class="{{curNode.name}} {{curNode.service}}" aria-label="header" ng-controller='tabsCtrl' >
   
   <section class="bg-gradient header-branding">
     <section class="container">
@@ -74,7 +74,8 @@
 
         &nbsp;&nbsp;
 
-        <span class="dropdown" ng-cloak>
+        <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
+        <span class="dropdown dropdown-node" ng-cloak>
           <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small><i class="caret"></i></a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
@@ -89,12 +90,6 @@
       </div>
     </section>
   </section>
-
-  <!-- TODO: turn this into notification -->
-  <div class="small announcement annoucement-warning" ng-show="!nodeIsConnected" ng-cloak>
-    <div class="container">Unable to connect to node. See the help page for troubleshooting suggestions.</div>
-  </div>
-  <!-- / TODO: turn this into notification -->
 
   <nav role="navigation" aria-label="main navigation" class="container nav-container overflowing" >
     <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
@@ -200,8 +195,6 @@
 
 </header>
 
-
-<br />
 
 <section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
 
@@ -337,10 +330,12 @@
       <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
       <h5>
         <span translate="x_PrivKey">Private Key (unencrypted)</span>
-        <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
       </h5>
     </div>
-    <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly">
+    <div class="input-group">
+      <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly">
+      <span tabindex="0" aria-label="make private key visible" role="button" class="input-group-addon eye" ng-click="showHidePkey()"></span>
+    </div>
   </section>
 
   <section ng-show="wallet.type=='default'">
@@ -360,11 +355,14 @@
     <div class="col-xs-6">
       <h5 ng-show="wallet.type=='default'">
         <span translate="x_PrivKey">Private Key (unencrypted)</span>
-        <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
       </h5>
       <div class="qr-pkey-container" ng-show="wallet.type=='default'">
         <div class="qr-overlay" ng-show="!pkeyVisible"></div>
         <div class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+        <div class="input-group">
+          <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly" style="display:none;width:0;height:0;padding:0">
+          <span tabindex="0" aria-label="make private key visible" role="button" class="input-group-addon eye" ng-click="showHidePkey()"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -443,10 +441,12 @@
       <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
       <h5>
         <span translate="x_PrivKey">Private Key (unencrypted)</span>
-        <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
       </h5>
     </div>
-    <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly">
+    <div class="input-group">
+      <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly">
+      <span tabindex="0" aria-label="make private key visible" role="button" class="input-group-addon eye" ng-click="showHidePkey()"></span>
+    </div>
   </section>
 
   <section ng-show="wallet.type=='default'">
@@ -466,11 +466,14 @@
     <div class="col-xs-6">
       <h5 ng-show="wallet.type=='default'">
         <span translate="x_PrivKey">Private Key (unencrypted)</span>
-        <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
       </h5>
       <div class="qr-pkey-container" ng-show="wallet.type=='default'">
         <div class="qr-overlay" ng-show="!pkeyVisible"></div>
         <div class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+        <div class="input-group">
+          <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly" style="display:none;width:0;height:0;padding:0">
+          <span tabindex="0" aria-label="make private key visible" role="button" class="input-group-addon eye" ng-click="showHidePkey()"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -613,9 +616,19 @@
 <!-- Content -->
 <section class="col-sm-8">
 
+  <div class="row form-group" ng-show="tx.readOnly">
+    <div class="alert alert-danger col-xs-12 clearfix" ng-show="wallet!=null && tx.readOnly && !hasEnoughBalance()">
+      <strong>Warning! You do not have enough funds to complete this swap.</strong> <br />
+      Please add more funds or access a different wallet.
+    </div>
+  </div>
+
   <!-- To Address -->
   <div class="row form-group">
     <h4 class="col-xs-12" translate="SEND_trans">Send Transaction</h4>
+  </div>
+
+  <div class="row form-group">
     <div class="col-xs-10">
       <label translate="SEND_addr"> To Address: </label>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
@@ -679,12 +692,6 @@
     <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
   </div>
 
-
-  <div class="alert alert-danger" ng-show="showRaw && !hasEnoughBalance() && tx.readOnly">
-    <p>You do not have enough funds in your account to complete this swap. Please add more funds or access a different wallet.</p>
-  </div>
-
-
 </section>
 <!-- / Content -->
  
@@ -729,7 +736,7 @@
           <strong ng-show="tx.sendMode!=='ether'" class="mono"> {{tokenTx.to}} </strong>
         </p>
 
-        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
+        <p> You are interacting with the <strong>{{ajaxReq.type}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
         <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
       </div>
@@ -992,6 +999,11 @@
       </div>
     </section>
 
+    <div class="alert alert-danger" ng-show="ajaxReq.type!=='ETH'">
+      <strong>Warning! You are not connected to an ETH node.</strong> <br />
+      Please use the node switcher in the upper-right corner to switch to an ETH node. We <strong>do not</strong> support swapping ETC or Testnet ETH.
+    </div>
+
     <section class="clearfix" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
        <!-- Sidebar -->
 <section class="col-sm-4">
@@ -1014,9 +1026,19 @@
 <!-- Content -->
 <section class="col-sm-8">
 
+  <div class="row form-group" ng-show="tx.readOnly">
+    <div class="alert alert-danger col-xs-12 clearfix" ng-show="wallet!=null && tx.readOnly && !hasEnoughBalance()">
+      <strong>Warning! You do not have enough funds to complete this swap.</strong> <br />
+      Please add more funds or access a different wallet.
+    </div>
+  </div>
+
   <!-- To Address -->
   <div class="row form-group">
     <h4 class="col-xs-12" translate="SEND_trans">Send Transaction</h4>
+  </div>
+
+  <div class="row form-group">
     <div class="col-xs-10">
       <label translate="SEND_addr"> To Address: </label>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
@@ -1080,12 +1102,6 @@
     <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
   </div>
 
-
-  <div class="alert alert-danger" ng-show="showRaw && !hasEnoughBalance() && tx.readOnly">
-    <p>You do not have enough funds in your account to complete this swap. Please add more funds or access a different wallet.</p>
-  </div>
-
-
 </section>
 <!-- / Content -->
  
@@ -1130,7 +1146,7 @@
           <strong ng-show="tx.sendMode!=='ether'" class="mono"> {{tokenTx.to}} </strong>
         </p>
 
-        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
+        <p> You are interacting with the <strong>{{ajaxReq.type}} chain</strong>, provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
         <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
       </div>
@@ -1780,13 +1796,22 @@
     <!-- Help -->
 <article class="tab-pane help active" ng-if="globalService.currentTab==globalService.tabs.help.id"  ng-cloak>
 
-  <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" target="_blank">
-    <div class="alert alert-danger" translate="HELP_Warning">If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.</div>
-  </a>
-
   <h1 translate="NAV_Help"> Help </h1>
 
   <p translate="HELP_Desc">Do you see something missing? Have another question? <a href="mailto:support@myetherwallet.com" target="_blank"> Get in touch with us</a>, and we will not only answer your question, we will update this page to be more useful to people in the future!</p>
+
+ <article class="collapse-container">
+    <div ng-click="hRecent = !hRecent">
+      <a class="collapse-button"><span ng-show="hRecent">+</span><span ng-show="!hRecent">-</span></a>
+      <h4> Recent </h4>
+    </div>
+    <div ng-show="!hRecent">
+      <ul>
+        <li><a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" target="_blank"><span class="text-danger" translate="HELP_Warning">If you created a wallet or downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.</span></a></li>
+        <li><a href="https://myetherwallet.groovehq.com/help_center" target="_blank"> This page is slowly being deprecated. Please check out our more up-to-date and searchable Knowledge Base. </a></li>
+      </ul>
+    </div>
+  </article>
 
 
   <article class="collapse-container">
@@ -2540,7 +2565,7 @@
 
 
 </footer>
-
+</main>
 </body>
 </html>
 
