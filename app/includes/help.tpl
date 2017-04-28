@@ -1,13 +1,22 @@
 <!-- Help -->
 <article class="tab-pane help active" ng-if="globalService.currentTab==globalService.tabs.help.id"  ng-cloak>
 
-  <a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" target="_blank">
-    <div class="alert alert-danger" translate="HELP_Warning">If you created a wallet -or- downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.</div>
-  </a>
-
   <h1 translate="NAV_Help"> Help </h1>
 
   <p translate="HELP_Desc">Do you see something missing? Have another question? <a href="mailto:support@myetherwallet.com" target="_blank"> Get in touch with us</a>, and we will not only answer your question, we will update this page to be more useful to people in the future!</p>
+
+ <article class="collapse-container">
+    <div ng-click="hRecent = !hRecent">
+      <a class="collapse-button"><span ng-show="hRecent">+</span><span ng-show="!hRecent">-</span></a>
+      <h4> Recent </h4>
+    </div>
+    <div ng-show="!hRecent">
+      <ul>
+        <li><a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" target="_blank"><span class="text-danger" translate="HELP_Warning">If you created a wallet or downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.</span></a></li>
+        <li><a href="https://myetherwallet.groovehq.com/help_center" target="_blank"> This page is slowly being deprecated. Please check out our more up-to-date and searchable Knowledge Base. </a></li>
+      </ul>
+    </div>
+  </article>
 
 
   <article class="collapse-container">
