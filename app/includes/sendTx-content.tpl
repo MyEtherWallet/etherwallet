@@ -19,9 +19,19 @@
 <!-- Content -->
 <section class="col-sm-8">
 
+  <div class="row form-group" ng-show="tx.readOnly">
+    <div class="alert alert-danger col-xs-12 clearfix" ng-show="wallet!=null && tx.readOnly && !hasEnoughBalance()">
+      <strong>Warning! You do not have enough funds to complete this swap.</strong> <br />
+      Please add more funds or access a different wallet.
+    </div>
+  </div>
+
   <!-- To Address -->
   <div class="row form-group">
     <h4 class="col-xs-12" translate="SEND_trans">Send Transaction</h4>
+  </div>
+
+  <div class="row form-group">
     <div class="col-xs-10">
       <label translate="SEND_addr"> To Address: </label>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
@@ -84,12 +94,6 @@
   <div class="form-group" ng-show="showRaw">
     <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
   </div>
-
-
-  <div class="alert alert-danger" ng-show="showRaw && !hasEnoughBalance() && tx.readOnly">
-    <p>You do not have enough funds in your account to complete this swap. Please add more funds or access a different wallet.</p>
-  </div>
-
 
 </section>
 <!-- / Content -->
