@@ -302,7 +302,7 @@ ERROR_13                    : 'Ein Wallet mit diesem Spitznamen existiert bereit
 ERROR_14                    : 'Wallet nicht gefunden. ',
 ERROR_15                    : 'Es sieht nicht so aus als würde ein Proposal mit dieser ID existieren oder es gab einen Fehler beim Lesen des Proposal. ',
 ERROR_16                    : 'Es ist bereits ein Wallet mit dieser Adresse gespeichert. Bitte überprüfe die Seite deines Wallets. ',
-ERROR_17                    : 'Du brauchst zumindest 0.01 ETH in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
+ERROR_17                    : 'Du brauchst **0.01 ETH** in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
 ERROR_18                    : 'Diese Transaktion würde dein gesamtes verbleibendes Gas verbrauchen. Das bedeutet, du hast bereits über dieses Proposal abgestimmt oder die Debattierphase ist zu Ende. ',
 ERROR_19                    : 'Ungültiges Symbol ',
 ERROR_20                    : 'Not a valid ERC-20 token ',

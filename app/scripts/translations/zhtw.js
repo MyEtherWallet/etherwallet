@@ -286,7 +286,7 @@ ERROR_13                    : '已經有一個使用相同暱稱的錢包存在�
 ERROR_14                    : '找不到錢包。 ',
 ERROR_15                    : 'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
 ERROR_16                    : '儲存裝置中已經有一個包含這個地址的錢包存在。 請見錢包頁面。 ',
-ERROR_17                    : '你帳戶中必須有至少 0.001 ETH 來支付gas的成本。 請添加一些 ETH 並重試。 ',
+ERROR_17                    : '你帳戶中必須有至少 **0.01 ETH** 來支付gas的成本。 請添加一些 ETH 並重試。 ',
 ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended. ',
 ERROR_19                    : '無效的符號 ',
 ERROR_20                    : '並不是一個有效的 ERC-20 代幣 ',

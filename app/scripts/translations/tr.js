@@ -303,7 +303,7 @@ ERROR_13                    : 'Secdigin Nickname baska bir cüzdanda kullaniliyo
 ERROR_14                    : 'Cüzdan bulunmadi. ',
 ERROR_15                    : 'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
 ERROR_16                    : 'A wallet with this address already exists in storage. Please check your wallets page. ',
-ERROR_17                    : 'You need to have at least 0.01 ether in your account to cover the cost of gas. Please add some ether and try again. ',
+ERROR_17                    : 'You need to have **0.01 ETH** in your account to cover the cost of gas. Please add some ether and try again. ',
 ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended. ',
 ERROR_19                    : 'Geçersiz sembol ',
 ERROR_20                    : 'Not a valid ERC-20 token ',
