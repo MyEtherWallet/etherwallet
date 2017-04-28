@@ -314,12 +314,14 @@ ERROR_28                    : '**DIPERLUKAN File Keystore & password** (atau Pri
 ERROR_29                    : 'Please enter valid user and password ',
 ERROR_30                    : 'Please enter valid ENS name ',
 ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
+ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
 SUCCESS_1                   : 'Alamat valid ',
 SUCCESS_2                   : 'Dompet telah ter-dekripsi ',
 SUCCESS_3                   : 'Transaksi diajukan. TX ID ',
 SUCCESS_4                   : 'Dompet Anda telah ditambahkan ',
 SUCCESS_5                   : 'File Terpilih ',
+SUCCESS_6                   : 'You are successfully connected ',
+SUCCESS_7                   : 'Message Signature Verified',
 WARN_Send_Link              : 'Alamat, jumlah, gas atau informasi telah diisikan untuk Anda. Informasi tersebut dapat Anda rubah sebelum pengiriman. Buka kunci dompet Anda Untuk memulai. ',
 
 /* Geth Error Messages */

@@ -316,14 +316,14 @@ ERROR_28                    : '**Szükséged lesz a Keystore Fájlra és a jelsz
 ERROR_29                    : 'Please enter valid user and password ',
 ERROR_30                    : 'Please enter valid ENS name ',
 ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
+ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
 SUCCESS_1                   : 'Érvényes cím ',
 SUCCESS_2                   : 'Tárca sikeresen dekódolva ',
 SUCCESS_3                   : 'Tranzakció elküldve. TX ID ',
 SUCCESS_4                   : 'Tárcád sikeresen hozzáadva ',
 SUCCESS_5                   : 'File Selected ',
-SUCCESS_6                   : 'You are successfully connected to the node   ',
-
+SUCCESS_6                   : 'You are successfully connected ',
+SUCCESS_7                   : 'Message Signature Verified',
 /* Geth Error Messages */
 GETH_InvalidSender          : 'Érvénytelen küldő ',
 GETH_Nonce                  : 'a Nonce túl alacsony ',

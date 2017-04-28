@@ -315,14 +315,14 @@ ERROR_28                    : 'ウォレットを操作するためには**Keyst
 ERROR_29                    : 'Please enter valid user and password ',
 ERROR_30                    : 'Please enter valid ENS name ',
 ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
+ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
 SUCCESS_1                   : '有効なアドレス ',
 SUCCESS_2                   : 'ウォレットは正常に暗号解除されました。 ',
 SUCCESS_3                   : 'トランザクションが送出されました。 TX ID ',
 SUCCESS_4                   : 'ウォレットが追加されました： ',
 SUCCESS_5                   : '選択されました： ',
-SUCCESS_6                   : 'You are successfully connected to the node   ',
-
+SUCCESS_6                   : 'You are successfully connected ',
+SUCCESS_7                   : 'Message Signature Verified',
 WARN_Send_Link              : '自分のアドレス、リンク、ガス、データ、あるいはトランザクションタイプ（送出モード）が指定されたリンクでここに表示されています。 送出前に修正可能です。もう一度行うために、ウォレットを解錠してください。 ',
 
 /* Parity Error Messages */

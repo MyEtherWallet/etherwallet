@@ -301,14 +301,14 @@ ERROR_28                    : '**以後你會需要密碼和Keystore檔案** (�
 ERROR_29                    : '請輸入有效的使用者及密碼 ',
 ERROR_30                    : 'Please enter valid ENS name ',
 ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
+ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
 SUCCESS_1                   : '有效的地址 ',
 SUCCESS_2                   : '成功解密錢包 ',
 SUCCESS_3                   : '交易已傳送。 交易的ID ',
 SUCCESS_4                   : '成功新增你的錢包 ',
 SUCCESS_5                   : '已選擇檔案 ',
-SUCCESS_6                   : 'You are successfully connected to the node   ',
-
+SUCCESS_6                   : 'You are successfully connected ',
+SUCCESS_7                   : 'Message Signature Verified',
 WARN_Send_Link              : '你藉由一條連結到達此頁面，且該連結已幫你將地址、金額、gas和data欄位或交易類別(傳送模式)填好。 送出前你可以自由更改其中的值。 首先先解鎖你的錢包。 ',
 
 /* Geth Error Messages */

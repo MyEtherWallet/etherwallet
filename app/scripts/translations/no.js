@@ -321,8 +321,8 @@ SUCCESS_2                   : 'Dekrypteringen av lommeboken var vellykket ',
 SUCCESS_3                   : 'Transaksjonen ble sendt inn. TX ID ',
 SUCCESS_4                   : 'Lommeboken din ble lagt til ',
 SUCCESS_5                   : 'Valgt fil ',
-SUCCESS_6                   : 'Tilkobling til noden ble opprettet   ',
-
+SUCCESS_6                   : 'Tilkobling ble opprettet ',
+SUCCESS_7                   : 'Message Signature Verified',
 WARN_Send_Link              : 'Du ankom via en lenke hvor adresse, verdi, gas, datafelt og/eller transaksjonstype (sendingsmodus) var ferdigutfylt. Du kan endre denne informasjonen før du sender. Lås opp lommeboken din for å komme i gang. ',
 
 /* Geth Error Messages */

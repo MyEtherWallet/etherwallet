@@ -317,14 +317,14 @@ ERROR_28                    : '**Necesitas tu archivo Keystore/JSON y la contras
 ERROR_29                    : 'Please enter valid user and password ',
 ERROR_30                    : 'Please enter valid ENS name ',
 ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
+ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
 SUCCESS_1                   : 'Dirección válida ',
 SUCCESS_2                   : 'Cartera descifrada con éxito ',
 SUCCESS_3                   : 'Transacción enviada. TX ID ',
 SUCCESS_4                   : 'Se ha añadido tu cartera ',
 SUCCESS_5                   : 'Archivo seleccionado ',
-SUCCESS_6                   : 'You are successfully connected to the node   ',
-
+SUCCESS_6                   : 'You are successfully connected ',
+SUCCESS_7                   : 'Message Signature Verified',
 WARN_Send_Link              : 'Has llegado aquí a través de un enlace que ya tiene rellenados la dirección, cantidad, gas, campos de datos o el tipo de transacción (modo de envío). Puedes cambiar cualquier parámetro antes de enviar. Desbloquea tu cartera para comenzar. ',
 
 /* Geth Error Messages */

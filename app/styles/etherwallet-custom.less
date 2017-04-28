@@ -529,3 +529,93 @@ label small {
 .ens-response {
   color: @gray;
 }
+
+// color code the nodes
+@brand-eth: @brand-primary;
+@brand-etc: #9c27b0;
+@brand-test: #cddc39;
+@brand-cust: #9c27b0;
+
+.dropdown-node .dropdown-menu {
+  li:nth-last-child(2) {
+    padding-bottom: 5px;
+  }
+
+  li:nth-child(2),
+  li:nth-child(3),
+  li:nth-child(6) {
+    border-bottom: 1px solid @gray-lighter;
+    padding-bottom: 5px;
+  }
+  li:nth-child(2) + li,
+  li:nth-child(3) + li,
+  li:nth-child(6) + li {
+    padding-top: 5px;
+  }
+
+  li:last-child {
+    border-top: 1px solid @gray-lighter;
+    padding-top: 5px;
+  }
+
+  li {
+    border-left: 2px solid @brand-cust;
+  }
+  li:nth-child(1),
+  li:nth-child(2) {
+    border-left: 2px solid @brand-eth;
+  }
+  li:nth-child(3) {
+    border-left: 2px solid @brand-etc;
+  }
+  li:nth-child(4),
+  li:nth-child(5),
+  li:nth-child(6) {
+    border-left: 2px solid @brand-test;
+  }
+  li:last-child {
+    border-left: 2px solid @gray-light;
+  }
+
+}
+
+header {
+  margin-bottom: 1em;
+}
+header.ETH     {
+  border-top: 3px solid @brand-eth;
+  & + .container .modal-content {
+    border: 3px solid @brand-eth;
+  }
+}
+header.ETC     {
+  border-top: 3px solid @brand-etc;
+  & + .container .modal-content {
+    border: 3px solid @brand-etc;
+  }
+}
+header.Ropsten {
+  border-top: 3px solid @brand-test;
+  & + .container .modal-content {
+    border: 3px solid @brand-test;
+  }
+}
+header.Kovan   {
+  border-top: 3px solid @brand-test;
+  & + .container .modal-content {
+    border: 3px solid @brand-test;
+  }
+}
+header.Rinkeby {
+  border-top: 3px solid @brand-test;
+  & + .container .modal-content {
+    border: 3px solid @brand-test;
+  }
+}
+header.Custom  {
+  border-top: 3px solid @brand-cust;
+  & + .container .modal-content {
+    border: 3px solid @brand-cust;
+  }
+}
+

@@ -328,14 +328,14 @@ ERROR_28                    : 'В будущем, для доступа к эт�
 ERROR_29                    : 'Please enter valid user and password ',
 ERROR_30                    : 'Please enter valid ENS name ',
 ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
+ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
 SUCCESS_1                   : 'Адрес указан верно ',
 SUCCESS_2                   : 'Кошелёк успешно расшифрован ',
 SUCCESS_3                   : 'Транзакция отправлена на выполнение. TX ID ',
 SUCCESS_4                   : 'Ваш кошелёк успешно добавлен ',
 SUCCESS_5                   : 'Выбранный файл ',
-SUCCESS_6                   : 'You are successfully connected to the node   ',
-
+SUCCESS_6                   : 'You are successfully connected ',
+SUCCESS_7                   : 'Message Signature Verified',
 /* Geth Error Messages */
 GETH_InvalidSender          : 'Неверный адрес отправителя ',
 GETH_Nonce                  : 'Номер перевода (nonce) слишком мал ',

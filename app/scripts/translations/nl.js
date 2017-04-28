@@ -308,15 +308,14 @@ ERROR_30                    : 'Voer een valide ENS naam in ',
 ERROR_31                    : 'Ongeldige geheime zin ',
 ERROR_30                    : 'Please enter valid ENS name ',
 ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
+ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
 SUCCESS_1                   : 'Geldig adres ',
 SUCCESS_2                   : 'Wallet succesvol ontsleuteld ',
 SUCCESS_3                   : 'Transactie verzonden. TX ID ',
 SUCCESS_4                   : 'Je Wallet is succesvol toegevoegd ',
 SUCCESS_5                   : 'Bestand Geselecteerd ',
-SUCCESS_6                   : 'You are successfully connected to the node   ',
-SUCCESS_6                   : 'You are successfully connected to the node   ',
-
+SUCCESS_6                   : 'You are successfully connected ',
+SUCCESS_7                   : 'Message Signature Verified',
 WARN_Send_Link              : 'Je bent hier gekomen via een link waarbij het adres, bedrag, gas of data velden al ingevuld zijn. Indien gewenst kun je elk veld nog aanpassen voor het verzenden. Ontgrendel je wallet on te beginnen. ',
 
 /* Geth Error Messages */

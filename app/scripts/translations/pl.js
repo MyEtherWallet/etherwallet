@@ -316,14 +316,14 @@ ERROR_28                    : '**Potrzebujesz plik Keystore i hasło, lub Klucz 
 ERROR_29                    : 'Please enter valid user and password ',
 ERROR_30                    : 'Please enter valid ENS name ',
 ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not change the node or connect to the node you selected. Please refresh the page and try again. ',
+ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
 SUCCESS_1                   : 'Prawidłowy adres ',
 SUCCESS_2                   : 'Portfel został odszyfrowany ',
 SUCCESS_3                   : 'Transakcja zgłoszona. TX ID ',
 SUCCESS_4                   : 'Twój portfel został dodany ',
 SUCCESS_5                   : 'Wybrany plik ',
-SUCCESS_6                   : 'You are successfully connected to the node   ',
-
+SUCCESS_6                   : 'You are successfully connected ',
+SUCCESS_7                   : 'Message Signature Verified',
 WARN_Send_Link              : 'Znalazłeś się tu przez odnośnik, który zawiera wstępnie uzupełniony adres, kwotę, paliwo lub dane transakcji. Możesz zmienić dowolne parametry transakcji zanim ją zatwierdzisz. Odblokuj portfel aby kontynuować. ',
 
 /* Geth Error Messages */
