@@ -49,6 +49,19 @@ nodes.nodeList = {
         'service': 'Etherscan.io',
         'lib': require('./nodeHelpers/etherscan')
     },
+    'etc_epool': {
+        'name': 'ETC',
+        'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
+        'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
+        'type': nodes.nodeTypes.ETC,
+        'eip155': true,
+        'chainId': 61,
+        'tokenList': require('./tokens/etcTokens.json'),
+        'abiList': require('./abiDefinitions/etcAbi.json'),
+        'estimateGas': false,
+        'service': 'Epool.io',
+        'lib': new nodes.customNode('https://mewapi.epool.io', '')
+    },
     'rop_mew': {
         'name': 'Ropsten',
         'type': nodes.nodeTypes.Ropsten,
@@ -87,19 +100,6 @@ nodes.nodeList = {
         'estimateGas': false,
         'service': 'Etherscan.io',
         'lib': require('./nodeHelpers/etherscanRin')
-    },
-    'etc_epool': {
-        'name': 'ETC',
-        'blockExplorerTX': 'https://gastracker.io/tx/[[txHash]]',
-        'blockExplorerAddr': 'https://gastracker.io/addr/[[address]]',
-        'type': nodes.nodeTypes.ETC,
-        'eip155': true,
-        'chainId': 61,
-        'tokenList': require('./tokens/etcTokens.json'),
-        'abiList': require('./abiDefinitions/etcAbi.json'),
-        'estimateGas': false,
-        'service': 'Epool.io',
-        'lib': new nodes.customNode('https://mewapi.epool.io', '')
     }
 };
 nodes.ethPrice = require('./nodeHelpers/ethPrice');
