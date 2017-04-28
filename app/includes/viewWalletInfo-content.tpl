@@ -41,10 +41,12 @@
       <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
       <h5>
         <span translate="x_PrivKey">Private Key (unencrypted)</span>
-        <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
       </h5>
     </div>
-    <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly">
+    <div class="input-group">
+      <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly">
+      <span tabindex="0" aria-label="make private key visible" role="button" class="input-group-addon eye" ng-click="showHidePkey()"></span>
+    </div>
   </section>
 
   <section ng-show="wallet.type=='default'">
@@ -64,11 +66,14 @@
     <div class="col-xs-6">
       <h5 ng-show="wallet.type=='default'">
         <span translate="x_PrivKey">Private Key (unencrypted)</span>
-        <a class="no-animate" translate="{{pkeyVisible ? 'VIEWWALLET_HidePrivKey' : 'VIEWWALLET_ShowPrivKey'}}" ng-click="showHidePkey()">(show)</a>
       </h5>
       <div class="qr-pkey-container" ng-show="wallet.type=='default'">
         <div class="qr-overlay" ng-show="!pkeyVisible"></div>
         <div class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+        <div class="input-group">
+          <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly" style="display:none;width:0;height:0;padding:0">
+          <span tabindex="0" aria-label="make private key visible" role="button" class="input-group-addon eye" ng-click="showHidePkey()"></span>
+        </div>
       </div>
     </div>
   </section>
