@@ -277,6 +277,10 @@ ADD_Ledger_scan             : 'Connect to Ledger Nano S ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Connect to TREZOR ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Re-open MyEtherWallet on a secure (SSL) connection ',
+ADD_DigitalBitbox_0b        : 'Re-open MyEtherWallet using [Chrome](https://www.google.com/chrome/browser/desktop/) or [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Connect your Digital Bitbox ',
 
 /* Error Messages */
 ERROR_0                     : 'Παρακαλώ εισάγετε έγκυρο ποσό. ',

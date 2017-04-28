@@ -110,6 +110,10 @@ ADD_Ledger_scan             : 'Koble til Ledger Nano S ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Koble til TREZOR ',
 ADD_Trezor_select           : 'Dette er en TREZOR seed ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Åpne MyEtherWallet på nytt på en sikker (SSL) forbindelse. ',
+ADD_DigitalBitbox_0b        : 'Åpne MyEtherWallet på nytt med [Chrome](https://www.google.com/chrome/browser/desktop/) eller [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Connect your Digital Bitbox ',
 
 /* Generate Wallets */
 GEN_desc                    : 'Hvis du vil opprette flere lommebøker, kan du gjøre det her ',

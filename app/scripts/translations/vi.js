@@ -240,6 +240,10 @@ ADD_Ledger_4                : 'Nếu mục Hổ Trợ dành cho Trình duyệt k
 ADD_Ledger_0a               : 'Hảy mở lại trang MyEtherWallet trên một kết nối có tính bảo mật (SSL) ',
 ADD_Ledger_0b               : 'Sử dụng [Chrome](https://www.google.com/chrome/browser/desktop/) hoặc [Opera](https://www.opera.com/) Để mở lại trang MyEtherWallet ',
 ADD_Ledger_scan             : 'Kết nối với Ledger Nano S ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Hảy mở lại trang MyEtherWallet trên một kết nối có tính bảo mật (SSL) ',
+ADD_DigitalBitbox_0b        : 'Sử dụng [Chrome](https://www.google.com/chrome/browser/desktop/) hoặc [Opera](https://www.opera.com/) Để mở lại trang MyEtherWallet ',
+ADD_DigitalBitbox_scan      : 'Kết nối với Digital Bitbox ',
 
 /* Deploy Contracts */
 DEP_generate                : 'Tạo Bytecode ',

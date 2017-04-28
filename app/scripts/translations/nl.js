@@ -95,6 +95,10 @@ ADD_Ledger_0b               : 'Her-open MyEtherWallet door gebruik te maken van 
 ADD_Ledger_scan             : 'Verbind met Ledger Nano S ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Verbind met TREZOR ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Her-open MyEtherWallet met een veilige (SSL) verbinding ',
+ADD_DigitalBitbox_0b        : 'Her-open MyEtherWallet door gebruik te maken van [Chrome](https://www.google.com/chrome/browser/desktop/) of [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Verbind met Digital Bitbox ',
 
 /* Add Wallet */
 ADD_Label_1                 : 'Wat wil je doen? ',

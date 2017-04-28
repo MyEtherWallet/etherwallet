@@ -220,6 +220,10 @@ WARN_Send_Link              : 'Você chegou através de um link que tem o endere
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Connect to TREZOR ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Re-abra MyEtherWallet em uma conexão (SSL) segura ',
+ADD_DigitalBitbox_0b        : 'Re-abra MyEtherWallet usando [Chrome](https://www.google.com/chrome/browser/desktop/) ou [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Conectar-se a Digital Bitbox ',
 
 /* Node Switcher */
 NODE_Title                  : 'Set Up Your Custom Node',

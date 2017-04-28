@@ -280,6 +280,10 @@ ADD_Ledger_scan             : 'Подключиться к Ledger Nano S ',
 x_Trezor                    : 'TREZOR ',
 ADD_Trezor_scan             : 'Подключиться к TREZOR ',
 ADD_Trezor_select           : 'Это код восстановления TREZOR ',
+x_DigitalBitbox             : 'Digital Bitbox ',
+ADD_DigitalBitbox_0a        : 'Перезапустите MyEtherWallet через безопасное (SSL) соединение ',
+ADD_DigitalBitbox_0b        : 'Перезапустите MyEtherWallet с браузере [Chrome](https://www.google.com/chrome/browser/desktop/) или [Opera](https://www.opera.com/) ',
+ADD_DigitalBitbox_scan      : 'Подключиться к Digital Bitbox ',
 
 /* Error Messages */
 ERROR_0                     : 'Пожалуйста, введите сумму корректно. ',
