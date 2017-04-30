@@ -17,7 +17,10 @@ var balanceDrtv = function() {
                         <h5 translate=\"sidebar_TokenBal\">Token Balances:</h5>\n\
                         <table class=\"account-info\">\n\
                           <tr ng-repeat=\"token in wallet.tokenObjs track by $index\" ng-show=\"token.balance!=0 \&\& token.balance!=\'loading\' || token.type!==\'default\' || tokenVisibility==\'shown\'\">\n\
-                            <td class=\"mono wrap\"><img src=\"images/icon-remove.svg\" class=\"token-remove\" title=\"Remove Token\" ng-click=\"removeTokenFromLocal(token.symbol)\" ng-show=\"token.type!==\'default\'\" />{{token.getBalance()}}</td>\n\
+                            <td class=\"mono wrap\">\n\
+                              <img src=\"images/icon-remove.svg\" class=\"token-remove\" title=\"Remove Token\" ng-click=\"removeTokenFromLocal(token.symbol)\" ng-show=\"token.type!==\'default\'\" />\n\
+                              {{token.getBalance()}}\n\
+                            </td>\n\
                             <td>{{token.getSymbol()}} </td>\n\
                           </tr>\n\
                         </table>\n\
@@ -35,6 +38,18 @@ var balanceDrtv = function() {
                           <div ng-bind-html=\"validateLocalToken\"></div>\n\
                         </div>\n\
                       </section>\n\
+                      <hr />\n\
+                      <h5 translate=\"sidebar_TransHistory\"> Transaction History: </h5>\n\
+                      <ul class=\"account-info\">\n\
+                        <li ng-show=\"ajaxReq.type != \'CUS\'\">\n\
+                          <a href=\"{{ajaxReq.blockExplorerAddr.replace(\'[[address]]\', wallet.getAddressString())}}\" target=\"_blank\">\n\
+                            {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.replace(\'/tx/[[txHash]]\', \'\')}})\n\
+                          </a>\n\
+                        </li>\n\
+                        <li>\n\
+                          <a href=\"https://ethplorer.io/address/{{wallet.getAddressString()}}\" target=\"_blank\"> Tokens (Ethplorer.io) </a>\n\
+                        </li>\n\
+                      </ul>\n\
                       <hr />\n\
                       <section ng-show=\"ajaxReq.type==\'ETH\'\">\n\
                         <h5 translate=\"sidebar_Equiv\">Equivalent Values:</h5>\n\

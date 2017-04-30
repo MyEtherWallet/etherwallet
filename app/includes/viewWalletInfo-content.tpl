@@ -1,11 +1,6 @@
 <article class="col-sm-4">
   <br />
   <wallet-balance-drtv></wallet-balance-drtv>
-  <hr />
-  <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
-  <ul class="account-info">
-    <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
-  </ul>
 </article>
 
 <section class="col-sm-8 view-wallet-content">

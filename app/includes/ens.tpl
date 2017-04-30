@@ -137,11 +137,6 @@
     <!-- ALL: Sidebar -->
     <section class="col-sm-4">
       <wallet-balance-drtv></wallet-balance-drtv>
-      <hr />
-      <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
-      <ul class="account-info" ng-show="ajaxReq.type != 'CUS'">
-        <li><a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}</a></li>
-      </ul>
     </section>
     <!-- / Sidebar -->
 
