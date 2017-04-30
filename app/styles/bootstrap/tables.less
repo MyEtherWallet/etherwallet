@@ -124,16 +124,25 @@ th {
   border-bottom: 0;
   th {
     border-bottom: 1px solid @gray-lighter;
+    vertical-align: bottom;
   }
   td:first-child {
-    text-align: center;
+    font-family: @font-family-monospace;
   }
   tr:last-child td:first-child {
     text-align: left;
   }
-  tr:last-child,
+  tr:last-child:not(.mnemonic-custom-row),
   tr:first-child {
     background-color: white!important;
+  }
+  .mnemonic-custom-row {
+    input[type="text"]  {
+      margin: -5px;
+      display: inline;
+      width: 70%;
+      max-width: 15rem;
+    }
   }
 
 }

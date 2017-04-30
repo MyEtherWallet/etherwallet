@@ -372,10 +372,9 @@ gulp.task('pushlive', ['getVersion'], function() {
 
 // Prep & Release
 // gulp prep
-// gulp bump
-// gulp zipit
+// gulp bump   or gulp zipit
 // gulp commit
-// git push
+// git push --tags
 // gulp pushlive ( git subtree push --prefix dist origin gh-pages )
 
 gulp.task('watchJS',      function() { gulp.watch(js_watchFolder,   ['js']            ) })
