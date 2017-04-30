@@ -14,13 +14,18 @@
         <span class="mono small">{{twallet.addr}}</span>
       </td>
       <td class="chrome-tokens">
-        <h3 class="text-success col-xs-12">{{twallet.balance }} ETH</h3>
-        <div class="small col-xs-6" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'"><strong>{{token.getBalance() }} </strong> {{token.getSymbol()}} &nbsp;&nbsp; </div>
+        <h3 class="text-success col-xs-12 point" ng-show="!showLongBal" ng-dblclick="showLongBal=!showLongBal" title="{{twallet.balance}} (Double-Click)" >{{twallet.balance|number}} ETH</h3>
+        <h3 class="text-success col-xs-12 point" ng-show="showLongBal" ng-dblclick="showLongBal=!showLongBal">{{twallet.balance }} ETH</h3>
+        <div class="small col-xs-6 point" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'" ng-dblclick="showLongToken=!showLongToken" title="{{token.getBalance()}} (Double-Click)">
+          <strong ng-show="!showLongToken">{{token.getBalance()|number}} </strong>
+          <strong ng-show="showLongToken"> {{token.getBalance()}} </strong>
+          {{token.getSymbol()}} &nbsp;&nbsp;
+        </div>
       </td>
       <td class="text-center">
         <a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a>
         <a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')"><img src="images/icon-view.svg" title="View" /></a>
-        <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')"><img src="images/icon-remove.svg" title="Remove" /></a>
+        <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')"><img src="images/icon-remove-red.svg" title="Remove" /></a>
       </td>
     </tr>
   </table>
@@ -38,10 +43,16 @@
           <span class="mono small"> {{twallet.addr}} </span>
         </td>
         <td class="chrome-tokens">
-          <h3 class="text-success col-xs-12">{{twallet.balance }} ETH</h3>
-          <div class="small col-xs-6" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'"><strong>{{token.getBalance() }}</strong>&nbsp;{{token.getSymbol()}} &nbsp;&nbsp;</div>
+          <h3 class="text-success col-xs-12 point" ng-show="!showLongBal" ng-dblclick="showLongBal=!showLongBal" title="{{twallet.balance}} (Double-Click)" >{{twallet.balance|number}} ETH</h3>
+          <h3 class="text-success col-xs-12 point" ng-show="showLongBal" ng-dblclick="showLongBal=!showLongBal">{{twallet.balance }} ETH</h3>
+
+          <div class="small col-xs-6 point" ng-repeat="token in twallet.tokens" ng-show="token.balance!=0 && token.balance!='loading'" ng-dblclick="showLongToken=!showLongToken" title="{{token.getBalance()}} (Double-Click)">
+            <strong ng-show="!showLongToken">{{token.getBalance()|number}} </strong>
+            <strong ng-show="showLongToken"> {{token.getBalance()}} </strong>
+            &nbsp;{{token.getSymbol()}} &nbsp;&nbsp;
+          </div>
         </td>
-         <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove.svg" title="Remove" /></a></td>
+         <td class="text-center"><a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'watchOnly')"><img src="images/icon-remove-red.svg" title="Remove" /></a></td>
       </tr>
     </table>
   </section>
