@@ -14,7 +14,7 @@
   <section class="token-balances">
     <h5 translate="sidebar_TokenBal">Token Balances:</h5>
     <table class="account-info">
-      <tr ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 \&\& token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
+      <tr ng-repeat="token in wallet.tokenObjs track by $index" ng-show="token.balance!=0 && token.balance!='loading' || token.type!=='default' || tokenVisibility=='shown'">
         <td class="mono wrap point" title="{{token.getBalance()}} (Double-Click)" ng-dblclick="showLongToken=!showLongToken">
           <img src="images/icon-remove.svg" class="token-remove" title="Remove Token" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
           <span ng-show="!showLongToken">{{token.getBalance() | number}}</span>
