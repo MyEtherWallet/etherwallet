@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js     : commit cca1a65ee0194cc6e23747d228867e0bc105be20
+// Last sync with en.js     : commit d607fbe14c836b83c39a2e2b26ad6388786ba0d2
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -89,7 +89,7 @@ ADD_Radio_3                 : 'Incolla/Inserisci la tua chiave privata ',
 ADD_Radio_4                 : 'Aggiungi un conto da osservare ',
 ADD_Radio_5                 : 'Incolla/Inserisci la tua frase mnemonica ',
 ADD_Radio_5_Path            : 'Seleziona un percorso di derivazione HD ',
-ADD_Radio_5_PathCustom      : '(altro) ',
+ADD_Radio_5_PathCustom      : 'altro',
 ADD_Label_2                 : 'Crea un nome: ',
 ADD_Label_3                 : 'Il portafoglio è crittografato. Inserire la password ',
 ADD_Label_4                 : 'Aggiungi un conto da osservare ',
@@ -288,7 +288,7 @@ ERROR_13                    : 'Esiste già un portafoglio con questo nome. ',
 ERROR_14                    : 'Portafoglio non trovato. ',
 ERROR_15                    : 'Sembra che non esista ancora una proposta con questo ID o c\'è un errore nella lettura della proposta. ',
 ERROR_16                    : 'C\'è già un portafoglio con questo indirizzo fra quelli salvati. Controlla la pagina dei tuoi portafogli. ',
-ERROR_17                    : 'Devi avere almeno 0,01 ETH nel conto per coprire i costi del gas. Aggiungi un po\' di ether e riprova. ',
+ERROR_17                    : 'Ti servono **0,01 ETH** nel conto per coprire i costi del gas. Aggiungi un po\' di ETH e riprova. ',
 ERROR_18                    : 'Questa transazione consumerebbe tutto il gas. Ciò significa che hai già votato questa proposta o che il periodo di discussione è terminato. ',
 ERROR_19                    : 'Simbolo non valido ',
 ERROR_20                    : 'Non è un token ERC-20 valido. ',
@@ -303,14 +303,14 @@ ERROR_28                    : '**Avrai bisogno del tuo file Keystore e della pas
 ERROR_29                    : 'Inserisci un nome utente e una password validi ',
 ERROR_30                    : 'Inserisci un nome ENS valido ',
 ERROR_31                    : 'Frase segreta non valida ',
-ERROR_32                    : 'Impossibile cambiare il nodo o collegarsi al nodo selezionato. Aggiorna la pagina e riprova. ',
+ERROR_32                    : 'Impossibile collegarsi al nodo. Aggiorna la pagina, o controlla la pagina di aiuto per ulteriori suggerimenti. ',
 SUCCESS_1                   : 'Indirizzo valido ',
 SUCCESS_2                   : 'Portafoglio decodificato correttamente ',
 SUCCESS_3                   : 'Transazione inviata. TX ID ',
 SUCCESS_4                   : 'Il portafoglio è stato aggiunto correttamente ',
 SUCCESS_5                   : 'File selezionato ',
 SUCCESS_6                   : 'Ora sei connesso ',
-SUCCESS_7                   : 'Message Signature Verified',
+SUCCESS_7                   : 'Firma del messaggio verificata',
 WARN_Send_Link              : 'Sei arrivato qui da un link che ha riempito per te i campi indirizzo, importo, gas, dati o tipo di transazione (modalità di invio). Puoi cambiare queste informazioni prima di inviare. Sblocca il tuo portafoglio per iniziare. ',
 
 /* Geth Error Messages */
