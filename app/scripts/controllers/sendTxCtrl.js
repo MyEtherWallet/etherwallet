@@ -83,6 +83,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             }, true);
         }
         $scope.setTokenSendMode();
+        $scope.unitReadable = ajaxReq.type;
     });
     $scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {

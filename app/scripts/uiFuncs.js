@@ -225,6 +225,9 @@ uiFuncs.notifier = {
     timer: null,
     sce: null,
     scope: null,
+    overrideMsg: function(msg){
+        return globalFuncs.getEthNodeMsg(msg);
+    },
     warning: function(msg) {
         this.setClassAndOpen("alert-warning", msg);
     },
@@ -233,6 +236,7 @@ uiFuncs.notifier = {
         this.setTimer();
     },
     danger: function(msg) {
+        msg = this.overrideMsg(msg);
         this.setClassAndOpen("alert-danger", msg);
     },
     success: function(msg) {
