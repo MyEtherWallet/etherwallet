@@ -2068,7 +2068,7 @@ var tabsCtrl = function ($scope, globalService, $translate, $sce) {
         globalFuncs.parityErrorMsgs = {};
         for (var s in globalFuncs.parityErrors) {
             var key = globalFuncs.parityErrors[s];
-            if (key.indexOf('PARITY_') === 0) {
+            if (key.indexOf('PARITY_') === 0 || key.indexOf('ERROR_17') === 0) {
                 $scope.setLanguageVal(key, 'parityErrorMsgs', key);
             }
         }
@@ -2851,7 +2851,7 @@ globalFuncs.parityErrors = {
     "Transaction fee is too low\\. There is another transaction with same nonce in the queue\\. Try increasing the fee or incrementing the nonce\\.": "PARITY_TooCheapToReplace",
     "There are too many transactions in the queue\\. Your transaction was dropped due to limit\\. Try increasing the fee\\.": "PARITY_LimitReached",
     "Transaction fee is too low\\. It does not satisfy your node's minimal fee \\(minimal: (\\d+), got: (\\d+)\\)\\. Try increasing the fee\\.": "PARITY_InsufficientGasPrice",
-    "Insufficient funds\\. The account you tried to send transaction from does not have enough funds\\. Required (\\d+) and got: (\\d+)\\.": "PARITY_InsufficientBalance",
+    "Insufficient funds\\. The account you tried to send transaction from does not have enough funds\\. Required (\\d+) and got: (\\d+)\\.": "ERROR_17",
     "Transaction cost exceeds current gas limit\\. Limit: (\\d+), got: (\\d+)\\. Try decreasing supplied gas\\.": "PARITY_GasLimitExceeded",
     "Supplied gas is beyond limit\\.": "PARITY_InvalidGasLimit"
 };
@@ -7669,6 +7669,12 @@ module.exports=[
     "address":"0xb802b24e0637c2b87d2e8b7784c055bbe921011a",
     "symbol":"EMV",
     "decimal":2,
+    "type":"default"
+  },
+  {
+    "address":"0x6810e776880c02933d47db1b9fc05908e5386b96",
+    "symbol":"GNO",
+    "decimal":18,
     "type":"default"
   },
   {

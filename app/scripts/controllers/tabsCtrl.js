@@ -185,7 +185,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         globalFuncs.parityErrorMsgs = {};
         for (var s in globalFuncs.parityErrors) {
             var key = globalFuncs.parityErrors[s];
-            if (key.indexOf('PARITY_') === 0) {
+            if (key.indexOf('PARITY_') === 0 || key.indexOf('ERROR_17') === 0) {
                 $scope.setLanguageVal(key, 'parityErrorMsgs', key);
             }
         }
