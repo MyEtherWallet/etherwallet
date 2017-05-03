@@ -39,14 +39,29 @@
       <span ng-show="objENS.status==ensModes.reveal">
         {{objENS.name}}.eth  is in reveal period. Reveal your bids!
       </span>
+      <span ng-show="objENS.status==ensModes.notAvailable">
+        {{objENS.name}}.eth  is not yet available!
+      </span>
     </h1>
   </article>
   <!-- / ALL: Status of Name -->
 
+<section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center" ng-show="objENS.status==ensModes.owned && wd">
+      <button class="btn btn-primary" ng-click="finalizeDomain()"> Finalize {{objENS.name}}.eth </button>
+</section>
 
+<section class="order-info-wrap row" ng-show="objENS.status==ensModes.notAvailable">
+      <div class="col-sm-6 col-xs-12 order-info">
+        <h4> {{objENS.timeRemaining}} </h4>
+        <p> Time Remaining </p>
+      </div>
+      <div class="col-sm-6 col-xs-12 order-info">
+        <h4>{{objENS.allowedTime.toLocaleString()}}</h4>
+        <p> Start Date </p>
+      </div>
+  </section>
 
-
-  <div ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open) && !wd">
+  <div ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.reveal) && !wd">
   <!-- ALL: If auction has been started -->
   <article class="row">
     <!-- PLACEBID: Key Stats Row -->
@@ -92,17 +107,14 @@
     <!-- / ALL: Info Row -->
   </article>
   <!-- / ALL: If auction has been started -->
-
-
-
-
+  </div>
 
   <!-- ALL: Unlock Directive -->
-  <article class="row">
+  <article class="row" ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.owned || objENS.status==ensModes.reveal) && !wd">
     <section class="clearfix collapse-container">
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-        <h4 traslate="SWAP_unlock">Unlock your Wallet to <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span>.</h4>
+        <h4 traslate="SWAP_unlock">Unlock your Wallet to <span ng-show="objENS.status==ensModes.owned"> Finalize the Domain</span> <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span>.</h4>
       </div>
       <div ng-show="!wd">
           @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
@@ -110,14 +122,13 @@
       </div>
     </section>
   </article>
-  </div>
   <!-- / ALL: Unlock Directive -->
 
 
 
 
 
-<div ng-show="wd && (objENS.status==ensModes.auction || objENS.status==ensModes.open)">
+<div ng-show="wd && (objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.reveal)">
   <!-- PLACE BID: Key Stats Row  - Exact Duplicate of Above -->
   <section class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
       <div class="col-sm-6 col-xs-12 order-info">
@@ -144,7 +155,7 @@
     <section class="col-sm-8">
       <!-- Title -->
       <div class="form-group">
-        <h2><span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span></h2>
+        <h2><span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span><span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span></h2>
       </div>
       <!-- / Title -->
 
@@ -158,8 +169,8 @@
       <!-- / Name -->
 
       <!-- Maximum -->
-      <h5>Your Maximum Bid</h5>
-      <p><em><small>You <u>must</u> remember this to claim your name!!</small></em></p>
+      <h5>{{objENS.status==ensModes.reveal ? "Your Bid Amount" : "Your Maximum Bid"}}</h5>
+      <p ng-show="objENS.status!=ensModes.reveal"><em><small>You <u>must</u> remember this to claim your name!!</small></em></p>
       <div class="input-group">
         <input class="form-control" type="text" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.1 ? 'is-valid' : 'is-invalid'"/>
         <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
@@ -167,17 +178,19 @@
       <!-- / Maximum -->
 
       <!-- Disguise Bid -->
+      <div ng-show="objENS.status!=ensModes.reveal">
       <h5>The Amount You Wish to Send (to disguise your bid)</h5>
       <!-- Validation = more than Max. Bid Input, more than what is in account -->
       <div class="input-group">
         <input class="form-control" type="text" placeholder="2 {{ajaxReq.type}}" ng-model="objENS.dValue" ng-class="Validator.isPositiveNumber(objENS.dValue) && objENS.dValue >= objENS.bidValue ? 'is-valid' : 'is-invalid'"/>
         <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
       </div>
+      </div>
       <!-- / Disguise Bid  -->
 
       <!-- Your Secret -->
       <h5>Your Secret Phrase</h5>
-      <p><em><small>You <u>must</u> remember this to claim your name!!</small></em></p>
+      <p ng-show="objENS.status!=ensModes.reveal"><em><small>You <u>must</u> remember this to claim your name!!</small></em></p>
       <!-- Validation = more than Max. Bid Input, more than what is in account -->
       <div class="form-group">
         <input class="form-control" type="text" placeholder="I'm a secret. Don't forget me." value="" ng-model="objENS.secret" ng-class="Validator.isPasswordLenValid(objENS.secret,0) ? 'is-valid' : 'is-invalid'"/>
@@ -185,7 +198,7 @@
       <!-- / Your Secret  -->
 
       <div class="form-group">
-        <a class="btn btn-primary btn-block" ng-click="generateTx()"> <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span> </a>
+        <a class="btn btn-primary btn-block" ng-click="generateTx()"> <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span> <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span></a>
       </div>
     </section>
     <!-- / Content -->
@@ -207,8 +220,8 @@
         <div class="modal-body">
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h2 class="modal-title"> You are about to <span ng-show="objENS.status==ensModes.auction"> place a bid</span><span ng-show="objENS.status==ensModes.open">start an auction & place a bid.</span>{</h2>
-          <div class="alert alert-danger"><h3 class="modal-title" translate="SENDModal_Title">
+          <h2 class="modal-title"> You are about to <span ng-show="objENS.status==ensModes.auction"> place a bid</span><span ng-show="objENS.status==ensModes.open">start an auction & place a bid.</span><span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span></h2>
+          <div ng-show="objENS.status!=ensModes.reveal" class="alert alert-danger"><h3 class="modal-title" translate="SENDModal_Title">
             Warning!<br />
             <small>You <u>cannot</u> claim your name unless you have the following at the end of the auction.</small>
           </h3></div>
@@ -227,12 +240,12 @@
             <tbody>
               <tr><td>Name:                            </td><td>{{objENS.name}}.eth</td></tr>
               <tr><td>Bid Amount:                      </td><td>{{objENS.bidValue}}</td></tr>
-              <tr><td>Disguise Amount (amount to send):</td><td>{{objENS.dValue}}</td></tr>
+              <tr ng-show="objENS.status!=ensModes.reveal"><td>Disguise Amount (amount to send):</td><td>{{objENS.dValue}}</td></tr>
               <tr><td>Your Secret:                     </td><td>{{objENS.secret}}</td></tr>
               <tr><td>From Account:                    </td><td><small>{{wallet.getAddressString()}}</small></td></tr>
-              <tr ng-show="showRegistrationDate()"><td>Must Reveal On:                  </td><td><small>{{getRevealTime().toLocaleString()}}</small></td></tr>
+              <tr ng-show="showRegistrationDate() && objENS.status!=ensModes.reveal"><td>Must Reveal On:                  </td><td><small>{{getRevealTime().toLocaleString()}}</small></td></tr>
               <tr ng-show="showRegistrationDate()"><td>Auction Ends:                    </td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td></tr>
-              <tr>
+              <tr ng-show="objENS.status!=ensModes.reveal">
                 <td colspan="2">
                   <p><small>Easily copy the above:</small></p>
                   <textarea class="form-control small" readonly rows="2">{{bidObject}}</textarea>
@@ -262,6 +275,36 @@
     </section>
   </article>
   <!-- ALL: ENS MODAL -->
+
+   <!-- FINALIZE: ENS MODAL -->
+  <article class="modal fade" id="ensFinalizeConfirm" tabindex="-1">
+    <section class="modal-dialog">
+      <section class="modal-content">
+
+        <div class="modal-body">
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title"> You are about to Finalize domain {{objENS.name}}.eth</h2>
+        
+          <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
+
+          <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+        </div>
+
+
+        <div class="modal-footer">
+          <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+            No, get me out of here!
+          </button>
+          <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+            Yes, I am sure! Make transaction.
+          </button>
+        </div>
+
+      </section>
+    </section>
+  </article>
+  <!-- FINALIZE: ENS MODAL -->
 
 
 

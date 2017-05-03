@@ -9,6 +9,19 @@
     "payable": false,
     "type": "function"
 }, {
+    "constant": true,
+    "inputs": [{
+        "name": "_hash",
+        "type": "bytes32"
+    }],
+    "name": "getAllowedTime",
+    "outputs": [{
+        "name": "timestamp",
+        "type": "uint256"
+    }],
+    "payable": false,
+    "type": "function"
+}, {
     "constant": false,
     "inputs": [{
         "name": "unhashedName",
@@ -41,26 +54,39 @@
     "payable": false,
     "type": "function"
 }, {
+    "constant": false,
+    "inputs": [{
+        "name": "bidder",
+        "type": "address"
+    }, {
+        "name": "seal",
+        "type": "bytes32"
+    }],
+    "name": "cancelBid",
+    "outputs": [],
+    "payable": false,
+    "type": "function"
+}, {
     "constant": true,
     "inputs": [{
-        "name": "",
+        "name": "_hash",
         "type": "bytes32"
     }],
     "name": "entries",
     "outputs": [{
-        "name": "status",
+        "name": "",
         "type": "uint8"
     }, {
-        "name": "deed",
+        "name": "",
         "type": "address"
     }, {
-        "name": "registrationDate",
+        "name": "",
         "type": "uint256"
     }, {
-        "name": "value",
+        "name": "",
         "type": "uint256"
     }, {
-        "name": "highestBid",
+        "name": "",
         "type": "uint256"
     }],
     "payable": false,
@@ -80,6 +106,22 @@
     "inputs": [{
         "name": "_hash",
         "type": "bytes32"
+    }, {
+        "name": "_value",
+        "type": "uint256"
+    }, {
+        "name": "_salt",
+        "type": "bytes32"
+    }],
+    "name": "unsealBid",
+    "outputs": [],
+    "payable": false,
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "_hash",
+        "type": "bytes32"
     }],
     "name": "transferRegistrars",
     "outputs": [],
@@ -89,12 +131,28 @@
     "constant": true,
     "inputs": [{
         "name": "",
+        "type": "address"
+    }, {
+        "name": "",
         "type": "bytes32"
     }],
     "name": "sealedBids",
     "outputs": [{
         "name": "",
         "type": "address"
+    }],
+    "payable": false,
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{
+        "name": "_hash",
+        "type": "bytes32"
+    }],
+    "name": "state",
+    "outputs": [{
+        "name": "",
+        "type": "uint8"
     }],
     "payable": false,
     "type": "function"
@@ -112,6 +170,22 @@
     "payable": false,
     "type": "function"
 }, {
+    "constant": true,
+    "inputs": [{
+        "name": "_hash",
+        "type": "bytes32"
+    }, {
+        "name": "_timestamp",
+        "type": "uint256"
+    }],
+    "name": "isAllowed",
+    "outputs": [{
+        "name": "allowed",
+        "type": "bool"
+    }],
+    "payable": false,
+    "type": "function"
+}, {
     "constant": false,
     "inputs": [{
         "name": "_hash",
@@ -122,31 +196,22 @@
     "payable": false,
     "type": "function"
 }, {
-    "constant": false,
-    "inputs": [{
-        "name": "_hash",
-        "type": "bytes32"
-    }, {
-        "name": "_owner",
-        "type": "address"
-    }, {
-        "name": "_value",
+    "constant": true,
+    "inputs": [],
+    "name": "registryStarted",
+    "outputs": [{
+        "name": "",
         "type": "uint256"
-    }, {
-        "name": "_salt",
-        "type": "bytes32"
     }],
-    "name": "unsealBid",
-    "outputs": [],
     "payable": false,
     "type": "function"
 }, {
     "constant": true,
     "inputs": [],
-    "name": "registryCreated",
+    "name": "launchLength",
     "outputs": [{
         "name": "",
-        "type": "uint256"
+        "type": "uint32"
     }],
     "payable": false,
     "type": "function"
@@ -163,10 +228,10 @@
 }, {
     "constant": false,
     "inputs": [{
-        "name": "seal",
-        "type": "bytes32"
+        "name": "labels",
+        "type": "bytes32[]"
     }],
-    "name": "cancelBid",
+    "name": "eraseNode",
     "outputs": [],
     "payable": false,
     "type": "function"
@@ -177,6 +242,22 @@
         "type": "bytes32[]"
     }],
     "name": "startAuctions",
+    "outputs": [],
+    "payable": false,
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{
+        "name": "hash",
+        "type": "bytes32"
+    }, {
+        "name": "deed",
+        "type": "address"
+    }, {
+        "name": "registrationDate",
+        "type": "uint256"
+    }],
+    "name": "acceptRegistrarTransfer",
     "outputs": [],
     "payable": false,
     "type": "function"
@@ -201,13 +282,30 @@
     "payable": false,
     "type": "function"
 }, {
+    "constant": false,
+    "inputs": [{
+        "name": "hashes",
+        "type": "bytes32[]"
+    }, {
+        "name": "sealedBid",
+        "type": "bytes32"
+    }],
+    "name": "startAuctionsAndBid",
+    "outputs": [],
+    "payable": true,
+    "type": "function"
+}, {
     "inputs": [{
         "name": "_ens",
         "type": "address"
     }, {
         "name": "_rootNode",
         "type": "bytes32"
+    }, {
+        "name": "_startDate",
+        "type": "uint256"
     }],
+    "payable": false,
     "type": "constructor"
 }, {
     "anonymous": false,
@@ -217,7 +315,7 @@
         "type": "bytes32"
     }, {
         "indexed": false,
-        "name": "auctionExpiryDate",
+        "name": "registrationDate",
         "type": "uint256"
     }],
     "name": "AuctionStarted",
@@ -228,6 +326,10 @@
         "indexed": true,
         "name": "hash",
         "type": "bytes32"
+    }, {
+        "indexed": true,
+        "name": "bidder",
+        "type": "address"
     }, {
         "indexed": false,
         "name": "deposit",
@@ -272,7 +374,7 @@
         "type": "uint256"
     }, {
         "indexed": false,
-        "name": "now",
+        "name": "registrationDate",
         "type": "uint256"
     }],
     "name": "HashRegistered",
@@ -306,7 +408,7 @@
         "type": "uint256"
     }, {
         "indexed": false,
-        "name": "now",
+        "name": "registrationDate",
         "type": "uint256"
     }],
     "name": "HashInvalidated",

@@ -3,6 +3,7 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.ajaxReq = ajaxReq;
     walletService.wallet = null;
     $scope.ensConfirmModalModal = new Modal(document.getElementById('ensConfirmModal'));
+    $scope.ensFinalizeModal = new Modal(document.getElementById('ensFinalizeConfirm'));
     $scope.Validator = Validator;
     $scope.wd = false;
     var ENS = new ens();
@@ -19,7 +20,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         nameReadOnly: false
     };
     $scope.tx = {
-        gasLimit: '100000',
+        gasLimit: '500000',
         data: '',
         to: '',
         unit: "ether",
@@ -36,8 +37,11 @@ var ensCtrl = function($scope, $sce, walletService) {
         $scope.wallet.setBalance();
         $scope.wallet.setTokens();
     });
-    var timeRem = function() {
-        var rem = $scope.objENS.registrationDate - new Date();
+    var updateScope = function() {
+        if (!$scope.$$phase) $scope.$apply();
+    }
+    var timeRem = function(timeUntil) {
+        var rem = timeUntil - new Date();
         if (rem < 0) {
             clearInterval($scope.objENS.timer);
             $scope.objENS.timeRemaining = "EXPIRED";
@@ -56,7 +60,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         minutes = minutes < 10 ? '0' + minutes : minutes;
         seconds = seconds < 10 ? '0' + seconds : seconds;
         $scope.objENS.timeRemaining = days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds ';
-        if (!$scope.$$phase) $scope.$apply();
+        updateScope();
 
     }
     $scope.checkName = function() {
@@ -67,15 +71,29 @@ var ensCtrl = function($scope, $sce, walletService) {
                     $scope.objENS.nameReadOnly = true;
                     var entries = data.data;
                     for (var key in entries) $scope.objENS[key] = entries[key];
-                    if ($scope.objENS.status == $scope.ensModes.owned) ENS.getOwner($scope.objENS.name + '.eth', function(data) {
-                        $scope.objENS.owner = data.data;
-                        if (!$scope.$$phase) $scope.$apply();
-                    })
-                    if (!$scope.$$phase) $scope.$apply();
-                    if ($scope.objENS.status == $scope.ensModes.auction) {
-                        clearInterval($scope.objENS.timer);
-                        $scope.objENS.timer = setInterval(timeRem, 1000);
+                    switch ($scope.objENS.status) {
+                        case $scope.ensModes.owned:
+                            ENS.getOwner($scope.objENS.name + '.eth', function(data) {
+                                $scope.objENS.owner = data.data;
+                            })
+                            break;
+                        case $scope.ensModes.notAvailable:
+                            ENS.getAllowedTime($scope.objENS.name, function(data) {
+                                $scope.objENS.allowedTime = data.data;
+                                clearInterval($scope.objENS.timer);
+                                $scope.objENS.timer = setInterval(() => timeRem($scope.objENS.allowedTime), 1000);
+                            })
+                            break;
+                        case $scope.ensModes.auction:
+                            clearInterval($scope.objENS.timer);
+                            $scope.objENS.timer = setInterval(() => timeRem($scope.objENS.registrationDate), 1000);
+                            break;
+                        case $scope.ensModes.reveal:
+                            $scope.objENS.bidValue = 0;
+                            $scope.objENS.secret = '';
+                            break;
                     }
+                    updateScope();
                 }
             })
         } else $scope.notifier.danger(globalFuncs.errorMsgs[30]);
@@ -98,7 +116,50 @@ var ensCtrl = function($scope, $sce, walletService) {
                 } else {
                     $scope.notifier.danger(rawTx.error);
                 }
-                if (!$scope.$$phase) $scope.$apply();
+                updateScope();
+            });
+        });
+    }
+    $scope.revealBid = function() {
+        var _objENS = $scope.objENS;
+        ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
+            if (data.error) $scope.notifier.danger(data.msg);
+            data = data.data;
+            $scope.tx.to = ENS.getAuctionAddress();
+            $scope.tx.data = ENS.getRevealBidData(_objENS.name, etherUnits.toWei(_objENS.bidValue, 'ether'), _objENS.secret);
+            $scope.tx.value = 0;
+            var txData = uiFuncs.getTxData($scope);
+            txData.gasPrice = data.gasprice;
+            txData.nonce = data.nonce;
+            uiFuncs.generateTx(txData, function(rawTx) {
+                if (!rawTx.isError) {
+                    $scope.generatedTxs.push(rawTx.signedTx);
+                    $scope.ensConfirmModalModal.open();
+                } else {
+                    $scope.notifier.danger(rawTx.error);
+                }
+            });
+        });
+    }
+    $scope.finalizeDomain = function() {
+        var _objENS = $scope.objENS;
+        ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
+            if (data.error) $scope.notifier.danger(data.msg);
+            data = data.data;
+            $scope.tx.to = ENS.getAuctionAddress();
+            $scope.tx.data = ENS.getFinalizeAuctionData(_objENS.name);
+            $scope.tx.value = 0;
+            var txData = uiFuncs.getTxData($scope);
+            txData.gasPrice = data.gasprice;
+            txData.nonce = data.nonce;
+            uiFuncs.generateTx(txData, function(rawTx) {
+                if (!rawTx.isError) {
+                    $scope.generatedTxs = [];
+                    $scope.generatedTxs.push(rawTx.signedTx);
+                    $scope.ensFinalizeModal.open();
+                } else {
+                    $scope.notifier.danger(rawTx.error);
+                }
             });
         });
     }
@@ -149,6 +210,7 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.sendTxStatus = "";
     $scope.sendTx = function() {
         $scope.ensConfirmModalModal.close();
+        $scope.ensFinalizeModal.close();
         var signedTx = $scope.generatedTxs.shift();
         uiFuncs.sendTx(signedTx, function(resp) {
             if (!resp.isError) {
@@ -174,6 +236,7 @@ var ensCtrl = function($scope, $sce, walletService) {
             else {
                 if ($scope.objENS.status == $scope.ensModes.open) $scope.openAndBidAuction();
                 else if ($scope.objENS.status == $scope.ensModes.auction) $scope.bidAuction();
+                else if ($scope.objENS.status == $scope.ensModes.reveal) $scope.revealBid();
             }
         } catch (e) {
             $scope.notifier.danger(e);
