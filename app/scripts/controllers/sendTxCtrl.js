@@ -8,6 +8,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.showAdvance = $scope.showRaw = false;
     $scope.dropdownEnabled = true;
     $scope.Validator = Validator;
+    $scope.gasLimitChanged = false;
     // Tokens
     $scope.tokenVisibility = "hidden";
     $scope.tokenTx = {
@@ -118,6 +119,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         }
     }, true);
     $scope.estimateGasLimit = function() {
+        if ($scope.gasLimitChanged) return;
         if (globalFuncs.lightMode) {
             $scope.tx.gasLimit = 100000;
             return;
@@ -142,7 +144,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         });
     }
     $scope.hasEnoughBalance = function() {
-        if($scope.wallet.balance=='loading') return false;
+        if ($scope.wallet.balance == 'loading') return false;
         return new BigNumber($scope.tx.value).lt(new BigNumber($scope.wallet.balance));
     }
     $scope.onDonateClick = function() {

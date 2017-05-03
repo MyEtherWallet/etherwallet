@@ -60,7 +60,7 @@
 
   <!-- Gas -->
   <label translate="TRANS_gas"> Gas: </label>
-  <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'"/>
+  <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
   <!-- / Gas -->
 
   <!-- Advanced Option Panel -->
