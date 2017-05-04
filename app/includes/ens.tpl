@@ -63,11 +63,11 @@
 
 
   <article class="order-info-wrap row" ng-show="objENS.status==ensModes.notAvailable">
-    <div class="col-sm-6 col-xs-12 order-info">
+    <div class="col-sm-12 col-xs-12 order-info">
       <p> Time Remaining until Auction Opens </p>
       <h4> {{objENS.timeRemaining}} </h4>
     </div>
-    <div class="col-sm-6 col-xs-12 order-info">
+    <div class="col-sm-12 col-xs-12 order-info">
       <p> Auction Open Date </p>
       <h4>{{objENS.allowedTime.toLocaleString()}}</h4>
     </div>
@@ -141,7 +141,7 @@
         <h5>{{objENS.status==ensModes.reveal ? "Bid Amount" : "Maximum Bid"}}</h5>
         <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
         <div class="input-group">
-          <input class="form-control" type="text" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.1 ? 'is-valid' : 'is-invalid'"/>
+          <input class="form-control" type="text" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.01 ? 'is-valid' : 'is-invalid'"/>
           <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
         </div>
         <!-- / Maximum -->

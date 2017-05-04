@@ -59,9 +59,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     var applyScope = function() {
         if (!$scope.$$phase) $scope.$apply();
     }
-    globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('ether') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
-    $scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
-    if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true // if there is a query string, show an warning at top of page
+    var defaultInit = function() {
+        globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('ether') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
+        $scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
+        if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true // if there is a query string, show an warning at top of page
+
+    }
     $scope.$watch(function() {
         if (walletService.wallet == null) return null;
         return walletService.wallet.getAddressString();
@@ -84,7 +87,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             }, true);
         }
         $scope.setTokenSendMode();
-        $scope.unitReadable = ajaxReq.type;
+        defaultInit();
     });
     $scope.$watch('ajaxReq.key', function() {
         if ($scope.wallet) {

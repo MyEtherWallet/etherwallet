@@ -9,6 +9,7 @@ nodes.nodeTypes = {
     Rinkeby: "RINKEBY ETH",
     Custom: "CUSTOM ETH"
 };
+nodes.ensNodeTypes = [nodes.nodeTypes.ETH, nodes.nodeTypes.Ropsten];
 nodes.customNodeObj = {
     'name': 'CUS',
     'blockExplorerTX': '',

@@ -14,8 +14,8 @@ var ensCtrl = function($scope, $sce, walletService) {
         name: '',
         timeRemaining: null,
         timer: null,
-        bidValue: 0.1,
-        dValue: 0.1,
+        bidValue: 0.01,
+        dValue: 0.01,
         secret: hd.bip39.generateMnemonic().split(" ").splice(0, 3).join(" "),
         nameReadOnly: false
     };

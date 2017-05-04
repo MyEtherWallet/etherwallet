@@ -18,8 +18,8 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.ajaxReq = ajaxReq;
     $scope.nodeType = $scope.ajaxReq.type
     $scope.nodeService = $scope.ajaxReq.service
-    $scope.$watch('ajaxReq.type', function() {  $scope.nodeType = $scope.ajaxReq.type  })
-    $scope.$watch('ajaxReq.service', function() {  $scope.nodeService = $scope.ajaxReq.service  })
+    $scope.$watch('ajaxReq.type', function() { $scope.nodeType = $scope.ajaxReq.type })
+    $scope.$watch('ajaxReq.service', function() { $scope.nodeService = $scope.ajaxReq.service })
     $scope.setArrowVisibility = function() {
         setTimeout(function() {
             if (document.querySelectorAll('.nav-inner')[0] && document.querySelectorAll('.nav-scroll')[0]) {
@@ -47,13 +47,15 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         localStorage.setItem('curNode', JSON.stringify({
             key: key
         }));
+        if (nodes.ensNodeTypes.indexOf($scope.curNode.type) == -1) $scope.tabNames.ens.cx = $scope.tabNames.ens.mew = false;
+        else $scope.tabNames.ens.cx = $scope.tabNames.ens.mew = true;
         ajaxReq.getCurrentBlock(function(data) {
             if (data.error) {
-              $scope.nodeIsConnected = false;
-              $scope.notifier.danger(globalFuncs.errorMsgs[32]);
+                $scope.nodeIsConnected = false;
+                $scope.notifier.danger(globalFuncs.errorMsgs[32]);
             } else {
-              $scope.nodeIsConnected = true;
-              $scope.notifier.info(globalFuncs.successMsgs[5] + 'to the <strong>'+$scope.nodeType+' node</strong>, provided by '+$scope.nodeService+'.')
+                $scope.nodeIsConnected = true;
+                $scope.notifier.info(globalFuncs.successMsgs[5] + 'to the <strong>' + $scope.nodeType + ' node</strong>, provided by ' + $scope.nodeService + '.')
             }
         });
     }
