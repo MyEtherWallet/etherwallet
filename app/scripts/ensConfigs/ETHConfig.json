@@ -2,7 +2,7 @@
     "public": {
         "resolver": "0x0000000000000000000000000000000000000000",
         "reverse": "0xdA7fA6E0b04c76683F54c973931862D7fE474a85",
-        "ethAuction": "0x012233B3C8177F0778d910ED88170b82DE3bfe57",
+        "ethAuction": "0x6090a6e47849629b7245dfa1ca21d94cd15878ef",
     },
     "tlds": {
         "eth": "0x314159265dD8dbb310642f98f50C066173C1259b",

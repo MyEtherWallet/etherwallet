@@ -16,7 +16,7 @@
 
         <div ng-show="objENS.status!=ensModes.reveal" class="alert alert-danger">
           <h4>Screenshot & save first!</h4>
-          <small>You <u>cannot</u> claim your name unless you reveal the following on {{getRevealTime().toLocaleString()}}</small>
+          <small>You <u>cannot</u> claim your name unless you have this information during the reveal process.</small>
         </div>
 
         <table class="table">
@@ -52,6 +52,14 @@
             <tr ng-show="showRegistrationDate()">
               <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
             </tr>
+
+            <tr ng-show="objENS.status==ensModes.open">
+              <td>Must Reveal On:</td><td><small>(TBD. Check the name on MEW after you start the auction.)</small></td>
+            </tr>
+            <tr ng-show="objENS.status==ensModes.open">
+              <td>Auction Ends:</td><td><small>(TBD. Check the name on MEW after you start the auction.)</small></td>
+            </tr>
+
             <tr ng-show="objENS.status!=ensModes.reveal">
               <td colspan="2">
                 <small><p>Copy and save this:</p><textarea class="form-control small" readonly rows="4">{{bidObject}}</textarea></small>

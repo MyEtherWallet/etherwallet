@@ -5,11 +5,15 @@
     <!-- PLACEBID: Key Stats Row -->
     <section class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
       <div class="col-sm-6 col-xs-12 order-info">
-        <p> Time Remaining in Auction </p>
+        <p> Time Remaining in Auction  </p>
         <h4> {{objENS.timeRemaining}} </h4>
       </div>
+      <div class="col-sm-4 col-xs-12 order-info">
+        <p> Reveal Bids On </p>
+        <h4> {{getRevealTime().toLocaleString()}} </h4>
+      </div>
       <div class="col-sm-6 col-xs-12 order-info">
-        <p> End Date </p>
+        <p> Auction Closes On </p>
         <h4>{{objENS.registrationDate.toLocaleString()}}</h4>
       </div>
     </section>

@@ -8,7 +8,7 @@
 
   <br />
 
-  <article class="row">
+  <article class="row" ng-hide="ajaxReq.type=='ETC' || ajaxReq.type=='Kovan' || ajaxReq.type=='Rinkeby' || ajaxReq.type=='Custom'">
     <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
       <div class="input-group">
         <input class="form-control" type="text" placeholder="myetherwallet" ng-model="objENS.name" ng-keyup="$event.keyCode==13 && checkName()" ng-disabled="objENS.nameReadOnly" ng-class="Validator.isValidENSName(objENS.name) ? 'is-valid' : 'is-invalid'"/>
@@ -18,6 +18,12 @@
     </section>
   </article>
   <!-- / ALL: Title + Search -->
+
+  <!-- NON ETH OR ROP NODES -->
+  <div ng-show="ajaxReq.type=='ETC' || ajaxReq.type=='Kovan' || ajaxReq.type=='Rinkeby' || ajaxReq.type=='Custom'" class="alert alert-danger text-center">
+    <p> The ENS is only available on the ETH and Ropsten (Testnet) chains. You are currently on the {{ajaxReq.type}} chain. <br /> Please use the node switcher in the upper right corner to select "ETH" or "Ropsten". </p>
+  </div>
+  <!-- / NON ETH OR ROP NODES -->
 
 
   <!-- ALL: Status of Name -->
@@ -47,18 +53,22 @@
   <!-- / ALL: Status of Name -->
 
 
-  <article class="col-xs-12 col-sm-6 col-sm-offset-3 text-center" ng-show="objENS.status==ensModes.owned">
+  <article class="col-xs-12 col-sm-8 col-sm-offset-2 text-center" ng-show="objENS.status==ensModes.owned">
+      <br />
       <button class="btn btn-primary" ng-click="finalizeDomain()"> Finalize {{objENS.name}}.eth </button>
+      <br /><br />
+      <p> If the auction is over, anyone can finalize it. Finalizing it assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.1 ETH. Any non-winners will also be refunded.</p>
+      <br />
   </article>
 
 
   <article class="order-info-wrap row" ng-show="objENS.status==ensModes.notAvailable">
-    <div class="col-sm-6 col-xs-12 order-info">
-      <p> Time Remaining </p>
+    <div class="col-sm-4 col-xs-12 order-info">
+      <p> Time Remaining until Auction Opens </p>
       <h4> {{objENS.timeRemaining}} </h4>
     </div>
-    <div class="col-sm-6 col-xs-12 order-info">
-      <p> Start Date </p>
+    <div class="col-sm-4 col-xs-12 order-info">
+      <p> Auction Open Date </p>
       <h4>{{objENS.allowedTime.toLocaleString()}}</h4>
     </div>
   </article>
@@ -83,17 +93,20 @@
   </article>
   <!-- / ALL: Unlock Directive -->
 
-
+  <hr ng-show="wd" />
 
   <div ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.reveal) && wallet!=null">
-    <hr ng-show="!wd" />
     <article class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
-      <div class="col-sm-6 col-xs-12 order-info">
+      <div class="col-sm-4 col-xs-12 order-info">
         <p> Time Remaining in Auction </p>
         <h4> {{objENS.timeRemaining}} </h4>
       </div>
-      <div class="col-sm-6 col-xs-12 order-info">
-        <p> End Date </p>
+      <div class="col-sm-4 col-xs-12 order-info">
+        <p> Reveal Bids On</p>
+        <h4> {{getRevealTime().toLocaleString()}} </h4>
+      </div>
+      <div class="col-sm-4 col-xs-12 order-info">
+        <p> Auction Closes On </p>
         <h4>{{objENS.registrationDate.toLocaleString()}}</h4>
       </div>
     </article>
@@ -144,7 +157,7 @@
         <!-- Disguise Bid -->
         <div ng-show="objENS.status!=ensModes.reveal">
           <h5>Amount to Send</h5>
-          <p><em><small>Only if you wish to send more than your actual bid to disguise it.</small></em></p>
+          <p><em><small>If you wish to send more than your actual bid to disguise it.</small></em></p>
           <!-- Validation = more than Max. Bid Input, more than what is in account -->
           <div class="input-group">
             <input class="form-control" type="text" placeholder="2 {{ajaxReq.type}}" ng-model="objENS.dValue" ng-class="Validator.isPositiveNumber(objENS.dValue) && objENS.dValue >= objENS.bidValue ? 'is-valid' : 'is-invalid'"/>
