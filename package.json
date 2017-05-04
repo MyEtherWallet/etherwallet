@@ -11,7 +11,7 @@
     "angular-sanitize": "^1.6.2",
     "angular-translate": "^2.14.0",
     "angular-translate-handler-log": "^2.14.0",
-    "bignumber.js": "git://github.com/Ka0o0/bignumber.js.git#623d87200964618f2e6f3ceafa5d6ab979c47753",
+    "bignumber.js": "^4.0.2",
     "bip39": "^2.2.0",
     "browserify": "^14.3.0",
     "ethereum-bip44": "^2.1.3",
