@@ -499,7 +499,7 @@
       </div>
 
 
-      <textarea class="form-control" ng-model="signMsg.message" placeholder="This is user kvhnuke on reddit. The purprose of this message is to prove that 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 is my address." rows="5"></textarea>
+      <textarea class="form-control" ng-model="signMsg.message" placeholder="This is user kvhnuke on reddit. The purpose of this message is to prove that 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 is my address." rows="5"></textarea>
 
       <!-- Date -->
       <div class="account-help-icon">
@@ -1778,13 +1778,15 @@
     <main class="tab-pane ens-tab active" ng-if="globalService.currentTab==globalService.tabs.ens.id" ng-controller='ensCtrl' ng-cloak>
 
   <!-- ALL: Title + Search -->
-  <h1 class="text-center" translate="NAV_ENS"> Enter an ENS Name: </h1>
+  <article class="row">
+    <h1 class="text-center" translate="NAV_ENS"> ENS </h1>
+    <p class="col-xs-12 col-sm-10 col-sm-offset-1">The <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank">Ethereum Name Service</a> is a distributed, open, and extensible naming system based on the Ethereum blockchain. Once you have a name, you can tell your friends to send ETH to <code>kevinisawesome.eth</code> instead of <code>0x93a2f52cd.....</code>.</p>
+  </article>
+
+  <br />
+
   <article class="row" ng-show="!wd">
     <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
-      <!-- TODO: validation
-        "Names are required to be at least 7 characters long."
-        "Only .eth names are available to bid on (via MyEtherWallet) at this time"
-      -->
       <div class="input-group">
         <input class="form-control" type="text" placeholder="myetherwallet" ng-model="objENS.name"  ng-disabled="objENS.nameReadOnly" ng-class="Validator.isValidENSName(objENS.name) ? 'is-valid' : 'is-invalid'"/>
         <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
@@ -1802,22 +1804,22 @@
     <br /><br />
     <h1 class="text-center">
       <span ng-show="objENS.status==ensModes.auction">
-        An auction as been started for {{objENS.name}}.eth
+        An auction has already been started for <strong>{{objENS.name}}.eth</strong>
       </span>
       <span ng-show="objENS.status==ensModes.open">
-        {{objENS.name}}.eth is available!
+        <strong>{{objENS.name}}.eth</strong> is available!
       </span>
       <span ng-show="objENS.status==ensModes.owned">
-        {{objENS.name}}.eth  not available!. Already owned by {{objENS.owner}}
+        <strong>{{objENS.name}}.eth</strong>  is not available. It's already owned by {{objENS.owner}}
       </span>
       <span ng-show="objENS.status==ensModes.forbidden">
-        {{objENS.name}}.eth  not available!. Forbidden!
+        <strong>{{objENS.name}}.eth</strong>  not available. (Forbidden)
       </span>
       <span ng-show="objENS.status==ensModes.reveal">
-        {{objENS.name}}.eth  is in reveal period. Reveal your bids!
+        It's time to reveal the bids for <strong>{{objENS.name}}.eth</strong>.
       </span>
       <span ng-show="objENS.status==ensModes.notAvailable">
-        {{objENS.name}}.eth  is not yet available!
+        <strong>{{objENS.name}}.eth</strong>  is not yet available.
       </span>
     </h1>
   </article>
@@ -2062,7 +2064,7 @@
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h2 class="modal-title"> You are about to Finalize domain {{objENS.name}}.eth</h2>
-        
+
           <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
           <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
