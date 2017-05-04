@@ -27,11 +27,11 @@
   <!-- Send Tx Content -->
   <article class="row" ng-show="wallet!=null">
     <hr ng-show="!wd" />
-      @@if (site === 'mew' ) { @@include( './sendTx-content.tpl', { "site": "mew" } ) }
-      @@if (site === 'cx'  ) { @@include( './sendTx-content.tpl', { "site": "cx"  } ) }
+    @@if (site === 'mew' ) { @@include( './sendTx-content.tpl', { "site": "mew" } ) }
+    @@if (site === 'cx'  ) { @@include( './sendTx-content.tpl', { "site": "cx"  } ) }
 
-      @@if (site === 'mew' ) { @@include( './sendTx-modal.tpl',   { "site": "mew" } ) }
-      @@if (site === 'cx'  ) { @@include( './sendTx-modal.tpl',   { "site": "cx"  } ) }
+    @@if (site === 'mew' ) { @@include( './sendTx-modal.tpl',   { "site": "mew" } ) }
+    @@if (site === 'cx'  ) { @@include( './sendTx-modal.tpl',   { "site": "cx"  } ) }
   </article>
 
 
