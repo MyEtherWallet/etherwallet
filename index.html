@@ -40,7 +40,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.6.7 &nbsp;&nbsp;
+        &middot; v3.6.8 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -1785,7 +1785,7 @@
 
   <br />
 
-  <article class="row">
+  <article class="row" ng-hide="ajaxReq.type=='ETC' || ajaxReq.type=='Kovan' || ajaxReq.type=='Rinkeby' || ajaxReq.type=='Custom'">
     <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
       <div class="input-group">
         <input class="form-control" type="text" placeholder="myetherwallet" ng-model="objENS.name" ng-keyup="$event.keyCode==13 && checkName()" ng-disabled="objENS.nameReadOnly" ng-class="Validator.isValidENSName(objENS.name) ? 'is-valid' : 'is-invalid'"/>
@@ -1795,6 +1795,12 @@
     </section>
   </article>
   <!-- / ALL: Title + Search -->
+
+  <!-- NON ETH OR ROP NODES -->
+  <div ng-show="ajaxReq.type=='ETC' || ajaxReq.type=='Kovan' || ajaxReq.type=='Rinkeby' || ajaxReq.type=='Custom'" class="alert alert-danger text-center">
+    <p> The ENS is only available on the ETH and Ropsten (Testnet) chains. You are currently on the {{ajaxReq.type}} chain. <br /> Please use the node switcher in the upper right corner to select "ETH" or "Ropsten". </p>
+  </div>
+  <!-- / NON ETH OR ROP NODES -->
 
 
   <!-- ALL: Status of Name -->
@@ -1824,18 +1830,22 @@
   <!-- / ALL: Status of Name -->
 
 
-  <article class="col-xs-12 col-sm-6 col-sm-offset-3 text-center" ng-show="objENS.status==ensModes.owned">
+  <article class="col-xs-12 col-sm-8 col-sm-offset-2 text-center" ng-show="objENS.status==ensModes.owned">
+      <br />
       <button class="btn btn-primary" ng-click="finalizeDomain()"> Finalize {{objENS.name}}.eth </button>
+      <br /><br />
+      <p> If the auction is over, anyone can finalize it. Finalizing it assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.1 ETH. Any non-winners will also be refunded.</p>
+      <br />
   </article>
 
 
   <article class="order-info-wrap row" ng-show="objENS.status==ensModes.notAvailable">
-    <div class="col-sm-6 col-xs-12 order-info">
-      <p> Time Remaining </p>
+    <div class="col-sm-4 col-xs-12 order-info">
+      <p> Time Remaining until Auction Opens </p>
       <h4> {{objENS.timeRemaining}} </h4>
     </div>
-    <div class="col-sm-6 col-xs-12 order-info">
-      <p> Start Date </p>
+    <div class="col-sm-4 col-xs-12 order-info">
+      <p> Auction Open Date </p>
       <h4>{{objENS.allowedTime.toLocaleString()}}</h4>
     </div>
   </article>
@@ -1848,11 +1858,15 @@
     <!-- PLACEBID: Key Stats Row -->
     <section class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
       <div class="col-sm-6 col-xs-12 order-info">
-        <p> Time Remaining in Auction </p>
+        <p> Time Remaining in Auction  </p>
         <h4> {{objENS.timeRemaining}} </h4>
       </div>
+      <div class="col-sm-4 col-xs-12 order-info">
+        <p> Reveal Bids On </p>
+        <h4> {{getRevealTime().toLocaleString()}} </h4>
+      </div>
       <div class="col-sm-6 col-xs-12 order-info">
-        <p> End Date </p>
+        <p> Auction Closes On </p>
         <h4>{{objENS.registrationDate.toLocaleString()}}</h4>
       </div>
     </section>
@@ -1886,6 +1900,7 @@
       <ul>
         <li>The auction for this registrar is a blind auction, and is described in <a href="https://github.com/ethereum/EIPs/issues/162" target="_blank">EIP162</a>. Basically, no one can see *anything* during the auction, at all.</li>
         <li><a href="http://docs.ens.domains/en/latest/userguide.html#registering-a-name-with-the-auction-registrar" target="_blank">ENS: Read the Docs</a></li>
+        <li><a href="https://medium.com/the-ethereum-name-service/announcing-the-ethereum-name-service-relaunch-date-4390af6dd9a2" target="_blank">Announcing the Ethereum Name Service Relaunch Date!</a></li>
       </ul>
     </section>
     <!-- / ALL: Info Row -->
@@ -1912,17 +1927,20 @@
   </article>
   <!-- / ALL: Unlock Directive -->
 
-
+  <hr ng-show="wd" />
 
   <div ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.reveal) && wallet!=null">
-    <hr ng-show="!wd" />
     <article class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
-      <div class="col-sm-6 col-xs-12 order-info">
+      <div class="col-sm-4 col-xs-12 order-info">
         <p> Time Remaining in Auction </p>
         <h4> {{objENS.timeRemaining}} </h4>
       </div>
-      <div class="col-sm-6 col-xs-12 order-info">
-        <p> End Date </p>
+      <div class="col-sm-4 col-xs-12 order-info">
+        <p> Reveal Bids On</p>
+        <h4> {{getRevealTime().toLocaleString()}} </h4>
+      </div>
+      <div class="col-sm-4 col-xs-12 order-info">
+        <p> Auction Closes On </p>
         <h4>{{objENS.registrationDate.toLocaleString()}}</h4>
       </div>
     </article>
@@ -1973,7 +1991,7 @@
         <!-- Disguise Bid -->
         <div ng-show="objENS.status!=ensModes.reveal">
           <h5>Amount to Send</h5>
-          <p><em><small>Only if you wish to send more than your actual bid to disguise it.</small></em></p>
+          <p><em><small>If you wish to send more than your actual bid to disguise it.</small></em></p>
           <!-- Validation = more than Max. Bid Input, more than what is in account -->
           <div class="input-group">
             <input class="form-control" type="text" placeholder="2 {{ajaxReq.type}}" ng-model="objENS.dValue" ng-class="Validator.isPositiveNumber(objENS.dValue) && objENS.dValue >= objENS.bidValue ? 'is-valid' : 'is-invalid'"/>
@@ -2015,7 +2033,7 @@
 
         <div ng-show="objENS.status!=ensModes.reveal" class="alert alert-danger">
           <h4>Screenshot & save first!</h4>
-          <small>You <u>cannot</u> claim your name unless you reveal the following on {{getRevealTime().toLocaleString()}}</small>
+          <small>You <u>cannot</u> claim your name unless you have this information during the reveal process.</small>
         </div>
 
         <table class="table">
@@ -2051,6 +2069,14 @@
             <tr ng-show="showRegistrationDate()">
               <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
             </tr>
+
+            <tr ng-show="objENS.status==ensModes.open">
+              <td>Must Reveal On:</td><td><small>(TBD. Check the name on MEW after you start the auction.)</small></td>
+            </tr>
+            <tr ng-show="objENS.status==ensModes.open">
+              <td>Auction Ends:</td><td><small>(TBD. Check the name on MEW after you start the auction.)</small></td>
+            </tr>
+
             <tr ng-show="objENS.status!=ensModes.reveal">
               <td colspan="2">
                 <small><p>Copy and save this:</p><textarea class="form-control small" readonly rows="4">{{bidObject}}</textarea></small>
