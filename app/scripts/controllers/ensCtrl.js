@@ -61,7 +61,6 @@ var ensCtrl = function($scope, $sce, walletService) {
         seconds = seconds < 10 ? '0' + seconds : seconds;
         $scope.objENS.timeRemaining = days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds ';
         updateScope();
-
     }
     $scope.checkName = function() {
         if ($scope.Validator.isValidENSName($scope.objENS.name)) {
