@@ -230,8 +230,8 @@
         <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443" target="_blank">Getting Started</a></strong></li>
       </ul>
 
-      <h2>Ledger &amp; TREZOR?</h2>
-      <ul><li>Use your <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">Ledger or TREZOR</a> to access your account.</a> Your device <em>is</em> your wallet. </li></ul>
+      <h2>Ledger / TREZOR / Digital&nbsp;Bitbox?</h2>
+      <ul><li>Use your <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">Ledger, TREZOR, or Digital&nbsp;Bitbox</a> to access your account.</a> Your device <em>is</em> your wallet. </li></ul>
 
       <h2>Jaxx / Metamask?</h2>
       <ul><li>Use your <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">Mnemonic Phrase</a> to access your account.</li></ul>
@@ -803,7 +803,7 @@
 <section class="col-sm-4">
 
   <div class="block block--danger" ng-show="wallet!=null && tx.readOnly && !hasEnoughBalance()">
-    <h5>Warning! You do not have enough funds to complete this swap.</p>
+    <h5>Warning! You do not have enough funds to complete this swap.</h5>
     <p>Please add more funds to your wallet or access a different wallet.</p>
   </div>
 
@@ -1221,7 +1221,7 @@
 <section class="col-sm-4">
 
   <div class="block block--danger" ng-show="wallet!=null && tx.readOnly && !hasEnoughBalance()">
-    <h5>Warning! You do not have enough funds to complete this swap.</p>
+    <h5>Warning! You do not have enough funds to complete this swap.</h5>
     <p>Please add more funds to your wallet or access a different wallet.</p>
   </div>
 
@@ -3288,6 +3288,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
             <li><a aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank">Swap ETH/BTC/EUR/CHF via Bity.com</a></li>
             <li><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank">Buy a Ledger Nano S</a></li>
             <li><a href="https://trezor.io/?a=myetherwallet.com" target="_blank">Buy a TREZOR</a></li>
+            <li><a href="https://digitalbitbox.com/?ref=mew" target="_blank">Buy a Digital Bitbox</a></li>
           </ul>
         </p>
         <div>
