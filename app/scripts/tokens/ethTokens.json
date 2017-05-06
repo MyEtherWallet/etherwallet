@@ -192,6 +192,12 @@
     "type":"default"
   },
   {
+    "address":"0xaaaf91d9b90df800df4f55c205fd6989c977e73a",
+    "symbol":"TKN",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xcb94be6f13a1182e4a4b6140cb7bf2025d28e41b",
     "symbol":"TRST",
     "decimal":6,
