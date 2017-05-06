@@ -229,8 +229,8 @@ var ensCtrl = function($scope, $sce, walletService) {
             $scope.sentTxs = [];
             $scope.generatedTxs = [];
             if (!$scope.Validator.isValidENSName(_objENS.name)) throw globalFuncs.errorMsgs[30];
-            else if (!$scope.Validator.isPositiveNumber(_objENS.bidValue) || !_objENS.bidValue >= 0.1) throw globalFuncs.errorMsgs[0];
-            else if (!$scope.Validator.isPositiveNumber(_objENS.dValue) || !_objENS.dValue >= _objENS.bidValue) throw globalFuncs.errorMsgs[0];
+            else if (!$scope.Validator.isPositiveNumber(_objENS.bidValue) || !(_objENS.bidValue >= 0.01)) throw globalFuncs.errorMsgs[0];
+            else if (!$scope.Validator.isPositiveNumber(_objENS.dValue) || !(_objENS.dValue >= _objENS.bidValue)) throw globalFuncs.errorMsgs[0];
             else if (!$scope.Validator.isPasswordLenValid(_objENS.secret, 0)) throw globalFuncs.errorMsgs[31];
             else {
                 if ($scope.objENS.status == $scope.ensModes.open) $scope.openAndBidAuction();
