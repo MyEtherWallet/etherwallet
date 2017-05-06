@@ -1,23 +1,18 @@
 language: node_js
 sudo: required
 dist: trusty
-node_js:
-   "7"
-env:
-   CXX=g++-4.8
+node_js: '7'
+env: CXX=g++-4.8
 addons:
   apt:
-    sources:
-      ubuntu-toolchain-r-test
-    packages:
-      g++-4.8
-before_script:
-  npm install -g gulp
+    sources: ubuntu-toolchain-r-test
+    packages: g++-4.8
+before_script: npm install -g gulp
 script:
-  - gulp prep
+- gulp prep
 before_deploy:
-  - mkdir deploy
-  - gulp travisZip
+- mkdir deploy
+- gulp travisZip
 deploy:
   provider: releases
   api_key:
@@ -29,3 +24,6 @@ deploy:
     repo: kvhnuke/etherwallet
     branch: mercury
     tags: true
+notifications:
+  slack:
+    secure: qiRVkvr+ErtjPrZ3BYXsisYCqS8alTsx9L3bkxkRdst7hkFxc/QzxPFxOHFTdxXUiispTfxXabAV31JEpLzUx25cPRLkR/gnHk4yUtQ4HlwjsSxb+4Gi99WvuNmLq22uD3e+O1//JCiGAF/hcnglx9ifWfFK/cgVwjIVuqxyHj7MiZSEke388odH8GMDF/MdpClQQ8c4MMaM6hnQqt5yocgXhnATxZyzJbJ+ljD6n64MGG7IYZ60vCmWTkUDwIwwhIAG/bYWjU3s8f+0kxdZpPQcWwGIJ9GNaVrcbvORKrHEQ/RUUmpv5WzsiUIahJflrQSWr4zciQU3AZyXpp4z+MMM+uBh0cg8GIk1lXXwYQfDLAeD/JR/NSgGiDzwAFv73dEwsBAf1lG43knuowfmt6fZoXMrC+rztptX36hdJ/XFyaWEQnfnqBjeNJ8OfmlyL++8ojgDbuioBdsnHKFQPG3Bt6rxPCL/C98ZAotxWOmjr4wfdQIxewiEo2ghjgwoLW9KJBFtGg+IxQC3ymHKRPaujK1y0X5tTIgBeydEd63fQU/n3jrbwJaZ2ExKmE2Ixl7YfWJ7TybA/h+ZGaoueiugVhy/ENuqg3xffQtXI7bZVgNYbY4MM9JanBZyOu8BccddVZYnZAOBYAiRhsNH5XsARLF3mftP6zw3XNfYwRA=
