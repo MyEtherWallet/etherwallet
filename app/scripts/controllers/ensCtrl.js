@@ -141,6 +141,10 @@ var ensCtrl = function($scope, $sce, walletService) {
         });
     }
     $scope.finalizeDomain = function() {
+        if ($scope.wallet.getAddressString() != $scope.objENS.owner) {
+            $scope.notifier.danger(globalFuncs.errorMsgs[33]);
+            return;
+        }
         var _objENS = $scope.objENS;
         ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
             if (data.error) $scope.notifier.danger(data.msg);

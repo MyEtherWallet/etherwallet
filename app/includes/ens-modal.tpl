@@ -54,10 +54,10 @@
             </tr>
 
             <tr ng-show="objENS.status==ensModes.open">
-              <td>Must Reveal On:</td><td><small>(TBD. Check the name on MEW after you start the auction.)</small></td>
+              <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
             </tr>
             <tr ng-show="objENS.status==ensModes.open">
-              <td>Auction Ends:</td><td><small>(TBD. Check the name on MEW after you start the auction.)</small></td>
+              <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
             </tr>
 
             <tr ng-show="objENS.status!=ensModes.reveal">

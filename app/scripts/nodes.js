@@ -33,7 +33,7 @@ nodes.nodeList = {
         'chainId': 1,
         'tokenList': require('./tokens/ethTokens.json'),
         'abiList': require('./abiDefinitions/ethAbi.json'),
-        'estimateGas': true,
+        'estimateGas': false,
         'service': 'MyEtherWallet',
         'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
     },
