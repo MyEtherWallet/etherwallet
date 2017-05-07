@@ -1788,7 +1788,7 @@
   <article class="row" ng-hide="ajaxReq.type=='ETC' || ajaxReq.type=='Kovan' || ajaxReq.type=='Rinkeby' || ajaxReq.type=='Custom'">
     <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="myetherwallet" ng-model="objENS.name" ng-keyup="$event.keyCode==13 && checkName()" ng-disabled="objENS.nameReadOnly" ng-class="Validator.isValidENSName(objENS.name) ? 'is-valid' : 'is-invalid'"/>
+        <input class="form-control" type="text" placeholder="myetherwallet" ng-model="objENS.name" ng-keyup="$event.keyCode==13 && checkName()" ng-change="nameOnChange()" ng-disabled="objENS.nameReadOnly" ng-class="Validator.isValidENSName(objENS.name) ? 'is-valid' : 'is-invalid'"/>
         <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
       </div>
       <button class="btn btn-primary" ng-click="checkName()"> Check ENS Name </button>
