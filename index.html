@@ -1814,7 +1814,8 @@
         <strong>{{objENS.name}}.eth</strong> is available!
       </span>
       <span ng-show="objENS.status==ensModes.owned">
-        <strong>{{objENS.name}}.eth</strong>  is not available. It's already owned by {{objENS.owner}}
+        <strong>{{objENS.name}}.eth</strong>  is not available. It's already owned by {{objENS.owner}},
+        if you are the owner, you can finalize it below.
       </span>
       <span ng-show="objENS.status==ensModes.forbidden">
         <strong>{{objENS.name}}.eth</strong>  not available. (Forbidden)
@@ -1828,16 +1829,6 @@
     </h1>
   </article>
   <!-- / ALL: Status of Name -->
-
-
-  <article class="col-xs-12 col-sm-8 col-sm-offset-2 text-center" ng-show="objENS.status==ensModes.owned">
-      <br />
-      <button class="btn btn-primary" ng-click="finalizeDomain()"> Finalize {{objENS.name}}.eth </button>
-      <br /><br />
-      <p> If the auction is over, anyone can finalize it. Finalizing it assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.1 ETH. Any non-winners will also be refunded.</p>
-      <br />
-  </article>
-
 
   <article class="order-info-wrap row" ng-show="objENS.status==ensModes.notAvailable">
     <div class="col-sm-12 col-xs-12 order-info">
@@ -1926,7 +1917,13 @@
     </section>
   </article>
   <!-- / ALL: Unlock Directive -->
-
+  <article class="col-xs-12 col-sm-8 col-sm-offset-2 text-center" ng-show="objENS.status==ensModes.owned && wd">
+      <br />
+      <button class="btn btn-primary" ng-click="finalizeDomain()"> Finalize {{objENS.name}}.eth </button>
+      <br /><br />
+      <p> If the auction is over, the winner can finalize it. Finalizing it assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.1 ETH. Any non-winners will also be refunded.</p>
+      <br />
+  </article>
   <hr ng-show="wd" />
 
   <div ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.reveal) && wallet!=null">
@@ -2071,10 +2068,10 @@
             </tr>
 
             <tr ng-show="objENS.status==ensModes.open">
-              <td>Must Reveal On:</td><td><small>(TBD. Check the name on MEW after you start the auction.)</small></td>
+              <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
             </tr>
             <tr ng-show="objENS.status==ensModes.open">
-              <td>Auction Ends:</td><td><small>(TBD. Check the name on MEW after you start the auction.)</small></td>
+              <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
             </tr>
 
             <tr ng-show="objENS.status!=ensModes.reveal">
