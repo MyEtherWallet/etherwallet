@@ -34,6 +34,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         if (walletService.wallet == null) return;
         $scope.wallet = walletService.wallet;
         $scope.wd = true;
+        $scope.objENS.nameReadOnly = true;
         $scope.wallet.setBalance();
         $scope.wallet.setTokens();
     });
@@ -62,12 +63,16 @@ var ensCtrl = function($scope, $sce, walletService) {
         $scope.objENS.timeRemaining = days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds ';
         updateScope();
     }
+    $scope.nameOnChange = function(){
+        $scope.objENS.status = -1;
+        $scope.objENS.timeRemaining = null;
+        clearInterval($scope.objENS.timer);
+    }
     $scope.checkName = function() {
         if ($scope.Validator.isValidENSName($scope.objENS.name)) {
             ENS.getAuctionEntries($scope.objENS.name, function(data) {
                 if (data.error) $scope.notifier.danger(data.msg);
                 else {
-                    $scope.objENS.nameReadOnly = true;
                     var entries = data.data;
                     for (var key in entries) $scope.objENS[key] = entries[key];
                     switch ($scope.objENS.status) {

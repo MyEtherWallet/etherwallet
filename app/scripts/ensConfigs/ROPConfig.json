@@ -4,9 +4,5 @@
         "reverse": "0xdb6cead81ce14a63c284728eed17738a81327ff0",
         "ethAuction": "0xc19fd9004b5c9789391679de6d766b981db94610"
     },
-    "tlds": {
-        "eth": "0x112234455c3a32fd11230c42e7bccd4a84e02010",
-        "reverse": "0x112234455c3a32fd11230c42e7bccd4a84e02010",
-        "test": "0x112234455c3a32fd11230c42e7bccd4a84e02010"
-    }
+    "registry": "0x112234455c3a32fd11230c42e7bccd4a84e02010"
 }
