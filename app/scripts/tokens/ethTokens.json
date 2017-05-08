@@ -96,9 +96,9 @@
     "type":"default"
   },
   {
-    "address":"0x9734c136f5c63531b60d02548bca73a3d72e024d",
+    "address":"0xcbcc0f036ed4788f63fc0fee32873d6a7487b908",
     "symbol":"HMQ",
-    "decimal":18,
+    "decimal":8,
     "type":"default"
   },
   {
