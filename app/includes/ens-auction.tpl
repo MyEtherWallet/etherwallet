@@ -5,22 +5,20 @@
     <!-- PLACEBID: Key Stats Row -->
     <section class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
       <div class="col-sm-6 col-xs-12 order-info">
-        <p> Time Remaining in Auction  </p>
-        <h4> {{objENS.timeRemaining}} </h4>
-      </div>
-      <div class="col-sm-4 col-xs-12 order-info">
         <p> Reveal Bids On </p>
         <h4> {{getRevealTime().toLocaleString()}} </h4>
+        <p> <!-- TODO: Make this timer too! --> </p>
       </div>
       <div class="col-sm-6 col-xs-12 order-info">
         <p> Auction Closes On </p>
         <h4>{{objENS.registrationDate.toLocaleString()}}</h4>
+        <p> {{objENS.timeRemaining}}  </p>
       </div>
     </section>
     <!-- / PLACEBID: Key Stats Row -->
 
     <!-- ALL: Info Row -->
-    <section class="col-sm-8 col-xs-12 col-sm-offset-2">
+    <section class="col-sm-8 col-xs-12 col-sm-offset-2" ng-show="objENS.status==ensModes.auction || objENS.status==ensModes.open">
       <h3> Do you want {{objENS.name}}.eth? You can <span ng-show="objENS.status==ensModes.auction">place a bid</span><span ng-show="objENS.status==ensModes.open">start an auction</span> now. </h3>
       <h6> What is the auction & bidding process like? </h6>
       <ol>
@@ -51,6 +49,11 @@
       </ul>
     </section>
     <!-- / ALL: Info Row -->
+
+    <section class="col-sm-8 col-xs-12 col-sm-offset-2" ng-show="objENS.status==ensModes.reveal">
+      <h3> If you bid on this auction, you must reveal your bid in order to determine the winner.</h3>
+    </section>
+
 
   </article>
   <!-- / ALL: If auction has been started -->

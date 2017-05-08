@@ -74,7 +74,12 @@
     <section class="clearfix collapse-container">
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-        <h4 traslate="SWAP_unlock">Unlock your Wallet to <span ng-show="objENS.status==ensModes.owned"> Finalize the Domain </span> <span ng-show="objENS.status==ensModes.auction"> Place a Bid </span><span ng-show="objENS.status==ensModes.open"> Start an Auction </span></h4>
+        <h4 traslate="SWAP_unlock">Unlock your Wallet to
+          <span ng-show="objENS.status==ensModes.owned"> Finalize the Domain </span>
+          <span ng-show="objENS.status==ensModes.auction"> Place a Bid </span>
+          <span ng-show="objENS.status==ensModes.open"> Start an Auction </span>
+          <span ng-show="objENS.status==ensModes.reveal"> Reveal your Bid </span>
+        </h4>
       </div>
       <div ng-show="!wd">
           @@if (site === 'mew' ) {  <wallet-decrypt-drtv></wallet-decrypt-drtv>         }
@@ -121,13 +126,29 @@
       <section class="col-sm-8">
         <!-- Title -->
         <div class="form-group">
-          <h2><span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span><span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span></h2>
+          <h2>
+            <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span>
+            <span ng-show="objENS.status==ensModes.open">Start an Auction</span>
+            <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span>
+          </h2>
         </div>
         <!-- / Title -->
 
+        <!-- Thing they copied -->
+        <div class="form-group" ng-show="objENS.status==ensModes.reveal">
+          <label>Long string of text you copied</label>
+          <textarea class="form-control" name="Long string of text you copied" placeholder='{"name":"exrnnrxe","nameSHA3":"0x0001640f2629bb323fca95bc13744478d5307ba0aca6e3a13f803691923ff00d","owner":"0x7cb57b5a97eabe94205c07890be4c1ad31e486a8","value":"100000000000000000","secret":"alley symptom elephant","secretSHA3":"0xc3a2ae4fd788a17a2e9e63868efa1d3589f1e97cf54662dbbfb12150cb5f9859"}'></textarea>
+        </div>
+        <!-- / Thing they copied -->
+
+
+        <div class="form-group" ng-show="objENS.status==ensModes.reveal">
+          <label class="strong">-- or --</label>
+        </div>
+
+
         <!-- Name -->
         <label>Name</label>
-          <!-- TODO: prefill from above -->
         <div class="input-group">
           <input class="form-control" type="text" placeholder="myetherwallet" readonly ng-model="objENS.name"/>
           <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
@@ -147,7 +168,7 @@
         <h5>Secret Phrase</h5>
         <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
         <div class="form-group">
-          <input class="form-control" type="text" placeholder="I'm a secret. Don't forget me." value="" ng-model="objENS.secret" ng-class="Validator.isPasswordLenValid(objENS.secret,0) ? 'is-valid' : 'is-invalid'"/>
+          <input class="form-control" type="text" placeholder="word1 word2 word3" value="" ng-model="objENS.secret" ng-class="Validator.isPasswordLenValid(objENS.secret,0) ? 'is-valid' : 'is-invalid'"/>
         </div>
         <!-- / Your Secret  -->
 
@@ -184,6 +205,10 @@
 
   @@if (site === 'mew' ) { @@include( './ens-modal-finalize.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './ens-modal-finalize.tpl', { "site": "cx"  } ) }
+
+
+  @@if (site === 'mew' ) { @@include( './ens-modal-after-sent.tpl', { "site": "mew" } ) }
+  @@if (site === 'cx'  ) { @@include( './ens-modal-after-sent.tpl', { "site": "cx"  } ) }
 
 
 </main>
