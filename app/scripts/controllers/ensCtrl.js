@@ -1,6 +1,7 @@
 'use strict';
 var ensCtrl = function($scope, $sce, walletService) {
     $scope.ajaxReq = ajaxReq;
+    $scope.hideEnsInfoPanel = false;
     walletService.wallet = null;
     $scope.ensConfirmModalModal = new Modal(document.getElementById('ensConfirmModal'));
     $scope.ensFinalizeModal = new Modal(document.getElementById('ensFinalizeConfirm'));
@@ -71,6 +72,7 @@ var ensCtrl = function($scope, $sce, walletService) {
     }
     $scope.checkName = function() {
         if ($scope.Validator.isValidENSName($scope.objENS.name)) {
+            $scope.hideEnsInfoPanel = true;
             ENS.getAuctionEntries($scope.objENS.name, function(data) {
                 if (data.error) $scope.notifier.danger(data.msg);
                 else {
@@ -242,6 +244,7 @@ var ensCtrl = function($scope, $sce, walletService) {
             }
         });
         $scope.objENS.txSent = true;
+        $scope.objENS.hideEnsInfoPanel = false;
     }
     $scope.generateTx = function() {
         try {
