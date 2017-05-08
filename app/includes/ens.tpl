@@ -38,7 +38,7 @@
       </span>
       <span ng-show="objENS.status==ensModes.owned">
         <strong>{{objENS.name}}.eth</strong>  is not available. It's already owned by {{objENS.owner}},
-        if you are the owner, you can finalize it below.
+        if you are the winner, you must finalize it below to claim the name.
       </span>
       <span ng-show="objENS.status==ensModes.forbidden">
         <strong>{{objENS.name}}.eth</strong>  not available. (Forbidden)
@@ -158,7 +158,7 @@
         <!-- / Name -->
 
         <!-- Maximum -->
-        <h5>{{objENS.status==ensModes.reveal ? "Bid Amount" : "Maximum Bid"}}</h5>
+        <h5>Amount to <u> Bid </u></h5>
         <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
         <div class="input-group">
           <input class="form-control" type="text" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.01 ? 'is-valid' : 'is-invalid'"/>
@@ -166,17 +166,9 @@
         </div>
         <!-- / Maximum -->
 
-        <!-- Your Secret -->
-        <h5>Secret Phrase</h5>
-        <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
-        <div class="form-group">
-          <input class="form-control" type="text" placeholder="word1 word2 word3" value="" ng-model="objENS.secret" ng-class="Validator.isPasswordLenValid(objENS.secret,0) ? 'is-valid' : 'is-invalid'"/>
-        </div>
-        <!-- / Your Secret  -->
-
         <!-- Disguise Bid -->
         <div ng-show="objENS.status!=ensModes.reveal">
-          <h5>Amount to Send</h5>
+          <h5>Amount to Send ("Disguise Bid")</h5>
           <p><em><small>If you wish to send more than your actual bid to disguise it.</small></em></p>
           <!-- Validation = more than Max. Bid Input, more than what is in account -->
           <div class="input-group">
@@ -186,6 +178,13 @@
         </div>
         <!-- / Disguise Bid  -->
 
+        <!-- Your Secret -->
+        <h5>Secret Phrase</h5>
+        <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="word1 word2 word3" value="" ng-model="objENS.secret" ng-class="Validator.isPasswordLenValid(objENS.secret,0) ? 'is-valid' : 'is-invalid'"/>
+        </div>
+        <!-- / Your Secret  -->
 
         <div class="form-group">
           <a class="btn btn-primary btn-block" ng-click="generateTx()"> <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span> <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span></a>

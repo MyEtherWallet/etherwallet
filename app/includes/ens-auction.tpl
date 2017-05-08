@@ -36,7 +36,7 @@
         </strong>
         <li><strong>Finalize the Auction:</strong>
           <ul>
-            <li>Once the auction is over, anyone can finalize it. The ENS name is then assigned to the winning bidder.</li>
+            <li>Once the auction is over, the winner will finalize it. The ENS name is then assigned to the winning bidder.</li>
             <li> The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.1 ETH. Any non-winners will also be refunded.</li>
           </ul>
         </li>

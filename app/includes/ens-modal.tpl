@@ -41,7 +41,7 @@
               <td>Secret Phrase:</td><td>{{objENS.secret}}</td>
             </tr>
             <tr ng-show="objENS.status!=ensModes.reveal">
-              <td>Amount to Send (disguise):</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
+              <td>Amount to Send ("Disguise Bid"):</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
             </tr>
             <tr>
               <td>From Account:</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>

@@ -1815,7 +1815,7 @@
       </span>
       <span ng-show="objENS.status==ensModes.owned">
         <strong>{{objENS.name}}.eth</strong>  is not available. It's already owned by {{objENS.owner}},
-        if you are the owner, you can finalize it below.
+        if you are the winner, you must finalize it below to claim the name.
       </span>
       <span ng-show="objENS.status==ensModes.forbidden">
         <strong>{{objENS.name}}.eth</strong>  not available. (Forbidden)
@@ -1882,7 +1882,7 @@
         </strong>
         <li><strong>Finalize the Auction:</strong>
           <ul>
-            <li>Once the auction is over, anyone can finalize it. The ENS name is then assigned to the winning bidder.</li>
+            <li>Once the auction is over, the winner will finalize it. The ENS name is then assigned to the winning bidder.</li>
             <li> The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.1 ETH. Any non-winners will also be refunded.</li>
           </ul>
         </li>
@@ -1995,7 +1995,7 @@
         <!-- / Name -->
 
         <!-- Maximum -->
-        <h5>{{objENS.status==ensModes.reveal ? "Bid Amount" : "Maximum Bid"}}</h5>
+        <h5>Amount to <u> Bid </u></h5>
         <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
         <div class="input-group">
           <input class="form-control" type="text" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.01 ? 'is-valid' : 'is-invalid'"/>
@@ -2003,17 +2003,9 @@
         </div>
         <!-- / Maximum -->
 
-        <!-- Your Secret -->
-        <h5>Secret Phrase</h5>
-        <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
-        <div class="form-group">
-          <input class="form-control" type="text" placeholder="word1 word2 word3" value="" ng-model="objENS.secret" ng-class="Validator.isPasswordLenValid(objENS.secret,0) ? 'is-valid' : 'is-invalid'"/>
-        </div>
-        <!-- / Your Secret  -->
-
         <!-- Disguise Bid -->
         <div ng-show="objENS.status!=ensModes.reveal">
-          <h5>Amount to Send</h5>
+          <h5>Amount to Send ("Disguise Bid")</h5>
           <p><em><small>If you wish to send more than your actual bid to disguise it.</small></em></p>
           <!-- Validation = more than Max. Bid Input, more than what is in account -->
           <div class="input-group">
@@ -2023,6 +2015,13 @@
         </div>
         <!-- / Disguise Bid  -->
 
+        <!-- Your Secret -->
+        <h5>Secret Phrase</h5>
+        <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="word1 word2 word3" value="" ng-model="objENS.secret" ng-class="Validator.isPasswordLenValid(objENS.secret,0) ? 'is-valid' : 'is-invalid'"/>
+        </div>
+        <!-- / Your Secret  -->
 
         <div class="form-group">
           <a class="btn btn-primary btn-block" ng-click="generateTx()"> <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span> <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span></a>
@@ -2081,7 +2080,7 @@
               <td>Secret Phrase:</td><td>{{objENS.secret}}</td>
             </tr>
             <tr ng-show="objENS.status!=ensModes.reveal">
-              <td>Amount to Send (disguise):</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
+              <td>Amount to Send ("Disguise Bid"):</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
             </tr>
             <tr>
               <td>From Account:</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
@@ -2133,7 +2132,7 @@
       <div class="modal-body">
 
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title"> You are about to Finalize domain {{objENS.name}}.eth</h2>
+        <h2 class="modal-title"> You are about to finalize the auction for {{objENS.name}}.eth &amp; claim this name. </h2>
 
         <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
@@ -2158,7 +2157,8 @@
   
 
 
-   <div ng-show="objENS.txSent">
+   <br /><br /><br />
+<div ng-show="objENS.txSent">
 <section ng-show="objENS.status==ensModes.auction || objENS.status==ensModes.open">
   <div class="alert alert-danger">
     <h4>If you haven't done so already, please screenshot & save the below information</h4>
@@ -2187,7 +2187,7 @@
         <td>Secret Phrase:</td><td>{{objENS.secret}}</td>
       </tr>
       <tr ng-show="objENS.status!=ensModes.reveal">
-        <td>Amount to Send (disguise):</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
+        <td>Amount to Send ("Disguise Bid"):</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
       </tr>
       <tr>
         <td>From Account:</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
@@ -2215,7 +2215,8 @@
   </div>
   <h4 class="text-warning">Please return on {{objENS.registrationDate.toLocaleString()}} to finalize the auction and see if you won!</h4>
 </div>
-</div> 
+</div>
+ 
   
 
 
