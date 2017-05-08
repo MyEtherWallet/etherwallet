@@ -1822,6 +1822,8 @@
       </span>
       <span ng-show="objENS.status==ensModes.reveal">
         It's time to reveal the bids for <strong>{{objENS.name}}.eth</strong>.
+        </br>
+        Current highest bid is <strong>{{objENS.highestBid}} ETH</strong>.
       </span>
       <span ng-show="objENS.status==ensModes.notAvailable">
         <strong>{{objENS.name}}.eth</strong>  is not yet available.
@@ -1974,7 +1976,7 @@
         <!-- Thing they copied -->
         <div class="form-group" ng-show="objENS.status==ensModes.reveal">
           <label>Long string of text you copied</label>
-          <textarea class="form-control" name="Long string of text you copied" placeholder='{"name":"exrnnrxe","nameSHA3":"0x0001640f2629bb323fca95bc13744478d5307ba0aca6e3a13f803691923ff00d","owner":"0x7cb57b5a97eabe94205c07890be4c1ad31e486a8","value":"100000000000000000","secret":"alley symptom elephant","secretSHA3":"0xc3a2ae4fd788a17a2e9e63868efa1d3589f1e97cf54662dbbfb12150cb5f9859"}'></textarea>
+          <textarea class="form-control" name="Long string of text you copied" placeholder='{"name":"exrnnrxe","nameSHA3":"0x0001640f2629bb323fca95bc13744478d5307ba0aca6e3a13f803691923ff00d","owner":"0x7cb57b5a97eabe94205c07890be4c1ad31e486a8","value":"100000000000000000","secret":"alley symptom elephant","secretSHA3":"0xc3a2ae4fd788a17a2e9e63868efa1d3589f1e97cf54662dbbfb12150cb5f9859"}' ng-change="onLongStringChanged()" ng-model="longJsonString" ng-class="Validator.isJSON(longJsonString) ? 'is-valid' : 'is-invalid'"></textarea>
         </div>
         <!-- / Thing they copied -->
 
@@ -2084,17 +2086,10 @@
             <tr>
               <td>From Account:</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
             </tr>
-            <tr ng-show="showRegistrationDate() && objENS.status!=ensModes.reveal">
+            <tr>
               <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
             </tr>
-            <tr ng-show="showRegistrationDate()">
-              <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
-            </tr>
-
-            <tr ng-show="objENS.status==ensModes.open">
-              <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
-            </tr>
-            <tr ng-show="objENS.status==ensModes.open">
+            <tr>
               <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
             </tr>
 
@@ -2163,7 +2158,8 @@
   
 
 
-   <section ng-show="objENS.status==ensModes.auction || objENS.status==ensModes.open">
+   <div ng-show="objENS.txSent">
+<section ng-show="objENS.status==ensModes.auction || objENS.status==ensModes.open">
   <div class="alert alert-danger">
     <h4>If you haven't done so already, please screenshot & save the below information</h4>
     <small>You <u>cannot</u> claim your name unless you have this information during the reveal process.</small>
@@ -2196,17 +2192,10 @@
       <tr>
         <td>From Account:</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
       </tr>
-      <tr ng-show="showRegistrationDate() && objENS.status!=ensModes.reveal">
+      <tr>
         <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
       </tr>
-      <tr ng-show="showRegistrationDate()">
-        <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
-      </tr>
-
-      <tr ng-show="objENS.status==ensModes.open">
-        <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
-      </tr>
-      <tr ng-show="objENS.status==ensModes.open">
+      <tr>
         <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
       </tr>
 
@@ -2224,22 +2213,9 @@
   <div class="alert alert-success">
     <h4>You have successfully revealed your {{objENS.bidValue}} bid for {{objENS.name}}.eth.</h4>
   </div>
-  <p> There are {{ 2 }} other bids: </p>
-  <table class="table table-striped table-ens-modal">
-    <tbody>
-      <tr>
-        <td>{ address }</td>
-        <td>{ bidamount }</td>
-      </tr>
-      <tr>
-        <td>{ address }</td>
-        <td>{ bidamount }</td>
-      </tr>
-    </tbody>
-  </table>
   <h4 class="text-warning">Please return on {{objENS.registrationDate.toLocaleString()}} to finalize the auction and see if you won!</h4>
 </div>
- 
+</div> 
   
 
 
