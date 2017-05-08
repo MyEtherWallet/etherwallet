@@ -1,3 +1,4 @@
+<div ng-show="objENS.txSent">
 <section ng-show="objENS.status==ensModes.auction || objENS.status==ensModes.open">
   <div class="alert alert-danger">
     <h4>If you haven't done so already, please screenshot & save the below information</h4>
@@ -31,17 +32,10 @@
       <tr>
         <td>From Account:</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
       </tr>
-      <tr ng-show="showRegistrationDate() && objENS.status!=ensModes.reveal">
+      <tr>
         <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
       </tr>
-      <tr ng-show="showRegistrationDate()">
-        <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
-      </tr>
-
-      <tr ng-show="objENS.status==ensModes.open">
-        <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
-      </tr>
-      <tr ng-show="objENS.status==ensModes.open">
+      <tr>
         <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
       </tr>
 
@@ -59,18 +53,6 @@
   <div class="alert alert-success">
     <h4>You have successfully revealed your {{objENS.bidValue}} bid for {{objENS.name}}.eth.</h4>
   </div>
-  <p> There are {{ 2 }} other bids: </p>
-  <table class="table table-striped table-ens-modal">
-    <tbody>
-      <tr>
-        <td>{ address }</td>
-        <td>{ bidamount }</td>
-      </tr>
-      <tr>
-        <td>{ address }</td>
-        <td>{ bidamount }</td>
-      </tr>
-    </tbody>
-  </table>
   <h4 class="text-warning">Please return on {{objENS.registrationDate.toLocaleString()}} to finalize the auction and see if you won!</h4>
+</div>
 </div>

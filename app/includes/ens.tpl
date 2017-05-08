@@ -45,6 +45,8 @@
       </span>
       <span ng-show="objENS.status==ensModes.reveal">
         It's time to reveal the bids for <strong>{{objENS.name}}.eth</strong>.
+        </br>
+        Current highest bid is <strong>{{objENS.highestBid}} ETH</strong>.
       </span>
       <span ng-show="objENS.status==ensModes.notAvailable">
         <strong>{{objENS.name}}.eth</strong>  is not yet available.
@@ -137,7 +139,7 @@
         <!-- Thing they copied -->
         <div class="form-group" ng-show="objENS.status==ensModes.reveal">
           <label>Long string of text you copied</label>
-          <textarea class="form-control" name="Long string of text you copied" placeholder='{"name":"exrnnrxe","nameSHA3":"0x0001640f2629bb323fca95bc13744478d5307ba0aca6e3a13f803691923ff00d","owner":"0x7cb57b5a97eabe94205c07890be4c1ad31e486a8","value":"100000000000000000","secret":"alley symptom elephant","secretSHA3":"0xc3a2ae4fd788a17a2e9e63868efa1d3589f1e97cf54662dbbfb12150cb5f9859"}'></textarea>
+          <textarea class="form-control" name="Long string of text you copied" placeholder='{"name":"exrnnrxe","nameSHA3":"0x0001640f2629bb323fca95bc13744478d5307ba0aca6e3a13f803691923ff00d","owner":"0x7cb57b5a97eabe94205c07890be4c1ad31e486a8","value":"100000000000000000","secret":"alley symptom elephant","secretSHA3":"0xc3a2ae4fd788a17a2e9e63868efa1d3589f1e97cf54662dbbfb12150cb5f9859"}' ng-change="onLongStringChanged()" ng-model="longJsonString" ng-class="Validator.isJSON(longJsonString) ? 'is-valid' : 'is-invalid'"></textarea>
         </div>
         <!-- / Thing they copied -->
 

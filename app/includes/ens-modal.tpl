@@ -46,17 +46,10 @@
             <tr>
               <td>From Account:</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
             </tr>
-            <tr ng-show="showRegistrationDate() && objENS.status!=ensModes.reveal">
+            <tr>
               <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
             </tr>
-            <tr ng-show="showRegistrationDate()">
-              <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
-            </tr>
-
-            <tr ng-show="objENS.status==ensModes.open">
-              <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
-            </tr>
-            <tr ng-show="objENS.status==ensModes.open">
+            <tr>
               <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
             </tr>
 

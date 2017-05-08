@@ -17,7 +17,8 @@ var ensCtrl = function($scope, $sce, walletService) {
         bidValue: 0.01,
         dValue: 0.01,
         secret: hd.bip39.generateMnemonic().split(" ").splice(0, 3).join(" "),
-        nameReadOnly: false
+        nameReadOnly: false,
+        txSent: false
     };
     $scope.tx = {
         gasLimit: '500000',
@@ -95,6 +96,7 @@ var ensCtrl = function($scope, $sce, walletService) {
                         case $scope.ensModes.reveal:
                             $scope.objENS.bidValue = 0;
                             $scope.objENS.secret = '';
+                            $scope.objENS.highestBid = etherUnits.toEther($scope.objENS.highestBid.toString(), 'wei');
                             break;
                     }
                     updateScope();
@@ -102,8 +104,20 @@ var ensCtrl = function($scope, $sce, walletService) {
             })
         } else $scope.notifier.danger(globalFuncs.errorMsgs[30]);
     }
+    $scope.onLongStringChanged = function() {
+        try {
+            var tObj = JSON.parse($scope.longJsonString);
+            if (tObj.value) $scope.objENS.bidValue = etherUnits.toEther(tObj.value, "wei");
+            if (tObj.secret) $scope.objENS.secret = tObj.secret;
+            updateScope();
+        } catch (e) {
+            $scope.notifier.danger(e.message);
+        }
+    }
     $scope.openAndBidAuction = function() {
         var _objENS = $scope.objENS;
+        _objENS.registrationDate = new Date();
+        _objENS.registrationDate.setDate(_objENS.registrationDate.getDate() + 5);
         ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
             if (data.error) $scope.notifier.danger(data.msg);
             data = data.data;
@@ -171,10 +185,6 @@ var ensCtrl = function($scope, $sce, walletService) {
             });
         });
     }
-    $scope.showRegistrationDate = function() {
-        if ($scope.objENS && $scope.objENS.registrationDate) return $scope.objENS.registrationDate > new Date();
-        else return false;
-    }
     $scope.getRevealTime = function() {
         if ($scope.objENS && $scope.objENS.registrationDate) return new Date($scope.objENS.registrationDate - (48 * 60 * 60 * 1000));
         return new Date();
@@ -231,6 +241,7 @@ var ensCtrl = function($scope, $sce, walletService) {
                 $scope.notifier.danger(resp.error);
             }
         });
+        $scope.objENS.txSent = true;
     }
     $scope.generateTx = function() {
         try {
