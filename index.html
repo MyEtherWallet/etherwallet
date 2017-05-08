@@ -40,7 +40,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.7.0 &nbsp;&nbsp;
+        &middot; v3.7.1 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -1777,147 +1777,207 @@
 
     <main class="tab-pane ens-tab active" ng-if="globalService.currentTab==globalService.tabs.ens.id" ng-controller='ensCtrl' ng-cloak>
 
-  <!-- ALL: Title + Search -->
+  <!-- Title -->
   <article class="row">
     <h1 class="text-center" translate="NAV_ENS"> ENS </h1>
-    <p class="col-xs-12 col-sm-10 col-sm-offset-1">The <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank">Ethereum Name Service</a> is a distributed, open, and extensible naming system based on the Ethereum blockchain. Once you have a name, you can tell your friends to send ETH to <code>kevinisawesome.eth</code> instead of <code>0x93a2f52cd.....</code>.</p>
+    <p class="col-xs-12 col-sm-10 col-sm-offset-1">
+      The <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank">Ethereum Name Service</a> is a distributed, open, and extensible naming system based on the Ethereum blockchain. Once you have a name, you can tell your friends to send ETH to <code>kevinisawesome.eth</code> instead of <code>0x93a2f52cd.....</code>.
+    </p>
   </article>
+  <!-- / Title -->
 
   <br />
 
+  <!-- IF ENS CHAIN: Check Status of Name -->
   <article class="row" ng-hide="ajaxReq.type=='ETC' || ajaxReq.type=='Kovan' || ajaxReq.type=='Rinkeby' || ajaxReq.type=='Custom'">
     <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="myetherwallet" ng-model="objENS.name" ng-keyup="$event.keyCode==13 && checkName()" ng-change="nameOnChange()" ng-disabled="objENS.nameReadOnly" ng-class="Validator.isValidENSName(objENS.name) ? 'is-valid' : 'is-invalid'"/>
+        <input class="form-control"
+               type="text"
+               placeholder="myetherwallet"
+               ng-model="objENS.name"
+               ng-keyup="$event.keyCode==13 && checkName()"
+               ng-change="nameOnChange()"
+               ng-disabled="objENS.nameReadOnly"
+               ng-class="Validator.isValidENSName(objENS.name) ? 'is-valid' : 'is-invalid'"/>
         <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
       </div>
       <button class="btn btn-primary" ng-click="checkName()"> Check ENS Name </button>
     </section>
   </article>
-  <!-- / ALL: Title + Search -->
+  <!-- / IF ENS CHAIN: Check Status of Name -->
 
-  <!-- NON ETH OR ROP NODES -->
+
+  <!-- IF NOT ENS CHAIN -->
   <div ng-show="ajaxReq.type=='ETC' || ajaxReq.type=='Kovan' || ajaxReq.type=='Rinkeby' || ajaxReq.type=='Custom'" class="alert alert-danger text-center">
     <p> The ENS is only available on the ETH and Ropsten (Testnet) chains. You are currently on the {{ajaxReq.type}} chain. <br /> Please use the node switcher in the upper right corner to select "ETH" or "Ropsten". </p>
   </div>
-  <!-- / NON ETH OR ROP NODES -->
+  <!-- / IF NOT ENS CHAIN -->
 
+  <!-- General Information Panel -->
+   <article class="row" ng-hide="hideEnsInfoPanel">
 
-  <!-- ALL: Status of Name -->
-  <article class="row">
-    <br /><br />
-    <h1 class="text-center">
-      <span ng-show="objENS.status==ensModes.auction">
-        An auction has been started for <strong>{{objENS.name}}.eth</strong>.
-      </span>
-      <span ng-show="objENS.status==ensModes.open">
-        <strong>{{objENS.name}}.eth</strong> is available!
-      </span>
-      <span ng-show="objENS.status==ensModes.owned">
-        <strong>{{objENS.name}}.eth</strong>  is not available. It's already owned by {{objENS.owner}},
-        if you are the owner, you can finalize it below.
-      </span>
-      <span ng-show="objENS.status==ensModes.forbidden">
-        <strong>{{objENS.name}}.eth</strong>  not available. (Forbidden)
-      </span>
-      <span ng-show="objENS.status==ensModes.reveal">
-        It's time to reveal the bids for <strong>{{objENS.name}}.eth</strong>.
-        </br>
-        Current highest bid is <strong>{{objENS.highestBid}} ETH</strong>.
-      </span>
-      <span ng-show="objENS.status==ensModes.notAvailable">
-        <strong>{{objENS.name}}.eth</strong>  is not yet available.
-      </span>
-    </h1>
-  </article>
-  <!-- / ALL: Status of Name -->
+  <br /><br />
 
-  <article class="order-info-wrap row" ng-show="objENS.status==ensModes.notAvailable">
-    <div class="col-sm-12 col-xs-12 order-info">
-      <p> Time Remaining until Auction Opens </p>
-      <h4> {{objENS.timeRemaining}} </h4>
-    </div>
-    <div class="col-sm-12 col-xs-12 order-info">
-      <p> Auction Open Date </p>
-      <h4>{{objENS.allowedTime.toLocaleString()}}</h4>
-    </div>
-  </article>
+  <section class="col-sm-8 col-xs-12 col-sm-offset-2 well" >
 
+    <h5 class="text-center"> What is the process like? </h5>
 
-   <div ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.reveal)" >
-  <!-- ALL: If auction has been started -->
-  <article class="row">
-
-    <!-- PLACEBID: Key Stats Row -->
-    <section class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
-      <div class="col-sm-6 col-xs-12 order-info">
-        <p> Reveal Bids On </p>
-        <h4> {{getRevealTime().toLocaleString()}} </h4>
-        <p> <!-- TODO: Make this timer too! --> </p>
-      </div>
-      <div class="col-sm-6 col-xs-12 order-info">
-        <p> Auction Closes On </p>
-        <h4>{{objENS.registrationDate.toLocaleString()}}</h4>
-        <p> {{objENS.timeRemaining}}  </p>
-      </div>
-    </section>
-    <!-- / PLACEBID: Key Stats Row -->
-
-    <!-- ALL: Info Row -->
-    <section class="col-sm-8 col-xs-12 col-sm-offset-2" ng-show="objENS.status==ensModes.auction || objENS.status==ensModes.open">
-      <h3> Do you want {{objENS.name}}.eth? You can <span ng-show="objENS.status==ensModes.auction">place a bid</span><span ng-show="objENS.status==ensModes.open">start an auction</span> now. </h3>
-      <h6> What is the auction & bidding process like? </h6>
-      <ol>
-        <li><strong>Preparation:</strong>
-          <ul>
-            <li> Decide which account you wish to own the name (assuming you win). Ensure you have multiple backups of the private key, please. </li>
-            <li> Decide the maximum amount of ETH you are willing to pay for the name. Ensure your account has at least that amount of ETH.</li>
-          </ul>
-        </li>
-        <li><strong>Place a Bid:</strong>
-          <ul><li>Once you have done the above, unlock your account below to start the process.</li></ul>
-        </li>
-        <li><strong>Reveal your Bid:<strong>
-          <ul><li>During the last <u>48 hours</u> of the auction, you need to reveal your bid. You will access your account (via private key +  password), enter your bid amount, and enter the secret phrase that you will create while bidding.</li></ul>
-        </strong>
-        <li><strong>Finalize the Auction:</strong>
-          <ul>
-            <li>Once the auction is over, anyone can finalize it. The ENS name is then assigned to the winning bidder.</li>
-            <li> The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.1 ETH. Any non-winners will also be refunded.</li>
-          </ul>
-        </li>
-      </ol>
-      <h6> More Information: </h6>
-      <ul>
-        <li>The auction for this registrar is a blind auction, and is described in <a href="https://github.com/ethereum/EIPs/issues/162" target="_blank">EIP162</a>. Basically, no one can see *anything* during the auction, at all.</li>
-        <li><a href="http://docs.ens.domains/en/latest/userguide.html#registering-a-name-with-the-auction-registrar" target="_blank">ENS: Read the Docs</a></li>
-        <li><a href="https://medium.com/the-ethereum-name-service/announcing-the-ethereum-name-service-relaunch-date-4390af6dd9a2" target="_blank">Announcing the Ethereum Name Service Relaunch Date!</a></li>
+      <h6 ng-click="ensPrep = !ensPrep">
+        <span ng-show="!ensPrep">+</span><span ng-show="ensPrep">-</span>
+        1. Preparation
+      </h6>
+      <ul ng-show="ensPrep">
+        <li> Decide which account you wish to own the name & ensure you have multiple backups of that account.</li>
+        <li> Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.</li>
       </ul>
-    </section>
-    <!-- / ALL: Info Row -->
 
-    <section class="col-sm-8 col-xs-12 col-sm-offset-2" ng-show="objENS.status==ensModes.reveal">
-      <h3> If you bid on this auction, you must reveal your bid in order to determine the winner.</h3>
-    </section>
+      <h6 ng-click="ensAuct = !ensAuct">
+        <span ng-show="!ensAuct">+</span><span ng-show="ensAuct">-</span>
+        2. Start an Auction / Place a Bid
+      </h6>
+      <ul ng-show="ensAuct">
+        <li> Bidding period lasts 3 days (72 hours). </li>
+        <li> You will enter the <u>name</u>, <u>Bid Amount</u>, <u>"Disguise Bid" Amount</u>, which is protected by a <u>Secret Phrase</u>.</li>
+        <li> This places your bid, but this information is kept secret until you reveal it.</li>
+      </ul>
 
+      <h6 ng-click="ensReveal = !ensReveal">
+        <span ng-show="!ensReveal">+</span><span ng-show="ensReveal">-</span>
+        3. Reveal your Bid
+      </h6>
+      <ul ng-show="ensReveal">
+        <li class="strong">If you do not reveal your bid, you will not be refunded.</strong> </li>
+        <li> Reveal Period lasts 2 days (48 hours). </li>
+        <li> You will unlock your account, enter the <u>Bid Amount</u>, and the <u>Secret Phrase</u>.</li>
+        <li>In the event that two parties bid exactly the same amount, the first bid revealed will win.</li>
+      </ul>
 
-  </article>
-  <!-- / ALL: If auction has been started -->
-  </div>
+      <h6 ng-click="ensFinalize = !ensFinalize">
+        <span ng-show="!ensFinalize">+</span><span ng-show="ensFinalize">-</span>
+        4. Finalize the Auction
+      </h6>
+      <ul ng-show="ensFinalize">
+        <li> Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.</li>
+        <li> The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. </li>
+      </ul>
+
+      <h6 ng-click="ensMore = !ensMore">
+        <span ng-show="!ensMore">+</span><span ng-show="ensMore">-</span>
+        More Information
+      </h6>
+      <ul ng-show="ensMore">
+         <li>The auction for this registrar is a blind auction, and is described in <a href="https://github.com/ethereum/EIPs/issues/162" target="_blank">EIP162</a>. Basically, no one can see *anything* during the auction.</li>
+          <li><a href="http://docs.ens.domains/en/latest/userguide.html#registering-a-name-with-the-auction-registrar" target="_blank">ENS: Read the Docs</a></li>
+          <li><a href="https://medium.com/the-ethereum-name-service/announcing-the-ethereum-name-service-relaunch-date-4390af6dd9a2" target="_blank">Announcing the Ethereum Name Service Relaunch Date!</a></li>
+      </ul>
+
+  </section>
+
+</article>
+
  
   
 
 
-  <!-- ALL: Unlock Directive -->
+  <!-- .notAvailable or .forbidden -->
+   <article class="row text-center" ng-show="objENS.status==ensModes.notAvailable || objENS.status==ensModes.forbidden">
+
+  <br /><br />
+
+  <h1 ng-show="objENS.status==ensModes.notAvailable">
+    <strong>{{objENS.name}}.eth</strong> is not yet available.
+  </h1>
+
+  <h1 ng-show="objENS.status==ensModes.forbidden">
+    <strong>{{objENS.name}}.eth</strong> not available. (Forbidden)
+  </h1>
+
+</article>
+
+<article class="order-info-wrap row" ng-show="objENS.status==ensModes.notAvailable">
+  <div class="col-sm-12 col-xs-12 order-info">
+    <p> Auction Opens In... </p>
+    <h4> {{objENS.timeRemaining}} </h4>
+  </div>
+  <div class="col-sm-12 col-xs-12 order-info">
+    <p> Auction Open On... </p>
+    <h4> {{objENS.allowedTime.toLocaleString()}} </h4>
+  </div>
+</article>
+ 
+  
+
+  <!-- .open or .auction -->
+   <article class="row text-center" ng-show="objENS.status==ensModes.auction || objENS.status==ensModes.open">
+
+  <br /><br />
+
+  <h1 ng-show="objENS.status==ensModes.auction">
+    An auction has been started for <strong>{{objENS.name}}.eth</strong>.
+  </h1>
+
+  <h1 ng-show="objENS.status==ensModes.open">
+    <strong>{{objENS.name}}.eth</strong> is available!
+  </h1>
+
+
+  <section class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
+    <div class="col-sm-6 col-xs-12 order-info">
+      <p> Reveal Bids On </p>
+      <h4> {{getRevealTime().toLocaleString()}} </h4>
+      <p> <!-- TODO: Make this timer too! --> </p>
+    </div>
+    <div class="col-sm-6 col-xs-12 order-info">
+      <p> Auction Closes On </p>
+      <h4>{{objENS.registrationDate.toLocaleString()}}</h4>
+      <p> {{objENS.timeRemaining}}  </p>
+    </div>
+  </section>
+
+</article>
+ 
+  
+
+  <!-- .reveal -->
+   <article class="row text-center" ng-show="objENS.status==ensModes.reveal">
+  <br /><br />
+  <h1>It's time to reveal the bids for <strong>{{objENS.name}}.eth</strong>. </br> Current highest bid is <strong>{{objENS.highestBid}} ETH</strong>.</h1>
+</article>
+
+ 
+  
+
+  <!-- .owned (finalize) -->
+   <article class="row text-center" ng-show="objENS.status==ensModes.owned">
+
+  <br /><br />
+
+  <h1>
+    <strong>{{objENS.name}}.eth</strong> is not available. It's already owned by {{objENS.owner}}.
+  </h1>
+
+  <section class="col-sm-8 col-xs-12 col-sm-offset-2">
+    <h3> If you are the winner, you must finalize the auction to claim the name. </h3>
+  </section>
+
+</article>
+
+
+ 
+  
+
+
+  <!-- Unlock Directive: Everything but notAvailable & forbidden -->
   <article class="row" ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.owned || objENS.status==ensModes.reveal)">
     <section class="clearfix collapse-container">
       <div class="text-center" ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
-        <h4 traslate="SWAP_unlock">Unlock your Wallet to
-          <span ng-show="objENS.status==ensModes.owned"> Finalize the Domain </span>
-          <span ng-show="objENS.status==ensModes.auction"> Place a Bid </span>
-          <span ng-show="objENS.status==ensModes.open"> Start an Auction </span>
-          <span ng-show="objENS.status==ensModes.reveal"> Reveal your Bid </span>
+        <h4>
+          <span ng-show="objENS.status==ensModes.open">    Do you want {{objENS.name}}.eth? Unlock your Wallet to Start an Auction </span>
+          <span ng-show="objENS.status==ensModes.auction"> Do you want {{objENS.name}}.eth? Unlock your Wallet to Place a Bid </span>
+          <span ng-show="objENS.status==ensModes.reveal">  Did you bid on {{objENS.name}}.eth? You must reveal your bid now. </span>
+          <span ng-show="objENS.status==ensModes.owned">   Unlock your Wallet to Finalize the Name </span>
         </h4>
       </div>
       <div ng-show="!wd">
@@ -1926,116 +1986,192 @@
       </div>
     </section>
   </article>
-  <!-- / ALL: Unlock Directive -->
-  <article class="col-xs-12 col-sm-8 col-sm-offset-2 text-center" ng-show="objENS.status==ensModes.owned && wd">
-      <br />
-      <button class="btn btn-primary" ng-click="finalizeDomain()"> Finalize {{objENS.name}}.eth </button>
-      <br /><br />
-      <p> If the auction is over, the winner can finalize it. Finalizing it assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.1 ETH. Any non-winners will also be refunded.</p>
-      <br />
-  </article>
+  <!-- / Unlock Directive: Everything but notAvailable / forbidden -->
+
+
   <hr ng-show="wd" />
 
-  <div ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.reveal) && wallet!=null">
-    <article class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
-      <div class="col-sm-4 col-xs-12 order-info">
-        <p> Time Remaining in Auction </p>
-        <h4> {{objENS.timeRemaining}} </h4>
+
+   <div ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.reveal) && wallet!=null">
+
+  <article class="row">
+
+    <!-- Sidebar -->
+    <section class="col-sm-4">
+      <wallet-balance-drtv></wallet-balance-drtv>
+    </section>
+    <!-- / Sidebar -->
+
+    <!-- Content -->
+    <section class="col-sm-8">
+
+      <!-- Title -->
+      <div class="form-group">
+        <h2>
+          <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span>
+          <span ng-show="objENS.status==ensModes.open">Start an Auction</span>
+          <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span>
+        </h2>
       </div>
-      <div class="col-sm-4 col-xs-12 order-info">
-        <p> Reveal Bids On</p>
-        <h4> {{getRevealTime().toLocaleString()}} </h4>
+      <!-- / Title -->
+
+      <!-- Thing they copied -->
+      <div class="form-group" ng-show="objENS.status==ensModes.reveal">
+        <label>Long string of text you copied</label>
+        <textarea class="form-control" name="Long string of text you copied" placeholder='{"name":"exrnnrxe","nameSHA3":"0x0001640f2629bb323fca95bc13744478d5307ba0aca6e3a13f803691923ff00d","owner":"0x7cb57b5a97eabe94205c07890be4c1ad31e486a8","value":"100000000000000000","secret":"alley symptom elephant","secretSHA3":"0xc3a2ae4fd788a17a2e9e63868efa1d3589f1e97cf54662dbbfb12150cb5f9859"}' ng-change="onLongStringChanged()" ng-model="longJsonString" ng-class="Validator.isJSON(longJsonString) ? 'is-valid' : 'is-invalid'"></textarea>
       </div>
-      <div class="col-sm-4 col-xs-12 order-info">
-        <p> Auction Closes On </p>
-        <h4>{{objENS.registrationDate.toLocaleString()}}</h4>
+      <!-- / Thing they copied -->
+
+
+      <div class="form-group" ng-show="objENS.status==ensModes.reveal">
+        <label class="strong">-- or --</label>
       </div>
-    </article>
-
-    <!-- ALL: TX GEN -->
-    <article class="row">
-
-      <!-- ALL: Sidebar -->
-      <section class="col-sm-4">
-        <wallet-balance-drtv></wallet-balance-drtv>
-      </section>
-      <!-- / Sidebar -->
-
-      <!-- Content -->
-      <section class="col-sm-8">
-        <!-- Title -->
-        <div class="form-group">
-          <h2>
-            <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span>
-            <span ng-show="objENS.status==ensModes.open">Start an Auction</span>
-            <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span>
-          </h2>
-        </div>
-        <!-- / Title -->
-
-        <!-- Thing they copied -->
-        <div class="form-group" ng-show="objENS.status==ensModes.reveal">
-          <label>Long string of text you copied</label>
-          <textarea class="form-control" name="Long string of text you copied" placeholder='{"name":"exrnnrxe","nameSHA3":"0x0001640f2629bb323fca95bc13744478d5307ba0aca6e3a13f803691923ff00d","owner":"0x7cb57b5a97eabe94205c07890be4c1ad31e486a8","value":"100000000000000000","secret":"alley symptom elephant","secretSHA3":"0xc3a2ae4fd788a17a2e9e63868efa1d3589f1e97cf54662dbbfb12150cb5f9859"}' ng-change="onLongStringChanged()" ng-model="longJsonString" ng-class="Validator.isJSON(longJsonString) ? 'is-valid' : 'is-invalid'"></textarea>
-        </div>
-        <!-- / Thing they copied -->
 
 
-        <div class="form-group" ng-show="objENS.status==ensModes.reveal">
-          <label class="strong">-- or --</label>
-        </div>
+      <!-- Name -->
+      <label>Name</label>
+      <div class="input-group">
+        <input class="form-control" type="text" placeholder="myetherwallet" readonly ng-model="objENS.name"/>
+        <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
+      </div>
+      <!-- / Name -->
 
+      <!-- Bid Amount -->
+      <h5>Bid Amount</h5>
+      <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
+      <div class="input-group">
+        <input class="form-control" type="number" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.01 ? 'is-valid' : 'is-invalid'"/>
+        <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
+      </div>
+      <!-- / Bid Amount -->
 
-        <!-- Name -->
-        <label>Name</label>
+      <!-- Disguise Bid -->
+      <div ng-show="objENS.status!=ensModes.reveal">
+        <h5>"Disguise Bid" Amount</h5>
+        <p><em><small>You can send more actual bid to disguise it. This must be >= the Bid Amount</small></em></p>
         <div class="input-group">
-          <input class="form-control" type="text" placeholder="myetherwallet" readonly ng-model="objENS.name"/>
-          <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
-        </div>
-        <!-- / Name -->
-
-        <!-- Maximum -->
-        <h5>{{objENS.status==ensModes.reveal ? "Bid Amount" : "Maximum Bid"}}</h5>
-        <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
-        <div class="input-group">
-          <input class="form-control" type="number" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.01 ? 'is-valid' : 'is-invalid'"/>
+          <input class="form-control" type="number" placeholder="2 {{ajaxReq.type}}" ng-model="objENS.dValue" ng-class="Validator.isPositiveNumber(objENS.dValue) && objENS.dValue >= objENS.bidValue ? 'is-valid' : 'is-invalid'"/>
           <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
         </div>
-        <!-- / Maximum -->
+      </div>
+      <!-- / Disguise Bid  -->
 
-        <!-- Your Secret -->
-        <h5>Secret Phrase</h5>
-        <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
-        <div class="form-group">
-          <input class="form-control" type="text" placeholder="word1 word2 word3" value="" ng-model="objENS.secret" ng-class="Validator.isPasswordLenValid(objENS.secret,0) ? 'is-valid' : 'is-invalid'"/>
-        </div>
-        <!-- / Your Secret  -->
+      <!-- Your Secret -->
+      <h5>Secret Phrase</h5>
+      <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later (feel free to change this)</small></em></p>
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="word1 word2 word3" value="" ng-model="objENS.secret" ng-class="Validator.isPasswordLenValid(objENS.secret,0) ? 'is-valid' : 'is-invalid'"/>
+      </div>
+      <!-- / Your Secret  -->
 
-        <!-- Disguise Bid -->
-        <div ng-show="objENS.status!=ensModes.reveal">
-          <h5>Amount to Send</h5>
-          <p><em><small>If you wish to send more than your actual bid to disguise it.</small></em></p>
-          <!-- Validation = more than Max. Bid Input, more than what is in account -->
-          <div class="input-group">
-            <input class="form-control" type="number" placeholder="2 {{ajaxReq.type}}" ng-model="objENS.dValue" ng-class="Validator.isPositiveNumber(objENS.dValue) && objENS.dValue >= objENS.bidValue ? 'is-valid' : 'is-invalid'"/>
-            <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
-          </div>
-        </div>
-        <!-- / Disguise Bid  -->
+      <!-- Button CTA -->
+      <div class="form-group">
+        <a class="btn btn-primary btn-block" ng-click="generateTx()">
+          <span ng-show="objENS.status==ensModes.auction"> Place your Bid</span>
+          <span ng-show="objENS.status==ensModes.open">Start the Auction</span>
+          <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span>
+        </a>
+      </div>
+      <!-- / Button CTA -->
+
+      <!-- After Sent: Place Bid / Start Auction -->
+      <div class="form-group well" ng-show="objENS.txSent && (objENS.status==ensModes.auction || objENS.status==ensModes.open)">
+        <h4 class="text-danger">If you haven't done so already, please screenshot & save the below information.</h4>
+        <p>Please remember to come back to reveal your bid. If you fail to do so, you will not be refunded.</p>
+         <table class="table table-striped table-ens-modal">
+  <tbody>
+    <tr>
+      <td>Name</td><td>{{objENS.name}}.eth</td>
+    </tr>
+    <tr>
+      <td>Bid Amount</td><td>{{objENS.bidValue}} {{ajaxReq.type}}</td>
+    </tr>
+    <tr ng-show="objENS.status!=ensModes.reveal">
+      <td>"Disguise Bid" Amount</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
+    </tr>
+    <tr>
+      <td>Secret Phrase</td><td>{{objENS.secret}}</td>
+    </tr>
+    <tr>
+      <td>From Account</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
+    </tr>
+    <tr class="text-danger">
+      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
+    </tr>
+    <tr>
+      <td>Auction Ends</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
+    </tr>
+    <tr ng-show="objENS.status!=ensModes.reveal">
+      <td colspan="2">
+        <small><p>Copy and save this:</p><textarea class="form-control small" readonly rows="4">{{bidObject}}</textarea></small>
+      </td>
+    </tr>
+  </tbody>
+</table>
+ 
+        
+      </div>
+      <!-- / After Sent: Place Bid / Start Auction -->
+
+      <!-- After Sent: Reveal -->
+      <div class="form-group" ng-show="objENS.txSent && objENS.status==ensModes.reveal">
+        <h4 class="text-success">You have successfully revealed your {{objENS.bidValue}} bid for {{objENS.name}}.eth.</h4>
+        <p>Please return on <strong>{{objENS.registrationDate.toLocaleString()}}</strong> to finalize the auction and see if you won!</p>
+      </div>
+      <!-- / After Sent: Reveal -->
 
 
-        <div class="form-group">
-          <a class="btn btn-primary btn-block" ng-click="generateTx()"> <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span><span ng-show="objENS.status==ensModes.open">Start an Auction</span> <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span></a>
-        </div>
+    </section>
+    <!-- / Content -->
 
-      </section>
-      <!-- / Content -->
+  </article>
 
-    </article>
+</div>
+ 
+  
 
-  </div>
 
-  <!-- / ALL: TX GEN -->
+   <article class="col-xs-12 col-sm-8 col-sm-offset-2 text-center" ng-show="objENS.status==ensModes.owned && wd">
+  <br />
+  <button class="btn btn-primary" ng-click="finalizeDomain()"> Finalize {{objENS.name}}.eth </button>
+  <br /><br />
+  <p> If the auction is over, the winner can finalize it. Finalizing it assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.1 ETH. Any non-winners will also be refunded.</p>
+  <br />
+</article>
+
+ <!-- FINALIZE: ENS MODAL -->
+<article class="modal fade" id="ensFinalizeConfirm" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title"> You are about to finalize the auction for {{objENS.name}}.eth &amp; claim this name. </h2>
+
+        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
+
+        <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+      </div>
+
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+          No, get me out of here!
+        </button>
+        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+          Yes, I am sure! Make transaction.
+        </button>
+      </div>
+
+    </section>
+  </section>
+</article>
+<!-- FINALIZE: ENS MODAL -->
+ 
+
+ 
+  
 
 
    <!-- ALL: ENS MODAL -->
@@ -2069,37 +2205,38 @@
           </tbody>
         </table>
 
-        <table class="table table-striped table-ens-modal">
-          <tbody>
-            <tr>
-              <td>Name:</td><td>{{objENS.name}}.eth</td>
-            </tr>
-            <tr>
-              <td>Bid Amount:</td><td>{{objENS.bidValue}} {{ajaxReq.type}}</td>
-            </tr>
-            <tr>
-              <td>Secret Phrase:</td><td>{{objENS.secret}}</td>
-            </tr>
-            <tr ng-show="objENS.status!=ensModes.reveal">
-              <td>Amount to Send (disguise):</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
-            </tr>
-            <tr>
-              <td>From Account:</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
-            </tr>
-            <tr>
-              <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
-            </tr>
-            <tr>
-              <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
-            </tr>
-
-            <tr ng-show="objENS.status!=ensModes.reveal">
-              <td colspan="2">
-                <small><p>Copy and save this:</p><textarea class="form-control small" readonly rows="4">{{bidObject}}</textarea></small>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+         <table class="table table-striped table-ens-modal">
+  <tbody>
+    <tr>
+      <td>Name</td><td>{{objENS.name}}.eth</td>
+    </tr>
+    <tr>
+      <td>Bid Amount</td><td>{{objENS.bidValue}} {{ajaxReq.type}}</td>
+    </tr>
+    <tr ng-show="objENS.status!=ensModes.reveal">
+      <td>"Disguise Bid" Amount</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
+    </tr>
+    <tr>
+      <td>Secret Phrase</td><td>{{objENS.secret}}</td>
+    </tr>
+    <tr>
+      <td>From Account</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
+    </tr>
+    <tr class="text-danger">
+      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
+    </tr>
+    <tr>
+      <td>Auction Ends</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
+    </tr>
+    <tr ng-show="objENS.status!=ensModes.reveal">
+      <td colspan="2">
+        <small><p>Copy and save this:</p><textarea class="form-control small" readonly rows="4">{{bidObject}}</textarea></small>
+      </td>
+    </tr>
+  </tbody>
+</table>
+ 
+        
 
         <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
 
@@ -2125,102 +2262,7 @@
   
 
 
-   <!-- FINALIZE: ENS MODAL -->
-<article class="modal fade" id="ensFinalizeConfirm" tabindex="-1">
-  <section class="modal-dialog">
-    <section class="modal-content">
-
-      <div class="modal-body">
-
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title"> You are about to Finalize domain {{objENS.name}}.eth</h2>
-
-        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
-
-        <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
-      </div>
-
-
-      <div class="modal-footer">
-        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
-          No, get me out of here!
-        </button>
-        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
-          Yes, I am sure! Make transaction.
-        </button>
-      </div>
-
-    </section>
-  </section>
-</article>
-<!-- FINALIZE: ENS MODAL -->
- 
-  
-
-
-   <div ng-show="objENS.txSent">
-<section ng-show="objENS.status==ensModes.auction || objENS.status==ensModes.open">
-  <div class="alert alert-danger">
-    <h4>If you haven't done so already, please screenshot & save the below information</h4>
-    <small>You <u>cannot</u> claim your name unless you have this information during the reveal process.</small>
-  </div>
-
-  <table class="table">
-    <tbody>
-      <tr class="text-center">
-        <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet.getAddressString()"></div></td>
-        <td class="mono">-><br />{{tx.value}} {{unitReadable}}</td>
-        <td><div class="addressIdenticon med" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table class="table table-striped table-ens-modal">
-    <tbody>
-      <tr>
-        <td>Name:</td><td>{{objENS.name}}.eth</td>
-      </tr>
-      <tr>
-        <td>Bid Amount:</td><td>{{objENS.bidValue}} {{ajaxReq.type}}</td>
-      </tr>
-      <tr>
-        <td>Secret Phrase:</td><td>{{objENS.secret}}</td>
-      </tr>
-      <tr ng-show="objENS.status!=ensModes.reveal">
-        <td>Amount to Send (disguise):</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
-      </tr>
-      <tr>
-        <td>From Account:</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
-      </tr>
-      <tr>
-        <td>Must Reveal On:</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
-      </tr>
-      <tr>
-        <td>Auction Ends:</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
-      </tr>
-
-      <tr ng-show="objENS.status!=ensModes.reveal">
-        <td colspan="2">
-          <small><p>Copy and save this:</p><textarea class="form-control small" readonly rows="4">{{bidObject}}</textarea></small>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<div ng-show="objENS.status==ensModes.reveal">
-  <hr />
-  <div class="alert alert-success">
-    <h4>You have successfully revealed your {{objENS.bidValue}} bid for {{objENS.name}}.eth.</h4>
-  </div>
-  <h4 class="text-warning">Please return on {{objENS.registrationDate.toLocaleString()}} to finalize the auction and see if you won!</h4>
-</div>
-</div> 
-  
-
-
 </main>
-
 
     <!-- Help -->
 <article class="tab-pane help active" ng-if="globalService.currentTab==globalService.tabs.help.id"  ng-cloak>
