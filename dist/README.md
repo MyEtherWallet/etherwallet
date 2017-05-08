@@ -7,7 +7,10 @@
 
 ## `mercury` is the development branch. gh-pages contains only the smaller dist folder only and is served to MyEtherWallet.com via CloudFlare.
 
-
+## Help
+- https://myetherwallet.groovehq.com/help_center
+- https://www.myetherwallet.com/#help
+- support at myetherwallet dot com
 
 
 ### MyEtherWallet
@@ -53,16 +56,15 @@ It is recommended you start with our help page @ https://www.myetherwallet.com/#
 
 You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page.
 
-- Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest).
-- Click on `dist-vX.X.X.X.zip`.
-- Move zip to an airgapped computer.
-- Unzip it and double-click `index.html`.
-- MyEtherWallet.com is now running entirely on your computer.
+1. Go to https://github.com/kvhnuke/etherwallet/releases/latest.
+2. Click on dist-vX.X.X.X.zip.
+3. Move zip to an airgapped computer.
+4. Unzip it and double-click index.html.
+5. MyEtherWallet.com is now running entirely on your computer.
 
 In case you are not familiar, you need to keep the entire folder in order to run the website, not just index.html. Don't touch or move anything around in the folder. If you are storing a backup of the MyEtherWallet repo for the future, we recommend just storing the ZIP so you can be sure the folder contents stay intact.
 
 As we are constantly updating MyEtherWallet.com, we recommend you periodically update your saved version of the repo.
-
 
 
 
@@ -199,7 +201,7 @@ Read more @ [Help us translate MyEtherWallet.com into ALL THE LANGUAGES!](https:
 
 
 ### Contact
-If you can think of any other features or run into bugs, let us know. You can fork, open a PR, open an issue, [message kvhnuke on reddit](https://www.reddit.com/message/compose/?to=kvhnuke), [email tayvano](mailto:tayvano@gmail.com) or [in any of these ways](https://www.myetherwallet.com/#contact).
+If you can think of any other features or run into bugs, let us know. You can fork, open a PR, open an issue, or support at myetherwallet dot com.
 
 
 
@@ -228,6 +230,9 @@ If you can think of any other features or run into bugs, let us know. You can fo
 - 1/9/17: [Announcing MyEtherWallet v3.4.3: Interacting with Contracts](https://www.reddit.com/r/ethereum/comments/5n0dj0/announcing_myetherwallet_v343_interacting_with/?utm_content=title&utm_medium=user&utm_source=reddit&utm_name=frontpage)
 - 2/3/17: [MyEtherWallet.com v3.4.7: You can use your TREZOR on MEW. Thanks to all who made this a reality 🤗](https://www.reddit.com/r/ethereum/comments/5rsfu9/myetherwalletcom_v347_you_can_use_your_trezor_on/?utm_content=comments&utm_medium=user&utm_source=reddit&utm_name=frontpage)
 - 2/16/17: [MyEtherWallet v3.5.0: Swap ETH <-> BTC <-> REP via Bity, directly from MEW! (also: Parity backup phrase support + add'l contract features + our roadmap)](https://www.reddit.com/r/ethereum/comments/5ueysp/myetherwallet_v350_swap_eth_btc_rep_via_bity/?utm_content=comments&utm_medium=user&utm_source=reddit&utm_name=frontpage)
+- 4/9/17: [Ethereum vanity address generator](https://www.reddit.com/r/ethereum/comments/5yeb4n/ethereum_vanity_address_generator/?utm_content=comments&utm_medium=user&utm_source=reddit&utm_name=frontpage)
+- 4/30/17: [MEW v3.6.6: Enables you to access any path for your Mnemonic, Ledger & TREZOR. (ATTN: folks who have ETH / ETC / Tokens stuck in a different path)](https://www.reddit.com/r/ethereum/comments/68f70l/mew_v366_enables_you_to_access_any_path_for_your/)
+- 5/7/17: [ENS disguise bid issue on MyEtherWallet](https://www.reddit.com/r/ethereum/comments/69vz57/ens_disguise_bid_issue_on_myetherwallet/)
 
 
 #### MyEtherWallet.com & MyEtherWallet CX are licensed under The MIT License (MIT).
