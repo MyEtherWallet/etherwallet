@@ -19,7 +19,8 @@ var ensCtrl = function($scope, $sce, walletService) {
         dValue: 0.01,
         secret: hd.bip39.generateMnemonic().split(" ").splice(0, 3).join(" "),
         nameReadOnly: false,
-        txSent: false
+        txSent: false,
+        revealObject: null
     };
     $scope.tx = {
         gasLimit: '500000',
@@ -72,6 +73,7 @@ var ensCtrl = function($scope, $sce, walletService) {
     }
     $scope.checkName = function() {
         if ($scope.Validator.isValidENSName($scope.objENS.name)) {
+            $scope.objENS.name = ens.normalise($scope.objENS.name);
             $scope.hideEnsInfoPanel = true;
             ENS.getAuctionEntries($scope.objENS.name, function(data) {
                 if (data.error) $scope.notifier.danger(data.msg);
@@ -108,9 +110,12 @@ var ensCtrl = function($scope, $sce, walletService) {
     }
     $scope.onLongStringChanged = function() {
         try {
+            $scope.objENS.revealObject = null;
             var tObj = JSON.parse($scope.longJsonString);
-            if (tObj.value) $scope.objENS.bidValue = etherUnits.toEther(tObj.value, "wei");
+            $scope.objENS.revealObject = tObj;
+            if (tObj.value) $scope.objENS.bidValue = Number(etherUnits.toEther(tObj.value, "wei"));
             if (tObj.secret) $scope.objENS.secret = tObj.secret;
+            if (tObj.name && ens.normalise(tObj.name) != $scope.objENS.name) throw new Error(globalFuncs.errorMsgs[34]);
             updateScope();
         } catch (e) {
             $scope.notifier.danger(e.message);
@@ -255,6 +260,7 @@ var ensCtrl = function($scope, $sce, walletService) {
             else if (!$scope.Validator.isPositiveNumber(_objENS.bidValue) || _objENS.bidValue < 0.01) throw globalFuncs.errorMsgs[0];
             else if (_objENS.status != $scope.ensModes.reveal && (!$scope.Validator.isPositiveNumber(_objENS.dValue) || _objENS.dValue < _objENS.bidValue)) throw globalFuncs.errorMsgs[0];
             else if (!$scope.Validator.isPasswordLenValid(_objENS.secret, 0)) throw globalFuncs.errorMsgs[31];
+            else if (_objENS.revealObject && _objENS.revealObject.name && ens.normalise(_objENS.revealObject.name) != _objENS.name) throw globalFuncs.errorMsgs[34];
             else {
                 if ($scope.objENS.status == $scope.ensModes.open) $scope.openAndBidAuction();
                 else if ($scope.objENS.status == $scope.ensModes.auction) $scope.bidAuction();
