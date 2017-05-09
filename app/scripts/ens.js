@@ -90,6 +90,9 @@ ens.prototype.getOwnerResolverAddress = function(funcABI, to, name, callback) {
         }
     });
 }
+ens.prototype.getDeedOwner = function(to, callback) {
+    this.getOwnerResolverAddress(this.deedABI.owner, to, '', callback);
+}
 ens.prototype.getOwner = function(name, callback) {
     this.getOwnerResolverAddress(this.registryABI.owner, this.getRegistryAddress(), name, callback);
 }

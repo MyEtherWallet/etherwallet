@@ -85,6 +85,9 @@ var ensCtrl = function($scope, $sce, walletService) {
                             ENS.getOwner($scope.objENS.name + '.eth', function(data) {
                                 $scope.objENS.owner = data.data;
                             })
+                            ENS.getDeedOwner($scope.objENS.deed, function(data) {
+                                $scope.objENS.deedOwner = data.data;
+                            })
                             break;
                         case $scope.ensModes.notAvailable:
                             ENS.getAllowedTime($scope.objENS.name, function(data) {
@@ -167,10 +170,10 @@ var ensCtrl = function($scope, $sce, walletService) {
         });
     }
     $scope.finalizeDomain = function() {
-      /*  if ($scope.wallet.getAddressString() != $scope.objENS.owner) {
-            $scope.notifier.danger(globalFuncs.errorMsgs[33]);
-            return;
-        } */
+          if ($scope.wallet.getAddressString() != $scope.objENS.deedOwner) {
+              $scope.notifier.danger(globalFuncs.errorMsgs[33]);
+              return;
+          } 
         var _objENS = $scope.objENS;
         ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
             if (data.error) $scope.notifier.danger(data.msg);
