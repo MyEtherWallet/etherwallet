@@ -156,10 +156,13 @@ ens.prototype.getFinalizeAuctionData = function(name) {
     var funcABI = _this.auctionABI.finalizeAuction;
     return _this.getDataString(funcABI, [name]);
 }
+var isSecretHashed = function(secret) {
+    return secret.substring(0, 2) == '0x' && secret.length == 66 && Validator.isValidHex(secret);
+}
 ens.prototype.getRevealBidData = function(name, value, secret) {
     var _this = this;
     name = _this.getSHA3(ens.normalise(name));
-    secret = _this.getSHA3(secret);
+    secret = isSecretHashed(secret) ? secret : _this.getSHA3(secret);
     var funcABI = _this.auctionABI.unsealBid;
     return _this.getDataString(funcABI, [name, value, secret]);
 }
