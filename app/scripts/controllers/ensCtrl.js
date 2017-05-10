@@ -85,6 +85,9 @@ var ensCtrl = function($scope, $sce, walletService) {
                             ENS.getOwner($scope.objENS.name + '.eth', function(data) {
                                 $scope.objENS.owner = data.data;
                             })
+                            ENS.getDeedOwner($scope.objENS.deed, function(data) {
+                                $scope.objENS.deedOwner = data.data;
+                            })
                             break;
                         case $scope.ensModes.notAvailable:
                             ENS.getAllowedTime($scope.objENS.name, function(data) {
@@ -167,10 +170,10 @@ var ensCtrl = function($scope, $sce, walletService) {
         });
     }
     $scope.finalizeDomain = function() {
-      /*  if ($scope.wallet.getAddressString() != $scope.objENS.owner) {
-            $scope.notifier.danger(globalFuncs.errorMsgs[33]);
-            return;
-        } */
+          if ($scope.wallet.getAddressString() != $scope.objENS.deedOwner) {
+              $scope.notifier.danger(globalFuncs.errorMsgs[33]);
+              return;
+          } 
         var _objENS = $scope.objENS;
         ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
             if (data.error) $scope.notifier.danger(data.msg);
@@ -261,6 +264,7 @@ var ensCtrl = function($scope, $sce, walletService) {
             else if (_objENS.status != $scope.ensModes.reveal && (!$scope.Validator.isPositiveNumber(_objENS.dValue) || _objENS.dValue < _objENS.bidValue)) throw globalFuncs.errorMsgs[0];
             else if (!$scope.Validator.isPasswordLenValid(_objENS.secret, 0)) throw globalFuncs.errorMsgs[31];
             else if (_objENS.revealObject && _objENS.revealObject.name && ens.normalise(_objENS.revealObject.name) != _objENS.name) throw globalFuncs.errorMsgs[34];
+            else if ($scope.wallet.balance <= _objENS.dValue) throw globalFuncs.errorMsgs[0];
             else {
                 if ($scope.objENS.status == $scope.ensModes.open) $scope.openAndBidAuction();
                 else if ($scope.objENS.status == $scope.ensModes.auction) $scope.bidAuction();
