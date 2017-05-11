@@ -117,6 +117,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             }, 500);
         }
         if ($scope.tx.sendMode == 'token') {
+            $scope.tx.gasLimit = globalFuncs.defaultTokenGasLimit;
             $scope.tokenTx.to = $scope.tx.to;
             $scope.tokenTx.value = $scope.tx.value;
         }
@@ -124,7 +125,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.estimateGasLimit = function() {
         if ($scope.gasLimitChanged) return;
         if (globalFuncs.lightMode) {
-            $scope.tx.gasLimit = 100000;
+            $scope.tx.gasLimit = globalFuncs.defaultTokenGasLimit;
             return;
         }
         var estObj = {
