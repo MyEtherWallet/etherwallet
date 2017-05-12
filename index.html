@@ -615,8 +615,14 @@
   </div>
 
   <div class="row form-group">
-    <address-field var-name="tx.to" read-only='tx.readOnly' placeholder='0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8'></address-field>
-  </div>
+    <div class="col-xs-10">
+      <label translate="SEND_addr"> To Address: </label>
+      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
+    </div>
+    <div class="col-xs-2 address-identicon-container">
+      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+    </div>
+    </div>
   <!-- / To Address -->
 
   <!-- Amount to Send -->
@@ -639,31 +645,21 @@
   <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="SEND_TransferTotal">Send Entire Balance</span></a></p>
   <!-- / Amount to Send -->
 
-  <!-- Gas Limit -->
-  <label translate="TRANS_gas"> Gas Limit: </label>
+  <!-- Gas -->
+  <label translate="TRANS_gas"> Gas: </label>
   <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=false"/>
   <!-- / Gas -->
 
   <!-- Advanced Option Panel -->
-  <div>
+  <div ng-show="tx.sendMode=='ether'">
     <a ng-click="showAdvance=!showAdvance">
-      <p class="strong" translate="TRANS_advanced"> + Advanced</p>
+      <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
     </a>
-    <section ng-show="showAdvance" ng-show="tx.sendMode=='ether'">
+    <section ng-show="showAdvance">
       <div class="form-group">
         <label translate="TRANS_data"> Data: </label>
         <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
       </div>
-    </section>
-    <section ng-show="showAdvance">
-      <div class="form-group">
-        <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
-        <div class="input-group">
-          <input class="form-control" type="text" placeholder="20000000000" ng-model="tx.gasPrice" ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'"/>
-          <div class="input-group-btn"><a class="btn btn-default">WEI</a></div>
-        </div>
-        <p ng-show="tx.gasPrice > 60000000000" class="text-danger">Warning: Your gas price is much higher than the default 20000000000 (0.00000002 ETH).</p>
-        <p>Gas (TX) Cost: {{tx.txCost}}</p>
     </section>
   </div>
   <!-- / Advanced Option Panel -->
@@ -1025,8 +1021,14 @@
   </div>
 
   <div class="row form-group">
-    <address-field var-name="tx.to" read-only='tx.readOnly' placeholder='0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8'></address-field>
-  </div>
+    <div class="col-xs-10">
+      <label translate="SEND_addr"> To Address: </label>
+      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
+    </div>
+    <div class="col-xs-2 address-identicon-container">
+      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
+    </div>
+    </div>
   <!-- / To Address -->
 
   <!-- Amount to Send -->
@@ -1049,31 +1051,21 @@
   <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="SEND_TransferTotal">Send Entire Balance</span></a></p>
   <!-- / Amount to Send -->
 
-  <!-- Gas Limit -->
-  <label translate="TRANS_gas"> Gas Limit: </label>
+  <!-- Gas -->
+  <label translate="TRANS_gas"> Gas: </label>
   <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=false"/>
   <!-- / Gas -->
 
   <!-- Advanced Option Panel -->
-  <div>
+  <div ng-show="tx.sendMode=='ether'">
     <a ng-click="showAdvance=!showAdvance">
-      <p class="strong" translate="TRANS_advanced"> + Advanced</p>
+      <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
     </a>
-    <section ng-show="showAdvance" ng-show="tx.sendMode=='ether'">
+    <section ng-show="showAdvance">
       <div class="form-group">
         <label translate="TRANS_data"> Data: </label>
         <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
       </div>
-    </section>
-    <section ng-show="showAdvance">
-      <div class="form-group">
-        <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
-        <div class="input-group">
-          <input class="form-control" type="text" placeholder="20000000000" ng-model="tx.gasPrice" ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'"/>
-          <div class="input-group-btn"><a class="btn btn-default">WEI</a></div>
-        </div>
-        <p ng-show="tx.gasPrice > 60000000000" class="text-danger">Warning: Your gas price is much higher than the default 20000000000 (0.00000002 ETH).</p>
-        <p>Gas (TX) Cost: {{tx.txCost}}</p>
     </section>
   </div>
   <!-- / Advanced Option Panel -->
