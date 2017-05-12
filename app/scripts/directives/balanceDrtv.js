@@ -7,3 +7,5 @@ var balanceDrtv = function() {
   };
 };
 module.exports = balanceDrtv;
+
+//<label class=\"ens-response\" ng-show=\"showens\"> ↳ <span class=\"mono ng-binding\"> {{ensAddress}} </span> </label>\n \
