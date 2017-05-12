@@ -108,6 +108,12 @@
     "type":"default"
   },
   {
+    "address":"0xc1e6c6c681b286fb503b36a9dd6c1dbff85e73cf",
+    "symbol":"JET",
+    "decimal":18,
+    "type":"default"
+  },  
+  {
     "address":"0xfa05a73ffe78ef8f1a739473e462c54bae6567d9",
     "symbol":"LUN",
     "decimal":18,
