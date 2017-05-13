@@ -1897,12 +1897,12 @@
 
 <article class="order-info-wrap row" ng-show="objENS.status==ensModes.notAvailable">
   <div class="col-sm-12 col-xs-12 order-info">
-    <p> Auction Opens In... </p>
-    <h4> {{objENS.timeRemaining}} </h4>
+    <p> Auction Open On </p>
+    <h4> {{objENS.allowedTime.toLocaleString()}} </h4>
   </div>
   <div class="col-sm-12 col-xs-12 order-info">
-    <p> Auction Open On... </p>
-    <h4> {{objENS.allowedTime.toLocaleString()}} </h4>
+    <p> Auction Opens In</p>
+    <h4> {{objENS.timeRemaining}} </h4>
   </div>
 </article>
  
@@ -1924,14 +1924,14 @@
 
   <section class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
     <div class="col-sm-6 col-xs-12 order-info">
-      <p> Reveal Bids On </p>
+      <p>  Reveal Bids On </p>
       <h4> {{getRevealTime().toLocaleString()}} </h4>
-      <p> <!-- TODO: Make this timer too! --> </p>
+      <p>  {{objENS.timeRemainingReveal}}  </p>
     </div>
     <div class="col-sm-6 col-xs-12 order-info">
-      <p> Auction Closes On </p>
-      <h4>{{objENS.registrationDate.toLocaleString()}}</h4>
-      <p> {{objENS.timeRemaining}}  </p>
+      <p>  Auction Closes On </p>
+      <h4> {{objENS.registrationDate.toLocaleString()}}</h4>
+      <p>  {{objENS.timeRemaining}} </p>
     </div>
   </section>
 
@@ -1943,6 +1943,15 @@
    <article class="row text-center" ng-show="objENS.status==ensModes.reveal">
   <br /><br />
   <h1>It's time to reveal the bids for <strong>{{objENS.name}}.eth</strong>. </br> Current highest bid is <strong>{{objENS.highestBid}} ETH</strong>.</h1>
+
+ <section class="order-info-wrap row">
+    <div class="col-xs-12 order-info">
+      <p>  Auction Closes On </p>
+      <h4> {{objENS.registrationDate.toLocaleString()}}</h4>
+      <p>  {{objENS.timeRemaining}}  </p>
+    </div>
+  </section>
+
 </article>
 
  
@@ -1953,13 +1962,9 @@
 
   <br /><br />
 
-  <h1>
-    <strong>{{objENS.name}}.eth</strong> is not available. It's already owned by {{objENS.owner}} and the highest bidder is {{objENS.deedOwner}}.
-  </h1>
-
-  <section class="col-sm-8 col-xs-12 col-sm-offset-2">
-    <h3> If you are the highest bidder, you must finalize the auction to claim the name. </h3>
-  </section>
+  <h1><strong>{{objENS.name}}.eth</strong> is already owned.</h1>
+  <h4>Owner: <span class="mono">{{objENS.owner}}</span></h4>
+  <h4>Highest Bidder: <span class="mono">{{objENS.deedOwner}}</span></h4>
 
 </article>
 
@@ -1977,7 +1982,9 @@
           <span ng-show="objENS.status==ensModes.open">    Do you want {{objENS.name}}.eth? Unlock your Wallet to Start an Auction </span>
           <span ng-show="objENS.status==ensModes.auction"> Do you want {{objENS.name}}.eth? Unlock your Wallet to Place a Bid </span>
           <span ng-show="objENS.status==ensModes.reveal">  Did you bid on {{objENS.name}}.eth? You must reveal your bid now. </span>
-          <span ng-show="objENS.status==ensModes.owned">   Unlock your Wallet to Finalize the Name </span>
+          <span ng-show="objENS.status==ensModes.owned && objENS.owner!==objENS.deedOwner"> Is that your address? Finalize the auction to claim your new name. </span>
+          <span ng-show="objENS.status==ensModes.owned && objENS.owner==objENS.deedOwner"> Is that your address? It is ready to set up a resolver. </span>
+
         </h4>
       </div>
       <div ng-show="!wd">
@@ -2040,7 +2047,10 @@
       <h5>Bid Amount</h5>
       <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
       <div class="input-group">
-        <input class="form-control" type="number" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.01 && objENS.bidValue < wallet.balance ? 'is-valid' : 'is-invalid'"/>
+        <!-- validate wallet balance for everything but reveal -->
+        <input ng-show="objENS.status!=ensModes.reveal" class="form-control" type="number" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.01 && objENS.bidValue < wallet.balance ? 'is-valid' : 'is-invalid'"/>
+        <!-- don't check wallet balance for reveal -->
+        <input ng-show="objENS.status==ensModes.reveal" class="form-control" type="number" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.01 ? 'is-valid' : 'is-invalid'"/>
         <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
       </div>
       <!-- / Bid Amount -->
@@ -2066,7 +2076,7 @@
 
       <!-- Button CTA -->
       <div class="form-group">
-        <a class="btn btn-primary btn-block" ng-click="generateTx()">
+        <a class="btn btn-primary btn-block" ng-click="generateTx()" ng-hide="objENS.txSent">
           <span ng-show="objENS.status==ensModes.auction"> Place your Bid</span>
           <span ng-show="objENS.status==ensModes.open">Start the Auction</span>
           <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span>
@@ -2077,7 +2087,7 @@
       <!-- After Sent: Place Bid / Start Auction -->
       <div class="form-group well" ng-show="objENS.txSent && (objENS.status==ensModes.auction || objENS.status==ensModes.open)">
         <h4 class="text-danger">If you haven't done so already, please screenshot & save the below information.</h4>
-        <p>Please remember to come back to reveal your bid. If you fail to do so, you will not be refunded.</p>
+        <p>Please check your address on <a href="https://etherscan.io/">https://etherscan.io/</a> to ensure your BID TX is on the blockchain, without errors.</p>
          <table class="table table-striped table-ens-modal">
   <tbody>
     <tr>
@@ -2135,7 +2145,7 @@
   <br />
   <button class="btn btn-primary" ng-click="finalizeDomain()"> Finalize {{objENS.name}}.eth </button>
   <br /><br />
-  <p> If the auction is over, the winner can finalize it. Finalizing it assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.</p>
+  <p> Finalizing this name assigns the ENS name to the winning bidder. The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. Any non-winners will also be refunded.</p>
   <br />
 </article>
 
@@ -2263,6 +2273,7 @@
 
 
 </main>
+
 
     <!-- Help -->
 <article class="tab-pane help active" ng-if="globalService.currentTab==globalService.tabs.help.id"  ng-cloak>
