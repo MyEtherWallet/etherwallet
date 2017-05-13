@@ -20,7 +20,12 @@ validator.isValidENSAddress = function(address) {
     address = ens.normalise(address);
     var tld = address.substr(address.lastIndexOf('.') + 1);
     var _ens = new ens();
-    if (_ens.curRegistry.tlds[tld]) return true;
+    var validTLDs = {
+        eth: true,
+        test: true,
+        reverse: true
+    }
+    if (validTLDs[tld]) return true;
     return false;
 }
 validator.isValidBTCAddress = function(address) {

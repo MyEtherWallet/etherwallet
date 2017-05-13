@@ -152,12 +152,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         return new BigNumber($scope.tx.value).lt(new BigNumber($scope.wallet.balance));
     }
     $scope.onDonateClick = function() {
-        $scope.tx.to = globalFuncs.donateAddress;
+        $scope.addressDrtv.ensAddressField = globalFuncs.donateAddress;
         $scope.tx.value = "1";
         $scope.tx.donate = true;
     }
     $scope.generateTx = function() {
-        if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
+        if (!$scope.Validator.isValidAddress($scope.tx.to)) {
             $scope.notifier.danger(globalFuncs.errorMsgs[5]);
             return;
         }
