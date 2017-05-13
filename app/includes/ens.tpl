@@ -68,7 +68,9 @@
           <span ng-show="objENS.status==ensModes.open">    Do you want {{objENS.name}}.eth? Unlock your Wallet to Start an Auction </span>
           <span ng-show="objENS.status==ensModes.auction"> Do you want {{objENS.name}}.eth? Unlock your Wallet to Place a Bid </span>
           <span ng-show="objENS.status==ensModes.reveal">  Did you bid on {{objENS.name}}.eth? You must reveal your bid now. </span>
-          <span ng-show="objENS.status==ensModes.owned">   Unlock your Wallet to Finalize the Name </span>
+          <span ng-show="objENS.status==ensModes.owned && objENS.owner!==objENS.deedOwner"> Is that your address? Finalize the auction to claim your new name. </span>
+          <span ng-show="objENS.status==ensModes.owned && objENS.owner==objENS.deedOwner"> Is that your address? It is ready to set up a resolver. </span>
+
         </h4>
       </div>
       <div ng-show="!wd">

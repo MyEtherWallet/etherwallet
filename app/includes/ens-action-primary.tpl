@@ -72,7 +72,7 @@
 
       <!-- Button CTA -->
       <div class="form-group">
-        <a class="btn btn-primary btn-block" ng-click="generateTx()">
+        <a class="btn btn-primary btn-block" ng-click="generateTx()" ng-hide="objENS.txSent">
           <span ng-show="objENS.status==ensModes.auction"> Place your Bid</span>
           <span ng-show="objENS.status==ensModes.open">Start the Auction</span>
           <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span>
@@ -83,7 +83,7 @@
       <!-- After Sent: Place Bid / Start Auction -->
       <div class="form-group well" ng-show="objENS.txSent && (objENS.status==ensModes.auction || objENS.status==ensModes.open)">
         <h4 class="text-danger">If you haven't done so already, please screenshot & save the below information.</h4>
-        <p>Please remember to come back to reveal your bid. If you fail to do so, you will not be refunded.</p>
+        <p>Please check your address on <a href="https://etherscan.io/">https://etherscan.io/</a> to ensure your BID TX is on the blockchain, without errors.</p>
         @@if (site === 'mew' ) { @@include( './ens-confirm-table.tpl', { "site": "mew" } ) }
         @@if (site === 'cx'  ) { @@include( './ens-confirm-table.tpl', { "site": "cx"  } ) }
       </div>

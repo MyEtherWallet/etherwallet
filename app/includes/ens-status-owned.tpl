@@ -2,13 +2,9 @@
 
   <br /><br />
 
-  <h1>
-    <strong>{{objENS.name}}.eth</strong> is not available. It's already owned by {{objENS.owner}} and the highest bidder is {{objENS.deedOwner}}.
-  </h1>
-
-  <section class="col-sm-8 col-xs-12 col-sm-offset-2">
-    <h3> If you are the highest bidder, you must finalize the auction to claim the name. </h3>
-  </section>
+  <h1><strong>{{objENS.name}}.eth</strong> is already owned.</h1>
+  <h4>Owner: <span class="mono">{{objENS.owner}}</span></h4>
+  <h4>Highest Bidder: <span class="mono">{{objENS.deedOwner}}</span></h4>
 
 </article>
 
