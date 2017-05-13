@@ -46,7 +46,10 @@
       <h5>Bid Amount</h5>
       <p ng-show="objENS.status!=ensModes.reveal"><em><small>You must remember this to claim your name later.</small></em></p>
       <div class="input-group">
-        <input class="form-control" type="number" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.01 && objENS.bidValue < wallet.balance ? 'is-valid' : 'is-invalid'"/>
+        <!-- validate wallet balance for everything but reveal -->
+        <input ng-show="objENS.status!=ensModes.reveal" class="form-control" type="number" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.01 && objENS.bidValue < wallet.balance ? 'is-valid' : 'is-invalid'"/>
+        <!-- don't check wallet balance for reveal -->
+        <input ng-show="objENS.status==ensModes.reveal" class="form-control" type="number" placeholder="1 {{ajaxReq.type}}" ng-model="objENS.bidValue" ng-class="Validator.isPositiveNumber(objENS.bidValue) && objENS.bidValue >= 0.01 ? 'is-valid' : 'is-invalid'"/>
         <div class="input-group-btn"><a class="btn btn-default">{{ajaxReq.type}}</a></div>
       </div>
       <!-- / Bid Amount -->
