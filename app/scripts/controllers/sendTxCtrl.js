@@ -167,8 +167,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         return new BigNumber($scope.tx.value).lt(new BigNumber($scope.wallet.balance));
     }
     $scope.onDonateClick = function() {
-        //$scope.addressDrtv.ensAddressField = globalFuncs.donateAddress;
-        $scope.tx.to = globalFuncs.donateAddress;
+        $scope.addressDrtv.ensAddressField = globalFuncs.donateAddress;
         $scope.tx.value = "1";
         $scope.tx.donate = true;
     }
