@@ -95,7 +95,7 @@
       <!-- After Sent: Reveal -->
       <div class="form-group" ng-show="objENS.txSent && objENS.status==ensModes.reveal">
         <h4 class="text-warning">Click your TX hash to see if you successfully revealed your {{objENS.bidValue}} bid for {{objENS.name}}.eth.</h4>
-        <p>Please return on <strong>{{objENS.registrationDate.toLocaleString()}}</strong> to finalize the auction and see if you won!</p>
+        <p>Please return on <strong>{{objENS.registrationDate.toString()}}</strong> to finalize the auction and see if you won!</p>
       </div>
       <!-- / After Sent: Reveal -->
 

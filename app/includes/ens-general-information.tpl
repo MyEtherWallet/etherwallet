@@ -44,7 +44,6 @@
         <li> Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.</li>
         <li> The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. </li>
       </ul>
-
       <h6 ng-click="ensMore = !ensMore">
         <span ng-show="!ensMore">+</span><span ng-show="ensMore">-</span>
         More Information
@@ -54,8 +53,9 @@
           <li><a href="http://docs.ens.domains/en/latest/userguide.html#registering-a-name-with-the-auction-registrar" target="_blank">ENS: Read the Docs</a></li>
           <li><a href="https://medium.com/the-ethereum-name-service/announcing-the-ethereum-name-service-relaunch-date-4390af6dd9a2" target="_blank">Announcing the Ethereum Name Service Relaunch Date!</a></li>
       </ul>
+      <hr />
+      <p class="text-danger"><strong>  Due to an overwhelming number of support requests regarding the ENS, we will NOT providing support to those who are attempting to start a name business (aka "domain squatting") via our free, open source service. </strong> If you are bidding on hundreds of names, brand names, or the entire human-readable dictionary, do not expect a response. If you are a typical user who wants few cool names, you're safe.</p>
 
   </section>
 
 </article>
-

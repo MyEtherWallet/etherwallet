@@ -172,8 +172,8 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.tx.donate = true;
     }
     $scope.generateTx = function() {
-        //if (!$scope.Validator.isValidAddress($scope.tx.to)) {
-        if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
+        if (!$scope.Validator.isValidAddress($scope.tx.to)) {
+        //if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
             $scope.notifier.danger(globalFuncs.errorMsgs[5]);
             return;
         }

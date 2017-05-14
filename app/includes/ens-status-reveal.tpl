@@ -5,7 +5,7 @@
  <section class="order-info-wrap row">
     <div class="col-xs-12 order-info">
       <p>  Auction Closes On </p>
-      <h4> {{objENS.registrationDate.toLocaleString()}}</h4>
+      <h4> {{objENS.registrationDate.toString()}}</h4>
       <p>  {{objENS.timeRemaining}}  </p>
     </div>
   </section>

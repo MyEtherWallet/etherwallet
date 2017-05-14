@@ -40,7 +40,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.7.7 &nbsp;&nbsp;
+        &middot; v3.7.8 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -1868,7 +1868,6 @@
         <li> Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.</li>
         <li> The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. </li>
       </ul>
-
       <h6 ng-click="ensMore = !ensMore">
         <span ng-show="!ensMore">+</span><span ng-show="ensMore">-</span>
         More Information
@@ -1878,11 +1877,12 @@
           <li><a href="http://docs.ens.domains/en/latest/userguide.html#registering-a-name-with-the-auction-registrar" target="_blank">ENS: Read the Docs</a></li>
           <li><a href="https://medium.com/the-ethereum-name-service/announcing-the-ethereum-name-service-relaunch-date-4390af6dd9a2" target="_blank">Announcing the Ethereum Name Service Relaunch Date!</a></li>
       </ul>
+      <hr />
+      <p class="text-danger"><strong>  Due to an overwhelming number of support requests regarding the ENS, we will NOT providing support to those who are attempting to start a name business (aka "domain squatting") via our free, open source service. </strong> If you are bidding on hundreds of names, brand names, or the entire human-readable dictionary, do not expect a response. If you are a typical user who wants few cool names, you're safe.</p>
 
   </section>
 
 </article>
-
  
   
 
@@ -1903,11 +1903,11 @@
 </article>
 
 <article class="order-info-wrap row" ng-show="objENS.status==ensModes.notAvailable">
-  <div class="col-sm-12 col-xs-12 order-info">
+  <div class="col-sm-6 col-xs-12 order-info">
     <p> Auction Open On </p>
-    <h4> {{objENS.allowedTime.toLocaleString()}} </h4>
+    <h4> {{objENS.allowedTime.toString()}} </h4>
   </div>
-  <div class="col-sm-12 col-xs-12 order-info">
+  <div class="col-sm-6 col-xs-12 order-info">
     <p> Auction Opens In</p>
     <h4> {{objENS.timeRemaining}} </h4>
   </div>
@@ -1932,12 +1932,12 @@
   <section class="order-info-wrap row" ng-show="objENS.status==ensModes.auction">
     <div class="col-sm-6 col-xs-12 order-info">
       <p>  Reveal Bids On </p>
-      <h4> {{getRevealTime().toLocaleString()}} </h4>
+      <h4> {{getRevealTime().toString()}} </h4>
       <p>  {{objENS.timeRemainingReveal}}  </p>
     </div>
     <div class="col-sm-6 col-xs-12 order-info">
       <p>  Auction Closes On </p>
-      <h4> {{objENS.registrationDate.toLocaleString()}}</h4>
+      <h4> {{objENS.registrationDate.toString()}}</h4>
       <p>  {{objENS.timeRemaining}} </p>
     </div>
   </section>
@@ -1954,7 +1954,7 @@
  <section class="order-info-wrap row">
     <div class="col-xs-12 order-info">
       <p>  Auction Closes On </p>
-      <h4> {{objENS.registrationDate.toLocaleString()}}</h4>
+      <h4> {{objENS.registrationDate.toString()}}</h4>
       <p>  {{objENS.timeRemaining}}  </p>
     </div>
   </section>
@@ -2127,10 +2127,10 @@
       <td>From Account</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
     </tr>
     <tr class="text-danger">
-      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
+      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toString()}}</small></td>
     </tr>
     <tr>
-      <td>Auction Ends</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
+      <td>Auction Ends</td><td><small>{{objENS.registrationDate.toString()}}</small></td>
     </tr>
     <tr ng-show="objENS.status!=ensModes.reveal">
       <td colspan="2">
@@ -2147,7 +2147,7 @@
       <!-- After Sent: Reveal -->
       <div class="form-group" ng-show="objENS.txSent && objENS.status==ensModes.reveal">
         <h4 class="text-warning">Click your TX hash to see if you successfully revealed your {{objENS.bidValue}} bid for {{objENS.name}}.eth.</h4>
-        <p>Please return on <strong>{{objENS.registrationDate.toLocaleString()}}</strong> to finalize the auction and see if you won!</p>
+        <p>Please return on <strong>{{objENS.registrationDate.toString()}}</strong> to finalize the auction and see if you won!</p>
       </div>
       <!-- / After Sent: Reveal -->
 
@@ -2387,10 +2387,10 @@
       <td>From Account</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
     </tr>
     <tr class="text-danger">
-      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
+      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toString()}}</small></td>
     </tr>
     <tr>
-      <td>Auction Ends</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
+      <td>Auction Ends</td><td><small>{{objENS.registrationDate.toString()}}</small></td>
     </tr>
     <tr ng-show="objENS.status!=ensModes.reveal">
       <td colspan="2">

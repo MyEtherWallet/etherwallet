@@ -13,11 +13,11 @@
 </article>
 
 <article class="order-info-wrap row" ng-show="objENS.status==ensModes.notAvailable">
-  <div class="col-sm-12 col-xs-12 order-info">
+  <div class="col-sm-6 col-xs-12 order-info">
     <p> Auction Open On </p>
-    <h4> {{objENS.allowedTime.toLocaleString()}} </h4>
+    <h4> {{objENS.allowedTime.toString()}} </h4>
   </div>
-  <div class="col-sm-12 col-xs-12 order-info">
+  <div class="col-sm-6 col-xs-12 order-info">
     <p> Auction Opens In</p>
     <h4> {{objENS.timeRemaining}} </h4>
   </div>

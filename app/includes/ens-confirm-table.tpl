@@ -16,10 +16,10 @@
       <td>From Account</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
     </tr>
     <tr class="text-danger">
-      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toLocaleString()}}</small></td>
+      <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toString()}}</small></td>
     </tr>
     <tr>
-      <td>Auction Ends</td><td><small>{{objENS.registrationDate.toLocaleString()}}</small></td>
+      <td>Auction Ends</td><td><small>{{objENS.registrationDate.toString()}}</small></td>
     </tr>
     <tr ng-show="objENS.status!=ensModes.reveal">
       <td colspan="2">
