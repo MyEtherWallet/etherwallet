@@ -48,6 +48,9 @@ var ensCtrl = function($scope, $sce, walletService) {
         $scope.wallet.setBalance();
         $scope.wallet.setTokens();
     });
+    $scope.getCurrentTime = function() {
+        return new Date().toString();
+    }
     var updateScope = function() {
         if (!$scope.$$phase) $scope.$apply();
     }
@@ -71,7 +74,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         minutes = minutes < 10 ? '0' + minutes : minutes;
         seconds = seconds < 10 ? '0' + seconds : seconds;
         $scope.objENS.timeRemaining = days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds ';
-        $scope.objENS.timeRemainingReveal = (days-2) + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds ';
+        $scope.objENS.timeRemainingReveal = (days - 2) + ' days ' + hours + ' hours ' + minutes + ' minutes ' + seconds + ' seconds ';
         updateScope();
     }
     $scope.nameOnChange = function() {
@@ -130,11 +133,11 @@ var ensCtrl = function($scope, $sce, walletService) {
             if (tObj.value) $scope.objENS.bidValue = Number(etherUnits.toEther(tObj.value, "wei"));
             if (tObj.secret) $scope.objENS.secret = tObj.secret;
             if (tObj.name && ens.normalise(tObj.name) != $scope.objENS.name) { // check if correct name
-              $scope.notifier.danger( globalFuncs.errorMsgs[34] );
-            } else if ( tObj.owner != $scope.wallet.getAddressString() ) { // check owner = bidder
-              $scope.notifier.danger( globalFuncs.errorMsgs[33] );
+                $scope.notifier.danger(globalFuncs.errorMsgs[34]);
+            } else if (tObj.owner != $scope.wallet.getAddressString()) { // check owner = bidder
+                $scope.notifier.danger(globalFuncs.errorMsgs[33]);
             } else { //estimate gas to see if it would not work
-              //$scope.estimateGasLimit();
+                //$scope.estimateGasLimit();
             }
             updateScope();
         } catch (e) {

@@ -28,6 +28,7 @@
   </div>
 
   <div class="row form-group">
+    <!--<address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="tx.to"></address-field>-->
     <div class="col-xs-10">
       <label translate="SEND_addr"> To Address: </label>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
@@ -35,8 +36,7 @@
     <div class="col-xs-2 address-identicon-container">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
     </div>
-    </div>
-  <!-- / To Address -->
+  </div>
 
   <!-- Amount to Send -->
   <label translate="SEND_amount">Amount to Send:</label>

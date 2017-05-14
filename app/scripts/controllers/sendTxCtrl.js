@@ -16,6 +16,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         value: 0,
         id: -1
     };
+    $scope.customGas = [{
+        to: '0x8cb57b5a97eabe94205c07890be4c1ad31e486a9',
+        gasLimit: 500000
+    }]
     $scope.tx = {
         // if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
         gasLimit: globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null ? globalFuncs.urlGet('gaslimit') != null ? globalFuncs.urlGet('gaslimit') : globalFuncs.urlGet('gas') : globalFuncs.defaultTxGasLimit,
@@ -124,6 +128,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     }, true);
     $scope.estimateGasLimit = function() {
         if ($scope.gasLimitChanged) return;
+        for (var i in $scope.customGas) {
+            if ($scope.tx.to.toLowerCase == $scope.customGas[i].to.toLowerCase) {
+                $scope.tx.gasLimit = $scope.customGas[i].gasLimit;
+                return;
+            }
+        }
         if (globalFuncs.lightMode) {
             $scope.tx.gasLimit = globalFuncs.defaultTokenGasLimit;
             return;
@@ -152,11 +162,13 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         return new BigNumber($scope.tx.value).lt(new BigNumber($scope.wallet.balance));
     }
     $scope.onDonateClick = function() {
+        //$scope.addressDrtv.ensAddressField = globalFuncs.donateAddress;
         $scope.tx.to = globalFuncs.donateAddress;
         $scope.tx.value = "1";
         $scope.tx.donate = true;
     }
     $scope.generateTx = function() {
+        //if (!$scope.Validator.isValidAddress($scope.tx.to)) {
         if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
             $scope.notifier.danger(globalFuncs.errorMsgs[5]);
             return;
