@@ -129,7 +129,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.estimateGasLimit = function() {
         if ($scope.gasLimitChanged) return;
         for (var i in $scope.customGas) {
-            if ($scope.tx.to.toLowerCase == $scope.customGas[i].to.toLowerCase) {
+            if ($scope.tx.to.toLowerCase() == $scope.customGas[i].to.toLowerCase()) {
                 $scope.tx.gasLimit = $scope.customGas[i].gasLimit;
                 return;
             }
