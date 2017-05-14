@@ -30,7 +30,7 @@
 
 
       <div class="form-group" ng-show="objENS.status==ensModes.reveal">
-        <label class="strong">-- or --</label>
+        <h5 class="text-center">-- 👆 enter automagically 👆 <strong>-- or --</strong> 👇 enter manually 👇 --</h5>
       </div>
 
 

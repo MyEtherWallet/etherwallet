@@ -16,9 +16,13 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         value: 0,
         id: -1
     };
+    // For token sales:
+    // token sale holders should add their address and any add'l data requirements to this array.
+    // It is recommended to use a reasonable gas limit, but one that ensures transactions will go through
     $scope.customGas = [{
-        to: '0x8cb57b5a97eabe94205c07890be4c1ad31e486a9',
-        gasLimit: 500000
+        to: '0xb9836ec1f42bd48331bceaedb74a6bcdc22832bd',
+        gasLimit: 200000,
+        data: '0x001111'
     }]
     $scope.tx = {
         // if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
@@ -131,6 +135,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         for (var i in $scope.customGas) {
             if ($scope.tx.to.toLowerCase() == $scope.customGas[i].to.toLowerCase()) {
                 $scope.tx.gasLimit = $scope.customGas[i].gasLimit;
+                $scope.tx.data = $scope.customGas[i].data;
                 return;
             }
         }
@@ -195,8 +200,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.sendTxModal.close();
         uiFuncs.sendTx($scope.signedTx, function(resp) {
             if (!resp.isError) {
-                var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
-                $scope.notifier.success(globalFuncs.successMsgs[2] + resp.data + "<br />" + bExStr);
+                var emailLink = '<a class="strong" href="mailto:support@myetherwallet.com?Subject=Issue%20regarding%20my%20TX%20&Body=Hi%20Taylor%2C%20%0A%0AI%20have%20a%20question%20concerning%20my%20transaction.%20%0A%0AI%20was%20attempting%20to%3A%20(remove%20any%20that%20don%27t%20apply%20%2B%20add%20more%20details)%0A-%20Send%20ETH%0A-%20Send%20___%20Tokens%0A-%20Execute%20on%20a%20contract%20%0A-%20Start%20an%20ENS%20auction%0A-%20Bid%20on%20an%20ENS%20name%0A-%20Reveal%20my%20ENS%20bid%0A-%20Finalize%20my%20ENS%20name%0A-%20Broadcast%20an%20offline%20transaction%0A%0AUnfortunately%20it%3A%0A-%20Never%20showed%20on%20the%20blockchain%0A-%20Failed%20due%20to%20out%20of%20gas%0A-%20Failed%20for%20another%20reason%0A-%20Never%20showed%20up%20in%20the%20account%20I%20was%20sending%20to%0A%0APlease%20see%20the%20below%20details%20for%20additional%20information.%0A%0AThank%20you.%0A%0A'+$scope.tx.to+"%0A%20"+$scope.tx.value+"%20"+$scope.unitReadable+"%0A%20node%20"+$scope.ajaxReq.type+"%0A%20"+$scope.tx.tokenSymbol+"%0A%20"+$scope.tokenTx.to+"%0A%20"+$scope.tokenTx.value+"%20"+$scope.unitReadable+'" target="_blank">Confused? Email Us.</a>';
+                var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a class='strong' href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' class='strong' target='_blank'>View TX</a><br />" : '';
+                $scope.notifier.success(globalFuncs.successMsgs[2] + resp.data + "<p>" + bExStr + "</p><p>" + emailLink + "</p>" );
                 $scope.wallet.setBalance(applyScope);
                 if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
             } else {

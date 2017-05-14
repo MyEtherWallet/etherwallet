@@ -58,7 +58,6 @@
   @@if (site === 'mew' ) { @@include( './ens-status-owned.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './ens-status-owned.tpl', { "site": "cx"  } ) }
 
-
   <!-- Unlock Directive: Everything but notAvailable & forbidden -->
   <article class="row" ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.owned || objENS.status==ensModes.reveal)">
     <section class="clearfix collapse-container">
@@ -91,6 +90,10 @@
 
   @@if (site === 'mew' ) { @@include( './ens-action-finalize.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './ens-action-finalize.tpl', { "site": "cx"  } ) }
+
+  <!-- .resolve (resolve) -->
+  @@if (site === 'mew' ) { @@include( './ens-action-resolve.tpl', { "site": "mew" } ) }
+  @@if (site === 'cx'  ) { @@include( './ens-action-resolve.tpl', { "site": "cx"  } ) }
 
 
   @@if (site === 'mew' ) { @@include( './ens-modal.tpl', { "site": "mew" } ) }

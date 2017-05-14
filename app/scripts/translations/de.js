@@ -316,7 +316,7 @@ ERROR_31                    : 'Geheime Phasre ungültig ',
 ERROR_32                    : 'Verbindung zum Knoten nicht möglich. Bitte lade die Seite neu, oder schau auf der Hilfeseite für mehr Tipps zur Problemlösung ', //Evtl. noch kürzen
 SUCCESS_1                   : 'Gültige Addresse ',
 SUCCESS_2                   : 'Wallet erfolgreich entschlüsselt ',
-SUCCESS_3                   : 'Transaction was successfully broadcasted to the blockchain. **CLICK THE LINK TO ENSURE IT DID NOT FAIL DUE TO OUT OF GAS OR CONTRACT EXECUTION ERROR.** TX ID ', //'Transaktion übermittelt. TX ID ',
+SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transaktion übermittelt. TX ID ',
 SUCCESS_4                   : 'Dein Wallet wurde erfolgreich hinzugefügt ',
 SUCCESS_5                   : 'Ausgewählte Datei ',
 SUCCESS_6                   : 'Erfolgreich verbunden ',

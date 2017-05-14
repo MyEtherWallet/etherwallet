@@ -11,17 +11,19 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.ensModes = ens.modes;
     $scope.minNameLength = 7;
     $scope.objENS = {
-        status: -1,
-        name: '',
-        timeRemaining: null,
-        timeRemainingReveal: null,
-        timer: null,
         bidValue: 0.01,
         dValue: 0.01,
-        secret: hd.bip39.generateMnemonic().split(" ").splice(0, 3).join(" "),
+        name: '',
+        namehash: '',
         nameReadOnly: false,
-        txSent: false,
-        revealObject: null
+        resolvedAddress: null,
+        revealObject: null,
+        secret: hd.bip39.generateMnemonic().split(" ").splice(0, 3).join(" "),
+        status: -1,
+        timer: null,
+        timeRemaining: null,
+        timeRemainingReveal: null,
+        txSent: false
     };
     $scope.gasLimitDefaults = {
       startAuction: '200000',
@@ -85,6 +87,7 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.checkName = function() {
         if ($scope.Validator.isValidENSName($scope.objENS.name)) {
             $scope.objENS.name = ens.normalise($scope.objENS.name);
+            $scope.objENS.namehash = ens.getNameHash($scope.objENS.name+'.eth');
             $scope.hideEnsInfoPanel = true;
             ENS.getAuctionEntries($scope.objENS.name, function(data) {
                 if (data.error) $scope.notifier.danger(data.msg);
@@ -98,6 +101,9 @@ var ensCtrl = function($scope, $sce, walletService) {
                             })
                             ENS.getDeedOwner($scope.objENS.deed, function(data) {
                                 $scope.objENS.deedOwner = data.data;
+                            })
+                            ENS.getAddress($scope.objENS.name + '.eth', function(data) {
+                                $scope.objENS.resolvedAddress = data.data;
                             })
                             break;
                         case $scope.ensModes.notAvailable:
@@ -228,7 +234,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         var _objENS = $scope.objENS;
         $scope.bidObject = {
             name: _objENS.name,
-            nameSHA3: ENS.getSHA3(_objENS.name),
+            nameSHA3: ENS.getSHA3(_objENS.name), //should be able to do _objENS.namehash
             owner: $scope.wallet.getAddressString(),
             value: etherUnits.toWei(_objENS.bidValue, 'ether'),
             secret: _objENS.secret.trim(),
@@ -258,7 +264,6 @@ var ensCtrl = function($scope, $sce, walletService) {
                 });
             }
         });
-
     }
     $scope.sendTxStatus = "";
     $scope.sendTx = function() {
@@ -267,8 +272,9 @@ var ensCtrl = function($scope, $sce, walletService) {
         var signedTx = $scope.generatedTxs.shift();
         uiFuncs.sendTx(signedTx, function(resp) {
             if (!resp.isError) {
-                var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
-                $scope.sendTxStatus += globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br />" + bExStr + "<br />";
+                var emailLink = '<a class="strong" href="mailto:support@myetherwallet.com?Subject=Issue%20regarding%20my%20ENS%20&Body=Hi%20Taylor%2C%20%0A%0AI%20have%20a%20question%20concerning%20my%20ENS%20transaction.%20%0A%0AI%20was%20attempting%20to%3A%0A-%20Start%20an%20ENS%20auction%0A-%20Bid%20on%20an%20ENS%20name%0A-%20Reveal%20my%20ENS%20bid%0A-%20Finalize%20my%20ENS%20name%0A%0AUnfortunately%20it%3A%0A-%20Never%20showed%20on%20the%20blockchain%0A-%20Failed%20due%20to%20out%20of%20gas%0A-%20Failed%20for%20another%20reason%0A-%20Never%20showed%20up%20in%20the%20account%20I%20was%20sending%20to%0A%0APlease%20see%20the%20below%20details%20for%20additional%20information.%0A%0AThank%20you.%20%0A%0A_%0A%0A%20name%3A%20'+$scope.objENS.name+'%0A%20timeRemaining%3A%20'+$scope.objENS.timeRemaining+'%0A%20timeRemainingReveal%3A%20'+$scope.objENS.timeRemainingReveal+"%0A%20timer%3A%20"+$scope.objENS.timer+"%0A%20txSent%3A%20"+$scope.objENS.txSent+"%0A%20to%3A%20"+$scope.tx.to+"%0A%20data%3A%20"+$scope.tx.data+"%0A%20value%3A%20"+$scope.tx.value+'" target="_blank">Confused? Email Us.</a>';
+                var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a class='strong' href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' target='_blank'> View your transaction </a>" : '';
+                $scope.sendTxStatus += globalFuncs.successMsgs[2] + "<p>" + resp.data + "</p><p>" + bExStr + "</p><p>" + emailLink + "</p>";
                 $scope.notifier.success($scope.sendTxStatus);
                 if ($scope.generatedTxs.length) $scope.sendTx();
                 else $scope.sendTxStatus = ''

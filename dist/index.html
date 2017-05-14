@@ -40,7 +40,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.7.6 &nbsp;&nbsp;
+        &middot; v3.7.7 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -615,7 +615,8 @@
   </div>
 
   <div class="row form-group">
-    <!--<address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="tx.to"></address-field>-->
+    <address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="tx.to"></address-field>
+    <!--
     <div class="col-xs-10">
       <label translate="SEND_addr"> To Address: </label>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
@@ -623,6 +624,7 @@
     <div class="col-xs-2 address-identicon-container">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
     </div>
+    -->
   </div>
 
   <!-- Amount to Send -->
@@ -1021,7 +1023,8 @@
   </div>
 
   <div class="row form-group">
-    <!--<address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="tx.to"></address-field>-->
+    <address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="tx.to"></address-field>
+    <!--
     <div class="col-xs-10">
       <label translate="SEND_addr"> To Address: </label>
       <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
@@ -1029,6 +1032,7 @@
     <div class="col-xs-2 address-identicon-container">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
     </div>
+    -->
   </div>
 
   <!-- Amount to Send -->
@@ -1174,6 +1178,9 @@
 
 </main>
 <!-- / Swap Page -->
+
+
+
 
 
 
@@ -1962,16 +1969,30 @@
 
   <br /><br />
 
-  <h1><strong>{{objENS.name}}.eth</strong> is already owned.</h1>
-  <h4>Owner: <span class="mono">{{objENS.owner}}</span></h4>
-  <h4>Highest Bidder: <span class="mono">{{objENS.deedOwner}}</span></h4>
+  <h1><strong>{{objENS.name}}.eth</strong> is already owned:</h1>
+
+  <div class="form-group col-sm-10 col-sm-offset-1" ng-hide="wd">
+    <table class="table table-striped">
+      <tr>
+        <td class="text-right">Owner: </td>
+        <td><span class="mono">{{objENS.owner}}</span></td>
+      </tr>
+      <tr>
+        <td class="text-right">Highest Bidder (Deed Owner): </td>
+        <td><span class="mono">{{objENS.deedOwner}}</span></td>
+      </tr>
+      <tr>
+        <td class="text-right">Resolved Address: </td>
+        <td><span class="mono">{{objENS.resolvedAddress}}</span></td>
+      </tr>
+    </table>
+  </div>
 
 </article>
 
 
  
   
-
 
   <!-- Unlock Directive: Everything but notAvailable & forbidden -->
   <article class="row" ng-show="(objENS.status==ensModes.auction || objENS.status==ensModes.open || objENS.status==ensModes.owned || objENS.status==ensModes.reveal)">
@@ -2031,7 +2052,7 @@
 
 
       <div class="form-group" ng-show="objENS.status==ensModes.reveal">
-        <label class="strong">-- or --</label>
+        <h5 class="text-center">-- 👆 enter automagically 👆 <strong>-- or --</strong> 👇 enter manually 👇 --</h5>
       </div>
 
 
@@ -2141,7 +2162,7 @@
   
 
 
-   <article class="col-xs-12 col-sm-8 col-sm-offset-2 text-center" ng-show="objENS.status==ensModes.owned && wd">
+   <article class="col-xs-12 col-sm-8 col-sm-offset-2 text-center" ng-show="objENS.status==ensModes.owned && objENS.owner!==objENS.deedOwner && wd">
   <br />
   <button class="btn btn-primary" ng-click="finalizeDomain()"> Finalize {{objENS.name}}.eth </button>
   <br /><br />
@@ -2178,6 +2199,139 @@
   </section>
 </article>
 <!-- FINALIZE: ENS MODAL -->
+ 
+
+ 
+  
+
+  <!-- .resolve (resolve) -->
+   <article class="col-xs-12 col-sm-10 col-sm-offset-1" ng-show="objENS.status==ensModes.owned && objENS.owner==objENS.deedOwner && wd">
+
+
+  <!-- TODO VALIDATE IF UNLOCKED WALLET ADDR == OWNER ADDR -->
+  <div class="alert alert-danger" ng-show="objENS.owner != wallet.getAddressString()"> This account is not the owner of {{objENS.name}}.eth. Please unlock the Owner Account in order to resolve. </div>
+
+  <table class="table table-striped" style="margin: 2em auto;">
+    <tr>
+      <td>Name:  </td>
+      <td class="mono">{{objENS.name}}.eth </td>
+    </tr>
+    <tr>
+      <td>Namehash: </td>
+      <td class="mono">{{objENS.namehash}}</td>
+    </tr>
+    <tr>
+      <td>Owner:</td>
+      <td class="mono">{{objENS.owner}}</td>
+    </tr>
+    <tr>
+      <td>Highest Bidder (Deed Owner): </td>
+      <td><span class="mono">{{objENS.deedOwner}}</span></td>
+    </tr>
+    <tr>
+      <td>Resolved Address: </td>
+      <td class="mono">{{objENS.resolvedAddress}}</td>
+    </tr>
+    <tr><td></td><td></td></tr>
+    <tr>
+      <td>ENS - Public Resolver: </td>
+      <td class="mono">0x1da022710df5002339274aadee8d58218e9d6ab5</td>
+    </tr>
+    <tr>
+      <td>ENS - Registry: </td>
+      <td class="mono">0x314159265dD8dbb310642f98f50C066173C1259b</td>
+    </tr>
+  </table>
+
+  <section class="text-center" ng-hide="objENS.owner != wallet.getAddressString()">
+    <div class="form-group" style="margin: 2em auto;">
+      <h5> Enter the address you would like this name to resolve to: </h5>
+      <input ng-model="newResolvedAddress" class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'" />
+    </div>
+
+    <div class="form-group" style="margin: 2em auto;" ng-hide="1===1 || objENS.owner != wallet.getAddressString()">
+      <button class="btn btn-primary" ng-click="resolveDomain()"> Set Public Resolver &amp; Set Address for {{objENS.name}}.eth </button>
+    </div>
+  </section>
+
+  <div class="form-group" style="margin: 2em auto;">
+
+    <h3>Set the Resolver for your Name</h3>
+    <ol>
+      <li>Go to the contracts tab.</li>
+      <li>Choose <code>ENS-EthNameService:</code> <code>0x314159265dD8dbb310642f98f50C066173C1259b</code>. Click "Access".</li>
+      <li>Select <code>setResolver</code>. </li>
+      <li>Enter the Namehash of your name under "node (bytes32)".
+        <ul><li>node (bytes32): <code>{{objENS.namehash}}</code></li></ul>
+      </li>
+      <li>Enter the Public Resolver Address under "resolver (address)".
+        <ul><li>resolver (address): <code>0x1da022710df5002339274aadee8d58218e9d6ab5</code></li></ul>
+      </li>
+      <li>Unlock the owner's account.</li>
+      <li>Click <code>WRITE</code>.</li>
+      <li>Generate and send this transaction &ndash; leave "Amount to Send" as <strong>0</strong></li>
+      <li><a href="https://etherscan.io/tx/0xf2121e8392d8f3167593302cc47a8d6c962a8f2ed8193479573044acf75bc364" target="_blank">TX should look like this.</a></li>
+    </ol>
+  </div>
+
+
+  <div class="form-group" style="margin: 2em auto;">
+    <h3>Set the Address That your Name will Resolve To</h3>
+    <ol>
+      <li>Go to the contracts tab.</li>
+      <li>Choose <code>ENS-Public Resolver:</code> <code>0x1da022710df5002339274aadee8d58218e9d6ab5</code>. Click "Access". </li>
+      <li>Select <code>setAddr</code>. </li>
+      <li>Enter the Namehash of your name under "node (bytes32)".
+        <ul><li>node (bytes32): <code>{{objENS.namehash}}</code></li></ul>
+      </li>
+      <li>Enter the Address you would like to resolve to under "addr (address)".
+        <ul><li>addr (address): <code>{{newResolvedAddress}}</code> </li>
+      </ul>
+      <li>Unlock the owner's account.</li>
+      <li>Click <code>WRITE</code>.</li>
+      <li>Generate and send this transaction &ndash; leave "Amount to Send" as <strong>0</strong></li>
+      <li><a href="https://etherscan.io/tx/0xe4b8cbbb9c30a9066e4d430e347e07442ccc99b927ed73280792aee718ecbd30">TX should look like this.</a></li>
+    </ol>
+  </div>
+
+
+</article>
+
+ <!-- Resolve: ENS MODAL -->
+<article class="modal fade" id="ensResolveModal" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">
+          You are about to set <strong>{{objENS.name}}.eth</strong>
+          <br />
+          to resolve to address <code>{{newResolvedAddress}}</code>
+          <br />
+          via the Public Resolver <strong>0x1da022710df5002339274aadee8d58218e9d6ab5</strong>
+        </h2>
+
+        <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>
+
+        <h4 translate="SENDModal_Content_3"> Are you sure you want to do this? </h4>
+      </div>
+
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" translate="SENDModal_No">
+          No, get me out of here!
+        </button>
+        <button class="btn btn-primary" ng-click="sendTx()" translate="SENDModal_Yes">
+          Yes, I am sure! Make transaction.
+        </button>
+      </div>
+
+    </section>
+  </section>
+</article>
+<!-- Resolve: ENS MODAL -->
  
 
  
