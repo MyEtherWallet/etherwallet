@@ -27,7 +27,7 @@ var ensCtrl = function($scope, $sce, walletService) {
       startAuction: '70000',
       newBid:       '500000',
       reveal:       '200000',
-      finalize:     '70000'
+      finalize:     '200000'
     }
     $scope.tx = {
         gasLimit: '500000',
