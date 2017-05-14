@@ -90,6 +90,12 @@
     "type":"default"
   },
   {
+    "address":"0x1d921eed55a6a9ccaa9c79b1a4f7b25556e44365",
+    "symbol":"GT",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0x14F37B574242D366558dB61f3335289a5035c506",
     "symbol":"HKG",
     "decimal":3,
@@ -177,6 +183,12 @@
     "address":"0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
     "symbol":"SNGLS",
     "decimal":0,
+    "type":"default"
+  },
+  {
+    "address":"0x1dce4fa03639b7f0c38ee5bb6065045edcf9819a",
+    "symbol":"SRC",
+    "decimal":8,
     "type":"default"
   },
   {
