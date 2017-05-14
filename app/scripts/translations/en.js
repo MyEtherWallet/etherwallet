@@ -307,7 +307,7 @@ ERROR_33                    : 'Unlocked wallet doesnt match the highest bidder\'
 ERROR_34                    : 'Reveal name doesnt match the name on the string',
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',
-SUCCESS_3                   : 'Transaction was successfully broadcasted to the blockchain. **CLICK THE LINK TO ENSURE IT DID NOT FAIL DUE TO OUT OF GAS OR CONTRACT EXECUTION ERROR.** TX ID ',
+SUCCESS_3                   : 'Transaction was successfully broadcasted to the blockchain. **CLICK THE LINK TO ENSURE IT DID NOT FAIL DUE TO OUT OF GAS OR CONTRACT EXECUTION ERROR.** TX ID ', //'Transaction was successfully broadcasted to the blockchain. **CLICK THE LINK TO ENSURE IT DID NOT FAIL DUE TO OUT OF GAS OR CONTRACT EXECUTION ERROR.** TX ID ', //
 SUCCESS_4                   : 'Your wallet was successfully added ',
 SUCCESS_5                   : 'File Selected ',
 SUCCESS_6                   : 'You are successfully connected ',
