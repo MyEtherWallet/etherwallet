@@ -30,7 +30,7 @@
 
 <body>
 
-<header class="{{curNode.name}} {{curNode.service}}" aria-label="header" ng-controller='tabsCtrl' >
+<header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
   
   <section class="bg-gradient header-branding">
     <section class="container">
@@ -40,7 +40,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.7.4 &nbsp;&nbsp;
+        &middot; v3.7.6 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -2125,7 +2125,7 @@
 
       <!-- After Sent: Reveal -->
       <div class="form-group" ng-show="objENS.txSent && objENS.status==ensModes.reveal">
-        <h4 class="text-success">You have successfully revealed your {{objENS.bidValue}} bid for {{objENS.name}}.eth.</h4>
+        <h4 class="text-warning">Click your TX hash to see if you successfully revealed your {{objENS.bidValue}} bid for {{objENS.name}}.eth.</h4>
         <p>Please return on <strong>{{objENS.registrationDate.toLocaleString()}}</strong> to finalize the auction and see if you won!</p>
       </div>
       <!-- / After Sent: Reveal -->
