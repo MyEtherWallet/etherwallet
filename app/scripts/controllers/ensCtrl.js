@@ -134,13 +134,13 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.onLongStringChanged = function() {
         try {
             $scope.objENS.revealObject = null;
-            var tObj = JSON.parse($scope.longJsonString);
+            var tObj = JSON.parse($scope.longJsonString.replace(/\\/g, ''));
             $scope.objENS.revealObject = tObj;
             if (tObj.value) $scope.objENS.bidValue = Number(etherUnits.toEther(tObj.value, "wei"));
             if (tObj.secret) $scope.objENS.secret = tObj.secret;
             if (tObj.name && ens.normalise(tObj.name) != $scope.objENS.name) { // check if correct name
                 $scope.notifier.danger(globalFuncs.errorMsgs[34]);
-            } else if (tObj.owner != $scope.wallet.getAddressString()) { // check owner = bidder
+            } else if (tObj.owner && tObj.owner != $scope.wallet.getAddressString()) { // check owner = bidder
                 $scope.notifier.danger(globalFuncs.errorMsgs[33]);
             } else { //estimate gas to see if it would not work
                 //$scope.estimateGasLimit();
