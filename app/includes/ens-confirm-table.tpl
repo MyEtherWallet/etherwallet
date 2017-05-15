@@ -4,10 +4,10 @@
       <td>Name</td><td>{{objENS.name}}.eth</td>
     </tr>
     <tr>
-      <td>Bid Amount</td><td>{{objENS.bidValue}} {{ajaxReq.type}}</td>
+      <td>Actual Bid Amount</td><td>{{objENS.bidValue}} {{ajaxReq.type}}</td>
     </tr>
     <tr ng-show="objENS.status!=ensModes.reveal">
-      <td>"Disguise Bid" Amount</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
+      <td>Bid Mask</td><td>{{objENS.dValue}} {{ajaxReq.type}}</td>
     </tr>
     <tr>
       <td>Secret Phrase</td><td>{{objENS.secret}}</td>

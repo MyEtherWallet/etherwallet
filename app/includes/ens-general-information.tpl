@@ -21,7 +21,7 @@
       </h6>
       <ul ng-show="ensAuct">
         <li> Bidding period lasts 3 days (72 hours). </li>
-        <li> You will enter the <u>name</u>, <u>Bid Amount</u>, <u>"Disguise Bid" Amount</u>, which is protected by a <u>Secret Phrase</u>.</li>
+        <li> You will enter the <u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>, which is protected by a <u>Secret Phrase</u>.</li>
         <li> This places your bid, but this information is kept secret until you reveal it.</li>
       </ul>
 
