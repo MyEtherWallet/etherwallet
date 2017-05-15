@@ -20,9 +20,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     // token sale holders should add their address and any add'l data requirements to this array.
     // It is recommended to use a reasonable gas limit, but one that ensures transactions will go through
     $scope.customGas = [{
-        to: '0xb9836ec1f42bd48331bceaedb74a6bcdc22832bd',
+        to: '0x960b236A07cf122663c4303350609A66A7B288C0',
         gasLimit: 200000,
-        data: '0x001111'
+        data: ''
     }]
     $scope.tx = {
         // if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
