@@ -86,7 +86,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         clearInterval($scope.objENS.timer);
     }
     $scope.checkName = function() {
-        if ($scope.Validator.isValidENSName($scope.objENS.name)) {
+        if ($scope.Validator.isValidENSName($scope.objENS.name) && $scope.objENS.name.indexOf('.') == -1) {
             $scope.objENS.name = ens.normalise($scope.objENS.name);
             $scope.objENS.namehash = ens.getNameHash($scope.objENS.name+'.eth');
             $scope.objENS.nameSHA3 = ens.getNameHash(ENS.getSHA3($scope.objENS.name));

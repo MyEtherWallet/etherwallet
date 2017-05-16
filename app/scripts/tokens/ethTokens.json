@@ -6,6 +6,12 @@
     "type":"default"
   },
   {
+    "address":"0x960b236a07cf122663c4303350609a66a7b288c0",
+    "symbol":"ANT",
+    "decimal":18,
+    "type":"default"
+  },  
+  {
     "address":"0xAc709FcB44a43c35F0DA4e3163b117A17F3770f5",
     "symbol":"ARC",
     "decimal":18,
@@ -141,6 +147,12 @@
     "address":"0xBEB9eF514a379B997e0798FDcC901Ee474B6D9A1",
     "symbol":"MLN",
     "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0x1a95b271b0535d15fa49932daba31ba612b52946",
+    "symbol":"MNE",
+    "decimal":8,
     "type":"default"
   },
   {
