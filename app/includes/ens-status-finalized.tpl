@@ -4,8 +4,9 @@
 
   <h4>It appears this name has already been finalized.</h4>
   <h1><strong>{{objENS.name}}.eth</strong> is owned by the highest bidder.</h1>
-  <p>Owner: <span class="mono">{{objENS.owner}}</span></p>
-  <p>Highest Bidder: <span class="mono">{{objENS.deedOwner}}</span></p>
+
+  @@if (site === 'mew' ) { @@include( './ens-resolve-information.tpl', { "site": "mew" } ) }
+  @@if (site === 'cx'  ) { @@include( './ens-resolve-information.tpl', { "site": "cx"  } ) }
 
 </article>
 

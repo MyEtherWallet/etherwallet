@@ -15,6 +15,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         dValue: 0.01,
         name: '',
         namehash: '',
+        nameSHA3: '',
         nameReadOnly: false,
         resolvedAddress: null,
         revealObject: null,
@@ -88,6 +89,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         if ($scope.Validator.isValidENSName($scope.objENS.name)) {
             $scope.objENS.name = ens.normalise($scope.objENS.name);
             $scope.objENS.namehash = ens.getNameHash($scope.objENS.name+'.eth');
+            $scope.objENS.nameSHA3 = ens.getNameHash(ENS.getSHA3($scope.objENS.name));
             $scope.hideEnsInfoPanel = true;
             ENS.getAuctionEntries($scope.objENS.name, function(data) {
                 if (data.error) $scope.notifier.danger(data.msg);
@@ -234,7 +236,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         var _objENS = $scope.objENS;
         $scope.bidObject = {
             name: _objENS.name,
-            nameSHA3: ENS.getSHA3(_objENS.name), //should be able to do _objENS.namehash
+            nameSHA3: ENS.getSHA3(_objENS.name),
             owner: $scope.wallet.getAddressString(),
             value: etherUnits.toWei(_objENS.bidValue, 'ether'),
             secret: _objENS.secret.trim(),

@@ -72,6 +72,15 @@
     </a>
     <section ng-show="showAdvance">
       <div class="form-group">
+        <label translate="OFFLINE_Step2_Label_3"> Gas Price: {{tx.gasPrice}}</label>
+        <input class="form-control" type="range" ng-model="tx.gasPrice" min="2" max="20" steps="1" value="20" />
+        <div class="row">
+          <p class="small col-xs-4">Not As Fast (2 Gwei)</p>
+          <p class="small col-xs-4 text-center">Fast (20 Gwei)</p>
+          <p class="small col-xs-4 text-right">Fast AF (36 Gwei)</p>
+        </div>
+      </div>
+      <div class="form-group">
         <label translate="TRANS_data"> Data: </label>
         <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
       </div>

@@ -21,6 +21,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     // It is recommended to use a reasonable gas limit, but one that ensures transactions will go through
     $scope.customGas = [{
         to: '0x960b236A07cf122663c4303350609A66A7B288C0',
+        gasPrice: 20,
         gasLimit: 200000,
         data: ''
     }]
