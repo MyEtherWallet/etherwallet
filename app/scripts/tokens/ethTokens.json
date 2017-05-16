@@ -6,6 +6,12 @@
     "type":"default"
   },
   {
+    "address":"0x960b236a07cf122663c4303350609a66a7b288c0",
+    "symbol":"ANT",
+    "decimal":18,
+    "type":"default"
+  },  
+  {
     "address":"0xAc709FcB44a43c35F0DA4e3163b117A17F3770f5",
     "symbol":"ARC",
     "decimal":18,
