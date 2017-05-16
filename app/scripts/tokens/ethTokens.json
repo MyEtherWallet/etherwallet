@@ -144,6 +144,12 @@
     "type":"default"
   },
   {
+    "address":"0x1a95b271b0535d15fa49932daba31ba612b52946",
+    "symbol":"MNE",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
     "symbol":"NxC",
     "decimal":3,
