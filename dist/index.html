@@ -3166,6 +3166,15 @@
         <p><span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span> <span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.</p>
         <br />
         <p><a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
+        <div class="form-group">
+<label translate="OFFLINE_Step2_Label_3"> Gas Price:</label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a>)
+<input class="form-control" type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" value="0" ng-change="gasChanged()"/>
+<div class="row">
+<p class="small col-xs-4">Not As Fast</p>
+<p class="small col-xs-4 text-center">Fast</p>
+<p class="small col-xs-4 text-right">Fast AF</p>
+</div>
+</div>
       </div>
 
       <div class="col-sm-6 footer-2">
@@ -3213,7 +3222,6 @@
     </section></section>
 
     <p ng-show="showBlocks" class="text-right" style="font-size: 10px">Latest Block#: {{currentBlockNumber}}</p>
-
   </div>
 
    <article class="modal fade" id="disclaimerModal" tabindex="-1">
