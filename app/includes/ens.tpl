@@ -22,7 +22,7 @@
                ng-keyup="$event.keyCode==13 && checkName()"
                ng-change="nameOnChange()"
                ng-disabled="objENS.nameReadOnly"
-               ng-class="Validator.isValidENSName(objENS.name) ? 'is-valid' : 'is-invalid'"/>
+               ng-class="Validator.isValidENSName(objENS.name) && objENS.name.indexOf('.') !== -1 ? 'is-valid' : 'is-invalid'"/>
         <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
       </div>
       <button class="btn btn-primary" ng-click="checkName()"> Check ENS Name </button>
