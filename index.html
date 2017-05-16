@@ -659,6 +659,15 @@
     </a>
     <section ng-show="showAdvance">
       <div class="form-group">
+        <label translate="OFFLINE_Step2_Label_3"> Gas Price: {{tx.gasPrice}}</label>
+        <input class="form-control" type="range" ng-model="tx.gasPrice" min="2" max="20" steps="1" value="20" />
+        <div class="row">
+          <p class="small col-xs-4">Not As Fast (2 Gwei)</p>
+          <p class="small col-xs-4 text-center">Fast (20 Gwei)</p>
+          <p class="small col-xs-4 text-right">Fast AF (36 Gwei)</p>
+        </div>
+      </div>
+      <div class="form-group">
         <label translate="TRANS_data"> Data: </label>
         <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
       </div>
@@ -1066,6 +1075,15 @@
       <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
     </a>
     <section ng-show="showAdvance">
+      <div class="form-group">
+        <label translate="OFFLINE_Step2_Label_3"> Gas Price: {{tx.gasPrice}}</label>
+        <input class="form-control" type="range" ng-model="tx.gasPrice" min="2" max="20" steps="1" value="20" />
+        <div class="row">
+          <p class="small col-xs-4">Not As Fast (2 Gwei)</p>
+          <p class="small col-xs-4 text-center">Fast (20 Gwei)</p>
+          <p class="small col-xs-4 text-right">Fast AF (36 Gwei)</p>
+        </div>
+      </div>
       <div class="form-group">
         <label translate="TRANS_data"> Data: </label>
         <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
@@ -1972,20 +1990,43 @@
   <h1><strong>{{objENS.name}}.eth</strong> is already owned:</h1>
 
   <div class="form-group col-sm-10 col-sm-offset-1" ng-hide="wd">
-    <table class="table table-striped">
-      <tr>
-        <td class="text-right">Owner: </td>
-        <td><span class="mono">{{objENS.owner}}</span></td>
-      </tr>
-      <tr>
-        <td class="text-right">Highest Bidder (Deed Owner): </td>
-        <td><span class="mono">{{objENS.deedOwner}}</span></td>
-      </tr>
-      <tr>
-        <td class="text-right">Resolved Address: </td>
-        <td><span class="mono">{{objENS.resolvedAddress}}</span></td>
-      </tr>
-    </table>
+       <table class="table table-striped" style="margin: 2em auto;">
+    <tr>
+      <td>Name:  </td>
+      <td class="mono">{{objENS.name}}.eth </td>
+    </tr>
+    <tr>
+      <td>Namehash ({{objENS.name}}.eth): </td>
+      <td class="mono">{{objENS.namehash}}</td>
+    </tr>
+    <tr>
+      <td>Labelhash({{objENS.name}}): </td>
+      <td class="mono">{{objENS.nameSHA3}}</td>
+    </tr>
+    <tr>
+      <td>Owner:</td>
+      <td class="mono">{{objENS.owner}}</td>
+    </tr>
+    <tr>
+      <td>Highest Bidder (Deed Owner): </td>
+      <td><span class="mono">{{objENS.deedOwner}}</span></td>
+    </tr>
+    <tr>
+      <td>Resolved Address: </td>
+      <td class="mono">{{objENS.resolvedAddress}}</td>
+    </tr>
+    <tr><td></td><td></td></tr>
+    <tr>
+      <td>ENS - Public Resolver: </td>
+      <td class="mono">0x1da022710df5002339274aadee8d58218e9d6ab5</td>
+    </tr>
+    <tr>
+      <td>ENS - Registry: </td>
+      <td class="mono">0x314159265dD8dbb310642f98f50C066173C1259b</td>
+    </tr>
+  </table>
+ 
+    
   </div>
 
 </article>
@@ -2211,14 +2252,18 @@
   <!-- TODO VALIDATE IF UNLOCKED WALLET ADDR == OWNER ADDR -->
   <div class="alert alert-danger" ng-show="objENS.owner != wallet.getAddressString()"> This account is not the owner of {{objENS.name}}.eth. Please unlock the Owner Account in order to resolve. </div>
 
-  <table class="table table-striped" style="margin: 2em auto;">
+     <table class="table table-striped" style="margin: 2em auto;">
     <tr>
       <td>Name:  </td>
       <td class="mono">{{objENS.name}}.eth </td>
     </tr>
     <tr>
-      <td>Namehash: </td>
+      <td>Namehash ({{objENS.name}}.eth): </td>
       <td class="mono">{{objENS.namehash}}</td>
+    </tr>
+    <tr>
+      <td>Labelhash({{objENS.name}}): </td>
+      <td class="mono">{{objENS.nameSHA3}}</td>
     </tr>
     <tr>
       <td>Owner:</td>
@@ -2242,6 +2287,8 @@
       <td class="mono">0x314159265dD8dbb310642f98f50C066173C1259b</td>
     </tr>
   </table>
+ 
+  
 
   <section class="text-center" ng-hide="objENS.owner != wallet.getAddressString()">
     <div class="form-group" style="margin: 2em auto;">
