@@ -43,7 +43,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.7.9 &nbsp;&nbsp;
+        &middot; v3.8.0 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -2520,7 +2520,7 @@
     <h3>Set the Resolver for your Name</h3>
     <ol>
       <li>Go to the contracts tab.</li>
-      <li>Choose <code>ENS-EthNameService:</code> <code>0x314159265dD8dbb310642f98f50C066173C1259b</code>. Click "Access".</li>
+      <li>Choose <code>ENS - Registry:</code> <code>0x314159265dD8dbb310642f98f50C066173C1259b</code>. Click "Access".</li>
       <li>Select <code>setResolver</code>. </li>
       <li>Enter the Namehash of your name under "node (bytes32)".
         <ul><li>node (bytes32): <code>{{objENS.namehash}}</code></li></ul>
@@ -2531,7 +2531,7 @@
       <li>Unlock the owner's account.</li>
       <li>Click <code>WRITE</code>.</li>
       <li>Generate and send this transaction &ndash; leave "Amount to Send" as <strong>0</strong></li>
-      <li><a href="https://etherscan.io/tx/0xf2121e8392d8f3167593302cc47a8d6c962a8f2ed8193479573044acf75bc364" target="_blank">TX should look like this.</a></li>
+      <li><a href="https://etherscan.io/tx/0x60eec50b492375bce25684f806599873b7f682e1ba504c8bed7cc90c33368118" target="_blank">TX should look like this.</a></li>
     </ol>
   </div>
 
@@ -3297,6 +3297,15 @@
         <p><span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span> <span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.</p>
         <br />
         <p><a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
+        <div class="form-group">
+<label translate="OFFLINE_Step2_Label_3"> Gas Price:</label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a>)
+<input class="form-control" type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" value="0" ng-change="gasChanged()"/>
+<div class="row">
+<p class="small col-xs-4">Not As Fast</p>
+<p class="small col-xs-4 text-center">Fast</p>
+<p class="small col-xs-4 text-right">Fast AF</p>
+</div>
+</div>
       </div>
 
       <div class="col-sm-6 footer-2">
@@ -3344,7 +3353,6 @@
     </section></section>
 
     <p ng-show="showBlocks" class="text-right" style="font-size: 10px">Latest Block#: {{currentBlockNumber}}</p>
-
   </div>
 
   
