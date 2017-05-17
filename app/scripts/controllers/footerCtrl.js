@@ -16,7 +16,7 @@ var footerCtrl = function($scope, globalService) {
     $scope.gasChanged = function() {
         if ($scope.gas.value == 50) return;
         localStorage.setItem(gasPriceKey, $scope.gas.value);
-        ethFuncs.gasAdjustment = $scope.gas.value - $scope.gas.curVal;
+        ethFuncs.gasAdjustment = $scope.gas.value;
     }
     var setGasValues = function() {
         ajaxReq.getTransactionData(globalFuncs.donateAddress, function(data) {
@@ -29,7 +29,7 @@ var footerCtrl = function($scope, globalService) {
                     max: curVal + 20,
                     min: 2
                 }
-                ethFuncs.gasAdjustment = $scope.gas.value - $scope.gas.curVal;
+                ethFuncs.gasAdjustment = $scope.gas.value;
             }
         });
     }

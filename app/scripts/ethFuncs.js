@@ -1,6 +1,6 @@
 'use strict';
 var ethFuncs = function() {}
-ethFuncs.gasAdjustment = 0;
+ethFuncs.gasAdjustment = 21;
 ethFuncs.validateEtherAddress = function(address) {
     if (address.substring(0, 2) != "0x") return false;
     else if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) return false;
@@ -33,7 +33,7 @@ ethFuncs.padLeftEven = function(hex) {
 }
 ethFuncs.addTinyMoreToGas = function(hex) {
     hex = this.sanitizeHex(hex);
-    return new BigNumber(hex).plus(etherUnits.getValueOfUnit('gwei') * ethFuncs.gasAdjustment).toDigits(2).toString(16);
+    return new BigNumber(ethFuncs.gasAdjustment * etherUnits.getValueOfUnit('gwei')).toString(16);
 }
 ethFuncs.decimalToHex = function(dec) {
     return new BigNumber(dec).toString(16);
