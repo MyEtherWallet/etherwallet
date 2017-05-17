@@ -23,7 +23,7 @@
     <h3>Set the Resolver for your Name</h3>
     <ol>
       <li>Go to the contracts tab.</li>
-      <li>Choose <code>ENS-EthNameService:</code> <code>0x314159265dD8dbb310642f98f50C066173C1259b</code>. Click "Access".</li>
+      <li>Choose <code>ENS - Registry:</code> <code>0x314159265dD8dbb310642f98f50C066173C1259b</code>. Click "Access".</li>
       <li>Select <code>setResolver</code>. </li>
       <li>Enter the Namehash of your name under "node (bytes32)".
         <ul><li>node (bytes32): <code>{{objENS.namehash}}</code></li></ul>
@@ -34,7 +34,7 @@
       <li>Unlock the owner's account.</li>
       <li>Click <code>WRITE</code>.</li>
       <li>Generate and send this transaction &ndash; leave "Amount to Send" as <strong>0</strong></li>
-      <li><a href="https://etherscan.io/tx/0xf2121e8392d8f3167593302cc47a8d6c962a8f2ed8193479573044acf75bc364" target="_blank">TX should look like this.</a></li>
+      <li><a href="https://etherscan.io/tx/0x60eec50b492375bce25684f806599873b7f682e1ba504c8bed7cc90c33368118" target="_blank">TX should look like this.</a></li>
     </ol>
   </div>
 
