@@ -192,6 +192,12 @@
     "type":"default"
   },
   {
+    "address":"0xd248b0d48e44aaf9c49aea0312be7e13a6dc1468",
+    "symbol":"SGT",
+    "decimal":1,
+    "type":"default"
+  },
+  {
     "address":"0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009",
     "symbol":"SNGLS",
     "decimal":0,
