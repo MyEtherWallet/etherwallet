@@ -89,7 +89,7 @@ var ensCtrl = function($scope, $sce, walletService) {
         if ($scope.Validator.isValidENSName($scope.objENS.name) && $scope.objENS.name.indexOf('.') == -1) {
             $scope.objENS.name = ens.normalise($scope.objENS.name);
             $scope.objENS.namehash = ens.getNameHash($scope.objENS.name+'.eth');
-            $scope.objENS.nameSHA3 = ens.getNameHash(ENS.getSHA3($scope.objENS.name));
+            $scope.objENS.nameSHA3 = ENS.getSHA3($scope.objENS.name);
             $scope.hideEnsInfoPanel = true;
             ENS.getAuctionEntries($scope.objENS.name, function(data) {
                 if (data.error) $scope.notifier.danger(data.msg);

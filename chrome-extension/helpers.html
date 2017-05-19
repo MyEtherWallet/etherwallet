@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="mewApp">
+<head>
+  <meta charset="utf-8">
+  <title>MyEtherWallet: Open-Source & Client-Side Ether Wallet</title>
+  <link rel="canonical" href="https://www.myetherwallet.com" />
+  <meta name="description" content="Open-Source & Client-Side Ether Wallet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/etherwallet-master.min.css">
+  <script type="text/javascript" src="js/etherwallet-static.min.js"></script>
+  <script type="text/javascript" src="js/etherwallet-master.js"></script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="images/fav/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="images/fav/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="images/fav/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="images/fav/manifest.json">
+  <link rel="mask-icon" href="images/fav/safari-pinned-tab.svg" color="#0e97c0">
+  <link rel="shortcut icon" href="images/fav/favicon.ico">
+  <meta name="msapplication-config" content="images/fav/browserconfig.xml">
+  <meta name="theme-color" content="#163151">
+
+  <meta property="og:url"         content="https://www.MyEtherWallet.com" />
+  <meta property="og:title"       content="MyEtherWallet.com" />
+  <meta property="og:description" content="MyEtherWallet: Open-Source & Client-Side Ether Wallet" />
+  <meta property="og:image"       content="images/fb-myetherwallet.png" />
+  <meta property="og:image"       content="images/fb-mewtwo.jpg" />
+</head>
+
+<body>
+
+<header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
+  
+  <section class="bg-gradient header-branding">
+    <section class="container">
+
+       <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage"> <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" /></a> 
+      
+
+      <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
+
+        &middot; v3.8.1 &nbsp;&nbsp;
+
+        <span class="dropdown" ng-cloak>
+          <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
+          <ul class="dropdown-menu" ng-show="dropdown">
+            <li><a ng-class="{true:'active'}[curLang=='Deutsch']"      ng-click="changeLanguage('de','Deutsch'     )"> Deutsch         </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']"     ng-click="changeLanguage('el','Ελληνικά'    )"> Ελληνικά        </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='English']"      ng-click="changeLanguage('en','English'     )"> English         </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Español']"      ng-click="changeLanguage('es','Español'     )"> Español         </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Suomi']"        ng-click="changeLanguage('fi','Suomi'       )"> Suomi           </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Français']"     ng-click="changeLanguage('fr','Français'    )"> Français        </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Magyar']"       ng-click="changeLanguage('hu','Magyar'      )"> Magyar          </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Indonesian']"   ng-click="changeLanguage('id','Indonesian'  )"> Bahasa Indonesia</a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Italiano']"     ng-click="changeLanguage('it','Italiano'    )"> Italiano        </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='日本語']"        ng-click="changeLanguage('ja','日本語'       )"> 日本語           </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Nederlands']"   ng-click="changeLanguage('nl','Nederlands'  )"> Nederlands      </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Norsk Bokmål']" ng-click="changeLanguage('no','Norsk Bokmål')"> Norsk Bokmål    </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Polski']"       ng-click="changeLanguage('pl','Polski'      )"> Polski          </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Português']"    ng-click="changeLanguage('pt','Português'   )"> Português       </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Русский']"      ng-click="changeLanguage('ru','Русский'     )"> Русский         </a></li>
+        <!--<li><a ng-class="{true:'active'}[curLang=='Slovenčina']"   ng-click="changeLanguage('sk','Slovenčina'  )"> Slovenčina      </a></li>-->
+        <!--<li><a ng-class="{true:'active'}[curLang=='Slovenščina']"  ng-click="changeLanguage('sl','Slovenščina' )"> Slovenščina     </a></li>-->
+        <!--<li><a ng-class="{true:'active'}[curLang=='Svenska']"      ng-click="changeLanguage('sv','Svenska'     )"> Svenska         </a></li>-->
+            <li><a ng-class="{true:'active'}[curLang=='Türkçe']"       ng-click="changeLanguage('tr','Türkçe'      )"> Türkçe          </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='Tiếng Việt']"   ng-click="changeLanguage('vi','Tiếng Việt'  )"> Tiếng Việt      </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='简体中文']"      ng-click="changeLanguage('zhcn','简体中文'   )"> 简体中文         </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='繁體中文']"      ng-click="changeLanguage('zhtw','繁體中文'   )"> 繁體中文         </a></li>
+            <li role="separator" class="divider"></li>
+            <li><a data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></li>
+          </ul>
+        </span>
+
+        &nbsp;&nbsp;
+
+        <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
+        <span class="dropdown dropdown-node" ng-cloak>
+          <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small><i class="caret"></i></a>
+          <ul class="dropdown-menu" ng-show="dropdownNode">
+            <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
+              {{value.name}}
+              <small> ({{value.service}}) </small>
+              <img ng-show="value.service=='Custom'" img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
+            </a></li>
+            <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
+          </ul>
+        </span>
+
+      </div>
+    </section>
+  </section>
+
+  <nav role="navigation" aria-label="main navigation" class="container nav-container overflowing" >
+    <a aria-hidden="true" ng-show="showLeftArrow" class="nav-arrow-left" ng-click="scrollLeft(100);" ng-mouseover="scrollHoverIn(true,2);" ng-mouseleave="scrollHoverOut()">&#171;</a>
+    <div class="nav-scroll">
+      <ul class="nav-inner">
+        
+        <li ng-repeat="tab in tabNames track by $index" class="nav-item {{tab.name}}" ng-class="{active: $index==gService.currentTab}" ng-show="tab.mew" ng-click="tabClick($index)"> <a tabindex="0" aria-label="nav item: {{tab.name | translate}}" translate="{{tab.name}}"></a></li>
+        
+        
+      </ul>
+    </div>
+    <a aria-hidden="true" ng-show="showRightArrow" class="nav-arrow-right" ng-click="scrollRight(100);" ng-mouseover="scrollHoverIn(false,2);" ng-mouseleave="scrollHoverOut()">&#187;</a>
+  </nav>
+
+   <article class="modal fade" id="customNodeModal" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h2 class="modal-title text-info" translate="NODE_Title"> Set Up Your Custom Node </h2>
+
+        <p class="small" ng-show="browserProtocol!='https:'">
+          <strong translate="NODE_Subtitle">To connect to a local node...</strong>
+          <ul class="small">
+            <li> URL: http://127.0.0.1</li>
+            <li> Port: 8545 </li>
+            <li> Run geth: <code>geth --rpc --rpccorsdomain "null" --keystore "dont_put_secret_files_here_ever"</code></li>
+            <li> Run Parity: <code>parity --rpccorsdomain "*" --keys-path "dont_put_secret_files_here_ever"</code></li>
+          </ul>
+        </p>
+
+        <div ng-show="browserProtocol=='https:'" class="alert alert-danger small" translate="NODE_Warning">
+          Your node must be HTTPS in order to connect to it via MyEtherWallet.com. You can [download the MyEtherWallet repo & run it locally](https://github.com/kvhnuke/etherwallet/releases/latest) to connect to any node. Or, get free SSL certificate via [LetsEncrypt](https://letsencrypt.org/)</a>.
+        </div>
+
+        <section class="row">
+          <div class="clearfix col-xs-12">
+            <label translate="NODE_Name">Node Name</label>
+            <input class="form-control"
+                   type="text"
+                   placeholder="My ETH Node"
+                   ng-model="customNode.name"
+                   ng-class="Validator.isAlphaNumericSpace(customNode.name) ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-9">
+            <label>URL</label>
+            <input class="form-control" type="text" placeholder="http://127.0.0.1" ng-model="customNode.url" ng-class="checkNodeUrl(customNode.url) ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-3">
+            <label class="NODE_Port">Port</label>
+            <input class="form-control" type="text" placeholder="8545" ng-model="customNode.port" ng-class="Validator.isPositiveNumber(customNode.port) || customNode.port=='' ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-12">
+            <label><input type="checkbox" ng-model="customNode.httpBasicAuth" ng-true-value="{user:'',password:''}" ng-false-value="null" value="false"> HTTP Basic access authentication </label>
+          </div>
+
+          <div class="clearfix col-xs-6" ng-show="customNode.httpBasicAuth">
+            <label>User</label>
+            <input class="form-control" type="text" ng-model="customNode.httpBasicAuth.user" ng-class="customNode.httpBasicAuth &amp;&amp; customNode.httpBasicAuth.user.length > 0 ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-6" ng-show="customNode.httpBasicAuth">
+            <label>Password</label>
+            <input class="form-control" type="password" ng-model="customNode.httpBasicAuth.password" ng-class="customNode.httpBasicAuth &amp;&amp; customNode.httpBasicAuth.password.length > 0 ? 'is-valid' : 'is-invalid'">
+          </div>
+
+          <div class="clearfix col-xs-12 radio">
+            <label><input name="options" type="radio" ng-model="customNode.options" value="eth"> ETH </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="etc"> ETC </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="cus"> Custom </label>
+            <label><input type="checkbox" ng-model="customNode.eip155" value="true"> Supports EIP-155 </label>
+          </div>
+
+          <div class="clearfix col-sm-6 col-sm-offset-6" ng-show="customNode.eip155">
+            <label>Chain ID</label>
+            <input class="form-control" type="text" placeholder="" ng-model="customNode.chainId" ng-class="Validator.isPositiveNumber(customNode.chainId) ? 'is-valid' : 'is-invalid'">
+          </div>
+        </section>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" translate="x_Cancel">
+          Cancel
+        </button>
+        <button class="btn btn-primary" ng-click="saveCustomNode()" translate="NODE_CTA">
+          Save & Use Custom Node
+        </button>
+      </div>
+
+
+    </section>
+  </section>
+</article>
+ 
+  
+
+</header>
+
+
+<section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
+
+  <div class="tab-content" >
+
+    <div class="" ng-controller="helpersCtrl">
+  <h1> Convert It! </h1>
+  <section class="mono">
+    <div class="input-group form-group">
+      <input class="form-control" type="text" ng-model="units.wei" ng-change="convertUnit('wei')" />
+      <div class="input-group-btn">
+        <a class="btn btn-default" style="min-width: 170px;"> wei </a>
+      </div>
+    </div>
+    <div class="input-group form-group">
+      <input class="form-control" type="text" ng-model="units.kwei" ng-change="convertUnit('kwei')" />
+      <div class="input-group-btn">
+        <a class="btn btn-default" style="min-width: 170px;"> kwei </a>
+      </div>
+    </div>
+    <div class="input-group form-group">
+      <input class="form-control" type="text" ng-model="units.mwei" ng-change="convertUnit('mwei')" />
+      <div class="input-group-btn">
+        <a class="btn btn-default" style="min-width: 170px;"> mwei </a>
+      </div>
+    </div>
+    <div class="input-group form-group">
+      <input class="form-control" type="text" ng-model="units.gwei" ng-change="convertUnit('gwei')" />
+      <div class="input-group-btn">
+        <a class="btn btn-default" style="min-width: 170px;"> gwei <small>(shannon)</small> </a>
+      </div>
+    </div>
+    <div class="input-group form-group">
+      <input class="form-control" type="text" ng-model="units.szabo" ng-change="convertUnit('szabo')" />
+      <div class="input-group-btn">
+        <a class="btn btn-default" style="min-width: 170px;"> szabo </a>
+      </div>
+    </div>
+    <div class="input-group form-group">
+      <input class="form-control" type="text" ng-model="units.finney" ng-change="convertUnit('finney')" />
+      <div class="input-group-btn">
+        <a class="btn btn-default" style="min-width: 170px;"> finney </a>
+      </div>
+    </div>
+    <div class="input-group form-group">
+      <input class="form-control" type="text" ng-model="units.ether" ng-change="convertUnit('ether')" />
+      <div class="input-group-btn">
+        <a class="btn btn-primary" style="min-width: 170px;"> ether </a>
+      </div>
+    </div>
+    <div class="input-group form-group">
+      <input class="form-control" type="text" ng-model="units.kether" ng-change="convertUnit('kether')" />
+      <div class="input-group-btn">
+        <a class="btn btn-default" style="min-width: 170px;"> kether </a>
+      </div>
+    </div>
+    <div class="input-group form-group">
+      <input class="form-control" type="text" ng-model="units.mether" ng-change="convertUnit('mether')" />
+      <div class="input-group-btn">
+        <a class="btn btn-default" style="min-width: 170px;"> mether </a>
+      </div>
+    </div>
+    <div class="input-group form-group">
+      <input class="form-control" type="text" ng-model="units.gether" ng-change="convertUnit('gether')" />
+      <div class="input-group-btn">
+        <a class="btn btn-default" style="min-width: 170px;"> gether </a>
+      </div>
+    </div>
+    <div class="input-group form-group">
+      <input class="form-control" type="text" ng-model="units.tether" ng-change="convertUnit('tether')" />
+      <div class="input-group-btn">
+        <a class="btn btn-default" style="min-width: 170px;"> tether  </a>
+      </div>
+    </div>
+  </section>
+
+  <br /><br /><br />
+
+  <h1> Decimal <-> Hexidecimal It! </h1>
+  <div class="form-group">
+    <label> Decimal </label>
+    <input class="form-control" type="text" ng-model="decimalNumber" ng-change="decimalToHex()" />
+  </div>
+  <div class="form-group">
+    <label> Hexadecimal </label>
+    <input class="form-control" type="text" ng-model="hexNumber" ng-change="hexToDecimal()" />
+  </div>
+
+  <br /><br /><br />
+
+  <h1> "SHA3" (Keccak-256) It! <small><a href="https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use" target="_blank">yooo... sha3 !== Keccak-256?!</a></small></h1>
+
+  <div class="form-group">
+    <label> Input </label>
+    <input class="form-control" type="text" ng-model="inputText" ng-change="toSHA3()" />
+  </div>
+  <div class="form-group">
+    <label> Output </label>
+    <input class="form-control" type="text" ng-model="outputText" readonly="readonly" />
+  </div>
+
+  <br /><br /><br />
+
+  <h1> Reference It </h1>
+  <table class="table table-striped mono">
+    <tr>
+      <td><strong>wei</strong></td>
+      <td><small></small></td>
+      <td>1</td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><strong>kwei</strong></td>
+      <td><small>ada, femtoether</small></td>
+      <td>1000</td>
+      <td>1,000</td>
+      <td>10<sup>3</sup></td>
+    </tr>
+    <tr>
+      <td><strong>mwei</strong></td>
+      <td><small>babbage, picoether</small></td>
+      <td>1000000</td>
+      <td>1,000,000</td>
+      <td>10<sup>6</sup></td>
+    </tr>
+    <tr>
+      <td><strong>gwei</strong></td>
+      <td><small>shannon, nanoether, nano</small></td>
+      <td>1000000000</td>
+      <td>1,000,000,000</td>
+      <td>10<sup>9</sup></td>
+    </tr>
+    <tr>
+      <td><strong>szabo</strong></td>
+      <td><small>microether, micro</small></td>
+      <td>1000000000000</td>
+      <td>1,000,000,000,000</td>
+      <td>10<sup>12</sup></td>
+    </tr>
+    <tr>
+      <td><strong>finney</strong></td>
+      <td><small>milliether, milli</small></td>
+      <td>1000000000000000</td>
+      <td>1,000,000,000,000,000</td>
+      <td>10<sup>15</sup></td>
+    </tr>
+    <tr>
+      <td><strong>ether</strong></td>
+      <td><small></small></td>
+      <td>1000000000000000000</td>
+      <td>1,000,000,000,000,000,000</td>
+      <td>10<sup>18</sup></td>
+    </tr>
+    <tr>
+      <td><strong>kether</strong></td>
+      <td><small>grand, einstein</small></td>
+      <td>1000000000000000000000</td>
+      <td>1,000,000,000,000,000,000,000</td>
+      <td>10<sup>21</sup></td>
+    </tr>
+    <tr>
+      <td><strong>mether</strong></td>
+      <td><small></small></td>
+      <td>1000000000000000000000000</td>
+      <td>1,000,000,000,000,000,000,000,000</td>
+      <td>10<sup>24</sup></td>
+    </tr>
+    <tr>
+      <td><strong>gether</strong></td>
+      <td><small></small></td>
+      <td>1000000000000000000000000000</td>
+      <td>1,000,000,000,000,000,000,000,000,000</td>
+      <td>10<sup>27</sup></td>
+    </tr>
+    <tr>
+      <td><strong>tether </strong></td>
+      <td><small></small></td>
+      <td>1000000000000000000000000000000</td>
+      <td>1000,000,000,000,000,000,000,000,000,000</td>
+      <td>10<sup>30</sup></td>
+    </tr>
+  </table>
+  </p>
+</div>
+
+
+
+  </div>
+
+
+  <div class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show" role="alert" aria-live="assertive">
+    <span class="sr-only">{{notifier.class}}</span><div class="container" ng-bind-html="notifier.message"></div>
+    <i tabindex="0" aria-label="dismiss" class="icon-close" ng-click="notifier.close()"></i>
+  </div>
+
+</section>
+
+<footer role="contentinfo" aria-label="footer" ng-controller='footerCtrl' >
+
+  <div class="container">
+
+    <section class="row"><section class="row">
+
+      <div class="col-sm-3 footer-1">
+        <p aria-hidden="true"><a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" /></a></p>
+        <p>
+          <span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span>
+          <span translate="FOOTER_1b">Created by</span>
+          <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a>
+          &
+          <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.
+          <br />
+          <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a>
+        </p>
+        <div class="form-group">
+          <label translate="OFFLINE_Step2_Label_3"> Gas Price: </label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a>)
+          <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
+          <p style="padding: 0" class="small col-xs-4">Not So Fast</p>
+          <p style="padding: 0" class="small col-xs-4 text-center">Fast</p>
+          <p style="padding: 0" class="small col-xs-4 text-right">Fast AF</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 footer-2">
+        <h5> <i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
+        <ul>
+          <li> ETH: <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span></li>
+          <li> BTC: <span class="mono wrap">1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6</span></li>
+        </ul>
+
+        <h5> <i aria-hidden="true">👫</i> You can also support us by supporting our blockchain-family.</h5><p>Consider using our affiliate links to...</h5>
+        <ul>
+          <li><a aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank">Swap ETH/BTC/EUR/CHF via Bity.com</a></li>
+          <li><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank">Buy a Ledger Nano S</a></li>
+          <li><a href="https://trezor.io/?a=myetherwallet.com" target="_blank">Buy a TREZOR</a></li>
+        </ul>
+
+        <h5> <i ng-hide="curLang=='en'">🏅</i> <span translate="Translator_Desc"> Thank you to our translators </span></h5>
+        <ul><li>
+          <span translate="TranslatorName_1"></span>
+          <span translate="TranslatorName_2"></span>
+          <span translate="TranslatorName_3"></span>
+          <span translate="TranslatorName_4"></span>
+          <span translate="TranslatorName_5"></span>
+        </li></ul>
+      </div>
+
+      <div class="col-sm-3 footer-3">
+        <h5><i aria-hidden="true">🌎</i> On the Web</h5>
+        <ul>
+          <li><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank">www.MyEtherWallet.com</a></li>
+          <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank">Github: MyEtherWallet.com & CX</a></li>
+          <li><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank">Github: MyEtherWallet (Org)</a></li>
+          <li><a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank">Join Our Slack</a></li>
+          <li><a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank">Twitter</a></li>
+          <li><a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank">Facebook</a></li>
+        </ul>
+
+        <h5><i aria-hidden="true">🙏</i> Support</h5>
+        <ul>
+          <li><a aria-label="email support at myetherwallet.com" href="mailto:support@myetherwallet.com" target="_blank">Email</a></li>
+          <li><a aria-label="open a github issue" href="https://github.com/kvhnuke/etherwallet/issues" target="_blank">Github Issue</a></li>
+        </ul>
+      </div>
+
+    </section></section>
+
+    <p ng-show="showBlocks" class="text-right" style="font-size: 10px">Latest Block#: {{currentBlockNumber}}</p>
+  </div>
+
+   <article class="modal fade" id="disclaimerModal" tabindex="-1">
+  <section class="modal-dialog">
+    <section class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h2 class="modal-title text-info" translate="FOOTER_4">Disclaimer</h2>
+
+        <p class="small"><strong> Translations of MyEtherWallet: </strong> The community is doing an amazing job translating MyEtherWallet into a variety of languages. However, MyEtherWallet can only verify the validity and accuracy of the information provided in English and, because of this, the English version of our website is the official text. </p>
+
+        <p class="small"><strong>Always backup your keys: </strong> MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.</p>
+
+        <p class="small"><strong>We are not responsible for any loss: </strong> Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development. While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but we are not responsible for the lost Ether.</p>
+
+        <p class="small"><strong>MIT License</strong> Copyright &copy; 2015-2017 MyEtherWallet LLC</p>
+
+        <p class="small">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+        <p class="small">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+        <p class="small"><strong>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</strong></p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">Okay</button>
+      </div>
+
+    </section>
+  </section>
+</article>
+ 
+  
+
+
+</footer>
+</main>
+</body>
+</html>
+
