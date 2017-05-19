@@ -273,6 +273,104 @@
 
   <br /><br /><br />
 
+  <h1> ENS Debugger & Manual Data Generator! </h1>
+  <p class="text-danger"> This is meant to be a helpful tool for debugging and checking and generating manual reveals when necessary. Use at your own risk. There is no validation on these fields. </p>
+
+  <section class="row">
+    <div class="form-group col-sm-12">
+      <label> Address you Bid From </label>
+      <input class="form-control" type="text" ng-model="ensAddress" ng-change="allTheThings()" />
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="form-group col-sm-6">
+      <label> ENS Name you Bid On (no '.eth' at the end!) </label>
+      <input class="form-control" type="text" ng-model="ensLabel" ng-change="toEnsLabelHash()" />
+    </div>
+    <div class="form-group col-sm-6">
+      <label> Hashed ENS Name (Label Hash) </label>
+      <input class="form-control" type="text" ng-model="ensLabelHash" />
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="form-group col-sm-6">
+      <label> Amount you Bid (ETH) </label>
+      <input class="form-control" type="text" ng-model="bidEth" ng-change="toBidWei()" />
+    </div>
+    <div class="form-group col-sm-6">
+      <label> Amount you Bid (WEI) </label>
+      <input class="form-control" type="text" ng-model="bidWei" ng-change="toBidEth()" />
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="form-group col-sm-6">
+      <label> Your Secret </label>
+      <input class="form-control" type="text" ng-model="ensSecret" ng-change="toEnsSecretHash()" />
+    </div>
+    <div class="form-group col-sm-6">
+      <label> Your Secret (Hashed) </label>
+      <input class="form-control" type="text" ng-model="ensSecretHash"/>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="form-group col-xs-12">
+      <label> Start Auction Data </label>
+      <input class="form-control" type="text" ng-model="startAuctionData" readonly />
+      <p>
+        To: <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code> &nbsp;&middot;&nbsp;
+        Amount: <code>0</code> &nbsp;&middot;&nbsp;
+        Gas Limit: <code>200000</code> &nbsp;&middot;&nbsp;
+        Data: <code>[ABOVE]</code>
+      </p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="form-group col-xs-12">
+      <label> New Bid Data <small> If your reveals aren't working, this is the string that needs to match your bid data on Etherscan)</small> </label>
+      <input class="form-control" type="text" ng-model="shaBid" readonly />
+      <p>
+        To: <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code> &nbsp;&middot;&nbsp;
+        Amount: <code>[A NUMBER >= BID AMOUNT]</code> &nbsp;&middot;&nbsp;
+        Gas Limit: <code>500000</code> &nbsp;&middot;&nbsp;
+        Data: <code>[ABOVE]</code>
+      </p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="form-group col-xs-12">
+      <label> Reveal Data <small> This is for manually revealing if you need to do so. </small></label>
+      <input class="form-control" type="text" ng-model="revealBidData" readonly />
+      <p>
+        To: <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code> &nbsp;&middot;&nbsp;
+        Amount: <code>0</code> &nbsp;&middot;&nbsp;
+        Gas Limit: <code>200000</code> &nbsp;&middot;&nbsp;
+        Data: <code>[ABOVE]</code>
+      </p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="form-group col-xs-12">
+      <label> Finalize Auction Data </label>
+      <input class="form-control" type="text" ng-model="finalizeAuctionData" readonly />
+      <p>
+        To: <code>0x6090a6e47849629b7245dfa1ca21d94cd15878ef</code> &nbsp;&middot;&nbsp;
+        Amount: <code>0</code> &nbsp;&middot;&nbsp;
+        Gas Limit: <code>200000</code> &nbsp;&middot;&nbsp;
+        Data: <code>[ABOVE]</code>
+      </p>
+    </div>
+  </section>
+
+
+  <br /><br /><br />
+
   <h1> Decimal <-> Hexidecimal It! </h1>
   <div class="form-group">
     <label> Decimal </label>
@@ -281,6 +379,10 @@
   <div class="form-group">
     <label> Hexadecimal </label>
     <input class="form-control" type="text" ng-model="hexNumber" ng-change="hexToDecimal()" />
+  </div>
+  <div class="form-group">
+    <label> Hexadecimal - Padded Left w/ 64 characters </label>
+    <input class="form-control" type="text" ng-model="hexPaddedLeft" />
   </div>
 
   <br /><br /><br />
@@ -293,10 +395,12 @@
   </div>
   <div class="form-group">
     <label> Output </label>
-    <input class="form-control" type="text" ng-model="outputText" readonly="readonly" />
+    <input class="form-control" type="text" ng-model="outputText" readonly />
   </div>
 
+
   <br /><br /><br />
+
 
   <h1> Reference It </h1>
   <table class="table table-striped mono">

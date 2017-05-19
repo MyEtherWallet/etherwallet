@@ -31,6 +31,7 @@
 
 
   <!-- Your Address -->
+  <!-- TODO ADD ENS NAME SUPPORT -->
   <section class="row">
     <div class="col-sm-8 col-sm-offset-2 col-xs-12">
       <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>({{swapOrder.toCoin}})</strong></label>
