@@ -616,15 +616,6 @@
 
   <div class="row form-group">
     <address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="tx.to"></address-field>
-    <!--
-    <div class="col-xs-10">
-      <label translate="SEND_addr"> To Address: </label>
-      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
-    </div>
-    <div class="col-xs-2 address-identicon-container">
-      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-    </div>
-    -->
   </div>
 
   <!-- Amount to Send -->
@@ -874,6 +865,7 @@
 
 
   <!-- Your Address -->
+  <!-- TODO ADD ENS NAME SUPPORT -->
   <section class="row">
     <div class="col-sm-8 col-sm-offset-2 col-xs-12">
       <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>({{swapOrder.toCoin}})</strong></label>
@@ -1024,15 +1016,6 @@
 
   <div class="row form-group">
     <address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="tx.to"></address-field>
-    <!--
-    <div class="col-xs-10">
-      <label translate="SEND_addr"> To Address: </label>
-      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-class="Validator.isValidAddress(tx.to) ? 'is-valid' : 'is-invalid'"/>
-    </div>
-    <div class="col-xs-2 address-identicon-container">
-      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-    </div>
-    -->
   </div>
 
   <!-- Amount to Send -->
@@ -1975,15 +1958,15 @@
        <table class="table table-striped" style="margin: 2em auto;">
     <tr>
       <td>Name:  </td>
-      <td class="mono">{{objENS.name}}.eth </td>
+      <td class="mono">{{objENS.name}}.eth</td>
+    </tr>
+    <tr>
+      <td>Labelhash ({{objENS.name}}): </td>
+      <td class="mono">{{objENS.nameSHA3}}</td>
     </tr>
     <tr>
       <td>Namehash ({{objENS.name}}.eth): </td>
       <td class="mono">{{objENS.namehash}}</td>
-    </tr>
-    <tr>
-      <td>Labelhash({{objENS.name}}): </td>
-      <td class="mono">{{objENS.nameSHA3}}</td>
     </tr>
     <tr>
       <td>Owner:</td>
@@ -1997,6 +1980,7 @@
       <td>Resolved Address: </td>
       <td class="mono">{{objENS.resolvedAddress}}</td>
     </tr>
+    <tr><td colspan="2"><a href="https://etherscan.io/enslookup?q={{objENS.name}}.eth" target="_blank">{{objENS.name}}.eth on etherscan.io</a> </td></tr>
     <tr><td></td><td></td></tr>
     <tr>
       <td>ENS - Public Resolver: </td>
@@ -2237,15 +2221,15 @@
      <table class="table table-striped" style="margin: 2em auto;">
     <tr>
       <td>Name:  </td>
-      <td class="mono">{{objENS.name}}.eth </td>
+      <td class="mono">{{objENS.name}}.eth</td>
+    </tr>
+    <tr>
+      <td>Labelhash ({{objENS.name}}): </td>
+      <td class="mono">{{objENS.nameSHA3}}</td>
     </tr>
     <tr>
       <td>Namehash ({{objENS.name}}.eth): </td>
       <td class="mono">{{objENS.namehash}}</td>
-    </tr>
-    <tr>
-      <td>Labelhash({{objENS.name}}): </td>
-      <td class="mono">{{objENS.nameSHA3}}</td>
     </tr>
     <tr>
       <td>Owner:</td>
@@ -2259,6 +2243,7 @@
       <td>Resolved Address: </td>
       <td class="mono">{{objENS.resolvedAddress}}</td>
     </tr>
+    <tr><td colspan="2"><a href="https://etherscan.io/enslookup?q={{objENS.name}}.eth" target="_blank">{{objENS.name}}.eth on etherscan.io</a> </td></tr>
     <tr><td></td><td></td></tr>
     <tr>
       <td>ENS - Public Resolver: </td>
