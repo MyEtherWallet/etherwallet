@@ -1,15 +1,15 @@
   <table class="table table-striped" style="margin: 2em auto;">
     <tr>
       <td>Name:  </td>
-      <td class="mono">{{objENS.name}}.eth </td>
+      <td class="mono">{{objENS.name}}.eth</td>
+    </tr>
+    <tr>
+      <td>Labelhash ({{objENS.name}}): </td>
+      <td class="mono">{{objENS.nameSHA3}}</td>
     </tr>
     <tr>
       <td>Namehash ({{objENS.name}}.eth): </td>
       <td class="mono">{{objENS.namehash}}</td>
-    </tr>
-    <tr>
-      <td>Labelhash({{objENS.name}}): </td>
-      <td class="mono">{{objENS.nameSHA3}}</td>
     </tr>
     <tr>
       <td>Owner:</td>
@@ -23,6 +23,7 @@
       <td>Resolved Address: </td>
       <td class="mono">{{objENS.resolvedAddress}}</td>
     </tr>
+    <tr><td colspan="2"><a href="https://etherscan.io/enslookup?q={{objENS.name}}.eth" target="_blank">{{objENS.name}}.eth on etherscan.io</a> </td></tr>
     <tr><td></td><td></td></tr>
     <tr>
       <td>ENS - Public Resolver: </td>
