@@ -6,18 +6,22 @@
 
       <div class="col-sm-3 footer-1">
         <p aria-hidden="true"><a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" /></a></p>
-        <p><span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span> <span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.</p>
-        <br />
-        <p><a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
+        <p>
+          <span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span>
+          <span translate="FOOTER_1b">Created by</span>
+          <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a>
+          &
+          <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.
+          <br />
+          <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a>
+        </p>
         <div class="form-group">
-<label translate="OFFLINE_Step2_Label_3"> Gas Price:</label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a>)
-<input class="form-control" type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" value="0" ng-change="gasChanged()"/>
-<div class="row">
-<p class="small col-xs-4">Not As Fast</p>
-<p class="small col-xs-4 text-center">Fast</p>
-<p class="small col-xs-4 text-right">Fast AF</p>
-</div>
-</div>
+          <label translate="OFFLINE_Step2_Label_3"> Gas Price: </label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a>)
+          <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
+          <p style="padding: 0" class="small col-xs-4">Not So Fast</p>
+          <p style="padding: 0" class="small col-xs-4 text-center">Fast</p>
+          <p style="padding: 0" class="small col-xs-4 text-right">Fast AF</p>
+        </div>
       </div>
 
       <div class="col-sm-6 footer-2">
