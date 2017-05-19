@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js     : commit d607fbe14c836b83c39a2e2b26ad6388786ba0d2
+// Last sync with en.js     : commit 459ba23623e1fa13c3d468277ef5dad5070542d2
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -304,9 +304,11 @@ ERROR_29                    : 'Inserisci un nome utente e una password validi ',
 ERROR_30                    : 'Inserisci un nome ENS valido ',
 ERROR_31                    : 'Frase segreta non valida ',
 ERROR_32                    : 'Impossibile collegarsi al nodo. Aggiorna la pagina, o controlla la pagina di aiuto per ulteriori suggerimenti. ',
+ERROR_33                    : 'L\'indirizzo del portafoglio non è quello da cui si è fatta l\'offerta. ',
+ERROR_34                    : 'Il nome non corrisponde all\'originale',
 SUCCESS_1                   : 'Indirizzo valido ',
 SUCCESS_2                   : 'Portafoglio decodificato correttamente ',
-SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transazione inviata. TX ID ',
+SUCCESS_3                   : 'La transazione è stata inviata alla blockchain. Fai clic per vederla e controllare che sia stata inclusa in un blocco e non si siano verificati errori relativi al gas o all\'esecuzione del contratto.  TX ID:  ',
 SUCCESS_4                   : 'Il portafoglio è stato aggiunto correttamente ',
 SUCCESS_5                   : 'File selezionato ',
 SUCCESS_6                   : 'Ora sei connesso ',

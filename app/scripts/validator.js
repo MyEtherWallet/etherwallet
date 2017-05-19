@@ -13,7 +13,7 @@ validator.isValidENSorEtherAddress = function(address) {
 }
 validator.isValidENSName = function(str) {
     try {
-        return (str.length > 6 && ens.normalise(str) != '');
+        return (str.length > 6 && ens.normalise(str) != '' && str.substring(0, 2) != '0x');
     } catch (e) {
         return false;
     }

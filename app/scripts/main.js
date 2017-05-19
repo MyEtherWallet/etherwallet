@@ -76,6 +76,7 @@ var ensCtrl                  = require('./controllers/ensCtrl');
 var footerCtrl               = require('./controllers/footerCtrl');
 var offlineTxCtrl            = require('./controllers/offlineTxCtrl');
 var walletBalanceCtrl        = require('./controllers/walletBalanceCtrl');
+var helpersCtrl              = require('./controllers/helpersCtrl');
 var globalService            = require('./services/globalService');
 var walletService            = require('./services/walletService');
 var blockiesDrtv             = require('./directives/blockiesDrtv');
@@ -126,6 +127,7 @@ app.controller('ensCtrl', ['$scope', '$sce', 'walletService', ensCtrl]);
 app.controller('footerCtrl', ['$scope', 'globalService', footerCtrl]);
 app.controller('offlineTxCtrl', ['$scope', '$sce', 'walletService', offlineTxCtrl]);
 app.controller('walletBalanceCtrl', ['$scope', '$sce', walletBalanceCtrl]);
+app.controller('helpersCtrl', ['$scope', helpersCtrl]);
 if (IS_CX) {
   app.controller('addWalletCtrl', ['$scope', '$sce', addWalletCtrl]);
   app.controller('myWalletsCtrl', ['$scope', '$sce','walletService', myWalletsCtrl]);
