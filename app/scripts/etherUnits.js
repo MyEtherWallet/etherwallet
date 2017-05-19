@@ -53,4 +53,10 @@ etherUnits.toWei = function(number, unit) {
 	var returnValue = new BigNumber(String(number)).times(this.getValueOfUnit(unit));
 	return returnValue.toString(10);
 }
+
+etherUnits.unitToUnit = function(number, from, to) {
+	var returnValue = new BigNumber(String(number)).times(this.getValueOfUnit(from)).div(this.getValueOfUnit(to));
+	return returnValue.toString(10);
+}
+
 module.exports = etherUnits;
