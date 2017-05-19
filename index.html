@@ -40,7 +40,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.8.0 &nbsp;&nbsp;
+        &middot; v3.8.1 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -658,17 +658,6 @@
       <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
     </a>
     <section ng-show="showAdvance">
-      <!--
-      <div class="form-group">
-        <label translate="OFFLINE_Step2_Label_3"> Gas Price:</label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{tx.gasPrice}} Gwei</a>_
-        <input class="form-control" type="range" ng-model="tx.gasPrice" min="2" max="40" steps="1" value="20" />
-        <div class="row">
-          <p class="small col-xs-4">Not As Fast (2 Gwei)</p>
-          <p class="small col-xs-4 text-center">Fast (20 Gwei)</p>
-          <p class="small col-xs-4 text-right">Fast AF (40 Gwei)</p>
-        </div>
-      </div>
-      -->
       <div class="form-group">
         <label translate="TRANS_data"> Data: </label>
         <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
@@ -1077,17 +1066,6 @@
       <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
     </a>
     <section ng-show="showAdvance">
-      <!--
-      <div class="form-group">
-        <label translate="OFFLINE_Step2_Label_3"> Gas Price:</label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{tx.gasPrice}} Gwei</a>_
-        <input class="form-control" type="range" ng-model="tx.gasPrice" min="2" max="40" steps="1" value="20" />
-        <div class="row">
-          <p class="small col-xs-4">Not As Fast (2 Gwei)</p>
-          <p class="small col-xs-4 text-center">Fast (20 Gwei)</p>
-          <p class="small col-xs-4 text-right">Fast AF (40 Gwei)</p>
-        </div>
-      </div>
-      -->
       <div class="form-group">
         <label translate="TRANS_data"> Data: </label>
         <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
@@ -3163,18 +3141,22 @@
 
       <div class="col-sm-3 footer-1">
         <p aria-hidden="true"><a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" /></a></p>
-        <p><span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span> <span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.</p>
-        <br />
-        <p><a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a></p>
+        <p>
+          <span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span>
+          <span translate="FOOTER_1b">Created by</span>
+          <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a>
+          &
+          <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.
+          <br />
+          <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a>
+        </p>
         <div class="form-group">
-<label translate="OFFLINE_Step2_Label_3"> Gas Price:</label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a>)
-<input class="form-control" type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" value="0" ng-change="gasChanged()"/>
-<div class="row">
-<p class="small col-xs-4">Not As Fast</p>
-<p class="small col-xs-4 text-center">Fast</p>
-<p class="small col-xs-4 text-right">Fast AF</p>
-</div>
-</div>
+          <label translate="OFFLINE_Step2_Label_3"> Gas Price: </label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a>)
+          <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
+          <p style="padding: 0" class="small col-xs-4">Not So Fast</p>
+          <p style="padding: 0" class="small col-xs-4 text-center">Fast</p>
+          <p style="padding: 0" class="small col-xs-4 text-right">Fast AF</p>
+        </div>
       </div>
 
       <div class="col-sm-6 footer-2">
