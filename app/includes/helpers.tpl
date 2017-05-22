@@ -1,5 +1,6 @@
 <div class="" ng-controller="helpersCtrl">
-  <h1> Convert It! </h1>
+  <h1> Convert Ethererum Units (e.g. Ether <-> Wei) </h1>
+  <h2 class="p"> Ether Wei Converter </h2>
   <section class="mono">
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.wei" ng-change="convertUnit('wei')" />
@@ -71,7 +72,8 @@
 
   <br /><br /><br />
 
-  <h1> ENS Debugger & Manual Data Generator! </h1>
+  <h1> ENS Debugger & Data Grabber </h1>
+  <h2 class="p">Ethereum Name Service Data String Generator</h2>
   <p class="text-danger"> This is meant to be a helpful tool for debugging and checking and generating manual reveals when necessary. Use at your own risk. There is no validation on these fields. </p>
 
   <section class="row">
@@ -169,7 +171,7 @@
 
   <br /><br /><br />
 
-  <h1> Decimal <-> Hexidecimal It! </h1>
+  <h1> Convert Decimal to Hexidecimal and Hex to Decimal </h1>
   <div class="form-group">
     <label> Decimal </label>
     <input class="form-control" type="text" ng-model="decimalNumber" ng-change="decimalToHex()" />
@@ -200,7 +202,7 @@
   <br /><br /><br />
 
 
-  <h1> Reference It </h1>
+  <h1> Ether Unit Reference Guide </h1>
   <table class="table table-striped mono">
     <tr>
       <td><strong>wei</strong></td>
