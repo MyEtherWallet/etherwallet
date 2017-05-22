@@ -40,7 +40,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.8.1 &nbsp;&nbsp;
+        &middot; v3.8.2 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -55,6 +55,7 @@
             <li><a ng-class="{true:'active'}[curLang=='Indonesian']"   ng-click="changeLanguage('id','Indonesian'  )"> Bahasa Indonesia</a></li>
             <li><a ng-class="{true:'active'}[curLang=='Italiano']"     ng-click="changeLanguage('it','Italiano'    )"> Italiano        </a></li>
             <li><a ng-class="{true:'active'}[curLang=='日本語']"        ng-click="changeLanguage('ja','日本語'       )"> 日本語           </a></li>
+            <li><a ng-class="{true:'active'}[curLang=='한국어']"         ng-click="changeLanguage('ko','한국어'       )"> 한국어            </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Nederlands']"   ng-click="changeLanguage('nl','Nederlands'  )"> Nederlands      </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Norsk Bokmål']" ng-click="changeLanguage('no','Norsk Bokmål')"> Norsk Bokmål    </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Polski']"       ng-click="changeLanguage('pl','Polski'      )"> Polski          </a></li>
@@ -201,7 +202,8 @@
   <div class="tab-content" >
 
     <div class="" ng-controller="helpersCtrl">
-  <h1> Convert It! </h1>
+  <h1> Convert Ethererum Units (e.g. Ether <-> Wei) </h1>
+  <h2 class="p"> Ether Wei Converter </h2>
   <section class="mono">
     <div class="input-group form-group">
       <input class="form-control" type="text" ng-model="units.wei" ng-change="convertUnit('wei')" />
@@ -273,7 +275,8 @@
 
   <br /><br /><br />
 
-  <h1> ENS Debugger & Manual Data Generator! </h1>
+  <h1> ENS Debugger & Data Grabber </h1>
+  <h2 class="p">Ethereum Name Service Data String Generator</h2>
   <p class="text-danger"> This is meant to be a helpful tool for debugging and checking and generating manual reveals when necessary. Use at your own risk. There is no validation on these fields. </p>
 
   <section class="row">
@@ -371,7 +374,7 @@
 
   <br /><br /><br />
 
-  <h1> Decimal <-> Hexidecimal It! </h1>
+  <h1> Convert Decimal to Hexidecimal and Hex to Decimal </h1>
   <div class="form-group">
     <label> Decimal </label>
     <input class="form-control" type="text" ng-model="decimalNumber" ng-change="decimalToHex()" />
@@ -402,7 +405,7 @@
   <br /><br /><br />
 
 
-  <h1> Reference It </h1>
+  <h1> Ether Unit Reference Guide </h1>
   <table class="table table-striped mono">
     <tr>
       <td><strong>wei</strong></td>
