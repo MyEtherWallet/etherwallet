@@ -61,7 +61,7 @@ var swapCtrl = function($scope, $sce, walletService) {
                     $scope.swapOrder.toCoin = $scope.availableCoins[i];
                     break;
                 }
-        $scope.swapOrder.swapRate = $scope.bity.curRate[$scope.swapOrder.fromCoin + $scope.swapOrder.toCoin];
+        $scope.swapOrder.swapRate = $scope.bity.curRate[$scope.swapOrder.toCoin+$scope.swapOrder.fromCoin];
         $scope.swapOrder.swapPair = $scope.swapOrder.fromCoin + "/" + $scope.swapOrder.toCoin;
         $scope.updateEstimate(isFrom);
         $scope.dropdownFrom = $scope.dropdownTo = false;
@@ -113,22 +113,31 @@ var swapCtrl = function($scope, $sce, walletService) {
             bar: getProgressBarArr(1, 5),
             showTimeRem: true,
             timeRemaining: '10:00',
-            secsRemaining: orderResult.validFor - parseInt((new Date().getTime() - new Date(orderResult.timestamp_created).getTime()) / 1000),
+            orderValidFor: orderResult.validFor,
+            currentDate: new Date().getTime(),
+            timestampCreated: new Date(orderResult.timestamp_created).getTime(),
+            secsRemaining: orderResult.validFor - (new Date().getTime() - new Date(orderResult.timestamp_created).getTime()) / 1000 / 60,
             pendingStatusReq: false,
-            checkDelay: 1000
+            checkDelay: 5000
         };
         var timeRem = setInterval(function() {
+            console.log('timeRemaining: ' + orderResult.progress.timeRemaining);
+            console.log('orderValidFor: ' + orderResult.progress.orderValidFor);
+            console.log('timestampCreated: ' + orderResult.progress.timestampCreated);
+            console.log('currentDate: ' + orderResult.progress.currentDate);
+            console.log('secsRemaining: ' + orderResult.progress.secsRemaining);
             if (!orderResult) clearInterval(timeRem);
             if (orderResult.progress.secsRemaining > 0) {
                 if (orderResult.progress.status == "OPEN")
                     orderResult.progress.secsRemaining--;
                 else
                     orderResult.progress.secsRemaining++;
-                var minutes = Math.floor(orderResult.progress.secsRemaining / 60);
-                var seconds = orderResult.progress.secsRemaining - minutes * 60;
-                minutes = minutes < 10 ? '0' + minutes : minutes;
-                seconds = seconds < 10 ? '0' + seconds : seconds;
-                orderResult.progress.timeRemaining = minutes + ':' + seconds;
+
+                var minutes = parseInt(orderResult.progress.secsRemaining/60, 10);
+                var seconds = orderResult.progress.secsRemaining%60;
+
+                orderResult.progress.timeRemaining =  minutes + ':' + (seconds < 10 ? '0' + seconds : seconds);
+
                 if (!$scope.$$phase) $scope.$apply();
             } else {
                 orderResult.progress.timeRemaining = "00:00";
