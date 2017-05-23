@@ -1,8 +1,8 @@
 // Korean
 'use strict';
-var en = function() {}
-en.code = 'ko';
-en.data = {
+var ko = function() {}
+ko.code = 'ko';
+ko.data = {
 
 /* Navigation*/
 NAV_AddWallet               : '지갑 추가 ',
