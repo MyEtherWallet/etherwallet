@@ -80,7 +80,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         else if (nodeInfo.options == 'cus') {
             tempObj = JSON.parse(JSON.stringify(nodes.customNodeObj));
             tempObj.eip155 = nodeInfo.eip155;
-            tempObj.chainId = nodeInfo.chainId;
+            tempObj.chainId = parseInt(nodeInfo.chainId);
         }
         if (tempObj) {
             tempObj.name = nodeInfo.name + ':' + nodeInfo.options;
