@@ -57,6 +57,7 @@
       <li><span class="mono wrap">{{wallet.repBalance | number}}</span> REP</li>
       <li><span class="mono wrap">{{wallet.eurBalance | currency:"€"}}</span> EUR</li>
       <li><span class="mono wrap">{{wallet.usdBalance | currency:"$"}}</span> USD</li>
+      <li><span class="mono wrap">{{wallet.gbpBalance | currency:"£"}}</span> GBP</li>
       <li><span class="mono wrap">{{wallet.chfBalance | currency:" "}}</span> CHF</li>
     </ul>
     <a target="_blank" ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-sm">Swap via Bity</a>

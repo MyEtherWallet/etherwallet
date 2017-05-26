@@ -1,6 +1,7 @@
 'use strict';
 var viewWalletCtrl = function($scope, walletService) {
     $scope.usdBalance = "loading";
+    $scope.gbpBalance = "loading";
     $scope.eurBalance = "loading";
     $scope.btcBalance = "loading";
     $scope.etherBalance = "loading";
