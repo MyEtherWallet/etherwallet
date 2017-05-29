@@ -278,42 +278,45 @@ CX_error_1                  : 'You don\'t have any wallets saved. Click ["Add Wa
 CX_quicksend                : 'QuickSend ', // if no appropriate translation, just use "Send"
 
 /* Error Messages */
-ERROR_0                     : 'Please enter valid amount. ',
-ERROR_1                     : 'Your password must be at least 9 characters. Please ensure it is a strong password. ',
-ERROR_2                     : 'Sorry! We don\'t recognize this type of wallet file. ',
-ERROR_3                     : 'This is not a valid wallet file. ',
-ERROR_4                     : 'This unit doesn\'t exists, please use the one of the following units ',
-ERROR_5                     : 'Invalid address. ',
-ERROR_6                     : 'Invalid password. ',
-ERROR_7                     : 'Invalid amount. ',
-ERROR_8                     : 'Invalid gas limit. ',
-ERROR_9                     : 'Invalid data value. ',
-ERROR_10                    : 'Invalid gas amount. ',
-ERROR_11                    : 'Invalid nonce. ',
-ERROR_12                    : 'Invalid signed transaction. ',
-ERROR_13                    : 'A wallet with this nickname already exists. ',
-ERROR_14                    : 'Wallet not found. ',
-ERROR_15                    : 'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
-ERROR_16                    : 'A wallet with this address already exists in storage. Please check your wallets page. ',
-ERROR_17                    : 'You need to have **0.01 ETH** in your account to cover the cost of gas. Please add some ETH and try again. ',
-ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended. ',
-ERROR_19                    : 'Invalid symbol ',
-ERROR_20                    : 'Not a valid ERC-20 token ',
-ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
-ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
-ERROR_24                    : 'Please enter valid port ',
-ERROR_25                    : 'Please enter valid chain ID ',
-ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
+ERROR_0                     : 'Please enter a valid amount.', // 0
+ERROR_1                     : 'Your password must be at least 9 characters. Please ensure it is a strong password. ', // 1
+ERROR_2                     : 'Sorry! We don\'t recognize this type of wallet file. ', // 2
+ERROR_3                     : 'This is not a valid wallet file. ', // 3
+ERROR_4                     : 'This unit doesn\'t exists, please use the one of the following units ', // 4
+ERROR_5                     : 'Please enter a valid address. ', // 5
+ERROR_6                     : 'Please enter a valid password. ', // 6
+ERROR_7                     : 'Please enter valid decimals     (Must be integer, 0-18). ', // 7
+ERROR_8                     : 'Please enter a valid gas limit  (Must be integer. Try 21000-4000000). ', // 8
+ERROR_9                     : 'Please enter a valid data value (Must be hex). ', // 9
+ERROR_10                    : 'Please enter a valid gas price. (Must be integer. Try 20 GWEI (20000000000 WEI)',
+ERROR_11                    : 'Please enter a valid nonce      (Must be integer).', // 11
+ERROR_12                    : 'Invalid signed transaction. ', // 12
+ERROR_13                    : 'A wallet with this nickname already exists. ', // 13
+ERROR_14                    : 'Wallet not found. ', // 14
+ERROR_15                    : 'Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ', // 15 - NOT USED
+ERROR_16                    : 'A wallet with this address already exists in storage. Please check your wallets page. ', // 16
+ERROR_17                    : 'Account you are sending from does not have enough funds. If sending tokens, you must have 0.01 ETH in your account to cover the cost of gas. ', // 17
+ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
+ERROR_19                    : 'Please enter a valid symbol', // 19
+ERROR_20                    : 'Not a valid ERC-20 token', // 20
+ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+ERROR_22                    : 'Please enter a valid node name', // 22
+ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23
+ERROR_24                    : 'Please enter a valid port. ', // 24
+ERROR_25                    : 'Please enter a valid chain ID. ', // 25
+ERROR_26                    : 'Please enter a valid ABI. ', // 26
+ERROR_27                    : 'Minimum amount: 0.01. Max amount: ', // 27
 ERROR_28                    : '**Za dostop te denarnice v prihodnosti podrebujete vašo Datoteko za hrambo osebnega ključa Keystore/JSON ter geslo ali osebni ključ**. Prosimo vas da to datoteko shranite na enem ali več varnih mestih! V primeru da to datoteko izgubite, denarnice in vašega Ethra nihče ne mora obnoviti, kar pomeni da bo dostop do vašega Ethra za vedno izgubljen. Za več informacij preberite [help page](https://www.myetherwallet.com/#help). ',
-ERROR_29                    : 'Please enter valid user and password ',
-ERROR_30                    : 'Please enter valid ENS name ',
-ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
+ERROR_29                    : 'Please enter a valid user and password. ', // 29
+ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
+ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
+ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',
-SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transaction submitted. TX ID ',
+SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID: ', //'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //
 SUCCESS_4                   : 'Your wallet was successfully added ',
 SUCCESS_5                   : 'File Selected ',
 SUCCESS_6                   : 'You are successfully connected ',
@@ -337,7 +340,7 @@ PARITY_Old                  : "Transaction nonce is too low. Try incrementing th
 PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
 PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
 PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} wei and got: {} wei.",
 PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
 PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 

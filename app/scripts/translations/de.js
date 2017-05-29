@@ -281,24 +281,24 @@ ADD_Trezor_scan             : 'Connect to TREZOR ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
 
 /* Error Messages */
-ERROR_0                     : 'Bitte gültigen Betrag eingeben ',
+ERROR_0                     : 'Bitte gebe eine gültige betrag ein ',
 ERROR_1                     : 'Dein Passwort muss mindestens 9 Zeichen lang sein. Bitte wähle ein sicheres Passwort. ',
 ERROR_2                     : 'Oh oh! Wir haben den Typ der Wallet-Datei nicht erkannt. ',
 ERROR_3                     : 'Dies ist keine gültige Wallet-Datei. ',
 ERROR_4                     : 'Diese Einheit existiert nicht, bitte wähle eine dieser Einheiten aus ',
-ERROR_5                     : 'Ungültige Addresse. ',
-ERROR_6                     : 'Ungültiges Passwort. ',
-ERROR_7                     : 'Ungültiger Betrag. ',
-ERROR_8                     : 'Ungültiges Gaslimit. ',
-ERROR_9                     : 'Ungültiger Datenwert. ',
-ERROR_10                    : 'Ungültiger Gasbetrag. ',
-ERROR_11                    : 'Ungültige Nonce. ',
+ERROR_5                     : 'Bitte gebe eine gültige Addresse ein. ',
+ERROR_6                     : 'Bitte gebe eine gültige Passwort ein. ',
+ERROR_7                     : 'Bitte gebe eine gültige Betrag ein. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Bitte gebe eine gültige Gasverbrauch ein. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Bitte gebe eine gültige Datenwert ein. (Must be hex.) ', // 9
+ERROR_10                    : 'Bitte gebe eine gültige Gasbetrag ein. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Bitte gebe eine gültige Nonce ein. (Must be integer.) ', // 11
 ERROR_12                    : 'Ungültige unterzeichnete Transaktion. ',
 ERROR_13                    : 'Ein Wallet mit diesem Spitznamen existiert bereits. ',
 ERROR_14                    : 'Wallet nicht gefunden. ',
 ERROR_15                    : 'Es sieht nicht so aus als würde ein Proposal mit dieser ID existieren oder es gab einen Fehler beim Lesen des Proposal. ',
 ERROR_16                    : 'Es ist bereits ein Wallet mit dieser Adresse gespeichert. Bitte überprüfe die Seite deines Wallets. ',
-ERROR_17                    : 'Du brauchst **0.01 ETH** in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
+ERROR_17                    : 'Unzureichendes Guthaben für Gasverbrauch * Gaspreis + Wert. Du brauchst **0.01 ETH** in deinem Account um die Gaskosten zu decken. Bitte füge ETH hinzu und versuche es noch einmal. ',
 ERROR_18                    : 'Diese Transaktion würde dein gesamtes verbleibendes Gas verbrauchen. Das bedeutet, du hast bereits über dieses Proposal abgestimmt oder die Debattierphase ist zu Ende. ',
 ERROR_19                    : 'Ungültiges Symbol ',
 ERROR_20                    : 'Not a valid ERC-20 token ',
@@ -312,8 +312,11 @@ ERROR_27                    : 'Mindestbetrag: 0.01. Maximaler Betrag: ',
 ERROR_28                    : '**Du benötigst deine Keystore-Datei & das Passwort** (oder den privaten Schlüssel) um künftig auf dein Wallet zugreifen zu können. Bitte sichere diese Datei daher auf einem externen Medium! Es gibt KEINE Möglichkeit, ein Wallet wiederherzustellen, wenn du diese Datei und das Passwort nicht sicherst. Lies die [Hilfe-Seite](https://www.myetherwallet.com/#help) für weitere Informationen. ',
 ERROR_29                    : 'Bitte gebe einen gültigen Benutzer und Password ein ',
 ERROR_30                    : 'Bitte gebe einen gültigen ENS Namen ein ',
-ERROR_31                    : 'Geheime Phasre ungültig ',
-ERROR_32                    : 'Verbindung zum Knoten nicht möglich. Bitte lade die Seite neu, oder schau auf der Hilfeseite für mehr Tipps zur Problemlösung ', //Evtl. noch kürzen
+ERROR_31                    : 'Bitte gebe einen gültigen Geheime Phasre ein ',
+ERROR_32                    : 'Verbindung zum Knoten nicht möglich. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Gültige Addresse ',
 SUCCESS_2                   : 'Wallet erfolgreich entschlüsselt ',
 SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transaktion übermittelt. TX ID ',
@@ -321,6 +324,7 @@ SUCCESS_4                   : 'Dein Wallet wurde erfolgreich hinzugefügt ',
 SUCCESS_5                   : 'Ausgewählte Datei ',
 SUCCESS_6                   : 'Erfolgreich verbunden ',
 SUCCESS_7                   : 'Nachtichten Signatur verifiziert',
+
 /* Geth Error Messages */
 GETH_InvalidSender          : 'Invalid sender Ungültiger Sender ',
 GETH_Nonce                  : 'Nonce too low  ',

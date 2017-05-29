@@ -285,17 +285,17 @@ ERROR_3                     : 'Ceci n\'est pas un fichier de portefeuille. ',
 ERROR_4                     : 'Cette unité n\'existe pas, merci d\'utiliser une des unités suivantes ',
 ERROR_5                     : 'Adresse invalide. ',
 ERROR_6                     : 'Mot de passe invalide. ',
-ERROR_7                     : 'Montant invalide. ',
-ERROR_8                     : 'Limite de gaz invalide. ',
-ERROR_9                     : 'Valeur des donnnées invalide. ',
-ERROR_10                    : 'Montant de gaz invalide. ',
-ERROR_11                    : 'Nonce invalide. ',
+ERROR_7                     : 'Montant invalide. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Limite de gaz invalide. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Valeur des donnnées invalide. (Must be hex.) ', // 9
+ERROR_10                    : 'Montant de gaz invalide. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Nonce invalide. (Must be integer.) ', // 11
 ERROR_12                    : 'Transaction signée invalide. ',
 ERROR_13                    : 'Un portefeuille avec ce nom existe déjà. ',
 ERROR_14                    : 'Portefeuille non trouvé. ',
 ERROR_15                    : 'Il semble qu\'aucune proposition n\'existe encore avec cet identifiant ou qu\'il y a une erreur lors de la consultation de cette proposition. ',
 ERROR_16                    : 'Un portefeuille avec cette adresse existe déja. Merci de consulter la page listant vos portefeuilles. ',
-ERROR_17                    : 'Il vous faut au moins 0,01 ether sur votre compte pour couvrir les coûts du gaz. Ajoutez des ether et réessayez. ',
+ERROR_17                    : 'iFonds insuffisants. Le compte d\'où vous essayez d\'envoyer une transaction ne possède pas assez de fonds. Il vous faut au moins 0,01 ether sur votre compte pour couvrir les coûts du gaz. Ajoutez des ether et réessayez. ',
 ERROR_18                    : 'Tout le gaz serait consommé lors de cette transaction. Cela signifie que vous avez déjà voté pour cette proposition ou que la période du débat est terminée. ',
 ERROR_19                    : 'Symbole invalide ',
 ERROR_20                    : 'n\'est pas un token ERC-20 valide. Si d\'autres tokens sont en train de se charger, enlevez celui-ci et réessayez. ',
@@ -310,7 +310,10 @@ ERROR_28                    : '**Vous avez besoin de votre fichier Keystore et d
 ERROR_29                    : 'Entrez un utilisateur et mot de passe valide ',
 ERROR_30                    : 'Entrez un nom ENS valide ',
 ERROR_31                    : 'Phrase secrète invalide ',
-ERROR_32                    : 'Connexion au nœud impossible. Rafraîchissez la page, ou lisez les suggestions de dépannage sur la page d\'aide. ',
+ERROR_32                    : 'Connexion au nœud impossible. Rafraîchissez la page or try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Adresse valide ',
 SUCCESS_2                   : 'Portefeuille déchiffré avec succès ',
 SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transaction successfully broadcasted to the blockchain. **CLICK THE LINK TO ENSURE IT DID NOT FAIL DUE TO OUT OF GAS OR CONTRACT EXECUTION ERROR ON THE BLOCKCHAIN.** TX ID ', //'Transaction envoyée. Identifiant de transaction ',

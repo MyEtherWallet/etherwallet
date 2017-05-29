@@ -280,39 +280,42 @@ ADD_Trezor_scan             : 'Connect to TREZOR ',
 ADD_Trezor_select           : 'This is a TREZOR seed ',
 
 /* Error Messages */
-ERROR_0                     : 'Kérlek írj be érvényes összeget! ',
+ERROR_0                     : 'Kérlek írj be érvényes összeget ',
 ERROR_1                     : 'A jelszavadnak minimum 9 karakter hosszúságúnak kell lennie. Kérlek győződj meg arról, hogy erős jelszót választasz. ',
 ERROR_2                     : 'Sajnáljuk, de nem tudjuk felismerni ezt a típusú Tárca fájlt. ',
 ERROR_3                     : 'Ez nem egy érvényes Tárca fájl. ',
 ERROR_4                     : 'Ez a egység nem létezik, kérlek használj egyet az alábbi egységek közül ',
 ERROR_5                     : 'Érvénytelen cím. ',
 ERROR_6                     : 'Érvénytelen jelszó. ',
-ERROR_7                     : 'Érvénytelen összeg. ',
-ERROR_8                     : 'Érvénytelen gas limit. ',
-ERROR_9                     : 'Érvénytelen adatérték. ',
-ERROR_10                    : 'Érvénytelen gas összeg. ',
-ERROR_11                    : 'Érvénytelen nonce. ',
+ERROR_7                     : 'Érvénytelen összeg. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Érvénytelen gas limit. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Érvénytelen adatérték. (Must be hex.) ', // 9
+ERROR_10                    : 'Érvénytelen gas összeg. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Érvénytelen nonce. (Must be integer.) ', // 11
 ERROR_12                    : 'Érvénytelen aláírású tranzakció. ',
 ERROR_13                    : 'Egy Tárca ezzel a Nicknévvel már létezik ',
 ERROR_14                    : 'Tárca nem található. ',
 ERROR_15                    : 'Úgy tűnik ezzel az ID-vel nem létezik javaslat, vagy hiba történt a javaslat beolvasása közben. ',
 ERROR_16                    : 'Egy tárca ezzel a címmel már létezik a tárolóban. Kérlek ellenőrizd a tárcák oldalán. ',
-ERROR_17                    : 'Legalább 0.01 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra! ',
+ERROR_17                    : 'Nincs elegendő egyenleg. A számlán amiről küldeni próbálsz nem elég az egyenleg. Legalább 0.01 ethernek kell lennie a számládon, ahhoz, hogy fedezni tudd a gas költségeit. Kérlek adj hozzá ethert és próbáld újra! ',
 ERROR_18                    : 'Az összes gas felhasználásra kerülne ezen a tranzakción. Ez azt jelenti, hogy már szavaztál erre a javaslatra vagy a vita periódus már lejárt. ',
 ERROR_19                    : 'Érvénytelen szimbólum ',
-ERROR_20                    : 'Not a valid ERC-20 token ',
-ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
-ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
-ERROR_24                    : 'Please enter valid port ',
-ERROR_25                    : 'Please enter valid chain ID ',
-ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
+ERROR_20                    : 'Not a valid ERC-20 token', // 20
+ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+ERROR_22                    : 'Please enter a valid node name', // 22
+ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23
+ERROR_24                    : 'Please enter a valid port. ', // 24
+ERROR_25                    : 'Please enter a valid chain ID. ', // 25
+ERROR_26                    : 'Please enter a valid ABI. ', // 26
+ERROR_27                    : 'Minimum amount: 0.01. Max amount: ', // 27
 ERROR_28                    : '**Szükséged lesz a Keystore Fájlra és a jelszóra vagy a Privát Kulcsra**, ahhoz, hogy hozzáférj ehhez a tárcához a jövőben. Kérlek mentsd el és készíts külső biztonsági mentést is! Nincs lehetőség egy tárca visszaszerzésére, ha nem mented el. Olvasd el a [Segítség lapot](https://www.myetherwallet.com/#help) további instrukciókért. ',
-ERROR_29                    : 'Please enter valid user and password ',
-ERROR_30                    : 'Please enter valid ENS name ',
-ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
+ERROR_29                    : 'Please enter a valid user and password. ', // 29
+ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
+ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
+ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Érvényes cím ',
 SUCCESS_2                   : 'Tárca sikeresen dekódolva ',
 SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Tranzakció elküldve. TX ID ',

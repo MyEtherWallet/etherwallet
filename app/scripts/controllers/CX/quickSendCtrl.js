@@ -58,7 +58,7 @@ var quickSendCtrl = function($scope, $sce) {
 	$scope.prepTX = function() {
 		try {
 			if (!ethFuncs.validateEtherAddress($scope.tx.to)) throw globalFuncs.errorMsgs[5];
-			else if (!globalFuncs.isNumeric($scope.tx.value) || parseFloat($scope.tx.value) < 0) throw globalFuncs.errorMsgs[7];
+			else if (!globalFuncs.isNumeric($scope.tx.value) || parseFloat($scope.tx.value) < 0) throw globalFuncs.errorMsgs[0];
 			$scope.showConfirm = true;
 		} catch (e) {
 			$scope.prepTXStatus = $sce.trustAsHtml(globalFuncs.getDangerText(e));

@@ -287,11 +287,11 @@ ERROR_3                     : 'Đây không phải là một tập tin ví hợp
 ERROR_4                     : 'Đơn vị này không tồn tại, xin vui lòng sử dụng một trong những đơn vị sau đây ',
 ERROR_5                     : 'Địa chỉ không hợp lệ. ',
 ERROR_6                     : 'Mật khẩu không hợp lệ. ',
-ERROR_7                     : 'Tổng số không hợp lệ. ',
-ERROR_8                     : 'Giới hạn gas không hợp lệ. ',
-ERROR_9                     : 'Dữ liệu không hợp lệ. ',
-ERROR_10                    : 'Tổng số gas không hợp lệ. ',
-ERROR_11                    : 'Nonce không hợp lệ. ',
+ERROR_7                     : 'Tổng số không hợp lệ. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Giới hạn gas không hợp lệ. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Dữ liệu không hợp lệ. (Must be hex.) ', // 9
+ERROR_10                    : 'Tổng số gas không hợp lệ. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Nonce không hợp lệ. (Must be integer.) ', // 11
 ERROR_12                    : 'Chữ ký giao dịch không hợp lệ. ',
 ERROR_13                    : 'Tên gọi này đã được sữ dụng. ',
 ERROR_14                    : 'Không tìm thấy Ví. ',
@@ -301,18 +301,21 @@ ERROR_17                    : 'Bạn cần có ít nhất **0.01 ETH** trong tà
 ERROR_18                    : 'Toàn bộ gas sẽ được sử dụng trong giao dịch này. Việc làm này có nghĩa là bạn đã bỏ phiếu cho đề xuất này hoặc kỳ hạn của cuộc tranh luận đã kết thúc. ',
 ERROR_19                    : 'Biểu tượng không hợp lệ ',
 ERROR_20                    : 'Không tồn tại trên hệ thống ERC-20 token. Nếu bạn phải chờ lâu. Xin vui lòng thử lại lần nữa!. ',
-ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
-ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
-ERROR_24                    : 'Please enter valid port ',
-ERROR_25                    : 'Please enter valid chain ID ',
-ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
+ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+ERROR_22                    : 'Please enter a valid node name', // 22
+ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23
+ERROR_24                    : 'Please enter a valid port. ', // 24
+ERROR_25                    : 'Please enter a valid chain ID. ', // 25
+ERROR_26                    : 'Please enter a valid ABI. ', // 26
+ERROR_27                    : 'Minimum amount: 0.01. Max amount: ', // 27
 ERROR_28                    : '**Bạn cần sử dụng tập tin chứa định dạng Keystore/JSON cùng với Mật khẩu hoặc Private Key của bạn** cho việc đăng nhập vào ví này trong tương lai. Hãy sao lưu và cất giữ nó cẩn thận tại kho lưu trữ của bạn! Không có cách nào đễ khôi phục Ví của bạn nếu bạn không sao lưu dữ liệu ví lại. Đọc Thêm [trang trợ giúp] (https://www.myetherwallet.com/#help) đễ được hướng dẫn cụ thể. ',
-ERROR_29                    : 'Please enter valid user and password ',
-ERROR_30                    : 'Please enter valid ENS name ',
-ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
+ERROR_29                    : 'Please enter a valid user and password. ', // 29
+ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
+ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
+ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Địa Chỉ Hợp Lệ ',
 SUCCESS_2                   : 'Ví đã được giải mã thành công ',
 SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Giao dịch đã gửi đi, TX ID: ',

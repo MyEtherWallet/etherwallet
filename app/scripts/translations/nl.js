@@ -277,17 +277,17 @@ ERROR_3                     : 'Dit is geen geldig Wallet bestand. ',
 ERROR_4                     : 'Deze eenheid bestaat niet, kies alsjeblieft een van de volgende eenheden ',
 ERROR_5                     : 'Ongeldig adres. ',
 ERROR_6                     : 'Ongeldig wachtwoord. ',
-ERROR_7                     : 'Ongeldig bedrag. ',
-ERROR_8                     : 'Ongeldige gas limiet. ',
-ERROR_9                     : 'Ongeldige data waarde. ',
-ERROR_10                    : 'Ongeldige gas bedrag. ',
-ERROR_11                    : 'Ongeldige nonce. ',
+ERROR_7                     : 'Ongeldig bedrag. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Ongeldige gas limiet. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Ongeldige data waarde. (Must be hex.) ', // 9
+ERROR_10                    : 'Ongeldige gas bedrag. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Ongeldige nonce. (Must be integer.) ', // 11
 ERROR_12                    : 'Ongeldige gesigneerde transactie. ',
 ERROR_13                    : 'Een wallet met deze nickname bestaat reeds. ',
 ERROR_14                    : 'Wallet niet gevonden. ',
 ERROR_15                    : 'Het ziet er niet naar uit dat een proposal met dit ID bestaat of dat er een  fout is opgetreden bij het lezenvan dit proposal. ',
 ERROR_16                    : 'Een wallet met dit adres bestaat reeds. Check alsjeblileft je wallet pagina. ',
-ERROR_17                    : 'Je hebt mininaal 0.01 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
+ERROR_17                    : 'Ontoereikend saldo. Het account waarvan je probeert te versturen bevat niet voldoende saldo. Je hebt mininaal 0.01 ether in je account nodig om de in de gas kosten te voorzien. Voeg alsjeblieft wat ether toe en probeer het opnieuw. ',
 ERROR_18                    : 'Alle gas zou worden verbruikt op deze transactie. Dit betekend dat je al gestemd hebt op dit proposal of dat de debateerperiode is verstreken. ',
 ERROR_19                    : 'Ongeldig symbol ',
 ERROR_20                    : 'is geen geldig ERC-20 token. Als andere tokens nog aan het laden zijn, verwijder dan dit token en probeer het opnieuw. ',
@@ -302,7 +302,10 @@ ERROR_28                    : '**Je hebt je Keystore Bestand & wachtwoord of pri
 ERROR_29                    : 'Voer een valide gebruikersnaam en wachtwoord in ',
 ERROR_30                    : 'Voer een valide ENS naam in ',
 ERROR_31                    : 'Ongeldige geheime zin ',
-ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
+ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Geldig adres ',
 SUCCESS_2                   : 'Wallet succesvol ontsleuteld ',
 SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transactie verzonden. TX ID ',

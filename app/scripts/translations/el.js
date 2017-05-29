@@ -60,6 +60,7 @@ FOOTER_1                    : 'Ένα εργαλείο ανοιχτού κώδι
 FOOTER_1b                   : 'Δημιουργήθηκε από ',
 FOOTER_2                    : 'Εκτιμούμε πολύ τις δωρεές σας: ',
 FOOTER_3                    : 'Δημιουργία Πορτοφολιών από πλευράς πελάτη από ',
+FOOTER_4                    : 'Disclaimer ',
 
 /* Sidebar */
 sidebar_AccountInfo         : 'Πληροφορίες Λογαριασμού ',
@@ -285,32 +286,34 @@ ERROR_3                     : 'Αυτό δεν είναι έγκυρο αρχε�
 ERROR_4                     : 'Αυτή η μονάδα δεν υπάρχει, παρακαλώ χρησιμοποιήστε μία απο τις ακόλουθες μονάδες: ',
 ERROR_5                     : 'Λάθος Διεύθυνση. ',
 ERROR_6                     : 'Λάθος κωδικός. ',
-ERROR_7                     : 'Λάθος ποσό. ',
-ERROR_8                     : 'Λάθος όριο gas. ',
-ERROR_9                     : 'Λάθος data value. ',
-ERROR_10                    : 'Λάθος ποσό gas. ',
-ERROR_11                    : 'Λάθος nonce. ',
+ERROR_7                     : 'Λάθος ποσό. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Λάθος όριο gas. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Λάθος data value. (Must be hex.) ', // 9
+ERROR_10                    : 'Λάθος ποσό gas. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Λάθος nonce. (Must be integer.) ', // 11
 ERROR_12                    : 'Λάθος υπογεγραμμένη συναλλαγή. ',
 ERROR_13                    : 'Υπάρχει ήδη πορτοφόλι με αυτό το ψευδώνυμο. ',
 ERROR_14                    : 'Δεν βρέθηκε πορτοφόλι. ',
 ERROR_15                    : 'Φαίνετα να μην υπάρχει ακόμη πρόταση με αυτό το ID ή υπήρξε σφάλμα κατά την ανάγνωση της πρότασης αυτής. ',
 ERROR_16                    : 'Υπάρχει ήδη αποθηκευμένο πορτοφόλι με αυτή την διεύθυνση. Παρακαλώ ελέγξτε την σελίδα πορτοφολιών σας. ',
-ERROR_17                    : 'Πρέπει να έχετε τουλάχιστον 0.01 ETH στον λογαριασμό σας για να καλύψετε το κόστος του gas. Παρακαλώ προσθέστε μερικά ether και δοκιμάστε ξανά. ',
+ERROR_17                    : 'Account you are sending from does not have enough funds. If sending tokens, you must have 0.01 ETH in your account to cover the cost of gas. ', // 17
 ERROR_18                    : 'Όλο το gas θα είχε δαπανηθεί στην συναλλαγή αυτή. Αυτό σημαίνει ότι έχετε ήδη ψηφίσει στην πρόταση αυτή ή ότι η περίοδος συζήτησης έχει λήξει. ',
 ERROR_19                    : 'Λάθος σύμβολο ',
-ERROR_20                    : 'Not a valid ERC-20 token ',
-ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
-ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
-ERROR_24                    : 'Please enter valid port ',
-ERROR_25                    : 'Please enter valid chain ID ',
-ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
+ERROR_20                    : 'Not a valid ERC-20 token', // 20
+ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+ERROR_22                    : 'Please enter a valid node name', // 22
+ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23
+ERROR_24                    : 'Please enter a valid port. ', // 24
+ERROR_25                    : 'Please enter a valid chain ID. ', // 25
+ERROR_26                    : 'Please enter a valid ABI. ', // 26
+ERROR_27                    : 'Minimum amount: 0.01. Max amount: ', // 27
 ERROR_28                    : 'Προκειμένου να έχετε πρόσβαση σε αυτό το πορτοφόλι στο μέλλον **είναι απαραίτητο το αρχείο Keystore/JSON & ο κωδικός ή το Ιδιωτικό Κλειδί σας**. Παρακαλούμε κρατήστε ένα εξωτερικό αντίγραφο ασφαλείας! Δεν υπάρχει τρόπος ανάκτησης ενός πορτοφολιού άν δεν το αποθηκέυσετε. Διαβάστε την σελίδα [Βοήθειας](https://www.myetherwallet.com/#help) για οδηγίες. ',
 ERROR_29                    : 'Please enter valid user and password ',
-ERROR_30                    : 'Please enter valid ENS name ',
-ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
+ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
+ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
+ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Έγκυρη διεύθυνση ',
 SUCCESS_2                   : 'Το πορτοφόλι αποκρυπτογραφήθηκε επιτυχώς ',
 SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Η συναλλαγή υποβλήθηκε. TX ID ',
@@ -328,9 +331,6 @@ GETH_InsufficientFunds      : 'Insufficient funds for gas * price + value ',
 GETH_IntrinsicGas           : 'Intrinsic gas too low ',
 GETH_GasLimit               : 'Exceeds block gas limit ',
 GETH_NegativeValue          : 'Negative value ',
-HELP_12_Desc_15b            : 'If you are on a PC: ',
-SUCCESS_5                   : 'File Selected ',
-FOOTER_4                    : 'Disclaimer ',
 
 /* Parity Error Messages */
 PARITY_AlreadyImported      : "Transaction with the same hash was already imported.",

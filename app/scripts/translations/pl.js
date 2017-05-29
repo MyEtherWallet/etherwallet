@@ -287,17 +287,17 @@ ERROR_3                     : 'To nie jest prawidłowy plik portfela. ',
 ERROR_4                     : 'Ta jednostka nie istnieje, użyj jednej z następujących jednostek ',
 ERROR_5                     : 'Błędny adres. ',
 ERROR_6                     : 'Błędne hasło. ',
-ERROR_7                     : 'Błędna wartość. ',
-ERROR_8                     : 'Błędny limit paliwa. ',
-ERROR_9                     : 'Błędne dane. ',
-ERROR_10                    : 'Błędna ilość paliwa. ',
-ERROR_11                    : 'Błędny wyróżnik. ',
+ERROR_7                     : 'Błędna wartość. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Błędny limit paliwa. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Błędne dane. (Must be hex.) ', // 9
+ERROR_10                    : 'Błędna ilość paliwa. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Błędny wyróżnik. (Must be integer.) ', // 11
 ERROR_12                    : 'Błąd podpisu transakcji. ',
 ERROR_13                    : 'Portfel z tą nazwą już istnieje. ',
 ERROR_14                    : 'Nie znaleziono portfela. ',
 ERROR_15                    : 'Wygląda, że propozycja z tym ID jeszcze nie istnieje, lub wystąpił błąd odczytu tej propozycji. ',
 ERROR_16                    : 'Portfel z tym adresem już istnieje w konfiguracji. Sprawdź zakładkę portfeli. ',
-ERROR_17                    : 'Musisz mieć **0.01 ETH** na koncie, aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
+ERROR_17                    : 'Niewystarczające środki. Konto, z którego wysyłasz transakcję nie posiada wystarczających funduszy. Musisz mieć **0.01 ETH** na koncie, aby pokryć koszty paliwa. Doładuj konto i spróbuj ponownie. ',
 ERROR_18                    : 'Całe paliwo było by zużyte w tej transakcji. Oznacza to, że głosowałeś już w tej propozycji albo minął termin głosowania. ',
 ERROR_19                    : 'Nieprawidłowy symbol ',
 ERROR_20                    : 'nie jest prawidłowym tokenem ERC-20. Jeśli inne tokeny się ładują, sporóbuj usunąć i dodać ponownie ten token. ',
@@ -312,7 +312,10 @@ ERROR_28                    : '**Potrzebujesz plik Keystore i hasło, lub Klucz 
 ERROR_29                    : 'Wpisz poprawny login i hasło ',
 ERROR_30                    : 'Wpisz poprawną nazwę ENS ',
 ERROR_31                    : 'Błędna tajna fraza (secret phrase) ',
-ERROR_32                    : 'Nie można połączyć z węzłem. Odśwież witrynę lub odwiedź stronę pomocy, aby uzyskać sugestie rozwiązania problemu. ',
+ERROR_32                    : 'Nie można połączyć z węzłem.  Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Prawidłowy adres ',
 SUCCESS_2                   : 'Portfel został odszyfrowany ',
 SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transakcja zgłoszona. TX ID ',

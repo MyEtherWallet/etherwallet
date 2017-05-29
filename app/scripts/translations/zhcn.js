@@ -287,11 +287,11 @@ ERROR_3                     : '这不是一个有效的钱包文件。 ',
 ERROR_4                     : 'This unit doesn\'t exists, please use the one of the following units 这个单位不存在，请用下面给出的单位 ',
 ERROR_5                     : '无效地址。 ',
 ERROR_6                     : '无效密码。 ',
-ERROR_7                     : '无效数额。 ',
-ERROR_8                     : '无效gas上限。 ',
-ERROR_9                     : '无效数据值。 ',
-ERROR_10                    : '无效gas数额。 ',
-ERROR_11                    : '无效nonce。 ',
+ERROR_7                     : '无效数额。(Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : '无效gas上限。(Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : '无效数据值。(Must be hex.) ', // 9
+ERROR_10                    : '无效gas数额。(Must be integer. Try 20 GWEI / 20000000000 WEI.)',
+ERROR_11                    : '无效nonce。(Must be integer.)', // 11
 ERROR_12                    : '无效签名交易。 ',
 ERROR_13                    : '已经有一个钱包使用该昵称。 ',
 ERROR_14                    : '找不到钱包。 ',
@@ -300,22 +300,25 @@ ERROR_16                    : '这个地址钱包已经存在于存储中。请�
 ERROR_17                    : '你的账户需要至少0.01以太币，已支付gas费用。请添加一些以太币，再次尝试。 ',
 ERROR_18                    : '所有的gas将用于这笔交易。 这意味着你已经对这个提议进行投票或者辩论期已经结束。 ',
 ERROR_19                    : '无效符号 ',
-ERROR_20                    : 'Not a valid ERC-20 token ',
-ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
-ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
-ERROR_24                    : 'Please enter valid port ',
-ERROR_25                    : 'Please enter valid chain ID ',
-ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
+ERROR_20                    : 'Not a valid ERC-20 token', // 20
+ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+ERROR_22                    : 'Please enter a valid node name', // 22
+ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23
+ERROR_24                    : 'Please enter a valid port. ', // 24
+ERROR_25                    : 'Please enter a valid chain ID. ', // 25
+ERROR_26                    : 'Please enter a valid ABI. ', // 26
+ERROR_27                    : 'Minimum amount: 0.01. Max amount: ', // 27
 ERROR_28                    : '将来使用钱包时，你需要Keystore文件或者私钥。 请做好保存和备份。 如果你没有保存，没有办法恢复钱包。 请阅读[帮助页面](https://www.myetherwallet.com/#help)，获得更多信息。 ',
-ERROR_29                    : 'Please enter valid user and password ',
-ERROR_30                    : 'Please enter valid ENS name ',
-ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
+ERROR_29                    : 'Please enter a valid user and password. ', // 29
+ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
+ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
+ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : '有效地址 ',
 SUCCESS_2                   : '钱包解密成功 ',
-SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'交易已提交。TX ID： ',
+SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID: ', //'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //
 SUCCESS_4                   : '成功添加你的钱包： ',
 SUCCESS_5                   : '选择的文件： ',
 SUCCESS_6                   : 'You are successfully connected ',
@@ -339,7 +342,7 @@ PARITY_Old                  : "Transaction nonce is too low. Try incrementing th
 PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
 PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
 PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} wei and got: {} wei.",
 PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
 PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 

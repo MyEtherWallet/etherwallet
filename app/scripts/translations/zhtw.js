@@ -272,18 +272,18 @@ ERROR_3                     : '這不是一個有效的錢包檔案。 ',
 ERROR_4                     : '這個單位並不存在，請使用以下的單位 ',
 ERROR_5                     : '無效的地址。 ',
 ERROR_6                     : '無效的密碼。 ',
-ERROR_7                     : '無效的數量。 ',
-ERROR_8                     : '無效的gas上限。 ',
-ERROR_9                     : '無效的data。 ',
-ERROR_10                    : '無效的gas數量。 ',
-ERROR_11                    : '無效的nonce值。 ',
+ERROR_7                     : '無效的數量。(Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : '無效的gas上限。(Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : '無效的data。(Must be hex.) ', // 9
+ERROR_10                    : '無效的gas數量。(Must be integer. Try 20 GWEI / 20000000000 WEI.)',
+ERROR_11                    : '無效的nonce值。(Must be integer.)', // 11
 ERROR_12                    : '無效的已簽名交易。 ',
 ERROR_13                    : '已經有一個使用相同暱稱的錢包存在。 ',
 ERROR_14                    : '找不到錢包。 ',
 ERROR_15                    : 'It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ',
 ERROR_16                    : '儲存裝置中已經有一個包含這個地址的錢包存在。 請見錢包頁面。 ',
 ERROR_17                    : '你帳戶中必須有至少 **0.01 ETH** 來支付gas的成本。 請添加一些 ETH 並重試。 ',
-ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended. ',
+ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
 ERROR_19                    : '無效的符號 ',
 ERROR_20                    : '並不是一個有效的 ERC-20 代幣 ',
 ERROR_21                    : '無法估計花費的gas。 這個帳戶沒有足夠餘額，或是接收的合約丟出錯誤訊息。 你可以自己手動設定gas並執行。 傳送後的錯誤訊息可能會提供更多訊息。 ',
@@ -295,12 +295,15 @@ ERROR_26                    : '請輸入有效的ABI ',
 ERROR_27                    : '最少數量 0.01 及最大',
 ERROR_28                    : '**以後你會需要密碼和Keystore檔案** (或私鑰)來存取你的錢包。請儲存並備份在額外的地方！如果沒有儲存你是沒有機會找回這個錢包的。 詳見[幫助頁面](https://www.myetherwallet.com/#help)來獲取更多資訊。 ',
 ERROR_29                    : '請輸入有效的使用者及密碼 ',
-ERROR_30                    : 'Please enter valid ENS name ',
-ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
+ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
+ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
+ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : '有效的地址 ',
 SUCCESS_2                   : '成功解密錢包 ',
-SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'交易已傳送。 交易的ID ',
+SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID: ', //'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //
 SUCCESS_4                   : '成功新增你的錢包 ',
 SUCCESS_5                   : '已選擇檔案 ',
 SUCCESS_6                   : 'You are successfully connected ',

@@ -286,34 +286,36 @@ ERROR_1                     : 'Tu contraseña debe tener al menos 9 caracteres. 
 ERROR_2                     : 'Lo sentimos. No reconocemos este tipo de archivo de cartera. ',
 ERROR_3                     : 'Este no es un archivo de cartera válido. ',
 ERROR_4                     : 'Esta unidad no existe. Por favor utiliza una de las siguientes unidades ',
-ERROR_5                     : 'Dirección no válida. ',
-ERROR_6                     : 'Contraseña no válida. ',
-ERROR_7                     : 'Cantidad no válida. ',
-ERROR_8                     : 'Límite de gas no válido. ',
-ERROR_9                     : 'Valor de datos no válido. ',
-ERROR_10                    : 'Cantidad de gas no válida. ',
-ERROR_11                    : 'Nonce no válido. ',
-ERROR_12                    : 'Transacción firmada no válida. ',
+ERROR_5                     : 'Introduce una Dirección válida. ',
+ERROR_6                     : 'Introduce una Contraseña válida. ',
+ERROR_7                     : 'Introduce una Cantidad válida. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Introduce un Límite de gas válido. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Introduce un Valor de datos válido. (Must be hex.) ', // 9
+ERROR_10                    : 'Introduce una Cantidad de gas válida. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Introduce un Nonce válido. (Must be integer.) ', // 11
+ERROR_12                    : 'Introduce una Transacción firmada válida. ',
 ERROR_13                    : 'Ya existe una cartera con este alias. ',
 ERROR_14                    : 'Cartera no encontrada. ',
 ERROR_15                    : 'No parece que exista todavía una propuesta con este ID o hay un error al leer esta propuesta. ',
 ERROR_16                    : 'Ya hay almacenada una cartera con esta dirección. Por favor comprueba la página de carteras. ',
-ERROR_17                    : 'Es necesario tener al menos 0.01 ether en tu cuenta para cubrir el coste del gas. Añade algo de ether e inténtalo de nuevo. ',
+ERROR_17                    : 'Fondos no suficientes para gas * precio + valor. Es necesario tener al menos 0.01 ether en tu cuenta para cubrir el coste del gas. Añade algo de ether e inténtalo de nuevo. ',
 ERROR_18                    : 'Sería necesario utilizar todo el gas en esta transacción. Esto significa que ya has votado en esta propuesta o que el periodo de debate ha concluido. ',
-ERROR_19                    : 'Símbolo no válido ',
+ERROR_19                    : 'Introduce un Símbolo válido ',
 ERROR_20                    : 'No es un token ERC-20 válido ',
 ERROR_21                    : 'No se ha podido estimar el gas. No hay suficientes fondos en la cuenta, o el contrato de destino ha devuelto un error. Puedes ajustar el gas manualmente y continuar. Puede que el mensaje de error al enviar contenga más información. ',
 ERROR_22                    : 'Introduce un nombre de nodo válido ',
 ERROR_23                    : 'Introduce una URL válida. Si estás en HTTPS, tu URL debe ser HTTPS ',
 ERROR_24                    : 'Introduce un puerto válido ',
-ERROR_25                    : 'Please enter valid chain ID ',
-ERROR_26                    : 'Please enter valid ABI ',
+ERROR_25                    : 'Introduce un chain ID válido ',
+ERROR_26                    : 'Introduce un ABI válido ',
 ERROR_27                    : 'Cantidad mínima 0.01 ',
 ERROR_28                    : '**Necesitas tu archivo Keystore/JSON y la contraseña** (o clave privada) para acceder a esta cartera en el futuro. Por favor ¡guárdala y respáldala externamente! No hay modo de recuperar una cartera si no la guardas. Lee la [página de ayuda](https://www.myetherwallet.com/#help) para instrucciones. ',
-ERROR_29                    : 'Please enter valid user and password ',
-ERROR_30                    : 'Please enter valid ENS name ',
-ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
+ERROR_29                    : 'Introduce un user & password válido. ', // 29
+ERROR_30                    : 'Introduce un name válido (7+ characters, limited punctuation) ', // 30
+ERROR_31                    : 'Introduce un secret phrase válido. ', // 31
+ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Dirección válida ',
 SUCCESS_2                   : 'Cartera descifrada con éxito ',
 SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transacción enviada. TX ID ',

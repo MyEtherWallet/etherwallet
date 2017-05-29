@@ -286,17 +286,17 @@ ERROR_3                     : 'Dette er ikke en gyldig lommebok-fil. ',
 ERROR_4                     : 'Denne enheten eksisterer ikke, vennligst benytt en av de følgende enhetene ',
 ERROR_5                     : 'Ugyldig adresse. ',
 ERROR_6                     : 'Ugyldig passord. ',
-ERROR_7                     : 'Ugyldig beløp. ',
-ERROR_8                     : 'Ugyldig gas-grense. ',
-ERROR_9                     : 'Ugyldig dataverdi. ',
-ERROR_10                    : 'Ugyldig gas-mengde. ',
-ERROR_11                    : 'Ugyldig nonce. ',
+ERROR_7                     : 'Ugyldig beløp. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Ugyldig gas-grense. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Ugyldig dataverdi. (Must be hex.) ', // 9
+ERROR_10                    : 'Ugyldig gas-mengde. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Ugyldig nonce. (Must be integer.) ', // 11
 ERROR_12                    : 'Ugyldig signert transaksjon. ',
 ERROR_13                    : 'En lommebok med dette kallenavnet eksisterer allerede. ',
 ERROR_14                    : 'Lommebok ikke funnet. ',
 ERROR_15                    : 'Det ser ikke ut til at et forslag med denne ID-en eksisterer ennå, eller det er en feil ved innlesning av dette forslaget. ',
 ERROR_16                    : 'En lommebok med denne adressen er allerede lagret. Vennligst sjekk lommebok-siden din. ',
-ERROR_17                    : 'Du trenger minst 0,01 ether på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ether og prøv igjen. ',
+ERROR_17                    : 'Utilstrekkelige midler. Kontoen du prøver å sende transaksjon fra har ikke nok midler. Du trenger minst 0,01 ether på kontoen din for å dekke gas-kostnaden. Vennligst legg til litt ether og prøv igjen. ',
 ERROR_18                    : 'All gas vil bli brukt på denne transaksjonen. Dette betyr at du allerede har stemt på dette forslaget, eller at debatt-perioden er over. ',
 ERROR_19                    : 'Ugyldig symbol ',
 ERROR_20                    : 'er ikke en gyldig ERC-20-token. Hvis andre tokens holder på å lastes, vennligst fjern denne token og prøv igjen. ',
@@ -311,7 +311,10 @@ ERROR_28                    : '**Du trenger din Keystore-fil & passord eller din
 ERROR_29                    : 'Vennligst oppgi gyldig brukernavn og passord ',
 ERROR_30                    : 'Vennligst oppgi et gyldig ENS-navn ',
 ERROR_31                    : 'Ugyldig hemmelig frase ',
-ERROR_32                    : 'Kunne ikke bytte node eller koble til noden du valgte. Vennligst last inn siden på nytt og prøv igjen. ',
+ERROR_32                    : 'Kunne ikke bytte node eller koble til noden du valgte.  Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Gyldig adresse ',
 SUCCESS_2                   : 'Dekrypteringen av lommeboken var vellykket ',
 SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transaksjonen ble sendt inn. TX ID ',

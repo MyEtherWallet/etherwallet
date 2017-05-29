@@ -285,32 +285,35 @@ ERROR_3                     : 'Ini bukan file dompet yang valid. ',
 ERROR_4                     : 'Unit tidak valid, gunakan salah satu dari unit berikut ',
 ERROR_5                     : 'Alamat tidak valid. ',
 ERROR_6                     : 'Password tidak valid. ',
-ERROR_7                     : 'Jumlah tidak valid. ',
-ERROR_8                     : 'Gas limit tidak valid. ',
-ERROR_9                     : 'Nilai data tidak valid. ',
-ERROR_10                    : 'Jumlah Gas tidak valid. ',
-ERROR_11                    : 'Nonce tidak valid. ',
+ERROR_7                     : 'Jumlah tidak valid. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Gas limit tidak valid. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Nilai data tidak valid. (Must be hex.) ', // 9
+ERROR_10                    : 'Jumlah Gas tidak valid. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Nonce tidak valid. (Must be integer.) ', // 11
 ERROR_12                    : 'Signed transaction tidak valid. ',
 ERROR_13                    : 'Sudah ada Dompet dengan nickname ini. ',
 ERROR_14                    : 'Dompet tidak ditemukan. ',
 ERROR_15                    : 'Tidak ditemukan proposal dengan ID ini atau terjadi error saat membaca proposal ini. ',
 ERROR_16                    : 'Terdapat dompet dengan alamat yang sama di storage. Cek kembali halaman dompet Anda. ',
-ERROR_17                    : 'Minimal harus ada **0.01 ETH** di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
+ERROR_17                    : 'Dana tidak mencukupi. Akun yang dipakai untuk mengirim tidak memiliki dana yang cukup. Minimal harus ada **0.01 ETH** di akun untuk menutup biaya gas. Tambahkan ether dan coba lagi. ',
 ERROR_18                    : 'Semua gas akan digunakan pada transaksi ini. Ini berarti Anda telah memberikan suara pada proposal ini atau periode perdebatan telah berakhir. ',
 ERROR_19                    : 'Simbol tidak valid ',
 ERROR_20                    : 'Bukan ERC-20 token yang valid.',
 ERROR_21                    : 'Tidak dapat memperkirakan gas. Saldo di akun tidak cukup, atau alamat kontrak penerima bisa mengeluarkan error. Cobalah untuk secara manual mengatur gas dan melanjutkan. Keterangan Error saat pengiriman mungkin lebih informatif. ',
-ERROR_22                    : 'Please enter valid node name ',
-ERROR_23                    : 'Please enter valid URL. If you are connecting via HTTPS, your node must be over HTTPS ',
-ERROR_24                    : 'Please enter valid port ',
-ERROR_25                    : 'Please enter valid chain ID ',
-ERROR_26                    : 'Please enter valid ABI ',
-ERROR_27                    : 'Minimum amount: 0.01. Maximum Amount: ',
+ERROR_22                    : 'Please enter a valid node name', // 22
+ERROR_23                    : 'Please enter a valid URL. If you are on https, your URL must be https', // 23
+ERROR_24                    : 'Please enter a valid port. ', // 24
+ERROR_25                    : 'Please enter a valid chain ID. ', // 25
+ERROR_26                    : 'Please enter a valid ABI. ', // 26
+ERROR_27                    : 'Minimum amount: 0.01. Max amount: ', // 27
 ERROR_28                    : '**DIPERLUKAN File Keystore & password** (atau Private Key) untuk mengakses dompet Anda. Simpan dan backup dengan baik file ini! Tidak ada mekanisme untuk me-recover dompet jika file-nya hilang. Baca instruksi lengkapnya [di sini](https://www.myetherwallet.com/#help). ',
-ERROR_29                    : 'Please enter valid user and password ',
-ERROR_30                    : 'Please enter valid ENS name ',
-ERROR_31                    : 'Invalid secret phrase ',
-ERROR_32                    : 'Could not connect to the node. Please refresh the page, or see the help page for more troubleshooting suggestions. ',
+ERROR_29                    : 'Please enter a valid user and password. ', // 29
+ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
+ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
+ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Alamat valid ',
 SUCCESS_2                   : 'Dompet telah ter-dekripsi ',
 SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transaksi diajukan. TX ID ',

@@ -292,18 +292,18 @@ ERROR_3                     : 'Geçerli bir cüzdan dosyası değil. ',
 ERROR_4                     : 'Var olmayan bir birim, bu birimlerden birini kullan lütfen ',
 ERROR_5                     : 'Geçersiz adres. ',
 ERROR_6                     : 'Geçersiz parola. ',
-ERROR_7                     : 'Yetersiz bakiye. ', /* yetersiz bakiye */
-ERROR_8                     : 'Geçersiz gas limit. ',
-ERROR_9                     : 'Geçersiz data value. ',
-ERROR_10                    : 'Yetersiz gas. ', /* yetersiz gas */
-ERROR_11                    : 'Geçersiz veri. ',
+ERROR_7                     : 'Yetersiz bakiye. (Must be integer. Try 0-18.) ', // 7
+ERROR_8                     : 'Geçersiz gas limit. (Must be integer. Try 21000-4000000.) ', // 8
+ERROR_9                     : 'Geçersiz data value. (Must be hex.) ', // 9
+ERROR_10                    : 'Yetersiz gas. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Geçersiz veri. (Must be integer.) ', // 11
 ERROR_12                    : 'Geçersiz imzali isleme. ',
 ERROR_13                    : 'Secdigin Nickname baska bir cüzdanda kullaniliyor. ',
 ERROR_14                    : 'Cüzdan bulunmadi. ',
-ERROR_15                    : 'It doesnt look like a proposal with this ID exists yet or there is an error reading this proposal. ',
+ERROR_15                    : 'Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ', // 15 - NOT USED
 ERROR_16                    : 'Bu adrese sahip bir cüzdan zaten depolama alanında mevcut. Lütfen cüzdan sayfanızı kontrol edin. ',
-ERROR_17                    : 'You need to have **0.01 ETH** in your account to cover the cost of gas. Please add some ether and try again. ',
-ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended. ',
+ERROR_17                    : 'Account you are sending from does not have enough funds. If sending tokens, you must have 0.01 ETH in your account to cover the cost of gas. ', // 17
+ERROR_18                    : 'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
 ERROR_19                    : 'Geçersiz sembol ',
 ERROR_20                    : 'Geçersiz ERC-20 token\'i ',
 ERROR_21                    : 'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative. ',
@@ -317,7 +317,10 @@ ERROR_28                    : 'Ilerde cüzdanini acmak icin **Keystore dosyan ve
 ERROR_29                    : 'Lütfen geçerli kullanıcı ve şifreyi yaz ',
 ERROR_30                    : 'Lütfen geçerli ENS isim yaz ',
 ERROR_31                    : 'Geçersiz gizli cümle (phrase) ',
-ERROR_32                    : 'Düğüme bağlanılamadı. Lütfen daha fazla sorun giderme önerisi için sayfayı yenileyin veya yardım sayfasını ziyaret edin. ',
+ERROR_32                    : 'Düğüme bağlanılamadı. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
+ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+
 SUCCESS_1                   : 'Geçerli adres ',
 SUCCESS_2                   : 'Cüzdan basariyla desifre edildi ',
 SUCCESS_3                   : 'TX blockchain\'e yayınlandı. İşleminizi görmek ve mayınlandığını doğrulamak veya herhangi bir gaz veya sözleşme yürütme hatası bulunmadığını görmek için tıklayın. TX Kimliği: ', //'İşlem teslim edildi TX ID ',
@@ -344,7 +347,7 @@ PARITY_Old                  : "Transaction nonce is too low. Try incrementing th
 PARITY_TooCheapToReplace    : "Transaction fee is too low. There is another transaction with same nonce in the queue. Try increasing the fee or incrementing the nonce.",
 PARITY_LimitReached         : "There are too many transactions in the queue. Your transaction was dropped due to limit. Try increasing the fee.",
 PARITY_InsufficientGasPrice : "Transaction fee is too low. It does not satisfy your node's minimal fee (minimal: {}, got: {}). Try increasing the fee.",
-PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} and got: {}.",
+PARITY_InsufficientBalance  : "Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} wei and got: {} wei.",
 PARITY_GasLimitExceeded     : "Transaction cost exceeds current gas limit. Limit: {}, got: {}. Try decreasing supplied gas.",
 PARITY_InvalidGasLimit      : "Supplied gas is beyond limit.",
 
