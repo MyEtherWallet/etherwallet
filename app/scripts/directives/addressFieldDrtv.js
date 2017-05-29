@@ -21,12 +21,12 @@ var addressFieldDrtv = function($compile) {
                 ensAddressField: '',
                 derivedAddress: ''
             }
-            element.html('<div class=\"col-xs-10\">\n \
+            element.html('<div class=\"col-xs-11\">\n \
                     <label translate=\"SEND_addr\"> To Address: </label>\n \
-                    <input class=\"form-control\"  type=\"text\" placeholder=\"' + placeholder + '\" ng-model=\"addressDrtv.ensAddressField\" ng-disabled=\"' + readOnly + '\" ng-class=\"Validator.isValidENSorEtherAddress(' + varName + ') ? \'is-valid\' : \'is-invalid\'\"/>\n \
+                    <input class=\"form-control\" type=\"text\" placeholder=\"' + placeholder + '\" ng-model=\"addressDrtv.ensAddressField\" ng-disabled=\"' + readOnly + '\" ng-class=\"Validator.isValidENSorEtherAddress(' + varName + ') ? \'is-valid\' : \'is-invalid\'\"/>\n \
                     <p class="ens-response" ng-show="addressDrtv.showDerivedAddress"> ↳ <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span> </p>\n \
                 </div>\n \
-                <div class=\"col-xs-2 address-identicon-container\">\n \
+                <div class=\"col-xs-1 address-identicon-container\">\n \
                    <div class=\"addressIdenticon\" title=\"Address Indenticon\" blockie-address=\"{{' + varName + '}}\" watch-var=\"' + varName + '\"></div>\n \
                 </div>');
             scope.$watch('addressDrtv.ensAddressField', function() {

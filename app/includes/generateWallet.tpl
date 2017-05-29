@@ -23,7 +23,7 @@
 
 
   <section role="main" class="row" ng-show="wallet && !showPaperWallet">
-    <h1 translate="GEN_Label_2">Save your Wallet File. Don't forget your password.</h1>
+    <h1 translate="GEN_Label_2">Save your Wallet File.</h1>
     <br>
     <div class="col-sm-8 col-sm-offset-2">
       <div aria-hidden="true" class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
@@ -35,20 +35,24 @@
       <br><br><br><br>
     </div>
     <div class="col-xs-12 alert alert-danger">
-      <span>
-      MyEtherWallet.com is not a web wallet & does not store or transmit this secret information at any time. <br />
-      <strong>If you do not save your wallet file and password, we cannot recover them.</strong><br />
-      Save your wallet file now & back it up in a second location (not on your computer).
+      <p>
+      <strong>If you do not save this file, your ETH & Tokens are lost forever.</strong>
+      <br />
+      Save it now & back it up in a second location (not on your computer).
+      <br />
+      <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank">Learn More</a>
       <br /><br />
-      <a tabindex="0" role="button" class="btn btn-info" ng-class="fileDownloaded ? '' : 'disabled' " ng-click="continueToPaper()"> I understand. Continue. </a>
+      <a tabindex="0" role="button" class="btn btn-info" ng-class="fileDownloaded ? '' : 'disabled' " ng-click="continueToPaper()"> I promise I won't lose this file ever. Continue. </a>
+      </p>
     </div>
   </section>
 
 
   <section class="row" ng-show="showPaperWallet">
     <h1 translate="GEN_Label_4"> Print your paper wallet, or store a QR code version. </h1>
-    <h4> If you think you may <u>ever</u> forget your password, save one of these, please! Keep it safe!</h4>
-    <div class="col-sm-8 col-sm-offset-2">
+    <p class="text-danger"> If you think you may <u>ever</u> forget your password, save one of these, please! Keep it safe!</p class="text-danger">
+
+    <div class="col-sm-8 col-sm-offset-2 clearfix">
       <div aria-hidden="true" class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" id="x_PrivKeyDesc" translate="x_PrivKeyDesc">This is the unencrypted version of your private key.</p>
         <label translate="x_PrivKey">Private Key (unencrypted)</label>
@@ -60,12 +64,8 @@
       </div>
       <a tabindex="0" aria-label="{{'x_Print'|translate}}" aria-describedby="x_PrintDesc" role="button" class="btn btn-primary btn-block" ng-click="printQRCode()" translate="x_PrintShort">PRINT</a>
     </div>
-    <br /><br />
-    <div class="col-sm-4 col-sm-offset-4">
-      <label translate="x_PrivKey">Private Key (unencrypted):</label>
-      <div qr-code="{{wallet.getPrivateKeyString()}}" watch-var="showPaperWallet" width="100%"></div>
-      <br />
-      <br />
+    <div class="col-sm-4 col-sm-offset-4 clearfix">
+      <br /><br />
       <a class="btn btn-info" ng-click="getAddress()"> Next: Save your Address </a>
     </div>
   </section>

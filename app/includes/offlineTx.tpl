@@ -1,4 +1,4 @@
-<main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.offlineTransaction.id" ng-controller='offlineTxCtrl' ng-cloak>
+<main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.offlineTransaction.id" ng-controller='offlineTxCtrl' ng-cloak style="max-width:1000px; margin: auto">
 
   <!-- Title -->
   <h1 translate="OFFLINE_Title"> Generate & Send Offline Transaction </h1>

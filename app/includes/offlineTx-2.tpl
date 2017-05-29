@@ -6,7 +6,7 @@
 
 <!-- To Address -->
 <article class="row">
-  <section class="col-xs-10">
+  <section class="col-xs-11">
     <label translate="OFFLINE_Step2_Label_1">To Address:</label>
     <input class="form-control"
            type="text"
@@ -15,7 +15,7 @@
            ng-change="validateAddress(tx.to,'')"/>
   </section>
 
-  <section class="col-xs-2">
+  <section class="col-xs-1 address-identicon-container">
     <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
   </section>
 </article>
@@ -23,14 +23,15 @@
 
 <!-- Amount to Send -->
 <article class="row">
-  <section class="col-sm-10">
+  <section class="col-sm-11">
     <label translate="OFFLINE_Step2_Label_2">
       Amount to Send
     </label>
     <div class="input-group">
       <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
       <div class="input-group-btn">
-        <a class="btn btn-default dropdown-toggle"
+        <a style="min-width: 150px"
+           class="btn btn-default dropdown-toggle"
            ng-click="dropdownAmount = !dropdownAmount"
            ng-class="dropdownEnabled ? '' : 'disabled'">
               {{unitReadable}}<i class="caret"></i>
@@ -49,7 +50,7 @@
 
 <!-- Gas Price -->
 <article class="row">
-  <section class="col-sm-10">
+  <section class="col-sm-11">
     <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
       <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1</p>
       <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
@@ -60,7 +61,7 @@
 
 <!-- Gas Limit -->
 <article class="row">
-  <section class="col-sm-10">
+  <section class="col-sm-11">
     <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
       <p class="account-help-text" translate="OFFLINE_Step2_Label_4b">21000 is the default gas limit.</p>
       <label translate="OFFLINE_Step2_Label_4"> Gas Limit </label>
@@ -71,7 +72,7 @@
 
 <!-- Nonce -->
 <article class="row">
-  <section class="col-sm-10">
+  <section class="col-sm-11">
     <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
       <p class="account-help-text" translate="OFFLINE_Step2_Label_5b">This was displayed in Step 1.</p>
       <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
@@ -83,7 +84,7 @@
 
 <!-- Data -->
 <article class="row">
-  <section class="col-sm-10" ng-show="tokenTx.id=='ether'">
+  <section class="col-sm-11" ng-show="tokenTx.id=='ether'">
     <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
       <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
       <label translate="OFFLINE_Step2_Label_6"> Data </label>
@@ -101,7 +102,7 @@
 
 <!-- Button -->
 <article class="row" ng-show="wallet!=null">
-  <section class="col-sm-10">
+  <section class="col-sm-11">
     <a class="btn btn-info" ng-click="generateTx()" translate="SEND_generate">Generate Signed Transaction</a>
   </section>
 </article>

@@ -1,11 +1,13 @@
 <!-- Sidebar -->
 <section class="col-sm-4">
-  <wallet-balance-drtv></wallet-balance-drtv>
-  <hr />
-  <div class="well">
-    <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-primary btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
-    <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
+  <div style="max-width: 350px">
+    <wallet-balance-drtv></wallet-balance-drtv>
+    <hr />
+    <div class="well">
+      <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
+      <a class="btn btn-primary btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
+      <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
+    </div>
   </div>
 </section>
 <!-- / Sidebar -->
@@ -33,11 +35,11 @@
 
   <!-- Amount to Send -->
   <label translate="SEND_amount">Amount to Send:</label>
-  <div class="input-group">
+  <div class="input-group col-sm-11">
     <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-disabled="tx.readOnly" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
     <div class="input-group-btn">
-      <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
-        {{unitReadable}}<i class="caret"></i>
+      <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
+        <strong>{{unitReadable}}<i class="caret"></i></strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-right" ng-show="dropdownAmount && !tx.readOnly">
         <li><a ng-class="{true:'active'}[tx.sendMode=='ether']" ng-click="setSendMode('ether')">{{ajaxReq.type}}</a></li>
@@ -52,36 +54,49 @@
   <!-- / Amount to Send -->
 
   <!-- Gas -->
-  <label translate="TRANS_gas"> Gas: </label>
-  <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
+  <div class="row form-group">
+    <div class="col-sm-11 clearfix">
+      <label translate="TRANS_gas"> Gas: </label>
+      <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
+    </div>
+  </div>
   <!-- / Gas -->
 
   <!-- Advanced Option Panel -->
-  <div ng-show="tx.sendMode=='ether'">
-    <a ng-click="showAdvance=!showAdvance">
-      <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
-    </a>
-    <section ng-show="showAdvance">
-      <div class="form-group">
-        <label translate="TRANS_data"> Data: </label>
-        <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
-      </div>
-    </section>
+  <div class="row form-group">
+    <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
+      <a ng-click="showAdvance=!showAdvance">
+        <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
+      </a>
+      <section ng-show="showAdvance">
+        <div class="form-group">
+            <label translate="TRANS_data"> Data: </label>
+            <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+        </div>
+      </section>
+    </div>
   </div>
   <!-- / Advanced Option Panel -->
 
-  <div class="form-group">
-    <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
+  <div class="row form-group">
+    <div class="col-xs-12 clearfix">
+      <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
+    </div>
   </div>
-  <div class="form-group" ng-show="showRaw">
-    <label translate="SEND_raw"> Raw Transaction </label>
-    <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
-    <label translate="SEND_signed"> Signed Transaction </label>
-    <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
+
+  <div class="row form-group" ng-show="showRaw">
+    <div class="col-sm-6">
+      <label translate="SEND_raw"> Raw Transaction </label>
+      <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
+    </div>
+    <div class="col-sm-6">
+      <label translate="SEND_signed"> Signed Transaction </label>
+      <textarea class="form-control" rows="4" readonly >{{signedTx}}</textarea>
+    </div>
   </div>
 
   <div class="form-group" ng-show="showRaw">
-    <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
+    <a class="btn btn-primary btn-block col-sm-11" data-toggle="modal" data-target="#sendTransaction" translate="SEND_trans"> Send Transaction </a>
   </div>
 
 </section>

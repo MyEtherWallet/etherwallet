@@ -8,7 +8,7 @@
   <section class="row">
     <h1 class="col-xs-12" translate="VIEWWALLET_SuccessMsg">Success! Here are your wallet details.</h1>
 
-    <div class="col-sm-10">
+    <div class="col-xs-11">
       <div class="account-help-icon">
         <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
@@ -16,7 +16,7 @@
       </div>
       <input class="form-control" type="text" ng-value="wallet.getChecksumAddressString()" readonly="readonly">
     </div>
-    <div class="col-sm-2 address-identicon-container">
+    <div class="col-xs-1 address-identicon-container">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
     </div>
   </section>

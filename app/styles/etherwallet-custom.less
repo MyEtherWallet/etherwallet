@@ -110,26 +110,14 @@ footer {
 
 // address icenticons
 .address-identicon-container {
-  padding-left: 0;
-  padding-top: @space-md;
+  padding: 0;
   text-align: left;
-  @media screen and (max-width: @grid-float-breakpoint) {
-    padding-left: @space-lg;
-    padding-right: @space-lg;
-    padding-top: 0;
-  }
+  max-width: 80px;
 }
 
 .address-identicon-container-right {
-  padding-right: 0;
-  padding-top: @space-md;
   text-align: right;
   .addressIdenticon { float: right; }
-  @media screen and (max-width: @grid-float-breakpoint) {
-    padding-left: @space-lg;
-    padding-right: @space-lg;
-    padding-top: 0;
-  }
 }
 
 .address-identicon-container-offline {
@@ -138,8 +126,9 @@ footer {
 }
 
 .addressIdenticon {
-  width: 4rem;
-  height: 4rem;
+  width: 100%;
+  height: auto;
+  padding-bottom: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50%;
@@ -149,10 +138,12 @@ footer {
 .addressIdenticon.med {
   width: 3rem;
   height: 3rem;
+  padding: 0;
 }
 .addressIdenticon.small {
   width: 2rem;
   height: 2rem;
+  padding: 0;
 }
 
 .addressIdenticon.inline {
