@@ -14,10 +14,21 @@
                aria-label="{{ 'GEN_Label_1' |translate}}"/>
         <span tabindex="0" aria-label="make password visible" role="button" class="input-group-addon eye" ng-click="showPass=!showPass"></span>
       </div>
+
       <br />
+
       <a tabindex="0" role="button" class="btn btn-primary btn-block" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
-      <br /><br /><br /><br /><br /><br />
-      <p class="strong">Ledger & TREZOR users: Do not generate a new wallet&mdash;your hardware device <em> is </em> your wallet.<br /><a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">You can connect to your device, see your addresses, or send ETH or Tokens here.</a></p>
+
+      <p style="margin-top: 6em">
+        <strong>New or confused?</strong>
+        <a href="https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443" target="_blank">Read this first so you don't lose your ETH.</a>
+      </p>
+      <p style="margin-top: 2em">
+        <strong> Using a Ledger & TREZOR?</strong>
+        Your hardware device <em> is </em> your wallet.
+        <br />
+        <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">See your addresses & send your ETH/Tokens here.</a>
+      </p>
     </div>
   </section>
 
