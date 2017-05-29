@@ -43,60 +43,185 @@
 
     <div class="tab-content" >
 
-      <div ng-controller='walletGenCtrl'>
+      <main class="tab-pane active text-center" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl' role="main">
 
-  <!-- Top - Generate Wallet -->
-  <h1 translate="NAV_GenerateWallet"> Generate Wallet </h1>
-  <article class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <h4 translate="GEN_Label_1"> Enter a strong password (at least 9 characters) </h4>
-        <div class="input-group">
-          <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}" ng-model="password" ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"/>
-          <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
-        </div>
+  <section class="row" ng-show="!wallet && !showGetAddress">
+    <h1 translate="NAV_GenerateWallet" aria-live="polite"> Generate Wallet</h1>
+    <div class="col-sm-8 col-sm-offset-2">
+      <h4 translate="GEN_Label_1"> Enter password </h4>
+      <div class="input-group">
+        <input name="password"
+               class="form-control"
+               type="{{showPass && 'password' || 'text'}}"
+               placeholder="{{ 'GEN_Placeholder_1' | translate }}"
+               ng-model="password"
+               ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"
+               aria-label="{{ 'GEN_Label_1' |translate}}"/>
+        <span tabindex="0" aria-label="make password visible" role="button" class="input-group-addon eye" ng-click="showPass=!showPass"></span>
       </div>
+
+      <br />
+
+      <a tabindex="0" role="button" class="btn btn-primary btn-block" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
+
+      <p style="margin-top: 6em">
+        <strong>New or confused?</strong>
+        <a href="https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443" target="_blank">Read this first so you don't lose your ETH.</a>
+      </p>
+      <p style="margin-top: 2em">
+        <strong> Using a Ledger & TREZOR?</strong>
+        Your hardware device <em> is </em> your wallet.
+        <br />
+        <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">See your addresses & send your ETH/Tokens here.</a>
+      </p>
     </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <h4 translate="NAV_GenerateWallet"> Generate Wallet </h4>
-        <a class="btn btn-primary btn-block" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
-      </div>
-    </div>
-  </article>
-  <!-- / Top - Generate Wallet -->
-
-  <!-- Bottom - Display Generated Wallet -->
-  <section ng-show="showWallet">
-
-    <hr />
-
-    <!-- 0. Warning -->
-    <h1 translate="GEN_SuccessMsg">Success! Your wallet has been generated.</h1>
-    <div class="alert alert-danger" translate="ERROR_28">**You need your Keystore/JSON File & password or Private Key** to access this wallet in the future. Please save & back it up externally! There is no way to recover a wallet if you do not save it. Read the [help page](https://www.myetherwallet.com/#help) for instructions.</div>
-    <!-- / 0. Warning -->
-
-    <article class="row">
-      <div class="col-md-6 col-xs-12">
-        <h4 translate="GEN_Label_2"> 1. Save your Keystore/JSON or Private Key. Don't forget your password. </h4>
-        <div class="form-group">
-          <a class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
-        </div>
-      </div>
-      <div class="col-md-5 col-sm-10 col-xs-12">
-        <div class="form-group">
-          <h4 translate="GEN_Label_3">2. Save Your Address</h4>
-          <input class="form-control" type="text" readonly="readonly" ng-value="wallet.getChecksumAddressString()"/>
-        </div>
-      </div>
-      <div class="col-md-1 col-sm-2 col-xs-12 address-identicon-container">
-        <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
-      </div>
-    </article>
-
   </section>
 
-</div>
+
+  <section role="main" class="row" ng-show="wallet && !showPaperWallet">
+    <h1 translate="GEN_Label_2">Save your Wallet File.</h1>
+    <br>
+    <div class="col-sm-8 col-sm-offset-2">
+      <div aria-hidden="true" class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+        <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file</p>
+        <h4 translate="x_Keystore2">Keystore File (Recommended • Encrypted)</h4>
+      </div>
+      <a tabindex="0" role="button" class="btn btn-primary btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download" aria-label="{{'x_Download'|translate}} {{'x_Keystore'|translate}}" aria-describedby="x_KeystoreDesc" ng-click="downloaded()"> DOWNLOAD </a>
+      <p class="sr-only" id="x_KeystoreDesc" translate="x_KeystoreDesc"></p>
+      <br><br><br><br>
+    </div>
+    <div class="col-xs-12 alert alert-danger">
+      <p>
+      <strong>If you do not save this file, your ETH & Tokens are lost forever.</strong>
+      <br />
+      Save it now & back it up in a second location (not on your computer).
+      <br />
+      <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank">Learn More</a>
+      <br /><br />
+      <a tabindex="0" role="button" class="btn btn-info" ng-class="fileDownloaded ? '' : 'disabled' " ng-click="continueToPaper()"> I promise I won't lose this file ever. Continue. </a>
+      </p>
+    </div>
+  </section>
+
+
+  <section class="row" ng-show="showPaperWallet">
+    <h1 translate="GEN_Label_4"> Print your paper wallet, or store a QR code version. </h1>
+    <p class="text-danger"> If you think you may <u>ever</u> forget your password, save one of these, please! Keep it safe!</p class="text-danger">
+
+    <div class="col-sm-8 col-sm-offset-2 clearfix">
+      <div aria-hidden="true" class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+        <p class="account-help-text" id="x_PrivKeyDesc" translate="x_PrivKeyDesc">This is the unencrypted version of your private key.</p>
+        <label translate="x_PrivKey">Private Key (unencrypted)</label>
+      </div>
+      <textarea aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc" class="form-control bigger-on-mobile" type="text" readonly="readonly">{{wallet.getPrivateKeyString()}}</textarea>
+      <div aria-hidden="true" class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+        <p class="account-help-text" id="x_PrintDesc" translate="x_PrintDesc">ProTip: Click print and save this as a PDF</p>
+        <label translate="x_Print">Print Paper Wallet:</label>
+      </div>
+      <a tabindex="0" aria-label="{{'x_Print'|translate}}" aria-describedby="x_PrintDesc" role="button" class="btn btn-primary btn-block" ng-click="printQRCode()" translate="x_PrintShort">PRINT</a>
+    </div>
+    <div class="col-sm-4 col-sm-offset-4 clearfix">
+      <br /><br />
+      <a class="btn btn-info" ng-click="getAddress()"> Next: Save your Address </a>
+    </div>
+  </section>
+
+  <article class="row text-left" ng-show="showGetAddress">
+    <section class="clearfix collapse-container">
+      <div class="text-center" ng-click="wd = !wd">
+        <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
+        <h1 traslate="SWAP_unlock">Unlock your wallet to see your address</h1>
+      </div>
+      <div ng-show="!wd">
+            <wallet-decrypt-drtv></wallet-decrypt-drtv>         
+          
+      </div>
+    </section>
+
+    <section class="clearfix" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
+
+      
+        <article class="col-sm-4">
+  <br />
+  <wallet-balance-drtv></wallet-balance-drtv>
+</article>
+
+<section class="col-sm-8 view-wallet-content">
+
+  <section class="row">
+    <h1 class="col-xs-12" translate="VIEWWALLET_SuccessMsg">Success! Here are your wallet details.</h1>
+
+    <div class="col-xs-11">
+      <div class="account-help-icon">
+        <img src="images/icon-help.svg" class="help-icon" />
+        <p class="account-help-text" translate="x_AddessDesc">You may know this as your "Account #" or your "Public Key". It's what you send people so they can send you ETH. That icon is an easy way to recognize your address.</p>
+        <h5 translate="x_Address">Your Address:</h5>
+      </div>
+      <input class="form-control" type="text" ng-value="wallet.getChecksumAddressString()" readonly="readonly">
+    </div>
+    <div class="col-xs-1 address-identicon-container">
+      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
+    </div>
+  </section>
+
+  <section ng-show='showEnc'>
+    <div class="account-help-icon">
+      <img src="images/icon-help.svg" class="help-icon" />
+      <p class="account-help-text" translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</p>
+      <h5 translate="x_Keystore">Keystore/JSON File (Recommended • Encrypted • Mist/Geth Format)</h5>
+    </div>
+    <a class="btn btn-info btn-block" href="{{blobEnc}}" download="{{encFileName}}" translate="x_Download"> DOWNLOAD </a>
+  </section>
+
+  <section ng-show="wallet.type=='default'">
+    <div class="account-help-icon">
+      <img src="images/icon-help.svg" class="help-icon" />
+      <p class="account-help-text" translate="x_PrivKeyDesc">This is the unencrypted text version of your private key, meaning no password is necessary. If someone were to find your unencrypted private key, they could access your wallet without a password. For this reason, encrypted versions are typically recommended.</p>
+      <h5>
+        <span translate="x_PrivKey">Private Key (unencrypted)</span>
+      </h5>
+    </div>
+    <div class="input-group">
+      <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly">
+      <span tabindex="0" aria-label="make private key visible" role="button" class="input-group-addon eye" ng-click="showHidePkey()"></span>
+    </div>
+  </section>
+
+  <section ng-show="wallet.type=='default'">
+    <div class="account-help-icon">
+      <img src="images/icon-help.svg" class="help-icon" />
+      <p class="account-help-text" translate="x_PrintDesc">ProTip: Click print and save this as a PDF, even if you do not own a printer!</p>
+      <h5 translate="x_Print">Print Paper Wallet:</h5>
+    </div>
+    <a class="btn btn-info btn-block" ng-click="printQRCode()" translate="x_Print">Print Paper Wallet</a>
+  </section>
+
+  <section class="row">
+    <div class="col-xs-6">
+      <h5 translate="x_Address">Your Address:</h5>
+      <div class="qr-code" qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
+    </div>
+    <div class="col-xs-6">
+      <h5 ng-show="wallet.type=='default'">
+        <span translate="x_PrivKey">Private Key (unencrypted)</span>
+      </h5>
+      <div class="qr-pkey-container" ng-show="wallet.type=='default'">
+        <div class="qr-overlay" ng-show="!pkeyVisible"></div>
+        <div class="qr-code" qr-code="{{wallet.getPrivateKeyString()}}" watch-var="wallet" width="100%"></div>
+        <div class="input-group">
+          <input class="form-control no-animate" type="{{pkeyVisible ? 'text' : 'password'}}" ng-value="wallet.getPrivateKeyString()" readonly="readonly" style="display:none;width:0;height:0;padding:0">
+          <span tabindex="0" aria-label="make private key visible" role="button" class="input-group-addon eye" ng-click="showHidePkey()"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   
+
+    </section>
+  </article>
+
+</main>
 
 
     </div>
@@ -106,7 +231,7 @@
     <div class="container" ng-bind-html="notifier.message"></div>
     <i class="icon-close" ng-click="notifier.close()"></i>
   </article>
-  
+
   </section>
 
 
@@ -114,18 +239,39 @@
   <div class="container">
     <p>
       <a href="https://www.myetherwallet.com" target="_blank">MyEtherWallet.com</a>:
+
       Open-Source, client-side tool for easily & securely interacting with the Ethereum network.
-      Created by <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> & <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.
-    </p>
-    <p>
-    <a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank">www.MyEtherWallet.com</a> &middot;
-    <a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank">Github: MyEtherWallet.com & CX</a> &middot;
-    <a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank">Github: MyEtherWallet (Org)</a> &middot;
-    <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank">Twitter</a> &middot;
-    <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank">Facebook</a> &middot;
-    <a aria-label="email support at myetherwallet.com" href="mailto:support@myetherwallet.com" target="_blank">Email</a>
-  </div>
-</footer>
+
+      Created by
+      <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a>
+      &amp;
+      <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>
+      &middot;
+      <a href="https://www.MyEtherWallet.com" target="_blank" aria-label="my ether wallet.com">
+        MyEtherWallet.com
+      </a>
+      &middot;
+      <a href="https://github.com/kvhnuke/etherwallet" target="_blank" aria-label="my ether wallet github">
+        Github
+      </a>
+      &middot;
+      <a href="https://myetherwallet.herokuapp.com/" target="_blank" aria-label="join our slack">
+        Slack
+      </a>
+      &middot;
+      <a href="https://twitter.com/myetherwallet" target="_blank" aria-label="twitter">
+        Twitter
+      </a>
+      &middot;
+      <a href="https://www.facebook.com/MyEtherWallet/" target="_blank" aria-label="facebook">
+        Facebook
+      </a>
+      &middot;
+      <a href="mailto:support@myetherwallet.com" target="_blank" aria-label="email support at myetherwallet.com">
+        Email
+      </a>
+    </div>
+  </footer>
 </body>
 </html>
 
