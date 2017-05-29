@@ -17,7 +17,7 @@
 <!-- Content -->
 <section class="col-sm-8">
 
-  <div class="row form-group" ng-show="tx.readOnly">
+  <div class="row form-group">
     <div class="alert alert-danger col-xs-12 clearfix" ng-show="wallet!=null && tx.readOnly && !hasEnoughBalance()">
       <strong>Warning! You do not have enough funds to complete this swap.</strong> <br />
       Please add more funds or access a different wallet.
@@ -65,7 +65,7 @@
   <!-- Advanced Option Panel -->
   <div class="row form-group">
     <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
-      <a ng-click="showAdvance=!showAdvance">
+      <a ng-click="showAdvance=!showAdvance" ng-show='!showAdvance'>
         <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
       </a>
       <section ng-show="showAdvance">
@@ -77,6 +77,13 @@
     </div>
   </div>
   <!-- / Advanced Option Panel -->
+
+  <div class="clearfix form-group">
+    <div class="alert alert-info col-xs-12 clearfix" ng-show="wallet!=null && customGasMsg!=''">
+      <p><small>A message from {{tx.to}}</small></p>
+      <p><strong> {{customGasMsg}} </strong></p>
+    </div>
+  </div>
 
   <div class="row form-group">
     <div class="col-xs-12 clearfix">

@@ -16,14 +16,25 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         value: 0,
         id: -1
     };
-    // For token sales:
-    // token sale holders should add their address and any add'l data requirements to this array.
-    // It is recommended to use a reasonable gas limit, but one that ensures transactions will go through
-    $scope.customGas = [{
-        to: '0x0',
+    $scope.customGasMsg = ''
+    // For token sale holders:
+    // 1. Add the address users are sending to
+    // 2. Add the gas limit users should use to send successfully (this avoids OOG errors)
+    // 3. Add any data if applicable
+    $scope.customGas = [
+      { // donation address example
+        to: '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
+        gasLimit: 21000,
+        data: '',
+        msg: 'Thank you for donating to MyEtherWallet. TO THE MOON!'
+      },
+      {
+        to: '0x00',
         gasLimit: 200000,
-        data: ''
-    }]
+        data: '',
+        msg: ''
+      }
+    ]
     $scope.tx = {
         // if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
         gasLimit: globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null ? globalFuncs.urlGet('gaslimit') != null ? globalFuncs.urlGet('gaslimit') : globalFuncs.urlGet('gas') : globalFuncs.defaultTxGasLimit,
@@ -130,11 +141,14 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         }
     }, true);
     $scope.estimateGasLimit = function() {
+        $scope.customGasMsg = ''
         if ($scope.gasLimitChanged) return;
         for (var i in $scope.customGas) {
             if ($scope.tx.to.toLowerCase() == $scope.customGas[i].to.toLowerCase()) {
-                $scope.tx.gasLimit = $scope.customGas[i].gasLimit;
-                $scope.tx.data = $scope.customGas[i].data;
+                $scope.showAdvance  = $scope.customGas[i].data!='' ? true : false;
+                $scope.tx.gasLimit  = $scope.customGas[i].gasLimit;
+                $scope.tx.data      = $scope.customGas[i].data;
+                $scope.customGasMsg = $scope.customGas[i].msg != '' ? $scope.customGas[i].msg : ''
                 return;
             }
         }
@@ -172,12 +186,15 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     }
     $scope.generateTx = function() {
         if (!$scope.Validator.isValidAddress($scope.tx.to)) {
-            //if (!ethFuncs.validateEtherAddress($scope.tx.to)) {
             $scope.notifier.danger(globalFuncs.errorMsgs[5]);
             return;
         }
         var txData = uiFuncs.getTxData($scope);
         if ($scope.tx.sendMode == 'token') {
+            // if the amount of tokens you are trying to send > tokens you have, throw error
+            if (tx.value > $scope.wallet.tokenObjs[$scope.tokenTx.id].getBalance()) {
+              $scope.notifier.danger(rawTx.error);
+            }
             txData.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
             txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
             txData.value = '0x00';
