@@ -36,13 +36,14 @@ Wallet.prototype.setTokens = function() {
 }
 Wallet.prototype.setBalance = function(callback) {
     var parentObj = this;
-    this.balance = this.usdBalance = this.eurBalance = this.btcBalance = this.chfBalance = this.repBalance = 'loading';
+    this.balance = this.usdBalance = this.eurBalance = this.btcBalance = this.chfBalance = this.repBalance =  this.gbpBalance = 'loading';
     ajaxReq.getBalance(parentObj.getAddressString(), function(data) {
         if (data.error) parentObj.balance = data.msg;
         else {
             parentObj.balance = etherUnits.toEther(data.data.balance, 'wei');
             ajaxReq.getETHvalue(function(data) {
                 parentObj.usdBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.usd);
+                parentObj.gbpBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.gbp);
                 parentObj.eurBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.eur);
                 parentObj.btcBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.btc);
                 parentObj.chfBalance = etherUnits.toFiat(parentObj.balance, 'ether', data.chf);
