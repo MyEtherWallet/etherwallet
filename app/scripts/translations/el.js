@@ -312,7 +312,7 @@ ERROR_29                    : 'Please enter valid user and password ',
 ERROR_30                    : 'Please enter a valid name (7+ characters, limited punctuation) ', // 30
 ERROR_31                    : 'Please enter a valid secret phrase. ', // 31
 ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
-ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 
 SUCCESS_1                   : 'Έγκυρη διεύθυνση ',
 SUCCESS_2                   : 'Το πορτοφόλι αποκρυπτογραφήθηκε επιτυχώς ',

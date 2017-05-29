@@ -304,7 +304,7 @@ ERROR_30                    : 'Voer een valide ENS naam in ',
 ERROR_31                    : 'Ongeldige geheime zin ',
 ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
-ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 
 SUCCESS_1                   : 'Geldig adres ',
 SUCCESS_2                   : 'Wallet succesvol ontsleuteld ',

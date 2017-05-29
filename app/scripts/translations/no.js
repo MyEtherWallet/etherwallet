@@ -313,7 +313,7 @@ ERROR_30                    : 'Vennligst oppgi et gyldig ENS-navn ',
 ERROR_31                    : 'Ugyldig hemmelig frase ',
 ERROR_32                    : 'Kunne ikke bytte node eller koble til noden du valgte.  Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
-ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 
 SUCCESS_1                   : 'Gyldig adresse ',
 SUCCESS_2                   : 'Dekrypteringen av lommeboken var vellykket ',

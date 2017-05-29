@@ -314,7 +314,7 @@ ERROR_29                    : 'Introduce un user & password válido. ', // 29
 ERROR_30                    : 'Introduce un name válido (7+ characters, limited punctuation) ', // 30
 ERROR_31                    : 'Introduce un secret phrase válido. ', // 31
 ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
-ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ' // 34
+ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
 
 SUCCESS_1                   : 'Dirección válida ',
 SUCCESS_2                   : 'Cartera descifrada con éxito ',
