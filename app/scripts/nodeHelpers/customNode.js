@@ -77,14 +77,34 @@ customNode.prototype.getEstimatedGas = function(txobj, callback) {
         else callback({ error: false, msg: '', data: data.result });
     });
 }
+var ethCallArr = {
+    calls: [],
+    callbacks: [],
+    timer: null
+};
 customNode.prototype.getEthCall = function(txobj, callback) {
-    this.post({
-        method: 'eth_call',
-        params: [{ to: txobj.to, data: txobj.data }, 'pending']
-    }, function(data) {
-        if (data.error) callback({ error: true, msg: data.error.message, data: '' });
-        else callback({ error: false, msg: '', data: data.result });
-    });
+    var parentObj = this;
+    if (!ethCallArr.calls.length) {
+        ethCallArr.timer = setTimeout(function() {
+            parentObj.rawPost(ethCallArr.calls, function(data) {
+                for (var i in data) {
+                    if (data[i].error) ethCallArr.callbacks[i]({ error: true, msg: data[i].error.message, data: '' });
+                    else ethCallArr.callbacks[i]({ error: false, msg: '', data: data[i].result });
+                }
+                ethCallArr.calls = [];
+                ethCallArr.callbacks = [];
+            });
+        }, 1000);
+    }
+    ethCallArr.calls.push({ "id": globalFuncs.getRandomBytes(16).toString('hex'), "jsonrpc": "2.0", "method": "eth_call", "params": [{ to: txobj.to, data: txobj.data }, 'pending'] });
+    ethCallArr.callbacks.push(callback);
+    /* this.post({
+         method: 'eth_call',
+         params: [{ to: txobj.to, data: txobj.data }, 'pending']
+     }, function(data) {
+         if (data.error) callback({ error: true, msg: data.error.message, data: '' });
+         else callback({ error: false, msg: '', data: data.result });
+     }); */
 }
 customNode.prototype.getTraceCall = function(txobj, callback) {
     this.post({
