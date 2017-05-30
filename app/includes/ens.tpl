@@ -12,7 +12,7 @@
   <br />
 
   <!-- IF ENS CHAIN: Check Status of Name -->
-  <article class="row" ng-hide="ajaxReq.type=='ETC' || ajaxReq.type=='Kovan' || ajaxReq.type=='Rinkeby' || ajaxReq.type=='Custom'">
+  <article class="row" ng-show="showENS()">
     <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
       <div class="input-group">
         <input class="form-control"
@@ -32,7 +32,7 @@
 
 
   <!-- IF NOT ENS CHAIN -->
-  <div ng-show="ajaxReq.type=='ETC' || ajaxReq.type=='Kovan' || ajaxReq.type=='Rinkeby' || ajaxReq.type=='Custom'" class="alert alert-danger text-center">
+  <div ng-hide="showENS()" class="alert alert-danger text-center">
     <p> The ENS is only available on the ETH and Ropsten (Testnet) chains. You are currently on the {{ajaxReq.type}} chain. <br /> Please use the node switcher in the upper right corner to select "ETH" or "Ropsten". </p>
   </div>
   <!-- / IF NOT ENS CHAIN -->

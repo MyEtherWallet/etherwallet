@@ -166,6 +166,8 @@
             <label><input name="options" type="radio" ng-model="customNode.options" value="eth"> ETH </label>
             <label><input name="options" type="radio" ng-model="customNode.options" value="etc"> ETC </label>
             <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="kov"> Kovan </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="rin"> Rinkeby </label>
             <label><input name="options" type="radio" ng-model="customNode.options" value="cus"> Custom </label>
             <label><input type="checkbox" ng-model="customNode.eip155" value="true"> Supports EIP-155 </label>
           </div>
@@ -183,7 +185,7 @@
           Cancel
         </button>
         <button class="btn btn-primary" ng-click="saveCustomNode()" translate="NODE_CTA">
-          Save & Use Custom Node
+          Save &amp; Use Custom Node
         </button>
       </div>
 

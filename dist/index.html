@@ -166,6 +166,8 @@
             <label><input name="options" type="radio" ng-model="customNode.options" value="eth"> ETH </label>
             <label><input name="options" type="radio" ng-model="customNode.options" value="etc"> ETC </label>
             <label><input name="options" type="radio" ng-model="customNode.options" value="rop"> Ropsten </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="kov"> Kovan </label>
+            <label><input name="options" type="radio" ng-model="customNode.options" value="rin"> Rinkeby </label>
             <label><input name="options" type="radio" ng-model="customNode.options" value="cus"> Custom </label>
             <label><input type="checkbox" ng-model="customNode.eip155" value="true"> Supports EIP-155 </label>
           </div>
@@ -183,7 +185,7 @@
           Cancel
         </button>
         <button class="btn btn-primary" ng-click="saveCustomNode()" translate="NODE_CTA">
-          Save & Use Custom Node
+          Save &amp; Use Custom Node
         </button>
       </div>
 
@@ -1836,7 +1838,7 @@
   <br />
 
   <!-- IF ENS CHAIN: Check Status of Name -->
-  <article class="row" ng-hide="ajaxReq.type=='ETC' || ajaxReq.type=='Kovan' || ajaxReq.type=='Rinkeby' || ajaxReq.type=='Custom'">
+  <article class="row" ng-show="showENS()">
     <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
       <div class="input-group">
         <input class="form-control"
@@ -1856,7 +1858,7 @@
 
 
   <!-- IF NOT ENS CHAIN -->
-  <div ng-show="ajaxReq.type=='ETC' || ajaxReq.type=='Kovan' || ajaxReq.type=='Rinkeby' || ajaxReq.type=='Custom'" class="alert alert-danger text-center">
+  <div ng-hide="showENS()" class="alert alert-danger text-center">
     <p> The ENS is only available on the ETH and Ropsten (Testnet) chains. You are currently on the {{ajaxReq.type}} chain. <br /> Please use the node switcher in the upper right corner to select "ETH" or "Ropsten". </p>
   </div>
   <!-- / IF NOT ENS CHAIN -->
