@@ -34,11 +34,11 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         gasLimit: 200000,
         data: '0xb4427263',
         msg: 'BAT. Starts at block 3,798,640. 8:00am PDT on Wednesday, May 31, 2017.'
-    }, { // Mysterium
+    }, { // BANCOR
         to: '0x00000',
-        gasLimit: 250000,
+        gasLimit: 200000,
         data: '',
-        msg: 'Mysterium. Starts May 30, 2017.'
+        msg: 'Bancor. Starts June XX, 2017.'
     }, { // Moeda
         to: '0x4870E705a3def9DDa6da7A953D1cd3CCEDD08573',
         gasLimit: 200000,
