@@ -42,6 +42,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         gasLimit: 250000,
         data: '',
         msg: 'Mysterium. Starts May 30, 2017.'
+      },
+      { // Moeda
+        to: '0x4870E705a3def9DDa6da7A953D1cd3CCEDD08573',
+        gasLimit: 200000,
+        data: '',
+        msg: 'Moeda. Ends at block 4,111,557.'
       }
     ]
     $scope.tx = {
