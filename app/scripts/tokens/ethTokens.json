@@ -132,6 +132,12 @@
     "type":"default"
   },
   {
+    "address":"0xd0b171Eb0b0F2CbD35cCD97cDC5EDC3ffe4871aa",
+    "symbol":"MDA",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0xe23cd160761f63fc3a1cf78aa034b6cdf97d3e0c",
     "symbol":"MIT",
     "decimal":18,
