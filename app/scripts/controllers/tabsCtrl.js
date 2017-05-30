@@ -77,6 +77,8 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         if (nodeInfo.options == 'eth') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.eth_ethscan));
         else if (nodeInfo.options == 'etc') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.etc_epool));
         else if (nodeInfo.options == 'rop') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.rop_mew));
+        else if (nodeInfo.options == 'kov') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.kov_ethscan));
+        else if (nodeInfo.options == 'rin') tempObj = JSON.parse(JSON.stringify(nodes.nodeList.rin_ethscan));
         else if (nodeInfo.options == 'cus') {
             tempObj = JSON.parse(JSON.stringify(nodes.customNodeObj));
             tempObj.eip155 = nodeInfo.eip155;
