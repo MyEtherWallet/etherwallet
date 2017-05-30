@@ -17,10 +17,13 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         id: -1
     };
     $scope.customGasMsg = ''
+
     // For token sale holders:
     // 1. Add the address users are sending to
     // 2. Add the gas limit users should use to send successfully (this avoids OOG errors)
     // 3. Add any data if applicable
+    // 4. Add a message if you want.
+
     $scope.customGas = [
       { // donation address example
         to: '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
@@ -28,11 +31,17 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         data: '',
         msg: 'Thank you for donating to MyEtherWallet. TO THE MOON!'
       },
-      {
-        to: '0x00',
+      { // BAT
+        to: '0x0D8775F648430679A709E98d2b0Cb6250d2887EF',
         gasLimit: 200000,
+        data: '0xb4427263',
+        msg: 'BAT. Starts at block 3,798,640. 8:00am PDT on Wednesday, May 31, 2017.'
+      },
+      { // Mysterium
+        to: '0x00000',
+        gasLimit: 250000,
         data: '',
-        msg: ''
+        msg: 'Mysterium. Starts May 30, 2017.'
       }
     ]
     $scope.tx = {
