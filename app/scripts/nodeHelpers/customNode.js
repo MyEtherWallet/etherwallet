@@ -1,7 +1,7 @@
 'use strict';
 var customNode = function(srvrUrl, port, httpBasicAuthentication) {
     this.SERVERURL = port ? srvrUrl + ':' + port : srvrUrl;
-    if(httpBasicAuthentication){
+    if (httpBasicAuthentication) {
         var authorization = 'Basic ' + btoa(httpBasicAuthentication.user + ":" + httpBasicAuthentication.password);
         this.config.headers['Authorization'] = authorization;
     }
@@ -80,7 +80,7 @@ customNode.prototype.getEstimatedGas = function(txobj, callback) {
 customNode.prototype.getEthCall = function(txobj, callback) {
     this.post({
         method: 'eth_call',
-        params: [{ to: txobj.to, data: txobj.data },'pending']
+        params: [{ to: txobj.to, data: txobj.data }, 'pending']
     }, function(data) {
         if (data.error) callback({ error: true, msg: data.error.message, data: '' });
         else callback({ error: false, msg: '', data: data.result });

@@ -23,6 +23,7 @@ ethFuncs.sanitizeHex = function(hex) {
     return '0x' + this.padLeftEven(hex);
 }
 ethFuncs.trimHexZero = function(hex) {
+    if (hex == "0x00" || hex == "0x0") return "0x0";
     hex = this.sanitizeHex(hex);
     hex = hex.substring(2).replace(/^0+/, '');
     return '0x' + hex;
@@ -73,59 +74,17 @@ ethFuncs.getFunctionSignature = function(name) {
     return ethUtil.sha3(name).toString('hex').slice(0, 8);
 };
 ethFuncs.estimateGas = function(dataObj, callback) {
-    if (ajaxReq.estimateGas) {
-        var gasLimit = 2000000;
-        dataObj.gasPrice = '0x01';
-        dataObj.gas = '0x' + new BigNumber(gasLimit).toString(16);
-        ajaxReq.getTraceCall(dataObj, function(data) {
-            if (data.error) {
-                callback(data);
-                return;
-            }
-
-            function recurCheckBalance(ops) {
-                var startVal = 24088 + ops[0].cost;
-                for (var i = 0; i < ops.length - 1; i++) {
-                    var remainder = startVal - (gasLimit - ops[i].ex.used);
-                    if (ops[i + 1].sub && ops[i + 1].sub.ops.length && (gasLimit - ops[i + 1].cost) > remainder) startVal += (gasLimit - ops[i + 1].cost) - startVal;
-                    else if (ops[i + 1].cost > remainder) startVal += ops[i + 1].cost - remainder;
-                }
-                if (!dataObj.to) startVal += 37000; //add 37000 for contract creation
-                startVal = startVal == gasLimit ? -1 : startVal;
-                return startVal;
-            }
-            if (data.data.vmTrace && data.data.vmTrace.ops.length) {
-                var result = data.data.vmTrace.ops;
-                var estGas = recurCheckBalance(result);
-                estGas = estGas < 0 ? -1 : estGas + 5000;
-            } else {
-                var stateDiff = data.data.stateDiff;
-                stateDiff = stateDiff[dataObj.from.toLowerCase()]['balance']['*'];
-                if (stateDiff)
-                    var estGas = new BigNumber(stateDiff['from']).sub(new BigNumber(stateDiff['to'])).sub(new BigNumber(dataObj.value));
-                else
-                    var estGas = new BigNumber(-1);
-                if (estGas.lt(0) || estGas.eq(gasLimit)) estGas = -1;
-            }
+    ajaxReq.getEstimatedGas(dataObj, function(data) {
+        if (data.error) {
+            callback(data);
+            return;
+        } else {
             callback({
                 "error": false,
                 "msg": "",
-                "data": estGas.toString()
+                "data": data.data == "0x5209" ? new BigNumber(data.data).sub(1).toString() : new BigNumber(data.data).toString()
             });
-        });
-    } else {
-        ajaxReq.getEstimatedGas(dataObj, function(data) {
-            if (data.error) {
-                callback(data);
-                return;
-            } else {
-                callback({
-                    "error": false,
-                    "msg": "",
-                    "data": new BigNumber(data.data).toString()
-                });
-            }
-        });
-    }
+        }
+    });
 }
 module.exports = ethFuncs;

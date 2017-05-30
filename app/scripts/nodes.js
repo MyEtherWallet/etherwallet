@@ -19,7 +19,6 @@ nodes.customNodeObj = {
     'chainId': '',
     'tokenList': [],
     'abiList': [],
-    'estimateGas': false,
     'service': 'Custom',
     'lib': null
 };
@@ -33,7 +32,6 @@ nodes.nodeList = {
         'chainId': 1,
         'tokenList': require('./tokens/ethTokens.json'),
         'abiList': require('./abiDefinitions/ethAbi.json'),
-        'estimateGas': true,
         'service': 'MyEtherWallet',
         'lib': new nodes.customNode('https://api.myetherapi.com/eth', '')
     },
@@ -46,7 +44,6 @@ nodes.nodeList = {
         'chainId': 1,
         'tokenList': require('./tokens/ethTokens.json'),
         'abiList': require('./abiDefinitions/ethAbi.json'),
-        'estimateGas': false,
         'service': 'Etherscan.io',
         'lib': require('./nodeHelpers/etherscan')
     },
@@ -59,7 +56,6 @@ nodes.nodeList = {
         'chainId': 61,
         'tokenList': require('./tokens/etcTokens.json'),
         'abiList': require('./abiDefinitions/etcAbi.json'),
-        'estimateGas': false,
         'service': 'Epool.io',
         'lib': new nodes.customNode('https://mewapi.epool.io', '')
     },
@@ -72,7 +68,6 @@ nodes.nodeList = {
         'chainId': 3,
         'tokenList': require('./tokens/ropstenTokens.json'),
         'abiList': require('./abiDefinitions/ropstenAbi.json'),
-        'estimateGas': false,
         'service': 'MyEtherWallet',
         'lib': new nodes.customNode('https://api.myetherapi.com/rop', '')
     },
@@ -85,7 +80,6 @@ nodes.nodeList = {
         'chainId': 42,
         'tokenList': require('./tokens/kovanTokens.json'),
         'abiList': require('./abiDefinitions/kovanAbi.json'),
-        'estimateGas': false,
         'service': 'Etherscan.io',
         'lib': require('./nodeHelpers/etherscanKov')
     },
@@ -98,7 +92,6 @@ nodes.nodeList = {
         'chainId': 4,
         'tokenList': require('./tokens/rinkebyTokens.json'),
         'abiList': require('./abiDefinitions/rinkebyAbi.json'),
-        'estimateGas': false,
         'service': 'Etherscan.io',
         'lib': require('./nodeHelpers/etherscanRin')
     }

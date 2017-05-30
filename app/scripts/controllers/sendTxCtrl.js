@@ -24,32 +24,27 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     // 3. Add any data if applicable
     // 4. Add a message if you want.
 
-    $scope.customGas = [
-      { // donation address example
+    $scope.customGas = [{ // donation address example
         to: '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
         gasLimit: 21000,
         data: '',
         msg: 'Thank you for donating to MyEtherWallet. TO THE MOON!'
-      },
-      { // BAT
+    }, { // BAT
         to: '0x0D8775F648430679A709E98d2b0Cb6250d2887EF',
         gasLimit: 200000,
         data: '0xb4427263',
         msg: 'BAT. Starts at block 3,798,640. 8:00am PDT on Wednesday, May 31, 2017.'
-      },
-      { // Mysterium
+    }, { // Mysterium
         to: '0x00000',
         gasLimit: 250000,
         data: '',
         msg: 'Mysterium. Starts May 30, 2017.'
-      },
-      { // Moeda
+    }, { // Moeda
         to: '0x4870E705a3def9DDa6da7A953D1cd3CCEDD08573',
         gasLimit: 200000,
         data: '',
         msg: 'Moeda. Ends at block 4,111,557.'
-      }
-    ]
+    }]
     $scope.tx = {
         // if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
         gasLimit: globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null ? globalFuncs.urlGet('gaslimit') != null ? globalFuncs.urlGet('gaslimit') : globalFuncs.urlGet('gas') : globalFuncs.defaultTxGasLimit,
@@ -160,9 +155,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         if ($scope.gasLimitChanged) return;
         for (var i in $scope.customGas) {
             if ($scope.tx.to.toLowerCase() == $scope.customGas[i].to.toLowerCase()) {
-                $scope.showAdvance  = $scope.customGas[i].data!='' ? true : false;
-                $scope.tx.gasLimit  = $scope.customGas[i].gasLimit;
-                $scope.tx.data      = $scope.customGas[i].data;
+                $scope.showAdvance = $scope.customGas[i].data != '' ? true : false;
+                $scope.tx.gasLimit = $scope.customGas[i].gasLimit;
+                $scope.tx.data = $scope.customGas[i].data;
                 $scope.customGasMsg = $scope.customGas[i].msg != '' ? $scope.customGas[i].msg : ''
                 return;
             }
@@ -190,9 +185,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             } else $scope.notifier.danger(data.msg);
         });
     }
+    var isEnough = function(valA, valB) {
+        return new BigNumber(valA).lte(new BigNumber(valB));
+    }
     $scope.hasEnoughBalance = function() {
         if ($scope.wallet.balance == 'loading') return false;
-        return new BigNumber($scope.tx.value).lt(new BigNumber($scope.wallet.balance));
+        return isEnough($scope.tx.value, $scope.wallet.balance);
     }
     $scope.onDonateClick = function() {
         $scope.addressDrtv.ensAddressField = globalFuncs.donateAddress;
@@ -207,8 +205,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         var txData = uiFuncs.getTxData($scope);
         if ($scope.tx.sendMode == 'token') {
             // if the amount of tokens you are trying to send > tokens you have, throw error
-            if (tx.value > $scope.wallet.tokenObjs[$scope.tokenTx.id].getBalance()) {
-              $scope.notifier.danger(rawTx.error);
+            if (!isEnough($scope.tx.value, $scope.wallet.tokenObjs[$scope.tokenTx.id].balance)) {
+                $scope.notifier.danger(globalFuncs.errorMsgs[0]);
+                return;
             }
             txData.to = $scope.wallet.tokenObjs[$scope.tokenTx.id].getContractAddress();
             txData.data = $scope.wallet.tokenObjs[$scope.tokenTx.id].getData($scope.tokenTx.to, $scope.tokenTx.value).data;
@@ -231,7 +230,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         uiFuncs.sendTx($scope.signedTx, function(resp) {
             if (!resp.isError) {
                 var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a class='strong' href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' class='strong' target='_blank'>View TX</a><br />" : '';
-                var emailLink = '<a class="strong" href="mailto:support@myetherwallet.com?Subject=Issue%20regarding%20my%20TX%20&Body=Hi%20Taylor%2C%20%0A%0AI%20have%20a%20question%20concerning%20my%20transaction.%20%0A%0AI%20was%20attempting%20to%3A%0A-%20Send%20ETH%0A-%20Send%20Tokens%0A-%20Send%20via%20my%20Ledger%0A-%20Send%20via%20my%20TREZOR%0A-%20Send%20via%20the%20offline%20tab%0A%0AFrom%20address%3A%20%0A%0ATo%20address%3A%20%0A%0AUnfortunately%20it%3A%0A-%20Never%20showed%20on%20the%20blockchain%0A-%20Failed%20due%20to%20out%20of%20gas%0A-%20Failed%20for%20another%20reason%0A-%20Never%20showed%20up%20in%20the%20account%20I%20was%20sending%20to%0A%0A%5B%20INSERT%20MORE%20INFORMATION%20HERE%20%5D%0A%0AThank%20you%0A%0A'+ "%0A%20TO%20"+ $scope.tx.to+ "%0A%20FROM%20"+ $scope.wallet.getAddressString()+ "%0A%20AMT%20"+ $scope.tx.value+ "%0A%20CUR%20"+ $scope.unitReadable+ "%0A%20NODE%20TYPE%20"+ $scope.ajaxReq.type+ "%0A%20TOKEN%20"+ $scope.tx.tokenSymbol+ "%0A%20TOKEN%20TO%20"+ $scope.tokenTx.to+ "%0A%20TOKEN%20AMT%20"+ $scope.tokenTx.value+ "%0A%20TOKEN%20CUR%20"+ $scope.unitReadable+ "%0A%20TX%20"+ resp.data+ '" target="_blank">Confused? Email Us.</a>';
+                var emailLink = '<a class="strong" href="mailto:support@myetherwallet.com?Subject=Issue%20regarding%20my%20TX%20&Body=Hi%20Taylor%2C%20%0A%0AI%20have%20a%20question%20concerning%20my%20transaction.%20%0A%0AI%20was%20attempting%20to%3A%0A-%20Send%20ETH%0A-%20Send%20Tokens%0A-%20Send%20via%20my%20Ledger%0A-%20Send%20via%20my%20TREZOR%0A-%20Send%20via%20the%20offline%20tab%0A%0AFrom%20address%3A%20%0A%0ATo%20address%3A%20%0A%0AUnfortunately%20it%3A%0A-%20Never%20showed%20on%20the%20blockchain%0A-%20Failed%20due%20to%20out%20of%20gas%0A-%20Failed%20for%20another%20reason%0A-%20Never%20showed%20up%20in%20the%20account%20I%20was%20sending%20to%0A%0A%5B%20INSERT%20MORE%20INFORMATION%20HERE%20%5D%0A%0AThank%20you%0A%0A' + "%0A%20TO%20" + $scope.tx.to + "%0A%20FROM%20" + $scope.wallet.getAddressString() + "%0A%20AMT%20" + $scope.tx.value + "%0A%20CUR%20" + $scope.unitReadable + "%0A%20NODE%20TYPE%20" + $scope.ajaxReq.type + "%0A%20TOKEN%20" + $scope.tx.tokenSymbol + "%0A%20TOKEN%20TO%20" + $scope.tokenTx.to + "%0A%20TOKEN%20AMT%20" + $scope.tokenTx.value + "%0A%20TOKEN%20CUR%20" + $scope.unitReadable + "%0A%20TX%20" + resp.data + '" target="_blank">Confused? Email Us.</a>';
                 $scope.notifier.success(globalFuncs.successMsgs[2] + resp.data + "<p>" + bExStr + "</p><p>" + emailLink + "</p>");
                 $scope.wallet.setBalance(applyScope);
                 if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
