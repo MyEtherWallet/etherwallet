@@ -33,7 +33,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         to: '0x0D8775F648430679A709E98d2b0Cb6250d2887EF',
         gasLimit: 200000,
         data: '0xb4427263',
-        msg: 'BAT. Starts: Block 3,798,640. May 31, 2017 ~8:00am PDT. (If no TX found on chain, check gas price is 24 GWEI in footer.)'
+        msg: 'BAT. THE SALE IS OVER. STOP CLOGGING THE BLOCKCHAIN PLEASE'
     }, { // BANCOR
         to: '0x00000',
         gasLimit: 200000,
