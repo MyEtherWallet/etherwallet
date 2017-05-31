@@ -25,7 +25,7 @@ var footerCtrl = function($scope, globalService) {
                 var curVal = new BigNumber(data.gasprice).div(etherUnits.getValueOfUnit('gwei')).toNumber();
                 $scope.gas = {
                     curVal: curVal,
-                    value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 21,
+                    value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 24,
                     max: curVal + 20,
                     min: 1
                 }

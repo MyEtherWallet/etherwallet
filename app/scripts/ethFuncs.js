@@ -74,6 +74,11 @@ ethFuncs.getFunctionSignature = function(name) {
     return ethUtil.sha3(name).toString('hex').slice(0, 8);
 };
 ethFuncs.estimateGas = function(dataObj, callback) {
+    var adjustGas = function(gasLimit) {
+        if (gasLimit == "0x5209") return "21000";
+        if (new BigNumber(gasLimit).gt(3500000)) return "-1";
+        return new BigNumber(gasLimit).toString();
+    }
     ajaxReq.getEstimatedGas(dataObj, function(data) {
         if (data.error) {
             callback(data);
@@ -82,7 +87,7 @@ ethFuncs.estimateGas = function(dataObj, callback) {
             callback({
                 "error": false,
                 "msg": "",
-                "data": data.data == "0x5209" ? new BigNumber(data.data).sub(1).toString() : new BigNumber(data.data).toString()
+                "data": adjustGas(data.data)
             });
         }
     });
