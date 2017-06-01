@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js     : commit 459ba23623e1fa13c3d468277ef5dad5070542d2
+// Last sync with en.js     : commit 68abcad30dd5f18d504b9ae7756270c96b39046e
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -278,34 +278,34 @@ ERROR_3                     : 'Questo non è un file portafoglio valido. ',
 ERROR_4                     : 'Questa unità non esiste, ti preghiamo di usare una delle seguenti unità ',
 ERROR_5                     : 'Inserisci un indirizzo valido. ',
 ERROR_6                     : 'Inserisci una password valida. ',
-ERROR_7                     : 'Inserisci un numero valido. (Must be integer. Try 0-18.) ', // 7
-ERROR_8                     : 'Inserisci un limite gas valido. (Must be integer. Try 21000-4000000.) ', // 8
-ERROR_9                     : 'Valori dati non validi. (Must be hex.) ', // 9
-ERROR_10                    : 'Inserisci una quantità di gas valida. (Must be integer. Try 20 GWEI / 20000000000 WEI.) ',
-ERROR_11                    : 'Inserisci un nonce valido. (Must be integer.) ', // 11
+ERROR_7                     : 'Inserisci dei decimali validi. (Deve essere un intero. Prova 0-18.) ', // 7
+ERROR_8                     : 'Inserisci un limite gas valido. (Deve essere un intero. Prova 21000-4000000.) ', // 8
+ERROR_9                     : 'Inserisci un valore valido per i dati. (Deve essere una stringa esadecimale.) ', // 9
+ERROR_10                    : 'Inserisci prezzo valido per il gas. (Deve essere un intero. Prova 20 GWEI / 20000000000 WEI.) ',
+ERROR_11                    : 'Inserisci un nonce valido. (Deve essere un intero.) ', // 11
 ERROR_12                    : 'Transazione firmata non valida. ',
 ERROR_13                    : 'Esiste già un portafoglio con questo nome. ',
 ERROR_14                    : 'Portafoglio non trovato. ',
-ERROR_15                    : 'Sembra che non esista ancora una proposta con questo ID o c\'è un errore nella lettura della proposta. ',
+ERROR_15                    : 'Ops. Sembra che non esista ancora una proposta con questo ID o c\'è un errore nella lettura della proposta. ', // 15 - NOT USED
 ERROR_16                    : 'C\'è già un portafoglio con questo indirizzo fra quelli salvati. Controlla la pagina dei tuoi portafogli. ',
-ERROR_17                    : 'Fondi insufficienti. L\'account dal quale stai provando ad inviare la transazione non ha abbastanza fondi. Ti servono **0,01 ETH** nel conto per coprire i costi del gas. Aggiungi un po\' di ETH e riprova. ',
+ERROR_17                    : 'L\'account dal quale stai provando ad inviare la transazione non ha abbastanza fondi. Se stai inviando token, ti servono 0,01 ETH nel conto per coprire i costi del gas. ',
 ERROR_18                    : 'Questa transazione consumerebbe tutto il gas. Ciò significa che hai già votato questa proposta o che il periodo di discussione è terminato. ',
-ERROR_19                    : 'Inserisci un Simbolo valido ',
+ERROR_19                    : 'Inserisci un simbolo valido ',
 ERROR_20                    : 'Non è un token ERC-20 valido. ',
 ERROR_21                    : 'Impossibile eseguire una stima del gas necessario. Non ci sono abbastanza fondi nel conto, oppure l\'indirizzo del contratto ricevente genererebbe un errore. Puoi inserire il gas manualmente e procedere. Il messaggio di errore al momento dell\'invio potrebbe contenere ulteriori informazioni. ',
 ERROR_22                    : 'Inserisci un nome di nodo valido ',
-ERROR_23                    : 'Inserisci un URL valido. Se ti stai collegando tramite HTTPS anche il nodo deve utilizzare HTTPS ',
+ERROR_23                    : 'Inserisci un URL valido. Se usi https, l\'URL deve cominciare con https',
 ERROR_24                    : 'Inserisci una porta valida ',
 ERROR_25                    : 'Inserisci un ID catena valido ',
 ERROR_26                    : 'Inserisci una ABI valida ',
 ERROR_27                    : 'Importo minimo: 0.01. Importo massimo: ',
-ERROR_28                    : '**Avrai bisogno del tuo file Keystore e della password** (o della chiave privata) per avere accesso a questo portafoglio in futuro. Ti preghiamo di salvarlo e copiarlo su un supporto esterno! Non c\'è alcun modo per recuperare un portafoglio se non lo salvi. Leggi la [pagina di aiuto](https://www.myetherwallet.com/#help) per le istruzioni. ',
+ERROR_28                    : 'Avrai bisogno del file del tuo portafoglio e della password per avere accesso a questo portafoglio in futuro. ',
 ERROR_29                    : 'Inserisci un nome utente e una password validi ',
-ERROR_30                    : 'Inserisci un nome ENS valido ',
+ERROR_30                    : 'Inserisci un nome valido (almeno 7 caratteri, punteggiatura limitata)',
 ERROR_31                    : 'Inserisci una frase segreta valida ',
-ERROR_32                    : 'Impossibile collegarsi al nodo. Aggiorna la pagina, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
-ERROR_33                    : 'L\'indirizzo del portafoglio non è quello da cui si è fatta l\'offerta. ',
-ERROR_34                    : 'Il nome non corrisponde all\'originale',
+ERROR_32                    : 'Impossibile collegarsi al nodo. Aggiorna la pagina, prova con un altro nodo (angolo in alto a destra), controlla le impostazioni del firewall. Se si tratta di un nodo personalizzato, controlla la configurazione.', // 32
+ERROR_33                    : 'L\'indirizzo del portafoglio non corrisponde a quello del proprietario. ',
+ERROR_34                    : 'Il nome che stai provando a rivelare non combacia con quello che hai inserito. ',
 
 SUCCESS_1                   : 'Indirizzo valido ',
 SUCCESS_2                   : 'Portafoglio decodificato correttamente ',
