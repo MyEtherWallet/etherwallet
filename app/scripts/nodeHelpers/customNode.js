@@ -87,14 +87,15 @@ customNode.prototype.getEthCall = function(txobj, callback) {
     if (!ethCallArr.calls.length) {
         ethCallArr.timer = setTimeout(function() {
             parentObj.rawPost(ethCallArr.calls, function(data) {
-                for (var i in data) {
-                    if (data[i].error) ethCallArr.callbacks[i]({ error: true, msg: data[i].error.message, data: '' });
-                    else ethCallArr.callbacks[i]({ error: false, msg: '', data: data[i].result });
-                }
                 ethCallArr.calls = [];
+                var _callbacks = ethCallArr.callbacks.slice();
                 ethCallArr.callbacks = [];
+                for (var i in data) {
+                    if (data[i].error) _callbacks[i]({ error: true, msg: data[i].error.message, data: '' });
+                    else _callbacks[i]({ error: false, msg: '', data: data[i].result });
+                }
             });
-        }, 1000);
+        }, 500);
     }
     ethCallArr.calls.push({ "id": globalFuncs.getRandomBytes(16).toString('hex'), "jsonrpc": "2.0", "method": "eth_call", "params": [{ to: txobj.to, data: txobj.data }, 'pending'] });
     ethCallArr.callbacks.push(callback);
