@@ -103,7 +103,7 @@ uiFuncs.generateTx = function(txData, callback) {
         var genTxWithInfo = function(data) {
             var rawTx = {
                 nonce: ethFuncs.sanitizeHex(data.nonce),
-                gasPrice: ethFuncs.sanitizeHex(data.gasprice),
+                gasPrice: data.isOffline ? ethFuncs.sanitizeHex(data.gasprice) : ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
                 gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
                 to: ethFuncs.sanitizeHex(txData.to),
                 value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
@@ -150,6 +150,7 @@ uiFuncs.generateTx = function(txData, callback) {
                 nonce: txData.nonce,
                 gasprice: txData.gasPrice
             }
+            data.isOffline = txData.isOffline ? txData.isOffline : false;
             genTxWithInfo(data);
         } else {
             ajaxReq.getTransactionData(txData.from, function(data) {
@@ -161,7 +162,7 @@ uiFuncs.generateTx = function(txData, callback) {
                     return;
                 } else {
                     data = data.data;
-                    data.gasprice = ethFuncs.addTinyMoreToGas(data.gasprice);
+                    data.isOffline = txData.isOffline ? txData.isOffline : false;
                     genTxWithInfo(data);
                 }
             });

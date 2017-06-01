@@ -109,6 +109,7 @@ var offlineTxCtrl = function($scope, $sce, walletService) {
             return;
         }
         var txData = uiFuncs.getTxData($scope);
+        txData.isOffline = true;
         txData.nonce = ethFuncs.sanitizeHex(ethFuncs.decimalToHex($scope.nonceDec));
         txData.gasPrice = ethFuncs.sanitizeHex(ethFuncs.decimalToHex($scope.gasPriceDec));
         if ($scope.tokenTx.id != 'ether') {
