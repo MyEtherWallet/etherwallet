@@ -103,7 +103,7 @@ uiFuncs.generateTx = function(txData, callback) {
         var genTxWithInfo = function(data) {
             var rawTx = {
                 nonce: ethFuncs.sanitizeHex(data.nonce),
-                gasPrice: ethFuncs.sanitizeHex(ethFuncs.addTinyMoreToGas(data.gasprice)),
+                gasPrice: ethFuncs.sanitizeHex(data.gasprice),
                 gasLimit: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(txData.gasLimit)),
                 to: ethFuncs.sanitizeHex(txData.to),
                 value: ethFuncs.sanitizeHex(ethFuncs.decimalToHex(etherUnits.toWei(txData.value, txData.unit))),
@@ -161,6 +161,7 @@ uiFuncs.generateTx = function(txData, callback) {
                     return;
                 } else {
                     data = data.data;
+                    data.gasprice = ethFuncs.addTinyMoreToGas(data.gasprice);
                     genTxWithInfo(data);
                 }
             });
@@ -225,7 +226,7 @@ uiFuncs.notifier = {
     timer: null,
     sce: null,
     scope: null,
-    overrideMsg: function(msg){
+    overrideMsg: function(msg) {
         return globalFuncs.getEthNodeMsg(msg);
     },
     warning: function(msg) {
