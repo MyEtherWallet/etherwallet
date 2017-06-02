@@ -11,7 +11,7 @@
           <br />
           to resolve to address <code>{{newResolvedAddress}}</code>
           <br />
-          via the Public Resolver <strong>0x1da022710df5002339274aadee8d58218e9d6ab5</strong>
+          via the Public Resolver <strong>0x5FfC014343cd971B7eb70732021E26C35B744cc4</strong>
         </h2>
 
         <p> The <strong>{{ajaxReq.type}}</strong> node you are sending through is provided by <strong>{{ajaxReq.service}}</strong>.</p>

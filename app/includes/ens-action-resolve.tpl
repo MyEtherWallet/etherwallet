@@ -29,7 +29,7 @@
         <ul><li>node (bytes32): <code>{{objENS.namehash}}</code></li></ul>
       </li>
       <li>Enter the Public Resolver Address under "resolver (address)".
-        <ul><li>resolver (address): <code>0x1da022710df5002339274aadee8d58218e9d6ab5</code></li></ul>
+        <ul><li>resolver (address): <code>0x5FfC014343cd971B7eb70732021E26C35B744cc4</code></li></ul>
       </li>
       <li>Unlock the owner's account.</li>
       <li>Click <code>WRITE</code>.</li>
@@ -43,7 +43,7 @@
     <h3>Set the Address That your Name will Resolve To</h3>
     <ol>
       <li>Go to the contracts tab.</li>
-      <li>Choose <code>ENS-Public Resolver:</code> <code>0x1da022710df5002339274aadee8d58218e9d6ab5</code>. Click "Access". </li>
+      <li>Choose <code>ENS-Public Resolver:</code> <code>0x5FfC014343cd971B7eb70732021E26C35B744cc4</code>. Click "Access". </li>
       <li>Select <code>setAddr</code>. </li>
       <li>Enter the Namehash of your name under "node (bytes32)".
         <ul><li>node (bytes32): <code>{{objENS.namehash}}</code></li></ul>
