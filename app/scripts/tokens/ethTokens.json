@@ -168,6 +168,12 @@
     "type":"default"
   },
   {
+    "address":"0x8ae4bf2c33a8e667de34b54938b0ccd03eb8cc06",
+    "symbol":"PTOY",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xD8912C10681D8B21Fd3742244f44658dBA12264E",
     "symbol":"PLU",
     "decimal":18,
