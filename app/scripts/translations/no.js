@@ -312,16 +312,16 @@ ERROR_29                    : 'Vennligst oppgi gyldig brukernavn og passord ',
 ERROR_30                    : 'Vennligst oppgi et gyldig ENS-navn ',
 ERROR_31                    : 'Ugyldig hemmelig frase ',
 ERROR_32                    : 'Kunne ikke bytte node eller koble til noden du valgte.  Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
-ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
-ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
+ERROR_33                    : 'Lommeboken du har låst opp stemmer ikke overens med eierens adresse. ', // 33
+ERROR_34                    : 'Navnet du prøver å avsløre er ikke likt navnet du har tastet inn. ', // 34
 
 SUCCESS_1                   : 'Gyldig adresse ',
 SUCCESS_2                   : 'Dekrypteringen av lommeboken var vellykket ',
-SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transaksjonen ble sendt inn. TX ID ',
+SUCCESS_3                   : 'Transaksjonen ble kringkastet til blokkjeden. Klikk for å se transaksjonen din og verifisere at den ble inkludert (mined), og at den ikke ga noen tom-for-gas- eller kontrakt-utførelsesfeil.  TX ID:  ', //'Transaksjonen ble sendt inn. TX ID ',
 SUCCESS_4                   : 'Lommeboken din ble lagt til ',
 SUCCESS_5                   : 'Valgt fil ',
 SUCCESS_6                   : 'Tilkobling ble opprettet ',
-SUCCESS_7                   : 'Message Signature Verified',
+SUCCESS_7                   : 'Meldingssignatur bekreftet',
 WARN_Send_Link              : 'Du ankom via en lenke hvor adresse, verdi, gas, datafelt og/eller transaksjonstype (sendingsmodus) var ferdigutfylt. Du kan endre denne informasjonen før du sender. Lås opp lommeboken din for å komme i gang. ',
 
 /* Geth Error Messages */
