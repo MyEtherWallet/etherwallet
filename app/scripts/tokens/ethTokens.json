@@ -10,10 +10,16 @@
     "symbol":"ANT",
     "decimal":18,
     "type":"default"
-  },  
+  },
   {
     "address":"0xAc709FcB44a43c35F0DA4e3163b117A17F3770f5",
     "symbol":"ARC",
+    "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+    "symbol":"BAT",
     "decimal":18,
     "type":"default"
   },
@@ -129,6 +135,12 @@
     "address":"0xfa05a73ffe78ef8f1a739473e462c54bae6567d9",
     "symbol":"LUN",
     "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0x93e682107d1e9defb0b5ee701c71707a4b2e46bc",
+    "symbol":"MCAP",
+    "decimal":8,
     "type":"default"
   },
   {
@@ -254,6 +266,12 @@
   {
     "address":"0x5c543e7AE0A1104f78406C340E9C64FD9fCE5170",
     "symbol":"VSL",
+    "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0x8f3470a7388c05ee4e7af3d01d8c722b0ff52374",
+    "symbol":"VERI",
     "decimal":18,
     "type":"default"
   },
