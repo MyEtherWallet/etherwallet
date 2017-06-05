@@ -222,4 +222,16 @@ globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
             break;
         }
 }
+globalFuncs.getUrlParameter = function getUrlParameter(url) {
+  // get query string from url (optional) or window
+  var queryString = url ? url.split('=')[1] : window.location.search.slice(1);
+  return queryString;
+}
+globalFuncs.setUrlParameter = function setUrlParameter(value) {
+  //In case url contains already a parameter remove parameter
+  if(window.location.href.indexOf('=') != -1) {
+      location.href = location.href.substr(0,window.location.href.indexOf('='));
+  }
+  location.href = location.href + "=" + value
+}
 module.exports = globalFuncs;
