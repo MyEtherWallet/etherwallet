@@ -23,9 +23,9 @@
         <td>{{token.getSymbol()}} </td>
       </tr>
     </table>
-    <a class="btn btn-default btn-sm" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'">Show All Tokens</a>
-    <a class="btn btn-default btn-sm" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">Hide Tokens</a>
-    <a class="btn btn-default btn-sm" ng-click="customTokenField=!customTokenField"><span translate="SEND_custom"translate="SEND_custom">Add Custom Token</span></a>
+    <a class="btn btn-default btn-xs" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'">Show All Tokens</a>
+    <a class="btn btn-default btn-xs" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">Hide Tokens</a>
+    <a class="btn btn-default btn-xs" ng-click="customTokenField=!customTokenField"><span translate="SEND_custom"translate="SEND_custom">Add Custom Token</span></a>
     <div class="custom-token-fields" ng-show="customTokenField">
       <label translate="TOKEN_Addr">Address:</label>
       <input class="form-control input-sm" type="text" ng-model="localToken.contractAdd" ng-class="Validator.isValidAddress(localToken.contractAdd) ? 'is-valid' : 'is-invalid'" />
@@ -33,7 +33,7 @@
       <input class="form-control input-sm" type="text" ng-model="localToken.symbol" ng-class="localToken.symbol!='' ? 'is-valid' : 'is-invalid'" />
       <label translate="TOKEN_Dec"> Decimals:</label>
       <input class="form-control input-sm" type="text" ng-model="localToken.decimals" ng-class="Validator.isPositiveNumber(localToken.decimals) ? 'is-valid' : 'is-invalid'" />
-      <div class="btn btn-primary btn-sm" ng-click="saveTokenToLocal()" translate="x_Save">Save</div>
+      <div class="btn btn-primary btn-xs" ng-click="saveTokenToLocal()" translate="x_Save">Save</div>
       <div ng-bind-html="validateLocalToken"></div>
     </div>
   </section>
@@ -60,6 +60,6 @@
       <li><span class="mono wrap">{{wallet.gbpBalance | currency:"£"}}</span> GBP</li>
       <li><span class="mono wrap">{{wallet.chfBalance | currency:" "}}</span> CHF</li>
     </ul>
-    <a target="_blank" ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-sm">Swap via Bity</a>
+    <a target="_blank" ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-xs">Swap via Bity</a>
   </section>
 </aside>

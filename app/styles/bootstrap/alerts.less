@@ -1,8 +1,7 @@
 // Alerts
 .alert {
-  padding: @space-sm @space;
-  margin: @space 0;
-  border-radius: @alert-border-radius;
+  padding: @space-md @space-xl;
+  margin: @space auto;
   font-weight: 300;
   font-size: @font-size-bump;
   h4 {
@@ -10,8 +9,8 @@
     color: inherit;
   }
 
-  &*:first-child { margin-top: 0;                        }
-  &*:last-child  { margin-bottom: 0;                     }
+  > *:first-child { margin-top: 0;                        }
+  > *:last-child  { margin-bottom: 0;                     }
 
   .alert-link    { font-weight: @alert-link-font-weight; }
 
@@ -28,7 +27,6 @@
 
 .alert.popup {
   position: fixed;
-  border-radius: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -72,6 +70,7 @@
     bottom: 0;
     border-left: 1px solid rgba(255, 255, 255, .7);
     transition: @transition;
+    padding: 0 5%;
     @media screen and (max-width: @screen-sm) {
       width: @cont-padding-lg;
     }

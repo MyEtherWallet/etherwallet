@@ -142,7 +142,7 @@
         <li><strong>{{btcBalance}}</strong> BTC</li>
       </ul>
 
-      <a target="_blank" ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-sm">Swap via Bity</a>
+      <a target="_blank" ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-xs">Swap via Bity</a>
 
       <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
       <ul class="account-info">

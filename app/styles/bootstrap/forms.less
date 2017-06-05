@@ -114,9 +114,8 @@ label + textarea,
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
-  border-radius: @border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  margin-top: @space-sm;
+  margin-bottom: @space-sm;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
   transition: @transition;
 
@@ -329,7 +328,7 @@ input[type="checkbox"] {
     padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
     line-height: @line-height-small;
-    border-radius: @border-radius;
+
   }
   select.form-control {
     height: @input-height-small;
@@ -357,7 +356,7 @@ input[type="checkbox"] {
     padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     line-height: @line-height-large;
-    border-radius: @border-radius;
+
   }
   select.form-control {
     height: @input-height-large;
@@ -378,19 +377,34 @@ input[type="checkbox"] {
 
 // Custom Angular Form Validators
 .form-control.is-valid {
-  border-color: lighten(@brand-success, 15%);
+  border-color: lighten(@brand-success, 25%);
   outline: 0;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 2px fadeout(@brand-success, 50%);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 1px fadeout(@brand-success, 50%);
+  &:focus {
+    border-color: lighten(@brand-success, 15%);
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 3px fadeout(@brand-success, 50%);
+  }
 }
 
 .form-control.is-invalid {
-  border-color: lighten(@brand-danger, 15%);
+  border-color: lighten(@brand-danger, 25%);
   outline: 0;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 2px fadeout(@brand-danger, 50%);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 1px fadeout(@brand-danger, 50%);
+  &:focus {
+    border-color: lighten(@brand-danger, 15%);
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 3px fadeout(@brand-danger, 50%);
+  }
 }
 
 .form-control.is-semivalid {
-  border-color: lighten(@brand-warning, 15%);
+  border-color: lighten(@brand-warning, 25%);
   outline: 0;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 2px fadeout(@brand-warning, 50%);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 1px fadeout(@brand-warning, 50%);
+  &:focus {
+    border-color: lighten(@brand-warning, 15%);
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 3px fadeout(@brand-warning, 50%);
+  }
 }
