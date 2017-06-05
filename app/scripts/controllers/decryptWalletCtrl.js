@@ -16,14 +16,14 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         id: 0,
         hdk: null,
         dPath: '',
-        defaultDPath:      "m/44'/60'/0'/0",       // first address: m/44'/60'/0'/0/0
-        alternativeDPath:  "m/44'/60'/0'",         // first address: m/44'/60'/0/0
-        customDPath:       "m/44'/60'/1'/0",       // first address: m/44'/60'/1'/0/0
-        ledgerPath:        "m/44'/60'/0'",         // first address: m/44'/60'/0/0
+        defaultDPath: "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
+        alternativeDPath: "m/44'/60'/0'", // first address: m/44'/60'/0/0
+        customDPath: "m/44'/60'/1'/0", // first address: m/44'/60'/1'/0/0
+        ledgerPath: "m/44'/60'/0'", // first address: m/44'/60'/0/0
         ledgerClassicPath: "m/44'/60'/160720'/0'", // first address: m/44'/60'/160720'/0/0
-        trezorTestnetPath: "m/44'/1'/0'/0",        // first address: m/44'/1'/0'/0/0
-        trezorClassicPath: "m/44'/61'/0'/0",       // first address: m/44'/61'/0'/0/0
-        trezorPath:        "m/44'/60'/0'/0",       // first address: m/44'/60'/0'/0/0
+        trezorTestnetPath: "m/44'/1'/0'/0", // first address: m/44'/1'/0'/0/0
+        trezorClassicPath: "m/44'/61'/0'/0", // first address: m/44'/61'/0'/0/0
+        trezorPath: "m/44'/60'/0'/0", // first address: m/44'/60'/0'/0/0
     };
     $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
     $scope.mnemonicModel = new Modal(document.getElementById('mnemonicModel'));
@@ -60,7 +60,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
             $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
         }
     });
-    $scope.onHDDPathChange = function(password = '') {
+    $scope.onHDDPathChange = function(password = $scope.mnemonicPassword) {
         $scope.HDWallet.numWallets = 0;
         if ($scope.walletType == 'pastemnemonic') {
             $scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim(), password));

@@ -214,8 +214,10 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
 }
 uiFuncs.notifier = {
     show: false,
+    isDanger: false,
     close: function() {
         this.show = false;
+        this.isDanger = false;
         if (!this.scope.$$phase) this.scope.$apply()
     },
     open: function() {
@@ -228,6 +230,7 @@ uiFuncs.notifier = {
     sce: null,
     scope: null,
     overrideMsg: function(msg) {
+        console.log(msg)
         return globalFuncs.getEthNodeMsg(msg);
     },
     warning: function(msg) {
@@ -238,24 +241,35 @@ uiFuncs.notifier = {
         this.setTimer();
     },
     danger: function(msg) {
+        msg = msg.message ? msg.message : msg;
         msg = this.overrideMsg(msg);
+        this.isDanger = true;
         this.setClassAndOpen("alert-danger", msg);
+        this.cancelTimer();
     },
     success: function(msg) {
         this.setClassAndOpen("alert-success", msg);
     },
     setClassAndOpen: function(_class, msg) {
         this.class = _class;
+        var _temp = this.message != "" ? this.message + "</br>" : "";
         this.message = msg.message ? this.sce.trustAsHtml(msg.message) : this.sce.trustAsHtml(msg);
+        this.message = _temp + this.message;
         this.open();
     },
     setTimer: function() {
         var _this = this;
+        if (_this.isDanger) return;
         clearTimeout(_this.timer);
         _this.timer = setTimeout(function() {
             _this.show = false;
+            _this.message = "";
             if (!_this.scope.$$phase) _this.scope.$apply();
         }, 5000);
+    },
+    cancelTimer: function() {
+        var _this = this;
+        clearTimeout(_this.timer);
     }
 }
 module.exports = uiFuncs;

@@ -32,88 +32,89 @@ globalFuncs.getDangerText = function(str) {
 
 // These are translated in the translation files
 globalFuncs.errorMsgs = [
-  'Please enter a valid amount.', // 0
-  'Your password must be at least 9 characters. Please ensure it is a strong password. ', // 1
-  'Sorry! We don\'t recognize this type of wallet file. ', // 2
-  'This is not a valid wallet file. ', // 3
-  'This unit doesn\'t exists, please use the one of the following units ', // 4
-  'Please enter a valid address. ', // 5
-  'Please enter a valid password. ', // 6
-  'Please enter valid decimals (Must be integer, 0-18). ', // 7
-  'Please enter a valid gas limit (Must be integer. Try 21000-4000000). ', // 8
-  'Please enter a valid data value (Must be hex). ', // 9
-  'Please enter a valid gas price. ', // 10 - NOT USED
-  'Please enter a valid nonce (Must be integer).', // 11
-  'Invalid signed transaction. ', // 12
-  'A wallet with this nickname already exists. ', // 13
-  'Wallet not found. ', // 14
-  'Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ', // 15 - NOT USED
-  'A wallet with this address already exists in storage. Please check your wallets page. ', // 16
-  'Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} wei and got: {} wei. If sending tokens, you must have 0.01 ETH in your account to cover the cost of gas. ', // 17
-  'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
-  'Please enter a valid symbol', // 19
-  'Not a valid ERC-20 token', // 20
-  'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
-  'Please enter valid node name', // 22
-  'Enter valid URL. If you are on https, your URL must be https', // 23
-  'Please enter a valid port. ', // 24
-  'Please enter a valid chain ID. ', // 25
-  'Please enter a valid ABI. ', // 26
-  'Minimum amount: 0.01. Max amount: ', // 27
-  'You need your Wallet File & Password to access this wallet in the future. ', // 28
-  'Please enter a valid user and password. ', // 29
-  'Please enter a valid name (7+ characters, limited punctuation) ', // 30
-  'Please enter a valid secret phrase. ', // 31
-  'Could not connect to the node. Try refreshing, using different node in upper right corner, and checking firewall settings. If custom node, check your configs.', // 32
-  'The wallet you have unlocked does not match the owner\'s address. ', // 33
-  'The name you are attempting to reveal does not match the name you have entered. ' // 34
+    'Please enter a valid amount.', // 0
+    'Your password must be at least 9 characters. Please ensure it is a strong password. ', // 1
+    'Sorry! We don\'t recognize this type of wallet file. ', // 2
+    'This is not a valid wallet file. ', // 3
+    'This unit doesn\'t exists, please use the one of the following units ', // 4
+    'Please enter a valid address. ', // 5
+    'Please enter a valid password. ', // 6
+    'Please enter valid decimals (Must be integer, 0-18). ', // 7
+    'Please enter a valid gas limit (Must be integer. Try 21000-4000000). ', // 8
+    'Please enter a valid data value (Must be hex). ', // 9
+    'Please enter a valid gas price. ', // 10 - NOT USED
+    'Please enter a valid nonce (Must be integer).', // 11
+    'Invalid signed transaction. ', // 12
+    'A wallet with this nickname already exists. ', // 13
+    'Wallet not found. ', // 14
+    'Whoops. It doesn\'t look like a proposal with this ID exists yet or there is an error reading this proposal. ', // 15 - NOT USED
+    'A wallet with this address already exists in storage. Please check your wallets page. ', // 16
+    'Insufficient funds. Account you try to send transaction from does not have enough funds. Required {} wei and got: {} wei. If sending tokens, you must have 0.01 ETH in your account to cover the cost of gas. ', // 17
+    'All gas would be used on this transaction. This means you have already voted on this proposal or the debate period has ended.', // 18
+    'Please enter a valid symbol', // 19
+    'Not a valid ERC-20 token', // 20
+    'Could not estimate gas. There are not enough funds in the account, or the receiving contract address would throw an error. Feel free to manually set the gas and proceed. The error message upon sending may be more informative.', // 21
+    'Please enter valid node name', // 22
+    'Enter valid URL. If you are on https, your URL must be https', // 23
+    'Please enter a valid port. ', // 24
+    'Please enter a valid chain ID. ', // 25
+    'Please enter a valid ABI. ', // 26
+    'Minimum amount: 0.01. Max amount: ', // 27
+    'You need your Wallet File & Password to access this wallet in the future. ', // 28
+    'Please enter a valid user and password. ', // 29
+    'Please enter a valid name (7+ characters, limited punctuation) ', // 30
+    'Please enter a valid secret phrase. ', // 31
+    'Could not connect to the node. Try refreshing, using different node in upper right corner, and checking firewall settings. If custom node, check your configs.', // 32
+    'The wallet you have unlocked does not match the owner\'s address. ', // 33
+    'The name you are attempting to reveal does not match the name you have entered. ', // 34
+    'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank"> More info</a>' // 35
 ];
 
 // These are translated in the translation files
 globalFuncs.successMsgs = [
-  'Valid address',
-  'Wallet successfully decrypted',
-  'Transaction submitted. TX ID: ',
-  'Your wallet was successfully added: ',
-  'File Selected: ',
-  'You are connected to the node ',
-  'Message Signature Verified'
+    'Valid address',
+    'Wallet successfully decrypted',
+    'Transaction submitted. TX ID: ',
+    'Your wallet was successfully added: ',
+    'File Selected: ',
+    'You are connected to the node ',
+    'Message Signature Verified'
 ];
 
 // These are translated in the translation files
 globalFuncs.gethErrors = {
-  'Invalid sender'                                    : 'GETH_InvalidSender',
-  'Nonce too low'                                     : 'GETH_Nonce',
-  'Gas price too low for acceptance'                  : 'GETH_Cheap',
-  'Insufficient balance'                              : 'GETH_Balance',
-  'Account does not exist or account balance too low' : 'GETH_NonExistentAccount',
-  'Insufficient funds for gas * price + value'        : 'GETH_InsufficientFunds',
-  'Intrinsic gas too low'                             : 'GETH_IntrinsicGas',
-  'Exceeds block gas limit'                           : 'GETH_GasLimit',
-  'Negative value'                                    : 'GETH_NegativeValue'
+    'Invalid sender': 'GETH_InvalidSender',
+    'Nonce too low': 'GETH_Nonce',
+    'Gas price too low for acceptance': 'GETH_Cheap',
+    'Insufficient balance': 'GETH_Balance',
+    'Account does not exist or account balance too low': 'GETH_NonExistentAccount',
+    'Insufficient funds for gas * price + value': 'GETH_InsufficientFunds',
+    'Intrinsic gas too low': 'GETH_IntrinsicGas',
+    'Exceeds block gas limit': 'GETH_GasLimit',
+    'Negative value': 'GETH_NegativeValue'
 };
 
 globalFuncs.gethErrorMsgs = {};
 globalFuncs.getGethMsg = function(str) {
-  if (str in this.gethErrors) {
-      var key = this.gethErrors[str];
-      if (key in this.gethErrorMsgs) {
-          return this.gethErrorMsgs[key];
-      }
-  }
-  return str;
+    if (str in this.gethErrors) {
+        var key = this.gethErrors[str];
+        if (key in this.gethErrorMsgs) {
+            return this.gethErrorMsgs[key];
+        }
+    }
+    return str;
 }
 
 // These are translated in the translation files
 globalFuncs.parityErrors = {
-  "Transaction with the same hash was already imported\\."                                                                                         : "PARITY_AlreadyImported",
-  "Transaction nonce is too low\\. Try incrementing the nonce\\."                                                                                  : "PARITY_Old",
-  "Transaction fee is too low\\. There is another transaction with same nonce in the queue\\. Try increasing the fee or incrementing the nonce\\." : "PARITY_TooCheapToReplace",
-  "There are too many transactions in the queue\\. Your transaction was dropped due to limit\\. Try increasing the fee\\."                         : "PARITY_LimitReached",
-  "Transaction fee is too low\\. It does not satisfy your node's minimal fee \\(minimal: (\\d+), got: (\\d+)\\)\\. Try increasing the fee\\."      : "PARITY_InsufficientGasPrice",
-  "Insufficient funds\\. The account you tried to send transaction from does not have enough funds\\. Required (\\d+) and got: (\\d+)\\."          : "ERROR_17",
-  "Transaction cost exceeds current gas limit\\. Limit: (\\d+), got: (\\d+)\\. Try decreasing supplied gas\\."                                     : "PARITY_GasLimitExceeded",
-  "Supplied gas is beyond limit\\."                                                                                                                : "PARITY_InvalidGasLimit"
+    "Transaction with the same hash was already imported\\.": "PARITY_AlreadyImported",
+    "Transaction nonce is too low\\. Try incrementing the nonce\\.": "PARITY_Old",
+    "Transaction fee is too low\\. There is another transaction with same nonce in the queue\\. Try increasing the fee or incrementing the nonce\\.": "PARITY_TooCheapToReplace",
+    "There are too many transactions in the queue\\. Your transaction was dropped due to limit\\. Try increasing the fee\\.": "PARITY_LimitReached",
+    "Transaction fee is too low\\. It does not satisfy your node's minimal fee \\(minimal: (\\d+), got: (\\d+)\\)\\. Try increasing the fee\\.": "PARITY_InsufficientGasPrice",
+    "Insufficient funds\\. The account you tried to send transaction from does not have enough funds\\. Required (\\d+) and got: (\\d+)\\.": "ERROR_17",
+    "Transaction cost exceeds current gas limit\\. Limit: (\\d+), got: (\\d+)\\. Try decreasing supplied gas\\.": "PARITY_GasLimitExceeded",
+    "Supplied gas is beyond limit\\.": "PARITY_InvalidGasLimit"
 };
 globalFuncs.parityErrorMsgs = {};
 globalFuncs.getParityMsg = function(str) {
@@ -164,7 +165,8 @@ globalFuncs.stripTags = function(str) {
 globalFuncs.checkAndRedirectHTTPS = function() {
     var host = "myetherwallet.com";
     var hostw = "https://www.myetherwallet.com";
-    if (host == window.location.host) window.location = hostw;
+    var path = window.location.pathname;
+    if (host == window.location.host) window.location = hostw + path;
 }
 globalFuncs.isStrongPass = function(password) {
     return password.length > 8;

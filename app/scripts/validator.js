@@ -7,7 +7,9 @@ validator.isValidAddress = function(address) {
         return ethFuncs.validateEtherAddress(address);
     return false;
 }
-
+validator.isChecksumAddress = function(address) {
+    return ethFuncs.isChecksumAddress(address);
+}
 validator.isValidENSorEtherAddress = function(address) {
     return (validator.isValidAddress(address) || validator.isValidENSAddress(address));
 }
