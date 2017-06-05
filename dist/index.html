@@ -905,14 +905,15 @@
   <section class="row">
     <div class="col-sm-8 col-sm-offset-2 col-xs-12">
       <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>({{swapOrder.toCoin}})</strong></label>
+      <div class="form-group" ng-show="swapOrder.toCoin!='BTC'">
+        <address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="swapOrder.toAddress"></address-field>
+      </div>
       <input class="form-control"
+              ng-show="swapOrder.toCoin=='BTC'"
               type="text"
-              placeholder="{{swapOrder.toCoin=='BTC' ? '1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6' : '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8'}}"
+              placeholder="1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6"
               ng-model="swapOrder.toAddress"
-              ng-class="(swapOrder.toCoin!='BTC' && Validator.isValidAddress(swapOrder.toAddress)) || (swapOrder.toCoin=='BTC' && Validator.isValidBTCAddress(swapOrder.toAddress)) ? 'is-valid' : 'is-invalid'"/>
-    </div>
-    <div class="col-sm-2 col-xs-12 address-identicon-container">
-      <div ng-show="swapOrder.toCoin == 'ETH' || swapOrder.toCoin=='REP'" class="addressIdenticon" title="Address Indenticon" blockie-address="{{swapOrder.toAddress}}" watch-var="swapOrder.toAddress"></div>
+              ng-class="Validator.isValidBTCAddress(swapOrder.toAddress) ? 'is-valid' : 'is-invalid'"/>
     </div>
   </section>
   <!-- /Your Address -->

@@ -45,7 +45,7 @@ var addressFieldDrtv = function($compile) {
                             scope.addressDrtv.showDerivedAddress = true;
                         } else {
                             setValue(data.data);
-                            scope.addressDrtv.derivedAddress = data.data;
+                            scope.addressDrtv.derivedAddress = ethUtil.toChecksumAddress(data.data);
                             scope.addressDrtv.showDerivedAddress = true;
                         }
                     });
