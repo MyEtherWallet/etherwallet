@@ -7,60 +7,6 @@ textarea {
   resize: vertical;
 }
 
-// footer
-footer {
-  background-color: @ether-navy;
-  color: white;
-  margin-top: 100px;
-  padding-top: @space-xs;
-  padding-bottom: @space-sm;
-  img {
-    width: 100%;
-    height: auto;
-    max-width: 20rem;
-  }
-  p {
-    margin: @space-xs 0 @space-sm;
-  }
-  a {
-    color: #4ac8ed;
-    &:hover,
-    &:focus {
-      color: darken(#4ac8ed, 5%);
-    }
-  }
-  .modal,
-  .modal p {
-    color: @text-color;
-  }
-  h5{
-    font-size: @font-size-bump;
-    margin: @font-size-small 0 0;
-    i {
-      margin-left: -1.5em;
-      margin-right: .25em;
-    }
-  }
-  ul {
-    list-style: none;
-    padding-left: @space-sm;
-    margin: 0 0 @space-xs 0;
-  }
-  li, p {
-    font-size: @font-size-small;
-    margin: @space-sm 0;
-  }
-  .footer-2, .footer-3 {
-    padding-left: 3rem;
-  }
-  @media screen and (max-width: @grid-float-breakpoint) {
-    .row {
-      margin-left: -.5rem;
-      margin-right: -.5rem;
-    }
-  }
-}
-
 // anouncement bars
 .announcement {
   padding: 3px 10px;
@@ -259,20 +205,21 @@ footer {
     font-weight: 200;
     border-bottom: 0;
     min-width: 200px;
+    width: 100%;
     td {
-      padding: 4px 5px;
+      padding: .4rem;
       line-height: 1;
     }
     td:first-child {
       word-wrap: break-word;
       padding-left: 1em;
     }
-    tr:nth-child(even) {
-      background-color: @gray-lightest;
+    tr {
+      border-bottom: 1px solid #f3f3f3;
     }
     tr:nth-last-child(2),
     tr:last-child {
-      background-color: white!important;
+      border-bottom: 0px solid #f3f3f3;
     }
   }
 }
@@ -464,9 +411,6 @@ label small {
 }
 
 .view-wallet-content {
-  @media screen and (min-width: @grid-float-breakpoint) {
-    padding-left: @space*3;
-  }
   h5 {
     margin-bottom: @space-xs;
   }
@@ -624,3 +568,5 @@ header.Custom  {
     font-size: 20px;
   }
 }
+
+

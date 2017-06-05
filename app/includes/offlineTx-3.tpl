@@ -1,18 +1,12 @@
-<article class="row">
+<article class="block">
 
-  <hr />
+  <h2 translate="OFFLINE_Step3_Title"> Step 3: Send / Publish Transaction </h2>
 
-  <h4 class="col-xs-12 clearfix" translate="OFFLINE_Step3_Title"> Step 3: Send / Publish Transaction </h4>
+  <p translate="OFFLINE_Step3_Label_1"> Paste the signed transaction from Step 2 </p>
 
-  <p class="col-xs-12 clearfix" translate="OFFLINE_Step3_Label_1"> Paste the signed transaction from Step 2 </p>
+  <label translate="SEND_signed"> Signed Transaction </label>
+  <textarea class="form-control" rows="3" ng-model="signedTx"></textarea>
 
-  <section class="col-sm-11 clearfix">
-    <label translate="SEND_signed"> Signed Transaction </label>
-    <textarea class="form-control" rows="3" ng-model="signedTx"></textarea>
-  </section>
-
-  <section class="col-sm-11 clearfix">
-    <a class="btn btn-primary" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
-  </section>
+  <a class="btn btn-primary" ng-click="confirmSendTx()" translate="SEND_trans">SEND TRANSACTION</a>
 
 </article>

@@ -2,23 +2,15 @@
 
   <article class="row">
 
-    <!-- Sidebar -->
-    <section class="col-sm-4">
-      <wallet-balance-drtv></wallet-balance-drtv>
-    </section>
-    <!-- / Sidebar -->
-
     <!-- Content -->
     <section class="col-sm-8">
-
+      <div class="block">
       <!-- Title -->
-      <div class="form-group">
-        <h2>
-          <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span>
-          <span ng-show="objENS.status==ensModes.open">Start an Auction</span>
-          <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span>
-        </h2>
-      </div>
+      <h2>
+        <span ng-show="objENS.status==ensModes.auction"> Place a Bid</span>
+        <span ng-show="objENS.status==ensModes.open">Start an Auction</span>
+        <span ng-show="objENS.status==ensModes.reveal">Reveal your Bid</span>
+      </h2>
       <!-- / Title -->
 
       <!-- Thing they copied -->
@@ -99,9 +91,16 @@
       </div>
       <!-- / After Sent: Reveal -->
 
-
+    </div>
     </section>
     <!-- / Content -->
+
+    <!-- Sidebar -->
+    <section class="col-sm-4">
+      <wallet-balance-drtv></wallet-balance-drtv>
+    </section>
+    <!-- / Sidebar -->
+
 
   </article>
 

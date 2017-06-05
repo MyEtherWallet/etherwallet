@@ -39,7 +39,7 @@
 
 
 <!-- Swap Init Panel -->
-<article class="swap-panel" ng-show="showStage1">
+<article class="swap-panel clearfix" ng-show="showStage1">
 
   <h1 translate="SWAP_init_1"> I want to swap my </h1>
 
@@ -77,9 +77,11 @@
     </ul>
   </div>
 
-  <div class="col-xs-12 clearfix text-center"><a ng-click="setFinalPrices()" class="btn btn-info btn-lg">
-    <span translate="SWAP_init_CTA"> Let's do this! </span>
-  </a></div>
+  <div class="col-xs-12 clearfix text-center">
+    <a ng-click="setFinalPrices()" class="btn btn-info btn-primary">
+      <span translate="SWAP_init_CTA"> Let's do this! </span>
+    </a>
+  </div>
 
 </article>
 <!-- / Swap Init Panel -->

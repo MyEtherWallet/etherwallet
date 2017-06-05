@@ -1,4 +1,4 @@
-<article class="well decrypt-drtv row" ng-controller='decryptWalletCtrl as $crtl' ng-init="init">
+<article class="block decrypt-drtv clearfix" ng-controller='decryptWalletCtrl as $crtl' ng-init="init">
 
   <!-- Column 1 - Select Type of Key -->
   <section class="col-md-4 col-sm-6">
@@ -15,9 +15,12 @@
       <input aria-flowto="aria3" aria-label="mnemonic phrase" type="radio" ng-model="walletType" value="pastemnemonic" />
       <span translate="x_Mnemonic">Mnemonic Phrase</span>
     </label>
-    <label class="radio">
+    <label class="radio" style="display: none;">
       <input aria-flowto="aria4" aria-label="parity phrase" type="radio" ng-model="walletType" value="parityBWallet" />
       <span translate="x_ParityPhrase">Parity Phrase</span>
+    </label>
+    <label class="radio">
+      &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>: <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/parity-phrases-no-longer-supported" target="_blank">No longer supported</a>
     </label>
     <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">
       <input aria-flowto="aria5" type="radio" aria-label="Ledger Nano S hardware wallet" ng-model="walletType" value="ledger" />
@@ -157,7 +160,7 @@
           <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-secure-your-eth-tokens-augur-rep-dot-dot-dot-with-your-nano-s" target="_blank">
             How to secure your tokens with your Nano S
           </a><br /><br />
-          <a tabindex="0" role="button" class="btn btn-default btn-sm" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank">
+          <a tabindex="0" role="button" class="btn btn-default btn-xs" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank">
             Don't have a Ledger? Buy one today.
           </a>
         </p>
@@ -186,7 +189,7 @@
           <a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08#.n5fddxmdg" target="_blank">
             How to use TREZOR with MyEtherWallet
           </a><br />
-          <a tabindex="0" role="button" class="btn btn-sm btn-default" href="https://trezor.io/?a=myetherwallet.com" target="_blank">
+          <a tabindex="0" role="button" class="btn btn-xs btn-default" href="https://trezor.io/?a=myetherwallet.com" target="_blank">
             Don't have a TREZOR? Order one now.
           </a>
         </p>

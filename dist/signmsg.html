@@ -41,13 +41,13 @@
         <!-- tab panes -->
         <div class="tab-content">
             <!-- Sign Message Panel -->
-  <h3>
+  <h2>
     <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
     or
     <a translate="MSG_verify"  ng-class="{'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
-  </h3>
+  </h2>
 
-  <article ng-switch on="visibility">
+  <article class="col-xs-12 clearfix" ng-switch on="visibility">
 
     <!-- Sign Message Stuff -->
     <section ng-switch-when="signView">

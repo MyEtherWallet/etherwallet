@@ -23,7 +23,7 @@
 @brand-warning                       : #ff9800;
 @brand-danger                        : #ea4b40;
 
-@body-bg                             : #fff;
+@body-bg                             : #fbfbfb;
 @text-color                          : @gray-dark;
 
 @link-color                          : @brand-primary;
@@ -71,22 +71,22 @@
 
 
 // Spacing
-@padding-base-vertical               : @space*.6;
-@padding-base-horizontal             : @space;
+@padding-base-vertical               : @space*.75;
+@padding-base-horizontal             : @space-lg;
 
-@padding-large-vertical              : @space-md;
+@padding-large-vertical              : @space;
 @padding-large-horizontal            : @space-xl;
 
-@padding-small-vertical              : 0.1rem;
-@padding-small-horizontal            : @space-sm;
+@padding-small-vertical              : @space-sm;
+@padding-small-horizontal            : @space;
 
-@padding-xs-vertical                 : @space-xs;
-@padding-xs-horizontal               : 0.2rem;
+@padding-xs-vertical                 : 0.1rem;
+@padding-xs-horizontal               : 0.6rem;
 
 @line-height-large                   : 1.2;
 @line-height-small                   : 1.5;
 
-@border-radius                       : 2px;
+@border-radius                       : 0px;
 
 @component-active-color              : #fff;
 @component-active-bg                 : @brand-primary;
@@ -116,23 +116,23 @@
 
 @btn-primary-color                   : #fff;
 @btn-primary-bg                      : @brand-primary;
-@btn-primary-border                  : darken(@btn-primary-bg, 5%);
+@btn-primary-border                  : @btn-primary-bg;
 
 @btn-success-color                   : #fff;
 @btn-success-bg                      : @brand-success;
-@btn-success-border                  : darken(@btn-success-bg, 5%);
+@btn-success-border                  : @btn-success-bg;
 
 @btn-info-color                      : #fff;
 @btn-info-bg                         : @brand-info;
-@btn-info-border                     : darken(@btn-info-bg, 5%);
+@btn-info-border                     : @btn-info-bg;
 
 @btn-warning-color                   : #fff;
 @btn-warning-bg                      : @brand-warning;
-@btn-warning-border                  : darken(@btn-warning-bg, 5%);
+@btn-warning-border                  : @btn-warning-bg;
 
 @btn-danger-color                    : #fff;
 @btn-danger-bg                       : @brand-danger;
-@btn-danger-border                   : darken(@btn-danger-bg, 5%);
+@btn-danger-border                   : @btn-danger-bg;
 
 @btn-link-disabled-color             : @gray-light;
 
@@ -216,21 +216,13 @@
 
 
 @grid-columns                        : 12;
-@grid-gutter-width                   : 3rem;
+@grid-gutter-width                   : 2rem;
 @grid-float-breakpoint               : @screen-sm-min;
 @grid-float-breakpoint-max           : (@grid-float-breakpoint - 1);
 
-@cont-padding                        : 5%;
-@cont-padding-lg                     : 7.5%;
-
-@container-tablet                    : (@screen-sm + @grid-gutter-width);
-@container-sm                        : @container-tablet;
-
-@container-desktop                   : (@screen-md + @grid-gutter-width);
-@container-md                        : @container-desktop;
-
-@container-large-desktop             : (@screen-lg + @grid-gutter-width);
-@container-lg                        : @container-large-desktop;
+@cont-padding                        : 1%;
+@cont-padding-lg                     : 3%;
+@cont-width                          : 113rem;
 
 @state-success-text                  : darken(@brand-success, 10%);
 @state-success-bg                    : #dff0d8;
@@ -347,7 +339,7 @@
 
 @badge-font-weight                   : bold;
 @badge-line-height                   : 1;
-@badge-border-radius                 : 10px;
+@badge-border-radius                 : 0;
 
 @close-font-weight                   : bold;
 @close-color                         : #000;
