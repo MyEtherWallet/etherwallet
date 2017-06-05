@@ -1,7 +1,7 @@
 <!-- Step 1 -->
-<article class="row">
+<article class="row block">
 
-  <h4 class="col-xs-12 clearfix" translate="OFFLLINE_Step1_Title">Step 1: Generate Information (Online Computer)</h4>
+  <h2 class="col-xs-11 clearfix" translate="OFFLLINE_Step1_Title">Step 1: Generate Information (Online Computer)</h2>
 
   <!-- From Address Input -->
   <section class="col-xs-11 clearfix">

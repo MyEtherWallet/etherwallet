@@ -11,15 +11,59 @@
   flex-wrap: wrap;
 }
 
-.block--main {
-  padding: @space-md;
+.block {
   background-color: white;
-  box-shadow: 3px 3px 17px 1px rgba(0, 0, 0, 0.1);
-  text-align: left;
+  box-shadow: .2rem .2rem 1.133333333rem .1rem rgba(0, 0, 0, 0.1);
+  padding: @space-lg;
+  min-height: @space-lg;
+  margin: @space auto;
+  .clearfix();
+  & > *:first-child {
+    margin-top: 0;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
 
+.block--danger {
+  background-color: @brand-danger;
+  color: white;
+  * { color: white }
+}
+
+.block--warning {
+  background-color: @brand-warning;
+  color: white;
+  * { color: white }
+}
+
+.block--info {
+  background-color: @brand-info;
+  color: white;
+  * { color: white }
+}
+
+.block--primary {
+  background-color: @brand-primary;
+  color: white;
+  * { color: white }
+}
+
+.block--success {
+  background-color: @brand-success;
+  color: white;
+  * { color: white }
+}
+
+
+
+.block--main {
+  .block();
+  text-align: left;
   padding: @space-md;
   flex-basis: 98%;
-  margin: @space-sm @cont-padding;
+  margin: @space @cont-padding;
   @media screen and (min-width: @screen-sm) {
     flex-basis: 68%;
   }
@@ -28,29 +72,15 @@
   }
 }
 
-.equal-space {
-    > * {
-    margin-top: @space;
-    margin-bottom: @space;
-  }
-}
-
-.center-h {
-  text-align: center;
-}
-
 .block--help {
+  .block();
   background-image: url(../images/icon-help-2.svg);
   background-size: 8rem;
   background-position: 102% -5%;
   background-repeat: no-repeat;
-  min-height: @space-lg;
-  background-color: #fdfdfd;
-  box-shadow:  .2rem .2rem 1.133333333rem .1rem rgba(0, 0, 0, 0.1);
   text-align: left;
-  padding: @space-lg;
+  margin: @space @cont-padding;
   flex-basis: 98%;
-  margin: @space-sm @cont-padding;
   @media screen and (min-width: @screen-sm) {
     flex-basis: 28%;
   }
@@ -77,6 +107,16 @@
   }
 }
 
+.equal-space {
+    > * {
+    margin-top: @space;
+    margin-bottom: @space;
+  }
+}
+
+.center-h {
+  text-align: center;
+}
 
 // generate
 .gen--1 {

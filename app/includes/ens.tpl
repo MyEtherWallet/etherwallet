@@ -81,9 +81,6 @@
   <!-- / Unlock Directive: Everything but notAvailable / forbidden -->
 
 
-  <hr ng-show="wd" />
-
-
   @@if (site === 'mew' ) { @@include( './ens-action-primary.tpl', { "site": "mew" } ) }
   @@if (site === 'cx'  ) { @@include( './ens-action-primary.tpl', { "site": "cx"  } ) }
 

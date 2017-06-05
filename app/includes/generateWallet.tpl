@@ -3,6 +3,7 @@
   <article class="block--wrap gen--1" ng-show="!wallet && !showGetAddress">
 
     <section class="block--main equal-space center-h">
+      <br />
       <h1 translate="NAV_GenerateWallet" aria-live="polite"> Generate Wallet</h1>
       <h4 translate="GEN_Label_1"> Enter password </h4>
       <div class="input-group">
@@ -19,6 +20,11 @@
     </section>
 
     <section class="block--help">
+      <ul>
+        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-create-a-new-wallet" target="_blank">How to create a wallet</a></strong></li>
+        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443" target="_blank">Getting Started</a></strong></li>
+      </ul>
+
       <h2>Ledger &amp; TREZOR?</h2>
       <ul><li>Use your <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">Ledger or TREZOR</a> to access your account.</a> Your device <em>is</em> your wallet. </li></ul>
 
@@ -27,12 +33,6 @@
 
       <h2>Mist / Geth / Parity?</h2>
       <ul><li>Use your <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">Keystore File (UTC / JSON)</a> to access your account.</li></ul>
-
-      <h2> How To.... </h2>
-      <ul>
-        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-create-a-new-wallet" target="_blank">Create a new wallet</a></strong></li>
-        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443" target="_blank">Get Started</a></li>
-      </ul>
     </section>
 
   </article>
@@ -41,6 +41,7 @@
   <article role="main" class="block--wrap" ng-show="wallet && !showPaperWallet">
 
     <section class="block--main center-h">
+      <br />
       <h1 translate="GEN_Label_2">Save your <span translate="x_Keystore2"> Keystore File (UTC / JSON) </span></h1>
       <a tabindex="0" role="button"
          class="btn btn-primary"
@@ -55,7 +56,6 @@
       <br /><br />
       <div class="alert alert-danger" style="display: inline-block; margin-top: 4rem;">
         <h6>Without your <span translate="x_Keystore2"> Keystore File (UTC / JSON) </span> or <span translate="x_PrivKey2 ">private key</span> you cannot access your ETH or Tokens.</h6>
-        <p>MyEtherWallet does not ever save, store, or transmit sensitive data.</p>
         <p>MyEtherWallet cannot recover anything if you lose it.</p>
         <p clas="margin-top: 2rem;"><a tabindex="0" role="button" class="btn btn-info" ng-class="fileDownloaded ? '' : 'disabled' " ng-click="continueToPaper()"> I promise I won't lose this ever. Continue. </a></p>
       </div>
@@ -63,23 +63,24 @@
     </section>
 
     <section class="block--help">
-      <h2>How to...</h2>
       <ul>
-        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank"><strong>Back up your wallet</strong></a></li>
+        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank"><strong>How to back up your wallet</strong></a></li>
+        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank">What are these Different Formats></a></strong></li>
       </ul>
 
       <h2> Not Downloading a File? </h2>
       <ul>
         <li> Right click &amp; select 'Download as...' or 'Save as...'.</li>
         <li> Use the following as the file name: </li>
-        <li><input class="form-control input-sm" type="text" value="{{encFileName}}" /></li>
+        <li><input class="form-control input-sm" type="text" value="{{encFileName}}" readonly /></li>
       </ul>
 
-      <h2> Don't lose your <span translate="x_Keystore2"> Keystore File (UTC / JSON) </span> or <span translate="x_PrivKey2 ">private key</span></h2>
-      <ul><li> We cannot recover it. </li></ul>
-
-      <h2> Don't forget your password </h2>
-      <ul><li> We cannot recover it. </li></ul>
+      <h2> MyEtherWallet <strong>cannot</strong> recover...</h2>
+      <ul>
+      <li translate="x_Keystore2"> Keystore File (UTC / JSON) </li>
+      <li translate="x_PrivKey2 "> Private key</li>
+      <li translate="x_Password "> Password</li>
+      </ul>
 
       <h2>Don't open this file on your computer</h2>
       <ul><li>Simply use it to access your wallet via MyEtherWallet (or Mist, Geth, Parity &amp; other wallet clients.)</li></ul>
@@ -91,6 +92,7 @@
   <article role="main" class="block--wrap"  ng-show="showPaperWallet">
 
     <section class="block--main center-h">
+      <br />
       <h1 translate="GEN_Label_4"> Print your paper wallet, or store a QR code version. </h1>
 
       <div class="form-group">
@@ -110,10 +112,9 @@
     </section>
 
     <section class="block--help">
-      <h2>Learn more...</h2>
       <ul>
-        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank"><strong>Back up your wallet</strong></a></li>
-        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank">Different Private Key Formats</a></li>
+        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank"><strong>Back up your wallet</strong></a></strong></li>
+        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank">What are these Different Formats></a></strong></li>
       </ul>
 
       <h2> Why Should I? </h2>
@@ -123,17 +124,16 @@
         <li> <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-safely-slash-offline-slash-cold-storage-with-myetherwallet" target="_blank">Cold Storage</a> </li>
       </ul>
 
-      <h2> Protip </h2>
+      <h2> ProTip </h2>
       <ul><li> No printer? Save it as a PDF and back it up on a USB drive. </li></ul>
 
     </section>
 
   </article>
 
-
   <article class="text-left" ng-show="showGetAddress">
     <div class="clearfix collapse-container">
-      <div class="" ng-click="wd = !wd">
+      <div ng-click="wd = !wd">
         <a class="collapse-button"><span ng-show="wd">+</span><span ng-show="!wd">-</span></a>
         <h1 traslate="SWAP_unlock">Unlock your wallet to see your address</h1>
       </div>
@@ -143,7 +143,7 @@
       </div>
     </div>
 
-    <div class="clearfix" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
+    <div class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
 
       @@if (site === 'cx' ) {  @@include( './viewWalletInfo-content.tpl', { "site": "cx" } )    }
       @@if (site === 'mew') {  @@include( './viewWalletInfo-content.tpl', { "site": "mew" } )   }

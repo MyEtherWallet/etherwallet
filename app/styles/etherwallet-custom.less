@@ -205,20 +205,21 @@ textarea {
     font-weight: 200;
     border-bottom: 0;
     min-width: 200px;
+    width: 100%;
     td {
-      padding: 4px 5px;
+      padding: .4rem;
       line-height: 1;
     }
     td:first-child {
       word-wrap: break-word;
       padding-left: 1em;
     }
-    tr:nth-child(even) {
-      background-color: @gray-lightest;
+    tr {
+      border-bottom: 1px solid #f3f3f3;
     }
     tr:nth-last-child(2),
     tr:last-child {
-      background-color: white!important;
+      border-bottom: 0px solid #f3f3f3;
     }
   }
 }
@@ -410,9 +411,6 @@ label small {
 }
 
 .view-wallet-content {
-  @media screen and (min-width: @grid-float-breakpoint) {
-    padding-left: @space*3;
-  }
   h5 {
     margin-bottom: @space-xs;
   }
