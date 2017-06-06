@@ -1,5 +1,5 @@
 // Italian
-// Last sync with en.js     : commit 68abcad30dd5f18d504b9ae7756270c96b39046e
+// Last sync with en.js     : commit f025c496254b8ce69660b682f90ec3dc5a12caa8
 'use strict';
 var it = function() {}
 it.code = 'it';
@@ -105,9 +105,9 @@ GEN_desc                    : 'Se vuoi generare più portafogli, puoi farlo qui 
 GEN_Label_1                 : 'Inserisci una password robusta (almeno 9 caratteri) ',
 GEN_Placeholder_1           : 'NON dimenticarti di salvarla! ',
 GEN_SuccessMsg              : 'Perfetto! Il tuo portafoglio è stato generato. ',
-GEN_Label_2                 : 'Salva il file del tuo portafoglio. Non dimenticare la password che hai inserito. ',
+GEN_Label_2                 : 'Salva il file del tuo portafoglio.   ',
 GEN_Label_3                 : 'Salva il tuo indirizzo. ',
-GEN_Label_4                 : 'Facoltativo: stampa il tuo portafoglio cartaceo o salva una versione QR code. ',
+GEN_Label_4                 : 'Stampa il portafoglio cartaceo o un QR code. ',
 
 /* Bulk Generate Wallets */
 BULK_Label_1                : 'Numero di portafogli da generare ',
@@ -306,6 +306,7 @@ ERROR_31                    : 'Inserisci una frase segreta valida ',
 ERROR_32                    : 'Impossibile collegarsi al nodo. Aggiorna la pagina, prova con un altro nodo (angolo in alto a destra), controlla le impostazioni del firewall. Se si tratta di un nodo personalizzato, controlla la configurazione.', // 32
 ERROR_33                    : 'L\'indirizzo del portafoglio non corrisponde a quello del proprietario. ',
 ERROR_34                    : 'Il nome che stai provando a rivelare non combacia con quello che hai inserito. ',
+ERROR_35                    : 'L\'indirizzo inserito non ha un checksum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank"> Ulteriori informazioni</a>', // 35
 
 SUCCESS_1                   : 'Indirizzo valido ',
 SUCCESS_2                   : 'Portafoglio decodificato correttamente ',
