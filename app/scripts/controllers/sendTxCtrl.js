@@ -23,6 +23,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     // 2. Add the gas limit users should use to send successfully (this avoids OOG errors)
     // 3. Add any data if applicable
     // 4. Add a message if you want.
+    
+    // Token Calendar: 
+    // http://www.tokensalecalendar.com/
+    // If you aren't on the above, you should get on it.
 
     $scope.customGas = [{ // donation address example
         to: '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
