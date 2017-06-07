@@ -19,19 +19,27 @@ var footerCtrl = function($scope, globalService) {
         ethFuncs.gasAdjustment = $scope.gas.value;
     }
     var setGasValues = function() {
-        ajaxReq.getTransactionData(globalFuncs.donateAddress, function(data) {
-            if (!data.error) {
-                data = data.data;
-                var curVal = new BigNumber(data.gasprice).div(etherUnits.getValueOfUnit('gwei')).toNumber();
-                $scope.gas = {
-                    curVal: curVal,
-                    value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 24,
-                    max: curVal + 20,
-                    min: 1
+        $scope.gas = {
+            curVal: 20,
+            value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 24,
+            max: 40,
+            min: 1
+        }
+        if ($scope.showBlocks) {
+            ajaxReq.getTransactionData(globalFuncs.donateAddress, function(data) {
+                if (!data.error) {
+                    data = data.data;
+                    var curVal = new BigNumber(data.gasprice).div(etherUnits.getValueOfUnit('gwei')).toNumber();
+                    $scope.gas = {
+                        curVal: curVal,
+                        value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 24,
+                        max: curVal + 20,
+                        min: 1
+                    }
+                    ethFuncs.gasAdjustment = $scope.gas.value;
                 }
-                ethFuncs.gasAdjustment = $scope.gas.value;
-            }
-        });
+            });
+        }
     }
     setGasValues();
 };
