@@ -78,7 +78,8 @@ etherscan.getEstimatedGas = function(txobj, callback) {
         action: 'eth_estimateGas',
         to: txobj.to,
         value: txobj.value,
-        data: txobj.data
+        data: txobj.data,
+        from: txobj.from
     }, function(data) {
         if (data.error) callback({ error: true, msg: data.error.message, data: '' });
         else callback({ error: false, msg: '', data: data.result });

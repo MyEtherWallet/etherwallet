@@ -71,7 +71,7 @@ customNode.prototype.getEstimatedGas = function(txobj, callback) {
     txobj.value = ethFuncs.trimHexZero(txobj.value);
     this.post({
         method: 'eth_estimateGas',
-        params: [{ to: txobj.to, value: txobj.value, data: txobj.data }]
+        params: [{ from: txobj.from, to: txobj.to, value: txobj.value, data: txobj.data }]
     }, function(data) {
         if (data.error) callback({ error: true, msg: data.error.message, data: '' });
         else callback({ error: false, msg: '', data: data.result });
