@@ -40,7 +40,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.8.8 &nbsp;&nbsp;
+        &middot; v3.8.9 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -260,9 +260,13 @@
       <br />
       <br /><br />
       <div class="alert alert-danger" style="display: inline-block; margin-top: 4rem;">
-        <h6>Without your <span translate="x_Keystore2"> Keystore File (UTC / JSON) </span> or <span translate="x_PrivKey2 ">private key</span> you cannot access your ETH or Tokens.</h6>
-        <p>MyEtherWallet cannot recover anything if you lose it.</p>
-        <p clas="margin-top: 2rem;"><a tabindex="0" role="button" class="btn btn-info" ng-class="fileDownloaded ? '' : 'disabled' " ng-click="continueToPaper()"> I promise I won't lose this ever. Continue. </a></p>
+        <p>This is your Keystore file. It contains your encrypted private key. Without it, you cannot access your ETH or Tokens.</p>
+        <h6><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank"> You are responsible for the safety and security of your private key. </a></h6>
+        <p> Keep it safe </p>
+        <p> Make a backup </p>
+        <p> Don't share it with anyone </p>
+        <p> Don't lose it</p>
+        <p clas="margin-top: 2rem;"><a tabindex="0" role="button" class="btn btn-info" ng-class="fileDownloaded ? '' : 'disabled' " ng-click="continueToPaper()"> I understand. Continue. </a></p>
       </div>
 
     </section>
@@ -270,7 +274,7 @@
     <section class="block--help">
       <ul>
         <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank"><strong>How to back up your wallet</strong></a></li>
-        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank">What are these Different Formats></a></strong></li>
+        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank">What are these Different Formats?</a></strong></li>
       </ul>
 
       <h2> Not Downloading a File? </h2>
@@ -318,8 +322,8 @@
 
     <section class="block--help">
       <ul>
-        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank"><strong>Back up your wallet</strong></a></strong></li>
-        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank">What are these Different Formats></a></strong></li>
+        <li><strong><a href="hhttps://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank"><strong>Preventing loss &amp; theft of your funds.</strong></a></li>
+        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank">What are these Different Formats?</a></strong></li>
       </ul>
 
       <h2> Why Should I? </h2>
@@ -2597,7 +2601,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   <h1 translate="NAV_Help"> Help </h1>
 
-  <p translate="HELP_Desc">Do you see something missing? Have another question? <a href="mailto:support@myetherwallet.com" target="_blank"> Get in touch with us</a>, and we will not only answer your question, we will update this page to be more useful to people in the future!</p>
+  <h3><a href="https://myetherwallet.groovehq.com/help_center" target="_blank"> This page is slowly being deprecated. Please check out our more up-to-date and searchable Help Center. </a></h3>
 
  <article class="collapse-container">
     <div ng-click="hRecent = !hRecent">
@@ -2607,7 +2611,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <div ng-show="!hRecent">
       <ul>
         <li><a href="https://www.reddit.com/r/ethereum/comments/47nkoi/psa_check_your_ethaddressorg_wallets_and_any/d0eo45o" target="_blank"><span class="text-danger" translate="HELP_Warning">If you created a wallet or downloaded the repo before **Dec. 31st, 2015**, please check your wallets &amp; download a new version of the repo. Click for details.</span></a></li>
-        <li><a href="https://myetherwallet.groovehq.com/help_center" target="_blank"> This page is slowly being deprecated. Please check out our more up-to-date and searchable Knowledge Base. </a></li>
       </ul>
     </div>
   </article>
@@ -3095,24 +3098,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     </div>
   </article>
 
-
-
-  <article class="collapse-container">
-    <div ng-click="hContact = !hContact">
-      <a class="collapse-button" ><span ng-show="hContact">+</span><span ng-show="!hContact">-</span></a>
-      <h4 translate="HELP_Contact_Title">Ways to Get in Touch </h4>
-    </div>
-    <div ng-show="!hContact">
-      <ul>
-        <li><a href="mailto:support@myetherwallet.com" target="_blank"> Email Us </a></li>
-        <li><a href="https://github.com/kvhnuke/etherwallet/issues" target="_blank"> Open a GitHub Issue</a></li>
-        <li><a href="https://twitter.com/myetherwallet" target="_blank"> Follow Us on Twitter </a></li>
-      </ul>
-    </div>
-  </article>
-
-
-
   <article class="collapse-container">
     <div ng-click="hFAQ = !hFAQ">
       <a class="collapse-button" ><span ng-show="hFAQ">+</span><span ng-show="!hFAQ">-</span></a>
@@ -3269,7 +3254,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 <footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
 
-  <article class="block--wrap">
+  <article class="block--wrap" style="max-width: 1780px; margin: auto;">
 
       <section class="footer--left">
         <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
@@ -3281,26 +3266,17 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
           </li>
         </ul>
 
-        <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a>
+        <a aria-label="Help Center" href="https://myetherwallet.groovehq.com/help_center" target="_blank"> Support </a>
 
-        <div class="footer--gas">
-          <label translate="OFFLINE_Step2_Label_3"> Gas Price: </label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a>)
-          <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
-          <p style="padding: 0" class="small col-xs-4">Not So Fast</p>
-          <p style="padding: 0" class="small col-xs-4 text-center">Fast</p>
-          <p style="padding: 0" class="small col-xs-4 text-right">Fast AF</p>
-        </div>
+        <a role="link" tabindex="0" href="https://www.myetherwallet.com/helpers.html"> Helpers &amp; ENS Debugging </a>
+
+        <a role="link" tabindex="0" href="https://www.myetherwallet.com/signmsg.html"> Sign Message </a>
+
+        <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a>
 
       </section>
 
       <section class="footer--cent">
-        <div>
-          <h5> <i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
-          <ul>
-            <li> ETH: <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span></li>
-            <li> BTC: <span class="mono wrap">1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6</span></li>
-          </ul>
-        </div>
 
         <div>
           <h5> <i aria-hidden="true">👫</i> You can support us by supporting our blockchain-family.</h5>
@@ -3311,7 +3287,13 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
             <li><a href="https://trezor.io/?a=myetherwallet.com" target="_blank">Buy a TREZOR</a></li>
           </ul>
         </p>
-
+        <div>
+          <h5> <i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
+          <ul>
+            <li> ETH: <span class="mono wrap">0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8</span></li>
+            <li> BTC: <span class="mono wrap">1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6</span></li>
+          </ul>
+        </div>
         <div>
           <h5> <i ng-hide="curLang=='en'">🏅</i> <span translate="Translator_Desc"> Thank you to our translators </span></h5>
           <ul><li>
@@ -3325,25 +3307,30 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       </section>
 
       <section class="footer--righ">
+        <div class="footer--gas">
+          <label translate="OFFLINE_Step2_Label_3"> Gas Price: </label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a>)
+          <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
+          <p style="padding: 0" class="small col-xs-4">Not So Fast</p>
+          <p style="padding: 0" class="small col-xs-4 text-center">Fast</p>
+          <p style="padding: 0" class="small col-xs-4 text-right">Fast AF</p>
+        </div>
+
         <h5><i aria-hidden="true">🌎</i> On the Web</h5>
         <ul>
           <li><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank">www.MyEtherWallet.com</a></li>
-          <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank">Github: MyEtherWallet.com & CX</a></li>
-          <li><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank">Github: MyEtherWallet Org</a></li>
+          <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank">Github: MyEtherWallet.com</a></li>
+          <li><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank">Github: MyEtherWallet v4+</a></li>
           <li>
             <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank">Slack</a>
             &middot;
             <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank">Twitter</a>
             &middot;
             <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank">Facebook</a>
+            &middot;
+            <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank">Reddit</a>
           </li>
         </ul>
 
-        <h5><i aria-hidden="true">🙏</i> Support</h5>
-        <ul>
-          <li><a aria-label="email support at myetherwallet.com" href="mailto:support@myetherwallet.com" target="_blank">Email</a></li>
-          <li><a aria-label="open a github issue" href="https://github.com/kvhnuke/etherwallet/issues" target="_blank">Github Issue</a></li>
-        </ul>
       </section>
 
 
