@@ -83,7 +83,7 @@ gulp.task('styles', function() {
     return gulp.src(less_srcFile)
         .pipe(plumber({ errorHandler: onError }))
         .pipe(less({ compress: false }))
-        .pipe(autoprefixer({ browsers: ['last 2 versions', 'iOS > 8'], remove: false }))
+        .pipe(autoprefixer({ browsers: ['last 4 versions', 'iOS > 7'], remove: false }))
         .pipe(rename(less_destFile))
         //.pipe( gulp.dest   (  less_destFolder                                         )) // unminified css
         //.pipe( gulp.dest   (  less_destFolder_CX                                      )) // unminified css
