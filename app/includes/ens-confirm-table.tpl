@@ -13,7 +13,7 @@
       <td>Secret Phrase</td><td>{{objENS.secret}}</td>
     </tr>
     <tr>
-      <td>From Account</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
+      <td>From Account</td><td><small class="mono">{{wallet.getChecksumAddressString()}}</small></td>
     </tr>
     <tr class="text-danger">
       <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toString()}}</small></td>

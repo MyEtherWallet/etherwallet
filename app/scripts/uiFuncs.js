@@ -218,6 +218,7 @@ uiFuncs.notifier = {
     close: function() {
         this.show = false;
         this.isDanger = false;
+        this.message = "";
         if (!this.scope.$$phase) this.scope.$apply()
     },
     open: function() {

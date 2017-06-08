@@ -39,9 +39,11 @@
 
 
 <!-- Swap Init Panel -->
-<article class="swap-panel clearfix" ng-show="showStage1">
+<article class="swap-panel block clearfix" ng-show="showStage1">
 
   <h1 translate="SWAP_init_1"> I want to swap my </h1>
+
+  <br />
 
   <input class="form-control"
          type="text"

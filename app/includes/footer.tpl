@@ -20,6 +20,8 @@
 
         <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a>
 
+        <p ng-show="showBlocks" style="font-size: 12px">Latest Block#: {{currentBlockNumber}}</p>
+
       </section>
 
       <section class="footer--cent">
@@ -79,8 +81,6 @@
 
       </section>
 
-
-    <p ng-show="showBlocks" class="text-right" style="font-size: 10px">Latest Block#: {{currentBlockNumber}}</p>
   </div>
 
   @@if (site === 'mew' ) { @@include( './footer-disclaimer-modal.tpl',   { "site": "mew" } ) }

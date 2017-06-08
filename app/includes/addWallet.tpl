@@ -29,6 +29,7 @@
 
     <article class="col-md-4 col-sm-6">
 
+
       <!-- Generate New Wallet -->
       <div ng-show="walletType=='gennewwallet'" ng-init="showPass=true">
         <h4 translate="ADD_Radio_1"> Generate New Wallet: </h4>
@@ -47,6 +48,7 @@
 
       </div>
       <!-- / Generate New Wallet -->
+
 
       <!-- Select Your Wallet File -->
       <div ng-show="walletType=='fileupload'">
@@ -117,24 +119,20 @@
   </section>
 
   <article class="row" ng-if="showAddWallet">
+
     <hr />
 
     <!-- Sidebar -->
     <div class="col-sm-4">
-
       <h5 translate="sidebar_AccountAddr">Account Address:</h5>
-
       <ul class="account-info">
       <div class="addressIdenticon med float" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
       <span class="mono wrap">{{wallet.getChecksumAddressString()}}</span>
       </ul>
-
       <h5 translate="sidebar_AccountBal">Account Balance:</h5>
-
       <ul class="account-info">
         <li><strong>{{etherBalance}}</strong> ETH </li>
       </ul>
-
       <h5 translate="sidebar_Equiv"> Equivalent Values: </h5>
       <ul class="account-info">
         <li><strong>{{usdBalance}}</strong> USD</li>
@@ -148,8 +146,6 @@
       <ul class="account-info">
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
-
-
     </div>
 
     <!-- / Sidebar -->
@@ -179,8 +175,8 @@
       <div class="form-group" ng-show="showBtnAddWallet">
         <a class="btn btn-info btn-block" ng-click="importWalletToStorage()" translate="NAV_AddWallet">ADD WALLET </a>
       </div>
-
     </div>
+
   </article>
 
 

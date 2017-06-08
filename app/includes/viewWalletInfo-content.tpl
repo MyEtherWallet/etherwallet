@@ -51,7 +51,7 @@
   <section class="block">
     <div class="col-xs-6">
       <h5 translate="x_Address">Your Address:</h5>
-      <div class="qr-code" qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
+      <div class="qr-code" qr-code="{{wallet.getChecksumAddressString()}}" watch-var="wallet" width="100%"></div>
     </div>
     <div class="col-xs-6">
       <h5 ng-show="wallet.type=='default'">

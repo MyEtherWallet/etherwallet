@@ -49,7 +49,8 @@
          download="{{encFileName}}"
          aria-label="{{'x_Download'|translate}} {{'x_Keystore'|translate}}"
          aria-describedby="x_KeystoreDesc"
-         ng-click="downloaded()">
+         ng-click="downloaded()"
+         target="_blank">
         <span translate="x_Download"> DOWNLOAD </span> <span translate="x_Keystore2"> Keystore File (UTC / JSON) </span>
       </a>
       <br />
@@ -68,8 +69,8 @@
 
     <section class="block--help">
       <ul>
-        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank"><strong>How to back up your wallet</strong></a></li>
-        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank">What are these Different Formats?</a></strong></li>
+        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank"><strong>How to back up your wallet</strong></a></li>
+        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank"><strong>What are these Different Formats?</a></strong></li>
       </ul>
 
       <h2> Not Downloading a File? </h2>

@@ -107,9 +107,9 @@ label + textarea,
   display: block;
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: @padding-base-vertical @padding-base-horizontal;
+  padding: .25rem 1rem;
   font-size: @font-size-base;
-  line-height: @line-height-base;
+  line-height: 2;
   color: @input-color;
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
@@ -149,7 +149,12 @@ label + textarea,
   // Reset height for `textarea`s
   textarea& {
     height: auto;
+    line-height: 1.4;
   }
+}
+
+textarea.form-control {
+  line-height: 1.4;
 }
 
 input[readonly]  {

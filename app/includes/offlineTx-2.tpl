@@ -2,10 +2,8 @@
 
   <!-- To Address -->
   <article class="clearfix">
+    <h2 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h2>
     <section class="col-xs-11">
-
-      <h2 translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h2>
-
       <label translate="OFFLINE_Step2_Label_1">To Address:</label>
       <input class="form-control"
              type="text"

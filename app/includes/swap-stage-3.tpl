@@ -100,15 +100,14 @@
 
 
   <!-- Swap CTA BTC -->
-  <section class="row text-center" ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
+  <section class="row block swap-address text-center" ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
     <label translate="x_Address"> Your Address </label>
     <div class="qr-code" qr-code="{{'bitcoin:'+orderResult.payment_address+'?amount='+orderResult.input.amount}}" watch-var="orderResult" ></div>
-
     <br />
     <p class="text-danger">
-       <a href="https://shapeshift.io/#/btcfee" target="_blank">Please use the recommended TX fees seen here.</a>
-       <br />
        Orders that take too long will have to be processed manually &amp; and may delay the amount of time it takes to receive your coins.
+        <br />
+       <a href="https://shapeshift.io/#/btcfee" target="_blank">Please use the recommended TX fees seen here.</a>
     </p>
 
   </section>

@@ -1,7 +1,5 @@
 <!-- My Wallet Page -->
-<article class="tab-pane active myWalletCtrl" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'  ng-cloak>
-
-
+<main class="tab-pane active myWalletCtrl" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'  ng-cloak>
 
 
   <!-- Your Wallet Table -->
@@ -22,7 +20,7 @@
           {{token.getSymbol()}} &nbsp;&nbsp;
         </div>
       </td>
-      <td class="text-center">
+      <td class="text-center" style="white-space: nowrap">
         <a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a>
         <a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')"><img src="images/icon-view.svg" title="View" /></a>
         <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')"><img src="images/icon-remove-red.svg" title="Remove" /></a>
@@ -61,24 +59,16 @@
 
   <!-- View Wallet Section -->
   <section class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
-    <section class="row">
-   <div class="col-sm-12 text-right" style="margin-top: 16px;" ng-show="wallet!=null">
+    <div class="col-sm-12 text-right" style="margin: 1rem 0;" ng-show="wallet!=null">
       <a class="btn btn-warning" ng-click="resetWallet()" translate="MYWAL_Hide"> Hide Wallet Info </a>
-      <br />
     </div>
+    @@include( './viewWalletInfo-content.tpl', { "site": "cx" } )
   </section>
-      @@include( './viewWalletInfo-content.tpl', { "site": "cx" } )
-      <br /><hr />
-      <main ng-controller='signMsgCtrl'>
-        @@include( './signMsg.tpl', { "site": "cx" } )
-      </main>
-      </section>
-    </section>
   <!-- / View Wallet Section -->
 
 
   <!-- Edit Modal -->
-  <div class="modal fade" id="editWallet" tabindex="-1" role="dialog" aria-labelledby="editWalletLabel">
+  <section class="modal fade" id="editWallet" tabindex="-1" role="dialog" aria-labelledby="editWalletLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -103,12 +93,12 @@
 
       </div>
     </div>
-  </div>
+  </section>
   <!--/edit modal-->
 
 
   <!-- View Private Key Modal -->
-  <div class="modal fade" id="viewWalletDetails" tabindex="-1" role="dialog" aria-labelledby="viewKeyLabel" ng-init="showPass=true">
+  <section class="modal fade" id="viewWalletDetails" tabindex="-1" role="dialog" aria-labelledby="viewKeyLabel" ng-init="showPass=true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -137,12 +127,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
   <!--/View Private Key Modal-->
 
 
   <!-- Remove Modal -->
-  <div class="modal fade" id="removeWallet" tabindex="-1" role="dialog" aria-labelledby="removeWalletLabel">
+  <section class="modal fade" id="removeWallet" tabindex="-1" role="dialog" aria-labelledby="removeWalletLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -162,9 +152,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
   <!--/ Remove modal-->
 
 
-</article>
+</main>
 <!-- / My Wallet Page -->

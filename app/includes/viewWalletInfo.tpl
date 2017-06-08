@@ -1,4 +1,3 @@
-<!-- View Wallet Info Panel -->
 <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.viewWalletInfo.id" ng-controller='viewWalletCtrl' ng-cloak>
 
   <article class="collapse-container">
@@ -17,8 +16,6 @@
 
   </article>
 
-
-
   <article class="row" ng-show="wallet!=null">
 
     @@if (site === 'cx' ) {  @@include( './viewWalletInfo-content.tpl', { "site": "cx" } )    }
@@ -27,4 +24,3 @@
   </article>
 
 </main>
-<!-- / View Wallet Info Tab -->
