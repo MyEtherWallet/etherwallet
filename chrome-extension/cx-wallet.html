@@ -209,9 +209,7 @@
   <div class="tab-content" >
 
     <!-- My Wallet Page -->
-<article class="tab-pane active myWalletCtrl" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'  ng-cloak>
-
-
+<main class="tab-pane active myWalletCtrl" ng-if="globalService.currentTab==globalService.tabs.myWallet.id" ng-controller='myWalletsCtrl'  ng-cloak>
 
 
   <!-- Your Wallet Table -->
@@ -232,7 +230,7 @@
           {{token.getSymbol()}} &nbsp;&nbsp;
         </div>
       </td>
-      <td class="text-center">
+      <td class="text-center" style="white-space: nowrap">
         <a class="mainWalletEdit" ng-click="editMWallet($index,'wallet')"><img src="images/icon-edit.svg" title="Edit" /></a>
         <a class="text-warning mainWalletView" ng-click="viewMWallet($index,'wallet')"><img src="images/icon-view.svg" title="View" /></a>
         <a class="mainWalletDelete text-danger" ng-click="deleteWalletMsg($index,'wallet')"><img src="images/icon-remove-red.svg" title="Remove" /></a>
@@ -271,13 +269,10 @@
 
   <!-- View Wallet Section -->
   <section class="row" ng-show="wallet!=null" ng-controller='viewWalletCtrl'>
-    <section class="row">
-   <div class="col-sm-12 text-right" style="margin-top: 16px;" ng-show="wallet!=null">
+    <div class="col-sm-12 text-right" style="margin: 1rem 0;" ng-show="wallet!=null">
       <a class="btn btn-warning" ng-click="resetWallet()" translate="MYWAL_Hide"> Hide Wallet Info </a>
-      <br />
     </div>
-  </section>
-      <article class="col-sm-8 view-wallet-content">
+    <article class="col-sm-8 view-wallet-content">
 
   <section class="block">
     <div class="col-xs-11">
@@ -330,7 +325,7 @@
   <section class="block">
     <div class="col-xs-6">
       <h5 translate="x_Address">Your Address:</h5>
-      <div class="qr-code" qr-code="{{wallet.getAddressString()}}" watch-var="wallet" width="100%"></div>
+      <div class="qr-code" qr-code="{{wallet.getChecksumAddressString()}}" watch-var="wallet" width="100%"></div>
     </div>
     <div class="col-xs-6">
       <h5 ng-show="wallet.type=='default'">
@@ -425,80 +420,12 @@
   <wallet-balance-drtv></wallet-balance-drtv>
 </article>
 
-      <br /><hr />
-      <main ng-controller='signMsgCtrl'>
-        <!-- Sign Message Panel -->
-  <h2>
-    <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
-    or
-    <a translate="MSG_verify"  ng-class="{'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
-  </h2>
-
-  <article class="col-xs-12 clearfix" ng-switch on="visibility">
-
-    <!-- Sign Message Stuff -->
-    <section ng-switch-when="signView">
-
-      <!-- Message -->
-      <div class="account-help-icon">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <ul class="account-help-text">
-          <li translate="MSG_info2">Include your nickname and where you use the nickname so someone else cannot use it.</li>
-          <li translate="MSG_info3">Include a specific reason for the message so it cannot be reused for a different purpose.</li>
-        </ul>
-        <h5 translate="MSG_message"> Message </h5>
-      </div>
-
-
-      <textarea class="form-control" ng-model="signMsg.message" placeholder="This is user kvhnuke on reddit. The purpose of this message is to prove that 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8 is my address." rows="5"></textarea>
-
-      <!-- Date -->
-      <div class="account-help-icon">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="MSG_info1">Include the current date so the signature cannot be reused on a different date.</p>
-        <h5 translate="MSG_date"> Date </h5>
-      </div>
-      <input class="form-control" ng-model="signMsg.dateTime" type="text" placeholder="1 JAN 2016 14:15" />
-
-      <!-- Sign Message Button -->
-      <a class="btn btn-info btn-block" ng-click="generateSignedMsg()" translate="NAV_SignMsg" ng-show="wallet!=null"> Sign Message </a>
-
-
-      <!-- Signed Message -->
-      <div ng-show="signMsg.signedMsg">
-        <h5 translate="MSG_signature"> Signature </h5>
-        <textarea class="form-control" rows="4" readonly>{{ signMsg.signedMsg }}</textarea>
-      </div>
-    </section>
-    <!-- / Sign Message Stuff -->
-
-
-
-    <!-- Verify Message Stuff -->
-    <section ng-switch-when="verifyView">
-      <!-- Signature -->
-      <h5 translate="MSG_signature"> Signature </h5>
-      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{"address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
-
-      <!-- Verify Signature Message Button -->
-      <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
-
-
-
-    </section>
-    <!-- / Verify Message Stuff -->
-
-  </article>
-<!-- / Sign Message Panel -->
-
-      </main>
-      </section>
-    </section>
+  </section>
   <!-- / View Wallet Section -->
 
 
   <!-- Edit Modal -->
-  <div class="modal fade" id="editWallet" tabindex="-1" role="dialog" aria-labelledby="editWalletLabel">
+  <section class="modal fade" id="editWallet" tabindex="-1" role="dialog" aria-labelledby="editWalletLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -523,12 +450,12 @@
 
       </div>
     </div>
-  </div>
+  </section>
   <!--/edit modal-->
 
 
   <!-- View Private Key Modal -->
-  <div class="modal fade" id="viewWalletDetails" tabindex="-1" role="dialog" aria-labelledby="viewKeyLabel" ng-init="showPass=true">
+  <section class="modal fade" id="viewWalletDetails" tabindex="-1" role="dialog" aria-labelledby="viewKeyLabel" ng-init="showPass=true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -557,12 +484,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
   <!--/View Private Key Modal-->
 
 
   <!-- Remove Modal -->
-  <div class="modal fade" id="removeWallet" tabindex="-1" role="dialog" aria-labelledby="removeWalletLabel">
+  <section class="modal fade" id="removeWallet" tabindex="-1" role="dialog" aria-labelledby="removeWalletLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -582,11 +509,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
   <!--/ Remove modal-->
 
 
-</article>
+</main>
 <!-- / My Wallet Page -->
 
 
@@ -621,6 +548,7 @@
 
     <article class="col-md-4 col-sm-6">
 
+
       <!-- Generate New Wallet -->
       <div ng-show="walletType=='gennewwallet'" ng-init="showPass=true">
         <h4 translate="ADD_Radio_1"> Generate New Wallet: </h4>
@@ -639,6 +567,7 @@
 
       </div>
       <!-- / Generate New Wallet -->
+
 
       <!-- Select Your Wallet File -->
       <div ng-show="walletType=='fileupload'">
@@ -709,24 +638,20 @@
   </section>
 
   <article class="row" ng-if="showAddWallet">
+
     <hr />
 
     <!-- Sidebar -->
     <div class="col-sm-4">
-
       <h5 translate="sidebar_AccountAddr">Account Address:</h5>
-
       <ul class="account-info">
       <div class="addressIdenticon med float" title="Address Indenticon" blockie-address="{{wallet.getAddressString()}}" watch-var="wallet"></div>
       <span class="mono wrap">{{wallet.getChecksumAddressString()}}</span>
       </ul>
-
       <h5 translate="sidebar_AccountBal">Account Balance:</h5>
-
       <ul class="account-info">
         <li><strong>{{etherBalance}}</strong> ETH </li>
       </ul>
-
       <h5 translate="sidebar_Equiv"> Equivalent Values: </h5>
       <ul class="account-info">
         <li><strong>{{usdBalance}}</strong> USD</li>
@@ -740,8 +665,6 @@
       <ul class="account-info">
         <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
-
-
     </div>
 
     <!-- / Sidebar -->
@@ -771,8 +694,8 @@
       <div class="form-group" ng-show="showBtnAddWallet">
         <a class="btn btn-info btn-block" ng-click="importWalletToStorage()" translate="NAV_AddWallet">ADD WALLET </a>
       </div>
-
     </div>
+
   </article>
 
 
@@ -1082,9 +1005,11 @@
 
 
 <!-- Swap Init Panel -->
-<article class="swap-panel clearfix" ng-show="showStage1">
+<article class="swap-panel block clearfix" ng-show="showStage1">
 
   <h1 translate="SWAP_init_1"> I want to swap my </h1>
+
+  <br />
 
   <input class="form-control"
          type="text"
@@ -1165,28 +1090,28 @@
 
   <!-- Your Address -->
   <!-- TODO ADD ENS NAME SUPPORT -->
-  <section class="row">
-    <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-      <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>({{swapOrder.toCoin}})</strong></label>
-      <div class="form-group" ng-show="swapOrder.toCoin!='BTC'">
-        <address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="swapOrder.toAddress"></address-field>
+  <section class='swap-address block'>
+    <section class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        <label><span translate="SWAP_rec_add">Your Receiving Address</span> <strong>({{swapOrder.toCoin}})</strong></label>
+        <div class="form-group" ng-show="swapOrder.toCoin!='BTC'">
+          <address-field placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" var-name="swapOrder.toAddress"></address-field>
+        </div>
+        <input class="form-control"
+                ng-show="swapOrder.toCoin=='BTC'"
+                type="text"
+                placeholder="1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6"
+                ng-model="swapOrder.toAddress"
+                ng-class="Validator.isValidBTCAddress(swapOrder.toAddress) ? 'is-valid' : 'is-invalid'"/>
       </div>
-      <input class="form-control"
-              ng-show="swapOrder.toCoin=='BTC'"
-              type="text"
-              placeholder="1MEWT2SGbqtz6mPCgFcnea8XmWV5Z4Wc6"
-              ng-model="swapOrder.toAddress"
-              ng-class="Validator.isValidBTCAddress(swapOrder.toAddress) ? 'is-valid' : 'is-invalid'"/>
-    </div>
+    </section>
+    <!-- /Your Address -->
+    <!-- CTA -->
+    <section class="row text-center">
+      <a ng-click="openOrder()" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
+    </section>
+    <!-- / CTA -->
   </section>
-  <!-- /Your Address -->
-
-
-  <!-- CTA -->
-  <section class="row text-center">
-    <a ng-click="openOrder()" class="btn btn-primary btn-lg"><span translate="SWAP_start_CTA"> Start Swap </span></a>
-  </section>
-  <!-- / CTA -->
 
 
 </article>
@@ -1454,15 +1379,14 @@
 
 
   <!-- Swap CTA BTC -->
-  <section class="row text-center" ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
+  <section class="row block swap-address text-center" ng-show="showStage3Btc && orderResult.progress.status=='OPEN'">
     <label translate="x_Address"> Your Address </label>
     <div class="qr-code" qr-code="{{'bitcoin:'+orderResult.payment_address+'?amount='+orderResult.input.amount}}" watch-var="orderResult" ></div>
-
     <br />
     <p class="text-danger">
-       <a href="https://shapeshift.io/#/btcfee" target="_blank">Please use the recommended TX fees seen here.</a>
-       <br />
        Orders that take too long will have to be processed manually &amp; and may delay the amount of time it takes to receive your coins.
+        <br />
+       <a href="https://shapeshift.io/#/btcfee" target="_blank">Please use the recommended TX fees seen here.</a>
     </p>
 
   </section>
@@ -1471,10 +1395,15 @@
 </article>
  
 
-  <div class="text-center" style="margin-top: 100px;margin-bottom: -60px;">
-    <p class="strong"><a class="btn-warning btn-sm" href="mailto:support@bity.com,support@myetherwallet.com?Subject={{orderResult.reference}}%20Issue%20regarding%20my%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{orderResult.reference}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0APayment%20Address%3A%20{{orderResult.payment_address}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A" target="_blank"> Issue with your Swap? Contact support. </a></p>
-    <p><small>If the link doesn't work, copy & paste the following:</small></p>
-    <textarea class="form-control input-sm" readonly style="max-width: 40rem;margin:1rem auto;">To: support@bity.com, support@myetherwallet.com
+
+  <section class="bity-contact">
+    <div class="col-sm-5 text-right">
+      <br />
+      <p><a class="btn-warning btn-sm" href="mailto:support@bity.com,support@myetherwallet.com?Subject={{orderResult.reference}}%20Issue%20regarding%20my%20Swap%20via%20MEW%20&Body=%0APlease%20include%20the%20below%20if%20this%20issue%20is%20regarding%20your%20order.%20%0A%0AREF%20ID%23%3A%20{{orderResult.reference}}%0A%0AAmount%20to%20send%3A%20{{orderResult.input.amount}}%20{{orderResult.input.currency}}%0A%0AAmount%20to%20receive%3A%20{{orderResult.output.amount}}%20{{orderResult.output.currency}}%0A%0APayment%20Address%3A%20{{orderResult.payment_address}}%0A%0ARate%3A%20{{swapOrder.swapRate}}%20{{swapOrder.swapPair}}%0A%0A" target="_blank"> Issue with your Swap? Contact support.</a></p>
+      <p><small>If the link doesn't work, copy & paste the following:</small></p>
+    </div>
+    <div class="col-sm-5 text-left">
+      <textarea class="form-control input-sm" rows="3">To: support@bity.com, support@myetherwallet.com
 Subject: {{orderResult.reference}} - Issue regarding my Swap via MEW
 Message:
 REF ID#: {{orderResult.reference}}
@@ -1482,7 +1411,9 @@ Amount to send: {{orderResult.input.amount}} {{orderResult.input.currency}}
 Amount to receive: {{orderResult.output.amount}} {{orderResult.output.currency}}
 Payment Address: {{orderResult.payment_address}}
 Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
-  </div>
+    </div>
+
+  </section>
 
   </main>
 
@@ -1549,10 +1480,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   <!-- To Address -->
   <article class="clearfix">
+    <h2 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h2>
     <section class="col-xs-11">
-
-      <h2 translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h2>
-
       <label translate="OFFLINE_Step2_Label_1">To Address:</label>
       <input class="form-control"
              type="text"
@@ -2430,7 +2359,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       <td>Secret Phrase</td><td>{{objENS.secret}}</td>
     </tr>
     <tr>
-      <td>From Account</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
+      <td>From Account</td><td><small class="mono">{{wallet.getChecksumAddressString()}}</small></td>
     </tr>
     <tr class="text-danger">
       <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toString()}}</small></td>
@@ -2704,7 +2633,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       <td>Secret Phrase</td><td>{{objENS.secret}}</td>
     </tr>
     <tr>
-      <td>From Account</td><td><small class="mono">{{wallet.getAddressString()}}</small></td>
+      <td>From Account</td><td><small class="mono">{{wallet.getChecksumAddressString()}}</small></td>
     </tr>
     <tr class="text-danger">
       <td>⚠ Reveal Date ⚠</td><td><small>{{getRevealTime().toString()}}</small></td>
@@ -2774,9 +2703,9 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     </div>
     <div ng-show="!hRemind">
       <ul>
-        <li translate="HELP_Remind_Desc_1">**Ethereum, MyEtherWallet.com & MyEtherWallet CX, and some of the underlying Javascript libraries we use are under active development.** While we have thoroughly tested & tens of thousands of wallets have been successfully created by people all over the globe, there is always the remote possibility that something unexpected happens that causes your ETH to be lost. Please do not invest more than you are willing to lose, and please be careful. If something were to happen, we are sorry, but we are not responsible for the lost Ether.</li>
-        <li translate="HELP_Remind_Desc_2">MyEtherWallet.com & MyEtherWallet CX are not "web wallets". You do not create an account or give us your Ether to hold onto. All data never leaves your computer/your browser. We make it easy for you to create, save, and access your information and interact with the blockchain.</li>
-        <li translate="HELP_Remind_Desc_3">If you do not save your private key & password, there is no way to recover access to your wallet or the funds it holds.  Back them up in multiple physical locations &ndash; not just on your computer!</li>
+        <li translate="HELP_Remind_Desc_1"></li>
+        <li translate="HELP_Remind_Desc_2"></li>
+        <li translate="HELP_Remind_Desc_3"></li>
       </ul>
     </div>
   </article>
@@ -2786,15 +2715,15 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <article class="collapse-container">
     <div ng-click="h0 = !h0">
       <a class="collapse-button" ><span ng-show="!h0">+</span><span ng-show="h0">-</span></a>
-      <h4 translate="HELP_0_Title"> 0. I'm new. What do I do? </h4>
+      <h4 translate="HELP_0_Title"></h4>
     </div>
     <div ng-show="h0">
-      <p translate="HELP_0_Desc_1"> MyEtherWallet gives you the ability to generate new wallets so you can store your Ether yourself, not on an exchange. This process happens entirely on your computer, not our servers. Therefore, when you generate a new wallet, **you are responsible for safely backing it up**.</p>
+      <p translate="HELP_0_Desc_1"></p>
       <ol>
-        <li translate="HELP_0_Desc_2"> Create a new wallet. </li>
-        <li translate="HELP_0_Desc_3"> Back the wallet up. </li>
-        <li translate="HELP_0_Desc_4"> Verify you have access to this new wallet and have correctly saved all necessary information. </li>
-        <li translate="HELP_0_Desc_5"> Transfer Ether to this new wallet. </li>
+        <li translate="HELP_0_Desc_2"></li>
+        <li translate="HELP_0_Desc_3"></li>
+        <li translate="HELP_0_Desc_4"></li>
+        <li translate="HELP_0_Desc_5"></li>
       </ol>
     </div>
   </article>
@@ -2804,34 +2733,32 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <article class="collapse-container">
     <div ng-click="h1 = !h1">
       <a class="collapse-button" ><span ng-show="!h1">+</span><span ng-show="h1">-</span></a>
-      <h4 translate="HELP_1_Title"> 1. How do I create a new wallet? </h4>
+      <h4 translate="HELP_1_Title"></h4>
     </div>
     <div ng-show="h1">
       <ol>
         
         
-        <li translate="HELP_1_Desc_2"> Go to the "Add Wallet" page & select "Generate New Wallet" </li>
+        <li translate="HELP_1_Desc_2"></li>
         
-        <li translate="HELP_1_Desc_3"> Enter a strong password. If you think you may forget it, save it somewhere safe. You will need this password to send transactions. </li>
-        <li translate="HELP_1_Desc_4"> Click "GENERATE". </li>
-        <li translate="HELP_1_Desc_5"> Your wallet has now been generated. </li>
+        <li translate="HELP_1_Desc_3"></li>
+        <li translate="HELP_1_Desc_4"></li>
+        <li translate="HELP_1_Desc_5"></li>
       </ol>
     </div>
   </article>
 
 
-
   <article class="collapse-container">
     <div ng-click="h2a = !h2a">
       <a class="collapse-button" ><span ng-show="!h2a">+</span><span ng-show="h2a">-</span></a>
-      <h4 translate="HELP_2a_Title"> 2a. How do I save/backup my wallet? </h4>
+      <h4 translate="HELP_2a_Title"></h4>
     </div>
     <div ng-show="h2a">
-      <p translate="HELP_2a_Desc_1"> You should always back up your wallet externally and in multiple physical locations - like on a USB drive and/or a piece of paper. </p>
+      <p translate="HELP_2a_Desc_1"></p>
       <ol>
-        <li translate="HELP_2a_Desc_2"> Save the address. You can keep it to yourself or share it with others. That way, others can transfer ETH to you. </li>
-        <li translate="HELP_2a_Desc_3"> Save versions of the private key. Do not share it with anyone else. Your private key is necessary when you want to access your Ether to send it! There are 3 types of private keys: </li>
-
+        <li translate="HELP_2a_Desc_2"></li>
+        <li translate="HELP_2a_Desc_3"></li>
         <ul>
           <li><strong translate="x_Keystore">Keystore/JSON File (Recommended · Encrypted · Mist/Geth Format):</strong> <span translate="x_KeystoreDesc">This Keystore / JSON file matches the format used by Mist & Geth so you can easily import it in the future. It is the recommended file to download and back up.</span></li>
           <li><strong translate="x_Json">JSON File (unencrypted):</strong> <span translate="x_JsonDesc">This is the unencrypted, JSON format of your private key. This means you do not need the password but anyone who finds your JSON can access your wallet & Ether without the password.</span></li>
@@ -3347,6 +3274,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
         <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a>
 
+        <p ng-show="showBlocks" style="font-size: 12px">Latest Block#: {{currentBlockNumber}}</p>
+
       </section>
 
       <section class="footer--cent">
@@ -3406,8 +3335,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
       </section>
 
-
-    <p ng-show="showBlocks" class="text-right" style="font-size: 10px">Latest Block#: {{currentBlockNumber}}</p>
   </div>
 
   
