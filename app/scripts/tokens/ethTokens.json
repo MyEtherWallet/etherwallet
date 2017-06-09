@@ -210,6 +210,12 @@
     "type":"default"
   },
   {
+    "address":"0xcCeD5B8288086BE8c38E23567e684C3740be4D48",
+    "symbol":"RLT",
+    "decimal":10,
+    "type":"default"
+  },  
+  {
     "address":"0x2e071D2966Aa7D8dECB1005885bA1977D6038A65",
     "symbol":"ROL",
     "decimal":16,
