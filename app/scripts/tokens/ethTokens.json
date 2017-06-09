@@ -36,6 +36,12 @@
     "type":"default"
   },
   {
+   "address":"0x12FEF5e57bF45873Cd9B62E9DBd7BFb99e32D73e",
+   "symbol":"CFI",
+   "decimal":18,
+   "type":"default"
+  },
+  {
     "address":"0xAef38fBFBF932D1AeF3B808Bc8fBd8Cd8E1f8BC5",
     "symbol":"CRB",
     "decimal":8,
@@ -213,6 +219,12 @@
     "address":"0x607F4C5BB672230e8672085532f7e901544a7375",
     "symbol":"RLC",
     "decimal":9,
+    "type":"default"
+  },
+  {
+    "address":"0xcCeD5B8288086BE8c38E23567e684C3740be4D48",
+    "symbol":"RLT",
+    "decimal":10,
     "type":"default"
   },
   {
