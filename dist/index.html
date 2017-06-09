@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>MyEtherWallet: Open-Source & Client-Side Ether Wallet</title>
   <link rel="canonical" href="https://www.myetherwallet.com" />
-  <meta name="description" content="Open-Source & Client-Side Ether Wallet">
+  <meta name="description" content="Open-Source & Client-Side Ethereum Wallet">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
@@ -40,7 +40,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.8.9 &nbsp;&nbsp;
+        &middot; v3.8.92 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -3311,11 +3311,20 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
       <section class="footer--righ">
         <div class="footer--gas">
-          <label translate="OFFLINE_Step2_Label_3"> Gas Price: </label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a>)
+          <p style="padding:0;" class="col-xs-6">
+            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
+            <strong><a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a></strong>
+          </p>
+          <p style="padding:0;" class="col-xs-6 text-right small">
+            Std. TX: <strong>$ 1.04</strong>
+            <br />
+            ICO TX:  <strong>$150.00</strong>
+          </p>
           <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
-          <p style="padding: 0" class="small col-xs-4">Not So Fast</p>
-          <p style="padding: 0" class="small col-xs-4 text-center">Fast</p>
-          <p style="padding: 0" class="small col-xs-4 text-right">Fast AF</p>
+          <p style="padding: 0;margin-left: -2rem;" class="small col-xs-3">Not So Fast</p>
+          <p style="padding: 0;" class="small col-xs-3 text-center">Fast</p>
+          <p style="padding: 0;" class="small col-xs-3">Fast AF</p>
+          <p style="padding: 0;margin-left: 2rem;" class="small col-xs-3 text-right">ICOs Only!</p>
         </div>
 
         <h5><i aria-hidden="true">🌎</i> On the Web</h5>

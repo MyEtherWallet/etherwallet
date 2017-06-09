@@ -1,5 +1,3 @@
-module.exports = [{
-
 // For token sale holders:
 // 1. Add the address users are sending to
 // 2. Add the gas limit users should use to send successfully (this avoids OOG errors)
@@ -10,9 +8,8 @@ module.exports = [{
 // http://www.tokensalecalendar.com/
 // If you aren't on the above, you should get on it.
 
-$scope.customGas = [
+module.exports = [
 {
-  // MEW Donation
   to:         '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
   gasLimit:   21000,
   data:       '',
@@ -88,5 +85,5 @@ $scope.customGas = [
   data:       '',
   msg:        'Moeda. Ends at block 4,111,557.'
 }
-
 ]
+
