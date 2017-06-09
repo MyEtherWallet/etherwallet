@@ -3311,20 +3311,14 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
       <section class="footer--righ">
         <div class="footer--gas">
-          <p style="padding:0;" class="col-xs-6">
+          <p>
             <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
             <strong><a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a></strong>
           </p>
-          <p style="padding:0;" class="col-xs-6 text-right small">
-            Std. TX: <strong>$ 1.04</strong>
-            <br />
-            ICO TX:  <strong>$150.00</strong>
-          </p>
           <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
-          <p style="padding: 0;margin-left: -2rem;" class="small col-xs-3">Not So Fast</p>
-          <p style="padding: 0;" class="small col-xs-3 text-center">Fast</p>
-          <p style="padding: 0;" class="small col-xs-3">Fast AF</p>
-          <p style="padding: 0;margin-left: 2rem;" class="small col-xs-3 text-right">ICOs Only!</p>
+          <p style="padding: .25rem 0;" class="small col-xs-4">Not So Fast</p>
+          <p style="padding: .25rem 0;" class="small col-xs-4 text-center">Fast</p>
+          <p style="padding: .25rem 0;" class="small col-xs-4 text-right">Fast AF</p>
         </div>
 
         <h5><i aria-hidden="true">🌎</i> On the Web</h5>
