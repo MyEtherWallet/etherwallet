@@ -62,6 +62,8 @@ if (IS_CX) {
     window.ledgerEth         = ledgerEth;
     window.TrezorConnect     = trezorConnect.TrezorConnect;
 }
+var CustomGasMessages        = require('./customGas.js')
+window.CustomGasMessages     = CustomGasMessages;
 var tabsCtrl                 = require('./controllers/tabsCtrl');
 var viewCtrl                 = require('./controllers/viewCtrl');
 var walletGenCtrl            = require('./controllers/walletGenCtrl');

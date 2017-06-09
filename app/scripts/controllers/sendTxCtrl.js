@@ -23,32 +23,13 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     // 2. Add the gas limit users should use to send successfully (this avoids OOG errors)
     // 3. Add any data if applicable
     // 4. Add a message if you want.
-    
-    // Token Calendar: 
+
+    // Token Calendar:
     // http://www.tokensalecalendar.com/
     // If you aren't on the above, you should get on it.
 
-    $scope.customGas = [{ // donation address example
-        to: '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
-        gasLimit: 21000,
-        data: '',
-        msg: 'Thank you for donating to MyEtherWallet. TO THE MOON!'
-    }, { // BAT
-        to: '0x0D8775F648430679A709E98d2b0Cb6250d2887EF',
-        gasLimit: 200000,
-        data: '0xb4427263',
-        msg: 'BAT. THE SALE IS OVER. STOP CLOGGING THE BLOCKCHAIN PLEASE'
-    }, { // BANCOR
-        to: '0x00000',
-        gasLimit: 200000,
-        data: '',
-        msg: 'Bancor. Starts June XX, 2017.'
-    }, { // Moeda
-        to: '0x4870E705a3def9DDa6da7A953D1cd3CCEDD08573',
-        gasLimit: 200000,
-        data: '',
-        msg: 'Moeda. Ends at block 4,111,557.'
-    }]
+    $scope.customGas = CustomGasMessages
+
     $scope.tx = {
         // if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
         gasLimit: globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null ? globalFuncs.urlGet('gaslimit') != null ? globalFuncs.urlGet('gaslimit') : globalFuncs.urlGet('gas') : globalFuncs.defaultTxGasLimit,
@@ -153,6 +134,14 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             $scope.tokenTx.to = $scope.tx.to;
             $scope.tokenTx.value = $scope.tx.value;
         }
+        if (newValue.to !== oldValue.to) {
+          for (var i in $scope.customGas) {
+              if ($scope.tx.to.toLowerCase() == $scope.customGas[i].to.toLowerCase()) {
+                  $scope.customGasMsg = $scope.customGas[i].msg != '' ? $scope.customGas[i].msg : ''
+                  return;
+              }
+          }
+        }
     }, true);
     $scope.estimateGasLimit = function() {
         $scope.customGasMsg = ''
@@ -182,7 +171,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             estObj.value = '0x00';
         }
         ethFuncs.estimateGas(estObj, function(data) {
-            
+
             if (!data.error) {
                 if (data.data == '-1') $scope.notifier.danger(globalFuncs.errorMsgs[21]);
                 $scope.tx.gasLimit = data.data;
