@@ -20,9 +20,9 @@ var footerCtrl = function($scope, globalService) {
     }
     var setGasValues = function() {
         $scope.gas = {
-            curVal: 20,
-            value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 24,
-            max: 40,
+            curVal: 21,
+            value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 21,
+            max: 81,
             min: 1
         }
         if ($scope.showBlocks) {
@@ -32,8 +32,8 @@ var footerCtrl = function($scope, globalService) {
                     var curVal = new BigNumber(data.gasprice).div(etherUnits.getValueOfUnit('gwei')).toNumber();
                     $scope.gas = {
                         curVal: curVal,
-                        value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 24,
-                        max: curVal + 20,
+                        value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 21,
+                        max: curVal + 60,
                         min: 1
                     }
                     ethFuncs.gasAdjustment = $scope.gas.value;

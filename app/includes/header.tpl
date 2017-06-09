@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>MyEtherWallet: Open-Source & Client-Side Ether Wallet</title>
   <link rel="canonical" href="https://www.myetherwallet.com" />
-  <meta name="description" content="Open-Source & Client-Side Ether Wallet">
+  <meta name="description" content="Open-Source & Client-Side Ethereum Wallet">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
@@ -43,7 +43,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.8.9 &nbsp;&nbsp;
+        &middot; v3.8.92 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>

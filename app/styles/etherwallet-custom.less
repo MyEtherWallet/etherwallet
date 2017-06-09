@@ -469,6 +469,7 @@ label small {
 @brand-etc: #9c27b0;
 @brand-test: #cddc39;
 @brand-cust: #9c27b0;
+@brand-rsk: #ff794f;
 
 .dropdown-node .dropdown-menu {
   li:nth-last-child(2) {
@@ -506,6 +507,9 @@ label small {
   li:nth-child(5),
   li:nth-child(6) {
     border-left: 2px solid @brand-test;
+  }
+  li:nth-child(7) {
+    border-left: 2px solid @brand-rsk;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
@@ -547,6 +551,13 @@ header.Rinkeby {
   .NAV_ENS {}
   & + .container .modal-content {
     border: 3px solid @brand-test;
+  }
+}
+header.RSK {
+  border-top: 3px solid @brand-rsk;
+  .NAV_ENS {}
+  & + .container .modal-content {
+    border: 3px solid @brand-rsk;
   }
 }
 header.Custom  {
