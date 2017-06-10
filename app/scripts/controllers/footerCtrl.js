@@ -24,21 +24,7 @@ var footerCtrl = function($scope, globalService) {
             max: 50,
             min: 1
         }
-        if ($scope.showBlocks) {
-            ajaxReq.getTransactionData(globalFuncs.donateAddress, function(data) {
-                if (!data.error) {
-                    data = data.data;
-                    var curVal = new BigNumber(data.gasprice).div(etherUnits.getValueOfUnit('gwei')).toNumber();
-                    $scope.gas = {
-                        curVal: curVal,
-                        value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 21,
-                        max: 50,
-                        min: 1
-                    }
-                    ethFuncs.gasAdjustment = $scope.gas.value;
-                }
-            });
-        }
+        ethFuncs.gasAdjustment = $scope.gas.value;
     }
     setGasValues();
     $scope.gasChanged();
