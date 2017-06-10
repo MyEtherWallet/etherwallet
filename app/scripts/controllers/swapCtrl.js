@@ -28,7 +28,7 @@ var swapCtrl = function($scope, $sce, walletService) {
         }
     }
     $scope.verifyMinMaxValues = function() {
-  		
+  		if (!$scope.orderResult) uiFuncs.notifier.close();
         if($scope.swapOrder.toVal=='' || $scope.swapOrder.fromVal == '') return false;
         var errors = {
             priceNotLoaded: 0,
@@ -150,7 +150,7 @@ var swapCtrl = function($scope, $sce, walletService) {
                             orderResult.progress.status = "RCVE";
                             orderResult.progress.bar = getProgressBarArr(3, 5);
                         } else if (orderResult.progress.status == "RCVE" && bity.validStatus.indexOf(data.output.status) != -1) {
-                            
+
                             orderResult.progress.status = "FILL";
                             orderResult.progress.bar = getProgressBarArr(5, 5);
                             orderResult.progress.showTimeRem = false;
