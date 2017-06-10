@@ -307,7 +307,7 @@
 
       <div class="form-group">
         <h4 translate="x_PrivKey">Private Key (unencrypted)</h4>
-        <textarea aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc" class="form-control bigger-on-mobile" type="text" readonly="readonly" style="  max-width: 50rem;margin: auto;">{{wallet.getPrivateKeyString()}}</textarea>
+        <input aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc" value="{{wallet.getPrivateKeyString()}}" class="form-control" type="text" readonly="readonly" style="max-width: 50rem;margin: auto;" />
       </div>
 
       <div class="form-group">
