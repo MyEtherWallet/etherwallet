@@ -24,10 +24,10 @@ module.exports = [
 },
 {
   // BANCOR
-  to:         '0x0000',
+  to:         '0xBbc79794599b19274850492394004087cBf89710',
   gasLimit:   200000,
   data:       '',
-  msg:        'Bancor. Open June 12, 10:00 GMT - 11:00 GMT.'
+  msg:        'Bancor. Open June 12, 10:00 GMT - 11:00 GMT. Use gas slider in the footer to increase gas PRICE to 50 GWEI.'
 },
 {
   // SuperDao
