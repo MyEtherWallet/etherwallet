@@ -156,6 +156,12 @@
     "type":"default"
   },
   {
+    "address":"0x40395044ac3c0c57051906da938b54bd6557f212",
+    "symbol":"MGO",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xd0b171Eb0b0F2CbD35cCD97cDC5EDC3ffe4871aa",
     "symbol":"MDA",
     "decimal":18,
