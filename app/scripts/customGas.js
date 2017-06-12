@@ -27,7 +27,7 @@ module.exports = [
   to:         '0xBbc79794599b19274850492394004087cBf89710',
   gasLimit:   200000,
   data:       '',
-  msg:        'Bancor. Open June 12, 10:00 GMT - 11:00 GMT. Use gas slider in the footer to increase gas PRICE to 50 GWEI.'
+  msg:        'Bancor. Open June 12, 14:00 GMT - 15:00 GMT. Use gas slider in the footer to increase GAS PRICE to 50 GWEI. GAS LIMIT: 200000.'
 },
 {
   // SuperDao
