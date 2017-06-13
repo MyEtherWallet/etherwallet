@@ -198,6 +198,12 @@
     "type":"default"
   },
   {
+    "address":"0xa645264c5603e96c3b0b078cdab68733794b0a71",
+    "symbol":"MYST",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
     "symbol":"NxC",
     "decimal":3,
