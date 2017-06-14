@@ -187,14 +187,14 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
         if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) throw globalFuncs.errorMsgs[5];
         else if (!globalFuncs.isNumeric(localToken.decimals) || parseFloat(localToken.decimals) < 0) throw globalFuncs.errorMsgs[7];
         else if (!globalFuncs.isAlphaNumeric(localToken.symbol) || localToken.symbol == "") throw globalFuncs.errorMsgs[19];
-        var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+        var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
         storedTokens.push({
             contractAddress: localToken.contractAdd,
             symbol: localToken.symbol,
             decimal: parseInt(localToken.decimals),
             type: "custom"
         });
-        localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+        globalFuncs.localStorage.setItem("localTokens", JSON.stringify(storedTokens));
         callback({
             error: false
         });
@@ -206,14 +206,14 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
     }
 }
 globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
-    var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+    var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens", null)) : [];
     // remove from localstorage so it doesn't show up on refresh
     for (var i = 0; i < storedTokens.length; i++)
         if (storedTokens[i].symbol === symbol) {
             storedTokens.splice(i, 1);
             break;
         }
-    localStorage.setItem("localTokens", JSON.stringify(storedTokens));
+    globalFuncs.localStorage.setItem("localTokens", JSON.stringify(storedTokens));
     if (!tokenObj) return;
     // remove from tokenObj so it removes from display
     for (var i = 0; i < tokenObj.length; i++)
@@ -222,16 +222,35 @@ globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
             break;
         }
 }
-// globalFuncs.getUrlParameter = function getUrlParameter(url) {
-//   // get query string from url (optional) or window
-//   var queryString = url ? url.split('=')[1] : window.location.search.slice(1);
-//   return queryString;
-// }
-// globalFuncs.setUrlParameter = function setUrlParameter(value) {
-//   //In case url contains already a parameter remove parameter
-//   if(window.location.href.indexOf('=') != -1) {
-//       location.href = location.href.substr(0,window.location.href.indexOf('='));
-//   }
-//   location.href = location.href + "=" + value
-// }
+globalFuncs.localStorage = {
+        isAvailable: function() {
+            return localStorage != null;
+        },
+        setItem: function(key, value) {
+            if (this.isAvailable()) {
+                localStorage.setItem(key, value);
+            } else {
+
+            }
+        },
+        getItem: function(key, dValue = "") {
+            if (this.isAvailable()) {
+                return localStorage.getItem(key);
+            } else {
+                return dValue;
+            }
+        }
+    }
+    // globalFuncs.getUrlParameter = function getUrlParameter(url) {
+    //   // get query string from url (optional) or window
+    //   var queryString = url ? url.split('=')[1] : window.location.search.slice(1);
+    //   return queryString;
+    // }
+    // globalFuncs.setUrlParameter = function setUrlParameter(value) {
+    //   //In case url contains already a parameter remove parameter
+    //   if(window.location.href.indexOf('=') != -1) {
+    //       location.href = location.href.substr(0,window.location.href.indexOf('='));
+    //   }
+    //   location.href = location.href + "=" + value
+    // }
 module.exports = globalFuncs;

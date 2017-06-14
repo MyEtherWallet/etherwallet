@@ -44,7 +44,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         for (var attrname in $scope.curNode)
             if (attrname != 'name' && attrname != 'tokenList' && attrname != 'lib')
                 ajaxReq[attrname] = $scope.curNode[attrname];
-        localStorage.setItem('curNode', JSON.stringify({
+        globalFuncs.localStorage.setItem('curNode', JSON.stringify({
             key: key
         }));
         if (nodes.ensNodeTypes.indexOf($scope.curNode.type) == -1) $scope.tabNames.ens.cx = $scope.tabNames.ens.mew = false;
@@ -63,7 +63,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         return $scope.Validator.isValidURL(nodeUrl);
     }
     $scope.setCurNodeFromStorage = function() {
-        var node = localStorage.getItem('curNode');
+        var node = globalFuncs.localStorage.getItem('curNode', null);
         if (node == null) {
             $scope.changeNode($scope.defaultNodeKey);
         } else {
@@ -96,7 +96,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         for (var key in $scope.nodeList) {
             if (key.indexOf("cus_") != -1) delete $scope.nodeList[key];
         }
-        var localNodes = localStorage.getItem('localNodes');
+        var localNodes = globalFuncs.localStorage.getItem('localNodes',null);
         if (localNodes) {
             localNodes = JSON.parse(localNodes);
             for (var i = 0; i < localNodes.length; i++) $scope.addCustomNodeToList(localNodes[i]);
@@ -117,23 +117,23 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
             return;
         }
         var customNode = $scope.customNode;
-        var localNodes = localStorage.getItem('localNodes');
+        var localNodes = globalFuncs.localStorage.getItem('localNodes', null);
         localNodes = !localNodes ? [] : JSON.parse(localNodes);
         localNodes.push(customNode);
         $scope.addCustomNodeToList(customNode);
         $scope.changeNode('cus_' + customNode.options + '_' + ($scope.customNodeCount - 1));
-        localStorage.setItem("localNodes", JSON.stringify(localNodes));
+        globalFuncs.localStorage.setItem("localNodes", JSON.stringify(localNodes));
         $scope.customNodeModal.close();
         $scope.customNode = { options: 'eth', name: '', url: '', port: '', httpBasicAuth: null, eip155: false, chainId: '' };
     }
 
     $scope.removeNodeFromLocal = function(localNodeName) {
-        var localNodes = localStorage.getItem('localNodes');
+        var localNodes = globalFuncs.localStorage.getItem('localNodes', null);
         localNodes = !localNodes ? [] : JSON.parse(localNodes);
         for (var i = 0; i < localNodes.length; i++) {
             if (localNodes[i].name + ':' + localNodes[i].options == localNodeName) localNodes.splice(i, 1);
         }
-        localStorage.setItem('localNodes', JSON.stringify(localNodes));
+        globalFuncs.localStorage.setItem('localNodes', JSON.stringify(localNodes));
         $scope.getCustomNodesFromStorage();
         $scope.setCurNodeFromStorage();
     }
@@ -210,14 +210,14 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         $scope.curLang = value;
         $scope.setArrowVisibility();
         $scope.dropdown = false;
-        localStorage.setItem('language', JSON.stringify({
+        globalFuncs.localStorage.setItem('language', JSON.stringify({
             key: key,
             value: value
         }));
         globalFuncs.curLang = key;
     }
     $scope.setLanguageFromStorage = function() {
-        var lang = localStorage.getItem('language');
+        var lang = globalFuncs.localStorage.getItem('language', null);
         if (lang == null) lang = "{\"key\":\"en\",\"value\":\"English\"}";
         lang = JSON.parse(lang);
         var key = globalFuncs.stripTags(lang.key);

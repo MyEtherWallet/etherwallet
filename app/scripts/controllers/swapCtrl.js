@@ -94,17 +94,17 @@ var swapCtrl = function($scope, $sce, walletService) {
         return tempArr;
     }
     var isStorageOrderExists = function() {
-        var order = localStorage.getItem(lStorageKey);
+        var order = globalFuncs.localStorage.getItem(lStorageKey, null);
         return order && $scope.Validator.isJSON(order);
     }
     var setOrderFromStorage = function() {
-        var order = JSON.parse(localStorage.getItem(lStorageKey));
+        var order = JSON.parse(globalFuncs.localStorage.getItem(lStorageKey, null));
         $scope.orderResult = order;
         $scope.swapOrder = order.swapOrder;
         processOrder();
     }
     var saveOrderToStorage = function(order) {
-        localStorage.setItem(lStorageKey, JSON.stringify(order));
+        globalFuncs.localStorage.setItem(lStorageKey, JSON.stringify(order));
     }
     var processOrder = function() {
         var orderResult = $scope.orderResult;
@@ -210,7 +210,7 @@ var swapCtrl = function($scope, $sce, walletService) {
         }
     }
     $scope.newSwap = function() {
-        localStorage.setItem(lStorageKey, '');
+        globalFuncs.localStorage.setItem(lStorageKey, '');
         initValues();
     }
     initValues();

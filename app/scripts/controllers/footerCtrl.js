@@ -14,13 +14,13 @@ var footerCtrl = function($scope, globalService) {
 
     $scope.curLang = globalFuncs.curLang;
     $scope.gasChanged = function() {
-        localStorage.setItem(gasPriceKey, $scope.gas.value);
+        globalFuncs.localStorage.setItem(gasPriceKey, $scope.gas.value);
         ethFuncs.gasAdjustment = $scope.gas.value;
     }
     var setGasValues = function() {
         $scope.gas = {
             curVal: 21,
-            value: localStorage.getItem(gasPriceKey) ? parseInt(localStorage.getItem(gasPriceKey)) : 21,
+            value: globalFuncs.localStorage.getItem(gasPriceKey, null) ? parseInt(globalFuncs.localStorage.getItem(gasPriceKey)) : 21,
             max: 50,
             min: 1
         }
