@@ -80,11 +80,11 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.wallet.setTokens();
         if ($scope.parentTxConfig) {
             var setTxObj = function() {
-                $scope.tx.to = $scope.parentTxConfig.to;
+                $scope.addressDrtv.ensAddressField = $scope.parentTxConfig.to;
                 $scope.tx.value = $scope.parentTxConfig.value;
                 $scope.tx.sendMode = $scope.parentTxConfig.sendMode ? $scope.parentTxConfig.sendMode : 'ether';
                 $scope.tx.tokenSymbol = $scope.parentTxConfig.tokenSymbol ? $scope.parentTxConfig.tokenSymbol : '';
-                $scope.tx.readOnly = $scope.parentTxConfig.readOnly ? $scope.parentTxConfig.readOnly : false;
+                $scope.tx.readOnly = $scope.addressDrtv.readOnly = $scope.parentTxConfig.readOnly ? $scope.parentTxConfig.readOnly : false;
             }
             $scope.$watch('parentTxConfig', function() {
                 setTxObj();
