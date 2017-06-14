@@ -224,7 +224,7 @@ globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
 }
 globalFuncs.localStorage = {
         isAvailable: function() {
-            return localStorage != null;
+            return typeof localStorage != "undefined";
         },
         setItem: function(key, value) {
             if (this.isAvailable()) {
