@@ -32,7 +32,7 @@ var walletGenCtrl = function($scope) {
     }
     $scope.printQRCode = function() {
         globalFuncs.printPaperWallets(JSON.stringify([{
-            address: $scope.wallet.getAddressString(),
+            address: $scope.wallet.getChecksumAddressString(),
             private: $scope.wallet.getPrivateKeyString()
         }]));
     }

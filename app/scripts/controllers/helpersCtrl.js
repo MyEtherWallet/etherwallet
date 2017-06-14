@@ -77,7 +77,7 @@ var helpersCtrl = function($scope) {
 
   $scope.getShaBid = function() {
     if ($scope.ensLabelHash && $scope.ensAddress && $scope.bidWei && $scope.ensSecretHash) {
-      ENS.shaBid($scope.ensLabelHash, $scope.ensAddress, $scope.bidWei, $scope.ensSecretHash, function(data) {
+      ENS.shaBid($scope.ensLabelHash, $scope.ensAddress.toLowerCase(), $scope.bidWei, $scope.ensSecretHash, function(data) {
         $scope.shaBid = ENS.getNewBidData(data.data)
       });
     } else {
