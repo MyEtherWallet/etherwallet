@@ -10,10 +10,10 @@
         <input name="password"
              class="form-control"
              type="{{showPass && 'password' || 'text'}}"
-             placeholder="{{ 'GEN_Placeholder_1' | translate }}"
+             placeholder="{{'GEN_Placeholder_1' | translate }}"
              ng-model="password"
              ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"
-             aria-label="{{ 'GEN_Label_1' |translate}}"/>
+             aria-label="{{'GEN_Label_1' |translate}}"/>
         <span tabindex="0" aria-label="make password visible" role="button" class="input-group-addon eye" ng-click="showPass=!showPass"></span>
       </div>
       <a tabindex="0" role="button" class="btn btn-primary" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
