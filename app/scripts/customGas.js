@@ -23,6 +23,13 @@ module.exports = [
   msg:        'DCORP. Ends June 30, 2017.'
 },
 {
+  // TenX PAY
+  to:         '0xd43d09ec1bc5e57c8f3d0c64020d403b04c7f783',
+  gasLimit:   130000,
+  data:       '',
+  msg:        'TenX PAY Token Sale. Start: June 24, 2017, 1pm UTC'
+},
+{
   // BANCOR
   to:         '0xBbc79794599b19274850492394004087cBf89710',
   gasLimit:   200000,
