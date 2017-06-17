@@ -155,30 +155,48 @@ var ensCtrl = function($scope, $sce, walletService) {
             $scope.notifier.danger(e.message);
         }
     }
-
-    $scope.openAndBidAuction = function() {
-        $scope.tx.gasLimit = $scope.gasLimitDefaults.startAuction;
+    var getShaBid = function(_bidObject, callback) {
+        ENS.shaBid(_bidObject.nameSHA3, _bidObject.owner, _bidObject.value, _bidObject.secretSHA3, function(data) {
+            if (data.error) callback(true, data.msg);
+            else callback(false, data.data);
+        });
+    }
+    var getBidObject = function() {
         var _objENS = $scope.objENS;
-        _objENS.registrationDate = new Date();
-        _objENS.registrationDate.setDate(_objENS.registrationDate.getDate() + 5);
-        ajaxReq.getTransactionData($scope.wallet.getAddressString(), function(data) {
-            if (data.error) $scope.notifier.danger(data.msg);
-            data = data.data;
-            $scope.tx.to = ENS.getAuctionAddress();
-            $scope.tx.data = ENS.getStartAuctionData(_objENS.name);
-            $scope.tx.value = 0;
-            var txData = uiFuncs.getTxData($scope);
-            txData.gasPrice = data.gasprice;
-            txData.nonce = data.nonce;
-            uiFuncs.generateTx(txData, function(rawTx) {
-                if (!rawTx.isError) {
-                    $scope.generatedTxs.push(rawTx.signedTx);
-                    $scope.bidAuction('0x' + new BigNumber(txData.nonce).plus(1).toString(16), txData.gasPrice)
-                } else {
-                    $scope.notifier.danger(rawTx.error);
-                }
-                updateScope();
-            });
+        var bidObject = {
+            name: _objENS.name,
+            nameSHA3: ENS.getSHA3(_objENS.name),
+            owner: $scope.wallet.getAddressString(),
+            value: etherUnits.toWei(_objENS.bidValue, 'ether'),
+            secret: _objENS.secret.trim(),
+            secretSHA3: ENS.getSHA3(_objENS.secret.trim())
+        }
+        return bidObject;
+    }
+    $scope.openAndBidAuction = function() {
+        $scope.tx.gasLimit = $scope.gasLimitDefaults.newBid;
+        var _objENS = $scope.objENS;
+        $scope.bidObject = getBidObject();
+        getShaBid($scope.bidObject, function(isError, data) {
+            if (isError) $scope.notifier.danger(data);
+            else {
+                var bidHash = data;
+                $scope.tx.data = ENS.getStartAndBidAuctionData($scope.objENS.name, bidHash);
+                $scope.tx.to = ENS.getAuctionAddress();
+                $scope.tx.value = _objENS.dValue;
+                var txData = uiFuncs.getTxData($scope);
+                txData.nonce = txData.gasPrice = null;
+                uiFuncs.generateTx(txData, function(rawTx) {
+                    if (!rawTx.isError) {
+                        $scope.generatedTxs.push(rawTx.signedTx);
+                        $scope.bidObject = JSON.stringify($scope.bidObject)
+                        $scope.ensConfirmModalModal.open();
+                    } else {
+                        $scope.notifier.danger(rawTx.error);
+                    }
+                    if (!$scope.$$phase) $scope.$apply();
+                });
+            }
         });
     }
     $scope.revealBid = function() {
@@ -237,18 +255,11 @@ var ensCtrl = function($scope, $sce, walletService) {
     $scope.bidAuction = function(nonce, gasPrice) {
         $scope.tx.gasLimit = $scope.gasLimitDefaults.newBid;
         var _objENS = $scope.objENS;
-        $scope.bidObject = {
-            name: _objENS.name,
-            nameSHA3: ENS.getSHA3(_objENS.name),
-            owner: $scope.wallet.getAddressString(),
-            value: etherUnits.toWei(_objENS.bidValue, 'ether'),
-            secret: _objENS.secret.trim(),
-            secretSHA3: ENS.getSHA3(_objENS.secret.trim())
-        }
-        ENS.shaBid($scope.bidObject.nameSHA3, $scope.bidObject.owner, $scope.bidObject.value, $scope.bidObject.secretSHA3, function(data) {
-            if (data.error) $scope.notifier.danger(data.msg);
+        $scope.bidObject = getBidObject();
+        getShaBid($scope.bidObject, function(isError, data) {
+            if (isError) $scope.notifier.danger(data);
             else {
-                var bidHash = data.data;
+                var bidHash = data;
                 $scope.tx.data = ENS.getNewBidData(bidHash);
                 $scope.tx.to = ENS.getAuctionAddress();
                 $scope.tx.value = _objENS.dValue;

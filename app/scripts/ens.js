@@ -153,6 +153,12 @@ ens.prototype.getStartAuctionData = function(name) {
     var funcABI = _this.auctionABI.startAuction;
     return _this.getDataString(funcABI, [name]);
 }
+ens.prototype.getStartAndBidAuctionData = function(name, sealedHash) {
+    var _this = this;
+    name = _this.getSHA3(ens.normalise(name));
+    var funcABI = _this.auctionABI.startAuctionsAndBid;
+    return _this.getDataString(funcABI, [[name],sealedHash]);
+}
 ens.prototype.getFinalizeAuctionData = function(name) {
     var _this = this;
     name = _this.getSHA3(ens.normalise(name));
