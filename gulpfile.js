@@ -21,7 +21,6 @@ const source       = require('vinyl-source-stream');
 const uglify       = require('gulp-uglify');
 const zip          = require('gulp-zip');
 const html2js      = require('html2js-browserify');
-const nocache        = require("nocache");
 
 const app          = './app/';
 const dist         = './dist/';
