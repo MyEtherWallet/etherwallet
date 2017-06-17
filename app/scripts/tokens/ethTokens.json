@@ -210,6 +210,12 @@
     "type":"default"
   },
   {
+    "address":"0xB97048628DB6B661D4C2aA833e95Dbe1A905B280",
+    "symbol":"PAY",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x8Ae4BF2C33a8e667de34B54938B0ccD03Eb8CC06",
     "symbol":"PTOY",
     "decimal":8,
