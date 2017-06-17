@@ -151,7 +151,7 @@ gulp.task('js-debug', function() {
 // Rebuild Static JS
 let js_srcFilesStatic = app + 'scripts/staticJS/to-compile-to-static/*.js';
 let js_destFolderStatic = app + 'scripts/staticJS/';
-let js_destFileStatic = 'ethernwallet-static.min.js';
+let js_destFileStatic = 'etherwallet-static.min.js';
 
 gulp.task('staticJS', function() {
     return gulp.src(js_srcFilesStatic)
