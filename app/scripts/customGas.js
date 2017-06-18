@@ -37,11 +37,11 @@ module.exports = [
   msg:        'Bancor. The sale has ended. Please do not send anymore. The network is borked enough as it is.'
 },
 {
-  // SuperDao
-  to:         '0x0000',
-  gasLimit:   200000,
+  // FAKE STATUS
+  to:         '0xc9f32ce1127e44c51cbd182d6364f3d707fd0d47',
+  gasLimit:   -1,
   data:       '',
-  msg:        'SuperDAO. Starts June 13, 2017.'
+  msg:        'DO NOT SEND. THIS IS NOT THE ADDRESS FOR STATUS.'
 },
 {
   // SONM
