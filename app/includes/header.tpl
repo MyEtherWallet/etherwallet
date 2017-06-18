@@ -31,7 +31,7 @@
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
   @@if (site === 'cx' ) {
-    <div class="small announcement annoucement-warning" target="_blank">
+    <div class="small announcement annoucement-warning" target="_blank" rel="noopener">
       <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
     </div>
   }

@@ -34,7 +34,7 @@
       <li>Unlock the owner's account.</li>
       <li>Click <code>WRITE</code>.</li>
       <li>Generate and send this transaction &ndash; leave "Amount to Send" as <strong>0</strong></li>
-      <li><a href="https://etherscan.io/tx/0x60eec50b492375bce25684f806599873b7f682e1ba504c8bed7cc90c33368118" target="_blank">TX should look like this.</a></li>
+      <li><a href="https://etherscan.io/tx/0x60eec50b492375bce25684f806599873b7f682e1ba504c8bed7cc90c33368118" target="_blank" rel="noopener">TX should look like this.</a></li>
     </ol>
   </div>
 

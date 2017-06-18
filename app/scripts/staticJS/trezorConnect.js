@@ -29,7 +29,7 @@ var POPUP_URL = window.TREZOR_POPUP_URL || 'https://connect.trezor.io/1/popup/po
 var POPUP_PATH = window.TREZOR_POPUP_PATH || 'https://connect.trezor.io/1/';
 var POPUP_ORIGIN = window.TREZOR_POPUP_ORIGIN || 'https://connect.trezor.io';
 
-var INSIGHT_URLS = window.TREZOR_INSIGHT_URLS || 
+var INSIGHT_URLS = window.TREZOR_INSIGHT_URLS ||
     [
         'https://bitcore1.trezor.io/api/',
         'https://bitcore3.trezor.io/api/',
@@ -290,7 +290,7 @@ function TrezorConnect() {
     /**
       * Sign a message
       *
-      * @param {string|array} path  
+      * @param {string|array} path
       * @param {string} message to sign (ascii)
       * @param {string|function(SignMessageResult)} callback
       * @param {?string} opt_coin - (optional) name of coin (default Bitcoin)
@@ -466,7 +466,7 @@ function TrezorConnect() {
         + '  </a>'
         + '  <span id="trezorconnect-info">'
         + '    <a id="trezorconnect-infolink" href="https://www.buytrezor.com/"'
-        + '       target="_blank">What is TREZOR?</a>'
+        + '       target="_blank" rel="noopener">What is TREZOR?</a>'
         + '  </span>'
         + '</div>';
 

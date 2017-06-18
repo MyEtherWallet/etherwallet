@@ -8,11 +8,11 @@
         <ul>
           <li>
             <span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span>
-            <span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.
+            <span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.
           </li>
         </ul>
 
-        <a aria-label="Help Center" href="https://myetherwallet.groovehq.com/help_center" target="_blank"> Support </a>
+        <a aria-label="Help Center" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener"> Support </a>
 
         <a role="link" tabindex="0" href="https://www.myetherwallet.com/helpers.html"> Helpers &amp; ENS Debugging </a>
 
@@ -30,9 +30,9 @@
           <h5> <i aria-hidden="true">👫</i> You can support us by supporting our blockchain-family.</h5>
           <ul>
             <li>Consider using our affiliate links to...</li>
-            <li><a aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank">Swap ETH/BTC/EUR/CHF via Bity.com</a></li>
-            <li><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank">Buy a Ledger Nano S</a></li>
-            <li><a href="https://trezor.io/?a=myetherwallet.com" target="_blank">Buy a TREZOR</a></li>
+            <li><a aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener">Swap ETH/BTC/EUR/CHF via Bity.com</a></li>
+            <li><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Buy a Ledger Nano S</a></li>
+            <li><a href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">Buy a TREZOR</a></li>
           </ul>
         </p>
         <div>
@@ -58,7 +58,7 @@
         <div class="footer--gas">
           <p>
             <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
-            <strong><a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a></strong>
+            <strong><a href="http://ethgasstation.info/minerTable.php" target="_blank" rel="noopener">{{gas.value}} Gwei</a></strong>
           </p>
           <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
           <p style="padding: .25rem 0;" class="small col-xs-4">Not So Fast</p>
@@ -68,17 +68,17 @@
 
         <h5><i aria-hidden="true">🌎</i> On the Web</h5>
         <ul>
-          <li><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank">www.MyEtherWallet.com</a></li>
-          <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank">Github: MyEtherWallet.com</a></li>
-          <li><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank">Github: MyEtherWallet v4+</a></li>
+          <li><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener">www.MyEtherWallet.com</a></li>
+          <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener">Github: MyEtherWallet.com</a></li>
+          <li><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener">Github: MyEtherWallet v4+</a></li>
           <li>
-            <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank">Slack</a>
+            <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener">Slack</a>
             &middot;
-            <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank">Twitter</a>
+            <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank" rel="noopener">Twitter</a>
             &middot;
-            <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank">Facebook</a>
+            <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener">Facebook</a>
             &middot;
-            <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank">Reddit</a>
+            <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener">Reddit</a>
           </li>
         </ul>
 

@@ -305,7 +305,7 @@ ERROR_31                    : '잘못된 비밀 문구입니다. ',
 ERROR_32                    : '노드에 연결할 수 없습니다. 새로고침 하거나 도움말을 확인해주세요. ',
 ERROR_33                    : '입찰자의 주소와 잠금 해제된 지갑이 일치하지 않습니다. ',
 ERROR_34                    : '해당 이름이 문자열의 이름과 일치하지 않습니다. ',
-ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank"> More info</a>', // 35
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
 
 SUCCESS_1                   : '유효한 주소 ',
 SUCCESS_2                   : '지갑이 성공적으로 복호화 되었습니다. ',

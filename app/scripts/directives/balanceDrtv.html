@@ -51,12 +51,12 @@
     <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
     <ul class="account-info">
       <li ng-show="ajaxReq.type != 'CUS'">
-        <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank">
+        <a href="{{ajaxReq.blockExplorerAddr.replace('[[address]]', wallet.getAddressString())}}" target="_blank" rel="noopener">
           {{ajaxReq.type}} ({{ajaxReq.blockExplorerTX.replace('/tx/[[txHash]]', '')}})
         </a>
       </li>
       <li>
-        <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank"> Tokens (Ethplorer.io) </a>
+        <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener"> Tokens (Ethplorer.io) </a>
       </li>
     </ul>
   </div>
@@ -70,7 +70,7 @@
       <li><span class="mono wrap">{{wallet.gbpBalance | currency:"£"}}</span> GBP</li>
       <li><span class="mono wrap">{{wallet.chfBalance | currency:" "}}</span> CHF</li>
     </ul>
-    <a target="_blank" ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-xs">Swap via Bity</a>
+    <a target="_blank" rel="noopener" ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-xs">Swap via Bity</a>
   </div>
 
 </aside>

@@ -155,7 +155,7 @@ var swapCtrl = function($scope, $sce, walletService) {
                             orderResult.progress.bar = getProgressBarArr(5, 5);
                             orderResult.progress.showTimeRem = false;
                             var url = orderResult.output.currency == 'BTC' ? bity.btcExplorer.replace("[[txHash]]", data.output.reference) : bity.ethExplorer.replace("[[txHash]]", data.output.reference)
-                            var bExStr = "<a href='" + url + "' target='_blank'> View your transaction </a>";
+                            var bExStr = "<a href='" + url + "' target='_blank' rel='noopener'> View your transaction </a>";
                             $scope.notifier.success(globalFuncs.successMsgs[2] + data.output.reference + "<br />" + bExStr);
                             clearInterval(progressCheck);
                             clearInterval(timeRem);

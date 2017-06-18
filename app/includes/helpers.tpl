@@ -187,7 +187,7 @@
 
   <br /><br /><br />
 
-  <h1> "SHA3" (Keccak-256) It! <small><a href="https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use" target="_blank">yooo... sha3 !== Keccak-256?!</a></small></h1>
+  <h1> "SHA3" (Keccak-256) It! <small><a href="https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use" target="_blank" rel="noopener">yooo... sha3 !== Keccak-256?!</a></small></h1>
 
   <div class="form-group">
     <label> Input </label>

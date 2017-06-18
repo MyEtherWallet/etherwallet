@@ -140,11 +140,11 @@
         <li><strong>{{btcBalance}}</strong> BTC</li>
       </ul>
 
-      <a target="_blank" ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-xs">Swap via Bity</a>
+      <a ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-xs">Swap via Bity</a>
 
       <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
       <ul class="account-info">
-        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
+        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
     </div>
 

@@ -21,8 +21,8 @@
 
     <section class="block--help">
       <ul>
-        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-create-a-new-wallet" target="_blank">How to create a wallet</a></strong></li>
-        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443" target="_blank">Getting Started</a></strong></li>
+        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-create-a-new-wallet" target="_blank" rel="noopener">How to create a wallet</a></strong></li>
+        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443" target="_blank" rel="noopener">Getting Started</a></strong></li>
       </ul>
 
       <h2>Ledger &amp; TREZOR?</h2>
@@ -50,14 +50,14 @@
          aria-label="{{'x_Download'|translate}} {{'x_Keystore'|translate}}"
          aria-describedby="x_KeystoreDesc"
          ng-click="downloaded()"
-         target="_blank">
+         target="_blank" rel="noopener">
         <span translate="x_Download"> DOWNLOAD </span> <span translate="x_Keystore2"> Keystore File (UTC / JSON) </span>
       </a>
       <br />
       <br /><br />
       <div class="alert alert-danger" style="display: inline-block; margin-top: 4rem;">
         <p>This is your Keystore file. It contains your encrypted private key. Without it, you cannot access your ETH or Tokens.</p>
-        <h6><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank"> You are responsible for the safety and security of your private key. </a></h6>
+        <h6><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank" rel="noopener"> You are responsible for the safety and security of your private key. </a></h6>
         <p> Keep it safe </p>
         <p> Make a backup </p>
         <p> Don't share it with anyone </p>
@@ -69,8 +69,8 @@
 
     <section class="block--help">
       <ul>
-        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank"><strong>How to back up your wallet</strong></a></li>
-        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank"><strong>What are these Different Formats?</a></strong></li>
+        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-save-slash-backup-my-wallet" target="_blank" rel="noopener"><strong>How to back up your wallet</strong></a></li>
+        <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank" rel="noopener"><strong>What are these Different Formats?</a></strong></li>
       </ul>
 
       <h2> Not Downloading a File? </h2>
@@ -124,15 +124,15 @@
 
     <section class="block--help">
       <ul>
-        <li><strong><a href="hhttps://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank"><strong>Preventing loss &amp; theft of your funds.</strong></a></li>
-        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank">What are these Different Formats?</a></strong></li>
+        <li><strong><a href="hhttps://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds" target="_blank" rel="noopener"><strong>Preventing loss &amp; theft of your funds.</strong></a></li>
+        <li><strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-are-the-different-formats-of-a-private-key" target="_blank" rel="noopener">What are these Different Formats?</a></strong></li>
       </ul>
 
       <h2> Why Should I? </h2>
       <ul>
         <li> To have a secondary backup. </li>
         <li> In case you ever forget your password. </li>
-        <li> <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-safely-slash-offline-slash-cold-storage-with-myetherwallet" target="_blank">Cold Storage</a> </li>
+        <li> <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-safely-slash-offline-slash-cold-storage-with-myetherwallet" target="_blank" rel="noopener">Cold Storage</a> </li>
       </ul>
 
       <h2> ProTip </h2>

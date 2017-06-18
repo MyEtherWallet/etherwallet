@@ -23,7 +23,7 @@
       <td>Resolved Address: </td>
       <td class="mono">{{objENS.resolvedAddress}}</td>
     </tr>
-    <tr><td colspan="2"><a href="https://etherscan.io/enslookup?q={{objENS.name}}.eth" target="_blank">{{objENS.name}}.eth on etherscan.io</a> </td></tr>
+    <tr><td colspan="2"><a href="https://etherscan.io/enslookup?q={{objENS.name}}.eth" target="_blank" rel="noopener">{{objENS.name}}.eth on etherscan.io</a> </td></tr>
     <tr><td></td><td></td></tr>
     <tr>
       <td>ENS - Public Resolver: </td>

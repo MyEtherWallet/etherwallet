@@ -49,9 +49,9 @@
         More Information
       </h6>
       <ul ng-show="ensMore">
-         <li>The auction for this registrar is a blind auction, and is described in <a href="https://github.com/ethereum/EIPs/issues/162" target="_blank">EIP162</a>. Basically, no one can see *anything* during the auction.</li>
-          <li><a href="http://docs.ens.domains/en/latest/userguide.html#registering-a-name-with-the-auction-registrar" target="_blank">ENS: Read the Docs</a></li>
-          <li><a href="https://medium.com/the-ethereum-name-service/announcing-the-ethereum-name-service-relaunch-date-4390af6dd9a2" target="_blank">Announcing the Ethereum Name Service Relaunch Date!</a></li>
+         <li>The auction for this registrar is a blind auction, and is described in <a href="https://github.com/ethereum/EIPs/issues/162" target="_blank" rel="noopener">EIP162</a>. Basically, no one can see *anything* during the auction.</li>
+          <li><a href="http://docs.ens.domains/en/latest/userguide.html#registering-a-name-with-the-auction-registrar" target="_blank" rel="noopener">ENS: Read the Docs</a></li>
+          <li><a href="https://medium.com/the-ethereum-name-service/announcing-the-ethereum-name-service-relaunch-date-4390af6dd9a2" target="_blank" rel="noopener">Announcing the Ethereum Name Service Relaunch Date!</a></li>
       </ul>
       <hr />
       <p class="text-danger"><strong>  Due to an overwhelming number of support requests regarding the ENS, we will NOT providing support to those who are attempting to start a name business (aka "domain squatting") via our free, open source service. </strong> If you are bidding on hundreds of names, brand names, or the entire human-readable dictionary, do not expect a response. If you are a typical user who wants few cool names, you're safe.</p>

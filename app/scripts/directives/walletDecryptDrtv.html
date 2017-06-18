@@ -20,7 +20,7 @@
       <span translate="x_ParityPhrase">Parity Phrase</span>
     </label>
     <label class="radio">
-      &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>: <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/parity-phrases-no-longer-supported" target="_blank">No longer supported</a>
+      &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>: <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/parity-phrases-no-longer-supported" target="_blank" rel="noopener">No longer supported</a>
     </label>
     <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">
       <input aria-flowto="aria5" type="radio" aria-label="Ledger Nano S hardware wallet" ng-model="walletType" value="ledger" />
@@ -154,13 +154,13 @@
       </ol>
       <div class="text-center">
         <p>Guides:<br />
-          <a href="http://support.ledgerwallet.com/knowledge_base/topics/how-to-use-myetherwallet-with-ledger" target="_blank">
+          <a href="http://support.ledgerwallet.com/knowledge_base/topics/how-to-use-myetherwallet-with-ledger" target="_blank" rel="noopener">
             How to use MyEtherWallet with your Nano S
           </a><br />
-          <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-secure-your-eth-tokens-augur-rep-dot-dot-dot-with-your-nano-s" target="_blank">
+          <a href="https://ledger.groovehq.com/knowledge_base/topics/how-to-secure-your-eth-tokens-augur-rep-dot-dot-dot-with-your-nano-s" target="_blank" rel="noopener">
             How to secure your tokens with your Nano S
           </a><br /><br />
-          <a tabindex="0" role="button" class="btn btn-default btn-xs" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank">
+          <a tabindex="0" role="button" class="btn btn-default btn-xs" href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">
             Don't have a Ledger? Buy one today.
           </a>
         </p>
@@ -186,10 +186,10 @@
       <br /><br />
       <div class="text-center">
         <p>Guide:<br />
-          <a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08#.n5fddxmdg" target="_blank">
+          <a href="https://blog.trezor.io/trezor-integration-with-myetherwallet-3e217a652e08#.n5fddxmdg" target="_blank" rel="noopener">
             How to use TREZOR with MyEtherWallet
           </a><br />
-          <a tabindex="0" role="button" class="btn btn-xs btn-default" href="https://trezor.io/?a=myetherwallet.com" target="_blank">
+          <a tabindex="0" role="button" class="btn btn-xs btn-default" href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">
             Don't have a TREZOR? Order one now.
           </a>
         </p>
@@ -388,7 +388,7 @@
               </td>
               <td> {{wallet.getBalance()}} {{nodeType}} </td>
               <td class="text-center">
-                <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" title="https://ethplorer.io/address/{{wallet.getAddressString()}}">
+                <a href="https://ethplorer.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener" title="https://ethplorer.io/address/{{wallet.getAddressString()}}">
                   <img src="images/icon-external-link.svg" title="https://ethplorer.io/address/{{wallet.getAddressString()}}" ng-click="removeTokenFromLocal(token.symbol)" ng-show="token.type!=='default'" />
               </td>
             </tr>

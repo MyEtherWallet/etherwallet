@@ -306,7 +306,7 @@ ERROR_31                    : 'Inserisci una frase segreta valida ',
 ERROR_32                    : 'Impossibile collegarsi al nodo. Aggiorna la pagina, prova con un altro nodo (angolo in alto a destra), controlla le impostazioni del firewall. Se si tratta di un nodo personalizzato, controlla la configurazione.', // 32
 ERROR_33                    : 'L\'indirizzo del portafoglio non corrisponde a quello del proprietario. ',
 ERROR_34                    : 'Il nome che stai provando a rivelare non combacia con quello che hai inserito. ',
-ERROR_35                    : 'L\'indirizzo inserito non ha un checksum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank"> Ulteriori informazioni</a>', // 35
+ERROR_35                    : 'L\'indirizzo inserito non ha un checksum. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> Ulteriori informazioni</a>', // 35
 
 SUCCESS_1                   : 'Indirizzo valido ',
 SUCCESS_2                   : 'Portafoglio decodificato correttamente ',
