@@ -60,7 +60,7 @@ globalFuncs.errorMsgs = [
     'Please enter a valid chain ID. ', // 25
     'Please enter a valid ABI. ', // 26
     'Minimum amount: 0.01. Max amount: ', // 27
-    'You need your Wallet File & Password to access this wallet in the future. ', // 28
+    'You need this `Keystore File + Password` or the `Private Key` (next page) to access this wallet in the future. ', // 28
     'Please enter a valid user and password. ', // 29
     'Please enter a valid name (7+ characters, limited punctuation) ', // 30
     'Please enter a valid secret phrase. ', // 31

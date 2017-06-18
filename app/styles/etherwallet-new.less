@@ -4,7 +4,7 @@
   margin-right: -(@cont-padding);
 }
 
-.block--wrap {
+.block__wrap {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -58,7 +58,7 @@
 
 
 
-.block--main {
+.block__main {
   .block();
   text-align: left;
   padding: @space-md;
@@ -72,7 +72,7 @@
   }
 }
 
-.block--help {
+.block__help {
   .block();
   background-image: url(../images/icon-help-2.svg);
   background-size: 8rem;
@@ -115,18 +115,42 @@
   }
 }
 
-.center-h {
+.u-center-h {
   text-align: center;
 }
 
 // generate
-.gen--1 {
+.gen__1 {
   .input-group {
     max-width: 43rem;
     margin: @space auto;
   }
 }
 
+.gen__1--inner {
+  text-align: center;
+  h1   {  margin: @space   auto @space*2  }
+  h4   {  margin: @space*3 auto @space    }
+  p    {  margin: 0        0    @space*2  }
+  .btn {  margin: 0        auto @space*3  }
+}
+
+.gen__2 {
+}
+
+.gen__2--inner {
+  text-align: center;
+  h1     {  margin: @space   auto   }
+  > .btn {  margin: @space   auto 0 }
+  .warn  {  margin: @space*4 auto @space*2;   }
+}
+
+.gen__3--inner {
+  text-align: center;
+  h1     {  margin: @space*2   auto  @space }
+  > .btn,
+  > .form-control, { margin: 0 auto @space*3 }
+}
 
 // footer
 .footer {

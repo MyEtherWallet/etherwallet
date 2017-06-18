@@ -1,6 +1,6 @@
 <footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
 
-  <article class="block--wrap" style="max-width: 1780px; margin: auto;">
+  <article class="block__wrap" style="max-width: 1780px; margin: auto;">
 
       <section class="footer--left">
         <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>

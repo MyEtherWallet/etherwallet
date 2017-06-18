@@ -8,7 +8,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
 var tabs = {
   generateWallet: {
     id: 0,
-    name: "NAV_GenerateWallet",
+    name: "NAV_GenerateWallet_alt",
     url: "generate-wallet",
     mew: true,
     cx: false
