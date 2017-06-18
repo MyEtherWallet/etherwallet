@@ -177,6 +177,8 @@ var ensCtrl = function($scope, $sce, walletService) {
         $scope.tx.gasLimit = $scope.gasLimitDefaults.newBid;
         var _objENS = $scope.objENS;
         $scope.bidObject = getBidObject();
+        _objENS.registrationDate = new Date();
+        _objENS.registrationDate.setDate(_objENS.registrationDate.getDate() + 5);
         getShaBid($scope.bidObject, function(isError, data) {
             if (isError) $scope.notifier.danger(data);
             else {
