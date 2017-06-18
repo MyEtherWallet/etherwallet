@@ -266,25 +266,25 @@ uiFuncs.notifier = {
     },
     rebuildMessages: function() {
         if (Object.values(this.messages).length > 0) {
-          var types = Object.values(this.messages).map(function(message) { return message.type });
-          this.message = Object.values(this.messages).map(function(message) { return message.msg })
-                                                     .join("<br />");
-          this.setMostImportantClass(types);
-          this.open();
+            var types = Object.values(this.messages).map(function(message) { return message.type });
+            this.message = Object.values(this.messages).map(function(message) { return message.msg })
+                                                       .join("<br />");
+            this.setMostImportantClass(types);
+            this.open();
         } else {
-          this.close();
+            this.close();
         }
     },
     setMostImportantClass: function(types) {
-      if (types.indexOf('danger') > -1) {
-        this.class = 'alert-danger';
-      } else if (types.indexOf('warning') > -1) {
-        this.class = 'alert-warning';
-      } else if (types.indexOf('success') > -1) {
-        this.class = 'alert-success';
-      } else {
-        this.class = '';
-      }
+        if (types.indexOf('danger') > -1) {
+            this.class = 'alert-danger';
+        } else if (types.indexOf('warning') > -1) {
+            this.class = 'alert-warning';
+        } else if (types.indexOf('success') > -1) {
+            this.class = 'alert-success';
+        } else {
+            this.class = '';
+        }
     }
 }
 module.exports = uiFuncs;
