@@ -41,7 +41,7 @@ module.exports = [
   to:         '0xc9f32ce1127e44c51cbd182d6364f3d707fd0d47',
   gasLimit:   -1,
   data:       '',
-  msg:        'DO NOT SEND. THIS IS NOT THE ADDRESS FOR STATUS.'
+  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR STATUS!!'
 },
 {
   // SONM
