@@ -214,11 +214,10 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
 }
 uiFuncs.notifier = {
     show: false,
-    isDanger: false,
+    messages: {},
     close: function() {
         this.show = false;
-        this.isDanger = false;
-        this.message = "";
+        this.messages = {};
         if (!this.scope.$$phase) this.scope.$apply()
     },
     open: function() {
@@ -235,42 +234,57 @@ uiFuncs.notifier = {
         return globalFuncs.getEthNodeMsg(msg);
     },
     warning: function(msg) {
-        this.setClassAndOpen("alert-warning", msg);
+        this.addMessage("warning", msg);
     },
     info: function(msg) {
-        this.setClassAndOpen("", msg);
-        this.setTimer();
+        this.addMessage("info", msg);
     },
     danger: function(msg) {
         msg = msg.message ? msg.message : msg;
         msg = this.overrideMsg(msg);
-        this.isDanger = true;
-        this.setClassAndOpen("alert-danger", msg);
-        this.cancelTimer();
+
+        this.addMessage("danger", msg, 0);
     },
     success: function(msg) {
-        this.setClassAndOpen("alert-success", msg);
+        this.addMessage("success", msg);
     },
-    setClassAndOpen: function(_class, msg) {
-        this.class = _class;
-        var _temp = this.message != "" ? this.message + "</br>" : "";
-        this.message = msg.message ? this.sce.trustAsHtml(msg.message) : this.sce.trustAsHtml(msg);
-        this.message = _temp + this.message;
-        this.open();
+    addMessage: function(type, msg, duration) {
+        if (duration == undefined)
+            duration = 5000;
+        // Save all messages by unique id for removal
+        var id = Date.now();
+        this.messages[id] = {type: type, msg: msg};
+        var that = this;
+        if (duration > 0) { // Support permanent messages
+            setTimeout(function() {
+                // Remove the message and rebuild the UI
+                delete that.messages[id];
+                that.rebuildMessages();
+            }, duration);
+        }
+        this.rebuildMessages();
     },
-    setTimer: function() {
-        var _this = this;
-        if (_this.isDanger) return;
-        clearTimeout(_this.timer);
-        _this.timer = setTimeout(function() {
-            _this.show = false;
-            _this.message = "";
-            if (!_this.scope.$$phase) _this.scope.$apply();
-        }, 5000);
+    rebuildMessages: function() {
+        if (Object.values(this.messages).length > 0) {
+          var types = Object.values(this.messages).map(function(message) { return message.type });
+          this.message = Object.values(this.messages).map(function(message) { return message.msg })
+                                                     .join("<br />");
+          this.setMostImportantClass(types);
+          this.open();
+        } else {
+          this.close();
+        }
     },
-    cancelTimer: function() {
-        var _this = this;
-        clearTimeout(_this.timer);
+    setMostImportantClass: function(types) {
+      if (types.indexOf('danger') > -1) {
+        this.class = 'alert-danger';
+      } else if (types.indexOf('warning') > -1) {
+        this.class = 'alert-warning';
+      } else if (types.indexOf('success') > -1) {
+        this.class = 'alert-success';
+      } else {
+        this.class = '';
+      }
     }
 }
 module.exports = uiFuncs;
