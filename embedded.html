@@ -55,10 +55,10 @@
         <input name="password"
              class="form-control"
              type="{{showPass && 'password' || 'text'}}"
-             placeholder="{{ 'GEN_Placeholder_1' | translate }}"
+             placeholder="{{'GEN_Placeholder_1' | translate }}"
              ng-model="password"
              ng-class="isStrongPass() ? 'is-valid' : 'is-invalid'"
-             aria-label="{{ 'GEN_Label_1' |translate}}"/>
+             aria-label="{{'GEN_Label_1' |translate}}"/>
         <span tabindex="0" aria-label="make password visible" role="button" class="input-group-addon eye" ng-click="showPass=!showPass"></span>
       </div>
       <a tabindex="0" role="button" class="btn btn-primary" func="generateSingleWallet" ng-click="genNewWallet()" translate="NAV_GenerateWallet">Generate Wallet</a>
@@ -71,7 +71,7 @@
       </ul>
 
       <h2>Ledger &amp; TREZOR?</h2>
-      <ul><li>Use your <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">Ledger or TREZOR</a> to access your account.</a> Your device <em>is</em> your wallet. </li></ul>
+      <ul><li>Use your <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">Ledger or TREZOR</a> to access your account. Your device <em>is</em> your wallet. </li></ul>
 
       <h2>Jaxx / Metamask?</h2>
       <ul><li>Use your <a ng-click="globalService.currentTab=globalService.tabs.sendTransaction.id">Mnemonic Phrase</a> to access your account.</li></ul>
@@ -122,7 +122,9 @@
       <ul>
         <li> Right click &amp; select 'Download as...' or 'Save as...'.</li>
         <li> Use the following as the file name: </li>
-        <li><input class="form-control input-sm" type="text" value="{{encFileName}}" readonly /></li>
+        <li><label>
+            <input class="form-control input-sm" type="text" value="{{encFileName}}" readonly/>
+          </label></li>
       </ul>
 
       <h2> MyEtherWallet <strong>cannot</strong> recover...</h2>
@@ -147,7 +149,11 @@
 
       <div class="form-group">
         <h4 translate="x_PrivKey">Private Key (unencrypted)</h4>
-        <input aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc" value="{{wallet.getPrivateKeyString()}}" class="form-control" type="text" readonly="readonly" style="max-width: 50rem;margin: auto;" />
+        <label>
+          <input aria-label="{{'x_PrivKey'|translate}}" aria-describedby="x_PrivKeyDesc"
+                 value="{{wallet.getPrivateKeyString()}}" class="form-control" type="text" readonly="readonly"
+                 style="max-width: 50rem;margin: auto;"/>
+        </label>
       </div>
 
       <div class="form-group">
