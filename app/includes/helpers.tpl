@@ -284,3 +284,28 @@
   </table>
   </p>
 </div>
+
+
+  <br /><br /><br />
+
+  <h1> Mistyped Private Key </h1>
+
+  <div class="form-group">
+    <label> Private Key that isn't unlocking correct address</label>
+    <input class="form-control" type="text" ng-model="mistypedPK"  />
+  </div>
+  <div class="form-group">
+    <label> Address You Sent To </label>
+    <input class="form-control" type="text" ng-model="mistypedAddr" />
+  </div>
+  <div class="form-group">
+    <label> Actual Private Key </label>
+    <input class="form-control" type="text" ng-model="actualPK" readonly />
+    <ol>
+      <li class="text-danger">Consider yourself very, very lucky.</li>
+      <li> Now you need to create a new secure wallet and move all funds to it.</li>
+      <li>In order to prevent the same thing from happening, <strong> please make sure your address you are sending to matches the address on your paper wallet</strong></li>
+      <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-create-a-new-wallet" target="_blank" rel="noopener">Read this guide for more information.</a></li>
+      <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds?from_search=true" target="_blank" rel="noopener">Learn how to protect yourself and your funds.</a></li>
+    </ol>
+  </div>
