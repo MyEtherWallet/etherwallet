@@ -309,7 +309,7 @@ ERROR_35                    : 'Input address is not checksummed. <a href="https:
 
 SUCCESS_1                   : 'Geldig adres ',
 SUCCESS_2                   : 'Wallet succesvol ontsleuteld ',
-SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transactie verzonden. TX ID ',
+SUCCESS_3                   : 'Your TX was **broadcast to the network**. This does **not** mean your ETH/Tokens were sent successfully. (1) Click the link. (2) Be sure you can see your TX (that it was mined). (3) Check that there are no gas or bad instruction errors.   TX ID:  ', //'Transactie verzonden. TX ID ',
 SUCCESS_4                   : 'Je Wallet is succesvol toegevoegd ',
 SUCCESS_5                   : 'Bestand Geselecteerd ',
 SUCCESS_6                   : 'You are successfully connected ',

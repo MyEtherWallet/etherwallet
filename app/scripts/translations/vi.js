@@ -319,7 +319,7 @@ ERROR_35                    : 'Input address is not checksummed. <a href="https:
 
 SUCCESS_1                   : 'Địa Chỉ Hợp Lệ ',
 SUCCESS_2                   : 'Ví đã được giải mã thành công ',
-SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Giao dịch đã gửi đi, TX ID: ',
+SUCCESS_3                   : 'Your TX was **broadcast to the network**. This does **not** mean your ETH/Tokens were sent successfully. (1) Click the link. (2) Be sure you can see your TX (that it was mined). (3) Check that there are no gas or bad instruction errors.   TX ID:  ', //'Giao dịch đã gửi đi, TX ID: ',
 SUCCESS_4                   : 'Ví của bạn đã được thêm thành công: ',
 SUCCESS_5                   : 'Tập Tin Được Chọn ',
 SUCCESS_6                   : 'You are successfully connected ',
