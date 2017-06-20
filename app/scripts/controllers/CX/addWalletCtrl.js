@@ -117,14 +117,14 @@ var addWalletCtrl = function($scope, $sce) {
 		if ($scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && $scope.addAccount.password.length > 8) $scope[shwbtn] = true;
 		else $scope[shwbtn] = false;
 		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope.notifier.danger(globalFuncs.errorMsgs[13]);
-		
+
 	}
 	$scope.watchOnlyChange = function() {
 		if ($scope.addAccount.address != "" && $scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && ethFuncs.validateEtherAddress($scope.addAccount.address)) $scope.showBtnAdd = true;
 		else $scope.showBtnAdd = false;
 		if ($scope.addAccount.address != "" && !ethFuncs.validateEtherAddress($scope.addAccount.address)) $scope.notifier.danger(globalFuncs.errorMsgs[5]);
 		else if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope.notifier.danger(globalFuncs.errorMsgs[13]);
-		
+
 	}
 	$scope.addWatchOnly = function() {
 		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
@@ -151,6 +151,18 @@ var addWalletCtrl = function($scope, $sce) {
 		$scope.showBtnGen = $scope.showBtnUnlock = $scope.showBtnAdd = $scope.showAddWallet = false;
 		$scope.addNewNick = $scope.addNewPass = "";
 		$scope.addWalletStats = "";
+
+		$scope.addAccount = {
+			address: "",
+			nickName: "",
+			encStr: "",
+			password: ""
+		};
+		$scope.requireFPass = false;
+		$scope.fileContent = null;
+		$scope.manualprivkey = null;
+		$scope.requirePPass = false;
+		$scope.manualmnemonic = null;
 	});
 	$scope.addWalletToStorage = function() {
 		if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
@@ -188,6 +200,7 @@ var addWalletCtrl = function($scope, $sce) {
 		$scope.addAccount.address = wallet.getAddressString();
 		$scope.addWalletToStorage('addWalletStats');
 	}
+
 	$scope.setBalance = function() {
 		ajaxReq.getBalance($scope.wallet.getAddressString(), function(data) {
 			if (data.error) {
@@ -201,6 +214,19 @@ var addWalletCtrl = function($scope, $sce) {
 				});
 			}
 		});
+	}
+
+	$scope.onHDDPathChange = function(password = $scope.manualmnemonic) {
+			$scope.HDWallet.numWallets = 0;
+			if ($scope.walletType == 'pastemnemonic') {
+					$scope.HDWallet.hdk = hd.HDKey.fromMasterSeed(hd.bip39.mnemonicToSeed($scope.manualmnemonic.trim(), password));
+					$scope.setHDAddresses($scope.HDWallet.numWallets, $scope.HDWallet.walletsPerDialog);
+			} else if ($scope.walletType == 'ledger') {
+					$scope.scanLedger();
+			} else if ($scope.walletType == 'trezor') {
+					$scope.scanTrezor();
+			}
+
 	}
 };
 module.exports = addWalletCtrl;
