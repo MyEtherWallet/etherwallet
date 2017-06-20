@@ -7,7 +7,6 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.fileContent = "";
     $scope.Validator = Validator;
     $scope.isSSL = window.location.protocol == 'https:';
-    $scope.isChrome = true;
     $scope.ajaxReq = ajaxReq;
     $scope.nodeType = $scope.ajaxReq.type;
     $scope.HDWallet = {

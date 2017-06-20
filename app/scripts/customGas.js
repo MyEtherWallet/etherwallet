@@ -10,12 +10,6 @@
 
 module.exports = [
 {
-  to:         '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
-  gasLimit:   21000,
-  data:       '',
-  msg:        'Thank you for donating to MyEtherWallet. TO THE MOON!'
-},
-{
   // DCORP
   to:         '0xD42433A8a0A1CEB73c8ff4e432463e2ee109039d',
   gasLimit:   100000,
@@ -23,39 +17,25 @@ module.exports = [
   msg:        'DCORP. Ends June 30, 2017.'
 },
 {
-  // TenX PAY
-  to:         '0xd43d09ec1bc5e57c8f3d0c64020d403b04c7f783',
-  gasLimit:   130000,
-  data:       '',
-  msg:        'TenX PAY Token Sale. Start: June 24, 2017, 1pm UTC'
-},
-{
-  // BANCOR
-  to:         '0xBbc79794599b19274850492394004087cBf89710',
+  // Status
+  to:         '0x55d34b686aa8C04921397c5807DB9ECEdba00a4c',
   gasLimit:   200000,
   data:       '',
-  msg:        'Bancor. The sale has ended. Please do not send anymore. The network is borked enough as it is.'
-},
-{
-  // FAKE STATUS
-  to:         '0xc9f32ce1127e44c51cbd182d6364f3d707fd0d47',
-  gasLimit:   -1,
-  data:       '',
-  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR STATUS!!'
-},
-{
-  // SONM
-  to:         '0x0000',
-  gasLimit:   200000,
-  data:       '',
-  msg:        'SuperDAO. Starts June 13, 2017.'
+  msg:        'Status.im https://contribute.status.im ______________________________________________________________________________________________________________________ STARTS:_June 20th 2pm GMT @ Block 3903900______________________________________________________________________ GAS_PRICE:_50 GWEI. Change via slider in the footer_____________________________________________________________________ GAS_LIMIT:_200000___________________________________________________________________________________________________ NOT_LOADING:_Change the node in upper right corner to ETH (Etherscan.io)_____________________________________________ SUPPORT:_https://www.reddit.com/r/statusim/   https://twitter.com/ethstatus'
 },
 {
   // Status
   to:         '0x0000',
   gasLimit:   200000,
   data:       '',
-  msg:        'Status. Starts June 17, 2017.'
+  msg:        'Fun Fair. Starts June 22, 2017'
+},
+{
+  // TenX PAY
+  to:         '0xd43d09ec1bc5e57c8f3d0c64020d403b04c7f783',
+  gasLimit:   130000,
+  data:       '',
+  msg:        'TenX PAY Token Sale. Start: June 24, 2017, 1pm UTC'
 },
 {
   // OpenANX
@@ -91,6 +71,13 @@ module.exports = [
   gasLimit:   200000,
   data:       '',
   msg:        'Moeda. Ends at block 4,111,557.'
-}
+},
+{
+  // FAKE STATUS
+  to:         '0xc9f32ce1127e44c51cbd182d6364f3d707fd0d47',
+  gasLimit:   -1,
+  data:       '',
+  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR STATUS!!'
+},
 ]
 

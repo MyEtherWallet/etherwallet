@@ -55,7 +55,7 @@
     <div class="clearfix form-group">
       <div class="well" ng-show="wallet!=null && customGasMsg!=''">
         <p><small>A message from {{tx.to}}</small></p>
-        <p><strong> {{customGasMsg}} </strong></p>
+        <p ng-bind-html="customGasMsg"></p>
       </div>
     </div>
 

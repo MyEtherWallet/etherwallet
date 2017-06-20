@@ -31,6 +31,7 @@
           <td>{{token.getSymbol()}} </td>
         </tr>
       </table>
+      <a class="btn btn-default btn-xs" ng-click="wallet.setTokens(); tokensLoaded=true" ng-hide="tokensLoaded">Load Tokens Balances</a>
       <a class="btn btn-default btn-xs" ng-click="tokenVisibility='shown'" ng-show="tokenVisibility=='hidden'">Show All Tokens</a>
       <a class="btn btn-default btn-xs" ng-click="tokenVisibility='hidden'" ng-show="tokenVisibility=='shown'">Hide Tokens</a>
       <a class="btn btn-default btn-xs" ng-click="customTokenField=!customTokenField"><span translate="SEND_custom"translate="SEND_custom">Add Custom Token</span></a>

@@ -320,7 +320,7 @@ ERROR_35                    : 'Input address is not checksummed. <a href="https:
 
 SUCCESS_1                   : '有效地址 ',
 SUCCESS_2                   : '钱包解密成功 ',
-SUCCESS_3                   : 'Your TX was **broadcast to the network**. This does **not** mean your ETH/Tokens were sent successfully. (1) Click the link. (2) Be sure you can see your TX (that it was mined). (3) Check that there are no gas or bad instruction errors.   TX ID: ', //'Your TX was **broadcast to the network**. This does **not** mean your ETH/Tokens were sent successfully. (1) Click the link. (2) Be sure you can see your TX (that it was mined). (3) Check that there are no gas or bad instruction errors.   TX ID:  ', //
+SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. (2) Refresh until you can see your TX details. (3) Check that there are no red ( ! ) errors. (4) If no transaction details show after 10 minutes & you sent with < 50 GWEI gas, you can try sending again.  TX ID: ', //'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. (2) Refresh until you can see your TX details. (3) Check that there are no red ( ! ) errors. (4) If no transaction details show after 10 minutes & you sent with < 50 GWEI gas, you can try sending again.  TX ID:  ', //
 SUCCESS_4                   : '成功添加你的钱包： ',
 SUCCESS_5                   : '选择的文件： ',
 SUCCESS_6                   : 'You are successfully connected ',
