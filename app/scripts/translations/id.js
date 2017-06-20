@@ -318,7 +318,7 @@ ERROR_35                    : 'Input address is not checksummed. <a href="https:
 
 SUCCESS_1                   : 'Alamat valid ',
 SUCCESS_2                   : 'Dompet telah ter-dekripsi ',
-SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. (2) Refresh until you can see your TX details. (3) Check that there are no red ( ! ) errors. (4) If no transaction details show after 10 minutes & you sent with < 50 GWEI gas, you can try sending again.  TX ID:  ', //'Transaksi diajukan. TX ID ',
+SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. (2) Refresh until you can see your TX details. (3) Check that there are no red ( ! ) errors. (4) If no transaction details show after **3 HOURS** & please try sending again. TX ID:   ', //'Transaksi diajukan. TX ID ',
 SUCCESS_4                   : 'Dompet Anda telah ditambahkan ',
 SUCCESS_5                   : 'File Terpilih ',
 SUCCESS_6                   : 'You are successfully connected ',

@@ -310,7 +310,7 @@ ERROR_35                    : 'Input address is not checksummed. <a href="https:
 
 SUCCESS_1                   : '유효한 주소 ',
 SUCCESS_2                   : '지갑이 성공적으로 복호화 되었습니다. ',
-SUCCESS_3                   : '트랜잭션이 블록체인으로 공개됩니다. 트랜잭션 내역과 가스가 채굴되었는지 확인려면 클릭해주세요. 가스 또는 컨트랙트 실행 오류가 없는지 확인해주세요. TX ID : ', //'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. (2) Refresh until you can see your TX details. (3) Check that there are no red ( ! ) errors. (4) If no transaction details show after 10 minutes & you sent with < 50 GWEI gas, you can try sending again.  TX ID:  ', //
+SUCCESS_3                   : '트랜잭션이 블록체인으로 공개됩니다. 트랜잭션 내역과 가스가 채굴되었는지 확인려면 클릭해주세요. 가스 또는 컨트랙트 실행 오류가 없는지 확인해주세요. TX ID : ', //'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. (2) Refresh until you can see your TX details. (3) Check that there are no red ( ! ) errors. (4) If no transaction details show after **3 HOURS** & please try sending again. TX ID:   ', //
 SUCCESS_4                   : '지갑이 성공적으로 추가되었습니다. ',
 SUCCESS_5                   : '파일이 선택되었습니다. ',
 SUCCESS_6                   : '성공적으로 연결되었습니다. ',

@@ -31,11 +31,9 @@
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
 
-  <!--
     <div class="small announcement annoucement-warning">
-      <div class="container">A Token Creation Period (ICO) may cause delays in transactions today. <a href="https://www.google.com/search?q=what+time+is+it+gmt&oq=what+time+is+it+gmt" target="_blank" rel="noopener"> What time is it now? </a> <br /> If your TX is not urgent, we recommend waiting for faster &amp; cheaper TXs. You can also use a gas price of 50 GWEI, which you can adjust in the footer. Thank you for understanding. </div>
+      <div class="container">The #FOMO is Real. Breath. If you are trying to get in on Status.im, <strong> wait until BLOCK 3903900!</strong> <br /> If your TX is not urgent, we recommend NOT SENDING TODAY. Thank you for understanding. </div>
     </div>
-    -->
 
   @@if (site === 'cx' ) {
     <div class="small announcement annoucement-warning" target="_blank" rel="noopener">
