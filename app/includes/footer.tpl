@@ -54,9 +54,9 @@
 
       <section class="footer--righ">
         <div class="footer--gas">
-          <p ng-show="showBlocks" style="color: yellow; font-size: 26px;">Latest Block#: {{currentBlockNumber}}</p>
+          <p ng-show="showBlocks" >Latest Block#: {{currentBlockNumber}}</p>
           <p>
-            <span translate="OFFLINE_Step2_Label_3" style="color: yellow; font-size: 26px;">Gas Price</span>:
+            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
             <strong><a href="http://ethgasstation.info/minerTable.php" target="_blank" rel="noopener" style="color: yellow; font-size: 26px;">{{gas.value}} Gwei</a></strong>
           </p>
           <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
