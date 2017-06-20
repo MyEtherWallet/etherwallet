@@ -18,6 +18,10 @@
           <span translate="x_PrivKey2">Private Key</span>
         </label>
         <label class="radio">
+           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="pastemnemonic">
+           <span translate="x_Mnemonic">Mnemonic</span>
+         </label>
+        <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="watchonlyaccount">
           <span translate="ADD_Radio_4">Add an Account to Watch</span>
         </label>
