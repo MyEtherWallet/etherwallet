@@ -7,7 +7,7 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     $scope.fileContent = "";
     $scope.Validator = Validator;
     $scope.isSSL = window.location.protocol == 'https:';
-    $scope.isChrome = true;
+    $scope.isCX = window.location.protocol == 'chrome-extension://';
     $scope.ajaxReq = ajaxReq;
     $scope.nodeType = $scope.ajaxReq.type;
     $scope.HDWallet = {
@@ -58,9 +58,26 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
                     $scope.HDWallet.dPath = $scope.HDWallet.trezorPath;
             }
         } else {
+            $scope.showBtnGen = $scope.showBtnUnlock = $scope.showBtnAdd = $scope.showAddWallet = false; // CX
+            $scope.addNewNick = $scope.addNewPass = ""; // CX
+            $scope.addWalletStats = ""; // CX
             $scope.HDWallet.dPath = $scope.HDWallet.defaultDPath;
         }
     });
+
+    // Chrome Extension
+    if ($scope.isCX) {
+        $scope.showBtnGen = $scope.showBtnUnlock = $scope.showBtnAdd = $scope.showBtnAddWallet = $scope.showAddWallet = $scope.requireFPass = $scope.requirePPass = $scope.showPassTxt = false;
+        $scope.nickNames = [];
+        $scope.addAccount = {
+          address: "",
+          nickName: "",
+          encStr: "",
+          password: ""
+        };
+    }
+
+
     $scope.onHDDPathChange = function(password = $scope.mnemonicPassword) {
         $scope.HDWallet.numWallets = 0;
         if ($scope.walletType == 'pastemnemonic') {
@@ -82,16 +99,19 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         try {
             $scope.requireFPass = Wallet.walletRequirePass($fileContent);
             $scope.showFDecrypt = !$scope.requireFPass;
+            $scope.showBtnUnlock = !$scope.requireFPass; // CX
             $scope.fileContent = $fileContent;
         } catch (e) {
             $scope.notifier.danger(e);
         }
     };
     $scope.openFileDialog = function($fileContent) {
+        $scope.addWalletStats = "";
         document.getElementById('fselector').click();
     };
     $scope.onFilePassChange = function() {
         $scope.showFDecrypt = $scope.filePassword.length >= 0;
+        $scope.showBtnUnlock = $scope.filePassword.length >= 0;
     };
     $scope.onPrivKeyChange = function() {
         const manualprivkey = fixPkey($scope.manualprivkey);
@@ -104,6 +124,8 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
     };
     $scope.onMnemonicChange = function() {
         $scope.showMDecrypt = hd.bip39.validateMnemonic($scope.manualmnemonic);
+        $scope.addWalletStats = ""; // CX
+        $scope.showBtnUnlock = $scope.showDPaths = hd.bip39.validateMnemonic($scope.manualmnemonic); // CX
     };
     $scope.onParityPhraseChange = function() {
         if ($scope.parityPhrase) $scope.showParityDecrypt = true;
@@ -253,5 +275,85 @@ var decryptWalletCtrl = function($scope, $sce, walletService) {
         }
         return key;
     }
+
+
+    /* Chrome Extension */
+    if (IS_CX) {
+        $scope.setNickNames = function() {
+            cxFuncs.getAllNickNames(function(nicks) {
+                $scope.nickNames = nicks;
+            });
+        };
+        $scope.setNickNames();
+        $scope.newWalletChange = function(varStatus, shwbtn) {
+            if ($scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && $scope.addAccount.password.length > 8) $scope[shwbtn] = true;
+            else $scope[shwbtn] = false;
+            if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope.notifier.danger(globalFuncs.errorMsgs[13]);
+
+        }
+        $scope.watchOnlyChange = function() {
+            if ($scope.addAccount.address != "" && $scope.addAccount.nickName != "" && $scope.nickNames.indexOf($scope.addAccount.nickName) == -1 && ethFuncs.validateEtherAddress($scope.addAccount.address)) $scope.showBtnAdd = true;
+            else $scope.showBtnAdd = false;
+            if ($scope.addAccount.address != "" && !ethFuncs.validateEtherAddress($scope.addAccount.address)) $scope.notifier.danger(globalFuncs.errorMsgs[5]);
+            else if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) $scope.notifier.danger(globalFuncs.errorMsgs[13]);
+
+        }
+        $scope.addWatchOnly = function() {
+            if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
+                $scope.notifier.danger(globalFuncs.errorMsgs[13]);
+                return;
+            } else if ($scope.nickNames.indexOf(ethUtil.toChecksumAddress($scope.addAccount.address)) !== -1) {
+                $scope.notifier.danger(globalFuncs.errorMsgs[16]);
+                return;
+            }
+            cxFuncs.addWatchOnlyAddress($scope.addAccount.address, $scope.addAccount.nickName, function() {
+                if (chrome.runtime.lastError) {
+                    $scope.notifier.danger(chrome.runtime.lastError.message);
+                } else {
+                    $scope.notifier.info(globalFuncs.successMsgs[3] + $scope.addAccount.address);
+                    $scope.setNickNames();
+                }
+                $scope.$apply();
+            });
+        }
+        $scope.addWalletToStorage = function() {
+            if ($scope.nickNames.indexOf($scope.addAccount.nickName) !== -1) {
+                $scope.notifier.danger(globalFuncs.errorMsgs[13]);
+                return;
+            } else if ($scope.nickNames.indexOf(ethUtil.toChecksumAddress($scope.addAccount.address)) !== -1) {
+                $scope.notifier.danger(globalFuncs.errorMsgs[16]);
+                return;
+            }
+            cxFuncs.addWalletToStorage($scope.addAccount.address, $scope.addAccount.encStr, $scope.addAccount.nickName, function() {
+                if (chrome.runtime.lastError) {
+                    $scope.notifier.danger(chrome.runtime.lastError.message);
+                } else {
+                    $scope.notifier.info(globalFuncs.successMsgs[3] + $scope.addAccount.address);
+                    $scope.setNickNames();
+                }
+                $scope.$apply();
+            });
+        }
+        $scope.importWalletToStorage = function() {
+            var wStr = $scope.wallet.toV3($scope.addAccount.password, {
+                kdf: globalFuncs.kdf,
+                n: globalFuncs.scrypt.n
+            });
+            $scope.addAccount.encStr = JSON.stringify(wStr);
+            $scope.addWalletToStorage();
+        }
+        $scope.generateWallet = function() {
+            var wallet = Wallet.generate(false);
+            var wStr = wallet.toV3($scope.addAccount.password, {
+                kdf: globalFuncs.kdf,
+                n: globalFuncs.scrypt.n
+            });
+            $scope.addAccount.encStr = JSON.stringify(wStr);
+            $scope.addAccount.address = wallet.getAddressString();
+            $scope.addWalletToStorage('addWalletStats');
+        }
+    }
+    /* End Chrome Extension */
+
 };
 module.exports = decryptWalletCtrl;

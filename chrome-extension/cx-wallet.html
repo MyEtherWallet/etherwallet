@@ -517,7 +517,20 @@
 <!-- / My Wallet Page -->
 
 
-    <main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.addWallet.id" ng-controller='addWalletCtrl'  ng-cloak>
+    <main class="tab-pane active"
+      ng-if="globalService.currentTab==globalService.tabs.addWallet.id"
+      ng-controller='decryptWalletCtrl as $ctrl'
+      ng-cloak >
+
+  <h1 translate="NAV_AddWallet"> Add Wallet </h1>
+
+  <wallet-decrypt-drtv></wallet-decrypt-drtv>
+
+  
+    <article class="row" ng-show="wallet!=null">
+      
+
+<main class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.addWallet.id" ng-controller='addWalletCtrl'  ng-cloak>
   <h1 translate="NAV_AddWallet"> Add Wallet </h1>
 
   <section class="row" id="walletselection">
@@ -761,6 +774,12 @@
     </section>
   </article>
   <!-- / MODAL -->
+
+
+</main>
+
+    </article>
+  
 
 
 </main>

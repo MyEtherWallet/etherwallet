@@ -2,7 +2,7 @@
 
   <!-- Column 1 - Select Type of Key -->
   <section class="col-md-4 col-sm-6">
-    <h4 translate="decrypt_Access"> Select the format of your private key: </h4>
+    <h4 translate="decrypt_Access"> How would you like to access your wallet? </h4>
     <label class="radio">
       <input aria-flowto="aria1" aria-label="Keystore JSON file" type="radio" ng-model="walletType" value="fileupload" />
       <span translate="x_Keystore2">Keystore / JSON File</span>
@@ -22,18 +22,30 @@
     <label class="radio">
       &nbsp;<span translate="x_ParityPhrase">Parity Phrase</span>: <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/parity-phrases-no-longer-supported" target="_blank" rel="noopener">No longer supported</a>
     </label>
-    <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">
+    <!-- Only MEW: Chrome Extensions aren't SSL, can't do U2F hardware -->
+    <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id || IS_CX">
       <input aria-flowto="aria5" type="radio" aria-label="Ledger Nano S hardware wallet" ng-model="walletType" value="ledger" />
       Ledger Nano S
     </label>
-    <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id">
+    <label class="radio" ng-hide="globalService.currentTab==globalService.tabs.signMsg.id || IS_CX">
       <input aria-flowto="aria6" type="radio" aria-label="Trezor hardware wallet" ng-model="walletType" value="trezor" />
       TREZOR
     </label>
-    <label class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id">
+    <label class="radio" ng-hide="globalService.currentTab!==globalService.tabs.viewWalletInfo.id || IS_CX">
       <input aria-label="address" type="radio" ng-model="walletType" value="addressOnly" />
       View with Address Only
     </label>
+
+    <!-- Only CX: Chrome Extensions users can gen a new wallet inline -->
+    <label class="radio" ng-hide="!IS_CX">
+      <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="gennewwallet">
+      <span translate="NAV_GenerateWallet" aria-live="polite"> Create New Wallet</span>
+    </label>
+    <label class="radio" ng-hide="!IS_CX">
+      <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="watchonlyaccount">
+      <span translate="ADD_Radio_4">Add an Account to Watch</span>
+    </label>
+
   </section>
   <!-- Column 1 - Select Type of Key -->
 
@@ -138,7 +150,7 @@
         <li id="aria7" tabinex="0" translate="ADD_Ledger_0a" class="text-danger" ng-hide="isSSL">
           Re-open MyEtherWallet on a secure (SSL) connection
         </li>
-        <li tabinex="0" translate="ADD_Ledger_0b" class="text-danger" ng-hide="isChrome">
+        <li tabinex="0" translate="ADD_Ledger_0b" class="text-danger">
           Re-open MyEtherWallet using Google Chrome or Opera
         </li>
         <li tabinex="0">
