@@ -31,6 +31,11 @@
 <body>
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
+
+    <div class="small announcement annoucement-warning">
+      <div class="container">A Token Creation Period (ICO) may cause delays in transactions on June 20 2PM - 8PM GMT. <a href="https://www.google.com/search?q=what+time+is+it+gmt&oq=what+time+is+it+gmt" target="_blank" rel="noopener"> What time is it now? </a> <br /> If your TX is not urgent, we recommend waiting for faster &amp; cheaper TXs. You can also use a gas price of 50 GWEI, which you can adjust in the footer. Thank you for understanding. </div>
+    </div>
+
   
   <section class="bg-gradient header-branding">
     <section class="container">
@@ -40,7 +45,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.9.3 &nbsp;&nbsp;
+        &middot; v3.9.3.1 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -775,7 +780,7 @@
     <div class="clearfix form-group">
       <div class="well" ng-show="wallet!=null && customGasMsg!=''">
         <p><small>A message from {{tx.to}}</small></p>
-        <p><strong> {{customGasMsg}} </strong></p>
+        <p ng-bind-html="customGasMsg"></p>
       </div>
     </div>
 
@@ -1193,7 +1198,7 @@
     <div class="clearfix form-group">
       <div class="well" ng-show="wallet!=null && customGasMsg!=''">
         <p><small>A message from {{tx.to}}</small></p>
-        <p><strong> {{customGasMsg}} </strong></p>
+        <p ng-bind-html="customGasMsg"></p>
       </div>
     </div>
 
