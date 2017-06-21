@@ -15,6 +15,10 @@
     <section class="col-xs-1 address-identicon-container">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
     </section>
+
+    <section class="col-xs-12">
+      <p>{{customGasMsg}}</p>
+    </section>
   </article>
 
   <!-- Amount to Send -->
@@ -114,4 +118,3 @@
     <div class="qr-code" qr-code="{{signedTx}}" watch-var="signedTx" width="100%"></div>
   </section>
 </article>
-

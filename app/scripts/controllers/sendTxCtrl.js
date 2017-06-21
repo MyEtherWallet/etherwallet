@@ -131,6 +131,8 @@ var sendTxCtrl = function($scope, $sce, walletService) {
                   return;
               }
           }
+
+          $scope.customGasMsg = ''
         }
     }, true);
     $scope.estimateGasLimit = function() {

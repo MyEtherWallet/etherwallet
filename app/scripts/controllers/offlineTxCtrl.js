@@ -97,8 +97,16 @@ var offlineTxCtrl = function($scope, $sce, walletService) {
         $scope.dropdownAmount = false;
     }
     $scope.validateAddress = function(address, status) {
+        $scope.customGasMsg = ''
+        
         if (ethFuncs.validateEtherAddress(address)) {
             $scope.notifier.info(globalFuncs.successMsgs[0]);
+
+            for (var i in CustomGasMessages) {
+                if ($scope.tx.to.toLowerCase() == CustomGasMessages[i].to.toLowerCase()) {
+                    $scope.customGasMsg = CustomGasMessages[i].msg != '' ? CustomGasMessages[i].msg : ''
+                }
+            }
         } else {
             $scope.notifier.danger(globalFuncs.errorMsgs[5]);
         }
