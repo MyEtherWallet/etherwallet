@@ -20,8 +20,6 @@
 
         <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a>
 
-        <p ng-show="showBlocks" style="font-size: 12px">Latest Block#: {{currentBlockNumber}}</p>
-
       </section>
 
       <section class="footer--cent">
@@ -56,9 +54,10 @@
 
       <section class="footer--righ">
         <div class="footer--gas">
+          <p ng-show="showBlocks" >Latest Block#: {{currentBlockNumber}}</p>
           <p>
             <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
-            <strong><a href="http://ethgasstation.info/minerTable.php" target="_blank" rel="noopener">{{gas.value}} Gwei</a></strong>
+            <strong><a href="http://ethgasstation.info/minerTable.php" target="_blank" rel="noopener" style="color: yellow; font-size: 26px;">{{gas.value}} Gwei</a></strong>
           </p>
           <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
           <p style="padding: .25rem 0;" class="small col-xs-4">Not So Fast</p>

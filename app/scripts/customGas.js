@@ -8,6 +8,9 @@
 // http://www.tokensalecalendar.com/
 // If you aren't on the above, you should get on it.
 
+//
+
+
 module.exports = [
 {
   // DCORP
@@ -21,7 +24,7 @@ module.exports = [
   to:         '0x55d34b686aa8C04921397c5807DB9ECEdba00a4c',
   gasLimit:   200000,
   data:       '',
-  msg:        'Status.im https://contribute.status.im ______________________________________________________________________________________________________________________ STARTS:_June 20th 2pm GMT @ Block 3903900______________________________________________________________________ GAS_PRICE:_50 GWEI. Change via slider in the footer_____________________________________________________________________ GAS_LIMIT:_200000___________________________________________________________________________________________________ NOT_LOADING:_Change the node in upper right corner to ETH (Etherscan.io)_____________________________________________ SUPPORT:_https://www.reddit.com/r/statusim/   https://twitter.com/ethstatus'
+  msg:        '⚠ The Status.im Contribution Period has ENDED. Please stop clogging the blockchain with your FOMO. Thanks! 🤗'
 },
 {
   // Status
