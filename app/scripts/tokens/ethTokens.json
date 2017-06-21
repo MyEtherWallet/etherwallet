@@ -288,6 +288,12 @@
     "type":"default"
   },
   {
+    "address":"0xb64ef51c888972c908cfacf59b47c1afbc0ab8ac",
+    "symbol":"STORJ",
+    "decimal":8,
+    "type":"default"
+  },
+  {
    "address":"0xB9e7F8568e08d5659f5D29C4997173d84CdF2607",
    "symbol":"SWT",
    "decimal":18,
