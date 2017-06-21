@@ -7,14 +7,14 @@ globalFuncs.getBlockie = function(address) {
         size: 8,
         scale: 16
     }).toDataURL();
-}
+};
 globalFuncs.printPaperWallets = function(strJson) {
-    var win = window.open("about:blank", "_blank");
+    var win = window.open("about:blank", "rel='noopener'", "_blank");
     var data = "<html>\r\n\r\n<head>\r\n <link rel=\"stylesheet\" href=\"css\/etherwallet-master.min.css\" \/>\r\n <script type=\"text\/javascript\" src=\"js\/jquery-1.12.3.min.js\"><\/script>\r\n <script type=\"text\/javascript\" src=\"js\/etherwallet-static.min.js\"><\/script>\r\n <script type=\"text\/javascript\">\r\n function getBlockie(address) {\r\n return blockies.create({\r\n seed: address.toLowerCase(),\r\n size: 8,\r\n scale: 16\r\n }).toDataURL();\r\n    }\r\n    function generateWallets() {\r\n var json = JSON.parse($(\"#printwalletjson\").html());\r\n for (var i = 0; i < json.length; i++) {\r\n var walletTemplate = $(\'<div\/>\').append($(\"#print-container\").clone());\r\n new QRCode($(walletTemplate).find(\"#paperwalletaddqr\")[0], {\r\n text: json[i][\'address\'],\r\n colorDark: \"#000000\",\r\n colorLight: \"#ffffff\",\r\n correctLevel: QRCode.CorrectLevel.H\r\n });\r\n new QRCode($(walletTemplate).find(\"#paperwalletprivqr\")[0], {\r\n text: json[i][\'private\'],\r\n colorDark: \"#000000\",\r\n colorLight: \"#ffffff\",\r\n correctLevel: QRCode.CorrectLevel.H\r\n });\r\n $(walletTemplate).find(\"#paperwalletadd\").html(json[i][\'address\']);\r\n $(walletTemplate).find(\"#paperwalletpriv\").html(json[i][\'private\']);\r\n $(walletTemplate).find(\"#identicon\").css(\'background-image\',\'url(\' + getBlockie(json[i][\'address\']) +\')\');\r\n walletTemplate = $(walletTemplate).find(\"#print-container\").show();\r\n $(\"body\").append(walletTemplate);\r\n }\r\n setTimeout(function() {\r\n window.print();\r\n }, 2000);\r\n    }\r\n    <\/script>\r\n<\/head>\r\n\r\n<body><span id=\"printwalletjson\" style=\"display: none;\">{{WALLETJSON}}<\/span>\r\n    <div class=\"print-container\" style=\"display: none; margin-bottom: 50px;\" id=\"print-container\"><img src=\"images\/logo-ethereum-1.png\" class=\"ether-logo-1\" height=\"100%\" width=\"auto\" \/> <div id=\"identicon\" class=\"addressIdenticon med float\"><\/div>\r\n <img src=\"images\/print-sidebar.png\" height=\"100%\" width=\"auto\" class=\"print-title\" \/>\r\n <div class=\"print-qr-code-1\">\r\n <div id=\"paperwalletaddqr\"><\/div>\r\n <p class=\"print-text\" style=\"padding-top: 25px;\">YOUR ADDRESS<\/p>\r\n <\/div>\r\n <div class=\"print-notes\"><img src=\"images\/notes-bg.png\" width=\"90%;\" height=\"auto\" class=\"pull-left\" \/>\r\n <p class=\"print-text\">AMOUNT \/ NOTES<\/p>\r\n <\/div>\r\n <div class=\"print-qr-code-2\">\r\n <div id=\"paperwalletprivqr\"><\/div>\r\n <p class=\"print-text\" style=\"padding-top: 30px;\">YOUR PRIVATE KEY<\/p>\r\n <\/div>\r\n <div class=\"print-address-container\">\r\n <p><strong>Your Address:<\/strong>\r\n <br \/><span id=\"paperwalletadd\"><\/span><\/p>\r\n <p><strong>Your Private Key:<\/strong>\r\n <br \/><span id=\"paperwalletpriv\"><\/span><\/p>\r\n <\/div>\r\n    <\/div>\r\n<\/body>\r\n\r\n<\/html>\r\n";
     data = data.replace("{{WALLETJSON}}", strJson);
     win.document.write(data);
     win.document.write("<script>generateWallets();</script>");
-}
+};
 globalFuncs.getBlob = function(mime, str) {
     var str = (typeof str === 'object') ? JSON.stringify(str) : str;
     if (str == null) return '';
@@ -22,13 +22,13 @@ globalFuncs.getBlob = function(mime, str) {
         type: mime
     });
     return window.URL.createObjectURL(blob);
-}
+};
 globalFuncs.getSuccessText = function(str) {
     return '<p class="text-center text-success"><strong> ' + str + '</strong></p>'
-}
+};
 globalFuncs.getDangerText = function(str) {
     return '<p class="text-center text-danger"><strong> ' + str + '</strong></p>'
-}
+};
 
 // These are translated in the translation files
 globalFuncs.errorMsgs = [
@@ -103,7 +103,7 @@ globalFuncs.getGethMsg = function(str) {
         }
     }
     return str;
-}
+};
 
 // These are translated in the translation files
 globalFuncs.parityErrors = {
@@ -119,27 +119,29 @@ globalFuncs.parityErrors = {
 globalFuncs.parityErrorMsgs = {};
 globalFuncs.getParityMsg = function(str) {
     for (var reg in this.parityErrors) {
-        var args = str.match("^" + reg + "$");
+        if (this.parityErrors.hasOwnProperty(reg)) {
+            let args = str.match("^" + reg + "$");
         if (args) {
-            var key = this.parityErrors[reg];
+                let key = this.parityErrors[reg];
             if (key in this.parityErrorMsgs) {
                 args[0] = this.parityErrorMsgs[key];
                 return format.apply(this, args);
             }
-        }
+         }
+      }
     }
     return str;
-}
+};
 globalFuncs.getEthNodeName = function() {
     //  return "geth";
     return "parity";
-}
+};
 globalFuncs.getEthNodeMsg = function(str) {
     var ethNode = this.getEthNodeName();
     if (ethNode == "geth") return this.getGethMsg(str);
     else
         return this.getParityMsg(str);
-}
+};
 globalFuncs.scrypt = {
     n: 1024
 };
@@ -150,38 +152,38 @@ globalFuncs.defaultTokenGasLimit = 200000;
 globalFuncs.donateAddress = "0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8";
 globalFuncs.isNumeric = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
-}
+};
 globalFuncs.urlGet = function(name) {
     name = name.toLowerCase();
     if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search.toLowerCase())) return this.stripTags(decodeURIComponent(name[1]));
-}
+};
 globalFuncs.stripTags = function(str) {
     var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
     while (SCRIPT_REGEX.test(str)) {
         str = str.replace(SCRIPT_REGEX, "");
     }
     return str;
-}
+};
 globalFuncs.checkAndRedirectHTTPS = function() {
     var host = "myetherwallet.com";
     var hostw = "https://www.myetherwallet.com";
     var path = window.location.pathname;
     if (host == window.location.host) window.location = hostw + path;
-}
+};
 globalFuncs.isStrongPass = function(password) {
     return password.length > 8;
-}
+};
 globalFuncs.hexToAscii = function(hex) {
     return hex.match(/.{1,2}/g).map(function(v) {
         return String.fromCharCode(parseInt(v, 16));
     }).join('');
-}
+};
 globalFuncs.isAlphaNumeric = function(value) {
     return !/[^a-zA-Z0-9]/.test(value);
-}
+};
 globalFuncs.getRandomBytes = function(num) {
     return ethUtil.crypto.randomBytes(num);
-}
+};
 globalFuncs.saveTokenToLocal = function(localToken, callback) {
     try {
         if (!ethFuncs.validateEtherAddress(localToken.contractAdd)) throw globalFuncs.errorMsgs[5];
@@ -204,7 +206,7 @@ globalFuncs.saveTokenToLocal = function(localToken, callback) {
             msg: e
         });
     }
-}
+};
 globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
     var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens", null)) : [];
     // remove from localstorage so it doesn't show up on refresh
@@ -221,7 +223,7 @@ globalFuncs.removeTokenFromLocal = function(symbol, tokenObj) {
             tokenObj.splice(i, 1);
             break;
         }
-}
+};
 globalFuncs.localStorage = {
         isAvailable: function() {
             return typeof localStorage != "undefined";
