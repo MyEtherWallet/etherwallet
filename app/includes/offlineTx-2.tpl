@@ -28,7 +28,7 @@
         Amount to Send
       </label>
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
+        <input class="form-control" type="text" placeholder="{{'SEND_amount_short' | translate }}" ng-model="tx.value"/>
         <div class="input-group-btn">
           <a style="min-width: 150px"
              class="btn btn-default dropdown-toggle"
