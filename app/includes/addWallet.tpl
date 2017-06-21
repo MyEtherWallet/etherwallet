@@ -226,11 +226,11 @@
             <td>{{wallet.getBalance()}} ETH</td>
           </tr>
           <tr class="m-addresses">
-            <td class"small">
+            <td class="small">
             <a ng-show="HDWallet.numWallets > 5" ng-click="AddRemoveHDAddresses(false)" translate="MNEM_prev">Previous Addresses</a>
             </td>
             <td></td>
-            <td class"small"><a ng-click="AddRemoveHDAddresses(true)" translate="MNEM_more">More Addresses</a></td>
+            <td class="small"><a ng-click="AddRemoveHDAddresses(true)" translate="MNEM_more">More Addresses</a></td>
           </tr></table>
           <!-- END Select Address -->
         </div>
