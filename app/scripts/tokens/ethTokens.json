@@ -204,6 +204,12 @@
     "type":"default"
   },
   {
+    "address":"0x1776e1F26f98b1A5dF9cD347953a26dd3Cb46671",
+    "symbol":"NMR",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
     "symbol":"NxC",
     "decimal":3,
