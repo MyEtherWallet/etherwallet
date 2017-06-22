@@ -46,7 +46,7 @@
 
       <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
 
-        &middot; v3.9.3.3 &nbsp;&nbsp;
+        &middot; v3.9.4 &nbsp;&nbsp;
 
         <span class="dropdown" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -442,9 +442,9 @@
       <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl' >
           <!-- Sign Message Panel -->
   <h2>
-    <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
+    <a translate="NAV_SignMsg" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
     or
-    <a translate="MSG_verify"  ng-class="{'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
+    <a translate="MSG_verify"  ng-class="{ 'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
   </h2>
 
   <article class="col-xs-12 clearfix" ng-switch on="visibility">
@@ -480,7 +480,7 @@
       <!-- Signed Message -->
       <div ng-show="signMsg.signedMsg">
         <h5 translate="MSG_signature"> Signature </h5>
-        <textarea class="form-control" rows="4" readonly>{{ signMsg.signedMsg }}</textarea>
+        <textarea class="form-control" rows="4" readonly title="Signature">{{signMsg.signedMsg }}</textarea>
       </div>
     </section>
     <!-- / Sign Message Stuff -->
@@ -491,7 +491,7 @@
     <section ng-switch-when="verifyView">
       <!-- Signature -->
       <h5 translate="MSG_signature"> Signature </h5>
-      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{"address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
+      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{ "address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
 
       <!-- Verify Signature Message Button -->
       <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
@@ -618,9 +618,9 @@
       <main class="tab-pane active" ng-show="wallet!=null" ng-controller='signMsgCtrl' >
           <!-- Sign Message Panel -->
   <h2>
-    <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
+    <a translate="NAV_SignMsg" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
     or
-    <a translate="MSG_verify"  ng-class="{'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
+    <a translate="MSG_verify"  ng-class="{ 'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
   </h2>
 
   <article class="col-xs-12 clearfix" ng-switch on="visibility">
@@ -656,7 +656,7 @@
       <!-- Signed Message -->
       <div ng-show="signMsg.signedMsg">
         <h5 translate="MSG_signature"> Signature </h5>
-        <textarea class="form-control" rows="4" readonly>{{ signMsg.signedMsg }}</textarea>
+        <textarea class="form-control" rows="4" readonly title="Signature">{{signMsg.signedMsg }}</textarea>
       </div>
     </section>
     <!-- / Sign Message Stuff -->
@@ -667,7 +667,7 @@
     <section ng-switch-when="verifyView">
       <!-- Signature -->
       <h5 translate="MSG_signature"> Signature </h5>
-      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{"address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
+      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{ "address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
 
       <!-- Verify Signature Message Button -->
       <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
@@ -1425,6 +1425,10 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <section class="col-xs-1 address-identicon-container">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
     </section>
+
+    <section class="col-xs-12">
+      <p>{{customGasMsg}}</p>
+    </section>
   </article>
 
   <!-- Amount to Send -->
@@ -1434,7 +1438,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
         Amount to Send
       </label>
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
+        <input class="form-control" type="text" placeholder="{{'SEND_amount_short' | translate }}" ng-model="tx.value"/>
         <div class="input-group-btn">
           <a style="min-width: 150px"
              class="btn btn-default dropdown-toggle"
@@ -1524,7 +1528,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <div class="qr-code" qr-code="{{signedTx}}" watch-var="signedTx" width="100%"></div>
   </section>
 </article>
-
  
   
 
