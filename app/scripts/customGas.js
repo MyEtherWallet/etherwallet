@@ -96,5 +96,19 @@ module.exports = [
   data:       '',
   msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
 },
+{
+  // FAKE TenX
+  to:         '0x199eee5b6ca1AaF030c77f0b5c50e39908Fd2072',
+  gasLimit:   -1,
+  data:       '',
+  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
+},
+{
+  // FAKE TenX
+  to:         '0xaF70168cdAc454Fa9fF94E5458D450ae7EEB7ae8',
+  gasLimit:   -1,
+  data:       '',
+  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
+},
 ]
 
