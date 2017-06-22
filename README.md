@@ -1,14 +1,20 @@
-## Website: https://www.MyEtherWallet.com
-## Chrome Extension: https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm
-## Download the Latest Release: https://github.com/kvhnuke/etherwallet/releases/latest
+### Website: https://www.MyEtherWallet.com
+
+### Chrome Extension: https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm
+
+### Download the Latest Release: https://github.com/kvhnuke/etherwallet/releases/latest
 - dist-vX.X.X.X.zip is the smaller package containing the gh-pages branch aka MyEtherWallet.com
 - chrome-extension-vX.X.X.X.zip is the chrome extension package
 - source code is the full source for developers to get started with (although cloning or forking the mercury branch is probably a better choice)
 
 ### Help
-- https://myetherwallet.groovehq.com/help_center
-- https://www.myetherwallet.com/#help
-- support at myetherwallet dot com
+- [Help Center](https://myetherwallet.groovehq.com/help_center)
+- [Github: MyEtherWallet.com](https://github.com/kvhnuke/etherwallet)
+- [Github: MyEtherWallet v4+](https://github.com/MyEtherWallet) 
+- [Slack](https://myetherwallet.herokuapp.com/)
+- [Twitter](https://twitter.com/myetherwallet)
+- [Facebook](https://www.facebook.com/MyEtherWallet/)
+- [Reddit](https://www.reddit.com/r/MyEtherWallet/)
 
 ### `mercury` is the development branch. gh-pages contains only the smaller dist folder only and is served to MyEtherWallet.com
 
