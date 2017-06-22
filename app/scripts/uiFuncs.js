@@ -213,78 +213,46 @@ uiFuncs.transferAllBalance = function(fromAdd, gasLimit, callback) {
     }
 }
 uiFuncs.notifier = {
-    show: false,
-    messages: {},
-    close: function() {
-        this.show = false;
-        this.messages = {};
-        if (!this.scope.$$phase) this.scope.$apply()
-    },
-    open: function() {
-        this.show = true;
-        if (!this.scope.$$phase) this.scope.$apply();
-    },
-    class: '',
-    message: '',
-    timer: null,
-    sce: null,
-    scope: null,
-    overrideMsg: function(msg) {
-        console.log(msg)
-        return globalFuncs.getEthNodeMsg(msg);
-    },
+    alerts: {},
     warning: function(msg) {
-        this.addMessage("warning", msg);
+        this.addAlert("warning", msg);
     },
     info: function(msg) {
-        this.addMessage("info", msg);
+        this.addAlert("info", msg);
     },
     danger: function(msg) {
         msg = msg.message ? msg.message : msg;
-        msg = this.overrideMsg(msg);
-
-        this.addMessage("danger", msg, 0);
+        // Danger messages can be translated based on the type of node
+        msg = globalFuncs.getEthNodeMsg(msg);
+        this.addAlert("danger", msg, 0);
     },
     success: function(msg) {
-        this.addMessage("success", msg);
+        this.addAlert("success", msg);
     },
-    addMessage: function(type, msg, duration) {
+    addAlert: function(type, msg, duration) {
         if (duration == undefined)
             duration = 5000;
         // Save all messages by unique id for removal
         var id = Date.now();
-        this.messages[id] = {type: type, msg: msg};
+        alert = this.buildAlert(id, type, msg);
+        this.alerts[id] = alert
         var that = this;
         if (duration > 0) { // Support permanent messages
-            setTimeout(function() {
-                // Remove the message and rebuild the UI
-                delete that.messages[id];
-                that.rebuildMessages();
-            }, duration);
+            setTimeout(alert.close, duration);
         }
-        this.rebuildMessages();
+        if (!this.scope.$$phase) this.scope.$apply();
     },
-    rebuildMessages: function() {
-        if (Object.values(this.messages).length > 0) {
-            var types = Object.values(this.messages).map(function(message) { return message.type });
-            this.message = Object.values(this.messages).map(function(message) { return message.msg })
-                                                       .join("<br />");
-            this.setMostImportantClass(types);
-            this.open();
-        } else {
-            this.close();
+    buildAlert: function(id, type, msg) {
+        var that = this;
+        return {
+            show: true,
+            type: type,
+            message: msg,
+            close: function() {
+                delete that.alerts[id];
+                if (!that.scope.$$phase) that.scope.$apply();
+            }
         }
     },
-    setMostImportantClass: function(types) {
-        if (types.indexOf('danger') > -1) {
-            this.class = 'alert-danger';
-        } else if (types.indexOf('warning') > -1) {
-            this.class = 'alert-warning';
-        } else if (types.indexOf('success') > -1) {
-            this.class = 'alert-success';
-        } else {
-            this.class = '';
-        }
-    }
-}
+  }
 module.exports = uiFuncs;

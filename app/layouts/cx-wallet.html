@@ -26,11 +26,7 @@
 
   </div>
 
-
-  <div class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
-    <div class="container" ng-bind-html="notifier.message"></div>
-    <i class="icon-close" ng-click="notifier.close()"></i>
-  </div>
+  @@include('../includes/alerts.tpl')
 
 </section>
 
