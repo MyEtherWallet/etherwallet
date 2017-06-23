@@ -59,7 +59,7 @@ nodes.nodeList = {
         'tokenList': require('./tokens/ethTokens.json'),
         'abiList': require('./abiDefinitions/ethAbi.json'),
         'service': 'infura.io',
-        'lib': new nodes.infuraNode('https://mainnet.infura.io/mew', '8545')
+        'lib': new nodes.infuraNode('https://mainnet.infura.io/mew')
     },
     'etc_epool': {
         'name': 'ETC',
