@@ -34,6 +34,10 @@ ethFuncs.padLeftEven = function(hex) {
 }
 ethFuncs.addTinyMoreToGas = function(hex) {
     hex = this.sanitizeHex(hex);
+    if (parseInt(ethFuncs.gasAdjustment) >= 80) {
+        uiFuncs.notifier.danger("This is a weird issue which we are trying to figure out please contact support");
+        throw "error";
+    }
     return new BigNumber(ethFuncs.gasAdjustment * etherUnits.getValueOfUnit('gwei')).toString(16);
 }
 ethFuncs.decimalToHex = function(dec) {
