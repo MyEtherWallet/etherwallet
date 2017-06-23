@@ -36,11 +36,15 @@
       <div class="container">The #FOMO is Real. Breath. If you are trying to get in on Status.im, <strong> wait until BLOCK 3903900!</strong> <br /> If your TX is not urgent, we recommend NOT SENDING TODAY. Thank you for understanding. </div>
     </div>
 -->
-  @@if (site === 'cx' ) {
-    <div class="small announcement annoucement-warning" target="_blank" rel="noopener">
-      <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
+    @@if (site === 'cx' ) {
+    <div class="small announcement annoucement-warning">
+        <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any
+            wallets you store here. Many things could happen that would cause you to lose the data in this Chrome
+            Extension, including uninstalling the extension. This extension is a way to easily access your wallets,
+            <strong>not</strong> a way to back them up.
+        </div>
     </div>
-  }
+    }
   <section class="bg-gradient header-branding">
     <section class="container">
 
@@ -111,7 +115,7 @@
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
               {{value.name}}
               <small> ({{value.service}}) </small>
-              <img ng-show="value.service=='Custom'" img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
+              <img ng-show="value.service=='Custom'" src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
             </a></li>
             <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
           </ul>
