@@ -110,5 +110,26 @@ module.exports = [
   data:       '',
   msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
 },
+{
+  // FAKE TenX
+  to:         '0xe112784753273eBEdE055968eCB78DCAD8fF6da2',
+  gasLimit:   -1,
+  data:       '',
+  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
+},
+{
+  // FAKE TenX
+  to:         '0x285cFe87F4AD22228a625DCd1F64b2BC6b27ecff',
+  gasLimit:   -1,
+  data:       '',
+  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
+},
+{
+  // FAKE TenX
+  to:         '0x0d979f9fFDD579D67C29531ccCba568D2172D0b0',
+  gasLimit:   -1,
+  data:       '',
+  msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
+},
 ]
 
