@@ -156,6 +156,7 @@
 .footer {
   background-color: @ether-navy;
   color: white;
+  font-size: @font-size-small;
   margin-top: 5rem;
   h5{
     font-size: @font-size-bump;
@@ -175,17 +176,18 @@
   ul {
     list-style: none;
     padding-left: 0;
-    margin: 0 0 @space-xs 0;
+    margin: 0;
   }
   li {
     font-size: @font-size-small;
     margin: @space-sm 0;
   }
   a {
-    color: #4ac8ed;
+    color: #7fe5ff;
+    font-weight: 400;
     &:hover,
     &:focus {
-      color: darken(#4ac8ed, 5%);
+      color: darken(#7fe5ff, 10%);
     }
   }
 }
@@ -196,8 +198,13 @@
   max-width: 16rem;
 }
 
-.footer--gas {
+.header--gas {
   max-width: 26rem;
+  color: @text-color;
+  p {
+    font-weight: 400;
+    margin: @space-sm 0 0;
+  }
 }
 
 .footer--col() {
@@ -212,13 +219,14 @@
 
 .footer--left {
   .footer--col();
-  max-width: 24rem;
+  max-width: 27rem;
   flex-grow: 1;
 }
 .footer--cent {
   .footer--col();
   max-width: 32rem;
   flex-grow: 2;
+  ul, li:last-child { margin-bottom: 0; }
 }
 .footer--righ {
   .footer--col();

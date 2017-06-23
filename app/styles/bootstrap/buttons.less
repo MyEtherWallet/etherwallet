@@ -100,6 +100,15 @@
   .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
 }
 
+.btn-white {
+  .button-variant(@brand-info; rgba(255,255,255,.8); rgba(255,255,255,.8));
+  color: @brand-info;
+}
+
+.header-branding {
+  a.btn-white, a.btn-white:hover, a.btn-white:focus { color: @brand-info; }
+}
+
 .btn-group .btn-default {
   border-bottom-width: 1px;
   &.active {
