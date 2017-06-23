@@ -37,19 +37,19 @@
       <div class="container">The #FOMO is Real. Breath. If you are trying to get in on Status.im, <strong> wait until BLOCK 3903900!</strong> <br /> If your TX is not urgent, we recommend NOT SENDING TODAY. Thank you for understanding. </div>
     </div>
 -->
-  
+    
   <section class="bg-gradient header-branding">
     <section class="container">
 
        <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage"> <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" /></a> 
       
 
-      <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
+      <div class="tagline">
 
-        &middot; v3.9.4 &nbsp;&nbsp;
+        <span style="padding-right: 1rem;line-height: 1;">v3.9.5</span>
 
-        <span class="dropdown" ng-cloak>
-          <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
+        <span class="dropdown dropdown-lang" ng-cloak>
+          <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
           <ul class="dropdown-menu" ng-show="dropdown">
             <li><a ng-class="{true:'active'}[curLang=='Deutsch']"      ng-click="changeLanguage('de','Deutsch'     )"> Deutsch         </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']"     ng-click="changeLanguage('el','Ελληνικά'    )"> Ελληνικά        </a></li>
@@ -79,16 +79,36 @@
           </ul>
         </span>
 
-        &nbsp;&nbsp;
+        <span class="dropdown dropdown-gas" ng-cloak>
+          <a tabindex="0" aria-haspopup="true" aria-label="adjust gas price" class="dropdown-toggle  btn btn-white" ng-click="dropdownGasPrice = !dropdownGasPrice">
+            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
+            <i class="caret"></i>
+          </a>
+          <ul class="dropdown-menu" ng-show="dropdownGasPrice">
+            <div class="header--gas">
+              <a aria-label="What is Gas?" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener" role="link" tabindex="0">
+                <img src="images/icon-help.svg" class="help-icon" />
+              </a>
+              <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
+              <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
+              <p class="small col-xs-4 text-left">Not So Fast</p>
+              <p class="small col-xs-4 text-center">Fast</p>
+              <p class="small col-xs-4 text-right">Fast AF</p>
+            </div>
+          </ul>
+        </span>
 
         <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
         <span class="dropdown dropdown-node" ng-cloak>
-          <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small><i class="caret"></i></a>
+          <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle  btn btn-white" ng-click="dropdownNode = !dropdownNode">
+            Node: {{curNode.name}} <small>({{curNode.service}})</small>
+            <i class="caret"></i>
+          </a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
               {{value.name}}
               <small> ({{value.service}}) </small>
-              <img ng-show="value.service=='Custom'" img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
+              <img ng-show="value.service=='Custom'" src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
             </a></li>
             <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
           </ul>
@@ -209,7 +229,7 @@
 
   <div class="tab-content" >
 
-    <main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl' role="main">
+    <main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl' role="main" ng-cloak>
 
   <article class="block__wrap gen__1" ng-show="!wallet && !showGetAddress">
 
@@ -1940,35 +1960,39 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
     <main class="tab-pane ens-tab active" ng-if="globalService.currentTab==globalService.tabs.ens.id" ng-controller='ensCtrl' ng-cloak>
 
-  <!-- Title -->
-  <article class="row">
-    <h1 class="text-center" translate="NAV_ENS"> ENS </h1>
-    <p class="col-xs-12 col-sm-10 col-sm-offset-1">
-      The <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener">Ethereum Name Service</a> is a distributed, open, and extensible naming system based on the Ethereum blockchain. Once you have a name, you can tell your friends to send ETH to <code>kevinisawesome.eth</code> instead of <code>0x93a2f52cd.....</code>.
-    </p>
-  </article>
-  <!-- / Title -->
+  <div class="block">
 
-  <br />
+      <!-- Title -->
+      <article class="row">
+        <h1 class="text-center" translate="NAV_ENS"> ENS </h1>
+        <p class="col-xs-12 col-sm-8 col-sm-offset-2">
+          The <a href="http://ens.readthedocs.io/en/latest/introduction.html" target="_blank" rel="noopener">Ethereum Name Service</a> is a distributed, open, and extensible naming system based on the Ethereum blockchain. Once you have a name, you can tell your friends to send ETH to <code>kevinisawesome.eth</code> instead of <code>0x93a2f52cd.....</code>.
+        </p>
+      </article>
+      <!-- / Title -->
 
-  <!-- IF ENS CHAIN: Check Status of Name -->
-  <article class="row" ng-show="showENS()">
-    <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
-      <div class="input-group">
-        <input class="form-control"
-               type="text"
-               placeholder="myetherwallet"
-               ng-model="objENS.name"
-               ng-keyup="$event.keyCode==13 && checkName()"
-               ng-change="nameOnChange()"
-               ng-disabled="objENS.nameReadOnly"
-               ng-class="Validator.isValidENSName(objENS.name) && objENS.name.indexOf('.') == -1 ? 'is-valid' : 'is-invalid'"/>
-        <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
-      </div>
-      <button class="btn btn-primary" ng-click="checkName()"> Check ENS Name </button>
-    </section>
-  </article>
-  <!-- / IF ENS CHAIN: Check Status of Name -->
+      <br />
+
+      <!-- IF ENS CHAIN: Check Status of Name -->
+      <article class="row" ng-show="showENS()">
+        <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+          <div class="input-group">
+            <input class="form-control"
+                   type="text"
+                   placeholder="myetherwallet"
+                   ng-model="objENS.name"
+                   ng-keyup="$event.keyCode==13 && checkName()"
+                   ng-change="nameOnChange()"
+                   ng-disabled="objENS.nameReadOnly"
+                   ng-class="Validator.isValidENSName(objENS.name) && objENS.name.indexOf('.') == -1 ? 'is-valid' : 'is-invalid'"/>
+            <div class="input-group-btn"><a class="btn btn-default">.eth</a></div>
+          </div>
+          <button class="btn btn-primary" ng-click="checkName()"> Check ENS Name </button>
+        </section>
+      </article>
+      <!-- / IF ENS CHAIN: Check Status of Name -->
+
+  </div>
 
 
   <!-- IF NOT ENS CHAIN -->
@@ -1978,65 +2002,70 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <!-- / IF NOT ENS CHAIN -->
 
   <!-- General Information Panel -->
-   <article class="row" ng-hide="hideEnsInfoPanel">
+   <article class="block" ng-hide="hideEnsInfoPanel">
 
-  <br /><br />
+  <div class="row">
 
-  <section class="col-sm-8 col-xs-12 col-sm-offset-2 well" >
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
 
-    <h5 class="text-center"> What is the process like? </h5>
+      <h5 class="text-center"> What is the process like? </h5>
 
-      <h6 ng-click="ensPrep = !ensPrep">
-        <span ng-show="!ensPrep">+</span><span ng-show="ensPrep">-</span>
-        1. Preparation
-      </h6>
-      <ul ng-show="ensPrep">
-        <li> Decide which account you wish to own the name & ensure you have multiple backups of that account.</li>
-        <li> Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.</li>
-      </ul>
+        <h6 ng-click="ensPrep = !ensPrep">
+          <span ng-show="!ensPrep">+</span><span ng-show="ensPrep">-</span>
+          1. Preparation
+        </h6>
+        <ul ng-show="ensPrep">
+          <li> Decide which account you wish to own the name & ensure you have multiple backups of that account.</li>
+          <li> Decide the maximum amount of ETH you are willing to pay for the name (your <u>Bid Amount</u>). Ensure that account has enough to cover your bid + 0.01 ETH for gas.</li>
+        </ul>
 
-      <h6 ng-click="ensAuct = !ensAuct">
-        <span ng-show="!ensAuct">+</span><span ng-show="ensAuct">-</span>
-        2. Start an Auction / Place a Bid
-      </h6>
-      <ul ng-show="ensAuct">
-        <li> Bidding period lasts 3 days (72 hours). </li>
-        <li> You will enter the <u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>, which is protected by a <u>Secret Phrase</u>.</li>
-        <li> This places your bid, but this information is kept secret until you reveal it.</li>
-      </ul>
+        <h6 ng-click="ensAuct = !ensAuct">
+          <span ng-show="!ensAuct">+</span><span ng-show="ensAuct">-</span>
+          2. Start an Auction / Place a Bid
+        </h6>
+        <ul ng-show="ensAuct">
+          <li> Bidding period lasts 3 days (72 hours). </li>
+          <li> You will enter the <u>name</u>, <u>Actual Bid Amount</u>, <u>Bid Mask</u>, which is protected by a <u>Secret Phrase</u>.</li>
+          <li> This places your bid, but this information is kept secret until you reveal it.</li>
+        </ul>
 
-      <h6 ng-click="ensReveal = !ensReveal">
-        <span ng-show="!ensReveal">+</span><span ng-show="ensReveal">-</span>
-        3. Reveal your Bid
-      </h6>
-      <ul ng-show="ensReveal">
-        <li class="strong">If you do not reveal your bid, you will not be refunded.</strong> </li>
-        <li> Reveal Period lasts 2 days (48 hours). </li>
-        <li> You will unlock your account, enter the <u>Bid Amount</u>, and the <u>Secret Phrase</u>.</li>
-        <li>In the event that two parties bid exactly the same amount, the first bid revealed will win.</li>
-      </ul>
+        <h6 ng-click="ensReveal = !ensReveal">
+          <span ng-show="!ensReveal">+</span><span ng-show="ensReveal">-</span>
+          3. Reveal your Bid
+        </h6>
+        <ul ng-show="ensReveal">
+          <li class="strong">If you do not reveal your bid, you will not be refunded.</strong> </li>
+          <li> Reveal Period lasts 2 days (48 hours). </li>
+          <li> You will unlock your account, enter the <u>Bid Amount</u>, and the <u>Secret Phrase</u>.</li>
+          <li>In the event that two parties bid exactly the same amount, the first bid revealed will win.</li>
+        </ul>
 
-      <h6 ng-click="ensFinalize = !ensFinalize">
-        <span ng-show="!ensFinalize">+</span><span ng-show="ensFinalize">-</span>
-        4. Finalize the Auction
-      </h6>
-      <ul ng-show="ensFinalize">
-        <li> Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.</li>
-        <li> The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. </li>
-      </ul>
-      <h6 ng-click="ensMore = !ensMore">
-        <span ng-show="!ensMore">+</span><span ng-show="ensMore">-</span>
-        More Information
-      </h6>
-      <ul ng-show="ensMore">
-         <li>The auction for this registrar is a blind auction, and is described in <a href="https://github.com/ethereum/EIPs/issues/162" target="_blank" rel="noopener">EIP162</a>. Basically, no one can see *anything* during the auction.</li>
-          <li><a href="http://docs.ens.domains/en/latest/userguide.html#registering-a-name-with-the-auction-registrar" target="_blank" rel="noopener">ENS: Read the Docs</a></li>
-          <li><a href="https://medium.com/the-ethereum-name-service/announcing-the-ethereum-name-service-relaunch-date-4390af6dd9a2" target="_blank" rel="noopener">Announcing the Ethereum Name Service Relaunch Date!</a></li>
-      </ul>
-      <hr />
-      <p class="text-danger"><strong>  Due to an overwhelming number of support requests regarding the ENS, we will NOT providing support to those who are attempting to start a name business (aka "domain squatting") via our free, open source service. </strong> If you are bidding on hundreds of names, brand names, or the entire human-readable dictionary, do not expect a response. If you are a typical user who wants few cool names, you're safe.</p>
+        <h6 ng-click="ensFinalize = !ensFinalize">
+          <span ng-show="!ensFinalize">+</span><span ng-show="ensFinalize">-</span>
+          4. Finalize the Auction
+        </h6>
+        <ul ng-show="ensFinalize">
+          <li> Once the auction has ended (after 5 days / 120 hours), the winner needs to finalize the auction in order to claim their new name.</li>
+          <li> The winner will be refunded the difference between their bid and the next-highest bid. If you are the only bidder, you will refunded all but 0.01 ETH. </li>
+        </ul>
+        <h6 ng-click="ensMore = !ensMore">
+          <span ng-show="!ensMore">+</span><span ng-show="ensMore">-</span>
+          More Information
+        </h6>
+        <ul ng-show="ensMore">
+           <li>The auction for this registrar is a blind auction, and is described in <a href="https://github.com/ethereum/EIPs/issues/162" target="_blank" rel="noopener">EIP162</a>. Basically, no one can see *anything* during the auction.</li>
+            <li><a href="http://docs.ens.domains/en/latest/userguide.html#registering-a-name-with-the-auction-registrar" target="_blank" rel="noopener">ENS: Read the Docs</a></li>
+            <li><a href="https://medium.com/the-ethereum-name-service/announcing-the-ethereum-name-service-relaunch-date-4390af6dd9a2" target="_blank" rel="noopener">Announcing the Ethereum Name Service Relaunch Date!</a></li>
+        </ul>
+        <hr />
+        <h6><a href="https://myetherwallet.groovehq.com/knowledge_base/categories/ens" target="_blank" rel="noopener">Help Center: ENS</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/debugging-a-bad-instruction-reveal" target="_blank" rel="noopener">Debugging a [BAD INSTRUCTION] Reveal</a></h6>
+        <p>Please try the above before relying on support for reveal issues as we are severely backlogged on support tickets. We're so sorry. :( </p>
 
-  </section>
+    </div>
+
+  </div>
 
 </article>
  
@@ -3277,18 +3306,21 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
         <ul>
           <li>
-            <span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span>
+            <span translate="FOOTER_1">Free, open-source, client-side tool for easily &amp; securely interacting with the Ethereum network.</span>
             <span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.
           </li>
         </ul>
+        <ul>
 
-        <a aria-label="Help Center" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener"> Support </a>
+          <li><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">
+             Sign Message
+          </a></li>
 
-        <a role="link" tabindex="0" href="https://www.myetherwallet.com/helpers.html"> Helpers &amp; ENS Debugging </a>
+          <li ng-show="showBlocks">Latest Block#: {{currentBlockNumber}} </li>
 
-        <a role="link" tabindex="0" href="https://www.myetherwallet.com/signmsg.html"> Sign Message </a>
+          <li> <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a> </li>
 
-        <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a>
+        </ul>
 
       </section>
 
@@ -3299,10 +3331,11 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
           <ul>
             <li>Consider using our affiliate links to...</li>
             <li><a aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener">Swap ETH/BTC/EUR/CHF via Bity.com</a></li>
-            <li><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Buy a Ledger Nano S</a></li>
-            <li><a href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">Buy a TREZOR</a></li>
+            <li><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Buy a Ledger Nano S</a>
+            &nbsp;&middot;&nbsp;
+            <a href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">Buy a TREZOR</a></li>
           </ul>
-        </p>
+        </div>
         <div>
           <h5> <i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
           <ul>
@@ -3323,31 +3356,45 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       </section>
 
       <section class="footer--righ">
-        <div class="footer--gas">
-          <p ng-show="showBlocks" >Latest Block#: {{currentBlockNumber}}</p>
-          <p>
-            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>:
-            <strong><a href="http://ethgasstation.info/minerTable.php" target="_blank" rel="noopener" style="color: yellow; font-size: 26px;">{{gas.value}} Gwei</a></strong>
-          </p>
-          <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
-          <p style="padding: .25rem 0;" class="small col-xs-4">Not So Fast</p>
-          <p style="padding: .25rem 0;" class="small col-xs-4 text-center">Fast</p>
-          <p style="padding: .25rem 0;" class="small col-xs-4 text-right">Fast AF</p>
-        </div>
 
-        <h5><i aria-hidden="true">🌎</i> On the Web</h5>
+        <h5><i aria-hidden="true">🌎</i> Helpful Links </h5>
         <ul>
-          <li><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener">www.MyEtherWallet.com</a></li>
-          <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener">Github: MyEtherWallet.com</a></li>
-          <li><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener">Github: MyEtherWallet v4+</a></li>
+          <li><a aria-label="Help Center" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener" role="link" tabindex="0">
+             Help Center
+          </a></li>
+
+          <li><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">
+             Utils &amp; ENS Debugging
+          </a></li>
+
+          <li><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" role="link" tabindex="0">
+            www.MyEtherWallet.com
+          </a></li>
+
+          <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
+            Github: MyEtherWallet v3
+          </a></li>
+
+          <li><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener" role="link" tabindex="0">
+            Github: MyEtherWallet
+          </a></li>
+
           <li>
-            <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener">Slack</a>
+            <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener" role="link" tabindex="0">
+              Slack
+            </a>
             &middot;
-            <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank" rel="noopener">Twitter</a>
+            <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
+              Twitter
+            </a>
             &middot;
-            <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener">Facebook</a>
+            <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+              Facebook
+            </a>
             &middot;
-            <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener">Reddit</a>
+            <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+              Reddit
+            </a>
           </li>
         </ul>
 
