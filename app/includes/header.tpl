@@ -47,12 +47,12 @@
       @@if (site === 'mew' ) { <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage"> <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" /></a> }
       @@if (site === 'cx'  ) { <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">                <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" /></a> }
 
-      <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
+      <div class="tagline">
 
-        &middot; v3.9.4 &nbsp;&nbsp;
+        <span style="padding-right: 1rem;line-height: 1;">v3.9.4</span>
 
-        <span class="dropdown" ng-cloak>
-          <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
+        <span class="dropdown dropdown-lang" ng-cloak>
+          <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
           <ul class="dropdown-menu" ng-show="dropdown">
             <li><a ng-class="{true:'active'}[curLang=='Deutsch']"      ng-click="changeLanguage('de','Deutsch'     )"> Deutsch         </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']"     ng-click="changeLanguage('el','Ελληνικά'    )"> Ελληνικά        </a></li>
@@ -82,11 +82,31 @@
           </ul>
         </span>
 
-        &nbsp;&nbsp;
+        <span class="dropdown dropdown-gas" ng-cloak>
+          <a tabindex="0" aria-haspopup="true" aria-label="adjust gas price" class="dropdown-toggle  btn btn-white" ng-click="dropdownGasPrice = !dropdownGasPrice">
+            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
+            <i class="caret"></i>
+          </a>
+          <ul class="dropdown-menu" ng-show="dropdownGasPrice">
+            <div class="header--gas">
+              <a aria-label="What is Gas?" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener" role="link" tabindex="0">
+                <img src="images/icon-help.svg" class="help-icon" />
+              </a>
+              <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
+              <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
+              <p class="small col-xs-4 text-left">Not So Fast</p>
+              <p class="small col-xs-4 text-center">Fast</p>
+              <p class="small col-xs-4 text-right">Fast AF</p>
+            </div>
+          </ul>
+        </span>
 
         <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
         <span class="dropdown dropdown-node" ng-cloak>
-          <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small><i class="caret"></i></a>
+          <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle  btn btn-white" ng-click="dropdownNode = !dropdownNode">
+            Node: {{curNode.name}} <small>({{curNode.service}})</small>
+            <i class="caret"></i>
+          </a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
               {{value.name}}

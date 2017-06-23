@@ -1,4 +1,4 @@
-<main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl' role="main">
+<main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.generateWallet.id" ng-controller='walletGenCtrl' role="main" ng-cloak>
 
   <article class="block__wrap gen__1" ng-show="!wallet && !showGetAddress">
 

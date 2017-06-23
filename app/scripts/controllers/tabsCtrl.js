@@ -31,6 +31,24 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     }
     $scope.setArrowVisibility();
 
+    var gasPriceKey = "gasPrice";
+    $scope.gasChanged = function() {
+        globalFuncs.localStorage.setItem(gasPriceKey, $scope.gas.value);
+        ethFuncs.gasAdjustment = $scope.gas.value;
+    }
+    var setGasValues = function() {
+        $scope.gas = {
+            curVal: 21,
+            value: globalFuncs.localStorage.getItem(gasPriceKey, null) ? parseInt(globalFuncs.localStorage.getItem(gasPriceKey)) : 21,
+            max: 60,
+            min: 1
+        }
+        ethFuncs.gasAdjustment = $scope.gas.value;
+    }
+    setGasValues();
+    $scope.gasChanged();
+
+
     $scope.changeNode = function(key) {
         if ($scope.nodeList[key]) {
             $scope.curNode = $scope.nodeList[key];
