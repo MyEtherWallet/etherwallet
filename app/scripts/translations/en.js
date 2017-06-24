@@ -10,19 +10,21 @@ x_TransHash                 : 'Transaction Hash',
 x_TxHash                    : 'TX Hash',
 
 x_CancelTx                  : 'Cancel Transaction',
-x_ReplaceTx                 : 'Refund Transaction',
-x_CancelReplaceTx           : 'Cancel or Refund Transaction',
+x_ReplaceTx                 : 'Replace Transaction',
+x_CancelReplaceTx           : 'Cancel or Replace Transaction',
 
 tx_Details                  : 'Transaction Details',
+tx_Summary                  : 'During times of extremely high volume, transactions can be pending for hours, if not days. This tool aims to give you the ability to find and (hopefully) "cancel" / replace these TXs. This is ** not typically something you can do, should not be relied on, and will only work when the TX Pools are full. [Read more here](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent)**',
+
 tx_notFound                 : 'Transaction Not Found',
 tx_notFound_1               : 'This TX cannot be found in the TX Pool of the node you are connected to.',
-tx_notFound_2               : 'It could be in a different TX Pool, waiting to be mined.',
+tx_notFound_2               : 'It could still be in a different TX Pool, waiting to be mined.',
 tx_notFound_3               : 'Please use the dropdown in the top-right to select a different ETH node (e.g. `ETH (Etherscan.io)` or `ETH (Infura.io)` or `ETH (MyEtherWallet)`) and check again.',
 
 tx_foundInPending           : 'Pending Transaction Found',
 tx_foundInPending_1         : 'Your transaction was located in the TX Pool of the node you are connected to. ',
 tx_foundInPending_2         : 'It is currently pending (waiting to be mined). ',
-tx_foundInPending_3         : 'There is a chance you can cancel or replace this transaction. Unlock your wallet below.',
+tx_foundInPending_3         : 'There is a chance you can "cancel" or replace this transaction. Unlock your wallet below.',
 
 tx_FoundOnChain             : 'Transaction Found',
 tx_FoundOnChain_1           : 'Your transaction was successfully mined and is on the blockchain.',

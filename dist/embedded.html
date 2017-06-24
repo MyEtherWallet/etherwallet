@@ -358,10 +358,18 @@
     </div>
 
     <!-- /tab panes -->
-  <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
-    <div class="container" ng-bind-html="notifier.message"></div>
-    <i class="icon-close" ng-click="notifier.close()"></i>
-  </article>
+
+  <div data-ng-repeat="alert in notifier.alerts">
+  <div class="alert popup alert-{{alert.type}} animated-show-hide"
+       style="bottom: {{55*$index}}px; z-index: {{999-$index}};">
+    <div class="container">
+      <div class='alert-message' ng-bind-html="alert.message"></div>
+    </div>
+    <i class="icon-close" ng-click="alert.close()"></i>
+  </div>
+</div>
+
+
 
   </section>
 

@@ -1,16 +1,15 @@
 <main class="tab-pane block--container active" ng-if="globalService.currentTab==globalService.tabs.txStatus.id" ng-controller='txStatusCtrl' role="main" ng-cloak>
 
+  <h2 class="text-danger text-center"> USE AT YOUR OWN RISK: NO IDEA IF THIS WILL WORK YET. </h2>
+
   <!-- Section 1 -->
   <section class="block txstatus__1">
-    <article class="cont-md">
-      <h1 class="text-center" translate="NAV_CheckTxStatus"> Check TX Status </h1>
-      <p>
-        During times of extremely high volume transactions can be pending for hours, if not days.
-        This tool aims to give you the ability to find, cancel, or replace these TXs.
-        This is <strong> not </strong> normal and will only work when the TX Pools are full.
-        <strong><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-check-on-the-status-of-my-transaction-can-i-cancel-override-overwrite-replace-or-do-anything-once-a-transaction-has-been-sent" target="_blank" rel="noopener">Read our complete guide here.</a></strong></p>
-    </article>
     <article class="row">
+      <section class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+        <h1 translate="NAV_CheckTxStatus"> Check TX Status </h1>
+        <p translate="tx_Summary"></p>
+      </section>
+
       <section class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
           <input
              class="form-control"
@@ -30,6 +29,7 @@
 
     <div class="cont-md">   <!-- ng-show="tx.status=='foundOnChain'"   -->
       <h3 class="text-success" translate="tx_FoundOnChain"> Transaction Found </h3>
+      <h5> <a href="https://etherscan.io/tx/{{ tx.hash }}" target="_blank" rel="noopener"> {{ tx.hash }} </a> </h5>
       <p><strong translate="tx_FoundOnChain_1"></strong></p>
       <ul>
         <li translate="tx_FoundOnChain_2"></li>
@@ -116,7 +116,7 @@
   <!-- Section 3:  Unlock -->
   <article class="row text-center txstatus__3" ng-show="tx.status=='foundInPending'">
     <br><br>
-    <h1 class="" translate="x_CancelReplaceTx">Cancel or Refund Transaction </h1>
+    <h1 class="" translate="x_CancelReplaceTx">Cancel or Replace Transaction</h1>
   </article>
 
   <article class="row txstatus__3" ng-show="tx.status=='foundInPending'">
@@ -138,7 +138,7 @@
 
 
 <!-- Section 4: Send TX -->
-<article class="row" ng-show="wallet!=null" >
+<article class="row" >
 
   <section class="col-sm-8" >
 
@@ -171,8 +171,8 @@
       <!-- Nonce -->
       <div class="row form-group">
         <div class="col-sm-11 clearfix">
-          <label translate="TRANS_gas"> Gas Limit: </label>
-          <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
+          <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
+          <input class="form-control" type="text" placeholder="2" ng-model="tx.Nonce" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Nonce -->
@@ -181,7 +181,7 @@
       <div class="row form-group">
         <div class="col-sm-11 clearfix">
           <label translate="TRANS_gas"> Gas Limit: </label>
-          <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
+          <input class="form-control" type="text" placeholder="200000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Gas Limit -->
@@ -189,8 +189,10 @@
       <!-- Gas Price -->
       <div class="row form-group">
         <div class="col-sm-11 clearfix">
-          <label translate="OFFLINE_Step2_Label_3"> Gas Price: </label>
-          <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
+          <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span>
+                 <small> 50 GWEI &middot; 0.0089 ETH &middot; $1.12 USD </small>
+          </label>
+          <input class="form-control" type="text" placeholder="50" ng-model="tx.gasPrice" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Gas Price -->
