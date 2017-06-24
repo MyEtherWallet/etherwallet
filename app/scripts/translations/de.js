@@ -75,7 +75,7 @@ sidebar_donate              : 'Spenden ',
 sidebar_thanks              : 'Dankeschön!!! ',
 
 /* Decrypt Panel */
-decrypt_Access              : 'Wie möchtst du auf deine Wallet zugreifen? ',
+decrypt_Access              : 'Wie möchtst du auf dein Wallet zugreifen? ',
 decrypt_Title               : 'Wähle das Format deines privaten Schlüssels ',
 decrypt_Select              : 'Wallet auswählen ',
 
