@@ -348,6 +348,12 @@
     "type":"default"
   },
   {
+    "address":"0x82665764ea0b58157E1e5E9bab32F68c76Ec0CdF",
+    "symbol":"VSM",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0x667088b212ce3d06a1b553a7221E1fD19000d9aF",
     "symbol":"WINGS",
     "decimal":18,
