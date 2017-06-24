@@ -18,37 +18,8 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     };
     $scope.customGasMsg = ''
 
-    // For token sale holders:
-    // 1. Add the address users are sending to
-    // 2. Add the gas limit users should use to send successfully (this avoids OOG errors)
-    // 3. Add any data if applicable
-    // 4. Add a message if you want.
-    
-    // Token Calendar: 
-    // http://www.tokensalecalendar.com/
-    // If you aren't on the above, you should get on it.
+    $scope.customGas = CustomGasMessages
 
-    $scope.customGas = [{ // donation address example
-        to: '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
-        gasLimit: 21000,
-        data: '',
-        msg: 'Thank you for donating to MyEtherWallet. TO THE MOON!'
-    }, { // BAT
-        to: '0x0D8775F648430679A709E98d2b0Cb6250d2887EF',
-        gasLimit: 200000,
-        data: '0xb4427263',
-        msg: 'BAT. THE SALE IS OVER. STOP CLOGGING THE BLOCKCHAIN PLEASE'
-    }, { // BANCOR
-        to: '0x00000',
-        gasLimit: 200000,
-        data: '',
-        msg: 'Bancor. Starts June XX, 2017.'
-    }, { // Moeda
-        to: '0x4870E705a3def9DDa6da7A953D1cd3CCEDD08573',
-        gasLimit: 200000,
-        data: '',
-        msg: 'Moeda. Ends at block 4,111,557.'
-    }]
     $scope.tx = {
         // if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
         gasLimit: globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null ? globalFuncs.urlGet('gaslimit') != null ? globalFuncs.urlGet('gaslimit') : globalFuncs.urlGet('gas') : globalFuncs.defaultTxGasLimit,
@@ -109,11 +80,11 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.wallet.setTokens();
         if ($scope.parentTxConfig) {
             var setTxObj = function() {
-                $scope.tx.to = $scope.parentTxConfig.to;
+                $scope.addressDrtv.ensAddressField = $scope.parentTxConfig.to;
                 $scope.tx.value = $scope.parentTxConfig.value;
                 $scope.tx.sendMode = $scope.parentTxConfig.sendMode ? $scope.parentTxConfig.sendMode : 'ether';
                 $scope.tx.tokenSymbol = $scope.parentTxConfig.tokenSymbol ? $scope.parentTxConfig.tokenSymbol : '';
-                $scope.tx.readOnly = $scope.parentTxConfig.readOnly ? $scope.parentTxConfig.readOnly : false;
+                $scope.tx.readOnly = $scope.addressDrtv.readOnly = $scope.parentTxConfig.readOnly ? $scope.parentTxConfig.readOnly : false;
             }
             $scope.$watch('parentTxConfig', function() {
                 setTxObj();
@@ -153,6 +124,16 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             $scope.tokenTx.to = $scope.tx.to;
             $scope.tokenTx.value = $scope.tx.value;
         }
+        if (newValue.to !== oldValue.to) {
+          for (var i in $scope.customGas) {
+              if ($scope.tx.to.toLowerCase() == $scope.customGas[i].to.toLowerCase()) {
+                  $scope.customGasMsg = $scope.customGas[i].msg != '' ? $scope.customGas[i].msg : ''
+                  return;
+              }
+          }
+
+          $scope.customGasMsg = ''
+        }
     }, true);
     $scope.estimateGasLimit = function() {
         $scope.customGasMsg = ''
@@ -182,7 +163,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             estObj.value = '0x00';
         }
         ethFuncs.estimateGas(estObj, function(data) {
-            
+
             if (!data.error) {
                 if (data.data == '-1') $scope.notifier.danger(globalFuncs.errorMsgs[21]);
                 $scope.tx.gasLimit = data.data;
@@ -233,9 +214,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         $scope.sendTxModal.close();
         uiFuncs.sendTx($scope.signedTx, function(resp) {
             if (!resp.isError) {
-                var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a class='strong' href='" + $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data) + "' class='strong' target='_blank'>View TX</a><br />" : '';
-                var emailLink = '<a class="strong" href="mailto:support@myetherwallet.com?Subject=Issue%20regarding%20my%20TX%20&Body=Hi%20Taylor%2C%20%0A%0AI%20have%20a%20question%20concerning%20my%20transaction.%20%0A%0AI%20was%20attempting%20to%3A%0A-%20Send%20ETH%0A-%20Send%20Tokens%0A-%20Send%20via%20my%20Ledger%0A-%20Send%20via%20my%20TREZOR%0A-%20Send%20via%20the%20offline%20tab%0A%0AFrom%20address%3A%20%0A%0ATo%20address%3A%20%0A%0AUnfortunately%20it%3A%0A-%20Never%20showed%20on%20the%20blockchain%0A-%20Failed%20due%20to%20out%20of%20gas%0A-%20Failed%20for%20another%20reason%0A-%20Never%20showed%20up%20in%20the%20account%20I%20was%20sending%20to%0A%0A%5B%20INSERT%20MORE%20INFORMATION%20HERE%20%5D%0A%0AThank%20you%0A%0A' + "%0A%20TO%20" + $scope.tx.to + "%0A%20FROM%20" + $scope.wallet.getAddressString() + "%0A%20AMT%20" + $scope.tx.value + "%0A%20CUR%20" + $scope.unitReadable + "%0A%20NODE%20TYPE%20" + $scope.ajaxReq.type + "%0A%20TOKEN%20" + $scope.tx.tokenSymbol + "%0A%20TOKEN%20TO%20" + $scope.tokenTx.to + "%0A%20TOKEN%20AMT%20" + $scope.tokenTx.value + "%0A%20TOKEN%20CUR%20" + $scope.unitReadable + "%0A%20TX%20" + resp.data + '" target="_blank">Confused? Email Us.</a>';
-                $scope.notifier.success(globalFuncs.successMsgs[2] + resp.data + "<p>" + bExStr + "</p><p>" + emailLink + "</p>");
+                var txHashLink = $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data)
+                var bExStr     = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a class='btn btn-xs btn-info' href='" + txHashLink + "' class='strong' target='_blank' rel='noopener'>Verify Transaction</a>" : '';
+                var emailLink  = '<a class="btn btn-xs btn-info" href="mailto:support@myetherwallet.com?Subject=Issue%20regarding%20my%20TX%20&Body=%0A%0AI%20was%20trying%20to..............%0A%0A%0A%0ABut%20I%27m%20confused%20because...............%0A%0A%0A%0A%0A' + "%0ATo%20Address%3A%20https%3A%2F%2Fetherscan.io%2Faddress%2F" + $scope.tx.to + "%0A%0AFrom%20Address%3A%20https%3A%2F%2Fetherscan.io%2Faddress%2F" + $scope.wallet.getAddressString() + "%0A%0ATX%20Hash%3A%20https%3A%2F%2Fetherscan.io%2Ftx%2F" + resp.data + "%0A%0AAmount%3A%20" + $scope.tx.value + "%20" + $scope.unitReadable + "%0ANode%3A%20" + $scope.ajaxReq.type + "%0AToken%20To%20Addr%3A%20" + $scope.tokenTx.to + "%0AToken%20Amount%3A%20" + $scope.tokenTx.value + "%20" + $scope.unitReadable + "%0AData%3A%20" + $scope.tx.data + "%0AGas%20Limit%3A%20" + $scope.tx.gasLimit + "%0AGas%20Price%3A%20" + $scope.tx.gasPrice + '" target="_blank" rel="noopener">Confused? Email Us.</a>';
+                $scope.notifier.success("<p>" +  globalFuncs.successMsgs[2] + '<strong>' + resp.data + "</strong></p><p>" + bExStr + " " + emailLink + "</p>");
                 $scope.wallet.setBalance(applyScope);
                 if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
             } else {

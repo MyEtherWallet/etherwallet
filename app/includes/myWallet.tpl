@@ -73,7 +73,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title text-primary" id="myModalLabel">
+          <h3 class="modal-title text-primary">
             <span translate="MYWAL_Edit_2">Edit Wallet:</span>
             {{viewWallet.addr}}
           </h3>
@@ -103,7 +103,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title text-warning" id="myModalLabel">
+          <h3 class="modal-title text-warning">
             <span translate="NAV_ViewWallet">View Wallet Info</span>:
             {{viewWallet.nick}}
           </h3>
@@ -137,7 +137,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title text-danger" id="myModalLabel">
+          <h3 class="modal-title text-danger">
             <span translate="MYWAL_Content_1"> Warning! You are about to remove your wallet: </span> {{viewWallet.nick}}
           </h3>
         </div>

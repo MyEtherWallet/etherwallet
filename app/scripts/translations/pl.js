@@ -11,6 +11,7 @@ NAV_Contact                 : 'Kontakt ',
 NAV_Contracts               : 'Kontrakt ',
 NAV_DeployContract          : 'Wyślij Kontrakt ',
 NAV_ENS                     : 'ENS',
+NAV_GenerateWallet_alt      : 'New Wallet ',
 NAV_GenerateWallet          : 'Wygeneruj Portfel ',
 NAV_Help                    : 'Pomoc ',
 NAV_InteractContract        : 'Pracuj z Kontraktem ',
@@ -26,7 +27,7 @@ NAV_YourWallets             : 'Twoje Portfele ',
 
 /* General */
 x_Access                    : 'Dostęp ',
-x_AddessDesc                : 'Inaczej "Numer konta" lub "Klucz publiczny". Wysyłasz go innym aby mogli Ci wysłać ether. Ikona umożliwia łatwe rozpoznanie Twojego adresu. ',
+x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. Inaczej "Numer konta" lub "Klucz publiczny". Wysyłasz go innym aby mogli Ci wysłać ether. Ikona umożliwia łatwe rozpoznanie Twojego adresu. ',
 x_Address                   : 'Twój Adres ',
 x_Cancel                    : 'Anuluj ',
 x_CSV                       : 'Plik CSV (nieszyfrowany) ',
@@ -315,10 +316,11 @@ ERROR_31                    : 'Błędna tajna fraza (secret phrase) ',
 ERROR_32                    : 'Nie można połączyć z węzłem.  Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
 
 SUCCESS_1                   : 'Prawidłowy adres ',
 SUCCESS_2                   : 'Portfel został odszyfrowany ',
-SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transakcja zgłoszona. TX ID ',
+SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX Hash:   ', //'Transakcja zgłoszona. TX Hash ',
 SUCCESS_4                   : 'Twój portfel został dodany ',
 SUCCESS_5                   : 'Wybrany plik ',
 SUCCESS_6                   : 'Uzyskano połączenie: ',
@@ -427,7 +429,7 @@ HELP_4_Desc_9               : 'Kliknij "Wygeneruj i Podpisz Transakcję". ',
 HELP_4_Desc_10              : 'Pojawi się kilka kolejnych pól. Są to dane transakcji wygenerowane przez Twoją przeglądarkę. ',
 HELP_4_Desc_11              : 'Kliknij niebieski przycisk "Wyślij Transakcję" na dole strony. ',
 HELP_4_Desc_12              : 'Pojawi się okienko z potwierdzeniem. Zweryfikuj czy kwota i adres, na który wysyłasz są prawidłowe. Następnie kliknij "Tak, jestem pewien! Zatwierdź Transakcję.". ',
-HELP_4_Desc_13              : 'Transakcja zostanie wysłana i zostanie wyświetlony TX ID. Możesz kliknąć TX ID, aby zobaczyć tą transakcję w eksploratorze bloków. ',
+HELP_4_Desc_13              : 'Transakcja zostanie wysłana i zostanie wyświetlony TX Hash. Możesz kliknąć TX Hash, aby zobaczyć tą transakcję w eksploratorze bloków. ',
 
 HELP_4CX_Title              : '4)Jak wysłać Ether używając MyEtherWallet CX? ',
 HELP_4CX_Desc_1             : 'Najpierw musisz dodać portfel. Po dodaniu portfela masz 2 możliwości do wyboru: funkcja "Wyślij" z ikony Rozszerzenia Chrome lub zakładka "Wyślij Ether" ze strony "Moje Portfele". ',
@@ -474,7 +476,7 @@ HELP_7_Desc_11              : 'Kliknij "Generuj Transakcję". ',
 HELP_7_Desc_12              : 'Pojawi się kilka kolejnych pól z danymi transakcji wygenerowanymi przez Twoją przeglądarkę. ',
 HELP_7_Desc_13              : 'Kliknij niebieski przycisk "Wyślij Transakcję", który znajduje się niżej. ',
 HELP_7_Desc_14              : 'Wyskoczy okienko. Zweryfikuj czy kwota i adres na który wysyłasz są prawidłowe. Następnie kliknij "Tak, jestem pewien! Zatwierdź transakcję.". ',
-HELP_7_Desc_15              : 'Transakcja zostanie zatwierdzona. TX ID zostanie wyświetlone. Możesz kliknąć TX ID aby zobaczyć status transakcji w eksploratorze. ',
+HELP_7_Desc_15              : 'Transakcja zostanie zatwierdzona. TX Hash zostanie wyświetlone. Możesz kliknąć TX Hash aby zobaczyć status transakcji w eksploratorze. ',
 
 HELP_8_Title                : '8) Co się stanie, jeżeli wasza strona zniknie z sieci? ',
 HELP_8_Desc_1               : 'MyEtherWallet nie jest usługą portfela internetowego. Nie posiadasz loginu i nic nie jest zapisywane na naszych serwerach. To tylko interfejs, który pozwala korzystać z sieci Ethereum. ',

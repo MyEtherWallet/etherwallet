@@ -11,6 +11,7 @@ NAV_Contact                 : '문의하기 ',
 NAV_Contracts               : '컨트랙트 ',
 NAV_DeployContract          : '컨트랙트 배포 ',
 NAV_ENS                     : 'ENS',
+NAV_GenerateWallet_alt      : 'New Wallet ',
 NAV_GenerateWallet          : '지갑 생성 ',
 NAV_Help                    : '도움말 ',
 NAV_InteractContract        : '컨트랙트 조작 ',
@@ -26,7 +27,7 @@ NAV_YourWallets             : '내 지갑 ',
 
 /* General */
 x_Access                    : '액세스 ',
-x_AddessDesc                : '이것은 자신의 계좌 번호와 공개 키입니다. ETH를 전송하기 위해 필요한 정보입니다. 아이콘은 자신의 주소를 식별합니다. ',
+x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. 이것은 자신의 계좌 번호와 공개 키입니다. ETH를 전송하기 위해 필요한 정보입니다. 아이콘은 자신의 주소를 식별합니다. ',
 x_Address                   : '내 주소 ',
 x_Cancel                    : '취소 ',
 x_CSV                       : 'CSV 파일 (암호화되지 않음) ',
@@ -305,10 +306,11 @@ ERROR_31                    : '잘못된 비밀 문구입니다. ',
 ERROR_32                    : '노드에 연결할 수 없습니다. 새로고침 하거나 도움말을 확인해주세요. ',
 ERROR_33                    : '입찰자의 주소와 잠금 해제된 지갑이 일치하지 않습니다. ',
 ERROR_34                    : '해당 이름이 문자열의 이름과 일치하지 않습니다. ',
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
 
 SUCCESS_1                   : '유효한 주소 ',
 SUCCESS_2                   : '지갑이 성공적으로 복호화 되었습니다. ',
-SUCCESS_3                   : '트랜잭션이 블록체인으로 공개됩니다. 트랜잭션 내역과 가스가 채굴되었는지 확인려면 클릭해주세요. 가스 또는 컨트랙트 실행 오류가 없는지 확인해주세요. TX ID : ', //'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //
+SUCCESS_3                   : '트랜잭션이 블록체인으로 공개됩니다. 트랜잭션 내역과 가스가 채굴되었는지 확인려면 클릭해주세요. 가스 또는 컨트랙트 실행 오류가 없는지 확인해주세요. TX Hash : ', //'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX Hash:   ', //
 SUCCESS_4                   : '지갑이 성공적으로 추가되었습니다. ',
 SUCCESS_5                   : '파일이 선택되었습니다. ',
 SUCCESS_6                   : '성공적으로 연결되었습니다. ',

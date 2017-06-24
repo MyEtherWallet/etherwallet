@@ -34,6 +34,10 @@ ethFuncs.padLeftEven = function(hex) {
 }
 ethFuncs.addTinyMoreToGas = function(hex) {
     hex = this.sanitizeHex(hex);
+    //if (parseInt(ethFuncs.gasAdjustment) >= 80) {
+        //uiFuncs.notifier.danger("We are currently trying to debug a weird issue. Please contact support@myetherwallet.com w/ subject line WEIRD ISSUE to help.");
+        //throw "error";
+    //}
     return new BigNumber(ethFuncs.gasAdjustment * etherUnits.getValueOfUnit('gwei')).toString(16);
 }
 ethFuncs.decimalToHex = function(dec) {
@@ -54,8 +58,9 @@ ethFuncs.getNakedAddress = function(address) {
     return address.toLowerCase().replace('0x', '');
 }
 ethFuncs.getDeteministicContractAddress = function(address, nonce) {
+    nonce = new BigNumber(nonce).toString();
     address = address.substring(0, 2) == '0x' ? address : '0x' + address;
-    return '0x' + ethUtil.sha3(ethUtil.rlp.encode([address, nonce])).slice(12).toString('hex');
+    return '0x' + ethUtil.generateAddress(address, nonce).toString('hex');
 }
 ethFuncs.padLeft = function(n, width, z) {
     z = z || '0';

@@ -469,21 +469,22 @@ label small {
 @brand-etc: #9c27b0;
 @brand-test: #cddc39;
 @brand-cust: #9c27b0;
+@brand-rsk: #ff794f;
 
 .dropdown-node .dropdown-menu {
-  li:nth-last-child(2) {
+  li:nth-last-child(3) {
     padding-bottom: 5px;
   }
 
-  li:nth-child(2),
   li:nth-child(3),
-  li:nth-child(6) {
+  li:nth-child(4),
+  li:nth-child(7) {
     border-bottom: 1px solid @gray-lighter;
     padding-bottom: 5px;
   }
-  li:nth-child(2) + li,
   li:nth-child(3) + li,
-  li:nth-child(6) + li {
+  li:nth-child(4) + li,
+  li:nth-child(7) + li {
     padding-top: 5px;
   }
 
@@ -496,16 +497,20 @@ label small {
     border-left: 2px solid @brand-cust;
   }
   li:nth-child(1),
-  li:nth-child(2) {
+  li:nth-child(2),
+  li:nth-child(3) {
     border-left: 2px solid @brand-eth;
   }
-  li:nth-child(3) {
+  li:nth-child(4) {
     border-left: 2px solid @brand-etc;
   }
-  li:nth-child(4),
   li:nth-child(5),
-  li:nth-child(6) {
+  li:nth-child(6),
+  li:nth-child(7) {
     border-left: 2px solid @brand-test;
+  }
+  li:nth-child(8) {
+    border-left: 2px solid @brand-rsk;
   }
   li:last-child {
     border-left: 2px solid @gray-light;
@@ -547,6 +552,13 @@ header.Rinkeby {
   .NAV_ENS {}
   & + .container .modal-content {
     border: 3px solid @brand-test;
+  }
+}
+header.RSK {
+  border-top: 3px solid @brand-rsk;
+  .NAV_ENS {}
+  & + .container .modal-content {
+    border: 3px solid @brand-rsk;
   }
 }
 header.Custom  {

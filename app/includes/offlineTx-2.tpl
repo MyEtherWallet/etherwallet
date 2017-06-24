@@ -15,6 +15,10 @@
     <section class="col-xs-1 address-identicon-container">
       <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
     </section>
+
+    <section class="col-xs-12">
+      <p>{{customGasMsg}}</p>
+    </section>
   </article>
 
   <!-- Amount to Send -->
@@ -24,7 +28,7 @@
         Amount to Send
       </label>
       <div class="input-group">
-        <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value"/>
+        <input class="form-control" type="text" placeholder="{{'SEND_amount_short' | translate }}" ng-model="tx.value"/>
         <div class="input-group-btn">
           <a style="min-width: 150px"
              class="btn btn-default dropdown-toggle"
@@ -114,4 +118,3 @@
     <div class="qr-code" qr-code="{{signedTx}}" watch-var="signedTx" width="100%"></div>
   </section>
 </article>
-

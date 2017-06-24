@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>MyEtherWallet: Open-Source & Client-Side Ether Wallet</title>
   <link rel="canonical" href="https://www.myetherwallet.com" />
-  <meta name="description" content="Open-Source & Client-Side Ether Wallet">
+  <meta name="description" content="Open-Source & Client-Side Ethereum Wallet">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
@@ -31,19 +31,29 @@
 <body>
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
-  
+
+<!--
+    <div class="small announcement annoucement-warning">
+      <div class="container">The #FOMO is Real. Breath. If you are trying to get in on Status.im, <strong> wait until BLOCK 3903900!</strong> <br /> If your TX is not urgent, we recommend NOT SENDING TODAY. Thank you for understanding. </div>
+    </div>
+-->
+    
   <section class="bg-gradient header-branding">
     <section class="container">
 
-       <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage"> <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" /></a> 
+      
+        <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage">
+          <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
+        </a>
+      
       
 
-      <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
+      <div class="tagline">
 
-        &middot; v3.8.9 &nbsp;&nbsp;
+        <span>v3.9.5</span>
 
-        <span class="dropdown" ng-cloak>
-          <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
+        <span class="dropdown dropdown-lang" ng-cloak>
+          <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
           <ul class="dropdown-menu" ng-show="dropdown">
             <li><a ng-class="{true:'active'}[curLang=='Deutsch']"      ng-click="changeLanguage('de','Deutsch'     )"> Deutsch         </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']"     ng-click="changeLanguage('el','Ελληνικά'    )"> Ελληνικά        </a></li>
@@ -73,16 +83,36 @@
           </ul>
         </span>
 
-        &nbsp;&nbsp;
+        <span class="dropdown dropdown-gas" ng-cloak>
+          <a tabindex="0" aria-haspopup="true" aria-label="adjust gas price" class="dropdown-toggle  btn btn-white" ng-click="dropdownGasPrice = !dropdownGasPrice">
+            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
+            <i class="caret"></i>
+          </a>
+          <ul class="dropdown-menu" ng-show="dropdownGasPrice">
+            <div class="header--gas">
+              <a aria-label="What is Gas?" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener" role="link" tabindex="0">
+                <img src="images/icon-help.svg" class="help-icon" />
+              </a>
+              <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
+              <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
+              <p class="small col-xs-4 text-left">Not So Fast</p>
+              <p class="small col-xs-4 text-center">Fast</p>
+              <p class="small col-xs-4 text-right">Fast AF</p>
+            </div>
+          </ul>
+        </span>
 
         <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
         <span class="dropdown dropdown-node" ng-cloak>
-          <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small><i class="caret"></i></a>
+          <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle  btn btn-white" ng-click="dropdownNode = !dropdownNode">
+            Node: {{curNode.name}} <small>({{curNode.service}})</small>
+            <i class="caret"></i>
+          </a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
               {{value.name}}
               <small> ({{value.service}}) </small>
-              <img ng-show="value.service=='Custom'" img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
+              <img ng-show="value.service=='Custom'" src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
             </a></li>
             <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
           </ul>
@@ -392,7 +422,7 @@
 
   <br /><br /><br />
 
-  <h1> "SHA3" (Keccak-256) It! <small><a href="https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use" target="_blank">yooo... sha3 !== Keccak-256?!</a></small></h1>
+  <h1> "SHA3" (Keccak-256) It! <small><a href="https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use" target="_blank" rel="noopener">yooo... sha3 !== Keccak-256?!</a></small></h1>
 
   <div class="form-group">
     <label> Input </label>
@@ -488,43 +518,77 @@
     </tr>
   </table>
   </p>
+    <br /><br /><br />
+
+  <h1> Mistyped Private Key </h1>
+
+  <div class="form-group">
+    <label> Private Key that isn't unlocking correct address</label>
+    <input class="form-control" type="text" ng-model="mistypedPK"  />
+  </div>
+  <div class="form-group">
+    <label> Address You Sent To </label>
+    <input class="form-control" type="text" ng-model="mistypedAddr" />
+  </div>
+  <div class="form-group">
+    <a class="btn btn-primary" ng-click="findMyPrivateKey()"> Start the Search! </a>
+  </div>
+  <div class="form-group">
+    <label> Actual Private Key </label>
+    <input class="form-control" type="text" ng-model="actualPK" readonly />
+  </div>
+  <div class="form-group">
+    <ul>
+      <li class="text-danger">Consider yourself very, very lucky.</li>
+      <li> Now you need to create a new secure wallet and move all funds to it.</li>
+      <li>In order to prevent the same thing from happening, <strong> please make sure your address you are sending to matches the address on your paper wallet</strong></li>
+      <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/how-do-i-create-a-new-wallet" target="_blank" rel="noopener">Read this guide for more information.</a></li>
+      <li><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/protecting-yourself-and-your-funds?from_search=true" target="_blank" rel="noopener">Learn how to protect yourself and your funds.</a></li>
+    </ul>
+  </div>
+
 </div>
 
 
-
   </div>
 
-
-  <div class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show" role="alert" aria-live="assertive">
-    <span class="sr-only">{{notifier.class}}</span><div class="container" ng-bind-html="notifier.message"></div>
-    <i tabindex="0" aria-label="dismiss" class="icon-close" ng-click="notifier.close()"></i>
+  <div data-ng-repeat="alert in notifier.alerts">
+  <div class="alert popup alert-{{alert.type}} animated-show-hide"
+       style="bottom: {{55*$index}}px; z-index: {{999-$index}};">
+    <div class="container">
+      <div class='alert-message' ng-bind-html="alert.message"></div>
+    </div>
+    <i class="icon-close" ng-click="alert.close()"></i>
   </div>
+</div>
+
 
 </section>
 
 <footer class="footer" role="content" aria-label="footer" ng-controller='footerCtrl' >
 
-  <article class="block--wrap" style="max-width: 1780px; margin: auto;">
+  <article class="block__wrap" style="max-width: 1780px; margin: auto;">
 
       <section class="footer--left">
         <a href="https://www.myetherwallet.com/"><img src="images/logo-myetherwallet.svg" height="55px" width="auto" alt="Ether Wallet" class="footer--logo"/></a>
 
         <ul>
           <li>
-            <span translate="FOOTER_1">Open-Source, client-side tool for easily & securely interacting with the Ethereum network.</span>
-            <span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>.
+            <span translate="FOOTER_1">Free, open-source, client-side tool for easily &amp; securely interacting with the Ethereum network.</span>
+            <span translate="FOOTER_1b">Created by</span> <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a> &amp; <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>.
           </li>
         </ul>
+        <ul>
 
-        <a aria-label="Help Center" href="https://myetherwallet.groovehq.com/help_center" target="_blank"> Support </a>
+          <li><a href="https://www.myetherwallet.com/signmsg.html" target="_blank" rel="noopener" role="link" tabindex="0">
+             Sign Message
+          </a></li>
 
-        <a role="link" tabindex="0" href="https://www.myetherwallet.com/helpers.html"> Helpers &amp; ENS Debugging </a>
+          <li ng-show="showBlocks">Latest Block#: {{currentBlockNumber}} </li>
 
-        <a role="link" tabindex="0" href="https://www.myetherwallet.com/signmsg.html"> Sign Message </a>
+          <li> <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a> </li>
 
-        <a role="link" tabindex="0" data-toggle="modal" data-target="#disclaimerModal" translate="FOOTER_4"> Disclaimer </a>
-
-        <p ng-show="showBlocks" style="font-size: 12px">Latest Block#: {{currentBlockNumber}}</p>
+        </ul>
 
       </section>
 
@@ -534,11 +598,12 @@
           <h5> <i aria-hidden="true">👫</i> You can support us by supporting our blockchain-family.</h5>
           <ul>
             <li>Consider using our affiliate links to...</li>
-            <li><a aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank">Swap ETH/BTC/EUR/CHF via Bity.com</a></li>
-            <li><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank">Buy a Ledger Nano S</a></li>
-            <li><a href="https://trezor.io/?a=myetherwallet.com" target="_blank">Buy a TREZOR</a></li>
+            <li><a aria-label="Swap Ether or Bitcoin via Bity.com" href="https://bity.com/af/jshkb37v" target="_blank" rel="noopener">Swap ETH/BTC/EUR/CHF via Bity.com</a></li>
+            <li><a href="https://www.ledgerwallet.com/r/fa4b?path=/products/" target="_blank" rel="noopener">Buy a Ledger Nano S</a>
+            &nbsp;&middot;&nbsp;
+            <a href="https://trezor.io/?a=myetherwallet.com" target="_blank" rel="noopener">Buy a TREZOR</a></li>
           </ul>
-        </p>
+        </div>
         <div>
           <h5> <i aria-hidden="true">💝</i> Donations are always appreciated!</h5>
           <ul>
@@ -559,27 +624,45 @@
       </section>
 
       <section class="footer--righ">
-        <div class="footer--gas">
-          <label translate="OFFLINE_Step2_Label_3"> Gas Price: </label> (<a href="http://ethgasstation.info/minerTable.php" target="_blank">{{gas.value}} Gwei</a>)
-          <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
-          <p style="padding: 0" class="small col-xs-4">Not So Fast</p>
-          <p style="padding: 0" class="small col-xs-4 text-center">Fast</p>
-          <p style="padding: 0" class="small col-xs-4 text-right">Fast AF</p>
-        </div>
 
-        <h5><i aria-hidden="true">🌎</i> On the Web</h5>
+        <h5><i aria-hidden="true">🌎</i> Helpful Links </h5>
         <ul>
-          <li><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank">www.MyEtherWallet.com</a></li>
-          <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank">Github: MyEtherWallet.com</a></li>
-          <li><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank">Github: MyEtherWallet v4+</a></li>
+          <li><a aria-label="Help Center" href="https://myetherwallet.groovehq.com/help_center" target="_blank" rel="noopener" role="link" tabindex="0">
+             Help Center
+          </a></li>
+
+          <li><a href="https://www.myetherwallet.com/helpers.html" target="_blank" rel="noopener" role="link" tabindex="0">
+             Utils &amp; ENS Debugging
+          </a></li>
+
+          <li><a aria-label="my ether wallet.com" href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" role="link" tabindex="0">
+            www.MyEtherWallet.com
+          </a></li>
+
+          <li><a aria-label="my ether wallet github" href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
+            Github: MyEtherWallet v3
+          </a></li>
+
+          <li><a aria-label="our organization on github" href="https://github.com/MyEtherWallet" target="_blank" rel="noopener" role="link" tabindex="0">
+            Github: MyEtherWallet
+          </a></li>
+
           <li>
-            <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank">Slack</a>
+            <a aria-label="join our slack" href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener" role="link" tabindex="0">
+              Slack
+            </a>
             &middot;
-            <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank">Twitter</a>
+            <a aria-label="twitter" href="https://twitter.com/myetherwallet" target="_blank" rel="noopener" role="link" tabindex="0">
+              Twitter
+            </a>
             &middot;
-            <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank">Facebook</a>
+            <a aria-label="facebook" href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+              Facebook
+            </a>
             &middot;
-            <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank">Reddit</a>
+            <a aria-label="reddit" href="https://www.reddit.com/r/MyEtherWallet/" target="_blank" rel="noopener" role="link" tabindex="0">
+              Reddit
+            </a>
           </li>
         </ul>
 

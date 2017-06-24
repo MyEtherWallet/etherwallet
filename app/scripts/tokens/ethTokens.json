@@ -36,6 +36,18 @@
     "type":"default"
   },
   {
+    "address":"0x1F573D6Fb3F13d689FF844B4cE37794d79a7FF1C",
+    "symbol":"BNT",
+    "decimal":18,
+    "type":"default"
+  },
+  {
+   "address":"0x12FEF5e57bF45873Cd9B62E9DBd7BFb99e32D73e",
+   "symbol":"CFI",
+   "decimal":18,
+   "type":"default"
+  },
+  {
     "address":"0xAef38fBFBF932D1AeF3B808Bc8fBd8Cd8E1f8BC5",
     "symbol":"CRB",
     "decimal":8,
@@ -150,6 +162,12 @@
     "type":"default"
   },
   {
+    "address":"0x40395044ac3c0c57051906da938b54bd6557f212",
+    "symbol":"MGO",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xd0b171Eb0b0F2CbD35cCD97cDC5EDC3ffe4871aa",
     "symbol":"MDA",
     "decimal":18,
@@ -180,9 +198,27 @@
     "type":"default"
   },
   {
+    "address":"0xa645264C5603E96c3b0B078cdab68733794B0A71",
+    "symbol":"MYST",
+    "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0x1776e1F26f98b1A5dF9cD347953a26dd3Cb46671",
+    "symbol":"NMR",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
     "symbol":"NxC",
     "decimal":3,
+    "type":"default"
+  },
+  {
+    "address":"0xB97048628DB6B661D4C2aA833e95Dbe1A905B280",
+    "symbol":"PAY",
+    "decimal":18,
     "type":"default"
   },
   {
@@ -198,6 +234,18 @@
     "type":"default"
   },
   {
+    "address":"0x671AbBe5CE652491985342e85428EB1b07bC6c64",
+    "symbol":"QAU",
+    "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0x697beac28B09E122C4332D163985e8a73121b97F",
+    "symbol":"QRL",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5",
     "symbol":"REP",
     "decimal":18,
@@ -210,8 +258,14 @@
     "type":"default"
   },
   {
+    "address":"0xcCeD5B8288086BE8c38E23567e684C3740be4D48",
+    "symbol":"RLT",
+    "decimal":10,
+    "type":"default"
+  },
+  {
     "address":"0x2e071D2966Aa7D8dECB1005885bA1977D6038A65",
-    "symbol":"ROL",
+    "symbol":"DICE",
     "decimal":16,
     "type":"default"
   },
@@ -236,6 +290,12 @@
   {
     "address":"0x1dCE4Fa03639B7F0C38ee5bB6065045EdCf9819a",
     "symbol":"SRC",
+    "decimal":8,
+    "type":"default"
+  },
+  {
+    "address":"0xb64ef51c888972c908cfacf59b47c1afbc0ab8ac",
+    "symbol":"STORJ",
     "decimal":8,
     "type":"default"
   },
@@ -285,6 +345,12 @@
     "address":"0x8f3470A7388c05eE4e7AF3d01D8C722b0FF52374",
     "symbol":"VERI",
     "decimal":18,
+    "type":"default"
+  },
+  {
+    "address":"0x82665764ea0b58157E1e5E9bab32F68c76Ec0CdF",
+    "symbol":"VSM",
+    "decimal":0,
     "type":"default"
   },
   {

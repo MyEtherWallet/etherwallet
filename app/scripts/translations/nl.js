@@ -11,6 +11,7 @@ NAV_Contact                 : 'Contact ',
 NAV_Contracts               : 'Contracten ',
 NAV_DeployContract          : 'Verspreid Contract ',
 NAV_ENS                     : 'ENS',
+NAV_GenerateWallet_alt      : 'New Wallet ',
 NAV_GenerateWallet          : 'Genereer Wallet ',
 NAV_Help                    : 'Help ',
 NAV_InteractContract        : 'Interactie met Contract ',
@@ -26,7 +27,7 @@ NAV_YourWallets             : 'Jouw Wallets ',
 
 /* General */
 x_Access                    : 'Verkrijg Toegang ',
-x_AddessDesc                : 'Dit is je "Account #" ofwel je "Publieke Sleutel". Maak dit bekend aan anderen zodat ze je ether kunnen sturen. Dit icoon is een makkelijke manier om je adres te herkennen. ',
+x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. Dit is je "Account #" ofwel je "Publieke Sleutel". Maak dit bekend aan anderen zodat ze je ether kunnen sturen. Dit icoon is een makkelijke manier om je adres te herkennen. ',
 x_Address                   : 'Je Adres ',
 x_Cancel                    : 'Annuleren ',
 x_CSV                       : 'CSV bestand (onversleuteld) ',
@@ -305,10 +306,11 @@ ERROR_31                    : 'Ongeldige geheime zin ',
 ERROR_32                    : 'Could not connect to the node. Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
 
 SUCCESS_1                   : 'Geldig adres ',
 SUCCESS_2                   : 'Wallet succesvol ontsleuteld ',
-SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transactie verzonden. TX ID ',
+SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX Hash:   ', //'Transactie verzonden. TX Hash ',
 SUCCESS_4                   : 'Je Wallet is succesvol toegevoegd ',
 SUCCESS_5                   : 'Bestand Geselecteerd ',
 SUCCESS_6                   : 'You are successfully connected ',
@@ -417,7 +419,7 @@ HELP_4_Desc_9               : 'Klik "Genereer Transactie". ',
 HELP_4_Desc_10              : 'Enkele extra nieuwe invoer velden zullen verschijnen. Dit is jouw browser die de transactie genereert. ',
 HELP_4_Desc_11              : 'Klik op de blauwe "Verzend Transactie" knop eronder. ',
 HELP_4_Desc_12              : 'Een pop-up zal verschijnen. Controleer dat het bedrag en het adres waarnaar je gaat verzenden correct zijn. Klik vervolgens op de "Ja, ik weet het zeker! Maak de transactie." knop. ',
-HELP_4_Desc_13              : 'De transactie zal worden verstuurt. Het TX ID zal worden weergegeven. Je kunt op dit TX ID klikken om het in de blockchain te bekijken. ',
+HELP_4_Desc_13              : 'De transactie zal worden verstuurt. Het TX Hash zal worden weergegeven. Je kunt op dit TX Hash klikken om het in de blockchain te bekijken. ',
 
 HELP_4CX_Title              : '4) Hoe verzend ik Ether met MyEtherWallet CX? ',
 HELP_4CX_Desc_1             : 'Ten eerste heb je een wallet nodig. Zodra je die hebt, heb je 2 opties: De "VerzendSnel" functionaliteit vanuit het Chrome Extensie icoon of de "Verzend Ether en Tokens" pagina. ',
@@ -464,7 +466,7 @@ HELP_7_Desc_11              : 'Klik "Genereer Transactie". ',
 HELP_7_Desc_12              : 'Enkele extra velden zullen verschijnen. Dit is je browser die de transactie genereert. ',
 HELP_7_Desc_13              : 'Klik op de blauwe "Verzend Transactie" knop eronder. ',
 HELP_7_Desc_14              : 'Een pop-up zal verschijnen. Controleer dat het bedrag en het adres waarnaar je gaat verzenden correct zijn. Klik vervolgens op de "Ja, ik weet het zeker! Maak de transactie." knop. ',
-HELP_7_Desc_15              : 'De transactie zal worden verstuurt. Het TX ID zal worden weergegeven. Je kunt op dit TX ID klikken om het in de blockchain te bekijken. ',
+HELP_7_Desc_15              : 'De transactie zal worden verstuurt. Het TX Hash zal worden weergegeven. Je kunt op dit TX Hash klikken om het in de blockchain te bekijken. ',
 
 HELP_8_Title                : '8) Wat gebeurd er als deze website stopt? ',
 HELP_8_Desc_1               : 'MyEtherWallet is geen web wallet. Je hoeft niet in te loggen en er zal nooit iets van je op onze servers worden bewaard. Onze website is enkel een interface om toegang te verkrijgen tot de blockchain. ',

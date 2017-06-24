@@ -28,7 +28,7 @@ Wallet.prototype.setTokens = function() {
         this.tokenObjs.push(new Token(tokens[i].address, this.getAddressString(), tokens[i].symbol, tokens[i].decimal, tokens[i].type));
         this.tokenObjs[this.tokenObjs.length - 1].setBalance();
     }
-    var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+    var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
     for (var i = 0; i < storedTokens.length; i++) {
         this.tokenObjs.push(new Token(storedTokens[i].contractAddress, this.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
         this.tokenObjs[this.tokenObjs.length - 1].setBalance();

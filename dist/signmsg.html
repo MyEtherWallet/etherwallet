@@ -42,9 +42,9 @@
         <div class="tab-content">
             <!-- Sign Message Panel -->
   <h2>
-    <a translate="NAV_SignMsg" ng-class="{'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
+    <a translate="NAV_SignMsg" ng-class="{ 'isActive': visibility=='signView'}" ng-click="setVisibility('signView')"> Sign Message </a>
     or
-    <a translate="MSG_verify"  ng-class="{'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
+    <a translate="MSG_verify"  ng-class="{ 'isActive': visibility=='verifyView'}" ng-click="setVisibility('verifyView')"> Verify Message </a>
   </h2>
 
   <article class="col-xs-12 clearfix" ng-switch on="visibility">
@@ -80,7 +80,7 @@
       <!-- Signed Message -->
       <div ng-show="signMsg.signedMsg">
         <h5 translate="MSG_signature"> Signature </h5>
-        <textarea class="form-control" rows="4" readonly>{{ signMsg.signedMsg }}</textarea>
+        <textarea class="form-control" rows="4" readonly title="Signature">{{signMsg.signedMsg }}</textarea>
       </div>
     </section>
     <!-- / Sign Message Stuff -->
@@ -91,7 +91,7 @@
     <section ng-switch-when="verifyView">
       <!-- Signature -->
       <h5 translate="MSG_signature"> Signature </h5>
-      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{"address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
+      <textarea class="form-control" ng-model="verifyMsg.signedMsg" rows="6" placeholder='{ "address":"0xA7DeFf12461661212734dB35AdE9aE7d987D648c","msg":"This message was signed by kvhnuke | 28 NOV 2016 1:38AM","sig":"0x2190fdf0a011863fed22050372088d08404eb7cae020b73f24cfeca967773b3867f53f1ec96baffbdc6ec9dd3ca7c2ba4eed19a500f65cb3c343e24091b0c4f21b"}'></textarea>
 
       <!-- Verify Signature Message Button -->
       <a class="btn btn-info btn-block" ng-click="verifySignedMessage()" translate="MSG_verify" ng-show="verifyMsg.signedMsg!=''"> Verify Message </a>
@@ -107,45 +107,53 @@
           <div ng-show="visibility=='signView' && wallet==null"><wallet-decrypt-drtv></wallet-decrypt-drtv></div>
         </div>
         <!-- /tab panes -->
-        <article class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show">
-            <div class="container" ng-bind-html="notifier.message"></div>
-            <i class="icon-close" ng-click="notifier.close()"></i>
-        </article>
+
+        <div data-ng-repeat="alert in notifier.alerts">
+  <div class="alert popup alert-{{alert.type}} animated-show-hide"
+       style="bottom: {{55*$index}}px; z-index: {{999-$index}};">
+    <div class="container">
+      <div class='alert-message' ng-bind-html="alert.message"></div>
+    </div>
+    <i class="icon-close" ng-click="alert.close()"></i>
+  </div>
+</div>
+
+
     </section>
 </section>
 <footer>
   <div class="container">
     <p>
-      <a href="https://www.myetherwallet.com" target="_blank">MyEtherWallet.com</a>:
+      <a href="https://www.myetherwallet.com" target="_blank" rel="noopener">MyEtherWallet.com</a>:
 
-      Open-Source, client-side tool for easily & securely interacting with the Ethereum network.
+      Free, open-source, client-side tool for easily &amp; securely interacting with the Ethereum network.
 
       Created by
-      <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank">kvhnuke</a>
+      <a aria-label="kvhnuke's github" href="https://github.com/kvhnuke" target="_blank" rel="noopener">kvhnuke</a>
       &amp;
-      <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank">tayvano</a>
+      <a aria-label="tayvano's github" href="https://github.com/tayvano" target="_blank" rel="noopener">tayvano</a>
       &middot;
-      <a href="https://www.MyEtherWallet.com" target="_blank" aria-label="my ether wallet.com">
+      <a href="https://www.MyEtherWallet.com" target="_blank" rel="noopener" aria-label="my ether wallet.com">
         MyEtherWallet.com
       </a>
       &middot;
-      <a href="https://github.com/kvhnuke/etherwallet" target="_blank" aria-label="my ether wallet github">
+      <a href="https://github.com/kvhnuke/etherwallet" target="_blank" rel="noopener" aria-label="my ether wallet github">
         Github
       </a>
       &middot;
-      <a href="https://myetherwallet.herokuapp.com/" target="_blank" aria-label="join our slack">
+      <a href="https://myetherwallet.herokuapp.com/" target="_blank" rel="noopener" aria-label="join our slack">
         Slack
       </a>
       &middot;
-      <a href="https://twitter.com/myetherwallet" target="_blank" aria-label="twitter">
+      <a href="https://twitter.com/myetherwallet" target="_blank" rel="noopener" aria-label="twitter">
         Twitter
       </a>
       &middot;
-      <a href="https://www.facebook.com/MyEtherWallet/" target="_blank" aria-label="facebook">
+      <a href="https://www.facebook.com/MyEtherWallet/" target="_blank" rel="noopener" aria-label="facebook">
         Facebook
       </a>
       &middot;
-      <a href="mailto:support@myetherwallet.com" target="_blank" aria-label="email support at myetherwallet.com">
+      <a href="mailto:support@myetherwallet.com" target="_blank" rel="noopener" aria-label="email support at myetherwallet.com">
         Email
       </a>
     </div>

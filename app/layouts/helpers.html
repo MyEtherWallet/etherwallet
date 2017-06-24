@@ -10,11 +10,7 @@
 
   </div>
 
-
-  <div class="alert popup {{notifier.class}} animated-show-hide" ng-show="notifier.show" role="alert" aria-live="assertive">
-    <span class="sr-only">{{notifier.class}}</span><div class="container" ng-bind-html="notifier.message"></div>
-    <i tabindex="0" aria-label="dismiss" class="icon-close" ng-click="notifier.close()"></i>
-  </div>
+  @@include('../includes/alerts.tpl')
 
 </section>
 

@@ -4,7 +4,7 @@
   margin-right: -(@cont-padding);
 }
 
-.block--wrap {
+.block__wrap {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -14,7 +14,7 @@
 .block {
   background-color: white;
   box-shadow: 16px 16px 47px 2px rgba(0,0,0,.07);
-  padding: @space-lg;
+  padding: @space-lg @space-xl;
   min-height: @space-lg;
   margin: @space auto;
   .clearfix();
@@ -58,7 +58,7 @@
 
 
 
-.block--main {
+.block__main {
   .block();
   text-align: left;
   padding: @space-md;
@@ -72,7 +72,7 @@
   }
 }
 
-.block--help {
+.block__help {
   .block();
   background-image: url(../images/icon-help-2.svg);
   background-size: 8rem;
@@ -104,6 +104,7 @@
   }
   h2 {
     font-size: 1.15rem;
+    font-weight: 400;
   }
 }
 
@@ -114,23 +115,48 @@
   }
 }
 
-.center-h {
+.u-center-h {
   text-align: center;
 }
 
 // generate
-.gen--1 {
+.gen__1 {
   .input-group {
     max-width: 43rem;
     margin: @space auto;
   }
 }
 
+.gen__1--inner {
+  text-align: center;
+  h1   {  margin: @space   auto @space*2  }
+  h4   {  margin: @space*3 auto @space    }
+  p    {  margin: 0        0    @space*2  }
+  .btn {  margin: 0        auto @space*3  }
+}
+
+.gen__2 {
+}
+
+.gen__2--inner {
+  text-align: center;
+  h1     {  margin: @space   auto   }
+  > .btn {  margin: @space   auto 0 }
+  .warn  {  margin: @space*4 auto @space*2;   }
+}
+
+.gen__3--inner {
+  text-align: center;
+  h1     {  margin: @space*2   auto  @space }
+  > .btn,
+  > .form-control, { margin: 0 auto @space*3 }
+}
 
 // footer
 .footer {
   background-color: @ether-navy;
   color: white;
+  font-size: @font-size-small;
   margin-top: 5rem;
   h5{
     font-size: @font-size-bump;
@@ -150,17 +176,18 @@
   ul {
     list-style: none;
     padding-left: 0;
-    margin: 0 0 @space-xs 0;
+    margin: 0;
   }
   li {
     font-size: @font-size-small;
     margin: @space-sm 0;
   }
   a {
-    color: #4ac8ed;
+    color: #7fe5ff;
+    font-weight: 400;
     &:hover,
     &:focus {
-      color: darken(#4ac8ed, 5%);
+      color: darken(#7fe5ff, 10%);
     }
   }
 }
@@ -171,8 +198,13 @@
   max-width: 16rem;
 }
 
-.footer--gas {
+.header--gas {
   max-width: 26rem;
+  color: @text-color;
+  p {
+    font-weight: 400;
+    margin: @space-sm 0 0;
+  }
 }
 
 .footer--col() {
@@ -187,16 +219,17 @@
 
 .footer--left {
   .footer--col();
-  max-width: 25rem;
+  max-width: 27rem;
   flex-grow: 1;
 }
 .footer--cent {
   .footer--col();
-  max-width: 36rem;
+  max-width: 32rem;
   flex-grow: 2;
+  ul, li:last-child { margin-bottom: 0; }
 }
 .footer--righ {
   .footer--col();
-  max-width: 25rem;
+  max-width: 27rem;
   flex-grow: 1;
 }

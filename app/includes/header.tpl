@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>MyEtherWallet: Open-Source & Client-Side Ether Wallet</title>
   <link rel="canonical" href="https://www.myetherwallet.com" />
-  <meta name="description" content="Open-Source & Client-Side Ether Wallet">
+  <meta name="description" content="Open-Source & Client-Side Ethereum Wallet">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/etherwallet-master.min.css">
@@ -30,23 +30,41 @@
 <body>
 
 <header class="{{curNode.name}} {{curNode.service}} {{curNode.service}} nav-index-{{gService.currentTab}}" aria-label="header" ng-controller='tabsCtrl' >
-  @@if (site === 'cx' ) {
-    <div class="small announcement annoucement-warning" target="_blank">
-      <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any wallets you store here. Many things could happen that would cause you to lose the data in this Chrome Extension, including uninstalling the extension. This extension is a way to easily access your wallets, <strong>not</strong> a way to back them up.</div>
+
+<!--
+    <div class="small announcement annoucement-warning">
+      <div class="container">The #FOMO is Real. Breath. If you are trying to get in on Status.im, <strong> wait until BLOCK 3903900!</strong> <br /> If your TX is not urgent, we recommend NOT SENDING TODAY. Thank you for understanding. </div>
     </div>
-  }
+-->
+    @@if (site === 'cx' ) {
+    <div class="small announcement annoucement-warning">
+        <div class="container" translate="CX_Warning_1">Make sure you have <strong>external backups</strong> of any
+            wallets you store here. Many things could happen that would cause you to lose the data in this Chrome
+            Extension, including uninstalling the extension. This extension is a way to easily access your wallets,
+            <strong>not</strong> a way to back them up.
+        </div>
+    </div>
+    }
   <section class="bg-gradient header-branding">
     <section class="container">
 
-      @@if (site === 'mew' ) { <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage"> <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" /></a> }
-      @@if (site === 'cx'  ) { <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">                <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" /></a> }
+      @@if (site === 'mew' ) {
+        <a class="brand" href="https://www.myetherwallet.com/" aria-label="Go to homepage">
+          <img src="images/logo-myetherwallet.svg"   height="64px" width="245px" alt="MyEtherWallet" />
+        </a>
+      }
+      @@if (site === 'cx'  ) {
+        <a class="brand" href="/cx-wallet.html" aria-label="Go to homepage">
+          <img src="images/logo-myetherwalletcx.svg" height="64px" width="245px" alt="MyEtherWallet" />
+        </a>
+      }
 
-      <div class="tagline"><span style="max-width: 395px">Open-Source & Client-Side Ether Wallet</span>
+      <div class="tagline">
 
-        &middot; v3.8.9 &nbsp;&nbsp;
+        <span>v3.9.5</span>
 
-        <span class="dropdown" ng-cloak>
-          <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
+        <span class="dropdown dropdown-lang" ng-cloak>
+          <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
           <ul class="dropdown-menu" ng-show="dropdown">
             <li><a ng-class="{true:'active'}[curLang=='Deutsch']"      ng-click="changeLanguage('de','Deutsch'     )"> Deutsch         </a></li>
             <li><a ng-class="{true:'active'}[curLang=='Ελληνικά']"     ng-click="changeLanguage('el','Ελληνικά'    )"> Ελληνικά        </a></li>
@@ -76,16 +94,36 @@
           </ul>
         </span>
 
-        &nbsp;&nbsp;
+        <span class="dropdown dropdown-gas" ng-cloak>
+          <a tabindex="0" aria-haspopup="true" aria-label="adjust gas price" class="dropdown-toggle  btn btn-white" ng-click="dropdownGasPrice = !dropdownGasPrice">
+            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
+            <i class="caret"></i>
+          </a>
+          <ul class="dropdown-menu" ng-show="dropdownGasPrice">
+            <div class="header--gas">
+              <a aria-label="What is Gas?" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener" role="link" tabindex="0">
+                <img src="images/icon-help.svg" class="help-icon" />
+              </a>
+              <span translate="OFFLINE_Step2_Label_3">Gas Price</span>: {{gas.value}} Gwei
+              <input type="range" ng-model="gas.value" min="{{gas.min}}" max="{{gas.max}}" steps="1" ng-change="gasChanged()"/>
+              <p class="small col-xs-4 text-left">Not So Fast</p>
+              <p class="small col-xs-4 text-center">Fast</p>
+              <p class="small col-xs-4 text-right">Fast AF</p>
+            </div>
+          </ul>
+        </span>
 
         <!-- Warning: The separators you see on the frontend are in styles/etherwallet-custom.less. If you add / change a node, you have to adjust these. Ping tayvano if you're not a CSS wizard -->
         <span class="dropdown dropdown-node" ng-cloak>
-          <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle" ng-click="dropdownNode = !dropdownNode"> {{curNode.name}} <small>({{curNode.service}})</small><i class="caret"></i></a>
+          <a tabindex="0" aria-haspopup="true" aria-label="change node. current node {{curNode.name}} node by {{curNode.service}}" class="dropdown-toggle  btn btn-white" ng-click="dropdownNode = !dropdownNode">
+            Node: {{curNode.name}} <small>({{curNode.service}})</small>
+            <i class="caret"></i>
+          </a>
           <ul class="dropdown-menu" ng-show="dropdownNode">
             <li ng-repeat="(key, value) in nodeList"><a ng-class="{true:'active'}[curNode == key]" ng-click="changeNode(key)">
               {{value.name}}
               <small> ({{value.service}}) </small>
-              <img ng-show="value.service=='Custom'" img src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
+              <img ng-show="value.service=='Custom'" src="images/icon-remove.svg" class="node-remove" title="Remove Custom Node" ng-click="removeNodeFromLocal(value.name)"/>
             </a></li>
             <li><a ng-click="customNodeModal.open(); dropdownNode = !dropdownNode;"> Add Custom Node </a></li>
           </ul>

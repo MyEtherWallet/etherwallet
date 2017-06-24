@@ -11,6 +11,7 @@ NAV_Contact                 : 'Contact ',
 NAV_Contracts               : 'Contrats ',
 NAV_DeployContract          : 'Déployer un contrat ',
 NAV_ENS                     : 'ENS',
+NAV_GenerateWallet_alt      : 'New Wallet ',
 NAV_GenerateWallet          : 'Générer un portefeuille ',
 NAV_Help                    : 'Aide ',
 NAV_InteractContract        : 'Interact with Contract ',
@@ -26,7 +27,7 @@ NAV_YourWallets             : 'Vos portefeuilles ',
 
 /* General */
 x_Access                    : 'Accès ',
-x_AddessDesc                : 'Aussi appelé "Numéro de compte" ou "Clé publique". C\'est ce que vous envoyez aux gens pour qu\'ils puissent vous envoyer des ether. Cette icone est une façon simple de reconnaitre votre adresse. ',
+x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. Aussi appelé "Numéro de compte" ou "Clé publique". C\'est ce que vous envoyez aux gens pour qu\'ils puissent vous envoyer des ether. Cette icone est une façon simple de reconnaitre votre adresse. ',
 x_Address                   : 'Votre adresse ',
 x_Cancel                    : 'Annuler ',
 x_CSV                       : 'Fichier CSV (non-chiffré) ',
@@ -313,10 +314,11 @@ ERROR_31                    : 'Phrase secrète invalide ',
 ERROR_32                    : 'Connexion au nœud impossible. Rafraîchissez la page or try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
 
 SUCCESS_1                   : 'Adresse valide ',
 SUCCESS_2                   : 'Portefeuille déchiffré avec succès ',
-SUCCESS_3                   : 'TX was broadcast to the blockchain. Click to see your transaction & verify it was mined and does not have any out of gas or contract execution errors.  TX ID:  ', //'Transaction envoyée. Identifiant de transaction ',
+SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX Hash:   ', //'Transaction envoyée. Identifiant de transaction ',
 SUCCESS_4                   : 'Votre portefeuille a été ajouté avec succès ',
 SUCCESS_5                   : 'Fichier sélectionné ',
 SUCCESS_6                   : 'Vous êtes bien connecté ',

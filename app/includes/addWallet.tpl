@@ -18,9 +18,9 @@
           <span translate="x_PrivKey2">Private Key</span>
         </label>
         <label class="radio">
-          <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="pastemnemonic">
-          <span translate="x_Mnemonic">Mnemonic</span>
-        </label>
+           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="pastemnemonic">
+           <span translate="x_Mnemonic">Mnemonic</span>
+         </label>
         <label class="radio">
           <input type="radio" name="typeOfKeyRadio" ng-model="walletType" value="watchonlyaccount">
           <span translate="ADD_Radio_4">Add an Account to Watch</span>
@@ -36,12 +36,12 @@
 
         <div class="form-group">
           <label translate="ADD_Label_2"> Create a Nickname: </label>
-          <input class="form-control" type="text" placeholder="{{ 'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('','showBtnGen')" ng-keyup="$event.keyCode == 13 && importWalletToStorage()"/>
+          <input class="form-control" type="text" placeholder="{{'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('','showBtnGen')" ng-keyup="$event.keyCode == 13 && importWalletToStorage()"/>
         </div>
         <div class="form-group">
           <label translate="GEN_Label_1"> Create a Password: (at least 9 characters)</label>
           <div class="input-group">
-            <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{ 'GEN_Placeholder_1' | translate }}" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-model="addAccount.password" ng-change="newWalletChange('','showBtnGen')" ng-keyup="$event.keyCode == 13 && generateWallet()"/>
+            <input type="{{showPass && 'password' || 'text'}}" class="form-control" placeholder="{{'GEN_Placeholder_1' | translate }}" ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'" ng-model="addAccount.password" ng-change="newWalletChange('','showBtnGen')" ng-keyup="$event.keyCode == 13 && generateWallet()"/>
             <span class="input-group-addon eye" ng-click="showPass=!showPass"></span>
           </div>
         </div>
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group" ng-show="requireFPass">
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
-          <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="filePassword" ng-change="onFilePassChange()" />
+          <input class="form-control" type="password" placeholder="{{'x_Password' | translate }}" ng-model="filePassword" ng-change="onFilePassChange()" />
         </div>
       </div>
 
@@ -68,11 +68,11 @@
       <div ng-show="walletType=='pasteprivkey'">
         <h4 translate="ADD_Radio_3"> Paste / type your private key: </h4>
         <div class="form-group">
-          <textarea rows="4" class="form-control" placeholder="{{ 'x_PrivKey2' | translate }}" ng-model="manualprivkey" ng-change="onPrivKeyChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>
+          <textarea rows="4" class="form-control" placeholder="{{'x_PrivKey2' | translate }}" ng-model="manualprivkey" ng-change="onPrivKeyChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>
         </div>
         <div class="form-group" ng-show="requirePPass">
           <p translate="ADD_Label_3"> Your file is encrypted. Please enter the password: </p>
-          <input class="form-control" type="password" placeholder="{{ 'x_Password' | translate }}" ng-model="privPassword" ng-change="onPrivKeyPassChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"/>
+          <input class="form-control" type="password" placeholder="{{'x_Password' | translate }}" ng-model="privPassword" ng-change="onPrivKeyPassChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"/>
         </div>
       </div>
 
@@ -80,7 +80,7 @@
       <div ng-show="walletType=='pastemnemonic'">
         <h4 translate="ADD_Radio_5"> Paste / type your mnemonic: </h4>
         <div class="form-group">
-          <textarea rows="4" class="form-control" placeholder="{{ 'x_Mnemonic' | translate }}" ng-model="manualmnemonic" ng-change="onMnemonicChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>
+          <textarea rows="4" class="form-control" placeholder="{{'x_Mnemonic' | translate }}" ng-model="manualmnemonic" ng-change="onMnemonicChange()" ng-keyup="$event.keyCode == 13 && decryptWallet()"></textarea>
         </div>
       </div>
 
@@ -90,7 +90,7 @@
         <p class="text-danger" translate="ADD_Warning_1">You can add any account to "watch" on the wallets tab without uploading a private key. This does ** not ** mean you have access to this wallet, nor can you transfer Ether from it. </p>
         <div class="form-group">
           <label translate="ADD_Label_2"> Create a Nickname: </label>
-          <input class="form-control" type="text" placeholder="{{ 'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="watchOnlyChange()"/>
+          <input class="form-control" type="text" placeholder="{{'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="watchOnlyChange()"/>
         </div>
         <div class="form-group">
           <label translate="ADD_Label_5"> Enter the Address: </label>
@@ -140,11 +140,11 @@
         <li><strong>{{btcBalance}}</strong> BTC</li>
       </ul>
 
-      <a target="_blank" ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-xs">Swap via Bity</a>
+      <a ng-click="globalService.currentTab=globalService.tabs.swap.id" class="btn btn-primary btn-xs">Swap via Bity</a>
 
       <h5 translate="sidebar_TransHistory"> Transaction History: </h5>
       <ul class="account-info">
-        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
+        <li><a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank" rel="noopener">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></li>
       </ul>
     </div>
 
@@ -155,7 +155,7 @@
       <h4 translate="NAV_AddWallet">Add Wallet</h4>
       <div class="form-group">
         <label translate="ADD_Label_2"> Create a Nickname: </label>
-        <input class="form-control" type="text" placeholder="{{ 'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('','showBtnAddWallet')"/>
+        <input class="form-control" type="text" placeholder="{{'MYWAL_Nick' | translate }}" ng-model="addAccount.nickName" ng-change="newWalletChange('','showBtnAddWallet')"/>
       </div>
       <div class="form-group" ng-show="showPassTxt">
         <label translate="GEN_Label_1"> Enter a strong password (at least 9 characters)</label>
@@ -163,7 +163,7 @@
           <input
             type="{{showPass && 'password' || 'text'}}"
             class="form-control"
-            placeholder="{{ 'GEN_Placeholder_1' | translate }}"
+            placeholder="{{'GEN_Placeholder_1' | translate }}"
             ng-model="addAccount.password"
             ng-class="isStrongPass(addAccount.password) ? 'valid' : 'invalid'"
             ng-change="newWalletChange('','showBtnAddWallet')"
@@ -219,14 +219,18 @@
             <th translate="MYWAL_Bal">Balance</th>
           </tr>
           <tr ng-repeat="wallet in HDWallet.wallets track by $index">
-            <td><input type="radio" name="addressSelect" value="{{$index}}" ng-model="HDWallet.id" /></td>
+            <td><label>
+                    <input type="radio" name="addressSelect" value="{{$index}}" ng-model="HDWallet.id"/>
+                </label></td>
             <td>{{wallet.getChecksumAddressString()}}</td>
             <td>{{wallet.getBalance()}} ETH</td>
           </tr>
           <tr class="m-addresses">
-            <td class"small"><a ng-show="HDWallet.numWallets > 5" ng-click="AddRemoveHDAddresses(false)" translate="MNEM_prev">Previous Addresses</a></td>
+            <td class="small">
+            <a ng-show="HDWallet.numWallets > 5" ng-click="AddRemoveHDAddresses(false)" translate="MNEM_prev">Previous Addresses</a>
+            </td>
             <td></td>
-            <td class"small"><a ng-click="AddRemoveHDAddresses(true)" translate="MNEM_more">More Addresses</a></td>
+            <td class="small"><a ng-click="AddRemoveHDAddresses(true)" translate="MNEM_more">More Addresses</a></td>
           </tr></table>
           <!-- END Select Address -->
         </div>
@@ -241,4 +245,3 @@
 
 
 </main>
-

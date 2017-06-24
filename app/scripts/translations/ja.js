@@ -11,6 +11,7 @@ NAV_Contact                 : '連絡する ',
 NAV_Contracts               : '契約 ',
 NAV_DeployContract          : '契約を展開 ',
 NAV_ENS                     : 'ENS',
+NAV_GenerateWallet_alt      : 'New Wallet ',
 NAV_GenerateWallet          : 'お財布の作成 ',
 NAV_Help                    : 'ヘルプ ',
 NAV_InteractContract        : '契約を操作 ',
@@ -26,7 +27,7 @@ NAV_YourWallets             : '自分のお財布 ',
 
 /* General */
 x_Access                    : 'アクセス ',
-x_AddessDesc                : 'これは自分のアカウント番号と公開鍵になります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。 ',
+x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. これは自分のアカウント番号と公開鍵になります。ETHを送信するために必要な情報です。アイコンは自分のアドレスを識別するものです。 ',
 x_Address                   : '自分のアドレス ',
 x_Cancel                    : '取り消す ',
 x_CSV                       : 'CSV ファイル (未暗号化) ',
@@ -314,10 +315,11 @@ ERROR_31                    : '無効な秘密フレーズです ',
 ERROR_32                    : 'ノードに接続できませんでした。Refresh your page, try a different node (upper right corner), check your firewall settings. If custom node, check your configs.', // 32
 ERROR_33                    : 'The wallet you have unlocked does not match the owner\'s address. ', // 33
 ERROR_34                    : 'The name you are attempting to reveal does not match the name you have entered. ', // 34
+ERROR_35                    : 'Input address is not checksummed. <a href="https://myetherwallet.groovehq.com/knowledge_base/topics/not-checksummed-shows-when-i-enter-an-address" target="_blank" rel="noopener"> More info</a>', // 35
 
 SUCCESS_1                   : '有効なアドレス ',
 SUCCESS_2                   : 'お財布は正常に暗号解除されました。 ',
-SUCCESS_3                   : 'トランザクションはブロックチェイン上に展開されています。そのトランザクションを表示し、ガス不足や契約実行エラーがないことを確認しするためにクリックしてください。 TX ID:  ', //'トランザクションが送出されました。 TX ID ',
+SUCCESS_3                   : 'トランザクションはブロックチェイン上に展開されています。そのトランザクションを表示し、ガス不足や契約実行エラーがないことを確認しするためにクリックしてください。 TX Hash:  ', //'トランザクションが送出されました。 TX Hash ',
 SUCCESS_4                   : 'お財布が追加されました： ',
 SUCCESS_5                   : '選択されました： ',
 SUCCESS_6                   : '接続完了しました ',
@@ -426,7 +428,7 @@ HELP_4_Desc_9               : 'Click "Generate Transaction". ',
 HELP_4_Desc_10              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_4_Desc_11              : 'Click the blue "Send Transaction" button below that. ',
 HELP_4_Desc_12              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
-HELP_4_Desc_13              : 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+HELP_4_Desc_13              : 'The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. ',
 
 HELP_4CX_Title              : '4) How do I send Ether using MyEtherWallet CX? ',
 HELP_4CX_Desc_1             : 'First, you need to add a wallet. Once you have done that, you have 2 options: the "QuickSend" functionality from the Chrome Extension icon or the "Ether送出 トークン送出" page. ',
@@ -473,7 +475,7 @@ HELP_7_Desc_11              : 'Click "Generate Transaction". ',
 HELP_7_Desc_12              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_7_Desc_13              : 'Click the blue "Send Transaction" button below that. ',
 HELP_7_Desc_14              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
-HELP_7_Desc_15              : 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+HELP_7_Desc_15              : 'The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. ',
 
 HELP_8_Title                : '8) What happens if your site goes down? ',
 HELP_8_Desc_1               : 'MyEtherWallet is not a web wallet. You don\'t have a login and nothing ever gets saved to our servers. It is simply an interface that allows you interact with the blockchain. ',

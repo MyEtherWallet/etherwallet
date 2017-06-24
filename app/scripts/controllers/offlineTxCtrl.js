@@ -48,7 +48,7 @@ var offlineTxCtrl = function($scope, $sce, walletService) {
         for (var i = 0; i < $scope.tokens.length; i++) {
             $scope.tokenObjs.push(new Token($scope.tokens[i].address, '', $scope.tokens[i].symbol, $scope.tokens[i].decimal, $scope.tokens[i].type));
         }
-        var storedTokens = localStorage.getItem("localTokens") != null ? JSON.parse(localStorage.getItem("localTokens")) : [];
+        var storedTokens = globalFuncs.localStorage.getItem("localTokens", null) != null ? JSON.parse(globalFuncs.localStorage.getItem("localTokens")) : [];
         for (var i = 0; i < storedTokens.length; i++) {
             $scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, '', globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal, storedTokens[i].type));
         }
@@ -97,8 +97,16 @@ var offlineTxCtrl = function($scope, $sce, walletService) {
         $scope.dropdownAmount = false;
     }
     $scope.validateAddress = function(address, status) {
+        $scope.customGasMsg = ''
+        
         if (ethFuncs.validateEtherAddress(address)) {
             $scope.notifier.info(globalFuncs.successMsgs[0]);
+
+            for (var i in CustomGasMessages) {
+                if ($scope.tx.to.toLowerCase() == CustomGasMessages[i].to.toLowerCase()) {
+                    $scope.customGasMsg = CustomGasMessages[i].msg != '' ? CustomGasMessages[i].msg : ''
+                }
+            }
         } else {
             $scope.notifier.danger(globalFuncs.errorMsgs[5]);
         }
@@ -159,7 +167,7 @@ var offlineTxCtrl = function($scope, $sce, walletService) {
             if (data.error) {
                 $scope.notifier.danger(data.msg);
             } else {
-                $scope.notifier.success(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank'>" + data.data + "</a>");
+                $scope.notifier.success(globalFuncs.successMsgs[2] + "<a href='http://etherscan.io/tx/" + data.data + "' target='_blank' rel='noopener'>" + data.data + "</a>");
             }
         });
     }
