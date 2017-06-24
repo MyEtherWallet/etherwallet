@@ -365,7 +365,7 @@ TranslatorAddr_3            : '0x1DAd1765381460db9A44846cDfA6f74c65A06B77 ',
 TranslatorName_4            : '[FelixA](https://www.myetherwallet.com/?gaslimit=21000&to=0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D&value=1.0#send-transaction) · ',
 TranslatorAddr_4            : '0xb6999051b0Bfad32E192e107181E0ac72bE7EE3D ',
 /* Translator 4             : Insert Comments Here */
-TranslatorName_5            : 'danielsun174 · ffidan61 · u/Preisschild ',
+TranslatorName_5            : 'danielsun174 · ffidan61 · [u/Preisschild](https://www.myetherwallet.com/?gaslimit=21000&to=0x700Eb9142a0CC709fce80709cfbF5Ac25438c584&value=0.1#send-transaction) ',
 TranslatorAddr_5            : '',
 /* Translator 5             : Insert Comments Here */
 
