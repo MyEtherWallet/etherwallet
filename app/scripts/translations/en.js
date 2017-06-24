@@ -6,7 +6,29 @@ en.data = {
 
 NAV_CheckTxStatus           : 'Check TX Status',
 NAV_TxStatus                : 'TX Status',
-x_TxHash : 'Transaction Hash',
+x_TransHash                 : 'Transaction Hash',
+x_TxHash                    : 'TX Hash',
+
+x_CancelTx                  : 'Cancel Transaction',
+x_ReplaceTx                 : 'Refund Transaction',
+x_CancelReplaceTx           : 'Cancel or Refund Transaction',
+
+tx_Details                  : 'Transaction Details',
+tx_notFound                 : 'Transaction Not Found',
+tx_notFound_1               : 'This TX cannot be found in the TX Pool of the node you are connected to.',
+tx_notFound_2               : 'It could be in a different TX Pool, waiting to be mined.',
+tx_notFound_3               : 'Please use the dropdown in the top-right to select a different ETH node (e.g. `ETH (Etherscan.io)` or `ETH (Infura.io)` or `ETH (MyEtherWallet)`) and check again.',
+
+tx_foundInPending           : 'Pending Transaction Found',
+tx_foundInPending_1         : 'Your transaction was located in the TX Pool of the node you are connected to. ',
+tx_foundInPending_2         : 'It is currently pending (waiting to be mined). ',
+tx_foundInPending_3         : 'There is a chance you can cancel or replace this transaction. Unlock your wallet below.',
+
+tx_FoundOnChain             : 'Transaction Found',
+tx_FoundOnChain_1           : 'Your transaction was successfully mined and is on the blockchain.',
+tx_FoundOnChain_2           : 'If you see a red `( ! )`, a `BAD INSTRUCTION` or `OUT OF GAS` error message, it means that the transaction was not successfully *sent*. You cannot cancel or replace this transaction. Instead, send a new transaction. If you received an "Out of Gas" error, you should double the gas limit you specified originally.',
+tx_FoundOnChain_3           : 'If you do not see any errors, your transaction was successfully sent. Your ETH or Tokens are where you sent them. If this balance has not been credited to your hosted wallet or exchange account ~24 hours after sending, please [contact that service](https://myetherwallet.groovehq.com/knowledge_base/topics/i-have-a-question-but-its-not-about-myetherwallet-dot-com-what-do-i-do). Send them the *link* to your transaction and ask them, nicely, to look into your situation.',
+
 
 
 
