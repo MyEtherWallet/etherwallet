@@ -320,7 +320,7 @@ ERROR_35                    : 'Input address is not checksummed. <a href="https:
 
 SUCCESS_1                   : 'Dirección válida ',
 SUCCESS_2                   : 'Cartera descifrada con éxito ',
-SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX ID:   ', //'Transacción enviada. TX ID ',
+SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX Hash:   ', //'Transacción enviada. TX Hash ',
 SUCCESS_4                   : 'Se ha añadido tu cartera ',
 SUCCESS_5                   : 'Archivo seleccionado ',
 SUCCESS_6                   : 'You are successfully connected ',
@@ -476,7 +476,7 @@ HELP_7_Desc_11              : 'Click "Generate Transaction". ',
 HELP_7_Desc_12              : 'A couple more fields will appear. This is your browser generating the transaction. ',
 HELP_7_Desc_13              : 'Click the blue "Send Transaction" button below that. ',
 HELP_7_Desc_14              : 'A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. ',
-HELP_7_Desc_15              : 'The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. ',
+HELP_7_Desc_15              : 'The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. ',
 
 HELP_8_Title                : '8) ¿Qué ocurre si vuestro sitio web deja de funcionar? ',
 HELP_8_Desc_1               : 'MyEtherWallet no es una cartera web. No tienes un login y nunca se graba nada en nuestros servidores. You don\'t have a login and nothing ever gets saved to our servers. Simplemente es una interfaz que te permite interactuar con la cadena de bloques. ',

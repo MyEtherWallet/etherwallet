@@ -74,7 +74,7 @@ globalFuncs.errorMsgs = [
 globalFuncs.successMsgs = [
     'Valid address',
     'Wallet successfully decrypted',
-    'Transaction submitted. TX ID: ',
+    'Transaction submitted. TX Hash: ',
     'Your wallet was successfully added: ',
     'File Selected: ',
     'You are connected to the node ',

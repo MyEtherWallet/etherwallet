@@ -168,7 +168,7 @@
         <li translate="HELP_4_Desc_10"> A couple more fields will appear. This is your browser generating the transaction. </li>
         <li translate="HELP_4_Desc_11"> Click the blue "Send Transaction" button below that. </li>
         <li translate="HELP_4_Desc_12"> A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. </li>
-        <li translate="HELP_4_Desc_13"> The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. </li>
+        <li translate="HELP_4_Desc_13"> The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. </li>
       </ol>
     </div>
   </article>
@@ -208,7 +208,7 @@
         <li translate="HELP_4_Desc_10"> A couple more fields will appear. This is your browser generating the transaction. </li>
         <li translate="HELP_4_Desc_11"> Click the blue "Send Transaction" button below that. </li>
         <li translate="HELP_4_Desc_12"> A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. </li>
-        <li translate="HELP_4_Desc_13"> The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. </li>
+        <li translate="HELP_4_Desc_13"> The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. </li>
       </ol>
     </div>
   </article>
@@ -302,7 +302,7 @@
         <li translate="HELP_7_Desc_12"> A couple more fields will appear. This is your browser generating the transaction. </li>
         <li translate="HELP_7_Desc_13"> Click the blue "Send Transaction" button below that. </li>
         <li translate="HELP_7_Desc_14"> A pop-up will appear. Verify that the amount and the address you are sending to are correct. Then click "Yes, I am sure! Make transaction." button. </li>
-        <li translate="HELP_7_Desc_15"> The transaction will be submitted. The TX ID will display. You can click that TX ID to see it on the blockchain. </li>
+        <li translate="HELP_7_Desc_15"> The transaction will be submitted. The TX Hash will display. You can click that TX Hash to see it on the blockchain. </li>
       </ol>
     </div>
   </article>

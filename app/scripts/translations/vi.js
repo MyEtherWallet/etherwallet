@@ -320,7 +320,7 @@ ERROR_35                    : 'Input address is not checksummed. <a href="https:
 
 SUCCESS_1                   : 'Địa Chỉ Hợp Lệ ',
 SUCCESS_2                   : 'Ví đã được giải mã thành công ',
-SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX ID:   ',
+SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX Hash:   ',
 SUCCESS_4                   : 'Ví của bạn đã được thêm thành công: ',
 SUCCESS_5                   : 'Tập Tin Được Chọn ',
 SUCCESS_6                   : 'You are successfully connected ',
@@ -429,7 +429,7 @@ HELP_4_Desc_9               : 'Chọn vào "Khởi tạo Giao dịch". ',
 HELP_4_Desc_10              : 'Một cửa sổ thông báo sẽ hiện ra. Việc khởi tạo giao dịch này được thực hiện từ trình duyệt của bạn. ',
 HELP_4_Desc_11              : 'Chọn vào nút màu xanh "Gửi giao dịch đi" phía dưới. ',
 HELP_4_Desc_12              : 'Một cửa sổ yêu cầu sẽ xuất hiện. Xác nhận lại số lượng cần gửi và địa chỉ đến. Sau đó chọn vào ô "Có, tôi chắc chắn! Hãy thực hiện giao dịch.". ',
-HELP_4_Desc_13              : 'Giao dịch của bạn sẽ được gửi đi. TX ID sẽ xuất hiện trên màn hình. Bạn có thể chọn vào TX ID dễ xem nó trên blockchain. ',
+HELP_4_Desc_13              : 'Giao dịch của bạn sẽ được gửi đi. TX Hash sẽ xuất hiện trên màn hình. Bạn có thể chọn vào TX Hash dễ xem nó trên blockchain. ',
 
 HELP_4CX_Title              : '4) Làm thế nào dễ gửi đi Ether bằng cách sử dụng MyEtherWallet CX? ',
 HELP_4CX_Desc_1             : 'Trước tiên, bạn cần phải thêm Ví của bạn vào. Sau khi thực hiện xong, Bạn sẽ có 2 lựa chọn: Chức năng "Gửi Nhanh" từ biểu tượng nằm trên thanh công cụ tiện ích của Google Chrome hoặc chọn vào "Gửi Ether và Tokens" dễ đi đến trang trình duyệt. ',
