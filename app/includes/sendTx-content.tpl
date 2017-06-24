@@ -27,29 +27,49 @@
     <p><a ng-click="transferAllBalance()" ng-hide="tx.readOnly"><span class="strong" translate="SEND_TransferTotal">Send Entire Balance</span></a></p>
     <!-- / Amount to Send -->
 
-    <!-- Gas -->
+    <!-- Gas Limit -->
     <div class="row form-group">
       <div class="col-sm-11 clearfix">
-        <label translate="TRANS_gas"> Gas: </label>
+        <label translate="TRANS_gas"> Gas Limit: </label>
         <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
       </div>
     </div>
-    <!-- / Gas -->
+    <!-- / Gas Limit -->
 
     <!-- Advanced Option Panel -->
-    <div class="row form-group">
-      <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
-        <a ng-click="showAdvance=!showAdvance" ng-show='!showAdvance'>
-          <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
-        </a>
-        <section ng-show="showAdvance">
-          <div class="form-group">
-              <label translate="TRANS_data"> Data: </label>
-              <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
-          </div>
-        </section>
+    <a ng-click="showAdvance=!showAdvance" ng-show='!showAdvance'><p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p></a>
+
+    <section ng-show="showAdvance">
+      <!-- Data -->
+      <div class="row form-group">
+        <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
+          <label translate="TRANS_data"> Data: </label>
+          <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+        </div>
       </div>
-    </div>
+      <!-- / Data -->
+
+
+      <!-- Nonce -->
+      <div class="row form-group">
+        <div class="col-sm-11 clearfix">
+          <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
+          <input class="form-control" type="text" placeholder="2" ng-model="tx.Nonce" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
+        </div>
+      </div>
+      <!-- / Nonce -->
+
+
+      <!-- Gas Price -->
+      <div class="row form-group">
+        <div class="col-sm-11 clearfix">
+          <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span></label>
+          <input class="form-control" type="text" placeholder="50" ng-model="tx.gasPrice" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
+        </div>
+      </div>
+      <!-- / Gas Price -->
+    </section>
+
     <!-- / Advanced Option Panel -->
 
     <div class="clearfix form-group">
