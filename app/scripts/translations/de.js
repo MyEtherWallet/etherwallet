@@ -321,7 +321,7 @@ ERROR_35                    : 'Input address is not checksummed. <a href="https:
 
 SUCCESS_1                   : 'Gültige Addresse ',
 SUCCESS_2                   : 'Wallet erfolgreich entschlüsselt ',
-SUCCESS_3                   : 'Deine Transaktion wurde **in das Netzwerk geschickt**. Sie muss noch gemined & validiert werden. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX ID:   ', //'Transaktion übermittelt. TX ID ',
+SUCCESS_3                   : 'Deine Transaktion wurde **in das Netzwerk geschickt**. Sie muss noch gemined & validiert werden. (1) Drück auf den Link. Zähle bis 20. Lade die Seite neu. Schau dass dort keine roten ( ! ) Fehler kommen. Wenn keine Transaktionsdetails kommen, warte. Deine Transaktion wartet gemined zu werden. TX ID:   ', //'Transaktion übermittelt. TX ID ',
 SUCCESS_4                   : 'Dein Wallet wurde erfolgreich hinzugefügt ',
 SUCCESS_5                   : 'Ausgewählte Datei ',
 SUCCESS_6                   : 'Erfolgreich verbunden ',
