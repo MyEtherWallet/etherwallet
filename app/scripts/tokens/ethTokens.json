@@ -288,6 +288,12 @@
     "type":"default"
   },
   {
+    "address":"0xef2e9966eb61bb494e5375d5df8d67b7db8a780d",
+    "symbol":"SHIT",
+    "decimal":0,
+    "type":"default"
+  },
+  {
     "address":"0xaeC2E87E0A235266D9C5ADc9DEb4b2E29b54D009",
     "symbol":"SNGLS",
     "decimal":0,
