@@ -27,7 +27,7 @@ NAV_YourWallets             : 'Dine lommebøker ',
 
 /* General */
 x_Access                    : 'Åpne ',
-x_AddessDesc                : 'Your Address can also be known as you `Account #` or your `Public Key`. It is what you share with people so they can send you Ether or Tokens. Find the colorful address icon. Make sure it matches your paper wallet & whenever you enter your address somewhere. Du kjenner kanskje dette som ditt "kontonummer" eller din "offentlige nøkkel". Dette er informasjonen som du sender til folk så de kan sende deg ether (en lang rekke tilfeldige tall og bokstaver som starter med "0x"). Ikonet er en enkel måte å kjenne igjen adressen din på. ',
+x_AddessDesc                : 'Din `adresse` kalles også for `kontonummer` eller `offentlig nøkkel`. Det er denne du sender til folk så de kan sende deg Ether eller Tokens. Find det fargerike adresse-ikonet. Forsikre deg om at det er likt med ikonet på papir-lommeboken din og ellers hver gang du oppgir adressen din. ',
 x_Address                   : 'Din adresse ',
 x_Cancel                    : 'x_Annuler ',
 x_CSV                       : 'CSV-fil (ukryptert) ',
@@ -350,8 +350,8 @@ PARITY_InvalidGasLimit      : "Tilført mengde gas er over grensen.",
 /* Tranlsation Info */
 translate_version           : '0.4 ',
 Translator_Desc             : 'Takk til oversetterne våre ',
-TranslatorName_1            : '[mrstormlars](https://www.myetherwallet.com/?gaslimit=21000&to=0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08&value=1.0#send-transaction) ',
-TranslatorAddr_1            : '0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08 ',
+TranslatorName_1            : '[mrstormlars](https://www.myetherwallet.com/?gaslimit=21000&to=mrstormlars.eth&value=1.0#send-transaction) ',  'changed to my ENS-address :-)
+TranslatorAddr_1            : 'mrstormlars.eth ',  'Leads to 0x6Dd9530b2Cb8B2d7d9f7D5D898b6456EC5D94f08 atm...
 /* Translator 1             : Insert Comments Here */
 TranslatorName_2            : '',
 TranslatorAddr_2            : '',
