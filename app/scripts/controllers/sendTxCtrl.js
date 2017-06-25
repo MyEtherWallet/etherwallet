@@ -85,6 +85,13 @@ var sendTxCtrl = function($scope, $sce, walletService) {
                 $scope.tx.sendMode = $scope.parentTxConfig.sendMode ? $scope.parentTxConfig.sendMode : 'ether';
                 $scope.tx.tokenSymbol = $scope.parentTxConfig.tokenSymbol ? $scope.parentTxConfig.tokenSymbol : '';
                 $scope.tx.readOnly = $scope.addressDrtv.readOnly = $scope.parentTxConfig.readOnly ? $scope.parentTxConfig.readOnly : false;
+                $scope.tx.gasPrice = $scope.parentTxConfig.gasPrice ? $scope.parentTxConfig.gasPrice : null;
+                $scope.tx.nonce = $scope.parentTxConfig.nonce ? $scope.parentTxConfig.nonce : null;
+                $scope.tx.data = $scope.parentTxConfig.data ? $scope.parentTxConfig.data : "";
+                if ($scope.parentTxConfig.gasLimit) {
+                    $scope.tx.gasLimit = $scope.parentTxConfig.gasLimit;
+                    $scope.gasLimitChanged = true;
+                }
             }
             $scope.$watch('parentTxConfig', function() {
                 setTxObj();
@@ -125,14 +132,14 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             $scope.tokenTx.value = $scope.tx.value;
         }
         if (newValue.to !== oldValue.to) {
-          for (var i in $scope.customGas) {
-              if ($scope.tx.to.toLowerCase() == $scope.customGas[i].to.toLowerCase()) {
-                  $scope.customGasMsg = $scope.customGas[i].msg != '' ? $scope.customGas[i].msg : ''
-                  return;
-              }
-          }
+            for (var i in $scope.customGas) {
+                if ($scope.tx.to.toLowerCase() == $scope.customGas[i].to.toLowerCase()) {
+                    $scope.customGasMsg = $scope.customGas[i].msg != '' ? $scope.customGas[i].msg : ''
+                    return;
+                }
+            }
 
-          $scope.customGasMsg = ''
+            $scope.customGasMsg = ''
         }
     }, true);
     $scope.estimateGasLimit = function() {
@@ -188,6 +195,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
             return;
         }
         var txData = uiFuncs.getTxData($scope);
+        txData.gasPrice = $scope.tx.gasPrice ? '0x' + new BigNumber($scope.tx.gasPrice).toString(16) : null;
+        txData.nonce = $scope.tx.nonce ? '0x' + new BigNumber($scope.tx.nonce).toString(16) : null;
+        if (txData.gasPrice && txData.nonce) txData.isOffline = true;
         if ($scope.tx.sendMode == 'token') {
             // if the amount of tokens you are trying to send > tokens you have, throw error
             if (!isEnough($scope.tx.value, $scope.wallet.tokenObjs[$scope.tokenTx.id].balance)) {
@@ -215,9 +225,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         uiFuncs.sendTx($scope.signedTx, function(resp) {
             if (!resp.isError) {
                 var txHashLink = $scope.ajaxReq.blockExplorerTX.replace("[[txHash]]", resp.data)
-                var bExStr     = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a class='btn btn-xs btn-info' href='" + txHashLink + "' class='strong' target='_blank' rel='noopener'>Verify Transaction</a>" : '';
-                var emailLink  = '<a class="btn btn-xs btn-info" href="mailto:support@myetherwallet.com?Subject=Issue%20regarding%20my%20TX%20&Body=%0A%0AI%20was%20trying%20to..............%0A%0A%0A%0ABut%20I%27m%20confused%20because...............%0A%0A%0A%0A%0A' + "%0ATo%20Address%3A%20https%3A%2F%2Fetherscan.io%2Faddress%2F" + $scope.tx.to + "%0A%0AFrom%20Address%3A%20https%3A%2F%2Fetherscan.io%2Faddress%2F" + $scope.wallet.getAddressString() + "%0A%0ATX%20Hash%3A%20https%3A%2F%2Fetherscan.io%2Ftx%2F" + resp.data + "%0A%0AAmount%3A%20" + $scope.tx.value + "%20" + $scope.unitReadable + "%0ANode%3A%20" + $scope.ajaxReq.type + "%0AToken%20To%20Addr%3A%20" + $scope.tokenTx.to + "%0AToken%20Amount%3A%20" + $scope.tokenTx.value + "%20" + $scope.unitReadable + "%0AData%3A%20" + $scope.tx.data + "%0AGas%20Limit%3A%20" + $scope.tx.gasLimit + "%0AGas%20Price%3A%20" + $scope.tx.gasPrice + '" target="_blank" rel="noopener">Confused? Email Us.</a>';
-                $scope.notifier.success("<p>" +  globalFuncs.successMsgs[2] + '<strong>' + resp.data + "</strong></p><p>" + bExStr + " " + emailLink + "</p>");
+                var bExStr = $scope.ajaxReq.type != nodes.nodeTypes.Custom ? "<a class='btn btn-xs btn-info' href='" + txHashLink + "' class='strong' target='_blank' rel='noopener'>Verify Transaction</a>" : '';
+                var emailLink = '<a class="btn btn-xs btn-info" href="mailto:support@myetherwallet.com?Subject=Issue%20regarding%20my%20TX%20&Body=%0A%0AI%20was%20trying%20to..............%0A%0A%0A%0ABut%20I%27m%20confused%20because...............%0A%0A%0A%0A%0A' + "%0ATo%20Address%3A%20https%3A%2F%2Fetherscan.io%2Faddress%2F" + $scope.tx.to + "%0A%0AFrom%20Address%3A%20https%3A%2F%2Fetherscan.io%2Faddress%2F" + $scope.wallet.getAddressString() + "%0A%0ATX%20Hash%3A%20https%3A%2F%2Fetherscan.io%2Ftx%2F" + resp.data + "%0A%0AAmount%3A%20" + $scope.tx.value + "%20" + $scope.unitReadable + "%0ANode%3A%20" + $scope.ajaxReq.type + "%0AToken%20To%20Addr%3A%20" + $scope.tokenTx.to + "%0AToken%20Amount%3A%20" + $scope.tokenTx.value + "%20" + $scope.unitReadable + "%0AData%3A%20" + $scope.tx.data + "%0AGas%20Limit%3A%20" + $scope.tx.gasLimit + "%0AGas%20Price%3A%20" + $scope.tx.gasPrice + '" target="_blank" rel="noopener">Confused? Email Us.</a>';
+                $scope.notifier.success("<p>" + globalFuncs.successMsgs[2] + '<strong>' + resp.data + "</strong></p><p>" + bExStr + " " + emailLink + "</p>");
                 $scope.wallet.setBalance(applyScope);
                 if ($scope.tx.sendMode == 'token') $scope.wallet.tokenObjs[$scope.tokenTx.id].setBalance();
             } else {

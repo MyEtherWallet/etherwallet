@@ -20,6 +20,9 @@ validator.isValidENSName = function(str) {
         return false;
     }
 }
+validator.isValidTxHash = function(txHash) {
+    return txHash.substring(0, 2) == "0x" && txHash.length == 66 && this.isValidHex(txHash);
+}
 validator.isValidENSAddress = function(address) {
     address = ens.normalise(address);
     var tld = address.substr(address.lastIndexOf('.') + 1);

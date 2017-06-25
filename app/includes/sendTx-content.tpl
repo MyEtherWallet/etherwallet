@@ -54,7 +54,7 @@
       <div class="row form-group">
         <div class="col-sm-11 clearfix">
           <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
-          <input class="form-control" type="text" placeholder="2" ng-model="tx.Nonce" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
+          <input class="form-control" type="text" placeholder="2" ng-model="tx.nonce" ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Nonce -->
@@ -64,7 +64,7 @@
       <div class="row form-group">
         <div class="col-sm-11 clearfix">
           <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span></label>
-          <input class="form-control" type="text" placeholder="50" ng-model="tx.gasPrice" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
+          <input class="form-control" type="text" placeholder="50" ng-model="tx.gasPrice" ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Gas Price -->
