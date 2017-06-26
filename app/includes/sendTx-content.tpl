@@ -81,7 +81,7 @@
 
     <div class="row form-group">
       <div class="col-xs-12 clearfix">
-        <a class="btn btn-info btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
+        <a class="btn btn-primary btn-block" ng-click="generateTx()" translate="SEND_generate"> Generate Transaction </a>
       </div>
     </div>
 
@@ -111,11 +111,17 @@
     <p>Please add more funds to your wallet or access a different wallet.</p>
   </div>
 
+  <div class="block block--danger" ng-show="wallet!=null">
+    <h5>Warning: You unlocked an address that does not match the sending address of the transaction you are attempting to cancel / replace.</h5>
+  </div>
+
   <wallet-balance-drtv></wallet-balance-drtv>
+
   <div class="block">
     <p translate="sidebar_donation"> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
-    <a class="btn btn-primary btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
+    <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
     <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
   </div>
+
 </section>
 <!-- / Sidebar -->
