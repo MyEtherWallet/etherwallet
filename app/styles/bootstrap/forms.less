@@ -136,9 +136,10 @@ label + textarea,
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
-    background-color: #fafafa;
+    background-color: #ececec;
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
-    cursor: text !important;
+    cursor: text!important;
+    box-shadow: none!important;
   }
 
   &[disabled],
