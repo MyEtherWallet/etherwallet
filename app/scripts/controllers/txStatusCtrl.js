@@ -13,8 +13,7 @@ Make some variable that I can use to differentiate and hide / show things on sen
 */
 
 'use strict';
-var txStatusCtrl = function($scope, walletService) {
-    walletService.wallet = null;
+var txStatusCtrl = function($scope) {
     $scope.Validator = Validator;
     $scope.txStatus = {
         found: 0,
@@ -65,14 +64,14 @@ var txStatusCtrl = function($scope, walletService) {
                 var _gasPrice = new BigNumber($scope.txInfo.gasPrice.wei).mul(1.1);
                 if (_gasPrice.lt(etherUnits.getValueOfUnit('gwei') * MIN_GAS)) _gasPrice = new BigNumber(etherUnits.getValueOfUnit('gwei') * MIN_GAS)
                 $scope.parentTxConfig = {
-                    to: $scope.txInfo.to,
-                    value: etherUnits.toEther($scope.txInfo.value, 'wei'),
+                    to: $scope.txInfo.from,
+                    value: '0',
                     sendMode: 'ether',
                     tokenSymbol: '',
                     readOnly: false,
                     gasPrice: _gasPrice.toString(),
-                    gasLimit: $scope.txInfo.gasLimit,
-                    data: $scope.txInfo.data,
+                    gasLimit: '21000',
+                    data: '',
                     nonce: $scope.txInfo.nonce,
                     showAdvance: true
                 }

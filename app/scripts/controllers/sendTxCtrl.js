@@ -9,6 +9,12 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.dropdownEnabled = true;
     $scope.Validator = Validator;
     $scope.gasLimitChanged = false;
+    var currentTab = $scope.globalService.currentTab;
+    var tabs = $scope.globalService.tabs;
+
+    if(currentTab == tabs.sendTransaction.id){
+        //this is for you @tayvano
+    }
     // Tokens
     $scope.tokenVisibility = "hidden";
     $scope.tokenTx = {

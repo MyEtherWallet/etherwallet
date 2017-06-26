@@ -135,9 +135,14 @@
 
   <!-- Send Tx Content -->
  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+      <div ng-show="wallet.getChecksumAddressString() == txInfo.from">
       @@if (site === 'mew' ) { @@include( './sendTx-content.tpl', { "site": "mew" } ) }
       @@if (site === 'cx'  ) { @@include( './sendTx-content.tpl', { "site": "cx"  } ) }
 
       @@if (site === 'mew' ) { @@include( './sendTx-modal.tpl',   { "site": "mew" } ) }
       @@if (site === 'cx'  ) { @@include( './sendTx-modal.tpl',   { "site": "cx"  } ) }
+      </div>
+      <div ng-show="wallet.getChecksumAddressString() != txInfo.from">
+        Unlock the correct account
+      </div>
     </section>
