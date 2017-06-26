@@ -17,7 +17,7 @@ var addressFieldDrtv = function($compile) {
             }
             scope.addressDrtv = {
                 showDerivedAddress: false,
-                ensAddressField: '',
+                ensAddressField: globalFuncs.urlGet('to') == null ? "" : globalFuncs.urlGet('to'),
                 derivedAddress: '',
                 readOnly: false
             }

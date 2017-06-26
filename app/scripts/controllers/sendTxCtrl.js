@@ -22,9 +22,9 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         value: 0,
         id: -1
     };
-    $scope.customGasMsg = ''
+    $scope.customGasMsg = '';
 
-    $scope.customGas = CustomGasMessages
+    $scope.customGas = CustomGasMessages;
 
     $scope.tx = {
         // if there is no gasLimit or gas key in the URI, use the default value. Otherwise use value of gas or gasLimit. gasLimit wins over gas if both present
