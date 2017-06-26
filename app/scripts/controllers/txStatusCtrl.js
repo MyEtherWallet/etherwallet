@@ -55,6 +55,7 @@ var txStatusCtrl = function($scope) {
                 gasLimit: new BigNumber(tx.gas).toString(),
                 gasPrice: {
                     wei: new BigNumber(tx.gasPrice).toString(),
+                    gwei: new BigNumber(tx.gasPrice).div(etherUnits.getValueOfUnit('gwei')).toString(),
                     eth: etherUnits.toEther(tx.gasPrice, 'wei')
                 },
                 data: tx.input == '0x' ? '' : tx.input,
@@ -72,8 +73,7 @@ var txStatusCtrl = function($scope) {
                     gasPrice: _gasPrice.toString(),
                     gasLimit: '21000',
                     data: '',
-                    nonce: $scope.txInfo.nonce,
-                    showAdvance: true
+                    nonce: $scope.txInfo.nonce
                 }
                 new Modal(document.getElementById('sendTransaction'));
             }
@@ -96,7 +96,6 @@ var txStatusCtrl = function($scope) {
             $scope.notifier.danger(e);
         }
     }
-    $scope.showAdvance = true; // automatically expand the advanced accordion on txStatus page only
 
 };
 module.exports = txStatusCtrl;
