@@ -10,7 +10,12 @@
     <!-- Amount to Send -->
     <label translate="SEND_amount">Amount to Send:</label>
     <div class="input-group col-sm-11">
-      <input class="form-control" type="text" placeholder="{{ 'SEND_amount_short' | translate }}" ng-model="tx.value" ng-disabled="tx.readOnly" ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
+      <input type="text"
+             class="form-control"
+             placeholder="{{ 'SEND_amount_short' | translate }}"
+             ng-model="tx.value"
+             ng-disabled="tx.readOnly || checkTxReadOnly"
+             ng-class="Validator.isPositiveNumber(tx.value) ? 'is-valid' : 'is-invalid'"/>
       <div class="input-group-btn">
         <a style="min-width: 170px" class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownAmount = !dropdownAmount" ng-class="dropdownEnabled ? '' : 'disabled'">
           <strong>{{unitReadable}}<i class="caret"></i></strong>
@@ -35,7 +40,13 @@
           <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
         </a>
         <label translate="TRANS_gas"> Gas Limit: </label>
-        <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
+        <input type="text"
+               class="form-control"
+               placeholder="21000"
+               ng-model="tx.gasLimit"
+               ng-change="gasLimitChanged=true"
+               ng-disabled="tx.readOnly || checkTxReadOnly"
+               ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" />
       </div>
     </div>
     <!-- / Gas Limit -->
@@ -45,7 +56,7 @@
       <p class="strong" translate="TRANS_advanced"> + Advanced: Add Data </p>
     </a>
 
-    <section ng-show="showAdvance || globalService.currentTab==globalService.tabs.txStatus.id">
+    <section ng-show="showAdvance || checkTxPage">
       <!-- Data -->
       <div class="row form-group">
         <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
@@ -54,35 +65,50 @@
             <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
           </span>
           <label translate="TRANS_data"> Data: </label>
-          <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
+          <input type="text"
+                 class="form-control"
+                 placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421"
+                 ng-model="tx.data"
+                 ng-disabled="tx.readOnly || checkTxReadOnly"
+                 ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
         </div>
       </div>
       <!-- / Data -->
 
 
       <!-- Nonce -->
-      <div class="row form-group" ng-show="globalService.currentTab==globalService.tabs.txStatus.id">
+      <div class="row form-group" ng-show="checkTxPage">
         <div class="col-sm-11 clearfix">
           <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
             <img src="images/icon-help.svg" class="help-icon" />
             <p class="account-help-text" translate="NONCE_Desc"></p>
           </a>
           <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
-          <input class="form-control" type="text" placeholder="2" ng-model="tx.nonce" ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
+          <input type="text"
+                 class="form-control"
+                 placeholder="2"
+                 ng-model="tx.nonce"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Nonce -->
 
 
       <!-- Gas Price -->
-      <div class="row form-group" ng-show="globalService.currentTab==globalService.tabs.txStatus.id">
+      <div class="row form-group" ng-show="checkTxPage">
         <div class="col-sm-11 clearfix">
           <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
             <img src="images/icon-help.svg" class="help-icon" />
             <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
           </a>
           <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span></label>
-          <input class="form-control" type="text" placeholder="50" ng-model="tx.gasPrice" ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
+          <input type="text"
+                 class="form-control"
+                 placeholder="50"
+                 ng-model="tx.gasPrice"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
         </div>
       </div>
       <!-- / Gas Price -->
@@ -136,6 +162,8 @@
     <a class="btn btn-default btn-sm btn-block" ng-click="onDonateClick()" translate="sidebar_donate">DONATE</a>
     <div class="text-success text-center marg-v-sm" ng-show="tx.donate" translate="sidebar_thanks"> THANK YOU!!! </div>
   </div>
+
+  <div ng-show="checkTxPage" ng-click="checkTxReadOnly=!checkTxReadOnly" class="small text-right text-gray-lighter"><small>Advanced Users Only.</small></div>
 
 </section>
 <!-- / Sidebar -->
