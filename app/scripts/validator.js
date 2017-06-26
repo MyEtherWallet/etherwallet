@@ -45,7 +45,7 @@ validator.isValidHex = function(hex) {
     return ethFuncs.validateHexString(hex);
 }
 validator.isValidPrivKey = function(privkeyLen) {
-    return privkeyLen == 64 || privkeyLen == 128 || privkeyLen == 132;
+    return privkeyLen == 64 || privkeyLen == 66 || privkeyLen == 128 || privkeyLen == 132;
 }
 validator.isValidMnemonic = function(mnemonic) {
     return hd.bip39.validateMnemonic(mnemonic);
