@@ -30,6 +30,10 @@
     <!-- Gas Limit -->
     <div class="row form-group">
       <div class="col-sm-11 clearfix">
+        <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+          <img src="images/icon-help-3.svg" class="help-icon" />
+          <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+        </a>
         <label translate="TRANS_gas"> Gas Limit: </label>
         <input class="form-control" type="text" placeholder="21000" ng-model="tx.gasLimit" ng-class="Validator.isPositiveNumber(tx.gasLimit) ? 'is-valid' : 'is-invalid'" ng-change="gasLimitChanged=true"/>
       </div>
@@ -43,6 +47,10 @@
       <!-- Data -->
       <div class="row form-group">
         <div class="col-sm-11 clearfix" ng-show="tx.sendMode=='ether'">
+          <span class="account-help-icon">
+            <img src="images/icon-help-3.svg" class="help-icon" />
+            <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
+          </span>
           <label translate="TRANS_data"> Data: </label>
           <input class="form-control" type="text" placeholder="0x6d79657468657277616c6c65742e636f6d20697320746865206265737421" ng-model="tx.data" ng-disabled="tx.readOnly" ng-class="Validator.isValidHex(tx.data) ? 'is-valid' : 'is-invalid'"/>
         </div>
@@ -51,8 +59,12 @@
 
 
       <!-- Nonce -->
-      <div class="row form-group">
+      <div class="row form-group" ng-show="globalService.currentTab==globalService.tabs.txStatus.id">
         <div class="col-sm-11 clearfix">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+            <img src="images/icon-help-3.svg" class="help-icon" />
+            <p class="account-help-text" translate="NONCE_Desc"></p>
+          </a>
           <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
           <input class="form-control" type="text" placeholder="2" ng-model="tx.nonce" ng-class="Validator.isPositiveNumber(tx.nonce) ? 'is-valid' : 'is-invalid'" />
         </div>
@@ -61,8 +73,12 @@
 
 
       <!-- Gas Price -->
-      <div class="row form-group">
+      <div class="row form-group" ng-show="globalService.currentTab==globalService.tabs.txStatus.id">
         <div class="col-sm-11 clearfix">
+          <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+            <img src="images/icon-help-3.svg" class="help-icon" />
+            <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
+          </a>
           <label> <span translate="OFFLINE_Step2_Label_3"> Gas Price: </span></label>
           <input class="form-control" type="text" placeholder="50" ng-model="tx.gasPrice" ng-class="Validator.isPositiveNumber(tx.gasPrice) ? 'is-valid' : 'is-invalid'" />
         </div>
@@ -106,12 +122,12 @@
 <!-- Sidebar -->
 <section class="col-sm-4">
 
-  <div class="block block--danger" ng-show="wallet!=null && tx.readOnly && !hasEnoughBalance()">
+  <div class="block block--danger" ng-show="wallet!=null && globalService.currentTab==globalService.tabs.swap.id && !hasEnoughBalance()">
     <h5>Warning! You do not have enough funds to complete this swap.</h5>
     <p>Please add more funds to your wallet or access a different wallet.</p>
   </div>
 
-  <div class="block block--danger" ng-show="wallet!=null">
+  <div class="block block--danger" ng-show="globalService.currentTab==globalService.tabs.txStatus.id">
     <h5>Warning: You unlocked an address that does not match the sending address of the transaction you are attempting to cancel / replace.</h5>
   </div>
 

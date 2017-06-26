@@ -25,7 +25,7 @@
   <!-- Section 2: Current State -->
   <section class="block txstatus__2">
 
-    <div class="cont-md" ng-show="txInfo.status == txStatus.mined"> 
+    <div class="cont-md" ng-show="txInfo.status == txStatus.mined">
       <h3 class="text-success" translate="tx_FoundOnChain"> Transaction Found </h3>
       <h5> <a href="https://etherscan.io/tx/{{ tx.hash }}" target="_blank" rel="noopener"> {{ tx.hash }} </a> </h5>
       <p><strong translate="tx_FoundOnChain_1"></strong></p>
@@ -59,48 +59,52 @@
     <table class="table table-striped txstatus__2 cont-md"> <!-- ng-show="tx.status=='foundOnChain' || foundInPending'"-->
       <tbody>
         <tr>
-          <td></td>
           <td translate="x_TxHash">TX Hash</td>
           <td><a href="https://etherscan.io/tx/{{ txInfo.hash }}" target="_blank" rel="noopener"> {{ txInfo.hash }} </a></td>
         </tr>
         <tr>
-          <td></td>
           <td translate="OFFLINE_Step1_Label_1">From Address</td>
           <td><a href="https://etherscan.io/address/{{ txInfo.from }}" target="_blank" rel="noopener"> {{ txInfo.from }} </a></td>
         </tr>
         <tr>
-          <td></td>
           <td translate="OFFLINE_Step2_Label_1">To Address</td>
           <td><a href="https://etherscan.io/address/{{ txInfo.to }}" target="_blank" rel="noopener"> {{ txInfo.to }} </a></td>
         </tr>
         <tr>
-          <td></td>
           <td translate="SEND_amount_short">Amount</td>
           <td>{{ txInfo.valueStr }} </td>
         </tr>
         <tr>
-          <td><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
-            <img src="images/icon-help.svg" class="help-icon" />
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="NONCE_Desc"></p>
+            </a>
+            <span translate="OFFLINE_Step2_Label_5">Nonce</span>
           </td>
-          <td translate="OFFLINE_Step2_Label_5">Nonce</td>
           <td>{{ txInfo.nonce }} </td>
         </tr>
         <tr>
-          <td><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-            <img src="images/icon-help.svg" class="help-icon" />
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="GAS_LIMIT_Desc"></p>
+            </a>
+            <span translate="OFFLINE_Step2_Label_4">Gas Limit</span>
           </td>
-          <td translate="OFFLINE_Step2_Label_4">Gas Limit</td>
           <td>{{ txInfo.gasLimit }} </td>
         </tr>
         <tr>
-          <td><a href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-            <img src="images/icon-help.svg" class="help-icon" />
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="GAS_PRICE_Desc"></p>
+            </a>
+            <span translate="OFFLINE_Step2_Label_3">Gas Price</span>
           </td>
-          <td><span translate="OFFLINE_Step2_Label_3">Gas Price</span> (wei) &middot;  (ETH) &middot;  (USD) </td>
-          <td>{{ txInfo.gasPrice.wei }}  &middot; {{ txInfo.gasPrice.eth }}  &middot; {{ txInfo.gasPrice.usd }}</td>
+          <td>{ TODO } GWEI &middot; {{ txInfo.gasPrice.wei }} WEI </td>
         </tr>
         <tr>
-          <td></td>
           <td translate="OFFLINE_Step2_Label_6">Data</td>
           <td>{{ txInfo.data }} </td>
         </tr>

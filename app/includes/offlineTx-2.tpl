@@ -50,10 +50,11 @@
   <!-- Gas Price -->
   <article class="clearfix">
     <section class="col-sm-11">
-      <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1</p>
-        <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
-      </div>
+      </a>
+      <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
       <input class="form-control" type="text" placeholder="" ng-model="gasPriceDec"/>
     </section>
   </article>
@@ -61,10 +62,11 @@
   <!-- Gas Limit -->
   <article class="clearfix">
     <section class="col-sm-11">
-      <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_4b">21000 is the default gas limit.</p>
-        <label translate="OFFLINE_Step2_Label_4"> Gas Limit </label>
-      </div>
+      </a>
+      <label translate="OFFLINE_Step2_Label_4"> Gas Limit </label>
       <input class="form-control" type="text" placeholder="" ng-model="tx.gasLimit"/>
     </section>
   </article>
@@ -72,10 +74,11 @@
   <!-- Nonce -->
   <article class="clearfix">
     <section class="col-sm-11">
-      <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-nonce" target="_blank" rel="noopener">
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_5b">This was displayed in Step 1.</p>
-        <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
-      </div>
+      </a>
+      <label translate="OFFLINE_Step2_Label_5"> Nonce </label>
       <input class="form-control" type="text" placeholder="" ng-model="nonceDec"/>
     </section>
   </article>
@@ -84,10 +87,11 @@
   <!-- Data -->
   <article class="clearfix">
     <section class="col-sm-11" ng-show="tokenTx.id=='ether'">
-      <div class="account-help-icon"><img src="images/icon-help.svg" class="help-icon" />
+      <span class="account-help-icon">
+        <img src="images/icon-help.svg" class="help-icon" />
         <p class="account-help-text" translate="OFFLINE_Step2_Label_6b">This is optional.</p>
-        <label translate="OFFLINE_Step2_Label_6"> Data </label>
-      </div>
+      </span>
+      <label translate="OFFLINE_Step2_Label_6"> Data </label>
       <input class="form-control" type="text" placeholder="0x4d792045746865722057616c6c6574" id="offlineData" ng-model="tx.data" />
     </section>
   </article>
