@@ -14,8 +14,13 @@
              type="text"
              placeholder="0x3f0efedfe0a0cd611f2465fac9a3699f92d6a06613bc3ead4f786856f5c73e9c"
              ng-model="txInfo.hash"
+             ng-keyup="$event.keyCode == 13 && checkTxStatus()"
              aria-label="{{'x_TxHash' | translate}}" ng-class="Validator.isValidTxHash(txInfo.hash) ? 'is-valid' : 'is-invalid'"/>
-          <button tabindex="0" role="button" class="btn btn-primary" ng-click="checkTxStatus()" translate="NAV_CheckTxStatus">Check TX Status</button>
+          <button tabindex="0"
+                  role="button"
+                  class="btn btn-primary"
+                  ng-click="checkTxStatus()"
+                  translate="NAV_CheckTxStatus"> Check TX Status </button>
       </section>
     </article>
   </section>
@@ -102,7 +107,9 @@
             </a>
             <span translate="OFFLINE_Step2_Label_3">Gas Price</span>
           </td>
-          <td>{ TODO } GWEI &middot; {{ txInfo.gasPrice.wei }} WEI </td>
+          <td>
+            {{ txInfo.gasPrice.gwei }} GWEI
+            <small>({{ txInfo.gasPrice.wei }} WEI)</small></td>
         </tr>
         <tr>
           <td translate="OFFLINE_Step2_Label_6">Data</td>
@@ -142,7 +149,7 @@
       @@if (site === 'mew' ) { @@include( './sendTx-modal.tpl',   { "site": "mew" } ) }
       @@if (site === 'cx'  ) { @@include( './sendTx-modal.tpl',   { "site": "cx"  } ) }
       </div>
-      <div ng-show="wallet.getChecksumAddressString() != txInfo.from">
-        Unlock the correct account
+      <div class="col-xs-12 block block--danger" ng-show="wallet.getChecksumAddressString() != txInfo.from">
+        <h5>Please unlock the address {{ txInfo.from }}. Only this address can replace a TX.</h5>
       </div>
     </section>
