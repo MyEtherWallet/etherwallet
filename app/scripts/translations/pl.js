@@ -389,7 +389,7 @@ HELP_1_Desc_3               : 'Wpisz silne hasło. Jeśli uważasz, że mógłby
 HELP_1_Desc_4               : 'Kliknij "GENERUJ". ',
 HELP_1_Desc_5               : 'Twój nowy portfel został właśnie wygenerowany. ',
 
-HELP_2a_Title               : '2a) Jak mam zapisać/wykonać kopię mojego portfela? ',
+HELP_2a_Title               : 'Jak mam zapisać/wykonać kopię mojego portfela? ',
 HELP_2a_Desc_1              : 'Zawsze powinieneś wykonać zewnętrzną kopię bezpieczeństwa w wielu fizycznie niezależnych lokalizacjach - na przykład na nośniku USB i/lub kartce papieru. ',
 HELP_2a_Desc_2              : 'Zapisz swój adres. Możesz zachować go dla siebie lub udostępnić go innym. Inne osoby znając ten adres mogą Ci na niego wysyłać środki. ',
 HELP_2a_Desc_3              : 'Zachowaj klucz prywatny w przynajmniej jednym formacie. Nie udostępniaj go nikomu. Klucz prywatny będzie Ci potrzebny, jeśli będziesz chciał uzyskać dostęp do Twojego portfela i wysyłać z niego środki! Istnieją 3 formaty zapisu kluczy prywatnych: ',

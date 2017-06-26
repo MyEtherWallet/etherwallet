@@ -389,7 +389,7 @@ HELP_1_Desc_3               : 'Introducir una contraseña fuerte. Si crees que p
 HELP_1_Desc_4               : 'Haz clic en "GENERAR". ',
 HELP_1_Desc_5               : 'Ahora se ha generado tu cartera. ',
 
-HELP_2a_Title               : '2a) ¿Cómo guardo/respaldo mi cartera? ',
+HELP_2a_Title               : '¿Cómo guardo/respaldo mi cartera? ',
 HELP_2a_Desc_1              : 'Deberías siempre respaldar tu cartera externamente y en varias ubicaciones físicas (como una unidad USB o en una hoja de papel). ',
 HELP_2a_Desc_2              : 'Guardar la dirección. Puedes mantenerla en privado o compartirla con otras personas. De ese modo, otras personas te podrán enviar ether. ',
 HELP_2a_Desc_3              : 'Guarda las versiones de tu clave privada. No la compartas con nadie. ¡Tu clave privada es necesaria cuando quieras tener acceso a tu ether para enviarlo! Hay tres tipos de claves privadas: ',

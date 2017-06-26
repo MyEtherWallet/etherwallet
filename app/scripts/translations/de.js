@@ -391,7 +391,7 @@ HELP_1_Desc_3               : 'Wähle ein starkes Passwort aus. Falls du glaubst
 HELP_1_Desc_4               : 'Klicke auf "Wallet erstellen". ',
 HELP_1_Desc_5               : 'Dein Wallet wurde nun erstellt. ',
 
-HELP_2a_Title               : '2a) Wie speichere ich/erstelle Back-ups meines Wallets? ',
+HELP_2a_Title               : 'Wie speichere ich/erstelle Back-ups meines Wallets? ',
 HELP_2a_Desc_1              : 'Du solltest dein Wallet immer an verschiedenen physischen Orten abspeichern - beispielsweise auf einem USB-Stick und/oder einem Stück Papier. ',
 HELP_2a_Desc_2              : 'Speichere die Adresse. Du kannst sie für dich behalten oder mit anderen teilen. Auf diese Adresse können andere Ether an dich senden. ',
 HELP_2a_Desc_3              : 'Speiche verschiedene Versionen deines privaten Schlüssels. Teile ihn nicht mit jemand anderem. Dein privater Schlüssel ist notwendig, wenn du auf deinen Ether zugreifen willst, um eine Überweisung zu tätigen! Es gibt 3 Arten des privaten Schlüssels ',

@@ -388,7 +388,7 @@ HELP_1_Desc_3               : 'Oppgi et sterkt passord. Hvis du ikke tror du kla
 HELP_1_Desc_4               : 'Klikk "OPPRETT". ',
 HELP_1_Desc_5               : 'Din lommebok har nå blitt opprettet. ',
 
-HELP_2a_Title               : '2a) Hvordan lagrer/sikkerhetskopierer jeg lommeboken min? ',
+HELP_2a_Title               : 'Hvordan lagrer/sikkerhetskopierer jeg lommeboken min? ',
 HELP_2a_Desc_1              : 'Du bør alltid sikkerhetskopiere lommeboken din eksternt og på flere fysiske lokasjoner - som f.eks. på en USB-disk og/eller på et papirark. ',
 HELP_2a_Desc_2              : 'Lagre adressen. Du kan holde den for deg selv eller dele den med andre. På den måten kan andre overføre ether til deg. ',
 HELP_2a_Desc_3              : 'Lagre versjoner av den private nøkkelen. Ikke del den med noen andre. Din private nøkkel er nødvendig hvis du vil ha tilgang til (og sende) etheren din! Det er 3 typer private nøkler: ',

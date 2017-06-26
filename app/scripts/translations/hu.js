@@ -387,7 +387,7 @@ HELP_1_Desc_3               : 'Írj be egy erős jelszót. Ha úgy gondolod, ese
 HELP_1_Desc_4               : 'Kattints a "Tárca generálása" gombra. ',
 HELP_1_Desc_5               : 'Az új tárcád ezzel kész van. ',
 
-HELP_2a_Title               : '2a) Hogyan tudom lementeni/biztonsági másolatot készíteni a tárcáról? ',
+HELP_2a_Title               : 'Hogyan tudom lementeni/biztonsági másolatot készíteni a tárcáról? ',
 HELP_2a_Desc_1              : 'A tárcádról ajánlott mindig külső biztonsági mentést tartani, több, fizikailag különböző helyen - például egy pendrive-on és/vagy papíron. ',
 HELP_2a_Desc_2              : 'Mentsd le a címet. Megtarthatod magadnak, vagy megoszthatod másokkal is, így ők is tudnak neked Ethert küldeni. ',
 HELP_2a_Desc_3              : 'Mentsd el több példányban a privát kulcsot, és ne oszd meg senkivel. Erre van ugyanis szükség, ha hozzá szeretnél férni az Etheredhez, és el szeretnéd küldeni. Három fajta privát kulcs van: ',

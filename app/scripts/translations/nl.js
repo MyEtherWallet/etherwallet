@@ -379,7 +379,7 @@ HELP_1_Desc_3               : 'Voer een sterk wachtwoord in. Als je denkt dat je
 HELP_1_Desc_4               : 'klik "GENENEREER". ',
 HELP_1_Desc_5               : 'Je wallet is nu gegenereerd. ',
 
-HELP_2a_Title               : '2a) Hoe bewaar/back-up ik mijn wallet? ',
+HELP_2a_Title               : 'Hoe bewaar/back-up ik mijn wallet? ',
 HELP_2a_Desc_1              : 'Zorg altijd voor een goede back-up van je wallet op meerdere fysiek verschillende lokaties - bijvoorbeeld op een USB drive en/of op een vel papier. ',
 HELP_2a_Desc_2              : 'Bewaar het adres. Je kunt het voor jezelf bewaren of met anderen delen. Op die manier kunnen anderen ether naar je versturen. ',
 HELP_2a_Desc_3              : 'Bewaar versies van je prive sleutel. Deel deze niet met anderen. Je prive sleutel heb je nodig wanneer je toegang tot je ETH wilt om het te versturen! Er zijn drie soorten prive sleutels: ',

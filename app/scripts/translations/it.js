@@ -380,7 +380,7 @@ HELP_1_Desc_3               : 'Inserisci una password robusta. Se pensi di poter
 HELP_1_Desc_4               : 'Fai clic su "GENERA PORTAFOGLIO". ',
 HELP_1_Desc_5               : 'Il tuo portafoglio è stato appena generato. ',
 
-HELP_2a_Title               : '2a) Come salvo o faccio il backup del mio portafoglio? ',
+HELP_2a_Title               : 'Come salvo o faccio il backup del mio portafoglio? ',
 HELP_2a_Desc_1              : 'Dovresti sempre fare dei backup esterni in diversi luoghi fisici - come su una penna USB e/o su un pezzo di carta. ',
 HELP_2a_Desc_2              : 'Salva l\'indirizzo. Puoi tenerlo per te o condividerlo. In questo modo gli altri possono inviarti degli ether. ',
 HELP_2a_Desc_3              : 'Salva delle versioni della chiave privata. Non condividerla con nessuno. La tua chiave privata è necessaria quando vuoi accedere ai tuoi ether per trasferirli! Ci sono 3 tipi di chiave privata: ',

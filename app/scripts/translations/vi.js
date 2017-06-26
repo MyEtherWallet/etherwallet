@@ -389,7 +389,7 @@ HELP_1_Desc_3               : 'Nhập một mật khẩu mạnh. Nếu bạn ngh
 HELP_1_Desc_4               : 'Chọn "Tạo Ví". ',
 HELP_1_Desc_5               : 'Ví của bạn sẽ được tạo ngay bây giờ. ',
 
-HELP_2a_Title               : '2a) Làm thế nào dễ sao lưu Ví? ',
+HELP_2a_Title               : 'Làm thế nào dễ sao lưu Ví? ',
 HELP_2a_Desc_1              : 'Bạn nên sao lưu tập tin Ví của bạn bên ngoài máy tính và tại nhiều nơi khác nhau - như trên USB hoặc/và một tờ giấy. ',
 HELP_2a_Desc_2              : 'Lưu lại địa chỉ Ví. Bạn có thể giữ nó cho chính mình hoặc chia sẽ nó cho bất cứ ai. Người khác có thể gửi Ether cho bạn thông qua địa chỉ Ví của bạn. ',
 HELP_2a_Desc_3              : 'Private key. Không được chia sẽ Private key cho bất cứ ai. Private key rất cần thiết khi bạn muốn truy cập vào Ví và Gửi đi một lượng Ether! hiện tại có 3 phiên bản lưu trữ dành cho Private Key: ',

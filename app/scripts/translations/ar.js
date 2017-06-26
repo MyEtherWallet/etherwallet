@@ -388,7 +388,7 @@ HELP_1_Desc_3               : 'Entrez un mot de passe fort. Si vous pensez que v
 HELP_1_Desc_4               : 'Cliquez sur "GÉNÉRER". ',
 HELP_1_Desc_5               : 'Votre portefeuille a maintenant été généré. ',
 
-HELP_2a_Title               : '2a) Comment puis-je sauvegarder mon portefeuille ? ',
+HELP_2a_Title               : 'Comment puis-je sauvegarder mon portefeuille ? ',
 HELP_2a_Desc_1              : 'Vous devez toujours sauvegarder votre portefeuille en plusieurs endroits physiques, comme sur une clef USB ou une feuille de papier. ',
 HELP_2a_Desc_2              : 'Sauvegardez l\'adresse. Vous pouvez la garder pour vous-même ou la partager avec d\'autres personnes qui, de cette manière, peuvent vous envoyer de l\'Ether. ',
 HELP_2a_Desc_3              : 'Sauvegardez votre clef privée en plusieurs exemplaires. Ne la partagez avec personne. Votre clef privée est nécessaire pour accéder à votre Ether pour l\'envoyer ! Il existe 3 types de clef privée : ',
