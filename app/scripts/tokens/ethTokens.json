@@ -293,10 +293,22 @@
     "decimal":0,
     "type":"default"
   },
+    {
+    "address":"0x2bDC0D42996017fCe214b21607a515DA41A9E0C5",
+    "symbol":"SKIN",
+    "decimal":6,
+    "type":"default"
+  },
   {
     "address":"0xaeC2E87E0A235266D9C5ADc9DEb4b2E29b54D009",
     "symbol":"SNGLS",
     "decimal":0,
+    "type":"default"
+  },
+  {
+    "address":"0x983f6d60db79ea8ca4eb9968c6aff8cfa04b3c63",
+    "symbol":"SNM",
+    "decimal":18,
     "type":"default"
   },
   {
