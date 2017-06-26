@@ -14,6 +14,13 @@
 module.exports = [
 {
   // DCORP
+  to:         '0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8',
+  gasLimit:   21000,
+  data:       '',
+  msg:        'Thank you for your donation! TO THE MOON! 🌝'
+},
+{
+  // DCORP
   to:         '0xD42433A8a0A1CEB73c8ff4e432463e2ee109039d',
   gasLimit:   100000,
   data:       '',

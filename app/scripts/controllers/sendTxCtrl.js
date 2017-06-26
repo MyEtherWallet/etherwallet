@@ -197,7 +197,13 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         var txData = uiFuncs.getTxData($scope);
         txData.gasPrice = $scope.tx.gasPrice ? '0x' + new BigNumber($scope.tx.gasPrice).toString(16) : null;
         txData.nonce = $scope.tx.nonce ? '0x' + new BigNumber($scope.tx.nonce).toString(16) : null;
+
+        // set to true for offline tab and txstatus tab
+        // on sendtx tab, it pulls gas price from the gasprice slider & nonce
+        // if its true the whole txData object is set - don't try to change it
+        // if false, replace gas price and nonce. gas price from slider. nonce from server.
         if (txData.gasPrice && txData.nonce) txData.isOffline = true;
+
         if ($scope.tx.sendMode == 'token') {
             // if the amount of tokens you are trying to send > tokens you have, throw error
             if (!isEnough($scope.tx.value, $scope.wallet.tokenObjs[$scope.tokenTx.id].balance)) {
