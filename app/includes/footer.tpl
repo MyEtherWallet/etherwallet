@@ -100,6 +100,8 @@
         </ul>
 
       </section>
+      
+      </article>
 
   </div>
 
