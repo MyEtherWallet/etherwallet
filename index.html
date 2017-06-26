@@ -2806,6 +2806,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
   <!-- Send Tx Content -->
  <section class="row" ng-show="wallet!=null" ng-controller='sendTxCtrl'>
+      <div ng-show="wallet.getChecksumAddressString() == txInfo.from">
        <!-- Content -->
 <section class="col-sm-8">
   <div class="block">
@@ -2995,8 +2996,11 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 </article>
  
       
+      </div>
+      <div ng-show="wallet.getChecksumAddressString() != txInfo.from">
+        Unlock the correct account
+      </div>
     </section>
-
 
     <!-- Help -->
 <article class="tab-pane help active" ng-if="globalService.currentTab==globalService.tabs.help.id"  ng-cloak>
