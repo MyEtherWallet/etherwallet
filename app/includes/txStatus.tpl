@@ -28,7 +28,7 @@
 
 
   <!-- Section 2: Current State -->
-  <section class="block txstatus__2">
+  <section class="block txstatus__2" ng-show="txInfo.status==txStatus.mined || txInfo.status==txStatus.notFound || txInfo.status==txStatus.found">
 
     <div class="cont-md" ng-show="txInfo.status == txStatus.mined">
       <h3 class="text-success" translate="tx_FoundOnChain"> Transaction Found </h3>
@@ -46,6 +46,7 @@
       <ul>
         <li translate="tx_notFound_2"></li>
         <li translate="tx_notFound_3"></li>
+        <li translate="tx_notFound_4"></li>
       </ul>
     </div>
 
@@ -111,6 +112,21 @@
             {{ txInfo.gasPrice.gwei }} GWEI
             <small>({{ txInfo.gasPrice.wei }} WEI)</small></td>
         </tr>
+<!--
+        <tr>
+          <td>
+            <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+              <img src="images/icon-help.svg" class="help-icon" />
+              <p class="account-help-text" translate="TXFEE_Desc"></p>
+            </a>
+            <span translate="x_TXFee">TX Fee</span>
+          </td>
+          <td>
+            ({{ txFee.eth }} ETH)
+            <small>({{ txFee.usd }} USD)</small>
+          </td>
+        </tr>
+-->
         <tr>
           <td translate="OFFLINE_Step2_Label_6">Data</td>
           <td>{{ txInfo.data }} </td>

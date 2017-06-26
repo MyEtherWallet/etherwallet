@@ -1,20 +1,8 @@
-/* TODO LIST
-tx.to           the user's own address
-tx.value        0 eth
-tx.gasLimit     21000
-tx.data         0x00
-should check again when they unlock their wallet to ensure they unlock correct wallet
-
-Make some variable that I can use to differentiate and hide / show things on sendTx vs swap vs txStatus pages.
-- There are a few little things I would like to do, like remove the donate button and "send entire balance" buttons from this page.
-- e.g. ng-show="page!=='swap'"
-- or   ng-show="page!=='sendTx'"
-- or   ng-show="page!=='txStatus'"
-*/
-
 'use strict';
 var txStatusCtrl = function($scope) {
     $scope.Validator = Validator;
+    $scope.checkTxPage = true;
+    $scope.checkTxReadOnly = true;
     $scope.txStatus = {
         found: 0,
         notFound: 1,
@@ -23,7 +11,7 @@ var txStatusCtrl = function($scope) {
     var MIN_GAS = 30;
     $scope.txInfo = {
         status: null, // notFound foundInPending foundOnChain
-        hash: '',
+        hash: globalFuncs.urlGet('txHash') == null ? "" : globalFuncs.urlGet('txHash'),
         from: '',
         to: '',
         value: '',
@@ -33,6 +21,7 @@ var txStatusCtrl = function($scope) {
         data: '',
         nonce: ''
     }
+
     var applyScope = function() {
         if (!$scope.$$phase) $scope.$apply();
     }
@@ -96,6 +85,8 @@ var txStatusCtrl = function($scope) {
             $scope.notifier.danger(e);
         }
     }
+
+    globalFuncs.urlGet('txHash') == null ? '' : $scope.checkTxStatus();
 
 };
 module.exports = txStatusCtrl;
