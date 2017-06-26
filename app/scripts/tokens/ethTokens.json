@@ -348,15 +348,15 @@
     "type":"default"
   },
   {
-    "address":"0x8f3470A7388c05eE4e7AF3d01D8C722b0FF52374",
-    "symbol":"VERI",
-    "decimal":18,
-    "type":"default"
-  },
-  {
     "address":"0x82665764ea0b58157E1e5E9bab32F68c76Ec0CdF",
     "symbol":"VSM",
     "decimal":0,
+    "type":"default"
+  },
+  {
+    "address":"0x8f3470A7388c05eE4e7AF3d01D8C722b0FF52374",
+    "symbol":"VERI",
+    "decimal":18,
     "type":"default"
   },
   {
