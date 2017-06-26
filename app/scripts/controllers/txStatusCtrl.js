@@ -13,8 +13,7 @@ Make some variable that I can use to differentiate and hide / show things on sen
 */
 
 'use strict';
-var txStatusCtrl = function($scope, walletService) {
-    walletService.wallet = null;
+var txStatusCtrl = function($scope) {
     $scope.Validator = Validator;
     $scope.txStatus = {
         found: 0,

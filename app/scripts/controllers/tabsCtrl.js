@@ -114,7 +114,7 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
         for (var key in $scope.nodeList) {
             if (key.indexOf("cus_") != -1) delete $scope.nodeList[key];
         }
-        var localNodes = globalFuncs.localStorage.getItem('localNodes',null);
+        var localNodes = globalFuncs.localStorage.getItem('localNodes', null);
         if (localNodes) {
             localNodes = JSON.parse(localNodes);
             for (var i = 0; i < localNodes.length; i++) $scope.addCustomNodeToList(localNodes[i]);
@@ -159,11 +159,11 @@ var tabsCtrl = function($scope, globalService, $translate, $sce) {
     $scope.setTab = function(hval) {
         if (hval != '') {
             hval = hval.replace('#', '');
-//          //Check if URL contains Parameters
-//          if(hval.indexOf('=') != -1) {
-//              //Remove URL parameter from hval
-//              hval = hval.substring(0,hval.indexOf('='));
-//          }
+            //          //Check if URL contains Parameters
+            //          if(hval.indexOf('=') != -1) {
+            //              //Remove URL parameter from hval
+            //              hval = hval.substring(0,hval.indexOf('='));
+            //          }
             for (var key in $scope.tabNames) {
                 if ($scope.tabNames[key].url == hval) {
                     $scope.activeTab = globalService.currentTab = $scope.tabNames[key].id;
