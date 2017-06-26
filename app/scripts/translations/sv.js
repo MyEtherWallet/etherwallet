@@ -270,7 +270,7 @@ ERROR_35                    : 'Input address is not checksummed. <a href="https:
 
 SUCCESS_1                   : 'Valid address ',
 SUCCESS_2                   : 'Wallet successfully decrypted ',
-SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX Hash:  ', //'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX Hash:   ', //
+SUCCESS_3                   : 'Your TX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash:  ', //'Your TX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash:   ', //
 SUCCESS_4                   : 'Your wallet was successfully added ',
 SUCCESS_5                   : 'File Selected ',
 SUCCESS_6                   : 'You are successfully connected ',

@@ -318,7 +318,7 @@ ERROR_35                    : 'Input address is not checksummed. <a href="https:
 
 SUCCESS_1                   : 'Έγκυρη διεύθυνση ',
 SUCCESS_2                   : 'Το πορτοφόλι αποκρυπτογραφήθηκε επιτυχώς ',
-SUCCESS_3                   : 'Your TX was **broadcast to the network**. It still needs to be mined & confirmed. (1) Click the link. Count to 20. Refresh. Check that there are no red ( ! ) errors. If no transaction details show, wait. Your transaction is in the pool waiting to be mined. TX Hash:   ', //'Η συναλλαγή υποβλήθηκε. TX Hash ',
+SUCCESS_3                   : 'Your TX has been broadcast to the network. It is waiting to be mined & confirmed. During ICOs, it may take 3+ hours to confirm. Use the Verify & Check buttons below to see. TX Hash:   ', //'Η συναλλαγή υποβλήθηκε. TX Hash ',
 SUCCESS_4                   : 'Το πορτοφόλι σας προστέθηκε επιτυχώς ',
 SUCCESS_5                   : 'File Selected ',
 SUCCESS_6                   : 'You are successfully connected ',
