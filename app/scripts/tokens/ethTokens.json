@@ -388,5 +388,11 @@
     "symbol":"XAUR",
     "decimal":8,
     "type":"default"
+  },
+  {
+    "address":"0x744d70fdbe2ba4cf95131626614a1763df805b9e",
+    "symbol":"SNT",
+    "decimal":18,
+    "type":"default"
   }
 ]
