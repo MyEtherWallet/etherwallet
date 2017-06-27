@@ -4,7 +4,8 @@
 <section class="container" style="min-height: 50%" ng-controller='viewCtrl'>
 
   <div class="tab-content" >
-
+    @@include( '../includes/help.tpl',               { "site": "mew" } )
+    
     @@include( '../includes/generateWallet.tpl',     { "site": "mew" } )
 
     @@include( '../includes/sendTx.tpl',             { "site": "mew" } )
@@ -20,8 +21,6 @@
     @@include( '../includes/viewWalletInfo.tpl',     { "site": "mew" } )
 
     @@include( '../includes/txStatus.tpl',           { "site": "mew" } )
-
-    @@include( '../includes/help.tpl',               { "site": "mew" } )
 
     @@include( '../includes/bulkGenerate.tpl',       { "site": "mew" } )
 
