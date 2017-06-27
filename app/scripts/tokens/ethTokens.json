@@ -210,6 +210,12 @@
     "type":"default"
   },
   {
+    "address":"0xcfb98637bcae43C13323EAa1731cED2B716962fD",
+    "symbol":"NET",
+    "decimal":18,
+    "type":"default"
+  },
+  {
     "address":"0x1776e1F26f98b1A5dF9cD347953a26dd3Cb46671",
     "symbol":"NMR",
     "decimal":18,
