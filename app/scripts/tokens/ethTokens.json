@@ -102,6 +102,12 @@
     "type":"default"
   },
   {
+    "address":"0xBbB1BD2D741F05E144E6C4517676a15554fD4B8D",
+    "symbol":"FUN",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0x6810e776880C02933D47DB1b9fc05908e5386b96",
     "symbol":"GNO",
     "decimal":18,
