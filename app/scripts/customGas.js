@@ -69,6 +69,13 @@ module.exports = [
   msg:        'OmiseGo. Starts June 27, 2017.'
 },
 {
+  // Nimiq
+  to:         '0xcfb98637bcae43C13323EAa1731cED2B716962fD',
+  gasLimit:   300000,
+  data:       '0xb4427263',
+  msg:        'Nimiq. Starts June 28, 2017 at block 3,942,670.'
+},
+{
   // Santiment
   to:         '0x0000',
   gasLimit:   200000,
