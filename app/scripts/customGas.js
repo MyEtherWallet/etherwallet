@@ -138,5 +138,12 @@ module.exports = [
   data:       '',
   msg:        '⚠ DO NOT SEND. THIS IS *** NOT *** THE ADDRESS FOR TenX!!'
 },
+{
+  // SunContract
+  to:         '0x5fb3D432bae33FCd418edE263D98D7440E7fA3ea',
+  gasLimit:   200000,
+  data:       '',
+  msg:        'SunContract ICO address - suncontract.org'
+},
 ]
 
