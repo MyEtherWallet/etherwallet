@@ -27,20 +27,6 @@ module.exports = [
   msg:        'DCORP. Ends June 30, 2017.'
 },
 {
-  // Status
-  to:         '0x55d34b686aa8C04921397c5807DB9ECEdba00a4c',
-  gasLimit:   200000,
-  data:       '',
-  msg:        '⚠ The Status.im Contribution Period has ENDED. Please stop clogging the blockchain with your FOMO. Thanks! 🤗'
-},
-{
-  // Status
-  to:         '0x0000',
-  gasLimit:   200000,
-  data:       '',
-  msg:        'Fun Fair. Starts June 22, 2017'
-},
-{
   // TenX PAY
   to:         '0xd43d09ec1bc5e57c8f3d0c64020d403b04c7f783',
   gasLimit:   130000,
@@ -81,6 +67,13 @@ module.exports = [
   gasLimit:   200000,
   data:       '',
   msg:        'Santiment. Starts June 30, 2017.'
+},
+{
+  // iDice
+  to:         '0x5a84969bb663fb64F6d015DcF9F622Aedc796750',
+  gasLimit:   -1,
+  data:       '',
+  msg:        'iDice. *** Reminder: Always do your due diligence & understand risks before sending. - MEW ***'
 },
 {
   // Moeda
