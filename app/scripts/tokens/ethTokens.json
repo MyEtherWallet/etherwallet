@@ -424,5 +424,11 @@
     "symbol":"SNT",
     "decimal":18,
     "type":"default"
+  },
+  {
+    "address":"0xa7f976C360ebBeD4465c2855684D1AAE5271eFa9",
+    "symbol":"TFL",
+    "decimal":8,
+    "type":"default"
   }
 ]
