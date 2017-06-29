@@ -35,7 +35,7 @@ module.exports = [
 },
 {
   // OpenANX
-  to:         '0x0000',
+  to:         '0x701C244b988a513c945973dEFA05de933b23Fe1D',
   gasLimit:   200000,
   data:       '',
   msg:        'OpenANX. Starts June 22, 2017.'
