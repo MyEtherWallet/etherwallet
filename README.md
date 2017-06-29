@@ -1,36 +1,45 @@
-### Website: https://www.MyEtherWallet.com
+### [https://www.MyEtherWallet.com](https://www.MyEtherWallet.com)
 
-### Chrome Extension: https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm
+### [Chrome Extension](https://chrome.google.com/webstore/detail/myetherwallet-cx/nlbmnnijcnlegkjjpcfjclmcfggfefdm)
 
-### Download the Latest Release: https://github.com/kvhnuke/etherwallet/releases/latest
+### [Download the Latest Release](https://github.com/kvhnuke/etherwallet/releases/latest)
+
 - dist-vX.X.X.X.zip is the smaller package containing the gh-pages branch aka MyEtherWallet.com
 - chrome-extension-vX.X.X.X.zip is the chrome extension package
 - source code is the full source for developers to get started with (although cloning or forking the mercury branch is probably a better choice)
 
+
 ### Help
+
 - [Help Center](https://myetherwallet.groovehq.com/help_center)
 - [Github: MyEtherWallet.com](https://github.com/kvhnuke/etherwallet)
-- [Github: MyEtherWallet v4+](https://github.com/MyEtherWallet) 
+- [Github: MyEtherWallet v4+](https://github.com/MyEtherWallet)
 - [Slack](https://myetherwallet.herokuapp.com/)
 - [Twitter](https://twitter.com/myetherwallet)
 - [Facebook](https://www.facebook.com/MyEtherWallet/)
 - [Reddit](https://www.reddit.com/r/MyEtherWallet/)
 
+
 ### `mercury` is the development branch. gh-pages contains only the smaller dist folder only and is served to MyEtherWallet.com
 
-- Our infrastructure ("node") is on AWS. You can avoid using our node, which has the possibility of going down at times, via the instructions here: https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-connect-to-a-custom-node
+- Our infrastructure ("node") is on AWS. [You can also use your own node.](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-connect-to-a-custom-node)
+- We also provide access to Infura.io & Etherscan.io nodes. Use the dropdown in the top-right.
+
 
 ### MyEtherWallet
 
-MyEtherWallet is an open-source, client-side tool for easily & securely interacting with the Ethereum network. It was created and is maintained by [kvhnuke](https://github.com/kvhnuke) and [tayvano](https://github.com/tayvano) aka [insomniasexx](https://www.reddit.com/user/insomniasexx).
+- MyEtherWallet is a free, open-source, client-side tool for easily & securely interacting with the Ethereum network. As one of the leading providers of Ethereum services, MyEtherWallet equips users with an easy-to-understand and accessible suite of tools for their needs.
+- It was created and is maintained by [kvhnuke](https://github.com/kvhnuke) and [tayvano](https://github.com/tayvano).
 
-- Generate Wallets completely client side.
-- Unlock variety of key types: raw private key, encrypted private key, keystore files, mnemonics, Ledger Nano S & TREZOR hardware wallet.
-- Easily send Ether and *any* ERC-20 Standard Token. [Many tokens included as default.](https://myetherwallet.groovehq.com/knowledge_base/topics/can-i-send-my-steem-slash-btc-slash-ltc-slash-nem-slash-to-myetherwallet)
-- Generate and send offline transactions, ensuring your private keys never touch an internet-connected device.
+#### Features
+
+- Create new wallets completely client side.
+- Access your wallet via unencrypted private key, encrypted private key, keystore files, mnemonics, Ledger Nano S & TREZOR hardware wallet.
+- Easily send ETH and *any* ERC-20 Standard Token. [Many tokens included as default.](https://myetherwallet.groovehq.com/knowledge_base/topics/can-i-send-my-steem-slash-btc-slash-ltc-slash-nem-slash-to-myetherwallet)
+- Generate, sign & send transactions offline, ensuring your private keys never touch an internet-connected device.
 - Securely access your ETH & Tokens on your [Ledger or TREZOR Hardware Wallet](https://myetherwallet.groovehq.com/knowledge_base/topics/hardware-wallet-recommends) via the MyEtherWallet interface (Chrome & Opera natively, Firefox w/ [add-on](https://addons.mozilla.org/en-US/firefox/addon/u2f-support-add-on/))
 - Now in 18 languages thanks 100% to the amazing Ethereum community.
-- Supports URI Strings on Send Transaction Page. [Read More.](https://github.com/kvhnuke/etherwallet/issues/283#issuecomment-261849895)
+- Supports URI Strings on Send Transaction Page.
     - to=[address]
     - value=[number]
     - sendMode=[ether | token]
@@ -44,25 +53,22 @@ MyEtherWallet is an open-source, client-side tool for easily & securely interact
 
 ### Our Philosophy
 
- - **Empower the people**: Give people the ability to interact with the Ethereum blockchain without having to run a full node.
- - **Make it easy & free**: Everyone should be able to create a wallet AND and send Ether & Tokens.
- - **People are the Priority**: You are the most important. Always. If monetization leads to a worse user experience, we don't do it. (ie: ads)
- - **A learning experience, too**: We want to educate about Ethereum, security, privacy, importance of controlling your own keys and how the blockchain works and the world it can enable. 
+ - **Empower the people**: Give people the ability to interact with the Ethereum blockchain easily, without having to run a full node.
+ - **Make it easy & free**: Everyone should be able to create a wallet and send Ether & Tokens without additional cost.
+ - **People are the Priority**: People are the most important & their experience trumps all else. If monetization worsens the experience, we don't do it. (e.g. ads)
+ - **A learning experience, too**: We want to educate about Ethereum, security, privacy, importance of controlling your own keys, how the blockchain works, and how Ethereum and blockchain technologies enable a better world.
  - **If it can be hacked, it will be hacked**: Never save, store, or transmit secret info, like passwords or keys.
  - **Offline / Client-Side**: User should be able to run locally and offline without issue.
- - **Private**: No tracking!!! No emails. No ads. No demographics. We don't even know how many wallets have been generated or transactions have been sent, let alone who / what / where you are.
+ - **Private**: No tracking!!! No emails. No ads. No demographics. We don't even know how many wallets have been generated, let alone who / what / where you are.
  - **Open source & audit-able**
-
-
 
 
 
 
 ### Users (non-developers)
 
-It is recommended you start here: https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443.
-
-You can run MyEtherWallet.com on your computer instead of from the GitHub servers. You can generate a wallet completely offline and send transactions from the "Offline Transaction" page.
+- [It is recommended you start here.](https://myetherwallet.groovehq.com/knowledge_base/categories/getting-started-443)
+- You can run MyEtherWallet.com on your computer. You can create a wallet completely offline & send transactions from the "Offline Transaction" page.
 
 1. Go to https://github.com/kvhnuke/etherwallet/releases/latest.
 2. Click on dist-vX.X.X.X.zip.
@@ -87,7 +93,7 @@ If you want to help contribute, here's what you need to know to get it up and ru
 - We use angular and bootstrap. We used to use jQuery and Bootstrap until it was converted in April 2016. If you wonder why some things are set up funky, that's why.
 - The mercury branch is currently the active development branch. We then push the dist folder live to gh-pages, which then gets served to MyEtherWallet.com.
 - We use npm / gulp for compiling. There is a lot of stuff happening in the compliation.
-- Old node setups can be found in in `json_relay_node` (node.js) & `json_relay_php` (php). These are great resources for developers looking to get started and launch a public node on a $40 linode instance. 
+- Old node setups can be found in in `json_relay_node` (node.js) & `json_relay_php` (php). These are great resources for developers looking to get started and launch a public node on a $40 linode instance.
 
 **Getting Started**
 
@@ -116,14 +122,17 @@ If you want to help contribute, here's what you need to know to get it up and ru
 
 
 
-### Use Your Own Server/Node Guide
+### Use Your Own Servers / Node Guide
 
-- [MyEtherWallet Frontend + Your Own Personal Node = <3](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-connect-to-a-custom-node)
+- [Setting up on AWS super easily.](https://github.com/MyEtherWallet/docker-geth-lb)
 
-- Guide by benjaminion for MEW + Ledger Nano S + Local Parity Node: https://github.com/benjaminion/eth-parity-qnap/wiki/Connecting-to-MyEtherWallet
+- [Running MyEtherWallet w/ Your Own Personal Node](https://myetherwallet.groovehq.com/knowledge_base/topics/how-can-i-connect-to-a-custom-node)
+
+- [Guide by benjaminion for MEW + Ledger Nano S + Local Parity Node](https://github.com/benjaminion/eth-parity-qnap/wiki/Connecting-to-MyEtherWallet)
 
 **Old**
-- https://github.com/kvhnuke/etherwallet/issues/226.*
+
+- https://github.com/kvhnuke/etherwallet/issues/226.
 
 - [Announcing MyEtherWallet v3.4: The Node Switcher](https://www.reddit.com/r/ethereum/comments/5lqx90/announcing_myetherwallet_v34_the_node_switcher/)**
 
@@ -164,7 +173,7 @@ Anyone can help out and it looks way more complicated than it is! If you would r
 2. Go to `/app/scripts/translations/`.
 3. Open the language you want to translate.
 4. Translate as much or as little as you wish.
-5. Add your name/username, donation address, and any notes you would like on in the translators section, about halfway down. 
+5. Add your name/username, donation address, and any notes you would like on in the translators section, about halfway down.
 6. Open a PR and leave us a brief description of what you did and any issues you ran into or comments you have.
 
 Read more @ [Help us translate MyEtherWallet.com into ALL THE LANGUAGES!](https://www.reddit.com/r/ethereum/comments/4z55s2/help_us_translate_myetherwalletcom_into_all_the/)
