@@ -228,6 +228,12 @@
     "type":"default"
   },
   {
+    "address":"0xf433089366899d83a9f26a773d59ec7ecf30355e",
+    "symbol":"MTL",
+    "decimal":8,
+    "type":"default"
+  },
+  {
     "address":"0xa645264C5603E96c3b0B078cdab68733794B0A71",
     "symbol":"MYST",
     "decimal":8,
