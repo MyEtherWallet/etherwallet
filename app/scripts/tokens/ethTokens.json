@@ -426,6 +426,11 @@
     "type":"default"
   },
   {
+    "address":"0xf4134146af2d511dd5ea8cdb1c4ac88c57d60404",
+    "symbol":"SNC",
+    "decimal":18,
+    "type":"default"
+  },{
     "address":"0xa7f976C360ebBeD4465c2855684D1AAE5271eFa9",
     "symbol":"TFL",
     "decimal":8,
