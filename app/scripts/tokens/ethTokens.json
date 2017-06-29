@@ -66,6 +66,12 @@
     "type":"default"
   },
   {
+    "address":"0xbf4cfd7d1edeeea5f6600827411b41a21eb08abd",
+    "symbol":"CTL",
+    "decimal":2,
+    "type":"default"
+  },
+  {
     "address":"0xE4c94d45f7Aef7018a5D66f44aF780ec6023378e",
     "symbol":"CryptoCarbon",
     "decimal":6,
