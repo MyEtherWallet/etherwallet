@@ -335,6 +335,11 @@
     "decimal":6,
     "type":"default"
   },
+    "address":"0x4994e81897a920c0FEA235eb8CEdEEd3c6fFF697",
+    "symbol":"SKO1",
+    "decimal":18,
+    "type":"default"
+  },
   {
     "address":"0xaeC2E87E0A235266D9C5ADc9DEb4b2E29b54D009",
     "symbol":"SNGLS",
