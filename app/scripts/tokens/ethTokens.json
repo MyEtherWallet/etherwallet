@@ -432,6 +432,12 @@
     "type":"default"
   },
   {
+    "address":"0xeDBaF3c5100302dCddA53269322f3730b1F0416d",
+    "symbol":"VRS",
+    "decimal":5,
+    "type":"default"
+  },
+  {
     "address":"0x667088b212ce3d06a1b553a7221E1fD19000d9aF",
     "symbol":"WINGS",
     "decimal":18,
