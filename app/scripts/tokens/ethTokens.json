@@ -120,6 +120,12 @@
     "type":"default"
   },
   {
+    "address":"0x190e569bE071F40c704e15825F285481CB74B6cC",
+    "symbol":"FAM",
+    "decimal":12,
+    "type":"default"
+  },
+  {
     "address":"0xBbB1BD2D741F05E144E6C4517676a15554fD4B8D",
     "symbol":"FUN",
     "decimal":8,
