@@ -87,12 +87,12 @@ var offlineTxCtrl = function($scope, $sce, walletService) {
             $scope.dropdownEnabled = true
         }
     }, true);
-    $scope.setSendMode = function(index, tokenSymbol = '') {
+    $scope.setSendMode = function(index, tokensymbol = '') {
         $scope.tokenTx.id = index;
         if (index == 'ether') {
             $scope.unitReadable = ajaxReq.type;
         } else {
-            $scope.unitReadable = tokenSymbol;
+            $scope.unitReadable = tokensymbol;
         }
         $scope.dropdownAmount = false;
     }

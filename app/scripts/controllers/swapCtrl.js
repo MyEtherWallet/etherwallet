@@ -183,7 +183,7 @@ var swapCtrl = function($scope, $sce, walletService) {
                 to: ethUtil.toChecksumAddress($scope.orderResult.payment_address),
                 value: $scope.orderResult.input.amount,
                 sendMode: $scope.orderResult.input.currency == 'ETH' ? 'ether' : 'token',
-                tokenSymbol: $scope.orderResult.input.currency == 'ETH' ? '' : $scope.orderResult.input.currency,
+                tokensymbol: $scope.orderResult.input.currency == 'ETH' ? '' : $scope.orderResult.input.currency,
                 readOnly: true
             }
             new Modal(document.getElementById('sendTransaction'));

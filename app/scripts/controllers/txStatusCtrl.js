@@ -57,7 +57,7 @@ var txStatusCtrl = function($scope) {
                     to: $scope.txInfo.from,
                     value: '0',
                     sendMode: 'ether',
-                    tokenSymbol: '',
+                    tokensymbol: '',
                     readOnly: false,
                     gasPrice: _gasPrice.toString(),
                     gasLimit: '21000',

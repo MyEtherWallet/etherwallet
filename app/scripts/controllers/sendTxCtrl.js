@@ -1,5 +1,6 @@
 'use strict';
 var sendTxCtrl = function($scope, $sce, walletService) {
+    $scope.tx = {};
     $scope.ajaxReq = ajaxReq;
     $scope.unitReadable = ajaxReq.type;
     $scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
@@ -9,6 +10,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.dropdownEnabled = true;
     $scope.Validator = Validator;
     $scope.gasLimitChanged = false;
+    $scope.tx.readOnly = globalFuncs.urlGet('readOnly') == null ? false : true;
     var currentTab = $scope.globalService.currentTab;
     var tabs = $scope.globalService.tabs;
 
@@ -34,30 +36,32 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         unit: "ether",
         value: globalFuncs.urlGet('value') == null ? "" : globalFuncs.urlGet('value'),
         nonce: null,
-        gasPrice: null,
+        gasPrice: globalFuncs.urlGet('gasprice') == null ? null : globalFuncs.urlGet('gasprice'),
         donate: false,
-        tokenSymbol: globalFuncs.urlGet('tokenSymbol') == null ? false : globalFuncs.urlGet('tokenSymbol'),
-        readOnly: globalFuncs.urlGet('readOnly') == null ? false : true
+        tokensymbol: globalFuncs.urlGet('tokensymbol') == null ? false : globalFuncs.urlGet('tokensymbol')
     }
-    $scope.setSendMode = function(sendMode, tokenId = '', tokenSymbol = '') {
+    $scope.setSendMode = function(sendMode, tokenId = '', tokensymbol = '') {
         $scope.tx.sendMode = sendMode;
         $scope.unitReadable = '';
-        if (sendMode == 'ether') {
+        if ( globalFuncs.urlGet('tokensymbol') != null ) {
+            $scope.unitReadable = $scope.tx.tokensymbol;
+            $scope.tx.sendMode = 'token';
+        } else if (sendMode == 'ether') {
             $scope.unitReadable = ajaxReq.type;
         } else {
-            $scope.unitReadable = tokenSymbol;
+            $scope.unitReadable = tokensymbol;
             $scope.tokenTx.id = tokenId;
         }
         $scope.dropdownAmount = false;
     }
     $scope.setTokenSendMode = function() {
-        if ($scope.tx.sendMode == 'token' && !$scope.tx.tokenSymbol) {
-            $scope.tx.tokenSymbol = $scope.wallet.tokenObjs[0].symbol;
+        if ($scope.tx.sendMode == 'token' && !$scope.tx.tokensymbol) {
+            $scope.tx.tokensymbol = $scope.wallet.tokenObjs[0].symbol;
             $scope.wallet.tokenObjs[0].type = "custom";
-            $scope.setSendMode($scope.tx.sendMode, 0, $scope.tx.tokenSymbol);
-        } else if ($scope.tx.tokenSymbol) {
+            $scope.setSendMode($scope.tx.sendMode, 0, $scope.tx.tokensymbol);
+        } else if ($scope.tx.tokensymbol) {
             for (var i = 0; i < $scope.wallet.tokenObjs.length; i++) {
-                if ($scope.wallet.tokenObjs[i].symbol.toLowerCase().indexOf($scope.tx.tokenSymbol.toLowerCase()) !== -1) {
+                if ($scope.wallet.tokenObjs[i].symbol.toLowerCase().indexOf($scope.tx.tokensymbol.toLowerCase()) !== -1) {
                     $scope.wallet.tokenObjs[i].type = "custom";
                     $scope.setSendMode('token', i, $scope.wallet.tokenObjs[i].symbol);
                     break;
@@ -73,7 +77,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
         globalFuncs.urlGet('sendMode') == null ? $scope.setSendMode('ether') : $scope.setSendMode(globalFuncs.urlGet('sendMode'));
         $scope.gasLimitChanged = globalFuncs.urlGet('gaslimit') != null ? true : false;
         $scope.showAdvance = globalFuncs.urlGet('gaslimit') != null || globalFuncs.urlGet('gas') != null || globalFuncs.urlGet('data') != null;
-        if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokenSymbol')) $scope.hasQueryString = true // if there is a query string, show an warning at top of page
+        if (globalFuncs.urlGet('data') || globalFuncs.urlGet('value') || globalFuncs.urlGet('to') || globalFuncs.urlGet('gaslimit') || globalFuncs.urlGet('sendMode') || globalFuncs.urlGet('gas') || globalFuncs.urlGet('tokensymbol')) $scope.hasQueryString = true // if there is a query string, show an warning at top of page
 
     }
     $scope.$watch(function() {
@@ -90,11 +94,11 @@ var sendTxCtrl = function($scope, $sce, walletService) {
                 $scope.addressDrtv.ensAddressField = $scope.parentTxConfig.to;
                 $scope.tx.value = $scope.parentTxConfig.value;
                 $scope.tx.sendMode = $scope.parentTxConfig.sendMode ? $scope.parentTxConfig.sendMode : 'ether';
-                $scope.tx.tokenSymbol = $scope.parentTxConfig.tokenSymbol ? $scope.parentTxConfig.tokenSymbol : '';
-                $scope.tx.readOnly = $scope.addressDrtv.readOnly = $scope.parentTxConfig.readOnly ? $scope.parentTxConfig.readOnly : false;
+                $scope.tx.tokensymbol = $scope.parentTxConfig.tokensymbol ? $scope.parentTxConfig.tokensymbol : '';
                 $scope.tx.gasPrice = $scope.parentTxConfig.gasPrice ? $scope.parentTxConfig.gasPrice : null;
                 $scope.tx.nonce = $scope.parentTxConfig.nonce ? $scope.parentTxConfig.nonce : null;
                 $scope.tx.data = $scope.parentTxConfig.data ? $scope.parentTxConfig.data : $scope.tx.data;
+                $scope.tx.readOnly = $scope.addressDrtv.readOnly = $scope.parentTxConfig.readOnly ? $scope.parentTxConfig.readOnly : false;
                 if ($scope.parentTxConfig.gasLimit) {
                     $scope.tx.gasLimit = $scope.parentTxConfig.gasLimit;
                     $scope.gasLimitChanged = true;
@@ -125,7 +129,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
     $scope.$watch('tx', function(newValue, oldValue) {
         $scope.showRaw = false;
         if (oldValue.sendMode && oldValue.sendMode != newValue.sendMode && newValue.sendMode == 'ether') {
-            $scope.tx.data = "";
+            $scope.tx.data = globalFuncs.urlGet('data') == null ? "" : globalFuncs.urlGet('data');
             $scope.tx.gasLimit = globalFuncs.defaultTxGasLimit;
         }
         if (newValue.gasLimit == oldValue.gasLimit && $scope.wallet && $scope.Validator.isValidAddress($scope.tx.to) && $scope.Validator.isPositiveNumber($scope.tx.value) && $scope.Validator.isValidHex($scope.tx.data) && $scope.tx.sendMode != 'token') {
