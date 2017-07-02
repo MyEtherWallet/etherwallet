@@ -138,7 +138,7 @@
 
     <div class="row form-group" ng-show="showRaw">
       <div class="col-sm-6">
-        <label translate="TX_Unsigned"> Raw Transaction </label>
+        <label translate="TX_Unsigned"> Unsigned Transaction </label>
         <textarea class="form-control" rows="4" readonly >{{rawTx}}</textarea>
       </div>
       <div class="col-sm-6">
