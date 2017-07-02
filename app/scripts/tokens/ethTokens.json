@@ -6,6 +6,12 @@
     "type":"default"
   },
   {
+    "address":"0xD0D6D6C5Fe4a677D343cC433536BB717bAe167dD",
+    "symbol":"ADT",
+    "decimal":9,
+    "type":"default"
+  },
+  {
     "address":"0x960b236A07cf122663c4303350609A66A7B288C0",
     "symbol":"ANT",
     "decimal":18,
