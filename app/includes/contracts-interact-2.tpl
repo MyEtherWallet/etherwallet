@@ -88,7 +88,7 @@
 
 
   <!-- Output -->
-  <span class="form-group output well" ng-show="contract.functions[contract.selectedFunc.index].constant">
+  <span class="form-group output" ng-show="contract.functions[contract.selectedFunc.index].constant">
     <div ng-repeat="output in contract.functions[contract.selectedFunc.index].outputs track by $index" class="form-group">
       <div ng-switch on="output.type">
         <!-- Address -->
@@ -117,8 +117,8 @@
         <!-- Boolean -->
         <p class="item write-boolean" ng-switch-when="bool">
           <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
-          <span ng-show="output.value==true" class="output-boolean-true"> <img src="images/icon-check.svg" width="16px" height="16px" /> TRUE </span>
-          <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="16px" height="16px" />  FALSE </span>
+          <span ng-show="output.value==true" class="output-boolean-true"> <img src="images/icon-check-green.svg" width="22px" height="22px" /> TRUE </span>
+          <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="22px" height="22px" />  FALSE </span>
         </p>
         <!--  -->
         <p class="item" ng-switch-default>
