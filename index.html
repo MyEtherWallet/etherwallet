@@ -50,7 +50,7 @@
 
       <div class="tagline">
 
-        <span>v3.9.7</span>
+        <span>v3.9.8</span>
 
         <span class="dropdown dropdown-lang" ng-cloak>
           <a tabindex="0"  aria-haspopup="true" aria-expanded="false" aria-label="change language. current language {{curLang}}" class="dropdown-toggle  btn btn-white" ng-click="dropdown = !dropdown">{{curLang}}<i class="caret"></i></a>
@@ -1911,7 +1911,12 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       <p class="account-help-text" translate="OFFLINE_Step1_Label_2">Note: This is the FROM address, not the TO address.</p>
       <label translate="OFFLINE_Step1_Label_1"> From Address: </label>
     </div>
-    <input class="form-control" type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.from" ng-change="validateAddress(tx.from,'')"/>
+    <input class="form-control"
+           type="text"
+           placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"
+           ng-model="tx.from"
+           ng-change="validateAddress(tx.from,'')"
+           ng-class="Validator.isValidAddress(tx.from) ? 'is-valid' : 'is-invalid'" />
   </section>
   <!-- From Address Icon -->
   <section class="col-xs-1 address-identicon-container">
@@ -1951,18 +1956,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
   <!-- To Address -->
   <article class="clearfix">
     <h2 class="col-xs-12" translate="OFFLINE_Step2_Title"> Step 2: Generate Transaction (Offline Computer) </h2>
-    <section class="col-xs-11">
-      <label translate="OFFLINE_Step2_Label_1">To Address:</label>
-      <input class="form-control"
-             type="text"
-             placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8"
-             ng-model="tx.to"
-             ng-change="validateAddress(tx.to,'')"/>
-    </section>
 
-    <section class="col-xs-1 address-identicon-container">
-      <div class="addressIdenticon" title="Address Indenticon" blockie-address="{{tx.to}}" watch-var="tx.to"></div>
-    </section>
+    <address-field var-name="tx.to"></address-field>
 
     <section class="col-xs-12">
       <p>{{customGasMsg}}</p>
@@ -1995,18 +1990,6 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     </section>
   </article>
 
-  <!-- Gas Price -->
-  <article class="clearfix">
-    <section class="col-sm-11">
-      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
-        <img src="images/icon-help.svg" class="help-icon" />
-        <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1</p>
-      </a>
-      <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
-      <input class="form-control" type="text" placeholder="" ng-model="gasPriceDec"/>
-    </section>
-  </article>
-
   <!-- Gas Limit -->
   <article class="clearfix">
     <section class="col-sm-11">
@@ -2018,6 +2001,28 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
       <input class="form-control" type="text" placeholder="" ng-model="tx.gasLimit"/>
     </section>
   </article>
+
+  <!-- Gas Price -->
+  <article class="clearfix">
+      <a class="account-help-icon" href="https://myetherwallet.groovehq.com/knowledge_base/topics/what-is-gas" target="_blank" rel="noopener">
+        <img src="images/icon-help.svg" class="help-icon" />
+        <p class="account-help-text" translate="OFFLINE_Step2_Label_3b">This was displayed in Step 1</p>
+      </a>
+      <label translate="OFFLINE_Step2_Label_3"> Gas Price </label>
+
+        <div class="input-group col-sm-11" style="padding-left: 1rem;padding-right: 1rem;">
+          <input type="text"
+                 class="form-control"
+                 placeholder="50"
+                 ng-model="gasPriceDec"
+                 ng-disabled="checkTxReadOnly"
+                 ng-class="Validator.isPositiveNumber(gasPriceDec) ? 'is-valid' : 'is-invalid'" />
+          <div class="input-group-btn">
+            <button style="min-width: 170px" class="btn btn-default">  GWEI </button>
+          </div>
+        </div>
+  </article>
+
 
   <!-- Nonce -->
   <article class="clearfix">
@@ -2158,27 +2163,30 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <main class="tab-pane contracts active" ng-if="globalService.currentTab==globalService.tabs.contracts.id" ng-controller='contractsCtrl' ng-cloak>
 
   <!-- Title -->
-  <h1>
-    <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
-    or
-    <a translate="NAV_DeployContract"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a>
-  </h1>
+  <div class="block text-center">
+    <h1>
+      <a translate="NAV_InteractContract" ng-class="{'isActive': visibility=='interactView'}" ng-click="setVisibility('interactView')"> Interact with Contract </a>
+      or
+      <a translate="NAV_DeployContract"  ng-class="{'isActive': visibility=='deployView'}" ng-click="setVisibility('deployView')"> Deploy Contract </a>
+    </h1>
+  </div>
   <!-- / Title -->
 
 
   <!-- Interact Contracts -->
-  <article class="row" ng-show="visibility=='interactView'">
+  <article class="row block" ng-show="visibility=='interactView'">
 
      
 <!-- Address -->
 <section class="col-sm-6 clearfix">
-  <h4 translate="CONTRACT_Title"> Contract Address</h4> <small style="float: right; margin-top: -2rem;"> or </small>
-  <input class="form-control" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-class="Validator.isValidAddress(contract.address) ? 'is-valid' : 'is-invalid'" ng-model="contract.address"/>
+  <div class="row">
+    <address-field labeltranslated="CONTRACT_Title" var-name="contract.address"></address-field>
+  </div>
 </section>
 
 <!-- Select Contract Dropdown -->
 <section class="col-sm-6 clearfix">
-  <h4 translate="CONTRACT_Title_2"> Select Existing Contract </h4>
+  <label translate="CONTRACT_Title_2"> Select Existing Contract </label>
   <div class="dropdown">
     <a class="btn btn-default dropdown-toggle" class="dropdown-toggle" ng-click="dropdownExistingContracts = !dropdownExistingContracts">
       {{selectedAbi.name}} <small class="mono">{{selectedAbi.address}}</small><i class="caret"></i>
@@ -2191,7 +2199,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 <!-- ABI Textarea -->
 <section class="col-xs-12 clearfix">
-  <h4 translate="CONTRACT_Json"> ABI / JSON Interface </h4>
+  <label translate="CONTRACT_Json"> ABI / JSON Interface </label>
   <textarea class="form-control" rows="6" placeholder='[{ "type":"contructor", "inputs": [{ "name":"param1", "type":"uint256", "indexed":true }], "name":"Event" }, { "type":"function", "inputs": [{"name":"a", "type":"uint256"}], "name":"foo", "outputs": [] }] ' ng-class="Validator.isJSON(contract.abi) ? 'is-valid' : 'is-invalid'" ng-model="contract.abi"></textarea>
 </section>
 
@@ -2202,11 +2210,12 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
  
     
 
+  </article>
 
-    <div class="col-xs-12 clearfix"> <hr /> </div>
 
-    <div ng-show="showReadWrite">
-       <!-- STEP READ/WRITE -->
+  <article class="row block" ng-show="visibility=='interactView' && showReadWrite">
+
+     <!-- STEP READ/WRITE -->
 <section class="col-xs-12 clearfix">
 
   <!-- Contract Info CONTRACT_Interact_CTA -->
@@ -2296,7 +2305,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 
   <!-- Output -->
-  <span class="form-group output well" ng-show="contract.functions[contract.selectedFunc.index].constant">
+  <span class="form-group output" ng-show="contract.functions[contract.selectedFunc.index].constant">
     <div ng-repeat="output in contract.functions[contract.selectedFunc.index].outputs track by $index" class="form-group">
       <div ng-switch on="output.type">
         <!-- Address -->
@@ -2325,8 +2334,8 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
         <!-- Boolean -->
         <p class="item write-boolean" ng-switch-when="bool">
           <label> &#8627; {{output.name}} <small> {{output.type}} </small> </label>
-          <span ng-show="output.value==true" class="output-boolean-true"> <img src="images/icon-check.svg" width="16px" height="16px" /> TRUE </span>
-          <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="16px" height="16px" />  FALSE </span>
+          <span ng-show="output.value==true" class="output-boolean-true"> <img src="images/icon-check-green.svg" width="22px" height="22px" /> TRUE </span>
+          <span ng-show="output.value==false" class="output-boolean-false"> <img src="images/icon-x.svg" width="22px" height="22px" />  FALSE </span>
         </p>
         <!--  -->
         <p class="item" ng-switch-default>
@@ -2341,8 +2350,11 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 </section>
  
-      
-    </div>
+    
+
+  </article>
+
+  <article ng-show="visibility=='interactView'">
 
      <article class="modal fade" id="sendContract" tabindex="-1">
   <section class="modal-dialog">
@@ -2407,7 +2419,7 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
 
 
   <!-- Deploy Contract -->
-  <article class="row" ng-show="visibility=='deployView'">
+  <article class="row block" ng-show="visibility=='deployView'">
 
      <section class="col-xs-12">
 
@@ -2441,12 +2453,12 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
     <!-- Raw TX -->
     <div class="form-group col-sm-6">
       <h4 translate="SEND_raw"> Raw Transaction </h4>
-      <textarea class="form-control" rows="4" readonly> {{rawTx}} </textarea>
+      <textarea class="form-control" rows="4" readonly>{{rawTx}}</textarea>
     </div>
     <!-- Singed TX -->
     <div class="form-group col-sm-6">
       <h4 translate="SEND_signed"> Signed Transaction </h4>
-      <textarea class="form-control" rows="4" readonly> {{signedTx}} </textarea>
+      <textarea class="form-control" rows="4" readonly>{{signedTx}}</textarea>
     </div>
   </section>
 
@@ -2499,13 +2511,13 @@ Rate: {{swapOrder.swapRate}} {{swapOrder.swapPair}}</textarea>
         <wallet-decrypt-drtv></wallet-decrypt-drtv>         
   </article>
 
-  <article ng-show="contract.selectedFunc!=null">
+  <article class="col-xs-12" ng-show="contract.selectedFunc!=null && visibility=='interactView'">
 
-    <button class="btn btn-primary" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead">
+    <button class="btn btn-primary btn-block" ng-click="readFromContract()" ng-show="contract.functions[contract.selectedFunc.index].constant && showRead">
       <span translate="CONTRACT_Read"> READ</span>
     </button>
 
-    <button class="btn btn-primary" ng-click="generateContractTx()" ng-show="!contract.functions[contract.selectedFunc.index].constant">
+    <button class="btn btn-primary btn-block" ng-click="generateContractTx()" ng-show="!contract.functions[contract.selectedFunc.index].constant">
       <span translate="CONTRACT_Write"> WRITE</span>
     </button>
 
