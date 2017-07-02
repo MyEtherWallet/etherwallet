@@ -5,7 +5,8 @@ var addressFieldDrtv = function($compile) {
         link: function(scope, element, attrs) {
             var varName = attrs.varName;
             var varArr = varName.split('.');
-            var placeholder = attrs.placeholder;
+            var placeholder = attrs.placeholder == undefined ? 'mewtopia.eth or 0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8' : attrs.placeholder ;
+            var labelTranslated = attrs.labeltranslated == undefined ? 'SEND_addr' : attrs.labeltranslated ;
             var setValue = function(value) {
                 var temp = scope;
                 for (var i in varArr) {
@@ -22,7 +23,7 @@ var addressFieldDrtv = function($compile) {
                 readOnly: false
             }
             element.html('<div class=\"col-xs-11\">\n \
-                    <label translate=\"SEND_addr\"> To Address: </label>\n \
+                    <label translate=\"' + labelTranslated + '\"></label>\n \
                     <input class=\"form-control\" type=\"text\" placeholder=\"' + placeholder + '\" ng-model=\"addressDrtv.ensAddressField\" ng-disabled=\"addressDrtv.readOnly\" ng-class=\"Validator.isValidENSorEtherAddress(' + varName + ') ? \'is-valid\' : \'is-invalid\'\"/>\n \
                     <p class="ens-response" ng-show="addressDrtv.showDerivedAddress"> ↳ <span class="mono ng-binding"> {{addressDrtv.derivedAddress}} </span> </p>\n \
                 </div>\n \
