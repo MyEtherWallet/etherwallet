@@ -58,7 +58,9 @@ textarea {
 .address-identicon-container {
   padding: 0;
   text-align: left;
-  max-width: 80px;
+  max-width: 4.5rem;
+  margin-left: -.5rem;
+  margin-top: .5rem;
 }
 
 .address-identicon-container-right {
@@ -331,11 +333,11 @@ h2 a.isActive {
   margin: 6px 0;
 }
 
-.output.well {
+.output {
   padding: @space-sm @space;
   margin-top: -@space/2;
   p {
-    margin: @space-sm 0;
+    margin: @space-md 0 0;
   }
 }
 
@@ -390,12 +392,9 @@ label small {
 }
 
 .contracts {
-  h4 + .dropdown,
-  h4 + .dropdown .btn {
-    margin-top: 0;
-  }
   a.isActive {
     color: @text-color;
+    font-weight: 400;
   }
   .dropdown-toggle {
     display: block;
@@ -575,16 +574,5 @@ header.Custom  {
   }
 }
 
-
-// TODO MAKE THIS NOT BREAK IF WE ADD OR REDO TABS!!!
-.nav-index-7 + .container {
-  .alert.popup.alert-success,
-  .alert.popup.alert-warning,
-  .alert.popup.alert-danger {
-    background-color: @brand-warning!important;
-    min-height: 300px;
-    font-size: 20px;
-  }
-}
 
 
