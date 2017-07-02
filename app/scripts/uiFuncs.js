@@ -159,7 +159,6 @@ uiFuncs.generateTx = function(txData, callback) {
                         isError: true,
                         error: e
                     });
-                    return;
                 } else {
                     data = data.data;
                     data.isOffline = txData.isOffline ? txData.isOffline : false;
